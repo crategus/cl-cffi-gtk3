@@ -1,0 +1,91 @@
+(in-package :gtk-test)
+
+(def-suite gdk-color :in gdk-suite)
+(in-suite gdk-color)
+
+;;;     GdkColor
+
+(test color-structure
+  ;; Type check
+  (is (g:type-is-a (g:gtype "GdkColor") +g-type-boxed+))
+  ;; Check the type initializer
+  (is (eq (g:gtype "GdkColor")
+          (g:gtype (cffi:foreign-funcall "gdk_color_get_type" :size)))))
+
+;;;     gdk-color-new
+
+(test color-new
+  (let ((color (gdk:color-new :red 255 :green 155 :blue 55)))
+    (is (typep color 'gdk:color))
+    (is (= 255 (gdk:color-red color)))
+    (is (= 155 (gdk:color-green color)))
+    (is (=  55 (gdk:color-blue color)))))
+
+;;;     gdk_color_copy
+
+(test color-copy
+  (let* ((color (gdk:color-new :red 255 :green 155 :blue 55))
+         (color2 (gdk:color-copy color)))
+    (is (typep color2 'gdk:color))
+    (is (= 255 (gdk:color-red color2)))
+    (is (= 155 (gdk:color-green color2)))
+    (is (=  55 (gdk:color-blue color2)))))
+
+;;;     gdk_color_parse
+
+(test color-parse.1
+  (let ((color (gdk:color-parse "Red")))
+    (is (typep color 'gdk:color))
+    (is (=  65535 (gdk:color-red color)))
+    (is (=      0 (gdk:color-green color)))
+    (is (=      0 (gdk:color-blue color)))))
+
+(test color-parse.2
+  (let ((color (gdk:color-parse "#ffff0000aaaa")))
+    (is (typep color 'gdk:color))
+    (is (=  65535 (gdk:color-red color)))
+    (is (=      0 (gdk:color-green color)))
+    (is (=  43690 (gdk:color-blue color)))))
+
+(test color-parse.3
+  (let ((color (gdk:color-parse "#ff00aa")))
+    (is (typep color 'gdk:color))
+    (is (=  65535 (gdk:color-red color)))
+    (is (=      0 (gdk:color-green color)))
+    (is (=  43690 (gdk:color-blue color)))))
+
+(test color-parse.4
+  (let ((color (gdk:color-parse "#f0a")))
+    (is (typep color 'gdk:color))
+    (is (=  65535 (gdk:color-red color)))
+    (is (=      0 (gdk:color-green color)))
+    (is (=  43690 (gdk:color-blue color)))))
+
+;;;     gdk_color_equal
+
+(test color-equal.1
+  (let ((color1 (gdk:color-new :red 1 :green 2 :blue 2))
+        (color2 (gdk:color-new :red 1 :green 2 :blue 2)))
+    (is-true (gdk:color-equal color1 color2))))
+
+(test color-equal.2
+  (let ((color (gdk:color-new :red 1 :green 2 :blue 2)))
+    (is-true (gdk:color-equal color (gdk:color-copy color)))))
+
+;;;     gdk_color_hash
+
+(test color-to-hash
+  (let ((color (gdk:color-parse "Red")))
+    (is (= 65535 (gdk:color-hash color)))))
+
+;;;     gdk_color_to_string
+
+(test color-to-string.1
+  (let ((color (gdk:color-parse "Red")))
+    (is (string= "#ffff00000000" (gdk:color-to-string color)))))
+
+(test color-to-string.2
+  (let ((color (gdk:color-parse "#ffff0000aaaa")))
+    (is (string= "#ffff0000aaaa" (gdk:color-to-string color)))))
+
+;;; 2021-1-22
