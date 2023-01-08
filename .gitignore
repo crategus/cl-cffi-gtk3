@@ -1,0 +1,6 @@
+*.rc
+*.tmp
+*.gresource
+*.ini
+TODO
+test/rtest-templates.lisp
