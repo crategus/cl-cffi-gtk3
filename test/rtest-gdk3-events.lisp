@@ -360,6 +360,10 @@
 
 ;;;     gdk_event_get_device_tool
 ;;;     gdk_event_set_device_tool
+
 ;;;     gdk_setting_get
 
-;;; 2021-10-29
+(test setting-get
+  (is (= 400 (gdk:setting-get "gtk-double-click-time" "gint"))))
+
+;;; --- 2023-1-22 --------------------------------------------------------------
