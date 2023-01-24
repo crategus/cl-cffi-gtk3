@@ -55,8 +55,8 @@
   (cffi:use-foreign-library gtk3))
 
 (glib-init:push-library-version-features gtk
-    ;; We can not call the Lisp implementations gtk-major-version and
-    ;; gtk-minor-version because GTK is not compiled at this time.
+    ;; We can not call the Lisp functions gtk:major-version and
+    ;; gtk:minor-version because GTK is not compiled at this time.
     (cffi:foreign-funcall "gtk_get_major_version" :size)
     (cffi:foreign-funcall "gtk_get_minor_version" :size)
     3 10

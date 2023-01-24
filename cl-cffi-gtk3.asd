@@ -23,7 +23,7 @@
 
 (defsystem :cl-cffi-gtk3
   :name "cl-cffi-gtk3"
-  :version "3.24"                      ; Version of the library
+  :version "0.1.0"
   :author "Dieter Kaiser"
   :license "LLGPL"
   :serial t
@@ -368,7 +368,6 @@
 
 (defsystem :cl-cffi-gtk3/init
   :name "cl-cffi-gtk3/init"
-  :version "0.9.0"
   :author "Dieter Kaiser"
   :license "LLGPL"
   :serial t
