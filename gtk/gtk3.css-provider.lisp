@@ -80,11 +80,6 @@
 
 (in-package :gtk)
 
-(define-g-boxed-opaque g-error "GError"
-  :alloc (error "GError cannot be created from the Lisp side."))
-
-(export (gobject:boxed-related-symbols 'g-error))
-
 ;;; ----------------------------------------------------------------------------
 ;;; struct GtkCssProvider
 ;;; ----------------------------------------------------------------------------
@@ -564,7 +559,7 @@
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_css_section_get_parent" css-section-parent)
-    (g:boxed css-section)
+    (g:boxed css-section :return)
  #+liber-documentation
  "@version{#2021-11-18}
   @argument[section]{a @class{gtk:css-section} instance}

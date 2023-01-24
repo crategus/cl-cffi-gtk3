@@ -1128,7 +1128,7 @@ lambda (context)    :run-first
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_style_context_get_section" style-context-section)
-    (g:boxed css-section)
+    (g:boxed css-section :return)
  #+liber-documentation
  "@version{#2021-11-26}
   @argument[context]{a @class{gtk:style-context} object}
