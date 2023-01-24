@@ -57,18 +57,18 @@
 ;;; struct GtkGestureRotate
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkGestureRotate" gtk-gesture-rotate
-  (:superclass gtk-gesture
+(define-g-object-class "GtkGestureRotate" gesture-rotate
+  (:superclass gesture
    :export t
    :interfaces nil
    :type-initializer "gtk_gesture_rotate_get_type")
   nil)
 
 #+liber-documentation
-(setf (documentation 'gtk-gesture-rotate 'type)
+(setf (documentation 'gesture-rotate 'type)
  "@version{#2020-9-11}
   @begin{short}
-    @sym{gtk-gesture-rotate} is a @class{gtk-gesture} implementation able to
+    @sym{gtk:gesture-rotate} is a @class{gtk:gesture} implementation able to
     recognize 2-finger rotations, whenever the angle between both handled
     sequences changes, the \"angle-changed\" signal is emitted.
   @end{short}
@@ -79,53 +79,54 @@
     @end{pre}
     The signal is emitted when the angle between both tracked points changes.
     @begin[code]{table}
-      @entry[gesture]{The @sym{gtk-gesture-rotate} object which received the
+      @entry[gesture]{The @sym{gtk:gesture-rotate} object which received the
         signal.}
       @entry[angle]{A double float with the current angle in radians.}
       @entry[delta]{A double float with the difference with the starting angle,
         in radians.}
     @end{table}
   @end{dictionary}
-  @see-class{gtk-gesture-zoom}")
+  @see-class{gtk:gesture-zoom}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_gesture_rotate_new ()
 ;;; ----------------------------------------------------------------------------
 
-(declaim (inline gtk-gesture-rotate-new))
+(declaim (inline gesture-rotate-new))
 
-(defun gtk-gesture-rotate-new (widget)
+(defun gesture-rotate-new (widget)
  #+liber-documentation
  "@version{#2020-9-11}
-  @argument[widget]{a @class{gtk-widget} object}
-  @return{A newly created @class{gtk-gesture-rotate} object.}
+  @argument[widget]{a @class{gtk:widget} object}
+  @return{A newly created @class{gtk:gesture-rotate} object.}
   @begin{short}
     Returns a newly created gesture that recognizes 2-touch rotation gestures.
   @end{short}
-  @see-class{gtk-gesture-rotate}"
-  (make-instance 'gtk-gesture-rotate
+  @see-class{gtk:gesture-rotate}
+  @see-class{gtk:widget}"
+  (make-instance 'gesture-rotate
                  :widget widget))
 
-(export 'gtk-gesture-rotate-new)
+(export 'gesture-rotate-new)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_gesture_rotate_get_angle_delta ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_gesture_rotate_get_angle_delta" gtk-gesture-rotate-angle-delta)
+(defcfun ("gtk_gesture_rotate_get_angle_delta" gesture-rotate-angle-delta)
     :double
  #+liber-documentation
  "@version{#2020-9-11}
-  @argument[gesture]{a @class{gtk-gesture-rotate} object}
+  @argument[gesture]{a @class{gtk:gesture-rotate} object}
   @return{The angle delta of type @code{:double} in radians.}
   @begin{short}
     If the gesture is active, this function returns the angle difference in
     radians since the gesture was first recognized.
   @end{short}
   If gesture is not active, 0.0d0 is returned.
-  @see-class{gtk-gesture-rotate}"
-  (gesture (g:object gtk-gesture-rotate)))
+  @see-class{gtk:gesture-rotate}"
+  (gesture (g:object gesture-rotate)))
 
-(export 'gtk-gesture-rotate-angle-delta)
+(export 'gesture-rotate-angle-delta)
 
-;;; --- End of file gtk.gesture-rotate.lisp ------------------------------------
+;;; --- End of file gtk3.gesture-rotate.lisp -----------------------------------

@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.ui-manager.lisp
+;;; gtk3.ui-manager.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -180,14 +180,14 @@
   (unless bottom
     (error "bottom is a mandatory child property for table packing"))
   (table-attach table child
-                    left
-                    right
-                    top
-                    bottom
-                    :x-options x-options
-                    :y-options y-options
-                    :x-padding x-padding
-                    :y-padding y-padding))
+                left
+                right
+                top
+                bottom
+                :x-options x-options
+                :y-options y-options
+                :x-padding x-padding
+                :y-padding y-padding))
 
 (defmethod pack-child ((w tree-view) child &key)
   (tree-view-append-column w child))
@@ -246,8 +246,6 @@
                                           (ui-d-var item)
                                           child-var props))))))
       ,@body)))
-
-(export 'let-ui)
 
 ;;; ----------------------------------------------------------------------------
 ;;; enum GtkUIManagerItemType
@@ -980,4 +978,4 @@ lambda (manager action)    :no-recurse
 
 (export 'ui-manager-ensure-update)
 
-;;; --- End of file gtk.ui-manager.lisp ----------------------------------------
+;;; --- End of file gtk3.ui-manager.lisp ---------------------------------------

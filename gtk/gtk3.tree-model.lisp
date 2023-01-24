@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -1611,10 +1611,8 @@
 (export 'tree-model-string-from-iter)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_model_ref_node ()
+;;; gtk_tree_model_ref_node ()                             not exported
 ;;; ----------------------------------------------------------------------------
-
-;; not exported
 
 (defcfun ("gtk_tree_model_ref_node" tree-model-ref-node) :void
  #+liber-documentation
@@ -1644,7 +1642,7 @@
   (iter (g:boxed tree-iter)))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_model_unref_node ()
+;;; gtk_tree_model_unref_node ()                           not exported
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_tree_model_unref_node" tree-model-unref-node) :void
@@ -1965,4 +1963,4 @@
 
 ;; not needed
 
-;;; --- End of file gtk.tree-model.lisp ----------------------------------------
+;;; --- End of file gtk3.tree-model.lisp ---------------------------------------

@@ -28,7 +28,7 @@
 (in-package :gtk)
 
 (define-g-interface "AtkImplementorIface" atk-implementor-iface
-  (:export t)
+  (:export nil)
   nil)
 
-;;; --- End of file atk.implementor-iface.lisp ---------------------------------
+;;; --- End of file gtk3..implementor-iface.lisp -------------------------------

@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.package.lisp
+;;; gtk3.package.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -68,29 +68,6 @@
   (:import-from :gdk-pixbuf #:+gdk-pixbuf-version+))
 
 (in-package :gtk)
-
-(defvar *cl-cffi-gtk-build-time* (multiple-value-list (get-decoded-time)))
-(defvar *cl-cffi-gtk-version* "1.0.0")
-
-(export '*cl-cffi-gtk-build-time*)
-(export '*cl-cffi-gtk-version*)
-
-#|
-;;; Loading of the GTK library is moved to gdk.package.lisp,
-;;; because we need the version info from GTK when compiling GDK.
-(glib::at-init ()
-  (eval-when (:compile-toplevel :load-toplevel :execute)
-    (define-foreign-library gtk
-      ((:and :unix (:not :darwin))
-       (:or "libgtk-3.so.0" "libgtk-3.so"))
-      (:darwin (:or "libgtk-3.0.dylib"
-                    "libgtk-3.dylib"
-                    "libgtk-x11-3.0.0.dylib"
-                    "libgtk-x11-3.0.dylib"))
-      (:windows (:or "libgtk-3-0.dll" "libgtk-win32-2.0-0.dll"))
-      (t "libgtk-3-0")))
-  (use-foreign-library gtk))
-|#
 
 #+sbcl
 (when (and (find-package "SB-EXT")
@@ -2438,7 +2415,7 @@ setup_tree (void)
     @end{subsection}
     @begin[GtkcellAreaContext]{subsection}
       Stores geometrical information for a series of rows in a
-      @class{gtk:cell-area}.
+      @class{gtk:cell-area} object.
       @about-class{cell-area-context}
       @about-generic{cell-area-context-area}
       @about-generic{cell-area-context-minimum-height}
@@ -2496,7 +2473,7 @@ setup_tree (void)
       @about-function{cell-renderer-request-mode}
     @end{subsection}
     @begin[GtkCellEditable]{subsection}
-      Interface for widgets which can are used for editing cells.
+      Interface for widgets which are used for editing cells.
       @about-class{cell-editable}
       @about-generic{cell-editable-editing-canceled}
       @about-function{cell-editable-start-editing}
@@ -5564,4 +5541,4 @@ gtk_notebook_get_tab_vborder
     @end{pre}
   @end{section}")
 
-;;; --- End of file gtk.package.lisp -------------------------------------------
+;;; --- End of file gtk3.package.lisp ------------------------------------------

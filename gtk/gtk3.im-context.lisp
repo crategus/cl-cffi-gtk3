@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.im-context.lisp
+;;; gtk3.im-context.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2021 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -56,35 +56,35 @@
 ;;; struct GtkIMContext
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkIMContext" gtk-im-context
+(define-g-object-class "GtkIMContext" im-context
   (:superclass g:object
    :export t
    :interfaces nil
    :type-initializer "gtk_im_context_get_type")
    ((input-hints
-    gtk-im-context-input-hints
+    im-context-input-hints
     "input-hints" "GtkInputHints" t t)
     (input-purpose
-     gtk-im-context-input-purpose
+     im-context-input-purpose
      "input-purpose" "GtkInputPurpose" t t)))
 
 #+liber-documentation
-(setf (documentation 'gtk-im-context 'type)
+(setf (documentation 'im-context 'type)
  "@version{#2020-9-15}
   @begin{short}
-    @sym{gtk-im-context} defines the interface for GTK input methods. An input
-    method is used by GTK text input widgets like @class{gtk-entry} to map
+    @sym{gtk:im-context} defines the interface for GTK input methods. An input
+    method is used by GTK text input widgets like @class{gtk:entry} to map
     from key events to Unicode character strings.
   @end{short}
 
   The user may change the current input method via a context menu, unless the
-  @slot[gtk-settings]{gtk-show-input-method-menu} settings property is set to
+  @slot[gtk:settings]{gtk-show-input-method-menu} settings property is set to
   @em{false}. The default input method can be set programmatically via the
-  @slot[gtk-settings]{gtk-im-module} settings property. Alternatively, you may
+  @slot[gtk:settings]{gtk-im-module} settings property. Alternatively, you may
   set the @code{GTK_IM_MODULE} environment variable as documented in
   @url[https://developer.gnome.org/gtk3/stable/gtk-running.html]{Running GTK Applications}.
 
-  The @slot[gtk-entry]{im-module} and @slot[gtk-text-view]{im-module} properties
+  The @slot[gtk:entry]{im-module} and @slot[gtk:text-view]{im-module} properties
   may also be used to set input methods for specific widget instances. For
   instance, a certain entry widget might be expected to contain certain
   characters which would be easier to input with a certain input method.
@@ -101,13 +101,13 @@
 
   Additional input methods can be made available for use by GTK widgets as
   loadable modules. An input method module is a small shared library which
-  implements a subclass of @sym{gtk-im-context} or @class{gtk-im-context-simple}
+  implements a subclass of @sym{gtk:im-context} or @class{gtk:im-context-simple}
   and exports these four functions:
   @begin{pre}
 void im_module_init(<GTKDOCLINK HREF=\"GTypeModule\">
                       GTypeModule</GTKDOCLINK> *module);
   @end{pre}
-  This function should register the @class{g-type} of the @sym{gtk-im-context}
+  This function should register the @class{g-type} of the @sym{gtk:im-context}
   subclass which implements the input method by means of the function
   @code{g_type_module_register_type()}. Note that the function
   @code{g_type_register_static()} cannot be used as the type needs to be
@@ -128,7 +128,7 @@ void im_module_list(const <a class=\"link\"
   @end{pre}
   This function returns the list of input methods provided by the module. The
   example implementation above shows a common solution and simply returns a
-  pointer to statically defined array of @symbol{gtk-im-context-info} items for
+  pointer to statically defined array of @symbol{gtk:im-context-info} items for
   each provided input method.
   @begin{pre}
 <a class=\"link\" href=\"GtkIMContext.html\"
@@ -137,8 +137,8 @@ void im_module_list(const <a class=\"link\"
                                     gchar</GTKDOCLINK> *context_id);
   @end{pre}
   This function should return a pointer to a newly created instance of the
-  @sym{gtk-im-context} subclass identified by @code{context-id}. The context ID
-  is the same as specified in the @symbol{gtk-im-context-info} array returned by
+  @sym{gtk:im-context} subclass identified by @code{context-id}. The context ID
+  is the same as specified in the @symbol{gtk:im-context-info} array returned by
   @code{im_module_list()}.
 
   After a new loadable input method module has been installed on the system,
@@ -148,24 +148,24 @@ void im_module_list(const <a class=\"link\"
   @begin[Signal Details]{dictionary}
     @subheading{The \"commit\" signal}
       @begin{pre}
- lambda (context str)    : Run Last
+lambda (context str)    : Run Last
       @end{pre}
       The \"commit\" signal is emitted when a complete input sequence has been
       entered by the user. This can be a single character immediately after a
       key press or the final result of preediting.
       @begin[code]{table}
-        @entry[context]{The @sym{gtk-im-context} object on which the signal is
+        @entry[context]{The @sym{gtk:im-context} object on which the signal is
           emitted.}
         @entry[str]{The completed character(s) entered by the user.}
       @end{table}
     @subheading{The \"delete-surrounding\" signal}
       @begin{pre}
- lambda (context offset n-chars)    : Run Last
+lambda (context offset n-chars)    : Run Last
       @end{pre}
       The \"delete-surrounding\" signal is emitted when the input method needs
       to delete all or part of the context surrounding the cursor.
       @begin[code]{table}
-        @entry[context]{The @sym{gtk-im-context} object on which the signal is
+        @entry[context]{The @sym{gtk:im-context} object on which the signal is
           emitted.}
         @entry[offset]{The character offset from the cursor position of the text
           to be deleted. A negative value indicates a position before the
@@ -175,109 +175,109 @@ void im_module_list(const <a class=\"link\"
       @end{table}
     @subheading{The \"preedit-changed\" signal}
       @begin{pre}
- lambda (context)    : Run Last
+lambda (context)    : Run Last
       @end{pre}
       The \"preedit-changed\" signal is emitted whenever the preedit sequence
       currently being entered has changed. It is also emitted at the end of a
       preedit sequence, in which case the function
-      @fun{gtk-im-context-preedit-string} returns the empty string.
+      @fun{gtk:im-context-preedit-string} returns the empty string.
       @begin[code]{table}
-        @entry[context]{The @sym{gtk-im-context} object on which the signal is
+        @entry[context]{The @sym{gtk:im-context} object on which the signal is
           emitted.}
       @end{table}
     @subheading{The \"preedit-end\" signal}
       @begin{pre}
- lambda (context)    : Run Last
+lambda (context)    : Run Last
       @end{pre}
       The \"preedit-end\" signal is emitted when a preediting sequence has been
       completed or canceled.
       @begin[code]{table}
-        @entry[context]{The @sym{gtk-im-context} object on which the signal is
+        @entry[context]{The @sym{gtk:im-context} object on which the signal is
           emitted.}
       @end{table}
     @subheading{The \"preedit-start\" signal}
       @begin{pre}
- lambda (context)    : Run Last
+lambda (context)    : Run Last
       @end{pre}
       The \"preedit-start\" signal is emitted when a new preediting sequence
       starts.
       @begin[code]{table}
-        @entry[context]{The @sym{gtk-im-context} object on which the signal is
+        @entry[context]{The @sym{gtk:im-context} object on which the signal is
           emitted.}
       @end{table}
     @subheading{The \"retrieve-surrounding\" signal}
       @begin{pre}
- lambda (context)    : Run Last
+lambda (context)    : Run Last
       @end{pre}
       The \"retrieve-surrounding\" signal is emitted when the input method
       requires the context surrounding the cursor. The callback should set the
       input method surrounding context by calling the function
-      @fun{gtk-im-context-surrounding}.
+      @fun{gtk:im-context-surrounding}.
       @begin[code]{table}
         @entry[context]{The object on which the signal is emitted.}
         @entry[Returns]{@em{True} if the signal was handled.}
       @end{table}
   @end{dictionary}
-  @see-slot{gtk-im-context-input-hints}
-  @see-slot{gtk-im-context-input-purpose}")
+  @see-slot{gtk:im-context-input-hints}
+  @see-slot{gtk:im-context-input-purpose}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- gtk-im-context-input-hints ---------------------------------------------
+;;; --- im-context-input-hints ---------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "input-hints"
-                                               'gtk-im-context) t)
- "The @code{input-hints} property of type @symbol{gtk-input-hints}
+                                               'im-context) t)
+ "The @code{input-hints} property of type @symbol{gtk:input-hints}
   (Read / Write) @br{}
   Hints for the text field behaviour. @br{}")
 
 #+liber-documentation
-(setf (liber:alias-for-function 'gtk-im-context-input-hints)
+(setf (liber:alias-for-function 'im-context-input-hints)
       "Accessor"
-      (documentation 'gtk-im-context-input-hints 'function)
+      (documentation 'im-context-input-hints 'function)
  "@version{#2020-9-15}
-  @syntax[]{(gtk-im-context-input-hints object) => input-hints}
-  @syntax[]{(setf (gtk-im-context-input-hints object) input-hints)}
-  @argument[object]{a @class{gtk-im-context} object}
-  @argument[input-hints]{a value of the @symbol{gtk-input-hints} enumeration}
+  @syntax[]{(gtk:im-context-input-hints object) => input-hints}
+  @syntax[]{(setf (gtk:im-context-input-hints object) input-hints)}
+  @argument[object]{a @class{gtk:im-context} object}
+  @argument[input-hints]{a value of the @symbol{gtk:input-hints} enumeration}
   @begin{short}
-    Accessor of the @slot[gtk-im-context]{input-hints} slot of the
-    @class{gtk-im-context} class.
+    Accessor of the @slot[gtk:im-context]{input-hints} slot of the
+    @class{gtk:im-context} class.
   @end{short}
 
   Hints for the text field behaviour.
-  @see-class{gtk-im-context}")
+  @see-class{gtk:im-context}")
 
-;;; --- gtk-im-context-input-purpose -------------------------------------------
+;;; --- im-context-input-purpose -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "input-purpose"
-                                               'gtk-im-context) t)
- "The @code{input-purpose} property of type @symbol{gtk-input-purpose}
+                                               'im-context) t)
+ "The @code{input-purpose} property of type @symbol{gtk:input-purpose}
   (Read / Write) @br{}
   Purpose of the text field. @br{}
   Default value: @code{:free-from}")
 
 #+liber-documentation
-(setf (liber:alias-for-function 'gtk-im-context-input-purpose)
+(setf (liber:alias-for-function 'im-context-input-purpose)
       "Accessor"
-      (documentation 'gtk-im-context-input-purpose 'function)
+      (documentation 'im-context-input-purpose 'function)
  "@version{#2020-9-15}
-  @syntax[]{(gtk-im-context-input-purpose object) => input-purpose}
-  @syntax[]{(setf (gtk-im-context-input-purpose object) input-purpose)}
-  @argument[object]{a @class{gtk-im-context} object}
-  @argument[input-purpose]{a value of the @symbol{gtk-input-purpose}
+  @syntax[]{(gtk:im-context-input-purpose object) => input-purpose}
+  @syntax[]{(setf (gtk:im-context-input-purpose object) input-purpose)}
+  @argument[object]{a @class{gtk:im-context} object}
+  @argument[input-purpose]{a value of the @symbol{gtk:input-purpose}
     enumeration}
   @begin{short}
-    Accessor of the @slot[gtk-im-context]{input-purpose} slot of the
-    @class{gtk-im-context} class.
+    Accessor of the @slot[gtk:im-context]{input-purpose} slot of the
+    @class{gtk:im-context} class.
   @end{short}
 
   Purpose of the text field.
-  @see-class{gtk-im-context}")
+  @see-class{gtk:im-context}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; struct GtkIMContextInfo
@@ -548,4 +548,4 @@ void im_module_list(const <a class=\"link\"
 ;;;     TRUE if the signal was handled.
 ;;; ----------------------------------------------------------------------------
 
-;;; --- gtk.im-context.lisp ----------------------------------------------------
+;;; --- End of file gtk3.im-context.lisp ---------------------------------------

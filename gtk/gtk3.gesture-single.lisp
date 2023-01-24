@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
-;;; Copyright (C) 2019 - 2020 Dieter Kaiser
+;;; Copyright (C) 2019 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -47,9 +47,9 @@
 ;;;
 ;;; Properties
 ;;;
-;;;        guint    button        Read / Write
-;;;     gboolean    exclusive     Read / Write
-;;;     gboolean    touch-only    Read / Write
+;;;     button
+;;;     exclusive
+;;;     touch-only
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -70,183 +70,175 @@
 ;;; struct GtkGestureSingle
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkGestureSingle" gtk-gesture-single
-  (:superclass gtk-gesture
+(define-g-object-class "GtkGestureSingle" gesture-single
+  (:superclass gesture
    :export t
    :interfaces nil
    :type-initializer "gtk_gesture_single_get_type")
   ((button
-    gtk-gesture-single-button
+    gesture-single-button
     "button" "guint" t t)
    (exclusive
-    gtk-gesture-single-exclusive
+    gesture-single-exclusive
     "exclusive" "gboolean" t t)
    (touch-only
-    gtk-gesture-single-touch-only
+    gesture-single-touch-only
     "touch-only" "gboolean" t t)))
 
 #+liber-documentation
-(setf (documentation 'gtk-gesture-single 'type)
- "@version{#2020-9-11}
+(setf (documentation 'gesture-single 'type)
+ "@version{#2023-1-21}
   @begin{short}
-    @sym{gtk-gesture-single} is a subclass of @class{gtk-gesture}, optimized
-    (although not restricted) for dealing with mouse and single-touch gestures.
+    The @sym{gtk:gesture-single} object is a subclass of the @class{gtk:gesture}
+    object, optimized (although not restricted) for dealing with mouse and
+    single-touch gestures.
   @end{short}
   Under interaction, these gestures stick to the first interacting sequence,
-  which is accessible through the function
-  @fun{gtk-gesture-single-current-sequence} while the gesture is being
-  interacted with.
+  which is accessible through the @fun{gtk:gesture-single-current-sequence}
+  function while the gesture is being interacted with.
 
   By default gestures react to both @code{:button-primary} and touch events,
-  the slot access function @fun{gtk-gesture-single-touch-only} can be used to
-  change the touch behavior. Callers may also specify a different mouse button
-  number to interact with through the slot access function
-  @fun{gtk-gesture-single-button}, or react to any mouse button by setting 0.
-  While the gesture is active, the button being currently pressed can be known
-  through the function @fun{gtk-gesture-single-current-button}.
-  @see-slot{gtk-gesture-single-button}
-  @see-slot{gtk-gesture-single-exclusive}
-  @see-slot{gtk-gesture-single-touch-only}
-  @see-class{gtk-gesture}")
+  the @fun{gtk:gesture-single-touch-only} function can be used to change the
+  touch behavior. Callers may also specify a different mouse button number to
+  interact with through the @fun{gtk:gesture-single-button} function, or react
+  to any mouse button by setting 0. While the gesture is active, the button
+  being currently pressed can be known through the
+  @fun{gtk:gesture-single-current-button} function.
+  @see-slot{gtk:gesture-single-button}
+  @see-slot{gtk:gesture-single-exclusive}
+  @see-slot{gtk:gesture-single-touch-only}
+  @see-class{gtk:gesture}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- gtk-gesture-single-button ----------------------------------------------
+;;; --- gesture-single-button --------------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "button"
-                                               'gtk-gesture-single) t)
+(setf (documentation (liber:slot-documentation "button" 'gesture-single) t)
  "The @code{button} property of type @code{:uint} (Read / Write) @br{}
   Mouse button number to listen to, or 0 to listen for any button. @br{}
   Default value: 1")
 
 #+liber-documentation
-(setf (liber:alias-for-function 'gtk-gesture-single-button)
+(setf (liber:alias-for-function 'gesture-single-button)
       "Accessor"
-      (documentation 'gtk-gesture-single-button 'function)
- "@version{#2020-9-11}
-  @syntax[]{(gtk-gesture-single-button object) => button)}
-  @syntax[]{(setf (gtk-gesture-single-button object) button)}
-  @argument[object]{a @class{gtk-gesture-single} object}
+      (documentation 'gesture-single-button 'function)
+ "@version{#2023-1-21}
+  @syntax[]{(gtk:gesture-single-button object) => button)}
+  @syntax[]{(setf (gtk:gesture-single-button object) button)}
+  @argument[object]{a @class{gtk:gesture-single} object}
   @argument[button]{button number to listen to, or 0 for any button}
   @begin{short}
-    Accessor of the @slot[gtk-gesture-single]{button} slot of the
-    @class{gtk-gesture-single} class.
+    Accessor of the @slot[gtk:gesture-single]{button} slot of the
+    @class{gtk:gesture-single} class.
   @end{short}
+  The @sym{gtk:gesture-single-button} function returns the button number gesture
+  listens for, or 0 if gesture reacts to any button press. The
+  @sym{(setf gtk:gesture-single-button)} function sets the button number gesture
+  listens to. If non-0, every button press from a different button number will
+  be ignored. Touch events implicitly match with button 1.
+  @see-class{gtk:gesture-single}")
 
-  The slot access function @sym{gtk-gesture-single-button} returns the button
-  number gesture listens for, or 0 if gesture reacts to any button press. The
-  slot access function @sym{(setf gtk-gesture-single-button)} sets the button
-  number gesture listens to. If non-0, every button press from a different
-  button number will be ignored. Touch events implicitly match with button 1.
-  @see-class{gtk-gesture-single}")
-
-;;; --- gtk-gesture-single-exclusive -------------------------------------------
+;;; --- gesture-single-exclusive -----------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "exclusive"
-                                               'gtk-gesture-single) t)
+(setf (documentation (liber:slot-documentation "exclusive" 'gesture-single) t)
  "The @code{exclusive} property of type @code{:boolean} (Read / Write) @br{}
   Whether the gesture is exclusive. Exclusive gestures only listen to pointer
   and pointer emulated events. @br{}
   Default value: @em{false}")
 
 #+liber-documentation
-(setf (liber:alias-for-function 'gtk-gesture-single-exclusive)
+(setf (liber:alias-for-function 'gesture-single-exclusive)
       "Accessor"
-      (documentation 'gtk-gesture-single-exclusive 'function)
- "@version{#2020-9-11}
-  @syntax[]{(gtk-gesture-single-exclusive object) => exclusive)}
-  @syntax[]{(setf (gtk-gesture-single-exclusive object) exclusive)}
-  @argument[object]{a @class{gtk-gesture-single} object}
+      (documentation 'gesture-single-exclusive 'function)
+ "@version{#2023-1-21}
+  @syntax[]{(gtk:gesture-single-exclusive object) => exclusive)}
+  @syntax[]{(setf (gtk:gesture-single-exclusive object) exclusive)}
+  @argument[object]{a @class{gtk:gesture-single} object}
   @argument[exclusive]{@em{true} to make gesture exclusive}
   @begin{short}
-    Accessor of the @slot[gtk-gesture-single]{exclusive} slot of the
-    @class{gtk-gesture-single} class.
+    Accessor of the @slot[gtk:gesture-single]{exclusive} slot of the
+    @class{gtk:gesture-single} class.
   @end{short}
+  The @sym{gtk:gesture-single-exclusive} function gets whether a gesture is
+  exclusive. The @sym{(setf gtk:gesture-single-exclusive)} function sets whether
+  gesture is exclusive. An exclusive gesture will only handle pointer and
+  \"pointer emulated\" touch events, so at any given time, there is only one
+  sequence able to interact with those.
+  @see-class{gtk:gesture-single}")
 
-  The slot access function @sym{gtk-gesture-single-exclusive} gets whether a
-  gesture is exclusive. The slot access function
-  @sym{(setf gtk-gesture-single-exclusive)} sets whether gesture is exclusive.
-  An exclusive gesture will only handle pointer and \"pointer emulated\" touch
-  events, so at any given time, there is only one sequence able to interact
-  with those.
-  @see-class{gtk-gesture-single}")
-
-;;; --- gtk-gesture-single-touch-only ------------------------------------------
+;;; --- gesture-single-touch-only ----------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "touch-only"
-                                               'gtk-gesture-single) t)
+(setf (documentation (liber:slot-documentation "touch-only" 'gesture-single) t)
  "The @code{touch-only} property of type @code{:boolean} (Read / Write) @br{}
   Whether the gesture handles only touch events. @br{}
   Default value: @em{false}")
 
 #+liber-documentation
-(setf (liber:alias-for-function 'gtk-gesture-single-touch-only)
+(setf (liber:alias-for-function 'gesture-single-touch-only)
       "Accessor"
-      (documentation 'gtk-gesture-single-touch-only 'function)
- "@version{#2020-9-11}
-  @syntax[]{(gtk-gesture-single-touch-only object) => touch-only)}
-  @syntax[]{(setf (gtk-gesture-single-touch-only object) touch-only)}
-  @argument[object]{a @class{gtk-gesture-single} object}
+      (documentation 'gesture-single-touch-only 'function)
+ "@version{#2023-1-21}
+  @syntax[]{(gtk:gesture-single-touch-only object) => touch-only)}
+  @syntax[]{(setf (gtk:gesture-single-touch-only object) touch-only)}
+  @argument[object]{a @class{gtk:gesture-single} object}
   @argument[touch-only]{a boolean whether gesture handles only touch events}
   @begin{short}
-    Accessor of the @slot[gtk-gesture-single]{touch-only} slot of the
-    @class{gtk-gesture-single} class.
+    Accessor of the @slot[gtk:gesture-single]{touch-only} slot of the
+    @class{gtk:gesture-single} class.
   @end{short}
-
-  The slot access function @sym{gtk-gesture-single-touch-only} returns
-  @em{true} if the gesture is only triggered by touch events. The slot access
-  function @sym{(setf gtk-gesture-single-touch-only)} sets whether the gesture
+  The @sym{gtk:gesture-single-touch-only} function returns @em{true} if the
+  gesture is only triggered by touch events. The
+  @sym{(setf gtk:gesture-single-touch-only)} function sets whether the gesture
   is only triggered by touch events. If @arg{touch-only} is @em{true}, gesture
   will only handle events of type @code{:touch-begin}, @code{:touch-update} or
   @code{:touch-end}. If @em{false}, mouse events will be handled too.
-  @see-class{gtk-gesture-single}")
+  @see-class{gtk:gesture-single}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_gesture_single_get_current_button ()
-;;; -> gtk-gesture-single-current-button
+;;; -> gesture-single-current-button
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_gesture_single_get_current_button"
-           gtk-gesture-single-current-button) :uint
+           gesture-single-current-button) :uint
  #+liber-documentation
- "@version{#2020-9-11}
-  @argument[gesture]{a @class{gtk-gesture-single} object}
-  @return{The current button number of type @code{:uint}.}
+ "@version{#2023-1-21}
+  @argument[gesture]{a @class{gtk:gesture-single} object}
+  @return{The current button number of @code{:uint} type.}
   @begin{short}
     Returns the button number currently interacting with @arg{gesture}, or 0 if
     there is none.
   @end{short}
-  @see-class{gtk-gesture-single}"
-  (gesture (g:object gtk-gesture-single)))
+  @see-class{gtk:gesture-single}"
+  (gesture (g:object gesture-single)))
 
-(export 'gtk-gesture-single-current-button)
+(export 'gesture-single-current-button)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_gesture_single_get_current_sequence ()
-;;; -> gtk-gesture-single-current-sequence
+;;; -> gesture-single-current-sequence
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_gesture_single_get_current_sequence"
-           gtk-gesture-single-current-sequence)
-    (g:boxed gdk:event-sequence)
+           gesture-single-current-sequence) (g:boxed gdk:event-sequence :return)
  #+liber-documentation
- "@version{#2020-9-11}
-  @argument[gesture]{a @class{gtk-gesture-single} object}
-  @return{The current sequence of type @class{gdk:event-sequence}.}
+ "@version{#2023-1-21}
+  @argument[gesture]{a @class{gtk:gesture-single} object}
+  @return{The current sequence of @class{gdk:event-sequence} type.}
   @begin{short}
     Returns the event sequence currently interacting with @arg{gesture}.
   @end{short}
-  This is only meaningful if the function @fun{gtk-gesture-is-active} returns
+  This is only meaningful if the @fun{gtk:gesture-is-active} function returns
   @em{true}.
-  @see-class{gtk-gesture-single}
-  @see-function{gtk-gesture-is-active}"
-  (gesture (g:object gtk-gesture-single)))
+  @see-class{gtk:gesture-single}
+  @see-function{gtk:gesture-is-active}"
+  (gesture (g:object gesture-single)))
 
-(export 'gtk-gesture-single-current-sequence)
+(export 'gesture-single-current-sequence)
 
-;;; --- End of file gtk.gesture-single-lisp ------------------------------------
+;;; --- End of file gtk3.gesture-single-lisp -----------------------------------

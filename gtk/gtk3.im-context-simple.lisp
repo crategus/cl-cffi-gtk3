@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
-;;; Copyright (C) 2011 - 2019 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -63,35 +63,35 @@
 ;;; struct GtkIMContextSimple
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkIMContextSimple" gtk-im-context-simple
-  (:superclass gtk-im-context
+(define-g-object-class "GtkIMContextSimple" im-context-simple
+  (:superclass im-context
    :export t
    :interfaces nil
    :type-initializer "gtk_im_context_simple_get_type")
   nil)
 
 #+liber-documentation
-(setf (documentation 'gtk-im-context-simple 'type)
+(setf (documentation 'im-context-simple 'type)
  "@version{#2020-9-15}
   @begin{short}
-    @sym{gtk-im-context-simple} is a simple input method context supporting
+    @sym{gtk:im-context-simple} is a simple input method context supporting
     table-based input methods.
   @end{short}
   It has a built-in table of compose sequences that is derived from the X11
   Compose files.
 
-  @sym{gtk-im-context-simple} reads additional compose sequences from the first
+  @sym{gtk:im-context-simple} reads additional compose sequences from the first
   of the following files that is found: @code{~/.config/gtk-3.0/Compose},
   @code{~/.XCompose}, @code{/usr/share/X11/locale/$locale/Compose}, for locales
   that have a nontrivial Compose file. The syntax of these files is described
   in the Compose(5) manual page.
 
   @subheading{Unicode characters}
-  The @sym{gtk-im-context-simple} class also supports numeric entry of Unicode
+  The @sym{gtk:im-context-simple} class also supports numeric entry of Unicode
   characters by typing the @kbd{Ctrl-Shift-u} key, followed by a hexadecimal
   Unicode codepoint. For example, @kbd{Ctrl-Shift-u 1 2 3 Enter} yields U+0123
   LATIN SMALL LETTER G WITH CEDILLA, i.e. ģ.
-  @see-class{gtk-im-context}")
+  @see-class{gtk:im-context}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_im_context_simple_new ()
@@ -134,4 +134,4 @@
 ;;;     number of sequences in the table
 ;;; ----------------------------------------------------------------------------
 
-;;; --- End of file gtk.im-context-simple.lisp ---------------------------------
+;;; --- End of file gtk3.im-context-simple.lisp --------------------------------

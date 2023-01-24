@@ -57,18 +57,18 @@
 ;;; struct GtkEventControllerMotion
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkEventControllerMotion" gtk-event-controller-motion
-  (:superclass gtk-event-controller
+(define-g-object-class "GtkEventControllerMotion" event-controller-motion
+  (:superclass event-controller
    :export t
    :interfaces nil
    :type-initializer "gtk_event_controller_motion_get_type")
   nil)
 
 #+liber-documentation
-(setf (documentation 'gtk-event-controller-motion 'type)
+(setf (documentation 'event-controller-motion 'type)
  "@version{#2020-9-10}
   @begin{short}
-    @sym{gtk-event-controller-motion} is an event controller meant for
+    @sym{gtk:event-controller-motion} is an event controller meant for
     situations where you need to track the position of the pointer.
   @end{short}
 
@@ -80,7 +80,7 @@
       @end{pre}
       Signals that the pointer has entered the widget. Since 3.24
       @begin[code]{table}
-        @entry[controller]{The @sym{gtk-event-controller-motion} object that
+        @entry[controller]{The @sym{gtk:event-controller-motion} object that
           received the signal.}
         @entry[x]{a @code{:double} with the x coordinate}
         @entry[y]{a @code{:double} with the y coordinate}
@@ -91,7 +91,7 @@
       @end{pre}
       Signals that pointer has left the widget. Since 3.24
       @begin[code]{table}
-        @entry[controller]{The @sym{gtk-event-controller-motion} object that
+        @entry[controller]{The @sym{gtk:event-controller-motion} object that
           received the signal.}
       @end{table}
     @subheading{The \"motion\" signal}
@@ -100,35 +100,36 @@
       @end{pre}
       Emitted when the pointer moves inside the widget. Since 3.24
       @begin[code]{table}
-        @entry[controller]{The @sym{gtk-event-controller-motion} object that
+        @entry[controller]{The @sym{gtk:event-controller-motion} object that
           received the signal.}
         @entry[x]{a @code{:double} with the x coordinate}
         @entry[y]{a @code{:double} with the y coordinate}
       @end{table}
   @end{dictionary}
-  @see-class{gtk-event-controller}")
+  @see-class{gtk:event-controller}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_event_controller_motion_new ()
 ;;; ----------------------------------------------------------------------------
 
-(declaim (inline gtk-event-controller-motion-new))
+(declaim (inline event-controller-motion-new))
 
-(defun gtk-event-controller-motion-new (widget)
+(defun event-controller-motion-new (widget)
  #+liber-documentation
  "@version{#2020-9-10}
-  @argument[widget]{a @class{gtk-widget} object}
-  @return{The new @class{gtk-event-controller-motion} objekt.}
+  @argument[widget]{a @class{gtk:widget} object}
+  @return{The new @class{gtk:event-controller-motion} objekt.}
   @begin{short}
     Creates a new event controller that will handle motion events for the given
     @arg{widget}.
   @end{short}
 
   Since 3.24
-  @see-class{gtk-event-controller-motion}"
-  (make-instance 'gtk-event-controller-motion
+  @see-class{gtk:event-controller-motion}
+  @see-class{gtk:widget}"
+  (make-instance 'event-controller-motion
                  :widget widget))
 
-(export 'gtk-event-controller-motion-new)
+(export 'event-controller-motion-new)
 
 ;;; --- End of file gtk.event-controller-motion.lisp ---------------------------

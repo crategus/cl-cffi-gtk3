@@ -132,10 +132,10 @@
     model-button-inverted
     "inverted" "gboolean" t t)
    (menu-name
-    model-menu-menu-name
+    model-button-menu-name
     "menu-name" "gchararray" t t)
    (role
-    model-menu-role
+    model-button-role
     "role" "GtkButtonRole" t t)
    (text
     model-button-text
@@ -401,11 +401,10 @@
   property should be set for model buttons that 'go back' to a parent menu.
   @see-class{gtk:model-button}")
 
-;;; --- model-button-menu-name ---------------------------------------------
+;;; --- model-button-menu-name -------------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "menu-name"
-                                               'model-button) t)
+(setf (documentation (liber:slot-documentation "menu-name" 'model-button) t)
  "The @code{menu-name} property of type @code{:string} (Read / Write) @br{}
   The name of a submenu to open when the button is activated. If this is set,
   the button should not have an action associated with it. @br{}
@@ -415,25 +414,23 @@
 (setf (liber:alias-for-function 'model-button-menu-name)
       "Accessor"
       (documentation 'model-button-menu-name 'function)
- "@version{#2021-12-23}
-  @syntax[]{(gtk:model-button-menu-name object) => menu-name}
-  @syntax[]{(setf (gtk:model-button-menu-name object) menu-name)}
+ "@version{#2023-1-22}
+  @syntax[]{(gtk:model-button-menu-name object) => name}
+  @syntax[]{(setf (gtk:model-button-menu-name object) name)}
   @argument[object]{a @class{gtk:model-button} widget}
-  @argument[menu-name]{a string with the name of a submenu}
+  @argument[name]{a string with the name of a submenu}
   @begin{short}
     Accessor of the @slot[gtk:model-button]{menu-name} slot of the
     @class{gtk:model-button} class.
   @end{short}
-
   The name of a submenu to open when the button is activated. If this is set,
   the button should not have an action associated with it.
   @see-class{gtk:model-button}")
 
-;;; --- model-button-role --------------------------------------------------
+;;; --- model-button-role ------------------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "role"
-                                               'model-button) t)
+(setf (documentation (liber:slot-documentation "role" 'model-button) t)
  "The @code{role} property of type @symbol{gtk:button-role} (Read / Write) @br{}
   Specifies whether the button is a plain, check or radio button. When the
   @slot[gtk:actionable]{action-name} property is set, the role will be
@@ -444,7 +441,7 @@
 (setf (liber:alias-for-function 'model-button-role)
       "Accessor"
       (documentation 'model-button-role 'function)
- "@version{#2021-12-23}
+ "@version{#2023-1-22}
   @syntax[]{(gtk:model-button-role object) => role}
   @syntax[]{(setf (gtk:model-button-role object) role)}
   @argument[object]{a @class{gtk:model-button} widget}
@@ -453,7 +450,6 @@
     Accessor of the @slot[gtk:model-button]{role} slot of the
     @class{gtk:model-button} class.
   @end{short}
-
   Specifies whether the button is a plain, check or radio button. When the
   @slot[gtk:actionable]{action-name} property is set, the role will be
   determined from the action and does not have to be set explicitly.

@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
-;;; Copyright (C) 2013 - 2020 Dieter Kaiser
+;;; Copyright (C) 2013 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -47,9 +47,9 @@
 ;;;
 ;;; Properties
 ;;;
-;;;      gboolean    is-showing    Read
-;;;     GtkWindow*   parent        Read / Write
-;;;     GdkScreen*   screen        Read / Write
+;;;     is-showing
+;;;     parent
+;;;     screen
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -216,13 +216,13 @@
 ;;; gtk_show_uri ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_show_uri" %gtk-show-uri) :boolean
+(defcfun ("gtk_show_uri" %show-uri) :boolean
   (screen (g:object gdk-screen))
   (uri :string)
   (timestamp :uint32)
-  (error :pointer))
+  (err :pointer))
 
-(defun gtk-show-uri (screen uri timestamp)
+(defun show-uri (screen uri timestamp)
  #+liber-documentation
  "@version{#2020-9-20}
   @argument[screen]{a @class{gdk-screen} object to show the URi on or
@@ -242,16 +242,16 @@
   @code{http://www.gnome.org mailto:me@@gnome.org}.
 
   Ideally the @arg{timestamp} is taken from the event triggering the
-  @sym{gtk-show-uri} call. If @arg{timestamp} is not known you can take
+  @sym{gtk:show-uri} call. If @arg{timestamp} is not known you can take
   @var{+gdk-current-time+}.
 
   This function can be used as a replacement for @code{gnome_vfs_url_show()}
   and @code{gnome_url_show()}.
   @see-class{gdk-screen}"
   (with-g-error (err)
-    (%gtk-show-uri screen uri timestamp err)))
+    (%show-uri screen uri timestamp err)))
 
-(export 'gtk-show-uri)
+(export 'show-uri)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_show_uri_on_window ()
@@ -295,4 +295,4 @@
 ;;; Since 3.22
 ;;; ----------------------------------------------------------------------------
 
-;;; --- End of file gtk-mount-operation.lisp -----------------------------------
+;;; --- End of file gtk3.mount-operation.lisp ----------------------------------

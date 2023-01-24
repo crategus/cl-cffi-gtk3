@@ -60,18 +60,18 @@
 ;;; struct GtkEventControllerKey
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkEventControllerKey" gtk-event-controller-key
-  (:superclass gtk-event-controller
+(define-g-object-class "GtkEventControllerKey" event-controller-key
+  (:superclass event-controller
    :export t
    :interfaces nil
    :type-initializer "gtk_event_controller_key_get_type")
   nil)
 
 #+liber-documentation
-(setf (documentation 'gtk-event-controller-key 'type)
+(setf (documentation 'event-controller-key 'type)
  "@version{#2020-9-10}
   @begin{short}
-    @sym{gtk-event-controller-key} is an event controller meant for situations
+    @sym{gtk:event-controller-key} is an event controller meant for situations
     where you need access to key events.
   @end{short}
 
@@ -83,34 +83,34 @@
       @end{pre}
       Since 3.24
       @begin[code]{table}
-        @entry[eventcontrollerkey]{The @sym{gtk-event-controller-key} object on
+        @entry[eventcontrollerkey]{The @sym{gtk:event-controller-key} object on
           which the signal is emitted.}
       @end{table}
     @subheading{The \"focus-out\" signal}
       @begin{pre}
-  lambda (controller)    : Run Last
+lambda (controller)    : Run Last
       @end{pre}
       Since 3.24
       @begin[code]{table}
-        @entry[controller]{The @sym{gtk-event-controller-key} object on
+        @entry[controller]{The @sym{gtk:event-controller-key} object on
           which the signal is emitted.}
       @end{table}
     @subheading{The \"im-update\" signal}
       @begin{pre}
-  lambda (controller)    : Run Last
+lambda (controller)    : Run Last
       @end{pre}
       Since 3.24
       @begin[code]{table}
-        @entry[controller]{The @sym{gtk-event-controller-key} object on
+        @entry[controller]{The @sym{gtk:event-controller-key} object on
           which the signal is emitted.}
       @end{table}
     @subheading{The \"key-pressed\" signal}
       @begin{pre}
-  lambda (controller keyval keycode state)    :run-last
+lambda (controller keyval keycode state)    :run-last
       @end{pre}
       The signal is emitted whenever a key is pressed. Since 3.24
       @begin[code]{table}
-        @entry[controller]{The @sym{gtk-event-controller-key} object on
+        @entry[controller]{The @sym{gtk:event-controller-key} object on
           which received the signal.}
         @entry[keyval]{An unsigned integer with the pressed key.}
         @entry[keycode]{An unsigned integer with the raw code of the pressed
@@ -122,11 +122,11 @@
       @end{table}
     @subheading{The \"key-released\" signal}
       @begin{pre}
-  lambda (controller keyval keycode state)    :run-last
+lambda (controller keyval keycode state)    :run-last
       @end{pre}
       The signal is emitted whenever a key is released. Since 3.24
       @begin[code]{table}
-        @entry[controller]{The @sym{gtk-event-controller-key} object on
+        @entry[controller]{The @sym{gtk:event-controller-key} object on
           which received the signal.}
         @entry[keyval]{An unsigned integer with the released key.}
         @entry[keycode]{An unsigned integer with the raw code of the released
@@ -136,35 +136,35 @@
       @end{table}
     @subheading{The \"modifiers\" signal}
       @begin{pre}
-  lambda (controller state)    : Run Last
+lambda (controller state)    : Run Last
       @end{pre}
       Since 3.24
       @begin[code]{table}
-        @entry[controller]{The @sym{gtk-event-controller-key} object on
+        @entry[controller]{The @sym{gtk:event-controller-key} object on
           which received the signal.}
         @entry[state]{The bitmask, representing the state of modifier keys and
           pointer buttons of type @symbol{gdk:modifier-type}.}
         @entry[Returns]{a not documented boolean}
       @end{table}
   @end{dictionary}
-  @see-class{gtk-event-controller}")
+  @see-class{gtk:event-controller}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_event_controller_key_new ()
 ;;; ----------------------------------------------------------------------------
 
-(declaim (inline gtk-event-controller-key-new))
+(declaim (inline event-controller-key-new))
 
-(defun gtk-event-controller-key-new ()
+(defun event-controller-key-new ()
  #+liber-documentation
  "@version{#2020-9-10}
-  @return{The new @class{gtk-event-controller-key} objekt.}
+  @return{The new @class{gtk:event-controller-key} objekt.}
   @short{Creates a new event controller.}
 
   Since 3.24
-  @see-class{gtk-event-controller-key}"
-  (make-instance 'gtk-event-controller-key))
+  @see-class{gtk:event-controller-key}"
+  (make-instance 'event-controller-key))
 
-(export 'gtk-event-controller-key-new)
+(export 'event-controller-key-new)
 
 ;;; --- End of File gtk.event-controller-key.lisp ------------------------------

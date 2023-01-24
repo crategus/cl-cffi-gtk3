@@ -53,18 +53,18 @@
 
 (in-package :gtk)
 
-(define-g-object-class "GtkGestureZoom" gtk-gesture-zoom
-  (:superclass gtk-gesture
+(define-g-object-class "GtkGestureZoom" gesture-zoom
+  (:superclass gesture
    :export t
    :interfaces nil
    :type-initializer "gtk_gesture_zoom_get_type")
   nil)
 
 #+liber-documentation
-(setf (documentation 'gtk-gesture-zoom 'type)
+(setf (documentation 'gesture-zoom 'type)
  "@version{#2020-9-11}
   @begin{short}
-    @sym{gtk-gesture-zoom} is a @class{gtk-gesture} implementation able to
+    @sym{gtk:gesture-zoom} is a @class{gtk:gesture} implementation able to
     recognize pinch/zoom gestures, whenever the distance between both tracked
     sequences changes, the \"scale-changed\" signal is emitted to report the
     scale factor.
@@ -77,53 +77,54 @@
     The signal is emitted whenever the distance between both tracked sequences
     changes.
     @begin[code]{table}
-      @entry[gesture]{The @sym{gtk-gesture-zoom} object on which the signal
+      @entry[gesture]{The @sym{gtk:gesture-zoom} object on which the signal
         is emitted.}
       @entry[scale]{A double float with the scale delta, taking the initial
         state as 1:1.}
     @end{table}
   @end{dictionary}
-  @see-class{gtk-gesture-rotate}")
+  @see-class{gtk:gesture-rotate}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_gesture_zoom_new ()
 ;;; ----------------------------------------------------------------------------
 
-(declaim (inline gtk-gesture-zoom-new))
+(declaim (inline gesture-zoom-new))
 
-(defun gtk-gesture-zoom-new (widget)
+(defun gesture-zoom-new (widget)
  #+liber-documentation
  "@version{#2020-9-11}
-  @argument[widget]{a @class{gtk-widget} object}
-  @return{A newly created @class{gtk-gesture-zoom} object.}
+  @argument[widget]{a @class{gtk:widget} object}
+  @return{A newly created @class{gtk:gesture-zoom} object.}
   @begin{short}
     Returns a newly created gesture that recognizes zoom in/out gestures
     (usually known as pinch/zoom).
   @end{short}
-  @see-class{gtk-gesture-rotate}"
-  (make-instance 'gtk-gesture-zoom
+  @see-class{gtk:gesture-rotate}
+  @see-class{gtk:widget}"
+  (make-instance 'gesture-zoom
                  :widget widget))
 
-(export 'gtk-gesture-zoom-new)
+(export 'gesture-zoom-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_gesture_zoom_get_scale_delta () -> gtk-gesture-zoom-scale-delta
+;;; gtk_gesture_zoom_get_scale_delta () -> gesture-zoom-scale-delta
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_gesture_zoom_get_scale_delta" gtk-gesture-zoom-scale-delta)
+(defcfun ("gtk_gesture_zoom_get_scale_delta" gesture-zoom-scale-delta)
     :double
  #+liber-documentation
  "@version{#2020-9-11}
-  @argument[widget]{a @class{gtk-gesture-zoom} object}
+  @argument[widget]{a @class{gtk:gesture-zoom} object}
   @return{A @code{:double} with the scale delta.}
   @begin{short}
     If the gesture is active, this function returns the zooming difference since
     the gesture was recognized (hence the starting point is considered 1:1).
   @end{short}
   If the gesture is not active, 1 is returned.
-  @see-class{gtk-gesture-rotate}"
-  (gesture (g:object gtk-gesture-zoom)))
+  @see-class{gtk:gesture-rotate}"
+  (gesture (g:object gesture-zoom)))
 
-(export 'gtk-gesture-zoom-scale-delta)
+(export 'gesture-zoom-scale-delta)
 
-;;; --- End of file gtk.gesture-zoom.lisp --------------------------------------
+;;; --- End of file gtk3.gesture-zoom.lisp -------------------------------------

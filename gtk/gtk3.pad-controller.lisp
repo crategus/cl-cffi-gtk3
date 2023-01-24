@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
-;;; Copyright (C) 2019 - 2020 Dieter Kaiser
+;;; Copyright (C) 2019 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -44,8 +44,8 @@
 ;;;
 ;;; Properties
 ;;;
-;;;     GActionGroup*   action-group    Read / Write / Construct Only
-;;;        GdkDevice*   pad             Read / Write / Construct Only
+;;;     action-group
+;;;     pad
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -60,7 +60,7 @@
 ;;; enum GtkPadActionType
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkPadActionType" gtk-pad-action-type
+(define-g-enum "GtkPadActionType" pad-action-type
   (:export t
    :type-initializer "gtk_pad_action_type_get_type")
   :button
@@ -68,15 +68,15 @@
   :strip)
 
 #+liber-documentation
-(setf (liber:alias-for-symbol 'gtk-pad-action-type)
+(setf (liber:alias-for-symbol 'pad-action-type)
       "GEnum"
-      (liber:symbol-documentation 'gtk-pad-action-type)
- "@version{#2020-9-11}
+      (liber:symbol-documentation 'pad-action-type)
+ "@version{#2023-1-21}
   @begin{short}
     The type of a pad action.
   @end{short}
   @begin{pre}
-(define-g-enum \"GtkPadActionType\" gtk-pad-action-type
+(define-g-enum \"GtkPadActionType\" pad-action-type
   (:export t
    :type-initializer \"gtk_pad_action_type_get_type\")
   :button
@@ -88,30 +88,30 @@
     @entry[:ring]{Action is triggered by a pad ring.}
     @entry[:strip]{Action is triggered by a pad strip.}
   @end{table}
-  @see-class{gtk-pad-controller}")
+  @see-class{gtk:pad-controller}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; struct GtkPadActionEntry
 ;;; ----------------------------------------------------------------------------
 
-(defcstruct gtk-pad-action-entry
-  (type gtk-pad-action-type)
+(defcstruct pad-action-entry
+  (type pad-action-type)
   (index :int)
   (mode :int)
   (label :string)
   (action-name :string))
 
 #+liber-documentation
-(setf (liber:alias-for-symbol 'gtk-pad-action-entry)
+(setf (liber:alias-for-symbol 'pad-action-entry)
       "CStruct"
-      (liber:symbol-documentation 'gtk-pad-action-entry)
- "@version{#2020-9-11}
+      (liber:symbol-documentation 'pad-action-entry)
+ "@version{#2023-1-21}
   @begin{short}
     Structure defining a pad action entry.
   @end{short}
   @begin{pre}
-(defcstruct gtk-pad-action-entry
-  (type gtk-pad-action-type)
+(defcstruct pad-action-entry
+  (type pad-action-type)
   (index :int)
   (mode :int)
   (label :string)
@@ -128,34 +128,34 @@
     @entry[action-name]{Action name that will be activated in the
       @class{g-action-group}.}
   @end{table}
-  @see-class{gtk-pad-controller}
-  @see-symbol{gtk-pad-action-type}")
+  @see-class{gtk:pad-controller}
+  @see-symbol{gtk:pad-action-type}")
 
-(export 'gtk-pad-action-entry)
+(export 'pad-action-entry)
 
 ;;; ----------------------------------------------------------------------------
 ;;; struct GtkPadController
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkPadController" gtk-pad-controller
-  (:superclass gtk-event-controller
+(define-g-object-class "GtkPadController" pad-controller
+  (:superclass event-controller
    :export t
    :interfaces nil
    :type-initializer "gtk_pad_controller_get_type")
   ((action-group
-    gtk-pad-controller-action-group
+    pad-controller-action-group
     "action-group" "GActionGroup" t t)
    (pad
-    gtk-pad-controller-pad
+    pad-controller-pad
     "pad" "GdkDevice" t t)))
 
 #+liber-documentation
-(setf (documentation 'gtk-pad-controller 'type)
- "@version{#2020-9-11}
+(setf (documentation 'pad-controller 'type)
+ "@version{#2023-1-21}
   @begin{short}
-    @sym{gtk-pad-controller} is an event controller for the pads found in
-    drawing tablets (The collection of buttons and tactile sensors often found
-    around the stylus-sensitive area).
+    The @sym{gtk:pad-controller} object is an event controller for the pads
+    found in drawing tablets (The collection of buttons and tactile sensors
+    often found around the stylus-sensitive area).
   @end{short}
 
   These buttons and sensors have no implicit meaning, and by default they
@@ -168,16 +168,16 @@
   elements have one current mode, which may determine the final action being
   triggered. Pad devices often divide buttons and sensors into groups, all
   elements in a group share the same current mode, but different groups may
-  have different modes. See the functions @fun{gdk-device-pad-n-groups} and
-  @fun{gdk-device-pad-group-n-modes}.
+  have different modes. See the @fun{gdk:device-pad-n-groups} and
+  @fun{gdk:device-pad-group-n-modes} functions.
 
   Each of the actions that a given button/strip/ring performs for a given mode
-  is defined by @symbol{gtk-pad-action-entry}, it contains an action name that
-  will be looked up in the given @class{g-action-group} and activated whenever
-  the specified input element and mode are triggered.
+  is defined by the @symbol{gtk:pad-action-entry} object, it contains an action
+  name that will be looked up in the given @class{g-action-group} and activated
+  whenever the specified input element and mode are triggered.
 
-  A simple example of @sym{gtk-pad-controller} usage, assigning button 1 in all
-  modes and pad devices to an \"invert-selection\" action:
+  A simple example of the @sym{gtk:pad-controller} object usage, assigning
+  button 1 in all modes and pad devices to an \"invert-selection\" action:
   @begin{pre}
 GtkPadActionEntry *pad_actions = {
   { GTK_PAD_ACTION_BUTTON, 1, -1, \"Invert selection\", \"pad-actions.invert-selection\" @},
@@ -198,65 +198,65 @@ pad_controller = gtk_pad_controller_new (window, action_group, NULL);
   @symbol{g:variant-type}.
 
   Since 3.22
-  @see-slot{gtk-pad-controller-action-group}
-  @see-slot{gtk-pad-controller-pad}
-  @see-class{gtk-event-conroller}
-  @see-class{gdk-device-pad}")
+  @see-slot{gtk:pad-controller-action-group}
+  @see-slot{gtk:pad-controller-pad}
+  @see-class{gtk:event-conroller}
+  @see-class{gdk:device-pad}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- gtk-pad-controller-action-group ----------------------------------------
+;;; --- pad-controller-action-group --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "action-group"
-                                               'gtk-pad-controller) t)
+                                               'pad-controller) t)
  "The @code{action-group} property of type @class{g-action-group}
   (Read / Write / Construct Only) @br{}
   Action group to launch actions from. Since 3.22")
 
 #+liber-documentation
-(setf (liber:alias-for-function 'gtk-pad-controller-action-group)
+(setf (liber:alias-for-function 'pad-controller-action-group)
       "Accessor"
-      (documentation 'gtk-pad-controller-action-group 'function)
- "@version{#2020-9-11}
-  @syntax[]{(gtk-pad-controller-action-group object) => group)}
-  @syntax[]{(setf (gtk-pad-controller-action-group object) group)}
-  @argument[object]{a @class{gtk-pad-controller} object}
+      (documentation 'pad-controller-action-group 'function)
+ "@version{#2023-1-21}
+  @syntax[]{(gtk:pad-controller-action-group object) => group)}
+  @syntax[]{(setf (gtk:pad-controller-action-group object) group)}
+  @argument[object]{a @class{gtk:pad-controller} object}
   @argument[group]{the @class{g-action-group} object}
   @begin{short}
-    Accessor of the @slot[gtk-pad-controller]{action-group} slot of the
-    @class{gtk-pad-controller} class.
+    Accessor of the @slot[gtk:pad-controller]{action-group} slot of the
+    @class{gtk:pad-controller} class.
   @end{short}
 
   Since 3.22
-  @see-class{gtk-pad-controller}")
+  @see-class{gtk:pad-controller}")
 
-;;; --- gtk-pad-controller-pad -------------------------------------------------
+;;; --- pad-controller-pad -------------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "pad" 'gtk-pad-controller) t)
- "The @code{pad} property of type @class{gdk-device}
+(setf (documentation (liber:slot-documentation "pad" 'pad-controller) t)
+ "The @code{pad} property of type @class{gdk:device}
   (Read / Write / Construct Only) @br{}
   Pad device to control. Since 3.22")
 
 #+liber-documentation
-(setf (liber:alias-for-function 'gtk-pad-controller-pad)
+(setf (liber:alias-for-function 'pad-controller-pad)
       "Accessor"
-      (documentation 'gtk-pad-controller-pad 'function)
- "@version{#2020-9-11}
-  @syntax[]{(gtk-pad-controller-pad object) => pad)}
-  @syntax[]{(setf (gtk-pad-controller-pad object) pad)}
-  @argument[object]{a @class{gtk-pad-controller} object}
-  @argument[pad]{the @class{gdk-device} object}
+      (documentation 'pad-controller-pad 'function)
+ "@version{#2023-1-21}
+  @syntax[]{(gtk:pad-controller-pad object) => pad)}
+  @syntax[]{(setf (gtk:pad-controller-pad object) pad)}
+  @argument[object]{a @class{gtk:pad-controller} object}
+  @argument[pad]{a @class{gdk:device} object}
   @begin{short}
-    Accessor of the @slot[gtk-pad-controller]{pad} slot of the
-    @class{gtk-pad-controller} class.
+    Accessor of the @slot[gtk:pad-controller]{pad} slot of the
+    @class{gtk:pad-controller} class.
   @end{short}
 
   Since 3.22
-  @see-class{gtk-pad-controller}")
+  @see-class{gtk:pad-controller}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_pad_controller_new ()
@@ -358,4 +358,4 @@ pad_controller = gtk_pad_controller_new (window, action_group, NULL);
 ;;; Since 3.22
 ;;; ----------------------------------------------------------------------------
 
-;;; --- End of file gtk.pad-controller.lisp ------------------------------------
+;;; --- End of file gtk3.pad-controller.lisp -----------------------------------

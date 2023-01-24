@@ -106,7 +106,7 @@
     "rgba" "GdkRGBA" t t)
    #+gtk-3-20
    (show-editor
-    color-buton-show-editor
+    color-button-show-editor
     "show-editor" "gboolean" t t)
    (title
     color-button-title
@@ -160,7 +160,7 @@
   @begin[Signal Details]{dictionary}
     @subheading{The \"color-set\" signal}
       @begin{pre}
- lambda (button)    : Run First
+lambda (button)    : Run First
       @end{pre}
       The \"color-set\" signal is emitted when the user selects a color. When
       handling this signal, use the function @fun{gtk:color-chooser-rgba} to
@@ -288,11 +288,10 @@
   @see-struct{gdk:rgba}
   @see-function{gtk:color-chooser-rgba}")
 
-;;; --- color-button-show-editor -------------------------------------------
+;;; --- color-button-show-editor -----------------------------------------------
 
 #+(and gtk-3-20 liber-documentation)
-(setf (documentation (liber:slot-documentation "show-editor"
-                                               'color-button) t)
+(setf (documentation (liber:slot-documentation "show-editor" 'color-button) t)
  "The @code{show-editor} property of type @code{:boolean} (Read / Write) @br{}
   Set this property to @em{true} to skip the palette in the dialog and go
   directly to the color editor. This property should be used in cases where the
@@ -304,7 +303,7 @@
 (setf (liber:alias-for-function 'color-button-show-editor)
       "Accessor"
       (documentation 'color-button-show-editor 'function)
- "@version{#2020-5-23}
+ "@version{#2023-1-22}
   @syntax[]{(gtk:color-button-show-editor object) => show-editor)}
   @syntax[]{(setf (gtk:color-button-show-editor object) show-editor)}
   @argument[object]{a @class{gtk:color-button} widget}
@@ -313,7 +312,6 @@
     Accessor of the @slot[gtk:color-button]{show-editor} slot of the
     @class{gtk:color-button} class.
   @end{short}
-
   Set this property to @em{true} to skip the palette in the dialog and go
   directly to the color editor. This property should be used in cases where the
   palette in the editor would be redundant, such as when the color button is
@@ -457,4 +455,4 @@
 
 (export 'color-button-new-with-rgba)
 
-;;; --- End of file gtk.color-button.lisp --------------------------------------
+;;; --- End of file gtk3.color-button.lisp -------------------------------------

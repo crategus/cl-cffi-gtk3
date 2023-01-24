@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.im-multicontext.lisp
+;;; gtk3.im-multicontext.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK+ library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
-;;; Copyright (C) 2011 - 2020 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -54,15 +54,15 @@
 ;;; struct GtkIMMulticontext
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkIMMulticontext" gtk-im-multicontext
-  (:superclass gtk-im-context
+(define-g-object-class "GtkIMMulticontext" im-multicontext
+  (:superclass im-context
    :export t
    :interfaces nil
    :type-initializer "gtk_im_multicontext_get_type")
   nil)
 
 #+liber-documentation
-(setf (documentation 'gtk-im-multicontext 'type)
+(setf (documentation 'im-multicontext 'type)
  "@version{#2020-9-15}
   @begin{short}
     An input method context supporting multiple, loadable input methods.
@@ -141,4 +141,4 @@
 ;;; Since 2.16
 ;;; ----------------------------------------------------------------------------
 
-;;; --- End of file gtk.im-multicontext.lisp -----------------------------------
+;;; --- End of file gtk3.im-multicontext.lisp ----------------------------------

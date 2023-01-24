@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -40,72 +40,73 @@
 ;;;     gtk_get_interface_age
 ;;;     gtk_check_version
 ;;;
-;;;     GTK_MAJOR_VERSION                        * not implemented *
-;;;     GTK_MINOR_VERSION                        * not implemented *
-;;;     GTK_MICRO_VERSION                        * not implemented *
-;;;     GTK_BINARY_AGE                           * not implemented *
-;;;     GTK_INTERFACE_AGE                        * not implemented *
-;;;     GTK_CHECK_VERSION                        * not implemented *
+;;;     GTK_MAJOR_VERSION                                  not implemented
+;;;     GTK_MINOR_VERSION                                  not implemented
+;;;     GTK_MICRO_VERSION                                  not implemented
+;;;     GTK_BINARY_AGE                                     not implemented
+;;;     GTK_INTERFACE_AGE                                  not implemented
+;;;     GTK_CHECK_VERSION                                  not implemented
 ;;; ----------------------------------------------------------------------------
 
 (in-package :gtk)
 
+(defvar +cl-cffi-gtk3-build-time+ (multiple-value-list (get-decoded-time)))
+(defvar +cl-cffi-gtk3-version+
+        (slot-value (asdf:find-system :cl-cffi-gtk3) 'asdf:version))
+
 ;;; ----------------------------------------------------------------------------
-;;; gtk_get_major_version () -> gtk-major-version
+;;; gtk_get_major_version () -> major-version
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_get_major_version" gtk-major-version) :int
+(defcfun ("gtk_get_major_version" major-version) :int
  #+liber-documentation
- "@version{#2020-8-23}
+ "@version{#2023-1-21}
   @return{The major version number of the GTK library.}
   @begin{short}
     Returns the major version number of the GTK library.
   @end{short}
-
   This function is in the library, so it represents the GTK library your code
   is running against.
-  @see-function{gtk-check-version}")
+  @see-function{gtk:check-version}")
 
-(export 'gtk-major-version)
+(export 'major-version)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_get_minor_version () -> gtk-minor-version
+;;; gtk_get_minor_version () -> minor-version
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_get_minor_version" gtk-minor-version) :int
+(defcfun ("gtk_get_minor_version" minor-version) :int
  #+liber-documentation
- "@version{#2020-8-23}
+ "@version{#2023-1-21}
   @return{The minor version number of the GTK library.}
   @begin{short}
     Returns the minor version number of the GTK library.
   @end{short}
-
   This function is in the library, so it represents the GTK library your code
   is are running against.
-  @see-function{gtk-check-version}")
+  @see-function{gtk:check-version}")
 
-(export 'gtk-minor-version)
+(export 'minor-version)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_get_micro_version () -> gtk-micro-version
+;;; gtk_get_micro_version () -> micro-version
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_get_micro_version" gtk-micro-version) :int
+(defcfun ("gtk_get_micro_version" micro-version) :int
  #+liber-documentation
- "@version{#2020-8-23}
+ "@version{#2023-1-21}
   @return{The micro version number of the GTK library.}
   @begin{short}
     Returns the micro version number of the GTK library.
   @end{short}
-
   This function is in the library, so it represents the GTK library your code
   is are running against.
-  @see-function{gtk-check-version}")
+  @see-function{gtk:check-version}")
 
-(export 'gtk-micro-version)
+(export 'micro-version)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_get_binary_age () -> gtk-binary-age
+;;; gtk_get_binary_age () -> gtk-binary-age                not exported
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_get_binary_age" gtk-binary-age) :int
@@ -119,10 +120,8 @@
   If @code{libtool} means nothing to you, do not worry about it.
   @see-function{gtk-interface-age}")
 
-(export 'gtk-binary-age)
-
 ;;; ----------------------------------------------------------------------------
-;;; gtk_get_interface_age () -> gtk-interface-age
+;;; gtk_get_interface_age () -> gtk-interface-age          not exported
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_get_interface_age" gtk-interface-age) :int
@@ -136,19 +135,16 @@
   If @code{libtool} means nothing to you, do not worry about it.
   @see-function{gtk-binary-age}")
 
-(export 'gtk-interface-age)
-
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_check_version ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_check_version" gtk-check-version)
-    (:string :free-from-foreign nil)
+(defcfun ("gtk_check_version" check-version) (:string :free-from-foreign nil)
  #+liber-documentation
- "@version{#2020-8-23}
-  @argument[major]{the required major version}
-  @argument[minor]{the required minor version}
-  @argument[micro]{the required micro version}
+ "@version{#2023-1-21}
+  @argument[major]{an unsigned integer with the required major version}
+  @argument[minor]{an unsigned integer with required minor version}
+  @argument[micro]{an unsigned integer with required micro version}
   @begin{return}
     @code{Nil} if the GTK library is compatible with the given version,
     or a string describing the version mismatch.
@@ -156,19 +152,18 @@
   @begin{short}
     Checks that the GTK library in use is compatible with the given version.
   @end{short}
-
   Compatibility is defined by two things: first the version of the running
   library is newer than the version @code{major}.@code{minor}.@code{micro}.
   Second the running library must be binary compatible with the version
   @code{major}.@code{minor}.@code{micro} (same major version).
-  @see-function{gtk-major-version}
-  @see-function{gtk-minor-version}
-  @see-function{gtk-micro-version}"
+  @see-function{gtk:major-version}
+  @see-function{gtk:minor-version}
+  @see-function{gtk:micro-version}"
   (major :uint)
   (minor :uint)
   (micro :uint))
 
-(export 'gtk-check-version)
+(export 'check-version)
 
 ;;; ----------------------------------------------------------------------------
 ;;; GTK_MAJOR_VERSION
@@ -241,26 +236,26 @@ Lisp implementation version: 2.0.6.debian
 NIL
     @end{pre}
   @end{dictionary}
-  @see-function{gtk-major-version}
-  @see-function{gtk-minor-version}
-  @see-function{gtk-micro-version}
+  @see-function{gtk:major-version}
+  @see-function{gtk:minor-version}
+  @see-function{gtk:micro-version}
   @see-symbol{+glib-major-version+}
   @see-symbol{+glib-minor-version+}
   @see-symbol{+glib-micro-version+}
   @see-symbol{+gdk-pixbuf-version+}
   @see-function{pango:version-string}
   @see-function{cairo:version-string}"
-  (format t "~%cl-cffi-gtk version: ~a~%" *cl-cffi-gtk-version*)
+  (format t "~%cl-cffi-gtk version: ~a~%" +cl-cffi-gtk3-version+)
   (format t "cl-cffi-gtk build date: ~a:~a ~a/~a/~a~%"
-          (third *cl-cffi-gtk-build-time*)
-          (second *cl-cffi-gtk-build-time*)
-          (fifth *cl-cffi-gtk-build-time*)
-          (fourth *cl-cffi-gtk-build-time*)
-          (sixth *cl-cffi-gtk-build-time*))
+          (third +cl-cffi-gtk3-build-time+)
+          (second +cl-cffi-gtk3-build-time+)
+          (fifth +cl-cffi-gtk3-build-time+)
+          (fourth +cl-cffi-gtk3-build-time+)
+          (sixth +cl-cffi-gtk3-build-time+))
   (format t "GTK version: ~a.~a.~a~%"
-          (gtk-major-version)
-          (gtk-minor-version)
-          (gtk-micro-version))
+          (major-version)
+          (minor-version)
+          (micro-version))
   (format t "GLIB version: ~a.~a.~a~%"
           +glib-major-version+
           +glib-minor-version+

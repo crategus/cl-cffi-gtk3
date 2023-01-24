@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
-;;; Copyright (C) 2019 - 2021 Dieter Kaiser
+;;; Copyright (C) 2019 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -42,9 +42,9 @@
 ;;;
 ;;; Signals
 ;;;
-;;;     void    pressed     Run Last
-;;;     void    released    Run Last
-;;;     void    stopped     Run Last
+;;;     pressed
+;;;     released
+;;;     stopped
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -61,18 +61,18 @@
 ;;; struct GtkGestureMultiPress
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkGestureMultiPress" gtk-gesture-multi-press
-  (:superclass gtk-gesture-single
+(define-g-object-class "GtkGestureMultiPress" gesture-multi-press
+  (:superclass gesture-single
    :export t
    :interfaces nil
    :type-initializer "gtk_gesture_multi_press_get_type")
   nil)
 
 #+liber-documentation
-(setf (documentation 'gtk-gesture-multi-press 'type)
+(setf (documentation 'gesture-multi-press 'type)
  "@version{#2020-9-11}
   @begin{short}
-    @sym{gtk-gesture-multi-press} is a @class{gtk-gesture} implementation able
+    @sym{gtk:gesture-multi-press} is a @class{gtk:gesture} implementation able
     to recognize multiple clicks on a nearby zone, which can be listened for
     through the \"pressed\" signal.
   @end{short}
@@ -81,16 +81,16 @@
 
   Callers may also restrict the area that is considered valid for a > 1
   touch/button press through the function
-  @fun{gtk-gesture-multi-press-area}, so any click happening outside that area
+  @fun{gtk:gesture-multi-press-area}, so any click happening outside that area
   is considered to be a first click of its own.
   @begin[Signal Details]{dictionary}
     @subheading{The \"pressed\" signal}
       @begin{pre}
- lambda (gesture n-press x y)    :run-last
+lambda (gesture n-press x y)    :run-last
       @end{pre}
       The signal is emitted whenever a button or touch press happens.
       @begin[code]{table}
-        @entry[gesture]{The @sym{gtk-gesture-multi-press} object which
+        @entry[gesture]{The @sym{gtk:gesture-multi-press} object which
         received the signal.}
         @entry[n-press]{An integer with how many touch/button presses happened
           with this one.}
@@ -101,7 +101,7 @@
       @end{table}
     @subheading{The \"released\" signal}
       @begin{pre}
- lambda (gesture n-press x y)    :run-last
+lambda (gesture n-press x y)    :run-last
       @end{pre}
       The signal is emitted when a button or touch is released. The
       @arg{n-press} argument will report the number of press that is paired to
@@ -109,7 +109,7 @@
       the press and its release, the @arg{n-press} argument will only start over
       at the next press.
       @begin[code]{table}
-        @entry[gesture]{The @sym{gtk-gesture-multi-press} object which
+        @entry[gesture]{The @sym{gtk:gesture-multi-press} object which
         received the signal.}
         @entry[n-press]{An integer with the number of press that is paired with
           this release.}
@@ -120,67 +120,68 @@
       @end{table}
     @subheading{The \"stopped\" signal}
       @begin{pre}
- lambda (gesture)    :run-last
+lambda (gesture)    :run-last
       @end{pre}
       The signal is emitted whenever any time/distance threshold has been
       exceeded.
       @begin[code]{table}
-        @entry[gesture]{The @sym{gtk-gesture-multi-press} object which
+        @entry[gesture]{The @sym{gtk:gesture-multi-press} object which
         received the signal.}
       @end{table}
   @end{dictionary}
-  @see-class{gtk-gesture}")
+  @see-class{gtk:gesture}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_gesture_multi_press_new ()
 ;;; ----------------------------------------------------------------------------
 
-(declaim (inline gtk-gesture-multi-press-new))
+(declaim (inline gesture-multi-press-new))
 
-(defun gtk-gesture-multi-press-new (widget)
+(defun gesture-multi-press-new (widget)
  #+liber-documentation
  "@version{#2020-9-11}
-  @argument[widget]{a @class{gtk-widget} object}
-  @return{A newly created @class{gtk-gesture-multi-press} object.}
+  @argument[widget]{a @class{gtk:widget} object}
+  @return{A newly created @class{gtk:gesture-multi-press} object.}
   @begin{short}
     Returns a newly created gesture that recognizes single and multiple presses.
   @end{short}
-  @see-function{gtk-gesture-multi-press}"
-  (make-instance 'gtk-gesture-multi-press
+  @see-class{gtk:gesture-multi-press}
+  @see-class{gtk:widget}"
+  (make-instance 'gesture-multi-press
                  :widget widget))
 
-(export 'gtk-gesture-multi-press-new)
+(export 'gesture-multi-press-new)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_gesture_multi_press_get_area ()
-;;; gtk_gesture_multi_press_set_area () -> gtk-gesture-multi-press-area
+;;; gtk_gesture_multi_press_set_area () -> gesture-multi-press-area
 ;;; ----------------------------------------------------------------------------
 
-(defun (setf gtk-gesture-multi-press-area) (rect gesture)
+(defun (setf gesture-multi-press-area) (rect gesture)
   (cffi:foreign-funcall "gtk_gesture_multi_press_set_area"
-                   (g:object gtk-gesture-multi-press) gesture
-                   (g:boxed gdk:rectangle) rect
-                   :void)
+                        (g:object gesture-multi-press) gesture
+                        (g:boxed gdk:rectangle) rect
+                        :void)
   rect)
 
-(defcfun ("gtk_gesture_multi_press_get_area" %gtk-gesture-multi-press-area)
+(defcfun ("gtk_gesture_multi_press_get_area" %gesture-multi-press-area)
     :boolean
-  (gesture (g:object gtk-gesture-multi-press))
+  (gesture (g:object gesture-multi-press))
   (rect (g:boxed gdk:rectangle)))
 
-(defun gtk-gesture-multi-press-area (gesture)
+(defun gesture-multi-press-area (gesture)
  #+liber-documentation
  "@version{#2020-9-11}
-  @syntax[]{(gtk-gesture-multi-press-area gesture) => rect}
-  @syntax[]{(setf (gtk-gesture-multi-press-area gesture) rect)}
-  @argument[gesture]{a @class{gtk-gesture-multi-press} object}
+  @syntax[]{(gtk:gesture-multi-press-area gesture) => rect}
+  @syntax[]{(setf (gtk:gesture-multi-press-area gesture) rect)}
+  @argument[gesture]{a @class{gtk:gesture-multi-press} object}
   @argument[rect]{a @class{gdk:rectangle} with the press area}
   @begin{short}
     Accessor of the press area of the gesture.
   @end{short}
 
-  The function @sym{gtk-gesture-multi-press-area} gets the press area. The
-  function @sym{(setf gtk-gesture-multi-press-area)} sets the press area.
+  The function @sym{gtk:gesture-multi-press-area} gets the press area. The
+  function @sym{(setf gtk:gesture-multi-press-area)} sets the press area.
 
   If @arg{rect} is non-@code{nil}, the press area will be checked to be confined
   within the rectangle, otherwise the button count will be reset so the press is
@@ -189,12 +190,12 @@
 
   Note: The rectangle is only used to determine whether any non-first click
   falls within the expected area. This is not akin to an input shape.
-  @see-class{gtk-gesture-multi-press}
+  @see-class{gtk:gesture-multi-press}
   @see-class{gdk:rectangle}"
   (let ((rect (gdk:rectangle-new)))
-    (when (%gtk-gesture-multi-press-area gesture rect)
+    (when (%gesture-multi-press-area gesture rect)
       rect)))
 
-(export 'gtk-gesture-multi-press-area)
+(export 'gesture-multi-press-area)
 
-;;; --- End of file gtk-gesture-multi-press.lisp -------------------------------
+;;; --- End of file gtk3.gesture-multi-press.lisp ------------------------------
