@@ -1383,11 +1383,10 @@ got_value (gpointer user_data)
   @end{section}
   @begin[Deprecated]{section}
     @begin[Colors]{subsection}
-      A @class{gdk:color} structure represents a color.
-
-      When working with Cairo, it is often more convenient to use a
-      @class{gdk:rgba} color instead. The @class{gdk:color} structure has
-      been deprecated in favor of the @class{gdk:rgba} structure.
+      A @class{gdk:color} structure represents a color. When working with Cairo,
+      it is often more convenient to use a @class{gdk:rgba} color instead. The
+      @class{gdk:color} structure has been deprecated in favor of the
+      @class{gdk:rgba} structure.
       @about-struct{color}
       @about-function{color-red}
       @about-function{color-green}

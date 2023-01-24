@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gdk.events.lisp
+;;; gdk3.events.lisp
 ;;;
 ;;; The documentation of this file is taken from the GDK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2021 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -90,15 +90,6 @@
 ;;;     gdk_event_get_device_tool
 ;;;     gdk_event_set_device_tool
 ;;;     gdk_setting_get
-;;;
-;;; Description
-;;;
-;;; This section describes functions dealing with events from the window system.
-;;;
-;;; In GTK applications the events are handled automatically in
-;;; gtk_main_do_event() and passed on to the appropriate widgets, so these
-;;; functions are rarely needed. Though some of the fields in the Event
-;;; Structures are useful.
 ;;; ----------------------------------------------------------------------------
 
 (in-package :gdk)
@@ -1274,16 +1265,16 @@
 (export 'event-device-tool)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_setting_get ()
+;;; gdk_setting_get () -> setting-get
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_setting_get" %gdk-setting-get) :boolean
+(defcfun ("gdk_setting_get" %setting-get) :boolean
   (name :string)
   (value (:pointer (:struct g:value))))
 
-(defun gdk-setting-get (name gtype)
+(defun setting-get (name gtype)
  #+liber-documentation
- "@version{#2021-5-4}
+ "@version{2023-1-22}
   @argument[name]{a string with the name of the setting}
   @argument[gtype]{a string with the GType of the setting}
   @begin{return}
@@ -1293,20 +1284,20 @@
     Obtains a desktop-wide setting, such as the double-click time, for the
     default screen.
   @end{short}
-  See the function @fun{gdk-screen-setting}.
+  See the @fun{gdk:screen-setting} function.
   @begin[Example]{dictionary}
     @begin{pre}
-(gdk-setting-get \"gtk-double-click-time\" \"gint\") => 400
+(gdk:setting-get \"gtk-double-click-time\" \"gint\") => 400
     @end{pre}
   @end{dictionary}
-  @see-function{gdk-screen-setting}"
+  @see-function{gdk:screen-setting}"
   (with-foreign-object (value '(:struct g:value))
     (gobject:value-init value gtype)
-    (when (%gdk-setting-get name value)
+    (when (%setting-get name value)
       (prog1
         (gobject:parse-g-value value)
         (g:value-unset value)))))
 
-(export 'gdk-setting-get)
+(export 'setting-get)
 
-;;; --- gdk.events.lisp --------------------------------------------------------
+;;; --- gdk3.events.lisp -------------------------------------------------------
