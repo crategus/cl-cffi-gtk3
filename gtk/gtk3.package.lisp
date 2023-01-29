@@ -1970,17 +1970,16 @@ setup_tree (void)
       The tree interface used by the @class{gtk:tree-view} widget.
       @about-class{tree-path}
       @about-function{tree-path-new}
+      @about-function{tree-path-copy}
       @about-function{tree-path-new-from-string}
       @about-function{tree-path-new-from-indices}
-      @about-function{tree-path-to-string}
       @about-function{tree-path-new-first}
+      @about-function{tree-path-to-string}
       @about-function{tree-path-append-index}
       @about-function{tree-path-prepend-index}
       @about-function{tree-path-depth}
       @about-function{tree-path-indices}
       @about-function{tree-path-indices-with-depth}
-      @about-function{tree-path-free}
-      @about-function{tree-path-copy}
       @about-function{tree-path-compare}
       @about-function{tree-path-next}
       @about-function{tree-path-prev}
@@ -1988,19 +1987,16 @@ setup_tree (void)
       @about-function{tree-path-down}
       @about-function{tree-path-is-ancestor}
       @about-function{tree-path-is-descendant}
-
       @about-class{tree-row-reference}
       @about-function{tree-row-reference-new}
+      @about-function{tree-row-reference-copy}
       @about-function{tree-row-reference-new-proxy}
       @about-function{tree-row-reference-model}
       @about-function{tree-row-reference-path}
       @about-function{tree-row-reference-valid}
-      @about-function{tree-row-reference-free}
-      @about-function{tree-row-reference-copy}
       @about-function{tree-row-reference-inserted}
       @about-function{tree-row-reference-deleted}
       @about-function{tree-row-reference-reordered}
-
       @about-struct{tree-iter}
       @about-function{tree-iter-stamp}
       @about-function{tree-iter-user-data}
@@ -4018,9 +4014,6 @@ setup_tree (void)
   @begin[Recently Used Documents]{section}
     @begin[GtkRecentManager]{subsection}
       Managing recently used files.
-      @about-class{recent-info}
-      @about-class{recent-data}
-      @about-symbol{recent-manager-error}
       @about-class{recent-manager}
       @about-generic{recent-manager-filename}
       @about-generic{recent-manager-size}
@@ -4034,8 +4027,7 @@ setup_tree (void)
       @about-function{recent-manager-move-item}
       @about-function{recent-manager-items}
       @about-function{recent-manager-purge-items}
-      @about-function{recent-info-ref}
-      @about-function{recent-info-unref}
+      @about-class{recent-info}
       @about-function{recent-info-uri}
       @about-function{recent-info-display-name}
       @about-function{recent-info-description}
