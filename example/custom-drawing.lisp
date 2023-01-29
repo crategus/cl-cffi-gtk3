@@ -1,4 +1,4 @@
-;;;; Example Custom Drawing - 2022-12-20
+;;;; Example Custom Drawing - 2023-1-27
 ;;;;
 ;;;; Many applications cannot use GTK widgets, for a variety of reasons, but
 ;;;; still want their user interface to appear integrated with the rest of the
@@ -131,8 +131,8 @@
     (cairo:select-font-face cr "Monospace" :weight :bold)
     ;; Specify the font size
     (cairo:set-font-size cr 14)
-    (let* ((extents (cairo:text-extents cr text))
-           (text-height (cairo:text-extents-height extents)))
+    (let ((text-height (fourth (multiple-value-list
+                                   (cairo:text-extents cr text)))))
       ;; Display text on the drawing area
       (cairo:move-to cr x (+ y text-height))
       (cairo:show-text cr text)
