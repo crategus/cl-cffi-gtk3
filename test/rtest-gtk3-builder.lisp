@@ -130,20 +130,20 @@
     (is (typep (gtk:builder-object builder "dialog1") 'gtk:dialog)))
   (let ((builder (make-instance 'gtk:builder
                                 :from-file
-                                (sys-path "test/resources/rtest-application.ui"))))
+                                (sys-path "resource/rtest-application.ui"))))
     (is (typep (gtk:builder-object builder "menubar") 'g:menu))))
 
 ;;; --- gtk_builder_new_from_file ----------------------------------------------
 
 (test builder-new-from-file
   (is (typep (gtk:builder-new-from-file
-               (sys-path "test/resources/rtest-application.ui")) 'gtk:builder)))
+               (sys-path "resource/rtest-application.ui")) 'gtk:builder)))
 
 ;;;     gtk_builder_new_from_resource
 
 (test builder-new-from-resource
-  (let* ((filename (sys-path "test/resources/rtest-resource.gresource"))
-         (resource (g:resource-load filename)))
+  (let* ((path (sys-path "resource/rtest-resource.gresource"))
+         (resource (g:resource-load path)))
     (is-false (g:resources-register resource))
     (is (typep
             (gtk:builder-new-from-resource "/com/crategus/test/rtest-dialog.ui")
@@ -164,12 +164,12 @@
 (test builder-add-from-file
   (let ((builder (gtk:builder-new)))
     (is-true (gtk:builder-add-from-file builder
-                 (sys-path "test/resources/rtest-application.ui")))))
+                 (sys-path "resource/rtest-application.ui")))))
 
 ;;;     gtk_builder_add_from_resource
 
 (test builder-add-from-resource
-  (let* ((filename (sys-path "test/resources/rtest-resource.gresource"))
+  (let* ((filename (sys-path "resource/rtest-resource.gresource"))
          (resource (g:resource-load filename))
          (builder (gtk:builder-new)))
     (is-false (g:resources-register resource))
@@ -186,10 +186,9 @@
 ;;; --- gtk_builder_add_objects_from_file --------------------------------------
 
 (test builder-add-objects-from-file
-  (let ((builder (gtk:builder-new)))
-    (is-true (gtk:builder-add-objects-from-file builder
-                               (sys-path "test/resources/rtest-dialog.ui")
-                                                '("dialog1")))
+  (let ((builder (gtk:builder-new))
+        (path (sys-path "resource/rtest-dialog.ui")))
+    (is-true (gtk:builder-add-objects-from-file builder path '("dialog1")))
     (is (typep (gtk:builder-object builder "dialog1") 'gtk:dialog))
     (is (equal '(GTK:DIALOG GTK:BOX GTK:BUTTON-BOX GTK:BUTTON)
                (mapcar 'type-of (gtk:builder-objects builder))))))
@@ -233,4 +232,4 @@
 ;;;     gtk_builder_value_from_string
 ;;;     gtk_builder_value_from_string_type
 
-;;; 2022-12-14
+;;; --- 2023-1-29 --------------------------------------------------------------

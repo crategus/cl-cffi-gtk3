@@ -332,6 +332,30 @@
 
 ;;;     gtk_style_context_get_section
 
+;; TODO: Create an example which returns a section
+
+(test style-context-section.1
+  (let ((context (gtk:style-context-new))
+        (section nil))
+    ;; We get not a section
+    (is-false (setf section (gtk:style-context-section context "property")))))
+
+(test style-context-section.2
+  (let* ((pathname (sys-path "resource/rtest-gtk-css-provider.css"))
+         (provider (gtk:css-provider-new))
+         (context (gtk:style-context-new))
+         (section nil))
+    (is-true (gtk:css-provider-load-from-path provider pathname))
+    (is-false (gtk:style-context-add-provider context
+                                              provider
+                                              +gtk-priority-user+))
+    (is (stringp (gtk:css-provider-to-string provider)))
+    (is-true (setf (gtk:style-context-state context) '(:active :dir-ltr)))
+    (is (equal '(:active :dir-ltr) (gtk:style-context-state context)))
+    ;; We get not a section
+    (is-false (setf section
+                    (gtk:style-context-section context "background-color")))))
+
 ;;;     gtk_style_context_color
 
 (test style-context-color
@@ -545,4 +569,4 @@
 ;;;     gtk_render_icon
 ;;;     gtk_render_insertion_cursor
 
-;;; 2022-12-11
+;;; --- 2023-1-29 --------------------------------------------------------------

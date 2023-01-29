@@ -665,31 +665,33 @@ output-file-format : pdf
 ;;;     gtk_print_settings_to_file
 
 (test print-settings-file
-  (let* ((filename (sys-path "test/resources/rtest-gtk3-print-settings.ini"))
-         (settings (gtk:print-settings-new-from-file filename)))
-    (is-true (gtk:print-settings-to-file settings filename))
-    (is-true (gtk:print-settings-load-file settings filename))
-    (is (typep (gtk:print-settings-new-from-file filename) 'gtk:print-settings))))
+  (let* ((path (sys-path "resource/rtest-gtk3-print-settings.ini"))
+         (settings (gtk:print-settings-new-from-file path)))
+    (is-true (gtk:print-settings-to-file settings path))
+    (is-true (gtk:print-settings-load-file settings path))
+    (is (typep (gtk:print-settings-new-from-file path) 'gtk:print-settings))))
 
 ;;;     gtk_print_settings_new_from_key_file
 ;;;     gtk_print_settings_load_key_file
 ;;;     gtk_print_settings_to_key_file
 
 (test print-settings-key-file
-  (let* ((filename (sys-path "test/resources/rtest-gtk3-print-settings.ini"))
-         (settings (gtk:print-settings-new-from-file filename))
-        (key-file (g:key-file-new)))
-    (is-false (gtk:print-settings-to-key-file settings key-file "Print Settings"))
-    (is-true (gtk:print-settings-load-key-file settings key-file "Print Settings"))
-    (is (typep (gtk:print-settings-new-from-key-file key-file "Print Settings")
+  (let* ((path (sys-path "resource/rtest-gtk3-print-settings.ini"))
+         (settings (gtk:print-settings-new-from-file path))
+         (keyfile (g:key-file-new)))
+    (is-false (gtk:print-settings-to-key-file settings
+                                              keyfile
+                                              "Print Settings"))
+    (is-true (gtk:print-settings-load-key-file settings keyfile "Print Settings"))
+    (is (typep (gtk:print-settings-new-from-key-file keyfile "Print Settings")
                 'gtk:print-settings))))
 
 ;;;     gtk_print_settings_new_from_gvariant
 ;;;     gtk_print_settings_to_gvariant
 
 (test print-settings-gvariant
-  (let* ((filename (sys-path "test/resources/rtest-gtk3-print-settings.ini"))
-        (settings (gtk:print-settings-new-from-file filename)))
+  (let* ((path (sys-path "resource/rtest-gtk3-print-settings.ini"))
+        (settings (gtk:print-settings-new-from-file path)))
     (is (string= (g:variant-print (gtk:print-settings-to-gvariant settings) nil)
 "{'scale': <'100'>, 'number-up': <'1'>, 'n-copies': <'1'>, 'page-ranges': <'0-11'>, 'page-set': <'all'>, 'output-uri': <'file:///home/dieter/Dokumente/Ausgabe.pdf'>, 'printer': <'In Datei drucken'>, 'print-pages': <'ranges'>, 'reverse': <'false'>, 'collate': <'false'>, 'output-file-format': <'pdf'>}"
 ))
@@ -698,4 +700,4 @@ output-file-format : pdf
 )))
       (is (eq 'gtk:print-settings (type-of (gtk:print-settings-new-from-gvariant variant)))))))
 
-;;; --- 2023-1-1 ---------------------------------------------------------------
+;;; --- 2023-1-29 --------------------------------------------------------------

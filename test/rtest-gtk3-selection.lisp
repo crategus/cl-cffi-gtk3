@@ -75,9 +75,6 @@
     (is (= 3 (gtk:target-list-find tlist "image/jpeg")))
     (is (= 4 (gtk:target-list-find tlist "text/uri-list")))))
 
-;;;   gtk_target_list_ref
-;;;   gtk_target_list_unref
-
 ;;;   gtk_target_list_add
 
 (test target-list-add
@@ -218,8 +215,6 @@
     (is (= 1 (gtk:target-list-find target-list "text/html")))
     (gtk:target-list-remove target-list "text/html")
     (is-false (gtk:target-list-find target-list "text/html"))))
-
-;;;   gtk_target_table_free
 
 ;;;   gtk_target_table_new_from_list
 
@@ -510,4 +505,4 @@
 ;;;     gtk_selection_data_copy
 ;;;     gtk_selection_data_free
 
-;;; --- 2023-1-8 ---------------------------------------------------------------
+;;; --- 2023-1-28 --------------------------------------------------------------

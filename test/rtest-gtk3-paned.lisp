@@ -30,7 +30,7 @@
              (list-properties "GtkPaned")))
   ;; Get the names of the style properties.
   (is (equal '("handle-size")
-             (list-class-style-property-names "GtkPaned")))
+             (list-style-properties "GtkPaned")))
   ;; Get the names of the child properties
   (is (equal '("resize" "shrink")
              (list-child-properties "GtkPaned")))
@@ -184,4 +184,4 @@
     ;; no handle because paned is not realized
     (is-false (gtk:paned-handle-window paned))))
 
-;;; 2022-12-18
+;;; --- 2023-1-29 --------------------------------------------------------------

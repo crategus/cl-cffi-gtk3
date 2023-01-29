@@ -179,7 +179,7 @@
              (list-class-property-names "ExampleAppWindow")))
   ;; Get the names of the style properties.
   (is (equal '()
-             (list-class-style-property-names "ExampleAppWindow")))
+             (list-style-properties "ExampleAppWindow")))
   ;; Get the names of the child properties
   (is (equal '()
              (mapcar #'g-param-spec-name
@@ -234,4 +234,4 @@
     (signals (error) (g-object-property window "writable"))
     (is (= 20 (setf (g-object-property window "writable") 20)))))
 
-;;; 2021-10-29
+;;; --- 2023-1-29 --------------------------------------------------------------

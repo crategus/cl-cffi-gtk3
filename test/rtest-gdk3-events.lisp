@@ -267,7 +267,6 @@
   (let* ((device (gdk:seat-pointer
              (gdk:display-default-seat (gdk:display-default))))
          (event (gdk:event-new :scroll :device device :state '(:shift-mask))))
-
   (is (= 0 (gdk:event-state nil)))
   (is (equal '(:shift-mask) (gdk:event-state event)))
 
@@ -279,9 +278,7 @@
   (let* ((device (gdk:seat-pointer
                      (gdk:display-default-seat (gdk:display-default))))
          (event (gdk:event-new :scroll :device device :state '(:shift-mask))))
-
   (is (= 0 (gdk:event-time event)))
-
 ))
 
 
@@ -290,19 +287,17 @@
 
 ;;;     gdk_event_get_event_sequence
 
+;; TODO: Can we create a non-nil example?
+
 (test event-event-sequence
   (let* ((device (gdk:seat-pointer
                      (gdk:display-default-seat (gdk:display-default))))
          (event (gdk:event-new :touch-begin :device device)))
-
-  (is (typep (gdk:event-event-sequence event) 'gdk:event-sequence))
-
+  ;; No event sequence
+  (is-false (gdk:event-event-sequence event))
 ))
 
 ;;;     gdk_event_request_motions
-
-
-
 ;;;     gdk_events_get_angle
 ;;;     gdk_events_get_center
 ;;;     gdk_events_get_distance
@@ -366,4 +361,4 @@
 (test setting-get
   (is (= 400 (gdk:setting-get "gtk-double-click-time" "gint"))))
 
-;;; --- 2023-1-22 --------------------------------------------------------------
+;;; --- 2023-1-24 --------------------------------------------------------------

@@ -96,7 +96,7 @@
 (test css-provider-load-from-path
   (let ((provider (gtk:css-provider-new)))
     (is-true (gtk:css-provider-load-from-path provider
-                 (sys-path "test/resources/rtest-gtk-css-provider.css")))
+                 (sys-path "resource/rtest-gtk-css-provider.css")))
     (is-true (stringp (gtk:css-provider-to-string provider)))))
 
 ;;;     gtk_css_provider_load_from_resource
@@ -121,4 +121,4 @@
 ;;;     gtk_css_section_ref
 ;;;     gtk_css_section_unref
 
-;;; 2022-12-14
+;;; --- 2023-1-29 --------------------------------------------------------------

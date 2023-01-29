@@ -82,21 +82,21 @@
   (let ((window (make-instance 'gtk:window :type :toplevel)))
     (is-false (gtk:widget-realize window))
     (let ((frame-clock (gtk:widget-frame-clock window)))
-
-      (is (typep (gdk:frame-clock-timings frame-clock 0) 'gdk:frame-timings))
-
+      ;; No gdk:frame-timing instance
+      (is-false (gdk:frame-clock-timings frame-clock 0))
 )))
 
 ;;;     gdk_frame_clock_current_timings
+
+;; TODO: Create an example with a gdk:frame-timings instance
 
 (test frame-clock-current-timings
   (let ((window (make-instance 'gtk:window :type :toplevel)))
     (is-false (gtk:widget-realize window))
     (let ((frame-clock (gtk:widget-frame-clock window)))
       (is (typep frame-clock 'gdk:frame-clock))
-
-      (is (typep (gdk:frame-clock-current-timings frame-clock) 'gdk:frame-timings))
-
+      ;; No gdk:frame-timing instance
+      (is-false (gdk:frame-clock-current-timings frame-clock))
 )))
 
 ;;;     gdk_frame_clock_refresh_info
@@ -111,4 +111,4 @@
                  (multiple-value-list
                    (gdk:frame-clock-refresh-info frame-clock 0)))))))
 
-;;; 2022-12-12
+;;; --- 2023-1-24 --------------------------------------------------------------

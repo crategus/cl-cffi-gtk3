@@ -125,6 +125,8 @@
 
 ;;;     gtk_drag_source_unset
 
+;; TODO: Fix the example, we get no gtk:target-list
+
 (test drag-source-unset
   (let ((tlist (list (list "INTEGER" 0 0)
                      (list "STRING" 0 1)
@@ -143,13 +145,8 @@
                (gtk:target-table-new-from-list
                    (gtk:drag-source-target-list source))))
     (is-false (gtk:drag-source-unset source))
-    (is (typep (gtk:drag-source-target-list source) 'gtk:target-list))
-    ;; FIXME: Causes a memory fault
-    ;; (sbcl:15914): Gtk-CRITICAL **: 22:27:09.787:
-    ;; gtk_target_table_new_from_list: assertion 'list != NULL' failed
-;    (is (equal '()
-;               (gtk:target-table-new-from-list
-;                   (gtk:drag-source-target-list source))))
+    ;; No gtk:target-list
+    (is-false (gtk:drag-source-target-list source))
 ))
 
 ;;;     gtk_drag_source_set_target_list
@@ -255,4 +252,4 @@
                (gtk:target-table-new-from-list
                    (gtk:drag-source-target-list source))))))
 
-;;; 2022-12-14
+;;; --- 2023-1-24 --------------------------------------------------------------

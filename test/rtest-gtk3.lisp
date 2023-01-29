@@ -50,14 +50,24 @@
 (in-package :gtk-test)
 
 (def-suite gtk-test)
-(in-suite gtk-test)
-
 (def-suite gtk-suite :in gtk-test)
-(in-suite gtk-suite)
+(def-suite gdk-suite :in gtk-test)
 
-(defun sys-path (filename &optional (package :cl-cffi-gtk3))
-  (let ((system-path (asdf:system-source-directory package)))
-    (princ-to-string (merge-pathnames filename system-path))))
+;; Ensure directory for the output of test results
+(eval-when (:compile-toplevel :load-toplevel :execute)
+  (ensure-directories-exist
+      (asdf:system-relative-pathname :cl-cffi-gtk3 "test/out/")))
+
+;; Get the pathname for a file in the testsuite
+(defun sys-path (filename &optional (system :cl-cffi-gtk3))
+  (asdf:system-relative-pathname system
+                                 (concatenate 'string "test/" filename)))
+
+;; See https://www.embeddeduse.com/2019/08/26/qt-compare-two-floats/
+(defun approx-equal (x y &optional (eps-factor 1.0d-1))
+  (or (< (abs (- x y)) eps-factor)
+      (< (abs (- x y)) (* eps-factor (max (abs x) (abs y))))))
+
 
 (defun list-children (gtype)
   (sort (mapcar #'g:type-name (g:type-children gtype))
@@ -80,6 +90,7 @@
   (mapcar #'g:param-spec-name
           (g:object-interface-list-properties gtype)))
 
+;; A sorted list of the class style property names without inherited properties
 (defun list-style-properties (gtype)
   (sort (set-difference (mapcar #'g:param-spec-name
                                 (gtk:widget-class-list-style-properties gtype))
@@ -89,6 +100,7 @@
                         :test #'string=)
         #'string<))
 
+;; A sorted list of the class child property names
 (defun list-child-properties (gtype)
   (sort (mapcar #'g:param-spec-name
                 (gtk:container-class-list-child-properties gtype))
@@ -123,4 +135,4 @@
   (mapcar #'gobject:enum-item-value
           (gobject:get-enum-items gtype)))
 
-;;; 2022-12-26
+;;; --- 2023-1-29 --------------------------------------------------------------

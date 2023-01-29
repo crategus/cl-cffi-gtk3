@@ -150,12 +150,11 @@
 ;;;     gtk-page-setup-load-file
 
 (test page-setup-file
-  (let ((filename (sys-path "test/resources/rtest-gtk-page-setup.ini"))
-        (page-setup (gtk:page-setup-new)))
-    (is-true (gtk:page-setup-to-file page-setup filename))
-    (is-true (gtk:page-setup-load-file page-setup filename))
-    (is (eq 'gtk:page-setup
-            (type-of (gtk:page-setup-new-from-file filename))))))
+  (let ((path (sys-path "resource/rtest-gtk-page-setup.ini"))
+        (setup (gtk:page-setup-new)))
+    (is-true (gtk:page-setup-to-file setup path))
+    (is-true (gtk:page-setup-load-file setup path))
+    (is (typep (gtk:page-setup-new-from-file path) 'gtk:page-setup))))
 
 ;;;     gtk-page-setup-new-from-key-file
 ;;;     gtk-page-setup-load-key-file
@@ -180,4 +179,4 @@
 "{'PPDName': <'A4'>, 'DisplayName': <'A4'>, 'Width': <210.0>, 'Height': <297.0>, 'MarginTop': <6.3499999999999996>, 'MarginBottom': <14.224>, 'MarginLeft': <6.3499999999999996>, 'MarginRight': <6.3499999999999996>, 'Orientation': <'portrait'>}")))
       (is (eq 'gtk:page-setup (type-of (gtk:page-setup-new-from-gvariant variant)))))))
 
-;;; --- 2023-1-4 ---------------------------------------------------------------
+;;; --- 2023-1-29 --------------------------------------------------------------

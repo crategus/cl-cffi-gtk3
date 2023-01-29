@@ -138,8 +138,8 @@
 ;;;     gtk_image_get_animation
 
 (test image-get-animation
-  (let* ((filename (sys-path "test/resources/floppybuddy.gif"))
-         (animation (gdk:pixbuf-animation-new-from-file filename))
+  (let* ((path (sys-path "resource/floppybuddy.gif"))
+         (animation (gdk:pixbuf-animation-new-from-file path))
          (image (gtk:image-new-from-animation animation)))
     (is (typep image 'gtk:image))
     (is (typep (gtk:image-get-animation image) 'gdk:pixbuf-animation))))
@@ -170,8 +170,8 @@
 ;;;     gtk_image_new_from_file
 
 (test image-new-from-file
-  (let* ((filename (sys-path "test/resources/gtk-logo-24.png"))
-         (image (gtk:image-new-from-file filename)))
+  (let* ((path (sys-path "resource/gtk-logo-24.png"))
+         (image (gtk:image-new-from-file path)))
     (is (typep image 'gtk:image))
     (is (string= "gtk-logo-24" (pathname-name (gtk:image-file image))))
     (is-false (gtk:image-gicon image))
@@ -193,7 +193,7 @@
 ;;;     gtk_image_new_from_pixbuf
 
 (test image-new-from-pixbuf
-  (let* ((filename (sys-path "test/resources/gtk-logo-24.png"))
+  (let* ((filename (sys-path "resource/gtk-logo-24.png"))
          (pixbuf (gdk:pixbuf-new-from-file filename))
          (image (gtk:image-new-from-pixbuf pixbuf)))
     (is (typep image 'gtk:image))
@@ -217,7 +217,7 @@
 ;;;     gtk_image_new_from_animation
 
 (test image-new-from-animation
-  (let* ((filename (sys-path "test/resources/floppybuddy.gif"))
+  (let* ((filename (sys-path "resource/floppybuddy.gif"))
          (animation (gdk:pixbuf-animation-new-from-file filename))
          (image (gtk:image-new-from-animation animation)))
     (is (typep image 'gtk:image))
@@ -280,7 +280,7 @@
 ;;;     gtk_image_new_from_resource
 
 (test image-new-from-resource
-  (let* ((filename (sys-path "test/resources/rtest-resource.gresource"))
+  (let* ((filename (sys-path "resource/rtest-resource.gresource"))
          (resource (g:resource-load filename)))
     ;; Register the resources
     (is-false (g:resources-register resource))
@@ -329,7 +329,7 @@
 ;;;     gtk_image_set_from_file
 
 (test image-set-from-file
-  (let ((filename (sys-path "test/resources/gtk-logo-24.png"))
+  (let ((filename (sys-path "resource/gtk-logo-24.png"))
         (image (make-instance 'gtk:image)))
     ;; Set image from file
     (is-false (gtk:image-set-from-file image filename))
@@ -355,7 +355,7 @@
 ;;;     gtk_image_set_from_pixbuf
 
 (test image-set-from-pixbuf
-  (let* ((filename (sys-path "test/resources/gtk-logo-24.png"))
+  (let* ((filename (sys-path "resource/gtk-logo-24.png"))
          (pixbuf (gdk:pixbuf-new-from-file filename))
          (image (make-instance 'gtk:image)))
     ;; Set image from pixbuf
@@ -382,7 +382,7 @@
 ;;;     gtk_image_set_from_animation
 
 (test image-set-from-animation
-  (let* ((filename (sys-path "test/resources/floppybuddy.gif"))
+  (let* ((filename (sys-path "resource/floppybuddy.gif"))
          (animation (gdk:pixbuf-animation-new-from-file filename))
          (image (make-instance 'gtk:image)))
     ;; Set image from animation
@@ -454,7 +454,7 @@
 ;;;     gtk_image_set_from_resource
 
 (test image-set-from-resource
-  (let* ((filename (sys-path "test/resources/rtest-resource.gresource"))
+  (let* ((filename (sys-path "resource/rtest-resource.gresource"))
          (resource (g:resource-load filename))
          (image (gtk:image-new)))
     ;; Register the resources
@@ -549,4 +549,4 @@
 (test image-new
   (is (typep (gtk:image-new) 'gtk:image)))
 
-;;; --- 2023-1-8 ---------------------------------------------------------------
+;;; --- 2023-1-29 --------------------------------------------------------------

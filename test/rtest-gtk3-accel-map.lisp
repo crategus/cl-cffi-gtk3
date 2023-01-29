@@ -68,7 +68,7 @@
 ;;;   gtk_accel_map_load
 ;;;   gtk_accel_map_save
 
-(test accel-map-save
+(test accel-map-load/save
   ;; Add an accelerator
   (gtk:accel-map-add-entry "<Test>/Edit/Save" (char-code #\s) '(:control-mask))
   (multiple-value-bind (key mods)
@@ -76,7 +76,8 @@
       (gtk:accel-map-lookup-entry "<Test>/Edit/Save")
     (is (= (char-code #\s) key))
     (is (equal '(:control-mask) mods)))
-  (gtk:accel-map-save (sys-path "test/rtest-gtk3-accel-map.rc")))
+  (is-false (gtk:accel-map-save (sys-path "out/rtest-gtk3-accel-map.rc")))
+  (is-false (gtK:accel-map-load (sys-path "out/rtest-gtk3-accel-map.rc"))))
 
 ;;;   gtk_accel_map_foreach
 ;;;   gtk_accel_map_load_fd
@@ -93,4 +94,4 @@
 ;;;   gtk_accel_map_lock_path
 ;;;   gtk_accel_map_unlock_path
 
-;;; 2022-12-13
+;;; --- 2023-1-29 --------------------------------------------------------------
