@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.image.lisp
+;;; gtk3.image.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2021 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -840,11 +840,13 @@
 ;;; gtk_image_new_from_file ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_image_new_from_file" image-new-from-file)
-    (g:object widget)
+(defcfun ("gtk_image_new_from_file" %image-new-from-file) (g:object widget)
+  (filename :string))
+
+(defun image-new-from-file (path)
  #+liber-documentation
- "@version{#2021-12-17}
-  @argument[filename]{a string with the name of the file}
+ "@version{2023-1-29}
+  @argument[path]{a pathname or namestring with the name of the file}
   @return{A new @class{gtk:image} widget.}
   @begin{short}
     Creates an image displaying the file.
@@ -867,7 +869,7 @@
   @see-function{gdk:pixbuf-new-from-file}
   @see-function{gdk:pixbuf-animation-new-from-file}
   @see-function{gtk:image-storage-type}"
-  (filename :string))
+  (%image-new-from-file (namestring path)))
 
 (export 'image-new-from-file)
 
@@ -1096,18 +1098,21 @@
 ;;; gtk_image_set_from_file ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_image_set_from_file" image-set-from-file) :void
+(defcfun ("gtk_image_set_from_file" %image-set-from-file) :void
+  (image (g:object image))
+  (filename :string))
+
+(defun image-set-from-file (image path)
  #+liber-documentation
- "@version{#2021-12-17}
+ "@version{2023-1-29}
   @argument[image]{a @class{gtk:image} widget}
-  @argument[filename]{a string with a filename}
+  @argument[pathname]{a pathname or namestring with a file to load}
   @begin{short}
     See the @fun{gtk:image-new-from-file} function for details.
   @end{short}
   @see-class{gtk:image}
   @see-function{gtk:image-new-from-file}"
-  (image (g:object image))
-  (filename :string))
+  (%image-set-from-file image (namestring path)))
 
 (export 'image-set-from-file)
 
@@ -1313,4 +1318,4 @@
 
 (export 'image-new)
 
-;;; --- End of file gtk.image.lisp ---------------------------------------------
+;;; --- End of file gtk3.image.lisp --------------------------------------------

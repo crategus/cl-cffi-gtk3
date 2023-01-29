@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.accel-map.lisp
+;;; gtk3.accel-map.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK+ library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2020 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -257,18 +257,21 @@
 ;;; gtk_accel_map_load ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_accel_map_load" accel-map-load) :void
+(defcfun ("gtk_accel_map_load" %accel-map-load) :void
+  (filename :string))
+
+(defun accel-map-load (path)
  #+liber-documentation
- "@version{#2020-9-20}
-  @argument[filename]{a @code{:string} with a file containing accelerator
+ "@version{2023-1-29}
+  @argument[path]{a pathname or namestring with a file containing accelerator
     specifications, in the GLib file name encoding}
   @begin{short}
-    Parses a file previously saved with the function @fun{gtk:accel-map-save}
+    Parses a file previously saved with the @fun{gtk:accel-map-save} function
     for accelerator specifications, and propagates them accordingly.
   @end{short}
   @see-class{gtk:accel-map}
   @see-function{gtk:accel-map-save}"
-  (filename :string))
+  (%accel-map-load (namestring path)))
 
 (export 'accel-map-load)
 
@@ -276,20 +279,23 @@
 ;;; gtk_accel_map_save ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_accel_map_save" accel-map-save) :void
+(defcfun ("gtk_accel_map_save" %accel-map-save) :void
+  (filename :string))
+
+(defun accel-map-save (path)
  #+liber-documentation
- "@version{#2020-9-20}
-  @argument[filename]{a @code{:string} with the name of the file to contain
+ "@version{2023-1-29}
+  @argument[path]{a pathname or namestring with the name of the file to contain
     accelerator specifications, in the GLib file name encoding}
   @begin{short}
     Saves current accelerator specifications, accelerator path, key and
-    modifiers, to @arg{filename}.
+    modifiers, to @arg{path}.
   @end{short}
-  The file is written in a format suitable to be read back in by the function
-  @fun{gtk:accel-map-load}.
+  The file is written in a format suitable to be read back in by the
+  @fun{gtk:accel-map-load} function.
   @see-class{gtk:accel-map}
   @see-function{gtk:accel-map-load}"
-  (filename :string))
+  (%accel-map-save (namestring path)))
 
 (export 'accel-map-save)
 
@@ -485,4 +491,4 @@
 
 (export 'accel-map-unlock-path)
 
-;;; --- End of file gtk.accel-map.lisp -----------------------------------------
+;;; --- End of file gtk3.accel-map.lisp ----------------------------------------

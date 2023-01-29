@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.page-setup.lisp
+;;; gtk3.page-setup.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK+ library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2021 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -489,10 +489,11 @@
   (filename :string)
   (err :pointer))
 
-(defun page-setup-new-from-file (filename)
+(defun page-setup-new-from-file (path)
  #+liber-documentation
- "@version{#2021-3-17}
-  @argument[filename]{a string with the filename to read the page setup from}
+ "@version{2023-1-29}
+  @argument[path]{a pathname or namestring with the file to read the page setup
+    from}
   @return{The restored @class{gtk:page-setup} object.}
   @begin{short}
     Reads the page setup from a file.
@@ -503,7 +504,7 @@
   @see-class{gtk:page-setup}
   @see-function{gtk:page-setup-to-file}"
   (with-ignore-g-error (err)
-    (%page-setup-new-from-file filename err)))
+    (%page-setup-new-from-file (namestring path) err)))
 
 (export 'page-setup-new-from-file)
 
@@ -571,11 +572,12 @@
   (filename :string)
   (err :pointer))
 
-(defun page-setup-load-file (setup filename)
+(defun page-setup-load-file (setup path)
  #+liber-documentation
- "@version{#2021-3-17}
+ "@version{2023-1-29}
   @argument[setup]{a @class{gtk:page-setup} object}
-  @argument[filename]{a string with the filename to read the page setup from}
+  @argument[path]{a pathname or namestring with the file to read the page setup
+    from}
   @return{@em{True} on sucess.}
   @begin{short}
     Reads the page setup from a file.
@@ -584,7 +586,7 @@
   @see-class{gtk:page-setup}
   @see-function{gtk:page-setup-to-file}"
   (with-ignore-g-error (err)
-    (%page-setup-load-file setup filename err)))
+    (%page-setup-load-file setup (namestring path) err)))
 
 (export 'page-setup-load-file)
 
@@ -626,18 +628,18 @@
   (filename :string)
   (err :pointer))
 
-(defun page-setup-to-file (setup filename)
+(defun page-setup-to-file (setup path)
  #+liber-documentation
- "@version{#2021-3-17}
+ "@version{2023-1-29}
   @argument[setup]{a @class{gtk:page-setup} object}
-  @argument[filename]{a string with the file to save to}
+  @argument[path]{a pathname or namestring with the file to save to}
   @return{@em{True} on sucess.}
   @begin{short}
     The function saves the information from the page setup to a file.
   @end{short}
   @see-class{gtk:page-setup}"
   (with-ignore-g-error (err)
-    (%page-setup-to-file setup filename err)))
+    (%page-setup-to-file setup (namestring path) err)))
 
 (export 'page-setup-to-file)
 
@@ -691,4 +693,4 @@
 #+gtk-3-22
 (export 'page-setup-to-gvariant)
 
-;;; ---- End of file gtk.page-setup.lisp ---------------------------------------
+;;; ---- End of file gtk3.page-setup.lisp --------------------------------------
