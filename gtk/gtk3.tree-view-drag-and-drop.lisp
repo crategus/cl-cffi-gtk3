@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -129,8 +129,8 @@
           (path (g:boxed tree-path))
           (selection-data (g:boxed selection-data))))
   (drag-data-delete (:boolean
-             (tree-drag-source g:object)
-                      (path (g:boxed tree-path)))))
+          (tree-drag-source g:object)
+          (path (g:boxed tree-path)))))
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_tree_drag_source_drag_data_delete ()
@@ -268,13 +268,13 @@
   (:skip parent-instance (:pointer (:struct g:type-interface)))
   ;;methods
   (drag-data-received (:boolean
-               (tree-drag-dest g:object)
-               (path (g:boxed tree-path))
-               (selection-data (g:boxed selection-data))))
+              (tree-drag-dest g:object)
+              (path (g:boxed tree-path))
+              (selection-data (g:boxed selection-data))))
   (row-drop-possible (:boolean
               (tree-drag-dest g:object)
               (path (g:boxed tree-path))
-                       (selection-data (g:boxed selection-data)))))
+              (selection-data (g:boxed selection-data)))))
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_tree_drag_dest_drag_data_received ()

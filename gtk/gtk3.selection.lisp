@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.selection.lisp
+;;; gtk3.selection.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -178,17 +178,15 @@
 ;;; GtkTargetList
 ;;; ----------------------------------------------------------------------------
 
-(glib-init:at-init ()
-  (cffi:foreign-funcall "gtk_target_list_get_type" :size))
-
 (define-g-boxed-opaque target-list "GtkTargetList"
+  :type-initializer "gtk_target_list_get_type"
   :alloc (%target-list-new (cffi:null-pointer) 0))
 
 #+liber-documentation
 (setf (liber:alias-for-class 'target-list)
       "GBoxed"
       (documentation 'target-list 'type)
- "@version{#2021-10-3}
+ "@version{2023-1-28}
   @begin{short}
     A @sym{gtk:target-list} structure is used to represent a list of target
     entries.
@@ -196,6 +194,7 @@
   This structure should be treated as opaque.
   @begin{pre}
 (define-g-boxed-opaque gtk:target-list \"GtkTargetList\"
+  :type-initializer \"gtk_target_list_get_type\"
   :alloc (%gtk:target-list-new (cffi:null-pointer) 0))
   @end{pre}
   A target entry is a list with the following fields. See the
@@ -243,6 +242,7 @@
 ;;; ----------------------------------------------------------------------------
 
 (define-g-boxed-opaque selection-data "GtkSelectionData"
+  :type-initializer "gtk_selection_data_get_type"
   :alloc (error "GtkSelectionData cannot be created from the Lisp side."))
 
 #+liber-documentation
@@ -343,13 +343,13 @@
   (flags target-flags)
   (info :uint))
 
-(defcfun ("gtk_target_list_new" %target-list-new) (g:boxed target-list)
+(defcfun ("gtk_target_list_new" %target-list-new) (g:boxed target-list :return)
   (targets :pointer)
   (n-targets :uint))
 
 (defun target-list-new (&optional (targets nil))
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{2023-1-28}
   @argument[targets]{a list of target entries}
   @return{The new @class{gtk:target-list} instance.}
   @begin{short}
@@ -418,7 +418,7 @@
 
 (defcfun ("gtk_target_list_add" target-list-add) :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{2023-1-28}
   @argument[tlist]{a @class{gtk:target-list} instance}
   @argument[target]{a @symbol{gdk:atom-as-string} as a string for the interned
     atom representing the target}
@@ -441,6 +441,9 @@
 ;;; gtk_target_list_add_table ()
 ;;; ----------------------------------------------------------------------------
 
+;; TODO: Consider to change the name. This function adds a Lisp list of
+;; targets to the target list.
+
 (defcfun ("gtk_target_list_add_table" %target-list-add-table) :void
   (tlist (g:boxed target-list))
   (targets :pointer)
@@ -448,7 +451,7 @@
 
 (defun target-list-add-table (tlist targets)
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{2023-1-28}
   @argument[tlist]{a @class{gtk:target-list} instance}
   @argument[targets]{a list of target entries}
   @begin{short}
@@ -463,10 +466,9 @@
 ;;; gtk_target_list_add_text_targets ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_target_list_add_text_targets" target-list-add-text-targets)
-    :void
+(defcfun ("gtk_target_list_add_text_targets" target-list-add-text-targets) :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{2023-1-28}
   @argument[tlist]{a @class{gtk:target-list} instance}
   @argument[info]{an unsigned integer ID that will be passed back to the
     application}
@@ -487,7 +489,7 @@
 (defcfun ("gtk_target_list_add_image_targets" target-list-add-image-targets)
     :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{2023-1-28}
   @argument[tlist]{a @class{gtk:target-list} instance}
   @argument[info]{an unsigned integer ID that will be passed back to the
     application}
@@ -508,10 +510,9 @@
 ;;; gtk_target_list_add_uri_targets ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_target_list_add_uri_targets" target-list-add-uri-targets)
-    :void
+(defcfun ("gtk_target_list_add_uri_targets" target-list-add-uri-targets) :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{2023-1-28}
   @argument[tlist]{a @class{gtk:target-list} instance}
   @argument[info]{an unsigned integer ID that will be passed back to the
     application}
@@ -532,7 +533,7 @@
 (defcfun ("gtk_target_list_add_rich_text_targets"
            target-list-add-rich-text-targets) :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{2023-1-28}
   @argument[tlist]{a @class{gtk:target-list} instance}
   @argument[info]{an unsigned integer ID that will be passed back to the
     application}
@@ -563,9 +564,9 @@
 
 (defcfun ("gtk_target_list_remove" target-list-remove) :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{2023-1-27}
   @argument[tlist]{a @class{gtk:target-list} instance}
-  @argument[target]{a @symbol{gdk:atom-as-string} as s string with for the
+  @argument[target]{a @symbol{gdk:atom-as-string} as a string with for the
     interned atom representing the target}
   @begin{short}
     Removes a target from a target list.
@@ -587,7 +588,7 @@
 
 (defun target-list-find (tlist target)
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{2023-1-28}
   @argument[tlist]{a @class{gtk:target-list} instance}
   @argument[target]{a @symbol{gdk:atom-as-string} as a string with the interned
     atom representing the target to search for}
@@ -625,6 +626,9 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_target_table_new_from_list ()
 ;;; ----------------------------------------------------------------------------
+
+;; TODO: Consider to change the name of the implementation. This function
+;; does not create a new instance, but returns the target list as a Lisp list.
 
 (defcfun ("gtk_target_table_new_from_list" %target-table-new-from-list)
     :pointer
@@ -1376,9 +1380,9 @@
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_selection_data_copy" selection-data-copy)
-    (g:boxed selection-data)
+    (g:boxed selection-data :return)
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-1-28}
   @argument[data]{a @class{gtk:selection-data} instance}
   @begin{short}
     Copies a @class{gtk:selection-data} instance.
@@ -1399,4 +1403,4 @@
 ;;;     a pointer to a GtkSelectionData structure.
 ;;; ----------------------------------------------------------------------------
 
-;;; --- End of file gtk.selections.lisp ----------------------------------------
+;;; --- End of file gtk3.selections.lisp ---------------------------------------

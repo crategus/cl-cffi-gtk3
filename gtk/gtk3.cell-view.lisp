@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.cell-view.lisp
+;;; gtk3.cell-view.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -575,20 +575,20 @@
   path)
 
 (defcfun ("gtk_cell_view_get_display_row" cell-view-displayed-row)
-    (g:boxed tree-path)
+    (g:boxed tree-path :return)
  #+liber-documentation
- "@version{#2021-5-4}
+ "@version{#2023-1-28}
   @syntax[]{(gtk:cell-view-display-row cellview) => path}
   @syntax[]{(setf (gtk:cell-view-display-row cellview) path)}
   @argument[cellview]{a @class{gtk:cell-view} widget}
   @argument[path]{a @class{gtk:tree-path} instance or @code{nil} to unset}
   @begin{short}
-    The function @sym{gtk:cell-view-display-row} returns a @class{gtk:tree-path}
+    The @sym{gtk:cell-view-display-row} function returns a @class{gtk:tree-path}
     instance referring to the currently displayed row.
   @end{short}
   If no row is currently displayed, @code{nil} is returned.
 
-  The function @sym{(setf gtk:cell-view-display-row)} sets the row of the model
+  The @sym{(setf gtk:cell-view-display-row)} function sets the row of the model
   that is currently displayed by the cell view. If the path is unset, then the
   contents of the cell view \"stick\" at their last value. This is not normally
   a desired result, but may be a needed intermediate state if say, the model
@@ -657,4 +657,4 @@
 ;;; Since 2.6
 ;;; ----------------------------------------------------------------------------
 
-;;; --- End of file gtk.cell-view.lisp -----------------------------------------
+;;; --- End of file gtk3.cell-view.lisp ----------------------------------------

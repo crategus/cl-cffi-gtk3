@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
-;;; gdk.frame-timings.lisp
+;;; gdk3.frame-timings.lisp
 ;;;
 ;;; The documentation of this file is taken from the GDK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
-;;; Copyright (C) 2016 - 2020 Dieter Kaiser
+;;; Copyright (C) 2016 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -52,26 +52,25 @@
 ;;; struct GdkFrameTimings
 ;;; ----------------------------------------------------------------------------
 
-(glib-init:at-init ()
-  (cffi:foreign-funcall "gdk_frame_timings_get_type" :size))
-
 (define-g-boxed-opaque frame-timings "GdkFrameTimings"
+  :type-initializer "gdk_frame_timings_get_type"
   :alloc (error "GdkFrameTimings cannot be created from the Lisp side."))
 
 #+liber-documentation
 (setf (liber:alias-for-class 'frame-timings)
-      "CStruct"
+      "GBoxed"
       (documentation 'frame-timings 'type)
- "@version{#2020-11-12}
+ "@version{#2023-1-24}
   @begin{short}
     A @sym{gdk:frame-timings} structure holds timing information for a single
     frame of the application’s displays.
   @end{short}
-  To retrieve a @sym{gdk:frame-timings} structure, use the functions
-  @fun{gdk:frame-clock-timings} or @fun{gdk:frame-clock-current-timings}. The
-  information in @sym{gdk:frame-timings} structures is useful for precise
-  synchronization of video with the event or audio streams, and for measuring
-  quality metrics for the application’s display, such as latency and jitter.
+  To retrieve a @sym{gdk:frame-timings} instance, use the
+  @fun{gdk:frame-clock-timings} or @fun{gdk:frame-clock-current-timings}
+  functions. The information in the @sym{gdk:frame-timings} instance is useful
+  for precise synchronization of video with the event or audio streams, and for
+  measuring quality metrics for the application’s display, such as latency and
+  jitter.
   @begin{pre}
 (define-g-boxed-opaque frame-timings \"GdkFrameTimings\"
   :alloc (error \"GdkFrameTimings cannot be created from the Lisp side.\"))
@@ -270,4 +269,4 @@
 
 (export 'frame-timings-predicted-presentation-time)
 
-;;; --- End of file gdk.frame-timings.lisp -------------------------------------
+;;; --- End of file gdk3.frame-timings.lisp ------------------------------------

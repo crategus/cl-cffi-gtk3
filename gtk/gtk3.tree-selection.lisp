@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.tree-selection.lisp
+;;; gtk3.tree-selection.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK+ library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2021 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -432,14 +432,13 @@
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_tree_selection_get_selected_rows"
-          %tree-selection-selected-rows)
-    (g:list-t (g:boxed tree-path) :free-from-foreign t)
+          %tree-selection-selected-rows) (g:list-t (g:boxed tree-path :return))
   (selection (g:object tree-selection))
   (model :pointer))
 
 (defun tree-selection-selected-rows (selection)
  #+liber-documentation
- "@version{#2021-2-27}
+ "@version{2023-1-28}
   @argument[selection]{a @class{gtk:tree-selection} object}
   @return{A list containing a @class{gtk:tree-path} instance for each selected
     row.}
@@ -448,13 +447,13 @@
   @end{short}
   Additionally, if you are planning on modifying the model after calling this
   function, you may want to convert the returned list into a list of
-  @class{gtk:tree-row-reference} objects. To do this, you can use the function
-  @fun{gtk:tree-row-reference-new}.
+  @class{gtk:tree-row-reference} objects. To do this, you can use the
+  @fun{gtk:tree-row-reference-new} function.
   @begin[Note]{dictionary}
     As a convenience the C implementation also gets the current model of the
-    tree view wiget associated with the selection. Use the functions
-    @fun{gtk:tree-selection-tree-view} and @fun{gtk:tree-view-model} instead to
-    get the model.
+    tree view wiget associated with the selection. Use the
+    @fun{gtk:tree-selection-tree-view} and @fun{gtk:tree-view-model} functions
+    instead to get the model.
   @end{dictionary}
   @see-class{gtk:tree-selection}
   @see-class{gtk:tree-row-reference}
@@ -692,4 +691,4 @@
 
 (export 'tree-selection-unselect-range)
 
-;;; --- End of file gtk.tree-selection.lisp ------------------------------------
+;;; --- End of file gtk3.tree-selection.lisp -----------------------------------

@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.style-context.lisp
+;;; gtk3.style-context.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -35,7 +35,7 @@
 ;;;     GtkStyleContext
 ;;;
 ;;;     GtkJunctionSides
-;;;     GtkRegionFlags                                   to gtk-widget-path.lisp
+;;;     GtkRegionFlags                                  to gtk3.widget-path.lisp
 ;;;     GtkStyleContextPrintFlags
 ;;;     GtkBorder
 ;;;     GtkBorderStyle
@@ -1128,13 +1128,13 @@ lambda (context)    :run-first
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_style_context_get_section" style-context-section)
-    (g:boxed css-section :return)
+    (g:boxed css-section)
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{2023-1-24}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[property]{a string with the name of the style property}
-  @return{Returns @code{nil} or the @class{gtk:css-section} instance where the
-    property was defined.}
+  @return{Returns the @class{gtk:css-section} instance where the property was
+    defined, or @code{nil}.}
   @begin{short}
     Queries the location in the CSS where @arg{property} was defined for the
     current style context.
@@ -2875,4 +2875,4 @@ GtkEntry.entry { ... @}
 
 (export 'render-insertion-cursor)
 
-;;; --- End of file gtk.style-context.lisp -------------------------------------
+;;; --- End of file gtk3.style-context.lisp ------------------------------------

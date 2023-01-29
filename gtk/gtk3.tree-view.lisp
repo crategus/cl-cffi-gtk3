@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.tree-view.lisp
+;;; gtk3.tree-view.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -1993,17 +1993,17 @@
 
 (defcfun ("gtk_tree_view_get_cursor" %tree-view-get-cursor) :void
   (view (g:object tree-view))
-  (path (g:boxed tree-path))
-  (focus (g:object tree-view-column)))
+  (path :pointer)
+  (focus :pointer))
 
 (defun tree-view-get-cursor (view)
  #+liber-documentation
- "@version{#2021-2-26}
+ "@version{#2023-1-28}
   @argument[view]{a @class{gtk:tree-view} widget}
   @begin{return}
-    @code{path} -- the current @class{gtk:tree-path} cursor path, or @code{nil}
+    @arg{path} -- a current @class{gtk:tree-path} cursor path, or @code{nil}
       @br{}
-    @code{focus} -- the current @class{gtk:tree-view-column} focus column,
+    @arg{focus} -- a current @class{gtk:tree-view-column} focus column,
       or @code{nil}
   @end{return}
   @begin{short}
@@ -2235,7 +2235,7 @@
 
 (defun tree-view-path-at-pos (view x y)
  #+liber-documentation
- "@version{#2021-2-26}
+ "@version{#2023-1-28}
   @argument[view]{a @class{gtk:tree-view} widget}
   @argument[x]{an integer with the x position to be identified (relative to
     the bin window)}
@@ -2251,25 +2251,25 @@
     Finds the path at the point (@arg{x}, @arg{y}), relative to the bin window
     coordinates.
   @end{short}
-  Please see the function @fun{gtk:tree-view-bin-window}. That is, @arg{x} and
+  Please see the @fun{gtk:tree-view-bin-window} function. That is, @arg{x} and
   @arg{y} are relative to an events coordinates. The @arg{x} and @arg{y} must
   coordinates come from an event on the tree view only where the event window
-  from the function @fun{gdk:event-window} is equal to the bin window from the
-  function @fun{gtk:tree-view-bin-window}. It is primarily for things like
+  from the @fun{gdk:event-window} function is equal to the bin window from the
+  @fun{gtk:tree-view-bin-window} function. It is primarily for things like
   popup menus.
 
   If @arg{path} is non-@code{nil}, then it will be filled with the
   @class{gtk:tree-path} instance at that point. If @arg{column} is
   non-@code{nil}, then it will be filled with the column at that point. The
   values @arg{cell-x} and @arg{cell-y} return the coordinates relative to the
-  cell background, i.e. the @code{background-area} passed to the function
-  @fun{gtk:cell-renderer-render}. This function is only meaningful if the tree
-  view is realized. Therefore this function will always return @code{nil} if
-  the tree view is not realized or does not have a model.
+  cell background, i.e. the @code{background-area} passed to the
+  @fun{gtk:cell-renderer-render} function. This function is only meaningful if
+  the tree view is realized. Therefore this function will always return
+  @code{nil} if the tree view is not realized or does not have a model.
 
   For converting widget coordinates, e.g. the ones you get from the
-  \"query-tooltip\" signal, please see the function
-  @fun{gtk:tree-view-convert-widget-to-bin-window-coords}.
+  \"query-tooltip\" signal, please see the
+  @fun{gtk:tree-view-convert-widget-to-bin-window-coords} function.
   @see-class{gtk:tree-view}
   @see-class{gtk:tree-path}
   @see-class{gtk:tree-view-column}
@@ -2282,10 +2282,10 @@
                          (cell-x :int)
                          (cell-y :int))
     (when (%tree-view-path-at-pos view
-                                      x y
-                                      path
-                                      column
-                                      cell-x cell-y)
+                                  x y
+                                  path
+                                  column
+                                  cell-x cell-y)
       (values (cffi:mem-ref path '(g:boxed tree-path :return))
               (cffi:mem-ref column '(g:object tree-view-column))
               (cffi:mem-ref cell-x :int)
@@ -2309,7 +2309,7 @@
 
 (defun tree-view-is-blank-at-pos (view x y)
  #+liber-documentation
- "@version{#2021-2-26}
+ "@version{#2023-1-28}
   @argument[view]{a @class{gtk:tree-view} widget}
   @argument[x]{an integer with the x position to be identified (relative to
     the bin window)}
@@ -2333,15 +2333,15 @@
 
   The @arg{x} and @arg{y} coordinates that are provided must be relative to the
   bin window coordinates. That is, @arg{x} and @arg{y} must come from an event
-  on the tree view where the window from the function @fun{gdk:event-window}
-  is equal to the window from the function @fun{gtk:tree-view-bin-window}.
+  on the tree view where the window from the @fun{gdk:event-window} function
+  is equal to the window from the @fun{gtk:tree-view-bin-window} function.
 
   For converting widget coordinates, e.g. the ones you get from the
-  \"query-tooltip\" signal, please see the function
-  @fun{gtk:tree-view-convert-widget-to-bin-window-coords}.
+  \"query-tooltip\" signal, please see the
+  @fun{gtk:tree-view-convert-widget-to-bin-window-coords} function.
 
   The @arg{path}, @arg{column}, @arg{cell-x} and @arg{cell-y} arguments will
-  be returned likewise as for the function @fun{gtk:tree-view-path-at-pos}.
+  be returned likewise as for the @fun{gtk:tree-view-path-at-pos} function.
   @see-class{gtk:tree-view}
   @see-class{gtk:tree-path}
   @see-class{gtk:tree-view-column}
@@ -2354,10 +2354,10 @@
                          (cell-x :int)
                          (cell-y :int))
     (when (%tree-view-is-blank-at-pos view
-                                          x y
-                                          path
-                                          column
-                                          cell-x cell-y)
+                                      x y
+                                      path
+                                      column
+                                      cell-x cell-y)
       (values (cffi:mem-ref path '(g:boxed tree-path :return))
               (cffi:mem-ref column 'g:object)
               (cffi:mem-ref cell-x :int)
@@ -2484,15 +2484,14 @@
 ;;; gtk_tree_view_get_visible_range () -> tree-view-visible-range
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_get_visible_range" %tree-view-visible-range)
-    :boolean
+(defcfun ("gtk_tree_view_get_visible_range" %tree-view-visible-range) :boolean
   (view (g:object tree-view))
   (start :pointer)
   (end :pointer))
 
 (defun tree-view-visible-range (view)
  #+liber-documentation
- "@version{#2021-2-26}
+ "@version{#2023-1-28}
   @argument[view]{a @class{gtk:tree-view} widget}
   @begin{return}
     @code{start} -- a @class{gtk:tree-path} instance with the start of region,
@@ -2885,8 +2884,7 @@
 ;;; gtk_tree_view_set_drag_dest_row ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_set_drag_dest_row" tree-view-set-drag-dest-row)
-    :void
+(defcfun ("gtk_tree_view_set_drag_dest_row" tree-view-set-drag-dest-row) :void
  #+liber-documentation
  "@version{#2021-2-26}
   @argument[view]{a @class{gtk:tree-view} widget}
@@ -2920,7 +2918,7 @@
 
 (defun tree-view-get-drag-dest-row (view)
  #+liber-documentation
- "@version{#2021-2-26}
+ "@version{#2023-1-28}
   @argument[view]{a @class{gtk:tree-view} widget}
   @begin{return}
     @code{path} -- the @class{gtk:tree-path} instance of the highlighted row,
@@ -2956,7 +2954,7 @@
 
 (defun tree-view-get-dest-row-at-pos (view x y)
  #+liber-documentation
- "@version{#2021-2-26}
+ "@version{#2023-1-28}
   @argument[view]{a @class{gtk:tree-view} widget}
   @argument[x]{an integer with the position to determine the destination row
     for}
@@ -2971,10 +2969,10 @@
   @begin{short}
     Determines the destination row for a given position.
   @end{short}
-  The arguments @arg{x} and @arg{y} are expected to be in widget coordinates.
+  The @arg{x} and @arg{y} arguments are expected to be in widget coordinates.
   This function is only meaningful if the tree view is realized. Therefore this
-  function will always return @code{nil} if @arg{tree-view} is not realized or
-  does not have a model.
+  function will always return @code{nil} if @arg{view} is not realized or does
+  not have a model.
   @see-class{gtk:tree-view}
   @see-class{gtk:tree-path}
   @see-symbol{gtk:tree-view-drop-position}"
@@ -2989,12 +2987,10 @@
 ;;; gtk_tree_view_create_row_drag_icon ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_create_row_drag_icon"
-           tree-view-create-row-drag-icon)
+(defcfun ("gtk_tree_view_create_row_drag_icon" tree-view-create-row-drag-icon)
     (:pointer (:struct cairo:surface-t))
  #+liber-documentation
  "@version{#2021-2-26}
-
   @argument[view]{a @class{gtk:tree-view} widget}
   @argument[path]{a @class{gtk:tree-path} instance}
   @return{A newly allocated @symbol{cairo:surface-t} instance of the drag icon.}
@@ -3479,35 +3475,33 @@
 ;;; gtk_tree_view_get_tooltip_context () -> tree-view-tooltip-context
 ;;; ----------------------------------------------------------------------------
 
-;; TODO: This implementation is not correct. The arguments x,y are pointers.
-
 (defcfun ("gtk_tree_view_get_tooltip_context" %tree-view-tooltip-context)
     :boolean
   (view (g:object tree-view))
-  (x :int)
-  (y :int)
+  (x (:pointer :int))
+  (y (:pointer :int))
   (tip :boolean)
   (model :pointer)
   (path :pointer)
   (iter :pointer))
 
-(defun tree-view-tooltip-context (tree-view)
+(defun tree-view-tooltip-context (view)
  #+liber-documentation
  "@version{1111-11-11}
   @argument[view]{a @class{gtk:tree-view} widget}
   @begin{return}
-    @code{x}     -- a @code{:int} with the x coordinate (relative to widget
-                    coordinates) @br{}
-    @code{y}     -- a @code{:int} with the y coordinate (relative to widget
-                    coordinates) @br{}
-    @code{tip}   -- a boolean whether this is a keyboard tooltip or not @br{}
-    @code{model} -- a @class{gtk:tree-model} or @code{nil} @br{}
-    @code{path}  -- a @class{gtk:tree-path} or @code{nil} @br{}
-    @code{iter}  -- a @class{gtk:tree-iter} or @code{nil}
+    @code{x} -- an integer with the x coordinate (relative to widget
+      coordinates) @br{}
+    @code{y} -- an integer with the y coordinate (relative to widget
+      coordinates) @br{}
+    @code{tip} -- a boolean whether this is a keyboard tooltip or not @br{}
+    @code{model} -- a @class{gtk:tree-model} object or @code{nil} @br{}
+    @code{path}  -- a @class{gtk:tree-path} instance or @code{nil} @br{}
+    @code{iter}  -- a @class{gtk:tree-iter} iterator or @code{nil}
   @end{return}
   @begin{short}
     This function is supposed to be used in a \"query-tooltip\" signal handler
-    for @class{gtk:tree-view}.
+    for @class{gtk:tree-view} widgets.
   @end{short}
   The @arg{x}, @arg{y} and @arg{tip} values which are received in the signal
   handler, should be passed to this function without modification.
@@ -3517,29 +3511,29 @@
   tooltips the row returned will be the cursor row. When @em{true}, then any of
   @arg{model}, @arg{path} and @arg{iter} which have been provided will be set to
   point to that row and the corresponding model. @arg{x} and @arg{y} will always
-  be converted to be relative to @arg{tree-view}'s \"bin window\" if @arg{tip}
+  be converted to be relative to @arg{view}'s \"bin window\" if @arg{tip}
   is @em{false}.
   @see-class{gtk:tree-view}"
   (with-foreign-objects ((x :int)
                          (y :int)
-                         (keyboard-tip :boolean)
+                         (tip :boolean)
                          (model :pointer)
                          (path :pointer)
                          (iter :pointer))
-    (when (%tree-view-tooltip-context tree-view
-                                          x
-                                          y
-                                          keyboard-tip
-                                          model
-                                          path
-                                          iter)
+    (when (%tree-view-tooltip-context view
+                                      x
+                                      y
+                                      tip
+                                      model
+                                      path
+                                      iter)
       (values (cffi:mem-ref x :int)
               (cffi:mem-ref y :int)
-              (cffi:mem-ref keyboard-tip :boolean)
+              (cffi:mem-ref tip :boolean)
               (cffi:mem-ref model 'g:object)
               (cffi:mem-ref path '(g:boxed tree-path :return))
               (cffi:mem-ref iter '(g:boxed tree-iter :return))))))
 
 (export 'tree-view-tooltip-context)
 
-;;; --- End of file gtk.tree-view.lisp -----------------------------------------
+;;; --- End of file gtk3.tree-view.lisp ----------------------------------------

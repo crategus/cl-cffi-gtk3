@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.clipboard.lisp
+;;; gtk3.clipboard.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -965,13 +965,13 @@
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_clipboard_wait_for_contents" clipboard-wait-for-contents)
-    (g:boxed selection-data)
+    (g:boxed selection-data :return)
  #+liber-documentation
- "@version{#2021-10-6}
+ "@version{#2023-1-28}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[target]{a @symbol{gdk:atom-as-string} as a string representing the
     form into which the clipboard owner should convert the selection}
-  @return{A newly allocated @class{gtk:selection-data} object or @code{nil} if
+  @return{A newly allocated @class{gtk:selection-data} instance or @code{nil} if
     retrieving the given target failed.}
   @begin{short}
     Requests the contents of the clipboard using the given target.
@@ -1331,4 +1331,4 @@
 #+gtk-3-22
 (export 'clipboard-selection)
 
-;;; --- End of file gtk.clipboard.lisp -----------------------------------------
+;;; --- End of file gtk3.clipboard.lisp ----------------------------------------

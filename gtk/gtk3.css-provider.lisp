@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.css-provider.lisp
+;;; gtk3.css-provider.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
-;;; Copyright (C) 2013 - 2022 Dieter Kaiser
+;;; Copyright (C) 2013 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -58,8 +58,8 @@
 ;;;     gtk_css_section_get_start_line
 ;;;     gtk_css_section_get_start_position
 ;;;
-;;;     gtk_css_section_ref                                missing
-;;;     gtk_css_section_unref                              missing
+;;;     gtk_css_section_ref                                not needed
+;;;     gtk_css_section_unref                              not needed
 ;;;
 ;;; Signals
 ;;;
@@ -125,7 +125,7 @@
   @begin[Signal Details]{dictionary}
     @subheading{The \"parsing-error\" signal}
       @begin{pre}
- lambda (provider section error)    :run-last
+lambda (provider section error)    :run-last
       @end{pre}
       Signals that a parsing error occured. The path, line and position of the
       @symbol{gtk:css-section} instance describe the actual location of the
@@ -272,10 +272,10 @@
 
 (defun css-provider-load-from-path (provider path)
  #+liber-documentation
- "@version{#2021-11-18}
+ "@version{2023-1-29}
   @argument[provider]{a @class{gtk:css-provider} object}
-  @argument[path]{a string with the path of a filename to load, in the GLib
-   filename encoding}
+  @argument[path]{a pathname or namestring with the path of a filename to load,
+    in the GLib filename encoding}
   @begin{return}
     @em{True}. The return value is deprecated and @em{false} will only be
     returned for backwards compatibility reasons if an error occured.
@@ -288,7 +288,7 @@
   of the @class{gtk:css-provider} object.
   @see-class{gtk:css-provider}"
   (with-g-error (err)
-    (%css-provider-load-from-path provider path err)))
+    (%css-provider-load-from-path provider (namestring path) err)))
 
 (export 'css-provider-load-from-path)
 
@@ -456,24 +456,23 @@
 ;;; GtkCssSection
 ;;; ----------------------------------------------------------------------------
 
-(glib-init:at-init ()
-  (cffi:foreign-funcall "gtk_css_section_get_type" :size))
-
 (define-g-boxed-opaque css-section "GtkCssSection"
+  :type-initializer "gtk_css_section_get_type"
   :alloc (error "GtkCssSection cannot be created from the Lisp side."))
 
 #+liber-documentation
 (setf (liber:alias-for-class 'css-section)
-      "CStruct"
+      "GBoxed"
       (documentation 'css-section 'type)
- "@version{#2021-11-18}
+ "@version{#2023-1-24}
   @begin{short}
     Defines a part of a CSS document.
   @end{short}
   Because sections are nested into one another, you can use the
   @fun{gtk:css-section-parent} function to get the containing region.
   @begin{pre}
-(define-g-boxed-opaque gtk:css-section \"GtkCssSection\"
+(define-g-boxed-opaque css-section \"GtkCssSection\"
+  :type-initializer \"gtk_css_section_get_type\"
   :alloc (error \"GtkCssSection cannot be created from the Lisp side.\"))
   @end{pre}
   @see-class{gtk:css-provider}
@@ -558,8 +557,7 @@
 ;;; gtk_css_section_get_parent () -> css-section-parent
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_css_section_get_parent" css-section-parent)
-    (g:boxed css-section :return)
+(defcfun ("gtk_css_section_get_parent" css-section-parent) (g:boxed css-section)
  #+liber-documentation
  "@version{#2021-11-18}
   @argument[section]{a @class{gtk:css-section} instance}
@@ -668,4 +666,4 @@
 ;;; Since 3.2
 ;;; ----------------------------------------------------------------------------
 
-;;; --- End of file gtk.css-provider.lisp --------------------------------------
+;;; --- End of file gtk3.css-provider.lisp -------------------------------------
