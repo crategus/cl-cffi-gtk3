@@ -40,7 +40,6 @@
                         (TEXT GTK-ENTRY-BUFFER-TEXT "text" "gchararray" T T)))
              (gobject:get-g-type-definition "GtkEntryBuffer"))))
 
-
 (test entry-buffer-properties
   (let ((object (make-instance 'gtk:entry-buffer :text "text")))
     (is (= 4 (gtk:entry-buffer-length object)))
@@ -147,32 +146,29 @@
 
 ;;;   gtk_entry_buffer_emit_deleted_text
 
-#+nil
 (test entry-buffer-emit-deleted-text
   (let ((buffer (gtk:entry-buffer-new "first second third")))
-    (g-signal-connect buffer "deleted-text"
-       (lambda (object position n-chars)
-         (is (eq buffer object))
-         (is (= 6 position))
-         (is (= 7 n-chars))
-         t))
-    (gtk:entry-buffer-emit-deleted-text buffer 6 7)))
+    (g:signal-connect buffer "deleted-text"
+        (lambda (object position n-chars)
+          (is (eq buffer object))
+          (is (string= "first second third"
+                       (gtk:entry-buffer-text object)))
+          (is (= 6 position))
+          (is (= 7 n-chars))
+          nil))
+    (is-false (gtk:entry-buffer-emit-deleted-text buffer 6 7))))
 
 ;;;   gtk_entry_buffer_emit_inserted_text
 
-#+nil
 (test entry-buffer-emit-inserted-text
   (let ((buffer (gtk:entry-buffer-new "first second third")))
-    (g-signal-connect buffer "inserted-text"
-       (lambda (object position text n-chars)
-;         (format t "~&in Signal 'inserted-text' for ~a~%" object)
-         (is (eq buffer object))
-         (is (= 6 position))
-         (is (equal "text" text))
-         (is (= 7 n-chars))
-         t))
-;    (format t "~&buffer = ~A~%" buffer)
-    (gtk:entry-buffer-emit-inserted-text buffer 6 "text" 7)
-))
+    (g:signal-connect buffer "inserted-text"
+        (lambda (object position text n-chars)
+          (is (eq buffer object))
+          (is (= 6 position))
+          (is (equal "text" text))
+          (is (= 7 n-chars))
+          nil))
+    (gtk:entry-buffer-emit-inserted-text buffer 6 "text" 7)))
 
-;;; 2021-10-19
+;;; --- 2023-1-30 --------------------------------------------------------------

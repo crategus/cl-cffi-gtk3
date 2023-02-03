@@ -37,11 +37,11 @@
 ;;;     GtkPaperSize
 
 (test paper-size-boxed
-  ;; Type check
-  (is-true (g:type-is-a (g:gtype "GtkPaperSize") +g-type-boxed+))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkPaperSize")
-          (g:gtype (cffi:foreign-funcall "gtk_paper_size_get_type" :size)))))
+          (g:gtype (cffi:foreign-funcall "gtk_paper_size_get_type" :size))))
+  ;; Type check
+  (is-true (g:type-is-a (g:gtype "GtkPaperSize") +g-type-boxed+)))
 
 ;;; --- Functions --------------------------------------------------------------
 
@@ -55,12 +55,12 @@
 ;;;     gtk-paper-size-new-from-ppd
 
 (test paper-size-new-from-ppd.1
-  (let ((paper-size (gtk:paper-size-new-from-ppd "A4")))
-    (is (eq 'gtk:paper-size (type-of paper-size)))
-    (is (string= "iso_a4" (gtk:paper-size-name paper-size)))
-    (is (string= "A4" (gtk:paper-size-display-name paper-size)))
-    (is (= 210.0 (gtk:paper-size-width paper-size :mm)))
-    (is (= 297.0 (gtk:paper-size-height paper-size :mm)))))
+  (let ((size (gtk:paper-size-new-from-ppd "A4")))
+    (is (eq 'gtk:paper-size (type-of size)))
+    (is (string= "iso_a4" (gtk:paper-size-name size)))
+    (is (string= "A4" (gtk:paper-size-display-name size)))
+    (is (= 210.0 (gtk:paper-size-width size :mm)))
+    (is (= 297.0 (gtk:paper-size-height size :mm)))))
 
 (test paper-size-new-from-ppd.2
   (let ((paper-size (gtk:paper-size-new-from-ppd "unknown" "myppd" 10 20)))
@@ -114,7 +114,6 @@
     (is (= 20 (gtk:paper-size-height paper-size :mm)))))
 
 ;;;     gtk-paper-size-copy
-;;;     gtk-paper-size-free
 ;;;     gtk-paper-size-is-equal
 
 (test papper-size-is-equal
@@ -138,7 +137,8 @@
 
 (test paper-size-paper-sizes.2
   (is (member "A4"
-              (mapcar #'gtk:paper-size-display-name (gtk:paper-size-paper-sizes nil))
+              (mapcar #'gtk:paper-size-display-name
+                      (gtk:paper-size-paper-sizes nil))
               :test #'string=)))
 
 ;;;     gtk-paper-size-name
