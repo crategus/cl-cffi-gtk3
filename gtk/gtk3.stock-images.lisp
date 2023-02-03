@@ -152,11 +152,11 @@
 ;;; GtkIconSource
 ;;; ----------------------------------------------------------------------------
 
-(glib-init:at-init ()
-  (cffi:foreign-funcall "gtk_icon_source_get_type" :size))
+(defcfun ("gtk_icon_source_new" %icon-source-new) :pointer)
 
 (define-g-boxed-opaque icon-source "GtkIconSource"
-  :alloc (icon-source-new))
+  :type-initializer "gtk_icon_source_get_type"
+  :alloc (%icon-source-new))
 
 #+liber-documentation
 (setf (liber:alias-for-class 'icon-source)
@@ -166,7 +166,8 @@
   @short{}
   @begin{pre}
 (define-g-boxed-opaque icon-source \"GtkIconSource\"
-  :alloc (icon-source-new))
+  :type-initializer \"GtkIconSource\"
+  :alloc (%icon-source-new))
   @end{pre}
   @see-class{gtk:icon-factory}")
 
@@ -176,12 +177,10 @@
 ;;; GtkIconSet
 ;;; ----------------------------------------------------------------------------
 
-(glib-init:at-init ()
-  (cffi:foreign-funcall "gtk_icon_set_get_type" :size))
-
 (defcfun ("gtk_icon_set_new" %icon-set-new) :pointer)
 
 (define-g-boxed-opaque icon-set "GtkIconSet"
+  :type-initializer "gtk_icon_set_get_type"
   :alloc (%icon-set-new))
 
 #+liber-documentation

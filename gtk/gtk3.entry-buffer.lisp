@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.entry-buffer.lisp
+;;; gtk3.entry-buffer.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
-;;; Copyright (C) 2012 - 2021 Dieter Kaiser
+;;; Copyright (C) 2012 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -50,14 +50,14 @@
 ;;;
 ;;; Properties
 ;;;
-;;;     guint    length           Read
-;;;      gint    max-length       Read / Write
-;;;     gchar*   text             Read / Write
+;;;     length
+;;;     max-length
+;;;     text
 ;;;
 ;;; Signals
 ;;;
-;;;      void    deleted-text     Run First
-;;;      void    inserted-text    Run First
+;;;     deleted-text
+;;;     inserted-text
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -88,26 +88,25 @@
 
 #+liber-documentation
 (setf (documentation 'entry-buffer 'type)
- "@version{#2020-5-31}
+ "@version{2023-1-30}
   @begin{short}
     The @sym{gtk:entry-buffer} object contains the actual text displayed in a
     @class{gtk:entry} widget.
   @end{short}
-
   A single @sym{gtk:entry-buffer} object can be shared by multiple
   @class{gtk:entry} widgets which will then share the same text content, but
   not the cursor position, visibility attributes, icon etc.
 
-  @sym{gtk:entry-buffer} may be derived from. Such a derived class might allow
-  text to be stored in an alternate location, such as non-pageable memory,
-  useful in the case of important passwords. Or a derived class could integrate
-  with an application's concept of undo/redo.
+  The @sym{gtk:entry-buffer} class may be derived from. Such a derived class
+  might allow text to be stored in an alternate location, such as non-pageable
+  memory, useful in the case of important passwords. Or a derived class could
+  integrate with an application's concept of undo/redo.
   @begin[Signal Details]{dictionary}
     @subheading{The \"deleted-text\" signal}
       @begin{pre}
- lambda (buffer position n-chars)    :run-first
+lambda (buffer position n-chars)    :run-first
       @end{pre}
-      The signal is emitted after text is deleted from the buffer.
+      The signal is emitted after text is deleted from the entry buffer.
       @begin[code]{table}
         @entry[buffer]{A @sym{gtk:entry-buffer} object.}
         @entry[position]{An integer with the position the text was deleted at.}
@@ -116,9 +115,9 @@
       @end{table}
     @subheading{The \"inserted-text\" signal}
       @begin{pre}
- lambda (buffer position chars n-chars)    :run-first
+lambda (buffer position chars n-chars)    :run-first
       @end{pre}
-      The signal is emitted after text is inserted into the buffer.
+      The signal is emitted after text is inserted into the entry buffer.
       @begin[code]{table}
         @entry[buffer]{A @sym{gtk:entry-buffer} object.}
         @entry[position]{An integer with the position the text was inserted at.}
@@ -127,6 +126,7 @@
           inserted.}
       @end{table}
   @end{dictionary}
+  @see-constructor{gtk:entry-buffer-new}
   @see-slot{gtk:entry-buffer-length}
   @see-slot{gtk:entry-buffer-max-length}
   @see-slot{gtk:entry-buffer-text}
@@ -136,12 +136,12 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- entry-buffer-length ------------------------------------------------
+;;; --- entry-buffer-length ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "length" 'entry-buffer) t)
  "The @code{length} property of type @code{:uint} (Read) @br{}
-  The length, in characters, of the text in buffer. @br{}
+  The length, in characters, of the text in the entry buffer. @br{}
   Allowed values: <= 65535 @br{}
   Default value: 0")
 
@@ -149,28 +149,26 @@
 (setf (liber:alias-for-function 'entry-buffer-length)
       "Accessor"
       (documentation 'entry-buffer-length 'function)
- "@version{#2020-5-31}
-  @syntax[]{(gtk:entry-buffer-length object) => buffer-length}
-  @syntax[]{(setf (gtk:entry-buffer-length object) buffer-length)}
+ "@version{2023-1-30}
+  @syntax[]{(gtk:entry-buffer-length object) => length}
+  @syntax[]{(setf (gtk:entry-buffer-length object) length)}
   @argument[object]{a @class{gtk:entry-buffer} object}
-  @argument[buffer-length]{an unsigned integer with the length of the text}
+  @argument[length]{an unsigned integer with the length of the text}
   @begin{short}
     Accessor of the @slot[gtk:entry-buffer]{length} slot of the
     @class{gtk:entry-buffer} class.
   @end{short}
-
-  The slot access function @sym{gtk:entry-buffer-length} retrieves the length
-  in characters of the buffer.
+  The @sym{gtk:entry-buffer-length} function retrieves the length in characters
+  of the entry buffer.
   @see-class{gtk:entry-buffer}
   @see-function{gtk:entry-buffer-bytes}")
 
-;;; --- entry-buffer-max-length --------------------------------------------
+;;; --- entry-buffer-max-length ------------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "max-length"
-                                               'entry-buffer) t)
+(setf (documentation (liber:slot-documentation "max-length" 'entry-buffer) t)
  "The @code{max-length} property of type @code{:int} (Read / Write) @br{}
-  The maximum length, in characters, of the text in the buffer. @br{}
+  The maximum length, in characters, of the text in the entry buffer. @br{}
   Allowed values: [0,65535] @br{}
   Default value: 0")
 
@@ -178,53 +176,50 @@
 (setf (liber:alias-for-function 'entry-buffer-max-length)
       "Accessor"
       (documentation 'entry-buffer-max-length 'function)
- "@version{#2020-5-31}
-  @syntax[]{(gtk:entry-buffer-max-length object) => max-length}
-  @syntax[]{(setf gtk:entry-buffer-max-length object) max-length)}
+ "@version{2023-1-30}
+  @syntax[]{(gtk:entry-buffer-max-length object) => length}
+  @syntax[]{(setf gtk:entry-buffer-max-length object) length)}
   @argument[object]{a @class{gtk:entry-buffer} object}
-  @argument[max-length]{an integer with the maximum length of the entry buffer,
+  @argument[length]{an integer with the maximum length of the entry buffer,
     or 0 for no maximum, the value passed in will be clamped to the range
     [0, 65536]}
   @begin{short}
     Accessor of the @slot[gtk:entry-buffer]{max-length} slot of the
     @class{gtk:entry-buffer} class.
   @end{short}
-
-  The slot access function @sym{gtk:entry-buffer-max-length} returns the maximum
-  allowed number of characters in a entry buffer, or 0 if there is no maximum.
-  The slot access function @sym{(setf gtk:entry-buffer-max-length)} sets the
-  maximum allowed length of the contents of the buffer. If the current contents
-  are longer than the given length, then they will be truncated to fit.
+  The @sym{gtk:entry-buffer-max-length} function returns the maximum allowed
+  number of characters in a entry buffer, or 0 if there is no maximum. The
+  @sym{(setf gtk:entry-buffer-max-length)} function sets the maximum allowed
+  length of the contents of the entry buffer. If the current contents are
+  longer than the given length, then they will be truncated to fit.
   @see-class{gtk:entry-buffer}")
 
-;;; --- entry-buffer-text --------------------------------------------------
+;;; --- entry-buffer-text ------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "text" 'entry-buffer) t)
  "The @code{text} property of type @code{:string} (Read / Write) @br{}
-  The contents of the buffer. @br{}
+  The contents of the entry buffer. @br{}
   Default value: \"\"")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'entry-buffer-text)
       "Accessor"
       (documentation 'entry-buffer-text 'function)
- "@version{#2020-5-31}
+ "@version{2023-1-30}
   @syntax[]{(gtk:entry-buffer-text object) => text}
   @syntax[]{(setf gtk:entry-buffer-text object) text)}
   @argument[object]{a @class{gtk:entry-buffer} object}
-  @argument[text]{a string with the contents of the buffer}
+  @argument[text]{a string with the contents of the entry buffer}
   @begin{short}
     Accessor of the @slot[gtk:entry-buffer]{text} slot of the
     @class{gtk:entry-buffer} class.
   @end{short}
+  The @sym{gtk:entry-buffer-text} function retrieves the contents of the entry
+  buffer. The @sym{(setf gtk:entry-buffer-text} function sets the text.
 
-  The slot access function @sym{gtk:entry-buffer-text} retrieves the contents of
-  the buffer. The slot access function @sym{(setf gtk:entry-buffer-text} sets
-  the text in the entry buffer.
-
-  This is roughly equivalent to calling the functions
-  @fun{gtk:entry-buffer-delete-text} and @fun{gtk:entry-buffer-insert-text}.
+  This is roughly equivalent to calling the @fun{gtk:entry-buffer-delete-text}
+  and @fun{gtk:entry-buffer-insert-text} functions.
   @see-class{gtk:entry-buffer}
   @see-function{gtk:entry-buffer-delete-text}
   @see-function{gtk:entry-buffer-insert-text}")
@@ -235,13 +230,12 @@
 
 (defun entry-buffer-new (&optional (text nil))
  #+liber-documentation
- "@version{#2020-5-31}
-  @argument[text]{a string with the initial buffer text, or nil}
+ "@version{2023-1-30}
+  @argument[text]{a string with the initial entry buffer text, or nil}
   @return{A new @class{gtk:entry-buffer} object.}
   @begin{short}
     Create a new entry buffer.
   @end{short}
-
   Optionally, specify initial text to set in the buffer.
   @see-class{gtk:entry-buffer}"
   (let ((buffer (make-instance 'entry-buffer)))
@@ -257,13 +251,13 @@
 
 (defcfun ("gtk_entry_buffer_get_bytes" entry-buffer-bytes) :size
  #+liber-documentation
- "@version{#2020-5-31}
+ "@version{2023-1-30}
   @argument[buffer]{a @class{gtk:entry-buffer} object}
   @return{The byte length of @arg{buffer}.}
   @begin{short}
-    Retrieves the length in bytes of the buffer.
+    Retrieves the length in bytes of the entry buffer.
   @end{short}
-  See the function @fun{gtk:entry-buffer-length}.
+  See the @fun{gtk:entry-buffer-length} function.
   @see-class{gtk:entry-buffer}
   @see-function{gtk:entry-buffer-length}"
   (buffer (g:object entry-buffer)))
@@ -282,18 +276,18 @@
 
 (defun entry-buffer-insert-text (buffer position text)
  #+liber-documentation
- "@version{#2020-5-31}
+ "@version{2023-1-30}
   @argument[buffer]{a @class{gtk:entry-buffer} object}
   @argument[position]{an integer with the position at which to insert text}
-  @argument[text]{a string with the text to insert into the buffer}
+  @argument[text]{a string with the text to insert into the entry buffer}
   @return{An unsigned integer with the number of characters actually inserted.}
   @begin{short}
     Inserts text into the contents of the entry buffer, at the given position.
   @end{short}
 
-  If @arg{position} or the length of the text are out of bounds, or the maximum
-  buffer text length is exceeded, then they are coerced to sane values. Note
-  that the position is in characters, not in bytes.
+  If the @arg{position} argument or the length of the text are out of bounds,
+  or the maximum buffer text length is exceeded, then they are coerced to sane
+  values. Note that the position is in characters, not in bytes.
   @see-class{gtk:entry-buffer}
   @see-function{gtk:entry-buffer-delete-text}"
   (%entry-buffer-insert-text buffer position text -1))
@@ -306,7 +300,7 @@
 
 (defcfun ("gtk_entry_buffer_delete_text" entry-buffer-delete-text) :uint
  #+liber-documentation
- "@version{#2020-5-31}
+ "@version{2023-1-30}
   @argument[buffer]{a @class{gtk:entry-buffer} object}
   @argument[position]{an unsigned integer with the position at which to delete
     text}
@@ -315,13 +309,13 @@
   @begin{short}
     Deletes a sequence of characters from the entry buffer.
   @end{short}
-  @arg{n-chars} characters are deleted starting at @arg{position}. If
-  @arg{n-chars} is negative, then all characters until the end of the text are
-  deleted.
+  @arg{n-chars} characters are deleted starting at @arg{position}. If the
+  @arg{n-chars} argument is negative, then all characters until the end of the
+  text are deleted.
 
-  If @arg{position} or @arg{n-chars} are out of bounds, then they are coerced
-  to sane values. Note that the positions are specified in characters, not
-  bytes.
+  If the @arg{position} or @arg{n-chars} arguments are out of bounds, then they
+  are coerced to sane values. Note that the positions are specified in
+  characters, not bytes.
   @see-class{gtk:entry-buffer}
   @see-function{gtk:entry-buffer-insert-text}"
   (buffer (g:object entry-buffer))
@@ -334,16 +328,16 @@
 ;;; gtk_entry_buffer_emit_deleted_text ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_entry_buffer_emit_deleted_text"
-           entry-buffer-emit-deleted-text) :void
+(defcfun ("gtk_entry_buffer_emit_deleted_text" entry-buffer-emit-deleted-text)
+    :void
  #+liber-documentation
- "@version{#2020-5-31}
+ "@version{2023-1-30}
   @argument[buffer]{a @class{gtk:entry-buffer} object}
   @argument[position]{an unsigned integer with the position at which text was
     deleted}
-  @arg{n-chars]{an integer with the number of characters deleted}
+  @argument[n-chars]{an integer with the number of characters deleted}
   @begin{short}
-    Used when subclassing @class{gtk:entry-buffer}.
+    Used when subclassing the @class{gtk:entry-buffer} class.
   @end{short}
   @see-class{gtk:entry-buffer}
   @see-function{gtk:entry-buffer-emit-inserted-text}"
@@ -357,17 +351,17 @@
 ;;; gtk_entry_buffer_emit_inserted_text ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_entry_buffer_emit_inserted_text"
-           entry-buffer-emit-inserted-text) :void
+(defcfun ("gtk_entry_buffer_emit_inserted_text" entry-buffer-emit-inserted-text)
+    :void
  #+liber-documentation
- "@version{#2020-5-31}
+ "@version{2023-1-30}
   @argument[buffer]{a @class{gtk:entry-buffer} object}
   @argument[position]{an unsigned integer with the position at which text was
     inserted}
   @argument[text]{a string with the text that was inserted}
   @argument[n-chars]{an integer with the number of characters inserted}
   @begin{short}
-    Used when subclassing @class{gtk:entry-buffer} object.
+    Used when subclassing the @class{gtk:entry-buffer} class.
   @end{short}
   @see-class{gtk:entry-buffer}
   @see-function{gtk:entry-buffer-emit-deleted-text}"
@@ -378,4 +372,4 @@
 
 (export 'entry-buffer-emit-inserted-text)
 
-;;; --- End of file gtk.entry-buffer.lisp --------------------------------------
+;;; --- End of file gtk3.entry-buffer.lisp -------------------------------------

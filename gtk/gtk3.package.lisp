@@ -1067,7 +1067,7 @@
       @about-function{entry-grab-focus-without-selecting}
     @end{subsection}
     @begin[GtkEntryBuffer]{subsection}
-      Text buffer for @class{gtk:entry}.
+      Text buffer for the @class{gtk:entry} widget.
       @about-class{entry-buffer}
       @about-generic{entry-buffer-length}
       @about-generic{entry-buffer-max-length}

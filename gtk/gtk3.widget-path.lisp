@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.widget-path.lisp
+;;; gtk3.widget-path.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
-;;; Copyright (C) 2013 - 2022 Dieter Kaiser
+;;; Copyright (C) 2013 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -126,8 +126,11 @@
 ;;; GtkWidgetPath
 ;;; ----------------------------------------------------------------------------
 
+(defcfun ("gtk_widget_path_new" %widget-path-new) :pointer)
+
 (define-g-boxed-opaque widget-path "GtkWidgetPath"
-  :alloc (widget-path-new))
+  :type-initializer "gtk_widget_path_get_type"
+  :alloc (%widget-path-new))
 
 #+liber-documentation
 (setf (liber:alias-for-class 'widget-path)
@@ -262,8 +265,7 @@
 ;;; gtk_widget_path_copy ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_widget_path_copy" widget-path-copy)
-    (g:boxed widget-path)
+(defcfun ("gtk_widget_path_copy" widget-path-copy) (g:boxed widget-path :return)
  #+liber-documentation
  "@version{#2021-11-27}
   @argument[path]{a @class{gtk:widget-path} instance}
@@ -989,8 +991,7 @@
 ;;; gtk_widget_path_new ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_widget_path_new" widget-path-new)
-    (g:boxed widget-path)
+(defcfun ("gtk_widget_path_new" widget-path-new) (g:boxed widget-path)
  #+liber-documentation
  "@version{#2021-11-27}
   @return{A newly created, empty, @class{gtk:widget-path} instance.}
@@ -1039,4 +1040,4 @@
 
 (export 'widget-path-to-string)
 
-;;; --- End of file gtk.widget-path.lisp ---------------------------------------
+;;; --- End of file gtk3.widget-path.lisp  -------------------------------------

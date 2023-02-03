@@ -217,7 +217,7 @@
      ;; Numeric/Text Data Entry
      (:file "gtk3.editable")              ; GtkEditable
      (:file "gtk3.entry")                 ; GtkEntry
-     (:file "gtk3.entry-buffer")          ; GtkEntryBuffer
+     (:file "gtk3.entry-buffer")          ; Text buffer for GtkEntry
      (:file "gtk3.entry-completion")      ; GtkEntryCompletion
      (:file "gtk3.scale")                 ; GtkScale, GtkHScale, GtkVScale
      (:file "gtk3.spin-button")           ; GtkSpinButton
@@ -529,7 +529,7 @@
      ;; Numeric/Text Data Entry
 ;    (:file "gtk.editable")              ; GtkEditable
 ;    (:file "gtk.entry")                 ; GtkEntry
-     (:file "rtest-gtk3-entry-buffer")   ; GtkEntryBuffer
+     (:file "rtest-gtk3-entry-buffer")   ; Text buffer for GtkEntry
      (:file "rtest-gtk3-entry-completion"); GtkEntryCompletion
 ;    (:file "gtk.scale")                 ; GtkScale, GtkHScale, GtkVScale
 ;    (:file "gtk.spin-button")           ; GtkSpinButton
@@ -855,5 +855,17 @@
      (:file "window-simple")                 ; Getting started
      (:file "window-simple-demo")
      ))))
+
+(asdf:defsystem :cl-cffi-gtk3/gtk-demo
+  :author "Dieter Kaiser"
+  :license "LLGPL"
+  :serial t
+  :depends-on (:cl-cffi-gtk3/example)
+  :components
+  ((:module demo/gtk-demo
+    :serial nil
+    :components
+    ((:file "package")
+     (:file "gtk-demo")))))
 
 ;;; --- End of file cl-cffi-gtk3.asd -------------------------------------------
