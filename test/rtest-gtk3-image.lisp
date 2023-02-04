@@ -323,7 +323,7 @@
     (is-false (gtk:image-stock image))
     (is (eq :surface (gtk:image-storage-type image)))
     ;; we have a valid Cairo surface
-    (is (typep (gtk:image-surface image) 'gtk:cairo-surface))
+    (is (typep (gtk:image-surface image) 'gdk:cairo-surface))
     (is-false (gtk:image-use-fallback image))))
 
 ;;;     gtk_image_set_from_file
@@ -503,7 +503,7 @@
     (is-false (gtk:image-stock image))
     (is (eq :surface (gtk:image-storage-type image)))
     ;; we have a valid Cairo surface
-    (is (typep (gtk:image-surface image) 'gtk:cairo-surface))
+    (is (typep (gtk:image-surface image) 'gdk:cairo-surface))
     (is-false (gtk:image-use-fallback image))))
 
 ;;;     gtk_image_clear
