@@ -73,20 +73,19 @@
 ;;;
 ;;; Properties
 ;;;
-;;;                  gchar*  file                Read / Write
-;;;                  GIcon*  gicon               Read / Write
-;;;                  gchar*  icon-name           Read / Write
-;;;             GtkIconSet*  icon-set            Read / Write
-;;;                   gint   icon-size           Read / Write
-;;;              GdkPixbuf*  pixbuf              Read / Write
-;;;     GdkPixbufAnimation*  pixbuf-animation    Read / Write
-;;;                   gint   pixel-size          Read / Write
-;;;                  gchar*  resource            Read / Write
-;;;                  gchar*  stock               Read / Write
-;;;           GtkImageType   storage-type        Read
-;;;           CairoSurface*  surface             Read / Write
-;;;               gboolean   use-fallback        Read / Write
-
+;;;     file
+;;;     gicon
+;;;     icon-name
+;;;     icon-set
+;;;     icon-size
+;;;     pixbuf
+;;;     pixbuf-animation
+;;;     pixel-size
+;;;     resource
+;;;     stock
+;;;     storage-type
+;;;     surface
+;;;     use-fallback
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -102,31 +101,6 @@
 ;;; ----------------------------------------------------------------------------
 
 (in-package :gtk)
-
-;;; ----------------------------------------------------------------------------
-
-;;; CairoSurface represents a cairo:surface-t, but we need a boxed type in GTK.
-
-(define-g-boxed-opaque cairo-surface "CairoSurface"
-  :alloc (error "CairoSurface cannot be created from the Lisp side."))
-
-#+liber-documentation
-(setf (liber:alias-for-class 'cairo-surface)
-      "GBoxed"
-      (documentation 'cairo-surface 'type)
- "@version{#2021-12-17}
-  @begin{short}
-    The @sym{cairo-surface} structure represents a Cairo surface in GTK.
-  @end{short}
-  See the documentation of the @symbol{cairo:surface-t} structure for more
-  information.
-  @begin{pre}
-(define-g-boxed-opaque cairo-surface \"CairoSurface\"
-  :alloc (error \"CairoSurface cannot be created from the Lisp side.\"))
-  @end{pre}
-  @see-symbol{cairo:surface-t}")
-
-(export (gobject:boxed-related-symbols 'cairo-surface))
 
 ;;; ----------------------------------------------------------------------------
 ;;; enum GtkImageType
@@ -648,28 +622,29 @@
   @see-class{gtk:image}
   @see-symbol{gtk:image-type}")
 
-;;; --- image-surface ------------------------------------------------------
+;;; --- image-surface ----------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "surface" 'image) t)
- "The @code{surface} property of type @class{cairo-surface} (Read / Write) @br{}
+ "The @code{surface} property of type @class{gdk:cairo-surface} (Read / Write)
+  @br{}
   A Cairo surface instance to display.")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'image-surface)
       "Accessor"
       (documentation 'image-surface 'function)
- "@version{#2021-12-17}
+ "@version{#2023-2-3}
   @syntax[]{(gtk:image-surface object) => surface}
   @syntax[]{(setf (gtk:image-surface object) surface)}
   @argument[object]{a @class{gtk:image} widget}
-  @argument[surface]{a @class{cairo-surface} instance}
+  @argument[surface]{a @class{gdk:cairo-surface} instance}
   @begin{short}
     Accessor of the @slot[gtk:image]{surface} slot of the @class{gtk:image}
     class.
   @end{short}
   @see-class{gtk:image}
-  @see-class{cairo-surface}")
+  @see-class{gdk:cairo-surface}")
 
 ;;; --- image-use-fallback -------------------------------------------------
 

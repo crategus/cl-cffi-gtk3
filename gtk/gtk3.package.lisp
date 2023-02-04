@@ -739,7 +739,6 @@
     @end{subsection}
     @begin[GtkImage]{subsection}
       A widget displaying an image.
-      @about-class{cairo-surface}
       @about-symbol{image-type}
       @about-class{image}
       @about-generic{image-file}
@@ -3698,7 +3697,6 @@ setup_tree (void)
   @begin[Abstract Base Classes]{section}
     @begin[GtkWidget]{subsection}
       Base class for all widgets.
-      @about-class{cairo-context}
       @about-symbol{widget-help-type}
       @about-symbol{size-request-mode}
       @about-symbol{requested-size}

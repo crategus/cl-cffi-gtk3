@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gdk.package.lisp
+;;; gdk3.package.lisp
 ;;;
 ;;; The documentation of this file is taken from the GDK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -1341,17 +1341,19 @@ got_value (gpointer user_data)
     @about-function{pango-context-for-display}
   @end{section}
   @begin[Cairo Interaction]{section}
-    Functions to support using Cairo.
+    Types and functions to support using Cairo.
 
     Cairo is a graphics library that supports vector graphics and image
     compositing that can be used with GDK. GTK does all of its drawing using
     Cairo.
 
     GDK does not wrap the Cairo API, instead it allows to create Cairo contexts
-    which can be used to draw on @class{gdk-window} objects. Additional
-    functions allow use @class{gdk-rectangle} instances with Cairo and to use
-    @class{gdk:color}, @class{gdk-rgba}, @class{gdk-pixbuf} and
-    @class{gdk-window} objects as sources for drawing operations.
+    which can be used to draw on @class{gdk:window} objects. Additional
+    functions allow use @class{gdk:rectangle} instances with Cairo and to use
+    @class{gdk:color}, @class{gdk:rgba}, @class{gdk:pixbuf} and
+    @class{gdk:window} objects as sources for drawing operations.
+    @about-class{cairo-surface}
+    @about-class{cairo-context}
     @about-function{window-create-similar-surface}
     @about-function{window-create-similar-image-surface}
     @about-function{cairo-create}
@@ -1409,4 +1411,4 @@ got_value (gpointer user_data)
     @end{subsection}
   @end{section}")
 
-;;; --- End of file gdk.package.lisp -------------------------------------------
+;;; --- End of file gdk3.package.lisp ------------------------------------------

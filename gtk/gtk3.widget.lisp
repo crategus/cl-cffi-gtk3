@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.widget.lisp
+;;; gtk3.widget.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -310,35 +310,11 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-
-;;; CairoContext represents a cairo:context-t, but we need a boxed type in GTK.
-
-(define-g-boxed-opaque cairo-context "CairoContext"
-  :alloc (error "CairoContext cannot be created from the Lisp side."))
-
-#+liber-documentation
-(setf (liber:alias-for-class 'cairo-context)
-      "GBoxed"
-      (documentation 'cairo-context 'type)
- "@version{#2021-9-14}
-  @begin{short}
-    The @sym{cairo-context} structure represents a Cairo context in GTK.
-  @end{short}
-  See the documentation of the @symbol{cairo:context-t} structure for more information.
-  @begin{pre}
-(define-g-boxed-opaque cairo-context \"CairoContext\"
-  :alloc (error \"CairoContext cannot be created from the Lisp side.\"))
-  @end{pre}
-  @see-symbol{cairo:context-t}")
-
-(export (gobject:boxed-related-symbols 'cairo-context))
-
-;;; ----------------------------------------------------------------------------
 ;;; GtkAllocation
 ;;; ----------------------------------------------------------------------------
 
-;;; GtkAllocation is not implemented. In the C implementation it is a synonym
-;;; for GdkRectangle
+;; GtkAllocation is not implemented. In the C implementation it is a synonym
+;; for GdkRectangle
 
 ;;; ----------------------------------------------------------------------------
 ;;; enum GtkWidgetHelpType
@@ -1525,7 +1501,7 @@ lambda (widget cr)    :run-last
       the @fun{cairo-restore} function after invoking the handler.
       @begin[code]{table}
         @entry[widget]{The @sym{gtk:widget} object which received the signal.}
-        @entry[cr]{The @class{cairo-context} Cairo context to draw to.}
+        @entry[cr]{The @class{gdk:cairo-context} Cairo context to draw to.}
       @end{table}
     @subheading{The \"enter-notify-event\" signal}
       @begin{pre}
@@ -3526,7 +3502,7 @@ lambda (widget event)    :run-last
   @see-function{gtk:widget-height-request}
   @see-function{gtk:widget-size-request}")
 
-;;; --- widget-window ------------------------------------------------------
+;;; --- widget-window ----------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "window" 'widget) t)
@@ -3537,7 +3513,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-window)
       "Accessor"
       (documentation 'widget-window 'function)
- "@version{#2021-10-31}
+ "@version{2023-2-3}
   @syntax[]{(gtk:widget-window object) => window}
   @argument[object]{a @class{gtk:widget} object}
   @argument[window]{a @class{gdk:window} object}
@@ -3545,9 +3521,8 @@ lambda (widget event)    :run-last
     Accessor of the @slot[gtk:widget]{window} slot of the @class{gtk:widget}
     class.
   @end{short}
-
-  The @sym{gtk:widget-window} slot access function returns the GDK window
-  of the widget if it is realized, @code{nil} otherwise.
+  The @sym{gtk:widget-window} function returns the GDK window of the widget if
+  it is realized, @code{nil} otherwise.
   @begin[Lisp implementation]{dictionary}
     The @slot[gtk:widget]{window} slot is only readable. The C library has the
     @code{gtk_widget_set_window()} function to set a GDK window. This function
@@ -3802,7 +3777,7 @@ lambda (widget event)    :run-last
 
 (defcfun ("gtk_widget_realize" widget-realize) :void
  #+liber-documentation
- "@version{#2021-9-16}
+ "@version{2023-2-3}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Creates the GDK resources associated with a widget.
@@ -9118,4 +9093,4 @@ lambda (widget clock)
 ;;; Since 3.10
 ;;; ----------------------------------------------------------------------------
 
-;;; --- End of file gtk.widget.lisp --------------------------------------------
+;;; --- End of file gtk3.widget.lisp -------------------------------------------
