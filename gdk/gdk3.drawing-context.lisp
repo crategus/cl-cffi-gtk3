@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
-;;; gdk.drawing-context.lisp
+;;; gdk3.drawing-context.lisp
 ;;;
 ;;; The documentation of this file is taken from the GDK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
-;;; Copyright (C) 2019 - 2020 Dieter Kaiser
+;;; Copyright (C) 2019 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -151,28 +151,26 @@
   @see-class{gdk:window}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_drawing_context_get_cairo_context ()
-;;; -> drawing-context-cairo-context
+;;; gdk_drawing_context_get_cairo_context () -> drawing-context-cairo-context
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gdk_drawing_context_get_cairo_context" drawing-context-cairo-context)
     (:pointer (:struct cairo:context-t))
  #+liber-documentation
- "@version{#2020-11-12}
+ "@version{2023-2-3}
   @argument[object]{a @class{gdk:drawing-context} object}
   @begin{return}
-    A Cairo context of type @symbol{cairo:context-t} to be used to draw the contents of
-    the @class{gdk:window} object.
+    A Cairo context of type @symbol{cairo:context-t} to be used to draw the
+    contents of the @class{gdk:window} object.
   @end{return}
   @begin{short}
     Retrieves a Cairo context to be used to draw on the window that created the
     drawing context.
   @end{short}
-
   The returned context is guaranteed to be valid as long as the
   @class{gdk:drawing-context} object is valid, that is between a call to
-  the functions @fun{gdk:window-begin-draw-frame} and
-  @fun{gdk:window-end-draw-frame}.
+  the @fun{gdk:window-begin-draw-frame} and @fun{gdk:window-end-draw-frame}
+  functions.
 
   Since 3.22
   @see-class{gdk:drawing-context}
@@ -203,4 +201,4 @@
 
 (export 'drawing-context-is-valid)
 
-;;; --- End of file gdk.drawing-context.lisp -----------------------------------
+;;; --- End of file gdk3.drawing-context.lisp ----------------------------------

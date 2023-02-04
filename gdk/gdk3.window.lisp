@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gdk.window.lisp
+;;; gdk3.window.lisp
 ;;;
 ;;; The documentation of this file is taken from the GDK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -2958,11 +2958,11 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_get_scale_factor" window-scale-factor) :int
  #+liber-documentation
- "@version{#2020-9-23}
+ "@version{2023-2-3}
   @argument[window]{a @class{gdk:window} object to get scale factor for}
-  @return{A @code{:int} with the scale factor.}
+  @return{An integer with the scale factor.}
   @begin{short}
-    Returns the internal scale factor that maps from window coordiantes to the
+    Returns the internal scale factor that maps from window coordinates to the
     actual device pixels.
   @end{short}
   On traditional systems this is 1, but on very high density outputs this can
@@ -3222,13 +3222,13 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (defcfun ("gdk_window_begin_draw_frame" window-begin-draw-frame)
     (g:object drawing-context)
  #+liber-documentation
- "@version{#2020-9-23}
+ "@version{2023-2-3}
   @argument[window]{a @class{gdk:window} object}
   @argument[region]{a @symbol{cairo:region-t} structure}
   @return{A @class{gdk:drawing-context} object that should be used to draw the
     contents of the window, the returned context is owned by GDK.}
   @begin{short}
-    Indicates that you are beginning the process of redrawing region on
+    Indicates that you are beginning the process of redrawing @arg{region} on
     @arg{window}, and provides you with a @class{gdk:drawing-context} object.
   @end{short}
 
@@ -3237,24 +3237,24 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   contain @arg{region} will be created. The backing store will be initialized
   with the background color or background surface for @arg{window}. Then, all
   drawing operations performed on @arg{window} will be diverted to the backing
-  store. When you call the function @fun{gdk:window-end-draw-frame}, the
+  store. When you call the @fun{gdk:window-end-draw-frame} function, the
   contents of the backing store will be copied to @arg{window}, making it
   visible on screen. Only the part of @arg{window} contained in @arg{region}
-  will be modified; that is, drawing operations are clipped to @arg{region}.
+  will be modified, that is, drawing operations are clipped to @arg{region}.
 
   The net result of all this is to remove flicker, because the user sees the
-  finished product appear all at once when you call the function
-  @fun{gdk:window-end-draw-frame}. If you draw to window directly without
-  calling the function @sym{gdk:window-begin-draw-frame}, the user may see
-  flicker as individual drawing operations are performed in sequence.
+  finished product appear all at once when you call the
+  @fun{gdk:window-end-draw-frame} function. If you draw to the window directly
+  without calling the @sym{gdk:window-begin-draw-frame} function, the user may
+  see flicker as individual drawing operations are performed in sequence.
 
-  When using GTK, the widget system automatically places calls to the functions
-  @sym{gdk:window-begin-draw-frame} and @fun{gdk:window-end-draw-frame} around
-  emissions of the \"draw\" signal. That is, if you are drawing the contents of
-  the widget yourself, you can assume that the widget has a cleared background,
-  is already set as the clip region, and already has a backing store. Therefore
-  in most cases, application code in GTK does not need to call the function
-  @sym{gdk:window-begin-draw-frame} explicitly.
+  When using GTK, the widget system automatically places calls to the
+  @sym{gdk:window-begin-draw-frame} and @fun{gdk:window-end-draw-frame}
+  functions around emissions of the \"draw\" signal. That is, if you are drawing
+  the contents of the widget yourself, you can assume that the widget has a
+  cleared background, is already set as the clip region, and already has a
+  backing store. Therefore in most cases, application code in GTK does not need
+  to call the @sym{gdk:window-begin-draw-frame} function explicitly.
 
   Since 3.22
   @see-class{gdk:window}
@@ -3275,20 +3275,19 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (defcfun ("gdk_window_end_draw_frame" window-end-draw-frame) :void
 
  #+liber-documentation
- "@version{#2020-9-23}
+ "@version{2023-2-3}
   @argument[window]{a @class{gdk:window} object}
-  @argument[context]{the @class{gdk:drawing-contect} object created by the
-   function @fun{gdk:window-begin-draw-frame}}
+  @argument[context]{a @class{gdk:drawing-context} object created by the
+   @fun{gdk:window-begin-draw-frame} function}
   @begin{short}
     Indicates that the drawing of the contents of @arg{window} started with
-    the function @fun{gdk:window-begin-draw-frame} has been completed.
+    the @fun{gdk:window-begin-draw-frame} function has been completed.
   @end{short}
-
   This function will take care of destroying the @class{gdk:drawing-context}
   object.
 
-  It is an error to call this function without a matching call of the function
-  @fun{gdk:window-begin-draw-frame} first.
+  It is an error to call this function without a matching call of the
+  @fun{gdk:window-begin-draw-frame} function first.
 
   Since 3.22
   @see-class{gdk:window}
@@ -4415,13 +4414,12 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_get_width" window-width) :int
  #+liber-documentation
- "@version{#2020-9-6}
+ "@version{2023-2-3}
   @argument[window]{a @class{gdk:window} object}
-  @return{A @code{:int} with the width of @arg{window}.}
+  @return{An integer with the width of @arg{window}.}
   @begin{short}
     Returns the width of the given window.
   @end{short}
-
   On the X11 platform the returned size is the size reported in the
   most-recently-processed configure event, rather than the current size on the
   X server.
@@ -4438,13 +4436,12 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_get_height" window-height) :int
  #+liber-documentation
- "@version{#2020-9-6}
+ "@version{2023-2-3}
   @argument[window]{a @class{gdk:window} object}
-  @return{A @code{:int} with the height of @arg{window}.}
+  @return{An integer with the height of @arg{window}.}
   @begin{short}
     Returns the height of the given window.
   @end{short}
-
   On the X11 platform the returned size is the size reported in the
   most-recently-processed configure event, rather than the current size on the
   X server.
@@ -5799,4 +5796,4 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (export 'window-effective-toplevel)
 
-;;; --- End of file gdk.window.lisp --------------------------------------------
+;;; --- End of file gdk3.window.lisp -------------------------------------------

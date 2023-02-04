@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gdk.rectangle.lisp
+;;; gdk3.rectangle.lisp
 ;;;
 ;;; The documentation of this file is taken from the GDK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2021 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -75,11 +75,11 @@
 (setf (liber:alias-for-class 'rectangle)
       "GBoxed"
       (documentation 'rectangle 'type)
- "@version{#2021-12-13}
+ "@version{2023-2-3}
   @begin{short}
     Defines the position and size of a rectangle.
   @end{short}
-  It is comparable to the @symbol{cairo-rectangle-int-t} structure.
+  It is comparable to the @symbol{cairo:rectangle-int-t} structure.
 
   The @sym{gdk:rectangle} structure is holding the position and size of a
   rectangle. The intersection of two rectangles can be computed with the
@@ -95,21 +95,24 @@
   (width :int :initform 0)
   (height :int :initform 0))
   @end{pre}
+  @see-constructor{gdk:rectangle-new}
+  @see-constructor{gdk:rectangle-copy}
   @see-slot{gdk:rectangle-x}
   @see-slot{gdk:rectangle-y}
   @see-slot{gdk:rectangle-width}
   @see-slot{gdk:rectangle-height}
-  @see-symbol{cairo:region-t}")
+  @see-symbol{cairo:region-t}
+  @see-symbol{cairo:rectangle-int-t}")
 
 (export 'rectangle)
 
-;;; --- rectangle-x --------------------------------------------------------
+;;; --- rectangle-x ------------------------------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'rectangle-x)
       "Accessor"
       (documentation 'rectangle-x 'function)
- "@version{#2021-12-13}
+ "@version{2023-2-3}
   @syntax[]{(gdk:rectangle-x instance) => x}
   @syntax[]{(setf (gdk:rectangle-x instance) x)}
   @argument[instance]{a @class{gdk:rectangle} instance}
@@ -121,13 +124,13 @@
 
 (export 'rectangle-x)
 
-;;; --- rectangle-y --------------------------------------------------------
+;;; --- rectangle-y ------------------------------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'rectangle-y)
       "Accessor"
       (documentation 'rectangle-y 'function)
- "@version{#2021-12-17}
+ "@version{2023-2-3}
   @syntax[]{(gdk:rectangle-y instance) => y}
   @syntax[]{(setf (gdk:rectangle-y instance) y)}
   @argument[instance]{a @class{gdk:rectangle} instance}
@@ -145,7 +148,7 @@
 (setf (liber:alias-for-function 'rectangle-width)
       "Accessor"
       (documentation 'rectangle-width 'function)
- "@version{#2021-12-17}
+ "@version{2023-2-3}
   @syntax[]{(gdk:rectangle-width instance) => width}
   @syntax[]{(setf (gdk:rectangle-width instance) width)}
   @argument[instance]{a @class{gdk:rectangle} instance}
@@ -163,7 +166,7 @@
 (setf (liber:alias-for-function 'rectangle-height)
       "Accessor"
       (documentation 'rectangle-height 'function)
- "@version{#2021-12-17}
+ "@version{2023-2-3}
   @syntax[]{(gdk:rectangle-height instance) => height}
   @syntax[]{(setf (gdk:rectangle-height instance) height)}
   @argument[instance]{a @class{gdk:rectangle} instance}
@@ -293,4 +296,4 @@
 #+gtk-3-20
 (export 'rectangle-equal)
 
-;;; --- End of file gdk.rectangle.lisp -----------------------------------------
+;;; --- End of file gdk3.rectangle.lisp ----------------------------------------

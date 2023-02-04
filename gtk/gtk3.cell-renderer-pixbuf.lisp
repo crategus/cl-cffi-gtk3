@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.cell-renderer-pixbuf.lisp
+;;; gtk3.cell-renderer-pixbuf.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK+ library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -396,31 +396,31 @@
   The @symbol{gtk:icon-size} value that specifies the size of the rendered icon.
   @see-class{gtk:cell-renderer-pixbuf}")
 
-;;; --- cell-renderer-pixbuf-surface ---------------------------------------
+;;; --- cell-renderer-pixbuf-surface -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "surface"
                                                'cell-renderer-pixbuf) t)
- "The @code{surface} property of type @code{CairoSurface} (Read / Write) @br{}
+ "The @code{surface} property of type @class{gdk:cairo-surface} (Read / Write)
+  @br{}
   The Cairo surface to render. @br{}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'cell-renderer-pixbuf-surface)
       "Accessor"
       (documentation 'cell-renderer-pixbuf-surface 'function)
- "@version{#2021-3-13}
+ "@version{#2023-2-3}
   @syntax[]{(gtk:cell-renderer-pixbuf-surface object) => surface}
   @syntax[]{(setf (gtk:cell-renderer-pixbuf-surface object) surface)}
   @argument[object]{a @class{gtk:cell-renderer-pixbuf} object}
-  @argument[surface]{the @class{cairo-surface} instance to render}
+  @argument[surface]{a @class{gdk:cairo-surface} instance to render}
   @begin{short}
     Accessor of the @slot[gtk:cell-renderer-pixbuf]{surface} slot of the
     @class{gtk:cell-renderer-pixbuf} class.
   @end{short}
-
   The Cairo surface to render.
   @see-class{gtk:cell-renderer-pixbuf}
-  @see-class{cairo-surface}")
+  @see-class{gdk:cairo-surface}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_cell_renderer_pixbuf_new ()
@@ -451,4 +451,4 @@
 
 (export 'cell-renderer-pixbuf-new)
 
-;;; --- End of file gtk.cell-renderer-pixbuf.lisp ------------------------------
+;;; --- End of file gtk3.cell-renderer-pixbuf.lisp -----------------------------
