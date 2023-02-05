@@ -66,16 +66,13 @@
 (setf (liber:alias-for-class 'cairo-surface)
       "GBoxed"
       (documentation 'cairo-surface 'type)
- "@version{2023-2-3}
+ "@version{2023-2-5}
   @begin{short}
     The @sym{gdk:cairo-surface} structure represents a Cairo surface in GTK.
   @end{short}
-  See the documentation of the @symbol{cairo:surface-t} structure for more
-  information.
-  @begin{pre}
-(define-g-boxed-opaque cairo-surface \"CairoSurface\"
-  :alloc (error \"CairoSurface cannot be created from the Lisp side.\"))
-  @end{pre}
+  The @sym{gdk:cairo-surface} structure is opaque, and has no user visible
+  fields. An instance cannot be created from the Lisp side. See the
+  documentation of the @symbol{cairo:surface-t} structure for more information.
   @see-symbol{cairo:surface-t}")
 
 (export 'cairo-surface)
@@ -89,16 +86,13 @@
 (setf (liber:alias-for-class 'cairo-context)
       "GBoxed"
       (documentation 'cairo-context 'type)
- "@version{2023-2-3}
+ "@version{2023-2-5}
   @begin{short}
     The @sym{gdk:cairo-context} structure represents a Cairo context in GTK.
   @end{short}
-  See the documentation of the @symbol{cairo:context-t} structure for more
-  information.
-  @begin{pre}
-(define-g-boxed-opaque cairo-context \"CairoContext\"
-  :alloc (error \"CairoContext cannot be created from the Lisp side.\"))
-  @end{pre}
+  The @sym{gdk:cairo-context} structure is opaque, and has no user visible
+  fields. An instance cannot be created from the Lisp side. See the
+  documentation of the @symbol{cairo:context-t} structure for more information.
   @see-symbol{cairo:context-t}")
 
 (export 'cairo-context)

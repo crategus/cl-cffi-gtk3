@@ -129,6 +129,7 @@
 (defcfun ("gtk_widget_path_new" %widget-path-new) :pointer)
 
 (define-g-boxed-opaque widget-path "GtkWidgetPath"
+  :export t
   :type-initializer "gtk_widget_path_get_type"
   :alloc (%widget-path-new))
 
@@ -136,11 +137,12 @@
 (setf (liber:alias-for-class 'widget-path)
       "GBoxed"
       (documentation 'widget-path 'type)
- "@version{#2021-11-27}
+ "@version{#2023-2-5}
   @begin{short}
     The @sym{gtk:widget-path} structure is a boxed type that represents a widget
     hierarchy from the topmost widget, typically a toplevel, to any child.
   @end{short}
+  The @sym{gtk:widget-path} structure is opaque, and has no user visible fields.
   This widget path abstraction is used in the @class{gtk:style-context}
   implementation on behalf of the real widget in order to query style
   information.
@@ -179,8 +181,6 @@
     applies to the described widget.
   @end{dictionary}
   @see-class{gtk:style-context}")
-
-(export 'widget-path)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_widget_path_append_type ()

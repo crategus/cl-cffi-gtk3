@@ -50,10 +50,9 @@
 ;;; GdkRGBA
 ;;; ----------------------------------------------------------------------------
 
-(glib-init:at-init ()
-  (cffi:foreign-funcall "gdk_rgba_get_type" :size))
-
 (define-g-boxed-cstruct rgba "GdkRGBA"
+  (:export t
+   :type-initializer "gdk_rgba_get_type")
   (red :double :initform 0.0d0)
   (green :double :initform 0.0d0)
   (blue :double :initform 0.0d0)
@@ -70,6 +69,8 @@
   @end{short}
   @begin{pre}
 (define-g-boxed-cstruct gdk:rgba \"GdkRGBA\"
+  (:export t
+   :type-initializer \"gdk_rgba_get_type\")
   (red :double :initform 0.0d0)
   (green :double :initform 0.0d0)
   (blue :double :initform 0.0d0)
@@ -88,11 +89,6 @@
   @see-slot{gdk:rgba-green}
   @see-slot{gdk:rgba-blue}
   @see-slot{gdk:rgba-alpha}")
-
-(export (gobject:boxed-related-symbols 'rgba))
-
-(unexport 'make-rgba)
-(unexport 'copy-rgba)
 
 ;;; ----------------------------------------------------------------------------
 ;;; Accessors

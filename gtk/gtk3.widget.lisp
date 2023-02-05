@@ -486,6 +486,8 @@
 ;;; ----------------------------------------------------------------------------
 
 (define-g-boxed-cstruct requisition "GtkRequisition"
+  (:export t
+   :type-initializer "gtk_requistion_get_type")
   (width :int :initform 0)
   (height :int :initform 0))
 
@@ -501,6 +503,8 @@
   @class{gtk:widget} documentation for more information.
   @begin{pre}
 (define-g-boxed-cstruct requisition \"GtkRequisition\"
+  (:export t
+   :type-initializer \"gtk_requistion_get_type\")
   (width :int :initform 0)
   (height :int :initform 0))
   @end{pre}
@@ -514,8 +518,6 @@
   @see-constructor{gtk:requisition-copy}
   @see-class{gtk:widget}
   @see-function{gtk:widget-preferred-size}")
-
-(export 'requisition)
 
 ;;; ----------------------------------------------------------------------------
 ;;; Accessors of GtkRequistion
@@ -545,8 +547,6 @@
   @see-class{gtk:requisition}
   @see-function{gtk:requisition-width}")
 
-(export 'requisition-height)
-
 ;;; --- requisition-width --------------------------------------------------
 
 #+liber-documentation
@@ -570,8 +570,6 @@
   @end{dictionary}
   @see-class{gtk:requisition}
   @see-function{gtk:requisition-height}")
-
-(export 'requisition-width)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_requisition_new ()

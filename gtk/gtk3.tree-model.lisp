@@ -143,7 +143,12 @@
 
 ;;; ----------------------------------------------------------------------------
 
+;; TODO: Implement this as an opaque boxed type. See gtk:text-iter for an
+;; example.
+
 (define-g-boxed-cstruct tree-iter "GtkTreeIter"
+  (:export t
+   :type-initializer "gtk_tree_iter_get_type")
   (stamp :int :initform 0)
   (user-data pointer-as-integer :initform 0)
   (user-data-2 pointer-as-integer :initform 0)
@@ -162,6 +167,8 @@
   @end{short}
   @begin{pre}
 (define-g-boxed-cstruct tree-iter \"GtkTreeIter\"
+  (:export t
+   :type-initializer \"gtk_tree_iter_get_type\")
   (stamp :int :initform 0)
   (user-data pointer-as-integer :initform 0)
   (user-data-2 pointer-as-integer :initform 0)
@@ -175,8 +182,6 @@
   @end{table}
   @see-class{gtk:tree-model}
   @see-class{gtk:tree-path}")
-
-(export 'tree-iter)
 
 ;;; ----------------------------------------------------------------------------
 ;;; Accessors of the slots of the GtkTreeIter structure
@@ -210,6 +215,7 @@
 ;;; ----------------------------------------------------------------------------
 
 (define-g-boxed-opaque tree-path "GtkTreePath"
+  :export t
   :type-initializer "gtk_tree_path_get_type"
   :alloc (%tree-path-new))
 
@@ -217,16 +223,12 @@
 (setf (liber:alias-for-class 'tree-path)
       "GBoxed"
       (documentation 'tree-path 'type)
- "@version{2023-1-27}
-  @short{No description available.}
-  @begin{pre}
-(define-g-boxed-opaque tree-path \"GtkTreePath\"
-  :alloc (%gtk:tree-path-new))
-  @end{pre}
+ "@version{2023-2-5}
+  @begin{short}
+    The @sym{gtk:tree-path} structure is opaque, and has no user visible fields.
+  @end{short}
   @see-class{gtk:tree-model}
   @see-class{gtk:tree-iter}")
-
-(export 'tree-path)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_tree_path_new ()
@@ -508,15 +510,18 @@
 
 (defun tree-path-next (path)
  #+liber-documentation
- "@version{2023-1-27}
+ "@version{2023-2-4}
   @argument[path]{a @class{gtk:tree-path} instance}
-  @return{The new @class{gtk:tree-path} instance.}
-  @short{Moves @arg{path} to point to the next node at the current depth.}
+  @return{The @class{gtk:tree-path} instance.}
+  @begin{short}
+    Moves @arg{path} to point to the next node at the current depth and
+    returns the path.
+  @end{short}
+  The @arg{path} argument is modified.
   @see-class{gtk:tree-path}
   @see-function{gtk:tree-path-prev}"
-  (let ((path (tree-path-copy path)))
-    (%tree-path-next path)
-    path))
+  (%tree-path-next path)
+  path)
 
 (export 'tree-path-next)
 
@@ -529,19 +534,20 @@
 
 (defun tree-path-prev (path)
  #+liber-documentation
- "@version{2023-1-27}
+ #+liber-documentation
+ "@version{2023-2-4}
   @argument[path]{a @class{gtk:tree-path} instance}
   @return{A @class{gtk:tree-path} instance to point to the previous node,
     if it exists, otherwise @code{nil}.}
   @begin{short}
-    Moves the tree path to point to the previous node at the current depth,
-    if it exists.
+    Moves @arg{path} to point to the previous node at the current depth,
+    if it exists, and returns the path.
   @end{short}
+  The @arg{path} argument is modified.
   @see-class{gtk:tree-path}
   @see-function{gtk:tree-path-next}"
-  (let ((path (tree-path-copy path)))
-    (when (%tree-path-prev path)
-      path)))
+  (when (%tree-path-prev path)
+    path))
 
 (export 'tree-path-prev)
 
@@ -554,18 +560,19 @@
 
 (defun tree-path-up (path)
  #+liber-documentation
- "@version{2023-1-27}
+ "@version{2023-2-4}
   @argument[path]{a @class{gtk:tree-path} instance}
   @return{A @class{gtk:tree-path} instance to point to the parent node, if it
     has a parent, otherwise @code{nil}.}
   @begin{short}
-    Moves the tree path to point to its parent node, if it has a parent.
+    Moves @arg{path} to point to its parent node, if it has a parent, and
+    returns the path.
   @end{short}
+  The @arg{path} argument is modified.
   @see-class{gtk:tree-path}
   @see-function{gtk:tree-path-down}"
-  (let ((path (tree-path-copy path)))
-    (when (%tree-path-up path)
-      path)))
+  (when (%tree-path-up path)
+    path))
 
 (export 'tree-path-up)
 
@@ -578,16 +585,17 @@
 
 (defun tree-path-down (path)
  #+liber-documentation
- "@version{2023-1-27}
+ "@version{2023-2-4}
   @argument[path]{a @class{gtk:tree-path} instance}
   @begin{short}
-    Moves @arg{path} to point to the first child of the current tree path.
+    Moves @arg{path} to point to the first child of the current tree path
+    and returns the path.
   @end{short}
+  The @arg{path} argument is modified.
   @see-class{gtk:tree-path}
   @see-function{gtk:tree-path-up}"
-  (let ((path (tree-path-copy path)))
-    (%tree-path-down path)
-    path))
+  (%tree-path-down path)
+  path)
 
 (export 'tree-path-down)
 
@@ -636,6 +644,7 @@
 ;;; ----------------------------------------------------------------------------
 
 (define-g-boxed-opaque tree-row-reference "GtkTreeRowReference"
+  :export t
   :type-initializer "gtk_tree_row_reference_get_type"
   :alloc (error "GtkTreeRowReference cannot be created from the Lisp side."))
 
@@ -643,23 +652,17 @@
 (setf (liber:alias-for-class 'tree-row-reference)
       "GBoxed"
       (documentation 'tree-row-reference 'type)
- "@version{2023-1-27}
+ "@version{2023-2-5}
   @begin{short}
     A @sym{gtk:tree-row-reference} instance tracks model changes so that it
     always refers to the same row, a @class{gtk:tree-path} instance refers to a
     position, not a fixed row.
   @end{short}
-  Create a new @sym{gtk:tree-row-reference} instance with the
-    @fun{gtk:tree-row-reference-new} function.
-  @begin{pre}
-(define-g-boxed-opaque gtk:tree-row-reference \"GtkTreeRowReference\"
-  :type-initializer \"gtk_tree_row_reference_get_type\"
-  :alloc (error \"GtkTreeRowReference cannot be created from the Lisp side.\"))
-  @end{pre}
+  The @sym{gtk:tree-row-reference} structure is opaque, and has no user visible
+  fields. Create a new @sym{gtk:tree-row-reference} instance with the
+  @fun{gtk:tree-row-reference-new} function.
   @see-class{gtk:tree-path}
   @see-function{gtk:tree-row-reference-new}")
-
-(export 'tree-row-reference)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_tree_row_reference_new ()

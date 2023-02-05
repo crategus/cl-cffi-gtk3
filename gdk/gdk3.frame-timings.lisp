@@ -53,6 +53,7 @@
 ;;; ----------------------------------------------------------------------------
 
 (define-g-boxed-opaque frame-timings "GdkFrameTimings"
+  :export t
   :type-initializer "gdk_frame_timings_get_type"
   :alloc (error "GdkFrameTimings cannot be created from the Lisp side."))
 
@@ -60,26 +61,21 @@
 (setf (liber:alias-for-class 'frame-timings)
       "GBoxed"
       (documentation 'frame-timings 'type)
- "@version{#2023-1-24}
+ "@version{#2023-2-5}
   @begin{short}
     A @sym{gdk:frame-timings} structure holds timing information for a single
     frame of the application’s displays.
   @end{short}
-  To retrieve a @sym{gdk:frame-timings} instance, use the
-  @fun{gdk:frame-clock-timings} or @fun{gdk:frame-clock-current-timings}
-  functions. The information in the @sym{gdk:frame-timings} instance is useful
-  for precise synchronization of video with the event or audio streams, and for
-  measuring quality metrics for the application’s display, such as latency and
-  jitter.
-  @begin{pre}
-(define-g-boxed-opaque frame-timings \"GdkFrameTimings\"
-  :alloc (error \"GdkFrameTimings cannot be created from the Lisp side.\"))
-  @end{pre}
+  The @sym{gdk:frame-timings} structure is opaque, and has no user visible
+  fields. An instance cannot be created from the Lisp side. To retrieve a
+  @sym{gdk:frame-timings} instance, use the @fun{gdk:frame-clock-timings} or
+  @fun{gdk:frame-clock-current-timings} functions. The information in the
+  @sym{gdk:frame-timings} instance is useful for precise synchronization of
+  video with the event or audio streams, and for measuring quality metrics for
+  the application’s display, such as latency and jitter.
   @see-class{gdk:frame-clock}
   @see-function{gdk:frame-clock-timings}
   @see-function{gdk:frame-clock-current-timings}")
-
-(export (gobject:boxed-related-symbols 'frame-timings))
 
 ;;; ----------------------------------------------------------------------------
 ;;; gdk_frame_timings_ref ()

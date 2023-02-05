@@ -634,7 +634,7 @@
 (setf (liber:alias-for-function 'image-surface)
       "Accessor"
       (documentation 'image-surface 'function)
- "@version{#2023-2-3}
+ "@version{2023-2-3}
   @syntax[]{(gtk:image-surface object) => surface}
   @syntax[]{(setf (gtk:image-surface object) surface)}
   @argument[object]{a @class{gtk:image} widget}

@@ -179,6 +179,7 @@
 ;;; ----------------------------------------------------------------------------
 
 (define-g-boxed-opaque target-list "GtkTargetList"
+  :export t
   :type-initializer "gtk_target_list_get_type"
   :alloc (%target-list-new (cffi:null-pointer) 0))
 
@@ -186,30 +187,22 @@
 (setf (liber:alias-for-class 'target-list)
       "GBoxed"
       (documentation 'target-list 'type)
- "@version{2023-1-28}
+ "@version{2023-2-5}
   @begin{short}
     A @sym{gtk:target-list} structure is used to represent a list of target
     entries.
   @end{short}
-  This structure should be treated as opaque.
-  @begin{pre}
-(define-g-boxed-opaque gtk:target-list \"GtkTargetList\"
-  :type-initializer \"gtk_target_list_get_type\"
-  :alloc (%gtk:target-list-new (cffi:null-pointer) 0))
-  @end{pre}
-  A target entry is a list with the following fields. See the
-  @fun{gtk:target-list-new} function for an example.
+  This structure should be treated as opaque. A target entry is a list with the
+  following fields. See the @fun{gtk:target-list-new} function for an example.
   @begin[code]{table}
     @entry[target]{A string representation of the target type.}
     @entry[flags]{The @symbol{gtk:target-flags} flags for DND.}
-    @entry[info]{An application-assigned integer ID which will get passed
+    @entry[info]{An application assigned integer ID which will get passed
       as a parameter to e.g. the \"selection-get\" signal. It allows the
       application to identify the target type without extensive string
       compares.}
   @end{table}
   @see-function{gtk:target-list-new}")
-
-(export 'target-list)
 
 ;;; ----------------------------------------------------------------------------
 ;;; struct GtkTargetPair                                   not implemented
@@ -242,6 +235,7 @@
 ;;; ----------------------------------------------------------------------------
 
 (define-g-boxed-opaque selection-data "GtkSelectionData"
+  :export t
   :type-initializer "gtk_selection_data_get_type"
   :alloc (error "GtkSelectionData cannot be created from the Lisp side."))
 
@@ -249,17 +243,13 @@
 (setf (liber:alias-for-class 'selection-data)
       "GBoxed"
       (documentation 'selection-data 'type)
- "@version{#2021-10-3}
+ "@version{#2023-2-5}
   @begin{short}
     The @sym{gtk:selection-data} structure is used to store a chunk of data
     along with the data type and other associated information.
   @end{short}
-  @begin{pre}
-(define-g-boxed-opaque gtk:selection-data \"GtkSelectionData\"
-  :alloc (error \"GtkSelectionData cannot be created from the Lisp side.\"))
-  @end{pre}
-  All fields of the @sym{gtk:selection-data} structure are private and can only
-  be retrieved with the corresponding accessor functions.
+  The following fields of the @sym{gtk:selection-data} structure are private
+  and can only be retrieved with the corresponding accessor functions.
   @begin[code]{table}
     @entry[selection]{A @symbol{gdk:atom-as-string} as a string with the
       selection.}

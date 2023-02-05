@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gdk.event-structures.lisp
+;;; gdk3.event-structures.lisp
 ;;;
 ;;; The documentation of this file is taken from the GDK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -1002,6 +1002,8 @@
 ;;; ----------------------------------------------------------------------------
 
 (define-g-boxed-opaque event-sequence "GdkEventSequence"
+  :export t
+  :type-initializer "gdk_event_sequence_get_type"
   :alloc (error "GdkEventSequence cannot be created from the Lisp side."))
 
 #+liber-documentation
@@ -1010,11 +1012,12 @@
       (documentation 'event-sequence 'type)
  "@version{#2021-12-13}
   @begin{short}
-    See the @fun{gdk:event-event-sequence} function.
+    The @sym{gdk:event-sequence} structure is opaque, and has no user visible
+    fields.
   @end{short}
+  An instance cannot be created from the Lisp side. See the
+  @fun{gdk:event-event-sequence} documentation.
   @see-function{gdk:event-event-sequence}")
-
-(export 'event-sequence)
 
 ;;; ----------------------------------------------------------------------------
 ;;; union GdkEvent
@@ -5498,4 +5501,4 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 
 (export 'event-pad-group-mode-mode)
 
-;;; --- End of file gdk.event-structures.lisp ----------------------------------
+;;; --- End of file gdk3.event-structures.lisp ---------------------------------

@@ -457,6 +457,7 @@ lambda (provider section error)    :run-last
 ;;; ----------------------------------------------------------------------------
 
 (define-g-boxed-opaque css-section "GtkCssSection"
+  :export t
   :type-initializer "gtk_css_section_get_type"
   :alloc (error "GtkCssSection cannot be created from the Lisp side."))
 
@@ -464,21 +465,16 @@ lambda (provider section error)    :run-last
 (setf (liber:alias-for-class 'css-section)
       "GBoxed"
       (documentation 'css-section 'type)
- "@version{#2023-1-24}
+ "@version{#2023-2-5}
   @begin{short}
     Defines a part of a CSS document.
   @end{short}
-  Because sections are nested into one another, you can use the
-  @fun{gtk:css-section-parent} function to get the containing region.
-  @begin{pre}
-(define-g-boxed-opaque css-section \"GtkCssSection\"
-  :type-initializer \"gtk_css_section_get_type\"
-  :alloc (error \"GtkCssSection cannot be created from the Lisp side.\"))
-  @end{pre}
+  The @sym{css-section} structure is opaque, and has no user visible fields. An
+  instance cannot be created from the Lisp side. Because sections are nested
+  into one another, you can use the @fun{gtk:css-section-parent} function to
+  get the containing region.
   @see-class{gtk:css-provider}
   @see-function{gtk:css-section-parent}")
-
-(export 'css-section)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_css_section_get_end_line () -> css-section-end-line

@@ -222,6 +222,7 @@
 ;;; ----------------------------------------------------------------------------
 
 (define-g-boxed-opaque text-iter "GtkTextIter"
+  :export t
   :type-initializer "gtk_text_iter_get_type"
   :alloc (%text-iter-alloc))
 
@@ -235,6 +236,7 @@
     @sym{gtk:text-iter} instance.
   @end{short}
   An iterator represents a position between two characters in the text buffer.
+  The @sym{gtk:text-iter} structure is opaque, and has no user visible fields.
 
   The @sym{gtk:text-iter} structure is designed to be allocated on the stack.
   It is guaranteed to be copiable by value and never contain any heap-allocated
@@ -246,8 +248,6 @@
   @see-constructor{gtk:text-iter-new}
   @see-constructor{gtk:text-iter-copy}
   @see-class{gtk:text-buffer}")
-
-(export 'text-iter)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_text_iter_get_buffer () -> text-iter-buffer

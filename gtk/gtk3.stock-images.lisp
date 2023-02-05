@@ -155,6 +155,7 @@
 (defcfun ("gtk_icon_source_new" %icon-source-new) :pointer)
 
 (define-g-boxed-opaque icon-source "GtkIconSource"
+  :export t
   :type-initializer "gtk_icon_source_get_type"
   :alloc (%icon-source-new))
 
@@ -162,16 +163,17 @@
 (setf (liber:alias-for-class 'icon-source)
       "GBoxed"
       (documentation 'icon-source 'type)
- "@version{#2021-7-21}
-  @short{}
-  @begin{pre}
-(define-g-boxed-opaque icon-source \"GtkIconSource\"
-  :type-initializer \"GtkIconSource\"
-  :alloc (%icon-source-new))
-  @end{pre}
-  @see-class{gtk:icon-factory}")
-
-(export 'icon-source)
+ "@version{#2023-2-5}
+  @begin{short}
+    The @sym{gtk:icon-source} structure is opaque, and has no user visible
+    fields.
+  @end{short}
+  A @sym{gtk:icon-source} instance contains a @class{gdk:pixbuf} object (or
+  image filename) that serves as the base image for one or more of the icons in
+  a @class{gtk:icon-set} instance, along with a specification for which icons
+  in the icon set will be based on that pixbuf or image file.
+  @see-class{gtk:icon-factory}
+  @see-class{gdk:pixbuf}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; GtkIconSet
@@ -180,6 +182,7 @@
 (defcfun ("gtk_icon_set_new" %icon-set-new) :pointer)
 
 (define-g-boxed-opaque icon-set "GtkIconSet"
+  :export t
   :type-initializer "gtk_icon_set_get_type"
   :alloc (%icon-set-new))
 
@@ -187,15 +190,13 @@
 (setf (liber:alias-for-class 'icon-set)
       "GBoxed"
       (documentation 'icon-set 'type)
- "@version{#2021-7-21}
+ "@version{#2023-2-5}
   @begin{short}
-  A @sym{gtk:icon-set} structure manages a set of variants of a particular icon,
-  i.e. a @sym{gtk:icon-set} instance contains variants for different sizes and
-  widget states.
+    The @sym{gtk:icon-set} structure is opaque, and has no user visible fields.
   @end{short}
+  It manages a set of variants of a particular icon, i.e. a @sym{gtk:icon-set}
+  instance contains variants for different sizes and widget states.
   @see-class{gtk:icon-factory}")
-
-(export 'icon-set)
 
 ;;; ----------------------------------------------------------------------------
 ;;; struct GtkIconFactory

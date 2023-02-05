@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.text-attributes.lisp
+;;; gtk3.text-attributes.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
-;;; Copyright (C) 2020 - 2022 Dieter Kaiser
+;;; Copyright (C) 2020 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -155,10 +155,9 @@
 ;; FIXME: This implementation crashes the testsuite, when copying the
 ;; structure. Work is needed. At this time we do not export the structure.
 
-(glib-init:at-init ()
-  (cffi:foreign-funcall "gtk_text_attributes_get_type" :size))
-
 (define-g-boxed-cstruct text-attributes "GtkTextAttributes"
+  (:export t
+   :type-initializer "gtk_text_attributes_get_type")
   (refcount :uint :initform 0) ; private field
   (appearance :pointer :initform (cffi:null-pointer))   ; type is text-appearance
   (justification justification :initform :left)
@@ -199,6 +198,8 @@
   never modified directly.
   @begin{pre}
 (define-g-boxed-cstruct gtk:text-attributes \"GtkTextAttributes\"
+  (:export t
+   :type-initializer \"gtk_text_attributes_get_type\")
   (appearance :pointer :initform (cffi:null-pointer))
   (justification justification)
   (direction text-direction)
@@ -295,8 +296,6 @@
   @see-class{gtk:text-attributes}
   @see-function{copy-gtk:text-attributes}")
 
-(unexport 'make-text-attributes)
-
 #+liber-documentation
 (setf (documentation 'copy-text-attributes 'function)
  "@version{#2021-8-19}
@@ -305,8 +304,6 @@
   @end{short}
   @see-class{gtk:text-attributes}
   @see-function{make-gtk:text-attributes}")
-
-(unexport 'copy-text-attributes)
 
 ;;; ----------------------------------------------------------------------------
 ;;; Accessors for GtkTextAttributes                        not exported
@@ -674,4 +671,4 @@
 ;;;     the GtkTextAttributes that were passed in
 ;;; ----------------------------------------------------------------------------
 
-;;; --- End of file gtk.text-attributes.lisp -----------------------------------
+;;; --- End of file gtk3.text-attributes.lisp ----------------------------------

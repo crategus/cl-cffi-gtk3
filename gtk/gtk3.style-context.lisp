@@ -301,10 +301,9 @@
 ;;; struct GtkBorder
 ;;; ----------------------------------------------------------------------------
 
-(glib-init:at-init ()
-  (cffi:foreign-funcall "gtk_border_get_type" :size))
-
 (define-g-boxed-cstruct border "GtkBorder"
+  (:export t
+   :type-initializer "gtk_border_get_type")
   (left   :int16 :initform 0)
   (right  :int16 :initform 0)
   (top    :int16 :initform 0)
@@ -321,6 +320,8 @@
   @end{short}
   @begin{pre}
 (define-g-boxed-cstruct border \"GtkBorder\"
+  (:export t
+   :type-initializer \"gtk_border_get_type\")
   (left   :int16 :initform 0)
   (right  :int16 :initform 0)
   (top    :int16 :initform 0)
@@ -336,8 +337,6 @@
   @see-slot{gtk:border-right}
   @see-slot{gtk:border-top}
   @see-slot{gtk:border-bottom}")
-
-(export 'border)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_border_new ()

@@ -131,17 +131,19 @@
   (name :pointer))
 
 (define-g-boxed-opaque paper-size "GtkPaperSize"
+  :export t
   :type-initializer "gtk_paper_size_get_type"
   :alloc (%paper-size-alloc (cffi:null-pointer)))
 
 #+liber-documentation
 (setf (liber:alias-for-class 'paper-size)
-      "Boxed CStruct"
+      "GBoxed"
       (documentation 'paper-size 'type)
- "@version{2023-1-31}
+ "@version{2023-2-5}
   @begin{short}
     The @sym{gtk:paper-size} instance handles paper sizes.
   @end{short}
+  The @sym{gtk:paper-size} structure is opaque, and has no user visible fields.
   It uses the standard called \"PWG 5101.1-2002 PWG: Standard for Media
   Standardized Names\" to name the paper sizes and to get the data for the page
   sizes. In addition to standard paper sizes, the @sym{gtk:paper-size} structure
@@ -150,8 +152,6 @@
   The @sym{gtk:paper-size} structure stores not only the dimensions (width and
   height) of a paper size and its name, it also provides default print margins.
   @see-class{gtk:page-setup}")
-
-(export 'paper-size)
 
 ;;; ----------------------------------------------------------------------------
 ;;; GTK_PAPER_NAME_A3

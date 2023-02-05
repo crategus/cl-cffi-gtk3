@@ -66,6 +66,8 @@
 ;;; ----------------------------------------------------------------------------
 
 (define-g-boxed-cstruct rectangle "GdkRectangle"
+  (:export t
+   :type-initializer "gdk_rectangle_get_type")
   (x :int :initform 0)
   (y :int :initform 0)
   (width :int :initform 0)
@@ -90,6 +92,8 @@
   of graphical operations.
   @begin{pre}
 (define-g-boxed-cstruct rectangle \"GdkRectangle\"
+  (:export t
+   :type-initializer \"gdk_rectangle_get_type\")
   (x :int :initform 0)
   (y :int :initform 0)
   (width :int :initform 0)
@@ -103,8 +107,6 @@
   @see-slot{gdk:rectangle-height}
   @see-symbol{cairo:region-t}
   @see-symbol{cairo:rectangle-int-t}")
-
-(export 'rectangle)
 
 ;;; --- rectangle-x ------------------------------------------------------------
 
@@ -122,8 +124,6 @@
   @end{short}
   @see-class{gdk:rectangle}")
 
-(export 'rectangle-x)
-
 ;;; --- rectangle-y ------------------------------------------------------------
 
 #+liber-documentation
@@ -139,8 +139,6 @@
     Accessor of the @code{y} slot of the @class{gdk:rectangle} structure.
   @end{short}
   @see-class{gdk:rectangle}")
-
-(export 'rectangle-y)
 
 ;;; --- gtk-rectangle-width ----------------------------------------------------
 
@@ -158,8 +156,6 @@
   @end{short}
   @see-class{gdk:rectangle}")
 
-(export 'rectangle-width)
-
 ;;; --- gtk-rectangle-height ---------------------------------------------------
 
 #+liber-documentation
@@ -175,8 +171,6 @@
     Accessor of the @code{height} slot of the @class{gdk:rectangle} structure.
   @end{short}
   @see-class{gdk:rectangle}")
-
-(export 'rectangle-height)
 
 ;;; --- rectangle-new ------------------------------------------------------
 

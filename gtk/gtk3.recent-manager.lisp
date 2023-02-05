@@ -101,6 +101,7 @@
 ;;; ----------------------------------------------------------------------------
 
 (define-g-boxed-opaque recent-info "GtkRecentInfo"
+  :export t
   :type-initializer "gtk_recent_info_get_type"
   :alloc (error "GtkRecentInfo cannot be created from the Lisp side."))
 
@@ -108,21 +109,14 @@
 (setf (liber:alias-for-class 'recent-info)
       "GBoxed"
       (documentation 'recent-info 'type)
- "@version{2023-1-29}
+ "@version{2023-2-5}
   @begin{short}
     The @sym{gtk:recent-info} structure constains all the meta-data associated
     with an entry in the recently used files list.
   @end{short}
   The @sym{gtk:recent-info} structure is an opaque data structure whose members
   can only be accessed using the provided API.
-  @begin{pre}
-(define-g-boxed-opaque gtk:recent-info \"GtkRecentInfo\"
-  :type-initializer \"gtk_recent_info_get_type\"
-  :alloc (error \"GtkRecentInfo cannot be created from the Lisp side.\"))
-  @end{pre}
   @see-class{gtk:recent-manager}")
-
-(export (gobject:boxed-related-symbols 'recent-info))
 
 ;;; ----------------------------------------------------------------------------
 ;;; struct GtkRecentData

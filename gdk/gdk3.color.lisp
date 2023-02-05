@@ -53,10 +53,9 @@
 ;;; GdkColor
 ;;; ----------------------------------------------------------------------------
 
-(glib-init:at-init ()
-  (cffi:foreign-funcall "gdk_color_get_type" :size))
-
 (define-g-boxed-cstruct color "GdkColor"
+  (:export t
+   :type-initializer "gdk_color_get_type")
   (pixel :uint32 :initform 0)
   (red :uint16 :initform 0)
   (green :uint16 :initform 0)
@@ -73,6 +72,8 @@
   @end{short}
   @begin{pre}
 (define-g-boxed-cstruct color \"GdkColor\"
+  (:export t
+   :type-initializer \"gdk_color_get_type\")
   (pixel :uint32 :initform 0)
   (red :uint16 :initform 0)
   (green :uint16 :initform 0)
@@ -99,11 +100,6 @@
   @see-slot{gdk:color-green}
   @see-slot{gdk:color-blue}
   @see-class{gdk:rgba}")
-
-(export (gobject:boxed-related-symbols 'color))
-
-(unexport 'copy-color)
-(unexport 'make-color)
 
 ;;; ----------------------------------------------------------------------------
 ;;; Accessors of the GdkColor structure
