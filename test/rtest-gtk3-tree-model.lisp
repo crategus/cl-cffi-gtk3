@@ -125,39 +125,29 @@
 (test tree-path-next
   (let ((path (gtk:tree-path-new-from-string "10:4:0")))
     (is (string= "10:4:1" (gtk:tree-path-to-string (gtk:tree-path-next path))))
-    (is (string= "10:4:1" (gtk:tree-path-to-string (gtk:tree-path-next path))))
-    (is (string= "10:4:1"
-                 (gtk:tree-path-to-string (setf path
-                                                (gtk:tree-path-next path)))))
+    (is (string= "10:4:1" (gtk:tree-path-to-string path)))
     (is (string= "10:4:2"
                  (gtk:tree-path-to-string (setf path
-                                                (gtk:tree-path-next path)))))))
+                                                (gtk:tree-path-next path)))))
+    (is (string= "10:4:3"
+                 (gtk:tree-path-to-string (gtk:tree-path-next path))))))
 
 ;;;     gtk_tree_path_prev
 
 (test tree-path-prev
   (let ((path (gtk:tree-path-new-from-string "10:4:2")))
     (is (string= "10:4:1" (gtk:tree-path-to-string (gtk:tree-path-prev path))))
-    (is (string= "10:4:1" (gtk:tree-path-to-string (gtk:tree-path-prev path))))
-    (is (string= "10:4:1"
-                 (gtk:tree-path-to-string (setf path
-                                                (gtk:tree-path-prev path)))))
-    (is (string= "10:4:0"
-                 (gtk:tree-path-to-string (setf path
-                                                (gtk:tree-path-prev path)))))
+    (is (string= "10:4:1" (gtk:tree-path-to-string path)))
+    (is (string= "10:4:0" (gtk:tree-path-to-string (gtk:tree-path-prev path))))
     (is-false (gtk:tree-path-prev path))))
 
 ;;;     gtk_tree_path_up
 
-(test tree-path-down
+(test tree-path-up
   (let ((path (gtk:tree-path-new-from-string "10:4:2")))
-    (is (string= "10:4"
-                 (gtk:tree-path-to-string (setf path
-                                                (gtk:tree-path-up path)))))
-    (is (string= "10"
-                 (gtk:tree-path-to-string (setf path
-                                                (gtk:tree-path-up path)))))
-
+    (is (string= "10:4" (gtk:tree-path-to-string (gtk:tree-path-up path))))
+    (is (string= "10:4" (gtk:tree-path-to-string path)))
+    (is (string= "10"   (gtk:tree-path-to-string (gtk:tree-path-up path))))
     (is-false (gtk:tree-path-to-string (gtk:tree-path-up path)))))
 
 ;;;     gtk_tree_path_down
@@ -165,11 +155,9 @@
 (test tree-path-down
   (let ((path (gtk:tree-path-new-from-string "10:4:2")))
     (is (string= "10:4:2:0"
-                 (gtk:tree-path-to-string (setf path
-                                                (gtk:tree-path-down path)))))
+                 (gtk:tree-path-to-string (gtk:tree-path-down path))))
     (is (string= "10:4:2:0:0"
-                 (gtk:tree-path-to-string (setf path
-                                                (gtk:tree-path-down path)))))))
+                 (gtk:tree-path-to-string (gtk:tree-path-down path))))))
 
 ;;;     gtk_tree_path_is_ancestor
 
