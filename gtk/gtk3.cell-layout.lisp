@@ -332,7 +332,7 @@
 ;;; GtkCellLayoutDataFunc ()
 ;;; ----------------------------------------------------------------------------
 
-(defcallback cell-layout-cell-data-func :void
+(defcallback cell-layout-data-func :void
   ((layout (g:object cell-layout))
    (cell (g:object cell-renderer))
    (model (g:object tree-model))
@@ -343,16 +343,16 @@
     (return () nil)))
 
 #+liber-documentation
-(setf (liber:alias-for-symbol 'cell-layout-cell-data-func)
+(setf (liber:alias-for-symbol 'cell-layout-data-func)
       "Callback"
-      (liber:symbol-documentation 'cell-layout-cell-data-func)
- "@version{#2021-3-13}
+      (liber:symbol-documentation 'cell-layout-data-func)
+ "@version{#2023-2-11}
   @begin{short}
     A callback function which should set the value of @arg{layout}'s cell
    renderer(s) as appropriate.
   @end{short}
   @begin{pre}
- lambda (layout cell model iter)
+lambda (layout cell model iter)
   @end{pre}
   @begin[code]{table}
     @entry[layout]{A @class{gtk:cell-layout} object.}
@@ -364,14 +364,14 @@
   @see-class{gtk:tree-view-column}
   @see-function{gtk:tree-view-column-set-cell-data-func}")
 
-(export 'cell-layout-cell-data-func)
+(export 'cell-layout-data-func)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_cell_layout_set_cell_data_func ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_cell_layout_set_cell_data_func"
-          %cell-layout-set-cell-data-func) :void
+(defcfun ("gtk_cell_layout_set_cell_data_func" %cell-layout-set-cell-data-func)
+    :void
   (layout (g:object cell-layout))
   (cell (g:object cell-renderer))
   (func :pointer)
@@ -380,10 +380,11 @@
 
 (defun cell-layout-set-cell-data-func (layout cell func)
  #+liber-documentation
- "@version{#2021-3-13}
+ "@version{#2023-2-11}
   @argument[layout]{a @class{gtk:cell-layout} object}
   @argument[cell]{a @class{gtk:cell-renderer} object}
-  @argument[func]{the @symbol{gtk:cell-layout-data-func} to use, or @code{nil}}
+  @argument[func]{a @symbol{gtk:cell-layout-data-func} callback function to use,
+    or @code{nil}}
   @begin{short}
     Sets the callback function to use for @arg{layout}.
   @end{short}
@@ -391,17 +392,23 @@
   the column value, and should set the value of @arg{layout}'s cell renderer(s)
   as appropriate.
 
-  The callback function @arg{func} may be @code{nil} to remove a previously set
+  The @arg{func} callback function may be @code{nil} to remove a previously set
   function.
   @see-class{gtk:cell-layout}
   @see-class{gtk:cell-renderer}
   @see-symbol{gtk:cell-layout-cell-data-func}"
-  (%cell-layout-set-cell-data-func
-          layout
-          cell
-          (cffi:callback cell-layout-cell-data-func)
-          (glib:allocate-stable-pointer func)
-          (cffi:callback glib:stable-pointer-destroy-notify)))
+  (if func
+      (%cell-layout-set-cell-data-func
+              layout cell
+              (cffi:callback cell-layout-data-func)
+              (glib:allocate-stable-pointer func)
+              (cffi:callback glib:stable-pointer-destroy-notify))
+      (%cell-layout-set-cell-data-func
+              layout
+              cell
+              (cffi:null-pointer)
+              (cffi:null-pointer)
+              (cffi:null-pointer))))
 
 (export 'cell-layout-set-cell-data-func)
 

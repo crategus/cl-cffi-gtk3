@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.printer.lisp
+;;; gtk3.printer.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
-;;; Copyright (C) 2013 - 2021 Dieter Kaiser
+;;; Copyright (C) 2013 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -64,21 +64,21 @@
 ;;;
 ;;; Properties
 ;;;
-;;;        gboolean   accepting-jobs      Read
-;;;        gboolean   accepts-pdf         Read / Write / Construct Only
-;;;        gboolean   accepts-ps          Read / Write / Construct Only
-;;; GtkPrintBackend*  backend             Read / Write / Construct Only
-;;;           gchar*  icon-name           Read
-;;;        gboolean   is-virtual          Read / Write / Construct Only
-;;;            gint   job-count           Read
-;;;           gchar*  location            Read
-;;;           gchar*  name                Read / Write / Construct Only
-;;;        gboolean   paused              Read
-;;;           gchar*  state-message       Read
+;;;     accepting-jobs
+;;;     accepts-pdf
+;;;     accepts-ps
+;;;     backend
+;;;     icon-name
+;;;     is-virtual
+;;;     job-count
+;;;     location
+;;;     name
+;;;     paused
+;;;     state-message
 ;;;
 ;;; Signals
 ;;;
-;;;            void   details-acquired    Run Last
+;;;     details-acquired
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -165,7 +165,7 @@
   @begin[Signal Details]{dictionary}
     @subheading{The \"details-acquired\" signal}
       @begin{pre}
- lambda (printer success)    :run-last
+lambda (printer success)    :run-last
       @end{pre}
       Gets emitted in response to a request for detailed information about a
       printer from the print backend. The success parameter indicates if the
@@ -762,7 +762,7 @@
     The type of function passed to the @fun{gtk:enumerate-printers} function.
   @end{short}
   @begin{pre}
- lambda (printer)
+lambda (printer)
   @end{pre}
   @begin[code]{table}
     @entry[widget]{A @class{gtk:printer} object.}
@@ -785,8 +785,8 @@
 
 (defun enumerate-printers (func wait)
  #+liber-documentation
- "@version{#2020-4-9}
-  @argument[func]{a function to call for each printer}
+ "@version{#2023-2-11}
+  @argument[func]{a @symbol{gtk:printer-func} function to call for each printer}
   @argument[wait]{if @em{true}, wait in a recursive main loop until all printers
     are enumerated, otherwise return early}
   @begin{short}
@@ -801,4 +801,4 @@
 
 (export 'enumerate-printers)
 
-;;; --- End of file gtk.printer.lisp -------------------------------------------
+;;; --- End of file gtk3.printer.lisp ------------------------------------------

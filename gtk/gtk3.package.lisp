@@ -1079,7 +1079,7 @@
       @about-function{entry-buffer-emit-inserted-text}
     @end{subsection}
     @begin[GtkEntryCompletion]{subsection}
-      Completion functionality for GtkEntry.
+      Completion functionality for the @class{gtk:entry} widget.
       @about-class{entry-completion}
       @about-generic{entry-completion-cell-area}
       @about-generic{entry-completion-inline-completion}
@@ -1330,6 +1330,7 @@
       @about-symbol{text-search-flags}
       @about-class{text-iter}
       @about-function{text-iter-buffer}
+      @about-function{text-iter-new}
       @about-function{text-iter-copy}
       @about-function{text-iter-assign}
       @about-function{text-iter-free}
@@ -2340,7 +2341,7 @@ setup_tree (void)
       @about-function{cell-layout-clear}
       @about-function{cell-layout-set-attributes}
       @about-function{cell-layout-add-attribute}
-      @about-symbol{cell-layout-cell-data-func}
+      @about-symbol{cell-layout-data-func}
       @about-function{cell-layout-set-cell-data-func}
       @about-function{cell-layout-clear-attributes}
     @end{subsection}
@@ -3303,6 +3304,7 @@ setup_tree (void)
       @about-function{print-operation-set-defer-drawing}
       @about-function{print-operation-is-finished}
       @about-function{print-run-page-setup-dialog}
+      @about-symbol{page-setup-done-func}
       @about-function{print-run-page-setup-dialog-async}
       @about-class{print-operation-preview}
       @about-function{print-operation-preview-end-preview}
@@ -3339,6 +3341,7 @@ setup_tree (void)
       @about-function{print-settings-get}
       @about-function{print-settings-set}
       @about-function{print-settings-unset}
+      @about-symbol{print-settings-func}
       @about-function{print-settings-foreach}
       @about-function{print-settings-bool}
       @about-function{print-settings-double}
