@@ -141,19 +141,6 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-
-(define-foreign-type unichar ()
-  ()
-  (:actual-type :uint32)
-  (:simple-parser unichar))
-
-(defmethod cffi:translate-from-foreign (value (type unichar))
-  (code-char value))
-
-(defmethod cffi:translate-to-foreign (value (type unichar))
-  (char-code value))
-
-;;; ----------------------------------------------------------------------------
 ;;; enum GtkTextSearchFlags
 ;;; ----------------------------------------------------------------------------
 
@@ -557,7 +544,7 @@
 ;;; gtk_text_iter_get_char () -> text-iter-char
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_text_iter_get_char" text-iter-char) unichar
+(defcfun ("gtk_text_iter_get_char" text-iter-char) g:unichar
  #+liber-documentation
  "@version{2023-2-2}
   @argument[iter]{a @class{gtk:text-iter} instance}
@@ -2479,7 +2466,7 @@
 ;;; ----------------------------------------------------------------------------
 
 (defcallback text-char-predicate :boolean
-    ((char unichar)
+    ((char g:unichar)
      (user-data :pointer))
   (let ((func (glib:get-stable-pointer-value user-data)))
     (funcall func char)))
