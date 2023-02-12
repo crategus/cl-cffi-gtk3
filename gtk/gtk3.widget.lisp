@@ -487,7 +487,7 @@
 
 (define-g-boxed-cstruct requisition "GtkRequisition"
   (:export t
-   :type-initializer "gtk_requistion_get_type")
+   :type-initializer "gtk_requisition_get_type")
   (width :int :initform 0)
   (height :int :initform 0))
 

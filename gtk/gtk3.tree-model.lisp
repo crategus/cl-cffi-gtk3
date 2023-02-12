@@ -534,7 +534,6 @@
 
 (defun tree-path-prev (path)
  #+liber-documentation
- #+liber-documentation
  "@version{2023-2-4}
   @argument[path]{a @class{gtk:tree-path} instance}
   @return{A @class{gtk:tree-path} instance to point to the previous node,
