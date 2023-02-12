@@ -218,7 +218,7 @@
      (:file "gtk3.editable")              ; GtkEditable
      (:file "gtk3.entry")                 ; GtkEntry
      (:file "gtk3.entry-buffer")          ; Text buffer for GtkEntry
-     (:file "gtk3.entry-completion")      ; GtkEntryCompletion
+     (:file "gtk3.entry-completion")      ; Completion functionality for GtkEntry
      (:file "gtk3.scale")                 ; GtkScale, GtkHScale, GtkVScale
      (:file "gtk3.spin-button")           ; GtkSpinButton
      (:file "gtk3.search-entry")          ; GtkSearchEntry
@@ -530,7 +530,7 @@
 ;    (:file "gtk.editable")              ; GtkEditable
 ;    (:file "gtk.entry")                 ; GtkEntry
      (:file "rtest-gtk3-entry-buffer")   ; Text buffer for GtkEntry
-     (:file "rtest-gtk3-entry-completion"); GtkEntryCompletion
+     (:file "rtest-gtk3-entry-completion"); Completion functionality for GtkEntry
 ;    (:file "gtk.scale")                 ; GtkScale, GtkHScale, GtkVScale
 ;    (:file "gtk.spin-button")           ; GtkSpinButton
 ;    (:file "gtk.search-entry")          ; GtkSearchEntry
@@ -860,7 +860,9 @@
   :author "Dieter Kaiser"
   :license "LLGPL"
   :serial t
-  :depends-on (:cl-cffi-gtk3/example)
+  :depends-on (:cl-cffi-gtk3/example
+               :pango-example
+               :cairo-example)
   :components
   ((:module demo/gtk-demo
     :serial nil

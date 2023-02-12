@@ -129,8 +129,10 @@
     ;; manual-capabilities
     (is-false (gtk:print-unix-dialog-manual-capabilities dialog))
     (is (equal '(:page-set :scale)
-               (setf (gtk:print-unix-dialog-manual-capabilities dialog) '(:page-set :scale))))
-    (is (equal '(:page-set :scale) (gtk:print-unix-dialog-manual-capabilities dialog)))
+               (setf (gtk:print-unix-dialog-manual-capabilities dialog)
+                     '(:page-set :scale))))
+    (is (equal '(:page-set :scale)
+               (gtk:print-unix-dialog-manual-capabilities dialog)))
     ;; page-setup
     (is (eq 'gtk:page-setup (type-of (gtk:print-unix-dialog-page-setup dialog))))
     (is (eq 'gtk:page-setup
@@ -138,15 +140,17 @@
                            (make-instance 'gtk:page-setup)))))
     (is (eq 'gtk:page-setup (type-of (gtk:print-unix-dialog-page-setup dialog))))
     ;; print-settings
-    (is (eq 'gtk:print-settings (type-of (gtk:print-unix-dialog-print-settings dialog))))
-    (is (eq 'gtk:print-settings
-            (type-of (setf (gtk:print-unix-dialog-print-settings dialog)
-                           (make-instance 'gtk:print-settings)))))
-    (is (eq 'gtk:print-settings (type-of (gtk:print-unix-dialog-print-settings dialog))))
+    (is (typep (gtk:print-unix-dialog-print-settings dialog) 'gtk:print-settings))
+    (is (typep (setf (gtk:print-unix-dialog-print-settings dialog)
+                     (make-instance 'gtk:print-settings))
+               'gtk:print-settings))
+    (is (typep (gtk:print-unix-dialog-print-settings dialog) 'gtk:print-settings))
     ;; selected-printer
     (is-false (gtk:print-unix-dialog-selected-printer dialog))
     ;; selected-printer is not writeable
-    (signals (error) (setf (gtk:print-unix-dialog-selected-printer dialog) (make-instance 'gtk:printer)))
+    (signals (error)
+             (setf (gtk:print-unix-dialog-selected-printer dialog)
+                   (make-instance 'gtk:printer)))
     ;; support-selection
     (is-false (gtk:print-unix-dialog-support-selection dialog))
     (is-true (setf (gtk:print-unix-dialog-support-selection dialog) t))
@@ -158,18 +162,15 @@
 
 (test print-unix-dialog-new
   (let ((window (make-instance 'gtk:window)))
-    (is (eq 'gtk:print-unix-dialog (type-of (gtk:print-unix-dialog-new nil nil))))
-    (is (eq 'gtk:print-unix-dialog (type-of (gtk:print-unix-dialog-new "title" window))))
-    (is (eq 'gtk:print-unix-dialog (type-of (gtk:print-unix-dialog-new nil window))))
-    (is (eq 'gtk:print-unix-dialog (type-of (gtk:print-unix-dialog-new "title" window))))))
+    (is (typep (gtk:print-unix-dialog-new nil nil) 'gtk:print-unix-dialog))
+    (is (typep (gtk:print-unix-dialog-new "title" window) 'gtk:print-unix-dialog))
+    (is (typep (gtk:print-unix-dialog-new nil window) 'gtk:print-unix-dialog))
+    (is (typep (gtk:print-unix-dialog-new "title" window)
+               'gtk:print-unix-dialog))))
 
 ;;;     gtk_print_unix_dialog_set_settings
 ;;;     gtk_print_unix_dialog_get_settings
-
-
-
 ;;;     gtk_print_unix_dialog_add_custom_tab
-
 ;;;     gtk_print_unix_dialog_get_page_setup_set
 
-;;; --- 2023-1-1 ---------------------------------------------------------------
+;;; --- 2023-2-8 ---------------------------------------------------------------

@@ -20,17 +20,14 @@
                "GTK_PRINT_STATUS_SENDING_DATA" "GTK_PRINT_STATUS_PENDING"
                "GTK_PRINT_STATUS_PENDING_ISSUE" "GTK_PRINT_STATUS_PRINTING"
                "GTK_PRINT_STATUS_FINISHED" "GTK_PRINT_STATUS_FINISHED_ABORTED")
-             (mapcar #'gobject::enum-item-name
-                     (gobject::get-enum-items "GtkPrintStatus"))))
+             (list-enum-item-name "GtkPrintStatus")))
   ;; Check the values
   (is (equal '(0 1 2 3 4 5 6 7 8)
-             (mapcar #'gobject::enum-item-value
-                     (gobject::get-enum-items "GtkPrintStatus"))))
+             (list-enum-item-value "GtkPrintStatus")))
   ;; Check the nick names
   (is (equal '("initial" "preparing" "generating-data" "sending-data" "pending"
                "pending-issue" "printing" "finished" "finished-aborted")
-             (mapcar #'gobject::enum-item-nick
-                     (gobject::get-enum-items "GtkPrintStatus"))))
+             (list-enum-item-nick "GtkPrintStatus")))
   ;; Check the enum definition
   (is (equal '(DEFINE-G-ENUM "GtkPrintStatus"
                              GTK-PRINT-STATUS
@@ -45,7 +42,7 @@
                              (:PRINTING 6)
                              (:FINISHED 7)
                              (:FINISHED-ABORTED 8))
-             (gobject::get-g-type-definition "GtkPrintStatus"))))
+             (gobject:get-g-type-definition "GtkPrintStatus"))))
 
 ;;;     GtkPrintOperationAction
 
@@ -64,16 +61,13 @@
                "GTK_PRINT_OPERATION_ACTION_PRINT"
                "GTK_PRINT_OPERATION_ACTION_PREVIEW"
                "GTK_PRINT_OPERATION_ACTION_EXPORT")
-             (mapcar #'gobject::enum-item-name
-                     (gobject::get-enum-items "GtkPrintOperationAction"))))
+             (list-enum-item-name "GtkPrintOperationAction")))
   ;; Check the values
   (is (equal '(0 1 2 3)
-             (mapcar #'gobject::enum-item-value
-                     (gobject::get-enum-items "GtkPrintOperationAction"))))
+             (list-enum-item-value "GtkPrintOperationAction")))
   ;; Check the nick names
   (is (equal '("print-dialog" "print" "preview" "export")
-             (mapcar #'gobject::enum-item-nick
-                     (gobject::get-enum-items "GtkPrintOperationAction"))))
+             (list-enum-item-nick "GtkPrintOperationAction")))
   ;; Check the enum definition
   (is (equal '(DEFINE-G-ENUM "GtkPrintOperationAction"
                              GTK-PRINT-OPERATION-ACTION
@@ -84,7 +78,7 @@
                              (:PRINT 1)
                              (:PREVIEW 2)
                              (:EXPORT 3))
-             (gobject::get-g-type-definition "GtkPrintOperationAction"))))
+             (gobject:get-g-type-definition "GtkPrintOperationAction"))))
 
 ;;;     GtkPrintOperationResult
 
@@ -103,16 +97,13 @@
                "GTK_PRINT_OPERATION_RESULT_APPLY"
                "GTK_PRINT_OPERATION_RESULT_CANCEL"
                "GTK_PRINT_OPERATION_RESULT_IN_PROGRESS")
-             (mapcar #'gobject::enum-item-name
-                     (gobject::get-enum-items "GtkPrintOperationResult"))))
+             (list-enum-item-name "GtkPrintOperationResult")))
   ;; Check the values
   (is (equal '(0 1 2 3)
-             (mapcar #'gobject::enum-item-value
-                     (gobject::get-enum-items "GtkPrintOperationResult"))))
+             (list-enum-item-value "GtkPrintOperationResult")))
   ;; Check the nick names
   (is (equal '("error" "apply" "cancel" "in-progress")
-             (mapcar #'gobject::enum-item-nick
-                     (gobject::get-enum-items "GtkPrintOperationResult"))))
+             (list-enum-item-nick "GtkPrintOperationResult")))
   ;; Check the enum definition
   (is (equal '(DEFINE-G-ENUM "GtkPrintOperationResult"
                              GTK-PRINT-OPERATION-RESULT
@@ -123,7 +114,7 @@
                              (:APPLY 1)
                              (:CANCEL 2)
                              (:IN-PROGRESS 3))
-             (gobject::get-g-type-definition "GtkPrintOperationResult"))))
+             (gobject:get-g-type-definition "GtkPrintOperationResult"))))
 
 ;;;     GtkPrintError                                      not exported
 
@@ -286,9 +277,10 @@
     (is (string= "Custom Tab" (gtk:print-operation-custom-tab-label object)))
     ;; default-page-setup
     (is-false (gtk:print-operation-default-page-setup object))
-    (is (eq 'gtk:page-setup
-            (type-of (setf (gtk:print-operation-default-page-setup object) (gtk:page-setup-new)))))
-    (is (eq 'gtk:page-setup (type-of (gtk:print-operation-default-page-setup object))))
+    (is (typep (setf (gtk:print-operation-default-page-setup object)
+                     (gtk:page-setup-new))
+               'gtk:page-setup))
+    (is (typep (gtk:print-operation-default-page-setup object) 'gtk:page-setup))
     ;; embed-page-setup
     (is-false (gtk:print-operation-embed-page-setup object))
     (is-true (setf (gtk:print-operation-embed-page-setup object) t))
@@ -320,11 +312,10 @@
     (is (= -1 (gtk:print-operation-n-pages-to-print object)))
     ;; print-settings
     (is-false (gtk:print-operation-print-settings object))
-    (is (eq 'gtk:print-settings
-            (type-of (setf (gtk:print-operation-print-settings object)
-                           (gtk:print-settings-new)))))
-    (is (eq 'gtk:print-settings
-            (type-of (gtk:print-operation-print-settings object))))
+    (is (typep (setf (gtk:print-operation-print-settings object)
+                     (gtk:print-settings-new))
+               'gtk:print-settings))
+    (is (typep (gtk:print-operation-print-settings object) 'gtk:print-settings))
     ;; show-progess
     (is-false (gtk:print-operation-show-progress object))
     (is-true (setf (gtk:print-operation-show-progress object) t))
@@ -381,4 +372,4 @@
 ;;;     gtk_print_operation_preview_is_selected
 ;;;     gtk_print_operation_preview_render_page
 
-;;; 2022-12-16
+;;; --- 2023-2-10 --------------------------------------------------------------

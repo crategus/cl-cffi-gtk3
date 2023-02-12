@@ -119,4 +119,4 @@
 ;;;     gtk_entry_completion_set_popup_single_match
 ;;;     gtk_entry_completion_get_popup_single_match
 
-;;; 2021-10-26
+;;; --- 2023-2-11 --------------------------------------------------------------
