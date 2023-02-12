@@ -19,11 +19,12 @@
 
 (in-package :gtk3-example)
 
-(defun example-event-box ()
+(defun example-event-box (&optional application)
   (within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :type :toplevel
                                  :title "Example Event Box"
+                                 :type :toplevel
+                                 :application application
                                  :default-height 150
                                  :border-width 24))
           (eventbox (make-instance 'gtk:event-box))

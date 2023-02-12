@@ -1,4 +1,4 @@
-;;;; Example Color Button Label - 2022-12-18
+;;;; Example Color Button Label - 2023-2-12
 ;;;;
 ;;;; The example shows a color button. The button is initialized with the color
 ;;;; "Black". The handler for the "color-set" signal changes the color of the
@@ -7,10 +7,12 @@
 
 (in-package :gtk3-example)
 
-(defun example-color-button-label ()
+(defun example-color-button-label (&optional application)
   (within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :title "Example Color Button"
+                                 :type :toplevel
+                                 :application application
                                  :border-width 12
                                  :default-width 300
                                  :default-height 200))

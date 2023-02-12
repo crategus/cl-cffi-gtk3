@@ -1,12 +1,13 @@
-;;;; Example Scale Widget - 2022-12-22
+;;;; Example Scale Widget - 2023-2-12
 
 (in-package :gtk3-example)
 
-(defun example-scale-widget ()
+(defun example-scale-widget (&optional application)
   (within-main-loop
     (let* ((window (make-instance 'gtk:window
+                                  :title "Example Scale Widget"
                                   :type :toplevel
-                                  :title "Example Scale Widget"))
+                                  :application application))
            (box1 (make-instance 'gtk:box
                                 :orientation :vertical
                                 :homogeneous nil

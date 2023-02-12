@@ -1,4 +1,4 @@
-;;;; Example Image Menu Item - 2022-12-21
+;;;; Example Image Menu Item - 2023-2-12
 
 (in-package :gtk3-example)
 
@@ -39,12 +39,13 @@
 (defun example-menu-item (&optional application)
   (within-main-loop
     (let (;; Create a toplevel window.
-          (window (make-instance 'gtk:window :type :toplevel
-                                             :title "Example Image Menu Item"
-                                             :application application
-                                             :default-height 200
-                                             :default-width 350
-                                             :border-width 12))
+          (window (make-instance 'gtk:window
+                                 :title "Example Image Menu Item"
+                                 :type :toplevel
+                                 :application application
+                                 :default-height 200
+                                 :default-width 350
+                                 :border-width 12))
           (box (make-instance 'gtk:box :orientation :vertical :spacing 12)))
       ;; Signal handler for the window to handle the signal "destroy".
       (g:signal-connect window "destroy"

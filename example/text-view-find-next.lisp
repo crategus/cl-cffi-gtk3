@@ -1,4 +1,4 @@
-;;;; Text View Find Next - 2022-12-22
+;;;; Text View Find Next - 2023-2-12
 
 (in-package :gtk3-example)
 
@@ -12,11 +12,12 @@
         (let ((last-end (gtk:text-buffer-create-mark buffer "last-end" end)))
           (gtk:text-view-scroll-mark-onscreen textview last-end))))))
 
-(defun example-text-view-find-next ()
+(defun example-text-view-find-next (&optional application)
   (within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :title "Example Text View Find Next"
                                  :type :toplevel
+                                 :application application
                                  :default-width 350
                                  :default-height 250))
           (entry (make-instance 'gtk:search-entry))

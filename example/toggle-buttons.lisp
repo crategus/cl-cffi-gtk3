@@ -1,11 +1,12 @@
-;;;; Example Toggle Buttons - 2022-12-22
+;;;; Example Toggle Buttons - 2023-2-12
 
 (in-package :gtk3-example)
 
-(defun example-toggle-buttons ()
+(defun example-toggle-buttons (&optional application)
   (within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :title "Example Toggle Buttons"
+                                 :application application
                                  :type :toplevel
                                  :border-width 18))
           (grid (make-instance 'gtk:grid

@@ -1,4 +1,4 @@
-;;;; Text View Insert - 2022-12-22
+;;;; Text View Insert - 2023-2-12
 
 (in-package :gtk3-example)
 
@@ -23,11 +23,12 @@
     (gtk:text-iter-forward-char slash)
     (eql (gtk:text-iter-char slash) #\/)))
 
-(defun example-text-view-insert ()
+(defun example-text-view-insert (&optional application)
   (within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :title "Example Text View Insert"
                                  :type :toplevel
+                                 :application application
                                  :default-width 350
                                  :default-height 200))
           (textview (make-instance 'gtk:text-view

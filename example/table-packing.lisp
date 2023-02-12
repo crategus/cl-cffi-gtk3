@@ -1,12 +1,13 @@
-;;;; Example Table packing - 2022-12-22
+;;;; Example Table packing - 2023-2-15
 
 (in-package :gtk3-example)
 
-(defun example-table-packing ()
+(defun example-table-packing (&optional application)
   (within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :type :toplevel
                                  :title "Example Table Packing"
+                                 :type :toplevel
+                                 :application application
                                  :border-width 12
                                  :default-width 300))
           (table (make-instance 'gtk:table

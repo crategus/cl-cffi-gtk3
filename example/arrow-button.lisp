@@ -1,4 +1,4 @@
-;;;; Example Arrow button - 2022-12-15
+;;;; Example Arrow button - 2023-2-12
 
 (in-package :gtk3-example)
 
@@ -20,12 +20,13 @@
           (format nil "Arrow of type ~A" (symbol-name arrow-type)))
     button))
 
-(defun example-arrow-button ()
+(defun example-arrow-button (&optional application)
   (within-main-loop
     (let ((;; Create the main window
            window (make-instance 'gtk:window
-                                 :type :toplevel
                                  :title "Example Arrow Button"
+                                 :type :toplevel
+                                 :application application
                                  :default-width 280
                                  :default-height 120
                                  :border-width 12))

@@ -1,13 +1,14 @@
-;;;; Example Drawing in response to input - 2022-12-20
+;;;; Example Drawing in response to input - 2023-2-12
 
 (in-package :gtk3-example)
 
-(defun example-drawing-area-input ()
+(defun example-drawing-area-input (&optional application)
   (within-main-loop
     (let ((surface nil)
           (window (make-instance 'gtk:window
+                                 :title "Example Drawing"
                                  :type :toplevel
-                                 :title "Example Drawing"))
+                                 :application application))
           (area (make-instance 'gtk:drawing-area
                                :width-request 320
                                :height-request 240)))

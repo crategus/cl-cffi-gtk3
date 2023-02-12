@@ -1,4 +1,4 @@
-;;;; Example File Chooser Custom Filter - 2022-12-20
+;;;; Example File Chooser Custom Filter - 2023-2-12
 
 (in-package :gtk3-example)
 
@@ -8,11 +8,11 @@
     (string= display-name
              (string-upcase display-name))))
 
-(defun create-file-chooser-custom-filter ()
+(defun create-file-chooser-custom-filter (&optional parent)
   (let ((filter-custom (gtk:file-filter-new))
         (filter-all (gtk:file-filter-new))
         (dialog (gtk:file-chooser-dialog-new "Example File Chooser Custom Filter"
-                                             nil
+                                             parent
                                              :open
                                              "gtk-save" :accept
                                              "gtk-cancel" :cancel)))

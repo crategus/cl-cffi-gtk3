@@ -1,4 +1,4 @@
-;;;; Example File Chooser Button - 2022⁻12-20
+;;;; Example File Chooser Button - 2023-2-12
 
 (in-package :gtk3-example)
 
@@ -18,11 +18,12 @@
                             "Preview Filename :" preview-filename
                             "Preview URI :" preview-uri)))))
 
-(defun example-file-chooser-button ()
+(defun example-file-chooser-button (&optional application)
   (within-main-loop
     (let* ((window (make-instance 'gtk:window
                                   :title "Example File Chooser Button"
                                   :type :toplevel
+                                  :application application
                                   :border-width 24
                                   :default-width 300
                                   :default-height 100))

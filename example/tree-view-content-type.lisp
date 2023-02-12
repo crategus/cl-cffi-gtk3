@@ -1,4 +1,4 @@
-;;;; Example Tree View Content Type - 2022-12-22
+;;;; Example Tree View Content Type - 2023-2-12
 
 (in-package :gtk3-example)
 
@@ -58,11 +58,12 @@
         (gtk:tree-view-append-column view column))
       view))
 
-  (defun example-tree-view-content-type ()
+  (defun example-tree-view-content-type (&optional application)
     (within-main-loop
       (let ((window (make-instance 'gtk:window
                                    :title "Example Tree View Content Type"
                                    :type :toplevel
+                                   :application application
                                    :default-width 550
                                    :default-height 350))
             (scrolled (make-instance 'gtk:scrolled-window))

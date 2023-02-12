@@ -1,4 +1,4 @@
-;;;; Color Chooser Palette - 2022-12-20
+;;;; Color Chooser Palette - 2023-2-12
 
 (in-package :gtk3-example)
 
@@ -206,8 +206,9 @@
   (within-main-loop
     (let* ((colors-per-line 9)
            (window (make-instance 'gtk:window
-                                  :application application
                                   :title "Example Color Chooser Palette"
+                                  :application application
+                                  :type :toplevel
                                   :border-width 12
                                   :default-width 400))
            (builder (gtk:builder-new-from-string *color-chooser-palette-ui*))

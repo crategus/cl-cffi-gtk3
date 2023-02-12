@@ -1,12 +1,13 @@
-;;;; Simple Text View - 2022-12-22
+;;;; Simple Text View - 2023-2-12
 
 (in-package :gtk3-example)
 
-(defun example-text-view-simple ()
+(defun example-text-view-simple (&optional application)
   (within-main-loop
     (let* ((window (make-instance 'gtk:window
-                                  :type :toplevel
                                   :title "Example Simple Text View"
+                                  :type :toplevel
+                                  :application application
                                   :default-width 350
                                   :default-height 200))
            (textview (make-instance 'gtk:text-view

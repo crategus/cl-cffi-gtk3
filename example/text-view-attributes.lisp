@@ -1,12 +1,13 @@
-;;;; Text View Attributes - 2022-12-22
+;;;; Text View Attributes - 2023-2-12
 
 (in-package :gtk3-example)
 
-(defun example-text-view-attributes ()
+(defun example-text-view-attributes (&optional application)
   (within-main-loop
     (let* ((window (make-instance 'gtk:window
-                                  :type :toplevel
                                   :title "Example Text View Attributes"
+                                  :type :toplevel
+                                  :application application
                                   :default-width 350
                                   :default-height 200))
            (provider (gtk:css-provider-new))

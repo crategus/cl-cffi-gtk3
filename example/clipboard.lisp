@@ -1,4 +1,4 @@
-;;;; Example Clipboard - 2022-12-18
+;;;; Example Clipboard - 2023-2-12
 
 (in-package :gtk3-example)
 
@@ -54,6 +54,7 @@
   (within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :title "Example Clipboard"
+                                 :type :toplevel
                                  :application application))
           (vbox (make-instance 'gtk:box
                                :border-width 6

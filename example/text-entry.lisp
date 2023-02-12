@@ -2,11 +2,12 @@
 
 (in-package :gtk3-example)
 
-(defun example-text-entry ()
+(defun example-text-entry (&optional application)
   (within-main-loop
     (let* ((window (make-instance 'gtk:window
                                   :type :toplevel
                                   :title "Example Text Entry"
+                                  :application application
                                   :default-width 250
                                   :default-height 120))
            (vbox (make-instance 'gtk:box :orientation :vertical))

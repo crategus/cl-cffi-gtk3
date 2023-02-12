@@ -1,4 +1,4 @@
-;;;; Font Chooser Button - 2022-12-21
+;;;; Font Chooser Button - 2023-2-12
 
 (in-package :gtk3-example)
 
@@ -8,11 +8,12 @@
           '("Sans" "Serif")
           :test #'equal))
 
-(defun example-font-button ()
+(defun example-font-button (&optional application)
   (within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :title "Example Font Chooser Button"
                                  :type :toplevel
+                                 :application application
                                  :border-width 12
                                  :default-width 300
                                  :default-height 100))

@@ -6,8 +6,9 @@
 
 (in-package :gtk3-example)
 
-(defun create-expander-dialog ()
+(defun create-expander-dialog (&optional parent)
   (let* ((dialog (make-instance 'gtk:message-dialog
+                                :transient-for parent
                                 :message-type :info
                                 :buttons :close
                                 :default-width 320

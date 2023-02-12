@@ -1,4 +1,4 @@
-;;;; Popovers - 2022-12-22
+;;;; Popovers - 2023-2-12
 ;;;;
 ;;;; A bubble-like window containing contextual information or options.
 ;;;; GtkPopovers can be attached to any widget, and will be displayed
@@ -26,9 +26,9 @@
 (defun example-popover (&optional application)
   (within-main-loop
     (let* ((window (make-instance 'gtk:window
+                                  :title "Example Popover"
                                   :type :toplevel
-                                  :application application
-                                  :title "Example Popover"))
+                                  :application application))
            (box (make-instance 'gtk:box
                                :orientation :vertical
                                :spacing 24

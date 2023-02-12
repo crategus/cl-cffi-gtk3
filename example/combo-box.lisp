@@ -27,11 +27,12 @@
         (setf (gtk:cell-renderer-sensitive cell) nil)
         (setf (gtk:cell-renderer-sensitive cell) t))))
 
-(defun example-combo-box ()
+(defun example-combo-box (&optional application)
   (within-main-loop
     (let* ((window (make-instance 'gtk:window
                                  :border-width 12
-                                 :title "Example Combo Box"))
+                                 :title "Example Combo Box"
+                                 :application application))
            (vbox1 (make-instance 'gtk:box
                                  :orientation :vertical
                                  :spacing 6))

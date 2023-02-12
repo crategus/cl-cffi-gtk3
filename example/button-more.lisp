@@ -2,10 +2,11 @@
 
 (in-package :gtk3-example)
 
-(defun example-button-more ()
+(defun example-button-more (&optional application)
   (within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :title "Example More Buttons"
+                                 :application application
                                  :type :toplevel
                                  :default-width 300
                                  :default-height 180

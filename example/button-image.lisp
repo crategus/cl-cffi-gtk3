@@ -1,4 +1,4 @@
-;;;; Example Simple Button - 2022-12-18
+;;;; Example Simple Button - 2023-2-12
 
 (in-package :gtk3-example)
 
@@ -15,10 +15,11 @@
     (gtk:box-pack-start box label :expand nil :fill nil :padding 3)
     box))
 
-(defun example-button-image ()
+(defun example-button-image (&optional application)
   (within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :title "Example Button"
+                                 :application application
                                  :type :toplevel
                                  :default-width 240
                                  :default-height 120))

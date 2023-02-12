@@ -16,11 +16,12 @@
 ;; TODO: There is a problem with a popup-completion
 ;; The popup does not get the correct height to show the completions.
 
-(defun example-text-entry-completion ()
+(defun example-text-entry-completion (&optional application)
   (within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :type :toplevel
                                  :title "Example Entry Buffer"
+                                 :type :toplevel
+                                 :application application
                                  :border-width 12
                                  :default-width 400))
           (hbox (make-instance 'gtk:grid

@@ -29,10 +29,12 @@
                       (gdk:rgba-parse "SlateGray")
                       (gdk:rgba-parse "DarkSlateGray"))))
 
-  (defun example-color-chooser-dialog ()
+  (defun example-color-chooser-dialog (&optional application)
     (within-main-loop
       (let ((window (make-instance 'gtk:window
                                    :title "Example Color Chooser Dialog"
+                                   :type :toplevel
+                                   :application application
                                    :default-width 400))
             (area (make-instance 'gtk:drawing-area)))
         (g:signal-connect window "destroy"

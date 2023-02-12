@@ -1,12 +1,14 @@
-;;;; Combo Box Text - 2022-12-20
+;;;; Combo Box Text - 2023-2-12
 
 (in-package :gtk3-example)
 
-(defun example-combo-box-text ()
+(defun example-combo-box-text (&optional application)
   (within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :border-width 12
-                                 :title "Example Combo Box Text"))
+                                 :title "Example Combo Box Text"
+                                 :type :toplevel
+                                 :application application
+                                 :border-width 12))
           (vbox1 (make-instance 'gtk:box
                                 :orientation :vertical
                                 :spacing 6))

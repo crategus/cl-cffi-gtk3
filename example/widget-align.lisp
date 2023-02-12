@@ -1,4 +1,4 @@
-;;;; Example Align Widget - 2022-12-22
+;;;; Example Align Widget - 2023-2-12
 ;;;;
 ;;;; Similiar to example-alignment, but using the child properties "margin",
 ;;;; "valign", and "halign" of the button widget.  In distinction to
@@ -6,11 +6,12 @@
 
 (in-package :gtk3-example)
 
-(defun example-widget-align ()
+(defun example-widget-align (&optional application)
   (within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :type :toplevel
                                  :title "Example Align Widget"
+                                 :type :toplevel
+                                 :application application
                                  :border-width 12
                                  :width-request 300
                                  :height-request 300))

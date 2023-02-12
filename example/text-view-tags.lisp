@@ -1,4 +1,4 @@
-;;;; Text View Tags - 2022-12-22
+;;;; Text View Tags - 2023-2-12
 
 (in-package :gtk3-example)
 
@@ -10,11 +10,12 @@
           (gtk:text-buffer-apply-tag buffer tag start end)
           (gtk:text-buffer-remove-tag buffer tag start end)))))
 
-(defun example-text-view-tags ()
+(defun example-text-view-tags (&optional application)
   (within-main-loop
     (let* ((window (make-instance 'gtk:window
                                   :title "Example Text View Tags"
                                   :type :toplevel
+                                  :application application
                                   :default-width 350
                                   :default-height 250))
            (vbox (make-instance 'gtk:box

@@ -1,11 +1,11 @@
-;;;; Create Print Dialog - 2022-12-22
+;;;; Create Print Dialog - 2023-2-12
 
 (in-package :gtk3-example)
 
-(defun create-print-dialog ()
+(defun create-print-dialog (&optional parent)
   (let* ((filename (sys-path "print-dialog.ini"))
          (settings (gtk:print-settings-new-from-file filename))
-         (dialog (gtk:print-unix-dialog-new "Print Dialog" nil)))
+         (dialog (gtk:print-unix-dialog-new "Print Dialog" parent)))
     ;; Signal handler to print the selected printer
     (g:signal-connect dialog "notify::selected-printer"
         (lambda (widget param)

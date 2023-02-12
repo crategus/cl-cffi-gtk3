@@ -1,12 +1,13 @@
-;;;; Example Alignment - 2022-12-15
+;;;; Example Alignment - 2023-2-12
 
 (in-package :gtk3-example)
 
-(defun example-alignment ()
+(defun example-alignment (&optional application)
   (within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :type :toplevel
                                  :title "Example Alignment"
+                                 :type :toplevel
+                                 :application application
                                  :border-width 12
                                  :width-request 300
                                  :height-request 300))

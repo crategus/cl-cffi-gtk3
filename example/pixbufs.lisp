@@ -1,4 +1,4 @@
-;;;; pixbufs - 2022-12-22
+;;;; pixbufs - 2023-2-12
 ;;;;
 ;;;; A GdkPixbuf represents an image, normally in RGB or RGBA format.
 ;;;; Pixbufs are normally used to load files from disk and perform
@@ -13,7 +13,7 @@
 
 ;; TODO: The center of the rotation is no longer at the (200,200) point? Why?
 
-(in-package #:gtk3-example)
+(in-package :gtk3-example)
 
 (defvar *pixbufs-files*
         '("apple-red.png"
@@ -98,9 +98,9 @@
            (width (gdk:pixbuf-width background))
            (height (gdk:pixbuf-height background))
            (window (make-instance 'gtk:window
+                                  :title "Example Pixbufs"
                                   :type :toplevel
                                   :application application
-                                  :title "Example Pixbufs"
                                   :resizable nil
                                   :width-request width
                                   :height-request height))

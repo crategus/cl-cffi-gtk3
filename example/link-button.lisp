@@ -2,11 +2,12 @@
 
 (in-package :gtk3-example)
 
-(defun example-link-button ()
+(defun example-link-button (&optional application)
   (within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :type :toplevel
                                  :title "Link Button"
+                                 :application application
                                  :default-width 280
                                  :border-width 18))
           (grid (make-instance 'gtk:grid

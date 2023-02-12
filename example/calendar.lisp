@@ -7,11 +7,12 @@
   (when (= day 12)
     "This day has a tooltip."))
 
-(defun example-calendar ()
+(defun example-calendar (&optional application)
   (within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :title "Example Calendar"
                                  :type :toplevel
+                                 :application application
                                  :border-width 24
                                  :default-width 250
                                  :default-height 100))

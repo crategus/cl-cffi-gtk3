@@ -1,4 +1,4 @@
-;;;; Example Alignment Interactive - 2022-12-15
+;;;; Example Alignment Interactive - 2023-2-12
 ;;;;
 ;;;; The gtk:alignment widget controls the alignment and size of its child
 ;;;; widget. It has four settings: xscale, yscale, xalign, and yalign.
@@ -17,12 +17,13 @@
 
 (in-package :gtk3-example)
 
-(defun example-alignment-interactive ()
+(defun example-alignment-interactive (&optional application)
   (within-main-loop
     (let* (;; Create a toplevel window.
            (window (make-instance 'gtk:window
-                                  :type :toplevel
                                   :title "Example Alignment Interactive"
+                                  :type :toplevel
+                                  :application application
                                   :border-width 12))
            ;; A horizontal Box for the content of the window.
            (content (make-instance 'gtk:grid

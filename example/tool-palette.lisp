@@ -1,4 +1,4 @@
-;;;; Example Tool Palette - 2022-12-22
+;;;; Example Tool Palette - 2023-2-12
 ;;;;
 ;;;; A tool palette widget shows groups of toolbar items as a grid of icons or
 ;;;; a list of names.
@@ -203,12 +203,13 @@
           (gtk:widget-queue-draw widget))))))
 
 
-(defun example-tool-palette ()
+(defun example-tool-palette (&optional application)
   (within-main-loop
     (let* (;; Create a toplevel window.
            (window (make-instance 'gtk:window
-                                  :type :toplevel
                                   :title "Example Tool Palette"
+                                  :type :toplevel
+                                  :application application
                                   :border-width 12))
            ;; A horizontal Box for the content of the window.
            (content (make-instance 'gtk:grid

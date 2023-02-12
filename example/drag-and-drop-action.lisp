@@ -1,13 +1,19 @@
-;;;; Drag and Drop with Action - 2022-12-20
+;;;; Drag and Drop with Action - 2023-2-12
+
+;; FIXME: The drag action fails after confirmation with an Gdk error.
+;; What is the problem?
+;; Gdk-Message: 20:54:57.814: Error reading events from display:
+;; Das Argument ist ungültig
 
 (in-package :gtk3-example)
 
-(defun example-drag-and-drop-action ()
+(defun example-drag-and-drop-action (&optional application)
   (within-main-loop
     (let ((window (make-instance 'gtk:window
+                                 :title "Drag and Drop with Action"
+                                 :application application
                                  :type :toplevel
-                                 :border-width 12
-                                 :title "Drag and Drop with Action"))
+                                 :border-width 12))
           (grid (make-instance 'gtk:grid
                                :orientation :horizontal
                                :border-width 8))

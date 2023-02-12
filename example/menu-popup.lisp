@@ -1,15 +1,15 @@
-;;;; Example Menu Popup - 2022-12-21
+;;;; Example Menu Popup - 2023-2-12
 
 (in-package :gtk3-example)
 
 (defun example-menu-popup (&optional application)
   (within-main-loop
     (let ((window (make-instance 'gtk:window
+                                 :title "Example Popup Menu"
                                  :type :toplevel
                                  :application application
                                  :default-width 300
-                                 :default-height 180
-                                 :title "Example Popup Menu"))
+                                 :default-height 180))
           (button (gtk:button-new-with-label "Click me")))
       ;; Create pop-up menu for button
       (let ((popup (make-instance 'gtk:menu))

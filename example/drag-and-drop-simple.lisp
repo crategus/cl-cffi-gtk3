@@ -1,13 +1,14 @@
-;;;; Drag and Drop Simple - 2022-12-20
+;;;; Drag and Drop Simple - 2023-2-12
 
 (in-package :gtk3-example)
 
-(defun example-drag-and-drop-simple ()
+(defun example-drag-and-drop-simple (&optional application)
   (within-main-loop
     (let ((window (make-instance 'gtk:window
+                                 :title "Drag and Drop Simple"
+                                 :application application
                                  :type :toplevel
-                                 :border-width 12
-                                 :title "Drag and Drop Simple"))
+                                 :border-width 12))
           (grid (make-instance 'gtk:grid
                                :orientation :horizontal
                                :border-width 8))

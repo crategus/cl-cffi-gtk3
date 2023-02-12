@@ -1,12 +1,13 @@
-;;;; Example Table packing with more spacing - 2022-12-22
+;;;; Example Table packing with more spacing - 2023-2-12
 
 (in-package :gtk3-example)
 
-(defun example-table-packing-2 ()
+(defun example-table-packing-2 (&optional application)
   (within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :type :toplevel
                                  :title "Example Table Packing"
+                                 :type :toplevel
+                                 :application application
                                  :border-width 12
                                  :default-width 300))
           (table (make-instance 'gtk:table

@@ -1,4 +1,4 @@
-;;;; Text View Tooltip - 2022-12-22
+;;;; Text View Tooltip - 2023-2-12
 
 (in-package :gtk3-example)
 
@@ -70,11 +70,12 @@
                                    (+ window-y screen-y text-height))
                   (gtk:widget-show-all tooltip)))))))))
 
-  (defun example-text-view-tooltip ()
+  (defun example-text-view-tooltip (&optional application)
     (within-main-loop
       (let* ((window (make-instance 'gtk:window
                                     :title "Text View Tooltip"
                                     :type :toplevel
+                                    :application application
                                     :default-width 450
                                     :default-height 200))
              (scrolled (make-instance 'gtk:scrolled-window))

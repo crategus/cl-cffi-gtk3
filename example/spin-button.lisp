@@ -1,12 +1,13 @@
-;;;; Example Spin Button - 2022-12-22
+;;;; Example Spin Button - 2023-2-12
 
 (in-package :gtk3-example)
 
-(defun example-spin-button ()
+(defun example-spin-button (&optional application)
   (within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :type :toplevel
                                  :title "Example Spin Button"
+                                 :type :toplevel
+                                 :application application
                                  :default-width 300))
           (vbox (make-instance 'gtk:box
                                :orientation :vertical

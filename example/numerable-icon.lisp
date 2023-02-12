@@ -1,4 +1,4 @@
-;;;; Example Numerable Icon - 2022-12-21
+;;;; Example Numerable Icon - 2023-2-12
 ;;;;
 ;;;; This small demo shows how numerable icons are created.
 ;;;;
@@ -11,12 +11,13 @@
 
 (in-package :gtk3-example)
 
-(defun example-numerable-icon ()
+(defun example-numerable-icon (&optional application)
   (within-main-loop
     (let (;; Create a toplevel window
           (window (make-instance 'gtk:window
-                                 :type :toplevel
                                  :title "Example Numerable Icons"
+                                 :type :toplevel
+                                 :application application
                                  :border-width 12))
           ;; Create a grid for the numerable icons
           (grid (make-instance 'gtk:grid

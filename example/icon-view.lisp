@@ -1,4 +1,4 @@
-;;;; Example Icon View Content Type - 2022-12-21
+;;;; Example Icon View Content Type - 2023-2-12
 
 (in-package :gtk3-example)
 
@@ -25,11 +25,12 @@
                                     description)))
       model))
 
-  (defun example-icon-view ()
+  (defun example-icon-view (&optional application)
     (within-main-loop
       (let ((window (make-instance 'gtk:window
                                    :title "Example Icon View"
                                    :type :toplevel
+                                   :application application
                                    :default-width 500
                                    :default-height 350))
             (scrolled (make-instance 'gtk:scrolled-window))

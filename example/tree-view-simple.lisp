@@ -1,4 +1,4 @@
-;;;; Example Tree View Simple - 2022-12-22
+;;;; Example Tree View Simple - 2023-2-12
 
 (in-package :gtk3-example)
 
@@ -72,11 +72,12 @@
         (gtk:tree-view-append-column view column))
       view))
 
-  (defun example-tree-view-simple ()
+  (defun example-tree-view-simple (&optional application)
     (within-main-loop
       (let* ((window (make-instance 'gtk:window
                                     :title "Example Simple Tree View"
                                     :type :toplevel
+                                    :application application
                                     :default-width 350
                                     :default-height 200))
              (view (create-view-and-model-simple)))

@@ -1,4 +1,4 @@
-;;;; Example Tree View Path - 2022-12-22
+;;;; Example Tree View Path - 2023-2-12
 
 (in-package :gtk3-example)
 
@@ -76,11 +76,12 @@
         (gtk:tree-view-append-column view column))
       view))
 
-  (defun example-tree-view-path ()
+  (defun example-tree-view-path (&optional application)
     (within-main-loop
       (let ((window (make-instance 'gtk:window
                                    :title "Example Tree View Path"
                                    :type :toplevel
+                                   :application application
                                    :default-width 350
                                    :default-height 250))
             (view (create-view-and-model-path)))

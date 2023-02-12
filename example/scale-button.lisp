@@ -1,12 +1,13 @@
-;;;; Example Scale Button - 2022-12-22
+;;;; Example Scale Button - 2023-2-12
 
 (in-package :gtk3-example)
 
-(defun example-scale-button ()
+(defun example-scale-button (&optional application)
   (within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :type :toplevel
                                  :title "Example Scale Button"
+                                 :type :toplevel
+                                 :application application
                                  :border-width 12
                                  :width-request 360
                                  :height-request 240))

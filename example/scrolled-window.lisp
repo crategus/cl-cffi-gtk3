@@ -1,12 +1,13 @@
-;;;; Scrolled Window - 2022-12-22
+;;;; Scrolled Window - 2023-2-12
 
 (in-package :gtk3-example)
 
-(defun example-scrolled-window ()
+(defun example-scrolled-window (&optional application)
   (within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :type :toplevel
                                  :title "Example Scrolled Window"
+                                 :type :toplevel
+                                 :application application
                                  :width-request 350
                                  :height-request 300))
           (scrolled (make-instance 'gtk:scrolled-window

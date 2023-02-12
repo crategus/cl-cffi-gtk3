@@ -1,12 +1,13 @@
-;;;; Color Chooser Widget - 2022-12-20
+;;;; Color Chooser Widget - 2023-2-12
 
 (in-package :gtk3-example)
 
 (defun example-color-chooser-widget (&optional application)
   (within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :application application
                                  :title "Example Color Chooser Widget"
+                                 :application application
+                                 :type :toplevel
                                  :border-width 12
                                  :default-width 400))
           (color-chooser (make-instance 'gtk:color-chooser-widget)))

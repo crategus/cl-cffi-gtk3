@@ -1,12 +1,13 @@
-;;;; Example Switch - 2022-12-22
+;;;; Example Switch - 2023-2-12
 
 (in-package :gtk3-example)
 
-(defun example-switch ()
+(defun example-switch (&optional application)
   (within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :type :toplevel
                                  :title "Example Switch"
+                                 :application application
                                  :default-width 250
                                  :border-width 24))
           (switch (make-instance 'gtk:switch

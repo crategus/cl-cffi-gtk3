@@ -2,11 +2,12 @@
 
 (in-package :gtk3-example)
 
-(defun example-text-view-insert-image ()
+(defun example-text-view-insert-image (&optional application)
   (within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :type :toplevel
                                  :title "Text View Insert Image"
+                                 :type :toplevel
+                                 :application application
                                  :default-width 350
                                  :default-height 200))
           (textview (make-instance 'gtk:text-view

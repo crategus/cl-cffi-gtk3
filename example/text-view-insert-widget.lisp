@@ -1,12 +1,13 @@
-;;;; Text View Insert Widget - 2022-12-22
+;;;; Text View Insert Widget - 2023-2-12
 
 (in-package :gtk3-example)
 
-(defun example-text-view-insert-widget ()
+(defun example-text-view-insert-widget (&optional application)
   (within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :type :toplevel
                                  :title "Text View Insert Widget"
+                                 :type :toplevel
+                                 :application application
                                  :default-width 350
                                  :default-height 200))
           (text-view (make-instance 'gtk:text-view

@@ -6,10 +6,10 @@
 
 (in-package :gtk3-example)
 
-(defun create-file-chooser-widget ()
+(defun create-file-chooser-widget (&optional parent)
   (let ((response nil)
         (chooser (gtk:file-chooser-dialog-new "Example File Chooser Widget"
-                                              nil
+                                              parent
                                               :open
                                               "gtk-open" :accept
                                               "gtk-cancel" :cancel))

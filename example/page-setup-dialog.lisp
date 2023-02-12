@@ -1,11 +1,12 @@
-;;;; Create Page Setup Dialog - 2022-12-22
+;;;; Create Page Setup Dialog - 2023-2-12
 
 (in-package :gtk3-example)
 
-(defun create-page-setup-dialog ()
+(defun create-page-setup-dialog (&optional parent)
   (let ((page-setup (gtk:page-setup-new))
         (dialog (make-instance 'gtk:page-setup-unix-dialog
                                :title "Page Setup Dialog"
+                               :transient-for parent
                                :default-height 250
                                :default-width 400)))
     ;; Load and set Page setup from file

@@ -4,11 +4,12 @@
 
 (in-package :gtk3-example)
 
-(defun example-text-entry-buffer ()
+(defun example-text-entry-buffer (&optional application)
   (within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :type :toplevel
                                  :title "Example Entry Buffer"
+                                 :type :toplevel
+                                 :application application
                                  :border-width 12
                                  :default-width 400))
           (hbox (make-instance 'gtk:grid

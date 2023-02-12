@@ -1,4 +1,4 @@
-;;;; Example Frame Widget - 2022-12-21
+;;;; Example Frame Widget - 2023-2-12
 ;;;;
 ;;;; This example allows to change interactively the appearance of the frame.
 
@@ -7,9 +7,9 @@
 (defun example-frame-properties (&optional application)
   (within-main-loop
     (let* ((window (make-instance 'gtk:window
+                                  :title "Example GtkFrame"
                                   :type :toplevel
                                   :application application
-                                  :title "Example GtkFrame"
                                   :border-width 12))
            ;; A horizontal Box for the content of the window
            (content (make-instance 'gtk:grid
