@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk-demo.lisp
+;;; gtk3-demo.lisp
 ;;;
 ;;; Copyright (C) 2013 - 2023 Dieter Kaiser
 ;;;
@@ -95,565 +95,693 @@
 
 ;;; ----------------------------------------------------------------------------
 
-(defparameter id-title 0)
-(defparameter id-package 1)
-(defparameter id-file 2)
-(defparameter id-func 3)
-(defparameter id-app 4)
-(defparameter id-ui 5)
-(defparameter id-css 6)
+(defparameter coltitle 0)
+(defparameter coltype 1)
+(defparameter colfunc 2)
+(defparameter colpackage 3)
+(defparameter colfile 4)
+(defparameter colui 5)
+(defparameter colcss 6)
 
 (defparameter *tree-model*
    '(("gchararray"        ; Title
+      "gchararray"        ; Type
+      "gchararray"        ; Function name
       "gchararray"        ; Package
       "gchararray"        ; Filename
-      "gchararray"        ; Function name
-      "gboolean"          ; Application as argument
       "gchararray"        ; UI Definition
       "gchararray")       ; CSS Definition
 
      "Theming in GTK"
      (("CSS Accordion"
+       ":WINDOW"
+       "example-css-accordion"
        "gtk3-example"
        "css-accordion.lisp"
-       "EXAMPLE-CSS-ACCORDION"
-       t
        ""
        "css-accordion.css")
       ("CSS Basics"
+       ":window"
+       "example-css-basics"
        "gtk3-example"
        "css-basics.lisp"
-       "EXAMPLE-CSS-BASICS"
-       t
        ""
        "css-basics.css")
       ("CSS Blend Modes"
+       ":window"
+       "example-css-blendmodes"
        "gtk3-example"
        "css-blendmodes.lisp"
-       "EXAMPLE-CSS-BLENDMODES"
-       t
        "css-blendmodes.ui"
        "css-blendmodes.css")
       ("CSS Multiple Backgrounds"
+       ":window"
+       "example-css-multiplebgs"
        "gtk3-example"
        "css-multiplebgs.lisp"
-       "EXAMPLE-CSS-MULTIPLEBGS"
-       t
        ""
        "css-multiplebgs.css")
       ("CSS Pixbufs"
+       ":window"
+       "example-css-pixbufs"
        "gtk3-example"
        "css-pixbufs.lisp"
-       "EXAMPLE-CSS-PIXBUFS"
-       t
        ""
        "css-pixbufs.css")
       ("CSS Shadows"
+       ":window"
+       "example-css-shadows"
        "gtk3-example"
        "css-shadows.lisp"
-       "EXAMPLE-CSS-SHADOWS"
-       t
        ""
        "css-shadows.css")
       ("Custom Drawing"
+       ":window"
+       "example-custom-drawing"
        "gtk3-example"
-       "custom-drawing.lisp"
-       "EXAMPLE-CUSTOM-DRAWING"
-       t))
+       "custom-drawing.lisp"))
 
      "Windows"
      (("Simple Window"
+       ":window"
+       "example-window-simple-demo"
        "gtk3-example"
-       "window-simple-demo.lisp"
-       "EXAMPLE-WINDOW-SIMPLE-DEMO"
-       t)
+       "window-simple-demo.lisp")
       ("Message Dialog"
+       ":window"
+       "example-message-dialog-simple"
        "gtk3-example"
-       "message-dialog-simple.lisp"
-       "EXAMPLE-MESSAGE-DIALOG-SIMPLE"
-       t)
+       "message-dialog-simple.lisp")
       ("Dialog Windows"
+       ":window"
+       "example-dialogs"
        "gtk3-example"
-       "dialog.lisp"
-       "EXAMPLE-DIALOGS"
-       t)
+       "dialog.lisp")
       ("Assistant"
+       ":window"
+       "example-assistant"
        "gtk3-example"
-       "assistant.lisp"
-       "EXAMPLE-ASSISTANT"
-       t))
+       "assistant.lisp"))
 
      "Layout Containers"
      (("Simple Box"
+       ":window"
+       "example-box-simple"
        "gtk3-example"
-       "box-simple.lisp"
-       "EXAMPLE-BOX-SIMPLE"
-       t)
+       "box-simple.lisp")
       ("Box packing"
+       ":window"
+       "example-box-packing"
        "gtk3-example"
-       "box-packing.lisp"
-       "EXAMPLE-BOX-PACKING"
-       t)
+       "box-packing.lisp")
       ("Simple Grid"
+       ":window"
+       "example-grid-simple"
        "gtk3-example"
-       "grid-simple.lisp"
-       "EXAMPLE-GRID-SIMPLE"
-       t)
+       "grid-simple.lisp")
       ("Grid with spacing"
+       ":window"
+       "example-grid-spacing"
        "gtk3-example"
-       "grid-spacing.lisp"
-       "EXAMPLE-GRID-SPACING"
-       t)
+       "grid-spacing.lisp")
       ("Grid packing"
+       ":window"
+       "example-grid-packing"
        "gtk3-example"
-       "grid-packing.lisp"
-       "EXAMPLE-GRID-PACKING"
-       t)
+       "grid-packing.lisp")
       ("Revealer"
+       ":window"
+       "example-revealer"
        "gtk3-example"
-       "revealer.lisp"
-       "EXAMPLE-REVEALER"
-       t)
+       "revealer.lisp")
       ("Revealer Icon"
+       ":window"
+       "example-revealer-icon"
        "gtk3-example"
        "revealer-icon.lisp"
-       "EXAMPLE-REVEALER-ICON"
-       t
        "revealer-icon.ui")
       ("List Box"
+       ":window"
+       "example-list-box"
        "gtk3-example"
        "list-box.lisp"
-       "EXAMPLE-LIST-BOX"
-       t
        "list-box.ui")
       ("Flow Box"
+       ":window"
+       "example-flow-box"
        "gtk3-example"
-       "flow-box.lisp"
-       "EXAMPLE-FLOW-BOX"
-       t)
+       "flow-box.lisp")
       ("Stack"
+       ":window"
+       "example-stack"
        "gtk3-example"
-       "stack.lisp"
-       "EXAMPLE-STACK"
-       t)
+       "stack.lisp")
       ("Stack Sidebar"
+       ":window"
+       "example-stack-sidebar"
        "gtk3-example"
-       "stack-sidebar.lisp"
-       "EXAMPLE-STACK-SIDEBAR"
-       t)
+       "stack-sidebar.lisp")
       ("Action Bar"
+       ":window"
+       "example-action-bar"
        "gtk3-example"
-       "action-bar.lisp"
-       "EXAMPLE-ACTION-BAR"
-       t)
+       "action-bar.lisp")
       ("Header Bar"
+       ":window"
+       "example-header-bar"
        "gtk3-example"
-       "header-bar.lisp"
-       "EXAMPLE-HEADER-BAR"
-       t)
+       "header-bar.lisp")
       ("Overlay Interactive"
+       ":window"
+       "example-overlay-interactive"
        "gtk3-example"
-       "overlay-interactive.lisp"
-       "EXAMPLE-OVERLAY-INTERACTIVE"
-       t)
+       "overlay-interactive.lisp")
       ("Overlay Decorative"
+       ":window"
+       "example-overlay-decorative"
        "gtk3-example"
-       "overlay-decorative.lisp"
-       "EXAMPLE-OVERLAY-DECORATIVE"
-       t)
+       "overlay-decorative.lisp")
       ("Button Boxes"
+       ":window"
+       "example-button-box"
        "gtk3-example"
-       "button-box.lisp"
-       "EXAMPLE-BUTTON-BOX"
-       t)
+       "button-box.lisp")
       ("Paned Window"
+       ":window"
+       "example-paned-window"
        "gtk3-example"
-       "paned-window.lisp"
-       "EXAMPLE-PANED-WINDOW"
-       t)
+       "paned-window.lisp")
       ("Notebook"
+       ":window"
+       "example-notebook"
        "gtk3-example"
-       "notebook.lisp"
-       "EXAMPLE-NOTEBOOK"
-       t)
+       "notebook.lisp")
       ("Expander"
+       ":dialog"
+       "create-expander-dialog"
        "gtk3-example"
-       "expander.lisp"
-       "CREATE-EXPANDER-DIALOG"
-       nil)
+       "expander.lisp")
       ("Aspect Frame"
+       ":window"
+       "example-aspect-frame"
        "gtk3-example"
-       "aspect-frame.lisp"
-       "EXAMPLE-ASPECT-FRAME"
-       t)
+       "aspect-frame.lisp")
       ("Fixed Container"
+       ":window"
+       "example-fixed"
        "gtk3-example"
-       "fixed.lisp"
-       "EXAMPLE-FIXED"
-       t))
+       "fixed.lisp"))
 
      ;; Display Widgets
      "Display Widgets"
      (("Labels"
+       ":window"
+       "example-label"
        "gtk3-example"
-       "label.lisp"
-       "EXAMPLE-LABEL"
-       t)
+       "label.lisp")
       ("More Labels"
+       ":window"
+       "example-label-more"
        "gtk3-example"
-       "label-more.lisp"
-       "EXAMPLE-LABEL-MORE"
-       t)
+       "label-more.lisp")
       ("Images"
+       ":window"
+       "example-image"
        "gtk3-example"
-       "image.lisp"
-       "EXAMPLE-IMAGE"
-       t)
+       "image.lisp")
       ("Spinner"
+       ":window"
+       "example-spinner"
        "gtk3-example"
-       "spinner.lisp"
-       "EXAMPLE-SPINNER"
-       t)
+       "spinner.lisp")
       ("Info Bar"
+       ":window"
+       "example-info-bar"
        "gtk3-example"
-       "info-bar.lisp"
-       "EXAMPLE-INFO-BAR"
-       t)
+       "info-bar.lisp")
       ("Progress Bar"
+       ":window"
+       "example-progress-bar"
        "gtk3-example"
-       "progress-bar.lisp"
-       "EXAMPLE-PROGRESS-BAR"
-       t)
+       "progress-bar.lisp")
       ("Level Bar"
+       ":window"
+       "example-level-bar"
        "gtk3-example"
-       "level-bar.lisp"
-       "EXAMPLE-LEVEL-BAR"
-       t)
+       "level-bar.lisp")
       ("Statusbar"
+       ":window"
+       "example-statusbar"
        "gtk3-example"
-       "statusbar.lisp"
-       "EXAMPLE-STATUSBAR"
-       t))
+       "statusbar.lisp"))
 
      "Button and Toggle Widgets"
      (("Simple Button"
+       ":window"
+       "example-button-image"
        "gtk3-example"
-       "button-image.lisp"
-       "EXAMPLE-BUTTON-IMAGE")
+       "button-image.lisp")
       ("More Buttons"
+       ":window"
+       "example-button-more"
        "gtk3-example"
-       "button-more.lisp"
-       "EXAMPLE-BUTTON-MORE")
+       "button-more.lisp")
       ("Toggle Buttons"
+       ":window"
+       "example-toggle-buttons"
        "gtk3-example"
-       "toggle-buttons.lisp"
-       "EXAMPLE-TOGGLE-BUTTONS")
+       "toggle-buttons.lisp")
       ("Link Button"
+       ":window"
+       "example-link-button"
        "gtk3-example"
-       "link-button.lisp"
-       "EXAMPLE-LINK-BUTTON")
+       "link-button.lisp")
       ("Switch"
+       ":window"
+       "example-switch"
        "gtk3-example"
-       "switch.lisp"
-       "EXAMPLE-SWITCH")
+       "switch.lisp")
       ("Scale Button"
+       ":window"
+       "example-scale-button"
        "gtk3-example"
-       "scale-button.lisp"
-       "EXAMPLE-SCALE-BUTTON"))
+       "scale-button.lisp"))
 
      "Numeric/Text Data Entry"
      (("Text Entry"
+       ":window"
+       "example-text-entry"
        "gtk3-example"
-       "text-entry.lisp"
-       "EXAMPLE-TEXT-ENTRY")
+       "text-entry.lisp")
       ("Text Entry Buffer"
+       ":window"
+       "example-text-entry-buffer"
        "gtk3-example"
-       "text-entry-buffer.lisp"
-       "EXAMPLE-TEXT-ENTRY-BUFFER")
+       "text-entry-buffer.lisp")
       ("Text Entry Completion"
+       ":window"
+       "example-text-entry-completion"
        "gtk3-example"
-       "text-entry-completion.lisp"
-       "EXAMPLE-TEXT-ENTRY-COMPLETION")
+       "text-entry-completion.lisp")
       ("Scale Widget"
+       ":window"
+       "example-scale-widget"
        "gtk3-example"
-       "scale-widget.lisp"
-       "EXAMPLE-SCALE-WIDGET")
+       "scale-widget.lisp")
       ("Spin Button"
+       ":window"
+       "example-spin-button"
        "gtk3-example"
-       "spin-button.lisp"
-       "EXAMPLE-SPIN-BUTTON"))
+       "spin-button.lisp"))
 
      "Multiline Text Editor"
      (("Simple Text View"
+       ":window"
+       "example-text-view-simple"
        "gtk3-example"
-       "text-view-simple.lisp"
-       "EXAMPLE-TEXT-VIEW-SIMPLE")
+       "text-view-simple.lisp")
       ("Text View Attributes"
+       ":window"
+       "example-text-view-attributes"
        "gtk3-example"
-       "text-view-attributes.lisp"
-       "EXAMPLE-TEXT-VIEW-ATTRIBUTES")
+       "text-view-attributes.lisp")
       ("Text View Tags"
+       ":window"
+       "example-text-view-tags"
        "gtk3-example"
-       "text-view-tags.lisp"
-       "EXAMPLE-TEXT-VIEW-TAGS")
+       "text-view-tags.lisp")
       ("Text View Search"
+       ":window"
+       "example-text-view-find-next"
        "gtk3-example"
-       "text-view-find-next.lisp"
-       "EXAMPLE-TEXT-VIEW-FIND-NEXT")
+       "text-view-find-next.lisp")
       ("Text View Insert"
+       ":window"
+       "example-text-view-insert"
        "gtk3-example"
-       "text-view-insert.lisp"
-       "EXAMPLE-TEXT-VIEW-INSERT")
+       "text-view-insert.lisp")
       ("Text View Insert Image"
+       ":window"
+       "example-text-view-insert-image"
        "gtk3-example"
-       "text-view-insert-image.lisp"
-       "EXAMPLE-TEXT-VIEW-INSERT-IMAGE")
+       "text-view-insert-image.lisp")
       ("Text View Insert Widget"
+       ":window"
+       "example-text-view-insert-widget"
        "gtk3-example"
-       "text-view-insert-widget.lisp"
-       "EXAMPLE-TEXT-VIEW-INSERT-WIDGET")
+       "text-view-insert-widget.lisp")
       ("Text View Tooltip"
+       ":window"
+       "example-text-view-tooltip"
        "gtk3-example"
-       "text-view-tooltip.lisp"
-       "EXAMPLE-TEXT-VIEW-TOOLTIP"))
+       "text-view-tooltip.lisp"))
 
      "Tree, List and Icon Grid Widgets"
      (("Simple Tree View"
+       ":window"
+       "example-tree-view-simple"
        "gtk3-example"
-       "tree-view-simple.lisp"
-       "EXAMPLE-TREE-VIEW-SIMPLE")
+       "tree-view-simple.lisp")
       ("Tree View Path"
+       ":window"
+       "example-tree-view-path"
        "gtk3-example"
-       "tree-view-path.lisp"
-       "EXAMPLE-TREE-VIEW-PATH")
+       "tree-view-path.lisp")
       ("Tree View Content Type"
+       ":window"
+       "example-tree-view-content-type"
        "gtk3-example"
-       "tree-view-content-type.lisp"
-       "EXAMPLE-TREE-VIEW-CONTENT-TYPE")
+       "tree-view-content-type.lisp")
       ("Icon View"
+       ":window"
+       "example-icon-view"
        "gtk3-example"
-       "icon-view.lisp"
-       "EXAMPLE-ICON-VIEW"))
+       "icon-view.lisp"))
 
      "Menus, Combo Box, Toolbar"
      (("Combo Box"
+       ":window"
+       "example-combo-box"
        "gtk3-example"
-       "combo-box.lisp"
-       "EXAMPLE-COMBO-BOX")
+       "combo-box.lisp")
       ("Combo Box Text"
+       ":window"
+       "example-combo-box-text"
        "gtk3-example"
-       "combo-box-text.lisp"
-       "EXAMPLE-COMBO-BOX-TEXT")
+       "combo-box-text.lisp")
       ("Menu"
+       ":window"
+       "example-menu"
        "gtk3-example"
-       "menu.lisp"
-       "EXAMPLE-MENU"
-       t)
+       "menu.lisp")
       ("Menu Item with Image and Accel"
+       ":window"
+       "example-menu-item"
        "gtk3-example"
-       "menu-item.lisp"
-       "EXAMPLE-MENU-ITEM"
-       t)
+       "menu-item.lisp")
       ("Menu Popup"
+       ":window"
+       "example-menu-popup"
        "gtk3-example"
-       "menu-popup.lisp"
-       "EXAMPLE-MENU-POPUP"
-       t)
+       "menu-popup.lisp")
       ("Tool Palette"
+       ":window"
+       "example-tool-palette"
        "gtk3-example"
-       "tool-palette.lisp"
-       "EXAMPLE-TOOL-PALETTE")
+       "tool-palette.lisp")
       ("Popover"
+       ":window"
+       "example-popover"
        "gtk3-example"
        "popover.lisp"
-       "EXAMPLE-POPOVER"
-       t
        "popover.ui"))
 
      "Selectors (Color/File/Font)"
      (("Color Button"
+       ":window"
+       "example-color-button"
        "gtk3-example"
-       "color-button.lisp"
-       "EXAMPLE-COLOR-BUTTON")
+       "color-button.lisp")
       ("Color Button Label"
+       ":window"
+       "example-color-button-label"
        "gtk3-example"
-       "color-button-label.lisp"
-       "EXAMPLE-COLOR-BUTTON-LABEL")
+       "color-button-label.lisp")
       ("Color Chooser Widget"
+       ":window"
+       "example-color-chooser-widget"
        "gtk3-example"
-       "color-chooser-widget.lisp"
-       "EXAMPLE-COLOR-CHOOSER-WIDGET"
-       t)
+       "color-chooser-widget.lisp")
       ("Color Chooser Dialog"
+       ":window"
+       "example-color-chooser-dialog"
        "gtk3-example"
-       "color-chooser-dialog.lisp"
-       "EXAMPLE-COLOR-CHOOSER-DIALOG")
+       "color-chooser-dialog.lisp")
       ("Color Chooser Palette"
+       ":window"
+       "example-color-chooser-palette"
        "gtk3-example"
-       "color-chooser-palette.lisp"
-       "EXAMPLE-COLOR-CHOOSER-PALETTE"
-      t)
+       "color-chooser-palette.lisp")
       ("File Chooser Button"
+       ":window"
+       "example-file-chooser-button"
        "gtk3-example"
-       "file-chooser-button.lisp"
-       "EXAMPLE-FILE-CHOOSER-BUTTON")
+       "file-chooser-button.lisp")
       ("File Chooser Dialog"
+       ":dialog"
+       "create-file-chooser-dialog"
        "gtk3-example"
-       "file-chooser-dialog.lisp"
-       "CREATE-FILE-CHOOSER-DIALOG")
+       "file-chooser-dialog.lisp")
       ("File Chooser Preview"
+       ":dialog"
+       "create-file-chooser-preview"
        "gtk3-example"
-       "file-chooser-preview.lisp"
-       "CREATE-FILE-CHOOSER-PREVIEW")
+       "file-chooser-preview.lisp")
       ("File Chooser Widget"
+       ":dialog"
+       "create-file-chooser-widget"
        "gtk3-example"
-       "file-chooser-widget.lisp"
-       "CREATE-FILE-CHOOSER-WIDGET")
+       "file-chooser-widget.lisp")
       ("File Chooser Custom Filter"
+       ":dialog"
+       "create-file-chooser-custom-filter"
        "gtk3-example"
-       "file-chooser-custom-filter.lisp"
-       "CREATE-FILE-CHOOSER-CUSTOM-FILTER")
+       "file-chooser-custom-filter.lisp")
       ("Font Button"
+       ":window"
+       "example-font-button"
        "gtk3-example"
-       "font-button.lisp"
-       "EXAMPLE-FONT-BUTTON")
+       "font-button.lisp")
       ("Font Button Label"
+       ":window"
+       "example-font-button-label"
        "gtk3-example"
-       "font-button-label.lisp"
-       "EXAMPLE-FONT-BUTTON-LABEL"
-       t))
+       "font-button-label.lisp"))
 
      ;; Ornaments
      "Ornaments"
      (("Frame Widget"
+       ":window"
+       "example-frame"
        "gtk3-example"
-       "frame.lisp"
-       "EXAMPLE-FRAME")
+       "frame.lisp")
       ("Frame Properties"
+       ":window"
+       "example-frame-properties"
        "gtk3-example"
-       "frame-properties.lisp"
-       "EXAMPLE-FRAME-PROPERTIES"
-       t))
+       "frame-properties.lisp"))
 
      ;; Scrolling
      "Scrolling"
      (("Scrolled Window"
+       ":window"
+       "example-scrolled-window"
        "gtk3-example"
-       "scrolled-window.lisp"
-       "EXAMPLE-SCROLLED-WINDOW"))
+       "scrolled-window.lisp"))
 
      ;; Printing
      "Printing"
      (("Page Setup Dialog"
+       ":dialog"
+       "create-page-setup-dialog"
        "gtk3-example"
-       "page-setup-dialog.lisp"
-       "CREATE-PAGE-SETUP-DIALOG")
+       "page-setup-dialog.lisp")
       ("Print Dialog"
+       ":dialog"
+       "create-print-dialog"
        "gtk3-example"
-       "print-dialog.lisp"
-       "CREATE-PRINT-DIALOG")
+       "print-dialog.lisp")
+      #+nil
       ("Print Operation"
+       ":window"
+       "do-print-operation"
        "gtk3-example"
-       "print-operation.lisp"
-       "DO-PRINT-OPERATION"))
+       "print-operation.lisp"))
 
      ;; Drag and Drop, Clipboard
      "Drag and Drop, Clipboard"
      (("Drag and Drop Simple"
+       ":window"
+       "example-drag-and-drop-simple"
        "gtk3-example"
-       "drag-and-drop-simple.lisp"
-       "EXAMPLE-DRAG-AND-DROP-SIMPLE")
+       "drag-and-drop-simple.lisp")
       ("Drag and Drop with Action"
+       ":window"
+       "example-drag-and-drop-action"
        "gtk3-example"
-       "drag-and-drop-action.lisp"
-       "EXAMPLE-DRAG-AND-DROP-ACTION")
+       "drag-and-drop-action.lisp")
       ("Clipboard"
+       ":window"
+       "example-clipboard"
        "gtk3-example"
-       "clipboard.lisp"
-       "EXAMPLE-CLIPBOARD"
-       t))
+       "clipboard.lisp"))
+
+     ;; Pango demos
+     "Pango"
+     (("Draw centered text"
+       ":drawfunc"
+       "pango-draw-text-centered"
+       "pango-example"
+       "text-centered.lisp")
+      ("Draw text metrics"
+       ":drawfunc"
+       "pango-draw-text-metrics"
+       "pango-example"
+       "text-metrics.lisp")
+      ("Draw text soulmate"
+       ":drawfunc"
+       "pango-draw-text-soulmate"
+       "pango-example"
+       "text-soulmate.lisp")
+      ("Pango Cario rendering"
+       ":drawfunc"
+       "pango-draw-cairo-rendering"
+       "pango-example"
+       "cairo-rendering.lisp"))
 
      ;; Cairo demos
      "Cairo"
-     #+nil
      (("Cairo Stroke"
-       "cairo-demo"
-       "cairo-demo.lisp"
-       "DEMO-CAIRO-STROKE")
+       ":drawfunc"
+       "cairo-draw-stroke"
+       "cairo-example"
+       "draw-stroke.lisp")
       ("Cairo Fill"
-       "cairo-demo"
-       "cairo-demo.lisp"
-       "DEMO-CAIRO-FILL")
+       ":drawfunc"
+       "cairo-draw-fill"
+       "cairo-example"
+       "draw-fill.lisp")
       ("Cairo Text"
-       "cairo-demo"
-       "cairo-demo.lisp"
-       "DEMO-CAIRO-TEXT")
+       ":drawfunc"
+       "cairo-draw-text"
+       "cairo-example"
+       "draw-text.lisp")
       ("Cairo Paint"
-       "cairo-demo"
-       "cairo-demo.lisp"
-       "DEMO-CAIRO-PAINT")
+       ":drawfunc"
+       "cairo-draw-paint"
+       "cairo-example"
+       "draw-paint.lisp")
       ("Cairo Mask"
-       "cairo-demo"
-       "cairo-demo.lisp"
-       "DEMO-CAIRO-MASK")
+       ":drawfunc"
+       "cairo-draw-mask"
+       "cairo-example"
+       "draw-mask.lisp")
       ("Cairo Source RGBA"
-       "cairo-demo"
-       "cairo-demo.lisp"
-       "DEMO-CAIRO-SET-SOURCE-RGBA")
+       ":drawfunc"
+       "cairo-draw-source-rgba"
+       "cairo-example"
+       "draw-source-rgba.lisp")
       ("Cairo Source Gradient"
-       "cairo-demo"
-       "cairo-demo.lisp"
-       "DEMO-CAIRO-SET-SOURCE-GRADIENT")
+       ":drawfunc"
+       "cairo-draw-source-gradient"
+       "cairo-example"
+       "draw-source-gradient.lisp")
       ("Cairo Path"
-       "cairo-demo"
-       "cairo-demo.lisp"
-       "DEMO-CAIRO-PATH")
+       ":drawfunc"
+       "cairo-draw-path"
+       "cairo-example"
+       "draw-path.lisp")
       ("Cairo Dash"
-       "cairo-demo"
-       "cairo-demo.lisp"
-       "DEMO-CAIRO-DASH")
+       ":drawfunc"
+       "cairo-draw-dash"
+       "cairo-example"
+       "draw-path.lisp")
+      ("Cairo Dashes"
+       ":drawfunc"
+       "cairo-draw-dashes"
+       "cairo-example"
+       "draw-dashes.lisp")
+      ("Cairo Joins"
+       ":drawfunc"
+       "cairo-draw-joins"
+       "cairo-example"
+       "draw-joins.lisp")
+      ("Cairo Text centered"
+       ":drawfunc"
+       "cairo-draw-text-centered"
+       "cairo-example"
+       "draw-text-centered.lisp")
+      ("Cairo Text Glyph"
+       ":drawfunc"
+       "cairo-draw-text-glyph"
+       "cairo-example"
+       "draw-text-glyph.lisp")
+      ("Cairo Text Gradient"
+       ":drawfunc"
+       "cairo-draw-text-gradient"
+       "cairo-example"
+       "draw-text-gradient.lisp")
+      ("Cairo Text Shaded"
+       ":drawfunc"
+       "cairo-draw-text-shaded"
+       "cairo-example"
+       "draw-text-shaded.lisp")
+      ("Cairo Text Soulmate"
+       ":drawfunc"
+       "cairo-draw-text-soulmate"
+       "cairo-example"
+       "draw-text-soulmate.lisp")
+      ("Cairo Draw Logo"
+       ":drawfunc"
+       "cairo-draw-logo"
+       "cairo-example"
+       "draw-logo.lisp")
+      ("Cairo Draw Logo Translate"
+       ":drawfunc"
+       "cairo-draw-logo-translate"
+       "cairo-example"
+       "draw-logo.lisp"))
+
+#|
       ("Cairo Clock"
        "cairo-demo"
        "cairo-clock.lisp"
-       "DEMO-CAIRO-CLOCK"))
+       "DEMO-CAIRO-CLOCK")
+|#
 
      "Miscellaneous"
      (("Drawing Area"
+       ":window"
+       "example-drawing-area"
        "gtk3-example"
-       "drawing-area.lisp"
-       "EXAMPLE-DRAWING-AREA"
-       t)
+       "drawing-area.lisp")
       ("Drawing in response to input"
+       ":window"
+       "example-drawing-area-input"
        "gtk3-example"
-       "drawing-area-input.lisp"
-       "EXAMPLE-DRAWING-AREA-INPUT")
+       "drawing-area-input.lisp")
       ("Calendar"
+       ":window"
+       "example-calendar"
        "gtk3-example"
-       "calendar.lisp"
-       "EXAMPLE-CALENDAR")
+       "calendar.lisp")
       ("Cursor"
+       ":window"
+       "example-cursor"
        "gtk3-example"
-       "cursor.lisp"
-       "EXAMPLE-CURSOR"
-       t)
+       "cursor.lisp")
       ("Event Box"
+       ":window"
+       "example-event-box"
        "gtk3-example"
-       "event-box.lisp"
-       "EXAMPLE-EVENT-BOX")
+       "event-box.lisp")
       ("Example Pixbufs"
+       ":window"
+       "example-pixbufs"
        "gtk3-example"
-       "pixbufs.lisp"
-       "EXAMPLE-PIXBUFS"
-       t)
+       "pixbufs.lisp")
+      #+nil
       ("Emblemed Icons"
        "gio-example"
        "emblemed-icon.lisp"
        "EXAMPLE-EMBLEMED-ICON")
       ("Align Widget"
+       ":window"
+       "example-widget-align"
        "gtk3-example"
-       "widget-align.lisp"
-       "EXAMPLE-WIDGET-ALIGN"))
+       "widget-align.lisp"))
 
+#|
      ;; Examples from the tutorial
      "GTK 3 Tutorial for Lisp"
       ;; Chapter: Getting started
@@ -796,33 +924,69 @@
          "gtk3-example"
          "fixed.lisp"
          "EXAMPLE-FIXED")))
-
+|#
      "Deprecated"
      (("Table Packing"
-         "gtk3-example"
-       "table-packing.lisp"
-       "EXAMPLE-TABLE-PACKING")
+       ":window"
+       "example-table-packing"
+       "gtk3-example"
+       "table-packing.lisp")
       ("Table Packing more spacing"
+       ":window"
+       "example-table-packing-2"
        "gtk3-example"
-       "table-packing-2.lisp"
-       "EXAMPLE-TABLE-PACKING-2")
+       "table-packing-2.lisp")
       ("Numerable Icons"
+       ":window"
+       "example-numerable-icon"
        "gtk3-example"
-       "numerable-icon.lisp"
-       "EXAMPLE-NUMERABLE-ICON")
+       "numerable-icon.lisp")
       ("Arrow Button"
+       ":window"
+       "example-arrow-button"
        "gtk3-example"
-       "arrow-button.lisp"
-       "EXAMPLE-ARROW-BUTTON")
+       "arrow-button.lisp")
       ("Alignment"
+       ":window"
+       "example-alignment"
        "gtk3-example"
-       "alignment.lisp"
-       "EXAMPLE-ALIGNMENT")
+       "alignment.lisp")
       ("Alignment Interactive"
+       ":window"
+       "example-alignment-interactive"
        "gtk3-example"
-       "alignment-interactive.lisp"
-       "EXAMPLE-ALIGNMENT-INTERACTIVE"))
+       "alignment-interactive.lisp"))
 ))
+
+;;; ----------------------------------------------------------------------------
+
+(defun window-draw-func (title drawfunc application
+                         &optional (width 600) (height 600))
+  (gtk:within-main-loop
+    (let ((window (make-instance 'gtk:window
+                                 :type :toplevel
+                                 :application application
+                                 :title title
+                                 :default-width width
+                                 :default-height height))
+          (area (make-instance 'gtk:drawing-area)))
+      ;; Signal handler for the drawing area
+      (g:signal-connect area "draw"
+          (lambda (widget context)
+            (let ((width (gtk:widget-allocated-width widget))
+                  (height (gtk:widget-allocated-height widget))
+                  (cr (gobject:pointer context)))
+              (funcall drawfunc cr width height))))
+      ;; Signal handler for the window to handle the signal "destroy".
+      (g:signal-connect window "destroy"
+                        (lambda (widget)
+                          (declare (ignore widget))
+                          (gtk:leave-gtk-main)))
+      ;; Show the window.
+      (gtk:container-add window area)
+      (gtk:widget-show-all window))))
+
+;;; ----------------------------------------------------------------------------
 
 (defun mklist (obj)
   (if (listp obj)
@@ -858,47 +1022,64 @@
     (let* ((renderer (gtk:cell-renderer-text-new))
            (column (gtk:tree-view-column-new-with-attributes "Example"
                                                              renderer
-                                                             "text" 0)))
+                                                             "text"
+                                                             coltitle)))
       (gtk:tree-view-append-column view column))
     (g:signal-connect view "row-activated"
-       (lambda (tree-view path column)
+       (lambda (view path column)
          (declare (ignore column))
-         (let* ((model (gtk:tree-view-model tree-view))
+         (let* ((model (gtk:tree-view-model view))
                 (iter (gtk:tree-model-iter model path))
-                (func-name (string-upcase
-                               (gtk:tree-model-value model iter id-func)))
-                (package (string-upcase
-                             (gtk:tree-model-value model iter id-package)))
-                (func (find-symbol func-name (find-package package)))
-;                          (find-symbol func-name :cairo-demo)
-;                          (find-symbol func-name :cairo-clock)
-                          )
-           (format t "func-name : ~a~%" func-name)
-           (format t "func      : ~a~%" func)
-           (if func
-               (if (gtk:tree-model-value model iter id-app)
-                   (funcall func application)
-                   (funcall func))
-               (format t "~%No function.~%")))))
+                (title (gtk:tree-model-value model iter coltitle))
+                (funcname (gtk:tree-model-value model iter colfunc))
+                (functype (gtk:tree-model-value model iter coltype))
+                (package (gtk:tree-model-value model iter colpackage))
+                (func nil))
+
+           (when functype
+             (setf functype (read-from-string functype))
+             (setf funcname (string-upcase funcname))
+             (setf package (string-upcase package))
+             (setf func (find-symbol funcname (find-package package))))
+
+           (cond (;; Example as a window for application
+                  (eq functype :window)
+                  (funcall func application))
+                 (;; Example as a parent to the active application window
+                  (eq functype :dialog)
+                  (funcall func (gtk:application-active-window application)))
+                 (;; Example called from a draw handler
+                  (eq functype :drawfunc)
+                  (window-draw-func title func application))
+                 (t (format t "NO function found.")))
+               )))
     (setf (gtk:tree-selection-mode selection) :browse)
     ;; The selection has changed.
     (g:signal-connect selection "changed"
        (lambda (tree-selection)
          (let* ((iter (gtk:tree-selection-selected tree-selection))
-                (package (gtk:tree-model-value model iter id-package))
-                (filename (gtk:tree-model-value model iter id-file))
-                (ui-file (gtk:tree-model-value model iter id-ui))
-                (css-file (gtk:tree-model-value model iter id-css)))
+                (package (gtk:tree-model-value model iter colpackage))
+                (filename (gtk:tree-model-value model iter colfile))
+                (ui-file (gtk:tree-model-value model iter colui))
+                (css-file (gtk:tree-model-value model iter colcss)))
            ;; TODO: Improve this peace of code. Use pathname functions.
            (when package
-             (format t "package: ~a, filename : ~a~%" package filename)
-             (format t "path : ~a~%" (sys-path filename package))
-             (when filename (setf filename
-                                  (namestring (sys-path filename package))))
+
+             (setf package (string-downcase package))
+
+             (format t "Row changed:~%")
+             (format t "Package  : ~a~%" package)
+             (format t "Filename : ~a~%" filename)
+             (format t "Path : ~a~%" (sys-path filename package))
+
+             (when filename
+               (setf filename
+                     (namestring (sys-path filename package))))
              (when (> (length ui-file) 0)
                (setf ui-file (namestring (sys-path ui-file package))))
              (when (> (length css-file) 0)
                (setf css-file (namestring (sys-path css-file package)))))
+
            (if (> (length filename) 0)
                (load-file filename))
            (if (> (length ui-file) 0)
@@ -1059,4 +1240,4 @@
     ;; Start the application
     (g:application-run gtk-demo argv)))
 
-;;; --- End of file gtk-demo.lisp ----------------------------------------------
+;;; --- End of file gtk3-demo.lisp ---------------------------------------------

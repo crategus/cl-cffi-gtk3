@@ -856,18 +856,4 @@
      (:file "window-simple-demo")
      ))))
 
-(asdf:defsystem :cl-cffi-gtk3/gtk-demo
-  :author "Dieter Kaiser"
-  :license "LLGPL"
-  :serial t
-  :depends-on (:cl-cffi-gtk3/example
-               :pango-example
-               :cairo-example)
-  :components
-  ((:module demo/gtk-demo
-    :serial nil
-    :components
-    ((:file "package")
-     (:file "gtk-demo")))))
-
 ;;; --- End of file cl-cffi-gtk3.asd -------------------------------------------
