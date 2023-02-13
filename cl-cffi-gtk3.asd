@@ -215,7 +215,7 @@
      (:file "gtk3.list-store")            ; List-like data structure
 
      ;; Numeric/Text Data Entry
-     (:file "gtk3.editable")              ; GtkEditable
+     (:file "gtk3.editable")              ; Interface for text editing widgets
      (:file "gtk3.entry")                 ; GtkEntry
      (:file "gtk3.entry-buffer")          ; Text buffer for GtkEntry
      (:file "gtk3.entry-completion")      ; Completion functionality for GtkEntry
@@ -527,7 +527,7 @@
      (:file "rtest-gtk3-list-store")     ; List-like data structure
 
      ;; Numeric/Text Data Entry
-;    (:file "gtk.editable")              ; GtkEditable
+     (:file "rtest-gtk3-editable")       ; Interface for text editing widgets
 ;    (:file "gtk.entry")                 ; GtkEntry
      (:file "rtest-gtk3-entry-buffer")   ; Text buffer for GtkEntry
      (:file "rtest-gtk3-entry-completion"); Completion functionality for GtkEntry

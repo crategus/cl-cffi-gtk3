@@ -75,6 +75,7 @@ GTK Widgets and Objects
 
   Numeric and Text Data Entry
 
+    gtk.editable.lisp                - GtkEditable                  - GTK 3.24
     gtk.entry.lisp                   - GtkEntry                     - GTK 3.24
     gtk.entry-buffer.lisp            - GtkEntryBuffer               - GTK 3.24
     gtk.entry-completion.lisp        - GtkEntryCompletion           - GTK 3.24
@@ -82,7 +83,6 @@ GTK Widgets and Objects
     gtk.spin-button.lisp             - GtkSpinButton                - GTK 3.24
     gtk.search-entry.lisp            - GtkSearchEntry               - GTK 3.24
     gtk.search-bar.lisp              - GtkSearchBar                 - Gtk 3.24
-    gtk.editable.lisp                - GtkEditable                  - GTK 3.24
 
   Multiline Text Editor
 

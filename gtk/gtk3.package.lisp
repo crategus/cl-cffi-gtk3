@@ -976,6 +976,21 @@
     @end{subsection}
   @end{section}
   @begin[Numeric and Text Data Entry]{section}
+    @begin[GtkEditable]{subsection}
+      Interface for text editing widgets.
+      @about-class{editable}
+      @about-function{editable-select-region}
+      @about-function{editable-selection-bounds}
+      @about-function{editable-insert-text}
+      @about-function{editable-delete-text}
+      @about-function{editable-chars}
+      @about-function{editable-cut-clipboard}
+      @about-function{editable-copy-clipboard}
+      @about-function{editable-paste-clipboard}
+      @about-function{editable-delete-selection}
+      @about-function{editable-position}
+      @about-function{editable-editable}
+    @end{subsection}
     @begin[GtkEntry]{subsection}
       A single line text entry field.
       @about-symbol{entry-icon-position}
@@ -1153,21 +1168,6 @@
       @about-function{search-bar-new}
       @about-function{search-bar-connect-entry}
       @about-function{search-bar-handle-event}
-    @end{subsection}
-    @begin[GtkEditable]{subsection}
-      Interface for text-editing widgets.
-      @about-class{editable}
-      @about-function{editable-select-region}
-      @about-function{editable-selection-bounds}
-      @about-function{editable-insert-text}
-      @about-function{editable-delete-text}
-      @about-function{editable-chars}
-      @about-function{editable-cut-clipboard}
-      @about-function{editable-copy-clipboard}
-      @about-function{editable-paste-clipboard}
-      @about-function{editable-delete-selection}
-      @about-function{editable-position}
-      @about-function{editable-editable}
     @end{subsection}
   @end{section}
   @begin[Multiline Text Editor]{section}
