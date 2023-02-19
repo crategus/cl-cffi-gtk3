@@ -945,7 +945,7 @@
 
 (defcfun ("gtk_text_iter_editable" text-iter-editable) :boolean
  #+liber-documentation
- "@version{#2023-2-2}
+ "@version{#2023-2-19}
   @argument[iter]{a @class{gtk:text-iter} instance}
   @argument[setting]{@em{true} if text is editable by default}
   @return{A boolean whether the iterator is inside an editable range.}
@@ -954,9 +954,8 @@
     of text.
   @end{short}
   Non-editable text is \"locked\" and cannot be changed by the user via the
-  @class{gtk:text-view} widget. This function is simply a convenience wrapper
-  around the @fun{gtk:text-iter-attributes} function. If no tags applied to
-  this text affect editability, @arg{setting} will be returned.
+  @class{gtk:text-view} widget. If no tags applied to this text affect
+  editability, @arg{setting} will be returned.
 
   You do not want to use this function to decide whether text can be inserted
   at the iterator, because for insertion you do not want to know whether the
@@ -966,7 +965,6 @@
   @see-class{gtk:text-iter}
   @see-class{gtk:text-buffer}
   @see-class{gtk:text-view}
-  @see-function{gtk:text-iter-attributes}
   @see-function{gtk:text-iter-can-insert}"
   (iter (g:boxed text-iter))
   (setting :boolean))
@@ -1255,9 +1253,10 @@
 ;;; gtk_text_iter_get_attributes () -> text-iter-attributes
 ;;; ----------------------------------------------------------------------------
 
-;; FIXME: Is this implementation correct? Argument attributes can be modified!
-;; The gtk:text-attributes structure and this function are not exported.
+;; GTK:TEXT-ATTRIBUTES is not implemented. Therefore we do not implement this
+;; function.
 
+#+nil
 (defcfun ("gtk_text_iter_get_attributes" text-iter-attributes) :boolean
  #+liber-documentation
  "@version{#2021-6-13}
@@ -1293,15 +1292,13 @@
   @return{A @class{pange-language} instance with the language in effect at
     the iterator.}
   @begin{short}
-    A convenience wrapper around the @fun{gtk:text-iter-attributes} function,
-    which returns the language in effect at the iterator.
+    Returns the language in effect at the iterator.
   @end{short}
   If no tags affecting language apply to the iterator, the return value is
   identical to that of the @fun{gtk:default-language} function.
   @see-class{gtk:text-iter}
   @see-class{gtk:text-buffer}
   @see-class{pango:language}
-  @see-function{gtk:text-iter-attributes}
   @see-function{gtk:default-language}"
   (iter (g:boxed text-iter)))
 

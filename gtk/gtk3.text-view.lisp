@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.text-view.lisp
+;;; gtk3.text-view.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -37,7 +37,7 @@
 ;;;     GtkTextViewLayer
 ;;;     GtkTextWindowType
 ;;;     GtkTextExtendSelection
-;;;     GtkWrapMode                               ---> gtk.text-attributes.lisp
+;;;     GtkWrapMode                              --> gtk.text-tag.lisp
 ;;;     GtkTextChildAnchor
 ;;;
 ;;;     GTK_TEXT_VIEW_PRIORITY_VALIDATE
@@ -128,50 +128,50 @@
 ;;;
 ;;; Properties
 ;;;
-;;;            gboolean    accepts-tab              Read / Write
-;;;                gint    bottom-margin            Read / Write
-;;;       GtkTextBuffer*   buffer                   Read / Write
-;;;            gboolean    cursor-visible           Read / Write
-;;;            gboolean    editable                 Read / Write
-;;;               gchar*   im-module                Read / Write
-;;;                gint    indent                   Read / Write
-;;;       GtkInputHints    input-hints              Read / Write
-;;;     GtkInputPurpose    input-purpose            Read / Write
-;;;    GtkJustification    justification            Read / Write
-;;;                gint    left-margin              Read / Write
-;;;            gboolean    monospace                Read / Write
-;;;            gboolean    overwrite                Read / Write
-;;;                gint    pixels-above-lines       Read / Write
-;;;                gint    pixels-below-lines       Read / Write
-;;;                gint    pixels-inside-wrap       Read / Write
-;;;            gboolean    populate-all             Read / Write
-;;;                gint    right-margin             Read / Write
-;;;       PangoTabArray*   tabs                     Read / Write
-;;;                gint    top-margin               Read / Write
-;;;         GtkWrapMode    wrap-mode                Read / Write
+;;;     accepts-tab
+;;;     bottom-margin
+;;;     buffer
+;;;     cursor-visible
+;;;     editable
+;;;     im-module
+;;;     indent
+;;;     input-hints
+;;;     input-purpose
+;;;     justification
+;;;     left-margin
+;;;     monospace
+;;;     overwrite
+;;;     pixels-above-lines
+;;;     pixels-below-lines
+;;;     pixels-inside-wrap
+;;;     populate-all
+;;;     right-margin
+;;;     tabs
+;;;     top-margin
+;;;     wrap-mode
 ;;;
 ;;; Style Properties
 ;;;
-;;;            GdkColor*   error-underline-color    Read
+;;;     error-underline-color
 ;;;
 ;;; Signals
 ;;;
-;;;                void    backspace                Action
-;;;                void    copy-clipboard           Action
-;;;                void    cut-clipboard            Action
-;;;                void    delete-from-cursor       Action
-;;;            gboolean    extend-selection         Run Last
-;;;                void    insert-at-cursor         Action
-;;;                void    insert-emoji             Action
-;;;                void    move-cursor              Action
-;;;                void    move-viewport            Action
-;;;                void    paste-clipboard          Action
-;;;                void    populate-popup           Run Last
-;;;                void    preedit-changed          Action
-;;;                void    select-all               Action
-;;;                void    set-anchor               Action
-;;;                void    toggle-cursor-visible    Action
-;;;                void    toggle-overwrite         Action
+;;;     backspace
+;;;     copy-clipboard
+;;;     cut-clipboard
+;;;     delete-from-cursor
+;;;     extend-selection
+;;;     insert-at-cursor
+;;;     insert-emoji
+;;;     move-cursor
+;;;     move-viewport
+;;;     paste-clipboard
+;;;     populate-popup
+;;;     preedit-changed
+;;;     select-all
+;;;     set-anchor
+;;;     toggle-cursor-visible
+;;;     toggle-overwrite
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -2486,9 +2486,10 @@
 ;;; gtk_text_view_get_default_attributes () -> text-view-default-attributes
 ;;; ----------------------------------------------------------------------------
 
-;; FIXME: The implementation of text-attributes does not work.
-;; We do not export this function.
+;; GTK:TEXT-ATTRIBUTES is not implemented. Therefore we do not implement this
+;; function.
 
+#+nil
 (defcfun ("gtk_text_view_get_default_attributes"
            text-view-default-attributes)
     (g:boxed text-attributes)
@@ -2576,4 +2577,4 @@
 
 (export 'text-view-reset-im-context)
 
-;;; --- End of file gtk.text-view.lisp -----------------------------------------
+;;; --- End of file gtk3.text-view.lisp ----------------------------------------

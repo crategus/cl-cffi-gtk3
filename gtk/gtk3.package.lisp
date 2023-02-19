@@ -1368,7 +1368,6 @@
       @about-function{text-iter-is-cursor-position}
       @about-function{text-iter-chars-in-line}
       @about-function{text-iter-bytes-in-line}
-      @about-function{text-iter-attributes}
       @about-function{text-iter-language}
       @about-function{text-iter-is-end}
       @about-function{text-iter-is-start}

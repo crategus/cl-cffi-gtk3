@@ -199,6 +199,8 @@
   @end{short}
   @see-class{gtk:tree-iter}")
 
+(unexport 'tree-iter-stamp)
+
 #+liber-documentation
 (setf (liber:alias-for-function 'tree-iter-user-data)
       "Accessor"
@@ -209,6 +211,10 @@
     structure.
   @end{short}
   @see-class{gtk:tree-iter}")
+
+(unexport 'tree-iter-user-data)
+(unexport 'tree-iter-user-data-2)
+(unexport 'tree-iter-user-data-3)
 
 ;;; ----------------------------------------------------------------------------
 ;;; GtkTreePath
@@ -913,12 +919,11 @@
 (setf (liber:alias-for-symbol 'tree-model-flags)
       "Flags"
       (liber:symbol-documentation 'tree-model-flags)
- "@version{#2020-6-8}
+ "@version{#2023-2-16}
   @begin{short}
-    These flags indicate various properties of a @class{gtk:tree-model}.
+    These flags indicate various properties of a @class{gtk:tree-model} object.
   @end{short}
-
-  They are returned by the function @fun{gtk:tree-model-flags}, and must be
+  They are returned by the @fun{gtk:tree-model-flags} function, and must be
   static for the lifetime of the object. A more complete description of
   @code{:iters-persist} can be found in the overview of this section.
   @begin{pre}
