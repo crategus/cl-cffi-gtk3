@@ -55,7 +55,7 @@
     (let* ((window (make-instance 'gtk:window
                                   :type :toplevel
                                   :application application
-                                  :title "Example CSS Multiple Backgrounds"
+                                  :title "CSS Multiple Backgrounds"
                                   :default-height 420
                                   :default-width 600))
            (vbox (make-instance 'gtk:box
@@ -83,10 +83,14 @@
                                 :buffer text
                                 :top-margin 12
                                 :monospace t))
-           (provider (make-instance 'gtk:css-provider)))
+           (provider (make-instance 'gtk:css-provider))
+           (resource (g:resource-load
+                         (sys-path "resource/gtk3-example.gresource"))))
+      (g:resources-register resource)
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
+                          (g:resources-unregister resource)
                           (leave-gtk-main)))
       (g:signal-connect area "draw"
           (lambda (widget cr)
@@ -125,7 +129,7 @@
                                              :name "error"
                                              :underline :error))
       (setf (gtk:text-buffer-text text)
-            (read-file (sys-path "css-multiplebgs.css")))
+            (read-file (sys-path "resource/css-multiplebgs.css")))
       ;; Add the widgets to the window
       (gtk:container-add overlay area)
       (gtk:overlay-add-overlay overlay button)

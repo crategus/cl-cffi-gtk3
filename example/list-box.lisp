@@ -29,8 +29,8 @@
   (:g-type-name . "GtkMessage")
   (:metaclass gobject-class))
 
-(gobject::register-object-type-implementation "GtkMessage"            ; name
-                                     gtk-message            ; class
+(gobject::register-object-type-implementation "GtkMessage"   ; name
+                                     gtk-message             ; class
                                      "GObject"               ; parent
                                      nil                     ; interfaces
                                      nil)                    ; properties
@@ -96,7 +96,7 @@
   (let ((message (gtk-message-row-message row)))
 
     (gtk:image-set-from-file (gtk-message-row-avatar-image row)
-                             (sys-path "apple-red.png"))
+                             (sys-path "resource/apple-red.png"))
 
     (setf (gtk:label-label (gtk-message-row-source-name row))
           (gtk-message-name message))
@@ -138,7 +138,7 @@
     )))
 
 (defun gtk-message-row-new (message)
-  (let* ((builder (gtk:builder-new-from-file (sys-path "list-box.ui")))
+  (let* ((builder (gtk:builder-new-from-file (sys-path "resource/list-box.ui")))
          (row (gtk:builder-object builder "messagerow")))
     (setf (gtk-message-row-message row) message)
     (setf (gtk-message-row-details-revealer row)
@@ -191,7 +191,7 @@
     (let ((window (make-instance 'gtk:window
                                   :type :toplevel
                                   :application application
-                                  :title "Example List Box"
+                                  :title "List Box"
                                   :default-width 600
                                   :default-height 400))
           (vbox (make-instance 'gtk:box
@@ -225,7 +225,7 @@
                           (declare (ignore listbox))
                           (gtk-message-row-expand row)))
 
-      (with-open-file (stream (sys-path "list-box-message.txt"))
+      (with-open-file (stream (sys-path "resource/list-box-message.txt"))
         (do ((msg nil) (row nil)
              (line (read-line stream nil)
                    (read-line stream nil)))

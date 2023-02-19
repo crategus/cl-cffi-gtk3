@@ -16,7 +16,7 @@
     popover))
 
 (defun create-complex-popover (parent pos)
-  (let* ((builder (gtk:builder-new-from-file (sys-path "popover.ui")))
+  (let* ((builder (gtk:builder-new-from-file (sys-path "resource/popover.ui")))
          (window (gtk:builder-object builder "window"))
          (content (gtk:bin-child window)))
     (gtk:container-remove (gtk:widget-parent content) content)
@@ -26,7 +26,7 @@
 (defun example-popover (&optional application)
   (within-main-loop
     (let* ((window (make-instance 'gtk:window
-                                  :title "Example Popover"
+                                  :title "Popover"
                                   :type :toplevel
                                   :application application))
            (box (make-instance 'gtk:box

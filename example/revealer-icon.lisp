@@ -14,7 +14,8 @@
   (within-main-loop
     (let* ((count 0)
            (timeout 0)
-           (builder (gtk:builder-new-from-file (sys-path "revealer-icon.ui")))
+           (builder (gtk:builder-new-from-file
+                        (sys-path "resource/revealer-icon.ui")))
            (window (gtk:builder-object builder "window")))
       (g:signal-connect window "destroy"
                                (lambda (widget)

@@ -1,4 +1,4 @@
-;;;; Example Image Widgets - 2022-12-21
+;;;; Example Image Widgets - 2023-2-18
 ;;;;
 ;;;; GtkImage is used to display an image. The image can be in a number of
 ;;;; formats. Typically, you load an image into a GdkPixbuf, then display the
@@ -29,7 +29,7 @@
         (progn
           ;; Create the image stream and the GdkPixbufLoader
           (setf image-stream
-                (open (sys-path "alphatest.png")
+                (open (sys-path "resource/alphatest.png")
                       :element-type '(unsigned-byte 8)))
           (when pixbuf-loader
             (gdk:pixbuf-loader-close pixbuf-loader)
@@ -59,7 +59,7 @@
              (window (make-instance 'gtk:window
                                     :type :toplevel
                                     :application application
-                                    :title "Example Image Widgets"
+                                    :title "Image Widgets"
                                     :default-width 320
                                     :border-width 12))
              (vgrid (make-instance 'gtk:grid
@@ -88,7 +88,8 @@
                                      :use-markup t
                                      :label
                                      "<b>Image loaded from a file</b>"))
-               (pixbuf (gdk:pixbuf-new-from-file (sys-path "gtk3-demo.png")))
+               (pixbuf (gdk:pixbuf-new-from-file
+                   (sys-path "resource/gtk3-demo.png")))
                (image (gtk:image-new-from-pixbuf pixbuf)))
           (gtk:container-add vgrid label)
           (gtk:container-add vgrid image))

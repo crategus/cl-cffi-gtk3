@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/com/crategus/gtk3-example">
+    <file>ducky.png</file>
+    <file>blends.png</file>
+    <file>cmy.jpg</file>
+    <file>brick.png</file>
+    <file>brick2.png</file>
+  </gresource>
+</gresources>

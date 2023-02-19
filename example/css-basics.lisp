@@ -1,4 +1,4 @@
-;;;; Theming/CSS Basics - 2022-12-15
+;;;; Theming/CSS Basics - 2023-2-17
 ;;;;
 ;;;; Gtk themes are written using CSS. Every widget is build of multiple items
 ;;;; that you can style very similarly to a regular website.
@@ -10,7 +10,7 @@
     (let* ((window (make-instance 'gtk:window
                                   :type :toplevel
                                   :application application
-                                  :title "Example CSS Basics"
+                                  :title "CSS Basics"
                                   :default-height 420
                                   :default-width 600))
            (scrolled (make-instance 'gtk:scrolled-window))
@@ -49,7 +49,7 @@
                                              :name "error"
                                              :underline :error))
       (setf (gtk:text-buffer-text text)
-            (read-file (sys-path "css-basics.css")))
+            (read-file (sys-path "resource/css-basics.css")))
       ;; Add the widgets to the window
       (gtk:container-add scrolled view)
       (gtk:container-add window scrolled)

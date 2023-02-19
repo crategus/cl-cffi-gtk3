@@ -6,7 +6,7 @@
   (within-main-loop
     (let* ((window (make-instance 'gtk:window
                                   :type :toplevel
-                                  :title "Example Text Entry"
+                                  :title "Text Entry"
                                   :application application
                                   :default-width 250
                                   :default-height 120))
@@ -26,7 +26,8 @@
                           (format t "Entry contents: ~A"
                                   (gtk:entry-text entry))))
       (gtk:editable-insert-text entry " world" pos)
-      (gtk:editable-select-region entry 0 (gtk:entry-text-length entry))
+      (gtk:editable-select-region entry :start 0
+                                        :end (gtk:entry-text-length entry))
       (gtk:box-pack-start vbox entry :expand t :fill t :padding 0)
       (let ((check (gtk:check-button-new-with-label "Editable")))
         (g:signal-connect check "toggled"

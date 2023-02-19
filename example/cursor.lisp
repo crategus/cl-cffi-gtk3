@@ -1,6 +1,9 @@
-;;;; Example Cursor - 2022-12-15
+;;;; Example Cursor - 2023-2-18
 ;;;;
 ;;;; Demonstrates a useful set of available cursors.
+
+;; FIXME: This example no longer shows the images for the cursor.
+;; What is wrong?
 
 (in-package :gtk3-example)
 
@@ -11,6 +14,7 @@
                     (gtk:image-new-from-pixbuf (gdk:cursor-image cursor))
                     (gtk:image-new-from-icon-name "image-missing" :menu)))
          (button (make-instance 'gtk:button
+                                :always-show-image t
                                 :tooltip-text name)))
     ;; Signal handler to set the clicked cursor
     (g:signal-connect button "clicked"
@@ -192,4 +196,3 @@
       (gtk:container-add window content)
       ;; Show the window.
       (gtk:widget-show-all window))))
-

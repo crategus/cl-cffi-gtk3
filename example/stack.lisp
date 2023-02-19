@@ -8,7 +8,7 @@
 
 (defun example-stack (&optional (application nil))
   (within-main-loop
-    (let* ((builder (gtk:builder-new-from-file (sys-path "stack.ui")))
+    (let* ((builder (gtk:builder-new-from-file (sys-path "resource/stack.ui")))
            (window (gtk:builder-object builder "window1")))
       (setf (gtk:window-application window) application)
       (g:signal-connect window "destroy"

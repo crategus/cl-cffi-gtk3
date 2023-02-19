@@ -1,4 +1,4 @@
-;;;; Example Decorative Overlay - 2022-12-22
+;;;; Example Decorative Overlay - 2023-2-18
 ;;;;
 ;;;; Another example of an overlay with some decorative and some interactive
 ;;;; controls.
@@ -8,7 +8,7 @@
 (defun example-overlay-decorative (&optional (application nil))
   (within-main-loop
     (let* ((window (make-instance 'gtk:window
-                                  :title "Example Overlay Decorative"
+                                  :title "Overlay Decorative"
                                   :type :toplevel
                                   :application application
                                   :default-width 500
@@ -37,12 +37,12 @@
              (end (gtk:text-iter-copy start)))
         (gtk:text-iter-move end :by :word)
         (gtk:text-buffer-apply-tag buffer tag start end))
-      (let ((image (gtk:image-new-from-file (sys-path "decor1.png"))))
+      (let ((image (gtk:image-new-from-file (sys-path "resource/decor1.png"))))
         (gtk:overlay-add-overlay overlay image)
         (setf (gtk:overlay-child-pass-through overlay image) t)
         (setf (gtk:widget-halign image) :start)
         (setf (gtk:widget-valign image) :start))
-      (let ((image (gtk:image-new-from-file (sys-path "decor2.png"))))
+      (let ((image (gtk:image-new-from-file (sys-path "resource/decor2.png"))))
         (gtk:overlay-add-overlay overlay image)
         (setf (gtk:overlay-child-pass-through overlay image) t)
         (setf (gtk:widget-halign image) :end)

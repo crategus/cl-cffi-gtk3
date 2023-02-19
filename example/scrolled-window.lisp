@@ -1,11 +1,11 @@
-;;;; Scrolled Window - 2023-2-12
+;;;; Scrolled Window - 2023-2-18
 
 (in-package :gtk3-example)
 
 (defun example-scrolled-window (&optional application)
   (within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :title "Example Scrolled Window"
+                                 :title "Scrolled Window"
                                  :type :toplevel
                                  :application application
                                  :width-request 350
@@ -13,7 +13,7 @@
           (scrolled (make-instance 'gtk:scrolled-window
                                    :hscrollbar-policy :automatic
                                    :vscrollbar-policy :always))
-          (image (gtk:image-new-from-file (sys-path "ducky.png"))))
+          (image (gtk:image-new-from-file (sys-path "resource/ducky.png"))))
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))

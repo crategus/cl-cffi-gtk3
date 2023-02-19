@@ -1,4 +1,4 @@
-;;;; pixbufs - 2023-2-12
+;;;; Pixbufs - 2023-2-18
 ;;;;
 ;;;; A GdkPixbuf represents an image, normally in RGB or RGBA format.
 ;;;; Pixbufs are normally used to load files from disk and perform
@@ -11,20 +11,18 @@
 ;;;;
 ;;;; Look at the Image demo for additional pixbuf usage examples.
 
-;; TODO: The center of the rotation is no longer at the (200,200) point? Why?
-
 (in-package :gtk3-example)
 
 (defvar *pixbufs-files*
-        '("apple-red.png"
-          "gnome-applets.png"
-          "gnome-calendar.png"
-          "gnome-foot.png"
-          "gnome-gmush.png"
-          "gnome-gimp.png"
-          "gnome-gsame.png"
-          "gnu-keys.png"
-          "background.jpg"))
+        '("resource/apple-red.png"
+          "resource/gnome-applets.png"
+          "resource/gnome-calendar.png"
+          "resource/gnome-foot.png"
+          "resource/gnome-gmush.png"
+          "resource/gnome-gimp.png"
+          "resource/gnome-gsame.png"
+          "resource/gnu-keys.png"
+          "resource/background.jpg"))
 
 (defvar *pixbufs-image* (make-array 9))
 (defvar *pixbufs-cycle* 60)
@@ -92,18 +90,21 @@
     (incf *pixbufs-frame* 1)
     t))
 
+;; TODO: Find a way to calculate the width-request and height-request values.
+
 (defun example-pixbufs (&optional application)
   (within-main-loop
-    (let* ((background (gdk:pixbuf-new-from-file (sys-path "background.jpg")))
+    (let* ((background (gdk:pixbuf-new-from-file
+                           (sys-path "resource/background.jpg")))
            (width (gdk:pixbuf-width background))
            (height (gdk:pixbuf-height background))
            (window (make-instance 'gtk:window
-                                  :title "Example Pixbufs"
+                                  :title "Pixbufs"
                                   :type :toplevel
                                   :application application
                                   :resizable nil
-                                  :width-request width
-                                  :height-request height))
+                                  :width-request 452
+                                  :height-request 489))
            (area (make-instance 'gtk:drawing-area))
            (frame (gdk:pixbuf-new :rgb nil 8 width height))
            (surface nil)

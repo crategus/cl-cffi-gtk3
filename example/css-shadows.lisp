@@ -25,7 +25,7 @@
     (let* ((window (make-instance 'gtk:window
                                   :type :toplevel
                                   :application application
-                                  :title "Example CSS Shadows"
+                                  :title "CSS Shadows"
                                   :default-height 420
                                   :default-width 600))
            (paned (make-instance 'gtk:paned
@@ -70,7 +70,7 @@
                                              :name "error"
                                              :underline :error))
       (setf (gtk:text-buffer-text text)
-            (read-file (sys-path "css-shadows.css")))
+            (read-file (sys-path "resource/css-shadows.css")))
       ;; Add the widgets to the window
       (gtk:container-add paned toolbar)
       (gtk:container-add scrolled view)

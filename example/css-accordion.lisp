@@ -1,4 +1,4 @@
-;;;; CSS Accordion - 2022-12-15
+;;;; CSS Accordion - 2023-2-16
 ;;;;
 ;;;; A accordion demo written using CSS transitions and multiple backgrounds.
 
@@ -9,14 +9,15 @@
     (let ((window (make-instance 'gtk:window
                                  :type :toplevel
                                  :application application
-                                 :title "Example CSS Accordion"
+                                 :title "CSS Accordion"
                                  :default-height 300
                                  :default-width 600))
           (container (make-instance 'gtk:box
                                     :orientation :horizontal
                                     :halign :center
                                     :valign :center))
-          (provider (make-instance 'gtk:css-provider)))
+          (provider (make-instance 'gtk:css-provider))
+          (csspath (sys-path "resource/css-accordion.css")))
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
@@ -37,7 +38,7 @@
       ;; Add the container to the window
       (gtk:container-add window container)
       ;; Load CSS from file into the provider
-      (gtk:css-provider-load-from-path provider (sys-path "css-accordion.css"))
+      (gtk:css-provider-load-from-path provider csspath)
       ;; Apply CSS to the widgets
       (apply-css-to-widget provider window)
       ;; Show the window

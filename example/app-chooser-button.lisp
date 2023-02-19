@@ -1,4 +1,4 @@
-;;;; App Chooser Button
+;;;; Application Chooser Button
 
 (in-package #:gtk-demo)
 

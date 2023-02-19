@@ -1,4 +1,4 @@
-;;;; Animated backgrounds - 2022-12-15
+;;;; Animated backgrounds - 2023-2-18
 ;;;;
 ;;;; This demo is done in honour of the Pixbufs demo further down.
 ;;;; It is done exclusively with CSS as the background of the window.
@@ -11,7 +11,7 @@
           (window (make-instance 'gtk:window
                                  :type :toplevel
                                  :application application
-                                 :title "Example CSS Pixbufs"
+                                 :title "CSS Pixbufs"
                                  :default-height 420
                                  :default-width 420))
           (container (make-instance 'gtk:box
@@ -27,7 +27,8 @@
       ;; Add container to window
       (gtk:container-add window container)
       ;; Load CSS from file into the provider
-      (gtk:css-provider-load-from-path provider (sys-path "css-pixbufs.css"))
+      (gtk:css-provider-load-from-path provider
+          (sys-path "resource/css-pixbufs.css"))
       ;; Apply CSS to the widgets
       (apply-css-to-widget provider window)
       ;; Show the window.

@@ -1,4 +1,4 @@
-;;;; Simple App Chooser Dialog
+;;;; Simple Application Chooser Dialog
 
 (in-package #:gtk-demo)
 

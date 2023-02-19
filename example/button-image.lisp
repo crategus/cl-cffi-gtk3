@@ -1,4 +1,4 @@
-;;;; Example Simple Button - 2023-2-12
+;;;; Example Simple Button - 2023-2-18
 
 (in-package :gtk3-example)
 
@@ -18,7 +18,7 @@
 (defun example-button-image (&optional application)
   (within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :title "Example Button"
+                                 :title "Button with Image"
                                  :application application
                                  :type :toplevel
                                  :default-width 240
@@ -26,7 +26,7 @@
           (button (make-instance 'gtk:button
                                  :halign :center
                                  :valign :center))
-          (box (image-label-box (sys-path "save.png") "Save to File")))
+          (box (image-label-box (sys-path "resource/save.png") "Save to File")))
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))

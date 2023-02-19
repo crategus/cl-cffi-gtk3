@@ -1,4 +1,4 @@
-;;;; Theming/CSS Blend Modes - 2022-12-15
+;;;; Theming/CSS Blend Modes - 2023-2-17
 ;;;;
 ;;;; You can blend multiple backgrounds using the CSS blend modes available.
 
@@ -23,15 +23,20 @@
 
 (defun example-css-blendmodes (&optional application)
   (within-main-loop
-    (let* ((builder (gtk:builder-new-from-file (sys-path "css-blendmodes.ui")))
+    (let* ((builder (gtk:builder-new-from-file
+                        (sys-path "resource/css-blendmodes.ui")))
            (provider (make-instance 'gtk:css-provider))
            (listbox (make-instance 'gtk:list-box))
-           (window (gtk:builder-object builder "window")))
+           (window (gtk:builder-object builder "window"))
+           (resource (g:resource-load
+                         (sys-path "resource/gtk3-example.gresource"))))
+      (g:resources-register resource)
       (setf (gtk:window-application window) application)
       ;; Signal handler for the window to handle the signal "destroy".
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
+                          (g:resources-unregister resource)
                           (leave-gtk-main)))
       ;; Setup the CSS provider for window
       (gtk:style-context-add-provider-for-screen (gdk:screen-default)
@@ -44,7 +49,7 @@
             (let* ((mode (second (elt +blend-modes+
                                       (gtk:list-box-row-index row))))
                    (str (format nil
-                                (read-file (sys-path "css-blendmodes.css"))
+                                (read-file (sys-path "resource/css-blendmodes.css"))
                         mode mode mode)))
               (gtk:css-provider-load-from-data provider str))))
       ;; Fill the list box
