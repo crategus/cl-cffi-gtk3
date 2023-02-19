@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.color-button.lisp
+;;; gtk3.color-button.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK+ library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -117,7 +117,7 @@
 
 #+liber-documentation
 (setf (documentation 'color-button 'type)
- "@version{#2021-1-24}
+ "@version{#2023-2-14}
   @begin{short}
     The @sym{gtk:color-button} widget is a button which displays the currently
     selected color and allows to open a color selection dialog to change the
@@ -160,18 +160,21 @@
   @begin[Signal Details]{dictionary}
     @subheading{The \"color-set\" signal}
       @begin{pre}
-lambda (button)    : Run First
+lambda (button)    :run-first
       @end{pre}
-      The \"color-set\" signal is emitted when the user selects a color. When
-      handling this signal, use the function @fun{gtk:color-chooser-rgba} to
-      find out which color was just selected. Note that this signal is only
-      emitted when the user changes the color. If you need to react to
-      programmatic color changes as well, use the \"notify::color\" signal.
+      The signal is emitted when the user selects a color. When handling this
+      signal, use the @fun{gtk:color-chooser-rgba} function to find out which
+      color was just selected. Note that this signal is only emitted when the
+      user changes the color. If you need to react to programmatic color
+      changes as well, use the \"notify::color\" signal.
       @begin[code]{table}
         @entry[button]{The @sym{gtk:color-button} widget which received the
           signal.}
       @end{table}
   @end{dictionary}
+  @see-constructor{gtk:color-button-new}
+  @see-constructor{gtk:color-button-new-with-color}
+  @see-constructor{gtk:color-button-new-with-rgba}
   @see-slot{gtk:color-button-alpha}
   @see-slot{gtk:color-button-color}
   @see-slot{gtk:color-button-rgba}
@@ -185,7 +188,7 @@ lambda (button)    : Run First
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- color-button-alpha -------------------------------------------------
+;;; --- color-button-alpha -----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "alpha" 'color-button) t)
@@ -198,7 +201,7 @@ lambda (button)    : Run First
 (setf (liber:alias-for-function 'color-button-alpha)
       "Accessor"
       (documentation 'color-button-alpha 'function)
- "@version{#2020-5-23}
+ "@version{#2023-2-14}
   @syntax[]{(gtk:color-button-alpha object) => alpha)}
   @syntax[]{(setf (gtk:color-button-alpha object) alpha)}
   @argument[object]{a @class{gtk:color-button} widget}
@@ -207,10 +210,9 @@ lambda (button)    : Run First
     Accessor of the @slot[gtk:color-button]{alpha} slot of the
     @class{gtk:color-button} class.
   @end{short}
-
-  The slot access function @sym{gtk:color-button-alpha} returns the current
-  alpha value. The slot access function @sym{(setf gtk:color-button-alpha)}
-  sets the current opacity to be @arg{alpha}.
+  The @sym{gtk:color-button-alpha} function returns the current alpha value.
+  The @sym{(setf gtk:color-button-alpha)} function sets the current opacity to
+  be @arg{alpha}.
   @begin[Warning]{dictionary}
     The @sym{gtk:color-button-alpha} function has been deprecated since version
     3.4 and should not be used in newly written code. Use the
@@ -219,33 +221,32 @@ lambda (button)    : Run First
   @see-class{gtk:color-button}
   @see-function{gtk:color-chooser-rgba}")
 
-;;; --- color-button-color -------------------------------------------------
+;;; --- color-button-color -----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "color" 'color-button) t)
  "The @code{color} property of type @struct{gdk:color} (Read / Write) @br{}
   The selected color. @br{}
   @em{Warning:} The @code{color} property has been deprecated since version 3.4
-  and should not be used in newly written code. Use the @code{rgba}
-  property instead.")
+  and should not be used in newly written code. Use the @code{rgba} property
+  instead.")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'color-button-color)
       "Accessor"
       (documentation 'color-button-color 'function)
- "@version{#2021-1-23}
+ "@version{#2023-2-14}
   @syntax[]{(gtk:color-button-color object) => color)}
   @syntax[]{(setf (gtk:color-button-color object) color)}
   @argument[object]{a @class{gtk:color-button} widget}
-  @argument[color]{a @struct{gdk:color} to set the current color with}
+  @argument[color]{a @struct{gdk:color} color to set the current color with}
   @begin{short}
     Accessor of the @slot[gtk:color-button]{color} slot of the
     @class{gtk:color-button} class.
   @end{short}
-
-  The slot access function @sym{gtk:color-button-color} gets the current color
-  in the color button. The slot access function
-  @sym{(setf gtk:color-button-color)} sets the current color to be @arg{color}.
+  The @sym{gtk:color-button-color} function gets the current color in the color
+  button. The @sym{(setf gtk:color-button-color)} function sets the current
+  color to be @arg{color}.
   @begin[Warning]{dictionary}
     The @sym{gtk:color-button-color} function is deprecated and should not be
     used in newly written code. Use the @fun{gtk:color-chooser-rgba} function
@@ -255,7 +256,7 @@ lambda (button)    : Run First
   @see-struct{gdk:color}
   @see-function{gtk:color-chooser-rgba}")
 
-;;; --- color-button-rgba --------------------------------------------------
+;;; --- color-button-rgba ------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "rgba" 'color-button) t)
@@ -266,7 +267,7 @@ lambda (button)    : Run First
 (setf (liber:alias-for-function 'color-button-rgba)
       "Accessor"
       (documentation 'color-button-rgba 'function)
- "@version{#2021-1-23}
+ "@version{#2023-2-14}
   @syntax[]{(gtk:color-button-rgba object) => rgba)}
   @syntax[]{(setf (gtk:color-button-rgba object) rgba)}
   @argument[object]{a @class{gtk:color-button} widget}
@@ -275,10 +276,9 @@ lambda (button)    : Run First
     Accessor of the @slot[gtk:color-button]{rgba} slot of the
     @class{gtk:color-button} class.
   @end{short}
-
-  The slot access function @sym{gtk:color-button-rgba} gets the current color
-  in the color button. The slot access function @sym{(setf gtk:color-button)}
-  sets the current color to be @arg{rgba}.
+  The @sym{gtk:color-button-rgba} function gets the current color in the color
+  button. The @sym{(setf gtk:color-button)} function sets the current color to
+  be @arg{rgba}.
   @begin[Warning]{dictionary}
     The @sym{gtk:color-button-rgba} function has been deprecated since version
     3.4 and should not be used in newly written code. Use the
@@ -303,7 +303,7 @@ lambda (button)    : Run First
 (setf (liber:alias-for-function 'color-button-show-editor)
       "Accessor"
       (documentation 'color-button-show-editor 'function)
- "@version{#2023-1-22}
+ "@version{#2023-2-14}
   @syntax[]{(gtk:color-button-show-editor object) => show-editor)}
   @syntax[]{(setf (gtk:color-button-show-editor object) show-editor)}
   @argument[object]{a @class{gtk:color-button} widget}
@@ -320,7 +320,7 @@ lambda (button)    : Run First
   Since 3.20
   @see-class{gtk:color-button}")
 
-;;; --- color-button-title -------------------------------------------------
+;;; --- color-button-title -----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "title" 'color-button) t)
@@ -332,7 +332,7 @@ lambda (button)    : Run First
 (setf (liber:alias-for-function 'color-button-title)
       "Accessor"
       (documentation 'color-button-title 'function)
- "@version{#2021-1-23}
+ "@version{#2023-2-14}
   @syntax[]{(gtk:color-button-title object) => title)}
   @syntax[]{(setf (gtk:color-button-title object) title)}
   @argument[object]{a @class{gtk:color-button} widget}
@@ -341,17 +341,15 @@ lambda (button)    : Run First
     Accessor of the @slot[gtk:color-button]{title} slot of the
     @class{gtk:color-button} class.
   @end{short}
-
-  The slot access function @sym{gtk:color-button-title} gets the title of the
-  color selection dialog. The slot access function
-  @sym{(setf gtk:color-button-title)} sets the title.
+  The @sym{gtk:color-button-title} function gets the title of the color
+  selection dialog. The @sym{(setf gtk:color-button-title)} function sets the
+  title.
   @see-class{gtk:color-button}")
 
-;;; color-button-use-alpha -------------------------------------------------
+;;; color-button-use-alpha -----------------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "use-alpha"
-                                               'color-button) t)
+(setf (documentation (liber:slot-documentation "use-alpha" 'color-button) t)
  "The @code{use-alpha} property of type @code{:boolean} (Read / Write) @br{}
   If this property is set to @em{true}, the color swatch on the button is
   rendered against a checkerboard background to show its opacity and the
@@ -362,7 +360,7 @@ lambda (button)    : Run First
 (setf (liber:alias-for-function 'color-button-use-alpha)
       "Accessor"
       (documentation 'color-button-use-alpha 'function)
- "@version{#2020-5-23}
+ "@version{#2023-2-14}
   @syntax[]{(gtk:color-button-use-alpha object) => use-alpha)}
   @syntax[]{(setf (gtk:color-button-use-alpha object) use-alpha)}
   @argument[object]{a @class{gtk:color-button} widget}
@@ -372,7 +370,6 @@ lambda (button)    : Run First
     Accessor of the @slot[gtk:color-button]{use-alpha} slot of the
     @class{gtk:color-button} class.
   @end{short}
-
   Sets whether or not the color button should use the alpha channel.
   @begin[Warning]{dictionary}
     The @sym{gtk:color-button-use-alpha} function has been deprecated since
@@ -390,13 +387,12 @@ lambda (button)    : Run First
 
 (defun color-button-new ()
  #+liber-documentation
- "@version{#2021-1-23}
+ "@version{#2023-2-14}
   @return{A new @class{gtk:color-button} widget.}
   @short{Creates a new color button.}
-
   This returns a widget in the form of a small button containing a swatch
   representing the current selected color. When the button is clicked, a
-  color-selection dialog will open, allowing the user to select a color. The
+  color selection dialog will open, allowing the user to select a color. The
   swatch will be updated to reflect the new color when the user finishes.
   @see-class{gtk:color-button}
   @see-function{gtk:color-button-new-with-rgba}"
@@ -412,7 +408,7 @@ lambda (button)    : Run First
 
 (defun color-button-new-with-color (color)
  #+liber-documentation
- "@version{#2021-1-23}
+ "@version{#2023-2-14}
   @argument[color]{a @struct{gdk:color} to set the current color with}
   @return{A new @class{gtk:color-button} widget.}
   @short{Creates a new color button.}
@@ -437,15 +433,13 @@ lambda (button)    : Run First
 
 (defun color-button-new-with-rgba (rgba)
  #+liber-documentation
- "@version{#2021-1-23}
+ "@version{#2023-2-14}
   @argument[rgba]{a @struct{gdk:rgba} color to set the current color with}
   @return{A new @class{gtk:color-button} widget.}
   @short{Creates a new color button with the given RGBA color.}
-  @see-class{gtk:color-button}
-
   This returns a widget in the form of a small button containing a swatch
   representing the current selected color. When the button is clicked, a
-  color-selection dialog will open, allowing the user to select a color. The
+  color selection dialog will open, allowing the user to select a color. The
   swatch will be updated to reflect the new color when the user finishes.
   @see-class{gtk:color-button}
   @see-struct{gdk:rgba}

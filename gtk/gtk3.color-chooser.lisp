@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.color-chooser.lisp
+;;; gtk3.color-chooser.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK+ library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
-;;; Copyright (C) 2012 - 2021 Dieter Kaiser
+;;; Copyright (C) 2012 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -44,12 +44,12 @@
 ;;;
 ;;; Properties
 ;;;
-;;;      GdkRGBA*   rgba               Read / Write
-;;;     gboolean    use-alpha          Read / Write
+;;;     rgba
+;;;     use-alpha
 ;;;
 ;;; Signals
 ;;;
-;;;         void    color-activated    Run First
+;;;     color-activated
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -77,20 +77,19 @@
 (setf (liber:alias-for-class 'color-chooser)
       "Interface"
       (documentation 'color-chooser 'type)
- "@version{#2021-1-23}
+ "@version{#2023-2-14}
   @begin{short}
     The @sym{gtk:color-chooser} interface is an interface that is implemented
     by widgets for choosing colors.
   @end{short}
   Depending on the situation, colors may be allowed to have alpha
-  (translucency).
-
-  The main widgets that implement this interface are @class{gtk:color-button},
-  @class{gtk:color-chooser-widget}, and @class{gtk:color-chooser-dialog}.
+  (translucency). The main widgets that implement this interface are the
+  @class{gtk:color-button}, @class{gtk:color-chooser-widget}, and 
+  @class{gtk:color-chooser-dialog} widgets.
   @begin[Signal Details]{dictionary}
     @subheading{The \"color-activated\" signal}
       @begin{pre}
- lambda (chooser color)    :run-first
+lambda (chooser color)    :run-first
       @end{pre}
       Emitted when a color is activated from the color chooser. This usually
       happens when the user clicks a color swatch, or a color is selected and
@@ -113,7 +112,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- color-chooser-rgba -------------------------------------------------
+;;; --- color-chooser-rgba -----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "rgba" 'color-chooser) t)
@@ -126,7 +125,7 @@
 (setf (liber:alias-for-function 'color-chooser-rgba)
       "Accessor"
       (documentation 'color-chooser-rgba 'function)
- "@version{#2021-1-24}
+ "@version{#2023-2-14}
   @syntax[]{(gtk:color-chooser-rgba object) => color}
   @syntax[]{(setf (gtk:color-chooser-rgba object) color)}
   @argument[object]{a @class{gtk:color-chooser} widget}
@@ -135,10 +134,8 @@
     Accessor of the @slot[gtk:color-chooser]{rgba} slot of the
     @class{gtk:color-chooser} class.
   @end{short}
-
-  The slot access function @sym{gtk:color-chooser-rgba} gets the currently
-  selected color. The slot access function @sym{(setf gtk:color-chooser-rgba)}
-  sets the color.
+  The @sym{gtk:color-chooser-rgba} function gets the currently selected color. 
+  The @sym{(setf gtk:color-chooser-rgba)} function sets the color.
 
   The @code{rgba} property contains the currently selected color, as a
   @struct{gdk:rgba} color. The property can be set to change the current
@@ -146,11 +143,10 @@
   @see-struct{gdk:rgba}
   @see-class{gtk:color-chooser}")
 
-;;; --- color-chooser-use-alpha --------------------------------------------
+;;; --- color-chooser-use-alpha ------------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "use-alpha"
-                                               'color-chooser) t)
+(setf (documentation (liber:slot-documentation "use-alpha" 'color-chooser) t)
  "The @code{use-alpha} property of type @code{:boolean} (Read / Write) @br{}
   When @code{use-alpha} is @em{true}, colors may have alpha (translucency)
   information. When it is @em{false}, the RGBA color obtained via the
@@ -163,7 +159,7 @@
 (setf (liber:alias-for-function 'color-chooser-use-alpha)
       "Accessor"
       (documentation 'color-chooser-use-alpha 'function)
- "@version{#2020-5-22}
+ "@version{#2023-2-14}
   @syntax[]{(gtk:color-chooser-use-alpha object) => use-alpha}
   @syntax[]{(setf (gtk:color-chooser-use-alpha object) use-alpha)}
   @argument[object]{a @class{gtk:color-chooser} widget}
@@ -173,11 +169,9 @@
     Accessor of the @slot[gtk:color-chooser]{use-alpha} slot of the
     @class{gtk:color-chooser} class.
   @end{short}
-
-  The slot access function @sym{gtk:color-chooser-use-alpha} returns whether
-  the color chooser shows the alpha channel. The slot access function
-  @sym{(setf gtk:color-chooser-use-alpha)} sets whether or not the color
-  chooser should use the alpha channel.
+  The @sym{gtk:color-chooser-use-alpha} function returns whether the color 
+  chooser shows the alpha channel. The @sym{(setf gtk:color-chooser-use-alpha)} 
+  function sets whether or not the color chooser should use the alpha channel.
   @see-class{gtk:color-chooser}")
 
 ;;; ----------------------------------------------------------------------------
@@ -191,12 +185,9 @@
   (n-colors :int)
   (colors :pointer))
 
-(defun color-chooser-add-palette (chooser
-                                      orientation
-                                      colors-per-line
-                                      colors)
+(defun color-chooser-add-palette (chooser orientation colors-per-line colors)
  #+liber-documentation
- "@version{#2021-1-24}
+ "@version{#2023-2-14}
   @argument[chooser]{a @class{gtk:color-chooser} widget}
   @argument[orientation]{a value of the @symbol{gtk:orientation} enumeration}
   @argument[colors-per-line]{an integer with the number of colors to show in
@@ -224,16 +215,16 @@
   (if colors
       (with-foreign-boxed-array (n-colors colors-ptr gdk:rgba colors)
         (%color-chooser-add-palette chooser
-                                        orientation
-                                        colors-per-line
-                                        n-colors
-                                        colors-ptr))
+                                    orientation
+                                    colors-per-line
+                                    n-colors
+                                    colors-ptr))
       (%color-chooser-add-palette chooser
-                                      orientation
-                                      colors-per-line
-                                      0
-                                      (cffi:null-pointer))))
+                                  orientation
+                                  colors-per-line
+                                  0
+                                  (cffi:null-pointer))))
 
 (export 'color-chooser-add-palette)
 
-;;; --- End of file gtk.color-chooser.lisp -------------------------------------
+;;; --- End of file gtk3.color-chooser.lisp ------------------------------------

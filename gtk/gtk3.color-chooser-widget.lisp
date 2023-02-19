@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.color-chooser-widget.lisp
+;;; gtk3.color-chooser-widget.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK+ library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
-;;; Copyright (C) 2012 - 2022 Dieter Kaiser
+;;; Copyright (C) 2012 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -77,7 +77,7 @@
 
 #+liber-documentation
 (setf (documentation 'color-chooser-widget 'type)
- "@version{#2021-1-23}
+ "@version{#2023-2-14}
   @begin{short}
     The @sym{gtk:color-chooser-widget} widget lets the user select a color.
   @end{short}
@@ -89,7 +89,7 @@
 
   The chooser automatically remembers the last selection, as well as custom
   colors. To change the initially selected color or to get the selected color
-  use the slot access function @fun{gtk:color-chooser-rgba}.
+  use the @fun{gtk:color-chooser-rgba} function.
 
   The @sym{gtk:color-chooser-widget} widget is used in the
   @class{gtk:color-chooser-dialog} widget to provide a dialog for selecting
@@ -100,7 +100,7 @@
   @end{dictionary}
   @begin[Example]{dictionary}
     This example shows a color chooser widget in a window. The selected color
-    is print on the console.
+    is output to the console.
     @begin{pre}
 (defun example-color-chooser-widget ()
   (within-main-loop
@@ -121,6 +121,7 @@
         (gtk:widget-show-all window))))
     @end{pre}
   @end{dictionary}
+  @see-constructor{gtk:color-chooser-widget-new}
   @see-slot{gtk:color-chooser-widget-show-editor}
   @see-class{gtk:color-chooser}
   @see-class{gtk:color-chooser-dialog}")
@@ -132,8 +133,7 @@
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "show-editor"
                                                'color-chooser-widget) t)
- "The @code{show-editor} property of type @code{:boolean}
-  (Read / Write) @br{}
+ "The @code{show-editor} property of type @code{:boolean} (Read / Write) @br{}
   @em{True} when the color chooser is showing the single-color editor. It can
   be set to switch the color chooser into single-color editing mode. @br{}
   Default value: @em{false}")
@@ -142,7 +142,7 @@
 (setf (liber:alias-for-function 'color-chooser-widget-show-editor)
       "Accessor"
       (documentation 'color-chooser-widget-show-editor 'function)
- "@version{#2020-5-23}
+ "@version{#2023-2-14}
   @syntax[]{(gtk:color-chooser-widget-show-editor object) => show-editor}
   @syntax[]{(setf (gtk:color-chooser-widget-show-editor object) show-editor)}
   @argument[object]{a @class{gtk:color-chooser-widget} widget}
@@ -151,7 +151,6 @@
     Accessor of the @slot[gtk:color-chooser-widget]{show-editor} slot of the
     @class{gtk:color-chooser-widget} class.
   @end{short}
-
   The @code{show-editor} property is @em{true} when the color chooser is
   showing the single-color editor. It can be set to switch the color chooser
   into single-color editing mode.
@@ -165,7 +164,7 @@
 
 (defun color-chooser-widget-new ()
  #+liber-documentation
- "@version{#2020-5-23}
+ "@version{#2023-2-14}
   @return{A new @class{gtk:color-chooser-widget} widget.}
   @short{Creates a new color chooser widget.}
   @see-class{gtk:color-chooser-widget}"
@@ -173,4 +172,4 @@
 
 (export 'color-chooser-widget-new)
 
-;;; --- End of file gtk.color-chooser-widget.lisp ------------------------------
+;;; --- End of file gtk3.color-chooser-widget.lisp -----------------------------
