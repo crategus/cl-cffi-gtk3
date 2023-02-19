@@ -21,6 +21,10 @@
 ;;; and <http://opensource.franz.com/preamble.html>.
 ;;; ----------------------------------------------------------------------------
 
+(defpackage :gtk3-demo
+  (:use :common-lisp)
+  (:export :gtk3-demo))
+
 (in-package :gtk3-demo)
 
 ;;; ----------------------------------------------------------------------------
@@ -33,7 +37,7 @@
 ;;; ----------------------------------------------------------------------------
 
 ;; Get the pathname for a file
-(defun sys-path (filename &optional (system :cl-cffi-gtk3))
+(defun sys-path (filename &optional (system :gtk3-demo))
   (asdf:system-relative-pathname system filename))
 
 (defun clear-buffer (buffer)
@@ -119,42 +123,42 @@
        "gtk3-example"
        "css-accordion.lisp"
        ""
-       "css-accordion.css")
+       "resource/css-accordion.css")
       ("CSS Basics"
        ":window"
        "example-css-basics"
        "gtk3-example"
        "css-basics.lisp"
        ""
-       "css-basics.css")
+       "resource/css-basics.css")
       ("CSS Blend Modes"
        ":window"
        "example-css-blendmodes"
        "gtk3-example"
        "css-blendmodes.lisp"
-       "css-blendmodes.ui"
-       "css-blendmodes.css")
+       "resource/css-blendmodes.ui"
+       "resource/css-blendmodes.css")
       ("CSS Multiple Backgrounds"
        ":window"
        "example-css-multiplebgs"
        "gtk3-example"
        "css-multiplebgs.lisp"
        ""
-       "css-multiplebgs.css")
+       "resource/css-multiplebgs.css")
       ("CSS Pixbufs"
        ":window"
        "example-css-pixbufs"
        "gtk3-example"
        "css-pixbufs.lisp"
        ""
-       "css-pixbufs.css")
+       "resource/css-pixbufs.css")
       ("CSS Shadows"
        ":window"
        "example-css-shadows"
        "gtk3-example"
        "css-shadows.lisp"
        ""
-       "css-shadows.css")
+       "resource/css-shadows.css")
       ("Custom Drawing"
        ":window"
        "example-custom-drawing"
@@ -219,13 +223,13 @@
        "example-revealer-icon"
        "gtk3-example"
        "revealer-icon.lisp"
-       "revealer-icon.ui")
+       "resource/revealer-icon.ui")
       ("List Box"
        ":window"
        "example-list-box"
        "gtk3-example"
        "list-box.lisp"
-       "list-box.ui")
+       "resource/list-box.ui")
       ("Flow Box"
        ":window"
        "example-flow-box"
@@ -494,7 +498,7 @@
        "example-popover"
        "gtk3-example"
        "popover.lisp"
-       "popover.ui"))
+       "resource/popover.ui"))
 
      "Selectors (Color/File/Font)"
      (("Color Button"
@@ -1118,7 +1122,8 @@
             (g:action-activate action))))
 
     ;; Set an icon for the application
-    (let* ((path (sys-path "demo/gtk-demo/gtk-logo-rgb.png"))
+    ;; FIXME: The icon is not visible. What is wrong?
+    (let* ((path (sys-path "gtk-logo.png"))
            (pixbuf (gdk:pixbuf-new-from-file path)))
       (setq pixbuf (gdk:pixbuf-add-alpha pixbuf t 255 255 255))
       (setf (gtk:window-default-icon-list) (list pixbuf)))
@@ -1149,15 +1154,13 @@
                                :program-name "GTK Lisp Demo"
                                :version "0.9"
                                :copyright "(c) Dieter Kaiser"
-                               :website
-                               "github.com/crategus/cl-cffi-gtk"
+                               :website "github.com/crategus/cl-cffi-gtk3"
                                :website-label "Project web site"
                                :license "LLGPL"
                                :authors '("Dieter Kaiser")
                                :documenters '("Dieter Kaiser")
                                :artists '("None")
-                               :logo-icon-name
-                               "applications-development"
+                               :logo-icon-name "applications-development"
                                :wrap-license t)))
     ;; Run the about dialog
     (gtk:dialog-run dialog)
@@ -1195,7 +1198,8 @@
   ;; Load the application menu
   (let ((builder (make-instance 'gtk:builder)))
     (gtk:builder-add-from-string builder *appmenu*)
-    ;; TODO: Improve the implemenation of the menubar.
+    ;; FIXME: Improve the implementation of the menubar.
+    ;; The APP-MENU is not shown, the MENUBAR is not correct!
     (setf (gtk:application-menubar application)
           (gtk:builder-object builder "appmenu")))
   ;; Add action "inspector" to the application

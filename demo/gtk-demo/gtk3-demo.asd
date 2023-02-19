@@ -7,7 +7,6 @@
   :depends-on (:gtk3-example
                :pango-example
                :cairo-example)
-  :components ((:file "package")
-               (:file "gtk3-demo")))
+  :components ((:file "gtk3-demo")))
 
-;;; --- 2023-2-12 --------------------------------------------------------------
+;;; --- 2023-2-18 --------------------------------------------------------------
