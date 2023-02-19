@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.settings.lisp
+;;; gtk3.settings.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -57,93 +57,91 @@
 ;;;
 ;;; Properties
 ;;;
-;;;        GHashTable*   color-hash
-;;;          gboolean    gtk-alternative-button-order
-;;;          gboolean    gtk-alternative-sort-arrows
-;;;          gboolean    gtk-application-prefer-dark-theme
-;;;          gboolean    gtk-auto-mnemonics
-;;;          gboolean    gtk-button-images
-;;;          gboolean    gtk-can-change-accels
-;;;             gchar*   gtk-color-palette
-;;;             gchar*   gtk-color-scheme
-
-;;;            gfloat*   gtk-cursor-aspect-ratio
-
-;;;          gboolean    gtk-cursor-blink
-;;;              gint    gtk-cursor-blink-time
-;;;              gint    gtk-cursor-blink-timeout
-;;;             gchar*   gtk-cursor-theme-name
-;;;              gint    gtk-cursor-theme-size
-;;;             gchar*   gtk-decoration-layout
-;;;          gboolean    gtk-dialogs-use-header
-;;;              gint    gtk-dnd-drag-threshold
-;;;              gint    gtk-double-click-distance
-;;;              gint    gtk-double-click-time
-;;;          gboolean    gtk-enable-accels
-;;;          gboolean    gtk-enable-animations
-;;;          gboolean    gtk-enable-event-sounds
-;;;          gboolean    gtk-enable-input-feedback-sounds
-;;;          gboolean    gtk-enable-mnemonics
-;;;          gboolean    gtk-enable-primary-paste
-;;;          gboolean    gtk-enable-tooltips
-;;;             guint    gtk-entry-password-hint-timeout
-;;;          gboolean    gtk-entry-select-on-focus
-;;;          gboolean    gtk-error-bell
-;;;             gchar*   gtk-fallback-icon-theme
-;;;             gchar*   gtk-file-chooser-backend
-;;;             gchar*   gtk-font-name
-;;;             guint    gtk-fontconfig-timestamp
-;;;             gchar*   gtk-icon-sizes
-;;;             gchar*   gtk-icon-theme-name
-;;;             gchar*   gtk-im-module
-;;; GtkIMPreeditStyle    gtk-im-preedit-style
-;;;  GtkIMStatusStyle    gtk-im-status-style
-;;;             gchar*   gtk-key-theme-name
-;;;          gboolean    gtk-keynav-cursor-only
-;;;          gboolean    gtk-keynav-use-caret
-;;;          gboolean    gtk-keynav-wrap-around
-;;;          gboolean    gtk-label-select-on-focus
-;;;             guint    gtk-long-press-time
-;;;             gchar*   gtk-menu-bar-accel
-;;;              gint    gtk-menu-bar-popup-delay
-;;;          gboolean    gtk-menu-images
-;;;              gint    gtk-menu-popdown-delay
-;;;              gint    gtk-menu-popup-delay
-;;;             gchar*   gtk-modules
-;;;          gboolean    gtk-overlay-scrolling
-;;;          gboolean    gtk-primary-button-warps-slider
-;;;             gchar*   gtk-print-backends
-;;;             gchar*   gtk-print-preview-command
-;;;          gboolean    gtk-recent-files-enabled
-;;;              gint    gtk-recent-files-limit
-;;;              gint    gtk-recent-files-max-age
-;;;     GtkCornerType    gtk-scrolled-window-placement
-;;;          gboolean    gtk-shell-shows-app-menu
-;;;          gboolean    gtk-shell-shows-desktop
-;;;          gboolean    gtk-shell-shows-menubar
-;;;          gboolean    gtk-show-input-method-menu
-;;;          gboolean    gtk-show-unicode-menu
-;;;             gchar*   gtk-sound-theme-name
-;;;          gboolean    gtk-split-cursor
-;;;             gchar*   gtk-theme-name
-;;;              gint    gtk-timeout-expand
-;;;              gint    gtk-timeout-initial
-;;;              gint    gtk-timeout-repeat
-;;;             gchar*   gtk-titlebar-double-click
-;;;             gchar*   gtk-titlebar-middle-click
-;;;             gchar*   gtk-titlebar-right-click
-;;;       GtkIconSize    gtk-toolbar-icon-size
-;;;   GtkToolbarStyle    gtk-toolbar-style
-;;;              gint    gtk-tooltip-browse-mode-timeout
-;;;              gint    gtk-tooltip-browse-timeout
-;;;              gint    gtk-tooltip-timeout
-;;;          gboolean    gtk-touchscreen-mode
-;;;     GtkPolicyType    gtk-visible-focus
-;;;              gint    gtk-xft-antialias
-;;;              gint    gtk-xft-dpi
-;;;              gint    gtk-xft-hinting
-;;;             gchar*   gtk-xft-hintstyle
-;;;             gchar*   gtk-xft-rgba
+;;;     color-hash
+;;;     gtk-alternative-button-order
+;;;     gtk-alternative-sort-arrows
+;;;     gtk-application-prefer-dark-theme
+;;;     gtk-auto-mnemonics
+;;;     gtk-button-images
+;;;     gtk-can-change-accels
+;;;     gtk-color-palette
+;;;     gtk-color-scheme
+;;;     gtk-cursor-aspect-ratio
+;;;     gtk-cursor-blink
+;;;     gtk-cursor-blink-time
+;;;     gtk-cursor-blink-timeout
+;;;     gtk-cursor-theme-name
+;;;     gtk-cursor-theme-size
+;;;     gtk-decoration-layout
+;;;     gtk-dialogs-use-header
+;;;     gtk-dnd-drag-threshold
+;;;     gtk-double-click-distance
+;;;     gtk-double-click-time
+;;;     gtk-enable-accels
+;;;     gtk-enable-animations
+;;;     gtk-enable-event-sounds
+;;;     gtk-enable-input-feedback-sounds
+;;;     gtk-enable-mnemonics
+;;;     gtk-enable-primary-paste
+;;;     gtk-enable-tooltips
+;;;     gtk-entry-password-hint-timeout
+;;;     gtk-entry-select-on-focus
+;;;     gtk-error-bell
+;;;     gtk-fallback-icon-theme
+;;;     gtk-file-chooser-backend
+;;;     gtk-font-name
+;;;     gtk-fontconfig-timestamp
+;;;     gtk-icon-sizes
+;;;     gtk-icon-theme-name
+;;;     gtk-im-module
+;;;     gtk-im-preedit-style
+;;;     gtk-im-status-style
+;;;     gtk-key-theme-name
+;;;     gtk-keynav-cursor-only
+;;;     gtk-keynav-use-caret
+;;;     gtk-keynav-wrap-around
+;;;     gtk-label-select-on-focus
+;;;     gtk-long-press-time
+;;;     gtk-menu-bar-accel
+;;;     gtk-menu-bar-popup-delay
+;;;     gtk-menu-images
+;;;     gtk-menu-popdown-delay
+;;;     gtk-menu-popup-delay
+;;;     gtk-modules
+;;;     gtk-overlay-scrolling
+;;;     gtk-primary-button-warps-slider
+;;;     gtk-print-backends
+;;;     gtk-print-preview-command
+;;;     gtk-recent-files-enabled
+;;;     gtk-recent-files-limit
+;;;     gtk-recent-files-max-age
+;;;     gtk-scrolled-window-placement
+;;;     gtk-shell-shows-app-menu
+;;;     gtk-shell-shows-desktop
+;;;     gtk-shell-shows-menubar
+;;;     gtk-show-input-method-menu
+;;;     gtk-show-unicode-menu
+;;;     gtk-sound-theme-name
+;;;     gtk-split-cursor
+;;;     gtk-theme-name
+;;;     gtk-timeout-expand
+;;;     gtk-timeout-initial
+;;;     gtk-timeout-repeat
+;;;     gtk-titlebar-double-click
+;;;     gtk-titlebar-middle-click
+;;;     gtk-titlebar-right-click
+;;;     gtk-toolbar-icon-size
+;;;     gtk-toolbar-style
+;;;     gtk-tooltip-browse-mode-timeout
+;;;     gtk-tooltip-browse-timeout
+;;;     gtk-tooltip-timeout
+;;;     gtk-touchscreen-mode
+;;;     gtk-visible-focus
+;;;     gtk-xft-antialias
+;;;     gtk-xft-dpi
+;;;     gtk-xft-hinting
+;;;     gtk-xft-hintstyle
+;;;     gtk-xft-rgba
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -530,15 +528,17 @@
   to individual widgets may not be available before the widget type has been
   realized at least once. The following example demonstrates a way to do this:
   @begin{pre}
-;; make sure the type is realized
+;; Make sure the type is realized
 (g-type-class-unref (g-type-class-ref \"GtkMenuItem\"))
 (setf (gtk:settings-gtk-menu-images (gtk:settings-default)) t)
   @end{pre}
   There is one @sym{gtk:settings} object per screen. It can be obtained with
-  the function @fun{gtk:settings-for-screen}, but in many cases, it is more
+  the @fun{gtk:settings-for-screen} function, but in many cases, it is more
   convenient to use the function @fun{gtk-widget-settings}. The function
   @fun{gtk:settings-default} returns the @sym{gtk:settings} object for the
   default screen.
+  @see-constructor{gtk:settings-default}
+  @see-constructor{gtk:settings-for-screen}
   @see-slot{gtk:settings-color-hash}
   @see-slot{gtk:settings-gtk-alternative-button-order}
   @see-slot{gtk:settings-gtk-alternative-sort-arrows}
@@ -790,11 +790,10 @@
   @end{dictionary}
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-button-images -----------------------------------------
+;;; --- settings-gtk-button-images ---------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "gtk-button-images"
-                                               'settings) t)
+(setf (documentation (liber:slot-documentation "gtk-button-images" 'settings) t)
  "The @code{gtk-button-images} property of type @code{:boolean} (Read / Write)
   @br{}
   Whether images should be shown on buttons. @br{}
@@ -802,15 +801,15 @@
   version 3.10 and should not be used in newly written code. This setting is
   deprecated. Application developers control whether a button should show an
   icon or not, on a per-button basis. If a button should show an icon, use the
-  @slot[gtk-button]{always-show-image} property of the @class{gtk-button}
-  widget, and pack a @class{gtk-image} widget inside the button. @br{}
+  @slot[gtk-button]{always-show-image} property of the @class{gtk:button}
+  widget, and pack a @class{gtk:image} widget inside the button. @br{}
   Default value: @em{false}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'settings-gtk-button-images)
       "Accessor"
       (documentation 'settings-gtk-button-images 'function)
- "@version{#2020-11-20}
+ "@version{#2023-2-18}
   @syntax[]{(gtk:settings-gtk-button-images object) => setting}
   @syntax[]{(setf gtk:settings-gtk-button-images object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -819,20 +818,19 @@
     Accessor of the @slot[gtk:settings]{gtk-button-images} slot of the
     @class{gtk:settings} class.
   @end{short}
-
   Whether images should be shown on buttons.
   @begin[Warning]{dictionary}
     The function @sym{gtk:settings-gtk-button-images} has been deprecated since
     version 3.10 and should not be used in newly written code. This setting is
     deprecated. Application developers control whether a button should show an
     icon or not, on a per-button basis. If a button should show an icon, use
-    the @slot[gtk-button]{always-show-image} property of the @class{gtk-button}
-    widget, and pack a @class{gtk-image} widget inside the button.
+    the @slot[gtk-button]{always-show-image} property of the @class{gtk:button}
+    widget, and pack a @class{gtk:image} widget inside the button.
   @end{dictionary}
   @see-class{gtk:settings}
-  @see-class{gtk-button}
-  @see-class{gtk-image}
-  @see-function{gtk-button-always-show-image}")
+  @see-class{gtk:button}
+  @see-class{gtk:image}
+  @see-function{gtk:button-always-show-image}")
 
 ;;; --- settings-gtk-can-change-accels -------------------------------------
 
@@ -3745,4 +3743,4 @@
 ;;; Since 3.20
 ;;; ----------------------------------------------------------------------------
 
-;;; --- End of file gtk.settings.lisp ------------------------------------------
+;;; --- End of file gtk3.settings.lisp -----------------------------------------

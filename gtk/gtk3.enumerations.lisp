@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.enumerations.lisp
+;;; gtk3.enumerations.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -75,15 +75,15 @@
 (setf (liber:alias-for-symbol 'baseline-position)
       "GEnum"
       (liber:symbol-documentation 'baseline-position)
- "@version{#2021-3-21}
+ "@version{2023-2-15}
   @begin{short}
     Whenever a container has some form of natural row it may align children in
     that row along a common typographical baseline.
   @end{short}
   If the amount of vertical space in the row is taller than the total requested
   height of the baseline-aligned children then it can use a
-  @sym{gtk:baseline-position} to select where to put the baseline inside the
-  extra available space.
+  @sym{gtk:baseline-position} value to select where to put the baseline inside
+  the extra available space.
   @begin{pre}
 (define-g-enum \"GtkBaselinePosition\" baseline-position
   (:export t
@@ -119,10 +119,11 @@
 (setf (liber:alias-for-symbol 'delete-type)
       "GEnum"
       (liber:symbol-documentation 'delete-type)
- "@version{#2021-3-21}
+ "@version{2023-2-15}
   @begin{short}
     The values of this enumeration are passed as an argument to the
-    \"delete-from-cursor\" signal handler.
+    \"delete-from-cursor\" signal handler of the @class{gtk:entry} and
+    @class{gtk:text-view} widgets.
   @end{short}
   @begin{pre}
 (define-g-enum \"GtkDeleteType\" delete-type
@@ -147,10 +148,10 @@
       paragraphs, which are defined by line breaks in the input.}
     @entry[:display-line-ends]{Delete only the portion of the display-line to
       the left/right of cursor.}
-    @entry[:paragraph-ends]{Delete to the end of the paragraph. Like C-k in
-      Emacs (or its reverse).}
-    @entry[:paragraphs]{Delete entire line. Like C-k in pico.}
-    @entry[:whitespace]{Delete only whitespace. Like M-\ in Emacs.}
+    @entry[:paragraph-ends]{Delete to the end of the paragraph. Like @kbd{C-k}
+      in Emacs (or its reverse).}
+    @entry[:paragraphs]{Delete entire line. Like @kbd{C-k} in pico.}
+    @entry[:whitespace]{Delete only whitespace. Like @kbd{M-} in Emacs.}
   @end{table}
   @see-class{gtk:entry}
   @see-class{gtk:text-view}")
@@ -173,7 +174,7 @@
 (setf (liber:alias-for-symbol 'direction-type)
       "GEnum"
       (liber:symbol-documentation 'direction-type)
- "@version{#2020-8-18}
+ "@version{2023-2-15}
   @short{Focus movement types.}
   @begin{pre}
 (define-g-enum \"GtkDirectionType\" direction-type
@@ -199,12 +200,9 @@
 ;;; enum GtkJustification
 ;;; ----------------------------------------------------------------------------
 
-;; TODO: Implement a base-type for defining an enumeration
-
 (define-g-enum "GtkJustification" justification
   (:export t
    :type-initializer "gtk_justification_get_type")
-  (:dummy1 -1)  ; Workaround to ensure the base-type is :int for the enumeration
   (:left 0)
   (:right 1)
   (:center 2)
@@ -214,11 +212,10 @@
 (setf (liber:alias-for-symbol 'justification)
       "GEnum"
       (liber:symbol-documentation 'justification)
- "@version{#2021-12-22}
+ "@version{2023-2-15}
   @begin{short}
     Used for justifying the text inside a @class{gtk:label} widget.
   @end{short}
-  See also the @class{gtk:alignment} widget.
   @begin{pre}
 (define-g-enum \"GtkJustification\" justification
   (:export t
@@ -234,7 +231,6 @@
     @entry[:center]{The text is placed in the center of the label.}
     @entry[:fill]{The text is placed is distributed across the label.}
   @end{table}
-  @see-class{gtk:alignment}
   @see-class{gtk:label}")
 
 ;;; ----------------------------------------------------------------------------
@@ -418,7 +414,7 @@
 (setf (liber:alias-for-symbol 'relief-style)
       "GEnum"
       (liber:symbol-documentation 'relief-style)
- "@version{#2020-5-10}
+ "@version{2023-2-15}
   @short{Indicated the relief to be drawn around a @class{gtk:button} widget.}
   @begin{pre}
 (define-g-enum \"GtkReliefStyle\" relief-style
@@ -908,4 +904,4 @@
   @end{table}
   @see-symbol{gtk:state-flags}")
 
-;;; --- End of file gtk.enumerations.lisp --------------------------------------
+;;; --- End of file gtk3.enumerations.lisp -------------------------------------

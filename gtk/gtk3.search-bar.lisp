@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.search-bar.lisp
+;;; gtk3.search-bar.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
+;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK+ library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
-;;; Copyright (C) 2019 - 2020 Dieter Kaiser
+;;; Copyright (C) 2019 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -46,8 +46,8 @@
 ;;;
 ;;; Properties
 ;;;
-;;;     gboolean    search-mode-enabled    Read / Write
-;;;     gboolean    show-close-button      Read / Write / Construct
+;;;     search-mode-enabled
+;;;     show-close-button
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -69,6 +69,8 @@
 ;;; struct GtkSearchBar
 ;;; ----------------------------------------------------------------------------
 
+;; TODO: Replace the example with Lisp code
+
 (define-g-object-class "GtkSearchBar" search-bar
   (:superclass bin
    :export t
@@ -84,11 +86,11 @@
 
 #+liber-documentation
 (setf (documentation 'search-bar 'type)
- "@version{#2020-6-1}
+ "@version{#2023-2-16}
   @begin{short}
-    @sym{gtk:search-bar} is a container made to have a search entry built-in,
-    possibly with additional connex widgets, such as drop-down menus, or
-    buttons.
+    The @sym{gtk:search-bar} widget is a container made to have a search entry 
+    built-in, possibly with additional connex widgets, such as drop-down menus, 
+    or buttons.
   @end{short}
   The search bar would appear when a search is started through typing on the
   keyboard, or the application’s search mode is toggled on.
@@ -98,14 +100,15 @@
   For keyboard presses to start a search, events will need to be forwarded from
   the toplevel window that contains the search bar. See the
   @func{gtk:search-bar-handle-event} function for example code. Common shortcuts
-  such as the @kbd{Ctrl+F} should be handled as an application action, or
+  such as the @kbd{Ctrl+F} key should be handled as an application action, or
   through the menu items.
 
   You will also need to tell the search bar about which entry you are using as
-  your search entry using the function @fun{gtk:search-bar-connect-entry}. The
+  your search entry using the @fun{gtk:search-bar-connect-entry} function. The
   following example shows you how to create a more complex search entry.
   @begin[CSS nodes]{dictionary}
-    @sym{gtk:search-bar} has a single CSS node with name @code{searchbar}.
+    The @sym{gtk:search-bar} implementation has a single CSS node with name 
+    @code{searchbar}.
   @end{dictionary}
   @begin[Example]{dictionary}
     Creating a search bar.
@@ -170,6 +173,7 @@ main (gint argc,
 @}
     @end{pre}
   @end{dictionary}
+  @see-constructor{gtk:search-bar-new}
   @see-slot{gtk:search-bar-search-mode-enabled}
   @see-slot{gtk:search-bar-show-close-button}")
 
@@ -177,7 +181,7 @@ main (gint argc,
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- search-bar-search-mode-enabled -------------------------------------
+;;; --- search-bar-search-mode-enabled -----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "search-mode-enabled"
@@ -191,7 +195,7 @@ main (gint argc,
 (setf (liber:alias-for-function 'search-bar-search-mode-enabled)
       "Accessor"
       (documentation 'search-bar-search-mode-enabled 'function)
- "@version{#2020-6-1}
+ "@version{#2023-2-16}
   @syntax[]{(gtk:search-bar-search-mode-enabled object) => search-mode}
   @syntax[]{(setf (gtk:search-bar-search-mode-enabled object) search-mode)}
   @argument[object]{a @class{gtk:search-bar} widget}
@@ -200,11 +204,10 @@ main (gint argc,
     Accessor of the @slot[gtk:search-bar]{search-mode-enabled} slot of the
     @class{gtk:search-bar} class.
   @end{short}
-
   Switches the search mode on or off.
   @see-class{gtk:search-bar}")
 
-;;; --- search-bar-show-close-button ---------------------------------------
+;;; --- search-bar-show-close-button -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "show-close-button"
@@ -218,7 +221,7 @@ main (gint argc,
 (setf (liber:alias-for-function 'search-bar-show-close-button)
       "Accessor"
       (documentation 'search-bar-show-close-button 'function)
- "@version{#2020-6-1}
+ "@version{#2023-2-16}
   @syntax[]{(gtk:search-bar-show-close-button object) => visible}
   @syntax[]{(setf (gtk:search-bar-show-close-button object) visible)}
   @argument[object]{a @class{gtk:search-bar} widget}
@@ -227,14 +230,11 @@ main (gint argc,
     Accessor of the @slot[gtk:search-bar]{show-close-button} slot of the
     @class{gtk:search-bar} class.
   @end{short}
-
-  The function @sym{gtk:search-bar-show-close-button} returns whether the close
-  button is shown. The function @sym{(setf gtk:search-bar-show-close-button}
-  shows or hides the Close button.
-
-  Applications that already have a \"search\" toggle button should not show a
-  Close button in their search bar, as it duplicates the role of the toggle
-  button.
+  The @sym{gtk:search-bar-show-close-button} function returns whether the Close
+  button is shown. The @sym{(setf gtk:search-bar-show-close-button} function
+  shows or hides the Close button. Applications that already have a \"search\" 
+  toggle button should not show a Close button in their search bar, as it 
+  duplicates the role of the toggle button.
   @see-class{gtk:search-bar}")
 
 ;;; ----------------------------------------------------------------------------
@@ -243,13 +243,13 @@ main (gint argc,
 
 (defun search-bar-new ()
  #+liber-documentation
- "@version{#2020-6-1}
+ "@version{#2023-2-16}
   @return{A new @class{gtk:search-bar} widget.}
   @begin{short}
     Creates a search bar.
   @end{short}
   You will need to tell it about which widget is going to be your text entry
-  using the function @fun{gtk:search-bar-connect-entry}.
+  using the @fun{gtk:search-bar-connect-entry} function.
   @see-class{gtk:search-bar}
   @see-function{gtk:search-bar-connect-entry}"
   (make-instance 'search-bar))
@@ -262,15 +262,16 @@ main (gint argc,
 
 (defcfun ("gtk_search_bar_connect_entry" search-bar-connect-entry) :void
  #+liber-documentation
- "@version{#2020-6-1}
+ "@version{#2023-2-16}
   @argument[search-bar]{a @class{gtk:search-bar} widget}
   @argument[entry]{a @class{gtk:entry} widget}
   @begin{short}
     Connects the entry widget passed as the one to be used in this search bar.
   @end{short}
   The entry should be a descendant of the search bar. This is only required if
-  the entry is not the direct child of the search bar, as in our main example.
-  @see-class{gtk:search-bar}"
+  the entry is not the direct child of the search bar.
+  @see-class{gtk:search-bar}
+  @see-class{gtk:entry}"
   (search-bar (g:object search-bar))
   (entry (g:object entry)))
 
@@ -292,12 +293,14 @@ main (gint argc,
 ;;; gtk_search_bar_handle_event ()
 ;;; ----------------------------------------------------------------------------
 
+;; TODO: Replace the example with Lisp code
+
 (defcfun ("gtk_search_bar_handle_event" search-bar-handle-event) :boolean
 
  #+liber-documentation
- "@version{#2020-6-1}
+ "@version{#2023-2-16}
   @argument[search-bar]{a @class{gtk:search-bar} widget}
-  @argument[event]{a @class{gdk:event} containing key press events}
+  @argument[event]{a @class{gdk:event} event containing key press events}
   @return{@var{+gdk-event-stop+} if the key press event resulted in text being
     entered in the search entry, and revealing the search bar if necessary,
     @var{+gdk-event-propagate+} otherwise.}
@@ -305,39 +308,38 @@ main (gint argc,
     This function should be called when the toplevel window which contains the
     search bar received a key event.
   @end{short}
-
   If the key event is handled by the search bar, the bar will be shown, the
   entry populated with the entered text and @var{+gdk-event-stop+} will be
   returned. The caller should ensure that events are not propagated further.
 
-  If no entry has been connected to the search bar, using the function
-  @fun{gtk:search-bar-connect-entry}, this function will return immediately
-  with a warning.
+  If no entry has been connected to the search bar, using the
+  @fun{gtk:search-bar-connect-entry} function, this function will return 
+  immediately with a warning.
   @begin[Example]{dictionary}
     Showing the search bar on key presses
     @begin{pre}
- static gboolean
- on_key_press_event (GtkWidget *widget,
-                     GdkEvent  *event,
-                     gpointer   user_data)
- {
-   GtkSearchBar *bar = GTK_SEARCH_BAR (user_data);
-   return gtk_search_bar_handle_event (bar, event);
- @}
+static gboolean
+on_key_press_event (GtkWidget *widget,
+                    GdkEvent  *event,
+                    gpointer   user_data)
+{
+  GtkSearchBar *bar = GTK_SEARCH_BAR (user_data);
+  return gtk_search_bar_handle_event (bar, event);
+@}
 
- static void
- create_toplevel (void)
- {
-   GtkWidget *window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-   GtkWindow *search_bar = gtk_search_bar_new ();
+static void
+create_toplevel (void)
+{
+  GtkWidget *window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  GtkWindow *search_bar = gtk_search_bar_new ();
 
-  // Add more widgets to the window...
+ // Add more widgets to the window...
 
-   g_signal_connect (window,
-                    \"key-press-event\",
-                     G_CALLBACK (on_key_press_event),
-                     search_bar);
- @}
+  g_signal_connect (window,
+                   \"key-press-event\",
+                    G_CALLBACK (on_key_press_event),
+                    search_bar);
+@}
     @end{pre}
   @end{dictionary}
   @see-class{gtk:search-bar}
@@ -347,4 +349,4 @@ main (gint argc,
 
 (export 'search-bar-handle-event)
 
-;;; --- End of file gtk.search-bar.lisp ----------------------------------------
+;;; --- End of file gtk3.search-bar.lisp ---------------------------------------

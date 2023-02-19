@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.tree-view-column.lisp
+;;; gtk3.tree-view-column.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK+ library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -950,20 +950,20 @@
 
 (defun tree-view-column-new-with-attributes (title renderer &rest attributes)
  #+liber-documentation
- "@version{#2021-3-13}
+ "@version{#2023-2-15}
   @argument[title]{a string with the title to set the header to}
-  @argument[renderer]{the @class{gtk:cell-renderer} object}
+  @argument[renderer]{a @class{gtk:cell-renderer} object}
   @argument[attributes]{a list of attributes}
   @return{A newly created @class{gtk:tree-view-column} object.}
   @begin{short}
     Creates a new tree view column with a number of default values.
   @end{short}
-  This is equivalent to calling the functions
-  @fun{gtk:tree-view-column-title}, @fun{gtk:tree-view-column-pack-start},
-  and @fun{gtk:tree-view-column-set-attributes} on the newly created
+  This is equivalent to calling the @fun{gtk:tree-view-column-title},
+  @fun{gtk:tree-view-column-pack-start}, and
+  @fun{gtk:tree-view-column-set-attributes} functions on the newly created
   @class{gtk:tree-view-column} object.
 
-  Here's a simple example:
+  Here is a simple example:
   @begin{pre}
 (let* ((renderer (gtk:cell-renderer-text-new))
        (column (gtk:tree-view-column-new-with-attributes \"Example\"
@@ -989,25 +989,24 @@
 ;;; gtk_tree_view_column_pack_start ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_column_pack_start" %tree-view-column-pack-start)
-    :void
+(defcfun ("gtk_tree_view_column_pack_start" %tree-view-column-pack-start) :void
   (column (g:object tree-view-column))
   (renderer (g:object cell-renderer))
   (expand :boolean))
 
 (defun tree-view-column-pack-start (column renderer &key (expand t))
  #+liber-documentation
- "@version{#2021-2-24}
+ "@version{#2023-2-15}
   @argument[column]{a @class{gtk:tree-view-column} object}
-  @argument[renderer]{the @class{gtk:cell-renderer} object}
+  @argument[renderer]{a @class{gtk:cell-renderer} object}
   @argument[expand]{@em{true} if the cell renderer is to be given extra space
     allocated to the tree view column}
   @begin{short}
     Packs the cell renderer into the beginning of the tree view column.
   @end{short}
-  If @arg{expand} is @em{false}, then the cell renderer is allocated no more
-  space than it needs. Any unused space is divided evenly between cell
-  renderers for which @arg{expand} is @em{true}.
+  If the @arg{expand} argument is @em{false}, then the cell renderer is
+  allocated no more space than it needs. Any unused space is divided evenly
+  between cell renderers for which @arg{expand} is @em{true}.
   @see-class{gtk:tree-view-column}
   @see-class{gtk:cell-renderer}
   @see-function{gtk:tree-view-column-pack-end}"
@@ -1026,17 +1025,17 @@
 
 (defun tree-view-column-pack-end (column renderer &key (expand t))
  #+liber-documentation
- "@version{#2021-2-24}
+ "@version{#2023-2-15}
   @argument[column]{a @class{gtk:tree-view-column} object}
-  @argument[renderer]{the @class{gtk:cell-renderer} object}
+  @argument[renderer]{a @class{gtk:cell-renderer} object}
   @argument[expand]{@em{true} if the cell renderer is to be given extra space
     allocated to the tree view column}
   @begin{short}
     Packs the cell renderer to the end of the tree view column.
   @end{short}
-  If @arg{expand} is @em{false}, then the cell renderer is allocated no more
-  space than it needs. Any unused space is divided evenly between cell
-  renderers for which expand is @em{true}.
+  If the @arg{expand} argument is @em{false}, then the cell renderer is
+  allocated no more space than it needs. Any unused space is divided evenly
+  between cell renderers for which expand is @em{true}.
   @see-class{gtk:tree-view-column}
   @see-class{gtk:cell-renderer}
   @see-function{gtk:tree-view-column-pack-start}"
@@ -1461,4 +1460,4 @@
 
 (export 'tree-view-column-tree-view)
 
-;;; --- End of file gtk.tree-view-column.lisp ----------------------------------
+;;; --- End of file gtk3.tree-view-column.lisp ---------------------------------
