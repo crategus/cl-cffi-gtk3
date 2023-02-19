@@ -178,7 +178,7 @@
      (:file "gtk3.model-button")          ; Button that uses a GAction as model
 
      ;; Multiline Text Editor
-     (:file "gtk3.text-attributes")       ; GtkTextAttributes
+;    (:file "gtk3.text-attributes")       ; GtkTextAttributes
      (:file "gtk3.text-iter")             ; GtkTextIter
      (:file "gtk3.text-tag")              ; GtkTextTag
      (:file "gtk3.text-mark")             ; GtkTextMark
@@ -490,7 +490,6 @@
 ;    (:file "gtk.model-button")          ; A button that uses a GAction as model
 
      ;; Multiline Text Editor
-     (:file "rtest-gtk3-text-attributes"); GtkTextAttributes
      (:file "rtest-gtk3-text-iter")      ; GtkTextIter
      (:file "rtest-gtk3-text-tag")       ; GtkTextTag
      (:file "rtest-gtk3-text-mark")      ; GtkTextMark

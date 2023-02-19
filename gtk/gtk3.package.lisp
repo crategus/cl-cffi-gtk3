@@ -1514,7 +1514,6 @@
     @begin[GtkTextTag]{subsection}
       A tag that can be applied to text in a @class{gtk:text-buffer} object.
       @about-symbol{wrap-mode}
-      @about-symbol{text-appearance}
       @about-class{text-tag}
       @about-generic{text-tag-accumulative-margin}
       @about-generic{text-tag-background}
@@ -1594,32 +1593,6 @@
       @about-function{text-tag-priority}
       @about-function{text-tag-event}
       @about-function{text-tag-changed}
-      @about-struct{text-attributes}
-      @about-function{text-attributes-appearance}
-      @about-function{text-attributes-justification}
-      @about-function{text-attributes-direction}
-      @about-function{text-attributes-font}
-      @about-function{text-attributes-font-scale}
-      @about-function{text-attributes-left-margin}
-      @about-function{text-attributes-right-margin}
-      @about-function{text-attributes-indent}
-      @about-function{text-attributes-pixels-above-lines}
-      @about-function{text-attributes-pixels-below-lines}
-      @about-function{text-attributes-pixels-inside-wrap}
-      @about-function{text-attributes-tabs}
-      @about-function{text-attributes-wrap-mode}
-      @about-function{text-attributes-language}
-      @about-function{text-attributes-invisible}
-      @about-function{text-attributes-bg-full-height}
-      @about-function{text-attributes-editable}
-      @about-function{text-attributes-no-fallback}
-      @about-function{text-attributes-letter-spacing}
-      @about-function{text-attributes-font-features}
-      @about-function{text-attributes-new}
-      @about-function{text-attributes-copy}
-      @about-function{text-attributes-copy-values}
-      @about-function{text-attributes-unref}
-      @about-function{text-attributes-ref}
     @end{subsection}
     @begin[GtkTextTagTable]{subsection}
       Collection of tags that can be used together.
@@ -3208,7 +3181,7 @@ setup_tree (void)
   @end{section}
   @begin[Ornaments]{section}
     @begin[GtkFrame]{subsection}
-      A bin with a decorative frame and optional label.
+      A widget with a decorative frame and optional label.
       @about-class{frame}
       @about-generic{frame-label}
       @about-generic{frame-label-widget}
