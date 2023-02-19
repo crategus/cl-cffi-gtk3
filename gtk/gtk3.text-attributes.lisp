@@ -28,52 +28,11 @@
 ;;;
 ;;; Types and Values
 ;;;
-;;;     GtkWrapMode                                     <--- gtk.text-view.lisp
 ;;;     GtkTextAppearance                               <--- gtk.text-tag.lisp
 ;;;     GtkTextAttributes                               <--- gtk.text-tag.lisp
 ;;;-----------------------------------------------------------------------------
 
 (in-package :gtk)
-
-;;; ----------------------------------------------------------------------------
-;;; enum GtkWrapMode
-;;; ----------------------------------------------------------------------------
-
-(define-g-enum "GtkWrapMode" wrap-mode
-  (:export t
-   :type-initializer "gtk_wrap_mode_get_type")
-  (:none 0)
-  (:char 1)
-  (:word 2)
-  (:word-char 3))
-
-#+liber-documentation
-(setf (liber:alias-for-symbol 'wrap-mode)
-      "GEnum"
-      (liber:symbol-documentation 'wrap-mode)
- "@version{#2021-11-17}
-  @short{Describes a type of line wrapping.}
-  @begin{pre}
-(define-g-enum \"GtkWrapMode\" wrap-mode
-  (:export tgtk.text-attribut
-   :type-initializer \"gtk_wrap_mode_get_type\")
-  (:none 0)
-  (:char 1)
-  (:word 2)
-  (:word-char 3))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:none]{Do not wrap lines, just make the text area wider.}
-    @entry[:char]{Wrap text, breaking lines anywhere the cursor can appear
-      between characters, usually. If you want to be technical, between
-      graphemes, see the @fun{pango-log-attrs} function.}
-    @entry[:word]{Wrap text, breaking lines in between words.}
-    @entry[:word-char]{Wrap text, breaking lines in between words, or if that
-      is not enough, also between graphemes.}
-  @end{table}
-  @see-class{gtk:text-tag}
-  @see-class{gtk:text-view}
-  @see-function{pango-log-attrs}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; struct GtkTextAppearance
@@ -152,14 +111,14 @@
 ;;; struct GtkTextAttributes
 ;;; ----------------------------------------------------------------------------
 
-;; FIXME: This implementation crashes the testsuite, when copying the
-;; structure. Work is needed. At this time we do not export the structure.
+;; This implementation crashes the testsuite, when copying the structure.
+;; We do not implement this structure and the corresponding functions.
 
 (define-g-boxed-cstruct text-attributes "GtkTextAttributes"
   (:export t
    :type-initializer "gtk_text_attributes_get_type")
   (refcount :uint :initform 0) ; private field
-  (appearance :pointer :initform (cffi:null-pointer))   ; type is text-appearance
+  (appearance :pointer :initform (cffi:null-pointer))  ; type is text-appearance
   (justification justification :initform :left)
   (direction text-direction :initform :none)
   (font (g:boxed pango:font-description))
@@ -170,7 +129,7 @@
   (pixels-above-lines :int :initform 0)
   (pixels-below-lines :int :initform 0)
   (pixels-inside-wrap :int :initform 0)
-  (tabs :pointer :initform (cffi:null-pointer))             ; type is pango-tab-array
+  (tabs :pointer :initform (cffi:null-pointer))        ; type is pango-tab-array
   (wrap-mode wrap-mode :initform :none)
   (language (g:boxed pango:language))
   (bg-color (g:boxed gdk:color)) ; private field

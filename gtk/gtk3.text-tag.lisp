@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.text-tag.lisp
+;;; gtk3.text-tag.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -33,9 +33,10 @@
 ;;;
 ;;; Types and Values
 ;;;
-;;;     GtkTextAppearance                         ---> gtk.text-attributes.lisp
-;;;     GtkTextAttributes                         ---> gtk.text-attributes.lisp
+;;;     GtkTextAppearance                        --> gtk.text-attributes.lisp
+;;;     GtkTextAttributes                        --> gtk.text-attributes.lisp
 ;;;
+;;;     GtkWrapMode                              <-- gtk3.text-view.lisp
 ;;;     GtkTextTag
 ;;;
 ;;; Functions
@@ -46,92 +47,86 @@
 ;;;     gtk_text_tag_event
 ;;;     gtk_text_tag_changed
 ;;;
-;;;     gtk_text_attributes_new
-;;;     gtk_text_attributes_copy
-;;;     gtk_text_attributes_copy_values
-;;;     gtk_text_attributes_unref
-;;;     gtk_text_attributes_ref
-;;;
 ;;; Properties
 ;;;
-;;;             gboolean   accumulative-margin          Read / Write
-;;;                gchar*  background                   Write
-;;;             gboolean   background-full-height       Read / Write
-;;;             gboolean   background-full-height-set   Read / Write
-;;;             GdkColor*  background-gdk               Read / Write
-;;;              GdkRGBA*  background-rgba              Read / Write
-;;;             gboolean   background-set               Read / Write
-;;;     GtkTextDirection   direction                    Read / Write
-;;;             gboolean   editable                     Read / Write
-;;;             gboolean   editable-set                 Read / Write
-;;;             gboolean   fallback                     Read / Write
-;;;             gboolean   fallback-set                 Read / Write
-;;;                gchar*  family                       Read / Write
-;;;             gboolean   family-set                   Read / Write
-;;;                gchar*  font                         Read / Write
-;;; PangoFontDescription*  font-desc                    Read / Write
-;;;                gchar*  font-features                Read / Write
-;;;             gboolean   font-features-set            Read / Write
-;;;                gchar*  foreground                   Write
-;;;             GdkColor*  foreground-gdk               Read / Write
-;;;              GdkRGBA*  foreground-rgba              Read / Write
-;;;             gboolean   foreground-set               Read / Write
-;;;                 gint   indent                       Read / Write
-;;;             gboolean   indent-set                   Read / Write
-;;;             gboolean   invisible                    Read / Write
-;;;             gboolean   invisible-set                Read / Write
-;;;     GtkJustification   justification                Read / Write
-;;;             gboolean   justification-set            Read / Write
-;;;                gchar*  language                     Read / Write
-;;;             gboolean   language-set                 Read / Write
-;;;                 gint   left-margin                  Read / Write
-;;;             gboolean   left-margin-set              Read / Write
-;;;                 gint   letter-spacing               Read / Write
-;;;             gboolean   letter-spacing-set           Read / Write
-;;;                gchar*  name                         Read / Write / Construct
-;;;                gchar*  paragraph-background         Write
-;;;             GdkColor*  paragraph-background-gdk     Read / Write
-;;;              GdkRGBA*  paragraph-background-rgba    Read / Write
-;;;             gboolean   paragraph-background-set     Read / Write
-;;;                 gint   pixels-above-lines           Read / Write
-;;;             gboolean   pixels-above-lines-set       Read / Write
-;;;                 gint   pixels-below-lines           Read / Write
-;;;             gboolean   pixels-below-lines-set       Read / Write
-;;;                 gint   pixels-inside-wrap           Read / Write
-;;;             gboolean   pixels-inside-wrap-set       Read / Write
-;;;                 gint   right-margin                 Read / Write
-;;;             gboolean   right-margin-set             Read / Write
-;;;                 gint   rise                         Read / Write
-;;;             gboolean   rise-set                     Read / Write
-;;;              gdouble   scale                        Read / Write
-;;;             gboolean   scale-set                    Read / Write
-;;;                 gint   size                         Read / Write
-;;;              gdouble   size-points                  Read / Write
-;;;             gboolean   size-set                     Read / Write
-;;;         PangoStretch   stretch                      Read / Write
-;;;             gboolean   stretch-set                  Read / Write
-;;;             gboolean   strikethrough                Read / Write
-;;;              GdkRGBA*  strikethrough-rgba           Read / Write
-;;;             gboolean   strikethrough-rgba-set       Read / Write
-;;;             gboolean   strikethrough-set            Read / Write
-;;;           PangoStyle   style                        Read / Write
-;;;             gboolean   style-set                    Read / Write
-;;;        PangoTabArray*  tabs                         Read / Write
-;;;             gboolean   tabs-set                     Read / Write
-;;;       PangoUnderline   underline                    Read / Write
-;;;              GdkRGBA*  underline-rgba               Read / Write
-;;;             gboolean   underline-rgba-set           Read / Write
-;;;             gboolean   underline-set                Read / Write
-;;;         PangoVariant   variant                      Read / Write
-;;;             gboolean   variant-set                  Read / Write
-;;;                 gint   weight                       Read / Write
-;;;             gboolean   weight-set                   Read / Write
-;;;          GtkWrapMode   wrap-mode                    Read / Write
-;;;             gboolean   wrap-mode-set                Read / Write
+;;;     accumulative-margin
+;;;     background
+;;;     background-full-height
+;;;     background-full-height-set
+;;;     background-gdk
+;;;     background-rgba
+;;;     background-set
+;;;     direction
+;;;     editable
+;;;     editable-set
+;;;     fallback
+;;;     fallback-set
+;;;     family
+;;;     family-set
+;;;     font
+;;;     font-desc
+;;;     font-features
+;;;     font-features-set
+;;;     foreground
+;;;     foreground-gdk
+;;;     foreground-rgba
+;;;     foreground-set
+;;;     indent
+;;;     indent-set
+;;;     invisible
+;;;     invisible-set
+;;;     justification
+;;;     justification-set
+;;;     language
+;;;     language-set
+;;;     left-margin
+;;;     left-margin-set
+;;;     letter-spacing
+;;;     letter-spacing-set
+;;;     name
+;;;     paragraph-background
+;;;     paragraph-background-gdk
+;;;     paragraph-background-rgba
+;;;     paragraph-background-set
+;;;     pixels-above-lines
+;;;     pixels-above-lines-set
+;;;     pixels-below-lines
+;;;     pixels-below-lines-set
+;;;     pixels-inside-wrap
+;;;     pixels-inside-wrap-set
+;;;     right-margin
+;;;     right-margin-set
+;;;     rise
+;;;     rise-set
+;;;     scale
+;;;     scale-set
+;;;     size
+;;;     size-points
+;;;     size-set
+;;;     stretch
+;;;     stretch-set
+;;;     strikethrough
+;;;     strikethrough-rgba
+;;;     strikethrough-rgba-set
+;;;     strikethrough-set
+;;;     style
+;;;     style-set
+;;;     tabs
+;;;     tabs-set
+;;;     underline
+;;;     underline-rgba
+;;;     underline-rgba-set
+;;;     underline-set
+;;;     variant
+;;;     variant-set
+;;;     weight
+;;;     weight-set
+;;;     wrap-mode
+;;;     wrap-mode-set
 ;;;
 ;;; Signals
 ;;;
-;;;             gboolean   event                        Run Last
+;;;     event
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -140,6 +135,46 @@
 ;;; ----------------------------------------------------------------------------
 
 (in-package :gtk)
+
+;;; ----------------------------------------------------------------------------
+;;; enum GtkWrapMode
+;;; ----------------------------------------------------------------------------
+
+(define-g-enum "GtkWrapMode" wrap-mode
+  (:export t
+   :type-initializer "gtk_wrap_mode_get_type")
+  (:none 0)
+  (:char 1)
+  (:word 2)
+  (:word-char 3))
+
+#+liber-documentation
+(setf (liber:alias-for-symbol 'wrap-mode)
+      "GEnum"
+      (liber:symbol-documentation 'wrap-mode)
+ "@version{2023-2-19}
+  @short{Describes a type of line wrapping.}
+  @begin{pre}
+(define-g-enum \"GtkWrapMode\" wrap-mode
+  (:export tgtk.text-attribut
+   :type-initializer \"gtk_wrap_mode_get_type\")
+  (:none 0)
+  (:char 1)
+  (:word 2)
+  (:word-char 3))
+  @end{pre}
+  @begin[code]{table}
+    @entry[:none]{Do not wrap lines, just make the text area wider.}
+    @entry[:char]{Wrap text, breaking lines anywhere the cursor can appear
+      between characters, usually. If you want to be technical, between
+      graphemes, see the @fun{pango:log-attrs} function.}
+    @entry[:word]{Wrap text, breaking lines in between words.}
+    @entry[:word-char]{Wrap text, breaking lines in between words, or if that
+      is not enough, also between graphemes.}
+  @end{table}
+  @see-class{gtk:text-tag}
+  @see-class{gtk:text-view}
+  @see-function{pango:log-attrs}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; struct GtkTextTag
@@ -2717,4 +2752,4 @@
 #+gtk-3-20
 (export 'text-tag-changed)
 
-;;; --- End of file gtk.text-tag.lisp ------------------------------------------
+;;; --- End of file gtk3.text-tag.lisp -----------------------------------------
