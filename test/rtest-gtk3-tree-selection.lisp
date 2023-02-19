@@ -40,8 +40,6 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-;;;     GtkSelectionMode    mode       Read / Write
-
 (test tree-selection-properties
   (let* ((tree-view (make-instance 'gtk:tree-view))
          (selection (gtk:tree-view-selection tree-view)))
@@ -52,7 +50,7 @@
 
 ;;; --- Signals ----------------------------------------------------------------
 
-;;;                 void    changed    Run First
+;;;     changed
 
 ;;; --- Functions --------------------------------------------------------------
 
@@ -68,15 +66,16 @@
 (test tree-selection-tree-view
   (let* ((tree-view (make-instance 'gtk:tree-view))
          (selection (gtk:tree-view-selection tree-view)))
-    (is (eq 'gtk:tree-selection (type-of selection)))
-    (is (eq 'gtk:tree-view (type-of (gtk:tree-selection-tree-view selection))))))
+    (is (typep selection 'gtk:tree-selection))
+    (is (typep (gtk:tree-selection-tree-view selection) 'gtk:tree-view))))
 
 ;;;     gtk_tree_selection_get_selected
+
+;; TODO: Implement more examples for this function.
 
 (test tree-selection-selected
   (let* ((tree-view (make-instance 'gtk:tree-view))
          (selection (gtk:tree-view-selection tree-view)))
-
     (is-false (gtk:tree-selection-selected selection))
 ))
 
@@ -94,4 +93,4 @@
 ;;;     gtk_tree_selection_select_range
 ;;;     gtk_tree_selection_unselect_range
 
-;;; --- 2022-12-27 -------------------------------------------------------------
+;;; --- 2023-2-19 --------------------------------------------------------------

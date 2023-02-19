@@ -262,26 +262,7 @@ dann benutzen Sie es immer noch.")
 
 ;;;     gtk_text_iter_get_attributes
 
-;; FIXME: Check this more carefully. We get an error with this function.
-;; The implementation of gtk:text-attributes does not work.
-
-#+nil
-(test text-iter-attributes
-  (let* ((buffer (make-instance 'gtk:text-buffer
-                                :text "Some sample text for the text buffer."))
-         (view (gtk:text-view-new-with-buffer buffer))
-         (attributes (gtk:text-view-default-attributes view))
-         (iter (gtk:text-buffer-start-iter buffer)))
-
-    (is (typep buffer 'gtk:text-buffer))
-    (is (typep view 'gtk:text-view))
-    (is (typep attributes 'gtk:text-attributes))
-    (is (typep iter 'gtk:text-iter))
-
-;    (is-false (gtk:text-iter-attributes iter attributes))
-;    (is-false (gtk:text-iter-attributes iter (cffi:null-pointer)))
-
-))
+;; not implemented
 
 ;;;     gtk_text_iter_get_language
 

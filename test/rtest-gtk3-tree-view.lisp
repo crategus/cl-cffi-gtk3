@@ -318,7 +318,7 @@
 
 ;;;     gtk_tree_view_get_column
 
-(test tree-view--column
+(test tree-view-column
   (let ((view (gtk:tree-view-new))
         (column1 (make-instance 'gtk:tree-view-column))
         (column2 (make-instance 'gtk:tree-view-column))
@@ -335,7 +335,7 @@
 
 ;;;     gtk_tree_view_get_columns
 
-(test tree-view--column
+(test tree-view-columns
   (let ((view (gtk:tree-view-new))
         (column1 (make-instance 'gtk:tree-view-column))
         (column2 (make-instance 'gtk:tree-view-column))
@@ -446,4 +446,4 @@
 ;;;     gtk_tree_view_set_tooltip_cell
 ;;;     gtk_tree_view_get_tooltip_context
 
-;;; --- 2022-12-27 -------------------------------------------------------------
+;;; --- 2023-2-19 --------------------------------------------------------------
