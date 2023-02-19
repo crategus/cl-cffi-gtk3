@@ -1560,70 +1560,76 @@
 ;;; gtk_tree_view_insert_column_with_attributes ()
 ;;; ----------------------------------------------------------------------------
 
-;; FIXME: The argument POSITION is not used.
+;; TODO: The POSITION argument is not used correctly. Improve the
+;; implementation. We do not export this version.
 
 (defun tree-view-insert-column-with-attributes (view
-                                                    position
-                                                    title
-                                                    renderer &rest attributes)
+                                                title
+                                                renderer
+                                                position
+                                                &rest attributes)
  #+liber-documentation
- "@version{#2021-2-26}
+ "@version{#2023-2-19}
   @argument[view]{a @class{gtk:tree-view} widget}
-  @argument[position]{an integer with the position to insert the new column in}
   @argument[title]{an string with the title to set the header to}
-  @argument[renderer]{the @class{gtk:cell-renderer} object}
+  @argument[renderer]{a @class{gtk:cell-renderer} object}
+  @argument[position]{a @code{:start} or a @code{:end} value}
   @argument[attributes]{a list of attributes}
   @return{The number of columns in @arg{view} after insertion.}
   @begin{short}
     Creates a new @class{gtk:tree-view-column} object and inserts it into the
     tree view at @arg{position}.
   @end{short}
-  If @arg{position} is -1, then the newly created column is inserted at the
-  end. The column is initialized with the attributes given. If @arg{view} has
-  the @slot[gtk:tree-view]{fixed-height-mode} property enabled, then the new
-  column will have its @slot[gtk:tree-view-column]{sizing} property set to be
+  If @arg{position} is @code{:end}, the default value, then the newly created
+  column is inserted at the end. If @arg{position} is @code{:start}, then the
+  newly created column is inserted at the start. The column is initialized with
+  the attributes given. If @arg{view} has the
+  @slot[gtk:tree-view]{fixed-height-mode} property enabled, then the new column
+  will have its @slot[gtk:tree-view-column]{sizing} property set to be
   @code{:fixed}.
   @see-class{gtk:tree-view}
   @see-class{gtk:cell-renderer}
   @see-class{gtk:tree-view-column}
   @see-function{gtk:tree-view-fixed-height-mode}
   @see-function{gtk:tree-view-column-sizing}"
-  (declare (ignore position))
   (let ((column (tree-view-column-new)))
     (when (tree-view-fixed-height-mode view)
       (setf (tree-view-column-sizing column) :fixed))
     (setf (tree-view-column-title column) title)
-    (tree-view-column-pack-start column renderer t)
-    (tree-view-column-set-attributes column renderer attributes)))
-
-(export 'tree-view-insert-column-with-attributes)
+    (if (eq position :start)
+        (tree-view-column-pack-start column renderer :expand t)
+        (tree-view-column-pack-end column renderer :expand t))
+    (tree-view-column-set-attributes column renderer attributes)
+    (tree-view-n-columns view)))
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_tree_view_insert_column_with_data_func ()
 ;;; ----------------------------------------------------------------------------
 
-;; FIXME: The argument POSITION is not used.
+;; TODO: The POSITION argument is not used correctly. Improve the
+;; implementation. We do not export this version.
 
 (defun tree-view-insert-column-with-data-func (view
-                                                   position
-                                                   title
-                                                   renderer
-                                                   func)
+                                               position
+                                               title
+                                               renderer
+                                               func)
  #+liber-documentation
- "@version{#2021-2-26}
+ "@version{#2023-2-15}
   @argument[view]{a @class{gtk:tree-view} widget}
   @argument[position]{an integer with the position to insert the new column in}
   @argument[title]{an string with the title to set the header to}
-  @argument[renderer]{the @class{gtk:cell-renderer} object}
-  @argument[func]{callback function to set attributes of cell renderer}
+  @argument[renderer]{a @class{gtk:cell-renderer} object}
+  @argument[func]{a @symbol{gtk:tree-cell-data-func} callback function to set
+    attributes of cell renderer}
   @return{The number of columns in @arg{view} after insertion.}
   @begin{short}
     Convenience function that inserts a new column into the tree view with the
     given cell renderer and a @symbol{gtk:tree-cell-data-func} callback to set
     cell renderer attributes (normally using data from the model).
   @end{short}
-  See also the functions @fun{gtk:tree-view-column-set-cell-data-func},
-  @fun{gtk:tree-view-column-pack-start}. If @arg{view} has the
+  See also the @fun{gtk:tree-view-column-set-cell-data-func} and
+  @fun{gtk:tree-view-column-pack-start} functions. If @arg{view} has the
   @slot[gtk:tree-view]{fixed-height-mode} property enabled, then the new column
   will have its @slot[gtk:tree-view-column]{sizing} property set to be
   @code{:fixed}.
@@ -1639,10 +1645,9 @@
     (when (tree-view-fixed-height-mode view)
       (setf (tree-view-column-sizing column) :fixed))
     (setf (tree-view-column-title column) title)
-    (tree-view-column-pack-start column renderer t)
-    (tree-view-column-set-cell-data-func column renderer func)))
-
-(export 'tree-view-insert-column-with-data-func)
+    (tree-view-column-pack-start column renderer :expand t)
+    (tree-view-column-set-cell-data-func column renderer func)
+    (tree-view-n-columns view)))
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_tree_view_get_n_columns () -> tree-view-n-columns
