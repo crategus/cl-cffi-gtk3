@@ -2006,7 +2006,7 @@ setup_tree (void)
       @about-function{tree-model-rows-reordered}
     @end{subsection}
     @begin[GtkTreeSelection]{subsection}
-      The selection object for @class{gtk:tree-view}.
+      The selection object for the @class{gtk:tree-view} widget.
       @about-class{tree-selection}
       @about-generic{tree-selection-mode}
       @about-symbol{tree-selection-func}

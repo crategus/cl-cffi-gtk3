@@ -63,11 +63,11 @@
 ;;;
 ;;; Properties
 ;;;
-;;;     GtkSelectionMode    mode       Read / Write
+;;;     mode
 ;;;
 ;;; Signals
 ;;;
-;;;                 void    changed    Run First
+;;;     changed
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -92,7 +92,7 @@
 
 #+liber-documentation
 (setf (documentation 'tree-selection 'type)
- "@version{#2021-2-27}
+ "@version{2023-2-19}
   @begin{short}
     The @sym{gtk:tree-selection} object is a helper object to manage the
     selection for a @class{gtk:tree-view} widget.
@@ -105,7 +105,7 @@
   instead of a separate function.
 
   The @sym{gtk:tree-selection} object is gotten from a @class{gtk:tree-view}
-  widget by calling the function @fun{gtk:tree-view-selection}. It can be
+  widget by calling the @fun{gtk:tree-view-selection} function. It can be
   manipulated to check the selection status of the tree view, as well as select
   and deselect individual rows. Selection is done completely tree view side. As
   a result, multiple tree views of the same model can have completely different
@@ -120,7 +120,7 @@
   @begin[Signal Details]{dictionary}
     @subheading{The \"changed\" signal}
       @begin{pre}
- lambda (selection)    : Run First
+lambda (selection)    :run-first
       @end{pre}
       Emitted whenever the selection has (possibly) changed. Please note that
       this signal is mostly a hint. It may only be emitted once when a range of
@@ -143,7 +143,7 @@
 (setf (documentation (liber:slot-documentation "mode" 'tree-selection) t)
  "The @code{mode} property of type @symbol{gtk:selection-mode} (Read / Write)
   @br{}
-  Selection mode. See the function @fun{gtk:tree-selection-mode} for more
+  Selection mode. See the @fun{gtk:tree-selection-mode} function for more
   information on this property. @br{}
   Default value: @code{:single}")
 
@@ -151,7 +151,7 @@
 (setf (liber:alias-for-function 'tree-selection-mode)
       "Accessor"
       (documentation 'tree-selection-mode 'function)
- "@version{#2021-2-27}
+ "@version{2023-2-19}
   @syntax[]{(gtk:tree-selection-mode object) => mode}
   @syntax[]{(setf (gtk:tree-selection-mode object) mode)}
   @argument[object]{a @class{gtk:tree-selection} object}
@@ -160,12 +160,10 @@
     Accessor of the @slot[gtk:tree-selection]{mode} slot of the
     @class{gtk:tree-selection} class.
   @end{short}
-
-  The slot access function @sym{gtk:tree-selection-mode} gets the current
-  selection mode of the selection. The slot access function
-  @sym{(setf gtk:tree-selection-mode)} sets the selection mode. If the previous
-  type was @code{:multiple}, then the anchor is kept selected, if it was
-  previously selected.
+  The @sym{gtk:tree-selection-mode} function gets the current selection mode of
+  the selection. The @sym{(setf gtk:tree-selection-mode)} function sets the
+  selection mode. If the previous type was @code{:multiple}, then the anchor is
+  kept selected, if it was previously selected.
   @see-class{gtk:tree-selection}
   @see-symbol{gtk:selection-mode}")
 
@@ -189,7 +187,7 @@
 (setf (liber:alias-for-symbol 'tree-selection-func)
       "Callback"
       (liber:symbol-documentation 'tree-selection-func)
- "@version{#2021-10-26}
+ "@version{#2023-2-19}
   @begin{short}
     A callback function used by the @fun{gtk:tree-selection-set-select-function}
     function to filter whether or not a row may be selected.
@@ -198,7 +196,7 @@
   value of @em{true} indicates to selection that it is okay to change the
   selection.
   @begin{pre}
- lambda (selection model path selected)
+lambda (selection model path selected)
   @end{pre}
   @begin[code]{table}
     @entry[selection]{A @class{gtk:tree-selection} object.}
@@ -209,6 +207,8 @@
       toggled.}
   @end{table}
   @see-class{gtk:tree-selection}
+  @see-class{gtk:tree-model}
+  @see-class{gtk:tree-path}
   @see-function{gtk:tree-selection-set-select-function}")
 
 (export 'tree-selection-func)
@@ -229,14 +229,14 @@
 (setf (liber:alias-for-symbol 'tree-selection-foreach-func)
       "Callback"
       (liber:symbol-documentation 'tree-selection-foreach-func)
- "@version{#2021-2-27}
+ "@version{#2023-2-19}
   @begin{short}
-    A callback function used by the function
-    @fun{gtk:tree-selection-selected-foreach} to map all selected rows.
+    A callback function used by the @fun{gtk:tree-selection-selected-foreach}
+    function to map all selected rows.
   @end{short}
   It will be called on every selected row in the view.
   @begin{pre}
- lambda (model path iter)
+lambda (model path iter)
   @end{pre}
   @begin[code]{table}
     @entry[model]{The @class{gtk:tree-model} object being viewed.}
@@ -244,6 +244,9 @@
     @entry[iter]{A @class{gtk:tree-iter} instance pointing to a selected row.}
   @end{table}
   @see-class{gtk:tree-selection}
+  @see-class{gtk:tree-model}
+  @see-class{gtk:tree-path}
+  @see-class{gtk:tree-iter}
   @see-function{gtk:tree-selection-selected-foreach}")
 
 (export 'tree-selection-foreach-func)
@@ -261,12 +264,11 @@
 
 (defun tree-selection-set-select-function (selection func)
  #+liber-documentation
- "@version{#2021-2-27}
+ "@version{#2023-2-19}
   @argument[selection]{a @class{gtk:tree-selection} object}
-  @argument[func]{the @symbol{gtk:tree-selection-func} selection function, may
+  @argument[func]{a @symbol{gtk:tree-selection-func} selection function, may
     be @code{nil}}
   @short{Sets the selection function.}
-
   If set, this function is called before any node is selected or unselected,
   giving some control over which nodes are selected. The select function
   should return @em{true} if the state of the node may be toggled, and
@@ -289,11 +291,12 @@
 
 (defun tree-selection-get-select-function (selection)
  #+liber-documentation
- "@version{#2020-6-28}
+ "@version{#2023-2-19}
   @argument[selection]{a @class{gtk:tree-selection} object}
-  @return{The function.}
+  @return{The @symbol{gtk:tree-selection-func} function.}
   @short{Returns the current selection function.}
-  @see-class{gtk:tree-selection}"
+  @see-class{gtk:tree-selection}
+  @see-symbol{gtk:tree-selection-func}"
   (let ((ptr (%tree-selection-get-user-data selection)))
     (unless (cffi:null-pointer-p ptr)
       (glib:get-stable-pointer-value ptr))))
@@ -315,7 +318,8 @@
 ;;; ----------------------------------------------------------------------------
 
 ;; The function is not exported, because we do not store user-data, but a
-;; pointer to the select function.
+;; pointer to the selection function. We use this function in the implementation
+;; of the gtk:tree-selection-get-selection-function function.
 
 (defcfun ("gtk_tree_selection_get_user_data"
           %tree-selection-get-user-data) :pointer
@@ -328,13 +332,14 @@
 (defcfun ("gtk_tree_selection_get_tree_view" tree-selection-tree-view)
     (g:object tree-view)
  #+liber-documentation
- "@version{#2020-6-28}
+ "@version{2023-2-19}
   @argument[selection]{a @class{gtk:tree-selection} object}
-  @return{A @class{gtk:tree-view} object.}
+  @return{A @class{gtk:tree-view} widget.}
   @begin{short}
     Returns the tree view associated with @arg{selection}.
   @end{short}
-  @see-class{gtk:tree-selection}"
+  @see-class{gtk:tree-selection}
+  @see-class{gtk:tree-view}"
   (selection (g:object tree-selection)))
 
 (export 'tree-selection-tree-view)
@@ -343,15 +348,14 @@
 ;;; gtk_tree_selection_get_selected () -> tree-selection-selected
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_selection_get_selected" %tree-selection-selected)
-    :boolean
+(defcfun ("gtk_tree_selection_get_selected" %tree-selection-selected) :boolean
   (selection (g:object tree-selection))
   (model :pointer)
   (iter (g:boxed tree-iter)))
 
 (defun tree-selection-selected (selection)
  #+liber-documentation
- "@version{#2021-2-27}
+ "@version{#2023-2-19}
   @argument[selection]{a @class{gtk:tree-selection} object}
   @begin{return}
     The @class{gtk:tree-iter} iterator of the selected node, or @code{nil}
@@ -365,9 +369,9 @@
   This function will not work if you use the selection mode @code{:multiple}.
   @begin[Note]{dictionary}
     As a convenience the C implementation also gets the current model of the
-    tree view wiget associated with the selection. Use the functions
-    @fun{gtk:tree-selection-tree-view} and @fun{gtk:tree-view-model} instead to
-    get the model.
+    tree view wiget associated with the selection. Use the
+    @fun{gtk:tree-selection-tree-view} and @fun{gtk:tree-view-model} functions
+    instead to get the model.
   @end{dictionary}
   @begin[Example]{dictionary}
     @begin{pre}
@@ -399,22 +403,22 @@
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_tree_selection_selected_foreach"
-          %tree-selection-selected-foreach) :void
+           %tree-selection-selected-foreach) :void
   (selection (g:object tree-selection))
   (func :pointer)
   (data :pointer))
 
 (defun tree-selection-selected-foreach (selection func)
  #+liber-documentation
- "@version{#2021-2-27}
+ "@version{#2023-2-19}
   @argument[selection]{a @class{gtk:tree-selection} object}
-  @argument[func]{the @symbol{gtk:tree-selection-foreach-func} callback
-    function to call for each selected node}
+  @argument[func]{a @symbol{gtk:tree-selection-foreach-func} callback function
+    to call for each selected node}
   @begin{short}
     Calls a function for each selected node.
   @end{short}
   Note that you cannot modify the tree view or selection from within this
-  function. As a result, the function @fun{gtk:tree-selection-selected-rows}
+  function. As a result, the @fun{gtk:tree-selection-selected-rows} function
   might be more useful.
   @see-class{gtk:tree-selection}
   @see-symbol{gtk:tree-selection-foreach-func}
@@ -438,7 +442,7 @@
 
 (defun tree-selection-selected-rows (selection)
  #+liber-documentation
- "@version{2023-1-28}
+ "@version{2023-2-19}
   @argument[selection]{a @class{gtk:tree-selection} object}
   @return{A list containing a @class{gtk:tree-path} instance for each selected
     row.}
@@ -456,7 +460,10 @@
     instead to get the model.
   @end{dictionary}
   @see-class{gtk:tree-selection}
+  @see-class{gtk:tree-path}
   @see-class{gtk:tree-row-reference}
+  @see-function{gtk:tree-selection-tree-view}
+  @see-function{gtk:tree-view-model}
   @see-function{gtk:tree-row-reference-new}"
   (%tree-selection-selected-rows selection (cffi:null-pointer)))
 
@@ -469,7 +476,7 @@
 (defcfun ("gtk_tree_selection_count_selected_rows"
            tree-selection-count-selected-rows) :int
  #+liber-documentation
- "@version{#2021-2-28}
+ "@version{#2023-2-19}
   @argument[selection]{a @class{gtk:tree-selection} object}
   @return{An integer with the number of rows selected.}
   @short{Returns the number of rows that have been selected in the tree.}
@@ -485,9 +492,9 @@
 
 (defcfun ("gtk_tree_selection_select_path" tree-selection-select-path) :void
  #+liber-documentation
- "@version{#2021-2-28}
+ "@version{#2023-2-19}
   @argument[selection]{a @class{gtk:tree-selection} object}
-  @argument[path]{the @class{gtk:tree-path} instance to be selected}
+  @argument[path]{a @class{gtk:tree-path} instance to be selected}
   @begin{short}
     Select the row at @arg{path}.
   @end{short}
@@ -505,12 +512,11 @@
 ;;; gtk_tree_selection_unselect_path ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_selection_unselect_path" tree-selection-unselect-path)
-    :void
+(defcfun ("gtk_tree_selection_unselect_path" tree-selection-unselect-path) :void
  #+liber-documentation
- "@version{#2021-2-28}
+ "@version{#2023-2-19}
   @argument[selection]{a @class{gtk:tree-selection} object}
-  @argument[path]{the @class{gtk:tree-path} instance to be unselected}
+  @argument[path]{a @class{gtk:tree-path} instance to be unselected}
   @begin{short}
     Unselects the row at @arg{path}.
   @end{short}
@@ -526,10 +532,10 @@
 ;;; gtk_tree_selection_path_is_selected ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_selection_path_is_selected"
-           tree-selection-path-is-selected) :boolean
+(defcfun ("gtk_tree_selection_path_is_selected" tree-selection-path-is-selected)
+    :boolean
  #+liber-documentation
- "@version{#2021-2-28}
+ "@version{#2023-2-19}
   @argument[selection]{a @class{gtk:tree-selection} object}
   @argument[path]{a @class{gtk:tree-path} instance to check selection on}
   @return{@em{True} if @arg{path} is selected.}
@@ -551,9 +557,9 @@
 
 (defcfun ("gtk_tree_selection_select_iter" tree-selection-select-iter) :void
  #+liber-documentation
- "@version{#2021-2-28}
+ "@version{#2023-2-19}
   @argument[selection]{a @class{gtk:tree-selection} object}
-  @argument[iter]{the @class{gtk:tree-iter} iterator to be selected}
+  @argument[iter]{a @class{gtk:tree-iter} iterator to be selected}
   @begin{short}
     Selects the specified iterator.
   @end{short}
@@ -571,12 +577,11 @@
 ;;; gtk_tree_selection_unselect_iter ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_selection_unselect_iter" tree-selection-unselect-iter)
-    :void
+(defcfun ("gtk_tree_selection_unselect_iter" tree-selection-unselect-iter) :void
  #+liber-documentation
- "@version{#2021-2-28}
+ "@version{#2023-2-19}
   @argument[selection]{a @class{gtk:tree-selection} object}
-  @argument[iter]{the @class{gtk:tree-iter} iterator to be unselected}
+  @argument[iter]{a @class{gtk:tree-iter} iterator to be unselected}
   @begin{short}
     Unselects the specified iterator.
   @end{short}
@@ -595,9 +600,9 @@
 (defcfun ("gtk_tree_selection_iter_is_selected"
            tree-selection-iter-is-selected) :boolean
  #+liber-documentation
- "@version{#2021-2-28}
+ "@version{#2023-2-19}
   @argument[selection]{a @class{gtk:tree-selection} object}
-  @argument[iter]{a valid @class{gtk:tree-iter} iterator}
+  @argument[iter]{a @class{gtk:tree-iter} iterator}
   @return{@em{True}, if @arg{iter} is selected.}
   @begin{short}
     Returns @em{true} if the row at @arg{iter} is currently selected.
@@ -616,12 +621,12 @@
 
 (defcfun ("gtk_tree_selection_select_all" tree-selection-select-all) :void
  #+liber-documentation
- "@version{#2021-2-28}
+ "@version{#2023-2-19}
   @argument[selection]{a @class{gtk:tree-selection} object}
   @begin{short}
     Selects all the nodes.
   @end{short}
-  @arg{selection} must be set to @code{:multiple} mode.
+  The @arg{selection} object must be set to @code{:multiple} mode.
   @see-class{gtk:tree-selection}
   @see-function{gtk:tree-selection-unselect-all}"
   (selection (g:object tree-selection)))
@@ -632,10 +637,9 @@
 ;;; gtk_tree_selection_unselect_all ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_selection_unselect_all" tree-selection-unselect-all)
-    :void
+(defcfun ("gtk_tree_selection_unselect_all" tree-selection-unselect-all) :void
  #+liber-documentation
- "@version{#2021-2-28}
+ "@version{#2023-2-19}
   @argument[selection]{a @class{gtk:tree-selection} object}
   @short{Unselects all the nodes.}
   @see-class{gtk:tree-selection}
@@ -648,23 +652,21 @@
 ;;; gtk_tree_selection_select_range ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_selection_select_range" tree-selection-select-range)
-    :void
+(defcfun ("gtk_tree_selection_select_range" tree-selection-select-range) :void
  #+liber-documentation
- "@version{#2020-9-11}
+ "@version{#2023-2-19}
   @argument[selection]{a @class{gtk:tree-selection} object}
-  @argument[start-path]{the initial @class{gtk:tree-path} node of the range}
-  @argument[end-path]{the final @class{gtk:tree-path} node of the range}
+  @argument[start]{an initial @class{gtk:tree-path} node of the range}
+  @argument[end]{a final @class{gtk:tree-path} node of the range}
   @begin{short}
-    Selects a range of nodes, determined by @arg{start-path} and @arg{end-path}
-    inclusive.
+    Selects a range of nodes, determined by @arg{start} and @arg{end} inclusive.
   @end{short}
-  @arg{selection} must be set to @code{:multiple} mode.
+  The @arg{selection} object must be set to @code{:multiple} mode.
   @see-class{gtk:tree-selection}
   @see-class{gtk:tree-path}"
   (selection (g:object tree-selection))
-  (start-path (g:boxed tree-path))
-  (end-path (g:boxed tree-path)))
+  (start (g:boxed tree-path))
+  (end (g:boxed tree-path)))
 
 (export 'tree-selection-select-range)
 
@@ -675,19 +677,19 @@
 (defcfun ("gtk_tree_selection_unselect_range" tree-selection-unselect-range)
     :void
  #+liber-documentation
- "@version{#2020-9-11}
+ "@version{#2023-2-19}
   @argument[selection]{a @class{gtk:tree-selection} object}
-  @argument[start-path]{the initial @class{gtk:tree-path} node of the range}
-  @argument[end-path]{the initial @class{gtk:tree-path} node of the range}
+  @argument[start]{an initial @class{gtk:tree-path} node of the range}
+  @argument[end]{a final @class{gtk:tree-path} node of the range}
   @begin{short}
-    Unselects a range of nodes, determined by @arg{start-path} and
-    @arg{end-path} inclusive.
+    Unselects a range of nodes, determined by @arg{start} and @arg{end}
+    inclusive.
   @end{short}
   @see-class{gtk:tree-selection}
   @see-class{gtk:tree-path}"
   (selection (g:object tree-selection))
-  (start-path (g:boxed tree-path))
-  (end-path (g:boxed tree-path)))
+  (start (g:boxed tree-path))
+  (end (g:boxed tree-path)))
 
 (export 'tree-selection-unselect-range)
 
