@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.app-chooser-widget.lisp
+;;; gtk3.app-chooser-widget.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK+ library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
-;;; Copyright (C) 2013 - 2022 Dieter Kaiser
+;;; Copyright (C) 2013 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -115,30 +115,31 @@
 
 #+liber-documentation
 (setf (documentation 'app-chooser-widget 'type)
- "@version{#2020-5-21}
+ "@version{#2023-2-15}
   @begin{short}
-    @sym{gtk:app-chooser-widget} is a widget for selecting applications. It is
-    the main building block for @class{gtk:app-chooser-dialog}. Most
-    applications only need to use the latter. But you can use this widget as
-    part of a larger widget if you have special needs.
+    The @sym{gtk:app-chooser-widget} widget is a widget for selecting
+    applications.
   @end{short}
+  It is the main building block for the @class{gtk:app-chooser-dialog} widget.
+  Most applications only need to use the latter. But you can use this widget as
+  part of a larger widget if you have special needs.
 
-  @sym{gtk:app-chooser-widget} offers detailed control over what applications
-  are shown, using the @code{show-default}, @code{show-recommended},
+  The @sym{gtk:app-chooser-widget} widget offers detailed control over what
+  applications are shown, using the @code{show-default}, @code{show-recommended},
   @code{show-fallback}, @code{show-other} and @code{show-all} properties. See
-  the @class{gtk:app-chooser} documentation for more information
-  about these groups of applications.
+  the @class{gtk:app-chooser} documentation for more information about these
+  groups of applications.
 
   To keep track of the selected application, use the \"application-selected\"
   and \"application-activated\" signals.
   @begin[CSS nodes]{dictionary}
-    @sym{gtk:app-chooser-widget} has a single CSS node with name
-    @code{appchooser}.
+    The @sym{gtk:app-chooser-widget} implementation has a single CSS node with
+    name @code{appchooser}.
   @end{dictionary}
   @begin[Signal Details]{dictionary}
     @subheading{The \"application-activated\" signal}
       @begin{pre}
- lambda (widget application)    :run-first
+lambda (widget application)    :run-first
       @end{pre}
       Emitted when an application item is activated from the list of the widget.
       This usually happens when the user double clicks an item, or an item is
@@ -151,7 +152,7 @@
       @end{table}
     @subheading{The \"application-selected\" signal}
       @begin{pre}
- lambda (widget application)    : Run First
+lambda (widget application)    :run-first
       @end{pre}
       Emitted when an application item is selected from the widget's list.
       @begin[code]{table}
@@ -161,19 +162,20 @@
       @end{table}
     @subheading{The \"populate-popup\" signal}
       @begin{pre}
- lambda (self menu application)    : Run First
+lambda (widget menu application)    :run-first
       @end{pre}
       Emitted when a context menu is about to popup over an application item.
-      Clients can insert menu items into the provided @class{gtk:menu} object in
-      the callback of this signal. The context menu will be shown over the item
-      if at least one item has been added to the menu.
+      Clients can insert menu items into the provided @class{gtk:menu} object
+      in the callback of this signal. The context menu will be shown over the
+      item if at least one item has been added to the menu.
       @begin[code]{table}
         @entry[widget]{The @sym{gtk:app-chooser-widget} widget which received
           the signal.}
-        @entry[menu]{The @class{gtk:menu} to populate.}
-        @entry[application]{The current @class{g:app-info}.}
+        @entry[menu]{The @class{gtk:menu} object to populate.}
+        @entry[application]{The current @class{g:app-info} object.}
       @end{table}
   @end{dictionary}
+  @see-constructor{gtk:app-chooser-widget-new}
   @see-slot{gtk:app-chooser-widget-default-text}
   @see-slot{gtk:app-chooser-widget-show-all}
   @see-slot{gtk:app-chooser-widget-show-default}
@@ -185,7 +187,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- app-chooser-widget-default-text ------------------------------------
+;;; --- app-chooser-widget-default-text ----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "default-text"
@@ -193,14 +195,14 @@
  "The @code{default-text} property of type @code{:string} (Read / Write) @br{}
   The @code{default-text} property determines the text that appears in the
   widget when there are no applications for the given content type. See also
-  the function @fun{gtk:app-chooser-widget-default-text}. @br{}
+  the @fun{gtk:app-chooser-widget-default-text} function. @br{}
   Default value: @code{nil}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'app-chooser-widget-default-text)
       "Accessor"
       (documentation 'app-chooser-widget-default-text 'function)
- "@version{#2020-5-21}
+ "@version{#2023-2-15}
   @syntax[]{(gtk:app-chooser-widget-default-text object) => text}
   @syntax[]{(setf (gtk:app-chooser-widget-default-text object) text)}
   @argument[object]{a @class{gtk:app-chooser-widget} widget}
@@ -209,15 +211,13 @@
     Accessor of the @slot[gtk:app-chooser-widget]{default-text} slot of the
     @class{gtk:app-chooser-widget} class.
   @end{short}
-
-  The slot access function @sym{gtk:app-chooser-widger-default-text} returns
-  the text that is shown if there are not applications that can handle the
-  content type. The slot access function
-  @sym{(setf gtk:app-chooser-widget-default-text)} sets the text that is shown
-  if there are not applications that can handle the content type.
+  The @sym{gtk:app-chooser-widger-default-text} function returns the text that
+  is shown if there are not applications that can handle the content type. The
+  @sym{(setf gtk:app-chooser-widget-default-text)} function sets the text that
+  is shown if there are not applications that can handle the content type.
   @see-class{gtk:app-chooser-widget}")
 
-;;; --- app-chooser-widget-show-all ----------------------------------------
+;;; --- app-chooser-widget-show-all --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "show-all"
@@ -233,7 +233,7 @@
 (setf (liber:alias-for-function 'app-chooser-widget-show-all)
       "Accessor"
       (documentation 'app-chooser-widget-show-all 'function)
- "@version{#2020-5-21}
+ "@version{#2023-2-15}
   @syntax[]{(gtk:app-chooser-widget-show-all object) => setting}
   @syntax[]{(setf (gtk:app-chooser-widget-show-all object) setting)}
   @argument[object]{a @class{gtk:app-chooser-widget} widget}
@@ -243,14 +243,13 @@
     Accessor of the @slot[gtk:app-chooser-widget]{show-all} slot of the
     @class{gtk:app-chooser-widget} class.
   @end{short}
-
-  The slot access function @sym{gtk:app-chooser-widget-show-all} sets whether
-  the application chooser should show all applications in a flat list.
-  The slot access function @sym{(setf gtk:app-chooser-widget-show-all)} sets
-  whether the app chooser should show all applications in a flat list.
+  The @sym{gtk:app-chooser-widget-show-all} function sets whether the
+  application chooser should show all applications in a flat list. The
+  @sym{(setf gtk:app-chooser-widget-show-all)} function sets whether the app
+  chooser should show all applications in a flat list.
   @see-class{gtk:app-chooser-widget}")
 
-;;; --- app-chooser-widget-show-default ------------------------------------
+;;; --- app-chooser-widget-show-default ----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "show-default"
@@ -267,7 +266,7 @@
 (setf (liber:alias-for-function 'app-chooser-widget-show-default)
       "Accessor"
       (documentation 'app-chooser-widget-show-default 'function)
- "@version{#2020-5-21}
+ "@version{#2023-2-15}
   @syntax[]{(gtk:app-chooser-widget-show-default object) => setting}
   @syntax[]{(setf (gtk:app-chooser-widget-show-default object) setting)}
   @argument[object]{a @class{gtk:app-chooser-widget} widget}
@@ -277,15 +276,13 @@
     Accessor of the @slot[gtk:app-chooser-widget]{show-default} slot of the
     @class{gtk:app-chooser-widget} class.
   @end{short}
-
-  The slot access function @sym{gtk:app-chooser-widget-show-default} returns
-  whether the application chooser should the default handler for the content
-  type in a separate section. The slott access function
-  @sym{(setf gtk:app-chooser-widget-show-default)} sets whether the application
-  chooser should show the default handler.
+  The @sym{gtk:app-chooser-widget-show-default} function returns whether the
+  application chooser should the default handler for the content type in a
+  separate section. The @sym{(setf gtk:app-chooser-widget-show-default)}
+  function sets whether the application chooser should show the default handler.
   @see-class{gtk:app-chooser-widget}")
 
-;;; --- app-chooser-widget-show-fallback -----------------------------------
+;;; --- app-chooser-widget-show-fallback ---------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "show-fallback"
@@ -301,7 +298,7 @@
 (setf (liber:alias-for-function 'app-chooser-widget-show-fallback)
       "Accessor"
       (documentation 'app-chooser-widget-show-fallback 'function)
- "@version{#2020-5-21}
+ "@version{#2023-2-15}
   @syntax[]{(gtk:app-chooser-widget-show-fallback object) => setting}
   @syntax[]{(setf (gtk:app-chooser-widget-show-fallback object) setting)}
   @argument[object]{a @class{gtk:app-chooser-widget} widget}
@@ -311,16 +308,14 @@
     Accessor of the @slot[gtk:app-chooser-widget]{show-fallback} slot of the
     @class{gtk:app-chooser-widget} class.
   @end{short}
-
-  The slot access function @sym{gtk:app-chooser-widget-show-fallback} returns
-  whether the application chooser should show a section for fallback
-  applications. The slot access function
-  @sym{(setf gtk:app-chooser-widget-show-fallback)} sets whether the application
-  chooser should show related applications for the content type in a separate
-  section.
+  The @sym{gtk:app-chooser-widget-show-fallback} function returns whether the
+  application chooser should show a section for fallback applications. The
+  @sym{(setf gtk:app-chooser-widget-show-fallback)} function sets whether the
+  application chooser should show related applications for the content type in
+  a separate section.
   @see-class{gtk:app-chooser-widget}")
 
-;;; --- app-chooser-widget-show-other --------------------------------------
+;;; --- app-chooser-widget-show-other ------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "show-other"
@@ -335,7 +330,7 @@
 (setf (liber:alias-for-function 'app-chooser-widget-show-other)
       "Accessor"
       (documentation 'app-chooser-widget-show-other 'function)
- "@version{#2020-5-21}
+ "@version{#2023-2-15}
   @syntax[]{(gtk:app-chooser-widget-show-other object) => setting}
   @syntax[]{(setf (gtk:app-chooser-widget-show-other object) setting)}
   @argument[object]{a @class{gtk:app-chooser-widget} widget}
@@ -345,15 +340,14 @@
     Accessor of the @slot[gtk:app-chooser-widget]{show-other} slot of the
     @class{gtk:app-chooser-widget} class.
   @end{short}
-
-  The slot access function @sym{gtk:app-chooser-widget-show-other} returns
-  whether the application chooser should show a section for other applications.
-  The slot access function @sym{(gtk:app-chooser-widget-show-other)} sets
-  whether the app chooser should show applications which are unrelated to
-  the content type.
+  The @sym{gtk:app-chooser-widget-show-other} function returns whether the
+  application chooser should show a section for other applications. The
+  @sym{(gtk:app-chooser-widget-show-other)} function sets whether the
+  application chooser should show applications which are unrelated to the
+  content type.
   @see-class{gtk:app-chooser-widget}")
 
-;;; --- app-chooser-widget-show-recommended --------------------------------
+;;; --- app-chooser-widget-show-recommended ------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "show-recommended"
@@ -369,7 +363,7 @@
 (setf (liber:alias-for-function 'app-chooser-widget-show-recommended)
       "Accessor"
       (documentation 'app-chooser-widget-show-recommended 'function)
- "@version{#2020-5-21}
+ "@version{#2023-2-15}
   @syntax[]{(gtk:app-chooser-widget-show-recommended object) => setting}
   @syntax[]{(setf (gtk:app-chooser-widget-show-recommended object) setting)}
   @argument[object]{a @class{gtk:app-chooser-widget} widget}
@@ -379,12 +373,11 @@
     Accessor of the @slot[gtk:app-chooser-widget]{show-recommended} slot of
     the @class{gtk:app-chooser-widget} class.
   @end{short}
-
-  The slot access function @sym{gtk:app-chooser-widget-show-recommended}
-  returns whether the application chooser should recommended applications. The
-  slot access function @sym{(setf gtk:app-chooser-widget-show-recommended)}
-  sets whether the app chooser should show recommended applications for the
-  content type in a separate section.
+  The @sym{gtk:app-chooser-widget-show-recommended} function returns whether
+  the application chooser should recommended applications. The
+  @sym{(setf gtk:app-chooser-widget-show-recommended)} function sets whether
+  the application chooser should show recommended applications for the content
+  type in a separate section.
   @see-class{gtk:app-chooser-widget}")
 
 ;;; ----------------------------------------------------------------------------
@@ -395,7 +388,7 @@
 
 (defun app-chooser-widget-new (content-type)
  #+liber-documentation
- "@version{#2020-5-21}
+ "@version{#2023-2-15}
   @argument[content-type]{a string with the content type to show applications
     for}
   @return{A newly created @class{gtk:app-chooser-widget} widget.}
@@ -409,4 +402,4 @@
 
 (export 'app-chooser-widget-new)
 
-;;; --- End of file gtk.app-chooser-widget.lisp --------------------------------
+;;; --- End of file gtk3.app-chooser-widget.lisp -------------------------------
