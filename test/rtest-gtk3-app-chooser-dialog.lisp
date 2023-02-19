@@ -15,7 +15,8 @@
           (gobject:symbol-for-gtype "GtkAppChooserDialog")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkAppChooserDialog")
-          (g:gtype (cffi:foreign-funcall "gtk_app_chooser_dialog_get_type" :size))))
+          (g:gtype (cffi:foreign-funcall "gtk_app_chooser_dialog_get_type"
+                                         :size))))
   ;; Check the parent
   (is (eq (g:gtype "GtkDialog") (g:type-parent "GtkAppChooserDialog")))
   ;; Check the children
@@ -49,42 +50,38 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-;;;     GFile*   gfile      Read / Write / Construct Only
-;;;     gchar*   heading    Read / Write
-
 (test app-chooser-dialog-properties
- (let ((chooser (make-instance 'gtk:app-chooser-dialog)))
+ (let ((chooser (make-instance 'gtk:app-chooser-dialog
+                               :heading "<b>header</b>")))
     (is-false (gtk:app-chooser-dialog-gfile chooser))
-    (is-false (gtk:app-chooser-dialog-heading chooser))
-))
+    (is (string= "<b>header</b>" (gtk:app-chooser-dialog-heading chooser)))))
 
 ;;; --- Functions --------------------------------------------------------------
 
 ;;;     gtk_app_chooser_dialog_new
 
-;; FIXME: What is the problem?
-;; GLib-GIO-CRITICAL: g_file_info_get_content_type: assertion 'G_IS_FILE_INFO (info)' failed
-
-#+nil
 (test app-chooser-dialog-new
-  (let ((chooser (gtk:app-chooser-dialog-new nil '(:modal) (g:file-new-for-path "gio.file.lisp"))))
-
-    (is (eq 'gtk:app-chooser-dialog (type-of chooser)))
-
-    (is (eq 'g-object (type-of (gtk:app-chooser-dialog-gfile chooser))))
-    (is (string= "/home/dieter/Lisp/lisp-projects/cl-gtk/test/gio.file.lisp"
-                 (g:file-path (gtk:app-chooser-dialog-gfile chooser))))))
+  (let* ((filename (namestring (sys-path "rtest-gtk3-app-chooser-dialog.lisp")))
+         (chooser (gtk:app-chooser-dialog-new nil
+                                              '(:modal)
+                                              (g:file-new-for-path filename))))
+    (is (typep chooser 'gtk:app-chooser-dialog))
+    (is (typep (gtk:app-chooser-dialog-gfile chooser) 'g:object))
+    (is (string= "rtest-gtk3-app-chooser-dialog.lisp"
+                 (g:file-basename (gtk:app-chooser-dialog-gfile chooser))))))
 
 ;;;     gtk_app_chooser_dialog_new_for_content_type
 
 (test app-chooser-dialog-new-for-content-type
-  (let ((chooser (gtk:app-chooser-dialog-new-for-content-type nil '(:modal) "plain/text")))
-    (is (eq 'gtk:app-chooser-dialog (type-of chooser)))))
+  (let ((chooser (gtk:app-chooser-dialog-new-for-content-type nil
+                                                              '(:modal)
+                                                              "plain/text")))
+    (is (typep chooser 'gtk:app-chooser-dialog))))
 
 ;;;     gtk_app_chooser_dialog_get_widget
 
 (test app-chooser-dialog-widget
-  (is (eq 'gtk:app-chooser-widget
-          (type-of (gtk:app-chooser-dialog-widget (make-instance 'gtk:app-chooser-dialog))))))
+  (let ((chooser (make-instance 'gtk:app-chooser-dialog)))
+    (is (typep (gtk:app-chooser-dialog-widget chooser) 'gtk:widget))))
 
-;;; --- 2023-1-1 ---------------------------------------------------------------
+;;; --- 2023-2-18 --------------------------------------------------------------

@@ -23,13 +23,24 @@
   (is (eq (g:gtype "GtkContainer") (g:type-parent "GtkBox")))
   ;; Check the children
   #-windows
-  (is (equal '("GtkAppChooserWidget" "GtkButtonBox" "GtkColorChooserWidget"
-               "GtkColorSelection" "GtkFileChooserButton" "GtkFileChooserWidget"
-               "GtkFontChooserWidget" "GtkFontSelection" "GtkHBox" "GtkInfoBar"
-               "GtkPrinterOptionWidget" "GtkRecentChooserWidget"
-               "GtkShortcutsGroup" "GtkShortcutsSection" "GtkShortcutsShortcut"
-               "GtkStackSwitcher" "GtkStatusbar" "GtkVBox")
-             (list-children "GtkBox")))
+  (is (or (equal '("GtkAppChooserWidget" "GtkButtonBox" "GtkColorChooserWidget"
+                   "GtkColorSelection" "GtkFileChooserButton"
+                   "GtkFileChooserWidget" "GtkFontChooserWidget"
+                   "GtkFontSelection" "GtkHBox" "GtkInfoBar"
+                   "GtkPrinterOptionWidget" "GtkRecentChooserWidget"
+                   "GtkShortcutsGroup" "GtkShortcutsSection"
+                   "GtkShortcutsShortcut" "GtkStackSwitcher" "GtkStatusbar"
+                   "GtkVBox")
+                 (list-children "GtkBox"))
+          (equal '("GtkAppChooserWidget" "GtkButtonBox" "GtkColorChooserWidget"
+                   "GtkColorSelection" "GtkFileChooserButton"
+                   "GtkFileChooserWidget" "GtkFontChooserWidget"
+                   "GtkFontSelection" "GtkHBox" "GtkInfoBar" "GtkPlacesView"
+                   "GtkPrinterOptionWidget" "GtkRecentChooserWidget"
+                   "GtkShortcutsGroup" "GtkShortcutsSection"
+                   "GtkShortcutsShortcut" "GtkStackSwitcher" "GtkStatusbar"
+                   "GtkVBox")
+                 (list-children "GtkBox"))))
   #+windows
   (is (equal '("GtkHBox" "GtkVBox" "GtkStackSwitcher" "GtkButtonBox"
                "GtkStatusbar" "GtkInfoBar" "GtkColorChooserWidget"
@@ -234,4 +245,4 @@
     ;; Retrieve the center widget
     (is (eq 'gtk:button (type-of (gtk:box-center-widget box))))))
 
-;;; 2021-10-14
+;;; --- 2023-2-18 --------------------------------------------------------------

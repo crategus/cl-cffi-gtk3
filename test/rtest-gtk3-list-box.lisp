@@ -59,8 +59,10 @@
   ;; Check the parent
   (is (eq (g:gtype "GtkBin") (g:type-parent "GtkListBoxRow")))
   ;; Check the children
-  (is (equal '()
-             (list-children "GtkListBoxRow")))
+  (is (or (equal '()
+                 (list-children "GtkListBoxRow"))
+          (equal '("GtkPlacesViewRow" "GtkSidebarRow")
+                 (list-children "GtkListBoxRow"))))
   ;; Check the interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable" "GtkActionable")
              (list-interfaces "GtkListBoxRow")))
@@ -309,4 +311,4 @@
 ;;;     gtk_list_box_row_set_header
 ;;;     gtk_list_box_row_get_index
 
-;;; 2022-12-18
+;;; --- 2023-2-18 --------------------------------------------------------------

@@ -180,11 +180,6 @@
 
 ;;; --- Properties and Accessors -----------------------------------------------
 
-;;;  GtkTextDirection    direction      Read / Write
-;;;     GdkFrameClock*   paint-clock    Read / Write
-;;;   GtkStyleContext*   parent         Read / Write
-;;;         GdkScreen*   screen         Read / Write
-
 (test style-context-properties
   (let* ((widget (make-instance 'gtk:button))
          (context (gtk:widget-style-context widget)))
@@ -315,8 +310,6 @@
 ;;;     gtk_style_context_get_style
 
 ;;;     gtk_style_context_style_property
-
-;; FIXME: The testsuite hangs executing this test
 
 #-windows
 (test style-context-style-property
@@ -569,4 +562,4 @@
 ;;;     gtk_render_icon
 ;;;     gtk_render_insertion_cursor
 
-;;; --- 2023-1-29 --------------------------------------------------------------
+;;; --- 2023-2-19 --------------------------------------------------------------

@@ -3,40 +3,7 @@
 (def-suite gtk-text-attributes :in gtk-suite)
 (in-suite gtk-text-attributes)
 
-;;;     GtkWrapMode                                     <--- gtk.text-view.lisp
-
-(test wrap-mode
-  ;; Check the type
-  (is (g:type-is-enum "GtkWrapMode"))
-  ;; Check the type initializer
-  (is (eq (g:gtype "GtkWrapMode")
-          (g:gtype (cffi:foreign-funcall "gtk_wrap_mode_get_type" :size))))
-  ;; Check the registered name
-  (is (eq 'gtk:wrap-mode
-          (gobject:symbol-for-gtype "GtkWrapMode")))
-  ;; Check the names
-  (is (equal '("GTK_WRAP_NONE" "GTK_WRAP_CHAR" "GTK_WRAP_WORD"
-               "GTK_WRAP_WORD_CHAR")
-             (list-enum-item-name "GtkWrapMode")))
-  ;; Check the values
-  (is (equal '(0 1 2 3)
-             (list-enum-item-value "GtkWrapMode")))
-  ;; Check the nick names
-  (is (equal '("none" "char" "word" "word-char")
-             (list-enum-item-nick "GtkWrapMode")))
-  ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GtkWrapMode"
-                             GTK-WRAP-MODE
-                             (:EXPORT T
-                              :TYPE-INITIALIZER "gtk_wrap_mode_get_type")
-                             (:NONE 0)
-                             (:CHAR 1)
-                             (:WORD 2)
-                             (:WORD-CHAR 3))
-             (gobject:get-g-type-definition "GtkWrapMode"))))
-
 ;;;     GtkTextAppearance                               <--- gtk.text-tag.lisp
-
 ;;;     GtkTextAttributes                               <--- gtk.text-tag.lisp
 
 #+nil
@@ -161,4 +128,4 @@
 
     (is-false (gtk:text-iter-attributes iter attributes))))
 
-;;; --- 2022-12-27 -------------------------------------------------------------
+;;; --- 2023-2-19 --------------------------------------------------------------

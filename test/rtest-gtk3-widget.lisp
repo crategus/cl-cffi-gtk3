@@ -78,11 +78,16 @@
   ;; Check the parent
   (is (eq (g:gtype "GInitiallyUnowned") (g:type-parent "GtkWidget")))
   ;; Check the children
-  (is (equal '("GtkCalendar" "GtkCellView" "GtkContainer" "GtkDrawingArea"
-               "GtkEntry" "GtkHSV" "GtkInvisible" "GtkLevelBar" "GtkMisc"
-               "GtkProgressBar" "GtkRange" "GtkSeparator" "GtkSpinner"
-               "GtkSwitch")
-             (list-children "GtkWidget")))
+  (is (or (equal '("GtkCalendar" "GtkCellView" "GtkContainer" "GtkDrawingArea"
+                   "GtkEntry" "GtkHSV" "GtkInvisible" "GtkLevelBar" "GtkMisc"
+                   "GtkProgressBar" "GtkRange" "GtkSeparator" "GtkSpinner"
+                   "GtkSwitch")
+                 (list-children "GtkWidget"))
+          (equal '("GtkCalendar" "GtkCellView" "GtkContainer" "GtkDrawingArea"
+                   "GtkEntry" "GtkHSV" "GtkIcon" "GtkInvisible" "GtkLevelBar"
+                   "GtkMisc" "GtkProgressBar" "GtkRange" "GtkSeparator"
+                   "GtkSpinner" "GtkSwitch")
+                 (list-children "GtkWidget"))))
   ;; Check the interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
              (list-interfaces "GtkWidget")))

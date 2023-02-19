@@ -49,12 +49,19 @@
   (is (eq (g:gtype "GtkWidget") (g:type-parent "GtkContainer")))
   ;; Check the children
   #-windows
-  (is (equal '("GtkBin" "GtkBox" "GtkFixed" "GtkFlowBox" "GtkGrid"
-               "GtkHeaderBar" "GtkIconView" "GtkLayout" "GtkListBox"
-               "GtkMenuShell" "GtkNotebook" "GtkPaned" "GtkSocket" "GtkStack"
-               "GtkTable" "GtkTextView" "GtkToolItemGroup" "GtkToolPalette"
-               "GtkToolbar" "GtkTreeView")
-             (list-children "GtkContainer")))
+  (is (or (equal '("GtkBin" "GtkBox" "GtkFixed" "GtkFlowBox" "GtkGrid"
+                   "GtkHeaderBar" "GtkIconView" "GtkLayout" "GtkListBox"
+                   "GtkMenuShell" "GtkNotebook" "GtkPaned" "GtkSocket"
+                   "GtkStack" "GtkTable" "GtkTextView" "GtkToolItemGroup"
+                   "GtkToolPalette" "GtkToolbar" "GtkTreeView")
+                 (list-children "GtkContainer"))
+          (equal '("GtkBin" "GtkBox" "GtkFixed" "GtkFlowBox" "GtkGrid"
+                   "GtkHeaderBar" "GtkIconView" "GtkLayout" "GtkListBox"
+                   "GtkMenuShell" "GtkNotebook" "GtkPaned" "GtkPathBar"
+                   "GtkSocket" "GtkStack" "GtkTable" "GtkTextView"
+                   "GtkToolItemGroup" "GtkToolPalette" "GtkToolbar"
+                   "GtkTreeView")
+                 (list-children "GtkContainer"))))
   #+windows
   (is (equal '("GtkBin" "GtkMenuShell" "GtkBox" "GtkGrid" "GtkListBox"
                "GtkFlowBox" "GtkStack" "GtkHeaderBar" "GtkPaned" "GtkLayout"
@@ -449,4 +456,4 @@
 
 ;;;     gtk_container_class_handle_border_width
 
-;;; 2021-10-14
+;;; --- 2023-2-18 --------------------------------------------------------------

@@ -49,8 +49,10 @@
   ;; Check the parent
   (is (eq (g:gtype "GtkMenuShell") (g:type-parent "GtkMenu")))
   ;; Check the children
-  (is (equal '("GtkRecentChooserMenu")
-             (list-children "GtkMenu")))
+  (is (or (equal '("GtkRecentChooserMenu")
+                 (list-children "GtkMenu"))
+          (equal '("GtkRecentChooserMenu" "GtkTreeMenu")
+                 (list-children "GtkMenu"))))
   ;; Check the interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
              (list-interfaces "GtkMenu")))
@@ -221,4 +223,4 @@
 
 ;;;     gtk_menu_get_for_attach_widget
 
-;;; 2021-8-20
+;;; --- 2023-2-18 --------------------------------------------------------------

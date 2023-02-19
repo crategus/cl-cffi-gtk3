@@ -54,13 +54,19 @@
                          "GtkShadowType" T T)))
              (gobject:get-g-type-definition "GtkFrame"))))
 
-(test frame-properties
+(test frame-properties.1
   (let ((widget (make-instance 'gtk:frame)))
     (is-false (gtk:frame-label widget))
     (is-false (gtk:frame-label-widget widget))
     (is (= 0.0 (gtk:frame-label-xalign widget)))
     (is (= 0.5 (gtk:frame-label-yalign widget)))
     (is (eq :etched-in (gtk:frame-shadow-type widget)))))
+
+(test frame-properties.2
+  (let ((frame (gtk:frame-new "label")))
+    (is (string= "label" (gtk:frame-label frame)))
+    (is (typep (gtk:frame-label-widget frame) 'gtk:label))
+    (is (string= "label" (gtk:label-label (gtk:frame-label-widget frame))))))
 
 (test frame-style-properties
   (let ((widget (make-instance 'gtk:frame)))
@@ -85,13 +91,23 @@
     (is-false (gtk:widget-style-property widget "window-dragging"))))
 
 ;;;     gtk_frame_new
-;;;     gtk_frame_set_label
-;;;     gtk_frame_set_label_widget
-;;;     gtk_frame_set_label_align
-;;;     gtk_frame_set_shadow_type
-;;;     gtk_frame_get_label
-;;;     gtk_frame_get_label_align
-;;;     gtk_frame_get_label_widget
-;;;     gtk_frame_get_shadow_type
 
-;;; 2022-12-26
+(test frame-new
+  (is (typep (gtk:frame-new) 'gtk:frame))
+  (is (typep (gtk:frame-new nil) 'gtk:frame))
+  (is (typep (gtk:frame-new "label") 'gtk:frame)))
+
+;;;     gtk_frame_set_label_align
+;;;     gtk_frame_get_label_align
+
+(test frame-label-align
+  (let ((frame (gtk:frame-new "label")))
+    (is (equal '(0.0 0.5)
+               (multiple-value-list (gtk:frame-label-align frame))))
+    (is (equal '(1 1/2)
+               (multiple-value-list
+                   (setf (gtk:frame-label-align frame) (list 1 1/2)))))
+    (is (equal '(1.0 0.5)
+               (multiple-value-list (gtk:frame-label-align frame))))))
+
+;;; --- 2023-2-18 --------------------------------------------------------------
