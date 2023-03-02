@@ -1,13 +1,13 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.cell-renderer-accel.lisp
+;;; gtk3.cell-renderer-accel.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK+ library.
+;;; The documentation of this file is taken from the GTK 3 Reference Manual
+;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -77,12 +77,12 @@
 (setf (liber:alias-for-symbol 'cell-renderer-accel-mode)
       "GEnum"
       (liber:symbol-documentation 'cell-renderer-accel-mode)
- "@version{#2020-6-20}
+ "@version{2023-2-20}
   @begin{short}
-    Determines if the edited accelerators are GTK+ accelerators.
+    Determines if the edited accelerators are GTK accelerators.
   @end{short}
   If they are, consumed modifiers are suppressed, only accelerators accepted by
-  GTK+ are allowed, and the accelerators are rendered in the same way as they
+  GTK are allowed, and the accelerators are rendered in the same way as they
   are in menus.
   @begin{pre}
 (define-g-enum \"GtkCellRendererAccelMode\" cell-renderer-accel-mode
@@ -92,7 +92,7 @@
   (:other 1))
   @end{pre}
   @begin[code]{table}
-    @entry[:gtk]{GTK+ accelerators mode.}
+    @entry[:gtk]{GTK accelerators mode.}
     @entry[:other]{Other accelerator mode.}
   @end{table}
   @see-class{gtk:cell-renderer-accel}")
@@ -121,19 +121,17 @@
 
 #+liber-documentation
 (setf (documentation 'cell-renderer-accel 'type)
- "@version{#2020-6-20}
+ "@version{2023-2-20}
   @begin{short}
-    @sym{gtk:cell-renderer-accel} displays a keyboard accelerator, i.e. a key
-    combination like @code{Control+a}.
+    The @sym{gtk:cell-renderer-accel} object displays a keyboard accelerator,
+    i.e. a key combination like the @code{Control+a} key.
   @end{short}
   If the cell renderer is editable, the accelerator can be changed by simply
   typing the new combination.
-
-  The @sym{gtk:cell-renderer-accel} cell renderer was added in GTK+ 2.10.
   @begin[Signal Details]{dictionary}
     @subheading{The \"accel-cleared\" signal}
       @begin{pre}
- lambda (accel path)    : Run Last
+lambda (accel path)    :run-last
       @end{pre}
       Gets emitted when the user has removed the accelerator.
       @begin[code]{table}
@@ -144,7 +142,7 @@
       @end{table}
     @subheading{The \"accel-edited\" signal}
       @begin{pre}
- lambda (accel path accel-key accel-mods hardware-keycode)    : Run Last
+lambda (accel path keyval mods keycode)    :run-last
       @end{pre}
       Gets emitted when the user has selected a new accelerator.
       @begin[code]{table}
@@ -152,23 +150,25 @@
           signal.}
         @entry[path]{A string with the path identifying the row of the edited
           cell.}
-        @entry[accel-key]{An unsigned integer with the new accelerator keyval.}
-        @entry[accel-mods]{A @class{gdk:modifier-type} value with the new
-          acclerator modifier mask.}
-        @entry[hardware-keycode]{An unsignend integer with the keycode of the
-          new accelerator.}
+        @entry[keyval]{An unsigned integer with the new accelerator keyval.}
+        @entry[mods]{A @class{gdk:modifier-type} value with the new acclerator
+          modifier mask.}
+        @entry[keycode]{An unsigned integer with the keycode of the new
+          accelerator.}
       @end{table}
   @end{dictionary}
+  @see-constructor{gtk:cell-renderer-accel-new}
   @see-slot{gtk:cell-renderer-accel-accel-key}
   @see-slot{gtk:cell-renderer-accel-accel-mode}
   @see-slot{gtk:cell-renderer-accel-accel-mods}
-  @see-slot{gtk:cell-renderer-accel-keycode}")
+  @see-slot{gtk:cell-renderer-accel-keycode}
+  @see-class{gtk:cell-renderer}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- cell-renderer-accel-accel-key --------------------------------------
+;;; --- cell-renderer-accel-accel-key ------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "accel-key"
@@ -182,28 +182,27 @@
 (setf (liber:alias-for-function 'cell-renderer-accel-accel-key)
       "Accessor"
       (documentation 'cell-renderer-accel-accel-key 'function)
- "@version{#2020-6-20}
-  @syntax[]{(gtk:cell-renderer-accel-accel-key object) => accel-key}
-  @syntax[]{(setf (gtk:cell-renderer-accel-accel-key object) accel-key)}
+ "@version{#2023-2-20}
+  @syntax[]{(gtk:cell-renderer-accel-accel-key object) => keyval}
+  @syntax[]{(setf (gtk:cell-renderer-accel-accel-key object) keyval)}
   @argument[object]{a @class{gtk:cell-renderer-accel} object}
-  @argument[accel-key]{an unsigned integer with the keyval of the accelerator}
+  @argument[keyval]{an unsigned integer with the keyval of the accelerator}
   @begin{short}
     Accessor of the @slot[gtk:cell-renderer]{accel-key} slot of the
     @class{gtk:cell-renderer-accel} class.
   @end{short}
-
   The keyval of the accelerator.
   @see-class{gtk:cell-renderer-accel}")
 
-;;; --- cell-renderer-accel-accel-mode -------------------------------------
+;;; --- cell-renderer-accel-accel-mode -----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "accel-mode"
                                                'cell-renderer-accel) t)
  "The @code{accel-mode} property of type @symbol{gtk:cell-renderer-accel-mode}
   (Read / Write) @br{}
-  Determines if the edited accelerators are GTK+ accelerators. If they are,
-  consumed modifiers are suppressed, only accelerators accepted by GTK+ are
+  Determines if the edited accelerators are GTK accelerators. If they are,
+  consumed modifiers are suppressed, only accelerators accepted by GTK are
   allowed, and the accelerators are rendered in the same way as they are in
   menus. @br{}
   Default value: @code{:gtk}")
@@ -212,25 +211,24 @@
 (setf (liber:alias-for-function 'cell-renderer-accel-accel-mode)
       "Accessor"
       (documentation 'cell-renderer-accel-accel-mode 'function)
- "@version{#2020-6-20}
-  @syntax[]{(gtk:cell-renderer-accel-accel-mode object) => accel-mode}
-  @syntax[]{(setf (gtk:cell-renderer-accel-accel-mode object) accel-mode)}
+ "@version{#2023-2-20}
+  @syntax[]{(gtk:cell-renderer-accel-accel-mode object) => mode}
+  @syntax[]{(setf (gtk:cell-renderer-accel-accel-mode object) mode)}
   @argument[object]{a @class{gtk:cell-renderer-accel} object}
-  @argument[accel-mode]{a value of the @symbol{gtk:cell-renderer-accel-mode}
+  @argument[mode]{a value of the @symbol{gtk:cell-renderer-accel-mode}
     enumeration}
   @begin{short}
     Accessor of the @slot[gtk:cell-renderer-accel]{accel-mode} slot of the
     @class{gtk:cell-renderer-accel} class.
   @end{short}
-
-  Determines if the edited accelerators are GTK+ accelerators. If they are,
-  consumed modifiers are suppressed, only accelerators accepted by GTK+ are
+  Determines if the edited accelerators are GTK accelerators. If they are,
+  consumed modifiers are suppressed, only accelerators accepted by GTK are
   allowed, and the accelerators are rendered in the same way as they are in
   menus.
   @see-class{gtk:cell-renderer-accel}
   @see-symbol{gtk:cell-renderer-accel-mode}")
 
-;;; --- cell-renderer-accel-accel-mods -------------------------------------
+;;; --- cell-renderer-accel-accel-mods -----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "accel-mods"
@@ -243,21 +241,20 @@
 (setf (liber:alias-for-function 'cell-renderer-accel-accel-mods)
       "Accessor"
       (documentation 'cell-renderer-accel-accel-mods 'function)
- "@version{#2020-6-20}
-  @syntax[]{(gtk:cell-renderer-accel-accel-mods object) => accel-mods}
-  @syntax[]{(setf (gtk:cell-renderer-accel-accel-mods object) accel-mods)}
+ "@version{#2023-2-20}
+  @syntax[]{(gtk:cell-renderer-accel-accel-mods object) => mods}
+  @syntax[]{(setf (gtk:cell-renderer-accel-accel-mods object) mods)}
   @argument[object]{a @class{gtk:cell-renderer-accel} object}
-  @argument[accel-mode]{a @symbol{gtk:modifier-type} value}
+  @argument[mods]{a @symbol{gdk:modifier-type} value}
   @begin{short}
     Accessor of the @slot[gtk:cell-renderer-accel]{accel-mods} slot of the
     @class{gtk:cell-renderer-accel} class.
   @end{short}
-
   The modifier mask of the accelerator.
   @see-class{gtk:cell-renderer-accel}
-  @see-symbol{gtk:modifier-type}")
+  @see-symbol{gdk:modifier-type}")
 
-;;; --- cell-renderer-accel-keycode ----------------------------------------
+;;; --- cell-renderer-accel-keycode --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "keycode"
@@ -273,7 +270,7 @@
 (setf (liber:alias-for-function 'cell-renderer-accel-keycode)
       "Accessor"
       (documentation 'cell-renderer-accel-keycode 'function)
- "@version{#2020-6-20}
+ "@version{#2023-2-20}
   @syntax[]{(gtk:cell-renderer-accel-keycode object) => keycode}
   @syntax[]{(setf (gtk:cell-renderer-accel-keycode object) keycode)}
   @argument[object]{a @class{gtk:cell-renderer-accel} object}
@@ -283,7 +280,6 @@
     Accessor of the @slot[gtk:cell-renderer-accel]{keycode} slot of the
     @class{gtk:cell-renderer-accel} class.
   @end{short}
-
   The hardware keycode of the accelerator. Note that the hardware keycode is
   only relevant if the key does not have a keyval. Normally, the keyboard
   configuration should assign keyvals to all keys.
@@ -297,7 +293,7 @@
 
 (defun cell-renderer-accel-new ()
  #+liber-documentation
- "@version{#2020-6-20}
+ "@version{#2023-2-20}
   @returns{The new @class{gtk:cell-renderer-accel} object.}
   @short{Creates a new cell renderer accel object.}
   @see-class{gtk:cell-renderer-accel}"
@@ -305,4 +301,4 @@
 
 (export 'cell-renderer-accel-new)
 
-;;; --- gtk.cell-renderer-accel.lisp -------------------------------------------
+;;; --- End of file gtk3.cell-renderer-accel.lisp ------------------------------

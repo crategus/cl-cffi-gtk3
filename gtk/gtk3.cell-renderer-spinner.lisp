@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.cell-renderer-spinner.lisp
+;;; gtk3.cell-renderer-spinner.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK+ library.
+;;; The documentation of this file is taken from the GTK 3 Reference Manual
+;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
-;;; Copyright (C) 2012 - 2022 Dieter Kaiser
+;;; Copyright (C) 2012 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -75,19 +75,20 @@
 
 #+liber-documentation
 (setf (documentation 'cell-renderer-spinner 'type)
- "@version{#2020-6-13}
+ "@version{2023-2-22}
   @begin{short}
-    @sym{gtk:cell-renderer-spinner} renders a spinning animation in a cell,
-    very similar to @class{gtk:spinner}.
+    The @sym{gtk:cell-renderer-spinner} object renders a spinning animation in
+    a cell, very similar to the @class{gtk:spinner} widget.
   @end{short}
   It can often be used as an alternative to a @class{gtk:cell-renderer-progress}
-  for displaying indefinite activity, instead of actual progress.
+  object for displaying indefinite activity, instead of actual progress.
 
   To start the animation in a cell, set the @code{active} property to @em{true}
   and increment the @code{pulse} property at regular intervals. The usual way to
   set the cell renderer properties for each cell is to bind them to columns in
-  your tree model using e.g. the function
-  @fun{gtk:tree-view-column-add-attribute}.
+  your tree model using e.g. the @fun{gtk:tree-view-column-add-attribute}
+  function.
+  @see-constructor{gtk:cell-renderer-spinner-new}
   @see-slot{gtk:cell-renderer-spinner-active}
   @see-slot{gtk:cell-renderer-spinner-pulse}
   @see-slot{gtk:cell-renderer-spinner-size}
@@ -99,7 +100,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- cell-renderer-spinner-active ---------------------------------------
+;;; --- cell-renderer-spinner-active -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "active"
@@ -112,7 +113,7 @@
 (setf (liber:alias-for-function 'cell-renderer-spinner-active)
       "Accessor"
       (documentation 'cell-renderer-spinner-active 'function)
- "@version{#2020-6-13}
+ "@version{2023-2-22}
   @syntax[]{(gtk:cell-renderer-spinner-active object) => active}
   @syntax[]{(setf (gtk:cell-renderer-spinner-active object) active)}
   @argument[object]{a @class{gtk:cell-renderer-spinner} object}
@@ -121,11 +122,10 @@
     Accessor of the @slot[gtk:cell-renderer-spinner]{active} slot of the
     @class{gtk:cell-renderer-spinner} class.
   @end{short}
-
   Whether the spinner is active, i.e. shown, in the cell.
   @see-class{gtk:cell-renderer-spinner}")
 
-;;; --- cell-renderer-spinner-pulse ----------------------------------------
+;;; --- cell-renderer-spinner-pulse --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "pulse"
@@ -141,7 +141,7 @@
 (setf (liber:alias-for-function 'cell-renderer-spinner-pulse)
       "Accessor"
       (documentation 'cell-renderer-spinner-pulse 'function)
- "@version{#2020-6-13}
+ "@version{2023-2-22}
   @syntax[]{(gtk:cell-renderer-spinner-pulse object) => pulse}
   @syntax[]{(setf (gtk:cell-renderer-spinner-pulse object) pulse)}
   @argument[object]{a @class{gtk:cell-renderer-spinner} object}
@@ -150,18 +150,17 @@
     Accessor of the @slot[gtk:cell-renderer-spinner]{pulse} slot of the
     @class{gtk:cell-renderer-spinner} class.
   @end{short}
-
   Pulse of the spinner. Increment this value to draw the next frame of the
   spinner animation. Usually, you would update this value in a timeout. By
   default, the @class{gtk:spinner} widget draws one full cycle of the animation,
   consisting of 12 frames, in 750 milliseconds.
-  @see-class{gtk:cell-renderer-spinner}")
+  @see-class{gtk:cell-renderer-spinner}
+  @see-class{gtk:spinner}")
 
-;;; --- cell-renderer-spinner-size -----------------------------------------
+;;; --- cell-renderer-spinner-size ---------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "size"
-                                               'cell-renderer-spinner) t)
+(setf (documentation (liber:slot-documentation "size" 'cell-renderer-spinner) t)
  "The @code{size} property of type @symbol{gtk:icon-size} (Read / Write) @br{}
   The icon size that specifies the size of the rendered spinner. @br{}
   Default value: @code{:menu}")
@@ -170,18 +169,18 @@
 (setf (liber:alias-for-function 'cell-renderer-spinner-size)
       "Accessor"
       (documentation 'cell-renderer-spinner-size 'function)
- "@version{#2020-6-13}
+ "@version{2023-2-22}
   @syntax[]{(gtk:cell-renderer-spinner-size object) => size}
   @syntax[]{(setf (gtk:cell-renderer-spinner-size object) size)}
   @argument[object]{a @class{gtk:cell-renderer-spinner} object}
-  @argument[size]{a value of the @symbol{gkt-icon-size} enumeration}
+  @argument[size]{a value of the @symbol{gtk:icon-size} enumeration}
   @begin{short}
     Accessor of the @slot[gtk:cell-renderer-spinner]{size} slot of the
     @class{gtk:cell-renderer-spinner} class.
   @end{short}
-
   The icon size that specifies the size of the rendered spinner.
-  @see-class{gtk:cell-renderer-spinner}")
+  @see-class{gtk:cell-renderer-spinner}
+  @see-symbol{gtk:icon-size}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_cell_renderer_spinner_new ()
@@ -191,7 +190,7 @@
 
 (defun cell-renderer-spinner-new ()
  #+liber-documentation
- "@version{#2020-6-13}
+ "@version{2023-2-22}
   @return{A new @class{gtk:cell-renderer} object.}
   @begin{short}
     Returns a new cell renderer which will show a spinner to indicate activity.
@@ -201,4 +200,4 @@
 
 (export 'cell-renderer-spinner-new)
 
-;;; --- End of file gtk.cell-renderer-spinner.lisp -----------------------------
+;;; --- End of file gtk3.cell-renderer-spinner.lisp ----------------------------
