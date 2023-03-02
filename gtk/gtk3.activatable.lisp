@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.activatable.lisp
+;;; gtk3.activatable.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
@@ -90,7 +90,7 @@
 (setf (liber:alias-for-class 'activatable)
       "Interface"
       (documentation 'activatable 'type)
- "@version{#2023-1-21}
+ "@version{2023-2-27}
   @begin{short}
     Activatable widgets can be connected to a @class{gtk:action} object and
     reflects the state of its action.
@@ -122,7 +122,7 @@
 (setf (liber:alias-for-function 'activatable-related-action)
       "Accessor"
       (documentation 'activatable-related-action 'function)
- "@version{#2023-1-21}
+ "@version{2023-2-27}
   @syntax[]{(gtk:activatable-related-action object) => action}
   @syntax[]{(setf (gtk:activatable-related-action object) action)}
   @argument[activatable]{a @class{gtk:activatable} widget}
@@ -131,8 +131,8 @@
     Accessor of the @slot[gtk:activatable]{related-action} slot of the
     @class{gtk:activatable} class.
   @end{short}
-  The @sym{gtk:activatable-related-action} function gets the related action. The
-  @sym{(setf gtk:activatable-related-action)} sets the related action.
+  The @sym{gtk:activatable-related-action} function gets the related action.
+  The @sym{(setf gtk:activatable-related-action)} sets the related action.
   @begin[Warning]{dictionary}
     The @sym{gtk:activatable-related-action} function has been deprecated since
     version 3.10 and should not be used in newly written code.
@@ -155,7 +155,7 @@
 (setf (liber:alias-for-function 'activatable-use-action-appearance)
       "Accessor"
       (documentation 'activatable-use-action-appearance 'function)
- "@version{#2023-1-21}
+ "@version{2023-2-27}
   @syntax[]{(gtk:activatable-use-action-appearance object) => action}
   @syntax[]{(setf (gtk:activatable-use-action-appearance object) action)}
   @argument[activatable]{a @class{gtk:activatable} widget}

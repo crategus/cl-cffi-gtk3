@@ -71,7 +71,7 @@
 ;;;
 ;;; Properties
 ;;;
-;;;     gchar*   translation-domain    Read / Write
+;;;     translation-domain
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -82,11 +82,11 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkBuilderError
+;;; enum GtkBuilderError                                   not exported
 ;;; ----------------------------------------------------------------------------
 
 (define-g-enum "GtkBuilderError" builder-error
-  (:export t
+  (:export nil
    :type-initializer "gtk_builder_error_get_type")
   (:invalid-type-function 0)
   (:unhandled-tag 1)
@@ -182,7 +182,7 @@
 
 #+liber-documentation
 (setf (documentation 'builder 'type)
- "@version{2021-10-10}
+ "@version{2023-3-2}
   @begin{short}
     A @sym{gtk:builder} object is an auxiliary object that reads textual
     descriptions of a user interface and instantiates the described objects.
@@ -452,9 +452,14 @@
   @subheading{Embedding other XML}
   Apart from the language for UI descriptions that has been explained in the
   previous section, the @sym{gtk:builder} implementation can also parse XML
-  fragments of @code{GMenu} markup. The resulting @class{g-menu} object and its
+  fragments of @code{GMenu} markup. The resulting @class{g:menu} object and its
   named submenus are available via the @fun{gtk:builder-object} function like
   other constructed objects.
+  @see-constructor{gtk:builder-new}
+  @see-constructor{gtk:builder-new-from-file}
+  @see-constructor{gtk:builder-new-from-resource}
+  @see-constructor{gtk:builder-new-from-string}
+  @see-constructor{gtk:builder-new-from-file}
   @see-slot{gtk:builder-translation-domain}
   @see-class{gtk:buildable}")
 
@@ -463,8 +468,7 @@
 ;;; ----------------------------------------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "translation-domain"
-                                               'builder) t)
+(setf (documentation (liber:slot-documentation "translation-domain" 'builder) t)
  "The @code{translation-domain} property of type @code{:string} (Read / Write)
   @br{}
   The translation domain used when translating property values that have been
@@ -477,7 +481,7 @@
 (setf (liber:alias-for-function 'builder-translation-domain)
       "Accessor"
       (documentation 'builder-translation-domain 'function)
- "@version{#2021-9-3}
+ "@version{2023-3-2}
   @syntax[]{(gtk:builder-translation-domain object) => domain}
   @syntax[]{(setf (gtk:builder-translation-domain object) domain)}
   @argument[object]{a @class{gtk:builder} object}
@@ -486,11 +490,9 @@
     Accessor of the @slot[gtk:builder]{translation-domain} slot of the
     @class{gtk:builder} class.
   @end{short}
-
-  The @sym{gtk:builder-translation-domain} slot access function gets the
-  translation domain of @arg{object}. The
-  @sym{(setf gtk:builder-translation-domain)} slot access function sets the
-  translation domain.
+  The @sym{gtk:builder-translation-domain} function gets the translation domain
+  of @arg{object}. The @sym{(setf gtk:builder-translation-domain)} function sets
+  the translation domain.
   @see-class{gtk:builder}")
 
 ;;; ----------------------------------------------------------------------------
@@ -501,7 +503,7 @@
 
 (defun builder-new ()
  #+liber-documentation
- "@version{2023-1-29}
+ "@version{2023-3-2}
   @return{A new @class{gtk:builder} object.}
   @begin{short}
     Creates a new builder object.
@@ -523,7 +525,7 @@
 
 (defun builder-new-from-file (path)
  #+liber-documentation
- "@version{2023-1-29}
+ "@version{2023-3-2}
   @argument[path]{a pathname or namestring with the file to load}
   @return{A @class{gtk:builder} object containing the described interface.}
   @begin{short}
@@ -545,8 +547,8 @@
 (defcfun ("gtk_builder_new_from_resource" builder-new-from-resource)
     (g:object builder)
  #+liber-documentation
- "@version{#2021-9-23}
-  @argument[path]{a string with the @class{g-resource} path}
+ "@version{2023-3-2}
+  @argument[path]{a string with the @class{g:resource} path}
   @return{A @class{gtk:builder} object containing the described interface.}
   @begin{short}
     Builds the @class{gtk:builder} UI definition from a resource path.
@@ -554,7 +556,7 @@
   If there is an error locating the resource or parsing the description then
   the program will be aborted.
   @see-class{gtk:builder}
-  @see-class{g-resource}
+  @see-class{g:resource}
   @see-function{gtk:builder-new}
   @see-function{gtk:builder-new-from-file}
   @see-function{gtk:builder-new-from-string}"
@@ -573,7 +575,7 @@
 
 (defun builder-new-from-string (string)
  #+liber-documentation
- "@version{#2021-9-23}
+ "@version{2023-3-2}
   @argument[string]{a string with the user interface description}
   @return{A @class{gtk:builder} object containing the interface described by
     @arg{string}.}
@@ -681,7 +683,7 @@
 
 (defun builder-add-from-file (builder path)
  #+liber-documentation
- "@version{2023-1-29}
+ "@version{2023-3-2}
   @argument[builder]{a @class{gtk:builder} object}
   @argument[path]{a pathname or namestring with the name of the file to parse}
   @return{A positive value on success, 0 if an error occurred.}
@@ -708,7 +710,7 @@
 
 (defun builder-add-from-resource (builder path)
  #+liber-documentation
- "@version{#2021-9-23}
+ "@version{2023-3-2}
   @argument[builder]{a @class{gtk:builder} object}
   @argument[path]{a string with the path of the resouce file to parse}
   @return{A positive value on success, 0 if an error occured.}
@@ -717,7 +719,7 @@
     merges it with the current contents of the builder.
   @end{short}
   @see-class{gtk:builder}
-  @see-class{g-resource}
+  @see-class{g:resource}
   @see-function{gtk:builder-add-from-file}
   @see-function{gtk:builder-add-from-string}"
   (with-g-error (err)
@@ -737,9 +739,9 @@
 
 (defun builder-add-from-string (builder string)
  #+liber-documentation
- "@version{#2021-10-10}
+ "@version{2023-3-2}
   @argument[builder]{a @class{gtk:builder} object}
-  @argument[string]{the string to parse}
+  @argument[string]{a string to parse}
   @return{A positive value on success, 0 if an error occurred.}
   @begin{short}
     Parses a string containing a @class{gtk:builder} UI definition and merges
@@ -766,7 +768,7 @@
 
 (defun builder-add-objects-from-file (builder path ids)
  #+liber-documentation
- "@version{2023-1-29}
+ "@version{2023-3-2}
   @argument[builder]{a @class{gtk:builder} object}
   @argument[path]{a pathname or namestring with the name of the file to parse}
   @argument[ids]{a list of strings with the object IDs to build}
@@ -808,7 +810,7 @@
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_builder_add_objects_from_string"
-          %builder-add-objects-from-string) :uint
+           %builder-add-objects-from-string) :uint
   (builder (g:object builder))
   (string :string)
   (length :int)
@@ -817,10 +819,10 @@
 
 (defun builder-add-objects-from-string (builder string ids)
  #+liber-documentation
- "@version{#2021-9-23}
+ "@version{2023-3-2}
   @argument[builder]{a @class{gtk:builder} object}
-  @argument[string]{the string to parse}
-  @argument[ids]{list of strings with the object IDs to build}
+  @argument[string]{a string to parse}
+  @argument[ids]{a list of strings with the object IDs to build}
   @return{A positive value on success, 0 if an error occurred.}
   @begin{short}
     Parses a string containing a @class{gtk:builder} UI definition building only
@@ -866,10 +868,10 @@
 
 (defun builder-add-objects-from-resource (builder path ids)
  #+liber-documentation
- "@version{#2021-9-23}
+ "@version{#2023-3-2}
   @argument[builder]{a @class{gtk:builder} object}
   @argument[path]{a string with the path of the resource file to parse}
-  @argument[ids]{list of strings with the object IDs to build}
+  @argument[ids]{a list of strings with the object IDs to build}
   @return{A positive value on success, 0 if an error occurred.}
   @begin{short}
     Parses a resource file containing a @class{gtk:builder} UI definition
@@ -947,7 +949,7 @@
 
 (defcfun ("gtk_builder_get_object" builder-object) g:object
  #+liber-documentation
- "@version{#2021-10-10}
+ "@version{2023-3-2}
   @argument[builder]{a @class{gtk:builder} object}
   @argument[name]{a string with the name of the object to get}
   @return{The @class{g:object} instance named @arg{name} or @code{nil} if it
@@ -969,7 +971,7 @@
 
 (defcfun ("gtk_builder_get_objects" builder-objects) (g:slist-t g:object)
  #+liber-documentation
- "@version{#2021-9-23}
+ "@version{2023-3-2}
   @argument[builder]{a @class{gtk:builder} object}
   @begin{return}
     A list containing all the @class{g:object} instances constructed by the
@@ -991,7 +993,7 @@
 
 (defcfun ("gtk_builder_expose_object" builder-expose-object) :void
  #+liber-documentation
- "@version{#2021-9-23}
+ "@version{#2023-3-2}
   @argument[builder]{a @class{gtk:builder} object}
   @argument[name]{a string with the name of the object exposed to the builder}
   @argument[object]{a @class{g:object} instance to expose}
@@ -1015,7 +1017,7 @@
 
 (defun builder-connect-signals (builder handlers)
  #+liber-documentation
- "@version{#2021-9-23}
+ "@version{#2023-3-2}
   @argument[builder]{a @class{gtk:builder} object}
   @argument[handlers]{a list sent in as user data to all signals}
   @begin{short}
@@ -1076,7 +1078,7 @@
 (setf (liber:alias-for-symbol 'builder-connect-func)
       "Callback"
       (liber:symbol-documentation 'builder-connect-func)
- "@version{#2021-9-23}
+ "@version{#2023-3-2}
   @begin{short}
     This is the signature of a callback function used to connect signals.
   @end{short}
@@ -1115,7 +1117,7 @@
 
 (defun builder-connect-signals-full (builder func)
  #+liber-documentation
- "@version{#2021-9-23}
+ "@version{#2023-3-2}
   @argument[builder]{a @class{gtk:builder} object}
   @argument[func]{a @symbol{gtk:builder-connect-func} callback function used to
     connect the signals}
@@ -1140,15 +1142,15 @@
 
 (defun (setf builder-application) (application builder)
   (cffi:foreign-funcall "gtk_builder_set_application"
-                   (g:object builder) builder
-                   (g:object application) application
-                   :void)
+                        (g:object builder) builder
+                        (g:object application) application
+                        :void)
   application)
 
 (defcfun ("gtk_builder_get_application" builder-application)
     (g:object application)
  #+liber-documentation
- "@version{#2021-9-23}
+ "@version{#2023-3-2}
   @syntax[]{(gtk:builder-application builder) => application}
   @syntax[]{(setf (gtk:builder-application builder) application)}
   @argument[builder]{a @class{gtk:builder} object}
@@ -1156,7 +1158,6 @@
   @begin{short}
     Accessor of the application associated with the builder.
   @end{short}
-
   The @sym{gtk:builder-application} function gets the application associated
   with the builder. The @sym{(setf gtk:builder-application)} function sets the
   application.
@@ -1184,7 +1185,7 @@
 
 (defcfun ("gtk_builder_get_type_from_name" builder-type-from-name) g:type-t
  #+liber-documentation
- "@version{#2021-9-23}
+ "@version{#2023-3-2}
   @argument[builder]{a @class{gtk:builder} object}
   @argument[name]{a string with the type name to lookup}
   @return{The @class{g:type-t} type ID found for @arg{name}.}
