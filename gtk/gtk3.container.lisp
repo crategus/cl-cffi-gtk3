@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.container.lisp
+;;; gtk3.container.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -168,7 +168,7 @@
 (setf (liber:alias-for-symbol 'resize-mode)
       "GEnum"
       (liber:symbol-documentation 'resize-mode)
- "@version{#2021-9-12}
+ "@version{2023-3-3}
   @begin{short}
     An enumeration representing the values of the
     @slot[gtk:container]{resize-mode} property.
@@ -216,11 +216,10 @@
 
 #+liber-documentation
 (setf (documentation 'container 'type)
- "@version{#2021-9-12}
+ "@version{2023-3-3}
   @begin{short}
     Base class for widgets which contain other widgets.
   @end{short}
-
   A GTK user interface is constructed by nesting widgets inside widgets.
   Container widgets are the inner nodes in the resulting tree of widgets: they
   contain other widgets. So, for example, you might have a @class{gtk:window}
@@ -230,14 +229,13 @@
   widget.
 
   There are two major kinds of container widgets in GTK. Both are subclasses
-  of the abstract @sym{gtk:container} base class.
-
-  The first type of container widget has a single child widget and derives
-  from the @class{gtk:bin} class. These containers are decorators, which add
-  some kind of functionality to the child. For example, a @class{gtk:button}
-  widget makes its child into a clickable button. A @class{gtk:frame} widget
-  draws a frame around its child and a @class{gtk:window} widget places its
-  child widget inside a toplevel window.
+  of the abstract @sym{gtk:container} base class. The first type of container
+  widget has a single child widget and derives from the @class{gtk:bin} class.
+  These containers are decorators, which add some kind of functionality to the
+  child. For example, a @class{gtk:button} widget makes its child into a
+  clickable button. A @class{gtk:frame} widget draws a frame around its child
+  and a @class{gtk:window} widget places its child widget inside a toplevel
+  window.
 
   The second type of container can have more than one child. Its purpose is to
   manage layout. This means that these containers assign sizes and positions
@@ -265,11 +263,9 @@
   properties that are not specific to either the container or the contained
   widget, but rather to their relation. Typical examples of child properties
   are the position or pack-type of a widget which is contained in a
-  @class{gtk:box} widget.
-
-  Use the @fun{gtk:container-class-find-child-property} or
-  @fun{gtk:container-class-list-child-properties} functions to get information
-  about existing child properties.
+  @class{gtk:box} widget. Use the @fun{gtk:container-class-find-child-property}
+  or @fun{gtk:container-class-list-child-properties} functions to get
+  information about existing child properties.
 
   To obtain or to set the value of a child property, use the
   @fun{gtk:container-child-property}, @fun{gtk:container-child-get},
@@ -279,11 +275,9 @@
     The @sym{gtk:container} implementation of the @class{gtk:buildable}
     interface supports a @code{<packing>} element for children, which can
     contain multiple @code{<property>} elements that specify child properties
-    for the child.
-
-    Child properties can also be marked as translatable using the same
-    \"translatable\", \"comments\" and \"context\" attributes that are used for
-    regular properties.
+    for the child. Child properties can also be marked as translatable using
+    the same \"translatable\", \"comments\" and \"context\" attributes that are
+    used for regular properties.
 
     Containers can have a @code{<focus-chain>} element containing multiple
     @code{<widget>} elements, one for each child that should be added to the
@@ -311,19 +305,19 @@
   @begin[Signal Details]{dictionary}
     @subheading{The \"add\" signal}
       @begin{pre}
- lambda (container widget)    :run-first
+lambda (container widget)    :run-first
       @end{pre}
     @subheading{The \"check-resize\" signal}
       @begin{pre}
- lambda (container)    :run-last
+lambda (container)    :run-last
       @end{pre}
     @subheading{The \"remove\" signal}
       @begin{pre}
- lambda (container widget)    :run-first
+lambda (container widget)    :run-first
       @end{pre}
     @subheading{The \"set-focus-child\" signal}
       @begin{pre}
- lambda (container widget)    :run-first
+lambda (container widget)    :run-first
       @end{pre}
   @end{dictionary}
   @see-slot{gtk:container-border-width}
@@ -348,7 +342,7 @@
 (setf (liber:alias-for-function 'container-border-width)
       "Accessor"
       (documentation 'container-border-width 'function)
- "@version{#2021-12-3}
+ "@version{2023-3-3}
   @syntax[]{(gtk:container-border-width object) => width}
   @syntax[]{(setf gtk:container-border-width object) width)}
   @argument[object]{a @class{gtk:container} widget}
@@ -357,10 +351,9 @@
     Accessor of the @slot[gtk:container]{border-width} slot of the
     @class{gtk:container} class.
   @end{short}
-
-  The @sym{gtk:container-border-width} slot access function retrieves the
-  border width of the container. The @sym{(setf gtk:container-border-width)}
-  slot acces function sets the border width.
+  The @sym{gtk:container-border-width} function retrieves the border width of
+  the container. The @sym{(setf gtk:container-border-width)} function sets the
+  border width.
 
   The border width of a container is the amount of space to leave around the
   outside of the container. Valid values are in the range [0, 65535] pixels.
@@ -386,7 +379,7 @@
 (setf (liber:alias-for-function 'container-child)
       "Accessor"
       (documentation 'container-child 'function)
- "@version{#2021-9-12}
+ "@version{2023-3-3}
   @syntax[]{(gtk:container-child object) => child}
   @syntax[]{(setf gtk:container-child object) child)}
   @argument[object]{a @class{gtk:container} widget}
@@ -395,7 +388,6 @@
     Accessor of the @slot[gtk:container]{child} slot of the
     @class{gtk:container} class.
   @end{short}
-
   Can be used to add a new child to the container.
   @see-class{gtk:container}
   @see-class{gtk:widget}")
@@ -416,7 +408,7 @@
 (setf (liber:alias-for-function 'container-resize-mode)
       "Accessor"
       (documentation 'container-resize-mode 'function)
- "@version{#2021-9-18}
+ "@version{2023-3-3}
   @syntax[]{(gtk:container-resize-mode object) => mode}
   @syntax[]{(setf gtk:container-resize-mode object) mode)}
   @argument[object]{a @class{gtk:container} widget}
@@ -425,10 +417,9 @@
     Accessor of the @slot[gtk:container]{resize-mode} slot of the
     @class{gtk:container} class.
   @end{short}
-
-  The @sym{gtk:container-resize-mode} slot access function returns the current
-  resize mode of the container. The @sym{(setf gtk:container-resize-mode)}
-  slot access function sets the resize mode.
+  The @sym{gtk:container-resize-mode} function returns the current resize mode
+  of the container. The @sym{(setf gtk:container-resize-mode)} function sets
+  the resize mode.
 
   The resize mode of a container determines whether a resize request will be
   passed to the parent of the container, queued for later execution or executed
@@ -474,7 +465,7 @@
 
 (defcfun ("gtk_container_add" container-add) :void
  #+liber-documentation
- "@version{#2021-10-11}
+ "@version{#2023-3-3}
   @argument[container]{a @class{gtk:container} widget}
   @argument[widget]{a @class{gtk:widget} child widget to be placed inside
     @arg{container}}
@@ -510,7 +501,7 @@
 
 (defcfun ("gtk_container_remove" container-remove) :void
  #+liber-documentation
- "@version{#2021-9-12}
+ "@version{#2023-3-3}
   @argument[container]{a @class{gtk:container} widget}
   @argument[widget]{a current @class{gtk:widget} child widget of
     @arg{container}}
@@ -556,7 +547,7 @@
 
 (defcfun ("gtk_container_check_resize" container-check-resize) :void
  #+liber-documentation
- "@version{#2020-9-12}
+ "@version{#2023-3-3}
   @argument[container]{a @class{gtk:container} widget}
   @begin{short}
     Emits the \"check-resize\" signal on the container.
@@ -581,16 +572,16 @@
 (setf (liber:alias-for-symbol 'gtk-callback)
       "Callback"
       (liber:symbol-documentation 'gtk-callback)
- "@version{#2021-9-20}
+ "@version{#2023-3-3}
   @begin{short}
     The type of the callback functions used for e.g. iterating over the
     children of a container, see the @fun{gtk:container-foreach} function.
   @end{short}
   @begin{pre}
- lambda (widget)
+lambda (widget)
   @end{pre}
   @begin[code]{table}
-    @entry[widget]{A @class{gtk:widget} object to operate on.}
+    @entry[widget]{A @class{gtk:widget} widget to operate on.}
   @end{table}
   @see-class{gtk:container}
   @see-function{gtk:container-foreach}
@@ -609,9 +600,9 @@
 
 (defun container-foreach (container func)
  #+liber-documentation
- "@version{#2021-9-12}
+ "@version{2023-3-3}
   @argument[container]{a @class{gtk:container} widget}
-  @argument[func]{a @symbol{gtk-callback} callback function}
+  @argument[func]{a @symbol{gtk:gtk-callback} callback function}
   @begin{short}
     Invokes a function on each non-internal child of the container.
   @end{short}
@@ -620,7 +611,7 @@
   @sym{gtk:container-foreach} function, rather than the
   @fun{gtk:container-forall} function.
   @see-class{gtk:container}
-  @see-symbol{gtk-callback}
+  @see-symbol{gtk:gtk-callback}
   @see-function{gtk:container-forall}"
   (with-stable-pointer (ptr func)
     (%container-foreach container
@@ -633,10 +624,9 @@
 ;;; gtk_container_get_children () -> container-children
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_container_get_children" container-children)
-    (g:list-t g:object :free-from-foreign t)
+(defcfun ("gtk_container_get_children" container-children) (g:list-t g:object)
  #+liber-documentation
- "@version{#2021-9-12}
+ "@version{#2023-3-3}
   @argument[container]{a @class{gtk:container} widget}
   @return{A list of the containers non-internal children.}
   @begin{short}
@@ -647,11 +637,11 @@
   @begin[Example]{dictionary}
     @begin{pre}
 (setq box (make-instance 'gtk-box :orientation :vertical))
-=> #<GTK-BOX {1001E2A183@}>
+=> #<GTK:BOX {1001E2A183@}>
 (gtk:container-add box (make-instance 'gtk:button))
 (gtk:container-add box (make-instance 'gtk:label))
 (gtk:container-children box)
-=> (#<GTK-BUTTON {1001E2B0A3@}> #<GTK-LABEL {1001E2BFD3@}>)
+=> (#<GTK:BUTTON {1001E2B0A3@}> #<GTK:LABEL {1001E2BFD3@}>)
     @end{pre}
   @end{dictionary}
   @see-class{gtk:container}
@@ -667,7 +657,7 @@
 (defcfun ("gtk_container_get_path_for_child" container-path-for-child)
     (g:boxed widget-path)
  #+liber-documentation
- "@version{#2021-9-12}
+ "@version{2023-3-3}
   @argument[container]{a @class{gtk:container} widget}
   @argument[child]{a @class{gtk:widget} child widget of @arg{container}}
   @return{A newly created @class{gtk:widget-path} instance.}
@@ -716,15 +706,15 @@
 
 (defun (setf container-focus-child) (child container)
   (cffi:foreign-funcall "gtk_container_set_focus_child"
-                   (g:object container) container
-                   (g:object widget) child
-                   :void)
+                        (g:object container) container
+                        (g:object widget) child
+                        :void)
   child)
 
 (defcfun ("gtk_container_get_focus_child" container-focus-child)
     (g:object widget)
  #+liber-documentation
- "@version{#2021-9-12}
+ "@version{2023-3-3}
   @syntax[]{(gtk:container-focus-child container) => child}
   @syntax[]{(setf (gtk:container-focus-child container) child)}
   @argument[container]{a @class{gtk:container} widget}
@@ -732,7 +722,6 @@
   @begin{short}
     Accessor of the current focused child widget in the container.
   @end{short}
-
   The @sym{gtk:container-focus-child} function returns the current focus child
   widget which will receive the focus inside the container when the container
   is focussed. This is not the currently focused widget. That can be obtained
@@ -762,15 +751,15 @@
 
 (defun (setf container-focus-vadjustment) (adjustment container)
   (cffi:foreign-funcall "gtk_container_set_focus_vadjustment"
-                   (g:object container) container
-                   (g:object adjustment) adjustment
-                   :void)
+                        (g:object container) container
+                        (g:object adjustment) adjustment
+                        :void)
   adjustment)
 
 (defcfun ("gtk_container_get_focus_vadjustment" container-focus-vadjustment)
     (g:object adjustment)
  #+liber-documentation
- "@version{#2021-9-12}
+ "@version{#2023-3-3}
   @syntax[]{(gtk:container-focus-vadjustment container) => adjustment}
   @syntax[]{(setf (gtk:container-focus-vadjustment container) adjustment)}
   @argument[container]{a @class{gtk:container} widget}
@@ -779,7 +768,6 @@
   @begin{short}
     Accessor of the vertical focus adjustment of the container.
   @end{short}
-
   The @sym{gtk:container-focus-vadjustment} function retrieves the vertical
   focus adjustment for the container. The
   @sym{(setf gtk:container-focus-vadjustment)} function sets the vertical
@@ -803,15 +791,15 @@
 
 (defun (setf container-focus-hadjustment) (adjustment container)
   (cffi:foreign-funcall "gtk_container_set_focus_hadjustment"
-                   (g:object container) container
-                   (g:object adjustment) adjustment
-                   :void)
+                        (g:object container) container
+                        (g:object adjustment) adjustment
+                        :void)
   adjustment)
 
 (defcfun ("gtk_container_get_focus_hadjustment" container-focus-hadjustment)
     (g:object adjustment)
  #+liber-documentation
- "@version{#2021-9-12}
+ "@version{#2023-3-3}
   @syntax[]{(gtk:container-focus-hadjustment container) => adjustment}
   @syntax[]{(setf (gtk:container-focus-hadjustment container) adjustment)}
   @argument[container]{a @class{gtk:container} widget}
@@ -820,7 +808,6 @@
   @begin{short}
     Accessor of the horizontal focus adjustment of the container.
   @end{short}
-
   The @sym{gtk:container-focus-hadjustment} function retrieves the horizontal
   focus adjustment for the container. The
   @sym{(setf gtk:container-focus-hadjustment)} function sets the horizontal
@@ -858,7 +845,7 @@
 
 (defcfun ("gtk_container_child_type" container-child-type) g:type-t
  #+liber-documentation
- "@version{#2021-9-12}
+ "@version{2023-3-3}
   @argument[container]{a @class{gtk:container} widget}
   @return{A @class{g:type-t} type ID.}
   @begin{short}
@@ -881,7 +868,7 @@
 
 (defun container-child-get (container child &rest args)
  #+liber-documentation
- "@version{#2021-9-12}
+ "@version{2023-3-3}
   @argument[container]{a @class{gtk:container} widget}
   @argument[child]{a @class{gtk:widget} child widget which is a child of
     @arg{container}}
@@ -907,7 +894,7 @@
 
 (defun container-child-set (container child &rest args)
  #+liber-documentation
- "@version{#2021-9-12}
+ "@version{2023-3-3}
   @argument[container]{a @class{gtk:container} widget}
   @argument[child]{a @class{gtk:widget} child widget which is a child of
     @arg{container}}
@@ -949,8 +936,7 @@
       (g:value-unset gvalue)
       (values value))))
 
-(defcfun ("gtk_container_child_get_property" %container-child-property)
-    :void
+(defcfun ("gtk_container_child_get_property" %container-child-property) :void
   (container (g:object container))
   (child (g:object widget))
   (property :string)
@@ -958,18 +944,21 @@
 
 (defun container-child-property (container child property &optional gtype)
  #+liber-documentation
- "@version{#2021-12-16}
+ "@version{2023-3-3}
   @syntax[]{(gtk:container-child-property container child property) => value}
   @syntax[]{(setf (gtk:container-child-property container child property) value)}
   @argument[container]{a @class{gtk:container} widget}
   @argument[child]{a @class{gtk:widget} object which is a child of
     @arg{container}}
   @argument[property]{a string with the name of the property to get}
+  @argument[gtype]{an optional @class{g:type-t} type ID for @arg{value}}
   @argument[value]{the value of the property}
   @begin{short}
     Gets or sets the value of a child property for the child widget of the
     container.
   @end{short}
+  If the @arg{gtype} type ID is not given, it is determined from the specified
+  @arg{property} argument.
   @see-class{gtk:container}
   @see-class{gtk:widget}
   @see-function{gtk:container-child-get}
@@ -1043,16 +1032,15 @@
 
 (defcfun ("gtk_container_child_notify" container-child-notify) :void
  #+liber-documentation
- "@version{#2021-9-12}
-  @argument[container]{the @class{gtk:container} widget}
-  @argument[child]{the @class{gtk:widget} child widget}
+ "@version{#2023-3-3}
+  @argument[container]{a @class{gtk:container} widget}
+  @argument[child]{a @class{gtk:widget} child widget}
   @argument[property]{a string with the name of a child property installed on
     the class of @arg{container}}
   @begin{short}
     Emits a \"child-notify\" signal for the @arg{property} child property on
     @arg{widget}.
   @end{short}
-
   This is an analogue of the @fun{g:object-notify} function for child
   properties. Also see the @fun{gtk:widget-child-notify} function.
   @see-class{gtk:container}
@@ -1100,10 +1088,10 @@
 
 (defun container-forall (container func)
  #+liber-documentation
- "@version{#2021-11-18}
+ "@version{2023-3-3}
   @argument[container]{a @class{gtk:container} widget}
-  @argument[func]{a @symbol{gtk:gtk-callback} callback function which is passed as
-    a callback}
+  @argument[func]{a @symbol{gtk:gtk-callback} callback function which is passed
+    as a callback}
   @begin{short}
     Invokes a function on each child of the container, including children that
     are considered \"internal\", implementation details of the container.
@@ -1167,26 +1155,24 @@
 
 (defun (setf container-focus-chain) (focusable container)
   (%container-set-focus-chain container
-                                  (mapcar #'g:object-pointer focusable))
+                              (mapcar #'g:object-pointer focusable))
   focusable)
 
-(defcfun ("gtk_container_get_focus_chain" %container-get-focus-chain)
-    :boolean
+(defcfun ("gtk_container_get_focus_chain" %container-get-focus-chain) :boolean
   (container (g:object container))
   (focusable (:pointer (g:list-t (g:object widget)))))
 
 (defun container-focus-chain (container)
  #+liber-documentation
- "@version{#2021-9-12}
+ "@version{2023-3-3}
   @syntax[]{(gtk:container-focus-chain container) => focusable}
   @syntax[]{(setf (gtk:container-focus-chain container) focusable)}
   @argument[container]{a @class{gtk:container} widget}
-  @argument[focusable]{a list of @class{gtk:widget} objects representing the
+  @argument[focusable]{a list of @class{gtk:widget} widgets representing the
     focus chain}
   @begin{short}
     Accessor of the focus chain widgets of the container.
   @end{short}
-
   The @sym{gtk:container-focus-chain} function retrieves the focus chain of the
   container, if one has been set explicitly. If no focus chain has been
   explicitly set, GTK computes the focus chain based on the positions of the
@@ -1217,10 +1203,9 @@
 ;;; gtk_container_unset_focus_chain ()                     deprecated
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_container_unset_focus_chain" container-unset-focus-chain)
-    :void
+(defcfun ("gtk_container_unset_focus_chain" container-unset-focus-chain) :void
  #+liber-documentation
- "@version{#2021-9-12}
+ "@version{#2023-3-3}
   @argument[container]{a @class{gtk:container} widget}
   @begin{short}
     Removes a focus chain explicitly set with the
@@ -1249,7 +1234,7 @@
 
 (defun container-class-find-child-property (gtype property)
  #+liber-documentation
- "@version{#2021-9-12}
+ "@version{2023-3-3}
   @argument[gtype]{a @class{g:type-t} type ID}
   @argument[property]{a string with the name of the child property to find}
   @begin{return}
@@ -1338,7 +1323,7 @@
 
 (defun container-class-list-child-properties (gtype)
  #+liber-documentation
- "@version{2022-12-11}
+ "@version{2023-3-3}
   @argument[gtype]{a @class{g:type-t} type ID}
   @return{A list of @symbol{g:param-spec} instances.}
   @short{Returns the child properties of a container type.}
@@ -1391,4 +1376,4 @@
 ;;;     the class struct of a GtkContainer subclass
 ;;; ----------------------------------------------------------------------------
 
-;;; --- End of file gtk.container.lisp -----------------------------------------
+;;; --- End of file gtk3.container.lisp ----------------------------------------
