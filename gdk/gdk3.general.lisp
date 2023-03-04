@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gdk.general.lisp
+;;; gdk3.general.lisp
 ;;;
 ;;; The documentation of this file is taken from the GDK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2021 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -161,7 +161,7 @@
 (defcfun ("gdk_get_display_arg_name" get-display-arg-name)
     (:string :free-from-foreign nil)
  #+liber-documentation
- "@version{#2021-12-13}
+ "@version{#2023-3-4}
   @return{A string with the display name, if specified explicitely, otherwise
     @code{nil}.}
   @begin{short}
@@ -177,7 +177,7 @@
 
 (defcfun ("gdk_notify_startup_complete" notify-startup-complete) :void
  #+liber-documentation
- "@version{#2021-12-13}
+ "@version{#2023-3-4}
   @begin{short}
     Indicates to the GUI environment that the application has finished loading.
   @end{short}
@@ -185,10 +185,10 @@
   opening the initial set of windows of the application.
 
   GTK will call this function automatically after opening the first
-  @class{gtk-window} object unless the
-  @fun{gtk-window-set-auto-startup-notification} function is called to disable
+  @class{gtk:window} widget unless the
+  @fun{gtk:window-set-auto-startup-notification} function is called to disable
   that feature.
-  @see-class{gtk-window}
+  @see-class{gtk:window}
   @see-function{gdk:notify-startup-complete-with-id}
   @see-function{gtk:window-set-auto-startup-notification}")
 
@@ -198,21 +198,21 @@
 ;;; gdk_notify_startup_complete_with_id ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_notify_startup_complete_with_id"
-           notify-startup-complete-with-id) :void
+(defcfun ("gdk_notify_startup_complete_with_id" notify-startup-complete-with-id)
+    :void
  #+liber-documentation
- "@version{#2021-12-13}
+ "@version{#2023-3-4}
   @argument[startup]{a string with the startup notification identifier}
   @begin{short}
     Indicates to the GUI environment that the application has finished loading,
     using a given startup notification identifier.
   @end{short}
 
-  GTK will call this function automatically for @class{gtk-window} object with
-  custom startup notification identifier unless the
-  @fun{gtk-window-set-auto-startup-notification} function is called to disable
+  GTK will call this function automatically for a @class{gtk:window} widget
+  with custom startup notification identifier unless the
+  @fun{gtk:window-set-auto-startup-notification} function is called to disable
   that feature.
-  @see-class{gtk-window}
+  @see-class{gtk:window}
   @see-function{gdk:notify-startup-complete}
   @see-function{gtk:window-set-auto-startup-notification}"
   (startup :string))
@@ -225,7 +225,7 @@
 
 (defcfun ("gdk_set_allowed_backends" set-allowed-backends) :void
  #+liber-documentation
- "@version{#2021-12-13}
+ "@version{#2023-3-4}
   @argument[backends]{a string with a comma-separated list of backends}
   @begin{short}
     Sets a list of backends that GDK should try to use.
@@ -262,8 +262,8 @@
 
 (defun (setf program-class) (program-class)
   (cffi:foreign-funcall "gdk_set_program_class"
-                   :string program-class
-                   :void)
+                        :string program-class
+                        :void)
   program-class)
 
 (defcfun ("gdk_get_program_class" program-class)
@@ -283,20 +283,18 @@
   Unless the program class has explicitly been set with the
   @sym{(setf gdk:program-class)} function or with the @code{--class} command
   line option, the default value is the program name determined with the
-  @fun{g-prgname} function and with the first character converted to uppercase.
+  @fun{g:prgname} function and with the first character converted to uppercase.
 
   The X11 backend uses the program class to set the class name part of the
   @code{WM_CLASS} property on toplevel windows. See the Inter-Client
   Communication Conventions Manual (ICCCM).
-  @see-function{g-prgname}")
+  @see-function{g:prgname}")
 
 (export 'program-class)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_get_display ()
+;;; gdk_get_display ()                                     not exported
 ;;; ----------------------------------------------------------------------------
-
-;; deprecated and not exported
 
 (defcfun ("gdk_get_display" get-display) (:string :free-from-foreign nil)
  #+liber-documentation
@@ -315,10 +313,8 @@
   @see-function{gdk:display-default}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_flush ()
+;;; gdk_flush ()                                           not exported
 ;;; ----------------------------------------------------------------------------
-
-;; deprecated and not exported
 
 (defcfun ("gdk_flush" flush) :void
  #+liber-documentation
@@ -358,10 +354,8 @@
 ;; Implemented in gdk.screen.lisp
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_pointer_grab ()
+;;; gdk_pointer_grab ()                                    not exported
 ;;; ----------------------------------------------------------------------------
-
-;; deprecated and not exported
 
 (defcfun ("gdk_pointer_grab" pointer-grab) grab-status
  #+liber-documentation
@@ -431,10 +425,8 @@
   (time :uint32))
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_pointer_ungrab ()
+;;; gdk_pointer_ungrab ()                                  not exported
 ;;; ----------------------------------------------------------------------------
-
-;; deprecated and not exported
 
 (defcfun ("gdk_pointer_ungrab" pointer-ungrab) :void
  #+liber-documentation
@@ -456,10 +448,8 @@
   (time :uint32))
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_pointer_is_grabbed ()
+;;; gdk_pointer_is_grabbed ()                              not exported
 ;;; ----------------------------------------------------------------------------
-
-;; deprecated and not exported
 
 (defcfun ("gdk_pointer_is_grabbed" pointer-is-grabbed) :boolean
  #+liber-documentation
@@ -481,10 +471,8 @@
   @see-function{gdk:display-device-is-grabbed}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_set_double_click_time ()
+;;; gdk_set_double_click_time ()                           not exported
 ;;; ----------------------------------------------------------------------------
-
-;; deprecated and not exported
 
 (defcfun ("gdk_set_double_click_time" set-double-click-time) :void
  #+liber-documentation
@@ -505,10 +493,8 @@
   (msec :uint))
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_keyboard_grab ()
+;;; gdk_keyboard_grab ()                                   not exported
 ;;; ----------------------------------------------------------------------------
-
-;; deprecated and not exported
 
 (defcfun ("gdk_keyboard_grab" keyboard-grab) grab-status
  #+liber-documentation
@@ -545,10 +531,8 @@
   (time :uint32))
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_keyboard_ungrab ()
+;;; gdk_keyboard_ungrab ()                                 not exported
 ;;; ----------------------------------------------------------------------------
-
-;; deprecated and not exported
 
 (defcfun ("gdk_keyboard_ungrab" keyboard-ungrab) :void
  #+liber-documentation
@@ -570,10 +554,8 @@
   (time :uint32))
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_beep ()
+;;; gdk_beep ()                                            not exported
 ;;; ----------------------------------------------------------------------------
-
-;; deprecated and not exported
 
 (defcfun ("gdk_beep" beep) :void
  #+liber-documentation
@@ -585,10 +567,8 @@
   @end{dictionary}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_error_trap_push ()
+;;; gdk_error_trap_push ()                                 not exported
 ;;; ----------------------------------------------------------------------------
-
-;; deprecated and not exported
 
 (defcfun ("gdk_error_trap_push" error-trap-push) :void
  #+liber-documentation
@@ -631,10 +611,8 @@
   @see-class{gdk:display-manager}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_error_trap_pop ()
+;;; gdk_error_trap_pop ()                                  not exported
 ;;; ----------------------------------------------------------------------------
-
-;; deprecated and not exported
 
 (defcfun ("gdk_error_trap_pop" error-trap-pop) :int
  #+liber-documentation
@@ -661,10 +639,8 @@
   @see-function{gdk:flush}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_error_trap_pop_ignored ()
+;;; gdk_error_trap_pop_ignored ()                          not exported
 ;;; ----------------------------------------------------------------------------
-
-;; deprecated and not exported
 
 (defcfun ("gdk_error_trap_pop_ignored" error-trap-pop-ignored) :void
  #+liber-documentation
@@ -683,4 +659,4 @@
   @end{dictionary}
   @see-function{gdk:error-trap-push}")
 
-;;; --- End of file gdk.general.lisp -------------------------------------------
+;;; --- End of file gdk3.general.lisp ------------------------------------------
