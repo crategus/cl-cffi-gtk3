@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gdk.display.lisp
+;;; gdk3.display.lisp
 ;;;
 ;;; The documentation of this file is taken from the GDK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2021 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -87,12 +87,12 @@
 ;;;
 ;;; Signals
 ;;;
-;;;     void    closed             Run Last
-;;;     void    monitor-added      Run Last
-;;;     void    monitor-removed    Run Last
-;;;     void    opened             Run Last
-;;;     void    seat-added         Run Last
-;;;     void    seat-removed       Run Last
+;;;     closed
+;;;     monitor-added
+;;;     monitor-removed
+;;;     opened
+;;;     seat-added
+;;;     seat-removed
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -115,7 +115,7 @@
 
 #+liber-documentation
 (setf (documentation 'display 'type)
- "@version{#2021-12-12}
+ "@version{2023-3-4}
   @begin{short}
     The @sym{gdk:display} object purpose is two fold:
     @begin{itemize}
@@ -138,7 +138,7 @@
   @begin[Signal Details]{dictionary}
     @subheading{The \"closed\" signal}
       @begin{pre}
- lambda (display is-error)    :run-last
+lambda (display is-error)    :run-last
       @end{pre}
       The signal is emitted when the connection to the windowing system for
       @arg{display} is closed.
@@ -150,7 +150,7 @@
       @end{table}
     @subheading{The \"monitor-added\" signal}
       @begin{pre}
- lambda (display monitor)    :run-last
+lambda (display monitor)    :run-last
       @end{pre}
       The signal is emitted whenever a monitor is added. Since 3.22
       @begin[code]{table}
@@ -160,7 +160,7 @@
       @end{table}
     @subheading{The \"monitor-removed\" signal}
       @begin{pre}
- lambda (display monitor)    :run-last
+lambda (display monitor)    :run-last
       @end{pre}
       The signal is emitted whenever a monitor is removed. Since 3.22
       @begin[code]{table}
@@ -170,7 +170,7 @@
       @end{table}
     @subheading{The \"opened\" signal}
       @begin{pre}
- lambda (display)   :run-last
+lambda (display)   :run-last
       @end{pre}
       The signal is emitted when the connection to the windowing system for
       @arg{display} is opened.
@@ -180,7 +180,7 @@
       @end{table}
     @subheading{The \"seat-added\" signal}
       @begin{pre}
- lambda (display seat)    :run-last
+lambda (display seat)    :run-last
       @end{pre}
       The signal is emitted whenever a new seat is made known to the windowing
       system. Since 3.20
@@ -191,7 +191,7 @@
       @end{table}
     @subheading{The \"seat-removed\" signal}
       @begin{pre}
- lambda (display seat)    :run-last
+lambda (display seat)    :run-last
       @end{pre}
       The signal is emitted whenever a seat is removed by the windowing system.
       Since 3.20
@@ -210,7 +210,7 @@
 
 (defcfun ("gdk_display_open" display-open) (g:object display)
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{2023-3-4}
   @argument[name]{a string with the name of the display to open}
   @begin{return}
     A @class{gdk:display} object, or @code{nil} if the display could not be
@@ -229,14 +229,13 @@
 (defcfun ("gdk_display_get_default" display-default)
     (g:object display)
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{2023-3-4}
   @begin{return}
     A @class{gdk:display} object, or @code{nil} if there is no default display.
   @end{return}
   @begin{short}
     Gets the default display.
   @end{short}
-
   This is a convenience function for the call
   @begin{pre}
 (gdk:display-manager-default-display (gdk:display-manager-get))
@@ -253,7 +252,7 @@
 
 (defcfun ("gdk_display_get_name" display-name) :string
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @begin{return}
     A string representing the display name.
@@ -270,7 +269,7 @@
 
 (defcfun ("gdk_display_get_n_screens" display-n-screens) :int
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{#2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @return{An integer with the number of screens.}
   @short{Gets the number of screens managed by the display.}
@@ -290,7 +289,7 @@
 
 (defcfun ("gdk_display_get_screen" display-screen) (g:object screen)
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{#2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @argument[num]{an integer with the screen number}
   @return{The @class{gdk:screen} object.}
@@ -315,7 +314,7 @@
 (defcfun ("gdk_display_get_default_screen" display-default-screen)
     (g:object screen)
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @return{The default @class{gdk:screen} object for @arg{display}.}
   @short{Get the default screen for the display.}
@@ -332,7 +331,7 @@
 (defcfun ("gdk_display_get_device_manager" display-device-manager)
     (g:object device-manager)
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{#2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @begin{return}
     A @class{gdk:device-manager} object, or @code{nil}.
@@ -423,10 +422,9 @@
 ;;; gdk_display_device_is_grabbed ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_display_device_is_grabbed" display-device-is-grabbed)
-    :boolean
+(defcfun ("gdk_display_device_is_grabbed" display-device-is-grabbed) :boolean
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{#2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @argument[device]{a @class{gdk:device} object}
   @return{A boolean that is @em{true} if there is a grab in effect for
@@ -448,7 +446,7 @@
 
 (defcfun ("gdk_display_beep" display-beep) :void
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @short{Emits a short beep on the display.}
   @see-class{gdk:display}"
@@ -462,7 +460,7 @@
 
 (defcfun ("gdk_display_sync" display-sync) :void
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @begin{short}
     Flushes any requests queued for the windowing system and waits until all
@@ -486,7 +484,7 @@
 
 (defcfun ("gdk_display_flush" display-flush) :void
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @begin{short}
     Flushes any requests queued for the windowing system.
@@ -510,7 +508,7 @@
 
 (defcfun ("gdk_display_close" display-close) :void
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{#2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @begin{short}
     Closes the connection to the windowing system for the given @arg{display},
@@ -527,7 +525,7 @@
 
 (defcfun ("gdk_display_is_closed" display-is-closed) :boolean
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{#2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @return{A boolean that is @em{true} if @arg{display} is closed.}
   @short{Finds out if the display has been closed.}
@@ -542,7 +540,7 @@
 
 (defcfun ("gdk_display_get_event" display-event) (g:boxed event :return)
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{#2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @begin{return}
     The next @class{gdk:event} event to be processed, or @code{nil} if no events
@@ -565,7 +563,7 @@
 
 (defcfun ("gdk_display_peek_event" display-peek-event) (g:boxed event :return)
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{#2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @begin{return}
     A copy of the first @class{gdk:event} event on the event queue, or
@@ -590,7 +588,7 @@
 
 (defcfun ("gdk_display_put_event" display-put-event) :void
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{#2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @argument[event]{a @class{gdk:event} event}
   @begin{short}
@@ -611,7 +609,7 @@
 
 (defcfun ("gdk_display_has_pending" display-has-pending) :boolean
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{#2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @return{A boolean that is @em{true} if there are events ready to be
     processed.}
@@ -630,7 +628,7 @@
 (defcfun ("gdk_display_set_double_click_time" display-set-double-click-time)
     :void
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @argument[msec]{an unsigned integer with the double click time in
     milliseconds}
@@ -654,7 +652,7 @@
 (defcfun ("gdk_display_set_double_click_distance"
           display-set-double-click-distance) :void
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @argument[distance]{an unsigned integer with the distance in pixels}
   @begin{short}
@@ -808,7 +806,7 @@
 (defcfun ("gdk_display_supports_cursor_color" display-supports-cursor-color)
     :boolean
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @return{A boolean whether cursors can have multiple colors.}
   @begin{short}
@@ -828,7 +826,7 @@
 (defcfun ("gdk_display_supports_cursor_alpha" display-supports-cursor-alpha)
     :boolean
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @return{A boolean whether cursors can have alpha channels.}
   @begin{short}
@@ -845,17 +843,16 @@
 ;;; gdk_display_get_default_cursor_size () -> display-default-cursor-size
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_display_get_default_cursor_size"
-           display-default-cursor-size) :uint
+(defcfun ("gdk_display_get_default_cursor_size" display-default-cursor-size)
+    :uint
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @return{An unsigned integer with the default cursor size.}
   @short{Returns the default size to use for cursors on the display.}
   @begin[Example]{dictionary}
     @begin{pre}
-(gdk:display-default-cursor-size (gdk:display-default))
-=> 24
+(gdk:display-default-cursor-size (gdk:display-default)) => 24
     @end{pre}
   @end{dictionary}
   @see-class{gdk:display}
@@ -868,15 +865,15 @@
 ;;; gdk_display_get_maximal_cursor_size () -> display-maximal-cursor-size
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_display_get_maximal_cursor_size"
-          %display-maximal-cursor-size) :void
+(defcfun ("gdk_display_get_maximal_cursor_size" %display-maximal-cursor-size)
+    :void
   (display (g:object display))
   (width (:pointer :uint))
   (height (:pointer :uint)))
 
 (defun display-maximal-cursor-size (display)
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{#2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @begin{return}
     @arg{width} -- an unsigned integer with the maximal cursor width @br{}
@@ -906,7 +903,7 @@
 (defcfun ("gdk_display_get_default_group" display-default-group)
     (g:object window)
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{#2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @return{The default group leader @class{gdk:window} object for @arg{display}.}
   @begin{short}
@@ -916,6 +913,7 @@
   This window is implicitly created by GDK. See the @fun{gdk:window-group}
   function.
   @see-class{gdk:display}
+  @see-class{gdk:window}
   @see-function{gdk:window-group}"
   (display (g:object display)))
 
@@ -928,7 +926,7 @@
 (defcfun ("gdk_display_supports_selection_notification"
            display-supports-selection-notification) :boolean
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @return{A boolean whether @class{gdk:event-owner-change} events will be sent.}
   @begin{short}
@@ -949,7 +947,7 @@
 (defcfun ("gdk_display_request_selection_notification"
            display-request-selection-notification) :boolean
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @argument[selection]{an atom as a string naming the selection for which
     ownership change notification is requested}
@@ -973,7 +971,7 @@
 (defcfun ("gdk_display_supports_clipboard_persistence"
            display-supports-clipboard-persistence) :boolean
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @return{A boolean that is @em{true} if @arg{display} supports clipboard
     persistance.}
@@ -1000,7 +998,7 @@
 
 (defun display-store-clipboard (display window time targets)
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @argument[window]{a @class{gdk:window} object belonging to the clipboard
     owner}
@@ -1034,7 +1032,7 @@
 
 (defcfun ("gdk_display_supports_shapes" display-supports-shapes) :boolean
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @return{A boolean that is @em{true} if shaped windows are supported.}
   @begin{short}
@@ -1054,7 +1052,7 @@
 (defcfun ("gdk_display_supports_input_shapes" display-supports-input-shapes)
     :boolean
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @return{A boolean that is @em{true} if windows with modified input shape are
     supported.}
@@ -1075,7 +1073,7 @@
 (defcfun ("gdk_display_supports_composite" display-supports-composite)
     :boolean
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{#2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @return{A boolean that is @em{true} if windows may be composited.}
   @begin{short}
@@ -1102,7 +1100,7 @@
 (defcfun ("gdk_display_get_app_launch_context"
            display-app-launch-context) (g:object app-launch-context)
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @begin{return}
     A new @class{gdk:app-launch-context} object for @arg{display}.
@@ -1121,10 +1119,10 @@
 ;;; gdk_display_notify_startup_complete ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_display_notify_startup_complete"
-           display-notify-startup-complete) :void
+(defcfun ("gdk_display_notify_startup_complete" display-notify-startup-complete)
+    :void
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @argument[startup]{a string with a startup notification identifier, for which
     notification process should be completed}
@@ -1132,13 +1130,13 @@
     Indicates to the GUI environment that the application has finished loading,
     using a given identifier.
   @end{short}
-  GTK will call this function automatically for @class{gtk-window} widgets
+  GTK will call this function automatically for @class{gtk:window} widgets
   with a custom startup notification identifier unless the
-  @fun{gtk-window-set-auto-startup-notification} function is called to disable
+  @fun{gtk:window-set-auto-startup-notification} function is called to disable
   that feature.
   @see-class{gdk:display}
-  @see-class{gtk-widget}
-  @see-function{gtk-window-set-auto-startup-notification}"
+  @see-class{gtk:window}
+  @see-function{gtk:window-set-auto-startup-notification}"
   (display (g:object display))
   (startup :string))
 
@@ -1149,10 +1147,9 @@
 ;;; ----------------------------------------------------------------------------
 
 #+gtk-3-20
-(defcfun ("gdk_display_get_default_seat"
-           display-default-seat) (g:object seat)
+(defcfun ("gdk_display_get_default_seat" display-default-seat) (g:object seat)
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @return{The default @class{gdk:seat} object.}
   @begin{short}
@@ -1173,9 +1170,9 @@
 
 #+gtk-3-20
 (defcfun ("gdk_display_list_seats" display-list-seats)
-    (g:list-t (g:object seat) :free-from-foreign t)
+    (g:list-t (g:object seat))
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @return{The list of @class{gdk:seat} objects known to @arg{display}.}
   @begin{short}
@@ -1197,7 +1194,7 @@
 #+gtk-3-22
 (defcfun ("gdk_display_get_n_monitors" display-n-monitors) :int
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @return{An integer with the number of monitors.}
   @begin{short}
@@ -1220,7 +1217,7 @@
 #+gtk-3-22
 (defcfun ("gdk_display_get_monitor" display-monitor) (g:object monitor)
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @argument[monitor-num]{an integer with the number of the monitor}
   @return{The @class{gdk:monitor} object, or @code{nil} if the
@@ -1246,7 +1243,7 @@
 (defcfun ("gdk_display_get_primary_monitor" display-primary-monitor)
     (g:object monitor)
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{#2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @return{The primary @class{gdk:monitor} object, or @code{nil} if no primary
     monitor is configured by the user.}
@@ -1274,7 +1271,7 @@
 (defcfun ("gdk_display_get_monitor_at_point" display-monitor-at-point)
     (g:object monitor)
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{#2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @argument[x]{an integer with the x coordinate of the point}
   @argument[y]{an integer with the y coordinate of the point}
@@ -1303,7 +1300,7 @@
 (defcfun ("gdk_display_get_monitor_at_window" display-monitor-at-window)
     (g:object monitor)
  #+liber-documentation
- "@version{#2021-12-12}
+ "@version{#2023-3-4}
   @argument[display]{a @class{gdk:display} object}
   @argument[window]{a @class{gdk:window} object}
   @return{The @class{gdk:monitor} object with the largest overlap with
@@ -1323,4 +1320,4 @@
 #+gtk-3-22
 (export 'display-monitor-at-window)
 
-;;; --- End of file gdk.display.lisp -------------------------------------------
+;;; --- End of file gdk3.display.lisp ------------------------------------------
