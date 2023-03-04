@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.event-controller-key.lisp
+;;; gtk3.event-controller-key.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
+;;; The documentation of this file is taken from the GTK Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
-;;; Copyright (C) 2019 - 2021 Dieter Kaiser
+;;; Copyright (C) 2019 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -40,12 +40,12 @@
 ;;;
 ;;; Signals
 ;;;
-;;;         void    focus-in        Run Last
-;;;         void    focus-out       Run Last
-;;;         void    im-update       Run Last
-;;;     gboolean    key-pressed     Run Last
-;;;         void    key-released    Run Last
-;;;     gboolean    modifiers       Run Last
+;;;     focus-in
+;;;     focus-out
+;;;     im-update
+;;;     key-pressed
+;;;     key-released
+;;;     modifiers
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -69,26 +69,26 @@
 
 #+liber-documentation
 (setf (documentation 'event-controller-key 'type)
- "@version{#2020-9-10}
+ "@version{#2023-3-1}
   @begin{short}
-    @sym{gtk:event-controller-key} is an event controller meant for situations
-    where you need access to key events.
+    The @sym{gtk:event-controller-key} object is an event controller meant for 
+    situations where you need access to key events.
   @end{short}
 
   This object was added in GTK 3.24.
   @begin[Signal Details]{dictionary}
     @subheading{The \"focus-in\" signal}
       @begin{pre}
-  lambda (eventcontrollerkey)    : Run Last
+lambda (controller)    :run-last
       @end{pre}
       Since 3.24
       @begin[code]{table}
-        @entry[eventcontrollerkey]{The @sym{gtk:event-controller-key} object on
-          which the signal is emitted.}
+        @entry[controller]{The @sym{gtk:event-controller-key} object on which 
+          the signal is emitted.}
       @end{table}
     @subheading{The \"focus-out\" signal}
       @begin{pre}
-lambda (controller)    : Run Last
+lambda (controller)    :run-last
       @end{pre}
       Since 3.24
       @begin[code]{table}
@@ -97,7 +97,7 @@ lambda (controller)    : Run Last
       @end{table}
     @subheading{The \"im-update\" signal}
       @begin{pre}
-lambda (controller)    : Run Last
+lambda (controller)    :run-last
       @end{pre}
       Since 3.24
       @begin[code]{table}
@@ -136,17 +136,18 @@ lambda (controller keyval keycode state)    :run-last
       @end{table}
     @subheading{The \"modifiers\" signal}
       @begin{pre}
-lambda (controller state)    : Run Last
+lambda (controller state)    :run-last
       @end{pre}
       Since 3.24
       @begin[code]{table}
         @entry[controller]{The @sym{gtk:event-controller-key} object on
           which received the signal.}
-        @entry[state]{The bitmask, representing the state of modifier keys and
-          pointer buttons of type @symbol{gdk:modifier-type}.}
+        @entry[state]{The @symbol{gdk:modifier-type} bitmask, representing the 
+          state of modifier keys and pointer buttons.}
         @entry[Returns]{a not documented boolean}
       @end{table}
   @end{dictionary}
+  @see-constructor{gtk:event-controller-key-new}
   @see-class{gtk:event-controller}")
 
 ;;; ----------------------------------------------------------------------------
@@ -157,8 +158,8 @@ lambda (controller state)    : Run Last
 
 (defun event-controller-key-new ()
  #+liber-documentation
- "@version{#2020-9-10}
-  @return{The new @class{gtk:event-controller-key} objekt.}
+ "@version{#2023-3-1}
+  @return{The new @class{gtk:event-controller-key} object.}
   @short{Creates a new event controller.}
 
   Since 3.24
@@ -167,4 +168,4 @@ lambda (controller state)    : Run Last
 
 (export 'event-controller-key-new)
 
-;;; --- End of File gtk.event-controller-key.lisp ------------------------------
+;;; --- End of File gtk3.event-controller-key.lisp -----------------------------

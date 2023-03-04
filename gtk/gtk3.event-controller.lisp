@@ -1,8 +1,8 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.event-controller.lisp
+;;; gtk3.event-controller.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK+ library.
+;;; The documentation of this file is taken from the GTK 3 Reference Manual
+;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
@@ -77,7 +77,7 @@
 (setf (liber:alias-for-symbol 'propagation-phase)
       "GEnum"
       (liber:symbol-documentation 'propagation-phase)
- "@version{#2020-9-10}
+ "@version{#2023-1-21}
   @begin{short}
     Describes the stage at which events are fed into a
     @class{gtk:event-controller} object.
@@ -129,7 +129,7 @@
 
 #+liber-documentation
 (setf (documentation 'event-controller 'type)
- "@version{#2023-3-21}
+ "@version{#2023-1-21}
   @begin{short}
     The @sym{gtk:event-controller} object is a base, low-level implementation
     for event controllers.
@@ -211,8 +211,8 @@
 ;;; gtk_event_controller_handle_event ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_event_controller_handle_event"
-           event-controller-handle-event) :boolean
+(defcfun ("gtk_event_controller_handle_event" event-controller-handle-event)
+    :boolean
  #+liber-documentation
  "@version{#2023-1-21}
   @argument[controller]{a @class{gtk:event-controller} object}
