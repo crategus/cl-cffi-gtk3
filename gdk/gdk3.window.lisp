@@ -255,7 +255,7 @@
 (setf (liber:alias-for-symbol 'window-type)
       "GEnum"
       (liber:symbol-documentation 'window-type)
- "@version{#2020-9-6}
+ "@version{2023-2-26}
   @short{Describes the kind of the window.}
   @begin{pre}
 (define-g-enum \"GdkWindowType\" window-type
@@ -270,12 +270,14 @@
   (:subsurface 6))
   @end{pre}
   @begin[code]{table}
-    @entry[:root]{Root window; this window has no parent, covers the entire
+    @entry[:root]{Root window, this window has no parent, covers the entire
       screen, and is created by the window system.}
-    @entry[:toplevel]{Toplevel window, used to implement @class{gtk-window}.}
-    @entry[:child]{Child window, used to implement e.g. @class{gtk-entry}.}
-    @entry[:temp]{Override redirect temporary window, used to implement
-      @class{gtk-menu}.}
+    @entry[:toplevel]{Toplevel window, used to implement the @class{gtk:window}
+      class.}
+    @entry[:child]{Child window, used to implement e.g. the @class{gtk:entry}
+      class.}
+    @entry[:temp]{Override redirect temporary window, used to implement the
+      @class{gtk:menu} class.}
     @entry[:foreign]{Foreign window.}
     @entry[:offscreen]{Offscreen window, see the section called
       \"Offscreen Windows\".}
@@ -284,9 +286,9 @@
       is only implemented in Wayland.}
   @end{table}
   @see-class{gdk:window}
-  @see-class{gtk-window}
-  @see-class{gtk-entry}
-  @see-class{gtk-menu}")
+  @see-class{gtk:window}
+  @see-class{gtk:entry}
+  @see-class{gtk:menu}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; enum GdkWindowWindowClass
@@ -302,7 +304,7 @@
 (setf (liber:alias-for-symbol 'window-window-class)
       "GEnum"
       (liber:symbol-documentation 'window-window-class)
- "@version{#2020-9-6}
+ "@version{2023-2-26}
   @begin{short}
     @code{:input-output} windows are the standard kind of window you might
     expect.
@@ -345,18 +347,19 @@
 (setf (liber:alias-for-symbol 'window-hints)
       "GFlags"
       (liber:symbol-documentation 'window-hints)
- "@version{#2020-9-6}
+ "@version{2023-2-26}
   @begin{short}
-    Used to indicate which fields of a @symbol{gdk:geometry} structure should
+    Used to indicate which fields of a @symbol{gdk:geometry} instance should
     be paid attention to.
   @end{short}
-  Also, the presence/absence of @code{:pos}, @code{:user-pos}, and
-  @code{:user-size} is significant, though they do not directly refer to
-  @symbol{gdk:geometry} fields. @code{:user-pos} will be set automatically by
-  @class{gtk-window} if you call the function @fun{gtk-window-move}.
-  @code{:user-pos} and @code{:user-size} should be set if the user specified a
-  size/position using a - geometry command-line argument; the function
-  @fun{gtk-window-parse-geometry} automatically sets these flags.
+  Also, the presence/absence of the @code{:pos}, @code{:user-pos}, and
+  @code{:user-size} values is significant, though they do not directly refer to
+  @symbol{gdk:geometry} fields. The @code{:user-pos} value will be set
+  automatically by the @class{gtk:window} widget if you call the
+  @fun{gtk:window-move} function. The @code{:user-pos} and @code{:user-size}
+  values should be set if the user specified a size/position using a - geometry
+  command-line argument. The @fun{gtk:window-parse-geometry} function
+  automatically sets these flags.
   @begin{pre}
 (define-g-flags \"GdkWindowHints\" window-hints
   (:export t
@@ -385,8 +388,8 @@
       the user.}
   @end{table}
   @see-symbol{gdk:geometry}
-  @see-class{gtk-window}
-  @see-function{gtk-window-parse-geometry}")
+  @see-class{gtk:window}
+  @see-function{gtk:window-parse-geometry}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; enum GdkGravity
@@ -410,12 +413,12 @@
 (setf (liber:alias-for-symbol 'gravity)
       "GEnum"
       (liber:symbol-documentation 'gravity)
- "@version{#2020-9-6}
+ "@version{2023-2-26}
   @begin{short}
     Defines the reference point of a window and the meaning of coordinates
-    passed to the function @fun{gtk-window-move}.
+    passed to the @fun{gtk:window-move} function.
   @end{short}
-  See the function @fun{gtk-window-move} and the \"implementation notes\"
+  See the @fun{gtk:window-move} function and the \"implementation notes\"
   section of the Extended Window Manager Hints specification for more details.
   @begin{pre}
 (define-g-enum \"GdkGravity\" gravity
@@ -446,7 +449,7 @@
       window itself, ignoring window manager decorations.}
   @end{table}
   @see-class{gdk:window}
-  @see-function{gtk-window-move}")
+  @see-function{gtk:window-move}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; struct GdkGeometry
@@ -469,35 +472,36 @@
 (setf (liber:alias-for-symbol 'geometry)
       "CStruct"
       (liber:symbol-documentation 'geometry)
- "@version{#2020-9-6}
+ "@version{2023-2-26}
   @begin{short}
     The @sym{gdk:geometry} structure gives the window manager information about
     a window's geometry constraints.
   @end{short}
-  Normally you would set these on the GTK level using the function
-  @fun{gtk-window-set-geometry-hints}. @class{gtk-window} then sets the hints
-  on the @class{gdk:window} it creates.
+  Normally you would set these on the GTK level using the
+  @fun{gtk:window-set-geometry-hints} function. The @class{gtk:window} widget
+  then sets the hints on the @class{gdk:window} object it creates.
 
-  The function @fun{gdk:window-set-geometry-hints} expects the hints to be fully
+  The @fun{gdk:window-set-geometry-hints} function expects the hints to be fully
   valid already and simply passes them to the window manager. In contrast, the
-  function @fun{gtk-window-set-geometry-hints} performs some interpretation. For
-  example, @class{gtk-window} will apply the hints to the geometry widget
-  instead of the toplevel window, if you set a geometry widget. Also, the
-  @code{min-width}/@code{min-height}/@code{max-width}/@code{max-height} fields
-  may be set to -1, and @class{gtk-window} will substitute the size request of
-  the window or geometry widget. If the minimum size hint is not provided,
-  @class{gtk-window} will use its requisition as the minimum size. If the
-  minimum size is provided and a geometry widget is set, @class{gtk-window} will
-  take the minimum size as the minimum size of the geometry widget rather than
-  the entire window. The base size is treated similarly.
+  @fun{gtk:window-set-geometry-hints} function performs some interpretation.
+  For example, the @class{gtk:window} widget will apply the hints to the
+  geometry widget instead of the toplevel window, if you set a geometry widget.
+  Also, the @code{min-width}/@code{min-height}/@code{max-width}/@code{max-height}
+  fields may be set to -1, and the @class{gtk:window} widget will substitute the
+  size request of the window or geometry widget. If the minimum size hint is not
+  provided, the @class{gtk:window} widget will use its requisition as the
+  minimum size. If the minimum size is provided and a geometry widget is set,
+  the @class{gtk:window} widget will take the minimum size as the minimum size
+  of the geometry widget rather than the entire window. The base size is treated
+  similarly.
 
-  The canonical use-case for the function @fun{gtk-window-set-geometry-hints} is
-  to get a terminal widget to resize properly. Here, the terminal text area
-  should be the geometry widget. @class{gtk-window} will then automatically set
-  the base size to the size of other widgets in the terminal window, such as the
-  menubar and scrollbar. Then, the @code{width-increment} and
-  @code{height-incement} fields should be set to the size of one character in
-  the terminal. Finally, the base size should be set to the size of one
+  The canonical use-case for the @fun{gtk:window-set-geometry-hints} function
+  is to get a terminal widget to resize properly. Here, the terminal text area
+  should be the geometry widget. The @class{gtk:window} widget will then
+  automatically set the base size to the size of other widgets in the terminal
+  window, such as the menubar and scrollbar. Then, the @code{width-increment}
+  and @code{height-incement} fields should be set to the size of one character
+  in the terminal. Finally, the base size should be set to the size of one
   character. The net effect is that the minimum size of the terminal will have
   a 1 x 1 character terminal area, and only terminal sizes on the
   \"character grid\" will be allowed.
@@ -542,106 +546,34 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   (win-gravity gravity))
   @end{pre}
   @begin[code]{table}
-    @entry[min-width]{Minimum width of window or -1 to use requisition,
-      with @class{gtk-window} only.}
-    @entry[min-height]{Minimum height of window or -1 to use requisition,
-      with @class{gtk-window} only.}
-    @entry[max-width]{Maximum width of window or -1 to use requisition,
-      with @class{gtk-window} only.}
-    @entry[max-height]{Maximum height of window or -1 to use requisition,
-      with @class{gtk-window} only.}
-    @entry[base-width]{Allowed window widths are @code{base-width} +
-      @code{width-inc} * @code{N} where @code{N} is any integer, -1 is allowed
-      with @class{gtk-window}.}
-    @entry[base-height]{Allowed window widths are @code{base-height} +
-      @code{height-inc} * @code{N} where @code{N} is any integer, -1 is allowed
-      with @class{gtk-window}.}
-    @entry[width-increment]{Width resize increment.}
-    @entry[height-increment]{Height resize increment.}
-    @entry[min-aspect]{Minimum width/height ratio.}
-    @entry[max-aspect]{Maximum width/height ratio.}
-    @entry[win-gravity]{Window gravity of type @symbol{gdk:gravity}, see the
-      @fun{gtk-window-gravity} function.}
+    @entry[min-width]{An integer with the minimum width of window or -1 to use
+      requisition, with the @class{gtk:window} widget only.}
+    @entry[min-height]{An integer with the minimum height of window or -1 to
+      use requisition, with the @class{gtk:window} widget only.}
+    @entry[max-width]{An integer with the maximum width of window or -1 to use
+      requisition, with the @class{gtk:window} widget only.}
+    @entry[max-height]{An integer with the maximum height of window or -1 to
+      use requisition, with the @class{gtk:window} widget only.}
+    @entry[base-width]{An integer with the allowed window widths are
+      @code{base-width} + @code{width-inc} * @code{N} where @code{N} is any
+      integer, -1 is allowed with the @class{gtk:window} widget.}
+    @entry[base-height]{An integer with the allowed window widths are
+      @code{base-height} + @code{height-inc} * @code{N} where @code{N} is any
+      integer, -1 is allowed with the @class{gtk:window} widget.}
+    @entry[width-increment]{An integer with the width resize increment.}
+    @entry[height-increment]{An integer with the height resize increment.}
+    @entry[min-aspect]{A double float with the minimum width/height ratio.}
+    @entry[max-aspect]{A double float with the maximum width/height ratio.}
+    @entry[win-gravity]{A @symbol{gdk:gravity} value for the window gravity,
+      see the @fun{gtk:window-gravity} function.}
   @end{table}
-  @see-constructor{make-geometry}
   @see-class{gdk:window}
-  @see-class{gtk-window}
+  @see-class{gtk:window}
   @see-function{gdk:window-set-geometry-hints}
-  @see-function{gtk-window-set-geometry-hints}
-  @see-function{gtk-window-gravity}")
+  @see-function{gtk:window-set-geometry-hints}
+  @see-function{gtk:window-gravity}")
 
 (export 'geometry)
-
-;;; ----------------------------------------------------------------------------
-;;; Constructors for GdkGeometry
-;;; ----------------------------------------------------------------------------
-
-(defun make-geometry (&key (min-width 0)
-                               (min-height 0)
-                               (max-width 0)
-                               (max-height 0)
-                               (base-width 0)
-                               (base-height 0)
-                               (width-increment 0)
-                               (height-increment 0)
-                               (min-aspect 0.0d0)
-                               (max-aspect 0.0d0)
-                               (win-gravity :north-west))
- #+liber-documentation
- "@version{#2020-9-6}
-  @argument[min-width]{a @code{:int} with the minimum width of window or -1
-    to use requisition, with @class{gtk-window} only}
-  @argument[min-height]{a @code{:int} with minimum height of window or -1 to
-    use requisition, with @class{gtk-window} only}
-  @argument[max-width]{a @code{:int} with maximum width of window or -1 to
-    use requisition, with @class{gtk-window} only}
-  @argument[max-height]{a @code{:int} with maximum height of window or -1 to
-    use requisition, with @class{gtk-window} only}
-  @argument[base-width]{a @code{:int} with allowed window widths are
-    @code{base-width + width-inc * N} where @code{N} is any integer, -1 is
-    allowed with @class{gtk-window}}
-  @argument[base-height]{a @code{:int} with allowed window widths are
-    @code{base-height + height-inc * N} where @code{N} is any integer, -1
-    allowed with @class{gtk-window}}
-  @argument[width-increment]{a @code{:int} with width resize increment}
-  @argument[height-increment]{a @code{:int} with height resize increment}
-  @argument[min-aspect]{a @code{:double} with minimum width/height ratio}
-  @argument[max-aspect]{a @code{:double} with maximum width/height ratio}
-  @argument[win-gravity]{window gravity of type @symbol{gdk:gravity}, see the
-    function @fun{gtk-window-gravity}}
-  @begin{short}
-    Creates a @symbol{gdk:geometry} structure.
-  @end{short}
-  @see-symbol{gdk:geometry}
-  @see-function{gtk-window-gravity}"
-  (with-foreign-object (ptr '(:struct geometry))
-    ;; Initialize the slots
-    (setf (cffi:foreign-slot-value ptr '(:struct geometry) 'gdk::min-width)
-          min-width
-          (cffi:foreign-slot-value ptr '(:struct geometry) 'gdk::min-height)
-          min-height
-          (cffi:foreign-slot-value ptr '(:struct geometry) 'gdk::max-width)
-          max-width
-          (cffi:foreign-slot-value ptr '(:struct geometry) 'gdk::max-height)
-          max-height
-          (cffi:foreign-slot-value ptr '(:struct geometry) 'gdk::base-width)
-          base-width
-          (cffi:foreign-slot-value ptr '(:struct geometry) 'gdk::base-height)
-          base-height
-          (cffi:foreign-slot-value ptr '(:struct geometry) 'gdk::width-increment)
-          width-increment
-          (cffi:foreign-slot-value ptr '(:struct geometry) 'gdk::height-increment)
-          height-increment
-          (cffi:foreign-slot-value ptr '(:struct geometry) 'gdk::min-aspect)
-          min-aspect
-          (cffi:foreign-slot-value ptr '(:struct geometry) 'gdk::max-aspect)
-          max-aspect
-          (cffi:foreign-slot-value ptr '(:struct geometry) 'gdk::win-gravity)
-          win-gravity)
-    ;; Return the pointer to the GdkGeometry structure
-    ptr))
-
-(export 'make-geometry)
 
 ;;; ----------------------------------------------------------------------------
 ;;; enum GdkAnchorHints
@@ -665,11 +597,10 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (setf (liber:alias-for-symbol 'anchor-hints)
       "GFlags"
       (liber:symbol-documentation 'anchor-hints)
- "@version{#2021-7-17}
+ "@version{2023-2-26}
   @begin{short}
     Positioning hints for aligning a window relative to a rectangle.
   @end{short}
-
   These hints determine how the window should be positioned in the case that
   the window would fall off-screen if placed in its ideal position. For example,
   @code{:flip-x} will replace @code{:north-west} with @code{:north-east} and
@@ -707,7 +638,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
     @entry[:resize-y]{Allow resizing window vertically.}
     @entry[:flip]{Allow flipping anchors on both axes.}
     @entry[:slide]{Allow sliding window on both axes.}
-    @endtry[:resize]{Allow resizing window on both axes.}
+    @entry[:resize]{Allow resizing window on both axes.}
   @end{table}
   @see-class{gdk:window}")
 
@@ -731,7 +662,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (setf (liber:alias-for-symbol 'window-edge)
       "GEnum"
       (liber:symbol-documentation 'window-edge)
- "@version{#2020-9-6}
+ "@version{2023-2-26}
   @begin{short}
     Determines a window edge or corner.
   @end{short}
@@ -786,7 +717,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (setf (liber:alias-for-symbol 'window-type-hint)
       "GEnum"
       (liber:symbol-documentation 'window-type-hint)
- "@version{#2021-5-27}
+ "@version{2023-2-26}
   @begin{short}
     These are hints for the window manager that indicate what type of function
     the window has.
@@ -828,8 +759,8 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
     @entry[:dock]{Used for creating dock or panel windows.}
     @entry[:desktop]{Used for creating the desktop background window.}
     @entry[:dropdown-menu]{A menu that belongs to a menubar.}
-    @entry[:popup-menu]{A menu that does not belong to a menubar, e.g. a context
-      menu.}
+    @entry[:popup-menu]{A menu that does not belong to a menubar, e.g. a
+      context menu.}
     @entry[:tooltip]{A tooltip.}
     @entry[:notification]{A notification - typically a \"bubble\" that belongs
       to a status icon.}
@@ -843,7 +774,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 ;;; ----------------------------------------------------------------------------
 
 (defcstruct window-attr
-  (title (:string :free-from-foreign nil))
+  (title :string)
   (event-mask event-mask)
   (x :int)
   (y :int)
@@ -853,8 +784,8 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   (visual (g:object visual))
   (window-type window-type)
   (cursor (g:object cursor))
-  (wmclass-name (:string :free-from-foreign nil))
-  (wmclass-class (:string :free-from-foreign nil))
+  (wmclass-name :string)
+  (wmclass-class :string)
   (override-redirect :boolean)
   (type-hint window-type-hint))
 
@@ -862,13 +793,13 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (setf (liber:alias-for-symbol 'window-attr)
       "CStruct"
       (liber:symbol-documentation 'window-attr)
- "@version{#2020-9-6}
+ "@version{2023-2-26}
   @begin{short}
     Attributes to use for a newly created window.
   @end{short}
   @begin{pre}
 (defcstruct window-attr
-  (title (:string :free-from-foreign nil))
+  (title :string)
   (event-mask event-mask)
   (x :int)
   (y :int)
@@ -878,127 +809,40 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   (visual (g:object visual))
   (window-type window-type)
   (cursor (g:object cursor))
-  (wmclass-name (:string :free-from-foreign nil))
-  (wmclass-class (:string :free-from-foreign nil))
+  (wmclass-name :string)
+  (wmclass-class :string)
   (override-redirect :boolean)
   (type-hint window-type-hint))
   @end{pre}
   @begin[code]{table}
-    @entry[title]{A @code{:string} with the title of the window for toplevel
-      windows.}
-    @entry[event-mask]{@symbol{gdk:event-mask} flags, see the function
-      @fun{gdk:window-events}.}
-    @entry[x]{A @code{:int} with the x coordinate relative to parent window,
-      see the function @fun{gdk:window-move}.}
-    @entry[y]{A @code{:int} with the y coordinate relative to parent window,
-      see the function @fun{gdk:window-move}.}
-    @entry[width]{A @code{:int} with the width of the window.}
-    @entry[height]{A @code{:int} with the height of window.}
-    @entry[wclass]{A value of the @symbol{gdk:window-window-class} enumeration,
+    @entry[title]{A string with the title of the window for toplevel windows.}
+    @entry[event-mask]{a @symbol{gdk:event-mask} value, see the
+      @fun{gdk:window-events} function.}
+    @entry[x]{An integer with the x coordinate relative to parent window,
+      see the @fun{gdk:window-move} function.}
+    @entry[y]{An integer with the y coordinate relative to parent window,
+      see the @fun{gdk:window-move} function.}
+    @entry[width]{An integer with the width of the window.}
+    @entry[height]{An integer with the height of window.}
+    @entry[wclass]{A @symbol{gdk:window-window-class} value,
       @code{:input-output} for a normal window or @code{:input-only} for an
       invisible window that receives events.}
     @entry[visual]{A @class{gdk:visual} object for the window.}
-    @entry[window-type]{A value of the @symbol{gdk:window-type} enumeration.}
-    @entry[cursor]{A @class{gdk:cusor} object for the window, see the function
-      @fun{gdk:window-cursor}.}
-    @entry[wmclass-name]{A @code{:string}, do not use.}
-    @entry[wmclass-class]{A @code{:string}, do not use.}
+    @entry[window-type]{A @symbol{gdk:window-type} value.}
+    @entry[cursor]{A @class{gdk:cursor} object for the window, see the
+      @fun{gdk:window-cursor} function.}
+    @entry[wmclass-name]{A string, do not use.}
+    @entry[wmclass-class]{A string, do not use.}
     @entry[override-redirect]{@em{True} to bypass the window manager.}
-    @entry[type-hint]{A value of the @symbol{gdk:window-type-hint} enumeration
-      of the function of the window.}
+    @entry[type-hint]{A @symbol{gdk:window-type-hint} value of the function of
+      the window.}
   @end{table}
-  @see-constructor{make-window-attr}
   @see-class{gdk:visual}
   @see-function{gdk:window-move}
   @see-function{gdk:window-cursor}
   @see-function{gdk:window-events}")
 
 (export 'window-attr)
-
-;;; ----------------------------------------------------------------------------
-;;; Constructors for the GdkWindowAttr structure
-;;; ----------------------------------------------------------------------------
-
-(defun make-window-attr (&key (title "")
-                                  (event-mask nil)
-                                  (x 0) (y 0)
-                                  (width 0) (height 0)
-                                  (wclass :input-output)
-                                  (visual nil)
-                                  (window-type :toplevel)
-                                  (cursor nil)
-                                  (wmclass-name "")
-                                  (wmclass-class "")
-                                  (override-redirect nil)
-                                  (type-hint :normal))
- "@version{#2020-9-6}
-  @argument[title]{a @code{:string} with the title of the window, for toplevel
-    windows}
-  @argument[event-mask]{@symbol{gdk:event-mask} flags, see the function
-    @fun{gdk:window-events}}
-  @argument[x]{a @code{:int} with the x coordinate relative to the parent
-    window, see the function @fun{gdk:window-move}}
-  @argument[y]{a @code{:int} with the y coordinate relative to the parent
-    window, see the function @fun{gdk:window-move}}
-  @argument[width]{a @code{:int} with the width of the window}
-  @argument[height]{a @code{:int} with the height of the window}
-  @argument[window-class]{a value of the @symbol{gdk:window-window-class},
-    @code{:input-output} for a normal window or @code{:input-only} for an
-    invisible window that receives events}
-  @argument[visual]{a @class{gdk:visual} for the window}
-  @argument[window-type]{a value of the @symbol{gdk:window-type} enumeration}
-  @argument[cursor]{a @class{gdk:cursor} object for the window, see the function
-    @fun{gdk:window-cursor}}
-  @argument[wmclass-name]{a @code{:string}, do not use}
-  @argument[wmclass-class]{a @code{:string}, do not use}
-  @argument[override-redirect]{@em{true} to bypass the window manager}
-  @argument[type-hint]{a value of the @symbol{gdk:window-type-hint} enumeration
-    of the function of the window}
-  @begin{short}
-    Creates a @symbol{gdk:window-attr} structure with default values
-    for the arguments.
-  @end{short}
-  @see-symbol{gdk:window-attr}
-  @see-function{gdk:window-move}
-  @see-function{gdk:window-cursor}
-  @see-function{gdk:window-events}"
-  (with-foreign-object (ptr '(:struct window-attr))
-    ;; Initialize the slots
-    (setf (cffi:foreign-slot-value ptr '(:struct window-attr) 'gdk::title)
-          title
-          (cffi:foreign-slot-value ptr '(:struct window-attr) 'gdk::event-mask)
-          event-mask
-          (cffi:foreign-slot-value ptr '(:struct window-attr) 'gdk::x)
-          x
-          (cffi:foreign-slot-value ptr '(:struct window-attr) 'gdk::y)
-          y
-          (cffi:foreign-slot-value ptr '(:struct window-attr) 'gdk::width)
-          width
-          (cffi:foreign-slot-value ptr '(:struct window-attr) 'gdk::height)
-          height
-          (cffi:foreign-slot-value ptr '(:struct window-attr) 'gdk::wclass)
-          wclass
-          (cffi:foreign-slot-value ptr '(:struct window-attr) 'gdk::visual)
-          visual
-          (cffi:foreign-slot-value ptr '(:struct window-attr) 'gdk::window-type)
-          window-type
-          (cffi:foreign-slot-value ptr '(:struct window-attr) 'gdk::cursor)
-          cursor
-          (cffi:foreign-slot-value ptr
-                                   '(:struct window-attr) 'gdk::wmclass-name)
-          wmclass-name
-          (cffi:foreign-slot-value ptr '(:struct window-attr)
-                                   'gdk::wmclass-class)
-          wmclass-class
-          (cffi:foreign-slot-value ptr '(:struct window-attr)
-                                  'gdk::override-redirect)
-          override-redirect
-          (cffi:foreign-slot-value ptr '(:struct window-attr) 'gdk::type-hint)
-          type-hint)
-    ;; Return the pointer to the GdkWindowAttr structure
-    ptr))
-
-(export 'make-window-attr)
 
 ;;; ----------------------------------------------------------------------------
 ;;; enum GdkWindowAttributesType
@@ -1020,17 +864,18 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (setf (liber:alias-for-symbol 'window-attributes-type)
       "GFlags"
       (liber:symbol-documentation 'window-attributes-type)
- "@version{#2020-9-6}
+ "@version{2023-2-26}
   @begin{short}
     Used to indicate which fields in the @symbol{gdk:window-attr} structure
     should be honored.
   @end{short}
-  For example, if you filled in the @code{cursor} and @code{x} fields of
-  @symbol{gdk:window-attr}, pass @code{'(:x :cursor)} to the function
-  @fun{gdk:window-new}. Fields in @symbol{gdk:window-attr} not covered by a bit
-  in this enum are required. For example, the @code{width}/@code{height},
-  @code{wclass}, and @code{window-type} fields are required, they have no
-  corresponding flag in @symbol{gdk:window-attributes-type}.
+  For example, if you filled in the @code{cursor} and @code{x} fields of the
+  @symbol{gdk:window-attr} structure, pass @code{'(:x :cursor)} to the
+  @fun{gdk:window-new} function. Fields in the @symbol{gdk:window-attr}
+  structure not covered by a bit in this enumeration are required. For example,
+  the @code{width}/@code{height}, @code{wclass}, and @code{window-type} fields
+  are required, they have no corresponding flag in the
+  @symbol{gdk:window-attributes-type} flags.
   @begin{pre}
 (define-g-flags \"GdkWindowAttributesType\" window-attributes-type
   (:export t
@@ -1072,7 +917,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (setf (liber:alias-for-symbol 'fullscreen-mode)
       "GEnum"
       (liber:symbol-documentation 'fullscreen-mode)
- "@version{#2020-9-6}
+ "@version{2023-2-26}
   @begin{short}
     Indicates which monitor (in a multi-head setup) a window should span over
     when in fullscreen mode.
@@ -1091,11 +936,14 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   @see-class{gdk:window}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GdkFilterReturn
+;;; enum GdkFilterReturn                                   not exported
 ;;; ----------------------------------------------------------------------------
 
+;; TODO: The filter functionality is not implemented. Consider to remove
+;; this code. The enumeration is not exported.
+
 (define-g-enum "GdkFilterReturn" filter-return
-  (:export t
+  (:export nil
    :type-initializer "gdk_filter_return_get_type")
   (:continue 0)
   (:translate 1)
@@ -1105,7 +953,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (setf (liber:alias-for-symbol 'filter-return)
       "GEnum"
       (liber:symbol-documentation 'filter-return)
- "@version{#2020-9-6}
+ "@version{2023-2-26}
   @begin{short}
     Specifies the result of applying a @code{GdkFilterFunc} to a native event.
   @end{short}
@@ -1144,11 +992,11 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (setf (liber:alias-for-symbol 'modifier-intent)
       "GEnum"
       (liber:symbol-documentation 'modifier-intent)
- "@version{#2021-4-1}
+ "@version{2023-2-26}
   @begin{short}
-    This enum is used with the function @fun{gdk:keymap-modifier-mask} in order
-    to determine what modifiers the currently used windowing system backend
-    uses for particular purposes.
+    This enumeration is used with the @fun{gdk:keymap-modifier-mask} function
+    in order to determine what modifiers the currently used windowing system
+    backend uses for particular purposes.
   @end{short}
   For example, on X11/Windows, the Control key is used for invoking menu
   shortcuts (accelerators), whereas on Apple computers it is the Command key,
@@ -1179,12 +1027,12 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
     @entry[:no-text-input]{When any of these modifiers is pressed, the key
       event cannot produce a symbol directly. This is meant to be used for
       input methods, and for use cases like typeahead search.}
-    @entry[:shift-group]{The modifier that switches between keyboard groups.
-      AltGr on X11/Windows and Option/Alt on OS X.}
+    @entry[:shift-group]{The modifier that switches between keyboard groups,
+      the @kbd{AltGr} key on X11/Windows and the @kbd{Option/Alt} key on OS X.}
     @entry[:default-mod-mask]{The set of modifier masks accepted as modifiers
-      in accelerators. Needed because Command is mapped to MOD2 on OSX, which
-      is widely used, but on X11 MOD2 is NumLock and using that for a mod key
-      is problematic at best.}
+      in accelerators. Needed because the @kbd{Command} key is mapped to
+      @code{MOD2} on OSX, which is widely used, but on X11 @code{MOD2} is the
+      @kbd{NumLock} key and using that for a mod key is problematic at best.}
   @end{table}
   @see-symbol{gdk:modifier-type}
   @see-function{gdk:keymap-modifier-mask}")
@@ -1208,7 +1056,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (setf (liber:alias-for-symbol 'wm-decoration)
       "GFlags"
       (liber:symbol-documentation 'wm-decoration)
- "@version{#2020-9-6}
+ "@version{2023-2-26}
   @begin{short}
     These are hints originally defined by the Motif toolkit.
   @end{short}
@@ -1255,7 +1103,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (setf (liber:alias-for-symbol 'wm-function)
       "GFlags"
       (liber:symbol-documentation 'wm-function)
- "@version{#2020-9-6}
+ "@version{2023-2-26}
   @begin{short}
     These are hints originally defined by the Motif toolkit.
   @end{short}
@@ -1297,140 +1145,138 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
     "cursor" "GdkCursor" t t)))
 
 (setf (documentation 'window 'type)
- "@version{#2020-9-7}
+ "@version{2023-2-26}
   @begin{short}
     Onscreen display areas in the target window system.
   @end{short}
-
   A @sym{gdk:window} object is a usually rectangular region on the screen.
   It is a low-level object, used to implement high-level objects such as
-  @class{gtk-widget} and @class{gtk-window} widgets on the GTK level. A
-  @class{gtk-window} widget is a toplevel window, the thing a user might think
-  of as a \"window\" with a titlebar and so on. A @class{gtk-window} widget
+  @class{gtk:widget} and @class{gtk:window} widgets on the GTK level. A
+  @class{gtk:window} widget is a toplevel window, the thing a user might think
+  of as a \"window\" with a titlebar and so on. A @class{gtk:window} widget
   may contain many @sym{gdk:window} objects. For example, each
-  @class{gtk-button} widget has a @sym{gdk:window} object associated with it.
+  @class{gtk:button} widget has a @sym{gdk:window} object associated with it.
 
   @subheading{Composited Windows}
     Normally, the windowing system takes care of rendering the contents of a
     child window onto its parent window. This mechanism can be intercepted by
-    calling the function @fun{gdk:window-composited} on the child window.
+    calling the @fun{gdk:window-composited} function on the child window.
     For a composited window it is the responsibility of the application to
     render the window contents at the right spot.
 
   @subheading{Offscreen Windows}
-    Offscreen windows are more general than composited windows, since they allow
-    not only to modify the rendering of the child window onto its parent, but
-    also to apply coordinate transformations.
+    Offscreen windows are more general than composited windows, since they
+    allow not only to modify the rendering of the child window onto its parent,
+    but also to apply coordinate transformations.
 
     To integrate an offscreen window into a window hierarchy, one has to call
-    the function @fun{gdk:offscreen-window-set-embedder} and handle a number of
+    the @fun{gdk:offscreen-window-embedder} function and handle a number of
     signals. The \"pick-embedded-child\" signal on the embedder window is used
     to select an offscreen child at given coordinates, and the \"to-embedder\"
     and \"from-embedder\" signals on the offscreen window are used to translate
     coordinates between the embedder and the offscreen window.
 
     For rendering an offscreen window onto its embedder, the contents of the
-    offscreen window are available as a surface, via the function
-    @fun{gdk:offscreen-window-surface}.
+    offscreen window are available as a surface, via the
+    @fun{gdk:offscreen-window-surface} function.
   @begin[Signal Details]{dictionary}
     @subheading{The \"create-surface\" signal}
       @begin{pre}
- lambda (window width height)    : Run Last
+lambda (window width height)    :run-last
       @end{pre}
-      The \"create-surface\" signal is emitted when an offscreen window needs
-      its surface (re)created, which happens either when the the window is first
-      drawn to, or when the window is being resized. The first signal handler
-      that returns a non-@code{nil} surface will stop any further signal
-      emission, and its surface will be used. Note that it is not possible to
-      access the window's previous surface from within any callback of this
-      signal. Calling the function @fun{gdk:offscreen-window-surface} will
-      lead to a crash.
+      The signal is emitted when an offscreen window needs its surface
+      (re)created, which happens either when the the window is first drawn to,
+      or when the window is being resized. The first signal handler that returns
+      a non-@code{nil} surface will stop any further signal emission, and its
+      surface will be used. Note that it is not possible to access the window's
+      previous surface from within any callback of this signal. Calling the
+      @fun{gdk:offscreen-window-surface} function will lead to a crash.
       @begin[code]{table}
         @entry[window]{The @sym{gdk:window} offscreen window on which the
           signal is emitted.}
-        @entry[width]{A @code{:int} with the width of the offscreen surface to
+        @entry[width]{An integer with the width of the offscreen surface to
           create.}
-        @entry[height]{A @code{:int} with the height of the offscreen surface
+        @entry[height]{An integer with the height of the offscreen surface
           to create.}
         @entry[Returns]{The newly created @symbol{cairo:surface-t} instance
           for the offscreen window.}
       @end{table}
     @subheading{The \"from-embedder\" signal}
       @begin{pre}
- lambda (window embedder-x embedder-y offscreen-x offscreen-y)    : Run Last
+lambda (window xembedder yembedder xoffscreen yoffscreen)    :run-last
       @end{pre}
-      The \"from-embedder\" signal is emitted to translate coordinates in the
-      embedder of an offscreen window to the offscreen window.
-      See also the \"to-embedder\" signal.
+      The signal is emitted to translate coordinates in the embedder of an
+      offscreen window to the offscreen window. See also the \"to-embedder\"
+      signal.
       @begin[code]{table}
         @entry[window]{The @sym{gdk:window} offscreen window on which the
           signal is emitted.}
-        @entry[embedder-x]{A @code{:double} with the x coordinate in the
+        @entry[xembedder]{An double float with the x coordinate in the
           embedder window.}
-        @entry[embedder-y]{A @code{:double} with the y coordinate in the
+        @entry[yembedder]{An double float with the y coordinate in the
           embedder window.}
-        @entry[offscreen-x]{Return location of type @code{:double} for the x
-          coordinate in the offscreen window.}
-        @entry[offscreen-y]{Return location of type @code{:double} for the y
-          coordinate in the offscreen window.}
+        @entry[xoffscreen]{A double float return location for the x coordinate
+          in the offscreen window.}
+        @entry[yoffscreen]{A double float return location for the y coordinate
+          in the offscreen window.}
       @end{table}
     @subheading{The \"moved-to-rect\" signal}
       @begin{pre}
- lambda (window flipped-rect final-rect flipped-x flipped-y)    : Run First
+lambda (window flipped final xflipped yflipped)    :run-first
       @end{pre}
       Emitted when the position of window is finalized after being moved to a
       destination rectangle. @arg{window} might be flipped over the destination
-      rectangle in order to keep it on-screen, in which case @arg{flipped-x}
-      and @arg{flipped-y} will be set to @em{true} accordingly.
-      @arg{flipped-rect} is the ideal position of window after any possible
-      flipping, but before any possible sliding. @arg{final-rect} is
-      @arg{flipped-rect}, but possibly translated in the case that flipping is
-      still ineffective in keeping window on-screen. Since 3.22
+      rectangle in order to keep it on-screen, in which case @arg{xflipped}
+      and @arg{yflipped} will be set to @em{true} accordingly. @arg{flipped} is
+      the ideal position of window after any possible flipping, but before any
+      possible sliding. @arg{final} is @arg{flipped}, but possibly translated
+      in the case that flipping is still ineffective in keeping window
+      on-screen. Since 3.22
       @begin[code]{table}
         @entry[window]{The @sym{gdk:window} object that moved.}
-        @entry[flipped-rect]{The position of window after any possible flipping
-          or @code{nil} if the backend can't obtain it.}
-        @entry[final-rect]{The final position of window or NULL if the backend
-          can't obtain it.}
-        @entry[flipped-x]{@em{True} if the anchors were flipped horizontally.}
-        @entry[flipped-y]{@em{True} if the anchors were flipped vertically.}
+        @entry[flipped]{The position of @arg{window} after any possible flipping
+          or @code{nil} if the backend cannot obtain it.}
+        @entry[final]{The final position of @code{window} or @code{nil} if the
+          backend cannot obtain it.}
+        @entry[xflipped]{@em{True} if the anchors were flipped horizontally.}
+        @entry[yflipped]{@em{True} if the anchors were flipped vertically.}
       @end{table}
     @subheading{The \"pick-embedded-child\" signal}
       @begin{pre}
- lambda (window x y)    : Run Last
+lambda (window x y)    :run-last
       @end{pre}
-      The \"pick-embedded-child\" signal is emitted to find an embedded child
-      at the given position.
+      The signal is emitted to find an embedded child at the given position.
       @begin[code]{table}
         @entry[window]{The @sym{gdk:window} object on which the signal is
           emitted.}
-        @entry[x]{A @code{:double} with the x coordinate in the window.}
-        @entry[y]{A @code{:douboe} with the y coordinate in the window.}
-        @entry[Returns]{The @class{gdk:window} of the embedded child at x, y,
-          or @code{nil}.}
+        @entry[x]{A double float with the x coordinate in the window.}
+        @entry[y]{A double float with the y coordinate in the window.}
+        @entry[Returns]{The @class{gdk:window} object of the embedded child at
+          @arg{x}, @arg{y}, or @code{nil}.}
       @end{table}
     @subheading{The \"to-embedder\" signal}
       @begin{pre}
- lambda (window offscreen-x offscreen-y embedder-x embedder-y)    : Run Last
+lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
       @end{pre}
-      The \"to-embedder\" signal is emitted to translate coordinates in an
-      offscreen window to its embedder. See also the \"from-embedder\" signal.
+      The signal is emitted to translate coordinates in an offscreen window to
+      its embedder. See also the \"from-embedder\" signal.
       @begin[code]{table}
-        @entry[window]{The @sym{gdk:window} offscreen window on which the
-          signal is emitted.}
-        @entry[offscreen-x]{A @code{:double} with the x coordinate in the
+        @entry[window]{The @sym{gdk:window} object with the offscreen window on
+          which the signal is emitted.}
+        @entry[xoffscreen]{A double float with the x coordinate in the
           offscreen window.}
-        @entry[offscreen-y]{A @code{:double} with the y coordinate in the
+        @entry[yoffscreen]{A double float with the y coordinate in the
           offscreen window.}
-        @entry[embedder-x]{Return location of type @code{:double} for the x
-          coordinate in the embedder window.}
-        @entry[embedder-y]{Return location of type @code{:double} for the y
-          coordinate in the embedder window.}
+        @entry[xembedder]{A double float return location for the x coordinate
+          in the embedder window.}
+        @entry[yembedder]{A double float return location for the y coordinate
+          in the embedder window.}
       @end{table}
   @end{dictionary}
+  @see-constructor{gdk:window-new}
   @see-slot{gdk:window-cursor}
-  @see-class{gtk-widget}
-  @see-class{gtk-window}
+  @see-class{gtk:widget}
+  @see-class{gtk:window}
   @see-function{gdk:window-composited}")
 
 ;;; ----------------------------------------------------------------------------
@@ -1446,7 +1292,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (setf (liber:alias-for-function 'window-cursor)
       "Accessor"
       (documentation 'window-cursor 'function)
- "@version{#2021-10-31}
+ "@version{2023-2-26}
   @syntax[]{(gdk:window-cursor object) => cursor}
   @syntax[]{(setf (gdk:window-cursor object) cursor)}
   @argument[object]{a @class{gdk:window} object}
@@ -1455,13 +1301,12 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
     Accessor of the @slot[gdk:window]{cursor} slot of the @class{gdk:window}
     class.
   @end{short}
-
-  The @sym{gdk:window-cursor} slot access function retrieves a
-  @class{gdk:cursor} pointer for the cursor currently set on the specified
-  window, or @code{nil}. If the return value is @code{nil} then there is no
-  custom cursor set on the specified window, and it is using the cursor for its
-  parent window. The @sym{(setf gdk:window-cursor)} slot access function sets
-  the default mouse pointer for a window.
+  The @sym{gdk:window-cursor} function retrieves a @class{gdk:cursor} pointer
+  for the cursor currently set on the specified window, or @code{nil}. If the
+  return value is @code{nil} then there is no custom cursor set on the specified
+  window, and it is using the cursor for its parent window. The
+  @sym{(setf gdk:window-cursor)} function sets the default mouse pointer for a
+  window.
 
   Use the @fun{gdk:cursor-new-for-display}, @fun{gdk:cursor-new-from-name}, or
   @fun{gdk:cursor-new-from-pixbuf} functions to create the cursor. To make the
@@ -1481,22 +1326,21 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 ;;; gdk_window_new ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_window_new" window-new)
-    (g:object window :already-referenced)
+(defcfun ("gdk_window_new" window-new) (g:object window :already-referenced)
  #+liber-documentation
- "@version{#2020-9-7}
+ "@version{2023-2-26}
   @argument[parent]{a @class{gdk:window} object, or @code{nil} to create the
     window as a child of the default root window for the default display}
-  @argument[attributes]{attributes of type @symbol{gdk:window-attr} of the new
-    window}
-  @argument[attributes-mask]{mask of type @symbol{gdk:window-attributes-type}
-    indicating which fields in attributes are valid}
+  @argument[attributes]{a @symbol{gdk:window-attr} instance with the attributes
+    of type  of the new window}
+  @argument[mask]{a @symbol{gdk:window-attributes-type} mask indicating which
+    fields in @arg{attributes} are valid}
   @return{The new @class{gdk:window} object.}
   @begin{short}
     Creates a new window using the attributes from @arg{attributes}.
   @end{short}
-  See @symbol{gdk:window-attr} and @symbol{gdk:window-attributes-type} for more
-  details.
+  See the @symbol{gdk:window-attr} and @symbol{gdk:window-attributes-type}
+  documentation for more details.
 
   Note: To use this on displays other than the default display, @arg{parent}
   must be specified.
@@ -1505,7 +1349,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   @see-symbol{gdk:window-attributes-type}"
   (parent (g:object window))
   (attributes (:pointer (:struct window-attr)))
-  (attributes-mask window-attributes-type))
+  (mask window-attributes-type))
 
 (export 'window-new)
 
@@ -1515,7 +1359,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_destroy" window-destroy) :void
  #+liber-documentation
- "@version{#2020-9-7}
+ "@version{2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}
     Destroys the window system resources associated with @arg{window} and
@@ -1536,16 +1380,15 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 ;;; gdk_window_get_window_type () -> window-window-type
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_window_get_window_type" window-window-type)
-    window-type
+(defcfun ("gdk_window_get_window_type" window-window-type) window-type
  #+liber-documentation
- "@version{#2020-9-7}
+ "@version{2023-2-26}
   @argument[window]{a @class{gdk:window} object}
-  @return{the @symbol{gdk:window-type} of @arg{window}}
+  @return{The @symbol{gdk:window-type} value of @arg{window}.}
   @begin{short}
     Gets the type of the window.
   @end{short}
-  See @symbol{gdk:window-type}.
+  See the @symbol{gdk:window-type} enumeration.
   @see-class{gdk:window}
   @see-symbol{gdk:window-type}"
   (window (g:object window)))
@@ -1558,7 +1401,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_get_display" window-display) (g:object display)
  #+liber-documentation
- "@version{#2020-9-7}
+ "@version{2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @return{The @class{gdk:display} object associated with @arg{window}.}
   @begin{short}
@@ -1576,7 +1419,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_get_screen" window-screen) (g:object screen)
  #+liber-documentation
- "@version{#2020-9-7}
+ "@version{2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @return{The @class{gdk:screen} object associated with @arg{window}.}
   @begin{short}
@@ -1594,7 +1437,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_get_visual" window-visual) (g:object visual)
  #+liber-documentation
- "@version{#2020-9-7}
+ "@version{2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @return{A @class{gdk:visual} object.}
   @begin{short}
@@ -1611,28 +1454,27 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gdk_window_at_pointer" %window-at-pointer) (g:object window)
-  (win-x (:pointer :int))
-  (win-y (:pointer :int)))
+  (xwin (:pointer :int))
+  (ywin (:pointer :int)))
 
 (defun window-at-pointer ()
  #+liber-documentation
- "@version{#2020-9-7}
+ "@version{#2023-2-26}
   @begin{return}
-    @code{window} -- window under the mouse pointer @br{}
-    @code{win-x}  -- a @code{:int} with the origin of the window under the
-                     pointer @br{}
-    @code{win-y}  -- a @code{:int} with the origin of the window under the
-                     pointer
+    @code{window} -- a @class{gdk:window} object under the mouse pointer @br{}
+    @code{xwin} -- an integer with the origin of the window under the pointer
+    @br{}
+    @code{ywin} -- an integer with the origin of the window under the pointer
   @end{return}
   @begin{short}
     Obtains the window underneath the mouse pointer, returning the location of
-    that window in @arg{win-x}, @arg{win-y}.
+    that window in @arg{xwin}, @arg{ywin}.
   @end{short}
   Returns @code{nil} if the window under the mouse pointer is not known to GDK.
   @begin[Warning]{dictionary}
-    The function @sym{gdk:window-at-pointer} has been deprecated since version
-    3.0 and should not be used in newly written code. Use the function
-    @fun{gdk:device-window-at-position} instead.
+    The @sym{gdk:window-at-pointer} function has been deprecated since version
+    3.0 and should not be used in newly written code. Use the
+    @fun{gdk:device-window-at-position} function instead.
   @end{dictionary}
   @see-class{gdk:window}
   @see-function{gdk:device-window-at-position}"
@@ -1651,21 +1493,20 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_show" window-show) :void
  #+liber-documentation
- "@version{#2020-9-7}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}
-    Like the function @fun{gdk:window-show-unraised}, but also raises the window
+    Like the @fun{gdk:window-show-unraised} function, but also raises the window
     to the top of the window stack, moves the window to the front of the
     z-order.
   @end{short}
-
   This function maps a window so it is visible onscreen. Its opposite is the
-  function @fun{gdk:window-hide}.
+  @fun{gdk:window-hide} function.
 
-  When implementing a @class{gtk-widget}, you should call this function on the
-  widget's @class{gdk:window} as part of the \"map\" method.
+  When implementing a @class{gtk:widget} widget, you should call this function
+  on the widget's @class{gdk:window} object as part of the \"map\" method.
   @see-class{gdk:window}
-  @see-class{gtk-widget}
+  @see-class{gtk:widget}
   @see-function{gdk:window-hide}
   @see-function{gdk:window-show-unraised}"
   (window (g:object window)))
@@ -1678,7 +1519,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_show_unraised" window-show-unraised) :void
  #+liber-documentation
- "@version{#2021-9-21}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}
     Shows a window onscreen, but does not modify its stacking order.
@@ -1702,16 +1543,16 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_hide" window-hide) :void
  #+liber-documentation
- "@version{#2020-9-7}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}
-    For toplevel windows, withdraws them, so they will no longer be known to the
-    window manager.
+    For toplevel windows, withdraws them, so they will no longer be known to
+    the window manager.
   @end{short}
   For all windows, unmaps them, so they will not be displayed. Normally done
-  automatically as part of the function @fun{gtk-widget-hide}.
+  automatically as part of the @fun{gtk:widget-hide} function.
   @see-class{gdk:window}
-  @see-function{gtk-widget-hide}"
+  @see-function{gtk:widget-hide}"
   (window (g:object window)))
 
 (export 'window-hide)
@@ -1722,7 +1563,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_is_destroyed" window-is-destroyed) :boolean
  #+liber-documentation
- "@version{#2020-9-7}
+ "@version{2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @return{@em{True} if @arg{window} is destroyed.}
   @begin{short}
@@ -1740,12 +1581,12 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_is_visible" window-is-visible) :boolean
  #+liber-documentation
- "@version{#2020-9-7}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @return{@em{True} if @arg{window} is mapped.}
   @begin{short}
-    Checks whether the window has been mapped with the functions
-    @fun{gdk:window-show} or @fun{gdk:window-show-unraised}.
+    Checks whether the window has been mapped with the @fun{gdk:window-show} or
+    @fun{gdk:window-show-unraised} functions.
   @end{short}
   @see-class{gdk:window}
   @see-function{gdk:window-show}
@@ -1760,7 +1601,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_is_viewable" window-is-viewable) :boolean
  #+liber-documentation
- "@version{#2020-9-7}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @return{@em{True} if @arg{window} is viewable.}
   @begin{short}
@@ -1779,8 +1620,8 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_is_input_only" window-is-input-only) :boolean
  #+liber-documentation
- "@version{#2020-9-7}
-  @argument[window]{a toplevel @class{gdk:window} oject}
+ "@version{#2023-2-26}
+  @argument[window]{a toplevel @class{gdk:window} object}
   @return{@em{True} if @arg{window} is input only.}
   @begin{short}
     Determines whether or not the window is an input only window.
@@ -1796,7 +1637,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_is_shaped" window-is-shaped) :boolean
  #+liber-documentation
- "@version{#2020-9-7}
+ "@version{#2023-2-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @return{@em{True} if @arg{window} is shaped.}
   @begin{short}
@@ -1813,9 +1654,9 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_get_state" window-state) window-state
  #+liber-documentation
- "@version{#2020-9-7}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
-  @return{Window state of type @symbol{gtk-window-state}.}
+  @return{The @symbol{gdk:window-state} value of the window state.}
   @begin{short}
     Gets the bitwise OR of the currently active window state flags, from the
     @symbol{gdk:window-state} enumeration.
@@ -1832,13 +1673,13 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_withdraw" window-withdraw) :void
  #+liber-documentation
- "@version{#2020-9-7}
+ "@version{#2023-2-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @begin{short}
     Withdraws a window, that is, unmaps it and asks the window manager to
     forget about it.
   @end{short}
-  This function is not really useful as the function @fun{gdk:window-hide}
+  This function is not really useful as the @fun{gdk:window-hide} function
   automatically withdraws toplevel windows before hiding them.
   @see-class{gdk:window}
   @see-function{gdk:window-hide}"
@@ -1852,20 +1693,20 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_iconify" window-iconify) :void
  #+liber-documentation
- "@version{#2020-9-7}
+ "@version{#2023-2-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @begin{short}
     Asks to iconify (minimize) window.
   @end{short}
   The window manager may choose to ignore the request, but normally will honor
-  it. Using the function @fun{gtk-window-iconify} is preferred, if you have a
-  @class{gtk-window} widget.
+  it. Using the @fun{gtk:window-iconify} function is preferred, if you have a
+  @class{gtk:window} widget.
 
   This function only makes sense when @arg{window} is a toplevel window.
   @see-class{gdk:window}
-  @see-class{gtk-window}
+  @see-class{gtk:window}
   @see-function{gdk:window-deiconify}
-  @see-function{gtk-window-iconify}"
+  @see-function{gtk:window-iconify}"
   (window (g:object window)))
 
 (export 'window-iconify)
@@ -1876,21 +1717,21 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_deiconify" window-deiconify) :void
  #+liber-documentation
- "@version{#2020-9-7}
+ "@version{#2023-2-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @begin{short}
     Attempt to deiconify (unminimize) window.
   @end{short}
   On X11 the window manager may choose to ignore the request to deiconify. When
-  using GTK, use the function @fun{gtk-window-deiconify} instead of the
+  using GTK, use the @fun{gtk:window-deiconify} function instead of the
   @class{gdk:window} variant. Or better yet, you probably want to use
-  the function @fun{gtk-window-present}, which raises the window, focuses
+  the @fun{gtk:window-present} function, which raises the window, focuses
   it, unminimizes it, and puts it on the current desktop.
   @see-class{gdk:window}
-  @see-class{gtk-window}
+  @see-class{gtk:window}
   @see-function{gdk:window-iconify}
-  @see-function{gtk-window-deiconify}
-  @see-function{gtk-window-present}"
+  @see-function{gtk:window-deiconify}
+  @see-function{gtk:window-present}"
   (window (g:object window)))
 
 (export 'window-deiconify)
@@ -1901,14 +1742,14 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_stick" window-stick) :void
  #+liber-documentation
- "@version{#2020-9-22}
+ "@version{#2023-2-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @begin{short}
     \"Pins\" a window such that it is on all workspaces and does not scroll with
     viewports, for window managers that have scrollable viewports.
   @end{short}
-  When using @class{gtk-window}, the function @fun{gtk-window-stick} may be more
-  useful.
+  When using the @class{gtk:window} widget, the @fun{gtk:window-stick} function
+  may be more useful.
 
   On the X11 platform, this function depends on window manager support, so may
   have no effect with many window managers. However, GDK will do the best it
@@ -1916,8 +1757,8 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   that do not support this operation, there is nothing you can do to force it
   to happen.
   @see-class{gdk:window}
-  @see-class{gtk-window}
-  @see-function{gtk-window-stick}
+  @see-class{gtk:window}
+  @see-function{gtk:window-stick}
   @see-function{gdk:window-unstick}"
   (window (g:object window)))
 
@@ -1929,15 +1770,15 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_unstick" window-unstick) :void
  #+liber-documentation
- "@version{#2020-9-22}
+ "@version{#2023-2-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @begin{short}
-    Reverse operation for the function @fun{gdk:window-stick}.
+    Reverse operation for the @fun{gdk:window-stick} function.
   @end{short}
-  See the functions @fun{gdk:window-stick} and @fun{gtk-window-unstick}.
+  See the @fun{gdk:window-stick} and @fun{gtk:window-unstick} functions.
   @see-class{gdk:window}
   @see-function{gdk:window-stick}
-  @see-function{gtk-window-unstick}"
+  @see-function{gtk:window-unstick}"
   (window (g:object window)))
 
 (export 'window-unstick)
@@ -1948,7 +1789,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_maximize" window-maximize) :void
  #+liber-documentation
- "@version{#2020-9-22}
+ "@version{#2023-2-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @begin{short}
     Maximizes the window.
@@ -1975,7 +1816,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_unmaximize" window-unmaximize) :void
  #+liber-documentation
- "@version{#2020-9-22}
+ "@version{#2023-2-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @begin{short}
     Unmaximizes the window.
@@ -2002,7 +1843,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_fullscreen" window-fullscreen) :void
  #+liber-documentation
- "@version{#2020-9-22}
+ "@version{#2023-2-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @begin{short}
     Moves the window into fullscreen mode.
@@ -2028,12 +1869,11 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 ;;; gdk_window_fullscreen_on_monitor ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_window_fullscreen_on_monitor" window-fullscreen-on-monitor)
-    :void
+(defcfun ("gdk_window_fullscreen_on_monitor" window-fullscreen-on-monitor) :void
  #+liber-documentation
- "@version{#2020-9-22}
+ "@version{#2023-2-26}
   @argument[window]{a toplevel @class{gdk:window} object}
-  @argument[monitor]{a @code{:int} which monitor to display fullscreen on}
+  @argument[monitor]{an integer with the monitor to display fullscreen on}
   @begin{short}
     Moves the window into fullscreen mode on the given monitor.
   @end{short}
@@ -2055,7 +1895,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_unfullscreen" window-unfullscreen) :void
  #+liber-documentation
- "@version{#2020-9-22}
+ "@version{#2023-2-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @begin{short}
     Moves the window out of fullscreen mode.
@@ -2081,25 +1921,24 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defun (setf window-fullscreen-mode) (mode window)
   (cffi:foreign-funcall "gdk_window_set_fullscreen_mode"
-                   (g:object window) window
-                   fullscreen-mode mode
-                   :void)
+                        (g:object window) window
+                        fullscreen-mode mode
+                        :void)
   mode)
 
 (defcfun ("gdk_window_get_fullscreen_mode" window-fullscreen-mode)
     fullscreen-mode
  #+liber-documentation
- "@version{#2020-9-22}
-  @syntax[]{gdk:window-fullscreen-mode window) => mode}
+ "@version{#2023-2-26}
+  @syntax[]{(gdk:window-fullscreen-mode window) => mode}
   @syntax[]{(setf (gdk:window-fullscreen-mode window) mode)}
   @argument[window]{a toplevel @class{gdk:window} object}
   @argument[mode]{a value of the @symbol{gdk:fullscreen-mode} enumeration}
   @begin{short}
     Accessor of the fullscreen mode applied to the window when fullscreen.
   @end{short}
-
-  The function @sym{gdk:window-fullscreen-mode} obtains the fullscreen mode of
-  the window. The function @sym{(setf gdk:window-fullscreen-mode)} specifies
+  The @sym{gdk:window-fullscreen-mode} function obtains the fullscreen mode of
+  the window. The @sym{(setf gdk:window-fullscreen-mode)} function specifies
   whether the window should span over all monitors (in a multi-head setup) or
   only the current monitor when in fullscreen mode.
 
@@ -2130,7 +1969,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_set_keep_above" window-set-keep-above) :void
  #+liber-documentation
- "@version{#2020-9-22}
+ "@version{#2023-2-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @argument[setting]{a boolean whether to keep @arg{window} above other windows}
   @begin{short}
@@ -2156,7 +1995,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_set_keep_below" window-set-keep-below) :void
  #+liber-documentation
- "@version{#2020-9-22}
+ "@version{#2023-2-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @argument[setting]{a boolean whether to keep @arg{window} below other windows}
   @begin{short}
@@ -2182,9 +2021,9 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_set_opacity" window-set-opacity) :void
  #+liber-documentation
- "@version{#2020-9-22}
+ "@version{#2023-2-26}
   @argument[window]{a toplevel @class{gdk:window} object}
-  @argument[opacity]{a @code{:double} with the opacity}
+  @argument[opacity]{a double float with the opacity}
   @begin{short}
     Request the windowing system to make window partially transparent, with
     opacity 0 being fully transparent and 1 fully opaque.
@@ -2193,9 +2032,9 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
   On X11, this works only on X screens with a compositing manager running.
 
-  For setting up per-pixel alpha, see the function
-  @fun{gdk:screen-rgba-visual}. For making non-toplevel windows translucent,
-  see the function @fun{gdk:window-composited}.
+  For setting up per-pixel alpha, see the @fun{gdk:screen-rgba-visual}
+  function. For making non-toplevel windows translucent, see the
+  @fun{gdk:window-composited} function.
   @see-class{gdk:window}
   @see-function{gdk:screen-rgba-visual}
   @see-function{gdk:window-composited}"
@@ -2211,23 +2050,23 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defun (setf window-composited) (composited window)
   (cffi:foreign-funcall "gdk_window_set_composited"
-                   (g:object window) window
-                   :boolean composited
-                   :void)
+                        (g:object window) window
+                        :boolean composited
+                        :void)
   composited)
 
 (defcfun ("gdk_window_get_composited" window-composited) :boolean
  #+liber-documentation
- "@version{#2020-9-22}
+ "@version{#2023-2-26}
   @syntax[]{(gdk:window-composited window) => composited}
   @syntax[]{(setf (gdk:window-composited window) composited)}
   @argument[window]{a @class{gdk:window} object}
   @argument[composited]{@em{true} to set @arg{window} as composited}
   @begin{short}
-    The function @sym{gdk:window-composited}determines whether @arg{window} is
+    The @sym{gdk:window-composited} function determines whether @arg{window} is
     composited.
   @end{short}
-  The function @sym{(setf gdk:window-composited)} sets a window as composited,
+  The @sym{(setf gdk:window-composited)} function sets a window as composited,
   or unsets it.
 
   Composited windows do not automatically have their contents drawn to the
@@ -2236,19 +2075,20 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   the parent's expose handler to manually merge the off-screen content onto the
   screen in whatever way it sees fit.
 
-  It only makes sense for child windows to be composited. See the function
-  @fun{gdk:window-set-opacity} if you need translucent toplevel windows.
+  It only makes sense for child windows to be composited. See the
+  @fun{gdk:window-set-opacity} function if you need translucent toplevel
+  windows.
 
   An additional effect of this call is that the area of this window is no
   longer clipped from regions marked for invalidation on its parent. Draws
   done on the parent window are also no longer clipped by the child.
 
   This call is only supported on some systems, currently, only X11 with new
-  enough Xcomposite and Xdamage extensions. You must call the function
-  @fun{gdk:display-supports-composite} to check if setting a window as
+  enough Xcomposite and Xdamage extensions. You must call the
+  @fun{gdk:display-supports-composite} function to check if setting a window as
   composited is supported before attempting to do so.
   @begin[Warning]{dictionary}
-    The function @sym{gdk:window-composited} has been deprecated since version
+    The @sym{gdk:window-composited} function has been deprecated since version
     3.16 and should not be used in newly written code. Compositing is an
     outdated technology that only ever worked on X11.
   @end{dictionary}
@@ -2267,24 +2107,24 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 #+gtk-3-18
 (defun (setf window-pass-through) (pass-through window)
   (cffi:foreign-funcall "gdk_window_set_pass_through"
-                   (g:object window) window
-                   :boolean
-                   :void)
+                        (g:object window) window
+                        :boolean
+                        :void)
   pass-through)
 
 #+gtk-3-18
 (defcfun ("gdk_window_get_pass_through" window-pass-through) :boolean
  #+liber-documentation
- "@version{#2020-9-22}
+ "@version{#2023-2-26}
   @syntax[]{(gdk:window-pass-through window) => pass-through}
   @syntax[]{(setf (gdk:window-pass-through window) pass-through)}
   @argument[window]{a @class{gdk:window} object}
   @argument[pass-through]{a boolean}
   @begin{short}
-    The function @sym{gdk:window-pass-through} returns whether input to the
+    The @sym{gdk:window-pass-through} function returns whether input to the
     window is passed through to the window below.
   @end{short}
-  The function @sym{(setf gdk:window-pass-through)} sets whether input to the
+  The @sym{(setf gdk:window-pass-through)} function sets whether input to the
   window is passed through to the window below.
 
   The default value of this is @em{false}, which means that pointer events that
@@ -2315,24 +2155,24 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_move" window-move) :void
  #+liber-documentation
- "@version{#2020-9-22}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
-  @argument[x]{a @code{:int} with the x coordinate relative to window's parent}
-  @argument[y]{a @code{:int} with the y coordinate relative to window's parent}
+  @argument[x]{an integer with the x coordinate relative to window's parent}
+  @argument[y]{an integer with the y coordinate relative to window's parent}
   @begin{short}
     Repositions a window relative to its parent window.
   @end{short}
-  For toplevel windows, window managers may ignore or modify the move; you
-  should probably use the function @fun{gtk-window-move} on a @class{gtk-window}
+  For toplevel windows, window managers may ignore or modify the move. You
+  should probably use the @fun{gtk:window-move} function on a @class{gtk:window}
   widget anyway, instead of using GDK functions. For child windows, the move
   will reliably succeed.
 
-  If you are also planning to resize the window, use the function
-  @fun{gdk:window-move-resize} to both move and resize simultaneously, for a
-  nicer visual effect.
+  If you are also planning to resize the window, use the
+  @fun{gdk:window-move-resize} function to both move and resize simultaneously,
+  for a nicer visual effect.
   @see-class{gdk:window}
-  @see-class{gtk-window}
-  @see-function{gtk-window-move}
+  @see-class{gtk:window}
+  @see-function{gtk:window-move}
   @see-function{gdk:window-move-resize}"
   (window (g:object window))
   (x :int)
@@ -2346,25 +2186,25 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_resize" window-resize) :void
  #+liber-documentation
- "@version{#2020-9-22}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
-  @argument[width]{a @code{:int} with the new width of the window}
-  @argument[height]{a @code{:int} with the new height of the window}
+  @argument[width]{an integer with the new width of the window}
+  @argument[height]{an integer with the new height of the window}
   @begin{short}
     Resizes the window, for toplevel windows, asks the window manager to
     resize the window.
   @end{short}
   The window manager may not allow the resize. When using GTK, use the
-  function @fun{gtk-window-resize} instead of this low-level GDK function.
+  @fun{gtk:window-resize} function instead of this low-level GDK function.
 
   Windows may not be resized below 1x1.
 
-  If you are also planning to move the window, use the function
-  @fun{gdk:window-move-resize} to both move and resize simultaneously, for a
-  nicer visual effect.
+  If you are also planning to move the window, use the
+  @fun{gdk:window-move-resize} function to both move and resize simultaneously,
+  for a nicer visual effect.
   @see-class{gdk:window}
-  @see-class{gtk-window}
-  @see-function{gtk-window-resize}
+  @see-class{gtk:window}
+  @see-function{gtk:window-resize}
   @see-function{gdk:window-move-resize}"
   (window (g:object window))
   (width :int)
@@ -2378,21 +2218,19 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_move_resize" window-move-resize) :void
  #+liber-documentation
- "@version{#2020-9-22}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
-  @argument[x]{a @code{:int} with the new x position relative to window's
-    parent}
-  @argument[y]{a @code{:int} with the new y position relative to window's
-    parent}
-  @argument[width]{a @code{:int} with the new width}
-  @argument[height]{a @code{:int} with the new height}
+  @argument[x]{an integer with the new x position relative to window's parent}
+  @argument[y]{an integer with the new y position relative to window's parent}
+  @argument[width]{an integer with the new width}
+  @argument[height]{an integer with the new height}
   @begin{short}
-    Equivalent to calling the functions @fun{gdk:window-move} and
-    @fun{gdk:window-resize}, except that both operations are performed at once,
-    avoiding strange visual effects.
+    Equivalent to calling the @fun{gdk:window-move} and @fun{gdk:window-resize}
+    functions, except that both operations are performed at once, avoiding
+    strange visual effects.
   @end{short}
   I.e. the user may be able to see the window first move, then resize, if you
-  do not use the function @sym{gdk:window-move-resize}.
+  do not use the @sym{gdk:window-move-resize} function.
   @see-class{gdk:window}
   @see-function{gdk:window-move}
   @see-function{gdk:window-resize}"
@@ -2410,10 +2248,10 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_scroll" window-scroll) :void
  #+liber-documentation
- "@version{#2020-9-22}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
-  @argument[dx]{a @code{:int} with the amount to scroll in the x direction}
-  @argument[dy]{a @code{:int} with the amount to scroll in the y direction}
+  @argument[dx]{an integer with the amount to scroll in the x direction}
+  @argument[dy]{an integer with the amount to scroll in the y direction}
   @begin{short}
     Scroll the contents of window, both pixels and children, by the given
     amount.
@@ -2440,33 +2278,31 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 #+gtk-3-24
 (defcfun ("gdk_window_move_to_rect" window-move-to-rect) :void
  #+liber-documentation
- "@version{#2020-9-22}
-  @argument[window]{the @class{gdk:window} object to move}
-  @argument[rect]{the destination @class{gdk:rectangle} to align @arg{window}
-    with}
-  @argument[rect-anchor]{a @symbol{gdk:gravity} value with the point on
-    @arg{rect} to align with @arg{window}'s anchor point}
-  @argument[window-anchor]{a @symbol{gdk:gravity} value with the point on
-    @arg{window} to align with @arg{rect}'s anchor point}
-  @argument[anchor-hints]{positioning hints of type @symbol{gdk:anchor-hints}
+ "@version{#2023-2-26}
+  @argument[window]{a @class{gdk:window} object to move}
+  @argument[rect]{a @class{gdk:rectangle} instance with the destination to
+    align @arg{window} with}
+  @argument[ranchor]{a @symbol{gdk:gravity} value with the point on @arg{rect}
+    to align with @arg{window}'s anchor point}
+  @argument[wanchor]{a @symbol{gdk:gravity} value with the point on @arg{window}
+    to align with @arg{rect}'s anchor point}
+  @argument[hints]{a @symbol{gdk:anchor-hints} value with the positioning hints
     to use when limited on space}
-  @argument[rect-anchor-dx]{a @code{:int} with the horizontal offset to shift
-    @arg{window}, i.e. @arg{rect}'s anchor point}
-  @argument[rect-anchor-dy]{a @code{:int} with the vertical offset to shift
-    @arg{window}, i.e. @arg{rect}'s anchor point}
+  @argument[dx]{an integer with the horizontal offset to shift @arg{window},
+    i.e. @arg{rect}'s anchor point}
+  @argument[dy]{an integer with the vertical offset to shift @arg{window},
+    i.e. @arg{rect}'s anchor point}
   @begin{short}
     Moves the window to @arg{rect}, aligning their anchor points.
   @end{short}
-
   @arg{rect} is relative to the top-left corner of the window that window is
-  transient for. @arg{rect-anchor} and @arg{window-anchor} determine anchor
-  points on @arg{rect} and @arg{window} to pin together. @arg{rect}'s anchor
-  point can optionally be offset by @arg{rect-anchor-dx} and
-  @arg{rect-anchor-dy}, which is equivalent to offsetting the position of
-  @arg{window}.
+  transient for. @arg{ranchor} and @arg{wanchor} determine anchor points on
+  @arg{rect} and @arg{window} to pin together. @arg{rect}'s anchor point can
+  optionally be offset by @arg{dx} and @arg{dy}, which is equivalent to
+  offsetting the position of @arg{window}.
 
-  @arg{anchor-hints} determines how window will be moved if the anchor points
-  cause it to move off-screen. For example, @code{:flip-x} will replace
+  @arg{hints} determines how window will be moved if the anchor points cause it
+  to move off-screen. For example, @code{:flip-x} will replace
   @code{:north-west} with @code{:north-east} and vice versa if @arg{window}
   extends beyond the left or right edges of the monitor.
 
@@ -2474,14 +2310,17 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   positioned.
 
   Since 3.24
-  @see-class{gdk:window}"
+  @see-class{gdk:window}
+  @see-class{gdk:rectangle}
+  @see-symbol{gdk:gravity}
+  @see-symbol{gdk:anchor-hints}"
   (window (g:object window))
   (rect (g:boxed rectangle))
-  (rect-anchor gravity)
-  (window-anchor gravity)
-  (anchor-hints anchor-hints)
-  (rect-anchor-dx :int)
-  (rect-anchor-dy :int))
+  (ranchor gravity)
+  (wanchor gravity)
+  (hints anchor-hints)
+  (dx :int)
+  (dy :int))
 
 #+gtk-3-24
 (export 'window-move-to-rect)
@@ -2492,11 +2331,11 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_move_region" window-move-region) :void
  #+liber-documentation
- "@version{#2020-9-22}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
-  @argument[region]{the @symbol{cairo:region-t} to move}
-  @argument[dx]{a @code{:int} with the amount to move in the x direction}
-  @argument[dy]{a @code{:int} with the amount to move in the y direction}
+  @argument[region]{a @symbol{cairo:region-t} to move}
+  @argument[dx]{an integer with the amount to move in the x direction}
+  @argument[dy]{an integer with the amount to move in the y direction}
   @begin{short}
     Move the part of window indicated by region by dy pixels in the y direction
     and dx pixels in the x direction.
@@ -2520,7 +2359,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_flush" window-flush) :void
  #+liber-documentation
- "@version{#2020-9-22}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}
     This function does nothing.
@@ -2540,13 +2379,13 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_has_native" window-has-native) :boolean
  #+liber-documentation
- "@version{#2020-9-22}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @return{@em{True} if the window has a native window, @em{false} otherwise.}
   @begin{short}
     Checks whether the window has a native window or not.
   @end{short}
-  Note that you can use the function @fun{gdk:window-ensure-native} if a native
+  Note that you can use the @fun{gdk:window-ensure-native} function if a native
   window is needed.
   @see-class{gdk:window}
   @see-function{gdk:window-ensure-native}"
@@ -2560,7 +2399,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_ensure_native" window-ensure-native) :void
  #+liber-documentation
- "@version{#2020-9-22}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @return{@em{True} if the window has a native window, @em{false} otherwise.}
   @begin{short}
@@ -2584,18 +2423,18 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_reparent" window-reparent) :void
  #+liber-documentation
- "@version{#2020-9-22}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
-  @argument[new-parent]{new @class{gdk:window} parent to move @arg{window} into}
-  @argument[x]{a @code{:int} with the x location inside the new parent}
-  @argument[y]{a @code{:int} with the y location inside the new parent}
+  @argument[parent]{a new @class{gdk:window} parent to move @arg{window} into}
+  @argument[x]{an integer with the x location inside the new parent}
+  @argument[y]{an integer with the y location inside the new parent}
   @begin{short}
-    Reparents @arg{window} into the given @arg{new-parent}.
+    Reparents @arg{window} into the given @arg{parent}.
   @end{short}
   The window being reparented will be unmapped as a side effect.
   @see-class{gdk:window}"
   (window (g:object window))
-  (new-parent (g:object window))
+  (parent (g:object window))
   (x :int)
   (y :int))
 
@@ -2607,7 +2446,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_raise" window-raise) :void
  #+liber-documentation
- "@version{#2020-9-22}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}
     Raises the window to the top of the z-order (stacking order), so that other
@@ -2616,7 +2455,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   This is true whether or not the windows are visible.
 
   If @arg{window} is a toplevel, the window manager may choose to deny the
-  request to move the window in the z-order, the function @sym{gdk:window-raise}
+  request to move the window in the z-order, the @sym{gdk:window-raise} function
   only requests the restack, does not guarantee it.
   @see-class{gdk:window}
   @see-function{gdk:window-lower}"
@@ -2630,7 +2469,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_lower" window-lower) :void
  #+liber-documentation
- "@version{#2020-9-22}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}
     Lowers the window to the bottom of the z-order (stacking order), so that
@@ -2639,7 +2478,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   This is true whether or not the other windows are visible.
 
   If @arg{window} is a toplevel, the window manager may choose to deny the
-  request to move the window in the z-order, the function @sym{gdk:window-lower}
+  request to move the window in the z-order, the @sym{gdk:window-lower} function
   only requests the restack, does not guarantee it.
 
   Note that the @fun{gdk:window-show} function raises the window again, so do
@@ -2659,7 +2498,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_restack" window-restack) :void
  #+liber-documentation
- "@version{#2020-9-22}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @argument[sibling]{a @class{gdk:window} object that is a sibling of
     @arg{window}, or @code{nil}}
@@ -2674,8 +2513,8 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   @em{true}, or lowers the window.
 
   If @arg{window} is a toplevel, the window manager may choose to deny the
-  request to move the window in the z-order, the function
-  @sym{gdk:window-restack} only requests the restack, does not guarantee it.
+  request to move the window in the z-order, the @sym{gdk:window-restack}
+  function only requests the restack, does not guarantee it.
   @see-class{gdk:window}
   @see-function{gdk:window-raise}
   @see-function{gdk:window-lower}"
@@ -2691,18 +2530,18 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_focus" window-focus) :void
  #+liber-documentation
- "@version{#2020-9-22}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @argument[timestamp]{an unsigned integer with the timestamp of the event
     triggering the window focus}
   @begin{short}
     Sets keyboard focus to @arg{window}.
   @end{short}
-  In most cases, the function @fun{gtk-window-present} should be used on a
-  @class{gtk-window} widget, rather than calling this function.
+  In most cases, the @fun{gtk:window-present} function should be used on a
+  @class{gtk:window} widget, rather than calling this function.
   @see-class{gdk:window}
-  @see-class{gtk-window}
-  @see-function{gtk-window-present}"
+  @see-class{gtk:window}
+  @see-function{gtk:window-present}"
   (window (g:object window))
   (timestamp :uint32))
 
@@ -2714,7 +2553,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_register_dnd" window-register-dnd) :void
  #+liber-documentation
- "@version{#2020-9-22}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @shot{Registers a window as a potential drop destination.}
   @see-class{gdk:window}"
@@ -2728,23 +2567,22 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_begin_resize_drag" window-begin-resize-drag) :void
  #+liber-documentation
- "@version{#2020-9-22}
+ "@version{#2023-2-26}
   @argument[window]{a toplevel @class{gdk:window} object}
-  @argument[edge]{the edge or corner of type @symbol{gdk:window-edge} from
+  @argument[edge]{a @symbol{gdk:window-edge} value with the edge or corner from
     which the drag is started}
-  @argument[button]{a @code{:int} with the button being used to drag}
-  @argument[root-x]{a @code{:int} with the root window x coordinate of mouse
-    click that began the drag}
-  @argument[root-y]{a @code{:int} with the root window y coordinate of mouse
-    click that began the drag}
-  @argument[timestamp]{a @code{:uint} with the timestamp of mouse click that
-    began the drag, use the function @fun{gdk:event-time}}
+  @argument[button]{an integer with the button being used to drag}
+  @argument[xroot]{an integer with the root window x coordinate of mouse click
+    that began the drag}
+  @argument[yroot]{an integer with the root window y coordinate of mouse click
+    that began the drag}
+  @argument[timestamp]{an unsigned integer with the timestamp of mouse click
+    that began the drag, use the @fun{gdk:event-time} function}
   @begin{short}
     Begins a window resize operation for a toplevel window.
   @end{short}
-
   This function assumes that the drag is controlled by the client pointer
-  device, use the function @fun{gdk:window-begin-resize-drag-for-device} to
+  device, use the @fun{gdk:window-begin-resize-drag-for-device} function to
   begin a drag with a different device.
   @see-class{gdk:window}
   @see-symbol{gdk:window-edge}
@@ -2753,8 +2591,8 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   (window (g:object window))
   (edge window-edge)
   (button :int)
-  (root-x :int)
-  (root-y :int)
+  (xroot :int)
+  (yroot :int)
   (timestamp :uint32))
 
 (export 'window-begin-resize-drag)
@@ -2766,35 +2604,35 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (defcfun ("gdk_window_begin_resize_drag_for_device"
            window-begin-resize-drag-for-device) :void
  #+liber-documentation
- "@version{#2020-9-22}
+ "@version{#2023-2-26}
   @argument[window]{a toplevel @class{gdk:window} object}
-  @argument[edge]{the edge or corner of type @symbol{gdk:window-edge} from
+  @argument[edge]{a @symbol{gdk:window-edge} value with the edge or corner from
     which the drag is started}
-  @argument[device]{the @class{gdk:device} object used for the operation}
-  @argument[button]{a @code{:int} with the button being used to drag}
-  @argument[root-x]{a @code{:int} with the root window x coordinate of mouse
-    click that began the drag}
-  @argument[root-y]{a @code{:int} with the root window y coordinate of mouse
-    click that began the drag}
-  @argument[timestamp]{a @code{:uint} with the timestamp of mouse click that
-    began the drag, use the function @fun{gdk:event-time}}
+  @argument[device]{a @class{gdk:device} object used for the operation}
+  @argument[button]{an integer with the button being used to drag}
+  @argument[xroot]{an integer with the root window x coordinate of mouse click
+    that began the drag}
+  @argument[yroot]{an integer with the root window y coordinate of mouse click
+    that began the drag}
+  @argument[timestamp]{an unsigned integer with the timestamp of mouse click
+    that began the drag, use the @fun{gdk:event-time} function}
   @begin{short}
     Begins a window resize operation for a toplevel window.
   @end{short}
   You might use this function to implement a \"window resize grip\", for
-  example; in fact @class{gtk-statusbar} widgets uses it. The function works
+  example. In fact @class{gtk:statusbar} widgets uses it. The function works
   best with window managers that support the Extended Window Manager Hints, but
   has a fallback implementation for other window managers.
   @see-class{gdk:window}
   @see-class{gdk:device}
-  @see-class{gtk-statusbar}
+  @see-class{gtk:statusbar}
   @see-function{gdk:event-time}"
   (window (g:object window))
   (edge window-edge)
   (device (g:object device))
   (button :int)
-  (root-x :int)
-  (root-y :int)
+  (xroot :int)
+  (yroot :int)
   (timestamp :uint32))
 
 (export 'window-begin-resize-drag-for-device)
@@ -2805,28 +2643,27 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_begin_move_drag" window-begin-move-drag) :void
  #+liber-documentation
- "@version{#2020-9-22}
+ "@version{#2023-2-26}
   @argument[window]{a toplevel @class{gdk:window} object}
-  @argument[button]{a @code{:int} with the button being used to drag}
-  @argument[root-x]{a @code{:int} with the root window x coordinate of mouse
-    click that began the drag}
-  @argument[root-y]{a @code{:int} with the root window y coordinate of mouse
-    click that began the drag}
-  @argument[timestamp]{a @code{:uint} with the timestamp of mouse click that
-    began the drag}
+  @argument[button]{an integer with the button being used to drag}
+  @argument[xroot]{an integer with the root window x coordinate of mouse click
+    that began the drag}
+  @argument[yroot]{an integer with the root window y coordinate of mouse click
+    that began the drag}
+  @argument[timestamp]{an unsigned integer with the timestamp of mouse click
+    that began the drag}
   @begin{short}
     Begins a window move operation for a toplevel window.
   @end{short}
-
   This function assumes that the drag is controlled by the client pointer
-  device, use the function @fun{gdk:window-begin-move-drag-for-device} to begin
+  device, use the @fun{gdk:window-begin-move-drag-for-device} function to begin
   a drag with a different device.
   @see-class{gdk:window}
   @see-function{gdk:window-begin-move-drag-for-device}"
   (window (g:object window))
   (button :int)
-  (root-x :int)
-  (root-y :int)
+  (xroot :int)
+  (yroot :int)
   (timestamp :uint32))
 
 (export 'window-begin-move-drag)
@@ -2838,16 +2675,16 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (defcfun ("gdk_window_begin_move_drag_for_device"
            window-begin-move-drag-for-device) :void
  #+liber-documentation
- "@version{#2020-9-22}
+ "@version{#2023-2-26}
   @argument[window]{a toplevel @class{gdk:window} object}
-  @argument[device]{the @class{gdk:device} object used for the operation}
-  @argument[button]{a @code{:int} with the button being used to drag}
-  @argument[root-x]{a @code{:int} with the root window x coordinate of mouse
-    click that began the drag}
-  @argument[root-y]{a @code{:int} with the root window y coordinate of mouse
-    click that began the drag}
-  @argument[timestamp]{a @code{:uint} with the timestamp of mouse click that
-    began the drag}
+  @argument[device]{a @class{gdk:device} object used for the operation}
+  @argument[button]{an integer with the button being used to drag}
+  @argument[xroot]{an integer with the root window x coordinate of mouse click
+    that began the drag}
+  @argument[yroot]{an integer with the root window y coordinate of mouse click
+    that began the drag}
+  @argument[timestamp]{an unsigned integer with the timestamp of mouse click
+    that began the drag}
   @begin{short}
     Begins a window move operation for a toplevel window.
   @end{short}
@@ -2860,8 +2697,8 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   (window (g:object window))
   (device (g:object device))
   (button :int)
-  (root-x :int)
-  (root-y :int)
+  (xroot :int)
+  (yroot :int)
   (timestamp :uint32))
 
 (export 'window-begin-move-drag-for-device)
@@ -2872,7 +2709,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_show_window_menu" window-show-window-menu) :boolean
  #+liber-documentation
- "@version{#2020-9-22}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @argument[event]{a @class{gdk:event} event to show the menu for}
   @return{@em{True} if the window menu was shown and @em{false} otherwise.}
@@ -2883,7 +2720,8 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   traditional windows managed by the window manager. This is useful for windows
   using client-side decorations, activating it with a right-click on the window
   decorations.
-  @see-class{gdk:window}"
+  @see-class{gdk:window}
+  @see-class{gdk:event}"
   (window (g:object window))
   (event (g:boxed event)))
 
@@ -2903,15 +2741,15 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defun window-constrain-size (geometry flags width height)
  #+liber-documentation
- "@version{#2020-9-22}
-  @argument[geometry]{a @symbol{gdk:geometry} structure}
-  @argument[flags]{a mask of type @symbol{gdk:window-hints} indicating what
-    portions of geometry are set}
-  @argument[width]{a @code{:int} with the desired width of the window}
-  @argument[height]{a @code{:int} with the desired height of the window}
+ "@version{#2023-2-26}
+  @argument[geometry]{a @symbol{gdk:geometry} instance}
+  @argument[flags]{a @symbol{gdk:window-hints} mask indicating what portions of
+    geometry are set}
+  @argument[width]{an integer with the desired width of the window}
+  @argument[height]{an integer with the desired height of the window}
   @begin{return}
-    @code{new-width}  -- @code{:int} with the resulting width @br{}
-    @code{new-height} -- @code{:int} with the resulting height
+    @code{new-width}  -- an integer with the resulting width @br{}
+    @code{new-height} -- an integer with the resulting height
   @end{return}
   @begin{short}
     Constrains a desired @arg{width} and @arg{height} according to a set of
@@ -2922,11 +2760,11 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   @see-symbol{gdk:window-hints}"
   (with-foreign-objects ((new-width :int) (new-height :int))
     (%window-constrain-size geometry
-                                flags
-                                width
-                                height
-                                new-width
-                                new-height)
+                            flags
+                            width
+                            height
+                            new-width
+                            new-height)
     (values (cffi:mem-ref new-width :int)
             (cffi:mem-ref new-height :int))))
 
@@ -2938,14 +2776,14 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_beep" window-beep) :void
  #+liber-documentation
- "@version{#2020-9-22}
+ "@version{#2023-2-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @begin{short}
-    Emits a short beep associated to @arg{window} in the appropriate display, if
-    supported.
+    Emits a short beep associated to @arg{window} in the appropriate display,
+    if supported.
   @end{short}
-  Otherwise, emits a short beep on the display just as the function
-  @fun{gdk:display-beep}.
+  Otherwise, emits a short beep on the display just as the
+  @fun{gdk:display-beep} function.
   @see-class{gdk:window}
   @see-function{gdk:display-beep}"
   (window (g:object window)))
@@ -2958,7 +2796,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_get_scale_factor" window-scale-factor) :int
  #+liber-documentation
- "@version{2023-2-3}
+ "@version{2023-2-26}
   @argument[window]{a @class{gdk:window} object to get scale factor for}
   @return{An integer with the scale factor.}
   @begin{short}
@@ -2986,9 +2824,9 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_set_opaque_region" window-set-opaque-region) :void
  #+liber-documentation
- "@version{#2020-9-23}
+ "@version{#2023-2-26}
   @argument[window]{a toplevel or non-native @class{gdk:window} object}
-  @argument[region]{a @symbol{cairo:region-t} structure, or @code{nil}}
+  @argument[region]{a @symbol{cairo:region-t} instance, or @code{nil}}
   @begin{short}
     For optimisation purposes, compositing window managers may like to not draw
     obscured regions of windows, or turn off blending during for these regions.
@@ -3074,11 +2912,11 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (defcfun ("gdk_window_get_clip_region" window-clip-region)
     (:pointer (:struct cairo:region-t))
  #+liber-documentation
- "@version{#2020-9-23}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @begin{return}
-    A @symbol{cairo:region-t} structure. This must be freed with the function
-    @fun{cairo-region-destroy} when you are done.
+    A @symbol{cairo:region-t} instance. This must be freed with the
+    @fun{cairo:region-destroy} function when you are done.
   @end{return}
   @begin{short}
     Computes the region of a window that potentially can be written to by
@@ -3089,7 +2927,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   by drawing primitives.
   @see-class{gdk:window}
   @see-symbol{cairo:region-t}
-  @see-function{cairo-region-destroy}"
+  @see-function{cairo:region-destroy}"
   (window (g:object window)))
 
 (export 'window-clip-region)
@@ -3100,19 +2938,18 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_begin_paint_rect" window-begin-paint-rect) :void
  #+liber-documentation
- "@version{#2020-9-23}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
-  @argument[rectangle]{a @class{gdk:rectangle} you intend to draw to}
+  @argument[rectangle]{a @class{gdk:rectangle} instance you intend to draw to}
   @begin{short}
-    A convenience wrapper around the function
-    @fun{gdk:window-begin-paint-region} which creates a rectangular region for
-    you.
+    A convenience wrapper around the @fun{gdk:window-begin-paint-region}
+    function which creates a rectangular region for you.
   @end{short}
-  See the function @fun{gdk:window-begin-paint-region} for details.
+  See the @fun{gdk:window-begin-paint-region} function for details.
   @begin[Warning]{dictionary}
-    The function @sym{gdk:window-begin-paint-rect} has been deprecated since
-    version 3.22 and should not be used in newly written code. Use the function
-    @fun{gdk:window-begin-draw-frame} instead.
+    The @sym{gdk:window-begin-paint-rect} function has been deprecated since
+    version 3.22 and should not be used in newly written code. Use the
+    @fun{gdk:window-begin-draw-frame} function instead.
   @end{dictionary}
   @see-class{gdk:window}
   @see-class{gdk:rectangle}
@@ -3129,57 +2966,58 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_begin_paint_region" window-begin-paint-region) :void
  #+liber-documentation
- "@version{#2020-9-23}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
-  @argument[region]{a @symbol{cairo:region-t} structue you intend to draw to}
+  @argument[region]{a @symbol{cairo:region-t} instance you intend to draw to}
   @begin{short}
     Indicates that you are beginning the process of redrawing region.
   @end{short}
   A backing store (offscreen buffer) large enough to contain @arg{region} will
   be created. The backing store will be initialized with the background color or
   background surface for @arg{window}. Then, all drawing operations performed on
-  @arg{window} will be diverted to the backing store. When you call the function
-  @fun{gdk:window-end-paint}, the backing store will be copied to @arg{window},
-  making it visible onscreen. Only the part of @arg{window} contained in
-  @arg{region} will be modified; that is, drawing operations are clipped to
-  @arg{region}.
+  @arg{window} will be diverted to the backing store. When you call the
+  @fun{gdk:window-end-paint} function, the backing store will be copied to
+  @arg{window}, making it visible onscreen. Only the part of @arg{window}
+  contained in @arg{region} will be modified; that is, drawing operations are
+  clipped to @arg{region}.
 
   The net result of all this is to remove flicker, because the user sees the
-  finished product appear all at once when you call the function
-  @fun{gdk:window-end-paint}. If you draw to @arg{window} directly without
-  calling the function @sym{gdk:window-begin-paint-region}, the user may see
-  flicker as individual drawing operations are performed in sequence. The
-  clipping and background-initializing features of the function
-  @sym{gdk:window-begin-paint-region} are conveniences for the programmer, so
-  you can avoid doing that work yourself.
+  finished product appear all at once when you call the
+  @fun{gdk:window-end-paint} function. If you draw to @arg{window} directly
+  without calling the @sym{gdk:window-begin-paint-region} function, the user may
+  see flicker as individual drawing operations are performed in sequence. The
+  clipping and background-initializing features of the
+  @sym{gdk:window-begin-paint-region} function are conveniences for the
+  programmer, so you can avoid doing that work yourself.
 
   When using GTK, the widget system automatically places calls to the
-  functions @sym{gdk:window-begin-paint-region} and @fun{gdk:window-end-paint}
+  @sym{gdk:window-begin-paint-region} and @fun{gdk:window-end-paint} functions
   around emissions of the \"expose-event\" signal. That is, if you are writing
-  an expose event handler, you can assume that the exposed area in
-  @class{gdk:event-expose} has already been cleared to the window background,
-  is already set as the clip region, and already has a backing store. Therefore
-  in most cases, application code need not call the function
-  @sym{gdk:window-begin-paint-region}. You can disable the automatic
+  an expose event handler, you can assume that the exposed area in the
+  @class{gdk:event-expose} event has already been cleared to the window
+  background, is already set as the clip region, and already has a backing
+  store. Therefore in most cases, application code need not call the
+  @sym{gdk:window-begin-paint-region} function. You can disable the automatic
   calls around expose events on a widget-by-widget basis by calling the
-  function @fun{gtk-widget-double-buffered}.
+  @fun{gtk:widget-double-buffered} function.
 
-  If you call this function multiple times before calling the matching function
-  @fun{gdk:window-end-paint}, the backing stores are pushed onto a stack. The
-  function @fun{gdk:window-end-paint} copies the topmost backing store onscreen,
-  subtracts the topmost region from all other regions in the stack, and pops the
-  stack. All drawing operations affect only the topmost backing store in the
-  stack. One matching call to the function @fun{gdk:window-end-paint} is
-  required for each call to the function @sym{gdk:window-begin-paint-region}.
+  If you call this function multiple times before calling the matching
+  @fun{gdk:window-end-paint} function, the backing stores are pushed onto a
+  stack. The @fun{gdk:window-end-paint} function copies the topmost backing
+  store onscreen, subtracts the topmost region from all other regions in the
+  stack, and pops the stack. All drawing operations affect only the topmost
+  backing store in the stack. One matching call to the
+  @fun{gdk:window-end-paint} function is required for each call to the
+  @sym{gdk:window-begin-paint-region} function.
   @begin[Warning]{dictionary}
-    The function @sym{gdk:window-begin-paint-region} has been deprecated since
-    version 3.22 and should not be used in newly written code. Use the function
-    @fun{gdk:window-begin-draw-frame} instead.
+    The @sym{gdk:window-begin-paint-region} function has been deprecated since
+    version 3.22 and should not be used in newly written code. Use the
+    @fun{gdk:window-begin-draw-frame} function instead.
   @end{dictionary}
   @see-class{gdk:window}
   @see-class{gdk:event-expose}
   @see-function{gdk:window-end-paint}
-  @see-function{gtk-widget-double-buffered}
+  @see-function{gtk:widget-double-buffered}
   @see-function{gdk:window-begin-draw-frame}"
   (window (g:object window))
   (region (:pointer (:struct cairo:region-t))))
@@ -3192,20 +3030,20 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_end_paint" window-end-paint) :void
  #+liber-documentation
- "@version{#2020-9-23}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}
     Indicates that the backing store created by the most recent call to the
-    function @fun{gdk:window-begin-paint-region} should be copied onscreen and
+    @fun{gdk:window-begin-paint-region} function should be copied onscreen and
     deleted, leaving the next-most-recent backing store or no backing store at
     all as the active paint region.
   @end{short}
-  See the function @fun{gdk:window-begin-paint-region} for full details.
+  See the @fun{gdk:window-begin-paint-region} function for full details.
 
-  It is an error to call this function without a matching call to the function
-  @fun{gdk:window-begin-paint-region} first.
+  It is an error to call this function without a matching call to the
+  @fun{gdk:window-begin-paint-region} function first.
   @begin[Warning]{dictionary}
-    The function @sym{gdk:window-end-paint} is deprecated and should not be used
+    The @sym{gdk:window-end-paint} function is deprecated and should not be used
     in newly written code.
   @end{dictionary}
   @see-class{gdk:window}
@@ -3222,9 +3060,9 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (defcfun ("gdk_window_begin_draw_frame" window-begin-draw-frame)
     (g:object drawing-context)
  #+liber-documentation
- "@version{2023-2-3}
+ "@version{2023-2-26}
   @argument[window]{a @class{gdk:window} object}
-  @argument[region]{a @symbol{cairo:region-t} structure}
+  @argument[region]{a @symbol{cairo:region-t} instance}
   @return{A @class{gdk:drawing-context} object that should be used to draw the
     contents of the window, the returned context is owned by GDK.}
   @begin{short}
@@ -3273,9 +3111,8 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 #+gtk-3-22
 (defcfun ("gdk_window_end_draw_frame" window-end-draw-frame) :void
-
  #+liber-documentation
- "@version{2023-2-3}
+ "@version{2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @argument[context]{a @class{gdk:drawing-context} object created by the
    @fun{gdk:window-begin-draw-frame} function}
@@ -3284,14 +3121,13 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
     the @fun{gdk:window-begin-draw-frame} function has been completed.
   @end{short}
   This function will take care of destroying the @class{gdk:drawing-context}
-  object.
-
-  It is an error to call this function without a matching call of the
+  object. It is an error to call this function without a matching call of the
   @fun{gdk:window-begin-draw-frame} function first.
 
   Since 3.22
   @see-class{gdk:window}
-  @see-class{gdk:drawing-context}"
+  @see-class{gdk:drawing-context}
+  @see-function{gdk:window-begin-draw-frame}"
   (window (g:object window))
   (context (g:object drawing-context)))
 
@@ -3305,18 +3141,18 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (defcfun ("gdk_window_get_visible_region" window-visible-region)
     (:pointer (:struct cairo:region-t))
  #+liber-documentation
- "@version{#2020-9-23}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @begin{return}
-    A @symbol{cairo:region-t} structure. This must be freed with the function
-    @fun{cairo-region-destroy} when you are done.
+    A @symbol{cairo:region-t} instance. This must be freed with the
+    @fun{cairo:region-destroy} function when you are done.
   @end{return}
   Computes the region of the window that is potentially visible. This does not
   necessarily take into account if the window is obscured by other windows,
   but no area outside of this region is visible.
   @see-class{gdk:window}
   @see-symbol{cairo:region-t}
-  @see-function{cairo-region-destroy}"
+  @see-function{cairo:region-destroy}"
   (window (g:object window)))
 
 (export 'window-visible-region)
@@ -3377,23 +3213,22 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_invalidate_rect" window-invalidate-rect) :void
  #+liber-documentation
- "@version{#2020-9-23}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
-  @argument[rect]{a @class{gdk:rectangle} to invalidate or @code{nil} to
-    invalidate the whole window}
-  @argument[invalidate-children]{a boolean whether to also invalidate child
-    windows}
+  @argument[rect]{a @class{gdk:rectangle} instance to invalidate or @code{nil}
+    to invalidate the whole window}
+  @argument[invalidate]{a boolean whether to also invalidate child windows}
   @begin{short}
-    A convenience wrapper around the function @fun{gdk:window-invalidate-region}
+    A convenience wrapper around the @fun{gdk:window-invalidate-region} function
     which invalidates a rectangular region.
   @end{short}
-  See the function @fun{gdk:window-invalidate-region} for details.
+  See the @fun{gdk:window-invalidate-region} function for details.
   @see-class{gdk:window}
   @see-class{gdk:rectangle}
   @see-function{gdk:window-invalidate-region}"
   (window (g:object window))
   (rectangle (g:boxed rectangle))
-  (invalidate-children :boolean))
+  (invalidate :boolean))
 
 (export 'window-invalidate-rect)
 
@@ -3403,29 +3238,29 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_invalidate_region" window-invalidate-region) :void
  #+liber-documentation
- "@version{#2020-9-23}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
-  @argument[region]{a @symbol{cairo:region-t} structure}
-  @argument[invalidate-children]{@em{true} to also invalidate child windows}
+  @argument[region]{a @symbol{cairo:region-t} instance}
+  @argument[invalidate]{@em{true} to also invalidate child windows}
   @begin{short}
     Adds @arg{region} to the update area for @arg{window}.
   @end{short}
   The update area is the region that needs to be redrawn, or \"dirty region\".
-  The call of the function @fun{gdk:window-process-updates} sends one or more
+  The call of the @fun{gdk:window-process-updates} function sends one or more
   expose events to the window, which together cover the entire update area. An
   application would normally redraw the contents of the window in response to
   those expose events.
 
-  GDK will call the function @fun{gdk:window-process-all-updates} on your behalf
+  GDK will call the @fun{gdk:window-process-all-updates} function on your behalf
   whenever your program returns to the main loop and becomes idle, so normally
   there is no need to do that manually, you just need to invalidate regions that
   you know should be redrawn.
 
-  The @arg{invalidate-children} parameter controls whether the region of each
-  child window that intersects @arg{region} will also be invalidated. If
-  @code{nil}, then the update area for child windows will remain unaffected. See
-  the function @fun{gdk:window-invalidate-maybe-recurse} if you need fine
-  grained control over which children are invalidated.
+  The @arg{invalidate} parameter controls whether the region of each child
+  window that intersects @arg{region} will also be invalidated. If @code{nil},
+  then the update area for child windows will remain unaffected. See the
+  @fun{gdk:window-invalidate-maybe-recurse} function if you need fine grained
+  control over which children are invalidated.
   @see-class{gdk:window}
   @see-symbol{cairo:region-t}
   @see-function{gdk:window-process-updates}
@@ -3433,34 +3268,42 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   @see-function{gdk:window-invalidate-maybe-recurse}"
   (window (g:object window))
   (region (:pointer (:struct cairo:region-t)))
-  (invalidate-children :boolean))
+  (invalidate :boolean))
 
 (export 'window-invalidate-region)
 
 ;;; ----------------------------------------------------------------------------
 ;;; GdkWindowChildFunc ()
-;;;
-;;; gboolean (*GdkWindowChildFunc) (GdkWindow *window, gpointer user_data);
-;;;
-;;; A function of this type is passed to gdk_window_invalidate_maybe_recurse().
-;;; It gets called for each child of the window to determine whether to
-;;; recursively invalidate it or now.
-;;;
-;;; window :
-;;;     a GdkWindow
-;;;
-;;; user_data :
-;;;     user data
-;;;
-;;; Returns :
-;;;     TRUE to invalidate window recursively
 ;;; ----------------------------------------------------------------------------
 
-(defcallback window-child-func-cb :boolean
+(defcallback window-child-func :boolean
     ((window (g:object window))
-     (user-data :pointer))
-  (let ((func (glib:get-stable-pointer-value user-data)))
+     (data :pointer))
+  (let ((func (glib:get-stable-pointer-value data)))
     (funcall func window)))
+
+#+liber-documentation
+(setf (liber:alias-for-symbol 'window-child-func)
+      "Callback"
+      (liber:symbol-documentation 'window-child-func)
+ "@version{#2023-2-26}
+  @begin{short}
+    A callback function of this type is passed to the
+    @fun{gdk:window-invalidate-maybe-recurse} function.
+  @end{short}
+  It gets called for each child of the window to determine whether to
+  recursively invalidate it or now.
+  @begin{pre}
+lambda (window)
+  @end{pre}
+  @begin[code]{table}
+    @entry[window]{A @class{gdk:window} object.}
+    @entry[Returns]{@em{True} to invalidate @arg{window} recursively.}
+  @end{table}
+  @see-class{gdk:window}
+  @see-class{gdk:window-invalidate-maybe-recurse}")
+
+(export 'window-child-func)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gdk_window_invalidate_maybe_recurse ()
@@ -3470,41 +3313,41 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
           %window-invalidate-maybe-recurse) :void
   (window (g:object window))
   (region (:pointer (:struct cairo:region-t)))
-  (child-func :pointer)
+  (func :pointer)
   (user-data :pointer))
 
-(defun window-invalidate-maybe-recurse (window region child-func)
+(defun window-invalidate-maybe-recurse (window region func)
  #+liber-documentation
- "@version{#2020-9-23}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
-  @argument[region]{a @symbol{cairo:region-t} structure}
-  @argument[child-func]{function to use to decide if to recurse to a child,
-    @code{NULL} means never recurse}
+  @argument[region]{a @symbol{cairo:region-t} instance}
+  @argument[func]{a @symbol{gdk:window-child-func} callback function to use to
+    decide if to recurse to a child, @code{nil} means never recurse}
   @begin{short}
     Adds region to the update area for window.
   @end{short}
   The update area is the region that needs to be redrawn, or \"dirty region\".
-  The call of the function @fun{gdk:window-process-updates} sends one or more
+  The call of the @fun{gdk:window-process-updates} function sends one or more
   expose events to the window, which together cover the entire update area. An
   application would normally redraw the contents of @arg{window} in response to
   those expose events.
 
-  GDK will call the function @fun{gdk:window-process-all-updates} on your behalf
+  GDK will call the @fun{gdk:window-process-all-updates} function on your behalf
   whenever your program returns to the main loop and becomes idle, so normally
   there is no need to do that manually, you just need to invalidate regions that
   you know should be redrawn.
 
-  The @arg{child-func} parameter controls whether the region of each child
+  The @arg{func} parameter controls whether the region of each child
   window that intersects region will also be invalidated. Only children for
-  which @arg{child-func} returns @em{true} will have the area invalidated.
+  which @arg{func} returns @em{true} will have the area invalidated.
   @see-class{gdk:window}
   @see-symbol{cairo:region-t}
   @see-function{gdk:window-process-updates}
   @see-function{gdk:window-process-all-updates}"
-  (with-stable-pointer (ptr child-func)
+  (with-stable-pointer (ptr func)
     (%window-invalidate-maybe-recurse window
                                       region
-                                      (cffi:callback window-child-func-cb)
+                                      (cffi:callback window-child-func)
                                       ptr)))
 
 (export 'window-invalidate-maybe-recurse)
@@ -3516,22 +3359,22 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (defcfun ("gdk_window_get_update_area" window-update-area)
     (:pointer (:struct cairo:region-t))
  #+liber-documentation
- "@version{#2020-9-23}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
-  @return{The update @symbol{cairo:region-t} area for window.}
+  @return{The @symbol{cairo:region-t} update area for window.}
   @begin{short}
     Transfers ownership of the update area from @arg{window} to the caller of
     the function.
   @end{short}
   That is, after calling this function, @arg{window} will no longer have an
   invalid/dirty region; the update area is removed from @arg{window} and handed
-  to you. If a window has no update area, the function
-  @sym{gdk:window-update-area} returns @code{nil}. You are responsible for
-  calling the function @fun{cairo-region-destroy} on the returned region if it
-  is non-@code{nil}.
+  to you. If a window has no update area, the @sym{gdk:window-update-area}
+  function returns @code{nil}. You are responsible for calling the
+  @fun{cairo:region-destroy} function on the returned region if it is
+  non-@code{nil}.
   @see-class{gdk:window}
   @see-symbol{cairo:region-t}
-  @see-function{cairo-region-destroy}"
+  @see-function{cairo:region-destroy}"
   (window (g:object window)))
 
 (export 'window-update-area)
@@ -3542,16 +3385,16 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_freeze_updates" window-freeze-updates) :void
  #+liber-documentation
- "@version{#2020-9-23}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}
     Temporarily freezes a window such that it will not receive expose events.
   @end{short}
-  The window will begin receiving expose events again when the function
-  @fun{gdk:window-thaw-updates} is called. If the function
-  @sym{gdk:window-freeze-updates} has been called more than once, the function
-  @fun{gdk:window-thaw-updates} must be called an equal number of times to
-  begin processing exposes.
+  The window will begin receiving expose events again when the
+  @fun{gdk:window-thaw-updates} function is called. If the
+  @sym{gdk:window-freeze-updates} function has been called more than once, the
+  @fun{gdk:window-thaw-updates} function must be called an equal number of
+  times to begin processing exposes.
   @see-class{gdk:window}
   @see-function{gdk:window-thaw-updates}"
   (window (g:object window)))
@@ -3564,10 +3407,10 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_thaw_updates" window-thaw-updates) :void
  #+liber-documentation
- "@version{#2020-9-23}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}
-    Thaws a window frozen with the function @fun{gdk:window-freeze-updates}.
+    Thaws a window frozen with the @fun{gdk:window-freeze-updates} function.
   @end{short}
   @see-class{gdk:window}
   @see-function{gdk:window-freeze-updates}"
@@ -3581,12 +3424,12 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_process_all_updates" window-process-all-updates) :void
  #+liber-documentation
- "@version{#2020-9-23}
+ "@version{#2023-2-26}
   @begin{short}
-    Calls the function @fun{gdk:window-process-updates} for all windows.
+    Calls the @fun{gdk:window-process-updates} function for all windows.
   @end{short}
   @begin[Warning]{dictionary}
-    The function @sym{gdk:window-process-all-updates} has been deprecated since
+    The @sym{gdk:window-process-all-updates} function has been deprecated since
     version 3.22 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gdk:window}
@@ -3600,29 +3443,28 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_process_updates" window-process-updates) :void
  #+liber-documentation
- "@version{#2020-9-23}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
-  @argument[update-children]{a boolean whether to also process updates for
-    child windows}
+  @argument[update]{a boolean whether to also process updates for child windows}
   @begin{short}
     Sends one or more expose events to window.
   @end{short}
   The areas in each expose event will cover the entire update area for the
-  window, see the function @fun{gdk:window-invalidate-region} for details.
-  Normally GDK calls the function @fun{gdk:window-process-all-updates} on your
+  window, see the @fun{gdk:window-invalidate-region} function for details.
+  Normally GDK calls the @fun{gdk:window-process-all-updates} function on your
   behalf, so there is no need to call this function unless you want to force
   expose events to be delivered immediately and synchronously, vs. the usual
   case, where GDK delivers them in an idle handler. Occasionally this is useful
   to produce nicer scrolling behavior, for example.
   @begin[Warning]{dictionary}
-    The function @sym{gdk:window-process-updates} has been deprecated since
+    The @sym{gdk:window-process-updates} function has been deprecated since
     version 3.22 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gdk:window}
   @see-function{gdk:window-invalidate-region}
   @see-function{gdk:window-process-all-updates}"
   (window (g:object window))
-  (update-children :boolean))
+  (update :boolean))
 
 (export 'window-process-updates)
 
@@ -3632,13 +3474,14 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_set_debug_updates" window-set-debug-updates) :void
  #+liber-documentation
- "@version{#2020-9-23}
+ "@version{#2023-2-26}
   @argument[setting]{@em{true} to turn on update debugging}
   @begin{short}
-    With update debugging enabled, calls to the function
-    @fun{gdk:window-invalidate-region} clear the invalidated region of the
-    screen to a noticeable color, and GDK pauses for a short time before sending
-    exposes to windows during the function @fun{gdk:window-process-updates}.
+    With update debugging enabled, calls to the
+    @fun{gdk:window-invalidate-region} function clear the invalidated region of
+    the screen to a noticeable color, and GDK pauses for a short time before
+    sending exposes to windows during the @fun{gdk:window-process-updates}
+    function.
   @end{short}
   The net effect is that you can see the invalid region for each window and
   watch redraws as they occur. This allows you to diagnose inefficiencies in
@@ -3652,11 +3495,11 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
   The @code{--gtk-debug=updates} command line option passed to GTK programs
   enables this debug option at application startup time. That is usually more
-  useful than calling the function @fun{gdk:window-set-debug-updates} yourself,
+  useful than calling the @fun{gdk:window-set-debug-updates} function yourself,
   though you might want to use this function to enable updates sometime after
   application startup time.
   @begin[Warning]{dictionary}
-    The function @sym{gdk:window-set-debug-updates} has been deprecated since
+    The @sym{gdk:window-set-debug-updates} function has been deprecated since
     version 3.22 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gdk:window}
@@ -3673,13 +3516,13 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (defcfun ("gdk_window_enable_synchronized_configure"
            window-enable-synchronized-configure) :void
  #+liber-documentation
- "@version{#2020-9-23}
+ "@version{#2023-2-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @begin{short}
     Does nothing, present only for compatiblity.
   @end{short}
   @begin[Warning]{dictionary}
-    The function @sym{gdk:window-enable-synchronized-configure} has been
+    The @sym{gdk:window-enable-synchronized-configure} function has been
     deprecated since version 3.8 and should not be used in newly written code.
     This function is no longer needed.
   @end{dictionary}
@@ -3695,13 +3538,13 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_configure_finished" window-configure-finished) :void
  #+liber-documentation
- "@version{#2020-9-23}
+ "@version{#2023-2-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @begin{short}
     Does nothing, present only for compatiblity.
   @end{short}
   @begin[Warning]{dictionary}
-    The function @sym{gdk:window-configure-finished} has been deprecated since
+    The @sym{gdk:window-configure-finished} function has been deprecated since
     version 3.8 and should not be used in newly written code. This function is
     no longer needed.
   @end{dictionary}
@@ -3718,7 +3561,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (defcfun ("gdk_window_get_frame_clock" window-frame-clock)
     (g:object frame-clock)
  #+liber-documentation
- "@version{#2020-9-23}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} obeject}
   @return{The @class{gdk:frame-clock} object.}
   @begin{short}
@@ -3737,12 +3580,12 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 ;;; gdk_window_set_user_data () -> window-user-data
 ;;; ----------------------------------------------------------------------------
 
-(defun (setf window-user-data) (user-data window)
+(defun (setf window-user-data) (data window)
   (cffi:foreign-funcall "gdk_window_set_user_data"
-                   (g:object window) window
-                   :pointer user-data
-                   :void)
-  user-data)
+                        (g:object window) window
+                        :pointer data
+                        :void)
+  data)
 
 (defcfun ("gdk_window_get_user_data" %window-user-data) :void
   (window (g:object window))
@@ -3750,26 +3593,27 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defun window-user-data (window)
  #+liber-documentation
- "@version{#2020-9-23}
-  @syntax[]{(gdk:window-user-data window) => user-data}
-  @syntax[]{(setf (gdk:window-user-data window) user-data)}
+ "@version{#2023-2-26}
+  @syntax[]{(gdk:window-user-data window) => data}
+  @syntax[]{(setf (gdk:window-user-data window) data)}
   @argument[window]{a @class{gdk:window} object}
-  @argument[user-data]{a @code{:pointer} with the user data}
+  @argument[data]{a pointer with the user data}
   @begin{short}
-    The function @sym{gdk:window-user-data} retrieves the user data for
+    The @sym{gdk:window-user-data} function retrieves the user data for
     @arg{window}, which is normally the widget that @arg{window} belongs to.
   @end{short}
-  The function @sym{(setf gdk:window-user-data)} sets the user data.
+  The @sym{(setf gdk:window-user-data)} function sets the user data.
 
-  For most purposes this function is deprecated in favor of the fucntion
-  @fun{g:object-data}. However, for historical reasons GTK stores the
-  @class{gtk-widget} object that owns a @class{gdk:window} object as user data
-  on the @class{gdk:window}. So, custom widget implementations should use this
-  function for that. If GTK receives an event for a @class{gdk:window} object,
-  and the user data for the window is non-@code{nil}, GTK will assume the user
-  data is a @class{gtk-widget} object, and forward the event to that widget.
+  For most purposes this function is deprecated in favor of the
+  @fun{g:object-data} function. However, for historical reasons GTK stores the
+  @class{gtk:widget} widget that owns a @class{gdk:window} object as user data
+  on the @class{gdk:window} object. So, custom widget implementations should use
+  this function for that. If GTK receives an event for a @class{gdk:window}
+  object, and the user data for the window is non-@code{nil}, GTK will assume
+  the user data is a @class{gtk:widget} widget, and forward the event to that
+  widget.
   @see-class{gdk:window}
-  @see-class{gtk-widget}
+  @see-class{gtk:widget}
   @see-function{g:object-data}"
   (with-foreign-object (data :pointer)
     (%window-user-data window data)
@@ -3781,13 +3625,11 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 ;;; gdk_window_set_override_redirect ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_window_set_override_redirect" window-set-override-redirect)
-    :void
+(defcfun ("gdk_window_set_override_redirect" window-set-override-redirect) :void
  #+liber-documentation
- "@version{#2020-9-23}
+ "@version{#2023-2-26}
   @argument[window]{a toplevel @class{gdk:window} object}
-  @argument[override-redirect]{@em{true} if @arg{window} should be override
-    redirect}
+  @argument[redirect]{@em{true} if @arg{window} should be override redirect}
   @begin{short}
     An override redirect window is not under the control of the window manager.
   @end{short}
@@ -3796,10 +3638,10 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   cannot see the override redirect window at all.
 
   Override redirect should only be used for short-lived temporary windows,
-  such as popup menus. @class{gtk-menu} uses an override redirect window in its
-  implementation, for example.
+  such as popup menus. The @class{gtk:menu} widget uses an override redirect
+  window in its implementation, for example.
   @see-class{gdk:window}
-  @see-class{gtk-menu}"
+  @see-class{gtk:menu}"
   (window (g:object window))
   (override-redirect :boolean))
 
@@ -3810,30 +3652,29 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 ;;; gdk_window_set_accept_focus () -> window-accept-focus
 ;;; ----------------------------------------------------------------------------
 
-(defun (setf window-accept-focus) (accept-focus window)
+(defun (setf window-accept-focus) (setting window)
   (cffi:foreign-funcall "gdk_window_set_accept_focus"
-                   (g:object window) window
-                   :boolean accept-focus
-                   :void)
-  accept-focus)
+                        (g:object window) window
+                        :boolean setting
+                        :void)
+  setting)
 
 (defcfun ("gdk_window_get_accept_focus" window-accept-focus) :boolean
  #+liber-documentation
- "@version{#2020-9-23}
-  @syntax[]{(gdk:window-accept-focus window) => accept-focus}
-  @syntax[]{(setf (gdk:window-accept-focus window) accept-focus)}
+ "@version{#2023-2-26}
+  @syntax[]{(gdk:window-accept-focus window) => setting}
+  @syntax[]{(setf (gdk:window-accept-focus window) setting)}
   @argument[window]{a toplevel @class{gdk:window} object}
-  @argument[accept-focus]{@em{true} if @arg{window} should receive input focus}
+  @argument[setting]{@em{true} if @arg{window} should receive input focus}
   @begin{short}
     Determines whether or not the desktop environment should be hinted that the
     window does not want to receive input focus.
   @end{short}
-  Setting @arg{accept-focus} to @em{false} hints the desktop environment that
-  the window does not want to receive input focus.
+  Setting @arg{setting} to @em{false} hints the desktop environment that the
+  window does not want to receive input focus.
 
   On X, it is the responsibility of the window manager to interpret this hint.
   ICCCM-compliant window manager usually respect it.
-  @see-class{gdk:window}
   @see-class{gdk:window}"
   (window (g:object window)))
 
@@ -3844,34 +3685,33 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 ;;; gdk_window_set_focus_on_map () -> window-focus-on-map
 ;;; ----------------------------------------------------------------------------
 
-(defun (setf window-focus-on-map) (focus-on-map window)
+(defun (setf window-focus-on-map) (setting window)
   (cffi:foreign-funcall "gdk_window_set_focus_on_map"
-                   (g:object window) window
-                   :boolean focus-on-map
-                   :void)
-  focus-on-map)
+                        (g:object window) window
+                        :boolean setting
+                        :void)
+  setting)
 
 (defcfun ("gdk_window_get_focus_on_map" window-focus-on-map) :boolean
  #+liber-documentation
- "@version{#2020-9-24}
-  @syntax[]{(gdk:window-focus-on-map window) => focus-on-map}
-  @syntax[]{(setf gdk:window-focus-on-map window) focus-on-map)}
+ "@version{#2023-2-26}
+  @syntax[]{(gdk:window-focus-on-map window) => setting}
+  @syntax[]{(setf gdk:window-focus-on-map window) setting)}
   @argument[window]{a toplevel @class{gdk:window} object}
-  @argument[focus-on-map]{@em{true} if the window should receive input focus
-    when mapped}
+  @argument[setting]{@em{true} if the window should receive input focus when
+    mapped}
   @begin{short}
     Whether or not the window wants to receive input focus when it is
     mapped.
   @end{short}
+  The @sym{gdk:window-focus-on-map} function determines whether or not the
+  desktop environment should be hinted that the window does not want to receive
+  input focus when it is mapped.
 
-  The @sym{gdk:window-focus-on-map} determines whether or not the desktop
-  environment should be hinted that the window does not want to receive input
-  focus when it is mapped.
-
-  Setting @arg{focus-on-map} to @em{false} hints the desktop environment that
-  the window does not want to receive input focus when it is mapped.
-  @arg{focus-on-map} should be turned off for windows that are not triggered
-  interactively, such as popups from network activity.
+  Setting @arg{setting} to @em{false} hints the desktop environment that the
+  window does not want to receive input focus when it is mapped. @arg{setting}
+  should be turned off for windows that are not triggered interactively, such
+  as popups from network activity.
 
   On X, it is the responsibility of the window manager to interpret this hint.
   Window managers following the freedesktop.org window manager extension
@@ -3967,25 +3807,23 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 ;;; gdk_window_shape_combine_region ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_window_shape_combine_region" window-shape-combine-region)
-    :void
+(defcfun ("gdk_window_shape_combine_region" window-shape-combine-region) :void
  #+liber-documentation
- "@version{#2020-9-24}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
-  @argument[shape-region]{region of type @symbol{cairo:region-t} of window to
-    be non-transparent}
-  @argument[offset-x]{a @code{:int} with the x position of @arg{shape-region}
-    in window coordinates}
-  @argument[offset-y]{a @code{:int} with the y position of @arg{shape-region}
-    in window coordinates}
+  @argument[region]{a @symbol{cairo:region-t} region of @arg{window} to be
+    non-transparent}
+  @argument[xoffset]{an integer with the x position of @arg{region} in window
+    coordinates}
+  @argument[yoffset]{an integer with the y position of @arg{region} in window
+    coordinates}
   @begin{short}
-    Makes pixels in the window outside @arg{shape-region} be transparent, so
-    that the window may be nonrectangular.
+    Makes pixels in the window outside @arg{region} be transparent, so that the
+    window may be nonrectangular.
   @end{short}
-
-  If @arg{shape-region} is @code{nil}, the shape will be unset, so the whole
-  window will be opaque again. @arg{offset-x} and @arg{offset-y} are ignored if
-  @arg{shape-region} is @code{nil}.
+  If @arg{region} is @code{nil}, the shape will be unset, so the whole window
+  will be opaque again. @arg{xoffset} and @arg{yoffset} are ignored if
+  @arg{region} is @code{nil}.
 
   On the X11 platform, this uses an X server extension which is widely
   available on most common platforms, but not available on very old X servers,
@@ -3993,11 +3831,12 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   shape extension, this function will do nothing.
 
   This function works on both toplevel and child windows.
-  @see-class{gdk:window}"
+  @see-class{gdk:window}
+  @see-symbol{cairo:region-t}"
   (window (g:object window))
-  (shape-region (:pointer (:struct cairo:region-t)))
-  (offset-x :int)
-  (offset-y :int))
+  (region (:pointer (:struct cairo:region-t)))
+  (xoffset :int)
+  (yoffset :int))
 
 (export 'window-shape-combine-region)
 
@@ -4007,13 +3846,13 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_set_child_shapes" window-set-child-shapes) :void
  #+liber-documentation
- "@version{#2020-9-24}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}
     Sets the shape mask of the window to the union of shape masks for all
     children of the window, ignoring the shape mask of the window itself.
   @end{short}
-  Contrast with the function @fun{gdk:window-merge-child-shapes} function which
+  Contrast with the @fun{gdk:window-merge-child-shapes} function which
   includes the shape mask of the window in the masks to be merged.
   @see-class{gdk:window}
   @see-function{gdk:window-merge-child-shapes}"
@@ -4027,17 +3866,17 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_merge_child_shapes" window-merge-child-shapes) :void
  #+liber-documentation
- "@version{#2020-9-24}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}
     Merges the shape masks for any child windows into the shape mask for the
     window.
   @end{short}
   I.e. the union of all masks for the window and its children will become the
-  new mask for the window.
-  See the function @fun{gdk:window-shape-combine-region}.
+  new mask for the window. See the @fun{gdk:window-shape-combine-region}
+  function.
 
-  This function is distinct from the function @fun{gdk:window-set-child-shapes}
+  This function is distinct from the @fun{gdk:window-set-child-shapes} function
   because it includes window's shape mask in the set of shapes to be merged.
   @see-class{gdk:window}
   @see-function{gdk:window-shape-combine-region}
@@ -4053,16 +3892,16 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (defcfun ("gdk_window_input_shape_combine_region"
            window-input-shape-combine-region) :void
  #+liber-documentation
- "@version{#2020-9-24}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
-  @argument[shape-region]{region of type @symbol{cairo:region-t} of the window
-    to be non-transparent}
-  @argument[offset-x]{a @code{:int} with the x position of @arg{shape-region}
-    in window coordinates}
-  @argument[offset-y]{a @code{:int} with the y position of @arg{shape-region}
-    in window coordinates}
+  @argument[region]{a @symbol{cairo:region-t} region of @arg{window} to be
+    non-transparent}
+  @argument[xoffset]{an integer with the x position of @arg{region} in window
+    coordinates}
+  @argument[yoffset]{an integer with the y position of @arg{region} in window
+    coordinates}
   @begin{short}
-    Like the function @fun{gdk:window-shape-combine-region}, but the shape
+    Like the @fun{gdk:window-shape-combine-region} function, but the shape
     applies only to event handling.
   @end{short}
   Mouse events which happen while the pointer position corresponds to an unset
@@ -4077,11 +3916,12 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   On the Win32 platform, this functionality is not present and the function
   does nothing.
   @see-class{gdk:window}
+  @see-symbol{cairo:region-t}
   @see-function{gdk:window-shape-combine-region}"
   (window (g:object window))
-  (shape-region (:pointer (:struct cairo:region-t)))
-  (offset-x :int)
-  (offset-y :int))
+  (region (:pointer (:struct cairo:region-t)))
+  (xoffset :int)
+  (yoffset :int))
 
 (export 'window-input-shape-combine-region)
 
@@ -4092,13 +3932,13 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (defcfun ("gdk_window_set_child_input_shapes" window-set-child-input-shapes)
     :void
  #+liber-documentation
- "@version{#2020-9-24}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}
     Sets the input shape mask of the window to the union of input shape masks
     for all children of window, ignoring the input shape mask of window itself.
   @end{short}
-  Contrast with the function @fun{gdk:window-merge-child-input-shapes} which
+  Contrast with the @fun{gdk:window-merge-child-input-shapes} function which
   includes the input shape mask of the window in the masks to be merged.
   @see-class{gdk:window}
   @see-function{gdk:window-merge-child-input-shapes}"
@@ -4113,19 +3953,19 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (defcfun ("gdk_window_merge_child_input_shapes"
            window-merge-child-input-shapes) :void
  #+liber-documentation
- "@version{#2020-9-24}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}
     Merges the input shape masks for any child windows into the input shape mask
     for @arg{window}.
   @end{short}
   I.e. the union of all input masks for the window and its children will become
-  the new input mask for the window.
-  See the function @fun{gdk:window-input-shape-combine-region}.
+  the new input mask for the window. See the
+  @fun{gdk:window-input-shape-combine-region} function.
 
-  This function is distinct from the function
-  @fun{gdk:window-set-child-input-shapes} because it includes window's input
-  shape mask in the set of shapes to be merged.
+  This function is distinct from the @fun{gdk:window-set-child-input-shapes}
+  function because it includes window's input shape mask in the set of shapes
+  to be merged.
   @see-class{gdk:window}
   @see-function{gdk:window-input-shape-combine-region}
   @see-function{gdk:window-set-child-input-shapes}"
@@ -4140,7 +3980,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (defcfun ("gdk_window_set_static_gravities" window-set-static-gravities)
     :boolean
  #+liber-documentation
- "@version{#2020-9-24}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @argument[use-static]{@em{true} to turn on static gravity}
   @return{@em{True} if the server supports static gravity.}
@@ -4151,7 +3991,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   This is used if you are implementing scary features that involve deep
   knowledge of the windowing system. Do not worry about it unless you have to.
   @begin[Warning]{dictionary}
-    The function @sym{gdk:window-set-static-gravities} has been deprecated since
+    The @sym{gdk:window-set-static-gravities} function has been deprecated since
     version 3.16 and should not be used in newly written code. Static gravities
     have not worked on anything but X11 for a long time.
   @end{dictionary}
@@ -4167,16 +4007,16 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_set_title" window-set-title) :void
  #+liber-documentation
- "@version{#2020-9-24}
+ "@version{#2023-2-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @argument[title]{a string with the title of @arg{window}}
   @begin{short}
     Sets the title of a toplevel window, to be displayed in the titlebar.
   @end{short}
   If you have not explicitly set the icon name for the window, using the
-  function @fun{gdk:window-set-icon-name}, the icon name will be set to title as
-  well. @arg{title} must be in UTF-8 encoding, as with all user-readable strings
-  in GDK/GTK. @arg{title} may not be @code{nil}.
+  @fun{gdk:window-set-icon-name} function, the icon name will be set to title
+  as well. @arg{title} must be in UTF-8 encoding, as with all user-readable
+  strings in GDK/GTK. @arg{title} may not be @code{nil}.
   @see-class{gdk:window}
   @see-function{gdk:window-set-icon-name}"
   (window (g:object window))
@@ -4190,27 +4030,27 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_set_background" window-set-background) :void
  #+liber-documentation
- "@version{#2020-9-24}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
-  @argument[color]{a @class{gdk:color} structure}
+  @argument[color]{a @class{gdk:color} instance}
   @begin{short}
     Sets the background color of the window.
   @end{short}
-  However, when using GTK, set the background of a widget with the function
-  @fun{gtk-widget-modify-bg}, if you are implementing an application,
-  or the function @fun{gtk-style-context-set-background}, if you are
+  However, when using GTK, set the background of a widget with the
+  @fun{gtk:widget-modify-bg} function, if you are implementing an application,
+  or the @fun{gtk:style-context-set-background} function, if you are
   implementing a custom widget.
 
-  See also the function @fun{gdk:window-set-background-pattern}.
+  See also the @fun{gdk:window-background-pattern} function.
   @begin[Warning]{dictionary}
-    The function @sym{gdk:window-set-background} has been deprecated since
-    version 3.4 and should not be used in newly written code. Use the function
-    @fun{gdk:window-set-background-rgba} instead.
+    The @sym{gdk:window-set-background} function has been deprecated since
+    version 3.4 and should not be used in newly written code. Use the
+    @fun{gdk:window-set-background-rgba} function instead.
   @end{dictionary}
   @see-class{gdk:window}
-  @see-function{gtk-widget-modify-bg}
+  @see-function{gtk:widget-modify-bg}
   @see-function{gdk:window-set-background-rgba}
-  @see-function{gtk-style-context-set-background}
+  @see-function{gtk:style-context-set-background}
   @see-function{gdk:window-background-pattern}"
   (window (g:object window))
   (color (g:boxed color)))
@@ -4223,16 +4063,15 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_set_background_rgba" window-set-background-rgba) :void
  #+liber-documentation
- "@version{#2020-9-24}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @argument[rgba]{a @class{gdk:rgba} color}
   @begin{short}
     Sets the background color of the window.
   @end{short}
-
-  See also the function @fun{gdk:window-background-pattern}.
+  See also the @fun{gdk:window-background-pattern} function.
   @begin[Warning]{dictionary}
-    The function @sym{gdk:window-set-background-rgba} has been deprecated since
+    The @sym{gdk:window-set-background-rgba} function has been deprecated since
     version 3.22 and should not be used in newly written code. Do not use this
     function.
   @end{dictionary}
@@ -4248,10 +4087,6 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 ;;; gdk_window_set_background_pattern () -> window-background-pattern
 ;;; ----------------------------------------------------------------------------
 
-;; TODO: Implement the type cairo-pattern-t
-
-;(defctype cairo-pattern-t :pointer)
-
 (defun (setf window-background-pattern) (pattern window)
   (cffi:foreign-funcall "gdk_window_set_background_pattern"
                         (g:object window) window
@@ -4262,21 +4097,19 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (defcfun ("gdk_window_get_background_pattern" window-background-pattern)
     (:pointer (:struct cairo:pattern-t))
  #+liber-documentation
- "@version{#2020-9-24}
+ "@version{#2023-2-26}
   @syntax[]{(gdk:window-background-pattern window) => pattern}
   @syntax[]{(setf (gdk:window-background-pattern window) pattern)}
   @argument[window]{a @class{gdk:window} object}
-  @argument[pattern]{a pattern of type @symbol{cairo:pattern-t} to use, or
-    @code{nil}}
+  @argument[pattern]{a @symbol{cairo:pattern-t} pattern to use, or @code{nil}}
   @begin{short}
     The pattern to use for the background or @code{nil} to use the parent's
     background.
   @end{short}
-
-  The function @sym{gdk:window-background-pattern} gets the pattern used to
+  The @sym{gdk:window-background-pattern} function gets the pattern used to
   clear the background on the window. If the window does not have its own
   background and reuses the parent's, @code{nil} is returned and you will have
-  to query it yourself. The function @sym{(setf gdk:window-background-pattern)}
+  to query it yourself. The @sym{(setf gdk:window-background-pattern)} function
   sets the background of the window.
 
   A background of @code{nil} means that the window will inherit its background
@@ -4285,12 +4118,12 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   The windowing system will normally fill a window with its background when
   the window is obscured then exposed.
   @begin[Warning]{dictionary}
-    The function @sym{gdk:window-background-pattern} has been deprecated since
-    version 3.22 and should not be used in newly written code. Do not use
-    this function.
+    The @sym{gdk:window-background-pattern} function has been deprecated since
+    version 3.22 and should not be used in newly written code. Do not use this
+    function.
   @end{dictionary}
   @see-class{gdk:window}
-  @see-symbol{cairo-pattern-t}"
+  @see-symbol{cairo:pattern-t}"
   (window (g:object window)))
 
 (export 'window-background-pattern)
@@ -4322,15 +4155,15 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defun window-geometry (window)
  #+liber-documentation
- "@version{#2020-9-7}
+ "@version{2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @begin{return}
-    @code{x}      -- a @code{:int} with the x coordinate of @arg{window},
-                     relative to its parent @br{}
-    @code{y}      -- a @code{:int} with the y coordinate of @arg{window},
-                     relative to its parent @br{}
-    @code{width}  -- a @code{:int} with the width of @arg{window} @br{}
-    @code{height} -- a @code{:int} with the height of @arg{window}
+    @code{x} -- an integer with the x coordinate of @arg{window}, relative to
+    its parent @br{}
+    @code{y} -- an integer with the y coordinate of @arg{window}, relative to
+    its parent @br{}
+    @code{width} -- an integer with the width of @arg{window} @br{}
+    @code{height} -- an integer with the height of @arg{window}
   @end{return}
   @begin{short}
     The @arg{x} and @arg{y} coordinates returned are relative to the parent
@@ -4342,15 +4175,15 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   On the X11 platform, the geometry is obtained from the X server, so reflects
   the latest position of the window. This may be out-of-sync with the position
   of the window delivered in the most-recently-processed
-  @class{gdk:event-configure} event. The function @fun{gdk:window-position} in
+  @class{gdk:event-configure} event. The @fun{gdk:window-position} function in
   contrast gets the position from the most recent configure event.
   @begin[Note]{dictionary}
-    If @arg{window} is not a toplevel, it is much better to call the functions
+    If @arg{window} is not a toplevel, it is much better to call the
     @fun{gdk:window-position}, @fun{gdk:window-width} and
-    @fun{gdk:window-height} instead, because it avoids the roundtrip to the X
-    server and because these functions support the full 32-bit coordinate space,
-    whereas the function @sym{gdk:window-geometry} is restricted to the 16-bit
-    coordinates of X11.
+    @fun{gdk:window-height} functions instead, because it avoids the roundtrip
+    to the X server and because these functions support the full 32-bit
+    coordinate space, whereas the @sym{gdk:window-geometry} function is
+    restricted to the 16-bit coordinates of X11.
   @end{dictionary}
   @see-class{gdk:window}
   @see-class{gdk:event-configure}
@@ -4372,39 +4205,42 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_set_geometry_hints" window-set-geometry-hints) :void
  #+liber-documentation
- "@version{#2021-5-4}
+ "@version{2023-2-26}
   @argument[window]{a toplevel @class{gdk:window} object}
-  @argument[geometry]{geometry hints of type @symbol{gdk:geometry}}
-  @argument[geometry-mask]{a @symbol{gdk:window-hints} bitmask indicating fields
-    of geometry to pay attention to}
+  @argument[geometry]{a @symbol{gdk:geometry} instance with the geometry hints}
+  @argument[mask]{a @symbol{gdk:window-hints} bitmask indicating fields
+    of @arg{geometry} to pay attention to}
   @begin{short}
     Sets the geometry hints for the window.
   @end{short}
-  Hints flagged in @arg{geometry-mask} are set, hints not flagged  are unset.
+  Hints flagged in @arg{mask} are set, hints not flagged  are unset.
 
   This function provides hints to the windowing system about acceptable sizes
   for a toplevel window. The purpose of this is to constrain user resizing,
   but the windowing system will typically, but is not required to, also
   constrain the current size of the window to the provided values and
-  constrain programatic resizing via the functions @fun{gdk:window-resize} or
-  @fun{gdk:window-move-resize}.
+  constrain programatic resizing via the @fun{gdk:window-resize} or
+  @fun{gdk:window-move-resize} functions.
 
   Note that on X11, this effect has no effect on windows of type @code{:temp}
-  or windows where override redirect has been turned on via the function
-  @fun{gdk:window-set-override-redirect} since these windows are not resizable
-  by the user.
+  or windows where override redirect has been turned on via the
+  @fun{gdk:window-set-override-redirect} function since these windows are not
+  resizable by the user.
 
   Since you cannot count on the windowing system doing the constraints for
-  programmatic resizes, you should generally call the function
-  @fun{gdk:window-constrain-size} yourself to determine appropriate sizes.
+  programmatic resizes, you should generally call the
+  @fun{gdk:window-constrain-size} function yourself to determine appropriate
+  sizes.
   @see-class{gdk:window}
+  @see-symbol{gdk:geometry}
+  @see-symbol{gdk:window-hints}
   @see-function{gdk:window-resize}
   @see-function{gdk:window-move-resize}
   @see-function{gdk:window-set-override-redirect}
   @see-function{gdk:window-constrain-size}"
   (window (g:object window))
   (geometry (:pointer (:struct geometry)))
-  (geometry-mask window-hints))
+  (mask window-hints))
 
 (export 'window-set-geometry-hints)
 
@@ -4414,7 +4250,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_get_width" window-width) :int
  #+liber-documentation
- "@version{2023-2-3}
+ "@version{2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @return{An integer with the width of @arg{window}.}
   @begin{short}
@@ -4436,7 +4272,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_get_height" window-height) :int
  #+liber-documentation
- "@version{2023-2-3}
+ "@version{2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @return{An integer with the height of @arg{window}.}
   @begin{short}
@@ -4458,8 +4294,8 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_set_icon_list" window-set-icon-list) :void
  #+liber-documentation
- "@version{#2020-9-24}
-  @argument[window]{the @class{gdk:window} toplevel window to set the icon of}
+ "@version{#2023-2-26}
+  @argument[window]{a toplevel @class{gdk:window} window to set the icon of}
   @argument[pixbufs]{a list of @class{gdk:pixbuf} objects, of different sizes}
   @begin{short}
     Sets a list of icons for the window.
@@ -4482,16 +4318,16 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 ;;; gdk_window_set_modal_hint () -> window-modal-hint
 ;;; ----------------------------------------------------------------------------
 
-(defun (setf window-modal-hint) (modal-hint window)
+(defun (setf window-modal-hint) (modal window)
   (cffi:foreign-funcall "gdk_window_set_modal_hint"
-                   (g:object window) window
-                   :boolean modal-hint
-                   :void)
-  modal-hint)
+                        (g:object window) window
+                        :boolean modal
+                        :void)
+  modal)
 
 (defcfun ("gdk_window_get_modal_hint" window-modal-hint) :boolean
  #+liber-documentation
- "@version{#2020-9-24}
+ "@version{#2023-2-26}
   @syntax[]{(gdk:window-modal-hint window) => modal}
   @syntax[]{(setf (gdk:window-modal-hint window) modal)}
   @argument[window]{a toplevel @class{gdk:window} object}
@@ -4499,8 +4335,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   @begin{short}
     Whether or not the window has the modal hint set.
   @end{short}
-
-  The function @sym{gdk:window-modal-hint} determines whether or not the window
+  The @sym{gdk:window-modal-hint} function determines whether or not the window
   manager is hinted that window has modal behaviour.
 
   The application can use this hint to tell the window manager that a certain
@@ -4508,7 +4343,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   handle modal windows in a special way.
 
   You should only use this on windows for which you have previously called
-  the function @fun{gdk:window-set-transient-for}.
+  the @fun{gdk:window-set-transient-for} function.
   @see-class{gdk:window}
   @see-function{gdk:window-set-transient-for}"
   (window (g:object window)))
@@ -4522,24 +4357,22 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defun (setf window-type-hint) (hint window)
   (cffi:foreign-funcall "gdk_window_set_type-hint"
-                   (g:object window) window
-                   window-type-hint hint
-                   :void)
+                        (g:object window) window
+                        window-type-hint hint
+                        :void)
   hint)
 
-(defcfun ("gdk_window_get_type_hint" window-type-hint)
-    window-type-hint
+(defcfun ("gdk_window_get_type_hint" window-type-hint) window-type-hint
  #+liber-documentation
- "@version{#2021-9-9}
+ "@version{#2023-2-26}
   @syntax[]{(gdk:window-type-hint window) => hint}
   @syntax[]{(setf (gdk:window-type-hint window) hint)}
   @argument[window]{a @class{gdk:window} toplevel object}
-  @argument[hint]{a type hint of the @symbol{gdk:window-type-hint} enumeration
-    this window will have}
+  @argument[hint]{a @symbol{gdk:window-type-hint} value with the type hint this
+    window will have}
   @begin{short}
     The type hint set for the window.
   @end{short}
-
   The @sym{gdk:window-type-hint} function returns the type hint set for a
   the window. The @sym{(setf gdk:window-type-hint)} function sets the type hint.
 
@@ -4548,7 +4381,8 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   information when determining the decoration and behaviour of the window.
 
   The hint must be set before the window is mapped.
-  @see-class{gdk:window}"
+  @see-class{gdk:window}
+  @see-symbol{gdk:window-type-hint}"
   (window (g:object window)))
 
 (export 'window-type-hint)
@@ -4559,12 +4393,12 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_set_shadow_width" window-set-shadow-width) :void
  #+liber-documentation
- "@version{#2020-9-24}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
-  @argument[left]{a @code{:int} with the left extent}
-  @argument[right]{a @code{:int} with the right extent}
-  @argument[top]{a @code{:int} with the top extent}
-  @argument[bottom]{a @code{:int} with the bottom extent}
+  @argument[left]{an integer with the left extent}
+  @argument[right]{an integer with the right extent}
+  @argument[top]{an integer with the top extent}
+  @argument[bottom]{an integer with the bottom extent}
   @begin{short}
     Newer GTK windows using client-side decorations use extra geometry around
     their frames for effects like shadows and invisible borders.
@@ -4589,19 +4423,18 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 ;;; gdk_window_set_skip_taskbar_hint ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_window_set_skip_taskbar_hint" window-set-skip-taskbar-hint)
-    :void
+(defcfun ("gdk_window_set_skip_taskbar_hint" window-set-skip-taskbar-hint) :void
  #+liber-documentation
- "@version{#2020-9-24}
+ "@version{#2023-2-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @argument[skips-taskbar]{@em{true} to skip the taskbar}
   @begin{short}
     Toggles whether a window should appear in a task list or window list.
   @end{short}
-  If a window's semantic type as specified with the function
-  @fun{gdk:window-type-hint} already fully describes the window, this function
-  should not be called in addition, instead you should allow the window to be
-  treated according to standard policy for its semantic type.
+  If a window's semantic type as specified with the @fun{gdk:window-type-hint}
+  function already fully describes the window, this function should not be
+  called in addition, instead you should allow the window to be treated
+  according to standard policy for its semantic type.
   @see-class{gdk:window}
   @see-function{gdk:window-type-hint}"
   (window (g:object window))
@@ -4615,7 +4448,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_set_skip_pager_hint" window-set-skip-pager-hint) :void
  #+liber-documentation
- "@version{#2020-9-24}
+ "@version{#2023-2-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @argument[skips-pager]{@em{true} to skip the pager}
   @begin{short}
@@ -4623,10 +4456,10 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
     other desktop utility program that displays a small thumbnail representation
     of the windows on the desktop.
   @end{short}
-  If a window's semantic type as specified with the function
-  @fun{gdk:window-type-hint} already fully describes the window, this function
-  should not be called in addition, instead you should allow the window to be
-  treated according to standard policy for its semantic type.
+  If a window's semantic type as specified with the @fun{gdk:window-type-hint}
+  function already fully describes the window, this function should not be
+  called in addition, instead you should allow the window to be treated
+  according to standard policy for its semantic type.
   @see-class{gdk:window}
   @see-function{gdk:window-type-hint}"
   (window (g:object window))
@@ -4640,7 +4473,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_set_urgency_hint" window-set-urgency-hint) :void
  #+liber-documentation
- "@version{#2020-9-24}
+ "@version{#2023-2-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @argument[urgent]{@em{true} if the window is urgent}
   @begin{short}
@@ -4663,17 +4496,17 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defun window-position (window)
  #+liber-documentation
- "@version{#2020-9-6}
+ "@version{2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @begin{return}
-    @code{x} -- a @code{:int} with the x coordinate of @arg{window} @br{}
-    @code{y} -- a @code{:int} with the y coordinate of @arg{window}
+    @code{x} -- an integer with the x coordinate of @arg{window} @br{}
+    @code{y} -- an integer with the y coordinate of @arg{window}
   @end{return}
   @begin{short}
     Obtains the position of the window as reported in the
     most-recently-processed @class{gdk:event-configure} event.
   @end{short}
-  Contrast with the function @fun{gdk:window-geometry} which queries the X
+  Contrast with the @fun{gdk:window-geometry} function which queries the X
   server for the current window position, regardless of which events have been
   received or processed. The position coordinates are relative to the window's
   parent window.
@@ -4700,7 +4533,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defun window-root-origin (window)
  #+liber-documentation
- "@version{#2021-2-19}
+ "@version{#2023-2-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @begin{return}
     @code{x} -- an integer with the x position of window frame @br{}
@@ -4728,10 +4561,11 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defun window-frame-extents (window)
  #+liber-documentation
- "@version{#2020-9-24}
+ "@version{#2023-2-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @begin{return}
-    @code{rect} -- a @class{gdk:rectangle} with bounding box of the window frame
+    @code{rect} -- a @class{gdk:rectangle} instance with bounding box of the
+    window frame
   @end{return}
   @begin{short}
     Obtains the bounding box of the window, including window manager
@@ -4739,8 +4573,9 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   @end{short}
   The frame position is given in root window coordinates. To get the position
   of the window itself, rather than the frame, in root window coordinates, use
-  the function @fun{gdk:window-origin}.
+  the @fun{gdk:window-origin} function.
   @see-class{gdk:window}
+  @see-class{gdk:rectangle}
   @see-function{gdk:window-origin}"
   (let ((rectangle (rectangle-new)))
     (%window-frame-extents window rectangle)
@@ -4759,7 +4594,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defun window-origin (window)
  #+liber-documentation
- "@version{#2021-2-19}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @begin{return}
     @code{x} -- an integer with the x coordinate @br{}
@@ -4768,9 +4603,8 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   @begin{short}
     Obtains the position of a window in root window coordinates.
   @end{short}
-  Compare with the functions @fun{gdk:window-position} and
-  @fun{gdk:window-geometry} which return the position of a window relative
-  to its parent window.
+  Compare with the @fun{gdk:window-position} and @fun{gdk:window-geometry}
+  functions which return the position of a window relative to its parent window.
   @see-class{gdk:window}
   @see-function{gdk:window-position}
   @see-function{gdk:window-geometry}"
@@ -4794,7 +4628,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defun window-root-coords (window x y)
  #+liber-documentation
- "@version{#2021-2-19}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @argument[x]{an integer with the x coordinate in window}
   @argument[y]{an integer with the y coordinate in window}
@@ -4805,7 +4639,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   @begin{short}
     Obtains the position of a window position in root window coordinates.
   @end{short}
-  This is similar to the function @fun{gdk:window-origin} but allows you to
+  This is similar to the @fun{gdk:window-origin} function but allows you to
   pass in any position in the window, not just the origin.
   @see-class{gdk:window}
   @see-function{gdk:window-origin}"
@@ -4828,15 +4662,15 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defun window-pointer (window)
  #+liber-documentation
- "@version{#2020-11-9}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @begin{return}
-    @code{win} -- the window containing the pointer as with the function
-    @fun{gdk:window-at-pointer}, or @code{nil} if the window containing the
-    pointer is not known to GDK @br{}
+    @code{win} -- a @class{gdk:window} object containing the pointer as with
+    the @fun{gdk:window-at-pointer} function, or @code{nil} if the window
+    containing the pointer is not known to GDK @br{}
     @code{x} -- an integer with the x coordinate of pointer @br{}
     @code{y} -- an integer with the y coordinate of pointer @br{}
-    @code{mask} -- modifier mask of type @symbol{gdk:modifier-type}
+    @code{mask} -- a @symbol{gdk:modifier-type} value with the modifier mask
   @end{return}
   @begin{short}
     Obtains the current pointer position and modifier state. The position is
@@ -4844,8 +4678,8 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   @end{short}
   @begin[Warning]{dictionary}
     The @sym{gdk:window-pointer} function has been deprecated since version
-    3.0 and should not be used in newly written code. Use the function
-    @fun{gdk:window-device-position} instead.
+    3.0 and should not be used in newly written code. Use the
+    @fun{gdk:window-device-position} function instead.
   @end{dictionary}
   @see-class{gdk:window}
   @see-symbol{gdk:modifier-type}
@@ -4874,25 +4708,26 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defun window-device-position (window device)
  #+liber-documentation
- "@version{#2021-9-25}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @argument[device]{a @class{gdk:device} object to query}
   @begin{return}
-    @code{win}  -- the @class{gdk:window} object underneath @arg{device}, as
+    @code{win}  -- a @class{gdk:window} object underneath @arg{device}, as
     with the @fun{gdk:device-window-at-position} function, or @code{nil} if the
     window is not known to GDK @br{}
     @code{x} -- an integer with the x coordinate of the device @br{}
     @code{y} -- an integer with the y coordinate of the device @br{}
-    @code{mask} -- the @symbol{gdk:modifier-type} flags
+    @code{mask} -- a @symbol{gdk:modifier-type} value
   @end{return}
   @begin{short}
-    Obtains the current device position and modifier state. The position is
-    given in coordinates relative to the upper left corner of window.
+    Obtains the current device position and modifier state.
   @end{short}
-  Use the @fun{gdk:window-device-position-double} function if you need
+  The position is given in coordinates relative to the upper left corner of
+  window. Use the @fun{gdk:window-device-position-double} function if you need
   subpixel precision.
   @see-class{gdk:window}
   @see-class{gdk:device}
+  @see-symbol{gdk:modifier-type}
   @see-function{gdk:device-window-at-position}
   @see-function{gdk:window-device-position-double}"
   (with-foreign-objects ((x :int) (y :int) (mask 'modifier-type))
@@ -4919,16 +4754,16 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defun window-device-position-double (window device)
  #+liber-documentation
- "@version{#2021-9-25}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @argument[device]{a @class{gdk:device} object to query to}
   @begin{return}
-    @code{win} -- the @class{gdk:window} object underneath device, as with the
+    @code{win} -- a @class{gdk:window} object underneath device, as with the
     @fun{gdk:device-window-at-position} function, or @code{nil} if the window
     is not known to GDK @br{}
-    @code{x} -- an double float with the x coordinate of the device @br{}
-    @code{y} -- an double float with the y coordinate of the device  @br{}
-    @code{mask} -- the @symbol{gdk:modifer-type} flags
+    @code{x} -- a double float with the x coordinate of the device @br{}
+    @code{y} -- a double float with the y coordinate of the device  @br{}
+    @code{mask} -- a @symbol{gdk:modifier-type} value
   @end{return}
   @begin{short}
     Obtains the current device position in doubles and the modifier state.
@@ -4936,7 +4771,9 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   The position is given in coordinates relative to the upper left corner of
   the window.
   @see-class{gdk:window}
-  @see-function{gdk:window-device-position}"
+  @see-class{gdk:device}
+  @see-symbol{gdk:modifier-type}
+  @see-function{gdk:device-window-at-position}"
   (with-foreign-objects ((x :double) (y :double) (mask 'modifier-type))
     (let ((window (%window-device-position-double window device x y mask)))
       (values window
@@ -4952,22 +4789,22 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_get_parent" window-parent) (g:object window)
  #+liber-documentation
- "@version{#2020-9-24}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
-  @return{parent @class{gdk:window} object of @arg{window}}
+  @return{The parent @class{gdk:window} object of @arg{window}}
   @begin{short}
     Obtains the parent of window, as known to GDK.
   @end{short}
   Does not query the X server. Thus this returns the parent as passed to the
-  function @fun{gdk:window-new}, not the actual parent. This should never
+  @fun{gdk:window-new} function, not the actual parent. This should never
   matter unless you are using Xlib calls mixed with GDK calls on the X11
   platform. It may also matter for toplevel windows, because the window manager
   may choose to reparent them.
 
-  Note that you should use the function @fun{gdk:window-effective-parent} when
-  writing generic code that walks up a window hierarchy, because the function
-  @sym{gdk:window-parent} will most likely not do what you expect if there are
-  offscreen windows in the hierarchy.
+  Note that you should use the @fun{gdk:window-effective-parent} function when
+  writing generic code that walks up a window hierarchy, because the
+  @sym{gdk:window-parent} function will most likely not do what you expect if
+  there are offscreen windows in the hierarchy.
   @see-class{gdk:window}
   @see-function{gdk:window-new}
   @see-function{gdk:window-children}
@@ -4982,19 +4819,18 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_get_toplevel" window-toplevel) (g:object window)
  #+liber-documentation
- "@version{#2020-9-7}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
-  @return{The @class{gdk:window} toplevel window containing @arg{window}.}
+  @return{The toplevel @class{gdk:window} window containing @arg{window}.}
   @begin{short}
     Gets the toplevel window that is an ancestor of the window.
   @end{short}
-
   Any window type but @code{:child} is considered a toplevel window, as is
   a @code{:child} window that has a root window as parent.
 
-  Note that you should use the function @fun{gdk:window-effective-toplevel}
+  Note that you should use the @fun{gdk:window-effective-toplevel} function
   when you want to get to a window's toplevel as seen on screen, because
-  the function @sym{gdk:window-toplevel} will most likely not do what you
+  the @sym{gdk:window-toplevel} function will most likely not do what you
   expect if there are offscreen windows in the hierarchy.
   @see-class{gdk:window}
   @see-function{gdk:window-effective-toplevel}"
@@ -5009,7 +4845,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (defcfun ("gdk_window_get_children" window-children)
     (g:list-t (g:object window))
  #+liber-documentation
- "@version{#2020-9-7}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @return{List of @class{gdk:window} child windows inside @arg{window}.}
   @begin{short}
@@ -5031,22 +4867,21 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (defcfun ("gdk_window_get_children_with_user_data"
            window-children-with-user-data) (g:list-t (g:object window))
  #+liber-documentation
- "@version{#2020-9-24}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
-  @argument[user-data]{user data to look for as a :pointer}
-  @return{list of child windows inside @arg{window}}
+  @argument[data]{user data to look for as a pointer}
+  @return{list of @class{gdk:window} child windows inside @arg{window}}
   @begin{short}
     Gets the list of children of the window known to GDK with a particular
-    @arg{user-data} set on it.
+    @arg{data} set on it.
   @end{short}
-
   The returned list must be freed, but the elements in the list need not be.
 
   The list is returned in (relative) stacking order, i.e. the lowest window
   is first.
   @see-class{gdk:window}"
   (window (g:object window))
-  (user-data :pointer))
+  (data :pointer))
 
 (export 'window-children-with-user-data)
 
@@ -5055,13 +4890,13 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gdk_window_peek_children" window-peek-children)
-    (g:list-t (g:object window))
+    (g:list-t (g:object window) :free-from-foreign nil)
  #+liber-documentation
- "@version{#2020-9-7}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @return{A list of @class{gdk:window} child windows in @arg{window}.}
   @begin{short}
-    Like the function @fun{gdk:window-children}, but does not copy the list
+    Like the @fun{gdk:window-children} function, but does not copy the list
     of children, so the list does not need to be freed.
   @end{short}
   @see-class{gdk:window}
@@ -5077,23 +4912,21 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defun (setf window-events) (event-mask window)
   (cffi:foreign-funcall "gdk_window_set_events"
-                   (g:object window) window
-                   event-mask event-mask
-                   :void)
+                        (g:object window) window
+                        event-mask event-mask
+                        :void)
   event-mask)
 
 (defcfun ("gdk_window_get_events" window-events) event-mask
  #+liber-documentation
- "@version{#2020-9-6}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
-  @argument[event-mask]{event mask of type @symbol{gdk:event-mask} for
-    @arg{window}}
+  @argument[event-mask]{a @symbol{gdk:event-mask} event mask for @arg{window}}
   @begin{short}
     Accessor of the event mask for the window.
   @end{short}
-
-  The function @sym{gdk:window-events} gets the event mask for the window for
-  all master input devices. The function @sym{(setf gdk:window-events)} sets
+  The @sym{gdk:window-events} function gets the event mask for the window for
+  all master input devices. The @sym{(setf gdk:window-events)} function sets
   the event mask.
 
   The event mask for a window determines which events will be reported for that
@@ -5113,9 +4946,9 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_set_icon_name" window-set-icon-name) :void
  #+liber-documentation
- "@version{#2020-9-25}
+ "@version{#2023-2-26}
   @argument[window]{a toplevel @class{gdk:window} object}
-  @argument[name]{a strinng with the name of @arg{window} while iconified
+  @argument[name]{a string with the name of @arg{window} while iconified
     (minimized)}
   @begin{short}
     Windows may have a name used while minimized, distinct from the name they
@@ -5124,11 +4957,11 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   Most of the time this is a bad idea from a user interface standpoint. But you
   can set such a name with this function, if you like.
 
-  After calling this with a non-@code{nil} name, calls to the function
-  @fun{gdk:window-set-title} will not update the icon title.
+  After calling this with a non-@code{nil} name, calls to the
+  @fun{gdk:window-set-title} function will not update the icon title.
 
-  Using @code{nil} for name unsets the icon title; further calls to the function
-  @fun{gdk:window-set-title} will again update the icon title as well.
+  Using @code{nil} for name unsets the icon title. Further calls to the
+  @fun{gdk:window-set-title} function will again update the icon title as well.
   @see-class{gdk:window}
   @see-function{gdk:window-set-title}"
   (window (g:object window))
@@ -5142,7 +4975,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_set_transient_for" window-set-transient-for) :void
  #+liber-documentation
- "@version{#2020-9-25}
+ "@version{#2023-2-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @argument[parent]{another toplevel @class{gdk:window} object}
   @begin{short}
@@ -5152,12 +4985,12 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   This allows the window manager to do things like center @arg{window} on
   @arg{parent} and keep @arg{window} above @arg{parent}.
 
-  See the function @fun{gtk-window-transient-for} if you are using
-  @class{gtk-window} or @class{gtk-dialog} widgets.
+  See the @fun{gtk:window-transient-for} function if you are using
+  @class{gtk:window} or @class{gtk:dialog} widgets.
   @see-class{gdk:window}
-  @see-class{gtk-window}
-  @see-class{gtk-dialog}
-  @see-function{gtk-window-transient-for}"
+  @see-class{gtk:window}
+  @see-class{gtk:dialog}
+  @see-function{gtk:window-transient-for}"
   (window (g:object window))
   (parent (g:object window)))
 
@@ -5169,11 +5002,11 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_set_role" window-set-role) :void
  #+liber-documentation
- "@version{#2020-9-25}
+ "@version{#2023-2-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @argument[role]{a string indicating its role}
   @begin{short}
-    When using GTK, typically you should use the function @fun{gtk-window-role}
+    When using GTK, typically you should use the @fun{gtk:window-role} function
     instead of this low-level function.
   @end{short}
 
@@ -5186,7 +5019,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   string you use for the role, as long as you have a different role for each
   non-interchangeable kind of window.
   @see-class{gdk:window}
-  @see-function{gtk-window-role}"
+  @see-function{gtk:window-role}"
   (window (g:object window))
   (role :string))
 
@@ -5198,15 +5031,15 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_set_startup_id" window-set-startup-id) :void
  #+liber-documentation
- "@version{#2020-8-17}
+ "@version{#2023-2-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @argument[startup-id]{a string with startup-notification identifier}
   @begin{short}
-    When using GTK, typically you should use the function
-    @fun{gtk-window-startup-id} instead of this low-level function.
+    When using GTK, typically you should use the @fun{gtk:window-startup-id}
+    function instead of this low-level function.
   @end{short}
   @see-class{gdk:window}
-  @see-function{gtk-window-startup-id}"
+  @see-function{gtk:window-startup-id}"
   (window (g:object window))
   (startup-id :string))
 
@@ -5219,25 +5052,24 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defun (setf window-group) (leader window)
   (cffi:foreign-funcall "gdk_window_set_group"
-                   (g:object window) window
-                   (g:object window) leader
-                   :void)
+                        (g:object window) window
+                        (g:object window) leader
+                        :void)
   leader)
 
 (defcfun ("gdk_window_get_group" window-group) (g:object window)
  #+liber-documentation
- "@version{#2020-9-25}
+ "@version{#2023-2-26}
   @syntax[]{(gdk:window-group window) => leader}
   @syntax[]{(setf (gdk:window-group window) leader)}
   @argument[window]{a toplevel @class{gdk:window} object}
-  @argument[leader]{group leader @class{gdk:window} object, or @code{nil} to
+  @argument[leader]{a group leader @class{gdk:window} object, or @code{nil} to
     restore the default group leader window}
   @begin{short}
     The group leader window for @arg{window}.
   @end{short}
-
-  The function @sym{gdk:window-group} returns the group leader window for
-  @arg{window}. The function @sym{(setf gdk:window-group)} sets the group leader
+  The @sym{gdk:window-group} function returns the group leader window for
+  @arg{window}. The @sym{(setf gdk:window-group)} function sets the group leader
   window for @arg{window}.
 
   By default, GDK sets the group leader for all toplevel windows to a global
@@ -5261,9 +5093,9 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defun (setf window-decorations) (decorations window)
   (cffi:foreign-funcall "gdk_window_set_decorations"
-                   (g:object window) window
-                   wm-decoration decorations
-                   :void)
+                        (g:object window) window
+                        wm-decoration decorations
+                        :void)
   decorations)
 
 (defcfun ("gdk_window_get_decorations" %window-decorations) :boolean
@@ -5272,19 +5104,19 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defun window-decorations (window)
  #+liber-documentation
- "@version{#2020-9-25}
+ "@version{#2023-2-26}
   @syntax[]{(gdk:window-decorations window) => decorations}
   @syntax[]{(setf (gdk:window-decorations window) decorations)}
   @argument[window]{a toplevel @class{gdk:window} object}
-  @argument[decorations]{decoration hint mask of type
-    @symbol{gdk:wm-decoration}}
+  @argument[decorations]{a @symbol{gdk:wm-decoration} value with the decoration
+    hint mask}
   @begin{short}
     \"Decorations\" are the features the window manager adds to a toplevel
-    @class{gdk:window}.
+    @class{gdk:window} object.
   @end{short}
   This function sets the traditional Motif window manager hints that tell the
   window manager which decorations you would like your window to have. Usually
-  you should use the function @fun{gtk-window-decorated} on a @class{gtk-window}
+  you should use the @fun{gtk:window-decorated} function on a @class{gtk:window}
   widget instead of using the GDK function directly.
 
   The decorations argument is the logical OR of the values of the
@@ -5297,8 +5129,8 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   decorations, but very few honor all possible combinations of bits.
   @see-class{gdk:window}
   @see-symbol{gdk:wm-decoration}
-  @see-class{gtk-window}
-  @see-function{gtk-window-decorated}"
+  @see-class{gtk:window}
+  @see-function{gtk:window-decorated}"
   (with-foreign-object (decorations 'wm-decoration)
     (when (%window-decorations window decorations)
       (cffi:mem-ref decorations 'wm-decoration))))
@@ -5311,15 +5143,14 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_set_functions" window-set-functions) :void
  #+liber-documentation
- "@version{#2020-9-25}
+ "@version{#2023-2-26}
   @argument[window]{a toplevel @class{gdk:window} object}
-  @argument[functions]{bitmask of operations of type @symbol{gdk:wm-function}
-    to allow on @arg{window}}
+  @argument[functions]{a @symbol{gdk:wm-function} bitmask of operations to
+    allow on @arg{window}}
   @begin{short}
     Sets hints about the window management functions to make available via
     buttons on the window frame.
   @end{short}
-
   On the X backend, this function sets the traditional Motif window manager
   hint for this purpose. However, few window managers do anything reliable or
   interesting with this hint. Many ignore it entirely.
@@ -5339,10 +5170,9 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 ;;; gdk_get_default_root_window () -> default-root-window
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_get_default_root_window" default-root-window)
-    (g:object window)
+(defcfun ("gdk_get_default_root_window" default-root-window) (g:object window)
  #+liber-documentation
- "@version{#2020-9-5}
+ "@version{2023-2-26}
   @return{The @class{gdk:window} default root window.}
   @begin{short}
     Obtains the root window, parent all other windows are inside, for the
@@ -5359,25 +5189,25 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defun (setf window-support-multidevice) (support-multidevice window)
   (cffi:foreign-funcall "gdk_window_set_support_multidevice"
-                   (g:object window) window
-                   :boolean support-multidevice
-                   :void)
+                        (g:object window) window
+                        :boolean support-multidevice
+                        :void)
   support-multidevice)
 
 (defcfun ("gdk_window_get_support_multidevice" window-support-multidevice)
     :boolean
  #+liber-documentation
- "@version{#2020-9-18}
+ "@version{#2023-2-26}
   @syntax[]{(gdk:window-support-multidevice window) => support-multidevice}
   @syntax[]{(setf (gdk:window-support-multidevice window) support-multidevice)}
   @argument[window]{a @class{gdk:window} object}
   @argument[support-multidevice]{@em{true} to enable multidevice support in
     @arg{window}}
   @begin{short}
-    The function @sym{gdk:window-support-multidevice} returns @em{true} if the
+    The @sym{gdk:window-support-multidevice} function returns @em{true} if the
     window is aware of the existence of multiple devices.
   @end{short}
-  The function @sym{(setf gdk:window-support-multidevice)} will enable
+  The @sym{(setf gdk:window-support-multidevice)} function will enable
   multidevice features in @arg{window}.
 
   Multidevice aware windows will need to handle properly multiple, per device
@@ -5394,16 +5224,15 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defun (setf window-device-cursor) (cursor window device)
   (cffi:foreign-funcall "gdk_window_set_device_cursor"
-                   (g:object window) window
-                   (g:object device) device
-                   (g:object cursor) cursor
-                   :void)
+                        (g:object window) window
+                        (g:object device) device
+                        (g:object cursor) cursor
+                        :void)
   cursor)
 
-(defcfun ("gdk_window_get_device_cursor" window-device-cursor)
-    (g:object cursor)
+(defcfun ("gdk_window_get_device_cursor" window-device-cursor) (g:object cursor)
  #+liber-documentation
- "@version{#2020-9-25}
+ "@version{#2023-2-26}
   @syntax[]{(gdk:window-device-cursor window device) => cursor}
   @syntax[]{(setf (gdk:window-device-cursor window device) cursor)}
   @argument[window]{a @class{gdk:window} object}
@@ -5411,21 +5240,20 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   @argument[cursor]{a @class{gdk:cursor} object}
   @return{ A @class{gdk:cursor} object, or @code{nil}.}
   @begin{short}
-    The function @sym{gdk:window-device-cursor} retrieves a @class{gdk:cursor}
+    The @sym{gdk:window-device-cursor} function retrieves a @class{gdk:cursor}
     pointer for the device currently set on the specified @class{gdk:window}
     object, or @code{nil}.
   @end{short}
   If the return value is @code{nil} then there is no custom cursor set on the
   specified window, and it is using the cursor for its parent window.
 
-  The function @sym{(setf gdk:window-device-cursor)} sets a specific
+  The @sym{(setf gdk:window-device-cursor)} function sets a specific
   @class{gdk:cursor} object for a given device when it gets inside window.
-  Use the functions @fun{gdk:cursor-new-for-display} or
-  @fun{gdk:cursor-new-from-pixbuf} to create the cursor. To make the cursor
-  invisible, use @code{:blank-cursor}. Passing @code{nil} for the cursor
-  argument to the function @fun{gdk:window-cursor} means that the window will
+  Use the @fun{gdk:cursor-new-for-display} or @fun{gdk:cursor-new-from-pixbuf}
+  functions to create the cursor. To make the cursor invisible, use
+  @code{:blank-cursor}. Passing @code{nil} for the cursor argument to the
+  @fun{gdk:window-cursor} function means that the window will
   use the cursor of its parent window. Most windows should use this default.
-
   @see-class{gdk:window}
   @see-class{gdk:device}
   @see-class{gdk:cursor}
@@ -5443,25 +5271,23 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defun (setf window-device-events) (event-mask window device)
   (cffi:foreign-funcall "gdk_window_set_device_events"
-                   (g:object window) window
-                   (g:object device) device
-                   event-mask event-mask
-                   :void)
+                        (g:object window) window
+                        (g:object device) device
+                        event-mask event-mask
+                        :void)
   event-mask)
 
-(defcfun ("gdk_window_get_device_events" window-device-events)
-    event-mask
+(defcfun ("gdk_window_get_device_events" window-device-events) event-mask
  #+liber-documentation
- "@version{#2020-9-25}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @argument[device]{a @class{gdk:device} object}
-  @argument[event-mask]{event mask of type @symbol{gdk:event-mask} for
-    @arg{window}}
+  @argument[event-mask]{a @symbol{gdk:event-mask} event mask for @arg{window}}
   @begin{short}
-    The function @sym{gdk:window-device-events} returns the event mask for
+    The @sym{gdk:window-device-events} function returns the event mask for
     the window corresponding to an specific device.
   @end{short}
-  The function @sym{(setf gdk:window-device-events)} sets the event mask for a
+  The @sym{(setf gdk:window-device-events)} function sets the event mask for a
   given device.
 
   Normally a floating device, not attached to any visible pointer to the window.
@@ -5483,26 +5309,26 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defun (setf window-source-events) (event-mask window source)
   (cffi:foreign-funcall "gdk_window_set_source_events"
-                   (g:object window) window
-                   input-source source
-                   event-mask event-mask
-                   :void)
+                        (g:object window) window
+                        input-source source
+                        event-mask event-mask
+                        :void)
   event-mask)
 
 (defcfun ("gdk_window_get_source_events" window-source-events) event-mask
  #+liber-documentation
- "@version{#2020-9-25}
+ "@version{#2023-2-26}
   @syntax[]{(gdk:window-source-events window source) => event-mask}
   @syntax[]{(setf (gdk:window-source-events window source) event-mask)}
   @argument[window]{a @class{gdk:window} object}
-  @argument[source]{a @symbol{gdk:input-source} to define the source class}
-  @argument[event-mask]{event mask of type @symbol{gdk:event-mask} for
-    @arg{window}}
+  @argument[source]{a @symbol{gdk:input-source} value to define the source
+    class}
+  @argument[event-mask]{a @symbol{gdk:event-mask} event mask for @arg{window}}
   @begin{short}
-    The function @sym{gdk:window-source-events} returns the event mask for
+    The @sym{gdk:window-source-events} function returns the event mask for
     the window corresponding to the device class specified by @arg{source}.
   @end{short}
-  The function @sym{(setf gdk:window-source-events)} sets the event mask for
+  The @sym{(setf gdk:window-source-events)} function sets the event mask for
   any floating device, i.e. not attached to any visible pointer, that has
   @arg{source} defined as source.
 
@@ -5523,15 +5349,14 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defun (setf window-event-compression) (event-compression window)
   (cffi:foreign-funcall "gdk_window_set_event_compression"
-                   (g:object window) window
-                   :boolean event-compression
-                   :void)
+                        (g:object window) window
+                        :boolean event-compression
+                        :void)
   event-compression)
 
-(defcfun ("gdk_window_get_event_compression" window-event-compression)
-    :boolean
+(defcfun ("gdk_window_get_event_compression" window-event-compression) :boolean
  #+liber-documentation
- "@version{#2020-9-25}
+ "@version{#2023-2-26}
   @syntax[]{(gdk:window-event-compression window) => event-compression}
   @syntax[]{(setf (gdk:window-event-compression window) event-compression)}
   @argument[window]{a @class{gdk:window} object}
@@ -5557,7 +5382,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (defcfun ("gdk_offscreen_window_get_surface" offscreen-window-surface)
     (:pointer (:struct cairo:surface-t))
  #+liber-documentation
- "@version{#2020-9-25}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @return{The offscreen @symbol{cairo:surface-t} instance, or @code{nil} if
     not offscreen.}
@@ -5579,28 +5404,27 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defun (setf offscreen-window-embedder) (embedder window)
   (cffi:foreign-funcall "gdk_offscreen_window_set_embedder"
-                   (g:object window) window
-                   (g:object window) embedder
-                   :void)
+                        (g:object window) window
+                        (g:object window) embedder
+                        :void)
   embedder)
 
 (defcfun ("gdk_offscreen_window_get_embedder" offscreen-window-embedder)
     (g:object window)
  #+liber-documentation
- "@version{#2020-9-25}
+ "@version{#2023-2-26}
   @syntax[]{gdk:offscreen-window-embedder window) => embedder}
   @syntax[]{(setf gdk:offscreen-window-embedded window) embedder)}
   @argument[window]{a @class{gdk:window} object}
-  @argument[embedder]{the @class{gdk:window} that window gets embedded in}
+  @argument[embedder]{a @class{gdk:window} object that @arg{window} gets
+    embedded in}
   @begin{short}
     The embedding @class{gdk:window} object, or @code{nil} if @arg{window} is
     not an embedded offscreen window.
   @end{short}
-
-  The function @sym{gdk:offscreen-window-embedder} gets the window that
-  @arg{window} is embedded in. The function
-  @sym{(setf gdk:offscreen-window-embedder)} sets @arg{window} to be embedded
-  in @arg{embedder}.
+  The @sym{gdk:offscreen-window-embedder} function gets the window that
+  @arg{window} is embedded in. The @sym{(setf gdk:offscreen-window-embedder)}
+  function sets @arg{window} to be embedded in @arg{embedder}.
 
   To fully embed an offscreen window, in addition to calling this function, it
   is also necessary to handle the \"pick-embedded-child\" signal on
@@ -5617,7 +5441,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_geometry_changed" window-geometry-changed) :void
  #+liber-documentation
- "@version{#2020-9-25}
+ "@version{#2023-2-26}
   @argument[window]{an embedded offscreen @class{gdk:window} object}
   @begin{short}
     This function informs GDK that the geometry of an embedded offscreen window
@@ -5636,35 +5460,35 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
 (defcfun ("gdk_window_coords_from_parent" %window-coords-from-parent) :void
   (window (g:object window))
-  (parent-x :double)
-  (parent-y :double)
+  (xparent :double)
+  (yparent :double)
   (x (:pointer :double))
   (y (:pointer :double)))
 
-(defun window-coords-from-parent (window parent-x parent-y)
+(defun window-coords-from-parent (window xparent yparent)
  #+liber-documentation
- "@version{#2020-9-25}
+ "@version{2023-2-26}
   @argument[window]{a @class{gdk:window} child window}
-  @argument[parent-x]{a number with the x coordinate in parent's coordinate
-    system}
-  @argument[parent-y]{a number with the y coordinate in parent's coordinate
-    system}
+  @argument[xparent]{a number coerced to a double float with the x coordinate
+    in parent's coordinate system}
+  @argument[yparent]{a number coerced to a double float with the y coordinate
+    in parent's coordinate system}
   @begin{return}
-    @code{x} -- a @code{:double} with the x coordinate in child's coordinate
+    @code{x} -- a double float with the x coordinate in child's coordinate
                 system @br{}
-    @code{y} -- a @code{:double} with the y coordinate in child's coordinate
+    @code{y} -- a double float with the y coordinate in child's coordinate
                 system
   @end{return}
   @begin{short}
     Transforms window coordinates from a parent window to a child window, where
-    the parent window is the normal parent as returned by the function
-    @fun{gdk:window-parent} for normal windows, and the window's embedder as
-    returned by the function @fun{gdk:offscreen-window-embedder} for offscreen
-    windows.
+    the parent window is the normal parent as returned by the
+    @fun{gdk:window-parent} function for normal windows, and the window's
+    embedder as returned by the @fun{gdk:offscreen-window-embedder} function
+    for offscreen windows.
   @end{short}
 
   For normal windows, calling this function is equivalent to subtracting the
-  return values of the function @fun{gdk:window-position} from the parent
+  return values of the @fun{gdk:window-position} function from the parent
   coordinates. For offscreen windows however, which can be arbitrarily
   transformed, this function calls the \"from-embedder\" signal to translate
   the coordinates.
@@ -5672,7 +5496,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   You should always use this function when writing generic code that walks
   down a window hierarchy.
 
-  See also the function @fun{gdk:window-coords-to-parent}.
+  See also the @fun{gdk:window-coords-to-parent} function.
   @see-function{gdk:window}
   @see-function{gdk:window-parent}
   @see-function{gdk:window-position}
@@ -5680,10 +5504,10 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   @see-function{gdk:window-coords-to-parent}"
   (with-foreign-objects ((x :double) (y :double))
     (%window-coords-from-parent window
-                                    (coerce parent-x 'double-float)
-                                    (coerce parent-y 'double-float)
-                                    x
-                                    y)
+                                (coerce xparent 'double-float)
+                                (coerce yparent 'double-float)
+                                x
+                                y)
     (values (cffi:mem-ref x :double)
             (cffi:mem-ref y :double))))
 
@@ -5697,51 +5521,53 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   (window (g:object window))
   (x :double)
   (y :double)
-  (parent-x (:pointer :double))
-  (parent-y (:pointer :double)))
+  (xparent (:pointer :double))
+  (yparent (:pointer :double)))
 
 (defun window-coords-to-parent (window x y)
  #+liber-documentation
- "@version{#2020-9-25}
+ "@version{2023-2-26}
   @argument[window]{a @class{gdk:window} child window}
-  @argument[x]{a number with the x coordinate in child's coordinate system}
-  @argument[y]{a number with the y coordinate in child's coordinate system}
+  @argument[x]{a number coerced to a double float with the x coordinate in
+    child's coordinate system}
+  @argument[y]{a number coerced to a double float with the y coordinate in
+    child's coordinate system}
   @begin{return}
-    @code{parent-x} -- a @code{:double} with the x coordinate in parent's
+    @code{xparent} -- a double float with the x coordinate in parent's
                        coordinate system, or @code{nil} @br{}
-    @code{parent-y} -- a @code{:double} with the y coordinate in parent's
+    @code{yparent} -- a double float with the y coordinate in parent's
                        coordinate system, or @code{nil}
   @end{return}
   @begin{short}
     Transforms window coordinates from a child window to its parent window,
-    where the parent window is the normal parent as returned by the function
-    @fun{gdk:window-parent} for normal windows, and the window's embedder
-    as returned by the function @fun{gdk:offscreen-window-embedder} for
-    offscreen windows.
+    where the parent window is the normal parent as returned by the
+    @fun{gdk:window-parent} function for normal windows, and the window's
+    embedder as returned by the @fun{gdk:offscreen-window-embedder} function
+    for offscreen windows.
   @end{short}
 
   For normal windows, calling this function is equivalent to adding the return
-  values of the function @fun{gdk:window-position} to the child coordinates.
+  values of the @fun{gdk:window-position} function to the child coordinates.
   For offscreen windows however, which can be arbitrarily transformed, this
   function calls the \"to-embedder\" signal to translate the coordinates.
 
   You should always use this function when writing generic code that walks up
   a window hierarchy.
 
-  See also the function @fun{gdk:window-coords-from-parent}.
+  See also the @fun{gdk:window-coords-from-parent} function.
   @see-class{gdk:window}
   @see-function{gdk:window-parent}
   @see-function{gdk:window-position}
   @see-function{gdk:offscreen-window-embedder}
   @see-function{gdk:window-coords-from-parent}"
-  (with-foreign-objects ((parent-x :double) (parent-y :double))
+  (with-foreign-objects ((xparent :double) (yparent :double))
     (%window-coords-to-parent window
-                                  (coerce x 'double-float)
-                                  (coerce y 'double-float)
-                                  parent-x
-                                  parent-y)
-    (values (cffi:mem-ref parent-x :double)
-            (cffi:mem-ref parent-y :double))))
+                              (coerce x 'double-float)
+                              (coerce y 'double-float)
+                              xparent
+                              yparent)
+    (values (cffi:mem-ref xparent :double)
+            (cffi:mem-ref yparent :double))))
 
 (export 'window-coords-to-parent)
 
@@ -5752,16 +5578,16 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (defcfun ("gdk_window_get_effective_parent" window-effective-parent)
     (g:object window)
  #+liber-documentation
- "@version{#2020-9-25}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @return{Effective @class{gdk:window} parent of @arg{window}.}
   @begin{short}
     Obtains the parent of window, as known to GDK.
   @end{short}
-  Works like the function @fun{gdk:window-parent} for normal windows, but
+  Works like the @fun{gdk:window-parent} function for normal windows, but
   returns the window's embedder for offscreen windows.
 
-  See also the function @fun{gdk:offscreen-window-embedder}.
+  See also the @fun{gdk:offscreen-window-embedder} function.
   @see-class{gdk:window}
   @see-function{gdk:window-parent}
   @see-function{gdk:offscreen-window-embedder}"
@@ -5776,18 +5602,17 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (defcfun ("gdk_window_get_effective_toplevel" window-effective-toplevel)
     (g:object window)
  #+liber-documentation
- "@version{#2020-9-7}
+ "@version{#2023-2-26}
   @argument[window]{a @class{gdk:window} object}
   @return{The effective @class{gdk:window} toplevel containing @arg{window}.}
   @begin{short}
     Gets the toplevel window that is an ancestor of @arg{window}.
   @end{short}
+  Works like the @fun{gdk:window-toplevel} function, but treats an offscreen
+  window's embedder as its parent, using the @fun{gdk:window-effective-parent}
+  function.
 
-  Works like the function @fun{gdk:window-toplevel}, but treats an offscreen
-  window's embedder as its parent, using the function
-  @fun{gdk:window-effective-parent}.
-
-  See also the function @fun{gdk:offscreen-window-embedder}.
+  See also the @fun{gdk:offscreen-window-embedder} function.
   @see-class{gdk:window}
   @see-function{gdk:window-toplevel}
   @see-function{gdk:window-effective-parent}
