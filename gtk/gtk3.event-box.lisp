@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.event-box.lisp
+;;; gtk3.event-box.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2021 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -46,8 +46,8 @@
 ;;;
 ;;; Properties
 ;;;
-;;;     gboolean    above-child       Read / Write
-;;;     gboolean    visible-window    Read / Write
+;;;     above-child
+;;;     visible-window
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -84,7 +84,7 @@
 
 #+liber-documentation
 (setf (documentation 'event-box 'type)
- "@version{#2021-12-22}
+ "@version{2023-2-23}
   @begin{short}
     The @sym{gtk:event-box} widget is a subclass of the @class{gtk:bin} class
     which also has its own window.
@@ -125,12 +125,13 @@
       ;; Realize the event box
       (gtk:widget-realize eventbox)
       ;; Set a new cursor for the event box
-      (setf (gdk-window-cursor (gtk:widget-window eventbox))
-            (gdk-cursor-new-from-name (gdk-display-default) \"pointer\"))
+      (setf (gdk:window-cursor (gtk:widget-window eventbox))
+            (gdk:cursor-new-from-name (gdk:display-default) \"pointer\"))
       ;; Show the window
       (gtk:widget-show-all window))))
     @end{pre}
   @end{dictionary}
+  @see-constructor{gtk:event-box-new}
   @see-slot{gtk:event-box-above-child}
   @see-slot{gtk:event-box-visible-window}
   @see-class{gtk:bin}")
@@ -139,7 +140,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- event-box-above-child ----------------------------------------------
+;;; --- event-box-above-child --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "above-child" 'event-box) t)
@@ -152,7 +153,7 @@
 (setf (liber:alias-for-function 'event-box-above-child)
       "Accessor"
       (documentation 'event-box-above-child 'function)
- "@version{#2020-6-3}
+ "@version{2023-2-23}
   @syntax[]{(gtk:event-box-above-child object) => above-child}
   @syntax[]{(setf gtk:event-box-above-child object) above-child)}
   @argument[object]{a @class{gtk:event-box} widget}
@@ -161,10 +162,9 @@
     Accessor of the @slot[gtk:event-box]{above-child} slot of the
     @class{gtk:event-box} class.
   @end{short}
-
-  The slot access function @sym{gtk:event-box-above-child} returns whether the
-  event box window is above or below the windows of its child. The slot access
-  function @sym{(setf gtk:event-box-above-child)} sets whether the event box
+  The @sym{gtk:event-box-above-child} function returns whether the event box
+  window is above or below the windows of its child. The
+  @sym{(setf gtk:event-box-above-child)} function sets whether the event box
   window is positioned above the windows of its child, as opposed to below it.
 
   If the window is above, all events inside the event box will go to the event
@@ -174,7 +174,7 @@
   The default is to keep the window below the child.
   @see-class{gtk:event-box}")
 
-;;; --- event-box-visible-window -------------------------------------------
+;;; --- event-box-visible-window -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "visible-window" 'event-box) t)
@@ -188,7 +188,7 @@
 (setf (liber:alias-for-function 'event-box-visible-window)
       "Accessor"
       (documentation 'event-box-visible-window 'function)
- "@version{#2020-6-3}
+ "@version{2023-2-23}
   @syntax[]{(gtk:event-box-visible-window object) => visible-window}
   @syntax[]{(setf gtk:event-box-visible-window object) visible-window)}
   @argument[object]{a @class{gtk:event-box} widget}
@@ -198,11 +198,10 @@
     Accessor of the @slot[gtk:event-box]{visible-window} slot of the
     @class{gtk:event-box} class.
   @end{short}
-
-  The slot access function @sym{gtk:event-box-visible-window} returns whether
-  the event box has a visible window. The slot access function
-  @sym{(setf gtk:event-box-visible-window)} sets whether the event box uses a
-  visible or invisible child window. The default is to use visible windows.
+  The @sym{gtk:event-box-visible-window} function returns whether the event box
+  has a visible window. The @sym{(setf gtk:event-box-visible-window)} function
+  sets whether the event box uses a visible or invisible child window. The
+  default is to use visible windows.
 
   In an invisible window event box, the window that the event box creates is a
   @code{:input-only} window, which means that it is invisible and only serves
@@ -219,19 +218,21 @@
   the background to a different color or draw on it.
   @begin[Note]{dictionary}
     There is one unexpected issue for an invisible event box that has its window
-    below the child. See the function @fun{gtk:event-box-above-child}. Since
+    below the child. See the @fun{gtk:event-box-above-child} function. Since
     the input-only window is not an ancestor window of any windows that
     descendent widgets of the event box create, events on these windows are not
     propagated up by the windowing system, but only by GTK. The practical
     effect of this is if an event is not in the event mask for the descendant
-    window, see the function @fun{gtk:widget-add-events}, it will not be
+    window, see the @fun{gtk:widget-add-events} function, it will not be
     received by the event box.
 
     This problem does not occur for visible event boxes, because in that case,
-    the event box window is actually the ancestor of the descendant windows, not
-    just at the same place on the screen.
+    the event box window is actually the ancestor of the descendant windows,
+    not just at the same place on the screen.
   @end{dictionary}
-  @see-class{gtk:event-box}")
+  @see-class{gtk:event-box}
+  @see-function{gtk:event-box-above-child}
+  @see-function{gtk:widget-add-events}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_event_box_new ()
@@ -241,7 +242,7 @@
 
 (defun event-box-new ()
  #+liber-documentation
- "@version{#2020-6-3}
+ "@version{2023-2-23}
   @return{A new @class{gtk:event-box} widget.}
   @begin{short}
     Creates a new event box.
@@ -251,4 +252,4 @@
 
 (export 'event-box-new)
 
-;;; --- End of file gtk.event-box.lisp -----------------------------------------
+;;; --- End of file gtk3.event-box.lisp ----------------------------------------
