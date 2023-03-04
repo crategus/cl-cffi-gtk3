@@ -37,7 +37,8 @@
                             #:define-foreign-type
                             #:define-parse-method
                             #:with-foreign-object
-                            #:with-foreign-objects)
+                            #:with-foreign-objects
+                            #:with-foreign-slots)
   (:import-from #:glib      #:+g-priority-high-idle+
                             #:+g-priority-default+
                             #:+g-priority-default-idle+
@@ -481,12 +482,10 @@
     @about-symbol{window-hints}
     @about-symbol{gravity}
     @about-symbol{geometry}
-    @about-function{make-geometry}
     @about-symbol{anchor-hints}
     @about-symbol{window-edge}
     @about-symbol{window-type-hint}
     @about-symbol{window-attr}
-    @about-function{make-window-attr}
     @about-symbol{window-attributes-type}
     @about-symbol{fullscreen-mode}
     @about-symbol{filter-return}
@@ -564,7 +563,7 @@
     @about-function{window-set-invalidate-handler}
     @about-function{window-invalidate-rect}
     @about-function{window-invalidate-region}
-    @about-function{GdkWindowChildFunc}
+    @about-symbol{window-child-func}
     @about-function{window-invalidate-maybe-recurse}
     @about-function{window-update-area}
     @about-function{window-freeze-updates}
@@ -697,12 +696,10 @@
     @about-function{gl-context-clear-current}
   @end{section}
   @begin[Events]{section}
-    Functions for handling events from the window system.
-
-    In GTK applications the events are handled automatically in the
-    @fun{gtk:main-do-event} function and passed on to the appropriate widgets,
-    so these functions are rarely needed. Though some of the fields in the event
-    structures are useful.
+    Functions for handling events from the window system. In GTK applications
+    the events are handled automatically in the @fun{gtk:main-do-event} function
+    and passed on to the appropriate widgets, so these functions are rarely
+    needed. Though some of the fields in the event structures are useful.
     @about-variable{+gdk-current-time+}
     @about-variable{+gdk-priority-events+}
     @about-variable{+gdk-priority-redraw+}
@@ -745,6 +742,7 @@
     @about-function{event-seat}
     @about-function{event-scancode}
     @about-function{event-pointer-emulated}
+    @about-symbol{event-func}
     @about-function{event-handler-set}
     @about-function{show-events}
     @about-function{event-screen}
@@ -1267,7 +1265,7 @@ got_value (gpointer user_data)
     @begin{pre}
 (defun demo-pango ()
   (within-main-loop
-    (let ((window (make-instance 'gtk-window
+    (let ((window (make-instance 'gtk:window
                                  :type :toplevel
                                  :title \"Demo Using Pango with Cairo\"
                                  :border-width 12
