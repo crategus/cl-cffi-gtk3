@@ -73,15 +73,24 @@
 
 (test accel-group-properties
   (let ((group (gtk:accel-group-new)))
+    ;; is-locked
     (is-false (gtk:accel-group-is-locked group))
+    ;; is-locked is not writable
+    (signals (error) (setf (gtk:accel-group-is-locked group) nil))
+    ;; modifier-mask
     (is (equal '(:SHIFT-MASK :CONTROL-MASK :MOD1-MASK :SUPER-MASK
                  :HYPER-MASK :META-MASK)
-               (gtk:accel-group-modifier-mask group)))))
+               (gtk:accel-group-modifier-mask group)))
+    ;; modifier-mask is not writable
+    (signals (error) (setf (gtk:accel-group-modifier-mask group)
+                           '(:shift-mask)))))
 
 ;;; --- Signals ----------------------------------------------------------------
 
 ;;;     accel-activate
 ;;;     accel-changed
+
+;;; --- Functions --------------------------------------------------------------
 
 ;;;   gtk_accel_group_new
 
@@ -153,7 +162,6 @@
       (is (eq 'gtk:accel-group (type-of accel-group)))
 ; This does not work as expected.
 ;      (is-true (gtk:accel-group-activate accel-group "<Control>q" window 113 '(:control-mask)))
-
 )))
 
 ;;;     gtk_accel_group_lock
@@ -249,8 +257,10 @@
                    '(:control-mask :shift-mask :mod1-mask))))
   (is (equal '(:SHIFT-MASK :CONTROL-MASK :MOD1-MASK)
              (gtk:accelerator-default-mod-mask)))
-  (is (equal '(:SHIFT-MASK :CONTROL-MASK :MOD1-MASK :SUPER-MASK :HYPER-MASK :META-MASK)
+  (is (equal '(:SHIFT-MASK :CONTROL-MASK :MOD1-MASK :SUPER-MASK :HYPER-MASK
+               :META-MASK)
              (setf (gtk:accelerator-default-mod-mask)
-                   '(:SHIFT-MASK :CONTROL-MASK :MOD1-MASK :SUPER-MASK :HYPER-MASK :META-MASK)))))
+                   '(:SHIFT-MASK :CONTROL-MASK :MOD1-MASK :SUPER-MASK
+                     :HYPER-MASK :META-MASK)))))
 
-;;; 2022-7-9
+;;; --- 2023-3-1 ---------------------------------------------------------------
