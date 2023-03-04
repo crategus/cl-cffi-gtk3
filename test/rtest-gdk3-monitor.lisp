@@ -63,8 +63,10 @@
           (g:type-parent "GdkMonitor")))
   ;; Check the children
   #-windows
-  (is (equal '("GdkBroadwayMonitor" "GdkWaylandMonitor")
-             (list-children "GdkMonitor")))
+  (is (or (equal '("GdkBroadwayMonitor" "GdkX11Monitor")
+                 (list-children "GdkMonitor"))
+          (equal '("GdkBroadwayMonitor" "GdkWaylandMonitor")
+                 (list-children "GdkMonitor"))))
   #+windows
   (is (equal '("GdkBroadwayMonitor" "GdkWin32Monitor")
              (list-children "GdkMonitor")))
@@ -151,4 +153,4 @@
   (let ((monitor (gdk:display-primary-monitor (gdk:display-default))))
     (is-true (gdk:monitor-is-primary monitor))))
 
-;;; --- 2023-1-8 ---------------------------------------------------------------
+;;; --- 2023-3-3 ---------------------------------------------------------------

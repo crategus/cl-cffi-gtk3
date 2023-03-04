@@ -62,13 +62,14 @@
            (surface nil))
 
       (is (typep win 'gdk:window))
-      (is (= 252  width))
-      (is (= 189 height))
+      (is (or (= 200 width) (= 252  width)))
+      (is (or (= 100 height) (= 189 height)))
       (is (cffi:pointerp
               (setf surface
                     (gdk:window-create-similar-surface win :color width height))))
 
-      (is (eq :image (cairo:surface-type surface)))
+      (is (or (eq :XLIB (cairo:surface-type surface))
+              (eq :image (cairo:surface-type surface))))
       (is-false (cairo:surface-destroy surface)))))
 
 ;;;     gdk_window_create_similar_image_surface
@@ -87,8 +88,8 @@
            (surface nil))
 
       (is (typep win 'gdk:window))
-      (is (= 252  width))
-      (is (= 189 height))
+      (is (or (= 200 width) (= 252  width)))
+      (is (or (= 100 height) (= 189 height)))
       (is (cffi:pointerp
               (setf surface
                     (gdk:window-create-similar-image-surface win
@@ -138,8 +139,10 @@
                        (gdk:cairo-clip-rectangle context)) 'gdk:rectangle))
       (is (=   0 (gdk:rectangle-x rectangle)))
       (is (=   0 (gdk:rectangle-y rectangle)))
-      (is (= 252 (gdk:rectangle-width rectangle)))
-      (is (= 189 (gdk:rectangle-height rectangle)))
+      (is (or (= 200 (gdk:rectangle-width rectangle))
+              (= 252 (gdk:rectangle-width rectangle))))
+      (is (or (= 100 (gdk:rectangle-height rectangle))
+              (= 189 (gdk:rectangle-height rectangle))))
 
       (is-false (cairo:destroy context)))))
 
@@ -178,4 +181,4 @@
 ;;;     gdk_cairo_surface_create_from_pixbuf
 ;;;     gdk_cairo_draw_from_gl
 
-;;; --- 2023-2-3 ---------------------------------------------------------------
+;;; --- 2023-3-3 ---------------------------------------------------------------

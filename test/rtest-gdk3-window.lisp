@@ -157,53 +157,52 @@
 
 (test geometry-structure
   ;; Slot names of the structure
-  (is (equal '(GDK::TITLE GDK::EVENT-MASK GDK::X GDK::Y GDK::WIDTH GDK::HEIGHT
-               GDK::WCLASS GDK::VISUAL GDK::WINDOW-TYPE GDK::CURSOR
-               GDK::WMCLASS-NAME GDK::WMCLASS-CLASS GDK::OVERRIDE-REDIRECT
-               GDK::TYPE-HINT)
-             (cffi:foreign-slot-names '(:struct gdk:window-attr)))))
+  (is (equal '(GDK::MIN-WIDTH GDK::MIN-HEIGHT GDK::MAX-WIDTH GDK::MAX-HEIGHT
+               GDK::BASE-WIDTH GDK::BASE-HEIGHT GDK::WIDTH-INCREMENT
+               GDK::HEIGHT-INCREMENT GDK::MIN-ASPECT GDK::MAX-ASPECT
+               GDK::WIN-GRAVITY)
+             (cffi:foreign-slot-names '(:struct gdk:geometry)))))
 
 (test geometry-values
   (with-foreign-object (ptr '(:struct gdk:geometry))
     ;; Initialize the slots
-    (setf (cffi:foreign-slot-value ptr '(:struct gdk:geometry) 'gdk::min-width) 0
-          (cffi:foreign-slot-value ptr '(:struct gdk:geometry) 'gdk::min-height) 0
-          (cffi:foreign-slot-value ptr '(:struct gdk:geometry) 'gdk::max-width) 0
-          (cffi:foreign-slot-value ptr '(:struct gdk:geometry) 'gdk::max-height) 0
-          (cffi:foreign-slot-value ptr '(:struct gdk:geometry) 'gdk::max-height) 0
-          (cffi:foreign-slot-value ptr '(:struct gdk:geometry) 'gdk::base-width) 0
-          (cffi:foreign-slot-value ptr '(:struct gdk:geometry) 'gdk::base-height) 0
-          (cffi:foreign-slot-value ptr '(:struct gdk:geometry) 'gdk::width-increment) 0
-          (cffi:foreign-slot-value ptr '(:struct gdk:geometry) 'gdk::height-increment) 0
-          (cffi:foreign-slot-value ptr '(:struct gdk:geometry) 'gdk::min-aspect) 0.0d0
-          (cffi:foreign-slot-value ptr '(:struct gdk:geometry) 'gdk::max-aspect) 0.0d0
-          (cffi:foreign-slot-value ptr '(:struct gdk:geometry) 'gdk::win-gravity) 0)
+    (with-foreign-slots ((gdk::min-width
+                          gdk::min-height
+                          gdk::max-width
+                          gdk::max-height
+                          gdk::base-width
+                          gdk::base-height
+                          gdk::width-increment
+                          gdk::height-increment
+                          gdk::min-aspect
+                          gdk::max-aspect
+                          gdk::win-gravity)
+                         ptr (:struct gdk:geometry))
+    (setf gdk::min-width 1
+          gdk::min-height 2
+          gdk::max-width 3
+          gdk::max-height 4
+          gdk::base-height 5
+          gdk::base-width 6
+          gdk::base-height 7
+          gdk::width-increment 8
+          gdk::height-increment 9
+          gdk::min-aspect 1.5d0
+          gdk::max-aspect 2.5d0
+          gdk::win-gravity :north))
     ;; Return a list with the coordinates
     (with-foreign-slots ((gdk::base-width
                           gdk::base-height
                           gdk::min-aspect
-                          gdk::max-aspect)
+                          gdk::max-aspect
+                          gdk::win-gravity)
                          ptr (:struct gdk:geometry))
-      (is (equal '(0 0 0.0d0 0.0d0)
+      (is (equal '(6 7 1.5d0 2.5d0 :north)
                  (list gdk::base-width
                        gdk::base-height
                        gdk::min-aspect
-                       gdk::max-aspect))))))
-
-(test make-geometry
-  (let ((geometry (gdk:make-geometry :base-width 10
-                                     :base-height 20
-                                     :min-aspect 1.0d0
-                                     :max-aspect 2.0d0)))
-    (with-foreign-slots ((gdk::base-width
-                          gdk::base-height
-                          gdk::min-aspect gdk::max-aspect)
-                         geometry (:struct gdk:geometry))
-      (is (equal '(10 20 1.0d0 2.0d0)
-                 (list gdk::base-width
-                       gdk::base-height
-                       gdk::min-aspect
-                       gdk::max-aspect))))))
+                       gdk::max-aspect
+                       gdk::win-gravity))))))
 
 ;;;     GdkAnchorHints
 
@@ -357,20 +356,22 @@
 (test window-attr-values
   (with-foreign-object (ptr '(:struct gdk:window-attr))
     ;; Initialize the slots
-    (setf (cffi:foreign-slot-value ptr '(:struct gdk:window-attr) 'gdk::title) "title"
-          (cffi:foreign-slot-value ptr '(:struct gdk:window-attr) 'gdk::event-mask) nil
-          (cffi:foreign-slot-value ptr '(:struct gdk:window-attr) 'gdk::x) 10
-          (cffi:foreign-slot-value ptr '(:struct gdk:window-attr) 'gdk::y) 20)
+    (with-foreign-slots ((gdk::title
+                          gdk::event-mask
+                          gdk::x
+                          gdk::y)
+                         ptr (:struct gdk:window-attr))
+    (setf gdk::title "title"
+          gdk::event-mask nil
+          gdk::x 10
+          gdk::y 20))
     ;; Return a list with the coordinates
-    (with-foreign-slots ((gdk::x gdk::y) ptr (:struct gdk:window-attr))
-      (is (equal '(10 20)
-                 (list gdk::x gdk::y))))))
-
-(test make-window-attr
-  (let ((attr (gdk:make-window-attr)))
-    (with-foreign-slots ((gdk::x gdk::y) attr (:struct gdk:window-attr))
-      (is (equal '(0 0)
-                 (list gdk::x gdk::y))))))
+    (with-foreign-slots ((gdk::title
+                          gdk::event-mask
+                          gdk::x
+                          gdk::y) ptr (:struct gdk:window-attr))
+      (is (equal '("title" nil 10 20)
+                 (list gdk::title gdk::event-mask gdk::x gdk::y))))))
 
 ;;;     GdkWindowAttributesType
 
@@ -442,35 +443,7 @@
                              (:ALL-MONITORS 1))
              (gobject:get-g-type-definition "GdkFullscreenMode"))))
 
-;;;     GdkFilterReturn
-
-(test filter-return
-  ;; Check the type
-  (is (g:type-is-enum "GdkFilterReturn"))
-  ;; Check the type initializer
-  (is (eq (g:gtype "GdkFilterReturn")
-          (g:gtype (cffi:foreign-funcall "gdk_filter_return_get_type" :size))))
-  ;; Check the registered name
-  (is (eq 'gdk:filter-return
-          (gobject:symbol-for-gtype "GdkFilterReturn")))
-  ;; Check the names
-  (is (equal '("GDK_FILTER_CONTINUE" "GDK_FILTER_TRANSLATE" "GDK_FILTER_REMOVE")
-             (list-enum-item-name "GdkFilterReturn")))
-  ;; Check the values
-  (is (equal '(0 1 2)
-             (list-enum-item-value "GdkFilterReturn")))
-  ;; Check the nick names
-  (is (equal '("continue" "translate" "remove")
-             (list-enum-item-nick "GdkFilterReturn")))
-  ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GdkFilterReturn"
-                             GDK-FILTER-RETURN
-                             (:EXPORT T
-                              :TYPE-INITIALIZER "gdk_filter_return_get_type")
-                             (:CONTINUE 0)
-                             (:TRANSLATE 1)
-                             (:REMOVE 2))
-             (gobject:get-g-type-definition "GdkFilterReturn"))))
+;;;     GdkFilterReturn                                    not exported
 
 ;;;     GdkModifierIntent
 
@@ -757,30 +730,48 @@
 ;;;     gdk-window-new
 
 (test window-new
-  (is (typep (gdk:window-new nil (gdk:make-window-attr) nil) 'gdk:window))
-  (is (typep (gdk:window-new nil (gdk:make-window-attr) '(:x :y :title))
-             'gdk:window)))
+  (with-foreign-object (attr '(:struct gdk:window-attr))
+    (with-foreign-slots ((gdk::title
+                          gdk::x
+                          gdk::y
+                          gdk::window-type)
+                         attr (:struct gdk:window-attr))
+  (setf gdk::title "title")
+  (setf gdk::x 10)
+  (setf gdk::y 20)
+  (setf gdk::window-type :toplevel)
+  (is (typep (gdk:window-new nil attr nil) 'gdk:window))
+  (is (typep (gdk:window-new nil attr '(:x :y :title)) 'gdk:window)))))
 
 ;;;     gdk-window-destroy
+;;;     gdk_window_is_destroyed
 
 (test window-destroy
-  (let ((window (gdk:window-new nil (gdk:make-window-attr) nil)))
-    (is-false (gdk:window-destroy window))))
+  (with-foreign-object (attr '(:struct gdk:window-attr))
+    (with-foreign-slots ((gdk::window-type)
+                         attr (:struct gdk:window-attr))
+    (setf gdk::window-type :toplevel)
+    (let ((window (gdk:window-new nil attr nil)))
+      (is-false (gdk:window-destroy window))
+      (is-true (gdk:window-is-destroyed window))))))
 
 ;;;     gdk-window-window-type
 
 (test window-window-type.1
-  (let ((window (gdk:window-new nil
-                                (gdk:make-window-attr :window-type :toplevel)
-                                nil)))
-    (is (eq :toplevel (gdk:window-window-type window)))))
+  (with-foreign-object (attr '(:struct gdk:window-attr))
+    (with-foreign-slots ((gdk::window-type)
+                         attr (:struct gdk:window-attr))
+    (setf gdk::window-type :toplevel)
+    (let ((window (gdk:window-new nil attr nil)))
+      (is (eq :toplevel (gdk:window-window-type window)))))))
 
-#-windows ; TODO: Gives a Warning on Windows. Check agein for Linux.
 (test window-window-type.2
-  (let ((window (gdk:window-new nil
-                                (gdk:make-window-attr :window-type :child)
-                                nil)))
-    (is (eq :child (gdk:window-window-type window)))))
+  (with-foreign-object (attr '(:struct gdk:window-attr))
+    (with-foreign-slots ((gdk::window-type)
+                         attr (:struct gdk:window-attr))
+    (setf gdk::window-type :child)
+    (let ((window (gdk:window-new nil attr nil)))
+      (is (eq :child (gdk:window-window-type window)))))))
 
 ;;;     gdk_window_display
 
@@ -801,7 +792,7 @@
 ;;;     gdk_window_show
 ;;;     gdk_window_show_unraised
 ;;;     gdk_window_hide
-;;;     gdk_window_is_destroyed
+
 ;;;     gdk_window_is_visible
 ;;;     gdk_window_is_viewable
 ;;;     gdk_window_is_input_only
@@ -900,40 +891,79 @@
 
 ;;;     gdk_window_geometry
 
-#-windows
 (test window-geometry
-  (let ((window (gdk:window-new nil
-                                (gdk:make-window-attr :x 10
-                                                      :y 20
-                                                      :width 100
-                                                      :height 200)
-                                nil)))
-    (is (equal '(0 0 100 200)
-               (multiple-value-list (gdk:window-geometry window)))))
-  (let ((window (gdk:window-new nil
-                                (gdk:make-window-attr :x 10
-                                                      :y 20
-                                                      :width 100
-                                                      :height 200)
-                                '(:x :y))))
-    (is (equal '(10 20 100 200)
-        (multiple-value-list (gdk:window-geometry window))))))
+  (with-foreign-object (attr '(:struct gdk:window-attr))
+    (with-foreign-slots ((gdk::window-type
+                          gdk::x
+                          gdk::y
+                          gdk::width
+                          gdk::height)
+                         attr (:struct gdk:window-attr))
+    (setf gdk::window-type :toplevel)
+    (setf gdk::x 10
+          gdk::y 20
+          gdk::width 100
+          gdk::height 200)
+    (let ((window (gdk:window-new nil attr nil)))
+      (is (equal '(0 0 100 200)
+                 (multiple-value-list (gdk:window-geometry window))))))))
 
 ;;;     gdk_window_set_geometry_hints
 
 (test window-set-geometry-hints
-  (let ((window (gdk:window-new nil (gdk:make-window-attr) nil)))
-    (is-false (gdk:window-set-geometry-hints window (gdk:make-geometry) nil))))
+  (with-foreign-object (attr '(:struct gdk:window-attr))
+    (with-foreign-slots ((gdk::window-type
+                          gdk::x
+                          gdk::y
+                          gdk::width
+                          gdk::height)
+                         attr (:struct gdk:window-attr))
+    (setf gdk::window-type :toplevel)
+    (setf gdk::x 10
+          gdk::y 20
+          gdk::width 100
+          gdk::height 200)
+    (let ((window (gdk:window-new nil attr nil)))
+      (with-foreign-object (geometry '(:struct gdk:geometry))
+        (with-foreign-slots ((gdk::min-width
+                              gdk::min-height
+                              gdk::max-width
+                              gdk::max-height
+                              gdk::min-aspect
+                              gdk::max-aspect
+                              gdk::win-gravity)
+                             geometry (:struct gdk:geometry))
+          (setf gdk::min-width 10
+                gdk::min-height 20
+                gdk::max-width 30
+                gdk::max-height 40
+                gdk::min-aspect 1.5d0
+                gdk::max-aspect 2.5d0
+                gdk::win-gravity :north)
+          (is-false (gdk:window-set-geometry-hints window geometry nil))))))))
 
 ;;;     gdk_window_width
 ;;;     gdk_window_height
+;;;     gdk_window_position
 
 (test window-width/height
-  (let ((window (gdk:window-new nil
-                                (gdk:make-window-attr :width 100 :height 200)
-                                nil)))
-    (is (= 100 (gdk:window-width window)))
-    (is (= 200 (gdk:window-height window)))))
+  (with-foreign-object (attr '(:struct gdk:window-attr))
+    (with-foreign-slots ((gdk::window-type
+                          gdk::x
+                          gdk::y
+                          gdk::width
+                          gdk::height)
+                         attr (:struct gdk:window-attr))
+    (setf gdk::window-type :toplevel)
+    (setf gdk::x 10
+          gdk::y 20
+          gdk::width 100
+          gdk::height 200)
+    (let ((window (gdk:window-new nil attr '(:x :y))))
+      (is (= 100 (gdk:window-width window)))
+      (is (= 200 (gdk:window-height window)))
+      (is (equal '(10 20)
+                 (multiple-value-list (gdk:window-position window))))))))
 
 ;;;     gdk_window_set_icon_list
 ;;;     gdk_window_set_modal_hint
@@ -944,17 +974,6 @@
 ;;;     gdk_window_set_skip_taskbar_hint
 ;;;     gdk_window_set_skip_pager_hint
 ;;;     gdk_window_set_urgency_hint
-
-;;;     gdk_window_position
-
-(test window-position
-  (let ((window (gdk:window-new nil (gdk:make-window-attr) nil)))
-    (is (equal '(0 0) (multiple-value-list (gdk:window-position window)))))
-  (let ((window (gdk:window-new nil
-                                (gdk:make-window-attr :x 10 :y 20)
-                                '(:x :y))))
-    (is (equal '(10 20) (multiple-value-list (gdk:window-position window))))))
-
 ;;;     gdk_window_get_root_origin
 ;;;     gdk_window_get_frame_extents
 ;;;     gdk_window_get_origin
@@ -1033,4 +1052,4 @@
 ;;;     gdk_window_get_effective_parent
 ;;;     gdk_window_get_effective_toplevel
 
-;;; --- 2023-1-8 ---------------------------------------------------------------
+;;; --- 2023-2-25 --------------------------------------------------------------

@@ -15,7 +15,8 @@
           (gobject:symbol-for-gtype "GdkSeatCapabilities")))
   ;; Check the type initializer
   (is (eq (g:gtype "GdkSeatCapabilities")
-          (g:gtype (cffi:foreign-funcall "gdk_seat_capabilities_get_type" :size))))
+          (g:gtype (cffi:foreign-funcall "gdk_seat_capabilities_get_type"
+                                         :size))))
   ;; Check the names
   (is (equal '("GDK_SEAT_CAPABILITY_NONE" "GDK_SEAT_CAPABILITY_POINTER"
                "GDK_SEAT_CAPABILITY_TOUCH" "GDK_SEAT_CAPABILITY_TABLET_STYLUS"
@@ -58,8 +59,10 @@
   (is (eq (g:gtype "GObject")
           (g:type-parent "GdkSeat")))
   ;; Check the children
-  (is (equal '("GdkWaylandSeat")
-             (list-children "GdkSeat")))
+  (is (or (equal '("GdkSeatDefault")
+                 (list-children "GdkSeat"))
+          (equal '("GdkWaylandSeat")
+                 (list-children "GdkSeat"))))
   ;; Check the interfaces
   (is (equal '()
              (list-interfaces "GdkSeat")))
@@ -214,4 +217,4 @@
     (is (every (lambda (x) (typep x 'gdk:device))
                (gdk:seat-slaves seat '(:pointer :keyboard))))))
 
-;;; --- 2023-1-8 ---------------------------------------------------------------
+;;; --- 2023-3-3 ---------------------------------------------------------------

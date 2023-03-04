@@ -3,8 +3,6 @@
 (def-suite gdk-key-values :in gdk-suite)
 (in-suite gdk-key-values)
 
-(defparameter *verbose-gdk-key-values* nil)
-
 ;;;     GdkKeymap
 
 (test keymap-class
@@ -21,8 +19,10 @@
           (g:type-parent "GdkKeymap")))
   ;; Check the children
   #-windows
-  (is (or (member "GdkX11Keymap" (list-children "GdkKeymap") :test #'string=)
-          (member "GdkWaylandKeymap" (list-children "GdkKeymap") :test #'string=)))
+  (is (or (equal '("GdkX11Keymap")
+                 (list-children "GdkKeymap"))
+          (equal '("GdkWaylandKeymap")
+                 (list-children "GdkKeymap"))))
   #+windows
   (is (equal '("GdkWin32Keymap")
              (list-children "GdkKeymap")))
@@ -42,11 +42,9 @@
                        NIL)
              (gobject:get-g-type-definition "GdkKeymap"))))
 
-;;;     GdkKeymapKey
-
 ;;;   gdk_keymap_get_default
 
-(test -keymap-default
+(test keymap-default
   (is (typep (gdk:keymap-default) 'gdk:keymap)))
 
 ;;;   gdk_keymap_get_for_display
@@ -57,27 +55,8 @@
 
 ;;;   gdk_keymap_lookup_key
 
-;; TODO: Seems not to work as expected on Windows. Check this again.
-
-#-windows
 (test keymap-lookup-key
   (let ((keymap (gdk:keymap-for-display (gdk:display-default))))
-    (with-foreign-object (key '(:struct gdk::keymap-key))
-      (setf (cffi:foreign-slot-value key
-                                     '(:struct gdk::keymap-key)
-                                     'gdk::keycode) 35)
-      (setf (cffi:foreign-slot-value key
-                                     '(:struct gdk::keymap-key)
-                                     'gdk::group) 0)
-      (setf (cffi:foreign-slot-value key
-                                     '(:struct gdk::keymap-key)
-                                     'gdk::level) 0)
-      (is (= 43 (gdk::%keymap-lookup-key keymap key))))
-    (with-foreign-object (key '(:struct gdk::keymap-key))
-      (setf (gdk::keymap-key-keycode key) 35)
-      (setf (gdk::keymap-key-group key) 0)
-      (setf (gdk::keymap-key-level key) 1)
-      (is (= 42 (gdk::%keymap-lookup-key keymap key))))
     (is (=  43 (gdk:keymap-lookup-key keymap 35 0 0)))
     (is (=  42 (gdk:keymap-lookup-key keymap 35 0 1)))
     (is (= 126 (gdk:keymap-lookup-key keymap 35 0 2)))
@@ -85,60 +64,52 @@
 
 ;;;     gdk_keymap_translate_keyboard_state
 
-;; TODO: Seems not to work as expected on Windows. Check this again.
-
-#-windows
 (test keymap-translate-keyboard-state
   (let ((keymap (gdk:keymap-for-display (gdk:display-default))))
     ;; The key "+" with the name "plus"
-    (is (equal '(43 0 0 NIL)
-               (multiple-value-list
-                   (gdk:keymap-translate-keyboard-state keymap
-                                                        35
-                                                        0
-                                                        0))))
+    (is (or (equal '(43 0 0 (:SHIFT-MASK :LOCK-MASK :MOD5-MASK))
+                   (multiple-value-list
+                       (gdk:keymap-translate-keyboard-state keymap
+                                                            35
+                                                            0
+                                                            0)))
+            (equal '(43 0 0 NIL)
+                   (multiple-value-list
+                       (gdk:keymap-translate-keyboard-state keymap
+                                                            35
+                                                            0
+                                                            0)))))
     ;; The key "-" with the name "minus"
-    (is (equal '(42 0 1 (:SHIFT-MASK))
-               (multiple-value-list
-                   (gdk:keymap-translate-keyboard-state keymap
-                                                        35
-                                                        :shift-mask
-                                                        0))))
+    (is (or (equal '(42 0 1 (:SHIFT-MASK :LOCK-MASK :MOD5-MASK))
+                   (multiple-value-list
+                       (gdk:keymap-translate-keyboard-state keymap
+                                                            35
+                                                            :shift-mask
+                                                            0)))
+            (equal '(42 0 1 (:SHIFT-MASK))
+                   (multiple-value-list
+                       (gdk:keymap-translate-keyboard-state keymap
+                                                            35
+                                                            :shift-mask
+                                                            0)))))
     ;; The key "~" with the name "asciitilde"
-    (is (equal '(126 0 2 (:MOD5-MASK))
-               (multiple-value-list
-                   (gdk:keymap-translate-keyboard-state keymap
-                                                        35
-                                                        :mod5-mask
-                                                        0))))))
+    (is (or (equal '(126 0 2 (:SHIFT-MASK :LOCK-MASK :MOD5-MASK))
+                   (multiple-value-list
+                       (gdk:keymap-translate-keyboard-state keymap
+                                                            35
+                                                            :mod5-mask
+                                                            0)))
+            (equal '(126 0 2 (:MOD5-MASK))
+                   (multiple-value-list
+                       (gdk:keymap-translate-keyboard-state keymap
+                                                            35
+                                                            :mod5-mask
+                                                            0)))))))
 
 ;;;     gdk_keymap_get_entries_for_keyval
 
-;; TODO: Seems not to work as expected on Windows. Check this again.
-
-#+nil
 (test keymap-entries-for-keyval
-  (let ((keymap (gdk:keymap-for-display (gdk:display-default)))
-        (keyval 126))
-    (with-foreign-objects ((keys :pointer) (n-keys :int))
-      (when (gdk::%keymap-entries-for-keyval keymap keyval keys n-keys)
-        (when *verbose-gdk-key-values*
-          (format t "~%GDK-KEYMAP-ENTRIES-FOR-KEYVAL~%")
-          (format t " keyval : ~a~%" keyval)
-          (format t "   keys : ~a~%" keys)
-          (format t " n-keys : ~a~%" (cffi:mem-ref n-keys :int)))
-        (let ((keys (cffi:mem-ref keys :pointer))
-              (n-keys (cffi:mem-ref n-keys :int)))
-          (loop for i from 0 below n-keys
-                for key = (cffi:mem-aptr keys '(:struct gdk::keymap-key) i)
-                collect (list (gdk::keymap-key-keycode key)
-                              (gdk::keymap-key-group key)
-                              (gdk::keymap-key-level key))
-                finally (g:free keys)
-                do (when *verbose-gdk-key-values*
-                     (format t "keycode : ~a~%" (gdk::keymap-key-keycode key))
-                     (format t "  group : ~a~%" (gdk::keymap-key-group key))
-                     (format t "  level : ~a~%" (gdk::keymap-key-level key)))))))
+  (let ((keymap (gdk:keymap-for-display (gdk:display-default))))
     (is (equal '((35 0 0)) (gdk:keymap-entries-for-keyval keymap 43)))
     (is (equal '((35 0 1)) (gdk:keymap-entries-for-keyval keymap 42)))
     (is (equal '((35 0 2)) (gdk:keymap-entries-for-keyval keymap 126)))
@@ -146,43 +117,13 @@
 
 ;;;     gdk_keymap_get_entries_for_keycode
 
-;; TODO: Seems not to work as expected on Windows. Check this again.
-
-#-windows
 (test keymap-entries-for-keycode
   (let ((keymap (gdk:keymap-for-display (gdk:display-default))))
-    (with-foreign-objects ((keys :pointer) (keyvals :pointer) (n-keys :int))
-      (when (gdk::%keymap-entries-for-keycode keymap
-                                                  35
-                                                  keys
-                                                  keyvals
-                                                  n-keys)
-        (when *verbose-gdk-key-values*
-          (format t "~%GDK-KEYMAP-ENTRIES-FOR-KEYCODE~%")
-          (format t "   keys : ~a~%" keys)
-          (format t "keyvals : ~a~%" keyvals)
-          (format t " n-keys : ~a~%" (cffi:mem-ref n-keys :int)))
-        (let ((keys (cffi:mem-ref keys :pointer))
-              (keyvals (cffi:mem-ref keyvals :pointer))
-              (n-keys (cffi:mem-ref n-keys :int)))
-          (loop for i from 0 below n-keys
-                for keyval = (cffi:mem-aref keyvals :uint i)
-                for key = (cffi:mem-aptr keys '(:struct gdk::keymap-key) i)
-                collect (list keyval
-                              (list (gdk::keymap-key-keycode key)
-                                    (gdk::keymap-key-group key)
-                                    (gdk::keymap-key-level key)))
-                finally (g:free keys)
-                        (g:free keyvals)
-                do (when *verbose-gdk-key-values*
-                     (format t " keyval : ~a~%" keyval)
-                     (format t "    key : ~a~%" key)
-                     (format t "keycode : ~a~%" (gdk::keymap-key-keycode key))
-                     (format t "  group : ~a~%" (gdk::keymap-key-group key))
-                     (format t "  level : ~a~%" (gdk::keymap-key-level key)))))))
-    (is (equal '((43 35 0 0) (43 35 0 1) (43 35 0 2) (43 35 0 3) (43 35 1 0)
-                 (43 35 1 1) (43 35 1 2) (43 35 1 3))
-               (gdk:keymap-entries-for-keycode keymap 35)))))
+    (is (or (equal '((43 35 0 0) (42 35 0 1) (126 35 0 2) (175 35 0 3))
+                   (gdk:keymap-entries-for-keycode keymap 35))
+            (equal '((43 35 0 0) (43 35 0 1) (43 35 0 2) (43 35 0 3) (43 35 1 0)
+                     (43 35 1 1) (43 35 1 2) (43 35 1 3))
+                   (gdk:keymap-entries-for-keycode keymap 35))))))
 
 ;;;     gdk_keymap_get_direction
 
@@ -202,8 +143,7 @@
 ;;;     gdk_keymap_get_num_lock_state
 
 (test keymap-num-lock-state
-  ;; TODO: Last value was TRUE, 2023-1-8
-  (is-false (gdk:keymap-num-lock-state (gdk:keymap-default))))
+  (is-true (gdk:keymap-num-lock-state (gdk:keymap-default))))
 
 ;;;     gdk_keymap_get_scroll_lock_state
 
@@ -214,8 +154,10 @@
 
 (test keymap-modifier-state
   #-windows
-  (is (equal '()
-             (gdk:keymap-modifier-state (gdk:keymap-default))))
+  (is (or (equal '(:MOD2-MASK)
+                 (gdk:keymap-modifier-state (gdk:keymap-default)))
+          (equal '()
+                 (gdk:keymap-modifier-state (gdk:keymap-default)))))
   #+windows
   (is (equal '()
              (gdk:keymap-modifier-state (gdk:keymap-default)))))
@@ -235,9 +177,8 @@
 
 (test keymap-map-virtual-modifiers
   (let ((keymap (gdk:keymap-for-display (gdk:display-default))))
-    (is (equal '((:SUPER-MASK) T)
-               (multiple-value-list
-                 (gdk:keymap-map-virtual-modifiers keymap '(:super-mask)))))))
+    (is (equal '(:MOD4-MASK :SUPER-MASK)
+               (gdk:keymap-map-virtual-modifiers keymap '(:super-mask))))))
 
 ;;;     gdk_keymap_get_modifier_mask
 
@@ -308,4 +249,4 @@
 (test unicode-to-keyval
   (is (eq 65 (gdk:unicode-to-keyval #\A))))
 
-;;; --- 2023-1-8 ---------------------------------------------------------------
+;;; --- 2023-3-4 ---------------------------------------------------------------

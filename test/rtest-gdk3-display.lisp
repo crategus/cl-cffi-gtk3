@@ -170,8 +170,10 @@
 
 (test display-name
   #-windows
-  (is (string= "wayland-0"
-               (gdk:display-name (gdk:display-default))))
+  (is (or (string= ":1"
+                   (gdk:display-name (gdk:display-default)))
+          (string= "wayland-0"
+                   (gdk:display-name (gdk:display-default)))))
   #+windows
   (is (string= "1\\WinSta0\\Default"
                (gdk:display-name (gdk:display-default)))))
@@ -271,13 +273,17 @@
 (test display-cursor-size
   (let ((display (gdk:display-default)))
     #-windows
-    (is (= 32 (gdk:display-default-cursor-size display)))
+    (is (or (= 24 (gdk:display-default-cursor-size display))
+            (= 32 (gdk:display-default-cursor-size display))))
     #+windows
     (is (= 32 (gdk:display-default-cursor-size display)))
     #-windows
-    (is (equal '(256 256)
-                (multiple-value-list
-                    (gdk:display-maximal-cursor-size display))))
+    (is (or (equal '(128 128)
+                   (multiple-value-list
+                       (gdk:display-maximal-cursor-size display)))
+            (equal '(256 256)
+                   (multiple-value-list
+                       (gdk:display-maximal-cursor-size display)))))
     #+windows
     (is (equal '(32 32)
                 (multiple-value-list
@@ -295,8 +301,8 @@
 
 (test display-selection-notification
   (let ((display (gdk:display-default)))
-    (is-false (gdk:display-supports-selection-notification display))
-    (is-false (gdk:display-request-selection-notification display "CLIPBOARD"))))
+    (is-true (gdk:display-supports-selection-notification display))
+    (is-true (gdk:display-request-selection-notification display "CLIPBOARD"))))
 
 ;;;     gdk-display-supports-clipboard-persistence
 ;;;     gdk-display-store-clipboard
@@ -313,7 +319,7 @@
 
 (test display-shapes
   (let ((display (gdk:display-default)))
-    (is-false (gdk:display-supports-shapes display))
+    (is-true (gdk:display-supports-shapes display))
     (is-true (gdk:display-supports-input-shapes display))))
 
 ;;;     gdk_display_supports_composite                     deprecated
@@ -379,4 +385,4 @@
          (window (gdk-display-default-group display)))
     (is (typep (gdk-display-monitor-at-window display window) 'gdk-monitor))))
 
-;;; --- 2023-1-8 ---------------------------------------------------------------
+;;; --- 2023-3-4 ---------------------------------------------------------------

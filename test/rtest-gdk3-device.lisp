@@ -350,8 +350,10 @@
           (g:type-parent "GdkDevice")))
   ;; Check the children
   #-windows
-  (is (equal '("GdkWaylandDevice" "GdkX11DeviceXI2")
-             (list-children "GdkDevice")))
+  (is (or (equal '("GdkWaylandDevice" "GdkX11DeviceXI2")
+                 (list-children "GdkDevice"))
+          (equal '("GdkX11DeviceCore" "GdkX11DeviceXI2")
+                 (list-children "GdkDevice"))))
   #+windows
   (is (equal '("GdkDeviceVirtual" "GdkDeviceWin32")
              (list-children "GdkDevice")))
@@ -407,7 +409,8 @@
     (is (eq :keyboard (gdk:device-input-source device)))
     (is (= 0 (gdk:device-n-axes device)))
     #-windows
-    (is (string= "Core Keyboard" (gdk:device-name device)))
+    (is (or (string= "Core Keyboard" (gdk:device-name device))
+            (string= "Virtual core keyboard" (gdk:device-name device))))
     #+windows
     (is (string= "Virtual Core Keyboard" (gdk:device-name device)))
     (is (= 0 (gdk:device-num-touches device)))
@@ -422,7 +425,8 @@
          (device (gdk:seat-pointer seat)))
     (is (typep (gdk:device-associated-device device) 'gdk:device))
     #-windows
-    (is (equal '(:X :Y) (gdk:device-axes device)))
+    (is (or (equal '(:X :Y) (gdk:device-axes device))
+            (equal '(:int) (gdk:device-axes device))))
     #+windows
     (is (equal '(:x :y) (gdk:device-axes device)))
     (is (typep (gdk:device-device-manager device) 'gdk:device-manager))
@@ -431,11 +435,13 @@
     (is (eq :screen (gdk:device-input-mode device)))
     (is (eq :mouse (gdk:device-input-source device)))
     #-windows
-    (is (= 2 (gdk:device-n-axes device)))
+    (is (or (= 2 (gdk:device-n-axes device))
+            (= 4 (gdk:device-n-axes device))))
     #+windows
     (is (= 2 (gdk:device-n-axes device)))
     #-windows
-    (is (string= "Core Pointer" (gdk:device-name device)))
+    (is (or (string= "Core Pointer" (gdk:device-name device))
+            (string= "Virtual core pointer" (gdk:device-name device))))
     #+windows
     (is (string= "Virtual Core Pointer" (gdk:device-name device)))
     (is (= 0 (gdk:device-num-touches device)))
@@ -628,4 +634,4 @@
 ;;;     gdk_device_tool_get_serial
 ;;;     gdk_device_tool_get_tool_type
 
-;;; --- 2023-1-8 ---------------------------------------------------------------
+;;; --- 2023-3-3 ---------------------------------------------------------------

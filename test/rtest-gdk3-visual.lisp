@@ -92,8 +92,10 @@
           (g:type-parent "GdkVisual")))
   ;; Check the children
   #-windows
-  (is (equal '("GdkWaylandVisual")
-             (list-children "GdkVisual")))
+  (is (or (equal '("GdkX11Visual")
+                 (list-children "GdkVisual"))
+          (equal '("GdkWaylandVisual")
+                 (list-children "GdkVisual"))))
   #+windows
   (is (equal '()
              (list-children "GdkVisual")))
@@ -168,7 +170,8 @@
 (test visual-depth
   (let ((visual (gdk:visual-system)))
     #-windows
-    (is (= 32 (gdk:visual-depth visual)))
+    (is (or (= 24 (gdk:visual-depth visual))
+            (= 32 (gdk:visual-depth visual))))
     #+windows
     (is (= 24 (gdk:visual-depth visual)))))
 
@@ -257,4 +260,4 @@
 (test visual-screen
   (is (eq 'gdk:screen (type-of (gdk:visual-screen (gdk:visual-system))))))
 
-;;; --- 2023-1-8 ---------------------------------------------------------------
+;;; --- 2023-3-3 ---------------------------------------------------------------

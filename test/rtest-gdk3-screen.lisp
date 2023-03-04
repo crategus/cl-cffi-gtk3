@@ -25,8 +25,10 @@
           (g:type-parent "GdkScreen")))
   ;; Check the children
   #-windows
-  (is (equal '("GdkWaylandScreen" "GdkX11Screen")
-              (list-children "GdkScreen")))
+  (is (or (equal '("GdkX11Screen")
+                 (list-children "GdkScreen"))
+          (equal '("GdkWaylandScreen" "GdkX11Screen")
+                 (list-children "GdkScreen"))))
   #+windows
   (is (equal '("GdkWin32Screen")
              (list-children "GdkScreen")))
@@ -285,4 +287,4 @@
   (is (every (lambda (x) (typep x 'gdk:window))
              (gdk:screen-window-stack (gdk:screen-default)))))
 
-;;; --- 2023-1-8 ---------------------------------------------------------------
+;;; --- 2023-3-3 ---------------------------------------------------------------

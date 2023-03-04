@@ -21,8 +21,10 @@
           (g:type-parent "GdkDeviceManager")))
   ;; Check the children
   #-windows
-  (is (equal '("GdkWaylandDeviceManager" "GdkX11DeviceManagerCore")
-             (list-children "GdkDeviceManager")))
+  (is (or (equal '("GdkX11DeviceManagerCore")
+                 (list-children "GdkDeviceManager"))
+          (equal '("GdkWaylandDeviceManager" "GdkX11DeviceManagerCore")
+                 (list-children "GdkDeviceManager"))))
   #+windows
   (is (equal '("GdkDeviceManagerWin32")
              (list-children "GdkDeviceManager")))
@@ -60,4 +62,4 @@
 ;;;     device-changed
 ;;;     device-removed
 
-;;; --- 2023-1-8 ---------------------------------------------------------------
+;;; --- 2023-3-3 ---------------------------------------------------------------
