@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.misc.lisp
+;;; gtk3.misc.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -69,9 +69,8 @@
 
 #+liber-documentation
 (setf (documentation 'misc 'type)
- "@version{#2021-7-21}
+ "@version{2023-2-27}
   @short{Base class for widgets with alignments and padding.}
-
   The @sym{gtk:misc} widget is an abstract widget which is not useful itself,
   but is used to derive subclasses which have alignment and padding attributes.
 
@@ -89,10 +88,6 @@
     @sym{gtk:misc} widget should not be used in new code. To reflect this fact,
     all @sym{gtk:misc} API has been deprecated.
   @end{dictionary}
-  @see-slot{gtk:misc-xalign}
-  @see-slot{gtk:misc-xpad}
-  @see-slot{gtk:misc-yalign}
-  @see-slot{gtk:misc-ypad}
   @see-function{gtk:widget-halign}
   @see-function{gtk:widget-valign}
   @see-function{gtk:widget-margin}")
@@ -223,7 +218,7 @@
 
 (defun misc-set-alignment (misc xalign yalign)
  #+liber-documentation
- "@version{#2021-7-21}
+ "@version{2023-2-27}
   @argument[misc]{a @class{gtk:misc} widget}
   @argument[xalign]{a float with the horizontal alignment, from 0.0 (left)
     to 1.0 (right)}
@@ -231,7 +226,7 @@
     to 1.0 (bottom)}
   @short{Sets the alignment of the widget.}
   @begin[Warning]{dictionary}
-    The function @sym{gtk:misc-set-alignment} has been deprecated since version
+    The @sym{gtk:misc-set-alignment} function has been deprecated since version
     3.14 and should not be used in newly written code. Use @class{gtk:widget}
     alignment and margin properties.
   @end{dictionary}
@@ -250,7 +245,7 @@
 
 (defun misc-set-padding (misc xpad ypad)
  #+liber-documentation
- "@version{#2021-7-21}
+ "@version{2023-2-27}
   @argument[misc]{a @class{gtk:misc} widget}
   @argument[xpad]{an integer with the amount of space to add on the left
     and right of the widget, in pixels}
@@ -258,7 +253,7 @@
     and bottom of the widget, in pixels}
   @short{Sets the amount of space to add around the widget.}
   @begin[Warning]{dictionary}
-    The function @sym{gtk:misc-set-padding} has been deprecated since version
+    The @sym{gtk:misc-set-padding} function has been deprecated since version
     3.14 and should not be used in newly written code. Use @class{gtk:widget}
     alignment and margin properties.
   @end{dictionary}
@@ -277,7 +272,7 @@
 
 (defun misc-get-alignment (misc)
  #+liber-documentation
- "@version{#2021-7-21}
+ "@version{2023-2-27}
   @argument[misc]{a @class{gtk:misc} widget}
   @begin{return}
     @arg{xalign} -- a float with the x alignment @br{}
@@ -285,7 +280,7 @@
   @end{return}
   @short{Gets the x and y alignment of the widget within its allocation.}
   @begin[Warning]{dictionary}
-    The function @sym{gtk:misc-get-alignment} has been deprecated since version
+    The @sym{gtk:misc-get-alignment} function has been deprecated since version
     3.14 and should not be used in newly written code. Use @class{gtk:widget}
     alignment and margin properties.
   @end{dictionary}
@@ -304,23 +299,23 @@
 
 (defun misc-get-padding (misc)
  #+liber-documentation
- "@version{#2021-7-21}
+ "@version{2023-2-27}
   @argument[misc]{a @class{gtk:misc} widget}
   @begin{return}
-    @arg{xpad} -- a float with the padding in the x direction @br{}
-    @arg{ypad} -- a float with the padding in the y direction
+    @arg{xpad} -- an integer with the padding in the x direction @br{}
+    @arg{ypad} -- an integer with the padding in the y direction
   @end{return}
   @short{Gets the padding in the x and y directions of the widget.}
   @begin[Warning]{dictionary}
-    The function @sym{gtk:misc-get-padding} has been deprecated since version
+    The @sym{gtk:misc-get-padding} function has been deprecated since version
     3.14 and should not be used in newly written code. Use @class{gtk:widget}
     alignment and margin properties.
   @end{dictionary}
   @see-class{gtk:misc}
-  @see-class{gtk:wiget}"
+  @see-class{gtk:widget}"
   (values (misc-xpad misc)
           (misc-ypad misc)))
 
 (export 'misc-get-padding)
 
-;;; --- End of file gtk.misc.lisp ----------------------------------------------
+;;; --- End of file gtk3.misc.lisp ---------------------------------------------
