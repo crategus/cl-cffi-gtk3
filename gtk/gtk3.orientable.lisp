@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.orientable.lisp
+;;; gtk3.orientable.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2021 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -42,7 +42,7 @@
 ;;;
 ;;; Properties
 ;;;
-;;;     GtkOrientation    orientation    Read / Write
+;;;     orientation
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -67,11 +67,10 @@
 (setf (liber:alias-for-class 'orientable)
       "Interface"
       (documentation 'orientable 'type)
- "@version{#2021-10-31}
+ "@version{2023-2-27}
   @begin{short}
     An interface for flippable widgets.
   @end{short}
-
   The @sym{gtk:orientable} interface is implemented by all widgets that can be
   oriented horizontally or vertically. Historically, such widgets have been
   realized as subclasses of a common base class, e.g. GtkBox, GtkHBox, GtkVBox.
@@ -84,13 +83,12 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- orientable-orientation ---------------------------------------------
+;;; --- orientable-orientation -------------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "orientation"
-                                               'orientable) t)
+(setf (documentation (liber:slot-documentation "orientation" 'orientable) t)
  "The @code{orientation} property of type @symbol{gtk:orientation}
-    (Read / Write) @br{}
+  (Read / Write) @br{}
   The orientation of the orientable widget. @br{}
   Default value: @code{:horizontal}")
 
@@ -98,7 +96,7 @@
 (setf (liber:alias-for-function 'orientable-orientation)
       "Accessor"
       (documentation 'orientable-orientation 'function)
- "@version{#2021-10-31}
+ "@version{2023-2-27}
   @syntax[]{(gtk:orientable-orientation object) => orientation}
   @syntax[]{(setf (gtk:orientable-orientation object) orientation)}
   @argument[object]{a @class{gtk:orientable} widget}
@@ -107,12 +105,10 @@
     Accessor of the @slot[gtk:orientable]{orientation} slot of the
     @class{gtk:orientable} interface.
   @end{short}
-
-  The @sym{gtk:orientable-orientation} slot access function returns the
-  orientation of the orientable widget. The
-  @sym{(setf gtk:orientable-orientation)} slot access function sets the
-  orientation.
+  The @sym{gtk:orientable-orientation} function returns the orientation of the
+  orientable widget. The @sym{(setf gtk:orientable-orientation)} function sets
+  the orientation.
   @see-class{gtk:orientable}
   @see-symbol{gtk:orientation}")
 
-;;; --- End of file gtk.orientable.lisp ----------------------------------------
+;;; --- End of file gtk3.orientable.lisp ---------------------------------------
