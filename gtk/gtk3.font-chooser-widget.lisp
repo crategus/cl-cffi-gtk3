@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.font-chooser-widget.lisp
+;;; gtk3.font-chooser-widget.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK+ library.
+;;; The documentation of this file is taken from the GTK 3 Reference Manual
+;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
-;;; Copyright (C) 2012 - 2020 Dieter Kaiser
+;;; Copyright (C) 2012 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -40,7 +40,7 @@
 ;;;
 ;;; Properties
 ;;;
-;;;     GAction*   tweak-action    Read
+;;;     tweak-action
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -77,7 +77,7 @@
 
 #+liber-documentation
 (setf (documentation 'font-chooser-widget 'type)
- "@version{#2020-6-6}
+ "@version{#2023-3-5}
   @begin{short}
     The @sym{gtk:font-chooser-widget} widget lists the available fonts, styles
     and sizes, allowing the user to select a font.
@@ -85,27 +85,29 @@
   It is used in the @class{gtk:font-chooser-dialog} widget to provide a dialog
   box for selecting fonts.
 
-  To set or to get the font which is initially selected, use the functions
-  @fun{gtk:font-chooser-font} or @fun{gtk:font-chooser-font-desc}.
+  To set or to get the font which is initially selected, use the
+  @fun{gtk:font-chooser-font} or @fun{gtk:font-chooser-font-desc} functions.
 
-  To change the text which is shown in the preview area, use the function
-  @fun{gtk:font-chooser-preview-text}.
+  To change the text which is shown in the preview area, use the
+  @fun{gtk:font-chooser-preview-text} function.
   @begin[CSS nodes]{dictionary}
-    The @sym{gtk:font-chooser-widget} class has a single CSS node with name
-    @code{fontchooser}.
+    The @sym{gtk:font-chooser-widget} implementation has a single CSS node with
+    name @code{fontchooser}.
   @end{dictionary}
+  @see-constructor{gtk:font-chooser-widget-new}
+  @see-slot{gtk:font-chooser-widget-tweak-action}
   @see-class{gtk:font-chooser-dialog}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- font-chooser-widget-tweak-action -----------------------------------
+;;; --- font-chooser-widget-tweak-action ---------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "tweak-action"
                                                'font-chooser-widget) t)
- "The @code{tweak-action} property of type @class{g-action} (Read) @br{}
+ "The @code{tweak-action} property of type @class{g:action} (Read) @br{}
   A toggle action that can be used to switch to the tweak page of the font
   chooser widget, which lets the user tweak the OpenType features and variation
   axes of the selected font. The action will be enabled or disabled depending
@@ -115,21 +117,21 @@
 (setf (liber:alias-for-function 'font-chooser-widget-tweak-action)
       "Accessor"
       (documentation 'font-chooser-widget-tweak-action 'function)
- "@version{#2020-6-6}
+ "@version{#2023-3-5}
   @syntax[]{(gtk:font-chooser-widget-tweak-action object) => tweak-action}
   @syntax[]{(setf (gtk:font-chooser-widget-tweak-action object) tweak-action)}
   @argument[object]{a @class{gtk:font-chooser-widget} widget}
-  @argument[tweak-action]{a @class{g-action} toggle action}
+  @argument[tweak-action]{a @class{g:action} toggle action}
   @begin{short}
     Accessor of the @slot[gtk:font-chooser-widget]{tweak-action} slot of the
     @class{gtk:font-chooser-widget} class.
   @end{short}
-
   A toggle action that can be used to switch to the tweak page of the font
   chooser widget, which lets the user tweak the OpenType features and variation
   axes of the selected font. The action will be enabled or disabled depending
   on whether the selected font has any features or axes.
-  @see-class{gtk:font-chooser-widget}")
+  @see-class{gtk:font-chooser-widget}
+  @see-function{g:action}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_font_chooser_widget_new ()
@@ -139,7 +141,7 @@
 
 (defun font-chooser-widget-new ()
  #+liber-documentation
- "@version{#2020-6-6}
+ "@version{#2023-3-5}
   @return{A new @class{gtk:font-chooser-widget} widget.}
   @short{Creates a new font chooser widget.}
   @see-class{gtk:font-chooser-widget}"
@@ -147,4 +149,4 @@
 
 (export 'font-chooser-widget-new)
 
-;;; --- End of file gtk.font-chooser-widget.lisp -------------------------------
+;;; --- End of file gtk3.font-chooser-widget.lisp ------------------------------

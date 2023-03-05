@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.font-chooser-dialog.lisp
+;;; gtk3.font-chooser-dialog.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK+ library.
+;;; The documentation of this file is taken from the GTK 3 Reference Manual
+;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
-;;; Copyright (C) 2012 - 2022 Dieter Kaiser
+;;; Copyright (C) 2012 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -72,7 +72,7 @@
 
 #+liber-documentation
 (setf (documentation 'font-chooser-dialog 'type)
- "@version{#2021-2-11}
+ "@version{#2023-3-5}
   @begin{short}
     The @sym{gtk:font-chooser-dialog} widget is a dialog for selecting a font.
   @end{short}
@@ -84,6 +84,7 @@
     @class{gtk:buildable} interface exposes the buttons with the names
     @code{select_button} and @code{cancel_button}.
   @end{dictionary}
+  @see-constructor{gtk:font-chooser-dialog-new}
   @see-class{gtk:font-chooser}")
 
 ;;; ----------------------------------------------------------------------------
@@ -94,17 +95,18 @@
 
 (defun font-chooser-dialog-new (title parent)
  #+liber-documentation
- "@version{#2020-6-6}
+ "@version{#2023-3-5}
   @argument[title]{a string with the title of the dialog, or @code{nil}}
   @argument[parent]{a @class{gtk:window} transient parent of the dialog, or
     @code{nil}}
   @return{A new @class{gtk:font-chooser-dialog} widget.}
   @short{Creates a new font chooser dialog.}
-  @see-class{gtk:font-chooser-dialog}"
+  @see-class{gtk:font-chooser-dialog}
+  @see-class{gtk:window}"
   (make-instance 'font-chooser-dialog
                  :title title
                  :parent parent))
 
 (export 'font-chooser-dialog-new)
 
-;;; --- End of file gtk.font-chooser-dialog.lisp -------------------------------
+;;; --- End of file gtk3.font-chooser-dialog.lisp ------------------------------

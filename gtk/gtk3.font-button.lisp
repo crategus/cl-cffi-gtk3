@@ -1,13 +1,13 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.font-button.lisp
+;;; gtk3.font-button.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK+ library.
+;;; The documentation of this file is taken from the GTK 3 Reference Manual
+;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -54,16 +54,16 @@
 ;;;
 ;;; Properties
 ;;;
-;;;        gchar*   font-name     Read / Write
-;;;     gboolean    show-size     Read / Write
-;;;     gboolean    show-style    Read / Write
-;;;        gchar*   title         Read / Write
-;;;     gboolean    use-font      Read / Write
-;;;     gboolean    use-size      Read / Write
+;;;     font-name
+;;;     show-size
+;;;     show-style
+;;;     title
+;;;     use-font
+;;;     use-size
 ;;;
 ;;; Signals
 ;;;
-;;;         void    font-set      Run First
+;;;     font-set
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -117,7 +117,7 @@
 
 #+liber-documentation
 (setf (documentation 'font-button 'type)
- "@version{#2021-2-11}
+ "@version{#2023-3-5}
   @begin{short}
     The @sym{gtk:font-button} widget is a button which displays the currently
     selected font and allows to open a font chooser dialog to change the font.
@@ -132,30 +132,34 @@
   @begin[Signal Details]{dictionary}
     @subheading{The \"font-set\" signal}
       @begin{pre}
-lambda (widget)    : Run First
+lambda (widget)    :run-first
       @end{pre}
-      The \"font-set\" signal is emitted when the user selects a font. When
-      handling this signal, use the function @fun{gtk:font-chooser-font} to
-      find out which font was just selected. Note that this signal is only
-      emitted when the user changes the font. If you need to react to
-      programmatic font changes as well, use the \"notify::font-name\" signal.
+      The signal is emitted when the user selects a font. When handling this
+      signal, use the @fun{gtk:font-chooser-font} function to find out which
+      font was just selected. Note that this signal is only emitted when the
+      user changes the font. If you need to react to programmatic font changes
+      as well, use the \"notify::font-name\" signal.
       @begin[code]{table}
         @entry[widget]{The @sym{gtk:font-button} widget which received the
           signal.}
       @end{table}
   @end{dictionary}
+  @see-constructor{gtk:font-button-new}
+  @see-constructor{gtk:font-button-new-with-font}
   @see-slot{gtk:font-button-font-name}
   @see-slot{gtk:font-button-show-size}
   @see-slot{gtk:font-button-show-style}
   @see-slot{gtk:font-button-title}
   @see-slot{gtk:font-button-use-font}
-  @see-slot{gtk:font-button-use-size}")
+  @see-slot{gtk:font-button-use-size}
+  @see-class{gtk:font-chooser}
+  @see-class{gtk:font-chooser-dialog}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- font-button-font-name ----------------------------------------------
+;;; --- font-button-font-name --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "font-name" 'font-button) t)
@@ -170,7 +174,7 @@ lambda (widget)    : Run First
 (setf (liber:alias-for-function 'font-button-font-name)
       "Accessor"
       (documentation 'font-button-font-name 'function)
- "@version{#2021-1-7}
+ "@version{#2023-3-5}
   @syntax[]{(gtk:font-button-font-name object) => fontname}
   @syntax[]{(setf (gtk:font-button-font-name object) fontname)}
   @argument[object]{a @class{gtk:font-button} widget}
@@ -180,17 +184,16 @@ lambda (widget)    : Run First
     Accessor of the @slot[gtk:font-button]{font-name} slot of the
     @class{gtk:font-button} class.
   @end{short}
-
-  The slot access function @sym{(setf gtk:font-button-font-name)} sets or
-  updates the currently displayed font in the font picker dialog. The slot
-  access function @sym{gtk:font-name-button-font-name} retrieves the name of
-  the currently selected font.
+  The @sym{(setf gtk:font-button-font-name)} function sets or updates the
+  currently displayed font in the font picker dialog. The
+  @sym{gtk:font-name-button-font-name} function retrieves the name of the
+  currently selected font.
 
   This name includes style and size information as well. If you want to render
-  something with the font, use this string with the function
-  @fun{pango:font-description-from-string}. If you are interested in peeking
-  certain values, family name, style, size, weight, just query these properties
-  from the @class{pango:font-description} structure.
+  something with the font, use this string with the
+  @fun{pango:font-description-from-string} function. If you are interested in
+  peeking certain values, family name, style, size, weight, just query these
+  properties from the @class{pango:font-description} instance.
   @begin[Warning]{dictionary}
     The @sym{gtk:font-button-font-name} function has been deprecated since
     version 3.22 and should not be used in newly written code. Use the
@@ -199,9 +202,10 @@ lambda (widget)    : Run First
   @see-class{gtk:font-button}
   @see-class{gtk:font-chooser}
   @see-class{pango:font-description}
-  @see-function{pango:font-description-from-string}")
+  @see-function{pango:font-description-from-string}
+  @see-function{gtk:font-chooser-font}")
 
-;;; --- font-button-show-size ----------------------------------------------
+;;; --- font-button-show-size --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "show-size" 'font-button) t)
@@ -215,7 +219,7 @@ lambda (widget)    : Run First
 (setf (liber:alias-for-function 'font-button-show-size)
       "Accessor"
       (documentation 'font-button-show-size 'function)
- "@version{#2020-6-6}
+ "@version{#2023-3-5}
   @syntax[]{(gtk:font-button-show-size object) => show-size}
   @syntax[]{(setf (gtk:font-button-show-size object) show-size)}
   @argument[object]{a @class{gtk:font-button} widget}
@@ -224,16 +228,14 @@ lambda (widget)    : Run First
     Accessor of the @slot[gtk:font-button]{show-size} slot of the
     @class{gtk:font-button} class.
   @end{short}
-
   If @arg{show-size} is @em{true}, the font size will be displayed along with
   the name of the selected font.
   @see-class{gtk:font-button}")
 
-;;; --- font-button-show-style ---------------------------------------------
+;;; --- font-button-show-style -------------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "show-style"
-                                               'font-button) t)
+(setf (documentation (liber:slot-documentation "show-style" 'font-button) t)
  "The @code{show-style} property of type @code{:boolean} (Read / Write) @br{}
   If this property is set to @em{true}, the name of the selected font style will
   be shown in the label. For a more WYSIWYG way to show the selected style, see
@@ -244,7 +246,7 @@ lambda (widget)    : Run First
 (setf (liber:alias-for-function 'font-button-show-style)
       "Accessor"
       (documentation 'font-button-show-style 'function)
- "@version{#2020-6-6}
+ "@version{#2023-3-5}
   @syntax[]{(gtk:font-button-show-style object) => show-style}
   @syntax[]{(setf (gtk:font-button-show-style object) show-style)}
   @argument[object]{a @class{gtk:font-button} widget}
@@ -253,12 +255,11 @@ lambda (widget)    : Run First
     Accessor of the @slot[gtk:font-button]{show-style} slot of the
     @class{gtk:font-button} class.
   @end{short}
-
   If @arg{show-style} is @em{true}, the font style will be displayed along with
   name of the selected font.
   @see-class{gtk:font-button}")
 
-;;; --- font-button-title --------------------------------------------------
+;;; --- font-button-title ------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "title" 'font-button) t)
@@ -270,7 +271,7 @@ lambda (widget)    : Run First
 (setf (liber:alias-for-function 'font-button-title)
       "Accessor"
       (documentation 'font-button-title 'function)
- "@version{#2020-6-6}
+ "@version{#2023-3-5}
   @syntax[]{(gtk:font-button-title object) => title}
   @syntax[]{(setf (gtk:font-button-title object) title)}
   @argument[object]{a @class{gtk:font-button} widget}
@@ -279,13 +280,13 @@ lambda (widget)    : Run First
     Accessor of the @slot[gtk:font-button]{title} slot of the
     @class{gtk:font-button} class.
   @end{short}
+  The @sym{gtk:font-button-title} function retrieves the title of the font
+  chooser dialog. The @sym{(setf gtk:font-button-title)} function sets the
+  title for the font chooser dialog.
+  @see-class{gtk:font-button}
+  @see-class{gtk:font-chooser-dialog}")
 
-  The slot access function @sym{gtk:font-button-title} retrieves the title of
-  the font chooser dialog. The slot access function
-  @sym{(setf gtk:font-button-title)} sets the title for the font chooser dialog.
-  @see-class{gtk:font-button}")
-
-;;; --- font-button-use-font -----------------------------------------------
+;;; --- font-button-use-font ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "use-font" 'font-button) t)
@@ -298,7 +299,7 @@ lambda (widget)    : Run First
 (setf (liber:alias-for-function 'font-button-use-font)
       "Accessor"
       (documentation 'font-button-use-font 'function)
- "@version{#2020-6-6}
+ "@version{#2023-3-5}
   @syntax[]{(gtk:font-button-title object) => use-font}
   @syntax[]{(setf (gtk:font-button-title object) use-font)}
   @argument[object]{a @class{gtk:font-button} widget}
@@ -307,12 +308,11 @@ lambda (widget)    : Run First
     Accessor of the @slot[gtk:font-button]{use-font} slot of the
     @class{gtk:font-button} class.
   @end{short}
-
   If @arg{use-font} is @em{true}, the font name will be written using the
   selected font.
   @see-class{gtk:font-button}")
 
-;;; --- font-button-use-size -----------------------------------------------
+;;; --- font-button-use-size ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "use-size" 'font-button) t)
@@ -325,7 +325,7 @@ lambda (widget)    : Run First
 (setf (liber:alias-for-function 'font-button-use-size)
       "Accessor"
       (documentation 'font-button-use-size 'function)
- "@version{#2020-6-6}
+ "@version{#2023-3-5}
   @syntax[]{(gtk:font-button-use-size object) => use-size}
   @syntax[]{(setf (gtk:font-button-use-size object) use-size)}
   @argument[object]{a @class{gtk:font-button} widget}
@@ -335,7 +335,6 @@ lambda (widget)    : Run First
     Accessor of the @slot[gtk:font-button]{use-size} slot of the
     @class{gtk:font-button} class.
   @end{short}
-
   If @arg{use-size} is @em{true}, the font name will be written using the
   selected size.
   @see-class{gtk:font-button}")
@@ -348,7 +347,7 @@ lambda (widget)    : Run First
 
 (defun font-button-new ()
  #+liber-documentation
- "@version{#2020-6-6}
+ "@version{#2023-3-5}
   @return{A new @class{gtk:font-button} widget.}
   @short{Creates a new font picker widget.}
   @see-class{gtk:font-button}"
@@ -364,7 +363,7 @@ lambda (widget)    : Run First
 
 (defun font-button-new-with-font (fontname)
  #+liber-documentation
- "@version{#2020-6-6}
+ "@version{#2023-3-5}
   @argument[fontname]{a string with the name of the font to display in the font
     chooser dialog}
   @return{A new @class{gtk:font-button} widget.}
@@ -375,4 +374,4 @@ lambda (widget)    : Run First
 
 (export 'font-button-new-with-font)
 
-;;; --- End of file gtk.font-button.lisp ---------------------------------------
+;;; --- End of file gtk3.font-button.lisp --------------------------------------

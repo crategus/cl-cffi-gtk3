@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.font-chooser.lisp
+;;; gtk3.font-chooser.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK+ library.
+;;; The documentation of this file is taken from the GTK 3 Reference Manual
+;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
-;;; Copyright (C) 2012 - 2021 Dieter Kaiser
+;;; Copyright (C) 2012 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -60,17 +60,17 @@
 ;;;
 ;;; Properties
 ;;;
-;;;                gchar*   font                  Read / Write
-;;; PangoFontDescription*   font-desc             Read / Write
-;;;                gchar*   font-features         Read
-;;;                gchar*   language              Read / Write
-;;;  GtkFontChooserLevel    level                 Read / Write
-;;;                gchar*   preview-text          Read / Write
-;;;             gboolean    show-preview-entry    Read / Write
+;;;     font
+;;;     font-desc
+;;;     font-features
+;;;     language
+;;;     level
+;;;     preview-text
+;;;     show-preview-entry
 ;;;
 ;;; Signals
 ;;;
-;;;                 void    font-activated        Run First
+;;;     font-activated
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -104,16 +104,13 @@
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'font-chooser-level)
-      "Flags"
+      "GFlags"
       (liber:symbol-documentation 'font-chooser-level)
- "@version{#2021-1-20}
+ "@version{#2023-3-5}
   @begin{short}
     The @sym{gtk:font-chooser-level} flags specifies the granularity of font
     selection that is desired in a font chooser.
   @end{short}
-
-  These flags may be extended in the future. Applications should ignore
-  unknown values.
   @begin{pre}
 (define-g-flags \"GtkFontChooserLevel\" font-chooser-level
   (:export t
@@ -169,18 +166,18 @@
 (setf (liber:alias-for-class 'font-chooser)
       "Interface"
       (documentation 'font-chooser 'type)
- "@version{#2021-1-20}
+ "@version{#2023-3-5}
   @begin{short}
     The @sym{gtk:font-chooser} interface is an interface that can be
     implemented by widgets displaying the list of fonts.
   @end{short}
-  In GTK+, the main widgets that implement this interface are
+  In GTK, the main widgets that implement this interface are the
   @class{gtk:font-chooser-widget}, @class{gtk:font-chooser-dialog} and
-  @class{gtk:font-button}.
+  @class{gtk:font-button} widgets.
   @begin[Signal Details]{dictionary}
     @subheading{The \"font-activated\" signal}
       @begin{pre}
- lambda (fontchooser fontname)    :run-first
+lambda (fontchooser fontname)    :run-first
       @end{pre}
       Emitted when a font is activated. This usually happens when the user
       double clicks an item, or an item is selected and the user presses one
@@ -206,7 +203,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- font-chooser-font --------------------------------------------------
+;;; --- font-chooser-font ------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "font" 'font-chooser) t)
@@ -218,37 +215,34 @@
 (setf (liber:alias-for-function 'font-chooser-font)
       "Accessor"
       (documentation 'font-chooser-font 'function)
- "@version{#2021-2-11}
+ "@version{#2023-3-5}
   @syntax[]{(gtk:font-chooser-font object) => fontname}
   @syntax[]{(setf (gtk:font-chooser-font object) fontname)}
-  @argument[object]{a @class{gtk:font-chooser} object}
+  @argument[object]{a @class{gtk:font-chooser} widget}
   @argument[fontname]{a string with the font name like \"Helvetica 12\" or
     \"Times Bold 18\"}
   @begin{short}
     Accessor of the @slot[gtk:font-chooser]{font} slot of the
     @class{gtk:font-chooser} class.
   @end{short}
+  The @sym{gtk:font-chooser-font} function gets the currently selected font
+  name. The @sym{(setf gtk:font-chooser-font)} function sets the font name.
 
-  The slot access function @sym{gtk:font-chooser-font} gets the currently
-  selected font name. The slot access function
-  @sym{(setf gtk:font-chooser-font)} sets the font name.
-
-  Note that this can be a different string than what you set with the function
-  @sym{(setf gtk:font-chooser-font)}, as the font chooser widget may normalize
-  the font names and thus return a string with a different structure. For
-  example, \"Helvetica Italic Bold 12\" could be normalized to
+  Note that this can be a different string than what you set with the
+  @sym{(setf gtk:font-chooser-font)} function, as the font chooser widget may
+  normalize the font names and thus return a string with a different structure.
+  For example, \"Helvetica Italic Bold 12\" could be normalized to
   \"Helvetica Bold Italic 12\".
 
-  Use the function @fun{pango:font-description-equal} if you want to compare
+  Use the @fun{pango:font-description-equal} function if you want to compare
   two font descriptions.
   @see-class{gtk:font-chooser}
   @see-function{pango:font-description-equal}")
 
-;;; --- font-chooser-font-desc ---------------------------------------------
+;;; --- font-chooser-font-desc -------------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "font-desc"
-                                               'font-chooser) t)
+(setf (documentation (liber:slot-documentation "font-desc" 'font-chooser) t)
  "The @code{font-desc} property of type @class{pango:font-description}
   (Read / Write) @br{}
   The Pango font description.")
@@ -257,31 +251,29 @@
 (setf (liber:alias-for-function 'font-chooser-font-desc)
       "Accessor"
       (documentation 'font-chooser-font-desc 'function)
- "@version{#2021-1-20}
+ "@version{#2023-3-5}
   @syntax[]{(gtk:font-chooser-font-desc object) => font-desc}
   @syntax[]{(setf (gtk:font-chooser-font-desc object) font-desc)}
-  @argument[object]{a @class{gtk:font-chooser} object}
+  @argument[object]{a @class{gtk:font-chooser} widget}
   @argument[font-desc]{a @class{pango:font-description} instance}
   @begin{short}
     Accessor of the @slot[gtk:font-chooser]{font-desc} slot of the
     @class{gtk:font-chooser} class.
   @end{short}
+  The @sym{gtk:font-chooser-font-desc} function gets the Pango font description
+  for the currently selected font. The @sym{(setf gtk:font-chooser-font-desc)}
+  function sets the currently selected font.
 
-  The slot access function @sym{gtk:font-chooser-font-desc} gets the Pango
-  font description for the currently selected font. The slot access function
-  @sym{(setf gtk:font-chooser-font-desc)} sets the currently selected font.
-
-  Use the function @fun{pango:font-description-equal} if you want to compare
+  Use the @fun{pango:font-description-equal} function if you want to compare
   two Pango font descriptions.
   @see-class{gtk:font-chooser}
   @see-class{pango:font-description}
   @see-function{pango:font-description-equal}")
 
-;;; --- font-chooser-font-features -----------------------------------------
+;;; --- font-chooser-font-features ---------------------------------------------
 
 #+(and gtk-3-22 liber-documentation)
-(setf (documentation (liber:slot-documentation "font-features"
-                                               'font-chooser) t)
+(setf (documentation (liber:slot-documentation "font-features" 'font-chooser) t)
  "The @code{font-features} property of type @code{:string} (Read) @br{}
   The selected font features, in a format that is compatible with CSS and with
   Pango attributes. Since 3.22 @br{}
@@ -291,28 +283,26 @@
 (setf (liber:alias-for-function 'font-chooser-font-features)
       "Accessor"
       (documentation 'font-chooser-font-features 'function)
- "@version{#2021-1-20}
+ "@version{#2023-3-5}
   @syntax[]{(gtk:font-chooser-font-features object) => features}
-  @argument[object]{a @class{gtk:font-chooser} object}
+  @argument[object]{a @class{gtk:font-chooser} widget}
   @argument[features]{a string with the currently selected font features}
   @begin{short}
     Accessor of the @slot[gtk:font-chooser]{font-features} slot of the
     @class{gtk:font-chooser} class.
   @end{short}
-
-  The slot access function @sym{gtk:font-chooser-font-features} gets the
-  currently selected font features, in a format that is compatible with CSS
-  and with Pango attributes. The function
-  @sym{(setf gtk:font-chooser-font-features)} sets the font features.
+  The @sym{gtk:font-chooser-font-features} function gets the currently selected
+  font features, in a format that is compatible with CSS and with Pango
+  attributes. The @sym{(setf gtk:font-chooser-font-features)} function sets the
+  font features.
 
   Since 3.22
   @see-class{gtk:font-chooser}")
 
-;;; --- font-chooser-language ----------------------------------------------
+;;; --- font-chooser-language --------------------------------------------------
 
 #+(and gtk-3-22 liber-documentation)
-(setf (documentation (liber:slot-documentation "language"
-                                               'font-chooser) t)
+(setf (documentation (liber:slot-documentation "language" 'font-chooser) t)
  "The @code{language} property of type @code{:string} (Read / Write) @br{}
   The language for which the @code{font-features} property were selected, in a
   format that is compatible with CSS and with Pango attributes. Since 3.22")
@@ -321,20 +311,18 @@
 (setf (liber:alias-for-function 'font-chooser-language)
       "Accessor"
       (documentation 'font-chooser-language 'function)
- "@version{#2021-1-20}
+ "@version{#2023-3-5}
   @syntax[]{(gtk:font-chooser-language object) => language}
   @syntax[]{(setf (gtk:font-chooser-language object) language)}
-  @argument[object]{a @class{gtk:font-chooser} object}
+  @argument[object]{a @class{gtk:font-chooser} widget}
   @argument[language]{a RFC-3066 format string representing the language}
   @begin{short}
     Accessor of the @slot[gtk:font-chooser]{language} slot of the
     @class{gtk:font-chooser} class.
   @end{short}
-
-  The slot access function @sym{gtk:font-chooser-language} gets the language
-  that is used for font features. The slot access function
-  @sym{(setf gtk:font-chooser-language)} sets the language. See the
-  function @fun{pango:language-to-string}.
+  The @sym{gtk:font-chooser-language} function gets the language that is used
+  for font features. The @sym{(setf gtk:font-chooser-language)} function sets
+  the language. See the @fun{pango:language-to-string} function.
 
   Since 3.22
   @begin[Example]{dictionary}
@@ -345,11 +333,10 @@
   @see-class{gtk:font-chooser}
   @see-function{pango:language-to-string}")
 
-;;; --- font-chooser-level -------------------------------------------------
+;;; --- font-chooser-level -----------------------------------------------------
 
 #+(and gtk-3-22 liber-documentation)
-(setf (documentation (liber:slot-documentation "level"
-                                               'font-chooser) t)
+(setf (documentation (liber:slot-documentation "level" 'font-chooser) t)
  "The @code{level} property of type @symbol{gtk:font-chooser-level}
   (Read / Write) @br{}
   The level of granularity to offer for selecting fonts. Since 3.22 @br{}
@@ -359,31 +346,28 @@
 (setf (liber:alias-for-function 'font-chooser-level)
       "Accessor"
       (documentation 'font-chooser-level 'function)
- "@version{#2021-1-20}
+ "@version{#2023-3-5}
   @syntax[]{(gtk:font-chooser-level object) => level}
   @syntax[]{(setf (gtk:font-chooser-level object) level)}
-  @argument[object]{a @class{gtk:font-chooser} object}
-  @argument[level]{the desired level of granularity of type
-    @symbol{gtk:font-chooser-level}}
+  @argument[object]{a @class{gtk:font-chooser} widget}
+  @argument[level]{a @symbol{gtk:font-chooser-level} value with the desired
+    level of granularity}
   @begin{short}
     Accessor of the @slot[gtk:font-chooser]{level} slot of the
     @class{gtk:font-chooser} class.
   @end{short}
-
-  The slot access function @sym{gtk:font-chooser-level} returns the current
-  level of granularity for selecting fonts. The slot access function
-  @sym{(setf gtk:font-chooser-level)} sets the desired level of granularity for
-  selecting fonts.
+  The @sym{gtk:font-chooser-level} function returns the current level of
+  granularity for selecting fonts. The @sym{(setf gtk:font-chooser-level)}
+  function sets the desired level of granularity for selecting fonts.
 
   Since 3.22
   @see-class{gtk:font-chooser}
   @see-symbol{gtk:font-chooser-level}")
 
-;;; --- font-chooser-preview-text ------------------------------------------
+;;; --- font-chooser-preview-text ----------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "preview-text"
-                                               'font-chooser) t)
+(setf (documentation (liber:slot-documentation "preview-text" 'font-chooser) t)
  "The @code{preview-text} property of type @code{:string} (Read / Write) @br{}
   The string with which to preview the font. @br{}
   Default value: @code{nil}")
@@ -392,21 +376,19 @@
 (setf (liber:alias-for-function 'font-chooser-preview-text)
       "Accessor"
       (documentation 'font-chooser-preview-text 'function)
- "@version{#2021-12-9}
+ "@version{#2023-3-5}
   @syntax[]{(gtk:font-chooser-preview-text object) => text}
   @syntax[]{(setf (gtk:font-chooser-preview-text object) text)}
-  @argument[object]{a @class{gtk:font-chooser} object}
+  @argument[object]{a @class{gtk:font-chooser} widget}
   @argument[text]{a string with the text to display in the preview area}
   @begin{short}
     Accessor of the @slot[gtk:font-chooser]{preview-text} slot of the
     @class{gtk:font-chooser} class.
   @end{short}
-
-  The @sym{gtk:font-chooser-preview-text} slot access function gets the text
-  displayed in the preview area. The @sym{(setf gtk:font-chooser-preview-text)}
-  slot access function sets the text displayed in the preview area. The text is
-  used to show how the selected font looks. See the
-  @fun{pango:language-sample-string} function.
+  The @sym{gtk:font-chooser-preview-text} function gets the text displayed in
+  the preview area. The @sym{(setf gtk:font-chooser-preview-text)} function sets
+  the text displayed in the preview area. The text is used to show how the
+  selected font looks. See the @fun{pango:language-sample-string} function.
   @see-class{gtk:font-chooser}
   @see-function{pango:language-sample-string}")
 
@@ -424,17 +406,16 @@
 (setf (liber:alias-for-function 'font-chooser-show-preview-entry)
       "Accessor"
       (documentation 'font-chooser-show-preview-entry 'function)
- "@version{#2020-6-5}
+ "@version{#2023-3-5}
   @syntax[]{(gtk:font-chooser-show-preview-entry object) => show-entry}
   @syntax[]{(setf (gtk:font-chooser-show-preview-entry object) show-entry)}
-  @argument[object]{a @class{gtk:font-chooser} object}
+  @argument[object]{a @class{gtk:font-chooser} widget}
   @argument[show-entry]{a boolean whether to show the editable preview entry or
     not}
   @begin{short}
     Accessor of the @slot[gtk:font-chooser]{show-preview-entry} slot of the
     @class{gtk:font-chooser} class.
   @end{short}
-
   Shows or hides the editable preview entry.
   @see-class{gtk:font-chooser}")
 
@@ -443,12 +424,12 @@
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_font_chooser_get_font_family" font-chooser-font-family)
-    (g:object pango-font-family)
+    (g:object pango:font-family)
  #+liber-documentation
- "@version{#2021-2-11}
-  @argument[fontchooser]{a @class{gtk:font-chooser} object}
+ "@version{#2023-3-5}
+  @argument[fontchooser]{a @class{gtk:font-chooser} widget}
   @begin{return}
-    A @class{pango-font-family} object representing the selected font family,
+    A @class{pango:font-family} object representing the selected font family,
     or @code{nil}.
   @end{return}
   @begin{short}
@@ -461,13 +442,13 @@
 (defvar fontbutton (make-instance 'gtk:font-button :font \"Serif Bold 10\"))
 => FONTBUTTON
 (gtk:font-chooser-font-family fontbutton)
-=> #<PANGO-FONT-FAMILY {1002728D63@}>
-(pango-font-family-name *)
+=> #<PANGO:FONT-FAMILY {1002728D63@}>
+(pango:font-family-name *)
 => \"Sans\"
     @end{pre}
   @end{dictionary}
   @see-class{gtk:font-chooser}
-  @see-class{pango-font-family}"
+  @see-class{pango:font-family}"
   (fontchooser (g:object font-chooser)))
 
 (export 'font-chooser-font-family)
@@ -477,12 +458,12 @@
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_font_chooser_get_font_face" font-chooser-font-face)
-    (g:object pango-font-face)
+    (g:object pango:font-face)
  #+liber-documentation
- "@version{#2021-2-11}
-  @argument[fontchooser]{a @class{gtk:font-chooser} object}
+ "@version{#2023-3-5}
+  @argument[fontchooser]{a @class{gtk:font-chooser} widget}
   @begin{return}
-    A @class{pango-font-face} object representing the selected font group
+    A @class{pango:font-face} object representing the selected font group
     details, or @code{nil}.
   @end{return}
   @begin{short}
@@ -491,7 +472,7 @@
   @end{short}
   If the selected font is not installed, returns @code{nil}.
   @see-class{gtk:font-chooser}
-  @see-class{pango-font-face}"
+  @see-class{pango:font-face}"
   (fontchooser (g:object font-chooser)))
 
 (export 'font-chooser-font-face)
@@ -502,8 +483,8 @@
 
 (defcfun ("gtk_font_chooser_get_font_size" font-chooser-font-size) :int
  #+liber-documentation
- "@version{#2021-2-11}
-  @argument[fontchooser]{a @class{gtk:font-chooser} object}
+ "@version{#2023-3-5}
+  @argument[fontchooser]{a @class{gtk:font-chooser} widget}
   @begin{return}
     An integer representing the selected font size in Pango units,
     or -1 if no font size is selected.
@@ -521,8 +502,8 @@
 ;;; ----------------------------------------------------------------------------
 
 (defcallback font-filter-func :boolean
-    ((family (g:object pango-font-family))
-     (face (g:object pango-font-face))
+    ((family (g:object pango:font-family))
+     (face (g:object pango:font-face))
      (data :pointer))
   (funcall (glib:get-stable-pointer-value data) family face))
 
@@ -530,23 +511,23 @@
 (setf (liber:alias-for-symbol 'font-filter-func)
       "Callback"
       (liber:symbol-documentation 'font-filter-func)
- "@version{#2021-1-31}
+ "@version{#2023-3-5}
   @begin{short}
     The callback function that is used for deciding what fonts get shown in a
-    @class{gtk:font-chooser} object.
+    @class{gtk:font-chooser} widget.
   @end{short}
-  See the function @fun{gtk:font-chooser-set-filter-func}.
+  See the @fun{gtk:font-chooser-set-filter-func} function.
   @begin{pre}
- lambda (family face)
+lambda (family face)
   @end{pre}
   @begin[code]{table}
-    @entry[family]{A @class{pango-font-family} object.}
-    @entry[face]{A @class{pango-font-face} object belonging to @arg{family}.}
+    @entry[family]{A @class{pango:font-family} object.}
+    @entry[face]{A @class{pango:font-face} object belonging to @arg{family}.}
     @entry[Return]{@em{True} if the font should be displayed.}
   @end{table}
   @see-class{gtk:font-chooser}
-  @see-class{pango-font-family}
-  @see-class{pango-font-face}
+  @see-class{pango:font-family}
+  @see-class{pango:font-face}
   @see-function{gtk:font-chooser-set-filter-func}")
 
 (export 'font-filter-func)
@@ -559,14 +540,15 @@
     :void
   (fontchooser (g:object font-chooser))
   (filter :pointer)
-  (user-data :pointer)
+  (data :pointer)
   (destroy :pointer))
 
 (defun font-chooser-set-filter-func (fontchooser func)
  #+liber-documentation
- "@version{#2021-2-11}
-  @argument[fontchooser]{a @class{gtk:font-chooser} object}
-  @argument[filter]{a @symbol{gtk:font-filter-func} callback, or @code{nil}}
+ "@version{#2023-3-5}
+  @argument[fontchooser]{a @class{gtk:font-chooser} widget}
+  @argument[filter]{a @symbol{gtk:font-filter-func} callback function, or
+    @code{nil}}
   @begin{short}
     Adds a filter function that decides which fonts to display in the font
     chooser.
@@ -578,7 +560,7 @@
 ;; Define the callback function
 (defun font-filter (family face)
   (declare (ignore face))
-  (member (pango-font-family-name family)
+  (member (pango:font-family-name family)
           '(\"Sans\" \"Serif\")
           :test #'equal))
 ;; Set the function FONT-FILTER as the callback function
@@ -611,29 +593,29 @@
 #+gtk-3-18
 (defun (setf font-chooser-font-map) (fontmap fontchooser)
   (cffi:foreign-funcall "gtk_font_chooser_set_font_map"
-                   (g:object font-chooser) fontchooser
-                   (g:object pango-font-map) fontmap
-                   :void)
+                        (g:object font-chooser) fontchooser
+                        (g:object pango:font-map) fontmap
+                        :void)
   fontmap)
 
 #+gtk-3-18
 (defcfun ("gtk_font_chooser_get_font_map" font-chooser-font-map)
-    (g:object pango-font-map)
+    (g:object pango:font-map)
  #+liber-documentation
- "@version{#2021-1-20}
+ "@version{#2023-3-5}
   @syntax[]{(gtk:font-chooser-font-map fontchooser) => fontmap}
   @syntax[]{(setf (gtk:font-chooser-font-map fontchooser) fontmap)}
   @argument[fontchooser]{a @class{gtk:font-chooser} widget}
-  @argument[fontmap]{a @class{pango-font-map} object, or @code{nil}}
+  @argument[fontmap]{a @class{pango:font-map} object, or @code{nil}}
   @begin{short}
     Accessor of the Pango font map of the font chooser widget.
   @end{short}
-
-  The function @sym{gtk:font-chooser-font-map} gets the custom font map of the
-  font chooser widget, or @code{nil} if it does not have one. The function
-  @sym{(setf gtk:font-chooser-font-map)} sets a custom font map to use for the
-  font chooser widget. A custom font map can be used to present application
-  specific fonts instead of or in addition to the normal system fonts.
+  The @sym{gtk:font-chooser-font-map} function gets the custom font map of the
+  font chooser widget, or @code{nil} if it does not have one. The
+  @sym{(setf gtk:font-chooser-font-map)} function sets a custom font map to use
+  for the font chooser widget. A custom font map can be used to present
+  application specific fonts instead of or in addition to the normal system
+  fonts.
 
   Since 3.18
   @begin[Example]{dictionary}
@@ -652,18 +634,18 @@ pango_fc_font_map_set_config (PANGO_FC_FONT_MAP (fontmap), config);
 
 gtk_font_chooser_set_font_map (font_chooser, fontmap);
     @end{pre}
-    Note that other GTK+ widgets will only be able to use the application
+    Note that other GTK widgets will only be able to use the application
     specific font if it is present in the font map they use. The following
     code updates the font map for a @sym{gtk:label} widget with @arg{fontmap}.
     @begin{pre}
-(setf (pango-context-font-map (gtk:widget-pango-context label)) fontmap)
+(setf (pango:context-font-map (gtk:widget-pango-context label)) fontmap)
     @end{pre}
   @end{dictionary}
   @see-class{gtk:font-chooser}
-  @see-class{pango-font-map}"
+  @see-class{pango:font-map}"
   (fontchooser (g:object font-chooser)))
 
 #+gtk-3-18
 (export 'font-chooser-font-map)
 
-;;; --- End of file gtk.font-chooser.lisp --------------------------------------
+;;; --- End of file gtk3.font-chooser.lisp -------------------------------------
