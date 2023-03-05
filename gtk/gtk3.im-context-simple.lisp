@@ -1,7 +1,7 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.im-context-simple.lisp
+;;; gtk3.im-context-simple.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
+;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
@@ -72,19 +72,20 @@
 
 #+liber-documentation
 (setf (documentation 'im-context-simple 'type)
- "@version{#2020-9-15}
+ "@version{#2023-2-28}
   @begin{short}
-    @sym{gtk:im-context-simple} is a simple input method context supporting
-    table-based input methods.
+    The @sym{gtk:im-context-simple} object is a simple input method context 
+    supporting table-based input methods.
   @end{short}
   It has a built-in table of compose sequences that is derived from the X11
   Compose files.
 
-  @sym{gtk:im-context-simple} reads additional compose sequences from the first
-  of the following files that is found: @code{~/.config/gtk-3.0/Compose},
-  @code{~/.XCompose}, @code{/usr/share/X11/locale/$locale/Compose}, for locales
-  that have a nontrivial Compose file. The syntax of these files is described
-  in the Compose(5) manual page.
+  The @sym{gtk:im-context-simple} object reads additional compose sequences 
+  from the first of the following files that is found: 
+  @file{~/.config/gtk-3.0/Compose}, @file{~/.XCompose}, 
+  @file{/usr/share/X11/locale/$locale/Compose}, for locales that have a 
+  nontrivial Compose file. The syntax of these files is described in the 
+  Compose(5) manual page.
 
   @subheading{Unicode characters}
   The @sym{gtk:im-context-simple} class also supports numeric entry of Unicode

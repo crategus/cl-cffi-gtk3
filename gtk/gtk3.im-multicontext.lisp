@@ -1,8 +1,8 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.im-multicontext.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK+ library.
+;;; The documentation of this file is taken from the GTK 3 Reference Manual
+;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
@@ -63,10 +63,11 @@
 
 #+liber-documentation
 (setf (documentation 'im-multicontext 'type)
- "@version{#2020-9-15}
+ "@version{#2023-2-28}
   @begin{short}
     An input method context supporting multiple, loadable input methods.
-  @end{short}")
+  @end{short}
+  @see-class{gtk:im-context}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_im_multicontext_new ()
