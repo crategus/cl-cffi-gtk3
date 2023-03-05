@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.label.lisp
+;;; gtk3.label.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -90,36 +90,36 @@
 ;;;
 ;;; Properties
 ;;;
-;;;                gdouble  angle                Read / Write
-;;;         PangoAttrList*  attributes           Read / Write
-;;;                   gint  cursor-position      Read
-;;;     PangoEllipsizeMode  ellipsize            Read / Write
-;;;       GtkJustification  justify              Read / Write
-;;;                gchar *  label                Read / Write
-;;;                   gint  lines                Read / Write
-;;;                   gint  max-width-chars      Read / Write
-;;;                  guint  mnemonic-keyval      Read
-;;;            GtkWidget *  mnemonic-widget      Read / Write
-;;;                gchar *  pattern                     Write
-;;;               gboolean  selectable           Read / Write
-;;;                   gint  selection-bound      Read
-;;;               gboolean  single-line-mode     Read / Write
-;;;               gboolean  track-visited-links  Read / Write
-;;;               gboolean  use-markup           Read / Write
-;;;               gboolean  use-underline        Read / Write
-;;;                   gint  width-chars          Read / Write
-;;;               gboolean  wrap                 Read / Write
-;;;          PangoWrapMode  wrap-mode            Read / Write
-;;;                 gfloat  xalign               Read / Write
-;;;                 gfloat  yalign               Read / Write
+;;;     angle
+;;;     attributes
+;;;     cursor-position
+;;;     ellipsize
+;;;     justify
+;;;     label
+;;;     lines
+;;;     max-width-chars
+;;;     mnemonic-keyval
+;;;     mnemonic-widget
+;;;     pattern
+;;;     selectable
+;;;     selection-bound
+;;;     single-line-mode
+;;;     track-visited-links
+;;;     use-markup
+;;;     use-underline
+;;;     width-chars
+;;;     wrap
+;;;     wrap-mode
+;;;     xalign
+;;;     yalign
 ;;;
 ;;; Signals
 ;;;
-;;;         void  activate-current-link  Action
-;;;     gboolean  activate-link          Run Last
-;;;         void  copy-clipboard         Action
-;;;         void  move-cursor            Action
-;;;         void  populate-popup         Run Last
+;;;     activate-current-link
+;;;     activate-link
+;;;     copy-clipboard
+;;;     move-cursor
+;;;     populate-popup
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -216,7 +216,7 @@
 
 #+liber-documentation
 (setf (documentation 'label 'type)
- "@version{#2021-10-31}
+ "@version{2023-3-5}
   @begin{short}
     The @sym{gtk:label} widget displays a small amount of text.
   @end{short}
@@ -279,20 +279,20 @@
   @code{g_markup_escape_text()} or @code{g_markup_printf_escaped()} functions.
 
   Markup strings are just a convenient way to set the @class{pango:attr-list}
-  instance on a label. The @fun{gtk:label-attributes} slot access function may
-  be a simpler way to set attributes in some cases. Be careful though,
-  a @class{pango:attr-list} instance tends to cause internationalization
-  problems, unless you are applying attributes to the entire string, i.e. unless
-  you set the range of each attribute to @code{[0, G_MAXINT]}). The reason is
-  that specifying the @code{start_index} and @code{end_index} for a
-  @class{pango:attribute} structure requires knowledge of the exact string being
-  displayed, so translations will cause problems.
+  instance on a label. The @fun{gtk:label-attributes} function may be a simpler
+  way to set attributes in some cases. Be careful though, a
+  @class{pango:attr-list} instance tends to cause internationalization problems,
+  unless you are applying attributes to the entire string, i.e. unless you set
+  the range of each attribute to @code{[0, G_MAXINT]}). The reason is that
+  specifying the @code{start_index} and @code{end_index} for a
+  @class{pango:attribute} structure requires knowledge of the exact string
+  being displayed, so translations will cause problems.
 
   @subheading{Selectable labels}
-  Labels can be made selectable with the @fun{gtk:label-selectable} slot access
-  function. Selectable labels allow the user to copy the label contents to the
-  clipboard. Only labels that contain useful-to-copy information
-  - such as error messages - should be made selectable.
+  Labels can be made selectable with the @fun{gtk:label-selectable} function.
+  Selectable labels allow the user to copy the label contents to the clipboard.
+  Only labels that contain useful-to-copy information - such as error messages -
+  should be made selectable.
 
   @subheading{Text layout}
   A label can contain any number of paragraphs, but will have performance
@@ -302,9 +302,9 @@
   Labels can automatically wrap text if you call the @fun{gtk:label-line-wrap}
   function.
 
-  The @fun{gtk:label-justify} slot access function sets how the lines in a label
-  align with one another. If you want to set how the label as a whole aligns in
-  its available space, see the @slot[gtk:widget]{halign} and
+  The @fun{gtk:label-justify} function sets how the lines in a label align with
+  one another. If you want to set how the label as a whole aligns in its
+  available space, see the @slot[gtk:widget]{halign} and
   @slot[gtk:widget]{valign} properties.
 
   The @slot[gtk:label]{width-chars} and @slot[gtk:label]{max-width-chars}
@@ -344,12 +344,12 @@
 
     @b{Example:} A UI definition fragment specifying Pango attributes
   @begin{pre}
- <object class=\"GtkLabel\">
-  <attributes>
-     <attribute name=\"weight\" value=\"PANGO_WEIGHT_BOLD\"/>
-     <attribute name=\"background\" value=\"red\" start=\"5\" end=\"10\"/>\"
-   </attributes>
- </object>
+<object class=\"GtkLabel\">
+ <attributes>
+    <attribute name=\"weight\" value=\"PANGO_WEIGHT_BOLD\"/>
+    <attribute name=\"background\" value=\"red\" start=\"5\" end=\"10\"/>\"
+  </attributes>
+</object>
     @end{pre}
     The @code{start} and @code{end} attributes specify the range of characters
     to which the Pango attribute applies. If @code{start} and @code{end} are not
@@ -359,11 +359,11 @@
   @end{dictionary}
   @begin[CSS nodes]{dictionary}
     @begin{pre}
- label
- ├── [selection]
- ├── [link]
- ┊
- ╰── [link]
+label
+├── [selection]
+├── [link]
+┊
+╰── [link]
     @end{pre}
     The @sym{gtk:label} implementation has a single CSS node with the name
     @code{label}. A wide variety of style classes may be applied to labels, such
@@ -379,7 +379,7 @@
   @begin[Signal Details]{dictionary}
     @subheading{The \"activate-current-link\" signal}
       @begin{pre}
- lambda (label)    :action
+lambda (label)    :action
       @end{pre}
       A keybinding signal which gets emitted when the user activates a link in
       the label. Applications may also emit the signal with the
@@ -392,7 +392,7 @@
       @end{table}
     @subheading{The \"activate-link\" signal}
       @begin{pre}
- lambda (label uri)    :run-last
+lambda (label uri)    :run-last
       @end{pre}
       The signal which gets emitted to activate a URI. Applications may connect
       to it to override the default behaviour, which is to call the
@@ -405,7 +405,7 @@
       @end{table}
     @subheading{The \"copy-clipboard\" signal}
       @begin{pre}
- lambda (label)    :action
+lambda (label)    :action
       @end{pre}
       The signal is a keybinding signal which gets emitted to copy the selection
       to the clipboard. The default binding for this signal is the @kbd{Ctrl-c}
@@ -415,7 +415,7 @@
       @end{table}
     @subheading{The \"move-cursor\" signal}
       @begin{pre}
- lambda (label step count extend)    :action
+lambda (label step count extend)    :action
       @end{pre}
       The signal is a keybinding signal which gets emitted when the user
       initiates a cursor movement. If the cursor is not visible in the label,
@@ -424,7 +424,7 @@
       if they need to control the cursor programmatically. The default bindings
       for this signal come in two variants, the variant with the @kbd{Shift}
       modifier extends the selection, the variant without the @kbd{Shift}
-      modifer does not. There are too many key combinations to list them all
+      modifier does not. There are too many key combinations to list them all
       here.
       @begin{itemize}
         @item{Arrow keys move by individual characters/lines.}
@@ -440,7 +440,7 @@
       @end{table}
     @subheading{The \"populate-popup\" signal}
       @begin{pre}
- lambda (label menu)    :run-last
+lambda (label menu)    :run-last
       @end{pre}
       The signal gets emitted before showing the context menu of the label. Note
       that only selectable labels have context menus. If you need to add items
@@ -452,6 +452,8 @@
         @entry[menu]{The @class{gtk:menu} widget that is being populated.}
       @end{table}
   @end{dictionary}
+  @see-constructor{gtk:label-new}
+  @see-constructor{gtk:label-new-with-mnemonic}
   @see-slot{gtk:label-angle}
   @see-slot{gtk:label-attributes}
   @see-slot{gtk:label-cursor-position}
@@ -479,7 +481,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- label-angle --------------------------------------------------------
+;;; --- label-angle ------------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "angle" 'label) t)
@@ -495,7 +497,7 @@
 (setf (liber:alias-for-function 'label-angle)
       "Accessor"
       (documentation 'label-angle 'function)
- "@version{#2021-10-31}
+ "@version{2023-3-5}
   @syntax[]{(gtk:label-angle object) => angle}
   @syntax[]{(setf (gtk:label-angle object) angle)}
   @argument[object]{a @class{gtk:label} widget}
@@ -504,17 +506,16 @@
   @begin{short}
     Accessor of the @slot[gtk:label]{angle} slot of the @class{gtk:label} class.
   @end{short}
-
-  The @sym{gtk:label-angle} slot access function sets the angle of rotation for
-  the label. The @sym{(setf gtk:label-angle)} slot access function sets the
-  angle of rotation for the label.
+  The @sym{gtk:label-angle} function sets the angle of rotation for the label.
+  The @sym{(setf gtk:label-angle)} function sets the angle of rotation for the
+  label.
 
   An angle of 90 degrees reads from from bottom to top, an angle of 270 degrees,
   from top to bottom. The angle setting for the label is ignored if the label is
   selectable, wrapped, or ellipsized.
   @see-class{gtk:label}")
 
-;;; --- label-attributes ---------------------------------------------------
+;;; --- label-attributes -------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "attributes" 'label) t)
@@ -526,7 +527,7 @@
 (setf (liber:alias-for-function 'label-attributes)
       "Accessor"
       (documentation 'label-attributes 'function)
- "@version{#2021-10-31}
+ "@version{2023-3-5}
   @syntax[]{(gtk:label-attributes object) => attrs}
   @syntax[]{(setf (gtk:label-attributes object) attrs)}
   @argument[object]{a @class{gtk:label} widget}
@@ -535,11 +536,9 @@
     Accessor of the @slot[gtk:label]{attributes} slot of the @class{gtk:label}
     class.
   @end{short}
-
-  The @sym{gtk:label-attributes} slot access function gets the attribute list
-  that was set on the label, if any. The @sym{(setf gtk:label-attributes)} slot
-  access function sets a attribute list. The attributes in the list are applied
-  to the label text.
+  The @sym{gtk:label-attributes} function gets the attribute list that was set
+  on the label, if any. The @sym{(setf gtk:label-attributes)} function sets a
+  attribute list. The attributes in the list are applied to the label text.
 
   This function does not reflect attributes that come from the labels markup,
   see the @fun{gtk:label-set-markup} function. If you want to get the
@@ -562,7 +561,7 @@
   @see-function{gtk:label-use-markup}
   @see-function{gtk:label-use-underline}")
 
-;;; --- label-cursor-position ----------------------------------------------
+;;; --- label-cursor-position --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "cursor-position" 'label) t)
@@ -575,7 +574,7 @@
 (setf (liber:alias-for-function 'label-cursor-position)
       "Accessor"
       (documentation 'label-cursor-position 'function)
- "@version{#2021-10-31}
+ "@version{2023-3-5}
   @syntax[]{(gtk:label-cursor-position object) => position}
   @syntax[]{(setf (gtk:label-cursor-position object) position)}
   @argument[object]{a @class{gtk:label} widget}
@@ -584,11 +583,10 @@
     Accessor of the @slot[gtk:label]{cursor-position} slot of the
     @class{gtk:label} class.
   @end{short}
-
   The current position of the insertion cursor in chars.
   @see-class{gtk:label}")
 
-;;; --- label-ellipsize ----------------------------------------------------
+;;; --- label-ellipsize --------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "ellipsize" 'label) t)
@@ -609,7 +607,7 @@
 (setf (liber:alias-for-function 'label-ellipsize)
       "Accessor"
       (documentation 'label-ellipsize 'function)
- "@version{#2021-10-31}
+ "@version{2023-3-5}
   @syntax[]{(gtk:label-ellipsize object) => mode}
   @syntax[]{(setf (gtk:label-ellipsize object) mode)}
   @argument[object]{a @class{gtk:label} widget}
@@ -618,16 +616,14 @@
     Accessor of the @slot[gtk:label]{ellipsize} slot of the @class{gtk:label}
     class.
   @end{short}
-
-  The @sym{gtk:label-ellipsize} slot access function returns the ellipsizing
-  position of type @symbol{pango:ellipsize-mode} of the label. The
-  @sym{(setf gtk:label-ellipsize)} slot access function sets the mode used to
+  The @sym{gtk:label-ellipsize} function returns the ellipsizing position of the
+  label. The @sym{(setf gtk:label-ellipsize)} function sets the mode used to
   ellipsize, add an ellipsis: \"...\", to the text if there is not enough space
   to render the entire string.
   @see-class{gtk:label}
   @see-symbol{pango:ellipsize-mode}")
 
-;;; --- label-justify ------------------------------------------------------
+;;; --- label-justify ----------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "justify" 'label) t)
@@ -642,7 +638,7 @@
 (setf (liber:alias-for-function 'label-justify)
       "Accessor"
       (documentation 'label-justify 'function)
- "@version{#2021-10-31}
+ "@version{2023-3-5}
   @syntax[]{(gtk:label-justify object) => justify}
   @syntax[]{(setf (gtk:label-justify object) justify)}
   @argument[object]{a @class{gtk:label} widget}
@@ -651,9 +647,9 @@
     Accessor of the @slot[gtk:label]{justify} slot of the @class{gtk:label}
     class.
   @end{short}
-  The @sym{gtk:label-justify} slot access function returns the justification of
-  the label. The @sym{(setf gtk:label-justify)} slot access function sets the
-  alignment of the lines in the text of the label relative to each other.
+  The @sym{gtk:label-justify} function returns the justification of the label.
+  The @sym{(setf gtk:label-justify)} function sets the alignment of the lines
+  in the text of the label relative to each other.
 
   The @code{:left} value is the default value when the widget is first created
   with the @fun{gtk:label-new} function. If you instead want to set the
@@ -665,7 +661,7 @@
   @see-function{gtk:label-new}
   @see-function{gtk:widget-halign}")
 
-;;; --- label-label --------------------------------------------------------
+;;; --- label-label ------------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "label" 'label) t)
@@ -677,7 +673,7 @@
 (setf (liber:alias-for-function 'label-label)
       "Accessor"
       (documentation 'label-label 'function)
- "@version{#2021-10-31}
+ "@version{2023-3-5}
   @syntax[]{(gtk:label-label object) => text}
   @syntax[]{(setf (gtk:label-label object) text)}
   @argument[object]{a @class{gtk:label} widget}
@@ -686,21 +682,20 @@
     Accessor of the @slot[gtk:label]{label} slot of the @class{gtk:label}
     class.
   @end{short}
+  The @sym{gtk:label-label} function returns the text of the label widget
+  including any embedded underlines indicating mnemonics and Pango markup. See
+  the @fun{gtk:label-text} function.
 
-  The @sym{gtk:label-label} slot access function returns the text of the label
-  widget including any embedded underlines indicating mnemonics and Pango
-  markup. See the @fun{gtk:label-text} function.
-
-  The @sym{(setf gtk:label-label)} slot access function sets the text of the
-  label. The label is interpreted as including embedded underlines and/or Pango
-  markup depending on the values of the @slot[gtk:label]{use-underline} and
+  The @sym{(setf gtk:label-label)} function sets the text of the label. The
+  label is interpreted as including embedded underlines and/or Pango markup
+  depending on the values of the @slot[gtk:label]{use-underline} and
   @slot[gtk:label]{use-markup} properties.
   @see-class{gtk:label}
   @see-function{gtk:label-text}
   @see-function{gtk:label-use-markup}
   @see-function{gtk:label-use-underline}")
 
-;;; --- label-lines --------------------------------------------------------
+;;; --- label-lines ------------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "lines" 'label) t)
@@ -715,7 +710,7 @@
 (setf (liber:alias-for-function 'label-lines)
       "Accessor"
       (documentation 'label-lines 'function)
- "@version{#2021-10-31}
+ "@version{2023-3-5}
   @syntax[]{(gtk:label-lines object) => lines}
   @syntax[]{(setf (gtk:label-lines object) lines)}
   @argument[object]{a @class{gtk:label} widget}
@@ -724,16 +719,14 @@
     Accessor of the @slot[gtk:label]{lines} slot of the @class{gtk:label}
     class.
   @end{short}
-
-  The @sym{gtk:label-lines} slot access function gets the number of lines to
-  which an ellipsized, wrapping label should be limited. The
-  @sym{(setf gtk:label-lines)} slot access function sets the number of lines to
-  which an ellipsized, wrapping label should be limited. This has no effect if
-  the label is not wrapping or ellipsized. Set this to -1 if you do not want to
-  limit the number of lines.
+  The @sym{gtk:label-lines} function gets the number of lines to which an
+  ellipsized, wrapping label should be limited. The @sym{(setf gtk:label-lines)}
+  function sets the number of lines to which an ellipsized, wrapping label
+  should be limited. This has no effect if the label is not wrapping or
+  ellipsized. Set this to -1 if you do not want to limit the number of lines.
   @see-class{gtk:label}")
 
-;;; --- label-max-width-chars ----------------------------------------------
+;;; --- label-max-width-chars --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "max-width-chars" 'label) t)
@@ -750,7 +743,7 @@
 (setf (liber:alias-for-function 'label-max-width-chars)
       "Accessor"
       (documentation 'label-max-width-chars 'function)
- "@version{#2021-10-31}
+ "@version{2023-3-5}
   @syntax[]{(gtk:label-max-width-chars object) => n-chars}
   @syntax[]{(setf (gtk:label-max-width-chars object) n-chars)}
   @argument[object]{a @class{gtk:label} widget}
@@ -759,14 +752,12 @@
     Accessor of the @slot[gtk:label]{max-width-chars} slot of the
     @class{gtk:label} class.
   @end{short}
-
-  The @sym{gtk:label-max-width-chars} slot access function returns the maximum
-  width of the label in characters. The @sym{(setf gtk:label-max-width-chars)}
-  slot access function sets the desired maximum width in characters of the label
-  to @arg{n-chars}.
+  The @sym{gtk:label-max-width-chars} function returns the maximum width of the
+  label in characters. The @sym{(setf gtk:label-max-width-chars)} function sets
+  the desired maximum width in characters of the label to @arg{n-chars}.
   @see-class{gtk:label}")
 
-;;; --- label-mnemonic-keyval ----------------------------------------------
+;;; --- label-mnemonic-keyval --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "mnemonic-keyval" 'label) t)
@@ -778,7 +769,7 @@
 (setf (liber:alias-for-function 'label-mnemonic-keyval)
       "Accessor"
       (documentation 'label-mnemonic-keyval 'function)
- "@version{#2021-10-31}
+ "@version{2023-3-5}
   @syntax[]{(gtk:label-mnemonic-keyval object) => keyval}
   @argument[object]{a @class{gtk:label} widget}
   @argument[keyval]{an unsigned integer with the keyval}
@@ -786,10 +777,9 @@
     Accessor of the @slot[gtk:label]{mnemonic-keyval} slot of the
     @class{gtk:label} class.
   @end{short}
-
   If the label has been set so that it has a mnemonic key the
-  @sym{gtk:label-mnemonic-keyval} slot access function returns the keyval used
-  for the mnemonic accelerator. If there is no mnemonic set up it returns
+  @sym{gtk:label-mnemonic-keyval} function returns the keyval used for the
+  mnemonic accelerator. If there is no mnemonic set up it returns
   @code{#xffffff}.
   @begin[Example]{dictionary}
     @begin{pre}
@@ -800,7 +790,7 @@
   @end{dictionary}
   @see-class{gtk:label}")
 
-;;; --- label-mnemonic-widget ----------------------------------------------
+;;; --- label-mnemonic-widget --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "mnemonic-widget" 'label) t)
@@ -812,19 +802,18 @@
 (setf (liber:alias-for-function 'label-mnemonic-widget)
       "Accessor"
       (documentation 'label-mnemonic-widget 'function)
- "@version{#2021-10-31}
+ "@version{2023-3-5}
   @syntax[]{(gtk:label-mnemonic-widget object) => widget}
   @syntax[]{(setf (gtk:label-mnemonic-widget object) widget)}
   @argument[object]{a @class{gtk:label} widget}
-  @argument[widget]{the @class{gtk:widget} target}
+  @argument[widget]{a @class{gtk:widget} widget target}
   @begin{short}
     Accessor of the @slot[gtk:label]{mnemonic-widget} slot of the
     @class{gtk:label} class.
   @end{short}
-
-  The @sym{gtk:label-mnemonic-widget} slot access function returns the target
-  of the mnemonic of the label, or @code{nil} if none has been set and the
-  default algorithm will be used.
+  The @sym{gtk:label-mnemonic-widget} function returns the target of the
+  mnemonic of the label, or @code{nil} if none has been set and the default
+  algorithm will be used.
 
   If the label has been set so that it has an mnemonic key, using i.e.
   the @fun{gtk:label-set-markup-with-mnemonic},
@@ -848,7 +837,7 @@
   @see-function{gtk:label-new-with-mnemonic}
   @see-function{gtk:label-use-underline}")
 
-;;; --- label-pattern ------------------------------------------------------
+;;; --- label-pattern ----------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "pattern" 'label) t)
@@ -861,7 +850,7 @@
 (setf (liber:alias-for-function 'label-pattern)
       "Accessor"
       (documentation 'label-pattern 'function)
- "@version{#2021-10-31}
+ "@version{2023-3-5}
   @syntax[]{(setf (gtk:label-pattern object) pattern)}
   @argument[object]{the @class{gtk:label} you want to set the pattern to}
   @argument[pattern]{a string with the pattern as described below}
@@ -869,14 +858,13 @@
     Accessor of the @slot[gtk:label]{pattern} slot of the @class{gtk:label}
     class.
   @end{short}
-
-  The @sym{(setf gtk:label-pattern)} slot access function sets the pattern of
-  underlines you want under the existing text within the label. For example if
-  the current text of the label says \"FooBarBaz\" passing a pattern of
-  @code{\"___   ___\"} will underline \"Foo\" and \"Baz\" but not \"Bar\".
+  The @sym{(setf gtk:label-pattern)} function sets the pattern of underlines you
+  want under the existing text within the label. For example if the current text
+  of the label says \"FooBarBaz\" passing a pattern of @code{\"___   ___\"} will
+  underline \"Foo\" and \"Baz\" but not \"Bar\".
   @see-class{gtk:label}")
 
-;;; --- label-selectable ---------------------------------------------------
+;;; --- label-selectable -------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "selectable" 'label) t)
@@ -888,7 +876,7 @@
 (setf (liber:alias-for-function 'label-selectable)
       "Accessor"
       (documentation 'label-selectable 'function)
- "@version{#2021-10-31}
+ "@version{2023-3-5}
   @syntax[]{(gtk:label-selectable object) => selectable}
   @syntax[]{(setf (gtk:label-selectable object) selectable)}
   @argument[object]{a @class{gtk:label} widget}
@@ -897,12 +885,11 @@
     Accessor of the @slot[gtk:label]{selectable} slot of the @class{gtk:label}
     class.
   @end{short}
-
   Selectable labels allow the user to select text from the label, for copy and
   paste.
   @see-class{gtk:label}")
 
-;;; --- label-selection-bound ----------------------------------------------
+;;; --- label-selection-bound --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "selection-bound" 'label) t)
@@ -916,7 +903,7 @@
 (setf (liber:alias-for-function 'label-selection-bound)
       "Accessor"
       (documentation 'label-selection-bound 'function)
- "@version{#2021-10-31}
+ "@version{2023-3-5}
   @syntax[]{(gtk:label-selection-bound object) => bound}
   @argument[object]{a @class{gtk:label} widget}
   @argument[bound]{an integer with a position}
@@ -924,15 +911,13 @@
     Accessor of the @slot[gtk:label]{selection-bound} slot of the
     @class{gtk:label} class.
   @end{short}
-
   The position of the opposite end of the selection from the cursor in chars.
   @see-class{gtk:label}")
 
-;;; --- label-single-line-mode ---------------------------------------------
+;;; --- label-single-line-mode -------------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "single-line-mode"
-                                               'label) t)
+(setf (documentation (liber:slot-documentation "single-line-mode" 'label) t)
  "The @code{single-line-mode} property of type  @code{:boolean} (Read / Write)
   @br{}
   Whether the label is in single line mode. In single line mode, the height
@@ -946,7 +931,7 @@
 (setf (liber:alias-for-function 'label-single-line-mode)
       "Accessor"
       (documentation 'label-single-line-mode 'function)
- "@version{#2021-10-31}
+ "@version{2023-3-5}
   @syntax[]{(gtk:label-single-line-mode object) => mode}
   @syntax[]{(setf (gtk:label-single-line-mode object) mode)}
   @argument[object]{a @class{gtk:label} widget}
@@ -955,22 +940,20 @@
     Accessor of the @slot[gtk:label]{single-line-mode} slot of the
     @class{gtk:label} class.
   @end{short}
-
-  The @sym{gtk:label-single-line-mode} slot access function returns whether the
-  label is in single line mode. The @sym{(setf gtk:label-single-line-mode)}
-  slot access function sets whether the label is in single line mode.
+  The @sym{gtk:label-single-line-mode} function returns whether the label is in
+  single line mode. The @sym{(setf gtk:label-single-line-mode)} function sets
+  whether the label is in single line mode.
   @see-class{gtk:label}")
 
-;;; --- label-track-visited-links ------------------------------------------
+;;; --- label-track-visited-links ----------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "track-visited-links"
-                                               'label) t)
+(setf (documentation (liber:slot-documentation "track-visited-links" 'label) t)
  "The @code{track-visited-links} property of type @code{:boolean} (Read / Write)
   @br{}
   Set this property to @em{true} to make the label track which links have been
   clicked. It will then apply the color of the @code{visited-link-color} style
-  property of a @class{gtk:widget} object, instead of the color of the
+  property of a @class{gtk:widget} widget, instead of the color of the
   @code{link-color} style property. @br{}
   Default value: @em{true}")
 
@@ -978,7 +961,7 @@
 (setf (liber:alias-for-function 'label-track-visited-links)
       "Accessor"
       (documentation 'label-track-visited-links 'function)
- "@version{#2021-10-31}
+ "@version{2023-3-5}
   @syntax[]{(gtk:label-track-visited-links object) => setting}
   @syntax[]{(setf (gtk:label-track-visited-links object) setting)}
   @argument[object]{a @class{gtk:label} widget}
@@ -987,15 +970,13 @@
     Accessor of the @slot[gtk:label]{track-visited-links} slot of the
     @class{gtk:label} class.
   @end{short}
-
-  The @sym{gtk:label-track-visited-links} slot access function returns whether
-  the label is currently keeping track of clicked links. The
-  @sym{(setf gtk:label-track-visited-links)} slot access function sets whether
-  the label should keep track of clicked links and use a different color for
-  them.
+  The @sym{gtk:label-track-visited-links} function returns whether the label is
+  currently keeping track of clicked links. The
+  @sym{(setf gtk:label-track-visited-links)} function sets whether the label
+  should keep track of clicked links and use a different color for them.
   @see-class{gtk:label}")
 
-;;; --- label-use-markup ---------------------------------------------------
+;;; --- label-use-markup -------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "use-markup" 'label) t)
@@ -1007,7 +988,7 @@
 (setf (liber:alias-for-function 'label-use-markup)
       "Accessor"
       (documentation 'label-use-markup 'function)
- "@version{#2021-12-3}
+ "@version{2023-3-5}
   @syntax[]{(gtk:label-use-markup object) => setting}
   @syntax[]{(setf (gtk:label-use-markup object) setting)}
   @argument[object]{a @class{gtk:label} widget}
@@ -1017,16 +998,14 @@
     Accessor of the @slot[gtk:label]{use-markup} slot of the @class{gtk:label}
     class.
   @end{short}
-
-  The @sym{gtk:label-use-markup} slot access function returns whether the
-  text of the label is interpreted as marked up with the Pango text markup
-  language. The @sym{(setf gtk:label-use-markup)} slot access function sets
-  whether the text of the label contains markup. See the
-  @fun{gtk:label-set-markup} function.
+  The @sym{gtk:label-use-markup} function returns whether the text of the label
+  is interpreted as marked up with the Pango text markup language. The
+  @sym{(setf gtk:label-use-markup)} function sets whether the text of the label
+  contains markup. See the @fun{gtk:label-set-markup} function.
   @see-class{gtk:label}
   @see-function{gtk:label-set-markup}")
 
-;;; --- label-use-underline ------------------------------------------------
+;;; --- label-use-underline ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "use-underline" 'label) t)
@@ -1039,7 +1018,7 @@
 (setf (liber:alias-for-function 'label-use-underline)
       "Accessor"
       (documentation 'label-use-underline 'function)
- "@version{#2021-10-31}
+ "@version{2023-3-5}
   @syntax[]{(gtk:label-use-underline object) => setting}
   @syntax[]{(setf (gtk:label-use-underline object) setting)}
   @argument[object]{a @class{gtk:label} widget}
@@ -1048,14 +1027,13 @@
     Accessor of the @slot[gtk:label]{use-underline} slot of the
     @class{gtk:label} class.
   @end{short}
-
-  The @sym{gtk:label-use-underline} slot access function returns whether an
-  embedded underline in the label indicates a mnemonic. If @em{true}, an
-  underline in the text indicates the next character should be used for the
-  mnemonic accelerator key.
+  The @sym{gtk:label-use-underline} function returns whether an embedded
+  underline in the label indicates a mnemonic. If @em{true}, an underline in the
+  text indicates the next character should be used for the mnemonic accelerator
+  key.
   @see-class{gtk:label}")
 
-;;; --- label-width-chars --------------------------------------------------
+;;; --- label-width-chars ------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "width-chars" 'label) t)
@@ -1072,7 +1050,7 @@
 (setf (liber:alias-for-function 'label-width-chars)
       "Accessor"
       (documentation 'label-width-chars 'function)
- "@version{#2021-10-31}
+ "@version{2023-3-5}
   @syntax[]{(gtk:label-width-chars object) => n-chars}
   @syntax[]{(setf (gtk:label-width-chars object) n-chars)}
   @argument[object]{a @class{gtk:label} widget}
@@ -1081,14 +1059,12 @@
     Accessor of the @slot[gtk:label]{width-chars} slot of the @class{gtk:label}
     class.
   @end{short}
-
-  The @sym{gtk:label-width-chars} slot access function retrieves the desired
-  width of the label, in characters. The @sym{(setf gtk:label-width-chars)}
-  slot access function sets the desired width in characters of the label to
-  @arg{n-chars}.
+  The @sym{gtk:label-width-chars} function retrieves the desired width of the
+  label, in characters. The @sym{(setf gtk:label-width-chars)} function sets
+  the desired width in characters of the label to @arg{n-chars}.
   @see-class{gtk:label}")
 
-;;; --- label-wrap ---------------------------------------------------------
+;;; --- label-wrap -------------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "wrap" 'label) t)
@@ -1100,7 +1076,7 @@
 (setf (liber:alias-for-function 'label-wrap)
       "Accessor"
       (documentation 'label-wrap 'function)
- "@version{#2021-10-31}
+ "@version{2023-3-5}
   @syntax[]{(gtk:label-wrap object) => wrap}
   @syntax[]{(setf (gtk:label-wrap object) wrap)}
   @argument[object]{a @class{gtk:label} widget}
@@ -1111,7 +1087,7 @@
   If set, wrap lines if the text becomes too wide.
   @see-class{gtk:label}")
 
-;;; --- label-wrap-mode ----------------------------------------------------
+;;; --- label-wrap-mode --------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "wrap-mode" 'label) t)
@@ -1126,7 +1102,7 @@
 (setf (liber:alias-for-function 'label-wrap-mode)
       "Accessor"
       (documentation 'label-wrap-mode 'function)
- "@version{#2021-10-31}
+ "@version{2023-3-5}
   @syntax[]{(gtk:label-wrap-mode object) => setting}
   @syntax[]{(setf (gtk:label-wrap-mode object) setting)}
   @argument[object]{a @class{gtk:label} widget}
@@ -1135,7 +1111,6 @@
     Accessor of the @slot[gtk:label]{wrap-mode} slot of the @class{gtk:label}
     class.
   @end{short}
-
   If line wrapping is on, see the @slot[gtk:label]{wrap} property, this controls
   how the line wrapping is done. The default is @code{:word}, which means wrap
   on word boundaries.
@@ -1143,7 +1118,7 @@
   @see-symbol{pango:wrap-mode}
   @see-function{gtk:label-wrap}")
 
-;;; --- label-xalign -------------------------------------------------------
+;;; --- label-xalign -----------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "xalign" 'label) t)
@@ -1159,7 +1134,7 @@
 (setf (liber:alias-for-function 'label-xalign)
       "Accessor"
       (documentation 'label-xalign 'function)
- "@version{#2021-10-31}
+ "@version{2023-3-5}
   @syntax[]{(gtk:label-xalign object) => xalign}
   @syntax[]{(setf (gtk:label-xalign object) xalign)}
   @argument[object]{a @class{gtk:label} widget}
@@ -1168,14 +1143,13 @@
     Accessor of the @slot[gtk:label]{xalign} slot of the @class{gtk:label}
     class.
   @end{short}
-
-  The @sym{gtk:label-xalign} slot access function sets the @code{xalign}
-  property for the label. The @sym{(setf gtk:label-xalign)} slot access function
-  sets the @code{xalign} property.
+  The @sym{gtk:label-xalign} function sets the @code{xalign} property for the
+  label. The @sym{(setf gtk:label-xalign)} function sets the @code{xalign}
+  property.
   @see-class{gtk:label}
   @see-function{gtk:label-yalign}")
 
-;;; --- label-yalign -------------------------------------------------------
+;;; --- label-yalign -----------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "yalign" 'label) t)
@@ -1191,7 +1165,7 @@
 (setf (liber:alias-for-function 'label-yalign)
       "Accessor"
       (documentation 'label-yalign 'function)
- "@version{#2021-10-31}
+ "@version{2023-3-5}
   @syntax[]{(gtk:label-yalign object) => yalign}
   @syntax[]{(setf (gtk:label-yalign object) yalign)}
   @argument[object]{a @class{gtk:label} widget}
@@ -1200,12 +1174,11 @@
     Accessor of the @slot[gtk:label]{yalign} slot of the @class{gtk:label}
     class.
   @end{short}
-
-  The @sym{gtk:label-yalign} slot access function sets the @code{yalign}
-  property for the label. The @sym{(setf gtk:label-yalign)} slot access function
-  sets the @code{yalign} property for the label.
+  The @sym{gtk:label-yalign} function sets the @code{yalign} property for the
+  label. The @sym{(setf gtk:label-yalign)} function sets the @code{yalign}
+  property for the label.
   @see-class{gtk:label}
-  @see-function{gtk:label-yalign}")
+  @see-function{gtk:label-xalign}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_label_new ()
@@ -1213,7 +1186,7 @@
 
 (defun label-new (text)
  #+liber-documentation
- "@version{#2021-12-22}
+ "@version{2023-3-5}
   @argument[text]{a string with the text of the label}
   @return{The new @class{gtk:label} widget.}
   @begin{short}
@@ -1235,14 +1208,14 @@
 
 (defun (setf label-text) (text label)
   (cffi:foreign-funcall "gtk_label_set_text"
-                   (g:object label) label
-                   :string text
-                   :void)
+                        (g:object label) label
+                        :string text
+                        :void)
   text)
 
 (defcfun ("gtk_label_get_text" label-text) :string
  #+liber-documentation
- "@version{#2021-10-31}
+ "@version{2023-3-5}
   @syntax[]{(gtk:label-text label) => text}
   @syntax[]{(setf (gtk:label-text-label) text)}
   @argument[label]{a @class{gtk:label} widget}
@@ -1250,14 +1223,13 @@
   @begin{short}
     Accessor of the text in the label.
   @end{short}
-
   The @sym{gtk:label-text} function fetches the text from a label, as displayed
   on the screen. The @sym{(setf gtk:label-text)} function sets the text.
 
   It overwrites any text that was there before. This will also clear any
   previously set mnemonic accelerators. This does not include any embedded
   underlines indicating mnemonics or Pango markup. See the @fun{gtk:label-label}
-  slot access function.
+  function.
   @see-class{gtk:label}
   @see-function{gtk:label-label}"
   (label (g:object label)))
@@ -1270,7 +1242,7 @@
 
 (defcfun ("gtk_label_set_markup" label-set-markup) :void
  #+liber-documentation
- "@version{#2021-10-31}
+ "@version{2023-3-5}
   @argument[label]{a @class{gtk:label} widget}
   @argument[text]{a markup string}
   @begin{short}
@@ -1292,7 +1264,7 @@
 (defcfun ("gtk_label_set_markup_with_mnemonic"
            label-set-markup-with-mnemonic) :void
  #+liber-documentation
- "@version{#2021-10-31}
+ "@version{2023-3-5}
   @argument[label]{a @class{gtk:label} widget}
   @argument[text]{a Pango markup string}
   @begin{short}
@@ -1318,14 +1290,14 @@
 
 (defun (setf label-line-wrap) (wrap label)
   (cffi:foreign-funcall "gtk_label_set_line_wrap"
-                   (g:object label) label
-                   :boolean wrap
-                   :void)
+                        (g:object label) label
+                        :boolean wrap
+                        :void)
   wrap)
 
 (defcfun ("gtk_label_get_line_wrap" label-line-wrap) :boolean
  #+liber-documentation
- "@version{#2021-10-31}
+ "@version{2023-3-5}
   @syntax[]{(gtk:label-line-wrap label) => wrap}
   @syntax[]{(setf (gtk:label-line-wrap label) wrap)}
   @argument[label]{a @class{gtk:label} widget}
@@ -1334,7 +1306,6 @@
   @begin{short}
     Accessor of the line wrap setting of the label.
   @end{short}
-
   The @sym{gtk:label-line-wrap} function returns whether lines in the label are
   automatically wrapped. The @sym{(setf gtk:label-line-wrap)} function toggles
   line wrapping of the label.
@@ -1361,23 +1332,21 @@
 
 (defun (setf label-line-wrap-mode) (wrap-mode label)
   (cffi:foreign-funcall "gtk_label_set_line_wrap_mode"
-                   (g:object label) label
-                   pango:wrap-mode wrap-mode
-                   :void)
+                        (g:object label) label
+                        pango:wrap-mode wrap-mode
+                        :void)
   wrap-mode)
 
-(defcfun ("gtk_label_get_line_wrap_mode" label-line-wrap-mode)
-    pango:wrap-mode
+(defcfun ("gtk_label_get_line_wrap_mode" label-line-wrap-mode) pango:wrap-mode
  #+liber-documentation
- "@version{#2021-10-31}
+ "@version{2023-3-5}
   @syntax[]{(gtk:label-line-wrap-mode label) => mode}
   @syntax[]{(setf (gtk:label-line-wrap-mode label) mode)}
   @argument[label]{a @class{gtk:label} widget}
-  @argument[mode]{the line wrapping mode of type @symbol{pango:wrap-mode}}
+  @argument[mode]{a @symbol{pango:wrap-mode} value with the line wrapping mode}
   @begin{short}
     Accessor of the line wrap mode of the label.
   @end{short}
-
   The @sym{gtk:label-line-wrap-mode} function returns the line wrap mode used by
   the label. The @sym{(setf gtk:label-line-wrap-mode)} function sets the line
   wrap mode of the label.
@@ -1402,7 +1371,7 @@
 
 (defun label-layout-offsets (label)
  #+liber-documentation
- "@version{#2021-10-31}
+ "@version{2023-3-5}
   @argument[label]{a @class{gtk:label} widget}
   @begin{return}
     @code{x} -- an integer with the x offset @br{}
@@ -1440,7 +1409,8 @@
   @see-function{gtk:widget-has-window}"
   (with-foreign-objects ((x :int) (y :int))
     (%label-get-layout-offsets label x y)
-    (values (cffi:mem-ref x :int) (cffi:mem-ref y :int))))
+    (values (cffi:mem-ref x :int)
+            (cffi:mem-ref y :int))))
 
 (export 'label-layout-offsets)
 
@@ -1453,14 +1423,13 @@
 (defcfun ("gtk_label_new_with_mnemonic" label-new-with-mnemonic)
     (g:object widget)
  #+liber-documentation
- "@version{#2021-12-22}
+ "@version{2023-3-5}
   @argument[text]{a string with the text of the label, with an underscore in
     front of the mnemonic character}
   @return{The new @class{gtk:label} widget.}
   @begin{short}
     Creates a new @class{gtk:label} widget, containing the given.
   @end{short}
-
   If characters in @arg{text} are preceded by an underscore, they are
   underlined. If you need a literal underscore character in a label, use '__'
   (two underscores). The first underlined character represents a keyboard
@@ -1485,7 +1454,7 @@
 
 (defcfun ("gtk_label_select_region" label-select-region) :void
  #+liber-documentation
- "@version{#2021-10-31}
+ "@version{2023-3-5}
   @argument[label]{a @class{gtk:label} widget}
   @argument[start]{an integer with the start offset, in characters not bytes}
   @argument[end]{an integer with the end offset, in characters not bytes}
@@ -1507,10 +1476,9 @@
 ;;; gtk_label_set_text_with_mnemonic ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_label_set_text_with_mnemonic" label-set-text-with-mnemonic)
-    :void
+(defcfun ("gtk_label_set_text_with_mnemonic" label-set-text-with-mnemonic) :void
  #+liber-documentation
- "@version{#2021-10-31}
+ "@version{2023-3-5}
   @argument[label]{a @class{gtk:label} widget}
   @argument[text]{a string for the label}
   @begin{short}
@@ -1533,7 +1501,7 @@
 
 (defcfun ("gtk_label_get_layout" label-layout) (g:object pango:layout)
  #+liber-documentation
- "@version{#2021-10-31}
+ "@version{2023-3-5}
   @argument[label]{a @class{gtk:label} widget}
   @return{The @class{pango:layout} object for this label.}
   @begin{short}
@@ -1554,15 +1522,14 @@
 ;;; gtk_label_get_selection_bounds () -> label-selection-bounds
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_label_get_selection_bounds" %label-get-selection-bounds)
-    :boolean
+(defcfun ("gtk_label_get_selection_bounds" %label-get-selection-bounds) :boolean
   (label (g:object label))
   (start (:pointer :int))
   (end (:pointer :int)))
 
 (defun label-selection-bounds (label)
  #+liber-documentation
- "@version{#2021-10-31}
+ "@version{2023-3-5}
   @argument[label]{a @class{gtk:label} widget}
   @begin{return}
     @code{start} -- an integer with the start of selection, as a character
@@ -1586,7 +1553,7 @@
 
 (defcfun ("gtk_label_get_current_uri" label-current-uri) :string
  #+liber-documentation
- "@version{#2021-10-31}
+ "@version{2023-3-5}
   @argument[label]{a @class{gtk:label} widget}
   @begin{return}
     A string with the currently active URI.
@@ -1604,4 +1571,4 @@
 
 (export 'label-current-uri)
 
-;;; --- End of file gtk.label.lisp ---------------------------------------------
+;;; --- End of file gtk3.label.lisp --------------------------------------------
