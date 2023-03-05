@@ -1,8 +1,8 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.init.lisp
+;;; gtk3.init.lisp
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2021 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -77,7 +77,7 @@
 
   (defun join-gtk-main ()
    #+liber-documentation
-   "@version{#2021-11-13}
+   "@version{#2023-3-5}
     @begin{short}
       Wait until the GTK program terminates.
     @end{short}
@@ -88,16 +88,15 @@
 
   (defun leave-gtk-main ()
    #+liber-documentation
-   "@version{#2021-11-13}
+   "@version{#2023-3-5}
     @begin{short}
       Makes the innermost invocation of the main loop return when it regains
       control.
     @end{short}
-
     In the Lisp binding to GTK the @fun{gtk:main-quit} function is not called,
-    but the @sym{leave-gtk-main} function. The @sym{leave-gtk-main} function
-    does some additional bookkeeping, which is necessary to stop a Lisp program
-    safely. See the @fun{within-main-loop} documentation for an example.
+    but the @sym{leave-gtk-main} function. This function does some additional
+    bookkeeping, which is necessary to stop a Lisp program safely. See the
+    @fun{within-main-loop} documentation for an example.
     @see-function{within-main-loop}
     @see-function{gtk:main-quit}"
     (bt:with-lock-held (*main-thread-lock*)
@@ -140,14 +139,14 @@
 
 (defmacro within-main-loop (&body body)
  #+liber-documentation
- "@version{#2021-11-13}
+ "@version{#2023-3-5}
   @begin{short}
     The @sym{within-main-loop} macro is a wrapper around a GTK program.
   @end{short}
   The functionality of the macro corresponds to the @code{gtk_init()} and
   @code{gtk_main()} C functions which initialize and start a GTK program. Both
   functions have corresponding Lisp functions. The @code{gtk_main()} function is
-  exported as the @fun{gtk-main} Lisp function. The corresponding Lisp function
+  exported as the @fun{gtk:main} Lisp function. The corresponding Lisp function
   to the @code{gtk_init()} function is called internally when loading the
   library, but is not exported.
 
@@ -161,7 +160,7 @@
 (defun example-simple-window ()
   (within-main-loop
     (let (;; Create a toplevel window.
-          (window (gtk-window-new :toplevel)))
+          (window (gtk:window-new :toplevel)))
       ;; Signal handler for the window to handle the signal \"destroy\".
       (g:signal-connect window \"destroy\"
                         (lambda (widget)
@@ -171,7 +170,7 @@
       (gtk-widget-show-all window))))
     @end{pre}
   @end{dictionary}
-  @see-function{gtk-main}
+  @see-function{gtk:main}
   @see-function{leave-gtk-main}"
   `(call-from-gtk-main-loop (lambda () ,@body)))
 
@@ -193,4 +192,4 @@
 
 (glib-init:at-init () (%gtk-init))
 
-;;; --- End of file gtk.init.lisp ----------------------------------------------
+;;; --- End of file gtk3.init.lisp ---------------------------------------------
