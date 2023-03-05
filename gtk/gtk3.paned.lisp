@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.paned.lisp
+;;; gtk3.paned.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -122,7 +122,7 @@
 
 #+liber-documentation
 (setf (documentation 'paned 'type)
- "@version{#2021-12-1}
+ "@version{2023-3-5}
   @begin{short}
     The @sym{gtk:paned} widget has two panes, arranged either horizontally or
     vertically.
@@ -152,17 +152,17 @@
   property is @em{true}, then that child widget can be made smaller than its
   requisition by the user. Setting the @code{shrink} child property to
   @em{false} allows the application to set a minimum size. If the @code{resize}
-  child property is @em{false} for both children, then this is treated as if the
-  @code{resize} child property is @em{true} for both children.
+  child property is @em{false} for both children, then this is treated as if
+  the @code{resize} child property is @em{true} for both children.
 
   The application can set the position of the slider as if it were set by the
   user, by calling the @fun{gtk:paned-position} function.
   @begin[CSS nodes]{dictionary}
     @begin{pre}
- paned
- ├── <child>
- ├── separator\[.wide\]
- ╰── <child>
+paned
+├── <child>
+├── separator\[.wide\]
+╰── <child>
     @end{pre}
     The @sym{gtk:paned} implementation has a main CSS node with name
     @code{paned}, and a subnode for the separator with name @code{separator}.
@@ -218,7 +218,7 @@
   @begin[Signal Details]{dictionary}
     @subheading{The \"accept-position\" signal}
       @begin{pre}
- lambda (widget)    :action
+lambda (widget)    :action
       @end{pre}
       The signal is a keybinding signal which gets emitted to accept the current
       position of the handle when moving it using key bindings. The default
@@ -228,7 +228,7 @@
       @end{table}
     @subheading{The \"cancel-position\" signal}
       @begin{pre}
- lambda (widget)    :action
+lambda (widget)    :action
       @end{pre}
       The signal is a keybinding signal which gets emitted to cancel moving the
       position of the handle using key bindings. The position of the handle will
@@ -239,7 +239,7 @@
       @end{table}
     @subheading{The \"cycle-child-focus\" signal}
       @begin{pre}
- lambda (widget reversed)    :action
+lambda (widget reversed)    :action
       @end{pre}
       The signal is a keybinding signal which gets emitted to cycle the focus
       between the children of the paned widget. The default binding is the
@@ -250,7 +250,7 @@
       @end{table}
     @subheading{The \"cycle-handle-focus\" signal}
       @begin{pre}
- lambda (widget reversed)    :action
+lambda (widget reversed)    :action
       @end{pre}
       The signal is a keybinding signal which gets emitted to cycle whether the
       paned widget should grab focus to allow the user to change position of the
@@ -262,7 +262,7 @@
       @end{table}
     @subheading{The \"move-handle\" signal}
       @begin{pre}
- lambda (widget scrolltype)    :action
+lambda (widget scrolltype)    :action
       @end{pre}
       The signal is a keybinding signal which gets emitted to move the handle
       when the user is using key bindings to move it.
@@ -272,7 +272,7 @@
       @end{table}
     @subheading{The \"toggle-handle-focus\" signal}
       @begin{pre}
- lambda (widget)    :action
+lambda (widget)    :action
       @end{pre}
       The signal is a keybinding signal which gets emitted to accept the current
       position of the handle and then move focus to the next widget in the focus
@@ -281,6 +281,7 @@
         @entry[widget]{The @sym{gtk:paned} widget that received the signal.}
       @end{table}
   @end{dictionary}
+  @see-constructor{gtk:paned-new}
   @see-slot{gtk:paned-max-position}
   @see-slot{gtk:paned-min-position}
   @see-slot{gtk:paned-position}
@@ -292,7 +293,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- paned-max-position -------------------------------------------------
+;;; --- paned-max-position -----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "max-position" 'paned) t)
@@ -307,7 +308,7 @@
 (setf (liber:alias-for-function 'paned-max-position)
       "Accessor"
       (documentation 'paned-max-position 'function)
- "@version{#2021-12-1}
+ "@version{2023-3-5}
   @syntax[]{(gtk:paned-max-position object) => position}
   @argument[object]{a @class{gtk:paned} widget}
   @argument[position]{an integer with the largest possible position}
@@ -315,14 +316,13 @@
     Accessor of the @slot[gtk:paned]{max-position} slot of the
     @class{gtk:paned} class.
   @end{short}
-
-  The @sym{gtk:paned-max-position} slot access function gets the largest
-  possible value for the position property.
+  The @sym{gtk:paned-max-position} function gets the largest possible value for
+  the position property.
   @see-class{gtk:paned}
   @see-function{gtk:paned-position}
   @see-function{gtk:paned-min-position}")
 
-;;; --- paned-min-position -------------------------------------------------
+;;; --- paned-min-position -----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "min-position" 'paned) t)
@@ -337,7 +337,7 @@
 (setf (liber:alias-for-function 'paned-min-position)
       "Accessor"
       (documentation 'paned-min-position 'function)
- "@version{#2021-12-1}
+ "@version{2023-3-5}
   @syntax[]{(gtk:paned-min-position object) => position}
   @argument[object]{a @class{gtk:paned} widget}
   @argument[position]{an integer with the smallest possible position}
@@ -345,14 +345,13 @@
     Accessor of the @slot[gtk:paned]{min-position} slot of the
     @class{gtk:paned} class.
   @end{short}
-
-  The @sym{gtk:paned-min-position} slot access function gets the smallest
-  possible value for the position property.
+  The @sym{gtk:paned-min-position} function gets the smallest possible value
+  for the position property.
   @see-class{gtk:paned}
   @see-function{gtk:paned-position}
   @see-function{gtk:paned-max-position}")
 
-;;; --- paned-position -----------------------------------------------------
+;;; --- paned-position ---------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "position" 'paned) t)
@@ -366,7 +365,7 @@
 (setf (liber:alias-for-function 'paned-position)
       "Accessor"
       (documentation 'paned-position 'function)
- "@version{#2021-12-1}
+ "@version{2023-3-5}
   @syntax[]{(gtk:paned-position object) => position}
   @syntax[]{(setf (gtk:paned-position position) position)}
   @argument[object]{a @class{gtk:paned} widget}
@@ -376,15 +375,14 @@
     Accessor of the @slot[gtk:paned]{position} slot of the @class{gtk:paned}
     class.
   @end{short}
-
-  The @sym{gtk:paned-position} slot access function obtains the position of the
-  divider between the two panes. The @sym{(setf gtk:paned-position)} slot access
-  function sets the position.
+  The @sym{gtk:paned-position} function obtains the position of the divider
+  between the two panes. The @sym{(setf gtk:paned-position)} function sets the
+  position.
   @see-class{gtk:paned}
   @see-function{gtk:paned-max-position}
   @see-function{gtk:paned-min-position}")
 
-;;; --- paned-position-set -------------------------------------------------
+;;; --- paned-position-set -----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "position-set" 'paned) t)
@@ -397,7 +395,7 @@
 (setf (liber:alias-for-function 'paned-position-set)
       "Accessor"
       (documentation 'paned-position-set 'function)
- "@version{#2021-12-1}
+ "@version{2023-3-5}
   @syntax[]{(gtk:paned-position-set object) => setting}
   @syntax[]{(setf (gtk:paned-position-set position) setting)}
   @argument[object]{a @class{gtk:paned} widget}
@@ -407,15 +405,14 @@
     Accessor of the @slot[gtk:paned]{position-set} slot of the
     @class{gtk:paned} class.
   @end{short}
-
-  The @sym{gtk:paned-position-set} slot access function gets whether the
+  The @sym{gtk:paned-position-set} function gets whether the
   @slot[gtk:paned]{position} property should be used. The
-  @sym{(setf gtk:paned-position-set)} slot access function sets whether the
+  @sym{(setf gtk:paned-position-set)} function sets whether the
   @slot[gtk:paned]{position} property should be used.
   @see-class{gtk:paned}
   @see-function{gtk:paned-position}")
 
-;;; --- paned-wide-handled -------------------------------------------------
+;;; --- paned-wide-handled -----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "wide-handle" 'paned) t)
@@ -429,7 +426,7 @@
 (setf (liber:alias-for-function 'paned-wide-handle)
       "Accessor"
       (documentation 'paned-wide-handle 'function)
- "@version{#2021-12-1}
+ "@version{2023-3-5}
   @syntax[]{(gtk:paned-wide-handle object) => wide}
   @syntax[]{(setf (gtk:paned-wide-handle object) wide)}
   @argument[object]{a @class{gtk:paned} widget}
@@ -439,10 +436,9 @@
     Accessor of the @slot[gtk:paned]{wide-handle} slot of the @class{gtk:paned}
     class.
   @end{short}
-
-  The @sym{gtk:paned-wide-handled} slot access function gets the
+  The @sym{gtk:paned-wide-handled} function gets the
   @slot[gtk:paned]{wide-handle} property. The
-  @sym{(setf gtk:paned-wide-handled)} slot access function sets the
+  @sym{(setf gtk:paned-wide-handled)} function sets the
   @slot[gtk:paned]{wide-handle} property.
   @see-class{gtk:paned}")
 
@@ -450,7 +446,7 @@
 ;;; Child Property and Child Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- paned-child-resize -------------------------------------------------
+;;; --- paned-child-resize -----------------------------------------------------
 
 (define-child-property paned-child-resize
                        "resize" "gboolean" t t t)
@@ -459,18 +455,17 @@
 (setf (liber:alias-for-function 'paned-child-resize)
       "Accessor"
       (documentation 'paned-child-resize 'function)
- "@version{#2021-12-1}
+ "@version{2023-3-5}
   @syntax[]{(gtk:paned-child-resize container child) => resize)}
   @syntax[]{(setf (gtk:paned-child-resize container child) resize)}
   @argument[container]{a @class{gtk:paned} widget}
   @argument[child]{a @class{gtk:widget} child widget}
-  @argument[resize]{a boolean whether the child widget expands and shrinks along
-    with the paned widget}
+  @argument[resize]{a boolean whether the child widget expands and shrinks
+    along with the paned widget}
   @begin{short}
     Accessor of the @code{resize} child property of the @class{gtk:paned}
     class.
   @end{short}
-
   The @sym{gtk:paned-child-resize} function gets whether the child widget
   expands and shrinks along with the paned widget. The
   @sym{(setf gtk:paned-child-resize)} function sets the child property.
@@ -487,7 +482,7 @@
 (setf (liber:alias-for-function 'paned-child-shrink)
       "Accessor"
       (documentation 'paned-child-shrink 'function)
- "@version{#2021-12-1}
+ "@version{2023-3-5}
   @syntax[]{(gtk:paned-child-shrink container child) => shrink)}
   @syntax[]{(setf (gtk:paned-child-shrink container child) shrink)}
   @argument[container]{a @class{gtk:paned} widget}
@@ -498,7 +493,6 @@
     Accessor of the @code{shrink} child property of the @class{gtk:paned}
     class.
   @end{short}
-
   The @sym{gtk:paned-child-shrink} function determines whether the child widget
   can be made smaller than its requisition. The
   @sym{(setf gtk:paned-child-shrink)} function gets the value of the child
@@ -515,7 +509,7 @@
 
 (defun paned-new (orientation)
  #+liber-documentation
- "@version{#2021-12-1}
+ "@version{2023-3-5}
   @argument[orientation]{a @symbol{gtk:orientation} value for the orientation
     of the paned widget}
   @return{A new @class{gtk:paned} widget.}
@@ -533,7 +527,7 @@
 
 (defun paned-add1 (paned child)
  #+liber-documentation
- "@version{#2021-12-1}
+ "@version{2023-3-5}
   @argument[paned]{a @class{gtk:paned} widget}
   @argument[child]{a @class{gtk:widget} child widget to add}
   @begin{short}
@@ -558,7 +552,7 @@
 
 (defun paned-add2 (paned child)
  #+liber-documentation
- "@version{#2021-12-1}
+ "@version{2023-3-5}
   @argument[paned]{a @class{gtk:paned} widget}
   @argument[child]{a @class{gtk:widget} child widget to add}
   @begin{short}
@@ -588,9 +582,9 @@
 
 (defun paned-pack1 (paned child &key (resize nil) (shrink t))
  #+liber-documentation
- "@version{#2021-12-1}
+ "@version{2023-3-5}
   @argument[paned]{a @class{gtk:paned} widget}
-  @argument[child]{the @class{gtk:widget} child widget to add}
+  @argument[child]{a @class{gtk:widget} child widget to add}
   @argument[resize]{a boolean whether the child widget should expand when the
   paned widget is resized}
   @argument[shrink]{a boolean whether the child widget can be made smaller than
@@ -620,7 +614,7 @@
 
 (defun paned-pack2 (paned child &key (resize t) (shrink t))
  #+liber-documentation
- "@version{#2021-12-1}
+ "@version{2023-3-5}
   @argument[paned]{a @class{gtk:paned} widget}
   @argument[child]{a @class{gtk:widget} child widget to add}
   @argument[resize]{a boolean whether the child widget should expand when the
@@ -645,7 +639,7 @@
 
 (defcfun ("gtk_paned_get_child1" paned-child1) (g:object widget)
  #+liber-documentation
- "@version{#2021-12-1}
+ "@version{2023-3-5}
   @argument[paned]{a @class{gtk:paned} widget}
   @return{First @class{gtk:widget} child widget, or @code{nil} if it is not
     set.}
@@ -663,7 +657,7 @@
 
 (defcfun ("gtk_paned_get_child2" paned-child2) (g:object widget)
  #+liber-documentation
- "@version{#2021-12-1}
+ "@version{2023-3-5}
   @argument[paned]{a @class{gtk:paned} widget}
   @return{Second @class{gtk:widget} child widget, or @code{nil} if it is not
     set.}
@@ -680,11 +674,11 @@
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_paned_get_handle_window" paned-handle-window)
-    (g:object gdk-window)
+    (g:object gdk:window)
  #+liber-documentation
- "@version{#2021-12-1}
+ "@version{2023-3-5}
   @argument[paned]{a @class{gtk:paned} widget}
-  @return{The @class{gdk-window} handle window of the paned widget.}
+  @return{The @class{gdk:window} handle window of the paned widget.}
   @begin{short}
     Returns the GDK window of the handle.
   @end{short}
@@ -692,179 +686,9 @@
   enables the callback to distinguish between the window of the paned widget,
   a child widget and the handle.
   @see-class{gtk:paned}
-  @see-class{gdk-window}"
+  @see-class{gdk:window}"
   (paned (g:object paned)))
 
 (export 'paned-handle-window)
 
-;;; ----------------------------------------------------------------------------
-;;; GtkHPaned
-;;;
-;;; A container with two panes arranged horizontally
-;;;
-;;; Synopsis
-;;;
-;;;     GtkHPaned
-;;;
-;;;     gtk_hpaned_new
-;;; ----------------------------------------------------------------------------
-
-;;; ----------------------------------------------------------------------------
-;;; struct GtkHPaned
-;;; ----------------------------------------------------------------------------
-
-(define-g-object-class "GtkHPaned" hpaned
-  (:superclass paned
-   :export nil
-   :interfaces ("AtkImplementorIface"
-                "GtkBuildable"
-                "GtkOrientable")
-   :type-initializer "gtk_hpaned_get_type")
-  nil)
-
-#+liber-documentation
-(setf (documentation 'hpaned 'type)
- "@version{#2013-5-18}
-  @begin{short}
-    The @sym{gtk:hpaned} widget is a container widget with two children arranged
-    horizontally. The division between the two panes is adjustable by the user
-    by dragging a handle. See @class{gtk:paned} for details.
-  @end{short}
-
-  @sym{gtk:hpaned} has been deprecated, use @class{gtk:paned} instead.")
-
-;;; ----------------------------------------------------------------------------
-;;;
-;;; Accessors of Child Properties
-;;;
-;;; ----------------------------------------------------------------------------
-
-(define-child-property hpaned-child-resize "resize" "gboolean" t t nil)
-
-#+liber-documentation
-(setf (liber:alias-for-function 'hpaned-child-resize)
-      "Accessor"
-      (documentation 'hpaned-child-resize 'function)
- "@version{#2013-8-28}
-  Accessor of the @code{resize} child property of the @class{gtk:hpaned}
-  class.
-  @see-class{gtk:paned}
-  @see-class{gtk:hpaned}")
-
-;;; ----------------------------------------------------------------------------
-
-(define-child-property hpaned-child-shrink "shrink" "gboolean" t t nil)
-
-#+liber-documentation
-(setf (liber:alias-for-function 'hpaned-child-shrink)
-      "Accessor"
-      (documentation 'hpaned-child-shrink 'function)
- "@version{#2013-8-28}
-  Accessor of the @code{shrink} child property of the @class{gtk:hpaned}
-  class.
-  @see-class{gtk:paned}
-  @see-class{gtk:hpaned}")
-
-;;; ----------------------------------------------------------------------------
-;;; gtk_hpaned_new ()
-;;; ----------------------------------------------------------------------------
-
-(defun hpaned-new ()
- #+liber-documentation
- "@version{#2013-5-18}
-  @return{The new @class{gtk:hpaned} container.}
-  @short{Create a new @class{gtk:hpaned} container.}
-  @begin[Warning]{dictionary}
-    The @sym{gtk:hpaned-new} function has been deprecated since version 3.2 and
-    should not be used in newly written code. Use the @fun{gtk:paned-new}
-    function with the @code{:horizontal} orientation instead.
-  @end{dictionary}
-  @see-class{gtk:paned}"
-  (make-instance 'paned
-                 :orientation :horizontal))
-
-;;; ----------------------------------------------------------------------------
-;;; GtkVPaned
-;;;
-;;; A container with two panes arranged vertically
-;;;
-;;; Synopsis
-;;;
-;;;     GtkVPaned
-;;;
-;;;     gtk_vpaned_new
-;;; ----------------------------------------------------------------------------
-
-;;; ----------------------------------------------------------------------------
-;;; struct GtkVPaned
-;;; ----------------------------------------------------------------------------
-
-(define-g-object-class "GtkVPaned" vpaned
-  (:superclass paned
-   :export nil
-   :interfaces ("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
-   :type-initializer "gtk_vpaned_get_type")
-  nil)
-
-#+liber-documentation
-(setf (documentation 'vpaned 'type)
- "@version{#2013-5-18}
-  @begin{short}
-    The @sym{gtk:vpaned} container is a container widget with two children
-    arranged vertically. The division between the two panes is adjustable by
-    the user by dragging a handle. See @class{gtk:paned} for details.
-  @end{short}
-
-  @sym{gtk:vpaned} has been deprecated, use @class{gtk:paned} instead.")
-
-;;; ----------------------------------------------------------------------------
-;;;
-;;; Accessors of Child Properties
-;;;
-;;; ----------------------------------------------------------------------------
-
-(define-child-property vpaned-child-resize "resize" "gboolean" t t nil)
-
-#+liber-documentation
-(setf (liber:alias-for-function 'vpaned-child-resize)
-      "Accessor"
-      (documentation 'vpaned-child-resize 'function)
- "@version{#2013-8-28}
-  Accessor of the @code{resize} child property of the @class{gtk:vpaned}
-  class.
-  @see-class{gtk:paned}
-  @see-class{gtk:vpaned}")
-
-;;; ----------------------------------------------------------------------------
-
-(define-child-property vpaned-child-shrink "shrink" "gboolean" t t nil)
-
-#+liber-documentation
-(setf (liber:alias-for-function 'vpaned-child-shrink)
-      "Accessor"
-      (documentation 'vpaned-child-shrink 'function)
- "@version{#2013-8-28}
-  Accessor of the @code{shrink} child property of the @class{gtk:vpaned}
-  class.
-  @see-class{gtk:paned}
-  @see-class{gtk:vpaned}")
-
-;;; ----------------------------------------------------------------------------
-;;; gtk_vpaned_new ()
-;;; ----------------------------------------------------------------------------
-
-(defun vpaned-new ()
- #+liber-documentation
- "@version{#2013-5-18}
-  @return{The new @class{gtk:vpaned} container.}
-  @short{Create a new @class{gtk:vpaned} container.}
-  @begin[Warning]{dictionary}
-    The @sym{gtk:vpaned-new} function has been deprecated since version 3.2 and
-    should not be used in newly written code. Use the @fun{gtk:paned-new}
-    function with the @code{:vertical} orientation instead.
-  @end{dictionary}
-  @see-class{gtk:paned}"
-  (make-instance 'paned
-                 :orientation :vertical))
-
-;;; --- End of file gtk.paned.lisp ---------------------------------------------
+;;; --- End of file gtk3.paned.lisp --------------------------------------------
