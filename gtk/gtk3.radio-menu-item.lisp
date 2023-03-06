@@ -1,13 +1,13 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.radio-menu.item.lisp
+;;; gtk3.radio-menu.item.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK+ library.
+;;; The documentation of this file is taken from the GTK 3 Reference Manual
+;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2020 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -49,11 +49,11 @@
 ;;;
 ;;; Properties
 ;;;
-;;;     GtkRadioMenuItem*  group    Write
+;;;     group
 ;;;
 ;;; Signals
 ;;;
-;;;     void  group-changed    Run First
+;;;     group-changed
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -91,14 +91,11 @@
 
 #+liber-documentation
 (setf (documentation 'radio-menu-item 'type)
- "@version{#2020-7-18}
+ "@version{2023-2-24}
   @begin{short}
     A radio menu item is a check menu item that belongs to a group. At each
     instant exactly one of the radio menu items from a group is selected.
   @end{short}
-
-  The group list does not need to be freed, as each @sym{gtk:radio-menu-item}
-  will remove itself and its list item when it is destroyed.
 
   The correct way to create a group of radio menu items is approximatively
   this:
@@ -115,13 +112,19 @@
   @begin[Signal Details]{dictionary}
     @subheading{The \"group-changed\" signal}
       @begin{pre}
- lambda (radiomenuitem)    : Run First
+lambda (radiomenuitem)    :run-first
       @end{pre}
       @begin[code]{table}
         @entry[radiomenuitem]{The @sym{gtk:radio-menu-item} widget which
           received the signal.}
       @end{table}
   @end{dictionary}
+  @see-constructor{gtk:radio-menu-item-new}
+  @see-constructor{gtk:radio-menu-item-new-with-label}
+  @see-constructor{gtk:radio-menu-item-new-with-mnemonic}
+  @see-constructor{gtk:radio-menu-item-new-from-widget}
+  @see-constructor{gtk:radio-menu-item-new-with-label-from-widget}
+  @see-constructor{gtk:radio-menu-item-new-mnemonic-from-widget}
   @see-slot{gtk:radio-menu-item-group}")
 
 ;;; ----------------------------------------------------------------------------
@@ -137,7 +140,7 @@
 (setf (liber:alias-for-function 'radio-menu-item-group)
       "Accessor"
       (documentation 'radio-menu-item-group 'function)
- "@version{#2020-7-18}
+ "@version{2023-2-24}
   @begin{short}
     Accessor of the @slot[gtk:radio-menu-item]{group} slot of the
     @class{gtk:radio-menu-item} class.
@@ -153,10 +156,10 @@
 (defcfun ("gtk_radio_menu_item_new" radio-menu-item-new)
     (g:object radio-menu-item)
  #+liber-documentation
- "@version{#2020-7-19}
-  @argument[group]{the @class{gtk:radio-menu-item} group to which the radio menu
-    item is to be attached}
-  @return{A new @class{gtk:radio-menu-item}.}
+ "@version{2023-2-24}
+  @argument[group]{a list of @class{gtk:radio-menu-item} widgets with the radio
+    group to which the radio menu item is to be attached or @code{nil}}
+  @return{A new @class{gtk:radio-menu-item} widget.}
   @begin{short}
     Creates a new radio menu item.
   @end{short}
@@ -169,14 +172,14 @@
 ;;; gtk_radio_menu_item_new_with_label ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_radio_menu_item_new_with_label"
-           radio-menu-item-new-with-label) (g:object radio-menu-item)
+(defcfun ("gtk_radio_menu_item_new_with_label" radio-menu-item-new-with-label)
+    (g:object radio-menu-item)
  #+liber-documentation
- "@version{#2020-7-18}
-  @argument[group]{the @class{gtk:radio-menu-item} group to which the radio menu
-    item is to be attached}
+ "@version{2023-2-24}
+  @argument[group]{a list of @class{gtk:radio-menu-item} widgets with the radio
+    group to which the radio menu item is to be attached or @code{nil}}
   @argument[label]{a string with the text for the label}
-  @return{A new @class{gtk:radio-menu-item}.}
+  @return{A new @class{gtk:radio-menu-item} widget.}
   @begin{short}
     Creates a new radio menu item whose child is a simple @class{gtk:label}
     widget.
@@ -194,18 +197,17 @@
 (defcfun ("gtk_radio_menu_item_new_with_mnemonic"
            radio-menu-item-new-with-mnemonic) (g:object radio-menu-item)
  #+liber-documentation
- "@version{#2020-7-18}
-  @argument[group]{the @class{gtk:radio-menu-item} group to which the radio menu
-    item is to be attached}
+ "@version{2023-2-24}
+  @argument[group]{a list of @class{gtk:radio-menu-item} widgets with the radio
+    group to which the radio menu item is to be attached or @code{nil}}
   @argument[label]{a string with the text of the radio menu item, with an
     underscore in front of the mnemonic character}
   @return{A new @class{gtk:radio-menu-item} widget.}
   @begin{short}
     Creates a new radio menu item containing a label.
   @end{short}
-  The label will be created using the function
-  @fun{gtk:label-new-with-mnemonic}, so underscores in the label indicate the
-  mnemonic for the menu item.
+  The label will be created using the @fun{gtk:label-new-with-mnemonic}
+  function, so underscores in the label indicate the mnemonic for the menu item.
   @see-class{gtk:radio-menu-item}"
   (group (g:slist-t (g:object radio-menu-item)))
   (label :string))
@@ -216,20 +218,19 @@
 ;;; gtk_radio_menu_item_new_from_widget ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_radio_menu_item_new_from_widget"
-           radio-menu-item-new-from-widget) (g:object radio-menu-item)
+(defcfun ("gtk_radio_menu_item_new_from_widget" radio-menu-item-new-from-widget)
+    (g:object radio-menu-item)
  #+liber-documentation
- "@version{#2020-7-18}
-  @argument[group-member]{a @class{gtk:radio-menu-item} widget to get the radio
-    group from or @code{nil}}
-  @return{A new @class{gtk:radio-menu-item}.}
+ "@version{2023-2-24}
+  @argument[group]{a list of @class{gtk:radio-menu-item} widgets with the radio
+    group to which the radio menu item is to be attached or @code{nil}}
+  @return{A new @class{gtk:radio-menu-item} widget.}
   @begin{short}
-    Creates a new radio menu item adding it to the same group as
-    @arg{group-member}.
+    Creates a new radio menu item adding it to the same group as @arg{group}.
   @end{short}
   @see-class{gtk:radio-menu-item}
   @see-function{gtk:radio-menu-item-new-with-label-from-widget}"
-  (group-member (g:object radio-menu-item)))
+  (group (g:object radio-menu-item)))
 
 (export 'radio-menu-item-new-from-widget)
 
@@ -241,18 +242,18 @@
            radio-menu-item-new-with-label-from-widget)
     (g:object radio-menu-item)
  #+liber-documentation
- "@version{#2020-7-18}
-  @argument[group-member]{the @class{gtk:radio-menu-item} group to which the
-    radio menu item is to be attached}
+ "@version{2023-2-24}
+  @argument[group]{a list of @class{gtk:radio-menu-item} widgets with the radio
+    group to which the radio menu item is to be attached or @code{nil}}
   @argument[label]{a string with the text for the label}
-  @return{A new @class{gtk:radio-menu-item}.}
+  @return{A new @class{gtk:radio-menu-item} widget.}
   @begin{short}
     Creates a new radio menu item whose child is a simple @class{gtk:label}
     widget.
   @end{short}
-  The new radio menu item is added to the same group as @arg{group-member}.
+  The new radio menu item is added to the same group as @arg{group}.
   @see-class{gtk:radio-menu-item}"
-  (group-member (g:object radio-menu-item))
+  (group (g:object radio-menu-item))
   (label :string))
 
 (export 'radio-menu-item-new-with-label-from-widget)
@@ -265,22 +266,21 @@
            radio-menu-item-new-with-mnemonic-from-widget)
     (g:object radio-menu-item)
  #+liber-documentation
- "@version{#2020-7-18}
-  @argument[group-member]{the @class{gtk:radio-menu-item} group to which the
-    radio menu item is to be attached}
+ "@version{2023-2-24}
+  @argument[group]{a list of @class{gtk:radio-menu-item} widgets with the radio
+    group to which the radio menu item is to be attached or @code{nil}}
   @argument[label]{a string with the text of the radio menu item, with an
     underscore in front of the mnemonic character}
-  @return{A new @class{gtk:radio-menu-item}.}
+  @return{A new @class{gtk:radio-menu-item} widget.}
   @begin{short}
     Creates a new radio menu item containing a label.
   @end{short}
-  The label will be created using the function
-  @fun{gtk:label-new-with-mnemonic}, so underscores in label indicate the
-  mnemonic for the menu item.
+  The label will be created using the @fun{gtk:label-new-with-mnemonic}
+  function, so underscores in label indicate the mnemonic for the menu item.
 
-  The new radio menu item is added to the same group as @arg{group-member}.
+  The new radio menu item is added to the same group as @arg{group}.
   @see-class{gtk:radio-menu-item}"
-  (group-member (g:object radio-menu-item))
+  (group (g:object radio-menu-item))
   (label :string))
 
 (export 'radio-menu-item-new-with-mnemonic-from-widget)
@@ -289,18 +289,17 @@
 ;;; gtk_radio_menu_item_set_group ()
 ;;; ----------------------------------------------------------------------------
 
-(declaim (inline radio-menu-item-set-group))
-
-(defun radio-menu-item-set-group (radio-menu-item group)
+(defcfun ("gtk_radio_menu_item_set_group" radio-menu-item-set-group) :void
  #+liber-documentation
- "@version{#2020-7-18}
-  @argument[radio-menu-item]{a @class{gtk:radio-menu-item} widget}
-  @argument[group]{the @class{gtk:radio-menu-item} group}
+ "@version{2023-2-24}
+  @argument[item]{a @class{gtk:radio-menu-item} widget}
+  @argument[group]{a list of @class{gtk:radio-menu-item} widgets for the group}
   @begin{short}
     Sets the group of a radio menu item, or changes it.
   @end{short}
   @see-class{gtk:radio-menu-item}"
-  (setf (radio-menu-item-group radio-menu-item) group))
+  (item (g:object radio-menu-item))
+  (group (g:slist-t (g:object radio-menu-item) :free-from-foreign nil)))
 
 (export 'radio-menu-item-set-group)
 
@@ -311,15 +310,16 @@
 (defcfun ("gtk_radio_menu_item_get_group" radio-menu-item-get-group)
     (g:slist-t (g:object radio-menu-item) :free-from-foreign nil)
  #+liber-documentation
- "@version{#2020-7-18}
-  @argument[menu-item]{a @class{gtk:radio-menu-item} widget}
-  @return{The group of @arg{menu-item}.}
+ "@version{2023-2-24}
+  @argument[item]{a @class{gtk:radio-menu-item} widget}
+  @return{The list @class{gtk:radio-menu-item} widgets in the group of
+    @arg{item}.}
   @begin{short}
     Returns the group to which the radio menu item belongs, as a list of
     @class{gtk:radio-menu-item} widgets.
   @end{short}
   @see-class{gtk:radio-menu-item}"
-  (menu-item (g:object radio-menu-item)))
+  (item (g:object radio-menu-item)))
 
 (export 'radio-menu-item-get-group)
 
@@ -330,36 +330,34 @@
 #+gtk-3-18
 (defcfun ("gtk_radio_menu_item_join_group" radio-menu-item-join-group) :void
  #+liber-documentation
- "@version{#2020-7-18}
-  @argument[menu-item]{a @class{gtk:radio-menu-item} widget}
-  @argument[group-source]{a @class{gtk:radio-menu-item} widget whose group we
-    are joining, or @code{nil} to remove @arg{menu-item} from iths current
-    group}
+ "@version{2023-2-24}
+  @argument[item]{a @class{gtk:radio-menu-item} widget}
+  @argument[group]{a @class{gtk:radio-menu-item} widget whose group we
+    are joining, or @code{nil} to remove @arg{item} from its current group}
   @begin{short}
     Joins a radio menu item to the group of another radio menu item.
   @end{short}
-
   This function should be used by language bindings to avoid the memory
-  manangement of the opaque @code{GSList} of the functions
-  @code{gtk_radio_menu_item_get_group()} and
-  @code{gtk_radio_menu_item_set_group()}.
+  manangement of the opaque @code{g:slist-t} structure of the
+  @fun{gtk:radio-menu-item-get-group} and @fun{gtk:radio-menu-item-set-group}
+  functions.
 
   @begin[Example]{dictionary}
   A common way to set up a group of radio menu item instances is:
     @begin{pre}
-(let (menu-item last-menu-item)
+(let (item lastitem)
   ;; Add three menu items to a group
   (dolist (label '(\"First Menu Item\" \"Second Menu Item\" \"Third Menu Item\"))
-    (setf menu-item (gtk:radio-menu-item-new-with-label nil label))
-    (gtk:radio-menu-item-join-group menu-item last-menu-item)
-    (setf last-menu-item menu-item)))
+    (setf item (gtk:radio-menu-item-new-with-label nil label))
+    (gtk:radio-menu-item-join-group item lastitem)
+    (setf lastitem item)))
     @end{pre}
   @end{dictionary}
   @see-class{gtk:radio-menu-item}"
-  (menu-item (g:object radio-menu-item))
-  (group-source (g:object radio-menu-item)))
+  (item (g:object radio-menu-item))
+  (group (g:object radio-menu-item)))
 
 #+gtk-3-18
 (export 'radio-menu-item-join-group)
 
-;;; --- End of file gtk.radio-menu-item.lisp -----------------------------------
+;;; --- End of file gtk3.radio-menu-item.lisp ----------------------------------
