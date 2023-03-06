@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
-;;; gdk.monitor.lisp
+;;; gdk3.monitor.lisp
 ;;;
 ;;; The documentation of this file is taken from the GDK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
-;;; Copyright (C) 2019 - 2022 Dieter Kaiser
+;;; Copyright (C) 2019 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -51,20 +51,20 @@
 ;;;
 ;;; Properties
 ;;;
-;;;            GdkDisplay*   display            Read / Write / Construct Only
-;;;          GdkRectangle*   geometry           Read
-;;;                  gint    height-mm          Read
-;;;                 gchar*   manufacturer       Read
-;;;                 gchar*   model              Read
-;;;                  gint    refresh-rate       Read
-;;;                  gint    scale-factor       Read
-;;;     GdkSubpixelLayout    subpixel-layout    Read
-;;;                  gint    width-mm           Read
-;;;          GdkRectangle*   workarea           Read
+;;;     display
+;;;     geometry
+;;;     height-mm
+;;;     manufacturer
+;;;     model
+;;;     refresh-rate
+;;;     scale-factor
+;;;     subpixel-layout
+;;;     width-mm
+;;;     workarea
 ;;;
 ;;; Signals
 ;;;
-;;;                  void    invalidate         Run First
+;;;     invalidate
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -92,7 +92,7 @@
 (setf (liber:alias-for-symbol 'subpixel-layout)
       "GEnum"
       (liber:symbol-documentation 'subpixel-layout)
- "@version{#2020-10-27}
+ "@version{2023-3-6}
   @begin{short}
     This enumeration describes how the red, green and blue components of
     physical pixels on an output device are laid out.
@@ -161,22 +161,22 @@
 
 #+liber-documentation
 (setf (documentation 'monitor 'type)
- "@version{#2020-11-3}
+ "@version{2023-3-6}
   @begin{short}
-    The @sym{gdk:monitor} class represents the individual outputs that are
+    The @sym{gdk:monitor} object represents the individual outputs that are
     associated with a @class{gdk:display} object.
   @end{short}
   The @class{gdk:display} class has APIs to enumerate monitors with the
-  functions @fun{gdk:display-n-monitors} and @fun{gdk:display-monitor}, and to
-  find particular monitors with the functions @fun{gdk:display-primary-monitor}
-  or @fun{gdk:display-monitor-at-window}.
+  @fun{gdk:display-n-monitors} and @fun{gdk:display-monitor} functions, and to
+  find particular monitors with the @fun{gdk:display-primary-monitor}
+  or @fun{gdk:display-monitor-at-window} functions.
 
-  The @sym{gdk:monitor} class was introduced in GTK+ 3.22 and supersedes earlier
+  The @sym{gdk:monitor} class was introduced in GTK 3.22 and supersedes earlier
   APIs in the @class{gdk:screen} class to obtain monitor-related information.
   @begin[Signal Details]{dictionary}
     @subheading{The \"invalidate\" signal}
     @begin{pre}
- lambda (monitor)    : Run First
+lambda (monitor)    :run-first
     @end{pre}
     @begin[code]{table}
       @entry[monitor]{The @sym{gdk:monitor} object on which the signal is
@@ -200,7 +200,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- monitor-display ----------------------------------------------------
+;;; --- monitor-display --------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "display" 'monitor) t)
@@ -212,23 +212,22 @@
 (setf (liber:alias-for-function 'monitor-display)
       "Accessor"
       (documentation 'monitor-display 'function)
- "@version{#2020-10-28}
+ "@version{#2023-3-6}
   @syntax[]{(gdk:monitor-display object) => display}
   @argument[object]{a @class{gdk:monitor} object}
   @argument[display]{a @class{gdk:display} object}
   @begin{short}
-    Accessor of the @slot[gdk:monitor]{display} slot of the
-    @class{gdk:monitor} class.
+    Accessor of the @slot[gdk:monitor]{display} slot of the @class{gdk:monitor} 
+    class.
   @end{short}
-
-  The slot access function @sym{gdk:monitor-display} gets the display that the
-  monitor belongs to.
+  The @sym{gdk:monitor-display} function gets the display that the monitor 
+  belongs to.
 
   Since 3.22
   @see-class{gdk:monitor}
   @see-class{gdk:display}")
 
-;;; --- monitor-geometry ---------------------------------------------------
+;;; --- monitor-geometry -------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "geometry" 'monitor) t)
@@ -239,27 +238,27 @@
 (setf (liber:alias-for-function 'monitor-geometry)
       "Accessor"
       (documentation 'monitor-geometry 'function)
- "@version{#2020-11-3}
+ "@version{#2023-3-6}
   @syntax[]{(gdk:monitor-geometry object) => geometry}
   @argument[object]{a @class{gdk:monitor} object}
-  @argument[geometry]{a @class{gdk:rectangle} with the monitor geometry}
+  @argument[geometry]{a @class{gdk:rectangle} instance with the monitor 
+    geometry}
   @begin{short}
-    Accessor of the @slot[gdk:monitor]{geometry} slot of the
+    Accessor of the @slot[gdk:monitor]{geometry} slot of the 
     @class{gdk:monitor} class.
   @end{short}
-
-  The slot access function @sym{gdk:monitor-geometry} retrieves the size and
-  position of an individual monitor within the display coordinate space. The
-  returned geometry is in \"application pixels\", not in \"device pixels\".
-  See the function @fun{gdk:monitor-scale-factor} for the internal scale factor
-  that maps from monitor coordinates to device pixels.
+  The @sym{gdk:monitor-geometry} function retrieves the size and position of an 
+  individual monitor within the display coordinate space. The returned geometry 
+  is in \"application pixels\", not in \"device pixels\". See the 
+  @fun{gdk:monitor-scale-factor} function for the internal scale factor that 
+  maps from monitor coordinates to device pixels.
 
   Since 3.22
   @see-class{gdk:monitor}
   @see-class{gdk:rectangle}
   @see-function{gdk:monitor-scale-factor}")
 
-;;; --- monitor-height-mm --------------------------------------------------
+;;; --- monitor-height-mm ------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "height-mm" 'monitor) t)
@@ -272,7 +271,7 @@
 (setf (liber:alias-for-function 'monitor-height-mm)
       "Accessor"
       (documentation 'monitor-height-mm 'function)
- "@version{#2020-10-28}
+ "@version{#2023-3-6}
   @syntax[]{(gdk:monitor-height-mm object) => height}
   @argument[object]{a @class{gdk:monitor} object}
   @argument[height]{an integer with the physical height of the monitor}
@@ -280,14 +279,13 @@
     Accessor of the @slot[gdk:monitor]{height-mm} slot of the
     @class{gdk:monitor} class.
   @end{short}
-
-  The slot access function @sym{gdk:monitor-height-mm} gets the height in
-  millimeters of the monitor.
+  The @sym{gdk:monitor-height-mm} function gets the height in millimeters of 
+  the monitor.
 
   Since 3.22
   @see-class{gdk:monitor}")
 
-;;; --- monitor-manufacturer -----------------------------------------------
+;;; --- monitor-manufacturer ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "manufacturer" 'monitor) t)
@@ -299,7 +297,7 @@
 (setf (liber:alias-for-function 'monitor-manufacturer)
       "Accessor"
       (documentation 'monitor-manufacturer 'function)
- "@version{#2020-10-28}
+ "@version{#2023-3-6}
   @syntax[]{(gdk:monitor-manufacturer object) => manufacturer}
   @argument[object]{a @class{gdk:monitor} object}
   @argument[manufacturer]{a string with the name of the manufacturer, or
@@ -308,14 +306,13 @@
     Accessor of the @slot[gdk:monitor]{manufacturer} slot of the
     @class{gdk:monitor} class.
   @end{short}
-
-  The slot access function @sym{gdk:monitor-manufacturer} gets the name of the
-  monitor's manufacturer, if available.
+  The @sym{gdk:monitor-manufacturer} function gets the name of the monitor's 
+  manufacturer, if available.
 
   Since 3.22
   @see-class{gdk:monitor}")
 
-;;; --- monitor-model ------------------------------------------------------
+;;; --- monitor-model ----------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "model" 'monitor) t)
@@ -327,22 +324,21 @@
 (setf (liber:alias-for-function 'monitor-model)
       "Accessor"
       (documentation 'monitor-model 'function)
- "@version{#2020-10-28}
+ "@version{#2023-3-6}
   @syntax[]{(gdk:monitor-model object) => model}
   @argument[object]{a @class{gdk:monitor} object}
   @argument[model]{a string with the monitor model, or @code{nil}}
   @begin{short}
-    Accessor of the @slot[gdk:monitor]{model} slot of the
-    @class{gdk:monitor} class.
+    Accessor of the @slot[gdk:monitor]{model} slot of the @class{gdk:monitor} 
+    class.
   @end{short}
-
-  The slot access function @sym{gdk:monitor-model} gets a string identifying
-  the monitor model, if available.
+  The @sym{gdk:monitor-model} function gets a string identifying the monitor 
+  model, if available.
 
   Since 3.22
   @see-class{gdk:monitor}")
 
-;;; --- monitor-refresh-rate -----------------------------------------------
+;;; --- monitor-refresh-rate ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "refresh-rate" 'monitor) t)
@@ -355,7 +351,7 @@
 (setf (liber:alias-for-function 'monitor-refresh-rate)
       "Accessor"
       (documentation 'monitor-refresh-rate 'function)
- "@version{#2020-10-28}
+ "@version{#2023-3-6}
   @syntax[]{(gdk:monitor-refresh-rate object) => refresh-rate}
   @argument[object]{a @class{gdk:monitor} object}
   @argument[refresh-rate]{an integer with the refresh rate in milli-Hertz, or 0}
@@ -363,16 +359,14 @@
     Accessor of the @slot[gdk:monitor]{refresh-rate} slot of the
     @class{gdk:monitor} class.
   @end{short}
-
-  The slot access function @sym{gdk:monitor-refresh-rate} gets the refresh rate
-  of the monitor, if available.
-
-  The value is in milli-Hertz, so a refresh rate of 60 Hz is returned as 60000.
+  The @sym{gdk:monitor-refresh-rate} function gets the refresh rate of the 
+  monitor, if available. The value is in milli-Hertz, so a refresh rate of 
+  60 Hz is returned as 60000.
 
   Since 3.22
   @see-class{gdk:monitor}")
 
-;;; --- monitor-scale-factor -----------------------------------------------
+;;; --- monitor-scale-factor ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "scale-factor" 'monitor) t)
@@ -385,29 +379,28 @@
 (setf (liber:alias-for-function 'monitor-scale-factor)
       "Accessor"
       (documentation 'monitor-scale-factor 'function)
- "@version{#2020-10-28}
+ "@version{#2023-3-6}
   @syntax[]{(gdk:monitor-scale-factor object) => scale-factor}
   @argument[object]{a @class{gdk:monitor} object}
-  @argument[scale-factor]{a @code{:int} with the scale factor}
+  @argument[scale-factor]{an integer with the scale factor}
   @begin{short}
     Accessor of the @slot[gdk:monitor]{scale-factor} slot of the
     @class{gdk:monitor} class.
   @end{short}
-
-  The slot access function @sym{gdk:monitor-scale-factor} gets the internal
-  scale factor that maps from monitor coordinates to the actual device pixels.
-  On traditional systems this is 1, but on very high density outputs this can
-  be a higher value (often 2).
+  The @sym{gdk:monitor-scale-factor} function gets the internal scale factor 
+  that maps from monitor coordinates to the actual device pixels. On traditional 
+  systems this is 1, but on very high density outputs this can be a higher value 
+  (often 2).
 
   This can be used if you want to create pixel based data for a particular
   monitor. But most of the time you are drawing to a window where it is better
-  to use the function @fun{gdk:window-scale-factor} instead.
+  to use the @fun{gdk:window-scale-factor} function instead.
 
   Since 3.22
   @see-class{gdk:monitor}
   @see-function{gdk:window-scale-factor}")
 
-;;; --- monitor-subpixel-layout --------------------------------------------
+;;; --- monitor-subpixel-layout ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "subpixel-layout" 'monitor) t)
@@ -420,24 +413,24 @@
 (setf (liber:alias-for-function 'monitor-subpixel-layout)
       "Accessor"
       (documentation 'monitor-subpixel-layout 'function)
- "@version{#2020-10-28}
+ "@version{#2023-3-6}
   @syntax[]{(gdk:monitor-subpixel-layout object) => layout}
   @argument[object]{a @class{gdk:monitor} object}
-  @argument[layout]{a subpixel layout of type @symbol{gdk:subpixel-layout}}
+  @argument[layout]{a @symbol{gdk:subpixel-layout} value with the subpixel 
+    layout}
   @begin{short}
     Accessor of the @slot[gdk:monitor]{subpixel-layout} slot of the
     @class{gdk:monitor} class.
   @end{short}
-
-  The slot access function @sym{gdk:monitor-subpixel-layout} gets information
-  about the layout of red, green and blue primaries for each pixel in this
-  monitor, if available.
+  The @sym{gdk:monitor-subpixel-layout} function gets information about the 
+  layout of red, green and blue primaries for each pixel in this monitor, if 
+  available.
 
   Since 3.22
   @see-class{gdk:monitor}
   @see-symbol{gdk:subpixel-layout}")
 
-;;; --- monitor-width-mm ---------------------------------------------------
+;;; --- monitor-width-mm -------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "width-mm" 'monitor) t)
@@ -450,7 +443,7 @@
 (setf (liber:alias-for-function 'monitor-width-mm)
       "Accessor"
       (documentation 'monitor-width-mm 'function)
- "@version{#2020-10-28}
+ "@version{#2023-3-6}
   @syntax[]{(gdk:monitor-width-mm object) => width}
   @argument[object]{a @class{gdk:monitor} object}
   @argument[width]{an integer with the physical width of the monitor}
@@ -458,14 +451,13 @@
     Accessor of the @slot[gdk:monitor]{width-mm} slot of the
     @class{gdk:monitor} class.
   @end{short}
-
-  The slot access function @sym{gdk:monitor-width-mm} gets the width in
-  millimeters of the monitor.
+  The @sym{gdk:monitor-width-mm} function gets the width in millimeters of the 
+  monitor.
 
   Since 3.22
   @see-class{gdk:monitor}")
 
-;;; --- monitor-workarea ---------------------------------------------------
+;;; --- monitor-workarea -------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "workarea" 'monitor) t)
@@ -476,20 +468,20 @@
 (setf (liber:alias-for-function 'monitor-workarea)
       "Accessor"
       (documentation 'monitor-workarea 'function)
- "@version{#2020-11-3}
+ "@version{#2023-3-6}
   @syntax[]{(gdk:monitor-workarea object) => workarea}
   @argument[object]{a @class{gdk:monitor} object}
-  @argument[workarea]{a @class{gdk:rectangle} with the monitor workarea}
+  @argument[workarea]{a @class{gdk:rectangle} instance with the monitor 
+    workarea}
   @begin{short}
     Accessor of the @slot[gdk:monitor]{workarea} slot of the
     @class{gdk:monitor} class.
   @end{short}
-
-  The slot access function @sym{gdk:monitor-workarea} retrieves the size and
-  position of the \"work area\" on a monitor within the display coordinate
-  space. The returned geometry is in \"application pixels\", not in
-  \"device pixels\". See the function @fun{gdk:monitor-scale-factor} for the
-  internal scale factor that maps from monitor coordinates to device pixels.
+  The @sym{gdk:monitor-workarea} function retrieves the size and position of the 
+  \"work area\" on a monitor within the display coordinate space. The returned 
+  geometry is in \"application pixels\", not in \"device pixels\". See the 
+  @fun{gdk:monitor-scale-factor} function for the internal scale factor that 
+  maps from monitor coordinates to device pixels.
 
   The work area should be considered when positioning menus and similar popups,
   to avoid placing them below panels, docks or other desktop components.
@@ -508,13 +500,13 @@
 
 (defcfun ("gdk_monitor_is_primary" monitor-is-primary) :boolean
  #+liber-documentation
- "@version{#2020-10-28}
+ "@version{#2023-3-6}
   @argument[monitor]{a @class{gdk:monitor} object}
   @return{@em{True} if @arg{monitor} is the primary monitor.}
   @begin{short}
     Gets whether the monitor should be considered primary.
   @end{short}
-  See the function @fun{gdk:display-primary-monitor}.
+  See the @fun{gdk:display-primary-monitor} function.
 
   Since 3.22
   @see-class{gdk:monitor}
