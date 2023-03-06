@@ -1,13 +1,13 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.size-group.lisp
+;;; gtk3.size-group.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
+;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2019 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -49,8 +49,8 @@
 ;;;
 ;;; Properties
 ;;;
-;;;             gboolean    ignore-hidden    Read / Write
-;;;     GtkSizeGroupMode    mode             Read / Write
+;;;     ignore-hidden
+;;;     mode
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -80,7 +80,7 @@
 (setf (liber:alias-for-symbol 'size-group-mode)
       "GEnum"
       (liber:symbol-documentation 'size-group-mode)
- "@version{#2020-6-3}
+ "@version{#2023-2-23}
   @begin{short}
     The mode of the size group determines the directions in which the size
     group affects the requested sizes of its component widgets.
@@ -120,40 +120,41 @@
 
 #+liber-documentation
 (setf (documentation 'size-group 'type)
- "@version{#2020-6-3}
+ "@version{#2023-2-23}
   @begin{short}
-    @sym{gtk:size-group} provides a mechanism for grouping a number of widgets
-    together so they all request the same amount of space. This is typically
-    useful when you want a column of widgets to have the same size, but you
-    cannot use a @class{gtk:grid} widget.
+    A @sym{gtk:size-group} object provides a mechanism for grouping a number of 
+    widgets together so they all request the same amount of space. This is 
+    typically useful when you want a column of widgets to have the same size, 
+    but you cannot use a @class{gtk:grid} widget.
   @end{short}
 
-  In detail, the size requested for each widget in a @sym{gtk:size-group} is
-  the maximum of the sizes that would have been requested for each widget in
+  In detail, the size requested for each widget in a @sym{gtk:size-group} object 
+  is the maximum of the sizes that would have been requested for each widget in
   the size group if they were not in the size group. The mode of the size
-  group, see the function @fun{gtk:size-group-mode}, determines whether this
+  group, see the @fun{gtk:size-group-mode} function, determines whether this
   applies to the horizontal size, the vertical size, or both sizes.
 
   Note that size groups only affect the amount of space requested, not the
   size that the widgets finally receive. If you want the widgets in a
-  @sym{gtk:size-group} to actually be the same size, you need to pack them in
-  such a way that they get the size they request and not more. For example, if
-  you are packing your widgets into a table, you would not include the
-  @code{:fill} flag.
+  @sym{gtk:size-group} object to actually be the same size, you need to pack 
+  them in such a way that they get the size they request and not more. For 
+  example, if you are packing your widgets into a table, you would not include 
+  the @code{:fill} flag.
 
-  @sym{gtk:size-group} objects are referenced by each widget in the size group,
-  so once you have added all widgets to a @sym{gtk:size-group}, you can drop the
-  initial reference to the size group with the function @fun{g:object-unref}. If
-  the widgets in the size group are subsequently destroyed, then they will be
-  removed from the size group and drop their references on the size group. When
-  all widgets have been removed, the size group will be freed.
+  The @sym{gtk:size-group} objects are referenced by each widget in the size 
+  group, so once you have added all widgets to a @sym{gtk:size-group} object, 
+  you can drop the initial reference to the size group with the 
+  @fun{g:object-unref} function. If the widgets in the size group are 
+  subsequently destroyed, then they will be removed from the size group and drop 
+  their references on the size group. When all widgets have been removed, the 
+  size group will be freed.
 
-  Widgets can be part of multiple size groups. GTK+ will compute the
-  horizontal size of a widget from the horizontal requisition of all widgets
-  that can be reached from the widget by a chain of size groups of type
-  @code{:horizontal} or @code{:both}, and the vertical size from the vertical
-  requisition of all widgets that can be reached from the widget by a chain of
-  size groups of type @code{:vertical} or @code{:both}.
+  Widgets can be part of multiple size groups. GTK will compute the horizontal 
+  size of a widget from the horizontal requisition of all widgets that can be 
+  reached from the widget by a chain of size groups of type @code{:horizontal} 
+  or @code{:both}, and the vertical size from the vertical requisition of all 
+  widgets that can be reached from the widget by a chain of size groups of type 
+  @code{:vertical} or @code{:both}.
 
   Note that only non-contextual sizes of every widget are ever consulted by
   size groups, since size groups have no knowledge of what size a widget will
@@ -175,17 +176,18 @@
     one for each member of the size group. The name attribute gives the ID of
     the widget.
 
-    @b{Example:} A UI definition fragment with @sym{gtk:size-group}
+    @b{Example:} A UI definition fragment with the @sym{gtk:size-group} object.
     @begin{pre}
-   <object class=\"GtkSizeGroup\">
-     <property name=\"mode\">GTK_SIZE_GROUP_HORIZONTAL</property>
-     <widgets>
-       <widget name=\"radio1\"/>
-       <widget name=\"radio2\"/>
-     </widgets>
-   </object>
+<object class=\"GtkSizeGroup\">
+  <property name=\"mode\">GTK_SIZE_GROUP_HORIZONTAL</property>
+  <widgets>
+    <widget name=\"radio1\"/>
+    <widget name=\"radio2\"/>
+  </widgets>
+</object>
     @end{pre}
   @end{dictionary}
+  @see-constructor{gtk:size-group-new}
   @see-slot{gtk:size-group-ignore-hidden}
   @see-slot{gtk:size-group-mode}")
 
@@ -193,7 +195,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- size-group-ignore-hidden -------------------------------------------
+;;; --- size-group-ignore-hidden -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "ignore-hidden" 'size-group) t)
@@ -213,7 +215,7 @@
 (setf (liber:alias-for-function 'size-group-ignore-hidden)
       "Accessor"
       (documentation 'size-group-ignore-hidden 'function)
- "@version{#2020-6-3}
+ "@version{#2023-2-23}
   @syntax[]{(gtk:size-group-ignore-hidden object) => ignore-hidden}
   @syntax[]{(setf (gtk:size-group-ignore-hidden object) ignore-hidden)}
   @argument[size-group]{a @class{gtk:size-group} object}
@@ -223,10 +225,9 @@
     Accessor of the @slot[gtk:size-group]{ignore-hidden} slot of the
     @class{gtk:size-group} class.
   @end{short}
-
-  The slot access function @sym{gtk:size-group-ignore-hidden} returns if
-  invisible widgets are ignored when calculating the size. The slot access
-  function @sym{(setf gtk:size-group-ignore-hidden)} sets whether unmapped
+  The @sym{gtk:size-group-ignore-hidden} function returns if invisible widgets 
+  are ignored when calculating the size. The 
+  @sym{(setf gtk:size-group-ignore-hidden)} function sets whether unmapped
   widgets should be ignored when calculating the size.
   @begin[Warning]{dictionary}
     The @sym{gtk:size-group-ignore-hidden} function has been deprecated since
@@ -253,7 +254,7 @@
 (setf (liber:alias-for-function 'size-group-mode)
       "Accessor"
       (documentation 'size-group-mode 'function)
- "@version{#2020-6-3}
+ "@version{#2023-2-23}
   @syntax[]{(gtk:size-group-mode object) => mode}
   @syntax[]{(setf (gtk:size-group-mode object) mode)}
   @argument[size-group]{a @class{gtk:size-group} object}
@@ -263,10 +264,9 @@
     Accessor of the @slot[gtk:size-group]{mode} slot of the
     @class{gtk:size-group} class.
   @end{short}
-
-  The slot access function @sym{gtk:size-group-mode} gets the current mode of
-  the size group. The slot access function @sym{(setf gtk:size-group-mode)} sets
-  the mode of the size group.
+  The @sym{gtk:size-group-mode} function gets the current mode of the size 
+  group. The @sym{(setf gtk:size-group-mode)} function sets the mode of the 
+  size group.
 
   The mode of the size group determines whether the widgets in the size group
   should all have the same horizontal requisition, @code{:horizontal}, all have
@@ -282,8 +282,8 @@
 
 (defun size-group-new (mode)
  #+liber-documentation
- "@version{#2020-6-3}
-  @argument[mode]{the @symbol{gtk:size-group-mode} value for the new size group}
+ "@version{#2023-2-23}
+  @argument[mode]{a @symbol{gtk:size-group-mode} value for the new size group}
   @return{A newly created @class{gtk:size-group} object.}
   @begin{short}
     Create a new size group.
@@ -301,22 +301,23 @@
 
 (defcfun ("gtk_size_group_add_widget" size-group-add-widget) :void
  #+liber-documentation
- "@version{#2020-6-3}
-  @argument[size-group]{a @class{gtk:size-group} object}
-  @argument[widget]{the @class{gtk:widget} to add}
+ "@version{#2023-2-23}
+  @argument[group]{a @class{gtk:size-group} object}
+  @argument[widget]{a @class{gtk:widget} widget to add}
   @begin{short}
     Adds a widget to a @class{gtk:size-group} object.
   @end{short}
   In the future, the requisition of the widget will be determined as the maximum
   of its requisition and the requisition of the other widgets in the size group.
   Whether this applies horizontally, vertically, or in both directions depends
-  on the mode of the size group. See the function @fun{gtk:size-group-mode}.
+  on the mode of the size group. See the @fun{gtk:size-group-mode} function.
 
   When the widget is destroyed or no longer referenced elsewhere, it will be
   removed from the size group.
   @see-class{gtk:size-group}
+  @see-class{gtk:widget}
   @see-function{gtk:size-group-mode}"
-  (size-group (g:object size-group))
+  (group (g:object size-group))
   (widget (g:object widget)))
 
 (export 'size-group-add-widget)
@@ -327,14 +328,15 @@
 
 (defcfun ("gtk_size_group_remove_widget" size-group-remove-widget) :void
  #+liber-documentation
- "@version{#2020-6-3}
-  @argument[size-group]{a @class{gtk:size-group} object}
-  @argument[widget]{the @class{gtk:widget} to remove}
+ "@version{#2023-2-23}
+  @argument[group]{a @class{gtk:size-group} object}
+  @argument[widget]{a @class{gtk:widget} widget to remove}
   @begin{short}
     Removes a widget from a size group.
   @end{short}
-  @see-class{gtk:size-group}"
-  (size-group (g:object size-group))
+  @see-class{gtk:size-group}
+  @see-class{gtk:widget}"
+  (group (g:object size-group))
   (widget (g:object widget)))
 
 (export 'size-group-remove-widget)
@@ -346,8 +348,8 @@
 (defcfun ("gtk_size_group_get_widgets" size-group-widgets)
     (g:slist-t g:object :free-from-foreign nil)
  #+liber-documentation
- "@version{#2020-6-3}
-  @argument[size-group]{a @class{gtk:size-group} object}
+ "@version{#2023-2-23}
+  @argument[group]{a @class{gtk:size-group} object}
   @begin{return}
     A list of widgets.
   @end{return}
@@ -355,8 +357,8 @@
     Returns the list of widgets associated with the size group.
   @end{short}
   @see-class{gtk:size-group}"
-  (size-group (g:object size-group)))
+  (group (g:object size-group)))
 
 (export 'size-group-widgets)
 
-;;; --- End of file gtk.size-group.lisp ---------------------------------------
+;;; --- End of file gtk3.size-group.lisp ---------------------------------------
