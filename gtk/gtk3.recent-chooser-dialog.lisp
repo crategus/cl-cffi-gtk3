@@ -1,13 +1,13 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.recent-chooser-dialog.lisp
+;;; gtk3.recent-chooser-dialog.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK+ library.
+;;; The documentation of this file is taken from the GTK 3 Reference Manual
+;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -75,23 +75,23 @@
 
 #+liber-documentation
 (setf (documentation 'recent-chooser-dialog 'type)
- "@version{#2020-9-13}
+ "@version{#2023-3-1}
   @image[recentchooserdialog]{}
   @begin{short}
-    @sym{gtk:recent-chooser-dialog} is a dialog box suitable for displaying the
-    recently used documents.
+    The @sym{gtk:recent-chooser-dialog} widget is a dialog box suitable for
+    displaying the recently used documents.
   @end{short}
-  This widgets works by putting a @class{gtk:recent-chooser-widget} inside a
-  @class{gtk:dialog}. It exposes the @class{gtk:recent-chooser} interface, so
-  you can use all the @class{gtk:recent-chooser} functions on the recent chooser
-  dialog as well as those for @class{gtk:dialog}.
+  This widgets works by putting a @class{gtk:recent-chooser-widget} widget
+  inside a @class{gtk:dialog} widget. It exposes the @class{gtk:recent-chooser}
+  interface, so you can use all the @class{gtk:recent-chooser} functions on the
+  recent chooser dialog as well as those for the @class{gtk:dialog} widget.
 
-  Note that @sym{gtk:recent-chooser-dialog} does not have any methods of its
-  own. Instead, you should use the functions that work on a
-  @class{gtk:recent-chooser}.
+  Note that the @sym{gtk:recent-chooser-dialog} widget does not have any
+  methods of its own. Instead, you should use the functions that work on a
+  @class{gtk:recent-chooser} widget.
   @begin[Example]{dictionary}
     In the simplest of cases, you can use the following code to use a
-    @sym{gtk:recent-chooser-dialog} to select a recently used file:
+    @sym{gtk:recent-chooser-dialog} widget to select a recently used file:
     @begin{pre}
 GtkWidget *dialog;
 
@@ -113,6 +113,8 @@ if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_ACCEPT)
 gtk_widget_destroy (dialog);
     @end{pre}
   @end{dictionary}
+  @see-constructor{gtk:recent-chooser-dialog-new}
+  @see-constructor{gtk:recent-chooser-dialog-new-for-manager}
   @see-class{gtk:recent-chooser}
   @see-class{gtk:dialog}")
 
@@ -122,17 +124,17 @@ gtk_widget_destroy (dialog);
 
 (defun recent-chooser-dialog-new (title parent &rest buttons)
  #+liber-documentation
- "@version{#2020-9-13}
-  @argument[title]{a @code{:string} with the title of the dialog, or @code{nil}}
+ "@version{#2023-3-1}
+  @argument[title]{a string with the title of the dialog, or @code{nil}}
   @argument[parent]{transient @class{gtk:window} parent of the dialog, or
     @code{nil}}
   @argument[buttons]{pairs with a button text or stock ID and the response ID
     for the button of type @symbol{gtk:response-type}}
   @return{A new @class{gtk:recent-chooser-dialog} object.}
   @begin{short}
-    Creates a new @class{gtk:recent-chooser-dialog}.
+    Creates a new @class{gtk:recent-chooser-dialog} widget.
   @end{short}
-  This function is analogous to the function @fun{gtk:dialog-new-with-buttons}.
+  This function is analogous to the @fun{gtk:dialog-new-with-buttons} function.
   @see-class{gtk:recent-chooser-dialog}
   @see-class{gtk:window}
   @see-function{gtk:dialog-new-with-buttons}"
@@ -152,21 +154,20 @@ gtk_widget_destroy (dialog);
 ;;; ----------------------------------------------------------------------------
 
 (defun recent-chooser-dialog-new-for-manager (title parent manager
-                                                  &rest buttons)
+                                              &rest buttons)
  #+liber-documentation
- "@version{#2020-9-13}
-  @argument[title]{a @code{:string} with the title of the dialog, or @code{nil}}
-  @argument[parent]{transient @class{gtk:window} parent of the dialog, or
+ "@version{#2023-3-1}
+  @argument[title]{a string with the title of the dialog, or @code{nil}}
+  @argument[parent]{a transient @class{gtk:window} parent of the dialog, or
     @code{nil}}
   @argument[manager]{a @class{gtk:recent-manager} object}
   @argument[buttons]{pairs with a button text or stock ID and the response ID
     for the button of type @symbol{gtk:response-type}}
-  @return{A new @class{gtk:recent-chooser-dialog} object.}
+  @return{A new @class{gtk:recent-chooser-dialog} widget.}
   @begin{short}
-    Creates a new @class{gtk:recent-chooser-dialog} with a specified recent
-    manager.
+    Creates a new @class{gtk:recent-chooser-dialog} widget with a specified
+    recent manager.
   @end{short}
-
   This is useful if you have implemented your own recent manager, or if you
   have a customized instance of a @class{gtk:recent-manager} object.
   @see-class{gtk:recent-chooser-dialog}
@@ -185,4 +186,4 @@ gtk_widget_destroy (dialog);
 
 (export 'recent-chooser-dialog-new-for-manager)
 
-;;; --- End of file gkt.recent-chooser-dialog.lisp -----------------------------
+;;; --- End of file gtk3.recent-chooser-dialog.lisp ----------------------------
