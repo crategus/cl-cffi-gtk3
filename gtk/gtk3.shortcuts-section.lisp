@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.shortcuts-section.lisp
+;;; gtk3.shortcuts-section.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK+ library.
+;;; The documentation of this file is taken from the GTK 3 Reference Manual
+;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
-;;; Copyright (C) 2019 - 2020 Dieter Kaiser
+;;; Copyright (C) 2019 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -36,14 +36,14 @@
 ;;;
 ;;; Properties
 ;;;
-;;;        guint    max-height             Read / Write
-;;;        gchar*   section-name           Read / Write
-;;;        gchar*   title                  Read / Write
-;;;        gchar*   view-name              Read / Write
+;;;     max-height
+;;;     section-name
+;;;     title
+;;;     view-name
 ;;;
 ;;; Signals
 ;;;
-;;;     gboolean    change-current-page    Action
+;;;     change-current-page
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -88,7 +88,7 @@
 
 #+liber-documentation
 (setf (documentation 'shortcuts-section 'type)
- "@version{#2020-9-8}
+ "@version{#2023-2-28}
   @begin{short}
     A @sym{gtk:shortcuts-section} widget collects all the keyboard shortcuts
     and gestures for a major application mode.
@@ -105,23 +105,24 @@
   @begin[Signal Details]{dictionary}
     @subheading{The \"change-current-page\" signal}
       @begin{pre}
- lambda (shortcutsection arg)    : Action
+lambda (section arg)    :action
       @end{pre}
       @begin[code]{table}
-        @entry[shortcutswindow]{The @sym{gtk:shortcuts-window} object.}
-        @entry[arg]{A @code{:int}.}
+        @entry[section]{The @sym{gtk:shortcuts-section} widget.}
+        @entry[arg]{An integer.}
       @end{table}
   @end{dictionary}
   @see-slot{gtk:shortcuts-section-max-height}
   @see-slot{gtk:shortcuts-section-section-name}
   @see-slot{gtk:shortcuts-section-title}
-  @see-slot{gtk:shortcuts-section-view-name}")
+  @see-slot{gtk:shortcuts-section-view-name}
+  @see-class{gtk:shortcuts-window}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- shortcuts-section-max-height ---------------------------------------
+;;; --- shortcuts-section-max-height -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "max-height"
@@ -136,89 +137,85 @@
 (setf (liber:alias-for-function 'shortcuts-section-max-height)
       "Accessor"
       (documentation 'shortcuts-section-max-height 'function)
- "@version{#2020-9-8}
+ "@version{#2023-2-28}
   @syntax[]{(gtk:shortcuts-section-max-height object) => max-height}
   @syntax[]{(setf (gtk:shortcuts-section-max-height object) max-height)}
   @argument[object]{a @class{gtk:shortcuts-section} widget}
-  @argument[max-height]{a @code{:uint} with the maximum number of lines to
+  @argument[max-height]{a unsigned integer with the maximum number of lines to
     allow per column}
   @begin{short}
     Accessor of the @slot[gtk:shortcuts-section]{max-height} slot of the
     @class{gtk:shortcuts-section} class.
   @end{short}
-
   The maximum number of lines to allow per column. This property can be used to
   influence how the groups in this section are distributed across pages and
   columns. The default value of 15 should work in for most cases.
   @see-class{gtk:shortcuts-section}")
 
-;;; --- shortcuts-section-section-name -------------------------------------
+;;; --- shortcuts-section-section-name -----------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "section-name"
-                      'shortcuts-section) t)
+(setf (documentation (liber:slot-documentation "section-name" 
+                                               'shortcuts-section) t)
  "The @code{section-name} property of type @code{:string} (Read / Write) @br{}
   A unique name to identify this section among the sections added to the
-  @class{gtk:shortcuts-window}. Setting the @code{section-name} property to this
-  string will make this section shown in the @class{gtk:shortcuts-window}. @br{}
+  @class{gtk:shortcuts-window} widget. Setting the @code{section-name} property 
+  to this string will make this section shown in the 
+  @class{gtk:shortcuts-window} widget. @br{}
   Default value: @code{nil}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'shortcuts-section-section-name)
       "Accessor"
       (documentation 'shortcuts-section-section-name 'function)
- "@version{#2020-9-8}
+ "@version{#2023-2-28}
   @syntax[]{(gtk:shortcuts-section-section-name object) => section-name}
   @syntax[]{(setf (gtk:shortcuts-section-section-name object) section-name)}
   @argument[object]{a @class{gtk:shortcuts-section} widget}
-  @argument[section-name]{a @code{:string} with a unique name to identify this
-    section}
+  @argument[section-name]{a string with a unique name to identify this section}
   @begin{short}
     Accessor of the @slot[gtk:shortcuts-section]{section-name} slot of the
     @class{gtk:shortcuts-section} class.
   @end{short}
-
   A unique name to identify this section among the sections added to the
   @class{gtk:shortcuts-window} widget. Setting the @code{section-name} property
-  to this string will make this section shown in the
+  to this string will make this section shown in the 
   @class{gtk:shortcuts-window} widget.
   @see-class{gtk:shortcuts-section}")
 
-;;; --- shortcuts-section-title --------------------------------------------
+;;; --- shortcuts-section-title ------------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "title"
-                      'shortcuts-section) t)
+(setf (documentation (liber:slot-documentation "title" 'shortcuts-section) t)
  "The @code{title} property of type @code{:string} (Read / Write) @br{}
   The string to show in the section selector of the @class{gtk:shortcuts-window}
-  for this section. If there is only one section, you don't need to set a title,
-  since the section selector will not be shown in this case. @br{}
+  widget for this section. If there is only one section, you don't need to set 
+  a title, since the section selector will not be shown in this case. @br{}
   Default value: @code{nil}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'shortcuts-section-title)
       "Accessor"
       (documentation 'shortcuts-section-title 'function)
- "@version{#2020-9-8}
+ "@version{#2023-2-28}
   @syntax[]{(gtk:shortcuts-section-title object) => title}
   @syntax[]{(setf (gtk:shortcuts-section-title object) title)}
   @argument[object]{a @class{gtk:shortcuts-section} widget}
-  @argument[title]{a @code{:string} to show in the section selector}
+  @argument[title]{a string to show in the section selector}
   @begin{short}
     Accessor of the @slot[gtk:shortcuts-section]{title} slot of the
     @class{gtk:shortcuts-section} class.
   @end{short}
-
   The string to show in the section selector of the @class{gtk:shortcuts-window}
-  for this section. If there is only one section, you don't need to set a title,
-  since the section selector will not be shown in this case.
+  widget for this section. If there is only one section, you don't need to set 
+  a title, since the section selector will not be shown in this case.
   @see-class{gtk:shortcuts-section}")
 
-;;; --- shortcuts-section-view-name ----------------------------------------
+;;; --- shortcuts-section-view-name --------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "view-name"
-                      'shortcuts-section) t)
+(setf (documentation (liber:slot-documentation "view-name" 
+                                               'shortcuts-section) t)
  "The @code{view-name} property of type @code{:string} (Read / Write) @br{}
   A view name to filter the groups in this section by. See \"view\".
   Applications are expected to use the @code{view-name} property for this
@@ -229,21 +226,19 @@
 (setf (liber:alias-for-function 'shortcuts-section-view-name)
       "Accessor"
       (documentation 'shortcuts-section-view-name 'function)
- "@version{#2020-9-8}
+ "@version{#2023-2-28}
   @syntax[]{(gtk:shortcuts-section-view-name object) => view-name}
   @syntax[]{(setf (gtk:shortcuts-section-view-name object) view-name)}
   @argument[object]{a @class{gtk:shortcuts-section} widget}
-  @argument[view-name]{a @code{:string} with a view name to filter the groups
-    in this section by}
+  @argument[view-name]{a string with a view name to filter the groups in this 
+    section by}
   @begin{short}
     Accessor of the slot @slot[gtk:shortcuts-section]{view-name} of the
     @class{gtk:shortcuts-section} class.
   @end{short}
-
   A view name to filter the groups in this section by. See \"view\".
   Applications are expected to use the @code{view-name} property for this
   purpose.
-
   @see-class{gtk:shortcuts-section}")
 
-;;; --- End of file gtk.shortcuts-section.lisp ---------------------------------
+;;; --- End of file gtk3.shortcuts-section.lisp --------------------------------
