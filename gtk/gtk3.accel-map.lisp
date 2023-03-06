@@ -1,8 +1,8 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.accel-map.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK+ library.
+;;; The documentation of this file is taken from the GTK 3 Reference Manual
+;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
@@ -54,7 +54,7 @@
 ;;;
 ;;; Signals
 ;;;
-;;;     void    changed    Has Details
+;;;     changed
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -77,14 +77,14 @@
 
 #+liber-documentation
 (setf (documentation 'accel-map 'type)
- "@version{#2020-9-20}
+ "@version{2023-3-6}
   @begin{short}
     Accelerator maps are used to define runtime configurable accelerators.
   @end{short}
   Functions for manipulating them are usually used by higher level convenience
-  mechanisms like @class{gtk:ui-manager} and are thus considered \"low-level\".
-  You will want to use them if you are manually creating menus that should have
-  user-configurable accelerators.
+  mechanisms like the @class{gtk:ui-manager} object and are thus considered 
+  \"low-level\". You will want to use them if you are manually creating menus 
+  that should have user-configurable accelerators.
 
   An accelerator is uniquely defined by:
   @begin{itemize}
@@ -105,24 +105,24 @@
   @code{\"<Gimp-Toolbox>/File/Dialogs/Tool Options...\"}.
 
   All accelerators are stored inside one global @sym{gtk:accel-map} object that
-  can be obtained using the function @fun{gtk:accel-map-get}. See Monitoring
+  can be obtained using the @fun{gtk:accel-map-get} function. See Monitoring
   changes for additional details.
 
   @subheading{Manipulating accelerators}
-    New accelerators can be added using the function
-    @fun{gtk:accel-map-add-entry}. To search for a specific accelerator, use
-    the function @fun{gtk:accel-map-lookup-entry}. Modifications of existing
-    accelerators should be done using the function
-    @fun{gtk:accel-map-change-entry}.
+    New accelerators can be added using the @fun{gtk:accel-map-add-entry}
+    function. To search for a specific accelerator, use the 
+    @fun{gtk:accel-map-lookup-entry} function. Modifications of existing
+    accelerators should be done using the @fun{gtk:accel-map-change-entry}
+    function.
 
     In order to avoid having some accelerators changed, they can be locked
-    using the function @fun{gtk:accel-map-lock-path}. Unlocking is done using
-    the function @fun{gtk:accel-map-unlock-path}.
+    using the @fun{gtk:accel-map-lock-path} function. Unlocking is done using
+    the @fun{gtk:accel-map-unlock-path} function.
 
   @subheading{Saving and loading accelerator maps}
-    Accelerator maps can be saved to and loaded from some external resource. For
-    simple saving and loading from file, the functions @fun{gtk:accel-map-save}
-    and @fun{gtk:accel-map-load} are provided.
+    Accelerator maps can be saved to and loaded from some external resource. 
+    For simple saving and loading from file, the @fun{gtk:accel-map-save} and
+    @fun{gtk:accel-map-load} functions are provided.
 
   @subheading{Monitoring changes}
     A @sym{gtk:accel-map} object is only useful for monitoring changes of
@@ -132,31 +132,21 @@
   @begin[Signal Details]{dictionary}
     @subheading{The \"changed\" signal}
       @begin{pre}
- lambda (object accel-path accel-key accel-mods)    : Has Details
+lambda (object path key mods)    :has-details
       @end{pre}
       Notifies of a change in the global accelerator map. The path is also used
       as the detail for the signal, so it is possible to connect to
       \"changed::accel-path\".
     @begin[arg]{table}
       @entry[object]{The global @sym{gtk:accel-map} object.}
-      @entry[accel-path]{The path of the accelerator that changed of type
-        @code{:string}.}
-      @entry[accel-key]{The key value of type @code{:uint} for the new
+      @entry[path]{A string with the path of the accelerator that changed.}
+      @entry[key]{An unsigned integer with the key value for the new
         accelerator.}
-      @entry[accel-mods]{The modifier mask of type @symbol{gdk:modifier-type}
-        for the new accelerator.}
+      @entry[mods]{The @symbol{gdk:modifier-type} modifier mask for the new 
+        accelerator.}
     @end{table}
   @end{dictionary}
-  @see-class{gtk:ui-manager}
-  @see-symbol{gdk:modifier-type}
-  @see-function{gtk:accel-map-get}
-  @see-function{gtk:accel-map-add-entry}
-  @see-function{gtk:accel-map-lookup-entry}
-  @see-function{gtk:accel-map-change-entry}
-  @see-function{gtk:accel-map-lock-path}
-  @see-function{gtk:accel-map-unlock-path}
-  @see-function{gtk:accel-map-save}
-  @see-function{gtk:accel-map-load}")
+  @see-class{gtk:ui-manager}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_accel_map_add_entry ()
@@ -164,24 +154,23 @@
 
 (defcfun ("gtk_accel_map_add_entry" accel-map-add-entry) :void
  #+liber-documentation
- "@version{#2020-9-20}
-  @argument[accel-path]{valid accelerator path of type @code{:string}}
-  @argument[accel-key]{the accelerator key of type @code{:uint}}
-  @argument[accel-mods]{the accelerator modifiers of type
-    @symbol{gdk:modifier-type}}
+ "@version{2023-3-6}
+  @argument[path]{a string with the valid accelerator path}
+  @argument[key]{an unsigned integer with the accelerator key}
+  @argument[mods]{a @symbol{gdk:modifier-type} value with the accelerator 
+    modifiers}
   @begin{short}
     Registers a new accelerator with the global accelerator map.
   @end{short}
-  This function should only be called once per @arg{accel-path} with the
-  canonical @arg{accel-key} and @arg{accel-mods} for this path. To change the
-  accelerator during runtime programatically, use the function
-  @fun{gtk:accel-map-change-entry}.
+  This function should only be called once per @arg{path} with the canonical 
+  @arg{key} and @arg{mods} for this path. To change the accelerator during 
+  runtime programatically, use the @fun{gtk:accel-map-change-entry} function.
   @see-class{gtk:accel-map}
   @see-symbol{gdk:modifier-type}
   @see-function{gtk:accel-map-change-entry}"
-  (accel-path :string)
-  (accel-key :uint)
-  (accel-mods gdk:modifier-type))
+  (path :string)
+  (key :uint)
+  (mods gdk:modifier-type))
 
 (export 'accel-map-add-entry)
 
@@ -190,28 +179,28 @@
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_accel_map_lookup_entry" %accel-map-lookup-entry) :boolean
-  (accel-path :string)
+  (path :string)
   (key (:pointer (:struct accel-key))))
 
-(defun accel-map-lookup-entry (accel-path)
+(defun accel-map-lookup-entry (path)
  #+liber-documentation
- "@version{#2020-9-20}
-  @argument[accel-path]{a valid accelerator path of @code{:string}}
+ "@version{2023-3-6}
+  @argument[path]{a string with the valid accelerator path}
   @begin{return}
-    @code{accel-key} -- the accelerator key of type @code{:uint} @br{}
-    @code{accel-mods} -- the accelerator modifiers @symbol{gdk:modifier-type}
-    @br{}
-    @code{accel-flags} -- the accelerator flags of type @code{:uint} if
-                          @arg{accel-path} is known, @code{nil} otherwise
+    @code{key} -- an unsigned integer with the accelerator key @br{}
+    @code{mods} -- a @symbol{gdk:modifier-type} value with the accelerator 
+      modifiers @br{}
+    @code{flags} -- an unsigned integer with the accelerator flags if
+      @arg{path} is known, @code{nil} otherwise
   @end{return}
   @begin{short}
-    Looks up the accelerator entry for @arg{accel-path}.
+    Looks up the accelerator entry for @arg{path}.
   @end{short}
   @see-class{gtk:accel-map}
   @see-function{gtk:accel-map-add-entry}
   @see-function{gtk:accel-map-change-entry}"
   (with-foreign-object (key '(:struct accel-key))
-    (when (%accel-map-lookup-entry accel-path key)
+    (when (%accel-map-lookup-entry path key)
       (values (cffi:foreign-slot-value key '(:struct accel-key) 'accel-key)
               (cffi:foreign-slot-value key '(:struct accel-key) 'accel-mods)
               (cffi:foreign-slot-value key '(:struct accel-key) 'accel-flags)))))
@@ -224,19 +213,18 @@
 
 (defcfun ("gtk_accel_map_change_entry" accel-map-change-entry) :boolean
  #+liber-documentation
- "@version{#2020-9-20}
-  @argument[accel-path]{a valid accelerator path of type @code{:string}}
-  @argument[accel-key]{the new accelerator key of type @code{:uint}}
-  @argument[accel-mods]{the new accelerator modifiers of type
-    @symbol{gdk:modifier-type}}
+ "@version{2023-3-6}
+  @argument[path]{a string with the valid accelerator path}
+  @argument[key]{an unsigned integer with the new accelerator key}
+  @argument[mods]{a @symbol{gdk:modifier-type} value with the new accelerator 
+    modifiers}
   @argument[replace]{@em{true} if other accelerators may be deleted upon
     conflicts}
   @begin{return}
     @em{True} if the accelerator could be changed, @code{nil} otherwise.
   @end{return}
   @begin{short}
-    Changes the @arg{accel-key} and @arg{accel-mods} currently associated with
-    @arg{accel-path}.
+    Changes @arg{key} and @arg{mods} currently associated with @arg{path}.
   @end{short}
   Due to conflicts with other accelerators, a change may not always be
   possible, @arg{replace} indicates whether other accelerators may be deleted
@@ -246,9 +234,9 @@
   @see-class{gtk:accel-map}
   @see-symbol{gdk:modifier-type}
   @see-function{gtk:accel-map-add-entry}"
-  (accel-path :string)
-  (accel-key :uint)
-  (accel-mods gdk:modifier-type)
+  (path :string)
+  (key :uint)
+  (mods gdk:modifier-type)
   (replace :boolean))
 
 (export 'accel-map-change-entry)
@@ -262,7 +250,7 @@
 
 (defun accel-map-load (path)
  #+liber-documentation
- "@version{2023-1-29}
+ "@version{2023-3-6}
   @argument[path]{a pathname or namestring with a file containing accelerator
     specifications, in the GLib file name encoding}
   @begin{short}
@@ -284,7 +272,7 @@
 
 (defun accel-map-save (path)
  #+liber-documentation
- "@version{2023-1-29}
+ "@version{2023-3-6}
   @argument[path]{a pathname or namestring with the name of the file to contain
     accelerator specifications, in the GLib file name encoding}
   @begin{short}
@@ -322,8 +310,8 @@
 ;;;     Modifiers of the current accelerator
 ;;;
 ;;; changed :
-;;;     Changed flag of the accelerator (if TRUE, accelerator has changed during
-;;;     runtime and would need to be saved during an accelerator dump)
+;;;     Changed flag of the accelerator (if TRUE, accelerator has changed 
+;;;     during runtime and would need to be saved during an accelerator dump)
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
@@ -390,8 +378,8 @@
 ;;;
 ;;; Adds a filter to the global list of accel path filters.
 ;;;
-;;; Accel map entries whose accel path matches one of the filters are skipped by
-;;; gtk_accel_map_foreach().
+;;; Accel map entries whose accel path matches one of the filters are skipped 
+;;; by gtk_accel_map_foreach().
 ;;;
 ;;; This function is intended for GTK+ modules that create their own menus, but
 ;;; don't want them to be saved into the applications accelerator map dump.
@@ -424,7 +412,7 @@
 
 (defcfun ("gtk_accel_map_get" accel-map-get) (g:object accel-map)
  #+liber-documentation
- "@version{#2020-9-20}
+ "@version{2023-3-6}
   @return{The global @class{gtk:accel-map} object.}
   @begin{short}
     Gets the singleton global @class{gtk:accel-map} object.
@@ -442,32 +430,33 @@
 
 (defcfun ("gtk_accel_map_lock_path" accel-map-lock-path) :void
  #+liber-documentation
- "@version{#2020-9-20}
-  @argument[accel-path]{a valid accelerator path of type @code{:string}}
+ "@version{#2023-3-6}
+  @argument[path]{a string with the valid accelerator path}
   @begin{short}
     Locks the given accelerator path.
   @end{short}
-  If the accelerator map does not yet contain an entry for @arg{accel-path}, a
-  new one is created.
+  If the accelerator map does not yet contain an entry for @arg{path}, a new 
+  one is created.
 
   Locking an accelerator path prevents its accelerator from being changed
-  during runtime. A locked accelerator path can be unlocked by the function
-  @fun{gtk:accel-map-unlock-path}. Refer to the function
-  @fun{gtk:accel-map-change-entry} for information about runtime accelerator
-  changes.
+  during runtime. A locked accelerator path can be unlocked by the
+  @fun{gtk:accel-map-unlock-path} function. Refer to the 
+  @fun{gtk:accel-map-change-entry} function for information about runtime 
+  accelerator changes.
 
-  If called more than once, @arg{accel-path} remains locked until the function
-  @fun{gtk:accel-map-unlock-path} has been called an equivalent number of times.
+  If called more than once, @arg{path} remains locked until the
+  @fun{gtk:accel-map-unlock-path} function has been called an equivalent number 
+  of times.
 
   Note that locking of individual accelerator paths is independent from
-  locking the @class{gtk:accel-group} containing them. For runtime accelerator
-  changes to be possible both the accelerator path and its
-  @class{gtk:accel-group} have to be unlocked.
+  locking the @class{gtk:accel-group} object containing them. For runtime 
+  accelerator changes to be possible both the accelerator path and its
+  @class{gtk:accel-group} object have to be unlocked.
   @see-class{gtk:accel-map}
   @see-class{gtk:accel-group}
   @see-function{gtk:accel-map-unlock-path}
   @see-function{gtk:accel-map-change-entry}"
-  (accel-path :string))
+  (path :string))
 
 (export 'accel-map-lock-path)
 
@@ -477,17 +466,17 @@
 
 (defcfun ("gtk_accel_map_unlock_path" accel-map-unlock-path) :void
  #+liber-documentation
- "@version{#2020-9-20}
-  @argument[accel-path]{a valid accelerator path of type @code{:string}}
+ "@version{#2023-3-6}
+  @argument[path]{a string with the valid accelerator path}
   @begin{short}
-    Undoes the last call to the function @fun{gtk:accel-map-lock-path} on this
-    @arg{accel-path}.
+    Undoes the last call to the @fun{gtk:accel-map-lock-path} function on this
+    @arg{path}.
   @end{short}
-  Refer to the function @fun{gtk:accel-map-lock-path} for information about
+  Refer to the @fun{gtk:accel-map-lock-path} function for information about
   accelerator path locking.
   @see-class{gtk:accel-map}
   @see-function{gtk:accel-map-lock-path}"
-  (accel-path :string))
+  (path :string))
 
 (export 'accel-map-unlock-path)
 
