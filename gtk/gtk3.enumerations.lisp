@@ -255,7 +255,7 @@
 (setf (liber:alias-for-symbol 'movement-step)
       "GEnum"
       (liber:symbol-documentation 'movement-step)
- "@version{#2021-12-6}
+ "@version{2023-3-6}
   @begin{short}
     The values of this enumeration are passed as an argument to the
     \"move-cursor\" signal handler.
@@ -306,7 +306,7 @@
 (setf (liber:alias-for-symbol 'orientation)
       "GEnum"
       (liber:symbol-documentation 'orientation)
- "@version{#2021-11-13}
+ "@version{2023-3-6}
   @begin{short}
     Represents the orientation of widgets which can be switched between
     horizontal and vertical orientation on the fly, like the @class{gtk:toolbar}
@@ -340,7 +340,7 @@
 (setf (liber:alias-for-symbol 'pack-type)
       "GEnum"
       (liber:symbol-documentation 'pack-type)
- "@version{#2021-4-30}
+ "@version{2023-3-6}
   @begin{short}
     Represents the packing location of a @class{gtk:box} child widget.
   @end{short}
@@ -375,7 +375,7 @@
 (setf (liber:alias-for-symbol 'position-type)
       "GEnum"
       (liber:symbol-documentation 'position-type)
- "@version{#2021-12-22}
+ "@version{2023-3-6}
   @begin{short}
     Describes which edge of a widget a certain feature is positioned at, e.g.
     the tabs of a @class{gtk:notebook} widget or the label of a
@@ -433,13 +433,14 @@
   @see-class{gtk:button}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkScrollStep
+;;; enum GtkScrollStep                                     not exported
 ;;; ----------------------------------------------------------------------------
 
 ;; TODO: This enumeration is not in use in the cl-cffi-gtk implementation.
+;; Consider to remove the implementation.
 
 (define-g-enum "GtkScrollStep" scroll-step
-  (:export t
+  (:export nil
    :type-initializer "gtk_scroll_step_get_type")
   (:steps 0)
   (:pages 1)
@@ -452,7 +453,7 @@
 (setf (liber:alias-for-symbol 'scroll-step)
       "GEnum"
       (liber:symbol-documentation 'scroll-step)
- "@version{#2020-12-4}
+ "@version{#2023-3-6}
   @short{}
   @begin{pre}
 (define-g-enum \"GtkScrollStep\" scroll-step
@@ -494,11 +495,11 @@
 (setf (liber:alias-for-symbol 'scroll-type)
       "GEnum"
       (liber:symbol-documentation 'scroll-type)
- "@version{#2021-2-10}
+ "@version{2023-3-6}
   @begin{short}
     The scrolling types of this enumeration are a parameter for signal
     handlers in various widgets such as @class{gtk:spin-button},
-    @class{gtk:scrolled-window}, or @class{gtk:combo-box}.
+    @class{gtk:scrolled-window}, or @class{gtk:combo-box} widgets.
   @end{short}
   @begin{pre}
 (define-g-enum \"GtkScrollType\" scroll-type
@@ -541,7 +542,7 @@
 (setf (liber:alias-for-symbol 'selection-mode)
       "GEnum"
       (liber:symbol-documentation 'selection-mode)
- "@version{#2021-12-15}
+ "@version{2023-3-6}
   @short{Used to control what selections users are allowed to make.}
   @begin{pre}
 (define-g-enum \"GtkSelectionMode\" selection-mode
@@ -555,15 +556,15 @@
   @begin[code]{table}
     @entry[:none]{No selection is possible.}
     @entry[:single]{Zero or one element may be selected.}
-    @entry[:browse]{Exactly one element is selected. In some circumstances, such
-      as initially or during a search operation, it is possible for no element
-      to be selected with the @code{:browse} value. What is really enforced is
-      that the user cannot deselect a currently selected element except by
-      selecting another element.}
-    @entry[:multiple]{Any number of elements may be selected. The @kbd{Ctrl} key
-      may be used to enlarge the selection, and the @kbd{Shift} key to select
-      between the focus and the child pointed to. Some widgets may also allow
-      Click-drag to select a range of elements.}
+    @entry[:browse]{Exactly one element is selected. In some circumstances, 
+      such as initially or during a search operation, it is possible for no 
+      element to be selected with the @code{:browse} value. What is really 
+      enforced is that the user cannot deselect a currently selected element 
+      except by selecting another element.}
+    @entry[:multiple]{Any number of elements may be selected. The @kbd{Ctrl} 
+      key may be used to enlarge the selection, and the @kbd{Shift} key to 
+      select between the focus and the child pointed to. Some widgets may also 
+      allow click-drag to select a range of elements.}
   @end{table}
   @see-class{gtk:flow-box}
   @see-class{gtk:list-box}
@@ -587,12 +588,11 @@
 (setf (liber:alias-for-symbol 'shadow-type)
       "GEnum"
       (liber:symbol-documentation 'shadow-type)
- "@version{#2021-12-22}
+ "@version{2023-3-6}
   @begin{short}
     Used to change the appearance of an outline typically provided by a
     @class{gtk:frame} widget.
   @end{short}
-
   Note that many themes do not differentiate the appearance of the various
   shadow types: Either their is no visible shadow :none, or there is any other
   value.
@@ -643,7 +643,7 @@
 (setf (liber:alias-for-symbol 'state-flags)
       "GFlags"
       (liber:symbol-documentation 'state-flags)
- "@version{#2021-7-4}
+ "@version{2023-3-6}
   @short{Describes a widget state.}
   Widget states are used to match the widget against CSS pseudo-classes. Note
   that GTK extends the regular CSS classes and sometimes uses different names.
@@ -703,7 +703,7 @@
 (setf (liber:alias-for-symbol 'toolbar-style)
       "GEnum"
       (liber:symbol-documentation 'toolbar-style)
- "@version{#2021-7-20}
+ "@version{2023-3-6}
   @begin{short}
     Used to customize the appearance of a @class{gtk:toolbar} widget.
   @end{short}
@@ -742,7 +742,7 @@
 (setf (liber:alias-for-symbol 'sort-type)
       "GEnum"
       (liber:symbol-documentation 'sort-type)
- "@version{#2021-3-21}
+ "@version{2023-3-6}
   @short{Determines the direction of a sort.}
   @begin{pre}
 (define-g-enum \"GtkSortType\" sort-type
@@ -762,12 +762,9 @@
 ;;; enum GtkTextDirection
 ;;; ----------------------------------------------------------------------------
 
-;; TODO: Implement a base-type for defining an enumeration
-
 (define-g-enum "GtkTextDirection" text-direction
   (:export t
    :type-initializer "gtk_text_direction_get_type")
-  (:dummy -1) ; Workaround to ensure the base-type is :int for the enumeration
   (:none 0)
   (:ltr 1)
   (:rtl 2))
@@ -776,16 +773,16 @@
 (setf (liber:alias-for-symbol 'text-direction)
       "GEnum"
       (liber:symbol-documentation 'text-direction)
- "@version{#2021-9-8}
+ "@version{2023-3-6}
   @begin{short}
     The text direction controls the primary direction for widgets containing
     text, and also the direction in which the children of a container are
     packed.
   @end{short}
   The ability to set the text direction is present in order so that correct
-  localization into languages with right-to-left reading directions can be done.
-  Generally, applications will let the default reading direction present, except
-  for containers where the containers are arranged in an order that is
+  localization into languages with right-to-left reading directions can be 
+  done. Generally, applications will let the default reading direction present, 
+  except for containers where the containers are arranged in an order that is
   explicitely visual rather than logical, such as buttons for text
   justification.
   @begin{pre}
@@ -820,7 +817,7 @@
 (setf (liber:alias-for-symbol 'expander-style)
       "GEnum"
       (liber:symbol-documentation 'expander-style)
- "@version{#2021-3-21}
+ "@version{2023-3-6}
   @begin{short}
     Used to specify the style of the expanders drawn by a @class{gtk:tree-view}
     widget.
@@ -861,7 +858,7 @@
 (setf (liber:alias-for-symbol 'state-type)
       "GEnum"
       (liber:symbol-documentation 'state-type)
- "@version{#2020-9-18}
+ "@version{2023-3-6}
   @begin{short}
     This type indicates the current state of a widget.
   @end{short}
@@ -891,8 +888,8 @@
     @entry[:normal]{State during normal operation.}
     @entry[:active]{State of a currently active widget, such as a depressed
       button.}
-    @entry[:prelight]{State indicating that the mouse pointer is over the widget
-      and the widget will respond to mouse clicks.}
+    @entry[:prelight]{State indicating that the mouse pointer is over the 
+      widget and the widget will respond to mouse clicks.}
     @entry[:selected]{State of a selected item, such the selected row in a
       list.}
     @entry[:insensitive]{State indicating that the widget is unresponsive to
