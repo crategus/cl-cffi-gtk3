@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.gesture-rotate.lisp
+;;; gtk3.gesture-rotate.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
-;;; Copyright (C) 2019 - 2021 Dieter Kaiser
+;;; Copyright (C) 2019 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -41,7 +41,7 @@
 ;;;
 ;;; Signals
 ;;;
-;;;     void    angle-changed    Run First
+;;;     angle-changed
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -66,16 +66,16 @@
 
 #+liber-documentation
 (setf (documentation 'gesture-rotate 'type)
- "@version{#2020-9-11}
+ "@version{#2023-3-6}
   @begin{short}
-    @sym{gtk:gesture-rotate} is a @class{gtk:gesture} implementation able to
-    recognize 2-finger rotations, whenever the angle between both handled
-    sequences changes, the \"angle-changed\" signal is emitted.
+    The @sym{gtk:gesture-rotate} object is a @class{gtk:gesture} implementation 
+    able to recognize 2-finger rotations, whenever the angle between both 
+    handled sequences changes, the \"angle-changed\" signal is emitted.
   @end{short}
   @begin[Signal Details]{dictionary}
     @subheading{The \"angle-changed\" signal}
     @begin{pre}
- lambda (gesture angle delta)    :run-first
+lambda (gesture angle delta)    :run-first
     @end{pre}
     The signal is emitted when the angle between both tracked points changes.
     @begin[code]{table}
@@ -86,6 +86,7 @@
         in radians.}
     @end{table}
   @end{dictionary}
+  @see-constructor{gtk:gesture-rotate-new}
   @see-class{gtk:gesture-zoom}")
 
 ;;; ----------------------------------------------------------------------------
@@ -96,7 +97,7 @@
 
 (defun gesture-rotate-new (widget)
  #+liber-documentation
- "@version{#2020-9-11}
+ "@version{#2023-3-6}
   @argument[widget]{a @class{gtk:widget} object}
   @return{A newly created @class{gtk:gesture-rotate} object.}
   @begin{short}
@@ -116,9 +117,9 @@
 (defcfun ("gtk_gesture_rotate_get_angle_delta" gesture-rotate-angle-delta)
     :double
  #+liber-documentation
- "@version{#2020-9-11}
+ "@version{#2023-3-6}
   @argument[gesture]{a @class{gtk:gesture-rotate} object}
-  @return{The angle delta of type @code{:double} in radians.}
+  @return{A double float with the angle delta in radians.}
   @begin{short}
     If the gesture is active, this function returns the angle difference in
     radians since the gesture was first recognized.
