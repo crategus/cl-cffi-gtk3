@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.socket.lisp
+;;; gtk3.socket.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2021 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -42,8 +42,8 @@
 ;;;
 ;;; Signals
 ;;;
-;;;         void    plug-added      Run Last
-;;;     gboolean    plug-removed    Run Last
+;;;     plug-added
+;;;     plug-removed
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -74,18 +74,18 @@
 
 #+liber-documentation
 (setf (documentation 'socket 'type)
- "@version{#2020-9-15}
+ "@version{#2023-2-28}
   @begin{short}
-    Together with @class{gtk:plug}, @sym{gtk:socket} provides the ability to
-    embed widgets from one process into another process in a fashion that is
-    transparent to the user.
+    Together with the @class{gtk:plug} widget, the @sym{gtk:socket} widget
+    provides the ability to embed widgets from one process into another process
+    in a fashion that is transparent to the user.
   @end{short}
   One process creates a @sym{gtk:socket} widget and passes that widget's window
-  ID to the other process, which then creates a @class{gtk:plug} with that
-  window ID. Any widgets contained in the @class{gtk:plug} then will appear
-  inside the first application's window.
+  ID to the other process, which then creates a @class{gtk:plug} widget with
+  that window ID. Any widgets contained in the @class{gtk:plug} widget then
+  will appear inside the first application's window.
 
-  The socket's window ID is obtained by using the function @fun{gtk:socket-id}.
+  The socket's window ID is obtained by using the@fun{gtk:socket-id} function.
   Before using this function, the socket must have been realized, and for hence,
   have been added to its parent.
 
@@ -108,7 +108,7 @@ g_print (\"The ID of the sockets window is
   is not destroyed until that plug is created. Violating this rule will cause
   unpredictable consequences, the most likely consequence being that the plug
   will appear as a separate toplevel window. You can check if the plug has
-  been created by using the @fun{gtk:socket-get-plug-window} function. If it
+  been created by using the @fun{gtk:socket-plug-window} function. If it
   returns a non-@code{nil} value, then the plug has been successfully created
   inside of the socket.
 
@@ -118,32 +118,32 @@ g_print (\"The ID of the sockets window is
   running. To prevent this from happening, you can connect to the
   \"plug-removed\" signal.
 
-  The communication between a @sym{gtk:socket} and a @class{gtk:plug} follows
-  the XEmbed protocol. This protocol has also been implemented in other
+  The communication between a @sym{gtk:socket} and a @class{gtk:plug} widget
+  follows the XEmbed protocol. This protocol has also been implemented in other
   toolkits, e.g. Qt, allowing the same level of integration when embedding a
   Qt widget in GTK or vice versa.
 
   The @class{gtk:plug} and @sym{gtk:socket} widgets are only available when GTK
   is compiled for the X11 platform and @code{GDK_WINDOWING_X11} is defined. They
-  can only be used on a @code{gdk-x11-display}.
+  can only be used on a @code{GdkX11Display} object.
   @begin[Signal Details]{dictionary}
     @subheading{The \"plug-added\" signal}
       @begin{pre}
- lambda (socket)    :run-last
+lambda (socket)    :run-last
       @end{pre}
       The signal is emitted when a client is successfully added to the socket.
       @begin[code]{table}
-        @entry[socket]{The @sym{gtk:socket} object which received the signal.}
+        @entry[socket]{The @sym{gtk:socket} widget which received the signal.}
       @end{table}
     @subheading{The \"plug-removed\" signal}
       @begin{pre}
- lambda (socket)    :run-last
+lambda (socket)    :run-last
       @end{pre}
       The signal is emitted when a client is removed from the socket. The
       default action is to destroy the @sym{gtk:socket} widget, so if you want
       to reuse it you must add a signal handler that returns @em{true}.
       @begin[code]{table}
-        @entry[socket]{The @sym{gtk:socket} object which received the signal.}
+        @entry[socket]{The @sym{gtk:socket} widget which received the signal.}
         @entry[Returns]{@em{True} to stop other handlers from being invoked.}
       @end{table}
   @end{dictionary}
@@ -157,7 +157,7 @@ g_print (\"The ID of the sockets window is
 
 (defun socket-new ()
  #+liber-documentation
- "@version{#2020-9-15}
+ "@version{#2023-2-28}
   @return{The new @class{gtk:socket} widget.}
   @short{Create a new empty socket widget.}
   @see-class{gtk:socket}"
@@ -171,24 +171,24 @@ g_print (\"The ID of the sockets window is
 
 (defcfun ("gtk_socket_add_id" socket-add-id) :void
  #+liber-documentation
- "@version{#2020-9-15}
+ "@version{#2023-2-28}
   @argument[socket]{a @class{gtk:socket} widget}
-  @argument[window]{a @code{:pointer} with the window of a client participating
-    in the XEMBED protocol}
+  @argument[window]{a pointer with the window of a client participating in the
+    XEMBED protocol}
   @begin{short}
     Adds an XEMBED client, such as a @class{gtk:plug} widget, to the
     @class{gtk:socket}.
   @end{short}
-  The client may be in the same process or in a different process.
-  To embed a @class{gtk:plug} in a @class{gtk:socket}, you can either create
-  the @class{gtk:plug} with the @fun{gtk:plug-new} function, call the function
-  @fun{gtk:plug-id} to get the window ID of the plug, and then pass that to the
-  function @sym{gtk:socket-add-id}, or you can call the function
-  @fun{gtk:socket-id} to get the window ID for the socket, and call the function
-  @fun{gtk:plug-new} passing in that ID.
+  The client may be in the same process or in a different process. To embed a
+  @class{gtk:plug} widget in a @class{gtk:socket} widget, you can either create
+  the @class{gtk:plug} widget with the @fun{gtk:plug-new} function, call the
+  @fun{gtk:plug-id} function to get the window ID of the plug, and then pass
+  that to the @sym{gtk:socket-add-id} function, or you can call the
+  @fun{gtk:socket-id} function to get the window ID for the socket, and call
+  the @fun{gtk:plug-new} function passing in that ID.
 
-  The @class{gtk:socket} must have already be added into a toplevel window
-  before you can make this call.
+  The @class{gtk:socket} widget must have already be added into a toplevel
+  window before you can make this call.
   @see-class{gtk:socket}
   @see-class{gtk:plug}
   @see-function{gtk:plug-new}
@@ -205,17 +205,17 @@ g_print (\"The ID of the sockets window is
 
 (defcfun ("gtk_socket_get_id" socket-id) :pointer
  #+liber-documentation
- "@version{#2020-9-15}
+ "@version{#2023-2-28}
   @argument[socket]{a @class{gtk:socket} widget}
-  @return{A @code{:pointer} with the window ID for the socket.}
+  @return{A pointer with the window ID for the socket.}
   @begin{short}
     Gets the window ID of a @class{gtk:socket} widget, which can then be used
     to create a client embedded inside the socket, for instance with the
-    function @fun{gtk:plug-new}.
+    @fun{gtk:plug-new} function.
   @end{short}
 
-  The @class{gtk:socket} must have already be added into a toplevel window
-  before you can make this call.
+  The @class{gtk:socket} widget must have already be added into a toplevel
+  window before you can make this call.
   @see-class{gtk:socket}
   @see-function{gtk:plug-new}"
   (socket (g:object socket)))
@@ -226,20 +226,19 @@ g_print (\"The ID of the sockets window is
 ;;; gtk_socket_get_plug_window () -> socket-plug-window
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_socket_get_plug_window" socket-plug-window)
-    (g:object gdk-window)
+(defcfun ("gtk_socket_get_plug_window" socket-plug-window) (g:object gdk:window)
  #+liber-documentation
- "@version{#2020-9-15}
+ "@version{#2023-2-28}
   @argument[socket]{a @class{gtk:socket} widget}
-  @return{A @class{gdk-window} object of the plug if available, or @code{nil}.}
+  @return{A @class{gdk:window} object of the plug if available, or @code{nil}.}
   @begin{short}
     Retrieves the window of the plug.
   @end{short}
   Use this to check if the plug has been created inside of the socket.
   @see-class{gtk:socket}
-  @see-class{gdk-window}"
+  @see-class{gdk:window}"
   (socket (g:object socket)))
 
 (export 'socket-plug-window)
 
-;;; --- End of file gtk.socket.lisp --------------------------------------------
+;;; --- End of file gtk3.socket.lisp -------------------------------------------
