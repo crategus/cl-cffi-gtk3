@@ -1,13 +1,13 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.separator-menu-item.lisp
+;;; gtk3.separator-menu-item.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK+ library.
+;;; The documentation of this file is taken from the GTK 3 Reference Manual
+;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -72,7 +72,7 @@
 
 #+liber-documentation
 (setf (documentation 'separator-menu-item 'type)
- "@version{#2020-9-3}
+ "@version{#2023-2-27}
   @begin{short}
     The @sym{gtk:separator-menu-item} widget is a separator used to group items
     within a menu.
@@ -80,9 +80,10 @@
   It displays a horizontal line with a shadow to make it appear sunken into the
   interface.
   @begin[CSS nodes]{dictionary}
-    The @sym{gtk:separator-menu-item} has a single CSS node with name
-    @code{separator}.
+    The @sym{gtk:separator-menu-item} implementation has a single CSS node with 
+    name @code{separator}.
   @end{dictionary}
+  @see-constructor{gtk:separator-menu-item-new}
   @see-class{gtk:menu-item}")
 
 ;;; ----------------------------------------------------------------------------
@@ -93,7 +94,7 @@
 
 (defun separator-menu-item-new ()
  #+liber-documentation
- "@version{#2020-9-4}
+ "@version{#2023-2-27}
   @return{A new @class{gtk:separator-menu-item} widget.}
   @begin{short}
     Creates a new separator menu item.
@@ -103,4 +104,4 @@
 
 (export 'separator-menu-item-new)
 
-;;; --- End of file gtk.separator-menu-item.lisp -------------------------------
+;;; --- End of file gtk3.separator-menu-item.lisp ------------------------------
