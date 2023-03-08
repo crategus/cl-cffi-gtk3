@@ -4,7 +4,7 @@
 ;;;; titlebars. One of its features is that it can position a title, and
 ;;;; optional subtitle, centered with regard to the full width, regardless of
 ;;;; variable-width content at the left or right. It is commonly used with the
-;;;; gtk-window-titlebar function.
+;;;; gtk:window-titlebar function.
 
 (in-package :gtk3-example)
 

@@ -48,7 +48,7 @@
 
 (defun example-simple-list-store ()
   (within-main-loop
-    (let ((window (make-instance 'gtk-window
+    (let ((window (make-instance 'gtk:window
                                  :title "Example Simple List Store"
                                  :type :toplevel
                                  :border-width 12

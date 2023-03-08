@@ -2,7 +2,7 @@
 (defun example-geometry-hints ()
   (within-main-loop
     (let (;; Create a toplevel window.
-          (window (gtk-window-new :toplevel))
+          (window (gtk:window-new :toplevel))
           (box (make-instance 'gtk-box :orientation :vertical))
           ;; Define a geometry for the size hints
           (size-hints (make-gdk-geometry :min-width        600
@@ -27,7 +27,7 @@
       (gtk-container-add window box)
 
       ;; Set the geometry hints
-      (gtk-window-set-geometry-hints window
+      (gtk:window-set-geometry-hints window
                                      window
                                      size-hints
                                      '(:min-size :base-size :resize-inc))

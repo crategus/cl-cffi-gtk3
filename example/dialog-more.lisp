@@ -44,7 +44,7 @@
 
 (defun example-dialog ()
   (within-main-loop
-    (let ((window (make-instance 'gtk-window
+    (let ((window (make-instance 'gtk:window
                                  :type :toplevel
                                  :title "Example Dialog"
                                  :default-width 250
