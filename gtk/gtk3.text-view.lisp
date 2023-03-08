@@ -219,7 +219,7 @@
 (setf (liber:alias-for-symbol 'text-view-layer)
       "GEnum"
       (liber:symbol-documentation 'text-view-layer)
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @begin{short}
     Used to reference the layers of the @class{gtk:text-view} widget for the
     purpose of customized drawing with the @code{draw_layer} virtual function.
@@ -261,7 +261,7 @@
 (setf (liber:alias-for-symbol 'text-window-type)
       "GEnum"
       (liber:symbol-documentation 'text-window-type)
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @begin{short}
     Used to reference the parts of the @class{gtk:text-view} widget.
   @end{short}
@@ -302,7 +302,7 @@
 (setf (liber:alias-for-symbol 'text-extend-selection)
       "GEnum"
       (liber:symbol-documentation 'text-extend-selection)
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @begin{short}
     Granularity types that extend the text selection.
   @end{short}
@@ -335,13 +335,14 @@
 
 #+liber-documentation
 (setf (documentation 'text-child-anchor 'type)
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @begin{short}
     A @sym{gtk:text-child-anchor} object is a spot in the text buffer where
     child widgets can be \"anchored\", inserted inline, as if they were
     characters.
   @end{short}
   The anchor can have multiple widgets anchored, to allow for multiple views.
+  @see-constructor{gtk:text-child-anchor-new}
   @see-class{gtk:text-view}")
 
 ;;; ----------------------------------------------------------------------------
@@ -422,7 +423,7 @@
 
 #+liber-documentation
 (setf (documentation 'text-view 'type)
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @begin{short}
     GTK has a powerful framework for multiline text editing.
   @end{short}
@@ -435,14 +436,14 @@
   buffer can be displayed by any number of views.
   @begin[CSS nodes]{dictionary}
     @begin{pre}
- textview.view
- ├── border.top
- ├── border.left
- ├── text
- │   ╰── [selection]
- ├── border.right
- ├── border.bottom
- ╰── [window.popup]
+textview.view
+├── border.top
+├── border.left
+├── text
+│   ╰── [selection]
+├── border.right
+├── border.bottom
+╰── [window.popup]
     @end{pre}
     The @sym{gtk:text-view} implementation has a main CSS node with name
     @code{textview} and @code{.view} style class, and subnodes for each of the
@@ -466,7 +467,7 @@
   @begin[Signal Details]{dictionary}
     @subheading{The \"backspace\" signal}
       @begin{pre}
- lambda (view)    :action
+lambda (view)    :action
       @end{pre}
       The signal is a keybinding signal which gets emitted when the user asks
       for it. The default bindings for this signal are the @kbd{Backspace} and
@@ -476,7 +477,7 @@
       @end{table}
     @subheading{The \"copy-clipboard\" signal}
       @begin{pre}
- lambda (view)    :action
+lambda (view)    :action
       @end{pre}
       The signal is a keybinding signal which gets emitted to copy the
       selection to the clipboard. The default bindings for this signal are the
@@ -486,7 +487,7 @@
       @end{table}
     @subheading{The \"cut-clipboard\" signal}
       @begin{pre}
- lambda (view)    :action
+lambda (view)    :action
       @end{pre}
       The signal is a keybinding signal which gets emitted to cut the selection
       to the clipboard. The default bindings for this signal are the
@@ -496,7 +497,7 @@
       @end{table}
     @subheading{The \"delete-from-cursor\" signal}
       @begin{pre}
- lambda (view granularity count)    :action
+lambda (view granularity count)    :action
       @end{pre}
       The signal is a keybinding signal which gets emitted when the user
       initiates a text deletion. If the granularity is @code{:chars}, GTK
@@ -513,7 +514,7 @@
       @end{table}
     @subheading{The \"extend-selection\" signal}
       @begin{pre}
- lambda (view granularity location start end)    :run-last
+lambda (view granularity location start end)    :run-last
       @end{pre}
       The signal is emitted when the selection needs to be extended at the
       @arg{location} iterator.
@@ -532,7 +533,7 @@
       @end{table}
     @subheading{The \"insert-at-cursor\" signal}
       @begin{pre}
- lambda (view text)    :action
+lambda (view text)    :action
       @end{pre}
       The signal is a keybinding signal which gets emitted when the user
       initiates the insertion of text at the cursor. The signal has no default
@@ -543,7 +544,7 @@
       @end{table}
     @subheading{The \"insert-emoji\" signal}
       @begin{pre}
- lambda (view)    :action
+lambda (view)    :action
       @end{pre}
       This signal is a keybinding signal which gets emitted to present the Emoji
       chooser for the text view. The default bindings for this signal are
@@ -553,16 +554,16 @@
       @end{table}
     @subheading{The \"move-cursor\" signal}
       @begin{pre}
- lambda (view step count extend)    :action
+lambda (view step count extend)    :action
       @end{pre}
       The signal is a keybinding signal which gets emitted when the user
       initiates a cursor movement. If the cursor is not visible in the text
       view, this signal causes the viewport to be moved instead. Applications
-      should not connect to it, but may emit it with the @fun{g-signal-emit}
+      should not connect to it, but may emit it with the @fun{g:signal-emit}
       function if they need to control the cursor programmatically. The default
       bindings for this signal come in two variants, the variant with the
       @kbd{Shift} modifier extends the selection, the variant without the
-      @kbd{Shift} modifer does not. There are too many key combinations to list
+      @kbd{Shift} modifier does not. There are too many key combinations to list
       them all here. Arrow keys move by individual characters/lines. The
       @kbd{Ctrl}-arrow key combinations move by words/paragraphs. The
       @kbd{Home}/@kbd{End} keys move to the ends of the text buffer. The
@@ -577,7 +578,7 @@
       @end{table}
     @subheading{The \"move-viewport\" signal}
       @begin{pre}
- lambda (view step count)    :action
+lambda (view step count)    :action
       @end{pre}
       The signal is a keybinding signal which can be bound to key combinations
       to allow the user to move the viewport, i.e. change what part of the text
@@ -591,7 +592,7 @@
       @end{table}
     @subheading{The \"paste-clipboard\" signal}
       @begin{pre}
- lambda (view)    :action
+lambda (view)    :action
       @end{pre}
       The signal is a keybinding signal which gets emitted to paste the
       contents of the clipboard into the text view. The default bindings for
@@ -601,7 +602,7 @@
       @end{table}
     @subheading{The \"populate-popup\" signal}
       @begin{pre}
- lambda (view popup)    :run-last
+lambda (view popup)    :run-last
       @end{pre}
       The signal gets emitted before showing the context menu of the text view.
       If you need to add items to the context menu, connect to this signal and
@@ -619,7 +620,7 @@
       @end{table}
     @subheading{The \"preedit-changed\" signal}
       @begin{pre}
- lambda (view preedit)    :action
+lambda (view preedit)    :action
       @end{pre}
       If an input method is used, the typed text will not immediately be
       committed to the text buffer. So if you are interested in the text,
@@ -631,19 +632,19 @@
       @end{table}
     @subheading{The \"select-all\" signal}
       @begin{pre}
- lambda (view select)    :action
+lambda (view select)    :action
       @end{pre}
       The signal is a keybinding signal which gets emitted to select or unselect
       the complete contents of the text view. The default bindings for the
       signal are the @kbd{Ctrl-a} and @kbd{Ctrl-/} keys for selecting and the
       @kbd{Shift-Ctrl-a} and @kbd{Ctrl-\} keys for unselecting.
       @begin[code]{table}
-        @entry[view]{The @sym{gtk:text-viw} widget which received the signal.}
+        @entry[view]{The @sym{gtk:text-view} widget which received the signal.}
         @entry[select]{@em{True} to select, @em{false} to unselect.}
       @end{table}
     @subheading{The \"set-anchor\" signal}
       @begin{pre}
- lambda (view)    :action
+lambda (view)    :action
       @end{pre}
       The signal is a keybinding signal which gets emitted when the user
       initiates setting the \"anchor\" mark. The \"anchor\" mark gets placed at
@@ -654,7 +655,7 @@
       @end{table}
     @subheading{The \"toggle-cursor-visible\" signal}
       @begin{pre}
- lambda (view)    :action
+lambda (view)    :action
       @end{pre}
       This  signal is a keybinding signal which gets emitted to toggle the
       visibility of the cursor. The default binding for this signal is @kbd{F7}.
@@ -663,7 +664,7 @@
       @end{table}
     @subheading{The \"toggle-overwrite\" signal}
       @begin{pre}
- lambda (view)    :action
+lambda (view)    :action
       @end{pre}
       The signal is a keybinding signal which gets emitted to toggle the
       overwrite mode of the text view. The default bindings for this signal is
@@ -672,6 +673,8 @@
         @entry[view]{The @sym{gtk:text-view} widget which received the signal.}
       @end{table}
   @end{dictionary}
+  @see-constructor{gtk:text-view-new}
+  @see-constructor{gtk:text-view-new-with-buffer}
   @see-slot{gtk:text-view-accepts-tab}
   @see-slot{gtk:text-view-bottom-margin}
   @see-slot{gtk:text-view-buffer}
@@ -699,7 +702,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- text-view-accepts-tab ----------------------------------------------
+;;; --- text-view-accepts-tab --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "accepts-tab" 'text-view) t)
@@ -711,7 +714,7 @@
 (setf (liber:alias-for-function 'text-view-accepts-tab)
       "Accessor"
       (documentation 'text-view-accepts-tab 'function)
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:text-view-accepts-tab object) => accepts}
   @syntax[]{(setf (gtk:text-view-accepts-tab object) accepts)}
   @argument[object]{a @class{gtk:text-view} widget}
@@ -722,21 +725,19 @@
     Accessor of the @slot[gtk:text-view]{accepts-tab} slot of the
     @class{gtk:text-view} class.
   @end{short}
-
-  The @sym{gtk:text-view-accepts-tab} slot access function returns the behavior
-  of the text view when the @kbd{Tab} key is pressed. The
-  @sym{(setf gtk:text-view-accepts-tab)} slot access function sets the behavior.
+  The @sym{gtk:text-view-accepts-tab} function returns the behavior of the text
+  view when the @kbd{Tab} key is pressed. The
+  @sym{(setf gtk:text-view-accepts-tab)} function sets the behavior.
 
   If the @arg{accepts} argument is @em{true}, a tab character is inserted. If
   the @arg{accepts} argument is @em{false} the keyboard focus is moved to the
   next widget in the focus chain.
   @see-class{gtk:text-view}")
 
-;;; --- text-view-bottom-margin --------------------------------------------
+;;; --- text-view-bottom-margin ------------------------------------------------
 
 #+(and gtk-3-18 liber-documentation)
-(setf (documentation (liber:slot-documentation "bottom-margin"
-                                               'text-view) t)
+(setf (documentation (liber:slot-documentation "bottom-margin" 'text-view) t)
  "The @code{bottom-margin} property of type @code{:int} (Read / Write) @br{}
   The bottom margin for text in the text view. Note that this property is
   confusingly named. In CSS terms, the value set here is padding, and it is
@@ -749,7 +750,7 @@
 (setf (liber:alias-for-function 'text-view-bottom-margin)
       "Accessor"
       (documentation 'text-view-bottom-margin 'function)
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:text-view-bottom-margin object) => margin}
   @syntax[]{(setf (gtk:text-view-bottom-margin object) margin)}
   @argument[object]{a @class{gtk:text-view} widget}
@@ -758,10 +759,9 @@
     Accessor of the @slot[gtk:text-view]{bottom-margin} slot of the
     @class{gtk:text-view} class.
   @end{short}
-
-  The @sym{gtk:text-view-margin-bottom} slot access function gets the bottom
-  margin for text in the text view. The @sym{(setf gtk:text-view-margin-bottom)}
-  slot access function sets the bottom margin.
+  The @sym{gtk:text-view-margin-bottom} function gets the bottom margin for text
+  in the text view. The @sym{(setf gtk:text-view-margin-bottom)} function sets
+  the bottom margin.
 
   Note that this function is confusingly named. In CSS terms, the value set
   here is padding.
@@ -769,7 +769,7 @@
   Since 3.18
   @see-class{gtk:text-view}")
 
-;;; --- text-view-buffer ---------------------------------------------------
+;;; --- text-view-buffer -------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "buffer" 'text-view) t)
@@ -781,7 +781,7 @@
 (setf (liber:alias-for-function 'text-view-buffer)
       "Accessor"
       (documentation 'text-view-buffer 'function)
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:text-view-buffer object) => buffer}
   @syntax[]{(setf (gtk:text-view-buffer object) buffer)}
   @argument[object]{a @class{gtk:text-view} widget}
@@ -790,18 +790,16 @@
     Accessor of the @slot[gtk:text-view]{buffer} slot of the
     @class{gtk:text-view} class.
   @end{short}
-
-  The @sym{gtk:text-view-buffer} slot access function returns the text buffer
-  being displayed by the text view. The @sym{(setf gtk:text-view-buffer)} slot
-  access function sets the text buffer.
+  The @sym{gtk:text-view-buffer} function returns the text buffer being
+  displayed by the text view. The @sym{(setf gtk:text-view-buffer)} function
+  sets the text buffer.
   @see-class{gtk:text-view}
   @see-class{gtk:text-buffer}")
 
-;;; --- text-view-cursor-visible -------------------------------------------
+;;; --- text-view-cursor-visible -----------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "cursor-visible"
-                                               'text-view) t)
+(setf (documentation (liber:slot-documentation "cursor-visible" 'text-view) t)
  "The @code{cursor-visible} property of type @code{:boolean} (Read / Write)
   @br{}
   Whether the insertion cursor is shown. @br{}
@@ -811,7 +809,7 @@
 (setf (liber:alias-for-function 'text-view-cursor-visible)
       "Accessor"
       (documentation 'text-view-cursor-visible 'function)
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:text-view-cursor-visible object) => setting}
   @syntax[]{(setf (gtk:text-view-cursor-visible object) setting)}
   @argument[object]{a @class{gtk:text-view} widget}
@@ -820,16 +818,15 @@
     Accessor of the @slot[gtk:text-view]{cursor-visible} slot of the
     @class{gtk:text-view} class.
   @end{short}
-
-  The @sym{gtk:text-view-cursor-visible} slot access function returns whether
-  the insertion mark is visible. The @sym{(setf gtk:text-view-cursor-visible)}
-  slot access function toggles whether the insertion point is displayed.
+  The @sym{gtk:text-view-cursor-visible} function returns whether the insertion
+  mark is visible. The @sym{(setf gtk:text-view-cursor-visible)} function
+  toggles whether the insertion point is displayed.
 
   A text buffer with no editable text probably should not have a visible cursor,
   so you may want to turn the cursor off.
   @see-class{gtk:text-view}")
 
-;;; --- text-view-editable -------------------------------------------------
+;;; --- text-view-editable -----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "editable" 'text-view) t)
@@ -841,7 +838,7 @@
 (setf (liber:alias-for-function 'text-view-editable)
       "Accessor"
       (documentation 'text-view-editable 'function)
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:text-view-editable object) => setting}
   @syntax[]{(setf (gtk:text-view-editable object) setting)}
   @argument[object]{a @class{gtk:text-view} widget}
@@ -850,17 +847,16 @@
     Accessor of the @slot[gtk:text-view]{editable} slot of the
     @class{gtk:text-view} class.
   @end{short}
-
-  The @sym{gtk:text-view-editable} slot access function returns the default
-  editability of the text view. The @sym{(setf gtk:text-view-editable)} slot
-  access function sets the default editability.
+  The @sym{gtk:text-view-editable} function returns the default editability of
+  the text view. The @sym{(setf gtk:text-view-editable)} function sets the
+  default editability.
 
   You can override this default setting with tags in the text buffer, using the
   @slot[gtk:text-tag]{editable} attribute of tags.
   @see-class{gtk:text-view}
   @see-function{gtk:text-tag-editable}")
 
-;;; --- text-view-im-module ------------------------------------------------
+;;; --- text-view-im-module ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "im-module" 'text-view) t)
@@ -875,7 +871,7 @@
 (setf (liber:alias-for-function 'text-view-im-module)
       "Accessor"
       (documentation 'text-view-im-module 'function)
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:text-view-im-module object) => module}
   @syntax[]{(setf (gtk:text-view-im-module object) module)}
   @argument[object]{a @class{gtk:text-view} widget}
@@ -884,7 +880,6 @@
     Accessor of the @slot[gtk:text-view]{im-module} slot of the
     @class{gtk:text-view} class.
   @end{short}
-
   Which IM (input method) module should be used for this entry. See the
   @class{gtk:im-context} class. Setting this to a non-@code{nil} value overrides
   the system-wide IM module setting. See the @slot[gtk:settings]{gtk-im-module}
@@ -893,7 +888,7 @@
   @see-class{gtk:im-context}
   @see-function{gtk:settings-gtk-im-module}")
 
-;;; --- text-view-indent ---------------------------------------------------
+;;; --- text-view-indent -------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "indent" 'text-view) t)
@@ -905,7 +900,7 @@
 (setf (liber:alias-for-function 'text-view-indent)
       "Accessor"
       (documentation 'text-view-indent 'function)
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:text-view-indent object) => indent}
   @syntax[]{(setf (gtk:text-view-indent object) indent)}
   @argument[object]{a @class{gtk:text-view} widget}
@@ -914,18 +909,16 @@
     Accessor of the @slot[gtk:text-view]{indent} slot of the
     @class{gtk:text-view} class.
   @end{short}
-
-  The @sym{gtk:text-view-indent} slot access function gets the default
-  indentation of paragraphs in the text view. The
-  @sym{(setf gtk:text-view-indent)} slot access function sets the default
-  indentation.
+  The @sym{gtk:text-view-indent} function gets the default indentation of
+  paragraphs in the text view. The @sym{(setf gtk:text-view-indent)} function
+  sets the default indentation.
 
   Tags in the text buffer of the text view may override the default. The
   indentation may be negative.
   @see-class{gtk:text-view}
   @see-class{gtk:text-tag}")
 
-;;; --- text-view-input-hints ----------------------------------------------
+;;; --- text-view-input-hints --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "input-hints" 'text-view) t)
@@ -938,28 +931,26 @@
 (setf (liber:alias-for-function 'text-view-input-hints)
       "Accessor"
       (documentation 'text-view-input-hints 'function)
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:text-view-input-hints object) => hints}
   @syntax[]{(setf (gtk:text-view-input-hints object) hints)}
   @argument[object]{a @class{gtk:text-view} widget}
-  @argument[hints]{the hints as a value of the @symbol{gtk:input-hints} flags}
+  @argument[hints]{a @symbol{gtk:input-hints} value with the hints}
   @begin{short}
     Accessor of the @slot[gtk:text-view]{input-hints} slot of the
     @class{gtk:text-view} class.
   @end{short}
-
-  The @sym{gtk:text-view-input-hints} slot access function gets the value of
-  the @slot[gtk:text-view]{input-hints} property, which allows input methods to
-  fine-tune their behaviour. The @sym{(setf gtk:text-view-input-hints)} slot
-  access function sets the property.
+  The @sym{gtk:text-view-input-hints} function gets the value of the
+  @slot[gtk:text-view]{input-hints} property, which allows input methods to
+  fine-tune their behaviour. The @sym{(setf gtk:text-view-input-hints)} function
+  sets the property.
   @see-class{gtk:text-view}
   @see-symbol{gtk:input-hints}")
 
-;;; --- text-view-input-purpose --------------------------------------------
+;;; --- text-view-input-purpose ------------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "input-purpose"
-                                               'text-view) t)
+(setf (documentation (liber:slot-documentation "input-purpose" 'text-view) t)
  "The @code{input-purpose} property of type @symbol{gtk:input-purpose}
   (Read / Write) @br{}
   The purpose of this text field. This property can be used by on-screen
@@ -970,30 +961,26 @@
 (setf (liber:alias-for-function 'text-view-input-purpose)
       "Accessor"
       (documentation 'text-view-input-purpose 'function)
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:text-view-input-purpose object) => purpose}
   @syntax[]{(setf (gtk:text-view-input-purpose object) purpose)}
   @argument[object]{a @class{gtk:text-view} widget}
-  @argument[purpose]{the purpose as value of the @symbol{gtk:input-purpose}
-    enumeration}
+  @argument[purpose]{a @symbol{gtk:input-purpose} value with the purpose}
   @begin{short}
     Accessor of the @slot[gtk:text-view]{input-purpose} slot of the
     @class{gtk:text-view} class.
   @end{short}
-
-  The @sym{gtk:text-view-input-purpose} slot access function gets the value of
-  the @slot[gtk:text-view]{input-purpose} property, which can be used by
-  on-screen keyboards and other input methods to adjust their behaviour. The
-  @sym{(setf gtk:text-view-input-purpose)} slot access function sets the
-  property.
+  The @sym{gtk:text-view-input-purpose} function gets the value of the
+  @slot[gtk:text-view]{input-purpose} property, which can be used by on-screen
+  keyboards and other input methods to adjust their behaviour. The
+  @sym{(setf gtk:text-view-input-purpose)} function sets the property.
   @see-class{gtk:text-view}
   @see-symbol{gtk:input-purpose}")
 
-;;; --- text-view-justification --------------------------------------------
+;;; --- text-view-justification ------------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "justification"
-                                               'text-view) t)
+(setf (documentation (liber:slot-documentation "justification" 'text-view) t)
  "The @code{justification} property of type @symbol{gtk:justification}
   (Read / Write) @br{}
   Left, right, or center justification. @br{}
@@ -1003,26 +990,24 @@
 (setf (liber:alias-for-function 'text-view-justification)
       "Accessor"
       (documentation 'text-view-justification 'function)
- "@version{#2021-10-31}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:text-view-justification object) => justification}
   @syntax[]{(setf (gtk:text-view-justification object) justification)}
   @argument[object]{a @class{gtk:text-view} widget}
-  @argument[justification]{a value of the @symbol{gtk:justification}
-    enumeration}
+  @argument[justification]{a @symbol{gtk:justification} value}
   @begin{short}
     Accessor of the @slot[gtk:text-view]{justification} slot of the
     @class{gtk:text-view} class.
   @end{short}
-
-  The @sym{gtk:text-view-justification} slot access function gets the default
-  justification of paragraphs in the text view. The
-  @sym{(setf gtk:text-view-justification)} slot access function sets the default
-  justification. Tags in the text buffer may override the default.
+  The @sym{gtk:text-view-justification} function gets the default justification
+  of paragraphs in the text view. The @sym{(setf gtk:text-view-justification)}
+  function sets the default justification. Tags in the text buffer may override
+  the default.
   @see-class{gtk:text-view}
   @see-class{gtk:text-tag}
   @see-symbol{gtk:justification}")
 
-;;; --- text-view-left-margin ----------------------------------------------
+;;; --- text-view-left-margin --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "left-margin" 'text-view) t)
@@ -1035,7 +1020,7 @@
 (setf (liber:alias-for-function 'text-view-left-margin)
       "Accessor"
       (documentation 'text-view-left-margin 'function)
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:text-view-left-margin object) => margin}
   @syntax[]{(setf (gtk:text-view-left-margin object) margin)}
   @argument[object]{a @class{gtk:text-view} widget}
@@ -1044,21 +1029,18 @@
     Accessor of the @slot[gtk:text-view]{left-margin} slot of the
     @class{gtk:text-view} class.
   @end{short}
-
-  The @sym{gtk:text-view-left-margin} slot access function gets the default
-  left margin size of paragraphs in the text view. The
-  @sym{(setf gtk:text-view-left-margin)} slot access function sets the default
-  left margin.
+  The @sym{gtk:text-view-left-margin} function gets the default left margin size
+  of paragraphs in the text view. The @sym{(setf gtk:text-view-left-margin)}
+  function sets the default left margin.
 
   Tags in the text buffer may override the default.
   @see-class{gtk:text-view}
   @see-class{gtk:text-tag}")
 
-;;; --- text-view-monospace ------------------------------------------------
+;;; --- text-view-monospace ----------------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "monospace"
-                                               'text-view) t)
+(setf (documentation (liber:slot-documentation "monospace" 'text-view) t)
  "The @code{monospace} property of type @code{:boolean} (Read / Write) @br{}
   Whether to use a monospace font. @br{}
   Default value: @em{false}")
@@ -1067,7 +1049,7 @@
 (setf (liber:alias-for-function 'text-view-monospace)
       "Accessor"
       (documentation 'text-view-monospace 'function)
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:text-view-monospace object) => monospace}
   @syntax[]{(setf (gtk:text-view-monospace object) monospace)}
   @argument[object]{a @class{gtk:text-view} widget}
@@ -1076,14 +1058,13 @@
     Accessor of the @slot[gtk:text-view]{monospace} slot of the
     @class{gtk:text-view} class.
   @end{short}
-
-  The @sym{gtk:text-view-monospace} slot access function gets the value of the
+  The @sym{gtk:text-view-monospace} function gets the value of the
   @slot[gtk:text-view]{monospace} property, which indicates that the text view
-  should use monospace fonts. The @sym{(setf gtk:text-view-monospace)} slot
-  access function sets the property.
+  should use monospace fonts. The @sym{(setf gtk:text-view-monospace)} function
+  sets the property.
   @see-class{gtk:text-view}")
 
-;;; --- text-view-overwrite ------------------------------------------------
+;;; --- text-view-overwrite ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "overwrite" 'text-view) t)
@@ -1095,7 +1076,7 @@
 (setf (liber:alias-for-function 'text-view-overwrite)
       "Accessor"
       (documentation 'text-view-overwrite 'function)
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:text-view-overwrite object) => overwrite}
   @syntax[]{(setf (gtk:text-view-overwrite object) overwrite)}
   @argument[object]{a @class{gtk:text-view} widget}
@@ -1105,14 +1086,12 @@
     Accessor of the @slot[gtk:text-view]{overwrite} slot of the
     @class{gtk:text-view} class.
   @end{short}
-
-  The @sym{gtk:text-view-overwrite} slot access function returns whether the
-  text view is in overwrite mode or not. The
-  @sym{(setf gtk:text-view-overwrite)} slot access function changes the
-  overwrite mode.
+  The @sym{gtk:text-view-overwrite} function returns whether the text view is
+  in overwrite mode or not. The @sym{(setf gtk:text-view-overwrite)} function
+  changes the overwrite mode.
   @see-class{gtk:text-view}")
 
-;;; --- text-view-pixels-above-lines ---------------------------------------
+;;; --- text-view-pixels-above-lines -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "pixels-above-lines"
@@ -1127,7 +1106,7 @@
 (setf (liber:alias-for-function 'text-view-pixels-above-lines)
       "Accessor"
       (documentation 'text-view-pixels-above-lines 'function)
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:text-view-pixels-above-lines object) => pixels}
   @syntax[]{(setf (gtk:text-view-pixels-above-lines object) pixels)}
   @argument[object]{a @class{gtk:text-view} widget}
@@ -1136,17 +1115,16 @@
     Accessor of the @slot[gtk:text-view]{pixels-above-lines} slot of the
     @class{gtk:text-view} class.
   @end{short}
-
-  The @sym{gtk:text-view-pixels-above-lines} slot access function gets the
-  default number of pixels to put above paragraphs in the text view. The
-  @sym{(setf gtk:text-view-pixels-above-lines)} slot access function sets the
-  default number of blank pixels.
+  The @sym{gtk:text-view-pixels-above-lines} function gets the default number
+  of pixels to put above paragraphs in the text view. The
+  @sym{(setf gtk:text-view-pixels-above-lines)} function sets the default
+  number of blank pixels.
 
   Tags in the text buffer for the text view may override the defaults.
   @see-class{gtk:text-view}
   @see-class{gtk:text-tag}")
 
-;;; --- text-view-pixels-below-lines ---------------------------------------
+;;; --- text-view-pixels-below-lines -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "pixels-below-lines"
@@ -1161,7 +1139,7 @@
 (setf (liber:alias-for-function 'text-view-pixels-below-lines)
       "Accessor"
       (documentation 'text-view-pixels-below-lines 'function)
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:text-view-pixels-below-lines object) => pixels}
   @syntax[]{(setf (gtk:text-view-pixels-below-lines object) pixels)}
   @argument[object]{a @class{gtk:text-view} widget}
@@ -1170,17 +1148,16 @@
     Accessor of the @slot[gtk:text-view]{pixels-below-lines} slot of the
     @class{gtk:text-view} class.
   @end{short}
-
-  The @sym{gtk:text-view-pixels-below-lines} slot access function gets the
-  default number of pixels to put below paragraphs in the text view. The
-  @sym{(setf gtk:text-view-pixels-below-lines)} slot access function sets the
-  default number of pixels of blank space to put below paragraphs.
+  The @sym{gtk:text-view-pixels-below-lines} function gets the default number
+  of pixels to put below paragraphs in the text view. The
+  @sym{(setf gtk:text-view-pixels-below-lines)} function sets the default
+  number of pixels of blank space to put below paragraphs.
 
   May be overridden by tags applied to the text buffer of the text view.
   @see-class{gtk:text-view}
   @see-class{gtk:text-tag}")
 
-;;; --- text-view-pixels-inside-wrap ---------------------------------------
+;;; --- text-view-pixels-inside-wrap -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "pixels-inside-wrap"
@@ -1195,7 +1172,7 @@
 (setf (liber:alias-for-function 'text-view-pixels-inside-wrap)
       "Accessor"
       (documentation 'text-view-pixels-inside-wrap 'function)
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:text-view-pixels-inside-wrap object) => pixels}
   @syntax[]{(setf (gtk:text-view-pixels-inside-wrap object) pixels)}
   @argument[object]{a @class{gtk:text-view} widget}
@@ -1205,21 +1182,19 @@
     Accessor of the @slot[gtk:text-view]{pixels-inside-wrap} slot of the
     @class{gtk:text-view} class.
   @end{short}
-
-  The @sym{gtk:text-view-pixels-inside-wrap} slot access function gets the
-  default number of pixels of blank space to leave between display/wrapped
-  lines within a paragraph. The @sym{(setf gtk:text-view-pixels-inside-wrap)}
-  slot access function sets the default number of pixels.
+  The @sym{gtk:text-view-pixels-inside-wrap} function gets the default number
+  of pixels of blank space to leave between display/wrapped lines within a
+  paragraph. The @sym{(setf gtk:text-view-pixels-inside-wrap)} function sets
+  the default number of pixels.
 
   May be overridden by tags in the text buffer of the text view.
   @see-class{gtk:text-view}
   @see-class{gtk:text-tag}")
 
-;;; --- text-view-populate-all ---------------------------------------------
+;;; --- text-view-populate-all -------------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "populate-all"
-                                               'text-view) t)
+(setf (documentation (liber:slot-documentation "populate-all" 'text-view) t)
  "The @code{populate-all} property of type @code{:boolean} (Read / Write) @br{}
   If @em{true}, the \"populate-popup\" signal is also emitted for touch popups.
   @br{}
@@ -1229,7 +1204,7 @@
 (setf (liber:alias-for-function 'text-view-populate-all)
       "Accessor"
       (documentation 'text-view-populate-all 'function)
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:text-view-populate-all object) => populate}
   @syntax[]{(setf (gtk:text-view-populate-all object) populate)}
   @argument[object]{a @class{gtk:text-view} widget}
@@ -1239,16 +1214,14 @@
     Accessor of the @slot[gtk:text-view]{populate-all} slot of the
     @class{gtk:text-view} class.
   @end{short}
-
   If the @code{populate-all} argument is @em{true}, the \"populate-popup\"
   signal is also emitted for touch popups.
   @see-class{gtk:text-view}")
 
-;;; --- text-view-right-margin ---------------------------------------------
+;;; --- text-view-right-margin -------------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "right-margin"
-                                               'text-view) t)
+(setf (documentation (liber:slot-documentation "right-margin" 'text-view) t)
  "The @code{right-margin} property of type @code{:int} (Read / Write) @br{}
   Width of the right margin in pixels. @br{}
   Allowed values: >= 0 @br{}
@@ -1258,7 +1231,7 @@
 (setf (liber:alias-for-function 'text-view-right-margin)
       "Accessor"
       (documentation 'text-view-right-margin 'function)
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:text-view-right-margin object) => margin}
   @syntax[]{(setf (gtk:text-view-right-margin object) margin)}
   @argument[object]{a @class{gtk:text-view} widget}
@@ -1267,48 +1240,45 @@
     Accessor of the @slot[gtk:text-view]{right-margin} slot of the
     @class{gtk:text-view} class.
   @end{short}
-
-  The @sym{gtk:text-view-right-margin} slot access function gets the default
-  right margin for text in the text view. The
-  @sym{(setf gtk:text-view-right-margin)} slot access function sets the default
-  right margin.
+  The @sym{gtk:text-view-right-margin} function gets the default right margin
+  for text in the text view. The @sym{(setf gtk:text-view-right-margin)}
+  function sets the default right margin.
 
   Tags in the text buffer may override the default.
   @see-class{gtk:text-view}
   @see-class{gtk:text-tag}")
 
-;;; --- text-view-tabs -----------------------------------------------------
+;;; --- text-view-tabs ---------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "tabs" 'text-view) t)
- "The @code{tabs} property of type @class{pango-tab-array} (Read / Write) @br{}
+ "The @code{tabs} property of type @class{pango:tab-array} (Read / Write) @br{}
   Custom tabs for this text.")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'text-view-tabs)
       "Accessor"
       (documentation 'text-view-tabs 'function)
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:text-view-tabs object) => tabs}
   @syntax[]{(setf (gtk:text-view-tabs object) tabs)}
   @argument[object]{a @class{gtk:text-view} widget}
-  @argument[tabs]{tabs as a @class{pango-tab-array} instance}
+  @argument[tabs]{a @class{pango:tab-array} instance with the tabs}
   @begin{short}
     Accessor of the @slot[gtk:text-view]{tabs} slot of the @class{gtk:text-view}
     class.
   @end{short}
-
-  The @sym{gtk:text-view-tabs} slot access function gets a copy of the default
-  Pango tab array, or @code{nil} if \"standard\" tabs are used. The
-  @sym{(setf gtk:text-view-tabs)} slot access function sets the default tab
-  stops for paragraphs.
+  The @sym{gtk:text-view-tabs} function gets a copy of the default Pango tab
+  array, or @code{nil} if \"standard\" tabs are used. The
+  @sym{(setf gtk:text-view-tabs)} function sets the default tab stops for
+  paragraphs.
 
   Tags in the text buffer may override the defaults.
   @see-class{gtk:text-view}
   @see-class{gtk:text-tag}
-  @see-class{pango-tab-array}")
+  @see-class{pango:tab-array}")
 
-;;; --- text-view-top-margin -----------------------------------------------
+;;; --- text-view-top-margin ---------------------------------------------------
 
 #+(and gtk-3-18 liber-documentation)
 (setf (documentation (liber:slot-documentation "top-margin" 'text-view) t)
@@ -1324,7 +1294,7 @@
 (setf (liber:alias-for-function 'text-view-top-margin)
       "Accessor"
       (documentation 'text-view-top-margin 'function)
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:text-view-top-margin object) => margin}
   @syntax[]{(setf (gtk:text-view-top-margin object) margin)}
   @argument[object]{a @class{gtk:text-view} widget}
@@ -1333,10 +1303,9 @@
     Accessor of the @slot[gtk:text-view]{top-margin} slot of the
     @class{gtk:text-view} class.
   @end{short}
-
-  The @sym{gtk:text-view-top-margin} slot access function gets the top margin
-  for text in the text view. The @sym{(setf gtk:text-view-top-margin)} slot
-  access function sets the top margin.
+  The @sym{gtk:text-view-top-margin} function gets the top margin for text in
+  the text view. The @sym{(setf gtk:text-view-top-margin)} function sets the
+  top margin.
 
   Note that this function is confusingly named. In CSS terms, the value set
   here is padding.
@@ -1344,7 +1313,7 @@
   Since 3.18
   @see-class{gtk:text-view}")
 
-;;; --- text-view-wrap-mode ------------------------------------------------
+;;; --- text-view-wrap-mode ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "wrap-mode" 'text-view) t)
@@ -1358,7 +1327,7 @@
 (setf (liber:alias-for-function 'text-view-wrap-mode)
       "Accessor"
       (documentation 'text-view-wrap-mode 'function)
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:text-view-wrap-mode object) => mode}
   @syntax[]{(setf (gtk:text-view-wrap-mode object) mode)}
   @argument[object]{a @class{gtk:text-view} widget}
@@ -1367,10 +1336,9 @@
     Accessor of the @slot[gtk:text-view]{wrap-mode} slot of the
     @class{gtk:text-view} class.
   @end{short}
-
-  The @sym{gtk:text-view-wrap-mode} slot access function gets the line wrapping
-  for the text view. The @sym{(setf gtk:text-view-wrap-mode)} slot access
-  function sets the line wrapping.
+  The @sym{gtk:text-view-wrap-mode} function gets the line wrapping for the
+  text view. The @sym{(setf gtk:text-view-wrap-mode)} function sets the line
+  wrapping.
   @see-class{gtk:text-view}
   @see-symbol{gtk:wrap-mode}")
 
@@ -1382,7 +1350,7 @@
 
 (defun text-view-new ()
  #+liber-documentation
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @return{A new @class{gtk:text-view} widget.}
   @begin{short}
     Creates a new text view.
@@ -1408,7 +1376,7 @@
 
 (defun text-view-new-with-buffer (buffer)
  #+liber-documentation
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @return{A new @class{gtk:text-view} widget.}
   @begin{short}
@@ -1482,10 +1450,10 @@
   (yalign :double))
 
 (defun text-view-scroll-to-mark (view mark &key (margin 0.4)
-                                                    (xalign 0.0 xalign-p)
-                                                    (yalign 0.0 yalign-p))
+                                                (xalign 0.0 xalign-p)
+                                                (yalign 0.0 yalign-p))
  #+liber-documentation
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @argument[view]{a @class{gtk:text-view} widget}
   @argument[mark]{a @class{gtk:text-mark} object}
   @argument[margin]{a double float margin as a [0.0, 0.5) fraction of screen
@@ -1504,17 +1472,17 @@
   possibly not scrolling at all. The effective screen for purposes of this
   function is reduced by a margin of size @arg{margin}.
   @begin[Note]{dictionary}
-    The double float arguments take any number, which is coerced to a double
+    The double float arguments take any numbers, which are coerced to a double
     float.
   @end{dictionary}
   @see-class{gtk:text-view}
   @see-class{gtk:text-mark}"
   (%text-view-scroll-to-mark view
-                                 mark
-                                 (coerce margin 'double-float)
-                                 (or xalign-p yalign-p)
-                                 (coerce xalign 'double-float)
-                                 (coerce yalign 'double-float)))
+                             mark
+                             (coerce margin 'double-float)
+                             (or xalign-p yalign-p)
+                             (coerce xalign 'double-float)
+                             (coerce yalign 'double-float)))
 
 (export 'text-view-scroll-to-mark)
 
@@ -1531,10 +1499,10 @@
   (yalign :double))
 
 (defun text-view-scroll-to-iter (view iter &key (margin 0.4)
-                                                    (xalign 0.0 xalign-p)
-                                                    (yalign 0.0 yalign-p))
+                                                (xalign 0.0 xalign-p)
+                                                (yalign 0.0 yalign-p))
  #+liber-documentation
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @argument[view]{a @class{gtk:text-view} widget}
   @argument[iter]{a @class{gtk:text-iter} iterator}
   @argument[margin]{a double float margin as a [0.0, 0.5) fraction of screen
@@ -1561,18 +1529,18 @@
   @fun{gtk:text-view-scroll-to-mark} function which saves a point to be scrolled
   to after line validation.
   @begin[Note]{dictionary}
-    The double float arguments take any number, which is coerced to a double
+    The double float arguments take any numbers, which are coerced to a double
     float.
   @end{dictionary}
   @see-class{gtk:text-view}
   @see-class{gtk:text-iter}
   @see-function{gtk:text-view-scroll-to-mark}"
   (%text-view-scroll-to-iter view
-                                 iter
-                                 (coerce margin 'double-float)
-                                 (or xalign-p yalign-p)
-                                 (coerce xalign 'double-float)
-                                 (coerce yalign 'double-float)))
+                             iter
+                             (coerce margin 'double-float)
+                             (or xalign-p yalign-p)
+                             (coerce xalign 'double-float)
+                             (coerce yalign 'double-float)))
 
 (export 'text-view-scroll-to-iter)
 
@@ -1580,10 +1548,10 @@
 ;;; gtk_text_view_scroll_mark_onscreen ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_text_view_scroll_mark_onscreen"
-          text-view-scroll-mark-onscreen) :void
+(defcfun ("gtk_text_view_scroll_mark_onscreen" text-view-scroll-mark-onscreen)
+    :void
  #+liber-documentation
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @argument[view]{a @class{gtk:text-view} widget}
   @argument[mark]{a @class{gtk:text-mark} object in the text buffer for the
     text view}
@@ -1602,10 +1570,10 @@
 ;;; gtk_text_view_move_mark_onscreen ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_text_view_move_mark_onscreen"
-          text-view-move-mark-onscreen) :boolean
+(defcfun ("gtk_text_view_move_mark_onscreen" text-view-move-mark-onscreen)
+    :boolean
  #+liber-documentation
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @argument[view]{a @class{gtk:text-view} widget}
   @argument[mark]{a @class{gtk:text-mark} object}
   @return{@em{True} if the mark moved, was not already onscreen.}
@@ -1624,10 +1592,10 @@
 ;;; gtk_text_view_place_cursor_onscreen ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_text_view_place_cursor_onscreen"
-          text-view-place-cursor-onscreen) :boolean
+(defcfun ("gtk_text_view_place_cursor_onscreen" text-view-place-cursor-onscreen)
+    :boolean
  #+liber-documentation
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @argument[view]{a @class{gtk:text-view} widget}
   @return{@em{True} if the cursor had to be moved.}
   @begin{short}
@@ -1643,14 +1611,13 @@
 ;;; gtk_text_view_get_visible_rect () -> text-view-visible-rect
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_text_view_get_visible_rect" %text-view-visible-rect)
-    :void
+(defcfun ("gtk_text_view_get_visible_rect" %text-view-visible-rect) :void
   (view (g:object text-view))
   (visible-rect (g:boxed gdk:rectangle)))
 
 (defun text-view-visible-rect (view)
  #+liber-documentation
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @argument[view]{a @class{gtk:text-view} widget}
   @return{A @class{gdk:rectangle} instance with the current visible region.}
   @begin{short}
@@ -1678,7 +1645,7 @@
 
 (defun text-view-iter-location (view iter)
  #+liber-documentation
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @argument[view]{a @class{gtk:text-view} widget}
   @argument[iter]{a @class{gtk:text-iter} iterator}
   @begin{return}
@@ -1715,7 +1682,7 @@
 
 (defun text-view-cursor-locations (view iter)
  #+liber-documentation
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @argument[view]{a @class{gtk:text-view} widget}
   @argument[iter]{a @class{gtk:text-iter} iterator}
   @begin{return}
@@ -1766,7 +1733,7 @@
 
 (defun text-view-line-at-y (view y)
  #+liber-documentation
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @argument[view]{a @class{gtk:text-view} widget}
   @argument[y]{an integer with the y coordinate}
   @begin{return}
@@ -1803,7 +1770,7 @@
 
 (defun text-view-line-yrange (view iter)
  #+liber-documentation
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @argument[view]{a @class{gtk:text-view} widget}
   @argument[iter]{a @class{gtk:text-iter} iterator}
   @begin{return}
@@ -1839,7 +1806,7 @@
 
 (defun text-view-iter-at-location (view x y)
  #+liber-documentation
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @argument[view]{a @class{gtk:text-view} widget}
   @argument[x]{an integer with the x position, in text buffer coordinates}
   @argument[y]{an integer with the y position, in text buffer coordinates}
@@ -1876,7 +1843,7 @@
 
 (defun text-view-iter-at-position (view x y)
  #+liber-documentation
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @argument[view]{a @class{gtk:text-view} widget}
   @argument[x]{an integer with the x position, in text buffer coordinates}
   @argument[y]{an integer with the y position, in text buffer coordinates}
@@ -1913,7 +1880,7 @@
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_text_view_buffer_to_window_coords"
-          %text-view-buffer-to-window-coords) :void
+           %text-view-buffer-to-window-coords) :void
   (view (g:object text-view))
   (wtype text-window-type)
   (xbuffer :int)
@@ -1923,7 +1890,7 @@
 
 (defun text-view-buffer-to-window-coords (view wtype xbuffer ybuffer)
  #+liber-documentation
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @argument[view]{a @class{gtk:text-view} widget}
   @argument[wtype]{a value of the @symbol{gtk:text-window-type} enumeration,
     except @code{:private}}
@@ -1946,9 +1913,9 @@
   @see-function{gtk:text-view-border-window-size}"
   (with-foreign-objects ((xwindow :int) (ywindow :int))
     (%text-view-buffer-to-window-coords view
-                                            wtype
-                                            xbuffer ybuffer
-                                            xwindow ywindow)
+                                        wtype
+                                        xbuffer ybuffer
+                                        xwindow ywindow)
     (values (cffi:mem-ref xwindow :int)
             (cffi:mem-ref ywindow :int))))
 
@@ -1969,7 +1936,7 @@
 
 (defun text-view-window-to-buffer-coords (view wtype xwindow ywindow)
  #+liber-documentation
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @argument[view]{a @class{gtk:text-view} widget}
   @argument[wtype]{a value of the @symbol{gtk:text-window-type} enumeration,
     except @code{:private}}
@@ -1992,9 +1959,9 @@
   @see-function{gtk:text-view-border-window-size}"
   (with-foreign-objects ((xbuffer :int) (ybuffer :int))
     (%text-view-window-to-buffer-coords view
-                                            wtype
-                                            xwindow ywindow
-                                            xbuffer ybuffer)
+                                        wtype
+                                        xwindow ywindow
+                                        xbuffer ybuffer)
     (values (cffi:mem-ref xbuffer :int)
             (cffi:mem-ref ybuffer :int))))
 
@@ -2004,13 +1971,12 @@
 ;;; gtk_text_view_get_window () -> text-view-window
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_text_view_get_window" text-view-window) (g:object gdk-window)
+(defcfun ("gtk_text_view_get_window" text-view-window) (g:object gdk:window)
  #+liber-documentation
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @argument[view]{a @class{gtk:text-view} widget}
-  @argument[wtype]{window to get, one of the @symbol{gtk:text-window-type}
-    enumeration}
-  @return{A @class{gdk-window} object, or @code{nil}.}
+  @argument[wtype]{a @symbol{gtk:text-window-type} value with the window to get}
+  @return{A @class{gdk:window} object, or @code{nil}.}
   @begin{short}
     Retrieves the GDK window corresponding to an area of the text view.
   @end{short}
@@ -2019,7 +1985,7 @@
   Windows are @code{nil} and nonexistent if their width or height is 0, and are
   nonexistent before the widget has been realized.
   @see-class{gtk:text-view}
-  @see-class{gdk-window}
+  @see-class{gdk:window}
   @see-symbol{gtk:text-window-type}"
   (view (g:object text-view))
   (wtype text-window-type))
@@ -2033,9 +1999,9 @@
 (defcfun ("gtk_text_view_get_window_type" text-view-window-type)
     text-window-type
  #+liber-documentation
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @argument[view]{a @class{gtk:text-view} widget}
-  @argument[window]{a @class{gdk-window} object}
+  @argument[window]{a @class{gdk:window} object}
   @return{A value of the @symbol{gtk:text-window-type} enumeration.}
   @begin{short}
     Usually used to find out which GDK window an event corresponds to.
@@ -2043,10 +2009,10 @@
   If you connect to an event signal on the text view, this function should be
   called on the GDK window to see which window it was.
   @see-class{gtk:text-view}
-  @see-class{gdk-window}
+  @see-class{gdk:window}
   @see-symbol{gtk:text-window-type}"
   (view (g:object text-view))
-  (window (g:object gdk-window)))
+  (window (g:object gdk:window)))
 
 (export 'text-view-window-type)
 
@@ -2063,10 +2029,10 @@
                         :void)
   size)
 
-(defcfun ("gtk_text_view_get_border_window_size"
-           text-view-border-window-size) :int
+(defcfun ("gtk_text_view_get_border_window_size" text-view-border-window-size)
+    :int
  #+liber-documentation
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:text-view-border-window-size view wtype) => size}
   @syntax[]{(setf (gtk:text-view-border-window-size view wtype) size)}
   @argument[view]{a @class{gtk:text-view} widget}
@@ -2075,7 +2041,6 @@
   @begin{short}
     Accessor of the border window size of the text view.
   @end{short}
-
   The @sym{gtk:text-view-border-window-size} function gets the width of the
   specified border window. The @sym{(setf gtk:text-view-border-window-size)}
   function sets the width of the @code{:left} or @code{:right} size of the
@@ -2098,9 +2063,9 @@
 ;;; ----------------------------------------------------------------------------
 
 (defun text-view-move-display-line (view iter &key (direction :forward)
-                                                       (start-or-end nil))
+                                                   (start-or-end nil))
  #+liber-documentation
- "@version{#2021-10-21}
+ "@version{#2023-3-8}
   @argument[view]{a @class{gtk:text-view} widget}
   @argument[iter]{a @class{gtk:text-iter} iterator}
   @argument[direction]{the @code{:forward} or @code{:backward} keyword, the
@@ -2248,21 +2213,21 @@
 ;;; gtk_text_view_starts_display_line ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_text_view_starts_display_line"
-           text-view-starts-display-line) :boolean
+(defcfun ("gtk_text_view_starts_display_line" text-view-starts-display-line)
+    :boolean
  #+liber-documentation
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @argument[view]{a @class{gtk:text-view} widget}
   @argument[iter]{a @class{gtk:text-iter} iterator}
   @return{@em{True} if @arg{iter} begins a wrapped line.}
   @begin{short}
     Determines whether @arg{iter} is at the start of a display line.
   @end{short}
-  See the @fun{gtk:text-view-forward-display-line} function for an explanation
+  See the @fun{gtk:text-view-move-display-line} function for an explanation
   of display lines versus paragraphs.
   @see-class{gtk:text-view}
   @see-class{gtk:text-iter}
-  @see-function{gtk:text-view-forward-display-line}"
+  @see-function{gtk:text-view-move-display-line}"
   (view (g:object text-view))
   (iter (g:boxed text-iter)))
 
@@ -2274,7 +2239,7 @@
 
 (defcfun ("gtk_text_view_move_visually" text-view-move-visually) :boolean
  #+liber-documentation
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @argument[view]{a @class{gtk:text-view} widget}
   @argument[iter]{a @class{gtk:text-iter} iterator}
   @argument[count]{an integer with the number of characters to move, negative
@@ -2307,7 +2272,7 @@
 (defcfun ("gtk_text_view_add_child_at_anchor" text-view-add-child-at-anchor)
     :void
  #+liber-documentation
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @argument[view]{a @class{gtk:text-view} widget}
   @argument[child]{a @class{gtk:widget} object}
   @argument[anchor]{a @class{gtk:text-child-anchor} object in the text buffer
@@ -2332,7 +2297,7 @@
 
 (defun text-child-anchor-new ()
  #+liber-documentation
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @return{A new @class{gtk:text-child-anchor} object.}
   @begin{short}
     Creates a new @class{gtk:text-child-anchor} object.
@@ -2354,9 +2319,9 @@
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_text_child_anchor_get_widgets" text-child-anchor-widgets)
-    (g:list-t (g:object widget) :free-from-foreign t)
+    (g:list-t (g:object widget))
  #+liber-documentation
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @argument[anchor]{a @class{gtk:text-child-anchor} object}
   @return{List of @class{gtk:widget} objects anchored at @arg{anchor}.}
   @begin{short}
@@ -2375,7 +2340,7 @@
 (defcfun ("gtk_text_child_anchor_get_deleted" text-child-anchor-deleted)
     :boolean
  #+liber-documentation
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @argument[anchor]{a @class{gtk:text-child-anchor} object}
   @return{@em{True} if the anchor has been deleted from its text buffer.}
   @begin{short}
@@ -2396,7 +2361,7 @@
 (defcfun ("gtk_text_view_add_child_in_window" text-view-add-child-in-window)
     :void
  #+liber-documentation
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @argument[view]{a @class{gtk:text-view} widget}
   @argument[child]{a @class{gtk:widget} object}
   @argument[wtype]{a @symbol{gtk:text-window-type} value with the window type
@@ -2439,7 +2404,7 @@
 
 (defcfun ("gtk_text_view_move_child" text-view-move-child) :void
  #+liber-documentation
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @argument[view]{a @class{gtk:text-view} widget}
   @argument[child]{a @class{gtk:widget} child widget already added to the text
     view}
@@ -2463,10 +2428,9 @@
 ;;; gtk_text_view_reset_cursor_blink ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_text_view_reset_cursor_blink" text-view-reset-cursor-blink)
-    :void
+(defcfun ("gtk_text_view_reset_cursor_blink" text-view-reset-cursor-blink) :void
  #+liber-documentation
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @argument[view]{a @class{gtk:text-view} widget}
   @begin{short}
     Ensures that the cursor is shown, i.e. not in an 'off' blink interval, and
@@ -2518,7 +2482,7 @@
 (defcfun ("gtk_text_view_im_context_filter_keypress"
            text-view-im-context-filter-keypress) :boolean
  #+liber-documentation
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @argument[view]{a @class{gtk:text-view} widget}
   @argument[event]{a @class{gdk:event-key} key event}
   @return{@em{True} if the input method handled the key event.}
@@ -2565,7 +2529,7 @@
 
 (defcfun ("gtk_text_view_reset_im_context" text-view-reset-im-context) :void
  #+liber-documentation
- "@version{#2021-10-16}
+ "@version{#2023-3-8}
   @argument[view]{a @class{gtk:text-view} widget}
   @begin{short}
     Reset the input method context of the text view if needed.
