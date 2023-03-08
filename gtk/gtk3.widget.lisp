@@ -330,7 +330,7 @@
 (setf (liber:alias-for-symbol 'widget-help-type)
       "GEnum"
       (liber:symbol-documentation 'widget-help-type)
- "@version{#2021-9-14}
+ "@version{#2023-3-8}
   @begin{short}
     Kinds of widget-specific help used in the \"show-help\" signal handler.
   @end{short}
@@ -364,7 +364,7 @@
 (setf (liber:alias-for-symbol 'size-request-mode)
       "GEnum"
       (liber:symbol-documentation 'size-request-mode)
- "@version{#2021-9-14}
+ "@version{#2023-3-8}
   @begin{short}
     Specifies a preference for height-for-width or width-for-height geometry
     management.
@@ -441,11 +441,10 @@
 (setf (liber:alias-for-symbol 'align)
       "GEnum"
       (liber:symbol-documentation 'align)
- "@version{#2021-11-30}
+ "@version{#2023-3-8}
   @begin{short}
     Controls how a widget deals with extra space in a single x or y dimension.
   @end{short}
-
   Alignment only matters if the widget receives a \"too large\" allocation, for
   example if you packed the widget with the @slot[gtk:widget]{expand} flag
   inside a @class{gtk:box} widget, then the widget might get extra space. If you
@@ -495,7 +494,7 @@
 (setf (liber:alias-for-class 'requisition)
       "GBoxed"
       (documentation 'requisition 'type)
- "@version{#2021-9-14}
+ "@version{#2023-3-8}
   @begin{short}
     A @sym{gtk:requisition} structure represents the desired size of a widget.
   @end{short}
@@ -523,13 +522,13 @@
 ;;; Accessors of GtkRequistion
 ;;; ----------------------------------------------------------------------------
 
-;;; --- requisition-height -------------------------------------------------
+;;; --- requisition-height -----------------------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'requisition-height)
       "Accessor"
       (documentation 'requisition-height 'function)
- "@version{#2021-9-14}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:requisition-height instance) => height}
   @syntax[]{(setf (gtk:requisition-height instance) height)}
   @argument[instance]{a @class{gtk:requisition} instance}
@@ -547,13 +546,13 @@
   @see-class{gtk:requisition}
   @see-function{gtk:requisition-width}")
 
-;;; --- requisition-width --------------------------------------------------
+;;; --- requisition-width ------------------------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'requisition-width)
       "Accessor"
       (documentation 'requisition-width 'function)
- "@version{#2021-9-14}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:requisition-width instance) => width}
   @syntax[]{(setf (gtk:requisition-width instance) width)}
   @argument[instance]{a @class{gtk:requisition} instance}
@@ -579,7 +578,7 @@
 
 (defun requisition-new (&key (width 0) (height 0))
  #+liber-documentation
- "@version{#2021-9-14}
+ "@version{#2023-3-8}
   @argument[width]{an integer with the width, default 0}
   @argument[height]{an integer with the height, default 0}
   @begin{return}
@@ -601,7 +600,7 @@
 
 (defun requisition-copy (requisition)
  #+liber-documentation
- "@version{#2021-9-14}
+ "@version{#2023-3-8}
   @argument[requisition]{a @class{gtk:requisition} instance}
   @return{A copy of @arg{requisition}.}
   @begin{short}
@@ -754,7 +753,7 @@
 
 #+liber-documentation
 (setf (documentation 'widget 'type)
- "@version{#2021-9-14}
+ "@version{#2023-3-8}
   @begin{short}
     The @sym{gtk:widget} class is the base class all widgets in GTK derive from.
     It manages the widget life cycle, states and style.
@@ -1495,8 +1494,8 @@ lambda (widget cr)    :run-last
       @fun{gtk:widget-allocated-width} and @fun{gtk:widget-allocated-height}
       functions. Signal handlers connected to this signal can modify the Cairo
       context in any way they like and do not need to restore it. The signal
-      emission takes care of calling the @fun{cairo-save} function before and
-      the @fun{cairo-restore} function after invoking the handler.
+      emission takes care of calling the @fun{cairo:save} function before and
+      the @fun{cairo:restore} function after invoking the handler.
       @begin[code]{table}
         @entry[widget]{The @sym{gtk:widget} object which received the signal.}
         @entry[cr]{The @class{gdk:cairo-context} Cairo context to draw to.}
@@ -2162,7 +2161,7 @@ lambda (widget event)    :run-last
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- widget-app-paintable -----------------------------------------------
+;;; --- widget-app-paintable ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "app-paintable" 'widget) t)
@@ -2174,7 +2173,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-app-paintable)
       "Accessor"
       (documentation 'widget-app-paintable 'function)
- "@version{#2021-9-15}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-app-paintable object) => paintable}
   @syntax[]{(setf (gtk:widget-app-paintable object) paintable)}
   @argument[object]{a @class{gtk:widget} object}
@@ -2184,11 +2183,10 @@ lambda (widget event)    :run-last
     Accessor of the @slot[gtk:widget]{app-paintable} slot of the
     @class{gtk:widget} class.
   @end{short}
-
-  The @sym{gtk:widget-app-paintable} slot access function returns @em{true} if
-  the widget will paint on the widget in a \"draw\" handler. The
-  @sym{(setf gtk:widget-app-paintable)} slot access function sets whether the
-  application intends to draw on the widget.
+  The @sym{gtk:widget-app-paintable} function returns @em{true} if the widget
+  will paint on the widget in a \"draw\" handler. The
+  @sym{(setf gtk:widget-app-paintable)} function sets whether the application
+  intends to draw on the widget.
 
   This is a hint to the widget and does not affect the behavior of the GTK
   core. Many widgets ignore this flag entirely. For widgets that do pay
@@ -2202,7 +2200,7 @@ lambda (widget event)    :run-last
   @see-class{gtk:window}
   @see-class{gtk:event-box}")
 
-;;; --- widget-can-default -------------------------------------------------
+;;; --- widget-can-default -----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "can-default" 'widget) t)
@@ -2214,7 +2212,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-can-default)
       "Accessor"
       (documentation 'widget-can-default 'function)
- "@version{#2021-9-15}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-can-default object) => setting}
   @syntax[]{(setf (gtk:widget-can-default object) setting)}
   @argument[object]{a @class{gtk:widget} object}
@@ -2224,18 +2222,17 @@ lambda (widget event)    :run-last
     Accessor of the @slot[gtk:widget]{can-default} slot of the
     @class{gtk:widget} class.
   @end{short}
-
-  The @sym{gtk:widget-can-default} slot access function returns @em{true} if
-  the widget can be a default widget, @em{false} otherwise. The
-  @sym{(setf gtk:widget-can-default)} slot access function specifies whether
-  the widget can be a default widget.
+  The @sym{gtk:widget-can-default} function returns @em{true} if the widget can
+  be a default widget, @em{false} otherwise. The
+  @sym{(setf gtk:widget-can-default)} function specifies whether the widget can
+  be a default widget.
 
   See the @fun{gtk:widget-grab-default} function for details about the meaning
   of \"default\".
   @see-class{gtk:widget}
   @see-function{gtk:widget-grab-default}")
 
-;;; --- widget-can-focus ---------------------------------------------------
+;;; --- widget-can-focus -------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "can-focus" 'widget) t)
@@ -2247,7 +2244,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-can-focus)
       "Accessor"
       (documentation 'widget-can-focus 'function)
- "@version{#2021-9-15}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-can-focus object) => setting}
   @syntax[]{(setf (gtk:widget-can-focus object) setting)}
   @argument[object]{a @class{gtk:widget} object}
@@ -2257,22 +2254,20 @@ lambda (widget event)    :run-last
     Accessor of the @slot[gtk:widget]{can-focus} slot of the @class{gtk:widget}
     class.
   @end{short}
-
-  The @sym{gtk:widget-can-focus} slot access function returns @em{true} if the
-  widget can own the input focus, @em{false} otherwise. The
-  @sym{(setf gtk:widget-can-focus)} slot access function sets whether the widget
-  can own the input focus.
+  The @sym{gtk:widget-can-focus} function returns @em{true} if the widget can
+  own the input focus, @em{false} otherwise. The
+  @sym{(setf gtk:widget-can-focus)} function sets whether the widget can own
+  the input focus.
 
   See the @fun{gtk:widget-grab-focus} function for actually setting the input
   focus on a widget.
   @see-class{gtk:widget}
   @see-function{gtk:widget-grab-focus}")
 
-;;; --- widget-composite-child ---------------------------------------------
+;;; --- widget-composite-child -------------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "composite-child"
-                                               'widget) t)
+(setf (documentation (liber:slot-documentation "composite-child" 'widget) t)
  "The @code{composite-child} property of type @code{:boolean} (Read) @br{}
   Whether the widget is part of a composite widget. @br{}
   Default value: @em{false}")
@@ -2281,7 +2276,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-composite-child)
       "Accessor"
       (documentation 'widget-composite-child 'function)
- "@version{#2021-9-15}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-composite-child object) => setting}
   @syntax[]{(setf (gtk:widget-composite-child object) setting)}
   @argument[object]{a @class{gtk:widget} object}
@@ -2291,15 +2286,13 @@ lambda (widget event)    :run-last
     Accessor of the @slot[gtk:widget]{composite-child} slot of the
     @class{gtk:widget} class.
   @end{short}
-
   Whether the widget is part of a composite widget.
   @see-class{gtk:widget}")
 
-;;; --- widget-double-buffered ---------------------------------------------
+;;; --- widget-double-buffered -------------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "double-buffered"
-                                               'widget) t)
+(setf (documentation (liber:slot-documentation "double-buffered" 'widget) t)
  "The @code{double-buffered} property of type @code{:boolean} (Read / Write)
   @br{}
   Whether the widget is double buffered. @br{}
@@ -2312,7 +2305,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-double-buffered)
       "Accessor"
       (documentation 'widget-double-buffered 'function)
- "@version{#2021-9-15}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-double-buffered object) => setting}
   @syntax[]{(setf (gtk:widget-double-buffered object) setting)}
   @argument[object]{a @class{gtk:widget} object}
@@ -2321,7 +2314,6 @@ lambda (widget event)    :run-last
     Accessor of the @slot[gtk:widget]{double-buffered} slot of the
     @class{gtk:widget} class.
   @end{short}
-
   The @sym{gtk:widget-double-buffered} slot access function returns @em{true}
   if the widget is double buffered. You can use the
   @sym{(setf gtk:widget-double-buffered)} slot access function to turn off the
@@ -2334,7 +2326,7 @@ lambda (widget event)    :run-last
   @end{dictionary}
   @see-class{gtk:widget}")
 
-;;; --- widget-events ------------------------------------------------------
+;;; --- widget-events ----------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "events" 'widget) t)
@@ -2347,7 +2339,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-events)
       "Accessor"
       (documentation 'widget-events 'function)
- "@version{#2021-9-15}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-events object) => events}
   @syntax[]{(setf (gtk:widget-events object) events)}
   @argument[object]{a @class{gtk:widget} object}
@@ -2356,12 +2348,10 @@ lambda (widget event)    :run-last
     Accessor of the @slot[gtk:widget]{events} slot of the @class{gtk:widget}
     class.
   @end{short}
-
-  The @sym{gtk:widget-events} slot access function gets the event mask for the
-  widget. The @sym{(setf gtk:widget-events)} slot access function sets the
-  event mask. The event mask is a bitfield containing flags from the
-  @symbol{gdk:event-mask} flags. These are the events that the widget will
-  receive.
+  The @sym{gtk:widget-events} function gets the event mask for the widget. The
+  @sym{(setf gtk:widget-events)} function sets the event mask. The event mask is
+  a bitfield containing flags from the @symbol{gdk:event-mask} flags. These are
+  the events that the widget will receive.
 
   Keep in mind that different widgets have different default event masks, and
   by changing the event mask you may disrupt the functionality of a widget, so
@@ -2383,7 +2373,7 @@ lambda (widget event)    :run-last
   @see-symbol{gdk:event-mask}
   @see-function{gtk:widget-add-events}")
 
-;;; --- widget-expand ------------------------------------------------------
+;;; --- widget-expand ----------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "expand" 'widget) t)
@@ -2396,7 +2386,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-expand)
       "Accessor"
       (documentation 'widget-expand 'function)
- "@version{#2021-9-15}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-expand object) => setting}
   @syntax[]{(setf (gtk:widget-expand object) setting)}
   @argument[object]{a @class{gtk:widget} object}
@@ -2405,7 +2395,6 @@ lambda (widget event)    :run-last
     Accessor of the @slot[gtk:widget]{expand} slot of the @class{gtk:widget}
     class.
   @end{short}
-
   Whether to expand the widget in both directions. Setting the @code{expand}
   property sets both the @slot[gtk:widget]{hexpand} and
   @slot[gtk:widget]{vexpand} properties.
@@ -2413,7 +2402,7 @@ lambda (widget event)    :run-last
   @see-function{gtk:widget-hexpand}
   @see-function{gtk:widget-vexpand}")
 
-;;; --- widget-focus-on-click ----------------------------------------------
+;;; --- widget-focus-on-click --------------------------------------------------
 
 #+(and gtk-3-20 liber-documentation)
 (setf (documentation (liber:slot-documentation "focus-on-click" 'widget) t)
@@ -2426,7 +2415,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-focus-on-click)
       "Accessor"
       (documentation 'widget-focus-on-click 'function)
- "@version{#2021-9-15}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-focus-on-click object) => setting}
   @syntax[]{(setf (gtk:widget-focus-on-click object) setting)}
   @argument[object]{a @class{gtk:widget} object}
@@ -2435,11 +2424,10 @@ lambda (widget event)    :run-last
     Accessor of the @slot[gtk:widget]{focus-on-click} slot of the
     @class{gtk:widget} class.
   @end{short}
-
-  The @sym{gtk:widget-focus-on-click} slot access function returns @em{true}
-  if the widget should grab focus when it is clicked with the mouse. The
-  @sym{(setf gtk:widget-focus-on-click)} slot access function sets whether the
-  widget should grab focus.
+  The @sym{gtk:widget-focus-on-click} function returns @em{true} if the widget
+  should grab focus when it is clicked with the mouse. The
+  @sym{(setf gtk:widget-focus-on-click)} function sets whether the widget
+  should grab focus.
 
   Making mouse clicks not grab focus is useful in places like toolbars where you
   do not want the keyboard focus removed from the main area of the application.
@@ -2447,7 +2435,7 @@ lambda (widget event)    :run-last
   Since 3.20
   @see-class{gtk:widget}")
 
-;;; --- widget-halign ------------------------------------------------------
+;;; --- widget-halign ----------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "halign" 'widget) t)
@@ -2459,7 +2447,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-halign)
       "Accessor"
       (documentation 'widget-halign 'function)
- "@version{#2021-12-17}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-halign object) => align}
   @syntax[]{(setf (gtk:widget-halign object) align)}
   @argument[object]{a @class{gtk:widget} object}
@@ -2468,15 +2456,14 @@ lambda (widget event)    :run-last
     Accessor of the @slot[gtk:widget]{halign} slot of the @class{gtk:widget}
     class.
   @end{short}
-
-  The @sym{gtk:widget-halign} slot access function returns the horizontal
-  alignment of the widget. The @sym{(setf gtk:widget-halign)} slot access
-  function sets the horizontal alignment.
+  The @sym{gtk:widget-halign} function returns the horizontal alignment of the
+  widget. The @sym{(setf gtk:widget-halign)} function sets the horizontal
+  alignment.
   @see-class{gtk:widget}
   @see-symbol{gtk:align}
   @see-function{gtk:widget-valign}")
 
-;;; --- widget-has-default -------------------------------------------------
+;;; --- widget-has-default -----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "has-default" 'widget) t)
@@ -2488,7 +2475,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-has-default)
       "Accessor"
       (documentation 'widget-has-default 'function)
- "@version{#2021-9-15}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-has-default object) => setting}
   @syntax[]{(setf (gtk:widget-has-default object) setting)}
   @argument[object]{a @class{gtk:widget} object}
@@ -2497,17 +2484,16 @@ lambda (widget event)    :run-last
     Accessor of the @slot[gtk:widget]{has-default} slot of the
     @class{gtk:widget} class.
   @end{short}
-
-  The @sym{gtk:widget-has-default} slot access function returns @em{true} if
-  the widget is the current default widget within its toplevel, @em{false}
-  otherwise. The @sym{(setf gtk:widget-has-default)} slot access function sets
-  whether the widget is the default widget.
+  The @sym{gtk:widget-has-default} function returns @em{true} if the widget is
+  the current default widget within its toplevel, @em{false} otherwise. The
+  @sym{(setf gtk:widget-has-default)} function sets whether the widget is the
+  default widget.
 
   See the @fun{gtk:widget-can-default} function.
   @see-class{gtk:widget}
   @see-function{gtk:widget-can-default}")
 
-;;; --- widget-has-focus ---------------------------------------------------
+;;; --- widget-has-focus -------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "has-focus" 'widget) t)
@@ -2528,17 +2514,16 @@ lambda (widget event)    :run-last
     Accessor of the @slot[gtk:widget]{has-focus} slot of the
     @class{gtk:widget} class.
   @end{short}
-
-  The @sym{gtk:widget-has-focus} slot access function returns @em{true} if the
-  widget has the global input focus. The @sym{(setf gtk:widget-has-focus)} slot
-  access function sets whether the widget has the input focus.
+  The @sym{gtk:widget-has-focus} function returns @em{true} if the widget has
+  the global input focus. The @sym{(setf gtk:widget-has-focus)} function sets
+  whether the widget has the input focus.
 
   See the @fun{gtk:widget-is-focus} function for the difference between having
   the global input focus, and only having the focus within a toplevel.
   @see-class{gtk:widget}
   @see-function{gtk:widget-is-focus}")
 
-;;; --- widget-has-tooltip -------------------------------------------------
+;;; --- widget-has-tooltip -----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "has-tooltip" 'widget) t)
@@ -2557,7 +2542,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-has-tooltip)
       "Accessor"
       (documentation 'widget-has-tooltip 'function)
- "@version{#2021-9-15}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-has-tooltip object) => setting}
   @syntax[]{(setf (gtk:widget-has-tooltip object) setting)}
   @argument[object]{a @class{gtk:widget} object}
@@ -2567,7 +2552,6 @@ lambda (widget event)    :run-last
     Accessor of the @slot[gtk:widget]{has-tooltip} slot of the
     @class{gtk:widget} class.
   @end{short}
-
   Enables or disables the emission of the \"query-tooltip\" signal on the
   widget. A @em{true} value indicates that the widget can have a tooltip, in
   this case the widget will be queried using the \"query-tooltip\" signal to
@@ -2579,7 +2563,7 @@ lambda (widget event)    :run-last
   @see-class{gtk:widget}
   @see-class{gdk:window}")
 
-;;; --- widget-height-request ----------------------------------------------
+;;; --- widget-height-request --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "height-request" 'widget) t)
@@ -2593,7 +2577,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-height-request)
       "Accessor"
       (documentation 'widget-height-request 'function)
- "@version{#2021-12-8}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-height-request object) => height}
   @syntax[]{(setf (gtk:widget-height-request object) height)}
   @argument[object]{a @class{gtk:widget} object}
@@ -2607,7 +2591,7 @@ lambda (widget event)    :run-last
   @see-function{gtk:widget-width-request}
   @see-function{gtk:widget-size-request}")
 
-;;; --- widget-hexpand -----------------------------------------------------
+;;; --- widget-hexpand ---------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "hexpand" 'widget) t)
@@ -2619,7 +2603,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-hexpand)
       "Accessor"
       (documentation 'widget-hexpand 'function)
- "@version{#2021-9-15}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-hexpand object) => setting}
   @syntax[]{(setf (gtk:widget-hexpand object) setting)}
   @argument[object]{a @class{gtk:widget} object}
@@ -2628,16 +2612,15 @@ lambda (widget event)    :run-last
     Accessor of the @slot[gtk:widget]{hexpand} slot of the @class{gtk:widget}
     class.
   @end{short}
+  The @sym{gtk:widget-hexpand} function gets whether the widget would like any
+  available extra horizontal space. This function only looks at the own
+  @slot[gtk:widget]{hexpand} flag of the widget, rather than computing whether
+  the entire widget tree rooted at this widget wants to expand.
 
-  The @sym{gtk:widget-hexpand} slot access function gets whether the widget
-  would like any available extra horizontal space. This function only looks at
-  the own @slot[gtk:widget]{hexpand} flag of the widget, rather than computing
-  whether the entire widget tree rooted at this widget wants to expand.
-
-  The @sym{(setf gtk:widget-hexpand)} slot access function sets whether the
-  widget would like any available extra horizontal space. Call this function to
-  set the expand flag if you would like your widget to become larger
-  horizontally when the window has extra room.
+  The @sym{(setf gtk:widget-hexpand)} function sets whether the widget would
+  like any available extra horizontal space. Call this function to set the
+  expand flag if you would like your widget to become larger horizontally when
+  the window has extra room.
 
   By default, widgets automatically expand if any of their children want to
   expand. To see if a widget will automatically expand given its current
@@ -2659,7 +2642,7 @@ lambda (widget event)    :run-last
   @see-function{gtk:widget-hexpand-set}
   @see-function{gtk:widget-compute-expand}")
 
-;;; --- widget-hexpand-set -------------------------------------------------
+;;; --- widget-hexpand-set -----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "hexpand-set" 'widget) t)
@@ -2671,7 +2654,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-hexpand-set)
       "Accessor"
       (documentation 'widget-hexpand-set 'function)
- "@version{#2021-9-15}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-hexpand-set object) => setting}
   @syntax[]{(setf (gtk:widget-hexpand-set object) setting)}
   @argument[object]{a @class{gtk:widget} object}
@@ -2680,10 +2663,9 @@ lambda (widget event)    :run-last
     Accessor of the @slot[gtk:widget]{hexpand-set} slot of the
     @class{gtk:widget} class.
   @end{short}
-
-  The @sym{gtk:widget-hexpand-set} slot access function gets whether the
-  @fun{gtk:widget-hexpand} slot access function has been used to explicitly set
-  the expand flag on this widget.
+  The @sym{gtk:widget-hexpand-set} function gets whether the
+  @fun{gtk:widget-hexpand} function has been used to explicitly set the expand
+  flag on this widget.
 
   The @slot[gtk:widget]{hexpand-set} property will be set automatically when
   you call the @fun{gtk:widget-hexpand} function to set the
@@ -2696,11 +2678,10 @@ lambda (widget event)    :run-last
   @slot[gtk:widget]{hexpand} property is not set, then the expand value depends
   on whether any children of the widget would like to expand. There are few
   reasons to use this function, but it is here for completeness and consistency.
-
   @see-class{gtk:widget}
   @see-function{gtk:widget-hexpand}")
 
-;;; --- widget-is-focus ----------------------------------------------------
+;;; --- widget-is-focus --------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "is-focus" 'widget) t)
@@ -2712,7 +2693,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-is-focus)
       "Accessor"
       (documentation 'widget-is-focus 'function)
- "@version{#2021-9-15}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-is-focus object) => setting}
   @syntax[]{(setf (gtk:widget-is-focus object) setting)}
   @argument[widget]{a @class{gtk:widget} object}
@@ -2721,10 +2702,9 @@ lambda (widget event)    :run-last
     Accessor of the @slot[gtk:widget]{is-focus} slot of the @class{gtk:widget}
     class.
   @end{short}
-
-  The @sym{gtk:widget-is-focus} slot access function determines if the widget
-  is the focus widget within its toplevel. The @sym{(setf gtk:widget-is-focus)}
-  slot access function sets the property.
+  The @sym{gtk:widget-is-focus} function determines if the widget is the focus
+  widget within its toplevel. The @sym{(setf gtk:widget-is-focus)} function
+  sets the property.
 
   This does not mean that the @slot[gtk:widget]{has-focus} property is
   necessarily set. The @slot[gtk:widget]{has-focus} property will only be set
@@ -2732,7 +2712,7 @@ lambda (widget event)    :run-last
   @see-class{gtk:widget}
   @see-function{gtk:widget-has-focus}")
 
-;;; --- widget-margin ------------------------------------------------------
+;;; --- widget-margin ----------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "margin" 'widget) t)
@@ -2746,7 +2726,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-margin)
       "Accessor"
       (documentation 'widget-margin 'function)
- "@version{#2021-9-15}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-margin object) => margin}
   @syntax[]{(setf (gtk:widget-margin object) margin)}
   @argument[object]{a @class{gtk:widget} object}
@@ -2755,16 +2735,15 @@ lambda (widget event)    :run-last
     Accessor of the @slot[gtk:widget]{margin} slot of the @class{gtk:widget}
     class.
   @end{short}
-
-  Sets the margin of all four sides at once. If read, returns the maximum margin
-  on any side.
+  Sets the margin of all four sides at once. If read, returns the maximum
+  margin on any side.
   @see-class{gtk:widget}
   @see-function{gtk:widget-margin-start}
   @see-function{gtk:widget-margin-end}
   @see-function{gtk:widget-margin-top}
   @see-function{gtk:widget-margin-bottom}")
 
-;;; --- widget-margin-bottom -----------------------------------------------
+;;; --- widget-margin-bottom ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "margin-bottom" 'widget) t)
@@ -2778,7 +2757,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-margin-bottom)
       "Accessor"
       (documentation 'widget-margin-bottom 'function)
- "@version{#2021-9-15}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-margin-bottom object) => margin}
   @syntax[]{(setf (gtk:widget-margin-bottom object) margin)}
   @argument[object]{a @class{gtk:widget} object}
@@ -2787,10 +2766,9 @@ lambda (widget event)    :run-last
     Accessor of the @slot[gtk:widget]{margin-bottom} slot of the
     @class{gtk:widget} class.
   @end{short}
-
-  The @sym{gtk:widget-margin-bottom} slot access function gets the bottom
-  marging of the widget. The @sym{(setf gtk:widget-margin-bottom)} slot access
-  function sets the bottom margin.
+  The @sym{gtk:widget-margin-bottom} function gets the bottom marging of the
+  widget. The @sym{(setf gtk:widget-margin-bottom)} function sets the bottom
+  margin.
 
   This property adds margin outside of the normal size request of the widget.
   The margin will be added in addition to the size from the
@@ -2799,7 +2777,7 @@ lambda (widget event)    :run-last
   @see-function{gtk:widget-margin}
   @see-function{gtk:widget-size-request}")
 
-;;; --- widget-margin-end --------------------------------------------------
+;;; --- widget-margin-end ------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "margin-end" 'widget) t)
@@ -2814,7 +2792,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-margin-end)
       "Accessor"
       (documentation 'widget-margin-end 'function)
- "@version{#2021-9-15}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-margin-end object) => margin}
   @syntax[]{(setf (gtk:widget-margin-end object) margin)}
   @argument[object]{a @class{gtk:widget} object}
@@ -2824,10 +2802,9 @@ lambda (widget event)    :run-last
     Accessor of the @slot[gtk:widget]{margin-end} slot of the
     @class{gtk:widget} class.
   @end{short}
-
-  The @sym{gtk:widget-margin-end} slot access function gets the value of the
-  end margin of the widget. The @sym{(setf gtk:widget-margin-end)} slot access
-  function sets the end margin.
+  The @sym{gtk:widget-margin-end} function gets the value of the end margin of
+  the widget. The @sym{(setf gtk:widget-margin-end)} function sets the end
+  margin.
 
   This property supports left-to-right text directions. This property adds
   margin outside of the normal size request of the widget. The margin will be
@@ -2837,7 +2814,7 @@ lambda (widget event)    :run-last
   @see-function{gtk:widget-margin}
   @see-function{gtk:widget-size-request}")
 
-;;; --- widget-margin-left -------------------------------------------------
+;;; --- widget-margin-left -----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "margin-left" 'widget) t)
@@ -2853,7 +2830,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-margin-left)
       "Accessor"
       (documentation 'widget-margin-left 'function)
- "@version{#2021-9-15}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-margin-left object) => margin}
   @syntax[]{(setf (gtk:widget-margin-left object) margin)}
   @argument[object]{a @class{gtk:widget} object}
@@ -2872,7 +2849,7 @@ lambda (widget event)    :run-last
   @see-function{gtk:widget-margin-start}
   @see-function{gtk:widget-size-request}")
 
-;;; --- widget-margin-right ------------------------------------------------
+;;; --- widget-margin-right ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "margin-right" 'widget) t)
@@ -2888,7 +2865,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-margin-right)
       "Accessor"
       (documentation 'widget-margin-right 'function)
- "@version{#2021-9-15}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-margin-right object) => margin}
   @syntax[]{(setf (gtk:widget-margin-right object) margin)}
   @argument[object]{a @class{gtk:widget} object}
@@ -2907,7 +2884,7 @@ lambda (widget event)    :run-last
   @see-function{gtk:widget-margin-end}
   @see-function{gtk:widget-size-request}")
 
-;;; --- widget-margin-start ------------------------------------------------
+;;; --- widget-margin-start ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "margin-start" 'widget) t)
@@ -2922,7 +2899,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-margin-start)
       "Accessor"
       (documentation 'widget-margin-start 'function)
- "@version{#2021-9-15}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-margin-start object) => margin}
   @syntax[]{(setf (gtk:widget-margin-start object) margin)}
   @argument[object]{a @class{gtk:widget} object}
@@ -2932,10 +2909,9 @@ lambda (widget event)    :run-last
     Accessor of the @slot[gtk:widget]{margin-start} slot of the
     @class{gtk:widget} class.
   @end{short}
-
-  The @sym{gtk:widget-margin-start} slot access function returns the start
-  margin of the widget. The @sym{(setf gtk:widget-margin-start)} slot access
-  function sets the start margin.
+  The @sym{gtk:widget-margin-start} function returns the start margin of the
+  widget. The @sym{(setf gtk:widget-margin-start)} function sets the start
+  margin.
 
   This property supports left-to-right and right-to-left text directions. This
   property adds margin outside of the normal size request of the widget. The
@@ -2945,7 +2921,7 @@ lambda (widget event)    :run-last
   @see-function{gtk:widget-margin}
   @see-function{gtk:widget-size-request}")
 
-;;; --- widget-margin-top --------------------------------------------------
+;;; --- widget-margin-top ------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "margin-top" 'widget) t)
@@ -2959,7 +2935,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-margin-top)
       "Accessor"
       (documentation 'widget-margin-top 'function)
- "@version{#2021-9-15}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-margin-top object) => margin}
   @syntax[]{(setf (gtk:widget-margin-top object) margin)}
   @argument[object]{a @class{gtk:widget} object}
@@ -2968,10 +2944,8 @@ lambda (widget event)    :run-last
     Accessor of the @slot[gtk:widget]{margin-top} slot of the
     @class{gtk:widget} class.
   @end{short}
-
-  The @sym{gtk:widget-margin-top} slot access function returns the top margin
-  of widget. The @sym{(setf gtk:widget-margin-top)} slot access function sets
-  the top margin.
+  The @sym{gtk:widget-margin-top} function returns the top margin of widget. The
+  @sym{(setf gtk:widget-margin-top)} slot access function sets the top margin.
 
   This property adds margin outside of the normal size request of the widget.
   The margin will be added in addition to the size from the
@@ -2980,7 +2954,7 @@ lambda (widget event)    :run-last
   @see-function{gtk:widget-margin}
   @see-function{gtk:widget-size-request}")
 
-;;; --- widget-name --------------------------------------------------------
+;;; --- widget-name ------------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "name" 'widget) t)
@@ -2992,7 +2966,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-name)
       "Accessor"
       (documentation 'widget-name 'function)
- "@version{#2021-12-15}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-name object) => name}
   @syntax[]{(setf (gtk:widget-name object) name)}
   @argument[object]{a @class{gtk:widget} object}
@@ -3001,9 +2975,8 @@ lambda (widget event)    :run-last
     Accessor of the @slot[gtk:widget]{name} slot of the @class{gtk:widget}
     class.
   @end{short}
-
-  The @sym{gtk:widget-name} slot access function retrieves the name of a widget.
-  The @sym{(setf gtk:widget-name)} slot access function sets the name.
+  The @sym{gtk:widget-name} function retrieves the name of a widget. The
+  @sym{(setf gtk:widget-name)} function sets the name.
 
   Widgets can be named, which allows you to refer to them from a CSS file. You
   can apply a style to widgets with a particular name in the CSS file. Note
@@ -3014,7 +2987,7 @@ lambda (widget event)    :run-last
   @see-class{gtk:widget}
   @see-class{gtk:style-context}")
 
-;;; --- widget-no-show-all -------------------------------------------------
+;;; --- widget-no-show-all -----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "no-show-all" 'widget) t)
@@ -3027,7 +3000,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-no-show-all)
       "Accessor"
       (documentation 'widget-no-show-all 'function)
- "@version{#2021-9-15}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-no-show-all object) => setting}
   @syntax[]{(setf (gtk:widget-no-show-all object) setting)}
   @argument[object]{a @class{gtk:widget} object}
@@ -3037,7 +3010,6 @@ lambda (widget event)    :run-last
     Accessor of the @slot[gtk:widget]{no-show-all} slot of the
     @class{gtk:widget} class.
   @end{short}
-
   The @slot[gtk:widget]{no-show-all} property determines whether calls
   to the @fun{gtk:widget-show-all} function will affect this widget. This is
   mostly for use in constructing widget hierarchies with externally controlled
@@ -3046,7 +3018,7 @@ lambda (widget event)    :run-last
   @see-class{gtk:ui-manager}
   @see-function{gtk:widget-show-all}")
 
-;;; --- widget-opacity -----------------------------------------------------
+;;; --- widget-opacity ---------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "opacity" 'widget) t)
@@ -3059,7 +3031,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-opacity)
       "Accessor"
       (documentation 'widget-opacity 'function)
- "@version{#2021-9-15}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-opacity object) => opacity}
   @syntax[]{(setf (gtk:widget-opacity object) opacity)}
   @argument[object]{a @class{gtk:widget} object}
@@ -3068,11 +3040,10 @@ lambda (widget event)    :run-last
     Accessor of the @slot[gtk:widget]{opacity} slot of the @class{gtk:widget}
     class.
   @end{short}
-
-  The @sym{gtk:widget-opacity} slot access function fetches the requested
-  opacity for the widget. The @sym{(setf gtk:widget-opacity)} slot access
-  function request the widget to be rendered partially transparent, with
-  opacity 0.0 being fully transparent and 1.0 fully opaque.
+  The @sym{gtk:widget-opacity} function fetches the requested opacity for the
+  widget. The @sym{(setf gtk:widget-opacity)} function request the widget to be
+  rendered partially transparent, with opacity 0.0 being fully transparent and
+  1.0 fully opaque.
 
   Opacity values are clamped to the [0.0,1.0] range. This works on both toplevel
   widget, and child widgets, although there are some limitations:
@@ -3092,7 +3063,7 @@ lambda (widget event)    :run-last
   @see-class{gtk:widget}
   @see-function{gtk:widget-is-composited}")
 
-;;; --- widget-parent ------------------------------------------------------
+;;; --- widget-parent ----------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "parent" 'widget) t)
@@ -3103,7 +3074,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-parent)
       "Accessor"
       (documentation 'widget-parent 'function)
- "@version{#2021-9-15}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-parent object) => parent}
   @syntax[]{(setf (gtk:widget-parent object) parent)}
   @argument[object]{a @class{gtk:widget} object}
@@ -3112,12 +3083,11 @@ lambda (widget event)    :run-last
     Accessor of the @slot[gtk:widget]{parent} slot of the @class{gtk:widget}
     class.
   @end{short}
-
-  The @sym{gtk:widget-parent} slot access function returns the parent container
-  of the widget. The @sym{(setf gtk:widget-parent)} slot access function sets
-  the container as the parent of the widget, and takes care of some details
-  such as updating the state and style of the child to reflect its new location.
-  The opposite is the @fun{gtk:widget-unparent} function.
+  The @sym{gtk:widget-parent} function returns the parent container of the
+  widget. The @sym{(setf gtk:widget-parent)} function sets the container as the
+  parent of the widget, and takes care of some details such as updating the
+  state and style of the child to reflect its new location. The opposite is the
+  @fun{gtk:widget-unparent} function.
 
   This function is useful only when implementing subclasses of the
   @class{gtk:container} class.
@@ -3125,11 +3095,10 @@ lambda (widget event)    :run-last
   @see-class{gtk:container}
   @see-function{gtk:widget-unparent}")
 
-;;; --- widget-receives-default --------------------------------------------
+;;; --- widget-receives-default ------------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "receives-default"
-                                               'widget) t)
+(setf (documentation (liber:slot-documentation "receives-default" 'widget) t)
  "The @code{receives-default} property of type @code{:boolean} (Read / Write)
   @br{}
   If @em{true}, the widget will receive the default action when it is focused.
@@ -3140,7 +3109,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-receives-default)
       "Accessor"
       (documentation 'widget-receives-default 'function)
- "@version{#2021-9-15}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-receives-default object) => setting}
   @syntax[]{(setf (gtk:widget-receives-default object) setting)}
   @argument[object]{a @class{gtk:widget} object}
@@ -3150,19 +3119,18 @@ lambda (widget event)    :run-last
     Accessor of the @slot[gtk:widget]{receives-default} slot of the
     @class{gtk:widget} class.
   @end{short}
-
-  The @sym{gtk:widget-receives-default} slot access function determines whether
-  the widget is alyways treated as default widget within its toplevel when it
-  has the focus, even if another widget is the default. The
-  @sym{(setf gtk:widget-receives-default)} slot access function specifies
-  whether the widget will be treated as the default widget.
+  The @sym{gtk:widget-receives-default} function determines whether the widget
+  is alyways treated as default widget within its toplevel when it has the
+  focus, even if another widget is the default. The
+  @sym{(setf gtk:widget-receives-default)} function specifies whether the
+  widget will be treated as the default widget.
 
   See the @fun{gtk:widget-grab-default} function for details about the meaning
   of \"default\".
   @see-class{gtk:widget}
   @see-function{gtk:widget-grab-default}")
 
-;;; --- widget-scale-factor ------------------------------------------------
+;;; --- widget-scale-factor ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "scale-factor" 'widget) t)
@@ -3175,21 +3143,20 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-scale-factor)
       "Accessor"
       (documentation 'widget-scale-factor 'function)
- "@version{#2021-9-15}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-scale-factor object) => scale}
   @argument[object]{a @class{gtk:widget} object}
   @argument[scale]{an integer with the scale factor}
   @begin{short}
-    The @sym{gtk:widget-scale-factor} slot access function retrieves the
-    internal scale factor that maps from window coordinates to the actual
-    device pixels.
+    The @sym{gtk:widget-scale-factor} function retrieves the internal scale
+    factor that maps from window coordinates to the actual device pixels.
   @end{short}
   On traditional systems this is 1, on high density outputs, it can be a higher
   value (typically 2).
   @see-class{gtk:widget}
   @see-function{gdk:window-scale-factor}")
 
-;;; --- widget-sensitive ---------------------------------------------------
+;;; --- widget-sensitive -------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "sensitive" 'widget) t)
@@ -3201,7 +3168,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-sensitive)
       "Accessor"
       (documentation 'widget-sensitive 'function)
- "@version{#2021-9-15}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-sensitive object) => setting}
   @syntax[]{(setf (gtk:widget-sensitive object) setting)}
   @argument[object]{a @class{gtk:widget} object}
@@ -3210,10 +3177,8 @@ lambda (widget event)    :run-last
     Accessor of the @slot[gtk:widget]{sensitive} slot of the @class{gtk:widget}
     class.
   @end{short}
-
-  The @sym{gtk:widget-sensitive} slot access function returns the sensitivity
-  of the widget. The @sym{(setf gtk:widget-sensitive)} slot access function
-  sets the sensitivity.
+  The @sym{gtk:widget-sensitive} function returns the sensitivity of the widget.
+  The @sym{(setf gtk:widget-sensitive)} function sets the sensitivity.
 
   A widget is sensitive if the user can interact with it. Insensitive widgets
   are \"grayed out\" and the user cannot interact with them. Insensitive widgets
@@ -3226,7 +3191,7 @@ lambda (widget event)    :run-last
   @see-class{gtk:widget}
   @see-function{gtk:widget-is-sensitive}")
 
-;;; --- widget-style -------------------------------------------------------
+;;; --- widget-style -----------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "style" 'widget) t)
@@ -3241,7 +3206,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-style)
       "Accessor"
       (documentation 'widget-style 'function)
- "@version{#2021-9-15}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-style object) => style}
   @syntax[]{(setf (gtk:widget-style object) style)}
   @argument[object]{a @class{gtk:widget} object}
@@ -3258,7 +3223,7 @@ lambda (widget event)    :run-last
   @see-class{gtk:widget}
   @see-class{gtk:style-context}")
 
-;;; --- widget-tooltip-markup ----------------------------------------------
+;;; --- widget-tooltip-markup --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "tooltip-markup" 'widget) t)
@@ -3276,7 +3241,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-tooltip-markup)
       "Accessor"
       (documentation 'widget-tooltip-markup 'function)
- "@version{#2021-9-15}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-tooltip-markup object) => markup}
   @syntax[]{(setf (gtk:widget-tooltip-markup object) markup)}
   @argument[object]{a @class{gtk:widget} object}
@@ -3285,11 +3250,10 @@ lambda (widget event)    :run-last
     Accessor of the @slot[gtk:widget]{tooltip-markup} slot of the
     @class{gtk:widget} class.
   @end{short}
-
-  The @sym{gtk:widget-tooltip-markup} slot access function gets the contents of
-  the tooltip. The @sym{(setf gtk:widget-tooltip-markup)} slot access function
-  sets @arg{markup} as the contents of the tooltip, which is marked up with the
-  Pango text markup language.
+  The @sym{gtk:widget-tooltip-markup} function gets the contents of the tooltip.
+  The @sym{(setf gtk:widget-tooltip-markup)} function sets @arg{markup} as the
+  contents of the tooltip, which is marked up with the Pango text markup
+  language.
 
   This function will take care of setting the @slot[gtk:widget]{has-tooltip}
   property to @em{true} and of the default handler for the \"query-tooltip\"
@@ -3301,7 +3265,7 @@ lambda (widget event)    :run-last
   @see-function{gtk:widget-has-toolip}
   @see-function{gtk:tooltip-set-markup}")
 
-;;; --- widget-tooltip-text ------------------------------------------------
+;;; --- widget-tooltip-text ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "tooltip-text" 'widget) t)
@@ -3318,7 +3282,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-tooltip-text)
       "Accessor"
       (documentation 'widget-tooltip-text 'function)
- "@version{#2021-9-15}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-tooltip-text object) => text}
   @syntax[]{(setf (gtk:widget-tooltip-text object) text)}
   @argument[object]{a @class{gtk:widget} object}
@@ -3327,10 +3291,9 @@ lambda (widget event)    :run-last
     Accessor of the @slot[gtk:widget]{tooltip-text} slot of the
     @class{gtk:widget} class.
   @end{short}
-
-  The @sym{gtk:widget-tooltip-text} slot access function gets the contents of
-  the tooltip. The @sym{(sef gtk:widget-tooltip-text)} slot access function
-  sets @arg{text} as the contents of the tooltip.
+  The @sym{gtk:widget-tooltip-text} function gets the contents of the tooltip.
+  The @sym{(sef gtk:widget-tooltip-text)} function sets @arg{text} as the
+  contents of the tooltip.
 
   This function will take care of setting the @slot[gtk:widget]{has-tooltip}
   property to @em{true} and of the default handler for the \"query-tooltip\"
@@ -3342,7 +3305,7 @@ lambda (widget event)    :run-last
   @see-function{gtk:widget-has-tooltip}
   @see-function{gtk:tooltip-set-text}")
 
-;;; --- widget-valign ------------------------------------------------------
+;;; --- widget-valign ----------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "valign" 'widget) t)
@@ -3354,7 +3317,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-valign)
       "Accessor"
       (documentation 'widget-valign 'function)
- "@version{#2021-12-17}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-valign object) => align}
   @syntax[]{(setf (gtk:widget-valign object) align)}
   @argument[object]{a @class{gtk:widget} object}
@@ -3363,15 +3326,14 @@ lambda (widget event)    :run-last
     Accessor of the @slot[gtk:widget]{valign} slot of the @class{gtk:widget}
     class.
   @end{short}
-
-  The @sym{gtk:widget-valign} slot access function gets the vertical alignment
-  of the widget. The @sym{(setf gtk:widget-valign)} slot access function sets
-  the vertical alignment.
+  The @sym{gtk:widget-valign} function gets the vertical alignment of the
+  widget. The @sym{(setf gtk:widget-valign)} function sets the vertical
+  alignment.
   @see-class{gtk:widget}
   @see-symbol{gtk:align}
   @see-function{gtk:widget-halign}")
 
-;;; --- widget-vexpand -----------------------------------------------------
+;;; --- widget-vexpand ---------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "vexpand" 'widget) t)
@@ -3383,7 +3345,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-vexpand)
       "Accessor"
       (documentation 'widget-vexpand 'function)
- "@version{#2021-9-15}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-vexpand object) => setting}
   @syntax[]{(setf (gtk:widget-vexpand object) setting)}
   @argument[object]{a @class{gtk:widget} object}
@@ -3392,11 +3354,9 @@ lambda (widget event)    :run-last
     Accessor of the @slot[gtk:widget]{vexpand} slot of the
     @class{gtk:widget} class.
   @end{short}
-
-  The @sym{gtk:widget-vexpand} slot access function gets whether the widget
-  would like any available extra vertical space. The
-  @sym{(setf gtk:widget-vexpand)} slot access function sets whether the widget
-  would like any available extra vertical space.
+  The @sym{gtk:widget-vexpand} function gets whether the widget would like any
+  available extra vertical space. The @sym{(setf gtk:widget-vexpand)} function
+  sets whether the widget would like any available extra vertical space.
 
   See the @fun{gtk:widget-hexpand} function for more detail.
   @see-class{gtk:widget}
@@ -3404,7 +3364,7 @@ lambda (widget event)    :run-last
   @see-function{gtk:widget-hexpand}
   @see-function{gtk:widget-vexpand-set}")
 
-;;; --- widget-vexpand-set -------------------------------------------------
+;;; --- widget-vexpand-set -----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "vexpand-set" 'widget) t)
@@ -3416,7 +3376,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-vexpand-set)
       "Accessor"
       (documentation 'widget-vexpand-set 'function)
- "@version{#2021-9-15}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-vexpand-set object) => setting}
   @syntax[]{(setf (gtk:widget-vexpand-set object) setting)}
   @argument[object]{a @class{gtk:widget} object}
@@ -3426,19 +3386,17 @@ lambda (widget event)    :run-last
     Accessor of the @slot[gtk:widget]{vexpand-set} slot of the
     @class{gtk:widget} class.
   @end{short}
-
-  The @sym{gtk:widget-vexpand-set} slot access function gets whether the
-  @sym{(setf gtk:widget-vexpand)} slot access function has been used to
-  explicitly set the expand flag on this widget. The
-  @sym{(setf gtk:widget-vexpand-set)} slot access function sets whether the
-  @slot[gtk:widget]{vexpand} property will be used.
+  The @sym{gtk:widget-vexpand-set} function gets whether the
+  @sym{(setf gtk:widget-vexpand)} function has been used to explicitly set the
+  expand flag on this widget. The @sym{(setf gtk:widget-vexpand-set)} function
+  sets whether the @slot[gtk:widget]{vexpand} property will be used.
 
   See the @fun{gtk:widget-hexpand-set} function for more detail.
   @see-class{gtk:widget}
   @see-function{gtk:widget-vexpand}
   @see-function{gtk:widget-hexpand-set}")
 
-;;; --- widget-visible -----------------------------------------------------
+;;; --- widget-visible ---------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "visible" 'widget) t)
@@ -3450,7 +3408,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-visible)
       "Accessor"
       (documentation 'widget-visible 'function)
- "@version{#2021-12-15}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-visible object) => setting}
   @syntax[]{(setf (gtk:widget-visible object) setting)}
   @argument[object]{a @class{gtk:widget} object}
@@ -3459,11 +3417,10 @@ lambda (widget event)    :run-last
     Accessor of the @slot[gtk:widget]{visible} slot of the @class{gtk:widget}
     class.
   @end{short}
-
-  The @sym{gtk:widget-visible} slot access function determines whether the
-  widget is visible. The @sym{(setf gtk:widget-visible)} slot access function
-  sets the visibility state. Note that this does not take into account whether
-  the parent of the widget is also visible or the widget is obscured in any way.
+  The @sym{gtk:widget-visible} function determines whether the widget is
+  visible. The @sym{(setf gtk:widget-visible)} function sets the visibility
+  state. Note that this does not take into account whether the parent of the
+  widget is also visible or the widget is obscured in any way.
 
   This function simply calls the @fun{gtk:widget-show} or @fun{gtk:widget-hide}
   functions but is nicer to use when the visibility of the widget depends on
@@ -3472,7 +3429,7 @@ lambda (widget event)    :run-last
   @see-function{gtk:widget-show}
   @see-function{gtk:widget-hide}")
 
-;;; --- widget-width-request -----------------------------------------------
+;;; --- widget-width-request ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "width-request" 'widget) t)
@@ -3486,7 +3443,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-width-request)
       "Accessor"
       (documentation 'widget-width-request 'function)
- "@version{#2021-12-8}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-width-request object) => width}
   @syntax[]{(setf (gtk:widget-width-request object) width)}
   @argument[object]{a @class{gtk:widget} object}
@@ -3511,7 +3468,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-window)
       "Accessor"
       (documentation 'widget-window 'function)
- "@version{2023-2-3}
+ "@version{2023-3-8}
   @syntax[]{(gtk:widget-window object) => window}
   @argument[object]{a @class{gtk:widget} object}
   @argument[window]{a @class{gdk:window} object}
@@ -3536,8 +3493,8 @@ lambda (widget event)    :run-last
 
 (defun widget-new (gtype &rest args)
  #+liber-documentation
- "@version{#2021-9-16}
-  @argument[gtype]{the @class{g:type-t} type of the widget to create}
+ "@version{#2023-3-8}
+  @argument[gtype]{a @class{g:type-t} type of the widget to create}
   @argument[args]{pairs of the property keyword and value}
   @return{A new @class{gtk:widget} object of @arg{gtype} type.}
   @begin{short}
@@ -3549,6 +3506,7 @@ lambda (widget event)    :run-last
     Create a left-aligned label.
     @begin{pre}
 (gtk:widget-new \"GtkLabel\" :label \"Hello World\" :xalign 0.0)
+=> #<GTK:LABEL {1003142FD3@}>
     @end{pre}
   @end{dictionary}
   @see-class{gtk:widget}
@@ -3564,7 +3522,7 @@ lambda (widget event)    :run-last
 
 (defcfun ("gtk_widget_destroy" widget-destroy) :void
  #+liber-documentation
- "@version{#2021-10-21}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Destroys a widget.
@@ -3591,7 +3549,7 @@ lambda (widget event)    :run-last
 
 (defcfun ("gtk_widget_in_destruction" widget-in-destruction) :boolean
  #+liber-documentation
- "@version{#2021-9-16}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @return{@em{True} if @arg{widget} is being destroyed.}
   @begin{short}
@@ -3629,7 +3587,7 @@ lambda (widget event)    :run-last
 
 (defcfun ("gtk_widget_unparent" widget-unparent) :void
  #+liber-documentation
- "@version{#2021-9-16}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Should be called by implementations of the @code{remove} method on
@@ -3639,7 +3597,6 @@ lambda (widget event)    :run-last
   This function is only for use in widget implementations.
   @see-class{gtk:widget}
   @see-class{gtk:container}
-  @see-function{gtk:widget-reparent}
   @see-function{gtk:widget-parent}"
   (widget (g:object widget)))
 
@@ -3651,7 +3608,7 @@ lambda (widget event)    :run-last
 
 (defcfun ("gtk_widget_show" widget-show) :void
  #+liber-documentation
- "@version{#2021-12-3}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Flags a widget to be displayed.
@@ -3678,7 +3635,7 @@ lambda (widget event)    :run-last
 
 (defcfun ("gtk_widget_show_now" widget-show-now) :void
  #+liber-documentation
- "@version{#2021-9-16}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Shows a widget.
@@ -3699,7 +3656,7 @@ lambda (widget event)    :run-last
 
 (defcfun ("gtk_widget_hide" widget-hide) :void
  #+liber-documentation
- "@version{#2021-12-22}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Reverses the effects of the @fun{gtk:widget-show} function, causing the
@@ -3718,7 +3675,7 @@ lambda (widget event)    :run-last
 
 (defcfun ("gtk_widget_show_all" widget-show-all) :void
  #+liber-documentation
- "@version{#2021-10-10}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Recursively shows a widget, and any child widgets if the widget is a
@@ -3739,7 +3696,7 @@ lambda (widget event)    :run-last
 
 (defcfun ("gtk_widget_map" widget-map) :void
  #+liber-documentation
- "@version{#2021-9-16}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Causes a widget to be mapped if it is not already.
@@ -3757,7 +3714,7 @@ lambda (widget event)    :run-last
 
 (defcfun ("gtk_widget_unmap" widget-unmap ) :void
  #+liber-documentation
- "@version{#2021-9-16}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Causes a widget to be unmapped if it is currently mapped.
@@ -3775,7 +3732,7 @@ lambda (widget event)    :run-last
 
 (defcfun ("gtk_widget_realize" widget-realize) :void
  #+liber-documentation
- "@version{2023-2-3}
+ "@version{2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Creates the GDK resources associated with a widget.
@@ -3807,7 +3764,7 @@ lambda (widget event)    :run-last
 
 (defcfun ("gtk_widget_unrealize" widget-unrealize) :void
  #+liber-documentation
- "@version{#2021-9-16}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Causes a widget to be unrealized.
@@ -3826,8 +3783,8 @@ lambda (widget event)    :run-last
 
 (defcfun ("gtk_widget_draw" widget-draw) :void
  #+liber-documentation
- "@version{#2021-9-16}
-  @argument[widget]{the @class{gtk:widget} object to draw}
+ "@version{#2023-3-8}
+  @argument[widget]{a @class{gtk:widget} object to draw}
   @argument[cr]{a @symbol{cairo:context-t} Cairo context to draw to}
   @begin{short}
     Draws the widget to a Cairo Context.
@@ -3838,30 +3795,29 @@ lambda (widget event)    :run-last
 
   You should pass a Cairo context as @arg{cr} argument that is in an original
   state. Otherwise the resulting drawing is undefined. For example changing the
-  operator using the @fun{cairo-set-operator} function or the line width using
-  the @fun{cairo-set-line-width} function might have unwanted side effects. You
-  may however change the transform matrix of the Cairo context - like with the
-  @fun{cairo-scale}, @fun{cairo-translate} or @fun{cairo-set-matrix} functions
-  and clip region with the @fun{cairo-clip} function prior to calling this
-  function. Also, it is fine to modify the Cairo context with the
-  @fun{cairo-save} and @fun{cairo-push-group} functions  prior to calling this
-  function.
+  operator using the @fun{cairo:operator} function or the line width using the
+  @fun{cairo:line-width} function might have unwanted side effects. You may
+  however change the transform matrix of the Cairo context - like with the
+  @fun{cairo:scale}, @fun{cairo:translate} or @fun{cairo:matrix} functions and
+  clip region with the @fun{cairo:clip} function prior to calling this function.
+  Also, it is fine to modify the Cairo context with the @fun{cairo:save} and
+  @fun{cairo:push-group} functions  prior to calling this function.
   @begin[Note]{dictionary}
-    Special purpose widgets may contain special code for rendering to the screen
-    and might appear differently on screen and when rendered using the
+    Special purpose widgets may contain special code for rendering to the
+    screen and might appear differently on screen and when rendered using the
     @sym{gtk:widget-draw} function.
   @end{dictionary}
   @see-class{gtk:widget}
   @see-symbol{cairo:context-t}
   @see-function{gtk:widget-is-drawable}
-  @see-function{cairo-set-operator}
-  @see-function{cairo-set-line-width}
-  @see-function{cairo-scale}
-  @see-function{cairo-translate}
-  @see-function{cairo-set-matrix}
-  @see-function{cairo-clip}
-  @see-function{cairo-save}
-  @see-function{cairo-push-group}"
+  @see-function{cairo:operator}
+  @see-function{cairo:line-width}
+  @see-function{cairo:scale}
+  @see-function{cairo:translate}
+  @see-function{cairo:matrix}
+  @see-function{cairo:clip}
+  @see-function{cairo:save}
+  @see-function{cairo:push-group}"
   (widget (g:object widget))
   (cr (:pointer (:struct cairo:context-t))))
 
@@ -3873,7 +3829,7 @@ lambda (widget event)    :run-last
 
 (defcfun ("gtk_widget_queue_draw" widget-queue-draw) :void
 #+liber-documentation
- "@version{#2021-9-16}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Equivalent to calling the @fun{gtk:widget-queue-draw-area} function for the
@@ -3891,7 +3847,7 @@ lambda (widget event)    :run-last
 
 (defcfun ("gtk_widget_queue_resize" widget-queue-resize) :void
  #+liber-documentation
- "@version{#2021-9-16}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Flags a widget to have its size renegotiated.
@@ -3919,7 +3875,7 @@ lambda (widget event)    :run-last
 (defcfun ("gtk_widget_queue_resize_no_redraw" widget-queue-resize-no-redraw)
     :void
  #+liber-documentation
- "@version{#2021-9-16}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     This function works like the @fun{gtk:widget-queue-resize} function, except
@@ -3938,7 +3894,7 @@ lambda (widget event)    :run-last
 #+gtk-3-20
 (defcfun ("gtk_widget_queue_allocate" widget-queue-allocate) :void
  #+liber-documentation
- "@version{#2021-9-21}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Flags the widget for a rerun of the @code{size_allocate} function.
@@ -3966,7 +3922,7 @@ lambda (widget event)    :run-last
 (defcfun ("gtk_widget_get_frame_clock" widget-frame-clock)
     (g:object gdk:frame-clock)
  #+liber-documentation
- "@version{#2021-9-16}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @return{A @class{gdk:frame-clock} object, or @code{nil} if @arg{widget} is
     unrealized.}
@@ -4019,7 +3975,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-symbol 'tick-callback)
       "Callback"
       (liber:symbol-documentation 'tick-callback)
- "@version{#2021-9-16}
+ "@version{#2023-3-8}
   @begin{short}
     Callback type for adding a function to update animations.
   @end{short}
@@ -4053,7 +4009,7 @@ lambda (widget clock)
 
 (defun widget-add-tick-callback (widget func)
  #+liber-documentation
- "@version{#2021-9-16}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[func]{a @symbol{gtk:tick-callback} callback function to call for
     updating animations}
@@ -4100,10 +4056,9 @@ lambda (widget clock)
 ;;; gtk_widget_remove_tick_callback ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_widget_remove_tick_callback" widget-remove-tick-callback)
-    :void
+(defcfun ("gtk_widget_remove_tick_callback" widget-remove-tick-callback) :void
  #+liber-documentation
- "@version{#2021-9-16}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[id]{an unsigned integer with the ID returned by the
     @fun{gtk:widget-add-tick-callback} function}
@@ -4166,7 +4121,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_size_allocate" widget-size-allocate) :void
  #+liber-documentation
- "@version{#2021-9-16}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[allocation]{a @class{gdk:rectangle} instance with the position and
     size to be allocated to the widget}
@@ -4174,7 +4129,6 @@ lambda (widget clock)
     This function is only used by @class{gtk:container} subclasses, to assign a
     size and position to their child widgets.
   @end{short}
-
   In this function, the allocation may be adjusted. It will be forced to a 1 x 1
   minimum size, and the @code{adjust_size_allocation()} virtual method on the
   child will be used to adjust the allocation. Standard adjustments include
@@ -4197,7 +4151,7 @@ lambda (widget clock)
 (defcfun ("gtk_widget_size_allocate_with_baseline"
            widget-size-allocate-with-baseline) :void
  #+liber-documentation
- "@version{#2021-9-21}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[allocation]{a @class{gdk:rectangle} instance with the position and
     size to be allocated to @arg{widget}}
@@ -4219,7 +4173,9 @@ lambda (widget clock)
   baseline argument is ignored and -1 is used instead.
   @see-class{gtk:widget}
   @see-class{gtk:container}
-  @see-class{gdk:rectangle}"
+  @see-class{gdk:rectangle}
+  @see-function{gtk:widget-halign}
+  @see-function{gtk:widget-valign}"
   (widget (g:object widget))
   (allocation (g:boxed gdk:rectangle))
   (baseline :int))
@@ -4232,7 +4188,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_add_accelerator" widget-add-accelerator) :void
  #+liber-documentation
- "@version{#2021-12-22}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object to install an accelerator on}
   @argument[signal]{a string with the widget signal to emit on accelerator
     activation}
@@ -4275,14 +4231,13 @@ lambda (widget clock)
 ;;; gtk_widget_remove_accelerator ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_widget_remove_accelerator" widget-remove-accelerator)
-    :boolean
+(defcfun ("gtk_widget_remove_accelerator" widget-remove-accelerator) :boolean
  #+liber-documentation
- "@version{#2021-9-16}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object to remove an accelerator from}
   @argument[group]{a @class{gtk:accel-group} object for @arg{widget}}
   @argument[key]{an unsigned integer with the GDK keyval of the accelerator}
-  @argument[mods]{the @symbol{gdk:modifier-tpye} flags with the modifier key
+  @argument[mods]{a @symbol{gdk:modifier-type} value with the modifier key
     combination of the accelerator}
   @return{A boolean whether an accelerator was installed and could be removed.}
   @begin{short}
@@ -4306,14 +4261,14 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_set_accel_path" widget-set-accel-path) :void
  #+liber-documentation
- "@version{#2021-9-16}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[path]{a string with the path used to look up the accelerator}
   @argument[group]{a @class{gtk:accel-group} object}
   @begin{short}
-    Given an accelerator group and an accelerator path sets up an accelerator in
-    the accelerator group so whenever the key binding that is defined for path
-    is pressed, the widget will be activated.
+    Given an accelerator group and an accelerator path sets up an accelerator
+    in the accelerator group so whenever the key binding that is defined for
+    path is pressed, the widget will be activated.
   @end{short}
   This removes any accelerators, for any accelerator group, installed by
   previous calls to the @sym{gtk:widget-set-accel-path} function. Associating
@@ -4326,8 +4281,8 @@ lambda (widget clock)
   @class{gtk:ui-manager} class, setting up accelerator paths will be done
   automatically.
 
-  Even when you are not using the @class{gtk:ui-manager} class, if you only want
-  to set up accelerators on menu items the @fun{gtk:menu-item-accel-path}
+  Even when you are not using the @class{gtk:ui-manager} class, if you only
+  want to set up accelerators on menu items the @fun{gtk:menu-item-accel-path}
   function provides a somewhat more convenient interface.
   @see-class{gtk:widget}
   @see-class{gtk:accel-group}
@@ -4362,14 +4317,13 @@ lambda (widget clock)
 ;;; gtk_widget_can_activate_accel ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_widget_can_activate_accel" %widget-can-activate-accel)
-    :boolean
+(defcfun ("gtk_widget_can_activate_accel" %widget-can-activate-accel) :boolean
   (widget (g:object widget))
   (signal :uint))
 
 (defun widget-can-activate-accel (widget signal)
  #+liber-documentation
- "@version{#2021-9-16}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[signal]{an unsigned integer with the ID or a string with the
     name of a signal installed on @arg{widget}}
@@ -4395,7 +4349,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_event" widget-event) :boolean
  #+liber-documentation
- "@version{#2021-9-16}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[event]{a @class{gdk:event} event}
   @begin{return}
@@ -4426,7 +4380,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_activate" widget-activate) :boolean
  #+liber-documentation
- "@version{#2021-9-16}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object that is activatable}
   @return{@em{True} if the widget was activatable.}
   @begin{short}
@@ -4476,7 +4430,7 @@ lambda (widget clock)
 
 (defun widget-intersect (widget area)
  #+liber-documentation
- "@version{#2021-9-16}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[area]{a @class{gdk:rectangle} instance}
   @return{Returns the intersection as a @class{gdk:rectangle} instance,
@@ -4499,7 +4453,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_grab_focus" widget-grab-focus) :void
  #+liber-documentation
- "@version{#2021-11-30}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Causes the widget to have the keyboard focus for the @class{gtk:window}
@@ -4527,7 +4481,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_grab_default" widget-grab-default) :void
  #+liber-documentation
- "@version{#2021-9-16}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Causes the widget to become the default widget.
@@ -4557,9 +4511,9 @@ lambda (widget clock)
 
 (defun (setf widget-state) (state widget)
   (cffi:foreign-funcall "gtk_widget_set_state"
-                   (g:object widget) widget
-                   state-type state
-                   :void)
+                        (g:object widget) widget
+                        state-type state
+                        :void)
   state)
 
 (defcfun ("gtk_widget_get_state" widget-state) state-type
@@ -4598,15 +4552,15 @@ lambda (widget clock)
 
 (defun (setf widget-parent-window) (window widget)
   (cffi:foreign-funcall "gtk_widget_set_parent_window"
-                   (g:object widget) widget
-                   (g:object gdk:window) window
-                   :void)
+                        (g:object widget) widget
+                        (g:object gdk:window) window
+                        :void)
   window)
 
 (defcfun ("gtk_widget_get_parent_window" widget-parent-window)
     (g:object gdk:window)
  #+liber-documentation
- "@version{#2021-9-16}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-parent-window widget) => window}
   @syntax[]{(setf (gtk:widget-parent-window widget) window)}
   @argument[widget]{a @class{gtk:widget} object}
@@ -4614,7 +4568,6 @@ lambda (widget clock)
   @begin{short}
     Accessor of the parent window of the widget.
   @end{short}
-
   The @sym{gtk:widget-parent-window} function gets the parent window of the
   widget. The @sym{(setf gtk:widget-parent-window)} function sets a non default
   parent window for the widget.
@@ -4637,7 +4590,7 @@ lambda (widget clock)
 
 (defun widget-add-events (widget events)
  #+liber-documentation
- "@version{#2021-9-16}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[events]{a @symbol{gdk:event-mask} event mask}
   @begin{short}
@@ -4660,16 +4613,15 @@ lambda (widget clock)
 
 (defun (setf widget-device-events) (events widget device)
   (cffi:foreign-funcall "gtk_widget_set_device_events"
-                   (g:object widget) widget
-                   (g:object gdk:device) device
-                   gdk:event-mask events
-                   :void)
+                        (g:object widget) widget
+                        (g:object gdk:device) device
+                        gdk:event-mask events
+                        :void)
   events)
 
-(defcfun ("gtk_widget_get_device_events" widget-device-events)
-    gdk:event-mask
+(defcfun ("gtk_widget_get_device_events" widget-device-events) gdk:event-mask
 #+liber-documentation
- "@version{#2021-9-21}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-device-events widget device) => events}
   @syntax[]{(setf (gtk:widget-device-events widget device) events)}
   @argument[widget]{a @class{gtk:widget} object}
@@ -4679,7 +4631,6 @@ lambda (widget clock)
     Accessor of the events mask for the widget corresponding to a specific
     device.
   @end{short}
-
   The @sym{gtk:widget-device-events} function returns the events mask for the
   widget corresponding to an specific device. These are the events that the
   widget will receive when device operates on it. The
@@ -4711,7 +4662,7 @@ lambda (widget clock)
 
 (defun widget-add-device-events (widget device events)
  #+liber-documentation
- "@version{#2021-9-21}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[device]{a @class{gdk:device} object}
   @argument[events]{a @symbol{gdk:event-mask} event mask}
@@ -4734,15 +4685,15 @@ lambda (widget clock)
 
 (defun (setf widget-device-enabled) (enabled widget device)
   (cffi:foreign-funcall "gtk_widget_set_device_enabled"
-                   (g:object widget) widget
-                   (g:object gdk:device) device
-                   :boolean enabled
-                   :void)
+                        (g:object widget) widget
+                        (g:object gdk:device) device
+                        :boolean enabled
+                        :void)
   enabled)
 
 (defcfun ("gtk_widget_get_device_enabled" widget-device-enabled) :boolean
  #+liber-documentation
- "@version{#2021-9-16}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-device-enabled widget devive) => enabled}
   @syntax[]{(setf (gtk:widget-device-enabled widget devide) enabled)}
   @argument[widget]{a @class{gtk:widget} object}
@@ -4774,7 +4725,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_get_toplevel" widget-toplevel) (g:object widget)
  #+liber-documentation
- "@version{#2021-9-16}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @return{The topmost ancestor of @arg{widget}, or @arg{widget} itself if
     there is no ancestor.}
@@ -4816,7 +4767,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_get_ancestor" widget-ancestor) (g:object widget)
  #+liber-documentation
- "@version{#2021-9-16}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[gtype]{an ancestor @class{g:type-t} type}
   @return{The @class{gtk:widget} ancestor widget, or @arg{nil} if not found.}
@@ -4846,14 +4797,14 @@ lambda (widget clock)
 
 (defun (setf widget-visual) (visual widget)
   (cffi:foreign-funcall "gtk_widget_set_visual"
-                   (g:object widget) widget
-                   (g:object gdk:visual) visual
-                   :void)
+                        (g:object widget) widget
+                        (g:object gdk:visual) visual
+                        :void)
   visual)
 
 (defcfun ("gtk_widget_get_visual" widget-visual) (g:object gdk:visual)
  #+liber-documentation
- "@version{#2021-9-19}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-visual object) => visual}
   @syntax[]{(setf (gtk:widget-visual object) visual)}
   @argument[widget]{a @class{gtk:widget} object}
@@ -4862,7 +4813,6 @@ lambda (widget clock)
   @begin{short}
     Accessor of the visual be used to render the widget.
   @end{short}
-
   The @sym{gtk:widget-visual} function gets the visual that will be used to
   render the widget. The @sym{(setf gtk:widget-visual)} function sets the
   visual that should be used for by the widget and its children for creating
@@ -4927,7 +4877,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_is_ancestor" widget-is-ancestor) :boolean
  #+liber-documentation
- "@version{#2021-9-19}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[ancestor]{another @class{gtk:widget} object}
   @return{@em{True} if @arg{ancestor} contains the widget as a child,
@@ -4956,13 +4906,13 @@ lambda (widget clock)
   (dst-x (:pointer :int))
   (dst-y (:pointer :int)))
 
-(defun widget-translate-coordinates (src dst src-x src-y)
+(defun widget-translate-coordinates (src dst xsrc ysrc)
  #+liber-documentation
- "@version{#2021-9-19}
+ "@version{#2023-3-8}
   @argument[src]{a @class{gtk:widget} object}
   @argument[dest]{a @class{gtk:widget} object}
-  @argument[src-x]{an integer with the x position relative to @arg{src}}
-  @argument[src-y]{an integer with the y position relative to @arg{src}}
+  @argument[xsrc]{an integer with the x position relative to @arg{src}}
+  @argument[ysrc]{an integer with the y position relative to @arg{src}}
   @return{@em{False} if either the widget was not realized, or there was no
     common ancestor. Otherwise the x position and the y position relative to
     @arg{dest}.}
@@ -4973,15 +4923,10 @@ lambda (widget clock)
   In order to perform this operation, both widgets must be realized, and must
   share a common toplevel.
   @see-class{gtk:widget}"
-  (with-foreign-objects ((dst-x :int) (dst-y :int))
-    (when (%widget-translate-coordinates src
-                                             dst
-                                             src-x
-                                             src-y
-                                             dst-x
-                                             dst-y)
-      (values (cffi:mem-ref dst-x :int)
-              (cffi:mem-ref dst-y :int)))))
+  (with-foreign-objects ((xdst :int) (ydst :int))
+    (when (%widget-translate-coordinates src dst xsrc ysrc xdst ydst)
+      (values (cffi:mem-ref xdst :int)
+              (cffi:mem-ref ydst :int)))))
 
 (export 'widget-translate-coordinates)
 
@@ -4991,7 +4936,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_hide_on_delete" widget-hide-on-delete) :boolean
  #+liber-documentation
- "@version{#2021-9-19}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @return{@em{True}.}
   @begin{short}
@@ -5089,14 +5034,14 @@ lambda (widget clock)
 
 (defun (setf widget-direction) (direction widget)
   (cffi:foreign-funcall "gtk_widget_set_direction"
-                   (g:object widget) widget
-                   text-direction direction
-                   :void)
+                        (g:object widget) widget
+                        text-direction direction
+                        :void)
   direction)
 
 (defcfun ("gtk_widget_get_direction" widget-direction) text-direction
  #+liber-documentation
- "@version{#2021-9-19}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-direction widget) => direction}
   @syntax[]{(setf (gtk:widget-direction widget) direction)}
   @argument[widget]{a @class{gtk:widget} object}
@@ -5104,7 +5049,6 @@ lambda (widget clock)
   @begin{short}
     Accessor of the text direction of the widget.
   @end{short}
-
   The @sym{gtk:widget-direction} function gets the reading direction for a
   widget. The @sym{(setf gtk:widget-direction)} function sets the reading
   direction.
@@ -5133,14 +5077,14 @@ lambda (widget clock)
 
 (defun (setf widget-default-direction) (direction)
   (cffi:foreign-funcall "gtk_widget_set_default_direction"
-                   text-direction direction
-                   :void)
+                        text-direction direction
+                        :void)
   direction)
 
 (defcfun ("gtk_widget_get_default_direction" widget-default-direction)
     text-direction
  #+liber-documentation
- "@version{#2021-9-19}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-default-direction) => direction}
   @syntax[]{(setf (gtk:widget-default-direction) direction)}
   @argument[direction]{a value of the @symbol{gtk:text-direction} enumeration
@@ -5148,7 +5092,6 @@ lambda (widget clock)
   @begin{short}
     Accessor of the default reading direction.
   @end{short}
-
   The @sym{gtk:widget-default-direction} function obtains the current default
   reading direction. The @sym{(setf gtk:widget-default-direction)} function sets
   the default reading direction for widgets where the direction has not
@@ -5163,10 +5106,9 @@ lambda (widget clock)
 ;;; gtk_widget_shape_combine_region ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_widget_shape_combine_region" widget-shape-combine-region)
-    :void
+(defcfun ("gtk_widget_shape_combine_region" widget-shape-combine-region) :void
  #+liber-documentation
- "@version{#2021-9-21}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[region]{a @symbol{cairo:region-t} shape to be added, or @code{nil}
     to remove an existing shape}
@@ -5190,7 +5132,7 @@ lambda (widget clock)
 (defcfun ("gtk_widget_input_shape_combine_region"
            widget-input-shape-combine-region) :void
  #+liber-documentation
- "@version{#2021-9-21}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[region]{a @symbol{cairo:region-t} shape to be added, or @code{nil}
     to remove an existing shape}
@@ -5309,14 +5251,14 @@ lambda (widget clock)
 
 (defun (setf widget-composite-name) (name widget)
   (cffi:foreign-funcall "gtk_widget_set_composite_name"
-                   (g:object widget) widget
-                   :string name
-                   :void)
+                        (g:object widget) widget
+                        :string name
+                        :void)
   name)
 
 (defcfun ("gtk_widget_get_composite_name" widget-composite-name) :string
  #+liber-documentation
- "@version{#2021-9-19}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-composite-name widget) => name}
   @syntax[]{(setf gtk:widget-composite-name widget) name)}
   @argument[widget]{a @class{gtk:widget} object}
@@ -5324,7 +5266,6 @@ lambda (widget clock)
   @begin{short}
     Accessor of the composite name of the widget.
   @end{short}
-
   The @sym{gtk:widget-composite-name} function obtains the composite name of a
   widget. The @sym{(setf gtk:widget-composite-name)} function sets a widgets
   composite name. The widget must be a composite child of its parent.
@@ -5346,11 +5287,11 @@ lambda (widget clock)
 (defcfun ("gtk_widget_override_background_color"
            widget-override-background-color) :void
  #+liber-documentation
- "@version{#2021-9-19}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[state]{the @symbol{gtk:state-flags} flags for which to set the
+  @argument[state]{a @symbol{gtk:state-flags} value for which to set the
     background color}
-  @argument[color]{the @class{gdk:rgba} color to assign, or @code{nil} to undo
+  @argument[color]{a @class{gdk:rgba} color to assign, or @code{nil} to undo
     the effect of previous calls}
   @begin{short}
     Sets the background color to use for a widget.
@@ -5384,9 +5325,9 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_override_color" widget-override-color) :void
  #+liber-documentation
- "@version{#2021-9-19}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[state]{the @symbol{gtk:state-flags} flags for which to set the
+  @argument[state]{a @symbol{gtk:state-flags} value for which to set the
     color}
   @argument[color]{a @class{gdk:rgba} color to assign, or @code{nil} to undo
     the effect of previous calls}
@@ -5439,7 +5380,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_override_font" widget-override-font) :void
  #+liber-documentation
- "@version{#2021-9-19}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[desc]{a @class{pango:font-description} instance to use,
     or @code{nil} to undo the effect of previous calls}
@@ -5467,10 +5408,10 @@ lambda (widget clock)
 ;;; gtk_widget_override_symbolic_color ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_widget_override_symbolic_color"
-           widget-override-symbolic-color) :void
+(defcfun ("gtk_widget_override_symbolic_color" widget-override-symbolic-color)
+    :void
  #+liber-documentation
- "@version{#2021-9-22}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[name]{a string with the name of the symbolic color to modify}
   @argument[color]{a @class{gdk:rgba} color to assign, or @code{nil} to undo
@@ -5478,7 +5419,6 @@ lambda (widget clock)
   @begin{short}
     Sets a symbolic color for a widget.
   @end{short}
-
   All other style values are left untouched. See the
   @fun{gtk:widget-override-color} for overriding the foreground or background
   color.
@@ -5506,7 +5446,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_override_cursor" widget-override-cursor) :void
  #+liber-documentation
- "@version{#2021-9-22}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[primary]{a @class{gdk:rgba} color to use for the primary cursor, or
     @code{nil} to undo the effect of previous calls to the
@@ -5824,16 +5764,16 @@ lambda (widget clock)
 (defcfun ("gtk_widget_create_pango_context" widget-create-pango-context)
     (g:object pango-context :already-referenced)
  #+liber-documentation
- "@version{#2021-9-19}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
-  @return{The new @class{pango-context} object.}
+  @return{The new @class{pango:context} object.}
   @begin{short}
     Creates a new Pango context with the appropriate font map, font description,
     and base direction for drawing text for this widget.
   @end{short}
   See also the @fun{gtk:widget-pango-context} function.
   @see-class{gtk:widget}
-  @see-class{pango-context}
+  @see-class{pango:context}
   @see-function{gtk:widget-pango-context}"
   (widget (g:object widget)))
 
@@ -5846,9 +5786,9 @@ lambda (widget clock)
 (defcfun ("gtk_widget_get_pango_context" widget-pango-context)
     (g:object pango-context)
  #+liber-documentation
- "@version{#2021-9-19}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
-  @return{The @class{pango-context} object for the widget.}
+  @return{The @class{pango:context} object for the widget.}
   @begin{short}
     Gets a Pango context with the appropriate font map, font description, and
     base direction for this widget.
@@ -5858,14 +5798,14 @@ lambda (widget clock)
   for the widget changes or the widget is removed from its toplevel, and will be
   updated to match any changes to the  attributes of the widget.
 
-  If you create and keep a @class{pango-layout} object using this context, you
+  If you create and keep a @class{pango:layout} object using this context, you
   must deal with changes to the context by calling the
-  @fun{pango-layout-context-changed} function on the layout in response to the
+  @fun{pango:layout-context-changed} function on the layout in response to the
   \"style-updated\" and \"direction-changed\" signals for the widget.
   @see-class{gtk:widget}
-  @see-class{pango-layout}
+  @see-class{pango:layout}
   @see-function{gtk:widget-create-pango-context}
-  @see-function{pango-layout-context-changed}"
+  @see-function{pango:layout-context-changed}"
   (widget (g:object widget)))
 
 (export 'widget-pango-context)
@@ -5876,13 +5816,12 @@ lambda (widget clock)
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf widget-font-options) (options widget)
-  (cffi:foreign-funcall "gtk_widget_set_font_options"
-                   (g:object widget) widget
-                   (:pointer (:struct cairo:font-options-t)) (if options
-                                                                 options
-                                                                 (cffi:null-pointer))
-                   :void)
-  options)
+  (let ((options1 (if options options (cffi:null-pointer))))
+    (cffi:foreign-funcall "gtk_widget_set_font_options"
+                          (g:object widget) widget
+                          (:pointer (:struct cairo:font-options-t)) options1
+                          :void)
+    options))
 
 (defcfun ("gtk_widget_get_font_options" %widget-font-options)
     (:pointer (:struct cairo:font-options-t))
@@ -5890,7 +5829,7 @@ lambda (widget clock)
 
 (defun widget-font-options (widget)
  #+liber-documentation
- "@version{#2021-10-28}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-font-options widget) => options}
   @syntax[]{(setf (gtk:widget-font-options widget) options)}
   @argument[widget]{a @class{gtk:widget} object}
@@ -5920,20 +5859,19 @@ lambda (widget clock)
 
 (defun (setf widget-font-map) (fontmap widget)
   (cffi:foreign-funcall "gtk_widget_set_font_map"
-                   (g:object widget) widget
-                   (g:object pango-font-map) fontmap
-                   :void)
+                        (g:object widget) widget
+                        (g:object pango:font-map) fontmap
+                        :void)
   fontmap)
 
-(defcfun ("gtk_widget_get_font_map" widget-font-map)
-    (g:object pango-font-map)
+(defcfun ("gtk_widget_get_font_map" widget-font-map) (g:object pango:font-map)
  #+liber-documentation
- "@version{#2021-9-22}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-font-map widget) => fontmap}
   @syntax[]{(setf (gtk:widget-font-map widget) fontmap)}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[fontmap]{a @class{pango-font-map} object, or @code{nil} to unset any
-    previously set font map}
+  @argument[fontmap]{a @class{pango:font-map} object, or @code{nil} to unset
+    any previously set font map}
   @begin{short}
     The @sym{gtk:widget-font-map} function gets the font map that has been set.
   @end{short}
@@ -5943,7 +5881,7 @@ lambda (widget clock)
 
   Since 3.18
   @see-class{gtk:widget}
-  @see-class{pango-font-map}"
+  @see-class{pango:font-map}"
   (widget (g:object widget)))
 
 (export 'widget-font-map)
@@ -5953,31 +5891,31 @@ lambda (widget clock)
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_widget_create_pango_layout" %widget-create-pango-layout)
-    (g:object pango-layout :already-referenced)
+    (g:object pango:layout :already-referenced)
   (widget (g:object widget))
   (text :string))
 
 (defun widget-create-pango-layout (widget text)
  #+liber-documentation
- "@version{#2021-9-19}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[text]{a string with the text to set on the layout, can be
     @code{nil}}
-  @return{The new @class{pango-layout} object.}
+  @return{The new @class{pango:layout} object.}
   @begin{short}
-    Creates a new @class{pango-layout} object with the appropriate font map,
+    Creates a new @class{pango:layout} object with the appropriate font map,
     font description, and base direction for drawing text for this widget.
   @end{short}
 
-  If you keep a @class{pango-layout} object created in this way around, in order
+  If you keep a @class{pango:layout} object created in this way around, in order
   to notify the layout of changes to the base direction or font of this widget,
-  you must call the @fun{pango-layout-context-changed} function in response to
+  you must call the @fun{pango:layout-context-changed} function in response to
   the \"style-updated\" and \"direction-changed\" signals for the widget.
   @see-class{gtk:widget}
-  @see-class{pango-layout}
-  @see-function{pango-layout-context-changed}"
+  @see-class{pango:layout}
+  @see-function{pango:layout-context-changed}"
   (%widget-create-pango-layout widget
-                                   (if text text (cffi:null-pointer))))
+                               (if text text (cffi:null-pointer))))
 
 (export 'widget-create-pango-layout)
 
@@ -6113,7 +6051,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_queue_draw_area" widget-queue-draw-area) :void
  #+liber-documentation
- "@version{#2021-9-19}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[x]{an integer with the x coordinate of upper-left corner of
     rectangle to redraw}
@@ -6136,7 +6074,8 @@ lambda (widget clock)
   does nothing. Negative values for @arg{width} and @arg{height} are not
   allowed.
   @see-class{gtk:widget}
-  @see-function{gtk:widget-queue-draw-region}"
+  @see-function{gtk:widget-queue-draw-region}
+  @see-function{gtk:widget-has-window}"
   (widget (g:object widget))
   (x :int)
   (y :int)
@@ -6151,7 +6090,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_queue_draw_region" widget-queue-draw-region) :void
  #+liber-documentation
- "@version{#2021-9-19}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[region]{a @symbol{cairo:region-t} region to draw}
   @begin{short}
@@ -6182,7 +6121,7 @@ lambda (widget clock)
 (defcfun ("gtk_widget_set_redraw_on_allocate" widget-set-redraw-on-allocate)
     :void
  #+liber-documentation
- "@version{#2021-9-19}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[redraw]{if @em{true}, the entire widget will be redrawn when it is
     allocated to a new size, otherwise, only the new portion of the widget will
@@ -6216,7 +6155,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_mnemonic_activate" widget-mnemonic-activate) :boolean
  #+liber-documentation
- "@version{#2021-9-19}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[cycling]{@em{true} if there are other widgets with the same
     mnemonic}
@@ -6239,7 +6178,7 @@ lambda (widget clock)
 (defcfun ("gtk_widget_class_install_style_property"
            widget-class-install-style-property) :void
  #+liber-documentation
- "@version{#2021-9-19}
+ "@version{#2023-3-8}
   @argument[class]{a pointer to a widget class structure}
   @argument[pspec]{a @symbol{g:param-spec} instance for the property}
   @begin{short}
@@ -6279,14 +6218,13 @@ lambda (widget clock)
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_widget_class_find_style_property"
-          %widget-class-find-style-property)
-    (:pointer (:struct g:param-spec))
+           %widget-class-find-style-property) (:pointer (:struct g:param-spec))
   (class (:pointer (:struct g:type-class)))
   (name :string))
 
 (defun widget-class-find-style-property (gtype name)
  #+liber-documentation
- "@version{#2021-9-19}
+ "@version{#2023-3-8}
   @argument[class]{a @class{g:type-t} type ID for a @class{gtk:widget} class}
   @argument[name]{a string with the name of the style property to find}
   @return{The @symbol{g:param-spec} instance of the style property or a
@@ -6329,7 +6267,7 @@ lambda (widget clock)
 
 (defun widget-class-list-style-properties (gtype)
  #+liber-documentation
- "@version{#2021-9-19}
+ "@version{#2023-3-8}
   @argument[gtype]{a @class{g:type-t} widget class type ID}
   @return{A list of @symbol{g:param-spec} instances.}
   @begin{short}
@@ -6365,10 +6303,10 @@ lambda (widget clock)
 (defcfun ("gtk_widget_region_intersect" widget-region-intersect)
     (:pointer (:struct cairo:region-t))
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[region]{a @symbol{cairo:region-t} region, in the same coordinate
-    system as @code{widget->allocation}, that is, relative to the GDK window
+    system as the widget allocation, that is, relative to the GDK window
     for windowless widgets, relative to the parent window of the GDK window for
     widgets with their own window}
   @return{A newly allocated region holding the intersection of @arg{widget} and
@@ -6377,19 +6315,19 @@ lambda (widget clock)
     Computes the intersection of the area of the widget and @arg{region},
     returning the intersection.
   @end{short}
-  The result may be empty, use the @fun{cairo-region-is-empty} function to
+  The result may be empty, use the @fun{cairo:region-is-empty} function to
   check.
   @begin[Warning]{dictionary}
     The @sym{gtk:widget-region-intersect} function has been deprecated since
     version 3.14 and should not be used in newly written code. Use the
-    @fun{gtk:widget-allocation} and @fun{cairo-region-intersect-rectangle}
+    @fun{gtk:widget-allocation} and @fun{cairo:region-intersect-rectangle}
     functions to get the same behavior.
   @end{dictionary}
   @see-class{gtk:widget}
   @see-symbol{cairo:region-t}
-  @see-function{cairo-region-is-empty}
+  @see-function{cairo:region-is-empty}
   @see-function{gtk:widget-allocation}
-  @see-function{cairo-region-intersect-rectangle}"
+  @see-function{cairo:region-intersect-rectangle}"
   (widget (g:object widget))
   (region (:pointer (:struct cairo:region-t))))
 
@@ -6491,14 +6429,13 @@ lambda (widget clock)
 
 (defun widget-style-property (widget property)
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[property]{a string with the name of a style property}
   @return{The style property value.}
   @begin{short}
     Gets the value of a style property of the widget.
   @end{short}
-
   If the style property does not exist on the widget class @code{nil} is
   returned.
   @begin[Example]{dictionary}
@@ -6633,14 +6570,13 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_get_accessible" widget-accessible) g:object
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @return{The @code{AtkObject} associated with @arg{widget}.}
   @begin{short}
     Returns the accessible object that describes the widget to an assistive
     technology.
   @end{short}
-
   If accessibility support is not available, this @code{AtkObject} instance may
   be a no-op. Likewise, if no class-specific @code{AtkObject} implementation is
   available for the widget instance in question, it will inherit an
@@ -6660,7 +6596,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_child_focus" widget-child-focus) :boolean
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[direction]{a @symbol{gtk:direction-type} value with the direction
     of focus movement}
@@ -6670,7 +6606,7 @@ lambda (widget clock)
   @end{short}
   If you are writing an application, you would use the
   @fun{gtk:widget-grab-focus} function to move the focus to a particular widget,
-  and the @fun{gtk:container-set-focus-chain} function to change the focus tab
+  and the @fun{gtk:container-focus-chain} function to change the focus tab
   order. So you may want to investigate those functions instead.
 
   The @sym{gtk:widget-child-focus} function is called by containers as the user
@@ -6689,7 +6625,7 @@ lambda (widget clock)
   @see-class{gtk:widget}
   @see-symbol{gtk:direction-type}
   @see-function{gtk:widget-grab-focus}
-  @see-function{gtk:container-set-focus-chain}"
+  @see-function{gtk:container-focus-chain}"
   (widget (g:object widget))
   (direction direction-type))
 
@@ -6701,7 +6637,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_child_notify" widget-child-notify) :void
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[property]{a string with the name of a child property installed
     on the class of the parent of @arg{widget}}
@@ -6709,7 +6645,6 @@ lambda (widget clock)
     Emits a \"child-notify\" signal for the child property @arg{property} on
     @arg{widget}.
   @end{short}
-
   This is the analogue of the @fun{g:object-notify} function for child
   properties. Also see the @fun{gtk:container-child-notify} function.
   @see-class{gtk:widget}
@@ -6726,7 +6661,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_freeze_child_notify" widget-freeze-child-notify) :void
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Stops emission of \"child-notify\" signals on the widget.
@@ -6750,14 +6685,14 @@ lambda (widget clock)
 
 (defun (setf widget-child-visible) (is-visible widget)
   (cffi:foreign-funcall "gtk_widget_set_child_visible"
-                   (g:object widget) widget
-                   :boolean is-visible
-                   :void)
+                        (g:object widget) widget
+                        :boolean is-visible
+                        :void)
   is-visible)
 
 (defcfun ("gtk_widget_get_child_visible" widget-child-visible) :boolean
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-child-visible widget) => visible}
   @syntax[]{(setf (gtk:widget-child-visible widget) visible)}
   @argument[widget]{a @class{gtk:widget} object}
@@ -6796,13 +6731,12 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_get_settings" widget-settings) (g:object settings)
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @return{The relevant @class{gtk:settings} object.}
   @begin{short}
     Gets the settings object holding the settings used for this widget.
   @end{short}
-
   Note that this function can only be called when the widget is attached to a
   toplevel, since the settings object is specific to a particular
   @class{gdk:screen} object.
@@ -6819,7 +6753,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_get_clipboard" widget-clipboard) (g:object clipboard)
  #+liber-documentation
- "@version{#2021-10-31}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[selection]{an atom as a string which identifies the clipboard to
     use, @code{\"CLIPBOARD\"} gives the default clipboard, another common value
@@ -6847,7 +6781,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_get_display" widget-display) (g:object gdk:display)
  #+liber-documentation
- "@version{#2021-10-31}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @return{The @class{gdk:display} object for the toplevel for this widget.}
   @begin{short}
@@ -6873,7 +6807,7 @@ lambda (widget clock)
 (defcfun ("gtk_widget_get_root_window" widget-root-window)
     (g:object gdk:window)
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @return{The @class{gdk:window} root window for the toplevel for this widget.}
   @begin{short}
@@ -6904,7 +6838,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_get_screen" widget-screen) (g:object gdk:screen)
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @return{The @class{gdk:screen} object for the toplevel for the widget.}
   @begin{short}
@@ -6930,7 +6864,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_has_screen" widget-has-screen) :boolean
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{return}
     @em{True} if there is a @class{gdk:screen} object associcated with the
@@ -6968,7 +6902,7 @@ lambda (widget clock)
 
 (defun widget-size-request (widget)
  #+liber-documentation
- "@version{#2021-9-16}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-size-request object) => width, height}
   @syntax[]{(setf (gtk:widget-size-request object) (list width height))}
   @argument[object]{a @class{gtk:widget} object}
@@ -6977,7 +6911,6 @@ lambda (widget clock)
   @begin{short}
     Accessor of the size request of the widget.
   @end{short}
-
   A value of -1 returned in @arg{width} or @arg{height} indicates that that
   dimension has not been set explicitly and the natural requisition of the
   widget will be used instead. To get the size a widget will actually request,
@@ -7037,7 +6970,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_thaw_child_notify" widget-thaw-child-notify) :void
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Reverts the effect of a previous call to the
@@ -7055,9 +6988,9 @@ lambda (widget clock)
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_widget_list_mnemonic_labels" widget-list-mnemonic-labels)
-    (g:list-t (g:object widget) :free-from-foreign t)
+    (g:list-t (g:object widget))
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @return{The list of @class{gtk:widget} mnemonic labels.}
   @begin{short}
@@ -7087,7 +7020,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_add_mnemonic_label" widget-add-mnemonic-label) :void
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[label]{a @class{gtk:widget} object that acts as a mnemonic label
     for @arg{widget}}
@@ -7113,10 +7046,9 @@ lambda (widget clock)
 ;;; gtk_widget_remove_mnemonic_label ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_widget_remove_mnemonic_label" widget-remove-mnemonic-label)
-    :void
+(defcfun ("gtk_widget_remove_mnemonic_label" widget-remove-mnemonic-label) :void
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[label]{a @class{gtk:widget} object that was previously set as a
     mnemonic label for @arg{widget}}
@@ -7140,7 +7072,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_is_composited" widget-is-composited) :boolean
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @return{@em{True} if @arg{widget} can rely on its alpha channel being drawn
     correctly.}
@@ -7165,7 +7097,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_error_bell" widget-error-bell) :void
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Notifies the user about an input-related error on this widget.
@@ -7189,7 +7121,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_keynav_failed" widget-keynav-failed) :boolean
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[direction]{a @symbol{gtk:direction-type} value for the direction
     of focus movement}
@@ -7244,15 +7176,15 @@ lambda (widget clock)
 
 (defun (setf widget-tooltip-window) (custom-window widget)
   (cffi:foreign-funcall "gtk_widget_set_tooltip_window"
-                   (g:object widget) widget
-                   (g:object window) custom-window
-                   :void)
+                        (g:object widget) widget
+                        (g:object window) custom-window
+                        :void)
   custom-window)
 
 (defcfun ("gtk_widget_get_tooltip_window" widget-tooltip-window)
     (g:object window)
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-tooltip-window widget) => window}
   @syntax[]{(setf (gtk:widget-tooltip-window widget) window)}
   @argument[widget]{a @class{gtk:widget} object}
@@ -7260,7 +7192,6 @@ lambda (widget clock)
   @begin{short}
     Accessor of the custom window of the current tooltip.
   @end{short}
-
   The @sym{gtk:widget-tooltip-window} function returns the custom windw of the
   current tooltip. The @sym{(setf gtk:widget-tooltip-window)} function replaces
   the default, usually yellow, window used for displaying tooltips with the
@@ -7273,6 +7204,7 @@ lambda (widget clock)
   If the custom window should have the default theming it needs to have the
   name \"gtk-tooltip\", see the @fun{gtk:widget-name} function.
   @see-class{gtk:widget}
+  @see-class{gtk:window}
   @see-function{gtk:widget-name}"
   (widget (g:object window)))
 
@@ -7285,7 +7217,7 @@ lambda (widget clock)
 (defcfun ("gtk_tooltip_trigger_tooltip_query" widget-trigger-tooltip-query)
     :void
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Triggers a tooltip query on the display where the toplevel of @arg{widget}
@@ -7304,7 +7236,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_register_window" widget-register-window) :void
  #+liber-documentation
- "@version{#2021-9-22}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}
@@ -7320,7 +7252,7 @@ lambda (widget clock)
   as is, although some new features like transparency might not work perfectly.
   @see-class{gtk:widget}
   @see-class{gdk:window}
-  @see-function{gkt-widget-unregister-window}
+  @see-function{gtk:widget-unregister-window}
   @see-function{gdk:window-user-data}"
   (widget (g:object widget))
   (window (g:object gdk:window)))
@@ -7333,7 +7265,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_unregister_window" widget-unregister-window) :void
  #+liber-documentation
- "@version{#2021-9-22}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}
@@ -7344,7 +7276,7 @@ lambda (widget clock)
   as when you destroy it.
   @see-class{gtk:widget}
   @see-class{gdk:window}
-  @see-function{gkt-widget-register-window}"
+  @see-function{gtk:widget-register-window}"
   (widget (g:object widget))
   (window (g:object gdk:window)))
 
@@ -7356,9 +7288,9 @@ lambda (widget clock)
 
 (defcfun ("gtk_cairo_should_draw_window" cairo-should-draw-window) :boolean
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @argument[cr]{a @symbol{cairo:context-t} context}
-  @argument[window]{the @class{gdk:window} object to check, @arg{window} may
+  @argument[window]{a @class{gdk:window} object to check, @arg{window} may
     not be an input-only window}
   @return{@em{True} if @arg{window} should be drawn.}
   @begin{short}
@@ -7385,8 +7317,8 @@ lambda (widget clock)
 
 (defcfun ("gtk_cairo_transform_to_window" cairo-transform-to-window) :void
  #+liber-documentation
- "@version{#2021-9-20}
-  @argument[cr]{the @class{cairo:context-t} context to transform}
+ "@version{#2023-3-8}
+  @argument[cr]{a @class{cairo:context-t} context to transform}
   @argument[widget]{the @class{gtk:widget} object the context is currently
     centered for}
   @argument[window]{the @class{gdk:window} object to transform the context to}
@@ -7416,8 +7348,8 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_get_allocated_width" widget-allocated-width) :int
  #+liber-documentation
- "@version{#2021-11-30}
-  @argument[widget]{the @class{gtk:widget} object to query}
+ "@version{#2023-3-8}
+  @argument[widget]{a @class{gtk:widget} object to query}
   @return{An integer with the width of the widget.}
   @begin{short}
     Returns the width that has currently been allocated to @arg{widget}.
@@ -7443,8 +7375,8 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_get_allocated_height" widget-allocated-height) :int
  #+liber-documentation
- "@version{#2021-11-30}
-  @argument[widget]{the @class{gtk:widget} object to query}
+ "@version{#2023-3-8}
+  @argument[widget]{a @class{gtk:widget} object to query}
   @return{An integer with the height of the widget.}
   @begin{short}
     Returns the height that has currently been allocated to @arg{widget}.
@@ -7475,9 +7407,9 @@ lambda (widget clock)
 
 (defun (setf widget-allocation) (allocation widget)
   (cffi:foreign-funcall "gtk_widget_set_allocation"
-                   (g:object widget) widget
-                   (g:boxed gdk:rectangle) allocation
-                   :void)
+                        (g:object widget) widget
+                        (g:boxed gdk:rectangle) allocation
+                        :void)
   allocation)
 
 (defcfun ("gtk_widget_get_allocation" %widget-allocation) :void
@@ -7486,7 +7418,7 @@ lambda (widget clock)
 
 (defun widget-allocation (widget)
  #+liber-documentation
- "@version{#2021-12-7}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-allocation widget) => allocation}
   @syntax[]{(setf (gtk:widget-allocation widget) allocation}
   @argument[widget]{a @class{gtk:widget} object}
@@ -7494,7 +7426,6 @@ lambda (widget clock)
   @begin{short}
     Accessor of the allocation of the widget.
   @end{short}
-
   The @sym{gtk:widget-allocation} function retrieves the allocation of the
   widget. The @sym{(setf gtk:widget-allocation)} function sets the allocation.
   This should not be used directly, but from within a @code{size_allocate}
@@ -7548,12 +7479,11 @@ lambda (widget clock)
 ;;; gtk_widget_get_allocated_baseline () -> widget-allocated-baseline
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_widget_get_allocated_baseline" widget-allocated-baseline)
-    :int
+(defcfun ("gtk_widget_get_allocated_baseline" widget-allocated-baseline) :int
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object to query}
-  @return{an integer with the baseline of the widget, or -1 if none}
+  @return{An integer with the baseline of the widget, or -1 if none.}
   @begin{short}
     Returns the baseline that has currently been allocated to the widget.
   @end{short}
@@ -7571,9 +7501,9 @@ lambda (widget clock)
 
 (defun (setf widget-clip) (clip widget)
   (cffi:foreign-funcall "gtk_widget_set_clip"
-                   (g:object widget) widget
-                   (g:boxed gdk:rectangle) clip
-                   :void)
+                        (g:object widget) widget
+                        (g:boxed gdk:rectangle) clip
+                        :void)
   clip)
 
 (defcfun ("gtk_widget_get_clip" %widget-clip) :void
@@ -7582,7 +7512,7 @@ lambda (widget clock)
 
 (defun widget-clip (widget)
  #+liber-documentation
- "@version{#2021-9-22}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-clip widget) => clip}
   @syntax[]{(setf (gtk:widget-clip widget) clip)}
   @argument[widget]{a @class{gtk:widget} object}
@@ -7590,13 +7520,11 @@ lambda (widget clock)
   @begin{short}
    The @sym{gtk:widget-clip} function retrieves the clip area of the widget.
   @end{short}
-  The @sym{(setf gtk:widget-clip} function sets the clip of the widget.
-
-  The clip area is the area in which all of the drawing of the widget will
-  happen. Other toolkits call it the bounding box.
-
-  Historically, in GTK the clip area has been equal to the allocation retrieved
-  via the @fun{gtk:widget-allocation} function.
+  The @sym{(setf gtk:widget-clip} function sets the clip of the widget. The
+  clip area is the area in which all of the drawing of the widget will happen.
+  Other toolkits call it the bounding box. Historically, in GTK the clip area
+  has been equal to the allocation retrieved via the @fun{gtk:widget-allocation}
+  function.
 
   This must not be used directly, but from within a @code{size_allocate} method
   of the widget. It must be called after the @fun{gtk:widget-allocation}
@@ -7625,14 +7553,14 @@ lambda (widget clock)
 
 (defun (setf widget-has-window) (has-window widget)
   (cffi:foreign-funcall "gtk_widget_set_has_window"
-                   (g:object widget) widget
-                   :boolean has-window
-                   :void)
+                        (g:object widget) widget
+                        :boolean has-window
+                        :void)
   has-window)
 
 (defcfun ("gtk_widget_get_has_window" widget-has-window) :boolean
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-has-window widget) => has-window}
   @syntax[]{(setf (gtk:widget-has-window widget) has-window)}
   @argument[widget]{a @class{gtk:widget} instance}
@@ -7640,7 +7568,6 @@ lambda (widget clock)
   @begin{short}
     Accessor of the has window value of the @class{gtk:widget} object.
   @end{short}
-
   The @sym{gtk:widget-has-window} function determines whether the widget has a
   @class{gdk:window} object of its own. The @sym{(setf gtk:widget-has-window)}
   function specifies whether the widget has a @class{gdk:window} of its own.
@@ -7667,7 +7594,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_is_sensitive" widget-is-sensitive) :boolean
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @return{@em{True} if @arg{widget} is effectively sensitive.}
   @begin{short}
@@ -7686,7 +7613,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_is_visible" widget-is-visible) :boolean
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @return{@em{True} if the widget and all its parents are visible.}
   @begin{short}
@@ -7707,31 +7634,28 @@ lambda (widget clock)
 
 (defun (setf widget-state-flags) (flags widget &optional (clear nil))
   (cffi:foreign-funcall "gtk_widget_set_state_flags"
-                   (g:object widget) widget
-                   state-flags flags
-                   :boolean clear
-                   :void)
+                        (g:object widget) widget
+                        state-flags flags
+                        :boolean clear
+                        :void)
   flags)
 
 (defcfun ("gtk_widget_get_state_flags" widget-state-flags) state-flags
  #+liber-documentation
- "@version{#2020-9-20}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-state-flags widget) => flags}
   @syntax[]{(setf (gtk:widget-state-flags widget clear) flags)}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[flags]{the @symbol{gtk:state-flags} state flags}
+  @argument[flags]{a @symbol{gtk:state-flags} value with the state flags}
   @argument[clear]{an optional boolean whether to clear state before turning on
     flags}
   @begin{short}
     Accessor of the stage flags of the widget.
   @end{short}
-
   The @sym{gtk:widget-state-flags} function returns the widget state as a flag
   set. The @sym{setf gtk:widget-state-flags)} function sets the widget state
-  flags.
-
-  This function is for use in widget implementations. Turns on flag values in
-  the current widget state, insensitive, prelighted, etc..
+  flags. This function is for use in widget implementations. Turns on flag
+  values in the current widget state, insensitive, prelighted, etc.
 
   It is worth mentioning that any other state than @code{:insensitive}, will be
   propagated down to all non-internal children if the widget is a
@@ -7741,6 +7665,8 @@ lambda (widget clock)
   @sym{gtk:widget-state-flags} and @fun{gtk:widget-is-sensitive} functions will
   make use of these.
   @see-class{gtk:widget}
+  @see-class{gtk:container}
+  @see-symbol{gtk:state-flags}
   @see-function{gtk:widget-is-sensitive}"
   (widget (g:object widget)))
 
@@ -7752,9 +7678,10 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_unset_state_flags" widget-unset-state-flags) :void
  #+liber-documentation
- "@version{#2020-9-22}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[flags]{the @symbol{gtk:state-flags} state flags to turn off}
+  @argument[flags]{a @symbol{gtk:state-flags} value with state flags to turn
+    off}
   @begin{short}
     This function is for use in widget implementations.
   @end{short}
@@ -7774,14 +7701,14 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_has_visible_focus" widget-has-visible-focus) :boolean
  #+liber-documentation
- "@version{#2020-9-22}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @return{@em{True} if the widget should display a focus rectangle.}
   @begin{short}
     Determines if the widget should show a visible indication that it has the
-     global input focus.
+    global input focus.
   @end{short}
-  This is a convenience function for use in :\"draw\" handlers that takes into
+  This is a convenience function for use in \"draw\" handlers that takes into
   account whether focus indication should currently be shown in the toplevel
   window of the widget. See the @fun{gtk:window-focus-visible} function for
   more information about focus indication.
@@ -7801,7 +7728,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_has_grab" widget-has-grab) :boolean
  #+liber-documentation
- "@version{#2020-9-22}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @return{@em{True} if the widget is the grab widgets stack.}
   @begin{short}
@@ -7843,7 +7770,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_is_drawable" widget-is-drawable) :boolean
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @return{@em{True} if @arg{widget} is drawable, @em{false} otherwise.}
   @begin{short}
@@ -7861,7 +7788,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_is_toplevel" widget-is-toplevel) :boolean
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @return{@em{True} if @arg{widget} is a toplevel, @em{false} otherwise.}
   @begin{short}
@@ -7885,15 +7812,15 @@ lambda (widget clock)
 
 (defun (setf widget-support-multidevice) (support-multidevice widget)
   (cffi:foreign-funcall "gtk_widget_set_support_multidevice"
-                   (g:object widget) widget
-                   :boolean support-multidevice
-                   :void)
+                        (g:object widget) widget
+                        :boolean support-multidevice
+                        :void)
   support-multidevice)
 
 (defcfun ("gtk_widget_get_support_multidevice" widget-support-multidevice)
     :boolean
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-support-multidecice widget) => support-multidevice}
   @syntax[]{(setf (gtk:widget-support-multidevice widget) support-multidevice)}
   @argument[widget]{a @class{gtk:widget} object}
@@ -7908,7 +7835,7 @@ lambda (widget clock)
 
   If this setting is @em{true}, @arg{widget} will start receiving multiple,
   per device enter/leave events. Note that if custom @class{gdk:window}
-  objects are created in \"realize\", the @sym{gdk:window-support-multidevice}
+  objects are created in \"realize\", the @fun{gdk:window-support-multidevice}
   function will have to be called manually on them.
   @see-class{gtk:widget}
   @see-function{gdk:window-support-multidevice}"
@@ -7923,14 +7850,14 @@ lambda (widget clock)
 
 (defun (setf widget-realized) (realized widget)
   (cffi:foreign-funcall "gtk_widget_set_realized"
-                   (g:object widget) widget
-                   :boolean realized
-                   :void)
+                        (g:object widget) widget
+                        :boolean realized
+                        :void)
   realized)
 
 (defcfun ("gtk_widget_get_realized" widget-realized) :boolean
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-realized widget) => realized}
   @syntax[]{(setf (gtk:widget-realized widget) realized)}
   @argument[widget]{a @class{gtk:widget} object}
@@ -7956,14 +7883,14 @@ lambda (widget clock)
 
 (defun (setf widget-mapped) (mapped widget)
   (cffi:foreign-funcall "gtk_widget_set_mapped"
-                   (g:object widget) widget
-                   :boolean mapped
-                   :void)
+                        (g:object widget) widget
+                        :boolean mapped
+                        :void)
   mapped)
 
 (defcfun ("gtk_widget_get_mapped" widget-mapped) :boolean
  #+liber-documentation
- "@version{#2021-12-15}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-mapped widget) => mapped}
   @syntax[]{(setf (gtk:widget-mapped widget) mapped)}
   @argument[widget]{a @class{gtk:widget} object}
@@ -8016,10 +7943,9 @@ lambda (widget clock)
 ;;; gtk_widget_device_is_shadowed ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_widget_device_is_shadowed" widget-device-is-shadowed)
-    :boolean
+(defcfun ("gtk_widget_device_is_shadowed" widget-device-is-shadowed) :boolean
  #+liber-documentation
- "@version{#2021-9-22}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[device]{a @class{gdk:device} object}
   @return{@em{True} if there is an ongoing grab on @arg{device} by another
@@ -8042,10 +7968,9 @@ lambda (widget clock)
 ;;; gtk_widget_get_modifier_mask () -> widget-modifier-mask
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_widget_get_modifier_mask" widget-modifier-mask)
-    gdk:modifier-type
+(defcfun ("gtk_widget_get_modifier_mask" widget-modifier-mask) gdk:modifier-type
  #+liber-documentation
- "@version{#2021-9-22}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[intent]{a value of the @symbol{gdk:modifier-intent} enumeration}
   @begin{short}
@@ -8067,7 +7992,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_insert_action_group" widget-insert-action-group) :void
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[name]{a string with the prefix for actions in @arg{group}}
   @argument[group]{a @class{g:action-group} object}
@@ -8092,7 +8017,7 @@ lambda (widget clock)
 (defcfun ("gtk_widget_list_action_prefixes" widget-list-action-prefixes)
     g:strv-t
  #+liber-documentation
- "@version{#2021-9-22}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @return{A list of strings.}
   @begin{short}
@@ -8112,7 +8037,7 @@ lambda (widget clock)
 (defcfun ("gtk_widget_get_action_group" widget-action-group)
     (g:object g:action-group)
  #+liber-documentation
- "@version{#2021-9-22}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[prefix]{a string with the \"prefix\" of the action group}
   @return{A @class{g:action-group} object or @code{nil}.}
@@ -8138,7 +8063,7 @@ lambda (widget clock)
 (defcfun ("gtk_widget_get_path" widget-path)
     (g:boxed widget-path)
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @return{The @class{gtk:widget-path} instance representing the widget.}
   @begin{short}
@@ -8159,7 +8084,7 @@ lambda (widget clock)
 (defcfun ("gtk_widget_get_style_context" widget-style-context)
     (g:object style-context)
  #+liber-documentation
- "@version{#2021-11-18}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @return{A @class{gtk:style-context} object.}
   @begin{short}
@@ -8177,7 +8102,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_reset_style" widget-reset-style) :void
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Updates the style context of the widget and all descendents by updating its
@@ -8203,9 +8128,9 @@ lambda (widget clock)
   (let ((class (g:type-class-ref gtype)))
     (unwind-protect
       (cffi:foreign-funcall "gtk_widget_class_set_css_name"
-                       :pointer class
-                       :string name
-                       :void)
+                            :pointer class
+                            :string name
+                            :void)
       (g:type-class-unref class))
     name))
 
@@ -8216,7 +8141,7 @@ lambda (widget clock)
 #+gtk-3-20
 (defun widget-class-css-name (gtype)
   #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @syntax[]{(gtk:widget-class-css-name gtype) => name}
   @syntax[]{(setf (gtk:widget-class-csss-name gtype) name)}
   @argument[gtype]{a string with the widget class to set the CSS name on}
@@ -8224,7 +8149,6 @@ lambda (widget clock)
   @begin{short}
     Accessor of the CSS name of the widget class.
   @end{short}
-
   The @sym{gtk:widget-class-css-name} function gets the name used by this class
   for matching in CSS code. The @sym{(setf gtk:widget-class-css-name)} function
   sets the name to be used for CSS matching of widgets.
@@ -8253,16 +8177,16 @@ lambda (widget clock)
 
 (defun widget-preferred-height (widget)
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
-  @return{@arg{minimum-height} -- an integer with the minimum height, or
-                                  @code{nil} @br{}
-          @arg{natural-height} -- an integer with the natural height, or
-                                  @code{nil}}
+  @begin{return}
+    @arg{minimum-height} -- an integer with the minimum height, or @code{nil}
+      @br{}
+    @arg{natural-height} -- an integer with the natural height, or @code{nil}
+  @end{return}
   @begin{short}
     Retrieves an initial minimum and natural height of the widget.
   @end{short}
-
   This call is specific to width-for-height requests.
 
   The returned request will be modified by the
@@ -8285,24 +8209,23 @@ lambda (widget clock)
 ;;; gtk_widget_get_preferred_width ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_widget_get_preferred_width" %widget-preferred-width)
-    :void
+(defcfun ("gtk_widget_get_preferred_width" %widget-preferred-width) :void
   (widget (g:object widget))
   (minium-width (:pointer :int))
   (natural-width (:pointer :int)))
 
 (defun widget-preferred-width (widget)
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
-  @return{@arg{minimum-width} -- an integer with the minimum width, or
-                                 @code{nil} @br{}
-          @arg{natural-width} -- an integer with the natural width,
-                                 or @code{nil}}
+  @begin{return}
+    @arg{minimum-width} -- an integer with the minimum width, or @code{nil}
+      @br{}
+    @arg{natural-width} -- an integer with the natural width, or @code{nil}
+  @end{return}
   @begin{short}
     Retrieves an initial minimum and natural width of the widget.
   @end{short}
-
   This call is specific to height-for-width requests.
 
   The returned request will be modified by the
@@ -8317,7 +8240,6 @@ lambda (widget clock)
 (gtk:widget-preferred-width widget)
 => 49
 => 49
-
 (setq widget (make-instance 'gtk:button :label \"Hello, more text\"))
 => #<GTK-BUTTON {B1D60E9@}>
 (gtk:widget-preferred-width widget)
@@ -8349,13 +8271,14 @@ lambda (widget clock)
 
 (defun widget-preferred-height-for-width (widget width)
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[width]{an integer with the width which is available for allocation}
-  @return{@code{minimum-height} -- an integer with the minimum height, or
-                                   @code{nil} @br{}
-          @code{natural-height} -- an integer with the natural height, or
-                                   @code{nil}}
+  @begin{return}
+    @arg{minimum-height} -- an integer with the minimum height, or @code{nil}
+      @br{}
+    @arg{natural-height} -- an integer with the natural height, or @code{nil}
+  @end{return}
   @begin{short}
     Retrieves a minimum and natural height of the widget if it would be given
     the specified @arg{width}.
@@ -8371,9 +8294,9 @@ lambda (widget clock)
   @see-function{gtk:widget-preferred-width-for-height}"
   (with-foreign-objects ((minimum-height :int) (natural-height :int))
     (%widget-preferred-height-for-width widget
-                                            width
-                                            minimum-height
-                                            natural-height)
+                                        width
+                                        minimum-height
+                                        natural-height)
     (values (cffi:mem-ref minimum-height :int)
             (cffi:mem-ref natural-height :int))))
 
@@ -8392,14 +8315,15 @@ lambda (widget clock)
 
 (defun widget-preferred-width-for-height (widget height)
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[height]{an integer with the height which is available for
     allocation}
-  @return{@code{minimum-width} -- an integer with the minimum width, or
-                                  @code{nil} @br{}
-          @code{natural-width} -- an integer with the natural width, or
-                                  @code{nil}}
+  @begin{return}
+    @arg{minimum-width} -- an integer with the minimum width, or @code{nil}
+      @br{}
+    @arg{natural-width} -- an integer with the natural width, or @code{nil}
+  @end{return}
   @begin{short}
     Retrieves a minimum and natural width of the widget if it would be given
     the specified @arg{height}.
@@ -8415,9 +8339,9 @@ lambda (widget clock)
   @see-function{gtk:widget-preferred-height-for-width}"
   (with-foreign-objects ((minimum-width :int) (natural-width :int))
     (%widget-preferred-width-for-height widget
-                                            height
-                                            minimum-width
-                                            natural-width)
+                                        height
+                                        minimum-width
+                                        natural-width)
     (values (cffi:mem-ref minimum-width :int)
             (cffi:mem-ref natural-width :int))))
 
@@ -8425,22 +8349,6 @@ lambda (widget clock)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_widget_get_preferred_height_and_baseline_for_width ()
-;;;
-;;; void
-;;; gtk_widget_get_preferred_height_and_baseline_for_width
-;;;                               (GtkWidget *widget,
-;;;                                gint width,
-;;;                                gint *minimum_height,
-;;;                                gint *natural_height,
-;;;                                gint *minimum_baseline,
-;;;                                gint *natural_baseline);
-;;;
-;;;
-;;; Parameters
-;;;
-
-;;;
-;;; Since 3.10
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_widget_get_preferred_height_and_baseline_for_width"
@@ -8454,7 +8362,7 @@ lambda (widget clock)
 
 (defun widget-preferred-height-and-baseline-for-width (widget width)
  #+liber-documentation
- "@version{#2021-9-22}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[width]{an integer with the width which is available for allocation,
     or -1 if none}
@@ -8462,9 +8370,9 @@ lambda (widget clock)
     @arg{min-height} -- an integer with the minimum height, or @code{nil} @br{}
     @arg{nat-height} -- an integer with the natural height, or @code{nil} @br{}
     @arg{min-baseline} -- an integer with the baseline for the minimum height,
-    or @code{nil} @br{}
+      or @code{nil} @br{}
     @arg{nat-baseline} -- an integer with the baseline for the natural height,
-    or @code{nil}
+      or @code{nil}
   @end{return}
   @begin{short}
     Retrieves the minimum and natural height of the widget and the corresponding
@@ -8504,7 +8412,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_get_request_mode" widget-request-mode) size-request-mode
  #+liber-documentation
- "@version{#2021-9-20}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @return{The @symbol{gtk:size-request-mode} value preferred by @arg{widget}.}
   @begin{short}
@@ -8534,13 +8442,13 @@ lambda (widget clock)
 
 (defun widget-preferred-size (widget)
  #+liber-documentation
- "@version{#2021-9-21}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{return}
     @arg{minimum-size} -- a @class{gtk:requisition} instance with the minimum
-    size, or @code{nil} @br{}
+      size, or @code{nil} @br{}
     @arg{natural-size} -- a @class{gtk:requisition} instance with the the
-    natural size, or @code{nil}
+      natural size, or @code{nil}
   @end{return}
   @begin{short}
     Retrieves the minimum and natural size of a widget, taking into account the
@@ -8603,7 +8511,7 @@ lambda (widget clock)
 (defcfun ("gtk_widget_get_valign_with_baseline" widget-valign-with-baseline)
     align
  #+liber-documentation
- "@version{#2021-9-22}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @return{The vertical @symbol{gtk:align} alignment of the widget.}
   @begin{short}
@@ -8621,10 +8529,9 @@ lambda (widget clock)
 ;;; gtk_widget_queue_compute_expand ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_widget_queue_compute_expand" widget-queue-compute-expand)
-    :void
+(defcfun ("gtk_widget_queue_compute_expand" widget-queue-compute-expand) :void
  #+liber-documentation
- "@version{#2021-9-21}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Mark the widget as needing to recompute its expand flags.
@@ -8643,7 +8550,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_compute_expand" widget-compute-expand) :boolean
  #+liber-documentation
- "@version{#2021-9-21}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[orientation]{a @symbol{gtk:orientation} value for the expand
     direction}
@@ -8677,7 +8584,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_init_template" widget-init-template) :void
  #+liber-documentation
- "@version{#2021-9-21}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Creates and initializes child widgets defined in templates.
@@ -8715,14 +8622,13 @@ lambda (widget clock)
 
 (defun widget-class-set-template (gtype template)
  #+liber-documentation
- "@version{#2021-9-22}
+ "@version{#2023-3-8}
   @argument[gtype]{the @class{g:type-t} type ID of the widget class}
   @argument[template]{a string holding the @class{gtk:builder} XML}
   @begin{short}
     This should be called at class initialization time to specify the
     @class{gtk:builder} XML to be used to extend a widget.
   @end{short}
-
   For convenience, the @fun{gtk:widget-class-set-template-from-resource}
   function is also provided.
 
@@ -8754,7 +8660,7 @@ lambda (widget clock)
 
 (defun widget-class-set-template-from-resource (gtype name)
  #+liber-documentation
- "@version{#2021-9-21}
+ "@version{#2023-3-8}
   @argument[gtype]{the @class{g:type-t} type ID of the widget class}
   @argument[name]{a string with the name of the resource to load the template
     from}
@@ -8783,7 +8689,7 @@ lambda (widget clock)
 
 (defcfun ("gtk_widget_get_template_child" widget-template-child) g:object
  #+liber-documentation
- "@version{#2021-9-22}
+ "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[gtype]{the @class{g:type-t} type ID to get a template child for}
   @argument[name]{a string with the \"ID\" of the child defined in the template
@@ -8794,7 +8700,6 @@ lambda (widget clock)
     Fetch an object build from the template XML for @arg{gtype} in this widget
     instance.
   @end{short}
-
   This will only report children which were previously declared with the
   @fun{gtk:widget-class-bind-template-child-full} function or one of its
   variants.
