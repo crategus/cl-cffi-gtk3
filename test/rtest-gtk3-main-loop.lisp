@@ -3,14 +3,14 @@
 (def-suite gtk-main-loop :in gtk-suite)
 (in-suite gtk-main-loop)
 
-(defvar *verbose-gtk-main-loop* t)
+(defvar *verbose-gtk-main-loop* nil)
 
 ;;;   gtk_disable_setlocale                    * not exported *
 
 ;;;   gtk_get_default_language
 
 (test default-language
-  (is (eq 'pango:language (type-of (gtk:default-language)))))
+  (is (typep (gtk:default-language) 'pango:language)))
 
 ;;;   gtk_get_locale_direction
 
@@ -140,4 +140,4 @@
 ;;;     gtk_get_event_widget
 ;;;     gtk_propagate_event
 
-;;; 2022-12-13
+;;; --- 2023-3-5 ---------------------------------------------------------------

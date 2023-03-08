@@ -135,7 +135,7 @@
 ;;;     gtk_flow_box_get_max_children_per_line
 ;;;     gtk_flow_box_set_activate_on_single_click
 ;;;     gtk_flow_box_get_activate_on_single_click
-;;;     (*GtkFlowBoxForeachFunc)
+;;;     GtkFlowBoxForeachFunc
 ;;;     gtk_flow_box_selected_foreach
 ;;;     gtk_flow_box_get_selected_children
 ;;;     gtk_flow_box_select_child
@@ -144,13 +144,13 @@
 ;;;     gtk_flow_box_unselect_all
 ;;;     gtk_flow_box_set_selection_mode
 ;;;     gtk_flow_box_get_selection_mode
-;;;     (*GtkFlowBoxFilterFunc)
+;;;     GtkFlowBoxFilterFunc
 ;;;     gtk_flow_box_set_filter_func
 ;;;     gtk_flow_box_invalidate_filter
-;;;     (*GtkFlowBoxSortFunc)
+;;;     GtkFlowBoxSortFunc
 ;;;     gtk_flow_box_set_sort_func
 ;;;     gtk_flow_box_invalidate_sort
-;;;     (*GtkFlowBoxCreateWidgetFunc)
+;;;     GtkFlowBoxCreateWidgetFunc
 ;;;     gtk_flow_box_bind_model
 
 ;;;     gtk_flow_box_child_new
@@ -158,4 +158,4 @@
 ;;;     gtk_flow_box_child_is_selected
 ;;;     gtk_flow_box_child_changed
 
-;;; 2022-12-18
+;;; --- 2023-3-5 ---------------------------------------------------------------

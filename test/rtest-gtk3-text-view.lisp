@@ -143,7 +143,7 @@
 
 ;;;     gtk_text_view_default_attributes
 
-;; FIXME: The implementation of gtk_text_attributes does not work.
+;; The implementation of gtk_text_attributes does not work.
 
 #+nil
 (test gtk-text-view-default-attributes

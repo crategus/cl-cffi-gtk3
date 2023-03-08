@@ -127,8 +127,8 @@
     ;; mnemonic-widget
     (let ((button (make-instance 'gtk:button)))
       (is-false (gtk:label-mnemonic-widget label))
-      (is (eq 'gtk:button (type-of (setf (gtk:label-mnemonic-widget label) button))))
-      (is (eq 'gtk:button (type-of (gtk:label-mnemonic-widget label)))))
+      (is (typep (setf (gtk:label-mnemonic-widget label) button) 'gtk:button))
+      (is (typep (gtk:label-mnemonic-widget label) 'gtk:button)))
     ;; pattern
     (signals (error) (gtk:label-pattern label))
     (is (string= " _ _" (setf (gtk:label-pattern label) " _ _")))
@@ -322,4 +322,4 @@
   (let ((label (make-instance 'gtk:label :label "some text")))
     (is-false (gtk:label-current-uri label))))
 
-;;; --- 2022-12-27 -------------------------------------------------------------
+;;; --- 2023-3-5 ---------------------------------------------------------------

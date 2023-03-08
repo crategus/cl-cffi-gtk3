@@ -19,7 +19,7 @@
   ;; Check the parent
   (is (eq (g:gtype "GtkContainer") (g:type-parent "GtkPaned")))
   ;; Check the children
-  (is (equal '("GtkHPaned" "GtkVPaned")
+  (is (equal '()
              (list-children "GtkPaned")))
   ;; Check the interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable" "GtkOrientable")

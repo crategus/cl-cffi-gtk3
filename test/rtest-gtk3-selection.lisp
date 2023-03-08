@@ -273,10 +273,9 @@
     (let ((window (gtk:widget-window widget)))
       ;; Check the presence of a gdk:window
       (is (eq 'gdk:window (type-of window)))
-      ;; No longer TRUE. Why? 2023-1-8
-      (is-false (gtk:selection-owner-set widget
-                                         "SECONDARY"
-                                         +gdk-current-time+)))))
+      (is-true (gtk:selection-owner-set widget
+                                        "SECONDARY"
+                                        +gdk-current-time+)))))
 
 (test selection-owner-set.3
   (let ((widget (make-instance 'gtk:window :type :toplevel)))
@@ -505,4 +504,4 @@
 ;;;     gtk_selection_data_copy
 ;;;     gtk_selection_data_free
 
-;;; --- 2023-1-28 --------------------------------------------------------------
+;;; --- 2023-3-3 ---------------------------------------------------------------

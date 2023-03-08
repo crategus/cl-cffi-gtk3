@@ -52,7 +52,7 @@
 ; private field and not exported
 ;    (is (typep (gtk:text-attributes-bg-rgba attr) 'gdk-rgba))
 
-    ;; FIXME: We do not get a small integer value.
+    ;; We do not get a small integer value.
     (is (integerp (gtk:text-attributes-letter-spacing attr)))
     (is (cffi:null-pointer-p (gtk:text-attributes-font-features attr)))))
 

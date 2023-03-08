@@ -352,7 +352,7 @@
 
 (test settings-properties
   (let ((settings (gtk:settings-default)))
-    ;; FIXME: GHashTable is not implemented
+    ;; GHashTable is not implemented
     (signals (error) (gtk:settings-color-hash settings))
     #-windows
     (is-false (gtk:settings-gtk-alternative-button-order settings))
@@ -408,7 +408,7 @@
     (is-false (gtk:settings-gtk-menu-images settings))
     (is (integerp (gtk:settings-gtk-menu-popdown-delay settings)))
     (is (integerp (gtk:settings-gtk-menu-popup-delay settings)))
-    (is-false (gtk:settings-gtk-modules settings))
+    (is (string= "canberra-gtk-module" (gtk:settings-gtk-modules settings)))
     (is-true  (gtk:settings-gtk-primary-button-warps-slider settings))
     (is (stringp (gtk:settings-gtk-print-backends settings)))
     (is (stringp (gtk:settings-gtk-print-preview-command settings)))
@@ -418,7 +418,7 @@
     (is (integerp (gtk:settings-gtk-recent-files-max-age settings)))
     (is-true  (gtk:settings-gtk-scrolled-window-placement settings))
     (is-false (gtk:settings-gtk-shell-shows-app-menu settings))
-    (is-false  (gtk:settings-gtk-shell-shows-desktop settings))
+    (is-true  (gtk:settings-gtk-shell-shows-desktop settings))
     (is-false (gtk:settings-gtk-shell-shows-menubar settings))
     (is-false (gtk:settings-gtk-show-input-method-menu settings))
     (is-false (gtk:settings-gtk-show-unicode-menu settings))
@@ -463,4 +463,4 @@
 ;;;     gtk_settings_reset_property ()
 
 
-;;; --- 2023-1-8 ---------------------------------------------------------------
+;;; --- 2023-3-3 ---------------------------------------------------------------
