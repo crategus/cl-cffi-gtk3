@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
-;;; gdk.device-pad.lisp
+;;; gdk3.device-pad.lisp
 ;;;
 ;;; The documentation of this file is taken from the GDK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
-;;; Copyright (C) 2019 - 2020 Dieter Kaiser
+;;; Copyright (C) 2019 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -69,7 +69,7 @@
 (setf (liber:alias-for-symbol 'device-pad-feature)
       "GEnum"
       (liber:symbol-documentation 'device-pad-feature)
- "@version{#2020-11-9}
+ "@version{#2023-3-7}
   @begin{short}
     A pad feature.
   @end{short}
@@ -102,25 +102,25 @@
 (setf (liber:alias-for-class 'device-pad)
       "Interface"
       (documentation 'device-pad 'type)
- "@version{#2020-11-9}
+ "@version{#2023-3-8}
   @begin{short}
-    @sym{gdk:device-pad} is an interface implemented by devices of type
-    @code{:tablet-pad}, it allows querying the features provided by the pad
-    device.
+    The @sym{gdk:device-pad} interface is an interface implemented by devices 
+    of @code{:tablet-pad} type, it allows querying the features provided by the 
+    pad device.
   @end{short}
 
   Tablet pads may contain one or more groups, each containing a subset of the
-  buttons/rings/strips available. The function @fun{gdk:device-pad-n-groups}
-  can be used to obtain the number of groups, the functions
-  @fun{gdk:device-pad-n-features} and @fun{gdk:device-pad-feature-group} can
-  be combined to find out the number of buttons/rings/strips the device has,
-  and how are they grouped.
+  buttons/rings/strips available. The @fun{gdk:device-pad-n-groups} function
+  can be used to obtain the number of groups, the 
+  @fun{gdk:device-pad-n-features} and @fun{gdk:device-pad-feature-group} 
+  functions can be combined to find out the number of buttons/rings/strips the 
+  device has, and how are they grouped.
 
   Each of those groups have different modes, which may be used to map each
   individual pad feature to multiple actions. Only one mode is effective
   (current) for each given group, different groups may have different current
   modes. The number of available modes in a group can be found out through the
-  function @fun{gdk:device-pad-group-n-modes}, and the current mode for a
+  @fun{gdk:device-pad-group-n-modes} function, and the current mode for a
   given group will be notified through the @class{gdk:event-pad-group-mode}
   event.
   @see-class{gdk:device}")
@@ -131,7 +131,7 @@
 
 (defcfun ("gdk_device_pad_get_n_groups" device-pad-n-groups) :int
  #+liber-documentation
- "@version{#2020-11-9}
+ "@version{#2023-3-7}
   @argument[pad]{a @class{gdk:device-pad} object}
   @return{An integer with the number of button/ring/strip groups in the pad.}
   @begin{short}
@@ -152,11 +152,11 @@
 
 (defcfun ("gdk_device_pad_get_group_n_modes" device-pad-group-n-modes) :int
  #+liber-documentation
- "@version{#2020-11-9}
+ "@version{#2023-3-7}
   @argument[pad]{a @class{gdk:device-pad} object}
   @argument[index]{an integer with the group to get the number of available
     modes from}
-  @return{An ingeter with the number of modes available in the group,}
+  @return{An integer with the number of modes available in the group,}
   @begin{short}
     Returns the number of modes that the group may have.
   @end{short}
@@ -174,9 +174,10 @@
 
 (defcfun ("gdk_device_pad_get_n_features" device-pad-n-features) :int
  #+liber-documentation
- "@version{#2020-11-9}
+ "@version{#2023-3-7}
   @argument[pad]{a @class{gdk:device-pad} object}
-  @argument[feature]{a pad feature of type @symbol{gdk:device-pad-feature}}
+  @argument[feature]{a @symbol{gdk:device-pad-feature} value with the pad 
+    feature}
   @return{An integer with the amount of elements of type feature that this pad
     has.}
   @begin{short}
@@ -184,7 +185,8 @@
   @end{short}
 
   Since 3.22
-  @see-class{gdk:device-pad}"
+  @see-class{gdk:device-pad}
+  @see-symbol{gdk:device-pad-feature}"
   (pad (g:object device-pad))
   (feature device-pad-feature))
 
@@ -196,10 +198,10 @@
 
 (defcfun ("gdk_device_pad_get_feature_group" device-pad-feature-group) :int
  #+liber-documentation
- "@version{#2020-11-9}
+ "@version{#2023-3-7}
   @argument[pad]{a @class{gdk:device-pad} object}
-  @argument[feature]{the pad feature of type @symbol{gdk:device-pad-feature}
-    to get the group from}
+  @argument[feature]{a @symbol{gdk:device-pad-feature} value with the pad 
+    feature to get the group from}
   @argument[index]{an integer with the index of the feature to get the
     group from}
   @return{An integer with the group number of the queried pad feature.}
@@ -209,11 +211,12 @@
   @end{short}
 
   Since 3.22
-  @see-class{gdk:device-pad}"
+  @see-class{gdk:device-pad}
+  @see-symbol{gdk:device-pad-feature}"
   (pad (g:object device-pad))
   (feature device-pad-feature)
   (index :int))
 
 (export 'device-pad-feature-group)
 
-;;; --- End of file gdk.device-pad.lisp ----------------------------------------
+;;; --- End of file gdk3.device-pad.lisp ---------------------------------------
