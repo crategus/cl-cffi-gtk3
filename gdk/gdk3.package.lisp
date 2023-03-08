@@ -300,6 +300,7 @@
     @about-symbol{seat-capabilities}
     @about-class{seat}
     @about-generic{seat-display}
+    @about-symbol{seat-grab-prepare-func}
     @about-function{seat-grab}
     @about-function{seat-ungrab}
     @about-function{seat-capabilities}

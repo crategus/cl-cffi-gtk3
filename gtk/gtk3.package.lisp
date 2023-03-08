@@ -50,7 +50,8 @@
                             #:with-g-error
                             #:with-ignore-g-error
                             #:with-catching-to-g-error)
-  (:import-from :gobject    #:+g-type-boolean+
+  (:import-from :gobject    #:+g-type-none+
+                            #:+g-type-boolean+
                             #:define-g-enum
                             #:define-g-flags
                             #:define-g-interface
@@ -65,7 +66,8 @@
                             #:parse-g-value
                             #:set-g-value)
   (:import-from :gdk        #:with-gdk-threads-lock)
-  (:import-from :gdk-pixbuf #:+gdk-pixbuf-version+))
+  (:import-from :gdk-pixbuf #:+gdk-pixbuf-version+)
+  (:import-from :pango      #:+pango-scale+))
 
 (in-package :gtk)
 
@@ -1233,7 +1235,7 @@
     text is selected, these two marks will be in the same position. You can
     manipulate what is selected and where the cursor appears by moving these
     marks around. If you want to place the cursor in response to a user
-    action, be sure to use the function @fun{gtk:text-buffer-place-cursor},
+    action, be sure to use the @fun{gtk:text-buffer-place-cursor} function,
     which moves both at once without causing a temporary selection. Moving one
     then the other temporarily selects the range in between the old and new
     positions.
@@ -1275,10 +1277,10 @@
       (gtk:widget-show-all window))))
     @end{pre}
     In many cases it is also convenient to first create the buffer with the
-    function @fun{gtk:text-buffer-new}, then create a widget for that text
-    buffer with the function @fun{gtk:text-view-new-with-buffer}. Or you can
+    @fun{gtk:text-buffer-new} function, then create a widget for that text
+    buffer with the @fun{gtk:text-view-new-with-buffer} function. Or you can
     change the buffer the widget displays after the widget is created with
-    the function @fun{gtk:text-view-buffer}.
+    the @fun{gtk:text-view-buffer} function.
 
     @subheading{Example of Changing Text Attributes}
     The way to affect text attributes in the @class{gtk:text-view} widget is
@@ -2921,8 +2923,8 @@ setup_tree (void)
       @about-function{tool-button-new-from-stock}
     @end{subsection}
     @begin[GtkMenuToolButton]{subsection}
-      A @class{gtk:tool-item} containing a button with an additional dropdown
-      menu.
+      A @class{gtk:tool-item} widget containing a button with an additional
+      dropdown menu.
       @about-class{menu-tool-button}
       @about-generic{menu-tool-button-menu}
       @about-function{menu-tool-button-new}
@@ -4165,19 +4167,18 @@ setup_tree (void)
       @about-class{gesture}
       @about-generic{gesture-n-points}
       @about-generic{gesture-window}
-      @about-function{gesture-get-device}
+      @about-function{gesture-device}
       @about-function{gesture-is-active}
       @about-function{gesture-is-recognized}
-      @about-function{gesture-get-sequence-state}
-      @about-function{gesture-set-sequence-state}
+      @about-function{gesture-sequence-state}
       @about-function{gesture-set-state}
-      @about-function{gesture-get-sequences}
+      @about-function{gesture-sequences}
       @about-function{gesture-handles-sequence}
-      @about-function{gesture-get-last-updated-sequence}
-      @about-function{gesture-get-last-event}
-      @about-function{gesture-get-point}
-      @about-function{gesture-get-bounding-box}
-      @about-function{gesture-get-bounding-box-center}
+      @about-function{gesture-last-updated-sequence}
+      @about-function{gesture-last-event}
+      @about-function{gesture-point}
+      @about-function{gesture-bounding-box}
+      @about-function{gesture-bounding-box-center}
       @about-function{gesture-group}
       @about-function{gesture-ungroup}
       @about-function{gesture-get-group}

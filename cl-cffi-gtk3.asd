@@ -76,10 +76,9 @@
      (:file "gtk3.accel-map")             ; Loadable keyboard accelerator
      (:file "gtk3.selection")             ; Inter-process communication
      (:file "gtk3.drag-and-drop")         ; Controlling drag and drop
-;    (:file "gtk.stock-item")             ; Stock Items
      (:file "gtk3.clipboard")             ; Storing data on clipboards
      (:file "gtk3.settings")              ; Sharing settings
-     (:file "gtk3.bindings")              ; Key bindings for individual widgets
+     (:file "gtk3.bindings")              ; Key bindings for widgets
      (:file "gtk3.mount-operation")       ; Filesystem utilities
 
      ;; Interface builder
@@ -92,9 +91,8 @@
      (:file "gtk3.style-provider")        ; Interface for style information
      (:file "gtk3.css-provider")          ; CSS-like styling for widgets
      (:file "gtk3.style-context")         ; Rendering UI elements
-;    (:file "gtk.theming-engine")         ; Theming renderers
      (:file "gtk3.icon-theme")            ; Looking up icons by name
-     (:file "gtk3.style")                 ; Functions for drawing widget parts
+;     (:file "gtk3.style")                 ; Functions for drawing widget parts
      (:file "gtk3.numerable-icon")        ; A GIcon that allows numbered emblems
 
      ;; Inferfaces
@@ -208,7 +206,7 @@
      (:file "gtk3.cell-renderer-toggle")  ; Renders a toggle button in a cell
      (:file "gtk3.cell-renderer-spinner") ; Renders a spinning animation in a cell
      (:file "gtk3.cell-area")             ; Laying out GtkCellRenderers
-     (:file "gtk3.cell-area-box")         ; GtkCellAreaBox
+     (:file "gtk3.cell-area-box")         ; Renders into a row or a column
      (:file "gtk3.cell-area-context")     ; gtkCellAreaContext
      (:file "gtk3.cell-view")             ; Displaying a single row
      (:file "gtk3.icon-view")             ; List of icons in a grid
@@ -216,7 +214,7 @@
 
      ;; Numeric/Text Data Entry
      (:file "gtk3.editable")              ; Interface for text editing widgets
-     (:file "gtk3.entry")                 ; GtkEntry
+     (:file "gtk3.entry")                 ; A single line text entry field
      (:file "gtk3.entry-buffer")          ; Text buffer for GtkEntry
      (:file "gtk3.entry-completion")      ; Completion functionality for GtkEntry
      (:file "gtk3.scale")                 ; GtkScale, GtkHScale, GtkVScale
@@ -396,10 +394,9 @@
      (:file "rtest-gtk3-accel-map")      ; Loadable keyboard accelerator
      (:file "rtest-gtk3-selection")      ; Inter-process communication
      (:file "rtest-gtk3-drag-and-drop")  ; Controlling drag and drop
-;    (:file "gtk.stock-item")            ; Stock Items
      (:file "rtest-gtk3-clipboard")      ; Storing data on clipboards
      (:file "rtest-gtk3-settings")       ; Sharing settings
-;    (:file "gtk.bindings")              ; Key bindings for individual widgets
+;    (:file "gtk.bindings")              ; Key bindings for widgets
 ;    (:file "gtk.mount-operation")       ; Filesystem utilities
      ;; Interface builder
      (:file "rtest-gtk3-buildable")      ; GtkBuildable
@@ -410,19 +407,16 @@
      (:file "rtest-gtk3-style-provider") ; Interface for style information
      (:file "rtest-gtk3-css-provider")   ; CSS-like styling for widgets
      (:file "rtest-gtk3-style-context")  ; Rendering UI elements
-;    (:file "gtk.theming-engine")        ; Theming renderers
      (:file "rtest-gtk3-icon-theme")     ; Looking up icons by name
-;    (:file "gtk.style")                 ; Functions for drawing widget parts
      (:file "rtest-gtk3-numerable-icon") ; A GIcon that allows numbered emblems
      ;; Inferfaces
-;    (:file "gtk.implementor-iface")     ; AtkImplementorIface
-;    (:file "gtk.orientable")            ; Interface for flippable widgets
-;    (:file "gtk.activatable")           ; Interface for activatable widgets
+     (:file "rtest-gtk3-orientable")     ; Interface for flippable widgets
+     (:file "rtest-gtk3-activatable")    ; Interface for activatable widgets
      (:file "rtest-gtk3-scrollable")     ; Interface for scrollable widgets
      (:file "rtest-gtk3-actionable")     ; Interface for actions
      ;; Abstract Base Classes
      (:file "rtest-gtk3-widget")         ; Base class for all widgets
-;    (:file "gtk.misc")                  ; Base class for alignments
+     (:file "rtest-gtk3-misc")           ; Base class for alignments
 ;    (:file "gtk.child-properties")
      (:file "rtest-gtk3-container")      ; GtkContainer
      (:file "rtest-gtk3-bin")            ; Container with just one child
@@ -510,16 +504,16 @@
      (:file "rtest-gtk3-tree-selection") ; Selection object for GtkTreeView
 ;    (:file "gtk.cell-editable")         ; GtkCellEditable
      (:file "rtest-gtk3-cell-renderer")  ; Object for rendering a cell
-;    (:file "gtk.cell-renderer-text")    ; Renders text in a cell
-;    (:file "gtk.cell-renderer-pixbuf")  ; Renders a pixbuf in a cell
-;    (:file "gtk.cell-renderer-progress"); Renders numbers as progress bars
-;    (:file "gtk.cell-renderer-accel")   ; Renders a keyboard accelerator
-;    (:file "gtk.cell-renderer-combo")   ; Renders a combobox in a cell
-;    (:file "gtk.cell-renderer-spin")    ; Renders a spin button in a cell
-;    (:file "gtk.cell-renderer-toggle")  ; Renders a toggle button in a cell
-;    (:file "gtk.cell-renderer-spinner") ; Renders a spinning animation in a cell
+     (:file "rtest-gtk3-cell-renderer-text") ; Renders text
+;    (:file "gtk.cell-renderer-pixbuf")  ; Renders a pixbuf
+     (:file "rtest-gtk3-cell-renderer-progress"); Renders numbers as progress bars
+     (:file "rtest-gtk3-cell-renderer-accel"); Renders a keyboard accelerator
+;    (:file "gtk.cell-renderer-combo")   ; Renders a combobox
+     (:file "rtest-gtk3-cell-renderer-spin")    ; Renders a spin button
+     (:file "rtest-gtk3-cell-renderer-toggle")  ; Renders a toggle button
+     (:file "rtest-gtk3-cell-renderer-spinner") ; Renders a spinning animation
      (:file "rtest-gtk3-cell-area")      ; Laying out GtkCellRenderers
-;    (:file "gtk.cell-area-box")         ; GtkCellAreaBox
+     (:file "rtest-gtk3-cell-area-box")  ; Renders into a row or a column
 ;    (:file "gtk.cell-area-context")     ; gtkCellAreaContext
      (:file "rtest-gtk3-cell-view")      ; Displaying a single row
      (:file "rtest-gtk3-icon-view")      ; List of icons in a grid
@@ -527,7 +521,7 @@
 
      ;; Numeric/Text Data Entry
      (:file "rtest-gtk3-editable")       ; Interface for text editing widgets
-;    (:file "gtk.entry")                 ; GtkEntry
+     (:file "rtest-gtk3-entry")          ; A single line text entry field
      (:file "rtest-gtk3-entry-buffer")   ; Text buffer for GtkEntry
      (:file "rtest-gtk3-entry-completion"); Completion functionality for GtkEntry
 ;    (:file "gtk.scale")                 ; GtkScale, GtkHScale, GtkVScale
@@ -539,7 +533,7 @@
 ;    (:file "gtk.menu-item")             ; Widget used for item in menus
      (:file "rtest-gtk3-menu")           ; Menu widget
 ;    (:file "gtk.menu-bar")              ; Subclass for GtkMenuItem widgets
-;     (:file "gtk.check-menu-item")       ; Menu item with a check box
+     (:file "rtest-gtk3-check-menu-item"); Menu item with a check box
      (:file "rtest-gtk3-radio-menu-item"); Choice from multiple check menu items
 ;    (:file "gtk.image-menu-item")       ; Menu item with an icon
 ;    (:file "gtk.separator-menu-item")   ; Separator used in menus
@@ -579,14 +573,14 @@
 ;    (:file "gtk.font-chooser-dialog")   ; Dialog for selecting fonts
 ;    (:file "gtk.font-selection")        ; Deprecated widget for selecting fonts
 ;    (:file "gtk.font-selection-dialog") ; Deprecated widget for selecting fonts
-;    (:file "gtk.places-sidebar")        ; Displays frequently-used places
+     (:file "rtest-gtk3-places-sidebar") ; Displays frequently-used places
 
      ;; Miscellaneous
      (:file "rtest-gtk3-adjustment")     ; Representation of a bounded value
 ;    (:file "gtk.arrow")                 ; Displays an arrow
 ;    (:file "gtk.calendar")              ; Displays a calendar
 ;    (:file "gtk.drawing-area")          ; Custom user interface elements
-;    (:file "gtk.event-box")             ; Widget used to catch events
+     (:file "rtest-gtk3-event-box")      ; Widget used to catch events
 ;    (:file "gtk.handle-box")            ; Widget for detachable window portions
 ;    (:file "gtk.im-context-simple")     ; Table-based input methods
 ;    (:file "gtk.im-multicontext")       ; Multiple, loadable input methods
@@ -626,7 +620,7 @@
 ;    (:file "gtk.event-controller-key")   ; Event controller for key events
 ;    (:file "gtk.event-controller-scroll"); Event controller for scroll events
 ;    (:file "gtk.event-controller-motion"); Event controller for motion events
-;    (:file "gtk.gesture")                ; Base class for gestures
+     (:file "rtest-gtk3-gesture")         ; Base class for gestures
 ;    (:file "gtk.gesture-single")         ; Base class for single-touch gestures
 ;    (:file "gtk.gesture-drag")           ; Drag gesture
 ;    (:file "gtk.gesture-long-press")     ; "Press and Hold" gesture
