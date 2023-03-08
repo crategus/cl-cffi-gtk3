@@ -1,7 +1,7 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.tree-model-filter.lisp
+;;; gtk3.tree-model-filter.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
+;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
@@ -50,7 +50,7 @@
 ;;;     gtk_tree_model_filter_convert_child_path_to_path
 ;;;     gtk_tree_model_filter_convert_path_to_child_path
 ;;;     gtk_tree_model_filter_refilter
-;;;     gtk_tree_model_filter_clear_cache
+;;;     gtk_tree_model_filter_clear_cache                       not exported
 ;;;
 ;;; Properties
 ;;;
@@ -151,7 +151,7 @@
   take a reference on the first node in this level. Furthermore, for every
   \"row-inserted\", \"row-changed\" or \"row-deleted\" signal, also these which
   were not handled because the node was not cached, the
-  @sym{gtk:tree-model-filter} oject will check if the visibility state of
+  @sym{gtk:tree-model-filter} object will check if the visibility state of
   any parent node has changed.
 
   Beware, however, that this explicit support is limited to these two cases.
@@ -210,7 +210,7 @@
 (setf (liber:alias-for-function 'tree-model-filter-virtual-root)
       "Accessor"
       (documentation 'tree-model-filter-virtual-root 'function)
- "@version{#2023-1-23}
+ "@version{#2023-1-21}
   @syntax[]{(gtk:tree-model-filter-virtual-root object) => root}
   @syntax[]{(setf (gtk:tree-model-filter-virtual-root object) root)}
   @argument[object]{a @class{gtk:tree-model-filter} object}
@@ -357,8 +357,8 @@ lambda (model iter value column)
     @entry[model]{The @class{gtk:tree-model-filter} object.}
     @entry[iter]{A @class{gtk:tree-iter} iterator pointing to the row whose
       display values are determined.}
-    @entry[value]{A @symbol{g:value} which is already initialized for with the
-      correct type for the column @arg{column}.}
+    @entry[value]{A @symbol{g:value} instance which is already initialized for
+      with the correct type for the column @arg{column}.}
     @entry[column]{An integer with the column whose display value is
       determined.}
   @end{table}
@@ -466,19 +466,19 @@ lambda (model iter value column)
   (filter-iter (g:boxed tree-iter))
   (child-iter (g:boxed tree-iter)))
 
-(defun tree-model-filter-convert-child-iter-to-iter (filter child-iter)
+(defun tree-model-filter-convert-child-iter-to-iter (filter iter)
  #+liber-documentation
  "@version{#2023-1-21}
   @argument[filter]{a @class{gtk:tree-model-filter} object}
-  @argument[child-iter]{a valid @class{gtk:tree-iter} iterator pointing to a
-    row on the child model}
+  @argument[iter]{a valid @class{gtk:tree-iter} iterator pointing to a row on
+    the child model}
   @begin{return}
-    A @class{gtk:tree-iter} iterator if @arg{child-iter} is a valid iterator
-    pointing to a visible row in child model.
+    A @class{gtk:tree-iter} iterator if @arg{iter} is a valid iterator pointing
+    to a visible row in child model.
   @end{return}
   @begin{short}
     Returns an interator to point to the row in @arg{filter} that corresponds
-    to the row pointed at by @arg{child-iter}.
+    to the row pointed at by @arg{iter}.
   @end{short}
   If the iterator was not set, @code{nil} is returned.
   @see-class{gtk:tree-model-filter}
@@ -486,7 +486,7 @@ lambda (model iter value column)
   (let ((filter-iter (make-instance 'tree-iter)))
     (when (%tree-model-filter-convert-child-iter-to-iter filter
                                                          filter-iter
-                                                         child-iter)
+                                                         iter)
       filter-iter)))
 
 (export 'tree-model-filter-convert-child-iter-to-iter)
@@ -501,24 +501,22 @@ lambda (model iter value column)
   (child-iter (g:boxed tree-iter))
   (filter-iter (g:boxed tree-iter)))
 
-(defun tree-model-filter-convert-iter-to-child-iter (filter filter-iter)
+(defun tree-model-filter-convert-iter-to-child-iter (filter iter)
  #+liber-documentation
  "@version{#2023-1-21}
   @argument[filter]{a @class{gtk:tree-model-filter} object}
-  @argument[filter-iter]{a valid @class{gtk:tree-iter} iterator pointing to a
-    row on @arg{filter}}
+  @argument[iter]{a valid @class{gtk:tree-iter} iterator pointing to a row on
+    @arg{filter}}
   @begin{return}
     A @class{gtk:tree-iter} iterator.
   @end{return}
   @begin{short}
-    Returns the iterator to point to the row pointed to by @arg{filter-iter}.
+    Returns the iterator to point to the row pointed to by @arg{iter}.
   @end{short}
   @see-class{gtk:tree-model-filter}
   @see-class{gtk:tree-iter}"
   (let ((child-iter (make-instance 'tree-iter)))
-    (%tree-model-filter-convert-iter-to-child-iter filter
-                                                   child-iter
-                                                   filter-iter)
+    (%tree-model-filter-convert-iter-to-child-iter filter child-iter iter)
     child-iter))
 
 (export 'tree-model-filter-convert-iter-to-child-iter)
@@ -593,8 +591,11 @@ lambda (model iter value column)
 (export 'tree-model-filter-refilter)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_model_filter_clear_cache ()
+;;; gtk_tree_model_filter_clear_cache ()                   not exported
 ;;; ----------------------------------------------------------------------------
+
+;; TODO: The gtk:tree-model-ref-node function is not implemented. Therefore
+;; we do not export this function.
 
 (defcfun ("gtk_tree_model_filter_clear_cache" tree-model-filter-clear-cache)
     :void
@@ -613,7 +614,5 @@ lambda (model iter value column)
   @see-class{gtk:tree-model-filter}
   @see-function{gtk:tree-model-ref-node}"
   (filter (g:object tree-model-filter)))
-
-(export 'tree-model-filter-clear-cache)
 
 ;;; --- End of file gtk3.tree-model-filter.lisp --------------------------------
