@@ -21,7 +21,10 @@
   (let ((chooser (make-instance 'gtk:file-chooser-widget
                                 :search-mode t)))
     (is-true (gtk:file-chooser-widget-search-mode chooser))
-    (is (string= "Suchen" (gtk:file-chooser-widget-subtitle chooser)))))
+    #-windows
+    (is (string= "Suchen" (gtk:file-chooser-widget-subtitle chooser)))
+    #+windows
+    (is (string= "Searching" (gtk:file-chooser-widget-subtitle chooser)))))
 
 ;;; --- Signals ----------------------------------------------------------------
 
@@ -46,4 +49,4 @@
   (is (typep (gtk:file-chooser-widget-new :open) 'gtk:file-chooser-widget))
   (is (typep (gtk:file-chooser-widget-new :save) 'gtk:file-chooser-widget)))
 
-;;; --- 2023-1-1 ---------------------------------------------------------------
+;;; --- 2023-3-9 ---------------------------------------------------------------

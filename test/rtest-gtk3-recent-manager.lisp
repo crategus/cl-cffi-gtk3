@@ -106,10 +106,17 @@
          (info (gtk:recent-manager-lookup-item recent uri)))
     (is (typep info 'gtk:recent-info))
     (is (string= uri (gtk:recent-info-uri info)))
+    #-windows
     (is (string= "rtest-gtk3-recent-manager.lisp"
                  (gtk:recent-info-display-name info)))
+    #+windows
+    (is (string= "file: rtest-gtk3-recent-manager.lisp"
+                 (gtk:recent-info-display-name info)))
     (is-false (gtk:recent-info-description info))
+    #-windows
     (is (string= "text/x-common-lisp" (gtk:recent-info-mime-type info)))
+    #+windows
+    (is (string= "application/x-ext-lisp" (gtk:recent-info-mime-type info)))
     (is (integerp (gtk:recent-info-added info)))
     (is (integerp (gtk:recent-info-modified info)))
     (is (integerp (gtk:recent-info-visited info)))
@@ -149,4 +156,4 @@
 ;;;     gtk_recent_info_exists
 ;;;     gtk_recent_info_match
 
-;;; --- 2023-1-29 --------------------------------------------------------------
+;;; --- 2023-3-9 ---------------------------------------------------------------

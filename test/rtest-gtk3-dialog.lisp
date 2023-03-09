@@ -101,10 +101,9 @@
                "GtkRecentChooserDialog")
              (list-children "GtkDialog")))
   #+windows
-  (is (equal '("GtkMessageDialog" "GtkAboutDialog" "GtkColorChooserDialog"
-               "GtkColorSelectionDialog" "GtkFileChooserDialog"
-               "GtkFontChooserDialog" "GtkFontSelectionDialog"
-               "GtkRecentChooserDialog" "GtkAppChooserDialog")
+  (is (equal '("GtkAboutDialog" "GtkAppChooserDialog" "GtkColorChooserDialog"
+ "GtkColorSelectionDialog" "GtkFileChooserDialog" "GtkFontChooserDialog"
+ "GtkFontSelectionDialog" "GtkMessageDialog" "GtkRecentChooserDialog")
              (list-children "GtkDialog")))
   ;; Check the interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
@@ -291,4 +290,4 @@
 ;;;     gtk_dialog_set_alternative_button_order
 ;;;     gtk_dialog_set_alternative_button_order_from_array
 
-;;; --- 2022-12-26 -------------------------------------------------------------
+;;; --- 2023-3-9 ---------------------------------------------------------------

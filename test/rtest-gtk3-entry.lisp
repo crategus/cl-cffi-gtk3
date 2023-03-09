@@ -314,7 +314,10 @@
     (is-false (gtk:entry-inner-border entry))
     (is-false (gtk:entry-input-hints entry))
     (is (eq :free-form (gtk:entry-input-purpose entry)))
+    #-windows
     (is (= 8226 (gtk:entry-invisible-char entry)))
+    #+windows
+    (is (= 9679 (gtk:entry-invisible-char entry)))
     (is-false (gtk:entry-invisible-char-set entry))
     (is (= 0 (gtk:entry-max-length entry)))
     (is (= -1 (gtk:entry-max-width-chars entry)))
@@ -417,4 +420,4 @@
 ;;;     gtk_entry_get_icon_area
 ;;;     gtk_entry_grab_focus_without_selecting
 
-;;; --- 2023-3-4 ---------------------------------------------------------------
+;;; --- 2023-3-9 ---------------------------------------------------------------

@@ -12,7 +12,8 @@
   (is (g:type-is-enum "GtkTreeViewDropPosition"))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkTreeViewDropPosition")
-          (g:gtype (cffi:foreign-funcall "gtk_tree_view_drop_position_get_type" :size))))
+          (g:gtype (cffi:foreign-funcall "gtk_tree_view_drop_position_get_type" 
+                                         :size))))
   ;; Check the registered name
   (is (eq 'gtk:tree-view-drop-position
           (gobject:symbol-for-gtype "GtkTreeViewDropPosition")))
@@ -97,6 +98,7 @@
   (is (equal '("AtkImplementorIface" "GtkBuildable" "GtkScrollable")
              (list-interfaces "GtkTreeView")))
   ;; Check the class properties
+  #-windows
   (is (equal '("activate-on-single-click" "enable-grid-lines" "enable-search"
                "enable-tree-lines" "expander-column" "fixed-height-mode"
                "hadjustment" "headers-clickable" "headers-visible"
@@ -105,15 +107,25 @@
                "rules-hint" "search-column" "show-expanders" "tooltip-column"
                "ubuntu-almost-fixed-height-mode" "vadjustment" "vscroll-policy")
              (list-properties "GtkTreeView")))
-  ;; Get the names of the style properties.
+  #+windows
+  (is (equal '("activate-on-single-click" "enable-grid-lines" "enable-search"
+               "enable-tree-lines" "expander-column" "fixed-height-mode" 
+               "hadjustment" "headers-clickable" "headers-visible" 
+               "hover-expand" "hover-selection" "hscroll-policy" 
+               "level-indentation" "model" "reorderable" "rubber-banding"
+               "rules-hint" "search-column" "show-expanders" "tooltip-column" 
+               "vadjustment" "vscroll-policy")
+             (list-properties "GtkTreeView")))
+  ;; Check the style properties.
   (is (equal '("allow-rules" "even-row-color" "expander-size"
                "grid-line-pattern" "grid-line-width" "horizontal-separator"
                "indent-expanders" "odd-row-color" "tree-line-pattern"
                "tree-line-width" "vertical-separator")
              (list-style-properties "GtkTreeView")))
-  ;; Get the names of the child properties
+  ;; Check the child properties
   (is (equal '()
              (list-child-properties "GtkTreeView")))
+  ;; Check the signals
   (is (equal '("columns-changed" "cursor-changed" "expand-collapse-cursor-row"
                "move-cursor" "row-activated" "row-collapsed" "row-expanded"
                "select-all" "select-cursor-parent" "select-cursor-row"
@@ -446,4 +458,4 @@
 ;;;     gtk_tree_view_set_tooltip_cell
 ;;;     gtk_tree_view_get_tooltip_context
 
-;;; --- 2023-2-19 --------------------------------------------------------------
+;;; --- 2023-3-9 ---------------------------------------------------------------

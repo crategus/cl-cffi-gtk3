@@ -289,7 +289,8 @@
   (is (g:type-is-enum "GdkWindowTypeHint"))
   ;; Check the type initializer
   (is (eq (g:gtype "GdkWindowTypeHint")
-          (g:gtype (cffi:foreign-funcall "gdk_window_type_hint_get_type" :size))))
+          (g:gtype (cffi:foreign-funcall "gdk_window_type_hint_get_type"
+                                         :size))))
   ;; Check the registered name
   (is (eq 'gdk:window-type-hint
           (gobject:symbol-for-gtype "GdkWindowTypeHint")))
@@ -765,13 +766,24 @@
     (let ((window (gdk:window-new nil attr nil)))
       (is (eq :toplevel (gdk:window-window-type window)))))))
 
+;; FIXME: Fails for the second run. Is this a problem with the keyword :child?
+
+;; --------------------------------
+;; WINDOW-WINDOW-TYPE.2 in GDK-WINDOW []:
+;;      Unexpected Error: #<SIMPLE-ERROR "~S is not defined as a value for
+;;      enum type ~S." {1008CCBEE3}>
+;; -1 is not defined as a value for enum type
+;; #<CFFI::FOREIGN-ENUM GDK:WINDOW-TYPE>..
+;; --------------------------------
+
 (test window-window-type.2
   (with-foreign-object (attr '(:struct gdk:window-attr))
     (with-foreign-slots ((gdk::window-type)
                          attr (:struct gdk:window-attr))
-    (setf gdk::window-type :child)
-    (let ((window (gdk:window-new nil attr nil)))
-      (is (eq :child (gdk:window-window-type window)))))))
+      (is (= 2 (cffi:foreign-enum-value 'gdk:window-type
+                                        (setf gdk::window-type :child))))
+      (let ((window (gdk:window-new nil attr nil)))
+        (is (eq :child (gdk:window-window-type window)))))))
 
 ;;;     gdk_window_display
 
@@ -1052,4 +1064,4 @@
 ;;;     gdk_window_get_effective_parent
 ;;;     gdk_window_get_effective_toplevel
 
-;;; --- 2023-2-25 --------------------------------------------------------------
+;;; --- 2023-3-9 ---------------------------------------------------------------

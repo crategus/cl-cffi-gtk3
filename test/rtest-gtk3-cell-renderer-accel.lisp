@@ -18,17 +18,31 @@
   (is (eq 'gtk:cell-renderer-accel-mode
           (gobject:symbol-for-gtype "GtkCellRendererAccelMode")))
   ;; Check the names
+  #-windows
   (is (equal '("GTK_CELL_RENDERER_ACCEL_MODE_GTK"
                "GTK_CELL_RENDERER_ACCEL_MODE_OTHER"
                "GTK_CELL_RENDERER_ACCEL_MODE_MODIFIER_TAP")
              (list-enum-item-name "GtkCellRendererAccelMode")))
+  #+windows
+  (is (equal '("GTK_CELL_RENDERER_ACCEL_MODE_GTK"
+               "GTK_CELL_RENDERER_ACCEL_MODE_OTHER")
+             (list-enum-item-name "GtkCellRendererAccelMode")))
   ;; Check the values
+  #-windows
   (is (equal '(0 1 2)
              (list-enum-item-value "GtkCellRendererAccelMode")))
+  #+windows
+  (is (equal '(0 1)
+             (list-enum-item-value "GtkCellRendererAccelMode")))
   ;; Check the nick names
+  #-windows
   (is (equal '("gtk" "other" "modifier-tap")
              (list-enum-item-nick "GtkCellRendererAccelMode")))
+  #+windows
+  (is (equal '("gtk" "other")
+             (list-enum-item-nick "GtkCellRendererAccelMode")))
   ;; Check the enum definition
+  #-windows
   (is (equal '(DEFINE-G-ENUM "GtkCellRendererAccelMode"
                              GTK-CELL-RENDERER-ACCEL-MODE
                              (:EXPORT T
@@ -37,6 +51,15 @@
                              (:GTK 0)
                              (:OTHER 1)
                              (:MODIFIER-TAP 2))
+             (gobject:get-g-type-definition "GtkCellRendererAccelMode")))
+  #+windows
+  (is (equal '(DEFINE-G-ENUM "GtkCellRendererAccelMode"
+                             GTK-CELL-RENDERER-ACCEL-MODE
+                             (:EXPORT T 
+                              :TYPE-INITIALIZER 
+                              "gtk_cell_renderer_accel_mode_get_type")
+                             (:GTK 0)
+                             (:OTHER 1))
              (gobject:get-g-type-definition "GtkCellRendererAccelMode"))))
 
 ;;;     GtkCellRendererAccel
@@ -98,4 +121,4 @@
 
 ;;;     gtk_cell_renderer_accel_new
 
-;;; --- 2023-2-22 --------------------------------------------------------------
+;;; --- 2023-3-9 ---------------------------------------------------------------

@@ -408,7 +408,10 @@
     (is-false (gtk:settings-gtk-menu-images settings))
     (is (integerp (gtk:settings-gtk-menu-popdown-delay settings)))
     (is (integerp (gtk:settings-gtk-menu-popup-delay settings)))
+    #-windows
     (is (string= "canberra-gtk-module" (gtk:settings-gtk-modules settings)))
+    #+windows
+    (is-false (gtk:settings-gtk-modules settings))
     (is-true  (gtk:settings-gtk-primary-button-warps-slider settings))
     (is (stringp (gtk:settings-gtk-print-backends settings)))
     (is (stringp (gtk:settings-gtk-print-preview-command settings)))
@@ -463,4 +466,4 @@
 ;;;     gtk_settings_reset_property ()
 
 
-;;; --- 2023-3-3 ---------------------------------------------------------------
+;;; --- 2023-3-9 ---------------------------------------------------------------

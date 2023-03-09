@@ -42,14 +42,22 @@
                    "GtkVBox")
                  (list-children "GtkBox"))))
   #+windows
-  (is (equal '("GtkHBox" "GtkVBox" "GtkStackSwitcher" "GtkButtonBox"
-               "GtkStatusbar" "GtkInfoBar" "GtkColorChooserWidget"
-               "GtkColorSelection" "GtkFileChooserWidget"
-               "GtkFileChooserButton" "GtkFontChooserWidget"
-               "GtkFontSelection" "GtkRecentChooserWidget"
-               "GtkAppChooserWidget" "GtkShortcutsSection"
-               "GtkShortcutsGroup" "GtkShortcutsShortcut")
-             (list-children "GtkBox")))
+  (is (or (equal '("GtkAppChooserWidget" "GtkButtonBox" "GtkColorChooserWidget"
+                   "GtkColorSelection" "GtkFileChooserButton" 
+                   "GtkFileChooserWidget" "GtkFontChooserWidget" 
+                   "GtkFontSelection" "GtkHBox" "GtkInfoBar" 
+                   "GtkRecentChooserWidget" "GtkShortcutsGroup" 
+                   "GtkShortcutsSection" "GtkShortcutsShortcut" 
+                   "GtkStackSwitcher" "GtkStatusbar" "GtkVBox")
+             (list-children "GtkBox"))
+          (equal '("GtkAppChooserWidget" "GtkButtonBox" "GtkColorChooserWidget"
+                   "GtkColorSelection" "GtkFileChooserButton" 
+                   "GtkFileChooserWidget" "GtkFontChooserWidget" 
+                   "GtkFontSelection" "GtkHBox" "GtkInfoBar" "GtkPlacesView" 
+                   "GtkRecentChooserWidget" "GtkShortcutsGroup"
+                   "GtkShortcutsSection" "GtkShortcutsShortcut" 
+                   "GtkStackSwitcher" "GtkStatusbar" "GtkVBox")
+             (list-children "GtkBox"))))
   ;; Check the interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
              (list-interfaces "GtkBox")))
@@ -245,4 +253,4 @@
     ;; Retrieve the center widget
     (is (eq 'gtk:button (type-of (gtk:box-center-widget box))))))
 
-;;; --- 2023-2-18 --------------------------------------------------------------
+;;; --- 2023-3-9 ---------------------------------------------------------------

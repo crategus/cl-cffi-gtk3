@@ -63,12 +63,18 @@
                    "GtkTreeView")
                  (list-children "GtkContainer"))))
   #+windows
-  (is (equal '("GtkBin" "GtkMenuShell" "GtkBox" "GtkGrid" "GtkListBox"
-               "GtkFlowBox" "GtkStack" "GtkHeaderBar" "GtkPaned" "GtkLayout"
-               "GtkNotebook" "GtkFixed" "GtkTextView" "GtkTreeView"
-               "GtkIconView" "GtkToolItemGroup" "GtkToolbar"
-               "GtkToolPalette" "GtkTable")
-             (list-children "GtkContainer")))
+  (is (or (equal '("GtkBin" "GtkBox" "GtkFixed" "GtkFlowBox" "GtkGrid"
+                   "GtkHeaderBar" "GtkIconView" "GtkLayout" "GtkListBox"
+                   "GtkMenuShell" "GtkNotebook" "GtkPaned" "GtkStack" "GtkTable"
+                   "GtkTextView" "GtkToolItemGroup" "GtkToolPalette"
+                   "GtkToolbar" "GtkTreeView")
+                 (list-children "GtkContainer"))
+          (equal '("GtkBin" "GtkBox" "GtkFixed" "GtkFlowBox" "GtkGrid"
+                   "GtkHeaderBar" "GtkIconView" "GtkLayout" "GtkListBox"
+                   "GtkMenuShell" "GtkNotebook" "GtkPaned" "GtkPathBar"
+                   "GtkStack" "GtkTable" "GtkTextView" "GtkToolItemGroup"
+                   "GtkToolPalette" "GtkToolbar" "GtkTreeView")
+                 (list-children "GtkContainer"))))
   ;; Check the interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
              (list-interfaces "GtkContainer")))
@@ -456,4 +462,4 @@
 
 ;;;     gtk_container_class_handle_border_width
 
-;;; --- 2023-2-18 --------------------------------------------------------------
+;;; --- 2023-3-9 ---------------------------------------------------------------

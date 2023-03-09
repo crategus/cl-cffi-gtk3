@@ -69,6 +69,7 @@
   (let ((dialog (make-instance 'gtk:message-dialog)))
     ;; Property buttons is not readable
     (signals (error) (gtk:message-dialog-buttons dialog))
+    #-windows
     (is (typep (gtk:message-dialog-image dialog) 'gtk:image))
     (is (typep (gtk:message-dialog-message-area dialog) 'gtk:box))
     (is (eq :info (gtk:message-dialog-message-type dialog)))
@@ -95,6 +96,7 @@
                                         :ok-cancel
                                         "The ~a value."
                                         10)))
+    #-windows
     (is (typep (gtk:message-dialog-image dialog) 'gtk:image))
     (is (typep (gtk:message-dialog-message-area dialog) 'gtk:box))
     (is (eq :question (gtk:message-dialog-message-type dialog)))
@@ -112,6 +114,7 @@
                                                     :ok-cancel
                                                     "<b>The ~a value.</b>"
                                                     10)))
+    #-windows
     (is (typep (gtk:message-dialog-image dialog) 'gtk:image))
     (is (typep (gtk:message-dialog-message-area dialog) 'gtk:box))
     (is (eq :question (gtk:message-dialog-message-type dialog)))
@@ -127,4 +130,4 @@
 ;;;     gtk_message_dialog_format_secondary_markup
 ;;;     gtk_message_dialog_get_message_area
 
-;;; --- 2022-12-26 -------------------------------------------------------------
+;;; --- 2023-3-9 ---------------------------------------------------------------
