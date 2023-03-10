@@ -61,7 +61,7 @@
 (setf (liber:alias-for-class 'frame-timings)
       "GBoxed"
       (documentation 'frame-timings 'type)
- "@version{#2023-2-5}
+ "@version{#2023-3-10}
   @begin{short}
     A @sym{gdk:frame-timings} structure holds timing information for a single
     frame of the application’s displays.
@@ -120,8 +120,8 @@
 (defcfun ("gdk_frame_timings_get_frame_counter" frame-timings-frame-counter)
     :int64
  #+liber-documentation
- "@version{#2020-11-12}
-  @argument[timings]{a @class{gdk:frame-timings} structure}
+ "@version{#2023-3-10}
+  @argument[timings]{a @class{gdk:frame-timings} instance}
   @return{The integer frame counter value for this frame.}
   @begin{short}
     Gets the frame counter value of the frame clock when this frame was drawn.
@@ -137,23 +137,23 @@
 
 (defcfun ("gdk_frame_timings_get_complete" frame-timings-complete) :boolean
  #+liber-documentation
- "@version{#2020-11-12}
-  @argument[timings]{a @class{gdk:frame-timings} structure}
+ "@version{#2023-3-10}
+  @argument[timings]{a @class{gdk:frame-timings} instance}
   @begin{return}
     @em{True} if all information that will be available for the frame has been
     filled in.
   @end{return}
   @begin{short}
-    The timing information in a @class{gdk:frame-timings} structure is filled in
+    The timing information in a @class{gdk:frame-timings} instance is filled in
     incrementally as the frame as drawn and passed off to the window system for
     processing and display to the user.
   @end{short}
-  The accessor functions for @class{gdk:frame-timings} structures can return 0
+  The accessor functions for @class{gdk:frame-timings} instances can return 0
   to indicate an unavailable value for two reasons: either because the
   information is not yet available, or because it is not available at all. Once
-  the function @sym{gdk:frame-timings-complete} returns @em{true} for a frame,
+  the @sym{gdk:frame-timings-complete} function returns @em{true} for a frame,
   you can be certain that no further values will become available and be stored
-  in the @class{gdk:frame-timings} structure.
+  in the @class{gdk:frame-timings} instance.
   @see-class{gdk:frame-timings}"
   (timings (g:boxed frame-timings)))
 
@@ -163,10 +163,9 @@
 ;;; gdk_frame_timings_get_frame_time () -> frame-timings-frame-time
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_frame_timings_get_frame_time" frame-timings-frame-time)
-    :int64
+(defcfun ("gdk_frame_timings_get_frame_time" frame-timings-frame-time) :int64
  #+liber-documentation
- "@version{#2021-4-9}
+ "@version{#2023-3-10}
   @argument[timings]{a @class{gdk:frame-timings} instance}
   @begin{return}
     An integer with the frame time for the frame.
@@ -175,7 +174,7 @@
     Returns the frame time for the frame.
   @end{short}
   This is the time value that is typically used to time animations for the
-  frame. See the function @fun{gdk:frame-clock-frame-time}.
+  frame. See the @fun{gdk:frame-clock-frame-time} function.
   @see-class{gdk:frame-timings}
   @see-function{gdk:frame-clock-frame-time}"
   (timings (g:boxed frame-timings)))
@@ -184,18 +183,18 @@
 
 ;;; ----------------------------------------------------------------------------
 ;;; gdk_frame_timings_get_presentation_time ()
-;;; -> frame-timings-presentation-time
+;;;     -> frame-timings-presentation-time
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gdk_frame_timings_get_presentation_time"
            frame-timings-presentation-time) :int64
  #+liber-documentation
- "@version{#2021-4-9}
+ "@version{#2023-3-10}
   @argument[timings]{a @class{gdk:frame-timings} instance}
   @begin{return}
     An integer with the time the frame was displayed to the user, or 0 if no
-    presentation time is available. See the function
-    @fun{gdk:frame-timings-complete}.
+    presentation time is available. See the @fun{gdk:frame-timings-complete}
+    function.
   @end{return}
   @begin{short}
     Returns the presentation time.
@@ -209,18 +208,18 @@
 
 ;;; ----------------------------------------------------------------------------
 ;;; gdk_frame_timings_get_refresh_interval ()
-;;; -> frame-timings-refresh-interval
+;;;     -> frame-timings-refresh-interval
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gdk_frame_timings_get_refresh_interval"
            frame-timings-refresh-interval) :int64
  #+liber-documentation
- "@version{#2020-11-12}
-  @argument[timings]{a @class{gdk:frame-timings} structure}
+ "@version{#2023-3-10}
+  @argument[timings]{a @class{gdk:frame-timings} instance}
   @begin{return}
     An integer with the refresh interval of the display, in microseconds, or 0
-    if the refresh interval is not available. See the function
-    @fun{gdk:frame-timings-complete}.
+    if the refresh interval is not available. See the 
+    @fun{gdk:frame-timings-complete} function.
   @end{return}
   @begin{short}
     Gets the natural interval between presentation times for the display that
@@ -235,13 +234,13 @@
 
 ;;; ----------------------------------------------------------------------------
 ;;; gdk_frame_timings_get_predicted_presentation_time ()
-;;; -> frame-timings-predicted-presentation-time
+;;;     -> frame-timings-predicted-presentation-time
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gdk_frame_timings_get_predicted_presentation_time"
            frame-timings-predicted-presentation-time) :int64
  #+liber-documentation
- "@version{#2021-4-9}
+ "@version{#2023-3-10}
   @argument[timings]{a @class{gdk:frame-timings} instance}
   @begin{return}
     An integer with the predicted time at which the frame will be presented,
@@ -251,13 +250,13 @@
     Gets the predicted time at which this frame will be displayed.
   @end{short}
   Although no predicted time may be available, if one is available, it will be
-  available while the frame is being generated, in contrast to the function
-  @fun{gdk:frame-timings-presentation-time}, which is only available after the
-  frame has been presented. In general, if you are simply animating, you should
-  use the function @fun{gdk:frame-clock-frame-time} rather than this function,
-  but this function is useful for applications that want exact control over
-  latency. For example, a movie player may want this information for Audio/Video
-  synchronization.
+  available while the frame is being generated, in contrast to the 
+  @fun{gdk:frame-timings-presentation-time} function, which is only available 
+  after the frame has been presented. In general, if you are simply animating, 
+  you should use the @fun{gdk:frame-clock-frame-time} function rather than this 
+  function, but this function is useful for applications that want exact control 
+  over latency. For example, a movie player may want this information for 
+  Audio/Video synchronization.
   @see-class{gdk:frame-timings}
   @see-function{gdk:frame-clock-frame-time}
   @see-function{gdk:frame-timings-presentation-time}"

@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
-;;; gdk.frame-clock.lisp
+;;; gdk3.frame-clock.lisp
 ;;;
 ;;; The documentation of this file is taken from the GDK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
-;;; Copyright (C) 2016 - 2022 Dieter Kaiser
+;;; Copyright (C) 2016 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -85,7 +85,7 @@
 (setf (liber:alias-for-symbol 'frame-clock-phase)
       "GEnum"
       (liber:symbol-documentation 'frame-clock-phase)
- "@version{#2020-11-12}
+ "@version{#2023-3-10}
   @begin{short}
     The @sym{gdk:frame-clock-phase} enumeration is used to represent the
     different paint clock phases that can be requested.
@@ -134,7 +134,7 @@
 
 #+liber-documentation
 (setf (documentation 'frame-clock 'type)
- "@version{#2020-11-12}
+ "@version{#2023-3-10}
   @begin{short}
     A @sym{gdk:frame-clock} object tells the application when to update and
     repaint a window.
@@ -150,28 +150,28 @@
   OpenGL-based implementation or with @code{mozRequestAnimationFrame} in
   Firefox, for example.
 
-  A frame clock is idle until someone requests a frame with the function
-  @fun{gdk:frame-clock-request-phase}. At some later point that makes sense for
-  the synchronization being implemented, the clock will process a frame and
-  emit signals for each phase that has been requested. See the signals of the
-  @sym{gdk:frame-clock} class for documentation of the phases. The clock phase
-  @code{:update} and the \"update\" signal are most interesting for application
-  writers, and are used to update the animations, using the frame time given by
-  the function @fun{gdk:frame-clock-frame-time}.
+  A frame clock is idle until someone requests a frame with the
+  @fun{gdk:frame-clock-request-phase} function. At some later point that makes 
+  sense for the synchronization being implemented, the clock will process a 
+  frame and emit signals for each phase that has been requested. See the signals 
+  of the @sym{gdk:frame-clock} class for documentation of the phases. The clock 
+  phase @code{:update} and the \"update\" signal are most interesting for 
+  application writers, and are used to update the animations, using the frame 
+  time given by the @fun{gdk:frame-clock-frame-time} function.
 
   The frame time is reported in microseconds and generally in the same
   timescale as the system monotonic time. The frame time does not advance
   during the time a frame is being painted, and outside of a frame, an
-  attempt is made so that all calls to the function
-  @fun{gdk:frame-clock-frame-time} that are called at a \"similar\" time get
-  the same value. This means that if different animations are timed by looking
-  at the difference in time between an initial value from the function
-  @fun{gdk:frame-clock-frame-time} and the value inside the \"update\" signal
-  of the clock, they will stay exactly synchronized.
+  attempt is made so that all calls to the @fun{gdk:frame-clock-frame-time} 
+  function that are called at a \"similar\" time get the same value. This means 
+  that if different animations are timed by looking at the difference in time 
+  between an initial value from the @fun{gdk:frame-clock-frame-time} function 
+  and the value inside the \"update\" signal of the clock, they will stay 
+  exactly synchronized.
   @begin[Signal Details]{dictionary}
     @subheading{The \"after-paint\" signal}
       @begin{pre}
- lambda (clock)    :run-last
+lambda (clock)    :run-last
       @end{pre}
       The signal ends processing of the frame. Applications should generally
       not handle this signal.
@@ -249,7 +249,7 @@ lambda (clock)    :run-last
 
 (defcfun ("gdk_frame_clock_get_frame_time" frame-clock-frame-time) :int64
  #+liber-documentation
- "@version{#2021-4-9}
+ "@version{#2023-3-10}
   @argument[clock]{a @class{gdk:frame-clock} object}
   @return{An integer with a timestamp in microseconds.}
   @begin{short}
@@ -270,24 +270,24 @@ lambda (clock)    :run-last
 
 (defcfun ("gdk_frame_clock_request_phase" frame-clock-request-phase) :void
  #+liber-documentation
- "@version{#2020-11-12}
-  @argument[frame-clock]{a @class{gdk:frame-clock} object}
-  @argument[phase]{the phase of type @symbol{gdk:frame-clock-phase} that is
-    requested}
+ "@version{#2023-3-10}
+  @argument[clock]{a @class{gdk:frame-clock} object}
+  @argument[phase]{a @symbol{gdk:frame-clock-phase} value with the phase that 
+    is requested}
   @begin{short}
     Asks the frame clock to run a particular phase.
   @end{short}
   The signal corresponding to the requested phase will be emitted the next time
-  the frame clock processes. Multiple calls to the function
-  @sym{gdk:frame-clock-request-phase} will be combined together and only one
-  frame processed. If you are displaying animated content and want to
+  the frame clock processes. Multiple calls to the 
+  @sym{gdk:frame-clock-request-phase} function will be combined together and 
+  only one frame processed. If you are displaying animated content and want to
   continually request the @code{:update} phase for a period of time, you should
-  use the function @fun{gdk:frame-clock-begin-updating} instead, since this
+  use the @fun{gdk:frame-clock-begin-updating} function instead, since this
   allows GTK to adjust system parameters to get maximally smooth animations.
   @see-class{gdk:frame-clock}
   @see-symbol{gdk:frame-clock-phase}
   @see-function{gdk:frame-clock-begin-updating}"
-  (frame-clock (g:object frame-clock))
+  (clock (g:object frame-clock))
   (phase frame-clock-phase))
 
 (export 'frame-clock-request-phase)
@@ -298,19 +298,19 @@ lambda (clock)    :run-last
 
 (defcfun ("gdk_frame_clock_begin_updating" frame-clock-begin-updating) :void
  #+liber-documentation
- "@version{#2020-11-12}
-  @argument[frame-clock]{a @class{gdk:frame-clock} object}
+ "@version{#2023-3-10}
+  @argument[clock]{a @class{gdk:frame-clock} object}
   @begin{short}
     Starts updates for an animation.
   @end{short}
-  Until a matching call to the function @fun{gdk:frame-clock-end-updating} is
+  Until a matching call to the @fun{gdk:frame-clock-end-updating} function is
   made, the frame clock will continually request a new frame with the
   @code{:update} phase. This function may be called multiple times and frames
-  will be requested until the function @fun{gdk:frame-clock-end-updating} is
+  will be requested until the @fun{gdk:frame-clock-end-updating} function is
   called the same number of times.
   @see-class{gdk:frame-clock}
   @see-function{gdk:frame-clock-end-updating}"
-  (frame-clock (g:object frame-clock)))
+  (clock (g:object frame-clock)))
 
 (export 'frame-clock-begin-updating)
 
@@ -320,15 +320,15 @@ lambda (clock)    :run-last
 
 (defcfun ("gdk_frame_clock_end_updating" frame-clock-end-updating) :void
  #+liber-documentation
- "@version{#2020-11-12}
-  @argument[frame-clock]{a @class{gdk:frame-clock} object}
+ "@version{#2023-3-10}
+  @argument[clock]{a @class{gdk:frame-clock} object}
   @begin{short}
     Stops updates for an animation.
   @end{short}
-  See the documentation for the function @fun{gdk:frame-clock-begin-updating}.
+  See the documentation for the @fun{gdk:frame-clock-begin-updating} function.
   @see-class{gdk:frame-clock}
   @see-function{gdk:frame-clock-begin-updating}"
-  (frame-clock (g:object frame-clock)))
+  (clock (g:object frame-clock)))
 
 (export 'frame-clock-end-updating)
 
@@ -336,22 +336,21 @@ lambda (clock)    :run-last
 ;;; gdk_frame_clock_get_frame_counter () -> frame-clock-frame-counter
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_frame_clock_get_frame_counter" frame-clock-frame-counter)
-    :int64
+(defcfun ("gdk_frame_clock_get_frame_counter" frame-clock-frame-counter) :int64
  #+liber-documentation
- "@version{#2020-11-12}
-  @argument[frame-clock]{a @class{gdk:frame-clock} object}
+ "@version{#2023-3-10}
+  @argument[clock]{a @class{gdk:frame-clock} object}
   @begin{return}
-    Inside frame processing, the unsigned integer value of the frame counter for
-    the current frame. Outside of frame processing, the frame counter for the
-    last frame.
+    Inside frame processing, the unsigned integer value of the frame counter 
+    for the current frame. Outside of frame processing, the frame counter for 
+    the last frame.
   @end{return}
   @begin{short}
     A frame clock maintains a 64-bit counter that increments for each frame
     drawn.
   @end{short}
   @see-class{gdk:frame-clock}"
-  (frame-clock (g:object frame-clock)))
+  (clock (g:object frame-clock)))
 
 (export 'frame-clock-frame-counter)
 
@@ -359,28 +358,27 @@ lambda (clock)    :run-last
 ;;; gdk_frame_clock_get_history_start () -> frame-clock-history-start
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_frame_clock_get_history_start" frame-clock-history-start)
-    :int64
+(defcfun ("gdk_frame_clock_get_history_start" frame-clock-history-start) :int64
  #+liber-documentation
- "@version{#2020-11-12}
-  @argument[frame-clock]{a @class{gdk:frame-clock} object}
+ "@version{#2023-3-10}
+  @argument[clock]{a @class{gdk:frame-clock} object}
   @begin{return}
     The unsigned integer frame counter value for the oldest frame that is
     available in the internal frame history of the frame clock.
   @end{return}
   @begin{short}
     The frame clock internally keeps a history of @class{gdk:frame-timings}
-    objects for recent frames that can be retrieved with the function
-    @fun{gdk:frame-clock-timings}.
+    objects for recent frames that can be retrieved with the 
+    @fun{gdk:frame-clock-timings} function.
   @end{short}
   The set of stored frames is the set from the counter values given by the
-  function @sym{gdk:frame-clock-history-start} and the function
-  @fun{gdk:frame-clock-frame-counter}, inclusive.
+  @sym{gdk:frame-clock-history-start} function and the 
+  @fun{gdk:frame-clock-frame-counter} function, inclusive.
   @see-class{gdk:frame-clock}
   @see-class{gdk:frame-timings}
   @see-function{gdk:frame-clock-timings}
   @see-function{gdk:frame-clock-frame-counter}"
-  (frame-clock (g:object frame-clock)))
+  (clock (g:object frame-clock)))
 
 (export 'frame-clock-history-start)
 
@@ -388,30 +386,30 @@ lambda (clock)    :run-last
 ;;; gdk_frame_clock_get_timings () -> frame-clock-timings
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_frame_clock_get_timings" frame-clock-timings)
+(defcfun ("gdk_frame_clock_get_timings" frame-clock-timings) 
     (g:boxed frame-timings)
  #+liber-documentation
- "@version{#2020-11-12}
-  @argument[frame-clock]{a @class{gdk:frame-clock} object}
-  @argument[frame-counter]{an unsigned integer frame counter value identifying
-    the frame to be received}
+ "@version{#2023-3-10}
+  @argument[clock]{a @class{gdk:frame-clock} object}
+  @argument[counter]{an unsigned integer frame counter value identifying the 
+    frame to be received}
   @begin{return}
-    The @class{gdk:frame-timings} structure for the specified frame, or
-    @code{nil} if it is not available. See the function
-    @fun{gdk:frame-clock-history-start}.
+    The @class{gdk:frame-timings} instance for the specified frame, or
+    @code{nil} if it is not available. See the 
+    @fun{gdk:frame-clock-history-start} function.
   @end{return}
   @begin{short}
-    Retrieves a @fun{gdk:frame-timings} structure holding timing information for
+    Retrieves a @fun{gdk:frame-timings} instance holding timing information for
     the current frame or a recent frame.
   @end{short}
-  The @class{gdk:frame-timings} object may not yet be complete. See the function
-  @fun{gdk:frame-timings-complete}.
+  The @class{gdk:frame-timings} instance may not yet be complete. See the
+  @fun{gdk:frame-timings-complete} function.
   @see-class{gdk:frame-clock}
   @see-class{gdk:frame-timings}
   @see-function{gdk:frame-clock-history-start}
   @see-function{gdk:frame-timings-complete}"
-  (frame-clock (g:object frame-clock))
-  (frame-counter :int64))
+  (clock (g:object frame-clock))
+  (counter :int64))
 
 (export 'frame-clock-timings)
 
@@ -422,10 +420,10 @@ lambda (clock)    :run-last
 (defcfun ("gdk_frame_clock_get_current_timings" frame-clock-current-timings)
     (g:boxed frame-timings)
  #+liber-documentation
- "@version{#2020-11-12}
-  @argument[frame-clock]{a @class{gdk:frame-clock} object}
+ "@version{#2023-3-10}
+  @argument[clock]{a @class{gdk:frame-clock} object}
   @begin{return}
-    The @class{gdk:frame-timings} structure for the frame currently being
+    The @class{gdk:frame-timings} instance for the frame currently being
     processed, or even no frame is being processed, for the previous frame.
     Before any frames have been procesed, returns @code{nil}.
   @end{return}
@@ -434,7 +432,7 @@ lambda (clock)    :run-last
   @end{short}
   @see-class{gdk:frame-clock}
   @see-class{gdk:frame-timings}"
-  (frame-clock (g:object frame-clock)))
+  (clock (g:object frame-clock)))
 
 (export 'frame-clock-current-timings)
 
@@ -442,43 +440,42 @@ lambda (clock)    :run-last
 ;;; gdk_frame_clock_get_refresh_info () -> frame-clock-refresh-info
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_frame_clock_get_refresh_info" %frame-clock-refresh-info)
-    :void
-  (frame-clock (g:object frame-clock))
-  (base-time :int64)
+(defcfun ("gdk_frame_clock_get_refresh_info" %frame-clock-refresh-info) :void
+  (clock (g:object frame-clock))
+  (time :int64)
   (refresh-interval (:pointer :int64))
-  (presentation-time-return (:pointer :int64)))
+  (presentation-time (:pointer :int64)))
 
-(defun frame-clock-refresh-info (frame-clock base-time)
+(defun frame-clock-refresh-info (clock time)
  #+liber-documentation
- "@version{#2020-11-12}
-  @argument[frame-clock]{a @class{gdk:frame-clock} object}
-  @argument[base-time]{an integer base time for determining a presentaton time}
+ "@version{#2023-3-10}
+  @argument[clock]{a @class{gdk:frame-clock} object}
+  @argument[time]{an integer base time for determining a presentaton time}
   @begin{return}
-    @code{refresh-interval-return} -- an integer with the determined refresh
-    interval, or @code{nil}, a default refresh interval of 1/60th of a second
-    will be stored if no history is present @br{}
-    @code{presentation-time-return} -- an integer with the next candidate
-    presentation time after the given base time, 0 will be will be stored if no
-    history is present
+    @arg{refresh-interval} -- an integer with the determined refresh interval, 
+      or @code{nil}, a default refresh interval of 1/60th of a second will be 
+      stored if no history is present @br{}
+    @arg{presentation-time} -- an integer with the next candidate presentation 
+      time after the given base time, 0 will be will be stored if no history is 
+      present
   @end{return}
   @begin{short}
     Using the frame history stored in the frame clock, finds the last known
     presentation time and refresh interval, and assuming that presentation times
     are separated by the refresh interval, predicts a presentation time that is
     a multiple of the refresh interval after the last presentation time, and
-    later than @arg{base-time}.
+    later than @arg{time}.
   @end{short}
   @see-class{gdk:frame-clock}"
   (with-foreign-objects ((refresh-interval :int64)
-                         (presentation-time-return :int64))
-    (%frame-clock-refresh-info frame-clock
-                               base-time
+                         (presentation-time :int64))
+    (%frame-clock-refresh-info clock
+                               time
                                refresh-interval
-                               presentation-time-return)
+                               presentation-time)
     (values (cffi:mem-ref refresh-interval :int64)
-            (cffi:mem-ref presentation-time-return :int64))))
+            (cffi:mem-ref presentation-time :int64))))
 
 (export 'frame-clock-refresh-info)
 
-;;; --- End of file gdk.frame-clock.lisp ---------------------------------------
+;;; --- End of file gdk3.frame-clock.lisp --------------------------------------

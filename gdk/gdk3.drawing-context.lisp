@@ -72,18 +72,17 @@
 
 #+liber-documentation
 (setf (documentation 'drawing-context 'type)
- "@version{#2020-11-12}
+ "@version{#2023-3-10}
   @begin{short}
-    @sym{gdk:drawing-context} is an object that represents the current drawing
-    state of a @class{gdk:window} object.
+    The @sym{gdk:drawing-context} object is an object that represents the 
+    current drawing state of a @class{gdk:window} object.
   @end{short}
-
   It is possible to use a @sym{gdk:drawing-context} object to draw on a
   @class{gdk:window} object via rendering API like Cairo or OpenGL.
 
   A @sym{gdk:drawing-context} object can only be created by calling
-  the function @fun{gdk:window-begin-draw-frame} and will be valid until a call
-  to the function @fun{gdk:window-end-draw-frame}.
+  the @fun{gdk:window-begin-draw-frame} function and will be valid until a call
+  to the @fun{gdk:window-end-draw-frame} function.
 
   The @sym{gdk:drawing-context} class is available since GDK 3.22.
   @see-class{gdk:window}
@@ -94,7 +93,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- drawing-context-clip -----------------------------------------------
+;;; --- drawing-context-clip ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "clip" 'drawing-context) t)
@@ -106,23 +105,22 @@
 (setf (liber:alias-for-function 'drawing-context-clip)
       "Accessor"
       (documentation 'drawing-context-clip 'function)
- "@version{#2020-11-12}
-  @syntax[]{(gdk:drawing-context-clip object) => cairo-region}
+ "@version{#2023-3-10}
+  @syntax[]{(gdk:drawing-context-clip object) => region}
   @argument[object]{a @class{gdk:drawing-context} object}
-  @argument[cairo-region]{a @symbol{cairo:region-t} structure}
+  @argument[region]{a @symbol{cairo:region-t} instance}
   @begin{short}
     Accessor of the @slot[gdk:drawing-context]{clip} slot of the
     @class{gdk:drawing-context} class.
   @end{short}
-
-  The slot access function @sym{gdk:drawing-context-clip} retrieves a copy of
-  the clip region used when creating the context.
+  The @sym{gdk:drawing-context-clip} function retrieves a copy of the clip 
+  region used when creating the context.
 
   Since 3.22
   @see-class{gdk:drawing-context}
   @see-symbol{cairo:region-t}")
 
-;;; --- drawing-context-window ---------------------------------------------
+;;; --- drawing-context-window -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "window" 'drawing-context) t)
@@ -134,7 +132,7 @@
 (setf (liber:alias-for-function 'drawing-context-window)
       "Accessor"
       (documentation 'drawing-context-window 'function)
- "@version{#2020-11-12}
+ "@version{#2023-3-10}
   @syntax[]{(gdk:drawing-context-window object) => window}
   @argument[object]{a @class{gdk:drawing-context} object}
   @argument[window]{a @class{gdk:window} object}
@@ -142,9 +140,8 @@
     Accessor of the @slot[gdk:drawing-context]{window} slot of the
     @class{gdk:drawing-context} class.
   @end{short}
-
-  The slot access function @sym{gdk:drawing-context-window} retrieves the window
-  that created the drawing context.
+  The @sym{gdk:drawing-context-window} function retrieves the window that 
+  created the drawing context.
 
   Since 3.22
   @see-class{gdk:drawing-context}
@@ -157,11 +154,11 @@
 (defcfun ("gdk_drawing_context_get_cairo_context" drawing-context-cairo-context)
     (:pointer (:struct cairo:context-t))
  #+liber-documentation
- "@version{2023-2-3}
+ "@version{2023-3-10}
   @argument[object]{a @class{gdk:drawing-context} object}
   @begin{return}
-    A Cairo context of type @symbol{cairo:context-t} to be used to draw the
-    contents of the @class{gdk:window} object.
+    A @symbol{cairo:context-t} Cairo context to be used to draw the contents of 
+    the @class{gdk:window} object.
   @end{return}
   @begin{short}
     Retrieves a Cairo context to be used to draw on the window that created the
@@ -188,7 +185,7 @@
 
 (defcfun ("gdk_drawing_context_is_valid" drawing-context-is-valid) :boolean
  #+liber-documentation
- "@version{#2020-11-12}
+ "@version{#2023-3-10}
   @argument[context]{a @class{gdk:drawing-context} object}
   @return{@em{True} if the drawing context is valid.}
   @begin{short}
