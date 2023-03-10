@@ -53,6 +53,8 @@
                             #:define-g-boxed-cstruct
                             #:define-g-boxed-variant-cstruct)
  ;; Import the symbols from GDK-PIXUF
+ ;; TODO: We have a problem with the documentation. The symbols are documented
+ ;; twice as gdk:pixbuf and as gdk-pixbuf:pixbuf. Resolve this issue.
  (:import-from #:gdk-pixbuf ;; Symbols from gdk-pixbuf.structure.lisp
                             #:colorspace
                             #:pixbuf
@@ -78,6 +80,14 @@
                             #:pixbuf-new-from-file-at-scale
                             #:pixbuf-new-from-resource
                             #:pixbuf-new-from-resource-at-scale
+                            ;; Symbols from gdk-pixbuf.loader.lisp
+                            #:pixbuf-loader
+                            #:pixbuf-loader-new
+                            #:pixbuf-loader-write
+                            #:pixbuf-loader-set-size
+                            #:pixbuf-loader-pixbuf
+                            #:pixbuf-loader-animation
+                            #:pixbuf-loader-close
                             ;; Symbols from gdk-pixbuf.save.lisp
                             #:pixbuf-save
                             ;; Symbols from gdk-pixbuf.memory.lisp
@@ -103,15 +113,7 @@
                             #:pixbuf-animation-loop
                             #:pixbuf-animation-new-from-file
                             #:pixbuf-animation-new-from-resource
-                            #:pixbuf-animation-static-image
-                            ;; Symbols from gdk-pixbuf.
-                            #:pixbuf-loader
-                            #:pixbuf-loader-new
-                            #:pixbuf-loader-write
-                            #:pixbuf-loader-set-size
-                            #:pixbuf-loader-pixbuf
-                            #:pixbuf-loader-animation
-                            #:pixbuf-loader-close)
+                            #:pixbuf-animation-static-image)
 
  ;; Export the symbols for GDK-PIXBUF
  (:export                   ;; Symbols from gdk-pixbuf.structure.lisp
@@ -139,6 +141,14 @@
                             #:pixbuf-new-from-file-at-scale
                             #:pixbuf-new-from-resource
                             #:pixbuf-new-from-resource-at-scale
+                            ;; Symbols from gdk-pixbuf.loader.lisp
+                            #:pixbuf-loader
+                            #:pixbuf-loader-new
+                            #:pixbuf-loader-write
+                            #:pixbuf-loader-set-size
+                            #:pixbuf-loader-pixbuf
+                            #:pixbuf-loader-animation
+                            #:pixbuf-loader-close
                             ;; Symbols from gdk-pixbuf.save.lisp
                             #:pixbuf-save
                             ;; Symbols from gdk-pixbuf.memory.lisp
@@ -164,15 +174,7 @@
                             #:pixbuf-animation-loop
                             #:pixbuf-animation-new-from-file
                             #:pixbuf-animation-new-from-resource
-                            #:pixbuf-animation-static-image
-                            ;; Symbols from gdk-pixbuf.
-                            #:pixbuf-loader
-                            #:pixbuf-loader-new
-                            #:pixbuf-loader-write
-                            #:pixbuf-loader-set-size
-                            #:pixbuf-loader-pixbuf
-                            #:pixbuf-loader-animation
-                            #:pixbuf-loader-close))
+                            #:pixbuf-animation-static-image))
 
 (in-package :gdk)
 
