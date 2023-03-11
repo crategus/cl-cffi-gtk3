@@ -264,7 +264,7 @@ GTK Widgets and Objects
     gtk.gesture-rotate.lisp          - GtkGestureRotate             - GTK 3.24
     gtk.gesture-zoom.lisp            - GtkGestureZoom               - GTK 3.24
     gtk.gesture-stylus.lisp          - GtkGestureStylus             - GTK 3.24 &
-    gtk.pad-controller.lisp          - GtkPadController             - GTK 3.24 &
+    gtk.pad-controller.lisp          - GtkPadController             - GTK 3.24
 
 GTK Core Reference
 
