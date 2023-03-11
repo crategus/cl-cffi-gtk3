@@ -111,7 +111,7 @@
 
 (defun do-print-operation ()
   (let* ((response nil)
-         (filename (sys-path "print-dialog.ini"))
+         (filename (sys-path "resource/print-dialog.ini"))
          (settings (gtk:print-settings-new-from-file filename))
          (print (gtk:print-operation-new)))
     ;; Connect signal handlers for the print operation
@@ -124,6 +124,6 @@
     (setf response (gtk:print-operation-run print :print-dialog nil))
     ;; Check the response and save the print settings
     (when (eq :apply response)
-      (format t "~&Save print settings to ~A~%" (sys-path "print-dialog.ini"))
+      (format t "~&Save print settings to ~A~%" filename)
       (setf settings (gtk:print-operation-print-settings print))
-      (gtk:print-settings-to-file settings (sys-path "print-dialog.ini")))))
+      (gtk:print-settings-to-file settings filename))))
