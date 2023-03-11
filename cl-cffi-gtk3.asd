@@ -630,7 +630,7 @@
 ;    (:file "gtk.gesture-rotate")         ; Rotate gesture
 ;    (:file "gtk.gesture-zoom")           ; Zoom gesture
 ;    (:file "gtk.gesture-stylus")         ; Gesture for stylus input
-;    (:file "gtk.pad-controller")         ; Controller for drawing tablet pads
+     (:file "rtest-gtk3-pad-controller")  ; Controller for drawing tablet pads
 
      ;; Printing
      (:file "rtest-gtk3-print-operation") ; High-level Printing API
