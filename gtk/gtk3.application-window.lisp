@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.application-window.lisp
+;;; gtk3.application-window.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
-;;; Copyright (C) 2013 - 2021 Dieter Kaiser
+;;; Copyright (C) 2013 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -45,7 +45,7 @@
 ;;;
 ;;; Properties
 ;;;
-;;;     gboolean   show-menubar    Read / Write / Construct
+;;;     show-menubar
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -83,7 +83,7 @@
 
 #+liber-documentation
 (setf (documentation 'application-window 'type)
- "@version{#2021-10-10}
+ "@version{2023-3-11}
   @begin{short}
     The @sym{gtk:application-window} class is a @class{gtk:window} subclass
     that offers some extra functionality for better integration with
@@ -93,13 +93,13 @@
   See the @fun{gtk:application-app-menu} and @fun{gtk:application-menubar}
   functions.
 
-  This class implements the @class{g-action-group} and @class{g-action-map}
+  This class implements the @class{g:action-group} and @class{g:action-map}
   interfaces, to let you add window specific actions that will be exported by
   the associated @class{gtk:application} instance, together with its
   application-wide actions. Window specific actions are prefixed with the
   \"win.\" prefix and application-wide actions are prefixed with the \"app.\"
   prefix. Actions must be addressed with the prefixed name when referring to
-  them from a @class{g-menu-model} object.
+  them from a @class{g:menu-model} object.
 
   Note that widgets that are placed inside an application window can also
   activate these actions, if they implement the @class{gtk:actionable}
@@ -125,29 +125,29 @@
 
   @b{Example:} An application window with a menubar
   @begin{pre}
- ;; Intitialize the menubar
- (let ((builder (make-instance 'gtk:builder)))
-   ;; Read the menus from a string
-   (gtk:builder-add-from-string
-       builder
-       (format nil
-               \"<interface> ~
-                   <menu id='menubar'> ~
-                     <submenu label='_Edit'> ~
-                       <item label='_Copy' action='win.copy'/> ~
-                       <item label='_Paste' action='win.paste'/> ~
-                     </submenu> ~
-                   </menu> ~
-                 </interface>\"))
-   ;; Set the menubar
-   (setf (gtk:application-menubar application)
-         (gtk:builder-object builder \"menubar\"))
-   ... )
+;; Intitialize the menubar
+(let ((builder (make-instance 'gtk:builder)))
+  ;; Read the menus from a string
+  (gtk:builder-add-from-string
+      builder
+      (format nil
+              \"<interface> ~
+                  <menu id='menubar'> ~
+                    <submenu label='_Edit'> ~
+                      <item label='_Copy' action='win.copy'/> ~
+                      <item label='_Paste' action='win.paste'/> ~
+                    </submenu> ~
+                  </menu> ~
+                </interface>\"))
+  ;; Set the menubar
+  (setf (gtk:application-menubar application)
+        (gtk:builder-object builder \"menubar\"))
+  ... )
   @end{pre}
 
   @subheading{Handling fallback yourself}
   The XML format understood by the @class{gtk:builder} class for a
-  @class{g-menu-model} object consists of a toplevel @code{<menu>} element,
+  @class{g:menu-model} object consists of a toplevel @code{<menu>} element,
   which contains one or more @code{<item>} elements. Each @code{<item>} element
   contains @code{<attribute>} and @code{<link>} elements with a mandatory name
   attribute. @code{<link>} elements have the same content model as
@@ -169,8 +169,8 @@
     @item{@code{target}: the parameter to use when activating the action}
     @item{@code{icon} and @code{verb-icon}: names of icons that may be
       displayed}
-    @item{@code{submenu-action}: name of an action that may be used to determine
-      if a submenu can be opened}
+    @item{@code{submenu-action}: name of an action that may be used to
+      determine if a submenu can be opened}
     @item{@code{hidden-when}: a string used to determine when the item will be
       hidden. Possible values include \"action-disabled\", \"action-missing\",
       \"macos-menubar\".}
@@ -178,8 +178,8 @@
   The following attributes are used when constructing sections:
   @begin{itemize}
     @item{@code{label}: a user visible string to use as section heading}
-    @item{@code{display-hint}: a string used to determine special formatting for
-      the section. Possible values include \"horizontal-buttons\".}
+    @item{@code{display-hint}: a string used to determine special formatting
+      for the section. Possible values include \"horizontal-buttons\".}
     @item{@code{text-direction}: a string used to determine the
       @symbol{gtk:text-direction} value to use when \"display-hint\" is set to
       \"horizontal-buttons\". Possible values include \"rtl\", \"ltr\", and
@@ -190,22 +190,22 @@
     @item{@code{label}: a user visible string to display}
     @item{@code{icon}: icon name to display}
   @end{itemize}
+  @see-constructor{gtk:application-window-new}
   @see-slot{gtk:application-window-show-menubar}
   @see-class{gtk:window}
   @see-class{gtk:application}
-  @see-class{g-action-group}
-  @see-class{g-action-map}
-  @see-class{g-menu-model}
+  @see-class{g:action-group}
+  @see-class{g:action-map}
+  @see-class{g:menu-model}
   @see-class{gtk:actionable}
   @see-class{gtk:menu-bar}
-  @see-class{gtk:builder}
-  @see-class{g-menu-model}")
+  @see-class{gtk:builder}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- application-window-show-menubar ------------------------------------
+;;; --- application-window-show-menubar ----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "show-menubar"
@@ -223,7 +223,7 @@
 (setf (liber:alias-for-function 'application-window-show-menubar)
       "Accessor"
       (documentation 'application-window-show-menubar 'function)
- "@version{#2021-9-3}
+ "@version{2023-3-11}
   @syntax[]{(gtk:application-window-show-menubar object) => show}
   @syntax[]{(setf (gtk:application-window-show-menubar object) show)}
   @argument[window]{a @class{gtk:application-window} widget}
@@ -232,11 +232,10 @@
     Accessor of the @slot[gtk:application-window]{show-menubar} slot of the
     @class{gtk:application-window} class.
   @end{short}
-
-  The @sym{gtk:application-window-show-menubar} slot access function returns
-  whether the window will display a menubar for the application menu and
-  menubar as needed. The @sym{(setf gtk:application-window-show-menubar)} slot
-  access function sets whether the window will display a menubar.
+  The @sym{gtk:application-window-show-menubar} function returns whether the
+  window will display a menubar for the application menu and menubar as needed.
+  The @sym{(setf gtk:application-window-show-menubar)} function sets whether
+  the window will display a menubar.
   @see-class{gtk:application-window}")
 
 ;;; ----------------------------------------------------------------------------
@@ -245,7 +244,7 @@
 
 (defcfun ("gtk_application_window_new" application-window-new) (g:object widget)
  #+liber-documentation
- "@version{#2021-9-3}
+ "@version{2023-3-11}
   @argument[application]{a @class{gtk:application} instance}
   @return{A newly created @class{gtk:application-window} widget.}
   @short{Creates a new application window.}
@@ -261,7 +260,7 @@
 
 (defcfun ("gtk_application_window_get_id" application-window-id) :uint
  #+liber-documentation
- "@version{#2021-9-3}
+ "@version{2023-3-11}
   @argument[window]{a @class{gtk:application-window} widget}
   @begin{return}
     The unique ID for @arg{window}, or 0 if @arg{window} has not yet been
@@ -286,16 +285,16 @@
 #+gtk-3-20
 (defun (setf application-window-help-overlay) (help-overlay window)
   (cffi:foreign-funcall "gtk_application_window_set_help_overlay"
-                   (g:object application-window) window
-                   (g:object shortcuts-window) help-overlay
-                   :void)
+                        (g:object application-window) window
+                        (g:object shortcuts-window) help-overlay
+                        :void)
   help-overlay)
 
 #+gtk-3-20
 (defcfun ("gtk_application_window_get_help_overlay"
            application-window-help-overlay) (g:object shortcuts-window)
  #+liber-documentation
- "@version{#2021-9-3}
+ "@version{2023-3-11}
   @syntax[]{(gtk:application-window-help-overlay window) => help-overlay}
   @syntax[]{(setf (gtk:application-window-help-overlay window) help-overlay)}
   @argument[window]{a @class{gtk:application-window} widget}
@@ -303,7 +302,6 @@
   @begin{short}
     Accessor of the shortcuts window associated with the application window.
   @end{short}
-
   The @sym{gtk:application-window-help-overlay} function gets the shortcuts
   window. The @sym{(setf gtk:applicaton-window-help-overlay)} function
   associates a shortcuts window with the application window, and sets up an
@@ -317,4 +315,4 @@
 #+gtk-3-20
 (export 'application-window-help-overlay)
 
-;;; --- End of file gtk.application-window.lisp --------------------------------
+;;; --- End of file gtk3.application-window.lisp -------------------------------
