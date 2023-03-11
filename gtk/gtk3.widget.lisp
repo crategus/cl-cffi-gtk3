@@ -5762,7 +5762,7 @@ lambda (widget clock)
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_widget_create_pango_context" widget-create-pango-context)
-    (g:object pango-context :already-referenced)
+    (g:object pango:context :already-referenced)
  #+liber-documentation
  "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
@@ -5784,7 +5784,7 @@ lambda (widget clock)
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_widget_get_pango_context" widget-pango-context)
-    (g:object pango-context)
+    (g:object pango:context)
  #+liber-documentation
  "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
