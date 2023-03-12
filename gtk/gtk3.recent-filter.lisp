@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.recent-filter.lisp
+;;; gtk3.recent-filter.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -323,14 +323,14 @@
 (defcfun ("gtk_recent_filter_add_pixbuf_formats"
            recent-filter-add-pixbuf-formats) :void
  #+liber-documentation
- "@version{#2021-12-27}
+ "@version{#2023-3-12}
   @argument[filter]{a @class{gtk:recent-filter} object}
   @begin{short}
     Adds a rule allowing image files in the formats supported by the
-    @class{gdk:pixbuf} object.
+    @class{gdk-pixbuf:pixbuf} object.
   @end{short}
   @see-class{gtk:recent-filter}
-  @see-class{gdk:pixbuf}"
+  @see-class{gdk-pixbuf:pixbuf}"
   (filter (g:object recent-filter)))
 
 (export 'recent-filter-add-pixbuf-formats)
@@ -520,4 +520,4 @@
 
 (export 'recent-filter-filter)
 
-;;; --- End of file gtk.recent-filter.lisp -------------------------------------
+;;; --- End of file gtk3.recent-filter.lisp ------------------------------------

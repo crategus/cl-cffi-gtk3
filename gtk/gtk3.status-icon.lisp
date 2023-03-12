@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.status-icon.lisp
+;;; gtk3.status-icon.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
@@ -322,6 +322,13 @@ lambda (icon size)    :run-last
           Otherwise, GTK will scale the icon as necessary.}
       @end{table}
   @end{dictionary}
+  @see-constructor{gtk:status-icon-new}
+  @see-constructor{gtk:status-icon-new-from-pixbuf}
+  @see-constructor{gtk:status-icon-new-from-file}
+  @see-constructor{gtk:status-icon-new-from-stock}
+  @see-constructor{gtk:status-icon-new-from-icon-name}
+  @see-constructor{gtk:status-icon-new-from-gicon}
+  @see-constructor{gtk:status-icon-new-from-pixbuf}
   @see-slot{gtk:status-icon-embedded}
   @see-slot{gtk:status-icon-file}
   @see-slot{gtk:status-icon-gicon}
@@ -557,40 +564,40 @@ lambda (icon size)    :run-last
   @see-class{gtk:status-icon}
   @see-symbol{gtk:orientation}")
 
-;;; --- status-icon-pixbuf -------------------------------------------------
+;;; --- status-icon-pixbuf -----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "pixbuf" 'status-icon) t)
- "The @code{pixbuf} property of type @class{gdk:pixbuf} (Read / Write) @br{}
+ "The @code{pixbuf} property of type @class{gdk-pixbuf:pixbuf} (Read / Write)
+  @br{}
   The pixbuf to display.")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'status-icon-pixbuf)
       "Accessor"
       (documentation 'status-icon-pixbuf 'function)
- "@version{#2021-7-22}
+ "@version{#2023-3-12}
   @syntax[]{(gtk:status-icon-pixbuf object) => pixbuf}
   @syntax[]{(setf (gtk:status-icon-pixbuf object) pixbuf)}
   @argument[object]{a @class{gtk:status-icon} widget}
-  @argument[pixbuf]{a @class{gdk:pixbuf} object}
+  @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object}
   @begin{short}
     Accessor of the @slot[gtk:status-icon]{pixbuf} slot of the
     @class{gtk:status-icon} class.
   @end{short}
-
-  The slot access function @sym{gtk:status-icon-pixbuf} gets the pixbuf being
-  displayed by the status icon. The slot access function
-  @sym{(setf gtk:status-icon-pixbuf)} sets the pixbuf.
+  The @sym{gtk:status-icon-pixbuf} function gets the pixbuf being displayed by
+  the status icon. The @sym{(setf gtk:status-icon-pixbuf)} function sets the
+  pixbuf.
 
   The storage type of the status icon must be the value @code{:empty} or
-  @code{:pixbuf} of the @symbol{gtk:image-type} enumeration. See the function
-  @fun{gtk:status-icon-storage-type}.
+  @code{:pixbuf} of the @symbol{gtk:image-type} enumeration. See the
+  @fun{gtk:status-icon-storage-type} function.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:status-icon-pixbuf} has been deprecated since version
+    The @sym{gtk:status-icon-pixbuf} function has been deprecated since version
     3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
-  @see-class{gdk:pixbuf}
+  @see-class{gdk-pixbuf:pixbuf}
   @see-symbol{gtk:image-type}
   @see-function{gtk:status-icon-storage-type}")
 
@@ -925,21 +932,20 @@ lambda (icon size)    :run-last
 (defcfun ("gtk_status_icon_new_from_pixbuf" status-icon-new-from-pixbuf)
     (g:object status-icon)
  #+liber-documentation
- "@version{#2021-7-22}
-  @argument[pixbuf]{a @class{gdk:pixbuf} object}
+ "@version{#2023-3-12}
+  @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object}
   @return{A new @class{gtk:status-icon} object.}
   @begin{short}
     Creates a status icon displaying @arg{pixbuf}.
   @end{short}
-
   The image will be scaled down to fit in the available space in the
   notification area, if necessary.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:status-icon-new-from-pixbuf} has been deprecated since
-    version 3.14 and should not be used in newly written code.
+    The @sym{gtk:status-icon-new-from-pixbuf} function has been deprecated
+    since version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
-  @see-class{gdk:pixbuf}"
+  @see-class{gdk-pixbuf:pixbuf}"
   (pixbuf (g:object gdk-pixbuf:pixbuf)))
 
 (export 'status-icon-new-from-pixbuf)
@@ -1043,22 +1049,21 @@ lambda (icon size)    :run-last
 ;;; gtk_status_icon_set_from_pixbuf ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_status_icon_set_from_pixbuf" status-icon-set-from-pixbuf)
-    :void
+(defcfun ("gtk_status_icon_set_from_pixbuf" status-icon-set-from-pixbuf) :void
  #+liber-documentation
- "@version{#2021-7-22}
+ "@version{#2023-3-12}
   @argument[icon]{a @class{gtk:status-icon} object}
-  @argument[pixbuf]{a @class{gdk:pixbuf} object or @code{nil}}
+  @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object or @code{nil}}
   @begin{short}
     Makes the status icon display @arg{pixbuf}.
   @end{short}
-  See the function @fun{gtk:status-icon-new-from-pixbuf} for details.
+  See the @fun{gtk:status-icon-new-from-pixbuf} function for details.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:status-icon-set-from-pixbuf} has been deprecated
+    The @sym{gtk:status-icon-set-from-pixbuf} function has been deprecated
     since version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
-  @see-class{gdk:pixbuf}
+  @see-class{gdk-pixbuf:pixbuf}
   @see-function{gtk:status-icon-new-from-pixbuf}"
   (icon (g:object status-icon))
   (pixbuf (g:object gdk-pixbuf:pixbuf)))

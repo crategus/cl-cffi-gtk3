@@ -122,13 +122,13 @@
 (setf (liber:alias-for-symbol 'image-type)
       "GEnum"
       (liber:symbol-documentation 'image-type)
- "@version{#2021-12-17}
+ "@version{#2023-3-12}
   @begin{short}
     Describes the image data representation used by a @class{gtk:image} widget.
   @end{short}
   If you want to get the image from the widget, you can only get the
   currently stored representation. e.g. if the @fun{gtk:image-storage-type}
-  slot access function returns the @code{:pixbuf} value, then you can call the
+  function returns the @code{:pixbuf} value, then you can call the
   @fun{gtk:image-pixbuf} function but not the @fun{gtk:image-stock} function.
   For empty images, you can request any storage type, but they will all return
   @code{nil} values.
@@ -147,18 +147,18 @@
   @end{pre}
   @begin[code]{table}
     @entry[:empty]{There is no image displayed by the widget.}
-    @entry[:pixbuf]{The widget contains a @class{gdk:pixbuf} object.}
+    @entry[:pixbuf]{The widget contains a @class{gdk-pixbuf:pixbuf} object.}
     @entry[:stock]{The widget contains a stock icon name.}
     @entry[:icon-set]{The widget contains a @class{gtk:icon-set} structure.}
-    @entry[:animation]{The widget contains a @class{gdk:pixbuf-animation}
+    @entry[:animation]{The widget contains a @class{gdk-pixbuf:pixbuf-animation}
       object.}
     @entry[:icon-name]{The widget contains a named icon.}
     @entry[:gicon]{The widget contains a @class{g:icon} object.}
     @entry[:surface]{The widget contains a @symbol{cairo:surface-t} instance.}
   @end{table}
   @see-class{gtk:image}
-  @see-class{gdk:pixbuf}
-  @see-class{gdk:pixbuf-animation}
+  @see-class{gdk-pixbuf:pixbuf}
+  @see-class{gdk-pixbuf:pixbuf-animation}
   @see-class{gtk:icon-set}
   @see-class{g:icon}
   @see-symbol{cairo:surface-t}
@@ -224,7 +224,8 @@
     The @sym{gtk:image} widget displays an image.
   @end{short}
   Various kinds of objects can be displayed as an image. Most typically, you
-  would load a @class{gdk:pixbuf} object from a file, and then display that.
+  would load a @class{gdk-pixbuf:pixbuf} object from a file, and then display
+  that.
 
   @image[image]{}
 
@@ -237,20 +238,20 @@
   If the file is not loaded successfully, the image will contain a
   \"broken image\" icon similar to that used in many web browsers. If you want
   to handle errors in loading the file yourself, for example by displaying an
-  error message, then load the image with the @fun{gdk:pixbuf-new-from-file}
-  function, then create the @sym{gtk:image} widget with the
-  @fun{gtk:image-new-from-pixbuf} function.
+  error message, then load the image with the
+  @fun{gdk-pixbuf:pixbuf-new-from-file} function, then create the
+  @sym{gtk:image} widget with the @fun{gtk:image-new-from-pixbuf} function.
 
   The image file may contain an animation, if so the @sym{gtk:image} widget
-  will display a @class{gdk:pixbuf-animation} object instead of a static
+  will display a @class{gdk-pixbuf:pixbuf-animation} object instead of a static
   image.
 
   The @sym{gtk:image} class is a subclass of the @class{gtk:misc} class, which
   implies that you can align it (center, left, right) and add padding to it,
   using the @class{gtk:misc} methods.
 
-  The @sym{gtk:image} widget is a \"no window\" widget (has no GDK window of
-  its own), so by default does not receive events. If you want to receive events
+  The @sym{gtk:image} widget is a \"no window\" widget, has no GDK window of
+  its own, so by default does not receive events. If you want to receive events
   on the image, such as button clicks, place the image inside a
   @class{gtk:event-box} widget, then connect to the event signals on the event
   box.
@@ -287,6 +288,7 @@
     @code{image}. The @code{.icon-dropshadow} and @code{.lowres-icon} style
     classes may appear on @code{image} CSS nodes.
   @end{dictionary}
+  @see-constructor{gtk:image-new}
   @see-slot{gtk:image-file}
   @see-slot{gtk:image-gicon}
   @see-slot{gtk:image-icon-name}
@@ -299,8 +301,8 @@
   @see-slot{gtk:image-storage-type}
   @see-slot{gtk:image-surface}
   @see-slot{gtk:image-use-fallback}
-  @see-class{gdk:pixbuf}
-  @see-class{gdk:pixbuf-animation}")
+  @see-class{gdk-pixbuf:pixbuf}
+  @see-class{gdk-pixbuf:pixbuf-animation}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; Property and Accessor Details
@@ -447,61 +449,60 @@
   @end{dictionary}
   @see-class{gtk:image}")
 
-;;; --- image-pixbuf -------------------------------------------------------
+;;; --- image-pixbuf -----------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "pixbuf" 'image) t)
- "The @code{pixbuf} property of type @class{gdk:pixbuf} (Read / Write) @br{}
+ "The @code{pixbuf} property of type @class{gdk-pixbuf:pixbuf} (Read / Write)
+  @br{}
   A pixbuf to display.")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'image-pixbuf)
       "Accessor"
       (documentation 'image-pixbuf 'function)
- "@version{#2021-12-17}
+ "@version{#2023-3-12}
   @syntax[]{(gtk:image-pixbuf object) => pixbuf}
   @syntax[]{(setf (gtk:image-pixbuf object) pixbuf)}
   @argument[object]{a @class{gtk:image} widget}
-  @argument[pixbuf]{a @class{gdk:pixbuf} object}
+  @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object}
   @begin{short}
     Accessor of the @slot[gtk:image]{pixbuf} slot of the @class{gtk:image}
     class.
   @end{short}
-
-  The @sym{gtk:image-pixbuf} slot access function gets the pixbuf being
-  displayed by the image. The @sym{(setf gtk:image-pixbuf)} slot access function
-  sets the pixbuf.
+  The @sym{gtk:image-pixbuf} function gets the pixbuf being displayed by the
+  image. The @sym{(setf gtk:image-pixbuf)} function sets the pixbuf.
 
   The @symbol{gtk:image-type} storage type of the image must be @code{:empty}
   or @code{:pixbuf}, see the @fun{gtk:image-storage-type} function.
   @see-class{gtk:image}
-  @see-class{gdk:pixbuf}
+  @see-class{gdk-pixbuf:pixbuf}
   @see-symbol{gtk:image-type}
   @see-function{gtk:image-storage-type}")
 
-;;; --- image-pixbuf-animation ---------------------------------------------
+;;; --- image-pixbuf-animation -------------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "pixbuf-animation"
-                                               'image) t)
- "The @code{pixbuf-animation} property of type @class{gdk:pixbuf-animation}
-  (Read / Write) @br{}
+(setf (documentation (liber:slot-documentation "pixbuf-animation" 'image) t)
+ "The @code{pixbuf-animation} property of type
+  @class{gdk-pixbuf:pixbuf-animation} (Read / Write) @br{}
   The pixbuf animation to display.")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'image-pixbuf-animation)
       "Accessor"
       (documentation 'image-pixbuf-animation 'function)
- "@version{#2021-12-17}
+ "@version{#2023-3-12}
   @syntax[]{(gtk:image-pixbuf-animation object) => animation}
   @syntax[]{(setf (gtk:image-pixbuf-animation object) animation)}
   @argument[object]{a @class{gtk:image} widget}
-  @argument[animation]{a @class{gdk:pixbuf-animation} object}
+  @argument[animation]{a @class{gdk-pixbuf:pixbuf-animation} object}
   @begin{short}
     Accessor of the @slot[gtk:image]{pixbuf-animation} slot of the
     @class{gtk:image} class.
   @end{short}
   @see-class{gtk:image}
+  @see-class{gdk-pixbuf:pixbuf-animation}
   @see-function{gtk:image-get-animation}")
 
 ;;; --- image-pixel-size ---------------------------------------------------
@@ -741,21 +742,23 @@
 ;;; gtk_image_get_animation ()
 ;;; ----------------------------------------------------------------------------
 
+;; TODO: Check if we can cut out this function.
+
 (defcfun ("gtk_image_get_animation" image-get-animation)
     (g:object gdk-pixbuf:pixbuf-animation)
  #+liber-documentation
- "@version{#2021-12-17}
+ "@version{#2023-3-12}
   @argument[image]{a @class{gtk:image} widget}
   @return{The displayed animation, or @code{nil} if the image is empty.}
   @begin{short}
-    Gets the @class{gdk:pixbuf-animation} object being displayed by the
+    Gets the @class{gdk-pixbuf:pixbuf-animation} object being displayed by the
     @class{gtk:image} widget.
   @end{short}
   The @symbol{gtk:image-type} storage type of the image must be the
   @code{:empty} or @code{:animation} type, see the @fun{gtk:image-storage-type}
   function.
   @see-class{gtk:image}
-  @see-class{gdk:pixbuf-animation}
+  @see-class{gdk-pixbuf:pixbuf-animation}
   @see-symbol{gtk:image-type}
   @see-function{gtk:image-storage-type}"
   (image (g:object image)))
@@ -765,6 +768,8 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_image_get_icon_name ()
 ;;; ----------------------------------------------------------------------------
+
+;; TODO: Check if we can cut out this function.
 
 (defun image-get-icon-name (image)
  #+liber-documentation
@@ -820,7 +825,7 @@
 
 (defun image-new-from-file (path)
  #+liber-documentation
- "@version{2023-1-29}
+ "@version{2023-3-12}
   @argument[path]{a pathname or namestring with the name of the file}
   @return{A new @class{gtk:image} widget.}
   @begin{short}
@@ -833,16 +838,16 @@
   If the file contains an animation, the image will contain an animation.
 
   If you need to detect failures to load the file, use the
-  @fun{gdk:pixbuf-new-from-file} function to load the file yourself, then create
-  the @class{gtk:image} widget from the pixbuf. Or for animations, use the
-  @fun{gdk:pixbuf-animation-new-from-file} function.
+  @fun{gdk-pixbuf:pixbuf-new-from-file} function to load the file yourself, then
+  create the @class{gtk:image} widget from the pixbuf. Or for animations, use
+  the @fun{gdk-pixbuf:pixbuf-animation-new-from-file} function.
 
   The storage type, see the @fun{gtk:image-storage-type} function, of the
   returned image is not defined, it will be whatever is appropriate for
   displaying the file.
   @see-class{gtk:image}
-  @see-function{gdk:pixbuf-new-from-file}
-  @see-function{gdk:pixbuf-animation-new-from-file}
+  @see-function{gdk-pixbuf:pixbuf-new-from-file}
+  @see-function{gdk-pixbuf:pixbuf-animation-new-from-file}
   @see-function{gtk:image-storage-type}"
   (%image-new-from-file (namestring path)))
 
@@ -886,21 +891,19 @@
 ;;; gtk_image_new_from_pixbuf ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_image_new_from_pixbuf" image-new-from-pixbuf)
-    (g:object image)
+(defcfun ("gtk_image_new_from_pixbuf" image-new-from-pixbuf) (g:object image)
  #+liber-documentation
- "@version{#2021-12-17}
-  @argument[pixbuf]{a @class{gdk:pixbuf} object}
+ "@version{#2023-3-12}
+  @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object}
   @return{A new @class{gtk:image} widget.}
   @begin{short}
     Creates an image displaying @arg{pixbuf}.
   @end{short}
-
   Note that this function just creates an image from the pixbuf. The image
   created will not react to state changes. Should you want that, you should use
   the @fun{gtk:image-new-from-icon-name} function.
   @see-class{gtk:image}
-  @see-class{gdk:pixbuf}
+  @see-class{gdk-pixbuf:pixbuf}
   @see-function{gtk:image-new-from-icon-name}"
   (pixbuf (g:object gdk-pixbuf:pixbuf)))
 
@@ -946,19 +949,18 @@
 (defcfun ("gtk_image_new_from_animation" image-new-from-animation)
     (g:object image)
  #+liber-documentation
- "@version{#2021-12-17}
-  @argument[animation]{a @class{gdk:pixbuf-animation} object}
+ "@version{#2023-3-12}
+  @argument[animation]{a @class{gdk-pixbuf:pixbuf-animation} object}
   @return{A new @class{gtk:image} widget.}
   @begin{short}
     Creates a image displaying the given animation.
   @end{short}
-
   Note that the animation frames are shown using a timeout with the
   @var{+g-priority-default+} value. When using animations to indicate busyness,
   keep in mind that the animation will only be shown if the main loop is not
   busy with something that has a higher priority.
   @see-class{gtk:image}
-  @see-class{gdk:pixbuf-animation}
+  @see-class{gdk-pixbuf:pixbuf-animation}
   @see-variable{+g-priority-default+}"
   (animation (g:object gdk-pixbuf:pixbuf-animation)))
 
@@ -1022,13 +1024,12 @@
 (defcfun ("gtk_image_new_from_resource" image-new-from-resource)
     (g:object image)
  #+liber-documentation
- "@version{#2021-12-17}
+ "@version{#2023-3-12}
   @argument[resource]{a string with a resource path}
   @return{A new @class{gtk:image} widget.}
   @begin{short}
     Creates an image displaying the resource file in @arg{resource}.
   @end{short}
-
   If the file is not found or can not be loaded, the resulting @class{gtk:image}
   widget will display a \"broken image\" icon. This function always returns a
   valid @class{gtk:image} widget.
@@ -1036,16 +1037,16 @@
   If the file contains an animation, the image will contain an animation.
 
   If you need to detect failures to load the file, use the
-  @fun{gdk:pixbuf-new-from-resource} function to load the file yourself, then
-  create the @class{gtk:image} widget from the pixbuf, or for animations, use
-  the @fun{gdk:pixbuf-animation-new-from-resource} function.
+  @fun{gdk-pixbuf:pixbuf-new-from-resource} function to load the file yourself,
+  then create the @class{gtk:image} widget from the pixbuf, or for animations,
+  use the @fun{gdk-pixbuf:pixbuf-animation-new-from-resource} function.
 
   The storage type, see the @fun{gtk:image-storage-type} function, of the
   returned image is not defined, it will be whatever is appropriate for
   displaying the file.
   @see-class{gtk:image}
-  @see-function{gdk:pixbuf-new-from-resource}
-  @see-function{gdk:pixbuf-animation-new-from-resource}"
+  @see-function{gdk-pixbuf:pixbuf-new-from-resource}
+  @see-function{gdk-pixbuf:pixbuf-animation-new-from-resource}"
   (resource :string))
 
 (export 'image-new-from-resource)
@@ -1121,15 +1122,15 @@
 
 (defcfun ("gtk_image_set_from_pixbuf" image-set-from-pixbuf) :void
  #+liber-documentation
- "@version{#2021-12-17}
+ "@version{#2023-3-12}
   @argument[image]{a @class{gtk:image} widget}
-  @argument[pixbuf]{a @class{gdk:pixbuf} object}
+  @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object}
   @begin{short}
     Creates an image displaying @arg{pixbuf}.
   @end{short}
   See the @fun{gtk:image-new-from-pixbuf} function for more details.
   @see-class{gtk:image}
-  @see-class{gdk:pixbuf}
+  @see-class{gdk-pixbuf:pixbuf}
   @see-function{gtk:image-new-from-pixbuf}"
   (image (g:object image))
   (pixbuf (g:object gdk-pixbuf:pixbuf)))
@@ -1166,15 +1167,15 @@
 
 (defcfun ("gtk_image_set_from_animation" image-set-from-animation) :void
  #+liber-documentation
- "@version{#2021-12-17}
+ "@version{#2023-3-12}
   @argument[image]{a @class{gtk:image} widget}
-  @argument[animation]{a @class{gdk:pixbuf-animation} object}
+  @argument[animation]{a @class{gdk-pixbuf:pixbuf-animation} object}
   @begin{short}
     Causes the image to display the given animation, or display nothing, if you
     set the animation to @code{nil}.
   @end{short}
   @see-class{gtk:image}
-  @see-class{gdk:pixbuf-animation}"
+  @see-class{gdk-pixbuf:pixbuf-animation}"
   (image (g:object image))
   (animation (g:object gdk-pixbuf:pixbuf-animation)))
 

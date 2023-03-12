@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.about-dialog.lisp
+;;; gtk3.about-dialog.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -74,25 +74,25 @@
 ;;;
 ;;; Properties
 ;;;
-;;;          GStrv    artists               Read / Write
-;;;          GStrv    authors               Read / Write
-;;;          gchar*   comments              Read / Write
-;;;          gchar*   copyright             Read / Write
-;;;          GStrv    documenters           Read / Write
-;;;          gchar*   license               Read / Write
-;;;     GtkLicense    license-type          Read / Write
-;;;      GdkPixbuf*   logo                  Read / Write
-;;;          gchar*   logo-icon-name        Read / Write
-;;;          gchar*   program-name          Read / Write
-;;;          gchar*   translator-credits    Read / Write
-;;;          gchar*   version               Read / Write
-;;;          gchar*   website               Read / Write
-;;;          gchar*   website-label         Read / Write
-;;;       gboolean    wrap-license          Read / Write
+;;;     artists
+;;;     authors
+;;;     comments
+;;;     copyright
+;;;     documenters
+;;;     license
+;;;     license-type
+;;;     logo
+;;;     logo-icon-name
+;;;     program-name
+;;;     translator-credits
+;;;     version
+;;;     website
+;;;     website-label
+;;;     wrap-license
 ;;;
 ;;; Signals
 ;;;
-;;;       gboolean    activate-link         Run Last
+;;;     activate-link
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -549,11 +549,12 @@
   @see-symbol{gtk:license}
   @see-function{gtk:about-dialog-license}")
 
-;;; --- about-dialog-logo --------------------------------------------------
+;;; --- about-dialog-logo ------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "logo" 'about-dialog) t)
- "The @code{logo} property of type @class{gdk:pixbuf} (Read / Write) @br{}
+ "The @code{logo} property of type @class{gdk-pixbuf:pixbuf} (Read / Write)
+  @br{}
   A logo for the about box. If this is not set, it defaults to the return value
   of the @fun{gtk:window-default-icon-list} function.")
 
@@ -561,22 +562,21 @@
 (setf (liber:alias-for-function 'about-dialog-logo)
       "Accessor"
       (documentation 'about-dialog-logo 'function)
- "@version{#2021-10-6}
+ "@version{#2023-3-12}
   @syntax[]{(gtk:about-dialog-logo object) => logo}
   @syntax[]{(setf (gtk:about-dialog-logo object) logo)}
   @argument[object]{a @class{gtk:about-dialog} widget}
-  @argument[logo]{a @class{gdk:pixbuf} logo for the about box}
+  @argument[logo]{a @class{gdk-pixbuf:pixbuf} logo for the about box}
   @begin{short}
     Accessor of the @slot[gtk:about-dialog]{logo} slot of the
     @class{gtk:about-dialog} class.
   @end{short}
-
-  The @sym{gtk:about-dialog-logo} slot access function returns the pixbuf
-  displayed as logo in the about dialog. The @sym{(setf gtk:about-dialog-logo)}
-  slot access function sets the pixbuf. If it is @code{nil}, the default window
-  icon set with the @fun{gtk:window-set-default-icon} function will be used.
+  The @sym{gtk:about-dialog-logo} function returns the pixbuf displayed as logo
+  in the about dialog. The @sym{(setf gtk:about-dialog-logo)} function sets the
+  pixbuf. If it is @code{nil}, the default window icon set with the
+  @fun{gtk:window-set-default-icon} function will be used.
   @see-class{gtk:about-dialog}
-  @see-class{gdk:pixbuf}
+  @see-class{gdk-pixbuf:pixbuf}
   @see-function{gtk:window-set-default-icon}")
 
 ;;; --- about-dialog-logo-icon-name ----------------------------------------
@@ -892,4 +892,4 @@ gtk_about_dialog_set_translator_credits (about, _(\"translator-credits\"));
 
 (export 'show-about-dialog)
 
-;;; --- End of file gtk.about-dialog.lisp --------------------------------------
+;;; --- End of file gtk3.about-dialog.lisp -------------------------------------

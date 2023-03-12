@@ -360,9 +360,9 @@
 
 (defun cairo-set-source-pixbuf (cr pixbuf x y)
  #+liber-documentation
- "@version{#2023-2-3}
+ "@version{#2023-3-12}
   @argument[cr]{a @symbol{cairo:context-t} context}
-  @argument[pixbuf]{a @class{gdk:pixbuf} object}
+  @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object}
   @argument[x]{a number coerced to a double float x coordinate of location to
     place upper left corner of @arg{pixbuf}}
   @argument[y]{a number coerced to a double float y coordinate of location to
@@ -375,7 +375,7 @@
   @arg{y}).
   @see-symbol{cairo:context-t}
   @see-symbol{cairo:extend-t}
-  @see-class{gdk:pixbuf}"
+  @see-class{gdk-pixbuf:pixbuf}"
   (%cairo-set-source-pixbuf cr
                             pixbuf
                             (coerce x 'double-float)
@@ -495,8 +495,8 @@
            cairo-surface-create-from-pixbuf)
     (:pointer (:struct cairo:surface-t))
  #+liber-documentation
- "@version{#2023-2-3}
-  @argument[pixbuf]{a @class{gdk:pixbuf} object}
+ "@version{#2023-3-12}
+  @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object}
   @argument[scale]{an integer with the scale of the new surface, or 0 to use
     same as @arg{window}}
   @argument[window]{a @class{gdk:window} object this will be drawn to, or
@@ -508,7 +508,7 @@
   @begin{short}
     Creates an image surface with the same contents as the pixbuf.
   @end{short}
-  @see-class{gdk:pixbuf}
+  @see-class{gdk-pixbuf:pixbuf}
   @see-class{gdk:window}
   @see-symbol{cairo:surface-t}
   @see-function{cairo:surface-destroy}"

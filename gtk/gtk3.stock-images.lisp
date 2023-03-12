@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.stock-images.lisp
+;;; gtk3.stock-images.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -163,17 +163,17 @@
 (setf (liber:alias-for-class 'icon-source)
       "GBoxed"
       (documentation 'icon-source 'type)
- "@version{#2023-2-5}
+ "@version{#2023-3-12}
   @begin{short}
     The @sym{gtk:icon-source} structure is opaque, and has no user visible
     fields.
   @end{short}
-  A @sym{gtk:icon-source} instance contains a @class{gdk:pixbuf} object (or
-  image filename) that serves as the base image for one or more of the icons in
-  a @class{gtk:icon-set} instance, along with a specification for which icons
+  A @sym{gtk:icon-source} instance contains a @class{gdk-pixbuf:pixbuf} object,
+  or image filename, that serves as the base image for one or more of the icons
+  in a @class{gtk:icon-set} instance, along with a specification for which icons
   in the icon set will be based on that pixbuf or image file.
   @see-class{gtk:icon-factory}
-  @see-class{gdk:pixbuf}")
+  @see-class{gdk-pixbuf:pixbuf}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; GtkIconSet
@@ -211,7 +211,7 @@
 
 #+liber-documentation
 (setf (documentation 'icon-factory 'type)
- "@version{#2021-7-24}
+ "@version{#2023-3-12}
   @begin{short}
     An icon factory manages a collection of @class{gtk:icon-set} instances.
   @end{short}
@@ -222,12 +222,12 @@
   has a list of @sym{gtk:icon-factory} objects derived from the current theme.
   Those icon factories are consulted first when searching for an icon. If the
   theme does not set a particular icon, GTK looks for the icon in a list of
-  default icon factories, maintained by the functions
-  @fun{gtk:icon-factory-add-default} and @fun{gtk:icon-factory-remove-default}.
-  Applications with icons should add a default icon factory with their icons,
-  which will allow themes to override the icons for the application.
+  default icon factories, maintained by the @fun{gtk:icon-factory-add-default}
+  and @fun{gtk:icon-factory-remove-default} functions. Applications with icons
+  should add a default icon factory with their icons, which will allow themes
+  to override the icons for the application.
 
-  To display an icon, use the function @fun{gtk:widget-render-icon} on the
+  To display an icon, use the @fun{gtk:widget-render-icon} function on the
   widget that will display the icon. This function takes the theme into account
   when looking up the icon to use for a given stock ID.
   @begin[GtkIconFactory as GtkBuildable]{dictionary}
@@ -306,7 +306,7 @@
 
 (defcfun ("gtk_icon_factory_add" icon-factory-add) :void
  #+liber-documentation
- "@version{#2021-7-24}
+ "@version{#2023-3-12}
   @argument[factory]{a @class{gtk:icon-factory} object}
   @argument[stock-id]{a string with the icon name}
   @argument[iconset]{a @class{gtk:icon-set} instance}
@@ -314,19 +314,19 @@
     Adds the given @arg{iconset} to the icon factory, under the name
     @arg{stock-id}.
   @end{short}
-  The argument @arg{stock-id} should be namespaced for your application, e.g.
+  The @arg{stock-id} argument should be namespaced for your application, e.g.
   \"myapp-whatever-icon\". Normally applications create a
   @class{gtk:icon-factory} object, then add it to the list of default factories
-  with the function @fun{gtk:icon-factory-add-default}. Then they pass the
-  argument @arg{stock-id} to widgets such as a @class{gtk:image} widget to
+  with the @fun{gtk:icon-factory-add-default} function. Then they pass the
+  @arg{stock-id} argument to widgets such as a @class{gtk:image} widget to
   display the icon. Themes can provide an icon with the same name, such as
   \"myapp-whatever-icon\", to override your default icons of the application.
   If an icon already existed in @arg{factory} for @arg{stock-id}, it is
   unreferenced and replaced with the new @arg{iconset} instance.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:icon-factory-add} has been deprecated since version
+    The @sym{gtk:icon-factory-add} function has been deprecated since version
     3.10 and should not be used in newly written code. Use the
-    @class{gtk:icon-theme} class instead.
+    @class{gtk:icon-theme} API instead.
   @end{dictionary}
   @see-class{gtk:icon-factory}
   @see-class{gtk:icon-set}
@@ -345,20 +345,20 @@
 
 (defcfun ("gtk_icon_factory_add_default" icon-factory-add-default) :void
  #+liber-documentation
- "@version{#2021-7-24}
+ "@version{#2023-3-12}
   @argument[factory]{a @class{gtk:icon-factory} object}
   @begin{short}
     Adds an icon factory to the list of icon factories searched by the
-    function @code{gtk_style_lookup_icon_set()}.
+    @code{gtk_style_lookup_icon_set() function}.
   @end{short}
-  This means that, for example, the function @fun{gtk:image-new-from-stock} will
+  This means that, for example, the @fun{gtk:image-new-from-stock} function will
   be able to find icons in @arg{factory}. There will normally be an icon factory
   added for each library or application that comes with icons. The default icon
   factories can be overridden by themes.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:icon-factory-add-default} has been deprecated since
-    version 3.10 and should not be used in newly written code.
-    Use the @class{gtk:icon-theme} class instead.
+    The @sym{gtk:icon-factory-add-default} function has been deprecated since
+    version 3.10 and should not be used in newly written code. Use the
+    @class{gtk:icon-theme} API instead.
   @end{dictionary}
   @see-class{gtk:icon-factory}
   @see-class{gtk:icon-theme}
@@ -371,10 +371,9 @@
 ;;; gtk_icon_factory_lookup ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_icon_factory_lookup" icon-factory-lookup)
-    (g:boxed icon-set :return)
+(defcfun ("gtk_icon_factory_lookup" icon-factory-lookup) (g:boxed icon-set)
  #+liber-documentation
- "@version{#2021-7-21}
+ "@version{#2023-3-12}
   @argument[factory]{a @class{gtk:icon-factory} object}
   @argument[stock-id]{a string with an icon name}
   @return{The @class{gtk:icon-set} instance of @arg{stock-id}.}
@@ -382,12 +381,12 @@
     Looks up @arg{stock-id} in the icon factory, returning an icon set if
     found, otherwise @code{nil}.
   @end{short}
-  For display to the user, you should use the function
-  @code{gtk_style_lookup_icon_set()} on the @code{GtkStyle} object for the
-  widget that will display the icon, instead of using this function directly,
-  so that themes are taken into account.
+  For display to the user, you should use the @code{gtk_style_lookup_icon_set()}
+  function on the @code{GtkStyle} object for the widget that will display the
+  icon, instead of using this function directly, so that themes are taken into
+  account.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:icon-factory-lookup} has been deprecated since
+    The @sym{gtk:icon-factory-lookup} function has been deprecated since
     version 3.10 and should not be used in newly written code. Use the
     @class{gtk:icon-theme} class instead.
   @end{dictionary}
@@ -405,20 +404,20 @@
 (defcfun ("gtk_icon_factory_lookup_default" icon-factory-lookup-default)
     (g:boxed icon-set :return)
  #+liber-documentation
- "@version{#2021-7-21}
+ "@version{#2023-3-12}
   @argument[stock-id]{a string with an icon name}
   @return{A @class{gtk:icon-set} instance, or @code{nil}.}
   @begin{short}
     Looks for an icon in the list of default icon factories.
   @end{short}
-  For display to the user, you should use the function
-  @code{gtk_style_lookup_icon_set()} on the @code{GtkStyle} object for the
-  widget that will display the icon, instead of using this function directly,
-  so that themes are taken into account.
+  For display to the user, you should use the @code{gtk_style_lookup_icon_set()}
+  function on the @code{GtkStyle} object for the widget that will display the
+  icon, instead of using this function directly, so that themes are taken into
+  account.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:icon-factory-lookup-default} has been deprecated since
-    version 3.10 and should not be used in newly written code. Use the
-    @class{gtk:icon-theme} class instead.
+    The @sym{gtk:icon-factory-lookup-default} function has been deprecated
+    since version 3.10 and should not be used in newly written code. Use the
+    @class{gtk:icon-theme} API instead.
   @end{dictionary}
   @see-class{gtk:icon-factory}
   @see-class{gtk:icon-set}
@@ -455,20 +454,19 @@
 ;;; gtk_icon_factory_remove_default ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_icon_factory_remove_default" icon-factory-remove-default)
-    :void
+(defcfun ("gtk_icon_factory_remove_default" icon-factory-remove-default) :void
  #+liber-documentation
- "@version{#2021-7-21}
+ "@version{#2023-3-12}
   @argument[factory]{a @class{gtk:icon-factory} object previously added with
-    the function @fun{gtk:icon-factory-add-default}}
+    the @fun{gtk:icon-factory-add-default} function}
   @begin{short}
     Removes an icon factory from the list of default icon factories.
   @end{short}
   Not normally used. You might use it for a library that can be unloaded or
   shut down.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:icon-factory-remove-default} has been deprecated since
-    version 3.10 and should not be used in newly written code. Use the
+    The @sym{gtk:icon-factory-remove-default} function has been deprecated
+    since version 3.10 and should not be used in newly written code. Use the
     @class{gtk:icon-theme} class instead.
   @end{dictionary}
   @see-class{gtk:icon-factory}
@@ -484,20 +482,19 @@
 
 (defcfun ("gtk_icon_set_add_source" icon-set-add-source) :void
  #+liber-documentation
- "@version{#2021-7-21}
+ "@version{#2023-3-12}
   @argument[iconset]{a @class{gtk:icon-set} instance}
   @argument[source]{a @class{gtk:icon-source} instance}
   @begin{short}
     This function copies @arg{source}, so you can reuse the same source
     immediately without affecting the icon set.
   @end{short}
-
   Icon sets have a list of @class{gtk:icon-source} instances, which they use as
   base icons for rendering icons in different states and sizes. Icons are
-  scaled, made to look insensitive, etc. in the function
-  @fun{gtk:icon-set-render-icon}, but a @class{gtk:icon-set} instance needs
-  base images to work with. The base images and when to use them are described
-  by a @class{gtk:icon-source} instance.
+  scaled, made to look insensitive, etc. in the @fun{gtk:icon-set-render-icon}
+  function, but a @class{gtk:icon-set} instance needs base images to work with.
+  The base images and when to use them are described by a
+  @class{gtk:icon-source} instance.
 
   An example of when you would use this function: a web browser's \"Back to
   Previous Page\" icon might point in a different direction in Hebrew and in
@@ -512,12 +509,12 @@
   sources to more generic icon sources. The order in which you add the sources
   to the icon set does not matter.
 
-  The function @fun{gtk:icon-set-new-from-pixbuf} creates a new icon set with a
+  The @fun{gtk:icon-set-new-from-pixbuf} function creates a new icon set with a
   default icon source based on the given pixbuf.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:icon-set-add-source} has been deprecated since
+    The @sym{gtk:icon-set-add-source} function has been deprecated since
     version 3.10 and should not be used in newly written code. Use the
-    @class{gtk:icon-theme} class instead.
+    @class{gtk:icon-theme} API instead.
   @end{dictionary}
   @see-class{gtk:icon-set}
   @see-class{gtk:icon-source}
@@ -552,28 +549,28 @@
 
 (defcfun ("gtk_icon_set_new" icon-set-new) (g:boxed icon-set)
  #+liber-documentation
- "@version{#2021-7-21}
+ "@version{#2023-3-12}
   @return{A new @class{gtk:icon-set} instance.}
   @begin{short}
     Creates a new icon set.
   @end{short}
   A icon set represents a single icon in various sizes and widget states. It
-  can provide a @class{gdk:pixbuf} object for a given size and state on
-  request, and automatically caches some of the rendered @class{gdk:pixbuf}
-  objects.
+  can provide a @class{gdk-pixbuf:pixbuf} object for a given size and state on
+  request, and automatically caches some of the rendered
+  @class{gdk-pixbuf:pixbuf} objects.
 
-  Normally you would use the function @fun{gtk:widget-render-icon-pixbuf}
+  Normally you would use the @fun{gtk:widget-render-icon-pixbuf} function
   instead of using a @class{gtk:icon-set} instance directly. The one case where
   you would use a @class{gtk:icon-set} instance is to create application
   specific icon sets to place in a @class{gtk:icon-factory} object.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:icon-set-new} has been deprecated since version 3.10
+    The @sym{gtk:icon-set-new} function has been deprecated since version 3.10
     and should not be used in newly written code. Use the
-    @class{gtk:icon-theme} class instead.
+    @class{gtk:icon-theme} API instead.
   @end{dictionary}
   @see-class{gtk:icon-factory}
   @see-class{gtk:icon-set}
-  @see-class{gdk:pixbuf}
+  @see-class{gdk-pixbuf:pixbuf}
   @see-class{gtk:icon-theme}
   @see-function{gtk:widget-render-icon-pixbuf}")
 
@@ -586,8 +583,8 @@
 (defcfun ("gtk_icon_set_new_from_pixbuf" icon-set-new-from-pixbuf)
     (g:boxed icon-set)
  #+liber-documentation
- "@version{#2021-7-24}
-  @argument[pixbuf]{a @class{gdk:pixbuf} object}
+ "@version{#2023-3-12}
+  @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object}
   @return{A new @class{gtk:icon-set} instance.}
   @begin{short}
     Creates a new icon set with @arg{pixbuf} as the default/fallback source
@@ -598,15 +595,15 @@
   scaling, pixelation, etc. as required to adjust the icon size or make the
   icon look insensitive/prelighted.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:icon-set-new-from-pixbuf} has been deprecated since
+    The @sym{gtk:icon-set-new-from-pixbuf} function has been deprecated since
     version 3.10 and should not be used in newly written code. Use the
-    @class{gtk:icon-theme} class instead.
+    @class{gtk:icon-theme} API instead.
   @end{dictionary}
   @see-class{gtk:icon-set}
-  @see-class{gdk:pixbuf}
+  @see-class{gdk-pixbuf:pixbuf}
   @see-class{gtk:icon-source}
   @see-class{gtk:icon-theme}"
-  (pixbuf (g:object gdk:pixbuf)))
+  (pixbuf (g:object gdk-pixbuf:pixbuf)))
 
 (export 'icon-set-new-from-pixbuf)
 
@@ -632,9 +629,9 @@
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_icon_set_render_icon" icon-set-render-icon)
-    (g:object gdk:pixbuf)
+    (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
- "@version{#2021-7-21}
+ "@version{#2023-3-12}
   @argument[iconset]{a @class{gtk:icon-set} instance}
   @argument[style]{a @code{GtkStyle} object associated with @arg{widget},
     or @code{nil}}
@@ -649,23 +646,23 @@
   @argument[detail]{a string with the detail to pass to the theme engine, or
     @code{nil}, note that passing a detail of anything but @code{nil} will
     disable caching}
-  @return{A @class{gdk:pixbuf} object to be displayed.}
+  @return{A @class{gdk-pixbuf:pixbuf} object to be displayed.}
   @begin{short}
-    Renders an icon using the function @code{gtk_style_render_icon()}.
+    Renders an icon using the @code{gtk_style_render_icon() function}.
   @end{short}
-  In most cases, the function @fun{gtk:widget-render-icon} is better, since it
+  In most cases, the @fun{gtk:widget-render-icon} function is better, since it
   automatically provides most of the arguments from the current widget settings.
   This function never returns @code{nil}. If the icon cannot be rendered,
   perhaps because an image file fails to load, a default \"missing image\" icon
   will be returned instead.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:icon-set-render-icon} has been deprecated since
+    The @sym{gtk:icon-set-render-icon} function has been deprecated since
     version 3.0 and should not be used in newly written code. Use the
-    @class{gtk:icon-theme} class instead.
+    @class{gtk:icon-theme} API instead.
   @end{dictionary}
   @see-class{gtk:icon-set}
   @see-class{gdk:screen}
-  @see-class{gdk:pixbuf}
+  @see-class{gdk-pixbuf:pixbuf}
   @see-class{gtk:icon-theme}
   @see-class{gtk:widget}
   @see-symbol{gtk:direction}
@@ -687,30 +684,30 @@
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_icon_set_render_icon_pixbuf" icon-set-render-icon-pixbuf)
-    (g:object gdk:pixbuf)
+    (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
- "@version{#2021-7-21}
+ "@version{#2023-3-12}
   @argument[iconset]{a @class{gtk:icon-set} instance}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[size]{a @symbol{gtk:icon-size} value, a size of -1 means render
     at the size of the source and do not scale}
-  @return{A @class{gdk:pixbuf} object to be displayed.}
+  @return{A @class{gdk-pixbuf:pixbuf} object to be displayed.}
   @begin{short}
-    Renders an icon using the function @fun{gtk:render-icon-pixbuf}.
+    Renders an icon using the @fun{gtk:render-icon-pixbuf} function.
   @end{short}
-  In most cases, the function @fun{gtk:widget-render-icon-pixbuf} is better,
+  In most cases, the @fun{gtk:widget-render-icon-pixbuf} function is better,
   since it automatically provides most of the arguments from the current widget
   settings. This function never returns @code{nil}. If the icon cannot be
   rendered, perhaps because an image file fails to load, a default
   \"missing image\" icon will be returned instead.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:icon-set-render-icon-pixbuf} has been deprecated
+    The @sym{gtk:icon-set-render-icon-pixbuf} function has been deprecated
     since version 3.10 and should not be used in newly written code. Use
-    the @class{gtk:icon-theme} class instead.
+    the @class{gtk:icon-theme} API instead.
   @end{dictionary}
   @see-class{gtk:icon-set}
   @see-class{gtk:style-context}
-  @see-class{gdk:pixbuf}
+  @see-class{gdk-pixbuf:pixbuf}
   @see-class{gtk:icon-theme}
   @see-symbol{gtk:icon-size}
   @see-function{gtk:render-icon-pixbuf}
@@ -993,15 +990,15 @@
 
 (defun (setf icon-source-filename) (filename source)
   (cffi:foreign-funcall "gtk_icon_source_set_filename"
-                   (g:boxed icon-source) source
-                   :string filename
-                   :void)
+                        (g:boxed icon-source) source
+                        :string filename
+                        :void)
   filename)
 
 (defcfun ("gtk_icon_source_get_filename" icon-source-filename)
     (:string :free-from-foreign nil)
  #+liber-documentation
- "@version{#2021-7-21}
+ "@version{#2023-3-12}
   @syntax[]{(gtk:icon-source-filename source) => filename}
   @syntax[]{(setf (gtk:icon-source-filename source) filename)}
   @argument[source]{a @class{gtk:icon-source} instance}
@@ -1009,15 +1006,14 @@
   @begin{short}
     Accessor of the filename of a @class{gtk:icon-source} instance.
   @end{short}
-
-  The function @sym{gtk:icon-source-filename} retrieves the filename of the
-  icon source, or @code{nil} if none is set. The function
-  @sym{(setf gtk:icon-source-filename)} sets the filename. The filename must be
-  absolute.
+  The @sym{gtk:icon-source-filename} function retrieves the filename of the
+  icon source, or @code{nil} if none is set. The
+  @sym{(setf gtk:icon-source-filename)} function sets the filename. The
+  filename must be absolute.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:icon-source-filename} has been deprecated since
+    The @sym{gtk:icon-source-filename} function has been deprecated since
     version 3.10 and should not be used in newly written code. Use the
-    @class{gtk:icon-theme} class instead.
+    @class{gtk:icon-theme} API instead.
   @end{dictionary}
   @see-class{gtk:icon-source}
   @see-class{gtk:icon-theme}"
@@ -1053,15 +1049,15 @@
 
 (defun (setf icon-source-icon-name) (name source)
   (cffi:foreign-funcall "gtk_icon_source_set_icon_name"
-                   (g:boxed icon-source) source
-                   :string name
-                   :void)
+                        (g:boxed icon-source) source
+                        :string name
+                        :void)
   name)
 
 (defcfun ("gtk_icon_source_get_icon_name" icon-source-icon-name)
     (:string :free-from-foreign nil)
  #+liber-documentation
- "@version{#2021-7-21}
+ "@version{#2023-3-12}
   @syntax[]{(gtk:icon-source-icon-name source) => name}
   @syntax[]{(setf (gtk:icon-source-icon-name source) name)}
   @argument[source]{a @class{gtk:icon-source} instance}
@@ -1069,16 +1065,15 @@
   @begin{short}
     Accessor of the icon name of a @class{gtk:icon-source} instance.
   @end{short}
-
-  The function @sym{gtk:icon-source-icon-name} retrieves the icon name of the
-  icon source, or @code{nil} if none is set. The function
-  @sym{(setf gtk:icon-source-icon-name)} sets the name of an icon to look up in
-  the current icon theme to use as a base image when creating icon variants for
-  a @class{gtk:icon-set} instance.
+  The @sym{gtk:icon-source-icon-name} function retrieves the icon name of the
+  icon source, or @code{nil} if none is set. The
+  @sym{(setf gtk:icon-source-icon-name)} function sets the name of an icon to
+  look up in the current icon theme to use as a base image when creating icon
+  variants for a @class{gtk:icon-set} instance.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:icon-source-icon-name} has been deprecated since
+    The @sym{gtk:icon-source-icon-name} function has been deprecated since
     version 3.10 and should not be used in newly written code. Use the
-    @class{gtk:icon-theme} class instead.
+    @class{gtk:icon-theme} API instead.
   @end{dictionary}
   @see-class{gtk:icon-source}
   @see-class{gtk:icon-set}
@@ -1161,16 +1156,15 @@
 ;;; gtk_icon_source_new ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_icon_source_new" icon-source-new)
-    (g:boxed icon-source)
+(defcfun ("gtk_icon_source_new" icon-source-new) (g:boxed icon-source)
  #+liber-documentation
- "@version{#2021-7-21}
+ "@version{#2023-3-12}
   @return{A new @class{gtk:icon-source} instance.}
   @begin{short}
     Creates a new icon source.
   @end{short}
-  A icon source contains a @class{gdk:pixbuf} object or image filename that
-  serves as the base image for one or more of the icons in a
+  A icon source contains a @class{gdk-pixbuf:pixbuf} object or image filename
+  that serves as the base image for one or more of the icons in a
   @class{gtk:icon-set} instance, along with a specification for which icons in
   the icon set will be based on that pixbuf or image file. An icon set contains
   a set of icons that represent \"the same\" logical concept in different
@@ -1184,26 +1178,26 @@
   objects from which it can derive specific icon variants in the set.
 
   In the simplest case, a @class{gtk:icon-set} instance contains one source
-  pixbuf from which it derives all variants. The convenience function
-  @fun{gtk:icon-set-new-from-pixbuf} handles this case. If you only have one
-  source pixbuf, just use that function.
+  pixbuf from which it derives all variants. The convenience
+  @fun{gtk:icon-set-new-from-pixbuf} function handles this case. If you only
+  have one source pixbuf, just use that function.
 
   If you want to use a different base pixbuf for different icon variants, you
   create multiple icon sources, mark which variants they will be used to create,
-  and add them to the icon set with the function @fun{gtk:icon-set-add-source}.
+  and add them to the icon set with the @fun{gtk:icon-set-add-source} function.
 
   By default, the icon source has all parameters wildcarded. That is, the icon
   source will be used as the base icon for any desired text direction, widget
   state, or icon size.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:icon-source-new} has been deprecated since version
+    The @sym{gtk:icon-source-new} function has been deprecated since version
     3.10 and should not be used in newly written code. Use the
-    @class{gtk:icon-theme} class instead.
+    @class{gtk:icon-theme} API instead.
   @end{dictionary}
   @see-class{gtk:icon-source}
   @see-class{gtk:icon-set}
   @see-class{gtk:icon-theme}
-  @see-class{gdk:pixbuf}
+  @see-class{gdk-pixbuf:pixbuf}
   @see-function{gtk:icon-set-new-from-pixbuf}
   @see-function{gtk:icon-set-add-source}")
 
@@ -1376,4 +1370,4 @@
 ;;;     TRUE to wildcard the widget state
 ;;; ----------------------------------------------------------------------------
 
-;;; --- End of file gtk.stock-images.lisp --------------------------------------
+;;; --- End of file gtk3.stock-images.lisp -------------------------------------

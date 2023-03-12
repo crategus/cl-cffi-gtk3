@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -397,17 +397,17 @@
 ;;; gtk_file_filter_add_pixbuf_formats ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_file_filter_add_pixbuf_formats"
-          file-filter-add-pixbuf-formats) :void
+(defcfun ("gtk_file_filter_add_pixbuf_formats" file-filter-add-pixbuf-formats)
+    :void
  #+liber-documentation
- "@version{#2021-1-29}
+ "@version{#2023-3-12}
   @argument[filter]{a @class{gtk:file-filter} object}
   @begin{short}
     Adds a rule allowing image files in the formats supported by a
-    @class{gdk:pixbuf} object.
+    @class{gdk-pixbuf:pixbuf} object.
   @end{short}
   @see-class{gtk:file-filter}
-  @see-class{gdk:pixbuf}"
+  @see-class{gdk-pixbuf:pixbuf}"
   (filter g:object))
 
 (export 'file-filter-add-pixbuf-formats)
@@ -576,9 +576,6 @@
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_file_filter_to_gvariant ()
-;;;
-;;; GVariant * gtk_file_filter_to_gvariant (GtkFileFilter *filter);
-;;;
 ;;; ----------------------------------------------------------------------------
 
 #+gtk-3-22

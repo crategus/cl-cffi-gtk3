@@ -2738,15 +2738,16 @@ GtkEntry.entry { ... @}
 ;;; gtk_render_icon_pixbuf ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_render_icon_pixbuf" render-icon-pixbuf) (g:object gdk:pixbuf)
+(defcfun ("gtk_render_icon_pixbuf" render-icon-pixbuf)
+    (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-12}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[source]{a @class{gtk:icon-source} instance specifying the icon to
     render}
   @argument[size]{a @symbol{gtk:icon-size} size to render the icon at}
-  @return{A newly-created @class{gdk:pixbuf} object containing the rendered
-    icon.}
+  @return{A newly created @class{gdk-pixbuf:pixbuf} object containing the
+    rendered icon.}
   @begin{short}
     Renders the icon specified by @arg{source} at the given @arg{size},
     returning the result in a pixbuf.
@@ -2759,7 +2760,7 @@ GtkEntry.entry { ... @}
   @end{dictionary}
   @see-class{gtk:style-context}
   @see-class{gtk:icon-source}
-  @see-class{gdk:pixbuf}
+  @see-class{gdk-pixbuf:pixbuf}
   @see-symbol{gtk:icon-size}
   @see-function{gtk:icon-theme-load-icon}"
   (context (g:object style-context))
@@ -2809,7 +2810,7 @@ GtkEntry.entry { ... @}
 (defcfun ("gtk_render_icon" %render-icon) :void
   (context (g:object style-context))
   (cr (:pointer (:struct cairo:context-t)))
-  (pixbuf (g:object gdk:pixbuf))
+  (pixbuf (g:object gdk-pixbuf:pixbuf))
   (x :double)
   (y :double))
 
@@ -2818,7 +2819,8 @@ GtkEntry.entry { ... @}
  "@version{#2021-11-26}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[cr]{a @symbol{cairo:context-t} context}
-  @argument[pixbuf]{a @class{gdk:pixbuf} object containing the icon to draw}
+  @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object containing the icon to
+    draw}
   @argument[x]{a number, coerced to a double float, with the x position for the
     pixbuf}
   @argument[y]{a number, coerced to a double float, with the y position for the
@@ -2829,9 +2831,9 @@ GtkEntry.entry { ... @}
   @end{short}
   @see-class{gtk:style-context}
   @see-symbol{cairo:context-t}
-  @see-class{gdk:pixbuf}"
+  @see-class{gdk-pixbuf:pixbuf}"
   (%render-icon context cr pixbuf (coerce x 'double-float)
-                                      (coerce y 'double-float)))
+                                  (coerce y 'double-float)))
 
 (export 'render-icon)
 

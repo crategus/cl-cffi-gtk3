@@ -1597,7 +1597,7 @@ lambda (entry)    :action
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "primary-icon-pixbuf" 'entry) t)
- "The @code{primary-icon-pixbuf} property of type @class{gdk:pixbuf}
+ "The @code{primary-icon-pixbuf} property of type @class{gdk-pixbuf:pixbuf}
   (Read / Write) @br{}
   A pixbuf to use as the primary icon for the entry.")
 
@@ -1605,18 +1605,18 @@ lambda (entry)    :action
 (setf (liber:alias-for-function 'entry-primary-icon-pixbuf)
       "Accessor"
       (documentation 'entry-primary-icon-pixbuf 'function)
- "@version{2023-3-4}
+ "@version{2023-3-12}
   @syntax[]{(gtk:entry-primary-icon-pixbuf object) => pixbuf}
   @syntax[]{(setf (gtk:entry-primary-icon-pixbuf object) pixbuf)}
   @argument[object]{a @class{gtk:entry} widget}
-  @argument[pixbuf]{a @class{gdk:pixbuf} object}
+  @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object}
   @begin{short}
     Accessor of the @slot[gtk:entry]{primary-icon-pixbuf} slot of the
     @class{gtk:entry} class.
   @end{short}
   A pixbuf to use as the primary icon for the entry.
   @see-class{gtk:entry}
-  @see-class{gdk:pixbuf}")
+  @see-class{gdk-pixbuf:pixbuf}")
 
 ;;; --- entry-primary-icon-sensitive -------------------------------------------
 
@@ -1951,7 +1951,7 @@ lambda (entry)    :action
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "secondary-icon-pixbuf"
                                                'entry) t)
- "The @code{secondary-icon-pixbuf} property of type @class{gdk:pixbuf}
+ "The @code{secondary-icon-pixbuf} property of type @class{gdk-pixbuf:pixbuf}
   (Read / Write) @br{}
   A pixbuf to use as the secondary icon for the entry.")
 
@@ -1959,18 +1959,18 @@ lambda (entry)    :action
 (setf (liber:alias-for-function 'entry-secondary-icon-pixbuf)
       "Accessor"
       (documentation 'entry-secondary-icon-pixbuf 'function)
- "@version{2023-3-4}
+ "@version{2023-3-12}
   @syntax[]{(gtk:entry-secondary-icon-pixbuf object) => pixbuf}
   @syntax[]{(setf (gtk:entry-secondary-icon-pixbuf object) pixbuf)}
   @argument[object]{a @class{gtk:entry} widget}
-  @argument[pixbuf]{a @class{gdk:pixbuf} object}
+  @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object}
   @begin{short}
     Accessor of the @slot[gtk:entry]{secondary-icon-pixbuf} slot of the
     @class{gtk:entry} class.
   @end{short}
   A pixbuf to use as the secondary icon for the entry.
   @see-class{gtk:entry}
-  @see-class{gdk:pixbuf}
+  @see-class{gdk-pixbuf:pixbuf}
   @see-function{gtk:entry-icon-pixbuf}")
 
 ;;; --- entry-secondary-icon-sensitive -----------------------------------------
@@ -2795,21 +2795,21 @@ lambda (entry)    :action
 
 (defcfun ("gtk_entry_set_icon_from_pixbuf" entry-set-icon-from-pixbuf) :void
  #+liber-documentation
- "@version{#2023-3-4}
+ "@version{#2023-3-12}
   @argument[entry]{a @class{gtk:entry} widget}
   @argument[pos]{a @symbol{gtk:entry-icon-position} value}
-  @argument[pixbuf]{a @class{gdk:pixbuf} object, or @code{nil}}
+  @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object, or @code{nil}}
   @begin{short}
     Sets the icon shown in the specified position using a pixbuf.
   @end{short}
   If the @arg{pixbuf} argument is @code{nil}, no icon will be shown in the
   specified position.
   @see-class{gtk:entry}
-  @see-class{gdk:pixbuf}
+  @see-class{gdk-pixbuf:pixbuf}
   @see-symbol{gtk:entry-icon-position}"
   (entry (g:object entry))
   (pos entry-icon-position)
-  (pixbuf (g:object gdk:pixbuf)))
+  (pixbuf (g:object gdk-pixbuf:pixbuf)))
 
 (export 'entry-set-icon-from-pixbuf)
 
@@ -2932,22 +2932,22 @@ lambda (entry)    :action
 
 (defun entry-icon-pixbuf (entry pos)
  #+liber-documentation
- "@version{#2023-3-4}
+ "@version{#2023-3-12}
   @argument[entry]{a @class{gtk:entry} widget}
   @argument[pos]{a @symbol{gtk:entry-icon-position} value}
   @begin{return}
-    A @class{gdk:pixbuf} object, or @code{nil} if no icon is set for this
-    position.
+    A @class{gdk-pixbuf:pixbuf} object, or @code{nil} if no icon is set for
+    this position.
   @end{return}
   @begin{short}
     Retrieves the image used for the icon.
   @end{short}
   Unlike the other methods of setting and getting icon data, this method will
-  work regardless of whether the icon was set using a @class{gdk:pixbuf}
+  work regardless of whether the icon was set using a @class{gdk-pixbuf:pixbuf}
   object, a @class{g:icon} object, a stock item, or an icon name.
   @see-class{gtk:entry}
   @see-class{g:icon}
-  @see-class{gdk:pixbuf}
+  @see-class{gdk-pixbuf:pixbuf}
   @see-symbol{gtk:entry-icon-position}"
   (cond ((eq pos :primary)
          (entry-primary-icon-pixbuf entry))

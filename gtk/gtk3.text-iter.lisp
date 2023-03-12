@@ -678,16 +678,16 @@
 (defcfun ("gtk_text_iter_get_pixbuf" text-iter-pixbuf)
     (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
- "@version{2023-2-2}
+ "@version{2023-2-12}
   @argument[iter]{a @class{gtk:text-iter} instance}
-  @return{The @class{gdk:pixbuf} object at the iterator.}
+  @return{The @class{gdk-pixbuf:pixbuf} object at the iterator.}
   @begin{short}
     If the element at the iterator is a pixbuf, the pixbuf is returned.
   @end{short}
   Otherwise, @code{nil} is returned.
   @see-class{gtk:text-iter}
   @see-class{gtk:text-buffer}
-  @see-class{gdk:pixbuf}"
+  @see-class{gdk-pixbuf:pixbuf}"
   (iter (g:boxed text-iter)))
 
 (export 'text-iter-pixbuf)

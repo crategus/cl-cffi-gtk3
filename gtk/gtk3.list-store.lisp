@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.list-store.lisp
+;;; gtk3.list-store.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -89,7 +89,7 @@
 
 #+liber-documentation
 (setf (documentation 'list-store 'type)
- "@version{#2021-4-21}
+ "@version{#2023-3-12}
   @begin{short}
     The @sym{gtk:list-store} object is a list model for use with a
     @class{gtk:tree-view} widget.
@@ -106,8 +106,8 @@
   object will keep a reference to the object instead of copying the value. As a
   result, if the object is modified, it is up to the application writer to call
   the @fun{gtk:tree-model-row-changed} function to emit the \"row-changed\"
-  signal. This most commonly affects lists with @class{gdk:pixbuf} objects
-  stored.
+  signal. This most commonly affects lists with @class{gdk-pixbuf:pixbuf}
+  objects stored.
 
   @subheading{Performance Considerations}
     Internally, the @sym{gtk:list-store} object was implemented with a linked
@@ -206,12 +206,13 @@
    </object>
     @end{pre}
   @end{dictionary}
+  @see-constructor{gtk:list-store-new}
   @see-class{gtk:tree-view}
   @see-class{gtk:tree-model}
   @see-class{gtk:tree-sortable}
   @see-class{gtk:tree-model-filter}
   @see-class{gtk:buildable}
-  @see-class{gdk:pixbuf}
+  @see-class{gdk-pixbuf:pixbuf}
   @see-symbol{gtk:tree-model-flags}
   @see-function{gtk:list-store-set}
   @see-function{gtk:list-store-append}
@@ -908,4 +909,4 @@
 
 (export 'list-store-move-after)
 
-;;; --- End of file gtk.list-store.lisp ----------------------------------------
+;;; --- End of file gtk3.list-store.lisp ---------------------------------------

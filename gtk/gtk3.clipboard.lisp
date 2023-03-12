@@ -252,21 +252,21 @@
 (setf (liber:alias-for-symbol 'clipboard-image-received-func)
       "Callback"
       (liber:symbol-documentation 'clipboard-image-received-func)
- "@version{#2021-10-6}
+ "@version{#2023-3-12}
   @begin{short}
     A callback function to be called when the results of the
-    @fun{gtk:clipboard-request-image} function are received, or when the request
-    fails.
+    @fun{gtk:clipboard-request-image} function are received, or when the
+    request fails.
   @end{short}
   @begin{pre}
  lambda (clipboard pixbuf)
   @end{pre}
   @begin[code]{table}
     @entry[clipboard]{A @class{gtk:clipboard} object.}
-    @entry[pixbuf]{The received @class{gdk:pixbuf} object.}
+    @entry[pixbuf]{The received @class{gdk-pixbuf:pixbuf} object.}
   @end{table}
   @see-class{gtk:clipboard}
-  @see-class{gdk:pixbuf}
+  @see-class{gdk-pixbuf:pixbuf}
   @see-function{gtk:clipboard-request-image}")
 
 (export 'clipboard-image-received-func)
@@ -737,16 +737,16 @@
 
 (defcfun ("gtk_clipboard_set_image" clipboard-set-image) :void
  #+liber-documentation
- "@version{#2021-10-6}
+ "@version{#2023-3-12}
   @argument[clipboard]{a @class{gtk:clipboard} object}
-  @argument[pixbuf]{a @class{gdk:pixbuf} object}
+  @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object}
   @begin{short}
     Sets the contents of the clipboard to the given pixbuf.
   @end{short}
   GTK will take responsibility for responding for requests for the image, and
   for converting the image into the requested format.
   @see-class{gtk:clipboard}
-  @see-class{gdk:pixbuf}"
+  @see-class{gdk-pixbuf:pixbuf}"
   (clipboard (g:object clipboard))
   (pixbuf (g:object gdk-pixbuf:pixbuf)))
 
@@ -833,7 +833,7 @@
 
 (defun clipboard-request-image (clipboard func)
  #+liber-documentation
- "@version{#2021-10-6}
+ "@version{#2023-3-12}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[func]{a @symbol{gtk:clipboard-image-receibed-func} callback function
     to call when the image is received, or the retrieval fails. It will always
@@ -841,11 +841,11 @@
   @begin{short}
     Requests the contents of the clipboard as image.
   @end{short}
-  When the image is later received, it will be converted to a @class{gdk:pixbuf}
-  object, and the callback function will be called.
+  When the image is later received, it will be converted to a
+  @class{gdk-pixbuf:pixbuf} object, and the callback function will be called.
 
   The @arg{pixbuf} parameter to the callback function will contain the resulting
-  @class{gdk:pixbuf} object if the request succeeded, or @code{nil} if it
+  @class{gdk-pixbuf:pixbuf} object if the request succeeded, or @code{nil} if it
   failed. This could happen for various reasons, in particular if the clipboard
   was empty or if the contents of the clipboard could not be converted into an
   image.
@@ -1014,18 +1014,18 @@
 (defcfun ("gtk_clipboard_wait_for_image" clipboard-wait-for-image)
     (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
- "@version{#2021-10-6}
+ "@version{#2023-3-12}
   @argument[clipboard]{a @class{gtk:clipboard} object}
-  @return{A newly allocated @class{gdk:pixbuf} object, or @code{nil} if
+  @return{A newly allocated @class{gdk-pixbuf:pixbuf} object, or @code{nil} if
     retrieving the selection data failed.}
   @begin{short}
     Requests the contents of the clipboard as image and converts the result to
-    a @class{gdk:pixbuf} object.
+    a @class{gdk-pixbuf:pixbuf} object.
   @end{short}
   This function waits for the data to be received using the main loop, so
   events, timeouts, etc, may be dispatched during the wait.
   @see-class{gtk:clipboard}
-  @see-class{gdk:pixbuf}"
+  @see-class{gdk-pixbuf:pixbuf}"
   (clipboard (g:object clipboard)))
 
 (export 'clipboard-wait-for-image)

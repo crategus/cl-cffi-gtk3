@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.assistant.lisp
+;;; gtk3.assistant.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -234,7 +234,7 @@
         Default value: @em{true}
       @end{entry}
       @begin[header-image]{entry}
-        The @code{header-image} child property of type @class{gdk:pixbuf}
+        The @code{header-image} child property of type @class{gdk-pixbuf:pixbuf}
         (Read / Write) @br{}
         The image used to be displayed in the page header. @br{}
         @em{Warning:} The @code{header-image} child property has been deprecated
@@ -249,8 +249,8 @@
         Default value: @code{:content}
       @end{entry}
       @begin[sidebar-image]{entry}
-        The @code{sidebar-image} child property of type @class{gdk:pixbuf}
-        (Read / Write) @br{}
+        The @code{sidebar-image} child property of type
+        @class{gdk-pixbuf:pixbuf} (Read / Write) @br{}
         The image used to be displayed in the sidebar. @br{}
         @em{Warning:} The @code{sidebar-image} child property has been
         deprecated since version 3.2 and should not be used in newly written
@@ -455,17 +455,16 @@
 (setf (liber:alias-for-function 'assistant-child-header-image)
       "Accessor"
       (documentation 'assistant-child-header-image 'function)
- "@version{#2021-11-2}
+ "@version{#2023-3-12}
   @syntax[]{(gtk:assistant-child-header-image container child) => image}
   @syntax[]{(setf (gtk:assistant-child-header-image container child) image)}
   @argument[container]{a @class{gtk:assistant} widget}
   @argument[child]{a @class{gtk:widget} page of the assistant}
-  @argument[image]{a @class{gdk:pixbuf} image}
+  @argument[image]{a @class{gdk-pixbuf:pixbuf} image}
   @begin{short}
     Accessor of the @code{header-image} child property of the
     @class{gtk:assistant} class.
   @end{short}
-
   The image used to be displayed in the page header.
   @begin[Warning]{dictionary}
     The @code{header-image} child property has been deprecated since version 3.2
@@ -474,7 +473,7 @@
   @end{dictionary}
   @see-class{gtk:assistant}
   @see-class{gtk:widget}
-  @see-class{gdk:pixbuf}")
+  @see-class{gdk-pixbuf:pixbuf}")
 
 ;;; --- assistant-child-page-type ----------------------------------------------
 
@@ -513,17 +512,16 @@
 (setf (liber:alias-for-function 'assistant-child-sidebar-image)
       "Accessor"
       (documentation 'assistant-child-sidebar-image 'function)
- "@version{#2021-10-26}
+ "@version{#2023-3-12}
   @syntax[]{(gtk:assistant-child-sidebar-image container child) => image}
   @syntax[]{(setf (gtk:assistant-child-sidebar-image container child) image)}
   @argument[container]{a @class{gtk:assistant} widget}
   @argument[child]{a @class{gtk:widget} page of the assistant}
-  @argument[image]{a @class{gdk:pixbuf} image}
+  @argument[image]{a @class{gdk-pixbuf:pixbuf} image}
   @begin{short}
     Accessor of the @code{sidebar-image} child property of the
     @class{gtk:assistant} class.
   @end{short}
-
   The image used to be displayed in the sidebar.
   @begin[Warning]{dictionary}
     The @code{sidebar-image} child property has been deprecated since version
@@ -532,7 +530,7 @@
   @end{dictionary}
   @see-class{gtk:assistant}
   @see-class{gtk:widget}
-  @see-class{gdk:pixbuf}")
+  @see-class{gdk-pixbuf:pixbuf}")
 
 ;;; --- assistant-child-title --------------------------------------------------
 
@@ -1180,4 +1178,4 @@
 
 (export 'assistant-previous-page)
 
-;;; --- End of file gtk.assistant.lisp -----------------------------------------
+;;; --- End of file gtk3.assistant.lisp ----------------------------------------

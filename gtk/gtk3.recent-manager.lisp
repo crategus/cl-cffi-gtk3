@@ -989,17 +989,17 @@ lambda (manager)    :run-first
 (defcfun ("gtk_recent_info_get_icon" recent-info-icon)
     (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
- "@version{#2023-1-29}
+ "@version{#2023-3-12}
   @argument[info]{a @class{gtk:recent-info} instance}
   @argument[size]{an integer with the size of the icon in pixels}
   @begin{return}
-    A @class{gdk:pixbuf} object containing the icon, or @code{nil}.
+    A @class{gdk-pixbuf:pixbuf} object containing the icon, or @code{nil}.
   @end{return}
   @begin{short}
     Retrieves the icon of size @arg{size} associated to the resource MIME type.
   @end{short}
   @see-class{gtk:recent-info}
-  @see-class{gdk:pixbuf}"
+  @see-class{gdk-pixbuf:pixbuf}"
   (info (g:boxed recent-info))
   (size :int))
 

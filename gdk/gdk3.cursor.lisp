@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gdk.cursor.lisp
+;;; gdk3.cursor.lisp
 ;;;
 ;;; The documentation of this file is taken from the GDK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -38,7 +38,7 @@
 ;;;
 ;;; Functions
 ;;;
-;;;     gdk_cursor_new                                     deprectated
+;;;     gdk_cursor_new                                     deprecated
 ;;;     gdk_cursor_new_from_pixbuf
 ;;;     gdk_cursor_new_from_surface
 ;;;     gdk_cursor_new_from_name
@@ -52,8 +52,8 @@
 ;;;
 ;;; Properties
 ;;;
-;;;     GdkCursorType    cursor-type    Read / Write / Construct Only
-;;;        GdkDisplay*   display        Read / Write / Construct Only
+;;;     cursor-type
+;;;     display
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -364,18 +364,23 @@
 
 #+liber-documentation
 (setf (documentation 'cursor 'type)
- "@version{#2021-12-11}
+ "@version{#2023-3-12}
   @begin{short}
     The @sym{gdk:cursor} object represents a cursor.
   @end{short}
   There is a number of standard cursors, but it is also possible to construct
-  new cursors from pixbufs. There may be limitations as to what kinds of cursors
-  can be constructed on a given display.
+  new cursors from pixbufs. There may be limitations as to what kinds of
+  cursors can be constructed on a given display.
 
   Cursors by themselves are not very interesting, they must be bound to a window
   for users to see them. This is done with the @fun{gdk:window-cursor} function
   or by setting the cursor member of the @symbol{gdk:window-attr} instance
   passed to the @fun{gdk:window-new} function.
+  @see-constructor{gdk:cursor-new}
+  @see-constructor{gdk:cursor-new-from-pixbuf}
+  @see-constructor{gdk:cursor-new-from-surface}
+  @see-constructor{gdk:cursor-new-from-name}
+  @see-constructor{gdk:cursor-new-for-display}
   @see-slot{gdk:cursor-cursor-type}
   @see-slot{gdk:cursor-display}
   @see-class{gdk:display}
@@ -477,13 +482,13 @@
 ;;; gdk_cursor_new_from_pixbuf ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_cursor_new_from_pixbuf" cursor-new-from-pixbuf)
-    (g:object cursor)
+(defcfun ("gdk_cursor_new_from_pixbuf" cursor-new-from-pixbuf) (g:object cursor)
  #+liber-documentation
- "@version{#2021-12-11}
+ "@version{#2023-3-12}
   @argument[display]{a @class{gdk:display} object for which the cursor will
     be created}
-  @argument[pixbuf]{a @class{gdk:pixbuf} object containing the cursor image}
+  @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object containing the cursor
+    image}
   @argument[x]{an integer with the horizontal offset of the 'hotspot' of the
     cursor}
   @argument[y]{an integer with the vertical offset of the 'hotspot' of the
@@ -492,7 +497,6 @@
   @begin{short}
     Creates a new cursor from a pixbuf.
   @end{short}
-
   Not all GDK backends support RGBA cursors. If they are not supported, a
   monochrome approximation will be displayed. The
   @fun{gdk:display-supports-cursor-alpha} and
@@ -662,19 +666,19 @@
 
 (defcfun ("gdk_cursor_get_image" cursor-image) (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
- "@version{#2021-12-11}
+ "@version{#2023-3-12}
   @argument[cursor]{a @class{gdk:cursor} object}
-  @return{A @class{gdk:pixbuf} object representing @arg{cursor}, or @code{nil}.}
+  @return{A @class{gdk-pixbuf:pixbuf} object representing @arg{cursor}, or
+    @code{nil}.}
   @begin{short}
-    Returns a @class{gdk:pixbuf} object with the image used to display the
-    cursor.
+    Returns a @class{gdk-pixbuf:pixbuf} object with the image used to display
+    the cursor.
   @end{short}
-
   Note that depending on the capabilities of the windowing system and on the
   cursor, GDK may not be able to obtain the image data. In this case, @code{nil}
   is returned.
   @see-class{gdk:cursor}
-  @see-class{gdk:pixbuf}"
+  @see-class{gdk-pixbuf:pixbuf}"
   (cursor (g:object cursor)))
 
 (export 'cursor-image)
@@ -760,4 +764,4 @@
   @see-class{gdk:cursor}"
   (g:object-unref cursor))
 
-;;; --- End of file gdk.cursor.lisp --------------------------------------------
+;;; --- End of file gdk3.cursor.lisp -------------------------------------------

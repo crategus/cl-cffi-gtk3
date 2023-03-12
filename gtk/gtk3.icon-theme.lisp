@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.icon-theme.lisp
+;;; gtk3.icon-theme.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -145,7 +145,7 @@
 (setf (liber:alias-for-symbol 'icon-lookup-flags)
       "GFlags"
       (liber:symbol-documentation 'icon-lookup-flags)
- "@version{#2021-11-28}
+ "@version{#2023-3-12}
   @begin{short}
     Used to specify options for the @fun{gtk:icon-theme-lookup-icon} function.
   @end{short}
@@ -164,10 +164,11 @@
   (:dir-rtl          #.(ash 1 8)))
    @end{pre}
   @begin[code]{table}
-    @entry[:no-svg]{Never get SVG icons, even if the @class{gdk:pixbuf} class
-      supports them. Cannot be used together with @code{:force-svg}.}
-    @entry[:force-svg]{Get SVG icons, even if the @class{gdk:pixbuf} class
-      does not support them. Cannot be used together with @code{:no-svg}.}
+    @entry[:no-svg]{Never get SVG icons, even if the @class{gdk-pixbuf:pixbuf}
+      object supports them. Cannot be used together with @code{:force-svg}.}
+    @entry[:force-svg]{Get SVG icons, even if the @class{gdk-pixbuf:pixbuf}
+      object does not support them. Cannot be used together with
+      @code{:no-svg}.}
     @entry[:use-builtin]{When passed to the @fun{gtk:icon-theme-lookup-icon}
       function includes built-in icons as well as files. For a built-in icon,
       the @fun{gtk:icon-info-filename} function returns @code{nil} and you need
@@ -187,7 +188,7 @@
       direction.}
   @end{table}
   @see-class{gtk:icon-theme}
-  @see-class{gdk:pixbuf}
+  @see-class{gdk-pixbuf:pixbuf}
   @see-function{gtk:icon-theme-lookup-icon}
   @see-function{gtk:icon-theme-choose-icon}
   @see-function{gtk:icon-info-filename}
@@ -831,7 +832,7 @@
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_icon_theme_load_icon" %icon-theme-load-icon)
-    (g:object gdk:pixbuf)
+    (g:object gdk-pixbuf:pixbuf)
   (theme (g:object icon-theme))
   (name :string)
   (size :int)
@@ -840,14 +841,14 @@
 
 (defun icon-theme-load-icon (theme name size flags)
  #+liber-documentation
- "@version{#2021-11-28}
+ "@version{#2023-3-12}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @argument[name]{a string with the name of the icon to lookup}
   @argument[size]{an integer with the desired icon size, the resulting icon may
     not be exactly this size}
   @argument[flags]{a @symbol{gtk:icon-lookup-flags} value modifying the
     behavior of the icon lookup}
-  @return{The rendered icon as a @class{gdk:pixbuf} object.}
+  @return{The rendered icon as a @class{gdk-pixbuf:pixbuf} object.}
   @begin{short}
     Looks up an icon in an icon theme, scales it to the given size and renders
     it into a pixbuf.
@@ -859,15 +860,15 @@
   Note that you probably want to listen for icon theme changes and update the
   icon. This is usually done by connecting to the \"style-updated\" signal.
   If for some reason you do not want to update the icon when the icon theme
-  changes, you should consider using the @fun{gdk:pixbuf-copy} function to make
-  a private copy of the pixbuf returned by this function. Otherwise GTK may
-  need to keep the old icon theme loaded, which would be a waste of memory.
+  changes, you should consider using the @fun{gdk-pixbuf:pixbuf-copy} function
+  to make a private copy of the pixbuf returned by this function. Otherwise GTK
+  may need to keep the old icon theme loaded, which would be a waste of memory.
   @see-class{gtk:icon-theme}
-  @see-class{gdk:pixbuf}
+  @see-class{gdk-pixbuf:pixbuf}
   @see-symbol{gtk:icon-lookup-flags}
   @see-function{gtk:icon-info-load-icon}
   @see-function{gtk:icon-theme-lookup-icon}
-  @see-function{gdk:pixbuf-copy}"
+  @see-function{gdk-pixbuf:pixbuf-copy}"
   (with-ignore-g-error (err)
     (%icon-theme-load-icon theme name size flags err)))
 
@@ -878,7 +879,7 @@
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_icon_theme_load_icon_for_scale"
-          %icon-theme-load-icon-for-scale) (g:object gdk:pixbuf)
+          %icon-theme-load-icon-for-scale) (g:object gdk-pixbuf:pixbuf)
   (theme (g:object icon-theme))
   (name :string)
   (size :int)
@@ -888,14 +889,14 @@
 
 (defun icon-theme-load-icon-for-scale (theme name size scale flags)
  #+liber-documentation
- "@version{#2021-11-28}
+ "@version{#2023-3-12}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @argument[name]{a string with the name of the icon to lookup}
   @argument[size]{an integer with the desired icon size}
   @argument[scale]{an integer with the desired scale}
   @argument[flags]{a @symbol{gtk:icon-lookup-flags} flags modifying the
     behavior of the icon lookup}
-  @return{The rendered icon as a @class{gdk:pixbuf} object.}
+  @return{The rendered icon as a @class{gdk-pixbuf:pixbuf} object.}
   @begin{short}
     Looks up an icon in an icon theme for a particular window scale, scales it
     to the given size and renders it into a pixbuf.
@@ -909,15 +910,15 @@
   Note that you probably want to listen for icon theme changes and update the
   icon. This is usually done by connecting to the \"style-updated\" signal.
   If for some reason you do not want to update the icon when the icon theme
-  changes, you should consider using the @fun{gdk:pixbuf-copy} function to make
-  a private copy of the pixbuf returned by this function. Otherwise GTK may
-  need to keep the old icon theme loaded, which would be a waste of memory.
+  changes, you should consider using the @fun{gdk-pixbuf:pixbuf-copy} function
+  to make a private copy of the pixbuf returned by this function. Otherwise GTK
+  may need to keep the old icon theme loaded, which would be a waste of memory.
   @see-class{gtk:icon-theme}
-  @see-class{gdk:pixbuf}
+  @see-class{gdk-pixbuf:pixbuf}
   @see-symbol{gtk:icon-lookup-flags}
   @see-function{gtk:icon-info-load-icon}
   @see-function{gtk:icon-theme-lookup-icon}
-  @see-function{gdk:pixbuf-copy}"
+  @see-function{gdk-pixbuf:pixbuf-copy}"
   (with-g-error (err)
     (%icon-theme-load-icon-for-scale theme name size scale flags err)))
 
@@ -1097,14 +1098,13 @@
 ;;; gtk_icon_theme_add_builtin_icon ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_icon_theme_add_builtin_icon" icon-theme-add-builtin-icon)
-    :void
+(defcfun ("gtk_icon_theme_add_builtin_icon" icon-theme-add-builtin-icon) :void
  #+liber-documentation
- "@version{#2021-11-28}
+ "@version{#2023-3-12}
   @argument[name]{a string with the name of the icon to register}
   @argument[size]{an integer with the size at which to register the icon}
-  @argument[pixbuf]{a @class{gdk:pixbuf} object that contains the image to use
-    for the icon}
+  @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object that contains the image
+    to use for the icon}
   @begin{short}
     Registers a built-in icon for icon theme lookups.
   @end{short}
@@ -1119,8 +1119,8 @@
   should also install the icon in the icon theme, so that the icon is generally
   available.
   @begin[Warning]{dictionary}
-    The @sym{gtk:icon-theme-add-builtin-icon} function has been deprecated since
-    version 3.14 and should not be used in newly written code. Use the
+    The @sym{gtk:icon-theme-add-builtin-icon} function has been deprecated
+    since version 3.14 and should not be used in newly written code. Use the
     @fun{gtk:icon-theme-add-resource-path} function to add application specific
     icons to the icon theme.
   @end{dictionary}
@@ -1128,7 +1128,7 @@
   @see-function{gtk:icon-theme-add-resource-path}"
   (name :string)
   (size :int)
-  (pixbuf (g:object gdk:pixbuf)))
+  (pixbuf (g:object gdk-pixbuf:pixbuf)))
 
 (export 'icon-theme-add-builtin-icon)
 
@@ -1182,19 +1182,20 @@
 (defcfun ("gtk_icon_info_new_for_pixbuf" icon-info-new-for-pixbuf)
     (:pointer (:struct icon-info))
  #+liber-documentation
- "@version{#2021-11-28}
+ "@version{#2023-3-12}
   @argument[theme]{a @class{gtk:icon-theme} object}
-  @argument[pixbuf]{a @class{gdk:pixbuf} object to wrap in a
+  @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object to wrap in a
     @symbol{gtk:icon-info} instance}
   @return{A @symbol{gtk:icon-info} instance.}
   @begin{short}
-    Creates a @symbol{gtk:icon-info} instance for a @class{gdk:pixbuf} object.
+    Creates a @symbol{gtk:icon-info} instance for a @class{gdk-pixbuf:pixbuf}
+    object.
   @end{short}
   @see-class{gtk:icon-theme}
-  @see-class{gdk:pixbuf}
+  @see-class{gdk-pixbuf:pixbuf}
   @see-symbol{gtk:icon-info}"
   (theme (g:object icon-theme))
-  (pixbuf (g:object gdk:pixbuf)))
+  (pixbuf (g:object gdk-pixbuf:pixbuf)))
 
 (export 'icon-info-new-for-pixbuf)
 
@@ -1297,11 +1298,12 @@
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_icon_info_get_builtin_pixbuf" icon-info-builtin-pixbuf)
-    (g:object gdk:pixbuf)
+    (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
- "@version{#2021-11-28}
+ "@version{#2023-3-12}
   @argument[info]{a @symbol{gtk:icon-info} instance}
-  @return{The built-in image as a @class{gdk:pixbuf} object, or @code{nil}.}
+  @return{The built-in image as a @class{gdk-pixbuf:pixbuf} object, or
+    @code{nil}.}
   @begin{short}
     Gets the built-in image for this icon, if any.
   @end{short}
@@ -1313,7 +1315,7 @@
     @fun{gtk:icon-theme-add-resource-path} function instead of built-in icons.
   @end{dictionary}
   @see-symbol{gtk:icon-info}
-  @see-class{gdk:pixbuf}
+  @see-class{gdk-pixbuf:pixbuf}
   @see-function{gtk:icon-theme-lookup-icon}
   @see-function{gtk:icon-theme-add-resource-path}"
   (info (:pointer (:struct icon-info))))
@@ -1325,15 +1327,15 @@
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_icon_info_load_icon" %icon-info-load-icon)
-    (g:object gdk:pixbuf)
+    (g:object gdk-pixbuf:pixbuf)
   (info (:pointer (:struct icon-info)))
   (err :pointer))
 
 (defun icon-info-load-icon (info)
  #+liber-documentation
- "@version{#2021-11-28}
+ "@version{#2023-3-12}
   @argument[info]{a @symbol{gtk:icon-info} instance}
-  @return{The @class{gdk:pixbuf} object with the rendered icon.}
+  @return{The @class{gdk-pixbuf:pixbuf} object with the rendered icon.}
   @begin{short}
     Renders an icon previously looked up in an icon theme using the
     @fun{gtk:icon-theme-lookup-icon} function.
@@ -1350,7 +1352,7 @@
   If this flag has been specified, the pixbuf returned by this function will be
   scaled to the exact size.
   @see-symbol{gtk:icon-info}
-  @see-class{gdk:pixbuf}
+  @see-class{gdk-pixbuf:pixbuf}
   @see-symbol{gtk:icon-lookup-flags}
   @see-function{gtk:icon-theme-lookup-icon}"
   (with-g-error (err)
@@ -1460,7 +1462,7 @@
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_icon_info_load_symbolic" %icon-info-load-symbolic)
-    (g:object gdk:pixbuf)
+    (g:object gdk-pixbuf:pixbuf)
   (info (:pointer (:struct icon-info)))
   (fg (g:boxed gdk:rgba))
   (success (g:boxed gdk:rgba))
@@ -1471,13 +1473,13 @@
 
 (defun icon-info-load-symbolic (info fg success warning error)
  #+liber-documentation
- "@version{#2021-11-28}
+ "@version{#2023-3-12}
   @argument[info]{a @symbol{gtk:icon-info} instance}
   @argument[fg]{a @class{gdk:rgba} foreground color}
   @argument[success]{a @class{gdk:rgba} success color}
   @argument[warning]{a @class{gdk:rgba} warning color}
   @argument[error]{a @class{gdk:rgba} error color}
-  @return{A @class{gdk:pixbuf} object representing the loaded icon.}
+  @return{A @class{gdk-pixbuf:pixbuf} object representing the loaded icon.}
   @begin{short}
     Loads an icon, modifying it to match the system colours for the foreground,
     success, warning and error colors provided.
@@ -1494,7 +1496,7 @@
   'fg', 'success', 'warning' and 'error' CSS styles in the SVG file itself.
   @see-symbol{gtk:icon-info}
   @see-class{gdk:rgba}
-  @see-class{gdk:pixbuf}
+  @see-class{gdk-pixbuf:pixbuf}
   @see-function{gtk:icon-info-load-icon}
   @see-function{g-themed-icon-new-with-default-fallbacks}"
   (with-g-error (err)
@@ -1640,7 +1642,7 @@
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_icon_info_load_symbolic_for_context"
-          %icon-info-load-symbolic-for-context) (g:object gdk:pixbuf)
+          %icon-info-load-symbolic-for-context) (g:object gdk-pixbuf:pixbuf)
   (info (:pointer (:struct icon-info)))
   (context (g:object style-context))
   (was-symbolic (:pointer :boolean))
@@ -1648,10 +1650,10 @@
 
 (defun icon-info-load-symbolic-for-context (info context)
  #+liber-documentation
- "@version{#2021-11-28}
+ "@version{#2023-3-12}
   @argument[info]{a @symbol{gtk:icon-info} instance}
   @argument[context]{a @class{gtk:style-context} object}
-  @return{A @class{gdk:pixbuf} object representing the loaded icon.}
+  @return{A @class{gdk-pixbuf:pixbuf} object representing the loaded icon.}
   @begin{short}
     Loads an icon, modifying it to match the system colors for the foreground,
     success, warning and error colors provided.
@@ -1666,6 +1668,7 @@
   See the @fun{gtk:icon-info-load-symbolic} function for more details.
   @see-symbol{gtk:icon-info}
   @see-class{gtk:style-context}
+  @see-class{gdk-pixbuf:pixbuf}
   @see-function{gtk:icon-info-load-icon}
   @see-function{gtk:icon-info-load-symbolic}"
   (with-g-error (err)
@@ -1892,4 +1895,4 @@
 
 (export 'icon-info-is-symbolic)
 
-;;; --- End of file gtk.icon-theme.lisp ----------------------------------------
+;;; --- End of file gtk3.icon-theme.lisp ---------------------------------------

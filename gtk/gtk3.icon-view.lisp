@@ -744,7 +744,7 @@ lambda (view)    :action
 (setf (liber:alias-for-function 'icon-view-pixbuf-column)
       "Accessor"
       (documentation 'icon-view-pixbuf-column 'function)
- "@version{#2023-3-10}
+ "@version{#2023-3-12}
   @syntax[]{(gtk:icon-view-pixbuf-column object) => column}
   @syntax[]{(setf (gtk:icon-view-pixbuf-column object) column)}
   @argument[object]{a @class{gtk:icon-view} widget}
@@ -760,7 +760,7 @@ lambda (view)    :action
 
   The pixbuf column must be of type \"GdkPixbuf\".
   @see-class{gtk:icon-view}
-  @see-class{gdk:pixbuf}")
+  @see-class{gdk-pixbuf:pixbuf}")
 
 ;;; --- icon-view-reorderable --------------------------------------------------
 

@@ -408,7 +408,7 @@
     Functions for obtaining pixbufs.
 
     Pixbufs are client-side images. For details on how to create and manipulate
-    pixbufs, see the @class{gdk:pixbuf} API documentation. The functions
+    pixbufs, see the @class{gdk-pixbuf:pixbuf} API documentation. The functions
     described here allow to obtain pixbufs from @class{gdk:window} objects and
     Cairo surfaces.
     @about-function{pixbuf-from-window}
@@ -1351,7 +1351,7 @@ got_value (gpointer user_data)
     GDK does not wrap the Cairo API, instead it allows to create Cairo contexts
     which can be used to draw on @class{gdk:window} objects. Additional
     functions allow use @class{gdk:rectangle} instances with Cairo and to use
-    @class{gdk:color}, @class{gdk:rgba}, @class{gdk:pixbuf} and
+    @class{gdk:color}, @class{gdk:rgba}, @class{gdk-pixbuf:pixbuf} and
     @class{gdk:window} objects as sources for drawing operations.
     @about-class{cairo-surface}
     @about-class{cairo-context}

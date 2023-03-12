@@ -547,16 +547,16 @@
 (defcfun ("gtk_cell_view_new_with_pixbuf" cell-view-new-with-pixbuf)
     (g:object cell-view)
   #+liber-documentation
- "@version{#2021-5-4}
-  @argument[pixbuf]{a @class{gdk:pixbuf} object with the image to display in
-    the cell view}
+ "@version{#2023-3-12}
+  @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object with the image to
+    display in the cell view}
   @return{A newly created @class{gtk:cell-view} widget.}
   @begin{short}
     Creates a new cell view, adds a @class{gtk:cell-renderer-pixbuf} object to
     it, and makes its show pixbuf.
   @end{short}
   @see-class{gtk:cell-view}
-  @see-class{gdk:pixbuf}
+  @see-class{gdk-pixbuf:pixbuf}
   @see-class{gtk:cell-renderer-pixbuf}"
   (pixbuf (g:object gdk-pixbuf:pixbuf)))
 

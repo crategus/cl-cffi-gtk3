@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.window.lisp
+;;; gtk3.window.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
@@ -7,7 +7,7 @@
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -572,6 +572,7 @@
         @entry[widget]{The newly focused @class{gtk:widget} object.}
       @end{table}
   @end{dictionary}
+  @see-constructor{gtk:window-new}
   @see-slot{gtk:window-accept-focus}
   @see-slot{gtk:window-application}
   @see-slot{gtk:window-attached-to}
@@ -1085,34 +1086,33 @@
   effect.
   @see-class{gtk:window}")
 
-;;; --- window-icon --------------------------------------------------------
+;;; --- window-icon ------------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "icon" 'window) t)
- "The @code{icon} property of type @class{gdk:pixbuf} (Read / Write) @br{}
+ "The @code{icon} property of type @class{gdk-pixbuf:pixbuf} (Read / Write)
+  @br{}
   Icon for the window.")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'window-icon)
       "Accessor"
       (documentation 'window-icon 'function)
- "@version{#2021-9-9}
+ "@version{#2023-3-12}
   @syntax[]{(gtk:window-icon object) => icon}
   @syntax[]{(setf (gtk:window-icon object) icon)}
   @argument[object]{a @class{gtk:window} widget}
-  @argument[icon]{a @class{gdk:pixbuf} icon image, or @code{nil}}
+  @argument[icon]{a @class{gdk-pixbuf:pixbuf} icon image, or @code{nil}}
   @begin{short}
     Accessor of the @slot[gtk:window]{icon} slot of the @class{gtk:window}
     class.
   @end{short}
-
-  The @sym{gtk:window-icon} slot access function gets the icon or if you have
-  called the @fun{gtk:window-icon-list} function, gets the first icon in
-  the icon list. The @sym{(setf gtk:window-icon)} slot access function sets up
-  the icon representing the window. This icon is used when the window is
-  minimized, also known as iconified. Some window managers or desktop
-  environments may also place it in the window frame, or display it in other
-  contexts.
+  The @sym{gtk:window-icon} function gets the icon or if you have called the
+  @fun{gtk:window-icon-list} function, gets the first icon in the icon list.
+  The @sym{(setf gtk:window-icon)} function sets up the icon representing the
+  window. This icon is used when the window is minimized, also known as
+  iconified. Some window managers or desktop environments may also place it in
+  the window frame, or display it in other contexts.
 
   The icon should be provided in whatever size it was naturally drawn. That is,
   do not scale the image before passing it to GTK. Scaling is postponed until
@@ -1126,7 +1126,7 @@
   See also the @fun{gtk:window-default-icon-list} function to set the icon
   for all windows in your application in one go.
   @see-class{gtk:window}
-  @see-class{gdk:pixbuf}
+  @see-class{gdk-pixbuf:pixbuf}
   @see-function{gtk:window-icon-list}
   @see-function{gtk:window-default-icon-list}")
 
@@ -2748,31 +2748,35 @@
 ;;; gtk_window_set_default_icon_list () -> window-default-icon-list
 ;;; ----------------------------------------------------------------------------
 
+;; TODO: Check again the memory management of the g:list-t type. The C
+;; documentation says: The list is a copy and should be freed
+;; with g_list_free(), but the pixbufs in the list have not had their reference
+;; count incremented.
+
 (defcfun ("gtk_window_set_default_icon_list" %window-set-default-icon-list)
     :void
-  (icon-list (g:list-t (g:object gdk:pixbuf))))
+  (icon-list (g:list-t (g:object gdk-pixbuf:pixbuf))))
 
 (defun (setf window-default-icon-list) (icon-list)
   (%window-set-default-icon-list (mapcar #'g:object-pointer icon-list)))
 
 (defcfun ("gtk_window_get_default_icon_list" window-default-icon-list)
-    (g:list-t (g:object gdk:pixbuf :free-from-foreign nil))
+    (g:list-t (g:object gdk-pixbuf:pixbuf))
  #+liber-documentation
- "@version{#2021-9-12}
+ "@version{#2023-3-12}
   @syntax[]{(gtk:window-default-icon-list) => icon-list}
   @syntax[]{(setf (gtk:window-default-icon-list) icon-list)}
-  @argument[icon-list]{a list of @class{gdk:pixbuf} instances}
+  @argument[icon-list]{a list of @class{gdk-pixbuf:pixbuf} objects}
   @begin{short}
     Accessor of the icon list of the window.
   @end{short}
-
   The @sym{gtk:window-icon-list} function returns the default icon list. The
   @sym{(setf gtk:window-icon-list)} function sets an icon list to be used as
   fallback for windows that have not had the @fun{gtk:window-icon-list} function
   called on them to set up a window specific icon list. This function allows
   you to set up the icon for all windows in your application at once.
   @see-class{gtk:window}
-  @see-class{gdk:pixbuf}
+  @see-class{gdk-pixbuf:pixbuf}
   @see-function{gtk:window-icon-list}")
 
 (export 'window-default-icon-list)
@@ -2815,23 +2819,22 @@
 
 (defcfun ("gtk_window_set_icon_list" %window-set-icon-list) :void
   (window (g:object window))
-  (icon-list (g:list-t (g:object gdk:pixbuf))))
+  (icon-list (g:list-t (g:object gdk-pixbuf:pixbuf))))
 
 (defun (setf window-icon-list) (icon-list window)
   (%window-set-icon-list window (mapcar #'g:object-pointer icon-list)))
 
 (defcfun ("gtk_window_get_icon_list" window-icon-list)
-    (g:list-t (g:object gdk:pixbuf :free-from-foreign nil) :free-from-foreign t)
+    (g:list-t (g:object gdk-pixbuf:pixbuf))
  #+liber-documentation
- "@version{#2021-9-12}
+ "@version{#2023-3-12}
   @syntax[]{(gtk:window-icon-list window) => icon-list}
   @syntax[]{(setf (gtk:window-icon-list window) icon-list)}
   @argument[window]{a @class{gtk:window} widget}
-  @argument[icon-list]{a list of @class{gdk:pixbuf} instances}
+  @argument[icon-list]{a list of @class{gdk-pixbuf:pixbuf} instances}
   @begin{short}
     Accessor of the icon list of the window.
   @end{short}
-
   The @sym{gtk:window-icon-list} function retrieves the list of icons. The
   @sym{(setf gtk:window-icon-list)} function sets up the icon representing
   the window.
@@ -2847,10 +2850,9 @@
   size is known, to allow best quality.
 
   By passing several sizes, you may improve the final image quality of the
-  icon, by reducing or eliminating automatic image scaling.
-
-  Recommended sizes to provide: 16 x 16, 32 x 32, 48 x 48 at minimum, and larger
-  images 64 x 64, 128 x 128, if you have them.
+  icon, by reducing or eliminating automatic image scaling. Recommended sizes
+  to provide: 16 x 16, 32 x 32, 48 x 48 at minimum, and larger images 64 x 64,
+  128 x 128, if you have them.
 
   See also the @fun{gtk:window-default-icon-list} function to set the icon for
   all windows in your application in one go.
@@ -2860,7 +2862,7 @@
   icon from their transient parent. So there is no need to explicitly set the
   icon on transient windows.
   @see-class{gtk:window}
-  @see-class{gdk:pixbuf}
+  @see-class{gdk-pixbuf:pixbuf}
   @see-function{gtk:window-default-icon-list}
   @see-function{gtk:window-transient-for}"
   (window (g:object window)))
@@ -3258,16 +3260,16 @@
 
 (defcfun ("gtk_window_set_default_icon" window-set-default-icon) :void
  #+liber-documentation
- "@version{#2021-9-12}
-  @argument[icon]{the @class{gdk:pixbuf} icon}
+ "@version{#2023-3-12}
+  @argument[icon]{the @class{gdk-pixbuf:pixbuf} icon}
   @begin{short}
     Sets an icon to be used as fallback for windows that have not had the
     @fun{gtk:window-icon} function called on them from a pixbuf.
   @end{short}
   @see-class{gtk:window}
-  @see-class{gdk:pixbuf}
+  @see-class{gdk-pixbuf:pixbuf}
   @see-function{gtk:window-icon}"
-  (icon (g:object gdk:pixbuf)))
+  (icon (g:object gdk-pixbuf:pixbuf)))
 
 (export 'window-set-default-icon)
 
@@ -3481,4 +3483,4 @@
 
 (export 'window-interactive-debugging)
 
-;;; --- End of file gtk.window.lisp --------------------------------------------
+;;; --- End of file gtk3.window.lisp -------------------------------------------

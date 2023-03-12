@@ -310,17 +310,17 @@ lambda (buffer location anchor)    :run-last
       @begin{pre}
 lambda (buffer location pixbuf)    :run-last
       @end{pre}
-      The signal is emitted to insert a @class{gdk:pixbuf} object in a text
-      buffer. Insertion actually occurs in the default handler. Note that if
-      your handler runs before the default handler it must not invalidate the
-      @arg{location} iterator, or has to revalidate it. The default signal
+      The signal is emitted to insert a @class{gdk-pixbuf:pixbuf} object in a
+      text buffer. Insertion actually occurs in the default handler. Note that
+      if your handler runs before the default handler it must not invalidate
+      the @arg{location} iterator, or has to revalidate it. The default signal
       handler revalidates it to be placed after the inserted @arg{pixbuf}.
       @begin[code]{table}
         @entry[buffer]{The @sym{gtk:text-buffer} object which received the
           signal.}
         @entry[location]{The @class{gtk:text-iter} position to insert
           @arg{pixbuf} in @arg{buffer}.}
-        @entry[pixbuf]{The @class{gdk:pixbuf} object to be inserted.}
+        @entry[pixbuf]{The @class{gdk-pixbuf:pixbuf} object to be inserted.}
       @end{table}
     @subheading{The \"insert-text\" signal}
       @begin{pre}
@@ -423,7 +423,7 @@ lambda (buffer tag start end)    :run-last
 ;;; --- text-buffer-copy-target-list -------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "copy-target-list" 
+(setf (documentation (liber:slot-documentation "copy-target-list"
                                                'text-buffer) t)
  "The @code{copy-target-list} property of type @class{gtk:target-list} (Read)
   @br{}
@@ -765,7 +765,7 @@ lambda (buffer tag start end)    :run-last
 ;;; gtk_text_buffer_insert_interactive ()                  not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_text_buffer_insert_interactive" %text-buffer-insert-interactive) 
+(defcfun ("gtk_text_buffer_insert_interactive" %text-buffer-insert-interactive)
     :boolean
   (buffer (g:object text-buffer))
   (iter (g:boxed text-iter))
@@ -905,9 +905,9 @@ lambda (buffer tag start end)    :run-last
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[iter]{a @class{gtk:text-iter} iterator with a position in the text
     buffer}
-  @argument[start]{a @class{gtk:text-iter} iterator with a position in the text 
+  @argument[start]{a @class{gtk:text-iter} iterator with a position in the text
     buffer}
-  @argument[end]{a @class{gtk:text-iter} iterator with another position in the 
+  @argument[end]{a @class{gtk:text-iter} iterator with another position in the
     same buffer as @arg{start}}
   @argument[editable]{a boolean whether @arg{buffer} is editable by default}
   @return{A boolean whether an insertion was possible at the iterator.}
@@ -1237,10 +1237,10 @@ lambda (buffer tag start end)    :run-last
 
 (defcfun ("gtk_text_buffer_insert_pixbuf" text-buffer-insert-pixbuf) :void
  #+liber-documentation
- "@version{#2023-3-7}
+ "@version{#2023-3-12}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[iter]{a @class{gtk:text-iter} location to insert the pixbuf}
-  @argument[pixbuf]{a @class{gdk:pixbuf} object}
+  @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object}
   @begin{short}
     Inserts an image into the text buffer at @arg{iter}.
   @end{short}
@@ -1251,7 +1251,7 @@ lambda (buffer tag start end)    :run-last
   character for pixbufs, but the \"text\" variants do not, e.g. see the
   @fun{gtk:text-buffer-get-slice} and @fun{gtk:text-buffer-get-text} functions.
   @see-class{gtk:text-buffer}
-  @see-class{gdk:pixbuf}
+  @see-class{gdk-pixbuf:pixbuf}
   @see-function{gtk:text-buffer-get-slice}
   @see-function{gtk:text-buffer-get-text}"
   (buffer (g:object text-buffer))
@@ -1688,7 +1688,7 @@ lambda (buffer tag start end)    :run-last
 ;;; gtk_text_buffer_apply_tag_by_name ()                   no exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_text_buffer_apply_tag_by_name" %text-buffer-apply-tag-by-name) 
+(defcfun ("gtk_text_buffer_apply_tag_by_name" %text-buffer-apply-tag-by-name)
     :void
  #+liber-documentation
  "@version{#2023-3-7}
@@ -2108,7 +2108,7 @@ lambda (buffer tag start end)    :run-last
   @begin{return}
     @arg{start} -- a @class{gtk:text-iter} iterator with the first position in
       the text buffer @br{}
-    @arg{end} -- a @class{gtk:text-iter} iterator with the end position in the 
+    @arg{end} -- a @class{gtk:text-iter} iterator with the end position in the
       text buffer
   @end{return}
   @begin{short}
@@ -2146,10 +2146,10 @@ lambda (buffer tag start end)    :run-last
     Returns @em{true} if the text buffer has been modified.
   @end{short}
   The @sym{gtk:text-buffer-modified} function indicates whether the text buffer
-  has been modified since the last call to the 
+  has been modified since the last call to the
   @sym{(setf gtk:text-buffer-modified)} function.
 
-  Used to keep track of whether the text buffer has been modified since the 
+  Used to keep track of whether the text buffer has been modified since the
   last time it was saved. Whenever the text buffer is saved to disk, call the
   @sym{(setf gtk:text-buffer-modified)} function with the @em{false} value.
   When the text buffer is modified, it will automatically toggle on the

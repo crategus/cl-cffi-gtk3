@@ -1,5 +1,5 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.drag-and-drop.lisp
+;;; gtk3.drag-and-drop.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
@@ -8,7 +8,7 @@
 
 ;;;
 ;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -813,19 +813,19 @@
 
 (defcfun ("gtk_drag_set_icon_pixbuf" drag-set-icon-pixbuf) :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-12}
   @argument[context]{a @class{gdk:drag-context} object for a drag, this must be
     called with a drag context for the source side of a drag}
-  @argument[pixbuf]{a @class{gdk:pixbuf} object to use as the drag icon}
+  @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object to use as the drag icon}
   @argument[x]{an integer with the x offset within widget of the hotspot}
   @argument[y]{an integer with the y offset within widget of the hotspot}
   @begin{short}
     Sets the pixbuf as the icon for a given drag.
   @end{short}
   @see-class{gdk:drag-context}
-  @see-class{gdk:pixbuf}"
+  @see-class{gdk-pixbuf:pixbuf}"
   (context (g:object gdk:drag-context))
-  (pixbuf (g:object gdk:pixbuf))
+  (pixbuf (g:object gdk-pixbuf:pixbuf))
   (x :int)
   (y :int))
 
@@ -1036,22 +1036,21 @@
 ;;; gtk_drag_source_set_icon_pixbuf ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_source_set_icon_pixbuf" drag-source-set-icon-pixbuf)
-    :void
+(defcfun ("gtk_drag_source_set_icon_pixbuf" drag-source-set-icon-pixbuf) :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-12}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[pixbuf]{the @class{gdk:pixbuf} object for the drag icon}
+  @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object for the drag icon}
   @begin{short}
     Sets the icon that will be used for drags from a particular widget from a
     pixbuf.
   @end{short}
   @see-class{gtk:widget}
-  @see-class{gdk:pixbuf}
+  @see-class{gdk-pixbuf:pixbuf}
   @see-function{gtk:drag-source-set-icon-name}
   @see-function{gtk:drag-source-set-icon-gicon}"
   (widget (g:object widget))
-  (pixbuf (g:object gdk:pixbuf)))
+  (pixbuf (g:object gdk-pixbuf:pixbuf)))
 
 (export 'drag-source-set-icon-pixbuf)
 
@@ -1247,4 +1246,4 @@
 
 (export 'drag-source-add-uri-targets)
 
-;;; --- End of file gtk.drag-and-drop.lisp -------------------------------------
+;;; --- End of file gtk3.drag-and-drop.lisp ------------------------------------

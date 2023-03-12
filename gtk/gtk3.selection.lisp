@@ -883,28 +883,28 @@
 
 (defun (setf selection-data-pixbuf) (pixbuf selection)
   (when (cffi:foreign-funcall "gtk_selection_data_set_pixbuf"
-                         (g:boxed selection-data) selection
-                         (g:object gdk:pixbuf :free-to-foreign nil) pixbuf
-                         :boolean)
+                              (g:boxed selection-data) selection
+                              (g:object gdk-pixbuf:pixbuf) pixbuf
+                              :boolean)
     pixbuf))
 
 (defcfun ("gtk_selection_data_get_pixbuf" selection-data-pixbuf)
-    (g:object gdk:pixbuf :free-from-foreign t)
+    (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-12}
   @syntax[]{(gtk:selection-data-pixbuf selection) => pixbuf}
   @syntax[]{(setf (gtk:selection-data-pixbuf selection) pixbuf)}
   @argument[selection]{a @class{gtk:selection-data} instance}
-  @argument[pixbuf]{a @class{gdk:pixbuf} object}
+  @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object}
   @begin{short}
     The @sym{gtk:selection-data-pixbuf} function gets the contents of the
-    selection data as a @class{gdk:pixbuf} object.
+    selection data as a @class{gdk-pixbuf:pixbuf} object.
   @end{short}
   The @sym{(setf gtk:selection-data-pixbuf)} function sets the contents of the
   selection. The pixbuf is converted to the form determined by the target of
   the selection.
   @see-class{gtk:selection-data}
-  @see-class{gdk:pixbuf}"
+  @see-class{gdk-pixbuf:pixbuf}"
   (selection (g:boxed selection-data)))
 
 (export 'selection-data-pixbuf)
@@ -977,7 +977,7 @@
 (defcfun ("gtk_selection_data_targets_include_image"
            selection-data-targets-include-image) :boolean
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-12}
   @argument[selection]{a @class{gtk:selection-data} instance}
   @argument[writable]{a boolean whether to accept only targets for which GTK
     knows how to convert a pixbuf into the format}
@@ -987,11 +987,11 @@
   @end{return}
   @begin{short}
     Given a @class{gtk:selection-data} instance holding a list of targets,
-    determines if any of the targets can be used to provide a @class{gdk:pixbuf}
-    object.
+    determines if any of the targets can be used to provide a
+    @class{gdk-pixbuf:pixbuf} object.
   @end{short}
   @see-class{gtk:selection-data}
-  @see-class{gdk:pixbuf}"
+  @see-class{gdk-pixbuf:pixbuf}"
   (selection (g:boxed selection-data))
   (writeable :boolean))
 
@@ -1237,7 +1237,7 @@
 
 (defun targets-include-image (targets writable)
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-12}
   @argument[targets]{a list of @symbol{gdk:atom-as-string} as strings}
   @argument[writable]{a boolean whether to accept only targets for which GTK
     knows how to convert a pixbuf into the format}
@@ -1245,10 +1245,10 @@
     images, otherwise @em{false}.}
   @begin{short}
     Determines if any of the targets in the @arg{targets} argument can be used
-    to provide a @class{gdk:pixbuf} object.
+    to provide a @class{gdk-pixbuf:pixbuf} object.
   @end{short}
   @see-class{gdk:atom-as-string}
-  @see-class{gdk:pixbuf}"
+  @see-class{gdk-pixbuf:pixbuf}"
   (let ((n-targets (length targets)))
     (with-foreign-object (targets-ar :pointer n-targets)
       (loop for i from 0 below n-targets

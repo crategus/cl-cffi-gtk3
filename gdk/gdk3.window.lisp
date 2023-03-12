@@ -4294,9 +4294,10 @@ lambda (window)
 
 (defcfun ("gdk_window_set_icon_list" window-set-icon-list) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-3-12}
   @argument[window]{a toplevel @class{gdk:window} window to set the icon of}
-  @argument[pixbufs]{a list of @class{gdk:pixbuf} objects, of different sizes}
+  @argument[pixbufs]{a list of @class{gdk-pixbuf:pixbuf} objects, of different
+    sizes}
   @begin{short}
     Sets a list of icons for the window.
   @end{short}
@@ -4307,7 +4308,7 @@ lambda (window)
   window manager may only need to scale the icon by a small amount or not at
   all.
   @see-class{gdk:window}
-  @see-class{gdk:pixbuf}"
+  @see-class{gdk-pixbuf:pixbuf}"
   (window (g:object window))
   (pixbufs (g:list-t (g:object gdk-pixbuf:pixbuf))))
 
