@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.popover.lisp
+;;; gtk3.popover.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
-;;; Copyright (C) 2019 - 2021 Dieter Kaiser
+;;; Copyright (C) 2019 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -59,16 +59,16 @@
 ;;;
 ;;; Properties
 ;;;
-;;;     GtkPopoverConstraint    constrain-to           Read / Write
-;;;                 gboolean    modal                  Read / Write
-;;;             GdkRectangle*   pointing-to            Read / Write
-;;;          GtkPositionType    position               Read / Write
-;;;                GtkWidget*   relative-to            Read / Write
-;;;                 gboolean    transitions-enabled    Read / Write
+;;;     constrain-to
+;;;     modal
+;;;     pointing-to
+;;;     position
+;;;     relative-to
+;;;     transitions-enabled
 ;;;
 ;;; Signals
 ;;;
-;;;                     void    closed                 Run Last
+;;;     closed
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -102,7 +102,7 @@
 (setf (liber:alias-for-symbol 'popover-constraint)
       "GEnum"
       (liber:symbol-documentation 'popover-constraint)
- "@version{#2021-12-25}
+ "@version{#2023-3-12}
   @begin{short}
     Describes constraints to positioning of popovers.
   @end{short}
@@ -178,10 +178,10 @@
 
   @subheading{GtkPopover as menu replacement}
   A @sym{gtk:popover} widget is often used to replace menus. To facilitate this,
-  it supports being populated from a @class{g-menu-model} object, using the
-  @fun{gtk:popover-new-from-model} function. In addition to all the regular menu
-  model features, this function supports rendering sections in the model in a
-  more compact form, as a row of icon buttons instead of menu items.
+  it supports being populated from a @class{g:menu-model} object, using the
+  @fun{gtk:popover-new-from-model} function. In addition to all the regular
+  menu model features, this function supports rendering sections in the model
+  in a more compact form, as a row of icon buttons instead of menu items.
 
   To use this rendering, set the \"display-hint\" attribute of the section to
   \"horizontal-buttons\" and set the icons of your items with the \"verb-icon\"
@@ -231,6 +231,8 @@
         @entry[popover]{The @sym{gtk:popover} widget which received the signal.}
       @end{table}
   @end{dictionary}
+  @see-constructor{gtk:popover-new}
+  @see-constructor{gtk:popover-new-from-model}
   @see-slot{gtk:popover-constrain-to}
   @see-slot{gtk:popover-modal}
   @see-slot{gtk:popover-pointing-to}
@@ -243,7 +245,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- popover-constrain-to -----------------------------------------------
+;;; --- popover-constrain-to ---------------------------------------------------
 
 #+(and gtk-3-20 liber-documentation)
 (setf (documentation (liber:slot-documentation "constrain-to" 'popover) t)
@@ -256,7 +258,7 @@
 (setf (liber:alias-for-function 'popover-constrain-to)
       "Accessor"
       (documentation 'popover-constrain-to 'function)
- "@version{#2021-12-25}
+ "@version{#2023-3-12}
   @syntax[]{(gtk:popover-constrain-to object) => constraint}
   @syntax[]{(setf (gtk:popover-constrain-to object) constraint)}
   @argument[object]{a @class{gtk:popover} widget}
@@ -266,10 +268,9 @@
     Accessor of the @slot[gtk:popover]{constrain-to} slot of the
     @class{gtk:popover} class.
   @end{short}
-
-  The @sym{gtk:popover-constrain-to} slot access function returns the constraint
-  for placing this popover. The @sym{(setf gtk:popover-constrain-to)} slot
-  access function sets a constraint for positioning this popover.
+  The @sym{gtk:popover-constrain-to} function returns the constraint for
+  placing this popover. The @sym{(setf gtk:popover-constrain-to)} function sets
+  a constraint for positioning this popover.
 
   Note that not all platforms support placing popovers freely, and may already
   impose constraints.
@@ -278,7 +279,7 @@
   @see-class{gtk:popover}
   @see-symbol{gtk:popover-constraint}")
 
-;;; --- popover-modal ------------------------------------------------------
+;;; --- popover-modal ----------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "modal" 'popover) t)
@@ -291,7 +292,7 @@
 (setf (liber:alias-for-function 'popover-modal)
       "Accessor"
       (documentation 'popover-modal 'function)
- "@version{#2021-12-25}
+ "@version{#2023-3-12}
   @syntax[]{(gtk:popover-modal object) => modal}
   @syntax[]{(setf (gtk:popover-modal object) modal)}
   @argument[object]{a @class{gtk:popover} widget}
@@ -301,16 +302,14 @@
     Accessor of the @slot[gtk:popover]{modal} slot of the @class{gtk:popover}
     class.
   @end{short}
-
-  The @sym{gtk:popover-modal} slot access function returns whether the popover
-  is modal. The @sym{(setf gtk:popover-modal)} slot access function sets whether
-  the popover is modal, a modal popover will grab all input within the toplevel
-  and grab the keyboard focus on it when being displayed. Clicking outside the
-  popover area or pressing the @kbd{Escape} key will dismiss the popover and
-  ungrab input.
+  The @sym{gtk:popover-modal} function returns whether the popover is modal.
+  The @sym{(setf gtk:popover-modal)} function sets whether the popover is modal,
+  a modal popover will grab all input within the toplevel and grab the keyboard
+  focus on it when being displayed. Clicking outside the popover area or
+  pressing the @kbd{Escape} key will dismiss the popover and ungrab input.
   @see-class{gtk:popover}")
 
-;;; --- popover-pointing-to ------------------------------------------------
+;;; --- popover-pointing-to ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "pointing-to" 'popover) t)
@@ -322,7 +321,7 @@
 (setf (liber:alias-for-function 'popover-pointing-to)
       "Accessor"
       (documentation 'popover-pointing-to 'function)
- "@version{#2021-12-25}
+ "@version{#2023-3-12}
   @syntax[]{(gtk:popover-pointing-to object) => rect}
   @syntax[]{(setf (gtk:popover-pointing-to object) rect)}
   @argument[object]{a @class{gtk:popover} widget}
@@ -331,7 +330,6 @@
     Accessor of the @slot[gtk:popover]{pointing-to} slot of the
     @class{gtk:popover} class.
   @end{short}
-
   Sets the rectangle that the popover will point to, in the coordinate space of
   the widget the popover is attached to, see the @fun{gtk:popover-relative-to}
   function.
@@ -339,7 +337,7 @@
   @see-class{gdk:rectangle}
   @see-function{gtk:popover-relative-to}")
 
-;;; --- popover-position ---------------------------------------------------
+;;; --- popover-position -------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "position" 'popover) t)
@@ -352,7 +350,7 @@
 (setf (liber:alias-for-function 'popover-position)
       "Accessor"
       (documentation 'popover-position 'function)
- "@version{#2021-12-25}
+ "@version{#2023-3-12}
   @syntax[]{(gtk:popover-pointing-to object) => position}
   @syntax[]{(setf (gtk:popover-pointing-to object) position)}
   @argument[object]{a @class{gtk:popover} widget}
@@ -362,11 +360,10 @@
     Accessor of the @slot[gtk:popover]{position} slot of the
     @class{gtk:popover} class.
   @end{short}
-
-  The @sym{gtk:popover-position} slot access function returns the preferred
-  position of the popover. The @sym{(setf gtk:popover-position)} slot access
-  function sets the preferred position for the popover to appear. If the popover
-  is currently visible, it will be immediately updated.
+  The @sym{gtk:popover-position} function returns the preferred position of the
+  popover. The @sym{(setf gtk:popover-position)} function sets the preferred
+  position for the popover to appear. If the popover is currently visible, it
+  will be immediately updated.
 
   This preference will be respected where possible, although on lack of space,
   e.g. if close to the window edges, the @class{gtk:popover} widget may choose
@@ -374,7 +371,7 @@
   @see-class{gtk:popover}
   @see-symbol{gtk:position-type}")
 
-;;; --- popover-relative-to ------------------------------------------------
+;;; --- popover-relative-to ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "relative-to" 'popover) t)
@@ -386,7 +383,7 @@
 (setf (liber:alias-for-function 'popover-relative-to)
       "Accessor"
       (documentation 'popover-relative-to 'function)
- "@version{#2021-12-25}
+ "@version{#2023-3-12}
   @syntax[]{(gtk:popover-relative-to object) => relative-to}
   @syntax[]{(setf (gtk:popover-relative-to object) relative-to)}
   @argument[object]{a @class{gtk:popover} widget}
@@ -395,11 +392,10 @@
     Accessor of the @slot[gtk:popover]{relative-to} slot of the
     @class{gtk:popover} class.
   @end{short}
-
-  The @sym{gtk:popover-relative-to} slot access function returns the widget
-  the popover is currently attached to. The @sym{(setf gtk:popover-relative-to)}
-  slot access function sets a new widget to be attached to the popover. If the
-  popover is visible, the position will be updated.
+  The @sym{gtk:popover-relative-to} function returns the widget the popover is
+  currently attached to. The @sym{(setf gtk:popover-relative-to)} function sets
+  a new widget to be attached to the popover. If the popover is visible, the
+  position will be updated.
   @begin[Note]{dictionary}
     The ownership of popovers is always given to their @arg{relative-to}
     widget, so if the @arg{relative-to} argument is set to @code{nil} on an
@@ -409,7 +405,7 @@
   @see-class{gtk:popover}
   @see-class{gtk:widget}")
 
-;;; --- popover-transitions-enabled ----------------------------------------
+;;; --- popover-transitions-enabled --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "transitions-enabled"
@@ -428,7 +424,7 @@
 (setf (liber:alias-for-function 'popover-transitions-enabled)
       "Accessor"
       (documentation 'popover-transitions-enabled 'function)
- "@version{#2021-12-25}
+ "@version{#2023-3-12}
   @syntax[]{(gtk:popover-transitions-enabled object) => enabled}
   @syntax[]{(setf (gtk:popover-transitions-enabled object) enabled)}
   @argument[object]{a @class{gtk:popover} widget}
@@ -437,18 +433,16 @@
     Accessor of the @slot[gtk:popover]{transitions-enabled} slot of the
     @class{gtk:popover} class.
   @end{short}
-
-  The @sym{gtk:popover-transitions-enabled} slot access function returns whether
-  show/hide transitions are enabled on this popover. The
-  @sym{(setf gtk:popover-transitions-enabled)} slot access function sets whether
-  show/hide transitions are enabled on this popover.
+  The @sym{gtk:popover-transitions-enabled} function returns whether show/hide
+  transitions are enabled on this popover. The
+  @sym{(setf gtk:popover-transitions-enabled)} function sets whether show/hide
+  transitions are enabled on this popover.
   @begin[Warning]{dictionary}
-    The @sym{gtk:popover-transitions-enabled} slot access function has been
-    deprecated since version 3.22 and should not be used in newly written code.
-    You can show or hide the popover without transitions using the
-    @fun{gtk:widget-show} and @fun{gtk:widget-hide} functions while the
-    @fun{gtk:popover-popup} and @fun{gtk:popover-popdown} functions will use
-    transitions.
+    The @sym{gtk:popover-transitions-enabled} function has been deprecated since
+    version 3.22 and should not be used in newly written code. You can show or
+    hide the popover without transitions using the @fun{gtk:widget-show} and
+    @fun{gtk:widget-hide} functions while the @fun{gtk:popover-popup} and
+    @fun{gtk:popover-popdown} functions will use transitions.
   @end{dictionary}
   @see-class{gtk:popover}
   @see-function{gtk:widget-show}
@@ -464,7 +458,7 @@
 
 (defun popover-new (relative-to)
  #+liber-documentation
- "@version{#2021-12-25}
+ "@version{#2023-3-12}
   @argument[relative-to]{a @class{gtk:widget} the popover is related to}
   @return{A new @class{gtk:popover} widget.}
   @short{Creates a new popover to point to @arg{relative-to}.}
@@ -479,12 +473,11 @@
 ;;; gtk_popover_new_from_model ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_popover_new_from_model" popover-new-from-model)
-    (g:object widget)
+(defcfun ("gtk_popover_new_from_model" popover-new-from-model) (g:object widget)
  #+liber-documentation
- "@version{#2021-12-25}
+ "@version{#2023-3-12}
   @argument[relative-to]{a @class{gtk:widget} the popover is related to}
-  @argument[model]{a @class{g-menu-model} object}
+  @argument[model]{a @class{g:menu-model} object}
   @return{A new @class{gtk:popover} widget.}
   @begin{short}
     Creates a popover and populates it according to @arg{model}.
@@ -514,15 +507,14 @@
 
 (defcfun ("gtk_popover_bind_model" popover-bind-model) :void
  #+liber-documentation
- "@version{#2021-12-25}
+ "@version{#2023-3-12}
   @argument[popover]{a @class{gtk:popover} widget}
-  @argument[model]{a @class{g-menu-model} object to bind to or @code{nil} to
+  @argument[model]{a @class{g:menu-model} object to bind to or @code{nil} to
     remove the binding}
   @argument[namespace]{a string with the namespace for actions in @arg{model}}
   @begin{short}
     Establishes a binding between a popover and a menu model.
   @end{short}
-
   The contents of the popover are removed and then refilled with menu items
   according to the menu model. When the menu model changes, the popover is
   updated. Calling this function twice on the popover with different menu model
@@ -544,15 +536,15 @@
   hierarchy using the @fun{gtk:widget-insert-action-group} function. As an
   example, if you created a group with a \"quit\" action and inserted it with
   the name \"mygroup\" then you would use the action name \"mygroup.quit\" in
-  your @class{g-menu-model} object.
+  your @class{g:menu-model} object.
   @see-class{gtk:popover}
-  @see-class{g-menu-model}
+  @see-class{g:menu-model}
   @see-class{gtk:actionable}
   @see-class{gtk:menu-shell}
   @see-class{gtk:application-window}
   @see-function{gtk:widget-insert-action-group}"
   (popover (g:object popover))
-  (model (g:object g-menu-model))
+  (model (g:object g:menu-model))
   (namespace :string))
 
 (export 'popover-bind-model)
@@ -564,13 +556,13 @@
 #+gtk-3-22
 (defcfun ("gtk_popover_popup" popover-popup) :void
  #+liber-documentation
- "@version{#2021-12-25}
+ "@version{#2023-3-12}
   @argument[popover]{a @class{gtk:popover} widget}
   @begin{short}
     Pops the popover up.
   @end{short}
-  This is different than a @fun{gtk:widget-show} call in that it shows the
-  popover with a transition. If you want to show the popover without a
+  This is different than a @fun{gtk:widget-show} function call in that it shows
+  the popover with a transition. If you want to show the popover without a
   transition, use the @fun{gtk:widget-show} function.
 
   Since 3.22
@@ -588,13 +580,13 @@
 #+gtk-3-22
 (defcfun ("gtk_popover_popdown" popover-popdown) :void
  #+liber-documentation
- "@version{#2021-12-25}
+ "@version{#2023-3-12}
   @argument[popover]{a @class{gtk:popover} widget}
   @begin{short}
     Pops the popover down.
   @end{short}
-  This is different than a @fun{gtk:widget-hide} call in that it shows the
-  popover with a transition. If you want to hide the popover without a
+  This is different than a @fun{gtk:widget-hide} function call in that it shows
+  the popover with a transition. If you want to hide the popover without a
   transition, use the @fun{gtk:widget-hide} function.
 
   Since 3.22
@@ -613,16 +605,16 @@
 #+gtk-3-18
 (defun (setf popover-default-widget) (widget popover)
   (cffi:foreign-funcall "gtk_popover_set_default_widget"
-                   (g:object popover) popover
-                   (g:object widget) widget
-                   :void)
+                        (g:object popover) popover
+                        (g:object widget) widget
+                        :void)
   widget)
 
 #+gtk-3-18
 (defcfun ("gtk_popover_get_default_widget" popover-default-widget)
     (g:object widget)
  #+liber-documentation
- "@version{#2021-12-25}
+ "@version{#2023-3-12}
   @syntax[]{(gtk:popover-default-widget popover) => widget}
   @syntax[]{(setf (gtk:popover-default-widget popover) widget)}
   @argument[popover]{a @class{gtk:popover} widget}
@@ -630,7 +622,6 @@
   @begin{short}
     Accessor of the default widget.
   @end{short}
-
   The @sym{gtk:popover-default-widget} function gets the widget that should be
   set as the default while the popover is shown. The
   @sym{(setf gtk:popover-default-widget)} function sets the widget that should
@@ -647,4 +638,4 @@
 #+gtk-3-18
 (export 'popover-default-widget)
 
-;;; --- End of file gtk.popover.lisp -------------------------------------------
+;;; --- End of file gtk3.popover.lisp ------------------------------------------

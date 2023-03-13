@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.popover-menu.lisp
+;;; gtk3.popover-menu.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
 ;;;
-;;; Copyright (C) 2019 - 2022 Dieter Kaiser
+;;; Copyright (C) 2019 - 2023 Dieter Kaiser
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License for Lisp
@@ -41,12 +41,12 @@
 ;;;
 ;;; Properties
 ;;;
-;;;     gchar*   visible-submenu    Read / Write
+;;;     visible-submenu
 ;;;
 ;;; Child Properties
 ;;;
-;;;      gint    position           Read / Write
-;;;     gchar*   submenu            Read / Write
+;;;     position
+;;;     submenu
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -81,7 +81,7 @@
 
 #+liber-documentation
 (setf (documentation 'popover-menu 'type)
- "@version{#2021-12-24}
+ "@version{#2023-3-12}
   @begin{short}
     The @sym{gtk:popover-menu} class is a subclass of the @class{gtk:popover}
     class that treats its children like menus and allows switching between them.
@@ -89,8 +89,8 @@
   It is meant to be used primarily together with @class{gtk:model-button}
   widgets, but any widget can be used, such as @class{gtk:spin-button} or
   @class{gtk:scale} widgets. In this respect, the @sym{gtk:popover-menu} widget
-  is more flexible than popovers that are created from a @class{g-menu-model}
-  class with the @fun{gtk:popover-new-from-model} function.
+  is more flexible than popovers that are created from a @class{g:menu-model}
+  object with the @fun{gtk:popover-new-from-model} function.
 
   To add a child as a submenu, set the @code{submenu} child property to the
   name of the submenu. To let the user open this submenu, add a
@@ -176,18 +176,21 @@
       @end{entry}
     @end{table}
   @end{dictionary}
+  @see-constructor{gtk:popover-menu-new}
+  @see-slot{gtk:popover-menu-visible-submenu}
   @see-class{gtk:popover}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- popover-menu-visible-submenu ---------------------------------------
+;;; --- popover-menu-visible-submenu -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "visible-submenu"
                                                'popover-menu) t)
- "The @code{visible-submenu} property of type @code{:string} (Read / Write)@br{}
+ "The @code{visible-submenu} property of type @code{:string} (Read / Write)
+  @br{}
   The name of the visible submenu. @br{}
   Default value: @code{nil}")
 
@@ -195,7 +198,7 @@
 (setf (liber:alias-for-function 'popover-menu-visible-submenu)
       "Accessor"
       (documentation 'popover-menu-visible-submenu 'function)
- "@version{#2021-12-24}
+ "@version{#2023-3-12}
   @syntax[]{(gtk:popover-menu-visible-submenu object) => submenu}
   @syntax[]{(setf (gtk:popover-menu-visible-submenu object) submenu)}
   @argument[object]{a @class{gtk:popover-menu} widget}
@@ -204,7 +207,6 @@
     Accessor of the @slot[gtk:popover-menu]{visible-submenu} slot of the
     @class{gtk:popover-menu} class.
   @end{short}
-
   The name of the visible submenu.
   @see-class{gtk:popover-menu}")
 
@@ -220,7 +222,7 @@
 (setf (liber:alias-for-function 'popover-menu-child-position)
       "Accessor"
       (documentation 'popover-menu-child-position 'function)
- "@version{#2021-12-24}
+ "@version{#2023-3-12}
   @syntax[]{(gtk:popover-menu-child-position container child) => position}
   @syntax[]{(setf (gtk:popover-menu-child-position container child) position)}
   @argument[container]{a @class{gtk:popover-menu} widget}
@@ -230,7 +232,6 @@
     Accessor of the @code{position} child property of the
     @class{gtk:popover-menu} class.
   @end{short}
-
   The index of the child in the parent.
   @see-class{gtk:popover-menu}
   @see-class{gtk:widget}")
@@ -243,7 +244,7 @@
 (setf (liber:alias-for-function 'popover-menu-child-submenu)
       "Accessor"
       (documentation 'popover-menu-child-submenu 'function)
- "@version{#2021-12-24}
+ "@version{#2023-3-12}
   @syntax[]{(gtk:popover-menu-child-submenu container child) => submenu}
   @syntax[]{(setf (gtk:popover-menu-child-submenu container child) submenu)}
   @argument[container]{a @class{gtk:popover-menu} widget}
@@ -253,7 +254,6 @@
     Accessor of the @code{submenu} child property of the
     @class{gtk:popover-menu} class.
   @end{short}
-
   The @code{submenu} child property specifies the name of the submenu. If it is
   @code{nil} or @code{main}, the child is used as the main menu, which is shown
   initially when the popover is mapped.
@@ -267,7 +267,7 @@
 (declaim (inline popover-menu-new))
 
 (defun popover-menu-new ()
- "@version{#2021-12-24}
+ "@version{#2023-3-12}
   @return{A new @class{gtk:popover-menu} widget.}
   @short{Creates a new popover menu.}
   @see-class{gtk:popover-menu}"
@@ -280,7 +280,7 @@
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_popover_menu_open_submenu" popover-menu-open-submenu) :void
- "@version{#2021-12-24}
+ "@version{#2023-3-12}
   @argument[popover]{a @class{gtk:popover-menu} widget}
   @argument[name]{a string with the name of the menu to switch to}
   @begin{short}
@@ -300,4 +300,4 @@
 
 (export 'popover-menu-open-submenu)
 
-;;; --- End of file gtk.popover-menu.lisp --------------------------------------
+;;; --- End of file gtk3.popover-menu.lisp -------------------------------------
