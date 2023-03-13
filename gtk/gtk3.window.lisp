@@ -2523,11 +2523,9 @@
 ;;; gtk_window_fullscreen_on_monitor ()
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-18
-(defcfun ("gtk_window_fullscreen_on_monitor" window-fullscreen-on-monitor)
-    :void
+(defcfun ("gtk_window_fullscreen_on_monitor" window-fullscreen-on-monitor) :void
  #+liber-documentation
- "@version{#2021-9-12}
+ "@version{#2023-3-13}
   @argument[window]{a @class{gtk:window} widget}
   @argument[screen]{a @class{gdk:screen} object to draw on}
   @argument[monitor]{an integer which monitor to go fullscreen on}
@@ -2539,8 +2537,6 @@
 
   You can track the fullscreen state via the \"window-state-event\" signal on
   the @class{gtk:widget} widget.
-
-  Since 3.18
   @see-class{gtk:window}
   @see-class{gtk:widget}
   @see-class{gdk:screen}"
@@ -2548,7 +2544,6 @@
   (screen (g:object gdk:screen))
   (monitor :int))
 
-#+gtk-3-18
 (export 'window-fullscreen-on-monitor)
 
 ;;; ----------------------------------------------------------------------------
