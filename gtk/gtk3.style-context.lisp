@@ -2051,10 +2051,9 @@ GtkEntry.entry { ... @}
 ;;; gtk_style_context_to_string ()
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-20
 (defcfun ("gtk_style_context_to_string" style-context-to-string) :string
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-13}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[flags]{a value of the @symbol{gtk:style-context-print-flags} flags
     that determine what to print}
@@ -2062,7 +2061,6 @@ GtkEntry.entry { ... @}
   @begin{short}
     Converts the style context into a string representation.
   @end{short}
-
   The string representation always includes information about the name, state,
   ID, visibility and style classes of the CSS node that is backing the style
   context. Depending on the flags, more information may be included.
@@ -2070,8 +2068,6 @@ GtkEntry.entry { ... @}
   This function is intended for testing and debugging of the CSS implementation
   in GTK. There are no guarantees about the format of the returned string, it
   may change.
-
-  Since 3.20
   @begin[Example]{dictionary}
     @begin{pre}
 (setq context
@@ -2099,7 +2095,6 @@ GtkEntry.entry { ... @}
   (context (g:object style-context))
   (flags style-context-print-flags))
 
-#+gtk-3-20
 (export 'style-context-to-string)
 
 ;;; ----------------------------------------------------------------------------
@@ -2191,7 +2186,6 @@ GtkEntry.entry { ... @}
 ;;; gtk_render_background_get_clip () -> render-background-clip
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-20
 (defcfun ("gtk_render_background_get_clip" %render-background-clip) :void
   (context (g:object style-context))
   (x :double)
@@ -2200,10 +2194,9 @@ GtkEntry.entry { ... @}
   (height :double)
   (out-clip (g:boxed gdk:rectangle)))
 
-#+gtk-3-20
 (defun render-background-clip (context x y width height)
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-13}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[x]{a number, coerced to a double float, with the x origin of the
     render area}
@@ -2217,20 +2210,17 @@ GtkEntry.entry { ... @}
     Returns the area that will be affected, i.e. drawn to, when calling the
     @fun{gtk:render-background} function for the given context and rectangle.
   @end{short}
-
-  Since 3.20
   @see-class{gtk:style-context}
   @see-class{gdk:rectangle}
   @see-function{gtk:render-background}"
   (let ((out-clip (gdk:rectangle-new)))
     (%render-background-clip context (coerce x 'double-float)
-                                         (coerce y 'double-float)
-                                         (coerce width 'double-float)
-                                         (coerce height 'double-float)
-                                         out-clip)
+                                     (coerce y 'double-float)
+                                     (coerce width 'double-float)
+                                     (coerce height 'double-float)
+                                     out-clip)
     out-clip))
 
-#+gtk-3-20
 (export 'render-background-clip)
 
 ;;; ----------------------------------------------------------------------------

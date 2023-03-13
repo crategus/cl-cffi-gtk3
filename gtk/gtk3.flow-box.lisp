@@ -194,7 +194,7 @@ lambda (child)    :action
     to its orientation.
   @end{short}
 
-  @image[flow-box]{}
+  @image[flow-box]{Figure: GtkFlowBox}
 
   For instance, with the horizontal orientation, the widgets will be arranged
   from left to right, starting a new row under the previous row when necessary.
@@ -624,7 +624,7 @@ lambda (flowbox)    :action
 (defcfun ("gtk_flow_box_get_child_at_pos" flow-box-child-at-pos)
     (g:object flow-box-child)
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2023-3-13}
   @argument[flowbox]{a @class{gtk:flow-box} widget}
   @argument[x]{an integer with the x coordinate of the child widget}
   @argument[y]{an integer with the y coordinate of the child widget}
@@ -634,8 +634,6 @@ lambda (flowbox)    :action
   @begin{short}
     Gets the child widget in the flow box at the given coordinates.
   @end{short}
-
-  Since 3.22
   @see-class{gtk:flow-box}
   @see-class{gtk:flow-box-child}"
   (flowbox (g:object flow-box))
@@ -1047,18 +1045,17 @@ lambda (child1 child2)
 ;;; GtkFlowBoxCreateWidgetFunc ()
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-18
 (defcallback flow-box-create-widget-func (g:object widget)
     ((item :pointer)
      (data :pointer))
   (let ((ptr (glib:get-stable-pointer-value data)))
     (funcall ptr item)))
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-symbol 'flow-box-create-widget-func)
       "Callback"
       (liber:symbol-documentation 'flow-box-create-widget-func)
- "@version{#2023-3-5}
+ "@version{#2023-3-13}
   @begin{short}
     Called for flow boxes that are bound to a @class{g:list-model} object with
     the @fun{gtk:flow-box-bind-model} function for each item that gets added to
@@ -1077,15 +1074,12 @@ lambda (item)
   @see-class{gtk:widget}
   @see-function{gtk:flow-box-bind-model}")
 
-#+gtk-3-18
 (export 'flow-box-create-widget-func)
-
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_flow_box_bind_model ()
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-18
 (defcfun ("gtk_flow_box_bind_model" %flow-box-bind-model) :void
   (flowbox (g:object flow-box))
   (model (g:object g-list-model))
@@ -1093,10 +1087,9 @@ lambda (item)
   (data :pointer)
   (notify :pointer))
 
-#+gtk-3-18
 (defun flow-box-bind-model (flowbox model func)
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2023-3-13}
   @argument[flowbox]{a @class{gtk:flow-box} widget}
   @argument[model]{a @class{g:list-model} object to be bound to @arg{flowbox}}
   @argument[func]{a @symbol{gtk:flow-box-create-widget-func} callback function
@@ -1130,7 +1123,6 @@ lambda (item)
           (glib:allocate-stable-pointer func)
           (cffi:callback glib:stable-pointer-destroy-notify)))
 
-#+gtk-3-18
 (export 'flow-box-bind-model)
 
 ;;; ----------------------------------------------------------------------------

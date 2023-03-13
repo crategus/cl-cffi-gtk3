@@ -1312,23 +1312,18 @@
 ;;; gtk_clipboard_get_selection ()
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-22
-(defcfun ("gtk_clipboard_get_selection" clipboard-selection)
-    gdk:atom-as-string
+(defcfun ("gtk_clipboard_get_selection" clipboard-selection) gdk:atom-as-string
  #+liber-documentation
- "@version{#2021-10-6}
+ "@version{#2023-3-13}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @return{The @symbol{gdk:atom-as-string} as a string with the selection.}
   @begin{short}
     Gets the selection that this clipboard is for.
   @end{short}
-
-  Since 3.22
   @see-class{gtk:clipboard}
   @see-symbol{gdk:atom-as-string}"
   (clipboard (g:object clipboard)))
 
-#+gtk-3-22
 (export 'clipboard-selection)
 
 ;;; --- End of file gtk3.clipboard.lisp ----------------------------------------

@@ -525,19 +525,17 @@
 ;;; gtk_widget_path_iter_set_object_name () -> widget-path-iter-object-name
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-20
 (defun (setf widget-path-iter-object-name) (value path pos)
   (cffi:foreign-funcall "gtk_widget_path_iter_set_object_name"
-                   (g:boxed widget-path) path
-                   :int pos
-                   :string value)
+                        (g:boxed widget-path) path
+                        :int pos
+                        :string value)
   value)
 
-#+gtk-3-20
-(defcfun ("gtk_widget_path_iter_get_object_name"
-           widget-path-iter-object-name) :string
+(defcfun ("gtk_widget_path_iter_get_object_name" widget-path-iter-object-name)
+    :string
  #+liber-documentation
- "@version{#2021-11-27}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:widget-path-iter-object-name path pos) => name}
   @syntax[]{(setf (gtk:widget-path-iter-object-name path pos) name)}
   @argument[path]{a @class{gtk:widget-path} instance}
@@ -546,18 +544,14 @@
   @begin{short}
     Accessor of the object name.
   @end{short}
-
   The @sym{gtk:widget-path-iter-object-name} function returns the object name
   that is at position @arg{pos} in the widget hierarchy defined in @arg{path}.
   The @sym{(setf gtk:widget-path-iter-object-name)} function sets the object
   name. When set, the object name overrides the object type when matching CSS.
-
-  Since 3.20
   @see-class{gtk:widget-path}"
   (path (g:boxed widget-path))
   (pos :int))
 
-#+gtk-3-20
 (export 'widget-path-iter-object-name)
 
 ;;; ----------------------------------------------------------------------------

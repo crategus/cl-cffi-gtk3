@@ -143,15 +143,12 @@
    (font-desc
     font-chooser-font-desc
     "font-desc" "PangoFontDescription" t t)
-   #+gtk-3-22
    (font-features
     font-chooser-font-features
     "font-features" "gchararray" t nil)
-   #+gtk-3-22
    (language
     font-chooser-language
     "language" "gchararray" t t)
-   #+gtk-3-22
    (level
     font-chooser-level
     "level" "GtkFontChooserLevel" t t)
@@ -272,18 +269,18 @@ lambda (fontchooser fontname)    :run-first
 
 ;;; --- font-chooser-font-features ---------------------------------------------
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (documentation (liber:slot-documentation "font-features" 'font-chooser) t)
  "The @code{font-features} property of type @code{:string} (Read) @br{}
   The selected font features, in a format that is compatible with CSS and with
-  Pango attributes. Since 3.22 @br{}
+  Pango attributes. @br{}
   Default value: @code{nil}")
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'font-chooser-font-features)
       "Accessor"
       (documentation 'font-chooser-font-features 'function)
- "@version{#2023-3-5}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:font-chooser-font-features object) => features}
   @argument[object]{a @class{gtk:font-chooser} widget}
   @argument[features]{a string with the currently selected font features}
@@ -295,23 +292,21 @@ lambda (fontchooser fontname)    :run-first
   font features, in a format that is compatible with CSS and with Pango
   attributes. The @sym{(setf gtk:font-chooser-font-features)} function sets the
   font features.
-
-  Since 3.22
   @see-class{gtk:font-chooser}")
 
 ;;; --- font-chooser-language --------------------------------------------------
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (documentation (liber:slot-documentation "language" 'font-chooser) t)
  "The @code{language} property of type @code{:string} (Read / Write) @br{}
   The language for which the @code{font-features} property were selected, in a
-  format that is compatible with CSS and with Pango attributes. Since 3.22")
+  format that is compatible with CSS and with Pango attributes.")
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'font-chooser-language)
       "Accessor"
       (documentation 'font-chooser-language 'function)
- "@version{#2023-3-5}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:font-chooser-language object) => language}
   @syntax[]{(setf (gtk:font-chooser-language object) language)}
   @argument[object]{a @class{gtk:font-chooser} widget}
@@ -323,8 +318,6 @@ lambda (fontchooser fontname)    :run-first
   The @sym{gtk:font-chooser-language} function gets the language that is used
   for font features. The @sym{(setf gtk:font-chooser-language)} function sets
   the language. See the @fun{pango:language-to-string} function.
-
-  Since 3.22
   @begin[Example]{dictionary}
     @begin{pre}
 (gtk:font-chooser-language (make-instance 'gtk:font-button)) => \"de-de\"
@@ -335,18 +328,18 @@ lambda (fontchooser fontname)    :run-first
 
 ;;; --- font-chooser-level -----------------------------------------------------
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (documentation (liber:slot-documentation "level" 'font-chooser) t)
  "The @code{level} property of type @symbol{gtk:font-chooser-level}
   (Read / Write) @br{}
-  The level of granularity to offer for selecting fonts. Since 3.22 @br{}
+  The level of granularity to offer for selecting fonts. @br{}
   Default value: @code{(:STYLE :SIZE)}")
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'font-chooser-level)
       "Accessor"
       (documentation 'font-chooser-level 'function)
- "@version{#2023-3-5}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:font-chooser-level object) => level}
   @syntax[]{(setf (gtk:font-chooser-level object) level)}
   @argument[object]{a @class{gtk:font-chooser} widget}
@@ -359,8 +352,6 @@ lambda (fontchooser fontname)    :run-first
   The @sym{gtk:font-chooser-level} function returns the current level of
   granularity for selecting fonts. The @sym{(setf gtk:font-chooser-level)}
   function sets the desired level of granularity for selecting fonts.
-
-  Since 3.22
   @see-class{gtk:font-chooser}
   @see-symbol{gtk:font-chooser-level}")
 
@@ -590,7 +581,6 @@ lambda (family face)
 ;;; gtk_font_chooser_get_font_map () -> font-chooser-font-map
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-18
 (defun (setf font-chooser-font-map) (fontmap fontchooser)
   (cffi:foreign-funcall "gtk_font_chooser_set_font_map"
                         (g:object font-chooser) fontchooser
@@ -598,11 +588,10 @@ lambda (family face)
                         :void)
   fontmap)
 
-#+gtk-3-18
 (defcfun ("gtk_font_chooser_get_font_map" font-chooser-font-map)
     (g:object pango:font-map)
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:font-chooser-font-map fontchooser) => fontmap}
   @syntax[]{(setf (gtk:font-chooser-font-map fontchooser) fontmap)}
   @argument[fontchooser]{a @class{gtk:font-chooser} widget}
@@ -616,8 +605,6 @@ lambda (family face)
   for the font chooser widget. A custom font map can be used to present
   application specific fonts instead of or in addition to the normal system
   fonts.
-
-  Since 3.18
   @begin[Example]{dictionary}
     The example from the C documentation uses the @code{Fontconfig} library for
     configuring and customizing font access. This library is not available
@@ -645,7 +632,6 @@ gtk_font_chooser_set_font_map (font_chooser, fontmap);
   @see-class{pango:font-map}"
   (fontchooser (g:object font-chooser)))
 
-#+gtk-3-18
 (export 'font-chooser-font-map)
 
 ;;; --- End of file gtk3.font-chooser.lisp -------------------------------------

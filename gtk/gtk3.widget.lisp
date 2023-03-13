@@ -653,7 +653,6 @@
    (expand
     widget-expand
     "expand" "gboolean" t t)
-   #+gtk-3-20
    (focus-on-click
     widget-focus-on-click
     "focus-on-click" "gboolean" t t)
@@ -2404,18 +2403,18 @@ lambda (widget event)    :run-last
 
 ;;; --- widget-focus-on-click --------------------------------------------------
 
-#+(and gtk-3-20 liber-documentation)
+#+liber-documentation
 (setf (documentation (liber:slot-documentation "focus-on-click" 'widget) t)
  "The @code{focus-on-click} property of type @code{:boolean} (Read / Write)@br{}
   Whether the widget should grab focus when it is clicked with the mouse. This
-  property is only relevant for widgets that can take focus.  Since 3.20 @br{}
+  property is only relevant for widgets that can take focus. @br{}
   Default value: @em{true}")
 
-#+(and gtk-3-20 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'widget-focus-on-click)
       "Accessor"
       (documentation 'widget-focus-on-click 'function)
- "@version{#2023-3-8}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:widget-focus-on-click object) => setting}
   @syntax[]{(setf (gtk:widget-focus-on-click object) setting)}
   @argument[object]{a @class{gtk:widget} object}
@@ -2431,8 +2430,6 @@ lambda (widget event)    :run-last
 
   Making mouse clicks not grab focus is useful in places like toolbars where you
   do not want the keyboard focus removed from the main area of the application.
-
-  Since 3.20
   @see-class{gtk:widget}")
 
 ;;; --- widget-halign ----------------------------------------------------------
@@ -3891,10 +3888,9 @@ lambda (widget event)    :run-last
 ;;; gtk_widget_queue_allocate ()
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-20
 (defcfun ("gtk_widget_queue_allocate" widget-queue-allocate) :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-3-13}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Flags the widget for a rerun of the @code{size_allocate} function.
@@ -3905,14 +3901,11 @@ lambda (widget event)    :run-last
   function.
 
   This function is only for use in widget implementations.
-
-  Since 3.20
   @see-class{gtk:widget}
   @see-function{gtk:widget-queue-resize}
   @see-function{gtk:widget-halign}"
   (widget (g:object widget)))
 
-#+gtk-3-20
 (export 'widget-queue-allocate)
 
 ;;; ----------------------------------------------------------------------------
@@ -5841,8 +5834,6 @@ lambda (widget clock)
   @end{short}
   The @sym{(setf gtk:widget-font-options)} function sets the font options. When
   not set, the default font options for the GDK screen will be used.
-
-  Since 3.18
   @see-class{gtk:widget}
   @see-class{gdk:screen}
   @see-symbol{cairo:font-options-t}"
@@ -5878,8 +5869,6 @@ lambda (widget clock)
   The @sym{(setf gtk:widget-font-map} function sets the font map to use for
   Pango rendering. When not set, the widget will inherit the font map from its
   parent.
-
-  Since 3.18
   @see-class{gtk:widget}
   @see-class{pango:font-map}"
   (widget (g:object widget)))
@@ -8123,7 +8112,6 @@ lambda (widget clock)
 ;;; gtk_widget_class_set_css_name () -> widget-class-css-name
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-20
 (defun (setf widget-class-css-name) (name gtype)
   (let ((class (g:type-class-ref gtype)))
     (unwind-protect
@@ -8134,14 +8122,12 @@ lambda (widget clock)
       (g:type-class-unref class))
     name))
 
-#+gtk-3-20
 (defcfun ("gtk_widget_class_get_css_name" %widget-class-css-name) :string
   (class :pointer))
 
-#+gtk-3-20
 (defun widget-class-css-name (gtype)
   #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:widget-class-css-name gtype) => name}
   @syntax[]{(setf (gtk:widget-class-csss-name gtype) name)}
   @argument[gtype]{a string with the widget class to set the CSS name on}
@@ -8155,15 +8141,12 @@ lambda (widget clock)
 
   If this function is not called for a given class, the name of the parent
   class is used.
-
-  Since 3.20
   @see-class{gtk:widget}"
   (let ((class (g:type-class-ref gtype)))
     (unwind-protect
       (%widget-class-css-name class)
       (g:type-class-unref class))))
 
-#+gtk-3-20
 (export 'widget-class-css-name)
 
 ;;; ----------------------------------------------------------------------------

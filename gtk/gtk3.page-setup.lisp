@@ -542,25 +542,21 @@
 ;;; gtk_page_setup_new_from_gvariant ()
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-22
 (defcfun ("gtk_page_setup_new_from_gvariant" page-setup-new-from-gvariant)
     (g:object page-setup)
  #+liber-documentation
- "@version{#2021-3-17}
+ "@version{#2023-3-13}
   @argument[variant]{a @code{a{sv@}} @type{g:variant} instance}
   @return{A new @class{gtk:page-setup} object.}
   @begin{short}
     Desrialize a page setup from an @code{a{sv@}} variant in the format
     produced by the function @fun{gtk:page-setup-to-gvariant}.
   @end{short}
-
-  Since 3.22
   @see-class{gtk:page-setup}
   @see-type{g:variant}
   @see-function{gtk:page-setup-to-gvariant}"
   (variant (:pointer (:struct g:variant))))
 
-#+gtk-3-22
 (export 'page-setup-new-from-gvariant)
 
 ;;; ----------------------------------------------------------------------------
@@ -674,23 +670,19 @@
 ;;; gtk_page_setup_to_gvariant ()
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-22
 (defcfun ("gtk_page_setup_to_gvariant" page-setup-to-gvariant)
     (:pointer (:struct g:variant))
  #+liber-documentation
- "@version{#2021-3-17}
+ "@version{#2023-3-13}
   @argument[setup]{a @class{gtk:page-setup} object}
   @return{A new @type{g:variant} instance.}
   @begin{short}
     Serialize the page setup to an @code{a{sv@}} variant.
   @end{short}
-
-  Since 3.22
   @see-class{gtk:page-setup}
   @see-type{g:variant}"
   (setup (g:object page-setup)))
 
-#+gtk-3-22
 (export 'page-setup-to-gvariant)
 
 ;;; ---- End of file gtk3.page-setup.lisp --------------------------------------

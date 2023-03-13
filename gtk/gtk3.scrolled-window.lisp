@@ -225,11 +225,9 @@
    (kinetic-scrolling
     scrolled-window-kinetic-scrolling
     "kinetic-scrolling" "gboolean" t t)
-   #+gtk-3-22
    (max-content-height
     scrolled-window-max-content-height
     "max-content-height" "gint" t t)
-   #+gtk-3-22
    (max-content-width
     scrolled-window-max-content-width
     "max-content-width" "gint" t t)
@@ -242,11 +240,9 @@
    (overlay-scrolling
     scrolled-window-overlay-scrolling
     "overlay-scrolling" "gboolean" t t)
-   #+gtk-3-22
    (propagate-natural-height
     scrolled-window-propagate-natural-height
     "propagate-natural-height" "gboolean" t t)
-   #+gtk-3-22
    (propagate-natural-width
     scrolled-window-propagate-natural-width
     "propagate-natural-width" "gboolean" t t)
@@ -554,21 +550,20 @@ lambda (window scroll horizontal)    :action
 
 ;;; --- scrolled-window-max-content-height -------------------------------------
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (documentation (liber:slot-documentation "max-content-height"
                                                'scrolled-window) t)
  "The @code{max-content-height} property of type @code{:int} (Read / Write)
   @br{}
-  The maximum content height of the scrolled window, or -1 if not set.
-  Since 3.22 @br{}
+  The maximum content height of the scrolled window, or -1 if not set. @br{}
   Allowed values: >= -1 @br{}
   Default value: -1")
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'scrolled-window-max-content-height)
       "Accessor"
       (documentation 'scrolled-window-max-content-height 'function)
- "@version{#2023-3-6}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:scrolled-window-max-content-height object) => height}
   @syntax[]{(setf (gtk:scrolled-window-max-content-height object) height)}
   @argument[object]{a @class{gtk:scrolled-window} widget}
@@ -585,27 +580,24 @@ lambda (window scroll horizontal)    :action
 
   It is a programming error to set the maximum content height to a value
   smaller than the @slot[gtk:scrolled-window]{min-content-height} value.
-
-  Since 3.22
   @see-class{gtk:scrolled-window}
   @see-function{gtk:scrolled-window-min-content-height}")
 
 ;;; --- scrolled-window-max-content-width --------------------------------------
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (documentation (liber:slot-documentation "max-content-width"
                                                'scrolled-window) t)
  "The @code{max-content-width} property of type @code{:int} (Read / Write) @br{}
-  The maximum content width of the scrolled window, or -1 if not set.
-  Since 3.22 @br{}
+  The maximum content width of the scrolled window, or -1 if not set. @br{}
   Allowed values: >= -1 @br{}
   Default value: -1")
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'scrolled-window-max-content-width)
       "Accessor"
       (documentation 'scrolled-window-max-content-width 'function)
- "@version{#2023-3-6}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:scrolled-window-max-content-width object) => width}
   @syntax[]{(setf (gtk:scrolled-window-max-content-width object) width)}
   @argument[object]{a @class{gtk:scrolled-window} widget}
@@ -622,8 +614,6 @@ lambda (window scroll horizontal)    :action
 
   It is a programming error to set the maximum content width to a value
   smaller than the @slot[gtk:scrolled-window]{min-content-width} value.
-
-  Since 3.22
   @see-class{gtk:scrolled-window}
   @see-function{gtk:scrolled-window-min-content-width}")
 
@@ -723,7 +713,7 @@ lambda (window scroll horizontal)    :action
 
 ;;; --- scrolled-window-propagate-natural-height -------------------------------
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (documentation (liber:slot-documentation "propagate-natural-height"
                                                'scrolled-window) t)
  "The @code{propagate-natural-height} property of type @code{:boolean}
@@ -731,14 +721,14 @@ lambda (window scroll horizontal)    :action
   Whether the natural height of the child should be calculated and propagated
   through the requested natural height of the scrolled window. This is useful in
   cases where an attempt should be made to allocate exactly enough space for
-  the natural size of the child. Since 3.22 @br{}
+  the natural size of the child. @br{}
   Default value: @em{false}")
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'scrolled-window-propagate-natural-height)
       "Accessor"
       (documentation 'scrolled-window-propagate-natural-height 'function)
- "@version{#2023-3-6}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:scrolled-window-propagate-natural-height object) => propagate}
   @syntax[]{(setf (gtk:scrolled-window-propagate-natural-height object) propagate)}
   @argument[object]{a @class{gtk:scrolled-window} widget}
@@ -752,14 +742,12 @@ lambda (window scroll horizontal)    :action
   through the requested natural height of the scrolled window. The
   @sym{(setf gtk:scrolled-window-propagate-natural-height)} function sets the
   property.
-
-  Since 3.22
   @see-class{gtk:scrolled-window}
   @see-function{gtk:scrolled-window-propagate-natural-width}")
 
 ;;; --- scrolled-window-propagate-natural-width --------------------------------
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (documentation (liber:slot-documentation "propagate-natural-width"
                                                'scrolled-window) t)
  "The @code{propagate-natural-width} property of type @code{:boolean}
@@ -767,14 +755,14 @@ lambda (window scroll horizontal)    :action
   Whether the natural width of the child should be calculated and propagated
   through the scrolled window’s requested natural width. This is useful in cases
   where an attempt should be made to allocate exactly enough space for the
-  natural size of the child. Since 3.22 @br{}
+  natural size of the child. @br{}
   Default value: @em{false}")
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'scrolled-window-propagate-natural-width)
       "Accessor"
       (documentation 'scrolled-window-propagate-natural-width 'function)
- "@version{#2023-3-6}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:scrolled-window-propagate-natural-width object) => propagate}
   @syntax[]{(setf (gtk:scrolled-window-propagate-natural-width object) propagate)}
   @argument[object]{a @class{gtk:scrolled-window} widget}
@@ -788,8 +776,6 @@ lambda (window scroll horizontal)    :action
   requested natural width of the scrolled window. The
   @sym{(setf gtk:scrolled-window-propagate-natural-width)} function sets the
   property.
-
-  Since 3.22
   @see-class{gtk:scrolled-window}
   @see-function{gtk:scrolled-window-propagate-natural-height}")
 

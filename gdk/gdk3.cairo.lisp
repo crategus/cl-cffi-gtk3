@@ -284,23 +284,19 @@
 ;;; gdk_cairo_get_drawing_context ()
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-22
 (defcfun ("gdk_cairo_get_drawing_context" cairo-drawing-context)
     (g:object drawing-context)
  #+liber-documentation
- "@version{2023-2-3}
+ "@version{2023-3-13}
   @argument[cr]{a @symbol{cairo:context-t} context}
   @return{A @class{gdk:drawing-context} object, if any is set.}
   @begin{short}
     Retrieves the drawing context that created the Cairo context @arg{cr}.
   @end{short}
-
-  Since 3.22
   @see-symbol{cairo:context-t}
   @see-class{gdk:drawing-context}"
   (cr (:pointer (:struct cairo:context-t))))
 
-#+gtk-3-22
 (export 'cairo-drawing-context)
 
 ;;; ----------------------------------------------------------------------------

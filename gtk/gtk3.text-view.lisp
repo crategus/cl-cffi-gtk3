@@ -209,17 +209,14 @@
    :type-initializer "gtk_text_view_layer_get_type")
   (:below 0)
   (:above 1)
-  #+gtk-3-20
   (:below-text 2)
-  #+gtk-3-20
-  (:above-text 3)
-  )
+  (:above-text 3))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'text-view-layer)
       "GEnum"
       (liber:symbol-documentation 'text-view-layer)
- "@version{#2023-3-8}
+ "@version{#2023-3-13}
   @begin{short}
     Used to reference the layers of the @class{gtk:text-view} widget for the
     purpose of customized drawing with the @code{draw_layer} virtual function.
@@ -237,8 +234,8 @@
     @entry[:below]{Old deprecated layer, use @code{:below-text} instead.}
     @entry[:above]{Old deprecated layer, use @code{:above-text} instead.}
     @entry[:below-text]{The layer rendered below the text, but above the
-      background. Since 3.20}
-    @entry[:above-text]{The layer rendered above the text. Since 3.20}
+      background.}
+    @entry[:above-text]{The layer rendered above the text.}
   @end{table}
   @see-class{gtk:text-view}")
 
@@ -359,7 +356,6 @@
   ((accepts-tab
     text-view-accepts-tab
     "accepts-tab" "gboolean" t t)
-   #+gtk-3-18
    (bottom-margin
     text-view-bottom-margin
     "bottom-margin" "gint" t t)
@@ -548,7 +544,7 @@ lambda (view)    :action
       @end{pre}
       This signal is a keybinding signal which gets emitted to present the Emoji
       chooser for the text view. The default bindings for this signal are
-      @code{Ctrl-.} and @code{Ctrl-;}. Since 3.22
+      @code{Ctrl-.} and @code{Ctrl-;}.
       @begin[code]{table}
         @entry[view]{The @sym{gtk:text-view} widget which received the signal.}
       @end{table}
@@ -736,21 +732,21 @@ lambda (view)    :action
 
 ;;; --- text-view-bottom-margin ------------------------------------------------
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (documentation (liber:slot-documentation "bottom-margin" 'text-view) t)
  "The @code{bottom-margin} property of type @code{:int} (Read / Write) @br{}
   The bottom margin for text in the text view. Note that this property is
   confusingly named. In CSS terms, the value set here is padding, and it is
   applied in addition to the padding from the theme. Do not confuse this
-  property with the @slot[gtk:widget]{margin-bottom} property. Since 3.18 @br{}
+  property with the @slot[gtk:widget]{margin-bottom} property. @br{}
   Allowed values: >= 0 @br{}
   Default value: 0")
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'text-view-bottom-margin)
       "Accessor"
       (documentation 'text-view-bottom-margin 'function)
- "@version{#2023-3-8}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:text-view-bottom-margin object) => margin}
   @syntax[]{(setf (gtk:text-view-bottom-margin object) margin)}
   @argument[object]{a @class{gtk:text-view} widget}
@@ -765,8 +761,6 @@ lambda (view)    :action
 
   Note that this function is confusingly named. In CSS terms, the value set
   here is padding.
-
-  Since 3.18
   @see-class{gtk:text-view}")
 
 ;;; --- text-view-buffer -------------------------------------------------------
@@ -1280,21 +1274,21 @@ lambda (view)    :action
 
 ;;; --- text-view-top-margin ---------------------------------------------------
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (documentation (liber:slot-documentation "top-margin" 'text-view) t)
  "The @code{top-margin} property of type @code{:int} (Read / Write) @br{}
   The top margin for text in the text view. Note that this property is
   confusingly named. In CSS terms, the value set here is padding, and it is
   applied in addition to the padding from the theme. Do not confuse this
-  property with the @slot[gtk:widget]{margin-top} property. Since 3.18 @br{}
+  property with the @slot[gtk:widget]{margin-top} property. @br{}
   Allowed values: >= 0 @br{}
   Default value: 0")
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'text-view-top-margin)
       "Accessor"
       (documentation 'text-view-top-margin 'function)
- "@version{#2023-3-8}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:text-view-top-margin object) => margin}
   @syntax[]{(setf (gtk:text-view-top-margin object) margin)}
   @argument[object]{a @class{gtk:text-view} widget}
@@ -1309,8 +1303,6 @@ lambda (view)    :action
 
   Note that this function is confusingly named. In CSS terms, the value set
   here is padding.
-
-  Since 3.18
   @see-class{gtk:text-view}")
 
 ;;; --- text-view-wrap-mode ----------------------------------------------------
@@ -2439,8 +2431,6 @@ lambda (view)    :action
   @end{short}
   This function should be called in response to user input, e.g. from derived
   classes that override the \"key-press-event\" handler of the text view.
-
-  Since 3.20
   @see-class{gtk:text-view}"
   (view (g:object text-view)))
 

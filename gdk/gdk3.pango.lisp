@@ -221,18 +221,16 @@
 ;;; gdk_pango_context_get_for_display () -> pango-context-for-display
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-22
 (defcfun ("gdk_pango_context_get_for_display" pango-context-for-display)
     (g:object pango-context :already-referenced)
  #+liber-documentation
- "@version{#2021-10-28}
-  @argument[display]{the @class{gdk:display} object for which the Pango context
+ "@version{#2023-3-13}
+  @argument[display]{a @class{gdk:display} object for which the Pango context
     is to be created}
-  @return{A new @class{pango-context} instance for @arg{display}.}
+  @return{A new @class{pango:context} instance for @arg{display}.}
   @begin{short}
     Creates a Pango context for the display.
   @end{short}
-
   When using GTK, normally you should use the @fun{gtk:widget-pango-context}
   function instead of this function, to get the appropriate Pango context for
   the widget you intend to render text onto.
@@ -242,15 +240,12 @@
   it will not be updated. Using the @fun{gtk:widget-pango-context} function is
   more convenient if you want to keep a Pango context around and track changes
   to the font rendering settings.
-
-  Since 3.22
   @see-class{gdk:display}
-  @see-class{pango-context}
+  @see-class{pango:context}
   @see-symbol{cairo:font-options-t}
   @see-function{gtk:widget-pango-context}"
   (display (g:object display)))
 
-#+gtk-3-22
 (export 'pango-context-for-display)
 
 ;;; --- End of file gdk3.pango.lisp --------------------------------------------

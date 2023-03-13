@@ -769,10 +769,9 @@
 ;;; gtk_text_iter_starts_tag ()
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-20
 (defcfun ("gtk_text_iter_starts_tag" text-iter-starts-tag) :boolean
  #+liber-documentation
- "@version{#2023-2-2}
+ "@version{#2023-3-13}
   @argument[iter]{a @class{gtk:text-iter} instance}
   @argument[tag]{a @class{gtk:text-tag} object, or @code{nil}}
   @return{A boolean whether the iterator is the start of a range tagged with
@@ -790,8 +789,6 @@
   @sym{gtk:text-iter-starts-tag} function returns @em{true}, the
   @fun{gtk:text-iter-has-tag} function will also return @em{true} for the same
   parameters.
-
-  Since 3.20
   @see-class{gtk:text-iter}
   @see-class{gtk:text-buffer}
   @see-class{gtk:text-tag}
@@ -800,7 +797,6 @@
   (iter (g:boxed text-iter))
   (tag (g:object text-tag)))
 
-#+gtk-3-20
 (export 'text-iter-starts-tag)
 
 ;;; ----------------------------------------------------------------------------

@@ -282,7 +282,6 @@
 ;;; enum GdkAxisFlags
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-22
 (define-g-flags "GdkAxisFlags" axis-flags
   (:export t
    :type-initializer "gdk_axis_flags_get_type")
@@ -296,11 +295,11 @@
   (:rotation #.(ash 1 8))
   (:slider   #.(ash 1 9)))
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-symbol 'axis-flags)
       "GFlags"
       (liber:symbol-documentation 'axis-flags)
- "@version{2023-3-9}
+ "@version{2023-3-13}
   @begin{short}
     Flags describing the current capabilities of a device/tool.
   @end{short}
@@ -329,14 +328,12 @@
     @entry[:rotation]{z-axis rotation is present.}
     @entry[:slider]{Slider axis is present.}
   @end{table}
-  Since 3.22
   @see-class{gdk:device}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; enum GdkDeviceToolType
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-22
 (define-g-enum "GdkDeviceToolType" device-tool-type
   (:export t
    :type-initializer "gdk_device_tool_type_get_type")
@@ -349,11 +346,11 @@
   :mouse
   :lens)
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-symbol 'device-tool-type)
       "GEnum"
       (liber:symbol-documentation 'device-tool-type)
- "@version{2023-3-9}
+ "@version{2023-3-13}
   @begin{short}
     Indicates the specific type of tool being used being a tablet. Such as an
     airbrush, pencil, etc.
@@ -381,7 +378,6 @@
     @entry[:mouse]{Tool is a mouse.}
     @entry[:lens]{Tool is a lens cursor.}
   @end{table}
-  Since 3.22
   @see-class{gdk:device}")
 
 ;;; ----------------------------------------------------------------------------
@@ -538,7 +534,6 @@
 ;;; GdkDeviceTool
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-22
 (define-g-object-class "GdkDeviceTool" device-tool
   (:superclass g:object
    :export t
@@ -557,9 +552,9 @@
     device-tool-tool-type
     "tool-type" "GdkDeviceToolType" t nil)))
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (documentation 'device-tool 'type)
- "@version{2023-3-9}
+ "@version{2023-3-16}
   @short{A physical tool associated to a @class{gdk:device} object.}
   @see-slot{gdk:device-tool-axes}
   @see-slot{gdk:device-tool-hardware-id}
@@ -573,17 +568,17 @@
 
 ;;; --- device-tool-axes -------------------------------------------------------
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (documentation (liber:slot-documentation "axes" 'device-tool) t)
  "The @code{axes} property of type @symbol{gdk:axis-flags}
   (Read / Write / Construct only) @br{}
   The axes of the device tool.")
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'device-tool-axes)
       "Accessor"
       (documentation 'device-tool-axes 'function)
- "@version{#2023-3-9}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:device-tool-axes object) => axes}
   @argument[object]{a @class{gdk:device-tool} object}
   @argument[axes]{a value of the @symbol{gdk:axis-flags} flags}
@@ -597,17 +592,17 @@
 
 ;;; --- device-tool-hardware-id ------------------------------------------------
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (documentation (liber:slot-documentation "hardware-id" 'device-tool) t)
  "The @code{hardware-id} property of type @code{:uint64}
   (Read / Write / Construct only) @br{}
   The hardware ID of the device tool.")
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'device-tool-hardware-id)
       "Accessor"
       (documentation 'device-tool-hardware-id 'function)
- "@version{#2023-3-9}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:device-tool-hardware-id object) => hardware}
   @argument[object]{a @class{gdk:device-tool} object}
   @argument[hardware]{an unsigned integer with the hardware ID of the device
@@ -633,17 +628,17 @@
 
 ;;; --- device-tool-serial -----------------------------------------------------
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (documentation (liber:slot-documentation "serial" 'device-tool) t)
  "The @code{serial} property of type @code{:uint64}
   (Read / Write / Construct only) @br{}
   The serial number of the device tool.")
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'device-tool-serial)
       "Accessor"
       (documentation 'device-tool-serial 'function)
- "@version{#2023-3-9}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:device-tool-serial object) => serial}
   @argument[object]{a @class{gdk:device-tool} object}
   @argument[serial]{an unsigned integer with the serial number of the device
@@ -659,17 +654,17 @@
 
 ;;; --- device-tool-tool-type --------------------------------------------------
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (documentation (liber:slot-documentation "tool-type" 'device-tool) t)
  "The @code{tool-type} property of type @symbol{gdk:device-tool-type}
   (Read / Write / Construct only) @br{}
   The type of the device tool.")
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'device-tool-tool-type)
       "Accessor"
       (documentation 'device-tool-tool-type 'function)
- "@version{#2023-3-9}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:device-tool-tool-type object) => tool-type}
   @argument[object]{a @class{gdk:device-tool} object}
   @argument[tool-type]{a value of the @symbol{gdk:device-tool-type}
@@ -696,7 +691,6 @@
   ((associated-device
     device-associated-device
     "associated-device" "GdkDevice" t nil)
-   #+gtk-3-22
    (axes
     device-axes
     "axes" "GdkAxisFlags" t nil)
@@ -721,18 +715,15 @@
    (name
     device-name
     "name" "gchararray" t t)
-   #+gtk-3-20
    (num-touches
     device-num-touches
     "num-touches" "guint" t t)
    (product-id
     device-product-id
     "product-id" "gchararray" t t)
-   #+gtk-3-20
    (seat
     device-seat
     "seat" "GdkSeat" t t)
-   #+gtk-3-22
    (tool
     device-tool
     "tool" "GdkDeviceTool" t nil)
@@ -833,16 +824,16 @@ lambda (device tool)    :run-last
 
 ;;; --- device-axes ------------------------------------------------------------
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (documentation (liber:slot-documentation "axes" 'device) t)
  "The @code{axes} property of type @symbol{gdk:axis-flags} (Read) @br{}
-  The axes currently available for this device. Since 3.22")
+  The axes currently available for this device.")
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'device-axes)
       "Accessor"
       (documentation 'device-axes 'function)
- "@version{2023-3-9}
+ "@version{2023-3-13}
   @syntax[]{(gdk:device-axes object) => axes}
   @argument[object]{a @class{gdk:device} object}
   @argument[axes]{a value of the @symbol{gdk:axis-flags} flags}
@@ -852,8 +843,6 @@ lambda (device tool)    :run-last
   @end{short}
   The @sym{gdk:device-axes} function returns the axes currently available on
   the device.
-
-  Since 3.22
   @see-class{gdk:device}
   @see-symbol{gdk:axis-flags}")
 
@@ -1044,20 +1033,19 @@ lambda (device tool)    :run-last
 
 ;;; --- device-num-touches -----------------------------------------------------
 
-#+(and gtk-3-20 liber-documentation)
+#+liber-documentation
 (setf (documentation (liber:slot-documentation "num-touches" 'device) t)
  "The @code{num-touches} property of type @code{:uint}
   (Read / Write / Construct) @br{}
   The maximal number of concurrent touches on a touch device. Will be 0 if the
-  device is not a touch device or if the number of touches is unknown.
-  Since 3.20 @br{}
+  device is not a touch device or if the number of touches is unknown. @br{}
   Default value: 0")
 
-#+(and gtk-3-20 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'device-num-touches)
       "Accessor"
       (documentation 'device-num-touches 'function)
- "@version{2023-3-9}
+ "@version{2023-3-13}
   @syntax[]{(gdk:device-num-touches object) => num-touches}
   @argument[object]{a @class{gdk:device} object}
   @argument[num-touches]{an unsigned integer with the number of touches}
@@ -1067,8 +1055,6 @@ lambda (device tool)    :run-last
   @end{short}
   The maximal number of concurrent touches on a touch device. Will be 0 if the
   device is not a touch device or if the number of touches is unknown.
-
-  Since 3.20
   @see-class{gdk:device}")
 
 ;;; --- device-product-id ------------------------------------------------------
@@ -1101,16 +1087,16 @@ lambda (device tool)    :run-last
 
 ;;; --- device-seat ------------------------------------------------------------
 
-#+(and gtk-3-20 liber-documentation)
+#+liber-documentation
 (setf (documentation (liber:slot-documentation "seat" 'device) t)
  "The @code{seat} property of type @class{gdk:seat} (Read / Write) @br{}
-  The seat of the device. Since 3.20")
+  The seat of the device.")
 
-#+(and gtk-3-20 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'device-seat)
       "Accessor"
       (documentation 'device-seat 'function)
- "@version{2023-3-9}
+ "@version{2023-3-13}
   @syntax[]{(gdk:device-seat object) => seat}
   @argument[object]{a @class{gdk:device} object}
   @argument[seat]{a @class{gdk:seat} object}
@@ -1119,23 +1105,21 @@ lambda (device tool)    :run-last
     class.
   @end{short}
   The @sym{gdk:device-seat} function returns the seat the device belongs to.
-
-  Since 3.20
   @see-class{gdk:device}
   @see-class{gdk:seat}")
 
 ;;; --- device-tool ------------------------------------------------------------
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (documentation (liber:slot-documentation "tool" 'device) t)
  "The @code{tool} property of type @class{gdk:device-tool} (Read) @br{}
-  The device tool that is currently used with this device. Since 3.22")
+  The device tool that is currently used with this device.")
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'device-tool)
       "Accessor"
       (documentation 'device-tool 'function)
- "@version{2023-3-9}
+ "@version{2023-3-13}
   @syntax[]{(gdk:device-tool object) => tool}
   @argument[object]{a @class{gdk:device} object}
   @argument[tool]{a @class{gdk:device-tool} object}
@@ -1144,8 +1128,6 @@ lambda (device tool)    :run-last
     class.
   @end{short}
   The device tool that is currently used with this device.
-
-  Since 3.22
   @see-class{gdk:device}
   @see-class{gdk:device-tool}")
 

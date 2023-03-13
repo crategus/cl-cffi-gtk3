@@ -549,19 +549,15 @@ if (keyval == GDK_PLUS &&
 ;;; gdk_keymap_get_scroll_lock_state () -> keymap-scroll-lock-state
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-18
 (defcfun ("gdk_keymap_get_scroll_lock_state" keymap-scroll-lock-state) :boolean
  #+liber-documentation
- "@version{2023-3-4}
+ "@version{2023-3-13}
   @argument[keymap]{a @class{gdk:keymap} object}
   @return{@em{True} if the @kbd{Scroll Lock} key is on.}
   @short{Returns whether the @kbd{Scroll Lock} modifier is locked.}
-
-  Since 3.18
   @see-class{gdk:keymap}"
   (keymap (g:object keymap)))
 
-#+gtk-3-18
 (export 'keymap-scroll-lock-state)
 
 ;;; ----------------------------------------------------------------------------

@@ -148,11 +148,9 @@
     (register-session
      application-register-session
      "register-session" "gboolean" t t)
-   #+gtk-3-24
    (screensaver-active
     application-screensaver-active
-    "screensaver-active" "gboolean" t nil)
-   ))
+    "screensaver-active" "gboolean" t nil)))
 
 #+liber-documentation
 (setf (documentation 'application 'type)
@@ -261,7 +259,6 @@
       to this signal and call the @fun{gtk:application-inhibit} function with
       the @code{:logout} value of the @symbol{gtk:application-inhibit-flags}
       flags to delay the end of the session until the state has been saved.
-      Since 3.24
       @begin[code]{table}
         @entry[application]{The @sym{gtk:application} instance which emitted
           the signal.}
@@ -454,23 +451,23 @@
   register with the session mananger.
   @see-class{gtk:application}")
 
-;;; application-screensaver-active -----------------------------------------
+;;; application-screensaver-active ---------------------------------------------
 
-#+(and gtk-3-24 liber-documentation)
+#+liber-documentation
 (setf (documentation (liber:slot-documentation "screensaver-active"
                                                'application) t)
  "The @code{screensaver-active} property of type @code{:boolean} (Read) @br{}
   This property is @em{true} if GTK believes that the screensaver is currently
   active. GTK only tracks session state, including this, when the
   @code{register-session} property is set to @em{true}. Tracking the screensaver
-  state is supported on Linux. Since 3.24 @br{}
+  state is supported on Linux. @br{}
   Default value: @em{false}")
 
-#+(and gtk-3-24 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'application-screensaver-active)
       "Accessor"
       (documentation 'application-screensaver-active 'function)
- "@version{#2021-10-13}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:application-screensaver-active object) => active}
   @argument[object]{a @class{gtk:application} instance}
   @argument[active]{a boolean whether the screensaver is active}
@@ -478,14 +475,11 @@
     Accessor of the @slot[gtk:application]{screensaver-active} slot of the
     @class{gtk:application} class.
   @end{short}
-
   The @slot[gtk:application]{screensaver-active} property is @em{true} if GTK
   believes that the screensaver is currently active. GTK only tracks session
   state, including this, when the @slot[gtk:application]{register-session}
   property is set to @em{true}. Tracking the screensaver state is supported on
   Linux.
-
-  Since 3.24
   @see-class{gtk:application}
   @see-function{gtk:application-register-session}")
 

@@ -579,7 +579,6 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 ;;; enum GdkAnchorHints
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-22
 (define-g-flags "GdkAnchorHints" anchor-hints
   (:export t
    :type-initializer "gdk_anchor_hints_get_type")
@@ -593,11 +592,11 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   (:slide  12)  ; :slide-x  | :slide-y
   (:resize 48)) ; :resize-x | :resize-y
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-symbol 'anchor-hints)
       "GFlags"
       (liber:symbol-documentation 'anchor-hints)
- "@version{2023-2-26}
+ "@version{2023-3-13}
   @begin{short}
     Positioning hints for aligning a window relative to a rectangle.
   @end{short}
@@ -613,8 +612,6 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
   In general, when multiple flags are set, flipping should take precedence
   over sliding, which should take precedence over resizing.
-
-  Since 3.22
   @begin{pre}
 (define-g-flags \"GdkAnchorHints\" anchor-hints
   (:export t
@@ -2104,7 +2101,6 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 ;;; gdk_window_set_pass_through () -> window-pass-through
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-18
 (defun (setf window-pass-through) (pass-through window)
   (cffi:foreign-funcall "gdk_window_set_pass_through"
                         (g:object window) window
@@ -2112,10 +2108,9 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
                         :void)
   pass-through)
 
-#+gtk-3-18
 (defcfun ("gdk_window_get_pass_through" window-pass-through) :boolean
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:window-pass-through window) => pass-through}
   @syntax[]{(setf (gdk:window-pass-through window) pass-through)}
   @argument[window]{a @class{gdk:window} object}
@@ -2141,12 +2136,9 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
   subwindow without pass through, so you can get events on a subset of a window.
   And in that cases you would get the in-between related events such as the
   pointer enter/leave events on its way to the destination window.
-
-  Since 3.18
   @see-class{gdk:window}"
   (window (g:object window)))
 
-#+gtk-3-18
 (export 'window-pass-through)
 
 ;;; ----------------------------------------------------------------------------
@@ -2275,10 +2267,9 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 ;;; gdk_window_move_to_rect ()
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-24
 (defcfun ("gdk_window_move_to_rect" window-move-to-rect) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-3-13}
   @argument[window]{a @class{gdk:window} object to move}
   @argument[rect]{a @class{gdk:rectangle} instance with the destination to
     align @arg{window} with}
@@ -2308,8 +2299,6 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
   Connect to the \"moved-to-rect\" signal to find out how it was actually
   positioned.
-
-  Since 3.24
   @see-class{gdk:window}
   @see-class{gdk:rectangle}
   @see-symbol{gdk:gravity}
@@ -2322,7 +2311,6 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
   (dx :int)
   (dy :int))
 
-#+gtk-3-24
 (export 'window-move-to-rect)
 
 ;;; ----------------------------------------------------------------------------
@@ -3056,11 +3044,10 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 ;;; gdk_window_begin_draw_frame ()
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-22
 (defcfun ("gdk_window_begin_draw_frame" window-begin-draw-frame)
     (g:object drawing-context)
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2023-3-13}
   @argument[window]{a @class{gdk:window} object}
   @argument[region]{a @symbol{cairo:region-t} instance}
   @return{A @class{gdk:drawing-context} object that should be used to draw the
@@ -3093,8 +3080,6 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
   cleared background, is already set as the clip region, and already has a
   backing store. Therefore in most cases, application code in GTK does not need
   to call the @sym{gdk:window-begin-draw-frame} function explicitly.
-
-  Since 3.22
   @see-class{gdk:window}
   @see-class{gdk:drawing-context}
   @see-symbol{cairo:region-t}
@@ -3102,17 +3087,15 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
   (window (g:object window))
   (region (:pointer (:struct cairo:region-t))))
 
-#+gtk-3-22
 (export 'window-begin-draw-frame)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gdk_window_end_draw_frame ()
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-22
 (defcfun ("gdk_window_end_draw_frame" window-end-draw-frame) :void
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2023-3-13}
   @argument[window]{a @class{gdk:window} object}
   @argument[context]{a @class{gdk:drawing-context} object created by the
    @fun{gdk:window-begin-draw-frame} function}
@@ -3123,15 +3106,12 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
   This function will take care of destroying the @class{gdk:drawing-context}
   object. It is an error to call this function without a matching call of the
   @fun{gdk:window-begin-draw-frame} function first.
-
-  Since 3.22
   @see-class{gdk:window}
   @see-class{gdk:drawing-context}
   @see-function{gdk:window-begin-draw-frame}"
   (window (g:object window))
   (context (g:object drawing-context)))
 
-#+gtk-3-22
 (export 'window-end-draw-frame)
 
 ;;; ----------------------------------------------------------------------------

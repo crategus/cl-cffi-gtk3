@@ -271,23 +271,19 @@
 ;;; gdk_rectangle_equal ()
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-20
 (defcfun ("gdk_rectangle_equal" rectangle-equal) :boolean
  #+liber-documentation
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @argument[rect1]{a @class{gdk:rectangle} instance}
   @argument[rect2]{a @class{gdk:rectangle} instance}
   @return{@em{True} if the rectangles are equal.}
   @begin{short}
     Checks if the two given rectangles are equal.
   @end{short}
-
-  Since 3.20
   @see-class{gdk:rectangle}"
   (rect1 (g:boxed rectangle))
   (rect2 (g:boxed rectangle)))
 
-#+gtk-3-20
 (export 'rectangle-equal)
 
 ;;; --- End of file gdk3.rectangle.lisp ----------------------------------------

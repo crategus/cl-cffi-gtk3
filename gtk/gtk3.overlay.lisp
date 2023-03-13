@@ -84,7 +84,7 @@
 
 #+liber-documentation
 (setf (documentation 'overlay 'type)
- "@version{#2021-10-21}
+ "@version{#2023-3-13}
   @begin{short}
     The @sym{gtk:overlay} widget is a container which contains a single main
     widget, on top of which it can place overlay widgets.
@@ -117,15 +117,14 @@
     @begin[code]{table}
       @begin[index]{entry}
         The @code{index} child property of type @code{:int} (Read / Write) @br{}
-        The index of the overlay in the parent, -1 for the main child.
-        Since 3.18 @br{}
+        The index of the overlay in the parent, -1 for the main child. @br{}
         Allowed values: >= -1 @br{}
         Default value: 0
       @end{entry}
       @begin[pass-through]{entry}
         The @code{pass-through} child property of type @code{:boolean}
         (Read / Write) @br{}
-        Pass through input, does not affect main child. Since 3.18 @br{}
+        Pass through input, does not affect main child. @br{}
         Default value: @em{false}
       @end{entry}
     @end{table}
@@ -133,7 +132,7 @@
   @begin[Signal Details]{dictionary}
     @subheading{The \"get-child-position\" signal}
       @begin{pre}
- lambda (overlay widget allocation)    :run-last
+lambda (overlay widget allocation)    :run-last
       @end{pre}
       The signal is emitted to determine the position and size of any overlay
       child widgets. A handler for this signal should fill allocation with the
@@ -167,7 +166,7 @@
 (setf (liber:alias-for-function 'overlay-child-index)
       "Accessor"
       (documentation 'overlay-child-index 'function)
- "@version{#2021-10-21}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:overlay-child-index object) => index)}
   @syntax[]{(setf (gtk:overlay-child-index object) index)}
   @argument[container]{a @class{gtk:overlay} widget}
@@ -177,10 +176,7 @@
     Accessor of the @code{index} child property of the @class{gtk:overlay}
     class.
   @end{short}
-
   The index of the child widget in the parent, -1 for the main child.
-
-  Since 3.18
   @see-class{gtk:overlay}
   @see-class{gtk:widget}")
 
@@ -193,7 +189,7 @@
 (setf (liber:alias-for-function 'overlay-child-pass-through)
       "Accessor"
       (documentation 'overlay-child-pass-through 'function)
- "@version{#2021-12-17}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:overlay-child-pass-through container child) => setting)}
   @syntax[]{(setf (gtk:overlay-child-pass-through container child) setting)}
   @argument[container]{a @class{gtk:overlay} widget}
@@ -203,10 +199,7 @@
     Accessor of the @code{pass-through} child property of the
     @class{gtk:overlay} class.
   @end{short}
-
   Pass through input, does not affect main child.
-
-  Since 3.18
   @see-class{gtk:overlay}
   @see-class{gtk:widget}")
 
@@ -262,7 +255,7 @@
 
 (defcfun ("gtk_overlay_reorder_overlay" overlay-reorder-overlay) :void
  #+liber-documentation
- "@version{#2021-10-21}
+ "@version{#2023-3-13}
   @argument[overlay]{a @class{gtk:overlay} widget}
   @argument[child]{a overlaid @class{gtk:widget} child widget to move}
   @argument[position]{an integer with the new index for the child widget in the
@@ -277,8 +270,6 @@
   An index of the widget in the overlay children list determines which order
   the children are drawn if they overlap. The first child is drawn at the
   bottom. It also affects the default focus chain order.
-
-  Since 3.18
   @see-class{gtk:overlay}
   @see-class{gtk:widget}"
   (overlay (g:object overlay))

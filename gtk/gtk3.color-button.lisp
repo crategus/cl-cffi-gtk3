@@ -104,7 +104,6 @@
    (rgba
     color-button-rgba
     "rgba" "GdkRGBA" t t)
-   #+gtk-3-20
    (show-editor
     color-button-show-editor
     "show-editor" "gboolean" t t)
@@ -290,20 +289,20 @@ lambda (button)    :run-first
 
 ;;; --- color-button-show-editor -----------------------------------------------
 
-#+(and gtk-3-20 liber-documentation)
+#+liber-documentation
 (setf (documentation (liber:slot-documentation "show-editor" 'color-button) t)
  "The @code{show-editor} property of type @code{:boolean} (Read / Write) @br{}
   Set this property to @em{true} to skip the palette in the dialog and go
   directly to the color editor. This property should be used in cases where the
   palette in the editor would be redundant, such as when the color button is
-  already part of a palette. Since 3.20 @br{}
+  already part of a palette. @br{}
   Default value: @em{false}")
 
-#+(and gtk-3-20 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'color-button-show-editor)
       "Accessor"
       (documentation 'color-button-show-editor 'function)
- "@version{#2023-2-14}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:color-button-show-editor object) => show-editor)}
   @syntax[]{(setf (gtk:color-button-show-editor object) show-editor)}
   @argument[object]{a @class{gtk:color-button} widget}
@@ -316,8 +315,6 @@ lambda (button)    :run-first
   directly to the color editor. This property should be used in cases where the
   palette in the editor would be redundant, such as when the color button is
   already part of a palette.
-
-  Since 3.20
   @see-class{gtk:color-button}")
 
 ;;; --- color-button-title -----------------------------------------------------

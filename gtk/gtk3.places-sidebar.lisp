@@ -186,7 +186,6 @@
    (open-flags
     places-sidebar-open-flags
     "open-flags" "GtkPlacesOpenFlags" t t)
-   #+gtk-3-18
    (populate-all
     places-sidebar-populate-all
     "populate-all" "gboolean" t t)
@@ -199,23 +198,18 @@
    (show-enter-location
     places-sidebar-show-enter-location
     "show-enter-location" "gboolean" t t)
-   #+gtk-3-18
    (show-other-locations
     places-sidebar-show-other-locations
     "show-other-locations" "gboolean" t t)
-   #+gtk-3-18
    (show-recent
     places-sidebar-show-recent
     "show-recent" "gboolean" t t)
-   #+gtk-3-24
    (show-starred-location
     places-sidebar-show-starred-location
     "show-starred-location" "gboolean" t t)
-   #+gtk-3-18
    (show-trash
     places-sidebar-show-trash
-    "show-trash" "gboolean" t t)
-   ))
+    "show-trash" "gboolean" t t)))
 
 #+liber-documentation
 (setf (documentation 'places-sidebar 'type)
@@ -318,8 +312,7 @@ lambda (sidebar mount)    :run-first
       The places sidebar emits this signal when it starts a new operation
       because the user clicked on some location that needs mounting. In this way
       the application using the @sym{gtk:places-sidebar} widget can track the
-      progress of the operation and, for example, show a notification. Since
-      3.20
+      progress of the operation and, for example, show a notification.
       @begin[code]{table}
         @entry[sidebar]{The @sym{gtk:places-sidebar} widget which received the
           signal.}
@@ -437,7 +430,7 @@ lambda (sidebar)    :run-first
       The places sidebar emits this signal when it needs the calling application
       to present a way to show other locations e.g. drives and network access
       points. For example, the application may bring up a page showing
-      persistent volumes and discovered network addresses. Since 3.18
+      persistent volumes and discovered network addresses.
 
       @em{Warning:} The \"show-other-locations\" signal has been deprecated
       since version 3.20 and should not be used in newly written code. Use the
@@ -455,7 +448,7 @@ lambda (sidebar flags)    :run-first
       The places sidebar emits this signal when it needs the calling application
       to present a way to show other locations e.g. drives and network access
       points. For example, the application may bring up a page showing
-      persistent volumes and discovered network addresses. Since 3.20
+      persistent volumes and discovered network addresses.
       @begin[code]{table}
         @entry[sidebar]{The @sym{gtk:places-sidebar} widget which received the
           signal.}
@@ -469,7 +462,7 @@ lambda (sidebar flags)    :run-first
       The places sidebar emits this signal when it needs the calling application
       to present a way to show the starred files. In GNOME, starred files are
       implemented by setting the @code{nao:predefined-tag-favorite} tag in the
-      tracker database. Since 3.22
+      tracker database.
       @begin[code]{table}
         @entry[sidebar]{The @sym{gtk:places-sidebar} widget which received the
           signal.}
@@ -484,7 +477,6 @@ lambda (sidebar mount)    :run-first
       because the user for example ejected some drive or unmounted a mount. In
       this way the application using the @sym{gtk:places-sidebar} widget can
       track the progress of the operation and, for example, show a notification.
-      Since 3.20
       @begin[code]{table}
         @entry[sidebar]{The @sym{gtk:places-sidebar} widget which received the
           signal.}
@@ -616,19 +608,19 @@ lambda (sidebar mount)    :run-first
 
 ;;; --- places-sidebar-populate-all --------------------------------------------
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (documentation (liber:slot-documentation "populate-all"
                                                'places-sidebar) t)
  "The @code{populate-all} property of type @code{:boolean} (Read / Write) @br{}
   If @code{populate-all} is @em{true}, the \"populate-popup\" signal is also
-  emitted for popovers. Since 3.18 @br{}
+  emitted for popovers. @br{}
   Default value: @em{false}")
 
-#+(and gtk-3-18 liber-documentation)
+#+ liber-documentation
 (setf (liber:alias-for-function 'places-sidebar-populate-all)
       "Accessor"
       (documentation 'places-sidebar-populate-all 'function)
- "@version{#2023-3-6}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:places-sidebar-populate-all object) => populate-all}
   @syntax[]{(setf (gtk:places-sidebar-populate-all object) populate-all)}
   @argument[object]{a @class{gtk:places-sidebar} widget}
@@ -640,8 +632,6 @@ lambda (sidebar mount)    :run-first
   @end{short}
   If @code{populate-all} is @em{true}, the \"populate-popup\" signal is also
   emitted for popovers.
-
-  Since 3.18
   @see-class{gtk:places-sidebar}")
 
 ;;; --- places-sidebar-show-connect-to-server ----------------------------------
@@ -745,20 +735,19 @@ lambda (sidebar mount)    :run-first
 
 ;;; --- places-sidebar-show-other-locations ------------------------------------
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (documentation (liber:slot-documentation "show-other-locations"
                                                'places-sidebar) t)
  "The @code{show-other-locations} property of type @code{:boolean}
   (Read / Write) @br{}
-  Whether the sidebar includes an item to show external locations. Since 3.18
-  @br{}
+  Whether the sidebar includes an item to show external locations. @br{}
   Default value: @em{false}")
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'places-sidebar-show-other-locations)
       "Accessor"
       (documentation 'places-sidebar-show-other-locations 'function)
- "@version{#2023-3-6}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:places-sidebar-show-other-locations) => setting}
   @syntax[]{(setf (gtk:places-sidebar-show-other-locations object) setting)}
   @argument[object]{a @class{gtk:places-sidebar} widget}
@@ -775,25 +764,21 @@ lambda (sidebar mount)    :run-first
   for the user to see and interact with drives and network servers directly.
 
   If you enable this, you should connect to the \"show-other-locations\" signal.
-
-  Since 3.18
   @see-class{gtk:places-sidebar}")
 
 ;;; --- places-sidebar-show-recent ---------------------------------------------
 
-#+(and gtk-3-18 liber-documentation)
-(setf (documentation (liber:slot-documentation "show-recent"
-                                               'places-sidebar) t)
+#+liber-documentation
+(setf (documentation (liber:slot-documentation "show-recent" 'places-sidebar) t)
  "The @code{show-recent} property of type @code{:boolean} (Read / Write) @br{}
-  Whether the sidebar includes a builtin shortcut for recent files.
-  Since 3.18 @br{}
+  Whether the sidebar includes a builtin shortcut for recent files. @br{}
   Default value: @em{true}")
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'places-sidebar-show-recent)
       "Accessor"
       (documentation 'places-sidebar-show-recent 'function)
- "@version{#2023-3-6}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:places-sidebar-show-recent) => show-recent}
   @syntax[]{(setf (gtk:places-sidebar-show-recent object) show-recent)}
   @argument[object]{a @class{gtk:places-sidebar} widget}
@@ -805,25 +790,23 @@ lambda (sidebar mount)    :run-first
   Sets whether the sidebar should show an item for recent files. The default
   value for this option is determined by the desktop environment, but this
   function can be used to override it on a per-application basis.
-
-  Since 3.18
   @see-class{gtk:places-sidebar}")
 
 ;;; --- places-sidebar-show-starred-location -----------------------------------
 
-#+(and gtk-3-24 liber-documentation)
+#+liber-documentation
 (setf (documentation (liber:slot-documentation "show-starred-location"
                                                'places-sidebar) t)
  "The @code{show-starred-location} property of type @code{:boolean}
   (Read / Write) @br{}
-  Whether the sidebar includes an item to show starred files. Since 3.24 @br{}
+  Whether the sidebar includes an item to show starred files. @br{}
   Default value: @em{false}")
 
-#+(and gtk-3-24 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'places-sidebar-show-starred-location)
       "Accessor"
       (documentation 'places-sidebar-show-starred-location 'function)
- "@version{#2023-3-6}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:places-sidebar-show-starred-location object) => setting}
   @syntax[]{(setf (gtk:places-sidebar-show-starred-location object) setting)}
   @argument[object]{a @class{gtk:places-sidebar} widget}
@@ -834,24 +817,21 @@ lambda (sidebar mount)    :run-first
     the @class{gtk:places-sidebar} class.
   @end{short}
   Whether the sidebar includes an item to show starred files.
-
-  Since 3.24
   @see-class{gtk:places-sidebar}")
 
 ;;; --- places-sidebar-show-trash ----------------------------------------------
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (documentation (liber:slot-documentation "show-trash" 'places-sidebar) t)
  "The @code{show-trash} property of type @code{:boolean} (Read / Write) @br{}
-  Whether the sidebar includes a builtin shortcut to the Trash location.
-  Since 3.18 @br{}
+  Whether the sidebar includes a builtin shortcut to the Trash location. @br{}
   Default value: @em{true}")
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'places-sidebar-show-trash)
       "Accessor"
       (documentation 'places-sidebar-show-trash 'function)
- "@version{#2023-3-6}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:places-sidebar-show-trash) => show-trash}
   @syntax[]{(setf (gtk:places-sidebar-show-trash object) show-trash)}
   @argument[object]{a @class{gtk:places-sidebar} widget}
@@ -862,8 +842,6 @@ lambda (sidebar mount)    :run-first
     the @class{gtk:places-sidebar} class.
   @end{short}
   Sets whether the sidebar should show an item for the Trash location.
-
-  Since 3.18
   @see-class{gtk:places-sidebar}")
 
 ;;; ----------------------------------------------------------------------------

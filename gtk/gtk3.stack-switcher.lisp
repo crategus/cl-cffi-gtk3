@@ -82,14 +82,15 @@
 
 #+liber-documentation
 (setf (documentation 'stack-switcher 'type)
- "@version{#2021-12-8}
+ "@version{#2023-3-16}
   @begin{short}
     The @sym{gtk:stack-switcher} widget acts as a controller for a
-    @class{gtk:stack} widget. It shows a row of buttons to switch between
-    the various pages of the associated stack widget.
+    @class{gtk:stack} widget.
   @end{short}
+  It shows a row of buttons to switch between the various pages of the
+  associated stack widget.
 
-  @image[stackswitcher]{}
+  @image[stackswitcher]{Figure: GtkStackSwitcher}
 
   All the content for the buttons comes from the child properties of the
   @class{gtk:stack} widget. The button visibility in a @sym{gtk:stack-switcher}
@@ -105,6 +106,7 @@
     @code{.needs-attention} style class to the widgets representing the stack
     pages.
   @end{dictionary}
+  @see-constructor{gtk:stack-switch-new}
   @see-slot{gtk:stack-switcher-icon-size}
   @see-slot{gtk:stack-switcher-stack}
   @see-class{gtk:stack}")
@@ -119,7 +121,7 @@
 (setf (documentation (liber:slot-documentation "icon-size" 'stack-switcher) t)
  "The @code{icon-size} property of type @code{:int} (Read / Write) @br{}
   Use this property to change the size of the image displayed when a stack
-  switcher is displaying icons. Since 3.20 @br{}
+  switcher is displaying icons. @br{}
   Allowed values: >= 0 @br{}
   Default value: 1")
 
@@ -127,7 +129,7 @@
 (setf (liber:alias-for-function 'stack-switcher-icon-size)
       "Accessor"
       (documentation 'stack-switcher-icon-size 'function)
- "@version{#2021-12-8}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:stack-switcher-icon-size object) => size}
   @syntax[]{(setf (gtk:stack-switcher-icon-size object) size)}
   @argument[object]{a @class{gtk:stack-switcher} widget}
@@ -136,11 +138,8 @@
     Accessor of the @slot[gtk:stack-switcher]{icon-size} slot of the
     @class{gtk:stack-switcher} class.
   @end{short}
-
   Use the @slot[gtk:stack-switcher]{icon-size} property to change the size of
   the image displayed when a stack switcher is displaying icons.
-
-  Since 3.20
   @see-class{gtk:stack-switcher}")
 
 ;;; --- stack-switcher-stack -----------------------------------------------

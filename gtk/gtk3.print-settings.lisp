@@ -1794,19 +1794,16 @@ lambda (key value)
 ;;; gtk_print_settings_new_from_gvariant ()
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-22
 (defcfun ("gtk_print_settings_new_from_gvariant"
            print-settings-new-from-gvariant) (g:object print-settings)
  #+liber-documentation
- "@version{2023-2-11}
-  @argument[variant]{an @code{a{sv@}} @type{g:variant} instance}
+ "@version{2023-3-13}
+  @argument[variant]{a @code{a{sv@}} @type{g:variant} instance}
   @return{The restored @class{gtk:print-settings} object.}
   @begin{short}
     Deserialize print settings from an @code{a{sv@}} variant in the format
     produced by the @fun{gtk:print-settings-to-gvariant} function.
   @end{short}
-
-  Since 3.22
   @begin[Example]{dictionary}
     @begin{pre}
  (let* ((variant (g:variant-parse \"a{sv@}\"
@@ -1833,7 +1830,6 @@ lambda (key value)
   @see-function{gtk:print-settings-to-gvariant}"
   (variant (:pointer (:struct g:variant))))
 
-#+gtk-3-22
 (export 'print-settings-new-from-gvariant)
 
 ;;; ----------------------------------------------------------------------------
@@ -1949,23 +1945,19 @@ lambda (key value)
 ;;; gtk_print_settings_to_gvariant ()
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-22
 (defcfun ("gtk_print_settings_to_gvariant" print-settings-to-gvariant)
     (:pointer (:struct g:variant))
  #+liber-documentation
- "@version{2023-2-11}
+ "@version{2023-3-13}
   @argument[settings]{a @class{gtk:print-settings} object}
   @return{A new @type{g:variant} instance.}
   @begin{short}
     Serialize print settings to an @code{a{sv@}} variant.
   @end{short}
-
-  Since 3.22
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-new-from-gvariant}"
   (settings (g:object print-settings)))
 
-#+gtk-3-22
 (export 'print-settings-to-gvariant)
 
 ;;; --- End of file gtk3.print-settings.lisp -----------------------------------

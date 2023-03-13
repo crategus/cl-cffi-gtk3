@@ -327,10 +327,9 @@ lambda (radiomenuitem)    :run-first
 ;;; gtk_radio_menu_item_join_group ()
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-18
 (defcfun ("gtk_radio_menu_item_join_group" radio-menu-item-join-group) :void
  #+liber-documentation
- "@version{2023-2-24}
+ "@version{2023-3-13}
   @argument[item]{a @class{gtk:radio-menu-item} widget}
   @argument[group]{a @class{gtk:radio-menu-item} widget whose group we
     are joining, or @code{nil} to remove @arg{item} from its current group}
@@ -341,7 +340,6 @@ lambda (radiomenuitem)    :run-first
   manangement of the opaque @code{g:slist-t} structure of the
   @fun{gtk:radio-menu-item-get-group} and @fun{gtk:radio-menu-item-set-group}
   functions.
-
   @begin[Example]{dictionary}
   A common way to set up a group of radio menu item instances is:
     @begin{pre}
@@ -357,7 +355,6 @@ lambda (radiomenuitem)    :run-first
   (item (g:object radio-menu-item))
   (group (g:object radio-menu-item)))
 
-#+gtk-3-18
 (export 'radio-menu-item-join-group)
 
 ;;; --- End of file gtk3.radio-menu-item.lisp ----------------------------------

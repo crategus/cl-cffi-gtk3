@@ -102,7 +102,6 @@
   ((message-type
     info-bar-message-type
     "message-type" "GtkMessageType" t t)
-   #+gtk-3-22
    (revealed
     info-bar-revealed
     "revealed" "gboolean" t t)
@@ -293,19 +292,19 @@
   area.
   @see-class{gtk:info-bar}")
 
-;;; --- info-bar-revealed --------------------------------------------------
+;;; --- info-bar-revealed ------------------------------------------------------
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (documentation (liber:slot-documentation "revealed" 'info-bar) t)
  "The @code{revealed} property of type @code{:boolean} (Read / Write) @br{}
-  Controls whether the action bar shows its contents or not. Since 3.22 @br{}
+  Controls whether the action bar shows its contents or not. @br{}
   Default value: @em{true}")
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'info-bar-revealed)
       "Accessor"
       (documentation 'info-bar-revealed 'function)
- "@version{#2021-12-22}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:info-bar-revealed object) => revealed}
   @syntax[]{(setf (gtk:info-bar-revealed object) revealed)}
   @argument[object]{a @class{gtk:info-bar} widget}
@@ -314,16 +313,13 @@
     Accessor of the @slot[gtk:info-bar]{revealed} slot of the
     @class{gtk:info-bar} class.
   @end{short}
-
-  The @sym{gtk:info-bar-revealed} slot access function returns the current
-  value of the @slot[gtk:info-bar]{revealed} property. The
-  @sym{(setf gtk:info-bar-revealed)} slot access function sets the property.
+  The @sym{gtk:info-bar-revealed} function returns the current value of the
+  @slot[gtk:info-bar]{revealed} property. The @sym{(setf gtk:info-bar-revealed)}
+  function sets the property.
 
   This will cause the info bar to show up with a slide-in transition. Note that
   this property does not automatically show the info bar and thus will not have
   any effect if it is invisible.
-
-  Since 3.22
   @see-class{gtk:info-bar}")
 
 ;;; --- info-bar-show-close-button -----------------------------------------

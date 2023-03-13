@@ -233,11 +233,9 @@
    (font-desc
     text-tag-font-desc
     "font-desc" "PangoFontDescription" t t)
-   #+gtk-3-18
    (font-features
     text-tag-font-features
     "font-features" "gchararray" t t)
-   #+gtk-3-18
    (font-features-set
     text-tag-font-features-set
     "font-features-set" "gboolean" t t)
@@ -970,20 +968,19 @@
   @see-class{gtk:text-tag}
   @see-class{pango:font-description}")
 
-;;; --- text-tag-font-features ---------------------------------------------
+;;; --- text-tag-font-features -------------------------------------------------
 
-#+(and gtk-3-18 liber-documentation)
-(setf (documentation (liber:slot-documentation "font-features" 'text-tag)
-      t)
+#+liber-documentation
+(setf (documentation (liber:slot-documentation "font-features" 'text-tag) t)
  "The @code{font-features} property of type @code{:string} (Read / Write) @br{}
-  OpenType font features, as a string. Since 3.18 @br{}
+  OpenType font features, as a string. @br{}
   Default value: @code{nil}")
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'text-tag-font-features)
       "Accessor"
       (documentation 'text-tag-font-features 'function)
- "@version{#2021-11-17}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:text-tag-font-features object) => features}
   @syntax[]{(setf (gtk:text-tag-font-features object) features)}
   @argument[object]{a @class{gtk:text-tag} object}
@@ -992,28 +989,25 @@
     Accessor of the @slot[gtk:text-tag]{font-features} slot of the
     @class{gtk:text-tag} class.
   @end{short}
-
   OpenType font features, as a string.
-
-  Since 3.18
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-font-features-set}")
 
-;;; --- text-tag-font-features-set -----------------------------------------
+;;; --- text-tag-font-features-set ---------------------------------------------
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (documentation (liber:slot-documentation "font-features-set"
                                                'text-tag) t)
  "The @code{font-features-set} property of type @code{:boolean} (Read / Write)
   @br{}
-  Whether this tag affects font features. Since 3.18 @br{}
+  Whether this tag affects font features. @br{}
   Default value: @em{false}")
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'text-tag-font-features-set)
       "Accessor"
       (documentation 'text-tag-font-features-set 'function)
- "@version{#2021-11-17}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:text-tag-font-features-set object) => setting}
   @syntax[]{(setf (gtk:text-tag-font-features-set object) setting)}
   @argument[object]{a @class{gtk:text-tag} object}
@@ -1022,10 +1016,7 @@
     Accessor of the @slot[gtk:text-tag]{font-features-set} slot of the
     @class{gtk:text-tag} class.
   @end{short}
-
   Whether this tag affects font features.
-
-  Since 3.18
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-font-features}")
 
@@ -2726,10 +2717,9 @@
 ;;; gtk_text_tag_changed ()
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-20
 (defcfun ("gtk_text_tag_changed" text-tag-changed) :void
  #+liber-documentation
- "@version{#2021-11-17}
+ "@version{#2023-3-13}
   @argument[tag]{a @class{gtk:text-tag} object}
   @argument[changed]{a boolean whether the change affects the
     @class{gtk:text-view} layout}
@@ -2737,11 +2727,8 @@
     Emits the \"tag-changed\" signal on the @class{gtk:text-tag-table} object
     where the tag is included.
   @end{short}
-
   The signal is already emitted when setting a @class{gtk:text-tag} property.
   This function is useful for a @class{gtk:text-tag} subclass.
-
-  Since 3.20
   @see-class{gtk:text-tag}
   @see-class{gtk:text-tag-table}
   @see-class{gtk:text-iter}
@@ -2749,7 +2736,6 @@
   (tag (g:object text-tag))
   (changed :boolean))
 
-#+gtk-3-20
 (export 'text-tag-changed)
 
 ;;; --- End of file gtk3.text-tag.lisp -----------------------------------------

@@ -72,29 +72,29 @@
 ;;;
 ;;; Properties
 ;;;
-;;;                 gint    use-header-bar    Read / Write / Construct Only
+;;;     use-header-bar
 ;;;
 ;;; Child Properties
 ;;;
-;;;             gboolean    complete          Read / Write
-;;;             gboolean    has-padding       Read / Write
-;;;            GdkPixbuf*   header-image      Read / Write
-;;; GtkAssistantPageType    page-type         Read / Write
-;;;            GdkPixbuf*   sidebar-image     Read / Write
-;;;                gchar*   title             Read / Write
+;;;     complete
+;;;     has-padding
+;;;     header-image
+;;;     page-type
+;;;     sidebar-image
+;;;     title
 ;;;
 ;;; Style Properties
 ;;;
-;;;                 gint    content-padding   Read
-;;;                 gint    header-padding    Read
+;;;     content-padding
+;;;     header-padding
 ;;;
 ;;; Signals
 ;;;
-;;;                 void    apply             Run Last
-;;;                 void    cancel            Run Last
-;;;                 void    close             Run Last
-;;;                 void    escape            Action
-;;;                 void    prepare           Run Last
+;;;     apply
+;;;     cancel
+;;;     close
+;;;     escape
+;;;     prepare
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -196,7 +196,7 @@
     controlling the page flow to collect the necessary data.
   @end{short}
 
-  @image[assistant]{}
+  @image[assistant]{Figure: GtkAssistant}
 
   The design of the @sym{gtk:assistant} widget is that it controls what buttons
   to show and to make sensitive, based on what it knows about the page sequence
@@ -230,7 +230,7 @@
       @begin[has-padding]{entry}
         The @code{has-padding} child property of type @code{:boolean}
         (Read / Write) @br{}
-        Whether the assistant adds padding around the page. Since 3.18 @br{}
+        Whether the assistant adds padding around the page. @br{}
         Default value: @em{true}
       @end{entry}
       @begin[header-image]{entry}
@@ -417,15 +417,14 @@
 
 ;;; --- assistant-child-has-padding --------------------------------------------
 
-#+gtk-3-18
 (define-child-property assistant-child-has-padding
                        "has-padding" "gboolean" t t t)
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'assistant-child-has-padding)
       "Accessor"
       (documentation 'assistant-child-has-padding 'function)
- "@version{#2021-11-2}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:assistant-child-has-padding container child) => setting}
   @syntax[]{(setf (gtk:assistant-child-has-padding container child) setting)}
   @argument[container]{a @class{gtk:assistant} widget}
@@ -436,10 +435,7 @@
     Accessor of the @code{has-padding} child property of the
     @class{gtk:assistant} class.
   @end{short}
-
   Whether the assistant adds padding around the page.
-
-  Since 3.18
   @see-class{gtk:assistant}
   @see-class{gtk:widget}
   @see-function{gtk:assistant-page-has-padding}")
@@ -1027,7 +1023,7 @@
   (setf (assistant-child-has-padding assistant page) setting))
 
 (defun assistant-page-has-padding (assistant page)
- "@version{#2021-11-2}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:assistant-page-has-padding assistant page) => setting}
   @syntax[]{(setf (gtk:assistant-page-has-padding assistant page) setting)}
   @argument[assistant]{a @class{gtk:assistant} widget}
@@ -1036,15 +1032,12 @@
   @begin{short}
     Accessor of the has padding status of the page in the assistant.
   @end{short}
-
   The @sym{gtk:assistant-page-has-padding} function gets whether the page has
   padding. The @sym{(setf gtk:assistant-page-has-padding)} function sets whether
   the assistant is adding padding around the page.
 
   The function is implemented with the @fun{gtk:assistant-child-has-padding}
   function.
-
-  Since 3.18
   @see-class{gtk:assistant}
   @see-class{gtk:widget}
   @see-function{gtk:assistant-child-has-padding}"

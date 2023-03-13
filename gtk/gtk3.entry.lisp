@@ -332,19 +332,15 @@
   (:uppercase-words     #.(ash 1 5))
   (:uppercase-sentences #.(ash 1 6))
   (:inhibit-osk         #.(ash 1 7))
-  #+gtk-3-18
   (:vertical-writing    #.(ash 1 8))
-  #+gtk-3-22
   (:emoji               #.(ash 1 9))
-  #+gtk-3-22
-  (:no-emoji            #.(ash 1 10))
-)
+  (:no-emoji            #.(ash 1 10)))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'input-hints)
       "GFlags"
       (liber:symbol-documentation 'input-hints)
- "@version{2023-3-4}
+ "@version{2023-3-13}
   @begin{short}
     Describes hints that might be taken into account by input methods or
     applications.
@@ -387,9 +383,9 @@
       sentence.}
     @entry[:inhibit-osk]{Suggest to not show an onscreen keyboard, e.g. for a
       calculator that already has all the keys.}
-    @entry[:vertical-writing]{The text is vertical. Since 3.18}
-    @entry[:emoji]{Suggest offering Emoji support. Since 3.22}
-    @entry[:no-emoji]{Suggest not offering Emoji support. Since 3.22}
+    @entry[:vertical-writing]{The text is vertical.}
+    @entry[:emoji]{Suggest offering Emoji support.}
+    @entry[:no-emoji]{Suggest not offering Emoji support.}
   @end{table}
   @see-class{gtk:entry}
   @see-symbol{gtk:input-purpose}")
@@ -427,7 +423,6 @@
    (editable
     entry-editable
     "editable" "gboolean" t t)
-   #+gtk-3-22
    (enable-emoji-completion
     entry-enable-emoji-completion
     "enable-emoji-completion" "gboolean" t t)
@@ -536,7 +531,6 @@
    (shadow-type
     entry-shadow-type
     "shadow-type" "GtkShadowType" t t)
-   #+gtk-3-22
    (show-emoji-icon
     entry-show-emoji-icon
     "show-emoji-icon" "gboolean" t t)
@@ -751,7 +745,7 @@ lambda (entry)    :action
       @end{pre}
       A keybinding signal which gets emitted to present the Emoji chooser for
       the entry. The default bindings for this signal are the @kbd{Ctrl-.} and
-      @kbd{Ctrl-;} keys. Since 3.22
+      @kbd{Ctrl-;} keys.
       @begin[code]{table}
         @entry[entry]{The @sym{gtk:entry} widget which received the signal.}
       @end{table}
@@ -1091,19 +1085,19 @@ lambda (entry)    :action
 
 ;;; --- entry-enable-emoji-completion ------------------------------------------
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (documentation (liber:slot-documentation "enable-emoji-completion"
                                                'entry) t)
  "The @code{enable-emoji-completion} property of type @code{:boolean}
   (Read / Write) @br{}
-  Whether to suggest Emoji replacements. Since 3.22 @br{}
+  Whether to suggest Emoji replacements. @br{}
   Default value: @em{false}")
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'entry-enable-emoji-completion)
       "Accessor"
       (documentation 'entry-enable-emoji-completion 'function)
- "@version{2023-3-4}
+ "@version{2023-3-13}
   @syntax[]{(gtk:entry-enable-emoji-completion object) => enable}
   @syntax[]{(setf (gtk:entry-enable-emoji-completion object) enable)}
   @argument[object]{a @class{gtk:entry} widget}
@@ -1113,8 +1107,6 @@ lambda (entry)    :action
     @class{gtk:entry} class.
   @end{short}
   Whether to suggest Emoji replacements.
-
-  Since 3.22
   @see-class{gtk:entry}")
 
 ;;; --- entry-has-frame --------------------------------------------------------
@@ -1397,16 +1389,16 @@ lambda (entry)    :action
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "max-width-chars" 'entry) t)
  "The @code{max-width-chars} property of type @code{:int} (Read / Write) @br{}
-  The desired maximum width of the entry, in characters. If this property is set
-  to -1, the width will be calculated automatically. @br{}
+  The desired maximum width of the entry, in characters. If this property is
+  set to -1, the width will be calculated automatically. @br{}
   Allowed values: >= -1 @br{}
   Default value: -1")
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'entry-max-width-chars)
       "Accessor"
       (documentation 'entry-max-width-chars 'function)
- "@version{2023-3-4}
+ "@version{2023-3-13}
   @syntax[]{(gtk:entry-max-width-chars object) => n-chars}
   @syntax[]{(setf (gtk:entry-max-width-chars object) n-chars)}
   @argument[object]{a @class{gtk:entry} object}
@@ -2196,18 +2188,18 @@ lambda (entry)    :action
 
 ;;; --- entry-show-emoji-icon --------------------------------------------------
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (documentation (liber:slot-documentation "show-emoji-icon" 'entry) t)
  "The @code{show-emoji-icon} property of type @code{:boolean} (Read / Write)
   @br{}
-  Whether to show an icon for Emoji. Since 3.22 @br{}
+  Whether to show an icon for Emoji. @br{}
   Default value: @em{false}")
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'entry-show-emoji-icon)
       "Accessor"
       (documentation 'entry-show-emoji-icon 'function)
- "@version{2023-3-4}
+ "@version{2023-3-13}
   @syntax[]{(gtk:entry-show-emoji-icon object) => setting}
   @syntax[]{(setf (gtk:entry-show-emoji-icon object) setting)}
   @argument[object]{a @class{gtk:entry} widget}
@@ -2217,8 +2209,6 @@ lambda (entry)    :action
     @class{gtk:entry} class.
   @end{short}
   Whether to show an icon for Emoji.
-
-  Since 3.22
   @see-class{gtk:entry}")
 
 ;;; --- entry-tabs -------------------------------------------------------------

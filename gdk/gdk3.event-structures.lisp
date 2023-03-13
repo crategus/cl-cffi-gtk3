@@ -353,29 +353,20 @@
   (:below            #.(ash 1 6))
   (:focused          #.(ash 1 7))
   (:tiled            #.(ash 1 8))
-  #+gtk-3-22
   (:top-tiled        #.(ash 1 9))
-  #+gtk-3-22
   (:top-resizeable   #.(ash 1 10))
-  #+gtk-3-22
   (:right-tiled      #.(ash 1 11))
-  #+gtk-3-22
   (:right-resizable  #.(ash 1 12))
-  #+gtk-3-22
   (:bottom-tiled     #.(ash 1 13))
-  #+gtk-3-22
   (:bottom-resizable #.(ash 1 14))
-  #+gtk-3-22
   (:left-tiled       #.(ash 1 15))
-  #+gtk-3-22
-  (:left-resizable   #.(ash 1 16))
-)
+  (:left-resizable   #.(ash 1 16)))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'window-state)
       "GFlags"
       (liber:symbol-documentation 'window-state)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @short{Specifies the state of a toplevel window.}
   @begin{pre}
 (define-g-flags \"GdkWindowState\" window-state
@@ -411,14 +402,14 @@
       decorations).}
     @entry[:tiled]{The window is in a tiled state. Since 3.22, this is
       deprecated in favor of per-edge information.}
-    @entry[:top-tiled]{Whether the top edge is tiled. Since 3.22}
-    @entry[:top-resizable]{Whether the top edge is resizable. Since 3.22}
-    @entry[:right-tiled]{Whether the right edge is tiled. Since 3.22}
-    @entry[:right-resizable]{Whether the right edge is resizable. Since 3.22}
-    @entry[:bottom-tiled]{Whether the bottom edge is tiled. Since 3.22}
-    @entry[:bottom-resizable]{Whether the bottom edge is resizable. Since 3.22}
-    @entry[:left-tiled]{Whether the left edge is tiled. Since 3.22}
-    @entry[:left-resizable]{Whether the left edge is resizable. Since 3.22}
+    @entry[:top-tiled]{Whether the top edge is tiled.}
+    @entry[:top-resizable]{Whether the top edge is resizable.}
+    @entry[:right-tiled]{Whether the right edge is tiled.}
+    @entry[:right-resizable]{Whether the right edge is resizable.}
+    @entry[:bottom-tiled]{Whether the bottom edge is tiled.}
+    @entry[:bottom-resizable]{Whether the bottom edge is resizable.}
+    @entry[:left-tiled]{Whether the left edge is tiled.}
+    @entry[:left-resizable]{Whether the left edge is resizable.}
   @end{table}
   @see-class{gdk:window}")
 
@@ -540,19 +531,12 @@
   (:touch-update 38)
   (:touch-end 39)
   (:touch-cancel 40)
-  #+gtk-3-18
   (:touchpad-swipe 41)
-  #+gtk-3-18
   (:touchpad-pinch 42)
-  #+gtk-3-22
   (:pad-button-press 43)
-  #+gtk-3-22
   (:pad-button-release 44)
-  #+gtk-3-22
   (:pad-ring 45)
-  #+gtk-3-22
   (:pad-strip 46)
-  #+gtk-3-22
   (:pad-group-mode 47)
   (:event-last 48))
 
@@ -560,9 +544,8 @@
 (setf (liber:alias-for-symbol 'event-type)
       "GEnum"
       (liber:symbol-documentation 'event-type)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @short{Specifies the type of a @class{gdk:event} instance.}
-
   Do not confuse these events with the signals that GTK widgets emit.
   Although many of these events result in corresponding signals being emitted,
   the events are often transformed or filtered along the way.
@@ -686,15 +669,15 @@
     @entry[:touch-update]{A touch event sequence has been updated.}
     @entry[:touch-end]{A touch event sequence has finished.}
     @entry[:touch-cancel]{A touch event sequence has been canceled.}
-    @entry[:touchpad-swipe]{A touchpad swipe gesture event, the current state is
-      determined by its phase field. Since 3.18}
-    @entry[:touchpad-pinch]{A touchpad pinch gesture event, the current state is
-      determined by its phase field. Since 3.18}
-    @entry[:pad-button-press]{A tablet pad button press event. Since 3.22}
-    @entry[:pad-button-release]{A tablet pad button release event.Since 3.22}
-    @entry[:pad-ring]{A tablet pad axis event from a \"ring\". Since 3.22}
-    @entry[:pad-strip]{A tablet pad axis event from a \"strip\". Since 3.22}
-    @entry[:pad-group-mode]{A tablet pad group mode change. Since 3.22}
+    @entry[:touchpad-swipe]{A touchpad swipe gesture event, the current state
+      is determined by its phase field.}
+    @entry[:touchpad-pinch]{A touchpad pinch gesture event, the current state
+      is determined by its phase field.}
+    @entry[:pad-button-press]{A tablet pad button press event.}
+    @entry[:pad-button-release]{A tablet pad button release event.}
+    @entry[:pad-ring]{A tablet pad axis event from a \"ring\".}
+    @entry[:pad-strip]{A tablet pad axis event from a \"strip\".}
+    @entry[:pad-group-mode]{A tablet pad group mode change.}
     @entry[:event-last]{Marks the end of the @sym{gdk:event-type} enumeration.}
   @end{table}
   @see-struct{gdk:event}
@@ -837,9 +820,7 @@
   (:scroll-mask              #.(ash 1 21))
   (:touch-mask               #.(ash 1 22))
   (:smooth-scroll-mask       #.(ash 1 23))
-  #+gtk-3-18
   (:touchpad-gesture-maske   #.(ash 1 24))
-  #+gtk-3-22
   (:tabled-pad-mask          #.(ash 1 25))
   (:all-events-mask #x3FFFFFE))
 
@@ -847,7 +828,7 @@
 (setf (liber:alias-for-symbol 'event-mask)
       "GFlags"
       (liber:symbol-documentation 'event-mask)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @begin{short}
     A set of bit-flags to indicate which events a window is to receive.
   @end{short}
@@ -935,8 +916,8 @@
     @entry[:scroll-mask]{Receive scroll events.}
     @entry[:touch-mask]{Receive touch events.}
     @entry[:smooth-scroll-mask]{Receive smooth scrolling events.}
-    @entry[:touchpad-gesture-mask]{Receive touchpad gesture events. Since 3.18}
-    @entry[:tablet-pad]{Receive tablet pad events. Since 3.22}
+    @entry[:touchpad-gesture-mask]{Receive touchpad gesture events.}
+    @entry[:tablet-pad]{Receive tablet pad events.}
     @entry[:all-events-mask]{The combination of all the above event masks.}
   @end{table}
   @see-symbol{gdk:event-type}
@@ -1176,7 +1157,6 @@
              (implicit :boolean)
              (grab-window (g:object window)))
             ;; GdkEventTouchpadSwipe
-            #+gtk-3-18
             ((:touchpad-swipe) event-touchpad-swipe
              (phase :int8 :initform 0)
              (n-fingers :int8 :initform 0)
@@ -1189,7 +1169,6 @@
              (y-root :double :initform 0.0d0)
              (state modifier-type))
             ;; GdkEventTouchpadPinch
-            #+gtk-3-18
             ((:touchpad-pinch) event-touchpad-pinch
              (phase :int8 :initform 0)
              (n-fingers :int8 :initform 0)
@@ -1204,14 +1183,12 @@
              (y-root :double :initform 0.0d0)
              (state modifier-type))
             ;; GdkEventPadButton
-            #+gtk-3-22
             ((:pad-button-press :pad-button-release) event-pad-button
              (time :uint32 :initform 0)
              (group :uint :initform 0)
              (button :uint :initform 0)
              (mode :uint :initform 0)) ; TODO: Check the type of mode
             ;; GdkEventPadAxis
-            #+gtk-3-22
             ((:pad-ring :pad-strip) event-pad-axis
              (time :uint32 :initform 0)
              (group :uint :initform 0)
@@ -1219,12 +1196,10 @@
              (mode :uint :initform 0)
              (value :double :initform 0.0d0))
             ;; GdkEventPadGroupMode
-            #+gtk-3-22
             ((:pad-group-mode) event-pad-group-mode
              (time :uint32 :initform 0)
              (group :uint :initform 0)
-             (mode :uint :initform 0))
-  ))
+             (mode :uint :initform 0))))
 
 #+liber-documentation
 (setf (liber:alias-for-class 'event)
@@ -4504,11 +4479,11 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 ;;; GdkEventTouchpadSwipe
 ;;; ----------------------------------------------------------------------------
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-class 'event-touchpad-swipe)
       "GBoxed"
       (documentation 'event-touchpad-swipe 'type)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @begin{short}
     Generated during touchpad swipe gestures.
   @end{short}
@@ -4556,7 +4531,6 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
       state of the modifier keys, e.g. the @kbd{Control}, @kbd{Shift} and
       @kbd{Alt} keys, and the pointer buttons.}
   @end{table}
-  Since 3.18
   @see-slot{gdk:event-type}
   @see-slot{gdk:event-window}
   @see-slot{gdk:event-send-event}
@@ -4575,13 +4549,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 
 (export 'event-touchpad-swipe)
 
-;;; --- event-touchpad-swipe-phase -----------------------------------------
+;;; --- event-touchpad-swipe-phase ---------------------------------------------
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'event-touchpad-swipe-phase)
       "Accessor"
       (documentation 'event-touchpad-swipe-phase 'function)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:event-touchpad-swipe-phase instance) => phase}
   @syntax[]{(setf (gdk:event-touchpad-swipe-phase instance) phase)}
   @argument[instance]{a @class{gdk:event-touchpad-swipe} instance}
@@ -4594,13 +4568,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 
 (export 'event-touchpad-swipe-phase)
 
-;;; --- event-touchpad-swipe-n-fingers -------------------------------------
+;;; --- event-touchpad-swipe-n-fingers -----------------------------------------
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'event-touchpad-swipe-n-fingers)
       "Accessor"
       (documentation 'event-touchpad-swipe-n-fingers 'function)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:event-touchpad-swipe-n-fingers instance) => n-fingers}
   @syntax[]{(setf (gdk:event-touchpad-swipe-n-fingers instance) n-fingers)}
   @argument[instance]{a @class{gdk:event-touchpad-swipe} instance}
@@ -4614,13 +4588,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 
 (export 'event-touchpad-swipe-n-fingers)
 
-;;; --- event-touchpad-swipe-time ------------------------------------------
+;;; --- event-touchpad-swipe-time ----------------------------------------------
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'event-touchpad-swipe-time)
       "Accessor"
       (documentation 'event-touchpad-swipe-time 'function)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:event-touchpad-swipe-time instance) => time}
   @syntax[]{(setf (gdk:event-touchpad-swipe-time instance) time)}
   @argument[instance]{a @class{gdk:event-touchpad-swipe} instance}
@@ -4634,13 +4608,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 
 (export 'event-touchpad-swipe-time)
 
-;;; --- event-touchpad-swipe-x ---------------------------------------------
+;;; --- event-touchpad-swipe-x -------------------------------------------------
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'event-touchpad-swipe-x)
       "Accessor"
       (documentation 'event-touchpad-swipe-x 'function)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:event-touchpad-swipe-x instance) => x}
   @syntax[]{(setf (gdk:event-touchpad-swipe-x instance) x)}
   @argument[instance]{a @class{gdk:event-touchpad-swipe} instance}
@@ -4653,13 +4627,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 
 (export 'event-touchpad-swipe-x)
 
-;;; --- event-touchpad-swipe-y ---------------------------------------------
+;;; --- event-touchpad-swipe-y -------------------------------------------------
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'event-touchpad-swipe-y)
       "Accessor"
       (documentation 'event-touchpad-swipe-y 'function)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:event-touchpad-swipe-y instance) => y}
   @syntax[]{(setf (gdk:event-touchpad-swipe-y instance) y)}
   @argument[instance]{a @class{gdk:event-touchpad-swipe} instance}
@@ -4672,13 +4646,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 
 (export 'event-touchpad-swipe-y)
 
-;;; --- event-touchpad-swipe-dx --------------------------------------------
+;;; --- event-touchpad-swipe-dx ------------------------------------------------
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'event-touchpad-swipe-dx)
       "Accessor"
       (documentation 'event-touchpad-swipe-dx 'function)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:event-touchpad-swipe-dx instance) => dx}
   @syntax[]{(setf (gdk:event-touchpad-swipe-dx instance) dx)}
   @argument[instance]{a @class{gdk:event-touchpad-swipe} instance}
@@ -4692,13 +4666,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 
 (export 'event-touchpad-swipe-dx)
 
-;;; --- event-touchpad-swipe-dy --------------------------------------------
+;;; --- event-touchpad-swipe-dy ------------------------------------------------
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'event-touchpad-swipe-dy)
       "Accessor"
       (documentation 'event-touchpad-swipe-dy 'function)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:event-touchpad-swipe-dy instance) => dy}
   @syntax[]{(setf (gdk:event-touchpad-swipe-dy instance) dy)}
   @argument[instance]{a @class{gdk:event-touchpad-swipe} instance}
@@ -4712,13 +4686,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 
 (export 'event-touchpad-swipe-dy)
 
-;;; --- event-touchpad-swipe-x-root ----------------------------------------
+;;; --- event-touchpad-swipe-x-root --------------------------------------------
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'event-touchpad-swipe-x-root)
       "Accessor"
       (documentation 'event-touchpad-swipe-x-root 'function)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:event-touchpad-swipe-x-root instance) => x-root}
   @syntax[]{(setf (gdk:event-touchpad-swipe-x-root instance) x-root)}
   @argument[instance]{a @class{gdk:event-touchpad-swipe} instance}
@@ -4732,13 +4706,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 
 (export 'event-touchpad-swipe-x-root)
 
-;;; --- event-touchpad-swipe-y-root ----------------------------------------
+;;; --- event-touchpad-swipe-y-root --------------------------------------------
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'event-touchpad-swipe-y-root)
       "Accessor"
       (documentation 'event-touchpad-swipe-y-root 'function)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:event-touchpad-swipe-y-root instance) => y-root}
   @syntax[]{(setf (gdk:event-touchpad-swipe-y-root instance) y-root)}
   @argument[instance]{a @class{gdk:event-touchpad-swipe} instance}
@@ -4752,17 +4726,17 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 
 (export 'event-touchpad-swipe-y-root)
 
-;;; --- event-touchpad-swipe-state -----------------------------------------
+;;; --- event-touchpad-swipe-state ---------------------------------------------
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'event-touchpad-swipe-state)
       "Accessor"
       (documentation 'event-touchpad-swipe-state 'function)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:event-touchpad-swipe-state instance) => state}
   @syntax[]{(setf (gdk:event-touchpad-swipe-state instance) state)}
   @argument[instance]{a @class{gdk:event-touchpad-swipe} instance}
-  @argument[state]{a @symbol{gdk:modifier-type} bit-mask representing the state
+  @argument[state]{a @symbol{gdk:modifier-type} bitmask representing the state
     of the modifier keys, e.g. the @kbd{Control}, @kbd{Shift} and @kbd{Alt}
     keys, and the pointer buttons}
   @begin{short}
@@ -4778,11 +4752,11 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 ;;; GdkEventTouchpadPinch
 ;;; ----------------------------------------------------------------------------
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-class 'event-touchpad-pinch)
       "GBoxed"
       (documentation 'event-touchpad-pinch 'type)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @begin{short}
     Generated during touchpad swipe gestures.
   @end{short}
@@ -4837,7 +4811,6 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
       state of the modifier keys, e.g. the @kbd{Control}, @kbd{Shift} and
       @kbd{Alt} keys, and the pointer buttons.}
   @end{table}
-  Since 3.18
   @see-slot{gdk:event-type}
   @see-slot{gdk:event-window}
   @see-slot{gdk:event-send-event}
@@ -4858,13 +4831,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 
 (export 'event-touchpad-pinch)
 
-;;; --- event-touchpad-pinch-phase -----------------------------------------
+;;; --- event-touchpad-pinch-phase ---------------------------------------------
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'event-touchpad-pinch-phase)
       "Accessor"
       (documentation 'event-touchpad-pinch-phase 'function)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:event-touchpad-pinch-phase instance) => phase}
   @syntax[]{(setf (gdk:event-touchpad-pinch-phase instance) phase)}
   @argument[instance]{a @class{gdk:event-touchpad-pinch} instance}
@@ -4877,13 +4850,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 
 (export 'event-touchpad-pinch-phase)
 
-;;; --- event-touchpad-pinch-n-fingers -------------------------------------
+;;; --- event-touchpad-pinch-n-fingers -----------------------------------------
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'event-touchpad-pinch-n-fingers)
       "Accessor"
       (documentation 'event-touchpad-pinch-n-fingers 'function)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:event-touchpad-pinch-n-fingers instance) => n-fingers}
   @syntax[]{(setf (gdk:event-touchpad-pinch-n-fingers instance) n-fingers)}
   @argument[instance]{a @class{gdk:event-touchpad-pinch} instance}
@@ -4897,13 +4870,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 
 (export 'event-touchpad-pinch-n-fingers)
 
-;;; --- event-touchpad-pinch-time ------------------------------------------
+;;; --- event-touchpad-pinch-time ----------------------------------------------
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'event-touchpad-pinch-time)
       "Accessor"
       (documentation 'event-touchpad-pinch-time 'function)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:event-touchpad-pinch-time instance) => time}
   @syntax[]{(setf (gdk:event-touchpad-pinch-time instance) time)}
   @argument[instance]{a @class{gdk:event-touchpad-pinch} instance}
@@ -4917,13 +4890,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 
 (export 'event-touchpad-pinch-time)
 
-;;; --- event-touchpad-pinch-x ---------------------------------------------
+;;; --- event-touchpad-pinch-x -------------------------------------------------
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'event-touchpad-pinch-x)
       "Accessor"
       (documentation 'event-touchpad-pinch-x 'function)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:event-touchpad-pinch-x instance) => x}
   @syntax[]{(setf (gdk:event-touchpad-pinch-x instance) x)}
   @argument[instance]{a @class{gdk:event-touchpad-pinch} instance}
@@ -4936,13 +4909,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 
 (export 'event-touchpad-pinch-x)
 
-;;; --- event-touchpad-pinch-y ---------------------------------------------
+;;; --- event-touchpad-pinch-y -------------------------------------------------
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'event-touchpad-pinch-y)
       "Accessor"
       (documentation 'event-touchpad-pinch-y 'function)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:event-touchpad-pinch-y instance) => y}
   @syntax[]{(setf (gdk:event-touchpad-pinch-y instance) y)}
   @argument[instance]{a @class{gdk:event-touchpad-pinch} instance}
@@ -4955,13 +4928,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 
 (export 'event-touchpad-pinch-y)
 
-;;; --- event-touchpad-pinch-dx --------------------------------------------
+;;; --- event-touchpad-pinch-dx ------------------------------------------------
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'event-touchpad-pinch-dx)
       "Accessor"
       (documentation 'event-touchpad-pinch-dx 'function)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:event-touchpad-pinch-dx instance) => dx}
   @syntax[]{(setf (gdk:event-touchpad-pinch-dx instance) dx)}
   @argument[instance]{a @class{gdk:event-touchpad-pinch} instance}
@@ -4975,13 +4948,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 
 (export 'event-touchpad-pinch-dx)
 
-;;; --- event-touchpad-pinch-dy --------------------------------------------
+;;; --- event-touchpad-pinch-dy ------------------------------------------------
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'event-touchpad-pinch-dy)
       "Accessor"
       (documentation 'event-touchpad-pinch-dy 'function)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:event-touchpad-pinch-dy instance) => dy}
   @syntax[]{(setf (gdk:event-touchpad-pinch-dy instance) dy)}
   @argument[instance]{a @class{gdk:event-touchpad-pinch} instance}
@@ -4995,13 +4968,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 
 (export 'event-touchpad-pinch-dy)
 
-;;; --- event-touchpad-pinch-angle-delta -----------------------------------
+;;; --- event-touchpad-pinch-angle-delta ---------------------------------------
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'event-touchpad-pinch-angle-delta)
       "Accessor"
       (documentation 'event-touchpad-pinch-angle-delta 'function)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:event-touchpad-pinch-angle-delta instance) => angle-delta}
   @syntax[]{(setf (gdk:event-touchpad-pinch-angle-delta instance) angle-delta)}
   @argument[instance]{a @class{gdk:event-touchpad-pinch} instance}
@@ -5015,13 +4988,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 
 (export 'event-touchpad-pinch-angle-delta)
 
-;;; --- event-touchpad-pinch-scale -----------------------------------------
+;;; --- event-touchpad-pinch-scale ---------------------------------------------
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'event-touchpad-pinch-scale)
       "Accessor"
       (documentation 'event-touchpad-pinch-scale 'function)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:event-touchpad-pinch-scale instance) => scale}
   @syntax[]{(setf (gdk:event-touchpad-pinch-scale instance) scale)}
   @argument[instance]{a @class{gdk:event-touchpad-pinch} instance}
@@ -5036,13 +5009,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 
 (export 'event-touchpad-pinch-scale)
 
-;;; --- event-touchpad-pinch-x-root ----------------------------------------
+;;; --- event-touchpad-pinch-x-root --------------------------------------------
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'event-touchpad-pinch-x-root)
       "Accessor"
       (documentation 'event-touchpad-pinch-x-root 'function)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:event-touchpad-pinch-x-root instance) => x-root}
   @syntax[]{(setf (gdk:event-touchpad-pinch-x-root instance) x-root)}
   @argument[instance]{a @class{gdk:event-touchpad-pinch} instance}
@@ -5056,13 +5029,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 
 (export 'event-touchpad-pinch-x-root)
 
-;;; --- event-touchpad-pinch-y-root ----------------------------------------
+;;; --- event-touchpad-pinch-y-root --------------------------------------------
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'event-touchpad-pinch-y-root)
       "Accessor"
       (documentation 'event-touchpad-pinch-y-root 'function)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:event-touchpad-pinch-y-root instance) => y-root}
   @syntax[]{(setf (gdk:event-touchpad-pinch-y-root instance) y-root)}
   @argument[instance]{a @class{gdk:event-touchpad-pinch} instance}
@@ -5076,17 +5049,17 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 
 (export 'event-touchpad-pinch-y-root)
 
-;;; --- event-touchpad-pinch-state -----------------------------------------
+;;; --- event-touchpad-pinch-state ---------------------------------------------
 
-#+(and gtk-3-18 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'event-touchpad-pinch-state)
       "Accessor"
       (documentation 'event-touchpad-pinch-state 'function)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:event-touchpad-pinch-state instance) => state}
   @syntax[]{(setf (gdk:event-touchpad-pinch-state instance) state)}
   @argument[instance]{a @class{gdk:event-touchpad-pinch} instance}
-  @argument[state]{a @symbol{gdk:modifier-type} bit-mask representing the state
+  @argument[state]{a @symbol{gdk:modifier-type} bitmask representing the state
     of the modifier keys, e.g. the @kbd{Control}, @kbd{Shift} and @kbd{Alt}
     keys, and the pointer buttons}
   @begin{short}
@@ -5102,11 +5075,11 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 ;;; struct GdkEventPadButton
 ;;; ----------------------------------------------------------------------------
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-class 'event-pad-button)
       "GBoxed"
       (documentation 'event-pad-button 'type)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @begin{short}
     Generated during @code{:tablet-pad} button presses and releases.
   @end{short}
@@ -5138,7 +5111,6 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
     @entry[mode]{The current mode of @arg{group}. Different groups in a
       @code{:tablet-pad} device may have different current modes.}
   @end{table}
-  Since 3.22
   @see-slot{gdk:event-type}
   @see-slot{gdk:event-window}
   @see-slot{gdk:event-send-event}
@@ -5151,13 +5123,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 
 (export 'event-pad-button)
 
-;;; --- event-pad-button-time ----------------------------------------------
+;;; --- event-pad-button-time --------------------------------------------------
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'event-pad-button-time)
       "Accessor"
       (documentation 'event-pad-button-time 'function)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:event-pad-button-time instance) => time}
   @syntax[]{(setf (gdk:event-pad-button-time instance) time)}
   @argument[instance]{a @class{gdk:event-pad-button} instance}
@@ -5171,13 +5143,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 
 (export 'event-pad-button-time)
 
-;;; --- event-pad-button-group ---------------------------------------------
+;;; --- event-pad-button-group -------------------------------------------------
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'event-pad-button-group)
       "Accessor"
       (documentation 'event-pad-button-group 'function)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:event-pad-button-group instance) => group}
   @syntax[]{(setf (gdk:event-pad-button-group instance) group)}
   @argument[instance]{a @class{gdk:event-pad-button} instance}
@@ -5192,13 +5164,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 
 (export 'event-pad-button-group)
 
-;;; --- event-pad-button-button --------------------------------------------
+;;; --- event-pad-button-button ------------------------------------------------
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'event-pad-button-button)
       "Accessor"
       (documentation 'event-pad-button-button 'function)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:event-pad-button-button instance) => button}
   @syntax[]{(setf (gdk:event-pad-button-button instance) button)}
   @argument[instance]{a @class{gdk:event-pad-button} instance}
@@ -5211,13 +5183,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 
 (export 'event-pad-button-button)
 
-;;; --- event-pad-button-mode ----------------------------------------------
+;;; --- event-pad-button-mode --------------------------------------------------
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'event-pad-button-mode)
       "Accessor"
       (documentation 'event-pad-button-mode 'function)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:event-pad-button-mode instance) => mode}
   @syntax[]{(setf (gdk:event-pad-button-mode instance) mode)}
   @argument[instance]{a @class{gdk:event-pad-button} instance}
@@ -5236,11 +5208,11 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 ;;; struct GdkEventPadAxis
 ;;; ----------------------------------------------------------------------------
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-class 'event-pad-axis)
       "GBoxed"
       (documentation 'event-pad-axis 'type)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @begin{short}
     Generated during @code{:tablet-pad} interaction with tactile sensors.
   @end{short}
@@ -5275,7 +5247,6 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
       @code{:tablet-pad} device may have different current modes.}
     @entry[:value]{The current value for the given axis.}
   @end{table}
-  Since 3.22
   @see-slot{gdk:event-type}
   @see-slot{gdk:event-window}
   @see-slot{gdk:event-send-event}
@@ -5289,13 +5260,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 
 (export 'event-pad-axis)
 
-;;; --- event-pad-axis-time ------------------------------------------------
+;;; --- event-pad-axis-time ----------------------------------------------------
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'event-pad-axis-time)
       "Accessor"
       (documentation 'event-pad-axis-time 'function)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:event-pad-axis-time instance) => time}
   @syntax[]{(setf (gdk:event-pad-axis-time instance) time)}
   @argument[instance]{a @class{gdk:event-pad-axis} instance}
@@ -5309,13 +5280,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 
 (export 'event-pad-axis-time)
 
-;;; --- event-pad-axis-group -----------------------------------------------
+;;; --- event-pad-axis-group ---------------------------------------------------
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'event-pad-axis-group)
       "Accessor"
       (documentation 'event-pad-axis-group 'function)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:event-pad-axis-group instance) => group}
   @syntax[]{(setf (gdk:event-pad-axis-group instance) group)}
   @argument[instance]{a @class{gdk:event-pad-axis} instance}
@@ -5330,13 +5301,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 
 (export 'event-pad-axis-group)
 
-;;; --- event-pad-axis-index -----------------------------------------------
+;;; --- event-pad-axis-index ---------------------------------------------------
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'event-pad-axis-index)
       "Accessor"
       (documentation 'event-pad-axis-index 'function)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:event-pad-axis-index instance) => index}
   @syntax[]{(setf (gdk:event-pad-axis-index instance) index)}
   @argument[instance]{a @class{gdk:event-pad-axis} instance}
@@ -5350,13 +5321,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 
 (export 'event-pad-axis-index)
 
-;;; --- event-pad-axis-mode ------------------------------------------------
+;;; --- event-pad-axis-mode ----------------------------------------------------
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'event-pad-axis-mode)
       "Accessor"
       (documentation 'event-pad-axis-mode 'function)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:event-pad-axis-mode instance) => mode}
   @syntax[]{(setf (gdk:event-pad-axis-mode instance) mode)}
   @argument[instance]{a @class{gdk:event-pad-axis} instance}
@@ -5370,13 +5341,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 
 (export 'event-pad-axis-mode)
 
-;;; --- event-pad-axis-value -----------------------------------------------
+;;; --- event-pad-axis-value ---------------------------------------------------
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'event-pad-axis-value)
       "Accessor"
       (documentation 'event-pad-axis-value 'function)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:event-pad-axis-value instance) => value}
   @syntax[]{(setf (gdk:event-pad-axis-value instance) value)}
   @argument[instance]{a @class{gdk:event-pad-axis} instance}
@@ -5393,11 +5364,11 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 ;;; struct GdkEventPadGroupMode
 ;;; ----------------------------------------------------------------------------
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-class 'event-pad-group-mode)
       "GBoxed"
       (documentation 'event-pad-group-mode 'type)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @begin{short}
     Generated during @code{:tablet-pad} mode switches in a group.
   @end{short}
@@ -5427,7 +5398,6 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
     @entry[mode]{The new mode of @arg{group}. Different groups in a
       @code{:tablet-pad} device may have different current modes.}
   @end{table}
-  Since 3.22
   @see-slot{gdk:event-type}
   @see-slot{gdk:event-window}
   @see-slot{gdk:event-send-event}
@@ -5439,13 +5409,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 
 (export 'event-pad-group-mode)
 
-;;; --- event-pad-group-mode-time ------------------------------------------
+;;; --- event-pad-group-mode-time ----------------------------------------------
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'event-pad-group-mode-time)
       "Accessor"
       (documentation 'event-pad-group-mode-time 'function)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:event-pad-group-mode-time instance) => time}
   @syntax[]{(setf (gdk:event-pad-group-mode-time instance) time)}
   @argument[instance]{a @class{gdk:event-pad-group-mode} instance}
@@ -5459,13 +5429,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 
 (export 'event-pad-group-mode-time)
 
-;;; --- event-pad-group-mode-group -----------------------------------------
+;;; --- event-pad-group-mode-group ---------------------------------------------
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'event-pad-group-mode-group)
       "Accessor"
       (documentation 'event-pad-group-mode-group 'function)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:event-pad-group-mode-group instance) => group}
   @syntax[]{(setf (gdk:event-pad-group-mode-group instance) group)}
   @argument[instance]{a @class{gdk:event-pad-group-mode} instance}
@@ -5482,11 +5452,11 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 
 ;;; --- event-pad-group-mode-mode ------------------------------------------
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'event-pad-group-mode-mode)
       "Accessor"
       (documentation 'event-pad-group-mode-mode 'function)
- "@version{#2021-12-13}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:event-pad-group-mode-mode instance) => mode}
   @syntax[]{(setf (gdk:event-pad-group-mode-mode instance) mode)}
   @argument[instance]{a @class{gdk:event-pad-group-mode} instance}

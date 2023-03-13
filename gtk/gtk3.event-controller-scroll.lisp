@@ -83,7 +83,6 @@
   @begin{short}
     Describes the behavior of a @class{gtk:event-controller-scroll} object.
   @end{short}
-  Since 3.24
   @begin{pre}
 (define-g-flags \"GtkEventControllerScrollFlags\"
                 event-controller-scroll-flags
@@ -162,7 +161,7 @@ lambda (controller xvel yvel)    :run-first
       Emitted after scroll is finished if the @code{:kinetic} flag is set.
       @code{xvel} and @code{yvel} express the initial velocity that was
       imprinted by the scroll events. @code{xvel} and @code{yvel} are
-      expressed in pixels/ms. Since 3.24
+      expressed in pixels/ms.
       @begin[code]{table}
         @entry[controller]{The @sym{gtk:event-controller-scroll} object that
           received the signal.}
@@ -174,7 +173,7 @@ lambda (controller xvel yvel)    :run-first
 lambda (controller dx dy)    :run-first
       @end{pre}
       Signals that the widget should scroll by the amount specified by
-      @code{dx} and @code{dy}. Since 3.24
+      @code{dx} and @code{dy}.
       @begin[code]{table}
         @entry[controller]{The @sym{gtk:event-controller-scroll} object that
           received the signal.}
@@ -186,7 +185,7 @@ lambda (controller dx dy)    :run-first
 lambda (controller)    :run-first
       @end{pre}
       Signals that a new scrolling operation has begun. It will only be emitted
-      on devices capable of it. Since 3.24
+      on devices capable of it.
       @begin[code]{table}
         @entry[controller]{The @sym{gtk:event-controller-scroll} object that
           received the signal.}
@@ -196,7 +195,7 @@ lambda (controller)    :run-first
 lambda (controller)    :run-first
       @end{pre}
       Signals that a new scrolling operation has finished. It will only be
-      emitted on devices capable of it. Since 3.24
+      emitted on devices capable of it.
       @begin[code]{table}
         @entry[controller]{The @sym{gtk:event-controller-scroll} object that
           received the signal.}
@@ -217,7 +216,7 @@ lambda (controller)    :run-first
                                                'event-controller-scroll) t)
  "The @code{flags} property of type @symbol{event-controller-scroll-flags}
   (Read / Write) @br{}
-  The flags affecting event controller behavior. Since 3.24")
+  The flags affecting event controller behavior.")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'event-controller-scroll-flags)
@@ -237,8 +236,6 @@ lambda (controller)    :run-first
   conditioning the scroll controller behavior. The
   @sym{(setf gtk:event-controller-scroll-flags)} function sets the flags
   conditioning scroll controller behavior.
-
-  Since 3.24
   @see-class{gtk:event-controller-scroll}
   @see-symbol{gtk:event-controller-scroll-flags}")
 
@@ -259,8 +256,6 @@ lambda (controller)    :run-first
     Creates a new event controller that will handle scroll events for the given
     @arg{widget}.
   @end{short}
-
-  Since 3.24
   @see-class{gtk:event-controller-scroll}
   @see-class{gtk:widget}
   @see-symbol{gtk:event-controller-scroll-flags}"

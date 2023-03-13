@@ -180,25 +180,21 @@
    (active
     menu-active
     "active" "gint" t t)
-   #+gtk-3-22
    (anchor-hints
     menu-anchor-hints
     "anchor-hints" "GdkAnchorHints" t t)
    (attach-widget
     menu-attach-widget
     "attach-widget" "GtkWidget" t t)
-   #+gtk-3-22
    (menu-type-hint
     menu-menu-type-hint
     "menu-type-hint" "GdkWindowTypeHint" t t)
    (monitor
     menu-monitor
     "monitor" "gint" t t)
-   #+gtk-3-22
    (rect-anchor-dx
     menu-rect-anchor-dx
     "rect-anchor-dx" "gint" t t)
-   #+gtk-3-22
    (rect-anchor-dy
     menu-rect-anchor-dy
     "rect-anchor-dy" "gint" t t)
@@ -418,8 +414,6 @@ menu
       @slot[gtk:menu]{anchor-hints}, @slot[gtk:menu]{rect-anchor-dx},
       @slot[gtk:menu]{rect-anchor-dy}, and @slot[gtk:menu]{menu-type-hint}
       properties.
-
-      Since 3.22
       @begin[code]{table}
         @entry[menu]{A @sym{gtk:menu} widget that popped up.}
         @entry[flipped]{The position of @arg{menu} after any possible flipping
@@ -562,21 +556,21 @@ menu
 
 ;;; --- menu-anchor-hints ------------------------------------------------------
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (documentation (liber:slot-documentation "anchor-hints" 'menu) t)
  "The @code{anchor-hints} property of type @symbol{gdk:anchor-hints}
   (Read / Write / Construct) @br{}
   Positioning hints for aligning the menu relative to a rectangle. These hints
   determine how the menu should be positioned in the case that the menu would
-  fall off-screen if placed in its ideal position. Since 3.22 @br{}
+  fall off-screen if placed in its ideal position. @br{}
   Default value: @code{'(:flip-x :flip-y :slide-x :slide-y :resize-x
                          :resize-y)}")
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'menu-anchor-hints)
       "Accessor"
       (documentation 'menu-anchor-hints 'function)
- "@version{#2021-11-14}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:menu-anchor-hints object) => hints}
   @syntax[]{(setf (gtk:menu-anchor-hints object) hints)}
   @argument[object]{a @class{gtk:menu} widget}
@@ -589,7 +583,7 @@ menu
   determine how the menu should be positioned in the case that the menu would
   fall off-screen if placed in its ideal position.
 
-  @image[popup-flip]{}
+  @image[popup-flip]{Figure: Popup flip}
 
   For example, @code{:flip-y} will replace @code{:north-west} with
   @code{:south-west} and vice versa if the menu extends beyond the bottom edge
@@ -597,8 +591,6 @@ menu
   @fun{gtk:menu-popup-at-widget}, @fun{gtk:menu-popup-at-pointer} functions,
   the @slot[gtk:menu]{rect-anchor-dx}, @slot[gtk:menu]{rect-anchor-dy},
   @slot[gtk:menu]{menu-type-hint} properties, and the \"popped-up\" signal.
-
-  Since 3.22
   @see-class{gtk:menu}
   @see-symbol{gdk:anchor-hints}
   @see-function{gtk:menu-popup-at-rect}
@@ -643,19 +635,19 @@ menu
 
 ;;; --- menu-menu-type-hint ----------------------------------------------------
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (documentation (liber:slot-documentation "menu-type-hint" 'menu) t)
  "The @code{menu-type-hint} property of type @symbol{gdk:window-type-hint}
   (Read / Write / Construct) @br{}
   The @symbol{gdk:window-type-hint} value to use for the @class{gdk:window}
-  object of the menu. Since 3.22 @br{}
+  object of the menu. @br{}
   Default value: @code{:popup-menu}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'menu-menu-type-hint)
       "Accessor"
       (documentation 'menu-menu-type-hint 'function)
- "@version{#2021-11-14}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:menu-menu-type-hint object) => hint}
   @syntax[]{(setf (gtk:menu-menu-type-hint object) hint)}
   @argument[object]{a @class{gtk:menu} widget}
@@ -669,8 +661,6 @@ menu
   @fun{gtk:menu-popup-at-widget}, @fun{gtk:menu-popup-at-pointer} functions,
   the @slot[gtk:menu]{anchor-hints}, @slot[gtk:menu]{rect-anchor-dx},
   @slot[gtk:menu]{rect-anchor-dy} properties, and the \"popped-up\" signal.
-
-  Since 3.22
   @see-class{gtk:menu}
   @see-class{gdk:window}
   @see-symbol{gdk:window-type-hint}
@@ -717,19 +707,19 @@ menu
 
 ;;; --- menu-rect-anchor-dx ----------------------------------------------------
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (documentation (liber:slot-documentation "rect-anchor-dx" 'menu) t)
  "The @code{rect-anchor-dx} property of type @code{:int}
   (Read / Write / Construct) @br{}
   Horizontal offset to apply to the menu, i.e. the rectangle or widget anchor.
-  Since 3.22 @br{}
+  @br{}
   Default value: 0")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'menu-rect-anchor-dx)
       "Accessor"
       (documentation 'menu-rect-anchor-dx 'function)
- "@version{#2021-11-14}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:menu-rect-anchor-dx object) => anchor}
   @syntax[]{(setf (gtk:menu-rect-anchor-dx object) anchor)}
   @argument[object]{a @class{gtk:menu} widget}
@@ -743,8 +733,6 @@ menu
   @fun{gtk:menu-popup-at-pointer} functions, the @slot[gtk:menu]{anchor-hints},
   @slot[gtk:menu]{rect-anchor-dx}, @slot[gtk:menu]{rect-anchor-dy} properties,
   and the \"popped-up\" signal.
-
-  Since 3.22
   @see-class{gtk:menu}
   @see-function{gtk:menu-popup-at-rect}
   @see-function{gtk:menu-popup-at-widget}
@@ -755,19 +743,19 @@ menu
 
 ;;; --- menu-rect-anchor-dy ----------------------------------------------------
 
-#+(and gtk-3-22 liber-documentation)
+#+liber-documentation
 (setf (documentation (liber:slot-documentation "rect-anchor-dy" 'menu) t)
  "The @code{rect-anchor-dy} property of type @code{:int}
   (Read / Write / Construct) @br{}
   Vertical offset to apply to the menu, i.e. the rectangle or widget anchor.
-  Since 3.22 @br{}
+  @br{}
   Default value: 0")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'menu-rect-anchor-dy)
       "Accessor"
       (documentation 'menu-rect-anchor-dy 'function)
- "@version{#2021-11-14}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:menu-rect-anchor-dy object) => anchor}
   @syntax[]{(setf (gtk:menu-rect-anchor-dy object) anchor)}
   @argument[object]{a @class{gtk:menu} widget}
@@ -782,8 +770,6 @@ menu
   @fun{gtk:menu-popup-at-pointer} functions, the @slot[gtk:menu]{anchor-hints},
   @slot[gtk:menu]{rect-anchor-dx}, @slot[gtk:menu]{rect-anchor-dy} properties,
   and the \"popped-up\" signal.
-
-  Since 3.22
   @see-class{gtk:menu}
   @see-function{gtk:menu-popup-at-rect}
   @see-function{gtk:menu-popup-at-widget}
@@ -1227,7 +1213,7 @@ menu
 
 (defcfun ("gtk_menu_popup_at_pointer" menu-popup-at-pointer) :void
  #+liber-documentation
- "@version{#2021-11-14}
+ "@version{#2023-3-13}
   @argument[menu]{a @class{gtk:menu} widget}
   @argument[event]{a @class{gdk:event} event that initiated this request of
     @code{nil} if it is the current event}
@@ -1244,8 +1230,6 @@ menu
   @slot[gtk:menu]{anchor-hints}, @slot[gtk:menu]{rect-anchor-dx},
   @slot[gtk:menu]{rect-anchor-dy}, and @slot[gtk:menu]{menu-type-hint}. Connect
   to the \"popped-up\" signal to find out how it was actually positioned.
-
-  Since 3.22
   @see-class{gtk:menu}
   @see-class{gdk:event}
   @see-function{gtk:menu-popup-at-widget}

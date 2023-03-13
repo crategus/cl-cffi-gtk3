@@ -88,10 +88,10 @@
       (liber:symbol-documentation 'shortcut-type)
  "@version{#2023-2-28}
   @begin{short}
-    The @sym{gtk:shortcut-type} enumeration specifies the kind of shortcut that 
+    The @sym{gtk:shortcut-type} enumeration specifies the kind of shortcut that
     is being described.
   @end{short}
-  More values may be added to this enumeration over time. Since 3.20
+  More values may be added to this enumeration over time.
   @begin{pre}
 (define-g-enum \"GtkShortcutType\" shortcut-type
   (:export t
@@ -142,7 +142,6 @@
    (accelerator
     shortcuts-shortcut-accelerator
     "accelerator" "gchararray" t t)
-   #+gtk-3-22
    (action-name
     shortcuts-shortcut-action-name
     "action-name" "gchararray" t t)
@@ -173,9 +172,9 @@
 
 #+liber-documentation
 (setf (documentation 'shortcuts-shortcut 'type)
- "@version{#2023-2-28}
+ "@version{#2023-3-13}
   @begin{short}
-    A @sym{gtk:shortcuts-shortcut} widget represents a single keyboard shortcut 
+    A @sym{gtk:shortcuts-shortcut} widget represents a single keyboard shortcut
     or gesture with a short text.
   @end{short}
   This widget is only meant to be used with the @class{gtk:shortcuts-window}
@@ -232,12 +231,12 @@
                       'shortcuts-shortcut) t)
  "The @code{accelerator} property of type @code{:string} (Read / Write) @br{}
   The accelerator(s) represented by this object. This property is used if the
-  @code{shortcut-type} property is set to @code{:accelerator}. The syntax of 
-  this property is (an extension of) the syntax understood by the 
-  @fun{gtk:accelerator-parse} function. Multiple accelerators can be specified 
-  by separating them with a space, but keep in mind that the available width is 
-  limited. It is also possible to specify ranges of shortcuts, using ... between 
-  the keys. Sequences of keys can be specified using a @kbd{+} or @kbd{&} 
+  @code{shortcut-type} property is set to @code{:accelerator}. The syntax of
+  this property is (an extension of) the syntax understood by the
+  @fun{gtk:accelerator-parse} function. Multiple accelerators can be specified
+  by separating them with a space, but keep in mind that the available width is
+  limited. It is also possible to specify ranges of shortcuts, using ... between
+  the keys. Sequences of keys can be specified using a @kbd{+} or @kbd{&}
   between the keys. @br{}
   @em{Examples:} @br{}
   A single shortcut: @kbd{<ctl><alt>delete} @br{}
@@ -245,9 +244,9 @@
   A range of shortcuts: @kbd{<alt>1} ... @kbd{<alt>9} @br{}
   Several keys pressed together: @kbd{Control_L} & @kbd{Control_R} @br{}
   A sequence of shortcuts or keys: @kbd{<ctl>c+<ctl>x} @br{}
-  Use @kbd{+} instead of @kbd{&} when the keys may (or have to be) pressed 
+  Use @kbd{+} instead of @kbd{&} when the keys may (or have to be) pressed
   sequentially (e.g use @kbd{t+t} for 'press the @kbd{t} key twice'). @br{}
-  Note that @kbd{<}, @kbd{>} and @kbd{&} need to be escaped as @kbd{<}, 
+  Note that @kbd{<}, @kbd{>} and @kbd{&} need to be escaped as @kbd{<},
   @kbd{>} and @kbd{&} when used in @file{.ui} files. @br{}
   Default value: @code{nil}")
 
@@ -265,12 +264,12 @@
     @class{gtk:shortcuts-shortcut} class.
   @end{short}
   The accelerator(s) represented by this object. This property is used if the
-  @code{shortcut-type} property is set to @code{:accelerator}. The syntax of 
-  this property is (an extension of) the syntax understood by the 
-  @fun{gtk:accelerator-parse} function. Multiple accelerators can be specified 
-  by separating them with a space, but keep in mind that the available width is 
-  limited. It is also possible to specify ranges of shortcuts, using ... between 
-  the keys. Sequences of keys can be specified using a @kbd{+} or @kbd{&} 
+  @code{shortcut-type} property is set to @code{:accelerator}. The syntax of
+  this property is (an extension of) the syntax understood by the
+  @fun{gtk:accelerator-parse} function. Multiple accelerators can be specified
+  by separating them with a space, but keep in mind that the available width is
+  limited. It is also possible to specify ranges of shortcuts, using ... between
+  the keys. Sequences of keys can be specified using a @kbd{+} or @kbd{&}
   between the keys.
 
   @em{Examples:} @br{}
@@ -279,9 +278,9 @@
   A range of shortcuts: @kbd{<alt>1} ... @kbd{<alt>9} @br{}
   Several keys pressed together: @kbd{Control_L} & @kbd{Control_R} @br{}
   A sequence of shortcuts or keys: @kbd{<ctl>c+<ctl>x} @br{}
-  Use @kbd{+} instead of @kbd{&} when the keys may (or have to be) pressed 
+  Use @kbd{+} instead of @kbd{&} when the keys may (or have to be) pressed
   sequentially (e.g use @kbd{t+t} for 'press the @kbd{t} key twice'). @br{}
-  Note that @kbd{<}, @kbd{>} and @kbd{&} need to be escaped as @kbd{<}, 
+  Note that @kbd{<}, @kbd{>} and @kbd{&} need to be escaped as @kbd{<},
   @kbd{>} and @kbd{&} when used in @file{.ui} files. @br{}
   @see-class{gtk:shortcuts-shortcut}
   @see-function{gtk:accelerator-parse}")
@@ -293,9 +292,9 @@
                       'shortcuts-shortcut) t)
  "The @code{action-name} property of type @code{:string} (Read / Write) @br{}
   A detailed action name. If this is set for a shortcut of @code{:accelerator}
-  type, then GTK will use the accelerators that are associated with the action 
-  via the @fun{gtk:application-accels-for-action} function, and setting 
-  @code{accelerator} is not necessary. Since 3.22 @br{}
+  type, then GTK will use the accelerators that are associated with the action
+  via the @fun{gtk:application-accels-for-action} function, and setting
+  @code{accelerator} is not necessary. @br{}
   Default value: @code{nil}")
 
 #+liber-documentation
@@ -312,11 +311,9 @@
     @class{gtk:shortcuts-shortcut} class.
   @end{short}
   A detailed action name. If this is set for a shortcut of @code{:accelerator}
-  type, then GTK will use the accelerators that are associated with the action 
-  via the @fun{gtk:application-accels-for-action} function, and setting 
+  type, then GTK will use the accelerators that are associated with the action
+  via the @fun{gtk:application-accels-for-action} function, and setting
   @code{accelerator} is not necessary.
-
-  Since 3.22
   @see-class{gtk:shortcuts-shortcut}
   @see-function{gtk:application-accels-for-action}")
 
@@ -381,7 +378,7 @@
 ;;; --- shortcuts-shortcut-icon-set --------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "icon-set" 
+(setf (documentation (liber:slot-documentation "icon-set"
                                                'shortcuts-shortcut) t)
  "The @code{icon-set} property of type @code{:boolean} (Read / Write) @br{}
   @em{True} if an icon has been set. @br{}

@@ -670,9 +670,8 @@
 ;;; gdk_event_is_scroll_stop_event ()
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-20
 (defcfun ("gdk_event_is_scroll_stop_event" event-is-scroll-stop-event) :boolean
- "@version{2023-2-26}
+ "@version{2023-3-13}
   @argument[event]{a @class{gdk:event} instance}
   @return{A boolean whether a scroll event is a stop scroll event.}
   @begin{short}
@@ -684,12 +683,9 @@
   scrolling based on the current velocity.
 
   Stop scroll events always have a a delta of 0/0.
-
-  Since 3.20
   @see-class{gdk:event}"
   (event (g:boxed event)))
 
-#+gtk-3-20
 (export 'event-is-scroll-stop-event)
 
 ;;; ----------------------------------------------------------------------------
@@ -955,30 +951,25 @@
 ;;; gdk_event_get_seat ()
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-20
 (defcfun ("gdk_event_get_seat" event-seat) (g:object gdk-seat)
- "@version{#2023-2-26}
+ "@version{#2023-3-13}
   @argument[event]{a @class{gdk:event} instance}
   @return{The @class{gdk:seat} object of this event.}
   @begin{short}
     Returns the seat this event was generated for.
   @end{short}
-
-  Since 3.20
   @see-class{gdk:event}
   @see-class{gdk:seat}"
   (event (g:boxed event)))
 
-#+gtk-3-20
 (export 'event-seat)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gdk_event_get_scancode () -> event-scancode
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-22
 (defcfun ("gdk_event_get_scancode" event-scancode) :int
- "@version{#2023-2-26}
+ "@version{#2023-3-13}
   @argument[event]{a @class{gdk:event} instance}
   @return{An integer with the associated keyboard scancode or 0.}
   @begin{short}
@@ -987,33 +978,26 @@
   This is usually the @code{hardware-keycode} slot of the event. On Windows
   this is the high word of @code{WM_KEY{DOWN,UP@}} which contains the scancode
   and some extended flags.
-
-  Since 3.22
   @see-class{gdk:event}"
   (event (g:boxed event)))
 
-#+gtk-3-22
 (export 'event-scancode)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gdk_event_get_pointer_emulated () -> event-pointer-emulated
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-22
 (defcfun ("gdk_event_get_pointer_emulated" event-pointer-emulated) :boolean
- "@version{#2023-2-26}
+ "@version{#2023-3-13}
   @argument[event]{a @class{gdk:event} instance}
   @return{@em{True} if this event is emulated.}
   @begin{short}
     Returns whether this event is an 'emulated' pointer event (typically from a
     touch event), as opposed to a real one.
   @end{short}
-
-  Since 3.22
   @see-class{gdk:event}"
   (event (g:boxed event)))
 
-#+gtk-3-22
 (export 'event-pointer-emulated)
 
 ;;; ----------------------------------------------------------------------------
@@ -1225,7 +1209,6 @@ lambda (event)
 ;;; gdk_event_set_device_tool () -> event-device-tool
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-22
 (defun (setf event-device-tool) (tool event)
   (cffi:foreign-funcall "gdk_event_set_device_tool"
                         (g:boxed event) event
@@ -1233,9 +1216,8 @@ lambda (event)
                         :void)
   tool)
 
-#+gtk-3-22
 (defcfun ("gdk_event_get_device_tool" event-device-tool) (g:object device-tool)
- "@version{#2023-2-26}
+ "@version{#2023-3-13}
   @syntax[]{(gdk:event-device-tool event) => tool}
   @syntax[]{(setf (gdk:event-device-tool event) tool)}
   @argument[event]{a @class{gdk:event} instance}
@@ -1252,14 +1234,11 @@ lambda (event)
   Note: The @class{gdk:device-tool} object will be constant during the
   application lifetime, if settings must be stored persistently across runs,
   see the @fun{gdk:device-tool-serial} function.
-
-  Since 3.22
   @see-class{gdk:event}
   @see-class{gdk:device-tool}
   @see-function{gdk:device-tool-serial}"
   (event (g:boxed event)))
 
-#+gtk-3-22
 (export 'event-device-tool)
 
 ;;; ----------------------------------------------------------------------------

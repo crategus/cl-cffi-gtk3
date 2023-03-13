@@ -132,17 +132,14 @@
   (:gpl-3-0-only 10)
   (:lgpl-2-1-only 11)
   (:lgpl-3-0-only 12)
-  #+gtk-3-22
   (:agpl-3-0 13)
-  #+gtk-3-22
-  (:agpl-3-0-only 14)
-)
+  (:agpl-3-0-only 14))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'license)
       "GEnum"
       (liber:symbol-documentation 'license)
- "@version{#2021-10-6}
+ "@version{#2023-3-13}
   @begin{short}
     The type of license for an application.
   @end{short}
@@ -184,9 +181,9 @@
     @entry[:lgpl-3-0-only]{The GNU Lesser General Public License, version 3.0
       only.}
     @entry[:agpl-3-0]{The GNU Affero General Public License, version 3.0 or
-      later. Since 3.22.}
+      later.}
     @entry[:agpl-3-0-only]{The GNU Affero General Public License, version 3.0
-      only. Since 3.22.}
+      only.}
   @end{table}
   @see-class{gtk:about-dialog}")
 

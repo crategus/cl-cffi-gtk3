@@ -1146,55 +1146,46 @@ lambda (display seat)    :run-last
 ;;; gdk_display_get_default_seat () -> display-default-seat
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-20
 (defcfun ("gdk_display_get_default_seat" display-default-seat) (g:object seat)
  #+liber-documentation
- "@version{2023-3-4}
+ "@version{2023-3-13}
   @argument[display]{a @class{gdk:display} object}
   @return{The default @class{gdk:seat} object.}
   @begin{short}
     Returns the default seat object for this display.
   @end{short}
-
-  Since 3.20
   @see-class{gdk:display}
   @see-class{gdk:seat}"
   (display (g:object display)))
 
-#+gtk-3-20
 (export 'display-default-seat)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gdk_display_list_seats ()
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-20
 (defcfun ("gdk_display_list_seats" display-list-seats)
     (g:list-t (g:object seat))
  #+liber-documentation
- "@version{2023-3-4}
+ "@version{2023-3-13}
   @argument[display]{a @class{gdk:display} object}
   @return{The list of @class{gdk:seat} objects known to @arg{display}.}
   @begin{short}
     Returns the list of seats known to @arg{display}.
   @end{short}
-
-  Since 3.20
   @see-class{gdk:display}
   @see-class{gdk:seat}"
   (display (g:object display)))
 
-#+gtk-3-20
 (export 'display-list-seats)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gdk_display_get_n_monitors () -> display-n-monitors
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-22
 (defcfun ("gdk_display_get_n_monitors" display-n-monitors) :int
  #+liber-documentation
- "@version{2023-3-4}
+ "@version{2023-3-13}
   @argument[display]{a @class{gdk:display} object}
   @return{An integer with the number of monitors.}
   @begin{short}
@@ -1202,22 +1193,18 @@ lambda (display seat)    :run-last
   @end{short}
   The returned number is valid until the next emission of the \"monitor-added\"
   or \"monitor-removed\" signal.
-
-  Since 3.22
   @see-class{gdk:display}"
   (display (g:object display)))
 
-#+gtk-3-22
 (export 'display-n-monitors)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gdk_display_get_monitor () -> display-monitor
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-22
 (defcfun ("gdk_display_get_monitor" display-monitor) (g:object monitor)
  #+liber-documentation
- "@version{2023-3-4}
+ "@version{2023-3-13}
   @argument[display]{a @class{gdk:display} object}
   @argument[monitor-num]{an integer with the number of the monitor}
   @return{The @class{gdk:monitor} object, or @code{nil} if the
@@ -1225,25 +1212,21 @@ lambda (display seat)    :run-last
   @begin{short}
     Gets a monitor associated with this display.
   @end{short}
-
-  Since 3.22
   @see-class{gdk:display}
   @see-class{gdk:monitor}"
   (display (g:object display))
   (monitor-num :int))
 
-#+gtk-3-22
 (export 'display-monitor)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gdk_display_get_primary_monitor () -> display-primary-monitor
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-22
 (defcfun ("gdk_display_get_primary_monitor" display-primary-monitor)
     (g:object monitor)
  #+liber-documentation
- "@version{#2023-3-4}
+ "@version{#2023-3-13}
   @argument[display]{a @class{gdk:display} object}
   @return{The primary @class{gdk:monitor} object, or @code{nil} if no primary
     monitor is configured by the user.}
@@ -1254,24 +1237,20 @@ lambda (display seat)    :run-last
   lives. While normal application windows typically allow the window manager
   to place the windows, specialized desktop applications such as panels should
   place themselves on the primary monitor.
-
-  Since 3.22
   @see-class{gdk:display}
   @see-class{gdk:monitor}"
   (display (g:object display)))
 
-#+gtk-3-22
 (export 'display-primary-monitor)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gdk_display_get_monitor_at_point () -> display-monitor-at-point
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-22
 (defcfun ("gdk_display_get_monitor_at_point" display-monitor-at-point)
     (g:object monitor)
  #+liber-documentation
- "@version{#2023-3-4}
+ "@version{#2023-3-13}
   @argument[display]{a @class{gdk:display} object}
   @argument[x]{an integer with the x coordinate of the point}
   @argument[y]{an integer with the y coordinate of the point}
@@ -1281,26 +1260,22 @@ lambda (display seat)    :run-last
     Gets the monitor in which the point (@arg{x}, @arg{y}) is located, or a
     nearby monitor if the point is not in any monitor.
   @end{short}
-
-  Since 3.22
   @see-class{gdk:display}
   @see-class{gdk:monitor}"
   (display (g:object display))
   (x :int)
   (y :int))
 
-#+gtk-3-22
 (export 'display-monitor-at-point)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gdk_display_get_monitor_at_window () -> display-monitor-at-window
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-22
 (defcfun ("gdk_display_get_monitor_at_window" display-monitor-at-window)
     (g:object monitor)
  #+liber-documentation
- "@version{#2023-3-4}
+ "@version{#2023-3-13}
   @argument[display]{a @class{gdk:display} object}
   @argument[window]{a @class{gdk:window} object}
   @return{The @class{gdk:monitor} object with the largest overlap with
@@ -1309,15 +1284,12 @@ lambda (display seat)    :run-last
     Gets the monitor in which the largest area of window resides, or a monitor
     close to the window if it is outside of all monitors.
   @end{short}
-
-  Since 3.22
   @see-class{gdk:display}
   @see-class{gdk:window}
   @see-class{gdk:monitor}"
   (display (g:object display))
   (window (g:object window)))
 
-#+gtk-3-22
 (export 'display-monitor-at-window)
 
 ;;; --- End of file gdk3.display.lisp ------------------------------------------

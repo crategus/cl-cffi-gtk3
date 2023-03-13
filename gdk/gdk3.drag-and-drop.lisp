@@ -88,7 +88,6 @@
 ;;; enum GdkDragCancelReason
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-20
 (define-g-enum "GdkDragCancelReason" drag-cancel-reason
   (:export t
    :type-initializer "gdk_drag_cancel_reason_get_type")
@@ -96,11 +95,11 @@
   :user-cancelled
   :error)
 
-#+(and gtk-3-20 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-symbol 'drag-cancel-reason)
       "GEnum"
       (liber:symbol-documentation 'drag-cancel-reason)
- "@version{#2021-10-3}
+ "@version{#2023-3-13}
   @begin{short}
     Used in the @class{gdk:drag-context} object to indicate the reason of a
     cancelled DND operation.
@@ -118,7 +117,6 @@
     @entry[:user-cancelled]{Drag cancelled by the user.}
     @entry[:error]{Unspecified error.}
   @end{table}
-  Since 3.20
   @see-class{gdk:drag-context}")
 
 ;;; ----------------------------------------------------------------------------
@@ -383,10 +381,9 @@
 ;;; gdk_drag_drop_done ()
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-20
 (defcfun ("gdk_drag_drop_done" drag-drop-done) :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-13}
   @argument[context]{a @class{gdk:drag-context} object}
   @argument[sucess]{a boolean whether the drag was ultimatively succesful}
   @begin{short}
@@ -398,13 +395,10 @@
   @class{gdk:drag-context} object will only take the first
   @sym{gdk:drag-drop-done} function call as effective, if this function is
   called multiple times, all subsequent calls will be ignored.
-
-  Since 3.20
   @see-class{gdk:drag-context}"
   (context (g:object drag-context))
   (success :boolean))
 
-#+gtk-3-20
 (export 'drag-drop-done)
 
 ;;; ----------------------------------------------------------------------------
@@ -531,7 +525,6 @@
 ;;; gdk_drag_begin_from_point ()
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-20
 (defcfun ("gdk_drag_begin_from_point" %drag-begin-from-point)
     (g:object drag-context)
   (window (g:object window))
@@ -540,13 +533,12 @@
   (x :int)
   (y :int))
 
-#+gtk-3-20
 (defun drag-begin-from-point (window device targets x y)
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-13}
   @argument[window]{a @class{gdk:window} source window for this drag}
   @argument[device]{a @class{gdk:device} object that controls this drag}
-  @argument[targets]{a list of @symbol{gdk:atom-as-string} as strings with the
+  @argument[targets]{a list of @symbol{gdk:atom-as-string} strings with the
     offered targets}
   @argument[x]{an integer with the x coordinate where the drag nominally
     started}
@@ -557,8 +549,6 @@
     Starts a drag and creates a new drag context for it.
   @end{short}
   This function is called by the drag source.
-
-  Since 3.20
   @see-class{gdk:drag-context}
   @see-class{gdk:window}
   @see-class{gdk:device}
@@ -569,7 +559,6 @@
                           x
                           y))
 
-#+gtk-3-20
 (export 'drag-begin-from-point)
 
 ;;; ----------------------------------------------------------------------------
@@ -876,11 +865,10 @@
 ;;; gdk_drag_context_get_drag_window () -> drag-context-drag-window
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-20
 (defcfun ("gdk_drag_context_get_drag_window" drag-context-drag-window)
     (g:object window)
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-13}
   @argument[context]{a @class{gdk:drag-context} object}
   @return{The @class{gdk:window} drag window, or @code{nil}.}
   @begin{short}
@@ -891,23 +879,19 @@
   GDK will move the window in accordance with the ongoing drag operation. The
   window is owned by context and will be destroyed when the drag operation is
   over.
-
-  Since 3.20
   @see-class{gdk:drag-context}
   @see-class{gdk:window}"
   (context (g:object drag-context)))
 
-#+gtk-3-20
 (export 'drag-context-drag-window)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gdk_drag_context_set_hotspot ()
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-20
 (defcfun ("gdk_drag_context_set_hotspot" drag-context-set-hotspot) :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-13}
   @argument[context]{a @class{gdk:drag-context} object}
   @argument[x]{an integer with the x coordinate of the drag window hotspot}
   @argument[y]{an integer with the y coordinate of the drag window hotspot}
@@ -916,27 +900,23 @@
     hotspot.
   @end{short}
   Initially, the hotspot is at the top left corner of the drag window.
-
-  Since 3.20
   @see-class{gdk:drag-context}"
   (context (g:object drag-context))
   (x :int)
   (y :int))
 
-#+gtk-3-20
 (export 'drag-context-set-hotspot)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gdk_drag_context_manage_dnd ()
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-20
 (defcfun ("gdk_drag_context_manage_dnd" drag-context-manage-dnd) :boolean
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-13}
   @argument[context]{a @class{gdk:drag-context} object}
   @argument[window]{a @class{gdk:window} object to use for IPC messaging/events}
-  @argument[actions]{the @symbol{gdk:drag-action} flags supported by the drag
+  @argument[actions]{a @symbol{gdk:drag-action} value supported by the drag
     source}
   @return{@em{True} if the drag and drop operation is managed.}
   @begin{short}
@@ -967,7 +947,6 @@
       means.
     @end{item}
   @end{itemize}
-  Since 3.20
   @see-class{gdk:drag-context}
   @see-class{gdk:window}
   @see-symbol{gdk:drag-action}
@@ -976,7 +955,6 @@
   (window (g:object gdk:window))
   (actions drag-action))
 
-#+gtk-3-20
 (export 'drag-context-manage-dnd)
 
 ;;; --- End of file gdk.drag-and-drop.lisp -------------------------------------

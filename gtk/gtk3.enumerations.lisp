@@ -556,14 +556,14 @@
   @begin[code]{table}
     @entry[:none]{No selection is possible.}
     @entry[:single]{Zero or one element may be selected.}
-    @entry[:browse]{Exactly one element is selected. In some circumstances, 
-      such as initially or during a search operation, it is possible for no 
-      element to be selected with the @code{:browse} value. What is really 
-      enforced is that the user cannot deselect a currently selected element 
+    @entry[:browse]{Exactly one element is selected. In some circumstances,
+      such as initially or during a search operation, it is possible for no
+      element to be selected with the @code{:browse} value. What is really
+      enforced is that the user cannot deselect a currently selected element
       except by selecting another element.}
-    @entry[:multiple]{Any number of elements may be selected. The @kbd{Ctrl} 
-      key may be used to enlarge the selection, and the @kbd{Shift} key to 
-      select between the focus and the child pointed to. Some widgets may also 
+    @entry[:multiple]{Any number of elements may be selected. The @kbd{Ctrl}
+      key may be used to enlarge the selection, and the @kbd{Shift} key to
+      select between the focus and the child pointed to. Some widgets may also
       allow click-drag to select a range of elements.}
   @end{table}
   @see-class{gtk:flow-box}
@@ -635,15 +635,13 @@
   (:link         #.(ash 1 9))
   (:visited      #.(ash 1 10))
   (:checked      #.(ash 1 11))
-  #+gtk-3-20
-  (:drop-active  #.(ash 1 12))
-  )
+  (:drop-active  #.(ash 1 12)))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'state-flags)
       "GFlags"
       (liber:symbol-documentation 'state-flags)
- "@version{2023-3-6}
+ "@version{2023-3-13}
   @short{Describes a widget state.}
   Widget states are used to match the widget against CSS pseudo-classes. Note
   that GTK extends the regular CSS classes and sometimes uses different names.
@@ -681,8 +679,7 @@
     @entry[:visited]{The location the widget points to has already been
       visited.}
     @entry[:checked]{Widget is checked.}
-    @entry[:drop-active]{Widget is highlighted as a drop target for DND.
-      Since 3.20}
+    @entry[:drop-active]{Widget is highlighted as a drop target for DND.}
   @end{table}
   @see-class{gtk:widget}
   @see-class{gtk:style-context}")
@@ -780,8 +777,8 @@
     packed.
   @end{short}
   The ability to set the text direction is present in order so that correct
-  localization into languages with right-to-left reading directions can be 
-  done. Generally, applications will let the default reading direction present, 
+  localization into languages with right-to-left reading directions can be
+  done. Generally, applications will let the default reading direction present,
   except for containers where the containers are arranged in an order that is
   explicitely visual rather than logical, such as buttons for text
   justification.
@@ -888,7 +885,7 @@
     @entry[:normal]{State during normal operation.}
     @entry[:active]{State of a currently active widget, such as a depressed
       button.}
-    @entry[:prelight]{State indicating that the mouse pointer is over the 
+    @entry[:prelight]{State indicating that the mouse pointer is over the
       widget and the widget will respond to mouse clicks.}
     @entry[:selected]{State of a selected item, such the selected row in a
       list.}

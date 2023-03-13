@@ -71,7 +71,7 @@
 (setf (documentation 'event-controller-key 'type)
  "@version{#2023-3-1}
   @begin{short}
-    The @sym{gtk:event-controller-key} object is an event controller meant for 
+    The @sym{gtk:event-controller-key} object is an event controller meant for
     situations where you need access to key events.
   @end{short}
 
@@ -81,16 +81,14 @@
       @begin{pre}
 lambda (controller)    :run-last
       @end{pre}
-      Since 3.24
       @begin[code]{table}
-        @entry[controller]{The @sym{gtk:event-controller-key} object on which 
+        @entry[controller]{The @sym{gtk:event-controller-key} object on which
           the signal is emitted.}
       @end{table}
     @subheading{The \"focus-out\" signal}
       @begin{pre}
 lambda (controller)    :run-last
       @end{pre}
-      Since 3.24
       @begin[code]{table}
         @entry[controller]{The @sym{gtk:event-controller-key} object on
           which the signal is emitted.}
@@ -99,7 +97,6 @@ lambda (controller)    :run-last
       @begin{pre}
 lambda (controller)    :run-last
       @end{pre}
-      Since 3.24
       @begin[code]{table}
         @entry[controller]{The @sym{gtk:event-controller-key} object on
           which the signal is emitted.}
@@ -108,7 +105,7 @@ lambda (controller)    :run-last
       @begin{pre}
 lambda (controller keyval keycode state)    :run-last
       @end{pre}
-      The signal is emitted whenever a key is pressed. Since 3.24
+      The signal is emitted whenever a key is pressed.
       @begin[code]{table}
         @entry[controller]{The @sym{gtk:event-controller-key} object on
           which received the signal.}
@@ -124,7 +121,7 @@ lambda (controller keyval keycode state)    :run-last
       @begin{pre}
 lambda (controller keyval keycode state)    :run-last
       @end{pre}
-      The signal is emitted whenever a key is released. Since 3.24
+      The signal is emitted whenever a key is released.
       @begin[code]{table}
         @entry[controller]{The @sym{gtk:event-controller-key} object on
           which received the signal.}
@@ -138,11 +135,10 @@ lambda (controller keyval keycode state)    :run-last
       @begin{pre}
 lambda (controller state)    :run-last
       @end{pre}
-      Since 3.24
       @begin[code]{table}
         @entry[controller]{The @sym{gtk:event-controller-key} object on
           which received the signal.}
-        @entry[state]{The @symbol{gdk:modifier-type} bitmask, representing the 
+        @entry[state]{The @symbol{gdk:modifier-type} bitmask, representing the
           state of modifier keys and pointer buttons.}
         @entry[Returns]{a not documented boolean}
       @end{table}
@@ -161,8 +157,6 @@ lambda (controller state)    :run-last
  "@version{#2023-3-1}
   @return{The new @class{gtk:event-controller-key} object.}
   @short{Creates a new event controller.}
-
-  Since 3.24
   @see-class{gtk:event-controller-key}"
   (make-instance 'event-controller-key))
 

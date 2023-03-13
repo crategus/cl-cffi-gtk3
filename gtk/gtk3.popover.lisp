@@ -91,18 +91,17 @@
 ;;; enum GtkPopoverConstraint
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-20
 (define-g-enum "GtkPopoverConstraint" popover-constraint
   (:export t
    :type-initializer "gtk_popover_constraint_get_type")
   :none
   :window)
 
-#+(and gtk-3-20 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-symbol 'popover-constraint)
       "GEnum"
       (liber:symbol-documentation 'popover-constraint)
- "@version{#2023-3-12}
+ "@version{#2023-3-13}
   @begin{short}
     Describes constraints to positioning of popovers.
   @end{short}
@@ -120,7 +119,6 @@
     @entry[:window]{Constrain the popover to the boundaries of the window that
       it is attached to.}
   @end{table}
-  Since 3.20
   @see-class{gtk:popover}")
 
 ;;; ----------------------------------------------------------------------------
@@ -133,8 +131,7 @@
     :interfaces ("AtkImplementorIface"
                  "GtkBuildable")
     :type-initializer "gtk_popover_get_type")
-  (#+gtk-3-20
-   (constrain-to
+  ((constrain-to
     popover-constrain-to
     "constrain-to" "GtkPopoverConstraint" t t)
    (modal
@@ -247,18 +244,18 @@
 
 ;;; --- popover-constrain-to ---------------------------------------------------
 
-#+(and gtk-3-20 liber-documentation)
+#+liber-documentation
 (setf (documentation (liber:slot-documentation "constrain-to" 'popover) t)
  "The @code{constrain-to} property of type @symbol{gtk:popover-constraint}
   (Read / Write) @br{}
-  Sets a constraint for the popover position. Since 3.20 @br{}
+  Sets a constraint for the popover position. @br{}
   Default value: @code{:window}")
 
-#+(and gtk-3-20 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'popover-constrain-to)
       "Accessor"
       (documentation 'popover-constrain-to 'function)
- "@version{#2023-3-12}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:popover-constrain-to object) => constraint}
   @syntax[]{(setf (gtk:popover-constrain-to object) constraint)}
   @argument[object]{a @class{gtk:popover} widget}
@@ -274,8 +271,6 @@
 
   Note that not all platforms support placing popovers freely, and may already
   impose constraints.
-
-  Since 3.20
   @see-class{gtk:popover}
   @see-symbol{gtk:popover-constraint}")
 
@@ -553,10 +548,9 @@
 ;;; gtk_popover_popup ()
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-22
 (defcfun ("gtk_popover_popup" popover-popup) :void
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-13}
   @argument[popover]{a @class{gtk:popover} widget}
   @begin{short}
     Pops the popover up.
@@ -564,23 +558,19 @@
   This is different than a @fun{gtk:widget-show} function call in that it shows
   the popover with a transition. If you want to show the popover without a
   transition, use the @fun{gtk:widget-show} function.
-
-  Since 3.22
   @see-class{gtk:popover}
   @see-function{gtk:widget-show}"
   (popover (g:object popover)))
 
-#+gtk-3-22
 (export 'popover-popup)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_popover_popdown ()
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-22
 (defcfun ("gtk_popover_popdown" popover-popdown) :void
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-13}
   @argument[popover]{a @class{gtk:popover} widget}
   @begin{short}
     Pops the popover down.
@@ -588,13 +578,10 @@
   This is different than a @fun{gtk:widget-hide} function call in that it shows
   the popover with a transition. If you want to hide the popover without a
   transition, use the @fun{gtk:widget-hide} function.
-
-  Since 3.22
   @see-class{gtk:popover}
   @see-function{gtk:widget-hide}"
   (popover (g:object popover)))
 
-#+gtk-3-22
 (export 'popover-popdown)
 
 ;;; ----------------------------------------------------------------------------
@@ -602,7 +589,6 @@
 ;;; gtk_popover_set_default_widget () -> popover-default-widget
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-18
 (defun (setf popover-default-widget) (widget popover)
   (cffi:foreign-funcall "gtk_popover_set_default_widget"
                         (g:object popover) popover
@@ -610,11 +596,10 @@
                         :void)
   widget)
 
-#+gtk-3-18
 (defcfun ("gtk_popover_get_default_widget" popover-default-widget)
     (g:object widget)
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:popover-default-widget popover) => widget}
   @syntax[]{(setf (gtk:popover-default-widget popover) widget)}
   @argument[popover]{a @class{gtk:popover} widget}
@@ -629,13 +614,10 @@
 
   The @class{gtk:popover} widget remembers the previous default widget and
   reestablishes it when the popover is dismissed.
-
-  Since 3.18
   @see-class{gtk:popover}
   @see-class{gtk:widget}"
   (popover (g:object popover)))
 
-#+gtk-3-18
 (export 'popover-default-widget)
 
 ;;; --- End of file gtk3.popover.lisp ------------------------------------------

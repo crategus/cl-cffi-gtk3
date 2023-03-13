@@ -279,10 +279,9 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_application_window_get_help_overlay ()
 ;;; gtk_application_window_set_help_overlay ()
-;;;  -> application-window-help-overlay
+;;;     -> application-window-help-overlay
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-20
 (defun (setf application-window-help-overlay) (help-overlay window)
   (cffi:foreign-funcall "gtk_application_window_set_help_overlay"
                         (g:object application-window) window
@@ -290,11 +289,10 @@
                         :void)
   help-overlay)
 
-#+gtk-3-20
 (defcfun ("gtk_application_window_get_help_overlay"
            application-window-help-overlay) (g:object shortcuts-window)
  #+liber-documentation
- "@version{2023-3-11}
+ "@version{2023-3-13}
   @syntax[]{(gtk:application-window-help-overlay window) => help-overlay}
   @syntax[]{(setf (gtk:application-window-help-overlay window) help-overlay)}
   @argument[window]{a @class{gtk:application-window} widget}
@@ -306,13 +304,10 @@
   window. The @sym{(setf gtk:applicaton-window-help-overlay)} function
   associates a shortcuts window with the application window, and sets up an
   action with the name \"win.show-help-overlay\" to present it.
-
-  Since 3.20
   @see-class{gtk:application-window}
   @see-class{gtk:shortcuts-window}"
   (window (g:object application-window)))
 
-#+gtk-3-20
 (export 'application-window-help-overlay)
 
 ;;; --- End of file gtk3.application-window.lisp -------------------------------

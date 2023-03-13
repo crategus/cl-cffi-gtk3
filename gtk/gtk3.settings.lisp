@@ -369,7 +369,6 @@
    (gtk-keynav-cursor-only
     settings-gtk-keynav-cursor-only
     "gtk-keynav-cursor-only" "gboolean" t t)
-   #+gtk-3-20
    (gtk-keynav-use-caret
     settings-gtk-keynav-use-caret
     "gtk-keynav-use-caret" "gboolean" t t)
@@ -400,7 +399,6 @@
    (gtk-modules
     settings-gtk-modules
     "gtk-modules" "gchararray" t t)
-   #+gtk-3-24
    (gtk-overlay-scrolling
     settings-gtk-overlay-scrolling
     "gtk-overlay-scrolling" "gboolean" t t)
@@ -1933,21 +1931,20 @@
 
 ;;; --- settings-gtk-keynav-use-caret ------------------------------------------
 
-#+(and gtk-3-20 liber-documentation)
+#+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-keynav-use-caret"
                                                'settings) t)
  "The @code{gtk-keynav-use-caret} property of type @code{:boolean}
   (Read / Write) @br{}
   Whether GTK should make sure that text can be navigated with a caret, even
-  if it is not editable. This is useful when using a screen reader. Since 3.20
-  @br{}
+  if it is not editable. This is useful when using a screen reader. @br{}
   Default value: @em{false}")
 
-#+(and gtk-3-20 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'settings-gtk-keynav-use-caret)
       "Accessor"
       (documentation 'settings-gtk-keynav-use-caret 'function)
- "@version{#2023-3-7}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:settings-gtk-keynav-use-caret object) => setting}
   @syntax[]{(setf (gtk:settings-gtk-keynav-use-caret object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -1959,8 +1956,6 @@
   @end{short}
   Whether GTK should make sure that text can be navigated with a caret, even
   if it is not editable. This is useful when using a screen reader.
-
-  Since 3.20
   @see-class{gtk:settings}")
 
 ;;;  --- settings-gtk-keynav-wrap-around ---------------------------------------
@@ -2269,7 +2264,7 @@
 
 ;;; --- settings-gtk-overlay-scrolling -----------------------------------------
 
-#+(and gtk-3-24 liber-documentation)
+#+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-overlay-scrolling"
                                                'settings) t)
  "The @code{gtk-overlay-scrolling} property of type @code{:boolean}
@@ -2278,11 +2273,11 @@
   set to @em{false}, scrolled windows will have permanent scrollbars. @br{}
   Default value: @em{true}")
 
-#+(and gtk-3-24 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'settings-gtk-overlay-scrolling)
       "Accessor"
       (documentation 'settings-gtk-overlay-scrolling 'function)
- "@version{#2023-3-7}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:settings-gtk-overlay-scrolling object) => setting}
   @syntax[]{(setf (gtk:settings-gtk-overlay-scrolling object) setting)}
   @argument[object]{a @class{gtk:settings} object}

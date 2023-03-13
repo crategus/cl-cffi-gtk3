@@ -140,11 +140,9 @@
    (text
     model-button-text
     "text" "gchararray" t t)
-   #+gtk-3-24
    (use-markup
     model-button-use-markup
-    "use-markup" "gboolean" t t)
-   ))
+    "use-markup" "gboolean" t t)))
 
 #+liber-documentation
 (setf (documentation 'model-button 'type)
@@ -482,22 +480,21 @@
   The label for the button.
   @see-class{gtk:model-button}")
 
-;;; --- model-button-use-markup --------------------------------------------
+;;; --- model-button-use-markup ------------------------------------------------
 
-#+(and gtk-3-24 liber-documentation)
-(setf (documentation (liber:slot-documentation "use-markup"
-                                               'model-button) t)
+#+liber-documentation
+(setf (documentation (liber:slot-documentation "use-markup" 'model-button) t)
  "The @code{use-markjup} property of type @code{:boolean} (Read / Write) @br{}
   If @em{true}, XML tags in the text of the button are interpreted to format the
   enclosed spans of text. If @em{false}, the text will be displayed verbatim.
-  Since 3.24 @br{}
+  @br{}
   Default value: @em{false}")
 
-#+(and gtk-3-24 liber-documentation)
+#+liber-documentation
 (setf (liber:alias-for-function 'model-button-use-markup)
       "Accessor"
       (documentation 'model-button-use-markup 'function)
- "@version{#2021-12-23}
+ "@version{#2023-3-13}
   @syntax[]{(gtk:model-button-use-markup object) => use-markup}
   @syntax[]{(setf (gtk:model-button-use-markup object) use-markup)}
   @argument[object]{a @class{gtk:model-button} widget}
@@ -506,11 +503,8 @@
     Accessor of the @slot[gtk:model-button]{use-markup} slot of the
     @class{gtk:model-button} class.
   @end{short}
-
   If @em{true}, XML tags in the text of the button are interpreted to format the
   enclosed spans of text. If @em{false}, the text will be displayed verbatim.
-
-  Since 3.24
   @see-class{gtk:model-button}")
 
 ;;; ----------------------------------------------------------------------------

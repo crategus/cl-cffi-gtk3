@@ -375,7 +375,7 @@
  "The @code{interpolate-size} property of type @code{:boolean} (Read / Write)
   @br{}
   Whether or not the size should smoothly change when changing between
-  differently sized children. Since 3.18 @br{}
+  differently sized children. @br{}
   Default value: @em{false}")
 
 #+liber-documentation
@@ -401,8 +401,6 @@
   stack will interpolate its size between the current one and the one it will
   take after changing the visible child, according to the set transition
   duration.
-
-  Since 3.18
   @see-class{gtk:stack}")
 
 ;;; --- stack-transition-duration ------------------------------------------

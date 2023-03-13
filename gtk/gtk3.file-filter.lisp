@@ -554,47 +554,39 @@
 ;;; gtk_file_filter_new_from_gvariant ()
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-22
 (defcfun ("gtk_file_filter_new_from_gvariant" file-filter-new-from-gvariant)
     (g:object file-filter)
  #+liber-documentation
- "@version{#2021-1-29}
-  @argument[variant]{an @code{a{sv@}} @symbol{g:variant} instance}
+ "@version{#2023-3-13}
+  @argument[variant]{a @code{a{sv@}} @symbol{g:variant} instance}
   @return{A new @class{gtk:file-filter} object.}
   @begin{short}
     Deserialize a file filter from an @code{a{sv@}} variant in the format
-    produced by the function @fun{gtk:file-filter-to-gvariant}.
+    produced by the @fun{gtk:file-filter-to-gvariant} function.
   @end{short}
-
-  Since 3.22
   @see-class{gtk:file-filter}
   @see-symbol{g:variant}"
   (variant (:pointer (:struct g:variant))))
 
-#+gtk-3-22
 (export 'file-filter-new-from-gvariant)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_file_filter_to_gvariant ()
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-22
 (defcfun ("gtk_file_filter_to_gvvariant" file-filter-to-gvariant)
     (:pointer (:struct g:variant))
  #+liber-documentation
- "@version{#2021-1-29}
+ "@version{#2023-3-13}
   @argument[filter]{a @class{gtk:file-filter} object}
   @return{A new @symbol{g:variant} instance.}
   @begin{short}
-    Serialize a file filter to an @code{a{sv@}} variant.
+    Serialize a file filter to a @code{a{sv@}} variant.
   @end{short}
-
-  Since 3.22
   @see-class{gtk:file-filter}
   @see-symbol{g:variant}"
   (filter (g:object file-filter)))
 
-#+gtk-3-22
 (export 'file-filter-to-gvariant)
 
 ;;; ---- End of file gtk3.file-filter.lisp -------------------------------------

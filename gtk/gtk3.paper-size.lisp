@@ -739,8 +739,6 @@
     Deserialize a paper size from a @code{a{sv@}} variant in the format
     produced by the @fun{gtk:paper-size-to-gvariant} function.
   @end{short}
-
-  Since 3.22
   @see-class{gtk:paper-size}
   @see-type{g:variant}
   @see-function{gtk:paper-size-to-gvariant}"
@@ -774,18 +772,15 @@
 ;;; gtk_paper_size_to_gvariant ()
 ;;; ----------------------------------------------------------------------------
 
-#+gtk-3-22
 (defcfun ("gtk_paper_size_to_gvariant" paper-size-to-gvariant)
     (:pointer (:struct g:variant))
  #+liber-documentation
- "@version{2023-1-31}
+ "@version{2023-3-13}
   @argument[size]{a @class{gtk:paper-size} instance}
   @return{A new @type{g:variant} instance.}
   @begin{short}
     Serialize a paper size to a @code{a{sv@}} variant instance.
   @end{short}
-
-  Since 3.22
   @begin[Example]{dictionary}
     @begin{pre}
 (gtk:paper-size-to-gvariant (gtk:paper-size-new))
@@ -798,7 +793,6 @@
   @see-type{g:variant}"
   (size (g:boxed paper-size)))
 
-#+gtk-3-22
 (export 'paper-size-to-gvariant)
 
 ;;; --- End of file gtk3.paper-size.lisp ---------------------------------------
