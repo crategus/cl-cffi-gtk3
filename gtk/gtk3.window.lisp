@@ -4,27 +4,27 @@
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
 ;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+;;; AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkWindow
@@ -1968,29 +1968,17 @@
 ;;; gtk_window_set_default_geometry ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_window_set_default_geometry" window-set-default-geometry)
-    :void
+(defcfun ("gtk_window_set_default_geometry" window-set-default-geometry) :void
  #+liber-documentation
- "@version{#2021-9-12}
-  @argument[window]{a @class{gtk:window} widget}
-  @argument[width]{an integer with the width in resize increments, or -1 to
-    unset the default width}
-  @argument[height]{an integer with the height in resize increments, or -1 to
-    unset the default height}
-  @begin{short}
-    Like the @fun{gtk:window-default-size} function, but the @arg{width} and
-    @arg{height} arguments are interpreted in terms of the base size and
-    increment set with the @fun{gtk:window-set-geometry-hints} function.
-  @end{short}
+ "@version{2023-3-13}
   @begin[Warning]{dictionary}
-    The @sym{gtk:window-set-default-geometry} function has been deprecated since
-    version 3.20 and should not be used in newly written code. This function
-    does nothing. If you want to set a default size, use the
+    The @sym{gtk:window-set-default-geometry} function has been deprecated
+    since version 3.20 and should not be used in newly written code. This
+    function does nothing. If you want to set a default size, use the
     @fun{gtk:window-default-size} function instead.
   @end{dictionary}
   @see-class{gtk:window}
-  @see-function{gtk:window-default-size}
-  @see-function{gtk:window-set-geometry-hints}"
+  @see-function{gtk:window-default-size}"
   (window (g:object window))
   (width :int)
   (height :int))
@@ -2001,31 +1989,33 @@
 ;;; gtk_window_set_geometry_hints ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_window_set_geometry_hints" window-set-geometry-hints) :void
+(defcfun ("gtk_window_set_geometry_hints" %window-set-geometry-hints) :void
+  (window (g:object window))
+  (widget (g:object widget))
+  (geometry (:pointer (:struct gdk:geometry)))
+  (mask gdk:window-hints))
+
+(defun window-set-geometry-hints (window geometry mask)
  #+liber-documentation
- "@version{#2021-9-12}
+ "@version{2023-3-13}
   @argument[window]{a @class{gtk:window} widget}
-  @argument[widget]{a @class{gtk:widget} object the geometry hints will
-    be applied to or @code{nil}, since 3.20 this argument is ignored and GTK
-    behaves as if @code{nil} was set}
   @argument[geometry]{a @symbol{gdk:geometry} instance containing geometry
     information}
-  @argument[mask]{a @symbol{gdk:window-hints} mask indicating which structure
-    fields should be paid attention to}
+  @argument[mask]{a @symbol{gdk:window-hints} mask indicating which geometry
+    structure fields should be paid attention to}
   @begin{short}
     This function sets up hints about how a window can be resized by the user.
   @end{short}
   You can set a minimum and maximum size. Allowed resize increments, e.g. for
   xterm, you can only resize by the size of a character, aspect ratios, and
   more. See the @symbol{gdk:geometry} structure.
+  @begin[Note]{dictionary}
+    In the Lisp implementation an unused widget argument is omitted.
+  @end{dictionary}
   @see-class{gtk:window}
-  @see-class{gtk:widget}
   @see-symbol{gdk:geometry}
   @see-symbol{gdk:window-hints}"
-  (window (g:object window))
-  (widget (g:object widget))
-  (geometry (:pointer (:struct gdk:geometry)))
-  (mask gdk:window-hints))
+  (%window-set-geometry-hints window nil geometry mask))
 
 (export 'window-set-geometry-hints)
 
