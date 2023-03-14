@@ -308,8 +308,28 @@
 ;;;     gtk_window_activate_focus
 ;;;     gtk_window_activate_default
 ;;;     gtk_window_set_modal                               Accessor
+
 ;;;     gtk_window_set_default_geometry
+
+;; This function is deprecated and does nothing.
+
 ;;;     gtk_window_set_geometry_hints
+
+(test gtk-window-set-geometry-hints
+  (let ((window (gtk:window-new :toplevel))
+        (mask '(:win-gravity)))
+    (with-foreign-object (geometry '(:struct gdk:geometry))
+      (with-foreign-slots ((gdk::win-gravity)
+                           geometry (:struct gdk:geometry))
+        ;; Set the gravity value
+        (setf gdk::win-gravity :north)
+        ;; The default value
+        (is (eq :north-west (gtk:window-gravity window)))
+        ;; Set the geometry
+        (is-false (gtk:window-set-geometry-hints window geometry mask))
+        ;; The new value
+        (is (eq :north (gtk:window-gravity window)))))))
+
 ;;;     gtk_window_set_gravity                             Accessor
 ;;;     gtk_window_get_gravity                             Accessor
 ;;;     gtk_window_set_position
@@ -324,7 +344,7 @@
 ;;;     gtk_window_has_toplevel_focus                      Accessor
 ;;;     gtk_window_list_toplevels
 
-(test window-list-toplevels
+(test gtk-window-list-toplevels
   (is (every (lambda (obj) (typep obj 'gtk:window))
              (gtk:window-list-toplevels))))
 
@@ -371,7 +391,7 @@
 
 ;;;     gtk_window_default_size
 
-(test window-default-size
+(test gtk-window-default-size
   (let ((window (make-instance 'gtk:window)))
     (is (equal '(-1 -1)
                (multiple-value-list (gtk:window-default-size window))))
@@ -434,4 +454,4 @@
 ;;;     gtk_window_get_titlebar
 ;;;     gtk_window_set_interactive_debugging
 
-;;; 2021-10-18
+;;; --- 2023-3-13 --------------------------------------------------------------
