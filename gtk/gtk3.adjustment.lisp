@@ -1,30 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.adjustment.lisp
+;;; gtk3.adjustment.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+;;; AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkAdjustment
@@ -41,8 +41,8 @@
 ;;;     gtk_adjustment_get_value                           Accessor
 ;;;     gtk_adjustment_set_value                           Accessor
 ;;;     gtk_adjustment_clamp_page
-;;;     gtk_adjustment_changed                           * deprecated
-;;;     gtk_adjustment_value_changed                     * deprecated
+;;;     gtk_adjustment_changed                             deprecated
+;;;     gtk_adjustment_value_changed                       deprecated
 ;;;     gtk_adjustment_configure
 ;;;     gtk_adjustment_get_lower                           Accessor
 ;;;     gtk_adjustment_get_page_increment                  Accessor
@@ -58,17 +58,17 @@
 ;;;
 ;;; Properties
 ;;;
-;;;     gdouble    lower             Read / Write
-;;;     gdouble    page-increment    Read / Write
-;;;     gdouble    page-size         Read / Write
-;;;     gdouble    step-increment    Read / Write
-;;;     gdouble    upper             Read / Write
-;;;     gdouble    value             Read / Write
+;;;     lower
+;;;     page-increment
+;;;     page-size
+;;;     step-increment
+;;;     upper
+;;;     value
 ;;;
 ;;; Signals
 ;;;
-;;;        void    changed           No Recursion
-;;;        void    value-changed     No Recursion
+;;;     changed
+;;;     value-changed
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -109,15 +109,15 @@
 
 #+liber-documentation
 (setf (documentation 'adjustment 'type)
- "@version{#2021-12-18}
+ "@version{2023-3-14}
   @begin{short}
     The @sym{gtk:adjustment} object represents a value which has an associated
     lower and upper bound, together with step and page increments, and a page
     size.
   @end{short}
   It is used within several widgets, including the @class{gtk:spin-button},
-  @class{gtk:viewport}, and @class{gtk:range} widget, which is a base class for
-  the @class{gtk:scrollbar}, and @class{gtk:scale} widgets.
+  @class{gtk:viewport}, and @class{gtk:range} widgets, which is a base class
+  for the @class{gtk:scrollbar}, and @class{gtk:scale} widgets.
 
   The @sym{gtk:adjustment} object does not update the value itself. Instead it
   is left up to the owner of the @sym{gtk:adjustment} object to control the
@@ -125,7 +125,7 @@
   @begin[Signal Details]{dictionary}
     @subheading{The \"changed\" signal}
       @begin{pre}
- lambda (adjustment)    :no-recurse
+lambda (adjustment)    :no-recurse
       @end{pre}
       Emitted when one or more of the adjustment properties have been changed,
       other than the @code{value} property.
@@ -135,7 +135,7 @@
       @end{table}
     @subheading{The \"value-changed\" signal}
       @begin{pre}
- lambda (adjustment)    :no-recurse
+lambda (adjustment)    :no-recurse
       @end{pre}
       Emitted when the @code{value} property of the adjustment has been changed.
       @begin[code]{table}
@@ -143,6 +143,7 @@
           signal.}
       @end{table}
   @end{dictionary}
+  @see-constructor{gtk:adjustment-new}
   @see-slot{gtk:adjustment-lower}
   @see-slot{gtk:adjustment-page-increment}
   @see-slot{gtk:adjustment-page-size}
@@ -157,7 +158,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- adjustment-lower ---------------------------------------------------
+;;; --- adjustment-lower -------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "lower" 'adjustment) t)
@@ -169,19 +170,18 @@
 (setf (liber:alias-for-function 'adjustment-lower)
       "Accessor"
       (documentation 'adjustment-lower 'function)
- "@version{#2020-12-18}
+ "@version{2023-3-14}
   @syntax[]{(gtk:adjustment-lower object) => lower}
   @syntax[]{(setf (gtk:adjustment-lower object) lower)}
   @argument[object]{a @class{gtk:adjustment} object}
-  @argument[lower]{a double float with the minimum value}
+  @argument[lower]{a number coerced to a double float with the minimum value}
   @begin{short}
     Accessor of the @slot[gtk:adjustment]{lower} slot of the
     @class{gtk:adjustment} class.
   @end{short}
-
-  The @sym{gtk:adjustment-lower} slot access function retrieves the minimum
-  value of the adjustment. The @sym{(setf gtk:adjustment-lower)} slot access
-  function sets the minimum value of the adjustment.
+  The @sym{gtk:adjustment-lower} function retrieves the minimum value of the
+  adjustment. The @sym{(setf gtk:adjustment-lower)} function sets the minimum
+  value of the adjustment.
 
   When setting multiple adjustment properties via their individual setters,
   multiple \"changed\" signals will be emitted. However, since the emission of
@@ -198,11 +198,10 @@
   @see-function{g:object-thaw-notify}
   @see-function{gtk:adjustment-configure}")
 
-;;; --- adjustment-page-increment ------------------------------------------
+;;; --- adjustment-page-increment ----------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "page-increment" 'adjustment)
-     t)
+(setf (documentation (liber:slot-documentation "page-increment" 'adjustment) t)
  "The @code{page-increment} property of type @code{:double} (Read / Write) @br{}
   The page increment of the adjustment. @br{}
   Default value: 0.0")
@@ -211,28 +210,27 @@
 (setf (liber:alias-for-function 'adjustment-page-increment)
       "Accessor"
       (documentation 'adjustment-page-increment 'function)
- "@version{#2021-12-18}
+ "@version{2023-3-14}
   @syntax[]{(gtk:adjustment-page-increment object) => page-increment}
   @syntax[]{(setf (gtk:adjustment-page-increment object) page-increment)}
   @argument[object]{a @class{gtk:adjustment} object}
-  @argument[page-increment]{a double float with the page increment}
+  @argument[page-increment]{a number coerced to a double float with the page
+    increment}
   @begin{short}
     Accessor of the @slot[gtk:adjustment]{page-increment} slot of the
     @class{gtk:adjustment} class.
   @end{short}
+  The @sym{gtk:adjustment-page-increment} function retrieves the page increment
+  of the adjustment. The @sym{(setf gtk:adjustment-page-increment)} function
+  sets the page increment of the adjustment.
 
-  The @sym{gtk:adjustment-page-increment} slot access function retrieves the
-  page increment of the adjustment. The
-  @sym{(setf gtk:adjustment-page-increment)} slot access function sets the page
-  increment of the adjustment.
-
-  See the @fun{gtk:adjustment-lower} slot access function about how to compress
-  multiple emissions of the \"changed\" signal when setting multiple adjustment
+  See the @fun{gtk:adjustment-lower} function about how to compress multiple
+  emissions of the \"changed\" signal when setting multiple adjustment
   properties.
   @see-class{gtk:adjustment}
   @see-function{gtk:adjustment-lower}")
 
-;;; --- adjustment-page-size -----------------------------------------------
+;;; --- adjustment-page-size ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "page-size" 'adjustment) t)
@@ -246,31 +244,29 @@
 (setf (liber:alias-for-function 'adjustment-page-size)
       "Accessor"
       (documentation 'adjustment-page-size 'function)
- "@version{#2021-12-18}
+ "@version{2023-3-14}
   @syntax[]{(gtk:adjustment-page-size object) => page-size}
   @syntax[]{(setf (gtk:adjustment-page-size object) page-size)}
   @argument[object]{a @class{gtk:adjustment} object}
-  @argument[page-size]{a double float with the page size}
+  @argument[page-size]{a number coerced to a double float with the page size}
   @begin{short}
     Accessor of the @slot[gtk:adjustment]{page-size} slot of the
     @class{gtk:adjustment} class.
   @end{short}
+  The @sym{gtk:adjustment-page-size} function retrieves the page size of the
+  adjustment. The @sym{(setf gtk:adjustment-page-size)} function sets the page
+  size of the adjustment.
 
-  The @sym{gtk:adjustment-page-size} slot access function retrieves the page
-  size of the adjustment. The @sym{(setf gtk:adjustment-page-size)} slot access
-  function sets the page size of the adjustment.
-
-  See the @fun{gtk:adjustment-lower} slot access function about how to compress
-  multiple emissions of the \"changed\" signal when setting multiple adjustment
+  See the @fun{gtk:adjustment-lower} function about how to compress multiple
+  emissions of the \"changed\" signal when setting multiple adjustment
   properties.
   @see-class{gtk:adjustment}
   @see-function{gtk:adjustment-lower}")
 
-;;; --- adjustment-step-increment ------------------------------------------
+;;; --- adjustment-step-increment ----------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "step-increment" 'adjustment)
-      t)
+(setf (documentation (liber:slot-documentation "step-increment" 'adjustment) t)
  "The @code{step-increment} property of type @code{:double} (Read / Write) @br{}
   The step increment of the adjustment. @br{}
   Default value: 0.0")
@@ -279,28 +275,27 @@
 (setf (liber:alias-for-function 'adjustment-step-increment)
       "Accessor"
       (documentation 'adjustment-step-increment 'function)
- "@version{#2021-12-18}
+ "@version{2023-3-14}
   @syntax[]{(gtk:adjustment-step-increment object) => step-increment}
   @syntax[]{(setf (gtk:adjustment-step-increment object) step-increment)}
   @argument[object]{a @class{gtk:adjustment} object}
-  @argument[step-increment]{a double float with the step increment}
+  @argument[step-increment]{a number coerced to a double float with the step
+    increment}
   @begin{short}
     Accessor of the @slot[gtk:adjustment]{step-increment} slot of the
     @class{gtk:adjustment} class.
   @end{short}
+  The @sym{gtk:adjustment-step-increment} function retrieves the step increment
+  of the adjustment. The @sym{(setf gtk:adjustment-step-increment)} function
+  sets the step increment of the adjustment.
 
-  The @sym{gtk:adjustment-step-increment} slot access function retrieves the
-  step increment of the adjustment. The
-  @sym{(setf gtk:adjustment-step-increment)} slot access function sets the step
-  increment of the adjustment.
-
-  See the @fun{gtk:adjustment-lower} slot access function about how to compress
-  multiple emissions of the \"changed\" signal when setting multiple adjustment
+  See the @fun{gtk:adjustment-lower} function about how to compress multiple
+  emissions of the \"changed\" signal when setting multiple adjustment
   properties.
   @see-class{gtk:adjustment}
   @see-function{gtk:adjustment-lower}")
 
-;;; --- adjustment-upper ---------------------------------------------------
+;;; --- adjustment-upper -------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "upper" 'adjustment) t)
@@ -314,33 +309,32 @@
 (setf (liber:alias-for-function 'adjustment-upper)
       "Accessor"
       (documentation 'adjustment-upper 'function)
- "@version{#2021-12-18}
+ "@version{2023-3-14}
   @syntax[]{(gtk:adjustment-upper object) => upper}
   @syntax[]{(setf (gtk:adjustment-upper object) upper)}
   @argument[object]{a @class{gtk:adjustment} object}
-  @argument[upper]{a double float with the maximum value}
+  @argument[upper]{a number coerced to a double float with the maximum value}
   @begin{short}
     Accessor of the @slot[gtk:adjustment]{upper} slot of the
     @class{gtk:adjustment} class.
   @end{short}
-
-  The @sym{gtk:adjustment-upper} slot access function retrieves the maximum
-  value of the adjustment. The @sym{(setf gtk:adjustment-upper)} slot access
-  function sets the maximum value of the adjustment.
+  The @sym{gtk:adjustment-upper} function retrieves the maximum value of the
+  adjustment. The @sym{(setf gtk:adjustment-upper)} function sets the maximum
+  value of the adjustment.
 
   Note that values will be restricted by the @code{(@slot[gtk:adjustment]{upper}
   - @slot[gtk:adjustment]{page-size})} value if the
   @slot[gtk:adjustment]{page-size} value is nonzero.
 
-  See the @fun{gtk:adjustment-lower} slot access function about how to compress
-  multiple emissions of the \"changed\" signal when setting multiple adjustment
+  See the @fun{gtk:adjustment-lower} function about how to compress multiple
+  emissions of the \"changed\" signal when setting multiple adjustment
   properties.
   @see-class{gtk:adjustment}
   @see-function{gtk:adjustment-lower}
   @see-function{gtk:adjustment-upper}
   @see-function{gtk:adjustment-page-size}")
 
-;;; --- adjustment-value ---------------------------------------------------
+;;; --- adjustment-value -------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "value" 'adjustment) t)
@@ -352,20 +346,19 @@
 (setf (liber:alias-for-function 'adjustment-value)
       "Accessor"
       (documentation 'adjustment-value 'function)
- "@version{#2021-12-18}
+ "@version{2023-3-14}
   @syntax[]{(gtk:adjustment-value object) => value}
   @syntax[]{(setf (gtk:adjustment-value object) value)}
   @argument[object]{a @class{gtk:adjustment} object}
-  @argument[value]{a double float with the value}
+  @argument[value]{a number coerced to a double float with the value}
   @begin{short}
     Accessor of the @slot[gtk:adjustment]{value} slot of the
     @class{gtk:adjustment} class.
   @end{short}
-
-  The @sym{gtk:adjustment-value} slot access function gets the current value of
-  the adjustment. The @sym{(setf gtk:adjustment-value)} slot access function
-  sets the adjustment value. The value is clamped to lie between the
-  @slot[gtk:adjustment]{lower} and @slot[gtk:adjustment]{upper} values.
+  The @sym{gtk:adjustment-value} function gets the current value of the
+  adjustment. The @sym{(setf gtk:adjustment-value)} function sets the adjustment
+  value. The value is clamped to lie between the @slot[gtk:adjustment]{lower}
+  and @slot[gtk:adjustment]{upper} values.
 
   Note that for adjustments which are used in a @class{gtk:scrollbar} widget,
   the effective range of allowed values goes from the
@@ -381,21 +374,24 @@
 ;;; ----------------------------------------------------------------------------
 
 (defun adjustment-new (value
-                           lower
-                           upper
-                           step-increment
-                           page-increment
-                           page-size)
+                       lower
+                       upper
+                       step-increment
+                       page-increment
+                       page-size)
  #+liber-documentation
- "@version{#2021-12-18}
-  @argument[value]{a double float with the initial value}
-  @argument[lower]{a double float with the minimum value}
-  @argument[upper]{a double with the maximum value}
-  @argument[step-increment]{a double float with the step increment}
-  @argument[page-increment]{a double float with the page increment}
-  @argument[page-size]{a double float with the page size}
+ "@version{2023-3-14}
+  @argument[value]{a number with the initial value}
+  @argument[lower]{a number with the minimum value}
+  @argument[upper]{a number with the maximum value}
+  @argument[step-increment]{a number with the step increment}
+  @argument[page-increment]{a number with the page increment}
+  @argument[page-size]{a number with the page size}
   @return{A new @class{gtk:adjustment} object.}
   @short{Creates a new adjustment.}
+  @begin[Note]{dictionary}
+    The numbers to the arguments are coerced to double float values.
+  @end{dictionary}
   @see-class{gtk:adjustment}"
   (let ((adjustment (make-instance 'adjustment
                                    :lower lower
@@ -403,7 +399,7 @@
                                    :step-increment step-increment
                                    :page-increment page-increment
                                    :page-size page-size)))
-    ;; ensure setting of the arguments lower and upper and then value
+    ;; Ensure that LOWER and UPPER are set before setting VAlUE
     (setf (adjustment-value adjustment) value)
     adjustment))
 
@@ -413,12 +409,17 @@
 ;;; gtk_adjustment_clamp_page ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_adjustment_clamp_page" adjustment-clamp-page) :void
+(defcfun ("gtk_adjustment_clamp_page" %adjustment-clamp-page) :void
+  (adjustment (g:object adjustment))
+  (lower :double)
+  (upper :double))
+
+(defun adjustment-clamp-page (adjustment lower upper)
  #+liber-documentation
- "@version{#2021-12-18}
+ "@version{#2023-3-14}
   @argument[adjustment]{a @class{gtk:adjustment} object}
-  @argument[lower]{a double float with the lower value}
-  @argument[upper]{a double float with the upper value}
+  @argument[lower]{a number with the lower value}
+  @argument[upper]{a number with the upper value}
   @begin{short}
     Updates the adjustment value to ensure that the range between @code{lower}
     and @code{upper} is in the current page.
@@ -426,10 +427,13 @@
   If the range is larger than the page size, then only the start of it will be
   in the current page. A \"changed\" signal will be emitted if the value is
   changed.
+  @begin[Note]{dictionary}
+    The numbers to the arguments are coerced to double float values.
+  @end{dictionary}
   @see-class{gtk:adjustment}"
-  (adjustment (g:object adjustment))
-  (lower :double)
-  (upper :double))
+  (%adjustment-clamp-page adjustment
+                          (coerce lower 'double-float)
+                          (coerce upper 'double-float)))
 
 (export 'adjustment-clamp-page)
 
@@ -439,18 +443,18 @@
 
 (defcfun ("gtk_adjustment_changed" adjustment-changed) :void
  #+liber-documentation
- "@version{#2021-12-18}
+ "@version{#2023-3-14}
   @argument[adjustment]{a @class{gtk:adjustment} object}
   @begin{short}
-    Emits a \"changed\" signal from the @class{gtk:adjustment}.
+    Emits a \"changed\" signal from the adjustment.
   @end{short}
   This is typically called by the owner of the adjustment after it has changed
   any of the adjustment fields other than the value.
   @begin[Warning]{dictionary}
     The @sym{gtk:adjustment-changed} function has been deprecated since version
     3.18 and should not be used in newly written code. GTK emits the \"changed\"
-    signal itself whenever any of the properties (other than the
-    @slot[gtk:adjustment]{value}) property change.
+    signal itself whenever any of the properties, other than the
+    @slot[gtk:adjustment]{value}, property change.
   @end{dictionary}
   @see-class{gtk:adjustment}
   @see-function{gtk:adjustment-value}"
@@ -464,7 +468,7 @@
 
 (defcfun ("gtk_adjustment_value_changed" adjustment-value-changed) :void
  #+liber-documentation
- "@version{#2021-12-18}
+ "@version{#2023-3-14}
   @argument[adjustment]{a @class{gtk:adjustment} object}
   @begin{short}
     Emits a \"value_changed\" signal from the adjustment.
@@ -474,8 +478,8 @@
   @begin[Warning]{dictionary}
     The @sym{gtk:adjustment-value-changed} function has been deprecated since
     version 3.18 and should not be used in newly written code. GTK emits the
-    \"value-changed\" signal itself whenever any of the properties (other than
-    value) change.
+    \"value-changed\" signal itself whenever any of the properties, other than
+    value, change.
   @end{dictionary}
   @see-class{gtk:adjustment}"
   (adjustment (g:object adjustment)))
@@ -486,24 +490,7 @@
 ;;; gtk_adjustment_configure ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_adjustment_configure" adjustment-configure) :void
- #+liber-documentation
- "@version{#2021-12-18}
-  @argument[adjustment]{a @class{gtk:adjustment} object}
-  @argument[value]{a double float with the new value}
-  @argument[lower]{a double float with the new minimum value}
-  @argument[upper]{a double float with the new maximum value}
-  @argument[step-increment]{a double float with the new step increment}
-  @argument[page-increment]{a double float with the new page increment}
-  @argument[page-size]{a double float with the new page size}
-  @begin{short}
-    Sets all properties of the adjustment at once.
-  @end{short}
-  Use this function to avoid multiple emissions of the \"changed\" signal. See
-  the @fun{gtk:adjustment-lower} function for an alternative way of compressing
-  multiple emissions of \"changed\" signals into one.
-  @see-class{gtk:adjustment}
-  @see-function{gtk:adjustment-lower}"
+(defcfun ("gtk_adjustment_configure" %adjustment-configure) :void
   (adjustment (g:object adjustment))
   (value :double)
   (lower :double)
@@ -511,6 +498,38 @@
   (step-increment :double)
   (page-increment :double)
   (page-size :double))
+
+(defun adjustment-configure (adjustment
+                             value
+                             lower upper
+                             step-increment page-increment page-size)
+ #+liber-documentation
+ "@version{2023-3-14}
+  @argument[adjustment]{a @class{gtk:adjustment} object}
+  @argument[value]{a number with the new value}
+  @argument[lower]{a number with the new minimum value}
+  @argument[upper]{a number with the new maximum value}
+  @argument[step-increment]{a number with the new step increment}
+  @argument[page-increment]{a nubmer with the new page increment}
+  @argument[page-size]{a number with the new page size}
+  @begin{short}
+    Sets all properties of the adjustment at once.
+  @end{short}
+  Use this function to avoid multiple emissions of the \"changed\" signal. See
+  the @fun{gtk:adjustment-lower} function for an alternative way of compressing
+  multiple emissions of \"changed\" signals into one.
+  @begin[Note]{dictionary}
+    The numbers to the arguments are coerced to double float values.
+  @end{dictionary}
+  @see-class{gtk:adjustment}
+  @see-function{gtk:adjustment-lower}"
+  (%adjustment-configure adjustment
+                         (coerce value 'double-float)
+                         (coerce lower 'double-float)
+                         (coerce upper 'double-float)
+                         (coerce step-increment 'double-float)
+                         (coerce page-increment 'double-float)
+                         (coerce page-size 'double-float)))
 
 (export 'adjustment-configure)
 
@@ -522,7 +541,7 @@
 
 (defun adjustment-minimum-increment (adjustment)
  #+liber-documentation
- "@version{#2021-12-18}
+ "@version{2023-3-14}
   @argument[adjustment]{a @class{gtk:adjustment} object}
   @return{A double float with the minimum increment of the adjustment.}
   @short{Gets the smaller of step increment and page increment.}
@@ -534,4 +553,4 @@
 
 (export 'adjustment-minimum-increment)
 
-;;; --- End of file gtk.adjustment.lisp ----------------------------------------
+;;; --- End of file gtk3.adjustment.lisp ---------------------------------------
