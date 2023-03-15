@@ -1,20 +1,73 @@
-cl-cffi-gtk3 is a Lisp binding to GTK 3 (GIMP Toolkit) which is a library
-for creating graphical user interfaces. cl-cffi-gtk3 is licensed using the LGPL
-which has been adopted with a preamble that clarifies the terms for use with
-Lisp programs and is referred as the LLGPL.
-
-This work is based on the cl-gtk2 library which has been developed by
-Kalyanov Dmitry and already is a fairly complete Lisp binding to GTK.
+cl-cffi-gtk3 is a Lisp binding to GTK 3  which is a library for creating
+graphical user interfaces. cl-cffi-gtk3 is licensed using the MIT license.
 
 The cl-cffi-gtk3 library was part of the cl-cffi-gtk library and was
 separated out to be used independently. The former cl-cffi-gtk library is
 replaced with the cl-cffi-gtk3 for GTK 3 and the cl-cffi-gtk4 library for GTK 4.
 
-The focus of this work is to document the library more complete and to
-do the implementation as consistent as possible. Most informations about GTK+
-can be gained by reading the C documentation. Therefore, a modified version of
-the C documentation from http://www.gtk.org is included into the Lisp files to
-document the Lisp binding to the GTK library. The API documentation is
-available online at http://www.crategus.com/books/cl-cffi-gtk3/
+This library depends on the following libraries:
 
-Examples of the usage are included in a gtk3-demo and gtk3-example.
+  cl-cffi-glib
+  cl-cffi-gdk-pixbuf
+  cl-cffi-pango
+  cl-cffi-cairo
+
+The libraries are available from https://github.com/crategus website.
+The cl-cffi-gtk3 API documentation is available from the
+crategus.com/books/cl-cffi-gtk3 website.
+
+For the reworked cl-cffi-gtk3 library the naming of all symbols has been changed
+so that the package designator can be used consistently. It is not recommended
+to include this package or any of the other required packages with :USE. Many
+symbols are used in several packages. For example, we have CAIRO:MATRIX and
+PANGO:MATRIX or GTK:WINDOW and GDK:WINDOW. With a few exceptions, that may be
+removed in the future, the cl-cffi libraries do not include packages with :USE.
+
+The cl-cffi-gtk3 library is developped with SBCL on UBUNTU. Furthermore, the
+library runs successfully under WINDOWS.
+
+
+Examples and GTK demo
+---------------------
+
+The cl-cffi-gtk3 library comes with examples and a GTK demo. Use
+
+  (asdf:load-system :gtk3-example)
+
+or
+
+  (asdf:load-system :gtk3-demo)
+
+to load the examples or the GTK demo. Start the GTK demo with
+
+  (gtk3-demo:gtk3-demo)
+
+on the Lisp prompt. The symbols for the examples are exported from the GTK3-EXAMPLE package. Use e.g.
+
+  (gtk3-example:example-css-accordion)
+
+to start the CSS Accordion example from the Lisp prompt.
+
+The examples and the GTK demo needs the resource file
+
+  example/resource/gtk3-example.gresource
+
+Use the GLIB-COMPILE-RESOURCES program to generate the resouce file from the
+GTK3-EXAMPLE.XML file, which is located in EXAMPLE/RESOURCE directory.
+
+
+TESTSUITE for the cl-cffi-gtk3 library
+--------------------------------------
+
+The cl-cffi-gtk3 library comes with a testsuite. The testsuite can be performed with
+
+  (asdf:test-system :cl-cffi-gtk3)
+
+or loaded with
+
+  (asdf:load-system :cl-cffi-gtk3/test)
+
+Unfortunatley, a lot of tests depends on the used hardware or local enviroment
+and therefore will fail for this reason. This will be fixed in the future.
+
+2023-3-15
