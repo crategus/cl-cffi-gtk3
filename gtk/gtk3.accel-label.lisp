@@ -1,30 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.accel-label.lisp
+;;; gtk3.accel-label.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2021 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkAccelLabel
@@ -48,8 +48,8 @@
 ;;;
 ;;; Properties
 ;;;
-;;;      GClosure*   accel-closure    Read / Write
-;;;     GtkWidget*   accel-widget     Read / Write
+;;;     accel-closure
+;;;     accel-widget
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -85,7 +85,7 @@
 
 #+liber-documentation
 (setf (documentation 'accel-label 'type)
- "@version{#2021-12-22}
+ "@version{#2023-3-15}
   @begin{short}
     The @sym{gtk:accel-label} widget is a subclass of the @class{gtk:label}
     class that also displays an accelerator key on the right of the label text,
@@ -93,7 +93,7 @@
   @end{short}
   It is commonly used in menus to show the keyboard short-cuts for commands.
 
-  @image[accel-label]{}
+  @image[accel-label]{Figure: GtkAccelLabel}
 
   The accelerator key to display is not set explicitly. Instead, the accel label
   displays the accelerators which have been added to a particular widget. This
@@ -129,13 +129,14 @@
     (gtk:widget-add-accelerator item-file-quit
                                 \"activate\"
                                 group
-                                (gdk-keyval-from-name \"q\")
+                                (gdk:keyval-from-name \"q\")
                                 :control-mask
                                 :visible)
     ...)
 ...)
     @end{pre}
   @end{dictionary}
+  @see-constructor{gtk:accel-label-new}
   @see-slot{gtk:accel-label-accel-closure}
   @see-slot{gtk:accel-label-accel-widget}
   @see-class{gtk:label}
@@ -145,14 +146,13 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- accel-label-accel-closure ------------------------------------------
+;;; --- accel-label-accel-closure ----------------------------------------------
 
 ;; TODO: GClosure is in the C implementatin a boxed type, but not in Lisp.
 ;; Therefore the accessor for accel-closure does not work.
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "accel-closure"
-                                               'accel-label) t)
+(setf (documentation (liber:slot-documentation "accel-closure" 'accel-label) t)
  "The @code{accel-closure} property of type @symbol{g:closure} (Read / Write)
   @br{}
   The closure to be monitored for accelerator changes.")
@@ -161,7 +161,7 @@
 (setf (liber:alias-for-function 'accel-label-accel-closure)
       "Accessor"
       (documentation 'accel-label-accel-closure 'function)
- "@version{#2021-11-13}
+ "@version{#2023-3-15}
   @syntax[]{(gtk:accel-label-accel-closure object) => closure}
   @syntax[]{(setf (gtk:accel-label-accel-closure object) closure)}
   @argument[label]{a @class{gtk:accel-label} widget}
@@ -171,20 +171,17 @@
     Accessor of the @slot[gtk:accel-label]{accel-closure} slot of the
     @class{gtk:accel-label} class.
   @end{short}
-
-  The @sym{gtk:accel-label-accel-closure} slot access function gets the closure
-  to be monitored by this accelerator. The
-  @sym{(setf gtk:accel-label-accel-closure)} slot access function sets the
-  closure. The closure must be connected to an accelerator group, see the
-  @code{gtk_accel_group_connect()} function.
+  The @sym{gtk:accel-label-accel-closure} function gets the closure to be
+  monitored by this accelerator. The @sym{(setf gtk:accel-label-accel-closure)}
+  function sets the closure. The closure must be connected to an accelerator
+  group, see the @code{gtk_accel_group_connect()} function.
   @see-class{gtk:accel-label}
   @see-symbol{g:closure}")
 
-;;; --- accel-label-accel-widget -------------------------------------------
+;;; --- accel-label-accel-widget -----------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "accel-widget"
-                                               'accel-label) t)
+(setf (documentation (liber:slot-documentation "accel-widget" 'accel-label) t)
  "The @code{accel-widget} property of type @class{gtk:widget} (Read / Write)
   @br{}
   The widget to be monitored for accelerator changes.")
@@ -193,7 +190,7 @@
 (setf (liber:alias-for-function 'accel-label-accel-widget)
       "Accessor"
       (documentation 'accel-label-accel-widget 'function)
- "@version{#2021-11-22}
+ "@version{#2023-3-15}
   @syntax[]{(gtk:accel-label-accel-widget object) => widget}
   @syntax[]{(setf (gtk:accel-label-accel-widget object) widget)}
   @argument[label]{a @class{gtk:accel-label} widget}
@@ -202,11 +199,9 @@
     Accessor of the @slot[gtk:accel-label]{accel-widget} slot of the
     @class{gtk:accel-label} class.
   @end{short}
-
-  The @sym{gtk:accel-label-accel-widget} slot access function returns the
-  widget monitored by the accelerator label. The
-  @sym{(setf gtk:accel-label-accel-widget)} slot access function sets the
-  widget.
+  The @sym{gtk:accel-label-accel-widget} function returns the widget monitored
+  by the accelerator label. The @sym{(setf gtk:accel-label-accel-widget)}
+  function sets the widget.
   @see-class{gtk:accel-label}
   @see-class{gtk:widget}")
 
@@ -218,7 +213,7 @@
 
 (defun accel-label-new (text)
  #+liber-documentation
- "@version{#2021-11-13}
+ "@version{#2023-3-15}
   @argument[text]{a string with the text of the label}
   @return{A new @class{gtk:accel-label} widget.}
   @begin{short}
@@ -236,7 +231,7 @@
 
 (defcfun ("gtk_accel_label_get_accel_width" accel-label-accel-width) :int
   #+liber-documentation
- "@version{#2021-11-13}
+ "@version{#2023-3-15}
   @argument[label]{a @class{gtk:accel-label} widget}
   @return{An integer with the width needed to display the accelerator key(s).}
   @begin{short}
@@ -256,10 +251,10 @@
 
 (defcfun ("gtk_accel_label_set_accel" accel-label-set-accel) :void
  #+liber-documentation
- "@version{#2021-11-13}
+ "@version{#2023-3-15}
   @argument[label]{a @class{gtk:accel-label} widget}
   @argument[key]{an unsigned integer with a keyval, or 0}
-  @argument[mods]{a  @symbol{gdk:modifier-type} modifier mask for the accel}
+  @argument[mods]{a @symbol{gdk:modifier-type} modifier mask for the accel}
   @begin{short}
     Manually sets a keyval and modifier mask as the accelerator rendered by
     @arg{label}.
@@ -286,7 +281,7 @@
 
 (defun accel-label-get-accel (label)
  #+liber-documentation
- "@version{#2021-11-13}
+ "@version{#2023-3-15}
   @argument[label]{a @class{gtk:accel-label} widget}
   @begin{return}
     @arg{key} --  an unsigned integer with a keyval @br{}
@@ -313,7 +308,7 @@
 
 (defcfun ("gtk_accel_label_refetch" accel-label-refetch) :boolean
  #+liber-documentation
- "@version{#2021-11-13}
+ "@version{#2023-3-15}
   @argument[label]{a @class{gtk:accel-label} widget}
   @return{Always returns @em{false}.}
   @begin{short}
@@ -326,4 +321,4 @@
 
 (export 'accel-label-refetch)
 
-;;; End of file gtk.accel-label.lisp -------------------------------------------
+;;; End of file gtk3.accel-label.lisp ------------------------------------------

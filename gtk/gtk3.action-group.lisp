@@ -1,30 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.action-group.lisp
+;;; gtk3.action-group.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkActionGroup
@@ -117,7 +117,7 @@
 
 #+liber-documentation
 (setf (documentation 'action-group 'type)
- "@version{#2021-12-18}
+ "@version{#2023-3-15}
   @begin{short}
     Actions are organised into groups. An action group is essentially a map
     from names to @class{gtk:action} objects.
@@ -160,22 +160,22 @@
 
     @b{Example:} A @sym{gtk:action-group} UI definition fragment.
     @begin{pre}
- <object class=\"GtkActionGroup\" id=\"actiongroup\">
-   <child>
-     <object class=\"GtkAction\" id=\"About\">
-       <property name=\"name\">About</property>
-       <property name=\"stock_id\">gtk-about</property>
-       <signal handler=\"about_activate\" name=\"activate\"/>
-     </object>
-     <accelerator key=\"F1\" modifiers=\"GDK_CONTROL_MASK | GDK_SHIFT_MASK\"/>
-   </child>
- </object>
+<object class=\"GtkActionGroup\" id=\"actiongroup\">
+  <child>
+    <object class=\"GtkAction\" id=\"About\">
+      <property name=\"name\">About</property>
+      <property name=\"stock_id\">gtk-about</property>
+      <signal handler=\"about_activate\" name=\"activate\"/>
+    </object>
+    <accelerator key=\"F1\" modifiers=\"GDK_CONTROL_MASK | GDK_SHIFT_MASK\"/>
+  </child>
+</object>
     @end{pre}
   @end{dictionary}
   @begin[Signal Details]{dictionary}
     @subheading{The \"connect-proxy\" signal}
       @begin{pre}
- lambda (group action proxy)
+lambda (group action proxy)
       @end{pre}
       The signal is emitted after connecting a proxy to an action in the group.
       Note that the proxy may have been connected to a different action before.
@@ -188,7 +188,7 @@
       @end{table}
       @subheading{The \"disconnect-proxy\" signal}
         @begin{pre}
- lambda (group action proxy)
+lambda (group action proxy)
         @end{pre}
         The signal is emitted after disconnecting a proxy from an action in the
         group.
@@ -199,7 +199,7 @@
         @end{table}
       @subheading{The \"post-activate\" signal}
         @begin{pre}
- lambda (group action)
+lambda (group action)
         @end{pre}
         The signal is emitted just after the action in the action group is
         activated.
@@ -209,7 +209,7 @@
         @end{table}
       @subheading{The \"pre-activate\" signal}
         @begin{pre}
- lambda (group action)
+lambda (group action)
         @end{pre}
         The signal is emitted just before the action in the action group is
         activated.
@@ -229,11 +229,10 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- action-group-accel-group -------------------------------------------
+;;; --- action-group-accel-group -----------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "accel-group"
-                                               'action-group) t)
+(setf (documentation (liber:slot-documentation "accel-group" 'action-group) t)
  "The @code{accel-group} property of type @class{gtk:accel-group} (Read / Write)
   @br{}
   The accelerator group the actions of this group should use.")
@@ -242,7 +241,7 @@
 (setf (liber:alias-for-function 'action-group-accel-group)
       "Accessor"
       (documentation 'action-group-accel-group 'function)
- "@version{#2021-12-18}
+ "@version{#2023-3-15}
   @syntax[]{(gtk:action-group-accel-group object) => group}
   @syntax[]{(setf (gtk:action-group-accel-group object) group)}
   @argument[object]{a @class{gtk:action-group} object}
@@ -258,7 +257,7 @@
   @see-class{gtk:action-group}
   @see-class{gtk:accel-group}")
 
-;;; --- action-group-name --------------------------------------------------
+;;; --- action-group-name ------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "name" 'action-group) t)
@@ -271,7 +270,7 @@
 (setf (liber:alias-for-function 'action-group-name)
       "Accessor"
       (documentation 'action-group-name 'function)
- "@version{#2022-12-18}
+ "@version{#2023-3-15}
   @syntax[]{(gtk:action-group-name object) => name}
   @argument[object]{a @class{gtk:action-group} object}
   @return{A string with the name of the action group.}
@@ -288,8 +287,7 @@
 ;;; --- action-group-sensitive ---------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "sensitive"
-                                               'action-group) t)
+(setf (documentation (liber:slot-documentation "sensitive" 'action-group) t)
  "The @code{sensitive} property of type @code{:boolean} (Read / Write) @br{}
   Whether the action group is enabled. @br{}
   Default value: @em{true}")
@@ -298,7 +296,7 @@
 (setf (liber:alias-for-function 'action-group-sensitive)
       "Accessor"
       (documentation 'action-group-sensitive 'function)
- "@version{#2021-12-18}
+ "@version{#2023-3-15}
   @syntax[]{(gtk:action-group-sensitive object) => sensitive}
   @syntax[]{(setf (gtk:action-group-sensitive object) sensitive)}
   @argument[object]{a @class{gtk:action-group} object}
@@ -313,7 +311,7 @@
   @end{dictionary}
   @see-class{gtk:action-group}")
 
-;;; --- action-group-visible -----------------------------------------------
+;;; --- action-group-visible ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "visible" 'action-group) t)
@@ -325,7 +323,7 @@
 (setf (liber:alias-for-function 'action-group-visible)
       "Accessor"
       (documentation 'action-group-visible 'function)
- "@version{#2021-12-18}
+ "@version{#2023-3-15}
   @syntax[]{(gtk:action-group-visible object) => visible}
   @syntax[]{(setf (gtk:action-group-visible object) visible)}
   @argument[object]{a @class{gtk:action-group} object}
@@ -348,7 +346,7 @@
 
 (defun action-group-new (name)
  #+liber-documentation
- "@version{#2021-12-18}
+ "@version{#2023-3-15}
   @argument[name]{a string with the name of the action group}
   @return{The new @class{gtk:action-group} object.}
   @begin{short}
@@ -369,7 +367,7 @@
 
 (defcfun ("gtk_action_group_get_action" action-group-action) g:object
  #+liber-documentation
- "@version{#2021-12-18}
+ "@version{#2023-3-15}
   @argument[group]{a @class{gtk:action-group} object}
   @argument[name]{a string with the name of the action}
   @return{The @class{gtk:action} object, or @code{nil} if no action by that
@@ -391,7 +389,7 @@
 (defcfun ("gtk_action_group_list_actions" action-group-list-actions)
     (g:list-t g:object :free-from-foreign t)
  #+liber-documentation
- "@version{#2021-12-18}
+ "@version{#2023-3-15}
   @argument[group]{a @class{gtk:action-group} object}
   @return{A list of the @class{gtk:action} objects in the action group.}
   @short{Lists the actions in the action group.}
@@ -410,7 +408,7 @@
 
 (defun action-group-add-action (group action &optional accelerator)
  #+liber-documentation
- "@version{#2021-12-18}
+ "@version{#2023-3-15}
   @argument[group]{a @class{gtk:action-group} object}
   @argument[action]{the @class{gtk:action} object to add}
   @argument[accelerator]{a string with the optional accelerator for the action,
@@ -443,7 +441,7 @@
 (defcfun ("gtk_action_group_add_action_with_accel"
           %action-group-add-action-with-accel) :void
  #+liber-documentation
- "@version{#2021-12-18}
+ "@version{#2023-3-15}
   @argument[group]{a @class{gtk:action-group} object}
   @argument[action]{the @class{gtk:action} object to add}
   @argument[accelerator]{a string with the accelerator for the action, in the
@@ -473,7 +471,7 @@
 
 (defcfun ("gtk_action_group_remove_action" action-group-remove-action) :void
  #+liber-documentation
- "@version{#2021-12-18}
+ "@version{#2023-3-15}
   @argument[group]{a @class{gtk:action-group} object}
   @argument[action]{a @class{gtk:action} object}
   @short{Removes an action from the action group.}
@@ -505,9 +503,9 @@
 (setf (liber:alias-for-symbol 'action-entry)
       "CStruct"
       (liber:symbol-documentation 'action-entry)
- "@version{#2013-6-2}
+ "@version{#2023-3-15}
   @begin{short}
-    @sym{gtk:action-entry} structures are used with the
+    The @sym{gtk:action-entry} structures are used with the
     @fun{gtk:action-group-add-actions} function to construct actions.
   @end{short}
   @begin{pre}
@@ -544,7 +542,7 @@
 
 (defun action-group-add-actions (group entries)
  #+liber-documentation
- "@version{#2021-12-18}
+ "@version{#2023-3-15}
   @argument[group]{a @class{gtk:action-group} object}
   @argument[entries]{a list of action descriptions}
   @begin{short}
@@ -669,7 +667,7 @@
 
 (defun action-group-add-toggle-actions (group entries)
  #+liber-documentation
- "@version{#2021-12-18}
+ "@version{#2023-3-15}
   @argument[group]{a @class{gtk:action-group} object}
   @argument[entries]{a list of toggle action descriptions}
   @begin{short}
@@ -782,7 +780,7 @@
 
 (defun action-group-add-radio-actions (group entries value on-change)
  #+liber-documentation
- "@version{#2021-12-18}
+ "@version{#2023-3-15}
   @argument[group]{a @class{gtk:action-group} object}
   @argument[entries]{a list of radio action descriptions}
   @argument[value]{an integer with the value of the action to activate
@@ -903,7 +901,7 @@
 (setf (liber:alias-for-symbol 'translate-func)
       "Callback"
       (liber:symbol-documentation 'translate-func)
- "@version{#2021-12-18}
+ "@version{#2023-3-15}
   @begin{short}
     A callback function used to translate messages.
   @end{short}
@@ -929,7 +927,7 @@
 
 (defun action-group-set-translate-func (group func)
  #+liber-documentation
- "@version{#2021-12-18}
+ "@version{#2023-3-15}
   @argument[group]{a @class{gtk:action-group} object}
   @argument[func]{a @symbol{gtk:translate-func} callback function}
   @begin{short}
@@ -959,7 +957,7 @@
 (defcfun ("gtk_action_group_set_translation_domain"
           action-group-set-translation-domain) :void
  #+liber-documentation
- "@version{#2021-12-18}
+ "@version{#2023-3-15}
   @argument[group]{a @class{gtk:action-group} object}
   @argument[domain]{a string with the translation domain to use for
     GLIB gettext calls}
@@ -987,7 +985,7 @@
 (defcfun ("gtk_action_group_translate_string" action-group-translate-string)
     (:string :free-from-foreign nil)
  #+liber-documentation
- "@version{#2021-12-18}
+ "@version{#2023-3-15}
   @argument[group]{a @class{gtk:action-group} object}
   @argument[string]{a string}
   @return{A string with the translation.}
@@ -1005,4 +1003,4 @@
   (group (g:object action-group))
   (string (:string :free-to-foreign nil)))
 
-;;; --- End of file gtk.action-group.lisp --------------------------------------
+;;; --- End of file gtk3.action-group.lisp -------------------------------------

@@ -1,30 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.arrow.lisp
+;;; gtk3.arrow.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
 ;;; Copyright (C) 2011 - 2021 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkArrow
@@ -42,12 +42,12 @@
 ;;;
 ;;; Properties
 ;;;
-;;;      GtkArrowType    arrow-type       Read / Write
-;;;     GtkShadowType    shadow-type      Read / Write
+;;;     arrow-type
+;;;     shadow-type
 ;;;
 ;;; Style Properties
 ;;;
-;;;            gfloat    arrow-scaling    Read
+;;;     arrow-scaling
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -83,7 +83,7 @@
 
 #+liber-documentation
 (setf (documentation 'arrow 'type)
- "@version{#2021-7-25}
+ "@version{#2023-3-15}
   @begin{short}
     The @sym{gtk:arrow} widget should be used to draw simple arrows that need
     to point in one of the four cardinal directions: up, down, left, or right.
@@ -96,9 +96,9 @@
   inherited from the @class{gtk:misc} class, it can be padded and/or aligned,
   to fill exactly the space the programmer desires.
 
-  Arrows are created with a call to the function @fun{gtk:arrow-new}. The
+  Arrows are created with a call to the @fun{gtk:arrow-new} function. The
   direction or style of an arrow can be changed after creation by using the
-  function @fun{gtk:arrow-set}.
+  @fun{gtk:arrow-set} function.
   @begin[Warning]{dictionary}
     The @sym{gtk:arrow} widget has been deprecated. You can simply use a
     @class{gtk:image} widget with a suitable icon name, such as
@@ -120,6 +120,7 @@
       @end{entry}
     @end{table}
   @end{dictionary}
+  @see-constructor{gtk:arrow-new}
   @see-slot{gtk:arrow-arrow-type}
   @see-slot{gtk:arrow-shadow-type}
   @see-class{gtk:misc}
@@ -129,7 +130,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- arrow-arrow-type ---------------------------------------------------
+;;; --- arrow-arrow-type -------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "arrow-type" 'arrow) t)
@@ -142,7 +143,7 @@
 (setf (liber:alias-for-function 'arrow-arrow-type)
       "Accessor"
       (documentation 'arrow-arrow-type 'function)
- "@version{#2021-7-22}
+ "@version{#2023-3-15}
   @syntax[]{(gtk:arrow-arrow-type object) => arrow-type}
   @syntax[]{(setf (gtk:arrow-arrow-type object) arrow-type)}
   @argument[object]{a @class{gtk:arrow} widget}
@@ -151,10 +152,9 @@
     Accessor of the @slot[gtk:arrow]{arrow-type} slot of the @class{gtk:arrow}
     class.
   @end{short}
-
   The direction the arrow should point.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:arrow-arrow-type} has been deprecated since version
+    The @sym{gtk:arrow-arrow-type} function has been deprecated since version
     3.14 and should not be used in newly written code. Use a @class{gtk:image}
     widget with a suitable icon.
   @end{dictionary}
@@ -162,7 +162,7 @@
   @see-class{gtk:image}
   @see-symbol{gtk:arrow-type}")
 
-;;; --- arrow-shadow-type --------------------------------------------------
+;;; --- arrow-shadow-type ------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "shadow-type" 'arrow) t)
@@ -175,7 +175,7 @@
 (setf (liber:alias-for-function 'arrow-shadow-type)
       "Accessor"
       (documentation 'arrow-shadow-type 'function)
- "@version{#2021-7-22}
+ "@version{#2023-3-15}
   @syntax[]{(gtk:arrow-shadow-type object) => shadow-type}
   @syntax[]{(setf (gtk:arrow-shadow-type object) shadow-type)}
   @argument[object]{a @class{gtk:arrow} widget}
@@ -184,10 +184,9 @@
     Accessor of the @slot[gtk:arrow]{shadow-type} slot of the @class{gtk:arrow}
     class.
   @end{short}
-
   Appearance of the shadow surrounding the arrow.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:arrow-shadow-type} has been deprecated since version
+    The @sym{gtk:arrow-shadow-type} function has been deprecated since version
     3.14 and should not be used in newly written code. Use a @class{gtk:image}
     widget with a suitable icon.
   @end{dictionary}
@@ -231,13 +230,13 @@
 
 (defun arrow-set (arrow arrow-type shadow-type)
  #+liber-documentation
- "@version{#2021-7-22}
+ "@version{#2023-3-15}
   @argument[arrow]{a @class{gtk:arrow} widget}
   @argument[arrow-type]{a value of the @symbol{gtk:arrow-type} enumeration}
   @argument[shadow-type]{a value of the @symbol{gtk:shadow-type} enumeration}
   @short{Sets the direction and style of the arrow.}
   @begin[Warning]{dictionary}
-    The function @sym{gtk:arrow-set} has been deprecated since version 3.14 and
+    The @sym{gtk:arrow-set} function has been deprecated since version 3.14 and
     should not be used in newly written code. Use a @class{gtk:image} widget
     with a suitable icon.
   @end{dictionary}
@@ -250,4 +249,4 @@
 
 (export 'arrow-set)
 
-;;; --- End of file gtk.arrow.lisp ---------------------------------------------
+;;; --- End of file gtk3.arrow.lisp --------------------------------------------

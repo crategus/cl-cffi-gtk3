@@ -1,30 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.alignment.lisp
+;;; gtk3.alignment.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2021 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkAlignment
@@ -37,21 +37,21 @@
 ;;;
 ;;; Functions
 ;;;
-;;;     GtkWidget*   gtk_alignment_new
-;;;          void    gtk_alignment_set
-;;;          void    gtk_alignment_get_padding
-;;;          void    gtk_alignment_set_padding
+;;;     gtk_alignment_new
+;;;     gtk_alignment_set
+;;;     gtk_alignment_get_padding
+;;;     gtk_alignment_set_padding
 ;;;
 ;;; Properties
 ;;;
-;;;         guint    bottom-padding    Read / Write
-;;;         guint    left-padding      Read / Write
-;;;         guint    right-padding     Read / Write
-;;;         guint    top-padding       Read / Write
-;;;        gfloat    xalign            Read / Write
-;;;        gfloat    xscale            Read / Write
-;;;        gfloat    yalign            Read / Write
-;;;        gfloat    yscale            Read / Write
+;;;     bottom-padding
+;;;     left-padding
+;;;     right-padding
+;;;     top-padding
+;;;     xalign
+;;;     xscale
+;;;     yalign
+;;;     yscale
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -106,7 +106,7 @@
 
 #+liber-documentation
 (setf (documentation 'alignment 'type)
- "@version{#2021-7-25}
+ "@version{#2023-3-15}
   @begin{short}
     The @sym{gtk:alignment} widget controls the alignment and size of its child
     widget.
@@ -129,6 +129,7 @@
     the @slot[gtk:widget]{halign}, @slot[gtk:widget]{valign} and
     @slot[gtk:widget]{margin} properties on the child widget.
   @end{dictionary}
+  @see-constructor{gtk:alignment-new}
   @see-slot{gtk:alignment-bottom-padding}
   @see-slot{gtk:alignment-left-padding}
   @see-slot{gtk:alignment-right-padding}
@@ -143,7 +144,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- alignment-bottom-padding -------------------------------------------
+;;; --- alignment-bottom-padding -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "bottom-padding" 'alignment) t)
@@ -156,20 +157,20 @@
 (setf (liber:alias-for-function 'alignment-bottom-padding)
       "Accessor"
       (documentation 'alignment-bottom-padding 'function)
- "@version{#2021-7-25}
+ "@version{#2023-3-15}
   @begin{short}
     Accessor of the @slot[gtk:alignment]{bottom-padding} slot of the
     @class{gtk:alignment} class.
   @end{short}
   @begin[Warning]{dictionary}
-    The function @sym{gtk:alignment-bottom-padding} has been deprecated since
-    version 3.14 and should not be used in newly written code. Use the function
-    @fun{gtk:widget-margin-bottom} instead.
+    The @sym{gtk:alignment-bottom-padding} function has been deprecated since
+    version 3.14 and should not be used in newly written code. Use the
+    @fun{gtk:widget-margin-bottom} function instead.
   @end{dictionary}
   @see-class{gtk:alignment}
   @see-function{gtk:widget-margin-bottom}")
 
-;;; --- alignment-left-padding ---------------------------------------------
+;;; --- alignment-left-padding -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "left-padding" 'alignment) t)
@@ -182,20 +183,20 @@
 (setf (liber:alias-for-function 'alignment-left-padding)
       "Accessor"
       (documentation 'alignment-left-padding 'function)
- "@version{#2021-7-25}
+ "@version{#2023-3-15}
   @begin{short}
     Accessor of the @slot[gtk:alignment]{left-padding} slot of the
     @class{gtk:alignment} class.
   @end{short}
   @begin[Warning]{dictionary}
-    The function @sym{gtk:alignment-left-padding} has been deprecated since
-    version 3.14 and should not be used in newly written code. Use the function
-    @fun{gtk:widget-margin-start} instead.
+    The @sym{gtk:alignment-left-padding} function has been deprecated since
+    version 3.14 and should not be used in newly written code. Use the
+    @fun{gtk:widget-margin-start} function instead.
   @end{dictionary}
   @see-class{gtk:alignment}
   @see-function{gtk:widget-margin-start}")
 
-;;; --- alignment-right-padding --------------------------------------------
+;;; --- alignment-right-padding ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "right-padding" 'alignment) t)
@@ -208,20 +209,20 @@
 (setf (liber:alias-for-function 'alignment-right-padding)
       "Accessor"
       (documentation 'alignment-right-padding 'function)
- "@version{#2021-7-25}
+ "@version{#2023-3-15}
   @begin{short}
     Accessor of the @slot[gtk:alignment]{right-padding} slot of the
     @class{gtk:alignment} class.
   @end{short}
   @begin[Warning]{dictionary}
-    The function @sym{gtk:alignment-right-padding} has been deprecated since
-    version 3.14 and should not be used in newly written code. Use the function
-    @fun{gtk:widget-margin-end} instead.
+    The @sym{gtk:alignment-right-padding} function has been deprecated since
+    version 3.14 and should not be used in newly written code. Use the
+    @fun{gtk:widget-margin-end} function instead.
   @end{dictionary}
   @see-class{gtk:alignment}
   @see-function{gtk:widget-margin-end}")
 
-;;; --- alignment-top-padding ----------------------------------------------
+;;; --- alignment-top-padding --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "top-padding" 'alignment) t)
@@ -234,20 +235,20 @@
 (setf (liber:alias-for-function 'alignment-top-padding)
       "Accessor"
       (documentation 'alignment-top-padding 'function)
- "@version{#2021-7-25}
+ "@version{#2023-3-15}
   @begin{short}
     Accessor of the @slot[gtk:alignment]{top-padding} slot of the
     @class{gtk:alignment} class.
   @end{short}
   @begin[Warning]{dictionary}
-    The function @sym{gtk:alignment-top-padding} has been deprecated since
-    version 3.14 and should not be used in newly written code. Use the function
-    @fun{gtk:widget-margin-top} instead.
+    The @sym{gtk:alignment-top-padding} function has been deprecated since
+    version 3.14 and should not be used in newly written code. Use the
+    @fun{gtk:widget-margin-top} function instead.
   @end{dictionary}
   @see-class{gtk:alignment}
   @see-function{gtk:widget-margin-top}")
 
-;;; --- alignment-xalign ---------------------------------------------------
+;;; --- alignment-xalign -------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "xalign" 'alignment) t)
@@ -261,20 +262,20 @@
 (setf (liber:alias-for-function 'alignment-xalign)
       "Accessor"
       (documentation 'alignment-xalign 'function)
- "@version{#2021-7-25}
+ "@version{#2023-3-15}
   @begin{short}
     Accessor of the @slot[gtk:alignment]{xalign} slot of the
     @class{gtk:alignment} class.
   @end{short}
   @begin[Warning]{dictionary}
-    The function @sym{gtk:alignment-xalign} has been deprecated since version
-    3.14 and should not be used in newly written code. Use the function
-    @fun{gtk:widget-halign} instead.
+    The @sym{gtk:alignment-xalign} function has been deprecated since version
+    3.14 and should not be used in newly written code. Use the
+    @fun{gtk:widget-halign} function instead.
   @end{dictionary}
   @see-class{gtk:alignment}
   @see-function{gtk:widget-halign}")
 
-;;; --- alignment-xscale ---------------------------------------------------
+;;; --- alignment-xscale -------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "xscale" 'alignment) t)
@@ -288,20 +289,20 @@
 (setf (liber:alias-for-function 'alignment-xscale)
       "Accessor"
       (documentation 'alignment-xscale 'function)
- "@version{#2021-7-25}
+ "@version{#2023-3-15}
   @begin{short}
     Accessor of the @slot[gtk:alignment]{xscale} slot of the
     @class{gtk:alignment} class.
   @end{short}
   @begin[Warning]{dictionary}
-    The function @sym{gtk:alignment-xscale} has been deprecated since version
-    3.14 and should not be used in newly written code. Use the function
-    @fun{gtk:widget-hexpand} instead.
+    The @sym{gtk:alignment-xscale} function has been deprecated since version
+    3.14 and should not be used in newly written code. Use the
+    @fun{gtk:widget-hexpand} function instead.
   @end{dictionary}
   @see-class{gtk:alignment}
   @see-function{gtk:widget-hexpand}")
 
-;;; --- alignment-yalign ---------------------------------------------------
+;;; --- alignment-yalign -------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "yalign" 'alignment) t)
@@ -315,20 +316,20 @@
 (setf (liber:alias-for-function 'alignment-yalign)
       "Accessor"
       (documentation 'alignment-yalign 'function)
- "@version{#2021-7-25}
+ "@version{#2023-3-15}
   @begin{short}
     Accessor of the @slot[gtk:alignment]{yalign} slot of the
     @class{gtk:alignment} class.
   @end{short}
   @begin[Warning]{dictionary}
-    The function @sym{gtk:alignment-yalign} has been deprecated since version
-    3.14 and should not be used in newly written code. Use the function
-    @fun{gtk:widget-valign} instead.
+    The @sym{gtk:alignment-yalign} function has been deprecated since version
+    3.14 and should not be used in newly written code. Use the
+    @fun{gtk:widget-valign} function instead.
   @end{dictionary}
   @see-class{gtk:alignment}
   @see-function{gtk:widget-valign}")
 
-;;; --- alignment-yscale ---------------------------------------------------
+;;; --- alignment-yscale -------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "yscale" 'alignment) t)
@@ -342,15 +343,15 @@
 (setf (liber:alias-for-function 'alignment-yscale)
       "Accessor"
       (documentation 'alignment-yscale 'function)
- "@version{#2021-7-25}
+ "@version{#2023-3-15}
   @begin{short}
     Accessor of the @slot[gtk:alignment]{yscale} slot of the
     @class{gtk:alignment} class.
   @end{short}
   @begin[Warning]{dictionary}
-    The function @sym{gtk:alignment-yscale} has been deprecated since version
-    3.14 and should not be used in newly written code. Use the function
-    @fun{gtk:widget-vexpand} instead.
+    The @sym{gtk:alignment-yscale} function has been deprecated since version
+    3.14 and should not be used in newly written code. Use the
+    @fun{gtk:widget-vexpand} function instead.
   @end{dictionary}
   @see-class{gtk:alignment}
   @see-function{gtk:widget-vexpand}")
@@ -363,7 +364,7 @@
 
 (defun alignment-new (xalign yalign xscale yscale)
  #+liber-documentation
- "@version{#2021-7-9}
+ "@version{#2023-3-15}
   @argument[xalign]{a float with the horizontal alignment of the child widget,
     from 0.0 (left) to 1.0 (right)}
   @argument[yalign]{a float with the vertical alignment of the child widget,
@@ -379,7 +380,7 @@
   @return{The new @class{gtk:alignment} widget.}
   @short{Creates a new alignment.}
   @begin[Warning]{dictionary}
-    The function @sym{gtk:alignment-new} has been deprecated since version 3.14
+    The @sym{gtk:alignment-new} function has been deprecated since version 3.14
     and should not be used in newly written code. Use the @class{gtk:widget}
     alignment and margin properties.
   @end{dictionary}
@@ -401,7 +402,7 @@
 
 (defun alignment-set (alignment xalign yalign xscale yscale)
  #+liber-documentation
- "@version{#2021-7-9}
+ "@version{#2023-3-15}
   @argument[alignment]{a @class{gtk:alignment} widget}
   @argument[xalign]{a float with the horizontal alignment of the child widget,
     from 0.0 (left) to 1.0 (right)}
@@ -417,7 +418,7 @@
     to @arg{xscale}}
   @short{Sets the alignment values.}
   @begin[Warning]{dictionary}
-    The function @sym{gtk:alignment-set} has been deprecated since version 3.14
+    The @sym{gtk:alignment-set} function has been deprecated since version 3.14
     and should not be used in newly written code. Use the @class{gtk:widget}
     alignment and margin properties.
   @end{dictionary}
@@ -438,7 +439,7 @@
 
 (defun alignment-get-padding (alignment)
  #+liber-documentation
- "@version{#2021-7-9}
+ "@version{#2023-3-15}
   @argument[alignment]{a @class{gtk:alignment} widget}
   @begin{return}
     @arg{top} -- an unsigned integer with the padding for the top of the child
@@ -454,7 +455,7 @@
     Gets the padding on the different sides of the child widget.
   @end{short}
   @begin[Warning]{dictionary}
-    The function @sym{gtk:alignment-get-padding} has been deprecated since
+    The @sym{gtk:alignment-get-padding} function has been deprecated since
     version 3.14 and should not be used in newly written code. Use the
     @class{gtk:widget} alignment and margin properties.
   @end{dictionary}
@@ -476,7 +477,7 @@
 
 (defun alignment-set-padding (alignment top bottom left right)
  #+liber-documentation
- "@version{#2021-7-25}
+ "@version{#2023-3-15}
   @argument[alignment]{a @class{gtk:alignment} widget}
   @argument[top]{an unsigned integer with the padding at the top of the child
     widget}
@@ -493,7 +494,7 @@
   this can be used to indent the child widget towards the right by adding
   padding on the left.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:alignment-set-padding} has been deprecated since
+    The @sym{gtk:alignment-set-padding} function has been deprecated since
     version 3.14 and should not be used in newly written code. Use the
     @class{gtk:widget} alignment and margin properties.
   @end{dictionary}
@@ -507,4 +508,4 @@
 
 (export 'alignment-set-padding)
 
-;;; --- End of file gtk.alignment.lisp -----------------------------------------
+;;; --- End of file gtk3.alignment.lisp ----------------------------------------

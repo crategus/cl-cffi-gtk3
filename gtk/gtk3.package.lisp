@@ -67,7 +67,8 @@
                             #:set-g-value)
   (:import-from :gdk        #:with-gdk-threads-lock)
   (:import-from :gdk-pixbuf #:+gdk-pixbuf-version+)
-  (:import-from :pango      #:+pango-scale+))
+  (:import-from :pango      #:+pango-scale+
+                            #:+pango-scale-x-large+))
 
 (in-package :gtk)
 

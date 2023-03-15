@@ -1,29 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.application.lisp
+;;; gtk3.application.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
 ;;; Copyright (C) 2013 - 2022 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkApplication
@@ -61,17 +62,17 @@
 ;;;
 ;;; Properties
 ;;;
-;;;      GtkWindow*   active-window         Read
-;;;     GMenuModel*   app-menu              Read / Write
-;;;     GMenuModel*   menubar               Read / Write
-;;;       gboolean    register-session      Read / Write
-;;;       gboolean    screensaver-active    Read
+;;;     active-window
+;;;     app-menu
+;;;     menubar
+;;;     register-session
+;;;     screensaver-active
 ;;;
 ;;; Signals
 ;;;
-;;;           void    query-end             Run First
-;;;           void    window-added          Run First
-;;;           void    window-removed        Run First
+;;;     query-end
+;;;     window-added
+;;;     window-removed
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -102,7 +103,7 @@
 (setf (liber:alias-for-symbol 'application-inhibit-flags)
       "GFlags"
       (liber:symbol-documentation 'application-inhibit-flags)
- "@version{#2021-10-11}
+ "@version{#2023-3-15}
   @begin{short}
     Types of user actions that may be blocked by the
     @fun{gtk:application-inhibit} function.
@@ -154,7 +155,7 @@
 
 #+liber-documentation
 (setf (documentation 'application 'type)
- "@version{#2021-10-10}
+ "@version{#2023-3-15}
   @begin{short}
     The @sym{gtk:application} class handles many important aspects of a GTK
     application in a convenient fashion, without enforcing a one-size-fits-all
@@ -199,8 +200,7 @@
   @file{\"gtk/menus-appmenu.ui\"} and @file{\"gtk/menus-traditional.ui\"}.
 
   It is also possible to provide the menus manually using the
-  @fun{gtk:application-app-menu} and @fun{gtk:application-menubar} slot access
-  functions.
+  @fun{gtk:application-app-menu} and @fun{gtk:application-menubar} functions.
 
   The @sym{gtk:application} instance will also automatically setup an icon
   search path for the default icon theme by appending @file{\"icons\"} to the
@@ -252,7 +252,7 @@
   @begin[Signal Details]{dictionary}
     @subheading{The \"query-end\" signal}
       @begin{pre}
- lambda (application)    :run-first
+lambda (application)    :run-first
       @end{pre}
       Emitted when the session manager is about to end the session, only if the
       @code{register-session} property is @em{true}. Applications can connect
@@ -265,7 +265,7 @@
       @end{table}
     @subheading{The \"window-added\" signal}
       @begin{pre}
- lambda (application window)    :run-first
+lambda (application window)    :run-first
       @end{pre}
       Emitted when a @class{gtk:window} widget is added to the application
       through the @fun{gtk:application-add-window} function.
@@ -276,7 +276,7 @@
       @end{table}
     @subheading{The \"window-removed\" signal}
       @begin{pre}
- lambda (application window)    :run-first
+lambda (application window)    :run-first
       @end{pre}
       Emitted when a @class{gtk:window} widget is removed from the application,
       either as a side-effect of being destroyed or explicitly through the
@@ -287,6 +287,7 @@
         @entry[window]{The @class{gtk:window} widget that is being removed.}
       @end{table}
   @end{dictionary}
+  @see-constructor{gtk:application-new}
   @see-slot{gtk:application-active-window}
   @see-slot{gtk:application-app-menu}
   @see-slot{gtk:application-menubar}
@@ -303,11 +304,10 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- application-active-window ------------------------------------------
+;;; --- application-active-window ----------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "active-window"
-                                               'application) t)
+(setf (documentation (liber:slot-documentation "active-window" 'application) t)
  "The @code{active-window} property of type @class{gtk:window} (Read) @br{}
   The window which most recently had focus.")
 
@@ -315,7 +315,7 @@
 (setf (liber:alias-for-function 'application-active-window)
       "Accessor"
       (documentation 'application-active-window 'function)
- "@version{#2021-10-13}
+ "@version{#2023-3-15}
   @syntax[]{(gtk:application-active-window object) => window}
   @argument[object]{a @class{gtk:application} instance}
   @argument[window]{a @class{gtk:window} widget}
@@ -323,9 +323,8 @@
     Accessor of the @slot[gtk:application]{active-window} slot of the
     @class{gtk:application} class.
   @end{short}
-
-  The @sym{gtk:application-active-window} slot access function gets the
-  active window for the application.
+  The @sym{gtk:application-active-window} function gets the active window for
+  the application.
 
   The active window is the one that was most recently focused within the
   application. This window may not have the focus at the moment if another
@@ -334,7 +333,7 @@
   @see-class{gtk:application}
   @see-class{gtk:window}")
 
-;;; --- application-app-menu -----------------------------------------------
+;;; --- application-app-menu ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "app-menu" 'application) t)
@@ -345,7 +344,7 @@
 (setf (liber:alias-for-function 'application-app-menu)
       "Accessor"
       (documentation 'application-app-menu 'function)
- "@version{#2021-10-10}
+ "@version{#2023-3-15}
   @syntax[]{(gtk:application-app-menu object) => app-menu}
   @syntax[]{(setf (gtk:application-app-menu object) app-menu)}
   @argument[object]{a @class{gtk:application} instance}
@@ -354,10 +353,8 @@
     Accessor of the @slot[gtk:application]{app-menu} slot of the
     @class{gtk:application} class.
   @end{short}
-
-  The @sym{gtk:application-app-menu} slot access function returns the
-  application menu model that has been set. The
-  @sym{(setf gtk:application-app-menu)} slot access function sets the
+  The @sym{gtk:application-app-menu} function returns the application menu model
+  that has been set. The @sym{(setf gtk:application-app-menu)} function sets the
   application menu.
 
   This can only be done in the primary instance of the application, after it
@@ -378,7 +375,7 @@
   @see-class{g:menu-model}
   @see-class{g:action-map}")
 
-;;; --- application-menubar ------------------------------------------------
+;;; --- application-menubar ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "menubar" 'application) t)
@@ -389,7 +386,7 @@
 (setf (liber:alias-for-function 'application-menubar)
       "Accessor"
       (documentation 'application-menubar 'function)
- "@version{#2021-10-10}
+ "@version{#2023-3-15}
   @syntax[]{(gtk:application-menubar object) => menubar}
   @syntax[]{(setf (gtk:application-menubar object) menubar)}
   @argument[object]{a @class{gtk:application} instance}
@@ -398,10 +395,9 @@
     Accessor of the @slot[gtk:application]{menubar} slot of the
     @class{gtk:application} class.
   @end{short}
-
-  The @sym{gtk:application-menubar} slot access function returns the menubar
-  for windows of the application. The @sym{(setf gtk:application-menubar)} slot
-  access function sets or unsets the menubar.
+  The @sym{gtk:application-menubar} function returns the menubar for windows of
+  the application. The @sym{(setf gtk:application-menubar)} function sets or
+  unsets the menubar.
 
   This is a menubar in the traditional sense.
 
@@ -423,7 +419,7 @@
   @see-class{g:menu-model}
   @see-class{g:action-map}")
 
-;;; --- application-register-session ---------------------------------------
+;;; --- application-register-session -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "register-session"
@@ -437,7 +433,7 @@
 (setf (liber:alias-for-function 'application-register-session)
       "Accessor"
       (documentation 'application-register-session 'function)
- "@version{#2021-10-13}
+ "@version{#2023-3-15}
   @syntax[]{(gtk:application-register-session object) => setting}
   @syntax[]{(setf (gtk:application-register-session object) setting)}
   @argument[object]{a @class{gtk:application} instance}
@@ -446,7 +442,6 @@
     Accessor of the @slot[gtk:application]{register-session} slot of the
     @class{gtk:application} class.
   @end{short}
-
   Set the @slot[gtk:application]{register-session} property to @em{true} to
   register with the session mananger.
   @see-class{gtk:application}")
@@ -467,7 +462,7 @@
 (setf (liber:alias-for-function 'application-screensaver-active)
       "Accessor"
       (documentation 'application-screensaver-active 'function)
- "@version{#2023-3-13}
+ "@version{#2023-3-15}
   @syntax[]{(gtk:application-screensaver-active object) => active}
   @argument[object]{a @class{gtk:application} instance}
   @argument[active]{a boolean whether the screensaver is active}
@@ -490,7 +485,7 @@
 (declaim (inline application-new))
 
 (defun application-new (id flags)
- "@version{#2021-9-3}
+ "@version{#2023-3-15}
   @argument[id]{a string with the application ID, or @code{nil} for no
     application ID}
   @argument[flags]{the @symbol{g:application-flags} application flags}
@@ -498,7 +493,6 @@
   @begin{short}
     Creates a new application.
   @end{short}
-
   The @code{gtk_init()} function is called as soon as the application gets
   registered as the primary instance. Concretely, the @code{gtk_init()} function
   is called in the default handler for the \"startup\" signal. Therefore,
@@ -532,7 +526,7 @@
 
 (defcfun ("gtk_application_add_window" application-add-window) :void
  #+liber-documentation
- "@version{#2021-9-3}
+ "@version{#2023-3-15}
   @argument[application]{a @class{gtk:application} instance}
   @argument[window]{a @class{gtk:window} widget}
   @begin{short}
@@ -561,7 +555,7 @@
 
 (defcfun ("gtk_application_remove_window" application-remove-window) :void
  #+liber-documentation
- "@version{#2021-9-3}
+ "@version{#2023-3-15}
   @argument[application]{a @class{gtk:application} instance}
   @argument[window]{a @class{gtk:window} widget}
   @begin{short}
@@ -588,7 +582,7 @@
 (defcfun ("gtk_application_get_windows" application-windows)
     (g:list-t (g:object window) :free-from-foreign nil)
  #+liber-documentation
- "@version{#2021-10-21}
+ "@version{#2023-3-15}
   @argument[application]{a @class{gtk:application} instance}
   @return{A list of @class{gtk:window} widgets.}
   @begin{short}
@@ -610,7 +604,7 @@
 (defcfun ("gtk_application_get_window_by_id" application-window-by-id)
     (g:object window)
  #+liber-documentation
- "@version{#2021-9-8}
+ "@version{#2023-3-15}
   @argument[application]{a @class{gtk:application} instance}
   @argument[id]{an unsigned integer identifier number}
   @return{The @class{gtk:application-window} widget with ID @arg{id}, or
@@ -640,7 +634,7 @@
 
 (defcfun ("gtk_application_inhibit" application-inhibit) :uint
  #+liber-documentation
- "@version{#2021-10-11}
+ "@version{#2023-3-15}
   @argument[application]{a @class{gtk:application} instance}
   @argument[window]{a @class{gtk:window} widget, or @code{nil}}
   @argument[flags]{what @symbol{gtk:application-inhibit-flags} types of user
@@ -694,7 +688,7 @@
 
 (defcfun ("gtk_application_uninhibit" application-uninhibit) :void
  #+liber-documentation
- "@version{#2021-10-11}
+ "@version{#2023-3-15}
   @argument[application]{a @class{gtk:application} instance}
   @argument[cookie]{an unsigned integer cookie that was returned by the
     @fun{gtk:application-inhibit} function}
@@ -717,7 +711,7 @@
 
 (defcfun ("gtk_application_is_inhibited" application-is-inhibited) :boolean
  #+liber-documentation
- "@version{#2021-10-11}
+ "@version{#2023-3-15}
   @argument[application]{a @class{gtk:application} instance}
   @argument[flags]{what @symbol{gtk:application-inhibit-flags} types of actions
     should be queried}
@@ -743,7 +737,7 @@
 (defcfun ("gtk_application_prefers_app_menu" application-prefers-app-menu)
     :boolean
  #+liber-documentation
- "@version{#2021-9-3}
+ "@version{#2023-3-15}
   @argument[application]{a @class{gtk:application} instance}
   @return{A boolean that is @em{true} if the desktop enviroment would prefer
     an application menu be shown.}
@@ -794,7 +788,7 @@
 (defcfun ("gtk_application_get_menu_by_id" application-menu-by-id)
     (g:object menu)
  #+liber-documentation
- "@version{#2021-9-3}
+ "@version{#2023-3-15}
   @argument[application]{a @class{gtk:application} instance}
   @argument[id]{a string with the ID of the menu to look up}
   @return{Gets the @class{g:menu} object with the given @arg{id} argument from
@@ -813,17 +807,16 @@
 ;;; gtk_application_add_accelerator ()                     not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_application_add_accelerator" %application-add-accelerator)
-    :void
+(defcfun ("gtk_application_add_accelerator" %application-add-accelerator) :void
   (application (g:object application))
   (accel :string)
   (name :string)
   (parameter (:pointer (:struct g:variant))))
 
 (defun application-add-accelerator (application accel name
-                                                    &optional (parameter nil))
+                                                &optional (parameter nil))
  #+liber-documentation
- "@version{#2021-9-8}
+ "@version{#2023-3-15}
   @argument[application]{a @class{gtk:application} instance}
   @argument[accel]{a string representing an accelerator}
   @argument[name]{a string with the name of the action to activate}
@@ -871,16 +864,16 @@
 ;;; gtk_application_remove_accelerator ()                  not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_application_remove_accelerator"
-          %application-remove-accelerator) :void
+(defcfun ("gtk_application_remove_accelerator" %application-remove-accelerator)
+    :void
   (application (g:object application))
   (name :string)
   (parameter (:pointer (:struct g:variant))))
 
 (defun application-remove-accelerator (application name
-                                           &optional (parameter nil))
+                                       &optional (parameter nil))
  #+liber-documentation
- "@version{#2021-9-8}
+ "@version{#2023-3-15}
   @argument[application]{a @class{gtk:application} instance}
   @argument[name]{a string with the name of the action to activate}
   @argument[parameter]{an optional @type{g:variant} parameter to pass when
@@ -912,7 +905,7 @@
 (defcfun ("gtk_application_list_action_descriptions"
            application-list-action-descriptions) g:strv-t
  #+liber-documentation
- "@version{#2021-9-3}
+ "@version{#2023-3-15}
   @argument[application]{a @class{gtk:application} instance}
   @return{A list of strings with the detailed action names.}
   @begin{short}
@@ -928,21 +921,21 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_application_get_accels_for_action ()
 ;;; gtk_application_set_accels_for_action ()
-;;; -> application-accels-for-action
+;;;     -> application-accels-for-action
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf application-accels-for-action) (accels application name)
   (cffi:foreign-funcall "gtk_application_set_accels_for_action"
-                   (g:object application) application
-                   :string name
-                   g:strv-t (if (listp accels) accels (list accels))
-                   :void)
+                        (g:object application) application
+                        :string name
+                        g:strv-t (if (listp accels) accels (list accels))
+                        :void)
   accels)
 
 (defcfun ("gtk_application_get_accels_for_action"
            application-accels-for-action) g:strv-t
  #+liber-documentation
- "@version{#2021-9-4}
+ "@version{#2023-3-15}
   @syntax[]{(gtk:application-accels-for-action application name) => accels}
   @syntax[]{(setf (gtk:application-accels-for-action application name) accels)}
   @argument[application]{a @class{gtk:application} instance}
@@ -953,7 +946,6 @@
   @begin{short}
     Accessor of the accelerators that are associated with the given action.
   @end{short}
-
   The @sym{gtk:application-accels-for-action} function gets the keyboard
   accelerators that will trigger the given action. The
   @sym{(setf gtk:application-accels-for-action)} function sets zero or more
@@ -976,12 +968,12 @@
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_application_get_actions_for_accel ()
-;;; -> application-actions-for-accel
+;;;     -> application-actions-for-accel
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_application_get_actions_for_accel"
            application-actions-for-accel) g:strv-t
- "@version{#2021-9-3}
+ "@version{#2023-3-15}
   @argument[application]{a @class{gtk:application} instance}
   @argument[accel]{a string with an accelerator that can be parsed by the
     @fun{gtk:accelerator-parse} function}
@@ -1010,4 +1002,4 @@
 
 (export 'application-actions-for-accel)
 
-;;; --- End of file gtk.application.lisp ---------------------------------------
+;;; --- End of file gtk3.application.lisp --------------------------------------

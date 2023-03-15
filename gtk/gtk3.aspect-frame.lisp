@@ -1,30 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.aspect-frame.lisp
+;;; gtk3.aspect-frame.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
 ;;; Copyright (C) 2011 - 2021 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkAspectFrame
@@ -42,10 +42,10 @@
 ;;;
 ;;; Properties
 ;;;
-;;;     gboolean    obey-child    Read / Write
-;;;       gfloat    ratio         Read / Write
-;;;       gfloat    xalign        Read / Write
-;;;       gfloat    yalign        Read / Write
+;;;     obey-child
+;;;     ratio
+;;;     xalign
+;;;     yalign
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -89,7 +89,7 @@
 
 #+liber-documentation
 (setf (documentation 'aspect-frame 'type)
- "@version{#2021-12-17}
+ "@version{#2023-3-15}
   @begin{short}
     The @sym{gtk:aspect-frame} widget is useful when you want pack a widget so
     that it can resize but always retains the same aspect ratio.
@@ -102,6 +102,7 @@
     The @sym{gtk:aspect-frame} implementation uses a CSS node with name
     @code{frame}.
   @end{dictionary}
+  @see-constructor{gtk:aspect-frame-new}
   @see-slot{gtk:aspect-frame-obey-child}
   @see-slot{gtk:aspect-frame-ratio}
   @see-slot{gtk:aspect-frame-xalign}
@@ -112,11 +113,10 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- aspect-frame-obey-child --------------------------------------------
+;;; --- aspect-frame-obey-child ------------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "obey-child"
-                                               'aspect-frame) t)
+(setf (documentation (liber:slot-documentation "obey-child" 'aspect-frame) t)
  "The @code{obey-child} property of type @code{:boolean} (Read / Write) @br{}
   Force aspect ratio to match that of the child widget of the aspect frame.@br{}
   Default value: @em{true}")
@@ -125,7 +125,7 @@
 (setf (liber:alias-for-function 'aspect-frame-obey-child)
       "Accessor"
       (documentation 'aspect-frame-obey-child 'function)
- "@version{#2021-12-17}
+ "@version{#2023-3-15}
   @syntax[]{(gtk:aspect-frame-obey-child object) => obey-child}
   @syntax[]{(setf (gtk:aspect-frame-obey-child object) obey-child)}
   @argument[object]{a @class{gtk:aspect-frame} widget}
@@ -134,8 +134,7 @@
     Accessor of the @slot[gtk:aspect-frame]{obey-child} slot of the
     @class{gtk:aspect-frame} class.
   @end{short}
-
-  WHether to force the aspect ratio to match that of the child widget of the
+  Whether to force the aspect ratio to match that of the child widget of the
   aspect frame.
   @see-class{gtk:aspect-frame}")
 
@@ -152,7 +151,7 @@
 (setf (liber:alias-for-function 'aspect-frame-ratio)
       "Accessor"
       (documentation 'aspect-frame-ratio 'function)
- "@version{#2021-12-17}
+ "@version{#2023-3-15}
   @syntax[]{(gtk:aspect-frame-ratio object) => ratio}
   @syntax[]{(setf (gtk:aspect-frame-ratio object) ratio)}
   @argument[object]{a @class{gtk:aspect-frame} widget}
@@ -161,12 +160,11 @@
     Accessor of the @slot[gtk:aspect-frame]{ratio} slot of the
     @class{gtk:aspect-frame} class.
   @end{short}
-
   The aspect ratio if the @slot[gtk:aspect-frame]{obey-child} property is
   @em{false}. Allowed values are in [0.0001, 10000.0]. The default value is 1.0.
   @see-class{gtk:aspect-frame}")
 
-;;; --- aspect-frame-xalign ------------------------------------------------
+;;; --- aspect-frame-xalign ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "xalign" 'aspect-frame) t)
@@ -179,7 +177,7 @@
 (setf (liber:alias-for-function 'aspect-frame-xalign)
       "Accessor"
       (documentation 'aspect-frame-xalign 'function)
- "@version{#2021-12-17}
+ "@version{#2023-3-15}
   @syntax[]{(gtk:aspect-frame-xalign object) => xalign}
   @syntax[]{(setf (gtk:aspect-frame-xalign object) xalign)}
   @argument[object]{a @class{gtk:aspect-frame} widget}
@@ -188,11 +186,10 @@
     Accessor of the @slot[gtk:aspect-frame]{xalign} slot of the
     @class{gtk:aspect-frame} class.
   @end{short}
-
   The x alignment of the child widget in the aspect frame container.
   @see-class{gtk:aspect-frame}")
 
-;;; --- aspect-frame-yalign ------------------------------------------------
+;;; --- aspect-frame-yalign ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "yalign" 'aspect-frame) t)
@@ -205,7 +202,7 @@
 (setf (liber:alias-for-function 'aspect-frame-yalign)
       "Accessor"
       (documentation 'aspect-frame-yalign 'function)
- "@version{#2021-12-17}
+ "@version{#2023-3-15}
   @syntax[]{(gtk:aspect-frame-yalign object) => yalign}
   @syntax[]{(setf (gtk:aspect-frame-yalign object) yalign)}
   @argument[object]{a @class{gtk:aspect-frame} widget}
@@ -214,7 +211,6 @@
     Accessor of the @slot[gtk:aspect-frame]{yalign} slot of the
     @class{gtk:aspect-frame} class.
   @end{short}
-
   The y alignment of the child widget in the aspect frame container.
   @see-class{gtk:aspect-frame}")
 
@@ -226,7 +222,7 @@
 
 (defun aspect-frame-new (label xalign yalign ratio obey-child)
  #+liber-documentation
- "@version{#2021-12-17}
+ "@version{#2023-3-15}
   @argument[label]{a string with the label text}
   @argument[xalign]{a float with the horizontal alignment of the child within
     the allocation of the aspect frame, this ranges from 0.0 (left aligned) to
@@ -257,7 +253,7 @@
 
 (defun aspect-frame-set (frame xalign yalign ratio obey-child)
  #+liber-documentation
- "@version{#2021-12-17}
+ "@version{#2023-3-15}
   @argument[frame]{a @class{gtk:aspect-frame} widget}
   @argument[xalign]{a float with the horizontal alignment of the child within
     the allocation of the aspect frame container, this ranges from 0.0
@@ -279,4 +275,4 @@
 
 (export 'aspect-frame-set)
 
-;;; --- End of file gtk.aspect-frame.lisp --------------------------------------
+;;; --- End of file gtk3.aspect-frame.lisp -------------------------------------

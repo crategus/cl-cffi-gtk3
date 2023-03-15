@@ -1,30 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.text-mark.lisp
+;;; gtk3.text-mark.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK+ library.
+;;; The documentation of this file is taken from the GTK 3 Reference Manual
+;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+;;; AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkTextMark
@@ -76,7 +76,7 @@
 
 #+liber-documentation
 (setf (documentation 'text-mark 'type)
- "@version{#2021-2-11}
+ "@version{#2023-3-15}
   @begin{short}
     A @sym{gtk:text-mark} object is like a bookmark in a text buffer.
   @end{short}
@@ -103,6 +103,7 @@
   Text marks optionally have names. These can be convenient to avoid passing
   the @sym{gtk:text-mark} object around. Text marks are typically created using
   the @fun{gtk:text-buffer-create-mark} function.
+  @see-constructor{gtk:text-mark-new}
   @see-slot{gtk:text-mark-left-gravity}
   @see-slot{gtk:text-mark-name}
   @see-class{gtk:text-buffer}
@@ -127,7 +128,7 @@
 (setf (liber:alias-for-function 'text-mark-left-gravity)
       "Accessor"
       (documentation 'text-mark-left-gravity 'function)
- "@version{#2021-2-11}
+ "@version{#2023-3-15}
   @syntax[]{(gtk:text-mark-left-gravity object) => gravity}
   @argument[object]{a @class{gtk:text-mark} object}
   @return{@em{True} if the text mark has left gravity.}
@@ -152,10 +153,10 @@
 (setf (liber:alias-for-function 'text-mark-name)
       "Accessor"
       (documentation 'text-mark-name 'function)
- "@version{#2021-2-11}
-  @syntax[]{(gtk:text-mark-name object) => mark-name}
+ "@version{#2023-3-15}
+  @syntax[]{(gtk:text-mark-name object) => name}
   @argument[object]{a @class{gtk:text-mark} object}
-  @argument[mark-name]{a string with the name of the text mark}
+  @argument[name]{a string with the name of the text mark}
   @begin{short}
     Accessor of the @slot[gtk:text-mark]{name} slot of the
     @class{gtk:text-mark} class.
@@ -168,36 +169,34 @@
 ;;; gtk_text_mark_new ()
 ;;; ----------------------------------------------------------------------------
 
-(defun text-mark-new (name left-gravity)
+(defun text-mark-new (name gravity)
  #+liber-documentation
- "@version{#2021-2-18}
+ "@version{#2023-3-15}
   @argument[name]{a string with the name of the text mark or @code{nil}}
-  @argument[left-gravity]{a boolean whether the text mark should have left
-    gravity}
+  @argument[gravity]{a boolean whether the text mark should have left gravity}
   @return{New @class{gtk:text-mark} object.}
   @begin{short}
     Creates a text mark.
   @end{short}
-
   Add the text mark to a text buffer using the @fun{gtk:text-buffer-add-mark}
-  function. If @arg{name} is @code{nil}, the text mark is anonymous. Otherwise,
-  the text mark can be retrieved by @arg{name} using the
+  function. If the @arg{name} argument is @code{nil}, the text mark is 
+  anonymous. Otherwise, the text mark can be retrieved by @arg{name} using the 
   @fun{gtk:text-buffer-mark} function. If a text mark has left gravity, and text
   is inserted at the text mark's current location, the text mark will be moved
   to the left of the newly inserted text. If the text mark has right gravity,
-  @arg{left-gravity} is @em{false}, the text mark will end up on the right of
-  newly inserted text. The standard left-to-right cursor is a text mark with
-  right gravity, when you type, the cursor stays on the right side of the text
-  you are typing.
+  the @arg{gravity} argument is @em{false}, the text mark will end up on the 
+  right of newly inserted text. The standard left-to-right cursor is a text 
+  mark with right gravity, when you type, the cursor stays on the right side of 
+  the text you are typing.
   @see-class{gtk:text-mark}
   @see-function{gtk:text-buffer-mark}
   @see-function{gtk:text-buffer-add-mark}"
   (if name
       (make-instance 'text-mark
                      :name name
-                     :left-gravity left-gravity)
+                     :left-gravity gravity)
       (make-instance 'text-mark
-                     :left-gravity left-gravity)))
+                     :left-gravity gravity)))
 
 (export 'text-mark-new)
 
@@ -215,7 +214,7 @@
 
 (defcfun ("gtk_text_mark_get_visible" text-mark-visible) :boolean
  #+liber-documentation
- "@version{#2021-2-11}
+ "@version{#2023-3-15}
   @syntax[]{(gtk:text-mark-visible mark) => visibility}
   @syntax[]{(setf (gtk:text-mark-visible mark) visibility)}
   @argument[mark]{a @class{gtk:text-mark} object}
@@ -243,7 +242,7 @@
 
 (defcfun ("gtk_text_mark_get_deleted" text-mark-deleted) :boolean
  #+liber-documentation
- "@version{#2021-2-11}
+ "@version{#2023-3-15}
   @argument[mark]{a @class{gtk:text-mark} object}
   @return{A boolean whether the text mark is deleted.}
   @begin{short}
@@ -265,16 +264,17 @@
 
 (defcfun ("gtk_text_mark_get_buffer" text-mark-buffer) (g:object text-buffer)
  #+liber-documentation
- "@version{#2021-2-11}
+ "@version{#2023-3-15}
   @argument[mark]{a @class{gtk:text-mark} object}
   @return{The @class{gtk:text-buffer} object of the text mark.}
   @begin{short}
     Gets the text buffer this text mark is located inside, or @code{nil} if the
     mark is deleted.
   @end{short}
-  @see-class{gtk:text-mark}"
+  @see-class{gtk:text-mark}
+  @see-class{gtk:text-buffer}"
   (mark (g:object text-mark)))
 
 (export 'text-mark-buffer)
 
-;;; --- End of file gtk.text-mark.lisp -----------------------------------------
+;;; --- End of file gtk3.text-mark.lisp ----------------------------------------

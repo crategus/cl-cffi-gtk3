@@ -4,27 +4,27 @@
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
 ;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; Accelerator Maps
@@ -82,8 +82,8 @@
     Accelerator maps are used to define runtime configurable accelerators.
   @end{short}
   Functions for manipulating them are usually used by higher level convenience
-  mechanisms like the @class{gtk:ui-manager} object and are thus considered 
-  \"low-level\". You will want to use them if you are manually creating menus 
+  mechanisms like the @class{gtk:ui-manager} object and are thus considered
+  \"low-level\". You will want to use them if you are manually creating menus
   that should have user-configurable accelerators.
 
   An accelerator is uniquely defined by:
@@ -110,7 +110,7 @@
 
   @subheading{Manipulating accelerators}
     New accelerators can be added using the @fun{gtk:accel-map-add-entry}
-    function. To search for a specific accelerator, use the 
+    function. To search for a specific accelerator, use the
     @fun{gtk:accel-map-lookup-entry} function. Modifications of existing
     accelerators should be done using the @fun{gtk:accel-map-change-entry}
     function.
@@ -120,7 +120,7 @@
     the @fun{gtk:accel-map-unlock-path} function.
 
   @subheading{Saving and loading accelerator maps}
-    Accelerator maps can be saved to and loaded from some external resource. 
+    Accelerator maps can be saved to and loaded from some external resource.
     For simple saving and loading from file, the @fun{gtk:accel-map-save} and
     @fun{gtk:accel-map-load} functions are provided.
 
@@ -142,7 +142,7 @@ lambda (object path key mods)    :has-details
       @entry[path]{A string with the path of the accelerator that changed.}
       @entry[key]{An unsigned integer with the key value for the new
         accelerator.}
-      @entry[mods]{The @symbol{gdk:modifier-type} modifier mask for the new 
+      @entry[mods]{The @symbol{gdk:modifier-type} modifier mask for the new
         accelerator.}
     @end{table}
   @end{dictionary}
@@ -157,13 +157,13 @@ lambda (object path key mods)    :has-details
  "@version{2023-3-6}
   @argument[path]{a string with the valid accelerator path}
   @argument[key]{an unsigned integer with the accelerator key}
-  @argument[mods]{a @symbol{gdk:modifier-type} value with the accelerator 
+  @argument[mods]{a @symbol{gdk:modifier-type} value with the accelerator
     modifiers}
   @begin{short}
     Registers a new accelerator with the global accelerator map.
   @end{short}
-  This function should only be called once per @arg{path} with the canonical 
-  @arg{key} and @arg{mods} for this path. To change the accelerator during 
+  This function should only be called once per @arg{path} with the canonical
+  @arg{key} and @arg{mods} for this path. To change the accelerator during
   runtime programatically, use the @fun{gtk:accel-map-change-entry} function.
   @see-class{gtk:accel-map}
   @see-symbol{gdk:modifier-type}
@@ -188,7 +188,7 @@ lambda (object path key mods)    :has-details
   @argument[path]{a string with the valid accelerator path}
   @begin{return}
     @code{key} -- an unsigned integer with the accelerator key @br{}
-    @code{mods} -- a @symbol{gdk:modifier-type} value with the accelerator 
+    @code{mods} -- a @symbol{gdk:modifier-type} value with the accelerator
       modifiers @br{}
     @code{flags} -- an unsigned integer with the accelerator flags if
       @arg{path} is known, @code{nil} otherwise
@@ -216,7 +216,7 @@ lambda (object path key mods)    :has-details
  "@version{2023-3-6}
   @argument[path]{a string with the valid accelerator path}
   @argument[key]{an unsigned integer with the new accelerator key}
-  @argument[mods]{a @symbol{gdk:modifier-type} value with the new accelerator 
+  @argument[mods]{a @symbol{gdk:modifier-type} value with the new accelerator
     modifiers}
   @argument[replace]{@em{true} if other accelerators may be deleted upon
     conflicts}
@@ -310,7 +310,7 @@ lambda (object path key mods)    :has-details
 ;;;     Modifiers of the current accelerator
 ;;;
 ;;; changed :
-;;;     Changed flag of the accelerator (if TRUE, accelerator has changed 
+;;;     Changed flag of the accelerator (if TRUE, accelerator has changed
 ;;;     during runtime and would need to be saved during an accelerator dump)
 ;;; ----------------------------------------------------------------------------
 
@@ -378,7 +378,7 @@ lambda (object path key mods)    :has-details
 ;;;
 ;;; Adds a filter to the global list of accel path filters.
 ;;;
-;;; Accel map entries whose accel path matches one of the filters are skipped 
+;;; Accel map entries whose accel path matches one of the filters are skipped
 ;;; by gtk_accel_map_foreach().
 ;;;
 ;;; This function is intended for GTK+ modules that create their own menus, but
@@ -435,21 +435,21 @@ lambda (object path key mods)    :has-details
   @begin{short}
     Locks the given accelerator path.
   @end{short}
-  If the accelerator map does not yet contain an entry for @arg{path}, a new 
+  If the accelerator map does not yet contain an entry for @arg{path}, a new
   one is created.
 
   Locking an accelerator path prevents its accelerator from being changed
   during runtime. A locked accelerator path can be unlocked by the
-  @fun{gtk:accel-map-unlock-path} function. Refer to the 
-  @fun{gtk:accel-map-change-entry} function for information about runtime 
+  @fun{gtk:accel-map-unlock-path} function. Refer to the
+  @fun{gtk:accel-map-change-entry} function for information about runtime
   accelerator changes.
 
   If called more than once, @arg{path} remains locked until the
-  @fun{gtk:accel-map-unlock-path} function has been called an equivalent number 
+  @fun{gtk:accel-map-unlock-path} function has been called an equivalent number
   of times.
 
   Note that locking of individual accelerator paths is independent from
-  locking the @class{gtk:accel-group} object containing them. For runtime 
+  locking the @class{gtk:accel-group} object containing them. For runtime
   accelerator changes to be possible both the accelerator path and its
   @class{gtk:accel-group} object have to be unlocked.
   @see-class{gtk:accel-map}

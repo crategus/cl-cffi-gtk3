@@ -1,29 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.actionable.lisp
+;;; gtk3.actionable.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
 ;;; Copyright (C) 2012 - 2022 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkActionable
@@ -74,7 +75,7 @@
 (setf (liber:alias-for-class 'actionable)
       "Interface"
       (documentation 'actionable 'type)
- "@version{#2021-9-3}
+ "@version{#2023-3-15}
   @begin{short}
     This interface provides a convenient way of associating widgets with
     actions on a @class{gtk:application-window} widget or
@@ -119,15 +120,13 @@
     Accessor of the @slot[gtk:actionable]{action-name} slot of the
     @class{gtk:actionable} inferface.
   @end{short}
-
-  The @sym{gtk:actionable-action-name} slot access function gets the action
-  name for @arg{object}, or @code{nil} if none is set. The
-  @sym{(setf gtk:actionable-action-name)} slot access function specifies the
-  name of the action with which this widget should be associated. If the
-  @arg{name} argument is @code{nil} then the widget will be unassociated from
-  any previous action. Usually this function is used when the widget is located,
-  or will be located, within the hierarchy of a @class{gtk:application-window}
-  widget.
+  The @sym{gtk:actionable-action-name} function gets the action name for
+  @arg{object}, or @code{nil} if none is set. The
+  @sym{(setf gtk:actionable-action-name)} function specifies the name of the
+  action with which this widget should be associated. If the @arg{name} argument
+  is @code{nil} then the widget will be unassociated from any previous action.
+  Usually this function is used when the widget is located, or will be located,
+  within the hierarchy of a @class{gtk:application-window} widget.
 
   Names are of the form \"win.save\" or \"app.quit\" for actions on the
   containing @class{gtk:application-window} widget or its associated
@@ -160,7 +159,7 @@
 (setf (liber:alias-for-function 'actionable-action-target)
       "Accessor"
       (documentation 'actionable-action-target 'function)
- "@version{#2021-9-8}
+ "@version{#2023-3-15}
   @syntax[]{(gtk:actionable-action-target object) => value}
   @syntax[]{(setf (gtk:actionable-action-target object) value)}
   @argument[object]{a @class{gtk:actionable} widget}
@@ -170,11 +169,9 @@
     Accessor of the @slot[gtk:actionable]{action-target} slot of the
     @class{gtk:actionable} inferface.
   @end{short}
-
-  The @sym{gtk:actionable-action-target} slot access function gets the current
-  target value of an actionable widget. The
-  @sym{(setf gtk:actionable-action-target)} slot access function sets the target
-  value.
+  The @sym{gtk:actionable-action-target} function gets the current target value
+  of an actionable widget. The @sym{(setf gtk:actionable-action-target)}
+  function sets the target value.
 
   If the @arg{value} argument is a @code{null-pointer} then the target value is
   unset.
@@ -205,7 +202,7 @@
     @code{gtk_application_get_action_target_value ()} and
     @code{gtk_application_set_action_target_value ()} functions. In the Lisp
     implementation these functions are replaced by the
-    @sym{gtk:application-action-target} slot access function.
+    @sym{gtk:application-action-target} function.
   @end{dictionary}
   @see-class{gtk:actionable}
   @see-type{g:variant}
@@ -247,7 +244,7 @@
 (defcfun ("gtk_actionable_set_detailed_action_name"
            actionable-set-detailed-action-name) :void
  #+liber-documentation
- "@version{#2021-10-31}
+ "@version{#2023-3-15}
   @argument[actionable]{a @class{gtk:actionable} widget}
   @argument[name]{a string with the detailed action name}
   @begin{short}
