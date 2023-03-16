@@ -1,30 +1,30 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.cell-layout.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK+ library.
+;;; The documentation of this file is taken from the GTK 3 Reference Manual
+;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkCellLayout
@@ -71,7 +71,7 @@
 (setf (liber:alias-for-class 'cell-layout)
       "Interface"
       (documentation 'cell-layout 'type)
- "@version{#2021-3-13}
+ "@version{#2023-3-16}
   @begin{short}
     The @sym{gtk:cell-layout} interface is an interface to be implemented by
     all objects which want to provide a @class{gtk:tree-view-column} object
@@ -82,10 +82,10 @@
   @sym{gtk:cell-layout} interface are attributes. Attributes let you set the
   properties in flexible ways. They can just be set to constant values like
   regular properties. But they can also be mapped to a column of the underlying
-  tree model with the function @fun{gtk:cell-layout-add-attribute}, which means
+  tree model with the @fun{gtk:cell-layout-add-attribute} function, which means
   that the value of the attribute can change from cell to cell as they are
   rendered by the cell renderer. Finally, it is possible to specify a function
-  with the function @fun{gtk:cell-layout-set-cell-data-func} that is called to
+  with the @fun{gtk:cell-layout-set-cell-data-func} function that is called to
   determine the value of the attribute for each cell that is rendered.
   @begin[GtkCellLayouts as GtkBuildable]{dictionary}
     Implementations of the @sym{gtk:cell-layout} interface which also implement
@@ -140,7 +140,7 @@
 
 (defun cell-layout-pack-start (layout cell &key (expand t))
  #+liber-documentation
- "@version{#2021-3-13}
+ "@version{#2023-3-16}
   @argument[layout]{a @class{gtk:cell-layout} object}
   @argument[cell]{a @class{gtk:cell-renderer} object}
   @argument[expand]{@em{true} if @arg{cell} is to be given extra space
@@ -172,7 +172,7 @@
 
 (defun cell-layout-pack-end (layout cell &key (expand t))
  #+liber-documentation
- "@version{#2021-3-13}
+ "@version{#2023-3-16}
   @argument[layout]{a @class{gtk:cell-layout} object}
   @argument[cell]{a @class{gtk:cell-renderer} object}
   @argument[expand]{@em{true} if @arg{cell} is to be given extra space
@@ -198,7 +198,7 @@
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_cell_layout_get_area" cell-layout-area) (g:object cell-area)
- "@version{#2021-3-13}
+ "@version{#2023-3-16}
   @argument[layout]{a @class{gtk:cell-layout} object}
   @return{The @class{gtk:cell-area} object used by @arg{layout}.}
   @begin{short}
@@ -219,7 +219,7 @@
 (defcfun ("gtk_cell_layout_get_cells" cell-layout-cells)
     (g:list-t g:object :free-from-foreign t)
  #+liber-documentation
- "@version{#2021-3-13}
+ "@version{#2023-3-16}
   @argument[layout]{a @class{gtk:cell-layout} object}
   @return{A list of @class{gtk:cell-renderer} objects.}
   @begin{short}
@@ -237,14 +237,13 @@
 
 (defcfun ("gtk_cell_layout_reorder" cell-layout-reorder) :void
  #+liber-documentation
- "@version{#2021-3-13}
+ "@version{#2021-3-16}
   @argument[layout]{a @class{gtk:cell-layout} object}
   @argument[cell]{a @class{gtk:cell-renderer} object to reorder}
   @argument[position]{an integer with the new position to insert @arg{cell} at}
   @begin{short}
     Reinserts @arg{cell} at the given position.
   @end{short}
-
   Note that @arg{cell} has already to be packed into @arg{layout} for this
   to function properly.
   @see-class{gtk:cell-layout}
@@ -261,7 +260,7 @@
 
 (defcfun ("gtk_cell_layout_clear" cell-layout-clear) :void
  #+liber-documentation
- "@version{#2021-3-13}
+ "@version{#2023-3-16}
   @argument[layout]{a @class{gtk:cell-layout} object}
   @begin{short}
     Unsets all the mappings on all renderers on @arg{layout} and removes
@@ -278,17 +277,16 @@
 
 (defun cell-layout-set-attributes (layout cell &rest attributes)
  #+liber-documentation
- "@version{#2021-3-13}
+ "@version{#2023-3-16}
   @argument[layout]{a @class{gtk:cell-layout} object}
   @argument[cell]{a @class{gtk:cell-renderer} object}
   @argument[attributes]{a list of attributes}
   @begin{short}
     Sets the attributes in the list as the attributes of @arg{layout}.
   @end{short}
-
-  The attributes should be in attribute/column order, as in the function
-  @fun{gtk:cell-layout-add-attribute}. All existing attributes are removed,
-  and replaced with the new attributes.
+  The attributes should be in attribute/column order, as in the
+  @fun{gtk:cell-layout-add-attribute} function. All existing attributes are
+  removed, and replaced with the new attributes.
   @see-class{gtk:layout}
   @see-class{gtk:cell-renderer}
   @see-function{gtk:cell-layout-add-attribute}"
@@ -303,7 +301,7 @@
 
 (defcfun ("gtk_cell_layout_add_attribute" cell-layout-add-attribute) :void
  #+liber-documentation
- "@version{#2021-3-13}
+ "@version{#2023-3-16}
   @argument[layout]{a @class{gtk:cell-layout} object}
   @argument[cell]{a @class{gtk:cell-renderer} object}
   @argument[attribute]{a string with an attribute on the renderer}
@@ -312,8 +310,7 @@
   @begin{short}
     Adds an attribute mapping to the list in @arg{layout}.
   @end{short}
-
-  The argument @arg{column} is the column of the model to get a value from, and
+  The @arg{column} argument is the column of the model to get a value from, and
   @arg{attribute} is the parameter on @arg{cell} to be set from the value. So
   for example if column 2 of the model contains strings, you could have the
   \"text\" attribute of a @class{gtk:cell-renderer-text} object get its values
@@ -346,7 +343,7 @@
 (setf (liber:alias-for-symbol 'cell-layout-data-func)
       "Callback"
       (liber:symbol-documentation 'cell-layout-data-func)
- "@version{#2023-2-11}
+ "@version{#2023-3-16}
   @begin{short}
     A callback function which should set the value of @arg{layout}'s cell
    renderer(s) as appropriate.
@@ -380,7 +377,7 @@ lambda (layout cell model iter)
 
 (defun cell-layout-set-cell-data-func (layout cell func)
  #+liber-documentation
- "@version{#2023-2-11}
+ "@version{#2023-3-16}
   @argument[layout]{a @class{gtk:cell-layout} object}
   @argument[cell]{a @class{gtk:cell-renderer} object}
   @argument[func]{a @symbol{gtk:cell-layout-data-func} callback function to use,
@@ -418,13 +415,13 @@ lambda (layout cell model iter)
 
 (defcfun ("gtk_cell_layout_clear_attributes" cell-layout-clear-attributes) :void
  #+liber-documentation
- "@version{#2021-3-13}
+ "@version{#2023-3-16}
   @argument[layout]{a @class{gtk:cell-layout} object}
   @argument[cell]{a @class{gtk:cell-renderer} object to clear the attribute
     mapping on}
   @begin{short}
-    Clears all existing attributes previously set with the function
-    @fun{gtk:cell-layout-add-attribute}.
+    Clears all existing attributes previously set with the
+    @fun{gtk:cell-layout-add-attribute} function.
   @end{short}
   @see-class{gtk:cell-layout}
   @see-class{gtk:cell-renderer}

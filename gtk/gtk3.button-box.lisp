@@ -1,30 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.button-box.lisp
+;;; gtk3.button-box.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkButtonBox
@@ -48,19 +48,19 @@
 ;;;
 ;;; Properties
 ;;;
-;;;     GtkButtonBoxStyle  layout-style          Read / Write
+;;;     layout-style
 ;;;
 ;;; Child Properties
 ;;;
-;;;              gboolean  non-homogeneous       Read / Write
-;;;              gboolean  secondary             Read / Write
+;;;     non-homogeneous
+;;;     secondary
 ;;;
 ;;; Style Properties
 ;;;
-;;;                  gint  child-internal-pad-x  Read
-;;;                  gint  child-internal-pad-y  Read
-;;;                  gint  child-min-height      Read
-;;;                  gint  child-min-width       Read
+;;;     child-internal-pad-x
+;;;     child-internal-pad-y
+;;;     child-min-height
+;;;     child-min-width
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -99,7 +99,7 @@
 (setf (liber:alias-for-symbol 'button-box-style)
       "GEnum"
       (liber:symbol-documentation 'button-box-style)
- "@version{#2021-12-9}
+ "@version{#2023-3-16}
   @begin{short}
     Used to dictate the style that a @class{gtk:button-box} widget uses to
     layout the buttons it contains.
@@ -149,7 +149,7 @@
 
 #+liber-documentation
 (setf (documentation 'button-box 'type)
- "@version{#2021-12-9}
+ "@version{#2023-3-16}
   @begin{short}
     A @sym{gtk:button-box} widget should be used to provide a consistent layout
     of buttons throughout your application.
@@ -157,9 +157,8 @@
   The layout/spacing can be altered by the programmer, or if desired, by the
   user to alter the 'feel' of a program to a small degree.
 
-  The @fun{gtk:button-box-layout-style} slot access function retrieves and
-  alters the method used to spread the buttons in a button box across the
-  container.
+  The @fun{gtk:button-box-layout-style} function retrieves and alters the
+  method used to spread the buttons in a button box across the container.
 
   The main purpose of the @sym{gtk:button-box} widget is to make sure the
   children have all the same size. The @sym{gtk:button-box} widget gives all
@@ -235,6 +234,7 @@
       @end{entry}
     @end{table}
   @end{dictionary}
+  @see-constructor{gtk:button-box-new}
   @see-slot{gtk:button-box-layout-style}
   @see-class{gtk:box}
   @see-symbol{gtk:button-box-style}")
@@ -243,11 +243,10 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- button-box-layout-style --------------------------------------------
+;;; --- button-box-layout-style ------------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "layout-style" 'button-box)
-                     t)
+(setf (documentation (liber:slot-documentation "layout-style" 'button-box) t)
  "The @code{layout-style} property of type @symbol{gtk:button-box-style}
   (Read / Write) @br{}
   How to lay out the buttons in the box. @br{}
@@ -257,7 +256,7 @@
 (setf (liber:alias-for-function 'button-box-layout-style)
       "Accessor"
       (documentation 'button-box-layout-style 'function)
- "@version{#2021-12-9}
+ "@version{#2023-3-16}
   @syntax[]{(gtk:button-box-layout-style object) => style}
   @syntax[]{(setf (gtk:button-box-layout-style object) style)}
   @argument[object]{a @class{gtk:button-box} widget}
@@ -266,11 +265,10 @@
     Accessor of the @slot[gtk:button-box]{layout-style} slot of the
     @class{gtk:button-box} class.
   @end{short}
-
-  The @sym{gtk:button-box-layout-style} slot access function retrieves the
-  method being used to arrange the buttons in a button box. The
-  @sym{(setf gtk:button-box-layout-style)} slot access function changes the way
-  buttons are arranged.
+  The @sym{gtk:button-box-layout-style} function retrieves the method being
+  used to arrange the buttons in a button box. The
+  @sym{(setf gtk:button-box-layout-style)} function changes the way buttons are
+  arranged.
   @see-class{gtk:button-box}
   @see-symbol{gtk:button-box-style}")
 
@@ -287,7 +285,7 @@
 (setf (liber:alias-for-function 'button-box-child-non-homogeneous)
       "Accessor"
       (documentation 'button-box-child-non-homogeneous 'function)
- "@version{#2021-12-9}
+ "@version{#2023-3-16}
   @syntax[]{(gtk:button-box-child-non-homogeneous container child) => setting}
   @syntax[]{(setf (gtk:button-box-child-non-homogeneous container child) setting)}
   @argument[container]{a @class{gtk:button-box} widget}
@@ -297,7 +295,6 @@
   @begin{short}
     Accessor of the @code{non-homogeneous} child property of the button box.
   @end{short}
-
   The @sym{gtk:button-box-child-non-homogeneous} function returns whether the
   child widget is exempted from homogeneous sizing. The
   @sym{(setf gtk:button-box-child-non-homogeneous)} function sets whether the
@@ -314,7 +311,7 @@
 (setf (liber:alias-for-function 'button-box-child-secondary)
       "Accessor"
       (documentation 'button-box-child-secondary 'function)
- "@version{#2021-12-9}
+ "@version{#2023-3-16}
   @syntax[]{(gtk:button-box-child-secondary container child) => setting}
   @syntax[]{(setf (gtk:button-box-child-secondary container child) setting)}
   @argument[container]{a @class{gtk:button-box} widget}
@@ -324,7 +321,6 @@
   @begin{short}
     Accessor of the @code{secondary} child property of the button box.
   @end{short}
-
   The @sym{gtk:button-box-child-secondary} function returns whether the child
   widget should appear in a secondary group of children. The
   @sym{(setf gtk:button-box-child-secondary)} function sets whether the child
@@ -351,7 +347,7 @@
 
 (defun button-box-new (orientation)
  #+liber-documentation
- "@version{#2021-12-9}
+ "@version{#2023-3-16}
   @argument[orientation]{a value of the @symbol{gtk:orientation} enumeration}
   @return{A new @class{gtk:button-box} widget.}
   @short{Creates a new button box.}
@@ -372,7 +368,7 @@
 
 (defun button-box-layout (buttonbox)
  #+liber-documentation
- "@version{#2021-12-9}
+ "@version{#2023-3-16}
   @syntax[]{(gtk:button-box-layout button-box) => style}
   @syntax[]{(setf (gtk:button-box-layout button-box) style)}
   @argument[buttonbox]{a @class{gtk:button-box} widget}
@@ -380,13 +376,12 @@
   @begin{short}
     Accessor of the layout style of the button box.
   @end{short}
-
   The @sym{gtk:button-box-layout} function retrieves the method being used to
   arrange the buttons in a button box. The @sym{(setf gtk:button-box-layout)}
   function changes the way buttons are arranged.
   @begin[Note]{dictionary}
-    The @sym{gtk:button-box-layout} function is an abbreviation for the slot
-    access @fun{gtk:button-box-layout-style} function.
+    The @sym{gtk:button-box-layout} function is an abbreviation for the
+    @fun{gtk:button-box-layout-style} function.
   @end{dictionary}
   @see-class{gtk:button-box}
   @see-symbol{gtk:button-box-style}
@@ -395,4 +390,4 @@
 
 (export 'button-box-layout)
 
-;;; --- End of file gtk.button-box.lisp ----------------------------------------
+;;; --- End of file gtk3.button-box.lisp ---------------------------------------

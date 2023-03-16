@@ -4,33 +4,32 @@
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
 ;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkCellView
 ;;;
 ;;;     A widget displaying a single row of a GtkTreeModel
-;;;
 ;;;
 ;;; Types and Values
 ;;;
@@ -57,15 +56,15 @@
 ;;;
 ;;; Properties
 ;;;
-;;;              gchar*   background           Write
-;;;           GdkColor*   background-gdk       Read / Write
-;;;            GdkRGBA*   background-rgba      Read / Write
-;;;           gboolean    background-set       Read / Write
-;;;        GtkCellArea*   cell-area            Read / Write / Construct Only
-;;; GtkCellAreaContext*   cell-area-context    Read / Write / Construct Only
-;;;           gboolean    draw-sensitive       Read / Write
-;;;           gboolean    fit-model            Read / Write
-;;;       GtkTreeModel*   model                Read / Write
+;;;     background
+;;;     background-gdk
+;;;     background-rgba
+;;;     background-set
+;;;     cell-area
+;;;     cell-area-context
+;;;     draw-sensitive
+;;;     fit-model
+;;;     model
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -124,7 +123,7 @@
 
 #+liber-documentation
 (setf (documentation 'cell-view 'type)
- "@version{#2021-5-4}
+ "@version{#2023-3-16}
   @begin{short}
     A @sym{gtk:cell-view} widget displays a single row of a
     @class{gtk:tree-model} object using a @class{gtk:cell-area} object and
@@ -144,9 +143,14 @@
   individual heights (left-to-right menus should be allocated vertically since
   they all share the same height but may have variable widths).
   @begin[CSS nodes]{dictionary}
-    The @sym{gtk:cell-view} widget has a single CSS node with name
+    The @sym{gtk:cell-view} implementation has a single CSS node with name
     @code{cellview}.
   @end{dictionary}
+  @see-constructor{gtk:cell-view-new}
+  @see-constructor{gtk:cell-view-new-with-context}
+  @see-constructor{gtk:cell-view-new-with-text}
+  @see-constructor{gtk:cell-view-new-with-markup}
+  @see-constructor{gtk:cell-view-new-with-pixbuf}
   @see-slot{gtk:cell-view-background}
   @see-slot{gtk:cell-view-background-gdk}
   @see-slot{gtk:cell-view-background-rgba}
@@ -164,7 +168,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- cell-view-background -----------------------------------------------
+;;; --- cell-view-background ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "background" 'cell-view) t)
@@ -176,7 +180,7 @@
 (setf (liber:alias-for-function 'cell-view-background)
       "Accessor"
       (documentation 'cell-view-background 'function)
- "@version{#2021-5-4}
+ "@version{#2023-3-16}
   @syntax[]{(gtk:cell-view-background object) => background}
   @syntax[]{(setf (gtk:cell-view-background object) background)}
   @argument[object]{a @class{gtk:cell-view} widget}
@@ -187,11 +191,10 @@
   @end{short}
   @see-class{gtk:cell-view}")
 
-;;; --- cell-view-background-gdk -------------------------------------------
+;;; --- cell-view-background-gdk -----------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "background-gdk"
-                                               'cell-view) t)
+(setf (documentation (liber:slot-documentation "background-gdk" 'cell-view) t)
  "The @code{background-gdk} property of type @class{gdk:color} (Read / Write)
   @br{}
   The @class{gdk:color} background color. @br{}
@@ -203,7 +206,7 @@
 (setf (liber:alias-for-function 'cell-view-background-gdk)
       "Accessor"
       (documentation 'cell-view-background-gdk 'function)
- "@version{#2021-5-4}
+ "@version{#2023-3-16}
   @syntax[]{(gtk:cell-view-background object) => background-gdk}
   @syntax[]{(setf (gtk:cell-view-background object) background-gdk)}
   @argument[object]{a @class{gtk:cell-view} widget}
@@ -224,8 +227,7 @@
 ;;; --- cell-view-background-rgba ------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "background-rgba"
-                                               'cell-view) t)
+(setf (documentation (liber:slot-documentation "background-rgba" 'cell-view) t)
  "The @code{background-rgba} property of type @class{gdk:rgba} (Read / Write)
   @br{}
   The @class{gdk:rgba} background color.")
@@ -234,7 +236,7 @@
 (setf (liber:alias-for-function 'cell-view-background-rgba)
       "Accessor"
       (documentation 'cell-view-background-rgba 'function)
- "@version{#2021-5-4}
+ "@version{#2023-3-16}
   @syntax[]{(gtk:cell-view-background-rgba object) => rgba}
   @syntax[]{(setf (gtk:cell-view-background-rgba object) rgba)}
   @argument[object]{a @class{gtk:cell-view} object}
@@ -243,19 +245,16 @@
     Accessor of the @slot[gtk:cell-view]{background-rgba} slot of the
     @class{gtk:cell-view} class.
   @end{short}
-
-  The @sym{gtk:cell-view-background-rgba} slot access function gets the
-  background color of the cell view. The
-  @sym{(setf gtk:cell-view-background-rgba)} slot access function sets the
-  background color.
+  The @sym{gtk:cell-view-background-rgba} function gets the background color of
+  the cell view. The @sym{(setf gtk:cell-view-background-rgba)} function sets
+  the background color.
   @see-class{gtk:cell-view}
   @see-class{gdk:rgba}")
 
-;;; --- cell-view-background-set -------------------------------------------
+;;; --- cell-view-background-set -----------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "background-set"
-                                               'cell-view) t)
+(setf (documentation (liber:slot-documentation "background-set" 'cell-view) t)
  "The @code{background-set} property of type @code{:boolean} (Read / Write)
   @br{}
   Whether this tag affects the background color. @br{}
@@ -265,7 +264,7 @@
 (setf (liber:alias-for-function 'cell-view-background-set)
       "Accessor"
       (documentation 'cell-view-background-set 'function)
- "@version{#2021-5-4}
+ "@version{#2023-3-16}
   @syntax[]{(gtk:cell-view-background-set object) => setting}
   @syntax[]{(setf (gtk:cell-view-background-set object) setting)}
   @argument[object]{a @class{gtk:cell-view} object}
@@ -276,21 +275,21 @@
   @end{short}
   @see-class{gtk:cell-view}")
 
-;;; --- cell-view-cell-area ------------------------------------------------
+;;; --- cell-view-cell-area ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "cell-area" 'cell-view) t)
  "The @code{cell-area} property of type @class{gtk:cell-area}
   (Read / Write / Construct) @br{}
   The cell area rendering cells. If no cell area is specified when creating the
-  cell view with the function @fun{gtk:cell-view-new-with-context} a
+  cell view with the @fun{gtk:cell-view-new-with-context} function a
   horizontally oriented @class{gtk:cell-area-box} object will be used.")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'cell-view-cell-area)
       "Accessor"
       (documentation 'cell-view-cell-area 'function)
- "@version{#2021-5-4}
+ "@version{#2023-3-16}
   @syntax[]{(gtk:cell-view-cell-area object) => cellarea}
   @syntax[]{(setf (gtk:cell-view-cell-area object) cellarea)}
   @argument[object]{a @class{gtk:cell-view} object}
@@ -299,16 +298,15 @@
     Accessor of the @slot[gtk:cell-view]{cell-area} slot of the
     @class{gtk:cell-view} class.
   @end{short}
-
   The cell area rendering cells. If no cell area is specified when creating the
-  cell view with the function @fun{gtk:cell-view-new-with-context} a
+  cell view with the @fun{gtk:cell-view-new-with-context} function a
   horizontally oriented @class{gtk:cell-area-box} object will be used.
   @see-class{gtk:cell-view}
   @see-class{gtk:cell-area}
   @see-class{gtk:cell-area-box}
   @see-function{gtk:cell-view-new-with-context}")
 
-;;; --- cell-view-cell-area-context ----------------------------------------
+;;; --- cell-view-cell-area-context --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "cell-area-context"
@@ -327,7 +325,7 @@
 (setf (liber:alias-for-function 'cell-view-cell-area-context)
       "Accessor"
       (documentation 'cell-view-cell-area-context 'function)
- "@version{#2021-5-4}
+ "@version{#2023-3-16}
   @syntax[]{(gtk:cell-view-cell-area-context object) => context}
   @syntax[]{(setf (gtk:cell-view-cell-area-context object) context)}
   @argument[object]{a @class{gtk:cell-view} object}
@@ -336,7 +334,6 @@
     Accessor of the @slot[gtk:cell-view]{cell-area-context} slot of the
     @class{gtk:cell-view} class.
   @end{short}
-
   The cell area used to compute the geometry of the cell view. A group of cell
   views can be assigned the same context in order to ensure the sizes and cell
   alignments match across all the views with the same context. The
@@ -348,11 +345,10 @@
   @see-class{gtk:combo-box}
   @see-class{gtk:cell-area-context}")
 
-;;; --- cell-view-draw-sensitive -------------------------------------------
+;;; --- cell-view-draw-sensitive -----------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "draw-sensitive"
-                                               'cell-view) t)
+(setf (documentation (liber:slot-documentation "draw-sensitive" 'cell-view) t)
  "The @code{draw-sensitive} property of type @code{:boolean} (Read / Write)
   @br{}
   Whether all cells should be draw as sensitive for this view regardless of
@@ -364,7 +360,7 @@
 (setf (liber:alias-for-function 'cell-view-draw-sensitive)
       "Accessor"
       (documentation 'cell-view-draw-sensitive 'function)
- "@version{#2021-5-4}
+ "@version{#2023-3-16}
   @syntax[]{(gtk:cell-view-draw-sensitive object) => draw-sensitive}
   @syntax[]{(setf (gtk:cell-view-draw-sensitive object) draw-sensitive)}
   @argument[object]{a @class{gtk:cell-view} object}
@@ -374,11 +370,10 @@
     Accessor of the @slot[gtk:tree-view]{draw-sensitive} slot of the
     @class{gtk:cell-view} class.
   @end{short}
-
-  The @sym{gtk:cell-view-draw-sensitive} slot access function gets whether the
-  cell view is configured to draw all of its cells in a sensitive state. The
-  @sym{(setf gtk:cell-view-draw-sensitive)} slot access function sets whether
-  cell view should draw all of its cells in a sensitive state.
+  The @sym{gtk:cell-view-draw-sensitive} function gets whether the cell view is
+  configured to draw all of its cells in a sensitive state. The
+  @sym{(setf gtk:cell-view-draw-sensitive)} function sets whether cell view
+  should draw all of its cells in a sensitive state.
 
   This is used by @class{gtk:combo-box} menus to ensure that rows with
   insensitive cells that contain children appear sensitive in the parent menu
@@ -386,7 +381,7 @@
   @see-class{gtk:cell-view}
   @see-class{gtk:combo-box}")
 
-;;; --- cell-view-fit-model ------------------------------------------------
+;;; --- cell-view-fit-model ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "fit-model" 'cell-view) t)
@@ -400,7 +395,7 @@
 (setf (liber:alias-for-function 'cell-view-fit-model)
       "Accessor"
       (documentation 'cell-view-fit-model 'function)
- "@version{#2021-5-4}
+ "@version{#2023-3-16}
   @syntax[]{(gtk:cell-view-fit-model object) => fit-model}
   @syntax[]{(setf (gtk:cell-view-fit-model object) fit-model)}
   @argument[object]{a @class{gtk:cell-view} object}
@@ -410,11 +405,9 @@
     Accessor of the @slot[gtk:cell-view]{fit-model}  slot of the
     @class{gtk:cell-view} class.
   @end{short}
-
-  The slot access function @sym{gtk:cell-view-fit-model} gets whether the cell
-  view is configured to request space to fit the entire @class{gtk:tree-model}
-  object. The slot access function @sym{(setf gtk:cell-view-fit-model)} sets
-  the property.
+  The @sym{gtk:cell-view-fit-model} function gets whether the cell view is
+  configured to request space to fit the entire @class{gtk:tree-model} object.
+  The @sym{(setf gtk:cell-view-fit-model)} function sets the property.
 
   This is used by @class{gtk:combo-box} widgets to ensure that the cell view
   displayed on the combo box's button always gets enough space and does not
@@ -422,7 +415,7 @@
   @see-class{gtk:cell-view}
   @see-class{gtk:combo-box}")
 
-;;; --- cell-view-model ----------------------------------------------------
+;;; --- cell-view-model --------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "model" 'cell-view) t)
@@ -433,7 +426,7 @@
 (setf (liber:alias-for-function 'cell-view-model)
       "Accessor"
       (documentation 'cell-view-model 'function)
- "@version{#2021-5-4}
+ "@version{#2023-3-16}
   @syntax[]{(gtk:cell-view-model object) => model}
   @syntax[]{(setf (gtk:cell-view-model object) model)}
   @argument[object]{a @class{gtk:cell-view} object}
@@ -442,12 +435,11 @@
     Accessor of the @slot[gtk:cell-view]{model} slot of the
     @class{gtk:cell-view} class.
   @end{short}
-
-  The slot access function @sym{gtk:cell-view-model} returns the model for the
-  cell view. If no model is used @code{nil} is returned. The slot access
-  function @sym{(setf gtk:cell-view-model)} sets the model. If the cell view
-  already has a model set, it will remove it before setting the new model. If
-  @arg{model} is @code{nil}, then it will unset the old model.
+  The @sym{gtk:cell-view-model} function returns the model for the cell view. If
+  no model is used @code{nil} is returned. The @sym{(setf gtk:cell-view-model)}
+  function sets the model. If the cell view already has a model set, it will
+  remove it before setting the new model. If @arg{model} is @code{nil}, then it
+  will unset the old model.
   @see-class{gtk:cell-view}
   @see-class{gtk:tree-model}")
 
@@ -459,7 +451,7 @@
 
 (defun cell-view-new ()
  #+liber-documentation
- "@version{#2021-5-4}
+ "@version{#2023-3-16}
   @return{A new @class{gtk:cell-view} widget.}
   @begin{short}
     Creates a new cell view.
@@ -477,7 +469,7 @@
 
 (defun cell-view-new-with-context (cellarea context)
  #+liber-documentation
- "@version{#2021-5-4}
+ "@version{#2023-3-16}
   @argument[cellarea]{a @class{gtk:cell-area} object to layout cells}
   @argument[context]{a @class{gtk:cell-area-context} object in which to
     calculate cell geometry}
@@ -486,7 +478,6 @@
     Creates a new cell view with a specific cell area to layout cells and a
     specific cell area context.
   @end{short}
-
   Specifying the same context for a handfull of cells lets the underlying area
   synchronize the geometry for those cells, in this way alignments with cell
   views for other rows are possible.
@@ -506,7 +497,7 @@
 (defcfun ("gtk_cell_view_new_with_text" cell-view-new-with-text)
     (g:object cell-view)
  #+liber-documentation
- "@version{#2021-5-4}
+ "@version{#2023-3-16}
   @argument[text]{a string with the text to display in the cell view}
   @return{A newly created @class{gtk:cell-view} widget.}
   @begin{short}
@@ -526,7 +517,7 @@
 (defcfun ("gtk_cell_view_new_with_markup" cell-view-new-with-markup)
     (g:object cell-view)
  #+liber-documentation
- "@version{#2021-5-4}
+ "@version{#2023-3-16}
   @argument[markup]{a string with the text to display in the cell view}
   @return{A newly created @class{gtk:cell-view} widget.}
   @begin{short}
@@ -547,7 +538,7 @@
 (defcfun ("gtk_cell_view_new_with_pixbuf" cell-view-new-with-pixbuf)
     (g:object cell-view)
   #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-16}
   @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object with the image to
     display in the cell view}
   @return{A newly created @class{gtk:cell-view} widget.}
@@ -569,15 +560,15 @@
 
 (defun (setf cell-view-displayed-row) (path cellview)
   (cffi:foreign-funcall "gtk_cell_view_set_display_row"
-                   (g:object cell-view) cellview
-                   (g:boxed tree-path) path
-                   :void)
+                        (g:object cell-view) cellview
+                        (g:boxed tree-path) path
+                        :void)
   path)
 
 (defcfun ("gtk_cell_view_get_display_row" cell-view-displayed-row)
     (g:boxed tree-path :return)
  #+liber-documentation
- "@version{#2023-1-28}
+ "@version{#2023-3-16}
   @syntax[]{(gtk:cell-view-display-row cellview) => path}
   @syntax[]{(setf (gtk:cell-view-display-row cellview) path)}
   @argument[cellview]{a @class{gtk:cell-view} widget}
@@ -610,7 +601,7 @@
 
 (defun cell-view-size-of-row (cellview path)
  #+liber-documentation
- "@version{#2021-5-4}
+ "@version{#2023-3-16}
   @argument[cellview]{a @class{gtk:cell-view} widget}
   @argument[path]{a @class{gtk:tree-path} instance}
   @begin{short}

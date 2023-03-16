@@ -4,27 +4,27 @@
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
 ;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; Clipboards
@@ -102,7 +102,7 @@
 
 #+liber-documentation
 (setf (documentation 'clipboard 'type)
- "@version{#2021-10-20}
+ "@version{#2023-3-16}
   @begin{short}
     The @sym{gtk:clipboard} object represents a clipboard of data shared between
     different processes or between different widgets in the same process.
@@ -147,7 +147,7 @@
   @begin[Signal Details]{dictionary}
     @subheading{The \"owner-change\" signal}
       @begin{pre}
- lambda (clipboard event)    :run-first
+lambda (clipboard event)    :run-first
       @end{pre}
       The signal is emitted when GTK receives an event that indicates that the
       ownership of the selection associated with the clipboard has changed.
@@ -177,7 +177,7 @@
 (setf (liber:alias-for-symbol 'clipboard-received-func)
       "Callback"
       (liber:symbol-documentation 'clipboard-received-func)
- "@version{#2021-10-6}
+ "@version{#2023-3-16}
   @begin{short}
     A callback function to be called when the results of the
     @fun{gtk:clipboard-request-contents} function are received, or when the
@@ -216,7 +216,7 @@
 (setf (liber:alias-for-symbol 'clipboard-text-received-func)
       "Callback"
       (liber:symbol-documentation 'clipboard-text-received-func)
- "@version{#2021-10-6}
+ "@version{#2023-3-16}
   @begin{short}
     A callback function to be called when the results of the
     @fun{gtk:clipboard-request-text} function are received, or when the request
@@ -252,7 +252,7 @@
 (setf (liber:alias-for-symbol 'clipboard-image-received-func)
       "Callback"
       (liber:symbol-documentation 'clipboard-image-received-func)
- "@version{#2023-3-12}
+ "@version{#2023-3-16}
   @begin{short}
     A callback function to be called when the results of the
     @fun{gtk:clipboard-request-image} function are received, or when the
@@ -289,14 +289,14 @@
 (setf (liber:alias-for-symbol 'clipboard-targets-received-func)
       "Callback"
       (liber:symbol-documentation 'clipboard-targets-received-func)
- "@version{#2021-10-6}
+ "@version{#2023-3-16}
   @begin{short}
     A callback function to be called when the results of the
     @fun{gtk:clipboard-request-targets} function are received, or when the
     request fails.
   @end{short}
   @begin{pre}
- lambda (clipboard atoms n-atoms)
+lambda (clipboard atoms n-atoms)
   @end{pre}
   @begin[code]{table}
     @entry[clipboard]{A @class{gtk:clipboard} object.}
@@ -329,7 +329,7 @@
 (setf (liber:alias-for-symbol 'clipboard-rich-text-received-func)
       "Callback"
       (liber:symbol-documentation 'clipboard-rich-text-received-func)
- "@version{#2021-10-6}
+ "@version{#2023-3-16}
   @begin{short}
     A callback function to be called when the results of the
     @fun{gtk:clipboard-request-rich-text} function are received, or when the
@@ -369,14 +369,14 @@
 (setf (liber:alias-for-symbol 'clipboard-uri-received-func)
       "Callback"
       (liber:symbol-documentation 'clipboard-uri-received-func)
- "@version{#2021-10-6}
+ "@version{#2023-3-16}
   @begin{short}
     A callback function to be called when the results of the
     @fun{gtk:clipboard-request-uris} function are received, or when the request
     fails.
   @end{short}
   @begin{pre}
- lambda (clipboard uris)
+lambda (clipboard uris)
   @end{pre}
   @begin[code]{table}
     @entry[clipboard]{A @class{gtk:clipboard} object.}
@@ -406,7 +406,7 @@
 (setf (liber:alias-for-symbol 'clipboard-get-func)
       "Callback"
       (liber:symbol-documentation 'clipboard-get-func)
- "@version{#2021-10-20}
+ "@version{#2023-3-16}
   @begin{short}
     A callback function that will be called to provide the contents of the
     selection.
@@ -419,7 +419,7 @@
   @fun{gtk:selection-data-set-text} function. If no data is set, the requestor
   will be informed that the attempt to get the data failed.
   @begin{pre}
- lambda (clipboard selection info)
+lambda (clipboard selection info)
   @end{pre}
   @begin[code]{table}
     @entry[clipboard]{A @class{gtk:clipboard} object.}
@@ -452,7 +452,7 @@
 (setf (liber:alias-for-symbol 'clipboard-clear-func)
       "Callback"
       (liber:symbol-documentation 'clipboard-clear-func)
- "@version{#2021-10-20}
+ "@version{#2023-3-16}
   @begin{short}
     A callback function that will be called when the contents of the clipboard
     are changed or cleared.
@@ -472,9 +472,9 @@
 (defcfun ("gtk_clipboard_get" clipboard-get)
     (g:object clipboard :free-from-foreign nil)
  #+liber-documentation
- "@version{#2021-10-6}
-  @argument[selection]{a @symbol{gdk:atom-as-string} as a string which
-    identifies the clipboard to use}
+ "@version{#2023-3-16}
+  @argument[selection]{a @symbol{gdk:atom-as-string} string which identifies
+    the clipboard to use}
   @begin{return}
     The appropriate @class{gtk:clipboard} object. If no clipboard already
     exists, a new one will be created. Once a clipboard has been created, it is
@@ -498,11 +498,11 @@
 (defcfun ("gtk_clipboard_get_for_display" clipboard-for-display)
     (g:object clipboard :free-from-foreign nil)
  #+liber-documentation
- "@version{#2021-10-6}
+ "@version{#2023-3-16}
   @argument[display]{the @class{gdk:display} object for which the clipboard is
     to be retrieved or created}
-  @argument[selection]{a @symbol{gdk:atom-as-string} as a string which
-    identifies the clipboard to use}
+  @argument[selection]{a @symbol{gdk:atom-as-string} string which identifies
+    the clipboard to use}
   @begin{return}
     The appropriate @class{gtk:clipboard} object. If no clipboard already
     exists, a new one will be created. Once a clipboard has been created, it is
@@ -540,7 +540,7 @@
 
 (defcfun ("gtk_clipboard_get_display" clipboard-display) (g:object gdk:display)
  #+liber-documentation
- "@version{#2021-10-6}
+ "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @return{The @class{gdk:display} object associated with @arg{clipboard}.}
   @begin{short}
@@ -556,10 +556,9 @@
 ;;; gtk_clipboard_get_default () -> clipboard-default
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_clipboard_get_default" clipboard-default)
-    (g:object clipboard)
+(defcfun ("gtk_clipboard_get_default" clipboard-default) (g:object clipboard)
  #+liber-documentation
- "@version{#2021-10-6}
+ "@version{#2023-3-16}
   @argument[display]{a @class{gdk:display} object for which the clipboard is
     to be retrieved}
   @return{The default @class{gtk:clipboard} object.}
@@ -587,7 +586,7 @@
 
 (defun clipboard-set-with-data (clipboard targets func)
  #+liber-documentation
- "@version{#2021-10-6}
+ "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[targets]{a list of target entries containing information about the
     available forms for the clipboard data}
@@ -609,7 +608,7 @@
     (with-foreign-object (targets-ptr '(:struct %target-entry) n-targets)
       (loop for i from 0 below n-targets
             for target-ptr = (cffi:mem-aptr targets-ptr
-                                       '(:struct %target-entry) i)
+                                            '(:struct %target-entry) i)
             for entry in targets
             do (with-foreign-slots ((target flags info)
                                     target-ptr
@@ -692,7 +691,7 @@
 
 (defcfun ("gtk_clipboard_clear" clipboard-clear) :void
  #+liber-documentation
- "@version{#2021-10-20}
+ "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @begin{short}
     Clears the contents of the clipboard.
@@ -717,7 +716,7 @@
 
 (defun clipboard-set-text (clipboard text)
  #+liber-documentation
- "@version{#2021-10-6}
+ "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[text]{a UTF-8 string}
   @begin{short}
@@ -737,7 +736,7 @@
 
 (defcfun ("gtk_clipboard_set_image" clipboard-set-image) :void
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object}
   @begin{short}
@@ -756,8 +755,7 @@
 ;;; gtk_clipboard_request_contents ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_clipboard_request_contents" %clipboard-request-contents)
-    :void
+(defcfun ("gtk_clipboard_request_contents" %clipboard-request-contents) :void
   (clipboard (g:object clipboard))
   (target gdk:atom-as-string)
   (func :pointer)
@@ -765,10 +763,10 @@
 
 (defun clipboard-request-contents (clipboard target func)
  #+liber-documentation
- "@version{#2021-10-6}
+ "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
-  @argument[target]{a @symbol{gdk:atom-as-string} as a string representing the
-    form into which the clipboard owner should convert the selection}
+  @argument[target]{a @symbol{gdk:atom-as-string} string representing the form
+    into which the clipboard owner should convert the selection}
   @argument[func]{a @symbol{gtk:clipboard-received-func} callback function to
     call when the results are received, or the retrieval fails, if the
     retrieval fails the @arg{length} field of the @class{gtk:selection-data}
@@ -799,7 +797,7 @@
 
 (defun clipboard-request-text (clipboard func)
  #+liber-documentation
- "@version{#2021-10-6}
+ "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[func]{a @symbol{gtk:clipboard-text-received-func} callback function
     to call when the text is received, or the retrieval fails, it will always
@@ -833,7 +831,7 @@
 
 (defun clipboard-request-image (clipboard func)
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[func]{a @symbol{gtk:clipboard-image-receibed-func} callback function
     to call when the image is received, or the retrieval fails. It will always
@@ -868,7 +866,7 @@
 
 (defun clipboard-request-targets (clipboard func)
  #+liber-documentation
- "@version{#2021-10-6}
+ "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[func]{a @symbol{gtk:clipboard-targets-received-func} callback
     function to call when the targets are received, or the retrieval fails}
@@ -900,7 +898,7 @@
 
 (defun clipboard-request-rich-text (clipboard buffer func)
  #+liber-documentation
- "@version{#2021-10-6}
+ "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[func]{a @symbol{gtk:clipboard-rich-text-received-func} callback
@@ -937,7 +935,7 @@
 
 (defun clipboard-request-uris (clipboard func)
  #+liber-documentation
- "@version{#2021-10-6}
+ "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[func]{a @symbol{gtk:clipboard-uri-received-func} callback function
     to call when the URIs are received, or the retrieval fails, it will always
@@ -967,10 +965,10 @@
 (defcfun ("gtk_clipboard_wait_for_contents" clipboard-wait-for-contents)
     (g:boxed selection-data :return)
  #+liber-documentation
- "@version{#2023-1-28}
+ "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
-  @argument[target]{a @symbol{gdk:atom-as-string} as a string representing the
-    form into which the clipboard owner should convert the selection}
+  @argument[target]{a @symbol{gdk:atom-as-string} string representing the form
+    into which the clipboard owner should convert the selection}
   @return{A newly allocated @class{gtk:selection-data} instance or @code{nil} if
     retrieving the given target failed.}
   @begin{short}
@@ -992,7 +990,7 @@
 
 (defcfun ("gtk_clipboard_wait_for_text" clipboard-wait-for-text) :string
  #+liber-documentation
- "@version{#2021-10-6}
+ "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @return{A newly allocated UTF-8 string, or @code{nil} if retrieving the
     selection data failed.}
@@ -1014,7 +1012,7 @@
 (defcfun ("gtk_clipboard_wait_for_image" clipboard-wait-for-image)
     (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @return{A newly allocated @class{gdk-pixbuf:pixbuf} object, or @code{nil} if
     retrieving the selection data failed.}
@@ -1043,15 +1041,15 @@
 
 (defun clipboard-wait-for-rich-text (clipboard buffer)
  #+liber-documentation
- "@version{#2021-10-6}
+ "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @begin{return}
     @arg{data} -- a newly allocated binary block of data which must be freed
     with the @fun{g:free} function, or @code{nil} if retrieving the selection
     data failed. @br{}
-    @arg{format} -- a @symbol{gdk:atom-as-string} as a string with the format
-      of the returned data @br{}
+    @arg{format} -- a @symbol{gdk:atom-as-string} string with the format of the
+      returned data @br{}
     @arg{length} -- an integer with the length of the returned data
   @end{return}
   @begin{short}
@@ -1065,9 +1063,9 @@
   (with-foreign-objects ((format :pointer) ; GdkAtom
                          (length :int))
     (let ((data (%clipboard-wait-for-rich-text clipboard
-                                                   buffer
-                                                   format
-                                                   length)))
+                                               buffer
+                                               format
+                                               length)))
       (when data
         (values data
                 (cffi:mem-ref format :pointer) ; gdk:atom
@@ -1081,7 +1079,7 @@
 
 (defcfun ("gtk_clipboard_wait_for_uris" clipboard-wait-for-uris) g:strv-t
  #+liber-documentation
- "@version{#2021-10-6}
+ "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @return{A list of strings, or @code{nil} if retrieving the selection data
     failed.}
@@ -1102,7 +1100,7 @@
 (defcfun ("gtk_clipboard_wait_is_text_available"
            clipboard-wait-is-text-available) :boolean
  #+liber-documentation
- "@version{#2021-10-6}
+ "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @return{@em{True} if there is text available, @em{false} otherwise.}
   @begin{short}
@@ -1129,7 +1127,7 @@
 (defcfun ("gtk_clipboard_wait_is_image_available"
            clipboard-wait-is-image-available) :boolean
  #+liber-documentation
- "@version{#2021-10-6}
+ "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @return{@em{True} if there is an image available, @em{false} otherwise.}
   @begin{short}
@@ -1156,7 +1154,7 @@
 (defcfun ("gtk_clipboard_wait_is_rich_text_available"
            clipboard-wait-is-rich-text-available) :boolean
  #+liber-documentation
- "@version{#2021-10-6}
+ "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @return{@em{True} if there is rich text available, @em{false} otherwise.}
@@ -1164,8 +1162,8 @@
     Test to see if there is rich text available to be pasted.
   @end{short}
   This is done by requesting the \"TARGETS\" atom and checking if it contains
-  any of the supported rich text targets. This function waits for the data to be
-  received using the main loop, so events, timeouts, etc, may be dispatched
+  any of the supported rich text targets. This function waits for the data to
+  be received using the main loop, so events, timeouts, etc, may be dispatched
   during the wait.
 
   This function is a little faster than calling the
@@ -1186,7 +1184,7 @@
 (defcfun ("gtk_clipboard_wait_is_uris_available"
            clipboard-wait-is-uris-available) :boolean
  #+liber-documentation
- "@version{#2021-10-6}
+ "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @return{@em{True} if there is an URI list available, @em{false} otherwise.}
   @begin{short}
@@ -1211,10 +1209,9 @@
 
 ;; TODO: The implementation is not complete. Return a list of atoms as strings.
 
-(defcfun ("gtk_clipboard_wait_for_targets" clipboard-wait-for-targets)
-    :boolean
+(defcfun ("gtk_clipboard_wait_for_targets" clipboard-wait-for-targets) :boolean
  #+liber-documentation
- "@version{#2021-10-6}
+ "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[targets]{location to store an array of targets. The result stored
     here must be freed with the @fun{g:free} function}
@@ -1241,9 +1238,9 @@
 (defcfun ("gtk_clipboard_wait_is_target_available"
            clipboard-wait-is-target-available) :boolean
  #+liber-documentation
- "@version{#2021-10-6}
+ "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
-  @argument[target]{a @symbol{gdk:atom-as-string} as a string indicating which
+  @argument[target]{a @symbol{gdk:atom-as-string} string indicating which
     target to look for}
   @return{@em{True} if the target is available, @em{false} otherwise.}
   @begin{short}
@@ -1269,7 +1266,7 @@
 
 (defcfun ("gtk_clipboard_set_can_store" clipboard-set-can-store) :void
  #+liber-documentation
- "@version{#2021-10-6}
+ "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[targets]{array containing information about which forms should be
     stored or NULL to indicate that all forms should be stored}
@@ -1278,7 +1275,6 @@
     Hints that the clipboard data should be stored somewhere when the
     application exits or when the @fun{gtk:clipboard-store} function is called.
   @end{short}
-
   This value is reset when the clipboard owner changes. Where the clipboard
   data is stored is platform dependent, see the
   @fun{gdk:display-store-clipboard} function for more information.
@@ -1297,7 +1293,7 @@
 
 (defcfun ("gtk_clipboard_store" clipboard-store) :void
  #+liber-documentation
- "@version{#2021-10-6}
+ "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @begin{short}
     Stores the current clipboard data somewhere so that it will stay around
@@ -1314,9 +1310,9 @@
 
 (defcfun ("gtk_clipboard_get_selection" clipboard-selection) gdk:atom-as-string
  #+liber-documentation
- "@version{#2023-3-13}
+ "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
-  @return{The @symbol{gdk:atom-as-string} as a string with the selection.}
+  @return{The @symbol{gdk:atom-as-string} string with the selection.}
   @begin{short}
     Gets the selection that this clipboard is for.
   @end{short}

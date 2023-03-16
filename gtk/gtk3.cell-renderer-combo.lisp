@@ -4,27 +4,27 @@
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
 ;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkCellRendererCombo
@@ -86,10 +86,10 @@
     The @sym{gtk:cell-renderer-combo} object renders text in a cell like the
     @class{gtk:cell-renderer-text} object from which it is derived.
   @end{short}
-  But while the @class{gtk:cell-renderer-text} object offers a simple entry to 
-  edit the text, the @sym{gtk:cell-renderer-combo} object offers a the 
-  @class{gtk:combo-box} widget to edit the text. The values to display in the 
-  combo box are taken from the tree model specified in the @code{model} 
+  But while the @class{gtk:cell-renderer-text} object offers a simple entry to
+  edit the text, the @sym{gtk:cell-renderer-combo} object offers a the
+  @class{gtk:combo-box} widget to edit the text. The values to display in the
+  combo box are taken from the tree model specified in the @code{model}
   property.
 
   The combo cell renderer takes care of adding a text cell renderer to the
@@ -108,8 +108,8 @@ lambda (combo path iter)    :run-last
       corresponds to the newly selected item in the combo box and it is relative
       to the @class{gtk:tree-model} object set via the model property on the
       @sym{gtk:cell-renderer-combo} object. Note that as soon as you change the
-      model displayed in the tree view, the tree view will immediately cease 
-      the editing operating. This means that you most probably want to refrain 
+      model displayed in the tree view, the tree view will immediately cease
+      the editing operating. This means that you most probably want to refrain
       from changing the model until the combo cell renderer emits the edited or
       \"editing-canceled\" signal.
       @begin[code]{table}
@@ -133,7 +133,7 @@ lambda (combo path iter)    :run-last
 ;;; --- cell-renderer-combo-has-entry ------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "has-entry" 
+(setf (documentation (liber:slot-documentation "has-entry"
                                                'cell-renderer-combo) t)
  "The @code{has-entry} property of type @code{:boolean} (Read / Write) @br{}
   If @em{true}, the cell renderer will include an entry and allow to enter
@@ -192,7 +192,7 @@ lambda (combo path iter)    :run-last
   Specifies the model column which holds the possible values for the combo
   box. Note that this refers to the model specified in the model property, not
   the model backing the tree view to which this cell renderer is attached. The
-  @sym{gtk:cell-renderer-combo} object automatically adds a text cell renderer 
+  @sym{gtk:cell-renderer-combo} object automatically adds a text cell renderer
   for this column to its combo box. @br{}
   Allowed values: >= -1 @br{}
   Default value: -1")
@@ -213,8 +213,8 @@ lambda (combo path iter)    :run-last
   @end{short}
   Specifies the model column which holds the possible values for the combo
   box. Note that this refers to the model specified in the model property, not
-  the model backing the tree view to which this cell renderer is attached. The 
-  @sym{gtk:cell-renderer-combo} object automatically adds a text cell renderer 
+  the model backing the tree view to which this cell renderer is attached. The
+  @sym{gtk:cell-renderer-combo} object automatically adds a text cell renderer
   for this column to its combo box.
   @see-class{gtk:cell-renderer-combo}")
 
@@ -234,8 +234,8 @@ lambda (combo path iter)    :run-last
   Adjust how text is drawn using object properties. Object properties can be
   set globally, with the @fun{g:object-property} function. Also, with the
   @class{gtk:tree-view-column} object, you can bind a property to a value in a
-  @class{gtk:tree-model} object. For example, you can bind the \"text\" property 
-  on the cell renderer to a string value in the model, thus rendering a 
+  @class{gtk:tree-model} object. For example, you can bind the \"text\" property
+  on the cell renderer to a string value in the model, thus rendering a
   different string in each row of the @class{gtk:tree-view} widget.
   @see-class{gtk:cell-renderer-combo}
   @see-class{gtk:tree-view}

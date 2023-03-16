@@ -1,29 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.cell-area-context.lisp
+;;; gtk3.cell-area-context.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK+ library.
+;;; The documentation of this file is taken from the GTK 3 Reference Manual
+;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
 ;;; Copyright (C) 2012 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkCellAreaContext
@@ -159,7 +160,7 @@
  "The @code{minimum-height} property of type @code{:int} (Read) @br{}
   The minimum height for the @class{gtk:cell-area} in this context for all
   @class{gtk:tree-model} rows that this context was requested for using the
-  function @fun{gtk:cell-area-preferred-height}. @br{}
+  @fun{gtk:cell-area-preferred-height} function. @br{}
   Allowed values: >= -1 @br{}
   Default value: -1")
 
@@ -225,7 +226,7 @@
  "The @code{natural-height} property of type @code{:int} (Read) @br{}
   The natural height for the @class{gtk:cell-area} object in this context for
   all @class{gtk:tree-model} rows that this context was requested for using the
-  function @fun{gtk:cell-area-preferred-height}. @br{}
+  @fun{gtk:cell-area-preferred-height} function. @br{}
   Allowed values: >= -1 @br{}
   Default value: -1")
 
@@ -258,7 +259,7 @@
  "The @code{natural-width} property of type @code{:int} (Read) @br{}
   The natural width for the @class{gtk:cell-area} object in this context for all
   @class{gtk:tree-model} rows that this context was requested for using the
-  function @fun{gtk:cell-area-preferred-width}. @br{}
+  @fun{gtk:cell-area-preferred-width} function. @br{}
   Allowed values: >= -1 @br{}
   Default value: -1")
 
@@ -455,9 +456,9 @@
   @see-function{gtk:cell-area-context-reset}"
   (with-foreign-objects ((minimum-height :int) (natural-height :int))
     (%cell-area-context-preferred-height-for-width context
-                                                       width
-                                                       minimum-height
-                                                       natural-height)
+                                                   width
+                                                   minimum-height
+                                                   natural-height)
     (values (cffi:mem-ref minimum-height :int)
             (cffi:mem-ref natural-height :int))))
 
@@ -480,9 +481,9 @@
   @argument[context]{a @class{gtk:cell-area-context} object}
   @argument[height]{an integer with a proposed height for allocation}
   @begin{return}
-    @code{minimum-width} -- an integer with the minimum width, or @code{nil}
-    @br{}
-    @code{natural-width} -- an integer with the natural width, or @code{nil}
+    @arg{minimum-width} -- an integer with the minimum width, or @code{nil}
+      @br{}
+    @arg{natural-width} -- an integer with the natural width, or @code{nil}
   @end{return}
   @begin{short}
     Gets the accumulative preferred width for @arg{height} for all rows which
