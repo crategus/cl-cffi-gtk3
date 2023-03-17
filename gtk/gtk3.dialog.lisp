@@ -1,30 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.dialog.lisp
+;;; gtk3.dialog.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkDialog
@@ -116,7 +116,7 @@
 (setf (liber:alias-for-symbol 'dialog-flags)
       "GFlags"
       (liber:symbol-documentation 'dialog-flags)
- "@version{#2021-9-29}
+ "@version{#2023-3-17}
   @begin{short}
     Flags used to influence the @class{gtk:dialog} widget construction.
   @end{short}
@@ -163,7 +163,7 @@
 (setf (liber:alias-for-symbol 'response-type)
       "GEnum"
       (liber:symbol-documentation 'response-type)
- "@version{#2021-11-2}
+ "@version{#2023-3-17}
   @begin{short}
     Predefined values for use as response IDs in the @fun{gtk:dialog-add-button}
     function.
@@ -219,7 +219,7 @@
 
 #+liber-documentation
 (setf (documentation 'dialog 'type)
- "@version{#2021-12-3}
+ "@version{#2023-3-17}
   @begin{short}
     Dialogs are a convenient way to prompt the user for a small amount of input,
     e.g. to display a message, ask a question, or anything else that does not
@@ -407,7 +407,7 @@
   @begin[Signal Details]{dictionary}
     @subheading{The \"close\" signal}
       @begin{pre}
- lambda (dialog)    :action
+lambda (dialog)    :action
       @end{pre}
       A keybinding signal which gets emitted when the user uses a keybinding to
       close the dialog. The default binding for this signal is the @kbd{Escape}
@@ -418,7 +418,7 @@
       @end{table}
     @subheading{The \"response\" signal}
       @begin{pre}
- lambda (dialog response)    :run-last
+lambda (dialog response)    :run-last
       @end{pre}
       Emitted when an action widget is clicked, the dialog receives a delete
       event, or the application programmer calls the @fun{gtk:dialog-response}
@@ -431,6 +431,8 @@
         @entry[response]{An integer with the response ID.}
       @end{table}
   @end{dictionary}
+  @see-constructor{gtk:dialog-new}
+  @see-constructor{gtk:dialog-new-with-buttons}
   @see-slot{gtk:dialog-use-header-bar}
   @see-class{gtk:message-dialog}")
 
@@ -438,7 +440,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- dialog-use-header-bar ----------------------------------------------
+;;; --- dialog-use-header-bar --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "use-header-bar" 'dialog) t)
@@ -454,7 +456,7 @@
 (setf (liber:alias-for-function 'dialog-use-header-bar)
       "Accessor"
       (documentation 'dialog-use-header-bar 'function)
- "@version{#2021-9-26}
+ "@version{#2023-3-17}
   @syntax[]{(gtk:dialog-use-header-bar object) => setting}
   @syntax[]{(setf (gtk:dialog-use-header-bar object) setting)}
   @argument[object]{a @class{gtk:dialog} widget}
@@ -463,7 +465,6 @@
     Accessor of the @slot[gtk:dialog]{use-header-bar} slot of the
     @class{gtk:dialog} class.
   @end{short}
-
   @em{True} if the dialog uses a header bar for action buttons instead of the
   action area. For technical reasons, this property is declared as an integer
   property, use the value 1 for @em{true} or -1 for @em{false}.
@@ -478,7 +479,7 @@
 
 (defun dialog-new ()
  #+liber-documentation
- "@version{#2021-9-26}
+ "@version{#2023-3-17}
   @return{The new @class{gtk:dialog} widget.}
   @short{Creates a new dialog.}
   Widgets should not be packed into this dialog directly, but into the content
@@ -497,7 +498,7 @@
 
 (defun dialog-new-with-buttons (title parent flags &rest buttons)
  #+liber-documentation
- "@version{#2021-9-26}
+ "@version{#2023-3-17}
   @argument[title]{a string with the title of the dialog, or @code{nil}}
   @argument[parent]{a @class{gtk:window} transient parent of the dialog,
     or @code{nil}}
@@ -568,7 +569,7 @@
 
 (defcfun ("gtk_dialog_run" dialog-run) response-type
  #+liber-documentation
- "@version{#2021-12-3}
+ "@version{#2023-3-17}
   @argument[dialog]{a @class{gtk:dialog} widget}
   @return{The response ID, which is a positive integer or a value of the
     @symbol{gtk:response-type} enumeration.}
@@ -627,7 +628,7 @@
 
 (defcfun ("gtk_dialog_response" dialog-response) :void
  #+liber-documentation
- "@version{#2021-9-26}
+ "@version{#2023-3-17}
   @argument[dialog]{a @class{gtk:dialog} widget}
   @argument[response]{a response ID, which is a positive integer or a value of
     the @symbol{gtk:response-type} enumeration}
@@ -651,7 +652,7 @@
 
 (defcfun ("gtk_dialog_add_button" dialog-add-button) (g:object widget)
  #+liber-documentation
- "@version{#2021-12-3}
+ "@version{#2023-3-17}
   @argument[dialog]{a @class{gtk:dialog} widget}
   @argument[text]{a string with the text of the button}
   @argument[response]{response ID for the button, which is a positive integer
@@ -680,7 +681,7 @@
 
 (defun dialog-add-buttons (dialog &rest buttons)
  #+liber-documentation
- "@version{#2021-9-26}
+ "@version{#2023-3-17}
   @argument[dialog]{a @class{gtk:dialog} widget}
   @argument[buttons]{pairs with a button text and the response ID, which is a
     positive integer or a value of the @symbol{gtk:response-type} enumeration}
@@ -710,7 +711,7 @@
 
 (defcfun ("gtk_dialog_add_action_widget" dialog-add-action-widget) :void
  #+liber-documentation
- "@version{#2021-11-2}
+ "@version{#2023-3-17}
   @argument[dialog]{a @class{gtk:dialog} widget}
   @argument[child]{an activatable @class{gtk:widget} widget}
   @argument[response]{response ID for @arg{child}, which is a positive
@@ -738,10 +739,9 @@
 ;;; gtk_dialog_set_default_response ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_dialog_set_default_response" dialog-set-default-response)
-    :void
+(defcfun ("gtk_dialog_set_default_response" dialog-set-default-response) :void
  #+liber-documentation
- "@version{#2021-12-3}
+ "@version{#2023-3-17}
   @argument[dialog]{a @class{gtk:dialog} widget}
   @argument[response]{a response ID, which is a positive integer or a value
     of the @symbol{gtk:response-type} enumeration}
@@ -764,7 +764,7 @@
 (defcfun ("gtk_dialog_set_response_sensitive" dialog-set-response-sensitive)
     :void
  #+liber-documentation
- "@version{#2021-9-26}
+ "@version{#2023-3-17}
   @argument[dialog]{a @class{gtk:dialog} widget}
   @argument[response]{a response ID, which is a positive integer or a value
     of the @symbol{gtk:response-type} enumeration}
@@ -787,10 +787,9 @@
 ;;; gtk_dialog_get_response_for_widget () -> dialog-response-for-widget
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_dialog_get_response_for_widget" dialog-response-for-widget)
-    :int
+(defcfun ("gtk_dialog_get_response_for_widget" dialog-response-for-widget) :int
  #+liber-documentation
- "@version{#2021-11-2}
+ "@version{#2023-3-17}
   @argument[dialog]{a @class{gtk:dialog} widget}
   @argument[widget]{a @class{gtk:widget} widget in the action area of
     @arg{dialog}}
@@ -816,7 +815,7 @@
 (defcfun ("gtk_dialog_get_widget_for_response" dialog-widget-for-response)
     (g:object widget)
  #+liber-documentation
- "@version{#2021-11-2}
+ "@version{#2023-3-17}
   @argument[dialog]{a @class{gtk:dialog} widget}
   @argument[response]{the response ID, which is a positive integer or a value
     of the @symbol{gtk:response-type} enumeration}
@@ -839,10 +838,9 @@
 ;;; gtk_dialog_get_action_area () -> dialog-action-area
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_dialog_get_action_area" dialog-action-area)
-    (g:object widget)
+(defcfun ("gtk_dialog_get_action_area" dialog-action-area) (g:object widget)
  #+liber-documentation
- "@version{#2021-9-26}
+ "@version{#2023-3-17}
   @argument[dialog]{a @class{gtk:dialog} widget}
   @return{The @class{gtk:widget} action area of the dialog.}
   @short{Returns the action area of the dialog.}
@@ -864,10 +862,9 @@
 ;;; gtk_dialog_get_content_area () -> dialog-content-area
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_dialog_get_content_area" dialog-content-area)
-    (g:object widget)
+(defcfun ("gtk_dialog_get_content_area" dialog-content-area) (g:object widget)
  #+liber-documentation
- "@version{#2021-12-3}
+ "@version{#2023-3-17}
   @argument[dialog]{a @class{gtk:dialog} widget}
   @begin{return}
     The @class{gtk:box} content area with a @code{:vertical} orientation.
@@ -884,10 +881,9 @@
 ;;; gtk_dialog_get_header_bar () -> dialog-header-bar
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_dialog_get_header_bar" dialog-header-bar)
-    (g:object widget)
+(defcfun ("gtk_dialog_get_header_bar" dialog-header-bar) (g:object widget)
  #+liber-documentation
- "@version{#2021-9-26}
+ "@version{#2023-3-17}
   @argument[dialog]{a @class{gtk:dialog} widget}
   @return{The @class{gtk:header-bar} widget.}
   @begin{short}
@@ -906,10 +902,10 @@
 ;;; gtk_alternative_dialog_button_order ()                 not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_alternative_dialog_button_order"
-          alternative-dialog-button-order) :boolean
+(defcfun ("gtk_alternative_dialog_button_order" alternative-dialog-button-order)
+    :boolean
  #+liber-documentation
- "@version{#2021-9-26}
+ "@version{#2023-3-17}
   @argument[screen]{a @class{gdk:screen} object, or @code{nil} to use the
     default screen}
   @return{A boolean whether the alternative button order should be used.}
@@ -940,7 +936,7 @@
 
 (defun dialog-set-alternative-button-order (dialog response)
  #+liber-documentation
- "@version{#2021-9-26}
+ "@version{#2023-3-17}
   @argument[dialog]{a @class{gtk:dialog} widget}
   @argument[response]{a list of response IDs, which are positive integer or
     values of the  @symbol{gtk:response-type} enumeration}
@@ -1008,7 +1004,7 @@
 (defcfun ("gtk_dialog_set_alternative_button_order_from_array"
           %dialog-set-alternative-button-order-from-array) :void
  #+liber-documentation
- "@version{#2020-5-26}
+ "@version{#2023-3-17}
   @argument[dialog]{a @class{gtk:dialog} widget}
   @argument[n-params]{the number of response IDs in @arg{new-order}}
   @argument[new-order]{an array of response IDs of dialog's buttons}
@@ -1017,7 +1013,7 @@
   the dialog buttons are reordered according to the order of the response IDs
   in @arg{new-order}.
 
-  See the function @fun{gtk:dialog-set-alternative-button-order} for more
+  See the @fun{gtk:dialog-set-alternative-button-order} function for more
   information.
 
   This function is for use by language bindings.
@@ -1030,4 +1026,4 @@
   (n-params :int)
   (new-order (:pointer response-type)))
 
-;;; --- End of file gtk.dialog.lisp --------------------------------------------
+;;; --- End of file gtk3.dialog.lisp -------------------------------------------

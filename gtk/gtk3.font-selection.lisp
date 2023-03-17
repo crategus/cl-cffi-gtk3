@@ -1,38 +1,35 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.font-selection.lisp
+;;; gtk3.font-selection.lisp
 ;;;
-;;; This file contains code from a fork of cl-gtk2.
-;;; See <http://common-lisp.net/project/cl-gtk2/>.
-;;;
-;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
+;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.6.4 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2020 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkFontSelection
 ;;;
-;;; Deprecated widget for selecting fonts
+;;;     Deprecated widget for selecting fonts
 ;;;
 ;;; Synopsis
 ;;;
@@ -77,8 +74,8 @@
 (setf (documentation 'font-selection 'type)
  "@version{#2013-6-18}
   @subheading{Warning}
-    @sym{gtk:font-selection} is deprecated and should not be used in
-    newly written code. Use @class{gtk:font-chooser}.
+    The @sym{gtk:font-selection} widget is deprecated and should not be used in
+    newly written code. Use the @class{gtk:font-chooser} widget.
 
   @begin{short}
     The @sym{gtk:font-selection} widget lists the available fonts, styles and
@@ -87,17 +84,17 @@
     selecting fonts.
   @end{short}
 
-  To set the font which is initially selected, use the function
-  @fun{gtk:font-selection-set-font-name}.
+  To set the font which is initially selected, use the
+  @fun{gtk:font-selection-set-font-name} function.
 
-  To get the selected font use the function
-  @fun{gtk:font-selection-get-font-name}.
+  To get the selected font use the @fun{gtk:font-selection-get-font-name}
+  function.
 
-  To change the text which is shown in the preview area, use the function
-  @fun{gtk:font-selection-set-preview-text}.
+  To change the text which is shown in the preview area, use the
+  @fun{gtk:font-selection-set-preview-text} function.
 
-  In GTK+ 3.2, @sym{gtk:font-selection} has been deprecated in favor of
-  @class{gtk:font-chooser}.
+  In GTK+ 3.2, the @sym{gtk:font-selection} widget has been deprecated in favor
+  of the @class{gtk:font-chooser} widget.
   @see-slot{gtk:font-selection-font-name}
   @see-slot{gtk:font-selection-preview-text}
   @see-function{gtk:font-selection-set-font-name}
@@ -108,11 +105,10 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- font-selection-font-name -------------------------------------------
+;;; --- font-selection-font-name -----------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "font-name"
-                                               'font-selection) t)
+(setf (documentation (liber:slot-documentation "font-name" 'font-selection) t)
  "The @code{font-name} property of type @code{:string} (Read / Write) @br{}
   The string that represents this font. @br{}
   Default value: \"Sans 10\"")
@@ -126,7 +122,7 @@
   @class{gtk:font-selection} class.
   @see-class{gtk:font-selection}")
 
-;;; --- font-selection-preview-text ----------------------------------------
+;;; --- font-selection-preview-text --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "preview-text"
@@ -233,7 +229,7 @@
     Creates a new @class{gtk:font-selection} widget.
   @end{short}
   @begin[Warning]{dictionary}
-    The function @sym{gtk:font-selection-new} is deprecated and should not be
+    The @sym{gtk:font-selection-new} function is deprecated and should not be
     used in newly written code. Use @class{gtk:font-chooser}.
   @end{dictionary}
   @see-class{gtk:font-selection}"
@@ -252,7 +248,7 @@
   @return{A string with the name of the current font, or @code{nil} if no font
     is selected.}
   @subheading{Warning}
-    The function @sym{gtk:font-selection-get-font-name} has been deprecated
+    The @sym{gtk:font-selection-get-font-name} function has been deprecated
     since version 3.2 and should not be used in newly written code. Use
     @class{gtk:font-chooser}.
 
@@ -260,13 +256,12 @@
     Gets the currently selected font name.
   @end{short}
 
-  Note that this can be a different string than what you set with the function
-  @fun{gtk:font-selection-set-font-name}, as the font selection widget may
-  normalize font names and thus return a string with a different structure.
+  Note that this can be a different string than what you set with the
+  @fun{gtk:font-selection-set-font-name} function, as the font selection widget
+  may normalize font names and thus return a string with a different structure.
   For example, \"Helvetica Italic Bold 12\" could be normalized to
-  \"Helvetica Bold Italic 12\". Use the function
-  @fun{pango:font-description-equal} if you want to compare two font
-  descriptions.
+  \"Helvetica Bold Italic 12\". Use the @fun{pango:font-description-equal}
+  function if you want to compare two font descriptions.
   @see-function{gtk:font-selection-set-font-name}
   @see-function{pango:font-description-equal}"
   (font-selection-font-name fontsel))
@@ -287,7 +282,7 @@
     exists or if the @arg{fontsel} does not belong to a particular screen yet.
   @end{return}
   @subheading{Warning}
-    The function @sym{gtk:font-selection-set-font-name} has been deprecated
+    The @sym{gtk:font-selection-set-font-name} function has been deprecated
     since version 3.2 and should not be used in newly written code.
     Use @class{gtk:font-chooser}.
 
@@ -313,7 +308,7 @@
   @argument[fontsel]{a @class{gtk:font-selection} widget}
   @return{The text displayed in the preview area.}
   @subheading{Warning}
-    The function @sym{gtk:font-selection-get-preview-text} has been deprecated
+    The @sym{gtk:font-selection-get-preview-text} function has been deprecated
     since version 3.2 and should not be used in newly written code.
     Use @class{gtk:font-chooser}.
 
@@ -335,7 +330,7 @@
   @argument[fontsel]{a @class{gtk:font-selection} widget}
   @argument[text]{the text to display in the preview area}
   @subheading{Warning}
-    The function @sym{gtk:font-selection-set-preview-text} has been deprecated
+    The @sym{gtk:font-selection-set-preview-text} function has been deprecated
     since version 3.2 and should not be used in newly written code.
     Use @class{gtk:font-chooser}.
 
@@ -359,7 +354,7 @@
     A @class{pango-font-face} representing the selected font group details.
   @end{return}
   @subheading{Warning}
-    The function @sym{gtk:font-selection-get-face} has been deprecated since
+    The @sym{gtk:font-selection-get-face} function has been deprecated since
     version 3.2 and should not be used in newly written code.
     Use @class{gtk:font-chooser}.
 
@@ -381,7 +376,7 @@
   @argument[fontsel]{a @class{gtk:font-selection} widget}
   @return{A @class{gtk:widget} that is part of fontsel.}
   @subheading{Warning}
-    The function @sym{gtk:font-selection-get-face-list} has been deprecated
+    The @sym{gtk:font-selection-get-face-list} function has been deprecated
     since version 3.2 and should not be used in newly written code.
     Use @class{gtk:font-chooser}.
 
@@ -407,7 +402,7 @@
     @arg{fontsel} and must not be modified or freed.
   @end{return}
   @subheading{Warning}
-    The function @sym{gtk:font-selection-get-family} has been deprecated since
+    The @sym{gtk:font-selection-get-family} function has been deprecated since
     version 3.2 and should not be used in newly written code.
     Use @class{gtk:font-chooser}.
 
@@ -430,7 +425,7 @@
     is selected.
   @end{return}
   @subheading{Warning}
-    The function @sym{gtk:font-selection-get-size} has been deprecated since
+    The @sym{gtk:font-selection-get-size} function has been deprecated since
     version 3.2 and should not be used in newly written code.
     Use @class{gtk:font-chooser}.
 
@@ -449,7 +444,7 @@
   @argument[fontsel]{a @class{gtk:font-selection} widget}
   @return{A @class{gtk:widget} that is part of @arg{fontsel}.}
   @subheading{Warning}
-    The function @sym{gtk:font-selection-get-family-list} has been deprecated
+    The @sym{gtk:font-selection-get-family-list} function has been deprecated
     since version 3.2 and should not be used in newly written code.
     Use @class{gtk:font-chooser}.
 
@@ -471,7 +466,7 @@
   @argument[fontsel]{a @class{gtk:font-selection} widget}
   @return{A @class{gtk:widget} that is part of @arg{fontsel}.}
   @subheading{Warning}
-    The function @sym{gtk:font-selection-get-preview-entry} has been deprecated
+    The @sym{gtk:font-selection-get-preview-entry} function has been deprecated
     since version 3.2 and should not be used in newly written code.
     Use @class{gtk:font-chooser}.
 
@@ -492,7 +487,7 @@
   @argument[fontsel]{a @class{gtk:font-selection} widget}
   @return{A @class{gtk:widget} that is part of @arg{fontsel}.}
   @subheading{Warning}
-    The function @sym{gtk:font-selection-get-size-entry} has been deprecated
+    The @sym{gtk:font-selection-get-size-entry} function has been deprecated
     since version 3.2 and should not be used in newly written code.
     Use @class{gtk:font-chooser}.
 
@@ -514,7 +509,7 @@
   @argument[fontsel]{a @class{gtk:font-selection} widget}
   @return{A @class{gtk:widget} that is part of @arg{fontsel}.}
   @subheading{Warning}
-    The function @sym{gtk:font-selection-get-size-list} has been deprecated
+    The @sym{gtk:font-selection-get-size-list} function has been deprecated
     since version 3.2 and should not be used in newly written code.
     Use @class{gtk:font-chooser}.
 
@@ -524,4 +519,4 @@
   @see-class{gtk:font-selection}"
   (fontsel (g:object font-selection)))
 
-;;; --- End of file gtk.font-selection.lisp ------------------------------------
+;;; --- End of file gtk3.font-selection.lisp -----------------------------------

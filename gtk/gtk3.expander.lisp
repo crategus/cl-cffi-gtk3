@@ -1,30 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.expander.lisp
+;;; gtk3.expander.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2021 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkExpander
@@ -58,23 +58,23 @@
 ;;;
 ;;; Properties
 ;;;
-;;;       gboolean    expanded           Read / Write / Construct
-;;;          gchar*   label              Read / Write / Construct
-;;;       gboolean    label-fill         Read / Write / Construct
-;;;      GtkWidget*   label-widget       Read / Write
-;;;       gboolean    resize-toplevel    Read / Write
-;;;           gint    spacing            Read / Write
-;;;       gboolean    use-markup         Read / Write / Construct
-;;;       gboolean    use-underline      Read / Write / Construct
+;;;     expanded
+;;;     label
+;;;     label-fill
+;;;     label-widget
+;;;     resize-toplevel
+;;;     spacing
+;;;     use-markup
+;;;     use-underline
 ;;;
 ;;; Style Properties
 ;;;
-;;;           gint    expander-size      Read
-;;;           gint    expander-spacing   Read
+;;;     expander-size
+;;;     expander-spacing
 ;;;
 ;;; Signals
 ;;;
-;;;           void  activate  Action
+;;;     activate
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -129,7 +129,7 @@
 
 #+liber-documentation
 (setf (documentation 'expander 'type)
- "@version{#2021-12-17}
+ "@version{#2023-3-17}
   @begin{short}
     A @sym{gtk:expander} widget allows the user to hide or show its child by
     clicking on an expander triangle similar to the triangles used in a
@@ -181,11 +181,11 @@
   @end{dictionary}
   @begin[CSS nodes]{dictionary}
     @begin{pre}
-  expander
-  ├── title
-  │   ├── arrow
-  │   ╰── <label widget>
-  ╰── <child>
+expander
+├── title
+│   ├── arrow
+│   ╰── <label widget>
+╰── <child>
     @end{pre}
     The @sym{gtk:expander} implementation has three CSS nodes, the main node
     with the name @code{expander}, a subnode with name @code{title} and node
@@ -219,13 +219,15 @@
   @begin[Signal Details]{dictionary}
     @subheading{The \"activate\" signal}
       @begin{pre}
- lambda (expander)   :action
+lambda (expander)   :action
       @end{pre}
       @begin[code]{table}
         @entry[expander]{The @class{gtk:expander} widget which receives the
           signal.}
       @end{table}
   @end{dictionary}
+  @see-constructor{gtk:expander-new}
+  @see-constructor{gtk:expander-new-with-mnemonic}
   @see-slot{gtk:expander-expanded}
   @see-slot{gtk:expander-label}
   @see-slot{gtk:expander-label-fill}
@@ -240,7 +242,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- expander-expanded --------------------------------------------------
+;;; --- expander-expanded ------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "expanded" 'expander) t)
@@ -253,7 +255,7 @@
 (setf (liber:alias-for-function 'expander-expanded)
       "Accessor"
       (documentation 'expander-expanded 'function)
- "@version{#2021-12-17}
+ "@version{#2023-3-17}
   @syntax[]{(gtk:expander-expanded object) => expanded}
   @syntax[]{(setf (gtk:expander-expanded object) expanded)}
   @argument[object]{a @class{gtk:expander} widget}
@@ -262,14 +264,12 @@
     Accessor of the @slot[gtk:expander]{expanded} slot of the
     @class{gtk:expander} class.
   @end{short}
-
-  The @sym{gtk:expander-expanded} slot access function queries a
-  @class{gtk:expander} widget and returns its current state. Set to
-  @em{true}, if you want the child widget to be revealed, and @em{false} if you
-  want the child widget to be hidden.
+  The @sym{gtk:expander-expanded} function queries a @class{gtk:expander} widget
+  and returns its current state. Set to @em{true}, if you want the child widget
+  to be revealed, and @em{false} if you want the child widget to be hidden.
   @see-class{gtk:expander}")
 
-;;; --- expander-label -----------------------------------------------------
+;;; --- expander-label ---------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "label" 'expander) t)
@@ -282,7 +282,7 @@
 (setf (liber:alias-for-function 'expander-label)
       "Accessor"
       (documentation 'expander-label 'function)
- "@version{#2021-12-17}
+ "@version{#2023-3-17}
   @syntax[]{(gtk:expander-label object) => label}
   @syntax[]{(setf (gtk:expander-label object) label)}
   @argument[object]{a @class{gtk:expander} widget}
@@ -291,10 +291,9 @@
     Accessor of the @slot[gtk:expander]{label} slot of the @class{gtk:expander}
     class.
   @end{short}
-
-  The @sym{gtk:expander-label} slot access function fetches the text from a
-  label widget including any embedded underlines indicating mnemonics and Pango
-  markup, as set by the @sym{(setf gtk:expander-label)} slot access function.
+  The @sym{gtk:expander-label} function fetches the text from a label widget
+  including any embedded underlines indicating mnemonics and Pango markup, as
+  set by the @sym{(setf gtk:expander-label)} function.
 
   If the label text has not been set the return value will be @code{nil}. This
   will be the case if you create an empty button with the @fun{gtk:button-new}
@@ -302,7 +301,7 @@
   @see-class{gtk:expander}
   @see-function{gtk:button-new}")
 
-;;; --- expander-label-fill ------------------------------------------------
+;;; --- expander-label-fill ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "label-fill" 'expander) t)
@@ -315,7 +314,7 @@
 (setf (liber:alias-for-function 'expander-label-fill)
       "Accessor"
       (documentation 'expander-label-fill 'function)
- "@version{#2021-12-17}
+ "@version{#2023-3-17}
   @syntax[]{(gtk:expander-label-fill object) => label-fill}
   @syntax[]{(setf (gtk:expander-label-fill object) label-fill)}
   @argument[object]{a @class{gtk:expander} widget}
@@ -325,14 +324,13 @@
     Accessor of the @slot[gtk:expander]{label-fill} slot of the
     @class{gtk:expander} class.
   @end{short}
-
-  The @sym{gtk:expander-label-fill} slot access function returns whether the
-  label widget will fill all available horizontal space allocated to expander.
-  The @sym{(setf gtk:expander-label-fill)} slot access function sets whether the
-  label widget should fill all available horizontal space allocated to expander.
+  The @sym{gtk:expander-label-fill} function returns whether the label widget
+  will fill all available horizontal space allocated to expander. The
+  @sym{(setf gtk:expander-label-fill)} function sets whether the label widget
+  should fill all available horizontal space allocated to expander.
   @see-class{gtk:expander}")
 
-;;; --- expander-label-widget ----------------------------------------------
+;;; --- expander-label-widget --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "label-widget" 'expander) t)
@@ -344,7 +342,7 @@
 (setf (liber:alias-for-function 'expander-label-widget)
       "Accessor"
       (documentation 'expander-label-widget 'function)
- "@version{#2021-12-17}
+ "@version{#2023-3-17}
   @syntax[]{(gtk:expander-label-widget object) => label-widget}
   @syntax[]{(setf gtk:expander-label-widget object) label-widget)}
   @argument[object]{a @class{gtk:expander} widget}
@@ -353,20 +351,18 @@
     Accessor of the @slot[gtk:expander]{label-widget} slot of the
     @class{gtk:expander} class.
   @end{short}
-
-  The @sym{gtk:expander-label-widget} slot access function retrieves the label
-  widget for the frame. The @sym{(setf gtk:expander-label-widget)} slot access
-  function sets the label widget for the expander.
+  The @sym{gtk:expander-label-widget} function retrieves the label widget for
+  the frame. The @sym{(setf gtk:expander-label-widget)} function sets the label
+  widget for the expander.
 
   This is the widget that will appear embedded alongside the expander arrow.
   @see-class{gtk:expander}
   @see-class{gtk:widget}")
 
-;;; --- expander-resize-toplevel -------------------------------------------
+;;; --- expander-resize-toplevel -----------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "resize-toplevel"
-                                               'expander) t)
+(setf (documentation (liber:slot-documentation "resize-toplevel" 'expander) t)
  "The @code{resize-toplevel} property of type @code{:boolean}
   (Read / Write) @br{}
   When this property is @em{true}, the expander will resize the toplevel widget
@@ -377,7 +373,7 @@
 (setf (liber:alias-for-function 'expander-resize-toplevel)
       "Accessor"
       (documentation 'expander-resize-toplevel 'function)
- "@version{#2021-12-17}
+ "@version{#2023-3-17}
   @syntax[]{(gtk:expander-resize-toplevel object) => resize-toplevel}
   @syntax[]{(setf (gtk:expander-resize-toplevel object) resize-toplevel)}
   @argument[object]{a @class{gtk:expander} widget}
@@ -386,15 +382,14 @@
     Accessor of the @slot[gtk:expander]{resize-toplevel} slot of the
     @class{gtk:expander} class.
   @end{short}
-
-  The @sym{gtk:expander-resize-toplevel} slot access function returns whether
-  the expander will resize the toplevel widget containing the expander upon
-  resizing and collpasing. The @sym{(setf gtk:expander-resize-toplevel)} slot
-  access function sets whether the expander will resize the toplevel widget
-  containing the expander upon resizing and collpasing.
+  The @sym{gtk:expander-resize-toplevel} function returns whether the expander
+  will resize the toplevel widget containing the expander upon resizing and
+  collpasing. The @sym{(setf gtk:expander-resize-toplevel)} function sets
+  whether the expander will resize the toplevel widget containing the expander
+  upon resizing and collpasing.
   @see-class{gtk:expander}")
 
-;;; --- expander-spacing ---------------------------------------------------
+;;; --- expander-spacing -------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "spacing" 'expander) t)
@@ -410,7 +405,7 @@
 (setf (liber:alias-for-function 'expander-spacing)
       "Accessor"
       (documentation 'expander-spacing 'function)
- "@version{#2021-12-17}
+ "@version{#2023-3-17}
   @syntax[]{(gtk:expander-spacing object) => spacing}
   @syntax[]{(setf (gtk:expand-spacing object) spacing)}
   @argument[object]{a @class{gtk:expander} widget}
@@ -420,10 +415,9 @@
     Accessor of the @slot[gtk:expander]{spacing} slot of the
     @class{gtk:expander} class.
   @end{short}
-
-  The @sym{gtk:expander-spacing} slot access function returns the spacing
-  between the expander and child widget. The @sym{(setf gtk:expander-spacing)}
-  slot access function sets the spacing field of the expander.
+  The @sym{gtk:expander-spacing} function returns the spacing between the
+  expander and child widget. The @sym{(setf gtk:expander-spacing)} function
+  sets the spacing field of the expander.
   @begin[Warning]{dictionary}
     The @sym{gtk:expander-spacing} function has been deprecated since version
     3.20 and should not be used in newly written code. Use margins on the child
@@ -431,7 +425,7 @@
   @end{dictionary}
   @see-class{gtk:expander}")
 
-;;; --- expander-use-markup ------------------------------------------------
+;;; --- expander-use-markup ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "use-markup" 'expander) t)
@@ -444,7 +438,7 @@
 (setf (liber:alias-for-function 'expander-use-markup)
       "Accessor"
       (documentation 'expander-use-markup 'function)
- "@version{#2021-12-17}
+ "@version{#2023-3-17}
   @syntax[]{(gtk:expander-use-markup object) => use-markup}
   @syntax[]{(setf (gtk:expander-use-markup object) use-markup)}
   @argument[object]{a @class{gtk:expander} widget}
@@ -454,19 +448,17 @@
     Accessor of the @slot[gtk:expander]{use-markup} slot of the
     @class{gtk:expander} class.
   @end{short}
-
-  The @sym{gtk:expander-use-markup} slot access function returns whether the
-  text of the label is interpreted as marked up with the Pango text markup
-  language. The @sym{(setf gtk:expander-use-markup)} slot access function sets
-  whether the text of the label contains markup.
+  The @sym{gtk:expander-use-markup} function returns whether the text of the
+  label is interpreted as marked up with the Pango text markup language. The
+  @sym{(setf gtk:expander-use-markup)} function sets whether the text of the
+  label contains markup.
   @see-class{gtk:expander}
   @see-function{gtk:label-set-markup}")
 
-;;; --- expander-use-underline ---------------------------------------------
+;;; --- expander-use-underline -------------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "use-underline"
-                                               'expander) t)
+(setf (documentation (liber:slot-documentation "use-underline" 'expander) t)
  "The @code{use-underline} property of type @code{:boolean}
   (Read / Write / Construct) @br{}
   If set, an underline in the text indicates the next character should be used
@@ -477,7 +469,7 @@
 (setf (liber:alias-for-function 'expander-use-underline)
       "Accessor"
       (documentation 'expander-use-underline 'function)
- "@version{#2021-12-17}
+ "@version{#2023-3-17}
   @syntax[]{(gtk:expander-use-underline object) => use-underline}
   @syntax[]{(setf (gtk:expander-use-underline object) use-underline)}
   @argument[object]{a @class{gtk:expander} widget}
@@ -487,9 +479,8 @@
     Accessor of the @slot[gtk:expander]{use-underline} slot of the
     @class{gtk:expander} class.
   @end{short}
-
-  The @sym{gtk:expander-use-underline} slot access function returns whether an
-  embedded underline in the expander label indicates a mnemonic.
+  The @sym{gtk:expander-use-underline} function returns whether an embedded
+  underline in the expander label indicates a mnemonic.
 
   If @em{true}, an underline in the text of the expander label indicates the
   next character should be used for the mnemonic accelerator key.
@@ -503,7 +494,7 @@
 
 (defun expander-new (label)
  #+liber-documentation
- "@version{#2021-12-17}
+ "@version{#2023-3-17}
   @argument[label]{a string with the text of the label}
   @return{A new @class{gtk:expander} widget.}
   @begin{short}
@@ -524,14 +515,13 @@
 
 (defun expander-new-with-mnemonic (label)
  #+liber-documentation
- "@version{#2021-12-17}
+ "@version{#2023-3-17}
   @argument[label]{a string with the text of the label with an underscore in
     front of the mnemonic character}
   @return{A new @class{gtk:expander} widget.}
   @begin{short}
     Creates a new expander using @arg{label} as the text of the label.
   @end{short}
-
   If characters in @arg{label} are preceded by an underscore, they are
   underlined. If you need a literal underscore character in a label, use two
   underscores '__'. The first underlined character represents a keyboard
@@ -545,4 +535,4 @@
 
 (export 'expander-new-with-mnemonic)
 
-;;; --- End of file gtk.expander.lisp ------------------------------------------
+;;; --- End of file gtk3.expander.lisp -----------------------------------------

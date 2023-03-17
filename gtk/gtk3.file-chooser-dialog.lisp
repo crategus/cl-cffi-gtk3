@@ -1,30 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.file-chooser-dialog.lisp
+;;; gtk3.file-chooser-dialog.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK+ library.
+;;; The documentation of this file is taken from the GTK 3 Reference Manual
+;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2021 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkFileChooserDialog
@@ -73,7 +73,7 @@
 
 #+liber-documentation
 (setf (documentation 'file-chooser-dialog 'type)
- "@version{#2021-2-4}
+ "@version{#2023-3-17}
   @begin{short}
     The @sym{gtk:file-chooser-dialog} widget is a dialog box suitable for use
     with \"File/Open\" or \"File/Save as\" commands.
@@ -83,7 +83,7 @@
   interface, so you can use all of the @class{gtk:file-chooser} functions on
   the file chooser dialog as well as those for the @class{gtk:dialog} widget.
 
-  @image[file-chooser-dialog]{}
+  @image[file-chooser-dialog]{GtkFileChooserDialog}
   Note that the @sym{gtk:file-chooser-dialog} widget does not have any methods
   of its own. Instead, you should use the functions that work on a
   @class{gtk:file-chooser} interface.
@@ -132,13 +132,13 @@
       @end{item}
       @begin{item}
         To save a file for the first time, as for a File/Save command. Use
-        @code{:save}, and suggest a name such as \"Untitled\" with the function
-        @fun{gtk:file-chooser-current-name}.
+        @code{:save}, and suggest a name such as \"Untitled\" with the
+        @fun{gtk:file-chooser-current-name} function.
       @end{item}
       @begin{item}
         To save a file under a different name, as for a File/Save As command.
-        Use @code{:save}, and set the existing filename with the function
-        @fun{gtk:file-chooser-filename}.
+        Use @code{:save}, and set the existing filename with the
+        @fun{gtk:file-chooser-filename} function.
       @end{item}
       @begin{item}
         To choose a folder instead of a file. Use @code{:select-folder}.
@@ -146,26 +146,26 @@
     @end{itemize}
   @subheading{Note}
     Old versions of the file chooser's documentation suggested using the
-    function @fun{gtk:file-chooser-current-folder} in various situations,
-    with the intention of letting the application suggest a reasonable default
+    @fun{gtk:file-chooser-current-folder} function in various situations, with
+    the intention of letting the application suggest a reasonable default
     folder. This is no longer considered to be a good policy, as now the file
     chooser is able to make good suggestions on its own. In general, you should
     only cause the file chooser to show a specific folder when it is appropriate
-    to use the function @fun{gtk:file-chooser-filename}, i.e. when you are
+    to use the @fun{gtk:file-chooser-filename} function, i.e. when you are
     doing a File/Save As command and you already have a file saved somewhere.
 
   @subheading{Response Codes}
     The @sym{gtk:file-chooser-dialog} widget inherits from the
     @class{gtk:dialog} widget, so buttons that go in its action area have
     response codes such as @code{:accept} and @code{:cancel}. For example, you
-    could call the function @fun{gtk:file-chooser-dialog-new} as follows:
+    could call the @fun{gtk:file-chooser-dialog-new} function as follows:
     @begin{pre}
- (let ((dialog (gtk:file-chooser-dialog-new \"Open File\"
-                                            parent-window
-                                            :open
-                                            \"gtk-cancel\" :cancel
-                                            \"gtk-open\" :accept)))
-   ... )
+(let ((dialog (gtk:file-chooser-dialog-new \"Open File\"
+                                           parent-window
+                                           :open
+                                           \"gtk-cancel\" :cancel
+                                           \"gtk-open\" :accept)))
+  ... )
     @end{pre}
     This will create buttons for \"Cancel\" and \"Open\" that use stock
     response identifiers from the @symbol{gtk:response-type} enumeration. For
@@ -188,6 +188,7 @@
   @subheading{Note}
     To summarize, make sure you use a stock response code when you use the
     @sym{gtk:file-chooser-dialog} widget to ensure proper operation.
+  @see-constructor{gtk:file-chooser-dialog-new}
   @see-class{gtk:dialog}
   @see-class{gtk:file-chooser}
   @see-class{gtk:file-chooser-widget}
@@ -201,7 +202,7 @@
 
 (defun file-chooser-dialog-new (title parent action &rest buttons)
  #+liber-documentation
- "@version{#2021-2-4}
+ "@version{#2023-3-17}
   @argument[title]{a string with title of the dialog, or @code{nil}}
   @argument[parent]{a @class{gtk:window} transient parent of the dialog,
     or @code{nil}}
@@ -212,7 +213,7 @@
   @begin{short}
     Creates a new file chooser dialog.
   @end{short}
-  This function is analogous to the function @fun{gtk:dialog-new-with-buttons}.
+  This function is analogous to the @fun{gtk:dialog-new-with-buttons} function.
   @see-class{gtk:file-chooser-dialog}
   @see-function{gtk:dialog-new-with-buttons}"
   (let ((dialog (make-instance 'file-chooser-dialog
@@ -226,4 +227,4 @@
 
 (export 'file-chooser-dialog-new)
 
-;;; --- End of file gtk.file-chooser-dialog.lisp -------------------------------
+;;; --- End of file gtk3.file-chooser-dialog.lisp ------------------------------

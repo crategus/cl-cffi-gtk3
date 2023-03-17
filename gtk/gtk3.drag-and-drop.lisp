@@ -4,28 +4,27 @@
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
-
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
 ;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; Drag and Drop
@@ -98,7 +97,7 @@
 (setf (liber:alias-for-symbol 'dest-defaults)
       "GFlags"
       (liber:symbol-documentation 'dest-defaults)
- "@version{#2021-10-3}
+ "@version{#2023-3-17}
   @begin{short}
     The @sym{gtk:dest-defaults} flags specifies the various types of action
     that will be taken on behalf of the user for a drag destination site.
@@ -151,7 +150,7 @@
 (setf (liber:alias-for-symbol 'drag-result)
       "GEnum"
       (liber:symbol-documentation 'drag-result)
- "@version{#2021-10-3}
+ "@version{#2023-3-17}
   @begin{short}
     Gives an indication why a drag operation failed.
   @end{short}
@@ -192,7 +191,7 @@
 
 (defun drag-dest-set (widget flags targets actions)
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[flags]{a @symbol{gtk:dest-defaults} bitmask with the default drag
     behavior to use}
@@ -268,11 +267,11 @@
 
 (defcfun ("gtk_drag_dest_set_proxy" drag-dest-set-proxy) :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[window]{a @class{gdk:window} object to which to forward drag
     events}
-  @argument[protocol]{the drag protocol of type @symbol{gdk:drag-protocol}
+  @argument[protocol]{a @symbol{gdk:drag-protocol} value with the drag protocol
     which @arg{window} accepts, you can use the @fun{gdk:drag-context-protocol}
     function to determine this}
   @argument[coordinates]{if @em{true}, send the same coordinates to the
@@ -281,7 +280,7 @@
     Sets the widget as a proxy for drops to another window.
   @end{short}
   @begin[Warning]{dictionary}
-    The function @sym{gtk:drag-dest-set-proxy} has been deprecated since version
+    The @sym{gtk:drag-dest-set-proxy} function has been deprecated since version
     3.22 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:widget}
@@ -301,7 +300,7 @@
 
 (defcfun ("gtk_drag_dest_unset" drag-dest-unset) :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Clears information about a drop destination set with the
@@ -326,7 +325,7 @@
 
 (defun drag-dest-find-target (widget context &optional (tlist nil))
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} drag destination widget}
   @argument[context]{a @class{gdk:drag-context} object}
   @argument[tlist]{a @class{gtk:target-list} instance with the droppable
@@ -361,15 +360,15 @@
 
 (defun (setf drag-dest-target-list) (tlist widget)
   (cffi:foreign-funcall "gtk_drag_dest_set_target_list"
-                   (g:object widget) widget
-                   (g:boxed target-list) tlist
-                   :void)
+                        (g:object widget) widget
+                        (g:boxed target-list) tlist
+                        :void)
   tlist)
 
 (defcfun ("gtk_drag_dest_get_target_list" drag-dest-target-list)
     (g:boxed target-list)
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-17}
   @syntax[]{(gtk:dag-dest-target-list widget) => tlist}
   @syntax[]{(setf (gtk:drag-dest-target-list widget) tlist)}
   @argument[widget]{a @class{gtk:widget} object that is a drag destination}
@@ -395,7 +394,7 @@
 
 (defcfun ("gtk_drag_dest_add_text_targets" drag-dest-add-text-targets) :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} that is a drag destination}
   @begin{short}
     Add the text targets supported by the selection to the target list of the
@@ -415,10 +414,9 @@
 ;;; gtk_drag_dest_add_image_targets ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_dest_add_image_targets" drag-dest-add-image-targets)
-    :void
+(defcfun ("gtk_drag_dest_add_image_targets" drag-dest-add-image-targets) :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} that is a drag destination}
   @begin{short}
     Add the image targets supported by the selection to the target list of the
@@ -440,7 +438,7 @@
 
 (defcfun ("gtk_drag_dest_add_uri_targets" drag-dest-add-uri-targets) :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} that is a drag destination}
   @begin{short}
     Add the URI targets supported by the selection to the target list of the
@@ -462,14 +460,14 @@
 
 (defun (setf drag-dest-track-motion) (motion widget)
   (cffi:foreign-funcall "gtk_drag_dest_set_track_motion"
-                   (g:object widget) widget
-                   :boolean motion
-                   :void)
+                        (g:object widget) widget
+                        :boolean motion
+                        :void)
   motion)
 
 (defcfun ("gtk_drag_dest_get_track_motion" drag-dest-track-motion) :boolean
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-17}
   @syntax[]{(gtk:drag-dest-track-motion widget) => motion}
   @syntax[]{(setf (gtk:drag-dest-track-motion widget) motion)}
   @argument[widget]{a @class{gtk:widget} that is a drag destination}
@@ -495,8 +493,8 @@
 
 (defcfun ("gtk_drag_finish" drag-finish) :void
  #+liber-documentation
- "@version{#2021-10-3}
-  @argument[context]{the @class{gdk:drag-context} object}
+ "@version{#2023-3-17}
+  @argument[context]{a @class{gdk:drag-context} object}
   @argument[success]{a boolean indicating whether the drop was successful}
   @argument[delete]{a boolean indicating whether the source should delete the
     original data, this should be @em{true} for a move}
@@ -520,8 +518,8 @@
 
 (defcfun ("gtk_drag_get_data" drag-data) :void
  #+liber-documentation
- "@version{#2021-10-3}
-  @argument[widget]{the @class{gtk:widget} object that will receive the
+ "@version{#2023-3-17}
+  @argument[widget]{a @class{gtk:widget} object that will receive the
    \"drag-data-received\" signal}
   @argument[context]{a @class{gdk:drag-context} object}
   @argument[target]{an atom as a string with the target, form of the data, to
@@ -552,10 +550,9 @@
 ;;; gtk_drag_get_source_widget () -> drag-source-widget
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_get_source_widget" drag-source-widget)
-    (g:object widget)
+(defcfun ("gtk_drag_get_source_widget" drag-source-widget) (g:object widget)
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-17}
   @argument[context]{a @class{gdk:drag-context} object with the destination
     side drag context}
   @return{If the drag is occurring within a single application, returns a
@@ -574,7 +571,7 @@
 
 (defcfun ("gtk_drag_highlight" drag-highlight) :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} object to highlight}
   @begin{short}
     Draws a highlight around a widget.
@@ -594,7 +591,7 @@
 
 (defcfun ("gtk_drag_unhighlight" drag-unhighlight) :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} object to remove the highlight from}
   @begin{short}
     Removes a highlight set by the @fun{gtk:drag-highlight} function from a
@@ -612,7 +609,7 @@
 
 (defcfun ("gtk_drag_begin" drag-begin) (g:object gdk:drag-context)
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} source widget}
   @argument[targets]{a @class{gtk:target-list} instance with the targets, data
   formats, in which the source can provide the data}
@@ -620,7 +617,7 @@
     actions for this drag}
   @argument[button]{an integer with the button the user clicked to start the
     drag}
-  @argument[event]{the @class{gdk:event} event that triggered the start of the
+  @argument[event]{a @class{gdk:event} event that triggered the start of the
     drag}
   @return{The @class{gdk:drag-context} object for this drag.}
   @begin{short}
@@ -685,8 +682,8 @@
 (defcfun ("gtk_drag_begin_with_coordinates" drag-begin-with-coordinates)
     (g:object gdk:drag-context)
  #+liber-documentation
- "@version{#2021-10-3}
-  @argument[widget]{the @class{gtk:widget} source widget}
+ "@version{#2023-3-17}
+  @argument[widget]{a @class{gtk:widget} source widget}
   @argument[targets]{a @class{gtk:target-list} instance with the targets, data
     formats, in which the source can provide the data}
   @argument[actions]{a @symbol{gdk:drag-action} bitmask of the allowed drag
@@ -758,13 +755,12 @@
 
 (defcfun ("gtk_drag_cancel" drag-cancel) :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-17}
   @argument[context]{a @class{gdk:drag-context} object, as e.g. returned by
     the @fun{gtk:drag-begin-with-coordinates} function}
   @begin{short}
     Cancels an ongoing drag operation on the source side.
   @end{short}
-
   If you want to be able to cancel a drag operation in this way, you need to
   keep a pointer to the drag context, either from an explicit call to the
   @fun{gtk:drag-begin-with-coordinates} function, or by connecting to the
@@ -787,8 +783,8 @@
 
 (defcfun ("gtk_drag_set_icon_widget" drag-set-icon-widget) :void
  #+liber-documentation
- "@version{#2021-10-3}
-  @argument[context]{the @class{gdk:drag-context} object for a drag, this must
+ "@version{#2023-3-17}
+  @argument[context]{a @class{gdk:drag-context} object for a drag, this must
     be called with a drag context for the source side of a drag}
   @argument[widget]{a @class{gtk:widget} toplevel window to use as an icon}
   @argument[x]{an integer with the x offset within widget of the hotspot}
@@ -813,7 +809,7 @@
 
 (defcfun ("gtk_drag_set_icon_pixbuf" drag-set-icon-pixbuf) :void
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-17}
   @argument[context]{a @class{gdk:drag-context} object for a drag, this must be
     called with a drag context for the source side of a drag}
   @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object to use as the drag icon}
@@ -837,7 +833,7 @@
 
 (defcfun ("gtk_drag_set_icon_stock" drag-set-icon-stock) :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-17}
   @argument[context]{a @class{gdk:drag-context} object for a drag, this must be
     called with a drag context for the source side of a drag}
   @argument[stock]{a string with the ID of the stock icon to use for the drag}
@@ -866,7 +862,7 @@
 
 (defcfun ("gtk_drag_set_icon_surface" drag-set-icon-surface) :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-17}
   @argument[context]{a @class{gdk:drag-context} object for a drag, this must be
     called with a drag context for the source side of a drag}
   @argument[surface]{a @symbol{cairo:surface-t} surface to use as icon}
@@ -893,7 +889,7 @@
 
 (defcfun ("gtk_drag_set_icon_name" drag-set-icon-name) :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-17}
   @argument[context]{a @class{gdk:drag-context} object for a drag, this must be
     called with a drag context for the source side of a drag}
   @argument[name]{a string with the name of the icon to use}
@@ -921,10 +917,10 @@
 
 (defcfun ("gtk_drag_set_icon_gicon" drag-set-icon-gicon) :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-17}
   @argument[context]{a @class{gdk:drag-context} object for a drag, this must be
     called with a drag context for the source side of a drag}
-  @argument[icon]{a @class{g-icon} object}
+  @argument[icon]{a @class{g:icon} object}
   @argument[x]{an integer with the x offset of the hotspot within the icon}
   @argument[y]{an integer with the y offset of the hotspot within the icon}
   @begin{short}
@@ -933,10 +929,10 @@
   See the documentation for the @fun{gtk:drag-set-icon-name} function for more
   details about using icons in drag and drop.
   @see-class{gdk:drag-context}
-  @see-class{g-icon}
+  @see-class{g:icon}
   @see-function{gtk:drag-set-icon-name}"
   (context (g:object gdk:drag-context))
-  (icon (g:object g-icon))
+  (icon (g:object g:icon))
   (x :int)
   (y :int))
 
@@ -948,7 +944,7 @@
 
 (defcfun ("gtk_drag_set_icon_default" drag-set-icon-default) :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-17}
   @argument[context]{a @class{gdk:drag-context} object for a drag, this must be
     called with a drag context for the source side of a drag}
   @begin{short}
@@ -965,25 +961,25 @@
 
 (defcfun ("gtk_drag_check_threshold" drag-check-threshold) :boolean
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[start-x]{an integer with the x coordinate of start of drag}
-  @argument[start-y]{an integer with the y coordinate of start of drag}
-  @argument[current-x]{an integer with the current x coordinate}
-  @argument[current-y]{an integer with the current y coordinate}
+  @argument[xstart]{an integer with the x coordinate of start of drag}
+  @argument[ystart]{an integer with the y coordinate of start of drag}
+  @argument[xcurrent]{an integer with the current x coordinate}
+  @argument[ycurrent]{an integer with the current y coordinate}
   @return{@em{True} if the drag threshold has been passed.}
   @begin{short}
-    Checks to see if a mouse drag starting at (@arg{start-x}, @arg{start-y})
-    and ending at (@arg{current-x}, @arg{current-y}) has passed the GTK drag
+    Checks to see if a mouse drag starting at (@arg{xstart}, @arg{ystart})
+    and ending at (@arg{xcurrent}, @arg{ycurrent}) has passed the GTK drag
     threshold, and thus should trigger the beginning of a drag and drop
     operation.
   @end{short}
   @see-class{gtk:widget}"
   (widget (g:object widget))
-  (start-x :int)
-  (start-y :int)
-  (current-x :int)
-  (current-y :int))
+  (xstart :int)
+  (ystart :int)
+  (xcurrent :int)
+  (ycurrent :int))
 
 (export 'drag-check-threshold)
 
@@ -1000,7 +996,7 @@
 
 (defun drag-source-set (widget mask targets actions)
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[mask]{a @symbol{gdk:modifier-type} bitmask of buttons that can
     start the drag}
@@ -1038,7 +1034,7 @@
 
 (defcfun ("gtk_drag_source_set_icon_pixbuf" drag-source-set-icon-pixbuf) :void
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object for the drag icon}
   @begin{short}
@@ -1060,7 +1056,7 @@
 
 (defcfun ("gtk_drag_source_set_icon_stock" drag-source-set-icon-stock) :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[stock]{a string with the ID of the stock icon to use}
   @begin{short}
@@ -1085,7 +1081,7 @@
 
 (defcfun ("gtk_drag_source_set_icon_name" drag-source-set-icon-name) :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[name]{a string with the name of icon to use}
   @begin{short}
@@ -1106,19 +1102,19 @@
 
 (defcfun ("gtk_drag_source_set_icon_gicon" drag-source-set-icon-gicon) :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[icon]{a @class{g-icon} object}
+  @argument[icon]{a @class{g:icon} object}
   @begin{short}
     Sets the icon that will be used for drags from a particular source to
     @arg{icon}.
   @end{short}
   See the docs for the @class{gtk:icon-theme} implementation for more details.
   @see-class{gtk:widget}
-  @see-class{g-icon}
+  @see-class{g:icon}
   @see-class{gtk:icon-theme}"
   (widget (g:object widget))
-  (icon (g:object g-icon)))
+  (icon (g:object g:icon)))
 
 (export 'drag-source-set-icon-gicon)
 
@@ -1128,7 +1124,7 @@
 
 (defcfun ("gtk_drag_source_unset" drag-source-unset) :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Undoes the effects of the @fun{gtk:drag-source-set} function.
@@ -1146,15 +1142,15 @@
 
 (defun (setf drag-source-target-list) (tlist widget)
   (cffi:foreign-funcall "gtk_drag_source_set_target_list"
-                   (g:object widget) widget
-                   (g:boxed target-list) tlist
-                   :void)
+                        (g:object widget) widget
+                        (g:boxed target-list) tlist
+                        :void)
   tlist)
 
 (defcfun ("gtk_drag_source_get_target_list" drag-source-target-list)
     (g:boxed target-list)
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-17}
   @syntax[]{(gtk:drag-source-target-list widget) => tlist}
   @syntax[]{(setf (gtk:drag-source-target-list widget) tlist)}
   @argument[widget]{a @class{gtk:widget} that is a drag source}
@@ -1180,10 +1176,9 @@
 ;;; gtk_drag_source_add_text_targets ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_source_add_text_targets" drag-source-add-text-targets)
-    :void
+(defcfun ("gtk_drag_source_add_text_targets" drag-source-add-text-targets) :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} object that is a drag source}
   @begin{short}
     Add the text targets supported by the selection to the target list of the
@@ -1207,7 +1202,7 @@
 (defcfun ("gtk_drag_source_add_image_targets" drag-source-add-image-targets)
     :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} object that is a drag source}
   @begin{short}
     Add the writable image targets supported by the selection to the target
@@ -1227,10 +1222,9 @@
 ;;; gtk_drag_source_add_uri_targets ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_source_add_uri_targets" drag-source-add-uri-targets)
-    :void
+(defcfun ("gtk_drag_source_add_uri_targets" drag-source-add-uri-targets) :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} object that is a drag source}
   @begin{short}
     Add the URI targets supported by the selection to the target list of the

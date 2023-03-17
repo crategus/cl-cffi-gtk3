@@ -1,30 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.file-chooser-widget.lisp
+;;; gtk3.file-chooser-widget.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2021 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkFileChooserWidget
@@ -101,7 +101,7 @@
 
 #+liber-documentation
 (setf (documentation 'file-chooser-widget 'type)
- "@version{#2021-2-5}
+ "@version{#2023-3-17}
   @begin{short}
     The @sym{gtk:file-chooser-widget} widget is a widget for choosing files.
   @end{short}
@@ -265,6 +265,7 @@ lambda (widget)    :action
           the signal.}
       @end{table}
   @end{dictionary}
+  @see-constructor{gtk:file-chooser-widget-new}
   @see-class{gtk:file-chooser}
   @see-class{gtk:file-chooser-dialog}")
 
@@ -272,7 +273,7 @@ lambda (widget)    :action
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- file-chooser-widget-search-mode ------------------------------------
+;;; --- file-chooser-widget-search-mode ----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "search-mode"
@@ -285,7 +286,7 @@ lambda (widget)    :action
 (setf (liber:alias-for-function 'file-chooser-widget-search-mode)
       "Accessor"
       (documentation 'file-chooser-widget-search-mode 'function)
- "@version{#2021-2-5}
+ "@version{#2023-3-17}
   @syntax[]{(gtk:file-chooser-widget object) => search-mode}
   @syntax[]{(setf (gtk:file-chooser-widget object) search-mode)}
   @argument[object]{a @class{gtk:file-chooser-widget} widget}
@@ -296,7 +297,7 @@ lambda (widget)    :action
   @end{short}
   @see-class{gtk:file-chooser-widget}")
 
-;;; --- file-chooser-widget-subtitle ---------------------------------------
+;;; --- file-chooser-widget-subtitle -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "subtitle"
@@ -309,7 +310,7 @@ lambda (widget)    :action
 (setf (liber:alias-for-function 'file-chooser-widget-subtitle)
       "Accessor"
       (documentation 'file-chooser-widget-subtitle 'function)
- "@version{#2021-2-5}
+ "@version{#2023-3-17}
   @syntax[]{(gtk:file-chooser-widget object) => subtitle}
   @syntax[]{(setf (gtk:file-chooser-widget object) subtitle)}
   @argument[object]{a @class{gtk:file-chooser-widget} widget}
@@ -328,7 +329,7 @@ lambda (widget)    :action
 
 (defun file-chooser-widget-new (action)
  #+liber-documentation
- "@version{#2021-2-5}
+ "@version{#2023-3-17}
   @argument[action]{a value of the @symbol{gtk:file-chooser-action} enumeration
     for open or save mode}
   @return{A new @class{gtk:file-chooser-widget} widget.}
@@ -345,4 +346,4 @@ lambda (widget)    :action
 
 (export 'file-chooser-widget-new)
 
-;;; --- End of file gtk.file-chooser-widget.lisp -------------------------------
+;;; --- End of file gtk3.file-chooser-widget.lisp ------------------------------

@@ -4,26 +4,27 @@
 ;;; The documentation of this file is taken from the GTK Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
 ;;; Copyright (C) 2013 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkCssProvider
@@ -63,7 +64,7 @@
 ;;;
 ;;; Signals
 ;;;
-;;;     void    parsing-error    Run Last
+;;;     parsing-error
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -93,7 +94,7 @@
 
 #+liber-documentation
 (setf (documentation 'css-provider 'type)
- "@version{#2021-11-18}
+ "@version{#2023-3-17}
   @begin{short}
     The @sym{gtk:css-provider} object is an object implementing the
     @class{gtk:style-provider} interface.
@@ -147,6 +148,7 @@ lambda (provider section error)    :run-last
         @entry[error]{The parsing error of type @code{GError}.}
       @end{table}
   @end{dictionary}
+  @see-constructor{gtk:css-provider-new}
   @see-class{gtk:style-provider}
   @see-class{gtk:css-section}")
 
@@ -157,7 +159,7 @@ lambda (provider section error)    :run-last
 (defcfun ("gtk_css_provider_get_default" css-provider-default)
     (g:object css-provider)
  #+liber-documentation
- "@version{#2021-11-18}
+ "@version{#2023-3-17}
   @return{The @class{gtk:css-provider} object used for fallback styling.}
   @begin{short}
     Returns the provider containing the style settings used as a fallback for
@@ -184,7 +186,7 @@ lambda (provider section error)    :run-last
 
 (defun css-provider-named (name variant)
  #+liber-documentation
- "@version{#2021-11-18}
+ "@version{#2023-3-17}
   @argument[name]{a string with the theme name}
   @argument[variant]{a string with a variant to load}
   @return{The @class{gtk:css-provider} object with the theme loaded.}
@@ -211,7 +213,7 @@ lambda (provider section error)    :run-last
 
 (defun css-provider-load-from-data (provider data)
  #+liber-documentation
- "@version{#2021-11-18}
+ "@version{#2023-3-17}
   @argument[provider]{a @class{gtk:css-provider} object}
   @argument[data]{a string with the CSS data}
   @begin{return}
@@ -242,7 +244,7 @@ lambda (provider section error)    :run-last
 
 (defun css-provider-load-from-file (provider file)
  #+liber-documentation
- "@version{#2021-11-18}
+ "@version{#2023-3-17}
   @argument[provider]{a @class{gtk:css-provider} object}
   @argument[file]{a @class{g:file} object pointing to a file to load}
   @return{@em{True}. The return value is deprecated and @em{false} will only
@@ -272,7 +274,7 @@ lambda (provider section error)    :run-last
 
 (defun css-provider-load-from-path (provider path)
  #+liber-documentation
- "@version{2023-1-29}
+ "@version{2023-3-17}
   @argument[provider]{a @class{gtk:css-provider} object}
   @argument[path]{a pathname or namestring with the path of a filename to load,
     in the GLib filename encoding}
@@ -296,10 +298,10 @@ lambda (provider section error)    :run-last
 ;;; gtk_css_provider_load_from_resource ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_css_provider_load_from_resource"
-           css-provider-load-from-resource) :void
+(defcfun ("gtk_css_provider_load_from_resource" css-provider-load-from-resource)
+    :void
  #+liber-documentation
- "@version{#2021-11-18}
+ "@version{#2023-3-17}
   @argument[provider]{a @class{gtk:css-provider} object}
   @argument[path]{a string with the resource path}
   @begin{short}
@@ -323,7 +325,7 @@ lambda (provider section error)    :run-last
 
 (defun css-provider-new ()
  #+liber-documentation
- "@version{#2021-11-18}
+ "@version{#2023-3-17}
   @return{A new @class{gtk:css-provider} object.}
   @short{Returns a newly created CSS provider object.}
   @see-class{gtk:css-provider}"
@@ -337,7 +339,7 @@ lambda (provider section error)    :run-last
 
 (defcfun ("gtk_css_provider_to_string" css-provider-to-string) :string
  #+liber-documentation
- "@version{#2021-11-18}
+ "@version{#2023-3-17}
   @argument[provider]{a @class{gtk:css-provider} object to write to a string}
   @return{A string representing the provider.}
   @begin{short}
@@ -411,7 +413,7 @@ lambda (provider section error)    :run-last
 (setf (liber:alias-for-symbol 'css-section-type)
       "GEnum"
       (liber:symbol-documentation 'css-section-type)
- "@version{#2021-11-18}
+ "@version{#2023-3-17}
   @begin{short}
     The different types of sections indicate parts of a CSS document as parsed
     by the CSS parser of GTK.
@@ -465,7 +467,7 @@ lambda (provider section error)    :run-last
 (setf (liber:alias-for-class 'css-section)
       "GBoxed"
       (documentation 'css-section 'type)
- "@version{#2023-2-5}
+ "@version{#2023-3-17}
   @begin{short}
     Defines a part of a CSS document.
   @end{short}
@@ -482,7 +484,7 @@ lambda (provider section error)    :run-last
 
 (defcfun ("gtk_css_section_get_end_line" css-section-end-line) :uint
  #+liber-documentation
- "@version{#2021-11-18}
+ "@version{#2023-3-17}
   @argument[section]{a @class{gtk:css-section} instance}
   @return{An unsigned integer with the line number.}
   @begin{short}
@@ -506,7 +508,7 @@ lambda (provider section error)    :run-last
 
 (defcfun ("gtk_css_section_get_end_position" css-section-end-position) :uint
  #+liber-documentation
- "@version{#2021-11-18}
+ "@version{#2023-3-17}
   @argument[section]{a @class{gtk:css-section} instance}
   @return{An unsigned integer with the offset in bytes from the start of the
     line.}
@@ -532,7 +534,7 @@ lambda (provider section error)    :run-last
 
 (defcfun ("gtk_css_provider_get_file" css-section-file) (g:object g:file)
  #+liber-documentation
- "@version{#2021-11-18}
+ "@version{#2023-3-17}
   @argument[section]{a @class{gtk:css-section} instance}
   @return{The @class{g:file} object that section was parsed from or @code{nil}
     if section was parsed from other data.}
@@ -555,7 +557,7 @@ lambda (provider section error)    :run-last
 
 (defcfun ("gtk_css_section_get_parent" css-section-parent) (g:boxed css-section)
  #+liber-documentation
- "@version{#2021-11-18}
+ "@version{#2023-3-17}
   @argument[section]{a @class{gtk:css-section} instance}
   @return{The @symbol{gtk:css-section} parent section, or @code{nil} if none.}
   @begin{short}
@@ -580,7 +582,7 @@ lambda (provider section error)    :run-last
 (defcfun ("gtk_css_section_get_section_type" css-section-section-type)
     css-section-type
  #+liber-documentation
- "@version{#2021-11-18}
+ "@version{#2023-3-17}
   @argument[section]{a @class{gtk:css-section} instance}
   @return{A @symbol{gtk:css-section-type} value for the section.}
   @begin{short}
@@ -598,7 +600,7 @@ lambda (provider section error)    :run-last
 
 (defcfun ("gtk_css_section_get_start_line" css-section-start-line) :uint
  #+liber-documentation
- "@version{#2021-11-18}
+ "@version{#2023-3-17}
   @argument[section]{a @class{gtk:css-section} instance}
   @return{An unsigned integer with the line number.}
   @begin{short}
@@ -615,10 +617,9 @@ lambda (provider section error)    :run-last
 ;;; gtk_css_section_get_start_position () -> css-section-start-position
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_css_section_get_start_position"
-           css-section-start-position) :uint
+(defcfun ("gtk_css_section_get_start_position" css-section-start-position) :uint
  #+liber-documentation
- "@version{#2021-11-18}
+ "@version{#2023-3-17}
   @argument[section]{a @class{gtk:css-section} instance}
   @return{An unsigned integer with the offset in bytes from the start of the
     line.}

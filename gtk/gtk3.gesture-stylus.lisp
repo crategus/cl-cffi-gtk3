@@ -1,29 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.gesture-stylus.lisp
+;;; gtk3.gesture-stylus.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK+ library.
+;;; The documentation of this file is taken from the GTK 3 Reference Manual
+;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
 ;;; Copyright (C) 2019 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkGestureStylus
@@ -81,43 +82,43 @@
   @begin[Signal Details]{dictionary}
     @subheading{The \"down\" signal}
     @begin{pre}
-lambda (gesture arg1 arg2)    : Run Last
+lambda (gesture arg1 arg2)    :run-last
     @end{pre}
     @begin[code]{table}
       @entry[gesture]{The @sym{gtk:gesture-stylus} object on which the signal
         is emitted.}
-      @entry[arg1]{A not documented @code{:double}.}
-      @entry[arg2]{A not documented @code{:double}.}
+      @entry[arg1]{A not documented double float.}
+      @entry[arg2]{A not documented double float.}
     @end{table}
     @subheading{The \"motion\" signal}
     @begin{pre}
-lambda (gesture arg1 arg2)    : Run Last
+lambda (gesture arg1 arg2)    :run-last
     @end{pre}
     @begin[code]{table}
       @entry[gesture]{The @sym{gtk:gesture-stylus} object on which the signal
         is emitted.}
-      @entry[arg1]{A not documented @code{:double}.}
-      @entry[arg2]{A not documented @code{:double}.}
+      @entry[arg1]{A not documented double float.}
+      @entry[arg2]{A not documented double float.}
     @end{table}
     @subheading{The \"proximity\" signal}
     @begin{pre}
-lambda (gesture arg1 arg2)    : Run Last
+lambda (gesture arg1 arg2)    :run-last
     @end{pre}
     @begin[code]{table}
       @entry[gesture]{The @sym{gtk:gesture-stylus} object on which the signal
         is emitted.}
-      @entry[arg1]{A not documented @code{:double}.}
-      @entry[arg2]{A not documented @code{:double}.}
+      @entry[arg1]{A not documented double float.}
+      @entry[arg2]{A not documented double float.}
     @end{table}
     @subheading{The \"up\" signal}
     @begin{pre}
-lambda (gesture arg1 arg2)    : Run Last
+lambda (gesture arg1 arg2)    :run-last
     @end{pre}
     @begin[code]{table}
       @entry[gesture]{The @sym{gtk:gesture-stylus} object on which the signal
         is emitted.}
-      @entry[arg1]{A not documented @code{:double}.}
-      @entry[arg2]{A not documented @code{:double}.}
+      @entry[arg1]{A not documented double float.}
+      @entry[arg2]{A not documented double float.}
     @end{table}
   @end{dictionary}
   @see-class{gtk:gesture}
@@ -135,8 +136,6 @@ lambda (gesture arg1 arg2)    : Run Last
   @begin{short}
     Creates a new stylus gesture.
   @end{short}
-
-  Since 3.24
   @see-class{gtk:gesture-stylus}"
   (make-instance 'gesture-stylus
                  :widget widget))
@@ -156,15 +155,13 @@ lambda (gesture arg1 arg2)    : Run Last
  #+liber-documentation
  "@version{#2023-1-21}
   @argument[gesture]{a @class{gtk:gesture-stylus} object}
-  @argument[axis]{requested device axis of @symbol{gdk:axis-use} type}
-  @return{A @code{:double} with the current value for the axis.}
+  @argument[axis]{a @symbol{gdk:axis-use} value with the requested device axis}
+  @return{A double float with the current value for the axis.}
   @begin{short}
     Returns the current value for the requested axis.
   @end{short}
   This function must be called from either the \"down\", \"motion\", \"up\" or
   \"proximity\" signals.
-
-  Since 3.24
   @see-class{gtk:gesture-stylus}"
   (with-foreign-object (value :double)
     (when (%gesture-stylus-axis gesture axis value)
@@ -194,8 +191,6 @@ lambda (gesture arg1 arg2)    : Run Last
 ;;;
 ;;; Returns :
 ;;;     TRUE if there is a current value for the axes
-;;;
-;;; Since 3.24
 ;;; ----------------------------------------------------------------------------
 
 ;; TODO: Implement the function
@@ -215,8 +210,6 @@ lambda (gesture arg1 arg2)    : Run Last
   @end{short}
   This function must be called from either the \"down\", \"motion\", \"up\" or
   \"proximity\" signal handlers.
-
-  Since 3.24
   @see-class{gtk:gesture-stylus}"
   (gesture (g:object gesture-stylus)))
 

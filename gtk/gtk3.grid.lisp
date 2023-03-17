@@ -1,29 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.grid.lisp
+;;; gtk3.grid.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2012 - 2021 Dieter Kaiser
+;;; Copyright (C) 2012 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkGrid
@@ -60,18 +61,18 @@
 ;;;
 ;;; Properties
 ;;;
-;;;         gint  baseline-row        Read / Write
-;;;     gboolean  column-homogeneous  Read / Write
-;;;         gint  column-spacing      Read / Write
-;;;     gboolean  row-homogeneous     Read / Write
-;;;         gint  row-spacing         Read / Write
+;;;     baseline-row
+;;;     column-homogeneous
+;;;     column-spacing
+;;;     row-homogeneous
+;;;     row-spacing
 ;;;
 ;;; Child Properties
 ;;;
-;;;         gint  height              Read / Write
-;;;         gint  left-attach         Read / Write
-;;;         gint  top-attach          Read / Write
-;;;         gint  width               Read / Write
+;;;     height
+;;;     left-attach
+;;;     top-attach
+;;;     width
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -117,7 +118,7 @@
 
 #+liber-documentation
 (setf (documentation 'grid 'type)
- "@version{#2021-10-30}
+ "@version{#2023-3-17}
   @begin{short}
     The @sym{gtk:grid} widget is a container which arranges its child widgets
     in rows and columns, with arbitrary positions and horizontal/vertical spans.
@@ -167,6 +168,7 @@
       @end{entry}
     @end{table}
   @end{dictionary}
+  @see-constructor{gtk:grid-new}
   @see-slot{gtk:grid-baseline-row}
   @see-slot{gtk:grid-column-homogeneous}
   @see-slot{gtk:grid-column-spacing}
@@ -177,6 +179,8 @@
 ;;; ----------------------------------------------------------------------------
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
+
+;;; --- grid-baseline-row ------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "baseline-row" 'grid) t)
@@ -190,7 +194,7 @@
 (setf (liber:alias-for-function 'grid-baseline-row)
       "Accessor"
       (documentation 'grid-baseline-row 'function)
- "@version{#2021-10-30}
+ "@version{#2023-3-17}
   @syntax[]{(gtk:grid-baseline-row object) => row}
   @syntax[]{(setf (gtk:grid-baseline-row object) row)}
   @argument[object]{a @class{gtk:grid} widget}
@@ -199,21 +203,19 @@
     Accessor of the @slot[gtk:grid]{baseline-row} slot of the @class{gtk:grid}
     class.
   @end{short}
-
-  The @sym{gtk:grid-baseline-row} slot access function returns which row
-  defines the global baseline of the grid. The
-  @sym{(setf gtk:grid-baseline-row)} slot access function sets which row
-  defines the global baseline for the entire grid. Each row in the grid can
-  have its own local baseline, but only one of those is global, meaning it will
-  be the baseline in the parent of the grid.
+  The @sym{gtk:grid-baseline-row} function returns which row defines the global
+  baseline of the grid. The @sym{(setf gtk:grid-baseline-row)} function sets
+  which row defines the global baseline for the entire grid. Each row in the
+  grid can have its own local baseline, but only one of those is global, meaning
+  it will be the baseline in the parent of the grid.
   @see-class{gtk:grid}")
 
-;;; --- grid-column-homogeneous --------------------------------------------
+;;; --- grid-column-homogeneous ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "column-homogeneous" 'grid) t)
- "The @code{column-homogeneous} property of type @code{:boolean}
-  (Read / Write) @br{}
+ "The @code{column-homogeneous} property of type @code{:boolean} (Read / Write)
+  @br{}
   If @em{true}, the columns are all the same width. @br{}
   Default value: @em{false}")
 
@@ -221,7 +223,7 @@
 (setf (liber:alias-for-function 'grid-column-homogeneous)
       "Accessor"
       (documentation 'grid-column-homogeneous 'function)
- "@version{#2021-10-30}
+ "@version{#2023-3-17}
   @syntax[]{(gtk:grid-column-homogeneous object) => homogenous}
   @syntax[]{(setf (gtk:grid-column-homogeneous object) homogenous)}
   @argument[object]{a @class{gtk:grid} widget}
@@ -230,15 +232,13 @@
     Accessor of the @slot[gtk:grid]{column-homogeneous} slot of the
     @class{gtk:grid} class.
   @end{short}
-
-  The @sym{gtk:grid-column-homogeneous} slot access function returns whether
-  all columns of the grid have the same width. The
-  @sym{(setf gtk:grid-column-homogeneous)} slot access function sets whether
-  all columns of the grid will have the same width.
+  The @sym{gtk:grid-column-homogeneous} function returns whether all columns of
+  the grid have the same width. The @sym{(setf gtk:grid-column-homogeneous)}
+  function sets whether all columns of the grid will have the same width.
   @see-class{gtk:grid}
   @see-function{gtk:grid-row-homogeneous}")
 
-;;; --- grid-column-spacing ------------------------------------------------
+;;; --- grid-column-spacing ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "column-spacing" 'grid) t)
@@ -251,7 +251,7 @@
 (setf (liber:alias-for-function 'grid-column-spacing)
       "Accessor"
       (documentation 'grid-column-spacing 'function)
- "@version{#2021-10-30}
+ "@version{#2023-3-17}
   @syntax[]{(gtk:grid-column-spacing object) => spacing}
   @syntax[]{(setf (gtk:grid-column-spacing object) spacing)}
   @argument[object]{a @class{gtk:grid} widget}
@@ -261,20 +261,18 @@
     Accessor of the @slot[gtk:grid]{column-spacing} slot of the
     @class{gtk:grid} class.
   @end{short}
-
-  The @sym{gtk:grid-column-spacing} slot access function returns the amount of
-  space between the columns of the grid. The
-  @sym{(setf gtk:grid-column-spacing)} slot access function sets the amount of
-  space.
+  The @sym{gtk:grid-column-spacing} function returns the amount of space
+  between the columns of the grid. The @sym{(setf gtk:grid-column-spacing)}
+  function sets the amount of space.
   @see-class{gtk:grid}
   @see-function{gtk:grid-row-spacing}")
 
-;;; --- grid-row-homogeneous -----------------------------------------------
+;;; --- grid-row-homogeneous ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "row-homogeneous" 'grid) t)
- "The @code{row-homogeneous} property of type @code{:boolean}
-  (Read / Write) @br{}
+ "The @code{row-homogeneous} property of type @code{:boolean} (Read / Write)
+  @br{}
   If @em{true}, the rows are all the same height. @br{}
   Default value: @em{false}")
 
@@ -282,7 +280,7 @@
 (setf (liber:alias-for-function 'grid-row-homogeneous)
       "Accessor"
       (documentation 'grid-row-homogeneous 'function)
- "@version{#2021-10-30}
+ "@version{#2023-3-17}
   @syntax[]{(gtk:grid-row-homogeneous object) => homogeneous}
   @syntax[]{(setf (gtk:grid-row-homogeneous object) homogeneous)}
   @argument[object]{a @class{gtk:grid} widget}
@@ -291,15 +289,13 @@
     Accessor of the @slot[gtk:grid]{row-homogeneous} slot of the
     @class{gtk:grid} class.
   @end{short}
-
-  The @sym{gtk:grid-row-homogeneous} slot access function returns whether all
-  rows of the grid have the same height. The
-  @sym{(setf gtk:grid-row-homogeneous)} slot access function sets whether all
-  rows of the grid will have the same height.
+  The @sym{gtk:grid-row-homogeneous} function returns whether all rows of the
+  grid have the same height. The @sym{(setf gtk:grid-row-homogeneous)} function
+  sets whether all rows of the grid will have the same height.
   @see-class{gtk:grid}
   @see-function{gtk:grid-column-homogeneous}")
 
-;;; --- grid-row-spacing ---------------------------------------------------
+;;; --- grid-row-spacing -------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "row-spacing" 'grid) t)
@@ -312,7 +308,7 @@
 (setf (liber:alias-for-function 'grid-row-spacing)
       "Accessor"
       (documentation 'grid-row-spacing 'function)
- "@version{#2021-10-30}
+ "@version{#2023-3-17}
   @syntax[]{(gtk:grid-row-spacing object) => spacing}
   @syntax[]{(setf (gtk:grid-row-spacing object) spacing)}
   @argument[object]{a @class{gtk:grid} widget}
@@ -321,10 +317,9 @@
     Accessor of the @slot[gtk:grid]{row-spacing} slot of the @class{gtk:grid}
     class.
   @end{short}
-
-  The @sym{gtk:grid-row-spacing} slot access function returns the amount of
-  space between the rows of the grid. The @sym{(setf gtk:grid-row-spacing)}
-  slot access function sets the amount of space.
+  The @sym{gtk:grid-row-spacing} function returns the amount of space between
+  the rows of the grid. The @sym{(setf gtk:grid-row-spacing)} function sets the
+  amount of space.
   @see-class{gtk:grid}
   @see-function{gtk:grid-column-spacing}")
 
@@ -340,7 +335,7 @@
 (setf (liber:alias-for-function 'grid-child-height)
       "Accessor"
       (documentation 'grid-child-height 'function)
- "@version{#2021-10-30}
+ "@version{#2023-3-17}
   @syntax[]{(gtk:grid-child-height container child) => height}
   @syntax[]{(setf (gtk:grid-child-height container child) height)}
   @argument[container]{a @class{gtk:grid} widget}
@@ -349,7 +344,6 @@
   @begin{short}
     Accessor of the @code{height} child property of the @class{gtk:grid} class.
   @end{short}
-
   The number of rows that a child spans.
   @see-class{gtk:grid}
   @see-class{gtk:widget}
@@ -363,7 +357,7 @@
 (setf (liber:alias-for-function 'grid-child-left-attach)
       "Accessor"
       (documentation 'grid-child-left-attach 'function)
- "@version{#2021-10-30}
+ "@version{#2023-3-17}
   @syntax[]{(gtk:grid-child-left-attach container child) => left-attach}
   @syntax[]{(setf (gtk:grid-child-left-attach container child) left-attach)}
   @argument[container]{a @class{gtk:grid} widget}
@@ -373,7 +367,6 @@
     Accessor of the @code{left-attach} child property of the @class{gtk:grid}
     class.
   @end{short}
-
   The column number to attach the left side of the child to.
   @see-class{gtk:grid}
   @see-class{gtk:widget}
@@ -387,7 +380,7 @@
 (setf (liber:alias-for-function 'grid-child-top-attach)
       "Accessor"
       (documentation 'grid-child-top-attach 'function)
- "@version{#2021-10-30}
+ "@version{#2023-3-17}
   @syntax[]{(gtk:grid-child-top-attach container child) => top-attach}
   @syntax[]{(setf (gtk:grid-child-top-attach container child) top-attach)}
   @argument[container]{a @class{gtk:grid} widget}
@@ -397,7 +390,6 @@
     Accessor of the @code{top-attach} child property of the @class{gtk:grid}
     class.
   @end{short}
-
   The row number to attach the top side of a child widget to.
   @see-class{gtk:grid}
   @see-class{gtk:widget}
@@ -411,7 +403,7 @@
 (setf (liber:alias-for-function 'grid-child-width)
       "Accessor"
       (documentation 'grid-child-width 'function)
- "@version{#2021-10-30}
+ "@version{#2023-3-17}
   @syntax[]{(gtk:grid-child-width container child) => width}
   @syntax[]{(setf (gtk:grid-child-width container child) width)}
   @argument[container]{a @class{gtk:grid} widget}
@@ -420,7 +412,6 @@
   @begin{short}
     Accessor of the @code{width} child property of the @class{gtk:grid} class.
   @end{short}
-
   The number of columns that a child spans.
   @see-class{gtk:grid}
   @see-class{gtk:widget}
@@ -434,7 +425,7 @@
 
 (defun grid-new ()
  #+liber-documentation
- "@version{#2021-10-30}
+ "@version{#2023-3-17}
   @return{The new @class{gtk:grid} widget.}
   @begin{short}
     Creates a new grid container.
@@ -450,7 +441,7 @@
 
 (defcfun ("gtk_grid_attach" grid-attach) :void
  #+liber-documentation
- "@version{#2021-12-17}
+ "@version{#2023-3-17}
   @argument[grid]{a @class{gtk:grid} widget}
   @argument[child]{a @class{gtk:widget} object to add}
   @argument[left]{an integer with the column number to attach the left side of
@@ -485,14 +476,14 @@
 
 (defcfun ("gtk_grid_attach_next_to" grid-attach-next-to) :void
  #+liber-documentation
- "@version{#2021-10-30}
+ "@version{#2023-3-17}
   @argument[grid]{a @class{gtk:grid} widget}
-  @argument[child]{the @class{gtk:widget} to add}
-  @argument[sibling]{the @class{gtk:widget} child of grid that @arg{child} will
-    be placed next to, or @code{nil} to place @arg{child} at the beginning or
-    end}
-  @argument[side]{the side of @arg{sibling} of type @symbol{gtk:position-type}
-    that @arg{child} is positioned next to}
+  @argument[child]{a @class{gtk:widget} widget to add}
+  @argument[sibling]{a @class{gtk:widget} child widget of grid that @arg{child}
+    will be placed next to, or @code{nil} to place @arg{child} at the beginning
+    or end}
+  @argument[side]{a @symbol{gtk:position-type} value with the side of
+  @arg{sibling} that @arg{child} is positioned next to}
   @argument[width]{an integer with the number of columns that @arg{child} will
     span}
   @argument[height]{an integer with the number of rows that @arg{child} will
@@ -523,11 +514,12 @@
 
 (defcfun ("gtk_grid_get_child_at" grid-child-at) (g:object widget)
  #+liber-documentation
- "@version{#2021-10-30}
+ "@version{#2023-3-17}
   @argument[grid]{a @class{gtk:grid} widget}
   @argument[left]{an integer with the left edge of the cell}
   @argument[top]{an integer with the top edge of the cell}
-  @return{The @class{gtk:widget} child at the given position, or @code{nil}.}
+  @return{The @class{gtk:widget} child widget at the given position, or
+    @code{nil}.}
   @begin{short}
     Gets the child of the grid whose area covers the grid cell whose upper
     left corner is at @arg{left}, @arg{top}.
@@ -546,7 +538,7 @@
 
 (defcfun ("gtk_grid_insert_row" grid-insert-row) :void
  #+liber-documentation
- "@version{#2021-10-30}
+ "@version{#2023-3-17}
   @argument[grid]{a @class{gtk:grid} widget}
   @argument[position]{an integer with the position to insert the row at}
   @begin{short}
@@ -568,7 +560,7 @@
 
 (defcfun ("gtk_grid_insert_column" grid-insert-column) :void
  #+liber-documentation
- "@version{#2021-10-30}
+ "@version{#2023-3-17}
   @argument[grid]{a @class{gtk:grid} widget}
   @argument[position]{an integer with the position to insert the column at}
   @begin{short}
@@ -591,7 +583,7 @@
 
 (defcfun ("gtk_grid_remove_row" grid-remove-row) :void
  #+liber-documentation
- "@version{#2021-10-30}
+ "@version{#2023-3-17}
   @argument[grid]{a @class{gtk:grid} widget}
   @argument[position]{an integer with the position of the row to remove}
   @begin{short}
@@ -614,7 +606,7 @@
 
 (defcfun ("gtk_grid_remove_column" grid-remove-column) :void
  #+liber-documentation
- "@version{#2021-10-30}
+ "@version{#2023-3-17}
   @argument[grid]{a @class{gtk:grid} widget}
   @argument[position]{an integer with the position of the column to remove}
   @begin{short}
@@ -637,12 +629,12 @@
 
 (defcfun ("gtk_grid_insert_next_to" grid-insert-next-to) :void
  #+liber-documentation
- "@version{#2021-10-30}
+ "@version{#2023-3-17}
   @argument[grid]{a @class{gtk:grid} widget}
-  @argument[sibling]{the @class{gtk:widget} child of @arg{grid} that the new
+  @argument[sibling]{a @class{gtk:widget} child of @arg{grid} that the new
     row or column will be placed next to}
-  @argument[side]{the side of type @symbol{gtk:position-type} of @arg{sibling}
-    that @arg{child} is positioned next to}
+  @argument[side]{a @symbol{gtk:position-type} value with the side of
+    @arg{sibling} that @arg{child} is positioned next to}
   @begin{short}
     Inserts a row or column at the specified position.
   @end{short}
@@ -667,16 +659,16 @@
 
 (defun (setf grid-row-baseline-position) (position grid row)
   (cffi:foreign-funcall "gtk_grid_set_row_baseline_position"
-                   (g:object grid) grid
-                   :int row
-                   position-type position
-                   :void)
+                        (g:object grid) grid
+                        :int row
+                        position-type position
+                        :void)
   position)
 
 (defcfun ("gtk_grid_get_row_baseline_position"
            grid-row-baseline-position) position-type
  #+liber-documentation
- "@version{#2021-10-30}
+ "@version{#2023-3-17}
   @syntax[]{(gtk:grid-row-baseline-position grid row) => position}
   @syntax[]{(setf (gtk:grid-row-baseline-position grid row) position)}
   @argument[grid]{a @class{gtk:grid} widget}
@@ -685,7 +677,6 @@
   @begin{short}
     Accessor of the baseline position of the @class{gtk:grid} widget.
   @end{short}
-
   The @sym{gtk:grid-row-baseline-position} function returns the baseline
   position of @arg{row} as set by the
   @sym{(setf gtk:grid-row-baseline-position)} function or the @code{:center}
@@ -697,4 +688,4 @@
 
 (export 'grid-row-baseline-position)
 
-;;; --- End of file gtk.grid.lisp ----------------------------------------------
+;;; --- End of file gtk3.grid.lisp ---------------------------------------------

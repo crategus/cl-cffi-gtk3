@@ -312,31 +312,29 @@
   property should be set for title-like items.
   @see-class{gtk:model-button}")
 
-;;; --- model-button-icon --------------------------------------------------
+;;; --- model-button-icon ------------------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "icon"
-                                               'model-button) t)
- "The @code{icon} property of type @class{g-icon} (Read / Write) @br{}
+(setf (documentation (liber:slot-documentation "icon" 'model-button) t)
+ "The @code{icon} property of type @class{g:icon} (Read / Write) @br{}
   An icon that will be used if iconic appearance for the button is desired.")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'model-button-icon)
       "Accessor"
       (documentation 'model-button-icon 'function)
- "@version{#2021-12-23}
+ "@version{#2023-3-17}
   @syntax[]{(gtk:model-button-icon object) => icon}
   @syntax[]{(setf (gtk:model-button-icon object) icon)}
   @argument[object]{a @class{gtk:model-button} widget}
-  @argument[icon]{a @class{g-icon} object}
+  @argument[icon]{a @class{g:icon} object}
   @begin{short}
     Accessor of the @slot[gtk:model-button]{icon} slot of the
     @class{gtk:model-button} class.
   @end{short}
-
   An icon that will be used if iconic appearance for the button is desired.
   @see-class{gtk:model-button}
-  @see-class{g-icon}
+  @see-class{g:icon}
   @see-function{gtk:model-button-iconic}")
 
 ;;; --- model-button-iconic ------------------------------------------------
