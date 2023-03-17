@@ -406,11 +406,11 @@ lambda (icon size)    :run-last
   @end{dictionary}
   @see-class{gtk:status-icon}")
 
-;;; --- status-icon-gicon --------------------------------------------------
+;;; --- status-icon-gicon ------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gicon" 'status-icon) t)
- "The @code{gicon} property of type @class{g-icon} (Read / Write) @br{}
+ "The @code{gicon} property of type @class{g:icon} (Read / Write) @br{}
   The icon displayed in the status icon. For themed icons, the image will be
   updated automatically if the theme changes.")
 
@@ -418,29 +418,27 @@ lambda (icon size)    :run-last
 (setf (liber:alias-for-function 'status-icon-gicon)
       "Accessor"
       (documentation 'status-icon-gicon 'function)
- "@version{#2021-7-22}
+ "@version{#2023-3-17}
   @syntax[]{(gtk:status-icon-gicon object) => icon}
   @syntax[]{(setf (gtk:status-icon-gicon object) icon)}
   @argument[object]{a @class{gtk:status-icon} widget}
-  @argument[icon]{a @class{g-icon} object}
+  @argument[icon]{a @class{g:icon} object}
   @begin{short}
     Accessor of the @slot[gtk:status-icon]{gicon} slot of the
     @class{gtk:status-icon} class.
   @end{short}
-
-  The slot access function @sym{gtk:status-icon-gicon} retrieves icon being
-  displayed by the status icon. The slot access function
-  @sym{(setf gtk:status-icon-gicon)} sets the icon.
+  The @sym{gtk:status-icon-gicon} function retrieves icon being displayed by the
+  status icon. The @sym{(setf gtk:status-icon-gicon)} function sets the icon.
 
   The storage type of the status icon must be the value @code{:empty} or
-  @code{:gicon} of the @symbol{gtk:image-type} enumeration. See the function
-  @fun{gtk:status-icon-storage-type}.
+  @code{:gicon} of the @symbol{gtk:image-type} enumeration. See the
+  @fun{gtk:status-icon-storage-type} function.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:status-icon-gicon} has been deprecated since version
+    The @sym{gtk:status-icon-gicon} function has been deprecated since version
     3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
-  @see-class{g-icon}
+  @see-class{g:icon}
   @see-symbol{gtk:image-type}
   @see-function{gtk:status-icon-storage-type}")
 
@@ -1028,20 +1026,20 @@ lambda (icon size)    :run-last
 (defcfun ("gtk_status_icon_new_from_gicon" status-icon-new-from-gicon)
     (g:object status-icon)
  #+liber-documentation
- "@version{#2021-7-22}
-  @argument[icon]{a @class{g-icon} object}
+ "@version{#2023-3-17}
+  @argument[icon]{a @class{g:icon} object}
   @return{A new @class{gtk:status-icon} object.}
   @begin{short}
-    Creates a status icon displaying a @class{g-icon} object.
+    Creates a status icon displaying a @class{g:icon} object.
   @end{short}
   If the icon is a themed icon, it will be updated when the theme changes.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:status-icon-new-from-gicon} has been deprecated since
+    The @sym{gtk:status-icon-new-from-gicon} function has been deprecated since
     version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
-  @see-class{g-icon}"
-  (icon (g:object g-icon)))
+  @see-class{g:icon}"
+  (icon (g:object g:icon)))
 
 (export 'status-icon-new-from-gicon)
 
@@ -1150,21 +1148,21 @@ lambda (icon size)    :run-last
 
 (defcfun ("gtk_status_icon_set_from_gicon" status-icon-set-from-gicon) :void
  #+liber-documentation
- "@version{#2021-7-22}
+ "@version{#2023-3-17}
   @argument[icon]{a @class{gtk:status-icon} object}
-  @argument[gicon]{a @class{g-icon} object}
+  @argument[gicon]{a @class{g:icon} object}
   @begin{short}
-    Makes the status icon display the @class{g-icon} object.
+    Makes the status icon display the @class{g:icon} object.
   @end{short}
-  See the function @fun{gtk:status-icon-new-from-gicon} for details.
+  See the @fun{gtk:status-icon-new-from-gicon} function for details.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:status-icon-set-from-gicon} has been deprecated since
+    The @sym{gtk:status-icon-set-from-gicon} function has been deprecated since
     version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
   @see-function{gtk:status-icon-new-from-gicon}"
   (icon (g:object status-icon))
-  (gicon (g:object g-icon)))
+  (gicon (g:object g:icon)))
 
 (export 'status-icon-set-from-gicon)
 

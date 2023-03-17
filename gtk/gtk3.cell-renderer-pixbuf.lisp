@@ -177,7 +177,7 @@
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gicon" 'cell-renderer-pixbuf) t)
- "The @code{gicon} property of type @class{g-icon} (Read / Write) @br{}
+ "The @code{gicon} property of type @class{g:icon} (Read / Write) @br{}
   Represents the icon to display. If the icon theme is changed, the image will
   be updated automatically.")
 
@@ -197,7 +197,7 @@
   The @class{g:icon} object representing the icon to display. If the icon theme
   is changed, the image will be updated automatically.
   @see-class{gtk:cell-renderer-pixbuf}
-  @see-class{g-icon}")
+  @see-class{g:icon}")
 
 ;;; --- cell-renderer-pixbuf-icon-name -----------------------------------------
 
