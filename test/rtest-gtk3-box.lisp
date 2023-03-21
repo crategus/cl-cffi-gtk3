@@ -23,39 +23,28 @@
   (is (eq (g:gtype "GtkContainer") (g:type-parent "GtkBox")))
   ;; Check the children
   #-windows
+  (is (equal '("GtkAppChooserWidget" "GtkButtonBox" "GtkColorChooserWidget"
+               "GtkColorSelection" "GtkFileChooserButton" "GtkFileChooserWidget"
+               "GtkFontChooserWidget" "GtkFontSelection" "GtkInfoBar"
+               "GtkPlacesView" "GtkPrinterOptionWidget" "GtkRecentChooserWidget"
+               "GtkShortcutsGroup" "GtkShortcutsSection" "GtkShortcutsShortcut"
+               "GtkStackSwitcher" "GtkStatusbar" "GtkVBox")
+             (list-children "GtkBox")))
+  #+windows
   (is (or (equal '("GtkAppChooserWidget" "GtkButtonBox" "GtkColorChooserWidget"
                    "GtkColorSelection" "GtkFileChooserButton"
                    "GtkFileChooserWidget" "GtkFontChooserWidget"
                    "GtkFontSelection" "GtkHBox" "GtkInfoBar"
-                   "GtkPrinterOptionWidget" "GtkRecentChooserWidget"
-                   "GtkShortcutsGroup" "GtkShortcutsSection"
-                   "GtkShortcutsShortcut" "GtkStackSwitcher" "GtkStatusbar"
-                   "GtkVBox")
-                 (list-children "GtkBox"))
+                   "GtkRecentChooserWidget" "GtkShortcutsGroup"
+                   "GtkShortcutsSection" "GtkShortcutsShortcut"
+                   "GtkStackSwitcher" "GtkStatusbar" "GtkVBox")
+             (list-children "GtkBox"))
           (equal '("GtkAppChooserWidget" "GtkButtonBox" "GtkColorChooserWidget"
                    "GtkColorSelection" "GtkFileChooserButton"
                    "GtkFileChooserWidget" "GtkFontChooserWidget"
                    "GtkFontSelection" "GtkHBox" "GtkInfoBar" "GtkPlacesView"
-                   "GtkPrinterOptionWidget" "GtkRecentChooserWidget"
-                   "GtkShortcutsGroup" "GtkShortcutsSection"
-                   "GtkShortcutsShortcut" "GtkStackSwitcher" "GtkStatusbar"
-                   "GtkVBox")
-                 (list-children "GtkBox"))))
-  #+windows
-  (is (or (equal '("GtkAppChooserWidget" "GtkButtonBox" "GtkColorChooserWidget"
-                   "GtkColorSelection" "GtkFileChooserButton" 
-                   "GtkFileChooserWidget" "GtkFontChooserWidget" 
-                   "GtkFontSelection" "GtkHBox" "GtkInfoBar" 
-                   "GtkRecentChooserWidget" "GtkShortcutsGroup" 
-                   "GtkShortcutsSection" "GtkShortcutsShortcut" 
-                   "GtkStackSwitcher" "GtkStatusbar" "GtkVBox")
-             (list-children "GtkBox"))
-          (equal '("GtkAppChooserWidget" "GtkButtonBox" "GtkColorChooserWidget"
-                   "GtkColorSelection" "GtkFileChooserButton" 
-                   "GtkFileChooserWidget" "GtkFontChooserWidget" 
-                   "GtkFontSelection" "GtkHBox" "GtkInfoBar" "GtkPlacesView" 
                    "GtkRecentChooserWidget" "GtkShortcutsGroup"
-                   "GtkShortcutsSection" "GtkShortcutsShortcut" 
+                   "GtkShortcutsSection" "GtkShortcutsShortcut"
                    "GtkStackSwitcher" "GtkStatusbar" "GtkVBox")
              (list-children "GtkBox"))))
   ;; Check the interfaces

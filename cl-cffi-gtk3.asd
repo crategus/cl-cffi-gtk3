@@ -423,7 +423,7 @@
 ;    (:file "gtk.range")                 ; Base class for adjustments
      (:file "rtest-gtk3-menu-shell")     ; Base class for menu objects
 ;    (:file "gtk.im-context")            ; Base class for input contexts
-;    (:file "gtk3.native-dialog")        ; Integrate with native dialogs
+     (:file "rtest-gtk3-native-dialog")  ; Integrate with native dialogs
 
      ;; Layout Containers
      (:file "rtest-gtk3-box")            ; Container box
