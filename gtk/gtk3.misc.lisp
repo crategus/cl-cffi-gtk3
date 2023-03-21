@@ -4,27 +4,27 @@
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
 ;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkMisc
@@ -96,7 +96,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- misc-xalign --------------------------------------------------------
+;;; --- misc-xalign ------------------------------------------------------------
 
 ;; not exported
 
@@ -112,7 +112,7 @@
 (setf (liber:alias-for-function 'misc-xalign)
       "Accessor"
       (documentation 'misc-xalign 'function)
- "@version{#2021-7-21}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:misc-xalign object) => xalign}
   @syntax[]{(setf (gtk:misc-xalign object) xalign)}
   @argument[object]{a @class{gtk:misc} widget}
@@ -120,12 +120,11 @@
   @begin{short}
     Accessor of the @slot[gtk:misc]{xalign} slot of the @class{gtk:misc} class.
   @end{short}
-
   The horizontal alignment, from 0.0 (left) to 1.0 (right). Reversed
   for RTL layouts.
   @see-class{gtk:misc}")
 
-;;; --- misc-xpad ----------------------------------------------------------
+;;; --- misc-xpad --------------------------------------------------------------
 
 ;; not exported
 
@@ -141,7 +140,7 @@
 (setf (liber:alias-for-function 'misc-xpad)
       "Accessor"
       (documentation 'misc-xpad 'function)
- "@version{#2021-7-21}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:misc-xpad object) => xpad}
   @syntax[]{(setf (gtk:misc-xpad object) xpad)}
   @argument[object]{a @class{gtk:misc} widget}
@@ -149,7 +148,6 @@
   @begin{short}
     Accessor of the @slot[gtk:misc]{xpad} slot of the @class{gtk:misc} class.
   @end{short}
-
   The amount of space to add on the left and right of the widget, in
   pixels.
   @see-class{gtk:misc}")
@@ -169,7 +167,7 @@
 (setf (liber:alias-for-function 'misc-yalign)
       "Accessor"
       (documentation 'misc-yalign 'function)
- "@version{#2021-7-21}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:misc-yalign object) => yalign}
   @syntax[]{(setf (gtk:misc-yalign object) yalign)}
   @argument[object]{a @class{gtk:misc} widget}
@@ -177,7 +175,6 @@
   @begin{short}
     Accessor of the @slot[gtk:misc]{yalign} slot of the @class{gtk:misc} class.
   @end{short}
-
   The vertical alignment, from 0.0 (top) to 1.0 (bottom).
   @see-class{gtk:misc}")
 
@@ -197,7 +194,7 @@
 (setf (liber:alias-for-function 'misc-ypad)
       "Accessor"
       (documentation 'misc-ypad 'function)
- "@version{#2021-7-21}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:misc-ypad object) => ypad}
   @syntax[]{(setf (gtk:misc-ypad object) ypad)}
   @argument[object]{a @class{gtk:misc} widget}
@@ -205,7 +202,6 @@
   @begin{short}
     Accessor of the @slot[gtk:misc]{ypad} slot of the @class{gtk:misc} class.
   @end{short}
-
   The amount of space to add on the top and bottom of the widget, in
   pixels.
   @see-class{gtk:misc}")
@@ -218,7 +214,7 @@
 
 (defun misc-set-alignment (misc xalign yalign)
  #+liber-documentation
- "@version{2023-2-27}
+ "@version{2023-3-21}
   @argument[misc]{a @class{gtk:misc} widget}
   @argument[xalign]{a float with the horizontal alignment, from 0.0 (left)
     to 1.0 (right)}
@@ -245,7 +241,7 @@
 
 (defun misc-set-padding (misc xpad ypad)
  #+liber-documentation
- "@version{2023-2-27}
+ "@version{2023-3-21}
   @argument[misc]{a @class{gtk:misc} widget}
   @argument[xpad]{an integer with the amount of space to add on the left
     and right of the widget, in pixels}
@@ -272,7 +268,7 @@
 
 (defun misc-get-alignment (misc)
  #+liber-documentation
- "@version{2023-2-27}
+ "@version{2023-3-21}
   @argument[misc]{a @class{gtk:misc} widget}
   @begin{return}
     @arg{xalign} -- a float with the x alignment @br{}
@@ -299,7 +295,7 @@
 
 (defun misc-get-padding (misc)
  #+liber-documentation
- "@version{2023-2-27}
+ "@version{2023-3-21}
   @argument[misc]{a @class{gtk:misc} widget}
   @begin{return}
     @arg{xpad} -- an integer with the padding in the x direction @br{}

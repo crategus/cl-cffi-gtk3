@@ -4,27 +4,27 @@
 ;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK+ library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
 ;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkPageSetup
@@ -87,7 +87,7 @@
 
 #+liber-documentation
 (setf (documentation 'page-setup 'type)
- "@version{#2021-3-17}
+ "@version{#2023-3-21}
   @begin{short}
     A @sym{gtk:page-setup} object stores the page size, orientation and margins.
   @end{short}
@@ -102,10 +102,9 @@
   the layout margins that a word processor uses. They are typically used to
   determine the minimal size for the layout margins.
 
-  To obtain a @sym{gtk:page-setup} object use the function
-  @fun{gtk:page-setup-new} to get the defaults, or use the function
-  @fun{gtk:print-run-page-setup-dialog} to show the page setup dialog and
-  receive the resulting page setup.
+  To obtain a @sym{gtk:page-setup} object use the @fun{gtk:page-setup-new}
+  function to get the defaults, or use the @fun{gtk:print-run-page-setup-dialog}
+  function to show the page setup dialog and receive the resulting page setup.
   @begin[Example]{dictionary}
     A page setup dialog.
     @begin{pre}
@@ -117,6 +116,10 @@
   (gtk:print-run-page-setup-dialog window page-setup settings))
     @end{pre}
   @end{dictionary}
+  @see-constructor{gtk:page-setup-new}
+  @see-constructor{gtk:page-setup-new-from-file}
+  @see-constructor{gtk:page-setup-new-from-key-file}
+  @see-constructor{gtk:page-setup-new-from-gvariant}
   @see-class{gtk:print-operation}
   @see-class{gtk:print-settings}")
 
@@ -128,7 +131,7 @@
 
 (defun page-setup-new ()
  #+liber-documentation
- "@version{#2021-3-17}
+ "@version{#2023-3-21}
   @return{A new @class{gtk:page-setup} object.}
   @short{Creates a new page setup object.}
   @see-class{gtk:page-setup}"
@@ -142,8 +145,8 @@
 
 (defcfun ("gtk_page_setup_copy" page-setup-copy) (g:object page-setup)
  #+liber-documentation
- "@version{#2021-3-17}
-  @argument[setup]{the @class{gtk:page-setup} object to copy}
+ "@version{#2023-3-21}
+  @argument[setup]{a @class{gtk:page-setup} object to copy}
   @return{A copy of @arg{setup}.}
   @short{Copies a page setup object.}
   @see-class{gtk:page-setup}"
@@ -158,15 +161,15 @@
 
 (defun (setf page-setup-orientation) (orientation setup)
   (cffi:foreign-funcall "gtk_page_setup_set_orientation"
-                   (g:object page-setup) setup
-                   page-orientation orientation
-                   :void)
+                        (g:object page-setup) setup
+                        page-orientation orientation
+                        :void)
   orientation)
 
 (defcfun ("gtk_page_setup_get_orientation" page-setup-orientation)
     page-orientation
  #+liber-documentation
- "@version{#2021-3-17}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:page-setup-orientation setup) => orientation}
   @syntax[]{(setf (gtk:page-setup-orientation setup) orientation)}
   @argument[setup]{a @class{gtk:page-setup} object}
@@ -174,9 +177,8 @@
   @begin{short}
     Accessor for the page orientation of a page setup object.
   @end{short}
-
-  The function @sym{gtk:page-setup-orientation} gets the page orientation of
-  the page setup object. The function @sym{(setf gtk:page-setup-orientation)}
+  The @sym{gtk:page-setup-orientation} function gets the page orientation of
+  the page setup object. The @sym{(setf gtk:page-setup-orientation)} function
   sets the page orientation.
 
   Possible values are @code{:portrait} and @code{:landscape}.
@@ -201,15 +203,15 @@
 
 (defun (setf page-setup-paper-size) (size setup)
   (cffi:foreign-funcall "gtk_page_setup_set_paper_size"
-                   (g:object page-setup) setup
-                   (g:boxed paper-size) size
-                   :void)
+                        (g:object page-setup) setup
+                        (g:boxed paper-size) size
+                        :void)
   size)
 
 (defcfun ("gtk_page_setup_get_paper_size" page-setup-paper-size)
     (g:boxed paper-size)
  #+liber-documentation
- "@version{#2021-3-17}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:page-setup-paper-size setup) => size}
   @syntax[]{(setf (gtk:page-setup-paper-size setup) size)}
   @argument[setup]{a @class{gtk:page-setup} object}
@@ -217,11 +219,10 @@
   @begin{short}
     Accessor for the paper size of a page setup object.
   @end{short}
-
-  The function @sym{gtk:page-setup-paper-size} gets the paper size of the page
-  setup object. The function @sym{(setf gtk:page-setup-paper-size)} sets the
-  paper size without changing the margins. See the function
-  @fun{gtk:page-setup-set-paper-size-and-default-margins}.
+  The @sym{gtk:page-setup-paper-size} function gets the paper size of the page
+  setup object. The @sym{(setf gtk:page-setup-paper-size)} function sets the
+  paper size without changing the margins. See the
+  @fun{gtk:page-setup-set-paper-size-and-default-margins} function.
   @see-class{gtk:page-setup}
   @see-class{gtk:paper-size}
   @see-function{gtk:page-setup-set-paper-size-and-default-margins}"
@@ -236,15 +237,15 @@
 
 (defun (setf page-setup-top-margin) (margin setup unit)
   (cffi:foreign-funcall "gtk_page_setup_set_top_margin"
-                   (g:object page-setup) setup
-                   :double (coerce margin 'double-float)
-                   unit unit
-                   :void)
+                        (g:object page-setup) setup
+                        :double (coerce margin 'double-float)
+                        unit unit
+                        :void)
   margin)
 
 (defcfun ("gtk_page_setup_get_top_margin" page-setup-top-margin) :double
  #+liber-documentation
- "@version{#2021-3-17}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:page-setup-top-margin setup unit) => margin}
   @syntax[]{(setf (gtk:page-setup-top-margin setup unit) margin)}
   @argument[setup]{a @class{gtk:page-setup} object}
@@ -253,10 +254,9 @@
   @begin{short}
     Accessor of the top margin of the page setup in units of @arg{unit}.
   @end{short}
-
-  The function @sym{gtk:page-setup-top-margin} gets the top margin of
-  the page setup in units of @arg{unit}. The function
-  @sym{(setf gtk:page-setup-top-margin)} sets the top margin.
+  The @sym{gtk:page-setup-top-margin} function gets the top margin of the page
+  setup in units of @arg{unit}. The @sym{(setf gtk:page-setup-top-margin)}
+  function sets the top margin.
   @see-class{gtk:page-setup}
   @see-symbol{gtk:unit}"
   (setup (g:object page-setup))
@@ -271,29 +271,27 @@
 
 (defun (setf page-setup-bottom-margin) (margin setup unit)
   (cffi:foreign-funcall "gtk_page_setup_set_bottom_margin"
-                   (g:object page-setup) setup
-                   :double (coerce margin 'double-float)
-                   unit unit
-                   :void)
+                        (g:object page-setup) setup
+                        :double (coerce margin 'double-float)
+                        unit unit
+                        :void)
   margin)
 
-(defcfun ("gtk_page_setup_get_bottom_margin" page-setup-bottom-margin)
-    :double
+(defcfun ("gtk_page_setup_get_bottom_margin" page-setup-bottom-margin) :double
  #+liber-documentation
- "@version{#2021-3-17}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:page-setup-bottom-margin setup unit) => margin}
   @syntax[]{(setf gtk:page-setup-bottom-margin setup unit) margin)}
   @argument[setup]{a @class{gtk:page-setup} object}
-  @argument[unit]{the @symbol{gtk:unit} value}
+  @argument[unit]{a @symbol{gtk:unit} value}
   @argument[margin]{a double float with the bottom margin in units of
     @arg{unit}}
   @begin{short}
     Accessor of the bottom margin of the page setup in units of @arg{unit}.
   @end{short}
-
-  The function @sym{gtk:page-setup-bottom-margin} gets the bottom margin of
-  the page setup in units of @arg{unit}. The function
-  @sym{(setf gtk:page-setup-bottom-margin)} sets the bottom margin.
+  The @sym{gtk:page-setup-bottom-margin} function gets the bottom margin of
+  the page setup in units of @arg{unit}. The
+  @sym{(setf gtk:page-setup-bottom-margin)} function sets the bottom margin.
   @see-class{gtk:page-setup}
   @see-symbol{gtk:unit}"
   (setup (g:object page-setup))
@@ -308,27 +306,26 @@
 
 (defun (setf page-setup-left-margin) (margin setup unit)
   (cffi:foreign-funcall "gtk_page_setup_set_left_margin"
-                   (g:object page-setup) setup
-                   :double (coerce margin 'double-float)
-                   unit unit
-                   :void)
+                        (g:object page-setup) setup
+                        :double (coerce margin 'double-float)
+                        unit unit
+                        :void)
   margin)
 
 (defcfun ("gtk_page_setup_get_left_margin" page-setup-left-margin) :double
  #+liber-documentation
- "@version{#2021-3-17}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:page-setup-left-margin setup unit) => margin}
   @syntax[]{(setf gtk:page-setup-left-margin setup unit) margin)}
   @argument[setup]{a @class{gtk:page-setup} object}
-  @argument[unit]{the @symbol{gtk:unit} value}
+  @argument[unit]{a @symbol{gtk:unit} value}
   @argument[margin]{a double float with the left margin in units of @arg{unit}}
   @begin{short}
     Accessor of the left margin of the page setup in units of @arg{unit}.
   @end{short}
-
-  The function @sym{gtk:page-setup-left-margin} gets the left margin of
-  the page setup in units of @arg{unit}. The function
-  @sym{(setf gtk:page-setup-left-margin)} sets the left margin.
+  The @sym{gtk:page-setup-left-margin} function gets the left margin of the
+  page setup in units of @arg{unit}. The @sym{(setf gtk:page-setup-left-margin)}
+  function sets the left margin.
   @see-class{gtk:page-setup}
   @see-symbol{gtk:unit}"
   (setup (g:object page-setup))
@@ -343,27 +340,26 @@
 
 (defun (setf page-setup-right-margin) (margin setup unit)
   (cffi:foreign-funcall "gtk_page_setup_set_right_margin"
-                   (g:object page-setup) setup
-                   :double (coerce margin 'double-float)
-                   unit unit
-                   :void)
+                        (g:object page-setup) setup
+                        :double (coerce margin 'double-float)
+                        unit unit
+                        :void)
   margin)
 
 (defcfun ("gtk_page_setup_get_right_margin" page-setup-right-margin) :double
  #+liber-documentation
- "@version{#2021-3-17}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:page-setup-right-margin setup unit) => margin}
   @syntax[]{(setf gtk:page-setup-right-margin setup unit) margin)}
   @argument[setup]{a @class{gtk:page-setup} object}
-  @argument[unit]{the @symbol{gtk:unit} value}
+  @argument[unit]{a @symbol{gtk:unit} value}
   @argument[margin]{a double float with the right margin in units of @arg{unit}}
   @begin{short}
     Accessor of the right margin of the page setup in units of @arg{unit}.
   @end{short}
-
-  The function @sym{gtk:page-setup-right-margin} gets the right margin of
-  the page setup in units of @arg{unit}. The function
-  @sym{(setf gtk:page-setup-right-margin)} sets the right margin.
+  The @sym{gtk:page-setup-right-margin} function gets the right margin of the
+  page setup in units of @arg{unit}. The
+  @sym{(setf gtk:page-setup-right-margin)} function sets the right margin.
   @see-class{gtk:page-setup}
   @see-symbol{gtk:unit}"
   (setup (g:object page-setup))
@@ -378,7 +374,7 @@
 (defcfun ("gtk_page_setup_set_paper_size_and_default_margins"
            page-setup-set-paper-size-and-default-margins) :void
  #+liber-documentation
- "@version{#2021-3-17}
+ "@version{#2023-3-21}
   @argument[setup]{a @class{gtk:page-setup} object}
   @argument[size]{a @class{gtk:paper-size} instance}
   @begin{short}
@@ -398,14 +394,13 @@
 
 (defcfun ("gtk_page_setup_get_paper_width" page-setup-paper-width) :double
  #+liber-documentation
- "@version{#2021-3-17}
+ "@version{#2023-3-21}
   @argument[setup]{a @class{gtk:page-setup} object}
-  @argument[unit]{the @symbol{gtk:unit} value for the return value}
+  @argument[unit]{a @symbol{gtk:unit} value for the return value}
   @return{A double float with the paper width.}
   @short{Returns the paper width of the page setup in units of @arg{unit}.}
-
   Note that this function takes orientation, but not margins into consideration.
-  See the function @fun{gtk:page-setup-page-width}.
+  See the @fun{gtk:page-setup-page-width} function.
   @see-class{gtk:page-setup}
   @see-symbol{gtk:unit}
   @see-function{gtk:page-setup-page-width}"
@@ -420,14 +415,13 @@
 
 (defcfun ("gtk_page_setup_get_paper_height" page-setup-paper-height) :double
  #+liber-documentation
- "@version{#2021-3-17}
+ "@version{#2023-3-21}
   @argument[setup]{a @class{gtk:page-setup} object}
-  @argument[unit]{the @symbol{gtk:unit} value for the return value}
+  @argument[unit]{a @symbol{gtk:unit} value for the return value}
   @return{A double float with the paper height.}
   @short{Returns the paper height of the page setup in units of @arg{unit}.}
-
   Note that this function takes orientation, but not margins into consideration.
-  See the function @fun{gtk:page-setup-page-height}.
+  See the @fun{gtk:page-setup-page-height} function.
   @see-class{gtk:page-setup}
   @see-symbol{gtk:unit}
   @see-function{gtk:page-setup-page-height}"
@@ -442,14 +436,13 @@
 
 (defcfun ("gtk_page_setup_get_page_width" page-setup-page-width) :double
  #+liber-documentation
- "@version{#2021-3-17}
+ "@version{#2023-3-21}
   @argument[setup]{a @class{gtk:page-setup} object}
-  @argument[unit]{the @symbol{gtk:unit} value for the return value}
+  @argument[unit]{a @symbol{gtk:unit} value for the return value}
   @return{A double float with the page width.}
   @short{Returns the page width of the page setup in units of @arg{unit}.}
-
   Note that this function takes orientation and margins into consideration.
-  See the function @fun{gtk:page-setup-paper-width}.
+  See the @fun{gtk:page-setup-paper-width} function.
   @see-class{gtk:page-setup}
   @see-symbol{gtk:unit}
   @see-function{gtk:page-setup-paper-width}"
@@ -464,14 +457,13 @@
 
 (defcfun ("gtk_page_setup_get_page_height" page-setup-page-height) :double
  #+liber-documentation
- "@version{#2021-3-17}
+ "@version{#2023-3-21}
   @argument[setup]{a @class{gtk:page-setup} object}
-  @argument[unit]{the @symbol{gtk:unit} value for the return value}
+  @argument[unit]{a @symbol{gtk:unit} value for the return value}
   @return{A double float with the page height.}
   @short{Returns the page height of the page setup in units of @arg{unit}.}
-
   Note that this function takes orientation and margins into consideration.
-  See the function @fun{gtk:page-setup-paper-height}.
+  See the @fun{gtk:page-setup-paper-height} function.
   @see-class{gtk:page-setup}
   @see-symbol{gtk:unit}
   @see-function{gtk:page-setup-paper-height}"
@@ -491,7 +483,7 @@
 
 (defun page-setup-new-from-file (path)
  #+liber-documentation
- "@version{2023-1-29}
+ "@version{2023-3-21}
   @argument[path]{a pathname or namestring with the file to read the page setup
     from}
   @return{The restored @class{gtk:page-setup} object.}
@@ -499,8 +491,8 @@
     Reads the page setup from a file.
   @end{short}
   Returns a new @class{gtk:page-setup} object with the restored page setup,
-  or @code{nil} if an error occurred. See the function
-  @fun{gtk:page-setup-to-file}.
+  or @code{nil} if an error occurred. See the @fun{gtk:page-setup-to-file}
+  function.
   @see-class{gtk:page-setup}
   @see-function{gtk:page-setup-to-file}"
   (with-ignore-g-error (err)
@@ -520,7 +512,7 @@
 
 (defun page-setup-new-from-key-file (keyfile groupname)
  #+liber-documentation
- "@version{#2021-3-17}
+ "@version{#2023-3-21}
   @argument[keyfile]{a @type{g:key-file} instance to retrieve the page setup
     from}
   @argument[groupname]{a string with the name of the group in the key file to
@@ -545,12 +537,12 @@
 (defcfun ("gtk_page_setup_new_from_gvariant" page-setup-new-from-gvariant)
     (g:object page-setup)
  #+liber-documentation
- "@version{#2023-3-13}
+ "@version{#2023-3-21}
   @argument[variant]{a @code{a{sv@}} @type{g:variant} instance}
   @return{A new @class{gtk:page-setup} object.}
   @begin{short}
     Desrialize a page setup from an @code{a{sv@}} variant in the format
-    produced by the function @fun{gtk:page-setup-to-gvariant}.
+    produced by the @fun{gtk:page-setup-to-gvariant} function.
   @end{short}
   @see-class{gtk:page-setup}
   @see-type{g:variant}
@@ -570,7 +562,7 @@
 
 (defun page-setup-load-file (setup path)
  #+liber-documentation
- "@version{2023-1-29}
+ "@version{2023-3-21}
   @argument[setup]{a @class{gtk:page-setup} object}
   @argument[path]{a pathname or namestring with the file to read the page setup
     from}
@@ -578,7 +570,7 @@
   @begin{short}
     Reads the page setup from a file.
   @end{short}
-  See the function @fun{gtk:page-setup-to-file}.
+  See the @fun{gtk:page-setup-to-file} function.
   @see-class{gtk:page-setup}
   @see-function{gtk:page-setup-to-file}"
   (with-ignore-g-error (err)
@@ -598,9 +590,9 @@
 
 (defun page-setup-load-key-file (setup keyfile groupname)
  #+liber-documentation
- "@version{#2021-3-17}
+ "@version{#2023-3-21}
   @argument[setup]{a @class{gtk:page-setup} object}
-  @argument[keyfile]{the @type{g:key-file} instance to retrieve the page
+  @argument[keyfile]{a @type{g:key-file} instance to retrieve the page
     setup from}
   @argument[groupname]{a string with the name of the group in the key file to
     read, or @code{nil} to use the default name \"Page Setup\"}
@@ -626,7 +618,7 @@
 
 (defun page-setup-to-file (setup path)
  #+liber-documentation
- "@version{2023-1-29}
+ "@version{2023-3-21}
   @argument[setup]{a @class{gtk:page-setup} object}
   @argument[path]{a pathname or namestring with the file to save to}
   @return{@em{True} on sucess.}
@@ -650,9 +642,9 @@
 
 (defun page-setup-to-key-file (setup keyfile groupname)
  #+liber-documentation
- "@version{#2021-3-17}
+ "@version{#2023-3-21}
   @argument[setup]{a @class{gtk:page-setup} object}
-  @argument[keyfile]{the @type{g:key-file} instance to save the page setup to}
+  @argument[keyfile]{a @type{g:key-file} instance to save the page setup to}
   @argument[groupname]{a string with the group to add the settings to in the
     key file, or @code{nil} to use the default name \"Page Setup\"}
   @begin{short}
@@ -673,7 +665,7 @@
 (defcfun ("gtk_page_setup_to_gvariant" page-setup-to-gvariant)
     (:pointer (:struct g:variant))
  #+liber-documentation
- "@version{#2023-3-13}
+ "@version{#2023-3-21}
   @argument[setup]{a @class{gtk:page-setup} object}
   @return{A new @type{g:variant} instance.}
   @begin{short}

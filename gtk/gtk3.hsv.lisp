@@ -1,30 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.hsv.lisp
+;;; gtk3.hsv.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkHSV
@@ -48,8 +48,8 @@
 ;;;
 ;;; Signals
 ;;;
-;;;     void    changed    Run First
-;;;     void    move       Action
+;;;     changed
+;;;     move
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -79,7 +79,7 @@
 
 #+liber-documentation
 (setf (documentation 'hsv 'type)
- "@version{#2021-7-20}
+ "@version{#2023-3-20}
   @begin{short}
     The @sym{gtk:hsv} widget is the \"color wheel\" part of a complete color
     selector widget.
@@ -94,14 +94,14 @@
   @begin[Signal Details]{dictionary}
     @subheading{The \"changed\" signal}
       @begin{pre}
- lambda (hsv)    :run-first
+lambda (hsv)    :run-first
       @end{pre}
       @begin[code]{table}
         @entry[hsv]{The @sym{gtk:hsv} widget which received the signal.}
       @end{table}
     @subheading{The \"move\" signal}
       @begin{pre}
- lambda (hsv direction)    :action
+lambda (hsv direction)    :action
       @end{pre}
       @begin[code]{table}
         @entry[hsv]{The @sym{gtk:hsv} widget which received the signal.}
@@ -109,6 +109,7 @@
           enumeration.}
       @end{table}
   @end{dictionary}
+  @see-constructor{gtk:hsv-new}
   @see-class{gtk:color-selection}
   @see-class{gtk:color-selection-dialog}")
 
@@ -120,13 +121,13 @@
 
 (defun hsv-new ()
  #+liber-documentation
- "@version{#2021-7-20}
+ "@version{#2023-3-20}
   @return{A newly-created @class{gtk:hsv} widget.}
   @begin{short}
     Creates a new HSV color selector.
   @end{short}
   @begin[Warning]{dictionary}
-    The function @sym{gtk:hsv-new} is deprecated since version 3.4 and should
+    The @sym{gtk:hsv-new} function is deprecated since version 3.4 and should
     not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:hsv}"
@@ -140,7 +141,7 @@
 
 (defcfun ("gtk_hsv_set_color" hsv-set-color) :void
  #+liber-documentation
- "@version{#2021-7-20}
+ "@version{#2023-3-20}
   @argument[hsv]{a @class{gtk:hsv} widget}
   @argument[h]{a double float hue component}
   @argument[s]{a double float saturation component}
@@ -150,7 +151,7 @@
   @end{short}
   Color component values must be in the [0.0, 1.0] range.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:hsv-set-color} is deprecated since version 3.4 and
+    The @sym{gtk:hsv-set-color} function is deprecated since version 3.4 and
     should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:hsv}"
@@ -173,19 +174,19 @@
 
 (defun hsv-get-color (hsv)
  #+liber-documentation
- "@version{#2021-7-20}
+ "@version{#2023-3-20}
   @argument[hsv]{a @class{gtk:hsv} widget}
   @begin{return}
-    @code{h} -- a double float hue component @br{}
-    @code{s} -- a double float saturation component @br{}
-    @code{v} -- a double float value component
+    @arg{h} -- a double float hue component @br{}
+    @arg{s} -- a double float saturation component @br{}
+    @arg{v} -- a double float value component
   @end{return}
   @begin{short}
     Queries the current color in an HSV color selector.
   @end{short}
   Returned values will be in the [0.0, 1.0] range.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:hsv-get-color} is deprecated since version 3.4 and
+    The @sym{gtk:hsv-get-color} function is deprecated since version 3.4 and
     should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:hsv}"
@@ -203,13 +204,13 @@
 
 (defcfun ("gtk_hsv_set_metrics" hsv-set-metrics) :void
  #+liber-documentation
- "@version{#2021-7-20}
+ "@version{#2023-3-20}
   @argument[hsv]{a @class{gtk:hsv} widget}
   @argument[size]{an integer with the diameter for the hue ring}
   @argument[width]{an integer with the width of the hue ring}
   @short{Sets the size and ring width of an HSV color selector.}
   @begin[Warning]{dictionary}
-    The function @sym{gtk:hsv-set-metrics} is deprecated since version 3.4 and
+    The @sym{gtk:hsv-set-metrics} function is deprecated since version 3.4 and
     should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:hsv}"
@@ -230,11 +231,11 @@
 
 (defun hsv-get-metrics (hsv)
  #+liber-documentation
- "@version{#2021-7-20}
+ "@version{#2023-3-20}
   @argument[hsv]{a @class{gtk:hsv} widget}
   @begin{return}
-    @code{size} -- an integer with the diameter of the hue ring @br{}
-    @code{width} -- an integer with the width of the hue ring
+    @arg{size} -- an integer with the diameter of the hue ring @br{}
+    @arg{width} -- an integer with the width of the hue ring
   @end{return}
   @short{Queries the size and ring width of an HSV color selector.}
   @begin[Warning]{dictionary}
@@ -254,7 +255,7 @@
 
 (defcfun ("gtk_hsv_is_adjusting" hsv-is-adjusting) :boolean
  #+liber-documentation
- "@version{#2021-7-20}
+ "@version{#2023-3-20}
   @argument[hsv]{a @class{gtk:hsv} widget}
   @begin{return}
     @em{True} if clients can ignore changes to the color value, since they may
@@ -267,9 +268,8 @@
     value with the mouse.
   @end{short}
   This function queries whether the HSV color selector is being adjusted or not.
-  @see-class{gtk:hsv}
   @begin[Warning]{dictionary}
-    The function @sym{gtk:hsv-is-adjusting} is deprecated since version 3.4 and
+    The @sym{gtk:hsv-is-adjusting} function is deprecated since version 3.4 and
     should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:hsv}"
@@ -291,14 +291,14 @@
 
 (defun hsv-to-rgb (h s v)
  #+liber-documentation
- "@version{#2021-5-30}
+ "@version{#2023-3-20}
   @argument[h]{a double float hue component}
   @argument[s]{a double float saturation component}
   @argument[v]{a double float value component}
   @begin{return}
-    @code{r} -- a double float red component @br{}
-    @code{g} -- a double float green component @br{}
-    @code{b} -- a double float blue component
+    @arg{r} -- a double float red component @br{}
+    @arg{g} -- a double float green component @br{}
+    @arg{b} -- a double float blue component
   @end{return}
   @begin{short}
     Converts a color from HSV space to RGB. Input values must be in the
@@ -328,14 +328,14 @@
 
 (defun rgb-to-hsv (r g b)
  #+liber-documentation
- "@version{#2021-7-20}
+ "@version{#2023-3-20}
   @argument[r]{a double float red component}
   @argument[g]{a double float green component}
   @argument[b]{a double float blue component}
   @begin{return}
-    @code{h} -- the double float hue component @br{}
-    @code{s} -- the double float saturation component @br{}
-    @code{v} -- the double float value component
+    @arg{h} -- the double float hue component @br{}
+    @arg{s} -- the double float saturation component @br{}
+    @arg{v} -- the double float value component
   @end{return}
   @begin{short}
     Converts a color from RGB space to HSV. Input values must be in the
@@ -351,4 +351,4 @@
 
 (export 'rgb-to-hsv)
 
-;;; --- End of file gtk.hsv.lisp -----------------------------------------------
+;;; --- End of file gtk3.hsv.lisp ----------------------------------------------

@@ -1,29 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.info-bar.lisp
+;;; gtk3.info-bar.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2012 - 2022 Dieter Kaiser
+;;; Copyright (C) 2012 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkInfoBar
@@ -55,21 +56,21 @@
 ;;;
 ;;; Properties
 ;;;
-;;;     GtkMessageType  message-type         Read / Write / Construct
-;;;           gboolean  revealed             Read / Write
-;;;           gboolean  show-close-button    Read / Write / Construct
+;;;     message-type
+;;;     revealed
+;;;     show-close-button
 ;;;
 ;;; Style Properties
 ;;;
-;;;     gint  action-area-border      Read
-;;;     gint  button-spacing          Read
-;;;     gint  content-area-border     Read
-;;;     gint  content-area-spacing    Read
+;;;     action-area-border
+;;;     button-spacing
+;;;     content-area-border
+;;;     content-area-spacing
 ;;;
 ;;; Signals
 ;;;
-;;;     void  close       Action
-;;;     void  response    Run Last
+;;;     close
+;;;     response
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -111,7 +112,7 @@
 
 #+liber-documentation
 (setf (documentation 'info-bar 'type)
- "@version{#2021-12-22}
+ "@version{#2023-3-20}
   @begin{short}
     The @sym{gtk:info-bar} widget can be used to show messages to the user
     without showing a dialog.
@@ -120,7 +121,7 @@
   to the @class{gtk:dialog} widget, which has a horizontal action area at the
   bottom, the info bar has a vertical action area at the side.
 
-  @image[info-bar]{}
+  @image[info-bar]{Figure: GtkInfoBar}
 
   The API of the @sym{gtk:info-bar} widget is very similar to the
   @class{gtk:dialog} widget, allowing you to add buttons to the action area
@@ -132,8 +133,8 @@
 
   Similar to @class{gtk:message-dialog} widget, the contents of an info bar can
   by classified as error message, warning, informational message, etc, by using
-  the @fun{gtk:info-bar-message-type} slot access function. GTK uses the message
-  type to determine the background color of the message area.
+  the @fun{gtk:info-bar-message-type} function. GTK uses the message type to
+  determine the background color of the message area.
   @begin[Example]{dictionary}
     Simple info bar usage.
     @begin{pre}
@@ -228,7 +229,7 @@
   @begin[Signal Details]{dictionary}
     @subheading{The \"close\" signal}
       @begin{pre}
- lambda (infobar)    :action
+lambda (infobar)    :action
       @end{pre}
       The signal is a keybinding signal which gets emitted when the user uses a
       keybinding to dismiss the info bar. The default binding for this signal
@@ -239,7 +240,7 @@
       @end{table}
     @subheading{The \"response\" signal}
       @begin{pre}
- lambda (infobar response)    :run-last
+lambda (infobar response)    :run-last
       @end{pre}
       Emitted when an action widget is clicked or the application programmer
       calls the @fun{gtk:dialog-response} function. The @arg{response} argument
@@ -250,6 +251,8 @@
         @entry[response]{An integer with the response ID.}
       @end{table}
   @end{dictionary}
+  @see-constructor{gtk:info-bar-new}
+  @see-constructor{gtk:info-bar-new-with-buttons}
   @see-slot{gtk:info-bar-message-type}
   @see-slot{gtk:info-bar-revealed}
   @see-slot{gtk:info-bar-show-close-button}
@@ -260,7 +263,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- info-bar-message-type ----------------------------------------------
+;;; --- info-bar-message-type --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "message-type" 'info-bar) t)
@@ -274,7 +277,7 @@
 (setf (liber:alias-for-function 'info-bar-message-type)
       "Accessor"
       (documentation 'info-bar-message-type 'function)
- "@version{#2021-12-22}
+ "@version{#2023-3-20}
   @syntax[]{(gtk:info-bar-message-type object) => message-type}
   @syntax[]{(setf (gtk:info-bar-message-type object) message-type)}
   @argument[object]{a @class{gtk:info-bar} widget}
@@ -283,10 +286,9 @@
     Accessor of the @slot[gtk:info-bar]{message-type} slot of the
     @class{gtk:info-bar} class.
   @end{short}
-
-  The @sym{gtk:info-bar-message-type} slot access function returns the message
-  type of the message area. The @sym{(setf gtk:info-bar-message-type)} slot
-  access function sets the message type.
+  The @sym{gtk:info-bar-message-type} function returns the message type of the
+  message area. The @sym{(setf gtk:info-bar-message-type)} function sets the
+  message type.
 
   GTK uses this type to determine what color to use when drawing the message
   area.
@@ -304,7 +306,7 @@
 (setf (liber:alias-for-function 'info-bar-revealed)
       "Accessor"
       (documentation 'info-bar-revealed 'function)
- "@version{#2023-3-13}
+ "@version{#2023-3-20}
   @syntax[]{(gtk:info-bar-revealed object) => revealed}
   @syntax[]{(setf (gtk:info-bar-revealed object) revealed)}
   @argument[object]{a @class{gtk:info-bar} widget}
@@ -322,7 +324,7 @@
   any effect if it is invisible.
   @see-class{gtk:info-bar}")
 
-;;; --- info-bar-show-close-button -----------------------------------------
+;;; --- info-bar-show-close-button ---------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "show-close-button"
@@ -336,7 +338,7 @@
 (setf (liber:alias-for-function 'info-bar-show-close-button)
       "Accessor"
       (documentation 'info-bar-show-close-button 'function)
- "@version{#2021-12-22}
+ "@version{#2023-3-20}
   @syntax[]{(gtk:info-bar-show-close-button object) => setting}
   @syntax[]{(setf (gtk:info-bar-show-close-button object) setting)}
   @argument[object]{a @class{gtk:info-bar} widget}
@@ -345,10 +347,9 @@
     Accessor of the @slot[gtk:info-bar]{show-close-button} slot of the
     @class{gtk:info-bar} class.
   @end{short}
-
-  The @sym{gtk:info-bar-show-close-button} slot access function returns whether
-  the widget will display a standard Close button. If @em{true}, a standard
-  Close button is shown. When clicked it emits the @code{:close} response.
+  The @sym{gtk:info-bar-show-close-button} function returns whether the widget
+  will display a standard Close button. If @em{true}, a standard Close button
+  is shown. When clicked it emits the @code{:close} response.
   @see-class{gtk:info-bar}")
 
 ;;; ----------------------------------------------------------------------------
@@ -359,7 +360,7 @@
 
 (defun info-bar-new ()
  #+liber-documentation
- "@version{#2021-12-22}
+ "@version{#2023-3-20}
   @return{A new @class{gtk:info-bar} widget.}
   @short{Creates a new info bar.}
   @see-class{gtk:info-bar}"
@@ -373,7 +374,7 @@
 
 (defun info-bar-new-with-buttons (&rest args)
  #+liber-documentation
- "@version{#2021-12-22}
+ "@version{#2023-3-20}
   @argument[args]{first a string with the text and second an integer with the
     response ID for each button, then more pairs for each button}
   @return{A new @class{gtk:info-bar} widget.}
@@ -397,7 +398,7 @@
 
 (defcfun ("gtk_info_bar_add_action_widget" info-bar-add-action-widget) :void
  #+liber-documentation
- "@version{#2021-12-22}
+ "@version{#2023-3-20}
   @argument[infobar]{a @class{gtk:info-bar} widget}
   @argument[child]{an activatable widget}
   @argument[response]{an integer with the response ID for @arg{child}}
@@ -418,10 +419,9 @@
 ;;; info-bar-add-button
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_info_bar_add_button" info-bar-add-button)
-    (g:object widget)
+(defcfun ("gtk_info_bar_add_button" info-bar-add-button) (g:object widget)
  #+liber-documentation
- "@version{#2021-12-22}
+ "@version{#2023-3-20}
   @argument[infobar]{a @class{gtk:info-bar} widget}
   @argument[text]{a string with the text of the button}
   @argument[response]{an integer with the response ID for the button}
@@ -447,7 +447,7 @@
 
 (defun info-bar-add-buttons (infobar &rest args)
  #+liber-documentation
- "@version{#2021-12-22}
+ "@version{#2023-3-20}
   @argument[infobar]{a @class{gtk:info-bar} widget}
   @argument[args]{first a string with a button text and second an integer with
     a response ID, then more pairs for each button}
@@ -467,10 +467,10 @@
 ;;; info-bar-set-response-sensitive
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_info_bar_set_response_sensitive"
-           info-bar-set-response-sensitive) :void
+(defcfun ("gtk_info_bar_set_response_sensitive" info-bar-set-response-sensitive)
+    :void
  #+liber-documentation
- "@version{#2021-12-22}
+ "@version{#2023-3-20}
   @argument[infobar]{a @class{gtk:info-bar} widget}
   @argument[response]{an integer with a response ID}
   @argument[setting]{@em{true} for sensitive}
@@ -494,7 +494,7 @@
 (defcfun ("gtk_info_bar_set_default_response" info-bar-set-default-response)
     :void
  #+liber-documentation
- "@version{#2021-12-22}
+ "@version{#2023-3-20}
   @argument[infobar]{a @class{gtk:info-bar} widget}
   @argument[response]{an integer with a response ID}
   @begin{short}
@@ -517,7 +517,7 @@
 
 (defcfun ("gtk_info_bar_response" info-bar-response) :void
  #+liber-documentation
- "@version{#2021-12-22}
+ "@version{#2023-3-20}
   @argument[infobar]{a @class{gtk:info-bar} widget}
   @argument[response]{an integer with a response ID}
   @short{Emits the \"response\" signal with the given response ID.}
@@ -531,10 +531,9 @@
 ;;; gtk_info_bar_get_action_area -> info-bar-action-area
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_info_bar_get_action_area" info-bar-action-area)
-    (g:object widget)
+(defcfun ("gtk_info_bar_get_action_area" info-bar-action-area) (g:object widget)
  #+liber-documentation
- "@version{#2021-12-22}
+ "@version{#2023-3-20}
   @argument[infobar]{a @class{gtk:info-bar} widget}
   @return{A @class{gtk:widget} object with the action area.}
   @short{Returns the action area of the info bar.}
@@ -551,7 +550,7 @@
 (defcfun ("gtk_info_bar_get_content_area" info-bar-content-area)
     (g:object widget)
  #+liber-documentation
- "@version{#2021-12-22}
+ "@version{#2023-3-20}
   @argument[infobar]{a @class{gtk:info-bar} widget}
   @return{The @class{gtk:box} content area.}
   @short{Returns the content area of the info bar.}
@@ -561,4 +560,4 @@
 
 (export 'info-bar-content-area)
 
-;;; --- End of file gtk.info-bar.lisp ------------------------------------------
+;;; --- End of file gtk3.info-bar.lisp -----------------------------------------

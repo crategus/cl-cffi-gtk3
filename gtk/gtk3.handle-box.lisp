@@ -1,30 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.handle-box.lisp
+;;; gtk3.handle-box.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2021 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkHandleBox
@@ -48,16 +48,16 @@
 ;;;
 ;;; Properties
 ;;;
-;;;            gboolean    child-detached     Read
-;;;     GtkPositionType    handle-position    Read / Write
-;;;       GtkShadowType    shadow-type        Read / Write
-;;;     GtkPositionType    snap-edge          Read / Write
-;;;            gboolean    snap-edge-set      Read / Write
+;;;     child-detached
+;;;     handle-position
+;;;     shadow-type
+;;;     snap-edge
+;;;     snap-edge-set
 ;;;
 ;;; Signals
 ;;;
-;;;                void    child-attached     Run First
-;;;                void    child-detached     Run First
+;;;     child-attached
+;;;     child-detached
 ;;;
 ;;;
 ;;; Object Hierarchy
@@ -104,7 +104,7 @@
 
 #+liber-documentation
 (setf (documentation 'handle-box 'type)
- "@version{#2021-5-25}
+ "@version{#2023-3-20}
   @begin{short}
     The @sym{gtk:handle-box} widget allows a portion of a window to be
     \"torn off\".
@@ -136,7 +136,7 @@
   @begin[Signal Details]{dictionary}
     @subheading{The \"child-attached\" signal}
       @begin{pre}
- lambda (handlebox widget)    :run-first
+lambda (handlebox widget)    :run-first
       @end{pre}
       The signal is emitted when the contents of the handle box are reattached
       to the main window.
@@ -149,7 +149,7 @@
       @end{table}
     @subheading{The \"child-detached\" signal}
       @begin{pre}
- lambda (handlebox widget)    :run-first
+lambda (handlebox widget)    :run-first
       @end{pre}
       The signal is emitted when the contents of the handle box are detached
       from the main window.
@@ -161,6 +161,7 @@
           backwards compatibility.}
       @end{table}
   @end{dictionary}
+  @see-constructor{gtk:handle-box-new}
   @see-slot{gtk:handle-box-child-detached}
   @see-slot{gtk:handle-box-handle-position}
   @see-slot{gtk:handle-box-shadow-type}
@@ -172,7 +173,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- handle-box-child-detached ------------------------------------------
+;;; --- handle-box-child-detached ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "child-detached" 'handle-box) t)
@@ -184,7 +185,7 @@
 (setf (liber:alias-for-function 'handle-box-child-detached)
       "Accessor"
       (documentation 'handle-box-child-detached 'function)
- "@version{#2021-7-20}
+ "@version{#2023-3-20}
   @syntax[]{(gtk:handle-box-child-detached object) => detached}
   @argument[object]{a @class{gtk:handle-box} widget}
   @argument[detached]{a boolean whether the child is detached}
@@ -192,16 +193,15 @@
     Accessor of the @slot[gtk:handle-box]{child-detached} slot of the
     @class{gtk:handle-box} class.
   @end{short}
-
   Returns whether the child of the handle box is currently detached.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:handle-box-child-detached} has been deprecated since
+    The @sym{gtk:handle-box-child-detached} function has been deprecated since
     version 3.4 and should not be used in newly written code. The
     @class{gtk:handle-box} widget has been deprecated.
   @end{dictionary}
   @see-class{gtk:handle-box}")
 
-;;; --- handle-box-handle-position -----------------------------------------
+;;; --- handle-box-handle-position ---------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "handle-position" 'handle-box) t)
@@ -214,7 +214,7 @@
 (setf (liber:alias-for-function 'handle-box-handle-position)
       "Accessor"
       (documentation 'handle-box-handle-position 'function)
- "@version{#2021-7-20}
+ "@version{#2023-3-20}
   @syntax[]{(gtk:handle-box-handle-position object) => position}
   @syntax[]{(setf (gtk:handle-box-handle-position object) position)}
   @argument[object]{a @class{gtk:handle-box} widget}
@@ -223,19 +223,18 @@
     Accessor of the @slot[gtk:handle-box]{handle-position} slot of the
     @class{gtk:handle-box} class.
   @end{short}
-
-  The slot access function @sym{gtk:handle-box-handle-position} gets the side
-  of the handle box where the handle should be drawn. The slot access function
-  @sym{(setf gtk:handle-box-handle-position)} sets the handle position.
+  The @sym{gtk:handle-box-handle-position} function gets the side of the handle
+  box where the handle should be drawn. The
+  @sym{(setf gtk:handle-box-handle-position)} function sets the handle position.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:handle-box-handle-position} has been deprecated since
+    The @sym{gtk:handle-box-handle-position} function has been deprecated since
     version 3.4 and should not be used in newly written code. The
     @class{gtk:handle-box} widget has been deprecated.
   @end{dictionary}
   @see-class{gtk:handle-box}
   @see-symbol{gtk:position-type}")
 
-;;; --- handle-box-shadow-type ---------------------------------------------
+;;; --- handle-box-shadow-type -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "shadow-type" 'handle-box) t)
@@ -248,7 +247,7 @@
 (setf (liber:alias-for-function 'handle-box-shadow-type)
       "Accessor"
       (documentation 'handle-box-shadow-type 'function)
- "@version{#2021-7-20}
+ "@version{#2023-3-20}
   @syntax[]{(gtk:handle-box-shadow-type object) => shadow-type}
   @syntax[]{(setf (gtk:handle-box-shadow-type object) shadow-type)}
   @argument[object]{a @class{gtk:handle-box} widget}
@@ -257,19 +256,18 @@
     Accessor of the @slot[gtk:handle-box]{shadow-type} slot of the
     @class{gtk:handle-box} class.
   @end{short}
-
-  The function @sym{gtk:handle-box-shadow-type} gets the type of shadow drawn
-  around the handle box. The function @sym{(setf gtk:handle-box-shadow-type)}
+  The @sym{gtk:handle-box-shadow-type} function gets the type of shadow drawn
+  around the handle box. The @sym{(setf gtk:handle-box-shadow-type)} function
   sets the type of shadow.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:handle-box-shadow-type} has been deprecated since
+    The @sym{gtk:handle-box-shadow-type} function has been deprecated since
     version 3.4 and should not be used in newly written code. The
     @class{gtk:handle-box} widget has been deprecated.
   @end{dictionary}
   @see-class{gtk:handle-box}
   @see-symbol{gtk:shadow-type}")
 
-;;; --- handle-box-snap-edge -----------------------------------------------
+;;; --- handle-box-snap-edge ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "snap-edge" 'handle-box) t)
@@ -283,7 +281,7 @@
 (setf (liber:alias-for-function 'handle-box-snap-edge)
       "Accessor"
       (documentation 'handle-box-snap-edge 'function)
- "@version{#2021-7-20}
+ "@version{#2023-3-20}
   @syntax[]{(gtk:handle-box-snap-edge object) => edge}
   @syntax[]{(setf (gtk:handle-box-snap-edge object) edge)}
   @argument[object]{a @class{gtk:handle-box} widget}
@@ -292,10 +290,9 @@
     Accessor of the @slot[gtk:handle-box]{snap-edge} slot of the
     @class{gtk:handle-box} class.
   @end{short}
-
-  The slot access function @sym{gtk:handle-box-snap-edge} gets the edge used
-  for determining reattachment of the handle box. The slot access function
-  @sym{(setf gtk:handle-box-snap-edge)} sets the snap edge.
+  The @sym{gtk:handle-box-snap-edge} function gets the edge used for determining
+  reattachment of the handle box. The @sym{(setf gtk:handle-box-snap-edge)}
+  function sets the snap edge.
 
   The snap edge is the edge of the detached child that must be aligned with the
   corresponding edge of the \"ghost\" left behind when the child was detached
@@ -306,14 +303,14 @@
   the handle position. If the handle position is @code{:right} or @code{:left},
   then the snap edge will be @code{:top}, otherwise it will be @code{:left}.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:handle-box-snap-edge} has been deprecated since
+    The @sym{gtk:handle-box-snap-edge} function has been deprecated since
     version 3.4 and should not be used in newly written code. The
     @class{gtk:handle-box} widget has been deprecated.
   @end{dictionary}
   @see-class{gtk:handle-box}
   @see-symbol{gtk:position-type}")
 
-;;; --- handle-box-snap-edge-set -------------------------------------------
+;;; --- handle-box-snap-edge-set -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "snap-edge-set" 'handle-box) t)
@@ -326,7 +323,7 @@
 (setf (liber:alias-for-function 'handle-box-snap-edge-set)
       "Accessor"
       (documentation 'handle-box-snap-edge-set 'function)
- "@version{#2021-7-20}
+ "@version{#2023-3-20}
   @syntax[]{(gtk:handle-box-snap-edge-set object) => setting}
   @syntax[]{(setf (gtk:handle-box-snap-edge-set object) setting)}
   @argument[object]{a @class{gtk:handle-box} widget}
@@ -336,11 +333,10 @@
     Accessor of the @slot[gtk:handle-box]{snap-edge-set} slot of the
     @class{gtk:handle-box} class.
   @end{short}
-
   Whether to use the value from the @slot[gtk:handle-box]{snap-edge} property
   or a value derived from the @slot[gtk:handle-box]{handle-position} property.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:handle-box-snap-edge-set} has been deprecated since
+    The @sym{gtk:handle-box-snap-edge-set} function has been deprecated since
     version 3.4 and should not be used in newly written code. The
     @class{gtk:handle-box} widget has been deprecated.
   @end{dictionary}
@@ -356,13 +352,13 @@
 
 (defun handle-box-new ()
  #+liber-documentation
- "@version{#2021-7-20}
+ "@version{#2023-3-20}
   @return{A new @class{gtk:handle-box} widget.}
   @begin{short}
     Create a new handle box.
   @end{short}
   @begin[Warning]{dictionary}
-    The function @sym{gtk:handle-box-new} has been deprecated since version 3.4
+    The @sym{gtk:handle-box-new} function has been deprecated since version 3.4
     and should not be used in newly written code. The @class{gtk:handle-box}
     widget has been deprecated.
   @end{dictionary}
@@ -371,4 +367,4 @@
 
 (export 'handle-box-new)
 
-;;; --- gtk.handle-box.lisp ----------------------------------------------------
+;;; --- gtk3.handle-box.lisp ---------------------------------------------------

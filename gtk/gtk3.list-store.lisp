@@ -4,27 +4,27 @@
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
 ;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkListStore
@@ -238,9 +238,9 @@
 
 (defun list-store-new (&rest column-types)
  #+liber-documentation
- "@version{#2021-4-21}
-  @argument[column-types]{all @class{g:type-t} types for the columns, from first
-    to last}
+ "@version{#2023-3-20}
+  @argument[column-types]{all @class{g:type-t} types for the columns, from
+    first to last}
   @return{A new @class{gtk:list-store} object.}
   @begin{short}
     Creates a new list store as with each of the types passed in.
@@ -289,15 +289,14 @@
 ;;; gtk_list_store_set_column_types ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_list_store_set_column_types" %list-store-set-column-types)
-    :void
+(defcfun ("gtk_list_store_set_column_types" %list-store-set-column-types) :void
   (store (g:object list-store))
   (n-columns :int)
   (types :pointer))
 
 (defun list-store-set-column-types (store &rest column-types)
  #+liber-documentation
- "@version{#2021-4-21}
+ "@version{#2023-3-20}
   @argument[store]{a @class{gtk:list-store} object}
   @argument[column-types]{the @class{g:type-t} types of the columns}
   @begin{short}
@@ -342,7 +341,7 @@
 
 (defun list-store-set (store iter &rest values)
  #+liber-documentation
- "@version{#2021-4-21}
+ "@version{#2023-3-20}
   @argument[store]{a @class{gtk:list-store} object}
   @argument[iter]{a @class{gtk:tree-iter} row iterator}
   @argument[values]{the values to set}
@@ -376,14 +375,14 @@
       (loop for i from 0 below n
             for value in values
             for gtype = (tree-model-column-type store i)
-         do (setf (cffi:mem-aref columns-ar :int i) i)
-            (set-g-value (cffi:mem-aptr value-ar '(:struct g:value) i)
-                         value
-                         gtype
-                         :zero-g-value t))
+            do (setf (cffi:mem-aref columns-ar :int i) i)
+               (set-g-value (cffi:mem-aptr value-ar '(:struct g:value) i)
+                            value
+                            gtype
+                            :zero-g-value t))
       (%list-store-set-valuesv store iter columns-ar value-ar n)
       (loop for i from 0 below n
-         do (g:value-unset (cffi:mem-aptr value-ar '(:struct g:value) i)))
+            do (g:value-unset (cffi:mem-aptr value-ar '(:struct g:value) i)))
       iter)))
 
 (export 'list-store-set)
@@ -422,7 +421,7 @@
 
 (defun list-store-set-value (store iter column value)
  #+liber-documentation
- "@version{#2021-3-3}
+ "@version{#2023-3-20}
   @argument[store]{a @class{gtk:list-store} object}
   @argument[iter]{a valid @class{gtk:tree-iter} iterator for the row being
     modified}
@@ -493,7 +492,7 @@
 
 (defcfun ("gtk_list_store_remove" list-store-remove) :boolean
  #+liber-documentation
- "@version{#2021-3-5}
+ "@version{#2023-3-20}
   @argument[store]{a @class{gtk:list-store} object}
   @argument[iter]{a valid @class{gtk:tree-iter} iterator}
   @return{@em{True} if @arg{iter} is valid, @code{nil} if not.}
@@ -521,7 +520,7 @@
 
 (defun list-store-insert (store position)
  #+liber-documentation
- "@version{#2021-3-11}
+ "@version{#2023-3-20}
   @argument[store]{a @class{gtk:list-store} object}
   @argument[position]{an integer with the position to insert the new row}
   @return{A @class{gtk:tree-iter} iterator of the new row.}
@@ -554,7 +553,7 @@
 
 (defun list-store-insert-before (store sibling)
  #+liber-documentation
- "@version{#2021-3-11}
+ "@version{#2023-3-20}
   @argument[store]{a @class{gtk:list-store} object}
   @argument[sibling]{a valid @class{gtk:tree-iter} iterator, or @code{nil}}
   @return{A @class{gtk:tree-iter} iterator to the new row.}
@@ -586,7 +585,7 @@
 
 (defun list-store-insert-after (store sibling)
  #+liber-documentation
- "@version{#2021-3-11}
+ "@version{#2023-3-20}
   @argument[store]{a @class{gtk:list-store} object}
   @argument[sibling]{a valid @class{gtk:tree-iter}, or @code{nil}}
   @return{A @class{gtk:tree-iter} iterator to the new row.}
@@ -614,7 +613,7 @@
 
 (defun list-store-insert-with-values (store position &rest values)
  #+liber-documentation
- "@version{#2021-3-11}
+ "@version{#2023-3-20}
   @argument[store]{a @class{gtk:list-store} object}
   @argument[position]{an integer with the position to insert the new row,
     or -1 to append after existing rows}
@@ -724,7 +723,7 @@
 
 (defun list-store-prepend (store)
  #+liber-documentation
- "@version{#2021-3-11}
+ "@version{#2023-3-20}
   @argument[store]{a @class{gtk:list-store} object}
   @return{A @class{gtk:tree-iter} iterator to the prepended row.}
   @begin{short}
@@ -753,7 +752,7 @@
 
 (defun list-store-append (store)
  #+liber-documentation
- "@version{#2021-4-21}
+ "@version{#2023-3-20}
   @argument[store]{a @class{gtk:list-store} object}
   @return{A @class{gtk:tree-iter} iterator to the appended row.}
   @begin{short}
@@ -778,7 +777,7 @@
 
 (defcfun ("gtk_list_store_clear" list-store-clear) :void
  #+liber-documentation
- "@version{#2021-3-5}
+ "@version{#2023-3-20}
   @argument[store]{a @class{gtk:list-store} object}
   @short{Removes all rows from the list store.}
   @see-class{gtk:list-store}"
@@ -792,7 +791,7 @@
 
 (defcfun ("gtk_list_store_iter_is_valid" list-store-iter-is-valid) :boolean
  #+liber-documentation
- "@version{#2021-3-11}
+ "@version{#2023-3-20}
   @argument[store]{a @class{gtk:list-store} object}
   @argument[iter]{a @class{gtk:tree-iter} iterator}
   @return{@em{True} if @arg{iter} is valid, @code{nil} if @arg{iter} is
@@ -821,7 +820,7 @@
 
 (defun list-store-reorder (store order)
  #+liber-documentation
- "@version{#2021-3-11}
+ "@version{#2023-3-20}
   @argument[store]{a @class{gtk:list-store} object}
   @argument[order]{a list of integer mapping the new position of each row
     to its old position before the re-ordering}
@@ -845,7 +844,7 @@
 
 (defcfun ("gtk_list_store_swap" list-store-swap) :void
  #+liber-documentation
- "@version{#2021-3-11}
+ "@version{#2023-3-20}
   @argument[store]{a @class{gtk:list-store} object}
   @argument[a]{a @class{gtk:tree-iter} iterator}
   @argument[b]{a @class{gtk:tree-iter} iterator}
@@ -867,7 +866,7 @@
 
 (defcfun ("gtk_list_store_move_before" list-store-move-before) :void
  #+liber-documentation
- "@version{#2021-3-11}
+ "@version{#2023-3-20}
   @argument[store]{a @class{gtk:list-store} object}
   @argument[iter]{a @class{gtk:tree-iter} iterator}
   @argument[position]{a @class{gtk:tree-iter} iterator, or @code{nil}}
@@ -891,7 +890,7 @@
 
 (defcfun ("gtk_list_store_move_after" list-store-move-after) :void
  #+liber-documentation
- "@version{#2021-3-11}
+ "@version{#2023-3-20}
   @argument[store]{a @class{gtk:list-store} object}
   @argument[iter]{a @class{gtk:tree-iter} iterator}
   @argument[position]{a @class{gtk:tree-iter} iterator or @code{nil}}

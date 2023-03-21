@@ -1,30 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.menu.lisp
+;;; gtk3.menu.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkMenu
@@ -142,7 +142,7 @@
 (setf (liber:alias-for-symbol 'arrow-placement)
       "GEnum"
       (liber:symbol-documentation 'arrow-placement)
- "@version{#2021-11-14}
+ "@version{#2023-3-21}
   @begin{short}
     Used to specify the placement of scroll arrows in scrolling menus.
   @end{short}
@@ -210,7 +210,7 @@
 
 #+liber-documentation
 (setf (documentation 'menu 'type)
- "@version{#2021-11-14}
+ "@version{#2023-3-21}
   @begin{short}
     A @sym{gtk:menu} widget is a @class{gtk:menu-shell} widget that implements
     a drop down menu consisting of a list of @class{gtk:menu-item} widgets
@@ -381,7 +381,7 @@ menu
   @begin[Signal Details]{dictionary}
     @subheading{The \"move-scroll\" signal}
       @begin{pre}
- lambda (menu scrolltype)    :action
+lambda (menu scrolltype)    :action
       @end{pre}
       @begin[code]{table}
         @entry[menu]{A @sym{gtk:menu} widget.}
@@ -389,27 +389,25 @@ menu
       @end{table}
     @subheading{The \"popped-up\" signal}
       @begin{pre}
- lambda (menu flipped final xflipped yflipped)    :run-first
+lambda (menu flipped final xflipped yflipped)    :run-first
       @end{pre}
       Emitted when the position of the menu is finalized after being popped up
       using the @fun{gtk:menu-popup-at-rect}, @fun{gtk:menu-popup-at-widget},
-      or @fun{gtk:menu-popup-at-pointer} functions.
-
-      The menu might be flipped over the anchor rectangle in order to keep it
-      on-screen, in which case the @arg{xflipped} and @arg{yflipped} arguments
-      will be set to @em{true} accordingly.
+      or @fun{gtk:menu-popup-at-pointer} functions. The menu might be flipped
+      over the anchor rectangle in order to keep it on-screen, in which case
+      the @arg{xflipped} and @arg{yflipped} arguments will be set to @em{true}
+      accordingly.
 
       The @arg{flipped} argument is the ideal position of the menu after any
       possible flipping, but before any possible sliding. The @arg{final}
       argument is @arg{flipped}, but possibly translated in the case that
       flipping is still ineffective in keeping menu on-screen.
 
-      @image[popup-slide]{}
+      @image[popup-slide]{Figure: Popup slide}
 
       The blue menu is the ideal position of the menu, the green menu is
-      @arg{flipped}, and the red menu is @arg{final}.
-
-      See the @fun{gtk:menu-popup-at-rect}, @fun{gtk:menu-popup-at-widget},
+      @arg{flipped}, and the red menu is @arg{final}. See the
+      @fun{gtk:menu-popup-at-rect}, @fun{gtk:menu-popup-at-widget},
       @fun{gtk:menu-popup-at-pointer} functions, and the
       @slot[gtk:menu]{anchor-hints}, @slot[gtk:menu]{rect-anchor-dx},
       @slot[gtk:menu]{rect-anchor-dy}, and @slot[gtk:menu]{menu-type-hint}
@@ -424,6 +422,8 @@ menu
         @entry[yflipped]{@em{True} if the anchors were flipped vertically.}
       @end{table}
   @end{dictionary}
+  @see-constructor{gtk:menu-new}
+  @see-constructor{gtk:menu-new-from-model}
   @see-slot{gtk:menu-accel-group}
   @see-slot{gtk:menu-accel-path}
   @see-slot{gtk:menu-active}
@@ -454,11 +454,11 @@ menu
 (setf (liber:alias-for-function 'menu-accel-group)
       "Accessor"
       (documentation 'menu-accel-group 'function)
- "@version{#2021-11-14}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:menu-accel-group object) => group}
   @syntax[]{(setf (gtk:menu-accel-group object) group)}
   @argument[object]{a @class{gtk:menu} widget}
-  @argument[group]{the @class{gtk:accel-group} object to be associated with the
+  @argument[group]{a @class{gtk:accel-group} object to be associated with the
     menu}
   @begin{short}
     Accessor of the @slot[gtk:menu]{accel-group} slot of the @class{gtk:menu}
@@ -487,7 +487,7 @@ menu
 (setf (liber:alias-for-function 'menu-accel-path)
       "Accessor"
       (documentation 'menu-accel-path 'function)
- "@version{#2021-11-14}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:menu-accel-path object) => path}
   @syntax[]{(setf (gtk:menu-accel-path object) path)}
   @argument[object]{a @class{gtk:menu} widget}
@@ -537,7 +537,7 @@ menu
 (setf (liber:alias-for-function 'menu-active)
       "Accessor"
       (documentation 'menu-active 'function)
- "@version{#2021-11-14}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:menu-active object) => active}
   @syntax[]{(setf (gtk:menu-active object) active)}
   @argument[object]{a @class{gtk:menu} widget}
@@ -570,7 +570,7 @@ menu
 (setf (liber:alias-for-function 'menu-anchor-hints)
       "Accessor"
       (documentation 'menu-anchor-hints 'function)
- "@version{#2023-3-13}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:menu-anchor-hints object) => hints}
   @syntax[]{(setf (gtk:menu-anchor-hints object) hints)}
   @argument[object]{a @class{gtk:menu} widget}
@@ -614,7 +614,7 @@ menu
 (setf (liber:alias-for-function 'menu-attach-widget)
       "Accessor"
       (documentation 'menu-attach-widget 'function)
- "@version{#2021-11-14}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:menu-attach-widget object) => widget}
   @syntax[]{(setf (gtk:menu-attach-widget object) widget)}
   @argument[object]{a @class{gtk:menu} widget}
@@ -647,7 +647,7 @@ menu
 (setf (liber:alias-for-function 'menu-menu-type-hint)
       "Accessor"
       (documentation 'menu-menu-type-hint 'function)
- "@version{#2023-3-13}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:menu-menu-type-hint object) => hint}
   @syntax[]{(setf (gtk:menu-menu-type-hint object) hint)}
   @argument[object]{a @class{gtk:menu} widget}
@@ -684,12 +684,12 @@ menu
 (setf (liber:alias-for-function 'menu-monitor)
       "Accessor"
       (documentation 'menu-monitor 'function)
- "@version{#2021-11-14}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:menu-monitor object) => num}
   @syntax[]{(setf (gtk:menu-monitor object) num)}
   @argument[object]{a @class{gtk:menu} widget}
-  @argument[num]{an integer with the number of the monitor on which
-    the menu should be popped up}
+  @argument[num]{an integer with the number of the monitor on which the menu
+    should be popped up}
   @begin{short}
     Accessor of the @slot[gtk:menu]{monitor} slot of the @class{gtk:menu} class.
   @end{short}
@@ -697,12 +697,12 @@ menu
   which to show the menu. The @sym{(setf gtk:menu-monitor)} function sets the
   monitor.
 
-  This function should be called from a @code{GtkMenuPositionFunc} callback
+  This function should be called from a @symbol{gtk:menu-position-func} callback
   function if the menu should not appear on the same monitor as the pointer.
   This information cannot be reliably inferred from the coordinates returned by
-  a @code{GtkMenuPositionFunc} callback function, since, for very long menus,
-  these coordinates may extend beyond the monitor boundaries or even the screen
-  boundaries.
+  a @symbol{gtk:menu-position-func} callback function, since, for very long
+  menus, these coordinates may extend beyond the monitor boundaries or even the
+  screen boundaries.
   @see-class{gtk:menu}")
 
 ;;; --- menu-rect-anchor-dx ----------------------------------------------------
@@ -719,7 +719,7 @@ menu
 (setf (liber:alias-for-function 'menu-rect-anchor-dx)
       "Accessor"
       (documentation 'menu-rect-anchor-dx 'function)
- "@version{#2023-3-13}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:menu-rect-anchor-dx object) => anchor}
   @syntax[]{(setf (gtk:menu-rect-anchor-dx object) anchor)}
   @argument[object]{a @class{gtk:menu} widget}
@@ -755,7 +755,7 @@ menu
 (setf (liber:alias-for-function 'menu-rect-anchor-dy)
       "Accessor"
       (documentation 'menu-rect-anchor-dy 'function)
- "@version{#2023-3-13}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:menu-rect-anchor-dy object) => anchor}
   @syntax[]{(setf (gtk:menu-rect-anchor-dy object) anchor)}
   @argument[object]{a @class{gtk:menu} widget}
@@ -796,7 +796,7 @@ menu
 (setf (liber:alias-for-function 'menu-reserve-toggle-size)
       "Accessor"
       (documentation 'menu-reserve-toggle-size 'function)
- "@version{#2021-11-14}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:menu-reserve-toggle-size object) => reserve}
   @syntax[]{(setf (gtk:menu-reserve-toggle-size object) reserve)}
   @argument[object]{a @class{gtk:menu} widget}
@@ -829,7 +829,7 @@ menu
 (setf (liber:alias-for-function 'menu-tearoff-state)
       "Accessor"
       (documentation 'menu-tearoff-state 'function)
- "@version{#2021-11-14}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:menu-tearoff-state object) => state}
   @syntax[]{(setf (gtk:menu-tearoff-state object) state)}
   @argument[object]{a @class{gtk:menu} widget}
@@ -866,7 +866,7 @@ menu
 (setf (liber:alias-for-function 'menu-tearoff-title)
       "Accessor"
       (documentation 'menu-tearoff-title 'function)
- "@version{#2021-11-14}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:menu-tearoff-title object) => title}
   @syntax[]{(setf (gtk:menu-tearoff-title object) title)}
   @argument[object]{a @class{gtk:menu} widget}
@@ -901,7 +901,7 @@ menu
 (setf (liber:alias-for-function 'menu-child-bottom-attach)
       "Accessor"
       (documentation 'menu-child-bottom-attach 'function)
- "@version{#2021-11-14}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:menu-child-bottom-attach container child) => attach}
   @syntax[]{(setf (gtk:menu-child-bottom-attach container child) attach)}
   @argument[container]{a @class{gtk:menu} widget}
@@ -911,7 +911,6 @@ menu
     Accessor of the @code{bottom-attach} child property of the
     @class{gtk:menu} class.
   @end{short}
-
   The row number to attach the bottom of the child to.
   @see-class{gtk:menu}
   @see-class{gtk:widget}")
@@ -925,7 +924,7 @@ menu
 (setf (liber:alias-for-function 'menu-child-left-attach)
       "Accessor"
       (documentation 'menu-child-left-attach 'function)
- "@version{#2021-11-14}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:menu-child-left-attach container child) => attach}
   @syntax[]{(setf (gtk:menu-child-left-attach container child) attach)}
   @argument[container]{a @class{gtk:menu} widget}
@@ -935,7 +934,6 @@ menu
     Accessor of the @code{left-attach} child property of the @class{gtk:menu}
     class.
   @end{short}
-
   The column number to attach the left side of the child to.
   @see-class{gtk:menu}
   @see-class{gtk:widget}")
@@ -949,7 +947,7 @@ menu
 (setf (liber:alias-for-function 'menu-child-right-attach)
       "Accessor"
       (documentation 'menu-child-right-attach 'function)
- "@version{#2021-11-14}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:menu-child-right-attach container child) => attach}
   @syntax[]{(setf (gtk:menu-child-right-attach container child) attach)}
   @argument[container]{a @class{gtk:menu} widget}
@@ -959,7 +957,6 @@ menu
     Accessor of the @code{right-attach} child property of the @class{gtk:menu}
     class.
   @end{short}
-
   The column number to attach the right side of the child to.
   @see-class{gtk:menu}
   @see-class{gtk:widget}")
@@ -973,7 +970,7 @@ menu
 (setf (liber:alias-for-function 'menu-child-top-attach)
       "Accessor"
       (documentation 'menu-child-top-attach 'function)
- "@version{#2021-11-14}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:menu-child-top-attach container child) => attach}
   @syntax[]{(setf (gtk:menu-child-top-attach container child) attach)}
   @argument[container]{a @class{gtk:menu} widget}
@@ -983,7 +980,6 @@ menu
     Accessor of the @code{top-attach} child property of the @class{gtk:menu}
     class.
   @end{short}
-
   The row number to attach the top of the child to.
   @see-class{gtk:menu}
   @see-class{gtk:widget}")
@@ -996,7 +992,7 @@ menu
 
 (defun menu-new ()
  #+liber-documentation
- "@version{#2021-11-14}
+ "@version{#2023-3-21}
   @return{A new @class{gtk:menu} widget.}
   @short{Creates a new menu.}
   @see-class{gtk:menu}"
@@ -1010,7 +1006,7 @@ menu
 
 (defcfun ("gtk_menu_new_from_model" menu-new-from-model) (g:object widget)
  #+liber-documentation
- "@version{2022-12-27}
+ "@version{2023-3-21}
   @argument[model]{a @class{g:menu-model} object}
   @return{A new @class{gtk:menu} widget.}
   @begin{short}
@@ -1036,7 +1032,7 @@ menu
 
 (defcfun ("gtk_menu_set_screen" menu-set-screen) :void
  #+liber-documentation
- "@version{#2021-11-14}
+ "@version{#2023-3-21}
   @argument[menu]{a @class{gtk:menu} widget}
   @argument[screen]{a @class{gdk:screen} object, or @code{nil} if the screen
     should be determined by the widget the menu is attached to}
@@ -1054,9 +1050,9 @@ menu
 
 (defcfun ("gtk_menu_reorder_child" menu-reorder-child) :void
  #+liber-documentation
- "@version{#2021-11-14}
+ "@version{#2023-3-21}
   @argument[menu]{a @class{gtk:menu} widget}
-  @argument[child]{the @class{gtk:menu-item} widget to move}
+  @argument[child]{a @class{gtk:menu-item} widget to move}
   @argument[position]{the new position to place child, positions are numbered
     from 0 to n - 1}
   @begin{short}
@@ -1076,7 +1072,7 @@ menu
 
 (defcfun ("gtk_menu_attach" menu-attach) :void
  #+liber-documentation
- "@version{#2021-11-14}
+ "@version{#2023-3-21}
   @argument[menu]{a @class{gtk:menu} widget}
   @argument[child]{a @class{gtk:menu-item} widget}
   @argument[left]{an unsigned integer with the column number to attach the left
@@ -1110,102 +1106,114 @@ menu
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_menu_popup_at_rect ()
-;;;
-;;; void
-;;; gtk_menu_popup_at_rect (GtkMenu *menu,
-;;;                         GdkWindow *rect_window,
-;;;                         const GdkRectangle *rect,
-;;;                         GdkGravity rect_anchor,
-;;;                         GdkGravity menu_anchor,
-;;;                         const GdkEvent *trigger_event);
-;;;
-;;; Displays menu and makes it available for selection.
-;;;
-;;; See gtk_menu_popup_at_widget() and gtk_menu_popup_at_pointer(), which handle
-;;; more common cases for popping up menus.
-;;;
-;;; menu will be positioned at rect , aligning their anchor points. rect is
-;;; relative to the top-left corner of rect_window . rect_anchor and menu_anchor
-;;; determine anchor points on rect and menu to pin together. menu can
-;;; optionally be offset by "rect-anchor-dx" and "rect-anchor-dy".
-;;;
-;;; Anchors should be specified under the assumption that the text direction is
-;;; left-to-right; they will be flipped horizontally automatically if the text
-;;; direction is right-to-left.
-;;;
-;;; Other properties that influence the behaviour of this function are
-;;; "anchor-hints" and "menu-type-hint". Connect to the "popped-up" signal to
-;;; find out how it was actually positioned.
-;;;
-;;; menu :
-;;;     the GtkMenu to pop up
-;;;
-;;; rect_window :
-;;;     the GdkWindow rect is relative to.
-;;;
-;;; rect :
-;;;     the GdkRectangle to align menu with.
-;;;
-;;; rect_anchor :
-;;;     the point on rect to align with menu 's anchor point
-;;;
-;;; menu_anchor :
-;;;     the point on menu to align with rect 's anchor point
-;;;
-;;; trigger_event :
-;;;     the GdkEvent that initiated this request or NULL if it's the current
-;;;     event.
-;;;
-;;; Since 3.22
 ;;; ----------------------------------------------------------------------------
+
+(defcfun ("gtk_menu_popup_at_rect" menu-popup-at-rect) :void
+ #+liber-documentation
+ "@version{#2023-3-21}
+  @argument[menu]{a @class{gtk:menu} widget to pop up}
+  @argument[window]{a @class{gdk:window} object @arg{rect} is relative to}
+  @argument[rect]{a @class{gdk:rectangle} instance to align @arg{menu} with}
+  @argument[rect-anchor]{a @symbol{gdk:gravity} value with the point on
+    @arg{rect} to align with the @arg{menu}'s anchor point}
+  @argument[menu-anchor]{a @symbol{gdk:gravity} value with the point on
+    @arg{menu} to align with @arg{rect}'s anchor point}
+  @argument[event]{a @class{gdk:event} instance that initiated this request
+    or @code{nil} if it is the current event}
+  @begin{short}
+    Displays the menu and makes it available for selection.
+  @end{short}
+  See the @fun{gtk:menu-popup-at-widget} and @fun{gtk:menu-popup-at-pointer}
+  functions, which handle more common cases for popping up menus.
+
+  The menu will be positioned at @arg{rect}, aligning their anchor points. The
+  @arg{rect} argument is relative to the top-left corner of @arg{window}. The
+  @arg{rect-anchor} and @arg{menu-anchor} arguments determine anchor points on
+  @arg{rect} and @arg{menu} to pin together. The menu can optionally be offset
+  by the @slot[gtk:menu]{rect-anchor-dx} and @slot[gtk:menu]{rect-anchor-dy}
+  properties.
+
+  Anchors should be specified under the assumption that the text direction is
+  left-to-right. They will be flipped horizontally automatically if the text
+  direction is right-to-left.
+
+  Other properties that influence the behaviour of this function are
+  the @slot[gtk:menu]{anchor-hints} and @slot[gtk:menu]{menu-type-hint}
+  properties. Connect to the \"popped-up\" signal to find out how it was
+  actually positioned.
+  @see-class{gtk:menu}
+  @see-class{gdk:window}
+  @see-class{gdk:rectangle}
+  @see-class{gdk:event}
+  @see-symbol{gdk:gravity}
+  @see-function{gtk:menu-popup-at-widget}
+  @see-function{gtk:menu-popup-at-pointer}
+  @see-function{gtk:menu-anchor-hints}
+  @see-function{gtk:menu-rect-anchor-dx}
+  @see-function{gtk:menu-rect-anchor-dy}
+  @see-function{gtk:menu-menu-type-hint}"
+  (menu (g:object menu))
+  (window (g:object gdk:window))
+  (rect (g:boxed gdk:rectangle))
+  (rect-anchor gdk:gravity)
+  (menu-anchor gdk:gravity)
+  (event (g:boxed gdk:event)))
+
+(export 'menu-popup-at-rect)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_menu_popup_at_widget ()
-;;;
-;;; void
-;;; gtk_menu_popup_at_widget (GtkMenu *menu,
-;;;                           GtkWidget *widget,
-;;;                           GdkGravity widget_anchor,
-;;;                           GdkGravity menu_anchor,
-;;;                           const GdkEvent *trigger_event);
-;;;
-;;; Displays menu and makes it available for selection.
-;;;
-;;; See gtk_menu_popup_at_pointer() to pop up a menu at the master pointer.
-;;; gtk_menu_popup_at_rect() also allows you to position a menu at an arbitrary
-;;; rectangle.
-;;;
-;;; menu will be positioned at widget , aligning their anchor points.
-;;; widget_anchor and menu_anchor determine anchor points on widget and menu to
-;;; pin together. menu can optionally be offset by "rect-anchor-dx" and
-;;; "rect-anchor-dy".
-;;;
-;;; Anchors should be specified under the assumption that the text direction is
-;;; left-to-right; they will be flipped horizontally automatically if the text
-;;; direction is right-to-left.
-;;;
-;;; Other properties that influence the behaviour of this function are
-;;; "anchor-hints" and "menu-type-hint". Connect to the "popped-up" signal to
-;;; find out how it was actually positioned.
-;;;
-;;; menu :
-;;;     the GtkMenu to pop up
-;;;
-;;; widget :
-;;;     the GtkWidget to align menu with.
-;;;
-;;; widget_anchor :
-;;;     the point on widget to align with menu 's anchor point
-;;;
-;;; menu_anchor :
-;;;     the point on menu to align with widget 's anchor point
-;;;
-;;; trigger_event :
-;;;     the GdkEvent that initiated this request or NULL if it's the current
-;;;     event.
-;;;
-;;; Since 3.22
 ;;; ----------------------------------------------------------------------------
+
+(defcfun ("gtk_menu_popup_at_widget" menu-popup-at-widget) :void
+ #+liber-documentation
+ "@version{#2023-3-21}
+  @argument[menu]{a @class{gtk:menu} widget to pop up}
+  @argument[widget]{a @class{gtk:widget} widget to align @arg{menu} with}
+  @argument[widget-anchor]{a @symbol{gdk:gravity} value with the point on
+    @arg{widget} to align with the @arg{menu}'s anchor point}
+  @argument[menu-anchor]{a @symbol{gdk:gravity} value with the point on
+    @arg{menu} to align with @arg{widget}'s anchor point}
+  @argument[event]{a @class{gdk:event} instance that initiated this request
+    or @code{nil} if it is the current event}
+  @begin{short}
+    Displays the menu and makes it available for selection.
+  @end{short}
+  See the @fun{gtk:menu-popup-at-pointer} function to pop up a menu at the
+  master pointer. The @fun{gtk:menu-popup-at-rect} function also allows you to
+  position a menu at an arbitrary rectangle.
+
+  The menu will be positioned at @arg{widget}, aligning their anchor points.
+  The @arg{widget-anchor} and @arg{menu-anchor} arguments determine anchor
+  points on @arg{widget} and @arg{menu} to pin together. The menu can
+  optionally be offset by the @slot[gtk:menu]{rect-anchor-dx} and
+  @slot[gtk:menu]{rect-anchor-dy} properties.
+
+  Anchors should be specified under the assumption that the text direction is
+  left-to-right. They will be flipped horizontally automatically if the text
+  direction is right-to-left.
+
+  Other properties that influence the behaviour of this function are
+  the @slot[gtk:menu]{anchor-hints} and @slot[gtk:menu]{menu-type-hint}
+  properties. Connect to the \"popped-up\" signal to find out how it was
+  actually positioned.
+  @see-class{gtk:menu}
+  @see-class{gtk:widget}
+  @see-class{gdk:event}
+  @see-symbol{gdk:gravity}
+  @see-function{gtk:menu-popup-at-pointer}
+  @see-function{gtk:menu-popup-at-rect}
+  @see-function{gtk:menu-anchor-hints}
+  @see-function{gtk:menu-rect-anchor-dx}
+  @see-function{gtk:menu-rect-anchor-dy}
+  @see-function{gtk:menu-menu-type-hint}"
+  (menu (g:object menu))
+  (widget (g:object widget))
+  (widget-anchor gdk:gravity)
+  (menu-anchor gdk:gravity)
+  (event (g:boxed gdk:event)))
+
+(export 'menu-popup-at-widget)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_menu_popup_at_pointer ()
@@ -1213,9 +1221,9 @@ menu
 
 (defcfun ("gtk_menu_popup_at_pointer" menu-popup-at-pointer) :void
  #+liber-documentation
- "@version{#2023-3-13}
+ "@version{#2023-3-21}
   @argument[menu]{a @class{gtk:menu} widget}
-  @argument[event]{a @class{gdk:event} event that initiated this request of
+  @argument[event]{a @class{gdk:event} instance that initiated this request of
     @code{nil} if it is the current event}
   @begin{short}
     Displays menu and makes it available for selection.
@@ -1267,7 +1275,7 @@ menu
 (setf (liber:alias-for-symbol 'menu-position-func)
       "Callback"
       (liber:symbol-documentation 'menu-position-func)
- "@version{#2021-11-14}
+ "@version{#2023-3-21}
   @begin{short}
     A user function supplied when calling the @fun{gtk:menu-popup} function
     which controls the positioning of the menu when it is displayed.
@@ -1276,7 +1284,7 @@ menu
   the menu is to be drawn. To make the menu appear on a different monitor than
   the mouse pointer, the @fun{gtk:menu-monitor} function must be called.
   @begin{pre}
- lambda (menu x y push)
+lambda (menu x y push)
   @end{pre}
   @begin[code]{table}
     @entry[menu]{A @class{gtk:menu} widget.}
@@ -1317,7 +1325,7 @@ menu
 
 (defun menu-popup-for-device (menu device shell item func button time)
  #+liber-documentation
- "@version{#2021-11-14}
+ "@version{#2023-3-21}
   @argument[menu]{a @class{gtk:menu} widget}
   @argument[device]{a @class{gdk:device} object}
   @argument[shell]{a @class{gtk:menu-shell} widget containing the triggering
@@ -1392,7 +1400,7 @@ menu
                              (button 0)
                              (time (current-event-time)))
  #+liber-documentation
- "@version{#2021-11-14}
+ "@version{#2023-3-21}
   @argument[menu]{a @class{gtk:menu} widget}
   @argument[shell]{a @class{gtk:menu-shell} widget containing the triggering
     menu item, or @code{nil}}
@@ -1456,20 +1464,20 @@ menu
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_menu_place_on_monitor ()
-;;;
-;;; void
-;;; gtk_menu_place_on_monitor (GtkMenu *menu, GdkMonitor *monitor);
-;;;
-;;; Places menu on the given monitor.
-;;;
-;;; menu :
-;;;     a GtkMenu
-;;;
-;;; monitor :
-;;;     the monitor to place the menu on
-;;;
-;;; Since 3.22
 ;;; ----------------------------------------------------------------------------
+
+(defcfun ("gtk_menu_place_on_monitor" menu-place-on-monitor) :void
+ #+liber-documentation
+ "@version{#2023-3-21}
+  @argument[menu]{a @class{gtk:menu} widget}
+  @argument[monitor]{a @class{gdk:monitor} object to place the menu on}
+  @short{Places the menu on the given monitor.}
+  @see-class{gtk:menu}
+  @see-class{gdk:monitor}"
+  (menu (g:object menu))
+  (monitor (g:object gdk:monitor)))
+
+(export 'menu-place-on-monitor)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_menu_popdown ()
@@ -1477,7 +1485,7 @@ menu
 
 (defcfun ("gtk_menu_popdown" menu-popdown) :void
  #+liber-documentation
- "@version{#2021-11-14}
+ "@version{#2023-3-21}
   @argument[menu]{a @class{gtk:menu} widget}
   @short{Removes the menu from the screen.}
   @see-class{gtk:menu}"
@@ -1491,7 +1499,7 @@ menu
 
 (defcfun ("gtk_menu_reposition" menu-reposition) :void
  #+liber-documentation
- "@version{#2021-11-14}
+ "@version{#2023-3-21}
   @argument[menu]{a @class{gtk:menu} widget}
   @short{Repositions the menu according to its position function.}
   @see-class{gtk:menu}"
@@ -1514,15 +1522,18 @@ menu
 ;;;     the GtkMenu being detached.
 ;;; ----------------------------------------------------------------------------
 
+;; TODO: We have no user data. What is the best way to implement the
+;; callback function?
+
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_menu_attach_to_widget ()
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_menu_attach_to_widget" menu-attach-to-widget) :void
  #+liber-documentation
- "@version{#2021-11-14}
+ "@version{#2023-3-21}
   @argument[menu]{a @class{gtk:menu} widget}
-  @argument[widget]{a @class{gtk:widget} object that the menu will be attached
+  @argument[widget]{a @class{gtk:widget} widget that the menu will be attached
     to}
   @argument[detacher]{a user supplied @code{GtkMenuDetachFunc} callback function
     that will be called when the menu calls the @fun{gtk:menu-detach} function}
@@ -1546,7 +1557,7 @@ menu
 
 (defcfun ("gtk_menu_detach" menu-detach) :void
  #+liber-documentation
- "@version{#2021-11-14}
+ "@version{#2023-3-21}
   @argument[menu]{a @class{gtk:menu} widget}
   @begin{short}
     Detaches the menu from the widget to which it had been attached.
@@ -1566,7 +1577,7 @@ menu
 (defcfun ("gtk_menu_get_for_attach_widget" menu-for-attach-widget)
     (g:list-t (g:object menu) :free-from-foreign nil)
  #+liber-documentation
- "@version{#2021-11-14}
+ "@version{#2023-3-21}
   @argument[widget]{a @class{gtk:widget} widget}
   @return{The list of @class{gtk:menu} widgets attached to @arg{widget}.}
   @begin{short}
@@ -1578,4 +1589,4 @@ menu
 
 (export 'menu-for-attach-widget)
 
-;;; --- End of file gtk.menu.lisp ----------------------------------------------
+;;; --- End of file gtk3.menu.lisp ---------------------------------------------

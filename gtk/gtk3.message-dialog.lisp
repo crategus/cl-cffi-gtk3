@@ -1,30 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.message-dialog.lisp
+;;; gtk3.message-dialog.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkMessageDialog
@@ -50,18 +50,18 @@
 ;;;
 ;;; Properties
 ;;;
-;;;     GtkButtonsType   buttons                 Write / Construct
-;;;          GtkWidget*  image                   Read / Write
-;;;          GtkWidget*  message-area            Read
-;;;     GtkMessageType   message-type            Read / Write / Construct
-;;;              gchar*  secondary-text          Read / Write
-;;;           gboolean   secondary-use-markup    Read / Write
-;;;              gchar*  text                    Read / Write
-;;;           gboolean   use-markup              Read / Write
+;;;     buttons
+;;;     image
+;;;     message-area
+;;;     message-type
+;;;     secondary-text
+;;;     secondary-use-markup
+;;;     text
+;;;     use-markup
 ;;;
 ;;; Style Properties
 ;;;
-;;;               gint   message-border          Read
+;;;     message-border
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -98,7 +98,7 @@
 (setf (liber:alias-for-symbol 'message-type)
       "GEnum"
       (liber:symbol-documentation 'message-type)
- "@version{#2021-12-3}
+ "@version{#2023-3-21}
   @begin{short}
     The type of message being displayed in the message dialog.
   @end{short}
@@ -139,7 +139,7 @@
 (setf (liber:alias-for-symbol 'buttons-type)
       "GEnum"
       (liber:symbol-documentation 'buttons-type)
- "@version{#2021-12-3}
+ "@version{#2023-3-21}
   @begin{short}
     Prebuilt sets of buttons for the dialog.
   @end{short}
@@ -208,7 +208,7 @@
 
 #+liber-documentation
 (setf (documentation 'message-dialog 'type)
- "@version{#2021-12-3}
+ "@version{#2023-3-21}
   @begin{short}
     A @sym{gtk:message-dialog} widget presents a dialog with some message text.
   @end{short}
@@ -216,7 +216,7 @@
   message dialog from a @class{gtk:dialog} widget without too much effort, but
   the @sym{gtk:message-dialog} widget saves typing.
 
-  @image[messagedialog]{}
+  @image[messagedialog]{Figure: GtkMessageDialog}
 
   One difference from the @class{gtk:dialog} widget is that the message dialog
   sets the @slot[gtk:window]{skip-taskbar-hint} property to @em{true}, so that
@@ -271,6 +271,8 @@
       @end{entry}
     @end{table}
   @end{dictionary}
+  @see-constructor{gtk:message-dialog-new}
+  @see-constructor{gtk:message-dialog-new-with-markup}
   @see-slot{gtk:message-dialog-buttons}
   @see-slot{gtk:message-dialog-image}
   @see-slot{gtk:message-dialog-message-area}
@@ -285,7 +287,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- message-dialog-buttons ---------------------------------------------
+;;; --- message-dialog-buttons -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "buttons" 'message-dialog) t)
@@ -299,7 +301,7 @@
 (setf (liber:alias-for-function 'message-dialog-buttons)
       "Accessor"
       (documentation 'message-dialog-buttons 'function)
- "@version{#2021-10-4}
+ "@version{#2023-3-21}
   @begin{short}
     Accessor of the @slot[gtk:message-dialog]{buttons} slot of the
     @class{gtk:message-dialog} class.
@@ -309,21 +311,21 @@
   @end{dictionary}
   @see-class{gtk:message-dialog}")
 
-;;; --- message-dialog-image -----------------------------------------------
+;;; --- message-dialog-image ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "image" 'message-dialog) t)
  "The @code{image} property of type @class{gtk:widget} (Read / Write) @br{}
   The image for the message dialog. @br{}
-  @em{Warning:} The @code{image} property has been deprecated since version 3.12
-  and should not be used in newly written code. Use the @class{gtk:dialog}
+  @em{Warning:} The @code{image} property has been deprecated since version
+  3.12 and should not be used in newly written code. Use the @class{gtk:dialog}
   widget to create dialogs with images.")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'message-dialog-image)
       "Accessor"
       (documentation 'message-dialog-image 'function)
- "@version{#2021-12-22}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:message-dialog-image object) => image}
   @syntax[]{(setf (gtk:message-dialog-image object) image)}
   @argument[object]{a @class{gtk:message-dialog} widget}
@@ -341,7 +343,7 @@
   @see-class{gtk:dialog}
   @see-class{gtk:image}")
 
-;;; --- message-dialog-message-area ----------------------------------------
+;;; --- message-dialog-message-area --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "message-area"
@@ -356,7 +358,7 @@
 (setf (liber:alias-for-function 'message-dialog-message-area)
       "Accessor"
       (documentation 'message-dialog-message-area 'function)
- "@version{#2021-10-4}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:message-dialog-message-area object) => area}
   @argument[dialog]{a @class{gtk:message-dialog} widget}
   @argument[area]{a @class{gtk:box} widget of @code{:vertical} orientation}
@@ -364,11 +366,10 @@
     Accessor of the @slot[gtk:message-dialog]{message-area} slot of the
     @class{gtk:message-dialog} class.
   @end{short}
-
-  The @sym{gtk:message-dialog-message-area} slot access function returns the
-  @class{gtk:box} widget with @code{:vertical} orientation corresponding to
-  the \"message area\" in the message dialog. This is the box where the primary
-  and secondary labels of the message dialog are packed.
+  The @sym{gtk:message-dialog-message-area} function returns the @class{gtk:box}
+  widget with @code{:vertical} orientation corresponding to the \"message area\"
+  in the message dialog. This is the box where the primary and secondary labels
+  of the message dialog are packed.
 
   You can add your own extra content to that box and it will appear below those
   labels. See the @fun{gtk:dialog-content-area} function for the corresponding
@@ -378,7 +379,7 @@
   @see-class{gtk:dialog}
   @see-function{gtk:dialog-content-area}")
 
-;;; --- message-dialog-message-type ----------------------------------------
+;;; --- message-dialog-message-type --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "message-type"
@@ -394,7 +395,7 @@
 (setf (liber:alias-for-function 'message-dialog-message-type)
       "Accessor"
       (documentation 'message-dialog-message-type 'function)
- "@version{#2021-10-4}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:message-dialog-message-type object) => type}
   @argument[object]{a @class{gtk:message-dialog} widget}
   @argument[type]{a value of the @symbol{gtk:message-type} enumeration}
@@ -402,14 +403,13 @@
     Accessor of the @slot[gtk:message-dialog]{message-type} slot of the
     @class{gtk:message-dialog} class.
   @end{short}
-
   The type of the message. The type is used to determine the image that is
   shown in the message dialog, unless the image is explicitly set by the
   @code{image} property.
   @see-class{gtk:message-dialog}
   @see-symbol{gtk:message-type}")
 
-;;; --- message-dialog-secondary-text --------------------------------------
+;;; --- message-dialog-secondary-text ------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "secondary-text"
@@ -422,7 +422,7 @@
 (setf (liber:alias-for-function 'message-dialog-secondary-text)
       "Accessor"
       (documentation 'message-dialog-secondary-text 'function)
- "@version{#2021-10-4}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:message-dialog-secondary-text object) => text}
   @syntax[]{(setf (gtk:message-dialog-secondary-text object) text)}
   @argument[object]{a @class{gtk:message-dialog} widget}
@@ -431,12 +431,11 @@
     Accessor of the @slot[gtk:message-dialog]{secondary-text} slot of the
     @class{gtk:message-dialog} class.
   @end{short}
-
   The secondary text of the message dialog.
   @see-class{gtk:message-dialog}
   @see-function{gtk:message-dialog-format-secondary-text}")
 
-;;; --- message-dialog-secondary-use-markup --------------------------------
+;;; --- message-dialog-secondary-use-markup ------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "secondary-use-markup"
@@ -451,7 +450,7 @@
 (setf (liber:alias-for-function 'message-dialog-secondary-use-markup)
       "Accessor"
       (documentation 'message-dialog-secondary-use-markup 'function)
- "@version{#2021-10-4}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:message-dialog-secondary-use-markup object) => setting}
   @syntax[]{(setf (gtk:message-dialog-secondary-use-markup object) setting)}
   @argument[object]{a @class{gtk:message-dialog} widget}
@@ -460,12 +459,11 @@
     Accessor of the @slot[gtk:message-dialog]{secondary-use-markup} slot of the
     @class{gtk:message-dialog} class.
   @end{short}
-
   @em{True} if the secondary text of the message dialog includes Pango markup.
   @see-class{gtk:message-dialog}
   @see-function{gtk:message-dialog-format-secondary-markup}")
 
-;;; --- message-dialog-text ------------------------------------------------
+;;; --- message-dialog-text ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "text" 'message-dialog) t)
@@ -478,7 +476,7 @@
 (setf (liber:alias-for-function 'message-dialog-text)
       "Accessor"
       (documentation 'message-dialog-text 'function)
- "@version{#2021-10-4}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:message-dialog-text object) => text}
   @syntax[]{(setf (gtk:message-dialog-text object) text)}
   @argument[object]{a @class{gtk:message-dialog} widget}
@@ -487,12 +485,11 @@
     Accessor of the @slot[gtk:message-dialog]{text} slot of the
     @class{gtk:message-dialog} class.
   @end{short}
-
   The primary text of the message dialog. If the dialog has a secondary text,
   this will appear as the title.
   @see-class{gtk:message-dialog}")
 
-;;; --- message-dialog-use-markup ------------------------------------------
+;;; --- message-dialog-use-markup ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "use-markup" 'message-dialog) t)
@@ -505,7 +502,7 @@
 (setf (liber:alias-for-function 'message-dialog-use-markup)
       "Accessor"
       (documentation 'message-dialog-use-markup 'function)
- "@version{#2021-10-4}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:message-dialog-use-markup object) => setting}
   @syntax[]{(setf (gtk:message-dialog-use-markup object) setting)}
   @argument[object]{a @class{gtk:message-dialog} widget}
@@ -514,7 +511,6 @@
     Accessor of the @slot[gtk:message-dialog]{use-markup} slot of the
     @class{gtk:message-dialog} class.
   @end{short}
-
   @em{True} if the primary text of the message dialog includes Pango markup.
   @see-class{gtk:message-dialog}")
 
@@ -524,15 +520,16 @@
 
 (defun message-dialog-new (parent flags type buttons message &rest args)
  #+liber-documentation
- "@version{#2021-10-4}
-  @argument[parent]{transient @class{gtk:window} parent, or @code{nil} for none}
+ "@version{#2023-3-21}
+  @argument[parent]{a @class{gtk:window} transient parent, or @code{nil} for
+    none}
   @argument[flags]{a value of the @symbol{gtk:dialog-flags} flags}
   @argument[type]{a value of the @symbol{gtk:message-type} enumeration for the
     type of the message}
   @argument[buttons]{set of values of the @symbol{gtk:buttons-type} enumeration
     for the buttons to use}
-  @argument[message]{format string, or @code{nil}}
-  @argument[args]{the arguments for @arg{message}}
+  @argument[message]{a format string, or @code{nil}}
+  @argument[args]{arguments for @arg{message}}
   @return{A new @class{gtk:message-dialog} widget.}
   @begin{short}
     Creates a new message dialog, which is a simple dialog with some text the
@@ -571,13 +568,15 @@
 (defun message-dialog-new-with-markup (parent
                                        flags type buttons message &rest args)
  #+liber-documentation
- "@version{#2021-10-4}
-  @argument[parent]{transient @class{gtk:window} parent, or @code{nil} for none}
-  @argument[flags]{flags of type @symbol{gtk:dialog-flags}}
-  @argument[type]{type of message of type @symbol{gtk:message-type}}
-  @argument[buttons]{set of buttons to use of type @symbol{gtk:buttons-type}}
-  @argument[message]{format string, or @code{nil}}
-  @argument[args]{the arguments for @arg{message}}
+ "@version{#2023-3-21}
+  @argument[parent]{a @class{gtk:window} transient parent, or @code{nil} for
+    none}
+  @argument[flags]{a value of the @symbol{gtk:dialog-flags} flags}
+  @argument[type]{a value of the @symbol{gtk:message-type} enumeration}
+  @argument[buttons]{set of values of the @symbol{gtk:buttons-type} enumeration
+    for the buttons to use}
+  @argument[message]{a format string, or @code{nil}}
+  @argument[args]{arguments for @arg{message}}
   @return{A new @class{gtk:message-dialog} widget.}
   @begin{short}
     Creates a new message dialog, which is a simple dialog with some text which
@@ -635,7 +634,7 @@
 
 (defun message-dialog-set-markup (dialog text)
  #+liber-documentation
- "@version{#2021-10-4}
+ "@version{#2023-3-21}
   @argument[dialog]{a @class{gtk:message-dialog} widget}
   @argument[text]{a markup string, see Pango markup format}
   @begin{short}
@@ -658,7 +657,7 @@
 
 (defun message-dialog-format-secondary-text (dialog message &rest args)
  #+liber-documentation
- "@version{#2021-10-4}
+ "@version{#2023-3-21}
   @argument[dialog]{a @class{gtk:message-dialog} widget}
   @argument[message]{a format string, or @code{nil}}
   @argument[args]{the arguments for @arg{message}}
@@ -685,7 +684,7 @@
 
 (defun message-dialog-format-secondary-markup (dialog message &rest args)
  #+liber-documentation
- "@version{#2021-10-4}
+ "@version{#2023-3-21}
   @argument[dialog]{a @class{gtk:message-dialog} widget}
   @argument[message]{a markup string, see Pango markup format, or @code{nil}}
   @argument[args]{the arguments for @arg{message}}

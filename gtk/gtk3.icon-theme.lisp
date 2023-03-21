@@ -4,27 +4,27 @@
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
 ;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkIconTheme
@@ -116,7 +116,7 @@
 (setf (liber:alias-for-symbol 'icon-info)
       "CStruct"
       (liber:symbol-documentation 'icon-info)
- "@version{#2021-11-28}
+ "@version{#2023-3-20}
   @begin{short}
     Contains information found when looking up an icon in an icon theme.
   @end{short}
@@ -145,7 +145,7 @@
 (setf (liber:alias-for-symbol 'icon-lookup-flags)
       "GFlags"
       (liber:symbol-documentation 'icon-lookup-flags)
- "@version{#2023-3-12}
+ "@version{#2023-3-20}
   @begin{short}
     Used to specify options for the @fun{gtk:icon-theme-lookup-icon} function.
   @end{short}
@@ -246,7 +246,7 @@
 
 #+liber-documentation
 (setf (documentation 'icon-theme 'type)
- "@version{#2021-11-28}
+ "@version{#2023-3-20}
   @begin{short}
     The @sym{gtk:icon-theme} class provides a facility for looking up icons by
     name and size.
@@ -309,7 +309,7 @@
   @begin[Signal Details]{dictionary}
     @subheading{The \"changed\" signal}
       @begin{pre}
- lambda (theme)    :run-last
+lambda (theme)    :run-last
       @end{pre}
       Emitted when the current icon theme is switched or GTK detects that a
       change has occurred in the contents of the current icon theme.
@@ -317,6 +317,7 @@
         @entry[theme]{The @sym{gtk:icon-theme} object.}
       @end{table}
   @end{dictionary}
+  @see-constructor{gtk:icon-theme-new}
   @see-class{gtk:icon-info}")
 
 ;;; ----------------------------------------------------------------------------
@@ -327,7 +328,7 @@
 
 (defun icon-theme-new ()
  #+liber-documentation
- "@version{#2021-11-28}
+ "@version{#2023-3-20}
   @return{The newly created @class{gtk:icon-theme} object.}
   @begin{short}
     Creates a new icon theme.
@@ -347,10 +348,9 @@
 ;;; gtk_icon_theme_get_default () -> icon-theme-default
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_icon_theme_get_default" icon-theme-default)
-    (g:object icon-theme)
+(defcfun ("gtk_icon_theme_get_default" icon-theme-default) (g:object icon-theme)
  #+liber-documentation
- "@version{#2021-11-28}
+ "@version{#2023-3-20}
   @begin{return}
     A unique @class{gtk:icon-theme} object associated with the default screen.
   @end{return}
@@ -371,7 +371,7 @@
 (defcfun ("gtk_icon_theme_get_for_screen" icon-theme-for-screen)
     (g:object icon-theme)
  #+liber-documentation
- "@version{#2021-11-28}
+ "@version{#2023-3-20}
   @argument[screen]{a @class{gdk:screen} object}
   @begin{return}
     A unique @class{gtk:icon-theme} object associated with the given
@@ -402,7 +402,7 @@
 
 (defcfun ("gtk_icon_theme_set_screen" icon-theme-set-screen) :void
  #+liber-documentation
- "@version{#2021-11-28}
+ "@version{#2023-3-20}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @argument[screen]{a @class{gdk:screen} object}
   @begin{short}
@@ -424,10 +424,10 @@
 
 (defun (setf icon-theme-search-path) (path theme)
   (cffi:foreign-funcall "gtk_icon_theme_set_search_path"
-                   (g:object icon-theme) theme
-                   g:strv-t path
-                   :int (length path)
-                   :void)
+                        (g:object icon-theme) theme
+                        g:strv-t path
+                        :int (length path)
+                        :void)
   path)
 
 (defcfun ("gtk_icon_theme_get_search_path" %icon-theme-search-path) :void
@@ -437,7 +437,7 @@
 
 (defun icon-theme-search-path (theme)
  #+liber-documentation
- "@version{#2021-11-28}
+ "@version{#2023-3-20}
   @syntax[]{(gtk:icon-theme-search-path theme) => path}
   @syntax[]{(setf (gtk:icon-theme-search-path theme) path)}
   @argument[theme]{a @class{gtk:icon-theme} object}
@@ -446,9 +446,8 @@
   @begin{short}
     Accessor of the icon theme path directories.
   @end{short}
-
-  The @sym{gtk:icon-theme-search-path} function gets the current list of strings
-  with the search path that are searched for icon themes. The
+  The @sym{gtk:icon-theme-search-path} function gets the current list of
+  strings with the search path that are searched for icon themes. The
   @sym{(setf gtk:icon-theme-search-path)} function sets the search path.
 
   When looking for an icon theme, GTK will search for a subdirectory of one or
@@ -488,7 +487,7 @@
 (defcfun ("gtk_icon_theme_append_search_path" icon-theme-append-search-path)
     :void
  #+liber-documentation
- "@version{#2021-11-28}
+ "@version{#2023-3-20}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @argument[path]{a string with the directory name to append to the icon path}
   @begin{short}
@@ -506,10 +505,10 @@
 ;;; gtk_icon_theme_prepend_search_path ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_icon_theme_prepend_search_path"
-           icon-theme-prepend-search-path) :void
+(defcfun ("gtk_icon_theme_prepend_search_path" icon-theme-prepend-search-path)
+    :void
  #+liber-documentation
- "@version{#2021-11-28}
+ "@version{#2023-3-20}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @argument[path]{a string with the directory name to prepend to the icon path}
   @begin{short}
@@ -527,10 +526,9 @@
 ;;; gtk_icon_theme_add_resource_path ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_icon_theme_add_resource_path" icon-theme-add-resource-path)
-    :void
+(defcfun ("gtk_icon_theme_add_resource_path" icon-theme-add-resource-path) :void
  #+liber-documentation
- "@version{#2021-11-28}
+ "@version{#2023-3-20}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @argument[path]{a string with a resource path}
   @begin{short}
@@ -555,10 +553,9 @@
 ;;; gtk_icon_theme_set_custom_theme ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_icon_theme_set_custom_theme" icon-theme-set-custom-theme)
-    :void
+(defcfun ("gtk_icon_theme_set_custom_theme" icon-theme-set-custom-theme) :void
  #+liber-documentation
- "@version{#2021-11-28}
+ "@version{#2023-3-20}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @argument[name]{a string with the icon theme name to use instead of the
     configured icon theme, or @code{nil} to unset a previously set custom
@@ -583,7 +580,7 @@
 
 (defcfun ("gtk_icon_theme_has_icon" icon-theme-has-icon) :boolean
  #+liber-documentation
- "@version{#2021-11-28}
+ "@version{#2023-3-20}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @argument[name]{a string with the name of an icon}
   @return{@em{True} if @arg{theme} includes an icon for @arg{name}.}
@@ -603,7 +600,7 @@
 (defcfun ("gtk_icon_theme_lookup_icon" icon-theme-lookup-icon)
     (:pointer (:struct icon-info))
  #+liber-documentation
- "@version{#2021-11-28}
+ "@version{#2023-3-20}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @argument[name]{a string with the name of the icon to lookup}
   @argument[size]{an integer for the desired icon size}
@@ -640,7 +637,7 @@
            icon-theme-lookup-icon-for-scale)
     (:pointer (:struct icon-info))
  #+liber-documentation
- "@version{#2021-11-28}
+ "@version{#2023-3-20}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @argument[name]{a string with the name of the icon to lookup}
   @argument[size]{an integer for the desired icon size}
@@ -679,7 +676,7 @@
 (defcfun ("gtk_icon_theme_choose_icon" icon-theme-choose-icon)
     (:pointer (:struct icon-info))
  #+liber-documentation
- "@version{#2021-11-28}
+ "@version{#2023-3-20}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @argument[names]{list of strings with the icon names to lookup}
   @argument[size]{an integer with the desired icon size}
@@ -719,7 +716,7 @@
            icon-theme-choose-icon-for-scale)
     (:pointer (:struct icon-info))
  #+liber-documentation
- "@version{#2021-11-28}
+ "@version{#2023-3-20}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @argument[names]{list of strings with icon names to lookup}
   @argument[size]{an integer with the desired icon size}
@@ -761,7 +758,7 @@
 (defcfun ("gtk_icon_theme_lookup_by_gicon" icon-theme-lookup-by-gicon)
     (:pointer (:struct icon-info))
  #+liber-documentation
- "@version{#2021-11-28}
+ "@version{#2023-3-20}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @argument[icon]{the @class{g:icon} object to look up}
   @argument[size]{an integer with the desired icon size}
@@ -797,7 +794,7 @@
            icon-theme-lookup-by-gicon-for-scale)
     (:pointer (:struct icon-info))
  #+liber-documentation
- "@version{#2021-11-28}
+ "@version{#2023-3-20}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @argument[icon]{a @class{g:icon} object to look up}
   @argument[size]{an integer with the desired icon size}
@@ -841,7 +838,7 @@
 
 (defun icon-theme-load-icon (theme name size flags)
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-20}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @argument[name]{a string with the name of the icon to lookup}
   @argument[size]{an integer with the desired icon size, the resulting icon may
@@ -889,7 +886,7 @@
 
 (defun icon-theme-load-icon-for-scale (theme name size scale flags)
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-20}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @argument[name]{a string with the name of the icon to lookup}
   @argument[size]{an integer with the desired icon size}
@@ -940,7 +937,7 @@
 
 (defun icon-theme-load-surface (theme name size scale window flags)
  #+liber-documentation
- "@version{#2021-11-28}
+ "@version{#2023-3-20}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @argument[name]{a string with the name of the icon to lookup}
   @argument[size]{an integer with the desired icon size}
@@ -975,9 +972,9 @@
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_icon_theme_list_contexts" icon-theme-list-contexts)
-    (g:list-t (:string :free-from-foreign t))
+    (g:list-t :string)
  #+liber-documentation
- "@version{#2021-11-28}
+ "@version{#2023-3-20}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @begin{return}
     A list of strings holding the names of all the contexts in the icon theme.
@@ -1004,14 +1001,13 @@
 ;;; gtk_icon_theme_list_icons ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_icon_theme_list_icons" %icon-theme-list-icons)
-    (g:list-t :string)
+(defcfun ("gtk_icon_theme_list_icons" %icon-theme-list-icons) (g:list-t :string)
   (theme (g:object icon-theme))
   (context :string))
 
 (defun icon-theme-list-icons (theme context)
  #+liber-documentation
- "@version{#2021-11-28}
+ "@version{#2023-3-20}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @argument[context]{a string identifying a particular type of icon, or
     @code{nil} to list all icons}
@@ -1039,7 +1035,7 @@
 
 (defun icon-theme-icon-sizes (theme name)
  #+liber-documentation
- "@version{#2021-11-28}
+ "@version{#2023-3-20}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @argument[name]{a string with the name of an icon}
   @return{An Lisp array of integer with the sizes at which the icon is
@@ -1059,10 +1055,10 @@
 ;;; gtk_icon_theme_get_example_icon_name () -> icon-theme-example-icon-name
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_icon_theme_get_example_icon_name"
-           icon-theme-example-icon-name) :string
+(defcfun ("gtk_icon_theme_get_example_icon_name" icon-theme-example-icon-name)
+    :string
  #+liber-documentation
- "@version{#2021-11-28}
+ "@version{#2023-3-20}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @return{A string with the name of an example icon or @code{nil}.}
   @begin{short}
@@ -1081,7 +1077,7 @@
 (defcfun ("gtk_icon_theme_rescan_if_needed" icon-theme-rescan-if-needed)
     :boolean
  #+liber-documentation
- "@version{#2021-11-28}
+ "@version{#2023-3-20}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @return{@em{True} if the icon theme has changed and needed to be reloaded.}
   @begin{short}
@@ -1100,7 +1096,7 @@
 
 (defcfun ("gtk_icon_theme_add_builtin_icon" icon-theme-add-builtin-icon) :void
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-20}
   @argument[name]{a string with the name of the icon to register}
   @argument[size]{an integer with the size at which to register the icon}
   @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object that contains the image
@@ -1182,7 +1178,7 @@
 (defcfun ("gtk_icon_info_new_for_pixbuf" icon-info-new-for-pixbuf)
     (:pointer (:struct icon-info))
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-20}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object to wrap in a
     @symbol{gtk:icon-info} instance}
@@ -1205,7 +1201,7 @@
 
 (defcfun ("gtk_icon_info_get_base_size" icon-info-base-size) :int
  #+liber-documentation
- "@version{#2021-11-28}
+ "@version{#2023-3-20}
   @argument[info]{a @symbol{gtk:icon-info} instance}
   @return{An integer with the base size, or 0, if no base size is known for the
     icon.}
@@ -1237,7 +1233,7 @@
 
 (defcfun ("gtk_icon_info_get_base_scale" icon-info-base-scale) :int
  #+liber-documentation
- "@version{#2021-11-28}
+ "@version{#2023-3-20}
   @argument[info]{a @symbol{gtk:icon-info} instance}
   @return{An integer with the base scale.}
   @begin{short}
@@ -1266,7 +1262,7 @@
 
 (defcfun ("gtk_icon_info_get_filename" icon-info-filename) :string
  #+liber-documentation
- "@version{#2021-11-28}
+ "@version{#2023-3-20}
   @argument[info]{a @symbol{gtk:icon-info} instance}
   @begin{return}
    A string with the filename for the icon.
@@ -1300,7 +1296,7 @@
 (defcfun ("gtk_icon_info_get_builtin_pixbuf" icon-info-builtin-pixbuf)
     (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-20}
   @argument[info]{a @symbol{gtk:icon-info} instance}
   @return{The built-in image as a @class{gdk-pixbuf:pixbuf} object, or
     @code{nil}.}
@@ -1333,7 +1329,7 @@
 
 (defun icon-info-load-icon (info)
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-20}
   @argument[info]{a @symbol{gtk:icon-info} instance}
   @return{The @class{gdk-pixbuf:pixbuf} object with the rendered icon.}
   @begin{short}
@@ -1372,7 +1368,7 @@
 
 (defun icon-info-load-surface (info window)
  #+liber-documentation
- "@version{#2021-11-28}
+ "@version{#2023-3-20}
   @argument[info]{a @symbol{gtk:icon-info} instance}
   @argument[window]{a @class{gdk:window} object to optimize drawing for}
   @return{A @symbol{cairo:surface-t} instance with the rendered icon.}
@@ -1473,7 +1469,7 @@
 
 (defun icon-info-load-symbolic (info fg success warning error)
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-20}
   @argument[info]{a @symbol{gtk:icon-info} instance}
   @argument[fg]{a @class{gdk:rgba} foreground color}
   @argument[success]{a @class{gdk:rgba} success color}
@@ -1502,12 +1498,12 @@
   (with-g-error (err)
     (with-foreign-object (symbolic? :boolean)
       (%icon-info-load-symbolic info
-                                    fg
-                                    success
-                                    warning
-                                    error
-                                    symbolic?
-                                    err))))
+                                fg
+                                success
+                                warning
+                                error
+                                symbolic?
+                                err))))
 
 (export 'icon-info-load-symbolic)
 
@@ -1650,7 +1646,7 @@
 
 (defun icon-info-load-symbolic-for-context (info context)
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-20}
   @argument[info]{a @symbol{gtk:icon-info} instance}
   @argument[context]{a @class{gtk:style-context} object}
   @return{A @class{gdk-pixbuf:pixbuf} object representing the loaded icon.}
@@ -1881,7 +1877,7 @@
 
 (defcfun ("gtk_icon_info_is_symbolic" icon-info-is-symbolic) :boolean
  #+liber-documentation
- "@version{#2021-11-28}
+ "@version{#2023-3-20}
   @argument[info]{a @symbol{gtk:icon-info} instance}
   @return{@em{True} if the icon is symbolic, @em{false} otherwise.}
   @begin{short}

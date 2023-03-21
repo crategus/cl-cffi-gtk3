@@ -1,29 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.print-job.lisp
+;;; gtk3.print-job.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2013 - 2022 Dieter Kaiser
+;;; Copyright (C) 2013 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkPrintJob
@@ -70,15 +71,15 @@
 ;;;
 ;;; Properties
 ;;;
-;;;     GtkPageSetup*   page-setup            Read / Write / Construct Only
-;;;       GtkPrinter*   printer               Read / Write / Construct Only
-;;; GtkPrintSettings*   settings              Read / Write / Construct Only
-;;;            gchar*   title                 Read / Write / Construct Only
-;;;         gboolean    track-print-status    Read / Write
+;;;     page-setup
+;;;     printer
+;;;     settings
+;;;     title
+;;;     track-print-status
 ;;;
 ;;; Signals
 ;;;
-;;;             void    status-changed        Run Last
+;;;     status-changed
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -115,7 +116,7 @@
 
 #+liber-documentation
 (setf (documentation 'print-job 'type)
- "@version{#2021-12-25}
+ "@version{#2023-3-21}
   @begin{short}
     A @sym{gtk:print-job} object represents a job that is sent to a printer.
   @end{short}
@@ -130,7 +131,7 @@
   @begin[Signal Details]{dictionary}
     @subheading{The \"status-changed\" signal}
       @begin{pre}
- lambda (job)    :run-last
+lambda (job)    :run-last
       @end{pre}
       Gets emitted when the status of a job changes. The signal handler can use
       the @fun{gtk:print-job-status} function to obtain the new status.
@@ -139,6 +140,7 @@
         emitted.}
       @end{table}
   @end{dictionary}
+  @see-constructor{gtk:print-job-new}
   @see-slot{gtk:print-job-page-setup}
   @see-slot{gtk:print-job-printer}
   @see-slot{gtk:print-job-settings}
@@ -154,7 +156,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- print-job-page-setup -----------------------------------------------
+;;; --- print-job-page-setup ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "page-setup" 'print-job) t)
@@ -166,7 +168,7 @@
 (setf (liber:alias-for-function 'print-job-page-setup)
       "Accessor"
       (documentation 'print-job-page-setup 'function)
- "@version{#2021-12-25}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:print-job-page-setup object) => page-setup}
   @argument[object]{a @class{gtk:print-job} object}
   @argument[page-setup]{a @class{gtk:page-setup} object}
@@ -177,7 +179,7 @@
   @see-class{gtk:print-job}
   @see-class{gtk:page-setup}")
 
-;;; --- print-job-printer --------------------------------------------------
+;;; --- print-job-printer ------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "printer" 'print-job) t)
@@ -189,7 +191,7 @@
 (setf (liber:alias-for-function 'print-job-printer)
       "Accessor"
       (documentation 'print-job-printer 'function)
- "@version{#2021-12-25}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:print-job-printer object) => printer}
   @argument[object]{a @class{gtk:print-job} object}
   @argument[printer]{a @class{gtk:printer} object}
@@ -201,7 +203,7 @@
   @see-class{gtk:print-job}
   @see-class{gtk:printer}")
 
-;;; --- print-job-settings -------------------------------------------------
+;;; --- print-job-settings -----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "settings" 'print-job) t)
@@ -213,7 +215,7 @@
 (setf (liber:alias-for-function 'print-job-settings)
       "Accessor"
       (documentation 'print-job-settings 'function)
- "@version{#2021-12-25}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:print-job-settings object) => settings}
   @argument[object]{a @class{gtk:print-job} object}
   @argument[settings]{a @class{gtk:print-settings} object}
@@ -225,7 +227,7 @@
   @see-class{gtk:print-job}
   @see-class{gtk:print-settings}")
 
-;;; --- print-job-title ----------------------------------------------------
+;;; --- print-job-title --------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "title" 'print-job) t)
@@ -238,7 +240,7 @@
 (setf (liber:alias-for-function 'print-job-title)
       "Accessor"
       (documentation 'print-job-title 'function)
- "@version{#2021-12-25}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:print-job-title object) => title}
   @argument[object]{a @class{gtk:print-job} object}
   @argument[title]{a string with the job title.}
@@ -249,7 +251,7 @@
   Gets the job title.
   @see-class{gtk:print-job}")
 
-;;; --- print-job-track-print-status ---------------------------------------
+;;; --- print-job-track-print-status -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "track-print-status"
@@ -264,7 +266,7 @@
 (setf (liber:alias-for-function 'print-job-track-print-status)
       "Accessor"
       (documentation 'print-job-track-print-status 'function)
- "@version{#2021-12-25}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:print-job-track-print-status object) => track-status}
   @syntax[]{(setf (gtk:print-job-track-print-status object) track-status)}
   @argument[object]{a @class{gtk:print-job} object}
@@ -273,9 +275,8 @@
     Accessor of the @slot[gtk:print-job]{track-print-status} slot of the
     @class{gtk:print-job} class.
   @end{short}
-
-  The @sym{gtk:print-job-track-print-status} slot access function returns
-  whether jobs will be tracked after printing.
+  The @sym{gtk:print-job-track-print-status} function returns whether jobs will
+  be tracked after printing.
 
   If @arg{track-status} is @em{true}, the print job will try to continue
   report on the status of the print job in the printer queues and printer.
@@ -294,7 +295,7 @@
 
 (defun print-job-new (title printer settings page-setup)
  #+liber-documentation
- "@version{#2021-12-25}
+ "@version{#2023-3-21}
   @argument[title]{a string with the job title}
   @argument[printer]{a @class{gtk:printer} object}
   @argument[settings]{a @class{gtk:print-settings} object}
@@ -319,7 +320,7 @@
 
 (defcfun ("gtk_print_job_get_status" print-job-status) print-status
  #+liber-documentation
- "@version{#2021-12-25}
+ "@version{#2023-3-21}
   @argument[job]{a @class{gtk:print-job} object}
   @return{The status of type @symbol{gtk:print-status} of @arg{job}.}
   @short{Gets the status of the print job.}
@@ -364,15 +365,14 @@
 ;;; gtk_print_job_set_source_file ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_print_job_set_source_file" %print-job-set-source-file)
-    :boolean
+(defcfun ("gtk_print_job_set_source_file" %print-job-set-source-file) :boolean
   (job (g:object print-job))
   (filename :string)
   (err :pointer))
 
 (defun print-job-set-source-file (job filename)
  #+liber-documentation
- "@version{#2021-12-25}
+ "@version{#2023-3-21}
   @argument[job]{a @class{gtk:print-job} object}
   @argument[filename]{a string with the file name to be printed}
   @return{@em{False} if an error occurred.}
@@ -401,7 +401,7 @@
 
 (defun print-job-surface (job)
  #+liber-documentation
- "@version{#2021-12-25}
+ "@version{#2023-3-21}
   @argument[job]{a @class{gtk:print-job} object}
   @return{The Cairo surface of type @symbol{cairo:surface-t} of @arg{job}.}
   @begin{short}
@@ -429,14 +429,14 @@
 (setf (liber:alias-for-symbol 'print-job-complete-func)
       "Callback"
       (liber:symbol-documentation 'print-job-complete-func)
- "@version{#2021-12-25}
+ "@version{#2023-3-21}
   @begin{short}
     The type of callback that is passed to the @fun{gtk:print-job-send}
     function.
   @end{short}
   It is called when the print job has been completely sent.
   @begin{pre}
- lambda (job)
+lambda (job)
   @end{pre}
   @begin[code]{table}
     @entry[job]{A @class{gtk:print-job} object.}
@@ -458,7 +458,7 @@
 
 (defun print-job-send (job func)
  #+liber-documentation
- "@version{#2021-12-25}
+ "@version{#2023-3-21}
   @argument[job]{a @class{gtk:print-job} object}
   @argument[func]{a @symbol{gtk:print-job-complete-func} function to call when
   the job completes or an error occurs}
@@ -478,9 +478,9 @@
 
 (defun (setf print-job-pages) (pages job)
   (cffi:foreign-funcall "gtk_print_job_set_pages"
-                   (g:object print-job) job
-                   print-pages pages
-                   :void)
+                        (g:object print-job) job
+                        print-pages pages
+                        :void)
   pages)
 
 (defcfun ("gtk_print_job_get_pages" print-job-pages) print-pages
@@ -493,7 +493,6 @@
   @begin{short}
     Accessor of the page setting for the print job.
   @end{short}
-
   The @sym{gtk:print-job-pages} function gets the pages setting for the print
   job. The @sym{(setf gtk:print-job-pages)} function sets the pages setting for
   the print job.
@@ -513,7 +512,7 @@
 
 (defun print-job-page-ranges (job)
  #+liber-documentation
- "@version{#2021-12-26}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:print-job-page-ranges job) => page-ranges}
   @syntax[]{(setf (gtk:print-job-page-ranges job) page-ranges)}
   @argument[job]{a @class{gtk:print-job} object}
@@ -521,7 +520,6 @@
   @begin{short}
     Accessor of the page ranges for the print job.
   @end{short}
-
   The @sym{gtk:print-job-page-ranges} function gets the page ranges for the
   print job. The @sym{(setf gtk:print-job-page-ranges)} function sets the page
   ranges.
@@ -538,14 +536,14 @@
 
 (defun (setf print-job-page-set) (page-set job)
   (cffi:foreign-funcall "gtk_print_job_set_page_set"
-                   (g:object print-job) job
-                   page-set page-set
-                   :void)
+                        (g:object print-job) job
+                        page-set page-set
+                        :void)
   page-set)
 
 (defcfun ("gtk_print_job_get_page_set" print-job-page-set) page-set
  #+liber-documentation
- "@version{#2021-12-26}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:print-job-page-set job) => page-set}
   @syntax[]{(setf (gtk:print-job-page-set job) page-set)}
   @argument[job]{a @class{gtk:print-job} object}
@@ -553,7 +551,6 @@
   @begin{short}
     Accessor of the @symbol{gtk:page-set} setting for the print job.
   @end{short}
-
   The @sym{gtk:print-job-page-set} function gets the setting for the print job.
   The @sym{(setf gtk:print-job-page-set)} function sets the setting for the
   print job.
@@ -570,13 +567,13 @@
 
 (defun (setf print-job-numcopies) (num-copies job)
   (cffi:foreign-funcall "gtk_print_job_set_num_copies"
-                   (g:object print-job) job
-                   :int num-copies)
+                        (g:object print-job) job
+                        :int num-copies)
   num-copies)
 
 (defcfun ("gtk_print_job_get_num_copies" print-job-num-copies) :int
  #+liber-documentation
- "@version{#2021-12-26}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:print-job-num-copies job) => num-copies}
   @syntax[]{(setf (gtk:print-job-num-copies job) num-copies)}
   @argument[job]{a @class{gtk:print-job} object}
@@ -584,7 +581,6 @@
   @begin{short}
     Accessor of the number of copies for the print job.
   @end{short}
-
   The @sym{gtk:print-job-num-copies} function gets the number of copies of the
   print job. The @sym{(setf gtk:print-job-num-copies)} function sets the number
   of copies for the print job.
@@ -600,14 +596,14 @@
 
 (defun (setf print-job-scale) (scale job)
   (cffi:foreign-funcall "gtk_print_job_set_scale"
-                   (g:object print-job) job
-                   :double scale
-                   :void)
+                        (g:object print-job) job
+                        :double scale
+                        :void)
   scale)
 
 (defcfun ("gtk_print_job_get_scale" print-job-scale) :double
  #+liber-documentation
- "@version{#2021-12-26}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:print-job-scale job) => scale}
   @syntax[]{(setf (gtk:print-job-scale job) scale)}
   @argument[job]{a @class{gtk:print-job} object}
@@ -615,7 +611,6 @@
   @begin{short}
     Accessor of the scale for the print job.
   @end{short}
-
   The @sym{gtk:print-job-scale} function gets the scale for the print job,
   where 1.0 means unscaled. The @sym{(setf gtk:print-job-scale)} function sets
   the scale for the print job.
@@ -631,14 +626,14 @@
 
 (defun (setf print-job-n-up) (n-up job)
   (cffi:foreign-funcall "gtk_print_job_set_n_up"
-                   (g:object print-job) job
-                   :uint n-up
-                   :void)
+                        (g:object print-job) job
+                        :uint n-up
+                        :void)
   n-up)
 
 (defcfun ("gtk_print_job_get_n_up" print-job-n-up) :uint
  #+liber-documentation
- "@version{#2021-12-26}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:print-job-n-up job) => n-up}
   @syntax[]{(setf (gtk:print-job-n-up job) n-up)}
   @argument[job]{a @class{gtk:print-job} object}
@@ -646,7 +641,6 @@
   @begin{short}
     Accessor of the n-up setting for the print job.
   @end{short}
-
   The @sym{gtk:print-job-n-up} function gets the n-up setting for the print
   job. The @sym{(setf gtk:print-job-n-up)} function sets the n-up setting for
   the print job.
@@ -662,15 +656,15 @@
 
 (defun (setf print-job-n-up-layout) (layout job)
   (cffi:foreign-funcall "gtk_print_job_set_n_up_layout"
-                   (g:object print-job) job
-                   number-up-layout layout
-                   :void)
+                        (g:object print-job) job
+                        number-up-layout layout
+                        :void)
   layout)
 
 (defcfun ("gtk_print_job_get_n_up_layout" print-job-n-up-layout)
     number-up-layout
  #+liber-documentation
- "@version{#2021-12-26}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:print-job-n-up-layout job) => layout}
   @syntax[]{(setf (gtk:print-job-n-up-layout job) layout)}
   @argument[job]{a @class{gtk:print-job} object}
@@ -679,7 +673,6 @@
   @begin{short}
     Accessor of the layout setting for the print job.
   @end{short}
-
   The @sym{gtk:print-job-n-up-layout} function gets the layout setting for the
   print job. The @sym{(setf gtk:print-job-n-up-layout)} function sets the
   layout setting for the print job.
@@ -695,14 +688,14 @@
 
 (defun (setf print-job-rotate) (rotate job)
   (cffi:foreign-funcall "gtk_print_job_set_rotate"
-                   (g:object print-job) job
-                   :boolean rotate
-                   :void)
+                        (g:object print-job) job
+                        :boolean rotate
+                        :void)
   rotate)
 
 (defcfun ("gtk_print_job_get_rotate" print-job-rotate) :boolean
  #+liber-documentation
- "@version{#2021-12-26}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:print-job-rotate job) => rotate}
   @syntax[]{(setf (gtk:print-job-rotate job) rotate)}
   @argument[job]{a @class{gtk:print-job} object}
@@ -710,7 +703,6 @@
   @begin{short}
     Accessor of the rotate setting for the print job.
   @end{short}
-
   The @sym{gtk:print-job-rotate} function gets whether the job is printed
   rotated. The @sym{(setf gtk:print-job-rotate)} function sets whether the job
   is printed rotated.
@@ -726,14 +718,14 @@
 
 (defun (setf print-job-collate) (collate job)
   (cffi:foreign-funcall "gtk_print_job_set_collate"
-                   (g:object print-job) job
-                   :boolean collate
-                   :void)
+                        (g:object print-job) job
+                        :boolean collate
+                        :void)
   collate)
 
 (defcfun ("gtk_print_job_get_collate" print-job-collate) :boolean
  #+liber-documentation
- "@version{#2021-12-26}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:print-job-collate job) => collate}
   @syntax[]{(setf (gtk:print-job-collate job) collate)}
   @argument[job]{a @class{gtk:print-job} object}
@@ -742,7 +734,6 @@
   @begin{short}
     Accessor of the collate setting of the print job.
   @end{short}
-
   The @sym{gtk:print-job-collate} function gets whether the job is printed
   collated. The @sym{(setf gtk:print-job-collate)} function sets whether the
   job is printed collated.
@@ -758,14 +749,14 @@
 
 (defun (setf print-job-reverse) (reverse job)
   (cffi:foreign-funcall "gtk_print_job_set_reverse"
-                   (g:object print-job) job
-                   :boolean reverse
-                   :void)
+                        (g:object print-job) job
+                        :boolean reverse
+                        :void)
   reverse)
 
 (defcfun ("gtk_print_job_get_reverse" print-job-reverse) :boolean
  #+liber-documentation
- "@version{#2021-12-26}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:print-job-reverse job) => reverse}
   @syntax[]{(setf (gtk:print-job-reverse job) reverse)}
   @argument[job]{a @class{gtk:print-job} object}
@@ -773,7 +764,6 @@
   @begin{short}
     Accessor of the reverse setting of the print job.
   @end{short}
-
   The @sym{gtk:print-job-reverse} function gets whether the job is printed
   reversed. The @sym{(setf gtk:print-job-reverse)} function sets whether the
   job is printed reversed.
@@ -782,4 +772,4 @@
 
 (export 'print-job-reverse)
 
-;;; --- End of file gtk.print-job.lisp -----------------------------------------
+;;; --- End of file gtk3.print-job.lisp ----------------------------------------

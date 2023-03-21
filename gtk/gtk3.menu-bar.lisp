@@ -1,30 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.menu-bar.lisp
+;;; gtk3.menu-bar.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkMenuBar
@@ -47,13 +47,13 @@
 ;;;
 ;;; Properties
 ;;;
-;;;     GtkPackDirection    child-pack-direction    Read / Write
-;;;     GtkPackDirection    pack-direction          Read / Write
+;;;     child-pack-direction
+;;;     pack-direction
 ;;;
 ;;; Style Properties
 ;;;
-;;;                 gint    internal-padding        Read
-;;;        GtkShadowType    shadow-type             Read
+;;;     internal-padding
+;;;     shadow-type
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -87,7 +87,7 @@
 (setf (liber:alias-for-symbol 'pack-direction)
       "GEnum"
       (liber:symbol-documentation 'pack-direction)
- "@version{#2021-11-13}
+ "@version{#2023-3-21}
   @begin{short}
     Determines how widgets should be packed insided menubars and menuitems
     contained in menubars.
@@ -128,7 +128,7 @@
 
 #+liber-documentation
 (setf (documentation 'menu-bar 'type)
- "@version{#2021-11-13}
+ "@version{#2023-3-21}
   @begin{short}
     The @sym{gtk:menu-bar} class is a subclass of the @class{gtk:menu-shell}
     class which contains one or more @class{gtk:menu-item} widgets.
@@ -165,6 +165,8 @@
       @end{entry}
     @end{table}
   @end{dictionary}
+  @see-constructor{gtk:menu-bar-new}
+  @see-constructor{gtk:menu-bar-new-from-model}
   @see-slot{gtk:menu-bar-child-pack-direction}
   @see-slot{gtk:menu-bar-pack-direction}
   @see-class{gtk:menu-shell}
@@ -174,7 +176,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- menu-bar-child-pack-direction --------------------------------------
+;;; --- menu-bar-child-pack-direction ------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "child-pack-direction"
@@ -189,7 +191,7 @@
 (setf (liber:alias-for-function 'menu-bar-child-pack-direction)
       "Accessor"
       (documentation 'menu-bar-child-pack-direction 'function)
- "@version{#2021-11-13}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:menu-bar-child-pack-direction object) => direction}
   @syntax[]{(setf (gtk:menu-bar-child-pack-direction object) direction)}
   @argument[object]{a @class{gtk:menu-bar} widget}
@@ -198,19 +200,17 @@
     Accessor of the @slot[gtk:menu-bar]{child-pack-direction} slot of the
     @class{gtk:menu-bar} class.
   @end{short}
-
-  The @sym{gtk:menu-bar-child-pack-direction} slot access function retrieves
-  the current child pack direction of the menu bar. The
-  @sym{(setf gtk:menu-bar-child-pack-direction)} slot access function sets how
-  widgets should be packed inside the children of a menu bar.
+  The @sym{gtk:menu-bar-child-pack-direction} function retrieves the current
+  child pack direction of the menu bar. The
+  @sym{(setf gtk:menu-bar-child-pack-direction)} function sets how widgets
+  should be packed inside the children of a menu bar.
   @see-class{gtk:menu-bar}
   @see-symbol{gtk:pack-direction}")
 
-;;; --- menu-bar-pack-direction --------------------------------------------
+;;; --- menu-bar-pack-direction ------------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "pack-direction"
-                                               'menu-bar) t)
+(setf (documentation (liber:slot-documentation "pack-direction" 'menu-bar) t)
  "The @code{pack-direction} property of type @symbol{gtk:pack-direction}
   (Read / Write) @br{}
   The pack direction of the menu bar. It determines how menuitems are arranged
@@ -221,7 +221,7 @@
 (setf (liber:alias-for-function 'menu-bar-pack-direction)
       "Accessor"
       (documentation 'menu-bar-pack-direction 'function)
- "@version{#2021-11-13}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:menu-bar-pack-direction object) => direction}
   @syntax[]{(setf (gtk:menu-bar-pack-direction object) direction)}
   @argument[menubar]{a @class{gtk:menu-bar} widget}
@@ -230,11 +230,10 @@
     Accessor of the @slot[gtk:menu-bar]{pack-direction} slot of the
     @class{gtk:menu-bar} class.
   @end{short}
-
-  The @sym{gtk:menu-bar-child-pack-direction} slot access function retrieves
-  the current pack direction of the menu bar. The
-  @sym{(setf gtk:menu-bar-child-pack-direction)} slot access function sets how
-  items should be packed inside a menu bar.
+  The @sym{gtk:menu-bar-child-pack-direction} function retrieves the current
+  pack direction of the menu bar. The
+  @sym{(setf gtk:menu-bar-child-pack-direction)} function sets how items should
+  be packed inside a menu bar.
   @see-class{gtk:menu-bar}
   @see-symbol{gtk:pack-direction}")
 
@@ -246,7 +245,7 @@
 
 (defun menu-bar-new ()
  #+liber-documentation
- "@version{#2021-11-13}
+ "@version{#2023-3-21}
   @return{The new @class{gtk:menu-bar} widget.}
   @begin{short}
     Creates a new menu bar.
@@ -264,7 +263,7 @@
 (defcfun ("gtk_menu_bar_new_from_model" menu-bar-new-from-model)
     (g:object menu-bar)
  #+liber-documentation
- "@version{#2021-11-13}
+ "@version{#2023-3-21}
   @argument[model]{a @class{g:menu-model} object}
   @return{A new @class{gtk:menu-bar} widget.}
   @begin{short}
@@ -282,4 +281,4 @@
 
 (export 'menu-bar-new-from-model)
 
-;;; --- End of file gtk.menu-bar.lisp ------------------------------------------
+;;; --- End of file gtk3.menu-bar.lisp -----------------------------------------

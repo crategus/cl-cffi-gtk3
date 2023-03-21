@@ -1,29 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.overlay.lisp
+;;; gtk3.overlay.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2021 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkOverlay
@@ -44,12 +45,12 @@
 ;;;
 ;;; Child Properties
 ;;;
-;;;         gint    index                 Read / Write
-;;;     gboolean    pass-through          Read / Write
+;;;     index
+;;;     pass-through
 ;;;
 ;;; Signals
 ;;;
-;;;     gboolean    get-child-position    Run Last
+;;;     get-child-position
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -84,7 +85,7 @@
 
 #+liber-documentation
 (setf (documentation 'overlay 'type)
- "@version{#2023-3-13}
+ "@version{#2023-3-21}
   @begin{short}
     The @sym{gtk:overlay} widget is a container which contains a single main
     widget, on top of which it can place overlay widgets.
@@ -166,7 +167,7 @@ lambda (overlay widget allocation)    :run-last
 (setf (liber:alias-for-function 'overlay-child-index)
       "Accessor"
       (documentation 'overlay-child-index 'function)
- "@version{#2023-3-13}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:overlay-child-index object) => index)}
   @syntax[]{(setf (gtk:overlay-child-index object) index)}
   @argument[container]{a @class{gtk:overlay} widget}
@@ -189,7 +190,7 @@ lambda (overlay widget allocation)    :run-last
 (setf (liber:alias-for-function 'overlay-child-pass-through)
       "Accessor"
       (documentation 'overlay-child-pass-through 'function)
- "@version{#2023-3-13}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:overlay-child-pass-through container child) => setting)}
   @syntax[]{(setf (gtk:overlay-child-pass-through container child) setting)}
   @argument[container]{a @class{gtk:overlay} widget}
@@ -211,7 +212,7 @@ lambda (overlay widget allocation)    :run-last
 
 (defun overlay-new ()
  #+liber-documentation
- "@version{#2021-10-21}
+ "@version{#2023-3-21}
   @return{A new @class{gtk:overlay} widget.}
   @begin{short}
     Creates a new overlay container.
@@ -227,7 +228,7 @@ lambda (overlay widget allocation)    :run-last
 
 (defcfun ("gtk_overlay_add_overlay" overlay-add-overlay) :void
  #+liber-documentation
- "@version{#2021-11-30}
+ "@version{#2023-3-21}
   @argument[overlay]{a @class{gtk:overlay} widget}
   @argument[widget]{a @class{gtk:widget} child widget to be added to the
     container}
@@ -255,7 +256,7 @@ lambda (overlay widget allocation)    :run-last
 
 (defcfun ("gtk_overlay_reorder_overlay" overlay-reorder-overlay) :void
  #+liber-documentation
- "@version{#2023-3-13}
+ "@version{#2023-3-21}
   @argument[overlay]{a @class{gtk:overlay} widget}
   @argument[child]{a overlaid @class{gtk:widget} child widget to move}
   @argument[position]{an integer with the new index for the child widget in the
@@ -285,4 +286,4 @@ lambda (overlay widget allocation)    :run-last
 
 ;; Implemented as the child accessor overlay-child-pass-through
 
-;;; --- End of file gtk.overlay.lisp -------------------------------------------
+;;; --- End of file gtk3.overlay.lisp ------------------------------------------

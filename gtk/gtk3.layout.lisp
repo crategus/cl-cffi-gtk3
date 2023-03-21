@@ -1,30 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.layout.lisp
+;;; gtk3.layout.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkLayout
@@ -50,13 +50,13 @@
 ;;;
 ;;; Properties
 ;;;
-;;;     guint    height    Read / Write
-;;;     guint    width     Read / Write
+;;;     height
+;;;     width
 ;;;
 ;;; Child Properties
 ;;;
-;;;      gint    x         Read / Write
-;;;      gint    y         Read / Write
+;;;     x
+;;;     y
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -93,7 +93,7 @@
 
 #+liber-documentation
 (setf (documentation 'layout 'type)
- "@version{#2021-12-9}
+ "@version{#2023-3-20}
   @begin{short}
     The @sym{gtk:layout} widget is similar to the @class{gtk:drawing-area}
     widget in that it is a \"blank slate\" and does not do anything but paint
@@ -105,8 +105,8 @@
   a @class{gtk:drawing-area} widget is a better choice since it has lower
   overhead.
 
-  When handling expose events on a @sym{gtk:layout} widget, you must draw to the
-  @class{gdk:window} object returned by the @fun{gtk:layout-bin-window}
+  When handling expose events on a @sym{gtk:layout} widget, you must draw to
+  the @class{gdk:window} object returned by the @fun{gtk:layout-bin-window}
   function, rather than to the one returned by the @fun{gtk:widget-window}
   function as you would for a drawing area.
   @begin[Child Property Details]{dictionary}
@@ -123,6 +123,7 @@
       @end{entry}
     @end{table}
   @end{dictionary}
+  @see-constructor{gtk:layout-new}
   @see-slot{gtk:layout-height}
   @see-slot{gtk:layout-width}
   @see-class{gtk:drawing-area}
@@ -133,7 +134,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- layout-height ------------------------------------------------------
+;;; --- layout-height ----------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "height" 'layout) t)
@@ -146,7 +147,7 @@
 (setf (liber:alias-for-function 'layout-height)
       "Accessor"
       (documentation 'layout-height 'function)
- "@version{#2021-12-9}
+ "@version{#2023-3-20}
   @syntax[]{(gtk:layout-height object) => height}
   @syntax[]{(setf (gtk:layout-height object) height)}
   @argument[object]{a @class{gtk:layout} widget}
@@ -156,12 +157,11 @@
     class.
   @end{short}
 
-  The @sym{gtk:layout-height} slot access function gets the height of the
-  layout. The @sym{(setf gtk:layout-height)} slot access function sets the
-  height.
+  The @sym{gtk:layout-height} function gets the height of the layout. The
+  @sym{(setf gtk:layout-height)} function sets the height.
   @see-class{gtk:layout}")
 
-;;; --- layout-width -------------------------------------------------------
+;;; --- layout-width -----------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "width" 'layout) t)
@@ -174,7 +174,7 @@
 (setf (liber:alias-for-function 'layout-width)
       "Accessor"
       (documentation 'layout-width 'function)
- "@version{#2021-12-9}
+ "@version{#2023-3-20}
   @syntax[]{(gtk:layout-width object) => width}
   @syntax[]{(setf (gtk:layout-width object) width)}
   @argument[object]{a @class{gtk:layout} widget}
@@ -183,9 +183,8 @@
     Accessor of the @slot[gtk:layout]{width} slot of the @class{gtk:layout}
     class.
   @end{short}
-
-  The @sym{gtk:layout-width} slot access function gets the width of the layout.
-  The @sym{(setf gtk:layout-width)} slot access function sets the width.
+  The @sym{gtk:layout-width} function gets the width of the layout. The
+  @sym{(setf gtk:layout-width)} function sets the width.
   @see-class{gtk:layout}")
 
 ;;; ----------------------------------------------------------------------------
@@ -200,7 +199,7 @@
 (setf (liber:alias-for-function 'layout-child-x)
       "Accessor"
       (documentation 'layout-child-x 'function)
- "@version{#2021-12-9}
+ "@version{#2023-3-20}
   @syntax[]{(gtk:layout-child-x container cild) => x}
   @syntax[]{(setf (gtk:layout-child-x container child) x)}
   @argument[container]{a @class{gtk:layout} widget}
@@ -209,7 +208,6 @@
   @begin{short}
     Accessor of the @code{x} child property of the @class{gtk:layout} class.
   @end{short}
-
   The x position of the child widget in the layout.
   @see-class{gtk:layout}
   @see-class{gtk:widget}")
@@ -222,7 +220,7 @@
 (setf (liber:alias-for-function 'layout-child-y)
       "Accessor"
       (documentation 'layout-child-y 'function)
- "@version{#2021-12-9}
+ "@version{#2023-3-20}
   @syntax[]{(gtk:layout-child-y container cild) => y}
   @syntax[]{(setf (gtk:layout-child-y container child) y)}
   @argument[container]{a @class{gtk:layout} widget}
@@ -231,7 +229,6 @@
   @begin{short}
     Accessor of the child property @code{y} of the @class{gtk:layout} class.
   @end{short}
-
   The y position of the child widget in the layout.
   @see-class{gtk:layout}
   @see-class{gtk:widget}")
@@ -244,7 +241,7 @@
 
 (defun layout-new (&optional (hadjustment nil) (vadjustment nil))
  #+liber-documentation
- "@version{#2021-12-9}
+ "@version{#2023-3-20}
   @argument[hadjustment]{a horizontal scroll @class{gtk:adjustment} object}
   @argument[vadjustment]{a vertical scroll @class{gtk:adjustment} object}
   @return{A new @class{gtk:layout} widget.}
@@ -272,7 +269,7 @@
 
 (defcfun ("gtk_layout_put" layout-put) :void
  #+liber-documentation
- "@version{#2021-12-9}
+ "@version{#2023-3-20}
   @argument[layout]{a @class{gtk:layout} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[x]{an integer with the x position of the child widget}
@@ -297,7 +294,7 @@
 
 (defcfun ("gtk_layout_move" layout-move) :void
  #+liber-documentation
- "@version{#2021-12-9}
+ "@version{#2023-3-20}
   @argument[layout]{a @class{gtk:layout} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[x]{an integer with the x position to move to}
@@ -323,15 +320,15 @@
 (defun (setf layout-size) (value layout)
   (destructuring-bind (width height) value
     (cffi:foreign-funcall "gtk_layout_set_size"
-                     (g:object layout) layout
-                     :uint width
-                     :uint height
-                     :void)
+                          (g:object layout) layout
+                          :uint width
+                          :uint height
+                          :void)
   (values width height)))
 
 (defun layout-size (layout)
  #+liber-documentation
- "@version{#2021-12-9}
+ "@version{#2023-3-20}
   @syntax[]{(gtk:layout-size layout) => width, height}
   @syntax[]{(setf (gtk:layout-size layout) '(width height))}
   @argument[layout]{a @class{gtk:layout} widget}
@@ -342,14 +339,12 @@
   @begin{short}
     Accessor of the width and height of the scrollable area.
   @end{short}
-
   The @sym{gtk:layout-size} function gets the size in pixels that has been set
   on the layout, and that determines the total extents of the scrollbar of the
   layout area. The @sym{(setf gtk:layout-size)} function sets the size.
   @begin[Lisp binding]{dictionary}
     In the Lisp binding the @fun{gtk:layout-width} and @fun{gtk:layout-height}
-    slot access functions get or set the width and height of the scrollable
-    area.
+    functions get or set the width and height of the scrollable area.
   @end{dictionary}
   @see-class{gtk:layout}
   @see-function{gtk:layout-height}
@@ -455,10 +450,9 @@
 ;;; gtk_layout_get_bin_window () -> layout-bin-window
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_layout_get_bin_window" layout-bin-window)
-    (g:object gdk:window)
+(defcfun ("gtk_layout_get_bin_window" layout-bin-window) (g:object gdk:window)
  #+liber-documentation
- "@version{#2021-12-9}
+ "@version{#2023-3-20}
   @argument[layout]{a @class{gtk:layout} widget}
   @return{A @class{gdk:window} object.}
   @begin{short}
@@ -470,4 +464,4 @@
 
 (export 'layout-bin-window)
 
-;;; --- End of file gtk.layout.lisp --------------------------------------------
+;;; --- End of file gtk3.layout.lisp -------------------------------------------

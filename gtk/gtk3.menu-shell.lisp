@@ -1,30 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.menu-shell.lisp
+;;; gtk3.menu-shell.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkMenuShell
@@ -55,18 +55,18 @@
 ;;;
 ;;; Properties
 ;;;
-;;;     gboolean    take-focus          Read / Write
+;;;     take-focus
 ;;;
 ;;; Signals
 ;;;
-;;;         void    activate-current    Action
-;;;         void    cancel              Action
-;;;         void    cycle-focus         Action
-;;;         void    deactivate          Run First
-;;;         void    insert              Run First
-;;;         void    move-current        Action
-;;;     gboolean    move-selected       Run Last
-;;;         void    selection-done      Run First
+;;;     activate-current
+;;;     cancel
+;;;     cycle-focus
+;;;     deactivate
+;;;     insert
+;;;     move-current
+;;;     move-selected
+;;;     selection-done
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -101,7 +101,7 @@
 (setf (liber:alias-for-symbol 'menu-direction-type)
       "GEnum"
       (liber:symbol-documentation 'menu-direction-type)
- "@version{#2021-7-17}
+ "@version{#2023-3-21}
   @begin{short}
     An enumeration representing directional movements within a menu.
   @end{short}
@@ -138,7 +138,7 @@
 
 #+liber-documentation
 (setf (documentation 'menu-shell 'type)
- "@version{#2021-7-17}
+ "@version{#2023-3-21}
   @begin{short}
     The @sym{gtk:menu-shell} class is the abstract base class used to derive
     the @class{gtk:menu} and @class{gtk:menu-bar} subclasses.
@@ -267,7 +267,7 @@ lambda (menushell)    :run-first
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- menu-shell-take-focus ----------------------------------------------
+;;; --- menu-shell-take-focus --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "take-focus" 'menu-shell) t)
@@ -279,7 +279,7 @@ lambda (menushell)    :run-first
 (setf (liber:alias-for-function 'menu-shell-take-focus)
       "Accessor"
       (documentation 'menu-shell-take-focus 'function)
- "@version{#2021-7-17}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:menu-shell-take-focus object) => take-focus}
   @syntax[]{(setf (gtk:menu-shell-take-focus object) take-focus)}
   @argument[object]{a @class{gtk:menu-shell} widget}
@@ -289,7 +289,6 @@ lambda (menushell)    :run-first
     Accessor of the @slot[gtk:menu-shell]{take-focus} slot of the
     @class{gtk:menu-shell} class.
   @end{short}
-
   If @arg{take-focus} is @em{true}, the default, the menu shell will take the
   keyboard focus so that it will receive all keyboard events which is needed
   to enable keyboard navigation in menus. Setting @arg{take-focus} to
@@ -318,7 +317,7 @@ lambda (menushell)    :run-first
 
 (defcfun ("gtk_menu_shell_append" menu-shell-append) :void
  #+liber-documentation
- "@version{#2021-7-17}
+ "@version{#2023-3-21}
   @argument[menushell]{a @class{gtk:menu-shell} widget}
   @argument[child]{the @class{gtk:widget} child widget to add}
   @begin{short}
@@ -339,7 +338,7 @@ lambda (menushell)    :run-first
 
 (defcfun ("gtk_menu_shell_prepend" menu-shell-prepend) :void
  #+liber-documentation
- "@version{#2021-7-17}
+ "@version{#2023-3-21}
   @argument[menushell]{a @class{gtk:menu-shell} widget}
   @argument[child]{the @class{gtk:widget} child widget to add}
   @begin{short}
@@ -360,7 +359,7 @@ lambda (menushell)    :run-first
 
 (defcfun ("gtk_menu_shell_insert" menu-shell-insert) :void
  #+liber-documentation
- "@version{#2021-7-17}
+ "@version{#2023-3-21}
   @argument[menushell]{a @class{gtk:menu-shell} widget}
   @argument[child]{the @class{gtk:widget} child widget to add}
   @argument[position]{an integer with the position in the item list where child
@@ -385,7 +384,7 @@ lambda (menushell)    :run-first
 
 (defcfun ("gtk_menu_shell_deactivate" menu-shell-deactivate) :void
  #+liber-documentation
- "@version{#2021-7-17}
+ "@version{#2023-3-21}
   @argument[menushell]{a @class{gtk:menu-shell} widget}
   @begin{short}
     Deactivates the menu shell.
@@ -402,7 +401,7 @@ lambda (menushell)    :run-first
 
 (defcfun ("gtk_menu_shell_select_item" menu-shell-select-item) :void
  #+liber-documentation
- "@version{#2021-7-17}
+ "@version{#2023-3-21}
   @argument[menushell]{a @class{gtk:menu-shell} widget}
   @argument[menuitem]{the @class{gtk:menu-item} widget to select}
   @begin{short}
@@ -421,7 +420,7 @@ lambda (menushell)    :run-first
 
 (defcfun ("gtk_menu_shell_select_first" menu-shell-select-first) :void
  #+liber-documentation
- "@version{#2021-7-17}
+ "@version{#2023-3-21}
   @argument[menushell]{a @class{gtk:menu-shell} widget}
   @argument[sensitive]{if @em{true}, search for the first selectable menu item,
     otherwise select nothing if the first item is not sensitive, this should be
@@ -442,7 +441,7 @@ lambda (menushell)    :run-first
 
 (defcfun ("gtk_menu_shell_deselect" menu-shell-deselect) :void
  #+liber-documentation
- "@version{#2021-7-17}
+ "@version{#2023-3-21}
   @argument[menushell]{a @class{gtk:menu-shell} widget}
   @begin{short}
     Deselects the currently selected item from the menu shell, if any.
@@ -458,7 +457,7 @@ lambda (menushell)    :run-first
 
 (defcfun ("gtk_menu_shell_activate_item" menu-shell-activate-item) :void
  #+liber-documentation
- "@version{#2021-7-17}
+ "@version{#2023-3-21}
   @argument[menushell]{a @class{gtk:menu-shell} widget}
   @argument[menuitem]{the @class{gtk:menu-item} widget to activate}
   @argument[deactivate]{if @em{true}, force the deactivation of the menu shell
@@ -480,7 +479,7 @@ lambda (menushell)    :run-first
 
 (defcfun ("gtk_menu_shell_cancel" menu-shell-cancel) :void
  #+liber-documentation
- "@version{#2021-7-17}
+ "@version{#2023-3-21}
   @argument[menushell]{a @class{gtk:menu-shell} widget}
   @short{Cancels the selection within the menu shell.}
   @see-class{gtk:menu-shell}"
@@ -495,7 +494,7 @@ lambda (menushell)    :run-first
 (defcfun ("gtk_menu_shell_get_selected_item" menu-shell-selected-item)
     (g:object widget)
  #+liber-documentation
- "@version{#2021-7-17}
+ "@version{#2023-3-21}
   @argument[menushell]{a @class{gtk:menu-shell} widget}
   @return{The currently selected @class{gtk:menu-item} widget.}
   @begin{short}
@@ -514,7 +513,7 @@ lambda (menushell)    :run-first
 (defcfun ("gtk_menu_shell_get_parent_shell" menu-shell-parent-shell)
     (g:object widget)
  #+liber-documentation
- "@version{#2021-7-17}
+ "@version{#2023-3-21}
   @argument[menushell]{a @class{gtk:menu-shell} widget}
   @return{The parent @class{gtk:menu-shell} widget.}
   @begin{short}
@@ -535,7 +534,7 @@ lambda (menushell)    :run-first
 
 (defcfun ("gtk_menu_shell_bind_model" menu-shell-bind-model) :void
  #+liber-documentation
- "@version{#2021-7-17}
+ "@version{#2023-3-21}
   @argument[menushell]{a @class{gtk:menu-shell} widget}
   @argument[model]{the @class{g:menu-model} object to bind to or @code{nil}
     to remove binding}
@@ -546,7 +545,6 @@ lambda (menushell)    :run-first
   @begin{short}
     Establishes a binding between a menu shell and a menu model.
   @end{short}
-
   The contents of the menu shell are removed and then refilled with menu items
   according to the menu model. When the menu model changes, the menu shell is
   updated. Calling this function twice on the menu shell with different menu
@@ -563,10 +561,10 @@ lambda (menushell)    :run-first
   plus a dot. For example, if the action \"quit\" is mentioned and
   @arg{namespace} is \"app\" then the effective action name is \"app.quit\".
 
-  For most cases you are probably better off using the functions
-  @fun{gtk:menu-new-from-model} or @fun{gtk:menu-bar-new-from-model} or just
-  directly passing the @class{g:menu-model} object to the functions
-  @fun{gtk:application-app-menu} or @fun{gtk:application-menubar}.
+  For most cases you are probably better off using the
+  @fun{gtk:menu-new-from-model} or @fun{gtk:menu-bar-new-from-model} functions
+  or just directly passing the @class{g:menu-model} object to the
+  @fun{gtk:application-app-menu} or @fun{gtk:application-menubar} functions.
   @see-class{gtk:menu-shell}
   @see-class{g:menu-model}
   @see-function{gtk:menu-new-from-model}
@@ -580,4 +578,4 @@ lambda (menushell)    :run-first
 
 (export 'menu-shell-bind-model)
 
-;;; --- End of file gtk.menu-shell.lisp ----------------------------------------
+;;; --- End of file gtk3.menu-shell.lisp ---------------------------------------

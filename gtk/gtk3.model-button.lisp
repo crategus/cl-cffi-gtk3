@@ -1,29 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.model-button.lisp
+;;; gtk3.model-button.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2022 Dieter Kaiser
+;;; Copyright (C) 2019 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkModelButton
@@ -41,15 +42,15 @@
 ;;;
 ;;; Properties
 ;;;
-;;;          gboolean    active        Read / Write
-;;;          gboolean    centered      Read / Write
-;;;             GIcon*   icon          Read / Write
-;;;          gboolean    iconic        Read / Write
-;;;          gboolean    inverted      Read / Write
-;;;             gchar*   menu-name     Read / Write
-;;;     GtkButtonRole    role          Read / Write
-;;;             gchar*   text          Read / Write
-;;;          gboolean    use-markup    Read / Write
+;;;     active
+;;;     centered
+;;;     icon
+;;;     iconic
+;;;     inverted
+;;;     menu-name
+;;;     role
+;;;     text
+;;;     use-markup
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -84,7 +85,7 @@
 (setf (liber:alias-for-symbol 'button-role)
       "GEnum"
       (liber:symbol-documentation 'button-role)
- "@version{#2021-12-23}
+ "@version{#2023-3-21}
   @begin{short}
     The role specifies the desired appearance of a @class{gtk:model-button}
     widget.
@@ -146,13 +147,13 @@
 
 #+liber-documentation
 (setf (documentation 'model-button 'type)
- "@version{#2021-12-23}
+ "@version{#2023-3-21}
   @begin{short}
     The @sym{gtk:model-button} class is a button class that can use a
-    @class{g-action} object as its model.
+    @class{g:action} object as its model.
   @end{short}
   In contrast to the @class{gtk:toggle-button} or @class{gtk:radio-button}
-  classes, which can also be backed by a @class{g-action} object via the
+  classes, which can also be backed by a @class{g:action} object via the
   @code{action-name} property, the @sym{gtk:model-button} widget will adapt its
   appearance according to the kind of action it is backed by, and appear either
   as a plain, check or radio button.
@@ -213,17 +214,17 @@
   @end{dictionary}
   @begin[CSS nodes]{dictionary}
     @begin{pre}
- modelbutton
- ├── <child>
- ╰── check
+modelbutton
+├── <child>
+╰── check
 
- modelbutton
- ├── <child>
- ╰── radio
+modelbutton
+├── <child>
+╰── radio
 
- modelbutton
- ├── <child>
- ╰── arrow
+modelbutton
+├── <child>
+╰── arrow
     @end{pre}
     The @sym{gtk:model-button} implementation has a main CSS node with name
     @code{modelbutton}, and a subnode, which will have the name @code{check},
@@ -233,14 +234,15 @@
     The subnode is positioned before or after the content nodes and gets the
     @code{.left} or @code{.right} style class, depending on where it is located.
     @begin{pre}
- button.model
- ├── <child>
- ╰── check
+button.model
+├── <child>
+╰── check
     @end{pre}
     Iconic model buttons, see the @code{iconic} property, change the name of
     their main node to button and add a @code{.model} style class to it. The
     indicator subnode is invisible in this case.
   @end{dictionary}
+  @see-constructor{gtk:model-button-new}
   @see-slot{gtk:model-button-active}
   @see-slot{gtk:model-button-centered}
   @see-slot{gtk:model-button-icon}
@@ -255,20 +257,20 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- model-button-active ------------------------------------------------
+;;; --- model-button-active ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "active" 'model-button) t)
  "The @code{active} property of type @code{:boolean} (Read / Write) @br{}
   The state of the button. This is reflecting the state of the associated
-  @class{g-action}. @br{}
+  @class{g:action}. @br{}
   Default value: @em{false}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'model-button-active)
       "Accessor"
       (documentation 'model-button-active 'function)
- "@version{#2021-12-23}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:model-button-active object) => active}
   @syntax[]{(setf (gtk:model-button-active object) active)}
   @argument[object]{a @class{gtk:model-button} widget}
@@ -277,17 +279,15 @@
     Accessor of the @slot[gtk:model-button]{active} slot of the
     @class{gtk:model-button} class.
   @end{short}
-
   The state of the button. This is reflecting the state of the associated
-  @class{g-action}.
+  @class{g:action}.
   @see-class{gtk:model-button}
-  @see-class{g-action}")
+  @see-class{g:action}")
 
-;;; --- model-button-centered ----------------------------------------------
+;;; --- model-button-centered --------------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "centered"
-                                               'model-button) t)
+(setf (documentation (liber:slot-documentation "centered" 'model-button) t)
  "The @code{centered} property of type @code{:boolean} (Read / Write) @br{}
   Whether to render the button contents centered instead of left-aligned. This
   property should be set for title-like items. @br{}
@@ -297,7 +297,7 @@
 (setf (liber:alias-for-function 'model-button-centered)
       "Accessor"
       (documentation 'model-button-centered 'function)
- "@version{#2021-12-23}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:model-button-centered object) => centered}
   @syntax[]{(setf (gtk:model-button-centered object) centered)}
   @argument[object]{a @class{gtk:model-button} widget}
@@ -307,7 +307,6 @@
     Accessor of the @slot[gtk:model-button]{centered} slot of the
     @class{gtk:model-button} class.
   @end{short}
-
   Whether to render the button contents centered instead of left-aligned. This
   property should be set for title-like items.
   @see-class{gtk:model-button}")
@@ -323,7 +322,7 @@
 (setf (liber:alias-for-function 'model-button-icon)
       "Accessor"
       (documentation 'model-button-icon 'function)
- "@version{#2023-3-17}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:model-button-icon object) => icon}
   @syntax[]{(setf (gtk:model-button-icon object) icon)}
   @argument[object]{a @class{gtk:model-button} widget}
@@ -337,11 +336,10 @@
   @see-class{g:icon}
   @see-function{gtk:model-button-iconic}")
 
-;;; --- model-button-iconic ------------------------------------------------
+;;; --- model-button-iconic ----------------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "iconic"
-                                               'model-button) t)
+(setf (documentation (liber:slot-documentation "iconic" 'model-button) t)
  "The @code{iconic} property of type @code{:boolean} (Read / Write) @br{}
   If this property is set, the button will show an icon if one is set. If no
   icon is set, the text will be used. This is typically used for horizontal
@@ -352,7 +350,7 @@
 (setf (liber:alias-for-function 'model-button-iconic)
       "Accessor"
       (documentation 'model-button-iconic 'function)
- "@version{#2021-12-23}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:model-button-iconic object) => iconic}
   @syntax[]{(setf (gtk:model-button-iconic object) iconic)}
   @argument[object]{a @class{gtk:model-button} widget}
@@ -361,18 +359,16 @@
     Accessor of the @slot[gtk:model-button]{iconic} slot of the
     @class{gtk:model-button} class.
   @end{short}
-
   If this property is set, the button will show an icon if one is set. If no
   icon is set, the text will be used. This is typically used for horizontal
   sections of linked buttons.
   @see-class{gtk:model-button}
   @see-function{gtk:model-button-icon}")
 
-;;; --- model-button-inverted ----------------------------------------------
+;;; --- model-button-inverted --------------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "inverted"
-                                               'model-button) t)
+(setf (documentation (liber:slot-documentation "inverted" 'model-button) t)
  "The @code{inverted} property of type @code{:boolean} (Read / Write) @br{}
   Whether to show the submenu indicator at the opposite side than normal. This
   property should be set for model buttons that 'go back' to a parent menu.@br{}
@@ -382,7 +378,7 @@
 (setf (liber:alias-for-function 'model-button-inverted)
       "Accessor"
       (documentation 'model-button-inverted 'function)
- "@version{#2021-12-23}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:model-button-inverted object) => inverted}
   @syntax[]{(setf (gtk:model-button-inverted object) inverted)}
   @argument[object]{a @class{gtk:model-button} widget}
@@ -392,7 +388,6 @@
     Accessor of the @slot[gtk:model-button]{inverted} slot of the
     @class{gtk:model-button} class.
   @end{short}
-
   Whether to show the submenu indicator at the opposite side than normal. This
   property should be set for model buttons that 'go back' to a parent menu.
   @see-class{gtk:model-button}")
@@ -410,7 +405,7 @@
 (setf (liber:alias-for-function 'model-button-menu-name)
       "Accessor"
       (documentation 'model-button-menu-name 'function)
- "@version{#2023-1-22}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:model-button-menu-name object) => name}
   @syntax[]{(setf (gtk:model-button-menu-name object) name)}
   @argument[object]{a @class{gtk:model-button} widget}
@@ -437,7 +432,7 @@
 (setf (liber:alias-for-function 'model-button-role)
       "Accessor"
       (documentation 'model-button-role 'function)
- "@version{#2023-1-22}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:model-button-role object) => role}
   @syntax[]{(setf (gtk:model-button-role object) role)}
   @argument[object]{a @class{gtk:model-button} widget}
@@ -452,11 +447,10 @@
   @see-class{gtk:model-button}
   @see-symbol{gtk:button-role}")
 
-;;; --- model-button-text --------------------------------------------------
+;;; --- model-button-text ------------------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "text"
-                                               'model-button) t)
+(setf (documentation (liber:slot-documentation "text" 'model-button) t)
  "The @code{text} property of type @code{:string} (Read / Write) @br{}
   The label for the button. @br{}
   Default value: \"\"")
@@ -465,7 +459,7 @@
 (setf (liber:alias-for-function 'model-button-text)
       "Accessor"
       (documentation 'model-button-text 'function)
- "@version{#2021-12-23}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:model-button-text object) => text}
   @syntax[]{(setf (gtk:model-button-text object) text)}
   @argument[object]{a @class{gtk:model-button} widget}
@@ -474,7 +468,6 @@
     Accessor of the @slot[gtk:model-button]{text} slot of the
     @class{gtk:model-button} class.
   @end{short}
-
   The label for the button.
   @see-class{gtk:model-button}")
 
@@ -492,7 +485,7 @@
 (setf (liber:alias-for-function 'model-button-use-markup)
       "Accessor"
       (documentation 'model-button-use-markup 'function)
- "@version{#2023-3-13}
+ "@version{#2023-3-21}
   @syntax[]{(gtk:model-button-use-markup object) => use-markup}
   @syntax[]{(setf (gtk:model-button-use-markup object) use-markup)}
   @argument[object]{a @class{gtk:model-button} widget}
@@ -513,7 +506,7 @@
 
 (defun model-button-new ()
  #+liber-documentation
- "@version{#2021-12-23}
+ "@version{#2023-3-21}
   @return{A new @class{gtk:model-button} widget.}
   @short{Creates a new model button widget.}
   @see-class{gtk:model-button}"
@@ -521,4 +514,4 @@
 
 (export 'model-button-new)
 
-;;; --- End of file gtk.model-button.lisp --------------------------------------
+;;; --- End of file gtk3.model-button.lisp -------------------------------------
