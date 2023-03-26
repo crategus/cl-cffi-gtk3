@@ -1,29 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.scrollable.lisp
+;;; gtk3.scrollable.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK+ library.
+;;; The documentation of this file is taken from the GTK 3 Reference Manual
+;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2012 - 2021 Dieter Kaiser
+;;; Copyright (C) 2012 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkScrollable
@@ -51,12 +52,12 @@
 ;;;
 ;;; Properties
 ;;;
-;;;           GtkAdjustment*   hadjustment       Read / Write / Construct
-;;;     GtkScrollablePolicy    hscroll-policy    Read / Write
-;;;           GtkAdjustment*   vadjustment       Read / Write / Construct
-;;;     GtkScrollablePolicy    vscroll-policy    Read / Write
+;;;     hadjustment
+;;;     hscroll-policy
+;;;     vadjustment
+;;;     vscroll-policy
 ;;;
-;;;Object Hierarchy
+;;; Object Hierarchy
 ;;;
 ;;;     GInterface
 ;;;     ╰── GtkScrollable
@@ -78,7 +79,7 @@
 (setf (liber:alias-for-symbol 'scrollable-policy)
       "GEnum"
       (liber:symbol-documentation 'scrollable-policy)
- "@version{#2021-3-19}
+ "@version{#2023-3-24}
   @begin{short}
     Defines the policy to be used in a scrollable widget when updating the
     scrolled window adjustments in a given orientation.
@@ -120,7 +121,7 @@
 (setf (liber:alias-for-class 'scrollable)
       "Interface"
       (documentation 'scrollable 'type)
- "@version{#2021-3-19}
+ "@version{#2023-3-24}
   @begin{short}
     The @sym{gtk:scrollable} interface is an interface that is implemented by
     widgets with native scrolling ability.
@@ -178,7 +179,7 @@
 (setf (liber:alias-for-function 'scrollable-hadjustment)
       "Accessor"
       (documentation 'scrollable-hadjustment 'function)
- "@version{#2021-3-19}
+ "@version{#2023-3-24}
   @syntax[]{(gtk:scrollable-hadjustment object) => hadjustment}
   @syntax[]{(setf (gtk:scrollable-hadjustment object) hadjustment)}
   @argument[object]{a @class{gtk:scrollable} widget}
@@ -187,10 +188,9 @@
     Accessor of the @slot[gtk:scrollable]{hadjustment} slot of the
     @class{gtk:scrollable} class.
   @end{short}
-
-  The slot access function @sym{gtk:scrollabe-hadjustment} retrieves the
-  adjustment used for horizontal scrolling. The slot access function
-  @sym{(setf gtk:scrollabe-hadjustment)} sets the horizontal adjustment.
+  The @sym{gtk:scrollabe-hadjustment} function retrieves the adjustment used for 
+  horizontal scrolling. The @sym{(setf gtk:scrollabe-hadjustment)} function sets 
+  the horizontal adjustment.
   @see-class{gtk:scrollabe}
   @see-class{gtk:adjustment}
   @see-function{gtk:scrollable-vadjustment}")
@@ -210,7 +210,7 @@
 (setf (liber:alias-for-function 'scrollable-hscroll-policy)
       "Accessor"
       (documentation 'scrollable-hscroll-policy 'function)
- "@version{#2021-3-19}
+ "@version{#2023-3-24}
   @syntax[]{(gtk:scrollable-hscroll-policy object) => policy}
   @syntax[]{(setf (gtk:scrollable-hscroll-policy object) policy)}
   @argument[object]{a @class{gtk:scrollable} widget}
@@ -220,12 +220,11 @@
     Accessor of the @slot[gtk:scrollable]{hscroll-policy} slot of the
     @class{gtk:scrollable} class.
   @end{short}
-
-  The slot access function @sym{gtk:scrollable-hscroll-policy} gets the
-  horizontal scrolling policy which determines whether horizontal scrolling
-  should start below the minimum width or below the natural width. The slot
-  access function @sym{(setf gtk:scrollable-hscroll-policy)} sets the
-  horizontal scrolling policy.
+  The @sym{gtk:scrollable-hscroll-policy} function gets the horizontal scrolling 
+  policy which determines whether horizontal scrolling should start below the 
+  minimum width or below the natural width. The 
+  @sym{(setf gtk:scrollable-hscroll-policy)} function sets the horizontal 
+  scrolling policy.
   @see-class{gtk:scrollable}
   @see-symbol{gtk:scrollable-policy}
   @see-function{gtk:scrollable-vscroll-policy}")
@@ -243,7 +242,7 @@
 (setf (liber:alias-for-function 'scrollable-vadjustment)
       "Accessor"
       (documentation 'scrollable-vadjustment 'function)
- "@version{#2021-3-19}
+ "@version{#2023-3-24}
   @syntax[]{(gtk:scrollable-vadjustment object) => vadjustment}
   @syntax[]{(setf (gtk:scrollable-vadjustment object) vadjustment)}
   @argument[object]{a @class{gtk:scrollable} widget}
@@ -252,10 +251,9 @@
     Accessor of the @slot[gtk:scrollable]{vadjustment} slot of the
     @class{gtk:scrollable} class.
   @end{short}
-
-  The slot access function @sym{gtk:scrollable-vadjustment} retrieves the
-  adjustment used for vertical scrolling. The slot access function
-  @sym{(setf gtk:scrollable-vadjustment)} sets the vertical adjustment.
+  The @sym{gtk:scrollable-vadjustment} function retrieves the adjustment used 
+  for vertical scrolling. The @sym{(setf gtk:scrollable-vadjustment)} function 
+  sets the vertical adjustment.
   @see-class{gtk:scrollable}
   @see-class{gtk:adjustment}
   @see-function{gtk:scrollable-hadjustment}")
@@ -275,7 +273,7 @@
 (setf (liber:alias-for-function 'scrollable-vscroll-policy)
       "Accessor"
       (documentation 'scrollable-vscroll-policy 'function)
- "@version{#2021-3-19}
+ "@version{#2023-3-24}
   @syntax[]{(gtk:scrollable-vscroll-policy object) => policy}
   @syntax[]{(setf (gtk:scrollable-vscroll-policy object) policy)}
   @argument[object]{a @class{gtk:scrollable} widget}
@@ -285,11 +283,10 @@
     Accessor of the @slot[gtk:scrollable]{vscroll-policy} slot of the
     @class{gtk:scrollable} class.
   @end{short}
-
-  The slot access function @sym{gtk:scrollable-vscroll-policy} gets the
-  vertical scrolling policy which determines whether vertical scrolling
-  should start below the minimum height or below the natural height. The slot
-  access function @sym{(setf gtk:scrollable-hscroll-policy)} sets the vertical
+  The @sym{gtk:scrollable-vscroll-policy} function gets the vertical scrolling 
+  policy which determines whether vertical scrolling should start below the 
+  minimum height or below the natural height. The 
+  @sym{(setf gtk:scrollable-hscroll-policy)} function sets the vertical 
   scrolling policy.
   @see-class{gtk:scrollable}
   @see-symbol{gtk:scrollable-policy}
@@ -304,14 +301,14 @@
   (border (g:boxed border)))
 
 (defun scrollable-border (scrollable)
- "@version{#2021-3-19}
+ "@version{#2023-3-24}
   @argument[scrollable]{a @class{gtk:scrollable} widget}
   @return{A @class{gtk:border} instance.}
   @begin{short}
     Returns the size of a non-scrolling border around the outside of the
     scrollable.
   @end{short}
-  An example for this would be tree view headers. GTK+ can use this information
+  An example for this would be tree view headers. GTK can use this information
   to display overlayed graphics, like the overshoot indication, at the right
   position.
   @see-class{gtk:scrollable}

@@ -1,29 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.seach-entry.lisp
+;;; gtk3.seach-entry.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2013 - 2021 Dieter Kaiser
+;;; Copyright (C) 2013 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkSearchEntry
@@ -78,13 +79,13 @@
 
 #+liber-documentation
 (setf (documentation 'search-entry 'type)
- "@version{#2021-12-27}
+ "@version{#2023-3-24}
   @begin{short}
     The @sym{gtk:search-entry} class is a subclass of the @class{gtk:entry}
     class that has been tailored for use as a search entry.
   @end{short}
 
-  @image[search-entry]{}
+  @image[search-entry]{Figure: GtkSearchEntry}
 
   It will show an inactive symbolic \"find\" icon when the search entry is
   empty, and a symbolic \"clear\" icon when there is text. Clicking on the
@@ -113,7 +114,7 @@
       @end{table}
     @subheading{The \"previous-match\" signal}
       @begin{pre}
- lambda (entry)    :action
+lambda (entry)    :action
       @end{pre}
       The signal is a keybinding signal which gets emitted when the user
       initiates a move to the previous match for the current search string.
@@ -125,7 +126,7 @@
         @end{table}
     @subheading{The \"search-changed\" signal}
       @begin{pre}
- lambda (entry)    :run-last
+lambda (entry)    :run-last
       @end{pre}
       The signal is emitted with a short delay of 150 milliseconds after the
       last change to the entry text.
@@ -135,7 +136,7 @@
       @end{table}
     @subheading{The \"stop-search\" signal}
       @begin{pre}
- lambda (entry)    :action
+lambda (entry)    :action
       @end{pre}
       The signal is a keybinding signal which gets emitted when the user stops
       a search via keyboard input. Applications should connect to it, to
@@ -156,7 +157,7 @@
 
 (defun search-entry-new ()
  #+liber-documentation
- "@version{#2021-12-27}
+ "@version{#2023-3-24}
   @return{A new @class{gtk:search-entry} widget.}
   @begin{short}
     Creates a search entry, with a find icon when the search field is empty,
@@ -171,10 +172,9 @@
 ;;; gtk_search_entry_handle_event ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_search_entry_handle_event" search-entry-handle-event)
-    :boolean
+(defcfun ("gtk_search_entry_handle_event" search-entry-handle-event) :boolean
  #+liber-documentation
- "@version{#2021-12-27}
+ "@version{#2023-3-24}
   @argument[entry]{a @class{gtk:entry-search} widget}
   @argument[event]{a key event of type @class{gdk:event}}
   @return{The @var{+gdk-event-stop+} value if the key press event resulted in a
@@ -198,4 +198,4 @@
 
 (export 'search-entry-handle-event)
 
-;;; --- End of file gtk.search-entry.lisp --------------------------------------
+;;; --- End of file gtk3.search-entry.lisp -------------------------------------

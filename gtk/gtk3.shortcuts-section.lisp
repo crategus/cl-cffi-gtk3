@@ -4,26 +4,27 @@
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
 ;;; Copyright (C) 2019 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkShortcutsSection
@@ -155,12 +156,12 @@ lambda (section arg)    :action
 ;;; --- shortcuts-section-section-name -----------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "section-name" 
+(setf (documentation (liber:slot-documentation "section-name"
                                                'shortcuts-section) t)
  "The @code{section-name} property of type @code{:string} (Read / Write) @br{}
   A unique name to identify this section among the sections added to the
-  @class{gtk:shortcuts-window} widget. Setting the @code{section-name} property 
-  to this string will make this section shown in the 
+  @class{gtk:shortcuts-window} widget. Setting the @code{section-name} property
+  to this string will make this section shown in the
   @class{gtk:shortcuts-window} widget. @br{}
   Default value: @code{nil}")
 
@@ -179,7 +180,7 @@ lambda (section arg)    :action
   @end{short}
   A unique name to identify this section among the sections added to the
   @class{gtk:shortcuts-window} widget. Setting the @code{section-name} property
-  to this string will make this section shown in the 
+  to this string will make this section shown in the
   @class{gtk:shortcuts-window} widget.
   @see-class{gtk:shortcuts-section}")
 
@@ -189,7 +190,7 @@ lambda (section arg)    :action
 (setf (documentation (liber:slot-documentation "title" 'shortcuts-section) t)
  "The @code{title} property of type @code{:string} (Read / Write) @br{}
   The string to show in the section selector of the @class{gtk:shortcuts-window}
-  widget for this section. If there is only one section, you don't need to set 
+  widget for this section. If there is only one section, you don't need to set
   a title, since the section selector will not be shown in this case. @br{}
   Default value: @code{nil}")
 
@@ -207,14 +208,14 @@ lambda (section arg)    :action
     @class{gtk:shortcuts-section} class.
   @end{short}
   The string to show in the section selector of the @class{gtk:shortcuts-window}
-  widget for this section. If there is only one section, you don't need to set 
+  widget for this section. If there is only one section, you don't need to set
   a title, since the section selector will not be shown in this case.
   @see-class{gtk:shortcuts-section}")
 
 ;;; --- shortcuts-section-view-name --------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "view-name" 
+(setf (documentation (liber:slot-documentation "view-name"
                                                'shortcuts-section) t)
  "The @code{view-name} property of type @code{:string} (Read / Write) @br{}
   A view name to filter the groups in this section by. See \"view\".
@@ -230,7 +231,7 @@ lambda (section arg)    :action
   @syntax[]{(gtk:shortcuts-section-view-name object) => view-name}
   @syntax[]{(setf (gtk:shortcuts-section-view-name object) view-name)}
   @argument[object]{a @class{gtk:shortcuts-section} widget}
-  @argument[view-name]{a string with a view name to filter the groups in this 
+  @argument[view-name]{a string with a view name to filter the groups in this
     section by}
   @begin{short}
     Accessor of the slot @slot[gtk:shortcuts-section]{view-name} of the

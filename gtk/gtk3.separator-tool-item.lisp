@@ -1,30 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.separator-tool-item.lisp
+;;; gtk3.separator-tool-item.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2021 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkSeparatorToolItem
@@ -43,7 +43,7 @@
 ;;;
 ;;; Properties
 ;;;
-;;;     gboolean    draw    Read / Write
+;;;     draw
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -80,7 +80,7 @@
 
 #+liber-documentation
 (setf (documentation 'separator-tool-item 'type)
- "@version{#2021-10-31}
+ "@version{#2023-3-24}
   @begin{short}
     A @sym{gtk:separator-tool-item} widget is a @class{gtk:tool-item} widget
     that separates groups of other @class{gtk:tool-item} widgets.
@@ -94,6 +94,7 @@
 
   Use the @fun{gtk:separator-tool-item-new} function to create a new
   @sym{gtk:separator-tool-item} widget.
+  @see-constructor{gtk:separator-tool-item-new}
   @see-slot{gtk:separator-tool-item-draw}
   @see-class{gtk:tool-item}")
 
@@ -111,7 +112,7 @@
 (setf (liber:alias-for-function 'separator-tool-item-draw)
       "Accessor"
       (documentation 'separator-tool-item-draw 'function)
- "@version{#2021-10-31}
+ "@version{#2023-3-24}
   @syntax[]{(gtk:separator-tool-item-draw object) => draw)}
   @syntax[]{(setf (gtk:separator-tool-item-draw object) draw)}
   @argument[object]{a @class{gtk:separator-tool-item} widget}
@@ -120,11 +121,10 @@
     Accessor of the @slot[gtk:separator-tool-item]{draw} slot of the
     @class{gtk:separator-tool-item} class.
   @end{short}
-
-  The @sym{gtk:separator-tool-item-draw} slot access function returns whether
-  the separator tool item is drawn as a line, or just blank. The
-  @sym{(setf gtk:separator-tool-item-draw)} slot access function returns whether
-  item is drawn as a vertical line, or just blank.
+  The @sym{gtk:separator-tool-item-draw} function returns whether the separator
+  tool item is drawn as a line, or just blank. The
+  @sym{(setf gtk:separator-tool-item-draw)} function returns whether item is
+  drawn as a vertical line, or just blank.
 
   Setting this to @em{false} along with the @fun{gtk:tool-item-expand} function
   is useful to create an item that forces following items to the end of the
@@ -140,7 +140,7 @@
 
 (defun separator-tool-item-new ()
  #+liber-documentation
- "@version{#2021-10-31}
+ "@version{#2023-3-24}
   @return{The new @class{gtk:separator-tool-item} widget.}
   @begin{short}
     Create a new separator tool item.
@@ -150,4 +150,4 @@
 
 (export 'separator-tool-item-new)
 
-;;; --- End of file gtk.separator-tool-item.lisp -------------------------------
+;;; --- End of file gtk3.separator-tool-item.lisp ------------------------------

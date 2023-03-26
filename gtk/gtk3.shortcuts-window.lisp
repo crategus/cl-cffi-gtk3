@@ -4,26 +4,27 @@
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
 ;;; Copyright (C) 2019 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkShortcutsWindow
@@ -92,7 +93,7 @@
   showing information that is not relevant in the current application context.
 
   The recommended way to construct a @sym{gtkshortcuts-window} widget is with
-  the @class{gtk:builder} object, by populating a @sym{gtk:shortcuts-window} 
+  the @class{gtk:builder} object, by populating a @sym{gtk:shortcuts-window}
   widget with one or more @class{gtk:shortcuts-section} widgets, which contain
   @class{gtk:shortcuts-groups} widgets that in turn contain
   @class{gtk:shortcuts-shortcut} widgets.
@@ -136,8 +137,8 @@ lambda (shortcutswindow)    :action
       @begin{pre}
 lambda (shortcutswindow)    :action
       @end{pre}
-      The signal is a keybinding signal which gets emitted when the user uses a 
-      keybinding to start a search. The default binding for this signal is 
+      The signal is a keybinding signal which gets emitted when the user uses a
+      keybinding to start a search. The default binding for this signal is
       @kbd{Control-F}.
       @begin[code]{table}
         @entry[shortcutswindow]{The @sym{gtk:shortcuts-window} widget.}
@@ -153,7 +154,7 @@ lambda (shortcutswindow)    :action
 ;;; --- shortcuts-window-section-name ------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "section-name" 
+(setf (documentation (liber:slot-documentation "section-name"
                                                'shortcuts-window) t)
  "The @code{section-name} property of type @code{:string} (Read / Write) @br{}
   The name of the section to show. This should be the section name of one of the
@@ -173,7 +174,7 @@ lambda (shortcutswindow)    :action
     Accessor of the @slot[gtk:shortcuts-window]{section-name} slot of the
     @class{gtk:shortcuts-window} class.
   @end{short}
-  The name of the section to show. This should be the section name of one of 
+  The name of the section to show. This should be the section name of one of
   the @class{gtk:shortcuts-section} widgets that are in this shortcuts window.
   @see-class{gtk:shortcuts-window}
   @see-class{gtk:shortcuts-section}")
@@ -198,7 +199,7 @@ lambda (shortcutswindow)    :action
   @syntax[]{(gtk:shortcuts-window-view-name object) => view-name}
   @syntax[]{(setf (gtk:shortcuts-window-view-name object) view-name)}
   @argument[object]{a @class{gtk:shortcuts-window} widget}
-  @argument[view-name]{a string with the view name by which to filter the 
+  @argument[view-name]{a string with the view name by which to filter the
     contents}
   @begin{short}
     Accessor of the @slot[gtk:shortcuts-window]{view-name} slot of the

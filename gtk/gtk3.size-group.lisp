@@ -4,27 +4,27 @@
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
 ;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkSizeGroup
@@ -122,13 +122,13 @@
 (setf (documentation 'size-group 'type)
  "@version{#2023-2-23}
   @begin{short}
-    A @sym{gtk:size-group} object provides a mechanism for grouping a number of 
-    widgets together so they all request the same amount of space. This is 
-    typically useful when you want a column of widgets to have the same size, 
+    A @sym{gtk:size-group} object provides a mechanism for grouping a number of
+    widgets together so they all request the same amount of space. This is
+    typically useful when you want a column of widgets to have the same size,
     but you cannot use a @class{gtk:grid} widget.
   @end{short}
 
-  In detail, the size requested for each widget in a @sym{gtk:size-group} object 
+  In detail, the size requested for each widget in a @sym{gtk:size-group} object
   is the maximum of the sizes that would have been requested for each widget in
   the size group if they were not in the size group. The mode of the size
   group, see the @fun{gtk:size-group-mode} function, determines whether this
@@ -136,24 +136,24 @@
 
   Note that size groups only affect the amount of space requested, not the
   size that the widgets finally receive. If you want the widgets in a
-  @sym{gtk:size-group} object to actually be the same size, you need to pack 
-  them in such a way that they get the size they request and not more. For 
-  example, if you are packing your widgets into a table, you would not include 
+  @sym{gtk:size-group} object to actually be the same size, you need to pack
+  them in such a way that they get the size they request and not more. For
+  example, if you are packing your widgets into a table, you would not include
   the @code{:fill} flag.
 
-  The @sym{gtk:size-group} objects are referenced by each widget in the size 
-  group, so once you have added all widgets to a @sym{gtk:size-group} object, 
-  you can drop the initial reference to the size group with the 
-  @fun{g:object-unref} function. If the widgets in the size group are 
-  subsequently destroyed, then they will be removed from the size group and drop 
-  their references on the size group. When all widgets have been removed, the 
+  The @sym{gtk:size-group} objects are referenced by each widget in the size
+  group, so once you have added all widgets to a @sym{gtk:size-group} object,
+  you can drop the initial reference to the size group with the
+  @fun{g:object-unref} function. If the widgets in the size group are
+  subsequently destroyed, then they will be removed from the size group and drop
+  their references on the size group. When all widgets have been removed, the
   size group will be freed.
 
-  Widgets can be part of multiple size groups. GTK will compute the horizontal 
-  size of a widget from the horizontal requisition of all widgets that can be 
-  reached from the widget by a chain of size groups of type @code{:horizontal} 
-  or @code{:both}, and the vertical size from the vertical requisition of all 
-  widgets that can be reached from the widget by a chain of size groups of type 
+  Widgets can be part of multiple size groups. GTK will compute the horizontal
+  size of a widget from the horizontal requisition of all widgets that can be
+  reached from the widget by a chain of size groups of type @code{:horizontal}
+  or @code{:both}, and the vertical size from the vertical requisition of all
+  widgets that can be reached from the widget by a chain of size groups of type
   @code{:vertical} or @code{:both}.
 
   Note that only non-contextual sizes of every widget are ever consulted by
@@ -225,8 +225,8 @@
     Accessor of the @slot[gtk:size-group]{ignore-hidden} slot of the
     @class{gtk:size-group} class.
   @end{short}
-  The @sym{gtk:size-group-ignore-hidden} function returns if invisible widgets 
-  are ignored when calculating the size. The 
+  The @sym{gtk:size-group-ignore-hidden} function returns if invisible widgets
+  are ignored when calculating the size. The
   @sym{(setf gtk:size-group-ignore-hidden)} function sets whether unmapped
   widgets should be ignored when calculating the size.
   @begin[Warning]{dictionary}
@@ -264,8 +264,8 @@
     Accessor of the @slot[gtk:size-group]{mode} slot of the
     @class{gtk:size-group} class.
   @end{short}
-  The @sym{gtk:size-group-mode} function gets the current mode of the size 
-  group. The @sym{(setf gtk:size-group-mode)} function sets the mode of the 
+  The @sym{gtk:size-group-mode} function gets the current mode of the size
+  group. The @sym{(setf gtk:size-group-mode)} function sets the mode of the
   size group.
 
   The mode of the size group determines whether the widgets in the size group

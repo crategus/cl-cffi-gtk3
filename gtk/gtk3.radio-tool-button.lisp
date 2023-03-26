@@ -1,30 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.radio-tool-button.lisp
+;;; gtk3.radio-tool-button.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkRadioToolButton
@@ -46,7 +46,7 @@
 ;;;
 ;;; Properties
 ;;;
-;;;     GtkRadioToolButton*   group    Write
+;;;     group
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -101,6 +101,10 @@
     The @sym{gtk:radio-tool-button} implementation has a single CSS node with
     name @code{toolbutton}.
   @end{dictionary}
+  @see-constructor{gtk:radio-tool-button-new}
+  @see-constructor{gtk:radio-tool-button-new-from-stock}
+  @see-constructor{gtk:radio-tool-button-new-from-widget}
+  @see-constructor{gtk:radio-tool-button-new-with-stock-from-widget}
   @see-slot{gtk:radio-tool-button-group}
   @see-class{gtk:tool-item}
   @see-class{gtk:tool-button}
@@ -119,7 +123,7 @@
 (setf (liber:alias-for-function 'radio-tool-button-group)
       "Accessor"
       (documentation 'radio-tool-button-group 'function)
- "@version{#2021-12-1}
+ "@version{#2023-3-22}
   @begin{short}
     Accessor of the @slot[gtk:radio-tool-button]{group} slot of the
     @class{gtk:radio-tool-button} class.
@@ -134,7 +138,7 @@
 (defcfun ("gtk_radio_tool_button_new" radio-tool-button-new)
     (g:object tool-item)
  #+liber-documentation
- "@version{#2021-12-1}
+ "@version{#2023-3-22}
   @argument[group]{an existing @class{gtk:radio-tool-button} group, or
     @code{nil} if you are creating a new group}
   @return{The new @class{gtk:radio-tool-button}.}
@@ -153,7 +157,7 @@
 (defcfun ("gtk_radio_tool_button_new_from_stock"
            radio-tool-button-new-from-stock) (g:object tool-item)
  #+liber-documentation
- "@version{#2021-12-1}
+ "@version{#2023-3-22}
   @argument[group]{an existing @class{gtk:radio-tool-button} group, or
     @code{nil} if you are creating a new group}
   @argument[stock]{a string with the name of a stock item}
@@ -182,7 +186,7 @@
 (defcfun ("gtk_radio_tool_button_new_from_widget"
            radio-tool-button-new-from-widget) (g:object tool-item)
  #+liber-documentation
- "@version{#2021-12-1}
+ "@version{#2022-3-22}
   @argument[group]{an existing @class{gtk:radio-tool-button} group, or
     @code{nil}}
   @return{The new @class{gtk:radio-tool-button} widget.}
@@ -199,10 +203,9 @@
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_radio_tool_button_new_with_stock_from_widget"
-           radio-tool-button-new-with-stock-from-widget)
-    (g:object tool-item)
+           radio-tool-button-new-with-stock-from-widget) (g:object tool-item)
  #+liber-documentation
- "@version{#2021-12-1}
+ "@version{#2023-3-22}
   @argument[group]{an existing @class{gtk:radio-tool-button} widget}
   @argument[stock]{a string with the name of a stock item}
   @return{A new @class{gtk:radio-tool-button} widget.}
@@ -230,7 +233,7 @@
 (defcfun ("gtk_radio_tool_button_get_group" radio-tool-button-get-group)
     (g:slist-t (g:object radio-tool-button) :free-from-foreign nil)
  #+liber-documentation
- "@version{#2021-12-1}
+ "@version{#2023-3-22}
   @argument[button]{a @class{gtk:radio-tool-button} widget}
   @return{The group @arg{button} belongs to.}
   @short{Returns the radio button group @arg{button} belongs to.}
@@ -243,10 +246,9 @@
 ;;; gtk_radio_tool_button_set_group ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_radio_tool_button_set_group" radio-tool-button-set-group)
-    :void
+(defcfun ("gtk_radio_tool_button_set_group" radio-tool-button-set-group) :void
  #+liber-documentation
- "@version{#2021-12-1}
+ "@version{#2023-3-22}
   @argument[button]{a @class{gtk:radio-tool-button} widget}
   @argument[group]{an existing @class{gtk:radio-tool-button} group}
   @begin{short}
@@ -259,4 +261,4 @@
 
 (export 'radio-tool-button-set-group)
 
-;;; --- End of file gtk.radio-tool-button.lisp ---------------------------------
+;;; --- End of file gtk3.radio-tool-button.lisp --------------------------------

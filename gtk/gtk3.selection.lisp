@@ -4,27 +4,27 @@
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
 ;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; Selections
@@ -123,7 +123,7 @@
 (setf (liber:alias-for-symbol 'target-flags)
       "GFlags"
       (liber:symbol-documentation 'target-flags)
- "@version{#2021-10-3}
+ "@version{#2023-3-24}
   @begin{short}
     The @sym{gtk:target-flags} flags is used to specify constraints on
     a target entry.
@@ -187,7 +187,7 @@
 (setf (liber:alias-for-class 'target-list)
       "GBoxed"
       (documentation 'target-list 'type)
- "@version{2023-2-5}
+ "@version{2023-3-24}
   @begin{short}
     A @sym{gtk:target-list} structure is used to represent a list of target
     entries.
@@ -243,7 +243,7 @@
 (setf (liber:alias-for-class 'selection-data)
       "GBoxed"
       (documentation 'selection-data 'type)
- "@version{#2023-2-5}
+ "@version{#2023-3-24}
   @begin{short}
     The @sym{gtk:selection-data} structure is used to store a chunk of data
     along with the data type and other associated information.
@@ -339,7 +339,7 @@
 
 (defun target-list-new (&optional (targets nil))
  #+liber-documentation
- "@version{2023-1-28}
+ "@version{2023-3-24}
   @argument[targets]{a list of target entries}
   @return{The new @class{gtk:target-list} instance.}
   @begin{short}
@@ -408,7 +408,7 @@
 
 (defcfun ("gtk_target_list_add" target-list-add) :void
  #+liber-documentation
- "@version{2023-1-28}
+ "@version{2023-3-24}
   @argument[tlist]{a @class{gtk:target-list} instance}
   @argument[target]{a @symbol{gdk:atom-as-string} as a string for the interned
     atom representing the target}
@@ -441,7 +441,7 @@
 
 (defun target-list-add-table (tlist targets)
  #+liber-documentation
- "@version{2023-1-28}
+ "@version{2023-3-24}
   @argument[tlist]{a @class{gtk:target-list} instance}
   @argument[targets]{a list of target entries}
   @begin{short}
@@ -458,7 +458,7 @@
 
 (defcfun ("gtk_target_list_add_text_targets" target-list-add-text-targets) :void
  #+liber-documentation
- "@version{2023-1-28}
+ "@version{2023-3-24}
   @argument[tlist]{a @class{gtk:target-list} instance}
   @argument[info]{an unsigned integer ID that will be passed back to the
     application}
@@ -479,7 +479,7 @@
 (defcfun ("gtk_target_list_add_image_targets" target-list-add-image-targets)
     :void
  #+liber-documentation
- "@version{2023-1-28}
+ "@version{2023-3-24}
   @argument[tlist]{a @class{gtk:target-list} instance}
   @argument[info]{an unsigned integer ID that will be passed back to the
     application}
@@ -502,7 +502,7 @@
 
 (defcfun ("gtk_target_list_add_uri_targets" target-list-add-uri-targets) :void
  #+liber-documentation
- "@version{2023-1-28}
+ "@version{2023-3-24}
   @argument[tlist]{a @class{gtk:target-list} instance}
   @argument[info]{an unsigned integer ID that will be passed back to the
     application}
@@ -523,7 +523,7 @@
 (defcfun ("gtk_target_list_add_rich_text_targets"
            target-list-add-rich-text-targets) :void
  #+liber-documentation
- "@version{2023-1-28}
+ "@version{2023-3-24}
   @argument[tlist]{a @class{gtk:target-list} instance}
   @argument[info]{an unsigned integer ID that will be passed back to the
     application}
@@ -554,7 +554,7 @@
 
 (defcfun ("gtk_target_list_remove" target-list-remove) :void
  #+liber-documentation
- "@version{2023-1-27}
+ "@version{2023-3-24}
   @argument[tlist]{a @class{gtk:target-list} instance}
   @argument[target]{a @symbol{gdk:atom-as-string} as a string with for the
     interned atom representing the target}
@@ -578,7 +578,7 @@
 
 (defun target-list-find (tlist target)
  #+liber-documentation
- "@version{2023-1-28}
+ "@version{2023-3-24}
   @argument[tlist]{a @class{gtk:target-list} instance}
   @argument[target]{a @symbol{gdk:atom-as-string} as a string with the interned
     atom representing the target to search for}
@@ -627,7 +627,7 @@
 
 (defun target-table-new-from-list (tlist)
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-24}
   @argument[tlist]{a @class{gtk:target-list} instance}
   @return{A list of target entries.}
   @begin{short}
@@ -655,7 +655,7 @@
 
 (defcfun ("gtk_selection_owner_set" selection-owner-set) :boolean
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-24}
   @argument[widget]{a @class{gtk:widget} object, or @code{nil}}
   @argument[selection]{a @symbol{gdk:atom-as-string} as a string with a setting
     representing the selection to claim}
@@ -682,9 +682,9 @@
 (defcfun ("gtk_selection_owner_set_for_display"
            selection-owner-set-for-display) :boolean
  #+liber-documentation
- "@version{#2021-10-3}
-  @argument[display]{the @class{gdk:display} object where the selection is set}
-  @argument[widget]{new selection owner, a @class{gtk:widget} object,
+ "@version{#2023-3-24}
+  @argument[display]{a @class{gdk:display} object where the selection is set}
+  @argument[widget]{a new selection owner, a @class{gtk:widget} object,
     or @code{nil}}
   @argument[selection]{a @symbol{gdk:atom-as-string} as a string representing
     the selection to claim}
@@ -712,7 +712,7 @@
 
 (defcfun ("gtk_selection_add_target" selection-add-target) :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-22}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[selection]{a @symbol{gdk:atom-as-string} as a string with the
     selection}
@@ -746,7 +746,7 @@
 
 (defun selection-add-targets (widget selection targets)
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-24}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[selection]{a @symbol{gdk:atom-as-string} as a string with the
     selection}
@@ -769,7 +769,7 @@
 
 (defcfun ("gtk_selection_clear_targets" selection-clear-targets) :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-24}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[selection]{a @symbol{gdk:atom-as-string} as a string representing a
     selection}
@@ -789,7 +789,7 @@
 
 (defcfun ("gtk_selection_convert" selection-convert) :boolean
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-24}
   @argument[widget]{the @class{gtk:widget} object which acts as requestor}
   @argument[selection]{a @symbol{gdk:atom-as-string} as a string which selection
     to get}
@@ -822,7 +822,7 @@
 
 (defcfun ("gtk_selection_data_set" selection-data-set) :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-24}
   @argument[selection]{a @class{gtk:selection-data} instance}
   @argument[type]{a @symbol{gdk:atom-as-string} as a string with the type of
     selection data}
@@ -851,15 +851,15 @@
 
 (defun (setf selection-data-text) (text selection)
   (when (cffi:foreign-funcall "gtk_selection_data_set_text"
-                         (g:boxed selection-data) selection
-                         :string text
-                         :int -1
-                         :boolean)
+                              (g:boxed selection-data) selection
+                              :string text
+                              :int -1
+                              :boolean)
     text))
 
 (defcfun ("gtk_selection_data_get_text" selection-data-text) :string
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-24}
   @syntax[]{(gtk:selection-data-text selection) => text}
   @syntax[]{(setf (gtk:selection-data-text selection) text)}
   @argument[selection]{a @class{gtk:selection-data} instance}
@@ -891,7 +891,7 @@
 (defcfun ("gtk_selection_data_get_pixbuf" selection-data-pixbuf)
     (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-24}
   @syntax[]{(gtk:selection-data-pixbuf selection) => pixbuf}
   @syntax[]{(setf (gtk:selection-data-pixbuf selection) pixbuf)}
   @argument[selection]{a @class{gtk:selection-data} instance}
@@ -923,7 +923,7 @@
 
 (defcfun ("gtk_selection_data_get_uris" selection-data-uris) g:strv-t
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-24}
   @syntax[]{(gtk:selection-data-uris selection) => uris}
   @syntax[]{(setf (gtk:selection-data-uris selection) uris)}
   @argument[selection]{a @class{gtk:selection-data} instance}
@@ -951,7 +951,7 @@
 
 (defun selection-data-targets (selection)
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-24}
   @argument[selection]{a @class{gtk:selection-data} instance}
   @return{A list of @symbol{gdk:atom-as-string} targets as strings.}
   @begin{short}
@@ -977,7 +977,7 @@
 (defcfun ("gtk_selection_data_targets_include_image"
            selection-data-targets-include-image) :boolean
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-24}
   @argument[selection]{a @class{gtk:selection-data} instance}
   @argument[writable]{a boolean whether to accept only targets for which GTK
     knows how to convert a pixbuf into the format}
@@ -1004,7 +1004,7 @@
 (defcfun ("gtk_selection_data_targets_include_text"
            selection-data-targets-include-text) :boolean
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-24}
   @argument[selection]{a @class{gtk:selection-data} instance}
   @begin{return}
     @em{True} if the @arg{selection} argument holds a list of targets, and a
@@ -1026,7 +1026,7 @@
 (defcfun ("gtk_selection_data_targets_include_uri"
            selection-data-targets-include-uri) :boolean
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-24}
   @argument[selection]{a @class{gtk:selection-data} instance}
   @begin{return}
     @em{True} if the @arg{selection} argument holds a list of targets, and a
@@ -1049,7 +1049,7 @@
 (defcfun ("gtk_selection_data_targets_include_rich_text"
            selection-data-targets-include-rich-text) :boolean
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-24}
   @argument[selection]{a @class{gtk:selection-data} instance}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @begin{return}
@@ -1074,7 +1074,7 @@
 (defcfun ("gtk_selection_data_get_selection" selection-data-selection)
     gdk:atom-as-string
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-24}
   @argument[data]{a @class{gtk:selection-data} instance}
   @return{A @symbol{gdk:atom-as-string} as a string with the selection.}
   @begin{short}
@@ -1093,7 +1093,7 @@
 (defcfun ("gtk_selection_data_get_data" selection-data-data)
     (:pointer :uchar)
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-24}
   @argument[data]{a @class{gtk:selection-data} instance}
   @return{A pointer to the raw data.}
   @begin{short}
@@ -1110,7 +1110,7 @@
 
 (defcfun ("gtk_selection_data_get_length" selection-data-length) :int
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-24}
   @argument[data]{a @class{gtk:selection-data} instance}
   @return{An integer with the length of the data.}
   @begin{short}
@@ -1132,12 +1132,12 @@
 
 (defun selection-data-data-with-length (selection)
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-24}
   @argument[selection]{a @class{gtk:selection-data} instance}
   @begin{return}
-    @code{length} -- an integer with the length of the data segment @br{}
-    @code{data} -- a pointer to the raw data of the selection, see the
-    @fun{gtk:selection-data-data} function
+    @arg{length} -- an integer with the length of the data segment @br{}
+    @arg{data} -- a pointer to the raw data of the selection, see the
+      @fun{gtk:selection-data-data} function
   @end{return}
   @begin{short}
     Retrieves the raw data of the selection along with its length.
@@ -1160,7 +1160,7 @@
 (defcfun ("gtk_selection_data_get_data_type" selection-data-data-type)
     gdk:atom-as-string
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-24}
   @argument[data]{a @class{gtk:selection-data} instance}
   @return{A @symbol{gdk:atom-as-string} as a string with the type of the
     selection.}
@@ -1179,7 +1179,7 @@
 (defcfun ("gtk_selection_data_get_display" selection-data-display)
     (g:object gdk:display)
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-24}
   @argument[data]{a @class{gtk:selection-data} instance}
   @return{A @class{gdk:display} object.}
   @begin{short}
@@ -1197,7 +1197,7 @@
 
 (defcfun ("gtk_selection_data_get_format" selection-data-format) :int
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-24}
   @argument[data]{a @class{gtk:selection-data} instance}
   @return{An integer with the format.}
   @begin{short}
@@ -1215,7 +1215,7 @@
 (defcfun ("gtk_selection_data_get_target" selection-data-target)
     gdk:atom-as-string
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-24}
   @argument[data]{a @class{gtk:selection-data} instance}
   @return{A @symbol{gdk:atom-as-string} as a string with the target.}
   @begin{short}
@@ -1237,7 +1237,7 @@
 
 (defun targets-include-image (targets writable)
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-24}
   @argument[targets]{a list of @symbol{gdk:atom-as-string} as strings}
   @argument[writable]{a boolean whether to accept only targets for which GTK
     knows how to convert a pixbuf into the format}
@@ -1268,7 +1268,7 @@
 
 (defun targets-include-text (targets)
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-24}
   @argument[targets]{a list of @symbol{gdk:atom-as-string} as strings}
   @return{@em{True} if the @arg{targets} argument include a suitable target for
     text, otherwise @em{false}.}
@@ -1296,7 +1296,7 @@
 
 (defun targets-include-uri (targets)
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-24}
   @argument[targets]{a list of @symbol{gdk:atom-as-string} as strings}
   @return{@em{True} if the @arg{targets} arguments include a suitable target
     for URI lists, otherwise @em{false}.}
@@ -1318,15 +1318,14 @@
 ;;; gtk_targets_include_rich_text ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_targets_include_rich_text" %targets-include-rich-text)
-    :boolean
+(defcfun ("gtk_targets_include_rich_text" %targets-include-rich-text) :boolean
   (targets :pointer)
   (n-targets :int)
   (buffer (g:object text-buffer)))
 
 (defun targets-include-rich-text (targets buffer)
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-24}
   @argument[targets]{a list of @symbol{gdk:atom-as-string} as strings}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @return{@em{True} if the @arg{targets} argument include a suitable target for
@@ -1352,7 +1351,7 @@
 
 (defcfun ("gtk_selection_remove_all" selection-remove-all) :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2023-3-24}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Removes all handlers and unsets ownership of all selections for a widget.
@@ -1372,7 +1371,7 @@
 (defcfun ("gtk_selection_data_copy" selection-data-copy)
     (g:boxed selection-data :return)
  #+liber-documentation
- "@version{#2023-1-28}
+ "@version{#2023-3-24}
   @argument[data]{a @class{gtk:selection-data} instance}
   @begin{short}
     Copies a @class{gtk:selection-data} instance.

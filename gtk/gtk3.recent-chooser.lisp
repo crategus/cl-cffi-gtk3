@@ -1,30 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.recent-chooser.lisp
+;;; gtk3.recent-chooser.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkRecentChooser
@@ -76,21 +76,21 @@
 ;;;
 ;;; Properties
 ;;;
-;;;       GtkRecentFilter*   filter               Read / Write
-;;;                  gint    limit                Read / Write
-;;;              gboolean    local-only           Read / Write
-;;;      GtkRecentManager*   recent-manager       Write / Construct Only
-;;;              gboolean    select-multiple      Read / Write
-;;;              gboolean    show-icons           Read / Write
-;;;              gboolean    show-not-found       Read / Write
-;;;              gboolean    show-private         Read / Write
-;;;              gboolean    show-tips            Read / Write
-;;;     GtkRecentSortType    sort-type            Read / Write
+;;;     filter
+;;;     limit
+;;;     local-only
+;;;     recent-manager
+;;;     select-multiple
+;;;     show-icons
+;;;     show-not-found
+;;;     show-private
+;;;     show-tips
+;;;     sort-type
 ;;;
 ;;; Signals
 ;;;
-;;;                  void    item-activated       Run Last
-;;;                  void    selection-changed    Run Last
+;;;     item-activated
+;;;     selection-changed
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -124,7 +124,7 @@
 (setf (liber:alias-for-symbol 'recent-chooser-error)
       "GEnum"
       (liber:symbol-documentation 'recent-chooser-error)
- "@version{#2021-12-26}
+ "@version{#2023-3-24}
   @begin{short}
     These identify the various errors that can occur while calling
     @class{gtk:recent-chooser} functions.
@@ -158,7 +158,7 @@
 (setf (liber:alias-for-symbol 'recent-sort-type)
       "GEnum"
       (liber:symbol-documentation 'recent-sort-type)
- "@version{#2021-12-26}
+ "@version{#2023-3-24}
   @begin{short}
     Used to specify the sorting method to be applyed to the recently used
     resource list.
@@ -179,7 +179,7 @@
     @entry[:lru]{Sort the returned list with the least recently used items
       first.}
     @entry[:custom]{Sort the returned list using a custom sorting function
-      passed using the @fun{gtk:recent-manager-set-sort-func} function.}
+      passed using the @fun{gtk:recent-chooser-set-sort-func} function.}
   @end{table}
   @see-class{gtk:recent-chooser}
   @see-function{gtk:recent-chooser-set-sort-func}")
@@ -224,7 +224,7 @@
 
 #+liber-documentation
 (setf (documentation 'recent-chooser 'type)
- "@version{#2021-12-26}
+ "@version{#2023-3-24}
   @begin{short}
     The @sym{gtk:recent-chooser} interface is an interface that can be
     implemented by widgets displaying the list of recently used files.
@@ -235,7 +235,7 @@
   @begin[Signal Details]{dictionary}
     @subheading{The \"item-activated\" signal}
       @begin{pre}
- lambda (chooser)    :run-last
+lambda (chooser)    :run-last
       @end{pre}
       The signal is emitted when the user \"activates\" a recent item in the
       recent chooser. This can happen by double-clicking on an item in the
@@ -246,7 +246,7 @@
       @end{table}
     @subheading{The \"selection-changed\" signal}
       @begin{pre}
- lambda (chooser)    :run-last
+lambda (chooser)    :run-last
       @end{pre}
       The signal is emitted when there is a change in the set of selected
       recently used resources. This can happen when a user modifies the
@@ -275,7 +275,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- recent-chooser-filter ----------------------------------------------
+;;; --- recent-chooser-filter --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "filter" 'recent-chooser) t)
@@ -287,7 +287,7 @@
 (setf (liber:alias-for-function 'recent-chooser-filter)
       "Accessor"
       (documentation 'recent-chooser-filter 'function)
- "@version{#2021-12-26}
+ "@version{#2023-3-24}
   @syntax[]{(gtk:recent-chooser-filter objet) => filter}
   @syntax[]{(setf (gtk:recent-chooser-filter object) filter)}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
@@ -296,16 +296,15 @@
     Accessor of the @slot[gtk:recent-chosser]{filter} slot of the
     @class{gtk:recent-chooser} class.
   @end{short}
-
-  The @sym{gtk:recent-chooser-filter} slot access function gets the
-  @class{gtk:recent-filter} object currently used by @arg{chooser} to affect
+  The @sym{gtk:recent-chooser-filter} function gets the 
+  @class{gtk:recent-filter} object currently used by @arg{chooser} to affect 
   the display of the recently used resources. The
-  @sym{(setf gtk:recent-chooser-filter object) filter)} slot access function
-  sets the filter.
+  @sym{(setf gtk:recent-chooser-filter object) filter)} function sets the 
+  filter.
   @see-class{gtk:recent-chooser}
   @see-class{gtk:recent-filter}")
 
-;;; --- recent-chooser-limit -----------------------------------------------
+;;; --- recent-chooser-limit ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "limit" 'recent-chooser) t)
@@ -321,7 +320,7 @@
 (setf (liber:alias-for-function 'recent-chooser-limit)
       "Accessor"
       (documentation 'recent-chooser-limit 'function)
- "@version{#2021-12-26}
+ "@version{#2023-3-24}
   @syntax[]{(gtk:recent-chooser-limit objet) => limit}
   @syntax[]{(setf (gtk:recent-chooser-limit object) limit)}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
@@ -330,22 +329,19 @@
     Accessor of the @slot[gtk:recent-chooser]{limit} slot of the
     @class{gtk:recent-chooser} class.
   @end{short}
-
-  The @sym{gtk:recent-chooser-limit} slot access function gets the number of
-  items returned by the @fun{gtk:recent-chooser-items} and
-  @fun{gtk:recent-chooser-uris} functions. The
-  @sym{(setf gtk:recent-chooser-limit)} slot access function sets the number of
-  items that should be returned by the @fun{gtk:recent-chooser-items} and
+  The @sym{gtk:recent-chooser-limit} function gets the number of items returned
+  by the @fun{gtk:recent-chooser-items} and @fun{gtk:recent-chooser-uris}
+  functions. The @sym{(setf gtk:recent-chooser-limit)} function sets the number 
+  of items that should be returned by the @fun{gtk:recent-chooser-items} and
   @fun{gtk:recent-chooser-uris} functions.
   @see-class{gtk:recent-chooser}
   @see-function{gtk:recent-chooser-items}
   @see-function{gtk:recent-chooser-uris}")
 
-;;; --- recent-chooser-local-only ------------------------------------------
+;;; --- recent-chooser-local-only ----------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "local-only"
-                                               'recent-chooser) t)
+(setf (documentation (liber:slot-documentation "local-only" 'recent-chooser) t)
  "The @code{local-only} property of type @code{:boolean} (Read / Write) @br{}
   Whether this @sym{gtk:recent-chooser} should display only local (file:)
   resources. @br{}
@@ -355,7 +351,7 @@
 (setf (liber:alias-for-function 'recent-chooser-local-only)
       "Accessor"
       (documentation 'recent-chooser-local-only 'function)
- "@version{#2021-12-26}
+ "@version{#2023-3-24}
   @syntax[]{(gtk:recent-chooser-local-only objet) => local-only}
   @syntax[]{(setf (gtk:recent-chooser-local-only object) local-only)}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
@@ -364,22 +360,21 @@
     Accessor of the @slot[gtk:recent-chooser]{local-only} slot of the
     @class{gtk:recent-chooser} class.
   @end{short}
-
-  The @sym{gtk:recent-chooser-local-only} slot access function gets whether only
-  local resources should be shown in the recently used resources selector. The
-  @sym{(setf gtk:recent-chooser-local-only)} slot access function sets whether
-  only local resources, that is resources using the file:// URI scheme, should
-  be shown in the recently used resources selector.
+  The @sym{gtk:recent-chooser-local-only} function gets whether only local 
+  resources should be shown in the recently used resources selector. The
+  @sym{(setf gtk:recent-chooser-local-only)} function sets whether only local 
+  resources, that is resources using the file:// URI scheme, should be shown in 
+  the recently used resources selector.
 
   If the @arg{local-only} argument is @em{true} (the default) then the shown
   resources are guaranteed to be accessible through the operating system native
   file system.
   @see-class{gtk:recent-chooser}")
 
-;;; --- recent-chooser-recent-manager --------------------------------------
+;;; --- recent-chooser-recent-manager ------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "recent-manager"
+(setf (documentation (liber:slot-documentation "recent-manager" 
                                                'recent-chooser) t)
  "The @code{recent-manager} property of type @class{gtk:recent-manager}
   (Write / Construct Only) @br{}
@@ -390,7 +385,7 @@
 (setf (liber:alias-for-function 'recent-chooser-recent-manager)
       "Accessor"
       (documentation 'recent-chooser-recent-manager 'function)
- "@version{#2021-12-26}
+ "@version{#2023-3-24}
   @syntax[]{(gtk:recent-chooser-recent-manager objet) => recent-manager}
   @syntax[]{(setf (gtk:recent-chooser-recent-manager object) recent-manager)}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
@@ -399,13 +394,12 @@
     Accessor of the @slot[gtk:recent-chooser]{recent-manager} slot of the
     @class{gtk:recent-chooser} class.
   @end{short}
-
   The recent manager used by the recent chooser to display the list of recently
   used resources.
   @see-class{gtk:recent-chooser}
   @see-class{gtk:recent-manager}")
 
-;;; --- recent-chooser-select-multiple -------------------------------------
+;;; --- recent-chooser-select-multiple -----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "select-multiple"
@@ -419,7 +413,7 @@
 (setf (liber:alias-for-function 'recent-chooser-select-multiple)
       "Accessor"
       (documentation 'recent-chooser-select-multiple 'function)
- "@version{#2021-12-26}
+ "@version{#2023-3-24}
   @syntax[]{(gtk:recent-chooser-select-multiple objet) => select-multiple}
   @syntax[]{(setf (gtk:recent-chooser-select-multiple object) select-multiple)}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
@@ -429,18 +423,16 @@
     Accessor of the @slot[gtk:recent-chooser]{select-multiple} slot of the
     @class{gtk:recent-chooser} class.
   @end{short}
-
-  The @sym{gtk:recent-chooser-select-multiple} slot access function gets
-  whether @arg{chooser} can select multiple items. The
-  @sym{(setf gtk:recent-choose-select-multiple)} slot acces function sets
-  whether @arg{chooser} can select multiple items.
+  The @sym{gtk:recent-chooser-select-multiple} function gets whether 
+  @arg{chooser} can select multiple items. The 
+  @sym{(setf gtk:recent-choose-select-multiple)} function sets whether 
+  @arg{chooser} can select multiple items.
   @see-class{gtk:recent-chooser}")
 
 ;;; --- recent-chooser-show-icons ------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "show-icons"
-                                               'recent-chooser) t)
+(setf (documentation (liber:slot-documentation "show-icons" 'recent-chooser) t)
  "The @code{show-icons} property of type @code{:boolean} (Read / Write) @br{}
   Whether the recent chooser should display an icon near the item. @br{}
   Default value: @em{true}")
@@ -449,7 +441,7 @@
 (setf (liber:alias-for-function 'recent-chooser-show-icons)
       "Accessor"
       (documentation 'recent-chooser-show-icons 'function)
- "@version{#2021-12-26}
+ "@version{#2023-3-24}
   @syntax[]{(gtk:recent-chooser-show-icons objet) => show-icons}
   @syntax[]{(setf (gtk:recent-chooser-show-icons object) show-icons)}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
@@ -458,17 +450,16 @@
     Accessor of the slot @slot[gtk:recent-chooser]{show-icons} of the
     @class{gtk:recent-chooser} class.
   @end{short}
-
-  The @sym{gtk:recent-chooser-show-icons} slot access function retrieves whether
+  The @sym{gtk:recent-chooser-show-icons} function retrieves whether 
   @arg{chooser} should show an icon near the resource. The
-  @sym{(setf gtk:recent-chooser-show-icons)} slot access function sets whether
+  @sym{(setf gtk:recent-chooser-show-icons)} function sets whether 
   @arg{chooser} should show an icon near the resource when displaying it.
   @see-class{gtk:recent-chooser}")
 
-;;; --- recent-chooser-show-not-found --------------------------------------
+;;; --- recent-chooser-show-not-found ------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "show-not-found"
+(setf (documentation (liber:slot-documentation "show-not-found" 
                                                'recent-chooser) t)
  "The @code{show-not-found} property of type @code{:boolean} (Read / Write)
   @br{}
@@ -482,7 +473,7 @@
 (setf (liber:alias-for-function 'recent-chooser-show-not-found)
       "Accessor"
       (documentation 'recent-chooser-show-not-found 'function)
- "@version{#2021-12-26}
+ "@version{#2023-3-24}
   @syntax[]{(gtk:recent-chooser-show-not-found objet) => show-not-found}
   @syntax[]{(setf (gtk:recent-chooser-show-not-found object) show-not-found)}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
@@ -492,15 +483,14 @@
     Accessor of the @slot[gtk:recent-chooser]{show-not-found} slot of the
     @class{gtk:recent-chooser} class.
   @end{short}
-
-  The @sym{gtk:recent-chooser-show-not-found} slot access function retrieves
-  whether @arg{chooser} should show the recently used resources that were not
-  found. The @sym{(setf gtk:recent-chooser-show-not-found)} slot access function
-  sets whether @arg{chooser} should display the recently used resources that it
-  did not find. This only applies to local resources.
+  The @sym{gtk:recent-chooser-show-not-found} function retrieves whether 
+  @arg{chooser} should show the recently used resources that were not found. 
+  The @sym{(setf gtk:recent-chooser-show-not-found)} function sets whether 
+  @arg{chooser} should display the recently used resources that it did not 
+  find. This only applies to local resources.
   @see-class{gtk:recent-chooser}")
 
-;;; --- recent-chooser-show-private ----------------------------------------
+;;; --- recent-chooser-show-private --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "show-private"
@@ -513,7 +503,7 @@
 (setf (liber:alias-for-function 'recent-chooser-show-private)
       "Accessor"
       (documentation 'recent-chooser-show-private 'function)
- "@version{#2021-12-26}
+ "@version{#2023-3-24}
   @syntax[]{(gtk:recent-chooser-show-private objet) => show-private}
   @syntax[]{(setf (gtk:recent-chooser-show-private object) show-private)}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
@@ -522,18 +512,16 @@
     Accessor of the @slot[gtk:recent-chooser]{show-private} slot of the
     @class{gtk:recent-chooser} class.
   @end{short}
-
-  The @sym{gtk:recent-chooser-show-private} slot access function returns whether
+  The @sym{gtk:recent-chooser-show-private} function returns whether 
   @arg{chooser} should display recently used resources registered as private.
-  The @sym{(setf gtk:recent-chooser-show-private)} slot access function sets
-  whether to show recently used resources marked registered as private.
+  The @sym{(setf gtk:recent-chooser-show-private)} function sets whether to 
+  show recently used resources marked registered as private.
   @see-class{gtk:recent-chooser}")
 
-;;; --- recent-chooser-show-tips -------------------------------------------
+;;; --- recent-chooser-show-tips -----------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "show-tips"
-                                               'recent-chooser) t)
+(setf (documentation (liber:slot-documentation "show-tips" 'recent-chooser) t)
  "The @code{show-tips} property of type @code{:boolean} (Read / Write) @br{}
   Whether the recent chooser should display a tooltip containing the full path
   of the recently used resources. @br{}
@@ -543,7 +531,7 @@
 (setf (liber:alias-for-function 'recent-chooser-show-tips)
       "Accessor"
       (documentation 'recent-chooser-show-tips 'function)
- "@version{#2021-12-26}
+ "@version{#2023-3-24}
   @syntax[]{(gtk:recent-chooser-show-tips objet) => show-tips}
   @syntax[]{(setf (gtk:recent-chooser-show-tips object) show-tips)}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
@@ -552,19 +540,17 @@
     Accessor of the @slot[gtk:recent-chooser]{show-tips} slot of the
     @class{gtk:recent-chooser} class.
   @end{short}
-
-  The @sym{gtk:recent-chooser-show-tips} slot accessf function gets whether
-  @arg{chooser} should display tooltips containing the full path of a recently
-  user resource. The @sym{(setf gtk:recent-chooser-show-tips)} slot access
-  function sets whether to show a tooltips containing the full path of each
-  recently used resource in a @class{gtk:recent-chooser} widget.
+  The @sym{gtk:recent-chooser-show-tips} function gets whether @arg{chooser} 
+  should display tooltips containing the full path of a recently user resource. 
+  The @sym{(setf gtk:recent-chooser-show-tips)} function sets whether to show a 
+  tooltips containing the full path of each recently used resource in a 
+  @class{gtk:recent-chooser} widget.
   @see-class{gtk:recent-chooser}")
 
-;;; --- recent-chooser-sort-type -------------------------------------------
+;;; --- recent-chooser-sort-type -----------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "sort-type"
-                                               'recent-chooser) t)
+(setf (documentation (liber:slot-documentation "sort-type" 'recent-chooser) t)
  "The @code{sort-type} property of type @symbol{gtk:recent-sort-type}
   (Read / Write) @br{}
   Sorting order to be used when displaying the recently used resources. @br{}
@@ -574,7 +560,7 @@
 (setf (liber:alias-for-function 'recent-chooser-sort-type)
       "Accessor"
       (documentation 'recent-chooser-sort-type 'function)
- "@version{#2021-12-26}
+ "@version{#2023-3-24}
   @syntax[]{(gtk:recent-chooser-sort-type objet) => sort-type}
   @syntax[]{(setf (gtk:recent-chooser-sort-type object) sort-type)}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
@@ -584,11 +570,10 @@
     Accessor of the @slot[gtk:recent-chooser]{sort-type} slot of the
     @class{gtk:recent-chooser} class.
   @end{short}
-
-  The @sym{gtk:recent-chooser-sort-type} slot access function gets the sort
-  order that the chooser should use. The
-  @sym{(setf gtk:recent-chooser-sort-type)} slot access function changes the
-  sorting order of the recently used resources list displayed by chooser.
+  The @sym{gtk:recent-chooser-sort-type} function gets the sort order that the 
+  chooser should use. The @sym{(setf gtk:recent-chooser-sort-type)} function 
+  changes the sorting order of the recently used resources list displayed by 
+  chooser.
   @see-class{gtk:recent-chooser}
   @see-symbol{gtk:recent-sort-type}")
 
@@ -606,13 +591,13 @@
 (setf (liber:alias-for-symbol 'recent-sort-func)
       "Callback"
       (liber:symbol-documentation 'recent-sort-func)
- "@version{#2021-12-26}
+ "@version{#2023-3-24}
   @begin{short}
     The callback function to set with the @fun{gtk:recent-chooser-set-sort-func}
     function.
   @end{short}
   @begin{pre}
- lambda (item1 item2)
+lambda (item1 item2)
   @end{pre}
   @begin[code]{table}
     @entry[item1]{A @class{gtk:recent-info} instance.}
@@ -630,7 +615,7 @@
 ;;; gtk_recent_chooser_set_sort_func ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_chooser_set_sort_func" %recent-chooser-set-sort-func)
+(defcfun ("gtk_recent_chooser_set_sort_func" %recent-chooser-set-sort-func) 
     :void
   (chooser (g:object recent-chooser))
   (func :pointer)
@@ -639,7 +624,7 @@
 
 (defun recent-chooser-set-sort-func (chooser func)
  #+liber-documentation
- "@version{#2021-12-26}
+ "@version{#2023-3-24}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
   @argument[func]{a @symbol{gtk:recent-sort-func} comparison function}
   @begin{short}
@@ -668,8 +653,8 @@
 ;;; gtk_recent_chooser_set_current_uri () -> recent-chooser-current-uri
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_chooser_set_current_uri"
-          %recent-chooser-set-current-uri) :boolean
+(defcfun ("gtk_recent_chooser_set_current_uri" %recent-chooser-set-current-uri) 
+    :boolean
   (chooser (g:object recent-chooser))
   (uri :string)
   (err :pointer))
@@ -681,7 +666,7 @@
 (defcfun ("gtk_recent_chooser_get_current_uri" recent-chooser-current-uri)
     :string
  #+liber-documentation
- "@version{#2021-12-26}
+ "@version{#2023-3-24}
   @syntax[]{(gtk:recent-chooser-current-uri chooser) => uri}
   @syntax[]{(setf (gtk:recent-chooser-current-uri chooser) uri)}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
@@ -689,11 +674,9 @@
   @begin{short}
     Accessor of the URI currently selected by @arg{chooser}.
   @end{short}
-
-  The @sym{gtk:recent-chooser-current-uri} slot access function gets the URI
-  currently selected by @arg{chooser}. The
-  @sym{(setf gtk:recent-chooser-current-uri)} slot access function sets
-  @arg{uri} as the current URI for @arg{chooser}.
+  The @sym{gtk:recent-chooser-current-uri} function gets the URI currently 
+  selected by @arg{chooser}. The @sym{(setf gtk:recent-chooser-current-uri)} 
+  function sets @arg{uri} as the current URI for @arg{chooser}.
   @see-class{gtk:recent-chooser}"
   (chooser (g:object recent-chooser)))
 
@@ -703,10 +686,10 @@
 ;;; gtk_recent_chooser_get_current_item () -> recent-chooser-current-item
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_chooser_get_current_item"
-           recent-chooser-current-item) (g:boxed recent-info)
+(defcfun ("gtk_recent_chooser_get_current_item" recent-chooser-current-item) 
+    (g:boxed recent-info)
  #+liber-documentation
- "@version{#2021-12-26}
+ "@version{#2023-3-24}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
   @begin{return}
     A @class{gtk:recent-info} instance.
@@ -733,7 +716,7 @@
 
 (defun recent-chooser-select-uri (chooser uri)
  #+liber-documentation
- "@version{#2021-12-26}
+ "@version{#2023-3-24}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
   @argument[uri]{a string with the URI}
   @return{@em{True} if @arg{uri} was found.}
@@ -749,10 +732,9 @@
 ;;; gtk_recent_chooser_unselect_uri ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_chooser_unselect_uri" recent-chooser-unselect-uri)
-    :void
+(defcfun ("gtk_recent_chooser_unselect_uri" recent-chooser-unselect-uri) :void
  #+liber-documentation
- "@version{#2021-12-26}
+ "@version{#2023-3-24}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
   @argument[uri]{a string with the URI}
   @short{Unselects @arg{uri} inside @arg{chooser}.}
@@ -769,11 +751,11 @@
 
 (defcfun ("gtk_recent_chooser_select_all" recent-chooser-select-all) :void
  #+liber-documentation
- "@version{#2021-12-26}
+ "@version{#2023-3-24}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
   @begin{short}
-    Selects all the items inside @arg{chooser}, if the chooser supports multiple
-    selection.
+    Selects all the items inside @arg{chooser}, if the chooser supports 
+    multiple selection.
   @end{short}
   @see-class{gtk:recent-chooser}
   @see-function{gtk:recent-chooser-unselect-all}"
@@ -785,10 +767,9 @@
 ;;; gtk_recent_chooser_unselect_all ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_chooser_unselect_all" recent-chooser-unselect-all)
-    :void
+(defcfun ("gtk_recent_chooser_unselect_all" recent-chooser-unselect-all) :void
  #+liber-documentation
- "@version{#2021-12-26}
+ "@version{#2023-3-24}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
   @short{Unselects all the items inside @arg{chooser}.}
   @see-class{gtk:recent-chooser}
@@ -802,9 +783,9 @@
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_recent_chooser_get_items" recent-chooser-items)
-    (g:list-t (g:boxed recent-info :free-from-foreign t))
+    (g:list-t (g:boxed recent-info))
  #+liber-documentation
- "@version{#2021-12-26}
+ "@version{#2023-3-24}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
   @begin{return}
     A list of @class{gtk:recent-info} instances.
@@ -813,7 +794,6 @@
     Gets the list of recently used resources in form of @class{gtk:recent-info}
     instances.
   @end{short}
-
   The return value of this function is affected by the
   @slot[gtk:recent-chooser]{sort-type} and @slot[gtk:recent-chooser]{limit}
   properties of @arg{chooser}.
@@ -834,13 +814,12 @@
 
 (defun recent-chooser-uris (chooser)
  #+liber-documentation
- "@version{#2021-12-26}
+ "@version{#2023-3-24}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
   @return{A list of strings.}
   @begin{short}
     Gets the URIs of the recently used resources.
   @end{short}
-
   The return value of this function is affected by the
   @slot[gtk:recent-chooser]{sort-type} and @slot[gtk:recent-chooser]{limit}
   properties of @arg{chooser}.
@@ -857,14 +836,13 @@
 
 (defcfun ("gtk_recent_chooser_add_filter" recent-chooser-add-filter) :void
  #+liber-documentation
- "@version{#2021-12-26}
+ "@version{#2023-3-24}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
   @argument[filter]{a @class{gtk:recent-filter} object}
   @begin{short}
     Adds @arg{filter} to the list of @class{gtk:recent-filter} objects held by
     @arg{chooser}.
   @end{short}
-
   If no previous filter objects were defined, this function will call the
   @fun{gtk:recent-chooser-filter} function.
   @see-class{gtk:recent-chooser}
@@ -880,10 +858,9 @@
 ;;; gtk_recent_chooser_remove_filter ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_chooser_remove_filter" recent-chooser-remove-filter)
-    :void
+(defcfun ("gtk_recent_chooser_remove_filter" recent-chooser-remove-filter) :void
  #+liber-documentation
- "@version{#2021-12-26}
+ "@version{#2023-3-24}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
   @argument[filter]{a @class{gtk:recent-filter} object}
   @begin{short}
@@ -903,9 +880,9 @@
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_recent_chooser_list_filters" recent-chooser-list-filters)
-    (g:slist-t (g:object recent-filter) :free-from-foreign t)
+    (g:slist-t (g:object recent-filter))
  #+liber-documentation
- "@version{#2021-12-26}
+ "@version{#2023-3-24}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
   @return{A list of @class{gtk:recent-filter} objects.}
   @begin{short}
@@ -917,4 +894,4 @@
 
 (export 'recent-chooser-list-filters)
 
-;;; --- End of file gtk.recent-chooser.lisp ------------------------------------
+;;; --- End of file gtk3.recent-chooser.lisp -----------------------------------

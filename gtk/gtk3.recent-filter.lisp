@@ -4,27 +4,27 @@
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
 ;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkRecentFilter
@@ -83,7 +83,7 @@
 (setf (liber:alias-for-symbol 'recent-filter-flags)
       "GFlags"
       (liber:symbol-documentation 'recent-filter-flags)
- "@version{#2021-12-27}
+ "@version{#2023-3-24}
   @begin{short}
     These flags indicate what parts of a @symbol{gtk:recent-filter-info}
     structure are filled or need to be filled.
@@ -127,7 +127,7 @@
 (setf (liber:alias-for-symbol 'recent-filter-info)
       "CStruct"
       (liber:symbol-documentation 'recent-filter-info)
- "@version{#2021-12-27}
+ "@version{#2023-3-24}
   @begin{short}
     A @sym{gtk:recent-filter-info} structure is used to pass information about
     the tested file to the @fun{gtk:recent-filter-filter} function.
@@ -159,7 +159,7 @@
 
 #+liber-documentation
 (setf (documentation 'recent-filter 'type)
- "@version{#2021-12-27}
+ "@version{#2023-3-24}
   @begin{short}
     A @sym{gtk:recent-filter} object can be used to restrict the files being
     shown in a @class{gtk:recent-chooser} widget.
@@ -211,6 +211,7 @@
 </object>
   @end{pre}
   @end{dictionary}
+  @see-constructor{gtk:recent-filter}
   @see-class{gtk:recent-chooser}
   @see-function{gtk:recent-filter-add-pattern}
   @see-function{gtk:file-filter-add-mime-type}
@@ -221,10 +222,9 @@
 ;;; gtk_recent_filter_new ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_filter_new" recent-filter-new)
-    (g:object recent-filter)
+(defcfun ("gtk_recent_filter_new" recent-filter-new) (g:object recent-filter)
  #+liber-documentation
- "@version{#2021-12-27}
+ "@version{#2023-3-24}
   @return{A new @class{gtk:recent-filter} object.}
   @begin{short}
     Creates a new @class{gtk:recentFilter} object with no rules added to it.
@@ -254,14 +254,14 @@
 
 (defun (setf recent-filter-name) (name filter)
   (cffi:foreign-funcall "gtk_recent_filter_set_name"
-                   (g:object recent-filter) filter
-                   :string name
-                   :void)
+                        (g:object recent-filter) filter
+                        :string name
+                        :void)
   name)
 
 (defcfun ("gtk_recent_filter_get_name" recent-filter-name) :string
  #+liber-documentation
- "@version{#2021-12-27}
+ "@version{#2023-3-24}
   @syntax[]{(gtk:recent-filter-name filter) => name}
   @syntax[]{(setf (gtk:recent-filter-name filter) name)}
   @argument[filter]{a @class{gtk:recent-filter} object}
@@ -282,10 +282,9 @@
 ;;; gtk_recent_filter_add_mime_type ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_filter_add_mime_type" recent-filter-add-mime-type)
-    :void
+(defcfun ("gtk_recent_filter_add_mime_type" recent-filter-add-mime-type) :void
  #+liber-documentation
- "@version{#2021-12-27}
+ "@version{#2023-3-24}
   @argument[filter]{a @class{gtk:recent-filter} object}
   @argument[mime-type]{a string with the MIME type}
   @begin{short}
@@ -303,7 +302,7 @@
 
 (defcfun ("gtk_recent_filter_add_pattern" recent-filter-add-pattern) :void
  #+liber-documentation
- "@version{#2021-12-27}
+ "@version{#2023-3-24}
   @argument[filter]{a @class{gtk:recent-filter} object}
   @argument[pattern]{a string with the file pattern}
   @begin{short}
@@ -323,7 +322,7 @@
 (defcfun ("gtk_recent_filter_add_pixbuf_formats"
            recent-filter-add-pixbuf-formats) :void
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-24}
   @argument[filter]{a @class{gtk:recent-filter} object}
   @begin{short}
     Adds a rule allowing image files in the formats supported by the
@@ -342,7 +341,7 @@
 (defcfun ("gtk_recent_filter_add_application" recent-filter-add-application)
     :void
  #+liber-documentation
- "@version{#2021-12-27}
+ "@version{#2023-3-24}
   @argument[filter]{a @class{gtk:recent-filter} object}
   @argument[application]{a string with an application name}
   @begin{short}
@@ -361,7 +360,7 @@
 
 (defcfun ("gtk_recent_filter_add_group" recent-filter-add-group) :void
  #+liber-documentation
- "@version{#2021-12-27}
+ "@version{#2023-3-24}
   @argument[filter]{a @class{gtk:recent-filter} object}
   @argument[group]{a string with the group name}
   @begin{short}
@@ -380,7 +379,7 @@
 
 (defcfun ("gtk_recent_filter_add_age" recent-filter-add-age) :void
  #+liber-documentation
- "@version{#2021-12-27}
+ "@version{#2023-3-24}
   @argument[filter]{a @class{gtk:recent-filter} object}
   @argument[days]{an intger with the number of days}
   @begin{short}
@@ -406,18 +405,18 @@
 (setf (liber:alias-for-symbol 'recent-filter-func)
       "Callback"
       (liber:symbol-documentation 'recent-filter-func)
- "@version{#2021-12-27}
+ "@version{#2023-3-24}
   @begin{short}
     The type of function that is used with custom filters, see the
     @fun{gtk:recent-filter-add-custom} function.
   @end{short}
   @begin{pre}
- lambda (info)
+lambda (info)
   @end{pre}
   @begin[code]{table}
     @entry[info]{A @symbol{gtk:recent-filter-info} instance that is filled
       according to the needed flags passed to the
-      @fun{gtk:recent-filter-add-custom} function}
+      @fun{gtk:recent-filter-add-custom} function.}
     @entry[Returns]{@em{True} if the file should be displayed.}
   @end{table}
   @see-class{gtk:recent-filter}
@@ -429,8 +428,7 @@
 ;;; gtk_recent_filter_add_custom ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_filter_add_custom" %recent-filter-add-custom)
-    :void
+(defcfun ("gtk_recent_filter_add_custom" %recent-filter-add-custom) :void
   (filter (g:object recent-filter))
   (needed recent-filter-flags)
   (func :pointer)
@@ -439,7 +437,7 @@
 
 (defun recent-filter-add-custom (filter needed func)
  #+liber-documentation
- "@version{#2021-12-27}
+ "@version{#2023-3-24}
   @argument[filter]{a @class{gtk:recent-filter} object}
   @argument[needed]{bitfield of @symbol{gtk:recent-filter-flags} flags
     indicating the information that the custom filter function needs}
@@ -450,7 +448,7 @@
     callback function.
   @end{short}
   The bitfield @arg{needed} which is passed in provides information about
-  what sorts of information that the filter function needs; this allows GTK
+  what sorts of information that the filter function needs. This allows GTK
   to avoid retrieving expensive information when it is not needed by the
   filter.
   @see-class{gtk:recent-filter}
@@ -472,7 +470,7 @@
 (defcfun ("gtk_recent_filter_get_needed" recent-filter-needed)
     recent-filter-flags
  #+liber-documentation
- "@version{#2021-12-27}
+ "@version{#2023-3-24}
   @argument[filter]{a @class{gtk:recent-filter} object}
   @return{Bitfield of @symbol{gtk:recent-filter-flags} flags of indicating
     needed fields when calling the @fun{gtk:recent-filter-filter} function.}
@@ -480,7 +478,6 @@
     Gets the fields that need to be filled in for the structure passed to the
     @fun{gtk:recent-filter-filter} function.
   @end{short}
-
   This function will not typically be used by applications. It is intended
   principally for use in the implementation of the @class{gtk:recent-chooser}
   class.
@@ -497,7 +494,7 @@
 
 (defcfun ("gtk_recent_filter_filter" recent-filter-filter) :boolean
  #+liber-documentation
- "@version{#2021-12-27}
+ "@version{#2023-3-24}
   @argument[filter]{a @class{gtk:recent-filter} object}
   @argument[info]{a @symbol{gtk:recent-filter-info} instance containing
     information about a recently used resource}
