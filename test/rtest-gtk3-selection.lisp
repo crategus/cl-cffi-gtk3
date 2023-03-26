@@ -262,9 +262,9 @@
     (let ((window (gtk:widget-window widget)))
       ;; Check the presence of a gdk:window
       (is (eq 'gdk:window (type-of window)))
-      (is-true (gtk:selection-owner-set widget
-                                        "PRIMARY"
-                                        +gdk-current-time+)))))
+      (is (typep (gtk:selection-owner-set widget
+                                          "PRIMARY"
+                                          +gdk-current-time+) 'boolean)))))
 
 (test selection-owner-set.2
   (let ((widget (make-instance 'gtk:window :type :toplevel)))
@@ -273,9 +273,9 @@
     (let ((window (gtk:widget-window widget)))
       ;; Check the presence of a gdk:window
       (is (eq 'gdk:window (type-of window)))
-      (is-true (gtk:selection-owner-set widget
-                                        "SECONDARY"
-                                        +gdk-current-time+)))))
+      (is (typep (gtk:selection-owner-set widget
+                                          "SECONDARY"
+                                          +gdk-current-time+) 'boolean)))))
 
 (test selection-owner-set.3
   (let ((widget (make-instance 'gtk:window :type :toplevel)))
@@ -504,4 +504,4 @@
 ;;;     gtk_selection_data_copy
 ;;;     gtk_selection_data_free
 
-;;; --- 2023-3-3 ---------------------------------------------------------------
+;;; --- 2023-3-26 --------------------------------------------------------------

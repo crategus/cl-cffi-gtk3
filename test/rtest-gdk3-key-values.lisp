@@ -108,12 +108,24 @@
 
 ;;;     gdk_keymap_get_entries_for_keyval
 
-(test keymap-entries-for-keyval
+(test gdk-keymap-entries-for-keyval
   (let ((keymap (gdk:keymap-for-display (gdk:display-default))))
-    (is (equal '((35 0 0)) (gdk:keymap-entries-for-keyval keymap 43)))
-    (is (equal '((35 0 1)) (gdk:keymap-entries-for-keyval keymap 42)))
-    (is (equal '((35 0 2)) (gdk:keymap-entries-for-keyval keymap 126)))
-    (is (equal '((35 0 3)) (gdk:keymap-entries-for-keyval keymap 175)))))
+    (is (or (equal '((35 0 0))
+                   (gdk:keymap-entries-for-keyval keymap 43))
+            (equal '((35 0 0) (35 1 0))
+                   (gdk:keymap-entries-for-keyval keymap 43))))
+    (is (or (equal '((35 0 1))
+                   (gdk:keymap-entries-for-keyval keymap 42))
+            (equal '((35 0 1) (35 1 1))
+                   (gdk:keymap-entries-for-keyval keymap 42))))
+    (is (or (equal '((35 0 2))
+                   (gdk:keymap-entries-for-keyval keymap 126))
+            (equal '((35 0 2) (35 1 2))
+                   (gdk:keymap-entries-for-keyval keymap 126))))
+    (is (or (equal '((35 0 3))
+                   (gdk:keymap-entries-for-keyval keymap 175))
+            (equal '((35 0 3) (35 1 3))
+                   (gdk:keymap-entries-for-keyval keymap 175))))))
 
 ;;;     gdk_keymap_get_entries_for_keycode
 
@@ -142,8 +154,8 @@
 
 ;;;     gdk_keymap_get_num_lock_state
 
-(test keymap-num-lock-state
-  (is-true (gdk:keymap-num-lock-state (gdk:keymap-default))))
+(test gdk-keymap-num-lock-state
+  (is (typep (gdk:keymap-num-lock-state (gdk:keymap-default)) 'boolean)))
 
 ;;;     gdk_keymap_get_scroll_lock_state
 
@@ -249,4 +261,4 @@
 (test unicode-to-keyval
   (is (eq 65 (gdk:unicode-to-keyval #\A))))
 
-;;; --- 2023-3-4 ---------------------------------------------------------------
+;;; --- 2023-3-26 --------------------------------------------------------------

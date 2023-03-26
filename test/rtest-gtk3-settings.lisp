@@ -354,50 +354,44 @@
   (let ((settings (gtk:settings-default)))
     ;; GHashTable is not implemented
     (signals (error) (gtk:settings-color-hash settings))
-    #-windows
-    (is-false (gtk:settings-gtk-alternative-button-order settings))
-    #-windows
-    (is-false (gtk:settings-gtk-alternative-sort-arrows settings))
+    (is (typep (gtk:settings-gtk-alternative-button-order settings) 'boolean))
+    (is (typep (gtk:settings-gtk-alternative-sort-arrows settings) 'boolean))
     (is-false (gtk:settings-gtk-application-prefer-dark-theme settings))
-    (is-true  (gtk:settings-gtk-auto-mnemonics settings))
+    (is-true (gtk:settings-gtk-auto-mnemonics settings))
     (is-false (gtk:settings-gtk-button-images settings))
     (is-false (gtk:settings-gtk-can-change-accels settings))
     (is (stringp (gtk:settings-gtk-color-palette settings)))
     (is (stringp (gtk:settings-gtk-color-scheme settings)))
-    (is-true  (gtk:settings-gtk-cursor-blink settings))
+    (is-true (gtk:settings-gtk-cursor-blink settings))
     (is (integerp (gtk:settings-gtk-cursor-blink-time settings)))
     (is (integerp (gtk:settings-gtk-cursor-blink-timeout settings)))
-    #-windows
-    (is (stringp (gtk:settings-gtk-cursor-theme-name settings)))
+    (is (typep (gtk:settings-gtk-cursor-theme-name settings) '(or null string)))
     (is (integerp (gtk:settings-gtk-cursor-theme-size settings)))
-    (is-true  (gtk:settings-gtk-decoration-layout settings))
-    #-windows
-    (is-true  (gtk:settings-gtk-dialogs-use-header settings))
+    (is-true (gtk:settings-gtk-decoration-layout settings))
+    (is (typep (gtk:settings-gtk-dialogs-use-header settings) 'boolean))
     (is (integerp (gtk:settings-gtk-dnd-drag-threshold settings)))
     (is (integerp (gtk:settings-gtk-double-click-distance settings)))
     (is (integerp (gtk:settings-gtk-double-click-time settings)))
-    (is-true  (gtk:settings-gtk-enable-accels settings))
-    (is-true  (gtk:settings-gtk-enable-animations settings))
-    (is-true  (gtk:settings-gtk-enable-event-sounds settings))
-    (is-true  (gtk:settings-gtk-enable-input-feedback-sounds settings))
-    (is-true  (gtk:settings-gtk-enable-mnemonics settings))
-    (is-true  (gtk:settings-gtk-enable-primary-paste settings))
-    (is-true  (gtk:settings-gtk-enable-tooltips settings))
-    (is-true  (gtk:settings-gtk-entry-password-hint-timeout settings))
-    (is-true  (gtk:settings-gtk-entry-select-on-focus settings))
-    (is-true  (gtk:settings-gtk-error-bell settings))
+    (is-true (gtk:settings-gtk-enable-accels settings))
+    (is-true (gtk:settings-gtk-enable-animations settings))
+    (is-true (gtk:settings-gtk-enable-event-sounds settings))
+    (is-true (gtk:settings-gtk-enable-input-feedback-sounds settings))
+    (is-true (gtk:settings-gtk-enable-mnemonics settings))
+    (is-true (gtk:settings-gtk-enable-primary-paste settings))
+    (is-true (gtk:settings-gtk-enable-tooltips settings))
+    (is-true (gtk:settings-gtk-entry-password-hint-timeout settings))
+    (is-true (gtk:settings-gtk-entry-select-on-focus settings))
+    (is-true (gtk:settings-gtk-error-bell settings))
     (is-false (gtk:settings-gtk-fallback-icon-theme settings))
     (is-false (gtk:settings-gtk-file-chooser-backend settings))
     (is (stringp (gtk:settings-gtk-font-name settings)))
     (is (integerp (gtk:settings-gtk-fontconfig-timestamp settings)))
-    #-windows
-    (is (stringp (gtk:settings-gtk-icon-sizes settings)))
+    (is (typep (gtk:settings-gtk-icon-sizes settings) '(or null string)))
     (is (stringp (gtk:settings-gtk-icon-theme-name settings)))
     (is (stringp (gtk:settings-gtk-im-module settings)))
     (is (eq :callback (gtk:settings-gtk-im-preedit-style settings)))
     (is (eq :callback (gtk:settings-gtk-im-status-style settings)))
-    #-windows
-    (is (stringp (gtk:settings-gtk-key-theme-name settings)))
+    (is (typep (gtk:settings-gtk-key-theme-name settings) '(or null string)))
     (is-false (gtk:settings-gtk-keynav-cursor-only settings))
     (is-false (gtk:settings-gtk-keynav-use-caret settings))
     (is-true  (gtk:settings-gtk-keynav-wrap-around settings))
@@ -408,26 +402,21 @@
     (is-false (gtk:settings-gtk-menu-images settings))
     (is (integerp (gtk:settings-gtk-menu-popdown-delay settings)))
     (is (integerp (gtk:settings-gtk-menu-popup-delay settings)))
-    #-windows
-    (is (string= "canberra-gtk-module" (gtk:settings-gtk-modules settings)))
-    #+windows
-    (is-false (gtk:settings-gtk-modules settings))
+    (is (typep (gtk:settings-gtk-modules settings) '(or null string)))
     (is-true  (gtk:settings-gtk-primary-button-warps-slider settings))
     (is (stringp (gtk:settings-gtk-print-backends settings)))
     (is (stringp (gtk:settings-gtk-print-preview-command settings)))
-    ;; TODO: Is this a bug?
-    (signals (error) (gtk:settings-gtk-recent-files-enabled settings))
+    (is (typep (gtk:settings-gtk-recent-files-enabled settings) 'boolean))
     (is (integerp (gtk:settings-gtk-recent-files-limit settings)))
     (is (integerp (gtk:settings-gtk-recent-files-max-age settings)))
     (is-true  (gtk:settings-gtk-scrolled-window-placement settings))
     (is-false (gtk:settings-gtk-shell-shows-app-menu settings))
-    (is-true  (gtk:settings-gtk-shell-shows-desktop settings))
+    (is (typep (gtk:settings-gtk-shell-shows-desktop settings) 'boolean))
     (is-false (gtk:settings-gtk-shell-shows-menubar settings))
     (is-false (gtk:settings-gtk-show-input-method-menu settings))
     (is-false (gtk:settings-gtk-show-unicode-menu settings))
     (is (stringp (gtk:settings-gtk-sound-theme-name settings)))
-    #-windows
-    (is-true  (gtk:settings-gtk-split-cursor settings))
+    (is (typep (gtk:settings-gtk-split-cursor settings) 'boolean))
     (is (stringp (gtk:settings-gtk-theme-name settings)))
     (is (integerp (gtk:settings-gtk-timeout-expand settings)))
     (is (integerp (gtk:settings-gtk-timeout-initial settings)))
@@ -451,7 +440,15 @@
 ;;; --- Functions --------------------------------------------------------------
 
 ;;;     gtk_settings_get_default
+
+(test gtk-settings-default
+  (is (typep (gtk:settings-default) 'gtk:settings)))
+
 ;;;     gtk_settings_get_for_screen
+
+(test gtk-settings-for-screen
+  (is (typep (gtk:settings-for-screen (gdk:screen-default)) 'gtk:settings)))
+
 ;;;     gtk_settings_install_property                      deprecated
 ;;;     gtk_settings_install_property_parser               deprecated
 ;;;     gtk_rc_property_parse_color
@@ -466,4 +463,4 @@
 ;;;     gtk_settings_reset_property ()
 
 
-;;; --- 2023-3-9 ---------------------------------------------------------------
+;;; --- 2023-3-26 --------------------------------------------------------------

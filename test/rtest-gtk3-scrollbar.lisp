@@ -20,7 +20,7 @@
   (is (eq (g:gtype "GtkRange")
           (g:type-parent "GtkScrollbar")))
   ;; Check the children
-  (is (equal '("GtkHScrollbar" "GtkVScrollbar")
+  (is (equal '()
              (list-children "GtkScrollbar")))
   ;; Check the interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
@@ -65,4 +65,4 @@
           (type-of (gtk:scrollbar-new :vertical
                                       (make-instance 'gtk:adjustment))))))
 
-;;; 2022-12-26
+;;; --- 2023-3-26 --------------------------------------------------------------

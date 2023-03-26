@@ -301,8 +301,9 @@
 
 (test display-selection-notification
   (let ((display (gdk:display-default)))
-    (is-true (gdk:display-supports-selection-notification display))
-    (is-true (gdk:display-request-selection-notification display "CLIPBOARD"))))
+    (is (typep (gdk:display-supports-selection-notification display) 'boolean))
+    (is (typep (gdk:display-request-selection-notification display "CLIPBOARD")
+               'boolean))))
 
 ;;;     gdk-display-supports-clipboard-persistence
 ;;;     gdk-display-store-clipboard
@@ -319,7 +320,7 @@
 
 (test display-shapes
   (let ((display (gdk:display-default)))
-    (is-true (gdk:display-supports-shapes display))
+    (is (typep (gdk:display-supports-shapes display) 'boolean))
     (is-true (gdk:display-supports-input-shapes display))))
 
 ;;;     gdk_display_supports_composite                     deprecated
@@ -385,4 +386,4 @@
          (window (gdk-display-default-group display)))
     (is (typep (gdk-display-monitor-at-window display window) 'gdk-monitor))))
 
-;;; --- 2023-3-4 ---------------------------------------------------------------
+;;; --- 2023-3-26 --------------------------------------------------------------

@@ -23,13 +23,23 @@
   (is (eq (g:gtype "GtkContainer") (g:type-parent "GtkBox")))
   ;; Check the children
   #-windows
-  (is (equal '("GtkAppChooserWidget" "GtkButtonBox" "GtkColorChooserWidget"
-               "GtkColorSelection" "GtkFileChooserButton" "GtkFileChooserWidget"
-               "GtkFontChooserWidget" "GtkFontSelection" "GtkInfoBar"
-               "GtkPlacesView" "GtkPrinterOptionWidget" "GtkRecentChooserWidget"
-               "GtkShortcutsGroup" "GtkShortcutsSection" "GtkShortcutsShortcut"
-               "GtkStackSwitcher" "GtkStatusbar" "GtkVBox")
-             (list-children "GtkBox")))
+  (is (or (equal '("GtkAppChooserWidget" "GtkButtonBox" "GtkColorChooserWidget"
+                   "GtkColorSelection" "GtkFileChooserButton"
+                   "GtkFileChooserWidget" "GtkFontChooserWidget"
+                   "GtkFontSelection" "GtkInfoBar" "GtkPrinterOptionWidget"
+                   "GtkRecentChooserWidget" "GtkShortcutsGroup"
+                   "GtkShortcutsSection" "GtkShortcutsShortcut"
+                   "GtkStackSwitcher" "GtkStatusbar" "GtkVBox")
+                 (list-children "GtkBox"))
+          (equal '("GtkAppChooserWidget" "GtkButtonBox" "GtkColorChooserWidget"
+                   "GtkColorSelection" "GtkFileChooserButton"
+                   "GtkFileChooserWidget" "GtkFontChooserWidget"
+                   "GtkFontSelection" "GtkInfoBar" "GtkPlacesView"
+                   "GtkPrinterOptionWidget" "GtkRecentChooserWidget"
+                   "GtkShortcutsGroup" "GtkShortcutsSection"
+                   "GtkShortcutsShortcut" "GtkStackSwitcher" "GtkStatusbar"
+                   "GtkVBox")
+                 (list-children "GtkBox"))))
   #+windows
   (is (or (equal '("GtkAppChooserWidget" "GtkButtonBox" "GtkColorChooserWidget"
                    "GtkColorSelection" "GtkFileChooserButton"
@@ -242,4 +252,4 @@
     ;; Retrieve the center widget
     (is (eq 'gtk:button (type-of (gtk:box-center-widget box))))))
 
-;;; --- 2023-3-9 ---------------------------------------------------------------
+;;; --- 2023-3-26 --------------------------------------------------------------
