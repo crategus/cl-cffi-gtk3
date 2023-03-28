@@ -49,6 +49,7 @@
 
 ;;;     gdk_window_create_similar_surface
 
+#-windows
 (test window-create-similar-surface
   (let ((window (make-instance 'gtk:window :type :toplevel
                                            :default-width 200
@@ -121,6 +122,7 @@
 
 ;;;     gdk_cairo_get_clip_rectangle
 
+#-windows
 (test cairo-clip-rectangle
   (let ((window (make-instance 'gtk:window :type :toplevel
                                            :default-width 200

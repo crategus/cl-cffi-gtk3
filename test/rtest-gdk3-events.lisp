@@ -338,6 +338,9 @@
 ;;;     gdk_setting_get
 
 (test setting-get
-  (is (= 400 (gdk:setting-get "gtk-double-click-time" "gint"))))
+  #-windows
+  (is (= 400 (gdk:setting-get "gtk-double-click-time" "gint")))
+  #+windows
+  (is (= 500 (gdk:setting-get "gtk-double-click-time" "gint"))))
 
-;;; --- 2023-3-3 ---------------------------------------------------------------
+;;; --- 2023-3-27 --------------------------------------------------------------

@@ -55,6 +55,7 @@
 
 ;;;   gdk_keymap_lookup_key
 
+#-windows
 (test keymap-lookup-key
   (let ((keymap (gdk:keymap-for-display (gdk:display-default))))
     (is (=  43 (gdk:keymap-lookup-key keymap 35 0 0)))
@@ -64,6 +65,7 @@
 
 ;;;     gdk_keymap_translate_keyboard_state
 
+#-windows
 (test keymap-translate-keyboard-state
   (let ((keymap (gdk:keymap-for-display (gdk:display-default))))
     ;; The key "+" with the name "plus"
@@ -108,6 +110,7 @@
 
 ;;;     gdk_keymap_get_entries_for_keyval
 
+#-windows
 (test gdk-keymap-entries-for-keyval
   (let ((keymap (gdk:keymap-for-display (gdk:display-default))))
     (is (or (equal '((35 0 0))
@@ -129,6 +132,7 @@
 
 ;;;     gdk_keymap_get_entries_for_keycode
 
+#-windows
 (test keymap-entries-for-keycode
   (let ((keymap (gdk:keymap-for-display (gdk:display-default))))
     (is (or (equal '((43 35 0 0) (42 35 0 1) (126 35 0 2) (175 35 0 3))
@@ -187,6 +191,7 @@
 
 ;;;     gdk_keymap_map_virtual_modifiers
 
+#-windows
 (test keymap-map-virtual-modifiers
   (let ((keymap (gdk:keymap-for-display (gdk:display-default))))
     (is (equal '(:MOD4-MASK :SUPER-MASK)

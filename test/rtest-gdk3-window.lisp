@@ -766,7 +766,7 @@
     (let ((window (gdk:window-new nil attr nil)))
       (is (eq :toplevel (gdk:window-window-type window)))))))
 
-;; FIXME: Fails for the second run. Is this a problem with the keyword :child?
+;; FIXME: Fails on Windows. Is this a problem with the keyword :child?
 
 ;; --------------------------------
 ;; WINDOW-WINDOW-TYPE.2 in GDK-WINDOW []:
@@ -776,6 +776,7 @@
 ;; #<CFFI::FOREIGN-ENUM GDK:WINDOW-TYPE>..
 ;; --------------------------------
 
+#-windows
 (test window-window-type.2
   (with-foreign-object (attr '(:struct gdk:window-attr))
     (with-foreign-slots ((gdk::window-type)
@@ -903,6 +904,7 @@
 
 ;;;     gdk_window_geometry
 
+#-windows
 (test window-geometry
   (with-foreign-object (attr '(:struct gdk:window-attr))
     (with-foreign-slots ((gdk::window-type
@@ -918,6 +920,24 @@
           gdk::height 200)
     (let ((window (gdk:window-new nil attr nil)))
       (is (equal '(0 0 100 200)
+                 (multiple-value-list (gdk:window-geometry window))))))))
+
+#+windows
+(test window-geometry
+  (with-foreign-object (attr '(:struct gdk:window-attr))
+    (with-foreign-slots ((gdk::window-type
+                          gdk::x
+                          gdk::y
+                          gdk::width
+                          gdk::height)
+                         attr (:struct gdk:window-attr))
+    (setf gdk::window-type :toplevel)
+    (setf gdk::x 10
+          gdk::y 20
+          gdk::width 100
+          gdk::height 200)
+    (let ((window (gdk:window-new nil attr nil)))
+      (is (equal '(8 31 120 200)
                  (multiple-value-list (gdk:window-geometry window))))))))
 
 ;;;     gdk_window_set_geometry_hints

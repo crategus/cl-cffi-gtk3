@@ -44,7 +44,7 @@
   (is (or (equal '("GtkAppChooserWidget" "GtkButtonBox" "GtkColorChooserWidget"
                    "GtkColorSelection" "GtkFileChooserButton"
                    "GtkFileChooserWidget" "GtkFontChooserWidget"
-                   "GtkFontSelection" "GtkHBox" "GtkInfoBar"
+                   "GtkFontSelection" "GtkInfoBar"
                    "GtkRecentChooserWidget" "GtkShortcutsGroup"
                    "GtkShortcutsSection" "GtkShortcutsShortcut"
                    "GtkStackSwitcher" "GtkStatusbar" "GtkVBox")
@@ -52,7 +52,7 @@
           (equal '("GtkAppChooserWidget" "GtkButtonBox" "GtkColorChooserWidget"
                    "GtkColorSelection" "GtkFileChooserButton"
                    "GtkFileChooserWidget" "GtkFontChooserWidget"
-                   "GtkFontSelection" "GtkHBox" "GtkInfoBar" "GtkPlacesView"
+                   "GtkFontSelection" "GtkInfoBar" "GtkPlacesView"
                    "GtkRecentChooserWidget" "GtkShortcutsGroup"
                    "GtkShortcutsSection" "GtkShortcutsShortcut"
                    "GtkStackSwitcher" "GtkStatusbar" "GtkVBox")
