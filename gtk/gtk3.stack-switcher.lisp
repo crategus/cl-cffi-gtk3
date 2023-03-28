@@ -1,29 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.stack-switcher.lisp
+;;; gtk3.stack-switcher.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2021 Dieter Kaiser
+;;; Copyright (C) 2019 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkStackSwitcher
@@ -42,8 +43,8 @@
 ;;;
 ;;; Properties
 ;;;
-;;;     gint      icon-size  Read / Write
-;;;     GtkStack  stack      Read / Write / Construct
+;;;     icon-size
+;;;     stack
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -82,7 +83,7 @@
 
 #+liber-documentation
 (setf (documentation 'stack-switcher 'type)
- "@version{#2023-3-16}
+ "@version{#2023-3-27}
   @begin{short}
     The @sym{gtk:stack-switcher} widget acts as a controller for a
     @class{gtk:stack} widget.
@@ -115,7 +116,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- stack-switcher-icon-size -------------------------------------------
+;;; --- stack-switcher-icon-size -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "icon-size" 'stack-switcher) t)
@@ -129,7 +130,7 @@
 (setf (liber:alias-for-function 'stack-switcher-icon-size)
       "Accessor"
       (documentation 'stack-switcher-icon-size 'function)
- "@version{#2023-3-13}
+ "@version{#2023-3-27}
   @syntax[]{(gtk:stack-switcher-icon-size object) => size}
   @syntax[]{(setf (gtk:stack-switcher-icon-size object) size)}
   @argument[object]{a @class{gtk:stack-switcher} widget}
@@ -142,7 +143,7 @@
   the image displayed when a stack switcher is displaying icons.
   @see-class{gtk:stack-switcher}")
 
-;;; --- stack-switcher-stack -----------------------------------------------
+;;; --- stack-switcher-stack ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "stack" 'stack-switcher) t)
@@ -153,7 +154,7 @@
 (setf (liber:alias-for-function 'stack-switcher-stack)
       "Accessor"
       (documentation 'stack-switcher-stack 'function)
- "@version{#2021-12-8}
+ "@version{#2023-3-27}
   @syntax[]{(gtk:stack-switcher-stack object) => stack}
   @syntax[]{(setf (gtk:stack-switcher-stack object) stack)}
   @argument[object]{a @class{gtk:stack-switcher} widget}
@@ -162,10 +163,8 @@
     Accessor of the @slot[gtk:stack-switcher]{stack} slot of the
     @class{gtk:stack-switcher} class.
   @end{short}
-
-  The @sym{gtk:stack-switcher-stack} slot access function retrieves the stack.
-  The @sym{(setf gtk:stack-switcher-stack)} slot access function sets the stack
-  to control.
+  The @sym{gtk:stack-switcher-stack} function retrieves the stack. The 
+  @sym{(setf gtk:stack-switcher-stack)} function sets the stack to control.
   @see-class{gtk:stack-switcher}
   @see-class{gtk:stack}")
 
@@ -177,7 +176,7 @@
 
 (defun stack-switcher-new ()
  #+liber-documentation
- "@version{#2021-12-8}
+ "@version{#2023-3-27}
   @return{The new @class{gtk:stack-switcher} widget.}
   @short{Creates a new stack switcher.}
   @see-class{gtk:stack-switcher}"
@@ -185,4 +184,4 @@
 
 (export 'stack-switcher-new)
 
-;;; --- End of file gtk.stack-switcher.lisp ------------------------------------
+;;; --- End of file gtk3.stack-switcher.lisp -----------------------------------

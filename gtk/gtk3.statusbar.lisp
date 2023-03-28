@@ -1,30 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.statusbar.lisp
+;;; gtk3.statusbar.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkStatusbar
@@ -47,12 +47,12 @@
 ;;;
 ;;; Style Properties
 ;;;
-;;;     GtkShadowType  shadow-type    Read
+;;;     shadow-type
 ;;;
 ;;; Signals
 ;;;
-;;;     void  text-popped    Run Last
-;;;     void  text-pushed    Run Last
+;;;     text-popped
+;;;     text-pushed
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -85,7 +85,7 @@
  nil)
 
 (setf (documentation 'statusbar 'type)
- "@version{#2021-12-22}
+ "@version{#2023-3-27}
   @begin{short}
     A @sym{gtk:statusbar} widget is usually placed along the bottom of the
     main @class{gtk:window} widget of the application. It may provide a regular
@@ -94,7 +94,7 @@
     status changes, when an upload is complete in an FTP client, for example.
   @end{short}
 
-  @image[statusbar]{}
+  @image[statusbar]{Figure: GtkStatusbar}
 
   Statusbars in GTK maintain a stack of messages. The message at the top of
   the stack of the statusbar is the one that will currently be displayed.
@@ -140,7 +140,7 @@
   @begin[Signal Details]{dictionary}
     @subheading{The \"text-popped\" signal}
       @begin{pre}
- lambda (statusbar context text)    :run-last
+lambda (statusbar context text)    :run-last
       @end{pre}
       Is emitted whenever a new message is popped off the stack of the status
       bar.
@@ -153,7 +153,7 @@
       @end{table}
     @subheading{The \"text-pushed\" signal}
       @begin{pre}
- lambda (statusbar context text)    :run-last
+lambda (statusbar context text)    :run-last
       @end{pre}
       Is emitted whenever a new message gets pushed onto the stack of the status
       bar.
@@ -164,7 +164,8 @@
           relevant message/statusbar.}
         @entry[text]{A string with the message that was pushed.}
       @end{table}
-  @end{dictionary}")
+  @end{dictionary}
+  @see-constructor{gtk:statusbar}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_statusbar_new ()
@@ -174,7 +175,7 @@
 
 (defun statusbar-new ()
  #+liber-documentation
- "@version{#2021-12-22}
+ "@version{#2023-3-27}
   @return{The new @class{gtk:statusbar} widget.}
   @short{Creates a new statusbar ready for messages.}
   @see-class{gtk:statusbar}"
@@ -192,7 +193,7 @@
 
 (defun statusbar-context-id (statusbar context)
  #+liber-documentation
- "@version{#2021-12-22}
+ "@version{#2023-3-27}
   @argument[statusbar]{a @class{gtk:statusbar} widget}
   @argument[context]{a string with the textual description of what context the
     new message is being used in}
@@ -219,7 +220,7 @@
 
 (defun statusbar-push (statusbar context text)
  #+liber-documentation
- "@version{#2021-12-22}
+ "@version{#2023-3-27}
   @argument[statusbar]{a @class{gtk:statusbar} widget}
   @argument[context]{an unsigned integer with the context ID of the message, as
     returned by the @fun{gtk:statusbar-context-id} function}
@@ -246,20 +247,19 @@
 
 (defun statusbar-pop (statusbar context)
  #+liber-documentation
- "@version{#2021-12-22}
+ "@version{#2023-3-27}
   @argument[statusbar]{a @class{gtk:statusbar} widget}
   @argument[context]{an unsigned integer with a context identifier}
   @begin{short}
     Removes the first message in the stack of the statusbar with the given
     context ID.
   @end{short}
-
   Note that this may not change the displayed message, if the message at the
   top of the stack has a different context ID.
   @see-class{gtk:statusbar}
   @see-function{gtk:statusbar-push}"
   (%statusbar-pop statusbar
-                      (statusbar-context-id statusbar context)))
+                  (statusbar-context-id statusbar context)))
 
 (export 'statusbar-pop)
 
@@ -274,7 +274,7 @@
 
 (defun statusbar-remove (statusbar context message)
  #+liber-documentation
- "@version{#2021-12-22}
+ "@version{#2023-3-27}
   @argument[statusbar]{a @class{gtk:statusbar} widget}
   @argument[context]{an unsigned integer with a context identifier}
   @argument[message]{an unsigned integer with a message identifier, as returned
@@ -286,8 +286,8 @@
   @see-class{gtk:statusbar}
   @see-function{gtk:statusbar-push}"
   (%statusbar-remove statusbar
-                         (statusbar-context-id statusbar context)
-                         message))
+                     (statusbar-context-id statusbar context)
+                     message))
 
 (export 'statusbar-remove)
 
@@ -301,7 +301,7 @@
 
 (defun statusbar-remove-all (statusbar context)
  #+liber-documentation
- "@version{#2021-12-22}
+ "@version{#2023-3-27}
   @argument[statusbar]{a @class{gtk:statusbar} widget}
   @argument[context]{an integer with a context identifier}
   @begin{short}
@@ -310,7 +310,7 @@
   @end{short}
   @see-class{gtk:statusbar}"
   (%statusbar-remove-all statusbar
-                             (statusbar-context-id statusbar context)))
+                         (statusbar-context-id statusbar context)))
 
 (export 'statusbar-remove-all)
 
@@ -321,7 +321,7 @@
 (defcfun ("gtk_statusbar_get_message_area" statusbar-message-area)
     (g:object widget)
  #+liber-documentation
- "@version{#2021-12-22}
+ "@version{#2023-3-27}
   @argument[statusbar]{a @class{gtk:statusbar} widget.}
   @return{A @class{gtk:box} widget.}
   @short{Retrieves the box containing the label widget.}
@@ -330,4 +330,4 @@
 
 (export 'statusbar-message-area)
 
-;;; --- End of file gtk.statusbar.lisp -----------------------------------------
+;;; --- End of file gtk3.statusbar.lisp ----------------------------------------

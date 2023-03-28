@@ -1,29 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.switch.lisp
+;;; gtk3.switch.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkSwitch
@@ -44,18 +45,18 @@
 ;;;
 ;;; Properties
 ;;;
-;;;     gboolean    active           Read / Write
-;;;     gboolean    state            Read / Write
+;;;     active
+;;;     state
 ;;;
 ;;; Style Properties
 ;;;
-;;;         gint    slider-height    Read
-;;;         gint    slider-width     Read
+;;;     slider-height
+;;;     slider-width
 ;;;
 ;;; Signals
 ;;;
-;;;         void    activate         Action
-;;;     gboolean    state-set        Run Last
+;;;     activate
+;;;     state-set
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -93,12 +94,12 @@
 
 #+liber-documentation
 (setf (documentation 'switch 'type)
- "@version{#2021-12-23}
+ "@version{#2023-3-27}
   @begin{short}
     The @sym{gtk:switch} widget is a widget that has two states: on or off.
   @end{short}
 
-  @image[switch]{}
+  @image[switch]{Figure: GtkSwitch}
 
   The user can control which state should be active by clicking the switch,
   or by dragging the handle.
@@ -167,13 +168,14 @@
         @entry[Returns]{@em{True} to stop the signal emission.}
       @end{table}
   @end{dictionary}
+  @see-constructor{gtk:switch-new}
   @see-slot{gtk:switch-active}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- switch-active ------------------------------------------------------
+;;; --- switch-active ----------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "active" 'switch) t)
@@ -185,7 +187,7 @@
 (setf (liber:alias-for-function 'switch-active)
       "Accessor"
       (documentation 'switch-active 'function)
- "@version{#2021-12-23}
+ "@version{#2023-3-27}
   @syntax[]{(gtk:switch-active object) => is-active)}
   @syntax[]{(setf (gtk:switch-active object) is-active)}
   @argument[object]{a @class{gtk:switch} widget}
@@ -195,13 +197,12 @@
     Accessor of the @slot[gtk:switch]{active} slot of the @class{gtk:switch}
     class.
   @end{short}
-
-  The @sym{gtk:switch-active} slot access function gets whether the switch is
-  in its \"on\" or \"off\" state. The @sym{(setf gtk:switch-active)} slot
-  access function changes the state of the switch to the desired one.
+  The @sym{gtk:switch-active} function gets whether the switch is in its \"on\"
+  or \"off\" state. The @sym{(setf gtk:switch-active)} function changes the
+  state of the switch to the desired one.
   @see-class{gtk:switch}")
 
-;;; --- switch-state -------------------------------------------------------
+;;; --- switch-state -----------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "state" 'switch) t)
@@ -214,7 +215,7 @@
 (setf (liber:alias-for-function 'switch-state)
       "Accessor"
       (documentation 'switch-state 'function)
- "@version{#2021-12-23}
+ "@version{#2023-3-27}
   @syntax[]{(gtk:switch-state object) => state)}
   @syntax[]{(setf (gtk:switch-state object) state)}
   @argument[object]{a @class{gtk:switch} widget}
@@ -223,10 +224,9 @@
     Accessor of the @slot[gtk:switch]{state} slot of the @class{gtk:switch}
     class.
   @end{short}
-
-  The @sym{gtk:switch-active} slot access function gets the underlying state of
-  the switch. The @sym{(setf gtk:switch-active)} slot access function sets the
-  underlying state of the switch.
+  The @sym{gtk:switch-active} function gets the underlying state of the switch.
+  The @sym{(setf gtk:switch-active)} function sets the underlying state of the
+  switch.
 
   Normally, this is the same as the @slot[gtk:switch]{active} property, unless
   the switch is set up for delayed state changes. This function is typically
@@ -243,7 +243,7 @@
 
 (defun switch-new ()
  #+liber-documentation
- "@version{#2021-12-23}
+ "@version{#2023-3-27}
   @return{The newly created @class{gtk:switch} widget.}
   @short{Creates a new switch.}
   @see-class{gtk:switch}"
@@ -251,4 +251,4 @@
 
 (export 'switch-new)
 
-;;; --- End of file gtk.switch.lisp --------------------------------------------
+;;; --- End of file gtk3.switch.lisp -------------------------------------------

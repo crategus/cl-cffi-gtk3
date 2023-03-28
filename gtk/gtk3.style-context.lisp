@@ -4,26 +4,27 @@
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
 ;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkStyleContext
@@ -173,7 +174,7 @@
 (setf (liber:alias-for-symbol 'junction-sides)
       "GFlags"
       (liber:symbol-documentation 'junction-sides)
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @begin{short}
     Describes how a rendered element connects to adjacent elements.
   @end{short}
@@ -219,7 +220,7 @@
 (setf (liber:alias-for-symbol 'style-context-print-flags)
       "GFlags"
       (liber:symbol-documentation 'style-context-print-flags)
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @begin{short}
     Flags that modify the behavior of the @fun{gtk:style-context-to-string}
     function.
@@ -264,7 +265,7 @@
 (setf (liber:alias-for-symbol 'border-style)
       "GEnum"
       (liber:symbol-documentation 'border-style)
- "@version{#2021-7-6}
+ "@version{#2023-3-27}
   @begin{short}
     Describes how the border of a UI element should be rendered.
   @end{short}
@@ -313,7 +314,7 @@
 (setf (liber:alias-for-class 'border)
       "GBoxed"
       (documentation 'border 'type)
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @begin{short}
     A structure that specifies a border around a rectangular area that can be
     of different width on each side.
@@ -333,6 +334,7 @@
     @entry[top]{The width of the top border.}
     @entry[bottom]{The width of the bottom border.}
   @end{table}
+  @see-constructor{gtk:border-new}
   @see-slot{gtk:border-left}
   @see-slot{gtk:border-right}
   @see-slot{gtk:border-top}
@@ -346,7 +348,7 @@
 
 (defun border-new (&key (left 0) (right 0) (top 0) (bottom 0))
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[left]{an integer with the width of the left border}
   @argument[right]{an integer with the width of the right border}
   @argument[top]{an integer with the width of the top border}
@@ -368,7 +370,7 @@
 
 (defun border-copy (border)
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[border]{a @class{gtk:border} instance}
   @return{A copy of @arg{border}.}
   @short{Copies a @class{gtk:border} instance.}
@@ -381,13 +383,13 @@
 ;;; Accessors for GtkBorder
 ;;; ----------------------------------------------------------------------------
 
-;;; --- border-left --------------------------------------------------------
+;;; --- border-left ------------------------------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'border-left)
       "Accessor"
       (documentation 'border-left 'function)
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @syntax[]{(gtk:border-left instance) => left}
   @syntax[]{(setf gtk:border-left instance) left)}
   @argument[instance]{a @class{gtk:border} instance}
@@ -399,13 +401,13 @@
 
 (export 'border-left)
 
-;;; --- border-right -------------------------------------------------------
+;;; --- border-right -----------------------------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'border-right)
       "Accessor"
       (documentation 'border-right 'function)
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @syntax[]{(gtk:border-right instance) => right}
   @syntax[]{(setf gtk:border-right instance) right)}
   @argument[instance]{a @class{gtk:border} instance}
@@ -417,13 +419,13 @@
 
 (export 'border-right)
 
-;;; --- border-top ---------------------------------------------------------
+;;; --- border-top -------------------------------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'border-top)
       "Accessor"
       (documentation 'border-top 'function)
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @syntax[]{(gtk:border-top instance) => top}
   @syntax[]{(setf gtk:border-top instance) top)}
   @argument[instance]{a @class{gtk:border} instance}
@@ -435,13 +437,13 @@
 
 (export 'border-top)
 
-;;; --- border-bottom ------------------------------------------------------
+;;; --- border-bottom ----------------------------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'border-bottom)
       "Accessor"
       (documentation 'border-bottom 'function)
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @syntax[]{(gtk:border-top instance) => bottom}
   @syntax[]{(setf gtk:border-top instance) bottom)}
   @argument[instance]{a @class{gtk:border} instance}
@@ -477,7 +479,7 @@
 
 #+liber-documentation
 (setf (documentation 'style-context 'type)
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @begin{short}
     The @sym{gtk:style-context} object stores styling information affecting a
     widget defined by a @class{gtk:widget-path} instance.
@@ -533,15 +535,16 @@
 lambda (context)    :run-first
       @end{pre}
       The signal is emitted when there is a change in the style context. For a
-      style context returned by the @fun{gtk:widget-style-context} function, the
-      \"style-updated\" signal of the @class{gtk:widget} class might be more
-      convenient to use. The signal is useful when using the theming layer
+      style context returned by the @fun{gtk:widget-style-context} function,
+      the \"style-updated\" signal of the @class{gtk:widget} class might be
+      more convenient to use. The signal is useful when using the theming layer
       standalone.
       @begin[code]{table}
         @entry[context]{The @sym{gtk:style-context} object which received the
           signal.}
       @end{table}
   @end{dictionary}
+  @see-constructor{gtk:style-context-new}
   @see-slot{gtk:style-context-direction}
   @see-slot{gtk:style-context-paint-clock}
   @see-slot{gtk:style-context-parent}
@@ -554,7 +557,7 @@ lambda (context)    :run-first
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- style-context-direction --------------------------------------------
+;;; --- style-context-direction ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "direction" 'style-context) t)
@@ -567,7 +570,7 @@ lambda (context)    :run-first
 (setf (liber:alias-for-function 'style-context-direction)
       "Accessor"
       (documentation 'style-context-direction 'function)
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @syntax[]{(gtk:style-context-direction object) => direction}
   @syntax[]{(setf (gtk:style-context-direction object) direction)}
   @argument[object]{a @class{gtk:style-context} object}
@@ -576,26 +579,25 @@ lambda (context)    :run-first
     Accessor of the @slot[gtk:style-context]{direction} slot of the
     @class{gtk:style-context} class.
   @end{short}
-
-  The @sym{gtk:style-context-direction} slot access function returns the widget
-  direction used for rendering. The @sym{(setf gtk:style-context-direction)}
-  slot access function sets the reading direction.
+  The @sym{gtk:style-context-direction} function returns the widget direction
+  used for rendering. The @sym{(setf gtk:style-context-direction)} function
+  sets the reading direction.
 
   If you are using a style context returned from the
   @fun{gtk:widget-style-context} function, you do not need to call this
   yourself.
   @begin[Warning]{dictionary}
-    The @sym{gtk:style-context-direction} slot access function has been
-    deprecated since version 3.8 and should not be used in newly written code.
-    Use the @fun{gtk:style-context-state} function and check for the
-    @code{:dir-ltr} and @code{:dir-rtl} values instead.
+    The @sym{gtk:style-context-direction} function has been deprecated since
+    version 3.8 and should not be used in newly written code. Use the
+    @fun{gtk:style-context-state} function and check for the @code{:dir-ltr}
+    and @code{:dir-rtl} values instead.
   @end{dictionary}
   @see-class{gtk:style-context}
   @see-symbol{gtk:text-direction}
   @see-function{gtk:style-context-state}
   @see-function{gtk:widget-style-context}")
 
-;;; --- style-context-paint-clock ------------------------------------------
+;;; --- style-context-paint-clock ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "paint-clock" 'style-context) t)
@@ -607,7 +609,7 @@ lambda (context)    :run-first
 (setf (liber:alias-for-function 'style-context-paint-clock)
       "Accessor"
       (documentation 'style-context-paint-clock 'function)
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @syntax[]{(gtk:style-context-paint-clock object) => clock}
   @syntax[]{(setf (gtk:style-context-paint-clock object) clock)}
   @argument[object]{a @class{gtk:style-context} object}
@@ -616,12 +618,11 @@ lambda (context)    :run-first
     Accessor of the @slot[gtk:style-context]{paint-clock} slot of the
     @class{gtk:style-context} class.
   @end{short}
-
   The associated frame clock of the style context.
   @see-class{gtk:style-context}
   @see-class{gdk:frame-clock}")
 
-;;; --- style-context-parent -----------------------------------------------
+;;; --- style-context-parent ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "parent" 'style-context) t)
@@ -633,7 +634,7 @@ lambda (context)    :run-first
 (setf (liber:alias-for-function 'style-context-parent)
       "Accessor"
       (documentation 'style-context-parent 'function)
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @syntax[]{(gtk:style-context-parent object) => parent}
   @syntax[]{(setf (gtk:style-context-parent object) parent)}
   @argument[object]{a @class{gtk:style-context} object}
@@ -642,10 +643,9 @@ lambda (context)    :run-first
     Accessor of the @slot[gtk:style-context]{parent} slot of the
     @class{gtk:style-context} class.
   @end{short}
-
-  The @sym{gtk:style-context-parent} slot access function gets the parent style
-  context. The @sym{(setf gtk:style-context-parent)} slot access function sets
-  the parent style context.
+  The @sym{gtk:style-context-parent} function gets the parent style context.
+  The @sym{(setf gtk:style-context-parent)} function sets the parent style
+  context.
 
   The parent style context is used to implement inheritance of properties. If
   you are using a style context returned from the @fun{gtk:widget-style-context}
@@ -653,7 +653,7 @@ lambda (context)    :run-first
   @see-class{gtk:style-context}
   @see-function{gtk:widget-style-context}")
 
-;;; --- style-context-screen -----------------------------------------------
+;;; --- style-context-screen ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "screen" 'style-context) t)
@@ -664,7 +664,7 @@ lambda (context)    :run-first
 (setf (liber:alias-for-function 'style-context-screen)
       "Accessor"
       (documentation 'style-context-screen 'function)
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @syntax[]{(gtk:style-context-screen object) => screen}
   @syntax[]{(setf (gtk:style-context-screen object) screen)}
   @argument[object]{a @class{gtk:style-context} object}
@@ -673,10 +673,9 @@ lambda (context)    :run-first
     Accessor of the @slot[gtk:style-context]{screen} slot of the
     @class{gtk:style-context} class.
   @end{short}
-
-  The @sym{gtk:style-context-screen} slot access function returns the screen to
-  which the style context is attached. The @sym{(setf gtk:style-context-screen)}
-  slot access function attaches the style context to the given screen.
+  The @sym{gtk:style-context-screen} function returns the screen to which the
+  style context is attached. The @sym{(setf gtk:style-context-screen)} function
+  attaches the style context to the given screen.
 
   The screen is used to add style information from 'global' style providers,
   such as the @class{gtk:settings} object of the screen.
@@ -695,7 +694,7 @@ lambda (context)    :run-first
 
 (defun style-context-new ()
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @return{A newly created @class{gtk:style-context} object.}
   @begin{short}
     Creates a standalone style context object.
@@ -721,7 +720,7 @@ lambda (context)    :run-first
 
 (defcfun ("gtk_style_context_add_provider" style-context-add-provider) :void
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[provider]{a @class{gtk:style-provider} object}
   @argument[priority]{an unsigned integer with the priority of the style
@@ -755,7 +754,7 @@ lambda (context)    :run-first
 (defcfun ("gtk_style_context_add_provider_for_screen"
            style-context-add-provider-for-screen) :void
  #+liber-documentation
- "@version{#2021-11-30}
+ "@version{#2023-3-27}
   @argument[screen]{a @class{gdk:screen} object}
   @argument[provider]{a @class{gtk:style-provider} object}
   @argument[priority]{an unsigned integer with the priority of the style
@@ -764,7 +763,6 @@ lambda (context)    :run-first
     Adds a global style provider to the screen, which will be used in style
     construction for all style contexts under the screen.
   @end{short}
-
   The lower the priority of the style provider is, the earlier it will be used
   in the style construction. Typically this will be in the range between the
   @var{+gtk-priority-fallback+} and @var{+gtk-priority-user+} priorities.
@@ -815,15 +813,15 @@ lambda (context)    :run-first
 
 (defun (setf style-context-junction-sides) (sides context)
   (cffi:foreign-funcall "gtk_style_context_set_junction_sides"
-                   (g:object style-context) context
-                   junction-sides sides
-                   :void)
+                        (g:object style-context) context
+                        junction-sides sides
+                        :void)
   sides)
 
 (defcfun ("gtk_style_context_get_junction_sides"
            style-context-junction-sides) junction-sides
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @syntax[]{(gtk:style-context-junction-sides context) => sides}
   @syntax[]{(setf (gtk:style-context-junction-sides context) sides)}
   @argument[context]{a @class{gtk:style-context} object}
@@ -831,11 +829,10 @@ lambda (context)    :run-first
   @begin{short}
     Accessor of the junction sides of a style context.
   @end{short}
-
   The @sym{gtk:style-context-junction-sides} function returns the sides where
   rendered elements, mostly through the @fun{gtk:render-frame} function, will
   visually connect with other visual elements. The
-  @sym{(setf gtk:style-context-function-sides)} function sets the sides where
+  @sym{(setf gtk:style-context-junction-sides)} function sets the sides where
   rendered elements will visually connect with other visual elements.
 
   This is merely a hint that may or may not be honored by theming engines.
@@ -857,15 +854,14 @@ lambda (context)    :run-first
 
 (defun (setf style-context-path) (path context)
   (cffi:foreign-funcall "gtk_style_context_set_path"
-                   (g:object style-context) context
-                   (g:boxed widget-path) path
-                   :void)
+                        (g:object style-context) context
+                        (g:boxed widget-path) path
+                        :void)
   path)
 
-(defcfun ("gtk_style_context_get_path" style-context-path)
-    (g:boxed widget-path)
+(defcfun ("gtk_style_context_get_path" style-context-path) (g:boxed widget-path)
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @syntax[]{(gtk:style-context-path context) => path}
   @syntax[]{(setf (gtk:style-context-path context) path)}
   @argument[context]{a @class{gtk:style-context} object}
@@ -873,7 +869,6 @@ lambda (context)    :run-first
   @begin{short}
     Accessor of the widget path of the style context.
   @end{short}
-
   The @sym{gtk:style-context-path} function returns the widget path used for
   style matching. The @sym{(setf gtk:style-context-path)} function sets the
   widget path. As a consequence, the style will be regenerated to match the new
@@ -901,7 +896,7 @@ lambda (context)    :run-first
 
 (defun style-context-property (context property state)
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[property]{a string with a style property name}
   @argument[state]{a value of the @symbol{gtk:state-flags} flags to retrieve
@@ -944,15 +939,15 @@ lambda (context)    :run-first
 
 (defun (setf style-context-frame-clock) (frame-clock context)
   (cffi:foreign-funcall "gtk_style_context_set_frame_clock"
-                   (g:object style-context) context
-                   (g:object gdk:frame-clock) frame-clock
-                   :void)
+                        (g:object style-context) context
+                        (g:object gdk:frame-clock) frame-clock
+                        :void)
   frame-clock)
 
 (defcfun ("gtk_style_context_get_frame_clock" style-context-frame-clock)
     (g:object gdk:frame-clock)
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @syntax[]{(gtk:style-context-frame-clock context) => clock}
   @syntax[]{(setf (gtk:style-context-frame-clock context) clock)}
   @argument[context]{a @class{gtk:style-context} object}
@@ -960,7 +955,6 @@ lambda (context)    :run-first
   @begin{short}
     Accessor of the @class{gdk:frame-clock} object of the style context.
   @end{short}
-
   The @sym{gtk:style-context-frame-clock} function returns the frame clock to
   which the style context is attached. The
   @sym{(setf gtk:style-context-frame-clock)} function attaches the style context
@@ -971,7 +965,7 @@ lambda (context)    :run-first
   do not need to call this yourself.
   @begin[Note]{dictionary}
     This function is equivalent to the @fun{gtk:style-context-paint-clock}
-    slot access function.
+    function.
   @end{dictionary}
   @see-class{gtk:style-context}
   @see-class{gdk:frame-clock}
@@ -988,14 +982,14 @@ lambda (context)    :run-first
 
 (defun (setf style-context-state) (state context)
   (cffi:foreign-funcall "gtk_style_context_set_state"
-                   (g:object style-context) context
-                   state-flags state
-                   :void)
+                        (g:object style-context) context
+                        state-flags state
+                        :void)
   state)
 
 (defcfun ("gtk_style_context_get_state" style-context-state) state-flags
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @syntax[]{(gtk:style-context-state context) => state}
   @syntax[]{(setf (gtk:style-context-state context) state)}
   @argument[context]{a @class{gtk:style-context} object}
@@ -1003,7 +997,6 @@ lambda (context)    :run-first
   @begin{short}
     Accessor of the state used when rendering.
   @end{short}
-
   The @sym{gtk:style-context-state} function returns the state to be used when
   rendering with any of the @sym{gtk:render-*} functions. The
   @sym{(setf gtk:style-context-state)} function sets the state.
@@ -1041,15 +1034,15 @@ lambda (context)    :run-first
 ;; function must be called with the correct GType of the value.
 ;; Consider to change the implementation.
 
-(defcfun ("gtk_style_context_get_style_property"
-          %style-context-style-property) :void
+(defcfun ("gtk_style_context_get_style_property" %style-context-style-property)
+     :void
   (context (g:object style-context))
   (property :string)
   (value (:pointer (:struct g:value))))
 
 (defun style-context-style-property (context widget property)
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[widget]{a @class{gtk:widget} object the style property is looked up
     for}
@@ -1129,7 +1122,7 @@ lambda (context)    :run-first
 (defcfun ("gtk_style_context_get_section" style-context-section)
     (g:boxed css-section)
  #+liber-documentation
- "@version{2023-1-24}
+ "@version{2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[property]{a string with the name of the style property}
   @return{Returns the @class{gtk:css-section} instance where the property was
@@ -1167,7 +1160,7 @@ lambda (context)    :run-first
 
 (defun style-context-color (context state)
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[state]{a value of the @symbol{gtk:state-flags} flags to retrieve
     the color for}
@@ -1207,7 +1200,7 @@ lambda (context)    :run-first
 
 (defun style-context-background-color (context state)
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[state]{a value of the @symbol{gtk:state-flags} flags to retrieve
     the color for}
@@ -1215,7 +1208,6 @@ lambda (context)    :run-first
   @begin{short}
     Gets the background color for a given state.
   @end{short}
-
   This function is far less useful than it seems, and it should not be used in
   newly written code. CSS has no concept of \"background color\", as a
   background can be an image, or a gradient, or any other pattern including
@@ -1251,7 +1243,7 @@ lambda (context)    :run-first
 
 (defun style-context-border-color (context state)
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[state]{a value of the @symbol{gtk:state-flags} flags to retrieve
     the color for}
@@ -1285,7 +1277,7 @@ lambda (context)    :run-first
 
 (defun style-context-border (context state)
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[state]{a value of the @symbol{gtk:state-flags} flags to retrieve
     the border for}
@@ -1313,7 +1305,7 @@ lambda (context)    :run-first
 
 (defun style-context-padding (context state)
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[state]{a value of the @symbol{gtk:state-flags} flags to retrieve
     the padding for}
@@ -1341,7 +1333,7 @@ lambda (context)    :run-first
 
 (defun style-context-margin (context state)
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[state]{a value of the @symbol{gtk:state-flags} flags to retrieve
     the margin for}
@@ -1365,7 +1357,7 @@ lambda (context)    :run-first
 (defcfun ("gtk_style_context_get_font" style-context-font)
     (g:boxed pango:font-description)
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[state]{a value of the @symbol{gtk:state-flags} flags to retrieve
     the font for}
@@ -1395,7 +1387,7 @@ lambda (context)    :run-first
 
 (defcfun ("gtk_style_context_invalidate" style-context-invalidate) :void
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @begin{short}
     Invalidates style context information, so it will be reconstructed again.
@@ -1455,15 +1447,14 @@ lambda (context)    :run-first
 ;;; gtk_style_context_lookup_color ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_context_lookup_color" %style-context-lookup-color)
-    :boolean
+(defcfun ("gtk_style_context_lookup_color" %style-context-lookup-color) :boolean
   (context (g:object style-context))
   (name :string)
   (color (g:boxed gdk:rgba)))
 
 (defun style-context-lookup-color (context name)
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[name]{a string with a color name to lookup}
   @return{The looked up @class{gdk:rgba} color, or @code{nil}.}
@@ -1485,7 +1476,7 @@ lambda (context)    :run-first
 (defcfun ("gtk_style_context_lookup_icon_set" style-context-lookup-icon-set)
     (g:boxed icon-set)
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[stock]{a string with an icon name}
   @return{The looked up @class{gtk:icon-set} instance, or @code{nil}.}
@@ -1514,7 +1505,7 @@ lambda (context)    :run-first
 (defcfun ("gtk_style_context_notify_state_change"
            style-context-notify-state-change) :void
  #+liber-documentation
- "@version{#2021-7-6}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[window]{a @class{gdk:window} object}
   @argument[region-id]{a pointer to the animatable region to notify on, or
@@ -1537,7 +1528,7 @@ lambda (context)    :run-first
   If @arg{region-id} is @code{NULL}, all rendered elements using the style
   context will be affected by this state transition.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:style-context-notify-state-change} has been deprecated
+    The @sym{gtk:style-context-notify-state-change} function has been deprecated
     since version 3.6 and should not be used in newly written code. This
     function does nothing.
   @end{dictionary}
@@ -1557,13 +1548,13 @@ lambda (context)    :run-first
 (defcfun ("gtk_style_context_pop_animatable_region"
            style-context-pop-animatable-region) :void
  #+liber-documentation
- "@version{#2021-7-6}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @begin{short}
     Pops an animatable region from the style context.
   @end{short}
   @begin[Warning]{dictionary}
-    The function @sym{gtk:style-context-pop-animatable-region} has been
+    The @sym{gtk:style-context-pop-animatable-region} function has been
     deprecated since version 3.6 and should not be used in newly written code.
     This function does nothing.
   @end{dictionary}
@@ -1577,7 +1568,7 @@ lambda (context)    :run-first
 (defcfun ("gtk_style_context_push_animatable_region"
            style-context-push-animatable-region) :void
  #+liber-documentation
- "@version{#2021-7-6}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[region-id]{a pointer which is an unique identifier for the
     animatable region}
@@ -1586,14 +1577,14 @@ lambda (context)    :run-first
     this call and the following a @fun{gtk:style-context-pop-animatable-region}
     call will potentially show transition animations for this region.
   @end{short}
-  If the function @fun{gtk:style-context-notify-state-change} is called for a
+  If the @fun{gtk:style-context-notify-state-change} function is called for a
   given state, and the current theme/style defines transition animations for
   state changes.
 
   The @arg{region-id} used must be unique in the style context so the theming
   engine can uniquely identify rendered elements subject to a state transition.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:style-context-push-animatable-region} has been
+    The @sym{gtk:style-context-push-animatable-region} function has been
     deprecated since version 3.6 and should not be used in newly written code.
     This function does nothing.
   @end{dictionary}
@@ -1674,7 +1665,7 @@ lambda (context)    :run-first
 (defcfun ("gtk_style_context_remove_provider" style-context-remove-provider)
     :void
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[provider]{a @class{gtk:style-provider} object}
   @begin{short}
@@ -1696,7 +1687,7 @@ lambda (context)    :run-first
 (defcfun ("gtk_style_context_remove_provider_for_screen"
            style-context-remove-provider-for-screen) :void
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[screen]{a @class{gdk:screen} object}
   @argument[provider]{a @class{gtk:style-provider} object}
   @begin{short}
@@ -1715,10 +1706,9 @@ lambda (context)    :run-first
 ;;; gtk_style_context_reset_widgets ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_context_reset_widgets" style-context-reset-widgets)
-    :void
+(defcfun ("gtk_style_context_reset_widgets" style-context-reset-widgets) :void
  #+liber-documentation
- "@version{#2021-11-30}
+ "@version{#2023-3-27}
   @argument[screen]{a @class{gdk:screen} object}
   @begin{short}
     This function recomputes the styles for all widgets under a particular
@@ -1740,10 +1730,9 @@ lambda (context)    :run-first
 ;;; gtk_style_context_set_background ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_context_set_background" style-context-set-background)
-    :void
+(defcfun ("gtk_style_context_set_background" style-context-set-background) :void
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}
@@ -1771,7 +1760,7 @@ lambda (context)    :run-first
 
 (defcfun ("gtk_style_context_restore" style-context-restore) :void
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @begin{short}
     Restores the style context state to a previous stage.
@@ -1789,7 +1778,7 @@ lambda (context)    :run-first
 
 (defcfun ("gtk_style_context_save" style-context-save) :void
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @begin{short}
     Saves the style context state.
@@ -1813,7 +1802,7 @@ lambda (context)    :run-first
 
 (defcfun ("gtk_style_context_add_class" style-context-add-class) :void
  #+liber-documentation
- "@version{#2021-12-17}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[classname]{a string with a class name to use in styling}
   @begin{short}
@@ -1845,7 +1834,7 @@ GtkEntry.entry { ... @}
 
 (defcfun ("gtk_style_context_remove_class" style-context-remove-class) :void
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[classname]{a string with a class name to remove}
   @begin{short}
@@ -1863,7 +1852,7 @@ GtkEntry.entry { ... @}
 
 (defcfun ("gtk_style_context_has_class" style-context-has-class) :boolean
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[classname]{a string with a class name}
   @return{@em{True} if the style context has @arg{classname} defined.}
@@ -1884,7 +1873,7 @@ GtkEntry.entry { ... @}
 (defcfun ("gtk_style_context_list_classes" style-context-list-classes)
     (g:list-t :string)
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @return{A list of strings with the currently defined classes.}
   @begin{short}
@@ -1901,7 +1890,7 @@ GtkEntry.entry { ... @}
 
 (defcfun ("gtk_style_context_add_region" style-context-add-region) :void
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[regionname]{a string with a region name to use in styling}
   @argument[flags]{a value of the @symbol{gtk:region-flags} flags that apply to
@@ -1945,18 +1934,17 @@ GtkEntry.entry { ... @}
 ;;; gtk_style_context_remove_region ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_context_remove_region" style-context-remove-region)
-    :void
+(defcfun ("gtk_style_context_remove_region" style-context-remove-region) :void
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[regionname]{a string with a region name to unset}
   @begin{short}
     Removes a region from the style context.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:style-context-remove-region} function has been deprecated since
-    version 3.14 and should not be used in newly written code.
+    The @sym{gtk:style-context-remove-region} function has been deprecated
+    since version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:style-context}"
   (context (g:object style-context))
@@ -1975,7 +1963,7 @@ GtkEntry.entry { ... @}
 
 (defun style-context-has-region (context regionname)
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[regionname]{a string with a region name}
   @return{Returns a @symbol{gtk:region-flags} value.}
@@ -2001,7 +1989,7 @@ GtkEntry.entry { ... @}
 (defcfun ("gtk_style_context_list_regions" style-context-list-regions)
     (g:list-t :string)
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @return{Returns a list of strings with the currently defined regions.}
   @begin{short}
@@ -2023,14 +2011,14 @@ GtkEntry.entry { ... @}
 
 (defun (setf style-context-scale) (scale context)
   (cffi:foreign-funcall "gtk_style_context_set_scale"
-                   (g:object style-context) context
-                   :int scale
-                   :void)
+                        (g:object style-context) context
+                        :int scale
+                        :void)
   scale)
 
 (defcfun ("gtk_style_context_get_scale" style-context-scale) :int
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @syntax[]{(gtk:style-context-scale context) => scale}
   @syntax[]{(setf (gtk:style-context-scale context) scale)}
   @argument[context]{a @class{gtk:style-context} object}
@@ -2038,7 +2026,6 @@ GtkEntry.entry { ... @}
   @begin{short}
     Accessor of the scale used for image assets for the style context.
   @end{short}
-
   The @sym{gtk:style-context-scale} function returns the scale used for image
   assets for the style context. The @sym{(setf gtk:style-context-scale)}
   function sets the scale.
@@ -2053,7 +2040,7 @@ GtkEntry.entry { ... @}
 
 (defcfun ("gtk_style_context_to_string" style-context-to-string) :string
  #+liber-documentation
- "@version{#2023-3-13}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[flags]{a value of the @symbol{gtk:style-context-print-flags} flags
     that determine what to print}
@@ -2122,7 +2109,7 @@ GtkEntry.entry { ... @}
 
 (defun render-arrow (context cr angle x y size)
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[cr]{a @symbol{cairo:context-t} context}
   @argument[angle]{a number, coerced to a double float, with an arrow angle
@@ -2139,9 +2126,9 @@ GtkEntry.entry { ... @}
   @see-class{gtk:style-context}
   @see-symbol{cairo:context-t}"
   (%render-arrow context cr (coerce angle 'double-float)
-                                (coerce x 'double-float)
-                                (coerce y 'double-float)
-                                (coerce size 'double-float)))
+                            (coerce x 'double-float)
+                            (coerce y 'double-float)
+                            (coerce size 'double-float)))
 
 (export 'render-arrow)
 
@@ -2159,7 +2146,7 @@ GtkEntry.entry { ... @}
 
 (defun render-background (context cr x y width height)
  #+liber-documentation
- "@version{#2021-11-30}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[cr]{a @symbol{cairo:context-t} context}
   @argument[x]{a number, coerced to a double float, with the x origin of the
@@ -2176,9 +2163,9 @@ GtkEntry.entry { ... @}
   @see-class{gtk:style-context}
   @see-symbol{cairo:context-t}"
   (%render-background context cr (coerce x 'double-float)
-                                     (coerce y 'double-float)
-                                     (coerce width 'double-float)
-                                     (coerce height 'double-float)))
+                                 (coerce y 'double-float)
+                                 (coerce width 'double-float)
+                                 (coerce height 'double-float)))
 
 (export 'render-background)
 
@@ -2196,7 +2183,7 @@ GtkEntry.entry { ... @}
 
 (defun render-background-clip (context x y width height)
  #+liber-documentation
- "@version{#2023-3-13}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[x]{a number, coerced to a double float, with the x origin of the
     render area}
@@ -2237,7 +2224,7 @@ GtkEntry.entry { ... @}
 
 (defun render-check (context cr x y width height)
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[cr]{a @symbol{cairo:context-t} context}
   @argument[x]{a number, coerced to a double float, with the x origin of the
@@ -2250,7 +2237,6 @@ GtkEntry.entry { ... @}
   @begin{short}
     Renders a checkmark as in a @class{gtk:check-button} widget.
   @end{short}
-
   The @code{:active} state of the @symbol{gtk:state-flags} flags determines
   whether the check is on or off, and the @code{:inconsistent} state determines
   whether it should be marked as undefined.
@@ -2259,9 +2245,9 @@ GtkEntry.entry { ... @}
   @see-symbol{cairo:context-t}
   @see-symbol{gtk:state-flags}"
   (%render-check context cr (coerce x 'double-float)
-                                (coerce y 'double-float)
-                                (coerce width 'double-float)
-                                (coerce height 'double-float)))
+                            (coerce y 'double-float)
+                            (coerce width 'double-float)
+                            (coerce height 'double-float)))
 
 (export 'render-check)
 
@@ -2279,7 +2265,7 @@ GtkEntry.entry { ... @}
 
 (defun render-expander (context cr x y width height)
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[cr]{a @symbol{cairo:context-t} context}
   @argument[x]{a number, coerced to a double float, with the x origin of the
@@ -2302,9 +2288,9 @@ GtkEntry.entry { ... @}
   @see-symbol{cairo:context-t}
   @see-symbol{gtk:state-flags}"
   (%render-expander context cr (coerce x 'double-float)
-                                   (coerce y 'double-float)
-                                   (coerce width 'double-float)
-                                   (coerce height 'double-float)))
+                               (coerce y 'double-float)
+                               (coerce width 'double-float)
+                               (coerce height 'double-float)))
 
 (export 'render-expander)
 
@@ -2323,7 +2309,7 @@ GtkEntry.entry { ... @}
 
 (defun render-extension (context cr x y width height side)
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[cr]{a @symbol{cairo:context-t} context}
   @argument[x]{a number, coerced to a double float, with the x origin of the
@@ -2345,10 +2331,10 @@ GtkEntry.entry { ... @}
   @see-symbol{cairo:context-t}
   @see-symbol{gtk:position-type}"
   (%render-extension context cr (coerce x 'double-float)
-                                    (coerce y 'double-float)
-                                    (coerce width 'double-float)
-                                    (coerce height 'double-float)
-                                    side))
+                                (coerce y 'double-float)
+                                (coerce width 'double-float)
+                                (coerce height 'double-float)
+                                side))
 
 (export 'render-extension)
 
@@ -2366,7 +2352,7 @@ GtkEntry.entry { ... @}
 
 (defun render-focus (context cr x y width height)
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[cr]{a @symbol{cairo:context-t} context}
   @argument[x]{a number, coerced to a double float, with a x origin of the
@@ -2383,9 +2369,9 @@ GtkEntry.entry { ... @}
   @see-class{gtk:style-context}
   @see-symbol{cairo:context-t}"
   (%render-focus context cr (coerce x 'double-float)
-                                (coerce y 'double-float)
-                                (coerce width 'double-float)
-                                (coerce height 'double-float)))
+                            (coerce y 'double-float)
+                            (coerce width 'double-float)
+                            (coerce height 'double-float)))
 
 (export 'render-focus)
 
@@ -2403,7 +2389,7 @@ GtkEntry.entry { ... @}
 
 (defun render-frame (context cr x y width height)
  #+liber-documentation
- "@version{#2021-11-30}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[cr]{a @symbol{cairo:context-t} context}
   @argument[x]{a number, coerced to a double float, with the x origin of the
@@ -2421,9 +2407,9 @@ GtkEntry.entry { ... @}
   @see-class{gtk:style-context}
   @see-symbol{cairo:context-t}"
   (%render-frame context cr (coerce x 'double-float)
-                                (coerce y 'double-float)
-                                (coerce width 'double-float)
-                                (coerce height 'double-float)))
+                            (coerce y 'double-float)
+                            (coerce width 'double-float)
+                            (coerce height 'double-float)))
 
 (export 'render-frame)
 
@@ -2444,7 +2430,7 @@ GtkEntry.entry { ... @}
 
 (defun render-frame-gap (context cr x y width height side xy0 xy1)
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[cr]{a @symbol{cairo:context-t} context}
   @argument[x]{a number, coerced to a double float, with a x origin of the
@@ -2478,12 +2464,12 @@ GtkEntry.entry { ... @}
   @see-symbol{gtk:position-type}
   @see-function{gtk:render-frame}"
   (%render-frame-gap context cr (coerce x 'double-float)
-                                    (coerce y 'double-float)
-                                    (coerce width 'double-float)
-                                    (coerce height 'double-float)
-                                    side
-                                    (coerce xy0 'double-float)
-                                    (coerce xy1 'double-float)))
+                                (coerce y 'double-float)
+                                (coerce width 'double-float)
+                                (coerce height 'double-float)
+                                side
+                                (coerce xy0 'double-float)
+                                (coerce xy1 'double-float)))
 
 (export 'render-frame-gap)
 
@@ -2501,7 +2487,7 @@ GtkEntry.entry { ... @}
 
 (defun render-handle (context cr x y width height)
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[cr]{a @symbol{cairo:context-t} context}
   @argument[x]{a number, coerced to a double float, with a x origin of the
@@ -2521,9 +2507,9 @@ GtkEntry.entry { ... @}
   @see-class{gtk:window}
   @see-symbol{cairo:context-t}"
   (%render-handle context cr (coerce x 'double-float)
-                                 (coerce y 'double-float)
-                                 (coerce width 'double-float)
-                                 (coerce height 'double-float)))
+                             (coerce y 'double-float)
+                             (coerce width 'double-float)
+                             (coerce height 'double-float)))
 
 (export 'render-handle)
 
@@ -2540,7 +2526,7 @@ GtkEntry.entry { ... @}
 
 (defun render-layout (context cr x y layout)
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[cr]{a @symbol{cairo:context-t} context}
   @argument[x]{a number, coerced to a double float, with the x origin of the
@@ -2555,8 +2541,8 @@ GtkEntry.entry { ... @}
   @see-symbol{cairo:context-t}
   @see-symbol{pango:layout}"
   (%render-layout context cr (coerce x 'double-float)
-                                 (coerce y 'double-float)
-                                 layout))
+                             (coerce y 'double-float)
+                             layout))
 
 (export 'render-layout)
 
@@ -2574,7 +2560,7 @@ GtkEntry.entry { ... @}
 
 (defun render-line (context cr x0 y0 x1 y1)
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[cr]{a @symbol{cairo:context-t} context}
   @argument[x0]{a number, coerced to a double float, with the x coordinate for
@@ -2591,9 +2577,9 @@ GtkEntry.entry { ... @}
   @see-class{gtk:style-context}
   @see-symbol{cairo:context-t}"
   (%render-line context cr (coerce x0 'double-float)
-                               (coerce y0 'double-float)
-                               (coerce x1 'double-float)
-                               (coerce y1 'double-float)))
+                           (coerce y0 'double-float)
+                           (coerce x1 'double-float)
+                           (coerce y1 'double-float)))
 
 (export 'render-line)
 
@@ -2611,7 +2597,7 @@ GtkEntry.entry { ... @}
 
 (defun render-option (context cr x y width height)
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[cr]{a @symbol{cairo:context-t} context}
   @argument[x]{a number, coerced to a double float, with a x origin of the
@@ -2632,9 +2618,9 @@ GtkEntry.entry { ... @}
   @see-symbol{cairo:context-t}
   @see-symbol{gtk:state-flags}"
   (%render-option context cr (coerce x 'double-float)
-                                 (coerce y 'double-float)
-                                 (coerce width 'double-float)
-                                 (coerce height 'double-float)))
+                             (coerce y 'double-float)
+                             (coerce width 'double-float)
+                             (coerce height 'double-float)))
 
 (export 'render-option)
 
@@ -2653,7 +2639,7 @@ GtkEntry.entry { ... @}
 
 (defun render-slider (context cr x y width height orientation)
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[cr]{a @symbol{cairo:context-t} context}
   @argument[x]{a number, coerced to a double float, with a x origin of the
@@ -2675,10 +2661,10 @@ GtkEntry.entry { ... @}
   @see-symbol{cairo:context-t}
   @see-symbol{gtk:orientation}"
   (%render-slider context cr (coerce x 'double-float)
-                                 (coerce y 'double-float)
-                                 (coerce width 'double-float)
-                                 (coerce height 'double-float)
-                                 orientation))
+                             (coerce y 'double-float)
+                             (coerce width 'double-float)
+                             (coerce height 'double-float)
+                             orientation))
 
 (export 'render-slider)
 
@@ -2696,7 +2682,7 @@ GtkEntry.entry { ... @}
 
 (defun render-activity (context cr x y width height)
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[cr]{a @symbol{cairo:context-t} context}
   @argument[x]{a number, coerced to a double float, with a x origin of the
@@ -2731,7 +2717,7 @@ GtkEntry.entry { ... @}
 (defcfun ("gtk_render_icon_pixbuf" render-icon-pixbuf)
     (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[source]{a @class{gtk:icon-source} instance specifying the icon to
     render}
@@ -2772,7 +2758,7 @@ GtkEntry.entry { ... @}
 
 (defun render-icon-surface (context cr surface x y)
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[cr]{a @symbol{cairo:context-t} context}
   @argument[surface]{a @symbol{cairo:surface-t} instance containing the icon
@@ -2789,7 +2775,7 @@ GtkEntry.entry { ... @}
   @see-symbol{cairo:context-t}
   @see-symbol{cairo:surface-t}"
   (%render-icon-surface context cr surface (coerce x 'double-float)
-                                               (coerce y 'double-float)))
+                                           (coerce y 'double-float)))
 
 (export 'render-icon-surface)
 
@@ -2806,7 +2792,7 @@ GtkEntry.entry { ... @}
 
 (defun render-icon (context cr pixbuf x y)
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[cr]{a @symbol{cairo:context-t} context}
   @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object containing the icon to
@@ -2842,7 +2828,7 @@ GtkEntry.entry { ... @}
 
 (defun render-insertion-cursor (context cr x y layout index direction)
  #+liber-documentation
- "@version{#2021-11-26}
+ "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[cr]{a @symbol{cairo:context-t} context}
   @argument[x]{a number, coerced to a double float, with the x origin}
@@ -2859,10 +2845,10 @@ GtkEntry.entry { ... @}
   @see-class{pango:layout}
   @see-symbol{pango:direction}"
   (%render-insertion-cursor context cr (coerce x 'double-float)
-                                           (coerce y 'double-float)
-                                           layout
-                                           index
-                                           direction))
+                                       (coerce y 'double-float)
+                                       layout
+                                       index
+                                       direction))
 
 (export 'render-insertion-cursor)
 

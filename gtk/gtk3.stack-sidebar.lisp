@@ -1,29 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.stack-sidebar.lisp
+;;; gtk3.stack-sidebar.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2021 Dieter Kaiser
+;;; Copyright (C) 2019 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkStackSidebar
@@ -42,7 +43,7 @@
 ;;;
 ;;; Properties
 ;;;
-;;;     GtkStack  stack  Read / Write
+;;;     stack
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -76,25 +77,25 @@
 
 #+liber-documentation
 (setf (documentation 'stack-sidebar 'type)
- "@version{#2021-12-16}
+ "@version{#2023-3-27}
   @begin{short}
     A @sym{gtk:stack-sidebar} widget enables you to quickly and easily provide
     a consistent \"sidebar\" object for your user interface.
   @end{short}
 
-  @image[stack-sidebar]{}
+  @image[stack-sidebar]{Figure: GtkStackSidebar}
 
   In order to use a @sym{gtk:stack-sidebar} widget, you simply use a
-  @class{gtk:stack} widget to organize your UI flow, and add the sidebar to your
-  sidebar area. You can use the @fun{gtk:stack-sidebar-stack} slot access
-  function to connect the @sym{gtk:stack-sidebar} widget to the
-  @class{gtk:stack} widget.
+  @class{gtk:stack} widget to organize your UI flow, and add the sidebar to 
+  your sidebar area. You can use the @fun{gtk:stack-sidebar-stack} function to 
+  connect the @sym{gtk:stack-sidebar} widget to the @class{gtk:stack} widget.
   @begin[CSS nodes]{dictionary}
     The @sym{gtk:stack-sidebar} implementation has a single CSS node with name
     stacksidebar and @code{.sidebar} style class. When circumstances require it,
     the @sym{gtk:stack-sidebar} widget adds the @code{.needs-attention} style
     class to the widgets representing the stack pages.
   @end{dictionary}
+  @see-constructor{gtk:stack-sidebar-new}
   @see-slot{gtk:stack-sidebar-stack}
   @see-class{gtk:stack}")
 
@@ -102,7 +103,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- stack-sidebar-stack -----------------------------------------------
+;;; --- stack-sidebar-stack ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "stack" 'stack-sidebar) t)
@@ -113,7 +114,7 @@
 (setf (liber:alias-for-function 'stack-sidebar-stack)
       "Accessor"
       (documentation 'stack-sidebar-stack 'function)
- "@version{#2021-12-8}
+ "@version{#2023-3-27}
   @syntax[]{(gtk:stack-sidebar-stack object) => stack}
   @syntax[]{(setf (gtk:stack-sidebar-stack object) stack)}
   @argument[object]{a @class{gtk:stack-sidebar} widget}
@@ -122,10 +123,9 @@
     Accessor of the @slot[gtk:stack-sidebar]{stack} slot of the
     @class{gtk:stack-sidebar} class.
   @end{short}
-
-  The @sym{gtk:stack-sidebar-stack} slot access function retrieves the stack.
-  The @sym{(setf gtk:stack-sidebar-stack)} slot access function sets the stack
-  associated with this stack sidebar.
+  The @sym{gtk:stack-sidebar-stack} function retrieves the stack. The 
+  @sym{(setf gtk:stack-sidebar-stack)} function sets the stack associated with 
+  this stack sidebar.
 
   The stack sidebar will automatically update according to the order (packing)
   and items within the given stack.
@@ -140,7 +140,7 @@
 
 (defun stack-sidebar-new ()
  #+liber-documentation
- "@version{#2021-12-8}
+ "@version{#2023-3-27}
   @return{The new @class{gtk:stack-sidebar} widget.}
   @short{Creates a new stack sidebar.}
   @see-class{gtk:stack-sidebar}"
@@ -148,4 +148,4 @@
 
 (export 'stack-sidebar-new)
 
-;;; --- End of file gtk.stack-sidebar.lisp -------------------------------------
+;;; --- End of file gtk3.stack-sidebar.lisp ------------------------------------

@@ -4,27 +4,27 @@
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
 ;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; Themeable Stock Images
@@ -123,7 +123,7 @@
 (setf (liber:alias-for-symbol 'icon-size)
       "GEnum"
       (liber:symbol-documentation 'icon-size)
- "@version{#2021-7-21}
+ "@version{#2023-3-27}
   @short{Built-in stock icon sizes.}
   @begin{pre}
 (define-g-enum \"GtkIconSize\" icon-size
@@ -163,7 +163,7 @@
 (setf (liber:alias-for-class 'icon-source)
       "GBoxed"
       (documentation 'icon-source 'type)
- "@version{#2023-3-12}
+ "@version{#2023-3-27}
   @begin{short}
     The @sym{gtk:icon-source} structure is opaque, and has no user visible
     fields.
@@ -190,7 +190,7 @@
 (setf (liber:alias-for-class 'icon-set)
       "GBoxed"
       (documentation 'icon-set 'type)
- "@version{#2023-2-5}
+ "@version{#2023-3-27}
   @begin{short}
     The @sym{gtk:icon-set} structure is opaque, and has no user visible fields.
   @end{short}
@@ -211,7 +211,7 @@
 
 #+liber-documentation
 (setf (documentation 'icon-factory 'type)
- "@version{#2023-3-12}
+ "@version{#2023-3-27}
   @begin{short}
     An icon factory manages a collection of @class{gtk:icon-set} instances.
   @end{short}
@@ -306,7 +306,7 @@
 
 (defcfun ("gtk_icon_factory_add" icon-factory-add) :void
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-27}
   @argument[factory]{a @class{gtk:icon-factory} object}
   @argument[stock-id]{a string with the icon name}
   @argument[iconset]{a @class{gtk:icon-set} instance}
@@ -345,7 +345,7 @@
 
 (defcfun ("gtk_icon_factory_add_default" icon-factory-add-default) :void
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-27}
   @argument[factory]{a @class{gtk:icon-factory} object}
   @begin{short}
     Adds an icon factory to the list of icon factories searched by the
@@ -373,7 +373,7 @@
 
 (defcfun ("gtk_icon_factory_lookup" icon-factory-lookup) (g:boxed icon-set)
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-27}
   @argument[factory]{a @class{gtk:icon-factory} object}
   @argument[stock-id]{a string with an icon name}
   @return{The @class{gtk:icon-set} instance of @arg{stock-id}.}
@@ -404,7 +404,7 @@
 (defcfun ("gtk_icon_factory_lookup_default" icon-factory-lookup-default)
     (g:boxed icon-set :return)
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-27}
   @argument[stock-id]{a string with an icon name}
   @return{A @class{gtk:icon-set} instance, or @code{nil}.}
   @begin{short}
@@ -456,7 +456,7 @@
 
 (defcfun ("gtk_icon_factory_remove_default" icon-factory-remove-default) :void
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-27}
   @argument[factory]{a @class{gtk:icon-factory} object previously added with
     the @fun{gtk:icon-factory-add-default} function}
   @begin{short}
@@ -482,7 +482,7 @@
 
 (defcfun ("gtk_icon_set_add_source" icon-set-add-source) :void
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-27}
   @argument[iconset]{a @class{gtk:icon-set} instance}
   @argument[source]{a @class{gtk:icon-source} instance}
   @begin{short}
@@ -549,7 +549,7 @@
 
 (defcfun ("gtk_icon_set_new" icon-set-new) (g:boxed icon-set)
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-27}
   @return{A new @class{gtk:icon-set} instance.}
   @begin{short}
     Creates a new icon set.
@@ -583,7 +583,7 @@
 (defcfun ("gtk_icon_set_new_from_pixbuf" icon-set-new-from-pixbuf)
     (g:boxed icon-set)
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-27}
   @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object}
   @return{A new @class{gtk:icon-set} instance.}
   @begin{short}
@@ -631,7 +631,7 @@
 (defcfun ("gtk_icon_set_render_icon" icon-set-render-icon)
     (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-27}
   @argument[iconset]{a @class{gtk:icon-set} instance}
   @argument[style]{a @code{GtkStyle} object associated with @arg{widget},
     or @code{nil}}
@@ -686,7 +686,7 @@
 (defcfun ("gtk_icon_set_render_icon_pixbuf" icon-set-render-icon-pixbuf)
     (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-27}
   @argument[iconset]{a @class{gtk:icon-set} instance}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[size]{a @symbol{gtk:icon-size} value, a size of -1 means render
@@ -998,7 +998,7 @@
 (defcfun ("gtk_icon_source_get_filename" icon-source-filename)
     (:string :free-from-foreign nil)
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-27}
   @syntax[]{(gtk:icon-source-filename source) => filename}
   @syntax[]{(setf (gtk:icon-source-filename source) filename)}
   @argument[source]{a @class{gtk:icon-source} instance}
@@ -1057,7 +1057,7 @@
 (defcfun ("gtk_icon_source_get_icon_name" icon-source-icon-name)
     (:string :free-from-foreign nil)
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-27}
   @syntax[]{(gtk:icon-source-icon-name source) => name}
   @syntax[]{(setf (gtk:icon-source-icon-name source) name)}
   @argument[source]{a @class{gtk:icon-source} instance}
@@ -1158,7 +1158,7 @@
 
 (defcfun ("gtk_icon_source_new" icon-source-new) (g:boxed icon-source)
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-27}
   @return{A new @class{gtk:icon-source} instance.}
   @begin{short}
     Creates a new icon source.

@@ -4,27 +4,27 @@
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
 ;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkStatusIcon
@@ -165,7 +165,7 @@
 
 #+liber-documentation
 (setf (documentation 'status-icon 'type)
- "@version{#2021-7-22}
+ "@version{#2023-3-27}
   @begin{short}
     The \"system tray\" or notification area is normally used for transient
     icons that indicate some special state.
@@ -349,7 +349,7 @@ lambda (icon size)    :run-last
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- status-icon-embedded -----------------------------------------------
+;;; --- status-icon-embedded ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "embedded" 'status-icon) t)
@@ -361,7 +361,7 @@ lambda (icon size)    :run-last
 (setf (liber:alias-for-function 'status-icon-embedded)
       "Accessor"
       (documentation 'status-icon-embedded 'function)
- "@version{#2021-7-22}
+ "@version{#2023-3-27}
   @syntax[]{(gtk:status-icon-embedded object) => embedded}
   @argument[object]{a @class{gtk:status-icon} object}
   @argument[embedded]{a boolean whether the status icon is embedded}
@@ -369,16 +369,15 @@ lambda (icon size)    :run-last
     Accessor of the @slot[gtk:status-icon]{embedded} slot of the
     @class{gtk:status-icon} class.
   @end{short}
-
   @em{True} if the status icon is embedded in a notification area.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:status-icon-embedded} has been deprecated since
+    The @sym{gtk:status-icon-embedded} function has been deprecated since
     version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
   @see-function{gtk:status-icon-is-embedded}")
 
-;;; --- status-icon-file ---------------------------------------------------
+;;; --- status-icon-file -------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "file" 'status-icon) t)
@@ -390,7 +389,7 @@ lambda (icon size)    :run-last
 (setf (liber:alias-for-function 'status-icon-file)
       "Accessor"
       (documentation 'status-icon-file 'function)
- "@version{#2021-7-22}
+ "@version{#2023-3-27}
   @syntax[]{(setf (gtk:status-icon-file object) file)}
   @argument[object]{a @class{gtk:status-icon} object}
   @argument[file]{a string with a filename}
@@ -398,10 +397,9 @@ lambda (icon size)    :run-last
     Accessor of the @slot[gtk:status-icon]{file} slot of the
     @class{gtk:status-icon} class.
   @end{short}
-
   Filename to load and display.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:status-icon-file} has been deprecated since version
+    The @sym{gtk:status-icon-file} function has been deprecated since version
     3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}")
@@ -418,7 +416,7 @@ lambda (icon size)    :run-last
 (setf (liber:alias-for-function 'status-icon-gicon)
       "Accessor"
       (documentation 'status-icon-gicon 'function)
- "@version{#2023-3-17}
+ "@version{#2023-3-27}
   @syntax[]{(gtk:status-icon-gicon object) => icon}
   @syntax[]{(setf (gtk:status-icon-gicon object) icon)}
   @argument[object]{a @class{gtk:status-icon} widget}
@@ -442,11 +440,10 @@ lambda (icon size)    :run-last
   @see-symbol{gtk:image-type}
   @see-function{gtk:status-icon-storage-type}")
 
-;;; --- status-icon-has-tooltip --------------------------------------------
+;;; --- status-icon-has-tooltip ------------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "has-tooltip"
-                                               'status-icon) t)
+(setf (documentation (liber:slot-documentation "has-tooltip" 'status-icon) t)
  "The @code{has-tooltip} property of type @code{:boolean} (Read / Write) @br{}
   Enables or disables the emission of \"query-tooltip\" signals on the status
   icon. A value of @em{true} indicates that the status icon can have a tooltip,
@@ -464,7 +461,7 @@ lambda (icon size)    :run-last
 (setf (liber:alias-for-function 'status-icon-has-tooltip)
       "Accessor"
       (documentation 'status-icon-has-tooltip 'function)
- "@version{#2021-7-22}
+ "@version{#2023-3-27}
   @syntax[]{(gtk:status-icon-has-tooltip object) => has-tooltip}
   @syntax[]{(setf (gtk:status-icon-has-tooltip object) has-tooltip)}
   @argument[object]{a @class{gtk:status-icon} widget}
@@ -473,10 +470,9 @@ lambda (icon size)    :run-last
     Accessor of the @slot[gtk:status-icon]{has-tooltip} slot of the
     @class{gtk:status-icon} class.
   @end{short}
-
-  The slot access function @sym{gtk:status-icon-has-tooltip} returns the
-  current value of the @slot[gtk:status-icon]{has-tooltip} property. The slot
-  access function @sym{(setf gtk:status-icon-has-tooltip)} sets the property.
+  The @sym{gtk:status-icon-has-tooltip} function returns the current value of
+  the @slot[gtk:status-icon]{has-tooltip} property. The
+  @sym{(setf gtk:status-icon-has-tooltip)} function sets the property.
 
   Enables or disables the emission of \"query-tooltip\" signals on the status
   icon. A value of @em{true} indicates that the status icon can have a tooltip,
@@ -489,13 +485,13 @@ lambda (icon size)    :run-last
   For plain text tooltips, use the @slot[gtk:status-icon]{tooltip-text}
   property in preference.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:status-icon-has-tooltip} has been deprecated since
+    The @sym{gtk:status-icon-has-tooltip} function has been deprecated since
     version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
   @see-function{gtk:status-icon-tooltip-text}")
 
-;;; --- status-icon-icon-name ----------------------------------------------
+;;; --- status-icon-icon-name --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "icon-name" 'status-icon) t)
@@ -507,7 +503,7 @@ lambda (icon size)    :run-last
 (setf (liber:alias-for-function 'status-icon-icon-name)
       "Accessor"
       (documentation 'status-icon-icon-name 'function)
- "@version{#2021-7-22}
+ "@version{#2023-3-27}
   @syntax[]{(gtk:status-icon-icon-name object) => name}
   @syntax[]{(setf (gtk:status-icon-icon-name object) name)}
   @argument[object]{a @class{gtk:status-icon} widget}
@@ -516,27 +512,25 @@ lambda (icon size)    :run-last
     Accessor of the @slot[gtk:status-icon]{icon-name} slot of the
     @class{gtk:status-icon} class.
   @end{short}
-
-  The slot access function @sym{gtk:status-icon-icon-name} gets the name of the
-  icon being displayed by the status icon. The slot access function
-  @sym{(setf gtk:status-icon-icon-name)} sets the name.
+  The @sym{gtk:status-icon-icon-name} function gets the name of the icon being
+  displayed by the status icon. The @sym{(setf gtk:status-icon-icon-name)}
+  function sets the name.
 
   The storage type of the status icon must be the value @code{:empty} or
   @code{:icon-name} of the @symbol{gtk:image-type} enumeration. See the
-  function @fun{gtk:status-icon-storage-type}.
+  @fun{gtk:status-icon-storage-type} function.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:status-icon-icon-name} has been deprecated since
+    The @sym{gtk:status-icon-icon-name} function has been deprecated since
     version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
   @see-symbol{gtk:image-type}
   @see-function{gtk:status-icon-storage-type}")
 
-;;; --- status-icon-orientation --------------------------------------------
+;;; --- status-icon-orientation ------------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "orientation"
-                                               'status-icon) t)
+(setf (documentation (liber:slot-documentation "orientation" 'status-icon) t)
  "The @code{orientation} property of type @symbol{gtk:orientation} (Read) @br{}
   The orientation of the tray in which the status icon is embedded. @br{}
   Default value: @code{:horizontal}")
@@ -545,7 +539,7 @@ lambda (icon size)    :run-last
 (setf (liber:alias-for-function 'status-icon-orientation)
       "Accessor"
       (documentation 'status-icon-orientation 'function)
- "@version{#2021-7-22}
+ "@version{#2023-3-27}
   @syntax[]{(gtk:status-icon-orientation object) => orientation}
   @argument[object]{a @class{gtk:status-icon} widget}
   @argument[orientation]{a value of the @symbol{gtk:orientation} enumeration}
@@ -553,10 +547,9 @@ lambda (icon size)    :run-last
     Accessor of the @slot[gtk:status-icon]{orientation} slot of the
     @class{gtk:status-icon} class.
   @end{short}
-
   The orientation of the tray in which the status icon is embedded.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:status-icon-orientation} has been deprecated since
+    The @sym{gtk:status-icon-orientation} function has been deprecated since
     version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
@@ -574,7 +567,7 @@ lambda (icon size)    :run-last
 (setf (liber:alias-for-function 'status-icon-pixbuf)
       "Accessor"
       (documentation 'status-icon-pixbuf 'function)
- "@version{#2023-3-12}
+ "@version{#2023-3-27}
   @syntax[]{(gtk:status-icon-pixbuf object) => pixbuf}
   @syntax[]{(setf (gtk:status-icon-pixbuf object) pixbuf)}
   @argument[object]{a @class{gtk:status-icon} widget}
@@ -599,7 +592,7 @@ lambda (icon size)    :run-last
   @see-symbol{gtk:image-type}
   @see-function{gtk:status-icon-storage-type}")
 
-;;; --- status-icon-screen -------------------------------------------------
+;;; --- status-icon-screen -----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "screen" 'status-icon) t)
@@ -610,7 +603,7 @@ lambda (icon size)    :run-last
 (setf (liber:alias-for-function 'status-icon-screen)
       "Accessor"
       (documentation 'status-icon-screen 'function)
- "@version{#2021-7-22}
+ "@version{#2023-3-27}
   @syntax[]{(gtk:status-icon-screen object) => screen}
   @syntax[]{(setf (gtk:status-icon-screen object) screen)}
   @argument[object]{a @class{gtk:status-icon} widget}
@@ -619,19 +612,18 @@ lambda (icon size)    :run-last
     Accessor of the @slot[gtk:status-icon]{screen} slot of the
     @class{gtk:status-icon} class.
   @end{short}
-
-  The slot access function @sym{gtk:status-icon-screen} returns the screen
-  associated with the status icon. The slot access function
-  @sym{(setf gtk:status-icon-screen)} sets the screen. If the icon is already
-  mapped, it will be unmapped, and then remapped on the new screen.
+  The @sym{gtk:status-icon-screen} function returns the screen associated with
+  the status icon. The @sym{(setf gtk:status-icon-screen)} function sets the
+  screen. If the icon is already mapped, it will be unmapped, and then remapped
+  on the new screen.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:status-icon-screen} has been deprecated since version
+    The @sym{gtk:status-icon-screen} function has been deprecated since version
     3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
   @see-class{gdk:screen}")
 
-;;; --- status-icon-size ---------------------------------------------------
+;;; --- status-icon-size -------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "size" 'status-icon) t)
@@ -644,7 +636,7 @@ lambda (icon size)    :run-last
 (setf (liber:alias-for-function 'status-icon-size)
       "Accessor"
       (documentation 'status-icon-size 'function)
- "@version{#2021-7-22}
+ "@version{#2023-3-27}
   @syntax[]{(gtk:status-icon-size object) => size}
   @argument[object]{a @class{gtk:status-icon} widget}
   @argument[size]{an integer with the size of the icon}
@@ -652,23 +644,22 @@ lambda (icon size)    :run-last
     Accessor of the @slot[gtk:status-icon]{size} slot of the
     @class{gtk:status-icon} class.
   @end{short}
-
-  The slot access function @sym{gtk:status-icon-size} gets the size in pixels
-  that is available for the image.
+  The @sym{gtk:status-icon-size} function gets the size in pixels that is
+  available for the image.
 
   Stock icons and named icons adapt their size automatically if the size of the
   notification area changes. For other storage types, the \"size-changed\"
   signal can be used to react to size changes. Note that the returned size is
-  only meaningful while the status icon is embedded. See the function
-  @fun{gtk:status-icon-is-embedded}.
+  only meaningful while the status icon is embedded. See the
+  @fun{gtk:status-icon-is-embedded} function.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:status-icon-size} has been deprecated since version
+    The @sym{gtk:status-icon-size} function has been deprecated since version
     3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
   @see-function{gtk:status-icon-is-embedded}")
 
-;;; --- status-icon-stock --------------------------------------------------
+;;; --- status-icon-stock ------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "stock" 'status-icon) t)
@@ -683,7 +674,7 @@ lambda (icon size)    :run-last
 (setf (liber:alias-for-function 'status-icon-stock)
       "Accessor"
       (documentation 'status-icon-stock 'function)
- "@version{#2021-7-22}
+ "@version{#2023-3-27}
   @syntax[]{(gtk:status-icon-stock object) => stock-id}
   @syntax[]{(setf (gtk:status-icon-stock object) stock-id)}
   @argument[object]{a @class{gtk:status-icon} widget}
@@ -692,27 +683,25 @@ lambda (icon size)    :run-last
     Accessor of the @slot[gtk:status-icon]{stock} slot of the
     @class{gtk:status-icon} class.
   @end{short}
-
-  The slot access function @sym{gtk:status-icon-stock} gets the ID of the stock
-  icon being displayed by the status icon. The slot access function
-  @sym{(setf gtk:status-icon-stock)} sets the stock ID.
+  The @sym{gtk:status-icon-stock} function gets the ID of the stock icon being
+  displayed by the status icon. The @sym{(setf gtk:status-icon-stock)}
+  function sets the stock ID.
 
   The storage type of the status icon must be the value @code{:empty} or
-  @code{:stock} of the @symbol{gtk:image-type} enumeration. See the function
-  @fun{gtk:status-icon-storage-type}.
+  @code{:stock} of the @symbol{gtk:image-type} enumeration. See the
+  @fun{gtk:status-icon-storage-type} function.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:status-icon-stock} has been deprecated since version
+    The @sym{gtk:status-icon-stock} function has been deprecated since version
     3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
   @see-symbol{gtk:image-type}
   @see-function{gtk:status-icon-storage-type}")
 
-;;; --- status-icon-storage-type -------------------------------------------
+;;; --- status-icon-storage-type -----------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "storage-type"
-                                               'status-icon) t)
+(setf (documentation (liber:slot-documentation "storage-type" 'status-icon) t)
  "The @code{storage-type} property of type @symbol{gtk:image-type} (Read) @br{}
   The representation being used for image data. @br{}
   Default value: @code{:empty}")
@@ -721,7 +710,7 @@ lambda (icon size)    :run-last
 (setf (liber:alias-for-function 'status-icon-storage-type)
       "Accessor"
       (documentation 'status-icon-storage-type 'function)
- "@version{#2021-7-22}
+ "@version{#2023-3-27}
   @syntax[]{(gtk:status-icon-storage-type object) => storage-type}
   @argument[object]{a @class{gtk:status-icon} widget}
   @argument[storage-type]{a value of the @symbol{gtk:image-type} enumeration}
@@ -729,13 +718,12 @@ lambda (icon size)    :run-last
     Accessor of the @slot[gtk:status-icon]{storage-type} slot of the
     @class{gtk:status-icon} class.
   @end{short}
-
-  The slot access function @sym{gtk:status-icon-storage-type} gets the type of
+  The @sym{gtk:status-icon-storage-type} function gets the type of
   representation being used by the status icon to store image data. If the
-  status icon has no image data, the return value will be the value
-  @code{:empty}.
+  status icon has no image data, the return value will be the @code{:empty}
+  value.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:status-icon-storage-type} has been deprecated since
+    The @sym{gtk:status-icon-storage-type} value has been deprecated since
     version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
@@ -755,7 +743,7 @@ lambda (icon size)    :run-last
 (setf (liber:alias-for-function 'status-icon-title)
       "Accessor"
       (documentation 'status-icon-title 'function)
- "@version{#2021-7-22}
+ "@version{#2023-3-27}
   @syntax[]{(gtk:status-icon-title object) => title}
   @syntax[]{(setf (gtk:status-icon-title object) title)}
   @argument[object]{a @class{gtk:status-icon} widget}
@@ -764,39 +752,36 @@ lambda (icon size)    :run-last
     Accessor of the @slot[gtk:status-icon]{title} slot of the
     @class{gtk:status-icon} class.
   @end{short}
-
-  The slot access function @sym{gtk:status-icon-title} gets the title of the
-  status icon. The slot access function @sym{(setf gtk:status-icon-title)}
-  sets the title.
+  The @sym{gtk:status-icon-title} function gets the title of the status icon.
+  The @sym{(setf gtk:status-icon-title)} function sets the title.
 
   This should be a short, human readable, localized string describing the status
   icon. It may be used by tools like screen readers to render the status icon.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:status-icon-title} has been deprecated since version
+    The @sym{gtk:status-icon-title} function has been deprecated since version
     3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}")
 
-;;; --- status-icon-tooltip-markup -----------------------------------------
+;;; --- status-icon-tooltip-markup ---------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "tooltip-markup"
-                                               'status-icon) t)
+(setf (documentation (liber:slot-documentation "tooltip-markup" 'status-icon) t)
  "The @code{tooltip-markup} property of type @code{:string} (Read / Write) @br{}
   Sets the text of the tooltip to be the given string, which is marked up with
-  the Pango text markup language. Also see the function
-  @fun{gtk:tooltip-set-markup}. This is a convenience property which will take
-  care of getting the tooltip shown if the given string is not @code{nil}. The
-  @code{has-tooltip} property will automatically be set to @em{true} and the
-  default handler for the \"query-tooltip\" signal will take care of displaying
-  the tooltip. On some platforms, embedded markup will be ignored. @br{}
+  the Pango text markup language. Also see the @fun{gtk:tooltip-set-markup}
+  function. This is a convenience property which will take care of getting the
+  tooltip shown if the given string is not @code{nil}. The @code{has-tooltip}
+  property will automatically be set to @em{true} and the default handler for
+  the \"query-tooltip\" signal will take care of displaying the tooltip. On
+  some platforms, embedded markup will be ignored. @br{}
   Default value: @code{nil}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'status-icon-tooltip-markup)
       "Accessor"
       (documentation 'status-icon-tooltip-markup 'function)
- "@version{#2021-7-22}
+ "@version{#2023-3-27}
   @syntax[]{(gtk:status-icon-tooltip-markup object) => markup}
   @syntax[]{(setf (gtk:status-icon-tooltip-markup object) markup)}
   @argument[object]{a @class{gtk:status-icon} widget}
@@ -806,18 +791,17 @@ lambda (icon size)    :run-last
     Accessor of the @slot[gtk:status-icon]{tooltip-markup} slot of the
     @class{gtk:status-icon} class.
   @end{short}
-
-  The slot access function @sym{gtk:status-icon-tooltip-markup} gets the
-  contents of the tooltip for the status icon. The slot access function
-  @sym{(setf gtk:status-icon-tooltip-markup)} sets @arg{markup} as the contents
-  of the tooltip, which is marked up with the Pango text markup language.
+  The @sym{gtk:status-icon-tooltip-markup} function gets the contents of the
+  tooltip for the status icon. The @sym{(setf gtk:status-icon-tooltip-markup)}
+  function sets @arg{markup} as the contents of the tooltip, which is marked up
+  with the Pango text markup language.
 
   This function will take care of setting the
   @slot[gtk:status-icon]{has-tooltip} property to @em{true} and of the default
-  handler for the \"query-tooltip\" signal. See also the function
-  @fun{gtk:tooltip-markup}.
+  handler for the \"query-tooltip\" signal. See also the
+  @fun{gtk:tooltip-markup} function.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:status-icon-tooltip-markup} has been deprecated since
+    The @sym{gtk:status-icon-tooltip-markup} function has been deprecated since
     version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
@@ -827,13 +811,12 @@ lambda (icon size)    :run-last
 ;;; --- status-icon-tooltip-text -------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "tooltip-text"
-                                               'status-icon) t)
+(setf (documentation (liber:slot-documentation "tooltip-text" 'status-icon) t)
  "The @code{tooltip-text} property of type @code{:string} (Read / Write) @br{}
-  Sets the text of the tooltip to be the given string. Also see the function
-  @fun{gtk:tooltip-set-text}. This is a convenience property which will take
-  care of getting the tooltip shown if the given string is not @code{nil}. The
-  @code{has-tooltip} property will automatically be set to @em{true} and the
+  Sets the text of the tooltip to be the given string. Also see the
+  @fun{gtk:tooltip-set-text} function. This is a convenience property which will
+  take care of getting the tooltip shown if the given string is not @code{nil}.
+  The @code{has-tooltip} property will automatically be set to @em{true} and the
   default handler for the \"query-tooltip\" signal will take care of displaying
   the tooltip. Note that some platforms have limitations on the length of
   tooltips that they allow on status icons, e.g. Windows only shows the first
@@ -844,7 +827,7 @@ lambda (icon size)    :run-last
 (setf (liber:alias-for-function 'status-icon-tooltip-text)
       "Accessor"
       (documentation 'status-icon-tooltip-text 'function)
- "@version{#2021-7-22}
+ "@version{#2023-3-27}
   @syntax[]{(gtk:status-icon-tooltip-text object) => text}
   @syntax[]{(setf (gtk:status-icon-tooltip-text object) text)}
   @argument[object]{a @class{gtk:status-icon} widget}
@@ -853,22 +836,21 @@ lambda (icon size)    :run-last
     Accessor of the @slot[gtk:status-icon]{tooltip-text} slot of the
     @class{gtk:status-icon} class.
   @end{short}
-
-  The slot access function @sym{gtk:status-icon-tooltip-text} gets the contents
-  of the tooltip for the status icon. The slot access function
-  @sym{(setf gtk:status-icon-tooltip-text)} sets the text of the tooltip.
+  The @sym{gtk:status-icon-tooltip-text} function gets the contents of the
+  tooltip for the status icon. The @sym{(setf gtk:status-icon-tooltip-text)}
+  function sets the text of the tooltip.
 
   This function will take care of setting the
   @slot[gtk:status-icon]{has-tooltip} property to @em{true} and of the default
   handler for the \"query-tooltip\" signal.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:status-icon-tooltip-text} has been deprecated since
+    The @sym{gtk:status-icon-tooltip-text} function has been deprecated since
     version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
   @see-function{gtk:status-icon-has-tooltip}")
 
-;;; --- status-icon-visible ------------------------------------------------
+;;; --- status-icon-visible ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "visible" 'status-icon) t)
@@ -880,7 +862,7 @@ lambda (icon size)    :run-last
 (setf (liber:alias-for-function 'status-icon-visible)
       "Accessor"
       (documentation 'status-icon-visible 'function)
- "@version{#2021-7-22}
+ "@version{#2023-3-27}
   @syntax[]{(gtk:status-icon-visible object) => visible}
   @syntax[]{(setf (gtk:status-icon-visible object) visible)}
   @argument[object]{a @class{gtk:status-icon} widget}
@@ -889,15 +871,14 @@ lambda (icon size)    :run-last
     Accessor of the @slot[gtk:status-icon]{visible} slot of the
     @class{gtk:status-icon} class.
   @end{short}
-
-  The slot access function @sym{gtk:status-icon-visible} returns whether the
-  status icon is visible or not. The slot access function
-  @sym{(setf gtk:status-icon-visible)} sets the visibility.
+  The @sym{gtk:status-icon-visible} function returns whether the status icon is
+  visible or not. The @sym{(setf gtk:status-icon-visible)} functon sets the
+  visibility.
 
   Note that being visible does not guarantee that the user can actually see the
-  icon, see also the function @fun{gtk:status-icon-is-embedded}.
+  icon, see also the @fun{gtk:status-icon-is-embedded} function.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:status-icon-visible} has been deprecated since version
+    The @sym{gtk:status-icon-visible} function has been deprecated since version
     3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
@@ -911,11 +892,11 @@ lambda (icon size)    :run-last
 
 (defun status-icon-new ()
  #+liber-documentation
- "@version{#2021-7-22}
+ "@version{#2023-3-27}
   @return{A new @class{gtk:status-icon} object.}
   @short{Creates an empty status icon.}
   @begin[Warning]{dictionary}
-    The function @sym{gtk:status-icon-new} has been deprecated since version
+    The @sym{gtk:status-icon-new} function has been deprecated since version
     3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}"
@@ -930,7 +911,7 @@ lambda (icon size)    :run-last
 (defcfun ("gtk_status_icon_new_from_pixbuf" status-icon-new-from-pixbuf)
     (g:object status-icon)
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-27}
   @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object}
   @return{A new @class{gtk:status-icon} object.}
   @begin{short}
@@ -955,17 +936,16 @@ lambda (icon size)    :run-last
 (defcfun ("gtk_status_icon_new_from_file" status-icon-new-from-file)
     (g:object status-icon)
  #+liber-documentation
- "@version{#2021-7-22}
+ "@version{#2023-3-27}
   @argument[filename]{a string with the filename}
   @return{A new @class{gtk:status-icon} object.}
   @begin{short}
     Creates a status icon displaying the icon from a file.
   @end{short}
-
   The image will be scaled down to fit in the available space in the
   notification area, if necessary.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:status-icon-new-from-file} has been deprecated since
+    The @sym{gtk:status-icon-new-from-file} function has been deprecated since
     version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}"
@@ -980,7 +960,7 @@ lambda (icon size)    :run-last
 (defcfun ("gtk_status_icon_new_from_stock" status-icon-new-from-stock)
     (g:object status-icon)
  #+liber-documentation
- "@version{#2021-7-22}
+ "@version{#2023-3-27}
   @argument[stock-id]{a string with a stock icon ID}
   @return{A new @class{gtk:status-icon} object.}
   @begin{short}
@@ -988,7 +968,7 @@ lambda (icon size)    :run-last
   @end{short}
   Sample stock icon names are \"gtk-open\", \"gtk-quit\".
   @begin[Warning]{dictionary}
-    The function @sym{gtk:status-icon-new-from-stock} has been deprecated since
+    The @sym{gtk:status-icon-new-from-stock} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}"
@@ -1000,10 +980,10 @@ lambda (icon size)    :run-last
 ;;; gtk_status_icon_new_from_icon_name ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_status_icon_new_from_icon_name"
-           status-icon-new-from-icon-name) (g:object status-icon)
+(defcfun ("gtk_status_icon_new_from_icon_name" status-icon-new-from-icon-name)
+    (g:object status-icon)
  #+liber-documentation
- "@version{#2021-7-22}
+ "@version{#2023-3-27}
   @argument[name]{a string with an icon name}
   @return{A new @class{gtk:status-icon} object.}
   @begin{short}
@@ -1011,7 +991,7 @@ lambda (icon size)    :run-last
   @end{short}
   If the current icon theme is changed, the icon will be updated appropriately.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:status-icon-new-from-icon-name} has been deprecated
+    The @sym{gtk:status-icon-new-from-icon-name} function has been deprecated
     since version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}"
@@ -1026,7 +1006,7 @@ lambda (icon size)    :run-last
 (defcfun ("gtk_status_icon_new_from_gicon" status-icon-new-from-gicon)
     (g:object status-icon)
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2023-3-27}
   @argument[icon]{a @class{g:icon} object}
   @return{A new @class{gtk:status-icon} object.}
   @begin{short}
@@ -1049,7 +1029,7 @@ lambda (icon size)    :run-last
 
 (defcfun ("gtk_status_icon_set_from_pixbuf" status-icon-set-from-pixbuf) :void
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-3-27}
   @argument[icon]{a @class{gtk:status-icon} object}
   @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object or @code{nil}}
   @begin{short}
@@ -1074,15 +1054,15 @@ lambda (icon size)    :run-last
 
 (defcfun ("gtk_status_icon_set_from_file" status-icon-set-from-file) :void
  #+liber-documentation
- "@version{#2021-7-22}
+ "@version{#2023-3-27}
   @argument[icon]{a @class{gtk:status-icon} object}
   @argument[filename]{a string with a filename}
   @begin{short}
     Makes  the status icon display the icon from the file @arg{filename}.
   @end{short}
-  See the function @fun{gtk:status-icon-new-from-file} for details.
+  See the @fun{gtk:status-icon-new-from-file} function for details.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:status-icon-set-from-file} has been deprecated since
+    The @sym{gtk:status-icon-set-from-file} function has been deprecated since
     version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
@@ -1098,13 +1078,13 @@ lambda (icon size)    :run-last
 
 (defcfun ("gtk_status_icon_set_from_stock" status-icon-set-from-stock) :void
  #+liber-documentation
- "@version{#2021-7-22}
+ "@version{#2023-3-27}
   @argument[icon]{a @class{gtk:status-icon} object}
   @argument[stock-id]{a string with the stock ID}
   @begin{short}
     Makes the status icon display the stock icon with the ID @arg{stock-id.}
   @end{short}
-  See the function @fun{gtk:status-icon-new-from-stock} for details.
+  See the @fun{gtk:status-icon-new-from-stock} function for details.
   @begin[Warning]{dictionary}
     The @sym{gtk:status-icon-set-from-stock} function has been deprecated since
     version 3.10 and should not be used in newly written code.
@@ -1123,16 +1103,16 @@ lambda (icon size)    :run-last
 (defcfun ("gtk_status_icon_set_from_icon_name"
            status-icon-set-from-icon-name) :void
  #+liber-documentation
- "@version{#2021-7-22}
+ "@version{#2023-3-27}
   @argument[icon]{a @class{gtk:status-icon} object}
   @argument[name]{a string with an icon name}
   @begin{short}
     Makes the status icon display the icon named @arg{name} from the current
     icon theme.
   @end{short}
-  See the function @fun{gtk:status-icon-new-from-icon-name} for details.
+  See the @fun{gtk:status-icon-new-from-icon-name} function for details.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:status-icon-set-from-icon-name} has been deprecated
+    The @sym{gtk:status-icon-set-from-icon-name} function has been deprecated
     since version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
@@ -1148,7 +1128,7 @@ lambda (icon size)    :run-last
 
 (defcfun ("gtk_status_icon_set_from_gicon" status-icon-set-from-gicon) :void
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2023-3-27}
   @argument[icon]{a @class{gtk:status-icon} object}
   @argument[gicon]{a @class{g:icon} object}
   @begin{short}
@@ -1172,7 +1152,7 @@ lambda (icon size)    :run-last
 
 (defcfun ("gtk_status_icon_set_name" status-icon-set-name) :void
  #+liber-documentation
- "@version{#2021-7-22}
+ "@version{#2023-3-27}
   @argument[icon]{a @class{gtk:status-icon} object}
   @argument[name]{a string with the name}
   @begin{short}
@@ -1181,7 +1161,7 @@ lambda (icon size)    :run-last
   This should be a string identifying this icon. It may be used for sorting the
   icons in the tray and will not be shown to the user.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:status-icon-set-name} has been deprecated since
+    The @sym{gtk:status-icon-set-name} function has been deprecated since
     version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}"
@@ -1198,14 +1178,14 @@ lambda (icon size)    :run-last
 
 (defcfun ("gtk_status_icon_is_embedded" status-icon-is-embedded) :boolean
  #+liber-documentation
- "@version{#2021-7-22}
+ "@version{#2023-3-27}
   @argument[icon]{a @class{gtk:status-icon} object}
   @return{@em{True} if the status icon is embedded in a notification area.}
   @begin{short}
     Returns whether the status icon is embedded in a notification area.
   @end{short}
   @begin[Warning]{dictionary}
-    The function @sym{gtk:status-icon-is-embedded} has been deprecated since
+    The @sym{gtk:status-icon-is-embedded} function has been deprecated since
     version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}"
