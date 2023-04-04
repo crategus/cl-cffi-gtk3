@@ -2502,7 +2502,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-has-focus)
       "Accessor"
       (documentation 'widget-has-focus 'function)
- "@version{#2021-9-15}
+ "@version{#2023-3-29}
   @syntax[]{(gtk:widget-has-focus object) => setting}
   @syntax[]{(setf (gtk:widget-has-focus object) setting)}
   @argument[object]{a @class{gtk:widget} object}

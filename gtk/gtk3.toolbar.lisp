@@ -1,30 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.toolbar.lisp
+;;; gtk3.toolbar.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkToolbar
@@ -113,7 +113,7 @@
 (setf (liber:alias-for-symbol 'toolbar-space-style)
       "GEnum"
       (liber:symbol-documentation 'toolbar-space-style)
- "@version{#2021-10-30}
+ "@version{#2023-3-28}
   @short{Whether spacers are vertical lines or just blank.}
   @begin[Warning]{dictionary}
     The @sym{gtk:toolbar-space-style} enumeration has been deprecated since
@@ -155,7 +155,7 @@
 
 #+liber-documentation
 (setf (documentation 'toolbar 'type)
- "@version{#2021-10-30}
+ "@version{#2023-3-28}
   @begin{short}
     A toolbar can contain instances of a subclass of @class{gtk:tool-item}
     widgets.
@@ -166,7 +166,7 @@
   @fun{gtk:container-remove} function. To add a button to the toolbar, add an
   instance of the @class{gtk:tool-button} class.
 
-  @image[toolbar]{}
+  @image[toolbar]{GtkToolbar}
 
   Toolbar items can be visually grouped by adding instances of the
   @class{gtk:separator-tool-item} class to the toolbar. If the @code{expand}
@@ -311,6 +311,7 @@ lambda (toolbar style)    :run-first
           enumeration of the toolbar.}
       @end{table}
   @end{dictionary}
+  @see-constructor{gtk:toolbar-new}
   @see-slot{gtk:toolbar-icon-size}
   @see-slot{gtk:toolbar-icon-size-set}
   @see-slot{gtk:toolbar-show-arrow}
@@ -340,7 +341,7 @@ lambda (toolbar style)    :run-first
 (setf (liber:alias-for-function 'toolbar-icon-size)
       "Accessor"
       (documentation 'toolbar-icon-size 'function)
- "@version{#2021-10-30}
+ "@version{#2023-3-28}
   @syntax[]{(gtk:toolbar-icon-size object) => size}
   @syntax[]{(setf (gtk:toolbar-icon-size object) size)}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
@@ -350,10 +351,9 @@ lambda (toolbar style)    :run-first
     Accessor of the @slot[gtk:toolbar]{icon-size} slot of the
     @class{gtk:toolbar} class.
   @end{short}
-
-  The @sym{gtk:toolbar-icon-size} slot access function retrieves the icon size
-  for the toolbar. The @sym{(setf gtk:toolbar-icon-size)} slot access function
-  sets the size of stock icons in the toolbar.
+  The @sym{gtk:toolbar-icon-size} function retrieves the icon size for the 
+  toolbar. The @sym{(setf gtk:toolbar-icon-size)} function sets the size of 
+  stock icons in the toolbar.
 
   You can call it both before you add the icons and after they have been added.
   The size you set will override user preferences for the default icon size.
@@ -364,7 +364,7 @@ lambda (toolbar style)    :run-first
   @see-function{gtk:toolbar-unset-icon-size}
   @see-function{gtk:settings-gtk-toolbar-icon-size}")
 
-;;; --- toolbar-icon-size-set ----------------------------------------------
+;;; --- toolbar-icon-size-set --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "icon-size-set" 'toolbar) t)
@@ -376,7 +376,7 @@ lambda (toolbar style)    :run-first
 (setf (liber:alias-for-function 'toolbar-icon-size-set)
       "Accessor"
       (documentation 'toolbar-icon-size-set 'function)
- "@version{#2021-10-30}
+ "@version{#2023-3-28}
   @syntax[]{(gtk:toolbar-icon-size-set object) => setting}
   @syntax[]{(setf (gtk:toolbar-icon-size-set object) setting)}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
@@ -388,7 +388,7 @@ lambda (toolbar style)    :run-first
   @see-class{gtk:toolbar}
   @see-function{gtk:toolbar-icon-size}")
 
-;;; --- toolbar-show-arrow -------------------------------------------------
+;;; --- toolbar-show-arrow -----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "show-arrow" 'toolbar) t)
@@ -400,7 +400,7 @@ lambda (toolbar style)    :run-first
 (setf (liber:alias-for-function 'toolbar-show-arrow)
       "Accessor"
       (documentation 'toolbar-show-arrow 'function)
- "@version{#2021-10-30}
+ "@version{#2023-3-28}
   @syntax[]{(gtk:toolbar-show-arrow object) => setting}
   @syntax[]{(setf (gtk:toolbar-show-arrow object) setting)}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
@@ -409,20 +409,19 @@ lambda (toolbar style)    :run-first
     Accessor of the @slot[gtk:toolbar]{show-arrow} slot of the
     @class{gtk:toolbar} class.
   @end{short}
-
-  The @sym{gtk:toolbar-show-arrow} slot access function returns whether the
-  toolbar has an overflow menu. The @sym{(setf gtk:toolbar-show-arrow)} slot
-  access function sets whether to show an overflow menu when the toolbar is not
-  allocated enough size to show all of its items. If @em{true}, items which
-  cannot fit in the toolbar, and which have a proxy menu item set by the
-  @fun{gtk:tool-item-proxy-menu-item} function or a \"create-menu-proxy\"
-  signal handler, will be available in an overflow menu, which can be opened by
-  an added arrow button. If @em{false}, the toolbar will request enough size to
-  fit all of its child items without any overflow.
+  The @sym{gtk:toolbar-show-arrow} function returns whether the toolbar has an 
+  overflow menu. The @sym{(setf gtk:toolbar-show-arrow)} function sets whether 
+  to show an overflow menu when the toolbar is not allocated enough size to show 
+  all of its items. If @em{true}, items which cannot fit in the toolbar, and 
+  which have a proxy menu item set by the @fun{gtk:tool-item-proxy-menu-item} 
+  function or a \"create-menu-proxy\" signal handler, will be available in an 
+  overflow menu, which can be opened by an added arrow button. If @em{false}, 
+  the toolbar will request enough size to fit all of its child items without 
+  any overflow.
   @see-class{gtk:toolbar}
   @see-function{gtk:tool-item-proxy-menu-item}")
 
-;;; --- toolbar-toolbar-style ----------------------------------------------
+;;; --- toolbar-toolbar-style --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "toolbar-style" 'toolbar) t)
@@ -435,7 +434,7 @@ lambda (toolbar style)    :run-first
 (setf (liber:alias-for-function 'toolbar-toolbar-style)
       "Accessor"
       (documentation 'toolbar-toolbar-style 'function)
- "@version{#2021-10-30}
+ "@version{#2023-3-28}
   @syntax[]{(gtk:toolbar-toolbar-style object) => style}
   @syntax[]{(setf (gtk:toolbar-toolbar-style object) style)}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
@@ -445,11 +444,10 @@ lambda (toolbar style)    :run-first
     Accessor of the @slot[gtk:toolbar]{toolbar-style} slot of the
     @class{gtk:toolbar} class.
   @end{short}
-
-  The @sym{gtk:toolbar-toolbar-style} slot access function retrieves whether
-  the toolbar has text, icons, or both. The
-  @sym{(setf gtk:toolbar-toolbar-style)} slot access function alters the view
-  of the toolbar to display either icons only, text only, or both.
+  The @sym{gtk:toolbar-toolbar-style} function retrieves whether the toolbar 
+  has text, icons, or both. The @sym{(setf gtk:toolbar-toolbar-style)} function
+  alters the view of the toolbar to display either icons only, text only, or 
+  both.
   @see-class{gtk:toolbar}
   @see-symbol{gtk:toolbar-style}
   @see-function{gtk:toolbar-unset-style}")
@@ -458,7 +456,7 @@ lambda (toolbar style)    :run-first
 ;;; Accessors of Child Properties
 ;;; ----------------------------------------------------------------------------
 
-;;; --- toolbar-child-expand -----------------------------------------------
+;;; --- toolbar-child-expand ---------------------------------------------------
 
 (define-child-property toolbar-child-expand "expand" "gboolean" t t t)
 
@@ -466,7 +464,7 @@ lambda (toolbar style)    :run-first
 (setf (liber:alias-for-function 'toolbar-child-expand)
       "Accessor"
       (documentation 'toolbar-child-expand 'function)
- "@version{#2021-10-30}
+ "@version{#2023-3-28}
   @syntax[]{(gtk:toolbar-child-expand container child) => expand}
   @syntax[]{(setf (gtk:toolbar-child-expand container child) expand)}
   @argument[container]{a @class{gtk:toolbar} widget}
@@ -488,7 +486,7 @@ lambda (toolbar style)    :run-first
 (setf (liber:alias-for-function 'toolbar-child-homogeneous)
       "Accessor"
       (documentation 'toolbar-child-homogeneous 'function)
- "@version{#2021-10-30}
+ "@version{#2023-3-28}
   @syntax[]{(gtk:toolbar-child-homogeneous container child) => expand}
   @syntax[]{(setf (gtk:toolbar-child-homogeneous container child) expand)}
   @argument[container]{a @class{gtk:toolbar} widget}
@@ -510,7 +508,7 @@ lambda (toolbar style)    :run-first
 
 (defun toolbar-new ()
  #+liber-documentation
- "@version{#2021-10-30}
+ "@version{#2023-3-28}
   @return{The newly created @class{gtk:toolbar} widget.}
   @begin{short}
     Creates a new toolbar.
@@ -526,7 +524,7 @@ lambda (toolbar style)    :run-first
 
 (defcfun ("gtk_toolbar_insert" toolbar-insert) :void
  #+liber-documentation
- "@version{#2021-11-30}
+ "@version{#2023-3-28}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
   @argument[item]{a @class{gtk:tool-item} widget}
   @argument[pos]{an integer with the position of the new item}
@@ -551,7 +549,7 @@ lambda (toolbar style)    :run-first
 
 (defcfun ("gtk_toolbar_get_item_index" toolbar-item-index) :int
  #+liber-documentation
- "@version{#2021-10-30}
+ "@version{#2023-3-28}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
   @argument[item]{a @class{gtk:tool-item} widget that is a child of
     @arg{toolbar}}
@@ -573,7 +571,7 @@ lambda (toolbar style)    :run-first
 
 (defcfun ("gtk_toolbar_get_n_items" toolbar-n-items) :int
  #+liber-documentation
- "@version{#2021-10-30}
+ "@version{#2023-3-28}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
   @return{An integer with the number of @class{gtk:tool-item} widgets on the
     toolbar.}
@@ -590,7 +588,7 @@ lambda (toolbar style)    :run-first
 
 (defcfun ("gtk_toolbar_get_nth_item" toolbar-nth-item) g:object
  #+liber-documentation
- "@version{#2021-10-30}
+ "@version{#2023-3-28}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
   @argument[n]{an integer with a position on the toolbar}
   @return{The nth @class{gtk:tool-item} widget on @arg{toolbar}, or
@@ -612,7 +610,7 @@ lambda (toolbar style)    :run-first
 
 (defcfun ("gtk_toolbar_get_drop_index" toolbar-drop-index) :int
  #+liber-documentation
- "@version{#2021-10-30}
+ "@version{#2023-3-28}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
   @argument[x]{an integer with the x coordinate of a point on the toolbar}
   @argument[y]{an integer with the y coordinate of a point on the toolbar}
@@ -635,10 +633,10 @@ lambda (toolbar style)    :run-first
 ;;; gtk_toolbar_set_drop_highlight_item ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_toolbar_set_drop_highlight_item"
-          toolbar-set-drop-highlight-item) :void
+(defcfun ("gtk_toolbar_set_drop_highlight_item" toolbar-set-drop-highlight-item) 
+    :void
  #+liber-documentation
- "@version{#2021-10-30}
+ "@version{#2023-3-28}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
   @argument[item]{a @class{gtk:tool-item} widget, or @code{nil} to turn of
     highlighting}
@@ -667,7 +665,7 @@ lambda (toolbar style)    :run-first
 
 (defcfun ("gtk_toolbar_unset_icon_size" toolbar-unset-icon-size) :void
  #+liber-documentation
- "@version{#2021-10-30}
+ "@version{#2023-3-28}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
   @begin{short}
     Unsets icon size of the toolbar set with the @fun{gtk:toolbar-icon-size}
@@ -685,7 +683,7 @@ lambda (toolbar style)    :run-first
 
 (defcfun ("gtk_toolbar_get_relief_style" toolbar-relief-style) relief-style
  #+liber-documentation
- "@version{#2021-10-30}
+ "@version{#2023-3-28}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
   @return{The relief style of type @symbol{gtk:relief-style} of buttons on
     @arg{toolbar}.}
@@ -706,7 +704,7 @@ lambda (toolbar style)    :run-first
 
 (defcfun ("gtk_toolbar_unset_style" toolbar-unset-style) :void
  #+liber-documentation
- "@version{#2021-10-30}
+ "@version{#2023-3-28}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
   @begin{short}
     Unsets a toolbar style set with the @fun{gtk:toolbar-toolbar-style}
@@ -719,4 +717,4 @@ lambda (toolbar style)    :run-first
 
 (export 'toolbar-unset-style)
 
-;;; --- End of file gtk.toolbar.lisp -------------------------------------------
+;;; --- End of file gtk3.toolbar.lisp ------------------------------------------

@@ -1,30 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.viewport.lisp
+;;; gtk3.viewport.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK+ library.
+;;; The documentation of this file is taken from the GTK 3 Reference Manual
+;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2021 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkViewport
@@ -50,7 +50,7 @@
 ;;;
 ;;; Properties
 ;;;
-;;;     GtkShadowType    shadow-type    Read / Write
+;;;     shadow-type
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -86,7 +86,7 @@
 
 #+liber-documentation
 (setf (documentation 'viewport 'type)
- "@version{#2021-3-19}
+ "@version{#2023-3-29}
   @begin{short}
     The @sym{gtk:viewport} widget acts as an adaptor class, implementing
     scrollability for child widgets that lack their own scrolling capabilities.
@@ -94,13 +94,13 @@
   Use the @sym{gtk:viewport} widget to scroll child widgets such as the widgets
   @class{gtk:grid}, @class{gtk:box}, and so on.
 
-  If a widget has native scrolling abilities, such as the widgets
-  @class{gtk:text-view}, @class{gtk:tree-view} or @class{gtk:icon-view},
-  it can be added to a @class{gtk:scrolled-window} widget with the function
-  @fun{gtk:container-add}. If a widget does not, you must first add the widget
-  to a @sym{gtk:viewport} widget, then add the viewport to the scrolled window.
-  The function @fun{gtk:container-add} does this automatically if a child that
-  does not implement the @class{gtk:scrollable} interface is added to a
+  If a widget has native scrolling abilities, such as the @class{gtk:text-view}, 
+  @class{gtk:tree-view} or @class{gtk:icon-view} widgets, it can be added to a 
+  @class{gtk:scrolled-window} widget with the @fun{gtk:container-add} function. 
+  If a widget does not, you must first add the widget to a @sym{gtk:viewport} 
+  widget, then add the viewport to the scrolled window. The 
+  @fun{gtk:container-add} function does this automatically if a child that does 
+  not implement the @class{gtk:scrollable} interface is added to a
   @class{gtk:scrolled-window} widget, so you can ignore the presence of the
   viewport.
 
@@ -110,6 +110,7 @@
     The @sym{gtk:viewport} widget has a single CSS node with name
     @code{viewport}.
   @end{dictionary}
+  @see-constructor{gtk:viewport-new}
   @see-slot{gtk:viewport-shadow-type}
   @see-class{gtk:scrolled-window}
   @see-class{gtk:scrollable}")
@@ -118,7 +119,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- viewport-shadow-type -----------------------------------------------
+;;; --- viewport-shadow-type ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "shadow-type" 'viewport) t)
@@ -131,7 +132,7 @@
 (setf (liber:alias-for-function 'viewport-shadow-type)
       "Accessor"
       (documentation 'viewport-shadow-type 'function)
- "@version{#2021-3-18}
+ "@version{#2023-3-29}
   @syntax[]{(gtk:viewport-shadow-type object) => type}
   @syntax[]{(setf (gtk:viewport-shadow-type object) type)}
   @argument[viewport]{a @class{gtk:viewport} widget}
@@ -140,10 +141,9 @@
     Accessor of the @slot[gtk:viewport]{shadow-type} slot of the
     @class{gtk:viewport} class.
   @end{short}
-
-  The slot access function @sym{gtk:viewport-shadow-type} gets the shadow type
-  of the viewport. The slot access function
-  @sym{(setf gtk:viewport-shadow-type)} sets the shadow type.
+  The @sym{gtk:viewport-shadow-type} function gets the shadow type of the 
+  viewport. The @sym{(setf gtk:viewport-shadow-type)} function sets the shadow 
+  type.
   @see-class{gtk:viewport}
   @see-symbol{gtk:shadow-type}")
 
@@ -155,7 +155,7 @@
 
 (defun viewport-new (&optional (hadjustment nil) (vadjustment nil))
  #+liber-documentation
- "@version{#2021-3-18}
+ "@version{#2023-3-29}
   @argument[hadjustment]{horizontal @class{gtk:adjustment} object}
   @argument[vadjustment]{vertical @class{gtk:adjustment} object}
   @return{A new @class{gtk:viewport} widget.}
@@ -259,7 +259,7 @@
 (defcfun ("gtk_viewport_get_bin_window" viewport-bin-window)
     (g:object gdk:window)
  #+liber-documentation
- "@version{#2021-3-18}
+ "@version{#2023-3-29}
   @argument[viewport]{a @class{gtk:viewport} widget}
   @return{A @class{gdk:window} object.}
   @short{Gets the bin window of the viewport.}
@@ -276,7 +276,7 @@
 (defcfun ("gtk_viewport_get_view_window" viewport-view-window)
     (g:object gdk:window)
  #+liber-documentation
- "@version{#2021-3-18}
+ "@version{#2023-3-29}
   @argument[viewport]{a @class{gtk:viewport} widget}
   @return{A @class{gdk:window} object.}
   @short{Gets the view window of the viewport.}
@@ -286,4 +286,4 @@
 
 (export 'viewport-view-window)
 
-;;; --- End of file gtk.viewport.lisp ------------------------------------------
+;;; --- End of file gtk3.viewport.lisp -----------------------------------------

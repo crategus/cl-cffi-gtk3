@@ -1,30 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.tree-sortable.lisp
+;;; gtk3.tree-sortable.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
+;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkTreeSortable
@@ -52,7 +52,7 @@
 ;;;
 ;;; Signals
 ;;;
-;;;     void   sort-column-changed    Run Last
+;;;     sort-column-changed
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -76,13 +76,13 @@
 
 (defconstant +gtk-tree-sortable-default-sort-column-id+ -1
  #+liber-documentation
- "@version{#2021-3-5}
+ "@version{#2023-3-28}
   @variable-value{-1}
   @begin{short}
     The default sort column ID can be used to make a @class{gtk:tree-sortable}
     object use the default sort function.
   @end{short}
-  See also the function @fun{gtk:tree-sortable-sort-column-id}.
+  See also the @fun{gtk:tree-sortable-sort-column-id} function.
   @see-class{gtk:tree-sortable}
   @see-function{gtk:tree-sortable-sort-column-id}")
 
@@ -98,13 +98,13 @@
 
 (defconstant +gtk-tree-sortable-unsorted-sort-column-id+ -2
  #+liber-documentation
- "@version{#2021-3-5}
+ "@version{#2023-3-28}
   @variable-value{-2}
   @begin{short}
     The unsorted sort column ID can be used to make a @class{gtk:tree-sortable}
     object use no sorting.
   @end{short}
-  See also the function @fun{gtk:tree-sortable-sort-column-id}.
+  See also the @fun{gtk:tree-sortable-sort-column-id} function.
   @see-class{gtk:tree-sortable}
   @see-function{gtk:tree-sortable-sort-column-id}")
 
@@ -123,7 +123,7 @@
 (setf (liber:alias-for-class 'tree-sortable)
       "Interface"
       (documentation 'tree-sortable 'type)
- "@version{#2021-3-5}
+ "@version{#2023-3-28}
   @begin{short}
     The @sym{gtk:tree-sortable} interface is an interface to be implemented by
     tree models which support sorting.
@@ -133,7 +133,7 @@
   @begin[Signal Details]{dictionary}
     @subheading{The \"sort-column-changed\" signal}
       @begin{pre}
- lambda (sortable)    : Run Last
+lambda (sortable)    : Run Last
       @end{pre}
       The signal is emitted when the sort column or sort order of @arg{sortable}
       is changed. The signal is emitted before the contents of @arg{sortable}
@@ -222,7 +222,7 @@
 (setf (liber:alias-for-symbol 'tree-iter-compare-func)
       "Callback"
       (liber:symbol-documentation 'tree-iter-compare-func)
- "@version{#2021-3-5}
+ "@version{#2023-3-28}
   @begin{short}
     A @sym{gtk:tree-iter-compare-func} callback function should return a
     negative integer, zero, or a positive integer if @arg{iter1} sorts before
@@ -261,7 +261,7 @@
 (defcfun ("gtk_tree_sortable_sort_column_changed"
            tree-sortable-sort-column-changed) :void
  #+liber-documentation
- "@version{#2021-3-5}
+ "@version{#2023-3-28}
   @argument[sortable]{a @class{gtk:tree-sortable} object}
   @begin{short}
     Emits a \"sort-column-changed\" signal on @arg{sortable}.
@@ -281,9 +281,9 @@
           value
           (list value :ascending))
     (cffi:foreign-funcall "gtk_tree_sortable_set_sort_column_id"
-                     (g:object tree-sortable) sortable
-                     :int column-id
-                     sort-type order)
+                          (g:object tree-sortable) sortable
+                          :int column-id
+                          sort-type order)
     value))
 
 (defcfun ("gtk_tree_sortable_get_sort_column_id"
@@ -294,7 +294,7 @@
 
 (defun tree-sortable-sort-column-id (sortable)
  #+liber-documentation
- "@version{#2021-3-5}
+ "@version{#2023-3-28}
   @syntax[]{(gtk:tree-sortable-sort-column-id sortable) => colum-id, order}
   @syntax[]{(setf (gtk:tree-sortable-sort-column-id sortable) column-id)}
   @syntax[]{(setf (gtk:tree-sortable-sort-column-id sortable) '(column-id order))}
@@ -305,12 +305,11 @@
     Accessor of the sort column ID and the sort order of the tree sortable.
     Returns the current sort column and the order.
   @end{short}
-
-  The function @sym{gtk:tree-sortable-sort-column-id} returns the current sort
-  column ID and the sort order. The function
-  @sym{(setf gtk:tree-sortable-sort-column-id)} sets the sort column id and the
-  sort order. If no sort order is given, the sort order is set to the default
-  value @code{:ascending}.
+  The @sym{gtk:tree-sortable-sort-column-id} function returns the current sort
+  column ID and the sort order. The 
+  @sym{(setf gtk:tree-sortable-sort-column-id)} function sets the sort column 
+  ID and the sort order. If no sort order is given, the sort order is set to 
+  the default value @code{:ascending}.
 
   The sortable will resort itself to reflect this change, after emitting a
   \"sort-column-changed\" signal. The argument @code{column-id} may either be a
@@ -330,8 +329,7 @@
 ;;; gtk_tree_sortable_set_sort_func ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_sortable_set_sort_func" %tree-sortable-set-sort-func)
-    :void
+(defcfun ("gtk_tree_sortable_set_sort_func" %tree-sortable-set-sort-func) :void
   (sortable (g:object tree-sortable))
   (column-id :int)
   (func :pointer)
@@ -340,7 +338,7 @@
 
 (defun tree-sortable-set-sort-func (sortable column-id func)
  #+liber-documentation
- "@version{#2021-3-5}
+ "@version{#2023-3-28}
   @argument[sortable]{a @class{gtk:tree-sortable} object}
   @argument[column-id]{an integer with the sort column ID to set the function
     for}
@@ -374,7 +372,7 @@
 
 (defun tree-sortable-set-default-sort-func (sortable func)
  #+liber-documentation
- "@version{#2021-3-5}
+ "@version{#2023-3-28}
   @argument[sortable]{a @class{gtk:tree-sortable} object}
   @argument[func]{a @symbol{gtk:tree-iter-compare-func} callback function}
   @begin{short}
@@ -390,7 +388,6 @@
   to the default state. In this case, when the current sort column ID of
   @arg{sortable} is @var{+gtk-tree-sortable-default-sort-column-id},
   the model will be unsorted.
-
   @see-class{gtk:tree-sortable}
   @see-symbol{gtk:tree-iter-compare-func}"
   (%tree-sortable-set-default-sort-func
@@ -408,7 +405,7 @@
 (defcfun ("gtk_tree_sortable_has_default_sort_func"
            tree-sortable-has-default-sort-func) :boolean
  #+liber-documentation
- "@version{#2021-3-5}
+ "@version{#2023-3-28}
   @argument[sortable]{a @class{gtk:tree-sortable} object}
   @return{@em{True}, if the model has a default sort function.}
   @begin{short}
@@ -422,4 +419,4 @@
 
 (export 'tree-sortable-has-default-sort-func)
 
-;;; --- End of file gtk.tree-sortable.lisp -------------------------------------
+;;; --- End of file gtk3.tree-sortable.lisp ------------------------------------

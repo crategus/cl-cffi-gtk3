@@ -1,30 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.toggle-tool-button.lisp
+;;; gtk3.toggle-tool-button.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkToggleToolButton
@@ -44,11 +44,11 @@
 ;;;
 ;;; Properties
 ;;;
-;;;     gboolean    active     Read / Write
+;;;     active
 ;;;
 ;;; Signals
 ;;;
-;;;         void    toggled    Run First
+;;;     toggled
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -88,7 +88,7 @@
 
 #+liber-documentation
 (setf (documentation 'toggle-tool-button 'type)
- "@version{#2021-10-31}
+ "@version{#2023-3-28}
   @begin{short}
     A @sym{gtk:toggle-tool-button} widget is a @class{gtk:tool-item} widget
     that contains a toggle button.
@@ -102,7 +102,7 @@
   @begin[Signal Details]{dictionary}
     @subheading{The \"toggled\" signal}
       @begin{pre}
- lambda (button)    :run-first
+lambda (button)    :run-first
       @end{pre}
       Emitted whenever the toggle tool button changes state.
       @begin[code]{table}
@@ -128,7 +128,7 @@
 (setf (liber:alias-for-function 'toggle-tool-button-active)
       "Accessor"
       (documentation 'toggle-tool-button-active 'function)
- "@version{#2021-10-31}
+ "@version{#2023-3-28}
   @syntax[]{(gtk:toggle-tool-button-active object) => setting}
   @syntax[]{(setf (gtk:toggle-tool-button-active object) setting)}
   @argument[object]{a @class{gtk:toggle-tool-button} widget}
@@ -138,11 +138,9 @@
     Accessor of the @slot[gtk:toggle-tool-button]{active} slot of the
     @class{gtk:toggle-tool-button} class.
   @end{short}
-
-  The @sym{gtk:toggle-tool-button-active} slot access function queries a toggle
-  tool button and returns its current state. The
-  @sym{(setf gtk:toggle-tool-button-active)} slot access function sets the
-  status.
+  The @sym{gtk:toggle-tool-button-active} function queries a toggle tool button 
+  and returns its current state. The @sym{(setf gtk:toggle-tool-button-active)} 
+  function sets the status.
 
   Set to @em{true} if you want the toggle tool button to be 'pressed in',
   and @em{false} to raise it. This action causes the \"toggled\" signal to be
@@ -157,7 +155,7 @@
 
 (defun toggle-tool-button-new ()
  #+liber-documentation
- "@version{#2021-10-31}
+ "@version{#2023-3-28}
   @return{A newly created @class{gtk:toggle-tool-button} widget.}
   @begin{short}
     Returns a new toggle tool button.
@@ -175,7 +173,7 @@
 
 (defun toggle-tool-button-new-from-stock (stock)
  #+liber-documentation
- "@version{#2021-10-31}
+ "@version{#2023-3-28}
   @argument[stock]{a string with the name of the stock item}
   @return{A new @class{gtk:toggle-tool-button} widget.}
   @begin{short}
@@ -195,4 +193,4 @@
 
 (export 'toggle-tool-button-new-from-stock)
 
-;;; --- End of file gtk.toggle-tool-button.lisp --------------------------------
+;;; --- End of file gtk3.toggle-tool-button.lisp -------------------------------

@@ -1,29 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.tool-palette.lisp
+;;; gtk3.tool-palette.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK+ library.
+;;; The documentation of this file is taken from the GTK 3 Reference Manual
+;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2012 - 2022 Dieter Kaiser
+;;; Copyright (C) 2012 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkToolPalette
@@ -44,8 +45,8 @@
 ;;;     gtk_tool_palette_set_expand
 ;;;     gtk_tool_palette_get_group_position
 ;;;     gtk_tool_palette_set_group_position
-;;;     gtk_tool_palette_get_icon_size                       Accessor
-;;;     gtk_tool_palette_set_icon_size                       Accessor
+;;;     gtk_tool_palette_get_icon_size                     Accessor
+;;;     gtk_tool_palette_set_icon_size                     Accessor
 ;;;     gtk_tool_palette_unset_icon_size
 ;;;     gtk_tool_palette_get_style
 ;;;     gtk_tool_palette_set_style
@@ -59,19 +60,19 @@
 ;;;     gtk_tool_palette_get_drop_item
 ;;;     gtk_tool_palette_set_drag_source
 ;;;
-;;;     gtk_tool_palette_get_hadjustment                   * deprecated
-;;;     gtk_tool_palette_get_vadjustment                   * deprecated
+;;;     gtk_tool_palette_get_hadjustment                   deprecated
+;;;     gtk_tool_palette_get_vadjustment                   deprecated
 ;;;
 ;;; Properties
 ;;;
-;;;         GtkIconSize    icon-size        Read / Write
-;;;            gboolean    icon-size-set    Read / Write
-;;;     GtkToolbarStyle    toolbar-style    Read / Write
+;;;     icon-size
+;;;     icon-size-set
+;;;     toolbar-style
 ;;;
 ;;; Child Properties
 ;;;
-;;;            gboolean    exclusive        Read / Write
-;;;            gboolean    expand           Read / Write
+;;;     exclusive
+;;;     expand
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -144,14 +145,14 @@
 
 #+liber-documentation
 (setf (documentation 'tool-palette 'type)
- "@version{#2021-3-14}
+ "@version{#2023-3-28}
   @begin{short}
     A @sym{gtk:tool-palette} widget allows you to add @class{gtk:tool-item}
     widgets to a palette-like container with different categories and drag and
     drop support.
   @end{short}
 
-  @image[toolpalette]{}
+  @image[toolpalette]{GtkToolPalette}
 
   A @sym{gtk:tool-palette} widget is created with a call to the
   @fun{gtk:tool-palette-new} function.
@@ -233,6 +234,7 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
       @end{entry}
     @end{table}
   @end{dictionary}
+  @see-constructor{gtk:tool-palette-new}
   @see-slot{gtk:tool-palette-icon-size}
   @see-slot{gtk:tool-palette-icon-size-set}
   @see-slot{gtk:tool-palette-toolbar-style}
@@ -264,7 +266,7 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 (setf (liber:alias-for-function 'tool-palette-icon-size)
       "Accessor"
       (documentation 'tool-palette-icon-size 'function)
- "@version{#2021-3-14}
+ "@version{#2023-3-28}
   @syntax[]{(gtk:tool-palette-icon-size object) => icon-size}
   @syntax[]{(setf (gtk:tool-palette-icon-size object) icon-size)}
   @argument[palette]{a @class{gtk:tool-palette} widget}
@@ -292,7 +294,7 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 (setf (liber:alias-for-function 'tool-palette-icon-size-set)
       "Accessor"
       (documentation 'tool-palette-icon-size-set 'function)
- "@version{#2021-3-14}
+ "@version{#2023-3-28}
   @syntax[]{(gtk:tool-palette-icon-size.set object) => setting}
   @syntax[]{(setf (gtk:tool-palette-icon-size-set object) setting)}
   @argument[palette]{a @class{gtk:tool-palette} widget}
@@ -320,7 +322,7 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 (setf (liber:alias-for-function 'tool-palette-toolbar-style)
       "Accessor"
       (documentation 'tool-palette-toolbar-style 'function)
- "@version{#2021-3-14}
+ "@version{#2023-3-28}
   @syntax[]{(gtk:tool-palette-toolbar-style object) => style}
   @syntax[]{(setf (gtk:tool-palette-toolbar-style object) style)}
   @argument[palette]{a @class{gtk:tool-palette} widget}
@@ -350,7 +352,7 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 (setf (liber:alias-for-function 'tool-palette-child-exclusive)
       "Accessor"
       (documentation 'tool-palette-child-exclusive 'function)
- "@version{#2021-3-14}
+ "@version{#2023-3-28}
   @syntax[]{(gtk:tool-palette-child-exclusive container child) => exclusive}
   @syntax[]{(setf (gtk:tool-palette-child-exclusive container child) exclusive)}
   @argument[container]{a @class{gtk:tool-palette} widget}
@@ -380,7 +382,7 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 (setf (liber:alias-for-function 'tool-palette-child-expand)
       "Accessor"
       (documentation 'tool-palette-child-expand 'function)
- "@version{#2021-3-14}
+ "@version{#2023-3-28}
   @syntax[]{(gtk:tool-palette-child-expand container child) => expand}
   @syntax[]{(setf (gtk:tool-palette-child-expand container child) expand)}
   @argument[container]{a @class{gtk:tool-palette} widget}
@@ -406,7 +408,7 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 
 (defun tool-palette-new ()
  #+liber-documentation
- "@version{#2021-3-14}
+ "@version{#2023-3-28}
   @return{A new @class{gtk:tool-palette} widget.}
   @short{Creates a new tool palette.}
   @see-class{gtk:tool-palette}"
@@ -445,16 +447,16 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 
 (defun (setf tool-palette-group-position) (position palette group)
   (cffi:foreign-funcall "gtk_tool_palette_set_group_position"
-                   (g:object tool-palette) palette
-                   (g:object tool-item-group) group
-                   :int position
-                   :void)
+                        (g:object tool-palette) palette
+                        (g:object tool-item-group) group
+                        :int position
+                        :void)
   position)
 
 (defcfun ("gtk_tool_palette_get_group_position" tool-palette-group-position)
     :int
  #+liber-documentation
- "@version{#2021-3-14}
+ "@version{#2023-3-28}
   @syntax[]{(gtk:tool-palette-group-position palette group) => position}
   @syntax[]{(setf (gtk:tool-palette-group-position palette group) position)}
   @argument[palette]{a @class{gtk:tool-palette} widget}
@@ -483,7 +485,7 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 
 (defcfun ("gtk_tool_palette_unset_icon_size" tool-palette-unset-icon-size) :void
  #+liber-documentation
- "@version{#2021-3-14}
+ "@version{#2023-3-28}
   @argument[palette]{a @class{gtk:tool-palette} widget}
   @begin{short}
     Unsets the tool palette icon size set with the
@@ -514,7 +516,7 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 
 (defcfun ("gtk_tool_palette_unset_style" tool-palette-unset-style) :void
  #+liber-documentation
- "@version{#2021-3-14}
+ "@version{#2023-3-28}
   @argument[palette]{a @class{gtk:tool-palette} widget}
   @begin{short}
     Unsets a toolbar style set with the @fun{gtk:tool-palette-toolbar-style}
@@ -533,7 +535,7 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 
 (defcfun ("gtk_tool_palette_add_drag_dest" tool-palette-add-drag-dest) :void
  #+liber-documentation
- "@version{#2021-3-14}
+ "@version{#2023-3-28}
   @argument[palette]{a @class{gtk:tool-palette} widget}
   @argument[widget]{a @class{gtk:widget} object which should be a drag
     destination for @arg{palette}}
@@ -570,7 +572,7 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 (defcfun ("gtk_tool_palette_get_drag_item" tool-palette-drag-item)
     (g:object widget)
  #+liber-documentation
- "@version{#2021-3-14}
+ "@version{#2023-3-28}
   @argument[palette]{a @class{gtk:tool-palette} widget}
   @argument[selection]{a @class{gtk:selection-data} object}
   @return{The @class{gtk:widget} dragged item in @arg{selection}.}
@@ -597,7 +599,7 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 
 (defun tool-palette-drag-target-group ()
  #+liber-documentation
- "@version{#2021-10-2}
+ "@version{#2023-3-28}
   @return{A list with the target entry for a dragged group.}
   @begin{short}
     Gets the target entry for a dragged @class{gtk:tool-item-group} widget.
@@ -622,7 +624,7 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 
 (defun tool-palette-drag-target-item ()
  #+liber-documentation
- "@version{#2021-10-2}
+ "@version{#2023-3-28}
   @return{A list with the target entry for a dragged item.}
   @begin{short}
     Gets the target entry for a dragged @class{gtk:tool-item} widget.
@@ -644,7 +646,7 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 (defcfun ("gtk_tool_palette_get_drop_group" tool-palette-drop-group)
     (g:object tool-item-group)
  #+liber-documentation
- "@version{#2021-3-14}
+ "@version{#2023-3-28}
   @argument[palette]{a @class{gtk:tool-palette} widget}
   @argument[x]{an integer with the x position}
   @argument[y]{an integer with the y position}
@@ -668,7 +670,7 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 (defcfun ("gtk_tool_palette_get_drop_item" tool-palette-drop-item)
     (g:object tool-item)
  #+liber-documentation
- "@version{#2021-3-14}
+ "@version{#2023-3-28}
   @argument[palette]{a @class{gtk:tool-palette} widget}
   @argument[x]{an integer with the x position}
   @argument[y]{an integer with the y position}
@@ -693,10 +695,9 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 ;;; gtk_tool_palette_set_drag_source ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tool_palette_set_drag_source" tool-palette-set-drag-source)
-    :void
+(defcfun ("gtk_tool_palette_set_drag_source" tool-palette-set-drag-source) :void
  #+liber-documentation
- "@version{#2021-3-14}
+ "@version{#2023-3-28}
   @argument[palette]{a @class{gtk:tool-palette} widget}
   @argument[targets]{the @symbol{gtk:tool-palette-drag-targets} flags which the
     widget should support}
@@ -757,4 +758,4 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 ;;; Since 2.20
 ;;; ----------------------------------------------------------------------------
 
-;;; --- End of file gtk.tool-palette.lisp --------------------------------------
+;;; --- End of file gtk3.tool-palette.lisp -------------------------------------

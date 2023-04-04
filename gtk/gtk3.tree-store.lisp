@@ -1,30 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.tree-store.lisp
+;;; gtk3.tree-store.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkTreeStore
@@ -89,7 +89,7 @@
 
 #+liber-documentation
 (setf (documentation 'tree-store 'type)
- "@version{#2021-3-3}
+ "@version{#2023-3-28}
   @begin{short}
     The @sym{gtk:tree-store} object is a list model for use with a
     @class{gtk:tree-view} widget.
@@ -139,7 +139,7 @@
 
 (defun tree-store-new (&rest column-types)
  #+liber-documentation
- "@version{#2021-3-3}
+ "@version{#2023-3-28}
   @argument[column-types]{all @class{g:type-t} types for the columns, from
     first to last}
   @return{A new @class{gtk:tree-store} object.}
@@ -190,7 +190,7 @@
 
 (defun tree-store-set-column-types (store types)
  #+liber-documentation
- "@version{#2021-3-11}
+ "@version{#2023-3-28}
   @argument[store]{a @class{gtk:tree-store} object}
   @argument[types]{a list @class{g:type-t} types, one for each column}
   @begin{short}
@@ -218,7 +218,7 @@
 
 (defun tree-store-set (store iter &rest values)
  #+liber-documentation
- "@version{#2021-3-3}
+ "@version{#2023-3-28}
   @argument[store]{a @class{gtk:tree-store} object}
   @argument[iter]{a valid @class{gtk:tree-iter} iterator for the row being
     modified}
@@ -309,7 +309,7 @@
 
 (defun tree-store-set-value (store iter column value)
  #+liber-documentation
- "@version{#2021-3-3}
+ "@version{#2023-3-28}
   @argument[store]{a @class{gtk:tree-store} object}
   @argument[iter]{a valid @class{gtk:tree-iter} iterator for the row being
     modified}
@@ -367,7 +367,7 @@
 
 (defcfun ("gtk_tree_store_remove" tree-store-remove) :boolean
  #+liber-documentation
- "@version{#2021-3-5}
+ "@version{#2023-3-28}
   @argument[store]{a @class{gtk:tree-store} object}
   @argument[iter]{a valid @class{gtk:tree-iter} iterator}
   @return{@em{True} if @arg{iter} is still valid, @code{nil} if not.}
@@ -396,7 +396,7 @@
 
 (defun tree-store-insert (store parent position)
  #+liber-documentation
- "@version{#2021-3-11}
+ "@version{#2023-3-28}
   @argument[store]{a @class{gtk:tree-store} object}
   @argument[parent]{a valid @class{gtk:tree-iter} iterator, or @code{nil}}
   @argument[position]{an integer with the position to insert the new row}
@@ -434,7 +434,7 @@
 
 (defun tree-store-insert-before (store parent sibling)
  #+liber-documentation
- "@version{#2021-3-11}
+ "@version{#2023-3-28}
   @argument[store]{a @class{gtk:tree-store} object}
   @argument[parent]{a valid @class{gtk:tree-iter} iterator, or @code{nil}}
   @argument[sibling]{a valid @class{gtk:tree-iter} iterator, or @code{nil}}
@@ -472,7 +472,7 @@
 
 (defun tree-store-insert-after (store parent sibling)
  #+liber-documentation
- "@version{#2021-3-11}
+ "@version{#2023-3-28}
   @argument[store]{a @class{gtk:tree-store} object}
   @argument[parent]{a valid @class{gtk:tree-iter} iterator, or @code{nil}}
   @argument[sibling]{a valid @class{gtk:tree-iter} iterator, or @code{nil}}
@@ -504,7 +504,7 @@
 
 (defun tree-store-insert-with-values (store parent position &rest values)
  #+liber-documentation
- "@version{#2021-3-11}
+ "@version{#2023-3-28}
   @argument[store]{a @class{gtk:tree-store} object}
   @argument[parent]{a valid @class{gtk:tree-iter} iterator, or @code{nil}}
   @argument[position]{an integer with the position to insert the new row, or -1
@@ -602,7 +602,7 @@
 
 (defun tree-store-prepend (store parent)
  #+liber-documentation
- "@version{#2021-3-11}
+ "@version{#2023-3-28}
   @argument[store]{a @class{gtk:tree-store} object}
   @argument[parent]{a valid @class{gtk:tree-iter} iterator, or @code{nil}}
   @return{A @class{gtk:tree-iterator} iterator.}
@@ -635,7 +635,7 @@
 
 (defun tree-store-append (store parent)
  #+liber-documentation
- "@version{#2021-3-3}
+ "@version{#2023-3-28}
   @argument[store]{a @class{gtk:tree-store} object}
   @argument[parent]{a valid @class{gtk:tree-iter} iterator, or @code{nil}}
   @return{The @class{gtk:tree-iter} iterator of the appended row.}
@@ -663,7 +663,7 @@
 
 (defcfun ("gtk_tree_store_is_ancestor" tree-store-is-ancestor) :boolean
  #+liber-documentation
- "@version{#2021-3-11}
+ "@version{#2023-3-28}
   @argument[store]{a @class{gtk:tree-store} object}
   @argument[iter]{a valid @class{gtk:tree-iter} iterator}
   @argument[descendant]{a valid @class{gtk:tree-iter} iterator}
@@ -687,7 +687,7 @@
 
 (defcfun ("gtk_tree_store_iter_depth" tree-store-iter-depth) :int
  #+liber-documentation
- "@version{#2021-3-11}
+ "@version{#2023-3-28}
   @argument[store]{a @class{gtk:tree-store} object}
   @argument[iter]{a valid @class{gtk:tree-iter} iterator}
   @return{The depth of @arg{iter}.}
@@ -709,7 +709,7 @@
 
 (defcfun ("gtk_tree_store_clear" tree-store-clear) :void
  #+liber-documentation
- "@version{#2021-3-5}
+ "@version{#2023-3-28}
   @argument[store]{a @class{gtk:tree-store} object}
   @short{Removes all rows from the tree store.}
   @see-class{gtk:tree-store}"
@@ -723,7 +723,7 @@
 
 (defcfun ("gtk_tree_store_iter_is_valid" tree-store-iter-is-valid) :boolean
  #+liber-documentation
- "@version{#2021-3-11}
+ "@version{#2023-3-28}
   @argument[store]{a @class{gtk:tree-store} object}
   @argument[iter]{a @class{gtk:tree-iter} iterator}
   @return{@em{True} if @arg{iter} is valid, @code{nil} if @arg{iter} is
@@ -753,7 +753,7 @@
 
 (defun tree-store-reorder (store parent order)
  #+liber-documentation
- "@version{#2021-3-11}
+ "@version{#2023-3-28}
   @argument[store]{a @class{gtk:list-store} object}
   @argument[parent]{a @class{gtk:tree-iter} iterator}
   @argument[order]{a list of integer mapping the new position of each child row
@@ -780,7 +780,7 @@
 
 (defcfun ("gtk_tree_store_swap" tree-store-swap) :void
  #+liber-documentation
- "@version{#2021-3-11}
+ "@version{#2023-3-28}
   @argument[store]{a @class{gtk:tree-store} object}
   @argument[a]{a @class{gtk:tree-iter} iterator}
   @argument[b]{another @class{gtk:tree-iter} iterator}
@@ -802,7 +802,7 @@
 
 (defcfun ("gtk_tree_store_move_before" tree-store-move-before) :void
  #+liber-documentation
- "@version{#2021-3-11}
+ "@version{#2023-3-28}
   @argument[store]{a @class{gtk:tree-store}}
   @argument[iter]{a @class{gtk:tree-iter} iterator}
   @argument[position]{a @class{gtk:tree-iter} iterator or @code{nil}}
@@ -827,7 +827,7 @@
 
 (defcfun ("gtk_tree_store_move_after" tree-store-move-after) :void
  #+liber-documentation
- "@version{#2021-3-11}
+ "@version{#2023-3-28}
   @argument[store]{a @class{gtk:tree-store} object}
   @argument[iter]{a @class{gtk:tree-iter} iterator}
   @argument[position]{a @class{gtk:tree-iter} iterator}
@@ -846,4 +846,4 @@
 
 (export 'tree-store-move-after)
 
-;;; --- End of file gtk.tree-store.lisp ----------------------------------------
+;;; --- End of file gtk3.tree-store.lisp ---------------------------------------

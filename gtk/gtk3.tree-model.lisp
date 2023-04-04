@@ -4,27 +4,27 @@
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
 ;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkTreeModel
@@ -233,6 +233,7 @@
   @begin{short}
     The @sym{gtk:tree-path} structure is opaque, and has no user visible fields.
   @end{short}
+  @see-constructor{gtk:tree-path-new}
   @see-class{gtk:tree-model}
   @see-class{gtk:tree-iter}")
 
@@ -666,6 +667,7 @@
   The @sym{gtk:tree-row-reference} structure is opaque, and has no user visible
   fields. Create a new @sym{gtk:tree-row-reference} instance with the
   @fun{gtk:tree-row-reference-new} function.
+  @see-constructor{gtk:tree-row-reference-new}
   @see-class{gtk:tree-path}
   @see-function{gtk:tree-row-reference-new}")
 
@@ -953,7 +955,7 @@
 (setf (liber:alias-for-class 'tree-model)
       "Interface"
       (documentation 'tree-model 'type)
- "@version{#2021-2-3}
+ "@version{#2023-3-28}
   @begin{short}
     The @sym{gtk:tree-model} interface defines a generic tree interface for use
     by the @class{gtk:tree-view} widget.
@@ -997,12 +999,12 @@
   By contrast, a @class{gtk:tree-iter} iterator is a reference to a specific
   node on a specific model. It is a generic structure with an integer and three
   generic pointers. These are filled in by the model in a model-specific way.
-  One can convert a path to an iterator by calling the function
-  @fun{gtk:tree-model-iter}. These iterators are the primary way of accessing a
-  model and are similar to the iterators used by the @class{gtk:text-buffer}
-  class. They are generally statically allocated on the stack and only used for
-  a short time. The model interface defines a set of operations using them for
-  navigating the model.
+  One can convert a path to an iterator by calling the @fun{gtk:tree-model-iter}
+  function. These iterators are the primary way of accessing a model and are 
+  similar to the iterators used by the @class{gtk:text-buffer} class. They are 
+  generally statically allocated on the stack and only used for a short time. 
+  The model interface defines a set of operations using them for navigating the 
+  model.
 
   It is expected that models fill in the iterator with private data. For
   example, the @class{gtk:list-store} model, which is internally a simple
@@ -1098,7 +1100,7 @@
   @begin[Signal Details]{dictionary}
     @subheading{The \"row-changed\" signal}
       @begin{pre}
- lambda (model path iter)    :run-last
+lambda (model path iter)    :run-last
       @end{pre}
       The signal is emitted when a row in the model has changed.
       @begin[code]{table}
@@ -1111,7 +1113,7 @@
       @end{table}
     @subheading{The \"row-deleted\" signal}
       @begin{pre}
- lambda (model path)    :run-first
+lambda (model path)    :run-first
       @end{pre}
       The signal is emitted when a row has been deleted. Note that no iterator
       is passed to the signal handler, since the row is already deleted. This
@@ -1125,7 +1127,7 @@
       @end{table}
     @subheading{The \"row-has-child-toggled\" signal}
       @begin{pre}
- lambda (model path iter)    :run-last
+lambda (model path iter)    :run-last
       @end{pre}
       The signal is emitted when a row has gotten the first child row or lost
       its last child row.
@@ -1138,7 +1140,7 @@
       @end{table}
     @subheading{The \"row-inserted\" signal}
       @begin{pre}
- lambda (model path iter)    :run-first
+lambda (model path iter)    :run-first
       @end{pre}
       The signal is emitted when a new row has been inserted in the model. Note
       that the row may still be empty at this point, since it is a common
@@ -1153,7 +1155,7 @@
       @end{table}
     @subheading{The \"rows-reordered\" signal}
       @begin{pre}
- lambda (model path iter new-order)    :run-first
+lambda (model path iter new-order)    :run-first
       @end{pre}
       The signal is emitted when the children of a node in the
       @class{gtk:tree-model} object have been reordered. Note that the signal
@@ -1182,7 +1184,7 @@
 
 (defcfun ("gtk_tree_model_get_flags" tree-model-flags) tree-model-flags
  #+liber-documentation
- "@version{#2021-3-4}
+ "@version{#2023-3-28}
   @argument[model]{a @class{gtk:tree-model} object}
   @return{The @symbol{gtk:model-flags} flags supported by this interface.}
   @begin{short}
@@ -1202,7 +1204,7 @@
 
 (defcfun ("gtk_tree_model_get_n_columns" tree-model-n-columns) :int
  #+liber-documentation
- "@version{#2021-3-4}
+ "@version{#2023-3-28}
   @argument[model]{a @class{gtk:tree-model} object}
   @return{An integer with the number of columns.}
   @begin{short}
@@ -1220,7 +1222,7 @@
 
 (defcfun ("gtk_tree_model_get_column_type" tree-model-column-type) g:type-t
  #+liber-documentation
- "@version{#2021-3-4}
+ "@version{#2023-3-28}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[index]{an integer with the column index}
   @return{The @class{g:type-t} type of the column.}
@@ -1245,7 +1247,7 @@
 
 (defun tree-model-iter (model path)
  #+liber-documentation
- "@version{#2021-3-4}
+ "@version{#2023-3-28}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[path]{the @class{gtk:tree-path} instance}
   @return{The @class{gtk:tree-iter} iterator or @code{nil}, if the iterator is
@@ -1275,7 +1277,7 @@
 
 (defun tree-model-iter-from-string (model pathstr)
  #+liber-documentation
- "@version{#2021-3-4}
+ "@version{#2023-3-28}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[pathstr]{a string representation of a @class{gtk:tree-path} object}
   @return{The @class{gtk:tree-iter} iterator.}
@@ -1296,14 +1298,13 @@
 ;;; gtk_tree_model_get_iter_first () -> tree-model-iter-first
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_model_get_iter_first" %tree-model-iter-first)
-    :boolean
+(defcfun ("gtk_tree_model_get_iter_first" %tree-model-iter-first) :boolean
   (model (g:object tree-model))
   (iter (g:boxed tree-iter)))
 
 (defun tree-model-iter-first (model)
  #+liber-documentation
- "@version{#2021-3-4}
+ "@version{#2023-3-28}
   @argument[model]{a @class{gtk:tree-model} object}
   @return{A @class{gtk:tree-iter} iterator.}
   @begin{short}
@@ -1323,10 +1324,9 @@
 ;;; gtk_tree_model_get_path () -> tree-model-path
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_model_get_path" tree-model-path)
-     (g:boxed tree-path :return)
+(defcfun ("gtk_tree_model_get_path" tree-model-path) (g:boxed tree-path :return)
  #+liber-documentation
- "@version{#2021-3-4}
+ "@version{#2023-3-28}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[iter]{a @class{gtk:tree-iter} iterator}
   @return{A newly created @class{gtk:tree-path} instance.}
@@ -1353,7 +1353,7 @@
 
 (defun tree-model-value (model iter column)
  #+liber-documentation
- "@version{#2021-3-13}
+ "@version{#2023-3-28}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[iter]{the @class{gtk:tree-iter} iterator}
   @argument[column]{an integer with the column to lookup the value at}
@@ -1382,7 +1382,7 @@
 
 (defun tree-model-iter-next (model iter)
  #+liber-documentation
- "@version{#2021-3-4}
+ "@version{#2023-3-28}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[iter]{a @class{gtk:tree-iter} iterator}
   @return{A @class{gtk:tree-iter} iterator.}
@@ -1410,7 +1410,7 @@
 
 (defun tree-model-iter-previous (model iter)
  #+liber-documentation
- "@version{#2021-3-4}
+ "@version{#2023-3-28}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[iter]{a @class{gtk:tree-iter} iterator}
   @return{A @class{gtk:tree-iter} iterator.}
@@ -1437,7 +1437,7 @@
 
 (defun tree-model-iter-children (model parent)
  #+liber-documentation
- "@version{#2021-3-4}
+ "@version{#2023-3-28}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[parent]{a @class{gtk:tree-iter} iterator, or @code{nil}}
   @return{A @class{gtk:tree-iter} iterator.}
@@ -1466,10 +1466,9 @@
 ;;; gtk_tree_model_iter_has_child ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_model_iter_has_child" tree-model-iter-has-child)
-    :boolean
+(defcfun ("gtk_tree_model_iter_has_child" tree-model-iter-has-child) :boolean
  #+liber-documentation
- "@version{#2021-3-4}
+ "@version{#2023-3-28}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[iter]{the @class{gtk:tree-iter} iterator to test for children}
   @return{@em{True} if @arg{iter} has children.}
@@ -1489,7 +1488,7 @@
 
 (defcfun ("gtk_tree_model_iter_n_children" tree-model-iter-n-children) :int
  #+liber-documentation
- "@version{#2021-3-4}
+ "@version{#2023-3-28}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[iter]{a @class{gtk:tree-iter} iterator, or @code{nil}}
   @return{The number of children of @arg{iter}.}
@@ -1509,8 +1508,7 @@
 ;;; gtk_tree_model_iter_nth_child ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_model_iter_nth_child" %tree-model-iter-nth-child)
-    :boolean
+(defcfun ("gtk_tree_model_iter_nth_child" %tree-model-iter-nth-child) :boolean
   (model (g:object tree-model))
   (iter (g:boxed tree-iter))
   (parent (g:boxed tree-iter))
@@ -1518,7 +1516,7 @@
 
 (defun tree-model-iter-nth-child (model parent n)
  #+liber-documentation
- "@version{#2021-3-4}
+ "@version{#2023-3-28}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[parent]{a @class{gtk:tree-iter} iterator to get the child from, or
     @code{nil}}
@@ -1550,7 +1548,7 @@
 
 (defun tree-model-iter-parent (model child)
  #+liber-documentation
- "@version{#2021-3-4}
+ "@version{#2023-3-28}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[child]{a @class{gtk:tree-iter} iterator}
   @return{A @class{gtk:tree-iter} iterator to the parent.}
@@ -1576,7 +1574,7 @@
 (defcfun ("gtk_tree_model_get_string_from_iter"
            tree-model-string-from-iter) (:string :free-from-foreign t)
  #+liber-documentation
- "@version{#2021-3-4}
+ "@version{#2023-3-28}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[iter]{a @class{gtk:tree-iter} instance}
   @return{A string representation of @arg{iter}.}
@@ -1598,13 +1596,12 @@
 
 (defcfun ("gtk_tree_model_ref_node" tree-model-ref-node) :void
  #+liber-documentation
- "@version{#2021-3-4}
+ "@version{#2023-3-28}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[iter]{the @class{gtk:tree-iter} iterator}
   @begin{short}
     Lets the tree ref the node.
   @end{short}
-
   This is an optional method for models to implement. To be more specific,
   models may ignore this call as it exists primarily for performance reasons.
 
@@ -1629,17 +1626,16 @@
 
 (defcfun ("gtk_tree_model_unref_node" tree-model-unref-node) :void
  #+liber-documentation
- "@version{#2020-6-28}
+ "@version{#2023-3-28}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[iter]{the @class{gtk:tree-iter} iterator}
   @begin{short}
     Lets the tree unref the node.
   @end{short}
-
   This is an optional method for models to implement. To be more specific,
   models may ignore this call as it exists primarily for performance reasons.
-  For more information on what this means, see the function
-  @fun{gtk:tree-model-ref-node}.
+  For more information on what this means, see the @fun{gtk:tree-model-ref-node}
+  function.
 
   Please note that nodes that are deleted are not unreffed.
   @see-class{gtk:tree-model}
@@ -1657,7 +1653,7 @@
 
 (defun tree-model-get (model iter &rest colums)
  #+liber-documentation
- "@version{#2021-3-4}
+ "@version{#2023-3-28}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[iter]{a @class{gtk:tree-iter} iterator to a row}
   @argument[columns]{a list of integers with column numbers}
@@ -1723,13 +1719,13 @@
 (setf (liber:alias-for-symbol 'tree-model-foreach-func)
       "Callback"
       (liber:symbol-documentation 'tree-model-foreach-func)
- "@version{#2021-12-9}
+ "@version{#2023-3-28}
   @begin{short}
     Type of the callback function passed to the @fun{gtk:tree-model-foreach}
     function to iterate over the rows in a tree model.
   @end{short}
   @begin{pre}
- lambda (model path iter)
+lambda (model path iter)
   @end{pre}
   @begin[code]{table}
     @entry[model]{The @class{gtk:tree-model} object being iterated.}
@@ -1755,7 +1751,7 @@
 
 (defun tree-model-foreach (model func)
  #+liber-documentation
- "@version{#2021-3-4}
+ "@version{#2023-3-28}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[func]{a @symbol{gtk:tree-model-foreach-func} callback function to
     be called on each row}
@@ -1763,7 +1759,7 @@
     Calls @arg{func} on each node in @arg{model} in a depth-first fashion.
   @end{short}
   If @arg{func} returns @em{true}, then the tree ceases to be walked, and the
-  function @sym{gtk:tree-model-foreach} returns.
+  @sym{gtk:tree-model-foreach} function returns.
   @see-class{gtk:tree-model}
   @see-symbol{gtk:tree-model-foreach-func}"
   (with-stable-pointer (ptr func)
@@ -1779,7 +1775,7 @@
 
 (defcfun ("gtk_tree_model_row_changed" tree-model-row-changed) :void
  #+liber-documentation
- "@version{#2021-3-4}
+ "@version{#2023-3-28}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[path]{a @class{gtk:tree-path} instance pointing to the changed row}
   @argument[iter]{a valid @class{gtk:tree-iter} iterator pointing to the
@@ -1802,7 +1798,7 @@
 
 (defcfun ("gtk_tree_model_row_inserted" tree-model-row-inserted) :void
  #+liber-documentation
- "@version{#2021-3-4}
+ "@version{#2023-3-28}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[path]{a @class{gtk:tree-path} instance pointing to the inserted row}
   @argument[iter]{a valid @class{gtk:tree-iter} iterator pointing to the
@@ -1826,7 +1822,7 @@
 (defcfun ("gtk_tree_model_row_has_child_toggled"
            tree-model-row-has-child-toggled) :void
  #+liber-documentation
- "@version{#2021-3-4}
+ "@version{#2023-3-28}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[path]{a @class{gtk:tree-path} instance pointing to the changed row}
   @argument[iter]{a valid @class{gtk:tree-iter} iterator pointing to the
@@ -1850,14 +1846,13 @@
 
 (defcfun ("gtk_tree_model_row_deleted" tree-model-row-deleted) :void
  #+liber-documentation
- "@version{#2021-3-4}
+ "@version{#2023-3-28}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[path]{a @class{gtk:tree-path} instance pointing to the previous
     location of the deleted row}
   @begin{short}
     Emits the \"row-deleted\" signal on @arg{model}.
   @end{short}
-
   This should be called by models after a row has been removed. The location
   pointed to by path should be the location that the row previously was at. It
   may not be a valid location anymore.
@@ -1885,7 +1880,7 @@
 
 (defun tree-model-rows-reordered (model path iter order)
  #+liber-documentation
- "@version{#2021-3-4}
+ "@version{#2023-3-28}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[path]{a @class{gtk:tree-path} instance pointing to the tree node
     whose children have been reordered}

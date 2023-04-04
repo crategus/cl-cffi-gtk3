@@ -4,27 +4,27 @@
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
 ;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkUIManager
@@ -270,9 +270,9 @@
 (setf (liber:alias-for-symbol 'ui-manager-item-type)
       "GFlags"
       (liber:symbol-documentation 'ui-manager-item-type)
- "@version{#2021-7-20}
+ "@version{#2023-3-29}
   @begin{short}
-    These values are used by the function @fun{gtk:ui-manager-add-ui} to
+    These values are used by the @fun{gtk:ui-manager-add-ui} function to
     determine what UI element to create.
   @end{short}
   @begin{pre}
@@ -329,7 +329,7 @@
 
 #+liber-documentation
 (setf (documentation 'ui-manager 'type)
- "@version{#2021-7-24}
+ "@version{#2023-3-29}
   @begin{short}
     A @sym{gtk:ui-manager} object constructs a user interface, menus and
     toolbars, from one or more UI definitions, which reference actions from one
@@ -399,8 +399,8 @@ lambda (manager)    :no-recurse
 lambda (manager widget)    :no-recurse
       @end{pre}
       The signal is emitted for each generated menubar and toolbar. It is not
-      emitted for generated popup menus, which can be obtained by the function
-      @fun{gtk:ui-manager-widget}.
+      emitted for generated popup menus, which can be obtained by the
+      @fun{gtk:ui-manager-widget} function.
       @begin[code]{table}
         @entry[manager]{The @sym{gtk:ui-manager} object which received the
           signal.}
@@ -463,11 +463,10 @@ lambda (manager action)    :no-recurse
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- ui-manager-add-tearoffs --------------------------------------------
+;;; --- ui-manager-add-tearoffs ------------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "add-tearoffs"
-                                               'ui-manager) t)
+(setf (documentation (liber:slot-documentation "add-tearoffs" 'ui-manager) t)
  "The @code{add-tearoffs} property of type @code{:boolean} (Read / Write) @br{}
   Controls whether generated menus have tearoff menu items. Note that this only
   affects regular menus. Generated popup menus never have tearoff menu items.
@@ -478,7 +477,7 @@ lambda (manager action)    :no-recurse
 (setf (liber:alias-for-function 'ui-manager-add-tearoffs)
       "Accessor"
       (documentation 'ui-manager-add-tearoffs 'function)
- "@version{#2021-7-20}
+ "@version{#2023-3-29}
   @syntax[]{(gtk:ui-manager-add-tearoffs object) => tearoffs}
   @syntax[]{(setf (gtk:ui-manager-add-tearoffs object) tearoffs)}
   @argument[object]{a @class{gtk:ui-manager} object}
@@ -487,22 +486,21 @@ lambda (manager action)    :no-recurse
     Accessor of the @slot[gtk:ui-manager]{add-tearoffs} slot of the
     @class{gtk:ui-manager} class.
   @end{short}
-
-  The slot access function @sym{gtk:ui-manager-add-tearoffs} returns whether
-  menus generated by the UI manager will have tearoff menu items. The slot
-  access function @sym{(setf gtk:ui-manager-add-tearoffs)} sets the
+  The @sym{gtk:ui-manager-add-tearoffs} function returns whether menus 
+  generated by the UI manager will have tearoff menu items. The
+  @sym{(setf gtk:ui-manager-add-tearoffs)} function sets the
   @slot[gtk:ui-manager]{add-tearoffs} property.
 
   Note that this only affects regular menus. Generated popup menus never have
   tearoff menu items.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:ui-manager-add-tearoffs} has been deprecated since
+    The @sym{gtk:ui-manager-add-tearoffs} function has been deprecated since
     version 3.4 and should not be used in newly written code. Tearoff menus are
     deprecated and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:ui-manager}")
 
-;;; --- ui-manager-ui ------------------------------------------------------
+;;; --- ui-manager-ui ----------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "ui" 'ui-manager) t)
@@ -514,7 +512,7 @@ lambda (manager action)    :no-recurse
 (setf (liber:alias-for-function 'ui-manager-ui)
       "Accessor"
       (documentation 'ui-manager-ui 'function)
- "@version{#2021-7-20}
+ "@version{#2023-3-29}
   @syntax[]{(gtk:ui-manager-ui object) => ui}
   @argument[object]{a @class{gtk:ui-manager} object}
   @argument[ui]{a string containing a XML representation of the merged UI}
@@ -522,10 +520,9 @@ lambda (manager action)    :no-recurse
     Accessor of the @slot[gtk:ui-manager]{ui} slot of the @class{gtk:ui-manager}
     class.
   @end{short}
-
   Creates a UI definition of the merged UI.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:ui-manager-ui} has been deprecated since version
+    The @sym{gtk:ui-manager-ui} function has been deprecated since version
     3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:ui-manager}")
@@ -538,11 +535,11 @@ lambda (manager action)    :no-recurse
 
 (defun ui-manager-new ()
  #+liber-documentation
- "@version{#2021-7-20}
+ "@version{#2023-3-29}
   @return{A new @class{gtk:ui-manager} object.}
   @short{Creates a new UI manager object.}
   @begin[Warning]{dictionary}
-    The function @sym{gtk:ui-manager-new} has been deprecated since version
+    The @sym{gtk:ui-manager-new} function has been deprecated since version
     3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:ui-manager}"
@@ -554,10 +551,10 @@ lambda (manager action)    :no-recurse
 ;;; gtk_ui_manager_insert_action_group ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_ui_manager_insert_action_group"
-          ui-manager-insert-action-group) :void
+(defcfun ("gtk_ui_manager_insert_action_group" ui-manager-insert-action-group) 
+    :void
  #+liber-documentation
- "@version{#2021-7-24}
+ "@version{#2023-3-29}
   @argument[manager]{a @class{gtk:ui-manager} object}
   @argument[group]{a @class{gtk:action-group} object to be inserted}
   @argument[pos]{an integer with the position at which the group will be
@@ -571,7 +568,7 @@ lambda (manager action)    :no-recurse
   If @arg{pos} is larger than the number of action groups in the UI manager, or
   negative, @arg{group} will be inserted at the end of the internal list.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:ui-manager-acton-group} has been deprecated since
+    The @sym{gtk:ui-manager-acton-group} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:ui-manager}
@@ -589,7 +586,7 @@ lambda (manager action)    :no-recurse
 (defcfun ("gtk_ui_manager_remove_action_group"
           ui-manager-remove-action-group) :void
  #+liber-documentation
- "@version{#2021-7-20}
+ "@version{#2023-3-29}
   @argument[manager]{a @class{gtk:ui-manager} object}
   @argument[group]{a @class{gtk:action-group} object to be removed}
   @begin{short}
@@ -597,7 +594,7 @@ lambda (manager action)    :no-recurse
     UI manager.
   @end{short}
   @begin[Warning]{dictionary}
-    The function @sym{gtk:ui-manager-remove-action-group} has been deprecated
+    The @sym{gtk:ui-manager-remove-action-group} function has been deprecated
     since version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:ui-manager}
@@ -614,12 +611,12 @@ lambda (manager action)    :no-recurse
 (defcfun ("gtk_ui_manager_get_action_groups" ui-manager-action-groups)
     (g:list-t g:object :free-from-foreign nil)
  #+liber-documentation
- "@version{#2021-7-20}
+ "@version{#2023-3-29}
   @argument[manager]{a @class{gtk:ui-manager} object}
   @return{A list of @class{gtk:action-group} objects.}
   @short{Returns the list of action groups associated with the UI manager.}
   @begin[Warning]{dictionary}
-    The function @sym{gtk:ui-manager-action-groups} has been deprecated since
+    The @sym{gtk:ui-manager-action-groups} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:ui-manager}
@@ -635,14 +632,14 @@ lambda (manager action)    :no-recurse
 (defcfun ("gtk_ui_manager_get_accel_group" ui-manager-accel-group)
     (g:object accel-group)
  #+liber-documentation
- "@version{#2021-7-24}
+ "@version{#2023-3-29}
   @argument[manager]{a @class{gtk:ui-manager} object}
   @return{The @class{gtk:accel-group} object.}
   @begin{short}
     Returns the accelerator group associated with the UI manager.
   @end{short}
   @begin[Warning]{dictionary}
-    The function @sym{gtk:ui-manager-accel-group} has been deprecated since
+    The @sym{gtk:ui-manager-accel-group} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:ui-manager}
@@ -655,10 +652,9 @@ lambda (manager action)    :no-recurse
 ;;; gtk_ui_manager_get_widget () -> ui-manager-widget
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_ui_manager_get_widget" ui-manager-widget)
-    (g:object widget)
+(defcfun ("gtk_ui_manager_get_widget" ui-manager-widget) (g:object widget)
  #+liber-documentation
- "@version{#2021-7-24}
+ "@version{#2023-3-29}
   @argument[manager]{a @class{gtk:ui-manager} object}
   @argument[path]{a string with a path}
   @begin{return}
@@ -682,7 +678,7 @@ lambda (manager action)    :no-recurse
   function to some container or explicitly reference them, they will survive
   the destruction of the UI manager.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:ui-manager-widget} has been deprecated since version
+    The @sym{gtk:ui-manager-widget} function has been deprecated since version
     3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:ui-manager}
@@ -697,9 +693,9 @@ lambda (manager action)    :no-recurse
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_ui_manager_get_toplevels" ui-manager-toplevels)
-    (g:slist-t g:object :free-from-foreign t)
+    (g:slist-t g:object)
  #+liber-documentation
- "@version{#2021-7-20}
+ "@version{#2023-3-29}
   @argument[manager]{a @class{gtk:ui-manager} object}
   @argument[types]{the @symbol{gtk:ui-manager-item-type} flags which specifies
     the types of toplevel widgets to include, allowed types are @code{:menubar},
@@ -711,7 +707,7 @@ lambda (manager action)    :no-recurse
     Obtains a list of all toplevel widgets of the requested types.
   @end{short}
   @begin[Warning]{dictionary}
-    The function @sym{gtk:ui-manager-toplevels} has been deprecated since
+    The @sym{gtk:ui-manager-toplevels} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:ui-manager}
@@ -727,7 +723,7 @@ lambda (manager action)    :no-recurse
 
 (defcfun ("gtk_ui_manager_get_action" ui-manager-action) g:object
  #+liber-documentation
- "@version{#2021-7-20}
+ "@version{#2023-3-29}
   @argument[manager]{a @class{gtk:ui-manager} object}
   @argument[path]{a string with a path}
   @begin{return}
@@ -737,10 +733,10 @@ lambda (manager action)    :no-recurse
   @begin{short}
     Looks up an action by following a path.
   @end{short}
-  See the function @fun{gtk:ui-manager-widget} for more information about
+  See the @fun{gtk:ui-manager-widget} function for more information about
   paths.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:ui-manager-action} has been deprecated since
+    The @sym{gtk:ui-manager-action} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:ui-manager}
@@ -763,12 +759,12 @@ lambda (manager action)    :no-recurse
 
 (defun ui-manager-add-ui-from-resource (manager path)
  #+liber-documentation
- "@version{#2021-7-20}
+ "@version{#2023-3-29}
   @argument[manager]{a @class{gtk:ui-manager} object}
   @argument[path]{a string with the resource path of the file to parse}
   @begin{return}
     An unsigned integer with the merge ID for the merged UI. The merge ID can
-    be used to unmerge the UI with the function @fun{gtk:ui-manager-remove-ui}.
+    be used to unmerge the UI with the @fun{gtk:ui-manager-remove-ui} function.
     If an error occurred, the return value is 0.
   @end{return}
   @begin{short}
@@ -776,7 +772,7 @@ lambda (manager action)    :no-recurse
     current contents of manager.
   @end{short}
   @begin[Warning]{dictionary}
-    The function @sym{gtk:ui-manager-add-ui-from-resource} has been deprecated
+    The @sym{gtk:ui-manager-add-ui-from-resource} function has been deprecated
     since version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:ui-manager}
@@ -801,12 +797,12 @@ lambda (manager action)    :no-recurse
 
 (defun ui-manager-add-ui-from-string (manager buffer)
  #+liber-documentation
- "@version{#2021-7-24}
+ "@version{#2023-3-29}
   @argument[manager]{a @class{gtk:ui-manager} object}
   @argument[buffer]{the string to parse}
   @begin{return}
     An unsigned integer with the merge ID for the merged UI. The merge ID can
-    be used to unmerge the UI with the function @fun{gtk:ui-manager-remove-ui}.
+    be used to unmerge the UI with the @fun{gtk:ui-manager-remove-ui} function.
     If an error occurred, the return value is 0.
   @end{return}
   @begin{short}
@@ -815,7 +811,7 @@ lambda (manager action)    :no-recurse
   @end{short}
   An enclosing @code{<ui>} element is added if it is missing.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:ui-manager-add-ui-from-string} has been deprecated
+    The @sym{gtk:ui-manager-add-ui-from-string} function has been deprecated
     since version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:ui-manager}
@@ -829,20 +825,19 @@ lambda (manager action)    :no-recurse
 ;;; gtk_ui_manager_add_ui_from_file ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_ui_manager_add_ui_from_file" %ui-manager-add-ui-from-file)
-    :uint
+(defcfun ("gtk_ui_manager_add_ui_from_file" %ui-manager-add-ui-from-file) :uint
   (manager (g:object ui-manager))
   (filename :string)
   (err :pointer))
 
 (defun ui-manager-add-ui-from-file (manager filename)
  #+liber-documentation
- "@version{#2021-7-20}
+ "@version{#2023-3-29}
   @argument[manager]{a @class{gtk:ui-manager} object}
   @argument[filename]{a string with the name of the file to parse}
   @begin{return}
     An unsigned integer with the merge ID for the merged UI. The merge ID can
-    be used to unmerge the UI with the function @fun{gtk:ui-manager-remove-ui}.
+    be used to unmerge the UI with the @fun{gtk:ui-manager-remove-ui} function.
     If an error occurred, the return value is 0.
   @end{return}
   @begin{short}
@@ -850,7 +845,7 @@ lambda (manager action)    :no-recurse
     contents of manager.
   @end{short}
   @begin[Warning]{dictionary}
-    The function @sym{gtk:ui-manager-add-ui-from-file} has been deprecated
+    The @sym{gtk:ui-manager-add-ui-from-file} function has been deprecated
     since version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:ui-manager}
@@ -866,15 +861,15 @@ lambda (manager action)    :no-recurse
 
 (defcfun ("gtk_ui_manager_new_merge_id" ui-manager-new-merge-id) :uint
  #+liber-documentation
- "@version{#2021-7-20}
+ "@version{#2023-3-29}
   @argument[manager]{a @class{gtk:ui-manager} object}
   @return{An unsigned integer with an unused merge ID.}
   @begin{short}
-    Returns an unused merge ID, suitable for use with the function
-    @fun{gtk:ui-manager-add-ui}.
+    Returns an unused merge ID, suitable for use with the
+    @fun{gtk:ui-manager-add-ui} function.
   @end{short}
   @begin[Warning]{dictionary}
-    The function @sym{gtk:ui-manager-new-merge-id} has been deprecated since
+    The @sym{gtk:ui-manager-new-merge-id} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:ui-manager}
@@ -889,10 +884,10 @@ lambda (manager action)    :no-recurse
 
 (defcfun ("gtk_ui_manager_add_ui" ui-manager-add-ui) :void
  #+liber-documentation
- "@version{#2021-7-20}
+ "@version{#2023-3-29}
   @argument[manager]{a @class{gtk:ui-manager} object}
   @argument[id]{an unsigned integer with the merge ID for the merged UI, see
-    the function @fun{gtk:ui-manager-new-merge-id}}
+    the @fun{gtk:ui-manager-new-merge-id} function}
   @argument[path]{a string with a path}
   @argument[name]{a string with the name for the added UI element}
   @argument[action]{a string with the name of the action to be proxied, or
@@ -904,7 +899,6 @@ lambda (manager action)    :no-recurse
   @begin{short}
     Adds a UI element to the current contents of manager.
   @end{short}
-
   If the UI manager item type is @code{:auto}, GTK inserts a menuitem, toolitem
   or separator if such an element can be inserted at the place determined by
   @arg{path}. Otherwise the UI manager item type must indicate an element that
@@ -913,7 +907,7 @@ lambda (manager action)    :no-recurse
   If @arg{path} points to a menuitem or toolitem, the new element will be
   inserted before or after this item, depending on @arg{top}.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:ui-manager-add-ui} has been deprecated since version
+    The @sym{gtk:ui-manager-add-ui} function has been deprecated since version
     3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:ui-manager}
@@ -935,15 +929,15 @@ lambda (manager action)    :no-recurse
 
 (defcfun ("gtk_ui_manager_remove_ui" ui-manager-remove-ui) :void
  #+liber-documentation
- "@version{#2021-7-20}
+ "@version{#2023-3-29}
   @argument[manager]{a @class{gtk:ui-manager} object}
   @argument[id]{an unsigned integer with a merge ID as returned by the
-    function @fun{gtk:ui-manager-add-ui-from-string}}
+    @fun{gtk:ui-manager-add-ui-from-string} function}
   @begin{short}
     Unmerges the part of managers content identified by @arg{id}.
   @end{short}
   @begin[Warning]{dictionary}
-    The function @sym{gtk:ui-manager-remove-ui} has been deprecated since
+    The @sym{gtk:ui-manager-remove-ui} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:ui-manager}
@@ -959,18 +953,17 @@ lambda (manager action)    :no-recurse
 
 (defcfun ("gtk_ui_manager_ensure_update" ui-manager-ensure-update) :void
  #+liber-documentation
- "@version{#2021-7-20}
+ "@version{#2023-3-29}
   @argument[manager]{a @class{gtk:ui-manager} object}
   @begin{short}
     Makes sure that all pending updates to the UI have been completed.
   @end{short}
-
   This may occasionally be necessary, since the @class{gtk:ui-manager} object
   updates the UI in an idle function. A typical example where this function is
   useful is to enforce that the menubar and toolbar have been added to the main
   window before showing it.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:ui-manager-ensure-update} has been deprecated since
+    The @sym{gtk:ui-manager-ensure-update} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:ui-manager}"

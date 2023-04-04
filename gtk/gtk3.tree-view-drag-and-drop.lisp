@@ -4,27 +4,27 @@
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
 ;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkTreeView drag-and-drop
@@ -72,7 +72,7 @@
 (setf (liber:alias-for-class 'tree-drag-source)
       "Interface"
       (documentation 'tree-drag-source 'type)
- "@version{#2021-3-5}
+ "@version{#2023-3-29}
   @begin{short}
     GTK supports drag and drop in tree views with a high-level and a low-level
     API.
@@ -139,7 +139,7 @@
 (defcfun ("gtk_tree_drag_source_drag_data_delete"
            tree-drag-source-drag-data-delete) :boolean
  #+liber-documentation
- "@version{#2021-3-5}
+ "@version{#2023-3-29}
   @argument[source]{a @class{gtk:tree-drag-source} object}
   @argument[path]{a @class{gtk:tree-path} instance with the row that was being
     dragged}
@@ -165,7 +165,7 @@
 (defcfun ("gtk_tree_drag_source_drag_data_get"
            tree-drag-source-drag-data-get) :boolean
  #+liber-documentation
- "@version{#2021-3-5}
+ "@version{#2023-3-29}
   @argument[source]{a @class{gtk:tree-drag-source} object}
   @argument[path]{a @class{gtk:tree-path} insance with the row that was dragged}
   @argument[data]{a @class{gtk:selection-data} instance to fill with data from
@@ -175,7 +175,7 @@
     Asks the @class{gtk:tree-drag-source} object to fill in @arg{data} with a
     representation of the row at @arg{path}.
   @end{short}
-  The function @fun{gtk:selection-data-target} gives the required type of the
+  The @fun{gtk:selection-data-target} function gives the required type of the
   data. Should robustly handle a path no longer found in the model.
   @see-class{gtk:tree-drag-source}
   @see-class{gtk:tree-path}
@@ -193,7 +193,7 @@
 (defcfun ("gtk_tree_drag_source_row_draggable"
            tree-drag-source-row-draggable) :boolean
  #+liber-documentation
- "@version{#2021-3-5}
+ "@version{#2023-3-29}
   @argument[source]{a @class{gtk:tree-drag-source} object}
   @argument[path]{a @class{gtk:tree-path} instance with the row on which user
     is initiating a drag}
@@ -223,7 +223,7 @@
 (setf (liber:alias-for-class 'tree-drag-dest)
       "Interface"
       (documentation 'tree-drag-dest 'type)
- "@version{#2021-3-5}
+ "@version{#2023-3-29}
   @begin{short}
     GTK supports Drag-and-Drop in tree views with a high-level and a low-level
     API.
@@ -283,7 +283,7 @@
 (defcfun ("gtk_tree_drag_dest_drag_data_received"
            tree-drag-dest-drag-data-received) :boolean
  #+liber-documentation
- "@version{#2021-3-5}
+ "@version{#2023-3-29}
   @argument[dest]{a @class{gtk:tree-drag-dest} object}
   @argument[path]{a @class{gtk:tree-path} instance with the row to drop in
     front of}
@@ -313,7 +313,7 @@
 (defcfun ("gtk_tree_drag_dest_row_drop_possible"
            tree-drag-dest-row-drop-possible) :boolean
  #+liber-documentation
- "@version{#2021-3-5}
+ "@version{#2023-3-29}
   @argument[dest]{a @class{gtk:tree-drag-dest} object}
   @argument[path]{a @class{gtk:tree-path} instance with the destination row}
   @argument[data]{a @class{gtk:selection-data} instance with the data being
@@ -341,7 +341,7 @@
 
 (defcfun ("gtk_tree_set_row_drag_data" tree-set-row-drag-data) :boolean
  #+liber-documentation
- "@version{#2021-3-5}
+ "@version{#2023-3-29}
   @argument[data]{a @class{gtk:selection-data} instance}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[path]{a @class{gtk:tree-path} instance with a row in @arg{model}}
@@ -366,7 +366,7 @@
 
 (defcfun ("gtk_tree_get_row_drag_data" tree-get-row-drag-data) :boolean
  #+liber-documentation
- "@version{#2021-3-5}
+ "@version{#2023-3-29}
   @argument[data]{a @class{gtk:selection-data} instance}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[path]{a @class{gtk:tree-path} with a row in @arg{model}.}

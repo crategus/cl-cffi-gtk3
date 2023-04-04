@@ -1,30 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.window-group.lisp
+;;; gtk3.window-group.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkWindowGroup
@@ -65,7 +65,7 @@
 
 #+liber-documentation
 (setf (documentation 'window-group 'type)
- "@version{#2021-11-2}
+ "@version{#2023-3-30}
   @begin{short}
     A @sym{gtk:window-group} object restricts the effect of grabs to windows in
     the same group, thereby making window groups almost behave like separate
@@ -79,7 +79,8 @@
   Window groups are referenced by each window in the window group. If the
   windows in the window group are subsequently destroyed, then they will be
   removed from the window group and drop their references on the window group.
-  When all window have been removed, the window group will be freed.")
+  When all window have been removed, the window group will be freed.
+  @see-constructor{gtk:window-group-new}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_window_group_new ()
@@ -89,7 +90,7 @@
 
 (defun window-group-new ()
  #+liber-documentation
- "@version{#2021-11-2}
+ "@version{#2023-3-30}
   @return{A new @class{gtk:window-group} object.}
   @begin{short}
     Creates a new window group.
@@ -108,7 +109,7 @@
 
 (defcfun (window-group-add-window "gtk_window_group_add_window") :void
  #+liber-documentation
- "@version{#2021-10-26}
+ "@version{#2023-3-30}
   @argument[group]{a @class{gtk:window-group} object}
   @argument[window]{the @class{gtk:window} widget to add}
   @begin{short}
@@ -127,7 +128,7 @@
 
 (defcfun ("gtk_window_group_remove_window" window-group-remove-window) :void
  #+liber-documentation
- "@version{#2021-10-26}
+ "@version{#2023-3-30}
   @argument[group]{a @class{gtk:window-group} object}
   @argument[window]{the @class{gtk:window} widget to remove}
   @begin{short}
@@ -147,7 +148,7 @@
 (defcfun ("gtk_window_group_list_windows" window-group-list-windows)
     (g:list-t window)
  #+liber-documentation
- "@version{#2021-10-26}
+ "@version{#2023-3-30}
   @argument[group]{a @class{gtk:window-group} object}
   @return{A list of windows inside the window group.}
   @begin{short}
@@ -166,7 +167,7 @@
 (defcfun ("gtk_window_group_get_current_grab" window-group-current-grab)
     (g:object widget)
  #+liber-documentation
- "@version{#2021-11-2}
+ "@version{#2023-3-30}
   @argument[group]{a @class{gtk:window-group} object}
   @return{The current @class{gtk:widget} grab widget of the window group.}
   @begin{short}
@@ -188,7 +189,7 @@
 (defcfun ("gtk_window_group_get_current_device_grab"
            window-group-current-device-grab) (g:object widget)
  #+liber-documentation
- "@version{#2021-10-26}
+ "@version{#2023-3-30}
   @argument[group]{a @class{gtk:window-group} object}
   @argument[device]{a @class{gdk:device} object}
   @return{The @class{gtk:widget} grab widget, or @code{nil}.}

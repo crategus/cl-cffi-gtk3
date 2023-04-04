@@ -8,22 +8,23 @@
 ;;;
 ;;; Copyright (C) 2020 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; Types and Values
@@ -152,7 +153,7 @@
     Using the @sym{gtk:text-attributes} structure directly should rarely be
     necessary.
   @end{short}
-  It is primarily useful with the function @fun{gtk:text-iter-attributes}. As
+  It is primarily useful with the @fun{gtk:text-iter-attributes} function. As
   with most GTK structures, the fields in this structure should only be read,
   never modified directly.
   @begin{pre}
@@ -268,7 +269,7 @@
 ;;; Accessors for GtkTextAttributes                        not exported
 ;;; ----------------------------------------------------------------------------
 
-;;; --- text-attributes-appearance -----------------------------------------
+;;; --- text-attributes-appearance ---------------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'text-attributes-appearance)
@@ -282,7 +283,7 @@
   Pointer to a @code{GtkTextAppearance} structure for text.
   @see-class{gtk:text-attributes}")
 
-;;; --- text-attributes-justification --------------------------------------
+;;; --- text-attributes-justification ------------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'text-attributes-justification)
@@ -297,7 +298,7 @@
   @see-class{gtk:text-attributes}
   @see-symbol{gtk:justification}")
 
-;;; --- text-attributes-direction ------------------------------------------
+;;; --- text-attributes-direction ----------------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'text-attributes-direction)
@@ -312,7 +313,7 @@
   @see-class{gtk:text-attributes}
   @see-symbol{gtk:text-direction}")
 
-;;; --- text-attributes-font -----------------------------------------------
+;;; --- text-attributes-font ---------------------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'text-attributes-font)
@@ -327,7 +328,7 @@
   @see-class{gtk:text-attributes}
   @see-class{pango:font-description}")
 
-;;; --- text-attributes-font-scale -----------------------------------------
+;;; --- text-attributes-font-scale ---------------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'text-attributes-font-scale)
@@ -341,7 +342,7 @@
   A double float with the font scale factor.
   @see-class{gtk:text-attributes}")
 
-;;; --- text-attributes-left-margin ----------------------------------------
+;;; --- text-attributes-left-margin --------------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'text-attributes-left-margin)
@@ -355,7 +356,7 @@
   An integer with the width of the left margin, in pixels.
   @see-class{gtk:text-attributes}")
 
-;;; --- text-attributes-right-margin ---------------------------------------
+;;; --- text-attributes-right-margin -------------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'text-attributes-right-margin)
@@ -369,7 +370,7 @@
   An integer with the width of the right margin, in pixels.
   @see-class{gtk:text-attributes}")
 
-;;; --- text-attributes-indent ---------------------------------------------
+;;; --- text-attributes-indent -------------------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'text-attributes-indent)
@@ -383,7 +384,7 @@
   An integer with the amount to indent the paragraph, in pixels.
   @see-class{gtk:text-attributes}")
 
-;;; --- text-attributes-pixels-above-lines ---------------------------------
+;;; --- text-attributes-pixels-above-lines -------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'text-attributes-pixels-above-lines)
@@ -397,7 +398,7 @@
   An integer with the pixels of blank space above paragraphs.
   @see-class{gtk:text-attributes}")
 
-;;; --- text-attributes-pixels-below-lines ---------------------------------
+;;; --- text-attributes-pixels-below-lines -------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'text-attributes-pixels-below-lines)
@@ -411,7 +412,7 @@
   An integer with the pixels of blank space below paragraphs.
   @see-class{gtk:text-attributes}")
 
-;;; --- text-attributes-pixels-inside-wrap ---------------------------------
+;;; --- text-attributes-pixels-inside-wrap -------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'text-attributes-pixels-inside-wrap)
@@ -426,7 +427,7 @@
   paragraph.
   @see-class{gtk:text-attributes}")
 
-;;; --- text-attributes-tabs -----------------------------------------------
+;;; --- text-attributes-tabs ---------------------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'text-attributes-tabs)
@@ -441,7 +442,7 @@
   @see-class{gtk:text-attributes}
   @see-class{pango-tab-array}")
 
-;;; --- text-attributes-wrap-mode ------------------------------------------
+;;; --- text-attributes-wrap-mode ----------------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'text-attributes-wrap-mode)
@@ -456,7 +457,7 @@
   @see-class{gtk:text-attributes}
   @see-symbol{gtk:wrap-mode}")
 
-;;; --- text-attributes-language -------------------------------------------
+;;; --- text-attributes-language -----------------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'text-attributes-language)
@@ -471,7 +472,7 @@
   @see-class{gtk:text-attributes}
   @see-class{pango:language}")
 
-;;; --- text-attributes-invisible ------------------------------------------
+;;; --- text-attributes-invisible ----------------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'text-attributes-invisible)
@@ -485,7 +486,7 @@
   An unsigned integer whether to hide the text.
   @see-class{gtk:text-attributes}")
 
-;;; --- text-attributes-bg-full-height -------------------------------------
+;;; --- text-attributes-bg-full-height -----------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'text-attributes-bg-full-height)
@@ -500,7 +501,7 @@
   ascent/descent (font height).
   @see-class{gtk:text-attributes}")
 
-;;; --- text-attributes-editable -------------------------------------------
+;;; --- text-attributes-editable -----------------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'text-attributes-editable)
@@ -514,7 +515,7 @@
   Whether the text is editable.
   @see-class{gtk:text-attributes}")
 
-;;; --- text-attributes-no-fallback ----------------------------------------
+;;; --- text-attributes-no-fallback --------------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'text-attributes-no-fallback)
@@ -528,7 +529,7 @@
   Whether to disable font fallback.
   @see-class{gtk:text-attributes}")
 
-;;; --- text-attributes-letter-spacing -------------------------------------
+;;; --- text-attributes-letter-spacing -----------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'text-attributes-letter-spacing)
@@ -542,7 +543,7 @@
   An integer with the extra space to insert between graphemes, in Pango units.
   @see-class{gtk:text-attributes}")
 
-;;; --- text-attributes-font-features --------------------------------------
+;;; --- text-attributes-font-features ------------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'text-attributes-font-features)

@@ -1,30 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.text-tag-table.lisp
+;;; gtk3.text-tag-table.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkTextTagTable
@@ -75,7 +75,7 @@
 
 #+liber-documentation
 (setf (documentation 'text-tag-table 'type)
- "@version{#2021-11-18}
+ "@version{#2023-3-28}
   @begin{short}
     A tag table defines a set of tags that can be used together.
   @end{short}
@@ -100,7 +100,7 @@
   @begin[Signal Details]{dictionary}
     @subheading{The \"tag-added\" signal}
       @begin{pre}
- lambda (table tag)    :run-last
+lambda (table tag)    :run-last
       @end{pre}
       @begin[code]{table}
         @entry[table]{The @sym{gtk:text-tag-table} object which received the
@@ -109,7 +109,7 @@
       @end{table}
     @subheading{The \"tag-changed\" signal}
       @begin{pre}
- lambda (table tag changed)    :run-last
+lambda (table tag changed)    :run-last
       @end{pre}
       @begin[code]{table}
         @entry[table]{The @sym{gtk:text-tag-table} object which received the
@@ -119,7 +119,7 @@
       @end{table}
     @subheading{The \"tag-removed\" signal}
       @begin{pre}
- lambda (table tag)    :run-last
+lambda (table tag)    :run-last
       @end{pre}
       @begin[code]{table}
         @entry[table]{The @sym{gtk:text-tag-table} object which received the
@@ -127,6 +127,7 @@
         @entry[tag]{The removed @class{gtk:text-tag} object.}
       @end{table}
   @end{dictionary}
+  @see-constructor{gtk:text-tag-table-new}
   @see-class{gtk:text-buffer}
   @see-class{gtk:text-tag}")
 
@@ -143,7 +144,7 @@
 (setf (liber:alias-for-symbol 'text-tag-table-foreach-func)
       "Callback"
       (liber:symbol-documentation 'text-tag-table-foreach-func)
- "@version{#2021-11-18}
+ "@version{#2023-3-28}
   @begin{short}
     The type of callback function passed to the @fun{gtk:text-table-foreach}
     function.
@@ -167,7 +168,7 @@
 
 (defun text-tag-table-new ()
  #+liber-documentation
- "@version{#2021-11-18}
+ "@version{#2023-3-28}
   @return{A new @class{gtk:text-tag-table} object.}
   @begin{short}
     Creates a new tag table.
@@ -184,7 +185,7 @@
 
 (defcfun ("gtk_text_tag_table_add" text-tag-table-add) :boolean
  #+liber-documentation
- "@version{#2021-11-18}
+ "@version{#2023-3-28}
   @argument[table]{a @class{gtk:text-tag-table} object}
   @argument[tag]{a @class{gtk:text-tag} object}
   @return{A boolean which is @em{true} on success.}
@@ -207,7 +208,7 @@
 
 (defcfun ("gtk_text_tag_table_remove" text-tag-table-remove) :void
  #+liber-documentation
- "@version{#2021-11-18}
+ "@version{#2023-3-28}
   @argument[table]{a @class{gtk:text-tag-table} object}
   @argument[tag]{a @class{gtk:text-tag} object}
   @begin{short}
@@ -228,7 +229,7 @@
 
 (defcfun ("gtk_text_tag_table_lookup" text-tag-table-lookup) (g:object text-tag)
  #+liber-documentation
- "@version{#2021-11-18}
+ "@version{#2023-3-28}
   @argument[table]{a @class{gtk:text-tag-table} object}
   @argument[name]{a string with the name of a tag}
   @return{The tag, or @code{nil} if none by that @arg{name} is in the tag
@@ -253,7 +254,7 @@
 
 (defun text-tag-table-foreach (table func)
  #+liber-documentation
- "@version{#2021-11-18}
+ "@version{#2023-3-28}
   @argument[table]{a @class{gtk:text-tag-table} object}
   @argument[func]{a @symbol{gtk:text-tag-table-foreach-func} callback function
     to call on each tag}
@@ -277,7 +278,7 @@
 
 (defcfun ("gtk_text_tag_table_get_size" text-tag-table-size) :int
  #+liber-documentation
- "@version{#2021-11-18}
+ "@version{#2023-3-28}
   @argument[table]{a @class{gtk:text-tag-table} object}
   @return{An integer with the number of tags in @arg{table}.}
   @begin{short}
@@ -288,4 +289,4 @@
 
 (export 'text-tag-table-size)
 
-;;; --- End of file gtk.text-tag-table.lisp ------------------------------------
+;;; --- End of file gtk3.text-tag-table.lisp -----------------------------------

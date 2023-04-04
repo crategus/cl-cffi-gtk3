@@ -1,30 +1,30 @@
 ;;; ----------------------------------------------------------------------------
-;;; gtk.toggle-action.lisp
+;;; gtk3.toggle-action.lisp
 ;;;
 ;;; The documentation of this file is taken from the GTK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
-;;; Copyright (C) 2011 - 2022 Dieter Kaiser
+;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GtkToggleAction
@@ -85,7 +85,7 @@
 
 #+liber-documentation
 (setf (documentation 'toggle-action 'type)
- "@version{#2021-7-20}
+ "@version{#2023-3-28}
   @begin{short}
     A @sym{gtk:toggle-action} object corresponds roughly to a
     @class{gtk:check-menu-item} widget.
@@ -93,13 +93,13 @@
   It has an \"active\" state specifying whether the action has been checked or
   not.
   @begin[Warning]{dictionary}
-    The @sym{gtk:toggle-action} class has been deprecated since version 3.10 and
-    should not be used in newly written code.
+    The @sym{gtk:toggle-action} class has been deprecated since version 3.10 
+    and should not be used in newly written code.
   @end{dictionary}
   @begin[Signal Details]{dictionary}
     @subheading{The \"toggled\" signal}
       @begin{pre}
- lambda (action)    :run-first
+lambda (action)    :run-first
       @end{pre}
       Should be connected if you wish to perform an action whenever the toggle
       action state is changed.
@@ -108,6 +108,7 @@
           signal.}
       @end{table}
   @end{dictionary}
+  @see-constructor{gtk:toggle-action-new}
   @see-slot{gtk:toggle-action-active}
   @see-slot{gtk:toggle-action-draw-as-radio}
   @see-class{gtk:action}
@@ -117,7 +118,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- toggle-action-active -----------------------------------------------
+;;; --- toggle-action-active ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "active" 'toggle-action) t)
@@ -129,7 +130,7 @@
 (setf (liber:alias-for-function 'toggle-action-active)
       "Accessor"
       (documentation 'toggle-action-active 'function)
- "@version{#2021-7-24}
+ "@version{#2023-3-28}
   @syntax[]{(gtk:toggle-action-active object) => is-active}
   @syntax[]{(setf (gtk:toggle-action-active object) is-active)}
   @argument[object]{a @class{gtk:toggle-action} object}
@@ -138,17 +139,16 @@
     Accessor of the @slot[gtk:toggle-action]{active} slot of the
     @class{gtk:toggle-action} class.
   @end{short}
-
-  The slot access function @sym{gtk:toggle-action-active} returns the checked
-  state of the toggle action. The slot access function
-  @sym{(setf gtk:toggle-action-action)} sets the checked state.
+  The @sym{gtk:toggle-action-active} function returns the checked state of the 
+  toggle action. The @sym{(setf gtk:toggle-action-action)} functoin sets the 
+  checked state.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:toggle-action-active} has been deprecated since
+    The @sym{gtk:toggle-action-active} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:toggle-action}")
 
-;;; --- toggle-action-draw-as-radio ----------------------------------------
+;;; --- toggle-action-draw-as-radio --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "draw-as-radio"
@@ -161,7 +161,7 @@
 (setf (liber:alias-for-function 'toggle-action-draw-as-radio)
       "Accessor"
       (documentation 'toggle-action-draw-as-radio 'function)
- "@version{#2021-7-20}
+ "@version{#2023-3-28}
   @syntax[]{(gtk:toggle-action-draw-as-radio object) => draw-as-radio}
   @syntax[]{(setf (gtk:toggle-action-draw-as-radio object) draw-as-radio)}
   @argument[object]{a @class{gtk:toggle-action} object}
@@ -171,13 +171,12 @@
     Accessor of the @slot[gtk:toggle-action]{draw-as-radio} slot of the
     @class{gtk:toggle-action} class.
   @end{short}
-
-  The slot access function @sym{gtk:toggle-action-draw-as-radio} returns whether
-  the action should have proxies like a radio action. The slot access function
-  @sym{(setf gtk:toggle-action-draw-as-radio)} sets whether the action should
-  have proxies.
+  The @sym{gtk:toggle-action-draw-as-radio} function returns whether the action 
+  should have proxies like a radio action. The 
+  @sym{(setf gtk:toggle-action-draw-as-radio)} function sets whether the action 
+  should have proxies.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:toggle-action-draw-as-radio} has been deprecated
+    The @sym{gtk:toggle-action-draw-as-radio} function has been deprecated
     since version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:toggle-action}")
@@ -188,7 +187,7 @@
 
 (defcfun ("gtk_toggle_action_new" toggle-action-new)
     (g:object toggle-action)
- "@version{#2021-7-20}
+ "@version{#2023-3-28}
   @argument[name]{a string with a unique name for the action}
   @argument[label]{a string with the label displayed in menu items and on
     buttons, or @code{nil}}
@@ -200,9 +199,9 @@
     Creates a new toggle action.
   @end{short}
   To add the action to a @class{gtk:action-group} object and set the accelerator
-  for the action, call the function @fun{gtk:action-group-add-action}.
+  for the action, call the @fun{gtk:action-group-add-action} function.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:toggle-action-new} has been deprecated since version
+    The @sym{gtk:toggle-action-new} function has been deprecated since version
     3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:toggle-action}
@@ -220,13 +219,13 @@
 ;;; ----------------------------------------------------------------------------
 
 (defcfun ("gtk_toggle_action_toggled" toggle-action-toggled) :void
- "@version{#2021-7-20}
+ "@version{#2023-3-28}
   @argument[action]{a @class{gtk:toggle-action} object}
   @begin{short}
     Emits the \"toggled\" signal on the toggle action.
   @end{short}
   @begin[Warning]{dictionary}
-    The function @sym{gtk:toggle-action-toggled} has been deprecated since
+    The @sym{gtk:toggle-action-toggled} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:toggle-action}"
@@ -234,4 +233,4 @@
 
 (export 'toggle-action-toggled)
 
-;;; --- End of file gtk.toggle-action.lisp -------------------------------------
+;;; --- End of file gtk3.toggle-action.lisp ------------------------------------
