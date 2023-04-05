@@ -1,9 +1,9 @@
-;;;; Example Drawing in response to input - 2023-2-12
+;;;; Example Drawing in response to input - 2023-4-5
 
 (in-package :gtk3-example)
 
 (defun example-drawing-area-input (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((surface nil)
           (window (make-instance 'gtk:window
                                  :title "Example Drawing"
@@ -15,7 +15,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Signals used to handle the backing surface
       (g:signal-connect area "draw"
          (lambda (widget cr)
@@ -24,7 +24,7 @@
              (cairo:set-source-surface cr surface 0.0 0.0)
              (cairo:paint cr)
              (cairo:destroy cr)
-             +gdk-event-propagate+)))
+             gdk:+gdk-event-propagate+)))
       (g:signal-connect area "configure-event"
          (lambda (widget event)
            (declare (ignore event))
@@ -42,7 +42,7 @@
              (cairo:paint cr)
              (cairo:destroy cr))
            (format t "leave event 'configure-event'~%")
-           +gdk-event-stop+))
+           gdk:+gdk-event-stop+))
       ;; Event signals
       (g:signal-connect area "motion-notify-event"
          (lambda (widget event)

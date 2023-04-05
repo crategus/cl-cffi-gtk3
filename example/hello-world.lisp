@@ -1,9 +1,9 @@
-;;;; Example Hello World - 2022-12-21
+;;;; Example Hello World - 2023-4-5
 
 (in-package :gtk3-example)
 
 (defun example-hello-world ()
-  (within-main-loop
+  (gtk:within-main-loop
     (let (;; Create a toplevel window, set a border width.
           (window (make-instance 'gtk:window
                                  :type :toplevel
@@ -23,13 +23,13 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Signal handler for the window to handle the signal "delete-event".
       (g:signal-connect window "delete-event"
                         (lambda (widget event)
                           (declare (ignore widget event))
                           (format t "Delete Event Occured.~%")
-                          +gdk-event-stop+))
+                          gdk:+gdk-event-stop+))
       ;; Put the button into the window.
       (gtk:container-add window button)
       ;; Show the window and the button.

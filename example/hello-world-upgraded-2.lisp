@@ -1,11 +1,11 @@
-;;;; Example Upgraded Hello World - 2022-12-21
+;;;; Example Upgraded Hello World - 2023-4-5
 ;;;;
 ;;;; A second, more Lisp like implementation.
 
 (in-package :gtk3-example)
 
 (defun example-hello-world-upgraded-2 ()
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :type :toplevel
                                  :title "Hello Buttons"
@@ -18,7 +18,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (let ((button (gtk:button-new-with-label "Button 1")))
         (g:signal-connect button "clicked"
                           (lambda (widget)

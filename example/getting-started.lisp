@@ -1,9 +1,9 @@
-;;;; Example Getting Started - 2022-12-21
+;;;; Example Getting Started - 2023-4-5
 
 (in-package :gtk3-example)
 
 (defun example-getting-started ()
-  (within-main-loop
+  (gtk:within-main-loop
     (let (;; Create a toplevel window with a title and a default width.
           (window (make-instance 'gtk:window
                                  :type :toplevel
@@ -13,6 +13,6 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Show the window.
       (gtk:widget-show-all window))))

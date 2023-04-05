@@ -1,16 +1,16 @@
-;;;; Example Upgraded Hello World - 2022-12-21
+;;;; Example Upgraded Hello World - 2023-4-5
 
 (in-package :gtk3-example)
 
 (defun example-hello-world-upgraded ()
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (gtk:window-new :toplevel))
           (box (gtk:box-new :horizontal 6))
           (button  nil))
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (setf (gtk:window-title window) "Hello Buttons")
       (setf (gtk:window-default-size window) '(250 75))
       (setf (gtk:container-border-width window) 12)
