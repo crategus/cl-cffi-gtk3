@@ -1,13 +1,13 @@
 (in-package :gtk-test)
 
-(def-suite gdk-app :in gdk-suite)
-(in-suite gdk-app)
+(def-suite gdk-app-launch-context :in gdk-suite)
+(in-suite gdk-app-launch-context)
 
 ;;; --- Types and Values -------------------------------------------------------
 
 ;;;     GdkAppLaunchContext
 
-(test app-launch-context-class
+(test gdk-app-launch-context-class
   ;; Type check
   (is (g:type-is-object "GdkAppLaunchContext"))
   ;; Check the registered name
@@ -51,7 +51,7 @@
 
 ;;;     display
 
-(test app-launch-context-properties
+(test gdk-app-launch-context-properties
   (let* ((display (gdk:display-default))
          (context (gdk:display-app-launch-context display)))
     (is (typep (gdk:app-launch-context-display context) 'gdk:display))
@@ -66,12 +66,12 @@
 
 ;;;     gdk_app_launch_context_new                         deprecated
 
-(test app-launch-context-new
+(test gdk-app-launch-context-new
   (is (typep (gdk:app-launch-context-new) 'gdk:app-launch-context)))
 
 ;;;     gdk_app_launch_context_set_screen
 
-(test app-launch-context-set-screen
+(test gdk-app-launch-context-set-screen
   (let* ((display (gdk:display-default))
          (screen (gdk:display-default-screen display))
          (context (gdk:display-app-launch-context display)))
@@ -82,19 +82,20 @@
 
 ;;;     gdk_app_launch_context_set_desktop
 
-(test app-launch-context-set-desktop
+(test gdk-app-launch-context-set-desktop
   (let ((context (gdk:display-app-launch-context (gdk:display-default))))
     (is-false (gdk:app-launch-context-set-desktop context -1))))
 
 ;;;     gdk_app_launch_context_set_timestamp
 
-(test app-launch-context-set-timestamp
+(test gdk-app-launch-context-set-timestamp
   (let ((context (gdk:display-app-launch-context (gdk:display-default))))
-    (is-false (gdk:app-launch-context-set-timestamp context +gdk-current-time+))))
+    (is-false (gdk:app-launch-context-set-timestamp context
+                                                    +gdk-current-time+))))
 
 ;;;     gdk_app_launch_context_set_icon
 
-(test app-launch-context-set-icon
+(test gdk-app-launch-context-set-icon
   (let ((context (gdk:display-app-launch-context (gdk:display-default)))
         (icon (g:themed-icon-new "list-add")))
     (is (typep context 'gdk:app-launch-context))
@@ -103,10 +104,11 @@
 
 ;;;     gdk_app_launch_context_set_icon_name
 
-(test app-launch-context-set-icon-name
+(test gdk-app-launch-context-set-icon-name
   (let ((context (gdk:display-app-launch-context (gdk:display-default))))
     (is (typep context 'gdk:app-launch-context))
     (is-false (gdk:app-launch-context-set-icon-name context "list-add"))
-    (is-false (gdk:app-launch-context-set-icon-name context (cffi:null-pointer)))))
+    (is-false (gdk:app-launch-context-set-icon-name context
+                                                    (cffi:null-pointer)))))
 
-;;; --- 2023-1-8 ---------------------------------------------------------------
+;;; --- 2023-4-7 ---------------------------------------------------------------
