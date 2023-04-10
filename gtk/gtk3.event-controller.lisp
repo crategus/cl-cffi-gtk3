@@ -227,7 +227,7 @@
   @see-class{gtk:event-controller}
   @see-class{gdk:event}"
   (controller (g:object event-controller))
-  (event (g:object gdk:event)))
+  (event (g:boxed gdk:event)))
 
 (export 'event-controller-handle-event)
 
