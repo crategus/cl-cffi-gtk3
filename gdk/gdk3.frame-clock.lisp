@@ -4,26 +4,27 @@
 ;;; The documentation of this file is taken from the GDK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
 ;;; Copyright (C) 2016 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; Frame clock
@@ -151,22 +152,22 @@
   Firefox, for example.
 
   A frame clock is idle until someone requests a frame with the
-  @fun{gdk:frame-clock-request-phase} function. At some later point that makes 
-  sense for the synchronization being implemented, the clock will process a 
-  frame and emit signals for each phase that has been requested. See the signals 
-  of the @sym{gdk:frame-clock} class for documentation of the phases. The clock 
-  phase @code{:update} and the \"update\" signal are most interesting for 
-  application writers, and are used to update the animations, using the frame 
+  @fun{gdk:frame-clock-request-phase} function. At some later point that makes
+  sense for the synchronization being implemented, the clock will process a
+  frame and emit signals for each phase that has been requested. See the signals
+  of the @sym{gdk:frame-clock} class for documentation of the phases. The clock
+  phase @code{:update} and the \"update\" signal are most interesting for
+  application writers, and are used to update the animations, using the frame
   time given by the @fun{gdk:frame-clock-frame-time} function.
 
   The frame time is reported in microseconds and generally in the same
   timescale as the system monotonic time. The frame time does not advance
   during the time a frame is being painted, and outside of a frame, an
-  attempt is made so that all calls to the @fun{gdk:frame-clock-frame-time} 
-  function that are called at a \"similar\" time get the same value. This means 
-  that if different animations are timed by looking at the difference in time 
-  between an initial value from the @fun{gdk:frame-clock-frame-time} function 
-  and the value inside the \"update\" signal of the clock, they will stay 
+  attempt is made so that all calls to the @fun{gdk:frame-clock-frame-time}
+  function that are called at a \"similar\" time get the same value. This means
+  that if different animations are timed by looking at the difference in time
+  between an initial value from the @fun{gdk:frame-clock-frame-time} function
+  and the value inside the \"update\" signal of the clock, they will stay
   exactly synchronized.
   @begin[Signal Details]{dictionary}
     @subheading{The \"after-paint\" signal}
@@ -272,14 +273,14 @@ lambda (clock)    :run-last
  #+liber-documentation
  "@version{#2023-3-10}
   @argument[clock]{a @class{gdk:frame-clock} object}
-  @argument[phase]{a @symbol{gdk:frame-clock-phase} value with the phase that 
+  @argument[phase]{a @symbol{gdk:frame-clock-phase} value with the phase that
     is requested}
   @begin{short}
     Asks the frame clock to run a particular phase.
   @end{short}
   The signal corresponding to the requested phase will be emitted the next time
-  the frame clock processes. Multiple calls to the 
-  @sym{gdk:frame-clock-request-phase} function will be combined together and 
+  the frame clock processes. Multiple calls to the
+  @sym{gdk:frame-clock-request-phase} function will be combined together and
   only one frame processed. If you are displaying animated content and want to
   continually request the @code{:update} phase for a period of time, you should
   use the @fun{gdk:frame-clock-begin-updating} function instead, since this
@@ -341,8 +342,8 @@ lambda (clock)    :run-last
  "@version{#2023-3-10}
   @argument[clock]{a @class{gdk:frame-clock} object}
   @begin{return}
-    Inside frame processing, the unsigned integer value of the frame counter 
-    for the current frame. Outside of frame processing, the frame counter for 
+    Inside frame processing, the unsigned integer value of the frame counter
+    for the current frame. Outside of frame processing, the frame counter for
     the last frame.
   @end{return}
   @begin{short}
@@ -368,11 +369,11 @@ lambda (clock)    :run-last
   @end{return}
   @begin{short}
     The frame clock internally keeps a history of @class{gdk:frame-timings}
-    objects for recent frames that can be retrieved with the 
+    objects for recent frames that can be retrieved with the
     @fun{gdk:frame-clock-timings} function.
   @end{short}
   The set of stored frames is the set from the counter values given by the
-  @sym{gdk:frame-clock-history-start} function and the 
+  @sym{gdk:frame-clock-history-start} function and the
   @fun{gdk:frame-clock-frame-counter} function, inclusive.
   @see-class{gdk:frame-clock}
   @see-class{gdk:frame-timings}
@@ -386,16 +387,16 @@ lambda (clock)    :run-last
 ;;; gdk_frame_clock_get_timings () -> frame-clock-timings
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_frame_clock_get_timings" frame-clock-timings) 
+(defcfun ("gdk_frame_clock_get_timings" frame-clock-timings)
     (g:boxed frame-timings)
  #+liber-documentation
  "@version{#2023-3-10}
   @argument[clock]{a @class{gdk:frame-clock} object}
-  @argument[counter]{an unsigned integer frame counter value identifying the 
+  @argument[counter]{an unsigned integer frame counter value identifying the
     frame to be received}
   @begin{return}
     The @class{gdk:frame-timings} instance for the specified frame, or
-    @code{nil} if it is not available. See the 
+    @code{nil} if it is not available. See the
     @fun{gdk:frame-clock-history-start} function.
   @end{return}
   @begin{short}
@@ -452,11 +453,11 @@ lambda (clock)    :run-last
   @argument[clock]{a @class{gdk:frame-clock} object}
   @argument[time]{an integer base time for determining a presentaton time}
   @begin{return}
-    @arg{refresh-interval} -- an integer with the determined refresh interval, 
-      or @code{nil}, a default refresh interval of 1/60th of a second will be 
+    @arg{refresh-interval} -- an integer with the determined refresh interval,
+      or @code{nil}, a default refresh interval of 1/60th of a second will be
       stored if no history is present @br{}
-    @arg{presentation-time} -- an integer with the next candidate presentation 
-      time after the given base time, 0 will be will be stored if no history is 
+    @arg{presentation-time} -- an integer with the next candidate presentation
+      time after the given base time, 0 will be will be stored if no history is
       present
   @end{return}
   @begin{short}
