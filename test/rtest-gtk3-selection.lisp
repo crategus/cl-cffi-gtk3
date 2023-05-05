@@ -7,7 +7,7 @@
 
 ;;;   GtkTargetFlags  <-- gtk.drag-and-drop.lisp
 
-(test target-flags
+(test gtk-target-flags
   ;; Check the type
   (is (g:type-is-flags "GtkTargetFlags"))
   ;; Check the registered name
@@ -41,7 +41,7 @@
 
 ;;;   GtkTargetList
 
-(test target-list-structure
+(test gtk-target-list-structure
   ;; Type check
   (is (g:type-is-a (g:gtype "GtkTargetList") +g-type-boxed+))
   ;; Check the type initializer
@@ -63,7 +63,7 @@
 
 ;;;   gtk_target_list_new
 
-(test target-list-new
+(test gtk-target-list-new
   (let ((tlist (gtk:target-list-new '(("text/html" :none 0)
                                       ("STRING" :none 1)
                                       ("number" :none 2)
@@ -77,7 +77,7 @@
 
 ;;;   gtk_target_list_add
 
-(test target-list-add
+(test gtk-target-list-add
   (let ((tlist (gtk:target-list-new)))
     ;; Add the target entries
     (gtk:target-list-add tlist "text/html" 0 0)
@@ -96,7 +96,7 @@
 
 ;;;   gtk_target_list_add_table
 
-(test target-list-add-table
+(test gtk-target-list-add-table
   (let ((tlist (gtk:target-list-new)))
     (gtk:target-list-add-table tlist '(("text/html" :none 0)
                                        ("STRING" :none 1)
@@ -111,7 +111,7 @@
 
 ;;;   gtk_target_list_add_text_targets
 
-(test target-list-add-text-targets
+(test gtk-target-list-add-text-targets
   (let ((tlist (gtk:target-list-new)))
     (gtk:target-list-add-text-targets tlist 0)
     (is (equal #-win32
@@ -134,33 +134,34 @@
 
 ;;;   gtk_target_list_add_image_targets
 
-(test target-list-add-image-targets.1
+(test gtk-target-list-add-image-targets.1
   (let ((tlist (gtk:target-list-new)))
     (gtk:target-list-add-image-targets tlist 0 t)
-    (is (equal '("application/ico" "image/bmp" "image/ico" "image/icon"
-                 "image/jpeg" "image/png" "image/tiff"
-                 "image/vnd.microsoft.icon" "image/x-bmp" "image/x-ico"
-                 "image/x-icon" "image/x-MS-bmp" "image/x-win-bitmap"
-                 "text/ico")
+    (is (equal '("application/ico" "audio/x-riff" "image/bmp" "image/ico"
+                 "image/icon" "image/jpeg" "image/png" "image/tiff"
+                 "image/vnd.microsoft.icon" "image/webp" "image/x-bmp"
+                 "image/x-ico" "image/x-icon" "image/x-MS-bmp"
+                 "image/x-win-bitmap" "text/ico")
                (sort (mapcar #'first
                              (gtk:target-table-new-from-list tlist))
                      #'string-lessp)))))
 
-(test target-list-add-image-targets.2
+(test gtk-target-list-add-image-targets.2
   (let ((tlist (gtk:target-list-new)))
     (gtk:target-list-add-image-targets tlist 0 nil)
     (is (equal #-windows
-               '("application/ico" "application/x-navi-animation" "image/bmp"
-                 "image/gif" "image/ico" "image/icon" "image/jpeg" "image/png"
-                 "image/qtif" "image/svg" "image/svg+xml"
-                 "image/svg+xml-compressed" "image/svg-xml" "image/tiff"
-                 "image/vnd.adobe.svg+xml" "image/vnd.microsoft.icon"
-                 "image/x-bmp" "image/x-icns" "image/x-ico" "image/x-icon"
-                 "image/x-MS-bmp" "image/x-portable-anymap"
-                 "image/x-portable-bitmap" "image/x-portable-graymap"
-                 "image/x-portable-pixmap" "image/x-quicktime" "image/x-tga"
-                 "image/x-win-bitmap" "image/x-wmf" "image/x-xbitmap"
-                 "image/x-xpixmap" "text/ico" "text/xml-svg")
+               '("application/ico" "application/x-navi-animation"
+                 "audio/x-riff" "image/bmp" "image/gif" "image/ico" "image/icon"
+                 "image/jpeg" "image/png" "image/qtif" "image/svg"
+                 "image/svg+xml" "image/svg+xml-compressed" "image/svg-xml"
+                 "image/tiff" "image/vnd.adobe.svg+xml"
+                 "image/vnd.microsoft.icon" "image/webp" "image/x-bmp"
+                 "image/x-icns" "image/x-ico" "image/x-icon" "image/x-MS-bmp"
+                 "image/x-portable-anymap" "image/x-portable-bitmap"
+                 "image/x-portable-graymap" "image/x-portable-pixmap"
+                 "image/x-quicktime" "image/x-tga" "image/x-win-bitmap"
+                 "image/x-wmf" "image/x-xbitmap" "image/x-xpixmap" "text/ico"
+                 "text/xml-svg")
                #+windows
                '("application/emf" "application/ico" "application/x-emf"
                  "application/x-navi-animation" "image/bmp" "image/emf"
@@ -181,16 +182,16 @@
 
 ;;;   gtk_target_list_add_uri_targets
 
-(test target-list-add-uri-targets
+(test gtk-target-list-add-uri-targets
   (let ((target-list (gtk:target-list-new)))
     (gtk:target-list-add-uri-targets target-list 0)
-    (is (equal '("text/uri-list")
+    (is (equal '("text/uri-list" "application/vnd.portal.files")
                (mapcar #'first
                        (gtk:target-table-new-from-list target-list))))))
 
 ;;;   gtk_target_list_add_rich_text_targets
 
-(test target-list-add-rich-text-targets.1
+(test gtk-target-list-add-rich-text-targets.1
   (let ((target-list (gtk:target-list-new))
         (buffer (make-instance 'gtk:text-buffer)))
     (gtk:target-list-add-rich-text-targets target-list 0 nil buffer)
@@ -198,7 +199,7 @@
                (mapcar #'first
                        (gtk:target-table-new-from-list target-list))))))
 
-(test target-list-add-rich-text-targets.2
+(test gtk-target-list-add-rich-text-targets.2
   (let ((target-list (gtk:target-list-new))
         (buffer (make-instance 'gtk:text-buffer)))
     (gtk:target-list-add-rich-text-targets target-list 0 t buffer)
@@ -209,7 +210,7 @@
 ;;;   gtk_target_list_remove
 ;;;   gtk_target_list_find
 
-(test target-list-find
+(test gtk-target-list-find
   (let ((target-list (gtk:target-list-new)))
     (gtk:target-list-add target-list "text/html" 0 1)
     (is (= 1 (gtk:target-list-find target-list "text/html")))
@@ -218,7 +219,7 @@
 
 ;;;   gtk_target_table_new_from_list
 
-(test target-table-new-from-list
+(test gtk-target-table-new-from-list
   (let ((tlist (gtk:target-list-new)))
 
     (gtk:target-list-add tlist "text/html" 0 0)
@@ -255,7 +256,7 @@
 
 ;;;   gtk_selection_owner_set
 
-(test selection-owner-set.1
+(test gtk-selection-owner-set.1
   (let ((widget (make-instance 'gtk:window :type :toplevel)))
     ;; Realize the toplevel widget to create a gdk:window
     (gtk:widget-realize widget)
@@ -266,7 +267,7 @@
                                           "PRIMARY"
                                           +gdk-current-time+) 'boolean)))))
 
-(test selection-owner-set.2
+(test gtk-selection-owner-set.2
   (let ((widget (make-instance 'gtk:window :type :toplevel)))
     ;; Realize the toplevel widget to create a gdk:window
     (gtk:widget-realize widget)
@@ -277,7 +278,7 @@
                                           "SECONDARY"
                                           +gdk-current-time+) 'boolean)))))
 
-(test selection-owner-set.3
+(test gtk-selection-owner-set.3
   (let ((widget (make-instance 'gtk:window :type :toplevel)))
     ;; Realize the toplevel widget to create a gdk:window
     (gtk:widget-realize widget)
@@ -291,7 +292,7 @@
 ;;;   gtk_selection_owner_set_for_display
 
 #+nil
-(test selection-owner-set-for-display
+(test gtk-selection-owner-set-for-display
   (let ((display (gdk:display-default))
         (widget (make-instance 'gtk:window :type :toplevel)))
     ;; Realize the toplevel widget to create a gdk-window
@@ -320,7 +321,7 @@
 
 ;;;   gtk_selection_add_target
 
-(test selection-add-target
+(test gtk-selection-add-target
   (let ((widget (make-instance 'gtk:window :type :toplevel)))
     ;; Realize the toplevel widget to create a gdk:window
     (gtk:widget-realize widget)
@@ -331,7 +332,7 @@
 
 ;;;   gtk_selection_add_targets
 
-(test selection-add-targets
+(test gtk-selection-add-targets
   (let ((widget (make-instance 'gtk:window :type :toplevel)))
     ;; Realize the toplevel widget to create a gdk:window
     (gtk:widget-realize widget)
@@ -345,7 +346,7 @@
 ;;;   gtk_selection_clear_targets
 
 #+nil
-(test selection-clear-targets
+(test gtk-selection-clear-targets
   (let ((widget (make-instance 'gtk:window :type :toplevel)))
     (g-signal-connect widget "selection-received"
        (lambda (widget selection-data time)
@@ -362,7 +363,7 @@
 ;;;   gtk_selection_convert
 
 #+nil
-(test selection-convert
+(test gtk-selection-convert
   (let ((window (make-instance 'gtk:window :type :toplevel)))
     (gtk:widget-realize window)
 
@@ -382,7 +383,7 @@
 ;;;   gtk_selection_data_set_text
 
 #+nil
-(test selection-data-set-text
+(test gtk-selection-data-set-text
   (let ((window (make-instance 'gtk:window :type :toplevel)))
     (gtk:widget-realize window)
     (g-signal-connect window "selection-received"
@@ -411,7 +412,7 @@
 ;;;   gtk_selection_data_get_text
 
 #+nil
-(test selection-data-get-text
+(test gtk-selection-data-get-text
   (let ((selection (gtk:make-selection-data :selection "PRIMARY"
                                             :target "STRING"
                                             :type "STRING"
@@ -428,7 +429,7 @@
 ;;;   gtk_selection_data_targets_include_image
 
 #+nil
-(test selection-data-targets-include-image
+(test gtk-selection-data-targets-include-image
   (let ((window (make-instance 'gtk:window :type :toplevel)))
     (gtk:widget-realize window)
     (g-signal-connect window "selection-received"
@@ -440,7 +441,7 @@
 ;;;   gtk_selection_data_targets_include_text
 
 #+nil
-(test selection-data-targets-include-text
+(test gtk-selection-data-targets-include-text
   (let ((window (make-instance 'gtk:window :type :toplevel)))
     (gtk:widget-realize window)
     (g-signal-connect window "selection-received"
@@ -462,7 +463,7 @@
 ;;;   gtk_selection_data_get_target
 
 #+nil
-(test selection-data-get
+(test gtk-selection-data-get
   (let ((window (make-instance 'gtk:window :type :toplevel)))
     (gtk:widget-realize window)
     (g-signal-connect window "selection-received"
@@ -486,7 +487,7 @@
 
 ;;;     gtk_targets_include_image
 
-(test targets-include-image
+(test gtk-targets-include-image
   (is-false (gtk:targets-include-image '() nil))
   (is-true (gtk:targets-include-image '("application/ico" "image/bmp"
                                         "image/ico" "image/icon"
@@ -504,4 +505,4 @@
 ;;;     gtk_selection_data_copy
 ;;;     gtk_selection_data_free
 
-;;; --- 2023-3-26 --------------------------------------------------------------
+;;; --- 2023-4-29 --------------------------------------------------------------

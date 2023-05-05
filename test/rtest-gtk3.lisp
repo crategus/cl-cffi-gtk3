@@ -33,7 +33,7 @@
                          #:define-g-interface
                          #:define-g-object-class
                          )
-  (:import-from :gio     #:with-g-resource)
+  (:import-from :gio     #:with-g-resources)
   (:import-from :gtk     ;; Symbols from gtk.style-provider.lisp
                          #:+gtk-priority-fallback+
                          #:+gtk-priority-theme+
@@ -135,4 +135,4 @@
   (mapcar #'gobject:enum-item-value
           (gobject:get-enum-items gtype)))
 
-;;; --- 2023-1-29 --------------------------------------------------------------
+;;; --- 2023-4-29 --------------------------------------------------------------

@@ -7,7 +7,7 @@
 
 ;;;     GtkDestDefaults
 
-(test dest-defaults
+(test gtk-dest-defaults
   ;; Check the type
   (is (g:type-is-flags "GtkDestDefaults"))
   ;; Check the registered name
@@ -44,7 +44,7 @@
 
 ;;;     gtk_drag_dest_set
 
-(test drag-dest-set
+(test gtk-drag-dest-set
   (let ((tlist (list (list "INTEGER" 0 0)
                      (list "STRING" 0 1)
                      (list "text/plain" 0 1)
@@ -63,7 +63,7 @@
 ;;;     gtk_drag_dest_get_target_list
 ;;;     gtk_drag_dest_set_target_list
 
-(test drag-dest-target-list
+(test gtk-drag-dest-target-list
   (let ((tlist (list (list "INTEGER" 0 0)
                      (list "STRING" 0 1)
                      (list "text/plain" 0 1)
@@ -106,7 +106,7 @@
 
 ;;;     gtk_drag_source_set
 
-(test drag-source-set
+(test gtk-drag-source-set
   (let ((tlist (list (list "INTEGER" 0 0)
                      (list "STRING" 0 1)
                      (list "text/plain" 0 1)
@@ -127,7 +127,7 @@
 
 ;; TODO: Fix the example, we get no gtk:target-list
 
-(test drag-source-unset
+(test gtk-drag-source-unset
   (let ((tlist (list (list "INTEGER" 0 0)
                      (list "STRING" 0 1)
                      (list "text/plain" 0 1)
@@ -152,7 +152,7 @@
 ;;;     gtk_drag_source_set_target_list
 ;;;     gtk_drag_source_get_target_list
 
-(test drag-source-target-list
+(test gtk-drag-source-target-list
   (let ((tlist (list (list "INTEGER" 0 0)
                      (list "STRING" 0 1)
                      (list "text/plain" 0 1)
@@ -172,7 +172,7 @@
 
 ;;;     gtk_drag_source_add_text_targets
 
-(test drag-source-add-text-targets
+(test gtk-drag-source-add-text-targets
   (let ((source (make-instance 'gtk:button)))
     (is-false (gtk:drag-source-set source :button1-mask nil :copy))
     (is-false (gtk:drag-source-add-text-targets source))
@@ -199,7 +199,7 @@
 ;;;     gtk_drag_source_add_image_targets
 
 #-windows
-(test drag-source-add-image-targets
+(test gtk-drag-source-add-image-targets
   (let ((source (make-instance 'gtk:button)))
     (is-false (gtk:drag-source-set source :button1-mask nil :copy))
     (is-false (gtk:drag-source-add-image-targets source))
@@ -216,16 +216,19 @@
                  ("image/ico" NIL 0)
                  ("image/icon" NIL 0)
                  ("text/ico" NIL 0)
-                 ("image/tiff" NIL 0))
+                 ("image/tiff" NIL 0)
+                 ("image/webp" NIL 0)
+                 ("audio/x-riff" NIL 0))
                (gtk:target-table-new-from-list
                    (gtk:drag-source-target-list source))))))
 
 #+windows
-(test drag-source-add-image-targets
+(test gtk-drag-source-add-image-targets
   (let ((source (make-instance 'gtk:button)))
     (is-false (gtk:drag-source-set source :button1-mask nil :copy))
     (is-false (gtk:drag-source-add-image-targets source))
     (is (equal '(("image/png" NIL 0)
+                 ("image/jpeg" NIL 0)
                  ("image/bmp" NIL 0)
                  ("image/x-bmp" NIL 0)
                  ("image/x-MS-bmp" NIL 0)
@@ -237,19 +240,21 @@
                  ("image/ico" NIL 0)
                  ("image/icon" NIL 0)
                  ("text/ico" NIL 0)
-                 ("image/jpeg" NIL 0)
-                 ("image/tiff" NIL 0))
+                 ("image/tiff" NIL 0)
+                 ("image/webp" NIL 0)
+                 ("audio/x-riff" NIL 0))
                (gtk:target-table-new-from-list
                    (gtk:drag-source-target-list source))))))
 
 ;;;     gtk_drag_source_add_uri_targets
 
-(test drag-source-add-uri-targets
+(test gtk-drag-source-add-uri-targets
   (let ((source (make-instance 'gtk:button)))
     (is-false (gtk:drag-source-set source :button1-mask nil :copy))
     (is-false (gtk:drag-source-add-uri-targets source))
-    (is (equal '(("text/uri-list" NIL 0))
+    (is (equal '(("text/uri-list" NIL 0)
+                 ("application/vnd.portal.files" NIL 0))
                (gtk:target-table-new-from-list
                    (gtk:drag-source-target-list source))))))
 
-;;; --- 2023-1-24 --------------------------------------------------------------
+;;; --- 2023-4-29 --------------------------------------------------------------

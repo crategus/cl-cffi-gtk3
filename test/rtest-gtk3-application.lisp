@@ -7,7 +7,7 @@
 
 ;;; --- GtkApplicationInhibitFlags ---------------------------------------------
 
-(test application-inhibit-flags
+(test gtk-application-inhibit-flags
   ;; Check the type
   (is (g:type-is-flags "GtkApplicationInhibitFlags"))
   ;; Check the registered name
@@ -37,7 +37,7 @@
 
 ;;; --- GtkApplication ---------------------------------------------------------
 
-(test application-class
+(test gtk-application-class
   ;; Type check
   (is (g:type-is-object "GtkApplication"))
   ;; Check the registered name
@@ -80,11 +80,11 @@
 
 ;;; --- Properties and Accessors -----------------------------------------------
 
-(test application-properties
+(test gtk-application-properties
   (let ((message nil)
         (application (make-instance 'gtk:application
                                     :application-id "com.crategus.test"
-                                    :flags :none
+                                    :flags :non-unique
                                     :register-session nil
                                     :inactivity-timeout 1000)))
     ;; Connect signal "startup"
@@ -134,11 +134,11 @@
 
 ;;; --- Signals ----------------------------------------------------------------
 
-(test application-signals
+(test gtk-application-signals
   (let ((message nil)
         (application (make-instance 'gtk:application
                                     :application-id "com.crategus.test"
-                                    :flags :none
+                                    :flags :non-unique
                                     :register-session t
                                     :inactivity-timeout 1000)))
     ;; Connect signal "query-end", will not be executed
@@ -193,7 +193,7 @@
 
 ;;;     gtk_application_new
 
-(test application-new
+(test gtk-application-new
   (let ((application (gtk:application-new "com.crategus.test" '(:handles-open))))
     (is-true (g:application-id-is-valid "com.crategus.test"))
     (is (string= "com.crategus.test"
@@ -208,11 +208,11 @@
 ;;;     gtk_application_get_windows
 ;;;     gtk_application_get_window_by_id
 
-(test application-add-window
+(test gtk-application-add-window
   (let ((message nil)
         (application (make-instance 'gtk:application
                                     :application-id "com.crategus.test"
-                                    :flags :none
+                                    :flags :non-unique
                                     :register-session nil
                                     :inactivity-timeout 1000)))
     ;; Connect signal "window-added"
@@ -282,7 +282,7 @@
 
 ;;;     gtk_application_list_action_descriptions
 
-(test applicaton-list-action-descriptions
+(test gtk-application-list-action-descriptions
   (let ((application (make-instance 'gtk:application)))
     (is (equal '()
                (gtk:application-list-action-descriptions application)))
@@ -294,7 +294,7 @@
 ;;;     gtk_application_get_accels_for_action
 ;;;     gtk_application_set_accels_for_action
 
-(test application-accels-for-action
+(test gtk-application-accels-for-action
   (let ((application (make-instance 'gtk:application)))
     (is-false (gtk:application-accels-for-action application "win::close"))
     (setf (gtk:application-accels-for-action application "win::close")
@@ -304,7 +304,7 @@
 
 ;;;     gtk_application_get_actions_for_accel
 
-(test application-actions-for-accel
+(test gtk-application-actions-for-accel
   (let ((application (make-instance 'gtk:application)))
     (setf (gtk:application-accels-for-action application "win::close")
           '("<Control>q" "<Shift><Alt>F1" "<Release>z"))
@@ -315,4 +315,4 @@
     (is (equal '("win::close" "win::save")
                (gtk:application-actions-for-accel application "<Control>q")))))
 
-;;; --- 2023-1-1 ---------------------------------------------------------------
+;;; --- 2023-4-29 --------------------------------------------------------------

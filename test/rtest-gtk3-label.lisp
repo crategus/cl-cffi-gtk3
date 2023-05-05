@@ -250,12 +250,12 @@
 
 ;;;     gtk_label_get_layout_offsets
 
-(test label-layout-offsets
+(test gtk-label-layout-offsets
   (let ((label (gtk:label-new "some text")))
     #-windows
     (multiple-value-bind (xoffset yoffset)
         (gtk:label-layout-offsets label)
-      (is (= -34 xoffset))
+      (is (= -33 xoffset))
       (is (=  -9 yoffset)))
     #+windows
     (multiple-value-bind (xoffset yoffset)
@@ -322,4 +322,4 @@
   (let ((label (make-instance 'gtk:label :label "some text")))
     (is-false (gtk:label-current-uri label))))
 
-;;; --- 2023-3-9 ---------------------------------------------------------------
+;;; --- 2023-4-29 --------------------------------------------------------------

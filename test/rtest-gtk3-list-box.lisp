@@ -176,13 +176,12 @@
     (is-false (gtk:list-box-unselect-all listbox))
     (is (= 0 (length (gtk:list-box-selected-rows listbox))))))
 
-;;;     (*GtkListBoxForeachFunc)
+;;;     GtkListBoxForeachFunc
 ;;;     gtk_list_box_selected_foreach
 
-(test list-box-selected-foreach
+(test gtk-list-box-selected-foreach
   (let ((listbox (make-instance 'gtk:list-box :selection-mode :multiple))
         (listboxrow (make-instance 'gtk:list-box-row :visible t)))
-
     (is-false (gtk:list-box-prepend listbox
                                     (make-instance 'gtk:list-box-row
                                                    :visible t)))
@@ -196,24 +195,24 @@
     (is-false (gtk:list-box-prepend listbox
                                     (make-instance 'gtk:list-box-row
                                                    :visible t)))
-
     (is-false (gtk:list-box-select-row listbox listboxrow))
-    (is (equal listboxrow (gtk:list-box-selected-row listbox)))
+    (is (eq listboxrow (gtk:list-box-selected-row listbox)))
     (is (= 5 (length (gtk:container-children listbox))))
-    (is-false (gtk:list-box-selected-foreach listbox
-                                             (lambda (box row)
-                                               (gtk:container-remove box row))))
-    (is (equal nil (gtk:list-box-selected-row listbox)))
-    (is (= 4 (length (gtk:container-children listbox))))
+
+;; This is wrong. We cannot modify the listbox within foreach callback
+;    (is-false (gtk:list-box-selected-foreach listbox
+;                                             (lambda (box row)
+;                                               (gtk:container-remove box row))))
+;    (is (equal nil (gtk:list-box-selected-row listbox)))
 
     (is-false (gtk:list-box-select-all listbox))
-    (is (= 4 (length (gtk:list-box-selected-rows listbox))))
+    (is (= 5 (length (gtk:list-box-selected-rows listbox))))
     (let ((count 0))
       (is-false (gtk:list-box-selected-foreach listbox
                                                (lambda (box row)
                                                  (declare (ignore box row))
                                                  (setf count (1+ count)))))
-      (is (= 4 count)))))
+      (is (= 5 count)))))
 
 ;;;     gtk_list_box_get_selected_rows
 
@@ -311,4 +310,4 @@
 ;;;     gtk_list_box_row_set_header
 ;;;     gtk_list_box_row_get_index
 
-;;; --- 2023-2-18 --------------------------------------------------------------
+;;; --- 2023-4-29 --------------------------------------------------------------
