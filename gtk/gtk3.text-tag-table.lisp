@@ -132,35 +132,6 @@ lambda (table tag)    :run-last
   @see-class{gtk:text-tag}")
 
 ;;; ----------------------------------------------------------------------------
-;;; GtkTextTagTableForeach ()
-;;; ----------------------------------------------------------------------------
-
-(defcallback text-tag-table-foreach-func :void
-    ((tag (g:object text-tag))
-     (data :pointer))
-  (funcall (glib:get-stable-pointer-value data) tag))
-
-#+liber-documentation
-(setf (liber:alias-for-symbol 'text-tag-table-foreach-func)
-      "Callback"
-      (liber:symbol-documentation 'text-tag-table-foreach-func)
- "@version{#2023-3-28}
-  @begin{short}
-    The type of callback function passed to the @fun{gtk:text-table-foreach}
-    function.
-  @end{short}
-  @begin{pre}
- lambda (tag)
-  @end{pre}
-  @begin[code]{table}
-    @entry[tag]{The @class{gtk:text-trag} object.}
-  @end{table}
-  @see-class{gtk:text-tag-table}
-  @see-function{gtk:text-tag-table-foreach}")
-
-(export 'text-tag-table-foreach-func)
-
-;;; ----------------------------------------------------------------------------
 ;;; gtk_text_tag_table_new ()
 ;;; ----------------------------------------------------------------------------
 
@@ -242,6 +213,36 @@ lambda (table tag)    :run-last
   (name (:string :free-to-foreign t)))
 
 (export 'text-tag-table-lookup)
+
+;;; ----------------------------------------------------------------------------
+;;; GtkTextTagTableForeach ()
+;;; ----------------------------------------------------------------------------
+
+(defcallback text-tag-table-foreach-func :void
+    ((tag (g:object text-tag))
+     (data :pointer))
+  (funcall (glib:get-stable-pointer-value data) tag))
+
+#+liber-documentation
+(setf (liber:alias-for-symbol 'text-tag-table-foreach-func)
+      "Callback"
+      (liber:symbol-documentation 'text-tag-table-foreach-func)
+ "@version{#2023-5-14}
+  @begin{short}
+    The type of callback function passed to the @fun{gtk:text-table-foreach}
+    function.
+  @end{short}
+  @begin{pre}
+lambda (tag)
+  @end{pre}
+  @begin[code]{table}
+    @entry[tag]{The @class{gtk:text-tag} object.}
+  @end{table}
+  @see-class{gtk:text-tag-table}
+  @see-class{gtk:text-tag}
+  @see-function{gtk:text-tag-table-foreach}")
+
+(export 'text-tag-table-foreach-func)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_text_tag_table_foreach ()

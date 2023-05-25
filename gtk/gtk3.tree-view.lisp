@@ -395,9 +395,9 @@
   Several functions are available for converting between the different
   coordinate systems. The most common translations are between widget and bin
   window coordinates and between bin window and tree coordinates. For the
-  former you can use the @fun{gtk:tree-view-convert-widget-to-bin-window-coords} 
-  function (and vice versa), for the latter the 
-  @fun{gtk:tree-view-convert-bin-window-to-tree-coords} function (and vice 
+  former you can use the @fun{gtk:tree-view-convert-widget-to-bin-window-coords}
+  function (and vice versa), for the latter the
+  @fun{gtk:tree-view-convert-bin-window-to-tree-coords} function (and vice
   versa).
   @begin[GtkTreeView as GtkBuildable]{dictionary}
     The @sym{gtk:tree-view} implementation of the @class{gtk:buildable}
@@ -553,8 +553,8 @@ lambda (view step direction)    :action
       Keybinding signal which gets emitted when the user presses one of the
       cursor keys. Applications should not connect to it, but may emit it with
       the @fun{g:signal-emit} function if they need to control the cursor
-      programmatically. In contrast to the @fun{gtk:tree-view-get-cursor} 
-      and @fun{gtk:tree-view-set-cursor-on-cell} functions when moving 
+      programmatically. In contrast to the @fun{gtk:tree-view-get-cursor}
+      and @fun{gtk:tree-view-set-cursor-on-cell} functions when moving
       horizontally \"move-cursor\" does not reset the current selection.
       @begin[code]{table}
         @entry[view]{The @sym{gtk:tree-view} widget on which the signal is
@@ -823,7 +823,7 @@ lambda (view)    :action
     Accessor of the @slot[gtk:tree-view]{enable-tree-lines} slot of the
     @class{gtk:tree-view} class.
   @end{short}
-  The @sym{gtk:tree-view-enable-tree-lines} function returns whether or not 
+  The @sym{gtk:tree-view-enable-tree-lines} function returns whether or not
   tree lines are drawn in the tree view. The
   @sym{(setf gtk:tree-view-enable-tree-lines)} function sets whether to draw
   lines. This does not have any visible effects for lists.
@@ -850,10 +850,10 @@ lambda (view)    :action
     Accessor of the @slot[gtk:tree-view]{expander-column} slot of the
     @class{gtk:tree-view} class.
   @end{short}
-  The @sym{gtk:tree-view-expander-column} function returns the column that is 
-  the current expander column. The @sym{(setf gtk:tree-view-expander-column)} 
-  function sets the column to draw the expander arrow at. It must be in the 
-  tree view. If @arg{column} is @code{nil}, then the expander arrow is always 
+  The @sym{gtk:tree-view-expander-column} function returns the column that is
+  the current expander column. The @sym{(setf gtk:tree-view-expander-column)}
+  function sets the column to draw the expander arrow at. It must be in the
+  tree view. If @arg{column} is @code{nil}, then the expander arrow is always
   at the first visible column.
 
   If you do not want expander arrow to appear in your tree, set the expander
@@ -887,9 +887,9 @@ lambda (view)    :action
     Accessor of the @slot[gtk:tree-view]{fixed-height-mode} slot of the
     @class{gtk:tree-view} class.
   @end{short}
-  The @sym{gtk:tree-view-fixed-height-mode} function returns whether fixed 
+  The @sym{gtk:tree-view-fixed-height-mode} function returns whether fixed
   height mode is turned on for the tree view. The
-  @sym{(setf gtk:tree-view-fixed-height-mode)} function enables or disables the 
+  @sym{(setf gtk:tree-view-fixed-height-mode)} function enables or disables the
   fixed height mode.
 
   Fixed height mode speeds up the @class{gtk:tree-view} widget by assuming that
@@ -922,8 +922,8 @@ lambda (view)    :action
     Accessor of the @slot[gtk:tree-view]{headers-clickable} slot of the
     @class{gtk:tree-view} class.
   @end{short}
-  The @sym{gtk:tree-view-headers-clickable} function returns whether all header 
-  columns are clickable. The @sym{(setf gtk:tree-view-headers-clickable)} 
+  The @sym{gtk:tree-view-headers-clickable} function returns whether all header
+  columns are clickable. The @sym{(setf gtk:tree-view-headers-clickable)}
   function allow the column title buttons to be clicked.
   @see-class{gtk:tree-view}")
 
@@ -949,9 +949,9 @@ lambda (view)    :action
     Accessor of the @slot[gtk:tree-view]{headers-visible} slot of the
     @class{gtk:tree-view} class.
   @end{short}
-  The @sym{gtk:tree-view-headers-visible} function returns @em{true} if the 
+  The @sym{gtk:tree-view-headers-visible} function returns @em{true} if the
   headers on the tree view are visible. The
-  @sym{(setf gtk:tree-view-headers-visible)} function sets the visibility state 
+  @sym{(setf gtk:tree-view-headers-visible)} function sets the visibility state
   of the headers.
   @see-class{gtk:tree-view}")
 
@@ -979,10 +979,10 @@ lambda (view)    :action
     Accessor of the @slot[gtk:tree-view]{hover-expand} slot of the
     @class{gtk:tree-view} class.
   @end{short}
-  The @sym{gtk:tree-view-hover-expand} function returns whether hover expansion 
-  mode is turned on for the tree view. The 
-  @sym{(setf gtk:tree-view-hover-expand)} function enables or disables the 
-  hover expansion mode. Hover expansion makes rows expand or collapse if the 
+  The @sym{gtk:tree-view-hover-expand} function returns whether hover expansion
+  mode is turned on for the tree view. The
+  @sym{(setf gtk:tree-view-hover-expand)} function enables or disables the
+  hover expansion mode. Hover expansion makes rows expand or collapse if the
   pointer moves over them.
   @see-class{gtk:tree-view}")
 
@@ -1012,11 +1012,11 @@ lambda (view)    :action
     Accessor of the @slot[gtk:tree-view]{hover-selection} slot of the
     @class{gtk:tree-view} class.
   @end{short}
-  The @sym{gtk:tree-view-hover-selection} function returns whether hover 
+  The @sym{gtk:tree-view-hover-selection} function returns whether hover
   selection mode is turned on for the tree view. The
-  @sym{(setf gtk:tree-view-hover-selection)} function enables or disables the 
-  hover selection mode. Hover selection makes the selected row follow the 
-  pointer. Currently, this works only for the selection modes @code{:single} 
+  @sym{(setf gtk:tree-view-hover-selection)} function enables or disables the
+  hover selection mode. Hover selection makes the selected row follow the
+  pointer. Currently, this works only for the selection modes @code{:single}
   and @code{:browse}.
   @see-class{gtk:tree-view}")
 
@@ -1044,8 +1044,8 @@ lambda (view)    :action
     Accessor of the @slot[gtk:tree-view]{level-indentation} slot of the
     @class{gtk:tree-view} class.
   @end{short}
-  The @sym{gtk:tree-view-level-indentation} function returns the amount, in 
-  pixels, of extra indentation for child levels in the tree view in addition to 
+  The @sym{gtk:tree-view-level-indentation} function returns the amount, in
+  pixels, of extra indentation for child levels in the tree view in addition to
   the default indentation. The @sym{(setf gtk:tree-view-level-indentation)}
   function sets the amount of extra indentation.
 
@@ -1074,7 +1074,7 @@ lambda (view)    :action
     Accessor of the @slot[gtk:tree-view]{model} slot of the
     @class{gtk:tree-view} class.
   @end{short}
-  The @sym{gtk:tree-view-model} function returns the model the tree view is 
+  The @sym{gtk:tree-view-model} function returns the model the tree view is
   based on. Returns @code{nil} if the model is unset. The
   @sym{(setf gtk:tree-view-model)} function sets the model. If the tree view
   already has a model set, it will remove it before setting the new model. If
@@ -1147,10 +1147,10 @@ lambda (view)    :action
     Accessor of the @slot[gtk:tree-view]{rubber-banding} slot of the
     @class{gtk:tree-view} class.
   @end{short}
-  The @sym{gtk:tree-view-rubber-banding} function returns whether rubber banding 
-  is turned on for the tree view. The @sym{(setf gtk:tree-view-rubber-banding)} 
-  function enables or disables rubber banding. If the selection mode is 
-  @code{:multiple}, rubber banding will allow the user to select multiple rows 
+  The @sym{gtk:tree-view-rubber-banding} function returns whether rubber banding
+  is turned on for the tree view. The @sym{(setf gtk:tree-view-rubber-banding)}
+  function enables or disables rubber banding. If the selection mode is
+  @code{:multiple}, rubber banding will allow the user to select multiple rows
   by dragging the mouse.
   @see-class{gtk:tree-view}")
 
@@ -1218,8 +1218,8 @@ lambda (view)    :action
   @end{short}
   The @sym{gtk:tree-view-search-column} function gets the column
   searched on by the interactive search code. The
-  @sym{(setf gtk:tree-view-search-column)} function sets @arg{column} as the 
-  column where the interactive search code should search in for the current 
+  @sym{(setf gtk:tree-view-search-column)} function sets @arg{column} as the
+  column where the interactive search code should search in for the current
   model.
 
   If the search column is set, users can use the \"start-interactive-search\"
@@ -1252,7 +1252,7 @@ lambda (view)    :action
     Accessor of the @slot[gtk:tree-view]{show-expanders} slot of the
     @class{gtk:tree-view} class.
   @end{short}
-  The @sym{gtk:tree-view-show-expanders} function returns whether or not 
+  The @sym{gtk:tree-view-show-expanders} function returns whether or not
   expanders are drawn in the tree view. The
   @sym{(setf gtk:tree-view-show-expanders)} sets whether to draw and enable
   expanders and indent child rows in the tree view. When disabled there will be
@@ -1300,8 +1300,8 @@ lambda (view)    :action
   When enabled, the @slot[gtk:widget]{has-tooltip} property will be set to
   @em{true} and the tree view will connect a \"query-tooltip\" signal handler.
 
-  Note that the signal handler sets the text with the 
-  @fun{gtk:tooltip-set-markup} function, so &, <, etc have to be escaped in the 
+  Note that the signal handler sets the text with the
+  @fun{gtk:tooltip-set-markup} function, so &, <, etc have to be escaped in the
   text.
   @see-class{gtk:tree-view}
   @see-function{gtk:tooltip-set-markup}")
@@ -1913,7 +1913,7 @@ lambda (view)    :action
   the column specified by it. Additionally, if @arg{focus} is specified, and
   @arg{start} is @em{true}, then editing should be started in the specified
   cell. This function is often followed by the @fun{gtk:widget-grab-focus}
-  function in order to give keyboard focus to the widget. Please note that 
+  function in order to give keyboard focus to the widget. Please note that
   editing can only happen when the tree view is realized.
 
   If @arg{path} is invalid for the model, the current cursor (if any) will be
@@ -1930,7 +1930,7 @@ lambda (view)    :action
 ;;; gtk_tree_view_set_cursor_on_cell ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_set_cursor_on_cell" %tree-view-set-cursor-on-cell) 
+(defcfun ("gtk_tree_view_set_cursor_on_cell" %tree-view-set-cursor-on-cell)
     :void
   (view (g:object tree-view))
   (path (g:boxed tree-path))
@@ -1956,8 +1956,8 @@ lambda (view)    :action
   is given to the cell specified by @arg{cell}. Additionally, if @arg{focus}
   is specified, and @arg{start} is @em{true}, then editing should be started in
   the specified cell. This function is often followed by the
-  @fun{gtk:widget-grab-focus} function in order to give keyboard focus to the 
-  widget. Please note that editing can only happen when the tree view is 
+  @fun{gtk:widget-grab-focus} function in order to give keyboard focus to the
+  widget. Please note that editing can only happen when the tree view is
   realized.
 
   If @arg{path} is invalid for the model, the current cursor (if any) will be
@@ -2137,13 +2137,13 @@ lambda (view)    :action
 (setf (liber:alias-for-symbol 'tree-view-mapping-func)
       "Callback"
       (liber:symbol-documentation 'tree-view-mapping-func)
- "@version{#2023-3-28}
+ "@version{#2023-5-14}
   @begin{short}
     Callback function used for the @fun{gtk:tree-view-map-expanded-rows}
     function.
   @end{short}
   @begin{pre}
- lambda (view path)
+lambda (view path)
   @end{pre}
   @begin[code]{table}
     @entry[view]{A @class{gtk:tree-view} widget.}
@@ -2166,10 +2166,10 @@ lambda (view)    :action
 
 (defun tree-view-map-expanded-rows (view func)
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2023-5-14}
   @argument[view]{a @class{gtk:tree-view} widget}
-  @argument[func]{a callback function of type
-    @symbol{gtk:tree-view-mapping-func}  to be called}
+  @argument[func]{a @symbol{gtk:tree-view-mapping-func} callback function to be
+    called}
   @begin{short}
     Calls @arg{func} on all expanded rows.
   @end{short}
@@ -2449,8 +2449,8 @@ lambda (view)    :action
     buffer, in tree view coordinates.
   @end{short}
   Convert to the bin window coordinates with the
-  @fun{gtk:tree-view-convert-tree-to-bin-window-coords} function. Tree 
-  coordinates start at 0,0 for the first row of the tree view, and cover the 
+  @fun{gtk:tree-view-convert-tree-to-bin-window-coords} function. Tree
+  coordinates start at 0,0 for the first row of the tree view, and cover the
   entire scrollable area of the tree view.
   @see-class{gtk:tree-view}
   @see-class{gdk:rectangle}"
@@ -2506,8 +2506,8 @@ lambda (view)    :action
   @begin{short}
     Returns the window that the tree view renders to.
   @end{short}
-  This is used primarily to compare to the window from the 
-  @fun{gdk:event-window} function to confirm that the event on the tree view is 
+  This is used primarily to compare to the window from the
+  @fun{gdk:event-window} function to confirm that the event on the tree view is
   on the right window.
   @see-class{gtk:tree-view}
   @see-class{gdk:window}
@@ -3179,8 +3179,8 @@ lambda (view dialog)
  #+liber-documentation
  "@version{#2023-2-28}
   @argument[view]{a @class{gtk:tree-view} widget}
-  @argument[func]{a @symbol{gtk:tree-view-search-position-func} callback 
-    function to use to position the search dialog, or @code{nil} to use the 
+  @argument[func]{a @symbol{gtk:tree-view-search-position-func} callback
+    function to use to position the search dialog, or @code{nil} to use the
     default search position function}
   @begin{short}
     Sets the callback function to use when positioning the search dialog.

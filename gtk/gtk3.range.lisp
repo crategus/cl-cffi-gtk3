@@ -365,8 +365,8 @@ lambda (range)    :run-last
     Accessor of the @slot[gtk:range]{adjustment} slot of the @class{gtk:range}
     class.
   @end{short}
-  The @sym{gtk:range-adjustment} function gets the adjustment which is the 
-  \"model\" object for the range. The @sym{(setf gtk:range-adjustment)} function 
+  The @sym{gtk:range-adjustment} function gets the adjustment which is the
+  \"model\" object for the range. The @sym{(setf gtk:range-adjustment)} function
   sets the adjustment to be used as the \"model\" object for this range.
 
   The adjustment indicates the current range value, the minimum and maximum
@@ -402,8 +402,8 @@ lambda (range)    :run-last
     Accessor of the @slot[gtk:range]{fill-level} slot of the @class{gtk:range}
     class.
   @end{short}
-  The @sym{gtk:range-fill-level} function gets the current position of the fill 
-  level indicator. The @sym{(setf gtk:range-fill-level)} function sets the 
+  The @sym{gtk:range-fill-level} function gets the current position of the fill
+  level indicator. The @sym{(setf gtk:range-fill-level)} function sets the
   position of the fill level indicator.
 
   The \"fill level\" is probably best described by its most prominent use case,
@@ -477,7 +477,7 @@ lambda (range)    :run-last
     Accessor of the @slot[gtk:range]{lower-stepper-sensitivity} slot of the
     @class{gtk:range} class.
   @end{short}
-  The @sym{gtk:range-lower-stepper-sensitivity} function gets the sensitivity 
+  The @sym{gtk:range-lower-stepper-sensitivity} function gets the sensitivity
   policy for the stepper that points to the 'lower' end of the adjustment of
   the range. The @sym{(setf gtk:range-lower-stepper-sensitivity} function sets
   the sensitivity policy.
@@ -508,10 +508,10 @@ lambda (range)    :run-last
     Accessor of the @slot[gtk:range]{restrict-to-fill-level} slot of the
     @class{gtk:range} class.
   @end{short}
-  The @sym{gtk:range-restrict-to-fill-level} function gets whether the range is 
-  restricted to the fill level. The 
-  @sym{(setf gtk:range-restrict-to-fill-level)} function sets whether the slider 
-  is restricted to the fill level. See the @fun{gtk:range-fill-level} function 
+  The @sym{gtk:range-restrict-to-fill-level} function gets whether the range is
+  restricted to the fill level. The
+  @sym{(setf gtk:range-restrict-to-fill-level)} function sets whether the slider
+  is restricted to the fill level. See the @fun{gtk:range-fill-level} function
   for a general description of the fill level concept.
   @see-class{gtk:range}
   @see-function{gtk:range-fill-level}")
@@ -539,9 +539,9 @@ lambda (range)    :run-last
     Accessor of the @slot[gtk:range]{round-digits} slot of the @class{gtk:range}
     class.
   @end{short}
-  The @sym{gtk:range-round-digits} function gets the number of digits to round 
-  the value to when it changes. The @sym{(setf gtk:range-round-digits)} function 
-  sets the number of digits to round the value to when it changes. See the 
+  The @sym{gtk:range-round-digits} function gets the number of digits to round
+  the value to when it changes. The @sym{(setf gtk:range-round-digits)} function
+  sets the number of digits to round the value to when it changes. See the
   \"change-value\" signal.
   @see-class{gtk:range}")
 
@@ -569,10 +569,10 @@ lambda (range)    :run-last
     Accessor of the @slot[gtk:range]{show-fill-level} slot of the
     @class{gtk:range} class.
   @end{short}
-  The @sym{gtk:range-show-fill-level} function gets whether the range displays 
+  The @sym{gtk:range-show-fill-level} function gets whether the range displays
   the fill level graphically. The @sym{(setf gtk:range-show-fill-level)}
-  function sets whether a graphical fill level is show on the trough. See the 
-  @fun{gtk:range-fill-level} function for a general description of the fill 
+  function sets whether a graphical fill level is show on the trough. See the
+  @fun{gtk:range-fill-level} function for a general description of the fill
   level concept.
   @see-class{gtk:range}
   @see-function{gtk:range-fill-level}")
@@ -602,10 +602,10 @@ lambda (range)    :run-last
     Accessor of the @slot[gtk:range]{upper-stepper-sensitivity} slot of the
     @class{gtk:range} class.
   @end{short}
-  The @sym{gtk:range-upper-stepper-sensitivity} function gets the sensitivity 
-  policy for the stepper that points to the 'upper' end of the adjustment of 
-  the range. The @sym{(setf gtk:range-upper-stepper-sensitivity)} function sets 
-  the sensitivity policy for the stepper that points to the 'upper' end of the 
+  The @sym{gtk:range-upper-stepper-sensitivity} function gets the sensitivity
+  policy for the stepper that points to the 'upper' end of the adjustment of
+  the range. The @sym{(setf gtk:range-upper-stepper-sensitivity)} function sets
+  the sensitivity policy for the stepper that points to the 'upper' end of the
   adjustment of the range.
   @see-class{gtk:range}")
 

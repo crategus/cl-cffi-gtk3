@@ -148,7 +148,7 @@
 (setf (liber:alias-for-symbol 'file-chooser-action)
       "GEnum"
       (liber:symbol-documentation 'file-chooser-action)
- "@version{#2023-3-14}
+ "@version{2023-5-16}
   @begin{short}
     Describes whether a @class{gtk:file-chooser} widget is being used to
     open existing files or to save to a possibly new file.
@@ -189,7 +189,7 @@
 (setf (liber:alias-for-symbol 'file-chooser-confirmation)
       "GEnum"
       (liber:symbol-documentation 'file-chooser-confirmation)
- "@version{#2023-3-14}
+ "@version{2023-5-16}
   @begin{short}
     Used as a return value of handlers for the \"confirm-overwrite\" signal of
     a @class{gtk:file-chooser} widget.
@@ -310,7 +310,7 @@
 (setf (liber:alias-for-class 'file-chooser)
       "Interface"
       (documentation 'file-chooser 'type)
- "@version{#2023-3-14}
+ "@version{2023-5-16}
   @begin{short}
     The @sym{gtk:file-chooser} interface is an interface that can be
     implemented by file selection widgets.
@@ -354,7 +354,7 @@
     @fun{gtk:file-chooser-filename} function to the @code{open()} or
     @code{fopen()} functions, you may not be able to directly set it as the
     text of a @class{gtk:label} widget unless you convert it first to UTF-8,
-    which all GTK widgets expect. You should use the @fun{g:filename-to-utf8}
+    which all GTK widgets expect. You should use the @code{g_filename_to_utf8()}
     function to convert filenames into strings that can be passed to GTK
     widgets.
 

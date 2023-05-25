@@ -26,7 +26,7 @@
   :name "cl-cffi-gtk3"
   :version "0.1.0"
   :author "Dieter Kaiser"
-  :license "LLGPL"
+  :license "MIT"
   :serial t
   :components
   ((:module gdk
@@ -206,12 +206,12 @@
      (:file "gtk3.cell-renderer-spin")    ; Renders a spin button in a cell
      (:file "gtk3.cell-renderer-toggle")  ; Renders a toggle button in a cell
      (:file "gtk3.cell-renderer-spinner") ; Renders a spinning animation in a cell
-     (:file "gtk3.cell-area")             ; Laying out GtkCellRenderers
-     (:file "gtk3.cell-area-box")         ; Renders into a row or a column
-     (:file "gtk3.cell-area-context")     ; gtkCellAreaContext
-     (:file "gtk3.cell-view")             ; Displaying a single row
-     (:file "gtk3.icon-view")             ; List of icons in a grid
-     (:file "gtk3.list-store")            ; List-like data structure
+     (:file "gtk3.cell-area")
+     (:file "gtk3.cell-area-box")
+     (:file "gtk3.cell-area-context")
+     (:file "gtk3.cell-view")
+     (:file "gtk3.icon-view")
+     (:file "gtk3.list-store")
 
      ;; Numeric/Text Data Entry
      (:file "gtk3.editable")              ; Interface for text editing widgets
@@ -368,10 +368,10 @@
 (defsystem :cl-cffi-gtk3/init
   :name "cl-cffi-gtk3/init"
   :author "Dieter Kaiser"
-  :license "LLGPL"
+  :license "MIT"
   :serial t
   :components ((:file "cl-cffi-gtk3-init"))         ; Library Initialization
-  :depends-on (:cl-cffi-glib/init))
+  :depends-on (:cl-cffi-glib-init))
 
 ;; Definine a test operation for the library
 
@@ -421,7 +421,7 @@
 ;    (:file "gtk.child-properties")
      (:file "rtest-gtk3-container")      ; GtkContainer
      (:file "rtest-gtk3-bin")            ; Container with just one child
-;    (:file "gtk.range")                 ; Base class for adjustments
+     (:file "rtest-gtk3-range")
      (:file "rtest-gtk3-menu-shell")     ; Base class for menu objects
 ;    (:file "gtk.im-context")            ; Base class for input contexts
      (:file "rtest-gtk3-native-dialog")  ; Integrate with native dialogs
@@ -513,9 +513,9 @@
      (:file "rtest-gtk3-cell-renderer-spin")    ; Renders a spin button
      (:file "rtest-gtk3-cell-renderer-toggle")  ; Renders a toggle button
      (:file "rtest-gtk3-cell-renderer-spinner") ; Renders a spinning animation
-     (:file "rtest-gtk3-cell-area")      ; Laying out GtkCellRenderers
-     (:file "rtest-gtk3-cell-area-box")  ; Renders into a row or a column
-;    (:file "gtk.cell-area-context")     ; gtkCellAreaContext
+     (:file "rtest-gtk3-cell-area")
+     (:file "rtest-gtk3-cell-area-box")
+;    (:file "gtk.cell-area-context")
      (:file "rtest-gtk3-cell-view")      ; Displaying a single row
      (:file "rtest-gtk3-icon-view")      ; List of icons in a grid
      (:file "rtest-gtk3-list-store")     ; List-like data structure

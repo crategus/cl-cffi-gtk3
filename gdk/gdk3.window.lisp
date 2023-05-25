@@ -4,27 +4,27 @@
 ;;; The documentation of this file is taken from the GDK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
 ;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; Windows
@@ -3266,13 +3266,13 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (setf (liber:alias-for-symbol 'window-child-func)
       "Callback"
       (liber:symbol-documentation 'window-child-func)
- "@version{#2023-2-26}
+ "@version{#2023-5-14}
   @begin{short}
     A callback function of this type is passed to the
     @fun{gdk:window-invalidate-maybe-recurse} function.
   @end{short}
   It gets called for each child of the window to determine whether to
-  recursively invalidate it or now.
+  recursively invalidate it or not.
   @begin{pre}
 lambda (window)
   @end{pre}
@@ -3294,11 +3294,11 @@ lambda (window)
   (window (g:object window))
   (region (:pointer (:struct cairo:region-t)))
   (func :pointer)
-  (user-data :pointer))
+  (data :pointer))
 
 (defun window-invalidate-maybe-recurse (window region func)
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-5-14}
   @argument[window]{a @class{gdk:window} object}
   @argument[region]{a @symbol{cairo:region-t} instance}
   @argument[func]{a @symbol{gdk:window-child-func} callback function to use to
@@ -3317,18 +3317,23 @@ lambda (window)
   there is no need to do that manually, you just need to invalidate regions that
   you know should be redrawn.
 
-  The @arg{func} parameter controls whether the region of each child
-  window that intersects region will also be invalidated. Only children for
-  which @arg{func} returns @em{true} will have the area invalidated.
+  The @arg{func} parameter controls whether the region of each child window that 
+  intersects region will also be invalidated. Only children for which @arg{func} 
+  returns @em{true} will have the area invalidated.
   @see-class{gdk:window}
   @see-symbol{cairo:region-t}
   @see-function{gdk:window-process-updates}
   @see-function{gdk:window-process-all-updates}"
-  (with-stable-pointer (ptr func)
-    (%window-invalidate-maybe-recurse window
-                                      region
-                                      (cffi:callback window-child-func)
-                                      ptr)))
+  (if func
+      (with-stable-pointer (ptr func)
+        (%window-invalidate-maybe-recurse window
+                                          region
+                                          (cffi:callback window-child-func)
+                                          ptr))
+      (%window-invalidate-maybe-recurse window
+                                        region
+                                        (cffi:null-pointer)
+                                        (cffi:null-pointer))))
 
 (export 'window-invalidate-maybe-recurse)
 

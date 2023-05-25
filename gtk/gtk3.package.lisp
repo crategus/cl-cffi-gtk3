@@ -147,8 +147,8 @@
       @about-function{builder-objects}
       @about-function{builder-expose-object}
       @about-symbol{builder-connect-func}
-      @about-function{builder-connect-signals}
       @about-function{builder-connect-signals-full}
+      @about-function{builder-connect-signals}
       @about-function{builder-application}
       @about-function{builder-type-from-name}
       @about-function{builder-value-from-string}

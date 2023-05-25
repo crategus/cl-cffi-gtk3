@@ -38,8 +38,6 @@
 ;;;
 ;;; Functions
 ;;;
-;;;     GtkBuilderConnectFunc
-;;;
 ;;;     gtk_builder_new
 ;;;     gtk_builder_new_from_file
 ;;;     gtk_builder_new_from_resource
@@ -57,8 +55,9 @@
 ;;;     gtk_builder_get_object
 ;;;     gtk_builder_get_objects
 ;;;     gtk_builder_expose_object
-;;;     gtk_builder_connect_signals
+;;;     GtkBuilderConnectFunc
 ;;;     gtk_builder_connect_signals_full
+;;;     gtk_builder_connect_signals
 ;;;     gtk_builder_set_translation_domain                 Accessor
 ;;;     gtk_builder_get_translation_domain                 Accessor
 ;;;     gtk_builder_set_application
@@ -1010,54 +1009,6 @@
 (export 'builder-expose-object)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_builder_connect_signals ()
-;;; ----------------------------------------------------------------------------
-
-;; TODO: The documentation does not explain this implementation.
-
-(defun builder-connect-signals (builder handlers)
- #+liber-documentation
- "@version{#2023-3-2}
-  @argument[builder]{a @class{gtk:builder} object}
-  @argument[handlers]{a list sent in as user data to all signals}
-  @begin{short}
-    This method is a simpler variation of the
-    @fun{gtk:builder-connect-signals-full} function.
-  @end{short}
-  It uses introspective features of @code{GModule} to look at the symbol table
-  of the application. From here it tries to match the signal handler names given
-  in the interface description with symbols in the application and connects the
-  signals. Note that this function can only be called once, subsequent calls
-  will do nothing.
-
-  Note that this function will not work correctly if @code{GModule} is not
-  supported on the platform.
-
-  When compiling applications for Windows, you must declare signal callbacks
-  with @code{G_MODULE_EXPORT}, or they will not be put in the symbol table. On
-  Linux and Unices, this is not necessary.
-  @see-class{gtk:builder}
-  @see-function{gtk:builder-connect-signals-full}"
-  (flet ((connect-func (builder
-                        object
-                        signal-name
-                        handler-name
-                        connect-object
-                        flags)
-           (declare (ignore builder connect-object))
-           (let ((handler (find handler-name
-                                handlers
-                                :key 'first :test 'string=)))
-             (when handler
-               (g:signal-connect object
-                                 signal-name
-                                 (second handler)
-                                 :after (member :after flags))))))
-    (builder-connect-signals-full builder #'connect-func)))
-
-(export 'builder-connect-signals)
-
-;;; ----------------------------------------------------------------------------
 ;;; GtkBuilderConnectFunc ()
 ;;; ----------------------------------------------------------------------------
 
@@ -1088,7 +1039,7 @@
   more control over the signal connection process. Note that this function can
   only be called once, subsequent calls will do nothing.
   @begin{pre}
- lambda (builder object signal-name handler-name connect-object flags)
+lambda (builder object signal-name handler-name connect-object flags)
   @end{pre}
   @begin[code]{table}
     @entry[builder]{a @class{gtk:builder} object}
@@ -1134,6 +1085,55 @@
                                    ptr)))
 
 (export 'builder-connect-signals-full)
+
+;;; ----------------------------------------------------------------------------
+;;; gtk_builder_connect_signals ()
+;;; ----------------------------------------------------------------------------
+
+;; TODO: The documentation does not explain this implementation.
+;; Implement an example for this function and check the implementation!?
+
+(defun builder-connect-signals (builder handlers)
+ #+liber-documentation
+ "@version{#2023-3-2}
+  @argument[builder]{a @class{gtk:builder} object}
+  @argument[handlers]{a list sent in as user data to all signals}
+  @begin{short}
+    This method is a simpler variation of the
+    @fun{gtk:builder-connect-signals-full} function.
+  @end{short}
+  It uses introspective features of @code{GModule} to look at the symbol table
+  of the application. From here it tries to match the signal handler names given
+  in the interface description with symbols in the application and connects the
+  signals. Note that this function can only be called once, subsequent calls
+  will do nothing.
+
+  Note that this function will not work correctly if @code{GModule} is not
+  supported on the platform.
+
+  When compiling applications for Windows, you must declare signal callbacks
+  with @code{G_MODULE_EXPORT}, or they will not be put in the symbol table. On
+  Linux and Unices, this is not necessary.
+  @see-class{gtk:builder}
+  @see-function{gtk:builder-connect-signals-full}"
+  (flet ((connect-func (builder
+                        object
+                        signal-name
+                        handler-name
+                        connect-object
+                        flags)
+           (declare (ignore builder connect-object))
+           (let ((handler (find handler-name
+                                handlers
+                                :key 'first :test 'string=)))
+             (when handler
+               (g:signal-connect object
+                                 signal-name
+                                 (second handler)
+                                 :after (member :after flags))))))
+    (builder-connect-signals-full builder #'connect-func)))
+
+(export 'builder-connect-signals)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_builder_get_application ()

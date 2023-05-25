@@ -229,7 +229,7 @@ lambda (selection model path selected)
 (setf (liber:alias-for-symbol 'tree-selection-foreach-func)
       "Callback"
       (liber:symbol-documentation 'tree-selection-foreach-func)
- "@version{#2023-2-19}
+ "@version{#2023-5-14}
   @begin{short}
     A callback function used by the @fun{gtk:tree-selection-selected-foreach}
     function to map all selected rows.
@@ -410,7 +410,7 @@ lambda (model path iter)
 
 (defun tree-selection-selected-foreach (selection func)
  #+liber-documentation
- "@version{#2023-2-19}
+ "@version{#2023-5-14}
   @argument[selection]{a @class{gtk:tree-selection} object}
   @argument[func]{a @symbol{gtk:tree-selection-foreach-func} callback function
     to call for each selected node}

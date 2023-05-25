@@ -612,22 +612,22 @@ lambda (listbox)    :action
      (row (g:object list-box-row))
      (data :pointer))
   (restart-case
-    (let ((ptr (glib:get-stable-pointer-value data)))
-      (funcall ptr listbox row))
+    (let ((func (glib:get-stable-pointer-value data)))
+      (funcall func listbox row))
     (return () :report "Error in GtkListBoxForeachFunc callback." nil)))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'list-box-foreach-func)
       "Callback"
       (liber:symbol-documentation 'list-box-foreach-func)
- "@version{#2023-3-20}
+ "@version{#2023-5-14}
   @begin{short}
     A callback function used by the @fun{gtk:list-box-selected-foreach}
     function.
   @end{short}
   It will be called on every selected child widget of the list box.
   @begin{pre}
- lambda (listbox row)
+lambda (listbox row)
   @end{pre}
   @begin[code]{table}
     @entry[listbox]{A @class{gtk:list-box} widget.}

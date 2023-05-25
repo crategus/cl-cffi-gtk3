@@ -139,7 +139,7 @@
 
 #+liber-documentation
 (setf (documentation 'cell-area 'type)
- "@version{#2023-3-16}
+ "@version{2023-5-13}
   @begin{short}
     The @sym{gtk:cell-area} class is an abstract class for
     @class{gtk:cell-layout} widgets, also referred to as \"layouting widgets\",
@@ -216,7 +216,7 @@ gtk_cell_area_context_get_preferred_width (context, &minimum_width,
   support requesting and rendering rows in treemodels with an exceedingly
   large amount of rows. The @class{gtk:cell-layout} widget in that case would
   calculate the required width of the rows in an idle or timeout source, see
-  the @fun{g-timeout-add} function, and when the widget is requested its
+  the @fun{g:timeout-add} function, and when the widget is requested its
   actual width in @code{get_preferred_width()} it can simply consult the width
   accumulated so far in the @class{gtk:cell-area-context} object.
 
@@ -524,7 +524,7 @@ lambda (area renderer editable)    :run-first
 ;;; Property Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- cell-area-edit-widget ----------------------------------------------
+;;; --- cell-area-edit-widget --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "edit-widget" 'cell-area) t)
@@ -700,14 +700,14 @@ lambda (area renderer editable)    :run-first
 (setf (liber:alias-for-symbol 'cell-callback)
       "Callback"
       (liber:symbol-documentation 'cell-callback)
- "@version{#2023-3-16}
+ "@version{2023-5-13}
   @begin{short}
     The type of the callback function used for iterating over the cell renderers
     of a @class{gtk:cell-area} object, see the @fun{gtk:cell-area-foreach}
     function.
   @end{short}
   @begin{pre}
- lambda (renderer)
+lambda (renderer)
   @end{pre}
   @begin[code]{table}
     @entry[renderer]{The @class{gtk:cell-renderer} object to operate on.}
@@ -730,14 +730,16 @@ lambda (area renderer editable)    :run-first
 
 (defun cell-area-foreach (area func)
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{2023-5-13}
   @argument[area]{a @class{gtk:cell-area} object}
   @argument[func]{a @symbol{gtk:cell-callback} callback function to call}
   @short{Calls a callback function for every cell renderer in the cell area.}
   @see-class{gtk:cell-area}
   @see-symbol{gtk:cell-callback}"
   (with-stable-pointer (ptr func)
-    (%cell-area-foreach area (cffi:callback cell-callback) ptr)))
+    (%cell-area-foreach area
+                        (cffi:callback cell-callback)
+                        ptr)))
 
 (export 'cell-area-foreach)
 
@@ -759,9 +761,9 @@ lambda (area renderer editable)    :run-first
 (setf (liber:alias-for-symbol 'cell-alloc-callback)
       "Callback"
       (liber:symbol-documentation 'cell-alloc-callback)
- "@version{#2023-3-16}
+ "@version{2023-5-13}
   @begin{short}
-    The type of the callback functions used for iterating over the cell
+    The type of the callback function used for iterating over the cell
     renderers of a @class{gtk:cell-area} object, see the
     @fun{gtk:cell-area-foreach-alloc} function.
   @end{short}
@@ -800,14 +802,14 @@ lambda (renderer cell background)
 
 (defun cell-area-foreach-alloc (area context widget cell background func)
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{2023-5-13}
   @argument[area]{a @class{gtk:cell-area} object}
   @argument[context]{a @class{gtk:cell-area-context} object}
   @argument[widget]{a @class{gtk:widget} object that @arg{area} is rendering to}
-  @argument[cell]{a @class{gdk:rectangle} instance with the @arg{widget}
-    relative coordinates and size for @arg{area}}
-  @argument[background]{a @class{gdk:rectangle} instance with the @arg{widget}
-    relative coordinates of the background area}
+  @argument[cell]{a @class{gdk:rectangle} instance with the relative coordinates
+    and size of @arg{widget} for rendering @arg{area}}
+  @argument[background]{a @class{gdk:rectangle} instance with the relative
+    coordinates of the background for rendering @arg{area}}
   @argument[func]{a @symbol{gtk:cell-alloc-callback} callback function}
   @begin{short}
     Calls the callback function for every @class{gtk:cell-renderer} object in
@@ -824,7 +826,7 @@ lambda (renderer cell background)
                               widget
                               cell
                               background
-                              (cffi:callback cell-callback-alloc)
+                              (cffi:callback cell-alloc-callback)
                               ptr)))
 
 (export 'cell-area-foreach-alloc)

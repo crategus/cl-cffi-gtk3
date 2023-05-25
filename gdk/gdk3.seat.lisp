@@ -4,26 +4,27 @@
 ;;; The documentation of this file is taken from the GDK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
 ;;; Copyright (C) 2019 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GdkSeat
@@ -215,13 +216,14 @@ lambda (seat tool)    :run-last
     ((seat (g:object seat))
      (window (g:object window))
      (data :pointer))
-  (funcall (glib:get-stable-pointer-value data) seat window))
+  (let ((func (glib:get-stable-pointer-value data)))
+    (funcall func seat window)))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'seat-grab-prepare-func)
       "Callback"
       (liber:symbol-documentation 'seat-grab-prepare-func)
- "@version{#2023-3-13}
+ "@version{#2023-5-14}
   @begin{short}
     Type of the callback function used to set up @arg{window} so it can be
     grabbed.
@@ -235,7 +237,8 @@ lambda (seat window)
     @entry[seat]{The @class{gdk:seat} object being grabbed.}
     @entry[window]{The @class{gdk:window} object being grabbed.}
   @end{table}
-  @see-class{gdk:seat}")
+  @see-class{gdk:seat}
+  @see-class{gdk:window}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; gdk_seat_grab ()
@@ -248,12 +251,12 @@ lambda (seat window)
   (owner-events :boolean)
   (cursor (g:object cursor))
   (event (g:boxed event))
-  (prepare-func :pointer)
-  (prepare-func-data :pointer))
+  (func :pointer)
+  (data :pointer))
 
 (defun seat-grab (seat window capabilities owner-events cursor event func)
  #+liber-documentation
- "@version{#2023-3-13}
+ "@version{#2023-5-14}
   @argument[seat]{a @class{gdk:seat} object}
   @argument[window]{a @class{gdk:window} object which will own the grab}
   @argument[capabilities]{a @symbol{gdk:seat-capabilities} value with the
@@ -262,7 +265,7 @@ lambda (seat window)
     with respect to @arg{window} and are only reported if selected by the event
     mask, if @em{true} then pointer events for this application are reported as
     normal, but pointer events outside this application are reported with
-    respect to @arg{window} and only if selected by the event mask. In either
+    respect to @arg{window} and only if selected by the event mask, in either
     mode, unreported events are discarded}
   @argument[cursor]{a @class{gdk:cursor} object to display while the grab is
     active, if this is @code{nil} then the normal cursors are used for
