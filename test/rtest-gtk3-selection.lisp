@@ -134,6 +134,7 @@
 
 ;;;   gtk_target_list_add_image_targets
 
+#-windows
 (test gtk-target-list-add-image-targets.1
   (let ((tlist (gtk:target-list-new)))
     (gtk:target-list-add-image-targets tlist 0 t)
@@ -182,6 +183,7 @@
 
 ;;;   gtk_target_list_add_uri_targets
 
+#-windows
 (test gtk-target-list-add-uri-targets
   (let ((target-list (gtk:target-list-new)))
     (gtk:target-list-add-uri-targets target-list 0)

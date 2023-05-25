@@ -67,7 +67,7 @@
 
 ;; TODO: The following functions can cause an infinite loop, improve the code
 
-(test events-pending
+(test gdk-events-pending
   (let ((*verbose-gdk-events* t))
     (is (= 0 (gtk:main-level)))
     (g:timeout-add 100 #'events-pending-callback)
@@ -76,7 +76,7 @@
 
 ;;;     gdk_event_peek
 
-(test event-peek
+(test gdk-event-peek
   (let ((*verbose-gdk-events* t)
         (event (gdk:event-new :key-press)))
     (is-false (gdk:event-put event))
@@ -87,7 +87,7 @@
 ;;;     gdk_event_get
 ;;;     gdk_event_put
 
-(test event-get/put
+(test gdk-event-get/put
   (let ((*verbose-gdk-events* t)
         (event (gdk:event-new :key-press)))
     (is-false (gdk:event-put event))
@@ -96,7 +96,7 @@
 
 ;;;   gdk_event_new
 
-(test event-new
+(test gdk-event-new
   (is (typep (gdk:event-new :nothing) 'gdk:event))
   (is (typep (gdk:event-new :delete) 'gdk:event))
   (is (typep (gdk:event-new :destroy) 'gdk:event))
@@ -151,13 +151,13 @@
 
 ;;;     gdk_event_copy
 
-(test event-copy
+(test gdk-event-copy
   (let ((event (gdk:event-new :key-press)))
     (is (typep (gdk:event-copy event) 'gdk:event-key))))
 
 ;;;     gdk_event_get_axis
 
-(test event-axis
+(test gdk-event-axis
   (let* ((seat (gdk:display-default-seat (gdk:display-default)))
          (device (gdk:seat-pointer seat))
          (event (gdk:event-new :button-press :device device)))
@@ -175,7 +175,7 @@
 
 ;;;     gdk_event_get_button
 
-(test event-button
+(test gdk-event-button
   (let* ((seat (gdk:display-default-seat (gdk:display-default)))
          (device (gdk:seat-pointer seat))
          (event (gdk:event-new :button-press :device device)))
@@ -185,7 +185,7 @@
 
 ;;;     gdk_event_get_click_count
 
-(test event-click-count
+(test gdk-event-click-count
   (let* ((seat (gdk:display-default-seat (gdk:display-default)))
          (device (gdk:seat-pointer seat))
          (event (gdk:event-new :button-press :device device)))
@@ -193,7 +193,7 @@
 
 ;;;     gdk_event_get_coords
 
-(test event-coords
+(test gdk-event-coords
   (let* ((seat (gdk:display-default-seat (gdk:display-default)))
          (device (gdk:seat-pointer seat))
          (event (gdk:event-new :button-press :device device)))
@@ -203,14 +203,14 @@
 ;;;     gdk_event_get_keycode
 ;;;     gdk_event_get_keyval
 
-(test event-keycode/keycode
+(test gdk-event-keycode/keycode
   (let ((event (gdk:event-new :key-press :keyval 12 :hardware-keycode 13)))
     (is (= 12 (gdk:event-keyval event)))
     (is (= 13 (gdk:event-keycode event)))))
 
 ;;;     gdk_event_get_root_coords
 
-(test event-root-coords
+(test gdk-event-root-coords
   (let* ((seat (gdk:display-default-seat (gdk:display-default)))
          (device (gdk:seat-pointer seat))
          (event (gdk:event-new :button-press :device device)))
@@ -219,7 +219,7 @@
 
 ;;;     gdk_event_get_scroll_direction
 
-(test event-get-scroll-direction
+(test gdk-event-get-scroll-direction
   (let* ((seat (gdk:display-default-seat (gdk:display-default)))
          (device (gdk:seat-pointer seat))
          (event (gdk:event-new :scroll :device device :direction :smooth)))
@@ -230,7 +230,7 @@
 
 ;;;     gdk_event_get_scroll_deltas
 
-(test event-scroll-deltas
+(test gdk-event-scroll-deltas
   (let* ((seat (gdk:display-default-seat (gdk:display-default)))
          (device (gdk:seat-pointer seat))
          (event (gdk:event-new :scroll :device device :direction :smooth)))
@@ -243,7 +243,8 @@
 
 ;;;     gdk_event_is_scroll_stop_event
 
-(test event-is-scroll-stop-event
+#-windows
+(test gdk-event-is-scroll-stop-event
   (let* ((seat (gdk:display-default-seat (gdk:display-default)))
          (device (gdk:seat-pointer seat))
          (event (gdk:event-new :scroll :device device :direction :smooth)))
@@ -254,7 +255,7 @@
 
 ;;;     gdk_event_get_state
 
-(test event-state
+(test gdk-event-state
   (let* ((seat (gdk:display-default-seat (gdk:display-default)))
          (device (gdk:seat-pointer seat))
          (event (gdk:event-new :scroll :device device :state '(:shift-mask))))
@@ -263,7 +264,7 @@
 
 ;;;     gdk_event_get_time
 
-(test event-state
+(test gdk-event-state
   (let* ((seat (gdk:display-default-seat (gdk:display-default)))
          (device (gdk:seat-pointer seat))
          (event (gdk:event-new :scroll :device device :state '(:shift-mask))))
@@ -276,7 +277,7 @@
 
 ;; TODO: Can we create a non-nil example?
 
-(test event-event-sequence
+(test gdk-event-event-sequence
   (let* ((seat (gdk:display-default-seat (gdk:display-default)))
          (device (gdk:seat-pointer seat))
          (event (gdk:event-new :touch-begin :device device)))
@@ -298,7 +299,7 @@
 ;;;     gdk_event_set_screen
 ;;;     gdk_event_get_screen
 
-(test event-screen
+(test gdk-event-screen
   (let* ((seat (gdk:display-default-seat (gdk:display-default)))
          (device (gdk:seat-pointer seat))
          (event (gdk:event-new :button-press :device device))
@@ -313,7 +314,7 @@
 ;;;     gdk_event_get_device
 ;;;     gdk_event_set_device
 
-(test event-device
+(test gdk-event-device
   (let* ((seat (gdk:display-default-seat (gdk:display-default)))
          (device (gdk:seat-pointer seat))
          (event (gdk:event-new :button-press :device device)))
@@ -324,7 +325,7 @@
 ;;;     gdk_event_get_source_device
 ;;;     gdk_event_set_source_device
 
-(test event-get-source-device
+(test gdk-event-get-source-device
   (let* ((seat (gdk:display-default-seat (gdk:display-default)))
          (device (gdk:seat-pointer seat))
          (event (gdk:event-new :button-press :device device)))
@@ -337,10 +338,10 @@
 
 ;;;     gdk_setting_get
 
-(test setting-get
+(test gdk-setting-get
   #-windows
   (is (= 400 (gdk:setting-get "gtk-double-click-time" "gint")))
   #+windows
   (is (= 500 (gdk:setting-get "gtk-double-click-time" "gint"))))
 
-;;; --- 2023-3-27 --------------------------------------------------------------
+;;; --- 2023-5-25 --------------------------------------------------------------

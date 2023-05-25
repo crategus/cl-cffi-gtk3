@@ -7,7 +7,7 @@
 
 ;;;     GtkCellArea
 
-(test cell-area-class
+(test gtk-cell-area-class
   ;; Type check
   (is (g:type-is-object "GtkCellArea"))
   ;; Check the registered name
@@ -47,25 +47,23 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-;;;     GtkCellEditable*   edit-widget         Read
-;;;     GtkCellRenderer*   edited-cell         Read
-;;;     GtkCellRenderer*   focus-cell          Read / Write
+;;;     edit-widget
+;;;     edited-cell
+;;;     focus-cell
 
-(test cell-area-properties
+(test gtk-cell-area-properties
   ;; Create a GtkCellAreaBox object, GtkCellArea is a abstract class.
   (let ((area (make-instance 'gtk:cell-area-box)))
-
     (is-false (gtk:cell-area-edit-widget area))
     (is-false (gtk:cell-area-edited-cell area))
-    (is-false (gtk:cell-area-focus-cell area))
-))
+    (is-false (gtk:cell-area-focus-cell area))))
 
 ;;; --- Signals ----------------------------------------------------------------
 
-;;;                void    add-editable        Run First
-;;;                void    apply-attributes    Run First
-;;;                void    focus-changed       Run First
-;;;                void    remove-editable     Run First
+;;;     add-editable
+;;;     apply-attributes
+;;;     focus-changed
+;;;     remove-editable
 
 ;;; --- Functions --------------------------------------------------------------
 
@@ -77,8 +75,70 @@
 ;;;     gtk_cell_area_add
 ;;;     gtk_cell_area_remove
 ;;;     gtk_cell_area_has_renderer
+
 ;;;     gtk_cell_area_foreach
+
+(test gtk-cell-area-foreach
+  (let ((area (gtk:cell-area-box-new))
+        (message nil))
+    ;; Add five cell renderer to the area box
+    (gtk:cell-area-box-pack-start area (gtk:cell-renderer-pixbuf-new))
+    (gtk:cell-area-box-pack-start area (gtk:cell-renderer-progress-new))
+    (gtk:cell-area-box-pack-start area (gtk:cell-renderer-spinner-new))
+    (gtk:cell-area-box-pack-start area (gtk:cell-renderer-text-new))
+    (gtk:cell-area-box-pack-start area (gtk:cell-renderer-toggle-new))
+    ;; Collect the types of the renderers
+    (gtk:cell-area-foreach area
+                           (lambda (renderer)
+                             (push (type-of renderer) message)
+                             nil))
+    ;; Check the types of the renderers
+    (is (equal '(GTK:CELL-RENDERER-PIXBUF GTK:CELL-RENDERER-PROGRESS
+                 GTK:CELL-RENDERER-SPINNER GTK:CELL-RENDERER-TEXT
+                 GTK:CELL-RENDERER-TOGGLE)
+               (reverse message)))))
+
 ;;;     gtk_cell_area_foreach_alloc
+
+#-windows
+(test gtk-cell-area-foreach-alloc
+  (let ((area (gtk:cell-area-box-new))
+        (widget (make-instance 'gtk:window
+                               :type :toplevel
+                               :width-request 120
+                               :height-request 60))
+        (message nil))
+    ;; Realize the window
+    (gtk:widget-realize widget)
+    ;; Add five cell renderers to the area box
+    (gtk:cell-area-box-pack-start area (gtk:cell-renderer-text-new))
+    (gtk:cell-area-box-pack-start area (gtk:cell-renderer-toggle-new))
+    (gtk:cell-area-box-pack-start area (gtk:cell-renderer-pixbuf-new))
+    (gtk:cell-area-box-pack-start area (gtk:cell-renderer-progress-new))
+    (gtk:cell-area-box-pack-start area (gtk:cell-renderer-spinner-new))
+    ;; Collect for each renderer information about the layout
+    (gtk:cell-area-foreach-alloc
+            area
+            (gtk:cell-area-create-context area)
+            widget
+            (gtk:widget-allocation widget)
+            (gtk:widget-allocation widget)
+            (lambda (renderer cell background)
+              (push (list (type-of renderer)
+                          (list (gdk:rectangle-x cell)
+                                (gdk:rectangle-width cell))
+                          (list (gdk:rectangle-x background)
+                                (gdk:rectangle-width background)))
+                    message)
+              nil))
+    ;; Check the result
+    (is (equal '((GTK:CELL-RENDERER-TEXT (0 35) (0 35))
+                 (GTK:CELL-RENDERER-TOGGLE (35 51) (35 51))
+                 (GTK:CELL-RENDERER-PIXBUF (86 31) (86 31))
+                 (GTK:CELL-RENDERER-PROGRESS (117 68) (117 68))
+                 (GTK:CELL-RENDERER-SPINNER (185 47) (185 47)))
+               (reverse message)))))
+
 ;;;     gtk_cell_area_event
 ;;;     gtk_cell_area_render
 ;;;     gtk_cell_area_get_cell_allocation
@@ -99,22 +159,22 @@
 
 ;;;     gtk_cell_area_class_find_cell_property
 
-(test cell-area-class-find-cell-property
+(test gtk-cell-area-class-find-cell-property
   (let ((area (make-instance 'gtk:cell-area-box))
         (renderer (make-instance 'gtk:cell-renderer-pixbuf)))
     (is-false (gtk:cell-area-add area renderer))
     (is (cffi:pointerp (gtk:cell-area-class-find-cell-property "GtkCellAreaBox"
-                                                          "align")))
+                                                               "align")))
     (is (cffi:pointerp (gtk:cell-area-class-find-cell-property "GtkCellAreaBox"
-                                                          "expand")))
+                                                               "expand")))
     (is (cffi:pointerp (gtk:cell-area-class-find-cell-property "GtkCellAreaBox"
-                                                         "fixed-size")))
+                                                               "fixed-size")))
     (is (cffi:pointerp (gtk:cell-area-class-find-cell-property "GtkCellAreaBox"
-                                                          "pack-type")))))
+                                                               "pack-type")))))
 
 ;;;     gtk_cell_area_class_list_cell_properties
 
-(test cell-area-class-list-cell-properties
+(test gtk-cell-area-class-list-cell-properties
   (is (equal '("align" "expand" "fixed-size" "pack-type")
              (sort (mapcar #'g:param-spec-name
                            (gtk:cell-area-class-list-cell-properties
@@ -126,7 +186,7 @@
 ;;;     gtk_cell_area_cell_set
 ;;;     gtk_cell_area_cell_get
 
-(test cell-area-cell-set/get
+(test gtk-cell-area-cell-set/get
   (let ((area (make-instance 'gtk:cell-area-box))
         (renderer (make-instance 'gtk:cell-renderer-pixbuf)))
     (is-false (gtk:cell-area-add area renderer))
@@ -150,7 +210,7 @@
 ;;;     gtk_cell_area_cell_set_property
 ;;;     gtk_cell_area_cell_get_property
 
-(test cell-area-cell-property
+(test gtk-cell-area-cell-property
   (let ((area (make-instance 'gtk:cell-area-box))
         (renderer (make-instance 'gtk:cell-renderer-pixbuf)))
     (is-false (gtk:cell-area-add area renderer))
@@ -162,18 +222,14 @@
 ;;;     gtk_cell_area_is_activatable
 ;;;     gtk_cell_area_activate
 ;;;     gtk_cell_area_focus
-;;;     gtk_cell_area_set_focus_cell                       Accessor
-;;;     gtk_cell_area_get_focus_cell                       Accessor
 ;;;     gtk_cell_area_add_focus_sibling
 ;;;     gtk_cell_area_remove_focus_sibling
 ;;;     gtk_cell_area_is_focus_sibling
 ;;;     gtk_cell_area_get_focus_siblings
 ;;;     gtk_cell_area_get_focus_from_sibling
-;;;     gtk_cell_area_get_edited_cell                      Accessor
-;;;     gtk_cell_area_get_edit_widget                      Accessor
 ;;;     gtk_cell_area_activate_cell
 ;;;     gtk_cell_area_stop_editing
 ;;;     gtk_cell_area_inner_cell_area
 ;;;     gtk_cell_area_request_renderer
 
-;;; --- 2022-12-27 -------------------------------------------------------------
+;;; --- 2023-5-13 --------------------------------------------------------------

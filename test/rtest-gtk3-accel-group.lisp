@@ -5,7 +5,7 @@
 
 ;;;     GtkAccelFlags
 
-(test accel-flags
+(test gtk-accel-flags
   ;; Check the type
   (is (g:type-is-flags "GtkAccelFlags"))
   ;; Check the registered name
@@ -35,7 +35,7 @@
 
 ;;;     GtkAccelGroup
 
-(test accel-group-class
+(test gtk-accel-group-class
   ;; Type check
   (is (g:type-is-object "GtkAccelGroup"))
   ;; Check the registered name
@@ -71,7 +71,7 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-(test accel-group-properties
+(test gtk-accel-group-properties
   (let ((group (gtk:accel-group-new)))
     ;; is-locked
     (is-false (gtk:accel-group-is-locked group))
@@ -94,7 +94,7 @@
 
 ;;;   gtk_accel_group_new
 
-(test accel-group-new
+(test gtk-accel-group-new
   (is (eq 'gtk:accel-group (type-of (gtk:accel-group-new)))))
 
 ;;;     gtk_accel_group_connect
@@ -147,7 +147,7 @@
                 "GTK+"                                ; tooltip
                 #'activate-action)))
 
-(test accel-group-activate
+(test gtk-accel-group-activate
  (let ((window (make-instance 'gtk:window
                               :type :toplevel))
        (action-group (make-instance 'gtk:action-group
@@ -178,7 +178,7 @@
 
 ;;;   gtk_accelerator_valid
 
-(test accelerator-valid
+(test gtk-accelerator-valid
   (is-true (gtk:accelerator-valid 97 '(:control-mask)))
   (is-true (gtk:accelerator-valid 65470 '(:shift-mask :mod1-mask)))
   (is-true (gtk:accelerator-valid 122 '(:release-mask)))
@@ -187,7 +187,7 @@
 
 ;;;   gtk_accelerator_parse
 
-(test accelerator-parse
+(test gtk-accelerator-parse
   (is (equal '(97 (:control-mask))
              (multiple-value-list (gtk:accelerator-parse "<Control>a"))))
   (is (equal '(65470 (:shift-mask :mod1-mask))
@@ -201,7 +201,7 @@
 
 ;;;   gtk_accelerator_name
 
-(test accelerator-name
+(test gtk-accelerator-name
   (is (string= "<Primary>a"
                (gtk:accelerator-name 97 '(:control-mask))))
   (is (string= "<Shift><Alt>F1"
@@ -216,7 +216,7 @@
 ;;;   gtk_accelerator_get_label
 
 #-windows
-(test accelerator-label
+(test gtk-accelerator-label
   (is (string= "Strg+A"
                (gtk:accelerator-label 97 '(:control-mask))))
   (is (string= "Umschalt+Alt+F1"
@@ -229,16 +229,16 @@
                (gtk:accelerator-label 113 '(:control-mask)))))
 
 #+windows
-(test accelerator-label
-  (is (string= "Ctrl+A"
+(test gtk-accelerator-label
+  (is (string= "Strg+A"
                (gtk:accelerator-label 97 '(:control-mask))))
-  (is (string= "Shift+Alt+F1"
+  (is (string= "Umschalt+Alt+F1"
                (gtk:accelerator-label 65470 '(:shift-mask :mod1-mask))))
   (is (string= "Z"
                (gtk:accelerator-label 122 '(:release-mask))))
-  (is (string= "Ctrl+-"
+  (is (string= "Strg+-"
                (gtk:accelerator-label 45 '(:control-mask))))
-  (is (string= "Ctrl+Q"
+  (is (string= "Strg+Q"
                (gtk:accelerator-label 113 '(:control-mask)))))
 
 ;;;   gtk_accelerator_parse_with_keycode
@@ -248,7 +248,7 @@
 ;;;   gtk_accelerator_set_default_mod_mask
 ;;;   gtk_accelerator_get_default_mod_mask
 
-(test accelerator-default-mod-mask
+(test gtk-accelerator-default-mod-mask
   (is (equal '(:SHIFT-MASK
                :CONTROL-MASK :MOD1-MASK :SUPER-MASK :HYPER-MASK :META-MASK)
              (gtk:accelerator-default-mod-mask)))
@@ -263,4 +263,4 @@
                    '(:SHIFT-MASK :CONTROL-MASK :MOD1-MASK :SUPER-MASK
                      :HYPER-MASK :META-MASK)))))
 
-;;; --- 2023-3-1 ---------------------------------------------------------------
+;;; --- 2023-5-25 --------------------------------------------------------------

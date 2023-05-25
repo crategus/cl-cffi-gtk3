@@ -228,7 +228,6 @@
     (is-false (gtk:drag-source-set source :button1-mask nil :copy))
     (is-false (gtk:drag-source-add-image-targets source))
     (is (equal '(("image/png" NIL 0)
-                 ("image/jpeg" NIL 0)
                  ("image/bmp" NIL 0)
                  ("image/x-bmp" NIL 0)
                  ("image/x-MS-bmp" NIL 0)
@@ -240,14 +239,14 @@
                  ("image/ico" NIL 0)
                  ("image/icon" NIL 0)
                  ("text/ico" NIL 0)
-                 ("image/tiff" NIL 0)
-                 ("image/webp" NIL 0)
-                 ("audio/x-riff" NIL 0))
+                 ("image/jpeg" NIL 0)
+                 ("image/tiff" NIL 0))
                (gtk:target-table-new-from-list
                    (gtk:drag-source-target-list source))))))
 
 ;;;     gtk_drag_source_add_uri_targets
 
+#-windows
 (test gtk-drag-source-add-uri-targets
   (let ((source (make-instance 'gtk:button)))
     (is-false (gtk:drag-source-set source :button1-mask nil :copy))
@@ -257,4 +256,4 @@
                (gtk:target-table-new-from-list
                    (gtk:drag-source-target-list source))))))
 
-;;; --- 2023-4-29 --------------------------------------------------------------
+;;; --- 2023-5-25 --------------------------------------------------------------

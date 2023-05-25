@@ -9,44 +9,41 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-;;;     gboolean   search-mode                Read / Write
-;;;        gchar*  subtitle                   Read
+;;;     search-mode
+;;;     subtitle
 
-(test file-chooser-widget-properties.1
+(test gtk-file-chooser-widget-properties.1
   (let ((chooser (make-instance 'gtk:file-chooser-widget)))
     (is-false (gtk:file-chooser-widget-search-mode chooser))
     (is-false (gtk:file-chooser-widget-subtitle chooser))))
 
-(test file-chooser-widget-properties.2
+(test gtk-file-chooser-widget-properties.2
   (let ((chooser (make-instance 'gtk:file-chooser-widget
                                 :search-mode t)))
     (is-true (gtk:file-chooser-widget-search-mode chooser))
-    #-windows
-    (is (string= "Suchen" (gtk:file-chooser-widget-subtitle chooser)))
-    #+windows
-    (is (string= "Searching" (gtk:file-chooser-widget-subtitle chooser)))))
+    (is (string= "Suchen" (gtk:file-chooser-widget-subtitle chooser)))))
 
 ;;; --- Signals ----------------------------------------------------------------
 
-;;;         void   desktop-folder             Action
-;;;         void   down-folder                Action
-;;;         void   home-folder                Action
-;;;         void   location-popup             Action
-;;;         void   location-popup-on-paste    Action
-;;;         void   location-toggle-popup      Action
-;;;         void   places-shortcut            Action
-;;;         void   quick-bookmark             Action
-;;;         void   recent-shortcut            Action
-;;;         void   search-shortcut            Action
-;;;         void   show-hidden                Action
-;;;         void   up-folder                  Action
+;;;     desktop-folder
+;;;     down-folder
+;;;     home-folder
+;;;     location-popup
+;;;     location-popup-on-paste
+;;;     location-toggle-popup
+;;;     places-shortcut
+;;;     quick-bookmark
+;;;     recent-shortcut
+;;;     search-shortcut
+;;;     show-hidden
+;;;     up-folder
 
 ;;; --- Functions --------------------------------------------------------------
 
 ;;;     gtk_file_chooser_widget_new
 
-(test file-chooser-widget-new
+(test gtk-file-chooser-widget-new
   (is (typep (gtk:file-chooser-widget-new :open) 'gtk:file-chooser-widget))
   (is (typep (gtk:file-chooser-widget-new :save) 'gtk:file-chooser-widget)))
 
-;;; --- 2023-3-9 ---------------------------------------------------------------
+;;; --- 2023-5-25 --------------------------------------------------------------
