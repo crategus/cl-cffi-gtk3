@@ -53,7 +53,7 @@
 ;;; GdkColor
 ;;; ----------------------------------------------------------------------------
 
-(define-g-boxed-cstruct color "GdkColor"
+(glib:define-g-boxed-cstruct color "GdkColor"
   (:export t
    :type-initializer "gdk_color_get_type")
   (pixel :uint32 :initform 0)

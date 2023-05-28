@@ -130,7 +130,7 @@
 (defcfun ("gtk_paper_size_new" %paper-size-alloc) :pointer
   (name :pointer))
 
-(define-g-boxed-opaque paper-size "GtkPaperSize"
+(glib:define-g-boxed-opaque paper-size "GtkPaperSize"
   :export t
   :type-initializer "gtk_paper_size_get_type"
   :alloc (%paper-size-alloc (cffi:null-pointer)))

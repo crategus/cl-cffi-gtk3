@@ -154,7 +154,7 @@
 
 (defcfun ("gtk_icon_source_new" %icon-source-new) :pointer)
 
-(define-g-boxed-opaque icon-source "GtkIconSource"
+(glib:define-g-boxed-opaque icon-source "GtkIconSource"
   :export t
   :type-initializer "gtk_icon_source_get_type"
   :alloc (%icon-source-new))
@@ -181,7 +181,7 @@
 
 (defcfun ("gtk_icon_set_new" %icon-set-new) :pointer)
 
-(define-g-boxed-opaque icon-set "GtkIconSet"
+(glib:define-g-boxed-opaque icon-set "GtkIconSet"
   :export t
   :type-initializer "gtk_icon_set_get_type"
   :alloc (%icon-set-new))

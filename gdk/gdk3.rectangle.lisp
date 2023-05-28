@@ -65,7 +65,7 @@
 ;;; GdkRectangle
 ;;; ----------------------------------------------------------------------------
 
-(define-g-boxed-cstruct rectangle "GdkRectangle"
+(glib:define-g-boxed-cstruct rectangle "GdkRectangle"
   (:export t
    :type-initializer "gdk_rectangle_get_type")
   (x :int :initform 0)

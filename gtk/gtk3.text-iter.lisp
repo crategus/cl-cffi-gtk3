@@ -208,7 +208,7 @@
 
 ;;; ----------------------------------------------------------------------------
 
-(define-g-boxed-opaque text-iter "GtkTextIter"
+(glib:define-g-boxed-opaque text-iter "GtkTextIter"
   :export t
   :type-initializer "gtk_text_iter_get_type"
   :alloc (%text-iter-alloc))

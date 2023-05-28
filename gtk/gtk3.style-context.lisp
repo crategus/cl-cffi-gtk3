@@ -302,7 +302,7 @@
 ;;; struct GtkBorder
 ;;; ----------------------------------------------------------------------------
 
-(define-g-boxed-cstruct border "GtkBorder"
+(glib:define-g-boxed-cstruct border "GtkBorder"
   (:export t
    :type-initializer "gtk_border_get_type")
   (left   :int16 :initform 0)

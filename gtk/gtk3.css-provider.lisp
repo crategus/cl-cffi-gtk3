@@ -458,7 +458,7 @@ lambda (provider section error)    :run-last
 ;;; GtkCssSection
 ;;; ----------------------------------------------------------------------------
 
-(define-g-boxed-opaque css-section "GtkCssSection"
+(glib:define-g-boxed-opaque css-section "GtkCssSection"
   :export t
   :type-initializer "gtk_css_section_get_type"
   :alloc (error "GtkCssSection cannot be created from the Lisp side."))

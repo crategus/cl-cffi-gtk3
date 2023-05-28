@@ -48,10 +48,7 @@
   (:import-from #:gobject   #:define-g-enum
                             #:define-g-flags
                             #:define-g-object-class
-                            #:define-g-interface
-                            #:define-g-boxed-opaque
-                            #:define-g-boxed-cstruct
-                            #:define-g-boxed-variant-cstruct)
+                            #:define-g-interface)
  ;; Import the symbols from GDK-PIXUF
  ;; TODO: We have a problem with the documentation. The symbols are documented
  ;; twice as gdk:pixbuf and as gdk-pixbuf:pixbuf. Resolve this issue.

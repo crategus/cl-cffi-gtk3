@@ -146,7 +146,7 @@
 ;; TODO: Implement this as an opaque boxed type. See gtk:text-iter for an
 ;; example.
 
-(define-g-boxed-cstruct tree-iter "GtkTreeIter"
+(glib:define-g-boxed-cstruct tree-iter "GtkTreeIter"
   (:export t
    :type-initializer "gtk_tree_iter_get_type")
   (stamp :int :initform 0)
@@ -220,7 +220,7 @@
 ;;; GtkTreePath
 ;;; ----------------------------------------------------------------------------
 
-(define-g-boxed-opaque tree-path "GtkTreePath"
+(glib:define-g-boxed-opaque tree-path "GtkTreePath"
   :export t
   :type-initializer "gtk_tree_path_get_type"
   :alloc (%tree-path-new))
@@ -649,7 +649,7 @@
 ;;; GtkTreeRowReference
 ;;; ----------------------------------------------------------------------------
 
-(define-g-boxed-opaque tree-row-reference "GtkTreeRowReference"
+(glib:define-g-boxed-opaque tree-row-reference "GtkTreeRowReference"
   :export t
   :type-initializer "gtk_tree_row_reference_get_type"
   :alloc (error "GtkTreeRowReference cannot be created from the Lisp side."))

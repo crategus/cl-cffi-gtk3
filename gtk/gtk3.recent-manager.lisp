@@ -100,7 +100,7 @@
 ;;; GtkRecentInfo
 ;;; ----------------------------------------------------------------------------
 
-(define-g-boxed-opaque recent-info "GtkRecentInfo"
+(glib:define-g-boxed-opaque recent-info "GtkRecentInfo"
   :export t
   :type-initializer "gtk_recent_info_get_type"
   :alloc (error "GtkRecentInfo cannot be created from the Lisp side."))

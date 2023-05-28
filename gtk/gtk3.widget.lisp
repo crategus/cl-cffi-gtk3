@@ -484,7 +484,7 @@
 ;;; GtkRequisition
 ;;; ----------------------------------------------------------------------------
 
-(define-g-boxed-cstruct requisition "GtkRequisition"
+(glib:define-g-boxed-cstruct requisition "GtkRequisition"
   (:export t
    :type-initializer "gtk_requisition_get_type")
   (width :int :initform 0)

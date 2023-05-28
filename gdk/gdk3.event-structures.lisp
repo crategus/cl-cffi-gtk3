@@ -982,7 +982,7 @@
 ;;; GdkEventSequence
 ;;; ----------------------------------------------------------------------------
 
-(define-g-boxed-opaque event-sequence "GdkEventSequence"
+(glib:define-g-boxed-opaque event-sequence "GdkEventSequence"
   :export t
   :type-initializer "gdk_event_sequence_get_type"
   :alloc (error "GdkEventSequence cannot be created from the Lisp side."))
@@ -1004,7 +1004,7 @@
 ;;; union GdkEvent
 ;;; ----------------------------------------------------------------------------
 
-(define-g-boxed-variant-cstruct event "GdkEvent"
+(glib:define-g-boxed-variant-cstruct event "GdkEvent"
   (type event-type)
   (window (g:object window))
   (send-event (:boolean :int8))

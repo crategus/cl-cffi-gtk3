@@ -56,10 +56,6 @@
                             #:define-g-flags
                             #:define-g-interface
                             #:define-g-object-class
-                            #:define-g-boxed-opaque
-                            #:define-g-boxed-cstruct
-                            #:define-boxed-opaque-accessor
-                            #:with-foreign-boxed-array
                             #:define-cb-methods
                             #:define-vtable
 

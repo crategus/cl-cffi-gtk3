@@ -50,7 +50,7 @@
 ;;; GdkRGBA
 ;;; ----------------------------------------------------------------------------
 
-(define-g-boxed-cstruct rgba "GdkRGBA"
+(glib:define-g-boxed-cstruct rgba "GdkRGBA"
   (:export t
    :type-initializer "gdk_rgba_get_type")
   (red :double :initform 0.0d0)

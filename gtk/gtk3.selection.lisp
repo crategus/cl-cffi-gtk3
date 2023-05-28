@@ -178,7 +178,7 @@
 ;;; GtkTargetList
 ;;; ----------------------------------------------------------------------------
 
-(define-g-boxed-opaque target-list "GtkTargetList"
+(glib:define-g-boxed-opaque target-list "GtkTargetList"
   :export t
   :type-initializer "gtk_target_list_get_type"
   :alloc (%target-list-new (cffi:null-pointer) 0))
@@ -234,7 +234,7 @@
 ;;; GtkSelectionData
 ;;; ----------------------------------------------------------------------------
 
-(define-g-boxed-opaque selection-data "GtkSelectionData"
+(glib:define-g-boxed-opaque selection-data "GtkSelectionData"
   :export t
   :type-initializer "gtk_selection_data_get_type"
   :alloc (error "GtkSelectionData cannot be created from the Lisp side."))

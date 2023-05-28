@@ -129,7 +129,7 @@
 
 (defcfun ("gtk_widget_path_new" %widget-path-new) :pointer)
 
-(define-g-boxed-opaque widget-path "GtkWidgetPath"
+(glib:define-g-boxed-opaque widget-path "GtkWidgetPath"
   :export t
   :type-initializer "gtk_widget_path_get_type"
   :alloc (%widget-path-new))
