@@ -3508,7 +3508,7 @@ lambda (widget event)    :run-last
   @end{dictionary}
   @see-class{gtk:widget}
   @see-function{g:object-new}"
-  (let ((lisp-type (gobject:symbol-for-gtype gtype)))
+  (let ((lisp-type (glib:symbol-for-gtype gtype)))
     (apply 'make-instance lisp-type args)))
 
 (export 'widget-new)

@@ -81,7 +81,7 @@
 ;; called. Why?
 (glib-init:at-init ()
   (eval-when (:compile-toplevel :load-toplevel :execute)
-    (setf (gobject:symbol-for-gtype "GtkFrame") 'frame)))
+    (setf (glib:symbol-for-gtype "GtkFrame") 'frame)))
 
 (define-g-object-class "GtkFrame" frame
   (:superclass bin

@@ -51,7 +51,7 @@
                                  property-type              ; "gint"
                                  readable writable export)
   (when (stringp container-type)
-    (setf container-type (gobject:symbol-for-gtype container-type)))
+    (setf container-type (glib:symbol-for-gtype container-type)))
   `(progn
      ,@(when readable
          (list `(defun ,property-name (container child)
@@ -80,7 +80,7 @@
 
 (defun child-property-name (type-name property-name package-name)
   (intern (format nil "~A-CHILD-~A"
-                  (symbol-name (gobject:symbol-for-gtype type-name))
+                  (symbol-name (glib:symbol-for-gtype type-name))
                   (string-upcase property-name))
           (find-package package-name)))
 
