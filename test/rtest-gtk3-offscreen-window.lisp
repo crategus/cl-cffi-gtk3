@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkOffscreenWindow"))
   ;; Check the registered name
   (is (eq 'gtk:offscreen-window
-          (gobject:symbol-for-gtype "GtkOffscreenWindow")))
+          (glib:symbol-for-gtype "GtkOffscreenWindow")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkOffscreenWindow")
           (g:gtype (cffi:foreign-funcall "gtk_offscreen_window_get_type" :size))))
@@ -51,4 +51,4 @@
 ;;;     gtk_offscreen_window_get_surface
 ;;;     gtk_offscreen_window_get_pixbuf
 
-;;; --- 2022-12-26 -------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

@@ -64,7 +64,7 @@ dargestellt werden.")
   (is (g:type-is-object "GtkTextBuffer"))
   ;; Check the registered name
   (is (eq 'gtk:text-buffer
-          (gobject:symbol-for-gtype "GtkTextBuffer")))
+          (glib:symbol-for-gtype "GtkTextBuffer")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkTextBuffer")
           (g:gtype (cffi:foreign-funcall "gtk_text_buffer_get_type" :size))))
@@ -413,4 +413,4 @@ dargestellt werden.")
 ;;;     gtk_text_buffer_unregister_deserialize_format
 ;;;     gtk_text_buffer_unregister_serialize_format
 
-;;; --- 2022-12-27 -------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

@@ -12,7 +12,7 @@
   (is (g:type-is-flags "GtkApplicationInhibitFlags"))
   ;; Check the registered name
   (is (eq 'gtk:application-inhibit-flags
-          (gobject:symbol-for-gtype "GtkApplicationInhibitFlags")))
+          (glib:symbol-for-gtype "GtkApplicationInhibitFlags")))
   ;; Check the names
   (is (equal '("GTK_APPLICATION_INHIBIT_LOGOUT" "GTK_APPLICATION_INHIBIT_SWITCH"
                "GTK_APPLICATION_INHIBIT_SUSPEND" "GTK_APPLICATION_INHIBIT_IDLE")
@@ -42,7 +42,7 @@
   (is (g:type-is-object "GtkApplication"))
   ;; Check the registered name
   (is (eq 'gtk:application
-          (gobject:symbol-for-gtype "GtkApplication")))
+          (glib:symbol-for-gtype "GtkApplication")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkApplication")
           (g:gtype (cffi:foreign-funcall "gtk_application_get_type" :size))))
@@ -315,4 +315,4 @@
     (is (equal '("win::close" "win::save")
                (gtk:application-actions-for-accel application "<Control>q")))))
 
-;;; --- 2023-4-29 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

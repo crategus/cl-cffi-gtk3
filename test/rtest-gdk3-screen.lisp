@@ -16,7 +16,7 @@
   (is (g:type-is-object "GdkScreen"))
   ;; Check the registered name
   (is (eq 'gdk:screen
-          (gobject:symbol-for-gtype "GdkScreen")))
+          (glib:symbol-for-gtype "GdkScreen")))
   ;; Check the type initializer
   (is (eq (g:gtype "GdkScreen")
           (g:gtype (cffi:foreign-funcall "gdk_screen_get_type" :size))))
@@ -287,4 +287,4 @@
   (is (every (lambda (x) (typep x 'gdk:window))
              (gdk:screen-window-stack (gdk:screen-default)))))
 
-;;; --- 2023-3-3 ---------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

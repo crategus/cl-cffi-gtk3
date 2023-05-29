@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkFlowBoxChild"))
   ;; Check the registered name
   (is (eq 'gtk:flow-box-child
-          (gobject:symbol-for-gtype "GtkFlowBoxChild")))
+          (glib:symbol-for-gtype "GtkFlowBoxChild")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkFlowBoxChild")
           (g:gtype (cffi:foreign-funcall "gtk_flow_box_child_get_type" :size))))
@@ -51,7 +51,7 @@
   (is (g:type-is-object "GtkFlowBox"))
   ;; Check the registered name
   (is (eq 'gtk:flow-box
-          (gobject:symbol-for-gtype "GtkFlowBox")))
+          (glib:symbol-for-gtype "GtkFlowBox")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkFlowBox")
           (g:gtype (cffi:foreign-funcall "gtk_flow_box_get_type" :size))))
@@ -158,4 +158,4 @@
 ;;;     gtk_flow_box_child_is_selected
 ;;;     gtk_flow_box_child_changed
 
-;;; --- 2023-3-5 ---------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

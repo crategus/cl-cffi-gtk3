@@ -17,7 +17,7 @@
           (g:gtype (cffi:foreign-funcall "gtk_level_bar_mode_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:level-bar-mode
-          (gobject:symbol-for-gtype "GtkLevelBarMode")))
+          (glib:symbol-for-gtype "GtkLevelBarMode")))
   ;; Check the names
   (is (equal '("GTK_LEVEL_BAR_MODE_CONTINUOUS" "GTK_LEVEL_BAR_MODE_DISCRETE")
              (list-enum-item-name "GtkLevelBarMode")))
@@ -43,7 +43,7 @@
   (is (g:type-is-object "GtkLevelBar"))
   ;; Check the registered name
   (is (eq 'gtk:level-bar
-          (gobject:symbol-for-gtype "GtkLevelBar")))
+          (glib:symbol-for-gtype "GtkLevelBar")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkLevelBar")
           (g:gtype (cffi:foreign-funcall "gtk_level_bar_get_type" :size))))
@@ -161,4 +161,4 @@
     (is-false (gtk:level-bar-remove-offset-value level-bar "half"))
     (is-false (gtk:level-bar-offset-value level-bar "half"))))
 
-;;; --- 2022-12-27 -------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

@@ -13,7 +13,7 @@
           (g:gtype (cffi:foreign-funcall "gdk_scroll_direction_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gdk:scroll-direction
-          (gobject:symbol-for-gtype "GdkScrollDirection")))
+          (glib:symbol-for-gtype "GdkScrollDirection")))
   ;; Check the names
   (is (equal '("GDK_SCROLL_UP" "GDK_SCROLL_DOWN" "GDK_SCROLL_LEFT"
                "GDK_SCROLL_RIGHT" "GDK_SCROLL_SMOOTH")
@@ -49,7 +49,7 @@
           (g:gtype (cffi:foreign-funcall "gdk_visibility_state_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gdk:visibility-state
-          (gobject:symbol-for-gtype "GdkVisibilityState")))
+          (glib:symbol-for-gtype "GdkVisibilityState")))
   ;; Check the names
   (is (equal '("GDK_VISIBILITY_UNOBSCURED" "GDK_VISIBILITY_PARTIAL"
                "GDK_VISIBILITY_FULLY_OBSCURED")
@@ -83,7 +83,7 @@
           (g:gtype (cffi:foreign-funcall "gdk_crossing_mode_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gdk:crossing-mode
-          (gobject:symbol-for-gtype "GdkCrossingMode")))
+          (glib:symbol-for-gtype "GdkCrossingMode")))
   ;; Check the names
   (is (equal '("GDK_CROSSING_NORMAL" "GDK_CROSSING_GRAB" "GDK_CROSSING_UNGRAB"
                "GDK_CROSSING_GTK_GRAB" "GDK_CROSSING_GTK_UNGRAB"
@@ -126,7 +126,7 @@
           (g:gtype (cffi:foreign-funcall "gdk_notify_type_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gdk:notify-type
-          (gobject:symbol-for-gtype "GdkNotifyType")))
+          (glib:symbol-for-gtype "GdkNotifyType")))
   ;; Check the names
   (is (equal '("GDK_NOTIFY_ANCESTOR" "GDK_NOTIFY_VIRTUAL" "GDK_NOTIFY_INFERIOR"
                "GDK_NOTIFY_NONLINEAR" "GDK_NOTIFY_NONLINEAR_VIRTUAL"
@@ -162,7 +162,7 @@
           (g:gtype (cffi:foreign-funcall "gdk_property_state_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gdk:property-state
-          (gobject:symbol-for-gtype "GdkPropertyState")))
+          (glib:symbol-for-gtype "GdkPropertyState")))
   ;; Check the names
   (is (equal '("GDK_PROPERTY_NEW_VALUE" "GDK_PROPERTY_DELETE")
              (list-enum-item-name "GdkPropertyState")))
@@ -188,7 +188,7 @@
   (is (g:type-is-flags "GdkWindowState"))
   ;; Check the registered name
   (is (eq 'gdk:window-state
-          (gobject:symbol-for-gtype "GdkWindowState")))
+          (glib:symbol-for-gtype "GdkWindowState")))
   ;; Check the type initializer
   (is (eq (g:gtype "GdkWindowState")
           (g:gtype (cffi:foreign-funcall "gdk_window_state_get_type" :size))))
@@ -248,7 +248,7 @@
           (g:gtype (cffi:foreign-funcall "gdk_setting_action_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gdk:setting-action
-          (gobject:symbol-for-gtype "GdkSettingAction")))
+          (glib:symbol-for-gtype "GdkSettingAction")))
   ;; Check the names
   (is (equal '("GDK_SETTING_ACTION_NEW" "GDK_SETTING_ACTION_CHANGED"
                "GDK_SETTING_ACTION_DELETED")
@@ -279,7 +279,7 @@
           (g:gtype (cffi:foreign-funcall "gdk_owner_change_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gdk:owner-change
-          (gobject:symbol-for-gtype "GdkOwnerChange")))
+          (glib:symbol-for-gtype "GdkOwnerChange")))
   ;; Check the names
   (is (equal '("GDK_OWNER_CHANGE_NEW_OWNER" "GDK_OWNER_CHANGE_DESTROY"
                "GDK_OWNER_CHANGE_CLOSE")
@@ -310,7 +310,7 @@
           (g:gtype (cffi:foreign-funcall "gdk_event_type_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gdk:event-type
-          (gobject:symbol-for-gtype "GdkEventType")))
+          (glib:symbol-for-gtype "GdkEventType")))
   ;; Check the names
   (is (equal '("GDK_NOTHING" "GDK_DELETE" "GDK_DESTROY" "GDK_EXPOSE"
                "GDK_MOTION_NOTIFY" "GDK_BUTTON_PRESS" "GDK_2BUTTON_PRESS"
@@ -415,7 +415,7 @@
   (is (g:type-is-flags "GdkModifierType"))
   ;; Check the registered name
   (is (eq 'gdk:modifier-type
-          (gobject:symbol-for-gtype "GdkModifierType")))
+          (glib:symbol-for-gtype "GdkModifierType")))
   ;; Check the type initializer
   (is (eq (g:gtype "GdkModifierType")
           (g:gtype (cffi:foreign-funcall "gdk_modifier_type_get_type" :size))))
@@ -499,7 +499,7 @@
   (is (g:type-is-flags "GdkEventMask"))
   ;; Check the registered name
   (is (eq 'gdk:event-mask
-          (gobject:symbol-for-gtype "GdkEventMask")))
+          (glib:symbol-for-gtype "GdkEventMask")))
   ;; Check the type initializer
   (is (eq (g:gtype "GdkEventMask")
           (g:gtype (cffi:foreign-funcall "gdk_event_mask_get_type" :size))))
@@ -1220,4 +1220,4 @@
     (is (= 0 (gdk:event-pad-group-mode-group event)))
     (is (= 0 (gdk:event-pad-group-mode-mode event)))))
 
-;;; 2022-12-11
+;;; --- 2023-5-29 --------------------------------------------------------------

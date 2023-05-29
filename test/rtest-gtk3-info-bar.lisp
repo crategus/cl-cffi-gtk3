@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkInfoBar"))
   ;; Check the registered name
   (is (eq 'gtk:info-bar
-          (gobject:symbol-for-gtype "GtkInfoBar")))
+          (glib:symbol-for-gtype "GtkInfoBar")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkInfoBar")
           (g:gtype (cffi:foreign-funcall "gtk_info_bar_get_type" :size))))
@@ -167,4 +167,4 @@
   (let ((info-bar (make-instance 'gtk:info-bar)))
     (is (eq 'gtk:box (type-of (gtk:info-bar-content-area info-bar))))))
 
-;;; --- 2033-12-27 -------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

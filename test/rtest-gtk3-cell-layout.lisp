@@ -12,7 +12,7 @@
   (is-true (g:type-is-interface "GtkCellLayout"))
   ;; Check the registered name
   (is (eq 'gtk:cell-layout
-          (gobject:symbol-for-gtype "GtkCellLayout")))
+          (glib:symbol-for-gtype "GtkCellLayout")))
   ;; Get the names of the interface properties.
   (is (equal '()
              (list-interface-properties "GtkCellLayout")))
@@ -110,4 +110,4 @@
 ;;;     gtk_cell_layout_set_cell_data_func
 ;;;     gtk_cell_layout_clear_attributes
 
-;;; --- 2022-12-27 -------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

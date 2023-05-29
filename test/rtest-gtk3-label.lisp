@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkLabel"))
   ;; Check the registered name
   (is (eq 'gtk:label
-          (gobject:symbol-for-gtype "GtkLabel")))
+          (glib:symbol-for-gtype "GtkLabel")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkLabel")
           (g:gtype (cffi:foreign-funcall "gtk_label_get_type" :size))))
@@ -322,4 +322,4 @@
   (let ((label (make-instance 'gtk:label :label "some text")))
     (is-false (gtk:label-current-uri label))))
 
-;;; --- 2023-4-29 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

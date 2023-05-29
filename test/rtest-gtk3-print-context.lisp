@@ -10,7 +10,7 @@
   (is (g:type-is-object "GtkPrintContext"))
   ;; Check the registered name
   (is (eq 'gtk:print-context
-          (gobject:symbol-for-gtype "GtkPrintContext")))
+          (glib:symbol-for-gtype "GtkPrintContext")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkPrintContext")
           (g:gtype (cffi:foreign-funcall "gtk_print_context_get_type" :size))))
@@ -49,4 +49,4 @@
 ;;;     gtk_print_context_create_pango_layout
 ;;;     gtk_print_context_get_hard_margins
 
-;;; --- 2023-1-1 ---------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

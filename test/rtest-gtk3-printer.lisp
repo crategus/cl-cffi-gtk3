@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkPrinter"))
   ;; Check the registered name
   (is (eq 'gtk:printer
-          (gobject:symbol-for-gtype "GtkPrinter")))
+          (glib:symbol-for-gtype "GtkPrinter")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkPrinter")
           (g:gtype (cffi:foreign-funcall "gtk_printer_get_type" :size))))
@@ -65,7 +65,7 @@
   (is (g:type-is-object "GtkPrintBackend"))
   ;; Check the registered name
   (is (eq 'gtk:print-backend
-          (gobject:symbol-for-gtype "GtkPrintBackend")))
+          (glib:symbol-for-gtype "GtkPrintBackend")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkPrintBackend")
           (g:gtype (cffi:foreign-funcall "gtk_print_backend_get_type" :size))))
@@ -156,4 +156,4 @@
 ;;;     gtk_printer_get_hard_margins
 ;;;     gtk_enumerate_printers
 
-;;; --- 2023-1-1 ---------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

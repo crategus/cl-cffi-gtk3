@@ -15,7 +15,7 @@
           (g:gtype (cffi:foreign-funcall "gdk_device_pad_feature_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gdk:device-pad-feature
-          (gobject:symbol-for-gtype "GdkDevicePadFeature")))
+          (glib:symbol-for-gtype "GdkDevicePadFeature")))
   ;; Check the names
   (is (equal '("GDK_DEVICE_PAD_FEATURE_BUTTON" "GDK_DEVICE_PAD_FEATURE_RING"
                "GDK_DEVICE_PAD_FEATURE_STRIP")
@@ -43,7 +43,7 @@
   (is (g:type-is-interface "GdkDevicePad"))
   ;; Check the registered name
   (is (eq 'gdk:device-pad
-          (gobject:symbol-for-gtype "GdkDevicePad")))
+          (glib:symbol-for-gtype "GdkDevicePad")))
   ;; Check the type initializer
   (is (eq (g:gtype "GdkDevicePad")
           (g:gtype (cffi:foreign-funcall "gdk_device_pad_get_type" :size))))
@@ -64,4 +64,4 @@
 ;;;     gdk_device_pad_get_n_features
 ;;;     gdk_device_pad_get_feature_group
 
-;;; 2020-11-9
+;;; --- 2023-5-29 --------------------------------------------------------------

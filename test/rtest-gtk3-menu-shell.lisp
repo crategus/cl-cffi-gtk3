@@ -15,7 +15,7 @@
           (g:gtype (cffi:foreign-funcall "gtk_menu_direction_type_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:menu-direction-type
-          (gobject:symbol-for-gtype "GtkMenuDirectionType")))
+          (glib:symbol-for-gtype "GtkMenuDirectionType")))
   ;; Check the names
   (is (equal '("GTK_MENU_DIR_PARENT" "GTK_MENU_DIR_CHILD" "GTK_MENU_DIR_NEXT"
                "GTK_MENU_DIR_PREV")
@@ -45,7 +45,7 @@
   (is (g:type-is-object "GtkMenuShell"))
   ;; Check the registered name
   (is (eq 'gtk:menu-shell
-          (gobject:symbol-for-gtype "GtkMenuShell")))
+          (glib:symbol-for-gtype "GtkMenuShell")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkMenuShell")
           (g:gtype (cffi:foreign-funcall "gtk_menu_shell_get_type" :size))))
@@ -161,3 +161,4 @@
 ;;;     gtk_menu_shell_get_parent_shell
 ;;;     gtk_menu_shell_bind_model
 
+;;; --- 2023-5-29 --------------------------------------------------------------

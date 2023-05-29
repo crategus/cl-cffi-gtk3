@@ -14,7 +14,7 @@
   (is (g:type-is-object "GtkStack"))
   ;; Check the registered name
   (is (eq 'gtk:stack
-          (gobject:symbol-for-gtype "GtkStack")))
+          (glib:symbol-for-gtype "GtkStack")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkStack")
           (g:gtype (cffi:foreign-funcall "gtk_stack_get_type" :size))))
@@ -127,4 +127,4 @@
 ;;;     gtk_stack_get_interpolate_size                     Accessor
 ;;;     gtk_stack_set_interpolate_size                     Accessor
 
-;;; 2021-12-16
+;;; --- 2023-5-29 --------------------------------------------------------------

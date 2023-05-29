@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkBin"))
   ;; Check the registered name
   (is (eq 'gtk:bin
-          (gobject:symbol-for-gtype "GtkBin")))
+          (glib:symbol-for-gtype "GtkBin")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkBin")
           (g:gtype (cffi:foreign-funcall "gtk_bin_get_type" :size))))
@@ -59,4 +59,4 @@
     (is-true (gtk:bin-child bin))
     (is (typep (gtk:bin-child bin) 'gtk:label))))
 
-;;; 2022-12-18
+;;; --- 2023-5-29 --------------------------------------------------------------

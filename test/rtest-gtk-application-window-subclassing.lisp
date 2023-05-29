@@ -161,7 +161,7 @@
   (is (g-type-is-object "ExampleAppWindow"))
   ;; Check the registered name
   (is (eq 'example-app-window
-          (gobject:symbol-for-gtype "ExampleAppWindow")))
+          (glib:symbol-for-gtype "ExampleAppWindow")))
   ;; TODO: Do we have a type initializer?
   ;; Check the type initializer
 ;  (is (eq (gtype "GtkPrintOperation")
@@ -234,4 +234,4 @@
     (signals (error) (g-object-property window "writable"))
     (is (= 20 (setf (g-object-property window "writable") 20)))))
 
-;;; --- 2023-1-29 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

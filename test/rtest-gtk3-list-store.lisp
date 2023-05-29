@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkListStore"))
   ;; Check the registered name
   (is (eq 'gtk:list-store
-          (gobject:symbol-for-gtype "GtkListStore")))
+          (glib:symbol-for-gtype "GtkListStore")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkListStore")
           (g:gtype (cffi:foreign-funcall "gtk_list_store_get_type" :size))))
@@ -22,7 +22,7 @@
   (is (equal '()
              (list-children "GtkListStore")))
   ;; Check the interfaces
-  (is (equal '("GtkTreeModel" "GtkTreeDragSource" "GtkTreeDragDest" 
+  (is (equal '("GtkTreeModel" "GtkTreeDragSource" "GtkTreeDragDest"
                "GtkTreeSortable" "GtkBuildable")
              (list-interfaces "GtkListStore")))
   ;; Check the class properties
@@ -54,7 +54,7 @@
     (is (= 3 (gtk:tree-model-n-columns store)))
     (is (string= "gint" (g:type-name (gtk:tree-model-column-type store 0))))
     (is (string= "GString" (g:type-name (gtk:tree-model-column-type store 1))))
-    (is (string= "GdkPixbuf" 
+    (is (string= "GdkPixbuf"
                  (g:type-name (gtk:tree-model-column-type store 2))))))
 
 #+windows
@@ -65,7 +65,7 @@
     (is (= 3 (gtk:tree-model-n-columns store)))
     (is (string= "gint" (g:type-name (gtk:tree-model-column-type store 0))))
     (is (string= "gchararray" (g:type-name (gtk:tree-model-column-type store 1))))
-    (is (string= "GdkPixbuf" 
+    (is (string= "GdkPixbuf"
                  (g:type-name (gtk:tree-model-column-type store 2))))))
 
 #-windows
@@ -75,7 +75,7 @@
     (is (= 3 (gtk:tree-model-n-columns store)))
     (is (string= "gint" (g:type-name (gtk:tree-model-column-type store 0))))
     (is (string= "GString" (g:type-name (gtk:tree-model-column-type store 1))))
-    (is (string= "GdkPixbuf" 
+    (is (string= "GdkPixbuf"
                  (g:type-name (gtk:tree-model-column-type store 2))))))
 
 #+windows
@@ -85,7 +85,7 @@
     (is (= 3 (gtk:tree-model-n-columns store)))
     (is (string= "gint" (g:type-name (gtk:tree-model-column-type store 0))))
     (is (string= "gchararray" (g:type-name (gtk:tree-model-column-type store 1))))
-    (is (string= "GdkPixbuf" 
+    (is (string= "GdkPixbuf"
                  (g:type-name (gtk:tree-model-column-type store 2))))))
 
 ;;;   gtk_list_store_newv                                  Not implemented
@@ -97,30 +97,30 @@
 #-windows
 (test list-store-set-column-types
   (let ((store (make-instance 'gtk:list-store)))
-    (is-false (gtk:list-store-set-column-types store 
+    (is-false (gtk:list-store-set-column-types store
                                                "gint" "GString" "GdkPixbuf"))
     (is (= 3 (gtk:tree-model-n-columns store)))
     (is (string= "gint" (g:type-name (gtk:tree-model-column-type store 0))))
     (is (string= "GString" (g:type-name (gtk:tree-model-column-type store 1))))
-    (is (string= "GdkPixbuf" 
+    (is (string= "GdkPixbuf"
                  (g:type-name (gtk:tree-model-column-type store 2))))))
 
 #+windows
 (test list-store-set-column-types
   (let ((store (make-instance 'gtk:list-store)))
-    (is-false (gtk:list-store-set-column-types store 
+    (is-false (gtk:list-store-set-column-types store
                                                "gint" "gchararray" "GdkPixbuf"))
     (is (= 3 (gtk:tree-model-n-columns store)))
     (is (string= "gint" (g:type-name (gtk:tree-model-column-type store 0))))
     (is (string= "gchararray" (g:type-name (gtk:tree-model-column-type store 1))))
-    (is (string= "GdkPixbuf" 
+    (is (string= "GdkPixbuf"
                  (g:type-name (gtk:tree-model-column-type store 2))))))
 
 ;;;   gtk_list_store_set
 
 (test list-store-set
   (let* ((store (gtk:list-store-new "gint" "gchararray"))
-         (iter (gtk:list-store-set store (gtk:list-store-append store) 
+         (iter (gtk:list-store-set store (gtk:list-store-append store)
                                          99 "string")))
     (is (= 99 (gtk:tree-model-value store iter 0)))
     (is (equal "string" (gtk:tree-model-value store iter 1)))
@@ -183,4 +183,4 @@
     (setf iter (gtk:list-store-prepend store))
     (gtk:list-store-move-after store iter nil)))
 
-;;; --- 2023-3-9 ---------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

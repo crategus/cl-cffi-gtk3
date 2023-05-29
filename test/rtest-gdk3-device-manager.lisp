@@ -12,7 +12,7 @@
   (is (g:type-is-object "GdkDeviceManager"))
   ;; Check the registered name
   (is (eq 'gdk:device-manager
-          (gobject:symbol-for-gtype "GdkDeviceManager")))
+          (glib:symbol-for-gtype "GdkDeviceManager")))
   ;; Check the type initializer
   (is (eq (g:gtype "GdkDeviceManager")
           (g:gtype (cffi:foreign-funcall "gdk_device_manager_get_type" :size))))
@@ -62,4 +62,4 @@
 ;;;     device-changed
 ;;;     device-removed
 
-;;; --- 2023-3-3 ---------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

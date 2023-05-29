@@ -12,7 +12,7 @@
   (is (g:type-is-flags "GtkCellRendererState"))
   ;; Check the registered name
   (is (eq 'gtk:cell-renderer-state
-          (gobject:symbol-for-gtype "GtkCellRendererState")))
+          (glib:symbol-for-gtype "GtkCellRendererState")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkCellRendererState")
           (g:gtype (cffi:foreign-funcall "gtk_cell_renderer_state_get_type"
@@ -57,7 +57,7 @@
                                          :size))))
   ;; Check the registered name
   (is (eq 'gtk:cell-renderer-mode
-          (gobject:symbol-for-gtype "GtkCellRendererMode")))
+          (glib:symbol-for-gtype "GtkCellRendererMode")))
   ;; Check the names
   (is (equal '("GTK_CELL_RENDERER_MODE_INERT"
                "GTK_CELL_RENDERER_MODE_ACTIVATABLE"
@@ -87,7 +87,7 @@
   (is (g:type-is-object "GtkCellRenderer"))
   ;; Check the registered name
   (is (eq 'gtk:cell-renderer
-          (gobject:symbol-for-gtype "GtkCellRenderer")))
+          (glib:symbol-for-gtype "GtkCellRenderer")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkCellRenderer")
           (g:gtype (cffi:foreign-funcall "gtk_cell_renderer_get_type" :size))))
@@ -213,4 +213,4 @@
 ;;;     gtk_cell_renderer_get_preferred_width_for_height
 ;;;     gtk_cell_renderer_get_request_mode
 
-;;; --- 2022-12-27 -------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

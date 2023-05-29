@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkNotebook"))
   ;; Check the registered name
   (is (eq 'gtk:notebook
-          (gobject:symbol-for-gtype "GtkNotebook")))
+          (glib:symbol-for-gtype "GtkNotebook")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkNotebook")
           (g:gtype (cffi:foreign-funcall "gtk_notebook_get_type" :size))))
@@ -225,4 +225,4 @@
 ;;;     gtk_notebook_set_action_widget
 ;;;     gtk_notebook_get_action_widget
 
-;;; 2021-10-19
+;;; --- 2023-5-29 --------------------------------------------------------------

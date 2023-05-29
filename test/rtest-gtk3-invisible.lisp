@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkInvisible"))
   ;; Check the registered name
   (is (eq 'gtk:invisible
-          (gobject:symbol-for-gtype "GtkInvisible")))
+          (glib:symbol-for-gtype "GtkInvisible")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkInvisible")
           (g:gtype (cffi:foreign-funcall "gtk_invisible_get_type" :size))))
@@ -65,4 +65,4 @@
     (is (typep invisible 'gtk:invisible))
     (is (eq (gdk:screen-default) (gtk:invisible-screen invisible)))))
 
-;;; --- 2022-12-26 -------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

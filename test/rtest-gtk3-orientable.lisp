@@ -12,7 +12,7 @@
   (is (g:type-is-interface "GtkOrientable"))
   ;; Check the registered name
   (is (eq 'gtk:orientable
-          (gobject:symbol-for-gtype "GtkOrientable")))
+          (glib:symbol-for-gtype "GtkOrientable")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkOrientable")
           (g:gtype (cffi:foreign-funcall "gtk_orientable_get_type" :size))))
@@ -36,4 +36,4 @@
     (is (eq :vertical (setf (gtk:orientable-orientation box) :vertical)))
     (is (eq :vertical (gtk:orientable-orientation box)))))
 
-;;; --- 2023-2-27 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkPrintJob"))
   ;; Check the registered name
   (is (eq 'gtk:print-job
-          (gobject:symbol-for-gtype "GtkPrintJob")))
+          (glib:symbol-for-gtype "GtkPrintJob")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkPrintJob")
           (g:gtype (cffi:foreign-funcall "gtk_print_job_get_type" :size))))
@@ -100,4 +100,4 @@
 ;;;     gtk_print_job_get_reverse
 ;;;     gtk_print_job_set_reverse
 
-;;; --- 2023-1-1 ---------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

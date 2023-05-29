@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkCellRendererText"))
   ;; Check the registered name
   (is (eq 'gtk:cell-renderer-text
-          (gobject:symbol-for-gtype "GtkCellRendererText")))
+          (glib:symbol-for-gtype "GtkCellRendererText")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkCellRendererText")
           (g:gtype (cffi:foreign-funcall "gtk_cell_renderer_text_get_type"
@@ -214,4 +214,4 @@
 
 ;;;     gtk_cell_renderer_text_set_fixed_height_from_font
 
-;;; --- 2023-2-22 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkCellAreaBox"))
   ;; Check the registered name
   (is (eq 'gtk:cell-area-box
-          (gobject:symbol-for-gtype "GtkCellAreaBox")))
+          (glib:symbol-for-gtype "GtkCellAreaBox")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkCellAreaBox")
           (g:gtype (cffi:foreign-funcall "gtk_cell_area_box_get_type" :size))))
@@ -59,4 +59,4 @@
 ;;;     gtk_cell_area_box_get_spacing                      Accessor
 ;;;     gtk_cell_area_box_set_spacing                      Accessor
 
-;;; --- 2023-2-20 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

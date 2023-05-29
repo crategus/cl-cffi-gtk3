@@ -15,7 +15,7 @@
           (g:gtype (cffi:foreign-funcall "gtk_window_type_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:window-type
-          (gobject:symbol-for-gtype "GtkWindowType")))
+          (glib:symbol-for-gtype "GtkWindowType")))
   ;; Check the names
   (is (equal '("GTK_WINDOW_TOPLEVEL" "GTK_WINDOW_POPUP")
              (list-enum-item-name "GtkWindowType")))
@@ -44,7 +44,7 @@
           (g:gtype (cffi:foreign-funcall "gtk_window_position_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:window-position
-          (gobject:symbol-for-gtype "GtkWindowPosition")))
+          (glib:symbol-for-gtype "GtkWindowPosition")))
   ;; Check the names
   (is (equal '("GTK_WIN_POS_NONE" "GTK_WIN_POS_CENTER" "GTK_WIN_POS_MOUSE"
                "GTK_WIN_POS_CENTER_ALWAYS" "GTK_WIN_POS_CENTER_ON_PARENT")
@@ -74,7 +74,7 @@
   (is (g:type-is-object "GtkWindow"))
   ;; Check the registered name
   (is (eq 'gtk:window
-          (gobject:symbol-for-gtype "GtkWindow")))
+          (glib:symbol-for-gtype "GtkWindow")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkWindow")
           (g:gtype (cffi:foreign-funcall "gtk_window_get_type" :size))))
@@ -454,4 +454,4 @@
 ;;;     gtk_window_get_titlebar
 ;;;     gtk_window_set_interactive_debugging
 
-;;; --- 2023-3-13 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

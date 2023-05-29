@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkEventBox"))
   ;; Check the registered name
   (is (eq 'gtk:event-box
-          (gobject:symbol-for-gtype "GtkEventBox")))
+          (glib:symbol-for-gtype "GtkEventBox")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkEventBox")
           (g:gtype (cffi:foreign-funcall "gtk_event_box_get_type" :size))))
@@ -62,4 +62,4 @@
 (test event-box-new
   (is (typep (gtk:event-box-new) 'gtk:event-box)))
 
-;;; --- 2023-3-4 ---------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

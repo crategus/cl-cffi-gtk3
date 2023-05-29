@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkCellRendererSpinner"))
   ;; Check the registered name
   (is (eq 'gtk:cell-renderer-spinner
-          (gobject:symbol-for-gtype "GtkCellRendererSpinner")))
+          (glib:symbol-for-gtype "GtkCellRendererSpinner")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkCellRendererSpinner")
           (g:gtype (cffi:foreign-funcall "gtk_cell_renderer_spinner_get_type"
@@ -60,4 +60,4 @@
 (test cell-renderer-spinner-new
   (is (typep (gtk:cell-renderer-spinner-new) 'gtk:cell-renderer-spinner)))
 
-;;; --- 2023-2-22 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

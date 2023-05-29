@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkNativeDialog"))
   ;; Check the registered name
   (is (eq 'gtk:native-dialog
-          (gobject:symbol-for-gtype "GtkNativeDialog")))
+          (glib:symbol-for-gtype "GtkNativeDialog")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkNativeDialog")
           (g:gtype (cffi:foreign-funcall "gtk_native_dialog_get_type" :size))))
@@ -69,4 +69,4 @@
 ;;;     gtk_native_dialog_get_transient_for
 ;;;     gtk_native_dialog_run
 
-;;; --- 2023-3-21 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

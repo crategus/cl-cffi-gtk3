@@ -15,7 +15,7 @@
           (g:gtype (cffi:foreign-funcall "gtk_policy_type_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:policy-type
-          (gobject:symbol-for-gtype "GtkPolicyType")))
+          (glib:symbol-for-gtype "GtkPolicyType")))
   ;; Check the names
   (is (equal '("GTK_POLICY_ALWAYS" "GTK_POLICY_AUTOMATIC" "GTK_POLICY_NEVER"
                "GTK_POLICY_EXTERNAL")
@@ -47,7 +47,7 @@
           (g:gtype (cffi:foreign-funcall "gtk_corner_type_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:policy-type
-          (gobject:symbol-for-gtype "GtkPolicyType")))
+          (glib:symbol-for-gtype "GtkPolicyType")))
   ;; Check the names
   (is (equal '("GTK_CORNER_TOP_LEFT" "GTK_CORNER_BOTTOM_LEFT"
                "GTK_CORNER_TOP_RIGHT" "GTK_CORNER_BOTTOM_RIGHT")
@@ -76,7 +76,7 @@
   (is (g:type-is-object "GtkScrolledWindow"))
   ;; Check the registered name
   (is (eq 'gtk:scrolled-window
-          (gobject:symbol-for-gtype "GtkScrolledWindow")))
+          (glib:symbol-for-gtype "GtkScrolledWindow")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkScrolledWindow")
           (g:gtype (cffi:foreign-funcall "gtk_scrolled_window_get_type" :size))))
@@ -267,4 +267,4 @@
     (is-false (setf (gtk:scrolled-window-capture-button-press window) nil))
     (is-false (gtk:scrolled-window-capture-button-press window))))
 
-;;; 2022-12-26
+;;; --- 2023-5-29 --------------------------------------------------------------

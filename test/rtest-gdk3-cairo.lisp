@@ -23,7 +23,7 @@
                                                   '(g:boxed gdk:cairo-surface)))
                  'gdk:cairo-surface))
       (is (cffi:pointer-eq surface
-                           (gobject::boxed-opaque-pointer cairosurface))))))
+                           (glib::boxed-opaque-pointer cairosurface))))))
 
 ;;;     CairoContext
 
@@ -43,7 +43,7 @@
                                                   '(g:boxed gdk:cairo-context)))
                  'gdk:cairo-context))
       (is (cffi:pointer-eq context
-                           (gobject::boxed-opaque-pointer cairocontext))))))
+                           (glib::boxed-opaque-pointer cairocontext))))))
 
 ;;; --- Functions --------------------------------------------------------------
 
@@ -183,4 +183,4 @@
 ;;;     gdk_cairo_surface_create_from_pixbuf
 ;;;     gdk_cairo_draw_from_gl
 
-;;; --- 2023-3-3 ---------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

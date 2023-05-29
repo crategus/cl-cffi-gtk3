@@ -14,7 +14,7 @@
   (is (g:type-is-object "GtkTextTagTable"))
   ;; Check the registered name
   (is (eq 'gtk:text-tag-table
-          (gobject:symbol-for-gtype "GtkTextTagTable")))
+          (glib:symbol-for-gtype "GtkTextTagTable")))
   ;; Check the type initializer
   (is (eq (g:gtype"GtkTextTagTable")
           (g:gtype (cffi:foreign-funcall "gtk_text_tag_table_get_type" :size))))
@@ -148,4 +148,4 @@
     (setf (gtk:text-tag-font (gtk:text-tag-table-lookup table "font")) "italic")
     (is (equal '("changed" "removed" "added" "added") result))))
 
-;;; --- 2022-12-27 -------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

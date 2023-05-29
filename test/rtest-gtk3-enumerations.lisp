@@ -16,7 +16,7 @@
                                          :size))))
   ;; Check the registered name
   (is (eq 'gtk:baseline-position
-          (gobject:symbol-for-gtype "GtkBaselinePosition")))
+          (glib:symbol-for-gtype "GtkBaselinePosition")))
   ;; Check the names
   (is (equal '("GTK_RELIEF_NORMAL" "GTK_RELIEF_HALF" "GTK_RELIEF_NONE")
              (list-enum-item-name "GtkReliefStyle")))
@@ -46,7 +46,7 @@
           (g:gtype (cffi:foreign-funcall "gtk_delete_type_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:delete-type
-          (gobject:symbol-for-gtype "GtkDeleteType")))
+          (glib:symbol-for-gtype "GtkDeleteType")))
   ;; Check the names
   (is (equal '("GTK_DELETE_CHARS" "GTK_DELETE_WORD_ENDS" "GTK_DELETE_WORDS"
                "GTK_DELETE_DISPLAY_LINES" "GTK_DELETE_DISPLAY_LINE_ENDS"
@@ -85,7 +85,7 @@
           (g:gtype (cffi:foreign-funcall "gtk_direction_type_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:direction-type
-          (gobject:symbol-for-gtype "GtkDirectionType")))
+          (glib:symbol-for-gtype "GtkDirectionType")))
   ;; Check the names
   (is (equal '("GTK_DIR_TAB_FORWARD" "GTK_DIR_TAB_BACKWARD" "GTK_DIR_UP"
                "GTK_DIR_DOWN" "GTK_DIR_LEFT" "GTK_DIR_RIGHT")
@@ -119,7 +119,7 @@
           (g:gtype (cffi:foreign-funcall "gtk_justification_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:justification
-          (gobject:symbol-for-gtype "GtkJustification")))
+          (glib:symbol-for-gtype "GtkJustification")))
   ;; Check the names
   (is (equal '("GTK_JUSTIFY_LEFT" "GTK_JUSTIFY_RIGHT" "GTK_JUSTIFY_CENTER"
                "GTK_JUSTIFY_FILL")
@@ -151,12 +151,12 @@
           (g:gtype (cffi:foreign-funcall "gtk_movement_step_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:movement-step
-          (gobject:symbol-for-gtype "GtkMovementStep")))
+          (glib:symbol-for-gtype "GtkMovementStep")))
   ;; Check the names
   (is (equal '("GTK_MOVEMENT_LOGICAL_POSITIONS" "GTK_MOVEMENT_VISUAL_POSITIONS"
                "GTK_MOVEMENT_WORDS" "GTK_MOVEMENT_DISPLAY_LINES"
                "GTK_MOVEMENT_DISPLAY_LINE_ENDS" "GTK_MOVEMENT_PARAGRAPHS"
-               "GTK_MOVEMENT_PARAGRAPH_ENDS" "GTK_MOVEMENT_PAGES" 
+               "GTK_MOVEMENT_PARAGRAPH_ENDS" "GTK_MOVEMENT_PAGES"
                "GTK_MOVEMENT_BUFFER_ENDS" "GTK_MOVEMENT_HORIZONTAL_PAGES")
              (list-enum-item-name "GtkMovementStep")))
   ;; Check the values
@@ -164,13 +164,13 @@
              (list-enum-item-value "GtkMovementStep")))
   ;; Check the nick names
   (is (equal '("logical-positions" "visual-positions" "words" "display-lines"
-               "display-line-ends" "paragraphs" "paragraph-ends" "pages" 
+               "display-line-ends" "paragraphs" "paragraph-ends" "pages"
                "buffer-ends" "horizontal-pages")
              (list-enum-item-nick "GtkMovementStep")))
   ;; Check the enum definition
   (is (equal '(DEFINE-G-ENUM "GtkMovementStep"
                              GTK-MOVEMENT-STEP
-                             (:EXPORT T 
+                             (:EXPORT T
                               :TYPE-INITIALIZER "gtk_movement_step_get_type")
                              (:LOGICAL-POSITIONS 0)
                              (:VISUAL-POSITIONS 1)
@@ -194,7 +194,7 @@
           (g:gtype (cffi:foreign-funcall "gtk_orientation_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:orientation
-          (gobject:symbol-for-gtype "GtkOrientation")))
+          (glib:symbol-for-gtype "GtkOrientation")))
   ;; Check the names
   (is (equal '("GTK_ORIENTATION_HORIZONTAL" "GTK_ORIENTATION_VERTICAL")
              (list-enum-item-name "GtkOrientation")))
@@ -207,7 +207,7 @@
   ;; Check the enum definition
   (is (equal '(DEFINE-G-ENUM "GtkOrientation"
                              GTK-ORIENTATION
-                             (:EXPORT T 
+                             (:EXPORT T
                               :TYPE-INITIALIZER "gtk_orientation_get_type")
                              (:HORIZONTAL 0)
                              (:VERTICAL 1))
@@ -223,7 +223,7 @@
           (g:gtype (cffi:foreign-funcall "gtk_pack_type_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:pack-type
-          (gobject:symbol-for-gtype "GtkPackType")))
+          (glib:symbol-for-gtype "GtkPackType")))
   ;; Check the names
   (is (equal '("GTK_PACK_START" "GTK_PACK_END")
              (list-enum-item-name "GtkPackType")))
@@ -236,7 +236,7 @@
   ;; Check the enum definition
   (is (equal '(DEFINE-G-ENUM "GtkPackType"
                              GTK-PACK-TYPE
-                             (:EXPORT T 
+                             (:EXPORT T
                               :TYPE-INITIALIZER "gtk_pack_type_get_type")
                              (:START 0)
                              (:END 1))
@@ -252,7 +252,7 @@
           (g:gtype (cffi:foreign-funcall "gtk_position_type_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:position-type
-          (gobject:symbol-for-gtype "GtkPositionType")))
+          (glib:symbol-for-gtype "GtkPositionType")))
   ;; Check the names
   (is (equal '("GTK_POS_LEFT" "GTK_POS_RIGHT" "GTK_POS_TOP" "GTK_POS_BOTTOM")
              (list-enum-item-name "GtkPositionType")))
@@ -265,7 +265,7 @@
   ;; Check the enum definition
   (is (equal '(DEFINE-G-ENUM "GtkPositionType"
                              GTK-POSITION-TYPE
-                             (:EXPORT T 
+                             (:EXPORT T
                               :TYPE-INITIALIZER "gtk_position_type_get_type")
                              (:LEFT 0)
                              (:RIGHT 1)
@@ -283,7 +283,7 @@
           (g:gtype (cffi:foreign-funcall "gtk_relief_style_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:relief-style
-          (gobject:symbol-for-gtype "GtkReliefStyle")))
+          (glib:symbol-for-gtype "GtkReliefStyle")))
   ;; Check the names
   (is (equal '("GTK_RELIEF_NORMAL" "GTK_RELIEF_HALF" "GTK_RELIEF_NONE")
              (list-enum-item-name "GtkReliefStyle")))
@@ -317,28 +317,28 @@
           (g:gtype (cffi:foreign-funcall "gtk_scroll_type_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:scroll-type
-          (gobject:symbol-for-gtype "GtkScrollType")))
+          (glib:symbol-for-gtype "GtkScrollType")))
   ;; Check the names
   (is (equal '("GTK_SCROLL_NONE" "GTK_SCROLL_JUMP" "GTK_SCROLL_STEP_BACKWARD"
-               "GTK_SCROLL_STEP_FORWARD" "GTK_SCROLL_PAGE_BACKWARD" 
-               "GTK_SCROLL_PAGE_FORWARD" "GTK_SCROLL_STEP_UP" 
+               "GTK_SCROLL_STEP_FORWARD" "GTK_SCROLL_PAGE_BACKWARD"
+               "GTK_SCROLL_PAGE_FORWARD" "GTK_SCROLL_STEP_UP"
                "GTK_SCROLL_STEP_DOWN" "GTK_SCROLL_PAGE_UP"
-               "GTK_SCROLL_PAGE_DOWN" "GTK_SCROLL_STEP_LEFT" 
-               "GTK_SCROLL_STEP_RIGHT" "GTK_SCROLL_PAGE_LEFT" 
+               "GTK_SCROLL_PAGE_DOWN" "GTK_SCROLL_STEP_LEFT"
+               "GTK_SCROLL_STEP_RIGHT" "GTK_SCROLL_PAGE_LEFT"
                "GTK_SCROLL_PAGE_RIGHT" "GTK_SCROLL_START" "GTK_SCROLL_END")
              (list-enum-item-name "GtkScrollType")))
   ;; Check the values
   (is (equal '(0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15)
              (list-enum-item-value "GtkScrollType")))
   ;; Check the nick names
-  (is (equal '("none" "jump" "step-backward" "step-forward" "page-backward" 
-               "page-forward" "step-up" "step-down" "page-up" "page-down" 
+  (is (equal '("none" "jump" "step-backward" "step-forward" "page-backward"
+               "page-forward" "step-up" "step-down" "page-up" "page-down"
                "step-left" "step-right" "page-left" "page-right" "start" "end")
              (list-enum-item-nick "GtkScrollType")))
   ;; Check the enum definition
   (is (equal '(DEFINE-G-ENUM "GtkScrollType"
                              GTK-SCROLL-TYPE
-                             (:EXPORT T 
+                             (:EXPORT T
                               :TYPE-INITIALIZER "gtk_scroll_type_get_type")
                              (:NONE 0)
                              (:JUMP 1)
@@ -368,9 +368,9 @@
           (g:gtype (cffi:foreign-funcall "gtk_selection_mode_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:selection-mode
-          (gobject:symbol-for-gtype "GtkSelectionMode")))
+          (glib:symbol-for-gtype "GtkSelectionMode")))
   ;; Check the names
-  (is (equal '("GTK_SELECTION_NONE" "GTK_SELECTION_SINGLE" 
+  (is (equal '("GTK_SELECTION_NONE" "GTK_SELECTION_SINGLE"
                "GTK_SELECTION_BROWSE" "GTK_SELECTION_MULTIPLE")
              (list-enum-item-name "GtkSelectionMode")))
   ;; Check the values
@@ -382,7 +382,7 @@
   ;; Check the enum definition
   (is (equal '(DEFINE-G-ENUM "GtkSelectionMode"
                              GTK-SELECTION-MODE
-                             (:EXPORT T 
+                             (:EXPORT T
                               :TYPE-INITIALIZER "gtk_selection_mode_get_type")
                              (:NONE 0)
                              (:SINGLE 1)
@@ -400,9 +400,9 @@
           (g:gtype (cffi:foreign-funcall "gtk_shadow_type_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:shadow-type
-          (gobject:symbol-for-gtype "GtkShadowType")))
+          (glib:symbol-for-gtype "GtkShadowType")))
   ;; Check the names
-  (is (equal '("GTK_SHADOW_NONE" "GTK_SHADOW_IN" "GTK_SHADOW_OUT" 
+  (is (equal '("GTK_SHADOW_NONE" "GTK_SHADOW_IN" "GTK_SHADOW_OUT"
                "GTK_SHADOW_ETCHED_IN" "GTK_SHADOW_ETCHED_OUT")
              (list-enum-item-name "GtkShadowType")))
   ;; Check the values
@@ -414,7 +414,7 @@
   ;; Check the enum definition
   (is (equal '(DEFINE-G-ENUM "GtkShadowType"
                              GTK-SHADOW-TYPE
-                             (:EXPORT T 
+                             (:EXPORT T
                               :TYPE-INITIALIZER "gtk_shadow_type_get_type")
                              (:NONE 0)
                              (:IN 1)
@@ -430,31 +430,31 @@
   (is (g:type-is-flags "GtkStateFlags"))
   ;; Check the registered name
   (is (eq 'gtk:state-flags
-          (gobject:symbol-for-gtype "GtkStateFlags")))
+          (glib:symbol-for-gtype "GtkStateFlags")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkStateFlags")
           (g:gtype (cffi:foreign-funcall "gtk_state_flags_get_type" :size))))
   ;; Check the names
-  (is (equal '("GTK_STATE_FLAG_NORMAL" "GTK_STATE_FLAG_ACTIVE" 
-               "GTK_STATE_FLAG_PRELIGHT" "GTK_STATE_FLAG_SELECTED" 
-               "GTK_STATE_FLAG_INSENSITIVE" "GTK_STATE_FLAG_INCONSISTENT" 
-               "GTK_STATE_FLAG_FOCUSED" "GTK_STATE_FLAG_BACKDROP" 
+  (is (equal '("GTK_STATE_FLAG_NORMAL" "GTK_STATE_FLAG_ACTIVE"
+               "GTK_STATE_FLAG_PRELIGHT" "GTK_STATE_FLAG_SELECTED"
+               "GTK_STATE_FLAG_INSENSITIVE" "GTK_STATE_FLAG_INCONSISTENT"
+               "GTK_STATE_FLAG_FOCUSED" "GTK_STATE_FLAG_BACKDROP"
                "GTK_STATE_FLAG_DIR_LTR" "GTK_STATE_FLAG_DIR_RTL"
-               "GTK_STATE_FLAG_LINK" "GTK_STATE_FLAG_VISITED" 
+               "GTK_STATE_FLAG_LINK" "GTK_STATE_FLAG_VISITED"
                "GTK_STATE_FLAG_CHECKED" "GTK_STATE_FLAG_DROP_ACTIVE")
              (list-flags-item-name "GtkStateFlags")))
   ;; Check the values
   (is (equal '(0 1 2 4 8 16 32 64 128 256 512 1024 2048 4096)
              (list-flags-item-value "GtkStateFlags")))
   ;; Check the nick names
-  (is (equal '("normal" "active" "prelight" "selected" "insensitive" 
-               "inconsistent" "focused" "backdrop" "dir-ltr" "dir-rtl" "link" 
+  (is (equal '("normal" "active" "prelight" "selected" "insensitive"
+               "inconsistent" "focused" "backdrop" "dir-ltr" "dir-rtl" "link"
                "visited" "checked" "drop-active")
              (list-flags-item-nick "GtkStateFlags")))
   ;; Check the flags definition
   (is (equal '(DEFINE-G-FLAGS "GtkStateFlags"
                               GTK-STATE-FLAGS
-                              (:EXPORT T 
+                              (:EXPORT T
                                :TYPE-INITIALIZER "gtk_state_flags_get_type")
                               (:NORMAL 0)
                               (:ACTIVE 1)
@@ -482,7 +482,7 @@
           (g:gtype (cffi:foreign-funcall "gtk_toolbar_style_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:toolbar-style
-          (gobject:symbol-for-gtype "GtkToolbarStyle")))
+          (glib:symbol-for-gtype "GtkToolbarStyle")))
   ;; Check the names
   (is (equal '("GTK_TOOLBAR_ICONS" "GTK_TOOLBAR_TEXT" "GTK_TOOLBAR_BOTH"
                "GTK_TOOLBAR_BOTH_HORIZ")
@@ -496,7 +496,7 @@
   ;; Check the enum definition
   (is (equal '(DEFINE-G-ENUM "GtkToolbarStyle"
                              GTK-TOOLBAR-STYLE
-                             (:EXPORT T 
+                             (:EXPORT T
                               :TYPE-INITIALIZER "gtk_toolbar_style_get_type")
                              (:ICONS 0)
                              (:TEXT 1)
@@ -514,7 +514,7 @@
           (g:gtype (cffi:foreign-funcall "gtk_sort_type_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:sort-type
-          (gobject:symbol-for-gtype "GtkSortType")))
+          (glib:symbol-for-gtype "GtkSortType")))
   ;; Check the names
   (is (equal '("GTK_SORT_ASCENDING" "GTK_SORT_DESCENDING")
              (list-enum-item-name "GtkSortType")))
@@ -527,7 +527,7 @@
   ;; Check the enum definition
   (is (equal '(DEFINE-G-ENUM "GtkSortType"
                              GTK-SORT-TYPE
-                             (:EXPORT T 
+                             (:EXPORT T
                               :TYPE-INITIALIZER "gtk_sort_type_get_type")
                              (:ASCENDING 0)
                              (:DESCENDING 1))
@@ -543,7 +543,7 @@
           (g:gtype (cffi:foreign-funcall "gtk_text_direction_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:text-direction
-          (gobject:symbol-for-gtype "GtkTextDirection")))
+          (glib:symbol-for-gtype "GtkTextDirection")))
   ;; Check the names
   (is (equal '("GTK_TEXT_DIR_NONE" "GTK_TEXT_DIR_LTR" "GTK_TEXT_DIR_RTL")
              (list-enum-item-name "GtkTextDirection")))
@@ -556,7 +556,7 @@
   ;; Check the enum definition
   (is (equal '(DEFINE-G-ENUM "GtkTextDirection"
                              GTK-TEXT-DIRECTION
-                             (:EXPORT T 
+                             (:EXPORT T
                               :TYPE-INITIALIZER "gtk_text_direction_get_type")
                              (:NONE 0)
                              (:LTR 1)
@@ -573,7 +573,7 @@
           (g:gtype (cffi:foreign-funcall "gtk_expander_style_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:expander-style
-          (gobject:symbol-for-gtype "GtkExpanderStyle")))
+          (glib:symbol-for-gtype "GtkExpanderStyle")))
   ;; Check the names
   (is (equal '("GTK_EXPANDER_COLLAPSED" "GTK_EXPANDER_SEMI_COLLAPSED"
                "GTK_EXPANDER_SEMI_EXPANDED" "GTK_EXPANDER_EXPANDED")
@@ -587,7 +587,7 @@
   ;; Check the enum definition
   (is (equal '(DEFINE-G-ENUM "GtkExpanderStyle"
                              GTK-EXPANDER-STYLE
-                             (:EXPORT T 
+                             (:EXPORT T
                               :TYPE-INITIALIZER "gtk_expander_style_get_type")
                              (:COLLAPSED 0)
                              (:SEMI-COLLAPSED 1)
@@ -605,23 +605,23 @@
           (g:gtype (cffi:foreign-funcall "gtk_state_type_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:state-type
-          (gobject:symbol-for-gtype "GtkStateType")))
+          (glib:symbol-for-gtype "GtkStateType")))
   ;; Check the names
   (is (equal '("GTK_STATE_NORMAL" "GTK_STATE_ACTIVE" "GTK_STATE_PRELIGHT"
-               "GTK_STATE_SELECTED" "GTK_STATE_INSENSITIVE" 
+               "GTK_STATE_SELECTED" "GTK_STATE_INSENSITIVE"
                "GTK_STATE_INCONSISTENT" "GTK_STATE_FOCUSED")
              (list-enum-item-name "GtkStateType")))
   ;; Check the values
   (is (equal '(0 1 2 3 4 5 6)
              (list-enum-item-value "GtkStateType")))
   ;; Check the nick names
-  (is (equal '("normal" "active" "prelight" "selected" "insensitive" 
+  (is (equal '("normal" "active" "prelight" "selected" "insensitive"
                "inconsistent" "focused")
              (list-enum-item-nick "GtkStateType")))
   ;; Check the enum definition
   (is (equal '(DEFINE-G-ENUM "GtkStateType"
                              GTK-STATE-TYPE
-                             (:EXPORT T 
+                             (:EXPORT T
                               :TYPE-INITIALIZER "gtk_state_type_get_type")
                              (:NORMAL 0)
                              (:ACTIVE 1)
@@ -632,4 +632,4 @@
                              (:FOCUSED 6))
              (gobject:get-g-type-definition "GtkStateType"))))
 
-;;; --- 2023-3-6 ---------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

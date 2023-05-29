@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkNumerableIcon"))
   ;; Check the registered name
   (is (eq 'gtk:numerable-icon
-          (gobject:symbol-for-gtype "GtkNumerableIcon")))
+          (glib:symbol-for-gtype "GtkNumerableIcon")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkNumerableIcon")
           (g:gtype (cffi:foreign-funcall "gtk_numerable_icon_get_type" :size))))
@@ -89,4 +89,4 @@
     (is (typep (gtk:numerable-icon-new-with-style-context icon context)
                'gtk:numerable-icon))))
 
-;;; 2022-12-21
+;;; --- 2023-5-29 --------------------------------------------------------------

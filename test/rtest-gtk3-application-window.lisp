@@ -10,7 +10,7 @@
   (is (g:type-is-object "GtkApplicationWindow"))
   ;; Check the registered name
   (is (eq 'gtk:application-window
-          (gobject:symbol-for-gtype "GtkApplicationWindow")))
+          (glib:symbol-for-gtype "GtkApplicationWindow")))
   ;; Check the parent
   (is (eq (g:gtype "GtkWindow") (g:type-parent "GtkApplicationWindow")))
   ;; Check the children
@@ -87,4 +87,4 @@
     (is (typep (gtk:application-window-help-overlay window)
                'gtk:shortcuts-window))))
 
-;;; --- 2023-1-1 ---------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

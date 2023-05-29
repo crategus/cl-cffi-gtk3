@@ -12,7 +12,7 @@
   (is (g:type-is-flags "GtkDialogFlags"))
   ;; Check the registered name
   (is (eq 'gtk:dialog-flags
-          (gobject:symbol-for-gtype "GtkDialogFlags")))
+          (glib:symbol-for-gtype "GtkDialogFlags")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkDialogFlags")
           (g:gtype (cffi:foreign-funcall "gtk_dialog_flags_get_type" :size))))
@@ -46,7 +46,7 @@
           (g:gtype (cffi:foreign-funcall "gtk_response_type_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:response-type
-          (gobject:symbol-for-gtype "GtkResponseType")))
+          (glib:symbol-for-gtype "GtkResponseType")))
   ;; Check the names
   (is (equal '("GTK_RESPONSE_NONE" "GTK_RESPONSE_REJECT" "GTK_RESPONSE_ACCEPT"
                "GTK_RESPONSE_DELETE_EVENT" "GTK_RESPONSE_OK"
@@ -85,7 +85,7 @@
   (is (g:type-is-object "GtkDialog"))
   ;; Check the registered name
   (is (eq 'gtk:dialog
-          (gobject:symbol-for-gtype "GtkDialog")))
+          (glib:symbol-for-gtype "GtkDialog")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkDialog")
           (g:gtype (cffi:foreign-funcall "gtk_dialog_get_type" :size))))
@@ -290,4 +290,4 @@
 ;;;     gtk_dialog_set_alternative_button_order
 ;;;     gtk_dialog_set_alternative_button_order_from_array
 
-;;; --- 2023-3-9 ---------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

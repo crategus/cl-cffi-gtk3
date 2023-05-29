@@ -15,7 +15,7 @@
           (g:gtype (cffi:foreign-funcall "gtk_image_type_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:image-type
-          (gobject:symbol-for-gtype "GtkImageType")))
+          (glib:symbol-for-gtype "GtkImageType")))
   ;; Check the names
   (is (equal '("GTK_IMAGE_EMPTY" "GTK_IMAGE_PIXBUF" "GTK_IMAGE_STOCK"
                "GTK_IMAGE_ICON_SET" "GTK_IMAGE_ANIMATION" "GTK_IMAGE_ICON_NAME"
@@ -50,7 +50,7 @@
   (is (g:type-is-object "GtkImage"))
   ;; Check the registered name
   (is (eq 'gtk:image
-          (gobject:symbol-for-gtype "GtkImage")))
+          (glib:symbol-for-gtype "GtkImage")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkImage")
           (g:gtype (cffi:foreign-funcall "gtk_image_get_type" :size))))
@@ -549,4 +549,4 @@
 (test image-new
   (is (typep (gtk:image-new) 'gtk:image)))
 
-;;; --- 2023-1-29 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

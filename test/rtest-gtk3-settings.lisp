@@ -17,7 +17,7 @@
           (g:gtype (cffi:foreign-funcall "gtk_im_preedit_style_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:im-preedit-style
-          (gobject:symbol-for-gtype "GtkIMPreeditStyle")))
+          (glib:symbol-for-gtype "GtkIMPreeditStyle")))
   ;; Check the names
   (is (equal '("GTK_IM_PREEDIT_NOTHING" "GTK_IM_PREEDIT_CALLBACK"
                "GTK_IM_PREEDIT_NONE")
@@ -46,7 +46,7 @@
           (g:gtype (cffi:foreign-funcall "gtk_im_status_style_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:im-status-style
-          (gobject:symbol-for-gtype "GtkIMStatusStyle")))
+          (glib:symbol-for-gtype "GtkIMStatusStyle")))
   ;; Check the names
   (is (equal '("GTK_IM_STATUS_NOTHING" "GTK_IM_STATUS_CALLBACK"
                "GTK_IM_STATUS_NONE")
@@ -72,7 +72,7 @@
   (is (g:type-is-object "GtkSettings"))
   ;; Check the registered name
   (is (eq 'gtk:settings
-          (gobject:symbol-for-gtype "GtkSettings")))
+          (glib:symbol-for-gtype "GtkSettings")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkSettings")
           (g:gtype (cffi:foreign-funcall "gtk_settings_get_type" :size))))
@@ -462,5 +462,4 @@
 ;;;     gtk_settings_set_double_property                   deprecated
 ;;;     gtk_settings_reset_property ()
 
-
-;;; --- 2023-3-26 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

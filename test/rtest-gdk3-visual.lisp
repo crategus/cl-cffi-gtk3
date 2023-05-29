@@ -15,7 +15,7 @@
           (g:gtype (cffi:foreign-funcall "gdk_visual_type_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gdk:visual-type
-          (gobject:symbol-for-gtype "GdkVisualType")))
+          (glib:symbol-for-gtype "GdkVisualType")))
   ;; Check the names
   (is (equal '("GDK_VISUAL_STATIC_GRAY" "GDK_VISUAL_GRAYSCALE"
                "GDK_VISUAL_STATIC_COLOR" "GDK_VISUAL_PSEUDO_COLOR"
@@ -54,7 +54,7 @@
           (g:gtype (cffi:foreign-funcall "gdk_byte_order_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gdk:byte-order
-          (gobject:symbol-for-gtype "GdkByteOrder")))
+          (glib:symbol-for-gtype "GdkByteOrder")))
   ;; Check the names
   (is (equal '("GDK_LSB_FIRST" "GDK_MSB_FIRST")
              (mapcar #'gobject:enum-item-name
@@ -83,7 +83,7 @@
   (is (g:type-is-object "GdkVisual"))
   ;; Check the registered name
   (is (eq 'gdk:visual
-          (gobject:symbol-for-gtype "GdkVisual")))
+          (glib:symbol-for-gtype "GdkVisual")))
   ;; Check the type initializer
   (is (eq (g:gtype "GdkVisual")
           (g:gtype (cffi:foreign-funcall "gdk_visual_get_type" :size))))
@@ -260,4 +260,4 @@
 (test visual-screen
   (is (eq 'gdk:screen (type-of (gdk:visual-screen (gdk:visual-system))))))
 
-;;; --- 2023-3-3 ---------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

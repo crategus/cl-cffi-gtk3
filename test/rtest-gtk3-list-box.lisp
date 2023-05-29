@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkListBox"))
   ;; Check the registered name
   (is (eq 'gtk:list-box
-          (gobject:symbol-for-gtype "GtkListBox")))
+          (glib:symbol-for-gtype "GtkListBox")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkListBox")
           (g:gtype (cffi:foreign-funcall "gtk_list_box_get_type" :size))))
@@ -52,7 +52,7 @@
   (is (g:type-is-object "GtkListBoxRow"))
   ;; Check the registered name
   (is (eq 'gtk:list-box-row
-          (gobject:symbol-for-gtype "GtkListBoxRow")))
+          (glib:symbol-for-gtype "GtkListBoxRow")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkListBoxRow")
           (g:gtype (cffi:foreign-funcall "gtk_list_box_row_get_type" :size))))
@@ -310,4 +310,4 @@
 ;;;     gtk_list_box_row_set_header
 ;;;     gtk_list_box_row_get_index
 
-;;; --- 2023-4-29 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

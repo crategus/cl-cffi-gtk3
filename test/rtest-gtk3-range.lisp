@@ -15,9 +15,9 @@
           (g:gtype (cffi:foreign-funcall "gtk_sensitivity_type_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:sensitivity-type
-          (gobject:symbol-for-gtype "GtkSensitivityType")))
+          (glib:symbol-for-gtype "GtkSensitivityType")))
   ;; Check the names
-  (is (equal '("GTK_SENSITIVITY_AUTO" "GTK_SENSITIVITY_ON" 
+  (is (equal '("GTK_SENSITIVITY_AUTO" "GTK_SENSITIVITY_ON"
                "GTK_SENSITIVITY_OFF")
              (list-enum-item-name "GtkSensitivityType")))
   ;; Check the values
@@ -29,7 +29,7 @@
   ;; Check the enum definition
   (is (equal '(DEFINE-G-ENUM "GtkSensitivityType"
                              GTK-SENSITIVITY-TYPE
-                             (:EXPORT T 
+                             (:EXPORT T
                               :TYPE-INITIALIZER "gtk_sensitivity_type_get_type")
                              (:AUTO 0)
                              (:ON 1)
@@ -43,7 +43,7 @@
   (is (g:type-is-object "GtkRange"))
   ;; Check the registered name
   (is (eq 'gtk:range
-          (gobject:symbol-for-gtype "GtkRange")))
+          (glib:symbol-for-gtype "GtkRange")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkRange")
           (g:gtype (cffi:foreign-funcall "gtk_range_get_type" :size))))
@@ -57,13 +57,13 @@
   (is (equal '("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
              (list-interfaces "GtkRange")))
   ;; Check the class properties
-  (is (equal '("adjustment" "fill-level" "inverted" "lower-stepper-sensitivity" 
-               "orientation" "restrict-to-fill-level" "round-digits" 
+  (is (equal '("adjustment" "fill-level" "inverted" "lower-stepper-sensitivity"
+               "orientation" "restrict-to-fill-level" "round-digits"
                "show-fill-level" "upper-stepper-sensitivity")
              (list-properties "GtkRange")))
   ;; Check the style properties
-  (is (equal '("arrow-displacement-x" "arrow-displacement-y" "arrow-scaling" 
-               "slider-width" "stepper-size" "stepper-spacing" "trough-border" 
+  (is (equal '("arrow-displacement-x" "arrow-displacement-y" "arrow-scaling"
+               "slider-width" "stepper-size" "stepper-spacing" "trough-border"
                "trough-under-steppers")
              (list-style-properties "GtkRange")))
   ;; Check the signals
@@ -231,4 +231,4 @@
 ;;;     gtk_range_set_min_slider_size
 ;;;     gtk_range_set_slider_size_fixed
 
-;;; --- 2023-5-25 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

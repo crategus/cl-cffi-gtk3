@@ -16,7 +16,7 @@
   (is (g:type-is-object "GtkRecentManager"))
   ;; Check the registered name
   (is (eq 'gtk:recent-manager
-          (gobject:symbol-for-gtype "GtkRecentManager")))
+          (glib:symbol-for-gtype "GtkRecentManager")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkRecentManager")
           (g:gtype (cffi:foreign-funcall "gtk_recent_manager_get_type" :size))))
@@ -159,4 +159,4 @@
 ;;;     gtk_recent_info_exists
 ;;;     gtk_recent_info_match
 
-;;; --- 2023-5-25 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

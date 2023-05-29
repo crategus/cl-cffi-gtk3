@@ -10,7 +10,7 @@
   (is (g:type-is-object "GtkAccelMap"))
   ;; Check the registered name
   (is (eq 'gtk:accel-map
-          (gobject:symbol-for-gtype "GtkAccelMap")))
+          (glib:symbol-for-gtype "GtkAccelMap")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkAccelMap")
           (g:gtype (cffi:foreign-funcall "gtk_accel_map_get_type" :size))))
@@ -94,4 +94,4 @@
 ;;;   gtk_accel_map_lock_path
 ;;;   gtk_accel_map_unlock_path
 
-;;; --- 2023-1-29 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

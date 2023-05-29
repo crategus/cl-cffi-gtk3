@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkMisc"))
   ;; Check the registered name
   (is (eq 'gtk:misc
-          (gobject:symbol-for-gtype "GtkMisc")))
+          (glib:symbol-for-gtype "GtkMisc")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkMisc")
           (g:gtype (cffi:foreign-funcall "gtk_misc_get_type" :size))))
@@ -65,4 +65,4 @@
     (gtk:misc-set-padding label 3 6)
     (is (equal '(3 6) (multiple-value-list (gtk:misc-get-padding label))))))
 
-;;; --- 2023-2-27 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

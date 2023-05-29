@@ -35,7 +35,7 @@
   (is (g:type-is-interface "GtkBuildable"))
   ;; Check the registered name
   (is (eq 'gtk:buildable
-          (gobject:symbol-for-gtype "GtkBuildable")))
+          (glib:symbol-for-gtype "GtkBuildable")))
   ;; Get the interface properties
   (is (equal '()
              (list-interface-properties "GtkBuildable")))
@@ -96,4 +96,4 @@
     (is (typep (gtk:buildable-internal-child dialog builder "action_area")
                 'gtk:button-box))))
 
-;;; 2022-12-14
+;;; --- 2023-5-29 --------------------------------------------------------------

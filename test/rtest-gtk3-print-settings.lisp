@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkPrintSettings"))
   ;; Check the registered name
   (is (eq 'gtk:print-settings
-          (gobject:symbol-for-gtype "GtkPrintSettings")))
+          (glib:symbol-for-gtype "GtkPrintSettings")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkPrintSettings")
           (g:gtype (cffi:foreign-funcall "gtk_print_settings_get_type" :size))))
@@ -47,7 +47,7 @@
           (g:gtype (cffi:foreign-funcall "gtk_page_orientation_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:page-orientation
-          (gobject:symbol-for-gtype "GtkPageOrientation")))
+          (glib:symbol-for-gtype "GtkPageOrientation")))
   ;; Check the names
   (is (equal '("GTK_PAGE_ORIENTATION_PORTRAIT" "GTK_PAGE_ORIENTATION_LANDSCAPE"
                "GTK_PAGE_ORIENTATION_REVERSE_PORTRAIT"
@@ -80,7 +80,7 @@
           (g:gtype (cffi:foreign-funcall "gtk_print_duplex_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:print-duplex
-          (gobject:symbol-for-gtype "GtkPrintDuplex")))
+          (glib:symbol-for-gtype "GtkPrintDuplex")))
   ;; Check the names
   (is (equal '("GTK_PRINT_DUPLEX_SIMPLEX" "GTK_PRINT_DUPLEX_HORIZONTAL"
                "GTK_PRINT_DUPLEX_VERTICAL")
@@ -111,7 +111,7 @@
           (g:gtype (cffi:foreign-funcall "gtk_print_quality_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:print-quality
-          (gobject:symbol-for-gtype "GtkPrintQuality")))
+          (glib:symbol-for-gtype "GtkPrintQuality")))
   ;; Check the names
   (is (equal '("GTK_PRINT_QUALITY_LOW" "GTK_PRINT_QUALITY_NORMAL"
                "GTK_PRINT_QUALITY_HIGH" "GTK_PRINT_QUALITY_DRAFT")
@@ -143,7 +143,7 @@
           (g:gtype (cffi:foreign-funcall "gtk_number_up_layout_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:number-up-layout
-          (gobject:symbol-for-gtype "GtkNumberUpLayout")))
+          (glib:symbol-for-gtype "GtkNumberUpLayout")))
   ;; Check the names
   (is (equal '("GTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_TOP_TO_BOTTOM"
                "GTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_BOTTOM_TO_TOP"
@@ -185,7 +185,7 @@
           (g:gtype (cffi:foreign-funcall "gtk_print_pages_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:print-pages
-          (gobject:symbol-for-gtype "GtkPrintPages")))
+          (glib:symbol-for-gtype "GtkPrintPages")))
   ;; Check the names
   (is (equal '("GTK_PRINT_PAGES_ALL" "GTK_PRINT_PAGES_CURRENT"
                "GTK_PRINT_PAGES_RANGES" "GTK_PRINT_PAGES_SELECTION")
@@ -219,7 +219,7 @@
           (g:gtype (cffi:foreign-funcall "gtk_page_set_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:page-set
-          (gobject:symbol-for-gtype "GtkPageSet")))
+          (glib:symbol-for-gtype "GtkPageSet")))
   ;; Check the names
   (is (equal '("GTK_PAGE_SET_ALL" "GTK_PAGE_SET_EVEN" "GTK_PAGE_SET_ODD")
              (list-enum-item-name "GtkPageSet")))
@@ -700,4 +700,4 @@ output-file-format : pdf
 )))
       (is (eq 'gtk:print-settings (type-of (gtk:print-settings-new-from-gvariant variant)))))))
 
-;;; --- 2023-1-29 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

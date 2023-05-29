@@ -12,7 +12,7 @@
   (is (g:type-is-interface "GtkTreeDragSource"))
   ;; Check the registered name
   (is (eq 'gtk:tree-drag-source
-          (gobject:symbol-for-gtype "GtkTreeDragSource")))
+          (glib:symbol-for-gtype "GtkTreeDragSource")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkTreeDragSource")
           (g:gtype (cffi:foreign-funcall "gtk_tree_drag_source_get_type" :size))))
@@ -34,7 +34,7 @@
   (is (g:type-is-interface "GtkTreeDragDest"))
   ;; Check the registered name
   (is (eq 'gtk:tree-drag-dest
-          (gobject:symbol-for-gtype "GtkTreeDragDest")))
+          (glib:symbol-for-gtype "GtkTreeDragDest")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkTreeDragDest")
           (g:gtype (cffi:foreign-funcall "gtk_tree_drag_dest_get_type" :size))))
@@ -60,4 +60,4 @@
 ;;;     gtk_tree_set_row_drag_data
 ;;;     gtk_tree_get_row_drag_data
 
-;;; --- 2022-12-27 -------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

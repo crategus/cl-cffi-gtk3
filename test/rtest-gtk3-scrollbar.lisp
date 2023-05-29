@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkScrollbar"))
   ;; Check the registered name
   (is (eq 'gtk:scrollbar
-          (gobject:symbol-for-gtype "GtkScrollbar")))
+          (glib:symbol-for-gtype "GtkScrollbar")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkScrollbar")
           (g:gtype (cffi:foreign-funcall "gtk_scrollbar_get_type" :size))))
@@ -65,4 +65,4 @@
           (type-of (gtk:scrollbar-new :vertical
                                       (make-instance 'gtk:adjustment))))))
 
-;;; --- 2023-3-26 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

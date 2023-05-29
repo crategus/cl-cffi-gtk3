@@ -10,7 +10,7 @@
   (is-true (g:type-is-enum "GtkScrollablePolicy"))
   ;; Check the registered name
   (is (eq 'gtk:scrollable-policy
-          (gobject::symbol-for-gtype "GtkScrollablePolicy")))
+          (glib::symbol-for-gtype "GtkScrollablePolicy")))
   ;; Check the names
   (is (equal '("GTK_SCROLL_MINIMUM" "GTK_SCROLL_NATURAL")
              (mapcar #'gobject:enum-item-name
@@ -38,7 +38,7 @@
   (is-true (g:type-is-interface "GtkScrollable"))
   ;; Check the registered name
   (is (eq 'gtk:scrollable
-          (gobject:symbol-for-gtype "GtkScrollable")))
+          (glib:symbol-for-gtype "GtkScrollable")))
   ;; Get the names of the interface properties.
   (is (equal '("hadjustment" "hscroll-policy" "vadjustment" "vscroll-policy")
              (list-interface-properties "GtkScrollable")))
@@ -69,4 +69,4 @@
   (let ((scrollable (make-instance 'gtk:layout)))
     (is (eq 'gtk:border (type-of (gtk:scrollable-border scrollable))))))
 
-;;; 2022-12-18
+;;; --- 2023-5-29 --------------------------------------------------------------

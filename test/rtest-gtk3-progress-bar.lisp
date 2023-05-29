@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkProgressBar"))
   ;; Check the registered name
   (is (eq 'gtk:progress-bar
-          (gobject:symbol-for-gtype "GtkProgressBar")))
+          (glib:symbol-for-gtype "GtkProgressBar")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkProgressBar")
           (g:gtype (cffi:foreign-funcall "gtk_progress_bar_get_type" :size))))
@@ -104,4 +104,4 @@
 
 ;;;     gtk_progress_bar_pulse
 
-;;; --- 2022-12-27 -------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

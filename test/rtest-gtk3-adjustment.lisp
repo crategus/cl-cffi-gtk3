@@ -10,7 +10,7 @@
   (is (g:type-is-object "GtkAdjustment"))
   ;; Check the registered name
   (is (eq 'gtk:adjustment
-          (gobject:symbol-for-gtype "GtkAdjustment")))
+          (glib:symbol-for-gtype "GtkAdjustment")))
   ;; Check the parent
   (is (eq (g:gtype "GInitiallyUnowned") (g:type-parent "GtkAdjustment")))
   ;; Check the children
@@ -108,7 +108,7 @@
     (is (=   5.0d0 (gtk:adjustment-step-increment adjustment)))
     (is (=  10.5d0 (gtk:adjustment-page-increment adjustment)))
     (is (=  10.5d0 (gtk:adjustment-page-size adjustment)))))
-                                      
+
 ;;;     gtk_adjustment_get_minimum_increment
 
 (test gtk-adjustment-minimum-increment.1
@@ -129,4 +129,4 @@
                                          1.0d0)))   ; page-size
     (is (= 1.0d0 (gtk:adjustment-minimum-increment adjustment)))))
 
-;;; --- 2023-3-14 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

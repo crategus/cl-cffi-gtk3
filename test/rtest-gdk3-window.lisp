@@ -15,7 +15,7 @@
           (g:gtype (cffi:foreign-funcall "gdk_window_type_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:window-type
-          (gobject:symbol-for-gtype "GtkWindowType")))
+          (glib:symbol-for-gtype "GtkWindowType")))
   ;; Check the names
   (is (equal '("GDK_WINDOW_ROOT" "GDK_WINDOW_TOPLEVEL" "GDK_WINDOW_CHILD"
                "GDK_WINDOW_TEMP" "GDK_WINDOW_FOREIGN" "GDK_WINDOW_OFFSCREEN"
@@ -53,7 +53,7 @@
                                          :size))))
   ;; Check the registered name
   (is (eq 'gdk:window-window-class
-          (gobject:symbol-for-gtype "GdkWindowWindowClass")))
+          (glib:symbol-for-gtype "GdkWindowWindowClass")))
   ;; Check the names
   (is (equal '("GDK_INPUT_OUTPUT" "GDK_INPUT_ONLY")
              (list-enum-item-name "GdkWindowWindowClass")))
@@ -80,7 +80,7 @@
   (is (g:type-is-flags "GdkWindowHints"))
   ;; Check the registered name
   (is (eq 'gdk:window-hints
-          (gobject:symbol-for-gtype "GdkWindowHints")))
+          (glib:symbol-for-gtype "GdkWindowHints")))
   ;; Check the type initializer
   (is (eq (g:gtype "GdkWindowHints")
           (g:gtype (cffi:foreign-funcall "gdk_window_hints_get_type" :size))))
@@ -122,7 +122,7 @@
           (g:gtype (cffi:foreign-funcall "gdk_gravity_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gdk:gravity
-          (gobject:symbol-for-gtype "GdkGravity")))
+          (glib:symbol-for-gtype "GdkGravity")))
   ;; Check the names
   (is (equal '("GDK_GRAVITY_NORTH_WEST" "GDK_GRAVITY_NORTH"
                "GDK_GRAVITY_NORTH_EAST" "GDK_GRAVITY_WEST" "GDK_GRAVITY_CENTER"
@@ -211,7 +211,7 @@
   (is (g:type-is-flags "GdkAnchorHints"))
   ;; Check the registered name
   (is (eq 'gdk:anchor-hints
-          (gobject:symbol-for-gtype "GdkAnchorHints")))
+          (glib:symbol-for-gtype "GdkAnchorHints")))
   ;; Check the type initializer
   (is (eq (g:gtype "GdkAnchorHints")
           (g:gtype (cffi:foreign-funcall "gdk_anchor_hints_get_type" :size))))
@@ -253,7 +253,7 @@
           (g:gtype (cffi:foreign-funcall "gdk_window_edge_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gdk:window-edge
-          (gobject:symbol-for-gtype "GdkWindowEdge")))
+          (glib:symbol-for-gtype "GdkWindowEdge")))
   ;; Check the names
   (is (equal '("GDK_WINDOW_EDGE_NORTH_WEST" "GDK_WINDOW_EDGE_NORTH"
                "GDK_WINDOW_EDGE_NORTH_EAST" "GDK_WINDOW_EDGE_WEST"
@@ -293,7 +293,7 @@
                                          :size))))
   ;; Check the registered name
   (is (eq 'gdk:window-type-hint
-          (gobject:symbol-for-gtype "GdkWindowTypeHint")))
+          (glib:symbol-for-gtype "GdkWindowTypeHint")))
   ;; Check the names
   (is (equal '("GDK_WINDOW_TYPE_HINT_NORMAL" "GDK_WINDOW_TYPE_HINT_DIALOG"
                "GDK_WINDOW_TYPE_HINT_MENU" "GDK_WINDOW_TYPE_HINT_TOOLBAR"
@@ -381,7 +381,7 @@
   (is (g:type-is-flags "GdkWindowAttributesType"))
   ;; Check the registered name
   (is (eq 'gdk:window-attributes-type
-          (gobject:symbol-for-gtype "GdkWindowAttributesType")))
+          (glib:symbol-for-gtype "GdkWindowAttributesType")))
   ;; Check the type initializer
   (is (eq (g:gtype "GdkWindowAttributesType")
           (g:gtype (cffi:foreign-funcall "gdk_window_attributes_type_get_type"
@@ -424,7 +424,7 @@
           (g:gtype (cffi:foreign-funcall "gdk_fullscreen_mode_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gdk:fullscreen-mode
-          (gobject:symbol-for-gtype "GdkFullscreenMode")))
+          (glib:symbol-for-gtype "GdkFullscreenMode")))
   ;; Check the names
   (is (equal '("GDK_FULLSCREEN_ON_CURRENT_MONITOR"
                "GDK_FULLSCREEN_ON_ALL_MONITORS")
@@ -456,7 +456,7 @@
           (g:gtype (cffi:foreign-funcall "gdk_modifier_intent_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gdk:modifier-intent
-          (gobject:symbol-for-gtype "GdkModifierIntent")))
+          (glib:symbol-for-gtype "GdkModifierIntent")))
   ;; Check the names
   (is (equal '("GDK_MODIFIER_INTENT_PRIMARY_ACCELERATOR"
                "GDK_MODIFIER_INTENT_CONTEXT_MENU"
@@ -494,7 +494,7 @@
   (is (g:type-is-flags "GdkWMDecoration"))
   ;; Check the registered name
   (is (eq 'gdk:wm-decoration
-          (gobject:symbol-for-gtype "GdkWMDecoration")))
+          (glib:symbol-for-gtype "GdkWMDecoration")))
   ;; Check the type initializer
   (is (eq (g:gtype "GdkWMDecoration")
           (g:gtype (cffi:foreign-funcall "gdk_wm_decoration_get_type" :size))))
@@ -528,7 +528,7 @@
   (is (g:type-is-flags "GdkWMFunction"))
   ;; Check the registered name
   (is (eq 'gdk:wm-function
-          (gobject:symbol-for-gtype "GdkWMFunction")))
+          (glib:symbol-for-gtype "GdkWMFunction")))
   ;; Check the type initializer
   (is (eq (g:gtype "GdkWMFunction")
           (g:gtype (cffi:foreign-funcall "gdk_wm_function_get_type" :size))))
@@ -560,7 +560,7 @@
   (is (g:type-is-object "GdkWindow"))
   ;; Check the registered name
   (is (eq 'gdk:window
-          (gobject:symbol-for-gtype "GdkWindow")))
+          (glib:symbol-for-gtype "GdkWindow")))
   ;; Check the type initializer
   (is (eq (g:gtype "GdkWindow")
           (g:gtype (cffi:foreign-funcall "gdk_window_get_type" :size))))
@@ -1084,4 +1084,4 @@
 ;;;     gdk_window_get_effective_parent
 ;;;     gdk_window_get_effective_toplevel
 
-;;; --- 2023-3-9 ---------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

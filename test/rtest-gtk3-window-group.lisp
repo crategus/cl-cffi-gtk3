@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkWindowGroup"))
   ;; Check the registered name
   (is (eq 'gtk:window-group
-          (gobject:symbol-for-gtype "GtkWindowGroup")))
+          (glib:symbol-for-gtype "GtkWindowGroup")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkWindowGroup")
           (g:gtype (cffi:foreign-funcall "gtk_window_group_get_type" :size))))
@@ -47,4 +47,4 @@
 ;;;     gtk_window_group_get_current_grab
 ;;;     gtk_window_group_get_current_device_grab
 
-;;; --- 2022-12-26 -------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

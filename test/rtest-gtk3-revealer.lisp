@@ -15,7 +15,7 @@
   (is (g:type-is-object "GtkRevealer"))
   ;; Check the registered name
   (is (eq 'gtk:revealer
-          (gobject:symbol-for-gtype "GtkRevealer")))
+          (glib:symbol-for-gtype "GtkRevealer")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkRevealer")
           (g:gtype (cffi:foreign-funcall "gtk_revealer_get_type" :size))))
@@ -74,4 +74,4 @@
 ;;;     gtk_revealer_get_transition_type                   Accessor
 ;;;     gtk_revealer_set_transition_type                   Accessor
 
-;;; 2022-12-18
+;;; --- 2023-5-29 --------------------------------------------------------------

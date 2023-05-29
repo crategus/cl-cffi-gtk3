@@ -14,7 +14,7 @@
   (is (g:type-is-object "GtkClipboard"))
   ;; Check the registered name
   (is (eq 'gtk:clipboard
-          (gobject:symbol-for-gtype "GtkClipboard")))
+          (glib:symbol-for-gtype "GtkClipboard")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkClipboard")
           (g:gtype (cffi:foreign-funcall "gtk_clipboard_get_type" :size))))
@@ -322,4 +322,4 @@
   (let ((clipboard (gtk:clipboard-default (gdk:display-default))))
     (is (string= "CLIPBOARD" (gtk:clipboard-selection clipboard)))))
 
-;;; 2022-12-14
+;;; --- 2023-5-29 --------------------------------------------------------------

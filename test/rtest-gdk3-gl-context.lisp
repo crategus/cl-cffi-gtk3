@@ -14,7 +14,7 @@
   (is (g:type-is-object "GdkGLContext"))
   ;; Check the registered name
   (is (eq 'gdk:gl-context
-          (gobject:symbol-for-gtype "GdkGLContext")))
+          (glib:symbol-for-gtype "GdkGLContext")))
   ;; Check the type initializer
   (is (eq (g:gtype "GdkGLContext")
           (g:gtype (cffi:foreign-funcall "gdk_gl_context_get_type" :size))))
@@ -70,4 +70,4 @@
 ;;;     gdk_gl_context_get_current
 ;;;     gdk_gl_context_clear_current
 
-;;; 2022-12-12
+;;; --- 2023-5-29 --------------------------------------------------------------

@@ -12,7 +12,7 @@
   (is (g:type-is-interface "GtkActivatable"))
   ;; Check the registered name
   (is (eq 'gtk:activatable
-          (gobject:symbol-for-gtype "GtkActivatable")))
+          (glib:symbol-for-gtype "GtkActivatable")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkActivatable")
           (g:gtype (cffi:foreign-funcall "gtk_activatable_get_type" :size))))
@@ -48,4 +48,4 @@
 ;;;     gtk_activatable_do_set_related_action
 ;;;     gtk_activatable_sync_action_properties
 
-;;; --- 2023-2-27 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

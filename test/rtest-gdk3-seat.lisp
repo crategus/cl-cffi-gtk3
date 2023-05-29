@@ -12,7 +12,7 @@
   (is (g:type-is-flags "GdkSeatCapabilities"))
   ;; Check the registered name
   (is (eq 'gdk:seat-capabilities
-          (gobject:symbol-for-gtype "GdkSeatCapabilities")))
+          (glib:symbol-for-gtype "GdkSeatCapabilities")))
   ;; Check the type initializer
   (is (eq (g:gtype "GdkSeatCapabilities")
           (g:gtype (cffi:foreign-funcall "gdk_seat_capabilities_get_type"
@@ -51,7 +51,7 @@
   (is (g:type-is-object "GdkSeat"))
   ;; Check the registered name
   (is (eq 'gdk:seat
-          (gobject:symbol-for-gtype "GdkSeat")))
+          (glib:symbol-for-gtype "GdkSeat")))
   ;; Check the type initializer
   (is (eq (g:gtype "GdkSeat")
           (g:gtype (cffi:foreign-funcall "gdk_seat_get_type" :size))))
@@ -217,4 +217,4 @@
     (is (every (lambda (x) (typep x 'gdk:device))
                (gdk:seat-slaves seat '(:pointer :keyboard))))))
 
-;;; --- 2023-3-3 ---------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

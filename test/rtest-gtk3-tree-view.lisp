@@ -12,11 +12,11 @@
   (is (g:type-is-enum "GtkTreeViewDropPosition"))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkTreeViewDropPosition")
-          (g:gtype (cffi:foreign-funcall "gtk_tree_view_drop_position_get_type" 
+          (g:gtype (cffi:foreign-funcall "gtk_tree_view_drop_position_get_type"
                                          :size))))
   ;; Check the registered name
   (is (eq 'gtk:tree-view-drop-position
-          (gobject:symbol-for-gtype "GtkTreeViewDropPosition")))
+          (glib:symbol-for-gtype "GtkTreeViewDropPosition")))
   ;; Check the names
   (is (equal '("GTK_TREE_VIEW_DROP_BEFORE" "GTK_TREE_VIEW_DROP_AFTER"
                "GTK_TREE_VIEW_DROP_INTO_OR_BEFORE"
@@ -53,7 +53,7 @@
                                          :size))))
   ;; Check the registered name
   (is (eq 'gtk:tree-view-grid-lines
-          (gobject:symbol-for-gtype "GtkTreeViewGridLines")))
+          (glib:symbol-for-gtype "GtkTreeViewGridLines")))
   ;; Check the names
   (is (equal '("GTK_TREE_VIEW_GRID_LINES_NONE"
                "GTK_TREE_VIEW_GRID_LINES_HORIZONTAL"
@@ -85,7 +85,7 @@
   (is (g:type-is-object "GtkTreeView"))
   ;; Check the registered name
   (is (eq 'gtk:tree-view
-          (gobject:symbol-for-gtype "GtkTreeView")))
+          (glib:symbol-for-gtype "GtkTreeView")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkTreeView")
           (g:gtype (cffi:foreign-funcall "gtk_tree_view_get_type" :size))))
@@ -109,11 +109,11 @@
              (list-properties "GtkTreeView")))
   #+windows
   (is (equal '("activate-on-single-click" "enable-grid-lines" "enable-search"
-               "enable-tree-lines" "expander-column" "fixed-height-mode" 
-               "hadjustment" "headers-clickable" "headers-visible" 
-               "hover-expand" "hover-selection" "hscroll-policy" 
+               "enable-tree-lines" "expander-column" "fixed-height-mode"
+               "hadjustment" "headers-clickable" "headers-visible"
+               "hover-expand" "hover-selection" "hscroll-policy"
                "level-indentation" "model" "reorderable" "rubber-banding"
-               "rules-hint" "search-column" "show-expanders" "tooltip-column" 
+               "rules-hint" "search-column" "show-expanders" "tooltip-column"
                "vadjustment" "vscroll-policy")
              (list-properties "GtkTreeView")))
   ;; Check the style properties.
@@ -458,4 +458,4 @@
 ;;;     gtk_tree_view_set_tooltip_cell
 ;;;     gtk_tree_view_get_tooltip_context
 
-;;; --- 2023-3-9 ---------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

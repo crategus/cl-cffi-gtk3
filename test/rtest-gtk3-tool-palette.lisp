@@ -12,7 +12,7 @@
   (is (g:type-is-flags "GtkToolPaletteDragTargets"))
   ;; Check the registered name
   (is (eq 'gtk:tool-palette-drag-targets
-          (gobject:symbol-for-gtype "GtkToolPaletteDragTargets")))
+          (glib:symbol-for-gtype "GtkToolPaletteDragTargets")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkToolPaletteDragTargets")
           (g:gtype (cffi:foreign-funcall "gtk_tool_palette_drag_targets_get_type"
@@ -43,7 +43,7 @@
   (is (g:type-is-object "GtkToolPalette"))
   ;; Check the registered name
   (is (eq 'gtk:tool-palette
-          (gobject:symbol-for-gtype "GtkToolPalette")))
+          (glib:symbol-for-gtype "GtkToolPalette")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkToolPalette")
           (g:gtype (cffi:foreign-funcall "gtk_tool_palette_get_type" :size))))
@@ -121,4 +121,4 @@
 ;;;     gtk_tool_palette_get_hadjustment
 ;;;     gtk_tool_palette_get_vadjustment
 
-;;; --- 2022-12-27 -------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

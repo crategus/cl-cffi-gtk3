@@ -12,7 +12,7 @@
   (is (g:type-is-flags "GtkPrintCapabilities"))
   ;; Check the registered name
   (is (eq 'gtk:print-capabilities
-          (gobject:symbol-for-gtype "GtkPrintCapabilities")))
+          (glib:symbol-for-gtype "GtkPrintCapabilities")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkPrintCapabilities")
           (g:gtype (cffi:foreign-funcall "gtk_print_capabilities_get_type"
@@ -56,7 +56,7 @@
   (is (g:type-is-object "GtkPrintUnixDialog"))
   ;; Check the registered name
   (is (eq 'gtk:print-unix-dialog
-          (gobject:symbol-for-gtype "GtkPrintUnixDialog")))
+          (glib:symbol-for-gtype "GtkPrintUnixDialog")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkPrintUnixDialog")
           (g:gtype (cffi:foreign-funcall "gtk_print_unix_dialog_get_type"
@@ -173,4 +173,4 @@
 ;;;     gtk_print_unix_dialog_add_custom_tab
 ;;;     gtk_print_unix_dialog_get_page_setup_set
 
-;;; --- 2023-2-8 ---------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

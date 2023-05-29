@@ -16,7 +16,7 @@
                                          :size))))
   ;; Check the registered name
   (is (eq 'gtk:entry-icon-position
-          (gobject:symbol-for-gtype "GtkEntryIconPosition")))
+          (glib:symbol-for-gtype "GtkEntryIconPosition")))
   ;; Check the names
   (is (equal '("GTK_ENTRY_ICON_PRIMARY" "GTK_ENTRY_ICON_SECONDARY")
              (list-enum-item-name "GtkEntryIconPosition")))
@@ -46,7 +46,7 @@
           (g:gtype (cffi:foreign-funcall "gtk_input_purpose_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:input-purpose
-          (gobject:symbol-for-gtype "GtkInputPurpose")))
+          (glib:symbol-for-gtype "GtkInputPurpose")))
   ;; Check the names
   (is (equal '("GTK_INPUT_PURPOSE_FREE_FORM" "GTK_INPUT_PURPOSE_ALPHA"
                "GTK_INPUT_PURPOSE_DIGITS" "GTK_INPUT_PURPOSE_NUMBER"
@@ -87,7 +87,7 @@
   (is (g:type-is-flags "GtkInputHints"))
   ;; Check the registered name
   (is (eq 'gtk:input-hints
-          (gobject:symbol-for-gtype "GtkInputHints")))
+          (glib:symbol-for-gtype "GtkInputHints")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkInputHints")
           (g:gtype (cffi:foreign-funcall "gtk_input_hints_get_type" :size))))
@@ -134,7 +134,7 @@
   (is (g:type-is-object "GtkEntry"))
   ;; Check the registered name
   (is (eq 'gtk:entry
-          (gobject:symbol-for-gtype "GtkEntry")))
+          (glib:symbol-for-gtype "GtkEntry")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkEntry")
           (g:gtype (cffi:foreign-funcall "gtk_entry_get_type" :size))))
@@ -420,4 +420,4 @@
 ;;;     gtk_entry_get_icon_area
 ;;;     gtk_entry_grab_focus_without_selecting
 
-;;; --- 2023-3-9 ---------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

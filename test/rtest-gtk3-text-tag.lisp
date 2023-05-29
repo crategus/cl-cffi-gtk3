@@ -15,7 +15,7 @@
           (g:gtype (cffi:foreign-funcall "gtk_wrap_mode_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:wrap-mode
-          (gobject:symbol-for-gtype "GtkWrapMode")))
+          (glib:symbol-for-gtype "GtkWrapMode")))
   ;; Check the names
   (is (equal '("GTK_WRAP_NONE" "GTK_WRAP_CHAR" "GTK_WRAP_WORD"
                "GTK_WRAP_WORD_CHAR")
@@ -44,7 +44,7 @@
   (is (g:type-is-object "GtkTextTag"))
   ;; Check the registered name
   (is (eq 'gtk:text-tag
-          (gobject:symbol-for-gtype "GtkTextTag")))
+          (glib:symbol-for-gtype "GtkTextTag")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkTextTag")
           (g:gtype (cffi:foreign-funcall "gtk_text_tag_get_type" :size))))
@@ -392,4 +392,4 @@
 ;;;     gtk_text_attributes_unref
 ;;;     gtk_text_attributes_ref
 
-;;; --- 2023-2-19 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkCellArea"))
   ;; Check the registered name
   (is (eq 'gtk:cell-area
-          (gobject:symbol-for-gtype "GtkCellArea")))
+          (glib:symbol-for-gtype "GtkCellArea")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkCellArea")
           (g:gtype (cffi:foreign-funcall "gtk_cell_area_get_type" :size))))
@@ -232,4 +232,4 @@
 ;;;     gtk_cell_area_inner_cell_area
 ;;;     gtk_cell_area_request_renderer
 
-;;; --- 2023-5-13 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

@@ -14,7 +14,8 @@
   (is (eq (g:gtype "GtkResizeMode")
           (g:gtype (cffi:foreign-funcall "gtk_resize_mode_get_type" :size))))
   ;; Check the registered name
-  (is (eq 'gtk:resize-mode (gobject:symbol-for-gtype "GtkResizeMode")))
+  (is (eq 'gtk:resize-mode
+          (glib:symbol-for-gtype "GtkResizeMode")))
   ;; Check the names
   (is (equal '("GTK_RESIZE_PARENT" "GTK_RESIZE_QUEUE" "GTK_RESIZE_IMMEDIATE")
              (list-enum-item-name "GtkResizeMode")))
@@ -41,7 +42,7 @@
   (is (g:type-is-object "GtkContainer"))
   ;; Check the registered name
   (is (eq 'gtk:container
-          (gobject:symbol-for-gtype "GtkContainer")))
+          (glib:symbol-for-gtype "GtkContainer")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkContainer")
           (g:gtype (cffi:foreign-funcall "gtk_container_get_type" :size))))
@@ -462,4 +463,4 @@
 
 ;;;     gtk_container_class_handle_border_width
 
-;;; --- 2023-3-9 ---------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

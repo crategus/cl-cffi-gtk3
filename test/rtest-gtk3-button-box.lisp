@@ -15,7 +15,7 @@
           (g:gtype (cffi:foreign-funcall "gtk_button_box_style_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:button-box-style
-          (gobject:symbol-for-gtype "GtkButtonBoxStyle")))
+          (glib:symbol-for-gtype "GtkButtonBoxStyle")))
   ;; Check the names
   (is (equal '("GTK_BUTTONBOX_SPREAD" "GTK_BUTTONBOX_EDGE" "GTK_BUTTONBOX_START"
                "GTK_BUTTONBOX_END" "GTK_BUTTONBOX_CENTER" "GTK_BUTTONBOX_EXPAND")
@@ -49,7 +49,7 @@
   (is (g:type-is-object "GtkButtonBox"))
   ;; Check the registered name
   (is (eq 'gtk:button-box
-          (gobject:symbol-for-gtype "GtkButtonBox")))
+          (glib:symbol-for-gtype "GtkButtonBox")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkButtonBox")
           (g:gtype (cffi:foreign-funcall "gtk_button_box_get_type" :size))))
@@ -112,4 +112,4 @@
 ;;;     gtk_button_box_set_child_secondary
 ;;;     gtk_button_box_set_child_non_homogeneous
 
-;;; 2021-10-19
+;;; --- 2023-5-29 --------------------------------------------------------------

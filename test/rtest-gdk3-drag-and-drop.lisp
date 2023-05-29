@@ -16,7 +16,7 @@
               (cffi:foreign-funcall "gdk_drag_cancel_reason_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gdk:drag-cancel-reason
-          (gobject:symbol-for-gtype "GdkDragCancelReason")))
+          (glib:symbol-for-gtype "GdkDragCancelReason")))
   ;; Check the names
   (is (equal '("GDK_DRAG_CANCEL_NO_TARGET" "GDK_DRAG_CANCEL_USER_CANCELLED"
                "GDK_DRAG_CANCEL_ERROR")
@@ -48,7 +48,7 @@
           (g:gtype (cffi:foreign-funcall "gdk_drag_protocol_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gdk:drag-protocol
-          (gobject:symbol-for-gtype "GdkDragProtocol")))
+          (glib:symbol-for-gtype "GdkDragProtocol")))
   ;; Check the names
   (is (equal '("GDK_DRAG_PROTO_NONE" "GDK_DRAG_PROTO_MOTIF"
                "GDK_DRAG_PROTO_XDND" "GDK_DRAG_PROTO_ROOTWIN"
@@ -84,7 +84,7 @@
   (is (g:type-is-flags "GdkDragAction"))
   ;; Check the registered name
   (is (eq 'gdk:drag-action
-          (gobject:symbol-for-gtype "GdkDragAction")))
+          (glib:symbol-for-gtype "GdkDragAction")))
   ;; Check the type initializer
   (is (eq (g:gtype "GdkDragAction")
           (g:gtype (cffi:foreign-funcall "gdk_drag_action_get_type" :size))))
@@ -126,7 +126,7 @@
   (is (g:type-is-object "GdkDragContext"))
   ;; Check the registered name
   (is (eq 'gdk:drag-context
-          (gobject:symbol-for-gtype "GdkDragContext")))
+          (glib:symbol-for-gtype "GdkDragContext")))
   ;; Check the type initializer
   (is (eq (g:gtype "GdkDragContext")
           (g:gtype (cffi:foreign-funcall "gdk_drag_context_get_type" :size))))
@@ -273,4 +273,4 @@
 ;;;     gdk_drag_context_set_hotspot
 ;;;     gdk_drag_context_manage_dnd
 
-;;; --- 2023-1-8 ---------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

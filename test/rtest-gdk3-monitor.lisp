@@ -15,7 +15,7 @@
           (g:gtype (cffi:foreign-funcall "gdk_subpixel_layout_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gdk:subpixel-layout
-          (gobject:symbol-for-gtype "GdkSubpixelLayout")))
+          (glib:symbol-for-gtype "GdkSubpixelLayout")))
   ;; Check the names
   (is (equal '("GDK_SUBPIXEL_LAYOUT_UNKNOWN"
                "GDK_SUBPIXEL_LAYOUT_NONE"
@@ -54,7 +54,7 @@
   (is (g:type-is-object "GdkMonitor"))
   ;; Check the registered name
   (is (eq 'gdk:monitor
-          (gobject:symbol-for-gtype "GdkMonitor")))
+          (glib:symbol-for-gtype "GdkMonitor")))
   ;; Check the type initializer
   (is (eq (g:gtype "GdkMonitor")
           (g:gtype (cffi:foreign-funcall "gdk_monitor_get_type" :size))))
@@ -153,4 +153,4 @@
   (let ((monitor (gdk:display-primary-monitor (gdk:display-default))))
     (is-true (gdk:monitor-is-primary monitor))))
 
-;;; --- 2023-3-3 ---------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

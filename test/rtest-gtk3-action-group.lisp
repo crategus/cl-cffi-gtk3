@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkActionGroup"))
   ;; Check the registered name
   (is (eq 'gtk:action-group
-          (gobject:symbol-for-gtype "GtkActionGroup")))
+          (glib:symbol-for-gtype "GtkActionGroup")))
   ;; Check the parent
   (is (eq (g:gtype "GObject") (g:type-parent "GtkActionGroup")))
   ;; Check the children
@@ -102,4 +102,4 @@
 ;;;    gtk_action_group_set_translation_domain
 ;;;    gtk_action_group_translate_string
 
-;;; --- 2023-1-1 ---------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

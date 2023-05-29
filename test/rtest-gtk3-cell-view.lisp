@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkCellView"))
   ;; Check the registered name
   (is (eq 'gtk:cell-view
-          (gobject:symbol-for-gtype "GtkCellView")))
+          (glib:symbol-for-gtype "GtkCellView")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkCellView")
           (g:gtype (cffi:foreign-funcall "gtk_cell_view_get_type" :size))))
@@ -92,4 +92,4 @@
 ;;;     gtk_cell_view_set_fit_model                        Accessor
 ;;;     gtk_cell_view_get_fit_model                        Accessor
 
-;;; --- 2022-12-27 -------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

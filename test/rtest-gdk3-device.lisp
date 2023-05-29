@@ -15,7 +15,7 @@
           (g:gtype (cffi:foreign-funcall "gdk_input_source_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gdk:input-source
-          (gobject:symbol-for-gtype "GdkInputSource")))
+          (glib:symbol-for-gtype "GdkInputSource")))
   ;; Check the names
   (is (equal '("GDK_SOURCE_MOUSE" "GDK_SOURCE_PEN" "GDK_SOURCE_ERASER"
                "GDK_SOURCE_CURSOR" "GDK_SOURCE_KEYBOARD"
@@ -55,7 +55,7 @@
           (g:gtype (cffi:foreign-funcall "gdk_input_mode_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gdk:input-mode
-          (gobject:symbol-for-gtype "GdkInputMode")))
+          (glib:symbol-for-gtype "GdkInputMode")))
   ;; Check the names
   (is (equal '("GDK_MODE_DISABLED" "GDK_MODE_SCREEN" "GDK_MODE_WINDOW")
              (list-enum-item-name "GdkInputMode")))
@@ -85,7 +85,7 @@
           (g:gtype (cffi:foreign-funcall "gdk_axis_use_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gdk:axis-use
-          (gobject:symbol-for-gtype "GdkAxisUse")))
+          (glib:symbol-for-gtype "GdkAxisUse")))
   ;; Check the names
   (is (equal '("GDK_AXIS_IGNORE" "GDK_AXIS_X" "GDK_AXIS_Y" "GDK_AXIS_PRESSURE"
                "GDK_AXIS_XTILT" "GDK_AXIS_YTILT" "GDK_AXIS_WHEEL"
@@ -124,7 +124,7 @@
   (is (g:type-is-flags "GdkAxisFlags"))
   ;; Check the registered name
   (is (eq 'gdk:axis-flags
-          (gobject:symbol-for-gtype "GdkAxisFlags")))
+          (glib:symbol-for-gtype "GdkAxisFlags")))
   ;; Check the type initializer
   (is (eq (g:gtype "GdkAxisFlags")
           (g:gtype (cffi:foreign-funcall "gdk_axis_flags_get_type" :size))))
@@ -167,7 +167,7 @@
           (g:gtype (cffi:foreign-funcall "gdk_device_tool_type_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gdk:device-tool-type
-          (gobject:symbol-for-gtype "GdkDeviceToolType")))
+          (glib:symbol-for-gtype "GdkDeviceToolType")))
   ;; Check the names
   (is (equal '("GDK_DEVICE_TOOL_TYPE_UNKNOWN" "GDK_DEVICE_TOOL_TYPE_PEN"
                "GDK_DEVICE_TOOL_TYPE_ERASER" "GDK_DEVICE_TOOL_TYPE_BRUSH"
@@ -206,7 +206,7 @@
           (g:gtype (cffi:foreign-funcall "gdk_device_type_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gdk:device-type
-          (gobject:symbol-for-gtype "GdkDeviceType")))
+          (glib:symbol-for-gtype "GdkDeviceType")))
   ;; Check the names
   (is (equal '("GDK_DEVICE_TYPE_MASTER" "GDK_DEVICE_TYPE_SLAVE"
                "GDK_DEVICE_TYPE_FLOATING")
@@ -237,7 +237,7 @@
           (g:gtype (cffi:foreign-funcall "gdk_grab_ownership_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gdk:grab-ownership
-          (gobject:symbol-for-gtype "GdkGrabOwnership")))
+          (glib:symbol-for-gtype "GdkGrabOwnership")))
   ;; Check the names
   (is (equal '("GDK_OWNERSHIP_NONE" "GDK_OWNERSHIP_WINDOW"
                "GDK_OWNERSHIP_APPLICATION")
@@ -270,7 +270,7 @@
           (g:gtype (cffi:foreign-funcall "gdk_grab_status_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gdk:grab-status
-          (gobject:symbol-for-gtype "GdkGrabStatus")))
+          (glib:symbol-for-gtype "GdkGrabStatus")))
   ;; Check the names
   (is (equal '("GDK_GRAB_SUCCESS" "GDK_GRAB_ALREADY_GRABBED"
                "GDK_GRAB_INVALID_TIME" "GDK_GRAB_NOT_VIEWABLE"
@@ -303,7 +303,7 @@
   (is (g:type-is-object "GdkDeviceTool"))
   ;; Check the registered name
   (is (eq 'gdk:device-tool
-          (gobject:symbol-for-gtype "GdkDeviceTool")))
+          (glib:symbol-for-gtype "GdkDeviceTool")))
   ;; Check the type initializer
   (is (eq (g:gtype "GdkDeviceTool")
           (g:gtype (cffi:foreign-funcall "gdk_device_tool_get_type" :size))))
@@ -341,7 +341,7 @@
   (is (g:type-is-object "GdkDevice"))
   ;; Check the registered name
   (is (eq 'gdk:device
-          (gobject:symbol-for-gtype "GdkDevice")))
+          (glib:symbol-for-gtype "GdkDevice")))
   ;; Check the type initializer
   (is (eq (g:gtype "GdkDevice")
           (g:gtype (cffi:foreign-funcall "gdk_device_get_type" :size))))
@@ -634,4 +634,4 @@
 ;;;     gdk_device_tool_get_serial
 ;;;     gdk_device_tool_get_tool_type
 
-;;; --- 2023-3-9 ---------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

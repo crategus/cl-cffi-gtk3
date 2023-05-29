@@ -15,7 +15,7 @@
   (is (g:type-is-object "GtkMessageDialog"))
   ;; Check the registered name
   (is (eq 'gtk:message-dialog
-          (gobject:symbol-for-gtype "GtkMessageDialog")))
+          (glib:symbol-for-gtype "GtkMessageDialog")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkMessageDialog")
           (g:gtype (cffi:foreign-funcall "gtk_message_dialog_get_type" :size))))
@@ -130,4 +130,4 @@
 ;;;     gtk_message_dialog_format_secondary_markup
 ;;;     gtk_message_dialog_get_message_area
 
-;;; --- 2023-3-9 ---------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

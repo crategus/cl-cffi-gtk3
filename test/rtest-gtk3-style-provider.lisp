@@ -25,7 +25,7 @@
   (is-true (g:type-is-interface "GtkStyleProvider"))
   ;; Check the registered name
   (is (eq 'gtk:style-provider
-          (gobject:symbol-for-gtype "GtkStyleProvider")))
+          (glib:symbol-for-gtype "GtkStyleProvider")))
   ;; Get the names of the interface properties.
   (is (equal '()
              (list-interface-properties "GtkStyleProvider")))
@@ -57,4 +57,4 @@
     ;; The default value of the focus-padding style property is 0.
     (is (= 0 (gtk:style-provider-style-property provider path :normal pspec)))))
 
-;;; 2022-12-10
+;;; --- 2023-5-29 --------------------------------------------------------------

@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkTreeSelection"))
   ;; Check the registered name
   (is (eq 'gtk:tree-selection
-          (gobject:symbol-for-gtype "GtkTreeSelection")))
+          (glib:symbol-for-gtype "GtkTreeSelection")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkTreeSelection")
           (g:gtype (cffi:foreign-funcall "gtk_tree_selection_get_type" :size))))
@@ -93,4 +93,4 @@
 ;;;     gtk_tree_selection_select_range
 ;;;     gtk_tree_selection_unselect_range
 
-;;; --- 2023-2-19 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkStatusbar"))
   ;; Check the registered name
   (is (eq 'gtk:statusbar
-          (gobject:symbol-for-gtype "GtkStatusbar")))
+          (glib:symbol-for-gtype "GtkStatusbar")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkStatusbar")
           (g:gtype (cffi:foreign-funcall "gtk_statusbar_get_type" :size))))
@@ -104,4 +104,4 @@
   (let ((statusbar (gtk:statusbar-new)))
     (is (eq 'gtk:box (type-of (gtk:statusbar-message-area statusbar))))))
 
-;;; --- 2022-12-27 -------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

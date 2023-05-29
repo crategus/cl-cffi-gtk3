@@ -10,7 +10,7 @@
   (is-true (g:type-is-enum "GtkPrintStatus"))
   ;; Check the registered name
   (is (eq 'gtk:print-status
-          (gobject:symbol-for-gtype "GtkPrintStatus")))
+          (glib:symbol-for-gtype "GtkPrintStatus")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkPrintStatus")
           (g:gtype (cffi:foreign-funcall "gtk_print_status_get_type" :size))))
@@ -51,7 +51,7 @@
   (is-true (g:type-is-enum "GtkPrintOperationAction"))
   ;; Check the registered name
   (is (eq 'gtk:print-operation-action
-          (gobject:symbol-for-gtype "GtkPrintOperationAction")))
+          (glib:symbol-for-gtype "GtkPrintOperationAction")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkPrintOperationAction")
           (g:gtype (cffi:foreign-funcall "gtk_print_operation_action_get_type"
@@ -87,7 +87,7 @@
   (is-true (g:type-is-enum "GtkPrintOperationResult"))
   ;; Check the registered name
   (is (eq 'gtk:print-operation-result
-          (gobject:symbol-for-gtype "GtkPrintOperationResult")))
+          (glib:symbol-for-gtype "GtkPrintOperationResult")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkPrintOperationResult")
           (g:gtype (cffi:foreign-funcall "gtk_print_operation_result_get_type"
@@ -124,7 +124,7 @@
   (is-true (g:type-is-enum "GtkPrintError"))
   ;; Check the registered name
   (is (eq 'gtk:print-error
-          (gobject:symbol-for-gtype "GtkPrintError")))
+          (glib:symbol-for-gtype "GtkPrintError")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkPrintError")
           (g:gtype (cffi:foreign-funcall "gtk_print_error_get_type" :size))))
@@ -159,7 +159,7 @@
   (is-true (g:type-is-interface "GtkPrintOperationPreview"))
   ;; Check the registered name
   (is (eq 'gtk:print-operation-preview
-          (gobject:symbol-for-gtype "GtkPrintOperationPreview")))
+          (glib:symbol-for-gtype "GtkPrintOperationPreview")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkPrintOperationPreview")
           (g:gtype (cffi:foreign-funcall "gtk_print_operation_preview_get_type"
@@ -184,7 +184,7 @@
   (is (g:type-is-object "GtkPrintOperation"))
   ;; Check the registered name
   (is (eq 'gtk:print-operation
-          (gobject:symbol-for-gtype "GtkPrintOperation")))
+          (glib:symbol-for-gtype "GtkPrintOperation")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkPrintOperation")
           (g:gtype (cffi:foreign-funcall "gtk_print_operation_get_type"
@@ -372,4 +372,4 @@
 ;;;     gtk_print_operation_preview_is_selected
 ;;;     gtk_print_operation_preview_render_page
 
-;;; --- 2023-2-10 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

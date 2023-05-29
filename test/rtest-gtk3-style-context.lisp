@@ -12,7 +12,7 @@
   (is (g:type-is-flags "GtkJunctionSides"))
   ;; Check the registered name
   (is (eq 'gtk:junction-sides
-          (gobject:symbol-for-gtype "GtkJunctionSides")))
+          (glib:symbol-for-gtype "GtkJunctionSides")))
   ;; Check the names
   (is (equal '("GTK_JUNCTION_NONE" "GTK_JUNCTION_CORNER_TOPLEFT"
                "GTK_JUNCTION_CORNER_TOPRIGHT" "GTK_JUNCTION_CORNER_BOTTOMLEFT"
@@ -49,7 +49,7 @@
   (is (g:type-is-flags "GtkRegionFlags"))
   ;; Check the registered name
   (is (eq 'gtk:region-flags
-          (gobject:symbol-for-gtype "GtkRegionFlags")))
+          (glib:symbol-for-gtype "GtkRegionFlags")))
   ;; Check the names
   (is (equal '("GTK_REGION_EVEN" "GTK_REGION_ODD" "GTK_REGION_FIRST"
                "GTK_REGION_LAST" "GTK_REGION_ONLY" "GTK_REGION_SORTED")
@@ -80,7 +80,7 @@
   (is (g:type-is-flags "GtkStyleContextPrintFlags"))
   ;; Check the registered name
   (is (eq 'gtk:style-context-print-flags
-          (gobject:symbol-for-gtype "GtkStyleContextPrintFlags")))
+          (glib:symbol-for-gtype "GtkStyleContextPrintFlags")))
   ;; Check the names
   (is (equal '("GTK_STYLE_CONTEXT_PRINT_NONE" "GTK_STYLE_CONTEXT_PRINT_RECURSE"
                "GTK_STYLE_CONTEXT_PRINT_SHOW_STYLE")
@@ -109,7 +109,7 @@
   (is (g:type-is-enum "GtkBorderStyle"))
   ;; Check the registered name
   (is (eq 'gtk:border-style
-          (gobject:symbol-for-gtype "GtkBorderStyle")))
+          (glib:symbol-for-gtype "GtkBorderStyle")))
   ;; Check the names
   (is (equal '("GTK_BORDER_STYLE_NONE" "GTK_BORDER_STYLE_SOLID"
                "GTK_BORDER_STYLE_INSET" "GTK_BORDER_STYLE_OUTSET"
@@ -151,7 +151,7 @@
   (is (g:type-is-object "GtkStyleContext"))
   ;; Check the registered name
   (is (eq 'gtk:style-context
-          (gobject:symbol-for-gtype "GtkStyleContext")))
+          (glib:symbol-for-gtype "GtkStyleContext")))
   ;; Check the parent
   (is (eq (g:gtype "GObject")
           (g:type-parent "GtkStyleContext")))
@@ -562,4 +562,4 @@
 ;;;     gtk_render_icon
 ;;;     gtk_render_insertion_cursor
 
-;;; --- 2023-2-19 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

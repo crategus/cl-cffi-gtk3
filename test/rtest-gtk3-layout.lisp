@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkLayout"))
   ;; Check the registered name
   (is (eq 'gtk:layout
-          (gobject:symbol-for-gtype "GtkLayout")))
+          (glib:symbol-for-gtype "GtkLayout")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkLayout")
           (g:gtype (cffi:foreign-funcall "gtk_layout_get_type" :size))))
@@ -136,4 +136,4 @@
 
 ;;;     gtk_layout_get_bin_window
 
-;;; 2021-10-19
+;;; --- 2023-5-29 --------------------------------------------------------------

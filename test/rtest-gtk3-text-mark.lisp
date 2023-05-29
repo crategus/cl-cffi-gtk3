@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkTextMark"))
   ;; Check the registered name
   (is (eq 'gtk:text-mark
-          (gobject:symbol-for-gtype "GtkTextMark")))
+          (glib:symbol-for-gtype "GtkTextMark")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkTextMark")
           (g:gtype (cffi:foreign-funcall "gtk_text_mark_get_type" :size))))
@@ -98,4 +98,4 @@
     (is-false (gtk:text-buffer-add-mark buffer mark iter))
     (is (eq 'gtk:text-buffer (type-of (gtk:text-mark-buffer mark))))))
 
-;;; --- 2022-12-27 -------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

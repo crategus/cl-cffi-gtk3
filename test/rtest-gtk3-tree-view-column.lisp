@@ -14,7 +14,7 @@
   (is (g:type-is-object "GtkTreeViewColumn"))
   ;; Check the registered name
   (is (eq 'gtk:tree-view-column
-          (gobject:symbol-for-gtype "GtkTreeViewColumn")))
+          (glib:symbol-for-gtype "GtkTreeViewColumn")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkTreeViewColumn")
           (g:gtype (cffi:foreign-funcall "gtk_tree_view_column_get_type" :size))))
@@ -164,4 +164,4 @@
 ;;;     gtk_tree_view_column_get_tree_view
 ;;;     gtk_tree_view_column_get_x_offset                  Accessor
 
-;;; --- 2022-12-27 -------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

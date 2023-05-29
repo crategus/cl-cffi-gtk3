@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkCellRendererProgress"))
   ;; Check the registered name
   (is (eq 'gtk:cell-renderer-progress
-          (gobject:symbol-for-gtype "GtkCellRendererProgress")))
+          (glib:symbol-for-gtype "GtkCellRendererProgress")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkCellRendererProgress")
           (g:gtype (cffi:foreign-funcall "gtk_cell_renderer_progress_get_type"
@@ -66,4 +66,4 @@
 
 ;;;     gtk_cell_renderer_progress_new
 
-;;; --- 2023-2-20 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

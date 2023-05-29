@@ -12,7 +12,7 @@
   (is-true (g:type-is-interface "GtkAppChooser"))
   ;; Check the registered name
   (is (eq 'gtk:app-chooser
-          (gobject:symbol-for-gtype "GtkAppChooser")))
+          (glib:symbol-for-gtype "GtkAppChooser")))
   ;; Get the names of the interface properties.
   (is (equal '("content-type")
              (list-interface-properties "GtkAppChooser")))
@@ -50,4 +50,4 @@
                                 :content-type "plain/text")))
     (is-false (gtk:app-chooser-refresh chooser))))
 
-;;; --- 2023-1-1 ---------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

@@ -203,8 +203,8 @@
                'gtk:tree-row-reference))
     (is (typep (setf row2 (gtk:tree-row-reference-copy row1))
                'gtk:tree-row-reference))
-    (is (not (cffi:pointer-eq (gobject::pointer row1)
-                              (gobject::pointer row2))))
+    (is (not (cffi:pointer-eq (glib::pointer row1)
+                              (glib::pointer row2))))
     (is (cffi:pointer-eq
             (gobject::pointer (gtk:tree-row-reference-model row1))
             (gobject::pointer (gtk:tree-row-reference-model row2))))))
@@ -300,4 +300,4 @@
 ;;;     gtk_tree_model_rows_reordered
 ;;;     gtk_tree_model_rows_reordered_with_length
 
-;;; --- 2023-1-27 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

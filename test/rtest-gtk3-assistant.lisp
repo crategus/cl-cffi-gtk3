@@ -14,7 +14,7 @@
   (is (g:type-is-object "GtkAssistant"))
   ;; Check the registered name
   (is (eq 'gtk:assistant
-          (gobject:symbol-for-gtype "GtkAssistant")))
+          (glib:symbol-for-gtype "GtkAssistant")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkAssistant")
           (g:gtype (cffi:foreign-funcall "gtk_assistant_get_type" :size))))
@@ -147,4 +147,4 @@
 ;;;     gtk_assistant_next_page
 ;;;     gtk_assistant_previous_page
 
-;;; --- 2022-12-26 -------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

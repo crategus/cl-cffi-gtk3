@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkCheckMenuItem"))
   ;; Check the registered name
   (is (eq 'gtk:check-menu-item
-          (gobject:symbol-for-gtype "GtkCheckMenuItem")))
+          (glib:symbol-for-gtype "GtkCheckMenuItem")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkCheckMenuItem")
           (g:gtype (cffi:foreign-funcall "gtk_check_menu_item_get_type" :size))))
@@ -76,4 +76,4 @@
 ;;;     gtk_check_menu_item_new_with_mnemonic
 ;;;     gtk_check_menu_item_toggled
 
-;;; --- 2023-3-3 ---------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

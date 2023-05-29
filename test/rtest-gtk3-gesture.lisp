@@ -16,7 +16,7 @@
                                          :size))))
   ;; Check the registered name
   (is (eq 'gtk:event-sequence-state
-          (gobject:symbol-for-gtype "GtkEventSequenceState")))
+          (glib:symbol-for-gtype "GtkEventSequenceState")))
   ;; Check the names
   (is (equal '("GTK_EVENT_SEQUENCE_NONE" "GTK_EVENT_SEQUENCE_CLAIMED"
                "GTK_EVENT_SEQUENCE_DENIED")
@@ -45,7 +45,7 @@
   (is (g:type-is-object "GtkGesture"))
   ;; Check the registered name
   (is (eq 'gtk:gesture
-          (gobject:symbol-for-gtype "GtkGesture")))
+          (glib:symbol-for-gtype "GtkGesture")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkGesture")
           (g:gtype (cffi:foreign-funcall "gtk_gesture_get_type" :size))))
@@ -108,4 +108,4 @@
 ;;;     gtk_gesture_get_group
 ;;;     gtk_gesture_is_grouped_with
 
-;;; --- 2023-3-3 ---------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

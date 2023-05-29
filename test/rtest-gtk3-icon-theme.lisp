@@ -17,7 +17,7 @@
   (is (g:type-is-object "GtkIconTheme"))
   ;; Check the registered name
   (is (eq 'gtk:icon-theme
-          (gobject:symbol-for-gtype "GtkIconTheme")))
+          (glib:symbol-for-gtype "GtkIconTheme")))
   ;; Check the parent
   (is (eq (g:gtype "GObject")
           (g:type-parent "GtkIconTheme")))
@@ -288,4 +288,4 @@
          (icon-info (gtk:icon-theme-lookup-icon theme "battery" 0 :force-symbolic)))
     (is-true (gtk:icon-info-is-symbolic icon-info))))
 
-;;; 2022-12-14
+;;; --- 2023-5-29 --------------------------------------------------------------

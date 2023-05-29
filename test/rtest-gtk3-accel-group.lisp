@@ -10,7 +10,7 @@
   (is (g:type-is-flags "GtkAccelFlags"))
   ;; Check the registered name
   (is (eql 'gtk:accel-flags
-           (gobject:symbol-for-gtype "GtkAccelFlags")))
+           (glib:symbol-for-gtype "GtkAccelFlags")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkAccelFlags")
           (g:gtype (cffi:foreign-funcall "gtk_accel_flags_get_type" :size))))
@@ -40,7 +40,7 @@
   (is (g:type-is-object "GtkAccelGroup"))
   ;; Check the registered name
   (is (eq 'gtk:accel-group
-          (gobject:symbol-for-gtype "GtkAccelGroup")))
+          (glib:symbol-for-gtype "GtkAccelGroup")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkAccelGroup")
           (g:gtype (cffi:foreign-funcall "gtk_accel_group_get_type" :size))))
@@ -263,4 +263,4 @@
                    '(:SHIFT-MASK :CONTROL-MASK :MOD1-MASK :SUPER-MASK
                      :HYPER-MASK :META-MASK)))))
 
-;;; --- 2023-5-25 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkPageSetupUnixDialog"))
   ;; Check the registered name
   (is (eq 'gtk:page-setup-unix-dialog
-          (gobject:symbol-for-gtype "GtkPageSetupUnixDialog")))
+          (glib:symbol-for-gtype "GtkPageSetupUnixDialog")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkPageSetupUnixDialog")
           (g:gtype (cffi:foreign-funcall "gtk_page_setup_unix_dialog_get_type"
@@ -91,4 +91,4 @@
     (is-false (eq 'gtk:print-settings
               (type-of (gtk:page-setup-unix-dialog-print-settings dialog))))))
 
-;;; --- 2023-1-1 ---------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

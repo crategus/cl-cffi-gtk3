@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkButton"))
   ;; Check the registered name
   (is (eq 'gtk:button
-          (gobject:symbol-for-gtype "GtkButton")))
+          (glib:symbol-for-gtype "GtkButton")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkButton")
           (g:gtype (cffi:foreign-funcall "gtk_button_get_type" :size))))
@@ -179,4 +179,4 @@
     (is-false (gtk:widget-realize button))
     (is (typep (gtk:button-event-window button) 'gdk:window))))
 
-;;; --- 2022-12-27 -------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

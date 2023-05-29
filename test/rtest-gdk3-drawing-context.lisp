@@ -12,7 +12,7 @@
   (is (g:type-is-object "GdkDrawingContext"))
   ;; Check the registered name
   (is (eq 'gdk:drawing-context
-          (gobject:symbol-for-gtype "GdkDrawingContext")))
+          (glib:symbol-for-gtype "GdkDrawingContext")))
   ;; Check the type initializer
   (is (eq (g:gtype "GdkDrawingContext")
           (g:gtype (cffi:foreign-funcall "gdk_drawing_context_get_type" :size))))
@@ -53,4 +53,4 @@
 ;;;     gdk_drawing_context_get_cairo_context
 ;;;     gdk_drawing_context_is_valid
 
-;;; 2022-12-12
+;;; --- 2023-5-29 --------------------------------------------------------------

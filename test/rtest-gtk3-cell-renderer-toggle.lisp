@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkCellRendererToggle"))
   ;; Check the registered name
   (is (eq 'gtk:cell-renderer-toggle
-          (gobject:symbol-for-gtype "GtkCellRendererToggle")))
+          (glib:symbol-for-gtype "GtkCellRendererToggle")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkCellRendererToggle")
           (g:gtype (cffi:foreign-funcall "gtk_cell_renderer_toggle_get_type"
@@ -70,4 +70,4 @@
 (test cell-renderer-toggle-new
   (is (typep (gtk:cell-renderer-toggle-new) 'gtk:cell-renderer-toggle)))
 
-;;; --- 2023-2-22 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

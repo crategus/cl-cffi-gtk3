@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkEntryBuffer"))
   ;; Check the registered name
   (is (eq 'gtk:entry-buffer
-          (gobject:symbol-for-gtype "GtkEntryBuffer")))
+          (glib:symbol-for-gtype "GtkEntryBuffer")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkEntryBuffer")
           (g:gtype (cffi:foreign-funcall "gtk_entry_buffer_get_type" :size))))
@@ -161,4 +161,4 @@
           nil))
     (gtk:entry-buffer-emit-inserted-text buffer 6 "text" 7)))
 
-;;; --- 2023-3-9 ---------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkAppChooserButton"))
   ;; Check the registered name
   (is (eq 'gtk:app-chooser-button
-          (gobject:symbol-for-gtype "GtkAppChooserButton")))
+          (glib:symbol-for-gtype "GtkAppChooserButton")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkAppChooserButton")
           (g:gtype (cffi:foreign-funcall "gtk_app_chooser_button_get_type" :size))))
@@ -79,4 +79,4 @@
 ;;;     gtk_app_chooser_button_append_separator
 ;;;     gtk_app_chooser_button_set_active_custom_item
 
-;;; --- 2023-1-1 ---------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

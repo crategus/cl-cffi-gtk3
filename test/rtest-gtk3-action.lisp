@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkAction"))
   ;; Check the registered name
   (is (eq 'gtk:action
-          (gobject:symbol-for-gtype "GtkAction")))
+          (glib:symbol-for-gtype "GtkAction")))
   ;; Check the parent
   (is (eq (g:gtype "GObject") (g:type-parent "GtkAction")))
   ;; Check the children
@@ -201,4 +201,4 @@
 ;;;    gtk_action_set_is_important
 ;;;    gtk_action_get_is_important
 
-;;; --- 2023-1-1 ---------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

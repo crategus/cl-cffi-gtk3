@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkRadioMenuItem"))
   ;; Check the registered name
   (is (eq 'gtk:radio-menu-item
-          (gobject:symbol-for-gtype "GtkRadioMenuItem")))
+          (glib:symbol-for-gtype "GtkRadioMenuItem")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkRadioMenuItem")
           (g:gtype (cffi:foreign-funcall "gtk_radio_menu_item_get_type"
@@ -288,4 +288,4 @@
                      (gtk:bin-child
                          (second (gtk:radio-menu-item-get-group item))))))))
 
-;;; --- 2023-2-24 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

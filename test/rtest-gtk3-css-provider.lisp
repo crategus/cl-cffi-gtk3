@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkCssProvider"))
   ;; Check the registered name
   (is (eq 'gtk:css-provider
-          (gobject:symbol-for-gtype "GtkCssProvider")))
+          (glib:symbol-for-gtype "GtkCssProvider")))
   ;; Check the parent
   (is (eq (g:gtype "GObject")
           (g:type-parent "GtkCssProvider")))
@@ -46,7 +46,7 @@
   (is-true (g:type-is-enum "GtkCssSectionType"))
   ;; Check the registered name
   (is (eql 'gtk:css-section-type
-           (gobject:symbol-for-gtype "GtkCssSectionType")))
+           (glib:symbol-for-gtype "GtkCssSectionType")))
   ;; Check the names
   (is (equal '("GTK_CSS_SECTION_DOCUMENT" "GTK_CSS_SECTION_IMPORT"
                "GTK_CSS_SECTION_COLOR_DEFINITION" "GTK_CSS_SECTION_BINDING_SET"
@@ -121,4 +121,4 @@
 ;;;     gtk_css_section_ref
 ;;;     gtk_css_section_unref
 
-;;; --- 2023-1-29 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

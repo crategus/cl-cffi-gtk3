@@ -10,7 +10,7 @@
   (is (g:type-is-object "GdkKeymap"))
   ;; Check the registered name
   (is (eq 'gdk:keymap
-          (gobject:symbol-for-gtype "GdkKeymap")))
+          (glib:symbol-for-gtype "GdkKeymap")))
   ;; Check the type initializer
   (is (eq (g:gtype "GdkKeymap")
           (g:gtype (cffi:foreign-funcall "gdk_keymap_get_type" :size))))
@@ -266,4 +266,4 @@
 (test unicode-to-keyval
   (is (eq 65 (gdk:unicode-to-keyval #\A))))
 
-;;; --- 2023-3-26 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

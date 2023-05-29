@@ -12,7 +12,7 @@
   (is (g:type-is-object "GdkDisplay"))
   ;; Check the registered name
   (is (eq 'gdk:display
-          (gobject:symbol-for-gtype "GdkDisplay")))
+          (glib:symbol-for-gtype "GdkDisplay")))
   ;; Check the type initializer
   (is (eq (g:gtype "GdkDisplay")
           (g:gtype (cffi:foreign-funcall "gdk_display_get_type" :size))))
@@ -386,4 +386,4 @@
          (window (gdk-display-default-group display)))
     (is (typep (gdk-display-monitor-at-window display window) 'gdk-monitor))))
 
-;;; --- 2023-3-26 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

@@ -15,7 +15,7 @@
           (g:gtype (cffi:foreign-funcall "gtk_arrow_placement_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:arrow-placement
-          (gobject:symbol-for-gtype "GtkArrowPlacement")))
+          (glib:symbol-for-gtype "GtkArrowPlacement")))
   ;; Check the names
   (is (equal '("GTK_ARROWS_BOTH" "GTK_ARROWS_START" "GTK_ARROWS_END")
              (list-enum-item-name "GtkArrowPlacement")))
@@ -42,7 +42,7 @@
   (is (g:type-is-object "GtkMenu"))
   ;; Check the registered name
   (is (eq 'gtk:menu
-          (gobject:symbol-for-gtype "GtkMenu")))
+          (glib:symbol-for-gtype "GtkMenu")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkMenu")
           (g:gtype (cffi:foreign-funcall "gtk_menu_get_type" :size))))
@@ -223,4 +223,4 @@
 
 ;;;     gtk_menu_get_for_attach_widget
 
-;;; --- 2023-2-18 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

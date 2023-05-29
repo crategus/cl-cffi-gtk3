@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkPaned"))
   ;; Check the registered name
   (is (eq 'gtk:paned
-          (gobject:symbol-for-gtype "GtkPaned")))
+          (glib:symbol-for-gtype "GtkPaned")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkPaned")
           (g:gtype (cffi:foreign-funcall "gtk_paned_get_type" :size))))
@@ -184,4 +184,4 @@
     ;; no handle because paned is not realized
     (is-false (gtk:paned-handle-window paned))))
 
-;;; --- 2023-1-29 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

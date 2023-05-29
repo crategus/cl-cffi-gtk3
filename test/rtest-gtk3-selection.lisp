@@ -12,7 +12,7 @@
   (is (g:type-is-flags "GtkTargetFlags"))
   ;; Check the registered name
   (is (eq 'gtk:target-flags
-          (gobject:symbol-for-gtype "GtkTargetFlags")))
+          (glib:symbol-for-gtype "GtkTargetFlags")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkTargetFlags")
           (g:gtype (cffi:foreign-funcall "gtk_target_flags_get_type" :size))))
@@ -507,4 +507,4 @@
 ;;;     gtk_selection_data_copy
 ;;;     gtk_selection_data_free
 
-;;; --- 2023-4-29 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

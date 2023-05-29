@@ -21,7 +21,7 @@
   (is (g:type-is-object "GtkIconFactory"))
   ;; Check the registered name
   (is (eq 'gtk:icon-factory
-          (gobject:symbol-for-gtype "GtkIconFactory")))
+          (glib:symbol-for-gtype "GtkIconFactory")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkIconFactory")
           (g:gtype (cffi:foreign-funcall "gtk_icon_factory_get_type" :size))))
@@ -67,7 +67,7 @@
           (g:gtype (cffi:foreign-funcall "gtk_icon_size_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:icon-size
-          (gobject:symbol-for-gtype "GtkIconSize")))
+          (glib:symbol-for-gtype "GtkIconSize")))
   ;; Check the names
   (is (equal '("GTK_ICON_SIZE_INVALID" "GTK_ICON_SIZE_MENU"
                "GTK_ICON_SIZE_SMALL_TOOLBAR" "GTK_ICON_SIZE_LARGE_TOOLBAR"
@@ -146,4 +146,4 @@
 ;;;     gtk_icon_source_set_state
 ;;;     gtk_icon_source_set_state_wildcarded
 
-;;; 2022-12-14
+;;; --- 2023-5-29 --------------------------------------------------------------

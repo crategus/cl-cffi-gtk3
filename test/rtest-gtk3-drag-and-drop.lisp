@@ -12,7 +12,7 @@
   (is (g:type-is-flags "GtkDestDefaults"))
   ;; Check the registered name
   (is (eq 'gtk:dest-defaults
-          (gobject:symbol-for-gtype "GtkDestDefaults")))
+          (glib:symbol-for-gtype "GtkDestDefaults")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkDestDefaults")
           (g:gtype (cffi:foreign-funcall "gtk_dest_defaults_get_type" :size))))
@@ -256,4 +256,4 @@
                (gtk:target-table-new-from-list
                    (gtk:drag-source-target-list source))))))
 
-;;; --- 2023-5-25 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

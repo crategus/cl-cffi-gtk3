@@ -12,7 +12,7 @@
   (is (g:type-is-object "GdkDisplayManager"))
   ;; Check the registered name
   (is (eq 'gdk:display-manager
-          (gobject:symbol-for-gtype "GdkDisplayManager")))
+          (glib:symbol-for-gtype "GdkDisplayManager")))
   ;; Check the type initializer
   (is (eq (g:gtype "GdkDisplayManager")
           (g:gtype (cffi:foreign-funcall "gdk_display_manager_get_type" :size))))
@@ -93,4 +93,4 @@
          (name (gdk:display-name (gdk:display-manager-default-display manager))))
     (is-true (gdk:display-manager-open-display manager name))))
 
-;;; 2022-12-12
+;;; --- 2023-5-29 --------------------------------------------------------------

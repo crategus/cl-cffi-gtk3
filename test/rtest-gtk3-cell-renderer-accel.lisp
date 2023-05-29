@@ -16,7 +16,7 @@
                                          :size))))
   ;; Check the registered name
   (is (eq 'gtk:cell-renderer-accel-mode
-          (gobject:symbol-for-gtype "GtkCellRendererAccelMode")))
+          (glib:symbol-for-gtype "GtkCellRendererAccelMode")))
   ;; Check the names
   #-windows
   (is (equal '("GTK_CELL_RENDERER_ACCEL_MODE_GTK"
@@ -55,8 +55,8 @@
   #+windows
   (is (equal '(DEFINE-G-ENUM "GtkCellRendererAccelMode"
                              GTK-CELL-RENDERER-ACCEL-MODE
-                             (:EXPORT T 
-                              :TYPE-INITIALIZER 
+                             (:EXPORT T
+                              :TYPE-INITIALIZER
                               "gtk_cell_renderer_accel_mode_get_type")
                              (:GTK 0)
                              (:OTHER 1))
@@ -69,7 +69,7 @@
   (is (g:type-is-object "GtkCellRendererAccel"))
   ;; Check the registered name
   (is (eq 'gtk:cell-renderer-accel
-          (gobject:symbol-for-gtype "GtkCellRendererAccel")))
+          (glib:symbol-for-gtype "GtkCellRendererAccel")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkCellRendererAccel")
           (g:gtype (cffi:foreign-funcall "gtk_cell_renderer_accel_get_type"
@@ -121,4 +121,4 @@
 
 ;;;     gtk_cell_renderer_accel_new
 
-;;; --- 2023-3-9 ---------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

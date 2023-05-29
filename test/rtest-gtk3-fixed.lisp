@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkFixed"))
   ;; Check the registered name
   (is (eq 'gtk:fixed
-          (gobject:symbol-for-gtype "GtkFixed")))
+          (glib:symbol-for-gtype "GtkFixed")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkFixed")
           (g:gtype (cffi:foreign-funcall "gtk_fixed_get_type" :size))))
@@ -97,4 +97,4 @@
     (is (= 15 (gtk:fixed-child-x fixed button)))
     (is (= 25 (gtk:fixed-child-y fixed button)))))
 
-;;; 2022-12-22
+;;; --- 2023-5-29 --------------------------------------------------------------

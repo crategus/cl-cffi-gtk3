@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkPageSetup"))
   ;; Check the registered name
   (is (eq 'gtk:page-setup
-          (gobject:symbol-for-gtype "GtkPageSetup")))
+          (glib:symbol-for-gtype "GtkPageSetup")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkPageSetup")
           (g:gtype (cffi:foreign-funcall "gtk_page_setup_get_type" :size))))
@@ -179,4 +179,4 @@
 "{'PPDName': <'A4'>, 'DisplayName': <'A4'>, 'Width': <210.0>, 'Height': <297.0>, 'MarginTop': <6.3499999999999996>, 'MarginBottom': <14.224>, 'MarginLeft': <6.3499999999999996>, 'MarginRight': <6.3499999999999996>, 'Orientation': <'portrait'>}")))
       (is (eq 'gtk:page-setup (type-of (gtk:page-setup-new-from-gvariant variant)))))))
 
-;;; --- 2023-1-29 --------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

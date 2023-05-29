@@ -14,7 +14,7 @@
   (is (g:type-is-enum "GdkCursorType"))
   ;; Check the registered name
   (is (eq 'gdk:cursor-type
-          (gobject:symbol-for-gtype "GdkCursorType")))
+          (glib:symbol-for-gtype "GdkCursorType")))
   ;; Check the names
   (is (equal '("GDK_X_CURSOR" "GDK_ARROW" "GDK_BASED_ARROW_DOWN"
                "GDK_BASED_ARROW_UP" "GDK_BOAT" "GDK_BOGOSITY"
@@ -166,7 +166,7 @@
   (is (g:type-is-object "GdkCursor"))
   ;; Check the registered name
   (is (eq 'gdk:cursor
-          (gobject:symbol-for-gtype "GdkCursor")))
+          (glib:symbol-for-gtype "GdkCursor")))
   ;; Check the parent
   (is (eq (g:gtype "GObject")
           (g:type-parent "GdkCursor")))
@@ -268,4 +268,4 @@
       #-windows (is (=  7.0d0 y-hot))
       #+windows (is (=  0.0d0 y-hot)))))
 
-;;; --- 2023-1-8 ---------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

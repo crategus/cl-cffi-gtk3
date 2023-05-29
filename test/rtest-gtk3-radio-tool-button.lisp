@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkRadioToolButton"))
   ;; Check the registered name
   (is (eq 'gtk:radio-tool-button
-          (gobject:symbol-for-gtype "GtkRadioToolButton")))
+          (glib:symbol-for-gtype "GtkRadioToolButton")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkRadioToolButton")
           (g:gtype (cffi:foreign-funcall "gtk_radio_tool_button_get_type" :size))))
@@ -133,4 +133,4 @@
     (is (typep (first (gtk:radio-tool-button-get-group button))
                'gtk:radio-button))))
 
-;;; --- 2022-12-27 -------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------

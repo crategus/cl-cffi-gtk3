@@ -41,7 +41,7 @@
                                          :size))))
   ;; Check the registered name
   (is (eq 'gtk:widget-help-type
-          (gobject:symbol-for-gtype "GtkWidgetHelpType")))
+          (glib:symbol-for-gtype "GtkWidgetHelpType")))
   ;; Check the names
   (is (equal '("GTK_WIDGET_HELP_TOOLTIP" "GTK_WIDGET_HELP_WHATS_THIS")
              (list-enum-item-name "GtkWidgetHelpType")))
@@ -71,7 +71,7 @@
   (is (g:type-is-object "GtkWidget"))
   ;; Check the registered name
   (is (eq 'gtk:widget
-          (gobject:symbol-for-gtype "GtkWidget")))
+          (glib:symbol-for-gtype "GtkWidget")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkWidget")
           (g:gtype (cffi:foreign-funcall "gtk_widget_get_type" :size))))
@@ -538,7 +538,7 @@
           (g:gtype (cffi:foreign-funcall "gtk_text_direction_get_type" :size))))
   ;; Check the registered name
   (is (eq 'gtk:text-direction
-          (gobject:symbol-for-gtype "GtkTextDirection")))
+          (glib:symbol-for-gtype "GtkTextDirection")))
   ;; Check the names
   (is (equal '("GTK_TEXT_DIR_NONE" "GTK_TEXT_DIR_LTR" "GTK_TEXT_DIR_RTL")
              (list-enum-item-name "GtkTextDirection")))
@@ -956,4 +956,4 @@
 ;;;     gtk_widget_queue_compute_expand
 ;;;     gtk_widget_compute_expand
 
-;;; 2022-7-9
+;;; --- 2023-5-29 --------------------------------------------------------------

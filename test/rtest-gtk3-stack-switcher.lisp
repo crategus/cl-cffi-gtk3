@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkStackSwitcher"))
   ;; Check the registered name
   (is (eq 'gtk:stack-switcher
-          (gobject:symbol-for-gtype "GtkStackSwitcher")))
+          (glib:symbol-for-gtype "GtkStackSwitcher")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkStackSwitcher")
           (g:gtype (cffi:foreign-funcall "gtk_stack_switcher_get_type" :size))))
@@ -59,4 +59,4 @@
 ;;;     gtk_stack_switcher_set_stack                       Accessor
 ;;;     gtk_stack_switcher_get_stack                       Accessor
 
-;;; 2021-10-20
+;;; --- 2023-5-29 --------------------------------------------------------------

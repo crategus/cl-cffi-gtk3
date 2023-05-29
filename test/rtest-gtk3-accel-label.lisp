@@ -12,7 +12,7 @@
   (is (g:type-is-object "GtkAccelLabel"))
   ;; Check the registered name
   (is (eq 'gtk:accel-label
-          (gobject:symbol-for-gtype "GtkAccelLabel")))
+          (glib:symbol-for-gtype "GtkAccelLabel")))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkAccelLabel")
           (g:gtype (cffi:foreign-funcall "gtk_accel_label_get_type" :size))))
@@ -81,4 +81,4 @@
 
 ;;;     gtk_accel_label_refetch
 
-;;; --- 2022-12-27 -------------------------------------------------------------
+;;; --- 2023-5-29 --------------------------------------------------------------
