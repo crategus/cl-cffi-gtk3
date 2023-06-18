@@ -73,7 +73,7 @@
 
 #+liber-documentation
 (setf (documentation 'font-chooser-dialog 'type)
- "@version{#2023-3-5}
+ "@version{2023-6-16}
   @begin{short}
     The @sym{gtk:font-chooser-dialog} widget is a dialog for selecting a font.
   @end{short}
@@ -96,7 +96,7 @@
 
 (defun font-chooser-dialog-new (title parent)
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{2023-6-16}
   @argument[title]{a string with the title of the dialog, or @code{nil}}
   @argument[parent]{a @class{gtk:window} transient parent of the dialog, or
     @code{nil}}
@@ -104,9 +104,12 @@
   @short{Creates a new font chooser dialog.}
   @see-class{gtk:font-chooser-dialog}
   @see-class{gtk:window}"
-  (make-instance 'font-chooser-dialog
-                 :title title
-                 :parent parent))
+  (if parent
+      (make-instance 'font-chooser-dialog
+                     :title (if title title (cffi:null-pointer))
+                     :parent parent)
+      (make-instance 'font-chooser-dialog
+                     :title (if title title (cffi:null-pointer)))))
 
 (export 'font-chooser-dialog-new)
 

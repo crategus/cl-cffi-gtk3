@@ -79,7 +79,7 @@
 
 #+liber-documentation
 (setf (documentation 'color-chooser-dialog 'type)
- "@version{#2023-2-14}
+ "@version{2023-6-15}
   @begin{short}
     The @sym{gtk:color-chooser-dialog} widget is a dialog for choosing a color.
   @end{short}
@@ -114,12 +114,14 @@
                       (gdk:rgba-parse \"SlateGray\")
                       (gdk:rgba-parse \"DarkSlateGray\"))))
 
-  (defun example-color-chooser-dialog ()
+  (defun example-color-chooser-dialog (&optional application)
     (within-main-loop
-      (let ((window (make-instance 'gtk-window
+      (let ((window (make-instance 'gtk:window
                                    :title \"Example Color Chooser Dialog\"
+                                   :type :toplevel
+                                   :application application
                                    :default-width 400))
-            (area (make-instance 'gtk-drawing-area)))
+            (area (make-instance 'gtk:drawing-area)))
         (g:signal-connect window \"destroy\"
                           (lambda (widget)
                             (declare (ignore widget))
@@ -128,20 +130,21 @@
         (g:signal-connect area \"draw\"
             (lambda (widget cr)
               (declare (ignore widget))
-              (let ((cr (pointer cr))
+              (let ((cr (glib:boxed-opaque-pointer cr))
                     (red (gdk:rgba-red bg-color))
                     (green (gdk:rgba-green bg-color))
                     (blue (gdk:rgba-blue bg-color)))
                     ;; Paint the current color on the drawing area
-                    (cairo-set-source-rgb cr red green blue)
-                    (cairo-paint cr)
+                    (cairo:set-source-rgb cr red green blue)
+                    (cairo:paint cr)
                     ;; Print a hint on the drawing area
-                    (cairo-set-source-rgb cr (- 1 red) (- 1 green) (- 1 blue))
-                    (cairo-select-font-face cr \"Sans\")
-                    (cairo-set-font-size cr 12)
-                    (cairo-move-to cr 12 24)
-                    (cairo-show-text cr message)
-                    (cairo-destroy cr))))
+                    (cairo:set-source-rgb cr (- 1 red)
+                                             (- 1 green) (- 1 blue))
+                    (cairo:select-font-face cr \"Sans\")
+                    (cairo:set-font-size cr 12)
+                    (cairo:move-to cr 12 24)
+                    (cairo:show-text cr message)
+                    (cairo:destroy cr))))
         ;; Create and run a color chooser dialog to select a background color
         (g:signal-connect area \"event\"
             (lambda (widget event)
@@ -156,24 +159,24 @@
                   ;; Set the actual background color for the color chooser
                   (setf (gtk:color-chooser-rgba dialog) bg-color)
                   ;; Run the color chooser dialog
-                  (let ((response (gtk-dialog-run dialog)))
+                  (let ((response (gtk:dialog-run dialog)))
                     (when (eq response :ok)
                       ;; Change the background color for the drawing area
                       (setf bg-color (gtk:color-chooser-rgba dialog)))
                       ;; Destroy the color chooser dialog
-                      (gtk-widget-destroy dialog))))))
+                      (gtk:widget-destroy dialog))))))
         ;; Set the event mask for the drawing area
-        (setf (gtk-widget-events area) :button-press-mask)
+        (setf (gtk:widget-events area) :button-press-mask)
         ;; Add the drawing area to the window
-        (gtk-container-add window area)
-        (gtk-widget-show-all window)))))
+        (gtk:container-add window area)
+        (gtk:widget-show-all window)))))    
     @end{pre}
   @end{dictionary}
   @see-constructor{gtk:color-chooser-dialog-new}
   @see-slot{gtk:color-chooser-dialog-show-editor}
   @see-class{gtk:color-chooser}
   @see-class{gtk:color-button}
-  @see-class{gtk-dialog}")
+  @see-class{gtk:dialog}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; Property and Accesor Details
@@ -191,7 +194,7 @@
 (setf (liber:alias-for-function 'color-chooser-dialog-show-editor)
       "Accessor"
       (documentation 'color-chooser-dialog-show-editor 'function)
- "@version{#2023-2-14}
+ "@version{2023-6-14}
   @syntax[]{(gtk:color-chooser-dialog-show-editor object) => show-editor}
   @syntax[]{(setf (gtk:color-chooser-dialog-show-editor object) show-editor)}
   @argument[object]{a @class{gtk:color-chooser-dialog} widget}
@@ -210,17 +213,20 @@
 
 (defun color-chooser-dialog-new (title parent)
  #+liber-documentation
- "@version{#2023-2-14}
+ "@version{2023-6-15}
   @argument[title]{a string with the title of the dialog, or @code{nil}}
   @argument[parent]{a @class{gtk:window} transient parent of the dialog,
     or @code{nil}}
   @return{A new @class{gtk:color-chooser-dialog} widget.}
   @short{Creates a new color chooser dialog.}
-  @see-class{gtk-window}
+  @see-class{gtk:window}
   @see-class{gtk:color-chooser-dialog}"
-  (make-instance 'color-chooser-dialog
-                 :title (if title title (cffi:null-pointer))
-                 :parent parent))
+  (if parent
+      (make-instance 'color-chooser-dialog
+                     :title (if title title (cffi:null-pointer))
+                     :parent parent)
+      (make-instance 'color-chooser-dialog
+                     :title (if title title (cffi:null-pointer)))))
 
 (export 'color-chooser-dialog-new)
 

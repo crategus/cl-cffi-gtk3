@@ -89,7 +89,7 @@
 
 #+liber-documentation
 (setf (documentation 'color-selection-dialog 'type)
- "@version{#2023-3-16}
+ "@version{2023-6-15}
   @begin{short}
     The @sym{gtk:color-selection-dialog} widget provides a standard dialog
     which allows the user to select a color much like the
@@ -138,7 +138,7 @@
 (setf (liber:alias-for-function 'color-selection-dialog-cancel-button)
       "Accessor"
       (documentation 'color-selection-dialog-cancel-button 'function)
- "@version{#2023-3-16}
+ "@version{2023-6-15}
   @syntax[]{(gtk:color-selection-dialog-cancel-button object) => button}
   @syntax[]{(setf (gtk:color-selection-dialog-cancel-button object) button)}
   @argument[object]{a @class{gtk:color-selection-dialog} widget}
@@ -167,7 +167,7 @@
 (setf (liber:alias-for-function 'color-selection-dialog-color-selection)
       "Accessor"
       (documentation 'color-selection-dialog-color-selection 'function)
- "@version{#2023-3-16}
+ "@version{2023-6-15}
   @syntax[]{(gtk:color-selection-dialog-color-selection object) => selection}
   @syntax[]{(setf (gtk:color-selection-dialog-color-selection object) selection)}
   @argument[object]{a @class{gtk:color-selection-dialog} widget}
@@ -197,7 +197,7 @@
 (setf (liber:alias-for-function 'color-selection-dialog-help-button)
       "Accessor"
       (documentation 'color-selection-dialog-help-button 'function)
- "@version{#2023-3-16}
+ "@version{2023-6-15}
   @syntax[]{(gtk:color-selection-dialog-help-button object) => button}
   @syntax[]{(setf (gtk:color-selection-dialog-help-button object) button)}
   @argument[object]{a @class{gtk:color-selection-dialog} widget}
@@ -226,7 +226,7 @@
 (setf (liber:alias-for-function 'color-selection-dialog-ok-button)
       "Accessor"
       (documentation 'color-selection-dialog-ok-button 'function)
- "@version{#2023-3-16}
+ "@version{2023-6-15}
   @syntax[]{(gtk:color-selection-dialog-ok-button object) => button}
   @syntax[]{(setf (gtk:color-selection-dialog-ok-button object) button)}
   @argument[object]{a @class{gtk:color-selection-dialog} widget}
@@ -251,7 +251,7 @@
 
 (defun color-selection-dialog-new (title)
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{2023-6-15}
   @argument[title]{a string containing the title text for the dialog}
   @return{A @class{gtk:color-selection-dialog} widget.}
   @begin{short}
@@ -263,7 +263,7 @@
   @end{dictionary}
   @see-class{gtk:color-selection-dialog}"
   (make-instance 'color-selection-dialog
-                 :title title))
+                 :title (if title title (cffi:null-pointer))))
 
 (export 'color-selection-dialog-new)
 

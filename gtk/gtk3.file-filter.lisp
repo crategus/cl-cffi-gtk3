@@ -80,7 +80,7 @@
 (setf (liber:alias-for-symbol 'file-filter-flags)
       "GFlags"
       (liber:symbol-documentation 'file-filter-flags)
- "@version{#2023-3-14}
+ "@version{2023-6-11}
   @begin{short}
     These flags indicate what parts of a @symbol{gtk:file-filter-info}
     instance are filled or need to be filled.
@@ -110,7 +110,7 @@
 
 ;; TODO: Consider to improve the implementation of GtkFileFilterInfo.
 
-(defcstruct file-filter-info
+(cffi:defcstruct file-filter-info
   (contains file-filter-flags)
   (filename :string)
   (uri :string)
@@ -246,7 +246,7 @@
 
 #+liber-documentation
 (setf (documentation 'file-filter 'type)
- "@version{#2023-3-14}
+ "@version{2023-6-11}
   @begin{short}
     A @sym{gtk:file-filter} object can be used to restrict the files being
     shown in a @class{gtk:file-chooser} widget.
@@ -289,6 +289,7 @@
     @end{pre}
   @end{dictionary}
   @see-constructor{gtk:file-filter-new}
+  @see-constructor{gtk:file-filter-new-from-gvariant}
   @see-class{gtk:file-chooser}")
 
 ;;; ----------------------------------------------------------------------------
@@ -299,7 +300,7 @@
 
 (defun file-filter-new ()
  #+liber-documentation
- "@version{#2023-3-14}
+ "@version{2023-6-11}
   @return{A new @class{gtk:file-filter} object.}
   @begin{short}
     Creates a new file filter with no rules added to it.
@@ -336,21 +337,21 @@
                         :void)
   name)
 
-(defcfun ("gtk_file_filter_get_name" file-filter-name) :string
+(cffi:defcfun ("gtk_file_filter_get_name" file-filter-name) :string
  #+liber-documentation
- "@version{#2023-3-14}
+ "@version{2023-6-11}
   @syntax[]{(gtk:file-filter-name filter) => name}
   @syntax[]{(setf (gtk:file-filter-name filter) name)}
   @argument[filter]{a @class{gtk:file-filter} object}
-  @argument[name]{a string with the human readable-name for the filter,
+  @argument[name]{a string with the human readable name for the filter,
     or @code{nil} to remove any existing name}
   @begin{short}
     Accessor of the human readable name of the file filter.
   @end{short}
   The @sym{gtk:file-filter-name} function gets the human readable name for the
   file filter. The @sym{(setf gtk:file-filter-name)} function sets the human
-  readable name of the file filter. This is the string that will be displayed
-  in the file selector user interface if there is a selectable list of filters.
+  readable name. This is the string that will be displayed in the file selector
+  user interface if there is a selectable list of filters.
   @see-class{gtk:file-filter}"
   (filter (g:object file-filter)))
 
@@ -360,9 +361,9 @@
 ;;; gtk_file_filter_add_mime_type ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_file_filter_add_mime_type" file-filter-add-mime-type) :void
+(cffi:defcfun ("gtk_file_filter_add_mime_type" file-filter-add-mime-type) :void
  #+liber-documentation
- "@version{#2023-3-14}
+ "@version{2023-6-11}
   @argument[filter]{a @class{gtk:file-filter} object}
   @argument[mime-type]{a string with the name of a MIME type}
   @begin{short}
@@ -378,9 +379,9 @@
 ;;; gtk_file_filter_add_pattern ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_file_filter_add_pattern" file-filter-add-pattern) :void
+(cffi:defcfun ("gtk_file_filter_add_pattern" file-filter-add-pattern) :void
  #+liber-documentation
- "@version{#2023-3-14}
+ "@version{2023-6-11}
   @argument[filter]{a @class{gtk:file-filter} object}
   @argument[pattern]{a string with a shell style glob pattern}
   @begin{short}
@@ -397,10 +398,10 @@
 ;;; gtk_file_filter_add_pixbuf_formats ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_file_filter_add_pixbuf_formats" file-filter-add-pixbuf-formats)
-    :void
+(cffi:defcfun ("gtk_file_filter_add_pixbuf_formats"
+                file-filter-add-pixbuf-formats) :void
  #+liber-documentation
- "@version{#2023-3-14}
+ "@version{2023-6-11}
   @argument[filter]{a @class{gtk:file-filter} object}
   @begin{short}
     Adds a rule allowing image files in the formats supported by a
@@ -416,10 +417,10 @@
 ;;; GtkFileFilterFunc ()
 ;;; ----------------------------------------------------------------------------
 
-(defcallback file-filter-func :boolean
-    ((filter-info (:pointer (:struct file-filter-info)))
+(cffi:defcallback file-filter-func :boolean
+    ((info (:pointer (:struct file-filter-info)))
      (data :pointer))
-  (funcall (glib:get-stable-pointer-value data) filter-info))
+  (funcall (glib:get-stable-pointer-value data) info))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'file-filter-func)
@@ -448,7 +449,7 @@ lambda (info)
 ;;; gtk_file_filter_add_custom ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_file_filter_add_custom" %file-filter-add-custom) :void
+(cffi:defcfun ("gtk_file_filter_add_custom" %file-filter-add-custom) :void
   (filter (g:object file-filter))
   (needed file-filter-flags)
   (func :pointer)
@@ -457,10 +458,10 @@ lambda (info)
 
 (defun file-filter-add-custom (filter needed func)
  #+liber-documentation
- "@version{#2023-3-14}
+ "@version{#2023-6-11}
   @argument[filter]{a @class{gtk:file-filter} object}
-  @argument[needed]{bitfield of @symbol{gtk:file-filter-flags} flags indicating
-    the information that the custom filter function needs}
+  @argument[needed]{a @symbol{gtk:file-filter-flags} value with the flags
+    indicating the information that the custom filter function needs}
   @argument[func]{callback function, if the function returns @em{true}, then
     the file will be displayed}
   @begin{short}
@@ -501,13 +502,14 @@ lambda (info)
 ;;; gtk_file_filter_get_needed () -> file-filter-needed
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_file_filter_get_needed" file-filter-needed) file-filter-flags
+(cffi:defcfun ("gtk_file_filter_get_needed" file-filter-needed)
+    file-filter-flags
  #+liber-documentation
- "@version{#2023-3-14}
+ "@version{2023-6-11}
   @argument[filter]{a @class{gtk:file-filter} object}
   @begin{return}
-    A bitfield of @symbol{gtk:file-filter-flags} flags indicating needed fields
-    when calling the @fun{gtk:file-filter-filter} function.
+    A @symbol{gtk:file-filter-flags} value with the flags indicating needed
+    fields when calling the @fun{gtk:file-filter-filter} function.
   @end{return}
   @begin{short}
     Gets the fields that need to be filled in for the structure passed to
@@ -517,6 +519,8 @@ lambda (info)
   principally for use in the implementation of a @class{gtk:file-chooser}
   widget.
   @see-class{gtk:file-filter}
+  @see-class{gtk:file-chooser}
+  @see-symbol{gtk:file-filter-flags}
   @see-function{gtk:file-filter-filter}"
   (filter (g:object file-filter)))
 
@@ -526,9 +530,9 @@ lambda (info)
 ;;; gtk_file_filter_filter ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_file_filter_filter" file-filter-filter) :boolean
+(cffi:defcfun ("gtk_file_filter_filter" file-filter-filter) :boolean
  #+liber-documentation
- "@version{#2023-3-14}
+ "@version{#2023-6-11}
   @argument[filter]{a @class{gtk:file-filter} object}
   @argument[info]{a @symbol{gtk:file-filter-info} instance containing
     information about a file}
@@ -542,7 +546,10 @@ lambda (info)
   This function will not typically be used by applications. It is intended
   principally for use in the implementation of a @class{gtk:file-chooser}
   widget.
-  @see-class{gtk:file-filter}"
+  @see-class{gtk:file-filter}
+  @see-class{gtk:file-chooser}
+  @see-symbol{gtk:file-filter-info}
+  @see-function{gtk:file-filter-needed}"
   (filter (g:object file-filter))
   (info (:pointer (:struct file-filter-info))))
 
@@ -552,10 +559,10 @@ lambda (info)
 ;;; gtk_file_filter_new_from_gvariant ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_file_filter_new_from_gvariant" file-filter-new-from-gvariant)
-    (g:object file-filter)
+(cffi:defcfun ("gtk_file_filter_new_from_gvariant"
+                file-filter-new-from-gvariant) (g:object file-filter)
  #+liber-documentation
- "@version{#2023-3-14}
+ "@version{2023-6-11}
   @argument[variant]{a @code{a{sv@}} @symbol{g:variant} instance}
   @return{A new @class{gtk:file-filter} object.}
   @begin{short}
@@ -563,7 +570,8 @@ lambda (info)
     produced by the @fun{gtk:file-filter-to-gvariant} function.
   @end{short}
   @see-class{gtk:file-filter}
-  @see-symbol{g:variant}"
+  @see-symbol{g:variant}
+  @see-function{gtk:file-filter-to-gvariant}"
   (variant (:pointer (:struct g:variant))))
 
 (export 'file-filter-new-from-gvariant)
@@ -572,10 +580,10 @@ lambda (info)
 ;;; gtk_file_filter_to_gvariant ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_file_filter_to_gvvariant" file-filter-to-gvariant)
+(cffi:defcfun ("gtk_file_filter_to_gvariant" file-filter-to-gvariant)
     (:pointer (:struct g:variant))
  #+liber-documentation
- "@version{#2023-3-14}
+ "@version{2023-6-11}
   @argument[filter]{a @class{gtk:file-filter} object}
   @return{A new @symbol{g:variant} instance.}
   @begin{short}

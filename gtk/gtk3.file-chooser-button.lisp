@@ -115,8 +115,9 @@
   This widget does not support setting the
   @slot[gtk:file-chooser]{select-multiple} property to @em{true}.
 
-  The @sym{gtk:file-chooser-button} widget supports the
-  @symbol{gtk:file-chooser-action}'s @code{:open} and @code{:select-folder}.
+  The @sym{gtk:file-chooser-button} widget supports the @code{:open} and
+  @code{:select-folder} values of the @symbol{gtk:file-chooser-action}
+  enumeration.
   @begin[Example]{dictionary}
     Create a button to let the user select a file.
     @begin{pre}
@@ -151,7 +152,6 @@ lambda (widget)    :run-first
   @end{dictionary}
   @see-constructor{gtk:file-chooser-button-new}
   @see-constructor{gtk:file-chooser-button-new-with-dialog}
-  @see-slot{gtk:file-chooser-button-dialog}
   @see-slot{gtk:file-chooser-button-focus-on-click}
   @see-slot{gtk:file-chooser-button-title}
   @see-slot{gtk:file-chooser-button-width-chars}
@@ -164,17 +164,21 @@ lambda (widget)    :run-first
 
 ;;; --- file-chooser-button-dialog ---------------------------------------------
 
+;; This property is not readable or writable. We do not export the accessor.
+
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "dialog" 'file-chooser-button) t)
  "The @code{dialog} property of type @class{gtk:file-chooser}
   (Write / Construct Only) @br{}
-  Instance of the file chooser dialog associated with the button.")
+  Instance of the file chooser dialog associated with the button. This
+  property is not readable or writable from the Lisp side. The accessor
+  is not exported.")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'file-chooser-button-dialog)
       "Accessor"
       (documentation 'file-chooser-button-dialog 'function)
- "@version{#2023-3-17}
+ "@version{2023-6-11}
   @syntax[]{(gtk:file-chooser-button-dialog object) => dialog}
   @syntax[]{(setf (gtk:file-chooser-button-dialog object) dialog)}
   @argument[object]{a @class{gtk:file-chooser-button} widget}
@@ -186,6 +190,8 @@ lambda (widget)    :run-first
   Instance of the file chooser dialog associated with the button.
   @see-class{gtk:file-chooser-button}
   @see-class{gtk:file-chooser-dialog}")
+
+(unexport 'file-chooser-button-dialog)
 
 ;;; --- file-chooser-button-focus-on-click -------------------------------------
 
@@ -202,7 +208,7 @@ lambda (widget)    :run-first
 (setf (liber:alias-for-function 'file-chooser-button-focus-on-click)
       "Accessor"
       (documentation 'file-chooser-button-focus-on-click 'function)
- "@version{#2023-3-17}
+ "@version{2023-6-11}
   @syntax[]{(gtk:file-chooser-button-focus-on-click object) => focus-on-click}
   @syntax[]{(setf (gtk:file-chooser-button-focus-on-click object) focus-on-click)}
   @argument[object]{a @class{gtk:file-chooser-button} widget to modify}
@@ -240,7 +246,7 @@ lambda (widget)    :run-first
 (setf (liber:alias-for-function 'file-chooser-button-title)
       "Accessor"
       (documentation 'file-chooser-button-title 'function)
- "@version{#2023-3-17}
+ "@version{2023-6-11}
   @syntax[]{(gtk:file-chooser-button-title object) => title}
   @syntax[]{(setf (gtk:file-chooser-button-title object) title)}
   @argument[object]{a @class{gtk:file-chooser-button} widget to modify}
@@ -268,7 +274,7 @@ lambda (widget)    :run-first
 (setf (liber:alias-for-function 'file-chooser-button-width-chars)
       "Accessor"
       (documentation 'file-chooser-button-width-chars 'function)
- "@version{#2023-3-17}
+ "@version{2023-6-11}
   @syntax[]{(gtk:file-chooser-button-width-chars object) => n-chars}
   @syntax[]{(setf (gtk:file-chooser-button-width-chars object) n-chars)}
   @argument[object]{a @class{gtk:file-chooser-button} widget to modify}
@@ -291,7 +297,7 @@ lambda (widget)    :run-first
 
 (defun file-chooser-button-new (title action)
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{2023-6-11}
   @argument[title]{a string with the title of the browse dialog}
   @argument[action]{a @symbol{gtk:file-chooser-action} value with the open mode
     for the widget}
@@ -315,7 +321,7 @@ lambda (widget)    :run-first
 
 (defun file-chooser-button-new-with-dialog (dialog)
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{2023-6-11}
   @argument[dialog]{a @class{gtk:dialog} widget to use as dialog}
   @return{A new @class{gtk:file-chooser} widget.}
   @begin{short}

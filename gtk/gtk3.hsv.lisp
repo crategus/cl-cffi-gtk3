@@ -79,7 +79,7 @@
 
 #+liber-documentation
 (setf (documentation 'hsv 'type)
- "@version{#2023-3-20}
+ "@version{2023-6-15}
   @begin{short}
     The @sym{gtk:hsv} widget is the \"color wheel\" part of a complete color
     selector widget.
@@ -121,7 +121,7 @@ lambda (hsv direction)    :action
 
 (defun hsv-new ()
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{2023-6-15}
   @return{A newly-created @class{gtk:hsv} widget.}
   @begin{short}
     Creates a new HSV color selector.
@@ -139,9 +139,9 @@ lambda (hsv direction)    :action
 ;;; gtk_hsv_set_color ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_hsv_set_color" hsv-set-color) :void
+(cffi:defcfun ("gtk_hsv_set_color" hsv-set-color) :void
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{2023-6-15}
   @argument[hsv]{a @class{gtk:hsv} widget}
   @argument[h]{a double float hue component}
   @argument[s]{a double float saturation component}
@@ -166,7 +166,7 @@ lambda (hsv direction)    :action
 ;;; gtk_hsv_get_color ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_hsv_get_color" %hsv-get-color) :void
+(cffi:defcfun ("gtk_hsv_get_color" %hsv-get-color) :void
   (hsv (g:object hsv))
   (h (:pointer :double))
   (s (:pointer :double))
@@ -174,7 +174,7 @@ lambda (hsv direction)    :action
 
 (defun hsv-get-color (hsv)
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{2023-6-15}
   @argument[hsv]{a @class{gtk:hsv} widget}
   @begin{return}
     @arg{h} -- a double float hue component @br{}
@@ -202,9 +202,9 @@ lambda (hsv direction)    :action
 ;;; gtk_hsv_set_metrics ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_hsv_set_metrics" hsv-set-metrics) :void
+(cffi:defcfun ("gtk_hsv_set_metrics" hsv-set-metrics) :void
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{2023-6-15}
   @argument[hsv]{a @class{gtk:hsv} widget}
   @argument[size]{an integer with the diameter for the hue ring}
   @argument[width]{an integer with the width of the hue ring}
@@ -224,14 +224,14 @@ lambda (hsv direction)    :action
 ;;; gtk_hsv_get_metrics ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_hsv_get_metrics" %hsv-get-metrics) :void
+(cffi:defcfun ("gtk_hsv_get_metrics" %hsv-get-metrics) :void
   (hsv (g:object hsv))
   (size (:pointer :int))
   (width (:pointer :int)))
 
 (defun hsv-get-metrics (hsv)
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{2023-6-15}
   @argument[hsv]{a @class{gtk:hsv} widget}
   @begin{return}
     @arg{size} -- an integer with the diameter of the hue ring @br{}
@@ -253,9 +253,9 @@ lambda (hsv direction)    :action
 ;;; gtk_hsv_is_adjusting ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_hsv_is_adjusting" hsv-is-adjusting) :boolean
+(cffi:defcfun ("gtk_hsv_is_adjusting" hsv-is-adjusting) :boolean
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2023-6-15}
   @argument[hsv]{a @class{gtk:hsv} widget}
   @begin{return}
     @em{True} if clients can ignore changes to the color value, since they may
@@ -281,7 +281,7 @@ lambda (hsv direction)    :action
 ;;; gtk_hsv_to_rgb ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_hsv_to_rgb" %hsv-to-rgb) :void
+(cffi:defcfun ("gtk_hsv_to_rgb" %hsv-to-rgb) :void
   (h :double)
   (s :double)
   (v :double)
@@ -291,7 +291,7 @@ lambda (hsv direction)    :action
 
 (defun hsv-to-rgb (h s v)
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{2023-6-15}
   @argument[h]{a double float hue component}
   @argument[s]{a double float saturation component}
   @argument[v]{a double float value component}
@@ -307,7 +307,10 @@ lambda (hsv direction)    :action
   @see-class{gtk:hsv}
   @see-function{gtk:rgb-to-hsv}"
   (with-foreign-objects ((r :double) (g :double) (b :double))
-    (%hsv-to-rgb h s v r g b)
+    (%hsv-to-rgb (coerce h 'double-float)
+                 (coerce s 'double-float)
+                 (coerce v 'double-float)
+                 r g b)
     (values (cffi:mem-ref r :double)
             (cffi:mem-ref g :double)
             (cffi:mem-ref b :double))))
@@ -318,7 +321,7 @@ lambda (hsv direction)    :action
 ;;; gtk_rgb_to_hsv ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_rgb_to_hsv" %rgb-to-hsv) :void
+(cffi:defcfun ("gtk_rgb_to_hsv" %rgb-to-hsv) :void
   (r :double)
   (g :double)
   (b :double)
@@ -328,7 +331,7 @@ lambda (hsv direction)    :action
 
 (defun rgb-to-hsv (r g b)
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{2023-6-15}
   @argument[r]{a double float red component}
   @argument[g]{a double float green component}
   @argument[b]{a double float blue component}
@@ -344,7 +347,10 @@ lambda (hsv direction)    :action
   @see-class{gtk:hsv}
   @see-function{gtk:hsv-to-rgb}"
   (with-foreign-objects ((h :double) (s :double) (v :double))
-    (%rgb-to-hsv r g b h s v)
+    (%rgb-to-hsv (coerce r 'double-float)
+                 (coerce g 'double-float)
+                 (coerce b 'double-float)
+                 h s v)
     (values (cffi:mem-ref h :double)
             (cffi:mem-ref s :double)
             (cffi:mem-ref v :double))))

@@ -73,7 +73,7 @@
 
 #+liber-documentation
 (setf (documentation 'file-chooser-dialog 'type)
- "@version{#2023-3-17}
+ "@version{2023-6-11}
   @begin{short}
     The @sym{gtk:file-chooser-dialog} widget is a dialog box suitable for use
     with \"File/Open\" or \"File/Save as\" commands.
@@ -202,7 +202,7 @@
 
 (defun file-chooser-dialog-new (title parent action &rest buttons)
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{2023-6-11}
   @argument[title]{a string with title of the dialog, or @code{nil}}
   @argument[parent]{a @class{gtk:window} transient parent of the dialog,
     or @code{nil}}
@@ -222,7 +222,7 @@
     (when parent
       (setf (window-transient-for dialog) parent))
     (when buttons
-      (apply #'dialog-add-buttons (cons dialog buttons)))
+      (apply #'dialog-add-buttons dialog buttons))
     dialog))
 
 (export 'file-chooser-dialog-new)

@@ -35,10 +35,8 @@
 ;;;
 ;;;     GtkFontButton
 ;;;
-;;; Functions
+;;; Accessors
 ;;;
-;;;     gtk_font_button_new
-;;;     gtk_font_button_new_with_font
 ;;;     gtk_font_button_set_font_name                      Accessor
 ;;;     gtk_font_button_get_font_name                      Accessor
 ;;;     gtk_font_button_set_show_style                     Accessor
@@ -51,6 +49,11 @@
 ;;;     gtk_font_button_get_use_size                       Accessor
 ;;;     gtk_font_button_set_title                          Accessor
 ;;;     gtk_font_button_get_title                          Accessor
+;;;
+;;; Functions
+;;;
+;;;     gtk_font_button_new
+;;;     gtk_font_button_new_with_font
 ;;;
 ;;; Properties
 ;;;
@@ -117,7 +120,7 @@
 
 #+liber-documentation
 (setf (documentation 'font-button 'type)
- "@version{#2023-3-5}
+ "@version{2023-6-16}
   @begin{short}
     The @sym{gtk:font-button} widget is a button which displays the currently
     selected font and allows to open a font chooser dialog to change the font.
@@ -174,7 +177,7 @@ lambda (widget)    :run-first
 (setf (liber:alias-for-function 'font-button-font-name)
       "Accessor"
       (documentation 'font-button-font-name 'function)
- "@version{#2023-3-5}
+ "@version{2023-6-16}
   @syntax[]{(gtk:font-button-font-name object) => fontname}
   @syntax[]{(setf (gtk:font-button-font-name object) fontname)}
   @argument[object]{a @class{gtk:font-button} widget}
@@ -219,7 +222,7 @@ lambda (widget)    :run-first
 (setf (liber:alias-for-function 'font-button-show-size)
       "Accessor"
       (documentation 'font-button-show-size 'function)
- "@version{#2023-3-5}
+ "@version{2023-6-16}
   @syntax[]{(gtk:font-button-show-size object) => show-size}
   @syntax[]{(setf (gtk:font-button-show-size object) show-size)}
   @argument[object]{a @class{gtk:font-button} widget}
@@ -246,7 +249,7 @@ lambda (widget)    :run-first
 (setf (liber:alias-for-function 'font-button-show-style)
       "Accessor"
       (documentation 'font-button-show-style 'function)
- "@version{#2023-3-5}
+ "@version{2023-6-16}
   @syntax[]{(gtk:font-button-show-style object) => show-style}
   @syntax[]{(setf (gtk:font-button-show-style object) show-style)}
   @argument[object]{a @class{gtk:font-button} widget}
@@ -271,7 +274,7 @@ lambda (widget)    :run-first
 (setf (liber:alias-for-function 'font-button-title)
       "Accessor"
       (documentation 'font-button-title 'function)
- "@version{#2023-3-5}
+ "@version{2023-6-16}
   @syntax[]{(gtk:font-button-title object) => title}
   @syntax[]{(setf (gtk:font-button-title object) title)}
   @argument[object]{a @class{gtk:font-button} widget}
@@ -299,7 +302,7 @@ lambda (widget)    :run-first
 (setf (liber:alias-for-function 'font-button-use-font)
       "Accessor"
       (documentation 'font-button-use-font 'function)
- "@version{#2023-3-5}
+ "@version{2023-6-16}
   @syntax[]{(gtk:font-button-title object) => use-font}
   @syntax[]{(setf (gtk:font-button-title object) use-font)}
   @argument[object]{a @class{gtk:font-button} widget}
@@ -325,7 +328,7 @@ lambda (widget)    :run-first
 (setf (liber:alias-for-function 'font-button-use-size)
       "Accessor"
       (documentation 'font-button-use-size 'function)
- "@version{#2023-3-5}
+ "@version{2023-6-16}
   @syntax[]{(gtk:font-button-use-size object) => use-size}
   @syntax[]{(setf (gtk:font-button-use-size object) use-size)}
   @argument[object]{a @class{gtk:font-button} widget}
@@ -347,7 +350,7 @@ lambda (widget)    :run-first
 
 (defun font-button-new ()
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{2023-6-16}
   @return{A new @class{gtk:font-button} widget.}
   @short{Creates a new font picker widget.}
   @see-class{gtk:font-button}"
@@ -363,7 +366,7 @@ lambda (widget)    :run-first
 
 (defun font-button-new-with-font (fontname)
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{2023-6-16}
   @argument[fontname]{a string with the name of the font to display in the font
     chooser dialog}
   @return{A new @class{gtk:font-button} widget.}

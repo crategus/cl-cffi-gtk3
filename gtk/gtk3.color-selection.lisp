@@ -35,23 +35,26 @@
 ;;;
 ;;;     GtkColorSelection
 ;;;
-;;; Functions
+;;; Accessors
 ;;;
-;;;     gtk_color_selection_new
-;;;     gtk_color_selection_set_has_opacity_control
-;;;     gtk_color_selection_get_has_opacity_control
-;;;     gtk_color_selection_set_has_palette
-;;;     gtk_color_selection_get_has_palette
 ;;;     gtk_color_selection_get_current_alpha
 ;;;     gtk_color_selection_set_current_alpha
 ;;;     gtk_color_selection_get_current_color
 ;;;     gtk_color_selection_set_current_color
+;;;     gtk_color_selection_get_current_rgba
+;;;     gtk_color_selection_set_current_rgba
+;;;     gtk_color_selection_set_has_opacity_control
+;;;     gtk_color_selection_get_has_opacity_control
+;;;     gtk_color_selection_set_has_palette
+;;;     gtk_color_selection_get_has_palette
+;;;
+;;; Functions
+;;;
+;;;     gtk_color_selection_new
 ;;;     gtk_color_selection_get_previous_alpha
 ;;;     gtk_color_selection_set_previous_alpha
 ;;;     gtk_color_selection_get_previous_color
 ;;;     gtk_color_selection_set_previous_color
-;;;     gtk_color_selection_get_current_rgba
-;;;     gtk_color_selection_set_current_rgba
 ;;;     gtk_color_selection_get_previous_rgba
 ;;;     gtk_color_selection_set_previous_rgba
 ;;;     gtk_color_selection_is_adjusting
@@ -115,7 +118,7 @@
 
 #+liber-documentation
 (setf (documentation 'color-selection 'type)
- "@version{#2023-3-16}
+ "@version{2023-6-14}
   @begin{short}
     The @sym{gtk:color-selection} widget is used to select a color.
   @end{short}
@@ -164,7 +167,7 @@ lambda (selection)    :run-first
 (setf (liber:alias-for-function 'color-selection-current-alpha)
       "Accessor"
       (documentation 'color-selection-current-alpha 'function)
- "@version{#2023-3-16}
+ "@version{2023-6-14}
   @syntax[]{(gtk:color-selection-current-alpha object) => alpha}
   @syntax[]{(setf (gtk:color-selection-current-alpha object) alpha)}
   @argument[object]{a @class{gtk:color-selection} widget}
@@ -196,7 +199,7 @@ lambda (selection)    :run-first
 (setf (liber:alias-for-function 'color-selection-current-color)
       "Accessor"
       (documentation 'color-selection-current-color 'function)
- "@version{#2023-3-16}
+ "@version{2023-6-14}
   @syntax[]{(gtk:color-selection-current-color object) => color}
   @syntax[]{(setf (gtk:color-selection-current-color object) color)}
   @argument[object]{a @class{gtk:color-selection} widget}
@@ -228,7 +231,7 @@ lambda (selection)    :run-first
 (setf (liber:alias-for-function 'color-selection-current-rgba)
       "Accessor"
       (documentation 'color-selection-current-rgba 'function)
- "@version{#2023-3-16}
+ "@version{2023-6-14}
   @syntax[]{(gtk:color-selection-current-rgba object) => rgba}
   @syntax[]{(setf (gtk:color-selection-current-rgba object) rgba)}
   @argument[object]{a @class{gtk:color-selection} widget}
@@ -262,7 +265,7 @@ lambda (selection)    :run-first
 (setf (liber:alias-for-function 'color-selection-has-opacity-control)
       "Accessor"
       (documentation 'color-selection-has-opacity-control 'function)
- "@version{#2023-3-16}
+ "@version{2023-6-14}
   @syntax[]{(gtk:color-selection-has-opacity-control object) => has-opacity}
   @syntax[]{(setf (gtk:color-selection-has-opacity-control object) has-opacity)}
   @argument[object]{a @class{gtk:color-selection} widget}
@@ -295,7 +298,7 @@ lambda (selection)    :run-first
 (setf (liber:alias-for-function 'color-selection-has-palette)
       "Accessor"
       (documentation 'color-selection-has-palette 'function)
- "@version{#2023-3-16}
+ "@version{2023-6-14}
   @syntax[]{(gtk:color-selection-has-palette object) => has-palette}
   @syntax[]{(setf (gtk:color-selection-has-palette object) has-palette)}
   @argument[object]{a @class{gtk:color-selection} widget}
@@ -321,7 +324,7 @@ lambda (selection)    :run-first
 
 (defun color-selection-new ()
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{2023-6-14}
   @return{A new @class{gtk:color-selection} widget.}
   @short{Creates a new color selector.}
   @begin[Warning]{dictionary}
@@ -340,16 +343,16 @@ lambda (selection)    :run-first
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf color-selection-previous-alpha) (alpha selection)
-  (cffi:foreign-funcall "gtk_color_selection_previous_alpha"
+  (cffi:foreign-funcall "gtk_color_selection_set_previous_alpha"
                         (g:object color-selection) selection
                         :uint16 alpha
                         :void)
   alpha)
 
-(defcfun ("gtk_color_selection_get_previous_alpha"
-           color-selection-previous-alpha) :uint16
+(cffi:defcfun ("gtk_color_selection_get_previous_alpha"
+                color-selection-previous-alpha) :uint16
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{2023-6-14}
   @syntax[]{(gtk:color-selection-previous-alpha selection) => alpha}
   @syntax[]{(setf (gtk:color-selection-previous-alpha selection) alpha)}
   @argument[selection]{a @class{gtk:color-selection} widget}
@@ -385,14 +388,14 @@ lambda (selection)    :run-first
                         :void)
   color)
 
-(defcfun ("gtk_color_selection_get_previous_color"
-          %color-selection-get-previous-color) :void
+(cffi:defcfun ("gtk_color_selection_get_previous_color"
+                %color-selection-get-previous-color) :void
   (selection (g:object color-selection))
   (color (g:boxed gdk:color)))
 
 (defun color-selection-previous-color (selection)
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{2023-6-14}
   @syntax[]{(gtk:color-selection-previous-color selection) => color}
   @syntax[]{(setf (gtk:color-selection-previous-color selection) color)}
   @argument[selection]{a @class{gtk:color-selection} widget}
@@ -429,19 +432,19 @@ lambda (selection)    :run-first
 
 (defun (setf color-selection-previous-rgba) (rgba selection)
   (cffi:foreign-funcall "gtk_color_selection_set_previous_rgba"
-                        (g:object gkt-color-selection) selection
+                        (g:object color-selection) selection
                         (g:boxed gdk:rgba) rgba
                         :void)
   rgba)
 
-(defcfun ("gtk_color_selection_get_previous_rgba"
-          %color-selection-get-previous-rgba) :void
+(cffi:defcfun ("gtk_color_selection_get_previous_rgba"
+               %color-selection-get-previous-rgba) :void
   (selection (g:object color-selection))
   (rgba (g:boxed gdk:rgba)))
 
 (defun color-selection-previous-rgba (selection)
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{2023-6-14}
   @syntax[]{(gtk:color-selection-previous-rgba selection) => rgba}
   @syntax[]{(setf (gtk:color-selection-previous-rgba selection) rgba)}
   @argument[selection]{a @class{gtk:color-selection} widget}
@@ -474,7 +477,7 @@ lambda (selection)    :run-first
 ;;; gtk_color_selection_is_adjusting ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_color_selection_is_adjusting" color-selection-is-adjusting)
+(cffi:defcfun ("gtk_color_selection_is_adjusting" color-selection-is-adjusting)
     :boolean
  #+liber-documentation
  "@version{#2023-3-16}
@@ -499,8 +502,8 @@ lambda (selection)    :run-first
 ;;; gtk_color_selection_palette_from_string ()             not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_color_selection_palette_from_string"
-          %color-selection-palette-from-string) :boolean
+(cffi:defcfun ("gtk_color_selection_palette_from_string"
+                %color-selection-palette-from-string) :boolean
   (str :string)
   (colors :pointer)
   (n-colors :pointer))
@@ -542,8 +545,8 @@ lambda (selection)    :run-first
 
 ;; TODO: Check the implementation, is this correct?
 
-(defcfun ("gtk_color_selection_palette_to_string"
-          color-selection-palette-to-string) :string
+(cffi:defcfun ("gtk_color_selection_palette_to_string"
+                color-selection-palette-to-string) :string
  #+liber-documentation
  "@version{#2023-3-16}
   @argument[colors]{an array of colors}

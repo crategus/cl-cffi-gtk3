@@ -35,21 +35,24 @@
 ;;;
 ;;;     GtkColorButton
 ;;;
+;;; Accessors
+;;;
+;;;     gtk_color_button_set_color
+;;;     gtk_color_button_get_color
+;;;     gtk_color_button_set_alpha
+;;;     gtk_color_button_get_alpha
+;;;     gtk_color_button_set_rgba
+;;;     gtk_color_button_get_rgba
+;;;     gtk_color_button_set_use_alpha
+;;;     gtk_color_button_get_use_alpha
+;;;     gtk_color_button_set_title
+;;;     gtk_color_button_get_title
+;;;
 ;;; Functions
 ;;;
 ;;;     gtk_color_button_new
 ;;;     gtk_color_button_new_with_color
 ;;;     gtk_color_button_new_with_rgba
-;;;     gtk_color_button_set_color                         Accessor
-;;;     gtk_color_button_get_color                         Accessor
-;;;     gtk_color_button_set_alpha                         Accessor
-;;;     gtk_color_button_get_alpha                         Accessor
-;;;     gtk_color_button_set_rgba                          Accessor
-;;;     gtk_color_button_get_rgba                          Accessor
-;;;     gtk_color_button_set_use_alpha                     Accessor
-;;;     gtk_color_button_get_use_alpha                     Accessor
-;;;     gtk_color_button_set_title                         Accessor
-;;;     gtk_color_button_get_title                         Accessor
 ;;;
 ;;; Properties
 ;;;
@@ -116,7 +119,7 @@
 
 #+liber-documentation
 (setf (documentation 'color-button 'type)
- "@version{#2023-2-14}
+ "@version{2023-6-14}
   @begin{short}
     The @sym{gtk:color-button} widget is a button which displays the currently
     selected color and allows to open a color selection dialog to change the
@@ -200,7 +203,7 @@ lambda (button)    :run-first
 (setf (liber:alias-for-function 'color-button-alpha)
       "Accessor"
       (documentation 'color-button-alpha 'function)
- "@version{#2023-2-14}
+ "@version{2023-6-14}
   @syntax[]{(gtk:color-button-alpha object) => alpha)}
   @syntax[]{(setf (gtk:color-button-alpha object) alpha)}
   @argument[object]{a @class{gtk:color-button} widget}
@@ -234,7 +237,7 @@ lambda (button)    :run-first
 (setf (liber:alias-for-function 'color-button-color)
       "Accessor"
       (documentation 'color-button-color 'function)
- "@version{#2023-2-14}
+ "@version{2023-6-14}
   @syntax[]{(gtk:color-button-color object) => color)}
   @syntax[]{(setf (gtk:color-button-color object) color)}
   @argument[object]{a @class{gtk:color-button} widget}
@@ -266,7 +269,7 @@ lambda (button)    :run-first
 (setf (liber:alias-for-function 'color-button-rgba)
       "Accessor"
       (documentation 'color-button-rgba 'function)
- "@version{#2023-2-14}
+ "@version{2023-6-14}
   @syntax[]{(gtk:color-button-rgba object) => rgba)}
   @syntax[]{(setf (gtk:color-button-rgba object) rgba)}
   @argument[object]{a @class{gtk:color-button} widget}
@@ -302,7 +305,7 @@ lambda (button)    :run-first
 (setf (liber:alias-for-function 'color-button-show-editor)
       "Accessor"
       (documentation 'color-button-show-editor 'function)
- "@version{#2023-3-13}
+ "@version{2023-6-14}
   @syntax[]{(gtk:color-button-show-editor object) => show-editor)}
   @syntax[]{(setf (gtk:color-button-show-editor object) show-editor)}
   @argument[object]{a @class{gtk:color-button} widget}
@@ -329,7 +332,7 @@ lambda (button)    :run-first
 (setf (liber:alias-for-function 'color-button-title)
       "Accessor"
       (documentation 'color-button-title 'function)
- "@version{#2023-2-14}
+ "@version{2023-6-14}
   @syntax[]{(gtk:color-button-title object) => title)}
   @syntax[]{(setf (gtk:color-button-title object) title)}
   @argument[object]{a @class{gtk:color-button} widget}
@@ -357,7 +360,7 @@ lambda (button)    :run-first
 (setf (liber:alias-for-function 'color-button-use-alpha)
       "Accessor"
       (documentation 'color-button-use-alpha 'function)
- "@version{#2023-2-14}
+ "@version{2023-6-14}
   @syntax[]{(gtk:color-button-use-alpha object) => use-alpha)}
   @syntax[]{(setf (gtk:color-button-use-alpha object) use-alpha)}
   @argument[object]{a @class{gtk:color-button} widget}
@@ -384,7 +387,7 @@ lambda (button)    :run-first
 
 (defun color-button-new ()
  #+liber-documentation
- "@version{#2023-2-14}
+ "@version{2023-6-14}
   @return{A new @class{gtk:color-button} widget.}
   @short{Creates a new color button.}
   This returns a widget in the form of a small button containing a swatch
@@ -405,7 +408,7 @@ lambda (button)    :run-first
 
 (defun color-button-new-with-color (color)
  #+liber-documentation
- "@version{#2023-2-14}
+ "@version{2023-6-14}
   @argument[color]{a @struct{gdk:color} to set the current color with}
   @return{A new @class{gtk:color-button} widget.}
   @short{Creates a new color button.}
@@ -430,7 +433,7 @@ lambda (button)    :run-first
 
 (defun color-button-new-with-rgba (rgba)
  #+liber-documentation
- "@version{#2023-2-14}
+ "@version{2023-6-14}
   @argument[rgba]{a @struct{gdk:rgba} color to set the current color with}
   @return{A new @class{gtk:color-button} widget.}
   @short{Creates a new color button with the given RGBA color.}

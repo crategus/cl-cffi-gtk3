@@ -41,7 +41,7 @@
 ;;;
 ;;; Properties
 ;;;
-;;;     gboolean    show-editor    Read / Write
+;;;     show-editor
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -78,7 +78,7 @@
 
 #+liber-documentation
 (setf (documentation 'color-chooser-widget 'type)
- "@version{#2023-2-14}
+ "@version{2023-6-14}
   @begin{short}
     The @sym{gtk:color-chooser-widget} widget lets the user select a color.
   @end{short}
@@ -143,7 +143,7 @@
 (setf (liber:alias-for-function 'color-chooser-widget-show-editor)
       "Accessor"
       (documentation 'color-chooser-widget-show-editor 'function)
- "@version{#2023-2-14}
+ "@version{2023-6-14}
   @syntax[]{(gtk:color-chooser-widget-show-editor object) => show-editor}
   @syntax[]{(setf (gtk:color-chooser-widget-show-editor object) show-editor)}
   @argument[object]{a @class{gtk:color-chooser-widget} widget}
@@ -165,7 +165,7 @@
 
 (defun color-chooser-widget-new ()
  #+liber-documentation
- "@version{#2023-2-14}
+ "@version{2023-6-14}
   @return{A new @class{gtk:color-chooser-widget} widget.}
   @short{Creates a new color chooser widget.}
   @see-class{gtk:color-chooser-widget}"

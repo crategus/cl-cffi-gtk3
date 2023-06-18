@@ -35,12 +35,15 @@
 ;;;
 ;;;     GtkColorChooser
 ;;;
+;;; Accessors
+;;;
+;;;     gtk_color_chooser_get_rgba
+;;;     gtk_color_chooser_set_rgba
+;;;     gtk_color_chooser_get_use_alpha
+;;;     gtk_color_chooser_set_use_alpha
+;;;
 ;;; Functions
 ;;;
-;;;     gtk_color_chooser_get_rgba                         Accessor
-;;;     gtk_color_chooser_set_rgba                         Accessor
-;;;     gtk_color_chooser_get_use_alpha                    Accessor
-;;;     gtk_color_chooser_set_use_alpha                    Accessor
 ;;;     gtk_color_chooser_add_palette
 ;;;
 ;;; Properties
@@ -78,7 +81,7 @@
 (setf (liber:alias-for-class 'color-chooser)
       "Interface"
       (documentation 'color-chooser 'type)
- "@version{#2023-2-14}
+ "@version{2023-6-12}
   @begin{short}
     The @sym{gtk:color-chooser} interface is an interface that is implemented
     by widgets for choosing colors.
@@ -126,7 +129,7 @@ lambda (chooser color)    :run-first
 (setf (liber:alias-for-function 'color-chooser-rgba)
       "Accessor"
       (documentation 'color-chooser-rgba 'function)
- "@version{#2023-2-14}
+ "@version{2023-6-12}
   @syntax[]{(gtk:color-chooser-rgba object) => color}
   @syntax[]{(setf (gtk:color-chooser-rgba object) color)}
   @argument[object]{a @class{gtk:color-chooser} widget}
@@ -141,8 +144,8 @@ lambda (chooser color)    :run-first
   The @code{rgba} property contains the currently selected color, as a
   @struct{gdk:rgba} color. The property can be set to change the current
   selection programmatically.
-  @see-struct{gdk:rgba}
-  @see-class{gtk:color-chooser}")
+  @see-class{gtk:color-chooser}
+  @see-struct{gdk:rgba}")
 
 ;;; --- color-chooser-use-alpha ------------------------------------------------
 
@@ -160,7 +163,7 @@ lambda (chooser color)    :run-first
 (setf (liber:alias-for-function 'color-chooser-use-alpha)
       "Accessor"
       (documentation 'color-chooser-use-alpha 'function)
- "@version{#2023-2-14}
+ "@version{2023-6-12}
   @syntax[]{(gtk:color-chooser-use-alpha object) => use-alpha}
   @syntax[]{(setf (gtk:color-chooser-use-alpha object) use-alpha)}
   @argument[object]{a @class{gtk:color-chooser} widget}
@@ -179,7 +182,7 @@ lambda (chooser color)    :run-first
 ;;; gtk_color_chooser_add_palette ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_color_chooser_add_palette" %color-chooser-add-palette) :void
+(cffi:defcfun ("gtk_color_chooser_add_palette" %color-chooser-add-palette) :void
   (chooser (g:object color-chooser))
   (orientation orientation)
   (colors-per-line :int)
@@ -188,7 +191,7 @@ lambda (chooser color)    :run-first
 
 (defun color-chooser-add-palette (chooser orientation colors-per-line colors)
  #+liber-documentation
- "@version{#2023-2-14}
+ "@version{2023-6-12}
   @argument[chooser]{a @class{gtk:color-chooser} widget}
   @argument[orientation]{a value of the @symbol{gtk:orientation} enumeration}
   @argument[colors-per-line]{an integer with the number of colors to show in
@@ -205,7 +208,7 @@ lambda (chooser color)    :run-first
   The default color palette of the color chooser widget has 27 colors,
   organized in columns of 3 colors. The default gray palette has 9 grays in a
   single row. The layout of the color chooser widget works best when the
-  palettes have 9-10 columns.
+  palettes have 9 - 10 columns.
 
   Calling this function for the first time has the side effect of removing the
   default color and gray palettes from the color chooser. If @arg{colors} is
