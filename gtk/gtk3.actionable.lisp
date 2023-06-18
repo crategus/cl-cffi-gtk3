@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2012 - 2022 Dieter Kaiser
+;;; Copyright (C) 2012 - 2023 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -35,12 +35,15 @@
 ;;;
 ;;;    GtkActionable
 ;;;
+;;; Accessors
+;;;
+;;;    gtk_actionable_get_action_name
+;;;    gtk_actionable_set_action_name
+;;;    gtk_actionable_get_action_target_value
+;;;    gtk_actionable_set_action_target_value
+;;;
 ;;; Functions
 ;;;
-;;;    gtk_actionable_get_action_name                      Accessor
-;;;    gtk_actionable_set_action_name                      Accessor
-;;;    gtk_actionable_get_action_target_value              Accessor
-;;;    gtk_actionable_set_action_target_value              Accessor
 ;;;    gtk_actionable_set_action_target
 ;;;    gtk_actionable_set_detailed_action_name
 ;;;
@@ -75,7 +78,7 @@
 (setf (liber:alias-for-class 'actionable)
       "Interface"
       (documentation 'actionable 'type)
- "@version{#2023-3-15}
+ "@version{2023-6-17}
   @begin{short}
     This interface provides a convenient way of associating widgets with
     actions on a @class{gtk:application-window} widget or
@@ -111,7 +114,7 @@
 (setf (liber:alias-for-function 'actionable-action-name)
       "Accessor"
       (documentation 'actionable-action-name 'function)
- "@version{#2021-10-31}
+ "@version{2023-6-17}
   @syntax[]{(gtk:actionable-action-name object) => name}
   @syntax[]{(setf (gtk:actionable-action-name object) name)}
   @argument[object]{a @class{gtk:actionable} widget}
@@ -159,7 +162,7 @@
 (setf (liber:alias-for-function 'actionable-action-target)
       "Accessor"
       (documentation 'actionable-action-target 'function)
- "@version{#2023-3-15}
+ "@version{2023-6-17}
   @syntax[]{(gtk:actionable-action-target object) => value}
   @syntax[]{(setf (gtk:actionable-action-target object) value)}
   @argument[object]{a @class{gtk:actionable} widget}
@@ -241,10 +244,10 @@
 ;;; gtk_actionable_set_detailed_action_name ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_actionable_set_detailed_action_name"
-           actionable-set-detailed-action-name) :void
+(cffi:defcfun ("gtk_actionable_set_detailed_action_name"
+                actionable-set-detailed-action-name) :void
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{2023-6-17}
   @argument[actionable]{a @class{gtk:actionable} widget}
   @argument[name]{a string with the detailed action name}
   @begin{short}
@@ -261,7 +264,7 @@
   @begin[Example]{dictionary}
     @begin{pre}
 (setq button (make-instance 'gtk:button))
-=> #<GTK-BUTTON {1004A8C973@}>
+=> #<GTK:BUTTON {1004A8C973@}>
 (gtk:actionable-set-detailed-action-name button \"win.justify::left\")
 (values (gtk:actionable-action-name button)
         (g:variant-string (gtk:actionable-action-target button)))

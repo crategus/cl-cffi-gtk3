@@ -36,16 +36,18 @@
 ;;;     GtkResizeMode
 ;;;     GtkContainer
 ;;;
-;;; Functions
+;;; Accessors
 ;;;
-;;;     GTK_IS_RESIZE_CONTAINER
-;;;     GTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID
+;;;     gtk_container_get_border_width
+;;;     gtk_container_set_border_width
+;;;     gtk_container_get_resize_mode
+;;;     gtk_container_set_resize_mode
+;;;
+;;; Functions
 ;;;
 ;;;     gtk_container_add
 ;;;     gtk_container_remove
 ;;;     gtk_container_add_with_properties
-;;;     gtk_container_get_resize_mode                      Accessor / deprecated
-;;;     gtk_container_set_resize_mode                      Accessor / deprecated
 ;;;     gtk_container_check_resize
 ;;;     gtk_container_foreach
 ;;;     gtk_container_get_children
@@ -68,8 +70,6 @@
 ;;;     gtk_container_child_notify
 ;;;     gtk_container_child_notify_by_pspec
 ;;;     gtk_container_forall
-;;;     gtk_container_get_border_width                     Accessor
-;;;     gtk_container_set_border_width                     Accessor
 ;;;     gtk_container_propagate_draw
 ;;;     gtk_container_get_focus_chain                      deprecated
 ;;;     gtk_container_set_focus_chain                      deprecated
@@ -434,38 +434,12 @@ lambda (container widget)    :run-first
   @see-symbol{gtk:resize-mode}")
 
 ;;; ----------------------------------------------------------------------------
-;;; GTK_IS_RESIZE_CONTAINER()
-;;;
-;;; #define GTK_IS_RESIZE_CONTAINER(widget)
-;;; ----------------------------------------------------------------------------
-
-;;; ----------------------------------------------------------------------------
-;;; GTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID()
-;;;
-;;; #define GTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID (object,
-;;;                                                       property_id, pspec)
-;;;
-;;; This macro should be used to emit a standard warning about unexpected
-;;; properties in set_child_property() and get_child_property() implementations.
-;;;
-;;; object :
-;;;     the GObject on which set_child_property() or get_child_property() was
-;;;     called
-;;;
-;;; property_id :
-;;;     the numeric id of the property
-;;;
-;;; pspec :
-;;;     the GParamSpec of the property
-;;; ----------------------------------------------------------------------------
-
-;;; ----------------------------------------------------------------------------
 ;;; gtk_container_add ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_container_add" container-add) :void
+(cffi:defcfun ("gtk_container_add" container-add) :void
  #+liber-documentation
- "@version{#2023-3-3}
+ "@version{2023-6-17}
   @argument[container]{a @class{gtk:container} widget}
   @argument[widget]{a @class{gtk:widget} child widget to be placed inside
     @arg{container}}
@@ -478,8 +452,8 @@ lambda (container widget)    :run-first
   For more complicated layout containers such as @class{gtk:box} or
   @class{gtk:grid} widgets, this function will pick default packing parameters
   that may not be correct. So consider functions such as the
-  @fun{gtk:box-pack-start} and @fun{gtk:grid-attach} functions as an alternative
-  to the @sym{gtk:container-add} function in those cases.
+  @fun{gtk:box-pack-start} and @fun{gtk:grid-attach} functions as an
+  alternative to the @sym{gtk:container-add} function in those cases.
 
   A widget may be added to only one container at a time. You cannot place the
   same widget inside two different containers.
@@ -499,9 +473,9 @@ lambda (container widget)    :run-first
 ;;; gtk_container_remove ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_container_remove" container-remove) :void
+(cffi:defcfun ("gtk_container_remove" container-remove) :void
  #+liber-documentation
- "@version{#2023-3-3}
+ "@version{2023-7-17}
   @argument[container]{a @class{gtk:container} widget}
   @argument[widget]{a current @class{gtk:widget} child widget of
     @arg{container}}
@@ -518,34 +492,32 @@ lambda (container widget)    :run-first
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_container_add_with_properties ()
-;;;
-;;; void gtk_container_add_with_properties (GtkContainer *container,
-;;;                                         GtkWidget *widget,
-;;;                                         const gchar *first_prop_name,
-;;;                                         ...);
-;;;
-;;; Adds widget to container, setting child properties at the same time.
-;;; See gtk_container_add() and gtk_container_child_set() for more details.
-;;;
-;;; container :
-;;;     a GtkContainer
-;;;
-;;; widget :
-;;;     a widget to be placed inside container
-;;;
-;;; first_prop_name :
-;;;     the name of the first child property to set
-;;;
-;;; ... :
-;;;     a NULL-terminated list of property names and values, starting with
-;;;     first_prop_name
 ;;; ----------------------------------------------------------------------------
+
+(defun container-add-with-properties (container widget &rest args)
+ "@version{2023-6-17}
+  @argument[container]{a @class{gtk:container} widget}
+  @argument[widget]{a @class{gtk:widget} child widget}
+  @argument[args]{a list of property names and values}
+  @begin{short}
+    Adds @arg{widget} to the container, setting child properties at the same
+    time.
+  @end{short}
+  See the @fun{gtk:container-add} and @fun{gtk:container-child-set} functions
+  for more details.
+  @see-class{gtk:container}
+  @see-function{gtk:container-add}
+  @see-function{gtk:container-add-with-properties}"
+  (container-add container widget)
+  (apply #'container-child-set container widget args))
+
+(export 'container-add-with-properties)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_container_check_resize ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_container_check_resize" container-check-resize) :void
+(cffi:defcfun ("gtk_container_check_resize" container-check-resize) :void
  #+liber-documentation
  "@version{#2023-3-3}
   @argument[container]{a @class{gtk:container} widget}
@@ -561,7 +533,7 @@ lambda (container widget)    :run-first
 ;;; GtkCallback ()
 ;;; ----------------------------------------------------------------------------
 
-(defcallback gtk-callback :void
+(cffi:defcallback gtk-callback :void
     ((widget (g:object widget))
      (data :pointer))
   (restart-case
@@ -572,7 +544,7 @@ lambda (container widget)    :run-first
 (setf (liber:alias-for-symbol 'gtk-callback)
       "Callback"
       (liber:symbol-documentation 'gtk-callback)
- "@version{#2023-3-3}
+ "@version{2023-6-17}
   @begin{short}
     The type of the callback functions used for e.g. iterating over the
     children of a container, see the @fun{gtk:container-foreach} function.
@@ -593,7 +565,7 @@ lambda (widget)
 ;;; gtk_container_foreach ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_container_foreach" %container-foreach) :void
+(cffi:defcfun ("gtk_container_foreach" %container-foreach) :void
   (container (g:object container))
   (func :pointer)
   (data :pointer))
@@ -624,9 +596,10 @@ lambda (widget)
 ;;; gtk_container_get_children () -> container-children
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_container_get_children" container-children) (g:list-t g:object)
+(cffi:defcfun ("gtk_container_get_children" container-children)
+    (g:list-t g:object)
  #+liber-documentation
- "@version{#2023-3-3}
+ "@version{2023-6-17}
   @argument[container]{a @class{gtk:container} widget}
   @return{A list of the containers non-internal children.}
   @begin{short}
@@ -636,7 +609,7 @@ lambda (widget)
   an \"internal\" child.
   @begin[Example]{dictionary}
     @begin{pre}
-(setq box (make-instance 'gtk-box :orientation :vertical))
+(setq box (make-instance 'gtk:box :orientation :vertical))
 => #<GTK:BOX {1001E2A183@}>
 (gtk:container-add box (make-instance 'gtk:button))
 (gtk:container-add box (make-instance 'gtk:label))
@@ -654,7 +627,7 @@ lambda (widget)
 ;;; gtk_container_get_path_for_child () -> container-path-for-child
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_container_get_path_for_child" container-path-for-child)
+(cffi:defcfun ("gtk_container_get_path_for_child" container-path-for-child)
     (g:boxed widget-path)
  #+liber-documentation
  "@version{2023-3-3}
@@ -677,8 +650,8 @@ lambda (widget)
 ;;; gtk_container_set_reallocate_redraws ()                not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_container_set_reallocate_redraws"
-           container-set-reallocate-redraws) :void
+(cffi:defcfun ("gtk_container_set_reallocate_redraws"
+                container-set-reallocate-redraws) :void
  #+liber-documentation
  "@version{#2021-9-12}
   @argument[container]{a @class{gtk:container} widget}
@@ -711,7 +684,7 @@ lambda (widget)
                         :void)
   child)
 
-(defcfun ("gtk_container_get_focus_child" container-focus-child)
+(cffi:defcfun ("gtk_container_get_focus_child" container-focus-child)
     (g:object widget)
  #+liber-documentation
  "@version{2023-3-3}
@@ -756,7 +729,8 @@ lambda (widget)
                         :void)
   adjustment)
 
-(defcfun ("gtk_container_get_focus_vadjustment" container-focus-vadjustment)
+(cffi:defcfun ("gtk_container_get_focus_vadjustment"
+                container-focus-vadjustment)
     (g:object adjustment)
  #+liber-documentation
  "@version{#2023-3-3}
@@ -796,7 +770,8 @@ lambda (widget)
                         :void)
   adjustment)
 
-(defcfun ("gtk_container_get_focus_hadjustment" container-focus-hadjustment)
+(cffi:defcfun ("gtk_container_get_focus_hadjustment"
+                container-focus-hadjustment)
     (g:object adjustment)
  #+liber-documentation
  "@version{#2023-3-3}
@@ -828,7 +803,7 @@ lambda (widget)
 ;;; gtk_container_resize_children ()                       not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_container_resize_children" container-resize-children) :void
+(cffi:defcfun ("gtk_container_resize_children" container-resize-children) :void
  #+liber-documentation
  "@version{#2021-9-12}
   @short{undocumented}
@@ -843,7 +818,7 @@ lambda (widget)
 ;;; gtk_container_child_type ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_container_child_type" container-child-type) g:type-t
+(cffi:defcfun ("gtk_container_child_type" container-child-type) g:type-t
  #+liber-documentation
  "@version{2023-3-3}
   @argument[container]{a @class{gtk:container} widget}
@@ -868,7 +843,7 @@ lambda (widget)
 
 (defun container-child-get (container child &rest args)
  #+liber-documentation
- "@version{2023-3-3}
+ "@version{2023-6-17}
   @argument[container]{a @class{gtk:container} widget}
   @argument[child]{a @class{gtk:widget} child widget which is a child of
     @arg{container}}
@@ -883,8 +858,8 @@ lambda (widget)
   @see-class{gtk:widget}
   @see-function{gtk:container-child-set}
   @see-function{gtk:container-child-property}"
-  (loop for arg in args
-        collect (container-child-property container child arg)))
+  (iter (for arg in args)
+        (collect (container-child-property container child arg))))
 
 (export 'container-child-get)
 
@@ -894,7 +869,7 @@ lambda (widget)
 
 (defun container-child-set (container child &rest args)
  #+liber-documentation
- "@version{2023-3-3}
+ "@version{2023-6-17}
   @argument[container]{a @class{gtk:container} widget}
   @argument[child]{a @class{gtk:widget} child widget which is a child of
     @arg{container}}
@@ -906,8 +881,8 @@ lambda (widget)
   @see-class{gtk:widget}
   @see-function{gtk:container-child-get}
   @see-function{gtk:container-child-property}"
-  (loop for (name value) on args by #'cddr
-        do (setf (container-child-property container child name) value)))
+  (iter (for (name value) on args by #'cddr)
+        (setf (container-child-property container child name) value)))
 
 (export 'container-child-set)
 
@@ -916,7 +891,7 @@ lambda (widget)
 ;;; gtk_container_child_set_property () -> container-child-property
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_container_child_set_property" %container-child-set-property)
+(cffi:defcfun ("gtk_container_child_set_property" %container-child-set-property)
     :void
   (container (g:object container))
   (child (g:object widget))
@@ -936,7 +911,8 @@ lambda (widget)
       (g:value-unset gvalue)
       (values value))))
 
-(defcfun ("gtk_container_child_get_property" %container-child-property) :void
+(cffi:defcfun ("gtk_container_child_get_property"
+                %container-child-property) :void
   (container (g:object container))
   (child (g:object widget))
   (property :string)
@@ -981,10 +957,11 @@ lambda (widget)
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_container_child_get_valist ()
 ;;;
-;;; void gtk_container_child_get_valist (GtkContainer *container,
-;;;                                      GtkWidget *child,
-;;;                                      const gchar *first_property_name,
-;;;                                      va_list var_args);
+;;; void
+;;; gtk_container_child_get_valist (GtkContainer *container,
+;;;                                 GtkWidget *child,
+;;;                                 const gchar *first_property_name,
+;;;                                 va_list var_args);
 ;;;
 ;;; Gets the values of one or more child properties for child and container.
 ;;;
@@ -1005,10 +982,11 @@ lambda (widget)
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_container_child_set_valist ()
 ;;;
-;;; void gtk_container_child_set_valist (GtkContainer *container,
-;;;                                      GtkWidget *child,
-;;;                                      const gchar *first_property_name,
-;;;                                      va_list var_args);
+;;; void
+;;; gtk_container_child_set_valist (GtkContainer *container,
+;;;                                 GtkWidget *child,
+;;;                                 const gchar *first_property_name,
+;;;                                 va_list var_args);
 ;;;
 ;;; Sets one or more child properties for child and container.
 ;;;
@@ -1030,7 +1008,7 @@ lambda (widget)
 ;;; gtk_container_child_notify ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_container_child_notify" container-child-notify) :void
+(cffi:defcfun ("gtk_container_child_notify" container-child-notify) :void
  #+liber-documentation
  "@version{#2023-3-3}
   @argument[container]{a @class{gtk:container} widget}
@@ -1056,9 +1034,10 @@ lambda (widget)
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_container_child_notify_by_pspec ()
 ;;;
-;;; void gtk_container_child_notify_by_pspec (GtkContainer *container,
-;;;                                           GtkWidget *child,
-;;;                                           GParamSpec *pspec);
+;;; void
+;;; gtk_container_child_notify_by_pspec (GtkContainer *container,
+;;;                                      GtkWidget *child,
+;;;                                      GParamSpec *pspec);
 ;;;
 ;;; Emits a "child-notify" signal for the child property specified by pspec on
 ;;; the child.
@@ -1081,7 +1060,7 @@ lambda (widget)
 ;;; gtk_container_forall ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_container_forall" %container-forall) :void
+(cffi:defcfun ("gtk_container_forall" %container-forall) :void
   (container (g:object container))
   (callback :pointer)
   (data :pointer))
@@ -1113,9 +1092,10 @@ lambda (widget)
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_container_propagate_draw ()
 ;;;
-;;; void gtk_container_propagate_draw (GtkContainer *container,
-;;;                                    GtkWidget *child,
-;;;                                    cairo_t *cr);
+;;; void
+;;; gtk_container_propagate_draw (GtkContainer *container,
+;;;                               GtkWidget *child,
+;;;                               cairo_t *cr);
 ;;;
 ;;; When a container receives a call to the draw function, it must send
 ;;; synthetic "draw" calls to all children that don't have their own GdkWindows.
@@ -1149,7 +1129,7 @@ lambda (widget)
 ;;; gtk_container_set_focus_chain () -> container-focus-chain
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_container_set_focus_chain" %container-set-focus-chain) :void
+(cffi:defcfun ("gtk_container_set_focus_chain" %container-set-focus-chain) :void
   (container (g:object container))
   (focusable (g:list-t (g:object widget))))
 
@@ -1158,7 +1138,8 @@ lambda (widget)
                               (mapcar #'g:object-pointer focusable))
   focusable)
 
-(defcfun ("gtk_container_get_focus_chain" %container-get-focus-chain) :boolean
+(cffi:defcfun ("gtk_container_get_focus_chain"
+                %container-get-focus-chain) :boolean
   (container (g:object container))
   (focusable (:pointer (g:list-t (g:object widget)))))
 
@@ -1203,7 +1184,8 @@ lambda (widget)
 ;;; gtk_container_unset_focus_chain ()                     deprecated
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_container_unset_focus_chain" container-unset-focus-chain) :void
+(cffi:defcfun ("gtk_container_unset_focus_chain"
+                container-unset-focus-chain) :void
  #+liber-documentation
  "@version{#2023-3-3}
   @argument[container]{a @class{gtk:container} widget}
@@ -1226,8 +1208,8 @@ lambda (widget)
 ;;; gtk_container_class_find_child_property ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_container_class_find_child_property"
-          %container-class-find-child-property)
+(cffi:defcfun ("gtk_container_class_find_child_property"
+                %container-class-find-child-property)
     (:pointer (:struct g:param-spec))
   (class (:pointer (:struct g:type-class)))
   (property :string))
@@ -1271,9 +1253,10 @@ lambda (widget)
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_container_class_install_child_property ()
 ;;;
-;;; void gtk_container_class_install_child_property (GtkContainerClass *cclass,
-;;;                                                  guint property_id,
-;;;                                                  GParamSpec *pspec);
+;;; void
+;;; gtk_container_class_install_child_property (GtkContainerClass *cclass,
+;;;                                             guint property_id,
+;;;                                             GParamSpec *pspec);
 ;;;
 ;;; Installs a child property on a container class.
 ;;;
@@ -1315,15 +1298,15 @@ lambda (widget)
 
 ;; gobject::object-class is not exported
 
-(defcfun ("gtk_container_class_list_child_properties"
-          %container-class-list-child-properties)
+(cffi:defcfun ("gtk_container_class_list_child_properties"
+                %container-class-list-child-properties)
     (:pointer (:pointer (:struct g:param-spec)))
   (class (:pointer (:struct gobject::object-class)))
   (n-props (:pointer :uint)))
 
 (defun container-class-list-child-properties (gtype)
  #+liber-documentation
- "@version{2023-3-3}
+ "@version{2023-6-17}
   @argument[gtype]{a @class{g:type-t} type ID}
   @return{A list of @symbol{g:param-spec} instances.}
   @short{Returns the child properties of a container type.}
@@ -1350,9 +1333,9 @@ lambda (widget)
       (with-foreign-object (n-props :uint)
         (let ((pspecs (%container-class-list-child-properties class n-props)))
           (unwind-protect
-            (loop for count from 0 below (cffi:mem-ref n-props :uint)
-                  for pspec = (cffi:mem-aref pspecs :pointer count)
-                  collect pspec)
+            (iter (for count from 0 below (cffi:mem-ref n-props :uint))
+                  (for pspec = (cffi:mem-aref pspecs :pointer count))
+                  (collect pspec))
             (g:free pspecs))))
       (g:type-class-unref class))))
 
