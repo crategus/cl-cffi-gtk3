@@ -1,4 +1,4 @@
-;;;; Example Color Chooser Dialog - 2022-12-18
+;;;; Example Color Chooser Dialog - 2023-6-12
 ;;;;
 ;;;; Clicking on the drawing area opens a color chooser dialog to select a
 ;;;; background color for the drawing area. The default palettes are replaced
@@ -45,7 +45,7 @@
         (g:signal-connect area "draw"
             (lambda (widget cr)
               (declare (ignore widget))
-              (let ((cr (gobject:pointer cr))
+              (let ((cr (glib:boxed-opaque-pointer cr))
                     (red (gdk:rgba-red bg-color))
                     (green (gdk:rgba-green bg-color))
                     (blue (gdk:rgba-blue bg-color)))

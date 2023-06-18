@@ -90,13 +90,15 @@
                (:file "overlay-decorative")            ; Layout Widgets
                (:file "overlay-interactive")           ; Layout Widgets
                (:file "overlay-transparent")           ; Layout Widgets
-               (:file "page-setup-dialog")
+               (:file "page-setup-dialog"
+                      :if-feature (:not :windows))
                (:file "paned-window")                  ; Layout Widgets
                (:file "pixbufs")
                (:file "pixbuf-scale")
                (:file "pointer-device")
                (:file "popover")
-               (:file "print-dialog")
+               (:file "print-dialog"
+                      :if-feature (:not :windows))
                (:file "print-operation")
                (:file "progress-bar")                  ; Display Widgets
                (:file "query-settings")
