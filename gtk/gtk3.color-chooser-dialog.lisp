@@ -169,7 +169,7 @@
         (setf (gtk:widget-events area) :button-press-mask)
         ;; Add the drawing area to the window
         (gtk:container-add window area)
-        (gtk:widget-show-all window)))))    
+        (gtk:widget-show-all window)))))
     @end{pre}
   @end{dictionary}
   @see-constructor{gtk:color-chooser-dialog-new}
