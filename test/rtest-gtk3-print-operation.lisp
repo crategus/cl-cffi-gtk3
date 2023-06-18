@@ -154,7 +154,7 @@
 
 ;;;     GtkPrintOperationPreview
 
-(test print-operation-preview
+(test gtk-print-operation-preview-interface
   ;; Type check
   (is-true (g:type-is-interface "GtkPrintOperationPreview"))
   ;; Check the registered name
@@ -168,7 +168,7 @@
   (is (equal '()
              (list-interface-properties "GtkPrintOperationPreview")))
   ;; Check the signals
-  (is (equal '()
+  (is (equal '("got-page-size" "ready")
              (list-signals "GtkPrintOperationPreview")))
   ;; Get the interface definition
   (is (equal '(GOBJECT:DEFINE-G-INTERFACE "GtkPrintOperationPreview"
@@ -176,6 +176,34 @@
                             (:EXPORT T :TYPE-INITIALIZER
                              "gtk_print_operation_preview_get_type"))
              (gobject:get-g-type-definition "GtkPrintOperationPreview"))))
+
+;;;     Signals
+
+(test gtk-print-operation-preview-got-page-size-signal
+  (let ((query (g:signal-query (g:signal-lookup "got-page-size"
+                                                "GtkPrintOperationPreview"))))
+    (is (string= "got-page-size" (g:signal-query-signal-name query)))
+    (is (string= "GtkPrintOperationPreview"
+                 (g:type-name (g:signal-query-owner-type query))))
+    (is (equal '(:RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    (is (string= "void" (g:type-name (g:signal-query-return-type query))))
+    (is (equal '("GtkPrintContext" "GtkPageSetup")
+               (mapcar #'g:type-name (g:signal-query-param-types query))))
+    (is-false (g:signal-query-signal-detail query))))
+
+(test gtk-print-operation-preview-ready-signal
+  (let ((query (g:signal-query (g:signal-lookup "ready"
+                                                "GtkPrintOperationPreview"))))
+    (is (string= "ready" (g:signal-query-signal-name query)))
+    (is (string= "GtkPrintOperationPreview"
+                 (g:type-name (g:signal-query-owner-type query))))
+    (is (equal '(:RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    (is (string= "void" (g:type-name (g:signal-query-return-type query))))
+    (is (equal '("GtkPrintContext")
+               (mapcar #'g:type-name (g:signal-query-param-types query))))
+    (is-false (g:signal-query-signal-detail query))))
 
 ;;;     GtkPrintOperation
 
@@ -372,4 +400,4 @@
 ;;;     gtk_print_operation_preview_is_selected
 ;;;     gtk_print_operation_preview_render_page
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; --- 2023-6-11 --------------------------------------------------------------

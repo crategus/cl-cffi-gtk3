@@ -74,9 +74,6 @@
                              (:SELECT-AGAIN 2))
              (gobject:get-g-type-definition "GtkFileChooserConfirmation"))))
 
-;;;     GTK_FILE_CHOOSER_ERROR
-;;;     GtkFileChooserError
-
 ;;;     GtkFileChooser
 
 (test gtk-file-chooser-interface
@@ -94,6 +91,10 @@
                "preview-widget-active" "select-multiple" "show-hidden"
                "use-preview-label")
              (list-interface-properties "GtkFileChooser")))
+  ;; Check the signals
+  (is (equal '("confirm-overwrite" "current-folder-changed" "file-activated"
+               "selection-changed" "update-preview")
+             (list-signals "GtkFileChooser")))
   ;; Get the interface definition
   (is (equal '(DEFINE-G-INTERFACE "GtkFileChooser" GTK-FILE-CHOOSER
                     (:EXPORT T :TYPE-INITIALIZER "gtk_file_chooser_get_type")
@@ -125,6 +126,18 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
+;;;     action
+;;;     create-folders
+;;;     do-overwrite-confirmation
+;;;     extra-widget
+;;;     filter
+;;;     local-only
+;;;     preview-widget
+;;;     preview-widget-active
+;;;     select-multiple
+;;;     show-hidden
+;;;     use-preview-label
+
 (test gtk-file-chooser-properties
   (let ((chooser (make-instance 'gtk:file-chooser-widget)))
     (is (eq :open (gtk:file-chooser-action chooser)))
@@ -135,16 +148,91 @@
     (is-true (gtk:file-chooser-local-only chooser))
     (is-false (gtk:file-chooser-preview-widget chooser))
     (is-true (gtk:file-chooser-preview-widget-active chooser))
+    (is-false (gtk:file-chooser-select-multiple chooser))
     (is-false (gtk:file-chooser-show-hidden chooser))
     (is-true (gtk:file-chooser-use-preview-label chooser))))
 
 ;;; --- Signals ----------------------------------------------------------------
 
 ;;;     confirm-overwrite
+
+(test gtk-file-chooser-confirm-overwrite-signal
+  (let ((query (g:signal-query (g:signal-lookup "confirm-overwrite"
+                                                "GtkFileChooser"))))
+    (is (string= "confirm-overwrite" (g:signal-query-signal-name query)))
+    (is (string= "GtkFileChooser"
+                 (g:type-name (g:signal-query-owner-type query))))
+    (is (equal '(:RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    (is (string= "GtkFileChooserConfirmation"
+                 (g:type-name (g:signal-query-return-type query))))
+    (is (equal '()
+               (mapcar #'g:type-name (g:signal-query-param-types query))))
+    (is-false (g:signal-query-signal-detail query))))
+
 ;;;     current-folder-changed
+
+(test gtk-file-chooser-current-folder-changed-signal
+  (let ((query (g:signal-query (g:signal-lookup "current-folder-changed"
+                                                "GtkFileChooser"))))
+    (is (string= "current-folder-changed" (g:signal-query-signal-name query)))
+    (is (string= "GtkFileChooser"
+                 (g:type-name (g:signal-query-owner-type query))))
+    (is (equal '(:RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    (is (string= "void"
+                 (g:type-name (g:signal-query-return-type query))))
+    (is (equal '()
+               (mapcar #'g:type-name (g:signal-query-param-types query))))
+    (is-false (g:signal-query-signal-detail query))))
+
 ;;;     file-activated
+
+(test gtk-file-chooser-file-activated-signal
+  (let ((query (g:signal-query (g:signal-lookup "file-activated"
+                                                "GtkFileChooser"))))
+    (is (string= "file-activated" (g:signal-query-signal-name query)))
+    (is (string= "GtkFileChooser"
+                 (g:type-name (g:signal-query-owner-type query))))
+    (is (equal '(:RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    (is (string= "void"
+                 (g:type-name (g:signal-query-return-type query))))
+    (is (equal '()
+               (mapcar #'g:type-name (g:signal-query-param-types query))))
+    (is-false (g:signal-query-signal-detail query))))
+
 ;;;     selection-changed
+
+(test gtk-file-chooser-selection-changed-signal
+  (let ((query (g:signal-query (g:signal-lookup "selection-changed"
+                                                "GtkFileChooser"))))
+    (is (string= "selection-changed" (g:signal-query-signal-name query)))
+    (is (string= "GtkFileChooser"
+                 (g:type-name (g:signal-query-owner-type query))))
+    (is (equal '(:RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    (is (string= "void"
+                 (g:type-name (g:signal-query-return-type query))))
+    (is (equal '()
+               (mapcar #'g:type-name (g:signal-query-param-types query))))
+    (is-false (g:signal-query-signal-detail query))))
+
 ;;;     update-preview
+
+(test gtk-file-chooser-update-preview-signal
+  (let ((query (g:signal-query (g:signal-lookup "update-preview"
+                                                "GtkFileChooser"))))
+    (is (string= "update-preview" (g:signal-query-signal-name query)))
+    (is (string= "GtkFileChooser"
+                 (g:type-name (g:signal-query-owner-type query))))
+    (is (equal '(:RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    (is (string= "void"
+                 (g:type-name (g:signal-query-return-type query))))
+    (is (equal '()
+               (mapcar #'g:type-name (g:signal-query-param-types query))))
+    (is-false (g:signal-query-signal-detail query))))
 
 ;;; --- Functions --------------------------------------------------------------
 
@@ -196,21 +284,11 @@
 ;;;     gtk_file_chooser_get_uris
 ;;;     gtk_file_chooser_set_current_folder_uri
 ;;;     gtk_file_chooser_get_current_folder_uri
-;;;     gtk_file_chooser_set_preview_widget                Accessor
-;;;     gtk_file_chooser_get_preview_widget                Accessor
-;;;     gtk_file_chooser_set_preview_widget_active         Accessor
-;;;     gtk_file_chooser_get_preview_widget_active         Accessor
-;;;     gtk_file_chooser_set_use_preview_label             Accessor
-;;;     gtk_file_chooser_get_use_preview_label             Accessor
 ;;;     gtk_file_chooser_get_preview_filename
 ;;;     gtk_file_chooser_get_preview_uri
-;;;     gtk_file_chooser_set_extra_widget                  Accessor
-;;;     gtk_file_chooser_get_extra_widget                  Accessor
 ;;;     gtk_file_chooser_add_filter
 ;;;     gtk_file_chooser_remove_filter
 ;;;     gtk_file_chooser_list_filters
-;;;     gtk_file_chooser_set_filter                        Accessor
-;;;     gtk_file_chooser_get_filter                        Accessor
 
 ;;;     gtk_file_chooser_add_shortcut_folder
 ;;;     gtk_file_chooser_remove_shortcut_folder
@@ -248,4 +326,4 @@
 ;;;     gtk_file_chooser_set_file
 ;;;     gtk_file_chooser_unselect_file
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; --- 2023-6-11 --------------------------------------------------------------

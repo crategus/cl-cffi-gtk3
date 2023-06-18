@@ -44,7 +44,7 @@
   (gdk:event-handler-set #'my-event-handler))
 
 (defun clear-event-loop ()
-  (let ((*verbose-gdk-events* t))
+  (let ((*verbose-gdk-events* nil))
     (loop while (gdk:events-pending)
           do (when *verbose-gdk-events*
                (format t "~&in CLEAR-EVENT-LOOP~%"))
@@ -59,7 +59,7 @@
     (gdk:event-put (gdk:event-new :key-press))
     ;; Look for pending events
     (loop while (gdk:events-pending)
-          do (format t "~&Event is pending.~%")
+          do (when *verbose-gdk-events* (format t "~&Event is pending.~%"))
              (gtk:main-iteration-do nil))
     ;; Quit the callback
     (gtk:main-quit)
@@ -68,7 +68,7 @@
 ;; TODO: The following functions can cause an infinite loop, improve the code
 
 (test gdk-events-pending
-  (let ((*verbose-gdk-events* t))
+  (let ((*verbose-gdk-events* nil))
     (is (= 0 (gtk:main-level)))
     (g:timeout-add 100 #'events-pending-callback)
     (gtk:main)
@@ -88,7 +88,7 @@
 ;;;     gdk_event_put
 
 (test gdk-event-get/put
-  (let ((*verbose-gdk-events* t)
+  (let ((*verbose-gdk-events* nil)
         (event (gdk:event-new :key-press)))
     (is-false (gdk:event-put event))
     (is (typep (gdk:event-get) 'gdk:event-key))

@@ -3,8 +3,8 @@
 (def-suite gtk-native-dialog :in gtk-suite)
 (in-suite gtk-native-dialog)
 
-;;; Types and Values
-;;;
+;;; --- Types and Values -------------------------------------------------------
+
 ;;;     GtkNativeDialog
 
 (test gtk-native-dialog-class
@@ -20,7 +20,7 @@
   (is (eq (g:gtype "GObject")
           (g:type-parent "GtkNativeDialog")))
   ;; Check the children
-  (is (equal '()
+  (is (equal '("GtkFileChooserNative")
              (list-children "GtkNativeDialog")))
   ;; Check the interfaces
   (is (equal '()
@@ -51,22 +51,35 @@
 ;;;     transient-for
 ;;;     visible
 
+(test gtk-native-dialog-properties
+  (let ((dialog (make-instance 'gtk:file-chooser-native)))
+    (is-false (gtk:native-dialog-modal dialog))
+    (is-false (gtk:native-dialog-title dialog))
+    (is-false (gtk:native-dialog-transient-for dialog))
+    (is-false (gtk:native-dialog-visible dialog))))
+
 ;;; --- Signals ----------------------------------------------------------------
 
 ;;;     response
+
+(test gtk-native-dialog-response-signal
+  (let ((query (g:signal-query (g:signal-lookup "response" "GtkNativeDialog"))))
+    (is (string= "response" (g:signal-query-signal-name query)))
+    (is (string= "GtkNativeDialog"
+                 (g:type-name (g:signal-query-owner-type query))))
+    (is (equal '(:RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    (is (string= "void" (g:type-name (g:signal-query-return-type query))))
+    (is (equal '("gint")
+               (sort (mapcar #'g:type-name (g:signal-query-param-types query))
+                     #'string<)))
+    (is-false (g:signal-query-signal-detail query))))
 
 ;;; --- Functions --------------------------------------------------------------
 
 ;;;     gtk_native_dialog_show
 ;;;     gtk_native_dialog_hide
 ;;;     gtk_native_dialog_destroy
-;;;     gtk_native_dialog_get_visible
-;;;     gtk_native_dialog_set_modal
-;;;     gtk_native_dialog_get_modal
-;;;     gtk_native_dialog_set_title
-;;;     gtk_native_dialog_get_title
-;;;     gtk_native_dialog_set_transient_for
-;;;     gtk_native_dialog_get_transient_for
 ;;;     gtk_native_dialog_run
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; --- 2023-6-11 --------------------------------------------------------------

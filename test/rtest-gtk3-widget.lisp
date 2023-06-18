@@ -83,10 +83,10 @@
                    "GtkProgressBar" "GtkRange" "GtkSeparator" "GtkSpinner"
                    "GtkSwitch")
                  (list-children "GtkWidget"))
-          (equal '("GtkCalendar" "GtkCellView" "GtkContainer" "GtkDrawingArea"
-                   "GtkEntry" "GtkHSV" "GtkIcon" "GtkInvisible" "GtkLevelBar"
-                   "GtkMisc" "GtkProgressBar" "GtkRange" "GtkSeparator"
-                   "GtkSpinner" "GtkSwitch")
+          (equal '("GtkCalendar" "GtkCellView" "GtkColorSwatch" "GtkContainer"
+                   "GtkDrawingArea" "GtkEntry" "GtkHSV" "GtkIcon" "GtkInvisible"
+                   "GtkLevelBar" "GtkMisc" "GtkProgressBar" "GtkRange"
+                   "GtkSeparator" "GtkSpinner" "GtkSwitch")
                  (list-children "GtkWidget"))))
   ;; Check the interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
@@ -898,6 +898,22 @@
 ;;;
 ;;;     gtk_widget_get_preferred_height
 ;;;     gtk_widget_get_preferred_width
+
+;; TODO: We have no longer a width and height at this place. Can we improve
+;; the test?
+
+(test gtk-widget-preferred-height/width
+  (let ((widget (make-instance 'gtk:button :label "Hello")))
+    (is (equal '(0 0)
+               (multiple-value-list (gtk:widget-preferred-height widget))))
+    (is (equal '(0 0)
+               (multiple-value-list (gtk:widget-preferred-width widget))))
+    (setf widget (make-instance 'gtk:button :label "Hello, more text."))
+    (is (equal '(0 0)
+               (multiple-value-list (gtk:widget-preferred-height widget))))
+    (is (equal '(0 0)
+               (multiple-value-list (gtk:widget-preferred-width widget))))))
+
 ;;;     gtk_widget_get_preferred_height_for_width
 ;;;     gtk_widget_get_preferred_width_for_height
 

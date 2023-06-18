@@ -7,7 +7,7 @@
 
 ;;;     GtkResizeMode
 
-(test resize-mode
+(test gtk-resize-mode
   ;; Check the type
   (is (g:type-is-enum "GtkResizeMode"))
   ;; Check the type initializer
@@ -37,7 +37,7 @@
 
 ;;;     GtkContainer
 
-(test container-class
+(test gtk-container-class
   ;; Type check
   (is (g:type-is-object "GtkContainer"))
   ;; Check the registered name
@@ -109,24 +109,24 @@
 
 ;;; --- gtk_container_border_width ---------------------------------------------
 
-(test container-border-width.1
+(test gtk-container-border-width.1
   (let ((box (make-instance 'gtk:box)))
     (is (eql 0 (gtk:container-border-width box)))
     (setf (gtk:container-border-width box) 12)
     (is (eql 12 (gtk:container-border-width box)))))
 
-(test container-border-width.2
+(test gtk-container-border-width.2
   (let ((box (make-instance 'gtk:box :border-width 12)))
     (is (eql 12 (gtk:container-border-width box)))))
 
 ;;; --- gtk_container_child ----------------------------------------------------
 
-(test container-child.1
+(test gtk-container-child.1
   (let ((box (make-instance 'gtk:box)))
     ;; The CHILD property is not readable
     (signals (error) (gtk:container-child box))))
 
-(test container-child.2
+(test gtk-container-child.2
   (let ((box (make-instance 'gtk:box))
         (button (make-instance 'gtk:button)))
     ;; Put a button into the box
@@ -136,7 +136,7 @@
 
 ;;; --- gtk_container_resize_mode ----------------------------------------------
 
-(test container-resize-mode
+(test gtk-container-resize-mode
   (let ((box (make-instance 'gtk:box)))
     (is (eql :parent (gtk:container-resize-mode box)))
     (setf (gtk:container-resize-mode box) :queue)
@@ -146,12 +146,44 @@
 
 ;;;     gtk_container_add
 ;;;     gtk_container_remove
+
+(test gtk-container-add/remove
+  (let ((box (make-instance 'gtk:box)))
+    ;; Add widgets to the container
+    (is (= 0 (length (gtk:container-children box))))
+    (is-false (gtk:container-add box (make-instance 'gtk:button)))
+    (is (= 1 (length (gtk:container-children box))))
+    (is-false (gtk:container-add box (make-instance 'gtk:button)))
+    (is (= 2 (length (gtk:container-children box))))
+    ;; Remove widgets from the container
+    (is-false (gtk:container-remove box (first (gtk:container-children box))))
+    (is (= 1 (length (gtk:container-children box))))
+    (is-false (gtk:container-remove box (first (gtk:container-children box))))
+    (is (= 0 (length (gtk:container-children box))))))
+
 ;;;     gtk_container_add_with_properties
+
+(test gtk-container-add-with-properties
+  (let ((box (make-instance 'gtk:box :orientation :vertical))
+        (button (make-instance 'gtk:button)))
+    (is-false (gtk:container-add-with-properties box button
+                                                 "expand" t
+                                                 "fill" nil
+                                                 "pack-type" :end
+                                                 "padding" 6))
+    (is (equal '(t nil :end 6 0)
+               (gtk:container-child-get box button
+                                        "expand"
+                                        "fill"
+                                        "pack-type"
+                                        "padding"
+                                        "position")))))
+
 ;;;     gtk_container_check_resize
 
 ;;;     gtk_container_foreach
 
-(test container-foreach
+(test gtk-container-foreach
   (let ((box (make-instance 'gtk:box :orientation :vertical))
         (collect nil))
     ;; Add 10 label to the container
@@ -174,13 +206,26 @@
 
 ;;;     gtk_container_get_children
 
+(test gtk-container-children
+  (let ((container (make-instance 'gtk:box :orientation :vertical))
+        (button (make-instance 'gtk:button))
+        (label (make-instance 'gtk:label)))
+    ;; Add to widgets to the container
+    (is-false (gtk:container-add container button))
+    (is-false (gtk:container-add container label))
+    ;; Check the children of the container
+    (is (= 2 (length (gtk:container-children container))))
+    (is (member button (gtk:container-children container) :test #'eq))
+    (is (member label (gtk:container-children container) :test #'eq))))
+
 ;;;     gtk_container_get_path_for_child
 
-(test container-path-for-child
+(test gtk-container-path-for-child
   (let ((box (make-instance 'gtk:box :orientation :vertical))
         (child (make-instance 'gtk:label)))
     (is-false (gtk:container-add box child))
-    (is (eq 'gtk:widget-path (type-of (gtk:container-path-for-child box child))))
+    (is (eq 'gtk:widget-path
+            (type-of (gtk:container-path-for-child box child))))
     (is (string= "box:dir-ltr.vertical label:dir-ltr"
                  (gtk:widget-path-to-string
                      (gtk:container-path-for-child box child))))))
@@ -190,7 +235,7 @@
 ;;;     gtk_container_get_focus_child
 ;;;     gtk_container_set_focus_child
 
-(test container-focus-child
+(test gtk-container-focus-child
   (let ((box (make-instance 'gtk:box :orientation :vertical))
         (button1 (make-instance 'gtk:button))
         (button2 (make-instance 'gtk:button))
@@ -218,11 +263,11 @@
 
 ;;;     gtk_container_child_type
 
-(test container-child-type.1
+(test gtk-container-child-type.1
   (let ((box (make-instance 'gtk:box)))
     (is (string= "GtkWidget" (g:type-name (gtk:container-child-type box))))))
 
-(test container-child-type.2
+(test gtk-container-child-type.2
   (let ((paned (make-instance 'gtk:paned))
         (frame1 (make-instance 'gtk:frame))
         (frame2 (make-instance 'gtk:frame)))
@@ -233,7 +278,7 @@
 
 ;;;     gtk_container_child_get
 
-(test container-child-get
+(test gtk-container-child-get
   (let ((box (make-instance 'gtk:box :orientation :vertical))
         (button (make-instance 'gtk:button)))
     (is-false (gtk:container-add box button))
@@ -247,7 +292,7 @@
 
 ;;;     gtk_container_child_set
 
-(test container-child-set
+(test gtk-container-child-set
   (let ((box (make-instance 'gtk:box :orientation :vertical))
         (button (make-instance 'gtk:button)))
     (is-false (gtk:container-add box button))
@@ -266,7 +311,7 @@
 
 ;;;     gtk_container_child_property
 
-(test container-child-property.1
+(test gtk-container-child-property.1
   (let ((box (make-instance 'gtk:box))
         (button (make-instance 'gtk:button)))
     ;; Add a button to the box
@@ -280,7 +325,7 @@
 
 ;;;     (setf container-child-property)
 
-(test container-child-property.2
+(test gtk-container-child-property.2
   (let ((box (make-instance 'gtk:box))
         (button (make-instance 'gtk:button)))
     ;; Add a button to the box
@@ -296,7 +341,7 @@
     (is (= 6 (setf (gtk:container-child-property box button "padding") 6)))
     (is (= 6 (gtk:container-child-property box button "padding")))))
 
-(test container-child-property.3
+(test gtk-container-child-property.3
   (let ((box (make-instance 'gtk:box))
         (button (make-instance 'gtk:button)))
     ;; Add a button to the box
@@ -327,7 +372,7 @@
 
 ;;;     gtk_container_forall
 
-(test container-forall
+(test gtk-container-forall
   (let ((box (make-instance 'gtk:box :orientation :vertical))
         (collect nil))
     ;; Add 10 label to the container
@@ -336,7 +381,9 @@
     ;; Check the length of the list of children, we have no internal children
     (is (= 10 (length (gtk:container-children box))))
     ;; Collect the labels
-    (is-false (gtk:container-forall box (lambda (widget) (push widget collect))))
+    (is-false (gtk:container-forall box
+                                    (lambda (widget)
+                                    (push widget collect))))
     ;; Check the number of labels
     (is (= 10 (length collect)))
     ;; Set the string "text" on the labels in the box
@@ -353,7 +400,7 @@
 ;;;     gtk_container_set_focus_chain
 ;;;     gtk_container_unset_focus_chain
 
-(test container-focus-chain
+(test gtk-container-focus-chain
   (let ((box (make-instance 'gtk:box :orientation :vertical))
         (button1 (make-instance 'gtk:button))
         (button2 (make-instance 'gtk:button))
@@ -379,7 +426,7 @@
 
 ;; Find a child property of type gboolean
 
-(test container-class-find-child-property.1
+(test gtk-container-class-find-child-property.1
   (with-foreign-objects ((value '(:struct g:value)))
     (is-true (g:value-init value "gboolean"))
     (let ((pspec (gtk:container-class-find-child-property "GtkBox" "expand")))
@@ -390,7 +437,8 @@
       (is (string= "GParamBoolean" (g:param-spec-type-name pspec)))
       (is (eq (g:gtype "gboolean") (g:param-spec-value-type pspec)))
       ;; Check the default value
-      (is (eq (g:gtype "gboolean") (g:value-type (g:param-spec-default-value pspec))))
+      (is (eq (g:gtype "gboolean")
+              (g:value-type (g:param-spec-default-value pspec))))
       (is-false (gobject:parse-g-value (g:param-spec-default-value pspec)))
       (is-false (g:param-value-set-default pspec value))
       (is-false (gobject:parse-g-value value))
@@ -403,10 +451,11 @@
 
 ;; Find a child property of an enumeration type
 
-(test container-class-find-child-property.2
+(test gtk-container-class-find-child-property.2
   (with-foreign-objects ((value '(:struct g:value)))
     (is-true (g:value-init value "GtkPackType"))
-    (let ((pspec (gtk:container-class-find-child-property "GtkBox" "pack-type")))
+    (let ((pspec (gtk:container-class-find-child-property "GtkBox"
+                                                          "pack-type")))
       ;; Type checks
       (is-true (g:type-is-param (g:type-from-instance pspec)))
       (is-true (g:is-param-spec pspec))
@@ -416,7 +465,8 @@
       ;; Check the default value
       (is (eq (g:gtype "GtkPackType")
               (g:value-type (g:param-spec-default-value pspec))))
-      (is (eq :start (gobject:parse-g-value (g:param-spec-default-value pspec))))
+      (is (eq :start
+              (gobject:parse-g-value (g:param-spec-default-value pspec))))
       (is-false (g:param-value-set-default pspec value))
       (is (eq :start (gobject:parse-g-value value)))
       ;; Check the infos about the parameter
@@ -428,7 +478,7 @@
 
 ;; Find a child property of type gint
 
-(test container-class-find-child-property.3
+(test gtk-container-class-find-child-property.3
   (with-foreign-objects ((value '(:struct g:value)))
     (is-true (g:value-init value "gint"))
     (let ((pspec (gtk:container-class-find-child-property "GtkBox" "position")))
@@ -439,7 +489,8 @@
       (is (string= "GParamInt" (g:param-spec-type-name pspec)))
       (is (eq (g:gtype "gint") (g:param-spec-value-type pspec)))
       ;; Check the default value
-      (is (eq (g:gtype "gint") (g:value-type (g:param-spec-default-value pspec))))
+      (is (eq (g:gtype "gint")
+              (g:value-type (g:param-spec-default-value pspec))))
       (is (= 0 (gobject:parse-g-value (g:param-spec-default-value pspec))))
       (is-false (g:param-value-set-default pspec value))
       (is (= 0 (gobject:parse-g-value value)))
@@ -455,7 +506,7 @@
 
 ;;;     gtk_container_class_list_child_properties
 
-(test container-class-list-child-properties
+(test gtk-container-class-list-child-properties
     (is (listp (gtk:container-class-list-child-properties "GtkBox")))
     (is (equal '("expand" "fill" "padding" "pack-type" "position")
                (mapcar #'g:param-spec-name
@@ -463,4 +514,4 @@
 
 ;;;     gtk_container_class_handle_border_width
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; --- 2023-6-17 --------------------------------------------------------------
