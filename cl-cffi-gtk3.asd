@@ -248,26 +248,28 @@
      (:file "gtk3.popover-menu")          ; Popovers to use as menus
 
      ;; Selectors
-     (:file "gtk3.color-chooser")         ; Interface for choosing colors
-     (:file "gtk3.color-button")          ; Launch a color selection dialog
-     (:file "gtk3.color-chooser-widget")  ; Widget for choosing colors
-     (:file "gtk3.color-chooser-dialog")  ; Dialog for choosing colors
-     (:file "gtk3.color-selection")       ; Widget used to select a color
-     (:file "gtk3.color-selection-dialog"); Widget used to select a color
-     (:file "gtk3.hsv")                   ; GtkHSV
-     (:file "gtk3.file-chooser")          ; File chooser interface
-     (:file "gtk3.file-chooser-widget")   ; File chooser widget
-     (:file "gtk3.file-chooser-button")   ; Button to launch a file selection
-     (:file "gtk3.file-chooser-dialog")   ; File chooser dialog
-     (:file "gtk3.file-chooser-native")   ; A native file chooser dialog
-     (:file "gtk3.file-filter")           ; Selecting a file subset
-     (:file "gtk3.font-chooser")          ; Interface for displaying fonts
-     (:file "gtk3.font-button")           ; Button to launch a font chooser dialog
-     (:file "gtk3.font-chooser-widget")   ; Widget for selecting fonts
-     (:file "gtk3.font-chooser-dialog")   ; Dialog for selecting fonts
-     (:file "gtk3.font-selection")        ; Deprecated widget for selecting fonts
-     (:file "gtk3.font-selection-dialog") ; Deprecated widget for selecting fonts
-     (:file "gtk3.places-sidebar")        ; Displays frequently-used places
+     (:file "gtk3.color-chooser")
+     (:file "gtk3.color-button")
+     (:file "gtk3.color-chooser-widget")
+     (:file "gtk3.color-chooser-dialog")
+     (:file "gtk3.color-selection")
+     (:file "gtk3.color-selection-dialog")
+     (:file "gtk3.hsv")
+
+     (:file "gtk3.file-filter")
+     (:file "gtk3.file-chooser")
+     (:file "gtk3.file-chooser-button")
+     (:file "gtk3.file-chooser-native")
+     (:file "gtk3.file-chooser-dialog")
+     (:file "gtk3.file-chooser-widget")
+
+     (:file "gtk3.font-chooser")
+     (:file "gtk3.font-button")
+     (:file "gtk3.font-chooser-widget")
+     (:file "gtk3.font-chooser-dialog")
+     (:file "gtk3.font-selection")
+     (:file "gtk3.font-selection-dialog")
+     (:file "gtk3.places-sidebar")
 
      ;; Miscellaneous
      (:file "gtk3.adjustment")            ; Representation of a bounded value
@@ -424,7 +426,7 @@
      (:file "rtest-gtk3-range")
      (:file "rtest-gtk3-menu-shell")     ; Base class for menu objects
 ;    (:file "gtk.im-context")            ; Base class for input contexts
-     (:file "rtest-gtk3-native-dialog")  ; Integrate with native dialogs
+     (:file "rtest-gtk3-native-dialog")
 
      ;; Layout Containers
      (:file "rtest-gtk3-box")            ; Container box
@@ -555,26 +557,26 @@
 ;    (:file "gtk.popover-menu")          ; Popovers to use as menus
 
      ;; Selectors
-;    (:file "gtk.color-chooser")         ; Interface for choosing colors
-;    (:file "gtk.color-button")          ; Launch a color selection dialog
-;    (:file "gtk.color-chooser-widget")  ; Widget for choosing colors
-;    (:file "gtk.color-chooser-dialog")  ; Dialog for choosing colors
-;    (:file "gtk.color-selection")       ; Widget used to select a color
-;    (:file "gtk.color-selection-dialog"); Widget used to select a color
-;    (:file "gtk.hsv")                   ; GtkHSV
-     (:file "rtest-gtk3-file-chooser")   ; File chooser interface
-     (:file "rtest-gtk3-file-chooser-widget"); File chooser widget
-;    (:file "gtk.file-chooser-button")   ; Button to launch a file selection
-;    (:file "gtk.file-chooser-dialog")   ; File chooser dialog
-;    (:file "gtk.file-chooser-native")   ; A native file chooser dialog
-;    (:file "gtk.file-filter")           ; Selecting a file subset
-;    (:file "gtk.font-chooser")          ; Interface for displaying fonts
-;    (:file "gtk.font-button")           ; Button to launch a font chooser dialog
-;    (:file "gtk.font-chooser-widget")   ; Widget for selecting fonts
-;    (:file "gtk.font-chooser-dialog")   ; Dialog for selecting fonts
-;    (:file "gtk.font-selection")        ; Deprecated widget for selecting fonts
-;    (:file "gtk.font-selection-dialog") ; Deprecated widget for selecting fonts
-     (:file "rtest-gtk3-places-sidebar") ; Displays frequently-used places
+     (:file "rtest-gtk3-color-chooser")
+     (:file "rtest-gtk3-color-button")
+     (:file "rtest-gtk3-color-chooser-widget")
+     (:file "rtest-gtk3-color-chooser-dialog")
+     (:file "rtest-gtk3-color-selection")
+     (:file "rtest-gtk3-color-selection-dialog")
+     (:file "rtest-gtk3-hsv")
+
+     (:file "rtest-gtk3-file-filter")
+     (:file "rtest-gtk3-file-chooser")
+     (:file "rtest-gtk3-file-chooser-button")
+     (:file "rtest-gtk3-file-chooser-native")
+     (:file "rtest-gtk3-file-chooser-dialog")
+     (:file "rtest-gtk3-file-chooser-widget")
+
+     (:file "rtest-gtk3-font-chooser")
+     (:file "rtest-gtk3-font-button")
+     (:file "rtest-gtk3-font-chooser-widget")
+     (:file "rtest-gtk3-font-chooser-dialog")
+     (:file "rtest-gtk3-places-sidebar")
 
      ;; Miscellaneous
      (:file "rtest-gtk3-adjustment")     ; Representation of a bounded value

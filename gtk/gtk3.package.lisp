@@ -3009,6 +3009,28 @@ setup_tree (void)
       @about-generic{color-chooser-dialog-show-editor}
       @about-function{color-chooser-dialog-new}
     @end{subsection}
+    @begin[GtkFileFilter]{subsection}
+      A filter for selecting a file subset.
+      @about-symbol{file-filter-flags}
+      @about-symbol{file-filter-info}
+      @about-function{file-filter-info-contains}
+      @about-function{file-filter-info-filename}
+      @about-function{file-filter-info-uri}
+      @about-function{file-filter-info-display-name}
+      @about-function{file-filter-info-mime-type}
+      @about-class{file-filter}
+      @about-function{file-filter-new}
+      @about-function{file-filter-name}
+      @about-function{file-filter-add-mime-type}
+      @about-function{file-filter-add-pattern}
+      @about-function{file-filter-add-pixbuf-formats}
+      @about-symbol{file-filter-func}
+      @about-function{file-filter-add-custom}
+      @about-function{file-filter-needed}
+      @about-function{file-filter-filter}
+      @about-function{file-filter-new-from-gvariant}
+      @about-function{file-filter-to-gvariant}
+    @end{subsection}
     @begin[GtkFileChooser]{subsection}
       File chooser interface used by the @class{gtk:file-chooser-widget} and
       @class{gtk:file-chooser-dialog} widgets.
@@ -3072,11 +3094,10 @@ setup_tree (void)
     @begin[GtkFileChooserNative]{subsection}
       A native file chooser dialog, suitable for \"File/Open\" or \"File/Save\"
       commands.
+      @about-class{file-chooser-native}
+      @about-generic{file-chooser-native-accept-label}
+      @about-generic{file-chooser-native-cancel-label}
       @about-function{file-chooser-native-new}
-      @about-function{file-chooser-native-get-accept-label}
-      @about-function{file-chooser-native-set-accept-label}
-      @about-function{file-chooser-native-get-cancel-label}
-      @about-function{file-chooser-native-set-cancel-label}
     @end{subsection}
     @begin[GtkFileChooserDialog]{subsection}
       A file chooser dialog, suitable for \"File/Open\" or \"File/Save\"
@@ -3090,28 +3111,6 @@ setup_tree (void)
       @about-generic{file-chooser-widget-search-mode}
       @about-generic{file-chooser-widget-subtitle}
       @about-function{file-chooser-widget-new}
-    @end{subsection}
-    @begin[GtkFileFilter]{subsection}
-      A filter for selecting a file subset.
-      @about-symbol{file-filter-flags}
-      @about-symbol{file-filter-info}
-      @about-function{file-filter-info-contains}
-      @about-function{file-filter-info-filename}
-      @about-function{file-filter-info-uri}
-      @about-function{file-filter-info-display-name}
-      @about-function{file-filter-info-mime-type}
-      @about-class{file-filter}
-      @about-function{file-filter-new}
-      @about-function{file-filter-name}
-      @about-function{file-filter-add-mime-type}
-      @about-function{file-filter-add-pattern}
-      @about-function{file-filter-add-pixbuf-formats}
-      @about-symbol{file-filter-func}
-      @about-function{file-filter-add-custom}
-      @about-function{file-filter-needed}
-      @about-function{file-filter-filter}
-      @about-function{file-filter-new-from-gvariant}
-      @about-function{file-filter-to-gvariant}
     @end{subsection}
     @begin[GtkFontChooser]{subsection}
       Interface implemented by widgets displaying fonts.
@@ -3960,6 +3959,18 @@ setup_tree (void)
       @about-function{im-context-set-surrounding}
       @about-function{im-context-get-surrounding}
       @about-function{im-context-delete-surrounding}
+    @end{subsection}
+    @begin[GtkNativeDialog]{subsection}
+      Integrate with native dialogs.
+      @about-class{native-dialog}
+      @about-generic{native-dialog-modal}
+      @about-generic{native-dialog-title}
+      @about-generic{native-dialog-transient-for}
+      @about-generic{native-dialog-visible}
+      @about-function{native-dialog-show}
+      @about-function{native-dialog-hide}
+      @about-function{native-dialog-destroy}
+      @about-function{native-dialog-run}
     @end{subsection}
   @end{section}
   @begin[Cross-process Embedding]{section}
