@@ -83,7 +83,7 @@
 ;;; GtkAdjustment
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkAdjustment" adjustment
+(gobject:define-g-object-class "GtkAdjustment" adjustment
   (:superclass g:initially-unowned
    :export t
    :interfaces nil
@@ -409,7 +409,7 @@ lambda (adjustment)    :no-recurse
 ;;; gtk_adjustment_clamp_page ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_adjustment_clamp_page" %adjustment-clamp-page) :void
+(cffi:defcfun ("gtk_adjustment_clamp_page" %adjustment-clamp-page) :void
   (adjustment (g:object adjustment))
   (lower :double)
   (upper :double))
@@ -441,7 +441,7 @@ lambda (adjustment)    :no-recurse
 ;;; gtk_adjustment_changed ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_adjustment_changed" adjustment-changed) :void
+(cffi:defcfun ("gtk_adjustment_changed" adjustment-changed) :void
  #+liber-documentation
  "@version{#2023-3-14}
   @argument[adjustment]{a @class{gtk:adjustment} object}
@@ -466,7 +466,7 @@ lambda (adjustment)    :no-recurse
 ;;; gtk_adjustment_value_changed ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_adjustment_value_changed" adjustment-value-changed) :void
+(cffi:defcfun ("gtk_adjustment_value_changed" adjustment-value-changed) :void
  #+liber-documentation
  "@version{#2023-3-14}
   @argument[adjustment]{a @class{gtk:adjustment} object}
@@ -490,7 +490,7 @@ lambda (adjustment)    :no-recurse
 ;;; gtk_adjustment_configure ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_adjustment_configure" %adjustment-configure) :void
+(cffi:defcfun ("gtk_adjustment_configure" %adjustment-configure) :void
   (adjustment (g:object adjustment))
   (value :double)
   (lower :double)

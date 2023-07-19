@@ -68,7 +68,7 @@
 ;;; struct GtkAspectFrame
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkAspectFrame" aspect-frame
+(gobject:define-g-object-class "GtkAspectFrame" aspect-frame
   (:superclass frame
    :export t
    :interfaces ("AtkImplementorIface"

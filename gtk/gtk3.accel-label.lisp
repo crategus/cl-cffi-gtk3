@@ -70,7 +70,7 @@
 ;;; struct GtkAccelLabel
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkAccelLabel" accel-label
+(gobject:define-g-object-class "GtkAccelLabel" accel-label
   (:superclass label
    :export t
    :interfaces ("AtkImplementorIface"
@@ -229,7 +229,7 @@
 ;;; gtk_accel_label_get_accel_width () -> accel-label-accel-width
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_accel_label_get_accel_width" accel-label-accel-width) :int
+(cffi:defcfun ("gtk_accel_label_get_accel_width" accel-label-accel-width) :int
   #+liber-documentation
  "@version{#2023-3-15}
   @argument[label]{a @class{gtk:accel-label} widget}
@@ -249,7 +249,7 @@
 ;;; gtk_accel_label_set_accel ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_accel_label_set_accel" accel-label-set-accel) :void
+(cffi:defcfun ("gtk_accel_label_set_accel" accel-label-set-accel) :void
  #+liber-documentation
  "@version{#2023-3-15}
   @argument[label]{a @class{gtk:accel-label} widget}
@@ -274,7 +274,7 @@
 ;;; gtk_accel_label_get_accel ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_accel_label_get_accel" %accel-label-get-accel) :void
+(cffi:defcfun ("gtk_accel_label_get_accel" %accel-label-get-accel) :void
   (label (g:object accel-label))
   (key (:pointer :uint))
   (mods (:pointer gdk:modifier-type)))
@@ -294,8 +294,8 @@
   @see-class{gtk:accel-label}
   @see-symbol{gdk:modifier-type}
   @see-function{gtk:accel-label-set-accel}"
-  (with-foreign-objects ((key :uint)
-                         (mods 'gdk:modifier-type))
+  (cffi:with-foreign-objects ((key :uint)
+                              (mods 'gdk:modifier-type))
     (%accel-label-get-accel label key mods)
     (values (cffi:mem-ref key :uint)
             (cffi:mem-ref mods 'gdk:modifier-type))))
@@ -306,7 +306,7 @@
 ;;; gtk_accel_label_refetch ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_accel_label_refetch" accel-label-refetch) :boolean
+(cffi:defcfun ("gtk_accel_label_refetch" accel-label-refetch) :boolean
  #+liber-documentation
  "@version{#2023-3-15}
   @argument[label]{a @class{gtk:accel-label} widget}

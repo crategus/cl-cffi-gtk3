@@ -71,7 +71,7 @@
 ;;; struct GtkAppChooserDialog
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkAppChooserDialog" app-chooser-dialog
+(gobject:define-g-object-class "GtkAppChooserDialog" app-chooser-dialog
   (:superclass dialog
    :export t
    :interfaces ("AtkImplementorIface"
@@ -165,7 +165,7 @@
 ;;; gtk_app_chooser_dialog_new ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_app_chooser_dialog_new" app-chooser-dialog-new)
+(cffi:defcfun ("gtk_app_chooser_dialog_new" app-chooser-dialog-new)
     (g:object widget)
  #+liber-documentation
  "@version{2023-2-18}
@@ -191,8 +191,8 @@
 ;;; gtk_app_chooser_dialog_new_for_content_type ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_app_chooser_dialog_new_for_content_type"
-           app-chooser-dialog-new-for-content-type) (g:object widget)
+(cffi:defcfun ("gtk_app_chooser_dialog_new_for_content_type"
+               app-chooser-dialog-new-for-content-type) (g:object widget)
  #+liber-documentation
  "@version{2023-2-18}
   @argument[parent]{a @class{gtk:window} widget, or @code{nil}}
@@ -216,7 +216,7 @@
 ;;; gtk_app_chooser_dialog_get_widget () -> app-chooser-dialog-widget
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_app_chooser_dialog_get_widget" app-chooser-dialog-widget)
+(cffi:defcfun ("gtk_app_chooser_dialog_get_widget" app-chooser-dialog-widget)
     (g:object widget)
  #+liber-documentation
  "@version{2023-2-18}

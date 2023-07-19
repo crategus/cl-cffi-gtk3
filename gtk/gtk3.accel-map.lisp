@@ -68,7 +68,7 @@
 ;;; GtkAccelMap
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkAccelMap" accel-map
+(gobject:define-g-object-class "GtkAccelMap" accel-map
   (:superclass g:object
    :export t
    :interfaces nil
@@ -152,7 +152,7 @@ lambda (object path key mods)    :has-details
 ;;; gtk_accel_map_add_entry ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_accel_map_add_entry" accel-map-add-entry) :void
+(cffi:defcfun ("gtk_accel_map_add_entry" accel-map-add-entry) :void
  #+liber-documentation
  "@version{2023-3-6}
   @argument[path]{a string with the valid accelerator path}
@@ -178,7 +178,7 @@ lambda (object path key mods)    :has-details
 ;;; gtk_accel_map_lookup_entry ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_accel_map_lookup_entry" %accel-map-lookup-entry) :boolean
+(cffi:defcfun ("gtk_accel_map_lookup_entry" %accel-map-lookup-entry) :boolean
   (path :string)
   (key (:pointer (:struct accel-key))))
 
@@ -199,7 +199,7 @@ lambda (object path key mods)    :has-details
   @see-class{gtk:accel-map}
   @see-function{gtk:accel-map-add-entry}
   @see-function{gtk:accel-map-change-entry}"
-  (with-foreign-object (key '(:struct accel-key))
+  (cffi:with-foreign-object (key '(:struct accel-key))
     (when (%accel-map-lookup-entry path key)
       (values (cffi:foreign-slot-value key '(:struct accel-key) 'accel-key)
               (cffi:foreign-slot-value key '(:struct accel-key) 'accel-mods)
@@ -211,7 +211,7 @@ lambda (object path key mods)    :has-details
 ;;; gtk_accel_map_change_entry ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_accel_map_change_entry" accel-map-change-entry) :boolean
+(cffi:defcfun ("gtk_accel_map_change_entry" accel-map-change-entry) :boolean
  #+liber-documentation
  "@version{2023-3-6}
   @argument[path]{a string with the valid accelerator path}
@@ -245,7 +245,7 @@ lambda (object path key mods)    :has-details
 ;;; gtk_accel_map_load ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_accel_map_load" %accel-map-load) :void
+(cffi:defcfun ("gtk_accel_map_load" %accel-map-load) :void
   (filename :string))
 
 (defun accel-map-load (path)
@@ -267,7 +267,7 @@ lambda (object path key mods)    :has-details
 ;;; gtk_accel_map_save ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_accel_map_save" %accel-map-save) :void
+(cffi:defcfun ("gtk_accel_map_save" %accel-map-save) :void
   (filename :string))
 
 (defun accel-map-save (path)
@@ -410,7 +410,7 @@ lambda (object path key mods)    :has-details
 ;;; gtk_accel_map_get ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_accel_map_get" accel-map-get) (g:object accel-map)
+(cffi:defcfun ("gtk_accel_map_get" accel-map-get) (g:object accel-map)
  #+liber-documentation
  "@version{2023-3-6}
   @return{The global @class{gtk:accel-map} object.}
@@ -428,7 +428,7 @@ lambda (object path key mods)    :has-details
 ;;; gtk_accel_map_lock_path ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_accel_map_lock_path" accel-map-lock-path) :void
+(cffi:defcfun ("gtk_accel_map_lock_path" accel-map-lock-path) :void
  #+liber-documentation
  "@version{#2023-3-6}
   @argument[path]{a string with the valid accelerator path}
@@ -464,7 +464,7 @@ lambda (object path key mods)    :has-details
 ;;; gtk_accel_map_unlock_path ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_accel_map_unlock_path" accel-map-unlock-path) :void
+(cffi:defcfun ("gtk_accel_map_unlock_path" accel-map-unlock-path) :void
  #+liber-documentation
  "@version{#2023-3-6}
   @argument[path]{a string with the valid accelerator path}

@@ -76,7 +76,7 @@
 ;;; GtkActivatable
 ;;; ----------------------------------------------------------------------------
 
-(define-g-interface "GtkActivatable" activatable
+(gobject:define-g-interface "GtkActivatable" activatable
   (:export t
    :type-initializer "gtk_activatable_get_type")
   ((related-action
@@ -179,8 +179,8 @@
 ;;; gtk_activatable_do_set_related_action ()               not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_activatable_do_set_related_action"
-           activatable-do-set-related-action) :void
+(cffi:defcfun ("gtk_activatable_do_set_related_action"
+               activatable-do-set-related-action) :void
  #+liber-documentation
  "@version{#2023-1-21}
   @argument[activatable]{a @class{gtk:activatable} object}
@@ -216,8 +216,8 @@
 ;;; gtk_activatable_sync_action_properties ()              not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_activatable_sync_action_properties"
-           activatable-sync-action-properties) :void
+(cffi:defcfun ("gtk_activatable_sync_action_properties"
+               activatable-sync-action-properties) :void
  #+liber-documentation
  "@version{#2023-1-21}
   @argument[activatable]{a @class{gtk:activatable} object}

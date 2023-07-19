@@ -97,7 +97,7 @@
 ;;; Class GtkActionGroup
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkActionGroup" action-group
+(gobject:define-g-object-class "GtkActionGroup" action-group
   (:superclass g:object
    :export t
    :interfaces ("GtkBuildable")
@@ -491,7 +491,7 @@ lambda (group action)
 
 ;; This structure is not used in the Lisp binding and not exported.
 
-(defcstruct action-entry
+(cffi:defcstruct action-entry
   (name :string)
   (stock-id :string)
   (label :string)
@@ -509,7 +509,7 @@ lambda (group action)
     @fun{gtk:action-group-add-actions} function to construct actions.
   @end{short}
   @begin{pre}
-(defcstruct gtk:action-entry
+(cffi:defcstruct gtk:action-entry
   (name :string)
   (stock-id :string)
   (label :string)
@@ -888,8 +888,8 @@ lambda (group action)
 ;;; GtkTranslateFunc ()                                    not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcallback translate-func (:string :free-to-foreign nil
-                                         :free-from-foreign nil)
+(cffi:defcallback translate-func (:string :free-to-foreign nil
+                                          :free-from-foreign nil)
     ((path (:string :free-from-foreign nil))
      (data :pointer))
   (restart-case
@@ -918,8 +918,8 @@ lambda (group action)
 ;;; gtk_action_group_set_translate_func ()                 not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_action_group_set_translate_func"
-          %action-group-set-translate-func) :void
+(cffi:defcfun ("gtk_action_group_set_translate_func"
+               %action-group-set-translate-func) :void
   (group (g:object action-group))
   (func :pointer)
   (data :pointer)
@@ -954,8 +954,8 @@ lambda (group action)
 ;;; gtk_action_group_set_translation_domain                not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_action_group_set_translation_domain"
-          action-group-set-translation-domain) :void
+(cffi:defcfun ("gtk_action_group_set_translation_domain"
+               action-group-set-translation-domain) :void
  #+liber-documentation
  "@version{#2023-3-15}
   @argument[group]{a @class{gtk:action-group} object}
@@ -982,8 +982,8 @@ lambda (group action)
 ;;; gtk_action_group_translate_string                      not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_action_group_translate_string" action-group-translate-string)
-    (:string :free-from-foreign nil)
+(cffi:defcfun ("gtk_action_group_translate_string" 
+               action-group-translate-string) (:string :free-from-foreign nil)
  #+liber-documentation
  "@version{#2023-3-15}
   @argument[group]{a @class{gtk:action-group} object}

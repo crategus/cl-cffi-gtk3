@@ -68,7 +68,7 @@
 ;;; struct GtkActionBar
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkActionBar" action-bar
+(gobject:define-g-object-class "GtkActionBar" action-bar
   (:superclass bin
    :export t
    :interfaces ("AtkImplementorIface"
@@ -192,7 +192,7 @@
 ;;; gtk_action_bar_pack_start ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_action_bar_pack_start" action-bar-pack-start) :void
+(cffi:defcfun ("gtk_action_bar_pack_start" action-bar-pack-start) :void
  #+liber-documentation
  "@version{#2023-3-15}
   @argument[actionbar]{a @class{gtk:action-bar} widget}
@@ -213,7 +213,7 @@
 ;;; gtk_action_bar_pack_end ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_action_bar_pack_end" action-bar-pack-end) :void
+(cffi:defcfun ("gtk_action_bar_pack_end" action-bar-pack-end) :void
  #+liber-documentation
  "@version{#2023-3-15}
   @argument[actionbar]{a @class{gtk:action-bar} widget}
@@ -242,7 +242,7 @@
                         :void)
   widget)
 
-(defcfun ("gtk_action_bar_get_center_widget" action-bar-center-widget)
+(cffi:defcfun ("gtk_action_bar_get_center_widget" action-bar-center-widget)
     (g:object widget)
  #+liber-documentation
  "@version{#2023-3-15}

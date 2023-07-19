@@ -80,7 +80,7 @@
 ;;; struct GtkAppChooserButton
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkAppChooserButton" app-chooser-button
+(gobject:define-g-object-class "GtkAppChooserButton" app-chooser-button
   (:superclass combo-box
    :export t
    :interfaces ("AtkImplementorIface"
@@ -269,8 +269,8 @@ lambda (widget name)    :has-details
 ;;; gtk_app_chooser_button_append_custom_item ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_app_chooser_button_append_custom_item"
-           app-chooser-button-append-custom-item) :void
+(cffi:defcfun ("gtk_app_chooser_button_append_custom_item"
+               app-chooser-button-append-custom-item) :void
  #+liber-documentation
  "@version{#2023-2-14}
   @argument[widget]{a @class{gtk:app-chooser-button} widget}
@@ -298,8 +298,8 @@ lambda (widget name)    :has-details
 ;;; gtk_app_chooser_button_append_separator ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_app_chooser_button_append_separator"
-           app-chooser-button-append-separator) :void
+(cffi:defcfun ("gtk_app_chooser_button_append_separator"
+               app-chooser-button-append-separator) :void
  #+liber-documentation
  "@version{#2023-2-14}
   @argument[widget]{a @class{gtk:app-chooser-button} widget}
@@ -315,8 +315,8 @@ lambda (widget name)    :has-details
 ;;; gtk_app_chooser_button_set_active_custom_item ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_app_chooser_button_set_active_custom_item"
-           app-chooser-button-set-active-custom-item) :void
+(cffi:defcfun ("gtk_app_chooser_button_set_active_custom_item"
+               app-chooser-button-set-active-custom-item) :void
  #+liber-documentation
  "@version{#2023-2-14}
   @argument[widget]{a @class{gtk:app-chooser-button} widget}

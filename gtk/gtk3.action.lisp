@@ -121,7 +121,7 @@
 ;;; Class GtkAction
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkAction" action
+(gobject:define-g-object-class "GtkAction" action
   (:superclass g:object
     :export t
     :interfaces ("GtkBuildable")
@@ -854,7 +854,7 @@ lambda (action)    :no-recurse
 ;;; gtk_action_is_sensitive ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_action_is_sensitive" action-is-sensitive) :boolean
+(cffi:defcfun ("gtk_action_is_sensitive" action-is-sensitive) :boolean
  #+liber-documentation
  "@version{#2023-3-12}
   @argument[action]{a @class{gtk:action} object}
@@ -878,7 +878,7 @@ lambda (action)    :no-recurse
 ;;; gtk_action_is_visible ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_action_is_visible" action-is-visible) :boolean
+(cffi:defcfun ("gtk_action_is_visible" action-is-visible) :boolean
  #+liber-documentation
  "@version{#2023-3-12}
   @argument[action]{a @class{gtk:action} object}
@@ -902,7 +902,7 @@ lambda (action)    :no-recurse
 ;;; gtk_action_activate ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_action_activate" action-activate) :void
+(cffi:defcfun ("gtk_action_activate" action-activate) :void
  #+liber-documentation
  "@version{#2023-3-12}
   @argument[action]{a @class{gtk:action} object}
@@ -929,7 +929,7 @@ lambda (action)    :no-recurse
 ;;; gtk_action_create_icon ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_action_create_icon" action-create-icon) (g:object widget)
+(cffi:defcfun ("gtk_action_create_icon" action-create-icon) (g:object widget)
  #+liber-documentation
  "@version{#2023-3-12}
   @argument[action]{a @class{gtk:action} object}
@@ -964,7 +964,7 @@ lambda (action)    :no-recurse
 ;;; gtk_action_create_menu_item ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_action_create_menu_item" action-create-menu-item)
+(cffi:defcfun ("gtk_action_create_menu_item" action-create-menu-item)
     (g:object image-menu-item)
  #+liber-documentation
  "@version{#2023-3-12}
@@ -989,7 +989,7 @@ lambda (action)    :no-recurse
 ;;; gtk_action_create_tool_item ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_action_create_tool_item" action-create-tool-item)
+(cffi:defcfun ("gtk_action_create_tool_item" action-create-tool-item)
     (g:object tool-button)
  #+liber-documentation
  "@version{#2023-3-12}
@@ -1015,7 +1015,7 @@ lambda (action)    :no-recurse
 ;;; gtk_action_create_menu ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_action_create_menu" action-create-menu) g:object
+(cffi:defcfun ("gtk_action_create_menu" action-create-menu) g:object
  #+liber-documentation
  "@version{#2023-3-12}
   @argument[action]{a @class{gtk:action} object}
@@ -1044,7 +1044,7 @@ lambda (action)    :no-recurse
 ;;; gtk_action_get_proxies () -> action-proxies
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_action_get_proxies" action-proxies)
+(cffi:defcfun ("gtk_action_get_proxies" action-proxies)
     (g:slist-t g:object :free-from-foreign nil)
  #+liber-documentation
  "@version{#2023-3-12}
@@ -1067,7 +1067,7 @@ lambda (action)    :no-recurse
 ;;; gtk_action_connect_accelerator ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_action_connect_accelerator" action-connect-accelerator) :void
+(cffi:defcfun ("gtk_action_connect_accelerator" action-connect-accelerator) :void
  #+liber-documentation
  "@version{#2023-3-12}
   @argument[action]{a @class{gtk:action} object}
@@ -1103,7 +1103,7 @@ lambda (action)    :no-recurse
 ;;; gtk_action_disconnect_accelerator ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_action_disconnect_accelerator" action-disconnect-accelerator)
+(cffi:defcfun ("gtk_action_disconnect_accelerator" action-disconnect-accelerator)
     :void
  #+liber-documentation
  "@version{#2023-3-12}
@@ -1130,7 +1130,7 @@ lambda (action)    :no-recurse
 ;;; gtk_action_block_activate ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_action_block_activate" action-block-activate) :void
+(cffi:defcfun ("gtk_action_block_activate" action-block-activate) :void
  #+liber-documentation
  "@version{#2023-3-12}
   @argument[action]{a @class{gtk:action} object}
@@ -1158,7 +1158,7 @@ lambda (action)    :no-recurse
 ;;; gtk_action_unblock_activate ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_action_unblock_activate" action-unblock-activate) :void
+(cffi:defcfun ("gtk_action_unblock_activate" action-unblock-activate) :void
  #+liber-documentation
  "@version{#2023-3-12}
   @argument[action]{a @class{gtk:action} object}
@@ -1189,7 +1189,7 @@ lambda (action)    :no-recurse
                         :void)
   path)
 
-(defcfun ("gtk_action_get_accel_path" action-accel-path) :string
+(cffi:defcfun ("gtk_action_get_accel_path" action-accel-path) :string
  #+liber-documentation
  "@version{#2023-3-12}
   @syntax[]{(gtk:action-accel-path action) => path}
@@ -1222,7 +1222,7 @@ lambda (action)    :no-recurse
 ;;; gtk_action_get_accel_closure ()                        not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_action_get_accel_closure" action-accel-closure)
+(cffi:defcfun ("gtk_action_get_accel_closure" action-accel-closure)
     (:pointer (:struct g:closure))
  #+liber-documentation
  "@version{#2023-3-12}
@@ -1245,7 +1245,7 @@ lambda (action)    :no-recurse
 ;;; gtk_action_set_accel_group ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_action_set_accel_group" action-set-accel-group) :void
+(cffi:defcfun ("gtk_action_set_accel_group" action-set-accel-group) :void
  #+liber-documentation
  "@version{#2023-3-12}
   @argument[action]{a @class{gtk:action} object}

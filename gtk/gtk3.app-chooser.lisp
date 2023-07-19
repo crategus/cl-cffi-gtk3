@@ -61,7 +61,7 @@
 ;;; GtkAppChooser
 ;;; ----------------------------------------------------------------------------
 
-(define-g-interface "GtkAppChooser" app-chooser
+(gobject:define-g-interface "GtkAppChooser" app-chooser
   (:export t
    :type-initializer "gtk_app_chooser_get_type")
   ((content-type
@@ -132,7 +132,7 @@
 ;;; gtk_app_chooser_get_app_info () -> app-chooser-app-info
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_app_chooser_get_app_info" app-chooser-app-info)
+(cffi:defcfun ("gtk_app_chooser_get_app_info" app-chooser-app-info)
     (g:object g:app-info)
  #+liber-documentation
  "@version{#2023-2-14}
@@ -153,7 +153,7 @@
 ;;; gtk_app_chooser_refresh ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_app_chooser_refresh" app-chooser-refresh) :void
+(cffi:defcfun ("gtk_app_chooser_refresh" app-chooser-refresh) :void
  #+liber-documentation
  "@version{#2023-2-14}
   @argument[object]{a @class{gtk:app-chooser} object}

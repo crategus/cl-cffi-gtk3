@@ -70,7 +70,7 @@
 ;;; struct GtkApplicationWindow
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkApplicationWindow" application-window
+(gobject:define-g-object-class "GtkApplicationWindow" application-window
   (:superclass window
    :export t
    :interfaces ("AtkImplementorIface"
@@ -243,7 +243,8 @@
 ;;; gtk_application_window_new ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_application_window_new" application-window-new) (g:object widget)
+(cffi:defcfun ("gtk_application_window_new" application-window-new) 
+    (g:object widget)
  #+liber-documentation
  "@version{2023-3-11}
   @argument[application]{a @class{gtk:application} instance}
@@ -259,7 +260,7 @@
 ;;; gtk_application_window_get_id ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_application_window_get_id" application-window-id) :uint
+(cffi:defcfun ("gtk_application_window_get_id" application-window-id) :uint
  #+liber-documentation
  "@version{2023-3-11}
   @argument[window]{a @class{gtk:application-window} widget}
@@ -290,8 +291,8 @@
                         :void)
   help-overlay)
 
-(defcfun ("gtk_application_window_get_help_overlay"
-           application-window-help-overlay) (g:object shortcuts-window)
+(cffi:defcfun ("gtk_application_window_get_help_overlay"
+               application-window-help-overlay) (g:object shortcuts-window)
  #+liber-documentation
  "@version{2023-3-13}
   @syntax[]{(gtk:application-window-help-overlay window) => help-overlay}

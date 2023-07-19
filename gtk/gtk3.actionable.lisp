@@ -64,7 +64,7 @@
 ;;; GtkActionable
 ;;; ----------------------------------------------------------------------------
 
-(define-g-interface "GtkActionable" actionable
+(gobject:define-g-interface "GtkActionable" actionable
   (:export t
    :type-initializer "gtk_actionable_get_type")
   ((action-name

@@ -116,7 +116,7 @@
 ;;; enum GtkLicense
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkLicense" license
+(gobject:define-g-enum "GtkLicense" license
   (:export t
    :type-initializer "gtk_license_get_type")
   (:unknown 0)
@@ -145,7 +145,7 @@
   @end{short}
   This enumeration can be expanded at later date.
   @begin{pre}
-(define-g-enum \"GtkLicense\" license
+(gobject:define-g-enum \"GtkLicense\" license
   (:export t
    :type-initializer \"gtk_license_get_type\")
   (:unknown 0)
@@ -191,7 +191,7 @@
 ;;; struct GtkAboutDialog
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkAboutDialog" about-dialog
+(gobject:define-g-object-class "GtkAboutDialog" about-dialog
   (:superclass dialog
    :export t
    :interfaces ("AtkImplementorIface"
@@ -798,8 +798,8 @@ gtk_about_dialog_set_translator_credits (about, _(\"translator-credits\"));
 ;;; gtk_about_dialog_add_credit_section ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_about_dialog_add_credit_section" about-dialog-add-credit-section)
-    :void
+(cffi:defcfun ("gtk_about_dialog_add_credit_section"
+               about-dialog-add-credit-section) :void
  #+liber-documentation
  "@version{#2023-3-15}
   @argument[about]{a @class{gtk:about-dialog} widget}

@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2013 - 2022 Dieter Kaiser
+;;; Copyright (C) 2013 - 2023 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -36,6 +36,14 @@
 ;;;     GtkApplication
 ;;;     GtkApplicationInhibitFlags
 ;;;
+;;; Accessors
+;;;
+;;;     gtk_application_get_active_window
+;;;     gtk_application_get_app_menu
+;;;     gtk_application_set_app_menu
+;;;     gtk_application_get_menubar
+;;;     gtk_application_set_menubar
+;;;
 ;;; Functions
 ;;;
 ;;;     gtk_application_new
@@ -43,15 +51,10 @@
 ;;;     gtk_application_remove_window
 ;;;     gtk_application_get_windows
 ;;;     gtk_application_get_window_by_id
-;;;     gtk_application_get_active_window                  Accessor
 ;;;     gtk_application_inhibit
 ;;;     gtk_application_uninhibit
 ;;;     gtk_application_is_inhibited
 ;;;     gtk_application_prefers_app_menu
-;;;     gtk_application_get_app_menu                       Accessor
-;;;     gtk_application_set_app_menu                       Accessor
-;;;     gtk_application_get_menubar                        Accessor
-;;;     gtk_application_set_menubar                        Accessor
 ;;;     gtk_application_get_menu_by_id
 ;;;     gtk_application_add_accelerator                    not exported
 ;;;     gtk_application_remove_accelerator                 not exported
@@ -82,7 +85,7 @@
 ;;;
 ;;; Implemented Interfaces
 ;;;
-;;;     GtkApplication implements GActionGroup and GActionMap.
+;;;     GtkApplication implements GActionGroup and GActionMap
 ;;; ----------------------------------------------------------------------------
 
 (in-package :gtk)
@@ -91,7 +94,7 @@
 ;;; enum GtkApplicationInhibitFlags
 ;;; ----------------------------------------------------------------------------
 
-(define-g-flags "GtkApplicationInhibitFlags" application-inhibit-flags
+(gobject:define-g-flags "GtkApplicationInhibitFlags" application-inhibit-flags
   (:export t
    :type-initializer "gtk_application_inhibit_flags_get_type")
   (:logout  #.(ash 1 0))
@@ -103,13 +106,13 @@
 (setf (liber:alias-for-symbol 'application-inhibit-flags)
       "GFlags"
       (liber:symbol-documentation 'application-inhibit-flags)
- "@version{#2023-3-15}
+ "@version{2023-7-4}
   @begin{short}
     Types of user actions that may be blocked by the
     @fun{gtk:application-inhibit} function.
   @end{short}
   @begin{pre}
-(define-g-flags \"GtkApplicationInhibitFlags\" application-inhibit-flags
+(gobject:define-g-flags \"GtkApplicationInhibitFlags\" application-inhibit-flags
   (:export t
    :type-initializer \"gtk_application_inhibit_flags_get_type\")
   (:logout  #.(ash 1 0))
@@ -131,7 +134,7 @@
 ;;; struct GtkApplication
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkApplication" application
+(gobject:define-g-object-class "GtkApplication" application
   (:superclass g:application
    :export t
    :interfaces ("GActionGroup"
@@ -155,7 +158,7 @@
 
 #+liber-documentation
 (setf (documentation 'application 'type)
- "@version{#2023-3-15}
+ "@version{2023-7-4}
   @begin{short}
     The @sym{gtk:application} class handles many important aspects of a GTK
     application in a convenient fashion, without enforcing a one-size-fits-all
@@ -232,8 +235,9 @@
 (defun application-simple (&rest argv)
   (let (;; Create an application
         (app (make-instance 'gtk:application
-                            :application-id \"com.crategus.application-simple\"
-                            :flags :none)))
+                            :application-id 
+                            \"com.crategus.application-simple\"
+                            :flags :flags-none)))
     ;; Connect signal \"activate\" to the application
     (g:signal-connect app \"activate\"
         (lambda (application)
@@ -241,7 +245,7 @@
           (let ((window (make-instance 'gtk:application-window
                                        :application application
                                        :title \"Simple Application\"
-                                       :default-width 500
+                                       :default-width 480
                                        :default-height 300)))
             ;; Show the application window
             (gtk:widget-show-all window))))
@@ -315,7 +319,7 @@ lambda (application window)    :run-first
 (setf (liber:alias-for-function 'application-active-window)
       "Accessor"
       (documentation 'application-active-window 'function)
- "@version{#2023-3-15}
+ "@version{2023-7-4}
   @syntax[]{(gtk:application-active-window object) => window}
   @argument[object]{a @class{gtk:application} instance}
   @argument[window]{a @class{gtk:window} widget}
@@ -344,7 +348,7 @@ lambda (application window)    :run-first
 (setf (liber:alias-for-function 'application-app-menu)
       "Accessor"
       (documentation 'application-app-menu 'function)
- "@version{#2023-3-15}
+ "@version{2023-7-4}
   @syntax[]{(gtk:application-app-menu object) => app-menu}
   @syntax[]{(setf (gtk:application-app-menu object) app-menu)}
   @argument[object]{a @class{gtk:application} instance}
@@ -386,7 +390,7 @@ lambda (application window)    :run-first
 (setf (liber:alias-for-function 'application-menubar)
       "Accessor"
       (documentation 'application-menubar 'function)
- "@version{#2023-3-15}
+ "@version{2023-7-4}
   @syntax[]{(gtk:application-menubar object) => menubar}
   @syntax[]{(setf (gtk:application-menubar object) menubar)}
   @argument[object]{a @class{gtk:application} instance}
@@ -433,7 +437,7 @@ lambda (application window)    :run-first
 (setf (liber:alias-for-function 'application-register-session)
       "Accessor"
       (documentation 'application-register-session 'function)
- "@version{#2023-3-15}
+ "@version{2023-7-4}
   @syntax[]{(gtk:application-register-session object) => setting}
   @syntax[]{(setf (gtk:application-register-session object) setting)}
   @argument[object]{a @class{gtk:application} instance}
@@ -462,7 +466,7 @@ lambda (application window)    :run-first
 (setf (liber:alias-for-function 'application-screensaver-active)
       "Accessor"
       (documentation 'application-screensaver-active 'function)
- "@version{#2023-3-15}
+ "@version{2023-7-4}
   @syntax[]{(gtk:application-screensaver-active object) => active}
   @argument[object]{a @class{gtk:application} instance}
   @argument[active]{a boolean whether the screensaver is active}
@@ -485,7 +489,7 @@ lambda (application window)    :run-first
 (declaim (inline application-new))
 
 (defun application-new (id flags)
- "@version{#2023-3-15}
+ "@version{2023-7-4}
   @argument[id]{a string with the application ID, or @code{nil} for no
     application ID}
   @argument[flags]{the @symbol{g:application-flags} application flags}
@@ -524,9 +528,9 @@ lambda (application window)    :run-first
 ;;; gtk_application_add_window ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_application_add_window" application-add-window) :void
+(cffi:defcfun ("gtk_application_add_window" application-add-window) :void
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{2023-7-4}
   @argument[application]{a @class{gtk:application} instance}
   @argument[window]{a @class{gtk:window} widget}
   @begin{short}
@@ -553,9 +557,9 @@ lambda (application window)    :run-first
 ;;; gtk_application_remove_window ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_application_remove_window" application-remove-window) :void
+(cffi:defcfun ("gtk_application_remove_window" application-remove-window) :void
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{2023-7-4}
   @argument[application]{a @class{gtk:application} instance}
   @argument[window]{a @class{gtk:window} widget}
   @begin{short}
@@ -579,10 +583,10 @@ lambda (application window)    :run-first
 ;;; gtk_application_get_windows () -> application-windows
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_application_get_windows" application-windows)
+(cffi:defcfun ("gtk_application_get_windows" application-windows)
     (g:list-t (g:object window) :free-from-foreign nil)
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{2023-7-4}
   @argument[application]{a @class{gtk:application} instance}
   @return{A list of @class{gtk:window} widgets.}
   @begin{short}
@@ -601,10 +605,10 @@ lambda (application window)    :run-first
 ;;; gtk_application_get_window_by_id () -> application-window-by-id
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_application_get_window_by_id" application-window-by-id)
+(cffi:defcfun ("gtk_application_get_window_by_id" application-window-by-id)
     (g:object window)
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{2023-7-4}
   @argument[application]{a @class{gtk:application} instance}
   @argument[id]{an unsigned integer identifier number}
   @return{The @class{gtk:application-window} widget with ID @arg{id}, or
@@ -632,7 +636,7 @@ lambda (application window)    :run-first
 ;;; gtk_application_inhibit ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_application_inhibit" application-inhibit) :uint
+(cffi:defcfun ("gtk_application_inhibit" application-inhibit) :uint
  #+liber-documentation
  "@version{#2023-3-15}
   @argument[application]{a @class{gtk:application} instance}
@@ -686,7 +690,7 @@ lambda (application window)    :run-first
 ;;; gtk_application_uninhibit ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_application_uninhibit" application-uninhibit) :void
+(cffi:defcfun ("gtk_application_uninhibit" application-uninhibit) :void
  #+liber-documentation
  "@version{#2023-3-15}
   @argument[application]{a @class{gtk:application} instance}
@@ -709,7 +713,7 @@ lambda (application window)    :run-first
 ;;; gtk_application_is_inhibited ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_application_is_inhibited" application-is-inhibited) :boolean
+(cffi:defcfun ("gtk_application_is_inhibited" application-is-inhibited) :boolean
  #+liber-documentation
  "@version{#2023-3-15}
   @argument[application]{a @class{gtk:application} instance}
@@ -734,7 +738,7 @@ lambda (application window)    :run-first
 ;;; gtk_application_prefers_app_menu ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_application_prefers_app_menu" application-prefers-app-menu)
+(cffi:defcfun ("gtk_application_prefers_app_menu" application-prefers-app-menu)
     :boolean
  #+liber-documentation
  "@version{#2023-3-15}
@@ -785,7 +789,7 @@ lambda (application window)    :run-first
 ;;; gtk_application_get_menu_by_id () -> application-menu-by-id
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_application_get_menu_by_id" application-menu-by-id)
+(cffi:defcfun ("gtk_application_get_menu_by_id" application-menu-by-id)
     (g:object menu)
  #+liber-documentation
  "@version{#2023-3-15}
@@ -807,7 +811,8 @@ lambda (application window)    :run-first
 ;;; gtk_application_add_accelerator ()                     not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_application_add_accelerator" %application-add-accelerator) :void
+(cffi:defcfun ("gtk_application_add_accelerator" %application-add-accelerator) 
+    :void
   (application (g:object application))
   (accel :string)
   (name :string)
@@ -864,8 +869,8 @@ lambda (application window)    :run-first
 ;;; gtk_application_remove_accelerator ()                  not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_application_remove_accelerator" %application-remove-accelerator)
-    :void
+(cffi:defcfun ("gtk_application_remove_accelerator" 
+                %application-remove-accelerator) :void
   (application (g:object application))
   (name :string)
   (parameter (:pointer (:struct g:variant))))
@@ -902,10 +907,10 @@ lambda (application window)    :run-first
 ;;; gtk_application_list_action_descriptions ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_application_list_action_descriptions"
-           application-list-action-descriptions) g:strv-t
+(cffi:defcfun ("gtk_application_list_action_descriptions"
+                application-list-action-descriptions) g:strv-t
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{2023-7-4}
   @argument[application]{a @class{gtk:application} instance}
   @return{A list of strings with the detailed action names.}
   @begin{short}
@@ -932,10 +937,10 @@ lambda (application window)    :run-first
                         :void)
   accels)
 
-(defcfun ("gtk_application_get_accels_for_action"
-           application-accels-for-action) g:strv-t
+(cffi:defcfun ("gtk_application_get_accels_for_action"
+                application-accels-for-action) g:strv-t
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{2023-7-4}
   @syntax[]{(gtk:application-accels-for-action application name) => accels}
   @syntax[]{(setf (gtk:application-accels-for-action application name) accels)}
   @argument[application]{a @class{gtk:application} instance}
@@ -971,9 +976,9 @@ lambda (application window)    :run-first
 ;;;     -> application-actions-for-accel
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_application_get_actions_for_accel"
-           application-actions-for-accel) g:strv-t
- "@version{#2023-3-15}
+(cffi:defcfun ("gtk_application_get_actions_for_accel"
+                application-actions-for-accel) g:strv-t
+ "@version{2023-7-4}
   @argument[application]{a @class{gtk:application} instance}
   @argument[accel]{a string with an accelerator that can be parsed by the
     @fun{gtk:accelerator-parse} function}

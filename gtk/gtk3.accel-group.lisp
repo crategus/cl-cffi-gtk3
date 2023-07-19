@@ -90,7 +90,7 @@
 ;;; enum GtkAccelFlags
 ;;; ----------------------------------------------------------------------------
 
-(define-g-flags "GtkAccelFlags" accel-flags
+(gobject:define-g-flags "GtkAccelFlags" accel-flags
   (:export t
    :type-initializer "gtk_accel_flags_get_type")
   (:visible 1)
@@ -106,7 +106,7 @@
     Accelerator flags.
   @end{short}
   @begin{pre}
-(define-g-flags \"GtkAccelFlags\" accel-flags
+(gobject:define-g-flags \"GtkAccelFlags\" accel-flags
   (:export t
    :type-initializer \"gtk_accel_flags_get_type\")
   (:visible 1)
@@ -124,7 +124,7 @@
 ;;; struct GtkAccelGroup
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkAccelGroup" accel-group
+(gobject:define-g-object-class "GtkAccelGroup" accel-group
   (:superclass g:object
    :export t
    :interfaces nil
@@ -411,7 +411,7 @@ lambda (group keyval modifier func)    :detailed
 ;;; gtk_accel_group_activate ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_accel_group_activate" accel-group-activate) :boolean
+(cffi:defcfun ("gtk_accel_group_activate" accel-group-activate) :boolean
  #+liber-documentation
  "@version{#2023-3-1}
   @argument[group]{a @class{gtk:accel-group} object}
@@ -444,7 +444,7 @@ lambda (group keyval modifier func)    :detailed
 ;;; gtk_accel_group_lock ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_accel_group_lock" accel-group-lock) :void
+(cffi:defcfun ("gtk_accel_group_lock" accel-group-lock) :void
  #+liber-documentation
  "@version{#2023-3-1}
   @argument[group]{a @class{gtk:accel-group} object}
@@ -469,7 +469,7 @@ lambda (group keyval modifier func)    :detailed
 ;;; gtk_accel_group_unlock ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_accel_group_unlock" accel-group-unlock) :void
+(cffi:defcfun ("gtk_accel_group_unlock" accel-group-unlock) :void
  #+liber-documentation
  "@version{#2023-3-1}
   @argument[group]{a @class{gtk:accel-group} object}
@@ -565,7 +565,7 @@ lambda (group keyval modifier func)    :detailed
 
 ;; For internal use only.
 
-(defcstruct accel-key
+(cffi:defcstruct accel-key
   (accel-key :uint)
   (accel-mods gdk:modifier-type)
   (accel-flags :uint))
@@ -577,7 +577,7 @@ lambda (group keyval modifier func)    :detailed
  "@version{#2020-9-19}
   @short{}
   @begin{pre}
-(defcstruct accel-key
+(cffi:defcstruct accel-key
   (accel-key :uint)
   (accel-mods gdk:modifier-type)
   (accel-flags :uint))
@@ -593,7 +593,7 @@ lambda (group keyval modifier func)    :detailed
 ;;; gtk_accelerator_valid ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_accelerator_valid" accelerator-valid) :boolean
+(cffi:defcfun ("gtk_accelerator_valid" accelerator-valid) :boolean
  #+liber-documentation
  "@version{2023-3-1}
   @argument[keyval]{an unsigned integer with a GDK keyval}
@@ -616,7 +616,7 @@ lambda (group keyval modifier func)    :detailed
 ;;; gtk_accelerator_parse ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_accelerator_parse" %accelerator-parse) :void
+(cffi:defcfun ("gtk_accelerator_parse" %accelerator-parse) :void
   (accelerator :string)
   (key (:pointer :uint))
   (mask (:pointer gdk:modifier-type)))
@@ -664,7 +664,7 @@ lambda (group keyval modifier func)    :detailed
   @end{dictionary}
   @see-symbol{gdk:modifier-type}
   @see-function{gdk:keyval-from-name}"
-  (with-foreign-objects ((key :uint) (mask 'gdk:modifier-type))
+  (cffi:with-foreign-objects ((key :uint) (mask 'gdk:modifier-type))
     (%accelerator-parse accelerator key mask)
     (values (cffi:mem-ref key :uint)
             (cffi:mem-ref mask 'gdk:modifier-type))))
@@ -675,7 +675,7 @@ lambda (group keyval modifier func)    :detailed
 ;;; gtk_accelerator_name ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_accelerator_name" accelerator-name) :string
+(cffi:defcfun ("gtk_accelerator_name" accelerator-name) :string
  #+liber-documentation
  "@version{2023-3-1}
   @argument[key]{an unsigned integer with the accelerator keyval}
@@ -706,7 +706,7 @@ lambda (group keyval modifier func)    :detailed
 ;;; gtk_accelerator_get_label () -> accelerator-label
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_accelerator_get_label" accelerator-label) :string
+(cffi:defcfun ("gtk_accelerator_get_label" accelerator-label) :string
  #+liber-documentation
  "@version{2023-3-1}
   @argument[key]{an unsigned integer with the accelerator keyval}
@@ -839,8 +839,8 @@ lambda (group keyval modifier func)    :detailed
                         :void)
   default-mod-mask)
 
-(defcfun ("gtk_accelerator_get_default_mod_mask"
-           accelerator-default-mod-mask) gdk:modifier-type
+(cffi:defcfun ("gtk_accelerator_get_default_mod_mask"
+               accelerator-default-mod-mask) gdk:modifier-type
  #+liber-documentation
  "@version{2023-3-1}
   @syntax[]{(gtk:accelerator-default-mod-mask) => mask}

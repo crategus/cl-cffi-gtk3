@@ -117,7 +117,7 @@
 ;;; enum GtkAssistantPageType
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkAssistantPageType" assistant-page-type
+(gobject:define-g-enum "GtkAssistantPageType" assistant-page-type
   (:export t
    :type-initializer "gtk_assistant_page_type_get_type")
   (:content  0)
@@ -143,7 +143,7 @@
   Cancel button will only be shown if the page is not \"committed\". See the
   @fun{gtk:assistant-commit} function for details.
   @begin{pre}
-(define-g-enum \"GtkAssistantPageType\" gtk:assistant-page-type
+(gobject:define-g-enum \"GtkAssistantPageType\" gtk:assistant-page-type
   (:export t
    :type-initializer \"gtk_assistant_page_type_get_type\")
   (:content  0)
@@ -177,7 +177,7 @@
 ;;; struct GtkAssistant
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkAssistant" assistant
+(gobject:define-g-object-class "GtkAssistant" assistant
   (:superclass window
    :export t
    :interfaces ("AtkImplementorIface"
@@ -741,7 +741,7 @@ lambda (assistant page)    :run-last
 ;;; GtkAssistantPageFunc ()
 ;;; ----------------------------------------------------------------------------
 
-(define-cb-methods assistant-page-func :int ((current-page :int)))
+(gobject:define-cb-methods assistant-page-func :int ((current-page :int)))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'assistant-page-func)
@@ -771,8 +771,8 @@ lambda (assistant page)    :run-last
 ;;; gtk_assistant_set_forward_page_func ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_assistant_set_forward_page_func"
-          %assistant-set-forward-page-func) :void
+(cffi:defcfun ("gtk_assistant_set_forward_page_func"
+               %assistant-set-forward-page-func) :void
   (assistant (g:object assistant))
   (func :pointer)
   (data :pointer)
@@ -1044,7 +1044,8 @@ lambda (assistant page)    :run-last
 ;;; gtk_assistant_add_action_widget ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_assistant_add_action_widget" assistant-add-action-widget) :void
+(cffi:defcfun ("gtk_assistant_add_action_widget" assistant-add-action-widget) 
+    :void
  #+liber-documentation
  "@version{#2023-3-15}
   @argument[assistant]{a @class{gtk:assistant} widget}
@@ -1064,8 +1065,8 @@ lambda (assistant page)    :run-last
 ;;; gtk_assistant_remove_action_widget ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_assistant_remove_action_widget" assistant-remove-action-widget)
-    :void
+(cffi:defcfun ("gtk_assistant_remove_action_widget" 
+               assistant-remove-action-widget) :void
  #+liber-documentation
  "@version{#2023-3-15}
   @argument[assistant]{a @class{gtk:assistant} widget}
@@ -1085,8 +1086,8 @@ lambda (assistant page)    :run-last
 ;;; gtk_assistant_update_buttons_state ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_assistant_update_buttons_state" assistant-update-buttons-state)
-    :void
+(cffi:defcfun ("gtk_assistant_update_buttons_state" 
+               assistant-update-buttons-state) :void
  #+liber-documentation
  "@version{#2023-3-15}
   @argument[assistant]{a @class{gtk:assistant} widget}
@@ -1107,7 +1108,7 @@ lambda (assistant page)    :run-last
 ;;; gtk_assistant_commit ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_assistant_commit" assistant-commit) :void
+(cffi:defcfun ("gtk_assistant_commit" assistant-commit) :void
  #+liber-documentation
  "@version{#2023-3-15}
   @argument[assistant]{a @class{gtk:assistant} widget}
@@ -1128,7 +1129,7 @@ lambda (assistant page)    :run-last
 ;;; gtk_assistant_next_page ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_assistant_next_page" assistant-next-page) :void
+(cffi:defcfun ("gtk_assistant_next_page" assistant-next-page) :void
  #+liber-documentation
  "@version{#2023-3-15}
   @argument[assistant]{a @class{gtk:assistant} widget}
@@ -1149,7 +1150,7 @@ lambda (assistant page)    :run-last
 ;;; gtk_assistant_previous_page ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_assistant_previous_page" assistant-previous-page) :void
+(cffi:defcfun ("gtk_assistant_previous_page" assistant-previous-page) :void
  #+liber-documentation
  "@version{#2023-3-15}
   @argument[assistant]{a @class{gtk:assistant} widget}
