@@ -36,7 +36,7 @@
   (is (equal '("direction-changed" "keys-changed" "state-changed")
              (list-signals "GdkKeymap")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GdkKeymap" GDK-KEYMAP
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GdkKeymap" GDK-KEYMAP
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
                         :TYPE-INITIALIZER "gdk_keymap_get_type")
                        NIL)

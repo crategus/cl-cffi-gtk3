@@ -24,7 +24,7 @@
              (mapcar #'gobject:enum-item-nick
                      (gobject:get-enum-items "GtkScrollablePolicy"))))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GtkScrollablePolicy"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkScrollablePolicy"
                               GTK-SCROLLABLE-POLICY
                   (:EXPORT T :TYPE-INITIALIZER "gtk_scrollable_policy_get_type")
                   (:MINIMUM 0)
@@ -43,7 +43,7 @@
   (is (equal '("hadjustment" "hscroll-policy" "vadjustment" "vscroll-policy")
              (list-interface-properties "GtkScrollable")))
   ;; Get the interface definition
-  (is (equal '(DEFINE-G-INTERFACE "GtkScrollable"
+  (is (equal '(GOBJECT:DEFINE-G-INTERFACE "GtkScrollable"
                                   GTK-SCROLLABLE
       (:EXPORT T :TYPE-INITIALIZER "gtk_scrollable_get_type")
       (HADJUSTMENT GTK-SCROLLABLE-HADJUSTMENT "hadjustment" "GtkAdjustment" T T)

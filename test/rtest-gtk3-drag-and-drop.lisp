@@ -27,7 +27,7 @@
   (is (equal '("motion" "highlight" "drop" "all")
              (list-flags-item-nick "GtkDestDefaults")))
   ;; Check the flags definition
-  (is (equal '(DEFINE-G-FLAGS "GtkDestDefaults"
+  (is (equal '(GOBJECT:DEFINE-G-FLAGS "GtkDestDefaults"
                               GTK-DEST-DEFAULTS
                               (:EXPORT T
                                :TYPE-INITIALIZER "gtk_dest_defaults_get_type")
@@ -256,4 +256,4 @@
                (gtk:target-table-new-from-list
                    (gtk:drag-source-target-list source))))))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; --- 2023-7-19 --------------------------------------------------------------

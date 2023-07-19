@@ -31,7 +31,7 @@
   (is (equal '()
              (list-signals "GtkPrintSettings")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkPrintSettings" GTK-PRINT-SETTINGS
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkPrintSettings" GTK-PRINT-SETTINGS
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
                         :TYPE-INITIALIZER "gtk_print_settings_get_type")
                        NIL)
@@ -60,7 +60,7 @@
   (is (equal '("portrait" "landscape" "reverse-portrait" "reverse-landscape")
              (list-enum-item-nick "GtkPageOrientation")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GtkPageOrientation"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkPageOrientation"
                               GTK-PAGE-ORIENTATION
                               (:EXPORT T
                                :TYPE-INITIALIZER "gtk_page_orientation_get_type")
@@ -92,7 +92,7 @@
   (is (equal '("simplex" "horizontal" "vertical")
              (list-enum-item-nick "GtkPrintDuplex")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GtkPrintDuplex"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkPrintDuplex"
                              GTK-PRINT-DUPLEX
                              (:EXPORT T
                               :TYPE-INITIALIZER "gtk_print_duplex_get_type")
@@ -123,7 +123,7 @@
   (is (equal '("low" "normal" "high" "draft")
              (list-enum-item-nick "GtkPrintQuality")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GtkPrintQuality"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkPrintQuality"
                              GTK-PRINT-QUALITY
                              (:EXPORT T
                               :TYPE-INITIALIZER "gtk_print_quality_get_type")
@@ -161,7 +161,7 @@
   (is (equal '("lrtb" "lrbt" "rltb" "rlbt" "tblr" "tbrl" "btlr" "btrl")
              (list-enum-item-nick "GtkNumberUpLayout")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GtkNumberUpLayout"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkNumberUpLayout"
                              GTK-NUMBER-UP-LAYOUT
                              (:EXPORT T
                               :TYPE-INITIALIZER "gtk_number_up_layout_get_type")
@@ -197,7 +197,7 @@
   (is (equal '("all" "current" "ranges" "selection")
              (list-enum-item-nick "GtkPrintPages")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GtkPrintPages"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkPrintPages"
                              GTK-PRINT-PAGES
                              (:EXPORT T
                               :TYPE-INITIALIZER "gtk_print_pages_get_type")
@@ -230,7 +230,7 @@
   (is (equal '("all" "even" "odd")
              (list-enum-item-nick "GtkPageSet")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GtkPageSet"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkPageSet"
                              GTK-PAGE-SET
                              (:EXPORT T
                               :TYPE-INITIALIZER "gtk_page_set_get_type")

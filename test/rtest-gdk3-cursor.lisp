@@ -69,7 +69,7 @@
              (mapcar #'gobject:enum-item-nick
                      (gobject:get-enum-items "GdkCursorType"))))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GdkCursorType"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkCursorType"
                               GDK-CURSOR-TYPE
                               (:EXPORT T
                                :TYPE-INITIALIZER "gdk_cursor_type_get_type")
@@ -185,7 +185,7 @@
   (is (equal '("cursor-type" "display")
              (list-properties "GdkCursor")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GdkCursor" GDK-CURSOR
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GdkCursor" GDK-CURSOR
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
                         :TYPE-INITIALIZER "gdk_cursor_get_type")
                        ((CURSOR-TYPE GDK-CURSOR-CURSOR-TYPE "cursor-type"

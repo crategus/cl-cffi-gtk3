@@ -35,7 +35,7 @@
   (is (equal '("x" "y")
              (list-child-properties "GtkLayout")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkLayout" GTK-LAYOUT
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkLayout" GTK-LAYOUT
                        (:SUPERCLASS GTK-CONTAINER :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable" "GtkScrollable")
                         :TYPE-INITIALIZER "gtk_layout_get_type")

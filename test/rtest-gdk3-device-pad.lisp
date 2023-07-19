@@ -27,7 +27,7 @@
   (is (equal '("button" "ring" "strip")
              (list-enum-item-nick "GdkDevicePadFeature")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GdkDevicePadFeature"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkDevicePadFeature"
                              GDK-DEVICE-PAD-FEATURE
                              (:EXPORT T
                               :TYPE-INITIALIZER "gdk_device_pad_feature_get_type")
@@ -51,7 +51,7 @@
   (is (equal '()
              (list-interface-properties "GdkDevicePad")))
   ;; Get the interface definition
-  (is (equal '(DEFINE-G-INTERFACE "GdkDevicePad"
+  (is (equal '(GOBJECT:DEFINE-G-INTERFACE "GdkDevicePad"
                                   GDK-DEVICE-PAD
                                   (:EXPORT T
                                    :TYPE-INITIALIZER "gdk_device_pad_get_type"))

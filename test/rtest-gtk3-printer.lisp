@@ -33,7 +33,7 @@
   (is (equal '("details-acquired")
              (list-signals "GtkPrinter")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkPrinter" GTK-PRINTER
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkPrinter" GTK-PRINTER
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
                         :TYPE-INITIALIZER "gtk_printer_get_type")
                        ((ACCEPTING-JOBS GTK-PRINTER-ACCEPTING-JOBS
@@ -81,7 +81,7 @@
   (is (equal '("status")
              (list-properties "GtkPrintBackend")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkPrintBackend" GTK-PRINT-BACKEND
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkPrintBackend" GTK-PRINT-BACKEND
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
                         :TYPE-INITIALIZER "gtk_print_backend_get_type")
                        ((STATUS GTK-PRINT-BACKEND-STATUS "status" "gint" T T)))

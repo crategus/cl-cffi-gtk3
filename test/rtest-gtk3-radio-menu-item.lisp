@@ -36,7 +36,7 @@
   (is (equal '("group-changed")
              (list-signals "GtkRadioMenuItem")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkRadioMenuItem" GTK-RADIO-MENU-ITEM
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkRadioMenuItem" GTK-RADIO-MENU-ITEM
                        (:SUPERCLASS GTK-CHECK-MENU-ITEM :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkActionable" "GtkActivatable"
                          "GtkBuildable")

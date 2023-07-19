@@ -42,7 +42,7 @@
   (is (equal '()
              (list-signals "GtkRevealer")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkRevealer" GTK-REVEALER
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkRevealer" GTK-REVEALER
                        (:SUPERCLASS GTK-BIN :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_revealer_get_type")

@@ -37,7 +37,7 @@
   (is (equal '()
              (list-signals "GtkScrollbar")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkScrollbar" GTK-SCROLLBAR
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkScrollbar" GTK-SCROLLBAR
                        (:SUPERCLASS GTK-RANGE :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
                         :TYPE-INITIALIZER "gtk_scrollbar_get_type")

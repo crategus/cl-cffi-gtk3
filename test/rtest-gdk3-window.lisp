@@ -29,7 +29,7 @@
                "subsurface")
              (list-enum-item-nick "GdkWindowType")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GdkWindowType"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkWindowType"
                              GDK-WINDOW-TYPE
                              (:EXPORT T
                               :TYPE-INITIALIZER "gdk_window_type_get_type")
@@ -64,7 +64,7 @@
   (is (equal '("input-output" "input-only")
              (list-enum-item-nick "GdkWindowWindowClass")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GdkWindowWindowClass"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkWindowWindowClass"
                              GDK-WINDOW-WINDOW-CLASS
                              (:EXPORT T
                               :TYPE-INITIALIZER
@@ -97,7 +97,7 @@
                "win-gravity" "user-pos" "user-size")
              (list-flags-item-nick "GdkWindowHints")))
   ;; Check the flags definition
-  (is (equal '(DEFINE-G-FLAGS "GdkWindowHints"
+  (is (equal '(GOBJECT:DEFINE-G-FLAGS "GdkWindowHints"
                               GDK-WINDOW-HINTS
                               (:EXPORT T
                                :TYPE-INITIALIZER "gdk_window_hints_get_type")
@@ -137,7 +137,7 @@
                "south-west" "south" "south-east" "static")
              (list-enum-item-nick "GdkGravity")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GdkGravity"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkGravity"
                              GDK-GRAVITY
                              (:EXPORT T
                               :TYPE-INITIALIZER "gdk_gravity_get_type")
@@ -228,7 +228,7 @@
                "flip" "slide" "resize")
              (list-flags-item-nick "GdkAnchorHints")))
   ;; Check the flags definition
-  (is (equal '(DEFINE-G-FLAGS "GdkAnchorHints"
+  (is (equal '(GOBJECT:DEFINE-G-FLAGS "GdkAnchorHints"
                               GDK-ANCHOR-HINTS
                               (:EXPORT T
                                :TYPE-INITIALIZER "gdk_anchor_hints_get_type")
@@ -268,7 +268,7 @@
                "south" "south-east")
              (list-enum-item-nick "GdkWindowEdge")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GdkWindowEdge"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkWindowEdge"
                              GDK-WINDOW-EDGE
                              (:EXPORT T
                               :TYPE-INITIALIZER "gdk_window_edge_get_type")
@@ -314,7 +314,7 @@
                "notification" "combo" "dnd")
              (list-enum-item-nick "GdkWindowTypeHint")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GdkWindowTypeHint"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkWindowTypeHint"
                              GDK-WINDOW-TYPE-HINT
                              (:EXPORT T
                               :TYPE-INITIALIZER "gdk_window_type_hint_get_type")
@@ -399,7 +399,7 @@
                "type-hint")
              (list-flags-item-nick "GdkWindowAttributesType")))
   ;; Check the flags definition
-  (is (equal '(DEFINE-G-FLAGS "GdkWindowAttributesType"
+  (is (equal '(GOBJECT:DEFINE-G-FLAGS "GdkWindowAttributesType"
                               GDK-WINDOW-ATTRIBUTES-TYPE
                               (:EXPORT T
                                :TYPE-INITIALIZER
@@ -436,7 +436,7 @@
   (is (equal '("current-monitor" "all-monitors")
              (list-enum-item-nick "GdkFullscreenMode")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GdkFullscreenMode"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkFullscreenMode"
                              GDK-FULLSCREEN-MODE
                              (:EXPORT T
                               :TYPE-INITIALIZER "gdk_fullscreen_mode_get_type")
@@ -475,7 +475,7 @@
                "default-mod-mask")
              (list-enum-item-nick "GdkModifierIntent")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GdkModifierIntent" GDK-MODIFIER-INTENT
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkModifierIntent" GDK-MODIFIER-INTENT
                              (:EXPORT T
                               :TYPE-INITIALIZER "gdk_modifier_intent_get_type")
                              (:PRIMARY-ACCELERATOR 0)
@@ -510,7 +510,7 @@
   (is (equal '("all" "border" "resizeh" "title" "menu" "minimize" "maximize")
              (list-flags-item-nick "GdkWMDecoration")))
   ;; Check the flags definition
-  (is (equal '(DEFINE-G-FLAGS "GdkWMDecoration" GDK-W-M-DECORATION
+  (is (equal '(GOBJECT:DEFINE-G-FLAGS "GdkWMDecoration" GDK-W-M-DECORATION
                               (:EXPORT T)
                               (:ALL 1)
                               (:BORDER 2)
@@ -543,7 +543,7 @@
   (is (equal '("all" "resize" "move" "minimize" "maximize" "close")
              (list-flags-item-nick "GdkWMFunction")))
   ;; Check the flags definition
-  (is (equal '(DEFINE-G-FLAGS "GdkWMFunction" GDK-W-M-FUNCTION
+  (is (equal '(GOBJECT:DEFINE-G-FLAGS "GdkWMFunction" GDK-W-M-FUNCTION
                               (:EXPORT T)
                               (:ALL 1)
                               (:RESIZE 2)
@@ -589,7 +589,7 @@
                "pick-embedded-child" "to-embedder")
              (list-signals "GdkWindow")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GdkWindow" GDK-WINDOW
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GdkWindow" GDK-WINDOW
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
                         :TYPE-INITIALIZER "gdk_window_get_type")
                        ((CURSOR GDK-WINDOW-CURSOR "cursor" "GdkCursor" T T)))

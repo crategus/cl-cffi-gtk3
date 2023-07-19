@@ -37,7 +37,7 @@
   (is (equal '("activate")
              (list-signals "GtkFlowBoxChild")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkFlowBoxChild" GTK-FLOW-BOX-CHILD
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkFlowBoxChild" GTK-FLOW-BOX-CHILD
                        (:SUPERCLASS GTK-BIN :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_flow_box_child_get_type")
@@ -80,7 +80,7 @@
                "unselect-all")
              (list-signals "GtkFlowBox")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkFlowBox" GTK-FLOW-BOX
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkFlowBox" GTK-FLOW-BOX
                        (:SUPERCLASS GTK-CONTAINER :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
                         :TYPE-INITIALIZER "gtk_flow_box_get_type")

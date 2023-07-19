@@ -24,7 +24,7 @@
   (is (equal '("visible" "locked" "mask")
              (list-flags-item-nick "GtkAccelFlags")))
   ;; Check the flags definition
-  (is (equal '(DEFINE-G-FLAGS "GtkAccelFlags"
+  (is (equal '(GOBJECT:DEFINE-G-FLAGS "GtkAccelFlags"
                               GTK-ACCEL-FLAGS
                               (:EXPORT T
                                :TYPE-INITIALIZER "gtk_accel_flags_get_type")
@@ -60,7 +60,7 @@
   (is (equal '("accel-activate" "accel-changed")
              (list-signals "GtkAccelGroup")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkAccelGroup" GTK-ACCEL-GROUP
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkAccelGroup" GTK-ACCEL-GROUP
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
                         :TYPE-INITIALIZER "gtk_accel_group_get_type")
                        ((IS-LOCKED GTK-ACCEL-GROUP-IS-LOCKED "is-locked"
@@ -263,4 +263,4 @@
                    '(:SHIFT-MASK :CONTROL-MASK :MOD1-MASK :SUPER-MASK
                      :HYPER-MASK :META-MASK)))))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; --- 2023-7-19 --------------------------------------------------------------

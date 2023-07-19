@@ -107,7 +107,7 @@
   (is (equal '("translation-domain")
              (list-properties "GtkBuilder")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkBuilder" GTK-BUILDER
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkBuilder" GTK-BUILDER
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
                         :TYPE-INITIALIZER "gtk_builder_get_type")
                        ((TRANSLATION-DOMAIN GTK-BUILDER-TRANSLATION-DOMAIN

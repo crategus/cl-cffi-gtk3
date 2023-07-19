@@ -367,7 +367,7 @@
                        (make-instance 'gtk:file-chooser-widget))
                    :recurse)))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkFileChooserWidget"
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkFileChooserWidget"
                                      GTK-FILE-CHOOSER-WIDGET
                        (:SUPERCLASS GTK-BOX :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable" "GtkFileChooser"
@@ -609,4 +609,4 @@
   (is (typep (gtk:file-chooser-widget-new :open) 'gtk:file-chooser-widget))
   (is (typep (gtk:file-chooser-widget-new :save) 'gtk:file-chooser-widget)))
 
-;;; --- 2023-6-11 --------------------------------------------------------------
+;;; --- 2023-6-25 --------------------------------------------------------------

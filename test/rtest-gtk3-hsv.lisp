@@ -46,7 +46,7 @@
                        (make-instance 'gtk:hsv))
                    :recurse)))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkHSV" GTK-H-S-V
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkHSV" GTK-H-S-V
                        (:SUPERCLASS GTK-WIDGET :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_hsv_get_type")

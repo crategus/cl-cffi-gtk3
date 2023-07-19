@@ -20,7 +20,7 @@
   (is (equal '()
              (list-interface-properties "GtkPrintOperationPreview")))
   ;; Get the interface definition
-  (is (equal '(DEFINE-G-INTERFACE "GtkPrintOperationPreview"
+  (is (equal '(GOBJECT:DEFINE-G-INTERFACE "GtkPrintOperationPreview"
                                   GTK-PRINT-OPERATION-PREVIEW
                                   (:EXPORT T
                                    :TYPE-INITIALIZER

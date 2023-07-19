@@ -30,7 +30,7 @@
                "touchpad" "trackpoint" "tablet-pad")
              (list-enum-item-nick "GdkInputSource")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GdkInputSource"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkInputSource"
                              GDK-INPUT-SOURCE
                              (:EXPORT T
                               :TYPE-INITIALIZER "gdk_input_source_get_type")
@@ -66,7 +66,7 @@
   (is (equal '("disabled" "screen" "window")
              (list-enum-item-nick "GdkInputMode")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GdkInputMode"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkInputMode"
                              GDK-INPUT-MODE
                              (:EXPORT T
                               :TYPE-INITIALIZER "gdk_input_mode_get_type")
@@ -100,7 +100,7 @@
                "rotation" "slider" "last")
              (list-enum-item-nick "GdkAxisUse")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GdkAxisUse"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkAxisUse"
                              GDK-AXIS-USE
                              (:EXPORT T
                               :TYPE-INITIALIZER "gdk_axis_use_get_type")
@@ -142,7 +142,7 @@
                "slider")
              (list-flags-item-nick "GdkAxisFlags")))
   ;; Check the flags definition
-  (is (equal '(DEFINE-G-FLAGS "GdkAxisFlags"
+  (is (equal '(GOBJECT:DEFINE-G-FLAGS "GdkAxisFlags"
                               GDK-AXIS-FLAGS
                               (:EXPORT T
                                :TYPE-INITIALIZER "gdk_axis_flags_get_type")
@@ -182,7 +182,7 @@
                "lens")
              (list-enum-item-nick "GdkDeviceToolType")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GdkDeviceToolType"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkDeviceToolType"
                              GDK-DEVICE-TOOL-TYPE
                              (:EXPORT T
                               :TYPE-INITIALIZER "gdk_device_tool_type_get_type")
@@ -218,7 +218,7 @@
   (is (equal '("master" "slave" "floating")
              (list-enum-item-nick "GdkDeviceType")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GdkDeviceType"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkDeviceType"
                              GDK-DEVICE-TYPE
                              (:EXPORT T
                               :TYPE-INITIALIZER "gdk_device_type_get_type")
@@ -249,7 +249,7 @@
   (is (equal '("none" "window" "application")
              (list-enum-item-nick "GdkGrabOwnership")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GdkGrabOwnership"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkGrabOwnership"
                              GDK-GRAB-OWNERSHIP
                              (:EXPORT T
                               :TYPE-INITIALIZER "gdk_grab_ownership_get_type")
@@ -284,7 +284,7 @@
                "frozen" "failed")
              (list-enum-item-nick "GdkGrabStatus")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GdkGrabStatus"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkGrabStatus"
                              GDK-GRAB-STATUS
                              (:EXPORT T
                               :TYPE-INITIALIZER "gdk_grab_status_get_type")
@@ -322,7 +322,7 @@
                            (g:object-class-list-properties "GdkDeviceTool"))
                    #'string-lessp)))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GdkDeviceTool" GDK-DEVICE-TOOL
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GdkDeviceTool" GDK-DEVICE-TOOL
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
                         :TYPE-INITIALIZER "gdk_device_tool_get_type")
                        ((AXES GDK-DEVICE-TOOL-AXES "axes" "GdkAxisFlags" T NIL)
@@ -366,7 +366,7 @@
                "num-touches" "product-id" "seat" "tool" "type" "vendor-id")
              (list-properties "GdkDevice")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GdkDevice" GDK-DEVICE
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GdkDevice" GDK-DEVICE
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
                         :TYPE-INITIALIZER "gdk_device_get_type")
                        ((ASSOCIATED-DEVICE GDK-DEVICE-ASSOCIATED-DEVICE

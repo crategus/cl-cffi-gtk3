@@ -29,7 +29,8 @@
   (is (equal '("default-display")
              (list-properties "GdkDisplayManager")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GdkDisplayManager" GDK-DISPLAY-MANAGER
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GdkDisplayManager" 
+                                             GDK-DISPLAY-MANAGER
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
                         :TYPE-INITIALIZER "gdk_display_manager_get_type")
                        ((DEFAULT-DISPLAY GDK-DISPLAY-MANAGER-DEFAULT-DISPLAY

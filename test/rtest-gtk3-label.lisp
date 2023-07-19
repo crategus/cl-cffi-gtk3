@@ -40,7 +40,7 @@
                "move-cursor" "populate-popup")
              (list-signals "GtkLabel")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkLabel" GTK-LABEL
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkLabel" GTK-LABEL
                        (:SUPERCLASS GTK-MISC :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_label_get_type")

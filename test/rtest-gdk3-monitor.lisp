@@ -32,7 +32,7 @@
                "vertical-bgr")
              (list-enum-item-nick "GdkSubpixelLayout")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GdkSubpixelLayout"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkSubpixelLayout"
                              GDK-SUBPIXEL-LAYOUT
                              (:EXPORT T
                               :TYPE-INITIALIZER "gdk_subpixel_layout_get_type")
@@ -79,7 +79,7 @@
                "workarea")
              (list-properties "GdkMonitor")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GdkMonitor" GDK-MONITOR
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GdkMonitor" GDK-MONITOR
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
                         :TYPE-INITIALIZER "gdk_monitor_get_type")
                        ((DISPLAY GDK-MONITOR-DISPLAY "display" "GdkDisplay" T

@@ -29,7 +29,7 @@
   (is (equal '("before" "after" "into-or-before" "into-or-after")
              (list-enum-item-nick "GtkTreeViewDropPosition")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GtkTreeViewDropPosition"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkTreeViewDropPosition"
                              GTK-TREE-VIEW-DROP-POSITION
                              (:EXPORT T
                               :TYPE-INITIALIZER
@@ -67,7 +67,7 @@
   (is (equal '("none" "horizontal" "vertical" "both")
              (list-enum-item-nick "GtkTreeViewGridLines")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GtkTreeViewGridLines"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkTreeViewGridLines"
                              GTK-TREE-VIEW-GRID-LINES
                              (:EXPORT T
                               :TYPE-INITIALIZER
@@ -133,7 +133,7 @@
                "toggle-cursor-row" "unselect-all")
              (list-signals "GtkTreeView")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkTreeView" GTK-TREE-VIEW
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkTreeView" GTK-TREE-VIEW
                        (:SUPERCLASS GTK-CONTAINER :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable" "GtkScrollable")
                         :TYPE-INITIALIZER "gtk_tree_view_get_type")

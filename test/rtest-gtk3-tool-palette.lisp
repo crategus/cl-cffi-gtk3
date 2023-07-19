@@ -27,7 +27,7 @@
   (is (equal '("items" "groups")
              (list-flags-item-nick "GtkToolPaletteDragTargets")))
   ;; Check the flags definition
-  (is (equal '(DEFINE-G-FLAGS "GtkToolPaletteDragTargets"
+  (is (equal '(GOBJECT:DEFINE-G-FLAGS "GtkToolPaletteDragTargets"
                               GTK-TOOL-PALETTE-DRAG-TARGETS
                               (:EXPORT T
                                :TYPE-INITIALIZER
@@ -69,7 +69,7 @@
   (is (equal '()
              (list-signals "GtkToolPalette")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkToolPalette" GTK-TOOL-PALETTE
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkToolPalette" GTK-TOOL-PALETTE
                        (:SUPERCLASS GTK-CONTAINER :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable" "GtkOrientable"
                          "GtkScrollable")

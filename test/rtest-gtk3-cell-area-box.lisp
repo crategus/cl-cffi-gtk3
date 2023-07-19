@@ -32,7 +32,7 @@
   (is (equal '()
              (list-signals "GtkCellAreaBox")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkCellAreaBox" GTK-CELL-AREA-BOX
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkCellAreaBox" GTK-CELL-AREA-BOX
                        (:SUPERCLASS GTK-CELL-AREA :EXPORT T :INTERFACES
                         ("GtkBuildable" "GtkCellLayout" "GtkOrientable")
                         :TYPE-INITIALIZER "gtk_cell_area_box_get_type")

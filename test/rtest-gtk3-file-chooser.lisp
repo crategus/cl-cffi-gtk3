@@ -29,7 +29,7 @@
   (is (equal '("open" "save" "select-folder" "create-folder")
              (list-enum-item-nick "GtkFileChooserAction")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GtkFileChooserAction"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkFileChooserAction"
                              GTK-FILE-CHOOSER-ACTION
                              (:EXPORT T
                               :TYPE-INITIALIZER
@@ -64,7 +64,7 @@
   (is (equal '("confirm" "accept-filename" "select-again")
              (list-enum-item-nick "GtkFileChooserConfirmation")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GtkFileChooserConfirmation"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkFileChooserConfirmation"
                              GTK-FILE-CHOOSER-CONFIRMATION
                              (:EXPORT T
                               :TYPE-INITIALIZER
@@ -96,7 +96,7 @@
                "selection-changed" "update-preview")
              (list-signals "GtkFileChooser")))
   ;; Get the interface definition
-  (is (equal '(DEFINE-G-INTERFACE "GtkFileChooser" GTK-FILE-CHOOSER
+  (is (equal '(GOBJECT:DEFINE-G-INTERFACE "GtkFileChooser" GTK-FILE-CHOOSER
                     (:EXPORT T :TYPE-INITIALIZER "gtk_file_chooser_get_type")
                     (ACTION GTK-FILE-CHOOSER-ACTION "action"
                      "GtkFileChooserAction" T T)

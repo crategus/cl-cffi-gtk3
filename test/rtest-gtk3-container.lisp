@@ -26,7 +26,7 @@
   (is (equal '("parent" "queue" "immediate")
              (list-enum-item-nick "GtkResizeMode")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GtkResizeMode"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkResizeMode"
                              GTK-RESIZE-MODE
                              (:EXPORT T
                               :TYPE-INITIALIZER "gtk_resize_mode_get_type")
@@ -92,7 +92,7 @@
   (is (equal '("add" "check-resize" "remove" "set-focus-child")
              (list-signals "GtkContainer")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkContainer" GTK-CONTAINER
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkContainer" GTK-CONTAINER
                        (:SUPERCLASS GTK-WIDGET :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_container_get_type")

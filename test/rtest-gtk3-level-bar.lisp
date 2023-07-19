@@ -28,7 +28,7 @@
   (is (equal '("continuous" "discrete")
              (list-enum-item-nick "GtkLevelBarMode")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GtkLevelBarMode"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkLevelBarMode"
                              GTK-LEVEL-BAR-MODE
                              (:EXPORT T
                               :TYPE-INITIALIZER "gtk_level_bar_mode_get_type")
@@ -66,7 +66,7 @@
   (is (equal '("offset-changed")
              (list-signals "GtkLevelBar")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkLevelBar" GTK-LEVEL-BAR
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkLevelBar" GTK-LEVEL-BAR
                        (:SUPERCLASS GTK-WIDGET :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
                         :TYPE-INITIALIZER "gtk_level_bar_get_type")

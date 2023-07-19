@@ -29,7 +29,7 @@
                "gicon" "surface")
              (list-enum-item-nick "GtkImageType")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GtkImageType"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkImageType"
                              GTK-IMAGE-TYPE
                              (:EXPORT T
                               :TYPE-INITIALIZER "gtk_image_type_get_type")
@@ -74,7 +74,7 @@
   (is (equal '()
              (list-signals "GtkImage")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkImage" GTK-IMAGE
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkImage" GTK-IMAGE
                        (:SUPERCLASS GTK-MISC :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_image_get_type")

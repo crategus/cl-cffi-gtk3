@@ -7,15 +7,16 @@
 ;;;     GtkTextAttributes                               <--- gtk.text-tag.lisp
 
 #+nil
-(test text-attributes-struct
+(test gtk-text-attributes-struct
   ;; Type check
-  (is (g:type-is-a (g:gtype "GtkTextAttributes") +g-type-boxed+))
+  (is (g:type-is-a (g:gtype "GtkTextAttributes") g:+g-type-boxed+))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkTextAttributes")
-          (g:gtype (cffi:foreign-funcall "gtk_text_attributes_get_type" :size)))))
+          (g:gtype (cffi:foreign-funcall "gtk_text_attributes_get_type" 
+                                         :size)))))
 
 #+nil
-(test text-attributes-slots
+(test gtk-text-attributes-slots
   (let* ((buffer (make-instance 'gtk:text-buffer
                                 :text "Some sample text for the text buffer."))
          (view (gtk:text-view-new-with-buffer buffer))
@@ -59,11 +60,11 @@
 ;;;     gtk_text_attributes_new
 
 #+nil
-(test text-attributes-new.1
+(test gtk-text-attributes-new.1
   (is (typep (gtk:text-attributes-new) 'gtk:text-attributes)))
 
 #+nil
-(test text-attributes-new.2
+(test gtk-text-attributes-new.2
   (let ((attr (gtk:text-attributes-new)))
     (is (cffi:pointerp (gtk:text-attributes-appearance attr)))
     (is (eq :left (gtk:text-attributes-justification attr)))
@@ -91,20 +92,20 @@
 ;;;     gtk_text_attributes_copy
 
 #+nil
-(test text-attributes-copy
+(test gtk-text-attributes-copy
   (let ((attr (gtk:text-attributes-new)))
     (is (typep (gtk:text-attributes-copy attr) 'gtk:text-attributes))))
 
 ;;;     gtk_text_attributes_values
 
 #+nil
-(test text-attributes-copy-values.1
+(test gtk-text-attributes-copy-values.1
   (let ((dest (gtk:text-attributes-new))
         (src (gtk:text-attributes-new)))
     (is-false (gtk:text-attributes-copy-values src dest))))
 
 #+nil
-(test text-attributes-copy-values.2
+(test gtk-text-attributes-copy-values.2
   (let* ((buffer (make-instance 'gtk:text-buffer
                                 :text "Some sample text for the text buffer."))
          (view (gtk:text-view-new-with-buffer buffer))
@@ -114,7 +115,7 @@
 
 ;; From gtk_text_iter_attributes
 #+nil
-(test text-attributes-copy-values.3
+(test gtk-text-attributes-copy-values.3
   (let* ((buffer (make-instance 'gtk:text-buffer
                                 :text "Some sample text for the text buffer."))
          (view (gtk:text-view-new-with-buffer buffer))
@@ -128,4 +129,4 @@
 
     (is-false (gtk:text-iter-attributes iter attributes))))
 
-;;; --- 2023-2-19 --------------------------------------------------------------
+;;; --- 2023-7-19 --------------------------------------------------------------

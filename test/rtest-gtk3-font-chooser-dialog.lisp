@@ -463,7 +463,7 @@
                        (make-instance 'gtk:font-chooser-dialog))
                    :recurse)))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkFontChooserDialog"
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkFontChooserDialog"
                                      GTK-FONT-CHOOSER-DIALOG
                        (:SUPERCLASS GTK-DIALOG :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable" "GtkFontChooser")

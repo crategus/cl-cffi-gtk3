@@ -28,7 +28,7 @@
   (is (equal '("filename" "uri" "display-name" "mime-type")
              (list-flags-item-nick "GtkFileFilterFlags")))
   ;; Check the flags definition
-  (is (equal '(DEFINE-G-FLAGS "GtkFileFilterFlags"
+  (is (equal '(GOBJECT:DEFINE-G-FLAGS "GtkFileFilterFlags"
                               GTK-FILE-FILTER-FLAGS
                               (:EXPORT T
                                :TYPE-INITIALIZER
@@ -68,7 +68,7 @@
   (is (equal '()
              (list-signals "GtkFileFilter")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkFileFilter" GTK-FILE-FILTER
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkFileFilter" GTK-FILE-FILTER
                        (:SUPERCLASS G-INITIALLY-UNOWNED :EXPORT T :INTERFACES
                         ("GtkBuildable") :TYPE-INITIALIZER
                         "gtk_file_filter_get_type")

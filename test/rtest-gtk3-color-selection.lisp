@@ -181,7 +181,8 @@
                        (make-instance 'gtk:color-selection))
                    :recurse)))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkColorSelection" GTK-COLOR-SELECTION
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkColorSelection" 
+                                             GTK-COLOR-SELECTION
                        (:SUPERCLASS GTK-BOX :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
                         :TYPE-INITIALIZER "gtk_color_selection_get_type")

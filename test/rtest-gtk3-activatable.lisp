@@ -20,7 +20,7 @@
   (is (equal '("related-action" "use-action-appearance")
              (list-interface-properties "GtkActivatable")))
   ;; Get the interface definition
-  (is (equal '(DEFINE-G-INTERFACE "GtkActivatable" GTK-ACTIVATABLE
+  (is (equal '(GOBJECT:DEFINE-G-INTERFACE "GtkActivatable" GTK-ACTIVATABLE
                     (:EXPORT T :TYPE-INITIALIZER "gtk_activatable_get_type")
                     (RELATED-ACTION GTK-ACTIVATABLE-RELATED-ACTION
                      "related-action" "GtkAction" T T)

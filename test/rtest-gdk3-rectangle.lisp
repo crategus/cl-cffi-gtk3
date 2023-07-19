@@ -7,14 +7,14 @@
 
 ;;;     GdkRectangle
 
-(test rectangle-struct
+(test gdk-rectangle-struct
   ;; Type check
-  (is-true (g:type-is-a (g:gtype "GdkRectangle") +g-type-boxed+))
+  (is-true (g:type-is-a (g:gtype "GdkRectangle") g:+g-type-boxed+))
   ;; Check the type initializer
   (is (eq (g:gtype "GdkRectangle")
           (g:gtype (cffi:foreign-funcall "gdk_rectangle_get_type" :size)))))
 
-(test rectangle-properties
+(test gdk-rectangle-properties
   (let ((rect (gdk:rectangle-new)))
     (is (= 10 (setf (gdk:rectangle-x rect) 10)))
     (is (= 10 (gdk:rectangle-x rect)))
@@ -25,14 +25,14 @@
     (is (= 40 (setf (gdk:rectangle-width rect) 40)))
     (is (= 40 (gdk:rectangle-width rect)))))
 
-(test rectangle-new
+(test gdk-rectangle-new
   (let ((rect (gdk:rectangle-new :x 10 :y 20 :width 30 :height 40)))
     (is (= 10 (gdk:rectangle-x rect)))
     (is (= 20 (gdk:rectangle-y rect)))
     (is (= 30 (gdk:rectangle-width rect)))
     (is (= 40 (gdk:rectangle-height rect)))))
 
-(test rectangle-copy
+(test gdk-rectangle-copy
   (let* ((rect1 (gdk:rectangle-new :x 10 :y 20 :width 30 :height 40))
          (rect2 (gdk:rectangle-copy rect1)))
     ;; Set new values for rect1
@@ -50,7 +50,7 @@
 
 ;;;     gdk_rectangle_intersect
 
-(test rectangle-intersect
+(test gdk-rectangle-intersect
   (let* ((rect1 (gdk:rectangle-new :x 10 :y 20 :width 100 :height 200))
          (rect2 (gdk:rectangle-new :x 50 :y 60 :width 100 :height 200))
          (rect3 (gdk:rectangle-intersect rect1 rect2)))
@@ -61,7 +61,7 @@
 
 ;;;     gdk_rectangle_union
 
-(test rectangle-union
+(test gdk-rectangle-union
   (let* ((rect1 (gdk:rectangle-new :x 10 :y 20 :width 100 :height 200))
          (rect2 (gdk:rectangle-new :x 50 :y 60 :width 100 :height 200))
          (rect3 (gdk:rectangle-union rect1 rect2)))
@@ -72,11 +72,11 @@
 
 ;;;     gdk_rectangle_equal
 
-(test rectangle-equal
+(test gdk-rectangle-equal
   (let* ((rect1 (gdk:rectangle-new :x 10 :y 20 :width 100 :height 200))
          (rect2 (gdk:rectangle-new :x 50 :y 60 :width 100 :height 200))
          (rect3 (gdk:rectangle-copy rect1)))
     (is-false (gdk:rectangle-equal rect1 rect2))
     (is-true  (gdk:rectangle-equal rect1 rect3))))
 
-;;; 2022-12-11
+;;; --- 2023-7-19 --------------------------------------------------------------

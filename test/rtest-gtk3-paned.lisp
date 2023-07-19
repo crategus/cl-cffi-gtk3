@@ -39,7 +39,7 @@
                "cycle-handle-focus" "move-handle" "toggle-handle-focus")
              (list-signals "GtkPaned")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkPaned" GTK-PANED
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkPaned" GTK-PANED
                        (:SUPERCLASS GTK-CONTAINER :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
                         :TYPE-INITIALIZER "gtk_paned_get_type")

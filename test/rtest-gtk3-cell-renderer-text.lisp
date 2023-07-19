@@ -44,7 +44,8 @@
   (is (equal '("edited")
              (list-signals "GtkCellRendererText")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkCellRendererText" GTK-CELL-RENDERER-TEXT
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkCellRendererText" 
+                                             GTK-CELL-RENDERER-TEXT
                        (:SUPERCLASS GTK-CELL-RENDERER :EXPORT T :INTERFACES NIL
                         :TYPE-INITIALIZER "gtk_cell_renderer_text_get_type")
                        ((ALIGN-SET GTK-CELL-RENDERER-TEXT-ALIGN-SET "align-set"

@@ -32,7 +32,7 @@
   (is (equal '()
              (list-signals "GtkListStore")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkListStore" GTK-LIST-STORE
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkListStore" GTK-LIST-STORE
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES
                         ("GtkBuildable" "GtkTreeDragDest" "GtkTreeDragSource"
                          "GtkTreeModel" "GtkTreeSortable")

@@ -26,7 +26,7 @@
   (is (equal '("both" "start" "end")
              (list-enum-item-nick "GtkArrowPlacement")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GtkArrowPlacement"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkArrowPlacement"
                              GTK-ARROW-PLACEMENT
                              (:EXPORT T
                               :TYPE-INITIALIZER "gtk_arrow_placement_get_type")
@@ -74,7 +74,7 @@
   (is (equal '("move-scroll" "popped-up")
              (list-signals "GtkMenu")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkMenu" GTK-MENU
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkMenu" GTK-MENU
                        (:SUPERCLASS GTK-MENU-SHELL :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_menu_get_type")

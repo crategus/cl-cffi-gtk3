@@ -20,7 +20,7 @@
   (is (equal '()
              (list-interface-properties "GtkTreeDragSource")))
   ;; Get the interface definition
-  (is (equal '(DEFINE-G-INTERFACE "GtkTreeDragSource"
+  (is (equal '(GOBJECT:DEFINE-G-INTERFACE "GtkTreeDragSource"
                                   GTK-TREE-DRAG-SOURCE
                                   (:EXPORT T
                                    :TYPE-INITIALIZER
@@ -42,7 +42,7 @@
   (is (equal '()
              (list-interface-properties "GtkTreeDragDest")))
   ;; Get the interface definition
-  (is (equal '(DEFINE-G-INTERFACE "GtkTreeDragDest"
+  (is (equal '(GOBJECT:DEFINE-G-INTERFACE "GtkTreeDragDest"
                                   GTK-TREE-DRAG-DEST
                                   (:EXPORT T
                                    :TYPE-INITIALIZER

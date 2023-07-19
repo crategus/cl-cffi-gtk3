@@ -207,7 +207,7 @@
                        (make-instance 'gtk:color-chooser-widget))
                    :recurse)))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkColorChooserWidget"
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkColorChooserWidget"
                                      GTK-COLOR-CHOOSER-WIDGET
                        (:SUPERCLASS GTK-BOX :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable" "GtkColorChooser"

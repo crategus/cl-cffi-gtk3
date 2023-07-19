@@ -27,7 +27,7 @@
   (is (equal '("always" "automatic" "never" "external")
              (list-enum-item-nick "GtkPolicyType")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GtkPolicyType"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkPolicyType"
                              GTK-POLICY-TYPE
                              (:EXPORT T
                               :TYPE-INITIALIZER "gtk_policy_type_get_type")
@@ -59,7 +59,7 @@
   (is (equal '("top-left" "bottom-left" "top-right" "bottom-right")
              (list-enum-item-nick "GtkCornerType")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GtkCornerType"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkCornerType"
                              GTK-CORNER-TYPE
                              (:EXPORT T
                               :TYPE-INITIALIZER "gtk_corner_type_get_type")
@@ -107,7 +107,8 @@
   (is (equal '("edge-overshot" "edge-reached" "move-focus-out" "scroll-child")
              (list-signals "GtkScrolledWindow")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkScrolledWindow" GTK-SCROLLED-WINDOW
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkScrolledWindow" 
+                                             GTK-SCROLLED-WINDOW
                        (:SUPERCLASS GTK-BIN :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_scrolled_window_get_type")

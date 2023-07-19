@@ -33,7 +33,7 @@
   (is (equal '()
              (list-signals "GtkNumerableIcon")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkNumerableIcon" GTK-NUMERABLE-ICON
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkNumerableIcon" GTK-NUMERABLE-ICON
                        (:SUPERCLASS G-EMBLEMED-ICON :EXPORT T :INTERFACES
                         ("GIcon") :TYPE-INITIALIZER
                         "gtk_numerable_icon_get_type")

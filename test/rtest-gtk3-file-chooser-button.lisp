@@ -87,7 +87,7 @@
                        (make-instance 'gtk:file-chooser-button))
                    :recurse)))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkFileChooserButton"
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkFileChooserButton"
                                      GTK-FILE-CHOOSER-BUTTON
                        (:SUPERCLASS GTK-BOX :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable" "GtkFileChooser"

@@ -35,7 +35,7 @@
   (is (equal '()
              (list-signals "GtkMisc")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkMisc" GTK-MISC
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkMisc" GTK-MISC
                        (:SUPERCLASS GTK-WIDGET :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_misc_get_type")

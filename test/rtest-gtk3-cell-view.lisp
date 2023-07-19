@@ -37,7 +37,7 @@
   (is (equal '()
              (list-signals "GtkCellView")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkCellView" GTK-CELL-VIEW
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkCellView" GTK-CELL-VIEW
                        (:SUPERCLASS GTK-WIDGET :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable" "GtkCellLayout"
                          "GtkOrientable")

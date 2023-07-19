@@ -41,7 +41,7 @@
   (is (equal '("composited-changed" "monitors-changed" "size-changed")
              (list-signals "GdkScreen")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GdkScreen" GDK-SCREEN
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GdkScreen" GDK-SCREEN
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
                         :TYPE-INITIALIZER "gdk_screen_get_type")
                        ((FONT-OPTIONS GDK-SCREEN-FONT-OPTIONS "font-options"

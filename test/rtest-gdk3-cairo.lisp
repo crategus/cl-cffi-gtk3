@@ -7,9 +7,9 @@
 
 ;;;     CairoSurface
 
-(test cairo-surface
+(test gdk-cairo-surface
   ;; Type check
-  (is (g:type-is-a (g:gtype "CairoSurface") +g-type-boxed+))
+  (is (g:type-is-a (g:gtype "CairoSurface") g:+g-type-boxed+))
 ;  TODO: Check this: We have no type initializer!?
 ;  (is (eq (g:gtype "CairoSurface")
 ;          (g:gtype (cffi:foreign-funcall "cairo_surface_get_type" :size))))
@@ -27,9 +27,9 @@
 
 ;;;     CairoContext
 
-(test cairo-context
+(test gdk-cairo-context
   ;; Type check
-  (is (g:type-is-a (g:gtype "CairoContext") +g-type-boxed+))
+  (is (g:type-is-a (g:gtype "CairoContext") g:+g-type-boxed+))
 ;  TODO: Check this: We have no type initializer!?
 ;  (is (eq (g:gtype "CairoContext")
 ;          (g:gtype (cffi:foreign-funcall "cairo_context_get_type" :size))))
@@ -50,7 +50,7 @@
 ;;;     gdk_window_create_similar_surface
 
 #-windows
-(test window-create-similar-surface
+(test gdk-window-create-similar-surface
   (let ((window (make-instance 'gtk:window :type :toplevel
                                            :default-width 200
                                            :default-height 100)))
@@ -75,7 +75,7 @@
 
 ;;;     gdk_window_create_similar_image_surface
 
-(test window-create-similar-image-surface
+(test gdk-window-create-similar-image-surface
   (let ((window (make-instance 'gtk:window :type :toplevel
                                            :default-width 200
                                            :default-height 100)))
@@ -103,7 +103,7 @@
 
 ;;;     gdk_cairo_create
 
-(test cairo-create
+(test gdk-cairo-create
   (let ((window (make-instance 'gtk:window :type :toplevel
                                            :default-width 200
                                            :default-height 100)))
@@ -123,7 +123,7 @@
 ;;;     gdk_cairo_get_clip_rectangle
 
 #-windows
-(test cairo-clip-rectangle
+(test gdk-cairo-clip-rectangle
   (let ((window (make-instance 'gtk:window :type :toplevel
                                            :default-width 200
                                            :default-height 100)))
@@ -150,7 +150,7 @@
 
 ;;;     gdk_cairo_get_drawing_context
 
-(test cairo-drawing-context
+(test gdk-cairo-drawing-context
   (let ((window (make-instance 'gtk:window :type :toplevel
                                            :default-width 200
                                            :default-height 100)))
@@ -183,4 +183,4 @@
 ;;;     gdk_cairo_surface_create_from_pixbuf
 ;;;     gdk_cairo_draw_from_gl
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; --- 2023-7-19 --------------------------------------------------------------

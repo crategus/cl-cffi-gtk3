@@ -43,7 +43,7 @@
                "reorder-tab" "select-page" "switch-page")
              (list-signals "GtkNotebook")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkNotebook" GTK-NOTEBOOK
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkNotebook" GTK-NOTEBOOK
                        (:SUPERCLASS GTK-CONTAINER :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_notebook_get_type")

@@ -29,7 +29,7 @@
   (is (equal '("nothing" "callback" "none")
              (list-enum-item-nick "GtkIMPreeditStyle")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GtkIMPreeditStyle" GTK-I-M-PREEDIT-STYLE
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkIMPreeditStyle" GTK-I-M-PREEDIT-STYLE
                              (:EXPORT T)
                              (:NOTHING 0)
                              (:CALLBACK 1)
@@ -58,7 +58,7 @@
   (is (equal '("nothing" "callback" "none")
              (list-enum-item-nick "GtkIMStatusStyle")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GtkIMStatusStyle" GTK-I-M-STATUS-STYLE
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkIMStatusStyle" GTK-I-M-STATUS-STYLE
                              (:EXPORT T)
                              (:NOTHING 0)
                              (:CALLBACK 1)
@@ -126,7 +126,7 @@
                "gtk-xft-hintstyle" "gtk-xft-rgba")
              (list-properties "GtkSettings")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkSettings" GTK-SETTINGS
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkSettings" GTK-SETTINGS
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES
                         ("GtkStyleProvider" "GtkStyleProviderPrivate")
                         :TYPE-INITIALIZER "gtk_settings_get_type")

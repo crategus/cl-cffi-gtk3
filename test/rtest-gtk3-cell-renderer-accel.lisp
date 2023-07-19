@@ -43,7 +43,7 @@
              (list-enum-item-nick "GtkCellRendererAccelMode")))
   ;; Check the enum definition
   #-windows
-  (is (equal '(DEFINE-G-ENUM "GtkCellRendererAccelMode"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkCellRendererAccelMode"
                              GTK-CELL-RENDERER-ACCEL-MODE
                              (:EXPORT T
                               :TYPE-INITIALIZER
@@ -53,7 +53,7 @@
                              (:MODIFIER-TAP 2))
              (gobject:get-g-type-definition "GtkCellRendererAccelMode")))
   #+windows
-  (is (equal '(DEFINE-G-ENUM "GtkCellRendererAccelMode"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkCellRendererAccelMode"
                              GTK-CELL-RENDERER-ACCEL-MODE
                              (:EXPORT T
                               :TYPE-INITIALIZER
@@ -90,7 +90,7 @@
   (is (equal '("accel-cleared" "accel-edited")
              (list-signals "GtkCellRendererAccel")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkCellRendererAccel"
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkCellRendererAccel"
                                      GTK-CELL-RENDERER-ACCEL
                        (:SUPERCLASS GTK-CELL-RENDERER-TEXT :EXPORT T
                         :INTERFACES NIL :TYPE-INITIALIZER

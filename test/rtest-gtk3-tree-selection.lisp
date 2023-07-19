@@ -31,7 +31,8 @@
   (is (equal '("changed")
              (list-signals "GtkTreeSelection")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkTreeSelection" GTK-TREE-SELECTION
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkTreeSelection" 
+                                             GTK-TREE-SELECTION
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
                         :TYPE-INITIALIZER "gtk_tree_selection_get_type")
                        ((MODE GTK-TREE-SELECTION-MODE "mode" "GtkSelectionMode"

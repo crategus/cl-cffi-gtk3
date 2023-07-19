@@ -37,7 +37,8 @@
   (is (equal '("clicked")
              (list-signals "GtkTreeViewColumn")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkTreeViewColumn" GTK-TREE-VIEW-COLUMN
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkTreeViewColumn" 
+                                             GTK-TREE-VIEW-COLUMN
                        (:SUPERCLASS G-INITIALLY-UNOWNED :EXPORT T :INTERFACES
                         ("GtkBuildable" "GtkCellLayout") :TYPE-INITIALIZER
                         "gtk_tree_view_column_get_type")

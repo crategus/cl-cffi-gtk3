@@ -33,7 +33,7 @@
   (is (equal '("toggled")
              (list-signals "GtkCellRendererToggle")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkCellRendererToggle"
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkCellRendererToggle"
                                      GTK-CELL-RENDERER-TOGGLE
                        (:SUPERCLASS GTK-CELL-RENDERER :EXPORT T :INTERFACES NIL
                         :TYPE-INITIALIZER "gtk_cell_renderer_toggle_get_type")

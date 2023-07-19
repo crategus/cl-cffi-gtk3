@@ -33,7 +33,7 @@
   (is (equal '()
              (list-signals "GtkCellRendererSpinner")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkCellRendererSpinner"
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkCellRendererSpinner"
                                      GTK-CELL-RENDERER-SPINNER
                        (:SUPERCLASS GTK-CELL-RENDERER :EXPORT T :INTERFACES NIL
                         :TYPE-INITIALIZER "gtk_cell_renderer_spinner_get_type")

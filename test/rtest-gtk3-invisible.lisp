@@ -35,7 +35,7 @@
   (is (equal '()
              (list-signals "GtkInvisible")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkInvisible" GTK-INVISIBLE
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkInvisible" GTK-INVISIBLE
                        (:SUPERCLASS GTK-WIDGET :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_invisible_get_type")

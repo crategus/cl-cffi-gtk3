@@ -41,7 +41,7 @@
   (is (equal '()
              (list-signals "GtkBin")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkBin" GTK-BIN
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkBin" GTK-BIN
                        (:SUPERCLASS GTK-CONTAINER :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_bin_get_type")

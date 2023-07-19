@@ -26,7 +26,7 @@
   (is (equal '("toplevel" "popup")
              (list-enum-item-nick "GtkWindowType")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GtkWindowType"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkWindowType"
                              GTK-WINDOW-TYPE
                              (:EXPORT T
                               :TYPE-INITIALIZER "gtk_window_type_get_type")
@@ -56,7 +56,7 @@
   (is (equal '("none" "center" "mouse" "center-always" "center-on-parent")
              (list-enum-item-nick "GtkWindowPosition")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GtkWindowPosition"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkWindowPosition"
                              GTK-WINDOW-POSITION
                              (:EXPORT T
                               :TYPE-INITIALIZER "gtk_window_position_get_type")
@@ -114,7 +114,7 @@
   (is (equal '()
              (list-signals "GtkWindow")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkWindow" GTK-WINDOW
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkWindow" GTK-WINDOW
                        (:SUPERCLASS GTK-BIN :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_window_get_type")

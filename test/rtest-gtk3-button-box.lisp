@@ -27,7 +27,7 @@
   (is (equal '("spread" "edge" "start" "end" "center" "expand")
              (list-enum-item-nick "GtkButtonBoxStyle")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GtkButtonBoxStyle"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkButtonBoxStyle"
                              GTK-BUTTON-BOX-STYLE
                              (:EXPORT T
                               :TYPE-INITIALIZER "gtk_button_box_style_get_type")
@@ -76,7 +76,7 @@
   (is (equal '()
              (list-signals "GtkButtonBox")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkButtonBox" GTK-BUTTON-BOX
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkButtonBox" GTK-BUTTON-BOX
                        (:SUPERCLASS GTK-BOX
                         :EXPORT T
                         :INTERFACES

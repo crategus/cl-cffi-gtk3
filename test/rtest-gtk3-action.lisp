@@ -31,7 +31,7 @@
   (is (equal '("activate")
              (list-signals "GtkAction")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkAction" GTK-ACTION
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkAction" GTK-ACTION
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES
                         ("GtkBuildable") :TYPE-INITIALIZER
                         "gtk_action_get_type")

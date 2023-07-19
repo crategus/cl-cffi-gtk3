@@ -30,7 +30,7 @@
   (is (equal '()
              (list-signals "GtkTextMark")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkTextMark" GTK-TEXT-MARK
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkTextMark" GTK-TEXT-MARK
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
                         :TYPE-INITIALIZER "gtk_text_mark_get_type")
                        ((LEFT-GRAVITY GTK-TEXT-MARK-LEFT-GRAVITY "left-gravity"

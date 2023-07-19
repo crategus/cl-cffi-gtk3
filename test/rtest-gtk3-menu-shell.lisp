@@ -27,7 +27,7 @@
   (is (equal '("parent" "child" "next" "prev")
              (list-enum-item-nick "GtkMenuDirectionType")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GtkMenuDirectionType"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkMenuDirectionType"
                              GTK-MENU-DIRECTION-TYPE
                              (:EXPORT T
                               :TYPE-INITIALIZER
@@ -71,7 +71,7 @@
                "move-current" "move-selected" "selection-done")
              (list-signals "GtkMenuShell")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkMenuShell" GTK-MENU-SHELL
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkMenuShell" GTK-MENU-SHELL
                        (:SUPERCLASS GTK-CONTAINER :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_menu_shell_get_type")

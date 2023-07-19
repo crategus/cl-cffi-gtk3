@@ -41,7 +41,7 @@
   (is (equal '("apply" "cancel" "close" "escape" "prepare")
              (list-signals "GtkAssistant")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkAssistant" GTK-ASSISTANT
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkAssistant" GTK-ASSISTANT
                        (:SUPERCLASS GTK-WINDOW :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_assistant_get_type")

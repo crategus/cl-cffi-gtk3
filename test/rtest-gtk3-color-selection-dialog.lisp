@@ -193,7 +193,7 @@
                        (make-instance 'gtk:color-selection-dialog))
                    :recurse)))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkColorSelectionDialog"
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkColorSelectionDialog"
                                      GTK-COLOR-SELECTION-DIALOG
                        (:SUPERCLASS GTK-DIALOG :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable")

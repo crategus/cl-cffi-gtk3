@@ -27,7 +27,7 @@
   (is (equal '("auto" "on" "off")
              (list-enum-item-nick "GtkSensitivityType")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GtkSensitivityType"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkSensitivityType"
                              GTK-SENSITIVITY-TYPE
                              (:EXPORT T
                               :TYPE-INITIALIZER "gtk_sensitivity_type_get_type")
@@ -70,7 +70,7 @@
   (is (equal '("adjust-bounds" "change-value" "move-slider" "value-changed")
              (list-signals "GtkRange")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkRange" GTK-RANGE
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkRange" GTK-RANGE
                        (:SUPERCLASS GTK-WIDGET :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
                         :TYPE-INITIALIZER "gtk_range_get_type")

@@ -34,7 +34,7 @@
   (is (equal '()
              (list-signals "GtkCellRendererProgress")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkCellRendererProgress"
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkCellRendererProgress"
                                      GTK-CELL-RENDERER-PROGRESS
                        (:SUPERCLASS GTK-CELL-RENDERER :EXPORT T :INTERFACES
                         ("GtkOrientable") :TYPE-INITIALIZER

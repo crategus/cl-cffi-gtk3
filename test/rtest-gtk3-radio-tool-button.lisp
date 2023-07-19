@@ -39,7 +39,7 @@
   (is (equal '()
              (list-signals "GtkRadioToolButton")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkRadioToolButton" GTK-RADIO-TOOL-BUTTON
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkRadioToolButton" GTK-RADIO-TOOL-BUTTON
                        (:SUPERCLASS GTK-TOGGLE-TOOL-BUTTON :EXPORT T
                         :INTERFACES
                         ("AtkImplementorIface" "GtkActionable" "GtkActivatable"

@@ -32,7 +32,7 @@
              (mapcar #'gobject:enum-item-nick
                      (gobject:get-enum-items "GdkVisualType"))))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GdkVisualType"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkVisualType"
                              GDK-VISUAL-TYPE
                              (:EXPORT T
                               :TYPE-INITIALIZER "gdk_visual_type_get_type")
@@ -68,7 +68,7 @@
              (mapcar #'gobject:enum-item-nick
                      (gobject:get-enum-items "GdkByteOrder"))))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GdkByteOrder"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkByteOrder"
                              GDK-BYTE-ORDER
                              (:EXPORT T
                               :TYPE-INITIALIZER "gdk_byte_order_get_type")
@@ -109,7 +109,7 @@
   (is (equal '()
              (list-signals "GdkVisual")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GdkVisual" GDK-VISUAL
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GdkVisual" GDK-VISUAL
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
                         :TYPE-INITIALIZER "gdk_visual_get_type")
                        NIL)

@@ -32,7 +32,8 @@
   (is (equal '()
              (list-signals "GdkDrawingContext")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GdkDrawingContext" GDK-DRAWING-CONTEXT
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GdkDrawingContext" 
+                                             GDK-DRAWING-CONTEXT
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
                         :TYPE-INITIALIZER "gdk_drawing_context_get_type")
                        ((CLIP GDK-DRAWING-CONTEXT-CLIP "clip" "CairoRegion" T

@@ -29,7 +29,7 @@
   (is (equal '("family" "style" "size" "variations" "features")
              (list-flags-item-nick "GtkFontChooserLevel")))
   ;; Check the flags definition
-  (is (equal '(DEFINE-G-FLAGS "GtkFontChooserLevel"
+  (is (equal '(GOBJECT:DEFINE-G-FLAGS "GtkFontChooserLevel"
                               GTK-FONT-CHOOSER-LEVEL
                               (:EXPORT T
                                :TYPE-INITIALIZER
@@ -60,7 +60,7 @@
   (is (equal '("font-activated")
              (list-signals "GtkFontChooser")))
   ;; Get the interface definition
-  (is (equal '(DEFINE-G-INTERFACE "GtkFontChooser" GTK-FONT-CHOOSER
+  (is (equal '(GOBJECT:DEFINE-G-INTERFACE "GtkFontChooser" GTK-FONT-CHOOSER
                     (:EXPORT T :TYPE-INITIALIZER "gtk_font_chooser_get_type")
                     (FONT GTK-FONT-CHOOSER-FONT "font" "gchararray" T T)
                     (FONT-DESC GTK-FONT-CHOOSER-FONT-DESC "font-desc"

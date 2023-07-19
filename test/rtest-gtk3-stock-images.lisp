@@ -7,16 +7,16 @@
 
 ;;;     GtkIconSource
 
-(test icon-source
+(test gtk-icon-source
   ;; Type check
-  (is (g:type-is-a (g:gtype "GtkIconSource") +g-type-boxed+))
+  (is (g:type-is-a (g:gtype "GtkIconSource") g:+g-type-boxed+))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkIconSource")
           (g:gtype (cffi:foreign-funcall "gtk_icon_source_get_type" :size)))))
 
 ;;;     GtkIconFactory
 
-(test icon-factory-class
+(test gtk-icon-factory-class
   ;; Type check
   (is (g:type-is-object "GtkIconFactory"))
   ;; Check the registered name
@@ -41,7 +41,7 @@
   (is (equal '()
              (list-signals "GtkIconFactory")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkIconFactory" GTK-ICON-FACTORY
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkIconFactory" GTK-ICON-FACTORY
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES
                         ("GtkBuildable") :TYPE-INITIALIZER
                         "gtk_icon_factory_get_type")
@@ -50,16 +50,16 @@
 
 ;;;     GtkIconSet
 
-(test icon-set
+(test gtk-icon-set
   ;; Type check
-  (is (g:type-is-a (g:gtype "GtkIconSet") +g-type-boxed+))
+  (is (g:type-is-a (g:gtype "GtkIconSet") g:+g-type-boxed+))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkIconSet")
           (g:gtype (cffi:foreign-funcall "gtk_icon_set_get_type" :size)))))
 
 ;;;     GtkIconSize
 
-(test icon-size
+(test gtk-icon-size
   ;; Check the type
   (is (g:type-is-enum "GtkIconSize"))
   ;; Check the type initializer
@@ -71,8 +71,8 @@
   ;; Check the names
   (is (equal '("GTK_ICON_SIZE_INVALID" "GTK_ICON_SIZE_MENU"
                "GTK_ICON_SIZE_SMALL_TOOLBAR" "GTK_ICON_SIZE_LARGE_TOOLBAR"
-               "GTK_ICON_SIZE_BUTTON" "GTK_ICON_SIZE_DND" "GTK_ICON_SIZE_DIALOG")
-
+               "GTK_ICON_SIZE_BUTTON" "GTK_ICON_SIZE_DND" 
+               "GTK_ICON_SIZE_DIALOG")
              (list-enum-item-name "GtkIconSize")))
   ;; Check the values
   (is (equal '(0 1 2 3 4 5 6)
@@ -82,7 +82,7 @@
                "dialog")
              (list-enum-item-nick "GtkIconSize")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GtkIconSize"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkIconSize"
                              GTK-ICON-SIZE
                              (:EXPORT T
                               :TYPE-INITIALIZER "gtk_icon_size_get_type")
@@ -146,4 +146,4 @@
 ;;;     gtk_icon_source_set_state
 ;;;     gtk_icon_source_set_state_wildcarded
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; --- 2023-7-19 --------------------------------------------------------------

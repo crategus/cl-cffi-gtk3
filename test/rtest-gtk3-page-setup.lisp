@@ -31,7 +31,7 @@
   (is (equal '()
              (list-signals "GtkPageSetup")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkPageSetup" GTK-PAGE-SETUP
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkPageSetup" GTK-PAGE-SETUP
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
                         :TYPE-INITIALIZER "gtk_page_setup_get_type")
                        NIL)

@@ -37,7 +37,7 @@
   (is (equal '("text-popped" "text-pushed")
              (list-signals "GtkStatusbar")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkStatusbar" GTK-STATUSBAR
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkStatusbar" GTK-STATUSBAR
                        (:SUPERCLASS GTK-BOX :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
                         :TYPE-INITIALIZER "gtk_statusbar_get_type")

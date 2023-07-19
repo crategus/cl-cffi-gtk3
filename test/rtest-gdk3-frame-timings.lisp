@@ -7,9 +7,9 @@
 
 ;;;     GdkFrameTimings
 
-(test frame-timings-structure
+(test gdk-frame-timings-structure
   ;; Type check
-  (is (g:type-is-a (g:gtype "GdkFrameTimings") +g-type-boxed+))
+  (is (g:type-is-a (g:gtype "GdkFrameTimings") g:+g-type-boxed+))
   ;; Check the type initializer
   (is (eq (g:gtype "GdkFrameTimings")
           (g:gtype (cffi:foreign-funcall "gdk_frame_timings_get_type" :size)))))
@@ -23,7 +23,7 @@
 
 ;; TODO: Create an example which works
 
-(test frame-timings-frame-counter
+(test gdk-frame-timings-frame-counter
   (let ((window (make-instance 'gtk:window :type :toplevel)))
     (is-false (gtk:widget-realize window))
     (let* ((frame-clock (gtk:widget-frame-clock window))
@@ -39,4 +39,4 @@
 ;;;     gdk_frame_timings_get_refresh_interval
 ;;;     gdk_frame_timings_get_predicted_presentation_time
 
-;;; --- 2023-1-24 --------------------------------------------------------------
+;;; --- 2023-7-19 --------------------------------------------------------------

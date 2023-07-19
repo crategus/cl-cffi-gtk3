@@ -38,7 +38,8 @@
   (is (equal '("custom-item-activated")
              (list-signals "GtkAppChooserButton")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkAppChooserButton" GTK-APP-CHOOSER-BUTTON
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkAppChooserButton" 
+                                             GTK-APP-CHOOSER-BUTTON
                        (:SUPERCLASS GTK-COMBO-BOX :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkAppChooser" "GtkBuildable"
                          "GtkCellEditable" "GtkCellLayout")

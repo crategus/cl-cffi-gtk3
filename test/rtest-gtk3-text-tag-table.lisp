@@ -33,7 +33,7 @@
   (is (equal '("tag-added" "tag-changed" "tag-removed")
              (list-signals "GtkTextTagTable")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkTextTagTable" GTK-TEXT-TAG-TABLE
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkTextTagTable" GTK-TEXT-TAG-TABLE
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES
                         ("GtkBuildable") :TYPE-INITIALIZER
                         "gtk_text_tag_table_get_type")

@@ -36,7 +36,7 @@
   (is (equal '("toggled")
              (list-signals "GtkCheckMenuItem")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkCheckMenuItem" GTK-CHECK-MENU-ITEM
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkCheckMenuItem" GTK-CHECK-MENU-ITEM
                        (:SUPERCLASS GTK-MENU-ITEM
                         :EXPORT T
                         :INTERFACES

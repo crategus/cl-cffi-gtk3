@@ -17,7 +17,7 @@
   (is (equal '("content-type")
              (list-interface-properties "GtkAppChooser")))
   ;; Get the interface definition
-  (is (equal '(DEFINE-G-INTERFACE "GtkAppChooser"
+  (is (equal '(GOBJECT:DEFINE-G-INTERFACE "GtkAppChooser"
                                   GTK-APP-CHOOSER
                                   (:EXPORT T :TYPE-INITIALIZER
                                    "gtk_app_chooser_get_type")

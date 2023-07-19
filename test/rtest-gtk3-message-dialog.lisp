@@ -41,7 +41,7 @@
   (is (equal '()
              (list-signals "GtkMessageDialog")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkMessageDialog" GTK-MESSAGE-DIALOG
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkMessageDialog" GTK-MESSAGE-DIALOG
                        (:SUPERCLASS GTK-DIALOG :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_message_dialog_get_type")

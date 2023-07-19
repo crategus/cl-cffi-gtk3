@@ -17,7 +17,7 @@
   (is (equal '()
              (list-interface-properties "GtkCellLayout")))
   ;; Get the interface definition
-  (is (equal '(DEFINE-G-INTERFACE "GtkCellLayout"
+  (is (equal '(GOBJECT:DEFINE-G-INTERFACE "GtkCellLayout"
                                   GTK-CELL-LAYOUT
                                   (:EXPORT T
                                    :TYPE-INITIALIZER "gtk_cell_layout_get_type"))

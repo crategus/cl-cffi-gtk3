@@ -29,7 +29,7 @@
   (is (equal '()
              (list-signals "GtkPrintContext")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkPrintContext" GTK-PRINT-CONTEXT
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkPrintContext" GTK-PRINT-CONTEXT
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
                         :TYPE-INITIALIZER "gtk_print_context_get_type")
                        NIL)

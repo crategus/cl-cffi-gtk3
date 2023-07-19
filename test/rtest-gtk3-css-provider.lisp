@@ -29,7 +29,7 @@
   (is (equal '("parsing-error")
              (list-signals "GtkCssProvider")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkCssProvider" GTK-CSS-PROVIDER
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkCssProvider" GTK-CSS-PROVIDER
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES
                         ("GtkStyleProvider" "GtkStyleProviderPrivate")
                         :TYPE-INITIALIZER "gtk_css_provider_get_type")
@@ -62,7 +62,7 @@
                "selector" "declaration" "value" "keyframes")
              (list-enum-item-nick "GtkCssSectionType")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GtkCssSectionType"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkCssSectionType"
                              GTK-CSS-SECTION-TYPE
                              (:EXPORT T
                               :TYPE-INITIALIZER "gtk_css_section_type_get_type")

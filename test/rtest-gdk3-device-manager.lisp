@@ -38,7 +38,7 @@
   (is (equal '("device-added" "device-changed" "device-removed")
              (list-signals "GdkDeviceManager")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GdkDeviceManager" GDK-DEVICE-MANAGER
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GdkDeviceManager" GDK-DEVICE-MANAGER
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
                         :TYPE-INITIALIZER "gdk_device_manager_get_type")
                        ((DISPLAY GDK-DEVICE-MANAGER-DISPLAY "display"

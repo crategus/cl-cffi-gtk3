@@ -5,7 +5,7 @@
 
 ;;;   GtkAccelMap
 
-(test accel-map-class
+(test gtk-accel-map-class
   ;; Type check
   (is (g:type-is-object "GtkAccelMap"))
   ;; Check the registered name
@@ -30,7 +30,7 @@
   (is (equal '("changed")
              (list-signals "GtkAccelMap")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkAccelMap" GTK-ACCEL-MAP
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkAccelMap" GTK-ACCEL-MAP
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
                         :TYPE-INITIALIZER "gtk_accel_map_get_type")
                        NIL)
@@ -39,7 +39,7 @@
 ;;;   gtk_accel_map_add_entry
 ;;;   gtk_accel_map_lookup_entry
 
-(test accel-map-lookup-entry
+(test gtk-accel-map-lookup-entry
   ;; Add an accelerator
   (gtk:accel-map-add-entry "<Test>/Edit/Look" (char-code #\l) '(:control-mask))
   (multiple-value-bind (key mods)
@@ -50,7 +50,7 @@
 
 ;;;   gtk_accel_map_change_entry
 
-(test accel-map-change-entry
+(test gtk-accel-map-change-entry
   (if (not (gtk:accel-map-lookup-entry "<Test>/Edit/Change"))
       ;; Add an accelerator for <Test>/Edit/Change
       (gtk:accel-map-add-entry "<Test>/Edit/Change"
@@ -68,7 +68,7 @@
 ;;;   gtk_accel_map_load
 ;;;   gtk_accel_map_save
 
-(test accel-map-load/save
+(test gtk-accel-map-load/save
   ;; Add an accelerator
   (gtk:accel-map-add-entry "<Test>/Edit/Save" (char-code #\s) '(:control-mask))
   (multiple-value-bind (key mods)
@@ -88,10 +88,10 @@
 
 ;;;   gtk_accel_map_get
 
-(test accel-map-get
+(test gtk-accel-map-get
   (is (eql 'gtk:accel-map (type-of (gtk:accel-map-get)))))
 
 ;;;   gtk_accel_map_lock_path
 ;;;   gtk_accel_map_unlock_path
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; --- 2023-7-19 --------------------------------------------------------------

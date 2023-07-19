@@ -11,9 +11,9 @@
 
 ;;;     GtkWidgetPath
 
-(test widget-path
+(test gtk-widget-path
   ;; Type check
-  (is (g:type-is-a (g:gtype "GtkWidgetPath") +g-type-boxed+))
+  (is (g:type-is-a (g:gtype "GtkWidgetPath") g:+g-type-boxed+))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkWidgetPath")
           (g:gtype (cffi:foreign-funcall "gtk_widget_path_get_type" :size)))))
@@ -22,7 +22,7 @@
 
 ;;;     gtk_widget_path_append_type
 
-(test widget-path-append-type
+(test gtk-widget-path-append-type
   (let ((path (gtk:widget-path-new)))
     (is (= 0 (gtk:widget-path-append-type path "GtkWindow")))
     (is (= 1 (gtk:widget-path-append-type path "GtkButton")))
@@ -32,7 +32,7 @@
 
 ;;;     gtk_widget_path_append_for_widget
 
-(test widget-path-append-for-widget
+(test gtk-widget-path-append-for-widget
   (let ((path (gtk:widget-path-new))
         (window (make-instance 'gtk:window)))
     (is (= 0 (gtk:widget-path-append-for-widget path window)))
@@ -46,7 +46,7 @@
 
 ;;;     gtk_widget_path_get_object_type
 
-(test widget-path-object-type
+(test gtk-widget-path-object-type
   (let ((path (gtk:widget-path-new)))
     (is (= 0 (gtk:widget-path-append-type path "GtkWindow")))
     (is (eq (g:gtype "GtkWindow")
@@ -56,7 +56,7 @@
 
 ;; TODO: Find a working example
 
-(test widget-path-has-parent
+(test gtk-widget-path-has-parent
   (let ((path (gtk:widget-path-new)))
     (is (= 0 (gtk:widget-path-append-type path "GtkButton")))
     (is (string= "GtkButton" (gtk:widget-path-to-string path)))
@@ -64,7 +64,7 @@
 
 ;;;     gtk_widget_path_is_type
 
-(test widget-path-is-type
+(test gtk-widget-path-is-type
   (let ((path (gtk:widget-path-new)))
 
     (is (= 0 (gtk:widget-path-append-type path "GtkWindow")))
@@ -78,7 +78,7 @@
 
 ;;;     gtk_widget_path_iter_add_region
 
-(test widget-path-iter-add-region
+(test gtk-widget-path-iter-add-region
   (let ((path (gtk:widget-path-new)))
     (is-false (gtk:widget-path-iter-add-region
                   path
@@ -94,13 +94,13 @@
 ;;;     gtk_widget_path_iter_get_name
 ;;;     gtk_widget_path_iter_set_name
 
-(test widget-path-iter-name.1
+(test gtk-widget-path-iter-name.1
   (let* ((widget (make-instance 'gtk:button))
          (path (gtk:widget-path widget)))
     ;; TODO: Why is this false.
     (is-false (gtk:widget-path-iter-name path -1))))
 
-(test widget-path-iter-name.2
+(test gtk-widget-path-iter-name.2
   (let ((path (gtk:widget-path-new)))
     (is-true (setf (gtk:widget-path-iter-name
                         path
@@ -111,14 +111,14 @@
 
 ;;;     gtk_widget_path_iter_get_object_name
 
-(test widget-path-iter-get-object-name
+(test gtk-widget-path-iter-get-object-name
   (let* ((widget (make-instance 'gtk:button))
          (path (gtk:widget-path widget)))
     (is (string= "button" (gtk:widget-path-iter-object-name path -1)))))
 
 ;;;     gtk_widget_path_iter_get_object_type
 
-(test widget-path-iter-object-type
+(test gtk-widget-path-iter-object-type
   (let* ((widget (make-instance 'gtk:button))
          (path (gtk:widget-path widget)))
     (is (string= "GtkButton"
@@ -130,7 +130,7 @@
 ;;;     gtk_widget_path_iter_get_state
 ;;;     gtk_widget_path_iter_set_state
 
-(test widget-path-iter-state
+(test gtk-widget-path-iter-state
   (let ((path (gtk:widget-path-new)))
     (is (= 0 (gtk:widget-path-append-type path "GtkButton")))
     (is (string= "GtkButton" (gtk:widget-path-to-string path)))
@@ -161,7 +161,7 @@
 
 ;;;     gtk_widget_path_iter_has_region
 
-(test widget-path-iter-has-region
+(test gtk-widget-path-iter-has-region
   (let ((path (gtk:widget-path-new)))
     (is-false (gtk:widget-path-iter-add-region
                   path
@@ -186,10 +186,10 @@
 
 ;;;     gtk_widget_path_to_string
 
-(test widget-path-append-type
+(test gtk-widget-path-append-type
   (let ((path (gtk:widget-path-new)))
     (is (= 0 (gtk:widget-path-append-type path "GtkWindow")))
     (is (= 1 (gtk:widget-path-append-type path "GtkButton")))
     (is (string= "GtkWindow GtkButton" (gtk:widget-path-to-string path)))))
 
-;;; 2022-12-14
+;;; --- 2023-7-19 --------------------------------------------------------------

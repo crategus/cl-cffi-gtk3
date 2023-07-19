@@ -185,7 +185,8 @@
              (mapcar #'g-param-spec-name
                      (gtk:container-class-list-child-properties "ExampleAppWindow"))))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "ExampleAppWindow" EXAMPLE-APP-WINDOW
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "ExampleAppWindow" 
+                                             EXAMPLE-APP-WINDOW
                        (:SUPERCLASS GTK-APPLICATION-WINDOW :EXPORT T
                         :INTERFACES
                         ("AtkImplementorIface" "GActionGroup" "GActionMap"

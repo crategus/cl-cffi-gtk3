@@ -34,7 +34,7 @@
   (is (equal '()
              (list-child-properties "GtkListBox")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkListBox" GTK-LIST-BOX
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkListBox" GTK-LIST-BOX
                        (:SUPERCLASS GTK-CONTAINER :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_list_box_get_type")
@@ -79,7 +79,7 @@
   (is (equal '("activate")
              (list-signals "GtkListBoxRow")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkListBoxRow" GTK-LIST-BOX-ROW
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkListBoxRow" GTK-LIST-BOX-ROW
                        (:SUPERCLASS GTK-BIN :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkActionable" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_list_box_row_get_type")

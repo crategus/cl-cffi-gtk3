@@ -31,7 +31,7 @@
                "all-pointing" "all")
              (list-flags-item-nick "GdkSeatCapabilities")))
   ;; Check the flags definition
-  (is (equal '(DEFINE-G-FLAGS "GdkSeatCapabilities"
+  (is (equal '(GOBJECT:DEFINE-G-FLAGS "GdkSeatCapabilities"
                               GDK-SEAT-CAPABILITIES
                               (:EXPORT T
                                :TYPE-INITIALIZER "gdk_seat_capabilities_get_type")
@@ -73,7 +73,7 @@
   (is (equal '("device-added" "device-removed" "tool-added" "tool-removed")
              (list-signals "GdkSeat")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GdkSeat" GDK-SEAT
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GdkSeat" GDK-SEAT
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
                         :TYPE-INITIALIZER "gdk_seat_get_type")
                        ((DISPLAY GDK-SEAT-DISPLAY "display" "GdkDisplay" T

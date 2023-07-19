@@ -28,7 +28,7 @@
   (is (equal '("no-target" "user-cancelled" "error")
              (list-enum-item-nick "GdkDragCancelReason")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GdkDragCancelReason"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkDragCancelReason"
                              GDK-DRAG-CANCEL-REASON
                              (:EXPORT T
                               :TYPE-INITIALIZER
@@ -63,7 +63,7 @@
                "wayland")
              (list-enum-item-nick "GdkDragProtocol")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GdkDragProtocol"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkDragProtocol"
                              GDK-DRAG-PROTOCOL
                              (:EXPORT T
                               :TYPE-INITIALIZER "gdk_drag_protocol_get_type")
@@ -99,7 +99,7 @@
   (is (equal '("default" "copy" "move" "link" "private" "ask")
              (list-flags-item-nick "GdkDragAction")))
   ;; Check the flags definition
-  (is (equal '(DEFINE-G-FLAGS "GdkDragAction"
+  (is (equal '(GOBJECT:DEFINE-G-FLAGS "GdkDragAction"
                               GDK-DRAG-ACTION
                               (:EXPORT T
                                :TYPE-INITIALIZER "gdk_drag_action_get_type")
@@ -149,7 +149,7 @@
   (is (equal '("action-changed" "cancel" "dnd-finished" "drop-performed")
              (list-signals "GdkDragContext")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GdkDragContext" GDK-DRAG-CONTEXT
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GdkDragContext" GDK-DRAG-CONTEXT
                        (:SUPERCLASS G-OBJECT
                         :EXPORT T
                         :INTERFACES NIL

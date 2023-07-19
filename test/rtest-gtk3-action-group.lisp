@@ -29,7 +29,7 @@
                "pre-activate")
              (list-signals "GtkActionGroup")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkActionGroup" GTK-ACTION-GROUP
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkActionGroup" GTK-ACTION-GROUP
                        (:SUPERCLASS G-OBJECT
                         :EXPORT T
                         :INTERFACES ("GtkBuildable")

@@ -23,7 +23,7 @@
   (is (equal '("color-activated")
              (list-signals "GtkColorChooser")))
   ;; Get the interface definition
-  (is (equal '(DEFINE-G-INTERFACE "GtkColorChooser" GTK-COLOR-CHOOSER
+  (is (equal '(GOBJECT:DEFINE-G-INTERFACE "GtkColorChooser" GTK-COLOR-CHOOSER
                     (:EXPORT T :TYPE-INITIALIZER "gtk_color_chooser_get_type")
                     (RGBA GTK-COLOR-CHOOSER-RGBA "rgba" "GdkRGBA" T T)
                     (USE-ALPHA GTK-COLOR-CHOOSER-USE-ALPHA "use-alpha"

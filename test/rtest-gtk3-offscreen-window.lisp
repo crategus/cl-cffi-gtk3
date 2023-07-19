@@ -38,7 +38,8 @@
   (is (equal '()
              (list-signals "GtkOffscreenWindow")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkOffscreenWindow" GTK-OFFSCREEN-WINDOW
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkOffscreenWindow" 
+                                             GTK-OFFSCREEN-WINDOW
                        (:SUPERCLASS GTK-WINDOW :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_offscreen_window_get_type")

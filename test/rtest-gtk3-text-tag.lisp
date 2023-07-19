@@ -27,7 +27,7 @@
   (is (equal '("none" "char" "word" "word-char")
              (list-enum-item-nick "GtkWrapMode")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GtkWrapMode"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkWrapMode"
                              GTK-WRAP-MODE
                              (:EXPORT T
                               :TYPE-INITIALIZER "gtk_wrap_mode_get_type")
@@ -82,7 +82,7 @@
   (is (equal '("event")
              (list-signals "GtkTextTag")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkTextTag" GTK-TEXT-TAG
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkTextTag" GTK-TEXT-TAG
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
                         :TYPE-INITIALIZER "gtk_text_tag_get_type")
                        ((ACCUMULATIVE-MARGIN GTK-TEXT-TAG-ACCUMULATIVE-MARGIN

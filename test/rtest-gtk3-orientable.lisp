@@ -20,7 +20,7 @@
   (is (equal '("orientation")
              (list-interface-properties "GtkOrientable")))
   ;; Get the interface definition
-  (is (equal '(DEFINE-G-INTERFACE "GtkOrientable" GTK-ORIENTABLE
+  (is (equal '(GOBJECT:DEFINE-G-INTERFACE "GtkOrientable" GTK-ORIENTABLE
                     (:EXPORT T :TYPE-INITIALIZER "gtk_orientable_get_type")
                     (ORIENTATION GTK-ORIENTABLE-ORIENTATION "orientation"
                      "GtkOrientation" T T))

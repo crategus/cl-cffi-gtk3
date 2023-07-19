@@ -38,7 +38,7 @@
   (is (equal '()
              (list-signals "GtkPageSetupUnixDialog")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkPageSetupUnixDialog"
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkPageSetupUnixDialog"
                                      GTK-PAGE-SETUP-UNIX-DIALOG
                        (:SUPERCLASS GTK-DIALOG :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable")

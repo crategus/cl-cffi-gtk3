@@ -5,12 +5,13 @@
 
 ;;;     GdkScrollDirection
 
-(test scroll-direction
+(test gdk-scroll-direction
   ;; Check the type
   (is-true (g:type-is-enum "GdkScrollDirection"))
   ;; Check the type initializer
   (is (eq (g:gtype "GdkScrollDirection")
-          (g:gtype (cffi:foreign-funcall "gdk_scroll_direction_get_type" :size))))
+          (g:gtype (cffi:foreign-funcall "gdk_scroll_direction_get_type" 
+                                         :size))))
   ;; Check the registered name
   (is (eq 'gdk:scroll-direction
           (glib:symbol-for-gtype "GdkScrollDirection")))
@@ -28,7 +29,7 @@
              (mapcar #'gobject:enum-item-nick
                      (gobject:get-enum-items "GdkScrollDirection"))))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GdkScrollDirection"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkScrollDirection"
                              GDK-SCROLL-DIRECTION
                              (:EXPORT T
                               :TYPE-INITIALIZER "gdk_scroll_direction_get_type")
@@ -41,7 +42,7 @@
 
 ;;;     GdkVisibilityState
 
-(test visibility-state
+(test gdk-visibility-state
   ;; Check the type
   (is-true (g:type-is-enum "GdkVisibilityState"))
   ;; Check the type initializer
@@ -64,7 +65,7 @@
              (mapcar #'gobject:enum-item-nick
                      (gobject:get-enum-items "GdkVisibilityState"))))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GdkVisibilityState"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkVisibilityState"
                              GDK-VISIBILITY-STATE
                              (:EXPORT T
                               :TYPE-INITIALIZER "gdk_visibility_state_get_type")
@@ -75,7 +76,7 @@
 
 ;;;     GdkCrossingMode
 
-(test crossing-mode
+(test gdk-crossing-mode
   ;; Check the type
   (is-true (g:type-is-enum "GdkCrossingMode"))
   ;; Check the type initializer
@@ -101,7 +102,7 @@
              (mapcar #'gobject:enum-item-nick
                      (gobject:get-enum-items "GdkCrossingMode"))))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GdkCrossingMode"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkCrossingMode"
                              GDK-CROSSING-MODE
                              (:EXPORT T
                               :TYPE-INITIALIZER "gdk_crossing_mode_get_type")
@@ -118,7 +119,7 @@
 
 ;;;     GdkNotifyType
 
-(test notify-type
+(test gdk-notify-type
   ;; Check the type
   (is-true (g:type-is-enum "GdkNotifyType"))
   ;; Check the type initializer
@@ -140,7 +141,7 @@
                "unknown")
              (list-enum-item-nick "GdkNotifyType")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GdkNotifyType"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkNotifyType"
                              GDK-NOTIFY-TYPE
                              (:EXPORT T
                               :TYPE-INITIALIZER "gdk_notify_type_get_type")
@@ -154,7 +155,7 @@
 
 ;;;     GdkPropertyState
 
-(test property-state
+(test gdk-property-state
   ;; Check the type
   (is-true (g:type-is-enum "GdkPropertyState"))
   ;; Check the type initializer
@@ -173,7 +174,7 @@
   (is (equal '("new-value" "delete")
              (list-enum-item-nick "GdkPropertyState")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GdkPropertyState"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkPropertyState"
                              GDK-PROPERTY-STATE
                              (:EXPORT T
                               :TYPE-INITIALIZER "gdk_property_state_get_type")
@@ -183,7 +184,7 @@
 
 ;;;     GdkWindowState
 
-(test window-state
+(test gdk-window-state
   ;; Check the type
   (is (g:type-is-flags "GdkWindowState"))
   ;; Check the registered name
@@ -215,7 +216,7 @@
                "left-tiled" "left-resizable")
              (list-flags-item-nick "GdkWindowState")))
   ;; Check the flags definition
-  (is (equal '(DEFINE-G-FLAGS "GdkWindowState"
+  (is (equal '(GOBJECT:DEFINE-G-FLAGS "GdkWindowState"
                               GDK-WINDOW-STATE
                               (:EXPORT T
                                :TYPE-INITIALIZER "gdk_window_state_get_type")
@@ -240,7 +241,7 @@
 
 ;;;     GdkSettingAction
 
-(test setting-action
+(test gdk-setting-action
   ;; Check the type
   (is-true (g:type-is-enum "GdkSettingAction"))
   ;; Check the type initializer
@@ -260,7 +261,7 @@
   (is (equal '("new" "changed" "deleted")
              (list-enum-item-nick "GdkSettingAction")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GdkSettingAction"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkSettingAction"
                              GDK-SETTING-ACTION
                              (:EXPORT T
                               :TYPE-INITIALIZER "gdk_setting_action_get_type")
@@ -271,7 +272,7 @@
 
 ;;;     GdkOwnerChange
 
-(test owner-change
+(test gdk-owner-change
   ;; Check the type
   (is-true (g:type-is-enum "GdkOwnerChange"))
   ;; Check the type initializer
@@ -291,7 +292,7 @@
   (is (equal '("new-owner" "destroy" "close")
              (list-enum-item-nick "GdkOwnerChange")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GdkOwnerChange"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkOwnerChange"
                              GDK-OWNER-CHANGE
                              (:EXPORT T
                               :TYPE-INITIALIZER "gdk_owner_change_get_type")
@@ -302,7 +303,7 @@
 
 ;;;     GdkEventType        <-- gdk.events.lisp
 
-(test event-type
+(test gdk-event-type
   ;; Check the type
   (is-true (g:type-is-enum "GdkEventType"))
   ;; Check the type initializer
@@ -351,7 +352,7 @@
                "pad-ring" "pad-strip" "pad-group-mode" "event-last")
              (list-enum-item-nick "GdkEventType")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GdkEventType"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkEventType"
                              GDK-EVENT-TYPE
                              (:EXPORT T
                               :TYPE-INITIALIZER "gdk_event_type_get_type")
@@ -410,7 +411,7 @@
 
 ;;;     GdkModifierType     <-- gdk.window.lisp
 
-(test modifier-type
+(test gdk-modifier-type
   ;; Check the type
   (is (g:type-is-flags "GdkModifierType"))
   ;; Check the registered name
@@ -454,7 +455,7 @@
                "modifier-reserved-29-mask" "release-mask" "modifier-mask")
              (list-flags-item-nick "GdkModifierType")))
   ;; Check the flags definition
-  (is (equal '(DEFINE-G-FLAGS "GdkModifierType"
+  (is (equal '(GOBJECT:DEFINE-G-FLAGS "GdkModifierType"
                               GDK-MODIFIER-TYPE
                               (:EXPORT T
                                :TYPE-INITIALIZER "gdk_modifier_type_get_type")
@@ -494,7 +495,7 @@
 
 ;;;     GdkEventMask        <-- gdk.events.lisp
 
-(test event-mask
+(test gdk-event-mask
   ;; Check the type
   (is (g:type-is-flags "GdkEventMask"))
   ;; Check the registered name
@@ -535,7 +536,7 @@
                "touchpad-gesture-mask" "tablet-pad-mask" "all-events-mask")
              (list-flags-item-nick "GdkEventMask")))
   ;; Check the flags definition
-  (is (equal '(DEFINE-G-FLAGS "GdkEventMask"
+  (is (equal '(GOBJECT:DEFINE-G-FLAGS "GdkEventMask"
                               GDK-EVENT-MASK
                               (:EXPORT T
                                :TYPE-INITIALIZER "gdk_event_mask_get_type")
@@ -572,12 +573,13 @@
 (eval-when (:compile-toplevel :load-toplevel :execute)
   (cffi:foreign-funcall "gdk_event_sequence_get_type" :size))
 
-(test event-sequence
+(test gdk-event-sequence
   ;; Type check
-  (is-true (g:type-is-a (g:gtype "GdkEventSequence") +g-type-boxed+))
+  (is-true (g:type-is-a (g:gtype "GdkEventSequence") g:+g-type-boxed+))
   ;; Check the type initializer
   (is (eq (g:gtype "GdkEventSequence")
-          (g:gtype (cffi:foreign-funcall "gdk_event_sequence_get_type" :size)))))
+          (g:gtype (cffi:foreign-funcall "gdk_event_sequence_get_type" 
+                                         :size)))))
 
 ;;;     GdkEvent
 ;;;     GdkEventAny
@@ -595,7 +597,7 @@
 ;;  (:not-used 30)          ; not used
 ;;  (:damage 36)
 
-(test event-any
+(test gdk-event-any
   (let ((event (gdk:event-new :nothing)))
     (is (typep event 'gdk:event))
     ;; Common slots
@@ -609,7 +611,7 @@
 ;;     (region (:pointer (:struct cairo-region-t)) :initform (cffi:null-pointer))
 ;;     (count :int :initform 0))
 
-(test event-expose
+(test gdk-event-expose
   (let ((event (gdk:event-new :expose)))
     (is (typep event 'gdk:event-expose))
     ;; Common slots
@@ -633,7 +635,7 @@
 ;;     (x-root :double :initform 0.0d0)
 ;;     (y-root :double :initform 0.0d0))
 
-(test event-motion
+(test gdk-event-motion
   (let ((event (gdk:event-new :motion-notify)))
     (is (typep event 'gdk:event-motion))
     ;; Common slots
@@ -668,7 +670,7 @@
 ;;     (x-root :double :initform 0.0d0)
 ;;     (y-root :double :initform 0.0d0))
 
-(test event-button.1
+(test gdk-event-button.1
   (let ((event (gdk:event-new :button-press)))
     (is (typep event 'gdk:event-button))
     ;; Common slots
@@ -686,7 +688,7 @@
     (is (= 0.0d0 (gdk:event-button-x-root event)))
     (is (= 0.0d0 (gdk:event-button-y-root event)))))
 
-(test event-button.2
+(test gdk-event-button.2
   (let ((event (gdk:event-new :double-button-press)))
     (is (typep event 'gdk:event-button))
     ;; Common slots
@@ -704,7 +706,7 @@
     (is (= 0.0d0 (gdk:event-button-x-root event)))
     (is (= 0.0d0 (gdk:event-button-y-root event)))))
 
-(test event-button.3
+(test gdk-event-button.3
   (let ((event (gdk:event-new :triple-button-press)))
     (is (typep event 'gdk:event-button))
     ;; Common slots
@@ -722,7 +724,7 @@
     (is (= 0.0d0 (gdk:event-button-x-root event)))
     (is (= 0.0d0 (gdk:event-button-y-root event)))))
 
-(test event-button.4
+(test gdk-event-button.4
   (let ((event (gdk:event-new :button-release)))
     (is (typep event 'gdk:event-button))
     ;; Common slots
@@ -753,7 +755,7 @@
 ;;     (group :uint8 :initform 0)
 ;;     (is-modifier :uint :initform 0))
 
-(test event-key.1
+(test gdk-event-key.1
   (let ((event (gdk:event-new :key-press)))
     (is (typep event 'gdk:event-key))
     ;; Common slots
@@ -770,7 +772,7 @@
     (is (= 0 (gdk:event-key-group event)))
     (is (= 0 (gdk:event-key-is-modifier event)))))
 
-(test event-key.2
+(test gdk-event-key.2
   (let ((event (gdk:event-new :key-release)))
     (is (typep event 'gdk:event-key))
     ;; Common slots
@@ -800,7 +802,7 @@
 ;;             (focus :boolean)
 ;;             (state :uint))
 
-(test event-crossing
+(test gdk-event-crossing
   (let ((event (gdk:event-new :enter-notify)))
     (is (typep event 'gdk:event-crossing))
     ;; Common slots
@@ -823,7 +825,7 @@
 ;;    ((:focus-change) gdk-event-focus
 ;;     (in :int16 :initform 0))
 
-(test event-focus
+(test gdk-event-focus
   (let ((event (gdk:event-new :focus-change)))
     (is (typep event 'gdk:event-focus))
     ;; Common slots
@@ -840,7 +842,7 @@
 ;;     (width :int :initform 0)
 ;;     (height :int :initform 0))
 
-(test event-configure
+(test gdk-event-configure
   (let ((event (gdk:event-new :configure)))
     (is (typep event 'gdk:event-configure))
     ;; Common slots
@@ -859,7 +861,7 @@
 ;;     (time :uint32 :initform 0)
 ;;     (state gdk-property-state :init-from :new-value))
 
-(test event-property
+(test gdk-event-property
   (let ((event (gdk:event-new :property-notify)))
     (is (typep event 'gdk:event-property))
     ;; Common slots
@@ -881,7 +883,7 @@
 ;;     (time :uint32 :initform 0)
 ;;     (requestor (g-object gdk-window)))
 
-(test event-selection
+(test gdk-event-selection
   (let ((event (gdk:event-new :selection-clear)))
     (is (typep event 'gdk:event-selection))
     ;; Common slots
@@ -901,7 +903,7 @@
 ;;     (time :uint32 :initform 0)
 ;;     (device (g-object gdk-device)))
 
-(test event-proximity
+(test gdk-event-proximity
   (let ((event (gdk:event-new :proximity-in)))
     (is (typep event 'gdk:event-proximity))
     ;; Common slots
@@ -924,7 +926,7 @@
 ;;     (x-root :short :initform 0)
 ;;     (y-root :short :initform 0))
 
-(test event-dnd
+(test gdk-event-dnd
   (let ((event (gdk:event-new :drag-enter)))
     (is (typep event 'gdk:event-dnd))
     ;; Common slots
@@ -941,7 +943,7 @@
 ;;    ((:visibility-notify) gdk-event-visibility
 ;;     (state gdk-visibility-state :initform :unobscured))
 
-(test event-visibility
+(test gdk-event-visibility
   (let ((event (gdk:event-new :visibility-notify)))
     (is (typep event 'gdk:event-visibility))
     ;; Common slots
@@ -964,7 +966,7 @@
 ;;     (delta-x :double :initform 0.0d0)
 ;;     (delta-y :double :initform 0.0d0))
 
-(test event-scroll
+(test gdk-event-scroll
   (let ((event (gdk:event-new :scroll)))
     (is (typep event 'gdk:event-scroll))
     ;; Common slots
@@ -988,7 +990,7 @@
 ;;     (changed-mask gdk-window-state)
 ;;     (new-window-state gdk-window-state))
 
-(test event-window-state
+(test gdk-event-window-state
   (let ((event (gdk:event-new :window-state)))
     (is (typep event 'gdk:event-window-state ))
     ;; Common slots
@@ -1004,7 +1006,7 @@
 ;;     (action gdk-setting-action :initform :new)
 ;;     (name (:string :free-from-foreign nil :free-to-foreign nil)))
 
-(test event-setting
+(test gdk-event-setting
   (let ((event (gdk:event-new :setting)))
     (is (typep event 'gdk:event-setting))
     ;; Common slots
@@ -1023,7 +1025,7 @@
 ;;     (time :uint32 :initform 0)
 ;;     (selection-time :uint32 :initform 0))
 
-(test event-owner-change
+(test gdk-event-owner-change
   (let ((event (gdk:event-new :owner-change)))
     (is (typep event 'gdk:event-owner-change))
     ;; Common slots
@@ -1043,7 +1045,7 @@
 ;;     (implicit :boolean)
 ;;     (grab-window (g-object gdk-window)))
 
-(test event-grab-broken
+(test gdk-event-grab-broken
   (let ((event (gdk:event-new :grab-broken)))
     (is (typep event 'gdk:event-grab-broken))
     ;; Common slots
@@ -1072,7 +1074,7 @@
 ;;     (x-root :double :initform 0.0d0)
 ;;     (y-root :double :initform 0.0d0))
 
-(test event-touch
+(test gdk-event-touch
   (let ((event (gdk:event-new :touch-begin)))
     (is (typep event 'gdk:event-touch))
     ;; Common slots
@@ -1105,7 +1107,7 @@
 ;;     (y-root :double :initform 0.0d0)
 ;;     (state gdk-modifier-type))
 
-(test event-touchpad-swipe
+(test gdk-event-touchpad-swipe
   (let ((event (gdk:event-new :touchpad-swipe)))
     (is (typep event 'gdk:event-touchpad-swipe))
     ;; Common slots
@@ -1139,7 +1141,7 @@
 ;;     (y-root :double :initform 0.0d0)
 ;;     (state gdk-modifier-type))
 
-(test event-touchpad-pinch
+(test gdk-event-touchpad-pinch
   (let ((event (gdk:event-new :touchpad-pinch)))
     (is (typep event 'gdk:event-touchpad-pinch))
     ;; Common slots
@@ -1167,7 +1169,7 @@
 ;;     (button :uint :initform 0)
 ;;     (mode :uint :initform 0)) ; TODO: Check the type of mode
 
-(test event-pad-button
+(test gdk-event-pad-button
   (let ((event (gdk:event-new :pad-button-press)))
     (is (typep event 'gdk:event-pad-button))
     ;; Common slots
@@ -1188,7 +1190,7 @@
 ;;     (mode :uint :initform 0)
 ;;     (value :double :initform 0.0d0))
 
-(test event-pad-axis
+(test gdk-event-pad-axis
   (let ((event (gdk:event-new :pad-ring)))
     (is (typep event 'gdk:event-pad-axis))
     ;; Common slots
@@ -1208,7 +1210,7 @@
 ;;     (group :uint :initform 0)
 ;;     (mode :uint :initform 0))
 
-(test event-pad-group-mode
+(test gdk-event-pad-group-mode
   (let ((event (gdk:event-new :pad-group-mode)))
     (is (typep event 'gdk:event-pad-group-mode))
     ;; Common slots
@@ -1220,4 +1222,4 @@
     (is (= 0 (gdk:event-pad-group-mode-group event)))
     (is (= 0 (gdk:event-pad-group-mode-mode event)))))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; --- 2023-7-19 --------------------------------------------------------------

@@ -38,7 +38,7 @@
   (is (equal '()
              (list-signals "GtkEventBox")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkEventBox" GTK-EVENT-BOX
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkEventBox" GTK-EVENT-BOX
                        (:SUPERCLASS GTK-BIN :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_event_box_get_type")

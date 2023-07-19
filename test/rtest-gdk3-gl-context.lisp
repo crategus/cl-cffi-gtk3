@@ -34,7 +34,7 @@
   (is (equal '()
              (list-signals "GdkGLContext")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GdkGLContext" GDK-G-L-CONTEXT
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GdkGLContext" GDK-G-L-CONTEXT
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL)
                        ((DISPLAY GDK-G-L-CONTEXT-DISPLAY "display" "GdkDisplay"
                          T NIL)

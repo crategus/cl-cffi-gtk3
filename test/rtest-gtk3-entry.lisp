@@ -27,7 +27,7 @@
   (is (equal '("primary" "secondary")
              (list-enum-item-nick "GtkEntryIconPosition")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GtkEntryIconPosition"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkEntryIconPosition"
                              GTK-ENTRY-ICON-POSITION
                              (:EXPORT T
                               :TYPE-INITIALIZER
@@ -63,7 +63,7 @@
                "name" "password" "pin" "terminal")
              (list-enum-item-nick "GtkInputPurpose")))
   ;; Check the enum definition
-  (is (equal '(DEFINE-G-ENUM "GtkInputPurpose"
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkInputPurpose"
                              GTK-INPUT-PURPOSE
                              (:EXPORT T
                               :TYPE-INITIALIZER "gtk_input_purpose_get_type")
@@ -109,7 +109,7 @@
                "inhibit-osk" "vertical-writing" "emoji" "no-emoji")
              (list-flags-item-nick "GtkInputHints")))
   ;; Check the flags definition
-  (is (equal '(DEFINE-G-FLAGS "GtkInputHints"
+  (is (equal '(GOBJECT:DEFINE-G-FLAGS "GtkInputHints"
                               GTK-INPUT-HINTS
                               (:EXPORT T
                                :TYPE-INITIALIZER "gtk_input_hints_get_type")
@@ -182,7 +182,7 @@
                "populate-popup" "preedit-changed" "toggle-overwrite")
              (list-signals "GtkEntry")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkEntry" GTK-ENTRY
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkEntry" GTK-ENTRY
                        (:SUPERCLASS GTK-WIDGET :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable" "GtkCellEditable"
                          "GtkEditable")

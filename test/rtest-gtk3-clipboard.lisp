@@ -9,7 +9,7 @@
 
 ;;; --- GtkClipboard -----------------------------------------------------------
 
-(test clipboard-class
+(test gtk-clipboard-class
   ;; Type check
   (is (g:type-is-object "GtkClipboard"))
   ;; Check the registered name
@@ -34,7 +34,7 @@
   (is (equal '("owner-change")
              (list-signals "GtkClipboard")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkClipboard" GTK-CLIPBOARD
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkClipboard" GTK-CLIPBOARD
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
                         :TYPE-INITIALIZER "gtk_clipboard_get_type")
                        NIL)
@@ -42,7 +42,7 @@
 
 ;;; --- Signals ----------------------------------------------------------------
 
-(test clipboard-signals
+(test gtk-clipboard-signals
   ;; Check the list of signals
   (is (equal '("owner-change")
              (mapcar #'g:signal-name
@@ -73,12 +73,12 @@
 
 ;;;     gtk_clipboard_get
 
-(test clipboard-get.1
+(test gtk-clipboard-get.1
   (is (typep (gtk:clipboard-get "CLIPBOARD") 'gtk:clipboard))
   (is (typep (gtk:clipboard-get "PRIMARY") 'gtk:clipboard))
   (is (typep (gtk:clipboard-get "SECONDARY") 'gtk:clipboard)))
 
-(test clipboard-get.2
+(test gtk-clipboard-get.2
   (let ((clipboard (gtk:clipboard-get "myclipboard")))
     (is (typep clipboard 'gtk:clipboard))
     (is (eq clipboard (gtk:clipboard-get "myclipboard")))
@@ -86,13 +86,13 @@
 
 ;;;     gtk_clipboard_for_display
 
-(test clipboard-for-display.1
+(test gtk-clipboard-for-display.1
   (let ((display (gdk:display-default)))
     (is (typep (gtk:clipboard-for-display display "CLIPBOARD") 'gtk:clipboard))
     (is (typep (gtk:clipboard-for-display display "PRIMARY") 'gtk:clipboard))
     (is (typep (gtk:clipboard-for-display display "SECONDARY") 'gtk:clipboard))))
 
-(test clipboard-for-display.2
+(test gtk-clipboard-for-display.2
   (let* ((display (gdk:display-default))
          (clipboard (gtk:clipboard-for-display display "myclipboard")))
     (is (typep clipboard 'gtk:clipboard))
@@ -101,19 +101,19 @@
 
 ;;;     gtk_clipboard_display
 
-(test clipboard-display
+(test gtk-clipboard-display
   (let ((clipboard (gtk:clipboard-get "CLIPBOARD")))
     (is (typep (gtk:clipboard-display clipboard) 'gdk:display))
     (is (eq (gdk:display-default) (gtk:clipboard-display clipboard)))))
 
 ;;;     gtk_clipboard_default
 
-(test clipboard-default
+(test gtk-clipboard-default
   (is (typep (gtk:clipboard-default (gdk:display-default)) 'gtk:clipboard)))
 
 ;;;     gtk_clipboard_set_with_data
 
-(test clipboard-set-with-data
+(test gtk-clipboard-set-with-data
   (flet ((get-func (clipboard selection info)
            (is (string= "Text"
                         (setf (gtk:selection-data-text selection) "Text")))
@@ -159,7 +159,7 @@
 
 ;;;     gtk_clipboard_clear
 
-(test clipboard-clear
+(test gtk-clipboard-clear
   (flet ((get-func (clipboard selection info)
            (is (string= "Text"
                         (setf (gtk:selection-data-text selection) "Text")))
@@ -202,7 +202,7 @@
 ;; Check this for Linux too. Can we avoid this?
 
 #+nil
-(test clipboard-set-text
+(test gtk-clipboard-set-text
   (flet ((request-text (clipboard text)
            (is (typep clipboard 'gtk:clipboard))
            (is (string= text "This is text."))))
@@ -217,7 +217,7 @@
 ;; Check this for Linux too. Can we avoid this?
 
 #+nil
-(test clipboard-set-image
+(test gtk-clipboard-set-image
   (flet ((request-image (clipboard  pixbuf)
            (is (typep clipboard 'gtk:clipboard))
            (is (typep pixbuf 'gdk:pixbuf))
@@ -237,7 +237,7 @@
 ;;;     gtk_clipboard_request_contents
 
 #+nil
-(test clipboard-request-contents.1
+(test gtk-clipboard-request-contents.1
   (flet ((request-contents (clipboard selection)
            (is (typep clipboard 'gtk:clipboard))
            (is (typep selection 'gtk:selection-data))
@@ -254,7 +254,7 @@
                                               #'request-contents)))))
 
 #+nil
-(test clipboard-request-contents.2
+(test gtk-clipboard-request-contents.2
   (flet ((request-contents (clipboard selection)
            (is (typep clipboard 'gtk:clipboard))
            (is (typep selection 'gtk:selection-data))
@@ -277,7 +277,7 @@
 ;;;     gtk_clipboard_request_targets
 
 
-(test clipboard-request-targets
+(test gtk-clipboard-request-targets
   (flet ((request-targets (clipboard atoms n-atoms)
            (when *verbose-gtk-clipboard*
              (format t "~%REQUEST-TARGETS~%")
@@ -318,8 +318,8 @@
 
 ;;;     gtk_clipboard_get_selection
 
-(test clipboard-selection
+(test gtk-clipboard-selection
   (let ((clipboard (gtk:clipboard-default (gdk:display-default))))
     (is (string= "CLIPBOARD" (gtk:clipboard-selection clipboard)))))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; --- 2023-7-19 --------------------------------------------------------------

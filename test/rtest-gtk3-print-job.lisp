@@ -28,7 +28,7 @@
   (is (equal '("page-setup" "printer" "settings" "title" "track-print-status")
              (list-properties "GtkPrintJob")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkPrintJob" GTK-PRINT-JOB
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkPrintJob" GTK-PRINT-JOB
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
                         :TYPE-INITIALIZER "gtk_print_job_get_type")
                        ((PAGE-SETUP GTK-PRINT-JOB-PAGE-SETUP "page-setup"

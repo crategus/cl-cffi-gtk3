@@ -33,7 +33,7 @@
                "generate-ps" "preview" "number-up" "number-up-layout")
              (list-flags-item-nick "GtkPrintCapabilities")))
   ;; Check the flags definition
-  (is (equal '(DEFINE-G-FLAGS "GtkPrintCapabilities"
+  (is (equal '(GOBJECT:DEFINE-G-FLAGS "GtkPrintCapabilities"
                               GTK-PRINT-CAPABILITIES
                               (:EXPORT T
                                :TYPE-INITIALIZER "gtk_print_capabilities_get_type")
@@ -84,7 +84,8 @@
   (is (equal '()
              (list-signals "GtkPrintUnixDialog")))
   ;; Check the class definition
-  (is (equal '(DEFINE-G-OBJECT-CLASS "GtkPrintUnixDialog" GTK-PRINT-UNIX-DIALOG
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkPrintUnixDialog" 
+                                             GTK-PRINT-UNIX-DIALOG
                        (:SUPERCLASS GTK-DIALOG :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_print_unix_dialog_get_type")

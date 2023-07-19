@@ -8,22 +8,22 @@
 ;;;   GDK_CURRENT_TIME
 
 (test +gdk-current-time+
-  (is (= 0 +gdk-current-time+)))
+  (is (= 0 gdk:+gdk-current-time+)))
 
 ;;;     GDK_PRIORITY_REDRAW
 
 (test +gdk-priority-redraw+
-  (is (= 120 +gdk-priority-redraw+)))
+  (is (= 120 gdk:+gdk-priority-redraw+)))
 
 ;;;     GDK_EVENT_PROPAGATE
 
 (test +gdk-event-propagate+
-  (is-false +gdk-event-propagate+))
+  (is-false gdk:+gdk-event-propagate+))
 
 ;;;     GDK_EVENT_STOP
 
 (test +gdk-event-stop+
-  (is-true +gdk-event-stop+))
+  (is-true gdk:+gdk-event-stop+))
 
 ;;;     GDK_BUTTON_PRIMARY
 ;;;     GDK_BUTTON_MIDDLE
@@ -63,7 +63,7 @@
              (gtk:main-iteration-do nil))
     ;; Quit the callback
     (gtk:main-quit)
-    +g-source-remove+))
+    g:+g-source-remove+))
 
 ;; TODO: The following functions can cause an infinite loop, improve the code
 
