@@ -95,7 +95,7 @@
 ;;; struct GtkColorSelection
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkColorSelection" color-selection
+(gobject:define-g-object-class "GtkColorSelection" color-selection
   (:superclass box
    :export t
    :interfaces ("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
@@ -524,7 +524,7 @@ lambda (selection)    :run-first
   @end{dictionary}
   @see-class{gtk:color-selection}
   @see-function{gdk:color-parse}"
-  (with-foreign-objects ((colors :pointer) (n-colors :int))
+  (cffi:with-foreign-objects ((colors :pointer) (n-colors :int))
     (when (%color-selection-palette-from-string str colors n-colors)
       (iter (with colors-ar = (cffi:mem-ref colors :pointer))
             (for i from 0 below (cffi:mem-ref n-colors :int))

@@ -365,7 +365,7 @@ lambda (group action)
 ;;; gtk_action_group_get_action () -> action-group-action    not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_action_group_get_action" action-group-action) g:object
+(cffi:defcfun ("gtk_action_group_get_action" action-group-action) g:object
  #+liber-documentation
  "@version{#2023-3-15}
   @argument[group]{a @class{gtk:action-group} object}
@@ -386,7 +386,7 @@ lambda (group action)
 ;;; gtk_action_group_list_actions ()                       not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_action_group_list_actions" action-group-list-actions)
+(cffi:defcfun ("gtk_action_group_list_actions" action-group-list-actions)
     (g:list-t g:object :free-from-foreign t)
  #+liber-documentation
  "@version{#2023-3-15}
@@ -438,8 +438,8 @@ lambda (group action)
 
 ;; This function is called from action-group-add-action and not exported.
 
-(defcfun ("gtk_action_group_add_action_with_accel"
-          %action-group-add-action-with-accel) :void
+(cffi:defcfun ("gtk_action_group_add_action_with_accel"
+               %action-group-add-action-with-accel) :void
  #+liber-documentation
  "@version{#2023-3-15}
   @argument[group]{a @class{gtk:action-group} object}
@@ -469,7 +469,8 @@ lambda (group action)
 ;;; gtk_action_group_remove_action ()                      not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_action_group_remove_action" action-group-remove-action) :void
+(cffi:defcfun ("gtk_action_group_remove_action" action-group-remove-action)
+    :void
  #+liber-documentation
  "@version{#2023-3-15}
   @argument[group]{a @class{gtk:action-group} object}
@@ -982,7 +983,7 @@ lambda (group action)
 ;;; gtk_action_group_translate_string                      not exported
 ;;; ----------------------------------------------------------------------------
 
-(cffi:defcfun ("gtk_action_group_translate_string" 
+(cffi:defcfun ("gtk_action_group_translate_string"
                action-group-translate-string) (:string :free-from-foreign nil)
  #+liber-documentation
  "@version{#2023-3-15}

@@ -62,7 +62,7 @@
 ;;; GtkCellEditable
 ;;; ----------------------------------------------------------------------------
 
-(define-g-interface "GtkCellEditable" cell-editable
+(gobject:define-g-interface "GtkCellEditable" cell-editable
   (:export t
    :type-initializer "gtk_cell_editable_get_type")
   ((editing-canceled
@@ -146,7 +146,8 @@ lambda (editable)    :run-last
 ;;; gtk_cell_editable_start_editing ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_cell_editable_start_editing" cell-editable-start-editing) :void
+(cffi:defcfun ("gtk_cell_editable_start_editing" cell-editable-start-editing)
+    :void
  #+liber-documentation
  "@version{#2023-1-21}
   @argument[editable]{a @class{gtk:cell-editable} object}
@@ -167,7 +168,8 @@ lambda (editable)    :run-last
 ;;; gtk_cell_editable_editing_done ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_cell_editable_editing_done" cell-editable-editing-done) :void
+(cffi:defcfun ("gtk_cell_editable_editing_done" cell-editable-editing-done)
+    :void
  #+liber-documentation
  "@version{#2023-1-21}
   @argument[editable]{a @class{gtk:cell-editable} object}
@@ -183,7 +185,8 @@ lambda (editable)    :run-last
 ;;; gtk_cell_editable_remove_widget ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_cell_editable_remove_widget" cell-editable-remove-widget) :void
+(cffi:defcfun ("gtk_cell_editable_remove_widget" cell-editable-remove-widget)
+    :void
  #+liber-documentation
  "@version{#2023-1-21}
   @argument[editable]{a @class{gtk:cell-editable} object}

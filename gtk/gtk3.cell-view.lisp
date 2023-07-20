@@ -85,7 +85,7 @@
 ;;; struct GtkCellView
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkCellView" cell-view
+(gobject:define-g-object-class "GtkCellView" cell-view
   (:superclass widget
    :export t
    :interfaces ("AtkImplementorIface"
@@ -494,7 +494,7 @@
 ;;; gtk_cell_view_new_with_text ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_cell_view_new_with_text" cell-view-new-with-text)
+(cffi:defcfun ("gtk_cell_view_new_with_text" cell-view-new-with-text)
     (g:object cell-view)
  #+liber-documentation
  "@version{#2023-3-16}
@@ -514,7 +514,7 @@
 ;;; gtk_cell_view_new_with_markup ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_cell_view_new_with_markup" cell-view-new-with-markup)
+(cffi:defcfun ("gtk_cell_view_new_with_markup" cell-view-new-with-markup)
     (g:object cell-view)
  #+liber-documentation
  "@version{#2023-3-16}
@@ -535,7 +535,7 @@
 ;;; gtk_cell_view_new_with_pixbuf ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_cell_view_new_with_pixbuf" cell-view-new-with-pixbuf)
+(cffi:defcfun ("gtk_cell_view_new_with_pixbuf" cell-view-new-with-pixbuf)
     (g:object cell-view)
   #+liber-documentation
  "@version{#2023-3-16}
@@ -565,7 +565,7 @@
                         :void)
   path)
 
-(defcfun ("gtk_cell_view_get_display_row" cell-view-displayed-row)
+(cffi:defcfun ("gtk_cell_view_get_display_row" cell-view-displayed-row)
     (g:boxed tree-path :return)
  #+liber-documentation
  "@version{#2023-3-16}
@@ -594,7 +594,7 @@
 ;;; gtk_cell_view_get_size_of_row () -> cell-view-size-of-row
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_cell_view_get_size_of_row" %cell-view-size-of-row) :boolean
+(cffi:defcfun ("gtk_cell_view_get_size_of_row" %cell-view-size-of-row) :boolean
   (cell-view (g:object cell-view))
   (path (g:boxed tree-path))
   (requisition (g:boxed requisition)))

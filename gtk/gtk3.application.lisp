@@ -235,7 +235,7 @@
 (defun application-simple (&rest argv)
   (let (;; Create an application
         (app (make-instance 'gtk:application
-                            :application-id 
+                            :application-id
                             \"com.crategus.application-simple\"
                             :flags :flags-none)))
     ;; Connect signal \"activate\" to the application
@@ -811,7 +811,7 @@ lambda (application window)    :run-first
 ;;; gtk_application_add_accelerator ()                     not exported
 ;;; ----------------------------------------------------------------------------
 
-(cffi:defcfun ("gtk_application_add_accelerator" %application-add-accelerator) 
+(cffi:defcfun ("gtk_application_add_accelerator" %application-add-accelerator)
     :void
   (application (g:object application))
   (accel :string)
@@ -869,7 +869,7 @@ lambda (application window)    :run-first
 ;;; gtk_application_remove_accelerator ()                  not exported
 ;;; ----------------------------------------------------------------------------
 
-(cffi:defcfun ("gtk_application_remove_accelerator" 
+(cffi:defcfun ("gtk_application_remove_accelerator"
                 %application-remove-accelerator) :void
   (application (g:object application))
   (name :string)

@@ -93,7 +93,7 @@
 ;;; GtkClipboard
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkClipboard" clipboard
+(gobject:define-g-object-class "GtkClipboard" clipboard
   (:superclass g:object
    :export t
    :interfaces nil
@@ -164,7 +164,7 @@ lambda (clipboard event)    :run-first
 ;;; GtkClipboardReceivedFunc ()
 ;;; ----------------------------------------------------------------------------
 
-(defcallback clipboard-received-func :void
+(cffi:defcallback clipboard-received-func :void
     ((clipboard (g:object clipboard))
      (selection (g:boxed selection-data))
      (data :pointer))
@@ -203,7 +203,7 @@ lambda (clipboard event)    :run-first
 ;;; GtkClipboardTextReceivedFunc ()
 ;;; ----------------------------------------------------------------------------
 
-(defcallback clipboard-text-received-func :void
+(cffi:defcallback clipboard-text-received-func :void
     ((clipboard (g:object clipboard))
      (text :string)
      (data :pointer))
@@ -239,7 +239,7 @@ lambda (clipboard event)    :run-first
 ;;; GtkClipboardImageReceivedFunc ()
 ;;; ----------------------------------------------------------------------------
 
-(defcallback clipboard-image-received-func :void
+(cffi:defcallback clipboard-image-received-func :void
     ((clipboard (g:object clipboard))
      (pixbuf (g:object gdk-pixbuf:pixbuf))
      (data :pointer))
@@ -275,7 +275,7 @@ lambda (clipboard event)    :run-first
 ;;; GtkClipboardTargetsReceivedFunc ()
 ;;; ----------------------------------------------------------------------------
 
-(defcallback clipboard-targets-received-func :void
+(cffi:defcallback clipboard-targets-received-func :void
     ((clipboard (g:object clipboard))
      (atoms :pointer)
      (n-atoms :int)
@@ -314,7 +314,7 @@ lambda (clipboard atoms n-atoms)
 ;;; GtkClipboardRichTextReceivedFunc ()
 ;;; ----------------------------------------------------------------------------
 
-(defcallback clipboard-rich-text-received-func :void
+(cffi:defcallback clipboard-rich-text-received-func :void
     ((clipboard (g:object clipboard))
      (format :pointer) ; for GdkAtom
      (text :uint8)
@@ -356,7 +356,7 @@ lambda (clipboard atoms n-atoms)
 ;;; GtkClipboardURIReceivedFunc ()
 ;;; ----------------------------------------------------------------------------
 
-(defcallback clipboard-uri-received-func :void
+(cffi:defcallback clipboard-uri-received-func :void
     ((clipboard (g:object clipboard))
      (uris :pointer)
      (data :pointer))
@@ -392,7 +392,7 @@ lambda (clipboard uris)
 ;;; GtkClipboardGetFunc ()
 ;;; ----------------------------------------------------------------------------
 
-(defcallback clipboard-get-func :void
+(cffi:defcallback clipboard-get-func :void
     ((clipboard (g:object clipboard))
      (selection (g:boxed selection-data))
      (info :uint)
@@ -442,7 +442,7 @@ lambda (clipboard selection info)
 
 ;; Implemented for internal use in the clipboard-SET-WITH-DATA function.
 
-(defcallback %clipboard-clear-func :void
+(cffi:defcallback %clipboard-clear-func :void
     ((clipboard (g:object clipboard))
      (data :pointer))
   (declare (ignore clipboard))
@@ -469,7 +469,7 @@ lambda (clipboard selection info)
 ;;; gtk_clipboard_get ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_clipboard_get" clipboard-get)
+(cffi:defcfun ("gtk_clipboard_get" clipboard-get)
     (g:object clipboard :free-from-foreign nil)
  #+liber-documentation
  "@version{#2023-3-16}
@@ -495,7 +495,7 @@ lambda (clipboard selection info)
 ;;; gtk_clipboard_get_for_display () -> clipboard-for-display
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_clipboard_get_for_display" clipboard-for-display)
+(cffi:defcfun ("gtk_clipboard_get_for_display" clipboard-for-display)
     (g:object clipboard :free-from-foreign nil)
  #+liber-documentation
  "@version{#2023-3-16}
@@ -538,7 +538,8 @@ lambda (clipboard selection info)
 ;;; gtk_clipboard_get_display () -> clipboard-display
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_clipboard_get_display" clipboard-display) (g:object gdk:display)
+(cffi:defcfun ("gtk_clipboard_get_display" clipboard-display)
+    (g:object gdk:display)
  #+liber-documentation
  "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
@@ -556,7 +557,8 @@ lambda (clipboard selection info)
 ;;; gtk_clipboard_get_default () -> clipboard-default
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_clipboard_get_default" clipboard-default) (g:object clipboard)
+(cffi:defcfun ("gtk_clipboard_get_default" clipboard-default)
+    (g:object clipboard)
  #+liber-documentation
  "@version{#2023-3-16}
   @argument[display]{a @class{gdk:display} object for which the clipboard is
@@ -576,7 +578,7 @@ lambda (clipboard selection info)
 ;;; gtk_clipboard_set_with_data ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_clipboard_set_with_data" %clipboard-set-with-data) :boolean
+(cffi:defcfun ("gtk_clipboard_set_with_data" %clipboard-set-with-data) :boolean
   (clipboard (g:object clipboard))
   (targets :pointer)
   (n-targets :int)
@@ -605,14 +607,14 @@ lambda (clipboard selection info)
   @see-class{gtk:target-list}
   @see-symbol{gtk:clipboard-get-func}"
   (let ((n-targets (length targets)))
-    (with-foreign-object (targets-ptr '(:struct %target-entry) n-targets)
+    (cffi:with-foreign-object (targets-ptr '(:struct %target-entry) n-targets)
       (loop for i from 0 below n-targets
             for target-ptr = (cffi:mem-aptr targets-ptr
                                             '(:struct %target-entry) i)
             for entry in targets
-            do (with-foreign-slots ((target flags info)
-                                    target-ptr
-                                    (:struct %target-entry))
+            do (cffi:with-foreign-slots ((target flags info)
+                                         target-ptr
+                                         (:struct %target-entry))
                  (setf target (first entry))
                  (setf flags (second entry))
                  (setf info (third entry))))
@@ -689,7 +691,7 @@ lambda (clipboard selection info)
 ;;; gtk_clipboard_clear ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_clipboard_clear" clipboard-clear) :void
+(cffi:defcfun ("gtk_clipboard_clear" clipboard-clear) :void
  #+liber-documentation
  "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
@@ -709,7 +711,7 @@ lambda (clipboard selection info)
 ;;; gtk_clipboard_set_text ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_clipboard_set_text" %clipboard-set-text) :void
+(cffi:defcfun ("gtk_clipboard_set_text" %clipboard-set-text) :void
   (clipboard (g:object clipboard))
   (text :string)
   (len :int))
@@ -734,7 +736,7 @@ lambda (clipboard selection info)
 ;;; gtk_clipboard_set_image ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_clipboard_set_image" clipboard-set-image) :void
+(cffi:defcfun ("gtk_clipboard_set_image" clipboard-set-image) :void
  #+liber-documentation
  "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
@@ -755,7 +757,8 @@ lambda (clipboard selection info)
 ;;; gtk_clipboard_request_contents ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_clipboard_request_contents" %clipboard-request-contents) :void
+(cffi:defcfun ("gtk_clipboard_request_contents" %clipboard-request-contents)
+    :void
   (clipboard (g:object clipboard))
   (target gdk:atom-as-string)
   (func :pointer)
@@ -790,7 +793,7 @@ lambda (clipboard selection info)
 ;;; gtk_clipboard_request_text ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_clipboard_request_text" %clipboard-request-text) :void
+(cffi:defcfun ("gtk_clipboard_request_text" %clipboard-request-text) :void
   (clipboard (g:object clipboard))
   (func :pointer)
   (data :pointer))
@@ -824,7 +827,7 @@ lambda (clipboard selection info)
 ;;; gtk_clipboard_request_image ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_clipboard_request_image" %clipboard-request-image) :void
+(cffi:defcfun ("gtk_clipboard_request_image" %clipboard-request-image) :void
   (clipboard (g:object clipboard))
   (func :pointer)
   (data :pointer))
@@ -859,7 +862,7 @@ lambda (clipboard selection info)
 ;;; gtk_clipboard_request_targets ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_clipboard_request_targets" %clipboard-request-targets) :void
+(cffi:defcfun ("gtk_clipboard_request_targets" %clipboard-request-targets) :void
   (clipboard (g:object clipboard))
   (func :pointer)
   (data :pointer))
@@ -889,7 +892,7 @@ lambda (clipboard selection info)
 ;;; gtk_clipboard_request_rich_text ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_clipboard_request_rich_text" %clipboard-request-rich-text)
+(cffi:defcfun ("gtk_clipboard_request_rich_text" %clipboard-request-rich-text)
     :void
   (clipboard (g:object clipboard))
   (buffer (g:object buffer))
@@ -928,7 +931,7 @@ lambda (clipboard selection info)
 ;;; gtk_clipboard_request_uris ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_clipboard_request_uris" %clipboard-request-uris) :void
+(cffi:defcfun ("gtk_clipboard_request_uris" %clipboard-request-uris) :void
   (clipboard (g:object clipboard))
   (func :pointer)
   (data :pointer))
@@ -962,7 +965,7 @@ lambda (clipboard selection info)
 ;;; gtk_clipboard_wait_for_contents ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_clipboard_wait_for_contents" clipboard-wait-for-contents)
+(cffi:defcfun ("gtk_clipboard_wait_for_contents" clipboard-wait-for-contents)
     (g:boxed selection-data :return)
  #+liber-documentation
  "@version{#2023-3-16}
@@ -988,7 +991,7 @@ lambda (clipboard selection info)
 ;;; gtk_clipboard_wait_for_text ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_clipboard_wait_for_text" clipboard-wait-for-text) :string
+(cffi:defcfun ("gtk_clipboard_wait_for_text" clipboard-wait-for-text) :string
  #+liber-documentation
  "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
@@ -1009,7 +1012,7 @@ lambda (clipboard selection info)
 ;;; gtk_clipboard_wait_for_image ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_clipboard_wait_for_image" clipboard-wait-for-image)
+(cffi:defcfun ("gtk_clipboard_wait_for_image" clipboard-wait-for-image)
     (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
  "@version{#2023-3-16}
@@ -1032,7 +1035,7 @@ lambda (clipboard selection info)
 ;;; gtk_clipboard_wait_for_rich_text ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_clipboard_wait_for_rich_text" %clipboard-wait-for-rich-text)
+(cffi:defcfun ("gtk_clipboard_wait_for_rich_text" %clipboard-wait-for-rich-text)
     :uint8
   (clipboard (g:object clipboard))
   (buffer (g:object text-buffer))
@@ -1060,8 +1063,8 @@ lambda (clipboard selection info)
   @see-class{gtk:clipboard}
   @see-class{gtk:buffer}
   @see-symbol{gdk:atom-as-string}"
-  (with-foreign-objects ((format :pointer) ; GdkAtom
-                         (length :int))
+  (cffi:with-foreign-objects ((format :pointer) ; GdkAtom
+                              (length :int))
     (let ((data (%clipboard-wait-for-rich-text clipboard
                                                buffer
                                                format
@@ -1077,7 +1080,7 @@ lambda (clipboard selection info)
 ;;; gtk_clipboard_wait_for_uris ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_clipboard_wait_for_uris" clipboard-wait-for-uris) g:strv-t
+(cffi:defcfun ("gtk_clipboard_wait_for_uris" clipboard-wait-for-uris) g:strv-t
  #+liber-documentation
  "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
@@ -1097,8 +1100,8 @@ lambda (clipboard selection info)
 ;;; gtk_clipboard_wait_is_text_available ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_clipboard_wait_is_text_available"
-           clipboard-wait-is-text-available) :boolean
+(cffi:defcfun ("gtk_clipboard_wait_is_text_available"
+               clipboard-wait-is-text-available) :boolean
  #+liber-documentation
  "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
@@ -1124,8 +1127,8 @@ lambda (clipboard selection info)
 ;;; gtk_clipboard_wait_is_image_available ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_clipboard_wait_is_image_available"
-           clipboard-wait-is-image-available) :boolean
+(cffi:defcfun ("gtk_clipboard_wait_is_image_available"
+               clipboard-wait-is-image-available) :boolean
  #+liber-documentation
  "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
@@ -1151,8 +1154,8 @@ lambda (clipboard selection info)
 ;;; gtk_clipboard_wait_is_rich_text_available ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_clipboard_wait_is_rich_text_available"
-           clipboard-wait-is-rich-text-available) :boolean
+(cffi:defcfun ("gtk_clipboard_wait_is_rich_text_available"
+               clipboard-wait-is-rich-text-available) :boolean
  #+liber-documentation
  "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
@@ -1181,8 +1184,8 @@ lambda (clipboard selection info)
 ;;; gtk_clipboard_wait_is_uris_available ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_clipboard_wait_is_uris_available"
-           clipboard-wait-is-uris-available) :boolean
+(cffi:defcfun ("gtk_clipboard_wait_is_uris_available"
+               clipboard-wait-is-uris-available) :boolean
  #+liber-documentation
  "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
@@ -1209,7 +1212,8 @@ lambda (clipboard selection info)
 
 ;; TODO: The implementation is not complete. Return a list of atoms as strings.
 
-(defcfun ("gtk_clipboard_wait_for_targets" clipboard-wait-for-targets) :boolean
+(cffi:defcfun ("gtk_clipboard_wait_for_targets" clipboard-wait-for-targets)
+    :boolean
  #+liber-documentation
  "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
@@ -1235,8 +1239,8 @@ lambda (clipboard selection info)
 ;;; gtk_clipboard_wait_is_target_available ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_clipboard_wait_is_target_available"
-           clipboard-wait-is-target-available) :boolean
+(cffi:defcfun ("gtk_clipboard_wait_is_target_available"
+               clipboard-wait-is-target-available) :boolean
  #+liber-documentation
  "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
@@ -1264,7 +1268,7 @@ lambda (clipboard selection info)
 
 ;; TODO: The implementation is not complete. Return a list of atoms as strings.
 
-(defcfun ("gtk_clipboard_set_can_store" clipboard-set-can-store) :void
+(cffi:defcfun ("gtk_clipboard_set_can_store" clipboard-set-can-store) :void
  #+liber-documentation
  "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
@@ -1291,7 +1295,7 @@ lambda (clipboard selection info)
 ;;; gtk_clipboard_store ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_clipboard_store" clipboard-store) :void
+(cffi:defcfun ("gtk_clipboard_store" clipboard-store) :void
  #+liber-documentation
  "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
@@ -1308,7 +1312,8 @@ lambda (clipboard selection info)
 ;;; gtk_clipboard_get_selection ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_clipboard_get_selection" clipboard-selection) gdk:atom-as-string
+(cffi:defcfun ("gtk_clipboard_get_selection" clipboard-selection)
+    gdk:atom-as-string
  #+liber-documentation
  "@version{#2023-3-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}

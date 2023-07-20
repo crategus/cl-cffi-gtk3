@@ -69,7 +69,7 @@
 ;;; struct GtkColorSelection
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkColorSelectionDialog" color-selection-dialog
+(gobject:define-g-object-class "GtkColorSelectionDialog" color-selection-dialog
   (:superclass dialog
    :export t
    :interfaces ("AtkImplementorIface" "GtkBuildable")

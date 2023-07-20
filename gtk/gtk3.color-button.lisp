@@ -89,7 +89,7 @@
 ;;; struct GtkColorButton
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkColorButton" color-button
+(gobject:define-g-object-class "GtkColorButton" color-button
   (:superclass button
    :export t
    :interfaces ("AtkImplementorIface"

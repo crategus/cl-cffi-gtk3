@@ -62,7 +62,7 @@
 ;;; struct GtkCellRendererProgress
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkCellRendererProgress" cell-renderer-progress
+(gobject:define-g-object-class "GtkCellRendererProgress" cell-renderer-progress
   (:superclass cell-renderer
    :export t
    :interfaces ("GtkOrientable")

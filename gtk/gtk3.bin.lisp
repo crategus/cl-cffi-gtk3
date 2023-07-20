@@ -78,7 +78,7 @@
 ;;; struct GtkBin
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkBin" bin
+(gobject:define-g-object-class "GtkBin" bin
   (:superclass container
    :export t
    :interfaces ("AtkImplementorIface"
@@ -107,7 +107,7 @@
 ;;; gtk_bin_get_child () -> bin-child
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_bin_get_child" bin-child) (g:object widget)
+(cffi:defcfun ("gtk_bin_get_child" bin-child) (g:object widget)
  #+liber-documentation
  "@version{#2023-3-15}
   @argument[bin]{a @class{gtk:bin} widget}

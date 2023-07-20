@@ -60,7 +60,7 @@
 ;;; struct GtkCellRendererSpin
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkCellRendererSpin" cell-renderer-spin
+(gobject:define-g-object-class "GtkCellRendererSpin" cell-renderer-spin
   (:superclass cell-renderer-text
     :export t
     :interfaces nil

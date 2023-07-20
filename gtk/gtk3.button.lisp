@@ -126,7 +126,7 @@
 ;;; struct GtkButton
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkButton" button
+(gobject:define-g-object-class "GtkButton" button
   (:superclass bin
    :export t
    :interfaces ("AtkImplementorIface"
@@ -774,7 +774,7 @@ lambda (button)    :run-first
 
 ;; TODO: Consider to implement this function with make-instance
 
-(defcfun ("gtk_button_new_from_icon_name" button-new-from-icon-name)
+(cffi:defcfun ("gtk_button_new_from_icon_name" button-new-from-icon-name)
     (g:object widget)
  #+liber-documentation
  "@version{#2023-3-16}
@@ -867,7 +867,7 @@ lambda (button)    :run-first
 ;;; gtk_button_clicked ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_button_clicked" button-clicked) :void
+(cffi:defcfun ("gtk_button_clicked" button-clicked) :void
  #+liber-documentation
  "@version{#2023-3-16}
   @argument[button]{a @class{gtk:button} widget you want to send the signal to}
@@ -959,7 +959,7 @@ lambda (button)    :run-first
 ;;; gtk_button_get_event_window () -> button-event-window
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_button_get_event_window" button-event-window)
+(cffi:defcfun ("gtk_button_get_event_window" button-event-window)
     (g:object gdk:window)
  #+liber-documentation
  "@version{#2023-3-16}

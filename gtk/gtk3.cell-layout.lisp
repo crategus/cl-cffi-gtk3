@@ -62,7 +62,7 @@
 ;;; GtkCellLayout
 ;;; ----------------------------------------------------------------------------
 
-(define-g-interface "GtkCellLayout" cell-layout
+(gobject:define-g-interface "GtkCellLayout" cell-layout
   (:export t
    :type-initializer "gtk_cell_layout_get_type")
   nil)
@@ -133,7 +133,7 @@
 ;;; gtk_cell_layout_pack_start ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_cell_layout_pack_start" %cell-layout-pack-start) :void
+(cffi:defcfun ("gtk_cell_layout_pack_start" %cell-layout-pack-start) :void
   (layout (g:object cell-layout))
   (cell (g:object cell-renderer))
   (expand :boolean))
@@ -165,7 +165,7 @@
 ;;; gtk_cell_layout_pack_end ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_cell_layout_pack_end" %cell-layout-pack-end) :void
+(cffi:defcfun ("gtk_cell_layout_pack_end" %cell-layout-pack-end) :void
   (layout (g:object cell-layout))
   (cell (g:object cell-renderer))
   (expand :boolean))
@@ -197,7 +197,7 @@
 ;;; gtk_cell_layout_get_area () -> cell-layout-area
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_cell_layout_get_area" cell-layout-area) (g:object cell-area)
+(cffi:defcfun ("gtk_cell_layout_get_area" cell-layout-area) (g:object cell-area)
  "@version{#2023-3-16}
   @argument[layout]{a @class{gtk:cell-layout} object}
   @return{The @class{gtk:cell-area} object used by @arg{layout}.}
@@ -216,7 +216,7 @@
 ;;; gtk_cell_layout_get_cells () -> cell-layout-cells
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_cell_layout_get_cells" cell-layout-cells)
+(cffi:defcfun ("gtk_cell_layout_get_cells" cell-layout-cells)
     (g:list-t g:object :free-from-foreign t)
  #+liber-documentation
  "@version{#2023-3-16}
@@ -235,7 +235,7 @@
 ;;; gtk_cell_layout_reorder ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_cell_layout_reorder" cell-layout-reorder) :void
+(cffi:defcfun ("gtk_cell_layout_reorder" cell-layout-reorder) :void
  #+liber-documentation
  "@version{#2021-3-16}
   @argument[layout]{a @class{gtk:cell-layout} object}
@@ -258,7 +258,7 @@
 ;;; gtk_cell_layout_clear ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_cell_layout_clear" cell-layout-clear) :void
+(cffi:defcfun ("gtk_cell_layout_clear" cell-layout-clear) :void
  #+liber-documentation
  "@version{#2023-3-16}
   @argument[layout]{a @class{gtk:cell-layout} object}
@@ -299,7 +299,7 @@
 ;;; gtk_cell_layout_add_attribute ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_cell_layout_add_attribute" cell-layout-add-attribute) :void
+(cffi:defcfun ("gtk_cell_layout_add_attribute" cell-layout-add-attribute) :void
  #+liber-documentation
  "@version{#2023-3-16}
   @argument[layout]{a @class{gtk:cell-layout} object}
@@ -329,7 +329,7 @@
 ;;; GtkCellLayoutDataFunc ()
 ;;; ----------------------------------------------------------------------------
 
-(defcallback cell-layout-data-func :void
+(cffi:defcallback cell-layout-data-func :void
   ((layout (g:object cell-layout))
    (cell (g:object cell-renderer))
    (model (g:object tree-model))
@@ -367,8 +367,8 @@ lambda (layout cell model iter)
 ;;; gtk_cell_layout_set_cell_data_func ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_cell_layout_set_cell_data_func" %cell-layout-set-cell-data-func)
-    :void
+(cffi:defcfun ("gtk_cell_layout_set_cell_data_func"
+               %cell-layout-set-cell-data-func) :void
   (layout (g:object cell-layout))
   (cell (g:object cell-renderer))
   (func :pointer)
@@ -413,7 +413,8 @@ lambda (layout cell model iter)
 ;;; gtk_cell_layout_clear_attributes ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_cell_layout_clear_attributes" cell-layout-clear-attributes) :void
+(cffi:defcfun ("gtk_cell_layout_clear_attributes"
+               cell-layout-clear-attributes) :void
  #+liber-documentation
  "@version{#2023-3-16}
   @argument[layout]{a @class{gtk:cell-layout} object}

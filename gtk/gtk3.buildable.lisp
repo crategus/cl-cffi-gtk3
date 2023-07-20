@@ -60,7 +60,7 @@
 ;;; GtkBuildable
 ;;; ----------------------------------------------------------------------------
 
-(define-g-interface "GtkBuildable" buildable
+(gobject:define-g-interface "GtkBuildable" buildable
   (:export t
    :type-initializer "gtk_buildable_get_type")
   nil)
@@ -103,7 +103,7 @@
                         :void)
   name)
 
-(defcfun ("gtk_buildable_get_name" buildable-name) :string
+(cffi:defcfun ("gtk_buildable_get_name" buildable-name) :string
  #+liber-documentation
  "@version{#2023-3-15}
   @syntax[]{(gtk:buildable-name buildable) => name}
@@ -128,7 +128,7 @@
 ;;; gtk_buildable_add_child ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_buildable_add_child" %buildable-add-child) :void
+(cffi:defcfun ("gtk_buildable_add_child" %buildable-add-child) :void
   (buildable (g:object buildable))
   (builder (g:object builder))
   (child g:object)
@@ -326,7 +326,8 @@
 ;;; gtk_buildable_get_internal_child () -> buildable-internal-child
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_buildable_get_internal_child" buildable-internal-child) g:object
+(cffi:defcfun ("gtk_buildable_get_internal_child" buildable-internal-child)
+    g:object
  #+liber-documentation
  "@version{#2023-3-15}
   @argument[buildable]{a @class{gtk:buildable} widget}

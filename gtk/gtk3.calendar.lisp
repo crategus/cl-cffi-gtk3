@@ -105,7 +105,7 @@
 ;;; enum GtkCalendarDisplayOptions
 ;;; ----------------------------------------------------------------------------
 
-(define-g-flags "GtkCalendarDisplayOptions" calendar-display-options
+(gobject:define-g-flags "GtkCalendarDisplayOptions" calendar-display-options
   (:export t
    :type-initializer "gtk_calendar_display_options_get_type")
   (:show-heading 1)
@@ -124,7 +124,7 @@
     @class{gtk:calendar} widget.
   @end{short}
   @begin{pre}
-(define-g-flags \"GtkCalendarDisplayOptions\" calendar-display-options
+(gobject:define-g-flags \"GtkCalendarDisplayOptions\" calendar-display-options
   (:export t
    :type-initializer \"gtk_calendar_display_options_get_type\")
   (:show-heading 1)
@@ -153,7 +153,7 @@
 ;;; struct GtkCalendar
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkCalendar" calendar
+(gobject:define-g-object-class "GtkCalendar" calendar
   (:superclass widget
    :export t
    :interfaces ("AtkImplementorIface"
@@ -658,7 +658,7 @@ lambda (calendar)    :run-first
 ;;; gtk_calendar_mark_day ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_calendar_mark_day" calendar-mark-day) :boolean
+(cffi:defcfun ("gtk_calendar_mark_day" calendar-mark-day) :boolean
  #+liber-documentation
  "@version{#2023-3-16}
   @argument[calendar]{a @class{gtk:calendar} widget}
@@ -679,7 +679,7 @@ lambda (calendar)    :run-first
 ;;; gtk_calendar_unmark_day ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_calendar_unmark_day" calendar-unmark-day) :boolean
+(cffi:defcfun ("gtk_calendar_unmark_day" calendar-unmark-day) :boolean
  #+liber-documentation
  "@version{#2023-3-16}
   @argument[calendar]{a @class{gtk:calendar} widget}
@@ -700,7 +700,7 @@ lambda (calendar)    :run-first
 ;;; gtk_calendar_get_day_is_marked () -> calendar-day-is-marked
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_calendar_get_day_is_marked" calendar-day-is-marked) :boolean
+(cffi:defcfun ("gtk_calendar_get_day_is_marked" calendar-day-is-marked) :boolean
  #+liber-documentation
  "@version{#2023-3-16}
   @argument[calendar]{a @class{gtk:calendar} widget}
@@ -721,7 +721,7 @@ lambda (calendar)    :run-first
 ;;; gtk_calendar_clear_marks ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_calendar_clear_marks" calendar-clear-marks) :void
+(cffi:defcfun ("gtk_calendar_clear_marks" calendar-clear-marks) :void
  #+liber-documentation
  "@version{#2023-3-16}
   @argument[calendar]{a @class{gtk:calendar} widget}
@@ -747,7 +747,7 @@ lambda (calendar)    :run-first
                         :void)
   flags)
 
-(defcfun ("gtk_calendar_get_display_options" calendar-display-options)
+(cffi:defcfun ("gtk_calendar_get_display_options" calendar-display-options)
     calendar-display-options
  #+liber-documentation
  "@version{#2023-3-16}
@@ -797,8 +797,8 @@ lambda (calendar)    :run-first
 ;;; GtkCalendarDetailFunc ()
 ;;; ----------------------------------------------------------------------------
 
-(defcallback calendar-detail-func (:string :free-to-foreign nil
-                                           :free-from-foreign nil)
+(cffi:defcallback calendar-detail-func (:string :free-to-foreign nil
+                                                :free-from-foreign nil)
     ((calendar (g:object calendar))
      (year :uint)
      (month :uint)
@@ -843,7 +843,7 @@ lambda (calendar year month day)
 ;;; gtk_calendar_set_detail_func ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_calendar_set_detail_func" %calendar-set-detail-func) :void
+(cffi:defcfun ("gtk_calendar_set_detail_func" %calendar-set-detail-func) :void
   (calendar g:object)
   (func :pointer)
   (data :pointer)

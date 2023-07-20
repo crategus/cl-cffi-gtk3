@@ -102,7 +102,7 @@
 ;;; struct GtkBox
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkBox" box
+(gobject:define-g-object-class "GtkBox" box
   (:superclass container
    :export t
    :interfaces ("AtkImplementorIface"
@@ -489,7 +489,7 @@
 ;;; gtk_box_pack_start ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_box_pack_start" %box-pack-start) :void
+(cffi:defcfun ("gtk_box_pack_start" %box-pack-start) :void
   (box (g:object box))
   (child (g:object widget))
   (expand :boolean)
@@ -545,7 +545,7 @@
 ;;; gtk_box_pack_end ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_box_pack_end" %box-pack-end) :void
+(cffi:defcfun ("gtk_box_pack_end" %box-pack-end) :void
   (box (g:object box))
   (child (g:object widget))
   (expand :boolean)
@@ -600,7 +600,7 @@
 ;;; gtk_box_reorder_child ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_box_reorder_child" box-reorder-child) :void
+(cffi:defcfun ("gtk_box_reorder_child" box-reorder-child) :void
  #+liber-documentation
  "@version{#2023-3-15}
   @argument[box]{a @class{gtk:box} container widget}
@@ -720,7 +720,7 @@
                         :void)
   widget)
 
-(defcfun ("gtk_box_get_center_widget" box-center-widget) (g:object widget)
+(cffi:defcfun ("gtk_box_get_center_widget" box-center-widget) (g:object widget)
  #+liber-documentation
  "@version{#2023-3-15}
   @syntax[]{(gtk:box-center-widget box) => widget}

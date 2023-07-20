@@ -71,7 +71,7 @@
 ;;; struct GtkComboBoxText
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkComboBoxText" combo-box-text
+(gobject:define-g-object-class "GtkComboBoxText" combo-box-text
   (:superclass combo-box
    :export t
    :interfaces ("AtkImplementorIface"
@@ -96,7 +96,7 @@
 
   You can add items to a @sym{gtk:combo-box-text} widget with the
   @fun{gtk:combo-box-text-append-text}, @fun{gtk:combo-box-text-insert-text} or
-  @fun{gtk:combo-box-text-prepend-text} functions and remove options with the 
+  @fun{gtk:combo-box-text-prepend-text} functions and remove options with the
   @fun{gtk:combo-box-text-remove} function.
 
   If the @sym{gtk:combo-box-text} widget contains an entry via the
@@ -104,7 +104,7 @@
   the @fun{gtk:combo-box-text-active-text} function. The entry itself can be
   accessed by calling the @fun{gtk:bin-child} function on the combo box.
 
-  You should not call the @fun{gtk:combo-box-model} function or attempt to pack 
+  You should not call the @fun{gtk:combo-box-model} function or attempt to pack
   more cells into this combo box via its @class{gtk:cell-layout} interface.
   @begin[GtkComboBoxText as GtkBuildable]{dictionary}
     The @sym{gtk:combo-box-text} implementation of the @class{gtk:buildable}
@@ -188,7 +188,7 @@ combobox
 ;;; gtk_combo_box_text_append ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_combo_box_text_append" %combo-box-text-append) :void
+(cffi:defcfun ("gtk_combo_box_text_append" %combo-box-text-append) :void
   (combo (g:object combo-box-text))
   (id :string)
   (text :string))
@@ -219,7 +219,7 @@ combobox
 ;;; gtk_combo_box_text_prepend ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_combo_box_text_prepend" %combo-box-text-prepend) :void
+(cffi:defcfun ("gtk_combo_box_text_prepend" %combo-box-text-prepend) :void
   (combo (g:object combo-box-text))
   (id :string)
   (text :string))
@@ -249,7 +249,7 @@ combobox
 ;;; gtk_combo_box_text_insert ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_combo_box_text_insert" %combo-box-text-insert) :void
+(cffi:defcfun ("gtk_combo_box_text_insert" %combo-box-text-insert) :void
   (combo (g:object combo-box-text))
   (position :int)
   (id :string)
@@ -283,7 +283,8 @@ combobox
 ;;; gtk_combo_box_text_append_text ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_combo_box_text_append_text" combo-box-text-append-text) :void
+(cffi:defcfun ("gtk_combo_box_text_append_text" combo-box-text-append-text)
+    :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[combo]{a @class{gtk:combo-box-text} widget}
@@ -305,7 +306,8 @@ combobox
 ;;; gtk_combo_box_text_prepend_text ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_combo_box_text_prepend_text" combo-box-text-prepend-text) :void
+(cffi:defcfun ("gtk_combo_box_text_prepend_text" combo-box-text-prepend-text)
+    :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[combo]{a @class{gtk:combo-box} widget}
@@ -327,7 +329,8 @@ combobox
 ;;; gtk_combo_box_text_insert_text ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_combo_box_text_insert_text" combo-box-text-insert-text) :void
+(cffi:defcfun ("gtk_combo_box_text_insert_text" combo-box-text-insert-text)
+    :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[combo]{a @class{gtk:combo-box-text} widget}
@@ -353,7 +356,7 @@ combobox
 ;;; gtk_combo_box_text_remove ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_combo_box_text_remove" combo-box-text-remove) :void
+(cffi:defcfun ("gtk_combo_box_text_remove" combo-box-text-remove) :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[combo]{a @class{gtk:combo-box} widget}
@@ -372,7 +375,7 @@ combobox
 ;;; gtk_combo_box_text_remove_all ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_combo_box_text_remove_all" combo-box-text-remove-all) :void
+(cffi:defcfun ("gtk_combo_box_text_remove_all" combo-box-text-remove-all) :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[combo]{a @class{gtk:combo-box-text} widget}
@@ -389,7 +392,7 @@ combobox
 ;;; gtk_combo_box_text_get_active_text () -> combo-box-text-active-text
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_combo_box_text_get_active_text" combo-box-text-active-text) 
+(cffi:defcfun ("gtk_combo_box_text_get_active_text" combo-box-text-active-text)
     :string
  #+liber-documentation
  "@version{#2023-3-17}

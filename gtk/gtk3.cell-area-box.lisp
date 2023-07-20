@@ -73,7 +73,7 @@
 ;;; struct GtkCellAreaBox
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkCellAreaBox" cell-area-box
+(gobject:define-g-object-class "GtkCellAreaBox" cell-area-box
   (:superclass cell-area
    :export t
    :interfaces ("GtkCellLayout"
@@ -296,7 +296,7 @@
 ;;; gtk_cell_area_box_pack_start ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_cell_area_box_pack_start" %cell-area-box-pack-start) :void
+(cffi:defcfun ("gtk_cell_area_box_pack_start" %cell-area-box-pack-start) :void
   (box (g:object cell-area-box))
   (renderer (g:object cell-renderer))
   (expand :boolean)
@@ -332,7 +332,7 @@
 ;;; gtk_cell_area_box_pack_end ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_cell_area_box_pack_end" %cell-area-box-pack-end) :void
+(cffi:defcfun ("gtk_cell_area_box_pack_end" %cell-area-box-pack-end) :void
   (box (g:object cell-area-box))
   (renderer (g:object cell-renderer))
   (expand :boolean)

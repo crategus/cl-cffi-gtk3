@@ -579,7 +579,7 @@ lambda (assistant page)    :run-last
                         :void)
   index)
 
-(defcfun ("gtk_assistant_get_current_page" assistant-current-page) :int
+(cffi:defcfun ("gtk_assistant_get_current_page" assistant-current-page) :int
  #+liber-documentation
  "@version{#2023-3-15}
   @syntax[]{(gtk:assistant-current-page assistant) => index}
@@ -607,7 +607,7 @@ lambda (assistant page)    :run-last
 ;;; gtk_assistant_get_n_pages () -> assistant-n-pages
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_assistant_get_n_pages" assistant-n-pages) :int
+(cffi:defcfun ("gtk_assistant_get_n_pages" assistant-n-pages) :int
  #+liber-documentation
  "@version{#2023-3-15}
   @argument[assistant]{a @class{gtk:assistant} widget}
@@ -624,7 +624,8 @@ lambda (assistant page)    :run-last
 ;;; gtk_assistant_get_nth_page () -> assistant-nth-page
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_assistant_get_nth_page" assistant-nth-page) (g:object widget)
+(cffi:defcfun ("gtk_assistant_get_nth_page" assistant-nth-page)
+    (g:object widget)
  #+liber-documentation
  "@version{#2023-3-15}
   @argument[assistant]{a @class{gtk:assistant} widget}
@@ -647,7 +648,7 @@ lambda (assistant page)    :run-last
 ;;; gtk_assistant_prepend_page ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_assistant_prepend_page" assistant-prepend-page) :int
+(cffi:defcfun ("gtk_assistant_prepend_page" assistant-prepend-page) :int
  #+liber-documentation
  "@version{#2023-3-15}
   @argument[assistant]{a @class{gtk:assistant} widget}
@@ -670,7 +671,7 @@ lambda (assistant page)    :run-last
 ;;; gtk_assistant_append_page ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_assistant_append_page" assistant-append-page) :int
+(cffi:defcfun ("gtk_assistant_append_page" assistant-append-page) :int
  #+liber-documentation
  "@version{#2023-3-15}
   @argument[assistant]{a @class{gtk:assistant} widget}
@@ -693,7 +694,7 @@ lambda (assistant page)    :run-last
 ;;; gtk_assistant_insert_page ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_assistant_insert_page" assistant-insert-page) :int
+(cffi:defcfun ("gtk_assistant_insert_page" assistant-insert-page) :int
  #+liber-documentation
  "@version{#2023-3-15}
   @argument[assistant]{a @class{gtk:assistant} widget}
@@ -719,7 +720,7 @@ lambda (assistant page)    :run-last
 ;;; gtk_assistant_remove_page ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_assistant_remove_page" assistant-remove-page) :void
+(cffi:defcfun ("gtk_assistant_remove_page" assistant-remove-page) :void
  #+liber-documentation
  "@version{#2023-3-15}
   @argument[assistant]{a @class{gtk:assistant} widget}
@@ -1044,7 +1045,7 @@ lambda (assistant page)    :run-last
 ;;; gtk_assistant_add_action_widget ()
 ;;; ----------------------------------------------------------------------------
 
-(cffi:defcfun ("gtk_assistant_add_action_widget" assistant-add-action-widget) 
+(cffi:defcfun ("gtk_assistant_add_action_widget" assistant-add-action-widget)
     :void
  #+liber-documentation
  "@version{#2023-3-15}
@@ -1065,7 +1066,7 @@ lambda (assistant page)    :run-last
 ;;; gtk_assistant_remove_action_widget ()
 ;;; ----------------------------------------------------------------------------
 
-(cffi:defcfun ("gtk_assistant_remove_action_widget" 
+(cffi:defcfun ("gtk_assistant_remove_action_widget"
                assistant-remove-action-widget) :void
  #+liber-documentation
  "@version{#2023-3-15}
@@ -1086,7 +1087,7 @@ lambda (assistant page)    :run-last
 ;;; gtk_assistant_update_buttons_state ()
 ;;; ----------------------------------------------------------------------------
 
-(cffi:defcfun ("gtk_assistant_update_buttons_state" 
+(cffi:defcfun ("gtk_assistant_update_buttons_state"
                assistant-update-buttons-state) :void
  #+liber-documentation
  "@version{#2023-3-15}

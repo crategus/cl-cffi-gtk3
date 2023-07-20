@@ -157,7 +157,7 @@
 ;;; enum GtkResizeMode
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkResizeMode" resize-mode
+(gobject:define-g-enum "GtkResizeMode" resize-mode
   (:export t
    :type-initializer "gtk_resize_mode_get_type")
   (:parent 0)
@@ -179,7 +179,7 @@
     might introduce obscure bugs if used.
   @end{dictionary}
   @begin{pre}
-(define-g-enum \"GtkResizeMode\" resize-mode
+(gobject:define-g-enum \"GtkResizeMode\" resize-mode
   (:export t
    :type-initializer \"gtk_resize_mode_get_type\")
   (:parent 0)
@@ -198,7 +198,7 @@
 ;;; struct GtkContainer
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkContainer" container
+(gobject:define-g-object-class "GtkContainer" container
   (:superclass widget
    :export t
    :interfaces ("AtkImplementorIface"
@@ -585,7 +585,7 @@ lambda (widget)
   @see-class{gtk:container}
   @see-symbol{gtk:gtk-callback}
   @see-function{gtk:container-forall}"
-  (with-stable-pointer (ptr func)
+  (glib:with-stable-pointer (ptr func)
     (%container-foreach container
                         (cffi:callback gtk-callback)
                         ptr)))
@@ -905,8 +905,8 @@ lambda (widget)
                    (g:param-spec-value-type
                      (container-class-find-child-property
                        (g:type-from-instance container) property)))))
-    (with-foreign-object (gvalue '(:struct g:value))
-      (set-g-value gvalue value gtype :zero-g-value t)
+    (cffi:with-foreign-object (gvalue '(:struct g:value))
+      (gobject:set-g-value gvalue value gtype :zero-gvalue t)
       (%container-child-set-property container child property gvalue)
       (g:value-unset gvalue)
       (values value))))
@@ -945,11 +945,11 @@ lambda (widget)
                      (container-class-find-child-property
                        (g:type-from-instance container)
                        property)))))
-    (with-foreign-object (gvalue '(:struct g:value))
+    (cffi:with-foreign-object (gvalue '(:struct g:value))
       (g:value-init gvalue gtype)
       (%container-child-property container child property gvalue)
       (prog1
-        (parse-g-value gvalue)
+        (gobject:parse-g-value gvalue)
         (g:value-unset gvalue)))))
 
 (export 'container-child-property)
@@ -1082,7 +1082,7 @@ lambda (widget)
   @see-class{gtk:container}
   @see-symbol{gtk:gtk-callback}
   @see-function{gtk:container-foreach}"
-  (with-stable-pointer (ptr func)
+  (glib:with-stable-pointer (ptr func)
     (%container-forall container
                        (cffi:callback gtk-callback)
                        ptr)))
@@ -1174,7 +1174,7 @@ lambda (widget)
   @see-class{gtk:container}
   @see-class{gtk:widget}
   @see-function{gtk:container-unset-focus-chain}"
-  (with-foreign-object (focusable '(g:list-t (g:object widget)))
+  (cffi:with-foreign-object (focusable '(g:list-t (g:object widget)))
     (when (%container-get-focus-chain container focusable)
       (cffi:mem-ref focusable '(g:list-t (g:object widget))))))
 
@@ -1330,7 +1330,7 @@ lambda (widget)
   @see-class{g:param-spec}"
   (let ((class (g:type-class-ref gtype)))
     (unwind-protect
-      (with-foreign-object (n-props :uint)
+      (cffi:with-foreign-object (n-props :uint)
         (let ((pspecs (%container-class-list-child-properties class n-props)))
           (unwind-protect
             (iter (for count from 0 below (cffi:mem-ref n-props :uint))

@@ -30,17 +30,17 @@
 
 #+nil
 (defun container-call-get-property (container child property gtype)
-  (with-foreign-object (gvalue '(:struct g:value))
+  (cffi:with-foreign-object (gvalue '(:struct g:value))
     (g:value-init gvalue (g:gtype gtype))
     (%container-child-property container child property gvalue)
     (prog1
-      (parse-g-value gvalue)
+      (gobject:parse-g-value gvalue)
       (g:value-unset gvalue))))
 
 #+nil
 (defun container-call-set-property (container child property value gtype)
-  (with-foreign-object (gvalue '(:struct g:value))
-    (set-g-value gvalue value (g:gtype gtype) :zero-g-value t)
+  (cffi:with-foreign-object (gvalue '(:struct g:value))
+    (gobject:set-g-value gvalue value (g:gtype gtype) :zero-gvalue t)
     (%container-child-set-property container child property gvalue)
     (g:value-unset gvalue)
     (values)))

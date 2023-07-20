@@ -71,7 +71,7 @@
 ;;; struct GtkCellRendererToggle
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkCellRendererToggle" cell-renderer-toggle
+(gobject:define-g-object-class "GtkCellRendererToggle" cell-renderer-toggle
   (:superclass cell-renderer
     :export t
     :interfaces nil

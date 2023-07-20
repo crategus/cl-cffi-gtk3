@@ -64,7 +64,7 @@
 ;;; struct GtkColorChooserWidget
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkColorChooserWidget" color-chooser-widget
+(gobject:define-g-object-class "GtkColorChooserWidget" color-chooser-widget
   (:superclass box
    :export t
    :interfaces ("AtkImplementorIface"

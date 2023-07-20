@@ -137,7 +137,7 @@
 ;;; struct GtkComboBox
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkComboBox" combo-box
+(gobject:define-g-object-class "GtkComboBox" combo-box
   (:superclass bin
    :export t
    :interfaces ("AtkImplementorIface"
@@ -201,7 +201,7 @@
 (setf (documentation 'combo-box 'type)
  "@version{#2023-3-17}
   @begin{short}
-    The @sym{gtk:combo-box} widget allows the user to choose from a list of 
+    The @sym{gtk:combo-box} widget allows the user to choose from a list of
     valid choices.
   @end{short}
   The @sym{gtk:combo-box} widget displays the selected choice. When activated,
@@ -422,8 +422,8 @@ lambda (combo)    :action
     Accessor of the @slot[gtk:combo-box]{active} slot of the
     @class{gtk:combo-box} class.
   @end{short}
-  The @sym{gtk:combo-box-active} function returns the index of the currently 
-  active item, or -1 if there is no active item. The 
+  The @sym{gtk:combo-box-active} function returns the index of the currently
+  active item, or -1 if there is no active item. The
   @sym{(setf gtk:combo-box-active)} function sets the active item.
 
   If the model is a non-flat tree model, and the active item is not an
@@ -454,11 +454,11 @@ lambda (combo)    :action
     Accessor of the @slot[gtk:combo-box]{active-id} slot of the
     @class{gtk:combo-box} class.
   @end{short}
-  The @sym{gtk:combo-box-active-id} function returns the ID of the active row 
-  of the combo box. This value is taken from the active row and the column 
+  The @sym{gtk:combo-box-active-id} function returns the ID of the active row
+  of the combo box. This value is taken from the active row and the column
   specified by the @slot[gtk:combo-box]{id-column} property of the
-  combo box. The @sym{(setf gtk:combo-box-active-id)} function changes the 
-  active row of the combo box to the one that has an ID equal to 
+  combo box. The @sym{(setf gtk:combo-box-active-id)} function changes the
+  active row of the combo box to the one that has an ID equal to
   @arg{active-id}, or unsets the active row if @arg{active-id} is @code{nil}.
   Rows having a @code{nil} ID string cannot be made active by this function.
 
@@ -491,8 +491,8 @@ lambda (combo)    :action
     Accessor of the @slot[gtk:combo-box]{add-tearoffs} slot of the
     @class{gtk:combo-box} class.
   @end{short}
-  The @sym{gtk:combo-box-add-tearoffs} function gets whether the popup menu 
-  should have a tearoff menu item. The @sym{(setf gtk:combo-box-add-tearoffs)} 
+  The @sym{gtk:combo-box-add-tearoffs} function gets whether the popup menu
+  should have a tearoff menu item. The @sym{(setf gtk:combo-box-add-tearoffs)}
   function sets the property.
   @begin[Warning]{dictionary}
     The @sym{gtk:combo-box-add-tearoffs} function has been deprecated since
@@ -524,9 +524,9 @@ lambda (combo)    :action
     Accessor of the @slot[gtk:combo-box]{button-sensitivity} slot of the
     @class{gtk:combo-box} class.
   @end{short}
-  The @sym{gtk:combo-box-button-sensitivity} function returns whether the combo 
-  box sets the dropdown button sensitive or not when there are no items in the 
-  model. The @sym{(setf gtk:combo-box-button-sensitivity)} function sets the 
+  The @sym{gtk:combo-box-button-sensitivity} function returns whether the combo
+  box sets the dropdown button sensitive or not when there are no items in the
+  model. The @sym{(setf gtk:combo-box-button-sensitivity)} function sets the
   sensitivity.
 
   @code{:on} if the dropdown button is sensitive when the model is empty,
@@ -560,7 +560,7 @@ lambda (combo)    :action
     @class{gtk:combo-box} class.
   @end{short}
   The cell area used to layout cell renderers for this combo box. If no area is
-  specified when creating the combo box with the 
+  specified when creating the combo box with the
   @fun{gtk:combo-box-new-with-area} function a horizontally oriented
   @class{gtk:cell-area-box} object will be used.
   @see-class{gtk:combo-box}
@@ -597,10 +597,10 @@ lambda (combo)    :action
     Accessor of the @slot[gtk:combo-box]{column-span-column} slot of the
     @class{gtk:combo-box} class.
   @end{short}
-  The @sym{gtk:combo-box-column-span-column} function returns the column with 
-  column span information. The @sym{(setf gtk:combo-box-column-span-column)} 
-  function sets the column with column span information for the combo box to be 
-  @arg{column-span}. The column span column contains integers which indicate 
+  The @sym{gtk:combo-box-column-span-column} function returns the column with
+  column span information. The @sym{(setf gtk:combo-box-column-span-column)}
+  function sets the column with column span information for the combo box to be
+  @arg{column-span}. The column span column contains integers which indicate
   how many columns an item should span.
   @see-class{gtk:combo-box}")
 
@@ -630,9 +630,9 @@ lambda (combo)    :action
     Accessor of the @slot[gtk:combo-box]{entry-text-column} slot of the
     @class{gtk:combo-box} class.
   @end{short}
-  The @sym{gtk:combo-box-entry-text-column} function returns the column which 
-  the combo box is using to get the strings from to display in the internal 
-  entry. The @sym{(setf gtk:combo-box-entry-text-column)} function sets the 
+  The @sym{gtk:combo-box-entry-text-column} function returns the column which
+  the combo box is using to get the strings from to display in the internal
+  entry. The @sym{(setf gtk:combo-box-entry-text-column)} function sets the
   model column which the combo box should use to get strings.
 
   The column @arg{text-column} in the model of the combo box must be of type
@@ -663,7 +663,7 @@ lambda (combo)    :action
     Accessor of the @slot[gtk:combo-box]{focus-on-click} slot of the
     @class{gtk:combo-box} class.
   @end{short}
-  The @sym{gtk:combo-box-focus-on-click} function returns whether the combo box 
+  The @sym{gtk:combo-box-focus-on-click} function returns whether the combo box
   grabs focus when it is clicked with the mouse. The slot access
   @sym{(setf gtk:combo-box-focus-on-click)} function sets whether the combo box
   will grab focus.
@@ -700,7 +700,7 @@ lambda (combo)    :action
     Accessor of the @slot[gtk:combo-box]{has-entry} slot of the
     @class{gtk:combo-box} class.
   @end{short}
-  The @sym{gtk:combo-box-has-entry} function returns whether the combo box has 
+  The @sym{gtk:combo-box-has-entry} function returns whether the combo box has
   an entry.
   @see-class{gtk:combo-box}")
 
@@ -752,7 +752,7 @@ lambda (combo)    :action
     Accessor of the @slot[gtk:combo-box]{id-column} slot of the
     @class{gtk:combo-box} class.
   @end{short}
-  The @sym{gtk:combo-box-id-column} function returns the model column which the 
+  The @sym{gtk:combo-box-id-column} function returns the model column which the
   combo box is using to get string IDs for values from. The
   @sym{(setf gtk:combo-box-id-column)} function sets the model column.
 
@@ -780,9 +780,9 @@ lambda (combo)    :action
     Accessor of the @slot[gtk:combo-box]{model} slot of the
     @class{gtk:combo-box} class.
   @end{short}
-  The @sym{gtk:combo-box-model} function returns the model which is acting as 
-  data source for the combo box. The @sym{(setf gtk:combo-box-model)} function 
-  sets the model. Will unset a previously set model, if applicable. If 
+  The @sym{gtk:combo-box-model} function returns the model which is acting as
+  data source for the combo box. The @sym{(setf gtk:combo-box-model)} function
+  sets the model. Will unset a previously set model, if applicable. If
   @arg{model} is @code{nil}, then it will unset the model.
 
   Note that this function does not clear the cell renderers, you have to call
@@ -816,7 +816,7 @@ lambda (combo)    :action
     Accessor of the @slot[gtk:combo-box]{popup-fixed-width} slot of the
     @class{gtk:combo-box} class.
   @end{short}
-  The @sym{gtk:combo-box-popup-fixed-width} function gets whether the popup 
+  The @sym{gtk:combo-box-popup-fixed-width} function gets whether the popup
   uses a fixed width matching the allocated width of the combo box. The
   @sym{(setf gtk:combo-box-popup-fixed-width)} specifies
   whether the popup's width should be a fixed.
@@ -878,10 +878,10 @@ lambda (combo)    :action
     Accessor of the @slot[gtk:combo-box]{row-span-column} slot of the
     @class{gtk:combo-box} class.
   @end{short}
-  The @sym{gtk:combo-box-row-span-column} function returns the column with row 
-  span information for the combo box. The 
-  @sym{(setf gtk:combo-box-row-span-column)} function sets the column with row 
-  span information. The row span column contains integers which indicate how 
+  The @sym{gtk:combo-box-row-span-column} function returns the column with row
+  span information for the combo box. The
+  @sym{(setf gtk:combo-box-row-span-column)} function sets the column with row
+  span information. The row span column contains integers which indicate how
   many rows an item should span.
   @see-class{gtk:combo-box}")
 
@@ -941,11 +941,11 @@ lambda (combo)    :action
     Accessor of the @slot[gtk:combo-box]{wrap-width} slot of the
     @class{gtk:combo-box} class.
   @end{short}
-  The @sym{gtk:combo-box-row-wrap-width} function returns the wrap width which 
+  The @sym{gtk:combo-box-row-wrap-width} function returns the wrap width which
   is used to determine the number of columns for the popup menu. The
-  @sym{(setf gtk:combo-box-row-wrap-width)} function sets the wrap width. If 
-  the wrap width is larger than 1, the combo box is in table mode. The wrap 
-  width is basically the preferred number of columns when you want the popup to 
+  @sym{(setf gtk:combo-box-row-wrap-width)} function sets the wrap width. If
+  the wrap width is larger than 1, the combo box is in table mode. The wrap
+  width is basically the preferred number of columns when you want the popup to
   be layed out in a table.
   @see-class{gtk:combo-box}")
 
@@ -1049,7 +1049,7 @@ lambda (combo)    :action
 (defun combo-box-new-with-area (area)
  #+liber-documentation
  "@version{#2023-3-17}
-  @argument[area]{a @class{gtk:cell-area} object to use to layout cell 
+  @argument[area]{a @class{gtk:cell-area} object to use to layout cell
     renderers}
   @return{A new @class{gtk:combo-box} widget.}
   @begin{short}
@@ -1100,7 +1100,7 @@ lambda (combo)    :action
                         :void)
   iter)
 
-(defcfun ("gtk_combo_box_get_active_iter" %combo-box-active-iter) :boolean
+(cffi:defcfun ("gtk_combo_box_get_active_iter" %combo-box-active-iter) :boolean
   (combo (g:object combo-box))
   (iter (g:boxed tree-iter)))
 
@@ -1115,9 +1115,9 @@ lambda (combo)    :action
     Accessor of the active iterator of the combo box.
   @end{short}
   The @sym{gtk:combo-box-active-iter} function returns @arg{iter} to point to
-  the current active item, if it exists. The 
-  @sym{(setf gtk:combo-box-active-iter)} function sets the current active item 
-  to be the one referenced by @arg{iter}, or unsets the active item if 
+  the current active item, if it exists. The
+  @sym{(setf gtk:combo-box-active-iter)} function sets the current active item
+  to be the one referenced by @arg{iter}, or unsets the active item if
   @arg{iter} is @code{nil}.
   @see-class{gtk:combo-box}
   @see-class{gtk:tree-iter}"
@@ -1131,7 +1131,7 @@ lambda (combo)    :action
 ;;; gtk_combo_box_popup_for_device ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_combo_box_popup_for_device" combo-box-popup-for-device) :void
+(cffi:defcfun ("gtk_combo_box_popup_for_device" combo-box-popup-for-device) :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[combo]{a @class{gtk:combo-box} widget}
@@ -1153,7 +1153,7 @@ lambda (combo)    :action
 ;;; gtk_combo_box_popup ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_combo_box_popup" combo-box-popup) :void
+(cffi:defcfun ("gtk_combo_box_popup" combo-box-popup) :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[combo]{a @class{gtk:combo-box} widget}
@@ -1171,7 +1171,7 @@ lambda (combo)    :action
 ;;; gtk_combo_box_popdown ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_combo_box_popdown" combo-box-popdown) :void
+(cffi:defcfun ("gtk_combo_box_popdown" combo-box-popdown) :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[combo]{a @class{gtk:combo-box} widget}
@@ -1189,7 +1189,7 @@ lambda (combo)    :action
 ;;; gtk_combo_box_get_popup_accessible () -> combo-box-popup-accessible
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_combo_box_get_popup_accessible" combo-box-popup-accessible)
+(cffi:defcfun ("gtk_combo_box_get_popup_accessible" combo-box-popup-accessible)
     g:object
  #+liber-documentation
  "@version{#2023-3-17}
@@ -1211,8 +1211,8 @@ lambda (combo)    :action
 
 ;; TODO: Is this function useful in the Lisp implementation?
 
-(defcfun ("gtk_combo_box_get_row_separator_func"
-           combo-box-get-row-separator-func) :pointer
+(cffi:defcfun ("gtk_combo_box_get_row_separator_func"
+               combo-box-get-row-separator-func) :pointer
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[combo-box]{a @class{gtk:combo-box} widget}
@@ -1225,8 +1225,8 @@ lambda (combo)    :action
 ;;; gtk_combo_box_set_row_separator_func ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_combo_box_set_row_separator_func"
-          %combo-box-set-row-separator-func) :void
+(cffi:defcfun ("gtk_combo_box_set_row_separator_func"
+               %combo-box-set-row-separator-func) :void
   (combo (g:object combo-box))
   (func :pointer)
   (data :pointer)
@@ -1260,7 +1260,7 @@ lambda (combo)    :action
 ;; Implemented as the combo-box-tearoff-title slot access function.
 ;; This function is deprecated and not exported.
 
-(defcfun ("gtk_combo_box_set_title" combo-box-set-title) :void
+(cffi:defcfun ("gtk_combo_box_set_title" combo-box-set-title) :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[combo-box]{a @class{gtk:combo-box} widget}
@@ -1284,7 +1284,7 @@ lambda (combo)    :action
 ;; Implemented as the combo-box-tearoff-title slot access function.
 ;; This function is deprecated and not exported.
 
-(defcfun ("gtk_combo_box_get_title" combo-box-get-title) :string
+(cffi:defcfun ("gtk_combo_box_get_title" combo-box-get-title) :string
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[combo-box]{a @class{gtk:combo-box} widget}

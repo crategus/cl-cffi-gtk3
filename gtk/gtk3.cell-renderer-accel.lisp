@@ -67,7 +67,7 @@
 ;;; enum GtkCellRendererAccelMode
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkCellRendererAccelMode" cell-renderer-accel-mode
+(gobject:define-g-enum "GtkCellRendererAccelMode" cell-renderer-accel-mode
   (:export t
    :type-initializer "gtk_cell_renderer_accel_mode_get_type")
   (:gtk 0)
@@ -85,7 +85,7 @@
   GTK are allowed, and the accelerators are rendered in the same way as they
   are in menus.
   @begin{pre}
-(define-g-enum \"GtkCellRendererAccelMode\" cell-renderer-accel-mode
+(gobject:define-g-enum \"GtkCellRendererAccelMode\" cell-renderer-accel-mode
   (:export t
    :type-initializer \"gtk_cell_renderer_accel_mode_get_type\")
   (:gtk 0)
@@ -101,7 +101,7 @@
 ;;; struct GtkCellRendererAccel
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkCellRendererAccel" cell-renderer-accel
+(gobject:define-g-object-class "GtkCellRendererAccel" cell-renderer-accel
   (:superclass cell-renderer-text
    :export t
    :interfaces nil

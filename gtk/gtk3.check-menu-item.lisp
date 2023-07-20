@@ -85,7 +85,7 @@
 ;;; struct GtkCheckMenuItem
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkCheckMenuItem" check-menu-item
+(gobject:define-g-object-class "GtkCheckMenuItem" check-menu-item
   (:superclass menu-item
     :export t
     :interfaces ("AtkImplementorIface"
@@ -320,7 +320,7 @@ lambda (item)    :run-first
 ;;; gtk_check_menu_item_toggled ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_check_menu_item_toggled" check-menu-item-toggled) :void
+(cffi:defcfun ("gtk_check_menu_item_toggled" check-menu-item-toggled) :void
  #+liber-documentation
  "@version{#2023-2-27}
   @argument[item]{a @class{gtk:check-menu-item} widget}

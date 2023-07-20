@@ -70,7 +70,7 @@
 ;;; GtkCheckButton
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkCheckButton" check-button
+(gobject:define-g-object-class "GtkCheckButton" check-button
   (:superclass toggle-button
    :export t
    :interfaces ("AtkImplementorIface"
@@ -191,8 +191,8 @@ button.check
 
 ;; TODO: Rewrite the implementation in terms of the function make-instance
 
-(defcfun ("gtk_check_button_new_with_mnemonic" check-button-new-with-mnemonic)
-    (g:object check-button)
+(cffi:defcfun ("gtk_check_button_new_with_mnemonic"
+               check-button-new-with-mnemonic) (g:object check-button)
 #+liber-documentation
  "@version{#2023-3-16}
   @argument[label]{a string with the text of the button, with an underscore in

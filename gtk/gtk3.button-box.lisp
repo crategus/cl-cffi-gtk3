@@ -85,7 +85,7 @@
 ;;; enum GtkButtonBoxStyle
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkButtonBoxStyle" button-box-style
+(gobject:define-g-enum "GtkButtonBoxStyle" button-box-style
   (:export t
    :type-initializer "gtk_button_box_style_get_type")
   (:spread 1)
@@ -105,7 +105,7 @@
     layout the buttons it contains.
   @end{short}
   @begin{pre}
-(define-g-enum \"GtkButtonBoxStyle\" button-box-style
+(gobject:define-g-enum \"GtkButtonBoxStyle\" button-box-style
   (:export t
    :type-initializer \"gtk_button_box_style_get_type\")
   (:spread 1)
@@ -136,7 +136,7 @@
 ;;; struct GtkButtonBox
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkButtonBox" button-box
+(gobject:define-g-object-class "GtkButtonBox" button-box
   (:superclass box
    :export t
    :interfaces ("AtkImplementorIface"

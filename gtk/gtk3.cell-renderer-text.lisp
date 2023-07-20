@@ -111,7 +111,7 @@
 ;;; struct GtkCellRendererText
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkCellRendererText" cell-renderer-text
+(gobject:define-g-object-class "GtkCellRendererText" cell-renderer-text
   (:superclass cell-renderer
    :export t
    :interfaces nil
@@ -1654,8 +1654,8 @@ lambda (renderer path text)    :run-last
 ;;; gtk_cell_renderer_text_set_fixed_height_from_font ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_cell_renderer_text_set_fixed_height_from_font"
-          cell-renderer-text-set-fixed-height-from-font) :void
+(cffi:defcfun ("gtk_cell_renderer_text_set_fixed_height_from_font"
+               cell-renderer-text-set-fixed-height-from-font) :void
  #+liber-documentation
  "@version{#2023-2-21}
   @argument[renderer]{a @class{gtk:cell-renderer-text} object}
