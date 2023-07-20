@@ -4,27 +4,27 @@
 ;;; The documentation of this file is taken from the GDK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2009 - 2011 Kalyanov Dmitry
 ;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 
 (defpackage :gdk
@@ -49,131 +49,138 @@
                             #:define-g-flags
                             #:define-g-object-class
                             #:define-g-interface)
- ;; Import the symbols from GDK-PIXUF
- ;; TODO: We have a problem with the documentation. The symbols are documented
- ;; twice as gdk:pixbuf and as gdk-pixbuf:pixbuf. Resolve this issue.
- (:import-from #:gdk-pixbuf ;; Symbols from gdk-pixbuf.structure.lisp
-                            #:colorspace
-                            #:pixbuf
-                            #:pixbuf-bits-per-sample
-                            #:pixbuf-colorspace
-                            #:pixbuf-has-alpha
-                            #:pixbuf-height
-                            #:pixbuf-n-channels
-                            #:pixbuf-pixel-bytes
-                            #:pixbuf-pixels
-                            #:pixbuf-rowstride
-                            #:pixbuf-width
-                            #:pixbuf-pixels-with-length
-                            #:pixbuf-byte-length
-                            #:pixbuf-option
-                            #:pixbuf-remove-option
-                            #:pixbuf-copy-options
-                            #:pixbuf-read-pixels
-                            ;; Symbols from gdk-pixbuf.load.lisp
-                            #:pixbuf-file-info
-                            #:pixbuf-new-from-file
-                            #:pixbuf-new-from-file-at-size
-                            #:pixbuf-new-from-file-at-scale
-                            #:pixbuf-new-from-resource
-                            #:pixbuf-new-from-resource-at-scale
-                            ;; Symbols from gdk-pixbuf.loader.lisp
-                            #:pixbuf-loader
-                            #:pixbuf-loader-new
-                            #:pixbuf-loader-write
-                            #:pixbuf-loader-set-size
-                            #:pixbuf-loader-pixbuf
-                            #:pixbuf-loader-animation
-                            #:pixbuf-loader-close
-                            ;; Symbols from gdk-pixbuf.save.lisp
-                            #:pixbuf-save
-                            ;; Symbols from gdk-pixbuf.memory.lisp
-                            #:pixbuf-new
-                            #:pixbuf-new-subpixbuf
-                            #:pixbuf-copy
-                            ;; Symbols from gdk-pixbuf.scaling.lisp
-                            #:pixbuf-interp-type
-                            #:pixbuf-rotation
-                            #:pixbuf-scale-simple
-                            #:pixbuf-scale
-                            #:pixbuf-composite-color-simple
-                            #:pixbuf-composite
-                            #:pixbuf-composite-color
-                            #:pixbuf-rotate-simple
-                            #:pixbuf-flip
-                            ;; Symbols from gdk-pixbuf.utilities.lisp
-                            #:pixbuf-add-alpha
-                            #:pixbuf-copy-area
-                            #:pixbuf-fill
-                            ;; Symbols from gdk-pixbuf.animation.lisp
-                            #:pixbuf-animation
-                            #:pixbuf-animation-loop
-                            #:pixbuf-animation-new-from-file
-                            #:pixbuf-animation-new-from-resource
-                            #:pixbuf-animation-static-image)
-
- ;; Export the symbols for GDK-PIXBUF
- (:export                   ;; Symbols from gdk-pixbuf.structure.lisp
-                            #:colorspace
-                            #:pixbuf
-                            #:pixbuf-bits-per-sample
-                            #:pixbuf-colorspace
-                            #:pixbuf-has-alpha
-                            #:pixbuf-height
-                            #:pixbuf-n-channels
-                            #:pixbuf-pixel-bytes
-                            #:pixbuf-pixels
-                            #:pixbuf-rowstride
-                            #:pixbuf-width
-                            #:pixbuf-pixels-with-length
-                            #:pixbuf-byte-length
-                            #:pixbuf-option
-                            #:pixbuf-remove-option
-                            #:pixbuf-copy-options
-                            #:pixbuf-read-pixels
-                            ;; Symbols from gdk-pixbuf.load.lisp
-                            #:pixbuf-file-info
-                            #:pixbuf-new-from-file
-                            #:pixbuf-new-from-file-at-size
-                            #:pixbuf-new-from-file-at-scale
-                            #:pixbuf-new-from-resource
-                            #:pixbuf-new-from-resource-at-scale
-                            ;; Symbols from gdk-pixbuf.loader.lisp
-                            #:pixbuf-loader
-                            #:pixbuf-loader-new
-                            #:pixbuf-loader-write
-                            #:pixbuf-loader-set-size
-                            #:pixbuf-loader-pixbuf
-                            #:pixbuf-loader-animation
-                            #:pixbuf-loader-close
-                            ;; Symbols from gdk-pixbuf.save.lisp
-                            #:pixbuf-save
-                            ;; Symbols from gdk-pixbuf.memory.lisp
-                            #:pixbuf-new
-                            #:pixbuf-new-subpixbuf
-                            #:pixbuf-copy
-                            ;; Symbols from gdk-pixbuf.scaling.lisp
-                            #:pixbuf-interp-type
-                            #:pixbuf-rotation
-                            #:pixbuf-scale-simple
-                            #:pixbuf-scale
-                            #:pixbuf-composite-color-simple
-                            #:pixbuf-composite
-                            #:pixbuf-composite-color
-                            #:pixbuf-rotate-simple
-                            #:pixbuf-flip
-                            ;; Symbols from gdk-pixbuf.utilities.lisp
-                            #:pixbuf-add-alpha
-                            #:pixbuf-copy-area
-                            #:pixbuf-fill
-                            ;; Symbols from gdk-pixbuf.animation.lisp
-                            #:pixbuf-animation
-                            #:pixbuf-animation-loop
-                            #:pixbuf-animation-new-from-file
-                            #:pixbuf-animation-new-from-resource
-                            #:pixbuf-animation-static-image))
+  ;; Import the symbols from GDK-PIXUF
+  ;; TODO: We have a problem with the documentation. The symbols are documented
+  ;; twice as gdk:pixbuf and as gdk-pixbuf:pixbuf. Resolve this issue.
+  (:import-from #:gdk-pixbuf ;; Symbols from gdk-pixbuf.structure.lisp
+                             #:colorspace
+                             #:pixbuf
+                             #:pixbuf-bits-per-sample
+                             #:pixbuf-colorspace
+                             #:pixbuf-has-alpha
+                             #:pixbuf-height
+                             #:pixbuf-n-channels
+                             #:pixbuf-pixel-bytes
+                             #:pixbuf-pixels
+                             #:pixbuf-rowstride
+                             #:pixbuf-width
+                             #:pixbuf-pixels-with-length
+                             #:pixbuf-byte-length
+                             #:pixbuf-option
+                             #:pixbuf-remove-option
+                             #:pixbuf-copy-options
+                             #:pixbuf-read-pixels
+                             ;; Symbols from gdk-pixbuf.load.lisp
+                             #:pixbuf-file-info
+                             #:pixbuf-new-from-file
+                             #:pixbuf-new-from-file-at-size
+                             #:pixbuf-new-from-file-at-scale
+                             #:pixbuf-new-from-resource
+                             #:pixbuf-new-from-resource-at-scale
+                             ;; Symbols from gdk-pixbuf.loader.lisp
+                             #:pixbuf-loader
+                             #:pixbuf-loader-new
+                             #:pixbuf-loader-write
+                             #:pixbuf-loader-set-size
+                             #:pixbuf-loader-pixbuf
+                             #:pixbuf-loader-animation
+                             #:pixbuf-loader-close
+                             ;; Symbols from gdk-pixbuf.save.lisp
+                             #:pixbuf-save
+                             ;; Symbols from gdk-pixbuf.memory.lisp
+                             #:pixbuf-new
+                             #:pixbuf-new-subpixbuf
+                             #:pixbuf-copy
+                             ;; Symbols from gdk-pixbuf.scaling.lisp
+                             #:pixbuf-interp-type
+                             #:pixbuf-rotation
+                             #:pixbuf-scale-simple
+                             #:pixbuf-scale
+                             #:pixbuf-composite-color-simple
+                             #:pixbuf-composite
+                             #:pixbuf-composite-color
+                             #:pixbuf-rotate-simple
+                             #:pixbuf-flip
+                             ;; Symbols from gdk-pixbuf.utilities.lisp
+                             #:pixbuf-add-alpha
+                             #:pixbuf-copy-area
+                             #:pixbuf-fill
+                             ;; Symbols from gdk-pixbuf.animation.lisp
+                             #:pixbuf-animation
+                             #:pixbuf-animation-loop
+                             #:pixbuf-animation-new-from-file
+                             #:pixbuf-animation-new-from-resource
+                             #:pixbuf-animation-static-image)
+  ;; Export the symbols for GDK-PIXBUF
+  (:export                   ;; Symbols from gdk-pixbuf.structure.lisp
+                             #:colorspace
+                             #:pixbuf
+                             #:pixbuf-bits-per-sample
+                             #:pixbuf-colorspace
+                             #:pixbuf-has-alpha
+                             #:pixbuf-height
+                             #:pixbuf-n-channels
+                             #:pixbuf-pixel-bytes
+                             #:pixbuf-pixels
+                             #:pixbuf-rowstride
+                             #:pixbuf-width
+                             #:pixbuf-pixels-with-length
+                             #:pixbuf-byte-length
+                             #:pixbuf-option
+                             #:pixbuf-remove-option
+                             #:pixbuf-copy-options
+                             #:pixbuf-read-pixels
+                             ;; Symbols from gdk-pixbuf.load.lisp
+                             #:pixbuf-file-info
+                             #:pixbuf-new-from-file
+                             #:pixbuf-new-from-file-at-size
+                             #:pixbuf-new-from-file-at-scale
+                             #:pixbuf-new-from-resource
+                             #:pixbuf-new-from-resource-at-scale
+                             ;; Symbols from gdk-pixbuf.loader.lisp
+                             #:pixbuf-loader
+                             #:pixbuf-loader-new
+                             #:pixbuf-loader-write
+                             #:pixbuf-loader-set-size
+                             #:pixbuf-loader-pixbuf
+                             #:pixbuf-loader-animation
+                             #:pixbuf-loader-close
+                             ;; Symbols from gdk-pixbuf.save.lisp
+                             #:pixbuf-save
+                             ;; Symbols from gdk-pixbuf.memory.lisp
+                             #:pixbuf-new
+                             #:pixbuf-new-subpixbuf
+                             #:pixbuf-copy
+                             ;; Symbols from gdk-pixbuf.scaling.lisp
+                             #:pixbuf-interp-type
+                             #:pixbuf-rotation
+                             #:pixbuf-scale-simple
+                             #:pixbuf-scale
+                             #:pixbuf-composite-color-simple
+                             #:pixbuf-composite
+                             #:pixbuf-composite-color
+                             #:pixbuf-rotate-simple
+                             #:pixbuf-flip
+                             ;; Symbols from gdk-pixbuf.utilities.lisp
+                             #:pixbuf-add-alpha
+                             #:pixbuf-copy-area
+                             #:pixbuf-fill
+                             ;; Symbols from gdk-pixbuf.animation.lisp
+                             #:pixbuf-animation
+                             #:pixbuf-animation-loop
+                             #:pixbuf-animation-new-from-file
+                             #:pixbuf-animation-new-from-resource
+                             #:pixbuf-animation-static-image))
 
 (in-package :gdk)
+
+#+sbcl
+(when (and (find-package "SB-EXT")
+           (find-symbol "SET-FLOATING-POINT-MODES" (find-package "SB-EXT")))
+  (funcall (find-symbol "SET-FLOATING-POINT-MODES" (find-package "SB-EXT"))
+           :traps nil))
+
+;;; ----------------------------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (find-package :gdk) t)
@@ -1161,18 +1168,7 @@
     An atom is a numeric index into a string table on the X server. They are
     used to transfer strings efficiently between clients without having to
     transfer the entire string.
-    @about-symbol{atom}
-    @about-symbol{GDK_ATOM_TO_POINTER}
-    @about-symbol{GDK_POINTER_TO_ATOM}
-    @about-function{text-property-to-utf8-list-for-display}
-    @about-function{utf8-to-string-target}
-    @about-function{atom-intern}
-    @about-function{atom-intern-static-string}
-    @about-function{atom-name}
-    @about-function{property-get}
-    @about-function{property-change}
-    @about-symbol{prop-mode}
-    @about-function{property-delete}
+    @about-type{atom-as-string}
   @end{section}
   @begin[Threads]{section}
     Functions for using GDK in multi-threaded programs.
@@ -1216,12 +1212,12 @@ got_value (gpointer user_data)
 @}
     @end{pre}
     You should use the @fun{gdk:threads-add-idle} and
-    @fun{gdk:threads-add-timeout} functions instead of the @fun{g-idle-add} and
-    @fun{g-timeout-add} functions since libraries not under your control might
+    @fun{gdk:threads-add-timeout} functions instead of the @fun{g:idle-add} and
+    @fun{g:timeout-add} functions since libraries not under your control might
     be using the deprecated GDK locking mechanism. If you are sure that none of
     the code in your application and libraries use the deprecated
     @code{gdk_threads_enter()} or @code{gdk_threads_leave()} methods, then you
-    can safely use the @fun{g-idle-add} and @fun{g-timeout-add} functions.
+    can safely use the @fun{g:idle-add} and @fun{g:timeout-add} functions.
 
     For more information on this \"worker thread\" pattern, you should also
     look at @code{GTask}, which gives you high-level tools to perform expensive
