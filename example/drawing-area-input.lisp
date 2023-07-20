@@ -20,7 +20,7 @@
       (g:signal-connect area "draw"
          (lambda (widget cr)
            (declare (ignore widget))
-           (let ((cr (gobject:pointer cr)))
+           (let ((cr (glib:boxed-opaque-pointer cr)))
              (cairo:set-source-surface cr surface 0.0 0.0)
              (cairo:paint cr)
              (cairo:destroy cr)

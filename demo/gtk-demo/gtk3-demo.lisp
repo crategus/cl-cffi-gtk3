@@ -979,7 +979,7 @@
           (lambda (widget context)
             (let ((width (gtk:widget-allocated-width widget))
                   (height (gtk:widget-allocated-height widget))
-                  (cr (gobject:pointer context)))
+                  (cr (glib:boxed-opaque-pointer context)))
               (funcall drawfunc cr width height))))
       ;; Signal handler for the window to handle the signal "destroy".
       (g:signal-connect window "destroy"

@@ -119,10 +119,11 @@
       (g:signal-connect area "draw"
           (lambda (widget cr)
             (declare (ignore widget))
-            (cairo:set-source-surface (gobject:pointer cr) surface 0.0d0 0.0d0)
-            (cairo:paint (gobject:pointer cr))
+            (setf cr (glib:boxed-opaque-pointer cr))
+            (cairo:set-source-surface cr surface 0.0d0 0.0d0)
+            (cairo:paint cr)
             ;; We must destroy the Cairo Context
-            (cairo:destroy (gobject:pointer cr))
+            (cairo:destroy cr)
             t))
       (g:signal-connect area "configure-event"
           (lambda (widget event)

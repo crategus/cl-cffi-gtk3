@@ -15,7 +15,7 @@
       ;; Signal handler for the drawing area
       (g:signal-connect area "draw"
           (lambda (widget cr)
-            (let* ((cr (gobject:pointer cr))
+            (let* ((cr (glib:boxed-opaque-pointer cr))
                    (width (gtk:widget-allocated-width widget))
                    (height (gtk:widget-allocated-height widget))
                    (context (gtk:widget-style-context widget))
