@@ -77,7 +77,7 @@
 ;;; struct GtkLayout
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkLayout" layout
+(gobject:define-g-object-class "GtkLayout" layout
   (:superclass container
    :export t
    :interfaces ("AtkImplementorIface"
@@ -267,7 +267,7 @@
 ;;; gtk_layout_put ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_layout_put" layout-put) :void
+(cffi:defcfun ("gtk_layout_put" layout-put) :void
  #+liber-documentation
  "@version{#2023-3-20}
   @argument[layout]{a @class{gtk:layout} widget}
@@ -292,7 +292,7 @@
 ;;; gtk_layout_move ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_layout_move" layout-move) :void
+(cffi:defcfun ("gtk_layout_move" layout-move) :void
  #+liber-documentation
  "@version{#2023-3-20}
   @argument[layout]{a @class{gtk:layout} widget}
@@ -450,7 +450,8 @@
 ;;; gtk_layout_get_bin_window () -> layout-bin-window
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_layout_get_bin_window" layout-bin-window) (g:object gdk:window)
+(cffi:defcfun ("gtk_layout_get_bin_window" layout-bin-window)
+    (g:object gdk:window)
  #+liber-documentation
  "@version{#2023-3-20}
   @argument[layout]{a @class{gtk:layout} widget}

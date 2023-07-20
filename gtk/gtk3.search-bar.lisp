@@ -72,7 +72,7 @@
 
 ;; TODO: Replace the example with Lisp code
 
-(define-g-object-class "GtkSearchBar" search-bar
+(gobject:define-g-object-class "GtkSearchBar" search-bar
   (:superclass bin
    :export t
    :interfaces ("AtkImplementorIface"
@@ -89,8 +89,8 @@
 (setf (documentation 'search-bar 'type)
  "@version{#2023-2-16}
   @begin{short}
-    The @sym{gtk:search-bar} widget is a container made to have a search entry 
-    built-in, possibly with additional connex widgets, such as drop-down menus, 
+    The @sym{gtk:search-bar} widget is a container made to have a search entry
+    built-in, possibly with additional connex widgets, such as drop-down menus,
     or buttons.
   @end{short}
   The search bar would appear when a search is started through typing on the
@@ -108,7 +108,7 @@
   your search entry using the @fun{gtk:search-bar-connect-entry} function. The
   following example shows you how to create a more complex search entry.
   @begin[CSS nodes]{dictionary}
-    The @sym{gtk:search-bar} implementation has a single CSS node with name 
+    The @sym{gtk:search-bar} implementation has a single CSS node with name
     @code{searchbar}.
   @end{dictionary}
   @begin[Example]{dictionary}
@@ -233,8 +233,8 @@ main (gint argc,
   @end{short}
   The @sym{gtk:search-bar-show-close-button} function returns whether the Close
   button is shown. The @sym{(setf gtk:search-bar-show-close-button} function
-  shows or hides the Close button. Applications that already have a \"search\" 
-  toggle button should not show a Close button in their search bar, as it 
+  shows or hides the Close button. Applications that already have a \"search\"
+  toggle button should not show a Close button in their search bar, as it
   duplicates the role of the toggle button.
   @see-class{gtk:search-bar}")
 
@@ -261,7 +261,7 @@ main (gint argc,
 ;;; gtk_search_bar_connect_entry ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_search_bar_connect_entry" search-bar-connect-entry) :void
+(cffi:defcfun ("gtk_search_bar_connect_entry" search-bar-connect-entry) :void
  #+liber-documentation
  "@version{#2023-2-16}
   @argument[search-bar]{a @class{gtk:search-bar} widget}
@@ -296,7 +296,7 @@ main (gint argc,
 
 ;; TODO: Replace the example with Lisp code
 
-(defcfun ("gtk_search_bar_handle_event" search-bar-handle-event) :boolean
+(cffi:defcfun ("gtk_search_bar_handle_event" search-bar-handle-event) :boolean
  #+liber-documentation
  "@version{#2023-2-16}
   @argument[search-bar]{a @class{gtk:search-bar} widget}
@@ -313,7 +313,7 @@ main (gint argc,
   returned. The caller should ensure that events are not propagated further.
 
   If no entry has been connected to the search bar, using the
-  @fun{gtk:search-bar-connect-entry} function, this function will return 
+  @fun{gtk:search-bar-connect-entry} function, this function will return
   immediately with a warning.
   @begin[Example]{dictionary}
     Showing the search bar on key presses

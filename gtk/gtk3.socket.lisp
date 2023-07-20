@@ -64,7 +64,7 @@
 ;;; struct GtkSocket
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkSocket" socket
+(gobject:define-g-object-class "GtkSocket" socket
   (:superclass container
    :export t
    :interfaces ("AtkImplementorIface"
@@ -169,7 +169,7 @@ lambda (socket)    :run-last
 ;;; gtk_socket_add_id ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_socket_add_id" socket-add-id) :void
+(cffi:defcfun ("gtk_socket_add_id" socket-add-id) :void
  #+liber-documentation
  "@version{#2023-2-28}
   @argument[socket]{a @class{gtk:socket} widget}
@@ -203,7 +203,7 @@ lambda (socket)    :run-last
 ;;; gtk_socket_get_id () -> socket-id
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_socket_get_id" socket-id) :pointer
+(cffi:defcfun ("gtk_socket_get_id" socket-id) :pointer
  #+liber-documentation
  "@version{#2023-2-28}
   @argument[socket]{a @class{gtk:socket} widget}
@@ -226,7 +226,8 @@ lambda (socket)    :run-last
 ;;; gtk_socket_get_plug_window () -> socket-plug-window
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_socket_get_plug_window" socket-plug-window) (g:object gdk:window)
+(cffi:defcfun ("gtk_socket_get_plug_window" socket-plug-window)
+    (g:object gdk:window)
  #+liber-documentation
  "@version{#2023-2-28}
   @argument[socket]{a @class{gtk:socket} widget}

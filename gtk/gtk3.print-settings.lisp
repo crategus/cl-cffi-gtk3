@@ -176,7 +176,7 @@
 ;;; GtkPrintSettings
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkPrintSettings" print-settings
+(gobject:define-g-object-class "GtkPrintSettings" print-settings
   (:superclass g:object
    :export t
    :interfaces nil
@@ -221,7 +221,7 @@
 ;;; enum GtkPageOrientation
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkPageOrientation" page-orientation
+(gobject:define-g-enum "GtkPageOrientation" page-orientation
   (:export t
    :type-initializer "gtk_page_orientation_get_type")
   :portrait
@@ -236,7 +236,7 @@
  "@version{2023-2-11}
   @short{See the @fun{gtk:print-settings-orientation} function.}
   @begin{pre}
-(define-g-enum \"GtkPageOrienation\" page-orientation
+(gobject:define-g-enum \"GtkPageOrienation\" page-orientation
   (:export t
    :type-initializer \"gtk_page_orientation_get_type\")
   :portrait
@@ -257,7 +257,7 @@
 ;;; enum GtkPrintDuplex
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkPrintDuplex" print-duplex
+(gobject:define-g-enum "GtkPrintDuplex" print-duplex
   (:export t
    :type-initializer "gtk_print_duplex_get_type")
   :simplex
@@ -271,7 +271,7 @@
  "@version{2023-2-11}
   @short{See the @fun{gtk:print-settings-duplex} function.}
   @begin{pre}
-(define-g-enum \"GtkPrintDuplex\" gtk:print-duplex
+(gobject:define-g-enum \"GtkPrintDuplex\" gtk:print-duplex
   (:export t
    :type-initializer \"gtk_print_duplex_get_type\")
   :simplex
@@ -290,7 +290,7 @@
 ;;; enum GtkPrintQuality
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkPrintQuality" print-quality
+(gobject:define-g-enum "GtkPrintQuality" print-quality
   (:export t
    :type-initializer "gtk_print_quality_get_type")
   :low
@@ -305,7 +305,7 @@
  "@version{2023-2-11}
   @short{See the @fun{gtk:print-settings-quality} function.}
   @begin{pre}
-(define-g-enum \"GtkPrintQuality\" gtk:print-quality
+(gobject:define-g-enum \"GtkPrintQuality\" gtk:print-quality
   (:export t
    :type-initializer \"gtk_print_quality_get_type\")
   :low
@@ -328,7 +328,7 @@
 
 ;; TODO: Change the nick names to the short form
 
-(define-g-enum "GtkNumberUpLayout" number-up-layout
+(gobject:define-g-enum "GtkNumberUpLayout" number-up-layout
   (:export t
    :type-initializer "gtk_number_up_layout_get_type")
   (:left-to-right-top-to-bottom 0)
@@ -350,7 +350,7 @@
     pages per sheet.
   @end{short}
   @begin{pre}
-(define-g-enum \"GtkNubmerUpLayout\" number-up-layout
+(gobject:define-g-enum \"GtkNubmerUpLayout\" number-up-layout
   (:export t
    :type-initializer \"gtk_number_up_layout_get_type\")
   (:left-to-right-top-to-bottom 0)
@@ -379,7 +379,7 @@
 ;;; enum GtkPrintPages
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkPrintPages" print-pages
+(gobject:define-g-enum "GtkPrintPages" print-pages
   (:export t
    :type-initializer "gtk_print_pages_get_type")
   (:all 0)
@@ -397,7 +397,7 @@
     functions.
   @end{short}
   @begin{pre}
-(define-g-enum \"GtkPrintPages\" gtk:print-pages
+(gobject:define-g-enum \"GtkPrintPages\" gtk:print-pages
   (:export t
    :type-initializer \"gtk_print_pages_get_type\")
   (:all 0)
@@ -440,7 +440,7 @@
 ;;; enum GtkPageSet
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkPageSet" page-set
+(gobject:define-g-enum "GtkPageSet" page-set
   (:export t
    :type-initializer "gtk_page_set_get_type")
   (:all 0)
@@ -454,7 +454,7 @@
  "@version{2023-2-11}
   @short{See the @fun{gtk:print-job-page-set} function.}
   @begin{pre}
-(define-g-enum \"GtkPageSet\" page-set
+(gobject:define-g-enum \"GtkPageSet\" page-set
   (:export t
    :type-initializer \"gtk_page_set_get_type\")
   (:all 0)
@@ -632,7 +632,7 @@ lambda (key value)
   @end{short}
   @see-class{gtk:print-settings}
   @see-symbol{gtk:print-settings-func}"
-  (with-stable-pointer (ptr func)
+  (glib:with-stable-pointer (ptr func)
     (%print-settings-foreach settings
                              (cffi:callback print-settings-func)
                              ptr)))
@@ -1764,7 +1764,7 @@ lambda (key value)
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-to-file}
   @see-function{gtk:print-settings-load-file}"
-  (with-ignore-g-error (err)
+  (glib:with-ignore-g-error (err)
     (%print-settings-new-from-file (namestring path) err)))
 
 (export 'print-settings-new-from-file)
@@ -1795,7 +1795,7 @@ lambda (key value)
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-to-file}
   @see-function{gtk:print-settings-load-file}"
-  (with-g-error (err)
+  (glib:with-g-error (err)
     (%print-settings-new-from-key-file key-file group-name err)))
 
 (export 'print-settings-new-from-key-file)
@@ -1865,7 +1865,7 @@ lambda (key value)
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-to-file}
   @see-function{gtk:print-settings-new-from-file}"
-  (with-g-error (err)
+  (glib:with-g-error (err)
     (%print-settings-load-file settings (namestring path) err)))
 
 (export 'print-settings-load-file)
@@ -1896,7 +1896,7 @@ lambda (key value)
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-to-key-file}
   @see-function{gtk:print-settings-new-from-key-file}"
-  (with-g-error (err)
+  (glib:with-g-error (err)
     (%print-settings-load-key-file settings key-file group-name err)))
 
 (export 'print-settings-load-key-file)
@@ -1922,7 +1922,7 @@ lambda (key value)
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-load-file}
   @see-function{gtk:print-settings-new-from-file}"
-  (with-g-error (err)
+  (glib:with-g-error (err)
     (%print-settings-to-file settings (namestring path) err)))
 
 (export 'print-settings-to-file)

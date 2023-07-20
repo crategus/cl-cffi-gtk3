@@ -73,7 +73,7 @@
 ;;; struct GtkViewport
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkViewport" viewport
+(gobject:define-g-object-class "GtkViewport" viewport
   (:superclass bin
    :export t
    :interfaces ("AtkImplementorIface"
@@ -94,12 +94,12 @@
   Use the @sym{gtk:viewport} widget to scroll child widgets such as the widgets
   @class{gtk:grid}, @class{gtk:box}, and so on.
 
-  If a widget has native scrolling abilities, such as the @class{gtk:text-view}, 
-  @class{gtk:tree-view} or @class{gtk:icon-view} widgets, it can be added to a 
-  @class{gtk:scrolled-window} widget with the @fun{gtk:container-add} function. 
-  If a widget does not, you must first add the widget to a @sym{gtk:viewport} 
-  widget, then add the viewport to the scrolled window. The 
-  @fun{gtk:container-add} function does this automatically if a child that does 
+  If a widget has native scrolling abilities, such as the @class{gtk:text-view},
+  @class{gtk:tree-view} or @class{gtk:icon-view} widgets, it can be added to a
+  @class{gtk:scrolled-window} widget with the @fun{gtk:container-add} function.
+  If a widget does not, you must first add the widget to a @sym{gtk:viewport}
+  widget, then add the viewport to the scrolled window. The
+  @fun{gtk:container-add} function does this automatically if a child that does
   not implement the @class{gtk:scrollable} interface is added to a
   @class{gtk:scrolled-window} widget, so you can ignore the presence of the
   viewport.
@@ -141,8 +141,8 @@
     Accessor of the @slot[gtk:viewport]{shadow-type} slot of the
     @class{gtk:viewport} class.
   @end{short}
-  The @sym{gtk:viewport-shadow-type} function gets the shadow type of the 
-  viewport. The @sym{(setf gtk:viewport-shadow-type)} function sets the shadow 
+  The @sym{gtk:viewport-shadow-type} function gets the shadow type of the
+  viewport. The @sym{(setf gtk:viewport-shadow-type)} function sets the shadow
   type.
   @see-class{gtk:viewport}
   @see-symbol{gtk:shadow-type}")
@@ -256,7 +256,7 @@
 ;;; gtk_viewport_get_bin_window () -> viewport-bin-window
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_viewport_get_bin_window" viewport-bin-window)
+(cffi:defcfun ("gtk_viewport_get_bin_window" viewport-bin-window)
     (g:object gdk:window)
  #+liber-documentation
  "@version{#2023-3-29}
@@ -273,7 +273,7 @@
 ;;; gtk_viewport_get_view_window () -> viewport-view-window
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_viewport_get_view_window" viewport-view-window)
+(cffi:defcfun ("gtk_viewport_get_view_window" viewport-view-window)
     (g:object gdk:window)
  #+liber-documentation
  "@version{#2023-3-29}

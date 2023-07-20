@@ -66,7 +66,7 @@
 ;;; GtkTextTagTable
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkTextTagTable" text-tag-table
+(gobject:define-g-object-class "GtkTextTagTable" text-tag-table
   (:superclass g:object
    :export t
    :interfaces nil
@@ -154,7 +154,7 @@ lambda (table tag)    :run-last
 ;;; gtk_text_tag_table_add ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_text_tag_table_add" text-tag-table-add) :boolean
+(cffi:defcfun ("gtk_text_tag_table_add" text-tag-table-add) :boolean
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[table]{a @class{gtk:text-tag-table} object}
@@ -177,7 +177,7 @@ lambda (table tag)    :run-last
 ;;; gtk_text_tag_table_remove ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_text_tag_table_remove" text-tag-table-remove) :void
+(cffi:defcfun ("gtk_text_tag_table_remove" text-tag-table-remove) :void
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[table]{a @class{gtk:text-tag-table} object}
@@ -198,7 +198,8 @@ lambda (table tag)    :run-last
 ;;; gtk_text_tag_table_lookup ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_text_tag_table_lookup" text-tag-table-lookup) (g:object text-tag)
+(cffi:defcfun ("gtk_text_tag_table_lookup" text-tag-table-lookup)
+    (g:object text-tag)
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[table]{a @class{gtk:text-tag-table} object}
@@ -218,7 +219,7 @@ lambda (table tag)    :run-last
 ;;; GtkTextTagTableForeach ()
 ;;; ----------------------------------------------------------------------------
 
-(defcallback text-tag-table-foreach-func :void
+(cffi:defcallback text-tag-table-foreach-func :void
     ((tag (g:object text-tag))
      (data :pointer))
   (funcall (glib:get-stable-pointer-value data) tag))
@@ -248,7 +249,7 @@ lambda (tag)
 ;;; gtk_text_tag_table_foreach ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_text_tag_table_foreach" %text-tag-table-foreach) :void
+(cffi:defcfun ("gtk_text_tag_table_foreach" %text-tag-table-foreach) :void
   (table (g:object text-tag-table))
   (func :pointer)
   (data :pointer))
@@ -266,7 +267,7 @@ lambda (tag)
   cannot add/remove tags.
   @see-class{gtk:text-tag-table}
   @see-symbol{gtk:text-tag-table-foreach-func}"
-  (with-stable-pointer (ptr func)
+  (glib:with-stable-pointer (ptr func)
     (%text-tag-table-foreach table
                              (cffi:callback text-tag-table-foreach-func)
                              ptr)))
@@ -277,7 +278,7 @@ lambda (tag)
 ;;; gtk_text_tag_table_get_size () -> text-table-size
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_text_tag_table_get_size" text-tag-table-size) :int
+(cffi:defcfun ("gtk_text_tag_table_get_size" text-tag-table-size) :int
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[table]{a @class{gtk:text-tag-table} object}

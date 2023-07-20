@@ -89,7 +89,7 @@
 ;;; struct GtkProgressBar
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkProgressBar" progress-bar
+(gobject:define-g-object-class "GtkProgressBar" progress-bar
   (:superclass widget
    :export t
    :interfaces ("AtkImplementorIface"
@@ -466,7 +466,7 @@ progressbar[.osd]
 ;;; gtk_progress_bar_pulse ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_progress_bar_pulse" progress-bar-pulse) :void
+(cffi:defcfun ("gtk_progress_bar_pulse" progress-bar-pulse) :void
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[bar]{a @class{gtk:progress-bar} widget}

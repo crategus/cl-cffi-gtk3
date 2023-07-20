@@ -74,7 +74,7 @@
 ;;; enum GtkButtonRole
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkButtonRole" button-role
+(gobject:define-g-enum "GtkButtonRole" button-role
   (:export t
    :type-initializer "gtk_button_role_get_type")
   :normal
@@ -91,7 +91,7 @@
     widget.
   @end{short}
   @begin{pre}
-(define-g-enum \"GtkButtonRole\" button-role
+(gobject:define-g-enum \"GtkButtonRole\" button-role
   (:export t
    :type-initializer \"gtk_button_role_get_type\")
   :normal
@@ -109,7 +109,7 @@
 ;;; struct GtkModelButton
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkModelButton" model-button
+(gobject:define-g-object-class "GtkModelButton" model-button
   (:superclass button
    :export t
    :interfaces ("AtkImplementorIface"

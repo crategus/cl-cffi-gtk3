@@ -93,7 +93,7 @@
 ;;; struct GtkInfoBar
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkInfoBar" info-bar
+(gobject:define-g-object-class "GtkInfoBar" info-bar
   (:superclass box
    :export t
    :interfaces ("AtkImplementorIface"
@@ -396,7 +396,8 @@ lambda (infobar response)    :run-last
 ;;; info-bar-add-action-widget
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_info_bar_add_action_widget" info-bar-add-action-widget) :void
+(cffi:defcfun ("gtk_info_bar_add_action_widget" info-bar-add-action-widget)
+    :void
  #+liber-documentation
  "@version{#2023-3-20}
   @argument[infobar]{a @class{gtk:info-bar} widget}
@@ -419,7 +420,7 @@ lambda (infobar response)    :run-last
 ;;; info-bar-add-button
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_info_bar_add_button" info-bar-add-button) (g:object widget)
+(cffi:defcfun ("gtk_info_bar_add_button" info-bar-add-button) (g:object widget)
  #+liber-documentation
  "@version{#2023-3-20}
   @argument[infobar]{a @class{gtk:info-bar} widget}
@@ -467,8 +468,8 @@ lambda (infobar response)    :run-last
 ;;; info-bar-set-response-sensitive
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_info_bar_set_response_sensitive" info-bar-set-response-sensitive)
-    :void
+(cffi:defcfun ("gtk_info_bar_set_response_sensitive"
+               info-bar-set-response-sensitive) :void
  #+liber-documentation
  "@version{#2023-3-20}
   @argument[infobar]{a @class{gtk:info-bar} widget}
@@ -491,8 +492,8 @@ lambda (infobar response)    :run-last
 ;;; info-bar-set-default-response
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_info_bar_set_default_response" info-bar-set-default-response)
-    :void
+(cffi:defcfun ("gtk_info_bar_set_default_response"
+               info-bar-set-default-response) :void
  #+liber-documentation
  "@version{#2023-3-20}
   @argument[infobar]{a @class{gtk:info-bar} widget}
@@ -515,7 +516,7 @@ lambda (infobar response)    :run-last
 ;;; gtk_info_bar_response
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_info_bar_response" info-bar-response) :void
+(cffi:defcfun ("gtk_info_bar_response" info-bar-response) :void
  #+liber-documentation
  "@version{#2023-3-20}
   @argument[infobar]{a @class{gtk:info-bar} widget}
@@ -531,7 +532,8 @@ lambda (infobar response)    :run-last
 ;;; gtk_info_bar_get_action_area -> info-bar-action-area
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_info_bar_get_action_area" info-bar-action-area) (g:object widget)
+(cffi:defcfun ("gtk_info_bar_get_action_area" info-bar-action-area)
+    (g:object widget)
  #+liber-documentation
  "@version{#2023-3-20}
   @argument[infobar]{a @class{gtk:info-bar} widget}
@@ -547,7 +549,7 @@ lambda (infobar response)    :run-last
 ;;; gtk_info_bar_get_content_area -> info-bar-content-area
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_info_bar_get_content_area" info-bar-content-area)
+(cffi:defcfun ("gtk_info_bar_get_content_area" info-bar-content-area)
     (g:object widget)
  #+liber-documentation
  "@version{#2023-3-20}

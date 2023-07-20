@@ -114,7 +114,7 @@
 ;;; GtkTreeSortable
 ;;; ----------------------------------------------------------------------------
 
-(define-g-interface "GtkTreeSortable" tree-sortable
+(gobject:define-g-interface "GtkTreeSortable" tree-sortable
   (:export t
    :type-initializer "gtk_tree_sortable_get_type")
   nil)
@@ -176,7 +176,7 @@ lambda (sortable)    : Run Last
 ;;; };
 ;;; ----------------------------------------------------------------------------
 
-(define-vtable ("GtkTreeSortable" tree-sortable)
+(gobject:define-vtable ("GtkTreeSortable" tree-sortable)
   (:skip parent-instance (:pointer (:struct g:type-interface)))
   ;; signal
   (:skip sort-columns-changed :pointer)
@@ -210,7 +210,7 @@ lambda (sortable)    : Run Last
 ;;; GtkTreeIterCompareFunc ()
 ;;; ----------------------------------------------------------------------------
 
-(defcallback tree-iter-compare-func :int
+(cffi:defcallback tree-iter-compare-func :int
     ((model (g:object tree-model))
      (iter1 (g:boxed tree-iter))
      (iter2 (g:boxed tree-iter))
@@ -258,8 +258,8 @@ lambda (sortable)    : Run Last
 ;;; gtk_tree_sortable_sort_column_changed ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_sortable_sort_column_changed"
-           tree-sortable-sort-column-changed) :void
+(cffi:defcfun ("gtk_tree_sortable_sort_column_changed"
+               tree-sortable-sort-column-changed) :void
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[sortable]{a @class{gtk:tree-sortable} object}
@@ -286,8 +286,8 @@ lambda (sortable)    : Run Last
                           sort-type order)
     value))
 
-(defcfun ("gtk_tree_sortable_get_sort_column_id"
-          %tree-sortable-sort-column-id) :boolean
+(cffi:defcfun ("gtk_tree_sortable_get_sort_column_id"
+               %tree-sortable-sort-column-id) :boolean
   (sortable (g:object tree-sortable))
   (column-id (:pointer :int))
   (order (:pointer sort-type)))
@@ -306,9 +306,9 @@ lambda (sortable)    : Run Last
     Returns the current sort column and the order.
   @end{short}
   The @sym{gtk:tree-sortable-sort-column-id} function returns the current sort
-  column ID and the sort order. The 
-  @sym{(setf gtk:tree-sortable-sort-column-id)} function sets the sort column 
-  ID and the sort order. If no sort order is given, the sort order is set to 
+  column ID and the sort order. The
+  @sym{(setf gtk:tree-sortable-sort-column-id)} function sets the sort column
+  ID and the sort order. If no sort order is given, the sort order is set to
   the default value @code{:ascending}.
 
   The sortable will resort itself to reflect this change, after emitting a
@@ -318,7 +318,7 @@ lambda (sortable)    : Run Last
   @var{+gtk-tree-sortable-unsorted-column-id+}.
   @see-class{gtk:tree-sortable}
   @see-symbol{gtk:sort-type}"
-  (with-foreign-objects ((sort-column-id :int) (order 'sort-type))
+  (cffi:with-foreign-objects ((sort-column-id :int) (order 'sort-type))
     (%tree-sortable-sort-column-id sortable sort-column-id order)
     (values (cffi:mem-ref sort-column-id :int)
             (cffi:mem-ref order 'sort-type))))
@@ -329,7 +329,8 @@ lambda (sortable)    : Run Last
 ;;; gtk_tree_sortable_set_sort_func ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_sortable_set_sort_func" %tree-sortable-set-sort-func) :void
+(cffi:defcfun ("gtk_tree_sortable_set_sort_func" %tree-sortable-set-sort-func)
+    :void
   (sortable (g:object tree-sortable))
   (column-id :int)
   (func :pointer)
@@ -363,8 +364,8 @@ lambda (sortable)    : Run Last
 ;;; gtk_tree_sortable_set_default_sort_func ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_sortable_set_default_sort_func"
-          %tree-sortable-set-default-sort-func) :void
+(cffi:defcfun ("gtk_tree_sortable_set_default_sort_func"
+               %tree-sortable-set-default-sort-func) :void
   (sortable (g:object tree-sortable))
   (func :pointer)
   (data :pointer)
@@ -402,8 +403,8 @@ lambda (sortable)    : Run Last
 ;;; gtk_tree_sortable_has_default_sort_func ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_sortable_has_default_sort_func"
-           tree-sortable-has-default-sort-func) :boolean
+(cffi:defcfun ("gtk_tree_sortable_has_default_sort_func"
+               tree-sortable-has-default-sort-func) :boolean
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[sortable]{a @class{gtk:tree-sortable} object}

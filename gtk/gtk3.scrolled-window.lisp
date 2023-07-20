@@ -124,7 +124,7 @@
 ;;; enum GtkPolicyType
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkPolicyType" policy-type
+(gobject:define-g-enum "GtkPolicyType" policy-type
   (:export t
    :type-initializer "gtk_policy_type_get_type")
   (:always 0)
@@ -142,7 +142,7 @@
     mode for the scrollbars.
   @end{short}
   @begin{pre}
-(define-g-enum \"GtkPolicyType\" policy-type
+(gobject:define-g-enum \"GtkPolicyType\" policy-type
   (:export t
    :type-initializer \"gtk_policy_type_get_type\")
   (:always 0)
@@ -167,7 +167,7 @@
 ;;; enum GtkCornerType
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkCornerType" corner-type
+(gobject:define-g-enum "GtkCornerType" corner-type
   (:export t
    :type-initializer "gtk_corner_type_get_type")
   (:top-left 0)
@@ -186,7 +186,7 @@
   @end{short}
   This is effectively the opposite of where the scroll bars are placed.
   @begin{pre}
-(define-g-enum \"GtkCornerType\" corner-type
+(gobject:define-g-enum \"GtkCornerType\" corner-type
   (:export t
    :type-initializer \"gtk_corner_type_get_type\")
   (:top-left 0)
@@ -210,7 +210,7 @@
 ;;; struct GtkScrolledWindow
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkScrolledWindow" scrolled-window
+(gobject:define-g-object-class "GtkScrolledWindow" scrolled-window
   (:superclass bin
    :export t
    :interfaces ("AtkImplementorIface"
@@ -967,7 +967,7 @@ lambda (window scroll horizontal)    :action
 ;;; gtk_scrolled_window_get_hscrollbar () -> scrolled-window-hscrollbar
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_scrolled_window_get_hscrollbar" scrolled-window-hscrollbar)
+(cffi:defcfun ("gtk_scrolled_window_get_hscrollbar" scrolled-window-hscrollbar)
     (g:object widget)
  #+liber-documentation
  "@version{#2023-3-6}
@@ -990,7 +990,7 @@ lambda (window scroll horizontal)    :action
 ;;; gtk_scrolled_window_get_vscrollbar () -> scrolled-window-vscrollbar
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_scrolled_window_get_vscrollbar" scrolled-window-vscrollbar)
+(cffi:defcfun ("gtk_scrolled_window_get_vscrollbar" scrolled-window-vscrollbar)
     (g:object widget)
  #+liber-documentation
  "@version{#2023-3-6}
@@ -1057,8 +1057,8 @@ lambda (window scroll horizontal)    :action
 ;;; gtk_scrolled_window_add_with_viewport ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_scrolled_window_add_with_viewport"
-           scrolled-window-add-with-viewport) :void
+(cffi:defcfun ("gtk_scrolled_window_add_with_viewport"
+               scrolled-window-add-with-viewport) :void
  #+liber-documentation
  "@version{#2023-3-6}
   @argument[window]{a @class{gtk:scrolled-window} widget}
@@ -1154,8 +1154,8 @@ lambda (window scroll horizontal)    :action
 ;;; gtk_scrolled_window_unset_placement ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_scrolled_window_unset_placement"
-           scrolled-window-unset-placement) :void
+(cffi:defcfun ("gtk_scrolled_window_unset_placement"
+               scrolled-window-unset-placement) :void
  #+liber-documentation
  "@version{#2023-3-6}
   @argument[window]{a @class{gtk:scrolled-window} widget}
@@ -1187,8 +1187,8 @@ lambda (window scroll horizontal)    :action
                         :void)
   capture)
 
-(defcfun ("gtk_scrolled_window_get_capture_button_press"
-           scrolled-window-capture-button-press) :boolean
+(cffi:defcfun ("gtk_scrolled_window_get_capture_button_press"
+               scrolled-window-capture-button-press) :boolean
  #+liber-documentation
  "@version{#2023-3-6}
   @syntax[]{(gtk:scrolled-window-capture-button-press window) => capture}

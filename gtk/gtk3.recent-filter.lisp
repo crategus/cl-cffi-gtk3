@@ -69,7 +69,7 @@
 ;;; enum GtkRecentFilterFlags
 ;;; ----------------------------------------------------------------------------
 
-(define-g-flags "GtkRecentFilterFlags" recent-filter-flags
+(gobject:define-g-flags "GtkRecentFilterFlags" recent-filter-flags
   (:export t
    :type-initializer "gtk_recent_filter_flags_get_type")
   (:uri 1)
@@ -89,7 +89,7 @@
     structure are filled or need to be filled.
   @end{short}
   @begin{pre}
-(define-g-flags \"GtkRecentFilterFlags\" recent-filter-flags
+(gobject:define-g-flags \"GtkRecentFilterFlags\" recent-filter-flags
   (:export t
    :type-initializer \"gtk_recent_filter_flags_get_type\")
   (:uri 1)
@@ -115,7 +115,7 @@
 ;;; struct GtkRecentFilterInfo
 ;;; ----------------------------------------------------------------------------
 
-(defcstruct recent-filter-info
+(cffi:defcstruct recent-filter-info
   (contains recent-filter-flags)
   (uri :string)
   (display-name :string)
@@ -133,7 +133,7 @@
     the tested file to the @fun{gtk:recent-filter-filter} function.
   @end{short}
   @begin{pre}
-(defcstruct gtk:recent-filter-info
+(cffi:defcstruct gtk:recent-filter-info
   (contains gtk:recent-filter-flags)
   (uri :string)
   (display-name :string)
@@ -150,7 +150,7 @@
 ;;; GtkRecentFilter
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkRecentFilter" recent-filter
+(gobject:define-g-object-class "GtkRecentFilter" recent-filter
   (:superclass g:initially-unowned
    :export t
    :interfaces ("GtkBuildable")
@@ -222,7 +222,8 @@
 ;;; gtk_recent_filter_new ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_filter_new" recent-filter-new) (g:object recent-filter)
+(cffi:defcfun ("gtk_recent_filter_new" recent-filter-new)
+    (g:object recent-filter)
  #+liber-documentation
  "@version{#2023-3-24}
   @return{A new @class{gtk:recent-filter} object.}
@@ -259,7 +260,7 @@
                         :void)
   name)
 
-(defcfun ("gtk_recent_filter_get_name" recent-filter-name) :string
+(cffi:defcfun ("gtk_recent_filter_get_name" recent-filter-name) :string
  #+liber-documentation
  "@version{#2023-3-24}
   @syntax[]{(gtk:recent-filter-name filter) => name}
@@ -282,7 +283,8 @@
 ;;; gtk_recent_filter_add_mime_type ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_filter_add_mime_type" recent-filter-add-mime-type) :void
+(cffi:defcfun ("gtk_recent_filter_add_mime_type" recent-filter-add-mime-type)
+    :void
  #+liber-documentation
  "@version{#2023-3-24}
   @argument[filter]{a @class{gtk:recent-filter} object}
@@ -300,7 +302,7 @@
 ;;; gtk_recent_filter_add_pattern ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_filter_add_pattern" recent-filter-add-pattern) :void
+(cffi:defcfun ("gtk_recent_filter_add_pattern" recent-filter-add-pattern) :void
  #+liber-documentation
  "@version{#2023-3-24}
   @argument[filter]{a @class{gtk:recent-filter} object}
@@ -319,8 +321,8 @@
 ;;; gtk_recent_filter_add_pixbuf_formats ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_filter_add_pixbuf_formats"
-           recent-filter-add-pixbuf-formats) :void
+(cffi:defcfun ("gtk_recent_filter_add_pixbuf_formats"
+               recent-filter-add-pixbuf-formats) :void
  #+liber-documentation
  "@version{#2023-3-24}
   @argument[filter]{a @class{gtk:recent-filter} object}
@@ -338,8 +340,8 @@
 ;;; gtk_recent_filter_add_application ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_filter_add_application" recent-filter-add-application)
-    :void
+(cffi:defcfun ("gtk_recent_filter_add_application"
+               recent-filter-add-application) :void
  #+liber-documentation
  "@version{#2023-3-24}
   @argument[filter]{a @class{gtk:recent-filter} object}
@@ -358,7 +360,7 @@
 ;;; gtk_recent_filter_add_group ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_filter_add_group" recent-filter-add-group) :void
+(cffi:defcfun ("gtk_recent_filter_add_group" recent-filter-add-group) :void
  #+liber-documentation
  "@version{#2023-3-24}
   @argument[filter]{a @class{gtk:recent-filter} object}
@@ -377,7 +379,7 @@
 ;;; gtk_recent_filter_add_age ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_filter_add_age" recent-filter-add-age) :void
+(cffi:defcfun ("gtk_recent_filter_add_age" recent-filter-add-age) :void
  #+liber-documentation
  "@version{#2023-3-24}
   @argument[filter]{a @class{gtk:recent-filter} object}
@@ -396,7 +398,7 @@
 ;;; GtkRecentFilterFunc ()
 ;;; ----------------------------------------------------------------------------
 
-(defcallback recent-filter-func :boolean
+(cffi:defcallback recent-filter-func :boolean
     ((info (:pointer (:struct recent-filter-info)))
      (data :pointer))
   (funcall (glib:get-stable-pointer-value data) info))
@@ -428,7 +430,7 @@ lambda (info)
 ;;; gtk_recent_filter_add_custom ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_filter_add_custom" %recent-filter-add-custom) :void
+(cffi:defcfun ("gtk_recent_filter_add_custom" %recent-filter-add-custom) :void
   (filter (g:object recent-filter))
   (needed recent-filter-flags)
   (func :pointer)
@@ -467,7 +469,7 @@ lambda (info)
 ;;; gtk_recent_filter_get_needed ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_filter_get_needed" recent-filter-needed)
+(cffi:defcfun ("gtk_recent_filter_get_needed" recent-filter-needed)
     recent-filter-flags
  #+liber-documentation
  "@version{#2023-3-24}
@@ -492,7 +494,7 @@ lambda (info)
 ;;; gtk_recent_filter_filter ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_filter_filter" recent-filter-filter) :boolean
+(cffi:defcfun ("gtk_recent_filter_filter" recent-filter-filter) :boolean
  #+liber-documentation
  "@version{#2023-3-24}
   @argument[filter]{a @class{gtk:recent-filter} object}

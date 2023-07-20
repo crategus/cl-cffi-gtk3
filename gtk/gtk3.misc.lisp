@@ -49,7 +49,7 @@
 ;;; struct GtkMisc
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkMisc" misc
+(gobject:define-g-object-class "GtkMisc" misc
   (:superclass widget
    :export t
    :interfaces ("AtkImplementorIface"

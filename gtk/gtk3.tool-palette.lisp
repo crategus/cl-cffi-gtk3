@@ -94,7 +94,7 @@
 ;;; enum GtkToolPaletteDragTargets
 ;;; ----------------------------------------------------------------------------
 
-(define-g-flags "GtkToolPaletteDragTargets" tool-palette-drag-targets
+(gobject:define-g-flags "GtkToolPaletteDragTargets" tool-palette-drag-targets
   (:export t
    :type-initializer "gtk_tool_palette_drag_targets_get_type")
   (:items 1)
@@ -109,7 +109,7 @@
     Flags used to specify the supported drag targets.
   @end{short}
   @begin{pre}
-(define-g-flags \"GtkToolPaletteDragTargets\" tool-palette-drag-targets
+(gobject:define-g-flags \"GtkToolPaletteDragTargets\" tool-palette-drag-targets
   (:export t
    :type-initializer \"gtk_tool_palette_drag_targets_get_type\")
   (:items 1)
@@ -125,7 +125,7 @@
 ;;; struct GtkToolPalette
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkToolPalette" tool-palette
+(gobject:define-g-object-class "GtkToolPalette" tool-palette
   (:superclass container
    :export t
    :interfaces ("AtkImplementorIface"
@@ -453,8 +453,8 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
                         :void)
   position)
 
-(defcfun ("gtk_tool_palette_get_group_position" tool-palette-group-position)
-    :int
+(cffi:defcfun ("gtk_tool_palette_get_group_position"
+               tool-palette-group-position) :int
  #+liber-documentation
  "@version{#2023-3-28}
   @syntax[]{(gtk:tool-palette-group-position palette group) => position}
@@ -483,7 +483,8 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 ;;; gtk_tool_palette_unset_icon_size ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tool_palette_unset_icon_size" tool-palette-unset-icon-size) :void
+(cffi:defcfun ("gtk_tool_palette_unset_icon_size" tool-palette-unset-icon-size)
+    :void
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[palette]{a @class{gtk:tool-palette} widget}
@@ -514,7 +515,7 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 ;;; gtk_tool_palette_unset_style ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tool_palette_unset_style" tool-palette-unset-style) :void
+(cffi:defcfun ("gtk_tool_palette_unset_style" tool-palette-unset-style) :void
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[palette]{a @class{gtk:tool-palette} widget}
@@ -533,7 +534,8 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 ;;; gtk_tool_palette_add_drag_dest ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tool_palette_add_drag_dest" tool-palette-add-drag-dest) :void
+(cffi:defcfun ("gtk_tool_palette_add_drag_dest" tool-palette-add-drag-dest)
+    :void
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[palette]{a @class{gtk:tool-palette} widget}
@@ -569,7 +571,7 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 ;;; gtk_tool_palette_get_drag_item () -> tool-palette-drag-item
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tool_palette_get_drag_item" tool-palette-drag-item)
+(cffi:defcfun ("gtk_tool_palette_get_drag_item" tool-palette-drag-item)
     (g:object widget)
  #+liber-documentation
  "@version{#2023-3-28}
@@ -594,8 +596,8 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 ;;; -> tool-palette-drag-target-group
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tool_palette_get_drag_target_group"
-          %tool-palette-drag-target-group) :pointer)
+(cffi:defcfun ("gtk_tool_palette_get_drag_target_group"
+               %tool-palette-drag-target-group) :pointer)
 
 (defun tool-palette-drag-target-group ()
  #+liber-documentation
@@ -607,9 +609,9 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
   @see-class{gtk:tool-palette}
   @see-class{gtk:tool-item-group}"
   (let ((target-ptr (%tool-palette-drag-target-group)))
-    (with-foreign-slots ((target flags info)
-                         target-ptr
-                         (:struct %target-entry))
+    (cffi:with-foreign-slots ((target flags info)
+                              target-ptr
+                              (:struct %target-entry))
       (list target flags info))))
 
 (export 'tool-palette-drag-target-group)
@@ -619,8 +621,8 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 ;;; -> tool-palette-drag-target-item
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tool_palette_get_drag_target_item"
-          %tool-palette-drag-target-item) :pointer)
+(cffi:defcfun ("gtk_tool_palette_get_drag_target_item"
+               %tool-palette-drag-target-item) :pointer)
 
 (defun tool-palette-drag-target-item ()
  #+liber-documentation
@@ -632,9 +634,9 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
   @see-class{gtk:tool-palette}
   @see-class{gtk:tool-item}"
   (let ((target-ptr (%tool-palette-drag-target-item)))
-    (with-foreign-slots ((target flags info)
-                         target-ptr
-                         (:struct %target-entry))
+    (cffi:with-foreign-slots ((target flags info)
+                              target-ptr
+                              (:struct %target-entry))
       (list target flags info))))
 
 (export 'tool-palette-drag-target-item)
@@ -643,7 +645,7 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 ;;; gtk_tool_palette_get_drop_group () -> tool-palette-drop-group
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tool_palette_get_drop_group" tool-palette-drop-group)
+(cffi:defcfun ("gtk_tool_palette_get_drop_group" tool-palette-drop-group)
     (g:object tool-item-group)
  #+liber-documentation
  "@version{#2023-3-28}
@@ -667,7 +669,7 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 ;;; gtk_tool_palette_get_drop_item () -> tool-palette-drop-item
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tool_palette_get_drop_item" tool-palette-drop-item)
+(cffi:defcfun ("gtk_tool_palette_get_drop_item" tool-palette-drop-item)
     (g:object tool-item)
  #+liber-documentation
  "@version{#2023-3-28}
@@ -695,7 +697,8 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 ;;; gtk_tool_palette_set_drag_source ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tool_palette_set_drag_source" tool-palette-set-drag-source) :void
+(cffi:defcfun ("gtk_tool_palette_set_drag_source" tool-palette-set-drag-source)
+    :void
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[palette]{a @class{gtk:tool-palette} widget}

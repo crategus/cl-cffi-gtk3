@@ -114,7 +114,7 @@
 ;;; enum GtkPlacesOpenFlags
 ;;; ----------------------------------------------------------------------------
 
-(define-g-flags "GtkPlacesOpenFlags" places-open-flags
+(gobject:define-g-flags "GtkPlacesOpenFlags" places-open-flags
   (:export t
    :type-initializer "gtk_places_open_flags_get_type")
   (:normal     #.(ash 1 0))
@@ -145,7 +145,7 @@
   function, then the sidebar will only use @code{:normal} in the
   \"open-location\" signal. This is the default mode of operation.
   @begin{pre}
-(define-g-flags \"GtkPlacesOpenFlags\" gtk:places-open-flags
+(gobject:define-g-flags \"GtkPlacesOpenFlags\" gtk:places-open-flags
   (:export t
    :type-initializer \"gtk_places_open_flags_get_type\")
   (:normal     #.(ash 1 0))
@@ -172,7 +172,7 @@
 ;;; struct GtkPlacesSidebar
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkPlacesSidebar" places-sidebar
+(gobject:define-g-object-class "GtkPlacesSidebar" places-sidebar
   (:superclass scrolled-window
     :export t
     :interfaces ("AtkImplementorIface"
@@ -869,7 +869,8 @@ lambda (sidebar mount)    :run-first
 ;;; gtk_places_sidebar_add_shortcut ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_places_sidebar_add_shortcut" places-sidebar-add-shortcut) :void
+(cffi:defcfun ("gtk_places_sidebar_add_shortcut" places-sidebar-add-shortcut)
+    :void
  #+liber-documentation
  "@version{#2023-3-6}
   @argument[sidebar]{a @class{gtk:places-sidebar} widget}
@@ -897,8 +898,8 @@ lambda (sidebar mount)    :run-first
 ;;; gtk_places_sidebar_remove_shortcut ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_places_sidebar_remove_shortcut" places-sidebar-remove-shortcut)
-    :void
+(cffi:defcfun ("gtk_places_sidebar_remove_shortcut"
+               places-sidebar-remove-shortcut) :void
  #+liber-documentation
  "@version{#2023-3-6}
   @argument[sidebar]{a @class{gtk:places-sidebar} widget}
@@ -919,8 +920,8 @@ lambda (sidebar mount)    :run-first
 ;;; gtk_places_sidebar_list_shortcuts ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_places_sidebar_list_shortcuts" places-sidebar-list-shortcuts)
-    (g:slist-t g:file-as-namestring)
+(cffi:defcfun ("gtk_places_sidebar_list_shortcuts"
+               places-sidebar-list-shortcuts) (g:slist-t g:file-as-namestring)
  #+liber-documentation
  "@version{#2023-3-6}
   @argument[sidebar]{a @class{gtk:places-sidebar} widget}
@@ -940,10 +941,10 @@ lambda (sidebar mount)    :run-first
 ;;; gtk_places_sidebar_get_nth_bookmark ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_places_sidebar_get_nth_bookmark" places-sidebar-nth-bookmark)
-    g:file-as-namestring
+(cffi:defcfun ("gtk_places_sidebar_get_nth_bookmark"
+               places-sidebar-nth-bookmark) g:file-as-namestring
  #+liber-documentation
- "@version{#2023-3-6}
+ "@version{#2023-7-13}
   @argument[sidebar]{a @class{gtk:places-sidebar} widget}
   @argument[n]{an integer with the index of bookmark to query}
   @return{An namestring with the bookmark specified by the index @arg{n}, or
@@ -956,7 +957,8 @@ lambda (sidebar mount)    :run-first
   This function is used by the @class{gtk:file-chooser} widget to implement the
   @kbd{Alt-1}, @kbd{Alt-2}, etc. shortcuts, which activate the cooresponding
   bookmark.
-  @see-class{gtk:places-sidebar}"
+  @see-class{gtk:places-sidebar}
+  @see-class{gtk:file-chooser}"
   (sidebar (g:object places-sidebar))
   (n :int))
 
@@ -966,8 +968,8 @@ lambda (sidebar mount)    :run-first
 ;;; gtk_places_sidebar_set_drop_targets_visible ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_places_sidebar_set_drop_targets_visible"
-           places-sidebar-set-drop-targets-visible) :void
+(cffi:defcfun ("gtk_places_sidebar_set_drop_targets_visible"
+               places-sidebar-set-drop-targets-visible) :void
  #+liber-documentation
  "@version{#2023-3-6}
   @argument[sidebar]{a @class{gtk:places-sidebar} widget}

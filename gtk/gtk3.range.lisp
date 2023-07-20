@@ -116,7 +116,7 @@
 ;;; enum GtkSensitivityType
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkSensitivityType" sensitivity-type
+(gobject:define-g-enum "GtkSensitivityType" sensitivity-type
   (:export t
    :type-initializer "gtk_sensitivity_type_get_type")
   (:auto 0)
@@ -133,7 +133,7 @@
     range widgets.
   @end{short}
   @begin{pre}
-(define-g-enum \"GtkSensitivityType\" sensitivity-type
+(gobject:define-g-enum \"GtkSensitivityType\" sensitivity-type
   (:export t
    :type-initializer \"gtk_sensitivity_type_get_type\")
   (:auto 0)
@@ -151,7 +151,7 @@
 ;;; struct GtkRange
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkRange" range
+(gobject:define-g-object-class "GtkRange" range
   (:superclass widget
    :export t
    :interfaces ("AtkImplementorIface"
@@ -698,7 +698,7 @@ lambda (range)    :run-last
                         :void)
   flippable)
 
-(defcfun ("gtk_range_get_flippable" range-flippable) :boolean
+(cffi:defcfun ("gtk_range_get_flippable" range-flippable) :boolean
  #+liber-documentation
  "@version{#2023-3-22}
   @syntax[]{gtk:range-flippable range) => flippable}
@@ -728,7 +728,7 @@ lambda (range)    :run-last
                         :void)
   min-size)
 
-(defcfun ("gtk_range_get_min_slider_size" range-min-slider-size) :int
+(cffi:defcfun ("gtk_range_get_min_slider_size" range-min-slider-size) :int
  #+liber-documentation
  "@version{#2023-3-22}
   @syntax[]{(gtk:range-min-slider-size range) => min-size}
@@ -757,7 +757,7 @@ lambda (range)    :run-last
 ;;; gtk_range_get_range_rect () -> range-range-rect
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_range_get_range_rect" %range-get-range-rect) :void
+(cffi:defcfun ("gtk_range_get_range_rect" %range-get-range-rect) :void
   (range (g:object range))
   (range-rect (g:boxed gdk:rectangle)))
 
@@ -782,7 +782,7 @@ lambda (range)    :run-last
 ;;; gtk_range_get_slider_range () -> range-slider-range
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_range_get_slider_range" %range-get-slider-range) :void
+(cffi:defcfun ("gtk_range_get_slider_range" %range-get-slider-range) :void
   (range (g:object range))
   (slider-start (:pointer :int))
   (slider-end (:pointer :int)))
@@ -802,7 +802,7 @@ lambda (range)    :run-last
   @end{short}
   This function is useful mainly for @class{gtk:range} subclasses.
   @see-class{gtk:range}"
-  (with-foreign-objects ((slider-start :int) (slider-end :int))
+  (cffi:with-foreign-objects ((slider-start :int) (slider-end :int))
     (%range-get-slider-range range slider-start slider-end)
     (values (if (not (cffi:null-pointer-p slider-start))
                 (cffi:mem-ref slider-start :int)
@@ -825,7 +825,8 @@ lambda (range)    :run-last
                         :void)
   size-fixed)
 
-(defcfun ("gtk_range_get_slider_size_fixed" range-slider-size-fixed) :boolean
+(cffi:defcfun ("gtk_range_get_slider_size_fixed" range-slider-size-fixed)
+    :boolean
  #+liber-documentation
  "@version{#2023-3-22}
   @syntax[]{(gtk:range-slider-size-fixed range) => size-fixed}

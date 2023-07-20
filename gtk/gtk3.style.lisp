@@ -128,7 +128,7 @@
 ;;; };
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkStyle" style
+(gobject:define-g-object-class "GtkStyle" style
   (:superclass g:object
    :export nil
    :interfaces nil
@@ -380,7 +380,7 @@
 ;;; gtk_style_lookup_icon_set ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_lookup_icon_set" style-lookup-icon-set)
+(cffi:defcfun ("gtk_style_lookup_icon_set" style-lookup-icon-set)
     (g:boxed icon-set)
  #+liber-documentation
  "@version{#2021-3-30}

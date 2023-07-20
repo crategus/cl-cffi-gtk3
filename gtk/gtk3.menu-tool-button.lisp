@@ -76,7 +76,7 @@
 ;;; struct GtkMenuToolButton
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkMenuToolButton" menu-tool-button
+(gobject:define-g-object-class "GtkMenuToolButton" menu-tool-button
   (:superclass tool-button
    :export t
    :interfaces ("AtkImplementorIface"
@@ -225,8 +225,8 @@ lambda (button)    :run-first
 ;;; gtk_menu_tool_button_set_arrow_tooltip_text ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_menu_tool_button_set_arrow_tooltip_text"
-           menu-tool-button-set-arrow-tooltip-text) :void
+(cffi:defcfun ("gtk_menu_tool_button_set_arrow_tooltip_text"
+               menu-tool-button-set-arrow-tooltip-text) :void
  #+liber-documentation
  "@version{#2023-2-27}
   @argument[button]{a @class{gtk:menu-tool-button} widget}
@@ -249,8 +249,8 @@ lambda (button)    :run-first
 ;;; gtk_menu_tool_button_set_arrow_tooltip_markup ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_menu_tool_button_set_arrow_tooltip_markup"
-           menu-tool-button-set-arrow-tooltip-markup) :void
+(cffi:defcfun ("gtk_menu_tool_button_set_arrow_tooltip_markup"
+               menu-tool-button-set-arrow-tooltip-markup) :void
  #+liber-documentation
  "@version{#2023-2-27}
   @argument[button]{a @class{gtk:menu-tool-button} widget}

@@ -72,7 +72,7 @@
 ;;; struct GtkRadioAction
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkRadioAction" radio-action
+(gobject:define-g-object-class "GtkRadioAction" radio-action
   (:superclass toggle-action
    :export t
    :interfaces ("GtkBuildable")
@@ -148,9 +148,9 @@ lambda (action current)    :no-recurse
     Accessor of the @slot[gtk:radio-acton]{current-value} slot of the
     @class{gtk:radio-action} class.
   @end{short}
-  The @sym{gtk:radio-action-current-value} function obtains the value property 
-  of the currently active member of the group to which the radio action belongs. 
-  The @sym{(setf gtk:radio-action-current-value)} function sets the currently 
+  The @sym{gtk:radio-action-current-value} function obtains the value property
+  of the currently active member of the group to which the radio action belongs.
+  The @sym{(setf gtk:radio-action-current-value)} function sets the currently
   active group member.
   @begin[Warning]{dictionary}
     The @sym{gtk:radio-action-current-value} function has been deprecated since
@@ -179,8 +179,8 @@ lambda (action current)    :no-recurse
     Accessor of the @slot[gtk:radio-action]{group} slot of the
     @class{gtk:radio-action} class.
   @end{short}
-  The @sym{gtk:radio-action-group} function returns the list representing the 
-  radio group for this object. The @sym{(setf gtk:radio-action-group)} function 
+  The @sym{gtk:radio-action-group} function returns the list representing the
+  radio group for this object. The @sym{(setf gtk:radio-action-group)} function
   sets the radio group.
 
   Note that the returned list is only valid until the next change to the group.
@@ -240,7 +240,7 @@ while (/* more actions to add */)
 ;;; gtk_radio_action_new ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_radio_action_new" radio-action-new) (g:object radio-action)
+(cffi:defcfun ("gtk_radio_action_new" radio-action-new) (g:object radio-action)
  #+liber-documentation
  "@version{#2023-3-22}
   @argument[name]{a string with the unique name for the action}
@@ -250,7 +250,7 @@ while (/* more actions to add */)
   @argument[stock-id]{a string with the stock icon to display in widgets
     representing this action, or @code{nil}}
   @argument[value]{an integer with the value which the
-    @fun{gtk:radio-action-current-value} function should return if this action 
+    @fun{gtk:radio-action-current-value} function should return if this action
     is selected}
   @return{A new @class{gtk:radio-action} object.}
   @begin{short}
@@ -278,7 +278,7 @@ while (/* more actions to add */)
 ;;; gtk_radio_action_join_group ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_radio_action_join_group" radio-action-join-group) :void
+(cffi:defcfun ("gtk_radio_action_join_group" radio-action-join-group) :void
  #+liber-documentation
  "@version{#2023-3-22}
   @argument[action]{a @class{gtk:radio-action} object}

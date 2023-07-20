@@ -75,7 +75,7 @@
 ;;; enum GtkPackDirection
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkPackDirection" pack-direction
+(gobject:define-g-enum "GtkPackDirection" pack-direction
   (:export t
    :type-initializer "gtk_pack_direction_get_type")
   (:ltr 0)
@@ -93,7 +93,7 @@
     contained in menubars.
   @end{short}
   @begin{pre}
-(define-g-enum \"GtkPackDirection\" pack-direction
+(gobject:define-g-enum \"GtkPackDirection\" pack-direction
   (:export t
    :type-initializer \"gtk_pack_direction_get_type\")
   (:ltr 0)
@@ -113,7 +113,7 @@
 ;;; struct GtkMenuBar
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkMenuBar" menu-bar
+(gobject:define-g-object-class "GtkMenuBar" menu-bar
   (:superclass menu-shell
    :export t
    :interfaces ("AtkImplementorIface"
@@ -260,7 +260,7 @@
 ;;; gtk_menu_bar_new_from_model ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_menu_bar_new_from_model" menu-bar-new-from-model)
+(cffi:defcfun ("gtk_menu_bar_new_from_model" menu-bar-new-from-model)
     (g:object menu-bar)
  #+liber-documentation
  "@version{#2023-3-21}

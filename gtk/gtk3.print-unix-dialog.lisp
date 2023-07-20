@@ -90,7 +90,7 @@
 ;;; enum GtkPrintCapabilities
 ;;; ----------------------------------------------------------------------------
 
-(define-g-flags "GtkPrintCapabilities" print-capabilities
+(gobject:define-g-flags "GtkPrintCapabilities" print-capabilities
   (:export t
    :type-initializer "gtk_print_capabilities_get_type")
   (:page-set         #.(ash 1 0))
@@ -115,7 +115,7 @@
   If neither @code{:generate-pdf} nor @code{:generate-ps} is specified, GTK
   assumes that all formats are supported.
   @begin{pre}
-(define-g-enum \"GtkPrintCapabilities\" print-capabilities
+(gobject:define-g-enum \"GtkPrintCapabilities\" print-capabilities
   (:export t
    :type-initializer \"gtk_print_capabilities_get_type\")
   (:page-set         #.(ash 1 0))
@@ -151,7 +151,7 @@
 ;;; struct GtkPrintUnixDialog
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkPrintUnixDialog" print-unix-dialog
+(gobject:define-g-object-class "GtkPrintUnixDialog" print-unix-dialog
   (:superclass dialog
    :export t
    :interfaces ("AtkImplementorIface"
@@ -527,8 +527,8 @@
 ;;; gtk_print_unix_dialog_add_custom_tab ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_print_unix_dialog_add_custom_tab"
-           print-unix-dialog-add-custom-tab) :void
+(cffi:defcfun ("gtk_print_unix_dialog_add_custom_tab"
+               print-unix-dialog-add-custom-tab) :void
  #+liber-documentation
  "@version{#2023-2-8}
   @argument[dialog]{a @class{gtk:print-unix-dialog} widget}
@@ -549,8 +549,8 @@
 ;;; gtk_print_unix_dialog_get_page_setup_set ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_print_unix_dialog_get_page_setup_set"
-           print-unix-dialog-page-setup-set) :boolean
+(cffi:defcfun ("gtk_print_unix_dialog_get_page_setup_set"
+               print-unix-dialog-page-setup-set) :boolean
  #+liber-documentation
  "@version{#2023-2-8}
   @argument[dialog]{a @class{gtk:print-unix-dialog} widget}

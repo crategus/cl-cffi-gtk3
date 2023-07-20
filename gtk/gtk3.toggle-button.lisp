@@ -35,6 +35,13 @@
 ;;;
 ;;;     GtkToggleButton
 ;;;
+;;; Accessors
+;;;
+;;;     gtk_toggle_button_get_active
+;;;     gtk_toggle_button_set_active
+;;;     gtk_toggle_button_get_inconsistent
+;;;     gtk_toggle_button_set_inconsistent
+;;;
 ;;; Functions
 ;;;
 ;;;     gtk_toggle_button_new
@@ -43,10 +50,6 @@
 ;;;     gtk_toggle_button_set_mode
 ;;;     gtk_toggle_button_get_mode
 ;;;     gtk_toggle_button_toggled
-;;;     gtk_toggle_button_get_active                       Accessor
-;;;     gtk_toggle_button_set_active                       Accessor
-;;;     gtk_toggle_button_get_inconsistent                 Accessor
-;;;     gtk_toggle_button_set_inconsistent                 Accessor
 ;;;
 ;;; Properties
 ;;;
@@ -82,7 +85,7 @@
 ;;; GtkToggleButton
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkToggleButton" toggle-button
+(gobject:define-g-object-class "GtkToggleButton" toggle-button
   (:superclass button
    :export t
    :interfaces ("AtkImplementorIface"
@@ -229,9 +232,9 @@ lambda (togglebutton)    :run-first
     Accessor of the @slot[gtk:toggle-button]{active} slot of the
     @class{gtk:toggle-button} class.
   @end{short}
-  The @sym{gtk:toggle-button-active} function queries a toggle button and 
-  returns its current state. Returns @em{true} if the toggle button is pressed 
-  in and @em{false} if it is raised. The @sym{(setf gtk:toggle-button-active)} 
+  The @sym{gtk:toggle-button-active} function queries a toggle button and
+  returns its current state. Returns @em{true} if the toggle button is pressed
+  in and @em{false} if it is raised. The @sym{(setf gtk:toggle-button-active)}
   function sets the status of the toggle button.
 
   This action causes the \"toggled\" signal to be emitted.
@@ -345,8 +348,8 @@ lambda (togglebutton)    :run-first
 
 ;; TODO: Rewrite the implementation in terms of the function make-instance
 
-(defcfun ("gtk_toggle_button_new_with_mnemonic"
-           toggle-button-new-with-mnemonic) (g:object widget)
+(cffi:defcfun ("gtk_toggle_button_new_with_mnemonic"
+               toggle-button-new-with-mnemonic) (g:object widget)
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[label]{a string with the text of the button, with an underscore in
@@ -355,7 +358,7 @@ lambda (togglebutton)    :run-first
   @begin{short}
     Creates a new toggle button containing a label.
   @end{short}
-  The label will be created using the @fun{gtk:label-new-with-mnemonic} 
+  The label will be created using the @fun{gtk:label-new-with-mnemonic}
   function, so underscores in label indicate the mnemonic for the button.
   @see-class{gtk:toggle-button}
   @see-function{gtk:toggle-button-new}
@@ -394,7 +397,7 @@ lambda (togglebutton)    :run-first
   normal button.
 
   This function only affects instances of classes like the
-  @class{gtk:check-button} and @class{gtk:radio-button} classes that derive 
+  @class{gtk:check-button} and @class{gtk:radio-button} classes that derive
   from the @class{gtk:toggle-button} class, not instances of the
   @class{gtk:toggle-button} class itself.
   @begin[Note]{dictionary}
@@ -411,7 +414,7 @@ lambda (togglebutton)    :run-first
 ;;; gtk_toggle_button_toggled ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_toggle_button_toggled" toggle-button-toggled) :void
+(cffi:defcfun ("gtk_toggle_button_toggled" toggle-button-toggled) :void
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[button]{a @class{gtk:toggle-button} widget}

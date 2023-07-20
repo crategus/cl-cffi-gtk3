@@ -62,7 +62,7 @@
 ;;; struct GtkTextMark
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkTextMark" text-mark
+(gobject:define-g-object-class "GtkTextMark" text-mark
   (:superclass g:object
    :export t
    :interfaces nil
@@ -179,14 +179,14 @@
     Creates a text mark.
   @end{short}
   Add the text mark to a text buffer using the @fun{gtk:text-buffer-add-mark}
-  function. If the @arg{name} argument is @code{nil}, the text mark is 
-  anonymous. Otherwise, the text mark can be retrieved by @arg{name} using the 
+  function. If the @arg{name} argument is @code{nil}, the text mark is
+  anonymous. Otherwise, the text mark can be retrieved by @arg{name} using the
   @fun{gtk:text-buffer-mark} function. If a text mark has left gravity, and text
   is inserted at the text mark's current location, the text mark will be moved
   to the left of the newly inserted text. If the text mark has right gravity,
-  the @arg{gravity} argument is @em{false}, the text mark will end up on the 
-  right of newly inserted text. The standard left-to-right cursor is a text 
-  mark with right gravity, when you type, the cursor stays on the right side of 
+  the @arg{gravity} argument is @em{false}, the text mark will end up on the
+  right of newly inserted text. The standard left-to-right cursor is a text
+  mark with right gravity, when you type, the cursor stays on the right side of
   the text you are typing.
   @see-class{gtk:text-mark}
   @see-function{gtk:text-buffer-mark}
@@ -212,7 +212,7 @@
                         :void)
   visibility)
 
-(defcfun ("gtk_text_mark_get_visible" text-mark-visible) :boolean
+(cffi:defcfun ("gtk_text_mark_get_visible" text-mark-visible) :boolean
  #+liber-documentation
  "@version{#2023-3-15}
   @syntax[]{(gtk:text-mark-visible mark) => visibility}
@@ -240,7 +240,7 @@
 ;;; gtk_text_mark_get_deleted () -> text-mark-deleted
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_text_mark_get_deleted" text-mark-deleted) :boolean
+(cffi:defcfun ("gtk_text_mark_get_deleted" text-mark-deleted) :boolean
  #+liber-documentation
  "@version{#2023-3-15}
   @argument[mark]{a @class{gtk:text-mark} object}
@@ -262,7 +262,8 @@
 ;;; gtk_text_mark_get_buffer () -> text-mark-buffer
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_text_mark_get_buffer" text-mark-buffer) (g:object text-buffer)
+(cffi:defcfun ("gtk_text_mark_get_buffer" text-mark-buffer)
+    (g:object text-buffer)
  #+liber-documentation
  "@version{#2023-3-15}
   @argument[mark]{a @class{gtk:text-mark} object}

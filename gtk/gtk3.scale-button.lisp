@@ -83,7 +83,7 @@
 ;;; struct GtkScaleButton
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkScaleButton" scale-button
+(gobject:define-g-object-class "GtkScaleButton" scale-button
   (:superclass button
    :export t
    :interfaces ("AtkImplementorIface"
@@ -186,8 +186,8 @@ lambda (button value)    :run-last
     Accessor of the @slot[gtk:scale-button]{adjustment} slot of the
     @class{gtk:scale-button} class.
   @end{short}
-  The @sym{gtk:scale-button-adjustment} function gets the adjustment associated 
-  with the scale button. The @sym{(setf gtk:scale-button-adjustment)} function 
+  The @sym{gtk:scale-button-adjustment} function gets the adjustment associated
+  with the scale button. The @sym{(setf gtk:scale-button-adjustment)} function
   sets the adjustment.
   @see-class{gtk:scale-button}
   @see-class{gtk:adjustment}")
@@ -220,8 +220,8 @@ lambda (button value)    :run-last
     Accessor of the @slot[gtk:scale-button]{icons} slot of the
     @class{gtk:scale-button} class.
   @end{short}
-  The @sym{(setf gtk:scale-button-icons} function sets the icons to be used by 
-  the scale button. The @sym{(setf gtk:scale-button-icons)} function sets the 
+  The @sym{(setf gtk:scale-button-icons} function sets the icons to be used by
+  the scale button. The @sym{(setf gtk:scale-button-icons)} function sets the
   icons.
 
   The names of the icons to be used by the scale button. The first item in
@@ -281,8 +281,8 @@ lambda (button value)    :run-last
     Accessor of the @slot[gtk:scale-button]{value} slot of the
     @class{gtk:scale-button} class.
   @end{short}
-  The @sym{gtk:scale-button-value} function gets the current value of the scale 
-  button. The @sym{(setf gtk:scale-button-value)} function sets the current 
+  The @sym{gtk:scale-button-value} function gets the current value of the scale
+  button. The @sym{(setf gtk:scale-button-value)} function sets the current
   value.
 
   If the value is outside the minimum or maximum range values, it will be
@@ -334,7 +334,7 @@ lambda (button value)    :run-last
 ;;; gtk_scale_button_get_popup () -> scale-button-popup
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_scale_button_get_popup" scale-button-popup) (g:object widget)
+(cffi:defcfun ("gtk_scale_button_get_popup" scale-button-popup) (g:object widget)
  #+liber-documentation
  "@version{#2023-3-24}
   @argument[button]{a @class{gtk:scale-button} widget}
@@ -350,7 +350,7 @@ lambda (button value)    :run-last
 ;;; gtk_scale_button_get_plus_button () -> scale-button-plus-button
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_scale_button_get_plus_button" scale-button-plus-button)
+(cffi:defcfun ("gtk_scale_button_get_plus_button" scale-button-plus-button)
     (g:object widget)
  #+liber-documentation
  "@version{#2023-3-24}
@@ -367,7 +367,7 @@ lambda (button value)    :run-last
 ;;; gtk_scale_button_get_minus_button () -> scale-button-minus-button
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_scale_button_get_minus_button" scale-button-minus-button)
+(cffi:defcfun ("gtk_scale_button_get_minus_button" scale-button-minus-button)
     (g:object widget)
  #+liber-documentation
  "@version{#2023-3-24}

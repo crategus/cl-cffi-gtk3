@@ -131,7 +131,7 @@
 ;;; enum GtkArrowPlacement
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkArrowPlacement" arrow-placement
+(gobject:define-g-enum "GtkArrowPlacement" arrow-placement
   (:export t
    :type-initializer "gtk_arrow_placement_get_type")
   (:both 0)
@@ -147,7 +147,7 @@
     Used to specify the placement of scroll arrows in scrolling menus.
   @end{short}
   @begin{pre}
-(define-g-enum \"GtkArrowPlacement\" arrow-placement
+(gobject:define-g-enum \"GtkArrowPlacement\" arrow-placement
   (:export t
    :type-initializer \"gtk_arrow_placement_get_type\")
   (:both 0)
@@ -165,7 +165,7 @@
 ;;; struct GtkMenu
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkMenu" menu
+(gobject:define-g-object-class "GtkMenu" menu
   (:superclass menu-shell
    :export t
    :interfaces ("AtkImplementorIface"
@@ -1004,7 +1004,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 ;;; gtk_menu_new_from_model ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_menu_new_from_model" menu-new-from-model) (g:object widget)
+(cffi:defcfun ("gtk_menu_new_from_model" menu-new-from-model) (g:object widget)
  #+liber-documentation
  "@version{2023-3-21}
   @argument[model]{a @class{g:menu-model} object}
@@ -1030,7 +1030,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 ;;; gtk_menu_set_screen ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_menu_set_screen" menu-set-screen) :void
+(cffi:defcfun ("gtk_menu_set_screen" menu-set-screen) :void
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[menu]{a @class{gtk:menu} widget}
@@ -1048,7 +1048,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 ;;; gtk_menu_reorder_child ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_menu_reorder_child" menu-reorder-child) :void
+(cffi:defcfun ("gtk_menu_reorder_child" menu-reorder-child) :void
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[menu]{a @class{gtk:menu} widget}
@@ -1070,7 +1070,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 ;;; gtk_menu_attach ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_menu_attach" menu-attach) :void
+(cffi:defcfun ("gtk_menu_attach" menu-attach) :void
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[menu]{a @class{gtk:menu} widget}
@@ -1108,7 +1108,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 ;;; gtk_menu_popup_at_rect ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_menu_popup_at_rect" menu-popup-at-rect) :void
+(cffi:defcfun ("gtk_menu_popup_at_rect" menu-popup-at-rect) :void
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[menu]{a @class{gtk:menu} widget to pop up}
@@ -1165,7 +1165,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 ;;; gtk_menu_popup_at_widget ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_menu_popup_at_widget" menu-popup-at-widget) :void
+(cffi:defcfun ("gtk_menu_popup_at_widget" menu-popup-at-widget) :void
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[menu]{a @class{gtk:menu} widget to pop up}
@@ -1219,7 +1219,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 ;;; gtk_menu_popup_at_pointer ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_menu_popup_at_pointer" menu-popup-at-pointer) :void
+(cffi:defcfun ("gtk_menu_popup_at_pointer" menu-popup-at-pointer) :void
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[menu]{a @class{gtk:menu} widget}
@@ -1255,7 +1255,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 ;;; GtkMenuPositionFunc ()
 ;;; ----------------------------------------------------------------------------
 
-(defcallback menu-position-func :void
+(cffi:defcallback menu-position-func :void
     ((menu (g:object menu))
      (x :pointer)
      (y :pointer)
@@ -1312,7 +1312,7 @@ lambda (menu x y push)
 ;;; gtk_menu_popup_for_device ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_menu_popup_for_device" %menu-popup-for-device) :void
+(cffi:defcfun ("gtk_menu_popup_for_device" %menu-popup-for-device) :void
   (menu (g:object menu))
   (device (g:object gdk:device))
   (shell (g:object menu-shell))
@@ -1385,7 +1385,7 @@ lambda (menu x y push)
 ;;; gtk_menu_popup ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_menu_popup" %menu-popup) :void
+(cffi:defcfun ("gtk_menu_popup" %menu-popup) :void
   (menu (g:object menu))
   (shell (g:object menu-shell))
   (item (g:object menu-item))
@@ -1444,7 +1444,7 @@ lambda (menu x y push)
   @see-function{gtk:menu-popup-at-pointer}
   @see-function{gtk:menu-popup-at-rect}"
   (if func
-      (with-stable-pointer (ptr func)
+      (glib:with-stable-pointer (ptr func)
         (%menu-popup menu
                      shell
                      item
@@ -1466,7 +1466,7 @@ lambda (menu x y push)
 ;;; gtk_menu_place_on_monitor ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_menu_place_on_monitor" menu-place-on-monitor) :void
+(cffi:defcfun ("gtk_menu_place_on_monitor" menu-place-on-monitor) :void
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[menu]{a @class{gtk:menu} widget}
@@ -1483,7 +1483,7 @@ lambda (menu x y push)
 ;;; gtk_menu_popdown ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_menu_popdown" menu-popdown) :void
+(cffi:defcfun ("gtk_menu_popdown" menu-popdown) :void
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[menu]{a @class{gtk:menu} widget}
@@ -1497,7 +1497,7 @@ lambda (menu x y push)
 ;;; gtk_menu_reposition ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_menu_reposition" menu-reposition) :void
+(cffi:defcfun ("gtk_menu_reposition" menu-reposition) :void
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[menu]{a @class{gtk:menu} widget}
@@ -1529,7 +1529,7 @@ lambda (menu x y push)
 ;;; gtk_menu_attach_to_widget ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_menu_attach_to_widget" menu-attach-to-widget) :void
+(cffi:defcfun ("gtk_menu_attach_to_widget" menu-attach-to-widget) :void
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[menu]{a @class{gtk:menu} widget}
@@ -1555,7 +1555,7 @@ lambda (menu x y push)
 ;;; gtk_menu_detach ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_menu_detach" menu-detach) :void
+(cffi:defcfun ("gtk_menu_detach" menu-detach) :void
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[menu]{a @class{gtk:menu} widget}
@@ -1574,7 +1574,7 @@ lambda (menu x y push)
 ;;; gtk_menu_get_for_attach_widget () -> menu-for-attach-widget
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_menu_get_for_attach_widget" menu-for-attach-widget)
+(cffi:defcfun ("gtk_menu_get_for_attach_widget" menu-for-attach-widget)
     (g:list-t (g:object menu) :free-from-foreign nil)
  #+liber-documentation
  "@version{#2023-3-21}

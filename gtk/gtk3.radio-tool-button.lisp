@@ -72,7 +72,7 @@
 ;;; struct GtkRadioToolButton
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkRadioToolButton" radio-tool-button
+(gobject:define-g-object-class "GtkRadioToolButton" radio-tool-button
   (:superclass toggle-tool-button
     :export t
     :interfaces ("AtkImplementorIface"
@@ -135,7 +135,7 @@
 ;;; gtk_radio_tool_button_new ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_radio_tool_button_new" radio-tool-button-new)
+(cffi:defcfun ("gtk_radio_tool_button_new" radio-tool-button-new)
     (g:object tool-item)
  #+liber-documentation
  "@version{#2023-3-22}
@@ -154,7 +154,7 @@
 ;;; gtk_radio_tool_button_new_from_stock ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_radio_tool_button_new_from_stock"
+(cffi:defcfun ("gtk_radio_tool_button_new_from_stock"
            radio-tool-button-new-from-stock) (g:object tool-item)
  #+liber-documentation
  "@version{#2023-3-22}
@@ -183,7 +183,7 @@
 ;;; gtk_radio_tool_button_new_from_widget ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_radio_tool_button_new_from_widget"
+(cffi:defcfun ("gtk_radio_tool_button_new_from_widget"
            radio-tool-button-new-from-widget) (g:object tool-item)
  #+liber-documentation
  "@version{#2022-3-22}
@@ -202,8 +202,9 @@
 ;;; gtk_radio_tool_button_new_with_stock_from_widget ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_radio_tool_button_new_with_stock_from_widget"
-           radio-tool-button-new-with-stock-from-widget) (g:object tool-item)
+(cffi:defcfun ("gtk_radio_tool_button_new_with_stock_from_widget"
+               radio-tool-button-new-with-stock-from-widget)
+    (g:object tool-item)
  #+liber-documentation
  "@version{#2023-3-22}
   @argument[group]{an existing @class{gtk:radio-tool-button} widget}
@@ -230,7 +231,7 @@
 ;;; gtk_radio_tool_button_get_group ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_radio_tool_button_get_group" radio-tool-button-get-group)
+(cffi:defcfun ("gtk_radio_tool_button_get_group" radio-tool-button-get-group)
     (g:slist-t (g:object radio-tool-button) :free-from-foreign nil)
  #+liber-documentation
  "@version{#2023-3-22}
@@ -246,7 +247,8 @@
 ;;; gtk_radio_tool_button_set_group ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_radio_tool_button_set_group" radio-tool-button-set-group) :void
+(cffi:defcfun ("gtk_radio_tool_button_set_group" radio-tool-button-set-group)
+    :void
  #+liber-documentation
  "@version{#2023-3-22}
   @argument[button]{a @class{gtk:radio-tool-button} widget}

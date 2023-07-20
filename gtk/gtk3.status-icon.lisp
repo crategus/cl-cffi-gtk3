@@ -112,7 +112,7 @@
 ;;; struct GtkStatusIcon
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkStatusIcon" status-icon
+(gobject:define-g-object-class "GtkStatusIcon" status-icon
   (:superclass g:object
    :export t
    :interfaces nil
@@ -908,7 +908,7 @@ lambda (icon size)    :run-last
 ;;; gtk_status_icon_new_from_pixbuf ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_status_icon_new_from_pixbuf" status-icon-new-from-pixbuf)
+(cffi:defcfun ("gtk_status_icon_new_from_pixbuf" status-icon-new-from-pixbuf)
     (g:object status-icon)
  #+liber-documentation
  "@version{#2023-3-27}
@@ -933,7 +933,7 @@ lambda (icon size)    :run-last
 ;;; gtk_status_icon_new_from_file ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_status_icon_new_from_file" status-icon-new-from-file)
+(cffi:defcfun ("gtk_status_icon_new_from_file" status-icon-new-from-file)
     (g:object status-icon)
  #+liber-documentation
  "@version{#2023-3-27}
@@ -957,7 +957,7 @@ lambda (icon size)    :run-last
 ;;; gtk_status_icon_new_from_stock ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_status_icon_new_from_stock" status-icon-new-from-stock)
+(cffi:defcfun ("gtk_status_icon_new_from_stock" status-icon-new-from-stock)
     (g:object status-icon)
  #+liber-documentation
  "@version{#2023-3-27}
@@ -980,8 +980,8 @@ lambda (icon size)    :run-last
 ;;; gtk_status_icon_new_from_icon_name ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_status_icon_new_from_icon_name" status-icon-new-from-icon-name)
-    (g:object status-icon)
+(cffi:defcfun ("gtk_status_icon_new_from_icon_name"
+               status-icon-new-from-icon-name) (g:object status-icon)
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[name]{a string with an icon name}
@@ -1003,7 +1003,7 @@ lambda (icon size)    :run-last
 ;;; gtk_status_icon_new_from_gicon ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_status_icon_new_from_gicon" status-icon-new-from-gicon)
+(cffi:defcfun ("gtk_status_icon_new_from_gicon" status-icon-new-from-gicon)
     (g:object status-icon)
  #+liber-documentation
  "@version{#2023-3-27}
@@ -1027,7 +1027,8 @@ lambda (icon size)    :run-last
 ;;; gtk_status_icon_set_from_pixbuf ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_status_icon_set_from_pixbuf" status-icon-set-from-pixbuf) :void
+(cffi:defcfun ("gtk_status_icon_set_from_pixbuf" status-icon-set-from-pixbuf)
+    :void
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[icon]{a @class{gtk:status-icon} object}
@@ -1052,7 +1053,7 @@ lambda (icon size)    :run-last
 ;;; gtk_status_icon_set_from_file ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_status_icon_set_from_file" status-icon-set-from-file) :void
+(cffi:defcfun ("gtk_status_icon_set_from_file" status-icon-set-from-file) :void
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[icon]{a @class{gtk:status-icon} object}
@@ -1076,7 +1077,8 @@ lambda (icon size)    :run-last
 ;;; gtk_status_icon_set_from_stock ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_status_icon_set_from_stock" status-icon-set-from-stock) :void
+(cffi:defcfun ("gtk_status_icon_set_from_stock" status-icon-set-from-stock)
+    :void
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[icon]{a @class{gtk:status-icon} object}
@@ -1100,8 +1102,8 @@ lambda (icon size)    :run-last
 ;;; gtk_status_icon_set_from_icon_name ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_status_icon_set_from_icon_name"
-           status-icon-set-from-icon-name) :void
+(cffi:defcfun ("gtk_status_icon_set_from_icon_name"
+               status-icon-set-from-icon-name) :void
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[icon]{a @class{gtk:status-icon} object}
@@ -1126,7 +1128,8 @@ lambda (icon size)    :run-last
 ;;; gtk_status_icon_set_from_gicon ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_status_icon_set_from_gicon" status-icon-set-from-gicon) :void
+(cffi:defcfun ("gtk_status_icon_set_from_gicon" status-icon-set-from-gicon)
+    :void
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[icon]{a @class{gtk:status-icon} object}
@@ -1150,7 +1153,7 @@ lambda (icon size)    :run-last
 ;;; gtk_status_icon_set_name ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_status_icon_set_name" status-icon-set-name) :void
+(cffi:defcfun ("gtk_status_icon_set_name" status-icon-set-name) :void
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[icon]{a @class{gtk:status-icon} object}
@@ -1176,7 +1179,7 @@ lambda (icon size)    :run-last
 
 ;; TODO: Replace this code with a call to the accessor status-icon-embedded
 
-(defcfun ("gtk_status_icon_is_embedded" status-icon-is-embedded) :boolean
+(cffi:defcfun ("gtk_status_icon_is_embedded" status-icon-is-embedded) :boolean
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[icon]{a @class{gtk:status-icon} object}

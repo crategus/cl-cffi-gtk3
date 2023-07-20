@@ -103,7 +103,7 @@
 ;;; enum GtkToolbarSpaceStyle
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkToolbarSpaceStyle" toolbar-space-style
+(gobject:define-g-enum "GtkToolbarSpaceStyle" toolbar-space-style
   (:export t
    :type-initializer "gtk_toolbar_space_style_get_type")
   (:empty 0)
@@ -120,7 +120,7 @@
     version 3.20 and should not be used in newly written code.
   @end{dictionary}
   @begin{pre}
-(define-g-enum \"GtkToolbarSpaceStyle\" toolbar-space-style
+(gobject:define-g-enum \"GtkToolbarSpaceStyle\" toolbar-space-style
   (:export t
    :type-initializer \"gtk_toolbar_space_style_get_type\")
   (:empty 0)
@@ -132,7 +132,7 @@
 ;;; struct GtkToolbar
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkToolbar" toolbar
+(gobject:define-g-object-class "GtkToolbar" toolbar
   (:superclass container
    :export t
    :interfaces ("AtkImplementorIface"
@@ -351,8 +351,8 @@ lambda (toolbar style)    :run-first
     Accessor of the @slot[gtk:toolbar]{icon-size} slot of the
     @class{gtk:toolbar} class.
   @end{short}
-  The @sym{gtk:toolbar-icon-size} function retrieves the icon size for the 
-  toolbar. The @sym{(setf gtk:toolbar-icon-size)} function sets the size of 
+  The @sym{gtk:toolbar-icon-size} function retrieves the icon size for the
+  toolbar. The @sym{(setf gtk:toolbar-icon-size)} function sets the size of
   stock icons in the toolbar.
 
   You can call it both before you add the icons and after they have been added.
@@ -409,14 +409,14 @@ lambda (toolbar style)    :run-first
     Accessor of the @slot[gtk:toolbar]{show-arrow} slot of the
     @class{gtk:toolbar} class.
   @end{short}
-  The @sym{gtk:toolbar-show-arrow} function returns whether the toolbar has an 
-  overflow menu. The @sym{(setf gtk:toolbar-show-arrow)} function sets whether 
-  to show an overflow menu when the toolbar is not allocated enough size to show 
-  all of its items. If @em{true}, items which cannot fit in the toolbar, and 
-  which have a proxy menu item set by the @fun{gtk:tool-item-proxy-menu-item} 
-  function or a \"create-menu-proxy\" signal handler, will be available in an 
-  overflow menu, which can be opened by an added arrow button. If @em{false}, 
-  the toolbar will request enough size to fit all of its child items without 
+  The @sym{gtk:toolbar-show-arrow} function returns whether the toolbar has an
+  overflow menu. The @sym{(setf gtk:toolbar-show-arrow)} function sets whether
+  to show an overflow menu when the toolbar is not allocated enough size to show
+  all of its items. If @em{true}, items which cannot fit in the toolbar, and
+  which have a proxy menu item set by the @fun{gtk:tool-item-proxy-menu-item}
+  function or a \"create-menu-proxy\" signal handler, will be available in an
+  overflow menu, which can be opened by an added arrow button. If @em{false},
+  the toolbar will request enough size to fit all of its child items without
   any overflow.
   @see-class{gtk:toolbar}
   @see-function{gtk:tool-item-proxy-menu-item}")
@@ -444,9 +444,9 @@ lambda (toolbar style)    :run-first
     Accessor of the @slot[gtk:toolbar]{toolbar-style} slot of the
     @class{gtk:toolbar} class.
   @end{short}
-  The @sym{gtk:toolbar-toolbar-style} function retrieves whether the toolbar 
+  The @sym{gtk:toolbar-toolbar-style} function retrieves whether the toolbar
   has text, icons, or both. The @sym{(setf gtk:toolbar-toolbar-style)} function
-  alters the view of the toolbar to display either icons only, text only, or 
+  alters the view of the toolbar to display either icons only, text only, or
   both.
   @see-class{gtk:toolbar}
   @see-symbol{gtk:toolbar-style}
@@ -522,7 +522,7 @@ lambda (toolbar style)    :run-first
 ;;; gtk_toolbar_insert ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_toolbar_insert" toolbar-insert) :void
+(cffi:defcfun ("gtk_toolbar_insert" toolbar-insert) :void
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
@@ -547,7 +547,7 @@ lambda (toolbar style)    :run-first
 ;;; gtk_toolbar_get_item_index () -> toolbar-item-index
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_toolbar_get_item_index" toolbar-item-index) :int
+(cffi:defcfun ("gtk_toolbar_get_item_index" toolbar-item-index) :int
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
@@ -569,7 +569,7 @@ lambda (toolbar style)    :run-first
 ;;; gtk_toolbar_get_n_items () -> toolbar-n-items
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_toolbar_get_n_items" toolbar-n-items) :int
+(cffi:defcfun ("gtk_toolbar_get_n_items" toolbar-n-items) :int
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
@@ -586,7 +586,7 @@ lambda (toolbar style)    :run-first
 ;;; gtk_toolbar_get_nth_item () -> toolbar-nth-item
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_toolbar_get_nth_item" toolbar-nth-item) g:object
+(cffi:defcfun ("gtk_toolbar_get_nth_item" toolbar-nth-item) g:object
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
@@ -608,7 +608,7 @@ lambda (toolbar style)    :run-first
 ;;; gtk_toolbar_get_drop_index () -> toolbar-drop-index
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_toolbar_get_drop_index" toolbar-drop-index) :int
+(cffi:defcfun ("gtk_toolbar_get_drop_index" toolbar-drop-index) :int
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
@@ -633,8 +633,8 @@ lambda (toolbar style)    :run-first
 ;;; gtk_toolbar_set_drop_highlight_item ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_toolbar_set_drop_highlight_item" toolbar-set-drop-highlight-item) 
-    :void
+(cffi:defcfun ("gtk_toolbar_set_drop_highlight_item"
+               toolbar-set-drop-highlight-item) :void
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
@@ -663,7 +663,7 @@ lambda (toolbar style)    :run-first
 ;;; gtk_toolbar_unset_icon_size ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_toolbar_unset_icon_size" toolbar-unset-icon-size) :void
+(cffi:defcfun ("gtk_toolbar_unset_icon_size" toolbar-unset-icon-size) :void
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
@@ -681,7 +681,7 @@ lambda (toolbar style)    :run-first
 ;;; gtk_toolbar_get_relief_style () -> toolbar-relief-style
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_toolbar_get_relief_style" toolbar-relief-style) relief-style
+(cffi:defcfun ("gtk_toolbar_get_relief_style" toolbar-relief-style) relief-style
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
@@ -702,7 +702,7 @@ lambda (toolbar style)    :run-first
 ;;; gtk_toolbar_unset_style ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_toolbar_unset_style" toolbar-unset-style) :void
+(cffi:defcfun ("gtk_toolbar_unset_style" toolbar-unset-style) :void
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[toolbar]{a @class{gtk:toolbar} widget}

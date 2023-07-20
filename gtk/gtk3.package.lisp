@@ -30,41 +30,15 @@
 (in-package :cl-user)
 
 (defpackage :gtk
-  (:use :common-lisp :iterate)
-  (:export #:cl-cffi-gtk-build-info)
-  (:import-from :cffi       #:defcfun
-                            #:defcenum
-                            #:defbitfield
-                            #:defcallback
-                            #:defcstruct
-                            #:define-foreign-type
-                            #:define-parse-method
-                            #:with-foreign-slots
-                            #:with-foreign-object
-                            #:with-foreign-objects)
-  (:import-from :glib       #:+glib-major-version+
-                            #:+glib-minor-version+
-                            #:+glib-micro-version+
-                            #:+g-priority-default-idle+
-                            #:with-stable-pointer
-                            #:with-g-error
-                            #:with-ignore-g-error
-                            #:with-catching-to-g-error)
-  (:import-from :gobject    #:+g-type-none+
-                            #:+g-type-boolean+
-                            #:define-g-enum
-                            #:define-g-flags
-                            #:define-g-interface
-                            #:define-g-object-class
-                            #:define-cb-methods
-                            #:define-vtable
-
-                            #:parse-g-value
-                            #:set-g-value)
-  (:import-from :gdk        #:with-gdk-threads-lock)
-  (:import-from :gdk-pixbuf #:+gdk-pixbuf-version+)
-  (:import-from :pango      #:+pango-scale+
-                            #:+pango-scale-x-large+))
+  (:use :iterate :common-lisp)
+  (:import-from :cffi)
+  (:import-from :glib)
+  (:import-from :gobject)
+  (:import-from :gio)
+  (:import-from :gdk)
+  (:import-from :gdk-pixbuf)
+  (:import-from :pango)
+  (:import-from :cairo))
 
 (in-package :gtk)
 
@@ -3172,7 +3146,7 @@ setup_tree (void)
       @about-function{places-sidebar-add-shortcut}
       @about-function{places-sidebar-remove-shortcut}
       @about-function{places-sidebar-list-shortcuts}
-      @about-function{places-sidebar-get-nth-bookmark}
+      @about-function{places-sidebar-nth-bookmark}
       @about-function{places-sidebar-set-drop-targets-visible}
     @end{subsection}
   @end{section}

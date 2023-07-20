@@ -56,7 +56,7 @@
 ;;; GtkOrientable
 ;;; ----------------------------------------------------------------------------
 
-(define-g-interface "GtkOrientable" orientable
+(gobject:define-g-interface "GtkOrientable" orientable
   (:export t
    :type-initializer "gtk_orientable_get_type")
   ((orientation

@@ -230,7 +230,7 @@
 ;;; enum GtkTreeViewDropPosition
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkTreeViewDropPosition" tree-view-drop-position
+(gobject:define-g-enum "GtkTreeViewDropPosition" tree-view-drop-position
   (:export t
    :type-initializer "gtk_tree_view_drop_position_get_type")
   (:before 0)
@@ -247,7 +247,7 @@
     An enumumeration for determining where a dropped row goes in a tree view.
   @end{short}
   @begin{pre}
-(define-g-enum \"GtkTreeViewDropPosition\" tree-view-drop-position
+(gobject:define-g-enum \"GtkTreeViewDropPosition\" tree-view-drop-position
   (:export t
    :type-initializer \"gtk_tree_view_drop_position_get_type\")
   (:before 0)
@@ -267,7 +267,7 @@
 ;;; enum GtkTreeViewGridLines
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkTreeViewGridLines" tree-view-grid-lines
+(gobject:define-g-enum "GtkTreeViewGridLines" tree-view-grid-lines
   (:export t
    :type-initializer "gtk_tree_view_grid_lines_get_type")
   (:none 0)
@@ -284,7 +284,7 @@
     Used to indicate which grid lines to draw in a tree view.
   @end{short}
   @begin{pre}
-(define-g-enum \"GtkTreeViewGridLines\" tree-view-grid-lines
+(gobject:define-g-enum \"GtkTreeViewGridLines\" tree-view-grid-lines
   (:export t
    :type-initializer \"gtk_tree_view_grid_lines_get_type\")
   (:none 0)
@@ -304,7 +304,7 @@
 ;;; struct GtkTreeView
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkTreeView" tree-view
+(gobject:define-g-object-class "GtkTreeView" tree-view
   (:superclass container
    :export t
    :interfaces ("AtkImplementorIface"
@@ -1351,7 +1351,7 @@ lambda (view)    :action
 ;;; gtk_tree_view_get_selection () -> tree-view-selection
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_get_selection" tree-view-selection)
+(cffi:defcfun ("gtk_tree_view_get_selection" tree-view-selection)
     (g:object tree-selection)
  #+liber-documentation
  "@version{#2023-3-28}
@@ -1452,7 +1452,8 @@ lambda (view)    :action
 ;;; gtk_tree_view_columns_autosize ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_columns_autosize" tree-view-columns-autosize) :void
+(cffi:defcfun ("gtk_tree_view_columns_autosize" tree-view-columns-autosize)
+    :void
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[view]{a @class{gtk:tree-view} widget}
@@ -1469,7 +1470,7 @@ lambda (view)    :action
 ;;; gtk_tree_view_append_column ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_append_column" tree-view-append-column) :int
+(cffi:defcfun ("gtk_tree_view_append_column" tree-view-append-column) :int
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[view]{a @class{gtk:tree-view} widget}
@@ -1491,7 +1492,7 @@ lambda (view)    :action
 ;;; gtk_tree_view_remove_column ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_remove_column" tree-view-remove-column) :int
+(cffi:defcfun ("gtk_tree_view_remove_column" tree-view-remove-column) :int
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[view]{a @class{gtk:tree-view} widget}
@@ -1511,7 +1512,7 @@ lambda (view)    :action
 ;;; gtk_tree_view_insert_column ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_insert_column" tree-view-insert-column) :int
+(cffi:defcfun ("gtk_tree_view_insert_column" tree-view-insert-column) :int
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[view]{a @class{gtk:tree-view} widget}
@@ -1632,7 +1633,7 @@ lambda (view)    :action
 ;;; gtk_tree_view_get_n_columns () -> tree-view-n-columns
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_get_n_columns" tree-view-n-columns) :int
+(cffi:defcfun ("gtk_tree_view_get_n_columns" tree-view-n-columns) :int
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[view]{a @class{gtk:tree-view} widget}
@@ -1649,7 +1650,7 @@ lambda (view)    :action
 ;;; gtk_tree_view_get_column () -> tree-view-column
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_get_column" tree-view-column)
+(cffi:defcfun ("gtk_tree_view_get_column" tree-view-column)
     (g:object tree-view-column)
  #+liber-documentation
  "@version{#2023-3-28}
@@ -1674,7 +1675,7 @@ lambda (view)    :action
 ;;; gtk_tree_view_get_columns () -> tree-view-columns
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_get_columns" tree-view-columns)
+(cffi:defcfun ("gtk_tree_view_get_columns" tree-view-columns)
     (g:list-t (g:object tree-view-column))
  #+liber-documentation
  "@version{#2023-3-28}
@@ -1693,7 +1694,8 @@ lambda (view)    :action
 ;;; gtk_tree_view_move_column_after ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_move_column_after" tree-view-move-column-after) :void
+(cffi:defcfun ("gtk_tree_view_move_column_after" tree-view-move-column-after)
+    :void
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[view]{a @class{gtk:tree-view} widget}
@@ -1717,7 +1719,7 @@ lambda (view)    :action
 ;;; GtkTreeViewColumnDropFunc ()
 ;;; ----------------------------------------------------------------------------
 
-(defcallback tree-view-column-drop-func :boolean
+(cffi:defcallback tree-view-column-drop-func :boolean
     ((view (g:object tree-view))
      (column (g:object tree-view-column))
      (prev (g:object tree-view-column))
@@ -1764,8 +1766,8 @@ lambda (view)    :action
 ;;; gtk_tree_view_set_column_drag_function ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_set_column_drag_function"
-          %tree-view-set-column-drag-function) :void
+(cffi:defcfun ("gtk_tree_view_set_column_drag_function"
+               %tree-view-set-column-drag-function) :void
   (view (g:object tree-view))
   (func :pointer)
   (data :pointer)
@@ -1805,7 +1807,7 @@ lambda (view)    :action
 ;;; gtk_tree_view_scroll_to_point ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_scroll_to_point" tree-view-scroll-to-point) :void
+(cffi:defcfun ("gtk_tree_view_scroll_to_point" tree-view-scroll-to-point) :void
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[view]{a @class{gtk:tree-view} widget}
@@ -1835,7 +1837,7 @@ lambda (view)    :action
 ;;; gtk_tree_view_scroll_to_cell ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_scroll_to_cell" %tree-view-scroll-to-cell) :void
+(cffi:defcfun ("gtk_tree_view_scroll_to_cell" %tree-view-scroll-to-cell) :void
   (view (g:object tree-view))
   (path (g:boxed tree-path))
   (column (g:object tree-view-column))
@@ -1891,7 +1893,7 @@ lambda (view)    :action
 ;;; gtk_tree_view_set_cursor ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_set_cursor" %tree-view-set-cursor) :void
+(cffi:defcfun ("gtk_tree_view_set_cursor" %tree-view-set-cursor) :void
   (view (g:object tree-view))
   (path (g:boxed tree-path))
   (focus (g:object tree-view-column))
@@ -1930,7 +1932,7 @@ lambda (view)    :action
 ;;; gtk_tree_view_set_cursor_on_cell ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_set_cursor_on_cell" %tree-view-set-cursor-on-cell)
+(cffi:defcfun ("gtk_tree_view_set_cursor_on_cell" %tree-view-set-cursor-on-cell)
     :void
   (view (g:object tree-view))
   (path (g:boxed tree-path))
@@ -1975,7 +1977,7 @@ lambda (view)    :action
 ;;; gtk_tree_view_get_cursor ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_get_cursor" %tree-view-get-cursor) :void
+(cffi:defcfun ("gtk_tree_view_get_cursor" %tree-view-get-cursor) :void
   (view (g:object tree-view))
   (path :pointer)
   (focus :pointer))
@@ -1998,7 +2000,7 @@ lambda (view)    :action
   @see-class{gtk:tree-view}
   @see-class{gtk:tree-path}
   @see-class{gtk:tree-view-column}"
-  (with-foreign-objects ((path :pointer) (focus :pointer))
+  (cffi:with-foreign-objects ((path :pointer) (focus :pointer))
     (%tree-view-get-cursor view path focus)
     (values (cffi:mem-ref path '(g:boxed tree-path :return))
             (cffi:mem-ref focus '(g:object tree-view-column)))))
@@ -2009,7 +2011,7 @@ lambda (view)    :action
 ;;; gtk_tree_view_row_activated ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_row_activated" tree-view-row-activated) :void
+(cffi:defcfun ("gtk_tree_view_row_activated" tree-view-row-activated) :void
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[view]{a @class{gtk:tree-view} widget}
@@ -2031,7 +2033,7 @@ lambda (view)    :action
 ;;; gtk_tree_view_expand_all ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_expand_all" tree-view-expand-all) :void
+(cffi:defcfun ("gtk_tree_view_expand_all" tree-view-expand-all) :void
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[view]{a @class{gtk:tree-view} widget}
@@ -2047,7 +2049,7 @@ lambda (view)    :action
 ;;; gtk_tree_view_collapse_all ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_collapse_all" tree-view-collapse-all) :void
+(cffi:defcfun ("gtk_tree_view_collapse_all" tree-view-collapse-all) :void
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[view]{a @class{gtk:tree-view} widget}
@@ -2063,7 +2065,7 @@ lambda (view)    :action
 ;;; gtk_tree_view_expand_to_path ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_expand_to_path" tree-view-expand-to-path) :void
+(cffi:defcfun ("gtk_tree_view_expand_to_path" tree-view-expand-to-path) :void
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[view]{a @class{gtk:tree-view} widget}
@@ -2083,7 +2085,7 @@ lambda (view)    :action
 ;;; gtk_tree_view_expand_row ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_expand_row" tree-view-expand-row) :boolean
+(cffi:defcfun ("gtk_tree_view_expand_row" tree-view-expand-row) :boolean
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[view]{a @class{gtk:tree-view} widget}
@@ -2106,7 +2108,7 @@ lambda (view)    :action
 ;;; gtk_tree_view_collapse_row ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_collapse_row" tree-view-collapse-row) :boolean
+(cffi:defcfun ("gtk_tree_view_collapse_row" tree-view-collapse-row) :boolean
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[view]{a @class{gtk:tree-view} widget}
@@ -2126,7 +2128,7 @@ lambda (view)    :action
 ;;; GtkTreeViewMappingFunc ()
 ;;; ----------------------------------------------------------------------------
 
-(defcallback tree-view-mapping-func :void
+(cffi:defcallback tree-view-mapping-func :void
     ((view (g:object gkt-tree-view))
      (path (g:boxed tree-path))
      (data :pointer))
@@ -2159,7 +2161,8 @@ lambda (view path)
 ;;; gtk_tree_view_map_expanded_rows ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_map_expanded_rows" %tree-view-map-expanded-rows) :void
+(cffi:defcfun ("gtk_tree_view_map_expanded_rows" %tree-view-map-expanded-rows)
+    :void
   (view (g:object tree-view))
   (func :pointer)
   (data :pointer))
@@ -2175,7 +2178,7 @@ lambda (view path)
   @end{short}
   @see-class{gtk:tree-view}
   @see-symbol{gtk:tree-view-mapping-func}"
-  (with-stable-pointer (ptr func)
+  (glib:with-stable-pointer (ptr func)
     (%tree-view-map-expanded-rows view
                                   (cffi:callback tree-view-mapping-func)
                                   ptr)))
@@ -2186,7 +2189,7 @@ lambda (view path)
 ;;; gtk_tree_view_row_expanded ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_row_expanded" tree-view-row-expanded) :boolean
+(cffi:defcfun ("gtk_tree_view_row_expanded" tree-view-row-expanded) :boolean
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[view]{a @class{gtk:tree-view} widget}
@@ -2207,7 +2210,7 @@ lambda (view path)
 ;;; gtk_tree_view_get_path_at_pos () -> tree-view-path-at-pos
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_get_path_at_pos" %tree-view-path-at-pos) :boolean
+(cffi:defcfun ("gtk_tree_view_get_path_at_pos" %tree-view-path-at-pos) :boolean
   (view (g:object tree-view))
   (x :int)
   (y :int)
@@ -2260,10 +2263,10 @@ lambda (view path)
   @see-function{gtk:cell-renderer-render}
   @see-function{gtk:tree-view-bin-window}
   @see-function{gtk:tree-view-convert-widget-to-bin-window-coords}"
-  (with-foreign-objects ((path :pointer)
-                         (column :pointer)
-                         (cell-x :int)
-                         (cell-y :int))
+  (cffi:with-foreign-objects ((path :pointer)
+                              (column :pointer)
+                              (cell-x :int)
+                              (cell-y :int))
     (when (%tree-view-path-at-pos view
                                   x y
                                   path
@@ -2280,7 +2283,8 @@ lambda (view path)
 ;;; gtk_tree_view_is_blank_at_pos ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_is_blank_at_pos" %tree-view-is-blank-at-pos) :boolean
+(cffi:defcfun ("gtk_tree_view_is_blank_at_pos" %tree-view-is-blank-at-pos)
+    :boolean
   (view (g:object tree-view))
   (x :int)
   (y :int)
@@ -2331,10 +2335,10 @@ lambda (view path)
   @see-function{gtk:tree-view-bin-window}
   @see-function{gtk:tree-view-path-at-pos}
   @see-function{gtk:tree-view-convert-widget-to-bin-window-coords}"
-  (with-foreign-objects ((path :pointer)
-                         (column :pointer)
-                         (cell-x :int)
-                         (cell-y :int))
+  (cffi:with-foreign-objects ((path :pointer)
+                              (column :pointer)
+                              (cell-x :int)
+                              (cell-y :int))
     (when (%tree-view-is-blank-at-pos view
                                       x y
                                       path
@@ -2351,7 +2355,7 @@ lambda (view path)
 ;;; gtk_tree_view_get_cell_area () -> tree-view-cell-area
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_get_cell_area" %tree-view-cell-area) :void
+(cffi:defcfun ("gtk_tree_view_get_cell_area" %tree-view-cell-area) :void
   (view (g:object tree-view))
   (path (g:boxed tree-path))
   (column (g:object tree-view-column))
@@ -2392,7 +2396,8 @@ lambda (view path)
 ;;; gtk_tree_view_get_background_area ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_get_background_area" %tree-view-background-area) :void
+(cffi:defcfun ("gtk_tree_view_get_background_area" %tree-view-background-area)
+    :void
   (view (g:object tree-view))
   (path (g:boxed tree-path))
   (column (g:object tree-view-column))
@@ -2435,7 +2440,7 @@ lambda (view path)
 ;;; gtk_tree_view_get_visible_rect () -> tree-view-visible-rect
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_get_visible_rect" %tree-view-visible-rect) :void
+(cffi:defcfun ("gtk_tree_view_get_visible_rect" %tree-view-visible-rect) :void
   (view (g:object tree-view))
   (rectangle (g:boxed gdk:rectangle)))
 
@@ -2464,7 +2469,8 @@ lambda (view path)
 ;;; gtk_tree_view_get_visible_range () -> tree-view-visible-range
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_get_visible_range" %tree-view-visible-range) :boolean
+(cffi:defcfun ("gtk_tree_view_get_visible_range" %tree-view-visible-range)
+    :boolean
   (view (g:object tree-view))
   (start :pointer)
   (end :pointer))
@@ -2485,7 +2491,7 @@ lambda (view path)
   Note that there may be invisible paths in between.
   @see-class{gtk:tree-view}
   @see-class{gtk:tree-path}"
-  (with-foreign-objects ((start :pointer) (end :pointer))
+  (cffi:with-foreign-objects ((start :pointer) (end :pointer))
     (when (%tree-view-visible-range view start end)
       (values (cffi:mem-ref start '(g:boxed tree-path :return))
               (cffi:mem-ref end '(g:boxed tree-path :return))))))
@@ -2496,7 +2502,7 @@ lambda (view path)
 ;;; gtk_tree_view_get_bin_window () -> tree-view-bin-window
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_get_bin_window" tree-view-bin-window)
+(cffi:defcfun ("gtk_tree_view_get_bin_window" tree-view-bin-window)
     (g:object gdk:window)
  #+liber-documentation
  "@version{#2023-3-28}
@@ -2520,8 +2526,8 @@ lambda (view path)
 ;;; gtk_tree_view_convert_bin_window_to_tree_coords ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_convert_bin_window_to_tree_coords"
-          %tree-view-convert-bin-window-to-tree-coords) :void
+(cffi:defcfun ("gtk_tree_view_convert_bin_window_to_tree_coords"
+               %tree-view-convert-bin-window-to-tree-coords) :void
   (view (g:object tree-view))
   (x :int)
   (y :int)
@@ -2543,7 +2549,7 @@ lambda (view path)
     scrollable area of the tree view).
   @end{short}
   @see-class{gtk:tree-view}"
-  (with-foreign-objects ((tx :int) (ty :int))
+  (cffi:with-foreign-objects ((tx :int) (ty :int))
     (%tree-view-convert-bin-window-to-tree-coords view x y tx ty)
     (values (cffi:mem-ref tx :int)
             (cffi:mem-ref ty :int))))
@@ -2554,8 +2560,8 @@ lambda (view path)
 ;;; gtk_tree_view_convert_bin_window_to_widget_coords ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_convert_bin_window_to_widget_coords"
-          %tree-view-convert-bin-window-to-widget-coords) :void
+(cffi:defcfun ("gtk_tree_view_convert_bin_window_to_widget_coords"
+                %tree-view-convert-bin-window-to-widget-coords) :void
   (view (g:object tree-view))
   (x :int)
   (y :int)
@@ -2578,7 +2584,7 @@ lambda (view path)
   @end{short}
   @see-class{gtk:tree-view}
   @see-function{gtk:tree-view-bin-window}"
-  (with-foreign-objects ((wx :int) (wy :int))
+  (cffi:with-foreign-objects ((wx :int) (wy :int))
     (%tree-view-convert-bin-window-to-widget-coords view x y wx wy)
     (values (cffi:mem-ref wx :int)
             (cffi:mem-ref wy :int))))
@@ -2589,8 +2595,8 @@ lambda (view path)
 ;;; gtk_tree_view_convert_tree_to_bin_window_coords ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_convert_tree_to_bin_window_coords"
-          %tree-view-convert-tree-to-bin-window-coords) :void
+(cffi:defcfun ("gtk_tree_view_convert_tree_to_bin_window_coords"
+               %tree-view-convert-tree-to-bin-window-coords) :void
   (view (g:object tree-view))
   (x :int)
   (y :int)
@@ -2612,7 +2618,7 @@ lambda (view path)
     tree view, to bin window coordinates.
   @end{short}
   @see-class{gtk:tree-view}"
-  (with-foreign-objects ((bx :int) (by :int))
+  (cffi:with-foreign-objects ((bx :int) (by :int))
     (%tree-view-convert-tree-to-bin-window-coords view x y bx by)
     (values (cffi:mem-ref bx :int)
             (cffi:mem-ref by :int))))
@@ -2623,8 +2629,8 @@ lambda (view path)
 ;;; gtk_tree_view_convert_tree_to_widget_coords ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_convert_tree_to_widget_coords"
-          %tree-view-convert-tree-to-widget-coords) :void
+(cffi:defcfun ("gtk_tree_view_convert_tree_to_widget_coords"
+               %tree-view-convert-tree-to-widget-coords) :void
   (view g:object)
   (x :int)
   (y :int)
@@ -2646,7 +2652,7 @@ lambda (view path)
     tree, to widget coordinates.
   @end{short}
   @see-class{gtk:tree-view}"
-  (with-foreign-objects ((wx :int) (wy :int))
+  (cffi:with-foreign-objects ((wx :int) (wy :int))
     (%tree-view-convert-tree-to-widget-coords view x y wx wy)
     (values (cffi:mem-ref wx :int)
             (cffi:mem-ref wy :int))))
@@ -2657,8 +2663,8 @@ lambda (view path)
 ;;; gtk_tree_view_convert_widget_to_bin_window_coords ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_convert_widget_to_bin_window_coords"
-          %tree-view-convert-widget-to-bin-window-coords) :void
+(cffi:defcfun ("gtk_tree_view_convert_widget_to_bin_window_coords"
+               %tree-view-convert-widget-to-bin-window-coords) :void
   (tree-view g:object)
   (x :int)
   (y :int)
@@ -2681,7 +2687,7 @@ lambda (view path)
   @end{short}
   @see-class{gtk:tree-view}
   @see-function{gtk:tree-view-bin-window}"
-  (with-foreign-objects ((bx :int) (by :int))
+  (cffi:with-foreign-objects ((bx :int) (by :int))
     (%tree-view-convert-widget-to-bin-window-coords view x y bx by)
     (values (cffi:mem-ref bx :int)
             (cffi:mem-ref by :int))))
@@ -2692,8 +2698,8 @@ lambda (view path)
 ;;; gtk_tree_view_convert_widget_to_tree_coords ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_convert_widget_to_tree_coords"
-          %tree-view-convert-widget-to-tree-coords) :void
+(cffi:defcfun ("gtk_tree_view_convert_widget_to_tree_coords"
+               %tree-view-convert-widget-to-tree-coords) :void
   (tree-view g:object)
   (x :int)
   (y :int)
@@ -2715,7 +2721,7 @@ lambda (view path)
     scrollable area of the tree view.
   @end{short}
   @see-class{gtk:tree-view}"
-  (with-foreign-objects ((tx :int) (ty :int))
+  (cffi:with-foreign-objects ((tx :int) (ty :int))
     (%tree-view-convert-widget-to-tree-coords view x y tx ty)
     (values (cffi:mem-ref tx :int)
             (cffi:mem-ref ty :int))))
@@ -2726,8 +2732,8 @@ lambda (view path)
 ;;; gtk_tree_view_enable_model_drag_dest ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_enable_model_drag_dest"
-          %tree-view-enable-model-drag-dest) :void
+(cffi:defcfun ("gtk_tree_view_enable_model_drag_dest"
+               %tree-view-enable-model-drag-dest) :void
   (view (g:object tree-view))
   (targets :pointer)
   (n-targets :int)
@@ -2748,14 +2754,14 @@ lambda (view path)
   @see-symbol{gdk:drag-action}
   @see-function{gtk:tree-view-reorderable}"
   (let ((n-targets (length targets)))
-    (with-foreign-object (targets-ptr '(:struct %target-entry) n-targets)
+    (cffi:with-foreign-object (targets-ptr '(:struct %target-entry) n-targets)
       (loop for i from 0 below n-targets
             for target-ptr = (cffi:mem-aptr targets-ptr
                                        '(:struct %target-entry) i)
             for entry in targets
-            do (with-foreign-slots ((target flags info)
-                                    target-ptr
-                                    (:struct %target-entry))
+            do (cffi:with-foreign-slots ((target flags info)
+                                         target-ptr
+                                         (:struct %target-entry))
                  (setf target (first entry))
                  (setf flags (second entry))
                  (setf info (third entry))))
@@ -2770,8 +2776,8 @@ lambda (view path)
 ;;; gtk_tree_view_enable_model_drag_source ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_enable_model_drag_source"
-          %tree-view-enable-model-drag-source) :void
+(cffi:defcfun ("gtk_tree_view_enable_model_drag_source"
+               %tree-view-enable-model-drag-source) :void
   (view (g:object tree-view))
   (mask gdk:modifier-type)
   (targets :pointer)
@@ -2797,14 +2803,14 @@ lambda (view path)
   @see-symbol{gdk:drag-action}
   @see-function{gtk:tree-view-reorderable}"
   (let ((n-targets (length targets)))
-    (with-foreign-object (targets-ptr '(:struct %target-entry) n-targets)
+    (cffi:with-foreign-object (targets-ptr '(:struct %target-entry) n-targets)
       (loop for i from 0 below n-targets
             for target-ptr = (cffi:mem-aptr targets-ptr
                                        '(:struct %target-entry) i)
             for entry in targets
-            do (with-foreign-slots ((target flags info)
-                                    target-ptr
-                                    (:struct %target-entry))
+            do (cffi:with-foreign-slots ((target flags info)
+                                         target-ptr
+                                         (:struct %target-entry))
                  (setf target (first entry))
                  (setf flags (second entry))
                  (setf info (third entry))))
@@ -2820,8 +2826,8 @@ lambda (view path)
 ;;; gtk_tree_view_unset_rows_drag_source ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_unset_rows_drag_source"
-           tree-view-unset-rows-drag-source) :void
+(cffi:defcfun ("gtk_tree_view_unset_rows_drag_source"
+               tree-view-unset-rows-drag-source) :void
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[view]{a @class{gtk:tree-view} widget}
@@ -2842,8 +2848,8 @@ lambda (view path)
 ;;; gtk_tree_view_unset_rows_drag_dest ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_unset_rows_drag_dest"
-           tree-view-unset-rows-drag-dest) :void
+(cffi:defcfun ("gtk_tree_view_unset_rows_drag_dest"
+               tree-view-unset-rows-drag-dest) :void
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[view]{a @class{gtk:tree-view} widget}
@@ -2864,7 +2870,8 @@ lambda (view path)
 ;;; gtk_tree_view_set_drag_dest_row ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_set_drag_dest_row" tree-view-set-drag-dest-row) :void
+(cffi:defcfun ("gtk_tree_view_set_drag_dest_row" tree-view-set-drag-dest-row)
+    :void
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[view]{a @class{gtk:tree-view} widget}
@@ -2890,7 +2897,7 @@ lambda (view path)
 ;;; gtk_tree_view_get_drag_dest_row ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_get_drag_dest_row" %tree-view-get-drag-dest-row)
+(cffi:defcfun ("gtk_tree_view_get_drag_dest_row" %tree-view-get-drag-dest-row)
     :void
   (view (g:object tree-view))
   (path :pointer)
@@ -2913,7 +2920,7 @@ lambda (view path)
   @see-class{gtk:tree-path}
   @see-symbol{gtk:tree-view-drop-position}
   @see-function{gtk:tree-view-set-drag-dest-row}"
-  (with-foreign-objects ((path :pointer) (pos :pointer))
+  (cffi:with-foreign-objects ((path :pointer) (pos :pointer))
     (%tree-view-get-drag-dest-row view path pos)
     (values (cffi:mem-ref path '(g:boxed tree-path :return))
             (cffi:mem-ref pos 'tree-view-drop-position))))
@@ -2924,8 +2931,8 @@ lambda (view path)
 ;;; gtk_tree_view_get_dest_row_at_pos ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_get_dest_row_at_pos"
-          %tree-view-get-dest-row-at-pos) :boolean
+(cffi:defcfun ("gtk_tree_view_get_dest_row_at_pos"
+               %tree-view-get-dest-row-at-pos) :boolean
   (view (g:object tree-view))
   (drag-x :int)
   (drag-y :int)
@@ -2956,7 +2963,7 @@ lambda (view path)
   @see-class{gtk:tree-view}
   @see-class{gtk:tree-path}
   @see-symbol{gtk:tree-view-drop-position}"
-  (with-foreign-objects ((path :pointer) (pos :int))
+  (cffi:with-foreign-objects ((path :pointer) (pos :int))
     (when (%tree-view-get-dest-row-at-pos view x y path pos)
       (values (cffi:mem-ref path '(g:boxed tree-path :return))
               (cffi:mem-ref pos 'tree-view-drop-position)))))
@@ -2967,7 +2974,8 @@ lambda (view path)
 ;;; gtk_tree_view_create_row_drag_icon ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_create_row_drag_icon" tree-view-create-row-drag-icon)
+(cffi:defcfun ("gtk_tree_view_create_row_drag_icon"
+               tree-view-create-row-drag-icon)
     (:pointer (:struct cairo:surface-t))
  #+liber-documentation
  "@version{#2023-3-28}
@@ -2990,7 +2998,7 @@ lambda (view path)
 ;;; GtkTreeViewSearchEqualFunc ()
 ;;; ----------------------------------------------------------------------------
 
-(defcallback tree-view-search-equal-func :boolean
+(cffi:defcallback tree-view-search-equal-func :boolean
   ((model (g:object tree-model))
    (column :int)
    (key (:string :free-from-foreign nil))
@@ -3049,8 +3057,8 @@ lambda (view path)
 ;;; gtk_tree_view_set_search_equal_func ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_set_search_equal_func"
-          %tree-view-set-search-equal-func) :void
+(cffi:defcfun ("gtk_tree_view_set_search_equal_func"
+               %tree-view-set-search-equal-func) :void
   (view (g:object tree-view))
   (func :pointer)
   (data :pointer)
@@ -3088,7 +3096,7 @@ lambda (view path)
                         :void)
   value)
 
-(defcfun ("gtk_tree_view_get_search_entry" tree-view-search-entry)
+(cffi:defcfun ("gtk_tree_view_get_search_entry" tree-view-search-entry)
     (g:object entry)
  #+liber-documentation
  "@version{#2023-3-28}
@@ -3119,7 +3127,7 @@ lambda (view path)
 ;;; GtkTreeViewSearchPositionFunc ()
 ;;; ----------------------------------------------------------------------------
 
-(defcallback tree-view-search-position-func :void
+(cffi:defcallback tree-view-search-position-func :void
     ((view (g:object tree-view))
      (dialog (g:object widget))
      (data :pointer))
@@ -3168,8 +3176,8 @@ lambda (view dialog)
 ;;; gtk_tree_view_set_search_position_func ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_set_search_position_func"
-          %tree-view-set-search-position-func) :void
+(cffi:defcfun ("gtk_tree_view_set_search_position_func"
+               %tree-view-set-search-position-func) :void
   (view (g:object tree-view))
   (func :pointer)
   (data :pointer)
@@ -3244,7 +3252,7 @@ lambda (view dialog)
 ;;; GtkTreeViewRowSeparatorFunc ()
 ;;; ----------------------------------------------------------------------------
 
-(defcallback tree-view-row-separator-func :boolean
+(cffi:defcallback tree-view-row-separator-func :boolean
     ((model (g:object tree-model))
      (iter (g:boxed tree-iter))
      (data :pointer))
@@ -3299,8 +3307,8 @@ lambda (model iter)
 ;;; gtk_tree_view_set_row_separator_func ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_set_row_separator_func"
-          %tree-view-set-row-separator-func) :void
+(cffi:defcfun ("gtk_tree_view_set_row_separator_func"
+               %tree-view-set-row-separator-func) :void
   (view (g:object tree-view))
   (func :pointer)
   (data :pointer)
@@ -3336,8 +3344,8 @@ lambda (model iter)
 ;;; gtk_tree_view_is_rubber_banding_active ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_is_rubber_banding_active"
-           tree-view-is-rubber-banding-active) :boolean
+(cffi:defcfun ("gtk_tree_view_is_rubber_banding_active"
+               tree-view-is-rubber-banding-active) :boolean
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[view]{a @class{gtk:tree-view} widget}
@@ -3366,7 +3374,7 @@ lambda (model iter)
                    :void)
   grid-lines)
 
-(defcfun ("gtk_tree_view_get_grid_lines" tree-view-grid-lines)
+(cffi:defcfun ("gtk_tree_view_get_grid_lines" tree-view-grid-lines)
     tree-view-grid-lines
  #+liber-documentation
  "@version{#2023-3-28}
@@ -3391,7 +3399,7 @@ lambda (model iter)
 ;;; gtk_tree_view_set_tooltip_row ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_set_tooltip_row" tree-view-set-tooltip-row) :void
+(cffi:defcfun ("gtk_tree_view_set_tooltip_row" tree-view-set-tooltip-row) :void
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[view]{a @class{gtk:tree-view} widget}
@@ -3416,7 +3424,8 @@ lambda (model iter)
 ;;; gtk_tree_view_set_tooltip_cell ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_set_tooltip_cell" tree-view-set-tooltip-cell) :void
+(cffi:defcfun ("gtk_tree_view_set_tooltip_cell" tree-view-set-tooltip-cell)
+    :void
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[view]{a @class{gtk:tree-view} widget}
@@ -3453,7 +3462,7 @@ lambda (model iter)
 ;;; gtk_tree_view_get_tooltip_context () -> tree-view-tooltip-context
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_view_get_tooltip_context" %tree-view-tooltip-context)
+(cffi:defcfun ("gtk_tree_view_get_tooltip_context" %tree-view-tooltip-context)
     :boolean
   (view (g:object tree-view))
   (x (:pointer :int))
@@ -3492,12 +3501,12 @@ lambda (model iter)
   be converted to be relative to @arg{view}'s \"bin window\" if @arg{tip}
   is @em{false}.
   @see-class{gtk:tree-view}"
-  (with-foreign-objects ((x :int)
-                         (y :int)
-                         (tip :boolean)
-                         (model :pointer)
-                         (path :pointer)
-                         (iter :pointer))
+  (cffi:with-foreign-objects ((x :int)
+                              (y :int)
+                              (tip :boolean)
+                              (model :pointer)
+                              (path :pointer)
+                              (iter :pointer))
     (when (%tree-view-tooltip-context view
                                       x
                                       y

@@ -58,7 +58,7 @@
 ;;; struct GtkIMContext
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkIMContext" im-context
+(gobject:define-g-object-class "GtkIMContext" im-context
   (:superclass g:object
    :export t
    :interfaces nil
@@ -364,7 +364,8 @@ lambda (context)    :run-last
 
 ;; TODO: We implement gdk:event as the type, gdk:event-key does not work. Why?
 
-(defcfun ("gtk_im_context_filter_keypress" im-context-filter-keypress) :boolean
+(cffi:defcfun ("gtk_im_context_filter_keypress" im-context-filter-keypress)
+    :boolean
  #+liber-documentation
  "@version{#2023-3-8}
   @argument[context]{a @class{gtk:im-context} context}

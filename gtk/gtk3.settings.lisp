@@ -175,7 +175,7 @@
 ;;; enum GtkIMPreeditStyle
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkIMPreeditStyle" im-preedit-style
+(gobject:define-g-enum "GtkIMPreeditStyle" im-preedit-style
   (:export t
    :type-initializer "gtk_im_preedit_style_get_type")
   (:nothing 0)
@@ -190,7 +190,7 @@
   @short{Style for input method preedit.}
   See also the @slot[gtk:settings]{gtk-im-preedit-style} property.
   @begin{pre}
-(define-g-enum \"GtkIMPreeditStyle\" im-preedit-style
+(gobject:define-g-enum \"GtkIMPreeditStyle\" im-preedit-style
   (:export t
    :type-initializer \"gtk_im_preedit_style_get_type\")
   (:nothing 0)
@@ -208,7 +208,7 @@
 ;;; enum GtkIMStatusStyle
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkIMStatusStyle" im-status-style
+(gobject:define-g-enum "GtkIMStatusStyle" im-status-style
   (:export t
    :type-initializer "gtk_im_status_style_get_type")
   (:nothing 0)
@@ -223,7 +223,7 @@
   @short{Style for input method status.}
   See also the @slot[gtk:settings]{gtk-im-status-style} property.
   @begin{pre}
-(define-g-enum \"GtkIMStatusStyle\" gtk-im-status-style
+(gobject:define-g-enum \"GtkIMStatusStyle\" gtk-im-status-style
   (:export t
    :type-initializer \"gtk_im_status_style_get_type\")
   (:nothing 0)
@@ -241,7 +241,7 @@
 ;;; GtkSettings
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkSettings" settings
+(gobject:define-g-object-class "GtkSettings" settings
   (:superclass g:object
    :export t
    :interfaces nil
@@ -3363,7 +3363,7 @@
 ;;; gtk_settings_get_default () -> settings-default
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_settings_get_default" settings-default) (g:object settings)
+(cffi:defcfun ("gtk_settings_get_default" settings-default) (g:object settings)
  #+liber-documentation
  "@version{2023-3-7}
   @begin{return}
@@ -3384,7 +3384,8 @@
 ;;; gtk_settings_get_for_screen () -> settings-for-screen
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_settings_get_for_screen" settings-for-screen) (g:object settings)
+(cffi:defcfun ("gtk_settings_get_for_screen" settings-for-screen)
+    (g:object settings)
  #+liber-documentation
  "@version{2023-3-7}
   @argument[screen]{a @class{gdk:screen} object}

@@ -73,7 +73,7 @@
 ;;; struct GtkTreeModelFilter
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkTreeModelFilter" tree-model-filter
+(gobject:define-g-object-class "GtkTreeModelFilter" tree-model-filter
   (:superclass g:object
    :export t
    :interfaces ("GtkTreeModel"
@@ -227,7 +227,7 @@
 ;;; gtk_tree_model_filter_new ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_model_filter_new" tree-model-filter-new)
+(cffi:defcfun ("gtk_tree_model_filter_new" tree-model-filter-new)
     (g:object tree-model)
  #+liber-documentation
  "@version{#2023-1-21}
@@ -249,7 +249,7 @@
 ;;; GtkTreeModelFilterVisibleFunc ()
 ;;; ----------------------------------------------------------------------------
 
-(defcallback tree-model-filter-visible-func :boolean
+(cffi:defcallback tree-model-filter-visible-func :boolean
     ((model (g:object tree-model))
      (iter (g:boxed tree-iter))
      (data :pointer))
@@ -287,8 +287,8 @@ lambda (model iter)
 ;;; gtk_tree_model_filter_set_visible_func ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_model_filter_set_visible_func"
-          %tree-model-filter-set-visible-func) :void
+(cffi:defcfun ("gtk_tree_model_filter_set_visible_func"
+               %tree-model-filter-set-visible-func) :void
   (filter (g:object tree-model-filter))
   (func :pointer)
   (data :pointer)
@@ -329,7 +329,7 @@ lambda (model iter)
 ;;; GtkTreeModelFilterModifyFunc ()
 ;;; ----------------------------------------------------------------------------
 
-(defcallback tree-model-filter-modify-func :void
+(cffi:defcallback tree-model-filter-modify-func :void
     ((model (g:object tree-model))
      (iter (g:boxed tree-iter))
      (value (:pointer (:struct g:value)))
@@ -373,8 +373,8 @@ lambda (model iter value column)
 ;;; gtk_tree_model_filter_set_modify_func ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_model_filter_set_modify_func"
-          %tree-model-filter-set-modify-func) :void
+(cffi:defcfun ("gtk_tree_model_filter_set_modify_func"
+               %tree-model-filter-set-modify-func) :void
   (filter (g:object tree-model-filter))
   (n-columns :int)
   (gtypes :pointer)
@@ -400,7 +400,7 @@ lambda (model iter value column)
   @see-class{gtk:tree-model-filter}
   @see-symbol{gtk:tree-model-filter-modify-func}"
   (let ((n (length gtypes)))
-    (with-foreign-object (gtypes-ar 'g:type-t n)
+    (cffi:with-foreign-object (gtypes-ar 'g:type-t n)
       (loop for i from 0 below n
             for gtype in gtypes
             do (setf (cffi:mem-aref gtypes-ar 'g:type-t i) gtype))
@@ -418,8 +418,8 @@ lambda (model iter value column)
 ;;; gtk_tree_model_filter_set_visible_column ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_model_filter_set_visible_column"
-           tree-model-filter-set-visible-column) :void
+(cffi:defcfun ("gtk_tree_model_filter_set_visible_column"
+               tree-model-filter-set-visible-column) :void
  #+liber-documentation
  "@version{#2023-1-21}
   @argument[filter]{a @class{gtk:tree-model-filter} object}
@@ -441,7 +441,7 @@ lambda (model iter value column)
 ;;; gtk_tree_model_filter_get_model () -> tree-model-filter-model
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_model_filter_get_model" tree-model-filter-model)
+(cffi:defcfun ("gtk_tree_model_filter_get_model" tree-model-filter-model)
     (g:object tree-model)
  #+liber-documentation
  "@version{#2023-1-21}
@@ -460,8 +460,8 @@ lambda (model iter value column)
 ;;; gtk_tree_model_filter_convert_child_iter_to_iter ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_model_filter_convert_child_iter_to_iter"
-          %tree-model-filter-convert-child-iter-to-iter) :boolean
+(cffi:defcfun ("gtk_tree_model_filter_convert_child_iter_to_iter"
+               %tree-model-filter-convert-child-iter-to-iter) :boolean
   (filter (g:object tree-model-filter))
   (filter-iter (g:boxed tree-iter))
   (child-iter (g:boxed tree-iter)))
@@ -495,8 +495,8 @@ lambda (model iter value column)
 ;;; gtk_tree_model_filter_convert_iter_to_child_iter ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_model_filter_convert_iter_to_child_iter"
-          %tree-model-filter-convert-iter-to-child-iter) :void
+(cffi:defcfun ("gtk_tree_model_filter_convert_iter_to_child_iter"
+               %tree-model-filter-convert-iter-to-child-iter) :void
   (filter (g:object tree-model-filter))
   (child-iter (g:boxed tree-iter))
   (filter-iter (g:boxed tree-iter)))
@@ -525,8 +525,8 @@ lambda (model iter value column)
 ;;; gtk_tree_model_filter_convert_child_path_to_path ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_model_filter_convert_child_path_to_path"
-           tree-model-filter-convert-child-path-to-path)
+(cffi:defcfun ("gtk_tree_model_filter_convert_child_path_to_path"
+               tree-model-filter-convert-child-path-to-path)
     (g:boxed tree-path :return)
  #+liber-documentation
  "@version{#2023-1-21}
@@ -551,8 +551,8 @@ lambda (model iter value column)
 ;;; gtk_tree_model_filter_convert_path_to_child_path ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_model_filter_convert_path_to_child_path"
-          tree-model-filter-convert-path-to-child-path)
+(cffi:defcfun ("gtk_tree_model_filter_convert_path_to_child_path"
+               tree-model-filter-convert-path-to-child-path)
     (g:boxed tree-path :return)
  #+liber-documentation
  "@version{#2023-1-21}
@@ -577,7 +577,8 @@ lambda (model iter value column)
 ;;; gtk_tree_model_filter_refilter ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_model_filter_refilter" tree-model-filter-refilter) :void
+(cffi:defcfun ("gtk_tree_model_filter_refilter" tree-model-filter-refilter)
+    :void
  #+liber-documentation
  "@version{#2023-1-21}
   @argument[filter]{a @class{gtk:tree-model-filter} object}
@@ -597,8 +598,8 @@ lambda (model iter value column)
 ;; TODO: The gtk:tree-model-ref-node function is not implemented. Therefore
 ;; we do not export this function.
 
-(defcfun ("gtk_tree_model_filter_clear_cache" tree-model-filter-clear-cache)
-    :void
+(cffi:defcfun ("gtk_tree_model_filter_clear_cache"
+               tree-model-filter-clear-cache) :void
  #+liber-documentation
  "@version{#2023-1-21}
   @argument[filter]{a @class{gtk:tree-model-filter} object}

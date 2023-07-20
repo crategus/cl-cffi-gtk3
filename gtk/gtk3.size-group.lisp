@@ -68,7 +68,7 @@
 ;;; enum GtkSizeGroupMode
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkSizeGroupMode" size-group-mode
+(gobject:define-g-enum "GtkSizeGroupMode" size-group-mode
   (:export t
    :type-initializer "gtk_size_group_mode_get_type")
   (:none 0)
@@ -86,7 +86,7 @@
     group affects the requested sizes of its component widgets.
   @end{short}
   @begin{pre}
-(define-g-enum \"GtkSizeGroupMode\" size-group-mode
+(gobject:define-g-enum \"GtkSizeGroupMode\" size-group-mode
   (:export t
    :type-initializer \"gtk_size_group_mode_get_type\")
   (:none 0)
@@ -106,7 +106,7 @@
 ;;; struct GtkSizeGroup
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkSizeGroup" size-group
+(gobject:define-g-object-class "GtkSizeGroup" size-group
   (:superclass g:object
     :export t
     :interfaces ("GtkBuildable")
@@ -299,7 +299,7 @@
 ;;; gtk_size_group_add_widget ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_size_group_add_widget" size-group-add-widget) :void
+(cffi:defcfun ("gtk_size_group_add_widget" size-group-add-widget) :void
  #+liber-documentation
  "@version{#2023-2-23}
   @argument[group]{a @class{gtk:size-group} object}
@@ -326,7 +326,7 @@
 ;;; gtk_size_group_remove_widget ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_size_group_remove_widget" size-group-remove-widget) :void
+(cffi:defcfun ("gtk_size_group_remove_widget" size-group-remove-widget) :void
  #+liber-documentation
  "@version{#2023-2-23}
   @argument[group]{a @class{gtk:size-group} object}
@@ -345,7 +345,7 @@
 ;;; gtk_size_group_get_widgets () -> size-group-widgets
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_size_group_get_widgets" size-group-widgets)
+(cffi:defcfun ("gtk_size_group_get_widgets" size-group-widgets)
     (g:slist-t g:object :free-from-foreign nil)
  #+liber-documentation
  "@version{#2023-2-23}

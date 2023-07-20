@@ -100,7 +100,7 @@
 ;;; enum GtkStackTransitionType
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkStackTransitionType" stack-transition-type
+(gobject:define-g-enum "GtkStackTransitionType" stack-transition-type
   (:export t
    :type-initializer "gtk_stack_transition_type_get_type")
   (:none 0)
@@ -135,7 +135,7 @@
   @end{short}
   New values may be added to this enumeration over time.
   @begin{pre}
-(define-g-enum \"GtkStackTransitionType\" stack-transition-type
+(gobject:define-g-enum \"GtkStackTransitionType\" stack-transition-type
   (:export t
    :type-initializer \"gtk_stack_transition_type_get_type\")
   (:none 0)
@@ -166,7 +166,7 @@
     @entry[:slide-left]{Slide from right to left.}
     @entry[:slide-up]{Slide from bottom up.}
     @entry[:slide-down]{Slide from top down.}
-    @entry[:slide-left-right]{Slide from left or right according to the 
+    @entry[:slide-left-right]{Slide from left or right according to the
       children order.}
     @entry[:slide-up-down]{Slide from top down or bottom up according to the
       order.}
@@ -193,7 +193,7 @@
 ;;; struct GtkStack
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkStack" stack
+(gobject:define-g-object-class "GtkStack" stack
   (:superclass container
    :export t
    :interfaces ("AtkImplementorIface"
@@ -250,7 +250,7 @@
   @begin[Child Property Details]{dictionary}
     @begin[code]{table}
       @begin[icon-name]{entry}
-        The @code{icon-name} child property of type @code{:string} 
+        The @code{icon-name} child property of type @code{:string}
         (Read / Write) @br{}
         The icon name of the child page. @br{}
         Default value: @code{nil}
@@ -323,8 +323,8 @@
     Accessor of the @slot[gtk:stack]{hhomogeneous} slot of the @class{gtk:stack}
     class.
   @end{short}
-  The @sym{gtk:stack-hhomogeneous} function gets whether the stack is 
-  horizontally homogeneous. The @sym{(setf gtk:stack-hhomogeneous)} function 
+  The @sym{gtk:stack-hhomogeneous} function gets whether the stack is
+  horizontally homogeneous. The @sym{(setf gtk:stack-hhomogeneous)} function
   sets the stack to be horizontally homogeneous or not.
 
   If the stack is homogeneous, the stack will request the same width for all its
@@ -355,10 +355,10 @@
     Accessor of the @slot[gtk:stack]{homogeneous} slot of the @class{gtk:stack}
     class.
   @end{short}
-  The @sym{gtk:stack-homogeneous} function gets whether the stack is 
-  homogeneous. The @sym{(setf gtk:stack-homogeneous)} function sets the stack 
-  to be homogeneous or not. If it is homogeneous, the stack will request the 
-  same size for all its children. If it is not, the stack may change size when 
+  The @sym{gtk:stack-homogeneous} function gets whether the stack is
+  homogeneous. The @sym{(setf gtk:stack-homogeneous)} function sets the stack
+  to be homogeneous or not. If it is homogeneous, the stack will request the
+  same size for all its children. If it is not, the stack may change size when
   a different child becomes visible.
 
   Since 3.16, homogeneity can be controlled separately for horizontal and
@@ -391,9 +391,9 @@
     Accessor of the @slot[gtk:stack]{interpolate-size} slot of the
     @class{gtk:stack} class.
   @end{short}
-  The @sym{gtk:stack-interpolate-size} function returns whether the stack is 
-  set up to interpolate between the sizes of children on page switch. The 
-  @sym{(setf gtk:stack-interpolate-size)} function sets whether or not stack 
+  The @sym{gtk:stack-interpolate-size} function returns whether the stack is
+  set up to interpolate between the sizes of children on page switch. The
+  @sym{(setf gtk:stack-interpolate-size)} function sets whether or not stack
   will interpolate its size when changing the visible child.
 
   If the @slot[gtk:stack]{interpolate-size} property is set to @em{true}, the
@@ -424,8 +424,8 @@
     Accessor of the @slot[gtk:stack]{transition-duration} slot of the
     @class{gtk:stack} class.
   @end{short}
-  The @sym{gtk:stack-transition-duration} function returns the amount of time 
-  in milliseconds that transitions between pages in the stack will take. The 
+  The @sym{gtk:stack-transition-duration} function returns the amount of time
+  in milliseconds that transitions between pages in the stack will take. The
   @sym{(setf gtk:stack-transition-duration)} function sets the duration.
   @see-class{gtk:stack}")
 
@@ -448,7 +448,7 @@
     Accessor of the @slot[gtk:stack]{transition-running} slot of the
     @class{gtk:stack} class.
   @end{short}
-  The @sym{gtk:stack-transition-running} function returns whether the stack is 
+  The @sym{gtk:stack-transition-running} function returns whether the stack is
   currently in a transition from one page to another.
   @see-class{gtk:stack}")
 
@@ -475,10 +475,10 @@
     Accessor of the @slot[gtk:stack]{transition-type} slot of the
     @class{gtk:stack} class.
   @end{short}
-  The @sym{gtk:stack-transition-type} function gets the type of animation that 
+  The @sym{gtk:stack-transition-type} function gets the type of animation that
   will be used for transitions between pages in the stack. The
-  @sym{(setf gtk:stack-transition-type)} function sets the type of animation 
-  that will be used for transitions between pages in the stack. Available types 
+  @sym{(setf gtk:stack-transition-type)} function sets the type of animation
+  that will be used for transitions between pages in the stack. Available types
   include various kinds of fades and slides.
 
   The transition type can be changed without problems at runtime, so it is
@@ -508,8 +508,8 @@
     Accessor of the @slot[gtk:stack]{vhomogeneous} slot of the
     @class{gtk:stack} class.
   @end{short}
-  The @sym{gtk:stack-vhomogeneous} function gets whether the stack is vertically 
-  homogeneous. The @sym{(setf gtk:stack-vhomogeneous)} function sets the stack 
+  The @sym{gtk:stack-vhomogeneous} function gets whether the stack is vertically
+  homogeneous. The @sym{(setf gtk:stack-vhomogeneous)} function sets the stack
   to be vertically homogeneous or not.
 
   If the stack is homogeneous, the stack will request the same height for all
@@ -540,9 +540,9 @@
     Accessor of the @slot[gtk:stack]{visible-child} slot of the
     @class{gtk:stack} class.
   @end{short}
-  The @sym{gtk:stack-visible-child} function gets the currently visible child 
-  widget of the stack, or @code{nil} if there are no visible children. The 
-  @sym{(setf gtk:stack-visible-child)} function makes the child widget the 
+  The @sym{gtk:stack-visible-child} function gets the currently visible child
+  widget of the stack, or @code{nil} if there are no visible children. The
+  @sym{(setf gtk:stack-visible-child)} function makes the child widget the
   visible child widget of the stack.
 
   If the child widget is different from the currently visible child widget,
@@ -578,9 +578,9 @@
     Accessor of the @slot[gtk:stack]{visible-child-name} slot of the
     @class{gtk:stack} class.
   @end{short}
-  The @sym{gtk:stack-visible-child-name} function returns the name of the 
-  currently visible child of the stack, or @code{nil} if there is no visible 
-  child. The @sym{(setf gtk:stack-visible-child-name)} function makes the child 
+  The @sym{gtk:stack-visible-child-name} function returns the name of the
+  currently visible child of the stack, or @code{nil} if there is no visible
+  child. The @sym{(setf gtk:stack-visible-child-name)} function makes the child
   widget with the given name visible.
 
   If the child widget is different from the currently visible child, the
@@ -734,7 +734,7 @@
 ;;; gtk_stack_add_named ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_stack_add_named" stack-add-named) :void
+(cffi:defcfun ("gtk_stack_add_named" stack-add-named) :void
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[stack]{a @class{gtk:stack} widget}
@@ -756,7 +756,7 @@
 ;;; gtk_stack_add_titled ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_stack_add_titled" stack-add-titled) :void
+(cffi:defcfun ("gtk_stack_add_titled" stack-add-titled) :void
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[stack]{a @class{gtk:stack} widget}
@@ -783,7 +783,8 @@
 ;;; gtk_stack_get_child_by_name ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_stack_get_child_by_name" stack-child-by-name) (g:object widget)
+(cffi:defcfun ("gtk_stack_get_child_by_name" stack-child-by-name)
+    (g:object widget)
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[stack]{a @class{gtk:stack} widget}
@@ -804,7 +805,8 @@
 ;;; gtk_stack_set_visible_child_full ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_stack_set_visible_child_full" stack-set-visible-child-full) :void
+(cffi:defcfun ("gtk_stack_set_visible_child_full" stack-set-visible-child-full)
+    :void
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[stack]{a @class{gtk:stack} widget}

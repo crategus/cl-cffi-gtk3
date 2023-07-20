@@ -92,7 +92,7 @@
 ;;; enum GtkAttachOptions
 ;;; ----------------------------------------------------------------------------
 
-(define-g-flags "GtkAttachOptions" attach-options
+(gobject:define-g-flags "GtkAttachOptions" attach-options
   (:export t
    :type-initializer "gtk_attach_options_get_type")
   (:expand 1)
@@ -109,7 +109,7 @@
     @class{gtk:table} widget when it or its parent is resized.
   @end{short}
   @begin{pre}
-(define-g-flags \"GtkAttachOptions\" attach-options
+(gobject:define-g-flags \"GtkAttachOptions\" attach-options
   (:export t
    :type-initializer \"gtk_attach_options_get_type\")
   (:expand 1)
@@ -128,7 +128,7 @@
 ;;; struct GtkTable
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkTable" table
+(gobject:define-g-object-class "GtkTable" table
   (:superclass container
    :export t
    :interfaces ("AtkImplementorIface"
@@ -163,12 +163,12 @@
   of which can later be changed with the @fun{gtk:table-resize} function.
   Widgets can be added to a table using the @fun{gtk:table-attach} function.
 
-  To alter the space next to a specific row, use the 
-  @fun{gtk:table-set-row-spacing} function, and for a column the 
-  @fun{gtk:table-set-col-spacing} function. The gaps between all rows or 
+  To alter the space next to a specific row, use the
+  @fun{gtk:table-set-row-spacing} function, and for a column the
+  @fun{gtk:table-set-col-spacing} function. The gaps between all rows or
   columns can be changed by calling the @fun{gtk:table-row-spacing} or
-  @fun{gtk:table-column-spacing} functions respectively. Note that spacing is 
-  added between the children, while padding added by the @fun{gtk:table-attach} 
+  @fun{gtk:table-column-spacing} functions respectively. Note that spacing is
+  added between the children, while padding added by the @fun{gtk:table-attach}
   function is added on either side of the widget it belongs to.
 
   The @fun{gtk:table-homogeneous} function can be used to set whether all
@@ -276,13 +276,13 @@
     Accessor of the @slot[gtk:table]{column-spacing} property of the
     @class{gtk:table} class.
   @end{short}
-  The @sym{gtk:table-column-spacing} function gets the default column spacing 
-  for the table. The @sym{(setf gtk:table-column-spacing)} function sets the 
+  The @sym{gtk:table-column-spacing} function gets the default column spacing
+  for the table. The @sym{(setf gtk:table-column-spacing)} function sets the
   column spacing. This is the spacing that will be used for newly added columns.
   @begin[Lisp implementation]{dictionary}
     The C library has the @code{gtk_table_get_default_col_spacing ()}
     and @code{gtk_table_set_col_spacings ()} functions, which correspond to the
-    @sym{gtk:table-column-spacing} function. These C functions are not 
+    @sym{gtk:table-column-spacing} function. These C functions are not
     implemented in the Lisp library.
   @end{dictionary}
   @begin[Warning]{dictionary}
@@ -317,9 +317,9 @@
     Accessor of the @slot[gtk:table]{homogeneous} slot of the
     @class{gtk:table} class.
   @end{short}
-  The @sym{gtk:table-homogeneous} function returns whether the table cells are 
-  all constrained to the same width and height. The 
-  @sym{(setf gtk:table-homogeneous)} function changes the 
+  The @sym{gtk:table-homogeneous} function returns whether the table cells are
+  all constrained to the same width and height. The
+  @sym{(setf gtk:table-homogeneous)} function changes the
   @slot[gtk:table]{homogeneous} property.
   @begin[Warning]{dictionary}
     The @sym{gtk:table-homogeneous} function has been deprecated since version
@@ -417,13 +417,13 @@
     Accessor of the @slot[gtk:table]{row-spacing} slot of the
     @class{gtk:table} class.
   @end{short}
-  The @sym{gtk:table-row-spacing} function gets the default row spacing for the 
-  table. The @sym{gtk:table-row-spacing} function sets the row spacing. This is 
+  The @sym{gtk:table-row-spacing} function gets the default row spacing for the
+  table. The @sym{gtk:table-row-spacing} function sets the row spacing. This is
   the spacing that will be used for newly added rows.
   @begin[Lisp implementation]{dictionary}
-    The C library has the @code{gtk_table_get_default_row_spacing ()} and 
+    The C library has the @code{gtk_table_get_default_row_spacing ()} and
     @code{gtk_table_set_row_spacings ()} functions, which correspond to the
-    @sym{gtk:table-row-spacing} function. These C functions are not implemented 
+    @sym{gtk:table-row-spacing} function. These C functions are not implemented
     in the Lisp library.
   @end{dictionary}
   @begin[Warning]{dictionary}
@@ -696,8 +696,8 @@
   @end{short}
   An initial size must be given by specifying how many rows and columns the
   table should have, although this can be changed later with the
-  @fun{gtk:table-resize} function. The @arg{rows} and @arg{columns} arguments 
-  must both be in the range 1 ... 65535. For historical reasons, 0 is accepted 
+  @fun{gtk:table-resize} function. The @arg{rows} and @arg{columns} arguments
+  must both be in the range 1 ... 65535. For historical reasons, 0 is accepted
   as well and is silently interpreted as 1.
   @begin[Warning]{dictionary}
     The @sym{gtk:table-new} function has been deprecated since version 3.4 and
@@ -772,7 +772,7 @@
 ;;; gtk_table_attach ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_table_attach" %table-attach) :void
+(cffi:defcfun ("gtk_table_attach" %table-attach) :void
   (table (g:object table))
   (child (g:object widget))
   (left :uint)
@@ -818,7 +818,7 @@
   numbers of the table. Columns and rows are indexed from zero.
 
   The @code{x-options} and @code{y-options} keyword arguments have the default
-  value @code{'(:expand :fill)}. The @code{x-padding} and @code{y-padding}  
+  value @code{'(:expand :fill)}. The @code{x-padding} and @code{y-padding}
   keyword arguments have the default value 0.
   @begin[Example]{dictionary}
     To make a button occupy the lower right cell of a 2 x 2 table, use
@@ -880,7 +880,7 @@
   @begin[Warning]{dictionary}
     The @sym{gtk:table-attach-defaults} function has been deprecated since
     version 3.4 and should not be used in newly written code. Use the
-    @fun{gtk:grid-attach} function with the @class{gtk:grid} widget. Note that 
+    @fun{gtk:grid-attach} function with the @class{gtk:grid} widget. Note that
     the attach arguments differ between those two functions.
   @end{dictionary}
   @see-class{gtk:table}"
@@ -890,7 +890,7 @@
 ;;; gtk_table_set_row_spacing ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_table_set_row_spacing" table-set-row-spacing) :void
+(cffi:defcfun ("gtk_table_set_row_spacing" table-set-row-spacing) :void
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[table]{a @class{gtk:table} widget containing the row whose
@@ -905,7 +905,7 @@
   @begin[Warning]{dictionary}
     The @sym{gtk:table-set-row-spacing} function has been deprecated since
     version 3.4 and should not be used in newly written code. Use the
-    @fun{gtk:widget-margin-top} and @fun{gtk:widget-margin-bottom} functions on 
+    @fun{gtk:widget-margin-top} and @fun{gtk:widget-margin-bottom} functions on
     the widgets contained in the row if you need this functionality.
     The @class{gtk:grid} widget does not support per-row spacing.
   @end{dictionary}
@@ -923,7 +923,7 @@
 ;;; gtk_table_set_col_spacing ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_table_set_col_spacing" table-set-col-spacing) :void
+(cffi:defcfun ("gtk_table_set_col_spacing" table-set-col-spacing) :void
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[table]{a @class{gtk:table} widget}
@@ -956,7 +956,7 @@
 ;;; gtk_table_get_row_spacing ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_table_get_row_spacing" table-get-row-spacing) :uint
+(cffi:defcfun ("gtk_table_get_row_spacing" table-get-row-spacing) :uint
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[table]{a @class{gtk:table} widget}
@@ -982,7 +982,7 @@
 ;;; gtk_table_get_col_spacing ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_table_get_col_spacing" table-get-col-spacing) :uint
+(cffi:defcfun ("gtk_table_get_col_spacing" table-get-col-spacing) :uint
  #+liber-documentation
  "@version{#2021-7-20}
   @argument[table]{a @class{gtk:table} widget}

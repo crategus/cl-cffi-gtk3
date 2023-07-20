@@ -75,7 +75,7 @@
 ;;; struct GtkNumerableIcon
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkNumerableIcon" numerable-icon
+(gobject:define-g-object-class "GtkNumerableIcon" numerable-icon
   (:superclass g:emblemed-icon
    :export t
    :interfaces ("GIcon")

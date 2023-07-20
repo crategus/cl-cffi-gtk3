@@ -85,7 +85,7 @@
 ;;; enum GtkMessageType
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkMessageType" message-type
+(gobject:define-g-enum "GtkMessageType" message-type
   (:export t
    :type-initializer "gtk_message_type_get_type")
   (:info 0)
@@ -103,7 +103,7 @@
     The type of message being displayed in the message dialog.
   @end{short}
   @begin{pre}
-(define-g-enum \"GtkMessageType\" message-type
+(gobject:define-g-enum \"GtkMessageType\" message-type
   (:export t
    :type-initializer \"gtk_message_type_get_type\")
   (:info 0)
@@ -125,7 +125,7 @@
 ;;; enum GtkButtonsType
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkButtonsType" buttons-type
+(gobject:define-g-enum "GtkButtonsType" buttons-type
   (:export t
    :type-initializer "gtk_buttons_type_get_type")
   (:none 0)
@@ -150,7 +150,7 @@
   are discouraged by the @url[https://developer.gnome.org/hig/]{GNOME Human
   Interface Guidelines}.
   @begin{pre}
-(define-g-enum \"GtkButtonsType\" buttons-type
+(gobject:define-g-enum \"GtkButtonsType\" buttons-type
   (:export t
    :type-initializer \"gtk_buttons_type_get_type\")
   (:none 0)
@@ -175,7 +175,7 @@
 ;;; struct GtkMessageDialog
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkMessageDialog" message-dialog
+(gobject:define-g-object-class "GtkMessageDialog" message-dialog
   (:superclass dialog
    :export t
    :interfaces ("AtkImplementorIface"

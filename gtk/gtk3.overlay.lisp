@@ -75,7 +75,7 @@
 ;; TODO: The "get-child-position" signal handler has an return location
 ;; of type GdkRectangle. Check the Lisp implementation of a handler.
 
-(define-g-object-class "GtkOverlay" overlay
+(gobject:define-g-object-class "GtkOverlay" overlay
   (:superclass bin
     :export t
     :interfaces ("AtkImplementorIface"
@@ -226,7 +226,7 @@ lambda (overlay widget allocation)    :run-last
 ;;; gtk_overlay_add_overlay ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_overlay_add_overlay" overlay-add-overlay) :void
+(cffi:defcfun ("gtk_overlay_add_overlay" overlay-add-overlay) :void
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[overlay]{a @class{gtk:overlay} widget}
@@ -254,7 +254,7 @@ lambda (overlay widget allocation)    :run-last
 ;;; gtk_overlay_reorder_overlay ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_overlay_reorder_overlay" overlay-reorder-overlay) :void
+(cffi:defcfun ("gtk_overlay_reorder_overlay" overlay-reorder-overlay) :void
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[overlay]{a @class{gtk:overlay} widget}

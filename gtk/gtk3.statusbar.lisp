@@ -75,7 +75,7 @@
 ;;; struct GtkStatusbar
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkStatusbar" statusbar
+(gobject:define-g-object-class "GtkStatusbar" statusbar
   (:superclass box
    :export t
    :interfaces ("AtkImplementorIface"
@@ -187,7 +187,7 @@ lambda (statusbar context text)    :run-last
 ;;; gtk_statusbar_get_context_id () -> statusbar-context-id
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_statusbar_get_context_id" %statusbar-get-context-id) :uint
+(cffi:defcfun ("gtk_statusbar_get_context_id" %statusbar-get-context-id) :uint
   (statusbar (g:object statusbar))
   (context-description :string))
 
@@ -213,7 +213,7 @@ lambda (statusbar context text)    :run-last
 ;;; gtk_statusbar_push ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_statusbar_push" %statusbar-push) :uint
+(cffi:defcfun ("gtk_statusbar_push" %statusbar-push) :uint
   (statusbar (g:object statusbar))
   (context :uint)
   (text :string))
@@ -241,7 +241,7 @@ lambda (statusbar context text)    :run-last
 ;;; gtk_statusbar_pop ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_statusbar_pop" %statusbar-pop) :void
+(cffi:defcfun ("gtk_statusbar_pop" %statusbar-pop) :void
   (statusbar (g:object statusbar))
   (context :uint))
 
@@ -267,7 +267,7 @@ lambda (statusbar context text)    :run-last
 ;;; gtk_statusbar_remove ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_statusbar_remove" %statusbar-remove) :void
+(cffi:defcfun ("gtk_statusbar_remove" %statusbar-remove) :void
   (statusbar (g:object statusbar))
   (context :uint)
   (message :uint))
@@ -295,7 +295,7 @@ lambda (statusbar context text)    :run-last
 ;;; gtk_statusbar_remove_all ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_statusbar_remove_all" %statusbar-remove-all) :void
+(cffi:defcfun ("gtk_statusbar_remove_all" %statusbar-remove-all) :void
   (statusbar (g:object statusbar))
   (conext :uint))
 
@@ -318,7 +318,7 @@ lambda (statusbar context text)    :run-last
 ;;; gtk_statusbar_get_message_area () -> statusbar-message-area
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_statusbar_get_message_area" statusbar-message-area)
+(cffi:defcfun ("gtk_statusbar_get_message_area" statusbar-message-area)
     (g:object widget)
  #+liber-documentation
  "@version{#2023-3-27}

@@ -61,7 +61,7 @@
 ;;; struct GtkSeparatorMenuItem
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkSeparatorMenuItem" separator-menu-item
+(gobject:define-g-object-class "GtkSeparatorMenuItem" separator-menu-item
   (:superclass menu-item
    :export t
    :interfaces ("AtkImplementorIface"

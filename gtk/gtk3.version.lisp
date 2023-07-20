@@ -36,8 +36,8 @@
 ;;;     gtk_get_major_version
 ;;;     gtk_get_minor_version
 ;;;     gtk_get_micro_version
-;;;     gtk_get_binary_age
-;;;     gtk_get_interface_age
+;;;     gtk_get_binary_age                                 not exported
+;;;     gtk_get_interface_age                              not exported
 ;;;     gtk_check_version
 ;;;
 ;;;     GTK_MAJOR_VERSION                                  not implemented
@@ -58,9 +58,9 @@
 ;;; gtk_get_major_version () -> major-version
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_get_major_version" major-version) :int
+(cffi:defcfun ("gtk_get_major_version" major-version) :int
  #+liber-documentation
- "@version{#2023-1-21}
+ "@version{2023-7-7}
   @return{The major version number of the GTK library.}
   @begin{short}
     Returns the major version number of the GTK library.
@@ -75,9 +75,9 @@
 ;;; gtk_get_minor_version () -> minor-version
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_get_minor_version" minor-version) :int
+(cffi:defcfun ("gtk_get_minor_version" minor-version) :int
  #+liber-documentation
- "@version{#2023-1-21}
+ "@version{2023-7-7}
   @return{The minor version number of the GTK library.}
   @begin{short}
     Returns the minor version number of the GTK library.
@@ -92,9 +92,9 @@
 ;;; gtk_get_micro_version () -> micro-version
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_get_micro_version" micro-version) :int
+(cffi:defcfun ("gtk_get_micro_version" micro-version) :int
  #+liber-documentation
- "@version{#2023-1-21}
+ "@version{2023-7-7}
   @return{The micro version number of the GTK library.}
   @begin{short}
     Returns the micro version number of the GTK library.
@@ -109,7 +109,7 @@
 ;;; gtk_get_binary_age () -> gtk-binary-age                not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_get_binary_age" gtk-binary-age) :int
+(cffi:defcfun ("gtk_get_binary_age" gtk-binary-age) :int
  #+liber-documentation
  "@version{#2020-8-23}
   @return{The binary age of the GTK library.}
@@ -124,7 +124,7 @@
 ;;; gtk_get_interface_age () -> gtk-interface-age          not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_get_interface_age" gtk-interface-age) :int
+(cffi:defcfun ("gtk_get_interface_age" gtk-interface-age) :int
  #+liber-documentation
  "@version{#2020-8-23}
   @return{The interface age of the GTK library.}
@@ -139,9 +139,10 @@
 ;;; gtk_check_version ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_check_version" check-version) (:string :free-from-foreign nil)
+(cffi:defcfun ("gtk_check_version" check-version)
+    (:string :free-from-foreign nil)
  #+liber-documentation
- "@version{#2023-1-21}
+ "@version{2023-7-7}
   @argument[major]{an unsigned integer with the required major version}
   @argument[minor]{an unsigned integer with required minor version}
   @argument[micro]{an unsigned integer with required micro version}
@@ -206,33 +207,29 @@
 
 ;;; ----------------------------------------------------------------------------
 
-;;; Lisp functions
-
 (defun cl-cffi-gtk-build-info ()
  #+liber-documentation
- "@version{#2021-10-10}
+ "@version{2023-7-7}
   @begin{short}
     Provides informations about the installation and the versions of the
     loaded libraries.
   @end{short}
   @begin[Example]{dictionary}
     @begin{pre}
-* (cl-cffi-gtk-build-info)
-
-cl-cffi-gtk version: 1.0.0
-cl-cffi-gtk build date: 21:14 5/12/2021
-GTK version: 3.24.23
-GLIB version: 2.66.1
-GDK-Pixbuf version: 2.40.0
-Pango version: 1.46.2
+* (gtk:cl-cffi-gtk-build-info)
+cl-cffi-gtk3 version: 0.1.0
+cl-cffi-gtk3 build date: 20:52 7/7/2023
+GTK version: 3.24.37
+GLIB version: 2.76.1
+GDK-Pixbuf version: 2.42.10
+Pango version: 1.50.12
 Cairo version: 1.16.0
 Machine type: X86-64
-Machine version: Intel(R) Core(TM) i5-4210U CPU @@ 1.70GHz
+Machine version: Intel(R) Core(TM) i5-5200U CPU @@ 2.20GHz
 Software type: Linux
-Software version: 5.8.0-50-generic
+Software version: 6.2.0-24-generic
 Lisp implementation type: SBCL
-Lisp implementation version: 2.0.6.debian
-
+Lisp implementation version: 2.2.9.debian
 NIL
     @end{pre}
   @end{dictionary}
@@ -245,8 +242,8 @@ NIL
   @see-symbol{+gdk-pixbuf-version+}
   @see-function{pango:version-string}
   @see-function{cairo:version-string}"
-  (format t "~%cl-cffi-gtk version: ~a~%" +cl-cffi-gtk3-version+)
-  (format t "cl-cffi-gtk build date: ~a:~a ~a/~a/~a~%"
+  (format t "~&cl-cffi-gtk3 version: ~a~%" +cl-cffi-gtk3-version+)
+  (format t "cl-cffi-gtk3 build date: ~a:~a ~a/~a/~a~%"
           (third +cl-cffi-gtk3-build-time+)
           (second +cl-cffi-gtk3-build-time+)
           (fifth +cl-cffi-gtk3-build-time+)
@@ -257,10 +254,10 @@ NIL
           (minor-version)
           (micro-version))
   (format t "GLIB version: ~a.~a.~a~%"
-          +glib-major-version+
-          +glib-minor-version+
-          +glib-micro-version+)
-  (format t "GDK-Pixbuf version: ~a~%" +gdk-pixbuf-version+)
+          glib:+glib-major-version+
+          glib:+glib-minor-version+
+          glib:+glib-micro-version+)
+  (format t "GDK-Pixbuf version: ~a~%" gdk-pixbuf:+gdk-pixbuf-version+)
   (format t "Pango version: ~a~%" (pango:version-string))
   (format t "Cairo version: ~a~%" (cairo:version-string))
   (format t "Machine type: ~a~%" (machine-type))
@@ -268,7 +265,9 @@ NIL
   (format t "Software type: ~a~%" (software-type))
   (format t "Software version: ~A~%" (software-version))
   (format t "Lisp implementation type: ~a~%" (lisp-implementation-type))
-  (format t "Lisp implementation version: ~a~%~%" (lisp-implementation-version))
+  (format t "Lisp implementation version: ~a~%" (lisp-implementation-version))
   nil)
+
+(export 'cl-cffi-gtk-build-info)
 
 ;;; --- End of file gtk3.version.lisp ------------------------------------------

@@ -68,7 +68,7 @@
 ;;; struct GtkTreeModelSort
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkTreeModelSort" tree-model-sort
+(gobject:define-g-object-class "GtkTreeModelSort" tree-model-sort
   (:superclass g:object
    :export t
    :interfaces ("GtkTreeModel"
@@ -195,8 +195,8 @@
 ;;; gtk_tree_model_sort_convert_child_path_to_path ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_model_sort_convert_child_path_to_path"
-           tree-model-sort-convert-child-path-to-path)
+(cffi:defcfun ("gtk_tree_model_sort_convert_child_path_to_path"
+               tree-model-sort-convert-child-path-to-path)
     (g:boxed tree-path :return)
  #+liber-documentation
  "@version{#2023-1-21}
@@ -220,8 +220,8 @@
 ;;; gtk_tree_model_sort_convert_child_iter_to_iter ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_model_sort_convert_child_iter_to_iter"
-          %tree-model-sort-convert-child-iter-to-iter) :boolean
+(cffi:defcfun ("gtk_tree_model_sort_convert_child_iter_to_iter"
+               %tree-model-sort-convert-child-iter-to-iter) :boolean
   (model (g:object tree-model-sort))
   (sort-iter (g:boxed tree-iter))
   (child-iter (g:boxed tree-iter)))
@@ -252,8 +252,8 @@
 ;;; gtk_tree_model_sort_convert_path_to_child_path ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_model_sort_convert_path_to_child_path"
-           tree-model-sort-convert-path-to-child-path)
+(cffi:defcfun ("gtk_tree_model_sort_convert_path_to_child_path"
+               tree-model-sort-convert-path-to-child-path)
     (g:boxed tree-path :return)
  #+liber-documentation
  "@version{#2023-1-21}
@@ -277,8 +277,8 @@
 ;;; gtk_tree_model_sort_convert_iter_to_child_iter ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_model_sort_convert_iter_to_child_iter"
-          %tree-model-sort-convert-iter-to-child-iter) :void
+(cffi:defcfun ("gtk_tree_model_sort_convert_iter_to_child_iter"
+               %tree-model-sort-convert-iter-to-child-iter) :void
   (model (g:object tree-model-sort))
   (child-iter (g:boxed tree-iter))
   (sorted-iter (g:boxed tree-iter)))
@@ -307,8 +307,8 @@
 ;;; gtk_tree_model_sort_reset_default_sort_func ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_model_sort_reset_default_sort_func"
-          tree-model-sort-reset-default-sort-func) :void
+(cffi:defcfun ("gtk_tree_model_sort_reset_default_sort_func"
+               tree-model-sort-reset-default-sort-func) :void
  #+liber-documentation
  "@version{#2023-1-21}
   @argument[model]{a @class{gtk:tree-model-sort} object}
@@ -327,7 +327,8 @@
 ;;; gtk_tree_model_sort_clear_cache ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_model_sort_clear_cache" tree-model-sort-clear-cache) :void
+(cffi:defcfun ("gtk_tree_model_sort_clear_cache" tree-model-sort-clear-cache)
+    :void
  #+liber-documentation
  "@version{#2023-1-21}
   @argument[model]{a @class{gtk:tree-model-sort} object}
@@ -349,8 +350,8 @@
 ;;; gtk_tree_model_sort_iter_is_valid ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_model_sort_iter_is_valid" tree-model-sort-iter-is-valid)
-    :boolean
+(cffi:defcfun ("gtk_tree_model_sort_iter_is_valid"
+               tree-model-sort-iter-is-valid) :boolean
  #+liber-documentation
  "@version{#2023-1-21}
   @argument[model]{a @class{gtk:tree-model-sort} object}

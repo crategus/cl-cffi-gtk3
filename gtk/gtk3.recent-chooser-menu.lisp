@@ -68,7 +68,7 @@
 ;;; struct GtkRecentChooserMenu
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkRecentChooserMenu" recent-chooser-menu
+(gobject:define-g-object-class "GtkRecentChooserMenu" recent-chooser-menu
   (:superclass menu
    :export t
    :interfaces ("AtkImplementorIface"
@@ -88,7 +88,7 @@
     recently used files inside a menu.
   @end{short}
   It can be used to set a sub-menu of a @class{gtk:menu-item} widget using the
-  @fun{gtk:menu-item-submenu} function, or as the menu of a 
+  @fun{gtk:menu-item-submenu} function, or as the menu of a
   @class{gtk:menu-tool-button} widget.
 
   Note that the @sym{gtk:recent-chooser-menu} widget does not have any methods
@@ -136,9 +136,9 @@
     Accessor of the @slot[gtk:recent-chooser-menu-show-numbers]{show-numbers}
     slot of the @class{gtk:recent-chooser-menu} class.
   @end{short}
-  The @sym{gtk:recent-chooser-menu-show-numbers} function returns whether a 
+  The @sym{gtk:recent-chooser-menu-show-numbers} function returns whether a
   number should be added to the items of menu. The
-  @sym{(setf gtk:recent-chooser-menu-show-numbers)} function sets whether a 
+  @sym{(setf gtk:recent-chooser-menu-show-numbers)} function sets whether a
   number should be added to the items of menu.
 
   The numbers are shown to provide a unique character for a mnemonic to be used

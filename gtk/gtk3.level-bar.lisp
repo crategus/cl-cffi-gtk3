@@ -124,7 +124,7 @@
 ;;; enum GtkLevelBarMode
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkLevelBarMode" level-bar-mode
+(gobject:define-g-enum "GtkLevelBarMode" level-bar-mode
   (:export t
    :type-initializer "gtk_level_bar_mode_get_type")
   (:continuous 0)
@@ -141,7 +141,7 @@
   Note that this enumeration could be extended with additional modes in the
   future.
   @begin{pre}
-(define-g-enum \"GtkLevelBarMode\" level-bar-mode
+(gobject:define-g-enum \"GtkLevelBarMode\" level-bar-mode
   (:export t
    :type-initializer \"gtk_level_bar_mode_get_type\")
   (:continuous 0)
@@ -157,7 +157,7 @@
 ;;; struct GtkLevelBar
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkLevelBar" level-bar
+(gobject:define-g-object-class "GtkLevelBar" level-bar
   (:superclass widget
    :export t
    :interfaces ("AtkImplementorIface"
@@ -514,7 +514,8 @@ lambda (levelbar name)    :detailed
 ;;; gtk_level_bar_add_offset_value ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_level_bar_add_offset_value" %level-bar-add-offset-value) :void
+(cffi:defcfun ("gtk_level_bar_add_offset_value" %level-bar-add-offset-value)
+    :void
   (levelbar (g:object level-bar))
   (name :string)
   (value :double))
@@ -546,8 +547,8 @@ lambda (levelbar name)    :detailed
 ;;; gtk_level_bar_remove_offset_value ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_level_bar_remove_offset_value" level-bar-remove-offset-value)
-    :void
+(cffi:defcfun ("gtk_level_bar_remove_offset_value"
+               level-bar-remove-offset-value) :void
  #+liber-documentation
  "@version{#2023-3-20}
   @argument[levelbar]{a @class{gtk:level-bar} widget}
@@ -567,7 +568,8 @@ lambda (levelbar name)    :detailed
 ;;; gtk_level_bar_get_offset_value () -> level-bar-offset-value
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_level_bar_get_offset_value" %level-bar-offset-value) :boolean
+(cffi:defcfun ("gtk_level_bar_get_offset_value" %level-bar-offset-value)
+    :boolean
   (levelbar (g:object level-bar))
   (name :string)
   (value (:pointer :double)))
@@ -583,7 +585,7 @@ lambda (levelbar name)    :detailed
     bar, returning @code{nil} in case an offset named @arg{name} was not found.
   @end{short}
   @see-class{gtk:level-bar}"
-  (with-foreign-object (value :double)
+  (cffi:with-foreign-object (value :double)
     (when (%level-bar-offset-value levelbar name value)
       (cffi:mem-ref value :double))))
 

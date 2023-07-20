@@ -97,7 +97,7 @@
 ;;; struct GtkPaned
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkPaned" paned
+(gobject:define-g-object-class "GtkPaned" paned
   (:superclass container
    :export t
    :interfaces ("AtkImplementorIface"
@@ -574,7 +574,7 @@ lambda (widget)    :action
 ;;; gtk_paned_pack1 ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_paned_pack1" %paned-pack1) :void
+(cffi:defcfun ("gtk_paned_pack1" %paned-pack1) :void
   (paned (g:object paned))
   (child (g:object widget))
   (resize :boolean)
@@ -606,7 +606,7 @@ lambda (widget)    :action
 ;;; gtk_paned_pack2 ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_paned_pack2" %paned-pack2) :void
+(cffi:defcfun ("gtk_paned_pack2" %paned-pack2) :void
   (paned (g:object paned))
   (child (g:object widget))
   (resize :boolean)
@@ -637,7 +637,7 @@ lambda (widget)    :action
 ;;; gtk_paned_get_child1 ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_paned_get_child1" paned-child1) (g:object widget)
+(cffi:defcfun ("gtk_paned_get_child1" paned-child1) (g:object widget)
  #+liber-documentation
  "@version{2023-3-5}
   @argument[paned]{a @class{gtk:paned} widget}
@@ -655,7 +655,7 @@ lambda (widget)    :action
 ;;; gtk_paned_get_child2 ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_paned_get_child2" paned-child2) (g:object widget)
+(cffi:defcfun ("gtk_paned_get_child2" paned-child2) (g:object widget)
  #+liber-documentation
  "@version{2023-3-5}
   @argument[paned]{a @class{gtk:paned} widget}
@@ -673,7 +673,7 @@ lambda (widget)    :action
 ;;; gtk_paned_get_handle_window ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_paned_get_handle_window" paned-handle-window)
+(cffi:defcfun ("gtk_paned_get_handle_window" paned-handle-window)
     (g:object gdk:window)
  #+liber-documentation
  "@version{2023-3-5}

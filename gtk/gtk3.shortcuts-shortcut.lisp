@@ -71,7 +71,7 @@
 ;;; enum GtkShortcutType
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkShortcutType" shortcut-type
+(gobject:define-g-enum "GtkShortcutType" shortcut-type
   (:export t
    :type-initializer "gtk_shortcut_type_get_type")
   :accelerator
@@ -94,7 +94,7 @@
   @end{short}
   More values may be added to this enumeration over time.
   @begin{pre}
-(define-g-enum \"GtkShortcutType\" shortcut-type
+(gobject:define-g-enum \"GtkShortcutType\" shortcut-type
   (:export t
    :type-initializer \"gtk_shortcut_type_get_type\")
   :accelerator
@@ -130,7 +130,7 @@
 ;;; struct GtkShortcutsShortcut
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkShortcutsShortcut" shortcuts-shortcut
+(gobject:define-g-object-class "GtkShortcutsShortcut" shortcuts-shortcut
   (:superclass box
    :export t
    :interfaces ("AtkImplementorIface"

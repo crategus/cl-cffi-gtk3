@@ -89,7 +89,7 @@
 ;;; struct GtkScale
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkScale" scale
+(gobject:define-g-object-class "GtkScale" scale
   (:superclass range
    :export t
    :interfaces ("AtkImplementorIface"
@@ -272,10 +272,10 @@ format_value_callback (GtkScale *scale,
     Accessor of the @slot[gtk:scale]{digits} slot of the @class{gtk:scale}
     class.
   @end{short}
-  The @sym{gtk:scale-digits} function returns the number of decimal places that 
-  are displayed. The @sym{(setf gtk:scale-digits)} function sets the number of 
-  decimal places that are displayed in the value. Also causes the value of the 
-  adjustment to be rounded off to this number of @arg{digits}, so the retrieved 
+  The @sym{gtk:scale-digits} function returns the number of decimal places that
+  are displayed. The @sym{(setf gtk:scale-digits)} function sets the number of
+  decimal places that are displayed in the value. Also causes the value of the
+  adjustment to be rounded off to this number of @arg{digits}, so the retrieved
   value matches the value the user saw.
   @see-class{gtk:scale}")
 
@@ -300,9 +300,9 @@ format_value_callback (GtkScale *scale,
     Accessor of the @slot[gtk:scale]{draw-value} slot of the @class{gtk:scale}
     class.
   @end{short}
-  The @sym{gtk:scale-draw-value} function returns whether the current value is 
-  displayed as a string next to the slider. The 
-  @sym{(setf gtk:scale-draw-value)} function specifies whether the current 
+  The @sym{gtk:scale-draw-value} function returns whether the current value is
+  displayed as a string next to the slider. The
+  @sym{(setf gtk:scale-draw-value)} function specifies whether the current
   value is displayed as a string next to the slider.
   @see-class{gtk:scale}")
 
@@ -327,7 +327,7 @@ format_value_callback (GtkScale *scale,
     Accessor of the @slot[gtk:scale]{has-origin} slot of the @class{gtk:scale}
     class.
   @end{short}
-  The @sym{gtk:scale-has-origin} function returns whether the scale has an 
+  The @sym{gtk:scale-has-origin} function returns whether the scale has an
   origin.
 
   If @arg{has-origin} is set to @em{true}, the default, the scale will
@@ -358,8 +358,8 @@ format_value_callback (GtkScale *scale,
     Accessor of the @slot[gtk:scale]{value-pos} slot of the @class{gtk:scale}
     class.
   @end{short}
-  The @sym{gtk:scale-value-pos} function gets the position in which the current 
-  value is displayed. The @sym{gtk:scale-value-pos} function sets the position 
+  The @sym{gtk:scale-value-pos} function gets the position in which the current
+  value is displayed. The @sym{gtk:scale-value-pos} function sets the position
   in which the current value is displayed.
   @see-class{gtk:scale}")
 
@@ -426,7 +426,7 @@ format_value_callback (GtkScale *scale,
 ;;; gtk_scale_get_layout () -> scale-layout
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_scale_get_layout" scale-layout) (g:object pango-layout)
+(cffi:defcfun ("gtk_scale_get_layout" scale-layout) (g:object pango-layout)
  #+liber-documentation
  "@version{#2023-3-24}
   @argument[scale]{a @class{gtk:scale} widget}
@@ -444,7 +444,7 @@ format_value_callback (GtkScale *scale,
 ;;; gtk_scale_get_layout_offsets () -> scale-layout-offsets
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_scale_get_layout_offsets" %scale-get-layout-offsets) :void
+(cffi:defcfun ("gtk_scale_get_layout_offsets" %scale-get-layout-offsets) :void
   (scale (g:object scale))
   (x (:pointer :int))
   (y (:pointer :int)))
@@ -468,7 +468,7 @@ format_value_callback (GtkScale *scale,
   @see-class{gtk:scale}
   @see-function{pango-pixels}
   @see-variable{+pango-scale+}"
-  (with-foreign-objects ((x :int) (y :int))
+  (cffi:with-foreign-objects ((x :int) (y :int))
     (%scale-get-layout-offsets scale x y)
     (values (cffi:mem-ref x :int)
             (cffi:mem-ref y :int))))
@@ -479,7 +479,7 @@ format_value_callback (GtkScale *scale,
 ;;; gtk_scale_add_mark ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_scale_add_mark" scale-add-mark) :void
+(cffi:defcfun ("gtk_scale_add_mark" scale-add-mark) :void
  #+liber-documentation
  "@version{#2023-3-24}
   @argument[scale]{a @class{gtk:scale} widget}
@@ -511,7 +511,7 @@ format_value_callback (GtkScale *scale,
 ;;; gtk_scale_clear_marks ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_scale_clear_marks" scale-clear-marks) :void
+(cffi:defcfun ("gtk_scale_clear_marks" scale-clear-marks) :void
  #+liber-documentation
  "@version{#2023-3-24}
   @argument[scale]{a @class{gtk:scale} widget}

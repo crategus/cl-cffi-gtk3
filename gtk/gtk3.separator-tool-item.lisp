@@ -67,7 +67,7 @@
 ;;; struct GtkSeparatorToolItem
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkSeparatorToolItem" separator-tool-item
+(gobject:define-g-object-class "GtkSeparatorToolItem" separator-tool-item
   (:superclass tool-item
    :export t
    :interfaces ("AtkImplementorIface"

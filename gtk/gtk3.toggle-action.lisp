@@ -71,7 +71,7 @@
 ;;; struct GtkToggleAction
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkToggleAction" toggle-action
+(gobject:define-g-object-class "GtkToggleAction" toggle-action
   (:superclass action
     :export t
     :interfaces ("GtkBuildable")
@@ -93,7 +93,7 @@
   It has an \"active\" state specifying whether the action has been checked or
   not.
   @begin[Warning]{dictionary}
-    The @sym{gtk:toggle-action} class has been deprecated since version 3.10 
+    The @sym{gtk:toggle-action} class has been deprecated since version 3.10
     and should not be used in newly written code.
   @end{dictionary}
   @begin[Signal Details]{dictionary}
@@ -139,8 +139,8 @@ lambda (action)    :run-first
     Accessor of the @slot[gtk:toggle-action]{active} slot of the
     @class{gtk:toggle-action} class.
   @end{short}
-  The @sym{gtk:toggle-action-active} function returns the checked state of the 
-  toggle action. The @sym{(setf gtk:toggle-action-action)} functoin sets the 
+  The @sym{gtk:toggle-action-active} function returns the checked state of the
+  toggle action. The @sym{(setf gtk:toggle-action-action)} functoin sets the
   checked state.
   @begin[Warning]{dictionary}
     The @sym{gtk:toggle-action-active} function has been deprecated since
@@ -171,9 +171,9 @@ lambda (action)    :run-first
     Accessor of the @slot[gtk:toggle-action]{draw-as-radio} slot of the
     @class{gtk:toggle-action} class.
   @end{short}
-  The @sym{gtk:toggle-action-draw-as-radio} function returns whether the action 
-  should have proxies like a radio action. The 
-  @sym{(setf gtk:toggle-action-draw-as-radio)} function sets whether the action 
+  The @sym{gtk:toggle-action-draw-as-radio} function returns whether the action
+  should have proxies like a radio action. The
+  @sym{(setf gtk:toggle-action-draw-as-radio)} function sets whether the action
   should have proxies.
   @begin[Warning]{dictionary}
     The @sym{gtk:toggle-action-draw-as-radio} function has been deprecated
@@ -185,7 +185,7 @@ lambda (action)    :run-first
 ;;; gtk_toggle_action_new ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_toggle_action_new" toggle-action-new)
+(cffi:defcfun ("gtk_toggle_action_new" toggle-action-new)
     (g:object toggle-action)
  "@version{#2023-3-28}
   @argument[name]{a string with a unique name for the action}
@@ -218,7 +218,7 @@ lambda (action)    :run-first
 ;;; gtk_toggle_action_toggled ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_toggle_action_toggled" toggle-action-toggled) :void
+(cffi:defcfun ("gtk_toggle_action_toggled" toggle-action-toggled) :void
  "@version{#2023-3-28}
   @argument[action]{a @class{gtk:toggle-action} object}
   @begin{short}

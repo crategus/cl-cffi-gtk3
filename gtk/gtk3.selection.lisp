@@ -110,7 +110,7 @@
 ;;; enum GtkTargetFlags
 ;;; ----------------------------------------------------------------------------
 
-(define-g-flags "GtkTargetFlags" target-flags
+(gobject:define-g-flags "GtkTargetFlags" target-flags
   (:export t
    :type-initializer "gtk_target_flags_get_type")
   (:none 0)
@@ -129,7 +129,7 @@
     a target entry.
   @end{short}
   @begin{pre}
-(define-g-flags \"GtkTargetFlags\" target-flags
+(gobject:define-g-flags \"GtkTargetFlags\" target-flags
   (:export t
    :type-initializer \"gtk_target_flags_get_type\")
   (:same-app 1)
@@ -328,12 +328,13 @@
 ;;; gtk_target_list_new ()
 ;;; ----------------------------------------------------------------------------
 
-(defcstruct %target-entry
+(cffi:defcstruct %target-entry
   (target :string)
   (flags target-flags)
   (info :uint))
 
-(defcfun ("gtk_target_list_new" %target-list-new) (g:boxed target-list :return)
+(cffi:defcfun ("gtk_target_list_new" %target-list-new)
+    (g:boxed target-list :return)
   (targets :pointer)
   (n-targets :uint))
 
@@ -358,14 +359,14 @@
   @end{dictionary}
   @see-class{gtk:target-list}"
   (let ((n-targets (length targets)))
-    (with-foreign-object (targets-ptr '(:struct %target-entry) n-targets)
+    (cffi:with-foreign-object (targets-ptr '(:struct %target-entry) n-targets)
       (loop for i from 0 below n-targets
             for target-ptr = (cffi:mem-aptr targets-ptr
                                             '(:struct %target-entry) i)
             for entry in targets
-            do (with-foreign-slots ((target flags info)
-                                    target-ptr
-                                    (:struct %target-entry))
+            do (cffi:with-foreign-slots ((target flags info)
+                                         target-ptr
+                                         (:struct %target-entry))
                  (setf target (first entry))
                  (setf flags (second entry))
                  (setf info (third entry))))
@@ -377,8 +378,7 @@
 ;;; gtk_target_list_ref ()                                 not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_target_list_ref" target-list-ref)
-    (g:boxed target-list)
+(cffi:defcfun ("gtk_target_list_ref" target-list-ref) (g:boxed target-list)
  #+liber-documentation
  "@version{#2013-11-21}
   @argument[target-list]{a @class{gtk:target-list}}
@@ -391,7 +391,7 @@
 ;;; gtk_target_list_unref ()                               not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_target_list_unref" target-list-unref) :void
+(cffi:defcfun ("gtk_target_list_unref" target-list-unref) :void
  #+liber-documentation
  "@version{#2013-11-21}
   @argument[list]{a @class{gtk:target-list}}
@@ -406,7 +406,7 @@
 ;;; gtk_target_list_add ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_target_list_add" target-list-add) :void
+(cffi:defcfun ("gtk_target_list_add" target-list-add) :void
  #+liber-documentation
  "@version{2023-3-24}
   @argument[tlist]{a @class{gtk:target-list} instance}
@@ -434,7 +434,7 @@
 ;; TODO: Consider to change the name. This function adds a Lisp list of
 ;; targets to the target list.
 
-(defcfun ("gtk_target_list_add_table" %target-list-add-table) :void
+(cffi:defcfun ("gtk_target_list_add_table" %target-list-add-table) :void
   (tlist (g:boxed target-list))
   (targets :pointer)
   (n-targets :uint))
@@ -456,7 +456,8 @@
 ;;; gtk_target_list_add_text_targets ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_target_list_add_text_targets" target-list-add-text-targets) :void
+(cffi:defcfun ("gtk_target_list_add_text_targets" target-list-add-text-targets)
+    :void
  #+liber-documentation
  "@version{2023-3-24}
   @argument[tlist]{a @class{gtk:target-list} instance}
@@ -476,8 +477,8 @@
 ;;; gtk_target_list_add_image_targets ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_target_list_add_image_targets" target-list-add-image-targets)
-    :void
+(cffi:defcfun ("gtk_target_list_add_image_targets"
+               target-list-add-image-targets) :void
  #+liber-documentation
  "@version{2023-3-24}
   @argument[tlist]{a @class{gtk:target-list} instance}
@@ -500,7 +501,8 @@
 ;;; gtk_target_list_add_uri_targets ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_target_list_add_uri_targets" target-list-add-uri-targets) :void
+(cffi:defcfun ("gtk_target_list_add_uri_targets" target-list-add-uri-targets)
+    :void
  #+liber-documentation
  "@version{2023-3-24}
   @argument[tlist]{a @class{gtk:target-list} instance}
@@ -520,8 +522,8 @@
 ;;; gtk_target_list_add_rich_text_targets ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_target_list_add_rich_text_targets"
-           target-list-add-rich-text-targets) :void
+(cffi:defcfun ("gtk_target_list_add_rich_text_targets"
+               target-list-add-rich-text-targets) :void
  #+liber-documentation
  "@version{2023-3-24}
   @argument[tlist]{a @class{gtk:target-list} instance}
@@ -552,7 +554,7 @@
 ;;; gtk_target_list_remove ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_target_list_remove" target-list-remove) :void
+(cffi:defcfun ("gtk_target_list_remove" target-list-remove) :void
  #+liber-documentation
  "@version{2023-3-24}
   @argument[tlist]{a @class{gtk:target-list} instance}
@@ -571,7 +573,7 @@
 ;;; gtk_target_list_find ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_target_list_find" %target-list-find) :boolean
+(cffi:defcfun ("gtk_target_list_find" %target-list-find) :boolean
   (tlist (g:boxed target-list))
   (target gdk:atom-as-string)
   (info :pointer))
@@ -590,7 +592,7 @@
   @end{short}
   @see-class{gtk:target-list}
   @see-symbol{gdk:atom-as-string}"
-  (with-foreign-object (info :uint)
+  (cffi:with-foreign-object (info :uint)
     (when (%target-list-find tlist target info)
       (cffi:mem-ref info :uint))))
 
@@ -620,7 +622,7 @@
 ;; TODO: Consider to change the name of the implementation. This function
 ;; does not create a new instance, but returns the target list as a Lisp list.
 
-(defcfun ("gtk_target_table_new_from_list" %target-table-new-from-list)
+(cffi:defcfun ("gtk_target_table_new_from_list" %target-table-new-from-list)
     :pointer
   (tlist (g:boxed target-list))
   (n-targets (:pointer :int)))
@@ -635,15 +637,15 @@
     targets as the passed @arg{tlist} argument.
   @end{short}
   @see-class{gtk:target-list}"
-  (with-foreign-object (n-targets :int)
+  (cffi:with-foreign-object (n-targets :int)
     (let* ((targets (%target-table-new-from-list tlist n-targets))
            (n (cffi:mem-ref n-targets :int)))
       (prog1
         (loop for i from 0 below n
               for target-ptr = (cffi:mem-aptr targets '(:struct %target-entry) i)
-              collect (with-foreign-slots ((target flags info)
-                                           target-ptr
-                                           (:struct %target-entry))
+              collect (cffi:with-foreign-slots ((target flags info)
+                                                target-ptr
+                                                (:struct %target-entry))
                         (list target flags info)))
         (g:free targets)))))
 
@@ -653,7 +655,7 @@
 ;;; gtk_selection_owner_set ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_selection_owner_set" selection-owner-set) :boolean
+(cffi:defcfun ("gtk_selection_owner_set" selection-owner-set) :boolean
  #+liber-documentation
  "@version{#2023-3-24}
   @argument[widget]{a @class{gtk:widget} object, or @code{nil}}
@@ -679,8 +681,8 @@
 ;;; gtk_selection_owner_set_for_display ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_selection_owner_set_for_display"
-           selection-owner-set-for-display) :boolean
+(cffi:defcfun ("gtk_selection_owner_set_for_display"
+               selection-owner-set-for-display) :boolean
  #+liber-documentation
  "@version{#2023-3-24}
   @argument[display]{a @class{gdk:display} object where the selection is set}
@@ -710,7 +712,7 @@
 ;;; gtk_selection_add_target ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_selection_add_target" selection-add-target) :void
+(cffi:defcfun ("gtk_selection_add_target" selection-add-target) :void
  #+liber-documentation
  "@version{#2023-3-22}
   @argument[widget]{a @class{gtk:widget} object}
@@ -738,7 +740,7 @@
 ;;; gtk_selection_add_targets ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_selection_add_targets" %selection-add-targets) :void
+(cffi:defcfun ("gtk_selection_add_targets" %selection-add-targets) :void
   (widget (g:object widget))
   (selection gdk:atom-as-string)
   (targets :pointer)
@@ -767,7 +769,7 @@
 ;;; gtk_selection_clear_targets ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_selection_clear_targets" selection-clear-targets) :void
+(cffi:defcfun ("gtk_selection_clear_targets" selection-clear-targets) :void
  #+liber-documentation
  "@version{#2023-3-24}
   @argument[widget]{a @class{gtk:widget} object}
@@ -787,7 +789,7 @@
 ;;; gtk_selection_convert ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_selection_convert" selection-convert) :boolean
+(cffi:defcfun ("gtk_selection_convert" selection-convert) :boolean
  #+liber-documentation
  "@version{#2023-3-24}
   @argument[widget]{the @class{gtk:widget} object which acts as requestor}
@@ -820,7 +822,7 @@
 ;;; gtk_selection_data_set ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_selection_data_set" selection-data-set) :void
+(cffi:defcfun ("gtk_selection_data_set" selection-data-set) :void
  #+liber-documentation
  "@version{#2023-3-24}
   @argument[selection]{a @class{gtk:selection-data} instance}
@@ -857,7 +859,7 @@
                               :boolean)
     text))
 
-(defcfun ("gtk_selection_data_get_text" selection-data-text) :string
+(cffi:defcfun ("gtk_selection_data_get_text" selection-data-text) :string
  #+liber-documentation
  "@version{#2023-3-24}
   @syntax[]{(gtk:selection-data-text selection) => text}
@@ -888,7 +890,7 @@
                               :boolean)
     pixbuf))
 
-(defcfun ("gtk_selection_data_get_pixbuf" selection-data-pixbuf)
+(cffi:defcfun ("gtk_selection_data_get_pixbuf" selection-data-pixbuf)
     (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
  "@version{#2023-3-24}
@@ -921,7 +923,7 @@
                               :boolean)
     uris))
 
-(defcfun ("gtk_selection_data_get_uris" selection-data-uris) g:strv-t
+(cffi:defcfun ("gtk_selection_data_get_uris" selection-data-uris) g:strv-t
  #+liber-documentation
  "@version{#2023-3-24}
   @syntax[]{(gtk:selection-data-uris selection) => uris}
@@ -944,7 +946,8 @@
 ;;; gtk_selection_data_get_targets () -> selection-data-targets
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_selection_data_get_targets" %selection-data-targets) :boolean
+(cffi:defcfun ("gtk_selection_data_get_targets" %selection-data-targets)
+    :boolean
   (selection (g:boxed selection-data))
   (targets (:pointer gdk:atom-as-string))
   (n-atoms (:pointer :int)))
@@ -961,7 +964,7 @@
   target that is always supplied for any selection.
   @see-class{gtk:selection-data}
   @see-symbol{gdk:atom-as-string}"
-  (with-foreign-objects ((targets-ptr :pointer) (n-atoms :int))
+  (cffi:with-foreign-objects ((targets-ptr :pointer) (n-atoms :int))
     (when (%selection-data-targets selection targets-ptr n-atoms)
       (let ((result nil))
         (loop for i from 0 below (cffi:mem-ref n-atoms :int)
@@ -974,8 +977,8 @@
 ;;; gtk_selection_data_targets_include_image ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_selection_data_targets_include_image"
-           selection-data-targets-include-image) :boolean
+(cffi:defcfun ("gtk_selection_data_targets_include_image"
+               selection-data-targets-include-image) :boolean
  #+liber-documentation
  "@version{#2023-3-24}
   @argument[selection]{a @class{gtk:selection-data} instance}
@@ -1001,8 +1004,8 @@
 ;;; gtk_selection_data_targets_include_text ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_selection_data_targets_include_text"
-           selection-data-targets-include-text) :boolean
+(cffi:defcfun ("gtk_selection_data_targets_include_text"
+               selection-data-targets-include-text) :boolean
  #+liber-documentation
  "@version{#2023-3-24}
   @argument[selection]{a @class{gtk:selection-data} instance}
@@ -1023,8 +1026,8 @@
 ;;; gtk_selection_data_targets_include_uri ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_selection_data_targets_include_uri"
-           selection-data-targets-include-uri) :boolean
+(cffi:defcfun ("gtk_selection_data_targets_include_uri"
+               selection-data-targets-include-uri) :boolean
  #+liber-documentation
  "@version{#2023-3-24}
   @argument[selection]{a @class{gtk:selection-data} instance}
@@ -1046,8 +1049,8 @@
 ;;; gtk_selection_data_targets_include_rich_text ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_selection_data_targets_include_rich_text"
-           selection-data-targets-include-rich-text) :boolean
+(cffi:defcfun ("gtk_selection_data_targets_include_rich_text"
+               selection-data-targets-include-rich-text) :boolean
  #+liber-documentation
  "@version{#2023-3-24}
   @argument[selection]{a @class{gtk:selection-data} instance}
@@ -1071,7 +1074,7 @@
 ;;; gtk_selection_data_get_selection ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_selection_data_get_selection" selection-data-selection)
+(cffi:defcfun ("gtk_selection_data_get_selection" selection-data-selection)
     gdk:atom-as-string
  #+liber-documentation
  "@version{#2023-3-24}
@@ -1090,7 +1093,7 @@
 ;;; gtk_selection_data_get_data ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_selection_data_get_data" selection-data-data)
+(cffi:defcfun ("gtk_selection_data_get_data" selection-data-data)
     (:pointer :uchar)
  #+liber-documentation
  "@version{#2023-3-24}
@@ -1108,7 +1111,7 @@
 ;;; gtk_selection_data_get_length ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_selection_data_get_length" selection-data-length) :int
+(cffi:defcfun ("gtk_selection_data_get_length" selection-data-length) :int
  #+liber-documentation
  "@version{#2023-3-24}
   @argument[data]{a @class{gtk:selection-data} instance}
@@ -1125,8 +1128,8 @@
 ;;; gtk_selection_data_get_data_with_length ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_selection_data_get_data_with_length"
-          %selection-data-data-with-length) :pointer
+(cffi:defcfun ("gtk_selection_data_get_data_with_length"
+               %selection-data-data-with-length) :pointer
   (selection (g:boxed selection-data))
   (length (:pointer :int)))
 
@@ -1144,7 +1147,7 @@
   @end{short}
   @see-class{gtk:selection-data}
   @see-function{gtk:selection-data-data}"
-  (with-foreign-object (length-ptr :int)
+  (cffi:with-foreign-object (length-ptr :int)
     (let ((data (%selection-data-data-with-length selection length-ptr)))
       (let ((length (cffi:mem-ref length-ptr :int)))
         (if (> length 0)
@@ -1157,7 +1160,7 @@
 ;;; gtk_selection_data_get_data_type ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_selection_data_get_data_type" selection-data-data-type)
+(cffi:defcfun ("gtk_selection_data_get_data_type" selection-data-data-type)
     gdk:atom-as-string
  #+liber-documentation
  "@version{#2023-3-24}
@@ -1176,7 +1179,7 @@
 ;;; gtk_selection_data_get_display ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_selection_data_get_display" selection-data-display)
+(cffi:defcfun ("gtk_selection_data_get_display" selection-data-display)
     (g:object gdk:display)
  #+liber-documentation
  "@version{#2023-3-24}
@@ -1195,7 +1198,7 @@
 ;;; gtk_selection_data_get_format ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_selection_data_get_format" selection-data-format) :int
+(cffi:defcfun ("gtk_selection_data_get_format" selection-data-format) :int
  #+liber-documentation
  "@version{#2023-3-24}
   @argument[data]{a @class{gtk:selection-data} instance}
@@ -1212,7 +1215,7 @@
 ;;; gtk_selection_data_get_target ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_selection_data_get_target" selection-data-target)
+(cffi:defcfun ("gtk_selection_data_get_target" selection-data-target)
     gdk:atom-as-string
  #+liber-documentation
  "@version{#2023-3-24}
@@ -1230,7 +1233,7 @@
 ;;; gtk_targets_include_image ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_targets_include_image" %targets-include-image) :boolean
+(cffi:defcfun ("gtk_targets_include_image" %targets-include-image) :boolean
   (targets :pointer)
   (n-targets :int)
   (writable :boolean))
@@ -1250,7 +1253,7 @@
   @see-class{gdk:atom-as-string}
   @see-class{gdk-pixbuf:pixbuf}"
   (let ((n-targets (length targets)))
-    (with-foreign-object (targets-ar :pointer n-targets)
+    (cffi:with-foreign-object (targets-ar :pointer n-targets)
       (loop for i from 0 below n-targets
             for target in targets
             do (setf (cffi:mem-aref targets-ar 'gdk:atom-as-string i) target))
@@ -1262,7 +1265,7 @@
 ;;; gtk_targets_include_text ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_targets_include_text" %targets-include-text) :boolean
+(cffi:defcfun ("gtk_targets_include_text" %targets-include-text) :boolean
   (targets :pointer)
   (n-targets :int))
 
@@ -1278,7 +1281,7 @@
   @end{short}
   @see-class{gdk:atom-as-string}"
   (let ((n-targets (length targets)))
-    (with-foreign-object (targets-ar :pointer n-targets)
+    (cffi:with-foreign-object (targets-ar :pointer n-targets)
       (loop for i from 0 below n-targets
             for target in targets
             do (setf (cffi:mem-aref targets-ar 'gdk:atom-as-string i) target))
@@ -1290,7 +1293,7 @@
 ;;; gtk_targets_include_uri ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_targets_include_uri" %targets-include-uri) :boolean
+(cffi:defcfun ("gtk_targets_include_uri" %targets-include-uri) :boolean
   (targets :pointer)
   (n-targets :int))
 
@@ -1306,7 +1309,7 @@
   @end{short}
   @see-class{gdk:atom-as-string}"
   (let ((n-targets (length targets)))
-    (with-foreign-object (targets-ar :pointer n-targets)
+    (cffi:with-foreign-object (targets-ar :pointer n-targets)
       (loop for i from 0 below n-targets
             for target in targets
             do (setf (cffi:mem-aref targets-ar 'gdk:atom-as-string i) target))
@@ -1318,7 +1321,8 @@
 ;;; gtk_targets_include_rich_text ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_targets_include_rich_text" %targets-include-rich-text) :boolean
+(cffi:defcfun ("gtk_targets_include_rich_text" %targets-include-rich-text)
+    :boolean
   (targets :pointer)
   (n-targets :int)
   (buffer (g:object text-buffer)))
@@ -1337,7 +1341,7 @@
   @see-class{gdk:atom-as-string}
   @see-class{gtk:text-buffer}"
   (let ((n-targets (length targets)))
-    (with-foreign-object (targets-ar :pointer n-targets)
+    (cffi:with-foreign-object (targets-ar :pointer n-targets)
       (loop for i from 0 below n-targets
             for target in targets
             do (setf (cffi:mem-aref targets-ar 'gdk:atom-as-string i) target))
@@ -1349,7 +1353,7 @@
 ;;; gtk_selection_remove_all ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_selection_remove_all" selection-remove-all) :void
+(cffi:defcfun ("gtk_selection_remove_all" selection-remove-all) :void
  #+liber-documentation
  "@version{#2023-3-24}
   @argument[widget]{a @class{gtk:widget} object}
@@ -1368,7 +1372,7 @@
 ;;; gtk_selection_data_copy ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_selection_data_copy" selection-data-copy)
+(cffi:defcfun ("gtk_selection_data_copy" selection-data-copy)
     (g:boxed selection-data :return)
  #+liber-documentation
  "@version{#2023-3-24}

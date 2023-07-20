@@ -64,7 +64,7 @@
 ;;; struct GtkRecentChooserDialog
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkRecentChooserDialog" recent-chooser-dialog
+(gobject:define-g-object-class "GtkRecentChooserDialog" recent-chooser-dialog
   (:superclass dialog
    :export t
    :interfaces ("AtkImplementorIface"

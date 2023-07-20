@@ -56,19 +56,19 @@
               (bt:make-thread (lambda ()
                                 ;; On Windows it is necessary to use the
                                 ;; version gtk-main which puts the C function
-                                ;; %main between gdk-thread-enter und
-                                ;; gdk-thread-leave
+                                ;; %main between gdk:thread-enter und
+                                ;; gdk:thread-leave
                                 (unless (find :win32 *features*)
                                   ;; Calling on win32 will deadlock
-                                  (gdk::gdk-threads-init)
-                                  (gdk::gdk-threads-enter))
+                                  (gdk::threads-init)
+                                  (gdk::threads-enter))
                                 (unwind-protect
                                   (progn
 ;                                   (%gtk-init)
                                     (%main))
                                   (unless (find :win32 *features*)
                                     ;; Calling on win32 will deadlock
-                                    (gdk::gdk-threads-leave))
+                                    (gdk::threads-leave))
                                   ))
                               :name "cl-cffi-gtk main thread")
               *main-thread-level* 0))
@@ -123,14 +123,14 @@
 
 ;;; ----------------------------------------------------------------------------
 
-(defcallback call-from-main-loop-callback :boolean
+(cffi:defcallback call-from-main-loop-callback :boolean
     ((data :pointer))
   (restart-case
       (progn (funcall (glib:get-stable-pointer-value data))
              nil)
     (return-from-callback () nil)))
 
-(defun call-from-gtk-main-loop (func &key (priority +g-priority-default-idle+))
+(defun call-from-gtk-main-loop (func &key (priority g:+g-priority-default-idle+))
   (glib::%idle-add-full priority
                         (cffi:callback call-from-main-loop-callback)
                         (glib:allocate-stable-pointer func)

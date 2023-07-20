@@ -67,7 +67,7 @@
 ;;; struct GtkSearchEntry
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkSearchEntry" search-entry
+(gobject:define-g-object-class "GtkSearchEntry" search-entry
   (:superclass entry
    :export t
    :interfaces ("AtkImplementorIface"
@@ -172,7 +172,8 @@ lambda (entry)    :action
 ;;; gtk_search_entry_handle_event ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_search_entry_handle_event" search-entry-handle-event) :boolean
+(cffi:defcfun ("gtk_search_entry_handle_event" search-entry-handle-event)
+    :boolean
  #+liber-documentation
  "@version{#2023-3-24}
   @argument[entry]{a @class{gtk:entry-search} widget}

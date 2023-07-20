@@ -65,7 +65,7 @@
 ;;; struct GtkStackSidebar
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkStackSidebar" stack-sidebar
+(gobject:define-g-object-class "GtkStackSidebar" stack-sidebar
   (:superclass bin
    :export t
    :interfaces ("AtkImplementorIface"
@@ -86,8 +86,8 @@
   @image[stack-sidebar]{Figure: GtkStackSidebar}
 
   In order to use a @sym{gtk:stack-sidebar} widget, you simply use a
-  @class{gtk:stack} widget to organize your UI flow, and add the sidebar to 
-  your sidebar area. You can use the @fun{gtk:stack-sidebar-stack} function to 
+  @class{gtk:stack} widget to organize your UI flow, and add the sidebar to
+  your sidebar area. You can use the @fun{gtk:stack-sidebar-stack} function to
   connect the @sym{gtk:stack-sidebar} widget to the @class{gtk:stack} widget.
   @begin[CSS nodes]{dictionary}
     The @sym{gtk:stack-sidebar} implementation has a single CSS node with name
@@ -123,8 +123,8 @@
     Accessor of the @slot[gtk:stack-sidebar]{stack} slot of the
     @class{gtk:stack-sidebar} class.
   @end{short}
-  The @sym{gtk:stack-sidebar-stack} function retrieves the stack. The 
-  @sym{(setf gtk:stack-sidebar-stack)} function sets the stack associated with 
+  The @sym{gtk:stack-sidebar-stack} function retrieves the stack. The
+  @sym{(setf gtk:stack-sidebar-stack)} function sets the stack associated with
   this stack sidebar.
 
   The stack sidebar will automatically update according to the order (packing)

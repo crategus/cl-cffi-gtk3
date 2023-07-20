@@ -74,7 +74,7 @@
 ;;; struct GtkToggleToolButton
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkToggleToolButton" toggle-tool-button
+(gobject:define-g-object-class "GtkToggleToolButton" toggle-tool-button
   (:superclass tool-button
    :export t
    :interfaces ("AtkImplementorIface"
@@ -138,8 +138,8 @@ lambda (button)    :run-first
     Accessor of the @slot[gtk:toggle-tool-button]{active} slot of the
     @class{gtk:toggle-tool-button} class.
   @end{short}
-  The @sym{gtk:toggle-tool-button-active} function queries a toggle tool button 
-  and returns its current state. The @sym{(setf gtk:toggle-tool-button-active)} 
+  The @sym{gtk:toggle-tool-button-active} function queries a toggle tool button
+  and returns its current state. The @sym{(setf gtk:toggle-tool-button-active)}
   function sets the status.
 
   Set to @em{true} if you want the toggle tool button to be 'pressed in',

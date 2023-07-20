@@ -72,7 +72,7 @@
 ;;; struct GtkLockButton
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkLockButton" lock-button
+(gobject:define-g-object-class "GtkLockButton" lock-button
   (:superclass button
    :export t
    :interfaces ("AtkImplementorIface"

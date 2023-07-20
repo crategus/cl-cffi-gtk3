@@ -217,7 +217,7 @@
 ;;; gtk_show_uri ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_show_uri" %show-uri) :boolean
+(cffi:defcfun ("gtk_show_uri" %show-uri) :boolean
   (screen (g:object gdk-screen))
   (uri :string)
   (timestamp :uint32)
@@ -249,7 +249,7 @@
   This function can be used as a replacement for the @code{gnome_vfs_url_show()}
   and @code{gnome_url_show()} functions.
   @see-class{gdk:screen}"
-  (with-g-error (err)
+  (glib:with-g-error (err)
     (%show-uri screen uri timestamp err)))
 
 (export 'show-uri)

@@ -72,7 +72,7 @@
 ;;; struct GtkNativeDialog
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkNativeDialog" native-dialog
+(gobject:define-g-object-class "GtkNativeDialog" native-dialog
   (:superclass g:object
    :export t
    :interfaces ()

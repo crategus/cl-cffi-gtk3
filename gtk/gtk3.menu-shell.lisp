@@ -89,7 +89,7 @@
 ;;; enum GtkMenuDirectionType
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkMenuDirectionType" menu-direction-type
+(gobject:define-g-enum "GtkMenuDirectionType" menu-direction-type
   (:export t
    :type-initializer "gtk_menu_direction_type_get_type")
   (:parent 0)
@@ -106,7 +106,7 @@
     An enumeration representing directional movements within a menu.
   @end{short}
   @begin{pre}
-(define-g-enum \"GtkMenuDirectionType\" menu-direction-type
+(gobject:define-g-enum \"GtkMenuDirectionType\" menu-direction-type
   (:export t
    :type-initializer \"gtk_menu_direction_type_get_type\")
   (:parent 0)
@@ -126,7 +126,7 @@
 ;;; struct GtkMenuShell
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkMenuShell" menu-shell
+(gobject:define-g-object-class "GtkMenuShell" menu-shell
   (:superclass container
    :export t
    :interfaces ("AtkImplementorIface"
@@ -315,7 +315,7 @@ lambda (menushell)    :run-first
 ;;; gtk_menu_shell_append ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_menu_shell_append" menu-shell-append) :void
+(cffi:defcfun ("gtk_menu_shell_append" menu-shell-append) :void
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[menushell]{a @class{gtk:menu-shell} widget}
@@ -336,7 +336,7 @@ lambda (menushell)    :run-first
 ;;; gtk_menu_shell_prepend ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_menu_shell_prepend" menu-shell-prepend) :void
+(cffi:defcfun ("gtk_menu_shell_prepend" menu-shell-prepend) :void
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[menushell]{a @class{gtk:menu-shell} widget}
@@ -357,7 +357,7 @@ lambda (menushell)    :run-first
 ;;; gtk_menu_shell_insert ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_menu_shell_insert" menu-shell-insert) :void
+(cffi:defcfun ("gtk_menu_shell_insert" menu-shell-insert) :void
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[menushell]{a @class{gtk:menu-shell} widget}
@@ -382,7 +382,7 @@ lambda (menushell)    :run-first
 ;;; gtk_menu_shell_deactivate ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_menu_shell_deactivate" menu-shell-deactivate) :void
+(cffi:defcfun ("gtk_menu_shell_deactivate" menu-shell-deactivate) :void
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[menushell]{a @class{gtk:menu-shell} widget}
@@ -399,7 +399,7 @@ lambda (menushell)    :run-first
 ;;; gtk_menu_shell_select_item ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_menu_shell_select_item" menu-shell-select-item) :void
+(cffi:defcfun ("gtk_menu_shell_select_item" menu-shell-select-item) :void
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[menushell]{a @class{gtk:menu-shell} widget}
@@ -418,7 +418,7 @@ lambda (menushell)    :run-first
 ;;; gtk_menu_shell_select_first ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_menu_shell_select_first" menu-shell-select-first) :void
+(cffi:defcfun ("gtk_menu_shell_select_first" menu-shell-select-first) :void
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[menushell]{a @class{gtk:menu-shell} widget}
@@ -439,7 +439,7 @@ lambda (menushell)    :run-first
 ;;; gtk_menu_shell_deselect ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_menu_shell_deselect" menu-shell-deselect) :void
+(cffi:defcfun ("gtk_menu_shell_deselect" menu-shell-deselect) :void
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[menushell]{a @class{gtk:menu-shell} widget}
@@ -455,7 +455,7 @@ lambda (menushell)    :run-first
 ;;; gtk_menu_shell_activate_item ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_menu_shell_activate_item" menu-shell-activate-item) :void
+(cffi:defcfun ("gtk_menu_shell_activate_item" menu-shell-activate-item) :void
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[menushell]{a @class{gtk:menu-shell} widget}
@@ -477,7 +477,7 @@ lambda (menushell)    :run-first
 ;;; gtk_menu_shell_cancel ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_menu_shell_cancel" menu-shell-cancel) :void
+(cffi:defcfun ("gtk_menu_shell_cancel" menu-shell-cancel) :void
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[menushell]{a @class{gtk:menu-shell} widget}
@@ -491,7 +491,7 @@ lambda (menushell)    :run-first
 ;;; gtk_menu_shell_get_selected_item () -> menu-shell-selected-item
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_menu_shell_get_selected_item" menu-shell-selected-item)
+(cffi:defcfun ("gtk_menu_shell_get_selected_item" menu-shell-selected-item)
     (g:object widget)
  #+liber-documentation
  "@version{#2023-3-21}
@@ -510,7 +510,7 @@ lambda (menushell)    :run-first
 ;;; gtk_menu_shell_get_parent_shell () -> menu-shell-parent-shell
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_menu_shell_get_parent_shell" menu-shell-parent-shell)
+(cffi:defcfun ("gtk_menu_shell_get_parent_shell" menu-shell-parent-shell)
     (g:object widget)
  #+liber-documentation
  "@version{#2023-3-21}
@@ -532,7 +532,7 @@ lambda (menushell)    :run-first
 ;;; gtk_menu_shell_bind_model ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_menu_shell_bind_model" menu-shell-bind-model) :void
+(cffi:defcfun ("gtk_menu_shell_bind_model" menu-shell-bind-model) :void
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[menushell]{a @class{gtk:menu-shell} widget}

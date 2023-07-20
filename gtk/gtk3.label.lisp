@@ -141,7 +141,7 @@
 ;;; struct GtkLabel
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkLabel" label
+(gobject:define-g-object-class "GtkLabel" label
   (:superclass misc
    :export t
    :interfaces ("AtkImplementorIface"
@@ -1213,7 +1213,7 @@ lambda (label menu)    :run-last
                         :void)
   text)
 
-(defcfun ("gtk_label_get_text" label-text) :string
+(cffi:defcfun ("gtk_label_get_text" label-text) :string
  #+liber-documentation
  "@version{2023-3-5}
   @syntax[]{(gtk:label-text label) => text}
@@ -1240,7 +1240,7 @@ lambda (label menu)    :run-last
 ;;; gtk_label_set_markup ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_label_set_markup" label-set-markup) :void
+(cffi:defcfun ("gtk_label_set_markup" label-set-markup) :void
  #+liber-documentation
  "@version{2023-3-5}
   @argument[label]{a @class{gtk:label} widget}
@@ -1261,8 +1261,8 @@ lambda (label menu)    :run-last
 ;;; gtk_label_set_markup_with_mnemonic ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_label_set_markup_with_mnemonic"
-           label-set-markup-with-mnemonic) :void
+(cffi:defcfun ("gtk_label_set_markup_with_mnemonic"
+               label-set-markup-with-mnemonic) :void
  #+liber-documentation
  "@version{2023-3-5}
   @argument[label]{a @class{gtk:label} widget}
@@ -1295,7 +1295,7 @@ lambda (label menu)    :run-last
                         :void)
   wrap)
 
-(defcfun ("gtk_label_get_line_wrap" label-line-wrap) :boolean
+(cffi:defcfun ("gtk_label_get_line_wrap" label-line-wrap) :boolean
  #+liber-documentation
  "@version{2023-3-5}
   @syntax[]{(gtk:label-line-wrap label) => wrap}
@@ -1337,7 +1337,8 @@ lambda (label menu)    :run-last
                         :void)
   wrap-mode)
 
-(defcfun ("gtk_label_get_line_wrap_mode" label-line-wrap-mode) pango:wrap-mode
+(cffi:defcfun ("gtk_label_get_line_wrap_mode" label-line-wrap-mode)
+    pango:wrap-mode
  #+liber-documentation
  "@version{2023-3-5}
   @syntax[]{(gtk:label-line-wrap-mode label) => mode}
@@ -1364,7 +1365,7 @@ lambda (label menu)    :run-last
 ;;; gtk_label_get_layout_offsets () -> label-layout-offsets
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_label_get_layout_offsets" %label-get-layout-offsets) :void
+(cffi:defcfun ("gtk_label_get_layout_offsets" %label-get-layout-offsets) :void
   (label (g:object label))
   (x (:pointer :int))
   (y (:pointer :int)))
@@ -1407,7 +1408,7 @@ lambda (label menu)    :run-last
   @see-variable{+pango-scale+}
   @see-function{pango:pixels}
   @see-function{gtk:widget-has-window}"
-  (with-foreign-objects ((x :int) (y :int))
+  (cffi:with-foreign-objects ((x :int) (y :int))
     (%label-get-layout-offsets label x y)
     (values (cffi:mem-ref x :int)
             (cffi:mem-ref y :int))))
@@ -1420,7 +1421,7 @@ lambda (label menu)    :run-last
 
 ;; TODO: Check implementation with make-instance
 
-(defcfun ("gtk_label_new_with_mnemonic" label-new-with-mnemonic)
+(cffi:defcfun ("gtk_label_new_with_mnemonic" label-new-with-mnemonic)
     (g:object widget)
  #+liber-documentation
  "@version{2023-3-5}
@@ -1452,7 +1453,7 @@ lambda (label menu)    :run-last
 ;;; gtk_label_select_region ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_label_select_region" label-select-region) :void
+(cffi:defcfun ("gtk_label_select_region" label-select-region) :void
  #+liber-documentation
  "@version{2023-3-5}
   @argument[label]{a @class{gtk:label} widget}
@@ -1476,7 +1477,8 @@ lambda (label menu)    :run-last
 ;;; gtk_label_set_text_with_mnemonic ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_label_set_text_with_mnemonic" label-set-text-with-mnemonic) :void
+(cffi:defcfun ("gtk_label_set_text_with_mnemonic" label-set-text-with-mnemonic)
+    :void
  #+liber-documentation
  "@version{2023-3-5}
   @argument[label]{a @class{gtk:label} widget}
@@ -1499,7 +1501,7 @@ lambda (label menu)    :run-last
 ;;; gtk_label_get_layout () -> label-layout
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_label_get_layout" label-layout) (g:object pango:layout)
+(cffi:defcfun ("gtk_label_get_layout" label-layout) (g:object pango:layout)
  #+liber-documentation
  "@version{2023-3-5}
   @argument[label]{a @class{gtk:label} widget}
@@ -1522,7 +1524,8 @@ lambda (label menu)    :run-last
 ;;; gtk_label_get_selection_bounds () -> label-selection-bounds
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_label_get_selection_bounds" %label-get-selection-bounds) :boolean
+(cffi:defcfun ("gtk_label_get_selection_bounds" %label-get-selection-bounds)
+    :boolean
   (label (g:object label))
   (start (:pointer :int))
   (end (:pointer :int)))
@@ -1540,7 +1543,7 @@ lambda (label menu)    :run-last
     Gets the selected range of characters in the label.
   @end{short}
   @see-class{gtk:label}"
-  (with-foreign-objects ((start :int) (end :int))
+  (cffi:with-foreign-objects ((start :int) (end :int))
     (when (%label-get-selection-bounds label start end)
       (values (cffi:mem-ref start :int)
               (cffi:mem-ref end :int)))))
@@ -1551,7 +1554,7 @@ lambda (label menu)    :run-last
 ;;; gtk_label_get_current_uri () -> label-current-uri
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_label_get_current_uri" label-current-uri) :string
+(cffi:defcfun ("gtk_label_get_current_uri" label-current-uri) :string
  #+liber-documentation
  "@version{2023-3-5}
   @argument[label]{a @class{gtk:label} widget}

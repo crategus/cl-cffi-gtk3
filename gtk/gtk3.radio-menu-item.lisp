@@ -78,7 +78,7 @@
 ;;; struct GtkRadioMenuItem
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkRadioMenuItem" radio-menu-item
+(gobject:define-g-object-class "GtkRadioMenuItem" radio-menu-item
   (:superclass check-menu-item
    :export t
    :interfaces ("AtkImplementorIface"
@@ -153,7 +153,7 @@ lambda (radiomenuitem)    :run-first
 ;;; gtk_radio_menu_item_new ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_radio_menu_item_new" radio-menu-item-new)
+(cffi:defcfun ("gtk_radio_menu_item_new" radio-menu-item-new)
     (g:object radio-menu-item)
  #+liber-documentation
  "@version{2023-2-24}
@@ -172,8 +172,8 @@ lambda (radiomenuitem)    :run-first
 ;;; gtk_radio_menu_item_new_with_label ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_radio_menu_item_new_with_label" radio-menu-item-new-with-label)
-    (g:object radio-menu-item)
+(cffi:defcfun ("gtk_radio_menu_item_new_with_label"
+               radio-menu-item-new-with-label) (g:object radio-menu-item)
  #+liber-documentation
  "@version{2023-2-24}
   @argument[group]{a list of @class{gtk:radio-menu-item} widgets with the radio
@@ -194,8 +194,8 @@ lambda (radiomenuitem)    :run-first
 ;;; gtk_radio_menu_item_new_with_mnemonic ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_radio_menu_item_new_with_mnemonic"
-           radio-menu-item-new-with-mnemonic) (g:object radio-menu-item)
+(cffi:defcfun ("gtk_radio_menu_item_new_with_mnemonic"
+               radio-menu-item-new-with-mnemonic) (g:object radio-menu-item)
  #+liber-documentation
  "@version{2023-2-24}
   @argument[group]{a list of @class{gtk:radio-menu-item} widgets with the radio
@@ -218,8 +218,8 @@ lambda (radiomenuitem)    :run-first
 ;;; gtk_radio_menu_item_new_from_widget ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_radio_menu_item_new_from_widget" radio-menu-item-new-from-widget)
-    (g:object radio-menu-item)
+(cffi:defcfun ("gtk_radio_menu_item_new_from_widget"
+               radio-menu-item-new-from-widget) (g:object radio-menu-item)
  #+liber-documentation
  "@version{2023-2-24}
   @argument[group]{a list of @class{gtk:radio-menu-item} widgets with the radio
@@ -238,8 +238,8 @@ lambda (radiomenuitem)    :run-first
 ;;; gtk_radio_menu_item_new_with_label_from_widget ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_radio_menu_item_new_with_label_from_widget"
-           radio-menu-item-new-with-label-from-widget)
+(cffi:defcfun ("gtk_radio_menu_item_new_with_label_from_widget"
+               radio-menu-item-new-with-label-from-widget)
     (g:object radio-menu-item)
  #+liber-documentation
  "@version{2023-2-24}
@@ -262,8 +262,8 @@ lambda (radiomenuitem)    :run-first
 ;;; gtk_radio_menu_item_new_with_mnemonic_from_widget ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_radio_menu_item_new_with_mnemonic_from_widget"
-           radio-menu-item-new-with-mnemonic-from-widget)
+(cffi:defcfun ("gtk_radio_menu_item_new_with_mnemonic_from_widget"
+               radio-menu-item-new-with-mnemonic-from-widget)
     (g:object radio-menu-item)
  #+liber-documentation
  "@version{2023-2-24}
@@ -289,7 +289,7 @@ lambda (radiomenuitem)    :run-first
 ;;; gtk_radio_menu_item_set_group ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_radio_menu_item_set_group" radio-menu-item-set-group) :void
+(cffi:defcfun ("gtk_radio_menu_item_set_group" radio-menu-item-set-group) :void
  #+liber-documentation
  "@version{2023-2-24}
   @argument[item]{a @class{gtk:radio-menu-item} widget}
@@ -307,7 +307,7 @@ lambda (radiomenuitem)    :run-first
 ;;; gtk_radio_menu_item_get_group ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_radio_menu_item_get_group" radio-menu-item-get-group)
+(cffi:defcfun ("gtk_radio_menu_item_get_group" radio-menu-item-get-group)
     (g:slist-t (g:object radio-menu-item) :free-from-foreign nil)
  #+liber-documentation
  "@version{2023-2-24}
@@ -327,7 +327,8 @@ lambda (radiomenuitem)    :run-first
 ;;; gtk_radio_menu_item_join_group ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_radio_menu_item_join_group" radio-menu-item-join-group) :void
+(cffi:defcfun ("gtk_radio_menu_item_join_group" radio-menu-item-join-group)
+    :void
  #+liber-documentation
  "@version{2023-3-13}
   @argument[item]{a @class{gtk:radio-menu-item} widget}

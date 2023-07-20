@@ -96,7 +96,7 @@
 ;;; struct GtkToolItemGroup
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkToolItemGroup" tool-item-group
+(gobject:define-g-object-class "GtkToolItemGroup" tool-item-group
   (:superclass container
    :export t
    :interfaces ("AtkImplementorIface"
@@ -475,7 +475,7 @@
 ;;; gtk_tool_item_group_get_drop_item () -> tool-item-group-drop-item
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tool_item_group_get_drop_item" tool-item-group-drop-item)
+(cffi:defcfun ("gtk_tool_item_group_get_drop_item" tool-item-group-drop-item)
     (g:object tool-item)
  #+liber-documentation
  "@version{#2023-2-27}
@@ -502,7 +502,7 @@
 ;;; gtk_tool_item_group_get_n_items () -> tool-item-n-items
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tool_item_group_get_n_items" tool-item-group-n-items) :uint
+(cffi:defcfun ("gtk_tool_item_group_get_n_items" tool-item-group-n-items) :uint
  #+liber-documentation
  "@version{#2023-2-27}
   @argument[group]{a @class{gtk:tool-item-group} widget}
@@ -520,7 +520,7 @@
 ;;; gtk_tool_item_group_get_nth_item () -> tool-item-group-nth-item
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tool_item_group_get_nth_item" tool-item-group-nth-item)
+(cffi:defcfun ("gtk_tool_item_group_get_nth_item" tool-item-group-nth-item)
     (g:object tool-item)
  #+liber-documentation
  "@version{#2023-2-27}
@@ -541,7 +541,7 @@
 ;;; gtk_tool_item_group_insert ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tool_item_group_insert" tool-item-group-insert) :void
+(cffi:defcfun ("gtk_tool_item_group_insert" tool-item-group-insert) :void
  #+liber-documentation
  "@version{#2023-2-27}
   @argument[group]{a @class{gtk:tool-item-group} widget}

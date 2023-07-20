@@ -62,7 +62,7 @@
 ;;; struct GtkOffscreenWindow
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkOffscreenWindow" offscreen-window
+(gobject:define-g-object-class "GtkOffscreenWindow" offscreen-window
   (:superclass window
     :export t
     :interfaces ("AtkImplementorIface"
@@ -122,7 +122,7 @@
 ;;; gtk_offscreen_window_get_surface () -> offscreen-window-surface
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_offscreen_window_get_surface" offscreen-window-surface)
+(cffi:defcfun ("gtk_offscreen_window_get_surface" offscreen-window-surface)
     (:pointer (:struct cairo:surface-t))
  #+liber-documentation
  "@version{#2023-3-21}
@@ -146,7 +146,7 @@
 ;;; gtk_offscreen_window_get_pixbuf () -> offscreen-window-pixbuf
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_offscreen_window_get_pixbuf" offscreen-window-pixbuf)
+(cffi:defcfun ("gtk_offscreen_window_get_pixbuf" offscreen-window-pixbuf)
     (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
  "@version{#2023-3-21}

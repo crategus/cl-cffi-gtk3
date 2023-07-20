@@ -61,7 +61,7 @@
 ;;; struct GtkTearoffMenuItem
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkTearoffMenuItem" tearoff-menu-item
+(gobject:define-g-object-class "GtkTearoffMenuItem" tearoff-menu-item
   (:superclass menu-item
    :export t
    :interfaces ("AtkImplementorIface"

@@ -24,7 +24,7 @@
 
 (in-package :gtk)
 
-(define-g-interface "AtkImplementorIface" atk-implementor-iface
+(gobject:define-g-interface "AtkImplementorIface" atk-implementor-iface
   (:export nil)
   nil)
 

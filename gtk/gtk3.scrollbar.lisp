@@ -70,7 +70,7 @@
 ;;; struct GtkScrollbar
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkScrollbar" scrollbar
+(gobject:define-g-object-class "GtkScrollbar" scrollbar
   (:superclass range
    :export t
    :interfaces ("AtkImplementorIface"

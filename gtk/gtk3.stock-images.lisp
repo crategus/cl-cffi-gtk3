@@ -108,7 +108,7 @@
 ;;; enum GtkIconSize
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkIconSize" icon-size
+(gobject:define-g-enum "GtkIconSize" icon-size
   (:export t
    :type-initializer "gtk_icon_size_get_type")
   (:invalid 0)
@@ -126,7 +126,7 @@
  "@version{#2023-3-27}
   @short{Built-in stock icon sizes.}
   @begin{pre}
-(define-g-enum \"GtkIconSize\" icon-size
+(gobject:define-g-enum \"GtkIconSize\" icon-size
   (:export t
    :type-initializer \"gtk_icon_size_get_type\")
   (:invalid 0)
@@ -152,7 +152,7 @@
 ;;; GtkIconSource
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_icon_source_new" %icon-source-new) :pointer)
+(cffi:defcfun ("gtk_icon_source_new" %icon-source-new) :pointer)
 
 (glib:define-g-boxed-opaque icon-source "GtkIconSource"
   :export t
@@ -179,7 +179,7 @@
 ;;; GtkIconSet
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_icon_set_new" %icon-set-new) :pointer)
+(cffi:defcfun ("gtk_icon_set_new" %icon-set-new) :pointer)
 
 (glib:define-g-boxed-opaque icon-set "GtkIconSet"
   :export t
@@ -202,7 +202,7 @@
 ;;; struct GtkIconFactory
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkIconFactory" icon-factory
+(gobject:define-g-object-class "GtkIconFactory" icon-factory
   (:superclass g:object
    :export t
    :interfaces ("GtkBuildable")
@@ -304,7 +304,7 @@
 ;;; gtk_icon_factory_add ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_icon_factory_add" icon-factory-add) :void
+(cffi:defcfun ("gtk_icon_factory_add" icon-factory-add) :void
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[factory]{a @class{gtk:icon-factory} object}
@@ -343,7 +343,7 @@
 ;;; gtk_icon_factory_add_default ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_icon_factory_add_default" icon-factory-add-default) :void
+(cffi:defcfun ("gtk_icon_factory_add_default" icon-factory-add-default) :void
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[factory]{a @class{gtk:icon-factory} object}
@@ -371,7 +371,7 @@
 ;;; gtk_icon_factory_lookup ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_icon_factory_lookup" icon-factory-lookup) (g:boxed icon-set)
+(cffi:defcfun ("gtk_icon_factory_lookup" icon-factory-lookup) (g:boxed icon-set)
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[factory]{a @class{gtk:icon-factory} object}
@@ -401,7 +401,7 @@
 ;;; gtk_icon_factory_lookup_default ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_icon_factory_lookup_default" icon-factory-lookup-default)
+(cffi:defcfun ("gtk_icon_factory_lookup_default" icon-factory-lookup-default)
     (g:boxed icon-set :return)
  #+liber-documentation
  "@version{#2023-3-27}
@@ -454,7 +454,8 @@
 ;;; gtk_icon_factory_remove_default ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_icon_factory_remove_default" icon-factory-remove-default) :void
+(cffi:defcfun ("gtk_icon_factory_remove_default" icon-factory-remove-default)
+    :void
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[factory]{a @class{gtk:icon-factory} object previously added with
@@ -480,7 +481,7 @@
 ;;; gtk_icon_set_add_source ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_icon_set_add_source" icon-set-add-source) :void
+(cffi:defcfun ("gtk_icon_set_add_source" icon-set-add-source) :void
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[iconset]{a @class{gtk:icon-set} instance}
@@ -547,7 +548,7 @@
 ;;; gtk_icon_set_new ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_icon_set_new" icon-set-new) (g:boxed icon-set)
+(cffi:defcfun ("gtk_icon_set_new" icon-set-new) (g:boxed icon-set)
  #+liber-documentation
  "@version{#2023-3-27}
   @return{A new @class{gtk:icon-set} instance.}
@@ -580,7 +581,7 @@
 ;;; gtk_icon_set_new_from_pixbuf ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_icon_set_new_from_pixbuf" icon-set-new-from-pixbuf)
+(cffi:defcfun ("gtk_icon_set_new_from_pixbuf" icon-set-new-from-pixbuf)
     (g:boxed icon-set)
  #+liber-documentation
  "@version{#2023-3-27}
@@ -628,7 +629,7 @@
 ;;; gtk_icon_set_render_icon ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_icon_set_render_icon" icon-set-render-icon)
+(cffi:defcfun ("gtk_icon_set_render_icon" icon-set-render-icon)
     (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
  "@version{#2023-3-27}
@@ -683,7 +684,7 @@
 ;;; gtk_icon_set_render_icon_pixbuf ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_icon_set_render_icon_pixbuf" icon-set-render-icon-pixbuf)
+(cffi:defcfun ("gtk_icon_set_render_icon_pixbuf" icon-set-render-icon-pixbuf)
     (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
  "@version{#2023-3-27}
@@ -995,7 +996,7 @@
                         :void)
   filename)
 
-(defcfun ("gtk_icon_source_get_filename" icon-source-filename)
+(cffi:defcfun ("gtk_icon_source_get_filename" icon-source-filename)
     (:string :free-from-foreign nil)
  #+liber-documentation
  "@version{#2023-3-27}
@@ -1054,7 +1055,7 @@
                         :void)
   name)
 
-(defcfun ("gtk_icon_source_get_icon_name" icon-source-icon-name)
+(cffi:defcfun ("gtk_icon_source_get_icon_name" icon-source-icon-name)
     (:string :free-from-foreign nil)
  #+liber-documentation
  "@version{#2023-3-27}
@@ -1156,7 +1157,7 @@
 ;;; gtk_icon_source_new ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_icon_source_new" icon-source-new) (g:boxed icon-source)
+(cffi:defcfun ("gtk_icon_source_new" icon-source-new) (g:boxed icon-source)
  #+liber-documentation
  "@version{#2023-3-27}
   @return{A new @class{gtk:icon-source} instance.}

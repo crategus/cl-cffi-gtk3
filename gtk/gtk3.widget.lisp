@@ -320,7 +320,7 @@
 ;;; enum GtkWidgetHelpType
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkWidgetHelpType" widget-help-type
+(gobject:define-g-enum "GtkWidgetHelpType" widget-help-type
   (:export t
    :type-initializer "gtk_widget_help_type_get_type")
   (:tooltip 0)
@@ -335,7 +335,7 @@
     Kinds of widget-specific help used in the \"show-help\" signal handler.
   @end{short}
   @begin{pre}
-(define-g-enum \"GtkWidgetHelpType\" widget-help-type
+(gobject:define-g-enum \"GtkWidgetHelpType\" widget-help-type
   (:export t
    :type-initializer \"gtk_widget_help_type_get_type\")
   (:tooltip 0)
@@ -353,7 +353,7 @@
 ;;; enum GtkSizeRequestMode
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkSizeRequestMode" size-request-mode
+(gobject:define-g-enum "GtkSizeRequestMode" size-request-mode
   (:export t
    :type-initializer "gtk_size_request_mode_get_type")
   (:height-for-width 0)
@@ -370,7 +370,7 @@
     management.
   @end{short}
   @begin{pre}
-(define-g-enum \"GtkSizeRequestMode\" size-request-mode
+(gobject:define-g-enum \"GtkSizeRequestMode\" size-request-mode
   (:export t
    :type-initializer \"gtk_size_request_mode_get_type\")
   (:height-for-width 0)
@@ -393,7 +393,7 @@
 ;; Only needed in the function gtk_distribute_natual_allocation. This function
 ;; is not implemented and we do not export this structure.
 
-(defcstruct requested-size
+(cffi:defcstruct requested-size
   (data :pointer)
   (minimum-size :int)
   (natural-size :int))
@@ -410,7 +410,7 @@
   natural size for children calling. See the
   @fun{gtk:distribute-natural-allocation} function.
   @begin{pre}
-(defcstruct requested-size
+(cffi:defcstruct requested-size
   (data :pointer)
   (minimum-size :int)
   (natural-size :int))
@@ -428,7 +428,7 @@
 ;;; enum GtkAlign
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkAlign" align
+(gobject:define-g-enum "GtkAlign" align
   (:export t
    :type-initializer "gtk_align_get_type")
   (:fill 0)
@@ -459,7 +459,7 @@
   is only supported for vertical alignment. When it is not supported by a child
   widget or a container it is treated as the @code{:fill} value.
   @begin{pre}
-(define-g-enum \"GtkAlign\" align
+(gobject:define-g-enum \"GtkAlign\" align
   (:export t
    :type-initializer \"gtk_align_get_type\")
   (:fill 0)
@@ -501,7 +501,7 @@
   See the section called \"Height-for-width Geometry Management\" in the
   @class{gtk:widget} documentation for more information.
   @begin{pre}
-(define-g-boxed-cstruct requisition \"GtkRequisition\"
+(glib:define-g-boxed-cstruct requisition \"GtkRequisition\"
   (:export t
    :type-initializer \"gtk_requistion_get_type\")
   (width :int :initform 0)
@@ -626,7 +626,7 @@
 ;;; GtkWidget
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkWidget" widget
+(gobject:define-g-object-class "GtkWidget" widget
   (:superclass g:initially-unowned
    :export t
    :interfaces ("AtkImplementorIface"
@@ -3672,7 +3672,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_show_all" widget-show-all) :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{2023-7-7}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Recursively shows a widget, and any child widgets if the widget is a
@@ -4863,7 +4863,7 @@ lambda (widget clock)
   @end{dictionary}
   @see-class{gtk:widget}
   @see-function{gdk:window-device-position}"
-  (with-foreign-objects ((x :int) (y :int))
+  (cffi:with-foreign-objects ((x :int) (y :int))
     (%widget-pointer widget x y)
     (values (cffi:mem-ref x :int)
             (cffi:mem-ref y :int))))
@@ -4920,7 +4920,7 @@ lambda (widget clock)
   In order to perform this operation, both widgets must be realized, and must
   share a common toplevel.
   @see-class{gtk:widget}"
-  (with-foreign-objects ((xdst :int) (ydst :int))
+  (cffi:with-foreign-objects ((xdst :int) (ydst :int))
     (when (%widget-translate-coordinates src dst xsrc ysrc xdst ydst)
       (values (cffi:mem-ref xdst :int)
               (cffi:mem-ref ydst :int)))))
@@ -5194,7 +5194,7 @@ lambda (widget clock)
   @see-function{gtk:widget-path}
   @see-function{gtk:widget-name}"
   (assert (typep path-type '(member :name :class)))
-  (with-foreign-object (path :pointer)
+  (cffi:with-foreign-object (path :pointer)
     (ecase path-type
       (:name (%widget-path widget (cffi:null-pointer) path (cffi:null-pointer)))
       (:class (%widget-class-path widget
@@ -6282,7 +6282,7 @@ lambda (widget clock)
   @see-function{gtk:widget-class-find-style-property}"
   (let ((class (g:type-class-ref gtype)))
     (unwind-protect
-      (with-foreign-object (n-props :uint)
+      (cffi:with-foreign-object (n-props :uint)
         (let ((pspecs (%widget-class-list-style-properties class n-props)))
           (unwind-protect
             (loop for count from 0 below (cffi:mem-ref n-props :uint)
@@ -6455,11 +6455,11 @@ lambda (widget clock)
                     nil)))
     ;; TODO: Returns nil for an invalid property. Consider to throw an error.
     (when gtype
-      (with-foreign-object (value '(:struct g:value))
+      (cffi:with-foreign-object (value '(:struct g:value))
         (g:value-init value gtype)
         (prog2
           (%widget-style-property widget property value)
-          (parse-g-value value)
+          (gobject:parse-g-value value)
           (g:value-unset value))))))
 
 (export 'widget-style-property)
@@ -6955,7 +6955,7 @@ lambda (widget clock)
   @see-function{gtk:widget-margin-end}
   @see-function{gtk:widget-margin-top}
   @see-function{gtk:widget-margin-bottom}"
-  (with-foreign-objects ((width :int) (height :int))
+  (cffi:with-foreign-objects ((width :int) (height :int))
     (%widget-size-request widget width height)
     (values (cffi:mem-ref width :int)
             (cffi:mem-ref height :int))))
@@ -8194,7 +8194,7 @@ lambda (widget clock)
   @see-class{gtk:size-group}
   @see-function{gtk:widget-preferred-width}
   @see-function{gtk:widget-preferred-size}"
-  (with-foreign-objects ((minimum-height :int) (natural-height :int))
+  (cffi:with-foreign-objects ((minimum-height :int) (natural-height :int))
     (%widget-preferred-height widget minimum-height natural-height)
     (values (cffi:mem-ref minimum-height :int)
             (cffi:mem-ref natural-height :int))))
@@ -8247,7 +8247,7 @@ lambda (widget clock)
   @see-class{gtk:size-group}
   @see-function{gtk:widget-preferred-height}
   @see-function{gtk:widget-preferred-size}"
-  (with-foreign-objects ((minimum-width :int) (natural-width :int))
+  (cffi:with-foreign-objects ((minimum-width :int) (natural-width :int))
     (%widget-preferred-width widget minimum-width natural-width)
     (values (cffi:mem-ref minimum-width :int)
             (cffi:mem-ref natural-width :int))))
@@ -8288,7 +8288,7 @@ lambda (widget clock)
   @see-class{gtk:widget}
   @see-class{gtk:size-group}
   @see-function{gtk:widget-preferred-width-for-height}"
-  (with-foreign-objects ((minimum-height :int) (natural-height :int))
+  (cffi:with-foreign-objects ((minimum-height :int) (natural-height :int))
     (%widget-preferred-height-for-width widget
                                         width
                                         minimum-height
@@ -8333,7 +8333,7 @@ lambda (widget clock)
   @see-class{gtk:widget}
   @see-class{gtk:size-group}
   @see-function{gtk:widget-preferred-height-for-width}"
-  (with-foreign-objects ((minimum-width :int) (natural-width :int))
+  (cffi:with-foreign-objects ((minimum-width :int) (natural-width :int))
     (%widget-preferred-width-for-height widget
                                         height
                                         minimum-width
@@ -8385,10 +8385,10 @@ lambda (widget clock)
   returned by the widget itself.
   @see-class{gtk:widget}
   @see-class{gtk:size-group}"
-  (with-foreign-objects ((min-height :int)
-                         (nat-height :int)
-                         (min-baseline :int)
-                         (nat-baseline :int))
+  (cffi:with-foreign-objects ((min-height :int)
+                              (nat-height :int)
+                              (min-baseline :int)
+                              (nat-baseline :int))
     (%widget-preferred-height-and-baseline-for-width widget
                                                      width
                                                      min-height

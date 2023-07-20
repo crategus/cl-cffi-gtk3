@@ -81,7 +81,7 @@
 ;;; GtkTreeSelection
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkTreeSelection" tree-selection
+(gobject:define-g-object-class "GtkTreeSelection" tree-selection
   (:superclass g:object
     :export t
     :interfaces nil
@@ -171,7 +171,7 @@ lambda (selection)    :run-first
 ;;; GtkTreeSelectionFunc ()
 ;;; ----------------------------------------------------------------------------
 
-(defcallback tree-selection-func :boolean
+(cffi:defcallback tree-selection-func :boolean
     ((selection (g:object tree-selection))
      (model (g:object tree-model))
      (path (g:boxed tree-path))
@@ -217,7 +217,7 @@ lambda (selection model path selected)
 ;;; GtkTreeSelectionForeachFunc ()
 ;;; ----------------------------------------------------------------------------
 
-(defcallback tree-selection-foreach-func :void
+(cffi:defcallback tree-selection-foreach-func :void
     ((model (g:object tree-model))
      (path (g:boxed tree-path))
      (iter (g:boxed tree-iter))
@@ -255,8 +255,8 @@ lambda (model path iter)
 ;;; gtk_tree_selection_set_select_function ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_selection_set_select_function"
-          %tree-selection-set-select-function) :void
+(cffi:defcfun ("gtk_tree_selection_set_select_function"
+               %tree-selection-set-select-function) :void
   (selection (g:object tree-selection))
   (func :pointer)
   (data :pointer)
@@ -321,15 +321,15 @@ lambda (model path iter)
 ;; pointer to the selection function. We use this function in the implementation
 ;; of the gtk:tree-selection-get-selection-function function.
 
-(defcfun ("gtk_tree_selection_get_user_data"
-          %tree-selection-get-user-data) :pointer
+(cffi:defcfun ("gtk_tree_selection_get_user_data"
+               %tree-selection-get-user-data) :pointer
   (selection (g:object tree-selection)))
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_tree_selection_get_tree_view () -> tree-selection-tree-view
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_selection_get_tree_view" tree-selection-tree-view)
+(cffi:defcfun ("gtk_tree_selection_get_tree_view" tree-selection-tree-view)
     (g:object tree-view)
  #+liber-documentation
  "@version{2023-2-19}
@@ -348,7 +348,8 @@ lambda (model path iter)
 ;;; gtk_tree_selection_get_selected () -> tree-selection-selected
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_selection_get_selected" %tree-selection-selected) :boolean
+(cffi:defcfun ("gtk_tree_selection_get_selected" %tree-selection-selected)
+    :boolean
   (selection (g:object tree-selection))
   (model :pointer)
   (iter (g:boxed tree-iter)))
@@ -402,8 +403,8 @@ lambda (model path iter)
 ;;; gtk_tree_selection_selected_foreach ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_selection_selected_foreach"
-           %tree-selection-selected-foreach) :void
+(cffi:defcfun ("gtk_tree_selection_selected_foreach"
+               %tree-selection-selected-foreach) :void
   (selection (g:object tree-selection))
   (func :pointer)
   (data :pointer))
@@ -423,7 +424,7 @@ lambda (model path iter)
   @see-class{gtk:tree-selection}
   @see-symbol{gtk:tree-selection-foreach-func}
   @see-function{gtk:tree-selection-selected-rows}"
-  (with-stable-pointer (ptr func)
+  (glib:with-stable-pointer (ptr func)
     (%tree-selection-selected-foreach
                 selection
                 (cffi:callback tree-selection-foreach-func)
@@ -435,8 +436,9 @@ lambda (model path iter)
 ;;; gtk_tree_selection_get_selected_rows () -> tree-selection-selected-rows
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_selection_get_selected_rows"
-          %tree-selection-selected-rows) (g:list-t (g:boxed tree-path :return))
+(cffi:defcfun ("gtk_tree_selection_get_selected_rows"
+               %tree-selection-selected-rows)
+    (g:list-t (g:boxed tree-path :return))
   (selection (g:object tree-selection))
   (model :pointer))
 
@@ -473,8 +475,8 @@ lambda (model path iter)
 ;;; gtk_tree_selection_count_selected_rows ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_selection_count_selected_rows"
-           tree-selection-count-selected-rows) :int
+(cffi:defcfun ("gtk_tree_selection_count_selected_rows"
+               tree-selection-count-selected-rows) :int
  #+liber-documentation
  "@version{#2023-2-19}
   @argument[selection]{a @class{gtk:tree-selection} object}
@@ -490,7 +492,8 @@ lambda (model path iter)
 ;;; gtk_tree_selection_select_path ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_selection_select_path" tree-selection-select-path) :void
+(cffi:defcfun ("gtk_tree_selection_select_path" tree-selection-select-path)
+    :void
  #+liber-documentation
  "@version{#2023-2-19}
   @argument[selection]{a @class{gtk:tree-selection} object}
@@ -512,7 +515,8 @@ lambda (model path iter)
 ;;; gtk_tree_selection_unselect_path ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_selection_unselect_path" tree-selection-unselect-path) :void
+(cffi:defcfun ("gtk_tree_selection_unselect_path" tree-selection-unselect-path)
+    :void
  #+liber-documentation
  "@version{#2023-2-19}
   @argument[selection]{a @class{gtk:tree-selection} object}
@@ -532,7 +536,8 @@ lambda (model path iter)
 ;;; gtk_tree_selection_path_is_selected ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_selection_path_is_selected" tree-selection-path-is-selected)
+(cffi:defcfun ("gtk_tree_selection_path_is_selected"
+               tree-selection-path-is-selected)
     :boolean
  #+liber-documentation
  "@version{#2023-2-19}
@@ -555,7 +560,8 @@ lambda (model path iter)
 ;;; gtk_tree_selection_select_iter ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_selection_select_iter" tree-selection-select-iter) :void
+(cffi:defcfun ("gtk_tree_selection_select_iter" tree-selection-select-iter)
+    :void
  #+liber-documentation
  "@version{#2023-2-19}
   @argument[selection]{a @class{gtk:tree-selection} object}
@@ -577,7 +583,8 @@ lambda (model path iter)
 ;;; gtk_tree_selection_unselect_iter ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_selection_unselect_iter" tree-selection-unselect-iter) :void
+(cffi:defcfun ("gtk_tree_selection_unselect_iter" tree-selection-unselect-iter)
+    :void
  #+liber-documentation
  "@version{#2023-2-19}
   @argument[selection]{a @class{gtk:tree-selection} object}
@@ -597,8 +604,8 @@ lambda (model path iter)
 ;;; gtk_tree_selection_iter_is_selected ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_selection_iter_is_selected"
-           tree-selection-iter-is-selected) :boolean
+(cffi:defcfun ("gtk_tree_selection_iter_is_selected"
+               tree-selection-iter-is-selected) :boolean
  #+liber-documentation
  "@version{#2023-2-19}
   @argument[selection]{a @class{gtk:tree-selection} object}
@@ -619,7 +626,7 @@ lambda (model path iter)
 ;;; gtk_tree_selection_select_all ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_selection_select_all" tree-selection-select-all) :void
+(cffi:defcfun ("gtk_tree_selection_select_all" tree-selection-select-all) :void
  #+liber-documentation
  "@version{#2023-2-19}
   @argument[selection]{a @class{gtk:tree-selection} object}
@@ -637,7 +644,8 @@ lambda (model path iter)
 ;;; gtk_tree_selection_unselect_all ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_selection_unselect_all" tree-selection-unselect-all) :void
+(cffi:defcfun ("gtk_tree_selection_unselect_all" tree-selection-unselect-all)
+    :void
  #+liber-documentation
  "@version{#2023-2-19}
   @argument[selection]{a @class{gtk:tree-selection} object}
@@ -652,7 +660,8 @@ lambda (model path iter)
 ;;; gtk_tree_selection_select_range ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_selection_select_range" tree-selection-select-range) :void
+(cffi:defcfun ("gtk_tree_selection_select_range" tree-selection-select-range)
+    :void
  #+liber-documentation
  "@version{#2023-2-19}
   @argument[selection]{a @class{gtk:tree-selection} object}
@@ -674,8 +683,8 @@ lambda (model path iter)
 ;;; gtk_tree_selection_unselect_range ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_selection_unselect_range" tree-selection-unselect-range)
-    :void
+(cffi:defcfun ("gtk_tree_selection_unselect_range"
+               tree-selection-unselect-range) :void
  #+liber-documentation
  "@version{#2023-2-19}
   @argument[selection]{a @class{gtk:tree-selection} object}

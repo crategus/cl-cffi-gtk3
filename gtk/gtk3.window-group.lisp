@@ -56,7 +56,7 @@
 ;;; struct GtkWindowGroup
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkWindowGroup" window-group
+(gobject:define-g-object-class "GtkWindowGroup" window-group
   (:superclass g:object
     :export t
     :interfaces nil
@@ -107,7 +107,7 @@
 ;;; gtk_window_group_add_window ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun (window-group-add-window "gtk_window_group_add_window") :void
+(cffi:defcfun (window-group-add-window "gtk_window_group_add_window") :void
  #+liber-documentation
  "@version{#2023-3-30}
   @argument[group]{a @class{gtk:window-group} object}
@@ -126,7 +126,8 @@
 ;;; gtk_window_group_remove_window ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_window_group_remove_window" window-group-remove-window) :void
+(cffi:defcfun ("gtk_window_group_remove_window" window-group-remove-window)
+    :void
  #+liber-documentation
  "@version{#2023-3-30}
   @argument[group]{a @class{gtk:window-group} object}
@@ -145,7 +146,7 @@
 ;;; gtk_window_group_list_windows ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_window_group_list_windows" window-group-list-windows)
+(cffi:defcfun ("gtk_window_group_list_windows" window-group-list-windows)
     (g:list-t window)
  #+liber-documentation
  "@version{#2023-3-30}
@@ -164,7 +165,7 @@
 ;;; gtk_window_group_get_current_grab () -> window-group-current-grab
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_window_group_get_current_grab" window-group-current-grab)
+(cffi:defcfun ("gtk_window_group_get_current_grab" window-group-current-grab)
     (g:object widget)
  #+liber-documentation
  "@version{#2023-3-30}
@@ -186,8 +187,8 @@
 ;;; -> window-group-current-device-grab
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_window_group_get_current_device_grab"
-           window-group-current-device-grab) (g:object widget)
+(cffi:defcfun ("gtk_window_group_get_current_device_grab"
+               window-group-current-device-grab) (g:object widget)
  #+liber-documentation
  "@version{#2023-3-30}
   @argument[group]{a @class{gtk:window-group} object}

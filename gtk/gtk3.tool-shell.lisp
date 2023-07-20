@@ -59,7 +59,7 @@
 ;;; GtkToolShell
 ;;; ----------------------------------------------------------------------------
 
-(define-g-interface "GtkToolShell" tool-shell
+(gobject:define-g-interface "GtkToolShell" tool-shell
   (:export t
    :type-initializer "gtk_tool_shell_get_type")
   nil)
@@ -79,7 +79,7 @@
 ;;; gtk_tool_shell_get_ellipsize_mode () -> tool-shell-ellipsize-mode
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tool_shell_get_ellipsize_mode" tool-shell-ellipsize-mode)
+(cffi:defcfun ("gtk_tool_shell_get_ellipsize_mode" tool-shell-ellipsize-mode)
     pango:ellipsize-mode
  #+liber-documentation
  "@version{#2023-2-27}
@@ -101,7 +101,7 @@
 ;;; gtk_tool_shell_get_icon_size () -> tool-shell-icon-size
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tool_shell_get_icon_size" tool-shell-icon-size) icon-size
+(cffi:defcfun ("gtk_tool_shell_get_icon_size" tool-shell-icon-size) icon-size
  #+liber-documentation
  "@version{#2023-2-27}
   @argument[shell]{a @class{gtk:tool-shell} widget}
@@ -122,7 +122,8 @@
 ;;; gtk_tool_shell_get_orientation () -> tool-shell-orientation
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tool_shell_get_orientation" tool-shell-orientation) orientation
+(cffi:defcfun ("gtk_tool_shell_get_orientation" tool-shell-orientation)
+    orientation
  #+liber-documentation
  "@version{#2023-2-27}
   @argument[shell]{a @class{gtk:tool-shell} widget}
@@ -143,7 +144,7 @@
 ;;; gtk_tool_shell_get_relief_style () -> tool-shell-relief-style
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tool_shell_get_relief_style" tool-shell-relief-style)
+(cffi:defcfun ("gtk_tool_shell_get_relief_style" tool-shell-relief-style)
     relief-style
  #+liber-documentation
  "@version{#2023-2-27}
@@ -165,7 +166,7 @@
 ;;; gtk_tool_shell_get_style () -> tool-shell-style
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tool_shell_get_style" tool-shell-style) toolbar-style
+(cffi:defcfun ("gtk_tool_shell_get_style" tool-shell-style) toolbar-style
  #+liber-documentation
  "@version{#2023-2-27}
   @argument[shell]{a @class{gtk:tool-shell} widget}
@@ -186,7 +187,8 @@
 ;;; gtk_tool_shell_get_text_alignment () -> tool-shell-text-alignment
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tool_shell_get_text_alignment" tool-shell-text-alignment) :float
+(cffi:defcfun ("gtk_tool_shell_get_text_alignment" tool-shell-text-alignment)
+    :float
  #+liber-documentation
  "@version{#2023-2-27}
   @argument[shell]{a @class{gtk:tool-shell} widget}
@@ -206,8 +208,8 @@
 ;;; gtk_tool_shell_get_text_orientation () -> tool-shell-text-orientation
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tool_shell_get_text_orientation" tool-shell-text-orientation)
-    orientation
+(cffi:defcfun ("gtk_tool_shell_get_text_orientation"
+               tool-shell-text-orientation) orientation
  #+liber-documentation
  "@version{#2023-2-27}
   @argument[shell]{a @class{gtk:tool-shell} widget}
@@ -228,7 +230,7 @@
 ;;; gtk_tool_shell_rebuild_menu ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tool_shell_rebuild_menu" tool-shell-rebuild-menu) :void
+(cffi:defcfun ("gtk_tool_shell_rebuild_menu" tool-shell-rebuild-menu) :void
  #+liber-documentation
  "@version{#2023-2-27}
   @argument[shell]{a @class{gtk:tool-shell} widget}
@@ -251,7 +253,7 @@
 ;;; gtk_tool_shell_get_text_size_group () -> tool-shell-text-size-group
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tool_shell_get_text_size_group" tool-shell-text-size-group)
+(cffi:defcfun ("gtk_tool_shell_get_text_size_group" tool-shell-text-size-group)
     (g:object size-group)
  #+liber-documentation
  "@version{#2023-2-27}

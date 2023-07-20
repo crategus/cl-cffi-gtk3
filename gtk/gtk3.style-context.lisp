@@ -157,7 +157,7 @@
 ;;; enum GtkJunctionSides
 ;;; ----------------------------------------------------------------------------
 
-(define-g-flags "GtkJunctionSides" junction-sides
+(gobject:define-g-flags "GtkJunctionSides" junction-sides
   (:export t
    :type-initializer "gtk_junction_sides_get_type")
   (:none 0)
@@ -179,7 +179,7 @@
     Describes how a rendered element connects to adjacent elements.
   @end{short}
   @begin{pre}
-(define-g-flags \"GtkJunctionSides\" junction-sides
+(gobject:define-g-flags \"GtkJunctionSides\" junction-sides
   (:export t
    :type-initializer \"gtk_junction_sides_get_type\")
   (:none 0)
@@ -209,7 +209,7 @@
 ;;; enum GtkStyleContextPrintFlags
 ;;; ----------------------------------------------------------------------------
 
-(define-g-flags "GtkStyleContextPrintFlags" style-context-print-flags
+(gobject:define-g-flags "GtkStyleContextPrintFlags" style-context-print-flags
   (:export t
    :type-initializer "gtk_style_context_print_flags_get_type")
   (:none 0)
@@ -227,7 +227,7 @@
   @end{short}
   New values may be added to this enumeration.
   @begin{pre}
-(define-g-flags \"GtkStyleContextPrintFlags\" style-context-print-flags
+(gobject:define-g-flags \"GtkStyleContextPrintFlags\" style-context-print-flags
   (:export t
    :type-initializer \"gtk_style_context_print_flags_get_type\")
   (:none 0)
@@ -247,7 +247,7 @@
 ;;; enum GtkBorderStyle
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkBorderStyle" border-style
+(gobject:define-g-enum "GtkBorderStyle" border-style
   (:export t
    :type-initializer "gtk_border_style_get_type")
   :none
@@ -270,7 +270,7 @@
     Describes how the border of a UI element should be rendered.
   @end{short}
   @begin{pre}
-(define-g-enum \"GtkBorderStyle\" border-style
+(gobject:define-g-enum \"GtkBorderStyle\" border-style
   (:export t
    :type-initializer \"gtk_border_style_get_type\")
   :none
@@ -320,7 +320,7 @@
     of different width on each side.
   @end{short}
   @begin{pre}
-(define-g-boxed-cstruct border \"GtkBorder\"
+(gobject:define-g-boxed-cstruct border \"GtkBorder\"
   (:export t
    :type-initializer \"gtk_border_get_type\")
   (left   :int16 :initform 0)
@@ -459,7 +459,7 @@
 ;;; GtkStyleContext
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkStyleContext" style-context
+(gobject:define-g-object-class "GtkStyleContext" style-context
   (:superclass g:object
    :export t
    :interfaces nil
@@ -718,7 +718,8 @@ lambda (context)    :run-first
 ;;; gtk_style_context_add_provider ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_context_add_provider" style-context-add-provider) :void
+(cffi:defcfun ("gtk_style_context_add_provider" style-context-add-provider)
+    :void
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
@@ -751,8 +752,8 @@ lambda (context)    :run-first
 ;;; gtk_style_context_add_provider_for_screen ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_context_add_provider_for_screen"
-           style-context-add-provider-for-screen) :void
+(cffi:defcfun ("gtk_style_context_add_provider_for_screen"
+               style-context-add-provider-for-screen) :void
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[screen]{a @class{gdk:screen} object}
@@ -818,8 +819,8 @@ lambda (context)    :run-first
                         :void)
   sides)
 
-(defcfun ("gtk_style_context_get_junction_sides"
-           style-context-junction-sides) junction-sides
+(cffi:defcfun ("gtk_style_context_get_junction_sides"
+               style-context-junction-sides) junction-sides
  #+liber-documentation
  "@version{#2023-3-27}
   @syntax[]{(gtk:style-context-junction-sides context) => sides}
@@ -859,7 +860,8 @@ lambda (context)    :run-first
                         :void)
   path)
 
-(defcfun ("gtk_style_context_get_path" style-context-path) (g:boxed widget-path)
+(cffi:defcfun ("gtk_style_context_get_path" style-context-path)
+    (g:boxed widget-path)
  #+liber-documentation
  "@version{#2023-3-27}
   @syntax[]{(gtk:style-context-path context) => path}
@@ -888,7 +890,7 @@ lambda (context)    :run-first
 ;;; gtk_style_context_get_property () -> style-context-property
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_context_get_property" %style-context-property) :void
+(cffi:defcfun ("gtk_style_context_get_property" %style-context-property) :void
   (context (g:object style-context))
   (property :string)
   (state state-flags)
@@ -921,13 +923,13 @@ lambda (context)    :run-first
   @end{dictionary}
   @see-class{gtk:style-context}
   @see-symbol{gtk:state-flags}"
-  (with-foreign-object (value '(:struct g:value))
+  (cffi:with-foreign-object (value '(:struct g:value))
     (g:value-init value)
     (prog2
       (%style-context-property context property state value)
       ;; TODO: Handle the case for an invalid property
       (when value
-        (parse-g-value value))
+        (gobject:parse-g-value value))
       (g:value-unset value))))
 
 (export 'style-context-property)
@@ -944,7 +946,7 @@ lambda (context)    :run-first
                         :void)
   frame-clock)
 
-(defcfun ("gtk_style_context_get_frame_clock" style-context-frame-clock)
+(cffi:defcfun ("gtk_style_context_get_frame_clock" style-context-frame-clock)
     (g:object gdk:frame-clock)
  #+liber-documentation
  "@version{#2023-3-27}
@@ -987,7 +989,7 @@ lambda (context)    :run-first
                         :void)
   state)
 
-(defcfun ("gtk_style_context_get_state" style-context-state) state-flags
+(cffi:defcfun ("gtk_style_context_get_state" style-context-state) state-flags
  #+liber-documentation
  "@version{#2023-3-27}
   @syntax[]{(gtk:style-context-state context) => state}
@@ -1034,8 +1036,8 @@ lambda (context)    :run-first
 ;; function must be called with the correct GType of the value.
 ;; Consider to change the implementation.
 
-(defcfun ("gtk_style_context_get_style_property" %style-context-style-property)
-     :void
+(cffi:defcfun ("gtk_style_context_get_style_property"
+               %style-context-style-property) :void
   (context (g:object style-context))
   (property :string)
   (value (:pointer (:struct g:value))))
@@ -1067,11 +1069,11 @@ lambda (context)    :run-first
                    (widget-class-find-style-property
                        (g:type-from-instance widget)
                        property))))
-    (with-foreign-object (value '(:struct g:value))
+    (cffi:with-foreign-object (value '(:struct g:value))
       (g:value-init value gtype)
       (prog2
         (%style-context-style-property context property value)
-        (parse-g-value value)
+        (gobject:parse-g-value value)
         (g:value-unset value)))))
 
 (export 'style-context-style-property)
@@ -1119,7 +1121,7 @@ lambda (context)    :run-first
 ;;; gtk_style_context_get_section () -> style-context-section
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_context_get_section" style-context-section)
+(cffi:defcfun ("gtk_style_context_get_section" style-context-section)
     (g:boxed css-section)
  #+liber-documentation
  "@version{2023-3-27}
@@ -1153,7 +1155,7 @@ lambda (context)    :run-first
 ;;; gtk_style_context_get_color () -> style-context-color
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_context_get_color" %style-context-color) :void
+(cffi:defcfun ("gtk_style_context_get_color" %style-context-color) :void
   (context (g:object style-context))
   (state state-flags)
   (color (g:boxed gdk:rgba)))
@@ -1192,8 +1194,8 @@ lambda (context)    :run-first
 ;;; -> style-context-background-color
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_context_get_background_color"
-          %style-context-background-color) :void
+(cffi:defcfun ("gtk_style_context_get_background_color"
+               %style-context-background-color) :void
   (context (g:object style-context))
   (state state-flags)
   (color (g:boxed gdk:rgba)))
@@ -1235,7 +1237,7 @@ lambda (context)    :run-first
 ;;; gtk_style_context_get_border_color () -> style-context-border-color
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_context_get_border_color" %style-context-border-color)
+(cffi:defcfun ("gtk_style_context_get_border_color" %style-context-border-color)
     :void
   (context (g:object style-context))
   (state state-flags)
@@ -1270,7 +1272,7 @@ lambda (context)    :run-first
 ;;; gtk_style_context_get_border () -> style-context-border
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_context_get_border" %style-context-border) :void
+(cffi:defcfun ("gtk_style_context_get_border" %style-context-border) :void
   (context (g:object style-context))
   (state state-flags)
   (border (g:boxed border)))
@@ -1298,7 +1300,7 @@ lambda (context)    :run-first
 ;;; gtk_style_context_get_padding () -> style-context-padding
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_context_get_padding" %style-context-padding) :void
+(cffi:defcfun ("gtk_style_context_get_padding" %style-context-padding) :void
   (context (g:object style-context))
   (state state-flags)
   (padding (g:boxed border)))
@@ -1326,7 +1328,7 @@ lambda (context)    :run-first
 ;;; gtk_style_context_get_margin () -> style-context-margin
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_context_get_margin" %style-context-margin) :void
+(cffi:defcfun ("gtk_style_context_get_margin" %style-context-margin) :void
   (context (g:object style-context))
   (state state-flags)
   (margin (g:boxed border)))
@@ -1354,7 +1356,7 @@ lambda (context)    :run-first
 ;;; gtk_style_context_get_font () -> style-context-font
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_context_get_font" style-context-font)
+(cffi:defcfun ("gtk_style_context_get_font" style-context-font)
     (g:boxed pango:font-description)
  #+liber-documentation
  "@version{#2023-3-27}
@@ -1385,7 +1387,7 @@ lambda (context)    :run-first
 ;;; gtk_style_context_invalidate ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_context_invalidate" style-context-invalidate) :void
+(cffi:defcfun ("gtk_style_context_invalidate" style-context-invalidate) :void
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
@@ -1447,7 +1449,8 @@ lambda (context)    :run-first
 ;;; gtk_style_context_lookup_color ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_context_lookup_color" %style-context-lookup-color) :boolean
+(cffi:defcfun ("gtk_style_context_lookup_color" %style-context-lookup-color)
+    :boolean
   (context (g:object style-context))
   (name :string)
   (color (g:boxed gdk:rgba)))
@@ -1473,8 +1476,8 @@ lambda (context)    :run-first
 ;;; gtk_style_context_lookup_icon_set ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_context_lookup_icon_set" style-context-lookup-icon-set)
-    (g:boxed icon-set)
+(cffi:defcfun ("gtk_style_context_lookup_icon_set"
+               style-context-lookup-icon-set) (g:boxed icon-set)
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
@@ -1502,8 +1505,8 @@ lambda (context)    :run-first
 ;;; gtk_style_context_notify_state_change ()               not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_context_notify_state_change"
-           style-context-notify-state-change) :void
+(cffi:defcfun ("gtk_style_context_notify_state_change"
+               style-context-notify-state-change) :void
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
@@ -1545,8 +1548,8 @@ lambda (context)    :run-first
 ;;; gtk_style_context_pop_animatable_region ()             not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_context_pop_animatable_region"
-           style-context-pop-animatable-region) :void
+(cffi:defcfun ("gtk_style_context_pop_animatable_region"
+               style-context-pop-animatable-region) :void
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
@@ -1565,8 +1568,8 @@ lambda (context)    :run-first
 ;;; gtk_style_context_push_animatable_region ()            not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_context_push_animatable_region"
-           style-context-push-animatable-region) :void
+(cffi:defcfun ("gtk_style_context_push_animatable_region"
+               style-context-push-animatable-region) :void
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
@@ -1662,8 +1665,8 @@ lambda (context)    :run-first
 ;;; gtk_style_context_remove_provider ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_context_remove_provider" style-context-remove-provider)
-    :void
+(cffi:defcfun ("gtk_style_context_remove_provider"
+               style-context-remove-provider) :void
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
@@ -1684,8 +1687,8 @@ lambda (context)    :run-first
 ;;; gtk_style_context_remove_provider_for_screen ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_context_remove_provider_for_screen"
-           style-context-remove-provider-for-screen) :void
+(cffi:defcfun ("gtk_style_context_remove_provider_for_screen"
+               style-context-remove-provider-for-screen) :void
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[screen]{a @class{gdk:screen} object}
@@ -1706,7 +1709,8 @@ lambda (context)    :run-first
 ;;; gtk_style_context_reset_widgets ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_context_reset_widgets" style-context-reset-widgets) :void
+(cffi:defcfun ("gtk_style_context_reset_widgets" style-context-reset-widgets)
+    :void
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[screen]{a @class{gdk:screen} object}
@@ -1730,7 +1734,8 @@ lambda (context)    :run-first
 ;;; gtk_style_context_set_background ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_context_set_background" style-context-set-background) :void
+(cffi:defcfun ("gtk_style_context_set_background" style-context-set-background)
+    :void
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
@@ -1758,7 +1763,7 @@ lambda (context)    :run-first
 ;;; gtk_style_context_restore ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_context_restore" style-context-restore) :void
+(cffi:defcfun ("gtk_style_context_restore" style-context-restore) :void
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
@@ -1776,7 +1781,7 @@ lambda (context)    :run-first
 ;;; gtk_style_context_save ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_context_save" style-context-save) :void
+(cffi:defcfun ("gtk_style_context_save" style-context-save) :void
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
@@ -1800,7 +1805,7 @@ lambda (context)    :run-first
 ;;; gtk_style_context_add_class ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_context_add_class" style-context-add-class) :void
+(cffi:defcfun ("gtk_style_context_add_class" style-context-add-class) :void
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
@@ -1832,7 +1837,8 @@ GtkEntry.entry { ... @}
 ;;; gtk_style_context_remove_class ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_context_remove_class" style-context-remove-class) :void
+(cffi:defcfun ("gtk_style_context_remove_class" style-context-remove-class)
+    :void
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
@@ -1850,7 +1856,7 @@ GtkEntry.entry { ... @}
 ;;; gtk_style_context_has_class ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_context_has_class" style-context-has-class) :boolean
+(cffi:defcfun ("gtk_style_context_has_class" style-context-has-class) :boolean
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
@@ -1870,7 +1876,7 @@ GtkEntry.entry { ... @}
 ;;; gtk_style_context_list_classes ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_context_list_classes" style-context-list-classes)
+(cffi:defcfun ("gtk_style_context_list_classes" style-context-list-classes)
     (g:list-t :string)
  #+liber-documentation
  "@version{#2023-3-27}
@@ -1888,7 +1894,7 @@ GtkEntry.entry { ... @}
 ;;; gtk_style_context_add_region ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_context_add_region" style-context-add-region) :void
+(cffi:defcfun ("gtk_style_context_add_region" style-context-add-region) :void
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
@@ -1934,7 +1940,8 @@ GtkEntry.entry { ... @}
 ;;; gtk_style_context_remove_region ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_context_remove_region" style-context-remove-region) :void
+(cffi:defcfun ("gtk_style_context_remove_region" style-context-remove-region)
+    :void
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
@@ -1956,7 +1963,8 @@ GtkEntry.entry { ... @}
 ;;; gtk_style_context_has_region ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_context_has_region" %style-context-has-region) :boolean
+(cffi:defcfun ("gtk_style_context_has_region" %style-context-has-region)
+    :boolean
   (context (g:object style-context))
   (regionname :string)
   (flags (:pointer region-flags)))
@@ -1976,7 +1984,7 @@ GtkEntry.entry { ... @}
   @end{dictionary}
   @see-class{gtk:style-context}
   @see-symbol{gtk:region-flags}"
-  (with-foreign-object (flags 'region-flags)
+  (cffi:with-foreign-object (flags 'region-flags)
     (when (%style-context-has-region context regionname flags)
       (cffi:mem-ref flags 'region-flags))))
 
@@ -1986,7 +1994,7 @@ GtkEntry.entry { ... @}
 ;;; gtk_style_context_list_regions ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_context_list_regions" style-context-list-regions)
+(cffi:defcfun ("gtk_style_context_list_regions" style-context-list-regions)
     (g:list-t :string)
  #+liber-documentation
  "@version{#2023-3-27}
@@ -2016,7 +2024,7 @@ GtkEntry.entry { ... @}
                         :void)
   scale)
 
-(defcfun ("gtk_style_context_get_scale" style-context-scale) :int
+(cffi:defcfun ("gtk_style_context_get_scale" style-context-scale) :int
  #+liber-documentation
  "@version{#2023-3-27}
   @syntax[]{(gtk:style-context-scale context) => scale}
@@ -2038,7 +2046,7 @@ GtkEntry.entry { ... @}
 ;;; gtk_style_context_to_string ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_context_to_string" style-context-to-string) :string
+(cffi:defcfun ("gtk_style_context_to_string" style-context-to-string) :string
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
@@ -2099,7 +2107,7 @@ GtkEntry.entry { ... @}
 ;;; gtk_render_arrow ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_render_arrow" %render-arrow) :void
+(cffi:defcfun ("gtk_render_arrow" %render-arrow) :void
   (context (g:object style-context))
   (cr (:pointer (:struct cairo:context-t)))
   (angle :double)
@@ -2136,7 +2144,7 @@ GtkEntry.entry { ... @}
 ;;; gtk_render_background ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_render_background" %render-background) :void
+(cffi:defcfun ("gtk_render_background" %render-background) :void
   (context (g:object style-context))
   (cr (:pointer (:struct cairo:context-t)))
   (x :double)
@@ -2173,7 +2181,7 @@ GtkEntry.entry { ... @}
 ;;; gtk_render_background_get_clip () -> render-background-clip
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_render_background_get_clip" %render-background-clip) :void
+(cffi:defcfun ("gtk_render_background_get_clip" %render-background-clip) :void
   (context (g:object style-context))
   (x :double)
   (y :double)
@@ -2214,7 +2222,7 @@ GtkEntry.entry { ... @}
 ;;; gtk_render_check ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_render_check" %render-check) :void
+(cffi:defcfun ("gtk_render_check" %render-check) :void
   (context (g:object style-context))
   (cr (:pointer (:struct cairo:context-t)))
   (x :double)
@@ -2255,7 +2263,7 @@ GtkEntry.entry { ... @}
 ;;; gtk_render_expander ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_render_expander" %render-expander) :void
+(cffi:defcfun ("gtk_render_expander" %render-expander) :void
   (context (g:object style-context))
   (cr (:pointer (:struct cairo:context-t)))
   (x :double)
@@ -2298,7 +2306,7 @@ GtkEntry.entry { ... @}
 ;;; gtk_render_extension ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_render_extension" %render-extension) :void
+(cffi:defcfun ("gtk_render_extension" %render-extension) :void
   (context (g:object style-context))
   (cr (:pointer (:struct cairo:context-t)))
   (x :double)
@@ -2342,7 +2350,7 @@ GtkEntry.entry { ... @}
 ;;; gtk_render_focus ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_render_focus" %render-focus) :void
+(cffi:defcfun ("gtk_render_focus" %render-focus) :void
   (context (g:object style-context))
   (cr (:pointer (:struct cairo:context-t)))
   (x :double)
@@ -2379,7 +2387,7 @@ GtkEntry.entry { ... @}
 ;;; gtk_render_frame ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_render_frame" %render-frame) :void
+(cffi:defcfun ("gtk_render_frame" %render-frame) :void
   (context (g:object style-context))
   (cr (:pointer (:struct cairo:context-t)))
   (x :double)
@@ -2417,7 +2425,7 @@ GtkEntry.entry { ... @}
 ;;; gtk_render_frame_gap ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_render_frame_gap" %render-frame-gap) :void
+(cffi:defcfun ("gtk_render_frame_gap" %render-frame-gap) :void
   (context (g:object style-context))
   (cr (:pointer (:struct cairo:context-t)))
   (x :double)
@@ -2477,7 +2485,7 @@ GtkEntry.entry { ... @}
 ;;; gtk_render_handle ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_render_handle" %render-handle) :void
+(cffi:defcfun ("gtk_render_handle" %render-handle) :void
   (context (g:object style-context))
   (cr (:pointer (:struct cairo:context-t)))
   (x :double)
@@ -2517,7 +2525,7 @@ GtkEntry.entry { ... @}
 ;;; gtk_render_layout ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_render_layout" %render-layout) :void
+(cffi:defcfun ("gtk_render_layout" %render-layout) :void
   (context (g:object style-context))
   (cr (:pointer (:struct cairo:context-t)))
   (x :double)
@@ -2550,7 +2558,7 @@ GtkEntry.entry { ... @}
 ;;; gtk_render_line ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_render_line" %render-line) :void
+(cffi:defcfun ("gtk_render_line" %render-line) :void
   (context (g:object style-context))
   (cr (:pointer (:struct cairo:context-t)))
   (x0 :double)
@@ -2587,7 +2595,7 @@ GtkEntry.entry { ... @}
 ;;; gtk_render_option ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_render_option" %render-option) :void
+(cffi:defcfun ("gtk_render_option" %render-option) :void
   (context (g:object style-context))
   (cr (:pointer (:struct cairo:context-t)))
   (x :double)
@@ -2628,7 +2636,7 @@ GtkEntry.entry { ... @}
 ;;; gtk_render_slider ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_render_slider" %render-slider) :void
+(cffi:defcfun ("gtk_render_slider" %render-slider) :void
   (context (g:object style-context))
   (cr (:pointer (:struct cairo:context-t)))
   (x :double)
@@ -2672,7 +2680,7 @@ GtkEntry.entry { ... @}
 ;;; gtk_render_activity ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_render_activity" %render-activity) :void
+(cffi:defcfun ("gtk_render_activity" %render-activity) :void
   (context (g:object style-context))
   (cr (:pointer (:struct cairo:context-t)))
   (x :double)
@@ -2714,7 +2722,7 @@ GtkEntry.entry { ... @}
 ;;; gtk_render_icon_pixbuf ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_render_icon_pixbuf" render-icon-pixbuf)
+(cffi:defcfun ("gtk_render_icon_pixbuf" render-icon-pixbuf)
     (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
  "@version{#2023-3-27}
@@ -2749,7 +2757,7 @@ GtkEntry.entry { ... @}
 ;;; gtk_render_icon_surface ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_render_icon_surface" %render-icon-surface) :void
+(cffi:defcfun ("gtk_render_icon_surface" %render-icon-surface) :void
   (context (g:object style-context))
   (cr (:pointer (:struct cairo:context-t)))
   (surface (:pointer (:struct cairo:surface-t)))
@@ -2783,7 +2791,7 @@ GtkEntry.entry { ... @}
 ;;; gtk_render_icon ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_render_icon" %render-icon) :void
+(cffi:defcfun ("gtk_render_icon" %render-icon) :void
   (context (g:object style-context))
   (cr (:pointer (:struct cairo:context-t)))
   (pixbuf (g:object gdk-pixbuf:pixbuf))
@@ -2817,7 +2825,7 @@ GtkEntry.entry { ... @}
 ;;; gtk_render_insertion_cursor ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_render_insertion_cursor" %render-insertion-cursor) :void
+(cffi:defcfun ("gtk_render_insertion_cursor" %render-insertion-cursor) :void
   (context (g:object style-context))
   (cr (:pointer (:struct cairo:context-t)))
   (x :double)

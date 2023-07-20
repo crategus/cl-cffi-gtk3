@@ -59,7 +59,7 @@
 ;;; GtkSpinner
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkSpinner" spinner
+(gobject:define-g-object-class "GtkSpinner" spinner
   (:superclass widget
    :export t
    :interfaces ("AtkImplementorIface"
@@ -137,7 +137,7 @@
 ;;; gtk_spinner_start ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_spinner_start" spinner-start) :void
+(cffi:defcfun ("gtk_spinner_start" spinner-start) :void
  #+liber-documentation
  "@version{#2023-3-26}
   @argument[spinner]{a @class{gtk:spinner} widget}
@@ -152,7 +152,7 @@
 ;;; gtk_spinner_stop ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_spinner_stop" spinner-stop) :void
+(cffi:defcfun ("gtk_spinner_stop" spinner-stop) :void
  #+liber-documentation
  "@version{#2023-3-26}
   @argument[spinner]{a @class{gtk:spinner} widget}

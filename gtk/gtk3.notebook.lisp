@@ -147,7 +147,7 @@
 ;;; enum GtkNotebookTab
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkNotebookTab" notebook-tab
+(gobject:define-g-enum "GtkNotebookTab" notebook-tab
   (:export t
    :type-initializer "gtk_notebook_tab_get_type")
   (:tab-first 0)
@@ -163,7 +163,7 @@
     signal.
   @end{short}
   @begin{pre}
-(define-g-enum \"GtkNotebookTab\" notebook-tab
+(gobject:define-g-enum \"GtkNotebookTab\" notebook-tab
   (:export t
    :type-initializer \"gtk_notebook_tab_get_type\")
   (:tab-first 0)
@@ -179,7 +179,7 @@
 ;;; struct GtkNotebook
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkNotebook" notebook
+(gobject:define-g-object-class "GtkNotebook" notebook
   (:superclass container
    :export t
    :interfaces ("AtkImplementorIface"
@@ -1021,7 +1021,7 @@ lambda (notebook page num)    :run-last
 ;;; gtk_notebook_append_page ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_notebook_append_page" notebook-append-page) :int
+(cffi:defcfun ("gtk_notebook_append_page" notebook-append-page) :int
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[notebook]{a @class{gtk:notebook} widget}
@@ -1049,7 +1049,7 @@ lambda (notebook page num)    :run-last
 ;;; gtk_notebook_append_page_menu ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_notebook_append_page_menu" notebook-append-page-menu) :int
+(cffi:defcfun ("gtk_notebook_append_page_menu" notebook-append-page-menu) :int
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[notebook]{a @class{gtk:notebook} widget}
@@ -1087,7 +1087,7 @@ lambda (notebook page num)    :run-last
 ;;; gtk_notebook_prepend_page ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_notebook_prepend_page" notebook-prepend-page) :int
+(cffi:defcfun ("gtk_notebook_prepend_page" notebook-prepend-page) :int
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[notebook]{a @class{gtk:notebook} widget}
@@ -1114,7 +1114,7 @@ lambda (notebook page num)    :run-last
 ;;; gtk_notebook_prepend_page_menu ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_notebook_prepend_page_menu" notebook-prepend-page-menu) :int
+(cffi:defcfun ("gtk_notebook_prepend_page_menu" notebook-prepend-page-menu) :int
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[notebook]{a @class{gtk:notebook} widget}
@@ -1152,7 +1152,7 @@ lambda (notebook page num)    :run-last
 ;;; gtk_notebook_insert_page ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_notebook_insert_page" notebook-insert-page) :int
+(cffi:defcfun ("gtk_notebook_insert_page" notebook-insert-page) :int
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[notebook]{a @class{gtk:notebook} widget}
@@ -1182,7 +1182,7 @@ lambda (notebook page num)    :run-last
 ;;; gtk_notebook_insert_page_menu ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_notebook_insert_page_menu" notebook-insert-page-menu) :int
+(cffi:defcfun ("gtk_notebook_insert_page_menu" notebook-insert-page-menu) :int
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[notebook]{a @class{gtk:notebook} widget}
@@ -1223,7 +1223,7 @@ lambda (notebook page num)    :run-last
 ;;; gtk_notebook_remove_page ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_notebook_remove_page" %notebook-remove-page) :void
+(cffi:defcfun ("gtk_notebook_remove_page" %notebook-remove-page) :void
   (notebook (g:object notebook))
   (num :int))
 
@@ -1272,7 +1272,7 @@ lambda (notebook page num)    :run-last
 ;;; gtk_notebook_detach_tab ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_notebook_detach_tab" notebook-detach-tab) :void
+(cffi:defcfun ("gtk_notebook_detach_tab" notebook-detach-tab) :void
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[notebook]{a @class{gtk:notebook} widget}
@@ -1295,7 +1295,7 @@ lambda (notebook page num)    :run-last
 ;;; gtk_notebook_page_num ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_notebook_page_num" notebook-page-num) :int
+(cffi:defcfun ("gtk_notebook_page_num" notebook-page-num) :int
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[notebook]{a @class{gtk:notebook} widget}
@@ -1318,7 +1318,7 @@ lambda (notebook page num)    :run-last
 ;;; gtk_notebook_next_page ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_notebook_next_page" notebook-next-page) :void
+(cffi:defcfun ("gtk_notebook_next_page" notebook-next-page) :void
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[notebook]{a @class{gtk:notebook} widget}
@@ -1336,7 +1336,7 @@ lambda (notebook page num)    :run-last
 ;;; gtk_notebook_prev_page ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_notebook_prev_page" notebook-prev-page) :void
+(cffi:defcfun ("gtk_notebook_prev_page" notebook-prev-page) :void
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[notebook]{a @class{gtk:notebook} widget}
@@ -1354,7 +1354,7 @@ lambda (notebook page num)    :run-last
 ;;; gtk_notebook_reorder_child ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_notebook_reorder_child" notebook-reorder-child) :void
+(cffi:defcfun ("gtk_notebook_reorder_child" notebook-reorder-child) :void
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[notebook]{a @class{gtk:notebook} widget}
@@ -1437,7 +1437,7 @@ lambda (notebook page num)    :run-last
                         :void)
   num)
 
-(defcfun ("gtk_notebook_get_current_page" notebook-current-page) :int
+(cffi:defcfun ("gtk_notebook_get_current_page" notebook-current-page) :int
  #+liber-documentation
  "@version{#2023-3-21}
   @syntax[]{(gtk:notebook-current-page notebook) => num}
@@ -1475,7 +1475,7 @@ lambda (notebook page num)    :run-last
                         :void)
   value)
 
-(defcfun ("gtk_notebook_get_menu_label" notebook-menu-label)
+(cffi:defcfun ("gtk_notebook_get_menu_label" notebook-menu-label)
     (g:object widget)
  #+liber-documentation
  "@version{#2023-3-21}
@@ -1505,7 +1505,7 @@ lambda (notebook page num)    :run-last
 ;;; gtk_notebook_get_nth_page () -> notebook-nth-page
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_notebook" notebook-nth-page) (g:object widget)
+(cffi:defcfun ("gtk_notebook" notebook-nth-page) (g:object widget)
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[notebook]{a @class{gtk:notebook} widget}
@@ -1527,7 +1527,7 @@ lambda (notebook page num)    :run-last
 ;;; gtk_notebook_get_n_pages () -> notebook-n-pages
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_notebook_get_n_pages" notebook-n-pages) :int
+(cffi:defcfun ("gtk_notebook_get_n_pages" notebook-n-pages) :int
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[notebook]{a @class{gtk:notebook} widget}
@@ -1551,7 +1551,7 @@ lambda (notebook page num)    :run-last
                         :void)
   value)
 
-(defcfun ("gtk_notebook_get_tab_label" notebook-tab-label)
+(cffi:defcfun ("gtk_notebook_get_tab_label" notebook-tab-label)
     (g:object widget)
  #+liber-documentation
  "@version{#2023-3-21}
@@ -1804,7 +1804,7 @@ on_drop_zone_drag_data_received (GtkWidget        *widget,
                         :void)
   value)
 
-(defcfun ("gtk_notebook_get_action_widget" notebook-action-widget)
+(cffi:defcfun ("gtk_notebook_get_action_widget" notebook-action-widget)
     (g:object widget)
  #+liber-documentation
  "@version{#2023-3-21}

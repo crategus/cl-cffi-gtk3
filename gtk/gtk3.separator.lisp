@@ -60,7 +60,7 @@
 ;;; struct GtkSeparator
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkSeparator" separator
+(gobject:define-g-object-class "GtkSeparator" separator
   (:superclass widget
    :export t
    :interfaces ("AtkImplementorIface"

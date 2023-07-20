@@ -164,7 +164,7 @@
 ;;; GtkStyleProvider
 ;;; ----------------------------------------------------------------------------
 
-(define-g-interface "GtkStyleProvider" style-provider
+(gobject:define-g-interface "GtkStyleProvider" style-provider
   (:export t
    :type-initializer "gtk_style_provider_get_type")
   nil)
@@ -201,8 +201,8 @@
 ;;; gtk_style_provider_get_style_property -> style-provider-style-property
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_style_provider_get_style_property"
-          %style-provider-style-property) :void
+(cffi:defcfun ("gtk_style_provider_get_style_property"
+               %style-provider-style-property) :void
   (provider (g:object style-provider))
   (path (g:boxed widget-path))
   (state state-flags)
@@ -227,12 +227,12 @@
   @see-symbol{gtk:state-flags}
   @see-symbol{g:param-spec}"
   (let ((gtype (g:param-spec-value-type pspec)))
-    (with-foreign-object (value '(:struct g:value))
+    (cffi:with-foreign-object (value '(:struct g:value))
       (unwind-protect
         (progn
           (g:value-init value gtype)
           (%style-provider-style-property provider path state pspec value)
-          (parse-g-value value))
+          (gobject:parse-g-value value))
         (g:value-unset value)))))
 
 (export 'style-provider-style-property)

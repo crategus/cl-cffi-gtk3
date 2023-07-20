@@ -67,7 +67,7 @@
 ;;; struct GtkStackSwitcher
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkStackSwitcher" stack-switcher
+(gobject:define-g-object-class "GtkStackSwitcher" stack-switcher
   (:superclass box
    :export t
    :interfaces ("AtkImplementorIface"
@@ -163,7 +163,7 @@
     Accessor of the @slot[gtk:stack-switcher]{stack} slot of the
     @class{gtk:stack-switcher} class.
   @end{short}
-  The @sym{gtk:stack-switcher-stack} function retrieves the stack. The 
+  The @sym{gtk:stack-switcher-stack} function retrieves the stack. The
   @sym{(setf gtk:stack-switcher-stack)} function sets the stack to control.
   @see-class{gtk:stack-switcher}
   @see-class{gtk:stack}")

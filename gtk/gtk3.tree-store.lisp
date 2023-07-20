@@ -76,7 +76,7 @@
 ;;; struct GtkTreeStore
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkTreeStore" tree-store
+(gobject:define-g-object-class "GtkTreeStore" tree-store
   (:superclass g:object
    :export t
    :interfaces ("GtkBuildable"
@@ -183,7 +183,8 @@
 ;;; gtk_tree_store_set_column_types ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_store_set_column_types" %tree-store-set-column-types) :void
+(cffi:defcfun ("gtk_tree_store_set_column_types" %tree-store-set-column-types)
+    :void
   (store (g:object tree-store))
   (n-columns :int)
   (types :pointer))
@@ -204,7 +205,7 @@
   @see-class{gtk:tree-model}
   @see-class{g:type-t}"
   (let ((n (length types)))
-    (with-foreign-object (types-ar 'g:type-t n)
+    (cffi:with-foreign-object (types-ar 'g:type-t n)
       (iter (for i from 0 below n)
             (for gtype in types)
             (setf (cffi:mem-aref types-ar 'g:type-t i) gtype))
@@ -258,16 +259,16 @@
   @see-class{gtk:tree-iter}
   @see-function{gtk:tree-store-set-value}"
   (let ((n (length values)))
-    (with-foreign-objects ((value-ar '(:struct g:value) n)
+    (cffi:with-foreign-objects ((value-ar '(:struct g:value) n)
                            (columns-ar :int n))
       (iter (for i from 0 below n)
             (for value in values)
             (for gtype = (tree-model-column-type store i))
             (setf (cffi:mem-aref columns-ar :int i) i)
-            (set-g-value (cffi:mem-aptr value-ar '(:struct g:value) i)
-                         value
-                         gtype
-                         :zero-g-value t))
+            (gobject:set-g-value (cffi:mem-aptr value-ar '(:struct g:value) i)
+                                 value
+                                 gtype
+                                 :zero-gvalue t))
       (%tree-store-set-valuesv store iter columns-ar value-ar n)
       (iter (for i from 0 below n)
             (g:value-unset (cffi:mem-aptr value-ar '(:struct g:value) i)))
@@ -301,7 +302,7 @@
 ;;; gtk_tree_store_set_value ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_store_set_value" %tree-store-set-value) :void
+(cffi:defcfun ("gtk_tree_store_set_value" %tree-store-set-value) :void
   (store (g:object tree-store))
   (iter (g:boxed tree-iter))
   (column :int)
@@ -322,11 +323,11 @@
   @see-class{gtk:tree-store}
   @see-class{gtk:tree-iter}
   @see-function{gtk:tree-store-set}"
-  (with-foreign-object (gvalue '(:struct g:value))
-    (set-g-value gvalue
-                 value
-                 (tree-model-column-type store column)
-                 :zero-g-value t)
+  (cffi:with-foreign-object (gvalue '(:struct g:value))
+    (gobject:set-g-value gvalue
+                         value
+                         (tree-model-column-type store column)
+                         :zero-gvalue t)
     (%tree-store-set-value store iter column gvalue)
     (g:value-unset gvalue)
     (values)))
@@ -339,7 +340,7 @@
 
 ;; This function is for internal use only and not exported.
 
-(defcfun ("gtk_tree_store_set_valuesv" %tree-store-set-valuesv) :void
+(cffi:defcfun ("gtk_tree_store_set_valuesv" %tree-store-set-valuesv) :void
  #+liber-documentation
  "@version{#2013-7-4}
   @argument[tree-store]{a @class{gtk:tree-store} object}
@@ -365,7 +366,7 @@
 ;;; gtk_tree_store_remove ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_store_remove" tree-store-remove) :boolean
+(cffi:defcfun ("gtk_tree_store_remove" tree-store-remove) :boolean
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[store]{a @class{gtk:tree-store} object}
@@ -388,7 +389,7 @@
 ;;; gtk_tree_store_insert ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_store_insert" %tree-store-insert) :void
+(cffi:defcfun ("gtk_tree_store_insert" %tree-store-insert) :void
   (store (g:object tree-store))
   (iter (g:boxed tree-iter))
   (parent (g:boxed tree-iter))
@@ -426,7 +427,7 @@
 ;;; gtk_tree_store_insert_before ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_store_insert_before" %tree-store-insert-before) :void
+(cffi:defcfun ("gtk_tree_store_insert_before" %tree-store-insert-before) :void
   (store (g:object tree-store))
   (iter (g:boxed tree-iter))
   (parent (g:boxed tree-iter))
@@ -464,7 +465,7 @@
 ;;; gtk_tree_store_insert_after ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_store_insert_after" %tree-store-insert-after) :void
+(cffi:defcfun ("gtk_tree_store_insert_after" %tree-store-insert-after) :void
   (store (g:object tree-store))
   (iter (g:boxed tree-iter))
   (parent (g:boxed tree-iter))
@@ -537,16 +538,16 @@
   @see-function{gtk:tree-store-set}"
   (let ((n (length values))
         (iter (make-tree-iter)))
-    (with-foreign-objects ((v-ar '(:struct g:value) n)
-                           (columns-ar :int n))
+    (cffi:with-foreign-objects ((v-ar '(:struct g:value) n)
+                                (columns-ar :int n))
       (iter (for i from 0 below n)
             (for value in values)
             (for gtype = (tree-model-column-type store i))
             (setf (cffi:mem-aref columns-ar :int i) i)
-            (set-g-value (cffi:mem-aptr v-ar '(:struct g:value) i)
-                         value
-                         gtype
-                         :zero-g-value t))
+            (gobject:set-g-value (cffi:mem-aptr v-ar '(:struct g:value) i)
+                                 value
+                                 gtype
+                                 :zero-gvalue t))
       (%tree-store-insert-with-valuesv store
                                        iter
                                        parent
@@ -566,8 +567,8 @@
 
 ;; This function is for internal use and not exported.
 
-(defcfun ("gtk_tree_store_insert_with_valuesv" %tree-store-insert-with-valuesv)
-    :void
+(cffi:defcfun ("gtk_tree_store_insert_with_valuesv"
+               %tree-store-insert-with-valuesv) :void
  #+liber-documentation
  "@version{#2013-3-27}
   @argument[tree_store]{A GtkTreeStore}
@@ -595,7 +596,7 @@
 ;;; gtk_tree_store_prepend ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_store_prepend" %tree-store-prepend) :void
+(cffi:defcfun ("gtk_tree_store_prepend" %tree-store-prepend) :void
   (tree-store (g:object tree-store))
   (iter (g:boxed gtk:tree-iter))
   (parent (g:boxed gtk:tree-iter)))
@@ -628,7 +629,7 @@
 ;;; gtk_tree_store_append ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_store_append" %tree-store-append) :void
+(cffi:defcfun ("gtk_tree_store_append" %tree-store-append) :void
   (store (g:object tree-store))
   (iter (g:boxed gtk:tree-iter))
   (parent (g:boxed gtk:tree-iter)))
@@ -661,7 +662,7 @@
 ;;; gtk_tree_store_is_ancestor ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_store_is_ancestor" tree-store-is-ancestor) :boolean
+(cffi:defcfun ("gtk_tree_store_is_ancestor" tree-store-is-ancestor) :boolean
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[store]{a @class{gtk:tree-store} object}
@@ -685,7 +686,7 @@
 ;;; gtk_tree_store_iter_depth ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_store_iter_depth" tree-store-iter-depth) :int
+(cffi:defcfun ("gtk_tree_store_iter_depth" tree-store-iter-depth) :int
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[store]{a @class{gtk:tree-store} object}
@@ -707,7 +708,7 @@
 ;;; gtk_tree_store_clear ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_store_clear" tree-store-clear) :void
+(cffi:defcfun ("gtk_tree_store_clear" tree-store-clear) :void
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[store]{a @class{gtk:tree-store} object}
@@ -721,7 +722,7 @@
 ;;; gtk_tree_store_iter_is_valid ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_store_iter_is_valid" tree-store-iter-is-valid) :boolean
+(cffi:defcfun ("gtk_tree_store_iter_is_valid" tree-store-iter-is-valid) :boolean
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[store]{a @class{gtk:tree-store} object}
@@ -746,7 +747,7 @@
 ;;; gtk_tree_store_reorder ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_store_reorder" %tree-store-reorder) :void
+(cffi:defcfun ("gtk_tree_store_reorder" %tree-store-reorder) :void
   (store (g:object list-store))
   (parent (g:boxed gtk:tree-iter))
   (order :pointer))
@@ -766,7 +767,7 @@
   @see-class{gtk:tree-store}
   @see-class{gtk:tree-iter}"
   (let ((n (length order)))
-    (with-foreign-object (order-ar :int n)
+    (cffi:with-foreign-object (order-ar :int n)
       (iter (for i from 0 below n)
             (for j in order)
             (setf (cffi:mem-aref order-ar :int i) j))
@@ -778,7 +779,7 @@
 ;;; gtk_tree_store_swap ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_store_swap" tree-store-swap) :void
+(cffi:defcfun ("gtk_tree_store_swap" tree-store-swap) :void
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[store]{a @class{gtk:tree-store} object}
@@ -800,7 +801,7 @@
 ;;; gtk_tree_store_move_before ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_store_move_before" tree-store-move-before) :void
+(cffi:defcfun ("gtk_tree_store_move_before" tree-store-move-before) :void
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[store]{a @class{gtk:tree-store}}
@@ -825,7 +826,7 @@
 ;;; gtk_tree_store_move_after ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_tree_store_move_after" tree-store-move-after) :void
+(cffi:defcfun ("gtk_tree_store_move_after" tree-store-move-after) :void
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[store]{a @class{gtk:tree-store} object}

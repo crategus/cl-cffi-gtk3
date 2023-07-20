@@ -66,7 +66,7 @@
 ;;; struct GtkVolumeButton
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkVolumeButton" volume-button
+(gobject:define-g-object-class "GtkVolumeButton" volume-button
   (:superclass scale-button
    :export t
    :interfaces ("AtkImplementorIface"

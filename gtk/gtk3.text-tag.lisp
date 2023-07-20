@@ -140,7 +140,7 @@
 ;;; enum GtkWrapMode
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkWrapMode" wrap-mode
+(gobject:define-g-enum "GtkWrapMode" wrap-mode
   (:export t
    :type-initializer "gtk_wrap_mode_get_type")
   (:none 0)
@@ -155,7 +155,7 @@
  "@version{2023-3-15}
   @short{Describes a type of line wrapping.}
   @begin{pre}
-(define-g-enum \"GtkWrapMode\" wrap-mode
+(gobject:define-g-enum \"GtkWrapMode\" wrap-mode
   (:export tgtk.text-attribut
    :type-initializer \"gtk_wrap_mode_get_type\")
   (:none 0)
@@ -180,7 +180,7 @@
 ;;; struct GtkTextTag
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkTextTag" text-tag
+(gobject:define-g-object-class "GtkTextTag" text-tag
   (:superclass g:object
    :export t
    :interfaces nil
@@ -521,7 +521,7 @@ lambda (tag object event iter)    :run-last
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "accumulative-margin"
                                                'text-tag) t)
- "The @code{accumulative-margin} property of type @code{:boolean} (Read / Write) 
+ "The @code{accumulative-margin} property of type @code{:boolean} (Read / Write)
   @br{}
   Whether the margins accumulate or override each other. When set to @em{true}
   the margins of this tag are added to the margins of any other non-accumulative
@@ -1414,7 +1414,7 @@ lambda (tag object event iter)    :run-last
 ;;; --- text-tag-letter-spacing-set --------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "letter-spacing-set" 
+(setf (documentation (liber:slot-documentation "letter-spacing-set"
                                                'text-tag) t)
  "The @code{letter-spacing-set} property of type @code{:boolean} (Read / Write)
   @br{}
@@ -1640,7 +1640,7 @@ lambda (tag object event iter)    :run-last
 ;;; --- text-tag-pixels-below-lines --------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "pixels-below-lines" 
+(setf (documentation (liber:slot-documentation "pixels-below-lines"
                                                'text-tag) t)
  "The @code{pixels-below-lines} property of type @code{:int}
   (Read / Write) @br{}
@@ -1994,7 +1994,7 @@ lambda (tag object event iter)    :run-last
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "stretch" 'text-tag) t)
- "The @code{stretch} property of type @symbol{pango:stretch} (Read / Write) 
+ "The @code{stretch} property of type @symbol{pango:stretch} (Read / Write)
   @br{}
   Font stretch, e.g. the @code{:condensed} value. @br{}
   Default value: @code{:normal}")
@@ -2072,7 +2072,7 @@ lambda (tag object event iter)    :run-last
 ;;; --- text-tag-strikethrough-rgba --------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "strikethrough-rgba" 
+(setf (documentation (liber:slot-documentation "strikethrough-rgba"
                                                'text-tag) t)
  "The @code{strikethrough-rgba} property of type @class{gdk:rgba} (Read / Write)
   @br{}
@@ -2321,7 +2321,7 @@ lambda (tag object event iter)    :run-last
 ;;; --- text-tag-underline-rgba-set --------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "underline-rgba-set" 
+(setf (documentation (liber:slot-documentation "underline-rgba-set"
                                                'text-tag) t)
  "The @code{underline-rgba-set} property of type @code{:boolean} (Read / Write)
   @br{}
@@ -2567,7 +2567,7 @@ lambda (tag object event iter)    :run-last
                         (g:object text-tag) tag :int priority :void)
   priority)
 
-(defcfun ("gtk_text_tag_get_priority" text-tag-priority) :int
+(cffi:defcfun ("gtk_text_tag_get_priority" text-tag-priority) :int
  #+liber-documentation
  "@version{#2023-3-15}
   @syntax[]{(gtk:text-tag-priority tag) => priority}
@@ -2602,7 +2602,7 @@ lambda (tag object event iter)    :run-last
 ;;; gtk_text_tag_event ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_text_tag_event" text-tag-event) :boolean
+(cffi:defcfun ("gtk_text_tag_event" text-tag-event) :boolean
  #+liber-documentation
  "@version{#2023-3-15}
   @argument[tag]{a @class{gtk:text-tag} object}
@@ -2628,7 +2628,7 @@ lambda (tag object event iter)    :run-last
 ;;; gtk_text_tag_changed ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_text_tag_changed" text-tag-changed) :void
+(cffi:defcfun ("gtk_text_tag_changed" text-tag-changed) :void
  #+liber-documentation
  "@version{#2023-3-15}
   @argument[tag]{a @class{gtk:text-tag} object}

@@ -106,7 +106,7 @@
 ;;; enum GtkImageType
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkImageType" image-type
+(gobject:define-g-enum "GtkImageType" image-type
   (:export t
    :type-initializer "gtk_image_type_get_type")
   (:empty 0)
@@ -133,7 +133,7 @@
   For empty images, you can request any storage type, but they will all return
   @code{nil} values.
   @begin{pre}
-(define-g-enum \"GtkImageType\" image-type
+(gobject:define-g-enum \"GtkImageType\" image-type
   (:export t
    :type-initializer \"gtk_image_type_get_type\")
   (:empty 0)
@@ -168,7 +168,7 @@
 ;;; struct GtkImage
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkImage" image
+(gobject:define-g-object-class "GtkImage" image
   (:superclass misc
    :export t
    :interfaces ("AtkImplementorIface"
@@ -734,7 +734,7 @@
 
 ;; TODO: Check if we can cut out this function.
 
-(defcfun ("gtk_image_get_animation" image-get-animation)
+(cffi:defcfun ("gtk_image_get_animation" image-get-animation)
     (g:object gdk-pixbuf:pixbuf-animation)
  #+liber-documentation
  "@version{#2023-3-20}
@@ -810,7 +810,7 @@
 ;;; gtk_image_new_from_file ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_image_new_from_file" %image-new-from-file) (g:object widget)
+(cffi:defcfun ("gtk_image_new_from_file" %image-new-from-file) (g:object widget)
   (filename :string))
 
 (defun image-new-from-file (path)
@@ -847,7 +847,7 @@
 ;;; gtk_image_new_from_icon_set ()                         not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_image_new_from_icon_set" image-new-from-icon-set)
+(cffi:defcfun ("gtk_image_new_from_icon_set" image-new-from-icon-set)
     (g:object image)
  #+liber-documentation
  "@version{#2023-3-20}
@@ -880,7 +880,8 @@
 ;;; gtk_image_new_from_pixbuf ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_image_new_from_pixbuf" image-new-from-pixbuf) (g:object image)
+(cffi:defcfun ("gtk_image_new_from_pixbuf" image-new-from-pixbuf)
+    (g:object image)
  #+liber-documentation
  "@version{#2023-3-20}
   @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object}
@@ -902,7 +903,7 @@
 ;;; gtk_image_new_from_stock ()                            not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_image_new_from_stock" image-new-from-stock)
+(cffi:defcfun ("gtk_image_new_from_stock" image-new-from-stock)
     (g:object widget)
  #+liber-documentation
  "@version{#2023-3-20}
@@ -934,7 +935,7 @@
 ;;; gtk_image_new_from_animation ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_image_new_from_animation" image-new-from-animation)
+(cffi:defcfun ("gtk_image_new_from_animation" image-new-from-animation)
     (g:object image)
  #+liber-documentation
  "@version{#2023-3-20}
@@ -958,7 +959,7 @@
 ;;; gtk_image_new_from_icon_name ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_image_new_from_icon_name" image-new-from-icon-name)
+(cffi:defcfun ("gtk_image_new_from_icon_name" image-new-from-icon-name)
     (g:object image)
  #+liber-documentation
  "@version{#2023-3-20}
@@ -982,7 +983,7 @@
 ;;; gtk_image_new_from_gicon ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_image_new_from_gicon" image-new-from-gicon) (g:object image)
+(cffi:defcfun ("gtk_image_new_from_gicon" image-new-from-gicon) (g:object image)
  #+liber-documentation
  "@version{#2023-3-20}
   @argument[icon]{a @class{g:icon} object}
@@ -1007,7 +1008,7 @@
 ;;; gtk_image_new_from_resource ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_image_new_from_resource" image-new-from-resource)
+(cffi:defcfun ("gtk_image_new_from_resource" image-new-from-resource)
     (g:object image)
  #+liber-documentation
  "@version{#2023-3-20}
@@ -1041,7 +1042,8 @@
 ;;; gtk_image_new_from_surface ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_image_new_from_surface" image-new-from-surface) (g:object image)
+(cffi:defcfun ("gtk_image_new_from_surface" image-new-from-surface)
+    (g:object image)
  #+liber-documentation
  "@version{#2023-3-20}
   @argument[surface]{a @symbol{cairo:surface-t} instance}
@@ -1059,7 +1061,7 @@
 ;;; gtk_image_set_from_file ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_image_set_from_file" %image-set-from-file) :void
+(cffi:defcfun ("gtk_image_set_from_file" %image-set-from-file) :void
   (image (g:object image))
   (filename :string))
 
@@ -1081,7 +1083,7 @@
 ;;; gtk_image_set_from_icon_set ()                         not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_image_set_from_icon_set" image-set-from-icon-set) :void
+(cffi:defcfun ("gtk_image_set_from_icon_set" image-set-from-icon-set) :void
  #+liber-documentation
  "@version{#2023-3-20}
   @argument[image]{a @class{gtk:image} widget}
@@ -1105,7 +1107,7 @@
 ;;; gtk_image_set_from_pixbuf ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_image_set_from_pixbuf" image-set-from-pixbuf) :void
+(cffi:defcfun ("gtk_image_set_from_pixbuf" image-set-from-pixbuf) :void
  #+liber-documentation
  "@version{#2023-3-20}
   @argument[image]{a @class{gtk:image} widget}
@@ -1126,7 +1128,7 @@
 ;;; gtk_image_set_from_stock ()                            not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_image_set_from_stock" image-set-from-stock) :void
+(cffi:defcfun ("gtk_image_set_from_stock" image-set-from-stock) :void
  #+liber-documentation
  "@version{#2023-3-20}
   @argument[image]{a @class{gtk:image} widget}
@@ -1150,7 +1152,7 @@
 ;;; gtk_image_set_from_animation ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_image_set_from_animation" image-set-from-animation) :void
+(cffi:defcfun ("gtk_image_set_from_animation" image-set-from-animation) :void
  #+liber-documentation
  "@version{#2023-3-20}
   @argument[image]{a @class{gtk:image} widget}
@@ -1170,7 +1172,7 @@
 ;;; gtk_image_set_from_icon_name ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_image_set_from_icon_name" image-set-from-icon-name) :void
+(cffi:defcfun ("gtk_image_set_from_icon_name" image-set-from-icon-name) :void
  #+liber-documentation
  "@version{#2023-3-20}
   @argument[image]{a @class{gtk:image} widget}
@@ -1191,7 +1193,7 @@
 ;;; gtk_image_set_from_gicon ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_image_set_from_gicon" image-set-from-gicon) :void
+(cffi:defcfun ("gtk_image_set_from_gicon" image-set-from-gicon) :void
  #+liber-documentation
  "@version{#2023-3-20}
   @argument[image]{a @class{gtk:image} widget}
@@ -1214,7 +1216,7 @@
 ;;; gtk_image_set_from_resource ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_image_set_from_resource" image-set-from-resource) :void
+(cffi:defcfun ("gtk_image_set_from_resource" image-set-from-resource) :void
  #+liber-documentation
  "@version{#2023-3-20}
   @argument[image]{a @class{gtk:image} widget}
@@ -1233,7 +1235,7 @@
 ;;; gtk_image_set_from_surface ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_image_set_from_surface" image-set-from-surface) :void
+(cffi:defcfun ("gtk_image_set_from_surface" image-set-from-surface) :void
  #+liber-documentation
  "@version{#2023-3-20}
   @argument[image]{a @class{gtk:image} widget}
@@ -1253,7 +1255,7 @@
 ;;; gtk_image_clear ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_image_clear" image-clear) :void
+(cffi:defcfun ("gtk_image_clear" image-clear) :void
  #+liber-documentation
  "@version{#2023-3-20}
   @argument[image]{a @class{gtk:image} widget}

@@ -61,7 +61,7 @@
 ;;; struct GtkRecentChooserWidget
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkRecentChooserWidget" recent-chooser-widget
+(gobject:define-g-object-class "GtkRecentChooserWidget" recent-chooser-widget
   (:superclass box
    :export t
    :interfaces ("AtkImplementorIface"

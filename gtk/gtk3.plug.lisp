@@ -75,7 +75,7 @@
 ;;; struct GtkPlug
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkPlug" plug
+(gobject:define-g-object-class "GtkPlug" plug
   (:superclass window
    :export t
    :interfaces ("AtkImplementorIface"
@@ -216,7 +216,7 @@ lambda (plug)    :run-last
 ;;; gtk_plug_new ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_plug_new" plug-new) (g:object plug)
+(cffi:defcfun ("gtk_plug_new" plug-new) (g:object plug)
  #+liber-documentation
  "@version{#2023-2-28}
   @argument[socket-id]{a pointer with the window ID of the socket, or 0}
@@ -258,7 +258,7 @@ lambda (plug)    :run-last
 ;;; gtk_plug_get_id () -> plug-id
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_plug_get_id" plug-id) :pointer
+(cffi:defcfun ("gtk_plug_get_id" plug-id) :pointer
  #+liber-documentation
  "@version{#2023-2-28}
   @argument[plug]{a @class{gtk:plug} widget}

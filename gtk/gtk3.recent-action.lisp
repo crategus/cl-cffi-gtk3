@@ -63,7 +63,7 @@
 ;;; struct GtkRecentAction
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkRecentAction" recent-action
+(gobject:define-g-object-class "GtkRecentAction" recent-action
   (:superclass action
    :export t
    :interfaces ("GtkBuildable"
@@ -120,10 +120,10 @@
     Accessor of the @slot[gtk:recent-action]{show-numbers} slot of the
     @class{gtk:recent-action} class.
   @end{short}
-  The @sym{gtk:recent-action-show-numbers} function sets whether a number 
-  should be added to the items shown by the widgets representing the action. 
+  The @sym{gtk:recent-action-show-numbers} function sets whether a number
+  should be added to the items shown by the widgets representing the action.
   The numbers are shown to provide a unique character for a mnemonic to be used
-  inside the menu label of the item. Only the first ten items get a number to 
+  inside the menu label of the item. Only the first ten items get a number to
   avoid clashes.
   @begin[Warning]{dictionary}
     The @sym{gtk:recent-action-show-numbers} function has been deprecated since
@@ -135,7 +135,7 @@
 ;;; gtk_recent_action_new ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_action_new" recent-action-new) (g:object action)
+(cffi:defcfun ("gtk_recent_action_new" recent-action-new) (g:object action)
  "@version{#2023-3-24}
   @argument[name]{a string with a unique name for the action}
   @argument[label]{a string with the label displayed in menu items and on
@@ -167,8 +167,8 @@
 ;;; gtk_recent_action_new_for_manager ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_action_new_for_manager"
-           recent-action-new-for-manager) (g:object action)
+(cffi:defcfun ("gtk_recent_action_new_for_manager"
+               recent-action-new-for-manager) (g:object action)
  "@version{#2023-3-24}
   @argument[name]{a string with a unique name for the action}
   @argument[label]{a string with the label displayed in menu items and on

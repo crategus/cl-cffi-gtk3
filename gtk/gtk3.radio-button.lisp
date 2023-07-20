@@ -79,7 +79,7 @@
 ;;; GtkRadioButton
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkRadioButton" radio-button
+(gobject:define-g-object-class "GtkRadioButton" radio-button
   (:superclass check-button
    :export t
    :interfaces ("AtkImplementorIface"
@@ -205,7 +205,7 @@ lambda (button)    :run-first
   @see-constructor{gtk:radio-button-new-with-label}
   @see-constructor{gtk:radio-button-new-with-label-from-widget}
   @see-constructor{gtk:radio-button-new-with-mnenmonic}
-  @see-constructor{gtk:radio-button-new-with-mnemonic-from-widget}  
+  @see-constructor{gtk:radio-button-new-with-mnemonic-from-widget}
   @see-slot{gtk:radio-button-group}
   @see-class{gtk:button}
   @see-class{gtk:toggle-button}
@@ -236,7 +236,7 @@ lambda (button)    :run-first
 ;;; gtk_radio_button_new ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_radio_button_new" radio-button-new) (g:object widget)
+(cffi:defcfun ("gtk_radio_button_new" radio-button-new) (g:object widget)
  #+liber-documentation
  "@version{#2023-3-22}
   @argument[group]{an existing @class{gtk:radio-button} group, or @code{nil} if
@@ -256,7 +256,7 @@ lambda (button)    :run-first
 ;;; gtk_radio_button_new_from_widget ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_radio_button_new_from_widget" radio-button-new-from-widget)
+(cffi:defcfun ("gtk_radio_button_new_from_widget" radio-button-new-from-widget)
     (g:object widget)
  #+liber-documentation
  "@version{#2023-3-22}
@@ -277,7 +277,7 @@ lambda (button)    :run-first
 ;;; gtk_radio_button_new_with_label ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_radio_button_new_with_label" radio-button-new-with-label)
+(cffi:defcfun ("gtk_radio_button_new_with_label" radio-button-new-with-label)
     (g:object widget)
  #+liber-documentation
  "@version{#2023-3-22}
@@ -299,8 +299,8 @@ lambda (button)    :run-first
 ;;; gtk_radio_button_new_with_label_from_widget ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_radio_button_new_with_label_from_widget"
-           radio-button-new-with-label-from-widget) (g:object widget)
+(cffi:defcfun ("gtk_radio_button_new_with_label_from_widget"
+               radio-button-new-with-label-from-widget) (g:object widget)
  #+liber-documentation
  "@version{#2023-3-22}
   @argument[member]{a @class{gtk:radio-button} widget to get the radio group
@@ -321,8 +321,8 @@ lambda (button)    :run-first
 ;;; gtk_radio_button_new_with_mnemonic ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_radio_button_new_with_mnemonic"
-           radio-button-new-with-mnemonic) (g:object widget)
+(cffi:defcfun ("gtk_radio_button_new_with_mnemonic"
+               radio-button-new-with-mnemonic) (g:object widget)
  #+liber-documentation
  "@version{#2023-3-22}
   @argument[group]{the @class{gtk:radio-button} group}
@@ -346,8 +346,8 @@ lambda (button)    :run-first
 ;;; gtk_radio_button_new_with_mnemonic_from_widget ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_radio_button_new_with_mnemonic_from_widget"
-           radio-button-new-with-mnemonic-from-widget) (g:object widget)
+(cffi:defcfun ("gtk_radio_button_new_with_mnemonic_from_widget"
+               radio-button-new-with-mnemonic-from-widget) (g:object widget)
  #+liber-documentation
  "@version{#2023-3-22}
   @argument[member]{a @class{gtk:radio-button} widget to get radio group from or
@@ -399,7 +399,7 @@ lambda (button)    :run-first
 ;;; TODO: Check the implementation of radio-button-set-group and
 ;;; radio-button-get-group.
 
-(defcfun ("gtk_radio_button_get_group" radio-button-get-group)
+(cffi:defcfun ("gtk_radio_button_get_group" radio-button-get-group)
     (g:slist-t (g:object radio-button) :free-from-foreign nil)
  #+liber-documentation
  "@version{#2023-3-22}
@@ -421,7 +421,7 @@ lambda (button)    :run-first
 ;;; gtk_radio_button_join_group ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_radio_button_join_group" radio-button-join-group) :void
+(cffi:defcfun ("gtk_radio_button_join_group" radio-button-join-group) :void
  #+liber-documentation
  "@version{#2023-3-22}
   @argument[button]{a @class{gtk:radio-button} widget}

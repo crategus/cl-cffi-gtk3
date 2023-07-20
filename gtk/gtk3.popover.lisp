@@ -92,7 +92,7 @@
 ;;; enum GtkPopoverConstraint
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkPopoverConstraint" popover-constraint
+(gobject:define-g-enum "GtkPopoverConstraint" popover-constraint
   (:export t
    :type-initializer "gtk_popover_constraint_get_type")
   :none
@@ -108,7 +108,7 @@
   @end{short}
   More values may be added to this enumeration in the future.
   @begin{pre}
-(define-g-enum \"GtkPopoverConstraint\" gtk:popover-constraint
+(gobject:define-g-enum \"GtkPopoverConstraint\" gtk:popover-constraint
   (:export t
    :type-initializer \"gtk_popover_constraint_get_type\")
   :none
@@ -126,7 +126,7 @@
 ;;; struct GtkPopover
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkPopover" popover
+(gobject:define-g-object-class "GtkPopover" popover
   (:superclass bin
     :export t
     :interfaces ("AtkImplementorIface"
@@ -469,7 +469,8 @@
 ;;; gtk_popover_new_from_model ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_popover_new_from_model" popover-new-from-model) (g:object widget)
+(cffi:defcfun ("gtk_popover_new_from_model" popover-new-from-model)
+    (g:object widget)
  #+liber-documentation
  "@version{#2023-3-12}
   @argument[relative-to]{a @class{gtk:widget} the popover is related to}
@@ -501,7 +502,7 @@
 ;;; gtk_popover_bind_model ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_popover_bind_model" popover-bind-model) :void
+(cffi:defcfun ("gtk_popover_bind_model" popover-bind-model) :void
  #+liber-documentation
  "@version{#2023-3-12}
   @argument[popover]{a @class{gtk:popover} widget}
@@ -549,7 +550,7 @@
 ;;; gtk_popover_popup ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_popover_popup" popover-popup) :void
+(cffi:defcfun ("gtk_popover_popup" popover-popup) :void
  #+liber-documentation
  "@version{#2023-3-13}
   @argument[popover]{a @class{gtk:popover} widget}
@@ -569,7 +570,7 @@
 ;;; gtk_popover_popdown ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_popover_popdown" popover-popdown) :void
+(cffi:defcfun ("gtk_popover_popdown" popover-popdown) :void
  #+liber-documentation
  "@version{#2023-3-13}
   @argument[popover]{a @class{gtk:popover} widget}
@@ -597,7 +598,7 @@
                         :void)
   widget)
 
-(defcfun ("gtk_popover_get_default_widget" popover-default-widget)
+(cffi:defcfun ("gtk_popover_get_default_widget" popover-default-widget)
     (g:object widget)
  #+liber-documentation
  "@version{#2023-3-13}

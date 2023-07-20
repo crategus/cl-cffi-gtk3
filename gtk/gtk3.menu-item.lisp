@@ -109,7 +109,7 @@
 ;;; struct GtkMenuItem
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkMenuItem" menu-item
+(gobject:define-g-object-class "GtkMenuItem" menu-item
   (:superclass bin
    :export t
    :interfaces ("AtkImplementorIface"
@@ -511,7 +511,7 @@ lambda (item arg)    :run-first
 ;;; gtk_menu_item_new_with_mnemonic ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_menu_item_new_with_mnemonic" menu-item-new-with-mnemonic)
+(cffi:defcfun ("gtk_menu_item_new_with_mnemonic" menu-item-new-with-mnemonic)
    (g:object menu-item)
  #+liber-documentation
  "@version{#2023-3-21}
@@ -534,7 +534,7 @@ lambda (item arg)    :run-first
 ;;; gtk_menu_item_select ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_menu_item_select" menu-item-select) :void
+(cffi:defcfun ("gtk_menu_item_select" menu-item-select) :void
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[item]{a @class{gtk:menu-item} widget}
@@ -549,7 +549,7 @@ lambda (item arg)    :run-first
 ;;; gtk_menu_item_deselect ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_menu_item_deselect" menu-item-deselect) :void
+(cffi:defcfun ("gtk_menu_item_deselect" menu-item-deselect) :void
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[item]{a @class{gtk:menu-item} widget}
@@ -566,7 +566,7 @@ lambda (item arg)    :run-first
 ;;; gtk_menu_item_activate ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_menu_item_activate" menu-item-activate) :void
+(cffi:defcfun ("gtk_menu_item_activate" menu-item-activate) :void
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[item]{a @class{gtk:menu-item} widget}
@@ -582,8 +582,8 @@ lambda (item arg)    :run-first
 ;;; gtk_menu_item_toggle_size_request ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_menu_item_toggle_size_request" menu-item-toggle-size-request)
-    :void
+(cffi:defcfun ("gtk_menu_item_toggle_size_request"
+               menu-item-toggle-size-request) :void
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[item]{a @class{gtk:menu-item} widget}
@@ -602,8 +602,8 @@ lambda (item arg)    :run-first
 ;;; gtk_menu_item_toggle_size_allocate ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_menu_item_toggle_size_allocate" menu-item-toggle-size-allocate)
-    :void
+(cffi:defcfun ("gtk_menu_item_toggle_size_allocate"
+               menu-item-toggle-size-allocate) :void
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[item]{a @class{gtk:menu-item} widget}
@@ -630,8 +630,8 @@ lambda (item arg)    :run-first
                         :void)
   reserve)
 
-(defcfun ("gtk_menu_item_get_reserve_indicator" menu-item-reserve-indicator)
-    :boolean
+(cffi:defcfun ("gtk_menu_item_get_reserve_indicator"
+               menu-item-reserve-indicator) :boolean
  #+liber-documentation
  "@version{#2023-3-21}
   @syntax[]{(gtk:menu-item-reserve-indicator item) => reserve}

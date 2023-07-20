@@ -181,7 +181,7 @@
 ;;; ----------------------------------------------------------------------------
 
 #+nil
-(define-g-enum "GtkRecentManagerError" recent-manager-error
+(gobject:define-g-enum "GtkRecentManagerError" recent-manager-error
   (:export t
    :type-initializer "gtk_recent_manager_error_get_type")
   (:not-found 0)
@@ -200,7 +200,7 @@
  "@version{#2021-12-27}
   @short{Error codes for @class{gtk:recent-manager} operations.}
   @begin{pre}
-(define-g-enum \"GtkRecentManagerError\" recent-manager-error
+(gobject:define-g-enum \"GtkRecentManagerError\" recent-manager-error
   (:export t
    :type-initializer \"gtk_recent_manager_error_get_type\")
   (:not-found 0)
@@ -227,7 +227,7 @@
 ;;; struct GtkRecentManager
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkRecentManager" recent-manager
+(gobject:define-g-object-class "GtkRecentManager" recent-manager
   (:superclass g:object
    :export t
    :interfaces nil
@@ -386,7 +386,7 @@ lambda (manager)    :run-first
 ;;; gtk_recent_manager_get_default () -> recent-manager-default
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_manager_get_default" recent-manager-default)
+(cffi:defcfun ("gtk_recent_manager_get_default" recent-manager-default)
     (g:object recent-manager)
  #+liber-documentation
  "@version{2023-1-29}
@@ -402,7 +402,7 @@ lambda (manager)    :run-first
 ;;; gtk_recent_manager_add_item ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_manager_add_item" recent-manager-add-item) :boolean
+(cffi:defcfun ("gtk_recent_manager_add_item" recent-manager-add-item) :boolean
  #+liber-documentation
  "@version{2023-1-29}
   @argument[manager]{a @class{gtk:recent-manager} object}
@@ -473,7 +473,8 @@ lambda (manager)    :run-first
 ;;; gtk_recent_manager_remove_item ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_manager_remove_item" %recent-manager-remove-item) :boolean
+(cffi:defcfun ("gtk_recent_manager_remove_item" %recent-manager-remove-item)
+    :boolean
   (manager (g:object recent-manager))
   (uri :string)
   (err :pointer))
@@ -493,7 +494,7 @@ lambda (manager)    :run-first
   @end{short}
   @see-class{gtk:recent-manager}
   @see-function{gtk:recent-manager-add-item}"
-  (with-g-error (err)
+  (glib:with-g-error (err)
     (%recent-manager-remove-item manager uri err)))
 
 (export 'recent-manager-remove-item)
@@ -502,7 +503,7 @@ lambda (manager)    :run-first
 ;;; gtk_recent_manager_lookup_item ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_manager_lookup_item" %recent-manager-lookup-item)
+(cffi:defcfun ("gtk_recent_manager_lookup_item" %recent-manager-lookup-item)
     (g:boxed recent-info :return)
   (manager (g:object recent-manager))
   (uri :string)
@@ -525,7 +526,7 @@ lambda (manager)    :run-first
   @end{short}
   @see-class{gtk:recent-manager}
   @see-class{gtk:recent-info}"
-  (with-g-error (err)
+  (glib:with-g-error (err)
     (%recent-manager-lookup-item manager uri err)))
 
 (export 'recent-manager-lookup-item)
@@ -534,7 +535,7 @@ lambda (manager)    :run-first
 ;;; gtk_recent_manager_has_item ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_manager_has_item" recent-manager-has-item) :boolean
+(cffi:defcfun ("gtk_recent_manager_has_item" recent-manager-has-item) :boolean
  #+liber-documentation
  "@version{2023-1-29}
   @argument[manager]{a @class{gtk:recent-manager} object}
@@ -555,7 +556,8 @@ lambda (manager)    :run-first
 ;;; gtk_recent_manager_move_item ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_manager_move_item" %recent-manager-move-item) :boolean
+(cffi:defcfun ("gtk_recent_manager_move_item" %recent-manager-move-item)
+    :boolean
   (manager (g:object recent-manager))
   (uri :string)
   (newuri :string)
@@ -577,7 +579,7 @@ lambda (manager)    :run-first
   Please note that this function will not affect the resource pointed by the
   URIs, but only the URI used in the recently used resources list.
   @see-class{gtk:recent-manager}"
-  (with-g-error (err)
+  (glib:with-g-error (err)
     (%recent-manager-move-item manager uri newuri err)))
 
 (export 'recent-manager-move-item)
@@ -586,7 +588,7 @@ lambda (manager)    :run-first
 ;;; gtk_recent_manager_get_items () -> recent-manager-items
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_manager_get_items" recent-manager-items)
+(cffi:defcfun ("gtk_recent_manager_get_items" recent-manager-items)
     (g:list-t (g:boxed recent-info :return))
  #+liber-documentation
  "@version{2023-1-29}
@@ -607,7 +609,8 @@ lambda (manager)    :run-first
 ;;; gtk_recent_manager_purge_items ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_manager_purge_items" %recent-manager-purge-items) :int
+(cffi:defcfun ("gtk_recent_manager_purge_items" %recent-manager-purge-items)
+    :int
   (manager (g:object recent-manager))
   (err :pointer))
 
@@ -623,7 +626,7 @@ lambda (manager)    :run-first
     Purges every item from the recently used resources list.
   @end{short}
   @see-class{gtk:recent-manager}"
-  (with-g-error (err)
+  (glib:with-g-error (err)
     (%recent-manager-purge-items manager err)))
 
 (export 'recent-manager-purge-items)
@@ -632,7 +635,7 @@ lambda (manager)    :run-first
 ;;; gtk_recent_info_ref ()                                 not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_info_ref" recent-info-ref)
+(cffi:defcfun ("gtk_recent_info_ref" recent-info-ref)
     (g:boxed recent-info)
  #+liber-documentation
  "@version{#2013-11-22}
@@ -649,7 +652,7 @@ lambda (manager)    :run-first
 ;;; gtk_recent_info_unref ()                               not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_info_unref" recent-info-unref) :void
+(cffi:defcfun ("gtk_recent_info_unref" recent-info-unref) :void
  #+liber-documentation
  "@version{#2013-11-22}
   @argument[info]{a @class{gtk:recent-info} instance}
@@ -666,7 +669,7 @@ lambda (manager)    :run-first
 ;;; gtk_recent_info_get_uri () -> recent-info-uri
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_info_get_uri" recent-info-uri) :string
+(cffi:defcfun ("gtk_recent_info_get_uri" recent-info-uri) :string
  #+liber-documentation
  "@version{2023-1-29}
   @argument[info]{a @class{gtk:recent-info} instance}
@@ -681,7 +684,8 @@ lambda (manager)    :run-first
 ;;; gtk_recent_info_get_display_name () -> recent-info-display-name
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_info_get_display_name" recent-info-display-name) :string
+(cffi:defcfun ("gtk_recent_info_get_display_name" recent-info-display-name)
+    :string
  #+liber-documentation
  "@version{2023-1-29}
   @argument[info]{a @class{gtk:recent-info} instance}
@@ -699,7 +703,8 @@ lambda (manager)    :run-first
 ;;; gtk_recent_info_get_description () -> recent-info-descripton
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_info_get_description" recent-info-description) :string
+(cffi:defcfun ("gtk_recent_info_get_description" recent-info-description)
+    :string
  #+liber-documentation
  "@version{2023-1-29}
   @argument[info]{a @class{gtk:recent-info} instance}
@@ -714,7 +719,7 @@ lambda (manager)    :run-first
 ;;; gtk_recent_info_get_mime_type () -> recent-info-mime-type
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_info_get_mime_type" recent-info-mime-type) :string
+(cffi:defcfun ("gtk_recent_info_get_mime_type" recent-info-mime-type) :string
  #+liber-documentation
  "@version{2023-1-29}
   @argument[info]{a @class{gtk:recent-info} instance}
@@ -729,7 +734,7 @@ lambda (manager)    :run-first
 ;;; gtk_recent_info_get_added ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_info_get_added" recent-info-added) :long
+(cffi:defcfun ("gtk_recent_info_get_added" recent-info-added) :long
  #+liber-documentation
  "@version{2023-1-29}
   @argument[info]{a @class{gtk:recent-info} instance}
@@ -750,7 +755,7 @@ lambda (manager)    :run-first
 ;;; gtk_recent_info_get_modified () -> recent-info-modified
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_info_get_modified" recent-info-modified) :long
+(cffi:defcfun ("gtk_recent_info_get_modified" recent-info-modified) :long
  #+liber-documentation
  "@version{2023-1-29}
   @argument[info]{a @class{gtk:recent-info} instance}
@@ -771,7 +776,7 @@ lambda (manager)    :run-first
 ;;; gtk_recent_info_get_visited () -> recent-info-visited
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_info_get_visited" recent-info-visited) :long
+(cffi:defcfun ("gtk_recent_info_get_visited" recent-info-visited) :long
  #+liber-documentation
  "@version{2023-1-29}
   @argument[info]{a @class{gtk:recent-info} instance}
@@ -792,7 +797,8 @@ lambda (manager)    :run-first
 ;;; gtk_recent_info_get_private_hint () -> recent-info-private-hint
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_info_get_private_hint" recent-info-private-hint) :boolean
+(cffi:defcfun ("gtk_recent_info_get_private_hint" recent-info-private-hint)
+    :boolean
  #+liber-documentation
  "@version{2023-1-29}
   @argument[info]{a @class{gtk:recent-info} instance}
@@ -811,8 +817,8 @@ lambda (manager)    :run-first
 ;;; gtk_recent_info_get_application_info () -> recent-info-application-info
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_info_get_application_info"
-          %recent-info-application-info) :boolean
+(cffi:defcfun ("gtk_recent_info_get_application_info"
+               %recent-info-application-info) :boolean
   (info (g:boxed recent-info))
   (name :string)
   (exec (:pointer (:string :free-from-foreign nil)))
@@ -839,7 +845,7 @@ lambda (manager)    :run-first
   If the command line contains any escape characters defined inside the
   storage specification, they will be expanded.
   @see-class{gtk:recent-info}"
-  (with-foreign-objects ((exec :string) (count :uint) (time :long))
+  (cffi:with-foreign-objects ((exec :string) (count :uint) (time :long))
     (%recent-info-application-info info name exec count time)
     (values (cffi:mem-ref exec :string)
             (cffi:mem-ref count :uint)
@@ -851,7 +857,8 @@ lambda (manager)    :run-first
 ;;; gtk_recent_info_get_applications () -> recent-info-applications
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_info_get_applications" %recent-info-applications) g:strv-t
+(cffi:defcfun ("gtk_recent_info_get_applications" %recent-info-applications)
+    g:strv-t
   (info (g:boxed recent-info))
   (length (:pointer :size)))
 
@@ -864,7 +871,7 @@ lambda (manager)    :run-first
     Retrieves the list of applications that have registered this resource.
   @end{short}
   @see-class{gtk:recent-info}"
-  (with-foreign-object (length :size)
+  (cffi:with-foreign-object (length :size)
     (%recent-info-applications info length)))
 
 (export 'recent-info-applications)
@@ -873,7 +880,7 @@ lambda (manager)    :run-first
 ;;; gtk_recent_info_last_application ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_info_last_application" recent-info-last-application)
+(cffi:defcfun ("gtk_recent_info_last_application" recent-info-last-application)
     (:string :free-from-foreign t)
  #+liber-documentation
  "@version{2023-1-29}
@@ -892,7 +899,7 @@ lambda (manager)    :run-first
 ;;; gtk_recent_info_has_application ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_info_has_application" recent-info-has-application)
+(cffi:defcfun ("gtk_recent_info_has_application" recent-info-has-application)
     :boolean
  #+liber-documentation
  "@version{2023-1-29}
@@ -913,7 +920,7 @@ lambda (manager)    :run-first
 ;;; gtk_recent_info_create_app_info ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_info_create_app_info" %recent-info-create-app-info)
+(cffi:defcfun ("gtk_recent_info_create_app_info" %recent-info-create-app-info)
     (g:object g:app-info)
   (info (g:boxed recent-info))
   (name :string)
@@ -935,7 +942,7 @@ lambda (manager)    :run-first
   @end{short}
   @see-class{gtk:recent-info}
   @see-class{g:app-info}"
-  (with-g-error (err)
+  (glib:with-g-error (err)
     (%recent-info-create-app-info info name err)))
 
 (export 'recent-info-create-app-info)
@@ -944,7 +951,7 @@ lambda (manager)    :run-first
 ;;; gtk_recent_info_get_groups () -> recent-info-groups
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_info_get_groups" %recent-info-groups) g:strv-t
+(cffi:defcfun ("gtk_recent_info_get_groups" %recent-info-groups) g:strv-t
   (info (g:boxed recent-info))
   (length (:pointer :size)))
 
@@ -957,7 +964,7 @@ lambda (manager)    :run-first
     Returns all groups registered for the recently used item info.
   @end{short}
   @see-class{gtk:recent-info}"
-  (with-foreign-object (length :size)
+  (cffi:with-foreign-object (length :size)
     (%recent-info-groups info length)))
 
 (export 'recent-info-groups)
@@ -966,7 +973,7 @@ lambda (manager)    :run-first
 ;;; gtk_recent_info_has_group ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_info_has_group" recent-info-has-group) :boolean
+(cffi:defcfun ("gtk_recent_info_has_group" recent-info-has-group) :boolean
  #+liber-documentation
  "@version{#2023-1-29}
   @argument[info]{a @class{gtk:recent-info} instance}
@@ -986,7 +993,7 @@ lambda (manager)    :run-first
 ;;; gtk_recent_info_get_icon () -> recent-info-icon
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_info_get_icon" recent-info-icon)
+(cffi:defcfun ("gtk_recent_info_get_icon" recent-info-icon)
     (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
  "@version{#2023-3-12}
@@ -1009,7 +1016,7 @@ lambda (manager)    :run-first
 ;;; gtk_recent_info_get_gicon () -> recent-info-gicon
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_info_get_gicon" recent-info-gicon) (g:object g:icon)
+(cffi:defcfun ("gtk_recent_info_get_gicon" recent-info-gicon) (g:object g:icon)
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[info]{a @class{gtk:recent-info} instance}
@@ -1027,7 +1034,7 @@ lambda (manager)    :run-first
 ;;; gtk_recent_info_get_short_name () -> recent-info-short-name
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_info_get_short_name" recent-info-short-name)
+(cffi:defcfun ("gtk_recent_info_get_short_name" recent-info-short-name)
     (:string :free-from-foreign t)
  #+liber-documentation
  "@version{#2023-1-29}
@@ -1048,7 +1055,7 @@ lambda (manager)    :run-first
 ;;; gtk_recent_info_get_uri_display () -> recent-info-uri-display
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_info_get_uri_display" recent-info-uri-display)
+(cffi:defcfun ("gtk_recent_info_get_uri_display" recent-info-uri-display)
     (:string :free-from-foreign t)
  #+liber-documentation
  "@version{#2023-1-29}
@@ -1072,7 +1079,7 @@ lambda (manager)    :run-first
 ;;; gtk_recent_info_get_age () -> recent-info-age
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_info_get_age" recent-info-age) :int
+(cffi:defcfun ("gtk_recent_info_get_age" recent-info-age) :int
  #+liber-documentation
  "@version{#2023-1-29}
   @argument[info]{a @class{gtk:recent-info} instance}
@@ -1093,7 +1100,7 @@ lambda (manager)    :run-first
 ;;; gtk_recent_info_is_local ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_info_is_local" recent-info-is-local) :boolean
+(cffi:defcfun ("gtk_recent_info_is_local" recent-info-is-local) :boolean
  #+liber-documentation
  "@version{#2023-1-29}
   @argument[info]{a @class{gtk:recent-info} instance}
@@ -1111,7 +1118,7 @@ lambda (manager)    :run-first
 ;;; gtk_recent_info_exists ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_info_exists" recent-info-exists) :boolean
+(cffi:defcfun ("gtk_recent_info_exists" recent-info-exists) :boolean
  #+liber-documentation
  "@version{#2023-1-29}
   @argument[info]{a @class{gtk:recent-info} instance}
@@ -1129,7 +1136,7 @@ lambda (manager)    :run-first
 ;;; gtk_recent_info_match ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_recent_info_match" recent-info-match) :boolean
+(cffi:defcfun ("gtk_recent_info_match" recent-info-match) :boolean
  #+liber-documentation
  "@version{#2023-1-29}
   @argument[info1]{a @class{gtk:recent-info}}

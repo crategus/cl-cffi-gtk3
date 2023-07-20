@@ -70,7 +70,7 @@
 ;;; struct GtkPopoverMenu
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkPopoverMenu" popover-menu
+(gobject:define-g-object-class "GtkPopoverMenu" popover-menu
   (:superclass popover
     :export t
     :interfaces ("AtkImplementorIface"
@@ -280,7 +280,7 @@
 ;;; gtk_popover_menu_open_submenu ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_popover_menu_open_submenu" popover-menu-open-submenu) :void
+(cffi:defcfun ("gtk_popover_menu_open_submenu" popover-menu-open-submenu) :void
  "@version{#2023-3-12}
   @argument[popover]{a @class{gtk:popover-menu} widget}
   @argument[name]{a string with the name of the menu to switch to}

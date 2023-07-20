@@ -66,7 +66,7 @@
 ;;; struct GtkShortcutsWindow
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkShortcutsWindow" shortcuts-window
+(gobject:define-g-object-class "GtkShortcutsWindow" shortcuts-window
   (:superclass window
    :export t
    :interfaces ("AtkImplementorIface"

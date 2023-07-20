@@ -78,7 +78,7 @@
 ;;; struct GtkImageMenuItem
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkImageMenuItem" image-menu-item
+(gobject:define-g-object-class "GtkImageMenuItem" image-menu-item
   (:superclass menu-item
     :export t
     :interfaces ("AtkImplementorIface"
@@ -349,8 +349,8 @@
 ;;; gtk_image_menu_item_new_from_stock ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_image_menu_item_new_from_stock"
-           image-menu-item-new-from-stock) (g:object image-menu-item)
+(cffi:defcfun ("gtk_image_menu_item_new_from_stock"
+               image-menu-item-new-from-stock) (g:object image-menu-item)
  "@version{#2021-7-21}
   @argument[stock-id]{a string with the name of the stock item}
   @argument[group]{a @class{gtk:accel-group} object to add the menu items
@@ -383,8 +383,8 @@
 ;;; gtk_image_menu_item_new_with_label ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_image_menu_item_new_with_label"
-           image-menu-item-new-with-label) (g:object image-menu-item)
+(cffi:defcfun ("gtk_image_menu_item_new_with_label"
+               image-menu-item-new-with-label) (g:object image-menu-item)
  "@version{#2023-3-12}
   @argument[label]{a string with the text of the menu item}
   @return{A new @class{gtk:image-menu-item} widget.}
@@ -406,8 +406,8 @@
 ;;; gtk_image_menu_item_new_with_mnemonic ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_image_menu_item_new_with_mnemonic"
-           image-menu-item-new-with-mnemonic) (g:object image-menu-item)
+(cffi:defcfun ("gtk_image_menu_item_new_with_mnemonic"
+               image-menu-item-new-with-mnemonic) (g:object image-menu-item)
  "@version{#2023-3-12}
   @argument[label]{a string with the text of the menu item, with an underscore
     in front of the mnemonic character}

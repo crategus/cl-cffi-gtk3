@@ -92,7 +92,7 @@
 ;; TODO: Because GTK is initialized, when loading the Lisp library, this
 ;; function should have no effect. We do not export the implementation.
 
-(defcfun ("gtk_disable_setlocale" %disable-setlocale) :void
+(cffi:defcfun ("gtk_disable_setlocale" %disable-setlocale) :void
  #+liber-documentation
  "@version{#2012-12-23}
   @begin{short}
@@ -116,7 +116,8 @@
 ;;; gtk_get_default_language () -> default-language
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_get_default_language" default-language) (g:boxed pango:language)
+(cffi:defcfun ("gtk_get_default_language" default-language)
+    (g:boxed pango:language)
  #+liber-documentation
  "@version{2023-3-5}
   @return{The default language as a @class{pango:language} instance.}
@@ -146,7 +147,7 @@
 ;;; gtk_get_locale_direction () -> locale-direction
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_get_locale_direction" locale-direction) text-direction
+(cffi:defcfun ("gtk_get_locale_direction" locale-direction) text-direction
  #+liber-documentation
  "@version{2023-3-5}
   @return{The @symbol{gtk:text-direction} value with the current locale.}
@@ -264,7 +265,7 @@
                                        '("/usr/bin/sbcl")))
   #+(and nil sbcl (not win32))
   (sb-unix::enable-interrupt sb-unix:sigpipe #'sb-unix::sigpipe-handler)
-  #+nil(with-foreign-objects ((argc :int)
+  #+nil(cffi:with-foreign-objects ((argc :int)
                          (argv '(:pointer :string) 1))
     (setf (cffi:mem-ref argc :int) 0
           (cffi:mem-ref argv '(:pointer :string))
@@ -284,7 +285,7 @@
 ;;; Rework the handling of command line parameters in this function and
 ;;; the function %gtk-init.
 
-(defcfun ("gtk_init_check" %gtk-init-check) :boolean
+(cffi:defcfun ("gtk_init_check" %gtk-init-check) :boolean
  #+liber-documentation
  "@version{#2012-12-23}
   @argument[argc]{Address of the @code{argc} parameter of your @code{main()}
@@ -360,7 +361,7 @@
 ;;; gtk_get_option_group () -> option-group
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_get_option_group" option-group)
+(cffi:defcfun ("gtk_get_option_group" option-group)
     (:pointer (:struct g:option-group))
  #+liber-documentation
  "@version{#2023-3-5}
@@ -389,7 +390,7 @@
 ;;; gtk_events_pending ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_events_pending" events-pending) :boolean
+(cffi:defcfun ("gtk_events_pending" events-pending) :boolean
  #+liber-documentation
  "@version{#2023-3-5}
   @return{@em{True} if any events are pending, @em{false} otherwise.}
@@ -416,7 +417,7 @@
 ;;; gtk_main ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_main" %main) :void)
+(cffi:defcfun ("gtk_main" %main) :void)
 
 (defun main ()
  #+liber-documentation
@@ -455,7 +456,7 @@
   @end{dictionary}
   @see-function{within-main-loop}
   @see-function{gtk:main-quit}"
-  (with-gdk-threads-lock
+  (gdk:with-gdk-threads-lock
     (%main)))
 
 (export 'main)
@@ -464,7 +465,7 @@
 ;;; gtk_main_level ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_main_level" main-level) :uint
+(cffi:defcfun ("gtk_main_level" main-level) :uint
  #+liber-documentation
  "@version{#2023-3-5}
   @return{An unsigned integer with the nesting level of the current invocation
@@ -480,7 +481,7 @@
 ;;; gtk_main_quit ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_main_quit" main-quit) :void
+(cffi:defcfun ("gtk_main_quit" main-quit) :void
  #+liber-documentation
  "@version{#2023-3-5}
   @begin{short}
@@ -504,7 +505,7 @@
 ;;; gtk_main_iteration ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_main_iteration" main-iteration) :boolean
+(cffi:defcfun ("gtk_main_iteration" main-iteration) :boolean
  #+liber-documentation
  "@version{#2023-3-5}
   @return{@em{True} if the @fun{gtk:main-quit} function has been called for the
@@ -524,7 +525,7 @@
 ;;; gtk_main_iteration_do ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_main_iteration_do" main-iteration-do) :boolean
+(cffi:defcfun ("gtk_main_iteration_do" main-iteration-do) :boolean
  #+liber-documentation
  "@version{#2023-3-5}
   @argument[blocking]{@em{true} if you want GTK to block if no events are
@@ -546,7 +547,7 @@
 ;;; gtk_main_do_event ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_main_do_event" main-do-event) :void
+(cffi:defcfun ("gtk_main_do_event" main-do-event) :void
  #+liber-documentation
  "@version{#2023-3-5}
   @argument[event]{a @class{gdk:event} instance to process normally passed by
@@ -705,7 +706,7 @@
 ;;; gtk_grab_add ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_grab_add" grab-add) :void
+(cffi:defcfun ("gtk_grab_add" grab-add) :void
  #+liber-documentation
  "@version{#2023-3-5}
   @argument[widget]{a @class{gtk:widget} widget that grabs keyboard and
@@ -727,7 +728,7 @@
 ;;; gtk_grab_get_current () -> grab-current
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_grab_get_current" grab-current) (g:object widget)
+(cffi:defcfun ("gtk_grab_get_current" grab-current) (g:object widget)
  #+liber-documentation
  "@version{#2023-3-5}
   @return{The @class{gtk:widget} widget which currently has the grab or
@@ -746,7 +747,7 @@
 ;;; gtk_grab_remove ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_grab_remove" grab-remove) :void
+(cffi:defcfun ("gtk_grab_remove" grab-remove) :void
  #+liber-documentation
  "@version{#2023-3-5}
   @argument[widget]{a @class{gtk:widget} widget which gives up the grab}
@@ -764,7 +765,7 @@
 ;;; gtk_device_grab_add ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_device_grab_add" device-grab-add) :void
+(cffi:defcfun ("gtk_device_grab_add" device-grab-add) :void
  #+liber-documentation
  "@version{#2023-3-5}
   @argument[widget]{a @class{gtk:widget} widget}
@@ -792,7 +793,7 @@
 ;;; gtk_device_grab_remove ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_device_grab_remove" device-grab-remove) :void
+(cffi:defcfun ("gtk_device_grab_remove" device-grab-remove) :void
  #+liber-documentation
  "@version{#2023-3-5}
   @argument[widget]{a @class{gtk:widget} widget}
@@ -879,7 +880,8 @@
 ;;; gtk_get_current_event () -> current-event
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_get_current_event" current-event) (g:boxed gdk:event :return)
+(cffi:defcfun ("gtk_get_current_event" current-event)
+    (g:boxed gdk:event :return)
  #+liber-documentation
  "@version{#2023-3-5}
   @return{A copy of the current @class{gdk:event} instance, or @code{nil} if
@@ -925,7 +927,7 @@
 ;;; gtk_get_current_event_time () -> current-event-time
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_get_current_event_time" current-event-time) :uint32
+(cffi:defcfun ("gtk_get_current_event_time" current-event-time) :uint32
  #+liber-documentation
  "@version{#2023-3-5}
   @return{An unsigned integer with the timestamp from the current event, or the
@@ -943,7 +945,7 @@
 ;;; gtk_get_current_event_state () -> current-event-state
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_get_current_event_state" %current-event-state) :boolean
+(cffi:defcfun ("gtk_get_current_event_state" %current-event-state) :boolean
   (state (:pointer gdk:modifier-type)))
 
 (defun current-event-state ()
@@ -959,7 +961,7 @@
   @end{short}
   @see-symbol{gdk:modifier-type}
   @see-function{gtk:current-event}"
-  (with-foreign-object (state 'gdk:modifier-type)
+  (cffi:with-foreign-object (state 'gdk:modifier-type)
     (when (%current-event-state state)
       (cffi:mem-ref state 'gdk:modifier-type))))
 
@@ -969,7 +971,7 @@
 ;;; gtk_get_current_event_device () -> current-event-device
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_get_current_event_device" current-event-device)
+(cffi:defcfun ("gtk_get_current_event_device" current-event-device)
     (g:object gdk:device)
  #+liber-documentation
  "@version{#2023-3-5}
@@ -987,7 +989,7 @@
 ;;; gtk_get_event_widget () -> event-widget
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_get_event_widget" event-widget) (g:object widget)
+(cffi:defcfun ("gtk_get_event_widget" event-widget) (g:object widget)
  #+liber-documentation
  "@version{#2023-3-5}
   @argument[event]{a @class{gdk:event} instance}
@@ -1009,7 +1011,7 @@
 ;;; gtk_propagate_event ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_propagate_event" propagate-event) :void
+(cffi:defcfun ("gtk_propagate_event" propagate-event) :void
  #+liber-documentation
  "@version{#2023-3-5}
   @argument[widget]{a @class{gtk:widget} widget}
