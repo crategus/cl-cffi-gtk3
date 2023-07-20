@@ -62,7 +62,7 @@
 ;;; struct GtkFileChooserDialog
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkFileChooserDialog" file-chooser-dialog
+(gobject:define-g-object-class "GtkFileChooserDialog" file-chooser-dialog
   (:superclass dialog
    :export t
    :interfaces ("AtkImplementorIface"

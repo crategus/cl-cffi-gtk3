@@ -63,7 +63,7 @@
 ;;; struct GtkGestureLongPress
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkGestureLongPress" gesture-long-press
+(gobject:define-g-object-class "GtkGestureLongPress" gesture-long-press
   (:superclass gesture-single
    :export t
    :interfaces nil

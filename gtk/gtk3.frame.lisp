@@ -83,7 +83,7 @@
   (eval-when (:compile-toplevel :load-toplevel :execute)
     (setf (glib:symbol-for-gtype "GtkFrame") 'frame)))
 
-(define-g-object-class "GtkFrame" frame
+(gobject:define-g-object-class "GtkFrame" frame
   (:superclass bin
    :export t
    :interfaces ("AtkImplementorIface"

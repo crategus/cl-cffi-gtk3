@@ -64,7 +64,7 @@
 ;;; struct GtkFontChooserWidget
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkFontChooserWidget" font-chooser-widget
+(gobject:define-g-object-class "GtkFontChooserWidget" font-chooser-widget
   (:superclass box
    :export t
    :interfaces ("AtkImplementorIface"

@@ -54,7 +54,7 @@
 
 (in-package :gtk)
 
-(define-g-object-class "GtkGestureZoom" gesture-zoom
+(gobject:define-g-object-class "GtkGestureZoom" gesture-zoom
   (:superclass gesture
    :export t
    :interfaces nil
@@ -113,7 +113,8 @@ lambda (gesture scale)    :run-first
 ;;; gtk_gesture_zoom_get_scale_delta () -> gesture-zoom-scale-delta
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_gesture_zoom_get_scale_delta" gesture-zoom-scale-delta) :double
+(cffi:defcfun ("gtk_gesture_zoom_get_scale_delta" gesture-zoom-scale-delta)
+    :double
  #+liber-documentation
  "@version{#2023-3-6}
   @argument[widget]{a @class{gtk:gesture-zoom} object}

@@ -62,7 +62,7 @@
 ;;; struct GtkGestureMultiPress
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkGestureMultiPress" gesture-multi-press
+(gobject:define-g-object-class "GtkGestureMultiPress" gesture-multi-press
   (:superclass gesture-single
    :export t
    :interfaces nil
@@ -166,7 +166,8 @@ lambda (gesture)    :run-last
                         :void)
   rect)
 
-(defcfun ("gtk_gesture_multi_press_get_area" %gesture-multi-press-area) :boolean
+(cffi:defcfun ("gtk_gesture_multi_press_get_area" %gesture-multi-press-area)
+    :boolean
   (gesture (g:object gesture-multi-press))
   (rect (g:boxed gdk:rectangle)))
 

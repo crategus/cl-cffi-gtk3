@@ -88,7 +88,7 @@
 ;;; GtkHeaderBar
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkHeaderBar" header-bar
+(gobject:define-g-object-class "GtkHeaderBar" header-bar
   (:superclass container
    :export t
    :interfaces ("AtkImplementorIface"
@@ -506,7 +506,7 @@
 ;;; gtk_header_bar_pack_start ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_header_bar_pack_start" header-bar-pack-start) :void
+(cffi:defcfun ("gtk_header_bar_pack_start" header-bar-pack-start) :void
  #+liber-documentation
  "@version{#2023-3-20}
   @argument[header]{a @class{gtk:header-bar} widget}
@@ -528,7 +528,7 @@
 ;;; gtk_header_bar_pack_end ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_header_bar_pack_end" header-bar-pack-end) :void
+(cffi:defcfun ("gtk_header_bar_pack_end" header-bar-pack-end) :void
  #+liber-documentation
  "@version{#2023-3-20}
   @argument[header]{a @class{gtk:header-bar} widget}

@@ -216,7 +216,7 @@
 ;;; enum GtkEntryIconPosition
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkEntryIconPosition" entry-icon-position
+(gobject:define-g-enum "GtkEntryIconPosition" entry-icon-position
   (:export t
    :type-initializer "gtk_entry_icon_position_get_type")
   (:primary 0)
@@ -231,7 +231,7 @@
     Specifies the side of the entry at which an icon is placed.
   @end{short}
   @begin{pre}
-(define-g-enum \"GtkEntryIconPosition\" entry-icon-position
+(gobject:define-g-enum \"GtkEntryIconPosition\" entry-icon-position
   (:export t
    :type-initializer \"gtk_entry_icon_position_get_type\")
   (:primary 0)
@@ -249,7 +249,7 @@
 ;;; enum GtkInputPurpose
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkInputPurpose" input-purpose
+(gobject:define-g-enum "GtkInputPurpose" input-purpose
   (:export t
    :type-initializer "gtk_input_purpose_get_type")
   (:free-form 0)
@@ -287,7 +287,7 @@
   This enumeration may be extended in the future. Input methods should
   interpret unknown values as 'free form'.
   @begin{pre}
-(define-g-enum \"GtkInputPurpose\" input-purpose
+(gobject:define-g-enum \"GtkInputPurpose\" input-purpose
   (:export t
    :type-initializer \"gtk_input_purpose_get_type\")
   (:free-form 0)
@@ -320,7 +320,7 @@
 ;;; enum GtkInputHints
 ;;; ----------------------------------------------------------------------------
 
-(define-g-flags "GtkInputHints" input-hints
+(gobject:define-g-flags "GtkInputHints" input-hints
   (:export t
    :type-initializer "gtk_input_hints_get_type")
   (:none 0)
@@ -354,7 +354,7 @@
   This flags may be extended in the future. Input methods should ignore
   unknown values.
   @begin{pre}
-(define-g-flags \"GtkInputHints\" input-hints
+(gobject:define-g-flags \"GtkInputHints\" input-hints
   (:export t
    :type-initializer \"gtk_input_hints_get_type\")
   (:none 0)
@@ -394,7 +394,7 @@
 ;;; struct GtkEntry
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkEntry" entry
+(gobject:define-g-object-class "GtkEntry" entry
   (:superclass widget
    :export t
    :interfaces ("AtkImplementorIface"
@@ -2463,7 +2463,7 @@ lambda (entry)    :action
 ;;; gtk_entry_get_text_area () -> entry-text-area
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_entry_get_text_area" %entry-get-text-area) :void
+(cffi:defcfun ("gtk_entry_get_text_area" %entry-get-text-area) :void
   (entry (g:object entry))
   (area (g:boxed gdk:rectangle)))
 
@@ -2493,7 +2493,8 @@ lambda (entry)    :action
 ;;; gtk_entry_unset_invisible_char ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_entry_unset_invisible_char" entry-unset-invisible-char) :void
+(cffi:defcfun ("gtk_entry_unset_invisible_char" entry-unset-invisible-char)
+    :void
  #+liber-documentation
  "@version{#2023-3-4}
   @argument[entry]{a @class{gtk:entry} widget}
@@ -2542,7 +2543,7 @@ lambda (entry)    :action
 ;;; gtk_entry_get_layout () -> entry-layout
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_entry_get_layout" entry-layout) (g:object pango-layout)
+(cffi:defcfun ("gtk_entry_get_layout" entry-layout) (g:object pango-layout)
  #+liber-documentation
  "@version{#2023-3-4}
   @argument[entry]{a @class{gtk:entry} widget}
@@ -2572,7 +2573,7 @@ lambda (entry)    :action
 ;;; gtk_entry_get_layout_offsets () -> entry-layout-offsets
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_entry_get_layout_offsets" %entry-get-layout-offsets) :void
+(cffi:defcfun ("gtk_entry_get_layout_offsets" %entry-get-layout-offsets) :void
   (entry (g:object entry))
   (x (:pointer :int))
   (y (:pointer :int)))
@@ -2611,7 +2612,7 @@ lambda (entry)    :action
   @see-function{gtk:entry-text-index-to-layout-index}
   @see-function{pango:pixels}
   @see-variable{+pango-scale+}"
-  (with-foreign-objects ((x :int) (y :int))
+  (cffi:with-foreign-objects ((x :int) (y :int))
     (%entry-get-layout-offsets entry x y)
     (values (cffi:mem-ref x :int)
             (cffi:mem-ref y :int))))
@@ -2622,8 +2623,8 @@ lambda (entry)    :action
 ;;; gtk_entry_layout_index_to_text_index ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_entry_layout_index_to_text_index"
-          entry-layout-index-to-text-index) :int
+(cffi:defcfun ("gtk_entry_layout_index_to_text_index"
+               entry-layout-index-to-text-index) :int
  #+liber-documentation
  "@version{#2023-3-4}
   @argument[entry]{a @class{gtk:entry} widget}
@@ -2649,8 +2650,8 @@ lambda (entry)    :action
 ;;; gtk_entry_text_index_to_layout_index ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_entry_text_index_to_layout_index"
-          entry-text-index-to-layout-index) :int
+(cffi:defcfun ("gtk_entry_text_index_to_layout_index"
+               entry-text-index-to-layout-index) :int
  #+liber-documentation
  "@version{#2023-3-4}
   @argument[entry]{a @class{gtk:entry} widget}
@@ -2681,7 +2682,7 @@ lambda (entry)    :action
                         :void)
   adjustment)
 
-(defcfun ("gtk_entry_get_cursor_hadjustment" entry-cursor-hadjustment)
+(cffi:defcfun ("gtk_entry_get_cursor_hadjustment" entry-cursor-hadjustment)
     (g:object adjustment)
  #+liber-documentation
  "@version{#2023-3-4}
@@ -2710,7 +2711,7 @@ lambda (entry)    :action
 ;;; gtk_entry_progress_pulse ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_entry_progress_pulse" entry-progress-pulse) :void
+(cffi:defcfun ("gtk_entry_progress_pulse" entry-progress-pulse) :void
  #+liber-documentation
  "@version{#2023-3-4}
   @argument[entry]{a @class{gtk:entry} widget}
@@ -2732,8 +2733,8 @@ lambda (entry)    :action
 ;;; gtk_entry_im_context_filter_keypress ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_entry_im_context_filter_keypress"
-           entry-im-context-filter-keypress) :boolean
+(cffi:defcfun ("gtk_entry_im_context_filter_keypress"
+               entry-im-context-filter-keypress) :boolean
  #+liber-documentation
  "@version{#2023-3-4}
   @argument[entry]{a @class{gtk:entry} widget}
@@ -2765,7 +2766,7 @@ lambda (entry)    :action
 ;;; gtk_entry_reset_im_context ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_entry_reset_im_context" entry-reset-im-context) :void
+(cffi:defcfun ("gtk_entry_reset_im_context" entry-reset-im-context) :void
  #+liber-documentation
  "@version{#2023-3-4}
   @argument[entry]{a @class{gtk:entry} widget}
@@ -2783,7 +2784,8 @@ lambda (entry)    :action
 ;;; gtk_entry_set_icon_from_pixbuf ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_entry_set_icon_from_pixbuf" entry-set-icon-from-pixbuf) :void
+(cffi:defcfun ("gtk_entry_set_icon_from_pixbuf" entry-set-icon-from-pixbuf)
+    :void
  #+liber-documentation
  "@version{#2023-3-12}
   @argument[entry]{a @class{gtk:entry} widget}
@@ -2841,8 +2843,8 @@ lambda (entry)    :action
 ;;; gtk_entry_set_icon_from_icon_name ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_entry_set_icon_from_icon_name" entry-set-icon-from-icon-name)
-    :void
+(cffi:defcfun ("gtk_entry_set_icon_from_icon_name"
+               entry-set-icon-from-icon-name) :void
  #+liber-documentation
  "@version{#2023-3-4}
   @argument[entry]{a @class{gtk:entry} widget}
@@ -2867,7 +2869,7 @@ lambda (entry)    :action
 ;;; gtk_entry_set_icon_from_gicon ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_entry_set_icon_from_gicon" entry-set-icon-from-gicon) :void
+(cffi:defcfun ("gtk_entry_set_icon_from_gicon" entry-set-icon-from-gicon) :void
  #+liber-documentation
  "@version{#2023-3-4}
   @argument[entry]{a @class{gtk:entry} widget}
@@ -3121,7 +3123,7 @@ lambda (entry)    :action
 ;;; gtk_entry_get_icon_at_pos () -> entry-icon-at-pos
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_entry_get_icon_at_pos" entry-icon-at-pos) :int
+(cffi:defcfun ("gtk_entry_get_icon_at_pos" entry-icon-at-pos) :int
  #+liber-documentation
  "@version{#2023-3-4}
   @argument[entry]{a @class{gtk:entry} widget}
@@ -3237,7 +3239,8 @@ lambda (entry)    :action
 ;;; gtk_entry_set_icon_drag_source ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_entry_set_icon_drag_source" entry-set-icon-drag-source) :void
+(cffi:defcfun ("gtk_entry_set_icon_drag_source" entry-set-icon-drag-source)
+    :void
  #+liber-documentation
  "@version{#2023-3-4}
   @argument[entry]{a @class{gtk:entry} widget}
@@ -3277,8 +3280,8 @@ lambda (entry)    :action
 ;;; -> entry-current-icon-drag-source
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_entry_get_current_icon_drag_source"
-           entry-current-icon-drag-source) :int
+(cffi:defcfun ("gtk_entry_get_current_icon_drag_source"
+               entry-current-icon-drag-source) :int
  #+liber-documentation
  "@version{#2023-3-4}
   @argument[entry]{a @class{gtk:entry} widget}
@@ -3300,7 +3303,7 @@ lambda (entry)    :action
 ;;; gtk_entry_get_icon_area () -> entry-icon-area
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_entry_get_icon_area" %entry-get-icon-area) :void
+(cffi:defcfun ("gtk_entry_get_icon_area" %entry-get-icon-area) :void
   (entry (g:object entry))
   (pos entry-icon-position)
   (area (g:boxed gdk:rectangle)))
@@ -3333,8 +3336,8 @@ lambda (entry)    :action
 ;;; gtk_entry_grab_focus_without_selecting ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_entry_grab_focus_without_selecting"
-           entry-grab-focus-without-selecting) :void
+(cffi:defcfun ("gtk_entry_grab_focus_without_selecting"
+               entry-grab-focus-without-selecting) :void
  #+liber-documentation
  "@version{#2023-3-4}
   @argument[entry]{a @class{gtk:entry} widget}

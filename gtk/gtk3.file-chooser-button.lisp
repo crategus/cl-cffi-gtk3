@@ -78,7 +78,7 @@
 ;;; struct GtkFileChooserButton
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkFileChooserButton" file-chooser-button
+(gobject:define-g-object-class "GtkFileChooserButton" file-chooser-button
   (:superclass box
    :export t
    :interfaces ("AtkImplementorIface"

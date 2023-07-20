@@ -59,7 +59,7 @@
 ;;; struct GtkGestureSwipe
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkGestureSwipe" gesture-swipe
+(gobject:define-g-object-class "GtkGestureSwipe" gesture-swipe
   (:superclass gesture-single
    :export t
    :interfaces nil
@@ -125,7 +125,8 @@ lambda (gesture velocity-x velocity-y)    :run-last
 ;;; gtk_gesture_swipe_get_velocity () ->gesture-swipe-velocity
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_gesture_swipe_get_velocity" %gesture-swipe-velocity) :boolean
+(cffi:defcfun ("gtk_gesture_swipe_get_velocity" %gesture-swipe-velocity)
+    :boolean
   (gesture (g:object gesture-swipe))
   (velocity-x (:pointer :double))
   (velocity-y (:pointer :double)))
@@ -145,7 +146,7 @@ lambda (gesture velocity-x velocity-y)    :run-last
     as per the last event(s) processed.
   @end{short}
   @see-class{gtk:gesture-swipe}"
-  (with-foreign-objects ((velocity-x :double) (velocity-y :double))
+  (cffi:with-foreign-objects ((velocity-x :double) (velocity-y :double))
     (when (%gesture-swipe-velocity gesture velocity-x velocity-y)
       (values (cffi:mem-ref velocity-x :double)
               (cffi:mem-ref velocity-y :double)))))

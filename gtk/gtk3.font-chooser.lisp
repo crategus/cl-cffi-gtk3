@@ -97,7 +97,7 @@
 ;;; GtkFontChooserLevel
 ;;; ----------------------------------------------------------------------------
 
-(define-g-flags "GtkFontChooserLevel" font-chooser-level
+(gobject:define-g-flags "GtkFontChooserLevel" font-chooser-level
   (:export t
    :type-initializer "gtk_font_chooser_level_get_type")
   (:family 0)
@@ -116,7 +116,7 @@
     selection that is desired in a font chooser.
   @end{short}
   @begin{pre}
-(define-g-flags \"GtkFontChooserLevel\" font-chooser-level
+(gobject:define-g-flags \"GtkFontChooserLevel\" font-chooser-level
   (:export t
    :type-initializer \"gtk_font_chooser_level_get_type\")
   (:family 0)
@@ -138,7 +138,7 @@
 ;;; GtkFontChooser
 ;;; ----------------------------------------------------------------------------
 
-(define-g-interface "GtkFontChooser" font-chooser
+(gobject:define-g-interface "GtkFontChooser" font-chooser
   (:export t
    :type-initializer "gtk_font_chooser_get_type")
   ((font

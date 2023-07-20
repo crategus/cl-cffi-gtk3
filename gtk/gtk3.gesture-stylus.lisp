@@ -64,7 +64,7 @@
 ;;; struct GtkGestureStylus
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkGestureStylus" gesture-stylus
+(gobject:define-g-object-class "GtkGestureStylus" gesture-stylus
   (:superclass gesture-single
    :export t
    :interfaces nil
@@ -146,7 +146,7 @@ lambda (gesture arg1 arg2)    :run-last
 ;;; gtk_gesture_stylus_get_axis () -> gesture-stylus-axis
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_gesture_stylus_get_axis" %gesture-stylus-axis) :boolean
+(cffi:defcfun ("gtk_gesture_stylus_get_axis" %gesture-stylus-axis) :boolean
   (gesture (g:object gesture-stylus))
   (axis gdk:axis-use)
   (value (:pointer :double)))
@@ -163,7 +163,7 @@ lambda (gesture arg1 arg2)    :run-last
   This function must be called from either the \"down\", \"motion\", \"up\" or
   \"proximity\" signals.
   @see-class{gtk:gesture-stylus}"
-  (with-foreign-object (value :double)
+  (cffi:with-foreign-object (value :double)
     (when (%gesture-stylus-axis gesture axis value)
       (cffi:mem-ref value :double))))
 
@@ -199,7 +199,7 @@ lambda (gesture arg1 arg2)    :run-last
 ;;; gtk_gesture_stylus_get_device_tool () -> gesture-stylus-device-tool
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_gesture_stylus_get_device_tool" gesture-stylus-device-tool)
+(cffi:defcfun ("gtk_gesture_stylus_get_device_tool" gesture-stylus-device-tool)
     (g:object gdk:device-tool)
  #+liber-documentation
  "@version{#2023-1-21}

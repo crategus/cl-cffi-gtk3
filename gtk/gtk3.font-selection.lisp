@@ -56,7 +56,7 @@
 ;;; struct GtkFontSelection
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkFontSelection" font-selection
+(gobject:define-g-object-class "GtkFontSelection" font-selection
   (:superclass box
    :export nil
    :interfaces ("AtkImplementorIface"
@@ -345,7 +345,7 @@
 ;;; gtk_font_selection_get_face ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_font_selection_get_face" font-selection-get-face)
+(cffi:defcfun ("gtk_font_selection_get_face" font-selection-get-face)
     (g:object pango-font-face)
  #+liber-documentation
  "@version{#2013-7-1}
@@ -369,7 +369,7 @@
 ;;; gtk_font_selection_get_face_list ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_font_selection_get_face_list" font-selection-get-face-list)
+(cffi:defcfun ("gtk_font_selection_get_face_list" font-selection-get-face-list)
     (g:object widget)
  #+liber-documentation
  "@version{#2013-6-24}
@@ -391,7 +391,7 @@
 ;;; gtk_font_selection_get_family ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_font_selection_get_family" font-selection-get-family)
+(cffi:defcfun ("gtk_font_selection_get_family" font-selection-get-family)
     (g:object pango-font-family)
  #+liber-documentation
  "@version{#2013-6-24}
@@ -416,7 +416,7 @@
 ;;; gtk_font_selection_get_size ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_font_selection_get_size" font-selection-get-size) :int
+(cffi:defcfun ("gtk_font_selection_get_size" font-selection-get-size) :int
  #+liber-documentation
  "@version{#2013-6-24}
   @argument[fontsel]{a @class{gtk:font-selection} widget}
@@ -437,8 +437,8 @@
 ;;; gtk_font_selection_get_family_list ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_font_selection_get_family_list"
-           font-selection-get-family-list) (g:object widget)
+(cffi:defcfun ("gtk_font_selection_get_family_list"
+               font-selection-get-family-list) (g:object widget)
  #+liber-documentation
  "@version{#2013-6-24}
   @argument[fontsel]{a @class{gtk:font-selection} widget}
@@ -459,8 +459,8 @@
 ;;; gtk_font_selection_get_preview_entry ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_font_selection_get_preview_entry"
-           font-selection-get-preview-entry) (g:object widget)
+(cffi:defcfun ("gtk_font_selection_get_preview_entry"
+               font-selection-get-preview-entry) (g:object widget)
  #+liber-documentation
  "@version{#2013-6-24}
   @argument[fontsel]{a @class{gtk:font-selection} widget}
@@ -480,8 +480,8 @@
 ;;; gtk_font_selection_get_size_entry ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_font_selection_get_size_entry" font-selection-get-size-entry)
-    (g:object widget)
+(cffi:defcfun ("gtk_font_selection_get_size_entry"
+               font-selection-get-size-entry) (g:object widget)
  #+liber-documentation
  "@version{#2013-6-24}
   @argument[fontsel]{a @class{gtk:font-selection} widget}
@@ -502,7 +502,7 @@
 ;;; gtk_font_selection_get_size_list ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_font_selection_get_size_list" font-selection-get-size-list)
+(cffi:defcfun ("gtk_font_selection_get_size_list" font-selection-get-size-list)
     (g:object widget)
  #+liber-documentation
  "@version{#2013-6-24}

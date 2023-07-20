@@ -57,7 +57,7 @@
 ;;; struct GtkDrawingArea
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkDrawingArea" drawing-area
+(gobject:define-g-object-class "GtkDrawingArea" drawing-area
   (:superclass widget
    :export t
    :interfaces ("AtkImplementorIface"

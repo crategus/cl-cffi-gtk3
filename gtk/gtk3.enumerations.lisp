@@ -64,7 +64,7 @@
 ;;; enum GtkBaselinePosition
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkBaselinePosition" baseline-position
+(gobject:define-g-enum "GtkBaselinePosition" baseline-position
   (:export t
    :type-initializer "gtk_baseline_position_get_type")
   (:top 0)
@@ -85,7 +85,7 @@
   @sym{gtk:baseline-position} value to select where to put the baseline inside
   the extra available space.
   @begin{pre}
-(define-g-enum \"GtkBaselinePosition\" baseline-position
+(gobject:define-g-enum \"GtkBaselinePosition\" baseline-position
   (:export t
    :type-initializer \"gtk_baseline_position_get_type\")
   (:top 0)
@@ -103,7 +103,7 @@
 ;;; enum GtkDeleteType
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkDeleteType" delete-type
+(gobject:define-g-enum "GtkDeleteType" delete-type
   (:export t
    :type-initializer "gtk_delete_type_get_type")
   (:chars 0)
@@ -126,7 +126,7 @@
     @class{gtk:text-view} widgets.
   @end{short}
   @begin{pre}
-(define-g-enum \"GtkDeleteType\" delete-type
+(gobject:define-g-enum \"GtkDeleteType\" delete-type
   (:export t
    :type-initializer \"gtk_delete_type_get_type\")
   (:chars 0)
@@ -160,7 +160,7 @@
 ;;; enum GtkDirectionType
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkDirectionType" direction-type
+(gobject:define-g-enum "GtkDirectionType" direction-type
   (:export t
    :type-initializer "gtk_direction_type_get_type")
   (:tab-forward 0)
@@ -177,7 +177,7 @@
  "@version{2023-2-15}
   @short{Focus movement types.}
   @begin{pre}
-(define-g-enum \"GtkDirectionType\" direction-type
+(gobject:define-g-enum \"GtkDirectionType\" direction-type
   (:export t
    :type-initializer \"gtk_direction_type_get_type\")
   (:tab-forward 0)
@@ -200,7 +200,7 @@
 ;;; enum GtkJustification
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkJustification" justification
+(gobject:define-g-enum "GtkJustification" justification
   (:export t
    :type-initializer "gtk_justification_get_type")
   (:left 0)
@@ -217,7 +217,7 @@
     Used for justifying the text inside a @class{gtk:label} widget.
   @end{short}
   @begin{pre}
-(define-g-enum \"GtkJustification\" justification
+(gobject:define-g-enum \"GtkJustification\" justification
   (:export t
    :type-initializer \"gtk_justification_get_type\")
   (:left 0)
@@ -237,7 +237,7 @@
 ;;; enum GtkMovementStep
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkMovementStep" movement-step
+(gobject:define-g-enum "GtkMovementStep" movement-step
   (:export t
    :type-initializer "gtk_movement_step_get_type")
   (:logical-positions 0)
@@ -261,7 +261,7 @@
     \"move-cursor\" signal handler.
   @end{short}
   @begin{pre}
-(define-g-enum \"GtkMovementStep\" movement-step
+(gobject:define-g-enum \"GtkMovementStep\" movement-step
   (:export t
    :type-initializer \"gtk_movement_step_get_type\")
   (:logical-positions 0)
@@ -296,7 +296,7 @@
 ;;; enum GtkOrientation
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkOrientation" orientation
+(gobject:define-g-enum "GtkOrientation" orientation
   (:export t
    :type-initializer "gtk_orientation_get_type")
   (:horizontal 0)
@@ -313,7 +313,7 @@
     widget.
   @end{short}
   @begin{pre}
-(define-g-enum \"GtkOrientation\" orientation
+(gobject:define-g-enum \"GtkOrientation\" orientation
   (:export t
    :type-initializer \"gtk_orientation_get_type\")
   (:horizontal 0)
@@ -330,7 +330,7 @@
 ;;; enum GtkPackType
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkPackType" pack-type
+(gobject:define-g-enum "GtkPackType" pack-type
   (:export t
    :type-initializer "gtk_pack_type_get_type")
   (:start 0)
@@ -346,7 +346,7 @@
   @end{short}
   See also the @class{gtk:button-box} widget.
   @begin{pre}
-(define-g-enum \"GtkPackType\" pack-type
+(gobject:define-g-enum \"GtkPackType\" pack-type
   (:export t
    :type-initializer \"gtk_pack_type_get_type\")
   (:start 0)
@@ -363,7 +363,7 @@
 ;;; enum GtkPositionType
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkPositionType" position-type
+(gobject:define-g-enum "GtkPositionType" position-type
   (:export t
    :type-initializer "gtk_position_type_get_type")
   (:left 0)
@@ -382,7 +382,7 @@
     @class{gtk:scale} widget.
   @end{short}
   @begin{pre}
-(define-g-enum \"GtkPositionType\" position-type
+(gobject:define-g-enum \"GtkPositionType\" position-type
   (:export t
    :type-initializer \"gtk_position_type_get_type\")
   (:left 0)
@@ -403,7 +403,7 @@
 ;;; enum GtkReliefStyle
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkReliefStyle" relief-style
+(gobject:define-g-enum "GtkReliefStyle" relief-style
   (:export t
    :type-initializer "gtk_relief_style_get_type")
   (:normal 0)
@@ -417,7 +417,7 @@
  "@version{2023-2-15}
   @short{Indicated the relief to be drawn around a @class{gtk:button} widget.}
   @begin{pre}
-(define-g-enum \"GtkReliefStyle\" relief-style
+(gobject:define-g-enum \"GtkReliefStyle\" relief-style
   (:export t
    :type-initializer \"gtk_relief_style_get_type\")
   (:normal 0)
@@ -439,7 +439,7 @@
 ;; TODO: This enumeration is not in use in the cl-cffi-gtk implementation.
 ;; Consider to remove the implementation.
 
-(define-g-enum "GtkScrollStep" scroll-step
+(gobject:define-g-enum "GtkScrollStep" scroll-step
   (:export nil
    :type-initializer "gtk_scroll_step_get_type")
   (:steps 0)
@@ -456,7 +456,7 @@
  "@version{#2023-3-6}
   @short{}
   @begin{pre}
-(define-g-enum \"GtkScrollStep\" scroll-step
+(gobject:define-g-enum \"GtkScrollStep\" scroll-step
   (:export t
    :type-initializer \"gtk_scroll_step_get_type\")
   (:steps 0)
@@ -471,7 +471,7 @@
 ;;; enum GtkScrollType
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkScrollType" scroll-type
+(gobject:define-g-enum "GtkScrollType" scroll-type
   (:export t
    :type-initializer "gtk_scroll_type_get_type")
   (:none 0)
@@ -502,7 +502,7 @@
     @class{gtk:scrolled-window}, or @class{gtk:combo-box} widgets.
   @end{short}
   @begin{pre}
-(define-g-enum \"GtkScrollType\" scroll-type
+(gobject:define-g-enum \"GtkScrollType\" scroll-type
   (:export t
    :type-initializer \"gtk_scroll_type_get_type\")
   (:none 0)
@@ -530,7 +530,7 @@
 ;;; enum GtkSelectionMode
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkSelectionMode" selection-mode
+(gobject:define-g-enum "GtkSelectionMode" selection-mode
   (:export t
    :type-initializer "gtk_selection_mode_get_type")
   (:none 0)
@@ -545,7 +545,7 @@
  "@version{2023-3-6}
   @short{Used to control what selections users are allowed to make.}
   @begin{pre}
-(define-g-enum \"GtkSelectionMode\" selection-mode
+(gobject:define-g-enum \"GtkSelectionMode\" selection-mode
   (:export t
    :type-initializer \"gtk_selection_mode_get_type\")
   (:none 0)
@@ -575,7 +575,7 @@
 ;;; enum GtkShadowType
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkShadowType" shadow-type
+(gobject:define-g-enum "GtkShadowType" shadow-type
   (:export t
    :type-initializer "gtk_shadow_type_get_type")
   (:none 0)
@@ -597,7 +597,7 @@
   shadow types: Either their is no visible shadow :none, or there is any other
   value.
   @begin{pre}
-(define-g-enum \"GtkShadowType\" shadow-type
+(gobject:define-g-enum \"GtkShadowType\" shadow-type
   (:export t
    :type-initializer \"gtk_shadow_type_get_type\")
   (:none 0)
@@ -619,7 +619,7 @@
 ;;; enum GtkStateFlags
 ;;; ----------------------------------------------------------------------------
 
-(define-g-flags "GtkStateFlags" state-flags
+(gobject:define-g-flags "GtkStateFlags" state-flags
   (:export t
    :type-initializer "gtk_state_flags_get_type")
   (:normal 0)
@@ -646,7 +646,7 @@
   Widget states are used to match the widget against CSS pseudo-classes. Note
   that GTK extends the regular CSS classes and sometimes uses different names.
   @begin{pre}
-(define-g-flags \"GtkStateFlags\" state-flags
+(gobject:define-g-flags \"GtkStateFlags\" state-flags
   (:export t
    :type-initializer \"gtk_state_flags_get_type\")
   (:normal 0)
@@ -688,7 +688,7 @@
 ;;; enum GtkToolbarStyle
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkToolbarStyle" toolbar-style
+(gobject:define-g-enum "GtkToolbarStyle" toolbar-style
   (:export t
    :type-initializer "gtk_toolbar_style_get_type")
   (:icons 0)
@@ -708,7 +708,7 @@
   the default toolbar style. Note that if the button has only a label set and
   @code{:icons} is used, the label will be visible, and vice versa.
   @begin{pre}
-(define-g-enum \"GtkToolbarStyle\" toolbar-style
+(gobject:define-g-enum \"GtkToolbarStyle\" toolbar-style
   (:export t
    :type-initializer \"gtk_toolbar_style_get_type\")
   (:icons 0)
@@ -729,7 +729,7 @@
 ;;; enum GtkSortType
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkSortType" sort-type
+(gobject:define-g-enum "GtkSortType" sort-type
   (:export t
    :type-initializer "gtk_sort_type_get_type")
   (:ascending 0)
@@ -742,7 +742,7 @@
  "@version{2023-3-6}
   @short{Determines the direction of a sort.}
   @begin{pre}
-(define-g-enum \"GtkSortType\" sort-type
+(gobject:define-g-enum \"GtkSortType\" sort-type
   (:export t
    :type-initializer \"gtk_sort_type_get_type\")
   (:ascending 0)
@@ -759,7 +759,7 @@
 ;;; enum GtkTextDirection
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkTextDirection" text-direction
+(gobject:define-g-enum "GtkTextDirection" text-direction
   (:export t
    :type-initializer "gtk_text_direction_get_type")
   (:none 0)
@@ -783,7 +783,7 @@
   explicitely visual rather than logical, such as buttons for text
   justification.
   @begin{pre}
-(define-g-enum \"GtkTextDirection\" text-direction
+(gobject:define-g-enum \"GtkTextDirection\" text-direction
   (:export t
    :type-initializer \"gtk_text_direction_get_type\")
   (:none 0)
@@ -802,7 +802,7 @@
 ;;; enum GtkExpanderStyle
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkExpanderStyle" expander-style
+(gobject:define-g-enum "GtkExpanderStyle" expander-style
   (:export t
    :type-initializer "gtk_expander_style_get_type")
   (:collapsed 0)
@@ -820,7 +820,7 @@
     widget.
   @end{short}
   @begin{pre}
-(define-g-enum \"GtkExpanderStyle\" expander-style
+(gobject:define-g-enum \"GtkExpanderStyle\" expander-style
   (:export t
    :type-initializer \"gtk_expander_style_get_type\")
   (:collapsed 0)
@@ -840,7 +840,7 @@
 ;;; enum GtkStateType
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkStateType" state-type
+(gobject:define-g-enum "GtkStateType" state-type
   (:export t
    :type-initializer "gtk_state_type_get_type")
   (:normal 0)
@@ -870,7 +870,7 @@
     @symbol{gtk:state-flags} flags.
   @end{dictionary}
   @begin{pre}
-(define-g-enum \"GtkStateType\" state-type
+(gobject:define-g-enum \"GtkStateType\" state-type
   (:export t
    :type-initializer \"gtk_state_type_get_type\")
   (:normal 0)

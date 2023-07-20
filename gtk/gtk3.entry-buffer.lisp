@@ -72,7 +72,7 @@
 ;;; struct GtkEntryBuffer
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkEntryBuffer" entry-buffer
+(gobject:define-g-object-class "GtkEntryBuffer" entry-buffer
   (:superclass g:object
    :export t
    :interfaces nil
@@ -250,7 +250,7 @@ lambda (buffer position chars n-chars)    :run-first
 ;;; gtk_entry_buffer_get_bytes ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_entry_buffer_get_bytes" entry-buffer-bytes) :size
+(cffi:defcfun ("gtk_entry_buffer_get_bytes" entry-buffer-bytes) :size
  #+liber-documentation
  "@version{2023-1-30}
   @argument[buffer]{a @class{gtk:entry-buffer} object}
@@ -269,7 +269,7 @@ lambda (buffer position chars n-chars)    :run-first
 ;;; gtk_entry_buffer_insert_text ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_entry_buffer_insert_text" %entry-buffer-insert-text) :uint
+(cffi:defcfun ("gtk_entry_buffer_insert_text" %entry-buffer-insert-text) :uint
   (buffer (g:object entry-buffer))
   (position :uint)
   (text :string)
@@ -299,7 +299,7 @@ lambda (buffer position chars n-chars)    :run-first
 ;;; gtk_entry_buffer_delete_text ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_entry_buffer_delete_text" entry-buffer-delete-text) :uint
+(cffi:defcfun ("gtk_entry_buffer_delete_text" entry-buffer-delete-text) :uint
  #+liber-documentation
  "@version{2023-1-30}
   @argument[buffer]{a @class{gtk:entry-buffer} object}
@@ -329,8 +329,8 @@ lambda (buffer position chars n-chars)    :run-first
 ;;; gtk_entry_buffer_emit_deleted_text ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_entry_buffer_emit_deleted_text" entry-buffer-emit-deleted-text)
-    :void
+(cffi:defcfun ("gtk_entry_buffer_emit_deleted_text"
+               entry-buffer-emit-deleted-text) :void
  #+liber-documentation
  "@version{2023-1-30}
   @argument[buffer]{a @class{gtk:entry-buffer} object}
@@ -352,8 +352,8 @@ lambda (buffer position chars n-chars)    :run-first
 ;;; gtk_entry_buffer_emit_inserted_text ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_entry_buffer_emit_inserted_text" entry-buffer-emit-inserted-text)
-    :void
+(cffi:defcfun ("gtk_entry_buffer_emit_inserted_text"
+               entry-buffer-emit-inserted-text) :void
  #+liber-documentation
  "@version{2023-1-30}
   @argument[buffer]{a @class{gtk:entry-buffer} object}

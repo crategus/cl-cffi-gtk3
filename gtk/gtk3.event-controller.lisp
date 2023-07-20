@@ -66,7 +66,7 @@
 ;;; enum GtkPropagationPhase
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkPropagationPhase" propagation-phase
+(gobject:define-g-enum "GtkPropagationPhase" propagation-phase
   (:export t
    :type-initializer "gtk_propagation_phase_get_type")
   (:phase-none 0)
@@ -84,7 +84,7 @@
     @class{gtk:event-controller} object.
   @end{short}
   @begin{pre}
-(define-g-enum \"GtkPropagationPhase\" propagation-phase
+(gobject:define-g-enum \"GtkPropagationPhase\" propagation-phase
   (:export t
    :type-initializer \"gtk_propagation_phase_get_type\")
   (:phase-none 0)
@@ -116,7 +116,7 @@
 ;;; struct GtkEventController
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkEventController" event-controller
+(gobject:define-g-object-class "GtkEventController" event-controller
   (:superclass g:object
    :export t
    :interfaces nil
@@ -212,8 +212,8 @@
 ;;; gtk_event_controller_handle_event ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_event_controller_handle_event" event-controller-handle-event)
-    :boolean
+(cffi:defcfun ("gtk_event_controller_handle_event"
+               event-controller-handle-event) :boolean
  #+liber-documentation
  "@version{#2023-1-21}
   @argument[controller]{a @class{gtk:event-controller} object}
@@ -235,7 +235,7 @@
 ;;; gtk_event_controller_reset ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_event_controller_reset" event-controller-reset) :void
+(cffi:defcfun ("gtk_event_controller_reset" event-controller-reset) :void
  #+liber-documentation
  "@version{#2023-1-21}
   @argument[controller]{a @class{gtk:event-controller} object}

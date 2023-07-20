@@ -69,7 +69,7 @@
 ;;; struct GtkEventBox
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkEventBox" event-box
+(gobject:define-g-object-class "GtkEventBox" event-box
   (:superclass bin
    :export t
    :interfaces ("AtkImplementorIface"

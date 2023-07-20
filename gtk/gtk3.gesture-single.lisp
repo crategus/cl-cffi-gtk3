@@ -71,7 +71,7 @@
 ;;; struct GtkGestureSingle
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkGestureSingle" gesture-single
+(gobject:define-g-object-class "GtkGestureSingle" gesture-single
   (:superclass gesture
    :export t
    :interfaces nil
@@ -205,8 +205,8 @@
 ;;; -> gesture-single-current-button
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_gesture_single_get_current_button"
-           gesture-single-current-button) :uint
+(cffi:defcfun ("gtk_gesture_single_get_current_button"
+               gesture-single-current-button) :uint
  #+liber-documentation
  "@version{#2023-1-21}
   @argument[gesture]{a @class{gtk:gesture-single} object}
@@ -225,8 +225,9 @@
 ;;; -> gesture-single-current-sequence
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_gesture_single_get_current_sequence"
-           gesture-single-current-sequence) (g:boxed gdk:event-sequence :return)
+(cffi:defcfun ("gtk_gesture_single_get_current_sequence"
+               gesture-single-current-sequence)
+    (g:boxed gdk:event-sequence :return)
  #+liber-documentation
  "@version{#2023-1-21}
   @argument[gesture]{a @class{gtk:gesture-single} object}

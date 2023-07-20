@@ -66,7 +66,7 @@
 ;;; enum GtkPanDirection
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkPanDirection" pan-direction
+(gobject:define-g-enum "GtkPanDirection" pan-direction
   (:export t
    :type-initializer "gtk_pan_direction_get_type")
   :left
@@ -83,7 +83,7 @@
     Describes the panning direction of a @class{gtk:gesture-pan} object.
   @end{short}
   @begin{pre}
-(define-g-enum \"GtkPanDirection\" pan-direction
+(gobject:define-g-enum \"GtkPanDirection\" pan-direction
   (:export t
    :type-initializer \"gtk_pan_direction_get_type\")
   :left
@@ -103,7 +103,7 @@
 ;;; struct GtkGesturePan
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkGesturePan" gesture-pan
+(gobject:define-g-object-class "GtkGesturePan" gesture-pan
   (:superclass gesture-drag
    :export t
    :interfaces nil

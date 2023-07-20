@@ -73,7 +73,7 @@
 ;;; GtkEditable
 ;;; ----------------------------------------------------------------------------
 
-(define-g-interface "GtkEditable" editable
+(gobject:define-g-interface "GtkEditable" editable
   (:export t
    :type-initializer "gtk_editable_get_type")
   nil)
@@ -167,7 +167,7 @@ lambda (editable text length position)    :run-last
 ;;; gtk_editable_select_region ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_editable_select_region" %editable-select-region) :void
+(cffi:defcfun ("gtk_editable_select_region" %editable-select-region) :void
   (editable (g:object editable))
   (start :int)
   (end :int))
@@ -196,7 +196,7 @@ lambda (editable text length position)    :run-last
 ;;; gtk_editable_get_selection_bounds () -> editable-selection-bounds
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_editable_get_selection_bounds" %editable-selection-bounds)
+(cffi:defcfun ("gtk_editable_get_selection_bounds" %editable-selection-bounds)
     :boolean
   (editable (g:object editable))
   (start (:pointer :int))
@@ -218,7 +218,7 @@ lambda (editable text length position)    :run-last
 
   Note that positions are specified in characters, not bytes.
   @see-class{gtk:editable}"
-  (with-foreign-objects ((start :int) (end :int))
+  (cffi:with-foreign-objects ((start :int) (end :int))
     (when (%editable-selection-bounds editable start end)
       (values (cffi:mem-ref start :int)
               (cffi:mem-ref end :int)))))
@@ -229,7 +229,7 @@ lambda (editable text length position)    :run-last
 ;;; gtk_editable_insert_text ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_editable_insert_text" %editable-insert-text) :void
+(cffi:defcfun ("gtk_editable_insert_text" %editable-insert-text) :void
   (editable (g:object editable))
   (text :string)
   (length :int)
@@ -249,7 +249,7 @@ lambda (editable text length position)    :run-last
   Note that @arg{position} is in characters, not in bytes. The function
   returns the position to point after the newly inserted text.
   @see-class{gtk:editable}"
-  (with-foreign-object (pos :int)
+  (cffi:with-foreign-object (pos :int)
     (setf (cffi:mem-ref pos :int) position)
     (%editable-insert-text editable text -1 pos)
     (cffi:mem-ref pos :int)))
@@ -260,7 +260,7 @@ lambda (editable text length position)    :run-last
 ;;; gtk_editable_delete_text ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_editable_delete_text" %editable-delete-text) :void
+(cffi:defcfun ("gtk_editable_delete_text" %editable-delete-text) :void
   (editable (g:object editable))
   (start :int)
   (end :int))
@@ -288,7 +288,7 @@ lambda (editable text length position)    :run-last
 ;;; gtk_editable_get_chars () -> editable-chars
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_editable_get_chars" %editable-get-chars) :string
+(cffi:defcfun ("gtk_editable_get_chars" %editable-get-chars) :string
   (editable (g:object editable))
   (start-pos :int)
   (end-pos :int))
@@ -318,7 +318,7 @@ lambda (editable text length position)    :run-last
 ;;; gtk_editable_cut_clipboard ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_editable_cut_clipboard" editable-cut-clipboard) :void
+(cffi:defcfun ("gtk_editable_cut_clipboard" editable-cut-clipboard) :void
  #+liber-documentation
  "@version{#2023-2-13}
   @argument[editable]{a @class{gtk:editable} widget}
@@ -335,7 +335,7 @@ lambda (editable text length position)    :run-last
 ;;; gtk_editable_copy_clipboard ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_editable_copy_clipboard" editable-copy-clipboard) :void
+(cffi:defcfun ("gtk_editable_copy_clipboard" editable-copy-clipboard) :void
  #+liber-documentation
  "@version{#2023-2-13}
   @argument[editable]{a @class{gtk:editable} widget}
@@ -352,7 +352,7 @@ lambda (editable text length position)    :run-last
 ;;; gtk_editable_paste_clipboard ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_editable_paste_clipboard" editable-paste-clipboard) :void
+(cffi:defcfun ("gtk_editable_paste_clipboard" editable-paste-clipboard) :void
  #+liber-documentation
  "@version{#2023-2-13}
   @argument[editable]{a @class{gtk:editable} widget}
@@ -369,7 +369,7 @@ lambda (editable text length position)    :run-last
 ;;; gtk_editable_delete_selection ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_editable_delete_selection" editable-delete-selection) :void
+(cffi:defcfun ("gtk_editable_delete_selection" editable-delete-selection) :void
  #+liber-documentation
  "@version{2023-2-13}
   @argument[editable]{a @class{gtk:editable} widget}
@@ -394,7 +394,7 @@ lambda (editable text length position)    :run-last
                         :void)
   position)
 
-(defcfun ("gtk_editable_get_position" editable-position) :int
+(cffi:defcfun ("gtk_editable_get_position" editable-position) :int
  #+liber-documentation
  "@version{2023-2-13}
   @syntax[]{(gtk:editable-position editable) => position}
@@ -431,7 +431,7 @@ lambda (editable text length position)    :run-last
                         :void)
   setting)
 
-(defcfun ("gtk_editable_get_editable" editable-editable) :boolean
+(cffi:defcfun ("gtk_editable_get_editable" editable-editable) :boolean
  #+liber-documentation
  "@version{2023-2-13}
   @syntax[]{(gtk:editable-editable editable) => setting}

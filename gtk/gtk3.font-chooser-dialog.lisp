@@ -62,7 +62,7 @@
 ;;; struct GtkFontChooserDialog
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkFontChooserDialog" font-chooser-dialog
+(gobject:define-g-object-class "GtkFontChooserDialog" font-chooser-dialog
   (:superclass dialog
    :export t
    :interfaces ("AtkImplementorIface"

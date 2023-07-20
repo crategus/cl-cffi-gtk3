@@ -87,7 +87,7 @@
 ;;; enum GtkEventSequenceState
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkEventSequenceState" event-sequence-state
+(gobject:define-g-enum "GtkEventSequenceState" event-sequence-state
   (:export t
    :type-initializer "gtk_event_sequence_state_get_type")
   (:none 0)
@@ -104,7 +104,7 @@
     @class{gtk:gesture} object.
   @end{short}
   @begin{pre}
-(define-g-enum \"GtkEventSequenceState\" event-sequence-state
+(gobject:define-g-enum \"GtkEventSequenceState\" event-sequence-state
   (:export t
    :type-initializer \"gtk_event_sequence_state_get_type\")
   (:none 0)
@@ -123,7 +123,7 @@
 ;;; struct GtkGesture
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkGesture" gesture
+(gobject:define-g-object-class "GtkGesture" gesture
   (:superclass event-controller
    :export t
    :interfaces nil
@@ -376,7 +376,7 @@ lambda (gesture sequence)    :run-last
 ;;; gtk_gesture_get_device ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_gesture_get_device" gesture-device) (g:object gdk:device)
+(cffi:defcfun ("gtk_gesture_get_device" gesture-device) (g:object gdk:device)
  #+liber-documentation
  "@version{#2023-3-5}
   @argument[gesture]{a @class{gtk:gesture} object}
@@ -394,7 +394,7 @@ lambda (gesture sequence)    :run-last
 ;;; gtk_gesture_is_active ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_gesture_is_active" gesture-is-active) :boolean
+(cffi:defcfun ("gtk_gesture_is_active" gesture-is-active) :boolean
  #+liber-documentation
  "@version{#2023-3-5}
   @argument[gesture]{a @class{gtk:gesture} object}
@@ -412,7 +412,7 @@ lambda (gesture sequence)    :run-last
 ;;; gtk_gesture_is_recognized ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_gesture_is_recognized" gesture-is-recognized) :boolean
+(cffi:defcfun ("gtk_gesture_is_recognized" gesture-is-recognized) :boolean
  #+liber-documentation
  "@version{#2023-3-5}
   @argument[gesture]{a @class{gtk:gesture} object}
@@ -440,7 +440,7 @@ lambda (gesture sequence)    :run-last
                               :boolean)
     state))
 
-(defcfun ("gtk_gesture_get_sequence_state" gesture-sequence-state)
+(cffi:defcfun ("gtk_gesture_get_sequence_state" gesture-sequence-state)
     event-sequence-state
  #+liber-documentation
  "@version{#2023-3-5}
@@ -506,7 +506,7 @@ second_gesture_begin_cb (GtkGesture       *second_gesture,
 ;;; gtk_gesture_set_state ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_gesture_set_state" gesture-set-state) :boolean
+(cffi:defcfun ("gtk_gesture_set_state" gesture-set-state) :boolean
  #+liber-documentation
  "@version{#2023-3-5}
   @argument[gesture]{a @class{gtk:gesture} object}
@@ -531,7 +531,7 @@ second_gesture_begin_cb (GtkGesture       *second_gesture,
 ;;; gtk_gesture_get_sequences ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_gesture_get_sequences" gesture-sequences)
+(cffi:defcfun ("gtk_gesture_get_sequences" gesture-sequences)
     (g:list-t (g:boxed gdk:event-sequence))
  #+liber-documentation
  "@version{#2023-3-5}
@@ -551,7 +551,7 @@ second_gesture_begin_cb (GtkGesture       *second_gesture,
 ;;; gtk_gesture_handles_sequence ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_gesture_handles_sequence" gesture-handles-sequence) :boolean
+(cffi:defcfun ("gtk_gesture_handles_sequence" gesture-handles-sequence) :boolean
  #+liber-documentation
  "@version{#2023-3-5}
   @argument[gesture]{a @class{gtk:gesture} object}
@@ -573,8 +573,8 @@ second_gesture_begin_cb (GtkGesture       *second_gesture,
 ;;; gtk_gesture_get_last_updated_sequence ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_gesture_get_last_updated_sequence" gesture-last-updated-sequence)
-    (g:boxed gdk:event-sequence)
+(cffi:defcfun ("gtk_gesture_get_last_updated_sequence"
+               gesture-last-updated-sequence) (g:boxed gdk:event-sequence)
  #+liber-documentation
  "@version{#2023-3-5}
   @argument[gesture]{a @class{gtk:gesture} object}
@@ -593,7 +593,8 @@ second_gesture_begin_cb (GtkGesture       *second_gesture,
 ;;; gtk_gesture_get_last_event ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_gesture_get_last_event" gesture-last-event) (g:boxed gdk:event)
+(cffi:defcfun ("gtk_gesture_get_last_event" gesture-last-event)
+    (g:boxed gdk:event)
  #+liber-documentation
  "@version{#2023-3-5}
   @argument[gesture]{a @class{gtk:gesture} object}
@@ -616,7 +617,7 @@ second_gesture_begin_cb (GtkGesture       *second_gesture,
 ;;; gtk_gesture_get_point ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_gesture_get_point" %gesture-point) :boolean
+(cffi:defcfun ("gtk_gesture_get_point" %gesture-point) :boolean
   (gesture (g:object gesture))
   (sequence (g:boxed gdk:event-sequence))
   (x (:pointer :double))
@@ -640,7 +641,7 @@ second_gesture_begin_cb (GtkGesture       *second_gesture,
   The coordinates are always relative to the widget allocation.
   @see-class{gtk:gesture}
   @see-class{gdk:event-sequence}"
-  (with-foreign-objects ((x :double) (y :double))
+  (cffi:with-foreign-objects ((x :double) (y :double))
     (when (%gesture-point gesture sequence x y)
       (values (cffi:mem-ref x :double)
               (cffi:mem-ref y :double)))))
@@ -651,7 +652,7 @@ second_gesture_begin_cb (GtkGesture       *second_gesture,
 ;;; gtk_gesture_get_bounding_box ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_gesture_get_bounding_box" %gesture-bounding-box) :boolean
+(cffi:defcfun ("gtk_gesture_get_bounding_box" %gesture-bounding-box) :boolean
   (gesture (g:object gesture))
   (rect (g:boxed gdk:rectangle)))
 
@@ -683,8 +684,8 @@ second_gesture_begin_cb (GtkGesture       *second_gesture,
 ;;; gtk_gesture_get_bounding_box_center ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_gesture_get_bounding_box_center" %gesture-bounding-box-center)
-    :boolean
+(cffi:defcfun ("gtk_gesture_get_bounding_box_center"
+               %gesture-bounding-box-center) :boolean
   (gesture (g:object gesture))
   (x (:pointer :double))
   (y (:pointer :double)))
@@ -705,7 +706,7 @@ second_gesture_begin_cb (GtkGesture       *second_gesture,
   @end{short}
   Otherwise, @em{false} will be returned.
   @see-class{gtk:gesture}"
-  (with-foreign-objects ((x :double) (y :double))
+  (cffi:with-foreign-objects ((x :double) (y :double))
     (when (%gesture-bounding-box-center gesture x y)
       (values (cffi:mem-ref x :double)
               (cffi:mem-ref y :double)))))
@@ -716,7 +717,7 @@ second_gesture_begin_cb (GtkGesture       *second_gesture,
 ;;; gtk_gesture_group ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_gesture_group" gesture-group) :void
+(cffi:defcfun ("gtk_gesture_group" gesture-group) :void
  #+liber-documentation
  "@version{#2023-3-5}
   @argument[group]{a @class{gtk:gesture} object to group @arg{gesture} with}
@@ -747,7 +748,7 @@ second_gesture_begin_cb (GtkGesture       *second_gesture,
 ;;; gtk_gesture_ungroup ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_gesture_ungroup" gesture-ungroup) :void
+(cffi:defcfun ("gtk_gesture_ungroup" gesture-ungroup) :void
  #+liber-documentation
  "@version{#2023-3-5}
   @argument[gesture]{a @class{gtk:gesture} object}
@@ -763,7 +764,7 @@ second_gesture_begin_cb (GtkGesture       *second_gesture,
 ;;; gtk_gesture_get_group ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_gesture_get_group" gesture-get-group)
+(cffi:defcfun ("gtk_gesture_get_group" gesture-get-group)
     (g:list-t (g:object gesture))
  #+liber-documentation
  "@version{#2023-3-5}
@@ -781,7 +782,7 @@ second_gesture_begin_cb (GtkGesture       *second_gesture,
 ;;; gtk_gesture_is_grouped_with ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_gesture_is_grouped_with" gesture-is-grouped-with) :boolean
+(cffi:defcfun ("gtk_gesture_is_grouped_with" gesture-is-grouped-with) :boolean
  #+liber-documentation
  "@version{#2023-3-5}
   @argument[gesture]{a @class{gtk:gesture} object}

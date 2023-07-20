@@ -69,7 +69,7 @@
 ;;; struct GtkHSV
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkHSV" hsv
+(gobject:define-g-object-class "GtkHSV" hsv
   (:superclass widget
    :export t
    :interfaces ("AtkImplementorIface"
@@ -190,7 +190,7 @@ lambda (hsv direction)    :action
     should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:hsv}"
-  (with-foreign-objects ((h :double) (s :double) (v :double))
+  (cffi:with-foreign-objects ((h :double) (s :double) (v :double))
     (%hsv-get-color hsv h s v)
     (values (cffi:mem-ref h :double)
             (cffi:mem-ref s :double)
@@ -243,7 +243,7 @@ lambda (hsv direction)    :action
     should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:hsv}"
-  (with-foreign-objects ((size :int) (width :int))
+  (cffi:with-foreign-objects ((size :int) (width :int))
     (%hsv-get-metrics hsv size width)
     (values (cffi:mem-ref size :int) (cffi:mem-ref width :int))))
 
@@ -306,7 +306,7 @@ lambda (hsv direction)    :action
   @end{short}
   @see-class{gtk:hsv}
   @see-function{gtk:rgb-to-hsv}"
-  (with-foreign-objects ((r :double) (g :double) (b :double))
+  (cffi:with-foreign-objects ((r :double) (g :double) (b :double))
     (%hsv-to-rgb (coerce h 'double-float)
                  (coerce s 'double-float)
                  (coerce v 'double-float)
@@ -346,7 +346,7 @@ lambda (hsv direction)    :action
   @end{short}
   @see-class{gtk:hsv}
   @see-function{gtk:hsv-to-rgb}"
-  (with-foreign-objects ((h :double) (s :double) (v :double))
+  (cffi:with-foreign-objects ((h :double) (s :double) (v :double))
     (%rgb-to-hsv (coerce r 'double-float)
                  (coerce g 'double-float)
                  (coerce b 'double-float)

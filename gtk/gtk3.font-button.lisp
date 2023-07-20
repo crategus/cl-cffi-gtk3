@@ -90,7 +90,7 @@
 ;;; struct GtkFontButton
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkFontButton" font-button
+(gobject:define-g-object-class "GtkFontButton" font-button
   (:superclass button
     :export t
     :interfaces ("AtkImplementorIface"

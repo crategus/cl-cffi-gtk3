@@ -103,7 +103,7 @@
 ;;; struct GtkEntryCompletion
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkEntryCompletion" entry-completion
+(gobject:define-g-object-class "GtkEntryCompletion" entry-completion
   (:superclass g:object
    :export t
    :interfaces("GtkBuildable"
@@ -625,7 +625,7 @@ lambda (widget)    :run-last
 ;;; gtk_entry_completion_get_entry () -> entry-completion-entry
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_entry_completion_get_entry" entry-completion-entry)
+(cffi:defcfun ("gtk_entry_completion_get_entry" entry-completion-entry)
     (g:object widget)
  #+liber-documentation
  "@version{#2023-2-11}
@@ -643,7 +643,9 @@ lambda (widget)    :run-last
 ;;; GtkEntryCompletionMatchFunc ()
 ;;; ----------------------------------------------------------------------------
 
-(define-cb-methods entry-completion-match-func :boolean
+;; TODO: Replace this macro with code
+
+(gobject:define-cb-methods entry-completion-match-func :boolean
   ((completion (g:object entry-completion))
    (key :string)
    (iter (g:boxed tree-iter))))
@@ -682,8 +684,8 @@ lambda (completion key iter)
 ;;; gtk_entry_completion_set_match_func ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_entry_completion_set_match_func"
-           %entry-completion-set-match-func) :void
+(cffi:defcfun ("gtk_entry_completion_set_match_func"
+               %entry-completion-set-match-func) :void
   (completion (g:object entry-completion))
   (func :pointer)
   (data :pointer)
@@ -720,8 +722,8 @@ lambda (completion key iter)
 ;;; gtk_entry_completion_compute_prefix ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_entry_completion_compute_prefix" entry-completion-compute-prefix)
-    :string
+(cffi:defcfun ("gtk_entry_completion_compute_prefix"
+               entry-completion-compute-prefix) :string
  #+liber-documentation
  "@version{#2023-2-11}
   @argument[completion]{a @class{gtk:entry-completion} object}
@@ -748,7 +750,7 @@ lambda (completion key iter)
 ;;; gtk_entry_completion_complete ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_entry_completion_complete" entry-completion-complete) :void
+(cffi:defcfun ("gtk_entry_completion_complete" entry-completion-complete) :void
  #+liber-documentation
  "@version{#2023-2-11}
   @argument[completion]{a @class{gtk:entry-completion} object}
@@ -767,8 +769,9 @@ lambda (completion key iter)
 ;;; -> entry-completion-completion-prefix
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_entry_completion_get_completion_prefix"
-           entry-completion-completion-prefix) (:string :free-from-foreign t)
+(cffi:defcfun ("gtk_entry_completion_get_completion_prefix"
+               entry-completion-completion-prefix)
+    (:string :free-from-foreign t)
  #+liber-documentation
  "@version{#2023-2-11}
   @argument[completion]{a @class{gtk:entry-completion} object}
@@ -786,8 +789,8 @@ lambda (completion key iter)
 ;;; gtk_entry_completion_insert_prefix ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_entry_completion_insert_prefix" entry-completion-insert-prefix)
-    :void
+(cffi:defcfun ("gtk_entry_completion_insert_prefix"
+               entry-completion-insert-prefix) :void
  #+liber-documentation
  "@version{#2023-2-11}
   @argument[completion]{a @class{gtk:entry-completion} object}
@@ -803,8 +806,8 @@ lambda (completion key iter)
 ;;; gtk_entry_completion_insert_action_text ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_entry_completion_insert_action_text"
-          entry-completion-insert-action-text) :void
+(cffi:defcfun ("gtk_entry_completion_insert_action_text"
+               entry-completion-insert-action-text) :void
  #+liber-documentation
  "@version{#2023-2-11}
   @argument[completion]{a @class{gtk:entry-completion} object}
@@ -828,8 +831,8 @@ lambda (completion key iter)
 ;;; gtk_entry_completion_insert_action_markup ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_entry_completion_insert_action_markup"
-           entry-completion-insert-action-markup) :void
+(cffi:defcfun ("gtk_entry_completion_insert_action_markup"
+               entry-completion-insert-action-markup) :void
  #+liber-documentation
  "@version{#2023-2-11}
   @argument[completion]{a @class{gtk:entry-completion} object}
@@ -850,8 +853,8 @@ lambda (completion key iter)
 ;;; gtk_entry_completion_delete_action ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_entry_completion_delete_action" entry-completion-delete-action)
-    :void
+(cffi:defcfun ("gtk_entry_completion_delete_action"
+               entry-completion-delete-action) :void
  #+liber-documentation
  "@version{#2023-2-11}
   @argument[completion]{a @class{gtk:entry-completion} object}

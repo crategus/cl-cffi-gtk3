@@ -63,7 +63,7 @@
 ;;; struct GtkGestureDrag
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkGestureDrag" gesture-drag
+(gobject:define-g-object-class "GtkGestureDrag" gesture-drag
   (:superclass gesture-single
    :export t
    :interfaces nil
@@ -146,7 +146,8 @@ lambda (gesture offset-x offset-y)    :run-last
 ;;; gtk_gesture_drag_get_start_point () -> gesture-drag-start-point
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_gesture_drag_get_start_point" %gesture-drag-start-point) :boolean
+(cffi:defcfun ("gtk_gesture_drag_get_start_point" %gesture-drag-start-point)
+    :boolean
   (gesture (g:object gesture-drag))
   (x (:pointer :double))
   (y (:pointer :double)))
@@ -165,7 +166,7 @@ lambda (gesture offset-x offset-y)    :run-last
     in window-relative coordinates.
   @end{short}
   @see-class{gtk:gesture-drag}"
-  (with-foreign-objects ((x :double) (y :double))
+  (cffi:with-foreign-objects ((x :double) (y :double))
     (when (%gesture-drag-start-point gesture x y)
       (values (cffi:mem-ref x :double)
               (cffi:mem-ref y :double)))))
@@ -176,7 +177,7 @@ lambda (gesture offset-x offset-y)    :run-last
 ;;; gtk_gesture_drag_get_offset () -> gesture-drag-offset
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_gesture_drag_get_offset" %gesture-drag-offset) :boolean
+(cffi:defcfun ("gtk_gesture_drag_get_offset" %gesture-drag-offset) :boolean
   (gesture (g:object gesture-drag))
   (x (:pointer :double))
   (y (:pointer :double)))
@@ -194,7 +195,7 @@ lambda (gesture offset-x offset-y)    :run-last
     current point, as an offset to the starting drag point.
   @end{short}
   @see-class{gtk:gesture-drag}"
-  (with-foreign-objects ((x :double) (y :double))
+  (cffi:with-foreign-objects ((x :double) (y :double))
     (when (%gesture-drag-offset gesture x y)
       (values (cffi:mem-ref x :double)
               (cffi:mem-ref y :double)))))

@@ -136,7 +136,7 @@
 ;;; enum GtkFileChooserAction
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkFileChooserAction" file-chooser-action
+(gobject:define-g-enum "GtkFileChooserAction" file-chooser-action
   (:export t
    :type-initializer "gtk_file_chooser_action_get_type")
   (:open 0)
@@ -154,7 +154,7 @@
     open existing files or to save to a possibly new file.
   @end{short}
   @begin{pre}
-(define-g-enum \"GtkFileChooserAction\" file-chooser-action
+(gobject:define-g-enum \"GtkFileChooserAction\" file-chooser-action
   (:export t
    :type-initializer \"gtk_file_chooser_action_get_type\")
   (:open 0)
@@ -178,7 +178,7 @@
 ;;; enum GtkFileChooserConfirmation
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkFileChooserConfirmation" file-chooser-confirmation
+(gobject:define-g-enum "GtkFileChooserConfirmation" file-chooser-confirmation
   (:export t
    :type-initializer "gtk_file_chooser_confirmation_get_type")
   (:confirm 0)
@@ -198,7 +198,7 @@
   confirmation dialog, accept the user's choice of a filename, or let the user
   choose another filename.
   @begin{pre}
-(define-g-enum \"GtkFileChooserConfirmation\" gtk:file-chooser-confirmation
+(gobject:define-g-enum \"GtkFileChooserConfirmation\" gtk:file-chooser-confirmation
   (:export t
    :type-initializer \"gtk_file_chooser_confirmation_get_type\")
   (:confirm 0)
@@ -229,7 +229,7 @@
 
 ;; GtkFileChooserError is not exported
 
-(define-g-enum "GtkFileChooserError" file-chooser-error
+(gobject:define-g-enum "GtkFileChooserError" file-chooser-error
   (:export nil
    :type-initializer "gtk_file_chooser_error_get_type")
   (:nonexistent 0)
@@ -247,7 +247,7 @@
     @sym{gtk:file-chooser} interface functions.
   @end{short}
   @begin{pre}
-(define-g-enum \"GtkFileChooserError\" file-chooser-error
+(gobject:define-g-enum \"GtkFileChooserError\" file-chooser-error
   (:export t
    :type-initializer \"gtk_file_chooser_error_get_type\")
   (:nonexistent 0)
@@ -269,7 +269,7 @@
 ;;; GtkFileChooser
 ;;; ----------------------------------------------------------------------------
 
-(define-g-interface "GtkFileChooser" file-chooser
+(gobject:define-g-interface "GtkFileChooser" file-chooser
   (:export t
    :type-initializer "gtk_file_chooser_get_type")
   ((action
@@ -1550,7 +1550,7 @@ lambda (chooser)    :run-last
   \"/usr/share/mydrawprogram/Clipart\" folder to the volume list.
   @see-class{gtk:file-chooser}
   @see-function{gtk:file-chooser-remove-shortcut-folder}"
-  (with-g-error (err)
+  (glib:with-g-error (err)
     (%file-chooser-add-shortcut-folder chooser folder err)))
 
 (export 'file-chooser-add-shortcut-folder)
@@ -1579,7 +1579,7 @@ lambda (chooser)    :run-last
   See also the @fun{gtk:file-chooser-add-shortcut-folder} function.
   @see-class{gtk:file-chooser}
   @see-function{gtk:file-chooser-add-shortcut-folder}"
-  (with-g-error (err)
+  (glib:with-g-error (err)
     (%file-chooser-remove-shortcut-folder chooser folder err)))
 
 (export 'file-chooser-remove-shortcut-folder)
@@ -1635,7 +1635,7 @@ lambda (chooser)    :run-last
   @see-class{gtk:file-chooser}
   @see-function{gtk:file-chooser-remove-shortcut-folder-uri}
   @see-function{gtk:file-chooser-add-shortcut-folder}"
-  (with-g-error (err)
+  (glib:with-g-error (err)
     (%file-chooser-add-shortcut-folder-uri chooser uri err)))
 
 (export 'file-chooser-add-shortcut-folder-uri)
@@ -1664,7 +1664,7 @@ lambda (chooser)    :run-last
   See also the @fun{gtk:file-chooser-add-shortcut-folder-uri} function.
   @see-class{gtk:file-chooser}
   @see-function{gtk:file-chooser-add-shortcut-folder-uri}"
-  (with-g-error (err)
+  (glib:with-g-error (err)
     (%file-chooser-remove-shortcut-folder-uri chooser uri err)))
 
 (export 'file-chooser-remove-shortcut-folder-uri)
@@ -1699,7 +1699,7 @@ lambda (chooser)    :run-last
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf file-chooser-current-folder-file) (file chooser)
-  (with-g-error (err)
+  (glib:with-g-error (err)
     (when (cffi:foreign-funcall "gtk_file_chooser_set_current_folder_file"
                                 (g:object file-chooser) chooser
                                 (g:object g:file) file
@@ -1738,7 +1738,7 @@ lambda (chooser)    :run-last
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf file-chooser-file) (file chooser)
-  (with-g-error (err)
+  (glib:with-g-error (err)
     (cffi:foreign-funcall "gtk_file_chooser_set_file"
                           (g:object file-chooser) chooser
                           (g:object g:file) file
@@ -1872,7 +1872,7 @@ lambda (chooser)    :run-last
   @see-class{gtk:file-chooser}
   @see-class{g:file}
   @see-function{gtk:file-chooser-select-uri}"
-  (with-g-error (err)
+  (glib:with-g-error (err)
     (%file-chooser-select-file chooser file err)))
 
 (export 'file-chooser-select-file)

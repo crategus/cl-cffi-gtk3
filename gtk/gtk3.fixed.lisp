@@ -65,7 +65,7 @@
 ;;; struct GtkFixed
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkFixed" fixed
+(gobject:define-g-object-class "GtkFixed" fixed
   (:superclass container
    :export t
    :interfaces ("AtkImplementorIface"
@@ -208,7 +208,7 @@
 ;;; gtk_fixed_put ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_fixed_put" fixed-put) :void
+(cffi:defcfun ("gtk_fixed_put" fixed-put) :void
  #+liber-documentation
  "@version{2023-3-17}
   @argument[fixed]{a @class{gtk:fixed} widget}
@@ -234,7 +234,7 @@
 ;;; gtk_fixed_move ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_fixed_move" fixed-move) :void
+(cffi:defcfun ("gtk_fixed_move" fixed-move) :void
  #+liber-documentation
  "@version{2023-3-17}
   @argument[fixed]{a @class{gtk:fixed} widget}

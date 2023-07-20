@@ -68,7 +68,7 @@
 ;;; enum GtkFileFilterFlags
 ;;; ----------------------------------------------------------------------------
 
-(define-g-flags "GtkFileFilterFlags" file-filter-flags
+(gobject:define-g-flags "GtkFileFilterFlags" file-filter-flags
   (:export t
    :type-initializer "gtk_file_filter_flags_get_type")
   (:filename 1)
@@ -86,7 +86,7 @@
     instance are filled or need to be filled.
   @end{short}
   @begin{pre}
-(define-g-flags \"GtkFileFilterFlags\" file-filter-flags
+(gobject:define-g-flags \"GtkFileFilterFlags\" file-filter-flags
   (:export t
    :type-initializer \"gtk_file_filter_flags_get_type\")
   (:filename 1)
@@ -127,7 +127,7 @@
     the tested file to the @fun{gtk:file-filter-filter} function.
   @end{short}
   @begin{pre}
-(defcstruct gtk:file-filter
+(cffi:defcstruct gtk:file-filter
   (contains gtk:file-filter-flags)
   (filename :string)
   (uri :string)
@@ -237,7 +237,7 @@
 ;;; GtkFileFilter
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkFileFilter" file-filter
+(gobject:define-g-object-class "GtkFileFilter" file-filter
   (:superclass g:initially-unowned
    :export t
    :interfaces nil

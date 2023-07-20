@@ -69,7 +69,7 @@
 ;;; GtkFileChooserNative
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkFileChooserNative" file-chooser-native
+(gobject:define-g-object-class "GtkFileChooserNative" file-chooser-native
   (:superclass native-dialog
    :export t
    :interfaces ("GtkFileChooser")

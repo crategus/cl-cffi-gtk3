@@ -58,7 +58,7 @@
 ;;; struct GtkEventControllerMotion
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkEventControllerMotion" event-controller-motion
+(gobject:define-g-object-class "GtkEventControllerMotion" event-controller-motion
   (:superclass event-controller
    :export t
    :interfaces nil

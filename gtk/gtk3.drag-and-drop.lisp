@@ -85,7 +85,7 @@
 ;;; enum GtkDestDefaults
 ;;; ----------------------------------------------------------------------------
 
-(define-g-flags "GtkDestDefaults" dest-defaults
+(gobject:define-g-flags "GtkDestDefaults" dest-defaults
   (:export t
    :type-initializer "gtk_dest_defaults_get_type")
   (:motion 1)
@@ -103,7 +103,7 @@
     that will be taken on behalf of the user for a drag destination site.
   @end{short}
   @begin{pre}
-(define-g-flags \"GtkDestDefaults\" dest-defaults
+(gobject:define-g-flags \"GtkDestDefaults\" dest-defaults
   (:export t
    :type-initializer \"gtk_dest_defaults_get_type\")
   (:motion 1)
@@ -136,7 +136,7 @@
 ;;; enum GtkDragResult
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkDragResult" drag-result
+(gobject:define-g-enum "GtkDragResult" drag-result
   (:export t
    :type-initializer "gtk_drag_result_get_type")
   (:success 0)
@@ -157,7 +157,7 @@
   The value can by obtained by connecting to the \"drag-failed\" signal of a
   @class{gtk:widget} object.
   @begin{pre}
-(define-g-enum \"GtkDragResult\" drag-result
+(gobject:define-g-enum \"GtkDragResult\" drag-result
   (:export t
    :type-initializer \"gtk_drag_result_get_type\")
   (:success 0)
@@ -182,7 +182,7 @@
 ;;; gtk_drag_dest_set ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_dest_set" %drag-dest-set) :void
+(cffi:defcfun ("gtk_drag_dest_set" %drag-dest-set) :void
   (widget (g:object widget))
   (flags dest-defaults)
   (targets :pointer)
@@ -246,14 +246,14 @@
   @see-function{gtk:drag-finish}
   @see-function{gtk:drag-data}"
   (let ((n-targets (length targets)))
-    (with-foreign-object (targets-ptr '(:struct %target-entry) n-targets)
+    (cffi:with-foreign-object (targets-ptr '(:struct %target-entry) n-targets)
       (loop for i from 0 below n-targets
             for target-ptr = (cffi:mem-aptr targets-ptr
                                             '(:struct %target-entry) i)
             for entry in targets
-            do (with-foreign-slots ((target flags info)
-                                    target-ptr
-                                    (:struct %target-entry))
+            do (cffi:with-foreign-slots ((target flags info)
+                                         target-ptr
+                                         (:struct %target-entry))
                  (setf target (first entry))
                  (setf flags (second entry))
                  (setf info (third entry))))
@@ -265,7 +265,7 @@
 ;;; gtk_drag_dest_set_proxy ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_dest_set_proxy" drag-dest-set-proxy) :void
+(cffi:defcfun ("gtk_drag_dest_set_proxy" drag-dest-set-proxy) :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} object}
@@ -298,7 +298,7 @@
 ;;; gtk_drag_dest_unset ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_dest_unset" drag-dest-unset) :void
+(cffi:defcfun ("gtk_drag_dest_unset" drag-dest-unset) :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} object}
@@ -317,7 +317,7 @@
 ;;; gtk_drag_dest_find_target ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_dest_find_target" %drag-dest-find-target)
+(cffi:defcfun ("gtk_drag_dest_find_target" %drag-dest-find-target)
     gdk:atom-as-string
   (widget (g:object widget))
   (context (g:object gdk:drag-context))
@@ -365,7 +365,7 @@
                         :void)
   tlist)
 
-(defcfun ("gtk_drag_dest_get_target_list" drag-dest-target-list)
+(cffi:defcfun ("gtk_drag_dest_get_target_list" drag-dest-target-list)
     (g:boxed target-list)
  #+liber-documentation
  "@version{#2023-3-17}
@@ -392,7 +392,8 @@
 ;;; gtk_drag_dest_add_text_targets ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_dest_add_text_targets" drag-dest-add-text-targets) :void
+(cffi:defcfun ("gtk_drag_dest_add_text_targets" drag-dest-add-text-targets)
+    :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} that is a drag destination}
@@ -414,7 +415,8 @@
 ;;; gtk_drag_dest_add_image_targets ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_dest_add_image_targets" drag-dest-add-image-targets) :void
+(cffi:defcfun ("gtk_drag_dest_add_image_targets" drag-dest-add-image-targets)
+    :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} that is a drag destination}
@@ -436,7 +438,7 @@
 ;;; gtk_drag_dest_add_uri_targets ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_dest_add_uri_targets" drag-dest-add-uri-targets) :void
+(cffi:defcfun ("gtk_drag_dest_add_uri_targets" drag-dest-add-uri-targets) :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} that is a drag destination}
@@ -465,7 +467,7 @@
                         :void)
   motion)
 
-(defcfun ("gtk_drag_dest_get_track_motion" drag-dest-track-motion) :boolean
+(cffi:defcfun ("gtk_drag_dest_get_track_motion" drag-dest-track-motion) :boolean
  #+liber-documentation
  "@version{#2023-3-17}
   @syntax[]{(gtk:drag-dest-track-motion widget) => motion}
@@ -491,7 +493,7 @@
 ;;; gtk_drag_finish ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_finish" drag-finish) :void
+(cffi:defcfun ("gtk_drag_finish" drag-finish) :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[context]{a @class{gdk:drag-context} object}
@@ -516,7 +518,7 @@
 ;;; gtk_drag_get_data () -> drag-data
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_get_data" drag-data) :void
+(cffi:defcfun ("gtk_drag_get_data" drag-data) :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} object that will receive the
@@ -550,7 +552,8 @@
 ;;; gtk_drag_get_source_widget () -> drag-source-widget
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_get_source_widget" drag-source-widget) (g:object widget)
+(cffi:defcfun ("gtk_drag_get_source_widget" drag-source-widget)
+    (g:object widget)
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[context]{a @class{gdk:drag-context} object with the destination
@@ -569,7 +572,7 @@
 ;;; gtk_drag_highlight ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_highlight" drag-highlight) :void
+(cffi:defcfun ("gtk_drag_highlight" drag-highlight) :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} object to highlight}
@@ -589,7 +592,7 @@
 ;;; gtk_drag_unhighlight ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_unhighlight" drag-unhighlight) :void
+(cffi:defcfun ("gtk_drag_unhighlight" drag-unhighlight) :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} object to remove the highlight from}
@@ -607,7 +610,7 @@
 ;;; gtk_drag_begin ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_begin" drag-begin) (g:object gdk:drag-context)
+(cffi:defcfun ("gtk_drag_begin" drag-begin) (g:object gdk:drag-context)
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} source widget}
@@ -679,7 +682,7 @@
 ;;; gtk_drag_begin_with_coordinates ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_begin_with_coordinates" drag-begin-with-coordinates)
+(cffi:defcfun ("gtk_drag_begin_with_coordinates" drag-begin-with-coordinates)
     (g:object gdk:drag-context)
  #+liber-documentation
  "@version{#2023-3-17}
@@ -753,7 +756,7 @@
 ;;; gtk_drag_cancel ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_cancel" drag-cancel) :void
+(cffi:defcfun ("gtk_drag_cancel" drag-cancel) :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[context]{a @class{gdk:drag-context} object, as e.g. returned by
@@ -781,7 +784,7 @@
 ;;; gtk_drag_set_icon_widget ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_set_icon_widget" drag-set-icon-widget) :void
+(cffi:defcfun ("gtk_drag_set_icon_widget" drag-set-icon-widget) :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[context]{a @class{gdk:drag-context} object for a drag, this must
@@ -807,7 +810,7 @@
 ;;; gtk_drag_set_icon_pixbuf ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_set_icon_pixbuf" drag-set-icon-pixbuf) :void
+(cffi:defcfun ("gtk_drag_set_icon_pixbuf" drag-set-icon-pixbuf) :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[context]{a @class{gdk:drag-context} object for a drag, this must be
@@ -831,7 +834,7 @@
 ;;; gtk_drag_set_icon_stock ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_set_icon_stock" drag-set-icon-stock) :void
+(cffi:defcfun ("gtk_drag_set_icon_stock" drag-set-icon-stock) :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[context]{a @class{gdk:drag-context} object for a drag, this must be
@@ -860,7 +863,7 @@
 ;;; gtk_drag_set_icon_surface ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_set_icon_surface" drag-set-icon-surface) :void
+(cffi:defcfun ("gtk_drag_set_icon_surface" drag-set-icon-surface) :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[context]{a @class{gdk:drag-context} object for a drag, this must be
@@ -887,7 +890,7 @@
 ;;; gtk_drag_set_icon_name ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_set_icon_name" drag-set-icon-name) :void
+(cffi:defcfun ("gtk_drag_set_icon_name" drag-set-icon-name) :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[context]{a @class{gdk:drag-context} object for a drag, this must be
@@ -915,7 +918,7 @@
 ;;; gtk_drag_set_icon_gicon ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_set_icon_gicon" drag-set-icon-gicon) :void
+(cffi:defcfun ("gtk_drag_set_icon_gicon" drag-set-icon-gicon) :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[context]{a @class{gdk:drag-context} object for a drag, this must be
@@ -942,7 +945,7 @@
 ;;; gtk_drag_set_icon_default ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_set_icon_default" drag-set-icon-default) :void
+(cffi:defcfun ("gtk_drag_set_icon_default" drag-set-icon-default) :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[context]{a @class{gdk:drag-context} object for a drag, this must be
@@ -959,7 +962,7 @@
 ;;; gtk_drag_check_threshold ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_check_threshold" drag-check-threshold) :boolean
+(cffi:defcfun ("gtk_drag_check_threshold" drag-check-threshold) :boolean
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} object}
@@ -987,7 +990,7 @@
 ;;; gtk_drag_source_set ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_source_set" %drag-source-set) :void
+(cffi:defcfun ("gtk_drag_source_set" %drag-source-set) :void
   (widget (g:object widget))
   (mask gdk:modifier-type)
   (targets :pointer)
@@ -1013,14 +1016,14 @@
   @see-symbol{gdk:modifier-type}
   @see-symbol{gdk:drag-action}"
   (let ((n-targets (length targets)))
-    (with-foreign-object (targets-ptr '(:struct %target-entry) n-targets)
+    (cffi:with-foreign-object (targets-ptr '(:struct %target-entry) n-targets)
       (loop for i from 0 below n-targets
             for target-ptr = (cffi:mem-aptr targets-ptr
                                             '(:struct %target-entry) i)
             for entry in targets
-            do (with-foreign-slots ((target flags info)
-                                    target-ptr
-                                    (:struct %target-entry))
+            do (cffi:with-foreign-slots ((target flags info)
+                                         target-ptr
+                                         (:struct %target-entry))
                  (setf target (first entry))
                  (setf flags (second entry))
                  (setf info (third entry))))
@@ -1032,7 +1035,8 @@
 ;;; gtk_drag_source_set_icon_pixbuf ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_source_set_icon_pixbuf" drag-source-set-icon-pixbuf) :void
+(cffi:defcfun ("gtk_drag_source_set_icon_pixbuf" drag-source-set-icon-pixbuf)
+    :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} object}
@@ -1054,7 +1058,8 @@
 ;;; gtk_drag_source_set_icon_stock ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_source_set_icon_stock" drag-source-set-icon-stock) :void
+(cffi:defcfun ("gtk_drag_source_set_icon_stock" drag-source-set-icon-stock)
+     :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} object}
@@ -1079,7 +1084,7 @@
 ;;; gtk_drag_source_set_icon_name ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_source_set_icon_name" drag-source-set-icon-name) :void
+(cffi:defcfun ("gtk_drag_source_set_icon_name" drag-source-set-icon-name) :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} object}
@@ -1100,7 +1105,8 @@
 ;;; gtk_drag_source_set_icon_gicon ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_source_set_icon_gicon" drag-source-set-icon-gicon) :void
+(cffi:defcfun ("gtk_drag_source_set_icon_gicon" drag-source-set-icon-gicon)
+    :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} object}
@@ -1122,7 +1128,7 @@
 ;;; gtk_drag_source_unset ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_source_unset" drag-source-unset) :void
+(cffi:defcfun ("gtk_drag_source_unset" drag-source-unset) :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} object}
@@ -1147,7 +1153,7 @@
                         :void)
   tlist)
 
-(defcfun ("gtk_drag_source_get_target_list" drag-source-target-list)
+(cffi:defcfun ("gtk_drag_source_get_target_list" drag-source-target-list)
     (g:boxed target-list)
  #+liber-documentation
  "@version{#2023-3-17}
@@ -1176,7 +1182,8 @@
 ;;; gtk_drag_source_add_text_targets ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_source_add_text_targets" drag-source-add-text-targets) :void
+(cffi:defcfun ("gtk_drag_source_add_text_targets" drag-source-add-text-targets)
+    :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} object that is a drag source}
@@ -1199,8 +1206,8 @@
 ;;; gtk_drag_source_add_image_targets ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_source_add_image_targets" drag-source-add-image-targets)
-    :void
+(cffi:defcfun ("gtk_drag_source_add_image_targets"
+               drag-source-add-image-targets) :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} object that is a drag source}
@@ -1222,7 +1229,8 @@
 ;;; gtk_drag_source_add_uri_targets ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_drag_source_add_uri_targets" drag-source-add-uri-targets) :void
+(cffi:defcfun ("gtk_drag_source_add_uri_targets" drag-source-add-uri-targets)
+    :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} object that is a drag source}

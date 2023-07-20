@@ -58,7 +58,7 @@
 ;;; struct GtkGestureRotate
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkGestureRotate" gesture-rotate
+(gobject:define-g-object-class "GtkGestureRotate" gesture-rotate
   (:superclass gesture
    :export t
    :interfaces nil
@@ -115,7 +115,7 @@ lambda (gesture angle delta)    :run-first
 ;;; gtk_gesture_rotate_get_angle_delta ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_gesture_rotate_get_angle_delta" gesture-rotate-angle-delta)
+(cffi:defcfun ("gtk_gesture_rotate_get_angle_delta" gesture-rotate-angle-delta)
     :double
  #+liber-documentation
  "@version{#2023-3-6}

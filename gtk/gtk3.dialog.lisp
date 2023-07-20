@@ -105,7 +105,7 @@
 ;;; enum GtkDialogFlags
 ;;; ----------------------------------------------------------------------------
 
-(define-g-flags "GtkDialogFlags" dialog-flags
+(gobject:define-g-flags "GtkDialogFlags" dialog-flags
   (:export t
    :type-initializer "gtk_dialog_flags_get_type")
   (:modal               #.(ash 1 0))
@@ -121,7 +121,7 @@
     Flags used to influence the @class{gtk:dialog} widget construction.
   @end{short}
   @begin{pre}
-(define-g-flags \"GtkDialogFlags\" dialog-flags
+(gobject:define-g-flags \"GtkDialogFlags\" dialog-flags
   (:export t
    :type-initializer \"gtk_dialog_flags_get_type\")
   (:modal               #.(ash 1 0))
@@ -144,7 +144,7 @@
 ;;; enum GtkResponseType
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GtkResponseType" response-type
+(gobject:define-g-enum "GtkResponseType" response-type
   (:export t
    :type-initializer "gtk_response_type_get_type")
   (:none -1)
@@ -171,7 +171,7 @@
   All predefined values are negative, GTK leaves positive values for application
   defined response IDs.
   @begin{pre}
-(define-g-enum \"GtkResponseType\" response-type
+(gobject:define-g-enum \"GtkResponseType\" response-type
   (:export t
    :type-initializer \"gtk_response_type_get_type\")
   (:none -1)
@@ -207,7 +207,7 @@
 ;;; struct GtkDialog
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GtkDialog" dialog
+(gobject:define-g-object-class "GtkDialog" dialog
   (:superclass window
    :export t
    :interfaces ("AtkImplementorIface"
@@ -567,7 +567,7 @@ lambda (dialog response)    :run-last
 ;;; gtk_dialog_run ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_dialog_run" dialog-run) response-type
+(cffi:defcfun ("gtk_dialog_run" dialog-run) response-type
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[dialog]{a @class{gtk:dialog} widget}
@@ -626,7 +626,7 @@ lambda (dialog response)    :run-last
 ;;; gtk_dialog_response ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_dialog_response" dialog-response) :void
+(cffi:defcfun ("gtk_dialog_response" dialog-response) :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[dialog]{a @class{gtk:dialog} widget}
@@ -650,7 +650,7 @@ lambda (dialog response)    :run-last
 ;;; gtk_dialog_add_button ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_dialog_add_button" dialog-add-button) (g:object widget)
+(cffi:defcfun ("gtk_dialog_add_button" dialog-add-button) (g:object widget)
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[dialog]{a @class{gtk:dialog} widget}
@@ -709,7 +709,7 @@ lambda (dialog response)    :run-last
 ;;; gtk_dialog_add_action_widget ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_dialog_add_action_widget" dialog-add-action-widget) :void
+(cffi:defcfun ("gtk_dialog_add_action_widget" dialog-add-action-widget) :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[dialog]{a @class{gtk:dialog} widget}
@@ -739,7 +739,8 @@ lambda (dialog response)    :run-last
 ;;; gtk_dialog_set_default_response ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_dialog_set_default_response" dialog-set-default-response) :void
+(cffi:defcfun ("gtk_dialog_set_default_response" dialog-set-default-response)
+    :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[dialog]{a @class{gtk:dialog} widget}
@@ -761,8 +762,8 @@ lambda (dialog response)    :run-last
 ;;; gtk_dialog_set_response_sensitive ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_dialog_set_response_sensitive" dialog-set-response-sensitive)
-    :void
+(cffi:defcfun ("gtk_dialog_set_response_sensitive"
+               dialog-set-response-sensitive) :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[dialog]{a @class{gtk:dialog} widget}
@@ -787,7 +788,8 @@ lambda (dialog response)    :run-last
 ;;; gtk_dialog_get_response_for_widget () -> dialog-response-for-widget
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_dialog_get_response_for_widget" dialog-response-for-widget) :int
+(cffi:defcfun ("gtk_dialog_get_response_for_widget" dialog-response-for-widget)
+    :int
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[dialog]{a @class{gtk:dialog} widget}
@@ -812,7 +814,7 @@ lambda (dialog response)    :run-last
 ;;; gtk_dialog_get_widget_for_response ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_dialog_get_widget_for_response" dialog-widget-for-response)
+(cffi:defcfun ("gtk_dialog_get_widget_for_response" dialog-widget-for-response)
     (g:object widget)
  #+liber-documentation
  "@version{#2023-3-17}
@@ -838,7 +840,8 @@ lambda (dialog response)    :run-last
 ;;; gtk_dialog_get_action_area () -> dialog-action-area
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_dialog_get_action_area" dialog-action-area) (g:object widget)
+(cffi:defcfun ("gtk_dialog_get_action_area" dialog-action-area)
+    (g:object widget)
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[dialog]{a @class{gtk:dialog} widget}
@@ -862,7 +865,8 @@ lambda (dialog response)    :run-last
 ;;; gtk_dialog_get_content_area () -> dialog-content-area
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_dialog_get_content_area" dialog-content-area) (g:object widget)
+(cffi:defcfun ("gtk_dialog_get_content_area" dialog-content-area)
+    (g:object widget)
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[dialog]{a @class{gtk:dialog} widget}
@@ -881,7 +885,7 @@ lambda (dialog response)    :run-last
 ;;; gtk_dialog_get_header_bar () -> dialog-header-bar
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_dialog_get_header_bar" dialog-header-bar) (g:object widget)
+(cffi:defcfun ("gtk_dialog_get_header_bar" dialog-header-bar) (g:object widget)
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[dialog]{a @class{gtk:dialog} widget}
@@ -902,8 +906,8 @@ lambda (dialog response)    :run-last
 ;;; gtk_alternative_dialog_button_order ()                 not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gtk_alternative_dialog_button_order" alternative-dialog-button-order)
-    :boolean
+(cffi:defcfun ("gtk_alternative_dialog_button_order"
+               alternative-dialog-button-order) :boolean
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[screen]{a @class{gdk:screen} object, or @code{nil} to use the
@@ -985,7 +989,7 @@ lambda (dialog response)    :run-last
   @see-class{gtk:message-dialog}
   @see-symbol{gtk:response-type}
   @see-function{gtk:settings-gtk-alternative-button-order}"
-  (with-foreign-object (new-order 'response-type (length response))
+  (cffi:with-foreign-object (new-order 'response-type (length response))
     (loop for i from 0
           for id in response
           do (setf (cffi:mem-aref new-order 'response-type i) id))
@@ -1001,8 +1005,8 @@ lambda (dialog response)    :run-last
 ;; This function is for internal use and not exported.
 ;; The function is called from gtk:dialog-set-alternative-button-order.
 
-(defcfun ("gtk_dialog_set_alternative_button_order_from_array"
-          %dialog-set-alternative-button-order-from-array) :void
+(cffi:defcfun ("gtk_dialog_set_alternative_button_order_from_array"
+               %dialog-set-alternative-button-order-from-array) :void
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[dialog]{a @class{gtk:dialog} widget}
