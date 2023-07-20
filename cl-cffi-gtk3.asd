@@ -24,7 +24,7 @@
 
 (defsystem :cl-cffi-gtk3
   :name "cl-cffi-gtk3"
-  :version "0.1.0"
+  :version "0.2.0"
   :author "Dieter Kaiser"
   :license "MIT"
   :serial t
@@ -70,7 +70,7 @@
     ((:file "gtk3.package")
 
      ;; Gtk+ Core
-     (:file "gtk3.version")               ; Version Information
+     (:file "gtk3.version")
      (:file "gtk3.enumerations")          ; Standard Enumerations
      (:file "gtk3.main-loop")             ; Main event loop, and events
      (:file "gtk3.accel-group")           ; Accelerator Groups
@@ -390,7 +390,7 @@
     (;; GTK tests
      (:file "rtest-gtk3")
      ;; Gtk+ Core
-     (:file "rtest-gtk3-version")        ; Version Information
+     (:file "rtest-gtk3-version")
      (:file "rtest-gtk3-enumerations")   ; Standard Enumerations
      (:file "rtest-gtk3-main-loop")      ; Main event loop, and events
      (:file "rtest-gtk3-accel-group")    ; Accelerator Groups
@@ -641,17 +641,14 @@
      (:file "rtest-gtk3-paper-size")      ; Support for named paper sizes
      (:file "rtest-gtk3-print-settings")  ; Stores print settings
      (:file "rtest-gtk3-page-setup")      ; Stores page setup information
-     #-win32
-     (:file "rtest-gtk3-print-unix-dialog"); A print dialog
-     #-win32
-     (:file "rtest-gtk3-page-setup-unix-dialog"); A page setup dialog
-     #-win32
-     (:file "rtest-gtk3-printer")         ; Represents a printer
-     #-win32
-     (:file "rtest-gtk3-print-job")       ; Represents a print job
+
+     (:file "rtest-gtk3-print-unix-dialog" :if-feature (:not :windows))
+     (:file "rtest-gtk3-page-setup-unix-dialog" :if-feature (:not :windows))
+     (:file "rtest-gtk3-printer" :if-feature (:not :windows))
+     (:file "rtest-gtk3-print-job" :if-feature (:not :windows))
 
      ;; Shortcuts Overview
-;    (:file "gtk.shortcuts-window")       ; Toplevel which shows help for shortcuts
+     (:file "rtest-gtk3-shortcuts-window")
 ;    (:file "gtk.shortcuts-section")      ; An app mode in a GtkShortcutsWindow
 ;    (:file "gtk.shortcuts-group")        ; Represents a group of shortcuts
 ;    (:file "gtk.shortcuts-shortcut")     ; Represents a keyboard shortcut

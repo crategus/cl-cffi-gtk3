@@ -48,6 +48,17 @@
 (unexport 'glib:with-catching-to-g-error :glib)
 (unexport 'glib:with-g-error :glib)
 (unexport 'glib:with-ignore-g-error :glib)
+(unexport 'glib:get-boxed-info :glib)
+(unexport 'glib:boxed :glib)
+(unexport 'glib:gtype :glib)
+(unexport 'glib:gtype-id :glib)
+(unexport 'glib:gtype-name :glib)
+(unexport 'glib:symbol-for-gtype :glib)
+(unexport 'glib:define-g-boxed-cstruct :glib)
+(unexport 'glib:define-g-boxed-opaque :glib)
+(unexport 'glib:define-g-boxed-variant-cstruct :glib)
+(unexport 'glib:with-foreign-boxed-array :glib)
+(unexport 'glib:*warn-unknown-gtype* :glib)
 
 (unexport 'gobject:*debug-gc* :gobject)
 (unexport 'gobject:*debug-subclass* :gobject)
@@ -73,14 +84,21 @@
 (unexport 'gobject:flags-item-nick :gobject)
 (unexport 'gobject:flags-item-value :gobject)
 (unexport 'gobject:gobject-class :gobject)
-(unexport 'gobject:gobject-class-direct-g-type-name :gobject)
-(unexport 'gobject:gobject-class-g-type-initializer :gobject)
-(unexport 'gobject:gobject-class-g-type-name :gobject)
 (unexport 'gobject:gobject-class-interface-p :gobject)
 (unexport 'gobject:parse-g-value :gobject)
 (unexport 'gobject:set-g-value :gobject)
 (unexport 'gobject::g-initially-unowned :gobject)
 (unexport 'gobject:lisp-closure :gobject)
+(unexport 'gobject:get-lisp-name-exception :gobject)
+(unexport 'gobject:register-object-type-implementation :gobject)
+(unexport 'gobject:initially-unowned :gobject)
+
+#-windows
+(progn
+  (unexport 'gdk:x11-cursor :gdk)
+  (unexport 'gdk:x11-device-manager-core :gdk)
+  (unexport 'gdk:x11-device-manager-xi2 :gdk)
+  (unexport 'gdk:x11-device-xi2 :gdk))
 
 (unexport 'gtk:ensure-gtk-main :gtk)
 
