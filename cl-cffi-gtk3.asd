@@ -24,7 +24,7 @@
 
 (defsystem :cl-cffi-gtk3
   :name "cl-cffi-gtk3"
-  :version "0.2.0"
+  :version "0.3.0"
   :author "Dieter Kaiser"
   :license "MIT"
   :serial t
