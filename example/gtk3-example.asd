@@ -2,7 +2,8 @@
 
 (asdf:defsystem :gtk3-example
   :author "Dieter Kaiser"
-  :license "LLGPL"
+  :version "0.1.0"
+  :license "MIT"
   :serial t
   :depends-on (:cl-cffi-gtk3 :split-sequence)
   :components ((:file "gtk3-example")
@@ -149,4 +150,4 @@
                (:file "window-simple-demo")
               ))
 
-;;; --- 2023-2-12 --------------------------------------------------------------
+;;; --- 2023-7-24 --------------------------------------------------------------
