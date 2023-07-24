@@ -1,25 +1,28 @@
-;;;; Example Dialog Windows - 2022-12-20
+;;;; Example Dialog Windows - 2023-7-24
 
 (in-package :gtk3-example)
 
 (defun dialog-license-text ()
   (format nil
-          "This program is free software: you can redistribute it and/or ~
-          modify it under the terms of the GNU Lesser General Public ~
-          License for Lisp as published by the Free Software Foundation, ~
-          either version 3 of the License, or (at your option) any later ~
-          version and with a preamble to the GNU Lesser General Public ~
-          License that clarifies the terms for use with Lisp programs and ~
-          is referred as the LLGPL.~%~% ~
-          This program is distributed in the hope that it will be useful, ~
-          but WITHOUT ANY WARRANTY; without even the implied warranty of ~
-          MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the ~
-          GNU Lesser General Public License for more details. ~%~% ~
-          You should have received a copy of the GNU Lesser General Public ~
-          License along with this program and the preamble to the Gnu ~
-          Lesser General Public License.  If not, see ~
-          <http://www.gnu.org/licenses/> and ~
-          <http://opensource.franz.com/preamble.html>."))
+          "Permission is hereby granted, free of charge, to any person ~
+           obtaining a copy of this software and associated documentation ~
+           files (the 'Software'), to deal in the Software without ~
+           restriction, including without limitation the rights to use, copy, ~
+           modify, merge, publish, distribute, sublicense, and/or sell copies ~
+           of the Software, and to permit persons to whom the Software is ~
+           furnished to do so, subject to the following conditions: ~
+           ~%~% ~
+           The above copyright notice and this permission notice shall be ~
+           included in all copies or substantial portions of the Software. ~
+           ~%~% ~
+           THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, ~
+           EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF ~
+           MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND ~
+           NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS ~
+           BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ~
+           ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN ~
+           CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE ~
+           SOFTWARE."))
 
 (defun create-dialog (&optional (headerbar-p -1))
   (let ((dialog (make-instance 'gtk:dialog
@@ -65,22 +68,21 @@
     (gtk:widget-destroy dialog)))
 
 (defun create-about-dialog (&optional (headerbar-p 1))
-  (let ((dialog (make-instance 'gtk:about-dialog
-                               :use-header-bar headerbar-p
-                               :program-name "GTK Demo"
-                               :version "0.00"
-                               :copyright "(c) Dieter Kaiser"
-                               :website
-                               "github.com/crategus/cl-cffi-gtk"
-                               :website-label "Project web site"
-                               :license (dialog-license-text)
-                               :authors '("Kalyanov Dmitry"
-                                          "Dieter Kaiser")
-                               :documenters '("Dieter Kaiser")
-                               :artists '("None")
-                               :logo-icon-name
-                               "applications-development"
-                               :wrap-license t)))
+  (let* ((version (asdf:component-version (asdf:find-system :gtk3-example nil)))
+         (dialog (make-instance 'gtk:about-dialog
+                                :use-header-bar headerbar-p
+                                :program-name "GTK Demo"
+                                :version version
+                                :copyright "(c) Dieter Kaiser"
+                                :website
+                                "github.com/crategus/cl-cffi-gtk"
+                                :website-label "Project web site"
+                                :license (dialog-license-text)
+                                :authors '("Dieter Kaiser")
+                                :documenters '("Dieter Kaiser")
+                                :artists '("None")
+                                :logo-icon-name "applications-development"
+                                :wrap-license t)))
     ;; Run the about dialog
     (gtk:dialog-run dialog)
     ;; Destroy the about dialog
