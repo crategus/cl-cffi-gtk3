@@ -26,7 +26,8 @@
     (g:signal-connect button "clicked"
        (lambda (widget)
          (declare (ignore widget))
-         (let* ((pixbuf (gdk:pixbuf-new-from-file (sys-path "save.png")))
+         (let* ((path (sys-path "resource/save.png"))
+                (pixbuf (gdk:pixbuf-new-from-file path))
                 (buffer (gtk:text-view-buffer textview))
                 (cursor (gtk:text-buffer-get-insert buffer))
                 (iter (gtk:text-buffer-iter-at-mark buffer cursor)))

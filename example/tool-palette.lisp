@@ -162,7 +162,7 @@
 
 (defun canvas-draw (widget cr)
   (declare (ignore widget))
-  (let ((cr (gobject:pointer cr)))
+  (let ((cr (glib:boxed-opaque-pointer cr)))
 
     (cairo:set-source-rgb cr 1.0 1.0 1.0)
     (cairo:paint cr)

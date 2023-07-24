@@ -306,7 +306,7 @@
                              (- height header-height))))
 
 (defun draw-callback (widget cr)
-  (let* ((cr (gobject:pointer cr))
+  (let* ((cr (glib:boxed-opaque-pointer cr))
          (x 0) (y 0)
          (width (gtk:widget-allocated-width widget))
          (height (gtk:widget-allocated-height widget))

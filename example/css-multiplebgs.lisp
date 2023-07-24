@@ -95,7 +95,7 @@
       (g:signal-connect area "draw"
           (lambda (widget cr)
             (let ((context (gtk:widget-style-context widget))
-                  (cr (gobject:pointer cr))
+                  (cr (glib:boxed-opaque-pointer cr))
                   (width (gtk:widget-allocated-width widget))
                   (height (gtk:widget-allocated-height widget)))
               (gtk:render-background context cr 0 0 width height)

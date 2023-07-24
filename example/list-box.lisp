@@ -26,14 +26,14 @@
                 :accessor gtk-message-n-favorites)
    (n-reshares :initform 0
                :accessor gtk-message-n-reshares))
-  (:g-type-name . "GtkMessage")
-  (:metaclass gobject-class))
+  (:gname . "GtkMessage")
+  (:metaclass gobject:gobject-class))
 
 (gobject::register-object-type-implementation "GtkMessage"   ; name
-                                     gtk-message             ; class
-                                     "GObject"               ; parent
-                                     nil                     ; interfaces
-                                     nil)                    ; properties
+                                              gtk-message    ; class
+                                              "GObject"      ; parent
+                                              nil            ; interfaces
+                                              nil)           ; properties
 
 (defun gtk-message-new (str)
   (let ((msg (make-instance 'gtk-message))
@@ -74,14 +74,14 @@
    (n-favorites-label :accessor gtk-message-row-n-favorites-label)
    (n-reshares-label :accessor gtk-message-row-n-reshares-label)
    (expand-button :accessor gtk-message-row-expand-button))
-  (:g-type-name . "GtkMessageRow")
-  (:metaclass gobject-class))
+  (:gname . "GtkMessageRow")
+  (:metaclass gobject:gobject-class))
 
-(gobject::register-object-type-implementation "GtkMessageRow"         ; name
-                                     gtk-message-row        ; class
-                                     "GtkListBoxRow"         ; parent
-                                     nil                     ; interfaces
-                                     nil)                    ; properties
+(gobject::register-object-type-implementation "GtkMessageRow"   ; name
+                                              gtk-message-row   ; class
+                                              "GtkListBoxRow"   ; parent
+                                              nil               ; interfaces
+                                              nil)              ; properties
 
 (defun gtk-message-row-expand (row)
   (let* ((revealer (gtk-message-row-details-revealer row))

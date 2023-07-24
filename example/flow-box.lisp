@@ -169,7 +169,7 @@
     (g:signal-connect area "draw"
         (lambda (widget cr)
           (declare (ignore widget))
-          (let ((cr (gobject:pointer cr))
+          (let ((cr (glib:boxed-opaque-pointer cr))
                 (rgba (gdk:rgba-parse color)))
             (when rgba
               (gdk:cairo-set-source-rgba cr rgba)

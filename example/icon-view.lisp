@@ -1,5 +1,7 @@
 ;;;; Example Icon View Content Type - 2023-2-12
 
+;; TODO: On Windows we do not get any icons. Can this be improved?
+
 (in-package :gtk3-example)
 
 (let ((col-icon 0) (col-icon-name 1) (col-mime-type 2) (col-desc 3))
@@ -13,7 +15,8 @@
           (icon-theme (gtk:icon-theme-default)))
       (dolist (mime-type data)
         (let* ((description (g:content-type-description mime-type))
-               (icon-name (g:content-type-generic-icon-name mime-type))
+               (name (g:content-type-generic-icon-name mime-type))
+               (icon-name (if name name ""))
                (icon (gtk:icon-theme-load-icon icon-theme
                                                icon-name
                                                24

@@ -88,8 +88,8 @@
                                      :use-markup t
                                      :label
                                      "<b>Image loaded from a file</b>"))
-               (pixbuf (gdk:pixbuf-new-from-file
-                   (sys-path "resource/gtk3-demo.png")))
+               (path (sys-path "resource/gtk3-demo.png"))
+               (pixbuf (gdk:pixbuf-new-from-file path))
                (image (gtk:image-new-from-pixbuf pixbuf)))
           (gtk:container-add vgrid label)
           (gtk:container-add vgrid image))
@@ -100,7 +100,8 @@
                                      :use-markup t
                                      :label
                                      "<b>Animation loaded from a file</b>"))
-               (image (gtk:image-new-from-file (sys-path "spinner.gif"))))
+               (path (sys-path "resource/spinner.gif"))
+               (image (gtk:image-new-from-file path)))
           (gtk:container-add vgrid label)
           (gtk:container-add vgrid image))
         ;; Symbolic icon

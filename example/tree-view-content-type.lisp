@@ -11,7 +11,9 @@
           (icon-theme (gtk:icon-theme-default)))
       (dolist (mime-type data)
         (let* ((description (g:content-type-description mime-type))
-               (icon-name (g:content-type-generic-icon-name mime-type))
+               (name (g:content-type-generic-icon-name mime-type))
+               ;; gtk:icon-theme-load-icon does not accept nil for the icon-name
+               (icon-name (if name name ""))
                (icon (gtk:icon-theme-load-icon icon-theme
                                                icon-name
                                                24
