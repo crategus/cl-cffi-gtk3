@@ -1645,7 +1645,8 @@
     @end{subsection}
   @end{section}
   @begin[Tree, List and Icon Grid Widgets]{section}
-    Overview of @class{gtk:tree-model}, @class{gtk:tree-view}, and friends.
+    Overview of the @class{gtk:tree-model} interface, the @class{gtk:tree-view}
+    widget, and friends.
 
     @subheading{Overview}
       To create a tree or list in GTK, use the @class{gtk:tree-model} interface
@@ -1653,17 +1654,21 @@
       designed around a Model/View/Controller design and consists of four major
       parts:
       @begin{itemize}
-        @item{The tree view widget (@class{gtk:tree-view}).}
-        @item{The view column (@class{gtk:tree-view-column}).}
-        @item{The cell renderers (@class{gtk:cell-renderer} etc.).}
-        @item{The model interface (@class{gtk:tree-model}).}
+        @item{The tree view widget represented by the @class{gtk:tree-view}
+          widget.}
+        @item{The view column represented by the @class{gtk:tree-view-column}
+          object.}
+        @item{The cell renderers represented by the @class{gtk:cell-renderer}
+          object etc.}
+        @item{The model interface represented by the @class{gtk:tree-model}
+          interface.}
       @end{itemize}
       The View is composed of the first three objects, while the last is the
       Model. One of the prime benefits of the MVC design is that multiple views
       can be created of a single model. For example, a model mapping the file
-      system could be created for a file manager. Many views could be created to
-      display various parts of the file system, but only one copy need be kept
-      in memory.
+      system could be created for a file manager. Many views could be created
+      to display various parts of the file system, but only one copy need be
+      kept in memory.
 
       The purpose of the cell renderers is to provide extensibility to the
       widget and to allow multiple ways of rendering the same type of data. For
@@ -1673,11 +1678,12 @@
 
     @subheading{Creating a model}
       GTK provides two simple models that can be used: the
-      @class{gtk:list-store} and the @class{gtk:tree-store}.
-      @class{gtk:list-store} is used to model list widgets, while the
-      @class{gtk:tree-store} models trees. It is possible to develop a new type
-      of model, but the existing models should be satisfactory for all but the
-      most specialized of situations. Creating the model is quite simple:
+      @class{gtk:list-store} object and the @class{gtk:tree-store} object.
+      The @class{gtk:list-store} object is used to model list widgets, while
+      the @class{gtk:tree-store} object models trees. It is possible to develop
+      a new type of model, but the existing models should be satisfactory for
+      all but the most specialized of situations. Creating the model is quite
+      simple:
       @begin{pre}
 GtkListStore *store = gtk_list_store_new (2, G_TYPE_STRING, G_TYPE_BOOLEAN);
       @end{pre}
@@ -1701,14 +1707,15 @@ GtkTreeStore *store = gtk_tree_store_new (N_COLUMNS,       /* Total number of co
                                           G_TYPE_STRING,   /* Author                  */
                                           G_TYPE_BOOLEAN); /* Is checked out?         */
       @end{pre}
-      Adding data to the model is done using @fun{gtk:tree-store-set} or
-      @fun{gtk:list-store-set}, depending upon which sort of model was created.
-      To do this, a @class{gtk:tree-iter} must be acquired. The iterator points
-      to the location where data will be added.
+      Adding data to the model is done using the @fun{gtk:tree-store-set}
+      function or the @fun{gtk:list-store-set} function, depending upon which
+      sort of model was created. To do this, a @class{gtk:tree-iter} iterator
+      must be acquired. The iterator points to the location where data will be
+      added.
 
-      Once an iterator has been acquired, @fun{gtk:tree-store-set} is used to
-      apply data to the part of the model that the iterator points to. Consider
-      the following example:
+      Once an iterator has been acquired, the @fun{gtk:tree-store-set} function
+      is used to apply data to the part of the model that the iterator points
+      to. Consider the following example:
       @begin{pre}
 GtkTreeIter   iter;
 
@@ -1725,11 +1732,11 @@ gtk_tree_store_set (store, &iter,
       arguments. It can be used to set the data in any or all columns in a given
       row.
 
-      The third argument to @fun{gtk:tree-store-append} is the parent iterator.
-      It is used to add a row to a @class{gtk:tree-store} as a child of an
-      existing row. This means that the new row will only be visible when its
-      parent is visible and in its expanded state. Consider the following
-      example:
+      The third argument to the @fun{gtk:tree-store-append} function is the
+      parent iterator. It is used to add a row to a @class{gtk:tree-store}
+      object as a child of an existing row. This means that the new row will
+      only be visible when its parent is visible and in its expanded state.
+      Consider the following example:
       @begin{pre}
 GtkTreeIter iter1;  /* Parent iter */
 GtkTreeIter iter2;  /* Child iter  */
@@ -1760,8 +1767,9 @@ gtk_tree_store_set (store, &iter2,
     @subheading{Creating the view component}
       While there are several different models to choose from, there is only one
       view widget to deal with. It works with either the list or the tree store.
-      Setting up a @class{gtk:tree-view} is not a difficult matter. It needs a
-      @class{gtk:tree-model} to know where to retrieve its data from.
+      Setting up a @class{gtk:tree-view} widget is not a difficult matter. It
+      needs a @class{gtk:tree-model} object to know where to retrieve its data
+      from.
       @begin{pre}
 GtkWidget *tree;
 
@@ -1773,16 +1781,16 @@ Columns and cell renderers
       how to display the model. It does this with columns and cell renderers.
 
       Cell renderers are used to draw the data in the tree model in a way. There
-      are a number of cell renderers that come with GTK 2.x, including the
+      are a number of cell renderers that come with GTK, including the
       @class{gtk:cell-renderer-text}, @class{gtk:cell-renderer-pixbuf} and the
-      @class{gtk:cell-renderer-toggle}. It is relatively easy to write a custom
-      renderer.
+      @class{gtk:cell-renderer-toggle} objects. It is relatively easy to write
+      a custom renderer.
 
-      A @class{gtk:tree-view-column} is the object that @class{gtk:tree-view}
-      uses to organize the vertical columns in the tree view. It needs to know
-      the name of the column to label for the user, what type of cell renderer
-      to use, and which piece of data to retrieve from the model for a given
-      row.
+      A @class{gtk:tree-view-column} object is the object that the
+      @class{gtk:tree-view} widget uses to organize the vertical columns in the
+      tree view. It needs to know the name of the column to label for the user,
+      what type of cell renderer to use, and which piece of data to retrieve
+      from the model for a given row.
       @begin{pre}
 GtkCellRenderer *renderer;
 GtkTreeViewColumn *column;
@@ -1840,7 +1848,7 @@ tree_selection_changed_cb (GtkTreeSelection *selection, gpointer data)
       context of the other widgets. It simply creates a simple model and view,
       and puts them together. Note that the model is never populated with data
       - that is left as an exercise for the reader. More information can be
-      found on this in the GtkTreeModel section.
+      found on this in the @class{gtk:tree-model} documentation.
       @begin{pre}
 enum
 {
@@ -1947,7 +1955,6 @@ setup_tree (void)
       @about-function{tree-iter-user-data}
       @about-function{tree-iter-copy}
       @about-function{tree-iter-free}
-
       @about-symbol{tree-model-flags}
       @about-class{tree-model}
       @about-function{tree-model-flags}
