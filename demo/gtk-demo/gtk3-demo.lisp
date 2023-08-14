@@ -239,7 +239,8 @@
        ":window"
        "example-stack"
        "gtk3-example"
-       "stack.lisp")
+       "stack.lisp"
+       "resource/stack.ui")
       ("Stack Sidebar"
        ":window"
        "example-stack-sidebar"
