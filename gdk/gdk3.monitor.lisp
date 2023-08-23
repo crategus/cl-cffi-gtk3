@@ -4,26 +4,27 @@
 ;;; The documentation of this file is taken from the GDK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk/>.
+;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
 ;;; Copyright (C) 2019 - 2023 Dieter Kaiser
 ;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU Lesser General Public License for Lisp
-;;; as published by the Free Software Foundation, either version 3 of the
-;;; License, or (at your option) any later version and with a preamble to
-;;; the GNU Lesser General Public License that clarifies the terms for use
-;;; with Lisp programs and is referred as the LLGPL.
+;;; Permission is hereby granted, free of charge, to any person obtaining a
+;;; copy of this software and associated documentation files (the "Software"),
+;;; to deal in the Software without restriction, including without limitation
+;;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;;; and/or sell copies of the Software, and to permit persons to whom the
+;;; Software is furnished to do so, subject to the following conditions:
 ;;;
-;;; This program is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU Lesser General Public License for more details.
+;;; The above copyright notice and this permission notice shall be included in
+;;; all copies or substantial portions of the Software.
 ;;;
-;;; You should have received a copy of the GNU Lesser General Public
-;;; License along with this program and the preamble to the Gnu Lesser
-;;; General Public License.  If not, see <http://www.gnu.org/licenses/>
-;;; and <http://opensource.franz.com/preamble.html>.
+;;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+;;; THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;;; DEALINGS IN THE SOFTWARE.
 ;;; ----------------------------------------------------------------------------
 ;;;
 ;;; GdkMonitor
@@ -217,10 +218,10 @@ lambda (monitor)    :run-first
   @argument[object]{a @class{gdk:monitor} object}
   @argument[display]{a @class{gdk:display} object}
   @begin{short}
-    Accessor of the @slot[gdk:monitor]{display} slot of the @class{gdk:monitor} 
+    Accessor of the @slot[gdk:monitor]{display} slot of the @class{gdk:monitor}
     class.
   @end{short}
-  The @sym{gdk:monitor-display} function gets the display that the monitor 
+  The @sym{gdk:monitor-display} function gets the display that the monitor
   belongs to.
 
   Since 3.22
@@ -241,16 +242,16 @@ lambda (monitor)    :run-first
  "@version{#2023-3-6}
   @syntax[]{(gdk:monitor-geometry object) => geometry}
   @argument[object]{a @class{gdk:monitor} object}
-  @argument[geometry]{a @class{gdk:rectangle} instance with the monitor 
+  @argument[geometry]{a @class{gdk:rectangle} instance with the monitor
     geometry}
   @begin{short}
-    Accessor of the @slot[gdk:monitor]{geometry} slot of the 
+    Accessor of the @slot[gdk:monitor]{geometry} slot of the
     @class{gdk:monitor} class.
   @end{short}
-  The @sym{gdk:monitor-geometry} function retrieves the size and position of an 
-  individual monitor within the display coordinate space. The returned geometry 
-  is in \"application pixels\", not in \"device pixels\". See the 
-  @fun{gdk:monitor-scale-factor} function for the internal scale factor that 
+  The @sym{gdk:monitor-geometry} function retrieves the size and position of an
+  individual monitor within the display coordinate space. The returned geometry
+  is in \"application pixels\", not in \"device pixels\". See the
+  @fun{gdk:monitor-scale-factor} function for the internal scale factor that
   maps from monitor coordinates to device pixels.
 
   Since 3.22
@@ -279,7 +280,7 @@ lambda (monitor)    :run-first
     Accessor of the @slot[gdk:monitor]{height-mm} slot of the
     @class{gdk:monitor} class.
   @end{short}
-  The @sym{gdk:monitor-height-mm} function gets the height in millimeters of 
+  The @sym{gdk:monitor-height-mm} function gets the height in millimeters of
   the monitor.
 
   Since 3.22
@@ -306,7 +307,7 @@ lambda (monitor)    :run-first
     Accessor of the @slot[gdk:monitor]{manufacturer} slot of the
     @class{gdk:monitor} class.
   @end{short}
-  The @sym{gdk:monitor-manufacturer} function gets the name of the monitor's 
+  The @sym{gdk:monitor-manufacturer} function gets the name of the monitor's
   manufacturer, if available.
 
   Since 3.22
@@ -329,10 +330,10 @@ lambda (monitor)    :run-first
   @argument[object]{a @class{gdk:monitor} object}
   @argument[model]{a string with the monitor model, or @code{nil}}
   @begin{short}
-    Accessor of the @slot[gdk:monitor]{model} slot of the @class{gdk:monitor} 
+    Accessor of the @slot[gdk:monitor]{model} slot of the @class{gdk:monitor}
     class.
   @end{short}
-  The @sym{gdk:monitor-model} function gets a string identifying the monitor 
+  The @sym{gdk:monitor-model} function gets a string identifying the monitor
   model, if available.
 
   Since 3.22
@@ -359,8 +360,8 @@ lambda (monitor)    :run-first
     Accessor of the @slot[gdk:monitor]{refresh-rate} slot of the
     @class{gdk:monitor} class.
   @end{short}
-  The @sym{gdk:monitor-refresh-rate} function gets the refresh rate of the 
-  monitor, if available. The value is in milli-Hertz, so a refresh rate of 
+  The @sym{gdk:monitor-refresh-rate} function gets the refresh rate of the
+  monitor, if available. The value is in milli-Hertz, so a refresh rate of
   60 Hz is returned as 60000.
 
   Since 3.22
@@ -387,9 +388,9 @@ lambda (monitor)    :run-first
     Accessor of the @slot[gdk:monitor]{scale-factor} slot of the
     @class{gdk:monitor} class.
   @end{short}
-  The @sym{gdk:monitor-scale-factor} function gets the internal scale factor 
-  that maps from monitor coordinates to the actual device pixels. On traditional 
-  systems this is 1, but on very high density outputs this can be a higher value 
+  The @sym{gdk:monitor-scale-factor} function gets the internal scale factor
+  that maps from monitor coordinates to the actual device pixels. On traditional
+  systems this is 1, but on very high density outputs this can be a higher value
   (often 2).
 
   This can be used if you want to create pixel based data for a particular
@@ -416,14 +417,14 @@ lambda (monitor)    :run-first
  "@version{#2023-3-6}
   @syntax[]{(gdk:monitor-subpixel-layout object) => layout}
   @argument[object]{a @class{gdk:monitor} object}
-  @argument[layout]{a @symbol{gdk:subpixel-layout} value with the subpixel 
+  @argument[layout]{a @symbol{gdk:subpixel-layout} value with the subpixel
     layout}
   @begin{short}
     Accessor of the @slot[gdk:monitor]{subpixel-layout} slot of the
     @class{gdk:monitor} class.
   @end{short}
-  The @sym{gdk:monitor-subpixel-layout} function gets information about the 
-  layout of red, green and blue primaries for each pixel in this monitor, if 
+  The @sym{gdk:monitor-subpixel-layout} function gets information about the
+  layout of red, green and blue primaries for each pixel in this monitor, if
   available.
 
   Since 3.22
@@ -451,7 +452,7 @@ lambda (monitor)    :run-first
     Accessor of the @slot[gdk:monitor]{width-mm} slot of the
     @class{gdk:monitor} class.
   @end{short}
-  The @sym{gdk:monitor-width-mm} function gets the width in millimeters of the 
+  The @sym{gdk:monitor-width-mm} function gets the width in millimeters of the
   monitor.
 
   Since 3.22
@@ -471,16 +472,16 @@ lambda (monitor)    :run-first
  "@version{#2023-3-6}
   @syntax[]{(gdk:monitor-workarea object) => workarea}
   @argument[object]{a @class{gdk:monitor} object}
-  @argument[workarea]{a @class{gdk:rectangle} instance with the monitor 
+  @argument[workarea]{a @class{gdk:rectangle} instance with the monitor
     workarea}
   @begin{short}
     Accessor of the @slot[gdk:monitor]{workarea} slot of the
     @class{gdk:monitor} class.
   @end{short}
-  The @sym{gdk:monitor-workarea} function retrieves the size and position of the 
-  \"work area\" on a monitor within the display coordinate space. The returned 
-  geometry is in \"application pixels\", not in \"device pixels\". See the 
-  @fun{gdk:monitor-scale-factor} function for the internal scale factor that 
+  The @sym{gdk:monitor-workarea} function retrieves the size and position of the
+  \"work area\" on a monitor within the display coordinate space. The returned
+  geometry is in \"application pixels\", not in \"device pixels\". See the
+  @fun{gdk:monitor-scale-factor} function for the internal scale factor that
   maps from monitor coordinates to device pixels.
 
   The work area should be considered when positioning menus and similar popups,

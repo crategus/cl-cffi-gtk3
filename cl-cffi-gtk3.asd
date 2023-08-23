@@ -700,7 +700,7 @@
 
 (asdf:defsystem :cl-cffi-gtk3/example
   :author "Dieter Kaiser"
-  :license "LLGPL"
+  :license "MIT"
   :serial t
   :depends-on (:cl-cffi-gtk3 :split-sequence)
   :components
