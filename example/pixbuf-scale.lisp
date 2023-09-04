@@ -36,18 +36,18 @@
          (lambda (widget cr)
            (let ((width (gtk:widget-allocated-width widget))
                  (height (gtk:widget-allocated-height widget)))
-             (cairo:arc (gobject:pointer cr)
+             (cairo:arc (glib:pointer cr)
                         (/ width 2.0d0)
                         (/ height 2.0d0)
                         (/ (min width height) 2.0d0)
                         0.0d0
                         (* 2.0d0 3.14))
              (gdk:cairo-set-source-rgba
-               (gobject:pointer cr)
+               (glib:pointer cr)
                (gtk:style-context-color (gtk:widget-style-context widget)
                                         :normal))
-             (cairo:fill (gobject:pointer cr))
-             (cairo:paint (gobject:pointer cr))
+             (cairo:fill (glib:pointer cr))
+             (cairo:paint (glib:pointer cr))
              nil)))
 
       ;; A Quit button

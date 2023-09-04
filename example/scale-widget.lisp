@@ -90,7 +90,7 @@
            (lambda (widget)
              (let ((pos (gtk:combo-box-text-active-text widget)))
                (format t "type      : ~A~%"
-                         (g:type-from-instance (gobject:pointer widget)))
+                         (g:type-from-instance (glib:pointer widget)))
                (format t "active is : ~A~%"
                          (gtk:combo-box-active widget))
                (setq pos (if pos (intern pos :keyword) :top))
