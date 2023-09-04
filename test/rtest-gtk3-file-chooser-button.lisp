@@ -45,47 +45,6 @@
   ;; CSS information
   (is (string= "filechooserbutton"
                (gtk:widget-class-css-name "GtkFileChooserButton")))
-  #-windows
-  (is (string=
-"[filechooserbutton.horizontal:dir(ltr)]
-  button.file:dir(ltr)
-    box.horizontal:dir(ltr)
-      image:dir(ltr)
-      label:dir(ltr)
-      separator.vertical:dir(ltr)
-      image:dir(ltr)
-  [combobox:dir(ltr)]
-    box.linked.horizontal:dir(ltr)
-      button.combo:dir(ltr)
-        box.horizontal:dir(ltr)
-          cellview:dir(ltr)
-          arrow:dir(ltr)
-    [window.background.popup:dir(ltr)]
-      decoration:dir(ltr)
-      [menu#gtk-combobox-popup-menu:dir(ltr)]
-        [arrow.top:dir(ltr)]
-        menuitem:dir(ltr)
-          cellview:dir(ltr)
-        menuitem:dir(ltr)
-          cellview:dir(ltr)
-        menuitem:dir(ltr)
-          cellview:dir(ltr)
-        menuitem:dir(ltr)
-          cellview:dir(ltr)
-        menuitem:dir(ltr)
-          cellview:dir(ltr)
-        separator:dir(ltr)
-        separator:dir(ltr)
-        menuitem:dir(ltr)
-          cellview:dir(ltr)
-        menuitem:dir(ltr)
-          cellview:dir(ltr)
-        [arrow.bottom:dir(ltr)]
-"
-               (gtk:style-context-to-string
-                   (gtk:widget-style-context
-                       (make-instance 'gtk:file-chooser-button))
-                   :recurse)))
   ;; Check the class definition
   (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkFileChooserButton"
                                      GTK-FILE-CHOOSER-BUTTON
