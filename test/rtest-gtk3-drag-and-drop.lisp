@@ -252,8 +252,9 @@
     (is-false (gtk:drag-source-set source :button1-mask nil :copy))
     (is-false (gtk:drag-source-add-uri-targets source))
     (is (equal '(("text/uri-list" NIL 0)
+                 ("application/vnd.portal.filetransfer" NIL 0)
                  ("application/vnd.portal.files" NIL 0))
                (gtk:target-table-new-from-list
                    (gtk:drag-source-target-list source))))))
 
-;;; --- 2023-7-19 --------------------------------------------------------------
+;;; --- 2023-11-4 --------------------------------------------------------------

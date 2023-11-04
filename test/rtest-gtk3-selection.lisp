@@ -187,7 +187,8 @@
 (test gtk-target-list-add-uri-targets
   (let ((target-list (gtk:target-list-new)))
     (gtk:target-list-add-uri-targets target-list 0)
-    (is (equal '("text/uri-list" "application/vnd.portal.files")
+    (is (equal '("text/uri-list" "application/vnd.portal.filetransfer"
+                 "application/vnd.portal.files")
                (mapcar #'first
                        (gtk:target-table-new-from-list target-list))))))
 
@@ -507,4 +508,4 @@
 ;;;     gtk_selection_data_copy
 ;;;     gtk_selection_data_free
 
-;;; --- 2023-7-19 --------------------------------------------------------------
+;;; --- 2023-11-4 --------------------------------------------------------------
