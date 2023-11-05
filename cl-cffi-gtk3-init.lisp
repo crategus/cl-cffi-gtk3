@@ -51,6 +51,8 @@
                     "libgtk-x11-3.0.dylib"))
       (:windows (:or "libgtk-3-0.dll" "libgtk-win32-2.0-0.dll"))
       (t "libgtk-3-0"))
+    ;; push the hostname on *features*
+    (pushnew (intern (string-upcase (machine-instance)) :keyword) *features*)
     (pushnew :gtk3 *features*))
   (cffi:use-foreign-library gtk3))
 
