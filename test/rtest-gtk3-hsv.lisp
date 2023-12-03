@@ -96,7 +96,7 @@
 (test gtk-hsv-color
   (let ((hsv (gtk:hsv-new)))
     (is-false (gtk:hsv-set-color hsv 0.5d0 0.6d0 0.7d0))
-    (is (equal '(0.5d0 0.6d0 0.7d0) 
+    (is (equal '(0.5d0 0.6d0 0.7d0)
                (multiple-value-list (gtk:hsv-get-color hsv))))))
 
 ;;;     gtk_hsv_set_metrics
@@ -112,17 +112,18 @@
 ;;;     gtk_hsv_to_rgb
 
 (test gtk-rgb-to-hsv
-  (is (equal '(0.0d0 0.0d0 0.0d0) 
+  (is (equal '(0.0d0 0.0d0 0.0d0)
              (multiple-value-list (gtk:hsv-to-rgb 0 0.0 0.0d0))))
-  (is (equal '(0.0d0 0.0d0 0.0d0) 
+  (is (equal '(0.0d0 0.0d0 0.0d0)
              (multiple-value-list (gtk:hsv-to-rgb 0 0.0 1.0d0)))))
 
 ;;;     gtk_rgb_to_hsv
 
 (test gtk-rgb-to-hsv
-  (is (equal '(0.0d0 0.0d0 0.0d0) 
+  (is (equal '(0.0d0 0.0d0 0.0d0)
              (multiple-value-list (gtk:rgb-to-hsv 0 0.0 0.0d0))))
-  (is (equal '(0.0d0 0.0d0 1.0d0) 
+  (is (equal '(0.0d0 0.0d0 1.0d0)
              (multiple-value-list (gtk:rgb-to-hsv 1 1.0 1.0d0)))))
 
-;;; --- 2023-6-15 --------------------------------------------------------------
+;;; --- 2023-12-3 --------------------------------------------------------------
+

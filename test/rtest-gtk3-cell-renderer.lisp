@@ -7,7 +7,7 @@
 
 ;;;     GtkCellRendererState
 
-(test cell-renderer-state
+(test gtk-cell-renderer-state
   ;; Check the type
   (is (g:type-is-flags "GtkCellRendererState"))
   ;; Check the registered name
@@ -29,7 +29,6 @@
   ;; Check the nick names
   (is (equal '("selected" "prelit" "insensitive" "sorted" "focused" "expandable"
                "expanded")
-
              (list-flags-item-nick "GtkCellRendererState")))
   ;; Check the flags definition
   (is (equal '(GOBJECT:DEFINE-G-FLAGS "GtkCellRendererState"
@@ -48,7 +47,7 @@
 
 ;;;     GtkCellRendererMode
 
-(test cell-renderer-mode
+(test gtk-cell-renderer-mode
   ;; Check the type
   (is (g:type-is-enum "GtkCellRendererMode"))
   ;; Check the type initializer
@@ -82,7 +81,7 @@
 
 ;;;     GtkCellRenderer
 
-(test cell-renderer-class
+(test gtk-cell-renderer-class
   ;; Type check
   (is (g:type-is-object "GtkCellRenderer"))
   ;; Check the registered name
@@ -165,10 +164,57 @@
 ;;;     yalign
 ;;;     ypad
 
+(test gtk-cell-renderer-properties
+  (let ((renderer (make-instance 'gtk:cell-renderer-text)))
+    (signals (error) (gtk:cell-renderer-cell-background renderer))
+    (is (typep (gtk:cell-renderer-cell-background-rgba renderer) 'gdk:rgba))
+    (is-false (gtk:cell-renderer-cell-background-set renderer))
+    (is-false (gtk:cell-renderer-editing renderer))
+    (is (= -1 (gtk:cell-renderer-height renderer)))
+    (is-false (gtk:cell-renderer-is-expanded renderer))
+    (is-false (gtk:cell-renderer-is-expander renderer))
+    (is (eq :inert (gtk:cell-renderer-mode renderer)))
+    (is-true (gtk:cell-renderer-sensitive renderer))
+    (is-true (gtk:cell-renderer-visible renderer))
+    (is (= -1 (gtk:cell-renderer-width renderer)))
+    (is (= 0.0 (gtk:cell-renderer-xalign renderer)))
+    (is (= 2 (gtk:cell-renderer-xpad renderer)))
+    (is (= 0.5 (gtk:cell-renderer-yalign renderer)))
+    (is (= 2 (gtk:cell-renderer-ypad renderer)))))
+
 ;;; --- Signals ----------------------------------------------------------------
 
 ;;;     editing-canceled
+
+(test gtk-cell-renderer-editing-canceled-signal
+  ;; Query info for "editing-canceled" signal
+  (let ((query (g:signal-query (g:signal-lookup "editing-canceled"
+                                                "GtkCellRenderer"))))
+    (is (string= "editing-canceled" (g:signal-query-signal-name query)))
+    (is (string= "GtkCellRenderer"
+                 (g:type-name (g:signal-query-owner-type query))))
+    (is (equal '(:RUN-FIRST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    (is (string= "void" (g:type-name (g:signal-query-return-type query))))
+    (is (equal '()
+               (mapcar #'g:type-name (g:signal-query-param-types query))))
+    (is-false (g:signal-query-signal-detail query))))
+
 ;;;     editing-started
+
+(test gtk-cell-renderer-editing-started-signal
+  ;; Query info for "editing-canceled" signal
+  (let ((query (g:signal-query (g:signal-lookup "editing-started"
+                                                "GtkCellRenderer"))))
+    (is (string= "editing-started" (g:signal-query-signal-name query)))
+    (is (string= "GtkCellRenderer"
+                 (g:type-name (g:signal-query-owner-type query))))
+    (is (equal '(:RUN-FIRST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    (is (string= "void" (g:type-name (g:signal-query-return-type query))))
+    (is (equal '("GtkCellEditable" "gchararray")
+               (mapcar #'g:type-name (g:signal-query-param-types query))))
+    (is-false (g:signal-query-signal-detail query))))
 
 ;;; --- Functions --------------------------------------------------------------
 
@@ -177,7 +223,7 @@
 
 ;;;     gtk_cell_renderer_size
 
-(test cell-renderer-size
+(test gtk-cell-renderer-size
   (let ((renderer (make-instance 'gtk:cell-renderer-text)))
     #-windows
     (is (equal '(0 0 4 21)
@@ -200,8 +246,28 @@
 ;;;     gtk_cell_renderer_set_visible                      Accessor
 ;;;     gtk_cell_renderer_get_sensitive                    Accessor
 ;;;     gtk_cell_renderer_set_sensitive                    Accessor
+
 ;;;     gtk_cell_renderer_get_alignment
 ;;;     gtk_cell_renderer_set_alignment
+
+(test gtk-cell-renderer-alignment.1
+  (let ((renderer (make-instance 'gtk:cell-renderer-text)))
+    (is (equal '(0.0 0.5)
+               (multiple-value-list (gtk:cell-renderer-alignment renderer))))
+    (is (equal '(0.2 0.2)
+               (multiple-value-list (setf (gtk:cell-renderer-alignment renderer)
+                                          '(0.2 0.2)))))
+    (is (equal '(0.2 0.2)
+               (multiple-value-list (gtk:cell-renderer-alignment renderer))))))
+
+(test gtk-cell-renderer-alignment.2
+  (let ((renderer (make-instance 'gtk:cell-renderer-text)))
+    (is (equal '(0.5 0.75)
+               (multiple-value-list (setf (gtk:cell-renderer-alignment renderer)
+                                          '(1/2 0.75d0)))))
+    (is (equal '(0.5 0.75)
+               (multiple-value-list (gtk:cell-renderer-alignment renderer))))))
+
 ;;;     gtk_cell_renderer_get_padding
 ;;;     gtk_cell_renderer_set_padding
 ;;;     gtk_cell_renderer_get_state
@@ -213,4 +279,5 @@
 ;;;     gtk_cell_renderer_get_preferred_width_for_height
 ;;;     gtk_cell_renderer_get_request_mode
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; --- 2023-12-3 --------------------------------------------------------------
+
