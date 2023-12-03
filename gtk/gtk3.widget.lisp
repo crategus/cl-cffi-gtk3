@@ -34,7 +34,7 @@
 ;;; Types and Values
 ;;;
 ;;;     GtkWidget
-;;;  	GtkRequisition
+;;;     GtkRequisition
 ;;;     GtkAllocation
 ;;;     GtkWidgetHelpType
 ;;;     GtkTextDirection                                -> gtk.emumerations.lisp
@@ -8140,21 +8140,21 @@ lambda (widget clock)
 
 (defun widget-class-css-name (gtype)
   #+liber-documentation
- "@version{#2023-3-13}
+ "@version{2023-12-2}
   @syntax[]{(gtk:widget-class-css-name gtype) => name}
-  @syntax[]{(setf (gtk:widget-class-csss-name gtype) name)}
-  @argument[gtype]{a string with the widget class to set the CSS name on}
+  @syntax[]{(setf (gtk:widget-class-css-name gtype) name)}
+  @argument[gtype]{a @class{g:type-t} type ID with the widget class to set the
+    CSS name on}
   @argument[name]{a string with the CSS name}
   @begin{short}
     Accessor of the CSS name of the widget class.
   @end{short}
-  The @sym{gtk:widget-class-css-name} function gets the name used by this class
-  for matching in CSS code. The @sym{(setf gtk:widget-class-css-name)} function
-  sets the name to be used for CSS matching of widgets.
-
-  If this function is not called for a given class, the name of the parent
-  class is used.
-  @see-class{gtk:widget}"
+  The @fun{gtk:widget-class-css-name} function gets the name used by this class
+  for matching in CSS code. The @setf{gtk:widget-class-css-name} function sets
+  the name. If this function is not called for a given class, the name of the
+  parent class is used.
+  @see-class{gtk:widget}
+  @see-class{g:type-t}"
   (let ((class (g:type-class-ref gtype)))
     (unwind-protect
       (%widget-class-css-name class)
@@ -8995,3 +8995,4 @@ lambda (widget clock)
 ;;; ----------------------------------------------------------------------------
 
 ;;; --- End of file gtk3.widget.lisp -------------------------------------------
+

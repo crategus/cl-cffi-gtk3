@@ -1088,12 +1088,14 @@ lambda (renderer editable path)    :run-first
 
 (defun (setf cell-renderer-alignment) (value cell)
   (destructuring-bind (xalign yalign) value
-    (cffi:foreign-funcall "gtk_cell_renderer_set_alignment"
-                          (g:object cell-renderer) cell
-                          :float (coerce xalign 'float)
-                          :float (coerce yalign 'float)
-                          :void)
-     (values xalign yalign)))
+    (let ((xalign (coerce xalign 'single-float))
+          (yalign (coerce yalign 'single-float)))
+      (cffi:foreign-funcall "gtk_cell_renderer_set_alignment"
+                            (g:object cell-renderer) cell
+                            :float xalign
+                            :float yalign
+                            :void)
+       (values xalign yalign))))
 
 (cffi:defcfun ("gtk_cell_renderer_get_alignment" %cell-renderer-alignment) :void
   (cell (g:object cell-renderer))
@@ -1102,18 +1104,19 @@ lambda (renderer editable path)    :run-first
 
 (defun cell-renderer-alignment (cell)
  #+liber-documentation
- "@version{#2023-2-22}
+ "@version{2023-12-3}
   @syntax[]{(gtk:cell-renderer-alignment cell) => xalign, yalign}
   @syntax[]{(setf (gtk:cell-renderer-alignment cell) (list xalign yalign))}
   @argument[cell]{a @class{gtk:cell-renderer} object}
   @argument[xalign]{a float with the x alignment of the cell renderer}
   @argument[yalign]{a float with the y alignment of the cell renderer}
   @begin{short}
-    The @sym{gtk:cell-renderer-alignment} function returns the appropriate
-    @arg{xalign} and @arg{yalign} of @arg{cell}.
+    The @fun{gtk:cell-renderer-alignment} function returns the appropriate
+    @arg{xalign} and @arg{yalign} values of the cell renderer.
   @end{short}
-  The @sym{(setf gtk:cell-renderer-alignment)} function sets the cell renderer's
-  alignment within its available space.
+  The @setf{gtk:cell-renderer-alignment} function sets the alignment of the
+  cell renderer within its available space.The @arg{xalign} and @arg{yalign}
+  values are coerced to float values before assignment.
   @see-class{gtk:cell-renderer}"
   (cffi:with-foreign-objects ((xalign :float) (yalign :float))
     (%cell-renderer-alignment cell xalign yalign)
@@ -1414,3 +1417,4 @@ lambda (renderer editable path)    :run-first
 (export 'cell-renderer-request-mode)
 
 ;;; --- End of file gtk3.cell-renderer.lisp ------------------------------------
+

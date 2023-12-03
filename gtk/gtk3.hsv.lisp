@@ -291,14 +291,14 @@ lambda (hsv direction)    :action
 
 (defun hsv-to-rgb (h s v)
  #+liber-documentation
- "@version{2023-6-15}
-  @argument[h]{a double float hue component}
-  @argument[s]{a double float saturation component}
-  @argument[v]{a double float value component}
+ "@version{2023-12-3}
+  @argument[h]{a number coerced to a double float with the hue component}
+  @argument[s]{a number coerced to a double float with the saturation component}
+  @argument[v]{a number coerced to a double float with the value component}
   @begin{return}
-    @arg{r} -- a double float red component @br{}
-    @arg{g} -- a double float green component @br{}
-    @arg{b} -- a double float blue component
+    @arg{r} -- a double float with the red component @br{}
+    @arg{g} -- a double float with the green component @br{}
+    @arg{b} -- a double float with the blue component
   @end{return}
   @begin{short}
     Converts a color from HSV space to RGB. Input values must be in the
@@ -331,14 +331,14 @@ lambda (hsv direction)    :action
 
 (defun rgb-to-hsv (r g b)
  #+liber-documentation
- "@version{2023-6-15}
-  @argument[r]{a double float red component}
-  @argument[g]{a double float green component}
-  @argument[b]{a double float blue component}
+ "@version{2023-12-3}
+  @argument[r]{a number coerced to a double float with the red component}
+  @argument[g]{a number coerced to a double float with the green component}
+  @argument[b]{a number coerced to a double float with the blue component}
   @begin{return}
-    @arg{h} -- the double float hue component @br{}
-    @arg{s} -- the double float saturation component @br{}
-    @arg{v} -- the double float value component
+    @arg{h} -- a double float with the hue component @br{}
+    @arg{s} -- a double float with the saturation component @br{}
+    @arg{v} -- a double float with the value component
   @end{return}
   @begin{short}
     Converts a color from RGB space to HSV. Input values must be in the
@@ -358,3 +358,4 @@ lambda (hsv direction)    :action
 (export 'rgb-to-hsv)
 
 ;;; --- End of file gtk3.hsv.lisp ----------------------------------------------
+
