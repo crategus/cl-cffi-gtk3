@@ -58,14 +58,12 @@
 (unexport 'glib:define-g-boxed-opaque :glib)
 (unexport 'glib:define-g-boxed-variant-cstruct :glib)
 (unexport 'glib:with-foreign-boxed-array :glib)
-(unexport 'glib:*warn-unknown-gtype* :glib)
 
 (unexport 'gobject:*debug-gc* :gobject)
 (unexport 'gobject:*debug-subclass* :gobject)
 (unexport 'gobject:*gobject-debug* :gobject)
 
 (unexport 'gobject:create-fn-ref :gobject)
-(unexport 'gobject:define-foreign-g-object-class :gobject)
 (unexport 'gobject:define-cb-methods :gobject)
 (unexport 'gobject:define-g-enum :gobject)
 (unexport 'gobject:define-g-flags :gobject)
@@ -218,3 +216,4 @@
       :include-internal-symbols-p nil)))
 
 ;;; --- End of file liber.lisp -------------------------------------------------
+
