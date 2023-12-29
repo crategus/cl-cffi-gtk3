@@ -1,9 +1,11 @@
-;;;; Example Action Bar - 2021-12-8
+;;;; Example Action Bar
+;;;;
+;;;; 2023-12-27
 
 (in-package :gtk3-example)
 
-(defun example-action-bar (&optional (application nil))
-  (within-main-loop
+(defun example-action-bar (&optional application)
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :title "Action Bar"
                                  :type :toplevel
@@ -16,7 +18,7 @@
       (g:signal-connect window "destroy"
                                (lambda (widget)
                                  (declare (ignore widget))
-                                 (leave-gtk-main)))
+                                 (gtk:leave-gtk-main)))
       (let* ((button (make-instance 'gtk:button))
              (icon (g:themed-icon-new "media-skip-backward"))
              (image (gtk:image-new-from-gicon icon :button)))
