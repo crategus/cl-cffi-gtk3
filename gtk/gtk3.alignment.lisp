@@ -106,10 +106,10 @@
 
 #+liber-documentation
 (setf (documentation 'alignment 'type)
- "@version{#2023-3-15}
+ "@version{2023-12-28}
   @begin{short}
-    The @sym{gtk:alignment} widget controls the alignment and size of its child
-    widget.
+    The @class{gtk:alignment} widget controls the alignment and size of its
+    child widget.
   @end{short}
   It has four settings: @code{xscale}, @code{yscale}, @code{xalign},
   and @code{yalign}.
@@ -124,7 +124,7 @@
   course, if the scale settings are both set to 1.0, the alignment settings
   have no effect.
   @begin[Warning]{dictionary}
-    The @sym{gtk:alignment} widget has been deprecated in 3.14 and should not
+    The @class{gtk:alignment} widget has been deprecated in 3.14 and should not
     be used in newly written code. The desired effect can be achieved by using
     the @slot[gtk:widget]{halign}, @slot[gtk:widget]{valign} and
     @slot[gtk:widget]{margin} properties on the child widget.
@@ -144,111 +144,111 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- alignment-bottom-padding -----------------------------------------------
+;;; --- gtk:alignment-bottom-padding -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "bottom-padding" 'alignment) t)
  "The @code{bottom-padding} property of type @code{:uint} (Read / Write) @br{}
   The padding to insert at the bottom of the child widget. @br{}
-  Allowed values: < @code{G_MAXINT} @br{}
+  Allowed values: < +32.767 @br{}
   Default value: 0")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'alignment-bottom-padding)
       "Accessor"
       (documentation 'alignment-bottom-padding 'function)
- "@version{#2023-3-15}
+ "@version{2023-12-28}
   @begin{short}
     Accessor of the @slot[gtk:alignment]{bottom-padding} slot of the
     @class{gtk:alignment} class.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:alignment-bottom-padding} function has been deprecated since
+    The @fun{gtk:alignment-bottom-padding} function has been deprecated since
     version 3.14 and should not be used in newly written code. Use the
     @fun{gtk:widget-margin-bottom} function instead.
   @end{dictionary}
   @see-class{gtk:alignment}
   @see-function{gtk:widget-margin-bottom}")
 
-;;; --- alignment-left-padding -------------------------------------------------
+;;; --- gtk:alignment-left-padding ---------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "left-padding" 'alignment) t)
  "The @code{left-padding} property of type @code{:uint} (Read / Write) @br{}
   The padding to insert at the left of the child widget. @br{}
-  Allowed values: < @code{G_MAXINT} @br{}
+  Allowed values: < +32.767 @br{}
   Default value: 0")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'alignment-left-padding)
       "Accessor"
       (documentation 'alignment-left-padding 'function)
- "@version{#2023-3-15}
+ "@version{2023-12-28}
   @begin{short}
     Accessor of the @slot[gtk:alignment]{left-padding} slot of the
     @class{gtk:alignment} class.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:alignment-left-padding} function has been deprecated since
+    The @fun{gtk:alignment-left-padding} function has been deprecated since
     version 3.14 and should not be used in newly written code. Use the
     @fun{gtk:widget-margin-start} function instead.
   @end{dictionary}
   @see-class{gtk:alignment}
   @see-function{gtk:widget-margin-start}")
 
-;;; --- alignment-right-padding ------------------------------------------------
+;;; --- gtk:alignment-right-padding --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "right-padding" 'alignment) t)
  "The @code{right-padding} property of type @code{:uint} (Read / Write) @br{}
   The padding to insert at the right of the child widget. @br{}
-  Allowed values: < @code{G_MAXINT} @br{}
+  Allowed values: < +32.767 @br{}
   Default value: 0")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'alignment-right-padding)
       "Accessor"
       (documentation 'alignment-right-padding 'function)
- "@version{#2023-3-15}
+ "@version{2023-12-28}
   @begin{short}
     Accessor of the @slot[gtk:alignment]{right-padding} slot of the
     @class{gtk:alignment} class.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:alignment-right-padding} function has been deprecated since
+    The @fun{gtk:alignment-right-padding} function has been deprecated since
     version 3.14 and should not be used in newly written code. Use the
     @fun{gtk:widget-margin-end} function instead.
   @end{dictionary}
   @see-class{gtk:alignment}
   @see-function{gtk:widget-margin-end}")
 
-;;; --- alignment-top-padding --------------------------------------------------
+;;; --- gtk:alignment-top-padding ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "top-padding" 'alignment) t)
  "The @code{top-padding} property of type @code{:uint} (Read / Write) @br{}
   The padding to insert at the top of the child widget. @br{}
-  Allowed values: < @code{G_MAXINT} @br{}
+  Allowed values: < +32.767 @br{}
   Default value: 0")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'alignment-top-padding)
       "Accessor"
       (documentation 'alignment-top-padding 'function)
- "@version{#2023-3-15}
+ "@version{2023-12-28}
   @begin{short}
     Accessor of the @slot[gtk:alignment]{top-padding} slot of the
     @class{gtk:alignment} class.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:alignment-top-padding} function has been deprecated since
+    The @fun{gtk:alignment-top-padding} function has been deprecated since
     version 3.14 and should not be used in newly written code. Use the
     @fun{gtk:widget-margin-top} function instead.
   @end{dictionary}
   @see-class{gtk:alignment}
   @see-function{gtk:widget-margin-top}")
 
-;;; --- alignment-xalign -------------------------------------------------------
+;;; --- gtk:alignment-xalign ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "xalign" 'alignment) t)
@@ -262,20 +262,20 @@
 (setf (liber:alias-for-function 'alignment-xalign)
       "Accessor"
       (documentation 'alignment-xalign 'function)
- "@version{#2023-3-15}
+ "@version{2023-12-28}
   @begin{short}
     Accessor of the @slot[gtk:alignment]{xalign} slot of the
     @class{gtk:alignment} class.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:alignment-xalign} function has been deprecated since version
+    The @fun{gtk:alignment-xalign} function has been deprecated since version
     3.14 and should not be used in newly written code. Use the
     @fun{gtk:widget-halign} function instead.
   @end{dictionary}
   @see-class{gtk:alignment}
   @see-function{gtk:widget-halign}")
 
-;;; --- alignment-xscale -------------------------------------------------------
+;;; --- gtk:alignment-xscale ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "xscale" 'alignment) t)
@@ -289,20 +289,20 @@
 (setf (liber:alias-for-function 'alignment-xscale)
       "Accessor"
       (documentation 'alignment-xscale 'function)
- "@version{#2023-3-15}
+ "@version{2023-12-28}
   @begin{short}
     Accessor of the @slot[gtk:alignment]{xscale} slot of the
     @class{gtk:alignment} class.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:alignment-xscale} function has been deprecated since version
+    The @fun{gtk:alignment-xscale} function has been deprecated since version
     3.14 and should not be used in newly written code. Use the
     @fun{gtk:widget-hexpand} function instead.
   @end{dictionary}
   @see-class{gtk:alignment}
   @see-function{gtk:widget-hexpand}")
 
-;;; --- alignment-yalign -------------------------------------------------------
+;;; --- gtk:alignment-yalign ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "yalign" 'alignment) t)
@@ -316,20 +316,20 @@
 (setf (liber:alias-for-function 'alignment-yalign)
       "Accessor"
       (documentation 'alignment-yalign 'function)
- "@version{#2023-3-15}
+ "@version{2023-12-28}
   @begin{short}
     Accessor of the @slot[gtk:alignment]{yalign} slot of the
     @class{gtk:alignment} class.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:alignment-yalign} function has been deprecated since version
+    The @fun{gtk:alignment-yalign} function has been deprecated since version
     3.14 and should not be used in newly written code. Use the
     @fun{gtk:widget-valign} function instead.
   @end{dictionary}
   @see-class{gtk:alignment}
   @see-function{gtk:widget-valign}")
 
-;;; --- alignment-yscale -------------------------------------------------------
+;;; --- gtk:alignment-yscale ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "yscale" 'alignment) t)
@@ -343,13 +343,13 @@
 (setf (liber:alias-for-function 'alignment-yscale)
       "Accessor"
       (documentation 'alignment-yscale 'function)
- "@version{#2023-3-15}
+ "@version{2023-12-28}
   @begin{short}
     Accessor of the @slot[gtk:alignment]{yscale} slot of the
     @class{gtk:alignment} class.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:alignment-yscale} function has been deprecated since version
+    The @fun{gtk:alignment-yscale} function has been deprecated since version
     3.14 and should not be used in newly written code. Use the
     @fun{gtk:widget-vexpand} function instead.
   @end{dictionary}
@@ -364,7 +364,7 @@
 
 (defun alignment-new (xalign yalign xscale yscale)
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{2023-12-28}
   @argument[xalign]{a float with the horizontal alignment of the child widget,
     from 0.0 (left) to 1.0 (right)}
   @argument[yalign]{a float with the vertical alignment of the child widget,
@@ -380,7 +380,7 @@
   @return{The new @class{gtk:alignment} widget.}
   @short{Creates a new alignment.}
   @begin[Warning]{dictionary}
-    The @sym{gtk:alignment-new} function has been deprecated since version 3.14
+    The @fun{gtk:alignment-new} function has been deprecated since version 3.14
     and should not be used in newly written code. Use the @class{gtk:widget}
     alignment and margin properties.
   @end{dictionary}
@@ -402,7 +402,7 @@
 
 (defun alignment-set (alignment xalign yalign xscale yscale)
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{2023-12-28}
   @argument[alignment]{a @class{gtk:alignment} widget}
   @argument[xalign]{a float with the horizontal alignment of the child widget,
     from 0.0 (left) to 1.0 (right)}
@@ -418,7 +418,7 @@
     to @arg{xscale}}
   @short{Sets the alignment values.}
   @begin[Warning]{dictionary}
-    The @sym{gtk:alignment-set} function has been deprecated since version 3.14
+    The @fun{gtk:alignment-set} function has been deprecated since version 3.14
     and should not be used in newly written code. Use the @class{gtk:widget}
     alignment and margin properties.
   @end{dictionary}
@@ -427,7 +427,8 @@
   (setf (alignment-xalign alignment) xalign
         (alignment-yalign alignment) yalign
         (alignment-xscale alignment) xscale
-        (alignment-yscale alignment) yscale))
+        (alignment-yscale alignment) yscale)
+  nil)
 
 (export 'alignment-set)
 
@@ -439,7 +440,7 @@
 
 (defun alignment-get-padding (alignment)
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{2023-12-28}
   @argument[alignment]{a @class{gtk:alignment} widget}
   @begin{return}
     @arg{top} -- an unsigned integer with the padding for the top of the child
@@ -455,7 +456,7 @@
     Gets the padding on the different sides of the child widget.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:alignment-get-padding} function has been deprecated since
+    The @fun{gtk:alignment-get-padding} function has been deprecated since
     version 3.14 and should not be used in newly written code. Use the
     @class{gtk:widget} alignment and margin properties.
   @end{dictionary}
@@ -477,7 +478,7 @@
 
 (defun alignment-set-padding (alignment top bottom left right)
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{2023-12-28}
   @argument[alignment]{a @class{gtk:alignment} widget}
   @argument[top]{an unsigned integer with the padding at the top of the child
     widget}
@@ -494,7 +495,7 @@
   this can be used to indent the child widget towards the right by adding
   padding on the left.
   @begin[Warning]{dictionary}
-    The @sym{gtk:alignment-set-padding} function has been deprecated since
+    The @fun{gtk:alignment-set-padding} function has been deprecated since
     version 3.14 and should not be used in newly written code. Use the
     @class{gtk:widget} alignment and margin properties.
   @end{dictionary}
@@ -504,7 +505,8 @@
   (setf (alignment-top-padding alignment) top
         (alignment-bottom-padding alignment) bottom
         (alignment-left-padding alignment) left
-        (alignment-right-padding alignment) right))
+        (alignment-right-padding alignment) right)
+  nil)
 
 (export 'alignment-set-padding)
 

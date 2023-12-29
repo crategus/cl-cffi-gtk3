@@ -1,16 +1,18 @@
-;;;; Example Alignment - 2023-2-12
+;;;; Example Alignment
+;;;;
+;;;; 2023-12-27
 
 (in-package :gtk3-example)
 
 (defun example-alignment (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :title "Example Alignment"
+                                 :title "Alignment"
                                  :type :toplevel
                                  :application application
                                  :border-width 12
-                                 :width-request 300
-                                 :height-request 300))
+                                 :width-request 500
+                                 :height-request 400))
           (grid (make-instance 'gtk:grid
                                 :column-spacing 12
                                 :column-homogeneous t
@@ -19,9 +21,9 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (let ((frame (make-instance 'gtk:frame
-                                  :label "xalign: 0, yalign: 0"))
+                                  :label " xalign: 0 | yalign: 0 "))
             (button (make-instance 'gtk:button
                                    :label "Button"))
             (alignment (make-instance 'gtk:alignment
@@ -34,7 +36,7 @@
         (gtk:container-add frame alignment)
         (gtk:grid-attach grid frame 0 1 1 1))
       (let ((frame (make-instance 'gtk:frame
-                                  :label "xalign: 0, yalign: 1"))
+                                  :label " xalign: 0 | yalign: 1 "))
             (button (make-instance 'gtk:button
                                    :label "Button"))
             (alignment (make-instance 'gtk:alignment
@@ -47,7 +49,7 @@
         (gtk:container-add frame alignment)
         (gtk:grid-attach grid frame 1 1 1 1))
       (let ((frame (make-instance 'gtk:frame
-                                  :label "xalign: 1, yalign: 0"))
+                                  :label " xalign: 1 | yalign: 0 "))
             (button (make-instance 'gtk:button
                                    :label "Button"))
             (alignment (make-instance 'gtk:alignment
@@ -60,7 +62,7 @@
         (gtk:container-add frame alignment)
         (gtk:grid-attach grid frame 0 2 1 1))
       (let ((frame (make-instance 'gtk:frame
-                                  :label "xalign: 1, yalign: 1"))
+                                  :label " xalign: 1 | yalign: 1 "))
             (button (make-instance 'gtk:button
                                    :label "Button"))
             (alignment (make-instance 'gtk:alignment
