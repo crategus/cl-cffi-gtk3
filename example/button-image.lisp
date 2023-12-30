@@ -1,4 +1,6 @@
-;;;; Example Simple Button - 2023-2-18
+;;;; Example Simple Button
+;;;;
+;;;; 2023-12-30
 
 (in-package :gtk3-example)
 
@@ -16,7 +18,7 @@
     box))
 
 (defun example-button-image (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :title "Button with Image"
                                  :application application
@@ -30,7 +32,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (gtk:container-add button box)
       (gtk:container-add window button)
       (gtk:widget-show-all window))))

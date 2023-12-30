@@ -1,11 +1,13 @@
-;;;; Example More Buttons - 2022-12-18
+;;;; Example More Buttons
+;;;;
+;;;; 2023-12-30
 
 (in-package :gtk3-example)
 
 (defun example-button-more (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :title "Example More Buttons"
+                                 :title "More Buttons"
                                  :application application
                                  :type :toplevel
                                  :default-width 300
@@ -16,12 +18,10 @@
                                :valign :center
                                :column-spacing 9
                                :row-spacing 9)))
-
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
-
+                          (gtk:leave-gtk-main)))
       ;; These are the standard functions to create a button
       (gtk:grid-attach grid
                        (gtk:button-new-with-label "Label")
@@ -32,7 +32,6 @@
       (gtk:grid-attach grid
                        (gtk:button-new-from-icon-name "gtk-apply" :button)
                        0 2 1 1)
-
       ;; Create some buttons with make-instance
       (gtk:grid-attach grid
                        (make-instance 'gtk:button
@@ -61,6 +60,5 @@
                                                      :icon-name "gtk-cancel")
                                       :label "Abbrechen")
                        1 2 1 1)
-
       (gtk:container-add window grid)
       (gtk:widget-show-all window))))

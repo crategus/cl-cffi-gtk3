@@ -7,7 +7,7 @@
 
 ;;;     GtkButton
 
-(test button-class
+(test gtk-button-class
   ;; Type check
   (is (g:type-is-object "GtkButton"))
   ;; Check the registered name
@@ -43,6 +43,9 @@
   ;; Check the signals
   (is (equal '("activate" "clicked" "enter" "leave" "pressed" "released")
              (list-signals "GtkButton")))
+  ;; CSS information
+  (is (string= "button"
+               (gtk:widget-class-css-name "GtkButton")))
   ;; Check the class definition
   (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkButton" GTK-BUTTON
                        (:SUPERCLASS GTK-BIN :EXPORT T :INTERFACES
@@ -67,7 +70,7 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-(test button-properties
+(test gtk-button-properties
   (let ((button (make-instance 'gtk:button)))
     (is-false (gtk:button-always-show-image button))
     (is-false (gtk:button-image button))
@@ -81,7 +84,7 @@
 
 ;;; --- Style Properties -------------------------------------------------------
 
-(test button-style-properties
+(test gtk-button-style-properties
   (let ((button (make-instance 'gtk:button)))
     (is (= 0 (gtk:widget-style-property button "child-displacement-x")))
     (is (= 0 (gtk:widget-style-property button "child-displacement-y")))
@@ -91,11 +94,20 @@
     (is (= 2 (gtk:widget-style-property button "image-spacing")))
     (is-false (gtk:widget-style-property button "inner-border"))))
 
+;;; --- Signals ----------------------------------------------------------------
+
+;;;     activate
+;;;     clicked
+;;;     enter
+;;;     leave
+;;;     pressed
+;;;     released
+
 ;;; --- Functions --------------------------------------------------------------
 
 ;;;     gtk_button_new
 
-(test button-new
+(test gtk-button-new
   (let ((button (gtk:button-new)))
     (is-false (gtk:button-always-show-image button))
     (is-false (gtk:button-image button))
@@ -109,7 +121,7 @@
 
 ;;;     gtk_button_new_with_label
 
-(test button-new-with-label
+(test gtk-button-new-with-label
   (let ((button (gtk:button-new-with-label "Label")))
     (is-false (gtk:button-always-show-image button))
     (is-false (gtk:button-image button))
@@ -123,7 +135,7 @@
 
 ;;;     gtk_button_new_with_mnemonic
 
-(test button-new-with-mnemonic
+(test gtk-button-new-with-mnemonic
   (let ((button (gtk:button-new-with-mnemonic "_Mnemonic")))
     (is-false (gtk:button-always-show-image button))
     (is-false (gtk:button-image button))
@@ -137,7 +149,7 @@
 
 ;;;     gtk_button_new_from_icon_name
 
-(test button-new-from-icon-name
+(test gtk-button-new-from-icon-name
   (let ((button (gtk:button-new-from-icon-name "edit-copy" :button)))
     (is-false (gtk:button-always-show-image button))
     (is (typep (gtk:button-image button) 'gtk:image))
@@ -153,11 +165,10 @@
 
 ;;;     gtk_button_clicked
 
-#+nil
-(test button-clicked
+(test gtk-button-clicked
   (let* ((message nil)
          (button (make-instance 'gtk:button))
-         (handler-id (g-signal-connect button "clicked"
+         (handler-id (g:signal-connect button "clicked"
                        (lambda (widget)
                          (setf message "Signal clicked")
                          (is (typep widget 'gtk:button))
@@ -171,7 +182,7 @@
 
 ;;;     gtk_button_event_window
 
-(test button-event-window
+(test gtk-button-event-window
   (let ((window (make-instance 'gtk:window :type :toplevel))
         (button (gtk:button-new-from-icon-name "gtk-close" :button)))
     (is-false (gtk:container-add window button))
@@ -179,4 +190,4 @@
     (is-false (gtk:widget-realize button))
     (is (typep (gtk:button-event-window button) 'gdk:window))))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2023-12-30
