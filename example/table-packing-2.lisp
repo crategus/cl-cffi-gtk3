@@ -1,11 +1,13 @@
-;;;; Example Table packing with more spacing - 2023-2-12
+;;;; Example Table packing with more spacing
+;;;;
+;;;; 2023-12-29
 
 (in-package :gtk3-example)
 
 (defun example-table-packing-2 (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :title "Example Table Packing"
+                                 :title "Table Packing"
                                  :type :toplevel
                                  :application application
                                  :border-width 12
@@ -23,25 +25,21 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (g:signal-connect button1 "toggled"
          (lambda (widget)
            (if (gtk:toggle-button-active widget)
-               (progn
-                 (setf (gtk:table-row-spacing table) 12)
-                 (setf (gtk:button-label widget) "Less Row Spacing"))
-               (progn
-                 (setf (gtk:table-row-spacing table) 0)
-                 (setf (gtk:button-label widget) "More Row Spacing")))))
+               (setf (gtk:table-row-spacing table) 12
+                     (gtk:button-label widget) "Less Row Spacing")
+               (setf (gtk:table-row-spacing table) 0
+                     (gtk:button-label widget) "More Row Spacing"))))
       (g:signal-connect button2 "toggled"
          (lambda (widget)
            (if (gtk:toggle-button-active widget)
-               (progn
-                 (setf (gtk:table-column-spacing table) 12)
-                 (setf (gtk:button-label widget) "Less Col Spacing"))
-               (progn
-                 (setf (gtk:table-column-spacing table) 0)
-                 (setf (gtk:button-label widget) "More Col Spacing")))))
+               (setf (gtk:table-column-spacing table) 12
+                     (gtk:button-label widget) "Less Col Spacing")
+               (setf (gtk:table-column-spacing table) 0
+                     (gtk:button-label widget) "More Col Spacing"))))
       (g:signal-connect quit "clicked"
                         (lambda (widget)
                           (declare (ignore widget))

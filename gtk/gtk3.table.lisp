@@ -36,6 +36,11 @@
 ;;;     GtkTable
 ;;;     GtkAttachOptions
 ;;;
+;;; Accessors
+;;;
+;;;     gtk_table_get_homogeneous
+;;;     gtk_table_set_homogeneous
+;;;
 ;;; Functions
 ;;;
 ;;;     gtk_table_new
@@ -47,9 +52,7 @@
 ;;;     gtk_table_set_col_spacing
 ;;;     gtk_table_set_row_spacings
 ;;;     gtk_table_set_col_spacings
-;;;     gtk_table_set_homogeneous
 ;;;     gtk_table_get_default_row_spacing
-;;;     gtk_table_get_homogeneous
 ;;;     gtk_table_get_row_spacing
 ;;;     gtk_table_get_col_spacing
 ;;;     gtk_table_get_default_col_spacing
@@ -89,21 +92,21 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkAttachOptions
+;;; GtkAttachOptions
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-flags "GtkAttachOptions" attach-options
   (:export t
    :type-initializer "gtk_attach_options_get_type")
-  (:expand 1)
-  (:shrink 2)
-  (:fill 4))
+  (:expand #.(ash 1 0))
+  (:shrink #.(ash 1 1))
+  (:fill #.(ash 1 2)))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'attach-options)
       "GFlags"
       (liber:symbol-documentation 'attach-options)
- "@version{#2023-3-28}
+ "@version{2023-12-28}
   @begin{short}
     Denotes the expansion properties that a widget will have in a
     @class{gtk:table} widget when it or its parent is resized.
@@ -112,9 +115,9 @@
 (gobject:define-g-flags \"GtkAttachOptions\" attach-options
   (:export t
    :type-initializer \"gtk_attach_options_get_type\")
-  (:expand 1)
-  (:shrink 2)
-  (:fill 4))
+  (:expand #.(ash 1 0))
+  (:shrink #.(ash 1 1))
+  (:fill #.(ash 1 2)))
   @end{pre}
   @begin[code]{table}
     @entry[:expand]{The widget should expand to take up any extra space in its
@@ -125,7 +128,7 @@
   @see-class{gtk:table}")
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkTable
+;;; GtkTable
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-object-class "GtkTable" table
@@ -152,9 +155,9 @@
 
 #+liber-documentation
 (setf (documentation 'table 'type)
- "@version{#2023-3-28}
+ "@version{2023-12-28}
   @begin{short}
-    The @sym{gtk:table} widget allows the programmer to arrange widgets in
+    The @class{gtk:table} widget allows the programmer to arrange widgets in
     rows and columns, making it easy to align many widgets next to each other,
     horizontally and vertically.
   @end{short}
@@ -175,9 +178,9 @@
   cells in the table will resize themselves to the size of the largest widget
   in the table.
   @begin[Warning]{dictionary}
-    The @sym{gtk:table} widget has been deprecated since GTK 3.4. Use the
+    The @class{gtk:table} widget has been deprecated since GTK 3.4. Use the
     @class{gtk:grid} widget instead. It provides the same capabilities as the
-    @sym{gtk:table} widget for arranging widgets in a rectangular grid, but
+    @class{gtk:table} widget for arranging widgets in a rectangular grid, but
     does support height-for-width geometry management.
   @end{dictionary}
   @begin[Child Property Details]{dictionary}
@@ -252,7 +255,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- table-column-spacing ---------------------------------------------------
+;;; --- gtk:table-column-spacing -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "column-spacing" 'table) t)
@@ -266,7 +269,7 @@
 (setf (liber:alias-for-function 'table-column-spacing)
       "Accessor"
       (documentation 'table-column-spacing 'function)
- "@version{#2023-3-28}
+ "@version{2023-12-28}
   @syntax[]{(gtk:table-column-spacing object) => spacing}
   @syntax[]{(setf (gtk:table-column-spacing object) spacing)}
   @argument[table]{a @class{gtk:table} widget}
@@ -276,17 +279,17 @@
     Accessor of the @slot[gtk:table]{column-spacing} property of the
     @class{gtk:table} class.
   @end{short}
-  The @sym{gtk:table-column-spacing} function gets the default column spacing
-  for the table. The @sym{(setf gtk:table-column-spacing)} function sets the
-  column spacing. This is the spacing that will be used for newly added columns.
+  The @fun{gtk:table-column-spacing} function gets the default column spacing
+  for the table. The @setf{gtk:table-column-spacing} function sets the column
+  spacing. This is the spacing that will be used for newly added columns.
   @begin[Lisp implementation]{dictionary}
     The C library has the @code{gtk_table_get_default_col_spacing ()}
     and @code{gtk_table_set_col_spacings ()} functions, which correspond to the
-    @sym{gtk:table-column-spacing} function. These C functions are not
+    @fun{gtk:table-column-spacing} function. These C functions are not
     implemented in the Lisp library.
   @end{dictionary}
   @begin[Warning]{dictionary}
-    The @sym{gtk:table-column-spacing} function has been deprecated since
+    The @fun{gtk:table-column-spacing} function has been deprecated since
     version 3.4 and should not be used in newly written code. Use the
     @class{gtk:grid} widget with the @fun{gtk:grid-column-spacing} function.
   @end{dictionary}
@@ -294,7 +297,7 @@
   @see-class{gtk:grid}
   @see-function{gtk:grid-column-spacing}")
 
-;;; --- table-homogeneous ------------------------------------------------------
+;;; --- gtk:table-homogeneous --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "homogeneous" 'table) t)
@@ -307,7 +310,7 @@
 (setf (liber:alias-for-function 'table-homogeneous)
       "Accessor"
       (documentation 'table-homogeneous 'function)
- "@version{#2023-3-28}
+ "@version{2023-12-28}
   @syntax[]{(gtk:table-homogeneous object) => homogeneous}
   @syntax[]{(setf (gtk:table-homogeneous object) homogeneous)}
   @argument[object]{a @class{gtk:table} widget}
@@ -317,12 +320,12 @@
     Accessor of the @slot[gtk:table]{homogeneous} slot of the
     @class{gtk:table} class.
   @end{short}
-  The @sym{gtk:table-homogeneous} function returns whether the table cells are
+  The @fun{gtk:table-homogeneous} function returns whether the table cells are
   all constrained to the same width and height. The
-  @sym{(setf gtk:table-homogeneous)} function changes the
+  @setf{gtk:table-homogeneous} function changes the
   @slot[gtk:table]{homogeneous} property.
   @begin[Warning]{dictionary}
-    The @sym{gtk:table-homogeneous} function has been deprecated since version
+    The @fun{gtk:table-homogeneous} function has been deprecated since version
     3.4 and should not be used in newly written code. Use the @class{gtk:grid}
     widget with the @fun{gtk:grid-row-homogeneous} and
     @fun{gtk:grid-column-homogeneous} functions.
@@ -332,7 +335,7 @@
   @see-function{gtk:grid-column-homogeneous}
   @see-function{gtk:grid-row-homogeneous}")
 
-;;; --- table-n-columns --------------------------------------------------------
+;;; --- gtk:table-n-columns ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "n-columns" 'table) t)
@@ -345,7 +348,7 @@
 (setf (liber:alias-for-function 'table-n-columns)
       "Accessor"
       (documentation 'table-n-columns 'function)
- "@version{#2023-3-28}
+ "@version{2023-12-28}
   @syntax[]{(gtk:table-n-columns object) => n-columns}
   @syntax[]{(setf (gtk:table-n-columns object) n-columns)}
   @argument[object]{a @class{gtk:table} widget}
@@ -356,14 +359,14 @@
   @end{short}
   The number of columns in the table.
   @begin[Warning]{dictionary}
-    The @sym{gtk:table-n-columns} function has been deprecated since version
+    The @fun{gtk:table-n-columns} function has been deprecated since version
     3.4 and should not be used in newly written code. Use the @class{gtk:grid}
     widget which does not expose the number of columns and rows.
   @end{dictionary}
   @see-class{gtk:table}
   @see-class{gtk:grid}")
 
-;;; --- table-n-rows -----------------------------------------------------------
+;;; --- gtk:table-n-rows -------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "n-rows" 'table) t)
@@ -376,7 +379,7 @@
 (setf (liber:alias-for-function 'table-n-rows)
       "Accessor"
       (documentation 'table-n-rows 'function)
- "@version{#2023-3-28}
+ "@version{2023-12-28}
   @syntax[]{(gtk:table-n-rows object) => n-rows}
   @syntax[]{(setf (gtk:table-n-rows object) n-rows)}
   @argument[object]{a @class{gtk:table} widget}
@@ -387,14 +390,14 @@
   @end{short}
   The number of rows in the table.
   @begin[Warning]{dictionary}
-    The @sym{gtk:table-n-rows} function has been deprecated since version 3.4
+    The @fun{gtk:table-n-rows} function has been deprecated since version 3.4
     and should not be used in newly written code. Use the @class{gtk:grid}
     widget which does not expose the number of columns and rows.
   @end{dictionary}
   @see-class{gtk:table}
   @see-class{gtk:grid}")
 
-;;; --- table-row-spacing ------------------------------------------------------
+;;; --- gtk:table-row-spacing --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "row-spacing" 'table) t)
@@ -407,7 +410,7 @@
 (setf (liber:alias-for-function 'table-row-spacing)
       "Accessor"
       (documentation 'table-row-spacing 'function)
- "@version{#2023-8-28}
+ "@version{2023-12-28}
   @syntax[]{(gtk:table-row-spacing object) => spacing}
   @syntax[]{(setf (gtk:table-row-spacing object) spacing)}
   @argument[table]{a @class{gtk:table} widget}
@@ -417,17 +420,17 @@
     Accessor of the @slot[gtk:table]{row-spacing} slot of the
     @class{gtk:table} class.
   @end{short}
-  The @sym{gtk:table-row-spacing} function gets the default row spacing for the
-  table. The @sym{gtk:table-row-spacing} function sets the row spacing. This is
+  The @fun{gtk:table-row-spacing} function gets the default row spacing for the
+  table. The @fun{gtk:table-row-spacing} function sets the row spacing. This is
   the spacing that will be used for newly added rows.
   @begin[Lisp implementation]{dictionary}
     The C library has the @code{gtk_table_get_default_row_spacing ()} and
     @code{gtk_table_set_row_spacings ()} functions, which correspond to the
-    @sym{gtk:table-row-spacing} function. These C functions are not implemented
+    @fun{gtk:table-row-spacing} function. These C functions are not implemented
     in the Lisp library.
   @end{dictionary}
   @begin[Warning]{dictionary}
-    The @sym{gtk:table-row-spacing} function has been deprecated since version
+    The @fun{gtk:table-row-spacing} function has been deprecated since version
     3.4 and should not be used in newly written code. Use the @class{gtk:grid}
     widget with the @fun{gtk:grid-row-spacing} function.
   @end{dictionary}
@@ -439,7 +442,7 @@
 ;;; Accessors of Child Properties
 ;;; ----------------------------------------------------------------------------
 
-;;; --- table-child-bottom-attach ----------------------------------------------
+;;; --- gtk:table-child-bottom-attach ------------------------------------------
 
 (define-child-property table-child-bottom-attach "bottom-attach" "guint" t t t)
 
@@ -447,7 +450,7 @@
 (setf (liber:alias-for-function 'table-child-bottom-attach)
       "Accessor"
       (documentation 'table-child-bottom-attach 'function)
- "@version{#2023-3-28}
+ "@version{2023-12-28}
   @syntax[]{(gtk:table-child-bottom-attach container child) => attach}
   @syntax[]{(setf (gtk:table-child-bottom-attach container child) attach)}
   @argument[container]{a @class{gtk:table} widget}
@@ -460,7 +463,7 @@
   @end{short}
   The row number to attach the bottom of the child widget to.
   @begin[Warning]{dictionary}
-    The @sym{gtk:table-child-bottom-attach} function has been deprecated since
+    The @fun{gtk:table-child-bottom-attach} function has been deprecated since
     version 3.4. and should not be used in newly written code. Use the
     @class{gtk:grid} widget instead.
   @end{dictionary}
@@ -468,7 +471,7 @@
   @see-class{gtk:widget}
   @see-class{gtk:grid}")
 
-;;; --- table-child-left-attach ------------------------------------------------
+;;; --- gtk:table-child-left-attach --------------------------------------------
 
 (define-child-property table-child-left-attach "left-attach" "guint" t t t)
 
@@ -476,7 +479,7 @@
 (setf (liber:alias-for-function 'table-child-left-attach)
       "Accessor"
       (documentation 'table-child-left-attach 'function)
- "@version{#2023-3-28}
+ "@version{2023-12-28}
   @syntax[]{(gtk:table-child-left-attach container child) => attach}
   @syntax[]{(setf (gtk:table-child-left-attach container child) attach)}
   @argument[container]{a @class{gtk:table} widget}
@@ -489,7 +492,7 @@
   @end{short}
   The column number to attach the left side of the child widget to.
   @begin[Warning]{dictionary}
-    The @sym{gtk:table-child-left-attach} function has been deprecated since
+    The @fun{gtk:table-child-left-attach} function has been deprecated since
     version 3.4 and should not be used in newly written code. Use the
     @class{gtk:grid} widget instead.
   @end{dictionary}
@@ -497,7 +500,7 @@
   @see-class{gtk:widget}
   @see-class{gtk:grid}")
 
-;;; --- table-child-right-attach -----------------------------------------------
+;;; --- gtk:table-child-right-attach -------------------------------------------
 
 (define-child-property table-child-right-attach "right-attach" "guint" t t t)
 
@@ -505,7 +508,7 @@
 (setf (liber:alias-for-function 'table-child-right-attach)
       "Accessor"
       (documentation 'table-child-right-attach 'function)
- "@version{#2023-3-28}
+ "@version{2023-12-28}
   @syntax[]{(gtk:table-child-right-attach container child) => attach}
   @syntax[]{(setf (gtk:table-child-right-attach container child) attach)}
   @argument[container]{a @class{gtk:table} widget}
@@ -518,7 +521,7 @@
   @end{short}
   The column number to attach the right side of the child widget to.
   @begin[Warning]{dictionary}
-    The @sym{gtk:table-child-right-attach} function has been deprecated since
+    The @fun{gtk:table-child-right-attach} function has been deprecated since
     version 3.4 and should not be used in newly written code. Use the
     @class{gtk:grid} widget instead.
   @end{dictionary}
@@ -526,7 +529,7 @@
   @see-class{gtk:widget}
   @see-class{gtk:grid}")
 
-;;; --- table-child-top-attach -------------------------------------------------
+;;; --- gtk:table-child-top-attach ---------------------------------------------
 
 (define-child-property table-child-top-attach "top-attach" "guint" t t t)
 
@@ -534,7 +537,7 @@
 (setf (liber:alias-for-function 'table-child-top-attach)
       "Accessor"
       (documentation 'table-child-top-attach 'function)
- "@version{#2023-3-28}
+ "@version{2023-12-28}
   @syntax[]{(gtk:table-child-top-attach container child) => attach}
   @syntax[]{(setf (gtk:table-child-top-attach container child) attach)}
   @argument[container]{a @class{gtk:table} widget}
@@ -547,7 +550,7 @@
   @end{short}
   The row number to attach the top of the child widget to.
   @begin[Warning]{dictionary}
-    The @sym{gtk:table-child-top-attach} function has been deprecated since
+    The @fun{gtk:table-child-top-attach} function has been deprecated since
     version 3.4 and should not be used in newly written code. Use the
     @class{gtk:grid} widget instead.
   @end{dictionary}
@@ -555,7 +558,7 @@
   @see-class{gtk:widget}
   @see-class{gtk:grid}")
 
-;;; --- table-child-x-options --------------------------------------------------
+;;; --- gtk:table-child-x-options ----------------------------------------------
 
 (define-child-property table-child-x-options
                        "x-options" "GtkAttachOptions" t t t)
@@ -564,7 +567,7 @@
 (setf (liber:alias-for-function 'table-child-x-options)
       "Accessor"
       (documentation 'table-child-x-options 'function)
- "@version{#2023-3-28}
+ "@version{2023-12-28}
   @syntax[]{(gtk:table-child-x-options container child) => options}
   @syntax[]{(setf (gtk:table-child-x-options container child) options)}
   @argument[container]{a @class{gtk:table} widget}
@@ -576,7 +579,7 @@
   @end{short}
   Options specifying the horizontal behaviour of the child widget.
   @begin[Warning]{dictionary}
-    The @sym{gtk:table-child-x-options} function has been deprecated since
+    The @fun{gtk:table-child-x-options} function has been deprecated since
     version 3.4 and should not be used in newly written code. Use the
     @class{gtk:grid} widget instead.
   @end{dictionary}
@@ -585,7 +588,7 @@
   @see-class{gtk:grid}
   @see-symbol{gtk:attach-options}")
 
-;;; --- table-child-y-options --------------------------------------------------
+;;; --- gtk:table-child-y-options ----------------------------------------------
 
 (define-child-property table-child-y-options
                        "y-options" "GtkAttachOptions" t t t)
@@ -594,7 +597,7 @@
 (setf (liber:alias-for-function 'table-child-y-options)
       "Accessor"
       (documentation 'table-child-y-options 'function)
- "@version{#2023-3-28}
+ "@version{2023-12-28}
   @syntax[]{(gtk:table-child-y-options container child) => options}
   @syntax[]{(setf (gtk:table-child-y-options container child) options)}
   @argument[container]{a @class{gtk:table} widget}
@@ -606,7 +609,7 @@
   @end{short}
   Options specifying the vertical behaviour of the child widget.
   @begin[Warning]{dictionary}
-    The @sym{gtk:table-child-y-options} function has been deprecated since
+    The @fun{gtk:table-child-y-options} function has been deprecated since
     version 3.4 and should not be used in newly written code. Use the
     @class{gtk:grid} widget instead.
   @end{dictionary}
@@ -615,7 +618,7 @@
   @see-class{gtk:grid}
   @see-symbol{gtk:attach-options}")
 
-;;; --- table-child-x-padding --------------------------------------------------
+;;; --- gtk:table-child-x-padding ----------------------------------------------
 
 (define-child-property table-child-x-padding "x-padding" "guint" t t t)
 
@@ -623,7 +626,7 @@
 (setf (liber:alias-for-function 'table-child-x-padding)
       "Accessor"
       (documentation 'table-child-x-padding 'function)
- "@version{#2023-3-28}
+ "@version{2023-12-28}
   @syntax[]{(gtk:table-child-x-padding container child) => padding}
   @syntax[]{(setf (gtk:table-child-x-padding container child) padding)}
   @argument[container]{a @class{gtk:table} widget}
@@ -637,7 +640,7 @@
   Extra space to put between the child widget and its left and right neighbors,
   in pixels.
   @begin[Warning]{dictionary}
-    The @sym{gtk:table-child-x-padding} function has been deprecated since
+    The @fun{gtk:table-child-x-padding} function has been deprecated since
     version 3.4 and should not be used in newly written code. Use the
     @class{gtk:grid} widget instead.
   @end{dictionary}
@@ -645,7 +648,7 @@
   @see-class{gtk:widget}
   @see-class{gtk:grid}")
 
-;;; --- table-child-y-padding --------------------------------------------------
+;;; --- gtk:table-child-y-padding ----------------------------------------------
 
 (define-child-property table-child-y-padding "y-padding" "guint" t t t)
 
@@ -653,7 +656,7 @@
 (setf (liber:alias-for-function 'table-child-y-padding)
       "Accessor"
       (documentation 'table-child-y-padding 'function)
- "@version{#2023-3-28}
+ "@version{2023-12-28}
   @syntax[]{(gtk:table-child-y-padding container child) => padding}
   @syntax[]{(setf (gtk:table-child-y-padding container child) padding)}
   @argument[container]{a @class{gtk:table} widget}
@@ -667,7 +670,7 @@
   Extra space to put between the child widget and its upper and lower
   neighbors, in pixels.
   @begin[Warning]{dictionary}
-    The @sym{gtk:table-child-y-padding} function has been deprecated since
+    The @fun{gtk:table-child-y-padding} function has been deprecated since
     version 3.4 and should not be used in newly written code. Use the
     @class{gtk:grid} widget instead.
   @end{dictionary}
@@ -683,7 +686,7 @@
 
 (defun table-new (rows columns homogeneous)
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{2023-12-28}
   @argument[rows]{an unsigned integer with the number of rows the new table
     should have}
   @argument[columns]{an unsigned integer with the number of columns the new
@@ -700,7 +703,7 @@
   must both be in the range 1 ... 65535. For historical reasons, 0 is accepted
   as well and is silently interpreted as 1.
   @begin[Warning]{dictionary}
-    The @sym{gtk:table-new} function has been deprecated since version 3.4 and
+    The @fun{gtk:table-new} function has been deprecated since version 3.4 and
     should not be used in newly written code. Use the @class{gtk:grid} widget
     with the @fun{gtk:grid-new} function.
   @end{dictionary}
@@ -709,8 +712,8 @@
   @see-function{gtk:table-resize}
   @see-function{gtk:grid-new}"
   (make-instance 'table
-                 :rows rows
-                 :columns columns
+                 :n-rows rows
+                 :n-columns columns
                  :homogeneous homogeneous))
 
 (export 'table-new)
@@ -723,7 +726,7 @@
 
 (defun table-resize (table rows columns)
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{2023-12-28}
   @argument[table]{a @class{gtk:table} widget you wish to change the size of}
   @argument[rows]{an unsigned integer with the new number of rows}
   @argument[columns]{an unsigned integer with the new number of columns}
@@ -732,14 +735,15 @@
     function allows you to do so.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:table-resize} function has been deprecated since version 3.4
+    The @fun{gtk:table-resize} function has been deprecated since version 3.4
     and should not be used in newly written code. Use the @class{gtk:grid}
     widget which resizes automatically.
   @end{dictionary}
   @see-class{gtk:table}
   @see-class{gtk:grid}"
   (setf (table-n-rows table) rows
-        (table-n-columns table) columns))
+        (table-n-columns table) columns)
+  nil)
 
 (export 'table-resize)
 
@@ -749,7 +753,7 @@
 
 (defun table-size (table)
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{2023-12-28}
   @argument[table]{a @class{gtk:table} widget}
   @begin{return}
     @arg{n-rows} -- an unsigned integer with the number of rows @br{}
@@ -757,7 +761,7 @@
   @end{return}
   @short{Gets the number of rows and columns in the table.}
   @begin[Warning]{dictionary}
-    The @sym{gtk:table-size} function has been deprecated since version 3.4
+    The @fun{gtk:table-size} function has been deprecated since version 3.4
     and should not be used in newly written code. Use the @class{gtk:grid}
     widget which does not expose the number of columns and rows.
   @end{dictionary}
@@ -790,7 +794,7 @@
                                       (x-padding 0)
                                       (y-padding 0))
  #+liber-documentation
- "@version{#2021-7-20}
+ "@version{2023-12-29}
   @argument[table]{the @class{gtk:table} widget to add a new widget to}
   @argument[child]{the @class{gtk:widget} child widget to add}
   @argument[left]{an unsigned integer with the column number to attach the left
@@ -833,10 +837,10 @@
   @begin[Lisp implementation]{dictionary}
     The C library has the @code{gtk_table_attach_default ()} function. This
     function is included in the Lisp library via keyword arguments with default
-    values for the @sym{gtk:table-attach} function.
+    values for the @fun{gtk:table-attach} function.
   @end{dictionary}
   @begin[Warning]{dictionary}
-    The @sym{gtk:table-attach} function has been deprecated since version 3.4
+    The @fun{gtk:table-attach} function has been deprecated since version 3.4
     and should not be used in newly written code. Use the @class{gtk:grid}
     widget with the @fun{gtk:grid-attach} function. Note that the attach
    arguments differ between those two functions.
@@ -878,7 +882,7 @@
   The values used for the @symbol{gtk:attach-options} are
   @code{'(:expand :fill)}, and the padding is set to 0.
   @begin[Warning]{dictionary}
-    The @sym{gtk:table-attach-defaults} function has been deprecated since
+    The @fun{gtk:table-attach-defaults} function has been deprecated since
     version 3.4 and should not be used in newly written code. Use the
     @fun{gtk:grid-attach} function with the @class{gtk:grid} widget. Note that
     the attach arguments differ between those two functions.
@@ -903,7 +907,7 @@
     Changes the space between a given table row and the subsequent row.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:table-set-row-spacing} function has been deprecated since
+    The @fun{gtk:table-set-row-spacing} function has been deprecated since
     version 3.4 and should not be used in newly written code. Use the
     @fun{gtk:widget-margin-top} and @fun{gtk:widget-margin-bottom} functions on
     the widgets contained in the row if you need this functionality.
@@ -936,7 +940,7 @@
     column.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:table-set-col-spacing} function has been deprecated since
+    The @fun{gtk:table-set-col-spacing} function has been deprecated since
     version 3.4 and should not be used in newly written code. Use the
     @fun{gtk:widget-margin-start} and @fun{gtk:widget-margin-end} functions on
     the widgets contained in the row if you need this functionality.
@@ -962,12 +966,12 @@
   @argument[table]{a @class{gtk:table} widget}
   @argument[row]{an unsigned integer with a row in the table, 0 indicates the
     first row}
-  @return{An unsigned integer with the row spacing.}
+  @return{The unsigned integer with the row spacing.}
   @begin{short}
     Gets the amount of space between @arg{row}, and @arg{row + 1}.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:table-get-row-spacing} function has been deprecated since
+    The @fun{gtk:table-get-row-spacing} function has been deprecated since
     version 3.4 and should not be used in newly written code. The
     @class{gtk:grid} widget does not offer a replacement for this functionality.
   @end{dictionary}
@@ -988,12 +992,12 @@
   @argument[table]{a @class{gtk:table} widget}
   @argument[column]{an unsigned integer with a column in the table, 0 indicates
     the first column}
-  @return{An unsigned integer with the column spacing.}
+  @return{The unsigned integer with the column spacing.}
   @begin{short}
     Gets the amount of space between @arg{column}, and @arg{column + 1}.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:table-get-col-spacing} function has been deprecated since
+    The @fun{gtk:table-get-col-spacing} function has been deprecated since
     version 3.4 and should not be used in newly written code. The
     @class{gtk:grid} widget does not offer a replacement for this functionality.
   @end{dictionary}

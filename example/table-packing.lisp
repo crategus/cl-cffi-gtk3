@@ -1,11 +1,13 @@
-;;;; Example Table packing - 2023-2-15
+;;;; Example Table packing
+;;;;
+;;;; 2023-12-29
 
 (in-package :gtk3-example)
 
 (defun example-table-packing (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :title "Example Table Packing"
+                                 :title "Table Packing"
                                  :type :toplevel
                                  :application application
                                  :border-width 12
@@ -23,7 +25,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (g:signal-connect quit "clicked"
                         (lambda (widget)
                           (declare (ignore widget))
