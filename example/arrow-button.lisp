@@ -1,4 +1,6 @@
-;;;; Example Arrow button - 2023-2-12
+;;;; Example Arrow button
+;;;;
+;;;; 2023-12-30
 
 (in-package :gtk3-example)
 
@@ -21,10 +23,10 @@
     button))
 
 (defun example-arrow-button (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((;; Create the main window
            window (make-instance 'gtk:window
-                                 :title "Example Arrow Button"
+                                 :title "Arrow Buttons"
                                  :type :toplevel
                                  :application application
                                  :default-width 280
@@ -38,7 +40,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Create buttons with an arrow and add the buttons to the grid
       (gtk:container-add grid (create-arrow-button :up :in))
       (gtk:container-add grid (create-arrow-button :down :out))
