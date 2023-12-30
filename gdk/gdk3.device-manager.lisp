@@ -64,7 +64,7 @@
 ;;; GdkDeviceManager
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GdkDeviceManager" device-manager
+(gobject:define-g-object-class "GdkDeviceManager" device-manager
   (:superclass g:object
    :export t
    :interfaces nil
@@ -87,8 +87,8 @@
 
   In order to query the device hierarchy and be aware of changes in the device
   hierarchy, such as virtual devices being created or removed, or physical
-  devices being plugged or unplugged, GDK provides the @sym{gdk:device-manager}
-  object.
+  devices being plugged or unplugged, GDK provides the
+  @class{gdk:device-manager} object.
 
   By default, and if the platform supports it, GDK is aware of multiple
   keyboard/pointer pairs and multitouch devices. This behavior can be changed
@@ -104,7 +104,7 @@
 
   On X11, multi-device support is implemented through XInput 2. Unless the
   @fun{gdk:disable-multidevice} function is called, the XInput 2
-  @sym{gdk:device-manager} implementation will be used as the input source.
+  @class{gdk:device-manager} implementation will be used as the input source.
   Otherwise either the core or XInput 1 implementations will be used.
 
   For simple applications that do not have any special interest in input
@@ -177,7 +177,7 @@
   the @fun{gdk:device-key} function.
 
   In GTK 3.20, a new @class{gdk:seat} object has been introduced that
-  supersedes the @sym{gdk:device-manager} object and should be preferred in
+  supersedes the @class{gdk:device-manager} object and should be preferred in
   newly written code.
   @begin[Signal Details]{dictionary}
     @subheading{The \"device-added\" signal}
@@ -187,8 +187,8 @@
       The signal is emitted either when a new master pointer is created, or
       when a slave (hardware) input device is plugged in.
       @begin[code]{table}
-        @entry[manager]{The @sym{gdk:device-manager} object on which the signal
-          is emitted.}
+        @entry[manager]{The @class{gdk:device-manager} object on which the
+          signal is emitted.}
         @entry[device]{The newly added @class{gdk:device} object.}
       @end{table}
     @subheading{The \"device-changed\" signal}
@@ -202,8 +202,8 @@
       @symbol{gdk:device-type} value will change to the @code{:floating} value,
       if it is attached, it will change to the @code{:slave} value.
       @begin[code]{table}
-        @entry[manager]{The @sym{gdk:device-manager} object on which the signal
-          is emitted.}
+        @entry[manager]{The @class{gdk:device-manager} object on which the
+          signal is emitted.}
         @entry[device]{The @class{gdk:device} object that changed.}
       @end{table}
     @subheading{The \"device-removed\" signal}
@@ -213,8 +213,8 @@
       The signal is emitted either when a master pointer is removed, or when a
       slave (hardware) input device is unplugged.
       @begin[code]{table}
-        @entry[manager]{The @sym{gdk:device-manager} object on which the signal
-          is emitted.}
+        @entry[manager]{The @class{gdk:device-manager} object on which the
+          signal is emitted.}
         @entry[device]{The just removed @class{gdk:device} object.}
       @end{table}
   @end{dictionary}
@@ -245,15 +245,15 @@
     @class{gdk:device-manager} class.
   @end{short}
 
-  The @sym{gdk:device-manager-display} slot access function returns the
-  display to which the device manager is associated to.
+  The @fun{gdk:device-manager-display} function returns the display to which
+  the device manager is associated to.
   @see-class{gdk:device-manager}
   @see-class{gdk:display}")
 
 ;;; ----------------------------------------------------------------------------
 
 #-windows
-(define-g-object-class "GdkX11DeviceManagerCore" x11-device-manager-core
+(gobject:define-g-object-class "GdkX11DeviceManagerCore" x11-device-manager-core
   (:superclass device-manager
    :export t
    :interfaces nil
@@ -261,7 +261,7 @@
   nil)
 
 #-windows
-(define-g-object-class "GdkX11DeviceManagerXI2" x11-device-manager-xi2
+(gobject:define-g-object-class "GdkX11DeviceManagerXI2" x11-device-manager-xi2
   (:superclass x11-device-manager-core
    :export t
    :interfaces nil
@@ -272,7 +272,7 @@
 ;;; gdk_disable_multidevice ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_disable_multidevice" disable-multidevice) :void
+(cffi:defcfun ("gdk_disable_multidevice" disable-multidevice) :void
  #+liber-documentation
  "@version{#2021-12-11}
   @begin{short}
@@ -295,7 +295,7 @@
 ;;; gdk_device_manager_list_devices ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_device_manager_list_devices" device-manager-list-devices)
+(cffi:defcfun ("gdk_device_manager_list_devices" device-manager-list-devices)
     (g:list-t (g:object device) :free-from-foreign t)
  #+liber-documentation
  "@version{#2021-12-11}
@@ -306,8 +306,8 @@
     Returns the list of devices currently attached to the device manager.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gdk:device-manager-list-devices} function has been deprecated since
-    version 3.20 and should not be used in newly written code. Use the
+    The @fun{gdk:device-manager-list-devices} function has been deprecated
+    since version 3.20 and should not be used in newly written code. Use the
     @fun{gdk:seat-pointer}, @fun{gdk:seat-keyboard} and @fun{gdk:seat-slaves}
     functions instead.
   @end{dictionary}
@@ -326,8 +326,8 @@
 ;;; gdk_device_manager_get_client_pointer () -> device-manager-client-pointer
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_device_manager_get_client_pointer"
-           device-manager-client-pointer) (g:object device)
+(cffi:defcfun ("gdk_device_manager_get_client_pointer"
+               device-manager-client-pointer) (g:object device)
  #+liber-documentation
  "@version{#2021-12-11}
   @argument[manager]{a @class{gdk:device-manager} object}
@@ -343,7 +343,7 @@
   a @class{gdk:event} event and there are not other means to get a meaningful
   @class{gdk:device} object to operate on.
   @begin[Warning]{dictionary}
-    The @sym{gdk:device-manager-client-pointer} function has been deprecated
+    The @fun{gdk:device-manager-client-pointer} function has been deprecated
     since version 3.20 and should not be used in newly written code. Use the
     @fun{gdk:seat-pointer} function instead.
   @end{dictionary}

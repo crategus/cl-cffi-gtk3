@@ -92,7 +92,7 @@
 ;;; GdkScreen
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GdkScreen" screen
+(gobject:define-g-object-class "GdkScreen" screen
   (:superclass g:object
    :export t
    :interfaces nil
@@ -108,14 +108,14 @@
 (setf (documentation 'screen 'type)
  "@version{#2021-12-13}
   @begin{short}
-    The @sym{gdk:screen} object is the GDK representation of the screen on
+    The @class{gdk:screen} object is the GDK representation of the screen on
     which windows can be displayed and on which the pointer moves.
   @end{short}
   X11 originally identified screens with physical screens, but nowadays it is
-  more common to have a single @sym{gdk:screen} object which combines several
+  more common to have a single @class{gdk:screen} object which combines several
   physical monitors. See the @fun{gdk:screen-n-monitors} function.
 
-  The @sym{gdk:screen} object is used throughout GDK and GTK to specify which
+  The @class{gdk:screen} object is used throughout GDK and GTK to specify which
   screen the toplevel windows are to be displayed on. It is also used to query
   the screen specification and default settings such as the default visual with
   the @fun{gdk:screen-system-visual} function or the dimensions of the physical
@@ -127,7 +127,7 @@ lambda (screen)    :run-last
       @end{pre}
       The signal is emitted when the composited status of the screen changes.
       @begin[code]{table}
-        @entry[screen]{The @sym{gdk:screen} object on which the signal is
+        @entry[screen]{The @class{gdk:screen} object on which the signal is
           emitted.}
       @end{table}
     @subheading{The \"monitors-changed\" signal}
@@ -138,7 +138,7 @@ lambda (screen)    :run-last
       attached to the screen change. Only for X11 and OS X for now. A future
       implementation for Win32 may be a possibility.
       @begin[code]{table}
-        @entry[screen]{The @sym{gdk:screen} object on which the signal is
+        @entry[screen]{The @class{gdk:screen} object on which the signal is
           emitted.}
       @end{table}
     @subheading{The \"size-changed\" signal}
@@ -148,7 +148,7 @@ lambda (screen)    :run-last
       The signal is emitted when the pixel width or height of a the screen
       changes.
       @begin[code]{table}
-        @entry[screen]{The @sym{gdk:screen} object on which the signal is
+        @entry[screen]{The @class{gdk:screen} object on which the signal is
           emitted.}
       @end{table}
   @end{dictionary}
@@ -184,11 +184,10 @@ lambda (screen)    :run-last
     Accessor of the @slot[gdk:screen]{font-options} slot of the
     @class{gdk:screen} class.
   @end{short}
-
-  The @sym{gdk:screen-font-options} slot access function returns the current
-  font options for the screen, or @code{null-pointer} if no default font options
-  have been set. The @sym{(setf gdk:screen-font-options)} slot access function
-  sets the default font options.
+  The @fun{gdk:screen-font-options} function returns the current font options
+  for the screen, or @code{null-pointer} if no default font options have been
+  set. The @setf{gdk:screen-font-options} function sets the default font
+  options.
 
   These font options will be set on any Pango context newly created with the
   @fun{gdk:pango-context-for-screen} function. Changing the default set
@@ -218,11 +217,10 @@ lambda (screen)    :run-last
     Accessor of the @slot[gdk:screen]{resolution} slot of the @class{gdk:screen}
     class.
   @end{short}
-
-  The @sym{gdk:screen-resolution} slot access function gets the resolution for
-  font handling on the screen, or -1 if no resolution has been set. The
-  @sym{(setf gdk:screen-resolution)} slot access function sets the resolution
-  for font handling on the screen.
+  The @fun{gdk:screen-resolution} function gets the resolution for font
+  handling on the screen, or -1 if no resolution has been set. The
+  @setf{gdk:screen-resolution} function sets the resolution for font handling
+  on the screen.
 
   This is a scale factor between points specified in a
   @class{pango:font-description} structure and Cairo units. The default value
@@ -235,7 +233,7 @@ lambda (screen)    :run-last
 ;;; gdk_screen_get_default () -> screen-default
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_screen_get_default" screen-default) (g:object screen)
+(cffi:defcfun ("gdk_screen_get_default" screen-default) (g:object screen)
  #+liber-documentation
  "@version{#2021-12-13}
   @begin{return}
@@ -254,7 +252,7 @@ lambda (screen)    :run-last
 ;;; gdk_screen_get_system_visual () -> screen-system-visual
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_screen_get_system_visual" screen-system-visual)
+(cffi:defcfun ("gdk_screen_get_system_visual" screen-system-visual)
     (g:object visual)
  #+liber-documentation
  "@version{#2021-12-13}
@@ -274,7 +272,7 @@ lambda (screen)    :run-last
 ;;; gdk_screen_get_rgba_visual () -> screen-rgba-visual
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_screen_get_rgba_visual" screen-rgba-visual)
+(cffi:defcfun ("gdk_screen_get_rgba_visual" screen-rgba-visual)
     (g:object visual)
  #+liber-documentation
  "@version{#2021-12-13}
@@ -308,7 +306,7 @@ lambda (screen)    :run-last
 ;;; gdk_screen_is_composited ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_screen_is_composited" screen-is-composited) :boolean
+(cffi:defcfun ("gdk_screen_is_composited" screen-is-composited) :boolean
  #+liber-documentation
  "@version{#2021-12-13}
   @argument[screen]{a @class{gdk:screen} object}
@@ -332,7 +330,7 @@ lambda (screen)    :run-last
 ;;; gdk_screen_get_root_window () -> screen-root-window
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_screen_get_root_window" screen-root-window)
+(cffi:defcfun ("gdk_screen_get_root_window" screen-root-window)
     (g:object window)
  #+liber-documentation
  "@version{#2021-12-13}
@@ -349,7 +347,7 @@ lambda (screen)    :run-last
 ;;; gdk_screen_get_display () -> screen-display
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_screen_get_display" screen-display)
+(cffi:defcfun ("gdk_screen_get_display" screen-display)
     (g:object display)
  #+liber-documentation
  "@version{#2021-12-13}
@@ -366,7 +364,7 @@ lambda (screen)    :run-last
 ;;; gdk_screen_get_number () -> screen-number
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_screen_get_number" screen-number) :int
+(cffi:defcfun ("gdk_screen_get_number" screen-number) :int
  #+liber-documentation
  "@version{#2021-12-13}
   @argument[screen]{a @class{gdk:screen} object}
@@ -377,7 +375,7 @@ lambda (screen)    :run-last
   @end{short}
   See the @fun{gdk:screen-display} function.
   @begin[Warning]{dictionary}
-    The @sym{gdk:screen-number} function has been deprecated since version
+    The @fun{gdk:screen-number} function has been deprecated since version
     3.22 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gdk:screen}
@@ -390,7 +388,7 @@ lambda (screen)    :run-last
 ;;; gdk_screen_get_width () -> screen-width
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_screen_get_width" %screen-width) :int
+(cffi:defcfun ("gdk_screen_get_width" %screen-width) :int
   (screen (g:object screen)))
 
 (defun screen-width (&optional (screen (screen-default)))
@@ -400,7 +398,7 @@ lambda (screen)    :run-last
   @return{An integer with the width of @arg{screen} in pixels.}
   @short{Gets the width of the screen in pixels.}
   @begin[Warning]{dictionary}
-    The @sym{gdk:screen-width} function has been deprecated since version
+    The @fun{gdk:screen-width} function has been deprecated since version
     3.22 and should not be used in newly written code. Use per monitor
     information instead.
   @end{dictionary}
@@ -413,7 +411,7 @@ lambda (screen)    :run-last
 ;;; gdk_screen_get_height () -> screen-height
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_screen_get_height" %screen-height) :int
+(cffi:defcfun ("gdk_screen_get_height" %screen-height) :int
   (screen (g:object screen)))
 
 (defun screen-height (&optional (screen (screen-default)))
@@ -423,7 +421,7 @@ lambda (screen)    :run-last
   @return{An integer with the height of @arg{screen} in pixels.}
   @short{Gets the height of the screen in pixels.}
   @begin[Warning]{dictionary}
-    The @sym{gdk:screen-height} function has been deprecated since version
+    The @fun{gdk:screen-height} function has been deprecated since version
     3.22 and should not be used in newly written code. Use per monitor
     information instead.
   @end{dictionary}
@@ -436,7 +434,7 @@ lambda (screen)    :run-last
 ;;; gdk_screen_get_width_mm () -> screen-width-mm
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_screen_get_width_mm" %screen-width-mm) :int
+(cffi:defcfun ("gdk_screen_get_width_mm" %screen-width-mm) :int
   (screen (g:object screen)))
 
 (defun screen-width-mm (&optional (screen (screen-default)))
@@ -449,7 +447,7 @@ lambda (screen)    :run-last
   @end{short}
   Note that on some X servers this value will not be correct.
   @begin[Warning]{dictionary}
-    The @sym{gdk:screen-width-mm} function has been deprecated since version
+    The @fun{gdk:screen-width-mm} function has been deprecated since version
     3.22 and should not be used in newly written code. Use per monitor
     information instead.
   @end{dictionary}
@@ -462,7 +460,7 @@ lambda (screen)    :run-last
 ;;; gdk_screen_get_height_mm ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_screen_get_height_mm" %screen-height-mm) :int
+(cffi:defcfun ("gdk_screen_get_height_mm" %screen-height-mm) :int
   (screen (g:object screen)))
 
 (defun screen-height-mm (&optional (screen (screen-default)))
@@ -475,7 +473,7 @@ lambda (screen)    :run-last
   @end{short}
   Note that on some X servers this value will not be correct.
   @begin[Warning]{dictionary}
-    The @sym{gdk:screen-height-mm} function has been deprecated since
+    The @fun{gdk:screen-height-mm} function has been deprecated since
     version 3.22 and should not be used in newly written code. Use per monitor
     information instead.
   @end{dictionary}
@@ -488,7 +486,7 @@ lambda (screen)    :run-last
 ;;; gdk_screen_list_visuals ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_screen_list_visuals" screen-list-visuals)
+(cffi:defcfun ("gdk_screen_list_visuals" screen-list-visuals)
     (g:list-t (g:object visual) :free-from-foreign t)
  #+liber-documentation
  "@version{#2021-12-13}
@@ -510,7 +508,7 @@ lambda (screen)    :run-last
 ;;; gdk_screen_get_toplevel_windows () -> screen-toplevel-windows
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_screen_get_toplevel_windows" screen-toplevel-windows)
+(cffi:defcfun ("gdk_screen_get_toplevel_windows" screen-toplevel-windows)
     (g:list-t (g:object window :free-from-foreign nil) :free-from-foreign t)
  #+liber-documentation
  "@version{#2021-12-13}
@@ -532,18 +530,18 @@ lambda (screen)    :run-last
 ;;; gdk_screen_make_display_name ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_screen_make_display_name" screen-make-display-name)
+(cffi:defcfun ("gdk_screen_make_display_name" screen-make-display-name)
     (:string :free-from-foreign t)
  #+liber-documentation
  "@version{#2021-12-13}
   @argument[screen]{a @class{gdk:screen} object}
   @return{A string with the name of the default display.}
   @begin{short}
-    Determines the name to pass to the function @fun{gdk:display-open} to get
+    Determines the name to pass to the @fun{gdk:display-open} function to get
     a @class{gdk:display} object with this screen as the default screen.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gdk:screen-make-display-name} function has been deprecated since
+    The @fun{gdk:screen-make-display-name} function has been deprecated since
     version 3.22 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gdk:screen}
@@ -557,7 +555,7 @@ lambda (screen)    :run-last
 ;;; gdk_screen_get_n_monitors () -> screen-n-monitors
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_screen_get_n_monitors" screen-n-monitors) :int
+(cffi:defcfun ("gdk_screen_get_n_monitors" screen-n-monitors) :int
  #+liber-documentation
  "@version{#2021-12-13}
   @argument[screen]{a @class{gdk:screen} object}
@@ -565,7 +563,7 @@ lambda (screen)    :run-last
     of.}
   @short{Returns the number of monitors which the screen consists of.}
   @begin[Warning]{dictionary}
-    The @sym{gdk:screen-n-monitors} function has been deprecated since version
+    The @fun{gdk:screen-n-monitors} function has been deprecated since version
     3.22 and should not be used in newly written code. Use the
     @fun{gdk:display-n-monitors} function instead.
   @end{dictionary}
@@ -579,7 +577,7 @@ lambda (screen)    :run-last
 ;;; gdk_screen_get_primary_monitor () -> screen-primary-monitor
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_screen_get_primary_monitor" screen-primary-monitor) :int
+(cffi:defcfun ("gdk_screen_get_primary_monitor" screen-primary-monitor) :int
  #+liber-documentation
  "@version{#2021-12-13}
   @argument[screen]{a @class{gdk:screen} object}
@@ -596,7 +594,7 @@ lambda (screen)    :run-last
   If no primary monitor is configured by the user, the return value will be 0,
   defaulting to the first monitor.
   @begin[Warning]{dictionary}
-    The @sym{gdk:screen-primary-monitor} function has been deprecated since
+    The @fun{gdk:screen-primary-monitor} function has been deprecated since
     version 3.22 and should not be used in newly written code. Use the
     @fun{gdk:display-primary-monitor} function instead.
   @end{dictionary}
@@ -610,7 +608,7 @@ lambda (screen)    :run-last
 ;;; gdk_screen_get_monitor_geometry () -> screen-monitor-geometry
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_screen_get_monitor_geometry" %screen-monitor-geometry) :void
+(cffi:defcfun ("gdk_screen_get_monitor_geometry" %screen-monitor-geometry) :void
   (screen (g:object screen))
   (monitor-num :int)
   (dest (g:boxed rectangle)))
@@ -631,7 +629,7 @@ lambda (screen)    :run-last
   Note that the size of the entire screen area can be retrieved via the
   @fun{gdk:screen-width} and @fun{gdk:screen-height} functions.
   @begin[Warning]{dictionary}
-    The @sym{gdk:screen-monitor-geometry} function has been deprecated since
+    The @fun{gdk:screen-monitor-geometry} function has been deprecated since
     version 3.22 and should not be used in newly written code. Use the
     @fun{gdk:monitor-geometry} function instead.
   @end{dictionary}
@@ -651,7 +649,7 @@ lambda (screen)    :run-last
 ;;; gdk_screen_get_monitor_workarea () -> screen-monitor-workarea
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_screen_get_monitor_workarea" %screen-monitor-workarea) :void
+(cffi:defcfun ("gdk_screen_get_monitor_workarea" %screen-monitor-workarea) :void
   (screen (g:object screen))
   (num :int)
   (dest (g:boxed rectangle)))
@@ -674,7 +672,7 @@ lambda (screen)    :run-last
   Monitor numbers start at 0. To obtain the number of monitors of the screen,
   use the @fun{gdk:screen-n-monitors} function.
   @begin[Warning]{dictionary}
-    The @sym{gdk:screen-monitor-workarea} function has been deprecated since
+    The @fun{gdk:screen-monitor-workarea} function has been deprecated since
     version 3.22 and should not be used in newly written code. Use the
     @fun{gdk:monitor-workarea} function instead.
   @end{dictionary}
@@ -692,7 +690,7 @@ lambda (screen)    :run-last
 ;;; gdk_screen_get_monitor_at_point () -> screen-monitor-at-point
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_screen_get_monitor_at_point" screen-monitor-at-point) :int
+(cffi:defcfun ("gdk_screen_get_monitor_at_point" screen-monitor-at-point) :int
  #+liber-documentation
  "@version{#2021-12-13}
   @argument[screen]{a @class{gdk:screen} object}
@@ -706,7 +704,7 @@ lambda (screen)    :run-last
     Returns the monitor number in which the point (@arg{x}, @arg{y}) is located.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gdk:screen-monitor-at-point} function has been deprecated since
+    The @fun{gdk:screen-monitor-at-point} function has been deprecated since
     version 3.22 and should not be used in newly written code. Use the
     @fun{gdk:display-monitor-at-point} function instead.
   @end{dictionary}
@@ -722,7 +720,7 @@ lambda (screen)    :run-last
 ;;; gdk_screen_get_monitor_at_window () -> screen-monitor-at-window
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_screen_get_monitor_at_window" screen-monitor-at-window) :int
+(cffi:defcfun ("gdk_screen_get_monitor_at_window" screen-monitor-at-window) :int
  #+liber-documentation
  "@version{#2021-12-13}
   @argument[screen]{a @class{gdk:screen} object}
@@ -737,7 +735,7 @@ lambda (screen)    :run-last
     rectangle of the window resides.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gdk:screen-monitor-at-window} function has been deprecated
+    The @fun{gdk:screen-monitor-at-window} function has been deprecated
     since version 3.22 and should not be used in newly written code. Use the
     @fun{gdk:display-monitor-at-window} function instead.
   @end{dictionary}
@@ -753,7 +751,7 @@ lambda (screen)    :run-last
 ;;; gdk_screen_get_monitor_height_mm () -> screen-monitor-height-mm
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_screen_get_monitor_height_mm" screen-monitor-height-mm) :int
+(cffi:defcfun ("gdk_screen_get_monitor_height_mm" screen-monitor-height-mm) :int
  #+liber-documentation
  "@version{#2021-12-13}
   @argument[screen]{a @class{gdk:screen} object}
@@ -764,7 +762,7 @@ lambda (screen)    :run-last
     Gets the height in millimeters of the specified monitor.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gdk:screen-monitor-height-mm} function has been deprecated since
+    The @fun{gdk:screen-monitor-height-mm} function has been deprecated since
     version 3.22 and should not be used in newly written code. Use the
     @fun{gdk:monitor-height-mm} function instead.
   @end{dictionary}
@@ -779,7 +777,7 @@ lambda (screen)    :run-last
 ;;; gdk_screen_get_monitor_width_mm () -> screen-monitor-width-mm
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_screen_get_monitor_width_mm" screen-monitor-width-mm) :int
+(cffi:defcfun ("gdk_screen_get_monitor_width_mm" screen-monitor-width-mm) :int
  #+liber-documentation
  "@version{#2021-12-13}
   @argument[screen]{a @class{gdk:screen} object}
@@ -790,7 +788,7 @@ lambda (screen)    :run-last
     Gets the width in millimeters of the specified monitor, if available.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gdk:screen-monitor-width-mm} function has been deprecated since
+    The @fun{gdk:screen-monitor-width-mm} function has been deprecated since
     version 3.22 and should not be used in newly written code. Use the
     @fun{gdk:monitor-width-mm} function instead.
   @end{dictionary}
@@ -805,7 +803,7 @@ lambda (screen)    :run-last
 ;;; gdk_screen_get_monitor_plug_name () -> screen-monitor-plug-name
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_screen_get_monitor_plug_name" screen-monitor-plug-name)
+(cffi:defcfun ("gdk_screen_get_monitor_plug_name" screen-monitor-plug-name)
     (:string :free-from-foreign t)
  #+liber-documentation
  "@version{#2021-12-13}
@@ -821,7 +819,7 @@ lambda (screen)    :run-last
     VGA, DVI, or TV, not the actual product name of the display device.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gdk:screen-monitor-plug-name} function has been deprecated
+    The @fun{gdk:screen-monitor-plug-name} function has been deprecated
     since version 3.22 and should not be used in newly written code. Use the
     @fun{gdk:monitor-model} function instead.
   @end{dictionary}
@@ -836,7 +834,7 @@ lambda (screen)    :run-last
 ;;; gdk_screen_get_monitor_scale_factor () -> screen-monitor-scale-factor
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_screen_get_monitor_scale_factor" screen-monitor-scale-factor)
+(cffi:defcfun ("gdk_screen_get_monitor_scale_factor" screen-monitor-scale-factor)
     :int
  #+liber-documentation
  "@version{#2021-12-13}
@@ -855,7 +853,7 @@ lambda (screen)    :run-last
   monitor, but most of the time you are drawing to a window where it is better
   to use the @fun{gdk:window-scale-factor} function instead.
   @begin[Warning]{dictionary}
-    The @sym{gdk:screen-monitor-scale-factor} function has been deprecated since
+    The @fun{gdk:screen-monitor-scale-factor} function has been deprecated since
     version 3.22 and should not be used in newly written code. Use the
     @fun{gdk:monitor-scale-factor} function instead.
   @end{dictionary}
@@ -870,7 +868,7 @@ lambda (screen)    :run-last
 ;;; gdk_screen_get_setting () -> screen-setting
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_screen_get_setting" %screen-setting) :boolean
+(cffi:defcfun ("gdk_screen_get_setting" %screen-setting) :boolean
   (screen (g:object screen))
   (name :string)
   (value (:pointer (:struct g:value))))
@@ -899,7 +897,7 @@ lambda (screen)    :run-last
   @see-class{gdk:screen}
   @see-class{gtk:settings}
   @see-class{g-type-t}"
-  (with-foreign-object (value '(:struct g:value))
+  (cffi:with-foreign-object (value '(:struct g:value))
     (g:value-init value gtype)
     (when (%screen-setting screen name value)
       (prog1
@@ -912,7 +910,7 @@ lambda (screen)    :run-last
 ;;; gdk_screen_get_active_window () -> screen-active-window
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_screen_get_active_window" screen-active-window)
+(cffi:defcfun ("gdk_screen_get_active_window" screen-active-window)
     (g:object window)
  #+liber-documentation
  "@version{#2021-12-13}
@@ -930,7 +928,7 @@ lambda (screen)    :run-last
   On other platforms, this function may return @code{nil}, depending on whether
   it is implementable on that platform.
   @begin[Warning]{dictionary}
-    The @sym{gdk:screen-active-window} function has been deprecated since
+    The @fun{gdk:screen-active-window} function has been deprecated since
     version 3.22 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gdk:screen}
@@ -943,7 +941,7 @@ lambda (screen)    :run-last
 ;;; gdk_screen_get_window_stack () -> screen-window-stack
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_screen_get_window_stack" screen-window-stack)
+(cffi:defcfun ("gdk_screen_get_window_stack" screen-window-stack)
     (g:list-t (g:object window :free-from-foreign t) :free-from-foreign t)
  #+liber-documentation
  "@version{#2021-12-13}

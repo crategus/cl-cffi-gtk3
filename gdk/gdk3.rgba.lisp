@@ -65,7 +65,7 @@
       (documentation 'rgba 'type)
  "@version{2023-1-22}
   @begin{short}
-    The @sym{gdk:rgba} structure is used to represent a (possibly translucent)
+    The @class{gdk:rgba} structure is used to represent a (possibly translucent)
     color, in a way that is compatible with Cairo's notion of color.
   @end{short}
   @begin{pre}
@@ -228,7 +228,7 @@
 ;;; gdk_rgba_parse ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_rgba_parse" %rgba-parse) :boolean
+(cffi:defcfun ("gdk_rgba_parse" %rgba-parse) :boolean
   (rgba (g:boxed rgba :return))
   (str :string))
 
@@ -284,7 +284,7 @@
 ;;; gdk_rgba_equal ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_rgba_equal" rgba-equal) :boolean
+(cffi:defcfun ("gdk_rgba_equal" rgba-equal) :boolean
  #+liber-documentation
  "@version{2023-1-22}
   @argument[color1]{a @struct{gdk:rgba} color}
@@ -301,7 +301,7 @@
 ;;; gdk_rgba_hash ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_rgba_hash" rgba-hash) :uint
+(cffi:defcfun ("gdk_rgba_hash" rgba-hash) :uint
  #+liber-documentation
  "@version{2023-1-22}
   @argument[color]{a @struct{gdk:rgba} color}
@@ -319,7 +319,7 @@
 ;;; gdk_rgba_to_string ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_rgba_to_string" rgba-to-string) :string
+(cffi:defcfun ("gdk_rgba_to_string" rgba-to-string) :string
  #+liber-documentation
  "@version{2023-1-22}
   @argument[color]{a @struct{gdk:rgba} color}

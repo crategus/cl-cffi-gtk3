@@ -88,7 +88,7 @@
 ;;; enum GdkDragCancelReason
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GdkDragCancelReason" drag-cancel-reason
+(gobject:define-g-enum "GdkDragCancelReason" drag-cancel-reason
   (:export t
    :type-initializer "gdk_drag_cancel_reason_get_type")
   :no-target
@@ -105,7 +105,7 @@
     cancelled DND operation.
   @end{short}
   @begin{pre}
-(define-g-enum \"GdkDragCancelReason\" drag-cancel-reason
+(gobject:define-g-enum \"GdkDragCancelReason\" drag-cancel-reason
   (:export t
    :type-initializer \"gdk_drag_cancel_reason_get_type\")
   :no-target
@@ -123,7 +123,7 @@
 ;;; enum GdkDragProtocol
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GdkDragProtocol" drag-protocol
+(gobject:define-g-enum "GdkDragProtocol" drag-protocol
   (:export t
    :type-initializer "gdk_drag_protocol_get_type")
   (:none 0)
@@ -144,7 +144,7 @@
     according to which DND is done.
   @end{short}
   @begin{pre}
-(define-g-enum \"GdkDragProtocol\" drag-protocol
+(gobject:define-g-enum \"GdkDragProtocol\" drag-protocol
   (:export t
    :type-initializer \"gdk_drag_protocol_get_type\")
   (:none 0)
@@ -171,7 +171,7 @@
 ;;; enum GdkDragAction
 ;;; ----------------------------------------------------------------------------
 
-(define-g-flags "GdkDragAction" drag-action
+(gobject:define-g-flags "GdkDragAction" drag-action
   (:export t
    :type-initializer "gdk_drag_action_get_type")
   (:default #.(ash 1 0))
@@ -191,7 +191,7 @@
     destination should do with the dropped data.
   @end{short}
   @begin{pre}
-(define-g-flags \"GdkDragAction\" drag-action
+(gobject:define-g-flags \"GdkDragAction\" drag-action
   (:export t
    :type-initializer \"gdk_drag_action_get_type\")
   (:default 1)
@@ -218,7 +218,7 @@
 ;;; GdkDragContext
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GdkDragContext" drag-context
+(gobject:define-g-object-class "GdkDragContext" drag-context
   (:superclass g:object
    :export t
    :interfaces nil
@@ -244,11 +244,11 @@
  lambda (context action)    :run-last
     @end{pre}
     A new action is being chosen for the drag and drop operation. The signal
-    will only be emitted if the @sym{gtk-drag-context} object manages the drag
+    will only be emitted if the @class{gtk-drag-context} object manages the drag
     and drop operation. See the @fun{gdk:drag-context-manage-dnd} function for
     more information. Since 3.20
     @begin[code]{table}
-      @entry[context]{The @sym{gdk:drag-context} object on which the signal is
+      @entry[context]{The @class{gdk:drag-context} object on which the signal is
         emitted.}
       @entry[action]{The @symbol{gdk:drag-action} value currently chosen.}
     @end{table}
@@ -257,11 +257,11 @@
  lambda (context reason)    :run-last
     @end{pre}
     The drag and drop operation was cancelled. The signal will only be emitted
-    if the @sym{gdk:drag-context} object manages the drag and drop operation.
+    if the @class{gdk:drag-context} object manages the drag and drop operation.
     See the @fun{gdk:drag-context-manage-dnd} function for more information.
     Since 3.20
     @begin[code]{table}
-      @entry[context]{The @sym{gdk:drag-context} object on which the signal is
+      @entry[context]{The @class{gdk:drag-context} object on which the signal is
         emitted.}
       @entry[reason]{The @symbol{gdk:drag-cancel-reason} value the drag context
         was cancelled.}
@@ -272,11 +272,11 @@
     @end{pre}
     The drag and drop operation was finished, the drag destination finished
     reading all data. The drag source can now free all miscellaneous data. This
-    signal will only be emitted if the @sym{gdk:drag-context} manages the
-    drag and drop operation. See the @fun{gdk:drag-context-manage-dnd} function
-    for more information. Since 3.20
+    signal will only be emitted if the @class{gdk:drag-context} object manages
+    the drag and drop operation. See the @fun{gdk:drag-context-manage-dnd}
+    function for more information. Since 3.20
     @begin[code]{table}
-      @entry[context]{The @sym{gdk:drag-context} object on which the signal is
+      @entry[context]{The @class{gdk:drag-context} object on which the signal is
         emitted.}
     @end{table}
     @subheading{The \"drop-performed\" signal}
@@ -284,11 +284,11 @@
  lambda (context time)    :run-last
     @end{pre}
     The drag and drop operation was performed on an accepting client. This
-    signal will only be emitted if the @sym{gdk:drag-context} manages the
-    drag and drop operation. See the @fun{gdk:drag-context-manage-dnd} function
-    for more information. Since 3.20
+    signal will only be emitted if the @class{gdk:drag-context} object manages
+    the drag and drop operation. See the @fun{gdk:drag-context-manage-dnd}
+    function for more information. Since 3.20
     @begin[code]{table}
-      @entry[context]{The @sym{gdk:drag-context} object on which the signal is
+      @entry[context]{The @class{gdk:drag-context} object on which the signal is
         emitted.}
       @entry[time]{An integer with the time at which the drop happened.}
     @end{table}
@@ -302,7 +302,7 @@
 ;;; gdk_drag_get_selection () -> drag-selection
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_drag_get_selection" drag-selection) atom-as-string
+(cffi:defcfun ("gdk_drag_get_selection" drag-selection) atom-as-string
  #+liber-documentation
  "@version{#2021-10-3}
   @argument[context]{a @class{gdk:drag-context} object}
@@ -321,7 +321,7 @@
 ;;; gdk_drag_abort ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_drag_abort" drag-abort) :void
+(cffi:defcfun ("gdk_drag_abort" drag-abort) :void
  #+liber-documentation
  "@version{#2021-10-3}
   @argument[context]{a @class{gdk:drag-context} object}
@@ -340,7 +340,7 @@
 ;;; gdk_drop_reply ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_drop_reply" drop-reply) :void
+(cffi:defcfun ("gdk_drop_reply" drop-reply) :void
  #+liber-documentation
  "@version{#2021-10-3}
   @argument[context]{a @class{gdk:drag-context} object}
@@ -362,7 +362,7 @@
 ;;; gdk_drag_drop ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_drag_drop" drag-drop) :void
+(cffi:defcfun ("gdk_drag_drop" drag-drop) :void
  #+liber-documentation
  "@version{#2021-10-3}
   @argument[context]{a @class{gdk:drag-context} object}
@@ -381,7 +381,7 @@
 ;;; gdk_drag_drop_done ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_drag_drop_done" drag-drop-done) :void
+(cffi:defcfun ("gdk_drag_drop_done" drag-drop-done) :void
  #+liber-documentation
  "@version{#2023-3-13}
   @argument[context]{a @class{gdk:drag-context} object}
@@ -393,7 +393,7 @@
   animation. This function is called by the drag source, and should be the last
   call before dropping the reference to the drag context. The
   @class{gdk:drag-context} object will only take the first
-  @sym{gdk:drag-drop-done} function call as effective, if this function is
+  @fun{gdk:drag-drop-done} function call as effective, if this function is
   called multiple times, all subsequent calls will be ignored.
   @see-class{gdk:drag-context}"
   (context (g:object drag-context))
@@ -405,7 +405,7 @@
 ;;; gdk_drag_find_window_for_screen ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_drag_find_window_for_screen" %drag-find-window-for-screen)
+(cffi:defcfun ("gdk_drag_find_window_for_screen" %drag-find-window-for-screen)
     :void
   (context (g:object drag-context))
   (window (g:object window))
@@ -443,7 +443,7 @@
   @see-class{gdk:screen}
   @see-symbol{gdk:drag-protocol}
   @see-function{gdk:drag-motion}"
-  (with-foreign-objects ((dest :pointer) (protocol 'drag-protocol))
+  (cffi:with-foreign-objects ((dest :pointer) (protocol 'drag-protocol))
     (%drag-find-window-for-screen context
                                       window
                                       screen
@@ -462,7 +462,7 @@
 
 ;; TODO: Check the implementation with %atom-intern
 
-(defcfun ("gdk_drag_begin" %drag-begin)
+(cffi:defcfun ("gdk_drag_begin" %drag-begin)
     (g:object drag-context :already-referenced)
   (window (g:object window))
   (targets (g:list-t :pointer)))
@@ -493,7 +493,7 @@
 ;;; gdk_drag_begin_for_device ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_drag_begin_for_device" %drag-begin-for-device)
+(cffi:defcfun ("gdk_drag_begin_for_device" %drag-begin-for-device)
     (g:object drag-context :already-referenced)
   (window (g:object window))
   (device (g:object device))
@@ -525,7 +525,7 @@
 ;;; gdk_drag_begin_from_point ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_drag_begin_from_point" %drag-begin-from-point)
+(cffi:defcfun ("gdk_drag_begin_from_point" %drag-begin-from-point)
     (g:object drag-context)
   (window (g:object window))
   (device (g:object device))
@@ -567,7 +567,7 @@
 
 ;; TODO: The return value gboolean is not documented.
 
-(defcfun ("gdk_drag_motion" drag-motion) :boolean
+(cffi:defcfun ("gdk_drag_motion" drag-motion) :boolean
  #+liber-documentation
  "@version{#2021-10-3}
   @argument[context]{a @class{gdk:drag-context} object}
@@ -609,7 +609,7 @@
 ;;; gdk_drop_finish ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_drop_finish" drop-finish) :void
+(cffi:defcfun ("gdk_drop_finish" drop-finish) :void
  #+liber-documentation
  "@version{#2021-10-3}
   @argument[context]{a @class{gdk:drag-context} object}
@@ -630,7 +630,7 @@
 ;;; gdk_drag_status ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_drag_status" drag-status) :void
+(cffi:defcfun ("gdk_drag_status" drag-status) :void
  #+liber-documentation
  "@version{#2021-10-3}
   @argument[context]{a @class{gdk:drag-context} object}
@@ -656,7 +656,7 @@
 ;;; gdk_drag_drop_succeeded ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_drag_drop_succeeded" drag-drop-succeeded) :boolean
+(cffi:defcfun ("gdk_drag_drop_succeeded" drag-drop-succeeded) :boolean
  #+liber-documentation
  "@version{#2021-10-3}
   @argument[context]{a @class{gdk:drag-context} object}
@@ -677,7 +677,7 @@
 ;;; gdk_window_get_drag_protocol ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdK_window_get_drag_protocol" window-drag-protocol)
+(cffi:defcfun ("gdK_window_get_drag_protocol" window-drag-protocol)
     drag-protocol
  #+liber-documentation
  "@version{#2021-10-3}
@@ -701,7 +701,7 @@
 ;;; gdk_drag_context_get_actions () -> drag-context-actions
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_drag_context_get_actions" drag-context-actions) drag-action
+(cffi:defcfun ("gdk_drag_context_get_actions" drag-context-actions) drag-action
  #+liber-documentation
  "@version{#2021-10-3}
   @argument[context]{a @class{gdk:drag-context} object}
@@ -722,7 +722,7 @@
 ;;; gdk_drag_context_get_suggested_action () -> drag-context-suggest-action
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_drag_context_get_suggested_action"
+(cffi:defcfun ("gdk_drag_context_get_suggested_action"
           drag-context-suggested-action) drag-action
  #+liber-documentation
  "@version{#2021-10-3}
@@ -741,7 +741,7 @@
 ;;; gdk_drag_context_get_selected_action () -> drag-context-selected-action
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_drag_context_get_selected_action"
+(cffi:defcfun ("gdk_drag_context_get_selected_action"
            drag-context-selected-action) drag-action
  #+liber-documentation
  "@version{#2021-10-3}
@@ -760,7 +760,7 @@
 ;;; gdk_drag_context_list_targets ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_drag_context_list_targets" drag-context-list-targets)
+(cffi:defcfun ("gdk_drag_context_list_targets" drag-context-list-targets)
     (g:list-t atom-as-string :free-from-foreign nil)
  #+liber-documentation
  "@version{#2021-10-3}
@@ -787,7 +787,7 @@
                    :void)
   device)
 
-(defcfun ("gdk_drag_context_get_device" drag-context-device) (g:object device)
+(cffi:defcfun ("gdk_drag_context_get_device" drag-context-device) (g:object device)
  #+liber-documentation
  "@version{#2021-10-3}
   @syntax[]{(gdk:drag-context-device context) => device}
@@ -808,7 +808,7 @@
 ;;; gdk_drag_context_get_source_window () -> drag-context-source-window
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_drag_context_get_source_window" drag-context-source-window)
+(cffi:defcfun ("gdk_drag_context_get_source_window" drag-context-source-window)
     (g:object window)
  #+liber-documentation
  "@version{#2021-10-3}
@@ -827,7 +827,7 @@
 ;;; gdk_drag_context_get_dest_window () -> drag-context-dest-window
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_drag_context_get_dest_window" drag-context-dest-window)
+(cffi:defcfun ("gdk_drag_context_get_dest_window" drag-context-dest-window)
     (g:object window)
  #+liber-documentation
  "@version{#2021-10-3}
@@ -846,7 +846,7 @@
 ;;; gdk_drag_context_get_protocol () -> drag-context-protocol
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_drag_context_get_protocol" drag-context-protocol)
+(cffi:defcfun ("gdk_drag_context_get_protocol" drag-context-protocol)
     drag-protocol
  #+liber-documentation
  "@version{#2021-10-3}
@@ -865,7 +865,7 @@
 ;;; gdk_drag_context_get_drag_window () -> drag-context-drag-window
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_drag_context_get_drag_window" drag-context-drag-window)
+(cffi:defcfun ("gdk_drag_context_get_drag_window" drag-context-drag-window)
     (g:object window)
  #+liber-documentation
  "@version{#2023-3-13}
@@ -889,7 +889,7 @@
 ;;; gdk_drag_context_set_hotspot ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_drag_context_set_hotspot" drag-context-set-hotspot) :void
+(cffi:defcfun ("gdk_drag_context_set_hotspot" drag-context-set-hotspot) :void
  #+liber-documentation
  "@version{#2023-3-13}
   @argument[context]{a @class{gdk:drag-context} object}
@@ -911,7 +911,7 @@
 ;;; gdk_drag_context_manage_dnd ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_drag_context_manage_dnd" drag-context-manage-dnd) :boolean
+(cffi:defcfun ("gdk_drag_context_manage_dnd" drag-context-manage-dnd) :boolean
  #+liber-documentation
  "@version{#2023-3-13}
   @argument[context]{a @class{gdk:drag-context} object}
@@ -930,21 +930,21 @@
   following signals:
   @begin{itemize}
     @begin{item}
-      The \"action-changed\" signal whenever the final action to be performed
-      by the drag and drop operation changes.
+      The @code{\"action-changed\"} signal whenever the final action to be
+      performed by the drag and drop operation changes.
     @end{item}
     @begin{item}
-      The \"drop-performed\" signal after the user performs the drag and drop
-      gesture, typically by releasing the mouse button.
+      The @code{\"drop-performed\"} signal after the user performs the drag and
+      drop gesture, typically by releasing the mouse button.
     @end{item}
     @begin{item}
-      The \"dnd-finished\" signal after the drag and drop operation concludes,
-      after all GDK selection transfers happen.
+      The @code{\"dnd-finished\"} signal after the drag and drop operation
+      concludes, after all GDK selection transfers happen.
     @end{item}
     @begin{item}
-      The \"cancel\" signal if the drag and drop operation is finished but does
-      not happen over an accepting destination, or is cancelled through other
-      means.
+      The @code{\"cancel\"} signal if the drag and drop operation is finished
+      but does not happen over an accepting destination, or is cancelled through
+      other means.
     @end{item}
   @end{itemize}
   @see-class{gdk:drag-context}

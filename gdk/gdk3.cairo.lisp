@@ -69,9 +69,9 @@
       (documentation 'cairo-surface 'type)
  "@version{2023-2-5}
   @begin{short}
-    The @sym{gdk:cairo-surface} structure represents a Cairo surface in GTK.
+    The @class{gdk:cairo-surface} structure represents a Cairo surface in GTK.
   @end{short}
-  The @sym{gdk:cairo-surface} structure is opaque, and has no user visible
+  The @class{gdk:cairo-surface} structure is opaque, and has no user visible
   fields. An instance cannot be created from the Lisp side. See the
   documentation of the @symbol{cairo:surface-t} structure for more information.
   @see-symbol{cairo:surface-t}")
@@ -89,9 +89,9 @@
       (documentation 'cairo-context 'type)
  "@version{2023-2-5}
   @begin{short}
-    The @sym{gdk:cairo-context} structure represents a Cairo context in GTK.
+    The @class{gdk:cairo-context} structure represents a Cairo context in GTK.
   @end{short}
-  The @sym{gdk:cairo-context} structure is opaque, and has no user visible
+  The @class{gdk:cairo-context} structure is opaque, and has no user visible
   fields. An instance cannot be created from the Lisp side. See the
   documentation of the @symbol{cairo:context-t} structure for more information.
   @see-symbol{cairo:context-t}")
@@ -102,7 +102,8 @@
 ;;; gdk_window_create_similar_surface ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_window_create_similar_surface" window-create-similar-surface)
+(cffi:defcfun ("gdk_window_create_similar_surface"
+               window-create-similar-surface)
     (:pointer (:struct cairo:surface-t))
  #+liber-documentation
  "@version{2023-2-3}
@@ -146,8 +147,8 @@
 ;;; gdk_window_create_similar_image_surface ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_window_create_similar_image_surface"
-           window-create-similar-image-surface)
+(cffi:defcfun ("gdk_window_create_similar_image_surface"
+               window-create-similar-image-surface)
     (:pointer (:struct cairo:surface-t))
  #+liber-documentation
  "@version{2023-2-3}
@@ -212,7 +213,8 @@
 ;;; gdk_cairo_create ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_cairo_create" cairo-create) (:pointer (:struct cairo:context-t))
+(cffi:defcfun ("gdk_cairo_create" cairo-create)
+    (:pointer (:struct cairo:context-t))
  #+liber-documentation
  "@version{2023-2-3}
   @argument[window]{a @class{gdk:window} object}
@@ -236,7 +238,7 @@
   @fun{gdk:drawing-context-cairo-context} functions instead. GTK will
   automatically do this for you when drawing a widget.
   @begin[Warning]{dictionary}
-    The @sym{gdk:cairo-create} function has been deprecated since version 3.22
+    The @fun{gdk:cairo-create} function has been deprecated since version 3.22
     and should not be used in newly written code. Use the
     @fun{gdk:window-begin-draw-frame} and
     @fun{gdk:drawing-context-cairo-context} functions instead.
@@ -255,7 +257,7 @@
 ;;; gdk_cairo_get_clip_rectangle () -> cairo-clip-rectangle
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_cairo_get_clip_rectangle" %cairo-clip-rectangle) :boolean
+(cffi:defcfun ("gdk_cairo_get_clip_rectangle" %cairo-clip-rectangle) :boolean
   (cr (:pointer (:struct cairo:context-t)))
   (rectangle (g:boxed rectangle)))
 
@@ -285,7 +287,7 @@
 ;;; gdk_cairo_get_drawing_context ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_cairo_get_drawing_context" cairo-drawing-context)
+(cffi:defcfun ("gdk_cairo_get_drawing_context" cairo-drawing-context)
     (g:object drawing-context)
  #+liber-documentation
  "@version{2023-3-13}
@@ -304,7 +306,7 @@
 ;;; gdk_cairo_set_source_color ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_cairo_set_source_color" cairo-set-source-color) :void
+(cffi:defcfun ("gdk_cairo_set_source_color" cairo-set-source-color) :void
  #+liber-documentation
  "@version{#2023-2-3}
   @argument[cr]{a @symbol{cairo:context-t} context}
@@ -313,7 +315,7 @@
     Sets the specified color as the source color of the Cairo context.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gdk:cairo-set-source-color} function has been deprecated since
+    The @fun{gdk:cairo-set-source-color} function has been deprecated since
     version 3.4 and should not be used in newly written code. Use the
     @fun{gdk:cairo-set-source-rgba} function instead.
   @end{dictionary}
@@ -329,7 +331,7 @@
 ;;; gdk_cairo_set_source_rgba ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_cairo_set_source_rgba" cairo-set-source-rgba) :void
+(cffi:defcfun ("gdk_cairo_set_source_rgba" cairo-set-source-rgba) :void
  #+liber-documentation
  "@version{#2023-2-3}
   @argument[cr]{a @symbol{cairo:context-t} context}
@@ -349,7 +351,7 @@
 ;;; gdk_cairo_set_source_pixbuf ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_cairo_set_source_pixbuf" %cairo-set-source-pixbuf) :void
+(cffi:defcfun ("gdk_cairo_set_source_pixbuf" %cairo-set-source-pixbuf) :void
   (cr (:pointer (:struct cairo:context-t)))
   (pixbuf (g:object gdk-pixbuf:pixbuf))
   (x :double)
@@ -384,7 +386,7 @@
 ;;; gdk_cairo_set_source_window ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_cairo_set_source_window" %cairo-set-source-window) :void
+(cffi:defcfun ("gdk_cairo_set_source_window" %cairo-set-source-window) :void
   (cr (:pointer (:struct cairo:context-t)))
   (window (g:object window))
   (x :double)
@@ -422,7 +424,7 @@
 ;;; gdk_cairo_rectangle ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_cairo_rectangle" cairo-rectangle) :void
+(cffi:defcfun ("gdk_cairo_rectangle" cairo-rectangle) :void
  #+liber-documentation
  "@version{#2023-2-3}
   @argument[cr]{a @symbol{cairo:context-t} context}
@@ -441,7 +443,7 @@
 ;;; gdk_cairo_region ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_cairo_region" cairo-region) :void
+(cffi:defcfun ("gdk_cairo_region" cairo-region) :void
  #+liber-documentation
  "@version{#2023-2-3}
   @argument[cr]{a @symbol{cairo:context-t} context}
@@ -460,8 +462,8 @@
 ;;; gdk_cairo_region_create_from_surface ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_cairo_region_create_from_surface"
-           cairo-region-create-from-surface)
+(cffi:defcfun ("gdk_cairo_region_create_from_surface"
+               cairo-region-create-from-surface)
     (:pointer (:struct cairo:region-t))
  #+liber-documentation
  "@version{#2023-2-3}
@@ -488,8 +490,8 @@
 ;;; gdk_cairo_surface_create_from_pixbuf ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_cairo_surface_create_from_pixbuf"
-           cairo-surface-create-from-pixbuf)
+(cffi:defcfun ("gdk_cairo_surface_create_from_pixbuf"
+               cairo-surface-create-from-pixbuf)
     (:pointer (:struct cairo:surface-t))
  #+liber-documentation
  "@version{#2023-3-12}
@@ -519,7 +521,7 @@
 ;;; gdk_cairo_draw_from_gl ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_cairo_draw_from_gl" cairo-draw-from-gl) :void
+(cffi:defcfun ("gdk_cairo_draw_from_gl" cairo-draw-from-gl) :void
  #+liber-documentation
  "@version{#2023-2-3}
   @argument[cr]{a @symbol{cairo:context-t} context}

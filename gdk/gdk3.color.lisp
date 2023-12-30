@@ -67,7 +67,7 @@
       (documentation 'color 'type)
  "@version{2023-1-22}
   @begin{short}
-    The @sym{gdk:color} structure is used to describe a color, similar to the
+    The @class{gdk:color} structure is used to describe a color, similar to the
     XColor structure used in the X11 drawing API.
   @end{short}
   @begin{pre}
@@ -90,7 +90,7 @@
       0 and 65535, with 65535 indicating full intensity.}
   @end{table}
   @begin[Warning]{dictionary}
-    The @sym{gdk:color} color has been deprecated since version 3.14 and
+    The @class{gdk:color} color has been deprecated since version 3.14 and
     should not be used in newly written code. Use the @class{gdk:rgba} color.
   @end{dictionary}
   @see-constructor{gdk:color-new}
@@ -105,7 +105,7 @@
 ;;; Accessors of the GdkColor structure
 ;;; ----------------------------------------------------------------------------
 
-;;; --- color-pixel ------------------------------------------------------------
+;;; --- gdk:color-pixel --------------------------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'color-pixel)
@@ -120,14 +120,14 @@
   For allocated colors, the pixel value used to draw this color on the screen.
   Not used anymore.
   @begin[Warning]{dictionary}
-    The @sym{gdk:color-pixel} function has been deprecated since version 3.14
+    The @fun{gdk:color-pixel} function has been deprecated since version 3.14
     and should not be used in newly written code. Use the @class{gdk:rgba}
     color.
   @end{dictionary}
   @see-class{gdk:color}
   @see-class{gdk:rgba}")
 
-;;; --- color-red --------------------------------------------------------------
+;;; --- gdk:color-red ----------------------------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'color-red)
@@ -142,7 +142,7 @@
   The red component of the color. This is a value between 0 and 65535, with
   65535 indicating full intensity.
   @begin[Warning]{dictionary}
-    The @sym{gdk:color-red} function has been deprecated since version 3.14
+    The @fun{gdk:color-red} function has been deprecated since version 3.14
     and should not be used in newly written code. Use the @class{gdk:rgba}
     color.
   @end{dictionary}
@@ -151,7 +151,7 @@
   @see-function{gdk:color-green}
   @see-function{gdk:color-blue}")
 
-;;; --- color-green ------------------------------------------------------------
+;;; --- gdk:color-green --------------------------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'color-green)
@@ -166,7 +166,7 @@
   The green component of the color. This is a value between 0 and 65535, with
   65535 indicating full intensity.
   @begin[Warning]{dictionary}
-    The @sym{gdk:color-green} function has been deprecated since version 3.14
+    The @fun{gdk:color-green} function has been deprecated since version 3.14
     and should not be used in newly written code. Use the @class{gdk:rgba}
     color.
   @end{dictionary}
@@ -175,7 +175,7 @@
   @see-function{gdk:color-red}
   @see-function{gdk:color-blue}")
 
-;;; --- color-blue -------------------------------------------------------------
+;;; --- gdk:color-blue ---------------------------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'color-blue)
@@ -190,7 +190,7 @@
   The blue component of the color. This is a value between 0 and 65535, with
   65535 indicating full intensity.
   @begin[Warning]{dictionary}
-    The @sym{gdk:color-blue} function has been deprecated since version 3.14
+    The @fun{gdk:color-blue} function has been deprecated since version 3.14
     and should not be used in newly written code. Use the @class{gdk:rgba}
     color.
   @end{dictionary}
@@ -200,7 +200,7 @@
   @see-function{gdk:color-green}")
 
 ;;; ----------------------------------------------------------------------------
-;;; color-new
+;;; gdk:color-new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline color-new))
@@ -218,7 +218,7 @@
     Creates a new @class{gdk:color} color.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gdk:color-new} function has been deprecated since version 3.14
+    The @fun{gdk:color-new} function has been deprecated since version 3.14
     and should not be used in newly written code. Use the @class{gdk:rgba}
     color.
   @end{dictionary}
@@ -243,7 +243,7 @@
     Makes a copy of a color.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gdk:color-copy} function has been deprecated since version 3.14
+    The @fun{gdk:color-copy} function has been deprecated since version 3.14
     and should not be used in newly written code. Use the @class{gdk:rgba}
     color.
   @end{dictionary}
@@ -273,7 +273,7 @@
 ;;; gdk_color_parse ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_color_parse" %color-parse) :boolean
+(cffi:defcfun ("gdk_color_parse" %color-parse) :boolean
   (spec :string)
   (color (g:boxed color :return)))
 
@@ -294,7 +294,7 @@
   of the color, respectively. White in the four forms is @code{#fff},
   @code{#ffffff}, @code{#fffffffff} and @code{#ffffffffffff}.
   @begin[Warning]{dictionary}
-    The @sym{gdk:color-parse} function has been deprecated since version 3.14
+    The @fun{gdk:color-parse} function has been deprecated since version 3.14
     and should not be used in newly written code. Use the @class{gdk:rgba}
     color.
   @end{dictionary}
@@ -311,7 +311,7 @@
 ;;; gdk_color_equal ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_color_equal" color-equal) :boolean
+(cffi:defcfun ("gdk_color_equal" color-equal) :boolean
  #+liber-documentation
  "@version{2023-1-22}
   @argument[color1]{a @class{gdk:color} color}
@@ -321,7 +321,7 @@
     Compares two colors.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gdk:color-equal} function has been deprecated since version 3.14
+    The @fun{gdk:color-equal} function has been deprecated since version 3.14
     and should not be used in newly written code. Use the @class{gdk:rgba}
     color.
   @end{dictionary}
@@ -336,7 +336,7 @@
 ;;; gdk_color_hash ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_color_hash" color-hash) :uint
+(cffi:defcfun ("gdk_color_hash" color-hash) :uint
  #+liber-documentation
  "@version{2023-1-22}
   @argument[color]{a @class{gdk:color} color}
@@ -346,7 +346,7 @@
     @class{gdk:color} colors.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gdk:color-hash} function has been deprecated since version 3.14
+    The @fun{gdk:color-hash} function has been deprecated since version 3.14
     and should not be used in newly written code. Use the @class{gdk:rgba}
     color.
   @end{dictionary}
@@ -360,7 +360,7 @@
 ;;; gdk_color_to_string ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_color_to_string" color-to-string)
+(cffi:defcfun ("gdk_color_to_string" color-to-string)
     (:string :free-from-foreign t)
  #+liber-documentation
  "@version{2023-1-22}
@@ -373,7 +373,7 @@
   @end{short}
   The returned string can be parsed by the @fun{gdk:color-parse} function.
   @begin[Warning]{dictionary}
-    The @sym{gdk:color-to-string} function has been deprecated since version
+    The @fun{gdk:color-to-string} function has been deprecated since version
     3.14 and should not be used in newly written code. Use the @class{gdk:rgba}
     color.
   @end{dictionary}

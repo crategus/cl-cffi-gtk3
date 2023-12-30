@@ -123,7 +123,7 @@
 ;;; GDK_PRIORITY_REDRAW
 ;;; ----------------------------------------------------------------------------
 
-(defconstant +gdk-priority-redraw+ (+ +g-priority-high-idle+ 20)
+(defconstant +gdk-priority-redraw+ (+ glib:+g-priority-high-idle+ 20)
  #+liber-documentation
  "@version{2023-2-26}
   @begin{short}
@@ -142,13 +142,13 @@
 
 (defconstant +gdk-event-propagate+ nil
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2023-12-19}
   @variable-value{@em{false}}
   @begin{short}
     Use this value as the return value for continuing the propagation of an
     event handler.
   @end{short}
-  @see-variable{+gdk-event-stop+}")
+  @see-variable{gdk:+gdk-event-stop+}")
 
 #+liber-documentation
 (setf (liber:alias-for-variable '+gdk-event-propagate+) "Constant")
@@ -161,23 +161,23 @@
 
 (defconstant +gdk-event-stop+ t
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2023-12-19}
   @variable-value{@em{true}}
   @begin{short}
     Use this value as the return value for stopping the propagation of an event
     handler.
   @end{short}
   @begin[Example]{dictionary}
-    This event handler for the \"delete-event\" signal of a window stops the
-    propagation of the event and the window is not closed.
+    This event handler for the @code{\"delete-event\"} signal of a window stops
+    the propagation of the event and the window is not closed.
     @begin{pre}
 (g:signal-connect window \"delete-event\"
                   (lambda (widget event)
                     (declare (ignore widget event))
-                    +gdk-event-stop+))
+                    gdk:+gdk-event-stop+))
     @end{pre}
   @end{dictionary}
-  @see-variable{+gdk-event-propagate+}")
+  @see-variable{gdk:+gdk-event-propagate+}")
 
 #+liber-documentation
 (setf (liber:alias-for-variable '+gdk-event-stop+) "Constant")
@@ -220,7 +220,7 @@
 ;;; gdk_events_pending ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_events_pending" events-pending) :boolean
+(cffi:defcfun ("gdk_events_pending" events-pending) :boolean
  #+liber-documentation
  "@version{2023-2-26}
   @return{@em{True} if any events are pending.}
@@ -244,7 +244,7 @@
 ;;; gdk_event_peek ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_event_peek" event-peek) (g:boxed event :return)
+(cffi:defcfun ("gdk_event_peek" event-peek) (g:boxed event :return)
  #+liber-documentation
  "@version{2023-2-26}
   @begin{return}
@@ -266,7 +266,7 @@
 ;;; gdk_event_get ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_event_get" event-get) (g:boxed event :return)
+(cffi:defcfun ("gdk_event_get" event-get) (g:boxed event :return)
  #+liber-documentation
  "@version{2023-2-26}
   @begin{return}
@@ -287,7 +287,7 @@
 ;;; gdk_event_put ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_event_put" event-put) :void
+(cffi:defcfun ("gdk_event_put" event-put) :void
  #+liber-documentation
  "@version{2023-2-26}
   @argument[event]{a @class{gdk:event} instance}
@@ -306,7 +306,7 @@
 ;;; gdk_event_new ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_event_new" %event-new) (g:boxed event)
+(cffi:defcfun ("gdk_event_new" %event-new) (g:boxed event)
   (event-type event-type))
 
 (defun event-new (event-type &rest args)
@@ -431,7 +431,7 @@
 ;;; gdk_event_get_axis () -> event-axis
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_event_get_axis" %event-axis) :boolean
+(cffi:defcfun ("gdk_event_get_axis" %event-axis) :boolean
   (event (g:boxed event))
   (axis axis-use)
   (value (:pointer :double)))
@@ -447,7 +447,7 @@
   @end{short}
   @see-class{gdk:event}
   @see-symbol{gdk:axis-use}"
-  (with-foreign-object (value :double)
+  (cffi:with-foreign-object (value :double)
     (when (%event-axis event axis value)
       (cffi:mem-ref value :double))))
 
@@ -457,7 +457,7 @@
 ;;; gdk_event_get_button () -> event-button
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_event_get_button" %event-button) :boolean
+(cffi:defcfun ("gdk_event_get_button" %event-button) :boolean
   (event (g:boxed event))
   (button (:pointer :uint)))
 
@@ -471,7 +471,7 @@
   @see-class{gdk:event}
   @see-class{gdk:event-button}
   @see-function{gdk:event-click-count}"
-  (with-foreign-object (button :uint)
+  (cffi:with-foreign-object (button :uint)
     (when (%event-button event button)
       (cffi:mem-ref button :uint))))
 
@@ -481,7 +481,7 @@
 ;;; gdk_event_get_click_count () -> event-click-count
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_event_get_click_count" %event-click-count) :boolean
+(cffi:defcfun ("gdk_event_get_click_count" %event-click-count) :boolean
   (event (g:boxed event))
   (click-count (:pointer :uint)))
 
@@ -497,7 +497,7 @@
   @see-class{gdk:event}
   @see-class{gdk:event-button}
   @see-function{gdk:event-button}"
-  (with-foreign-object (click-count :uint)
+  (cffi:with-foreign-object (click-count :uint)
     (when (%event-click-count event click-count)
       (cffi:mem-ref click-count :uint))))
 
@@ -507,7 +507,7 @@
 ;;; gdk_event_get_coords () -> events-coords
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_event_get_coords" %event-coords) :boolean
+(cffi:defcfun ("gdk_event_get_coords" %event-coords) :boolean
   (event (g:boxed event))
   (xwin (:pointer :double))
   (ywin (:pointer :double)))
@@ -527,7 +527,7 @@
   @end{short}
   @see-class{gdk:event}
   @see-function{gdk:event-root-coords}"
-  (with-foreign-objects ((x :double) (y :double))
+  (cffi:with-foreign-objects ((x :double) (y :double))
     (when (%event-coords event x y)
       (values (cffi:mem-ref x :double)
               (cffi:mem-ref y :double)))))
@@ -538,7 +538,7 @@
 ;;; gdk_event_get_keycode () -> event-keycode
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_event_get_keycode" %event-keycode) :boolean
+(cffi:defcfun ("gdk_event_get_keycode" %event-keycode) :boolean
   (event (g:boxed event))
   (keycode (:pointer :uint16)))
 
@@ -552,7 +552,7 @@
   @see-class{gdk:event}
   @see-class{gdk:event-key}
   @see-function{gdk:event-keyval}"
-  (with-foreign-object (keycode :uint16)
+  (cffi:with-foreign-object (keycode :uint16)
     (when (%event-keycode event keycode)
       (cffi:mem-ref keycode :uint16))))
 
@@ -562,7 +562,7 @@
 ;;; gdk_event_get_keyval () -> event-keyval
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_event_get_keyval" %event-keyval) :boolean
+(cffi:defcfun ("gdk_event_get_keyval" %event-keyval) :boolean
   (event (g:boxed event))
   (keyval (:pointer :uint)))
 
@@ -576,7 +576,7 @@
   @see-class{gdk:event}
   @see-class{gdk:event-key}
   @see-function{gdk:event-keycode}"
-  (with-foreign-object (keyval :uint)
+  (cffi:with-foreign-object (keyval :uint)
     (when (%event-keyval event keyval)
       (cffi:mem-ref keyval :uint))))
 
@@ -586,7 +586,7 @@
 ;;; gdk_event_get_root_coords ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_event_get_root_coords" %event-root-coords) :boolean
+(cffi:defcfun ("gdk_event_get_root_coords" %event-root-coords) :boolean
   (event (g:boxed event))
   (xroot (:pointer :double))
   (yroot (:pointer :double)))
@@ -604,7 +604,7 @@
   @end{short}
   @see-class{gdk:event}
   @see-function{gdk:event-coords}"
-  (with-foreign-objects ((x :double) (y :double))
+  (cffi:with-foreign-objects ((x :double) (y :double))
     (when (%event-root-coords event x y)
       (values (cffi:mem-ref x :double)
               (cffi:mem-ref y :double)))))
@@ -615,7 +615,7 @@
 ;;; gdk_event_get_scroll_direction ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_event_get_scroll_direction" %event-get-scroll-direction) :boolean
+(cffi:defcfun ("gdk_event_get_scroll_direction" %event-get-scroll-direction) :boolean
   (event (g:boxed event))
   (direction (:pointer scroll-direction)))
 
@@ -628,7 +628,7 @@
   @end{short}
   @see-class{gdk:event}
   @see-class{gdk:event-scroll}"
-  (with-foreign-object (direction 'scroll-direction)
+  (cffi:with-foreign-object (direction 'scroll-direction)
     (when (%event-get-scroll-direction event direction)
       (cffi:mem-ref direction 'scroll-direction))))
 
@@ -638,7 +638,7 @@
 ;;; gdk_event_get_scroll_deltas () -> event-scroll-deltas
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_event_get_scroll_deltas" %event-scroll-deltas) :boolean
+(cffi:defcfun ("gdk_event_get_scroll_deltas" %event-scroll-deltas) :boolean
   (event (g:boxed event))
   (xdelta (:pointer :double))
   (ydelta (:pointer :double)))
@@ -659,7 +659,7 @@
   @see-function{gdk:event-get-scroll-direction}
   @see-function{gdk:event-scroll-delta-x}
   @see-function{gdk:event-scroll-delta-y}"
-  (with-foreign-objects ((x :double) (y :double))
+  (cffi:with-foreign-objects ((x :double) (y :double))
     (when (%event-scroll-deltas event x y)
       (values (cffi:mem-ref x :double)
               (cffi:mem-ref y :double)))))
@@ -670,7 +670,7 @@
 ;;; gdk_event_is_scroll_stop_event ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_event_is_scroll_stop_event" event-is-scroll-stop-event) :boolean
+(cffi:defcfun ("gdk_event_is_scroll_stop_event" event-is-scroll-stop-event) :boolean
  "@version{2023-3-13}
   @argument[event]{a @class{gdk:event} instance}
   @return{A boolean whether a scroll event is a stop scroll event.}
@@ -692,7 +692,7 @@
 ;;; gdk_event_get_state () -> event-state
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_event_get_state" %event-state) :boolean
+(cffi:defcfun ("gdk_event_get_state" %event-state) :boolean
   (event (g:boxed event))
   (state (:pointer modifier-type)))
 
@@ -709,7 +709,7 @@
   Otherwise returns an empty state (0). @arg{event} may be @code{nil}, in which
   case it is treated as if the event had no state field.
   @see-class{gdk:event}"
-  (with-foreign-object (state 'modifier-type)
+  (cffi:with-foreign-object (state 'modifier-type)
     (if (%event-state event state)
         (cffi:mem-ref state 'modifier-type)
         0)))
@@ -720,7 +720,7 @@
 ;;; gdk_event_get_time () -> event-time
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_event_get_time" event-time) :uint32
+(cffi:defcfun ("gdk_event_get_time" event-time) :uint32
  #+liber-documentation
  "@version{2023-2-26}
   @argument[event]{a @class{gdk:event} instance}
@@ -729,7 +729,7 @@
     Returns the current time of the event.
   @end{short}
   If @arg{event} is @code{nil}, returns the value of the
-  @var{+gdk-current-time+} constant.
+  @var{gdk:+gdk-current-time+} constant.
   @see-class{gdk:event}"
   (event (g:boxed event)))
 
@@ -784,7 +784,7 @@
 ;;; gdk_event_get_event_sequence () -> event-event-sequence
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_event_get_event_sequence" event-event-sequence)
+(cffi:defcfun ("gdk_event_get_event_sequence" event-event-sequence)
     (g:boxed event-sequence)
  #+liber-documentation
  "@version{2023-2-26}
@@ -807,7 +807,7 @@
 ;;; gdk_event_request_motions ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_event_request_motions" event-request-motions) :void
+(cffi:defcfun ("gdk_event_request_motions" event-request-motions) :void
  #+liber-documentation
  "@version{#2023-2-26}
   @argument[event]{a @class{gdk:event} instance}
@@ -839,7 +839,7 @@
 ;;; gdk_events_get_angle () -> events-angle
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_events_get_angle" %events-angle) :boolean
+(cffi:defcfun ("gdk_events_get_angle" %events-angle) :boolean
   (event1 (g:boxed event))
   (event2 (g:boxed event))
   (angle (:pointer :double)))
@@ -856,7 +856,7 @@
   The rotation direction for positive angles is from the positive X axis
   towards the positive Y axis.
   @see-class{gdk:event}"
-  (with-foreign-object (angle :double)
+  (cffi:with-foreign-object (angle :double)
     (when (%events-angle event1 event2 angle)
       (cffi:mem-ref angle :double))))
 
@@ -866,7 +866,7 @@
 ;;; gdk_events_get_center () -> events-center
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_events_get_center" %events-center) :boolean
+(cffi:defcfun ("gdk_events_get_center" %events-center) :boolean
   (event1 (g:boxed event))
   (event2 (g:boxed event))
   (x (:pointer :double))
@@ -885,7 +885,7 @@
     be returned in x and y.
   @end{short}
   @see-class{gdk:event}"
-  (with-foreign-objects ((x :double) (y :double))
+  (cffi:with-foreign-objects ((x :double) (y :double))
     (when (%events-center event1 event2 x y)
      (values (cffi:mem-ref x :double)
              (cffi:mem-ref y :double)))))
@@ -896,7 +896,7 @@
 ;;; gdk_events_get_distance () -> events-distance
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_events_get_distance" %events-distance) :boolean
+(cffi:defcfun ("gdk_events_get_distance" %events-distance) :boolean
   (event1 (g:boxed event))
   (event2 (g:boxed event))
   (distance (:pointer :double)))
@@ -912,7 +912,7 @@
     @code{event2}.
   @end{short}
   @see-class{gdk:event}"
-  (with-foreign-object (distance :double)
+  (cffi:with-foreign-object (distance :double)
     (when (%events-distance event1 event2 distance)
       (cffi:mem-ref distance :double))))
 
@@ -922,7 +922,7 @@
 ;;; gdk_event_triggers_context_menu ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_event_triggers_context_menu" event-triggers-context-menu)
+(cffi:defcfun ("gdk_event_triggers_context_menu" event-triggers-context-menu)
     :boolean
  "@version{#2023-2-26}
   @argument[event]{a @class{gdk:event} instance}
@@ -951,7 +951,7 @@
 ;;; gdk_event_get_seat ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_event_get_seat" event-seat) (g:object gdk-seat)
+(cffi:defcfun ("gdk_event_get_seat" event-seat) (g:object gdk-seat)
  "@version{#2023-3-13}
   @argument[event]{a @class{gdk:event} instance}
   @return{The @class{gdk:seat} object of this event.}
@@ -968,7 +968,7 @@
 ;;; gdk_event_get_scancode () -> event-scancode
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_event_get_scancode" event-scancode) :int
+(cffi:defcfun ("gdk_event_get_scancode" event-scancode) :int
  "@version{#2023-3-13}
   @argument[event]{a @class{gdk:event} instance}
   @return{An integer with the associated keyboard scancode or 0.}
@@ -987,7 +987,7 @@
 ;;; gdk_event_get_pointer_emulated () -> event-pointer-emulated
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_event_get_pointer_emulated" event-pointer-emulated) :boolean
+(cffi:defcfun ("gdk_event_get_pointer_emulated" event-pointer-emulated) :boolean
  "@version{#2023-3-13}
   @argument[event]{a @class{gdk:event} instance}
   @return{@em{True} if this event is emulated.}
@@ -1004,7 +1004,7 @@
 ;;; GdkEventFunc ()
 ;;; ----------------------------------------------------------------------------
 
-(defcallback event-func :void
+(cffi:defcallback event-func :void
     ((event (g:boxed event))
      (data :pointer))
   (restart-case
@@ -1035,7 +1035,7 @@ lambda (event)
 ;;; gdk_event_handler_set ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_event_handler_set" %event-handler-set) :void
+(cffi:defcfun ("gdk_event_handler_set" %event-handler-set) :void
   (func :pointer)
   (data :pointer)
   (notify :pointer))
@@ -1068,7 +1068,7 @@ lambda (event)
   (cffi:foreign-funcall "gdk_set_show_events" :boolean show-events :void)
   show-events)
 
-(defcfun ("gdk_get_show_events" show-events) :boolean
+(cffi:defcfun ("gdk_get_show_events" show-events) :boolean
  #+liber-documentation
  "@version{#2023-2-26}
   @syntax[]{(gdk:show-events) => show-events}
@@ -1077,9 +1077,9 @@ lambda (event)
   @begin{short}
     Whether event debugging output is enabled.
   @end{short}
-  The @sym{gdk:show-events} function gets whether event debugging output is
-  enabled. The @sym{(setf gdk:show-events)} function sets whether a trace of
-  received events is output.
+  The @fun{gdk:show-events} function gets whether event debugging output is
+  enabled. The @setf{gdk:show-events} function sets whether a trace of received
+  events is output.
 
   Note that GTK must be compiled with debugging (that is, configured using the
   @code{--enable-debug} option) to use this option.
@@ -1099,7 +1099,7 @@ lambda (event)
                         :void)
   screen)
 
-(defcfun ("gdk_event_get_screen" event-screen) (g:object screen)
+(cffi:defcfun ("gdk_event_get_screen" event-screen) (g:object screen)
  #+liber-documentation
  "@version{2023-2-26}
   @syntax[]{(gdk:event-screen event) => screen}
@@ -1109,8 +1109,8 @@ lambda (event)
   @begin{short}
     Accessor of the screen of an event.
   @end{short}
-  The @sym{gdk:event-screen} function returns the screen for the event. The
-  @sym{(setf gdk:event-screen)} function sets the screen of the event.
+  The @fun{gdk:event-screen} function returns the screen for the event. The
+  @setf{gdk:event-screen} function sets the screen of the event.
 
   The event must have been allocated by GTK, for instance, by the
   @fun{gdk:event-copy} function.
@@ -1137,7 +1137,7 @@ lambda (event)
                         :void)
   device)
 
-(defcfun ("gdk_event_get_device" event-device) (g:object device)
+(cffi:defcfun ("gdk_event_get_device" event-device) (g:object device)
  #+liber-documentation
  "@version{2023-2-26}
   @syntax[]{(gdk:event-device event) => device}
@@ -1147,9 +1147,9 @@ lambda (event)
   @begin{short}
     Accessor of the \"device\" field of an event.
   @end{short}
-  If the event contains a \"device\" field, the @sym{gdk:event-device} function
+  If the event contains a \"device\" field, the @fun{gdk:event-device} function
   will return it, else it will return @code{nil}. The
-  @sym{(setf gdk:event-device)} function sets the device for an event.
+  @setf{gdk:event-device} function sets the device for an event.
 
   The event must have been allocated by GTK, for instance, by the
   @fun{gdk:event-copy} function.
@@ -1171,7 +1171,7 @@ lambda (event)
                         :void)
   device)
 
-(defcfun ("gdk_event_get_source_device" event-source-device) (g:object device)
+(cffi:defcfun ("gdk_event_get_source_device" event-source-device) (g:object device)
  #+liber-documentation
  "@version{2023-2-26}
   @syntax[]{(gdk:event-source-device event) => device}
@@ -1181,12 +1181,11 @@ lambda (event)
   @begin{short}
     Accessor of the slave device for the event.
   @end{short}
-  The @sym{gdk:event-source-device} function returns the hardware (slave)
+  The @fun{gdk:event-source-device} function returns the hardware (slave)
   device that has triggered the event, falling back to the virtual (master)
   device, as in the @fun{gdk:event-device} function, if the event was not
   caused by interaction with a hardware device. The
-  @sym{(setf gdk:event-source-device)} function sets the slave device for the
-  event.
+  @setf{gdk:event-source-device} function sets the slave device for the event.
 
   This may happen for example in synthesized crossing events after a
   @class{gdk:window} object updates its geometry or a grab is acquired/released.
@@ -1216,7 +1215,7 @@ lambda (event)
                         :void)
   tool)
 
-(defcfun ("gdk_event_get_device_tool" event-device-tool) (g:object device-tool)
+(cffi:defcfun ("gdk_event_get_device_tool" event-device-tool) (g:object device-tool)
  "@version{#2023-3-13}
   @syntax[]{(gdk:event-device-tool event) => tool}
   @syntax[]{(setf (gdk:event-device-tool event) tool)}
@@ -1226,9 +1225,9 @@ lambda (event)
     Accessor of the device tool representing the tool that caused the event.
   @end{short}
   If the event was generated by a device that supports different tools (e.g. a
-  tablet), the @sym{gdk:event-device-tool} function will return a
+  tablet), the @fun{gdk:event-device-tool} function will return a
   @class{gdk:device-tool} object representing the tool that caused the event.
-  Otherwise, @code{nil} will be returned. The @sym{(setf gdk:event-device-tool)}
+  Otherwise, @code{nil} will be returned. The @setf{gdk:event-device-tool}
   function sets the device tool for this event, should be rarely used.
 
   Note: The @class{gdk:device-tool} object will be constant during the
@@ -1247,7 +1246,7 @@ lambda (event)
 
 ;; TODO: Consider to implement a macro for using a gvalue.
 
-(defcfun ("gdk_setting_get" %setting-get) :boolean
+(cffi:defcfun ("gdk_setting_get" %setting-get) :boolean
   (name :string)
   (value (:pointer (:struct g:value))))
 
@@ -1270,7 +1269,7 @@ lambda (event)
     @end{pre}
   @end{dictionary}
   @see-function{gdk:screen-setting}"
-  (with-foreign-object (value '(:struct g:value))
+  (cffi:with-foreign-object (value '(:struct g:value))
     (gobject:value-init value gtype)
     (when (%setting-get name value)
       (prog1

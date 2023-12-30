@@ -29,29 +29,10 @@
 
 (defpackage :gdk
   (:use :iterate :common-lisp)
-  (:import-from #:cffi      #:defcfun
-                            #:defcenum
-                            #:defbitfield
-                            #:defcallback
-                            #:defcstruct
-                            #:define-foreign-type
-                            #:define-parse-method
-                            #:with-foreign-object
-                            #:with-foreign-objects
-                            #:with-foreign-slots)
-  (:import-from #:glib      #:+g-priority-high-idle+
-                            #:+g-priority-default+
-                            #:+g-priority-default-idle+
-                            #:with-g-error
-                            #:with-ignore-g-error
-                            #:with-stable-pointer)
-  (:import-from #:gobject   #:define-g-enum
-                            #:define-g-flags
-                            #:define-g-object-class
-                            #:define-g-interface)
+  (:import-from #:cffi)
+  (:import-from #:glib)
+  (:import-from #:gobject)
   ;; Import the symbols from GDK-PIXUF
-  ;; TODO: We have a problem with the documentation. The symbols are documented
-  ;; twice as gdk:pixbuf and as gdk-pixbuf:pixbuf. Resolve this issue.
   (:import-from #:gdk-pixbuf ;; Symbols from gdk-pixbuf.structure.lisp
                              #:colorspace
                              #:pixbuf
@@ -645,7 +626,7 @@
     @about-function{window-effective-toplevel}
   @end{section}
   @begin[Frame Clock]{section}
-    A @sym{gdk:frame-clock} object tells the application when to update and
+    A @class{gdk:frame-clock} object tells the application when to update and
     repaint a window.
     @about-symbol{frame-clock-phase}
     @about-class{frame-clock}
@@ -1236,35 +1217,36 @@ got_value (gpointer user_data)
   @begin[Pango Interaction]{section}
     Pango is the text layout system used by GDK and GTK. The functions and
     types in this section are used to obtain clip regions for
-    @class{pango-layout} objects, and to get @class{pango-context} objects that
+    @class{pango:layout} objects, and to get @class{pango:context} objects that
     can be used with GDK.
 
-    Creating a @class{pango-layout} object is the first step in rendering text,
-    and requires getting a handle to a @class{pango-context}. For GTK programs,
-    you will usually want to use the @fun{gtk-widget-pango-context},
-    or @fun{gtk-widget-create-pango-layout} functions, rather than using the
+    Creating a @class{pango:layout} object is the first step in rendering text,
+    and requires getting a handle to a @class{pango:context}. For GTK programs,
+    you will usually want to use the @fun{gtk:widget-pango-context},
+    or @fun{gtk:widget-create-pango-layout} functions, rather than using the
     lowlevel @fun{gdk:pango-context-for-screen} function. Once you have a
-    @class{pango-layout} object, you can set the text and attributes of it with
-    Pango functions like the @fun{pango-layout-text} function and get its size
-    with the @fun{pango-layout-size} function. Note that Pango uses a fixed
+    @class{pango:layout} object, you can set the text and attributes of it with
+    Pango functions like the @fun{pango:layout-text} function and get its size
+    with the @fun{pango:layout-size} function. Note that Pango uses a fixed
     point system internally, so converting between Pango units and pixels using
-    the @var{+pango-scale+} constant or the @fun{pango-pixels} function.
+    the @var{pango:+pango-scale+} constant or the @fun{pango:pixels} function.
 
     Rendering a Pango layout is done most simply with the
-    @fun{pango-cairo-show-layout} function. You can also draw pieces of the
-    layout with the @fun{pango-cairo-show-layout-line} function.
+    @fun{pango:cairo-show-layout} function. You can also draw pieces of the
+    layout with the @fun{pango:cairo-show-layout-line} function.
 
     @b{Example:} Draw transformed text with Pango and Cairo
 
-    @image[pango-cairo]{}
+    @image[pango-cairo]{Figure: Drawing using Pango with Cairo}
 
     @begin{pre}
-(defun demo-pango ()
+(defun example-pango-drawing (&optional (application nil))
   (within-main-loop
-    (let ((window (make-instance 'gtk:window
+    (let ((area (make-instance 'gtk:drawing-area))
+          (window (make-instance 'gtk:window
                                  :type :toplevel
-                                 :title \"Demo Using Pango with Cairo\"
-                                 :border-width 12
+                                 :title \"Drawing using Pango with Cairo\"
+                                 :application application
                                  :default-width 400
                                  :default-height 400))
           (circle 100)
@@ -1273,36 +1255,30 @@ got_value (gpointer user_data)
       (g:signal-connect window \"destroy\"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Signals used to handle the backing surface
-      (g:signal-connect window \"draw\"
+      (g:signal-connect area \"draw\"
          (lambda (widget cr)
-           (let* ((cr (pointer cr))
-                  ;; Get the GdkWindow for the widget
-                  (window (gtk-widget-window widget))
-                  (width (gdk:window-width window))
-                  (height (gdk:window-height window))
+           (let* ((cr (glib:pointer cr))
+                  (width (gtk:widget-allocated-width widget))
+                  (height (gtk:widget-allocated-height widget))
                   (radius (- (/ (min width height) 2) 20)))
              ;; Set up a transformation matrix so that the user space
              ;; coordinates for where we are drawing are [-RADIUS, RADIUS],
              ;; [-RADIUS, RADIUS] We first center, then change the scale
-             (cairo-translate cr
+             (cairo:translate cr
                               (+ radius (/ (- width (* 2 radius)) 2))
                               (+ radius (/ (- height (* 2 radius)) 2)))
-             (cairo-scale cr (/ radius circle) (/ radius circle))
-
+             (cairo:scale cr (/ radius circle) (/ radius circle))
            ;; Clear surface
-           (cairo-set-source-rgb cr 1 1 1)
-           (cairo-paint cr)
-
+           (cairo:set-source-rgb cr 1 1 1)
+           (cairo:paint cr)
            ;; Create a PangoLayout, set the font and text
-           (let* ((screen (gdk:window-screen window))
-                  (context (gdk:pango-context-for-screen screen))
-                  (layout (pango-layout-new context))
+           (let* ((context (gtk:widget-pango-context widget))
+                  (layout (pango:layout-new context))
                   (desc (pango:font-description-from-string font)))
-             (setf (pango-layout-text layout) \"Text\")
-             (setf (pango-layout-font-description layout) desc)
-
+             (setf (pango:layout-text layout) \"Text\")
+             (setf (pango:layout-font-description layout) desc)
              ;; Draw the layout n-words times in a circle
              (do* ((i 0 (+ i 1))
                    (angle 0 (/ (* 360 i) n-words))
@@ -1310,23 +1286,23 @@ got_value (gpointer user_data)
                    (red (/ (+ 1 (cos (* (/ pi 180) (- angle 60)))) 2)
                         (/ (+ 1 (cos (* (/ pi 180) (- angle 60)))) 2)))
                   ((>= i n-words))
-               (cairo-save cr)
-               (cairo-set-source-rgb cr red 0 (- 1 red))
-               (cairo-rotate cr (/ (* angle pi) 180))
-
+               (cairo:save cr)
+               (cairo:set-source-rgb cr red 0 (- 1 red))
+               (cairo:rotate cr (/ (* angle pi) 180))
                ;; Inform Pango to re-layout the text with the new
                ;; transformation matrix
-               (pango-cairo-update-layout cr layout)
-
+               (pango:cairo-update-layout cr layout)
                (multiple-value-bind (width height)
-                   (pango-layout-size layout)
+                   (pango:layout-size layout)
                  (declare (ignore height))
-                 (cairo-move-to cr (- (/ width 2 +pango-scale+)) (- circle)))
-               (pango-cairo-show-layout cr layout)
-               (cairo-restore cr)))
-           (cairo-destroy cr)
+                 (cairo:move-to cr (- (/ width 2 pango:+pango-scale+))
+                                   (- circle)))
+               (pango:cairo-show-layout cr layout)
+               (cairo:restore cr)))
+           (cairo:destroy cr)
            t)))
-      (gtk-widget-show-all window))))
+      (gtk:container-add window area)
+      (gtk:widget-show-all window))))
     @end{pre}
     @about-function{pango-layout-clip-region}
     @about-function{pango-layout-line-clip-region}

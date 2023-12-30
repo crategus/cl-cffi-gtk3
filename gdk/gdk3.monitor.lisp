@@ -79,7 +79,7 @@
 ;;; enum GdkSubpixelLayout
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GdkSubpixelLayout" subpixel-layout
+(gobject:define-g-enum "GdkSubpixelLayout" subpixel-layout
   (:export t
    :type-initializer "gdk_subpixel_layout_get_type")
   :unknown
@@ -99,7 +99,7 @@
     physical pixels on an output device are laid out.
   @end{short}
   @begin{pre}
-(define-g-enum \"GdkSubPixelLayout\" sub-pixel-layout
+(gobject:define-g-enum \"GdkSubPixelLayout\" sub-pixel-layout
   (:export t
    :type-initializer \"gdk_sub_pixel_layout_get_type\")
   :unkown
@@ -124,7 +124,7 @@
 ;;; struct GdkMonitor
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GdkMonitor" monitor
+(gobject:define-g-object-class "GdkMonitor" monitor
   (:superclass g:object
    :export t
    :interfaces nil
@@ -164,7 +164,7 @@
 (setf (documentation 'monitor 'type)
  "@version{2023-3-6}
   @begin{short}
-    The @sym{gdk:monitor} object represents the individual outputs that are
+    The @class{gdk:monitor} object represents the individual outputs that are
     associated with a @class{gdk:display} object.
   @end{short}
   The @class{gdk:display} class has APIs to enumerate monitors with the
@@ -172,15 +172,16 @@
   find particular monitors with the @fun{gdk:display-primary-monitor}
   or @fun{gdk:display-monitor-at-window} functions.
 
-  The @sym{gdk:monitor} class was introduced in GTK 3.22 and supersedes earlier
-  APIs in the @class{gdk:screen} class to obtain monitor-related information.
+  The @class{gdk:monitor} class was introduced in GTK 3.22 and supersedes
+  earlier APIs in the @class{gdk:screen} class to obtain monitor-related
+  information.
   @begin[Signal Details]{dictionary}
     @subheading{The \"invalidate\" signal}
     @begin{pre}
 lambda (monitor)    :run-first
     @end{pre}
     @begin[code]{table}
-      @entry[monitor]{The @sym{gdk:monitor} object on which the signal is
+      @entry[monitor]{The @class{gdk:monitor} object on which the signal is
         emitted.}
     @end{table}
   @end{dictionary}
@@ -221,7 +222,7 @@ lambda (monitor)    :run-first
     Accessor of the @slot[gdk:monitor]{display} slot of the @class{gdk:monitor}
     class.
   @end{short}
-  The @sym{gdk:monitor-display} function gets the display that the monitor
+  The @fun{gdk:monitor-display} function gets the display that the monitor
   belongs to.
 
   Since 3.22
@@ -248,7 +249,7 @@ lambda (monitor)    :run-first
     Accessor of the @slot[gdk:monitor]{geometry} slot of the
     @class{gdk:monitor} class.
   @end{short}
-  The @sym{gdk:monitor-geometry} function retrieves the size and position of an
+  The @fun{gdk:monitor-geometry} function retrieves the size and position of an
   individual monitor within the display coordinate space. The returned geometry
   is in \"application pixels\", not in \"device pixels\". See the
   @fun{gdk:monitor-scale-factor} function for the internal scale factor that
@@ -280,7 +281,7 @@ lambda (monitor)    :run-first
     Accessor of the @slot[gdk:monitor]{height-mm} slot of the
     @class{gdk:monitor} class.
   @end{short}
-  The @sym{gdk:monitor-height-mm} function gets the height in millimeters of
+  The @fun{gdk:monitor-height-mm} function gets the height in millimeters of
   the monitor.
 
   Since 3.22
@@ -307,7 +308,7 @@ lambda (monitor)    :run-first
     Accessor of the @slot[gdk:monitor]{manufacturer} slot of the
     @class{gdk:monitor} class.
   @end{short}
-  The @sym{gdk:monitor-manufacturer} function gets the name of the monitor's
+  The @fun{gdk:monitor-manufacturer} function gets the name of the monitor's
   manufacturer, if available.
 
   Since 3.22
@@ -333,7 +334,7 @@ lambda (monitor)    :run-first
     Accessor of the @slot[gdk:monitor]{model} slot of the @class{gdk:monitor}
     class.
   @end{short}
-  The @sym{gdk:monitor-model} function gets a string identifying the monitor
+  The @fun{gdk:monitor-model} function gets a string identifying the monitor
   model, if available.
 
   Since 3.22
@@ -360,7 +361,7 @@ lambda (monitor)    :run-first
     Accessor of the @slot[gdk:monitor]{refresh-rate} slot of the
     @class{gdk:monitor} class.
   @end{short}
-  The @sym{gdk:monitor-refresh-rate} function gets the refresh rate of the
+  The @fun{gdk:monitor-refresh-rate} function gets the refresh rate of the
   monitor, if available. The value is in milli-Hertz, so a refresh rate of
   60 Hz is returned as 60000.
 
@@ -388,7 +389,7 @@ lambda (monitor)    :run-first
     Accessor of the @slot[gdk:monitor]{scale-factor} slot of the
     @class{gdk:monitor} class.
   @end{short}
-  The @sym{gdk:monitor-scale-factor} function gets the internal scale factor
+  The @fun{gdk:monitor-scale-factor} function gets the internal scale factor
   that maps from monitor coordinates to the actual device pixels. On traditional
   systems this is 1, but on very high density outputs this can be a higher value
   (often 2).
@@ -423,7 +424,7 @@ lambda (monitor)    :run-first
     Accessor of the @slot[gdk:monitor]{subpixel-layout} slot of the
     @class{gdk:monitor} class.
   @end{short}
-  The @sym{gdk:monitor-subpixel-layout} function gets information about the
+  The @fun{gdk:monitor-subpixel-layout} function gets information about the
   layout of red, green and blue primaries for each pixel in this monitor, if
   available.
 
@@ -452,7 +453,7 @@ lambda (monitor)    :run-first
     Accessor of the @slot[gdk:monitor]{width-mm} slot of the
     @class{gdk:monitor} class.
   @end{short}
-  The @sym{gdk:monitor-width-mm} function gets the width in millimeters of the
+  The @fun{gdk:monitor-width-mm} function gets the width in millimeters of the
   monitor.
 
   Since 3.22
@@ -478,7 +479,7 @@ lambda (monitor)    :run-first
     Accessor of the @slot[gdk:monitor]{workarea} slot of the
     @class{gdk:monitor} class.
   @end{short}
-  The @sym{gdk:monitor-workarea} function retrieves the size and position of the
+  The @fun{gdk:monitor-workarea} function retrieves the size and position of the
   \"work area\" on a monitor within the display coordinate space. The returned
   geometry is in \"application pixels\", not in \"device pixels\". See the
   @fun{gdk:monitor-scale-factor} function for the internal scale factor that
@@ -499,7 +500,7 @@ lambda (monitor)    :run-first
 ;;; gdk_monitor_is_primary ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_monitor_is_primary" monitor-is-primary) :boolean
+(cffi:defcfun ("gdk_monitor_is_primary" monitor-is-primary) :boolean
  #+liber-documentation
  "@version{#2023-3-6}
   @argument[monitor]{a @class{gdk:monitor} object}

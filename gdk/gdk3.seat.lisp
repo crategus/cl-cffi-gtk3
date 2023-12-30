@@ -71,7 +71,7 @@
 ;;; enum GdkSeatCapabilities
 ;;; ----------------------------------------------------------------------------
 
-(define-g-flags "GdkSeatCapabilities" seat-capabilities
+(gobject:define-g-flags "GdkSeatCapabilities" seat-capabilities
   (:export t
    :type-initializer "gdk_seat_capabilities_get_type")
   (:none 0)
@@ -91,7 +91,7 @@
     Flags describing the seat capabilities.
   @end{short}
   @begin{pre}
-(define-g-flags \"GdkSeatCapabilities\" seat-capabilities
+(gobject:define-g-flags \"GdkSeatCapabilities\" seat-capabilities
   (:export t
    :type-initializer \"gdk_seat_capabilities_get_type\")
   (:none 0)
@@ -117,7 +117,7 @@
 ;;; struct GdkSeat
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GdkSeat" seat
+(gobject:define-g-object-class "GdkSeat" seat
   (:superclass g:object
    :export t
    :interfaces nil
@@ -130,7 +130,7 @@
 (setf (documentation 'seat 'type)
  "@version{#2023-3-7}
   @begin{short}
-    The @sym{gdk:seat} object represents a collection of input devices that
+    The @class{gdk:seat} object represents a collection of input devices that
     belong to a user.
   @end{short}
 
@@ -142,7 +142,8 @@ lambda (seat device)    :run-last
       @end{pre}
       The signal is emitted when a new input device is related to this seat.
       @begin[code]{table}
-        @entry[seat]{The @sym{gdk:seat} object on which the signal is emitted.}
+        @entry[seat]{The @class{gdk:seat} object on which the signal is
+          emitted.}
         @entry[device]{The newly added @class{gdk:device} object.}
       @end{table}
     @subheading{The \"device-removed\" signal}
@@ -151,7 +152,8 @@ lambda (seat device)    :run-last
       @end{pre}
       The signal is emitted when an input device is removed, e.g. unplugged.
       @begin[code]{table}
-        @entry[seat]{The @sym{gdk:seat} object on which the signal is emitted.}
+        @entry[seat]{The @class{gdk:seat} object on which the signal is
+          emitted.}
         @entry[device]{The just removed @class{gdk:device} object.}
       @end{table}
     @subheading{The \"tool-added\" signal}
@@ -160,10 +162,11 @@ lambda (seat tool)    :run-last
       @end{pre}
       The signal is emitted whenever a new tool is made known to the seat. The
       tool may later be assigned to a device, i.e. on proximity with a tablet.
-      The device will emit the \"tool-changed\" signal accordingly. A same tool
-      may be used by several devices.
+      The device will emit the @code{\"tool-changed\"} signal accordingly. A
+      same tool may be used by several devices.
       @begin[code]{table}
-        @entry[seat]{The @sym{gdk:seat} object on which the signal is emitted.}
+        @entry[seat]{The @class{gdk:seat} object on which the signal is
+          emitted.}
         @entry[tool]{The new @class{gdk:device-tool} object known to the seat.}
       @end{table}
     @subheading{The \"tool-removed\" signal}
@@ -173,7 +176,8 @@ lambda (seat tool)    :run-last
       The signal is emitted whenever a tool is no longer known to this seat.
       Since 3.22
       @begin[code]{table}
-        @entry[seat]{The @sym{gdk:seat} object on which the signal is emitted.}
+        @entry[seat]{The @class{gdk:seat} object on which the signal is
+          emitted.}
         @entry[tool]{The just removed @class{gdk:device-tool} object.}
       @end{table}
   @end{dictionary}
@@ -204,7 +208,7 @@ lambda (seat tool)    :run-last
     Accessor of the @slot[gdk:seat]{display} slot of the
     @class{gdk:seat} class.
   @end{short}
-  The @sym{gdk:seat-display} function returns the display this seat belongs to.
+  The @fun{gdk:seat-display} function returns the display this seat belongs to.
   @see-class{gdk:seat}
   @see-class{gdk:display}")
 
@@ -212,7 +216,7 @@ lambda (seat tool)    :run-last
 ;;; GdkSeatGrabPrepareFunc ()
 ;;; ----------------------------------------------------------------------------
 
-(defcallback seat-grab-prepare-func :void
+(cffi:defcallback seat-grab-prepare-func :void
     ((seat (g:object seat))
      (window (g:object window))
      (data :pointer))
@@ -244,7 +248,7 @@ lambda (seat window)
 ;;; gdk_seat_grab ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_seat_grab" %seat-grab) grab-status
+(cffi:defcfun ("gdk_seat_grab" %seat-grab) grab-status
   (seat (g:object seat))
   (window (g:object window))
   (capabilities seat-capabilities)
@@ -313,7 +317,7 @@ lambda (seat window)
   @see-symbol{gdk:grab-status}
   @see-function{gdk:seat-ungrab}"
   (if func
-      (with-stable-pointer (ptr func)
+      (glib:with-stable-pointer (ptr func)
         (%seat-grab seat
                     window
                     capabilities
@@ -337,7 +341,7 @@ lambda (seat window)
 ;;; gdk_seat_ungrab ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_seat_ungrab" seat-ungrab) :void
+(cffi:defcfun ("gdk_seat_ungrab" seat-ungrab) :void
  #+liber-documentation
  "@version{#2023-3-13}
   @argument[seat]{a @class{gdk:seat} object}
@@ -352,7 +356,7 @@ lambda (seat window)
 ;;; gdk_seat_get_capabilities () -> seat-capabilities
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_seat_get_capabilities" seat-capabilities) seat-capabilities
+(cffi:defcfun ("gdk_seat_get_capabilities" seat-capabilities) seat-capabilities
  #+liber-documentation
  "@version{#2023-3-7}
   @argument[seat]{a @class{gdk:seat} object}
@@ -370,7 +374,7 @@ lambda (seat window)
 ;;; gdk_seat_get_pointer () -> seat-pointer
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_seat_get_pointer" seat-pointer) (g:object device)
+(cffi:defcfun ("gdk_seat_get_pointer" seat-pointer) (g:object device)
  #+liber-documentation
  "@version{#2023-3-7}
   @argument[seat]{a @class{gdk:seat} object}
@@ -388,7 +392,7 @@ lambda (seat window)
 ;;; gdk_seat_get_keyboard () -> seat-keyboard
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_seat_get_keyboard" seat-keyboard) (g:object device)
+(cffi:defcfun ("gdk_seat_get_keyboard" seat-keyboard) (g:object device)
  #+liber-documentation
  "@version{#2023-3-7}
   @argument[seat]{a @class{gdk:seat} object}
@@ -406,7 +410,7 @@ lambda (seat window)
 ;;; gdk_seat_get_slaves () -> seat-slaves
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_seat_get_slaves" seat-slaves) (g:list-t (g:object device))
+(cffi:defcfun ("gdk_seat_get_slaves" seat-slaves) (g:list-t (g:object device))
  #+liber-documentation
  "@version{#2023-3-7}
   @argument[seat]{a @class{gdk:seat} object}

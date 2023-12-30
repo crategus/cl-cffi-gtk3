@@ -70,7 +70,7 @@
 ;;; enum GdkFrameClockPhase
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GdkFrameClockPhase" frame-clock-phase
+(gobject:define-g-enum "GdkFrameClockPhase" frame-clock-phase
   (:export t
    :type-initializer "gdk_frame_clock_phase_get_type")
   (:none 0)
@@ -88,13 +88,13 @@
       (liber:symbol-documentation 'frame-clock-phase)
  "@version{#2023-3-10}
   @begin{short}
-    The @sym{gdk:frame-clock-phase} enumeration is used to represent the
+    The @symbol{gdk:frame-clock-phase} enumeration is used to represent the
     different paint clock phases that can be requested.
   @end{short}
   The elements of the enumeration correspond to the signals of the
   @class{gdk:frame-clock} class.
   @begin{pre}
-(define-g-enum \"GdkFrameClockPhase\" frame-clock-phase
+(gobject:define-g-enum \"GdkFrameClockPhase\" frame-clock-phase
   (:export t
    :type-initializer \"gdk_frame_clock_phase_get_type\")
   (:none 0)
@@ -126,7 +126,7 @@
 ;;; GdkFrameClock
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GdkFrameClock" frame-clock
+(gobject:define-g-object-class "GdkFrameClock" frame-clock
   (:superclass g:object
    :export t
    :interfaces nil
@@ -137,7 +137,7 @@
 (setf (documentation 'frame-clock 'type)
  "@version{#2023-3-10}
   @begin{short}
-    A @sym{gdk:frame-clock} object tells the application when to update and
+    A @class{gdk:frame-clock} object tells the application when to update and
     repaint a window.
   @end{short}
   This may be synced to the vertical refresh rate of the monitor, for example.
@@ -147,7 +147,7 @@
   automatically stop painting when it knows the frames will not be visible, or
   scale back animation framerates.
 
-  The @sym{gdk:frame-clock} class is designed to be compatible with an
+  The @class{gdk:frame-clock} class is designed to be compatible with an
   OpenGL-based implementation or with @code{mozRequestAnimationFrame} in
   Firefox, for example.
 
@@ -155,10 +155,10 @@
   @fun{gdk:frame-clock-request-phase} function. At some later point that makes
   sense for the synchronization being implemented, the clock will process a
   frame and emit signals for each phase that has been requested. See the signals
-  of the @sym{gdk:frame-clock} class for documentation of the phases. The clock
-  phase @code{:update} and the \"update\" signal are most interesting for
-  application writers, and are used to update the animations, using the frame
-  time given by the @fun{gdk:frame-clock-frame-time} function.
+  of the @class{gdk:frame-clock} class for documentation of the phases. The
+  clock phase @code{:update} and the @code{\"update\"} signal are most
+  interesting for application writers, and are used to update the animations,
+  using the frame time given by the @fun{gdk:frame-clock-frame-time} function.
 
   The frame time is reported in microseconds and generally in the same
   timescale as the system monotonic time. The frame time does not advance
@@ -177,7 +177,7 @@ lambda (clock)    :run-last
       The signal ends processing of the frame. Applications should generally
       not handle this signal.
       @begin[code]{table}
-        @entry[clock]{The @sym{gdk:frame-clock} object emitting the signal.}
+        @entry[clock]{The @class{gdk:frame-clock} object emitting the signal.}
       @end{table}
     @subheading{The \"before-paint\" signal}
       @begin{pre}
@@ -186,7 +186,7 @@ lambda (clock)    :run-last
       The signal begins processing of the frame. Applications should generally
       not handle this signal.
       @begin[code]{table}
-        @entry[clock]{The @sym{gdk:frame-clock} object emitting the signal.}
+        @entry[clock]{The @class{gdk:frame-clock} object emitting the signal.}
       @end{table}
     @subheading{The \"flush-events\" signal}
       @begin{pre}
@@ -195,7 +195,7 @@ lambda (clock)    :run-last
       The signal is used to flush pending motion events that are being batched
       up and compressed together. Applications should not handle this signal.
       @begin[code]{table}
-        @entry[clock]{The @sym{gdk:frame-clock} object emitting the signal.}
+        @entry[clock]{The @class{gdk:frame-clock} object emitting the signal.}
       @end{table}
     @subheading{The \"layout\" signal}
       @begin{pre}
@@ -206,7 +206,7 @@ lambda (clock)    :run-last
       application elements should be performed. GTK normally handles this
       internally.
       @begin[code]{table}
-        @entry[clock]{The @sym{gdk:frame-clock} object emitting the signal.}
+        @entry[clock]{The @class{gdk:frame-clock} object emitting the signal.}
       @end{table}
     @subheading{The \"paint\" signal}
       @begin{pre}
@@ -215,9 +215,9 @@ lambda (clock)    :run-last
       The signal is emitted as the third step of toolkit and application
       processing of the frame. The frame is repainted. GDK normally handles
       this internally and produces expose events, which are turned into GTK
-      \"draw\" signals.
+      @code{\"draw\"} signals.
       @begin[code]{table}
-        @entry[clock]{The @sym{gdk:frame-clock} object emitting the signal.}
+        @entry[clock]{The @class{gdk:frame-clock} object emitting the signal.}
       @end{table}
     @subheading{The \"resume-events\" signal}
       @begin{pre}
@@ -227,7 +227,7 @@ lambda (clock)    :run-last
       handled internally by GTK to resume normal event processing. Applications
       should not handle this signal.
       @begin[code]{table}
-        @entry[clock]{The @sym{gdk:frame-clock} object emitting the signal.}
+        @entry[clock]{The @class{gdk:frame-clock} object emitting the signal.}
       @end{table}
     @subheading{The \"update\" signal}
       @begin{pre}
@@ -239,7 +239,7 @@ lambda (clock)    :run-last
       directly to this signal, or use the @fun{gtk:widget-add-tick-callback}
       function as a more convenient interface.
       @begin[code]{table}
-        @entry[clock]{The @sym{gdk:frame-clock} object emitting the signal.}
+        @entry[clock]{The @class{gdk:frame-clock} object emitting the signal.}
       @end{table}
   @end{dictionary}
   @see-class{gdk:frame-timings}")
@@ -248,7 +248,7 @@ lambda (clock)    :run-last
 ;;; gdk_frame_clock_get_frame_time () -> frame-clock-frame-time
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_frame_clock_get_frame_time" frame-clock-frame-time) :int64
+(cffi:defcfun ("gdk_frame_clock_get_frame_time" frame-clock-frame-time) :int64
  #+liber-documentation
  "@version{#2023-3-10}
   @argument[clock]{a @class{gdk:frame-clock} object}
@@ -269,7 +269,7 @@ lambda (clock)    :run-last
 ;;; gdk_frame_clock_request_phase ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_frame_clock_request_phase" frame-clock-request-phase) :void
+(cffi:defcfun ("gdk_frame_clock_request_phase" frame-clock-request-phase) :void
  #+liber-documentation
  "@version{#2023-3-10}
   @argument[clock]{a @class{gdk:frame-clock} object}
@@ -280,7 +280,7 @@ lambda (clock)    :run-last
   @end{short}
   The signal corresponding to the requested phase will be emitted the next time
   the frame clock processes. Multiple calls to the
-  @sym{gdk:frame-clock-request-phase} function will be combined together and
+  @fun{gdk:frame-clock-request-phase} function will be combined together and
   only one frame processed. If you are displaying animated content and want to
   continually request the @code{:update} phase for a period of time, you should
   use the @fun{gdk:frame-clock-begin-updating} function instead, since this
@@ -297,7 +297,7 @@ lambda (clock)    :run-last
 ;;; gdk_frame_clock_begin_updating ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_frame_clock_begin_updating" frame-clock-begin-updating) :void
+(cffi:defcfun ("gdk_frame_clock_begin_updating" frame-clock-begin-updating) :void
  #+liber-documentation
  "@version{#2023-3-10}
   @argument[clock]{a @class{gdk:frame-clock} object}
@@ -319,7 +319,7 @@ lambda (clock)    :run-last
 ;;; gdk_frame_clock_end_updating ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_frame_clock_end_updating" frame-clock-end-updating) :void
+(cffi:defcfun ("gdk_frame_clock_end_updating" frame-clock-end-updating) :void
  #+liber-documentation
  "@version{#2023-3-10}
   @argument[clock]{a @class{gdk:frame-clock} object}
@@ -337,7 +337,7 @@ lambda (clock)    :run-last
 ;;; gdk_frame_clock_get_frame_counter () -> frame-clock-frame-counter
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_frame_clock_get_frame_counter" frame-clock-frame-counter) :int64
+(cffi:defcfun ("gdk_frame_clock_get_frame_counter" frame-clock-frame-counter) :int64
  #+liber-documentation
  "@version{#2023-3-10}
   @argument[clock]{a @class{gdk:frame-clock} object}
@@ -359,7 +359,7 @@ lambda (clock)    :run-last
 ;;; gdk_frame_clock_get_history_start () -> frame-clock-history-start
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_frame_clock_get_history_start" frame-clock-history-start) :int64
+(cffi:defcfun ("gdk_frame_clock_get_history_start" frame-clock-history-start) :int64
  #+liber-documentation
  "@version{#2023-3-10}
   @argument[clock]{a @class{gdk:frame-clock} object}
@@ -373,7 +373,7 @@ lambda (clock)    :run-last
     @fun{gdk:frame-clock-timings} function.
   @end{short}
   The set of stored frames is the set from the counter values given by the
-  @sym{gdk:frame-clock-history-start} function and the
+  @fun{gdk:frame-clock-history-start} function and the
   @fun{gdk:frame-clock-frame-counter} function, inclusive.
   @see-class{gdk:frame-clock}
   @see-class{gdk:frame-timings}
@@ -387,7 +387,7 @@ lambda (clock)    :run-last
 ;;; gdk_frame_clock_get_timings () -> frame-clock-timings
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_frame_clock_get_timings" frame-clock-timings)
+(cffi:defcfun ("gdk_frame_clock_get_timings" frame-clock-timings)
     (g:boxed frame-timings)
  #+liber-documentation
  "@version{#2023-3-10}
@@ -418,7 +418,7 @@ lambda (clock)    :run-last
 ;;; gdk_frame_clock_get_current_timings () -> frame-clock-current-timings
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_frame_clock_get_current_timings" frame-clock-current-timings)
+(cffi:defcfun ("gdk_frame_clock_get_current_timings" frame-clock-current-timings)
     (g:boxed frame-timings)
  #+liber-documentation
  "@version{#2023-3-10}
@@ -441,7 +441,7 @@ lambda (clock)    :run-last
 ;;; gdk_frame_clock_get_refresh_info () -> frame-clock-refresh-info
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_frame_clock_get_refresh_info" %frame-clock-refresh-info) :void
+(cffi:defcfun ("gdk_frame_clock_get_refresh_info" %frame-clock-refresh-info) :void
   (clock (g:object frame-clock))
   (time :int64)
   (refresh-interval (:pointer :int64))
@@ -468,8 +468,8 @@ lambda (clock)    :run-last
     later than @arg{time}.
   @end{short}
   @see-class{gdk:frame-clock}"
-  (with-foreign-objects ((refresh-interval :int64)
-                         (presentation-time :int64))
+  (cffi:with-foreign-objects ((refresh-interval :int64)
+                              (presentation-time :int64))
     (%frame-clock-refresh-info clock
                                time
                                refresh-interval

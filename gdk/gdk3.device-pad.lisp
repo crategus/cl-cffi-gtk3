@@ -59,7 +59,7 @@
 ;;; enum GdkDevicePadFeature
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GdkDevicePadFeature" device-pad-feature
+(gobject:define-g-enum "GdkDevicePadFeature" device-pad-feature
   (:export t
    :type-initializer "gdk_device_pad_feature_get_type")
   :button
@@ -75,7 +75,7 @@
     A pad feature.
   @end{short}
   @begin{pre}
-(define-g-enum \"GdkDevicePadFeature\" device-pad-feature
+(gobject:define-g-enum \"GdkDevicePadFeature\" device-pad-feature
   (:export t
    :type-initializer \"gdk_device_pad_feature_get_type\")
   :button
@@ -94,7 +94,7 @@
 ;;; struct GdkDevicePad
 ;;; ----------------------------------------------------------------------------
 
-(define-g-interface "GdkDevicePad" device-pad
+(gobject:define-g-interface "GdkDevicePad" device-pad
   (:export t
    :type-initializer "gdk_device_pad_get_type")
   nil)
@@ -105,7 +105,7 @@
       (documentation 'device-pad 'type)
  "@version{#2023-3-8}
   @begin{short}
-    The @sym{gdk:device-pad} interface is an interface implemented by devices
+    The @class{gdk:device-pad} interface is an interface implemented by devices
     of @code{:tablet-pad} type, it allows querying the features provided by the
     pad device.
   @end{short}
@@ -130,7 +130,7 @@
 ;;; gdk_device_pad_get_n_groups () -> device-pad-n-groups
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_device_pad_get_n_groups" device-pad-n-groups) :int
+(cffi:defcfun ("gdk_device_pad_get_n_groups" device-pad-n-groups) :int
  #+liber-documentation
  "@version{#2023-3-7}
   @argument[pad]{a @class{gdk:device-pad} object}
@@ -151,7 +151,7 @@
 ;;; gdk_device_pad_get_group_n_modes () -> device-pad-group-n-modes
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_device_pad_get_group_n_modes" device-pad-group-n-modes) :int
+(cffi:defcfun ("gdk_device_pad_get_group_n_modes" device-pad-group-n-modes) :int
  #+liber-documentation
  "@version{#2023-3-7}
   @argument[pad]{a @class{gdk:device-pad} object}
@@ -173,7 +173,7 @@
 ;;; gdk_device_pad_get_n_features () -> device-pad-n-features
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_device_pad_get_n_features" device-pad-n-features) :int
+(cffi:defcfun ("gdk_device_pad_get_n_features" device-pad-n-features) :int
  #+liber-documentation
  "@version{#2023-3-7}
   @argument[pad]{a @class{gdk:device-pad} object}
@@ -197,7 +197,7 @@
 ;;; gdk_device_pad_get_feature_group () -> device-pad-feature-group
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_device_pad_get_feature_group" device-pad-feature-group) :int
+(cffi:defcfun ("gdk_device_pad_get_feature_group" device-pad-feature-group) :int
  #+liber-documentation
  "@version{#2023-3-7}
   @argument[pad]{a @class{gdk:device-pad} object}

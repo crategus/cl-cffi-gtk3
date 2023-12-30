@@ -46,7 +46,7 @@
 ;;; gdk_pango_layout_get_clip_region () -> pango-layout-clip-region
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_pango_layout_get_clip_region" %pango-layout-clip-region)
+(cffi:defcfun ("gdk_pango_layout_get_clip_region" %pango-layout-clip-region)
     (:pointer (:struct cairo:region-t))
   (layout (g:object pango-layout))
   (x-origin :int)
@@ -82,7 +82,7 @@
   (let ((n (length ranges)))
     (assert (zerop (mod n 2)))
     (let ((n-ranges (/ n 2)))
-      (with-foreign-object (ranges-ar :int n)
+      (cffi:with-foreign-object (ranges-ar :int n)
         (let ((i 0))
           (map nil
                (lambda (x)
@@ -101,7 +101,7 @@
 ;;; gdk_pango_layout_line_get_clip_region () -> pango-layout-line-clip-region
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_pango_layout_line_get_clip_region"
+(cffi:defcfun ("gdk_pango_layout_line_get_clip_region"
           %pango-layout-line-clip-region)
     (:pointer (:struct cairo:region-t))
   (layout-line (g:boxed pango:layout-line))
@@ -142,7 +142,7 @@
   (let ((n (length ranges)))
     (assert (zerop (mod n 2)))
     (let ((n-ranges (/ n 2)))
-      (with-foreign-object (ranges-ar :int n)
+      (cffi:with-foreign-object (ranges-ar :int n)
         (let ((i 0))
           (map nil
                (lambda (x)
@@ -161,7 +161,7 @@
 ;;; gdk_pango_context_get ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_pango_context_get" pango-context-get)
+(cffi:defcfun ("gdk_pango_context_get" pango-context-get)
     (g:object pango:context :already-referenced)
  #+liber-documentation
  "@version{#2021-10-28}
@@ -189,17 +189,20 @@
 ;;; gdk_pango_context_get_for_screen () -> pango-context-for-screen
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_pango_context_get_for_screen" pango-context-for-screen)
+;; TODO: Is this the correct usage of the :already-referenced keyword
+;; The documentation for the return value is: The caller of the function takes
+;; ownership of the data, and is responsible for freeing it.
+
+(cffi:defcfun ("gdk_pango_context_get_for_screen" pango-context-for-screen)
     (g:object pango-context :already-referenced)
  #+liber-documentation
- "@version{#2021-10-28}
-  @argument[screen]{the @class{gdk:screen} object for which the Pango context
+ "@version{2023-12-26}
+  @argument[screen]{a @class{gdk:screen} object for which the Pango context
     is to be created}
-  @return{A new @class{pango-context} instance for @arg{screen}.}
+  @return{The new @class{pango-context} instance for @arg{screen}.}
   @begin{short}
     Creates a Pango context for the screen.
   @end{short}
-
   When using GTK, normally you should use the @fun{gtk:widget-pango-context}
   function instead of this function, to get the appropriate Pango context for
   the widget you intend to render text onto.
@@ -221,7 +224,7 @@
 ;;; gdk_pango_context_get_for_display () -> pango-context-for-display
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_pango_context_get_for_display" pango-context-for-display)
+(cffi:defcfun ("gdk_pango_context_get_for_display" pango-context-for-display)
     (g:object pango-context :already-referenced)
  #+liber-documentation
  "@version{#2023-3-13}

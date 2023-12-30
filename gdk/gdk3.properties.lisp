@@ -98,8 +98,8 @@
   the X server. They are used to transfer strings efficiently between clients
   without having to transfer the entire string.
 
-  Use the function @fun{gdk:atom-intern} to get the pointer for a string
-  representing an atom and the function @fun{gdk:atom-name} to get the string
+  Use the @fun{gdk:atom-intern} function to get the pointer for a string
+  representing an atom and the @fun{gdk:atom-name} function to get the string
   for an atom.
   @begin[Example]{dictionary}
     @begin{pre}
@@ -131,7 +131,7 @@
       (documentation 'atom-as-string 'type)
  "@version{2023-7-13}
   @begin{short}
-    The @sym{g:atom-as-string} type represents the C @code{GAtom} type which
+    The @class{g:atom-as-string} type represents the C @code{GAtom} type which
     represents a string as an index into a table of strings on the X server.
   @end{short}
   They are used to transfer strings efficiently between clients without having

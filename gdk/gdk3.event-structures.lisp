@@ -89,7 +89,7 @@
 ;; specifies the type of elements and array-size specifies the size of array
 ;; (in elements).
 
-(define-foreign-type fixed-array ()
+(cffi:define-foreign-type fixed-array ()
   ((element-type :reader fixed-array-element-type
                  :initarg :element-type
                  :initform (error "Element type must be specified"))
@@ -99,7 +99,7 @@
   (:actual-type :pointer)
   (:documentation ""))
 
-(define-parse-method fixed-array (element-type array-size)
+(cffi:define-parse-method fixed-array (element-type array-size)
   (make-instance 'fixed-array
                  :element-type element-type
                  :array-size array-size))
@@ -129,7 +129,7 @@
 ;;; enum GdkScrollDirection
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GdkScrollDirection" scroll-direction
+(gobject:define-g-enum "GdkScrollDirection" scroll-direction
   (:export t
    :type-initializer "gdk_scroll_direction_get_type")
   (:up 0)
@@ -145,7 +145,7 @@
  "@version{#2021-12-13}
   @short{Specifies the direction for a @class{gdk:event-scroll} event.}
   @begin{pre}
-(define-g-enum \"GdkScrollDirection\" scroll-direction
+(gobject:define-g-enum \"GdkScrollDirection\" scroll-direction
   (:export t
    :type-initializer \"gdk_scroll_direction_get_type\")
   (:up 0)
@@ -170,7 +170,7 @@
 ;;; enum GdkVisibilityState
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GdkVisibilityState" visibility-state
+(gobject:define-g-enum "GdkVisibilityState" visibility-state
   (:export t
    :type-initializer "gdk_visibility_state_get_type")
   (:unobscured 0)
@@ -187,7 +187,7 @@
     @class{gdk:event-visibility} event.
   @end{short}
   @begin{pre}
-(define-g-enum \"GdkVisibilityState\" visibility-state
+(gobject:define-g-enum \"GdkVisibilityState\" visibility-state
   (:export t
    :type-initializer \"gdk_visibility_state_get_type\")
   (:unobscured 0)
@@ -205,7 +205,7 @@
 ;;; enum GdkCrossingMode
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GdkCrossingMode" crossing-mode
+(gobject:define-g-enum "GdkCrossingMode" crossing-mode
   (:export t
    :type-initializer "gdk_crossing_mode_get_type")
   :normal
@@ -225,7 +225,7 @@
  "@version{#2021-12-13}
   @short{Specifies the crossing mode for a @class{gdk:event-crossing} event.}
   @begin{pre}
-(define-g-enum \"GdkCrosssingMode\" crossing-mode
+(gobject:define-g-enum \"GdkCrosssingMode\" crossing-mode
   (:export t
    :type-initializer \"gdk_crossing_mode_get_type\")
   :normal
@@ -260,7 +260,7 @@
 ;;; enum GdkNotifyType
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GdkNotifyType" notify-type
+(gobject:define-g-enum "GdkNotifyType" notify-type
   (:export t
    :type-initializer "gdk_notify_type_get_type")
   (:ancestor 0)
@@ -279,7 +279,7 @@
   See the X11 protocol specification of @code{LeaveNotify} for full details of
   crossing event generation.
   @begin{pre}
-(define-g-enum notify-type
+(gobject:define-g-enum \"GdkNotifyType\" notify-type
   (:export t
    :type-initializer \"gdk_notify_type_get_type\")
   (:ancestor 0)
@@ -309,7 +309,7 @@
 ;;; enum GdkPropertyState
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GdkPropertyState" property-state
+(gobject:define-g-enum "GdkPropertyState" property-state
   (:export t
    :type-initializer "gdk_property_state_get_type")
   :new-value
@@ -325,7 +325,7 @@
     event.
   @end{short}
   @begin{pre}
-(define-g-enum \"GdkPropertyState\" property-state
+(gobject:define-g-enum \"GdkPropertyState\" property-state
   (:export t
    :type-initializer \"gdk_property_state_get_type\")
   :new-value
@@ -341,7 +341,7 @@
 ;;; enum GdkWindowState
 ;;; ----------------------------------------------------------------------------
 
-(define-g-flags "GdkWindowState" window-state
+(gobject:define-g-flags "GdkWindowState" window-state
   (:export t
    :type-initializer "gdk_window_state_get_type")
   (:withdrawn        #.(ash 1 0))
@@ -369,7 +369,7 @@
  "@version{#2023-3-13}
   @short{Specifies the state of a toplevel window.}
   @begin{pre}
-(define-g-flags \"GdkWindowState\" window-state
+(gobject:define-g-flags \"GdkWindowState\" window-state
   (:export t
    :type-initializer \"gdk_window_state_get_type\")
   (:withdrawn        #.(ash 1 0))
@@ -417,7 +417,7 @@
 ;;; enum GdkSettingAction
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GdkSettingAction" setting-action
+(gobject:define-g-enum "GdkSettingAction" setting-action
   (:export t
    :type-initializer "gdk_setting_action_get_type")
   (:new 0)
@@ -434,7 +434,7 @@
     @class{gdk:event-setting} event.
   @end{short}
   @begin{pre}
-(define-g-enum \"GdkSettingAction\" setting-action
+(gobject:define-g-enum \"GdkSettingAction\" setting-action
   (:export t
    :type-initializer \"gdk_setting_action_get_type\")
   (:new 0)
@@ -452,7 +452,7 @@
 ;;; enum GdkOwnerChange
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GdkOwnerChange" owner-change
+(gobject:define-g-enum "GdkOwnerChange" owner-change
   (:export t
    :type-initializer "gdk_owner_change_get_type")
   (:new-owner 0)
@@ -466,7 +466,7 @@
  "@version{#2021-12-13}
   @short{Specifies why a selection ownership was changed.}
   @begin{pre}
-(define-g-enum \"GdkOwnerChange\" owner-change
+(gobject:define-g-enum \"GdkOwnerChange\" owner-change
   (:export t
    :type-initializer \"gdk_owner_change_get_type\")
   (:new-owner 0)
@@ -484,7 +484,7 @@
 ;;; enum GdkEventType
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GdkEventType" event-type
+(gobject:define-g-enum "GdkEventType" event-type
   (:export t
    :type-initializer "gdk_event_type_get_type")
   (:nothing -1)
@@ -550,7 +550,7 @@
   Although many of these events result in corresponding signals being emitted,
   the events are often transformed or filtered along the way.
   @begin{pre}
-(define-g-enum \"GdkEventType\" event-type
+(gobject:define-g-enum \"GdkEventType\" event-type
   (:export t
    :type-initializer \"gdk_event_type_get_type\")
   (:nothing -1)
@@ -678,7 +678,8 @@
     @entry[:pad-ring]{A tablet pad axis event from a \"ring\".}
     @entry[:pad-strip]{A tablet pad axis event from a \"strip\".}
     @entry[:pad-group-mode]{A tablet pad group mode change.}
-    @entry[:event-last]{Marks the end of the @sym{gdk:event-type} enumeration.}
+    @entry[:event-last]{Marks the end of the @symbol{gdk:event-type}
+      enumeration.}
   @end{table}
   @see-struct{gdk:event}
   @see-symbol{gdk:window-type}
@@ -688,7 +689,7 @@
 ;;; enum GdkModifierType
 ;;; ----------------------------------------------------------------------------
 
-(define-g-flags "GdkModifierType" modifier-type
+(gobject:define-g-flags "GdkModifierType" modifier-type
   (:export t
    :type-initializer "gdk_modifier_type_get_type")
   (:shift-mask   #.(ash 1 0))
@@ -738,7 +739,7 @@
   4-7 as scroll events, so the @code{:button4-mask} and @code{:button5-mask}
   masks will never be set.
   @begin{pre}
-(define-g-flags \"GdkModifierType\" modifier-type
+(gobject:define-g-flags \"GdkModifierType\" modifier-type
   (:export t
    :type-initializer \"gdk_modifier_type_get_type\")
   (:shift-mask   #.(ash 1 0))
@@ -794,7 +795,7 @@
 ;;; enum GdkEventMask
 ;;; ----------------------------------------------------------------------------
 
-(define-g-flags "GdkEventMask" event-mask
+(gobject:define-g-flags "GdkEventMask" event-mask
   (:export t
    :type-initializer "gdk_event_mask_get_type")
   (:exposure-mask            #.(ash 1 1))
@@ -856,7 +857,7 @@
   returns the event sequence for these events, so different sequences may be
   distinguished.
   @begin{pre}
-(define-g-flags \"GdkEventMask\" gdk:event-mask
+(gobject:define-g-flags \"GdkEventMask\" gdk:event-mask
   (:export t
    :type-initializer \"gdk_event_mask_get_type\")
   (:exposure-mask            #.(ash 1 1))
@@ -929,7 +930,7 @@
 ;;; GdkTouchpadGesturePhase
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GdkTouchpadGesturePhase" touchpad-gesture-phase
+(gobject:define-g-enum "GdkTouchpadGesturePhase" touchpad-gesture-phase
   (:export t
    :type-initializer "gdk_touchpad_gesture_phase_get_type")
   (:begin 0)
@@ -943,7 +944,7 @@
       (liber:symbol-documentation 'touchpad-gesture-phase)
  "@version{#2021-12-13}
   @begin{short}
-    The @sym{gdk:touchpad-gesture-phase} enumeration specifies the current
+    The @symbol{gdk:touchpad-gesture-phase} enumeration specifies the current
     state of a touchpad gesture.
   @end{short}
   All gestures are guaranteed to begin with an event with @code{:begin}
@@ -960,7 +961,7 @@
   should be used as a hint to undo any visible/permanent changes that were done
   throughout the progress of the gesture.
   @begin{pre}
-(define-g-enum \"GdkTouchpadGesturePhase\" touchpad-gesture-phase
+(gobject:define-g-enum \"GdkTouchpadGesturePhase\" touchpad-gesture-phase
   (:export t
    :type-initializer \"gdk_touchpad_gesture_phase_get_type\")
   (:begin 0)
@@ -993,7 +994,7 @@
       (documentation 'event-sequence 'type)
  "@version{#2021-12-13}
   @begin{short}
-    The @sym{gdk:event-sequence} structure is opaque, and has no user visible
+    The @class{gdk:event-sequence} structure is opaque, and has no user visible
     fields.
   @end{short}
   An instance cannot be created from the Lisp side. See the
@@ -1207,7 +1208,7 @@
       (documentation 'event 'type)
  "@version{#2021-12-13}
   @begin{short}
-    The @sym{gdk:event} structure contains a union of all of the event
+    The @class{gdk:event} structure contains a union of all of the event
     structures, and allows access to the data fields in a number of ways.
   @end{short}
 
@@ -1465,8 +1466,8 @@
 
   The type of the event as a value of the @symbol{gdk:event-type} enumeration.
   @begin[Example]{dictionary}
-    Check for a button press event in a handler for the \"event\" signal on
-    a drawing area.
+    Check for a button press event in a handler for the @code{\"event\"} signal
+    on a drawing area.
     @begin{pre}
 (defun drawing-area-event (widget event)
   (declare (ignore widget))
@@ -2513,7 +2514,7 @@
     Accessor of the @code{direction} slot of the @class{gdk:event-scroll}
     structure.
   @end{short}
-  The @sym{gdk:scroll-direction} function extracts the scroll direction from a
+  The @fun{gdk:scroll-direction} function extracts the scroll direction from a
   scroll event.
 
   If you wish to handle both discrete and smooth scrolling, you should check
@@ -4377,7 +4378,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
   On X11, this happens when the grab window becomes unviewable, i.e. it or one
   of its ancestors is unmapped, or if the same application grabs the pointer
   or keyboard again. Note that implicit grabs, which are initiated by button
-  presses, can also cause @sym{gdk:event-grab-broken} events.
+  presses, can also cause @class{gdk:event-grab-broken} events.
   @begin{pre}
 (define-g-boxed-variant-cstruct event \"GdkEvent\"
   (type event-type)

@@ -93,7 +93,7 @@
 ;;; GdkGLContext
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GdkGLContext" gl-context
+(gobject:define-g-object-class "GdkGLContext" gl-context
   (:superclass g:object
    :export t
    :interfaces nil
@@ -112,15 +112,15 @@
 (setf (documentation 'gl-context 'type)
  "@version{#2021-4-28}
   @begin{short}
-    The @sym{gdk:gl-context} is representing the platform-specific OpenGL
-    drawing context.
+    The @class{gdk:gl-context} object is representing the platform-specific
+    OpenGL drawing context.
   @end{short}
 
-  The @sym{gdk:gl-context} object is created for a @class{gdk:window} object
-  using the function @fun{gdk:window-create-gl-context}, and the context will
+  The @class{gdk:gl-context} object is created for a @class{gdk:window} object
+  using the @fun{gdk:window-create-gl-context} function, and the context will
   match the @class{gdk:visual} object of the window.
 
-  A @sym{gdk:gl-context} object is not tied to any particular normal
+  A @class{gdk:gl-context} object is not tied to any particular normal
   framebuffer. For instance, it cannot draw to the @class{gdk:window} back
   buffer. The GDK repaint system is in full control of the painting to that.
   Instead, you can create render buffers or textures and use the function
@@ -128,28 +128,28 @@
   Then GDK will handle the integration of your rendering with that of other
   widgets.
 
-  Support for the @sym{gdk:gl-context} object is platform-specific, context
+  Support for the @class{gdk:gl-context} object is platform-specific, context
   creation can fail, returning a @code{NULL} context.
 
-  A @sym{gdk:gl-context} object has to be made \"current\" in order to start
+  A @class{gdk:gl-context} object has to be made \"current\" in order to start
   using it, otherwise any OpenGL call will be ignored.
 
   @subheading{Creating a new OpenGL context}
-  In order to create a new @sym{gdk:gl-context} instance you need a
+  In order to create a new @class{gdk:gl-context} instance you need a
   @class{gdk:window} object, which you typically get during the realize call
   of a widget.
 
-  A @sym{gdk:gl-context} object is not realized until either the function
+  A @class{gdk:gl-context} object is not realized until either the function
   @fun{gdk:gl-context-make-current}, or until it is realized using the function
   @fun{gdk:gl-context-realize}. It is possible to specify details of the GL
   context like the OpenGL version to be used, or whether the GL context should
   have extra state validation enabled after calling the function
   @fun{gdk:window-create-gl-context} by calling the function
   @fun{gdk:gl-context-realize}. If the realization fails you have the option to
-  change the settings of the @sym{gdk:gl-context} object and try again.
+  change the settings of the @class{gdk:gl-context} object and try again.
 
   @subheading{Using a OpenGl context}
-  You will need to make the @sym{gdk:gl-context} object the current context
+  You will need to make the @class{gdk:gl-context} object the current context
   before issuing OpenGL calls. The system sends OpenGL commands to whichever
   context is current. It is possible to have multiple contexts, so you always
   need to ensure that the one which you want to draw with is the current one
@@ -159,22 +159,20 @@ gdk_gl_context_make_current (context);
     @end{pre}
     You can now perform your drawing using OpenGL commands.
 
-    You can check which @sym{gdk:gl-context} object is the current one by using
-    the function @fun{gdk:gl-context-get-current}. You can also unset any
-    @sym{gdk:gl-context} object that is currently set by calling the function
-    @fun{gdk:gl-context-clear-current}.
+    You can check which @class{gdk:gl-context} object is the current one by
+    using the @fun{gdk:gl-context-get-current} function. You can also unset any
+    @class{gdk:gl-context} object that is currently set by calling the
+    @fun{gdk:gl-context-clear-current} function.
   @see-slot{gdk:gl-context-display}
   @see-slot{gdk:gl-context-shared-context}
   @see-slot{gdk:gl-context-window}
   @see-class{gdk:window}")
 
 ;;; ----------------------------------------------------------------------------
-;;;
 ;;; Property and Accessor Details
-;;;
 ;;; ----------------------------------------------------------------------------
 
-;;; --- gl-context-display -------------------------------------------------
+;;; --- gdk:gl-context-display -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "display" 'gl-context) t)
@@ -194,17 +192,16 @@ gdk_gl_context_make_current (context);
     Accessor of the @slot[gdk:gl-context]{display} slot of the
     @class{gdk:gl-context} class.
   @end{short}
-
-  The slot access function @sym{gdk:gl-context-display} retrieves the display
-  the OpenGL drawing context is created for.
+  The @fun{gdk:gl-context-display} function retrieves the display the OpenGL
+  drawing context is created for.
   @see-class{gdk:gl-context}
   @see-class{gdk:display}")
 
-;;; --- gl-context-shared-context ------------------------------------------
+;;; --- gdk:gl-context-shared-context ------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "shared-context" 'gl-context) t)
- "The @code{shared-context} property of type @sym{gdk:gl-context}
+ "The @code{shared-context} property of type @class{gdk:gl-context}
   (Read / Write / Construct) @br{}
   The OpenGL drawing context that this context is sharing data with, or
   @code{nil}.")
@@ -221,12 +218,11 @@ gdk_gl_context_make_current (context);
     Accessor of the @slot[gdk:gl-context]{shared-context} slot of the
     @class{gdk:gl-context} class.
   @end{short}
-
-  The slot access function @sym{gdk:gl-context-shared-context} retrieves the
-  OpenGL drawing context that this context share data with.
+  The @fun{gdk:gl-context-shared-context} function retrieves the OpenGL drawing
+  context that this context share data with.
   @see-class{gdk:gl-context}")
 
-;;; --- gl-context-window --------------------------------------------------
+;;; --- gdk:gl-context-window --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "window" 'gl-context) t)
@@ -246,9 +242,8 @@ gdk_gl_context_make_current (context);
     Accessor of the @slot[gdk:gl-context]{window} slot of the
     @class{gdk:gl-context} class.
   @end{short}
-
-  The slot access function @sym{gdk:gl-context-window} retrieves the window
-  used by the OpenGL drawing context.
+  The @fun{gdk:gl-context-window} function retrieves the window used by the
+  OpenGL drawing context.
   @see-class{gdk:gl-context}
   @see-class{gdk:window}")
 

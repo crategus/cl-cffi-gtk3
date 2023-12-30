@@ -59,7 +59,7 @@
 ;;; struct GdkDrawingContext
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GdkDrawingContext" drawing-context
+(gobject:define-g-object-class "GdkDrawingContext" drawing-context
   (:superclass g:object
    :export t
    :interfaces nil
@@ -75,17 +75,17 @@
 (setf (documentation 'drawing-context 'type)
  "@version{#2023-3-10}
   @begin{short}
-    The @sym{gdk:drawing-context} object is an object that represents the
+    The @class{gdk:drawing-context} object is an object that represents the
     current drawing state of a @class{gdk:window} object.
   @end{short}
-  It is possible to use a @sym{gdk:drawing-context} object to draw on a
+  It is possible to use a @class{gdk:drawing-context} object to draw on a
   @class{gdk:window} object via rendering API like Cairo or OpenGL.
 
-  A @sym{gdk:drawing-context} object can only be created by calling
+  A @class{gdk:drawing-context} object can only be created by calling
   the @fun{gdk:window-begin-draw-frame} function and will be valid until a call
   to the @fun{gdk:window-end-draw-frame} function.
 
-  The @sym{gdk:drawing-context} class is available since GDK 3.22.
+  The @class{gdk:drawing-context} class is available since GDK 3.22.
   @see-class{gdk:window}
   @see-function{gdk:window-begin-draw-frame}
   @see-function{gdk:window-end-draw-frame}")
@@ -114,7 +114,7 @@
     Accessor of the @slot[gdk:drawing-context]{clip} slot of the
     @class{gdk:drawing-context} class.
   @end{short}
-  The @sym{gdk:drawing-context-clip} function retrieves a copy of the clip
+  The @fun{gdk:drawing-context-clip} function retrieves a copy of the clip
   region used when creating the context.
 
   Since 3.22
@@ -141,7 +141,7 @@
     Accessor of the @slot[gdk:drawing-context]{window} slot of the
     @class{gdk:drawing-context} class.
   @end{short}
-  The @sym{gdk:drawing-context-window} function retrieves the window that
+  The @fun{gdk:drawing-context-window} function retrieves the window that
   created the drawing context.
 
   Since 3.22
@@ -152,7 +152,7 @@
 ;;; gdk_drawing_context_get_cairo_context () -> drawing-context-cairo-context
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_drawing_context_get_cairo_context" drawing-context-cairo-context)
+(cffi:defcfun ("gdk_drawing_context_get_cairo_context" drawing-context-cairo-context)
     (:pointer (:struct cairo:context-t))
  #+liber-documentation
  "@version{2023-3-10}
@@ -184,7 +184,7 @@
 ;;; gdk_drawing_context_is_valid ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_drawing_context_is_valid" drawing-context-is-valid) :boolean
+(cffi:defcfun ("gdk_drawing_context_is_valid" drawing-context-is-valid) :boolean
  #+liber-documentation
  "@version{#2023-3-10}
   @argument[context]{a @class{gdk:drawing-context} object}

@@ -83,7 +83,7 @@
   @end{short}
   It is comparable to the @symbol{cairo:rectangle-int-t} structure.
 
-  The @sym{gdk:rectangle} structure is holding the position and size of a
+  The @class{gdk:rectangle} structure is holding the position and size of a
   rectangle. The intersection of two rectangles can be computed with the
   @fun{gdk:rectangle-intersect} function. To find the union of two rectangles
   use the @fun{gdk:rectangle-union} function.
@@ -214,7 +214,7 @@
 ;;; gdk_rectangle_intersect ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_rectangle_intersect" %rectangle-intersect) :boolean
+(cffi:defcfun ("gdk_rectangle_intersect" %rectangle-intersect) :boolean
   (rect1 (g:boxed rectangle))
   (rect2 (g:boxed rectangle))
   (dest  (g:boxed rectangle)))
@@ -242,7 +242,7 @@
 ;;; gdk_rectangle_union ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_rectangle_union" %rectangle-union) :void
+(cffi:defcfun ("gdk_rectangle_union" %rectangle-union) :void
   (rect1 (g:boxed rectangle))
   (rect2 (g:boxed rectangle))
   (dest  (g:boxed rectangle)))
@@ -271,7 +271,7 @@
 ;;; gdk_rectangle_equal ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_rectangle_equal" rectangle-equal) :boolean
+(cffi:defcfun ("gdk_rectangle_equal" rectangle-equal) :boolean
  #+liber-documentation
  "@version{#2023-3-13}
   @argument[rect1]{a @class{gdk:rectangle} instance}

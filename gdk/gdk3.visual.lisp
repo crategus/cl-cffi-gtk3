@@ -71,7 +71,7 @@
 ;;; enum GdkVisualType
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GdkVisualType" visual-type
+(gobject:define-g-enum "GdkVisualType" visual-type
   (:export t
    :type-initializer "gdk_visual_type_get_type")
   (:static-gray 0)
@@ -91,7 +91,7 @@
     visual are converted into RGB values for display.
   @end{short}
   @begin{pre}
-(define-g-enum \"GdkVisualType\" visual-type
+(gobject:define-g-enum \"GdkVisualType\" visual-type
   (:export t
    :type-initializer \"gdk_visual_type_get_type\")
   (:static-gray 0)
@@ -129,7 +129,7 @@
 ;;; enum GdkByteOrder
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GdkByteOrder" byte-order
+(gobject:define-g-enum "GdkByteOrder" byte-order
   (:export t
    :type-initializer "gdk_byte_order_get_type")
   (:lsb-first 0)
@@ -145,7 +145,7 @@
     values in memory.
   @end{short}
   @begin{pre}
-(define-g-enum \"GdkByteOrder\" byte-order
+(gobject:define-g-enum \"GdkByteOrder\" byte-order
   (:export t
    :type-initializer \"gdk_byte_order_get_type\")
   (:lsb-first 0)
@@ -166,7 +166,7 @@
 ;;; GdkVisual
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GdkVisual" visual
+(gobject:define-g-object-class "GdkVisual" visual
   (:superclass g:object
    :export t
    :interfaces nil
@@ -176,7 +176,7 @@
 (setf (documentation 'visual 'type)
  "@version{#2021-12-14}
   @begin{short}
-    A @sym{gdk:visual} object describes a particular video hardware display
+    A @class{gdk:visual} object describes a particular video hardware display
     format.
   @end{short}
   It includes information about the number of bits used for each color, the way
@@ -211,7 +211,7 @@
 ;;; gdk_query_depths ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_query_depths" %query-depths) :void
+(cffi:defcfun ("gdk_query_depths" %query-depths) :void
   (depths (:pointer (:pointer :int)))
   (count (:pointer :int)))
 
@@ -226,7 +226,7 @@
   function and then looking at the depth field in each visual, removing
   duplicates.
   @begin[Warning]{dictionary}
-    The @sym{gdk:query-depths} function has been deprecated since version 3.22
+    The @fun{gdk:query-depths} function has been deprecated since version 3.22
     and should not be used in newly written code. Visual selection should be
     done using the @fun{gdk:screen-system-visual} and
     @fun{gdk:screen-rgba-visual} functions.
@@ -241,7 +241,7 @@
   @see-function{gdk:list-visuals}
   @see-function{gdk:screen-system-visual}
   @see-function{gdk:screen-rgba-visual}"
-  (with-foreign-objects ((count-r :int) (depths-r :pointer))
+  (cffi:with-foreign-objects ((count-r :int) (depths-r :pointer))
     (%query-depths depths-r count-r)
     (iter (with count = (cffi:mem-ref count-r :int))
           (with depths = (cffi:mem-ref depths-r :pointer))
@@ -254,7 +254,7 @@
 ;;; gdk_query_visual_types ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_query_visual_types" %query-visual-types) :void
+(cffi:defcfun ("gdk_query_visual_types" %query-visual-types) :void
   (depths (:pointer (:pointer visual-type)))
   (count (:pointer :int)))
 
@@ -270,7 +270,7 @@
   function and then looking at the type field in each visual, removing
   duplicates.
   @begin[Warning]{dictionary}
-    The @sym{gdk:query-visual-types} function has been deprecated since version
+    The @fun{gdk:query-visual-types} function has been deprecated since version
     3.22 and should not be used in newly written code. Visual selection should
     be done using the @fun{gdk:screen-system-visual} and
     @fun{gdk:screen-rgba-visual} functions.
@@ -280,7 +280,7 @@
   @see-function{gdk:list-visuals}
   @see-function{gdk:screen-system-visual}
   @see-function{gdk:screen-rgba-visual}"
-  (with-foreign-objects ((count-r :int) (types-r 'visual-type))
+  (cffi:with-foreign-objects ((count-r :int) (types-r 'visual-type))
     (%query-visual-types types-r count-r)
     (iter (with count = (cffi:mem-ref count-r :int))
           (with types = (cffi:mem-ref types-r :pointer))
@@ -293,7 +293,7 @@
 ;;; gdk_list_visuals ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_list_visuals" list-visuals)
+(cffi:defcfun ("gdk_list_visuals" list-visuals)
     (g:list-t (g:object visual) :free-from-foreign t)
  #+liber-documentation
  "@version{#2021-12-14}
@@ -307,7 +307,7 @@
   For example, a visual might support 24-bit color, or 8-bit color, and might
   expect pixels to be in a certain format.
   @begin[Warning]{dictionary}
-    The @sym{gdk:list-visuals} function has been deprecated since version 3.22
+    The @fun{gdk:list-visuals} function has been deprecated since version 3.22
     and should not be used in newly written code. Use the call
     @code{(gdk:screen-list-visuals (gdk:screen-default))}.
   @end{dictionary}
@@ -320,7 +320,7 @@
 ;;; gdk_visual_get_bits_per_rgb () -> visual-bits-per-rgb
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_visual_get_bits_per_rgb" visual-bits-per-rgb) :int
+(cffi:defcfun ("gdk_visual_get_bits_per_rgb" visual-bits-per-rgb) :int
  #+liber-documentation
  "@version{#2021-12-14}
   @argument[visual]{a @class{gdk:visual} object}
@@ -330,7 +330,7 @@
     Returns the number of significant bits per red, green and blue value.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gdk:visual-bits-per-rgb} function has been deprecated since
+    The @fun{gdk:visual-bits-per-rgb} function has been deprecated since
     version 3.22 and should not be used in newly written code. Use the
     @fun{gdk:visual-red-pixel-details} function and its variants to learn about
     the pixel layout of TrueColor and DirectColor visuals.
@@ -347,7 +347,7 @@
 ;;; gdk_visual_get_blue_pixel_details () -> visual-blue-pixel-details
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_visual_get_blue_pixel_details" %visual-blue-pixel-details)
+(cffi:defcfun ("gdk_visual_get_blue_pixel_details" %visual-blue-pixel-details)
     :void
   (visual (g:object visual))
   (mask (:pointer :uint32))
@@ -374,7 +374,7 @@
   @see-class{gdk:visual}
   @see-function{gdk:visual-red-pixel-details}
   @see-function{gdk:visual-green-pixel-details}"
-  (with-foreign-objects ((mask :uint32) (shift :int) (precision :int))
+  (cffi:with-foreign-objects ((mask :uint32) (shift :int) (precision :int))
     (%visual-blue-pixel-details visual mask shift precision)
     (values (cffi:mem-ref mask :uint32)
             (cffi:mem-ref shift :int)
@@ -386,7 +386,7 @@
 ;;; gdk_visual_get_byte_order () -> visual-byte-order
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_visual_get_byte_order" visual-byte-order) byte-order
+(cffi:defcfun ("gdk_visual_get_byte_order" visual-byte-order) byte-order
  #+liber-documentation
  "@version{#2021-12-14}
   @argument[visual]{a @class{gdk:visual} object}
@@ -396,7 +396,7 @@
     Returns the byte order of the visual.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gdk:visual-byte-order} function has been deprecated since version
+    The @fun{gdk:visual-byte-order} function has been deprecated since version
     3.22 and should not be used in newly written code. This information is not
     useful.
   @end{dictionary}
@@ -410,7 +410,7 @@
 ;;; gdk_visual_get_colormap_size () -> visual-colormap-size
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_visual_get_colormap_size" visual-colormap-size) :int
+(cffi:defcfun ("gdk_visual_get_colormap_size" visual-colormap-size) :int
  #+liber-documentation
  "@version{#2021-12-14}
   @argument[visual]{a @class{gdk:visual} object}
@@ -420,7 +420,7 @@
     Returns the size of a colormap for the visual.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gdk:visual-colormap-size} function has been deprecated since
+    The @fun{gdk:visual-colormap-size} function has been deprecated since
     version 3.22 and should not be used in newly written code. This information
     is not useful, since GDK does not provide APIs to operate on colormaps.
   @end{dictionary}
@@ -433,7 +433,7 @@
 ;;; gdk_visual_get_depth () -> visual-depth
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_visual_get_depth" visual-depth) :int
+(cffi:defcfun ("gdk_visual_get_depth" visual-depth) :int
  #+liber-documentation
  "@version{#2021-12-14}
   @argument[visual]{a @class{gdk:visual} object}
@@ -448,7 +448,7 @@
 ;;; gdk_visual_get_green_pixel_details ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_visual_get_green_pixel_details" %visual-green-pixel-details)
+(cffi:defcfun ("gdk_visual_get_green_pixel_details" %visual-green-pixel-details)
     :void
   (visual (g:object visual))
   (mask (:pointer :uint32))
@@ -474,7 +474,7 @@
   @see-class{gdk:visual}
   @see-function{gdk:visual-red-pixel-details}
   @see-function{gdk:visual-blue-pixel-details}"
-  (with-foreign-objects ((mask :uint32) (shift :int) (precision :int))
+  (cffi:with-foreign-objects ((mask :uint32) (shift :int) (precision :int))
     (%visual-green-pixel-details visual mask shift precision)
     (values (cffi:mem-ref mask :uint32)
             (cffi:mem-ref shift :int)
@@ -486,7 +486,7 @@
 ;;; gdk_visual_get_red_pixel_details () -> visual-red-pixel-details
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_visual_get_red_pixel_details" %visual-red-pixel-details)
+(cffi:defcfun ("gdk_visual_get_red_pixel_details" %visual-red-pixel-details)
     :void
   (visual (g:object visual))
   (mask (:pointer :uint32))
@@ -512,7 +512,7 @@
   @see-class{gdk:visual}
   @see-function{gdk:visual-blue-pixel-details}
   @see-function{gdk:visual-green-pixel-details}"
-  (with-foreign-objects ((mask :uint32) (shift :int) (precision :int))
+  (cffi:with-foreign-objects ((mask :uint32) (shift :int) (precision :int))
     (%visual-red-pixel-details visual mask shift precision)
     (values (cffi:mem-ref mask :uint32)
             (cffi:mem-ref shift :int)
@@ -524,7 +524,7 @@
 ;;; gdk_visual_get_visual_type () -> visual-visual-type
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_visual_get_visual_type" visual-visual-type) visual-type
+(cffi:defcfun ("gdk_visual_get_visual_type" visual-visual-type) visual-type
  #+liber-documentation
  "@version{#2021-12-14}
   @argument[visual]{a @class{gdk:visual} object}
@@ -542,7 +542,7 @@
 ;;; gdk_visual_get_best_depth () -> visual-best-depth
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_visual_get_best_depth" visual-best-depth) :int
+(cffi:defcfun ("gdk_visual_get_best_depth" visual-best-depth) :int
  #+liber-documentation
  "@version{#2021-12-14}
   @return{An integer with the best available depth.}
@@ -552,7 +552,7 @@
   \"Best\" means \"largest\", i.e. 32 preferred over 24 preferred over 8 bits
   per pixel.
   @begin[Warning]{dictionary}
-    The @sym{gdk:visual-best-depth} function has been deprecated since version
+    The @fun{gdk:visual-best-depth} function has been deprecated since version
     3.22 and should not be used in newly written code. Visual selection should
     be done using the @fun{gdk:screen-system-visual} and
     @fun{gdk:screen-rgba-visual} functions.
@@ -568,7 +568,7 @@
 ;;; gdk_visual_get_best_type () -> visual-best-type
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_visual_get_best_type" visual-best-type) visual-type
+(cffi:defcfun ("gdk_visual_get_best_type" visual-best-type) visual-type
  #+liber-documentation
  "@version{#2021-12-14}
   @return{Best visual type of type @symbol{gdk:visual-type}.}
@@ -576,7 +576,7 @@
     Return the best available visual type for the default GDK screen.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gdk:visual-best-type} function has been deprecated since version
+    The @fun{gdk:visual-best-type} function has been deprecated since version
     3.22 and should not be used in newly written code. Visual selection should
     be done using the @fun{gdk:screen-system-visual} and
     @fun{gdk:screen-rgba-visual} functions.
@@ -592,7 +592,7 @@
 ;;; gdk_visual_get_system () -> visual-system
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_visual_get_system" visual-system) (g:object visual)
+(cffi:defcfun ("gdk_visual_get_system" visual-system) (g:object visual)
  #+liber-documentation
  "@version{#2021-12-14}
   @return{The system @class{gdk:visual} object.}
@@ -601,7 +601,7 @@
   @end{short}
   This is the visual for the root window of the display.
   @begin[Warning]{dictionary}
-    The @sym{gdk:visual-system} function has been deprecated since version 3.22
+    The @fun{gdk:visual-system} function has been deprecated since version 3.22
     and should not be used in newly written code. Use the call
     @code{(gdk:screen-system-visual (gdk:screen-default))}.
   @end{dictionary}
@@ -616,7 +616,7 @@
 ;;; gdk_visual_get_best () -> visual-best
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_visual_get_best" visual-best) (g:object visual)
+(cffi:defcfun ("gdk_visual_get_best" visual-best) (g:object visual)
  #+liber-documentation
  "@version{#2021-12-14}
   @return{The best @class{gdk:visual} object.}
@@ -624,7 +624,7 @@
     Get the visual with the most available colors for the default GDK screen.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gdk:visual-best} has been deprecated since version 3.22
+    The @fun{gdk:visual-best} function has been deprecated since version 3.22
     and should not be used in newly written code. Visual selection should be
     done using the @fun{gdk:screen-system-visual} and
     @fun{gdk:screen-rgba-visual} functions.
@@ -643,7 +643,7 @@
 ;;; gdk_visual_get_best_with_depth () -> visual-best-with-depth
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_visual_get_best_with_depth" visual-best-with-depth)
+(cffi:defcfun ("gdk_visual_get_best_with_depth" visual-best-with-depth)
     (g:object visual)
  #+liber-documentation
  "@version{#2021-12-14}
@@ -656,7 +656,7 @@
   or fixed-colormap visuals. @code{Nil} may be returned if no visual supports
   @arg{depth}.
   @begin[Warning]{dictionary}
-    The @sym{gdk:visual-best-with-depth} function has been deprecated since
+    The @fun{gdk:visual-best-with-depth} function has been deprecated since
     version 3.22 and should not be used in newly written code. Visual selection
     should be done using the @fun{gdk:screen-system-visual} and
     @fun{gdk:screen-rgba-visual} functions.
@@ -676,7 +676,7 @@
 ;;; gdk_visual_get_best_with_type () -> visual-best-with-type
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_visual_get_best_with_type" visual-best-with-type)
+(cffi:defcfun ("gdk_visual_get_best_with_type" visual-best-with-type)
     (g:object visual)
  #+liber-documentation
  "@version{#2021-12-14}
@@ -688,7 +688,7 @@
   Visuals with higher color depths are considered better. @code{Nil} may be
   returned if no visual has type @arg{visual-type}.
   @begin[Warning]{dictionary}
-    The @sym{gdk:visual-best-with-type} function has been deprecated since
+    The @fun{gdk:visual-best-with-type} function has been deprecated since
     version 3.22 and should not be used in newly written code. Visual selection
     should be done using the @fun{gdk:screen-system-visual} and
     @fun{gdk:screen-rgba-visual} functions.
@@ -708,7 +708,7 @@
 ;;; gdk_visual_get_best_with_both () -> visual-best-with-both
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_visual_get_best_with_both" visual-best-with-both)
+(cffi:defcfun ("gdk_visual_get_best_with_both" visual-best-with-both)
     (g:object visual)
  #+liber-documentation
  "@version{#2021-12-14}
@@ -721,7 +721,7 @@
     @fun{gdk:visual-best-with-type} functions.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gdk:visual-best-with-both} function has been deprecated since
+    The @fun{gdk:visual-best-with-both} function has been deprecated since
     version 3.22 and should not be used in newly written code. Visual selection
     should be done using the @fun{gdk:screen-system-visual} and
     @fun{gdk:screen-rgba-visual} functions.
@@ -741,7 +741,7 @@
 ;;; gdk_visual_get_screen () -> visual-screen
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_visual_get_screen" visual-screen) (g:object screen)
+(cffi:defcfun ("gdk_visual_get_screen" visual-screen) (g:object screen)
  #+liber-documentation
  "@version{#2021-12-14}
   @argument[visual]{a @class{gdk:visual} object}

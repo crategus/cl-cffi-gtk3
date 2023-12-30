@@ -64,14 +64,14 @@
       (documentation 'frame-timings 'type)
  "@version{#2023-3-10}
   @begin{short}
-    A @sym{gdk:frame-timings} structure holds timing information for a single
+    A @class{gdk:frame-timings} structure holds timing information for a single
     frame of the application’s displays.
   @end{short}
-  The @sym{gdk:frame-timings} structure is opaque, and has no user visible
+  The @class{gdk:frame-timings} structure is opaque, and has no user visible
   fields. An instance cannot be created from the Lisp side. To retrieve a
-  @sym{gdk:frame-timings} instance, use the @fun{gdk:frame-clock-timings} or
+  @class{gdk:frame-timings} instance, use the @fun{gdk:frame-clock-timings} or
   @fun{gdk:frame-clock-current-timings} functions. The information in the
-  @sym{gdk:frame-timings} instance is useful for precise synchronization of
+  @class{gdk:frame-timings} instance is useful for precise synchronization of
   video with the event or audio streams, and for measuring quality metrics for
   the application’s display, such as latency and jitter.
   @see-class{gdk:frame-clock}
@@ -118,7 +118,7 @@
 ;;; gdk_frame_timings_get_frame_counter () -> frame-timings-frame-counter
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_frame_timings_get_frame_counter" frame-timings-frame-counter)
+(cffi:defcfun ("gdk_frame_timings_get_frame_counter" frame-timings-frame-counter)
     :int64
  #+liber-documentation
  "@version{#2023-3-10}
@@ -136,7 +136,7 @@
 ;;; gdk_frame_timings_get_complete () -> frame-timings-complete
 ;;;-----------------------------------------------------------------------------
 
-(defcfun ("gdk_frame_timings_get_complete" frame-timings-complete) :boolean
+(cffi:defcfun ("gdk_frame_timings_get_complete" frame-timings-complete) :boolean
  #+liber-documentation
  "@version{#2023-3-10}
   @argument[timings]{a @class{gdk:frame-timings} instance}
@@ -152,7 +152,7 @@
   The accessor functions for @class{gdk:frame-timings} instances can return 0
   to indicate an unavailable value for two reasons: either because the
   information is not yet available, or because it is not available at all. Once
-  the @sym{gdk:frame-timings-complete} function returns @em{true} for a frame,
+  the @fun{gdk:frame-timings-complete} function returns @em{true} for a frame,
   you can be certain that no further values will become available and be stored
   in the @class{gdk:frame-timings} instance.
   @see-class{gdk:frame-timings}"
@@ -164,7 +164,7 @@
 ;;; gdk_frame_timings_get_frame_time () -> frame-timings-frame-time
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_frame_timings_get_frame_time" frame-timings-frame-time) :int64
+(cffi:defcfun ("gdk_frame_timings_get_frame_time" frame-timings-frame-time) :int64
  #+liber-documentation
  "@version{#2023-3-10}
   @argument[timings]{a @class{gdk:frame-timings} instance}
@@ -187,7 +187,7 @@
 ;;;     -> frame-timings-presentation-time
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_frame_timings_get_presentation_time"
+(cffi:defcfun ("gdk_frame_timings_get_presentation_time"
            frame-timings-presentation-time) :int64
  #+liber-documentation
  "@version{#2023-3-10}
@@ -212,7 +212,7 @@
 ;;;     -> frame-timings-refresh-interval
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_frame_timings_get_refresh_interval"
+(cffi:defcfun ("gdk_frame_timings_get_refresh_interval"
            frame-timings-refresh-interval) :int64
  #+liber-documentation
  "@version{#2023-3-10}
@@ -238,7 +238,7 @@
 ;;;     -> frame-timings-predicted-presentation-time
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_frame_timings_get_predicted_presentation_time"
+(cffi:defcfun ("gdk_frame_timings_get_predicted_presentation_time"
            frame-timings-predicted-presentation-time) :int64
  #+liber-documentation
  "@version{#2023-3-10}

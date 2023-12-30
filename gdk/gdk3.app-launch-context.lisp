@@ -62,7 +62,7 @@
 ;;; GdkAppLaunchContext
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GdkAppLaunchContext" app-launch-context
+(gobject:define-g-object-class "GdkAppLaunchContext" app-launch-context
   (:superclass g:app-launch-context
    :export t
    :interfaces nil
@@ -75,7 +75,7 @@
 (setf (documentation 'app-launch-context 'type)
  "@version{2023-4-7}
   @begin{short}
-    The @sym{gdk:app-launch-context} object is an implementation of the
+    The @class{gdk:app-launch-context} object is an implementation of the
     @class{g:app-launch-context} object that handles launching an application
     in a graphical context.
   @end{short}
@@ -98,7 +98,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- app-launch-context-display ---------------------------------------------
+;;; --- gdk:app-launch-context-display -----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "display" 'app-launch-context) t)
@@ -118,11 +118,11 @@
     Accessor of the @code{display} slot of the @class{gdk:app-launch-context}
     class.
   @end{short}
-  The @sym{gdk:app-launch-context-display} function gets the display on which
+  The @fun{gdk:app-launch-context-display} function gets the display on which
   applications will be launched when using the launch context. See also the
   @fun{gdk:app-launch-context-set-screen} function.
   @begin[Warning]{dictionary}
-    The @sym{gdk:app-launch-context-display} function has been deprecated since
+    The @fun{gdk:app-launch-context-display} function has been deprecated since
     version 3.0 and should not be used in newly written code. Use the
     @fun{gdk:display-app-launch-context} function instead.
   @end{dictionary}
@@ -135,7 +135,7 @@
 ;;; gdk_app_launch_context_new ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_app_launch_context_new" app-launch-context-new)
+(cffi:defcfun ("gdk_app_launch_context_new" app-launch-context-new)
          (g:object app-launch-context)
  #+liber-documentation
  "@version{2022-12-15}
@@ -144,7 +144,7 @@
     Creates a new launch context.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gdk:app-launch-context-new} function has been deprecated since
+    The @fun{gdk:app-launch-context-new} function has been deprecated since
     version 3.0 and should not be used in newly written code. Use the
     @fun{gdk:display-app-launch-context} function instead.
   @end{dictionary}
@@ -157,8 +157,8 @@
 ;;; gdk_app_launch_context_set_screen ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_app_launch_context_set_screen" app-launch-context-set-screen)
-    :void
+(cffi:defcfun ("gdk_app_launch_context_set_screen"
+               app-launch-context-set-screen) :void
  #+liber-documentation
  "@version{2022-12-15}
   @argument[context]{a @class{gdk:app-launch-context} object}
@@ -182,8 +182,8 @@
 ;;; gdk_app_launch_context_set_desktop ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_app_launch_context_set_desktop" app-launch-context-set-desktop)
-    :void
+(cffi:defcfun ("gdk_app_launch_context_set_desktop"
+               app-launch-context-set-desktop) :void
  #+liber-documentation
  "@version{2022-12-15}
   @argument[context]{a @class{gdk:app-launch-context} object}
@@ -206,8 +206,8 @@
 ;;; gdk_app_launch_context_set_timestamp ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_app_launch_context_set_timestamp"
-           app-launch-context-set-timestamp) :void
+(cffi:defcfun ("gdk_app_launch_context_set_timestamp"
+               app-launch-context-set-timestamp) :void
  #+liber-documentation
  "@version{2022-12-15}
   @argument[context]{a @class{gdk:app-launch-context} object}
@@ -229,7 +229,8 @@
 ;;; gdk_app_launch_context_set_icon ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_app_launch_context_set_icon" app-launch-context-set-icon) :void
+(cffi:defcfun ("gdk_app_launch_context_set_icon" app-launch-context-set-icon)
+    :void
  #+liber-documentation
  "@version{2022-12-15}
   @argument[context]{a @class{gdk:app-launch-context} object}
@@ -252,8 +253,8 @@
 ;;; gdk_app_launch_context_set_icon_name ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_app_launch_context_set_icon_name"
-           %app-launch-context-set-icon-name) :void
+(cffi:defcfun ("gdk_app_launch_context_set_icon_name"
+               %app-launch-context-set-icon-name) :void
   (context (g:object app-launch-context))
   (name :string))
 

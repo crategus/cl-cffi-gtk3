@@ -158,7 +158,7 @@
 ;;; gdk_get_display_arg_name ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_get_display_arg_name" get-display-arg-name)
+(cffi:defcfun ("gdk_get_display_arg_name" get-display-arg-name)
     (:string :free-from-foreign nil)
  #+liber-documentation
  "@version{#2023-3-4}
@@ -175,7 +175,7 @@
 ;;; gdk_notify_startup_complete ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_notify_startup_complete" notify-startup-complete) :void
+(cffi:defcfun ("gdk_notify_startup_complete" notify-startup-complete) :void
  #+liber-documentation
  "@version{#2023-3-4}
   @begin{short}
@@ -198,7 +198,7 @@
 ;;; gdk_notify_startup_complete_with_id ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_notify_startup_complete_with_id" notify-startup-complete-with-id)
+(cffi:defcfun ("gdk_notify_startup_complete_with_id" notify-startup-complete-with-id)
     :void
  #+liber-documentation
  "@version{#2023-3-4}
@@ -223,7 +223,7 @@
 ;;; gdk_set_allowed_backends ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_set_allowed_backends" set-allowed-backends) :void
+(cffi:defcfun ("gdk_set_allowed_backends" set-allowed-backends) :void
  #+liber-documentation
  "@version{#2023-3-4}
   @argument[backends]{a string with a comma-separated list of backends}
@@ -266,7 +266,7 @@
                         :void)
   program-class)
 
-(defcfun ("gdk_get_program_class" program-class)
+(cffi:defcfun ("gdk_get_program_class" program-class)
     (:string :free-from-foreign nil)
  #+liber-documentation
  "@version{#2021-12-13}
@@ -277,12 +277,12 @@
     Accessor of the program class.
   @end{short}
 
-  The @sym{gdk:program-class} function gets the program class. The
-  @sym{(setf gdk:program-class)} function sets the program class.
+  The @fun{gdk:program-class} function gets the program class. The
+  @setf{gdk:program-class} function sets the program class.
 
   Unless the program class has explicitly been set with the
-  @sym{(setf gdk:program-class)} function or with the @code{--class} command
-  line option, the default value is the program name determined with the
+  @setf{gdk:program-class} function or with the @code{--class} command line
+  option, the default value is the program name determined with the
   @fun{g:prgname} function and with the first character converted to uppercase.
 
   The X11 backend uses the program class to set the class name part of the
@@ -296,7 +296,7 @@
 ;;; gdk_get_display ()                                     not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_get_display" get-display) (:string :free-from-foreign nil)
+(cffi:defcfun ("gdk_get_display" get-display) (:string :free-from-foreign nil)
  #+liber-documentation
  "@version{#2015-12-30}
   @return{The name of the display of type @code{:string}.}
@@ -305,7 +305,7 @@
     environment variable or the @code{--display} command line option.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gdk:get-display} function has been deprecated since version 3.8
+    The @fun{gdk:get-display} function has been deprecated since version 3.8
     and should not be used in newly written code. Call
     @code{(gdk:display-name (gdk:display-default))} instead.
   @end{dictionary}
@@ -316,7 +316,7 @@
 ;;; gdk_flush ()                                           not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_flush" flush) :void
+(cffi:defcfun ("gdk_flush" flush) :void
  #+liber-documentation
  "@version{#2019-3-25}
   @begin{short}
@@ -325,7 +325,7 @@
   @end{short}
   This is rarely needed by applications.
   @begin[Warning]{dictionary}
-    The @sym{gdk:flush} function is deprecated and should not be used in
+    The @fun{gdk:flush} function is deprecated and should not be used in
     newly written code.
   @end{dictionary}")
 
@@ -357,7 +357,7 @@
 ;;; gdk_pointer_grab ()                                    not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_pointer_grab" pointer-grab) grab-status
+(cffi:defcfun ("gdk_pointer_grab" pointer-grab) grab-status
  #+liber-documentation
  "@version{#2013-4-3}
   @argument[window]{the @class{gdk:window} which will own the grab}
@@ -410,7 +410,7 @@
   @class{gdk:event-grab-broken} events that are emitted when the grab ends
   unvoluntarily.
   @begin[Warning]{dictionary}
-    The @sym{gdk:pointer-grab} function has been deprecated since version 3.0
+    The @fun{gdk:pointer-grab} function has been deprecated since version 3.0
     and should not be used in newly written code. Use the @fun{gdk:seat-grab}
     function instead.
   @end{dictionary}
@@ -428,20 +428,19 @@
 ;;; gdk_pointer_ungrab ()                                  not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_pointer_ungrab" pointer-ungrab) :void
+(cffi:defcfun ("gdk_pointer_ungrab" pointer-ungrab) :void
  #+liber-documentation
  "@version{#2013-4-3}
   @argument[time]{a timestamp of type @code{:uint32} from a @class{gdk:event},
-    or @var{+gdk-current-time+} if no timestamp is available}
+    or @var{gdk:+gdk-current-time+} if no timestamp is available}
   @begin{short}
     Ungrabs the pointer on the default display, if it is grabbed by this
     application.
   @end{short}
   @begin[Warning]{dictionary}
-    The function @sym{gdk:pointer-ungrab} has been deprecated since version 3.0
-    and should not be used in newly written code. Use the function
-    @fun{gdk:seat-ungrab}, together with the function @fun{gdk:seat-grab}
-    instead.
+    The @fun{gdk:pointer-ungrab} function has been deprecated since version 3.0
+    and should not be used in newly written code. Use the @fun{gdk:seat-ungrab}
+    function, together with the @fun{gdk:seat-grab} function instead.
   @end{dictionary}
   @see-function{gdk:seat-grab}
   @see-function{gdk:seat-ungrab}"
@@ -451,7 +450,7 @@
 ;;; gdk_pointer_is_grabbed ()                              not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_pointer_is_grabbed" pointer-is-grabbed) :boolean
+(cffi:defcfun ("gdk_pointer_is_grabbed" pointer-is-grabbed) :boolean
  #+liber-documentation
  "@version{#2013-4-3}
   @return{a boolean that is @em{true} if the pointer is currently grabbed by
@@ -464,9 +463,9 @@
   Note that this does not take the inmplicit pointer grab on button presses
   into account.
   @begin[Warning]{dictionary}
-    The function @sym{gdk:pointer-is-grabbed} has been deprecated since version
-    3.0 and should not be used in newly written code. Use the function
-    @fun{gdk:display-device-is-grabbed} instead.
+    The @fun{gdk:pointer-is-grabbed} function has been deprecated since version
+    3.0 and should not be used in newly written code. Use the
+    @fun{gdk:display-device-is-grabbed} function instead.
   @end{dictionary}
   @see-function{gdk:display-device-is-grabbed}")
 
@@ -474,18 +473,18 @@
 ;;; gdk_set_double_click_time ()                           not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_set_double_click_time" set-double-click-time) :void
+(cffi:defcfun ("gdk_set_double_click_time" set-double-click-time) :void
  #+liber-documentation
  "@version{#2019-3-26}
   @argument[msec]{double click time in milliseconds of type @code{:uint}}
   @begin{short}
     Set the double click time for the default display.
   @end{short}
-  See the function @fun{gdk:display-set-double-click-time}. See also the
-  function @fun{gdk:display-set-double-click-distance}. Applications should not
+  See the @fun{gdk:display-set-double-click-time} function. See also the
+  @fun{gdk:display-set-double-click-distance} function. Applications should not
   set this, it is a global user-configured setting.
   @begin[Warning]{dictionary}
-    The @sym{gdk:set-double-click-time} function is deprecated and should not
+    The @fun{gdk:set-double-click-time} function is deprecated and should not
     be used in newly written code.
   @end{dictionary}
   @see-function{gdk:display-set-double-click-time}
@@ -496,7 +495,7 @@
 ;;; gdk_keyboard_grab ()                                   not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_keyboard_grab" keyboard-grab) grab-status
+(cffi:defcfun ("gdk_keyboard_grab" keyboard-grab) grab-status
  #+liber-documentation
  "@version{#2013-4-3}
   @argument[window]{the @class{gdk:window} which will own the grab}
@@ -507,12 +506,12 @@
     and key release events are always reported, independant of the event mask
     set by the application.}
   @argument[time]{a timestamp of type @code{:uint32} from a @class{gdk:event},
-    or @var{+gdk-current-time+} if no timestamp is available.}
+    or @var{gdk:+gdk-current-time+} if no timestamp is available.}
   @return{The value @code{:success} of the @symbol{gdk:grab-status} enumeration
    if the grab was successful.}
   @begin{short}
     Grabs the keyboard so that all events are passed to this application until
-    the keyboard is ungrabbed with the function @fun{gdk:keyboard-ungrab}.
+    the keyboard is ungrabbed with the @fun{gdk:keyboard-ungrab} function.
   @end{short}
   This overrides any previous keyboard grab by this client.
 
@@ -521,7 +520,7 @@
   @class{gdk:event-grab-broken} events that are emitted when the grab ends
   unvoluntarily.
   @begin[Warning]{dictionary}
-    The @sym{gdk:keyboard-grab} function has been deprecated since version 3.0
+    The @fun{gdk:keyboard-grab} function has been deprecated since version 3.0
     and should not be used in newly written code. Use the @fun{gdk:seat-grab}
     function instead.
   @end{dictionary}
@@ -534,20 +533,20 @@
 ;;; gdk_keyboard_ungrab ()                                 not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_keyboard_ungrab" keyboard-ungrab) :void
+(cffi:defcfun ("gdk_keyboard_ungrab" keyboard-ungrab) :void
  #+liber-documentation
  "@version{#2013-4-3}
   @argument[time]{a timestamp of type @code{:uint32} from a @class{gdk:event},
-    or @var{+gdk-current-time+} if no timestamp is available}
+    or @var{gdk:+gdk-current-time+} if no timestamp is available}
   @begin{short}
     Ungrabs the keyboard on the default display, if it is grabbed by this
     application.
   @end{short}
   @begin[Warning]{dictionary}
-    The function @sym{gdk:keyboard-ungrab} has been deprecated since version
-    3.0 and should not be used in newly written code. Use the function
-    @fun{gdk:seat-ungrab}, together with the function @fun{gdk:seat-grab}
-    instead.
+    The @fun{gdk:keyboard-ungrab} function has been deprecated since version
+    3.0 and should not be used in newly written code. Use the
+    @fun{gdk:seat-ungrab} function, together with the @fun{gdk:seat-grab}
+    function instead.
   @end{dictionary}
   @see-function{gdk:seat-grab}
   @see-function{gdk:seat-ungrab}"
@@ -557,12 +556,12 @@
 ;;; gdk_beep ()                                            not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_beep" beep) :void
+(cffi:defcfun ("gdk_beep" beep) :void
  #+liber-documentation
  "@version{#2019-3-25}
   @short{Emits a short beep on the default display.}
   @begin[Warning]{dictionary}
-    The @sym{gdk:beep} function is deprecated and should not be used in newly
+    The @fun{gdk:beep} function is deprecated and should not be used in newly
     written code.
   @end{dictionary}")
 
@@ -570,7 +569,7 @@
 ;;; gdk_error_trap_push ()                                 not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_error_trap_push" error-trap-push) :void
+(cffi:defcfun ("gdk_error_trap_push" error-trap-push) :void
  #+liber-documentation
  "@version{#2013-7-30}
   @begin{short}
@@ -582,12 +581,12 @@
   the @class{gdk:display-manager}. If you do not care which error happens and
   just want to ignore everything, pop with the function
   @fun{gdk:error-trap-pop-ignored}. If you need the error code, use the
-  function @fun{gdk:error-trap-pop} which may have to block and wait for the
+  @fun{gdk:error-trap-pop} function which may have to block and wait for the
   error to arrive from the X server.
 
   This API exists on all platforms but only does anything on X.
 
-  You can use the function @code{gdk:x11-display-error-trap-push} to ignore
+  You can use the @code{gdk:x11-display-error-trap-push} function to ignore
   errors on only a single display.
   @begin[Example]{dictionary}
     Trapping an X error
@@ -604,7 +603,7 @@
     @end{pre}
   @end{dictionary}
   @begin[Warning]{dictionary}
-    The @sym{gdk:error-trap-push} function is deprecated and should not be used
+    The @fun{gdk:error-trap-push} function is deprecated and should not be used
     in newly written code.
   @end{dictionary}
   @see-class{gdk:display}
@@ -614,24 +613,24 @@
 ;;; gdk_error_trap_pop ()                                  not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_error_trap_pop" error-trap-pop) :int
+(cffi:defcfun ("gdk_error_trap_pop" error-trap-pop) :int
  #+liber-documentation
  "@version{#2013-7-30}
   @return{X error code of type @code{:int} or 0 on success.}
   @begin{short}
-    Removes an error trap pushed with the function @fun{gdk:error-trap-push}.
+    Removes an error trap pushed with the @fun{gdk:error-trap-push} function.
   @end{short}
   May block until an error has been definitively received or not received from
-  the X server. The function @fun{gdk:error-trap-pop-ignored} is preferred if
+  the X server. The @fun{gdk:error-trap-pop-ignored} function is preferred if
   you do not need to know whether an error occurred, because it never has to
-  block. If you do not need the return value of the functon
-  @sym{gdk:error-trap-pop}, use the function @fun{gdk:error-trap-pop-ignored}.
+  block. If you do not need the return value of the @fun{gdk:error-trap-pop}
+  function, use the @fun{gdk:error-trap-pop-ignored} function.
 
   Prior to GDK 3.0, this function would not automatically sync for you, so you
-  had to call the function @fun{gdk:flush} if your last call to Xlib was not a
+  had to call the @fun{gdk:flush} function if your last call to Xlib was not a
   blocking round trip.
   @begin[Warning]{dictionary}
-    The @sym{gdk:error-trap-pop} function is deprecated and should not be used
+    The @fun{gdk:error-trap-pop} function is deprecated and should not be used
     in newly written code.
   @end{dictionary}
   @see-function{gdk:error-trap-push}
@@ -642,11 +641,11 @@
 ;;; gdk_error_trap_pop_ignored ()                          not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_error_trap_pop_ignored" error-trap-pop-ignored) :void
+(cffi:defcfun ("gdk_error_trap_pop_ignored" error-trap-pop-ignored) :void
  #+liber-documentation
  "@version{#2013-7-30}
   @begin{short}
-    Removes an error trap pushed with the function @fun{gdk:error-trap-push},
+    Removes an error trap pushed with the @fun{gdk:error-trap-push} function,
     but without bothering to wait and see whether an error occurred.
   @end{short}
   If an error arrives later asynchronously that was triggered while the trap
@@ -654,7 +653,7 @@
 
   Since 3.0
   @begin[Warning]{dictionary}
-    The @sym{gdk:error-trap-pop-ignored} function is deprecated and should not
+    The @fun{gdk:error-trap-pop-ignored} function is deprecated and should not
     be used in newly written code.
   @end{dictionary}
   @see-function{gdk:error-trap-push}")

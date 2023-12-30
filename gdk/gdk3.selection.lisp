@@ -268,7 +268,7 @@
 ;;; gdk_selection_owner_set ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_selection_owner_set" selection-owner-set) :boolean
+(cffi:defcfun ("gdk_selection_owner_set" selection-owner-set) :boolean
  #+liber-documentation
  "@version{#2021-10-3}
   @argument[owner]{a @class{gdk:window} object or @code{nil} to indicate that
@@ -300,7 +300,7 @@
 ;;; gdk_selection_owner_set_for_display ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_selection_owner_set_for_display"
+(cffi:defcfun ("gdk_selection_owner_set_for_display"
            selection-owner-set-for-display) :boolean
  #+liber-documentation
  "@version{#2021-10-3}
@@ -336,7 +336,7 @@
 ;;; gdk_selection_owner_get ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_selection_owner_get" selection-owner-get) (g:object window)
+(cffi:defcfun ("gdk_selection_owner_get" selection-owner-get) (g:object window)
  #+liber-documentation
  "@version{#2021-10-3}
   @argument[selection]{a @symbol{gdk:atom} as a string indentifying a selection}
@@ -361,7 +361,7 @@
 ;;; gdk_selection_owner_get_for_display ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_selection_owner_get_for_display"
+(cffi:defcfun ("gdk_selection_owner_get_for_display"
            selection-owner-get-for-display) (g:object window)
  #+liber-documentation
  "@version{#2021-10-3}
@@ -388,7 +388,7 @@
 ;;; gdk_selection_convert ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_selection_convert" selection-convert) :void
+(cffi:defcfun ("gdk_selection_convert" selection-convert) :void
  #+liber-documentation
  "@version{#2021-10-3}
   @argument[requestor]{a @class{gdk:window} object}
@@ -416,7 +416,7 @@
 ;;; gdk_selection_property_get ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_selection_property_get" %selection-property-get) :int
+(cffi:defcfun ("gdk_selection_property_get" %selection-property-get) :int
   (requestor (g:object window))
   (data :pointer)
   (ptype :pointer)
@@ -449,9 +449,9 @@
   @see-class{gtk:clipboard}
   @see-symbol{gdk:atom}
   @see-function{gdk:selection-convert}"
-  (with-foreign-objects ((data :pointer)
-                         (ptype :pointer)
-                         (format :int))
+  (cffi:with-foreign-objects ((data :pointer)
+                              (ptype :pointer)
+                              (format :int))
     (let ((length (%selection-property-get requestor data ptype format)))
       (values length
               data
@@ -464,7 +464,7 @@
 ;;; gdk_selection_send_notify ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_selection_send_notify" selection-send-notify) :void
+(cffi:defcfun ("gdk_selection_send_notify" selection-send-notify) :void
  #+liber-documentation
  "@version{#2021-10-3}
   @argument[requestor]{a @class{gdk:window} object to which to deliver response}
@@ -495,7 +495,7 @@
 ;;; gdk_selection_send_notify_for_display ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_selection_send_notify_for_display"
+(cffi:defcfun ("gdk_selection_send_notify_for_display"
           selection-send-notify-for-display) :void
  #+liber-documentation
  "@version{#2021-10-3}

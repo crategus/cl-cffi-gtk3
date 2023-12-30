@@ -67,7 +67,7 @@
 ;;; enum GdkCursorType
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GdkCursorType" cursor-type
+(gobject:define-g-enum "GdkCursorType" cursor-type
   (:export t
    :type-initializer "gdk_cursor_type_get_type")
   (:x-cursor 0)
@@ -165,7 +165,7 @@
   The recommended way to create cursors is to use the
   @fun{gdk:cursor-new-from-name} function.
   @begin{pre}
-(define-g-enum \"GdkCursorType\" cursor-type
+(gobject:define-g-enum \"GdkCursorType\" cursor-type
   (:export t
    :type-initializer \"gdk_cursor_type_get_type\")
   (:x-cursor 0)
@@ -342,7 +342,7 @@
 ;;; GdkCursor
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GdkCursor" cursor
+(gobject:define-g-object-class "GdkCursor" cursor
   (:superclass g:object
    :export t
    :interfaces nil
@@ -355,7 +355,7 @@
     "display" "GdkDisplay" t t)))
 
 #-windows
-(define-g-object-class "GdkX11Cursor" x11-cursor
+(gobject:define-g-object-class "GdkX11Cursor" x11-cursor
   (:superclass cursor
    :export t
    :interfaces nil
@@ -366,7 +366,7 @@
 (setf (documentation 'cursor 'type)
  "@version{#2023-3-12}
   @begin{short}
-    The @sym{gdk:cursor} object represents a cursor.
+    The @class{gdk:cursor} object represents a cursor.
   @end{short}
   There is a number of standard cursors, but it is also possible to construct
   new cursors from pixbufs. There may be limitations as to what kinds of
@@ -396,7 +396,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- cursor-cursor-type -------------------------------------------------
+;;; --- gdk:cursor-cursor-type -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "cursor-type" 'cursor) t)
@@ -417,13 +417,12 @@
     Accessor of the @slot[gdk:cursor]{cursor-type} slot of the
     @class{gdk:cursor} class.
   @end{short}
-
-  The @sym{gdk:cursor-cursor-type} slot access function returns the cursor type
-  for the cursor. This is a value from the @symbol{gdk:cursor-type} enumeration.
+  The @fun{gdk:cursor-cursor-type} function returns the cursor type for the
+  cursor. This is a value from the @symbol{gdk:cursor-type} enumeration.
   @see-class{gdk:cursor}
   @see-symbol{gdk:cursor-type}")
 
-;;; --- cursor-display -----------------------------------------------------
+;;; --- gdk:cursor-display -----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "display" 'cursor) t)
@@ -443,9 +442,8 @@
     Accessor of the @slot[gdk:cursor]{display} slot of the @class{gdk:cursor}
     class.
   @end{short}
-
-  The @sym{gdk:cursor-display} slot access function returns the display on
-  which the cursor is defined.
+  The @fun{gdk:cursor-display} function returns the display on which the cursor
+  is defined.
   @see-class{gdk:cursor}
   @see-class{gdk:display}")
 
@@ -453,7 +451,7 @@
 ;;; gdk_cursor_new ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_cursor_new" cursor-new) (g:object cursor)
+(cffi:defcfun ("gdk_cursor_new" cursor-new) (g:object cursor)
  #+liber-documentation
  "@version{#2021-12-11}
   @argument[type]{a value of the @symbol{gdk:cursor-type} enumeration
@@ -467,7 +465,7 @@
   To make the cursor invisible, use the @code{:blank-cursor} value of the
   @symbol{gdk:cursor-type} enumeration.
   @begin[Warning]{dictionary}
-    The @sym{gdk:cursor-new} function has been deprecated since version 3.16
+    The @fun{gdk:cursor-new} function has been deprecated since version 3.16
     and should not be used in newly written code. Use the
     @fun{gdk:cursor-new-for-display} function instead.
   @end{dictionary}
@@ -482,7 +480,8 @@
 ;;; gdk_cursor_new_from_pixbuf ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_cursor_new_from_pixbuf" cursor-new-from-pixbuf) (g:object cursor)
+(cffi:defcfun ("gdk_cursor_new_from_pixbuf" cursor-new-from-pixbuf)
+    (g:object cursor)
  #+liber-documentation
  "@version{#2023-3-12}
   @argument[display]{a @class{gdk:display} object for which the cursor will
@@ -528,7 +527,7 @@
 ;;; gdk_cursor_new_from_surface ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_cursor_new_from_surface" cursor-new-from-surface)
+(cffi:defcfun ("gdk_cursor_new_from_surface" cursor-new-from-surface)
     (g:object cursor)
  #+liber-documentation
  "@version{#2021-12-11}
@@ -572,7 +571,8 @@
 ;;; gdk_cursor_new_from_name ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_cursor_new_from_name" cursor-new-from-name) (g:object cursor)
+(cffi:defcfun ("gdk_cursor_new_from_name" cursor-new-from-name)
+    (g:object cursor)
  #+liber-documentation
  "@version{#2021-12-11}
   @argument[display]{a @class{gdk:display} object for which the cursor will be
@@ -641,7 +641,8 @@
 ;;; gdk_cursor_new_for_display ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_cursor_new_for_display" cursor-new-for-display) (g:object cursor)
+(cffi:defcfun ("gdk_cursor_new_for_display" cursor-new-for-display)
+    (g:object cursor)
  #+liber-documentation
  "@version{#2021-12-11}
   @argument[display]{a @class{gdk:display} object for which the cursor will
@@ -664,7 +665,7 @@
 ;;; gdk_cursor_get_image () -> cursor-image
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_cursor_get_image" cursor-image) (g:object gdk-pixbuf:pixbuf)
+(cffi:defcfun ("gdk_cursor_get_image" cursor-image) (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
  "@version{#2023-3-12}
   @argument[cursor]{a @class{gdk:cursor} object}
@@ -687,7 +688,7 @@
 ;;; gdk_cursor_get_surface () -> cursor-surface
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_cursor_get_surface" %cursor-surface)
+(cffi:defcfun ("gdk_cursor_get_surface" %cursor-surface)
     (:pointer (:struct cairo:surface-t))
   (cursor (g:object cursor))
   (x-hot (:pointer :double))
@@ -712,7 +713,7 @@
   is returned.
   @see-class{gdk:cursor}
   @see-symbol{cairo:surface-t}"
-  (with-foreign-objects ((x-hot :double) (y-hot :double))
+  (cffi:with-foreign-objects ((x-hot :double) (y-hot :double))
     (let ((surface (%cursor-surface cursor x-hot y-hot)))
       (when surface
         (values surface (cffi:mem-ref x-hot :double)
@@ -734,7 +735,7 @@
   @return{Same @arg{cursor} that was passed in.}
   @short{Adds a reference to @arg{cursor}.}
   @begin[Warning]{dictionary}
-    The @sym{gdk:cursor-ref} function has been deprecated since version 3.0 and
+    The @fun{gdk:cursor-ref} function has been deprecated since version 3.0 and
     should not be used in newly written code. Use the @fun{g:object-ref}
     function instead.
   @end{dictionary}
@@ -757,7 +758,7 @@
     references remain.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gdk:cursor-unref} function has been deprecated since version 3.0
+    The @fun{gdk:cursor-unref} function has been deprecated since version 3.0
     and should not be used in newly written code. Use the @fun{g:object-unref}
     function instead.
   @end{dictionary}

@@ -43,7 +43,7 @@
 ;;; gdk_pixbuf_get_from_window () -> pixbuf-from-window
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_pixbuf_get_from_window" pixbuf-from-window)
+(cffi:defcfun ("gdk_pixbuf_get_from_window" pixbuf-from-window)
     (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
  "@version{#2023-3-12}
@@ -97,7 +97,7 @@
 ;;; gdk_pixbuf_get_from_surface () -> pixbuf-from-surface
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_pixbuf_get_from_surface" pixbuf-from-surface)
+(cffi:defcfun ("gdk_pixbuf_get_from_surface" pixbuf-from-surface)
     (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
  "@version{#2023-3-12}

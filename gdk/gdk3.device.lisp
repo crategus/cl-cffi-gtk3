@@ -125,7 +125,7 @@
 ;;; enum GdkInputSource
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GdkInputSource" input-source
+(gobject:define-g-enum "GdkInputSource" input-source
   (:export t
    :type-initializer "gdk_input_source_get_type")
   :mouse
@@ -147,7 +147,7 @@
     An enumeration describing the type of an input device in general terms.
   @end{short}
   @begin{pre}
-(define-g-enum \"GdkInputSource\" input-source
+(gobject:define-g-enum \"GdkInputSource\" input-source
   (:export t
    :type-initializer \"gdk_input_source_get_type\")
   :mouse
@@ -184,7 +184,7 @@
 ;;; enum GdkInputMode
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GdkInputMode" input-mode
+(gobject:define-g-enum "GdkInputMode" input-mode
   (:export t
    :type-initializer "gdk_input_mode_get_type")
   :disabled
@@ -200,7 +200,7 @@
     An enumeration that describes the mode of an input device.
   @end{short}
   @begin{pre}
-(define-g-enum \"GdkInputMode\" input-mode
+(gobject:define-g-enum \"GdkInputMode\" input-mode
   (:export t
    :type-initializer \"gdk_input_mode_get_type\")
   (:disabled 0)
@@ -222,7 +222,7 @@
 ;;; enum GdkAxisUse
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GdkAxisUse" axis-use
+(gobject:define-g-enum "GdkAxisUse" axis-use
   (:export t
    :type-initializer "gdk_axis_use_get_type")
   :ignore
@@ -247,7 +247,7 @@
     onto the predefined valuator types that GTK understands.
   @end{short}
   @begin{pre}
-(define-g-enum \"GdkAxisUse\" axis-use
+(gobject:define-g-enum \"GdkAxisUse\" axis-use
   (:export t
    :type-initializer \"gdk_axis_use_get_type\")
   :ignore
@@ -282,7 +282,7 @@
 ;;; enum GdkAxisFlags
 ;;; ----------------------------------------------------------------------------
 
-(define-g-flags "GdkAxisFlags" axis-flags
+(gobject:define-g-flags "GdkAxisFlags" axis-flags
   (:export t
    :type-initializer "gdk_axis_flags_get_type")
   (:x        #.(ash 1 1))
@@ -304,7 +304,7 @@
     Flags describing the current capabilities of a device/tool.
   @end{short}
   @begin{pre}
-(define-g-flags \"GdkAxisFlags\" axis-flags
+(gobject:define-g-flags \"GdkAxisFlags\" axis-flags
   (:export t
    :type-initializer \"gdk_axis_flags_get_type\")
   (:x        #.(ash 1 1))
@@ -334,7 +334,7 @@
 ;;; enum GdkDeviceToolType
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GdkDeviceToolType" device-tool-type
+(gobject:define-g-enum "GdkDeviceToolType" device-tool-type
   (:export t
    :type-initializer "gdk_device_tool_type_get_type")
   :unknown
@@ -356,7 +356,7 @@
     airbrush, pencil, etc.
   @end{short}
   @begin{pre}
-(define-g-enum \"GdkDeviceToolType\" device-tool-type
+(gobject:define-g-enum \"GdkDeviceToolType\" device-tool-type
   (:export t
    :type-initializer \"gdk_device_tool_type_get_type\")
   :unknown
@@ -384,7 +384,7 @@
 ;;; enum GdkDeviceType
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GdkDeviceType" device-type
+(gobject:define-g-enum "GdkDeviceType" device-type
   (:export t
    :type-initializer "gdk_device_type_get_type")
   (:master 0)
@@ -401,7 +401,7 @@
     of these device types.
   @end{short}
   @begin{pre}
-(define-g-enum \"GdkDeviceType\" device-type
+(gobject:define-g-enum \"GdkDeviceType\" device-type
   (:export t
    :type-initializer \"gdk_device_type_get_type\")
   (:master 0)
@@ -421,7 +421,7 @@
 ;;; enum GdkGrabOwnership
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GdkGrabOwnership" grab-ownership
+(gobject:define-g-enum "GdkGrabOwnership" grab-ownership
   (:export t
    :type-initializer "gdk_grab_ownership_get_type")
   (:none 0)
@@ -437,7 +437,7 @@
     Defines how device grabs interact with other devices.
   @end{short}
   @begin{pre}
-(define-g-enum \"GdkGrabOwnership\" grab-ownership
+(gobject:define-g-enum \"GdkGrabOwnership\" grab-ownership
   (:export t
    :type-initializer \"gdk_grab_ownership_get_type\")
   (:none 0)
@@ -456,7 +456,7 @@
 ;;; struct GdkTimeCoord
 ;;; ----------------------------------------------------------------------------
 
-(defcstruct time-coord
+(cffi:defcstruct time-coord
   (time :uint32)
   (axes :double :count 128))
 
@@ -466,11 +466,11 @@
       (liber:symbol-documentation 'time-coord)
  "@version{#2023-3-9}
   @begin{short}
-    The @sym{gdk:time-coord} structure stores a single event in a motion
+    The @symbol{gdk:time-coord} structure stores a single event in a motion
     history.
   @end{short}
   @begin{pre}
-(defcstruct gdk:time-coord
+(cffi:defcstruct gdk:time-coord
   (time :uint32)
   (axes :double :count 128))
   @end{pre}
@@ -487,7 +487,7 @@
 ;;; enum GdkGrabStatus
 ;;; ----------------------------------------------------------------------------
 
-(define-g-enum "GdkGrabStatus" grab-status
+(gobject:define-g-enum "GdkGrabStatus" grab-status
   (:export t
    :type-initializer "gdk_grab_status_get_type")
   (:success 0)
@@ -507,7 +507,7 @@
     reason for the failure of the grab attempt.
   @end{short}
   @begin{pre}
-(define-g-enum \"GdkGrabStatus\" grab-status
+(gobject:define-g-enum \"GdkGrabStatus\" grab-status
   (:export t
    :type-initializer \"gdk_grab_status_get_type\")
   :success
@@ -534,7 +534,7 @@
 ;;; GdkDeviceTool
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GdkDeviceTool" device-tool
+(gobject:define-g-object-class "GdkDeviceTool" device-tool
   (:superclass g:object
    :export t
    :interfaces nil
@@ -586,7 +586,7 @@
     Accessor of the @slot[gdk:device-tool]{axes} slot of the
     @class{gdk:device-tool} class.
   @end{short}
-  The @sym{gdk:device-tool-axes} function gets the axes of the device tool.
+  The @fun{gdk:device-tool-axes} function gets the axes of the device tool.
   @see-class{gdk:device-tool}
   @see-symbol{gdk:axis-flags}")
 
@@ -611,7 +611,7 @@
     Accessor of the @slot[gdk:device-tool]{axes} slot of the
     @class{gdk:device-tool} class.
   @end{short}
-  The @sym{gdk:device-tool-hardware-id} function gets the hardware ID of the
+  The @fun{gdk:device-tool-hardware-id} function gets the hardware ID of the
   device tool, or 0 if it is not known. When non-zero, the identificator is
   unique for the given device tool model, meaning that two identical device
   tools will share the same @arg{hardware} value, but will have different
@@ -647,7 +647,7 @@
     Accessor of the @slot[gdk:device-tool]{serial} slot of the
     @class{gdk:device-tool} class.
   @end{short}
-  The @sym{gdk:device-tool-serial} function gets the serial number of the device
+  The @fun{gdk:device-tool-serial} function gets the serial number of the device
   tool. This value can be used to identify a physical tool, e.g. a tablet pen,
   across program executions.
   @see-class{gdk:device-tool}")
@@ -673,7 +673,7 @@
     Accessor of the @slot[gdk:device-tool]{tool-type} slot of the
     @class{gdk:device-tool} class.
   @end{short}
-  The @sym{gdk:device-tool-tool-type} function gets the type of the device tool.
+  The @fun{gdk:device-tool-tool-type} function gets the type of the device tool.
   This can be used to figure out what sort of pen is being used, such as an
   airbrush or a pencil.
   @see-class{gdk:device-tool}
@@ -683,7 +683,7 @@
 ;;; GdkDevice
 ;;; ----------------------------------------------------------------------------
 
-(define-g-object-class "GdkDevice" device
+(gobject:define-g-object-class "GdkDevice" device
   (:superclass g:object
    :export t
    :interfaces nil
@@ -738,7 +738,7 @@
 (setf (documentation 'device 'type)
  "@version{2023-3-9}
   @begin{short}
-    The @sym{gdk:device} object represents a single input device, such as a
+    The @lass{gdk:device} object represents a single input device, such as a
     keyboard, a mouse, a touchpad, etc.
   @end{short}
 
@@ -750,14 +750,14 @@
       @begin{pre}
 lambda (device)   :run-last
       @end{pre}
-      The signal is emitted either when the @sym{gdk:device} object has changed
-      the number of either axes or keys. For example In X this will normally
-      happen when the slave device routing events through the master device
-      changes, for example, user switches from the USB mouse to a tablet, in
-      that case the master device will change to reflect the new slave device
+      The signal is emitted either when the @class{gdk:device} object has
+      changed the number of either axes or keys. For example In X this will
+      normally happen when the slave device routing events through the master
+      device changes, for example, user switches from the USB mouse to a tablet,
+      in that case the master device will change to reflect the new slave device
       axes and keys.
       @begin[code]{table}
-        @entry[device]{The @sym{gdk:device} object that changed.}
+        @entry[device]{The @class{gdk:device} object that changed.}
       @end{table}
     @subheading{The \"tool-changed\" signal}
       @begin{pre}
@@ -766,7 +766,7 @@ lambda (device tool)    :run-last
       The signal is emitted on pen/eraser devices whenever tools enter or leave
       proximity.
       @begin[code]{table}
-        @entry[device]{The @sym{gdk:device} object that changed.}
+        @entry[device]{The @class{gdk:device} object that changed.}
         @entry[tool]{The new @class{gdk:device-tool} current device tool.}
       @end{table}
       Since 3.22
@@ -797,7 +797,7 @@ lambda (device tool)    :run-last
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "associated-device" 'device) t)
- "The @code{associated-device} property of type @sym{gdk:device} (Read) @br{}
+ "The @code{associated-device} property of type @class{gdk:device} (Read) @br{}
   Associated pointer or keyboard with this device, if any. Devices of type
   @code{:master} always come in keyboard/pointer pairs. Other device types will
   have a @code{nil} associated device.")
@@ -814,7 +814,7 @@ lambda (device tool)    :run-last
     Accessor of the @slot[gdk:device]{associated-device} slot of the
     @class{gdk:device} class.
   @end{short}
-  The @sym{gdk:device-associated-device} function returns the associated device
+  The @fun{gdk:device-associated-device} function returns the associated device
   to @arg{device}. If the device is of type @code{:master}, it will return the
   paired pointer or keyboard. If the device is of type @code{:slave}, it will
   return the master device to which the device is attached to. If the device is
@@ -841,7 +841,7 @@ lambda (device tool)    :run-last
     Accessor of the @slot[gdk:device]{axes} slot of the @class{gdk:device}
     class.
   @end{short}
-  The @sym{gdk:device-axes} function returns the axes currently available on
+  The @fun{gdk:device-axes} function returns the axes currently available on
   the device.
   @see-class{gdk:device}
   @see-symbol{gdk:axis-flags}")
@@ -891,7 +891,7 @@ lambda (device tool)    :run-last
     Accessor of the @slot[gdk:device]{display} slot of the @class{gdk:device}
     class.
   @end{short}
-  The @sym{gdk:device-display} function returns the display to which the device
+  The @fun{gdk:device-display} function returns the display to which the device
   pertains.
   @see-class{gdk:device}
   @see-class{gdk:display}")
@@ -920,7 +920,7 @@ lambda (device tool)    :run-last
     Accessor of the @slot[gdk:device]{has-cursor} slot of the
     @class{gdk:device} class.
   @end{short}
-  The @sym{gdk:device-has-cursor} function returns @em{true} if the pointer
+  The @fun{gdk:device-has-cursor} function returns @em{true} if the pointer
   follows device motion.
   @see-class{gdk:device}")
 
@@ -946,9 +946,8 @@ lambda (device tool)    :run-last
     Accessor of the @slot[gdk:device]{input-mode} slot of the
     @class{gdk:device} class.
   @end{short}
-  The @sym{gdk:device-input-mode} function returns the mode of the device. The
-  @sym{(setf gdk:device-input-mode object)} function sets he mode of an input
-  device.
+  The @fun{gdk:device-input-mode} function returns the mode of the device. The
+  @setf{gdk:device-input-mode object} function sets he mode of an input device.
 
   The mode controls if the device is active and whether the range of the device
   is mapped to the entire screen or to a single window.
@@ -977,7 +976,7 @@ lambda (device tool)    :run-last
     Accessor of the @slot[gdk:device]{input-source} slot of the
     @class{gdk:device} class.
   @end{short}
-  The @sym{gdk:device-input-source} function returns the source type of the
+  The @fun{gdk:device-input-source} function returns the source type of the
   device.
   @see-class{gdk:device}
   @see-symbol{gdk:input-source}")
@@ -1002,7 +1001,7 @@ lambda (device tool)    :run-last
     Accessor of the @slot[gdk:device]{n-axes} slot of the @class{gdk:device}
     class.
   @end{short}
-  The @sym{gdk:device-n-axis} functon returns the number of axes the device
+  The @fun{gdk:device-n-axis} function returns the number of axes the device
   currently has.
   @see-class{gdk:device}")
 
@@ -1028,7 +1027,7 @@ lambda (device tool)    :run-last
     Accessor of the @slot[gdk:device]{name} slot of the @class{gdk:device}
     class.
   @end{short}
-  The @sym{gdk:device-name} function returns the name of the device.
+  The @fun{gdk:device-name} function returns the name of the device.
   @see-class{gdk:device}")
 
 ;;; --- device-num-touches -----------------------------------------------------
@@ -1078,7 +1077,7 @@ lambda (device tool)    :run-last
     Accessor of the @slot[gdk:device]{product-id} slot of the
     @class{gdk:device} class.
   @end{short}
-  The @sym{gdk:device-product-id} function returns the product ID of this
+  The @fun{gdk:device-product-id} function returns the product ID of this
   device, or @code{nil} if this information could not be obtained. This ID is
   retrieved from the device, and is thus constant for it. See the
   @fun{gdk:device-vendor-id} function for more information.
@@ -1104,7 +1103,7 @@ lambda (device tool)    :run-last
     Accessor of the @slot[gdk:device]{seat} slot of the @class{gdk:device}
     class.
   @end{short}
-  The @sym{gdk:device-seat} function returns the seat the device belongs to.
+  The @fun{gdk:device-seat} function returns the seat the device belongs to.
   @see-class{gdk:device}
   @see-class{gdk:seat}")
 
@@ -1152,7 +1151,7 @@ lambda (device tool)    :run-last
     Accessor of the @slot[gdk:device]{type} slot of the @class{gdk:device}
     class.
   @end{short}
-  The @sym{gdk:device-type} function returns the device type.
+  The @fun{gdk:device-type} function returns the device type.
   @see-class{gdk:device}
   @see-symbol{gdk:device-type}")
 
@@ -1179,7 +1178,7 @@ lambda (device tool)    :run-last
     Accessor of the @slot[gdk:device]{vendor-id} slot of the @class{gdk:device}
     class.
   @end{short}
-  The @sym{gdk:device-vendor-id} function returns the vendor ID of this device,
+  The @fun{gdk:device-vendor-id} function returns the vendor ID of this device,
   or @code{nil} if this information could not be obtained. This ID is retrieved
   from the device, and is thus constant for it.
 
@@ -1213,7 +1212,7 @@ get_device_settings (GdkDevice *device)
 ;;; ----------------------------------------------------------------------------
 
 #-windows
-(define-g-object-class "GdkX11DeviceXI2" x11-device-xi2
+(gobject:define-g-object-class "GdkX11DeviceXI2" x11-device-xi2
   (:superclass device
    :export t
    :interfaces nil
@@ -1226,7 +1225,7 @@ get_device_settings (GdkDevice *device)
 ;;; gdk_device_get_source ()                               not exported
 ;;; ----------------------------------------------------------------------------
 
-;; This is equivalent to the slot access function gdk:device-input-source.
+;; This is equivalent to the gdk:device-input-source function.
 
 (defun device-get-source (device)
  #+liber-documentation
@@ -1234,9 +1233,8 @@ get_device_settings (GdkDevice *device)
   @argument[device]{a @class{gdk:device} object}
   @return{A @symbol{gdk:input-source}.}
   @short{Determines the type of the device.}
-
-  @sym{gdk:device-get-source} is a synonym for the slot access function
-  @fun{gdk:device-input-source}.
+  The @fun{gdk:device-get-source} function is a synonym for the
+  @fun{gdk:device-input-source} function.
   @see-class{gdk:device}
   @see-function{gdk:device-input-source}"
   (device-input-source device))
@@ -1245,7 +1243,7 @@ get_device_settings (GdkDevice *device)
 ;;; gdk_device_set_mode ()                                 not exported
 ;;; ----------------------------------------------------------------------------
 
-;; This is equivalent to the slot access function (setf device-input-mode).
+;; This is equivalent to the (setf device-input-mode) function.
 
 (defun device-set-mode (device mode)
  #+liber-documentation
@@ -1259,8 +1257,8 @@ get_device_settings (GdkDevice *device)
   The mode controls if the device is active and whether the device's range is
   mapped to the entire screen or to a single window.
 
-  @sym{gdk:device-set-mode} is a synonym for the slot access function
-  @fun{gdk:device-input-mode}.
+  The @fun{gdk:device-set-mode} function is a synonym for the
+  @fun{gdk:device-input-mode} function.
   @see-class{gdk:device}
   @see-function{gdk:device-input-mode}"
   (setf (device-input-mode device) mode))
@@ -1269,7 +1267,7 @@ get_device_settings (GdkDevice *device)
 ;;; gdk_device_get_mode ()                                 not exported
 ;;; ----------------------------------------------------------------------------
 
-;; This is equivalent to the slot access function device-input-mode.
+;; This is equivalent to the device-input-mode function.
 
 (defun device-get-mode (device)
  #+liber-documentation
@@ -1277,9 +1275,8 @@ get_device_settings (GdkDevice *device)
   @argument[device]{a @class{gdk:device} object}
   @return{A @symbol{gdk:input-source}.}
   @short{Determines the mode of the device.}
-
-  @sym{gdk:device-set-mode} is a synonym for the slot access function
-  @fun{gdk:device-input-mode}.
+  The @fun{gdk:device-set-mode} function is a synonym for the
+  @fun{gdk:device-input-mode} function.
   @see-class{gdk:device}
   @see-function{gdk:device-input-mode}"
   (device-input-mode device))
@@ -1299,7 +1296,7 @@ get_device_settings (GdkDevice *device)
                           :void)
     (values keyval modifiers)))
 
-(defcfun ("gdk_device_get_key" %device-key) :boolean
+(cffi:defcfun ("gdk_device_get_key" %device-key) :boolean
   (device (g:object device))
   (index :int)
   (keyval (:pointer :uint))
@@ -1318,14 +1315,14 @@ get_device_settings (GdkDevice *device)
   @begin{short}
     Accessor of the keyval and modifiers of a device.
   @end{short}
-  If the @arg{index} argument has a valid keyval, the @sym{gdk:device-key}
+  If the @arg{index} argument has a valid keyval, the @fun{gdk:device-key}
   function will return @arg{keyval} and @arg{modifiers} with the keyval
-  settings. The @sym{(setf gdk:device-key)} function specifies the X key event
-  to generate when a macro button of a device is pressed.
+  settings. The @setf{gdk:device-key} function specifies the X key event to
+  generate when a macro button of a device is pressed.
   @see-class{gdk:device}
   @see-symbol{gdk:modifier-type}"
-  (with-foreign-objects ((keyval :uint)
-                         (modifiers 'modifier-type))
+  (cffi:with-foreign-objects ((keyval :uint)
+                              (modifiers 'modifier-type))
     (when (%device-key device index keyval modifiers)
       (values (cffi:mem-ref keyval :uint)
               (cffi:mem-ref modifiers 'modifier-type)))))
@@ -1345,7 +1342,7 @@ get_device_settings (GdkDevice *device)
                         :void)
   use)
 
-(defcfun ("gdk_device_get_axis_use" device-axis-use) axis-use
+(cffi:defcfun ("gdk_device_get_axis_use" device-axis-use) axis-use
  #+liber-documentation
  "@version{2023-3-9}
   @syntax[]{(gdk:device-axis-use device index) => use}
@@ -1356,9 +1353,8 @@ get_device_settings (GdkDevice *device)
   @begin{short}
     Accessor of the value specifying how the axis is used.
   @end{short}
-  The @sym{gdk:device-axis-use} function returns the axis use for @arg{index}.
-  The @sym{(setf gdk:device-axis-use)} function sets the axis use for
-  @arg{index}.
+  The @fun{gdk:device-axis-use} function returns the axis use for @arg{index}.
+  The @setf{gdk:device-axis-use} function sets the axis use for @arg{index}.
   @see-class{gdk:device}
   @see-symbol{gdk:axis-use}"
   (device (g:object device))
@@ -1370,7 +1366,7 @@ get_device_settings (GdkDevice *device)
 ;;; gdk_device_list_slave_devices ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_device_list_slave_devices" device-list-slave-devices)
+(cffi:defcfun ("gdk_device_list_slave_devices" device-list-slave-devices)
     (g:list-t (g:object device))
  #+liber-documentation
  "@version{2023-3-9}
@@ -1389,7 +1385,7 @@ get_device_settings (GdkDevice *device)
 ;;; gdk_device_get_n_keys () -> device-n-keys
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_device_get_n_keys" device-n-keys) :int
+(cffi:defcfun ("gdk_device_get_n_keys" device-n-keys) :int
  #+liber-documentation
  "@version{2023-3-9}
   @argument[device]{a @class{gdk:device} object}
@@ -1404,7 +1400,7 @@ get_device_settings (GdkDevice *device)
 ;;; gdk_device_warp ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_device_warp" device-warp) :void
+(cffi:defcfun ("gdk_device_warp" device-warp) :void
  #+liber-documentation
  "@version{#2023-3-9}
   @argument[device]{a @class{gdk:device} object to warp}
@@ -1433,7 +1429,7 @@ get_device_settings (GdkDevice *device)
 ;;; gdk_device_grab ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_device_grab" device-grab) grab-status
+(cffi:defcfun ("gdk_device_grab" device-grab) grab-status
  #+liber-documentation
  "@version{#2023-3-9}
   @argument[device]{a @class{gdk:device} object. To get the device you can use
@@ -1461,7 +1457,7 @@ get_device_settings (GdkDevice *device)
     is used elsewhere.}
   @argument[time]{an unsigned integer with the timestamp of the event which led
     to this pointer grab. This usually comes from the @class{gdk:event} event,
-    though @var{+gdk-current-time+} can be used if the time is not known.}
+    though @var{gdk:+gdk-current-time+} can be used if the time is not known.}
   @return{The @code{:sucess} value if the grab was successful.}
   @begin{short}
     Grabs the device so that all events coming from this device are passed to
@@ -1494,7 +1490,7 @@ get_device_settings (GdkDevice *device)
   @see-function{gdk:event-device}
   @see-function{gtk:current-event-device}
   @see-function{gdk:device-manager-client-pointer}
-  @see-variable{+gdk-current-time+}"
+  @see-variable{gdk:+gdk-current-time+}"
   (device (g:object device))
   (window (g:object window))
   (grab-ownership grab-ownership)
@@ -1509,16 +1505,16 @@ get_device_settings (GdkDevice *device)
 ;;; gdk_device_ungrab ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_device_ungrab" device-ungrab) :void
+(cffi:defcfun ("gdk_device_ungrab" device-ungrab) :void
  #+liber-documentation
  "@version{#2023-3-9}
   @argument[device]{a @class{gdk:device} object}
   @argument[time]{an unsigned integer with the timestamp, e.g.
-    @var{+gdk-current-time+}}
+    @var{gdk:+gdk-current-time+}}
   @short{Release any grab on the device.}
   @see-class{gdk:device}
   @see-function{gdk:device-grab}
-  @see-variable{+gdk-current-time+}"
+  @see-variable{gdk:+gdk-current-time+}"
   (device (g:object device))
   (time :uint32))
 
@@ -1528,7 +1524,7 @@ get_device_settings (GdkDevice *device)
 ;;; gdk_device_get_state () -> device-state
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_device_get_state" %device-state) :void
+(cffi:defcfun ("gdk_device_get_state" %device-state) :void
   (device (g:object device))
   (window (g:object window))
   (axes (:pointer :double))
@@ -1553,8 +1549,8 @@ get_device_settings (GdkDevice *device)
   @see-class{gdk:window}
   @see-symbol{gdk:modifier-type}
   @see-function{gdk:device-grab}"
-  (with-foreign-objects ((axes :double (device-n-axes device))
-                         (mask 'modifier-type))
+  (cffi:with-foreign-objects ((axes :double (device-n-axes device))
+                              (mask 'modifier-type))
     (%device-state device window axes mask)
     (values (iter (for i from 0 below (device-n-axes device))
                   (collect (cffi:mem-aref axes :double i)))
@@ -1566,7 +1562,7 @@ get_device_settings (GdkDevice *device)
 ;;; gdk_device_get_position () -> device-position
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_device_get_position" %device-position) :void
+(cffi:defcfun ("gdk_device_get_position" %device-position) :void
   (display (g:object device))
   (screen :pointer)
   (x :pointer)
@@ -1593,7 +1589,7 @@ get_device_settings (GdkDevice *device)
   @see-class{gdk:device}
   @see-class{gdk:screen}
   @see-function{gdk:device-grab}"
-  (with-foreign-objects ((screen :pointer) (x :int) (y :int))
+  (cffi:with-foreign-objects ((screen :pointer) (x :int) (y :int))
     (%device-position device screen x y)
     (values (cffi:mem-ref screen '(g:object screen))
             (cffi:mem-ref x :int)
@@ -1605,7 +1601,7 @@ get_device_settings (GdkDevice *device)
 ;;; gdk_device_get_position_double () -> device-position-double
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_device_get_position_double" %device-position-double) :void
+(cffi:defcfun ("gdk_device_get_position_double" %device-position-double) :void
   (device (g:object device))
   (screen (g:object screen))
   (x (:pointer :double))
@@ -1632,7 +1628,7 @@ get_device_settings (GdkDevice *device)
   @see-class{gdk:device}
   @see-class{gdk:screen}
   @see-function{gdk:device-grab}"
-  (with-foreign-objects ((screen :pointer) (x :double) (y :double))
+  (cffi:with-foreign-objects ((screen :pointer) (x :double) (y :double))
     (%device-position-double device screen x y)
     (values (cffi:mem-ref screen '(g:object screen))
             (cffi:mem-ref x :double)
@@ -1644,7 +1640,7 @@ get_device_settings (GdkDevice *device)
 ;;; gdk_device_get_window_at_position () -> device-window-at-position
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_device_get_window_at_position" %device-window-at-position)
+(cffi:defcfun ("gdk_device_get_window_at_position" %device-window-at-position)
     (g:object window)
   (device (g:object device))
   (xwin (:pointer :int))
@@ -1674,7 +1670,7 @@ get_device_settings (GdkDevice *device)
   @see-class{gdk:device}
   @see-class{gdk:window}
   @see-function{gdk:device-grab}"
-  (with-foreign-objects ((xwin :int) (ywin :int))
+  (cffi:with-foreign-objects ((xwin :int) (ywin :int))
     (let ((window (%device-window-at-position device xwin ywin)))
       (values window
               (cffi:mem-ref xwin :int)
@@ -1687,7 +1683,7 @@ get_device_settings (GdkDevice *device)
 ;;; -> device-window-at-position-double
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_device_get_window_at_position_double"
+(cffi:defcfun ("gdk_device_get_window_at_position_double"
           %device-window-at-position-double) (g:object window)
   (device (g:object device))
   (xwin (:pointer :double))
@@ -1718,7 +1714,7 @@ get_device_settings (GdkDevice *device)
   @see-class{gdk:device}
   @see-class{gdk:window}
   @see-function{gdk:device-grab}"
-  (with-foreign-objects ((xwin :double) (ywin :double))
+  (cffi:with-foreign-objects ((xwin :double) (ywin :double))
     (let ((window (%device-window-at-position-double device xwin ywin)))
       (values window
               (cffi:mem-ref xwin :double)
@@ -1730,7 +1726,7 @@ get_device_settings (GdkDevice *device)
 ;;; gdk_device_get_history () -> device-history
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_device_get_history" %device-history) :boolean
+(cffi:defcfun ("gdk_device_get_history" %device-history) :boolean
   (device (g:object device))
   (window (g:object window))
   (start :uint32)
@@ -1764,7 +1760,7 @@ get_device_settings (GdkDevice *device)
   @see-class{gdk:device}
   @see-class{gdk:window}
   @see-symbol{gdk:time-coord}"
-  (with-foreign-objects ((events :pointer) (n-events :int))
+  (cffi:with-foreign-objects ((events :pointer) (n-events :int))
     (when (%device-history device window start stop events n-events)
       (prog1
         (iter (with events-ar = (cffi:mem-ref events :pointer))
@@ -1784,7 +1780,7 @@ get_device_settings (GdkDevice *device)
 
 ;; For internal use in device-history and not exported.
 
-(defcfun ("gdk_device_free_history" %device-free-history) :void
+(cffi:defcfun ("gdk_device_free_history" %device-free-history) :void
  #+liber-documentation
  "@version{#2021-12-13}
   @argument[events]{an array of @class{gdk:time-coord} instances}
@@ -1802,7 +1798,7 @@ get_device_settings (GdkDevice *device)
 ;;; gdk_device_get_axis () -> device-axis
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_device_get_axis" %device-axis) :boolean
+(cffi:defcfun ("gdk_device_get_axis" %device-axis) :boolean
   (device (g:object device))
   (axes (:pointer :double))
   (use axis-use)
@@ -1822,7 +1818,7 @@ get_device_settings (GdkDevice *device)
   @see-class{gdk:device}
   @see-symbol{gdk:axis-use}"
   (assert (= (device-n-axes device) (length axes)))
-  (with-foreign-objects ((axes-ar :double (device-n-axes device))
+  (cffi:with-foreign-objects ((axes-ar :double (device-n-axes device))
                          (value :double))
     (let ((i 0))
       (map nil
@@ -1839,7 +1835,7 @@ get_device_settings (GdkDevice *device)
 ;;; gdk_device_list_axes ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_device_list_axes" device-list-axes) (g:list-t atom-as-string)
+(cffi:defcfun ("gdk_device_list_axes" device-list-axes) (g:list-t atom-as-string)
  #+liber-documentation
  "@version{#2023-3-9}
   @argument[device]{a @class{gdk:device} object}
@@ -1857,7 +1853,7 @@ get_device_settings (GdkDevice *device)
 ;;; gdk_device_get_axis_value () -> device-axis-value
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_device_get_axis_value" %device-axis-value) :boolean
+(cffi:defcfun ("gdk_device_get_axis_value" %device-axis-value) :boolean
   (device (g:object device))
   (axes (:pointer :double))
   (axis-label atom-as-string)
@@ -1878,8 +1874,8 @@ get_device_settings (GdkDevice *device)
   @see-class{gdk:device}
   @see-function{gdk:device-list-axes}"
   (assert (= (device-n-axes device) (length axes)))
-  (with-foreign-objects ((axes-ar :double (device-n-axes device))
-                         (value :double))
+  (cffi:with-foreign-objects ((axes-ar :double (device-n-axes device))
+                              (value :double))
     (let ((i 0))
       (map nil
            (lambda (v)
@@ -1895,7 +1891,7 @@ get_device_settings (GdkDevice *device)
 ;;; gdk_device_get_last_event_window ()
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_device_get_last_event_window" device-last-event-window)
+(cffi:defcfun ("gdk_device_get_last_event_window" device-last-event-window)
     (g:object window)
  #+liber-documentation
  "@version{#2021-12-13}

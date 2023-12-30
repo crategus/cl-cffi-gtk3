@@ -133,7 +133,7 @@
 ;;     gdk-threads-add-timeout-full
 ;;     gdk-threads-add-timeout-seconds-full
 
-;(defcallback source-func-cb :boolean
+;(cffi:defcallback source-func-cb :boolean
 ;    ((data :pointer))
 ;  (funcall (glib:get-stable-pointer-value data)))
 
@@ -168,7 +168,7 @@
 ;;; gdk_threads_init ()                                    not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_threads_init" threads-init) :void
+(cffi:defcfun ("gdk_threads_init" threads-init) :void
  #+liber-documentation
  "@version{#2013-6-17}
   @begin{short}
@@ -179,7 +179,7 @@
   This call must be made before any use of the main loop from GTK; to be
   safe, call it before the @code{gtk_init()} function.
   @begin[Warning]{dictionary}
-    The @sym{gdk:threads-init} function has been deprecated since version 3.6
+    The @fun{gdk:threads-init} function has been deprecated since version 3.6
     and should not be used in newly written code. All GDK and GTK calls should
     be made from the main thread.
   @end{dictionary}
@@ -190,7 +190,7 @@
 ;;; gdk_threads_enter ()                                   not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_threads_enter" threads-enter) :void
+(cffi:defcfun ("gdk_threads_enter" threads-enter) :void
  #+liber-documentation
  "@version{#2013-6-17}
   @begin{short}
@@ -199,7 +199,7 @@
     Only one thread at a time can be in such a critial section.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gdk:threads-enter} function has been deprecated since version 3.6
+    The @fun{gdk:threads-enter} function has been deprecated since version 3.6
     and should not be used in newly written code. All GDK and GTK calls should
     be made from the main thread.
   @end{dictionary}")
@@ -208,14 +208,14 @@
 ;;; gdk_threads_leave ()                                   not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_threads_leave" threads-leave) :void
+(cffi:defcfun ("gdk_threads_leave" threads-leave) :void
  #+liber-documentation
  "@version{#2013-6-17}
   @begin{short}
     Leaves a critical region begun with the @fun{gdk:threads-enter} function.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gdk:threads-leave} function has been deprecated since version 3.6
+    The @fun{gdk:threads-leave} function has been deprecated since version 3.6
     and should not be used in newly written code. All GDK and GTK calls should
     be made from the main thread.
   @end{dictionary}
@@ -271,16 +271,16 @@
  "@version{#2021-12-13}
   @argument[func]{a @symbol{g:source-func} callback function to call}
   @argument[priority]{an integer with the priority of the idle source,
-    typically this will be in the range between @var{+g-priority-default-idle+}
-    and @var{+g-priority-high-idle+}}
-  @return{An unsigned integer ID, greater than 0, of the event source.}
+    typically this will be in the range between
+    @var{glib:+g-priority-default-idle+} and @var{glib:+g-priority-high-idle+}}
+  @return{The unsigned integer ID, greater than 0, of the event source.}
   @begin{short}
     Adds a function to be called whenever there are no higher priority events
     pending.
   @end{short}
   If the function returns @em{false} it is automatically removed from the list
   of event sources and will not be called again. The default for @arg{priority}
-  is @var{+g-priority-default-idle+}.
+  is @var{glib:+g-priority-default-idle+}.
 
   This variant of the @fun{g:idle-add} function calls the function with
   the GDK lock held. It can be thought of a MT-safe version for GTK widgets.
@@ -298,7 +298,7 @@
 ;;; gdk_threads_add_idle_full ()                           not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_threads_add_idle_full" %threads-add-idle-full) :uint
+(cffi:defcfun ("gdk_threads_add_idle_full" %threads-add-idle-full) :uint
   (priority :int)
   (func :pointer)
   (data :pointer)
@@ -308,8 +308,8 @@
  #+liber-documentation
  "@version{#2021-4-3}
   @argument[priority]{an integer with the priority of the idle source,
-    typically this will be in the range between @var{+g-priority-default-idle+}
-    and @var{+g-priority-high-idle+}}
+    typically this will be in the range between
+    @var{glib:+g-priority-default-idle+} and @var{glib:+g-priority-high-idle+}}
   @argument[func]{a @symbol{g:source-func} callback function to call}
   @return{An unsigned integer with the ID, greater than 0, of the event source.}
   @begin{short}
@@ -319,7 +319,7 @@
   If the function returns @em{false} it is automatically removed from the list
   of event sources and will not be called again.
 
-  This variant of the @sym{g:idle-add-full} function calls the function with
+  This variant of the @fun{g:idle-add-full} function calls the function with
   the GDK lock held. It can be thought of a MT-safe version for GTK widgets
   for the following use case, where you have to worry about
   @code{idle_callback()} running in thread A and accessing self after it has
@@ -376,15 +376,15 @@ some_widget_finalize (GObject *object)
     function, in milliseconds (1/1000ths of a second)}
   @argument[func]{a @symbol{g:source-func} callback function to call}
   @argument[priority]{an integer with the priority of the timeout source,
-    typically this will be in the range between @var{+g-priority-default-idle+}
-    and @var{+g-priority-high-idle+}}
-  @return{An unsigned integer ID, greater than 0, of the event source.}
+    typically this will be in the range between
+    @var{glib:+g-priority-default-idle+} and @var{glib:+g-priority-high-idle+}}
+  @return{The unsigned integer ID, greater than 0, of the event source.}
   @begin{short}
     Sets a function to be called at regular intervals holding the GDK lock,
     with the given priority.
   @end{short}
-  The default priority is @var{+g-priority-default+}. The function is called
-  repeatedly until it returns @em{false}, at which point the timeout is
+  The default priority is @var{glib:+g-priority-default+}. The function is
+  called repeatedly until it returns @em{false}, at which point the timeout is
   automatically destroyed and the function will not be called again.
 
   Note that timeout functions may be delayed, due to the processing of other
@@ -410,7 +410,7 @@ some_widget_finalize (GObject *object)
 ;;; gdk_threads_add_timeout_full ()                        not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_threads_add_timeout_full" %threads-add-timeout-full) :uint
+(cffi:defcfun ("gdk_threads_add_timeout_full" %threads-add-timeout-full) :uint
   (priority :int)
   (interval :uint)
   (func :pointer)
@@ -421,8 +421,8 @@ some_widget_finalize (GObject *object)
  #+liber-documentation
  "@version{#2021-4-3}
   @argument[priority]{an integer with the priority of the timeout source,
-    typically this will be in the range between @var{+g-priority-default-idle+}
-    and @var{+g-priority-high-idle+}}
+    typically this will be in the range between
+    @var{glib:+g-priority-default-idle+} and @var{glib:+g-priority-high-idle+}}
   @argument[interval]{an unsigned integer with the time between calls to the
     function, in milliseconds (1/1000ths of a second)}
   @argument[func]{a @symbol{g:source-func} callback function to call}
@@ -442,7 +442,7 @@ some_widget_finalize (GObject *object)
   recalculated based on the current time and the given interval It does not
   try to 'catch up' time lost in delays.
 
-  This variant of the function @code{g_timeout_add_full()} can be thought of
+  This variant of the @code{g_timeout_add_full()} function can be thought of
   a MT-safe version for GTK widgets for the following use case:
   @begin{pre}
 static gboolean timeout_callback (gpointer data)
@@ -492,14 +492,14 @@ static void some_widget_finalize (GObject *object)
     function, in seconds}
   @argument[func]{a @symbol{g:source-func} callback function to call}
   @argument[priority]{an integer with the priority of the timeout source,
-    typically this will be in the range between @var{+g-priority-default-idle+}
-    and @var{+g-priority-high-idle+}}
-  @return{An unsigned integer ID, greater than 0, of the event source.}
+    typically this will be in the range between
+    @var{glib:+g-priority-default-idle+} and @var{glib:+g-priority-high-idle+}}
+  @return{The unsigned integer ID, greater than 0, of the event source.}
   @begin{short}
     A variant of the @fun{gdk:threads-add-timeout} function with second
     granularity.
   @end{short}
-  The default priority is @var{+g-priority-default+}. See the
+  The default priority is @var{glib:+g-priority-default+}. See the
   @fun{g:timeout-add-seconds} function for a discussion of why it is a good
   idea to use this function if you do not need finer granularity.
   @see-symbol{g:source-func}
@@ -517,7 +517,7 @@ static void some_widget_finalize (GObject *object)
 ;;; gdk_threads_add_timeout_seconds_full ()                not exported
 ;;; ----------------------------------------------------------------------------
 
-(defcfun ("gdk_threads_add_timeout_seconds_full"
+(cffi:defcfun ("gdk_threads_add_timeout_seconds_full"
           %threads-add-timeout-seconds-full) :uint
   (priority :int)
   (interval :uint)
@@ -531,8 +531,8 @@ static void some_widget_finalize (GObject *object)
  #+liber-documentation
  "@version{#2021-12-13}
   @argument[priority]{an integer with the priority of the timeout source,
-    typically this will be in the range between @var{+g-priority-default-idle+}
-    and @var{+g-priority-high-idle+}}
+    typically this will be in the range between
+    @var{glib:+g-priority-default-idle+} and @var{glib:+g-priority-high-idle+}}
   @argument[interval]{an unsigned integer with the time between calls to the
     function, in seconds}
   @argument[func]{a @symbol{g:source-func} callback function to call}
