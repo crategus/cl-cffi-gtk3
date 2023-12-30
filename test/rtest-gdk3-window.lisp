@@ -164,20 +164,20 @@
              (cffi:foreign-slot-names '(:struct gdk:geometry)))))
 
 (test geometry-values
-  (with-foreign-object (ptr '(:struct gdk:geometry))
+  (cffi:with-foreign-object (ptr '(:struct gdk:geometry))
     ;; Initialize the slots
-    (with-foreign-slots ((gdk::min-width
-                          gdk::min-height
-                          gdk::max-width
-                          gdk::max-height
-                          gdk::base-width
-                          gdk::base-height
-                          gdk::width-increment
-                          gdk::height-increment
-                          gdk::min-aspect
-                          gdk::max-aspect
-                          gdk::win-gravity)
-                         ptr (:struct gdk:geometry))
+    (cffi:with-foreign-slots ((gdk::min-width
+                               gdk::min-height
+                               gdk::max-width
+                               gdk::max-height
+                               gdk::base-width
+                               gdk::base-height
+                               gdk::width-increment
+                               gdk::height-increment
+                               gdk::min-aspect
+                               gdk::max-aspect
+                               gdk::win-gravity)
+                              ptr (:struct gdk:geometry))
     (setf gdk::min-width 1
           gdk::min-height 2
           gdk::max-width 3
@@ -191,12 +191,12 @@
           gdk::max-aspect 2.5d0
           gdk::win-gravity :north))
     ;; Return a list with the coordinates
-    (with-foreign-slots ((gdk::base-width
-                          gdk::base-height
-                          gdk::min-aspect
-                          gdk::max-aspect
-                          gdk::win-gravity)
-                         ptr (:struct gdk:geometry))
+    (cffi:with-foreign-slots ((gdk::base-width
+                               gdk::base-height
+                               gdk::min-aspect
+                               gdk::max-aspect
+                               gdk::win-gravity)
+                              ptr (:struct gdk:geometry))
       (is (equal '(6 7 1.5d0 2.5d0 :north)
                  (list gdk::base-width
                        gdk::base-height
@@ -355,22 +355,22 @@
              (cffi:foreign-slot-names '(:struct gdk:window-attr)))))
 
 (test window-attr-values
-  (with-foreign-object (ptr '(:struct gdk:window-attr))
+  (cffi:with-foreign-object (ptr '(:struct gdk:window-attr))
     ;; Initialize the slots
-    (with-foreign-slots ((gdk::title
-                          gdk::event-mask
-                          gdk::x
-                          gdk::y)
-                         ptr (:struct gdk:window-attr))
+    (cffi:with-foreign-slots ((gdk::title
+                               gdk::event-mask
+                               gdk::x
+                               gdk::y)
+                              ptr (:struct gdk:window-attr))
     (setf gdk::title "title"
           gdk::event-mask nil
           gdk::x 10
           gdk::y 20))
     ;; Return a list with the coordinates
-    (with-foreign-slots ((gdk::title
-                          gdk::event-mask
-                          gdk::x
-                          gdk::y) ptr (:struct gdk:window-attr))
+    (cffi:with-foreign-slots ((gdk::title
+                               gdk::event-mask
+                               gdk::x
+                               gdk::y) ptr (:struct gdk:window-attr))
       (is (equal '("title" nil 10 20)
                  (list gdk::title gdk::event-mask gdk::x gdk::y))))))
 
@@ -630,7 +630,7 @@
 
 #+nil
 (test window-from-embedder-signal
-  (with-foreign-objects ((offscreen-x :double) (offscreen-y :double))
+  (cffi:with-foreign-objects ((offscreen-x :double) (offscreen-y :double))
     (let* ((message nil)
            (window (gdk:default-root-window))
            (handler-id (g-signal-connect window "from-embedder"
@@ -656,8 +656,8 @@
 
 #+nil
 (test window-move-to-rect-signal
-  (with-foreign-objects ((flipped-rect '(g:boxed gdk:rectangle))
-                         (final-rect '(g:boxed gdk:rectangle)))
+  (cffi:with-foreign-objects ((flipped-rect '(g:boxed gdk:rectangle))
+                              (final-rect '(g:boxed gdk:rectangle)))
     (let* ((message nil)
            (window (gdk:default-root-window))
            (handler-id (g-signal-connect window "moved-to-rect"
@@ -705,7 +705,7 @@
 
 #+nil
 (test window-to-embedder-signal
-  (with-foreign-objects ((embedder-x :double) (embedder-y :double))
+  (cffi:with-foreign-objects ((embedder-x :double) (embedder-y :double))
     (let* ((message nil)
            (window (gdk:default-root-window))
            (handler-id (g-signal-connect window "to-embedder"
@@ -731,12 +731,12 @@
 ;;;     gdk-window-new
 
 (test window-new
-  (with-foreign-object (attr '(:struct gdk:window-attr))
-    (with-foreign-slots ((gdk::title
-                          gdk::x
-                          gdk::y
-                          gdk::window-type)
-                         attr (:struct gdk:window-attr))
+  (cffi:with-foreign-object (attr '(:struct gdk:window-attr))
+    (cffi:with-foreign-slots ((gdk::title
+                               gdk::x
+                               gdk::y
+                               gdk::window-type)
+                               attr (:struct gdk:window-attr))
   (setf gdk::title "title")
   (setf gdk::x 10)
   (setf gdk::y 20)
@@ -748,9 +748,9 @@
 ;;;     gdk_window_is_destroyed
 
 (test window-destroy
-  (with-foreign-object (attr '(:struct gdk:window-attr))
-    (with-foreign-slots ((gdk::window-type)
-                         attr (:struct gdk:window-attr))
+  (cffi:with-foreign-object (attr '(:struct gdk:window-attr))
+    (cffi:with-foreign-slots ((gdk::window-type)
+                              attr (:struct gdk:window-attr))
     (setf gdk::window-type :toplevel)
     (let ((window (gdk:window-new nil attr nil)))
       (is-false (gdk:window-destroy window))
@@ -759,9 +759,9 @@
 ;;;     gdk-window-window-type
 
 (test window-window-type.1
-  (with-foreign-object (attr '(:struct gdk:window-attr))
-    (with-foreign-slots ((gdk::window-type)
-                         attr (:struct gdk:window-attr))
+  (cffi:with-foreign-object (attr '(:struct gdk:window-attr))
+    (cffi:with-foreign-slots ((gdk::window-type)
+                              attr (:struct gdk:window-attr))
     (setf gdk::window-type :toplevel)
     (let ((window (gdk:window-new nil attr nil)))
       (is (eq :toplevel (gdk:window-window-type window)))))))
@@ -778,9 +778,9 @@
 
 #-windows
 (test window-window-type.2
-  (with-foreign-object (attr '(:struct gdk:window-attr))
-    (with-foreign-slots ((gdk::window-type)
-                         attr (:struct gdk:window-attr))
+  (cffi:with-foreign-object (attr '(:struct gdk:window-attr))
+    (cffi:with-foreign-slots ((gdk::window-type)
+                              attr (:struct gdk:window-attr))
       (is (= 2 (cffi:foreign-enum-value 'gdk:window-type
                                         (setf gdk::window-type :child))))
       (let ((window (gdk:window-new nil attr nil)))
@@ -906,13 +906,13 @@
 
 #-windows
 (test window-geometry
-  (with-foreign-object (attr '(:struct gdk:window-attr))
-    (with-foreign-slots ((gdk::window-type
-                          gdk::x
-                          gdk::y
-                          gdk::width
-                          gdk::height)
-                         attr (:struct gdk:window-attr))
+  (cffi:with-foreign-object (attr '(:struct gdk:window-attr))
+    (cffi:with-foreign-slots ((gdk::window-type
+                               gdk::x
+                               gdk::y
+                               gdk::width
+                               gdk::height)
+                              attr (:struct gdk:window-attr))
     (setf gdk::window-type :toplevel)
     (setf gdk::x 10
           gdk::y 20
@@ -924,13 +924,13 @@
 
 #+windows
 (test window-geometry
-  (with-foreign-object (attr '(:struct gdk:window-attr))
-    (with-foreign-slots ((gdk::window-type
-                          gdk::x
-                          gdk::y
-                          gdk::width
-                          gdk::height)
-                         attr (:struct gdk:window-attr))
+  (cffi:with-foreign-object (attr '(:struct gdk:window-attr))
+    (cffi:with-foreign-slots ((gdk::window-type
+                               gdk::x
+                               gdk::y
+                               gdk::width
+                               gdk::height)
+                              attr (:struct gdk:window-attr))
     (setf gdk::window-type :toplevel)
     (setf gdk::x 10
           gdk::y 20
@@ -943,28 +943,28 @@
 ;;;     gdk_window_set_geometry_hints
 
 (test window-set-geometry-hints
-  (with-foreign-object (attr '(:struct gdk:window-attr))
-    (with-foreign-slots ((gdk::window-type
-                          gdk::x
-                          gdk::y
-                          gdk::width
-                          gdk::height)
-                         attr (:struct gdk:window-attr))
+  (cffi:with-foreign-object (attr '(:struct gdk:window-attr))
+    (cffi:with-foreign-slots ((gdk::window-type
+                               gdk::x
+                               gdk::y
+                               gdk::width
+                               gdk::height)
+                              attr (:struct gdk:window-attr))
     (setf gdk::window-type :toplevel)
     (setf gdk::x 10
           gdk::y 20
           gdk::width 100
           gdk::height 200)
     (let ((window (gdk:window-new nil attr nil)))
-      (with-foreign-object (geometry '(:struct gdk:geometry))
-        (with-foreign-slots ((gdk::min-width
-                              gdk::min-height
-                              gdk::max-width
-                              gdk::max-height
-                              gdk::min-aspect
-                              gdk::max-aspect
-                              gdk::win-gravity)
-                             geometry (:struct gdk:geometry))
+      (cffi:with-foreign-object (geometry '(:struct gdk:geometry))
+        (cffi:with-foreign-slots ((gdk::min-width
+                                   gdk::min-height
+                                   gdk::max-width
+                                   gdk::max-height
+                                   gdk::min-aspect
+                                   gdk::max-aspect
+                                   gdk::win-gravity)
+                                  geometry (:struct gdk:geometry))
           (setf gdk::min-width 10
                 gdk::min-height 20
                 gdk::max-width 30
@@ -979,13 +979,13 @@
 ;;;     gdk_window_position
 
 (test window-width/height
-  (with-foreign-object (attr '(:struct gdk:window-attr))
-    (with-foreign-slots ((gdk::window-type
-                          gdk::x
-                          gdk::y
-                          gdk::width
-                          gdk::height)
-                         attr (:struct gdk:window-attr))
+  (cffi:with-foreign-object (attr '(:struct gdk:window-attr))
+    (cffi:with-foreign-slots ((gdk::window-type
+                               gdk::x
+                               gdk::y
+                               gdk::width
+                               gdk::height)
+                              attr (:struct gdk:window-attr))
     (setf gdk::window-type :toplevel)
     (setf gdk::x 10
           gdk::y 20

@@ -7,7 +7,7 @@
 
 ;;;     GdkSeatCapabilities
 
-(test seat-capabilities-flags
+(test gdk-seat-capabilities-flags
   ;; Check the type
   (is (g:type-is-flags "GdkSeatCapabilities"))
   ;; Check the registered name
@@ -46,7 +46,7 @@
 
 ;;;     GdkSeat
 
-(test seat-class
+(test gdk-seat-class
   ;; Type check
   (is (g:type-is-object "GdkSeat"))
   ;; Check the registered name
@@ -84,7 +84,7 @@
 
 ;;;     gdk-seat-display
 
-(test seat-display
+(test gdk-seat-display
   (let ((seat (gdk:display-default-seat (gdk:display-default))))
     (is (typep (gdk:seat-display seat) 'gdk:display))))
 
@@ -93,7 +93,7 @@
 ;;;     device-added
 
 #+nil
-(test seat-device-added-signal
+(test gdk-seat-device-added-signal
   (let* ((message nil)
          (seat (gdk:display-default-seat (gdk:display-default)))
          (device (gdk:seat-pointer seat))
@@ -111,7 +111,7 @@
 ;;;     device-removed
 
 #+nil
-(test seat-device-removed-signal
+(test gdk-seat-device-removed-signal
   (let* ((message nil)
          (seat (gdk:display-default-seat (gdk:display-default)))
          (device (gdk:seat-pointer seat))
@@ -129,7 +129,7 @@
 ;;;     tool-added
 
 #+nil
-(test seat-tool-added-signal
+(test gdk-seat-tool-added-signal
   (let* ((message nil)
          (seat (gdk:display-default-seat (gdk:display-default)))
          (tool (make-instance 'gdk:device-tool))
@@ -147,7 +147,7 @@
 ;;;     tool-removed
 
 #+nil
-(test seat-tool-removed-signal
+(test gdk-seat-tool-removed-signal
   (let* ((message nil)
          (seat (gdk:display-default-seat (gdk:display-default)))
          (tool (make-instance 'gdk:device-tool))
@@ -167,12 +167,11 @@
 ;;;     gdk-seat-grab
 ;;;     gdk-seat-ungrab
 
-;; TODO: Causes an Warning on Windows
-;; Gdk-WARNING **: ../gtk+-3.24.29/gdk/win32/gdkwindow-win32.c:1835:
-;; SetWindowPos failed with code 1400: Ung?ltiges Fensterhandle
+;; TODO: Causes a warning:
+;; GLib-CRITICAL: g_hash_table_lookup: assertion 'hash_table != NULL' failed
 
-#-windows
-(test seat-grab
+#+nil
+(test gdk-seat-grab/ungrab
   (let ((seat (gdk:display-default-seat (gdk:display-default)))
         (window (gdk:default-root-window)))
     (is-false (gdk:window-show window))
@@ -181,26 +180,26 @@
 
 ;;;     gdk-seat-capabilities
 
-(test seat-capabilities
+(test gdk-seat-capabilities
   (let ((seat (gdk:display-default-seat (gdk:display-default))))
     (is (equal '(:POINTER :KEYBOARD)
                (gdk:seat-capabilities seat)))))
 
 ;;;     gdk-seat-pointer
 
-(test seat-pointer
+(test gdk-seat-pointer
   (let ((seat (gdk:display-default-seat (gdk:display-default))))
     (is (typep (gdk:seat-pointer seat) 'gdk:device))))
 
 ;;;     gdk-seat-keyboard
 
-(test seat-keyboard
+(test gdk-seat-keyboard
   (let ((seat (gdk:display-default-seat (gdk:display-default))))
     (is (typep (gdk:seat-keyboard seat) 'gdk:device))))
 
 ;;;     gdk-seat-slaves
 
-(test seat-slaves
+(test gdk-seat-slaves
   (let ((seat (gdk:display-default-seat (gdk:display-default))))
     (is (every (lambda (x) (typep x 'gdk:device))
                (gdk:seat-slaves seat :pointer)))
@@ -217,4 +216,4 @@
     (is (every (lambda (x) (typep x 'gdk:device))
                (gdk:seat-slaves seat '(:pointer :keyboard))))))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2023-12-25
