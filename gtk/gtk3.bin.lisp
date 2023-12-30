@@ -88,14 +88,14 @@
 
 #+liber-documentation
 (setf (documentation 'bin 'type)
- "@version{#2023-3-15}
+ "@version{2023-12-30}
   @begin{short}
-    The @sym{gtk:bin} widget is a container with just one child.
+    The @class{gtk:bin} widget is a container with just one child.
   @end{short}
   It is not very useful itself, but it is useful for deriving subclasses, since
   it provides common code needed for handling a single child widget.
 
-  Many GTK widgets are subclasses of the @sym{gtk:bin} class, including the
+  Many GTK widgets are subclasses of the @class{gtk:bin} class, including the
   @class{gtk:window}, @class{gtk:button}, @class{gtk:frame}, or
   @class{gtk:scrolled-window} classes.
   @see-class{gtk:window}
@@ -109,7 +109,7 @@
 
 (cffi:defcfun ("gtk_bin_get_child" bin-child) (g:object widget)
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{2023-12-30}
   @argument[bin]{a @class{gtk:bin} widget}
   @return{The @class{gtk:widget} child widget of @arg{bin}.}
   @begin{short}

@@ -7,7 +7,7 @@
 
 ;;;     GtkBin
 
-(test bin-class
+(test gtk-bin-class
   ;; Type check
   (is (g:type-is-object "GtkBin"))
   ;; Check the registered name
@@ -40,6 +40,9 @@
   ;; Check the signals
   (is (equal '()
              (list-signals "GtkBin")))
+  ;; CSS information
+  (is (string= "widget"
+               (gtk:widget-class-css-name "GtkBin")))
   ;; Check the class definition
   (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkBin" GTK-BIN
                        (:SUPERCLASS GTK-CONTAINER :EXPORT T :INTERFACES
@@ -52,11 +55,11 @@
 
 ;;;     gtk_bin_get_child
 
-(test bin-child
+(test gtk-bin-child
   (let ((bin (make-instance 'gtk:frame))
         (child (make-instance 'gtk:label)))
     (is-false (gtk:container-add bin child))
     (is-true (gtk:bin-child bin))
     (is (typep (gtk:bin-child bin) 'gtk:label))))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; --- 2023-12-30 -------------------------------------------------------------
