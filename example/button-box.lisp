@@ -1,4 +1,6 @@
-;;;; Example Button Boxes - 2021-12-4
+;;;; Example Button Box
+;;;;
+;;;; 2023-12-30
 
 (in-package :gtk3-example)
 
@@ -44,11 +46,11 @@
     (gtk:box-pack-start box bbox)
     box))
 
-(defun example-button-box (&optional (application nil))
-  (within-main-loop
+(defun example-button-box (&optional application)
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :type :toplevel
-                                 :title "Example Button Box"
+                                 :title "Button Boxes"
                                  :application application
                                  :default-width 420
                                  :border-width 12))
@@ -59,7 +61,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (gtk:box-pack-start vbox
                           (make-instance 'gtk:label
                                          :margin-top 6

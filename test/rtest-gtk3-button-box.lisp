@@ -75,6 +75,9 @@
   ;; Check the signals
   (is (equal '()
              (list-signals "GtkButtonBox")))
+  ;; CSS information
+  (is (string= "buttonbox"
+               (gtk:widget-class-css-name "GtkButtonBox")))
   ;; Check the class definition
   (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkButtonBox" GTK-BUTTON-BOX
                        (:SUPERCLASS GTK-BOX
@@ -88,28 +91,52 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-;;;     GtkButtonBoxStyle  layout-style          Read / Write
+;;;     layout-style
+
+(test gtk-button-box-properties
+  (let ((box (make-instance 'gtk:button-box)))
+    (is (eq :edge (gtk:button-box-layout-style box)))))
 
 ;;; --- Child Properties -------------------------------------------------------
 
-;;;              gboolean  non-homogeneous       Read / Write
-;;;              gboolean  secondary             Read / Write
+;;;     non-homogeneous
+;;;     secondary
+
+(test gtk-button-box-child-properties
+  (let ((box (make-instance 'gtk:button-box))
+        (button (make-instance 'gtk:button)))
+    (is-false (gtk:box-pack-start box button))
+    (is-false (gtk:button-box-child-non-homogeneous box button))
+    (is-false (gtk:button-box-child-secondary box button))))
 
 ;;; --- Style Properties -------------------------------------------------------
 
-;;;                  gint  child-internal-pad-x  Read
-;;;                  gint  child-internal-pad-y  Read
-;;;                  gint  child-min-height      Read
-;;;                  gint  child-min-width       Read
+;;;     child-internal-pad-x
+;;;     child-internal-pad-y
+;;;     child-min-height
+;;;     child-min-width
+
+(test gtk-button-box-style-properties
+  (let ((box (make-instance 'gtk:button-box)))
+    (is (= 4 (gtk:widget-style-property box "child-internal-pad-x")))
+    (is (= 0 (gtk:widget-style-property box "child-internal-pad-y")))
+    (is (= 27 (gtk:widget-style-property box "child-min-height")))
+    (is (= 85 (gtk:widget-style-property box "child-min-width")))))
 
 ;;; --- Functions --------------------------------------------------------------
 
 ;;;     gtk_button_box_new
-;;;     gtk_button_box_get_layout
-;;;     gtk_button_box_get_child_secondary
-;;;     gtk_button_box_get_child_non_homogeneous
-;;;     gtk_button_box_set_layout
-;;;     gtk_button_box_set_child_secondary
-;;;     gtk_button_box_set_child_non_homogeneous
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+(test gtk-button-box-new
+  (is (typep (gtk:button-box-new :horizontal) 'gtk:button-box))
+  (is (typep (gtk:button-box-new :vertical) 'gtk:button-box)))
+
+;;;     gtk_button_box_get_layout
+;;;     gtk_button_box_set_layout
+
+(test gtk-button-box-layout
+  (let ((box (make-instance 'gtk:button-box)))
+    (is (eq :start (setf (gtk:button-box-layout box) :start)))
+    (is (eq :start (gtk:button-box-layout box)))))
+
+;;; 2023-12-30
