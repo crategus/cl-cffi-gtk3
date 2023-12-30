@@ -1,12 +1,14 @@
-;;;; Example Simple Grid - 2022-12-21
+;;;; Example Simple Grid
+;;;;
+;;;; 2023-12-30
 
 (in-package :gtk3-example)
 
-(defun example-grid-simple (&optional (application nil))
-  (within-main-loop
+(defun example-grid-simple (&optional application)
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :type :toplevel
-                                 :title "Example Simple Grid"
+                                 :title "Simple Grid"
                                  :application application
                                  :border-width 12
                                  :default-width 320))
@@ -24,7 +26,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (gtk:grid-attach grid button1 0 0 1 1)
       (gtk:grid-attach grid button2 1 0 1 1)
       (gtk:grid-attach grid button3 0 1 2 1)

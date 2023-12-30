@@ -1,4 +1,6 @@
-;;;; Example Grid Packing - 2022-12-21
+;;;; Example Grid Packing
+;;;;
+;;;; 2023-12-30
 
 (in-package :gtk3-example)
 
@@ -40,9 +42,9 @@
     grid))
 
 (defun example-grid-packing (&optional (application nil) (spacing 6) (margin 0))
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :title "Example Grid Packing"
+                                 :title "Grid Packing"
                                  :application application
                                  :type :toplevel
                                  :border-width 12
@@ -54,7 +56,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (gtk:container-add grid
                          (make-instance 'gtk:label
                                         :use-markup t

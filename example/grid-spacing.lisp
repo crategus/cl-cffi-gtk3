@@ -1,12 +1,14 @@
-;;;; Example Grid Spacing - 2022-12-21
+;;;; Example Grid Spacing
+;;;;
+;;;; 2023-12-29
 
 (in-package :gtk3-example)
 
-(defun example-grid-spacing (&optional (application nil))
-  (within-main-loop
+(defun example-grid-spacing (&optional application)
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :type :toplevel
-                                 :title "Example Grid Spacing"
+                                 :title "Grid Spacing"
                                  :application application
                                  :border-width 12
                                  :default-width 320))
@@ -24,25 +26,21 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (g:signal-connect button1 "toggled"
          (lambda (widget)
            (if (gtk:toggle-button-active widget)
-               (progn
-                 (setf (gtk:grid-row-spacing grid) 24)
-                 (setf (gtk:button-label widget) "Less Row Spacing"))
-               (progn
-                 (setf (gtk:grid-row-spacing grid) 6)
-                 (setf (gtk:button-label widget) "More Row Spacing")))))
+               (setf (gtk:grid-row-spacing grid) 24
+                     (gtk:button-label widget) "Less Row Spacing")
+               (setf (gtk:grid-row-spacing grid) 6
+                     (gtk:button-label widget) "More Row Spacing"))))
       (g:signal-connect button2 "toggled"
          (lambda (widget)
            (if (gtk:toggle-button-active widget)
-               (progn
-                 (setf (gtk:grid-column-spacing grid) 24)
-                 (setf (gtk:button-label widget) "Less Col Spacing"))
-               (progn
-                 (setf (gtk:grid-column-spacing grid) 6)
-                 (setf (gtk:button-label widget) "More Col Spacing")))))
+               (setf (gtk:grid-column-spacing grid) 24
+                     (gtk:button-label widget) "Less Col Spacing")
+               (setf (gtk:grid-column-spacing grid) 6
+                     (gtk:button-label widget) "More Col Spacing"))))
       (gtk:grid-attach grid button1 0 0 1 1)
       (gtk:grid-attach grid button2 1 0 1 1)
       (gtk:grid-attach grid button3 0 1 2 1)
