@@ -71,17 +71,17 @@
 
 #+liber-documentation
 (setf (documentation 'separator 'type)
- "@version{#2023-2-27}
+ "@version{2023-12-30}
   @begin{short}
-    The @sym{gtk:separator} widget is a horizontal or vertical separator widget,
-    depending on the value of the @slot[gtk:orientable]{orientation} property of
-    the @class{gtk:orientable} interface, used to group the widgets within a
-    window.
+    The @class{gtk:separator} widget is a horizontal or vertical separator
+    widget, depending on the value of the @slot[gtk:orientable]{orientation}
+    property of the @class{gtk:orientable} interface, used to group the widgets
+    within a window.
   @end{short}
   It displays a line with a shadow to make it appear sunken into the
   interface.
   @begin[CSS nodes]{dictionary}
-    The @sym{gtk:separator} implementation has a single CSS node with name
+    The @class{gtk:separator} implementation has a single CSS node with name
     @code{separator}. The node gets one of the @code{.horizontal} or
     @code{.vertical} style classes.
   @end{dictionary}
@@ -96,10 +96,10 @@
 
 (defun separator-new (orientation)
  #+liber-documentation
- "@version{#2023-2-27}
+ "@version{2023-12-30}
   @argument[orientation]{a @symbol{gtk:orientation} value with orientation of
     of the separator}
-  @return{A new @class{gtk:separator} widget.}
+  @return{The new @class{gtk:separator} widget.}
   @begin{short}
     Creates a new separator widget with the given @arg{orientation}.
   @end{short}
