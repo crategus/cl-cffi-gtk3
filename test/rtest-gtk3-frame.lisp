@@ -7,7 +7,7 @@
 
 ;;;     GtkFrame
 
-(test frame-class
+(test gtk-frame-class
   ;; Type check
   (is (g:type-is-object "GtkFrame"))
   ;; Check the registered name
@@ -38,6 +38,9 @@
   ;; Check the signals
   (is (equal '()
              (list-signals "GtkFrame")))
+  ;; CSS information
+  (is (string= "frame"
+               (gtk:widget-class-css-name "GtkFrame")))
   ;; Check the class definition
   (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkFrame" GTK-FRAME
                        (:SUPERCLASS GTK-BIN :EXPORT T :INTERFACES
@@ -54,7 +57,7 @@
                          "GtkShadowType" T T)))
              (gobject:get-g-type-definition "GtkFrame"))))
 
-(test frame-properties.1
+(test gtk-frame-properties.1
   (let ((widget (make-instance 'gtk:frame)))
     (is-false (gtk:frame-label widget))
     (is-false (gtk:frame-label-widget widget))
@@ -62,13 +65,13 @@
     (is (= 0.5 (gtk:frame-label-yalign widget)))
     (is (eq :etched-in (gtk:frame-shadow-type widget)))))
 
-(test frame-properties.2
+(test gtk-frame-properties.2
   (let ((frame (gtk:frame-new "label")))
     (is (string= "label" (gtk:frame-label frame)))
     (is (typep (gtk:frame-label-widget frame) 'gtk:label))
     (is (string= "label" (gtk:label-label (gtk:frame-label-widget frame))))))
 
-(test frame-style-properties
+(test gtk-frame-style-properties
   (let ((widget (make-instance 'gtk:frame)))
     (is (= 0.04 (gtk:widget-style-property widget "cursor-aspect-ratio")))
     (is-false (gtk:widget-style-property widget "cursor-color"))
@@ -92,7 +95,7 @@
 
 ;;;     gtk_frame_new
 
-(test frame-new
+(test gtk-frame-new
   (is (typep (gtk:frame-new) 'gtk:frame))
   (is (typep (gtk:frame-new nil) 'gtk:frame))
   (is (typep (gtk:frame-new "label") 'gtk:frame)))
@@ -100,7 +103,7 @@
 ;;;     gtk_frame_set_label_align
 ;;;     gtk_frame_get_label_align
 
-(test frame-label-align
+(test gtk-frame-label-align
   (let ((frame (gtk:frame-new "label")))
     (is (equal '(0.0 0.5)
                (multiple-value-list (gtk:frame-label-align frame))))
@@ -110,4 +113,4 @@
     (is (equal '(1.0 0.5)
                (multiple-value-list (gtk:frame-label-align frame))))))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2023-12-30

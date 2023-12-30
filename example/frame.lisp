@@ -1,13 +1,15 @@
-;;;; Example Frame - 2022-12-21
+;;;; Example Frame
+;;;;
+;;;; 2023-12-30
 
 (in-package :gtk3-example)
 
 (defun example-frame (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :type :toplevel
                                  :application application
-                                 :title "Example Frame"
+                                 :title "Frame Widget"
                                  :default-width 250
                                  :default-height 200
                                  :border-width 12))
@@ -19,6 +21,6 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (gtk:container-add window frame)
       (gtk:widget-show-all window))))

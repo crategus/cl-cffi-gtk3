@@ -1,13 +1,15 @@
-;;;; Example Frame Widget - 2023-2-12
+;;;; Example Frame Widget Properties
 ;;;;
 ;;;; This example allows to change interactively the appearance of the frame.
+;;;;
+;;;; 2023-12-30
 
 (in-package :gtk3-example)
 
 (defun example-frame-properties (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let* ((window (make-instance 'gtk:window
-                                  :title "Example GtkFrame"
+                                  :title "Frame Widget Properties"
                                   :type :toplevel
                                   :application application
                                   :border-width 12))
@@ -36,65 +38,64 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Put some text into the Frame
       (gtk:container-add frame (gtk:label-new "Test Frame"))
       ;; Set the Frame Label
-      (let () ; The entry is already defined
-        (g:signal-connect entry "icon-press"
-                          (lambda (entry icon-pos event)
-                            (declare (ignore icon-pos event))
-                            (setf (gtk:frame-label frame)
-                                  (gtk:entry-text entry))))
-        (gtk:container-add action
-                           (make-instance 'gtk:label
-                                          :use-markup t
-                                          :xalign 0.0
-                                          :label
-                                          "<b>Set Frame Label</b>"))
-        ;; Put the actual Label text into the entry.
-        (setf (gtk:entry-text entry) (gtk:frame-label frame))
-        ;; Pack the entry in the action widget.
-        (gtk:container-add action entry))
+      (g:signal-connect entry "icon-press"
+                        (lambda (entry icon-pos event)
+                          (declare (ignore icon-pos event))
+                          (setf (gtk:frame-label frame)
+                                (gtk:entry-text entry))))
+      (gtk:container-add action
+                         (make-instance 'gtk:label
+                                        :use-markup t
+                                        :xalign 0.0
+                                        :label
+                                        "<b>Set Frame Label</b>"))
+      ;; Put the actual Label text into the entry.
+      (setf (gtk:entry-text entry) (gtk:frame-label frame))
+      ;; Pack the entry in the action widget.
+      (gtk:container-add action entry)
       ;; Set the Label alignment
       (let ((hbox (make-instance 'gtk:grid
                                   :orientation :horizontal
                                   :column-homogenous t
                                   :column-spacing 6))
-            (x-spin (make-instance 'gtk:spin-button
-                                   :adjustment
-                                   (make-instance 'gtk:adjustment
-                                                  :value
-                                                  (gtk:frame-label-xalign frame)
-                                                  :lower 0.0
-                                                  :upper 1.0
-                                                  :step-increment 0.1
-                                                  :page-increment 0.1
-                                                  :page-size 0.0)
-                                   :climb-rate 0
-                                   :digits 2
-                                   :wrap t))
-            (y-spin (make-instance 'gtk:spin-button
-                                   :adjustment
-                                   (make-instance 'gtk:adjustment
-                                                  :value
-                                                  (gtk:frame-label-yalign frame)
-                                                  :lower 0.0
-                                                  :upper 1.0
-                                                  :step-increment 0.1
-                                                  :page-increment 0.1
-                                                  :page-size 0.0)
-                                   :climb-rate 0
-                                   :digits 2
-                                   :wrap t)))
-        (g:signal-connect x-spin "value-changed"
+            (xspin (make-instance 'gtk:spin-button
+                                  :adjustment
+                                  (make-instance 'gtk:adjustment
+                                                 :value
+                                                 (gtk:frame-label-xalign frame)
+                                                 :lower 0.0
+                                                 :upper 1.0
+                                                 :step-increment 0.1
+                                                 :page-increment 0.1
+                                                 :page-size 0.0)
+                                  :climb-rate 0
+                                  :digits 2
+                                  :wrap t))
+            (yspin (make-instance 'gtk:spin-button
+                                  :adjustment
+                                  (make-instance 'gtk:adjustment
+                                                 :value
+                                                 (gtk:frame-label-yalign frame)
+                                                 :lower 0.0
+                                                 :upper 1.0
+                                                 :step-increment 0.1
+                                                 :page-increment 0.1
+                                                 :page-size 0.0)
+                                  :climb-rate 0
+                                  :digits 2
+                                  :wrap t)))
+        (g:signal-connect xspin "value-changed"
            (lambda (spin)
              (multiple-value-bind (xalign yalign)
                  (gtk:frame-label-align frame)
                (declare (ignore xalign))
                (setf (gtk:frame-label-align frame)
                      (list (gtk:spin-button-value spin) yalign)))))
-        (g:signal-connect y-spin "value-changed"
+        (g:signal-connect yspin "value-changed"
            (lambda (spin)
              (multiple-value-bind (xalign yalign)
                  (gtk:frame-label-align frame)
@@ -108,8 +109,8 @@
                                           :margin-top 12
                                           :label
                                           "<b>Align Frame Label</b>"))
-        (gtk:container-add hbox x-spin)
-        (gtk:container-add hbox y-spin)
+        (gtk:container-add hbox xspin)
+        (gtk:container-add hbox yspin)
         (gtk:container-add action hbox))
       ;; Change the Shadow Type
       (let ((combo (make-instance 'gtk:combo-box-text)))
