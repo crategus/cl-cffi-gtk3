@@ -9,7 +9,7 @@
 
 ;;;     GtkAssistant
 
-(test assistant-class
+(test gtk-assistant-class
   ;; Type check
   (is (g:type-is-object "GtkAssistant"))
   ;; Check the registered name
@@ -53,19 +53,41 @@
 
 ;;;     use-header-bar
 
+(test gtk-assistant-properties
+  (let ((assistant (make-instance 'gtk:assistant)))
+    (is-true (gtk:assistant-use-header-bar assistant))))
+
 ;;; --- Child Properties -------------------------------------------------------
 
 ;;;     complete
 ;;;     has-padding
-;;;     header-image
+;;;     header-image                                        not exported
 ;;;     page-type
-;;;     sidebar-image
+;;;     sidebar-image                                       not exported
 ;;;     title
+
+(test gtk-assistant-child-properties
+  (let ((assistant (make-instance 'gtk:assistant))
+        (page (make-instance 'gtk:box)))
+    (is (= 0 (gtk:assistant-append-page assistant page)))
+    (is-false (gtk:assistant-child-complete assistant page))
+    (is-true (gtk:assistant-child-has-padding assistant page))
+    #+nil
+    (is-false (gtk:assistant-child-header-image assistant page))
+    (is (eq :content (gtk:assistant-child-page-type assistant page)))
+    #+nil
+    (is-false (gtk:assistant-child-sidebar-image assistant page))
+    (is-false (gtk:assistant-child-title assistant page))))
 
 ;;; --- Style Properties -------------------------------------------------------
 
 ;;;     content-padding
 ;;;     header-padding
+
+(test gtk-assistant-style-properties
+  (let ((assistant (make-instance 'gtk:assistant)))
+    (is (= 1 (gtk:widget-style-property assistant "content-padding")))
+    (is (= 6 (gtk:widget-style-property assistant "header-padding")))))
 
 ;;; --- Signals ----------------------------------------------------------------
 
@@ -79,7 +101,7 @@
 
 ;;;     gtk_assistant_new
 
-(test assistant-new
+(test gtk-assistant-new
   (is (typep (gtk:assistant-new) 'gtk:assistant)))
 
 ;;;     gtk_assistant_get_current_page
@@ -90,44 +112,10 @@
 ;;;     gtk_assistant_append_page
 ;;;     gtk_assistant_insert_page
 ;;;     gtk_assistant_remove_page
-;;;
+
 ;;;     GtkAssistantPageFunc
-
-#+nil
-(test gtk-assistant-page-func
-  (is (equal '(PROGN
- (DEFCALLBACK GTK-ASSISTANT-PAGE-FUNC-CB
-     :INT
-     ((CURRENT-PAGE :INT) (#:DATA810 :POINTER))
-   (LET* ((#:OBJECT807
-           (CONVERT-FROM-FOREIGN
-            (FOREIGN-SLOT-VALUE #:DATA810 '(:STRUCT GOBJECT::OBJECT-FUNC-REF)
-                                :OBJECT)
-            'G-OBJECT))
-          (#:FN-ID808
-           (FOREIGN-SLOT-VALUE #:DATA810 '(:STRUCT GOBJECT::OBJECT-FUNC-REF)
-                               :FN-ID))
-          (#:FN809
-           (GOBJECT::RETRIEVE-HANDLER-FROM-OBJECT #:OBJECT807 #:FN-ID808)))
-     (FUNCALL #:FN809 CURRENT-PAGE)))
- (DEFCALLBACK GTK-ASSISTANT-PAGE-FUNC-DESTROY-NOTIFY
-     :VOID
-     ((#:DATA810 :POINTER))
-   (LET* ((#:OBJECT807
-           (CONVERT-FROM-FOREIGN
-            (FOREIGN-SLOT-VALUE #:DATA810 '(:STRUCT GOBJECT::OBJECT-FUNC-REF)
-                                :OBJECT)
-            'G-OBJECT))
-          (#:FN-ID808
-           (FOREIGN-SLOT-VALUE #:DATA810 '(:STRUCT GOBJECT::OBJECT-FUNC-REF)
-                               :FN-ID)))
-     (GOBJECT::DELETE-HANDLER-FROM-OBJECT #:OBJECT807 #:FN-ID808))
-   (FOREIGN-FREE #:DATA810)))
-             (macroexpand '(define-cb-methods gtk-assistant-page-func :int
-                               ((current-page :int)))))))
-
 ;;;     gtk_assistant_set_forward_page_func
-;;;
+
 ;;;     gtk_assistant_set_page_type
 ;;;     gtk_assistant_get_page_type
 ;;;     gtk_assistant_set_page_title
@@ -147,4 +135,4 @@
 ;;;     gtk_assistant_next_page
 ;;;     gtk_assistant_previous_page
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2023-12-30

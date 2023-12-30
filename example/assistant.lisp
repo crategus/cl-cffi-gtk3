@@ -1,19 +1,12 @@
-;;;; Assistant - 2022-12-15
+;;;; Assistant
 ;;;;
 ;;;; Demonstrates a sample multi-step assistant. Assistants are used to divide
 ;;;; an operation into several simpler sequential steps, and to guide the user
 ;;;; through these steps.
+;;;;
+;;;; 2023-12-30
 
 (in-package :gtk3-example)
-
-(defun apply-changes-gradually (assistant pbar)
-  (let ((fraction (+ 0.025d0 (gtk:progress-bar-fraction pbar))))
-    (cond ((< fraction 1.0d0)
-           (setf (gtk:progress-bar-fraction pbar) fraction)
-           +g-source-continue+)
-          (t
-           (gtk:widget-destroy assistant)
-           +g-source-remove+))))
 
 (defun create-page1 (assistant)
   (let ((box (make-instance 'gtk:box
@@ -86,10 +79,8 @@
   (gtk:widget-show pbar))
 
 (defun example-assistant (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let* ((assistant (make-instance 'gtk:assistant
-                                     ;; TODO: Ubuntu always shows a header bar!?
-                                     :use-header-bar 1
                                      :application application
                                      :default-height 240))
            (pbar (make-instance 'gtk:progress-bar
@@ -104,12 +95,12 @@
       (gtk:css-provider-load-from-data provider css)
       (gtk:style-context-add-provider context
                                       provider
-                                      +gtk-priority-application+)
+                                      gtk:+gtk-priority-application+)
       ;; Signal handlers for the assistant
       (g:signal-connect assistant "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (g:signal-connect assistant "close"
                         (lambda (widget)
                           (gtk:widget-destroy widget)))
@@ -126,11 +117,18 @@
           (when (= 3 (gtk:assistant-current-page assistant))
             (gtk:assistant-commit assistant))))
       (g:signal-connect assistant "apply"
-         (lambda (assistant)
-           ;; Start a timer to simulate changes taking a few seconds to apply.
-           (g:timeout-add 150
-                          (lambda ()
-                            (apply-changes-gradually assistant pbar)))))
+          (lambda (assistant)
+            ;; Start a timer to simulate changes taking a few seconds to apply.
+            (g:timeout-add 150
+                (lambda ()
+                  (let ((fraction (+ 0.025d0
+                                     (gtk:progress-bar-fraction pbar))))
+                    (cond ((< fraction 1.0d0)
+                           (setf (gtk:progress-bar-fraction pbar) fraction)
+                           glib:+g-source-continue+)
+                          (t
+                           (gtk:widget-destroy assistant)
+                           glib:+g-source-remove+)))))))
       ;; Create the pages for the assistant
       (create-page1 assistant)
       (create-page2 assistant)
