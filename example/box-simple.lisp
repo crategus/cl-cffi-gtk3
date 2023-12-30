@@ -1,4 +1,4 @@
-;;;; Example Simple Box - 2021-11-19
+;;;; Example Simple Box
 ;;;;
 ;;;; The example shows three buttons with colored labels. The red button
 ;;;; shows the start position in the box, the green button the end position,
@@ -6,6 +6,8 @@
 ;;;;
 ;;;; In addition, this example demonstrate how to use CSS style information to
 ;;;; change the appearance of a widget.
+;;;;
+;;;; 2023-12-30
 
 (in-package :gtk3-example)
 
@@ -21,12 +23,12 @@
    background-color : green; }")
 
 (defun example-box-simple (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let (;; Create a toplevel window
           (window (make-instance 'gtk:window
                                  :type :toplevel
                                  :application application
-                                 :title "Example Simple Box"
+                                 :title "Simple Box"
                                  :border-width 12))
           ;; Create a box
           (box (make-instance 'gtk:box
@@ -37,13 +39,11 @@
                               :valign :center
                               :width-request 480))
           (provider (make-instance 'gtk:css-provider)))
-
       ;; Signal handler for the window to handle the signal "destroy".
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
-
+                          (gtk:leave-gtk-main)))
       ;; Add Start button
       (let ((button (make-instance 'gtk:button
                                    :label "START")))
@@ -60,7 +60,6 @@
                                    :label "END")))
         (setf (gtk:widget-width-request (gtk:bin-child button)) 60)
         (gtk:box-pack-end box button :expand nil))
-
       ;; Add the box to the window.
       (gtk:container-add window box)
       ;; Load CSS from data into the provider

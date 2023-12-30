@@ -4,13 +4,13 @@
 (in-suite gtk-box)
 
 ;; GtkPrinterOptionWidget is a child of GtkBox
-#-win32
+#-windows
 (eval-when (:compile-toplevel :load-toplevel :execute)
   (cffi:foreign-funcall "gtk_printer_option_widget_get_type" :size))
 
 ;;; --- Types and Values -------------------------------------------------------
 
-(test box-class
+(test gtk-box-class
   ;; Type check
   (is (g:type-is-object "GtkBox"))
   ;; Check the registered name
@@ -74,6 +74,9 @@
              (list-child-properties "GtkBox")))
   (is (equal '()
              (list-signals "GtkBox")))
+  ;; CSS information
+  (is (string= "box"
+               (gtk:widget-class-css-name "GtkBox")))
   ;; Check the class definition
   (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkBox" GTK-BOX
                        (:SUPERCLASS GTK-CONTAINER :EXPORT T :INTERFACES
@@ -88,7 +91,7 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-(test box-properties
+(test gtk-box-properties
   (let ((box (make-instance 'gtk:box :orientation :vertical :spacing 12)))
     (is (eq :vertical (gtk:orientable-orientation box)))
     (is (eq :center (gtk:box-baseline-position box)))
@@ -97,7 +100,7 @@
 
 ;;; --- Child Properties -------------------------------------------------------
 
-(test box-child-properties
+(test gtk-box-child-properties
   (let* ((box (make-instance 'gtk:box :orientation :vertical))
          (button (make-instance 'gtk:button)))
     (is-false (gtk:container-add box button))
@@ -111,7 +114,7 @@
 
 ;;;     gtk_box_new
 
-(test box-new
+(test gtk-box-new
   ;; Create a box
   (let ((box (gtk:box-new :vertical 12)))
     (is (eq :vertical (gtk:orientable-orientation box)))
@@ -143,7 +146,7 @@
 
 ;;;     gtk_box_pack_start
 
-(test box-pack-start
+(test gtk-box-pack-start
   (let ((box (make-instance 'gtk:box :orientation :vertical))
         (button1 (make-instance 'gtk:button))
         (button2 (make-instance 'gtk:button))
@@ -167,7 +170,7 @@
 
 ;;;     gtk_box_pack_end
 
-(test box-pack-end
+(test gtk-box-pack-end
   (let ((box (make-instance 'gtk:box :orientation :vertical))
         (button1 (make-instance 'gtk:button))
         (button2 (make-instance 'gtk:button))
@@ -191,7 +194,7 @@
 
 ;;;     gtk_box_reorder_child
 
-(test box-reorder-child
+(test gtk-box-reorder-child
   (let ((box (make-instance 'gtk:box :orientation :vertical))
         (label (make-instance 'gtk:label))
         (button (make-instance 'gtk:button))
@@ -220,7 +223,7 @@
 ;;;     gtk_box_query_child_packing
 ;;;     gtk_box_child_packing
 
-(test box-child-packing
+(test gtk-box-child-packing
   (let ((box (make-instance 'gtk:box))
         (button (make-instance 'gtk:button)))
     ;; Pack a button in the box
@@ -244,7 +247,7 @@
 
 ;;;     gtk_box_center_widget
 
-(test box-center-widget
+(test gtk-box-center-widget
   (let ((box (make-instance 'gtk:box :orientation :vertical)))
     ;; Not center widget set
     (is-false (gtk:box-center-widget box))
@@ -255,4 +258,4 @@
     ;; Retrieve the center widget
     (is (eq 'gtk:button (type-of (gtk:box-center-widget box))))))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; --- 2023-12-30 -------------------------------------------------------------

@@ -1,4 +1,6 @@
-;;;; Example Box Packing - 2022-12-15
+;;;; Example Box Packing
+;;;;
+;;;; 2023-12-30
 
 (in-package :gtk3-example)
 
@@ -39,9 +41,9 @@
     box))
 
 (defun example-box-packing (&optional (application nil) (spacing 6) (padding 0))
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :title "Example Box Packing"
+                                 :title "Box Packing"
                                  :application application
                                  :type :toplevel
                                  :border-width 12))
@@ -51,7 +53,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Non-homogenous boxes
       (gtk:box-pack-start vbox
                           (make-instance 'gtk:label
