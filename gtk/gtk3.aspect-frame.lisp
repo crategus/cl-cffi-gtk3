@@ -89,17 +89,17 @@
 
 #+liber-documentation
 (setf (documentation 'aspect-frame 'type)
- "@version{#2023-3-15}
+ "@version{2023-12-30}
   @begin{short}
-    The @sym{gtk:aspect-frame} widget is useful when you want pack a widget so
-    that it can resize but always retains the same aspect ratio.
+    The @class{gtk:aspect-frame} widget is useful when you want pack a widget
+    so that it can resize but always retains the same aspect ratio.
   @end{short}
   For instance, one might be drawing a small preview of a larger image.
-  The @sym{gtk:aspect-frame} class derives from the @class{gtk:frame} class, so
-  it can draw a label and a frame around the child. The frame will be
+  The @class{gtk:aspect-frame} class derives from the @class{gtk:frame} class,
+  so it can draw a label and a frame around the child. The frame will be
   \"shrink-wrapped\" to the size of the child.
   @begin[CSS nodes]{dictionary}
-    The @sym{gtk:aspect-frame} implementation uses a CSS node with name
+    The @class{gtk:aspect-frame} implementation uses a CSS node with name
     @code{frame}.
   @end{dictionary}
   @see-constructor{gtk:aspect-frame-new}
@@ -113,7 +113,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- aspect-frame-obey-child ------------------------------------------------
+;;; --- gtk:aspect-frame-obey-child --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "obey-child" 'aspect-frame) t)
@@ -125,7 +125,7 @@
 (setf (liber:alias-for-function 'aspect-frame-obey-child)
       "Accessor"
       (documentation 'aspect-frame-obey-child 'function)
- "@version{#2023-3-15}
+ "@version{2023-12-30}
   @syntax[]{(gtk:aspect-frame-obey-child object) => obey-child}
   @syntax[]{(setf (gtk:aspect-frame-obey-child object) obey-child)}
   @argument[object]{a @class{gtk:aspect-frame} widget}
@@ -138,7 +138,7 @@
   aspect frame.
   @see-class{gtk:aspect-frame}")
 
-;;; --- aspect-frame-ratio -------------------------------------------------
+;;; --- gtk:aspect-frame-ratio -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "ratio" 'aspect-frame) t)
@@ -151,7 +151,7 @@
 (setf (liber:alias-for-function 'aspect-frame-ratio)
       "Accessor"
       (documentation 'aspect-frame-ratio 'function)
- "@version{#2023-3-15}
+ "@version{2023-12-30}
   @syntax[]{(gtk:aspect-frame-ratio object) => ratio}
   @syntax[]{(setf (gtk:aspect-frame-ratio object) ratio)}
   @argument[object]{a @class{gtk:aspect-frame} widget}
@@ -164,7 +164,7 @@
   @em{false}. Allowed values are in [0.0001, 10000.0]. The default value is 1.0.
   @see-class{gtk:aspect-frame}")
 
-;;; --- aspect-frame-xalign ----------------------------------------------------
+;;; --- gtk:aspect-frame-xalign ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "xalign" 'aspect-frame) t)
@@ -177,7 +177,7 @@
 (setf (liber:alias-for-function 'aspect-frame-xalign)
       "Accessor"
       (documentation 'aspect-frame-xalign 'function)
- "@version{#2023-3-15}
+ "@version{2023-12-30}
   @syntax[]{(gtk:aspect-frame-xalign object) => xalign}
   @syntax[]{(setf (gtk:aspect-frame-xalign object) xalign)}
   @argument[object]{a @class{gtk:aspect-frame} widget}
@@ -189,7 +189,7 @@
   The x alignment of the child widget in the aspect frame container.
   @see-class{gtk:aspect-frame}")
 
-;;; --- aspect-frame-yalign ----------------------------------------------------
+;;; --- gtk:aspect-frame-yalign ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "yalign" 'aspect-frame) t)
@@ -202,7 +202,7 @@
 (setf (liber:alias-for-function 'aspect-frame-yalign)
       "Accessor"
       (documentation 'aspect-frame-yalign 'function)
- "@version{#2023-3-15}
+ "@version{2023-12-30}
   @syntax[]{(gtk:aspect-frame-yalign object) => yalign}
   @syntax[]{(setf (gtk:aspect-frame-yalign object) yalign)}
   @argument[object]{a @class{gtk:aspect-frame} widget}
@@ -222,7 +222,7 @@
 
 (defun aspect-frame-new (label xalign yalign ratio obey-child)
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{2023-12-30}
   @argument[label]{a string with the label text}
   @argument[xalign]{a float with the horizontal alignment of the child within
     the allocation of the aspect frame, this ranges from 0.0 (left aligned) to
@@ -253,7 +253,7 @@
 
 (defun aspect-frame-set (frame xalign yalign ratio obey-child)
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{2023-12-30}
   @argument[frame]{a @class{gtk:aspect-frame} widget}
   @argument[xalign]{a float with the horizontal alignment of the child within
     the allocation of the aspect frame container, this ranges from 0.0

@@ -1,12 +1,14 @@
-;;;; Example Aspect Frame - 2022-12-15
+;;;; Example Aspect Frame
+;;;;
+;;;; 2023-12-30
 
 (in-package :gtk3-example)
 
-(defun example-aspect-frame (&optional (application nil))
-  (within-main-loop
+(defun example-aspect-frame (&optional application)
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :type :toplevel
-                                 :title "Example Aspect Frame"
+                                 :title "Aspect Frame"
                                  :application application
                                  :default-width 300
                                  :default-height 240
@@ -24,7 +26,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (gtk:container-add window frame)
       (gtk:container-add frame area)
       (gtk:widget-show-all window))))
