@@ -36,6 +36,13 @@
 ;;;     GtkCalendar
 ;;;     GtkCalendarDisplayOptions
 ;;;
+;;; Accessors
+;;;
+;;;     gtk_calendar_get_detail_width_chars
+;;;     gtk_calendar_set_detail_width_chars
+;;;     gtk_calendar_get_detail_height_rows
+;;;     gtk_calendar_set_detail_height_rows
+;;;
 ;;; Functions
 ;;;
 ;;;     GtkCalendarDetailFunc
@@ -53,10 +60,6 @@
 ;;;     gtk_calendar_get_date
 ;;;
 ;;;     gtk_calendar_set_detail_func
-;;;     gtk_calendar_get_detail_width_chars
-;;;     gtk_calendar_set_detail_width_chars
-;;;     gtk_calendar_get_detail_height_rows
-;;;     gtk_calendar_set_detail_height_rows
 ;;;
 ;;; Properties
 ;;;
@@ -71,7 +74,7 @@
 ;;;     show-week-numbers
 ;;;     year
 ;;;
-;;; Style Propertie
+;;; Style Properties
 ;;;
 ;;;     horizontal-separation
 ;;;     inner-border
@@ -118,7 +121,7 @@
 (setf (liber:alias-for-symbol 'calendar-display-options)
       "GFlags"
       (liber:symbol-documentation 'calendar-display-options)
- "@version{#2023-3-16}
+ "@version{2023-12-30}
   @begin{short}
     These options can be used to influence the display and behaviour of a
     @class{gtk:calendar} widget.
@@ -191,10 +194,10 @@
 
 #+liber-documentation
 (setf (documentation 'calendar 'type)
- "@version{#2023-3-16}
+ "@version{2023-12-30}
   @begin{short}
-    The @sym{gtk:calendar} widget displays a Gregorian calendar, one month at a
-    time.
+    The @class{gtk:calendar} widget displays a Gregorian calendar, one month at
+    a time.
   @end{short}
   It can be created with the @fun{gtk:calendar-new} function.
 
@@ -210,8 +213,8 @@
   The way in which the calendar itself is displayed can be altered using the
   @fun{gtk:calendar-display-options} function.
 
-  The selected date can be retrieved from a @sym{gtk:calendar} widget using the
-  @fun{gtk:calendar-date} function.
+  The selected date can be retrieved from a @class{gtk:calendar} widget using
+  the @fun{gtk:calendar-date} function.
 
   Users should be aware that, although the Gregorian calendar is the legal
   calendar in most countries, it was adopted progressively between 1582 and
@@ -247,7 +250,7 @@ lambda (calendar)    :run-first
       @end{pre}
       The signal is emitted when the user selects a day.
       @begin[code]{table}
-        @entry[calendar]{The @sym{gtk:calendar} widget which received the
+        @entry[calendar]{The @class{gtk:calendar} widget which received the
           signal.}
       @end{table}
     @subheading{The \"day-selected-double-click\" signal}
@@ -256,7 +259,7 @@ lambda (calendar)    :run-first
       @end{pre}
       The signal is emitted when the user double-clicks a day.
       @begin[code]{table}
-        @entry[calendar]{The @sym{gtk:calendar} widget which received the
+        @entry[calendar]{The @class{gtk:calendar} widget which received the
           signal.}
       @end{table}
     @subheading{The \"month-changed\" signal}
@@ -266,7 +269,7 @@ lambda (calendar)    :run-first
       The signal is emitted when the user clicks a button to change the selected
        month on a calendar.
       @begin[code]{table}
-        @entry[calendar]{The @sym{gtk:calendar} widget which received the
+        @entry[calendar]{The @class{gtk:calendar} widget which received the
           signal.}
       @end{table}
     @subheading{The \"next-month\" signal}
@@ -275,7 +278,7 @@ lambda (calendar)    :run-first
       @end{pre}
       The signal is emitted when the user switched to the next month.
       @begin[code]{table}
-        @enty[calendar]{The @sym{gtk:calendar} widget which received the
+        @enty[calendar]{The @class{gtk:calendar} widget which received the
           signal.}
       @end{table}
     @subheading{The \"next-year\" signal}
@@ -284,7 +287,7 @@ lambda (calendar)    :run-first
       @end{pre}
       The signal is emitted when user switched to the next year.
       @begin[code]{table}
-        @entry[calendar]{The @sym{gtk:calendar} widget which received the
+        @entry[calendar]{The @class{gtk:calendar} widget which received the
           signal.}
       @end{table}
     @subheading{The \"prev-month\" signal}
@@ -293,7 +296,7 @@ lambda (calendar)    :run-first
       @end{pre}
       The signal is emitted when the user switched to the previous month.
       @begin[code]{table}
-        @entry[calendar]{The @sym{gtk:calendar} widget which received the
+        @entry[calendar]{The @class{gtk:calendar} widget which received the
           signal.}
       @end{table}
     @subheading{The \"prev-year\" signal}
@@ -302,7 +305,7 @@ lambda (calendar)    :run-first
       @end{pre}
       The signal is emitted when user switched to the previous year.
       @begin[code]{table}
-        @entry[calendar]{The @sym{gtk:calendar} widget which received the
+        @entry[calendar]{The @class{gtk:calendar} widget which received the
           signal.}
       @end{table}
   @end{dictionary}
@@ -323,7 +326,7 @@ lambda (calendar)    :run-first
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- calendar-day -----------------------------------------------------------
+;;; --- gtk:calendar-day -------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "day" 'calendar) t)
@@ -338,7 +341,7 @@ lambda (calendar)    :run-first
 (setf (liber:alias-for-function 'calendar-day)
       "Accessor"
       (documentation 'calendar-day 'function)
- "@version{#2023-3-16}
+ "@version{2023-12-30}
   @syntax[]{(gtk:calender-day object) => day}
   @syntax[]{(setf (gtk:calendar-day object) day)}
   @argument[object]{a @class{gtk:calendar} widget}
@@ -354,7 +357,7 @@ lambda (calendar)    :run-first
   @see-function{gtk:calendar-date}
   @see-function{gtk:calendar-select-day}")
 
-;;; --- calendar-detail-height-rows --------------------------------------------
+;;; --- gtk:calendar-detail-height-rows ----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "detail-height-rows"
@@ -369,7 +372,7 @@ lambda (calendar)    :run-first
 (setf (liber:alias-for-function 'calendar-detail-height-rows)
       "Accessor"
       (documentation 'calendar-detail-height-rows 'function)
- "@version{#2023-3-16}
+ "@version{2023-12-30}
   @syntax[]{(gtk:calendar-detail-height-rows object) => rows}
   @syntax[]{(setf (gtk:calendar-detail-height-rows object) rows)}
   @argument[object]{a @class{gtk:calendar} widget}
@@ -378,12 +381,12 @@ lambda (calendar)    :run-first
     Accessor of the @slot[gtk:calendar]{detail-height-rows} slot of the
     @class{gtk:calendar} class.
   @end{short}
-  The @sym{gtk:calendar-detail-height-rows} function queries the height of
-  detail cells, in rows. The @sym{(setf gtk:calendar-detail-height-rows)}
-  function updates the height of detail cells.
+  The @fun{gtk:calendar-detail-height-rows} function queries the height of
+  detail cells, in rows. The @setf{gtk:calendar-detail-height-rows} function
+  updates the height of detail cells.
   @see-class{gtk:calendar}")
 
-;;; --- calendar-detail-width-chars --------------------------------------------
+;;; --- gtk:calendar-detail-width-chars ----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "detail-width-chars"
@@ -397,7 +400,7 @@ lambda (calendar)    :run-first
 (setf (liber:alias-for-function 'calendar-detail-width-chars)
       "Accessor"
       (documentation 'calendar-detail-width-chars 'function)
- "@version{#2023-3-16}
+ "@version{2023-12-30}
   @syntax[]{(gtk:calendar-detail-width-chars object) => chars}
   @syntax[]{(setf (gtk:calendar-detail-width-chars object) chars)}
   @argument[object]{a @class{gtk:calendar} widget}
@@ -406,12 +409,12 @@ lambda (calendar)    :run-first
     Accessor of the @slot[gtk:calendar]{detail-width-chars} slot of the
     @class{gtk:calendar} class.
   @end{short}
-  The @sym{gtk:calendar-detail-width-chars} function queries the width of
-  detail cells, in characters. The @sym{(setf gtk:calendar-detail-width-chars)}
+  The @fun{gtk:calendar-detail-width-chars} function queries the width of
+  detail cells, in characters. The @setf{gtk:calendar-detail-width-chars}
   function updates the width of detail cells.
   @see-class{gtk:calendar}")
 
-;;; --- calendar-month ---------------------------------------------------------
+;;; --- gtk:calendar-month -----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "month" 'calendar) t)
@@ -425,7 +428,7 @@ lambda (calendar)    :run-first
 (setf (liber:alias-for-function 'calendar-month)
       "Accessor"
       (documentation 'calendar-month 'function)
- "@version{#2023-3-16}
+ "@version{2023-12-30}
   @syntax[]{(gtk:calendar-month object) => month}
   @syntax[]{(setf (gtk:calendar-month object) month)}
   @argument[object]{a @class{gtk:calendar} widget}
@@ -438,7 +441,7 @@ lambda (calendar)    :run-first
   @see-function{gtk:calendar-date}
   @see-function{gtk:calendar-select-month}")
 
-;;; --- calendar-no-month-change -----------------------------------------------
+;;; --- gtk:calendar-no-month-change -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "no-month-change" 'calendar) t)
@@ -451,7 +454,7 @@ lambda (calendar)    :run-first
 (setf (liber:alias-for-function 'calendar-no-month-change)
       "Accessor"
       (documentation 'calendar-no-month-change 'function)
- "@version{#2023-3-16}
+ "@version{2023-12-30}
   @syntax[]{(gtk:calendar-no-month-change object) => no-change}
   @syntax[]{(setf (gtk:calendar-no-month-change object) no-change)}
   @argument[object]{a @class{gtk:calendar} widget}
@@ -463,7 +466,7 @@ lambda (calendar)    :run-first
   Determines whether the selected month can be changed.
   @see-class{gtk:calendar}")
 
-;;; --- calendar-show-day-names ------------------------------------------------
+;;; --- gtk:calendar-show-day-names --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "show-day-names" 'calendar) t)
@@ -476,7 +479,7 @@ lambda (calendar)    :run-first
 (setf (liber:alias-for-function 'calendar-show-day-names)
       "Accessor"
       (documentation 'calendar-show-day-names 'function)
- "@version{#2023-3-16}
+ "@version{2023-12-30}
   @syntax[]{(gtk:calendar-show-day-names object) => show-day-names}
   @syntax[]{(setf (gtk:calendar-show-day-names object) show-day-names)}
   @argument[object]{a @class{gtk:calendar} widget}
@@ -488,7 +491,7 @@ lambda (calendar)    :run-first
   Determines whether day names are displayed.
   @see-class{gtk:calendar}")
 
-;;; --- calendar-show-details --------------------------------------------------
+;;; --- gtk:calendar-show-details ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "show-details" 'calendar) t)
@@ -502,7 +505,7 @@ lambda (calendar)    :run-first
 (setf (liber:alias-for-function 'calendar-show-details)
       "Accessor"
       (documentation 'calendar-show-details 'function)
- "@version{#2023-3-16}
+ "@version{2023-12-30}
   @syntax[]{(gtk:calendar-show-details object) => show-details}
   @syntax[]{(setf (gtk:calendar-show-details object) show-details)}
   @argument[object]{a @class{gtk:calendar} widget}
@@ -516,7 +519,7 @@ lambda (calendar)    :run-first
   marked.
   @see-class{gtk:calendar}")
 
-;;; --- calendar-show-heading --------------------------------------------------
+;;; --- gtk:calendar-show-heading ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "show-heading" 'calendar) t)
@@ -528,7 +531,7 @@ lambda (calendar)    :run-first
 (setf (liber:alias-for-function 'calendar-show-heading)
       "Accessor"
       (documentation 'calendar-show-heading 'function)
- "@version{#2023-3-16}
+ "@version{2023-12-30}
   @syntax[]{(gtk:calendar-show-heading object) => show-heading}
   @syntax[]{(setf (gtk:calendar-show-heading object) show-heading)}
   @argument[object]{a @class{gtk:calendar} widget}
@@ -540,7 +543,7 @@ lambda (calendar)    :run-first
   Determines whether a heading is displayed.
   @see-class{gtk:calendar}")
 
-;;; --- calendar-show-week-numbers ---------------------------------------------
+;;; --- gtk:calendar-show-week-numbers -----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "show-week-numbers"
@@ -554,7 +557,7 @@ lambda (calendar)    :run-first
 (setf (liber:alias-for-function 'calendar-show-week-numbers)
       "Accessor"
       (documentation 'calendar-show-week-numbers 'function)
- "@version{#2023-3-16}
+ "@version{2023-12-30}
   @syntax[]{(gtk:calendar-show-week-numbers object) => show-week-numbers}
   @syntax[]{(setf (gtk:calendar-show-week-numbers object) show-week-numbers)}
   @argument[object]{a @class{gtk:calendar} widget}
@@ -566,7 +569,7 @@ lambda (calendar)    :run-first
   Determines whether week numbers are displayed.
   @see-class{gtk:calendar}")
 
-;;; --- calendar-year ----------------------------------------------------------
+;;; --- gtk:calendar-year ------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "year" 'calendar) t)
@@ -579,7 +582,7 @@ lambda (calendar)    :run-first
 (setf (liber:alias-for-function 'calendar-year)
       "Accessor"
       (documentation 'calendar-year 'function)
- "@version{#2023-3-16}
+ "@version{2023-12-30}
   @syntax[]{(gtk:calendar-year object) => year}
   @syntax[]{(setf (gtk:calendar-year object) year)}
   @argument[object]{a @class{gtk:calendar} widget}
@@ -601,8 +604,8 @@ lambda (calendar)    :run-first
 
 (defun calendar-new ()
  #+liber-documentation
- "@version{#2023-3-16}
-  @return{A newly @class{gtk:calendar} widget.}
+ "@version{2023-12-30}
+  @return{The newly @class{gtk:calendar} widget.}
   @begin{short}
     Creates a new calendar, with the current date being selected.
   @end{short}
@@ -705,7 +708,7 @@ lambda (calendar)    :run-first
  "@version{#2023-3-16}
   @argument[calendar]{a @class{gtk:calendar} widget}
   @argument[day]{an unsigned integer with the day between 1 and 31}
-  @return{A boolean whether the day is marked.}
+  @return{The boolean whether the day is marked.}
   @begin{short}
     Returns if the day of the calendar is already marked.
   @end{short}
@@ -758,10 +761,10 @@ lambda (calendar)    :run-first
   @begin{short}
     Accessor of the display options of the calendar.
   @end{short}
-  The @sym{gtk:calendar-display-options} function returns the current display
-  options of the calendar. The @sym{(setf gtk:calendar-display-options)}
-  function sets display options, e.g. whether to display the heading and the
-  month headings.
+  The @fun{gtk:calendar-display-options} function returns the current display
+  options of the calendar. The @setf{gtk:calendar-display-options} function
+  sets display options, e.g. whether to display the heading and the month
+  headings.
   @see-class{gtk:calendar}
   @see-symbol{gtk:calendar-display-options}"
   (calendar (g:object calendar)))
@@ -813,7 +816,7 @@ lambda (calendar)    :run-first
 (setf (liber:alias-for-symbol 'calendar-detail-func)
       "Callback"
       (liber:symbol-documentation 'calendar-detail-func)
- "@version{#2023-3-16}
+ "@version{2023-12-30}
   @begin{short}
     This kind of functions provide Pango markup with detail information for the
     specified day.
@@ -851,7 +854,7 @@ lambda (calendar year month day)
 
 (defun calendar-set-detail-func (calendar func)
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{2023-12-30}
   @argument[calendar]{a @class{gtk:calendar} widget}
   @argument[func]{a @symbol{gtk:calendar-detail-func} callback function
     providing details for each day}

@@ -1,28 +1,26 @@
-;;;; Calendar Widget (2021-6-10)
+;;;; Calendar Widget
+;;;;
+;;;; 2023-12-30
 
 (in-package :gtk3-example)
 
-(defun calendar-detail (calendar year month day)
-  (declare (ignore calendar year month))
-  (when (= day 12)
-    "This day has a tooltip."))
-
 (defun example-calendar (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :title "Example Calendar"
+                                 :title "Calendar"
                                  :type :toplevel
                                  :application application
-                                 :border-width 24
+;                                 :border-width 24
                                  :default-width 250
                                  :default-height 100))
           (frame (make-instance 'gtk:frame))
           (calendar (make-instance 'gtk:calendar
+                                   :show-week-numbers t
                                    :show-details nil)))
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Connect a signal handler to print the selected day
       (g:signal-connect calendar "day-selected"
                         (lambda (widget)
@@ -32,7 +30,11 @@
                                   (gtk:calendar-month calendar)
                                   (gtk:calendar-day calendar))))
       ;; Install a calendar detail function
-      (gtk:calendar-set-detail-func calendar #'calendar-detail)
+      (gtk:calendar-set-detail-func calendar
+              (lambda (calendar year month day)
+                (declare (ignore calendar year month))
+                (when (= day 12)
+                  "This day has a tooltip.")))
       ;; Mark a day
       (gtk:calendar-mark-day calendar 6)
       (gtk:container-add frame calendar)
