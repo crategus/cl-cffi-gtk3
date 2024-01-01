@@ -19,7 +19,7 @@
       </object>
     </child>
   </object>
-  <object class="GtkMessageRow" id="messagerow">
+  <object class="MessageRow" id="messagerow">
     <child>
       <object class="GtkGrid" id="grid1">
         <property name="visible">1</property>

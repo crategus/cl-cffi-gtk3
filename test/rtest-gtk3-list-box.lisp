@@ -7,7 +7,7 @@
 
 ;;;     GtkListBox
 
-(test list-box-class
+(test gtk-list-box-class
   ;; Type check
   (is (g:type-is-object "GtkListBox"))
   ;; Check the registered name
@@ -33,6 +33,14 @@
   ;; Get the names of the child properties
   (is (equal '()
              (list-child-properties "GtkListBox")))
+  ;; Check the signals
+  (is (equal '("activate-cursor-row" "move-cursor" "row-activated"
+               "row-selected" "select-all" "selected-rows-changed"
+               "toggle-cursor-row" "unselect-all")
+             (list-signals "GtkListBox")))
+  ;; CSS information
+  (is (string= "list"
+               (gtk:widget-class-css-name "GtkListBox")))
   ;; Check the class definition
   (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkListBox" GTK-LIST-BOX
                        (:SUPERCLASS GTK-CONTAINER :EXPORT T :INTERFACES
@@ -47,7 +55,7 @@
 
 ;;;     GtkListBoxRow
 
-(test list-box-row-class
+(test gtk-list-box-row-class
   ;; Type check
   (is (g:type-is-object "GtkListBoxRow"))
   ;; Check the registered name
@@ -78,6 +86,9 @@
   ;; Check the signals
   (is (equal '("activate")
              (list-signals "GtkListBoxRow")))
+  ;; CSS information
+  (is (string= "row"
+               (gtk:widget-class-css-name "GtkListBoxRow")))
   ;; Check the class definition
   (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkListBoxRow" GTK-LIST-BOX-ROW
                        (:SUPERCLASS GTK-BIN :EXPORT T :INTERFACES
@@ -91,12 +102,12 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-(test list-box-properties
+(test gtk-list-box-properties
   (let ((listbox (make-instance 'gtk:list-box)))
     (is-true (gtk:list-box-activate-on-single-click listbox))
     (is (eq :single (gtk:list-box-selection-mode listbox)))))
 
-(test list-box-row-properties
+(test gtk-list-box-row-properties
   (let ((listboxrow (make-instance 'gtk:list-box-row)))
     (is-true (gtk:list-box-row-activatable listboxrow))
     (is-true (gtk:list-box-row-selectable listboxrow))))
@@ -109,12 +120,12 @@
 
 ;;;     gtk_list_box_new
 
-(test list-box-new
+(test gtk-list-box-new
   (is (string= "GtkListBox" (g:object-type-name (gtk:list-box-new)))))
 
 ;;;     gtk_list_box_prepend
 
-(test list-box-prepend
+(test gtk-list-box-prepend
   (let ((listbox (make-instance 'gtk:list-box)))
 
     (is-false (gtk:list-box-prepend listbox (make-instance 'gtk:list-box-row)))
@@ -127,7 +138,7 @@
 
 ;;;     gtk_list_box_insert
 
-(test list-box-prepend
+(test gtk-list-box-insert
   (let ((listbox (make-instance 'gtk:list-box)))
 
     (is-false (gtk:list-box-insert listbox (make-instance 'gtk:list-box-row) -1))
@@ -142,7 +153,7 @@
 ;;;     gtk_list_box_unselect_row
 ;;;     gtk_list_box_get_selected_row
 
-(test list-box-select-row
+(test gtk-list-box-select-row
   (let ((listbox (make-instance 'gtk:list-box))
         (listboxrow (make-instance 'gtk:list-box-row)))
 
@@ -159,7 +170,7 @@
 ;;;     gtk_list_box_select_all
 ;;;     gtk_list_box_unselect_all
 
-(test list-box-select-all
+(test gtk-list-box-select-all
   (let ((listbox (make-instance 'gtk:list-box :selection-mode :multiple)))
 
     (is-false (gtk:list-box-prepend listbox (make-instance 'gtk:list-box-row :visible t)))
@@ -216,7 +227,7 @@
 
 ;;;     gtk_list_box_get_selected_rows
 
-(test list-box-selected-rows
+(test gtk-list-box-selected-rows
   (let ((listbox (make-instance 'gtk:list-box :selection-mode :multiple))
         (row (make-instance 'gtk:list-box-row :visible t)))
 
@@ -239,7 +250,7 @@
 ;;;     gtk_list_box_get_adjustment
 ;;;     gtk_list_box_set_adjustment
 
-(test list-box-adjustment
+(test gtk-list-box-adjustment
   (let ((listbox (make-instance 'gtk:list-box)))
 
     (is-false (gtk:list-box-adjustment listbox))
@@ -251,7 +262,7 @@
 
 ;;;     gtk_list_box_get_row_at_index
 
-(test list-box-row-at-index
+(test gtk-list-box-row-at-index
   (let ((listbox (make-instance 'gtk:list-box))
         (listboxrow (make-instance 'gtk:list-box-row)))
 
@@ -274,7 +285,7 @@
 
 ;;;     gtk_list_box_set_filter_func
 
-(test list-box-set-filter-func
+(test gtk-list-box-set-filter-func
   (let ((listbox (make-instance 'gtk:list-box)))
 
     (is-false (gtk:list-box-prepend listbox (make-instance 'gtk:list-box-row)))
@@ -310,4 +321,4 @@
 ;;;     gtk_list_box_row_set_header
 ;;;     gtk_list_box_row_get_index
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-1-1
