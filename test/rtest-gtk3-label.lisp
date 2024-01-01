@@ -7,7 +7,7 @@
 
 ;;;     GtkLabel
 
-(test label-class
+(test gtk-label-class
   ;; Type check
   (is (g:type-is-object "GtkLabel"))
   ;; Check the registered name
@@ -39,6 +39,9 @@
   (is (equal '("activate-current-link" "activate-link" "copy-clipboard"
                "move-cursor" "populate-popup")
              (list-signals "GtkLabel")))
+  ;; CSS information
+  (is (string= "label"
+               (gtk:widget-class-css-name "GtkLabel")))
   ;; Check the class definition
   (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkLabel" GTK-LABEL
                        (:SUPERCLASS GTK-MISC :EXPORT T :INTERFACES
@@ -86,7 +89,7 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-(test label-properties
+(test gtk-label-properties
   (let ((label (make-instance 'gtk:label)))
     ;; angle
     (is (=  0.0d0 (gtk:label-angle label)))
@@ -180,13 +183,13 @@
 
 ;;;     gtk_label_new
 
-(test label-new
+(test gtk-label-new
   (is (eq 'gtk:label (type-of (gtk:label-new nil))))
   (is (eq 'gtk:label (type-of (gtk:label-new "text")))))
 
 ;;;     gtk_label-text
 
-(test label-text.1
+(test gtk-label-text.1
   (let ((label (gtk:label-new nil)))
     (is (string= "" (gtk:label-text label)))
     (is (string= "" (gtk:label-label label)))
@@ -194,7 +197,7 @@
     (is (string= "neu" (gtk:label-text label)))
     (is (string= "neu" (gtk:label-label label)))))
 
-(test label-text.2
+(test gtk-label-text.2
   (let ((label (gtk:label-new "text")))
     (is (string= "text" (gtk:label-text label)))
     (is (string= "text" (gtk:label-label label)))
@@ -204,7 +207,7 @@
 
 ;;;     gtk_label_set_markup
 
-(test label-set-markup
+(test gtk-label-set-markup
   (let ((label (make-instance 'gtk:label)))
     (is-false (gtk:label-set-markup label
                                     "<span style=\"italic\"><small>Small text</small></span>"))
@@ -218,7 +221,7 @@
 
 ;;;     gtk_label_set_markup_with_mnemonic
 
-(test label-set-markup-with-mnemonic
+(test gtk-label-set-markup-with-mnemonic
   (let ((label (make-instance 'gtk:label)))
     (is-false (gtk:label-set-markup-with-mnemonic label
                                                   "<span style=\"italic\"><small>_Small text</small></span>"))
@@ -233,7 +236,7 @@
 ;;;     gtk_label_set_line_wrap
 ;;;     gtk_label_get_line_wrap
 
-(test label-line-wrap
+(test gtk-label-line-wrap
   (let ((label (make-instance 'gtk:label)))
     (is-false (gtk:label-line-wrap label))
     (is-true (setf (gtk:label-line-wrap label) t))
@@ -242,7 +245,7 @@
 ;;;     gtk_label_set_line_wrap_mode
 ;;;     gtk_label_get_line_wrap_mode
 
-(test label-line-wrap-mode
+(test gtk-label-line-wrap-mode
   (let ((label (make-instance 'gtk:label)))
     (is (eq :word (gtk:label-line-wrap-mode label)))
     (is (eq :char (setf (gtk:label-line-wrap-mode label) :char)))
@@ -265,7 +268,7 @@
 
 ;;;     gtk_label_new_with_mnemonic
 
-(test label-new-with-mnemonic
+(test gtk-label-new-with-mnemonic
   (let ((label nil))
     (is (typep (setf label (gtk:label-new-with-mnemonic "_Print")) 'gtk:label))
     (is (string= "_Print" (gtk:label-label label)))
@@ -276,7 +279,7 @@
 ;;;     gtk_label_select_region
 ;;;     gtk_label_get_selection_bounds
 
-(test label-select-region
+(test gtk-label-select-region
   (let ((label (make-instance 'gtk:label :label "some text")))
     (is-true (setf (gtk:label-selectable label) t))
     (is-false (gtk:label-select-region label -1 -1))
@@ -302,7 +305,7 @@
 
 ;;;     gtk_label_set_text_with_mnemonic
 
-(test label-set-text-with-mnemonic
+(test gtk-label-set-text-with-mnemonic
   (let ((label (make-instance 'gtk:label)))
     (is-false (gtk:label-set-text-with-mnemonic label "_Print"))
     (is (string= "_Print" (gtk:label-label label)))
@@ -312,13 +315,13 @@
 
 ;;;     gtk_label_get_layout
 
-(test label-layout
+(test gtk-label-layout
   (let ((label (make-instance 'gtk:label :label "some text")))
     (is (eq 'pango:layout (type-of (gtk:label-layout label))))))
 
 ;;;     gtk_label_get_current_uri
 
-(test label-current-uri
+(test gtk-label-current-uri
   (let ((label (make-instance 'gtk:label :label "some text")))
     (is-false (gtk:label-current-uri label))))
 

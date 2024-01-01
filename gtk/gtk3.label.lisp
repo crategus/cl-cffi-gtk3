@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -35,58 +35,61 @@
 ;;;
 ;;;     GtkLabel
 ;;;
+;;; Accessors
+;;;
+;;;     gtk_label_get_angle
+;;;     gtk_label_set_angle
+;;;     gtk_label_get_attributes
+;;;     gtk_label_set_attributes
+;;;     gtk_label_get_ellipsize
+;;;     gtk_label_set_ellipsize
+;;;     gtk_label_get_justify
+;;;     gtk_label_set_justify
+;;;     gtk_label_get_label
+;;;     gtk_label_set_label
+;;;     gtk_label_get_lines
+;;;     gtk_label_set_lines
+;;;     gtk_label_get_max_width_chars
+;;;     gtk_label_set_max_width_chars
+;;;     gtk_label_get_mnemonic_keyval
+;;;     gtk_label_get_mnemonic_widget
+;;;     gtk_label_set_mnemonic_widget
+;;;     gtk_label_set_pattern
+;;;     gtk_label_get_selectable
+;;;     gtk_label_set_selectable
+;;;     gtk_label_get_single_line_mode
+;;;     gtk_label_set_single_line_mode
+;;;     gtk_label_get_track_visited_links
+;;;     gtk_label_set_track_visited_links
+;;;     gtk_label_get_use_markup
+;;;     gtk_label_set_use_markup
+;;;     gtk_label_get_use_underline
+;;;     gtk_label_set_use_underline
+;;;     gtk_label_get_width_chars
+;;;     gtk_label_set_width_chars
+;;;     gtk_label_get_xalign
+;;;     gtk_label_set_xalign
+;;;     gtk_label_get_yalign
+;;;     gtk_label_set_yalign
+;;;
 ;;; Functions
 ;;;
 ;;;     gtk_label_new
 ;;;     gtk_label_set_text
-;;;     gtk_label_set_attributes                           Accessor
 ;;;     gtk_label_set_markup
 ;;;     gtk_label_set_markup_with_mnemonic
-;;;     gtk_label_set_pattern                              Accessor
-;;;     gtk_label_set_justify                              Accessor
-;;;     gtk_label_set_xalign                               Accessor
-;;;     gtk_label_set_yalign                               Accessor
-;;;     gtk_label_set_ellipsize                            Accessor
-;;;     gtk_label_set_width_chars                          Accessor
-;;;     gtk_label_set_max_width_chars                      Accessor
 ;;;     gtk_label_set_line_wrap
 ;;;     gtk_label_set_line_wrap_mode
-;;;     gtk_label_set_lines                                Accessor
 ;;;     gtk_label_get_layout_offsets
-;;;     gtk_label_get_mnemonic_keyval                      Accessor
-;;;     gtk_label_get_selectable                           Accessor
 ;;;     gtk_label_get_text
 ;;;     gtk_label_new_with_mnemonic
 ;;;     gtk_label_select_region
-;;;     gtk_label_set_mnemonic_widget                      Accessor
-;;;     gtk_label_set_selectable                           Accessor
 ;;;     gtk_label_set_text_with_mnemonic
-;;;     gtk_label_get_attributes                           Accessor
-;;;     gtk_label_get_justify                              Accessor
-;;;     gtk_label_get_xalign                               Accessor
-;;;     gtk_label_get_yalign                               Accessor
-;;;     gtk_label_get_ellipsize                            Accessor
-;;;     gtk_label_get_width_chars                          Accessor
-;;;     gtk_label_get_max_width_chars                      Accessor
-;;;     gtk_label_get_label                                Accessor
 ;;;     gtk_label_get_layout
 ;;;     gtk_label_get_line_wrap
 ;;;     gtk_label_get_line_wrap_mode
-;;;     gtk_label_get_lines                                Accessor
-;;;     gtk_label_get_mnemonic_widget                      Accessor
 ;;;     gtk_label_get_selection_bounds
-;;;     gtk_label_get_use_markup                           Accessor
-;;;     gtk_label_get_use_underline                        Accessor
-;;;     gtk_label_get_single_line_mode                     Accessor
-;;;     gtk_label_get_angle                                Accessor
-;;;     gtk_label_set_label                                Accessor
-;;;     gtk_label_set_use_markup                           Accessor
-;;;     gtk_label_set_use_underline                        Accessor
-;;;     gtk_label_set_single_line_mode                     Accessor
-;;;     gtk_label_set_angle                                Accessor
 ;;;     gtk_label_get_current_uri
-;;;     gtk_label_set_track_visited_links                  Accessor
-;;;     gtk_label_get_track_visited_links                  Accessor
 ;;;
 ;;; Properties
 ;;;
@@ -216,9 +219,9 @@
 
 #+liber-documentation
 (setf (documentation 'label 'type)
- "@version{2023-3-5}
+ "@version{2023-12-29}
   @begin{short}
-    The @sym{gtk:label} widget displays a small amount of text.
+    The @class{gtk:label} widget displays a small amount of text.
   @end{short}
   As the name implies, most labels are used to label another widget such as
   a @class{gtk:button}, a @class{gtk:menu-item}, or a @class{gtk:combo-box}
@@ -333,10 +336,10 @@
                                    <a>GTK website</a></span> for more...\")
   @end{pre}
   It is possible to implement custom handling for links and their tooltips
-  with the \"activate-link\" signal and the @fun{gtk:label-current-uri}
+  with the @code{\"activate-link\"} signal and the @fun{gtk:label-current-uri}
   function.
   @begin[GtkLabel as GtkBuildable]{dictionary}
-    The @sym{gtk:label} implementation of the @class{gtk:buildable} interface
+    The @class{gtk:label} implementation of the @class{gtk:buildable} interface
     supports a custom @code{<attributes>} element, which supports any number of
     @code{<attribute>} elements. The @code{<attribute>} element has attributes
     named @code{name}, @code{value}, @code{start} and @code{end} and allows you
@@ -365,7 +368,7 @@ label
 ┊
 ╰── [link]
     @end{pre}
-    The @sym{gtk:label} implementation has a single CSS node with the name
+    The @class{gtk:label} implementation has a single CSS node with the name
     @code{label}. A wide variety of style classes may be applied to labels, such
     as the @code{.title}, @code{.subtitle}, @code{.dim-label} style classes. In
     the @class{gtk:shortcuts-window} widget, labels are used wth the
@@ -387,7 +390,7 @@ lambda (label)    :action
       programmatically. The default bindings for this signal are all forms of
       the @kbd{Enter} key.
       @begin[code]{table}
-        @entry[label]{The @sym{gtk:label} widget on which the signal was
+        @entry[label]{The @class{gtk:label} widget on which the signal was
           emitted.}
       @end{table}
     @subheading{The \"activate-link\" signal}
@@ -398,7 +401,7 @@ lambda (label uri)    :run-last
       to it to override the default behaviour, which is to call the
       @fun{gtk:show-uri} function.
       @begin[code]{table}
-        @entry[label]{The @sym{gtk:label} widget on which the signal was
+        @entry[label]{The @class{gtk:label} widget on which the signal was
           emitted.}
         @entry[uri]{A string with the URI that is activated.}
         @entry[Returns]{@em{True} if the link has been activated.}
@@ -411,7 +414,7 @@ lambda (label)    :action
       to the clipboard. The default binding for this signal is the @kbd{Ctrl-c}
       key.
       @begin[code]{table}
-        @entry[label]{The @sym{gtk:label} widget which received the signal.}
+        @entry[label]{The @class{gtk:label} widget which received the signal.}
       @end{table}
     @subheading{The \"move-cursor\" signal}
       @begin{pre}
@@ -432,7 +435,7 @@ lambda (label step count extend)    :action
         @item{@kbd{Home}/@kbd{End} keys move to the ends of the buffer.}
       @end{itemize}
       @begin[code]{table}
-        @entry[label]{The @sym{gtk:label} widget which received the signal.}
+        @entry[label]{The @class{gtk:label} widget which received the signal.}
         @entry[step]{The granularity of the move, as a value of the
           @symbol{gtk:movement-step} enumeration.}
         @entry[count]{An integer with the number of step units to move.}
@@ -447,7 +450,7 @@ lambda (label menu)    :run-last
       to the context menu, connect to this signal and append your menuitems to
       the menu.
       @begin[code]{table}
-        @entry[label]{The @sym{gtk:label} widget on which the signal is
+        @entry[label]{The @class{gtk:label} widget on which the signal is
           emitted.}
         @entry[menu]{The @class{gtk:menu} widget that is being populated.}
       @end{table}
@@ -481,7 +484,7 @@ lambda (label menu)    :run-last
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- label-angle ------------------------------------------------------------
+;;; --- gtk:label-angle --------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "angle" 'label) t)
@@ -506,16 +509,15 @@ lambda (label menu)    :run-last
   @begin{short}
     Accessor of the @slot[gtk:label]{angle} slot of the @class{gtk:label} class.
   @end{short}
-  The @sym{gtk:label-angle} function sets the angle of rotation for the label.
-  The @sym{(setf gtk:label-angle)} function sets the angle of rotation for the
-  label.
+  The @fun{gtk:label-angle} function sets the angle of rotation for the label.
+  The @setf{gtk:label-angle} function sets the angle of rotation for the label.
 
   An angle of 90 degrees reads from from bottom to top, an angle of 270 degrees,
   from top to bottom. The angle setting for the label is ignored if the label is
   selectable, wrapped, or ellipsized.
   @see-class{gtk:label}")
 
-;;; --- label-attributes -------------------------------------------------------
+;;; --- gtk:label-attributes ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "attributes" 'label) t)
@@ -536,8 +538,8 @@ lambda (label menu)    :run-last
     Accessor of the @slot[gtk:label]{attributes} slot of the @class{gtk:label}
     class.
   @end{short}
-  The @sym{gtk:label-attributes} function gets the attribute list that was set
-  on the label, if any. The @sym{(setf gtk:label-attributes)} function sets a
+  The @fun{gtk:label-attributes} function gets the attribute list that was set
+  on the label, if any. The @setf{gtk:label-attributes} function sets a
   attribute list. The attributes in the list are applied to the label text.
 
   This function does not reflect attributes that come from the labels markup,
@@ -561,7 +563,7 @@ lambda (label menu)    :run-last
   @see-function{gtk:label-use-markup}
   @see-function{gtk:label-use-underline}")
 
-;;; --- label-cursor-position --------------------------------------------------
+;;; --- gtk:label-cursor-position ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "cursor-position" 'label) t)
@@ -586,7 +588,7 @@ lambda (label menu)    :run-last
   The current position of the insertion cursor in chars.
   @see-class{gtk:label}")
 
-;;; --- label-ellipsize --------------------------------------------------------
+;;; --- gtk:label-ellipsize ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "ellipsize" 'label) t)
@@ -616,14 +618,14 @@ lambda (label menu)    :run-last
     Accessor of the @slot[gtk:label]{ellipsize} slot of the @class{gtk:label}
     class.
   @end{short}
-  The @sym{gtk:label-ellipsize} function returns the ellipsizing position of the
-  label. The @sym{(setf gtk:label-ellipsize)} function sets the mode used to
-  ellipsize, add an ellipsis: \"...\", to the text if there is not enough space
+  The @fun{gtk:label-ellipsize} function returns the ellipsizing position of the
+  label. The @setf{gtk:label-ellipsize} function sets the mode used to ellipsize,
+  add an ellipsis: \"...\", to the text if there is not enough space
   to render the entire string.
   @see-class{gtk:label}
   @see-symbol{pango:ellipsize-mode}")
 
-;;; --- label-justify ----------------------------------------------------------
+;;; --- gtk:label-justify ------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "justify" 'label) t)
@@ -647,21 +649,21 @@ lambda (label menu)    :run-last
     Accessor of the @slot[gtk:label]{justify} slot of the @class{gtk:label}
     class.
   @end{short}
-  The @sym{gtk:label-justify} function returns the justification of the label.
-  The @sym{(setf gtk:label-justify)} function sets the alignment of the lines
-  in the text of the label relative to each other.
+  The @fun{gtk:label-justify} function returns the justification of the label.
+  The @setf{gtk:label-justify} function sets the alignment of the lines in the
+  text of the label relative to each other.
 
   The @code{:left} value is the default value when the widget is first created
   with the @fun{gtk:label-new} function. If you instead want to set the
   alignment of the label as a whole, use the @fun{gtk:widget-halign} function
-  instead. The @sym{(setf gtk:label-justify)} function has no effect on labels
+  instead. The @setf{gtk:label-justify} function has no effect on labels
   containing only a single line.
   @see-class{gtk:label}
   @see-symbol{gtk:justification}
   @see-function{gtk:label-new}
   @see-function{gtk:widget-halign}")
 
-;;; --- label-label ------------------------------------------------------------
+;;; --- gtk:label-label --------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "label" 'label) t)
@@ -682,20 +684,20 @@ lambda (label menu)    :run-last
     Accessor of the @slot[gtk:label]{label} slot of the @class{gtk:label}
     class.
   @end{short}
-  The @sym{gtk:label-label} function returns the text of the label widget
+  The @fun{gtk:label-label} function returns the text of the label widget
   including any embedded underlines indicating mnemonics and Pango markup. See
   the @fun{gtk:label-text} function.
 
-  The @sym{(setf gtk:label-label)} function sets the text of the label. The
-  label is interpreted as including embedded underlines and/or Pango markup
-  depending on the values of the @slot[gtk:label]{use-underline} and
+  The @setf{gtk:label-label} function sets the text of the label. The label is
+  interpreted as including embedded underlines and/or Pango markup depending on
+  the values of the @slot[gtk:label]{use-underline} and
   @slot[gtk:label]{use-markup} properties.
   @see-class{gtk:label}
   @see-function{gtk:label-text}
   @see-function{gtk:label-use-markup}
   @see-function{gtk:label-use-underline}")
 
-;;; --- label-lines ------------------------------------------------------------
+;;; --- gtk:label-lines --------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "lines" 'label) t)
@@ -719,14 +721,14 @@ lambda (label menu)    :run-last
     Accessor of the @slot[gtk:label]{lines} slot of the @class{gtk:label}
     class.
   @end{short}
-  The @sym{gtk:label-lines} function gets the number of lines to which an
-  ellipsized, wrapping label should be limited. The @sym{(setf gtk:label-lines)}
+  The @fun{gtk:label-lines} function gets the number of lines to which an
+  ellipsized, wrapping label should be limited. The @setf{gtk:label-lines}
   function sets the number of lines to which an ellipsized, wrapping label
   should be limited. This has no effect if the label is not wrapping or
   ellipsized. Set this to -1 if you do not want to limit the number of lines.
   @see-class{gtk:label}")
 
-;;; --- label-max-width-chars --------------------------------------------------
+;;; --- gtk:label-max-width-chars ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "max-width-chars" 'label) t)
@@ -752,12 +754,12 @@ lambda (label menu)    :run-last
     Accessor of the @slot[gtk:label]{max-width-chars} slot of the
     @class{gtk:label} class.
   @end{short}
-  The @sym{gtk:label-max-width-chars} function returns the maximum width of the
-  label in characters. The @sym{(setf gtk:label-max-width-chars)} function sets
-  the desired maximum width in characters of the label to @arg{n-chars}.
+  The @fun{gtk:label-max-width-chars} function returns the maximum width of the
+  label in characters. The @setf{gtk:label-max-width-chars} function sets the
+  desired maximum width in characters of the label to @arg{n-chars}.
   @see-class{gtk:label}")
 
-;;; --- label-mnemonic-keyval --------------------------------------------------
+;;; --- gtk:label-mnemonic-keyval ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "mnemonic-keyval" 'label) t)
@@ -778,7 +780,7 @@ lambda (label menu)    :run-last
     @class{gtk:label} class.
   @end{short}
   If the label has been set so that it has a mnemonic key the
-  @sym{gtk:label-mnemonic-keyval} function returns the keyval used for the
+  @fun{gtk:label-mnemonic-keyval} function returns the keyval used for the
   mnemonic accelerator. If there is no mnemonic set up it returns
   @code{#xffffff}.
   @begin[Example]{dictionary}
@@ -790,7 +792,7 @@ lambda (label menu)    :run-last
   @end{dictionary}
   @see-class{gtk:label}")
 
-;;; --- label-mnemonic-widget --------------------------------------------------
+;;; --- gtk:label-mnemonic-widget ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "mnemonic-widget" 'label) t)
@@ -811,7 +813,7 @@ lambda (label menu)    :run-last
     Accessor of the @slot[gtk:label]{mnemonic-widget} slot of the
     @class{gtk:label} class.
   @end{short}
-  The @sym{gtk:label-mnemonic-widget} function returns the target of the
+  The @fun{gtk:label-mnemonic-widget} function returns the target of the
   mnemonic of the label, or @code{nil} if none has been set and the default
   algorithm will be used.
 
@@ -826,10 +828,10 @@ lambda (label menu)    :run-last
   widget, but sometimes, i.e. when the target is a @class{gtk:entry} widget next
   to the label, you need to set it explicitly using this function.
 
-  The target widget will be accelerated by emitting the \"mnemonic-activate\"
-  signal on it. The default handler for this signal will activate the widget if
-  there are no mnemonic collisions and toggle focus between the colliding
-  widgets otherwise.
+  The target widget will be accelerated by emitting the
+  @code{\"mnemonic-activate\"} signal on it. The default handler for this signal
+  will activate the widget if there are no mnemonic collisions and toggle focus
+  between the colliding widgets otherwise.
   @see-class{gtk:label}
   @see-class{gtk:widget}
   @see-function{gtk:label-set-markup-with-mnemonic}
@@ -837,7 +839,7 @@ lambda (label menu)    :run-last
   @see-function{gtk:label-new-with-mnemonic}
   @see-function{gtk:label-use-underline}")
 
-;;; --- label-pattern ----------------------------------------------------------
+;;; --- gtk:label-pattern ------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "pattern" 'label) t)
@@ -858,13 +860,13 @@ lambda (label menu)    :run-last
     Accessor of the @slot[gtk:label]{pattern} slot of the @class{gtk:label}
     class.
   @end{short}
-  The @sym{(setf gtk:label-pattern)} function sets the pattern of underlines you
-  want under the existing text within the label. For example if the current text
-  of the label says \"FooBarBaz\" passing a pattern of @code{\"___   ___\"} will
+  The @setf{gtk:label-pattern} function sets the pattern of underlines you want
+  under the existing text within the label. For example if the current text of
+  the label says \"FooBarBaz\" passing a pattern of @code{\"___   ___\"} will
   underline \"Foo\" and \"Baz\" but not \"Bar\".
   @see-class{gtk:label}")
 
-;;; --- label-selectable -------------------------------------------------------
+;;; --- gtk:label-selectable ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "selectable" 'label) t)
@@ -889,7 +891,7 @@ lambda (label menu)    :run-last
   paste.
   @see-class{gtk:label}")
 
-;;; --- label-selection-bound --------------------------------------------------
+;;; --- gtk:label-selection-bound ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "selection-bound" 'label) t)
@@ -914,7 +916,7 @@ lambda (label menu)    :run-last
   The position of the opposite end of the selection from the cursor in chars.
   @see-class{gtk:label}")
 
-;;; --- label-single-line-mode -------------------------------------------------
+;;; --- gtk:label-single-line-mode ---------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "single-line-mode" 'label) t)
@@ -940,12 +942,12 @@ lambda (label menu)    :run-last
     Accessor of the @slot[gtk:label]{single-line-mode} slot of the
     @class{gtk:label} class.
   @end{short}
-  The @sym{gtk:label-single-line-mode} function returns whether the label is in
-  single line mode. The @sym{(setf gtk:label-single-line-mode)} function sets
-  whether the label is in single line mode.
+  The @fun{gtk:label-single-line-mode} function returns whether the label is in
+  single line mode. The @setf{gtk:label-single-line-mode} function sets whether
+  the label is in single line mode.
   @see-class{gtk:label}")
 
-;;; --- label-track-visited-links ----------------------------------------------
+;;; --- gtk:label-track-visited-links ------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "track-visited-links" 'label) t)
@@ -970,13 +972,13 @@ lambda (label menu)    :run-last
     Accessor of the @slot[gtk:label]{track-visited-links} slot of the
     @class{gtk:label} class.
   @end{short}
-  The @sym{gtk:label-track-visited-links} function returns whether the label is
+  The @fun{gtk:label-track-visited-links} function returns whether the label is
   currently keeping track of clicked links. The
-  @sym{(setf gtk:label-track-visited-links)} function sets whether the label
-  should keep track of clicked links and use a different color for them.
+  @setf{gtk:label-track-visited-links} function sets whether the label should
+  keep track of clicked links and use a different color for them.
   @see-class{gtk:label}")
 
-;;; --- label-use-markup -------------------------------------------------------
+;;; --- gtk:label-use-markup ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "use-markup" 'label) t)
@@ -998,14 +1000,14 @@ lambda (label menu)    :run-last
     Accessor of the @slot[gtk:label]{use-markup} slot of the @class{gtk:label}
     class.
   @end{short}
-  The @sym{gtk:label-use-markup} function returns whether the text of the label
+  The @fun{gtk:label-use-markup} function returns whether the text of the label
   is interpreted as marked up with the Pango text markup language. The
-  @sym{(setf gtk:label-use-markup)} function sets whether the text of the label
+  @setf{gtk:label-use-markup} function sets whether the text of the label
   contains markup. See the @fun{gtk:label-set-markup} function.
   @see-class{gtk:label}
   @see-function{gtk:label-set-markup}")
 
-;;; --- label-use-underline ----------------------------------------------------
+;;; --- gtk:label-use-underline ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "use-underline" 'label) t)
@@ -1027,13 +1029,13 @@ lambda (label menu)    :run-last
     Accessor of the @slot[gtk:label]{use-underline} slot of the
     @class{gtk:label} class.
   @end{short}
-  The @sym{gtk:label-use-underline} function returns whether an embedded
+  The @fun{gtk:label-use-underline} function returns whether an embedded
   underline in the label indicates a mnemonic. If @em{true}, an underline in the
   text indicates the next character should be used for the mnemonic accelerator
   key.
   @see-class{gtk:label}")
 
-;;; --- label-width-chars ------------------------------------------------------
+;;; --- gtk:label-width-chars --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "width-chars" 'label) t)
@@ -1059,12 +1061,12 @@ lambda (label menu)    :run-last
     Accessor of the @slot[gtk:label]{width-chars} slot of the @class{gtk:label}
     class.
   @end{short}
-  The @sym{gtk:label-width-chars} function retrieves the desired width of the
-  label, in characters. The @sym{(setf gtk:label-width-chars)} function sets
-  the desired width in characters of the label to @arg{n-chars}.
+  The @fun{gtk:label-width-chars} function retrieves the desired width of the
+  label, in characters. The @setf{gtk:label-width-chars} function sets the
+  desired width in characters of the label to @arg{n-chars}.
   @see-class{gtk:label}")
 
-;;; --- label-wrap -------------------------------------------------------------
+;;; --- gtk:label-wrap ---------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "wrap" 'label) t)
@@ -1087,7 +1089,7 @@ lambda (label menu)    :run-last
   If set, wrap lines if the text becomes too wide.
   @see-class{gtk:label}")
 
-;;; --- label-wrap-mode --------------------------------------------------------
+;;; --- gtk:label-wrap-mode ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "wrap-mode" 'label) t)
@@ -1118,7 +1120,7 @@ lambda (label menu)    :run-last
   @see-symbol{pango:wrap-mode}
   @see-function{gtk:label-wrap}")
 
-;;; --- label-xalign -----------------------------------------------------------
+;;; --- gtk:label-xalign -------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "xalign" 'label) t)
@@ -1143,13 +1145,12 @@ lambda (label menu)    :run-last
     Accessor of the @slot[gtk:label]{xalign} slot of the @class{gtk:label}
     class.
   @end{short}
-  The @sym{gtk:label-xalign} function sets the @code{xalign} property for the
-  label. The @sym{(setf gtk:label-xalign)} function sets the @code{xalign}
-  property.
+  The @fun{gtk:label-xalign} function sets the @code{xalign} property for the
+  label. The @setf{gtk:label-xalign} function sets the @code{xalign} property.
   @see-class{gtk:label}
   @see-function{gtk:label-yalign}")
 
-;;; --- label-yalign -----------------------------------------------------------
+;;; --- gtk:label-yalign -------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "yalign" 'label) t)
@@ -1174,9 +1175,9 @@ lambda (label menu)    :run-last
     Accessor of the @slot[gtk:label]{yalign} slot of the @class{gtk:label}
     class.
   @end{short}
-  The @sym{gtk:label-yalign} function sets the @code{yalign} property for the
-  label. The @sym{(setf gtk:label-yalign)} function sets the @code{yalign}
-  property for the label.
+  The @fun{gtk:label-yalign} function sets the @code{yalign} property for the
+  label. The @setf{gtk:label-yalign} function sets the @code{yalign} property
+  for the label.
   @see-class{gtk:label}
   @see-function{gtk:label-xalign}")
 
@@ -1223,8 +1224,8 @@ lambda (label menu)    :run-last
   @begin{short}
     Accessor of the text in the label.
   @end{short}
-  The @sym{gtk:label-text} function fetches the text from a label, as displayed
-  on the screen. The @sym{(setf gtk:label-text)} function sets the text.
+  The @fun{gtk:label-text} function fetches the text from a label, as displayed
+  on the screen. The @setf{gtk:label-text} function sets the text.
 
   It overwrites any text that was there before. This will also clear any
   previously set mnemonic accelerators. This does not include any embedded
@@ -1306,9 +1307,9 @@ lambda (label menu)    :run-last
   @begin{short}
     Accessor of the line wrap setting of the label.
   @end{short}
-  The @sym{gtk:label-line-wrap} function returns whether lines in the label are
-  automatically wrapped. The @sym{(setf gtk:label-line-wrap)} function toggles
-  line wrapping of the label.
+  The @fun{gtk:label-line-wrap} function returns whether lines in the label are
+  automatically wrapped. The @setf{gtk:label-line-wrap} function toggles line
+  wrapping of the label.
 
   @em{True} makes it break lines if text exceeds the size of the widget.
   @em{False} lets the text get cut off by the edge of the widget if it exceeds
@@ -1348,9 +1349,9 @@ lambda (label menu)    :run-last
   @begin{short}
     Accessor of the line wrap mode of the label.
   @end{short}
-  The @sym{gtk:label-line-wrap-mode} function returns the line wrap mode used by
-  the label. The @sym{(setf gtk:label-line-wrap-mode)} function sets the line
-  wrap mode of the label.
+  The @fun{gtk:label-line-wrap-mode} function returns the line wrap mode used by
+  the label. The @setf{gtk:label-line-wrap-mode} function sets the line wrap
+  mode of the label.
 
   If line wrapping is on this controls how the line wrapping is done. The
   default is @code{:word} which means wrap on word boundaries.
@@ -1390,7 +1391,7 @@ lambda (label menu)    :run-last
   the events, and pack the label inside it, since labels are windowless. Labels
   return @em{false} from the @fun{gtk:widget-has-window} function. Remember
   when using the @class{pango:layout} functions you need to convert to and from
-  pixels using the @fun{pango:pixels} function or the @var{+pango-scale+}
+  pixels using the @fun{pango:pixels} function or the @var{pango:+pango-scale+}
   constant.
   @begin[Example]{dictionary}
     @begin{pre}
@@ -1405,7 +1406,7 @@ lambda (label menu)    :run-last
   @see-class{gtk:label}
   @see-class{gtk:event-box}
   @see-class{pango:layout}
-  @see-variable{+pango-scale+}
+  @see-variable{pango:+pango-scale+}
   @see-function{pango:pixels}
   @see-function{gtk:widget-has-window}"
   (cffi:with-foreign-objects ((x :int) (y :int))
@@ -1567,8 +1568,8 @@ lambda (label menu)    :run-last
   The active link is the one under the mouse pointer or, in a selectable label,
   the link in which the text cursor is currently positioned.
 
-  This function is intended for use in a \"activate-link\" signal handler or
-  for use in a \"query-tooltip\" signal handler.
+  This function is intended for use in a @code{\"activate-link\"} signal handler
+  or for use in a @code{\"query-tooltip\"} signal handler.
   @see-class{gtk:label}"
   (label (g:object label)))
 

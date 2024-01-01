@@ -1,4 +1,6 @@
-;;;; Example Labels - 2022-12-21
+;;;; Example Labels
+;;;;
+;;;; 2024-1-1
 
 (in-package :gtk3-example)
 
@@ -41,11 +43,11 @@ Maecenas sagittis auctor leo a dictum. Sed at auctor."))
                  :label (format nil "<b>~A</b>" text)))
 
 (defun example-label (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :type :toplevel
                                  :application application
-                                 :title "Example Labels"
+                                 :title "Labels"
                                  :default-width 250
                                  :border-width 18))
           (vbox1 (make-instance 'gtk:box
@@ -61,7 +63,7 @@ Maecenas sagittis auctor leo a dictum. Sed at auctor."))
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Create a Normal Label
       (gtk:box-pack-start vbox1
                           (make-heading "Normal Label")

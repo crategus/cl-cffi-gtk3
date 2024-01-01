@@ -1,13 +1,15 @@
-;;;; Example More Labels - 2022-12-21
+;;;; Example More Labels
+;;;;
+;;;; 2024-1-1
 
 (in-package :gtk3-example)
 
 (defun example-label-more (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :type :toplevel
                                  :application application
-                                 :title "Example More Labels"
+                                 :title "More Labels"
                                  :default-width 300
                                  :border-width 12))
           (vbox1 (make-instance 'gtk:box
@@ -25,7 +27,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (gtk:box-pack-start hbox
                           (make-instance 'gtk:label
                                          :label "Angle 90°"
