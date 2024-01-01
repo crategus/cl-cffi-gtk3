@@ -1,4 +1,6 @@
-;;;; Example Progress Bar- 2022-12-22
+;;;; Example Progress Bar
+;;;;
+;;;; 2024-1-1
 
 (in-package :gtk3-example)
 
@@ -14,13 +16,13 @@
                     0.01)))
         (when (> val 1.0) (setq val 0.0))
         (setf (gtk:progress-bar-fraction (pbar-widget pdata)) val)))
-  +g-source-continue+)
+  glib:+g-source-continue+)
 
 (defun example-progress-bar (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :type :toplevel
-                                 :title "Example Progress Bar"
+                                 :title "Progress Bar"
                                  :application application
                                  :default-width 320))
           (pdata (make-pbar :widget (make-instance 'gtk:progress-bar)))
@@ -33,7 +35,7 @@
                           (declare (ignore widget))
                           (g:source-remove (pbar-timer pdata))
                           (setf (pbar-timer pdata) 0)
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (let ((provider (gtk:css-provider-new))
             (context (gtk:widget-style-context (pbar-widget pdata)))
             (css-data "progressbar > trough,
@@ -42,7 +44,7 @@
          (gtk:css-provider-load-from-data provider css-data)
          (gtk:style-context-add-provider context
                                          provider
-                                         +gtk-priority-application+))
+                                         gtk:+gtk-priority-application+))
       (setf (pbar-timer pdata)
             (g:timeout-add 100
                            (lambda ()

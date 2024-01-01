@@ -7,7 +7,7 @@
 
 ;;;     GtkProgressBar
 
-(test progress-bar-class
+(test gtk-progress-bar-class
   ;; Type check
   (is (g:type-is-object "GtkProgressBar"))
   ;; Check the registered name
@@ -37,6 +37,9 @@
   ;; Check the signals
   (is (equal '()
              (list-signals "GtkProgressBar")))
+  ;; CSS information
+  (is (string= "progressbar"
+               (gtk:widget-class-css-name "GtkProgressBar")))
   ;; Check the class definition
   (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkProgressBar" GTK-PROGRESS-BAR
                        (:SUPERCLASS GTK-WIDGET :EXPORT T :INTERFACES
@@ -57,7 +60,7 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-(test progress-bar-propertiers
+(test gtk-progress-bar-properties
   (let ((progress-bar (make-instance 'gtk:progress-bar)))
     ;; ellipsize
     (is (eq :none (gtk:progress-bar-ellipsize progress-bar)))
@@ -86,7 +89,7 @@
 
 ;;; --- Style Properties -------------------------------------------------------
 
-(test progress-bar-style-properties
+(test gtk-progress-bar-style-properties
   (let ((bar (make-instance 'gtk:progress-bar)))
     (is (=   6 (gtk:widget-style-property bar "min-horizontal-bar-height")))
     (is (= 150 (gtk:widget-style-property bar "min-horizontal-bar-width")))
@@ -99,9 +102,9 @@
 
 ;;;     gtk_progress_bar_new
 
-(test progress-bar-new
+(test gtk-progress-bar-new
   (is (typep (gtk:progress-bar-new) 'gtk:progress-bar)))
 
 ;;;     gtk_progress_bar_pulse
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-1-1
