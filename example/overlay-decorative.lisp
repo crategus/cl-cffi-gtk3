@@ -1,12 +1,14 @@
-;;;; Example Decorative Overlay - 2023-2-18
+;;;; Example Decorative Overlay
 ;;;;
 ;;;; Another example of an overlay with some decorative and some interactive
 ;;;; controls.
+;;;;
+;;;; 2024-1-1
 
 (in-package :gtk3-example)
 
-(defun example-overlay-decorative (&optional (application nil))
-  (within-main-loop
+(defun example-overlay-decorative (&optional application)
+  (gtk:within-main-loop
     (let* ((window (make-instance 'gtk:window
                                   :title "Overlay Decorative"
                                   :type :toplevel
@@ -26,7 +28,7 @@
       (g:signal-connect window "destroy"
                                (lambda (widget)
                                  (declare (ignore widget))
-                                 (leave-gtk-main)))
+                                 (gtk:leave-gtk-main)))
       (g:signal-connect adjustment "value-changed"
           (lambda (adjustment)
             (let ((value (truncate (gtk:adjustment-value adjustment))))

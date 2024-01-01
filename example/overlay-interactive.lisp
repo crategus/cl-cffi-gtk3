@@ -1,15 +1,17 @@
-;;;; Example Interactive Overlay - 2022-12-22
+;;;; Example Interactive Overlay
 ;;;;
 ;;;; Shows widgets in static positions over a main widget. The overlayed widgets
 ;;;; can be interactive controls such as the entry in this example, or just
 ;;;; decorative, like the big blue label.
+;;;;
+;;;; 2024-1-1
 
 (in-package :gtk3-example)
 
-(defun example-overlay-interactive (&optional (application nil))
-  (within-main-loop
+(defun example-overlay-interactive (&optional application)
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :title "Example Interactive Overlay"
+                                 :title "Interactive Overlay"
                                  :type :toplevel
                                  :application application
                                  :default-width 500
@@ -24,7 +26,7 @@
       (g:signal-connect window "destroy"
                                (lambda (widget)
                                  (declare (ignore widget))
-                                 (leave-gtk-main)))
+                                 (gtk:leave-gtk-main)))
       (dotimes (j 5)
         (dotimes (i 5)
           (let ((button (make-instance 'gtk:button

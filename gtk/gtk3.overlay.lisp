@@ -72,9 +72,6 @@
 ;;; struct GtkOverlay
 ;;; ----------------------------------------------------------------------------
 
-;; TODO: The "get-child-position" signal handler has an return location
-;; of type GdkRectangle. Check the Lisp implementation of a handler.
-
 (gobject:define-g-object-class "GtkOverlay" overlay
   (:superclass bin
     :export t
@@ -85,9 +82,9 @@
 
 #+liber-documentation
 (setf (documentation 'overlay 'type)
- "@version{#2023-3-21}
+ "@version{2024-1-1}
   @begin{short}
-    The @sym{gtk:overlay} widget is a container which contains a single main
+    The @class{gtk:overlay} widget is a container which contains a single main
     widget, on top of which it can place overlay widgets.
   @end{short}
   The position of each overlay widget is determined by its
@@ -101,15 +98,15 @@
   values.
 
   More complicated placement of overlays is possible by connecting to the
-  \"get-child-position\" signal.
+  @code{\"get-child-position\"} signal.
   @begin[GtkOverlay as GtkBuildable]{dictionary}
-    The @sym{gtk:overlay} implementation of the @class{gtk:buildable} interface
-    supports placing a child widget as an overlay by specifying
+    The @class{gtk:overlay} implementation of the @class{gtk:buildable}
+    interface supports placing a child widget as an overlay by specifying
     @code{\"overlay\"} as the @code{\"type\"} attribute of a @code{<child>}
     element.
   @end{dictionary}
   @begin[CSS nodes]{dictionary}
-    The @sym{gtk:overlay} implementation has a single CSS node with the name
+    The @class{gtk:overlay} implementation has a single CSS node with the name
     @code{overlay}. Overlay children whose alignments cause them to be
     positioned at an edge get the @code{.left}, @code{.right}, @code{.top},
     and/or @code{.bottom} style classes according to their position.
@@ -145,7 +142,8 @@ lambda (overlay widget allocation)    :run-last
       full-width/height. If the main child is a @class{gtk:scrolled-window}
       widget, the overlays are placed relative to its contents.
       @begin[code]{table}
-        @entry[overlay]{The @sym{gtk:overlay} widget which emitted the signal.}
+        @entry[overlay]{The @class{gtk:overlay} widget which emitted the
+          signal.}
         @entry[widget]{The @class{gtk:widget} child widget to position.}
         @entry[allocation]{Return location of type @class{gdk:rectangle} for
           the allocation.}
@@ -159,7 +157,7 @@ lambda (overlay widget allocation)    :run-last
 ;;; Child Property and Child Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- overlay-child-index ----------------------------------------------------
+;;; --- gtk:overlay-child-index ------------------------------------------------
 
 (define-child-property overlay-child-index "index" "gint" t t t)
 
@@ -167,7 +165,7 @@ lambda (overlay widget allocation)    :run-last
 (setf (liber:alias-for-function 'overlay-child-index)
       "Accessor"
       (documentation 'overlay-child-index 'function)
- "@version{#2023-3-21}
+ "@version{2024-1-1}
   @syntax[]{(gtk:overlay-child-index object) => index)}
   @syntax[]{(setf (gtk:overlay-child-index object) index)}
   @argument[container]{a @class{gtk:overlay} widget}
@@ -181,7 +179,7 @@ lambda (overlay widget allocation)    :run-last
   @see-class{gtk:overlay}
   @see-class{gtk:widget}")
 
-;;; --- overlay-child-pass-through ---------------------------------------------
+;;; --- gtk:overlay-child-pass-through -----------------------------------------
 
 (define-child-property overlay-child-pass-through
                        "pass-through" "gboolean" t t t)
@@ -190,7 +188,7 @@ lambda (overlay widget allocation)    :run-last
 (setf (liber:alias-for-function 'overlay-child-pass-through)
       "Accessor"
       (documentation 'overlay-child-pass-through 'function)
- "@version{#2023-3-21}
+ "@version{2024-1-1}
   @syntax[]{(gtk:overlay-child-pass-through container child) => setting)}
   @syntax[]{(setf (gtk:overlay-child-pass-through container child) setting)}
   @argument[container]{a @class{gtk:overlay} widget}
@@ -212,11 +210,9 @@ lambda (overlay widget allocation)    :run-last
 
 (defun overlay-new ()
  #+liber-documentation
- "@version{#2023-3-21}
-  @return{A new @class{gtk:overlay} widget.}
-  @begin{short}
-    Creates a new overlay container.
-  @end{short}
+ "@version{2024-1-1}
+  @return{The new @class{gtk:overlay} widget.}
+  @short{Creates a new overlay container.}
   @see-class{gtk:overlay}"
   (make-instance 'overlay))
 
@@ -228,7 +224,7 @@ lambda (overlay widget allocation)    :run-last
 
 (cffi:defcfun ("gtk_overlay_add_overlay" overlay-add-overlay) :void
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{2024-1-1}
   @argument[overlay]{a @class{gtk:overlay} widget}
   @argument[widget]{a @class{gtk:widget} child widget to be added to the
     container}
@@ -256,7 +252,7 @@ lambda (overlay widget allocation)    :run-last
 
 (cffi:defcfun ("gtk_overlay_reorder_overlay" overlay-reorder-overlay) :void
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{2024-1-1}
   @argument[overlay]{a @class{gtk:overlay} widget}
   @argument[child]{a overlaid @class{gtk:widget} child widget to move}
   @argument[position]{an integer with the new index for the child widget in the

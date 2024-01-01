@@ -1,11 +1,9 @@
-;;;; Example Overlay Transparent - 2021-12-17
+;;;; Example Overlay Transparent
 ;;;;
 ;;;; Use transparent background on GdkWindows to create a shadow effect on a
 ;;;; GtkOverlay widget.
 ;;;;
-;;;; TODO:
-;;;;
-;;;; This example does not seem to work as expected.
+;;;; 2024-1-1
 
 (in-package :gtk3-example)
 
@@ -95,10 +93,10 @@
       (cairo:fill cr)
       (cairo:pattern-destroy pattern))))
 
-(defun example-overlay-transparent (&optional (application nil))
-  (within-main-loop
+(defun example-overlay-transparent (&optional application)
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :title "Example Overlay Transparent"
+                                 :title "Overlay Transparent"
                                  :type :toplevel
                                  :application application
                                  :default-width 380
@@ -118,7 +116,7 @@
       (g:signal-connect window "destroy"
                                (lambda (widget)
                                  (declare (ignore widget))
-                                 (leave-gtk-main)))
+                                 (gtk:leave-gtk-main)))
       (g:signal-connect entry "draw"
           (lambda (entry cr)
             (let ((cr (glib:pointer cr))
@@ -135,7 +133,7 @@
       (gtk:css-provider-load-from-data provider css)
       (gtk:style-context-add-provider (gtk:widget-style-context entry)
                                       provider
-                                      +gtk-priority-application+)
+                                      gtk:+gtk-priority-application+)
       (gtk:overlay-add-overlay overlay entry)
       (gtk:container-add scrolled view)
       (gtk:container-add overlay scrolled)
