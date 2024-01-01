@@ -1,9 +1,11 @@
-;;;; Scrolled Window - 2023-2-18
+;;;; Scrolled Window
+;;;;
+;;;; 2024-1-1
 
 (in-package :gtk3-example)
 
 (defun example-scrolled-window (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :title "Scrolled Window"
                                  :type :toplevel
@@ -17,7 +19,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Pack and show the widgets
       (gtk:container-add scrolled image)
       (gtk:container-add window scrolled)

@@ -7,7 +7,7 @@
 
 ;;;     GtkPolicyType
 
-(test policy-type
+(test gtk-policy-type
   ;; Check the type
   (is (g:type-is-enum "GtkPolicyType"))
   ;; Check the type initializer
@@ -39,7 +39,7 @@
 
 ;;;     GtkCornerType
 
-(test corner-type
+(test gtk-corner-type
   ;; Check the type
   (is (g:type-is-enum "GtkCornerType"))
   ;; Check the type initializer
@@ -71,7 +71,7 @@
 
 ;;;     GtkScrolledWindow
 
-(test scrolled-window-class
+(test gtk-scrolled-window-class
   ;; Type check
   (is (g:type-is-object "GtkScrolledWindow"))
   ;; Check the registered name
@@ -106,8 +106,11 @@
   ;; Check the signals
   (is (equal '("edge-overshot" "edge-reached" "move-focus-out" "scroll-child")
              (list-signals "GtkScrolledWindow")))
+  ;; CSS information
+  (is (string= "scrolledwindow"
+               (gtk:widget-class-css-name "GtkScrolledWindow")))
   ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkScrolledWindow" 
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkScrolledWindow"
                                              GTK-SCROLLED-WINDOW
                        (:SUPERCLASS GTK-BIN :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable")
@@ -157,7 +160,7 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-(test scrolled-window-properties
+(test gtk-scrolled-window-properties
   (let ((window (make-instance 'gtk:scrolled-window)))
     (is (eq 'gtk:adjustment (type-of (gtk:scrolled-window-hadjustment window))))
     (is (eq :automatic (gtk:scrolled-window-hscrollbar-policy window)))
@@ -177,7 +180,7 @@
 
 ;;; --- Style Properties -------------------------------------------------------
 
-(test scrolled-window-style-properties
+(test gtk-scrolled-window-style-properties
   (let ((window (make-instance 'gtk:scrolled-window)))
     (is (= 0 (gtk:widget-style-property window "scrollbar-spacing")))
     (is-false (gtk:widget-style-property window "scrollbar-within-bevel"))))
@@ -193,7 +196,7 @@
 
 ;;;     gtk_scrolled_window_new
 
-(test scrolled-window-new
+(test gtk-scrolled-window-new
   (is (eq 'gtk:scrolled-window (type-of (gtk:scrolled-window-new))))
   (is (eq 'gtk:scrolled-window
           (type-of (gtk:scrolled-window-new (make-instance 'gtk:adjustment)))))
@@ -207,7 +210,7 @@
 ;;;     gtk_scrolled_window_get_hscrollbar
 ;;;     gtk_scrolled_window_get_vscrollbar
 
-(test scrolled-window-scrollbar
+(test gtk-scrolled-window-scrollbar
   (let ((window (make-instance 'gtk:scrolled-window)))
     (is (eq 'gtk:scrollbar (type-of (gtk:scrolled-window-hscrollbar window))))
     (is (eq 'gtk:scrollbar (type-of (gtk:scrolled-window-vscrollbar window))))))
@@ -215,7 +218,7 @@
 ;;;     gtk_scrolled_window_get_policy
 ;;;     gtk_scrolled_window_set_policy
 
-(test scrolled-window-policy
+(test gtk-scrolled-window-policy
   (let ((window (make-instance 'gtk:scrolled-window)))
     (is (equal (list :automatic :automatic)
                (multiple-value-list (gtk:scrolled-window-policy window))))
@@ -227,7 +230,7 @@
 
 ;;;     gtk_scrolled_window_add_with_viewport
 
-(test scrolled-window-add-with-viewport
+(test gtk-scrolled-window-add-with-viewport
   (let ((window (make-instance 'gtk:scrolled-window))
         (button (make-instance 'gtk:button)))
     ;; Use the deprecated function gtk:scrolled-window-add-with-viewport
@@ -244,7 +247,7 @@
 ;;;     gtk_scrolled_window_get_placement
 ;;;     gtk_scrolled_window_set_placement
 
-(test scrolled-window-placement
+(test gtk-scrolled-window-placement
   (let ((window (make-instance 'gtk:scrolled-window)))
     (is (eq :top-left (gtk:scrolled-window-placement window)))
     (is (eq :top-right (setf (gtk:scrolled-window-placement window) :top-right)))
@@ -252,7 +255,7 @@
 
 ;;;     gtk_scrolled_window_unset_placement
 
-(test scrolled-window-unset-placement
+(test gtk-scrolled-window-unset-placement
   (let ((window (make-instance 'gtk:scrolled-window)))
     (is (eq :top-right (setf (gtk:scrolled-window-placement window) :top-right)))
     (is (eq :top-right (gtk:scrolled-window-placement window)))
@@ -262,10 +265,10 @@
 ;;;     gtk_scrolled_window_get_capture_button_press
 ;;;     gtk_scrolled_window_set_capture_button_press
 
-(test scrolled-window-capture-button-press
+(test gtk-scrolled-window-capture-button-press
   (let ((window (make-instance 'gtk:scrolled-window)))
     (is-true (gtk:scrolled-window-capture-button-press window))
     (is-false (setf (gtk:scrolled-window-capture-button-press window) nil))
     (is-false (gtk:scrolled-window-capture-button-press window))))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-1-1
