@@ -1,17 +1,14 @@
-;;;; Example Revealer Icon - 2022-12-22
+;;;; Example Revealer Icon
 ;;;;
 ;;;; GtkRevealer is a container that animates showing and hiding
 ;;;; of its sole child with nice transitions.
 ;;;;
-;;;; TODO: This example uses the gtk:widget-mapped function, but the
-;;;; documentation says: This function should only ever be called in a derived
-;;;; "map" or "unmap" implementation of the widget.
-;;;; What is a better implementation?
+;;;; 2024-1-1
 
 (in-package :gtk3-example)
 
-(defun example-revealer-icon (&optional (application nil))
-  (within-main-loop
+(defun example-revealer-icon (&optional application)
+  (gtk:within-main-loop
     (let* ((count 0)
            (timeout 0)
            (builder (gtk:builder-new-from-file
@@ -20,10 +17,10 @@
       (g:signal-connect window "destroy"
                                (lambda (widget)
                                  (declare (ignore widget))
-                                 (when (not (= timeout 0))
+                                 (unless (= timeout 0)
                                    (g:source-remove timeout)
                                    (setf timeout 0))
-                                 (leave-gtk-main)))
+                                 (gtk:leave-gtk-main)))
       (setf (gtk:window-application window) application)
       (setf timeout
             (g:timeout-add 690

@@ -1,12 +1,14 @@
-;;;; Example Revealer - 2022-12-22
+;;;; Example Revealer
+;;;;
+;;;; 2024-1-1
 
 (in-package :gtk3-example)
 
-(defun example-revealer (&optional (application nil))
-  (within-main-loop
+(defun example-revealer (&optional application)
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :type :toplevel
-                                 :title "Example Revealer"
+                                 :title "Revealer Widget"
                                  :application application
                                  :default-width 300
                                  :default-height 300
@@ -19,7 +21,7 @@
       (g:signal-connect window "destroy"
                                (lambda (widget)
                                  (declare (ignore widget))
-                                 (leave-gtk-main)))
+                                 (gtk:leave-gtk-main)))
       (gtk:grid-attach grid
                        (make-instance 'gtk:label
                                       :use-markup t

@@ -5,7 +5,7 @@
     <property name="border_width">5</property>
     <property name="default_width">320</property>
     <property name="default_height">320</property>
-    <property name="title">Example Revealer Icon</property>
+    <property name="title">Revealer Icon</property>
     <child>
       <object class="GtkGrid">
         <property name="visible">1</property>
