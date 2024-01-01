@@ -40,23 +40,6 @@
 ;;;     gdk_rectangle_intersect
 ;;;     gdk_rectangle_union
 ;;;     gdk_rectangle_equal
-;;;
-;;; Description
-;;;
-;;; GDK provides the GdkPoint and GdkRectangle data types for representing
-;;; pixels and sets of pixels on the screen. Together with Cairo's
-;;; cairo_region_t data type, they make up the central types for representing
-;;; graphical data.
-;;;
-;;; GdkPoint is a simple structure containing an x and y coordinate of a point.
-;;;
-;;; GdkRectangle is a structure holding the position and size of a rectangle.
-;;; The intersection of two rectangles can be computed with
-;;; gdk_rectangle_intersect(). To find the union of two rectangles use
-;;; gdk_rectangle_union().
-;;;
-;;; cairo_region_t is usually used for managing clipping of graphical
-;;; operations.
 ;;; ----------------------------------------------------------------------------
 
 (in-package :gdk)
@@ -108,7 +91,7 @@
   @see-symbol{cairo:region-t}
   @see-symbol{cairo:rectangle-int-t}")
 
-;;; --- rectangle-x ------------------------------------------------------------
+;;; --- gdk:rectangle-x --------------------------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'rectangle-x)
@@ -124,7 +107,7 @@
   @end{short}
   @see-class{gdk:rectangle}")
 
-;;; --- rectangle-y ------------------------------------------------------------
+;;; --- gdk:rectangle-y --------------------------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'rectangle-y)
@@ -140,7 +123,7 @@
   @end{short}
   @see-class{gdk:rectangle}")
 
-;;; --- gtk-rectangle-width ----------------------------------------------------
+;;; --- gdk:rectangle-width ----------------------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'rectangle-width)
@@ -156,7 +139,7 @@
   @end{short}
   @see-class{gdk:rectangle}")
 
-;;; --- gtk-rectangle-height ---------------------------------------------------
+;;; --- gdk:rectangle-height ---------------------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'rectangle-height)
@@ -172,17 +155,18 @@
   @end{short}
   @see-class{gdk:rectangle}")
 
-;;; --- rectangle-new ------------------------------------------------------
+;;; --- gdk:rectangle-new ------------------------------------------------------
 
 (declaim (inline rectangle-new))
 
 (defun rectangle-new (&key (x 0) (y 0) (width 0) (height 0))
  #+liber-documentation
- "@version{#2021-12-13}
+ "@version{2024-1-1}
   @argument[x]{an integer with the value for the @code{x} slot}
   @argument[y]{an integer with the value for the @code{y} slot}
   @argument[width]{an integer with the value for the @code{width} slot}
   @argument[height]{an integer with the value for the @code{height} slot}
+  @return{The newly created @class{gdk:rectangle} instance.}
   @begin{short}
     Returns a @class{gdk:rectangle} instance with the initial values given to
     @arg{x}, @arg{y}, @arg{width}, and @arg{height}.
@@ -193,17 +177,16 @@
 
 (export 'rectangle-new)
 
-;;; --- rectangle-copy -----------------------------------------------------
+;;; --- gdk:rectangle-copy -----------------------------------------------------
 
 (declaim (inline rectangle-copy))
 
 (defun rectangle-copy (instance)
  #+liber-documentation
- "@version{#2021-12-13}
+ "@version{2024-1-1}
   @argument[instance]{a @class{gdk:rectangle} instance}
-  @begin{short}
-    Copy constructor of a @class{gdk:rectangle} structure.
-  @end{short}
+  @return{The @class{gdk:rectangle} instance.}
+  @short{Copy constructor of a @class{gdk:rectangle} structure.}
   @see-class{gdk:rectangle}
   @see-function{gdk:rectangle-new}"
   (copy-rectangle instance))
@@ -221,11 +204,11 @@
 
 (defun rectangle-intersect (rect1 rect2)
  #+liber-documentation
- "@version{#2021-12-13}
+ "@version{2024-1-1}
   @argument[rect1]{a @class{gdk:rectangle} instance}
   @argument[rect2]{a @class{gdk:rectangle} instance}
-  @return{A @class{gdk:rectangle} instance with the intersection of @arg{rect1}
-    and @arg{rect2}, or @code{nil}.}
+  @return{The @class{gdk:rectangle} instance with the intersection of
+    @arg{rect1} and @arg{rect2}, or @code{nil}.}
   @begin{short}
     Calculates the intersection of two rectangles.
   @end{short}
@@ -249,10 +232,10 @@
 
 (defun rectangle-union (rect1 rect2)
  #+liber-documentation
- "@version{#2021-12-13}
+ "@version{2024-1-1}
   @argument[rect1]{a @class{gdk:rectangle} instance}
   @argument[rect2]{a @class{gdk:rectangle} instance}
-  @return{A @class{gdk:rectangle} instance with the union of @arg{rect1} and
+  @return{The @class{gdk:rectangle} instance with the union of @arg{rect1} and
     @arg{rect2}.}
   @begin{short}
     Calculates the union of two rectangles.
@@ -273,13 +256,11 @@
 
 (cffi:defcfun ("gdk_rectangle_equal" rectangle-equal) :boolean
  #+liber-documentation
- "@version{#2023-3-13}
+ "@version{2024-1-1}
   @argument[rect1]{a @class{gdk:rectangle} instance}
   @argument[rect2]{a @class{gdk:rectangle} instance}
   @return{@em{True} if the rectangles are equal.}
-  @begin{short}
-    Checks if the two given rectangles are equal.
-  @end{short}
+  @short{Checks if the two given rectangles are equal.}
   @see-class{gdk:rectangle}"
   (rect1 (g:boxed rectangle))
   (rect2 (g:boxed rectangle)))
