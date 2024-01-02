@@ -1,4 +1,4 @@
-;;;; Flow Box - 2022-12-20
+;;;; Flow Box
 ;;;;
 ;;;; GtkFlowBox allows flexible and responsive grids which reflow as needed
 ;;;; and support sorting and filtering.
@@ -8,6 +8,8 @@
 ;;;; TODO:
 ;;;;
 ;;;; Implement different sorting algorithms and a ComboBox for selection.
+;;;;
+;;;; 2024-1-2
 
 (in-package :gtk3-example)
 
@@ -169,7 +171,7 @@
     (g:signal-connect area "draw"
         (lambda (widget cr)
           (declare (ignore widget))
-          (let ((cr (glib:boxed-opaque-pointer cr))
+          (let ((cr (glib:pointer cr))
                 (rgba (gdk:rgba-parse color)))
             (when rgba
               (gdk:cairo-set-source-rgba cr rgba)
@@ -180,10 +182,10 @@
     (gtk:container-add button vbox)
     button))
 
-(defun example-flow-box (&optional (application nil))
-  (within-main-loop
+(defun example-flow-box (&optional application)
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
-                                  :title "Example Flow Box"
+                                  :title "Flow Box"
                                   :type :toplevel
                                   :application application
                                   :default-width 600
@@ -201,7 +203,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (g:signal-connect entry "search-changed"
           (lambda (entry)
              (declare (ignore entry))
@@ -212,7 +214,6 @@
                    (color (gtk:widget-name button))
                    (text (gtk:entry-text entry)))
               (search (string-downcase text) color))))
-
       (gtk:flow-box-set-sort-func flowbox
           (lambda (child1 child2)
             (let* ((color1 (gtk:widget-name (gtk:bin-child child1)))
@@ -221,7 +222,6 @@
                            (gdk:rgba-to-string (gdk:rgba-parse color2)))
                   0
                   1))))
-
       (dolist (color *colors*)
         (gtk:container-add flowbox (color-swatch-new color)))
       (gtk:box-pack-start vbox entry :expand nil)

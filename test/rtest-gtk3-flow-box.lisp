@@ -7,7 +7,7 @@
 
 ;;;     GtkFlowBoxChild
 
-(test flow-box-child-class
+(test gtk-flow-box-child-class
   ;; Type check
   (is (g:type-is-object "GtkFlowBoxChild"))
   ;; Check the registered name
@@ -46,7 +46,7 @@
 
 ;;;     GtkFlowBox
 
-(test flow-box-class
+(test gtk-flow-box-class
   ;; Type check
   (is (g:type-is-object "GtkFlowBox"))
   ;; Check the registered name
@@ -105,7 +105,7 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-(test flow-box-properties
+(test gtk-flow-box-properties
   (let ((flowbox (make-instance 'gtk:flow-box)))
     (is-true (gtk:flow-box-activate-on-single-click flowbox))
     (is (= 0 (gtk:flow-box-column-spacing flowbox)))
@@ -158,4 +158,4 @@
 ;;;     gtk_flow_box_child_is_selected
 ;;;     gtk_flow_box_child_changed
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-1-2
