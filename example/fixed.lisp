@@ -1,4 +1,4 @@
-;;;; Example Fixed Container - 2022-12-20
+;;;; Example Fixed Container
 ;;;;
 ;;;; In this example, three buttons are placed in the fixed container with the
 ;;;; function gtk:fixed-put. When pressed, the buttons are moved randomly with
@@ -7,6 +7,8 @@
 ;;;; To get the width and height of the fixed container and the buttons the
 ;;;; functions gtk:widget-allocated-width and gtk:widget-allocated-height are
 ;;;; used.
+;;;;
+;;;; 2024-1-2
 
 (in-package :gtk3-example)
 
@@ -17,11 +19,11 @@
                    (gtk:widget-allocated-height button))))
     (gtk:fixed-move fixed button (random width) (random height))))
 
-(defun example-fixed (&optional (application nil))
-  (within-main-loop
+(defun example-fixed (&optional application)
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :type :toplevel
-                                 :title "Example Fixed Container"
+                                 :title "Fixed Container"
                                  :application application
                                  :default-width 350
                                  :default-height 200
@@ -30,7 +32,7 @@
       (g:signal-connect window "destroy"
                         (lambda (window)
                           (declare (ignore window))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (dotimes (i 3)
         (let ((button (gtk:button-new-with-label "Press me")))
           (g:signal-connect button "clicked"

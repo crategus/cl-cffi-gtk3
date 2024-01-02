@@ -7,7 +7,7 @@
 
 ;;;     GtkFixed
 
-(test fixed-class
+(test gtk-fixed-class
   ;; Type check
   (is (g:type-is-object "GtkFixed"))
   ;; Check the registered name
@@ -50,7 +50,7 @@
 ;;;     x
 ;;;     y
 
-(test fixed-child-properties
+(test gtk-fixed-child-properties
   (let ((fixed (make-instance 'gtk:fixed))
         (button (gtk:button-new)))
     (is-false (gtk:container-add fixed button))
@@ -61,7 +61,7 @@
     (is (= 10 (gtk:fixed-child-x fixed button)))
     (is (= 20 (gtk:fixed-child-y fixed button)))))
 
-(test fixed-child-x-property
+(test gtk-fixed-child-x-property
   (is (equal '(PROGN
                 (DEFUN FIXED-CHILD-X (GTK:CONTAINER GTK::CHILD)
                   (GTK:CONTAINER-CHILD-PROPERTY GTK:CONTAINER
@@ -81,13 +81,13 @@
 
 ;;;     gtk_fixed_new
 
-(test fixed-new
+(test gtk-fixed-new
   (is (typep (gtk:fixed-new) 'gtk:fixed)))
 
 ;;;     gtk_fixed_put
 ;;;     gtk_fixed_move
 
-(test fixed-put/move
+(test gtk-fixed-put/move
   (let ((fixed (gtk:fixed-new))
         (button (gtk:button-new)))
     (gtk:fixed-put fixed button 10 20)
@@ -97,4 +97,4 @@
     (is (= 15 (gtk:fixed-child-x fixed button)))
     (is (= 25 (gtk:fixed-child-y fixed button)))))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-1-2
