@@ -1,12 +1,14 @@
-;;;; Paned Window Widgets - 2022-12-22
+;;;; Paned Window Widgets
+;;;;
+;;;; 2024-1-2
 
 (in-package :gtk3-example)
 
-(defun example-paned-window (&optional (application nil))
-  (within-main-loop
+(defun example-paned-window (&optional application)
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :type :toplevel
-                                 :title "Example Paned Window"
+                                 :title "Paned Window"
                                  :application application
                                  :default-width 320
                                  :default-height 280
@@ -20,7 +22,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (gtk:paned-add1 paned2
                       (make-instance 'gtk:frame
                                      :label "Pane 1"

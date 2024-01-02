@@ -7,7 +7,7 @@
 
 ;;;     GtkPaned
 
-(test paned-class
+(test gtk-paned-class
   ;; Type check
   (is (g:type-is-object "GtkPaned"))
   ;; Check the registered name
@@ -56,7 +56,7 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-(test paned-properties
+(test gtk-paned-properties
   (let ((paned (make-instance 'gtk:paned :orientation :horizontal)))
     ;; max-position
     (is (= 2147483647 (gtk:paned-max-position paned)))
@@ -79,7 +79,7 @@
 
 ;;; --- Child Properties -------------------------------------------------------
 
-(test paned-child-properties
+(test gtk-paned-child-properties
   (let* ((paned (make-instance 'gtk:paned :orientation :horizontal))
          (child1 (make-instance 'gtk:button))
          (child2 (make-instance 'gtk:button)))
@@ -106,7 +106,7 @@
 
 ;;; --- Style Properties -------------------------------------------------------
 
-(test paned-style-properties
+(test gtk-paned-style-properties
   (let ((paned (make-instance 'gtk:paned :orientation :horizontal)))
     (is (= 5 (gtk:widget-style-property paned "handle-size")))))
 
@@ -114,14 +114,14 @@
 
 ;;;     gtk_paned_new
 
-(test paned-new
+(test gtk-paned-new
   (is (eq 'gtk:paned (type-of (gtk:paned-new :vertical))))
   (is (eq 'gtk:paned (type-of (gtk:paned-new :horizontal)))))
 
 ;;;     gtk_paned_add1
 ;;;     gtk_paned_add2
 
-(test paned-add
+(test gtk-paned-add
   (let ((paned (gtk:paned-new :horizontal))
         (child1 (make-instance 'gtk:frame))
         (child2 (make-instance 'gtk:frame)))
@@ -137,7 +137,7 @@
 ;;;     gtk_paned_pack1
 ;;;     gtk_paned_pack2
 
-(test paned-pack.1
+(test gtk-paned-pack.1
   (let ((paned (gtk:paned-new :horizontal))
         (child1 (make-instance 'gtk:frame))
         (child2 (make-instance 'gtk:frame)))
@@ -150,7 +150,7 @@
     (is-true (gtk:paned-child-resize paned child2))
     (is-true (gtk:paned-child-shrink paned child2))))
 
-(test paned-pack.2
+(test gtk-paned-pack.2
   (let ((paned (gtk:paned-new :horizontal))
         (child1 (make-instance 'gtk:frame))
         (child2 (make-instance 'gtk:frame)))
@@ -166,7 +166,7 @@
 ;;;     gtk_paned_get_child1
 ;;;     gtk_paned_get_child2
 
-(test paned-child
+(test gtk-paned-child
   (let ((paned (gtk:paned-new :horizontal))
         (child1 (make-instance 'gtk:frame))
         (child2 (make-instance 'gtk:frame)))
@@ -179,9 +179,9 @@
 
 ;;;     gtk_paned_get_handle_window
 
-(test -paned-handle-window
+(test gtk-paned-handle-window
   (let ((paned (gtk:paned-new :horizontal)))
     ;; no handle because paned is not realized
     (is-false (gtk:paned-handle-window paned))))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-1-2

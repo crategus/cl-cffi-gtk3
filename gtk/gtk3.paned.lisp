@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -124,7 +124,7 @@
 (setf (documentation 'paned 'type)
  "@version{2023-3-5}
   @begin{short}
-    The @sym{gtk:paned} widget has two panes, arranged either horizontally or
+    The @class{gtk:paned} widget has two panes, arranged either horizontally or
     vertically.
   @end{short}
   The division between the two panes is adjustable by the user by dragging a
@@ -147,8 +147,8 @@
 
   Each child widget has two child properties that can be set, the @code{resize}
   and @code{shrink} child properties. If the @code{resize} child property is
-  @em{true}, then when the @sym{gtk:paned} widget is resized, that child widget
-  will expand or shrink along with the paned widget. If the @code{shrink}
+  @em{true}, then when the @class{gtk:paned} widget is resized, that child
+  widget will expand or shrink along with the paned widget. If the @code{shrink}
   property is @em{true}, then that child widget can be made smaller than its
   requisition by the user. Setting the @code{shrink} child property to
   @em{false} allows the application to set a minimum size. If the @code{resize}
@@ -164,7 +164,7 @@ paned
 ├── separator\[.wide\]
 ╰── <child>
     @end{pre}
-    The @sym{gtk:paned} implementation has a main CSS node with name
+    The @class{gtk:paned} implementation has a main CSS node with name
     @code{paned}, and a subnode for the separator with name @code{separator}.
     The subnode gets a @code{.wide} style class when the paned is supposed to
     be wide. In horizontal orientation, the nodes of the children are always
@@ -224,7 +224,7 @@ lambda (widget)    :action
       position of the handle when moving it using key bindings. The default
       binding for this signal is the @kbd{Return} or @kbd{Space} key.
       @begin[code]{table}
-        @entry[widget]{The @sym{gtk:paned} widget that received the signal.}
+        @entry[widget]{The @class{gtk:paned} widget that received the signal.}
       @end{table}
     @subheading{The \"cancel-position\" signal}
       @begin{pre}
@@ -235,7 +235,7 @@ lambda (widget)    :action
       be reset to the value prior to moving it. The default binding for this
       signal is the @kbd{Escape} key.
       @begin[code]{table}
-        @entry[widget]{The @sym{gtk:paned} widget that received the signal.}
+        @entry[widget]{The @class{gtk:paned} widget that received the signal.}
       @end{table}
     @subheading{The \"cycle-child-focus\" signal}
       @begin{pre}
@@ -245,7 +245,7 @@ lambda (widget reversed)    :action
       between the children of the paned widget. The default binding is the
       @kbd{F6} key.
       @begin[code]{table}
-        @entry[widget]{The @sym{gtk:paned} widget that received the signal.}
+        @entry[widget]{The @class{gtk:paned} widget that received the signal.}
         @entry[reversed]{A boolean whether cycling backward or forward.}
       @end{table}
     @subheading{The \"cycle-handle-focus\" signal}
@@ -257,7 +257,7 @@ lambda (widget reversed)    :action
       handle by using key bindings. The default binding for this signal is the
       @kbd{F8} key.
       @begin[code]{table}
-        @entry[widget]{The @sym{gtk:paned} widget that received the signal.}
+        @entry[widget]{The @class{gtk:paned} widget that received the signal.}
         @entry[reversed]{A boolean whether cycling backward or forward.}
       @end{table}
     @subheading{The \"move-handle\" signal}
@@ -267,7 +267,7 @@ lambda (widget scrolltype)    :action
       The signal is a keybinding signal which gets emitted to move the handle
       when the user is using key bindings to move it.
       @begin[code]{table}
-        @entry[widget]{The @sym{gtk:paned} widget that received the signal.}
+        @entry[widget]{The @class{gtk:paned} widget that received the signal.}
         @entry[scrolltype]{A value of the @symbol{gtk:scroll-type} enumeration.}
       @end{table}
     @subheading{The \"toggle-handle-focus\" signal}
@@ -278,7 +278,7 @@ lambda (widget)    :action
       position of the handle and then move focus to the next widget in the focus
       chain. The default binding is the @kbd{Tab} key.
       @begin[code]{table}
-        @entry[widget]{The @sym{gtk:paned} widget that received the signal.}
+        @entry[widget]{The @class{gtk:paned} widget that received the signal.}
       @end{table}
   @end{dictionary}
   @see-constructor{gtk:paned-new}
@@ -293,7 +293,7 @@ lambda (widget)    :action
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- paned-max-position -----------------------------------------------------
+;;; --- gtk:paned-max-position -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "max-position" 'paned) t)
@@ -316,13 +316,13 @@ lambda (widget)    :action
     Accessor of the @slot[gtk:paned]{max-position} slot of the
     @class{gtk:paned} class.
   @end{short}
-  The @sym{gtk:paned-max-position} function gets the largest possible value for
+  The @fun{gtk:paned-max-position} function gets the largest possible value for
   the position property.
   @see-class{gtk:paned}
   @see-function{gtk:paned-position}
   @see-function{gtk:paned-min-position}")
 
-;;; --- paned-min-position -----------------------------------------------------
+;;; --- gtk:paned-min-position -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "min-position" 'paned) t)
@@ -345,13 +345,13 @@ lambda (widget)    :action
     Accessor of the @slot[gtk:paned]{min-position} slot of the
     @class{gtk:paned} class.
   @end{short}
-  The @sym{gtk:paned-min-position} function gets the smallest possible value
+  The @fun{gtk:paned-min-position} function gets the smallest possible value
   for the position property.
   @see-class{gtk:paned}
   @see-function{gtk:paned-position}
   @see-function{gtk:paned-max-position}")
 
-;;; --- paned-position ---------------------------------------------------------
+;;; --- gtk:paned-position -----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "position" 'paned) t)
@@ -375,14 +375,14 @@ lambda (widget)    :action
     Accessor of the @slot[gtk:paned]{position} slot of the @class{gtk:paned}
     class.
   @end{short}
-  The @sym{gtk:paned-position} function obtains the position of the divider
-  between the two panes. The @sym{(setf gtk:paned-position)} function sets the
+  The @fun{gtk:paned-position} function obtains the position of the divider
+  between the two panes. The @setf{gtk:paned-position} function sets the
   position.
   @see-class{gtk:paned}
   @see-function{gtk:paned-max-position}
   @see-function{gtk:paned-min-position}")
 
-;;; --- paned-position-set -----------------------------------------------------
+;;; --- gtk:paned-position-set -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "position-set" 'paned) t)
@@ -405,14 +405,14 @@ lambda (widget)    :action
     Accessor of the @slot[gtk:paned]{position-set} slot of the
     @class{gtk:paned} class.
   @end{short}
-  The @sym{gtk:paned-position-set} function gets whether the
+  The @fun{gtk:paned-position-set} function gets whether the
   @slot[gtk:paned]{position} property should be used. The
-  @sym{(setf gtk:paned-position-set)} function sets whether the
+  @setf{gtk:paned-position-set} function sets whether the
   @slot[gtk:paned]{position} property should be used.
   @see-class{gtk:paned}
   @see-function{gtk:paned-position}")
 
-;;; --- paned-wide-handled -----------------------------------------------------
+;;; --- gtk:paned-wide-handled -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "wide-handle" 'paned) t)
@@ -436,17 +436,17 @@ lambda (widget)    :action
     Accessor of the @slot[gtk:paned]{wide-handle} slot of the @class{gtk:paned}
     class.
   @end{short}
-  The @sym{gtk:paned-wide-handled} function gets the
+  The @fun{gtk:paned-wide-handled} function gets the
   @slot[gtk:paned]{wide-handle} property. The
-  @sym{(setf gtk:paned-wide-handled)} function sets the
-  @slot[gtk:paned]{wide-handle} property.
+  @setf{gtk:paned-wide-handled} function sets the @slot[gtk:paned]{wide-handle}
+  property.
   @see-class{gtk:paned}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; Child Property and Child Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- paned-child-resize -----------------------------------------------------
+;;; --- gtk:paned-child-resize -------------------------------------------------
 
 (define-child-property paned-child-resize
                        "resize" "gboolean" t t t)
@@ -466,14 +466,14 @@ lambda (widget)    :action
     Accessor of the @code{resize} child property of the @class{gtk:paned}
     class.
   @end{short}
-  The @sym{gtk:paned-child-resize} function gets whether the child widget
+  The @fun{gtk:paned-child-resize} function gets whether the child widget
   expands and shrinks along with the paned widget. The
-  @sym{(setf gtk:paned-child-resize)} function sets the child property.
+  @setf{gtk:paned-child-resize} function sets the child property.
   @see-class{gtk:paned}
   @see-class{gtk:widget}
   @see-function{gtk:paned-child-shrink}")
 
-;;; --- paned-child-shrink -----------------------------------------------------
+;;; --- gtk:paned-child-shrink -------------------------------------------------
 
 (define-child-property paned-child-shrink
                        "shrink" "gboolean" t t t)
@@ -493,10 +493,9 @@ lambda (widget)    :action
     Accessor of the @code{shrink} child property of the @class{gtk:paned}
     class.
   @end{short}
-  The @sym{gtk:paned-child-shrink} function determines whether the child widget
+  The @fun{gtk:paned-child-shrink} function determines whether the child widget
   can be made smaller than its requisition. The
-  @sym{(setf gtk:paned-child-shrink)} function gets the value of the child
-  property.
+  @setf{gtk:paned-child-shrink} function gets the value of the child property.
   @see-class{gtk:paned}
   @see-class{gtk:widget}
   @see-function{gtk:paned-child-resize}")
