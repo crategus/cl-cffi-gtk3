@@ -1,8 +1,10 @@
-;;;; Theming/CSS Blend Modes - 2023-2-17
+;;;; Theming/CSS Blend Modes
 ;;;;
 ;;;; You can blend multiple backgrounds using the CSS blend modes available.
+;;;;
+;;;; 2024-1-2
 
-(in-package #:gtk3-example)
+(in-package :gtk3-example)
 
 (defparameter +blend-modes+ '(("Color"         "color")
                               ("Color (burn)"  "color-burn")
@@ -22,7 +24,7 @@
                               ("Soft Light"    "soft-light")))
 
 (defun example-css-blendmodes (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let* ((builder (gtk:builder-new-from-file
                         (sys-path "resource/css-blendmodes.ui")))
            (provider (make-instance 'gtk:css-provider))
@@ -37,11 +39,11 @@
                         (lambda (widget)
                           (declare (ignore widget))
                           (g:resources-unregister resource)
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Setup the CSS provider for window
       (gtk:style-context-add-provider-for-screen (gdk:screen-default)
                                                  provider
-                                                 +gtk-priority-application+)
+                                                 gtk:+gtk-priority-application+)
       ;; Signal handler for listbox
       (g:signal-connect listbox "row-activated"
           (lambda (listbox row)

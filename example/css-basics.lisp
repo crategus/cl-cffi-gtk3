@@ -1,12 +1,14 @@
-;;;; Theming/CSS Basics - 2023-2-17
+;;;; Theming/CSS Basics
 ;;;;
 ;;;; Gtk themes are written using CSS. Every widget is build of multiple items
 ;;;; that you can style very similarly to a regular website.
+;;;;
+;;;; 2024-1-2
 
 (in-package :gtk3-example)
 
 (defun example-css-basics (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let* ((window (make-instance 'gtk:window
                                   :type :toplevel
                                   :application application
@@ -21,7 +23,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (g:signal-connect text "changed"
           (lambda (buffer)
             (let ((start (gtk:text-buffer-start-iter buffer))
@@ -43,7 +45,7 @@
                            (gtk:css-section-end-line section)
                            (gtk:css-section-end-position section))))
               (gtk:text-buffer-apply-tag text "error" start end)
-              +gdk-event-stop+)))
+              gdk:+gdk-event-stop+)))
       (gtk:text-tag-table-add (gtk:text-buffer-tag-table text)
                               (make-instance 'gtk:text-tag
                                              :name "error"

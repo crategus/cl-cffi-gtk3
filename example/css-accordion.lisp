@@ -1,11 +1,13 @@
-;;;; CSS Accordion - 2023-2-16
+;;;; CSS Accordion
 ;;;;
 ;;;; A accordion demo written using CSS transitions and multiple backgrounds.
+;;;;
+;;;; 2024-1-2
 
-(in-package #:gtk3-example)
+(in-package :gtk3-example)
 
 (defun example-css-accordion (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :type :toplevel
                                  :application application
@@ -21,7 +23,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Add the buttons to the container
       (gtk:container-add container
                          (gtk:button-new-with-label "This"))

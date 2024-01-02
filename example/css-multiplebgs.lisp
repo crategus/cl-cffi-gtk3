@@ -1,7 +1,9 @@
-;;;; Theming/Multiple Backgrounds - 2022-12-15
+;;;; Theming/Multiple Backgrounds
 ;;;;
 ;;;; GTK themes are written using CSS. Every widget is build of multiple items
 ;;;; that you can style very similarly to a regular website.
+;;;;
+;;;; 2024-1-2
 
 (in-package :gtk3-example)
 
@@ -51,7 +53,7 @@
     toolbar))
 
 (defun example-css-multiplebgs (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let* ((window (make-instance 'gtk:window
                                   :type :toplevel
                                   :application application
@@ -91,7 +93,7 @@
                         (lambda (widget)
                           (declare (ignore widget))
                           (g:resources-unregister resource)
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (g:signal-connect area "draw"
           (lambda (widget cr)
             (let ((context (gtk:widget-style-context widget))
@@ -100,7 +102,7 @@
                   (height (gtk:widget-allocated-height widget)))
               (gtk:render-background context cr 0 0 width height)
               (gtk:render-frame context cr 0 0 width height)
-              +gdk-event-propagate+)))
+              gdk:+gdk-event-propagate+)))
       (g:signal-connect text "changed"
           (lambda (buffer)
             (let ((start (gtk:text-buffer-start-iter buffer))
@@ -123,7 +125,7 @@
                            (gtk:css-section-end-line section)
                            (gtk:css-section-end-position section))))
               (gtk:text-buffer-apply-tag text "error" start end)
-              +gdk-event-stop+)))
+              gdk:+gdk-event-stop+)))
       (gtk:text-tag-table-add (gtk:text-buffer-tag-table text)
                               (make-instance 'gtk:text-tag
                                              :name "error"

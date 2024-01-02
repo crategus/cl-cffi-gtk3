@@ -1,6 +1,8 @@
-;;;; Theming/Shadows - 2022-12-15
+;;;; Theming/Shadows
 ;;;;
 ;;;; This demo shows how to use CSS shadows.
+;;;;
+;;;; 2024-1-2
 
 (in-package :gtk3-example)
 
@@ -21,7 +23,7 @@
     toolbar))
 
 (defun example-css-shadows (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let* ((window (make-instance 'gtk:window
                                   :type :toplevel
                                   :application application
@@ -42,7 +44,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (g:signal-connect text "changed"
           (lambda (buffer)
             (let ((start (gtk:text-buffer-start-iter buffer))
@@ -64,7 +66,7 @@
                            (gtk:css-section-end-line section)
                            (gtk:css-section-end-position section))))
               (gtk:text-buffer-apply-tag text "error" start end)
-              +gdk-event-stop+)))
+              gdk:+gdk-event-stop+)))
       (gtk:text-tag-table-add (gtk:text-buffer-tag-table text)
                               (make-instance 'gtk:text-tag
                                              :name "error"

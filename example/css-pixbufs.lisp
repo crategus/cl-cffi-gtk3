@@ -1,12 +1,14 @@
-;;;; Animated backgrounds - 2023-2-18
+;;;; Animated backgrounds
 ;;;;
 ;;;; This demo is done in honour of the Pixbufs demo further down.
 ;;;; It is done exclusively with CSS as the background of the window.
+;;;;
+;;;; 2024-1-2
 
-(in-package #:gtk3-example)
+(in-package :gtk3-example)
 
 (defun example-css-pixbufs (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let (;; Create a toplevel window.
           (window (make-instance 'gtk:window
                                  :type :toplevel
@@ -23,7 +25,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Add container to window
       (gtk:container-add window container)
       ;; Load CSS from file into the provider
