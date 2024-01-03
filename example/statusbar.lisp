@@ -1,12 +1,14 @@
-;;;; Example Statusbar - 2022-12-22
+;;;; Example Statusbar
+;;;;
+;;;; 2024-1-3
 
 (in-package :gtk3-example)
 
 (defun example-statusbar (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let* ((window (make-instance 'gtk:window
                                   :type :toplevel
-                                  :title "Example Statusbar"
+                                  :title "Statusbar"
                                   :application application
                                   :default-width 300
                                   :border-width 12))
@@ -20,7 +22,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (gtk:box-pack-start vbox statusbar)
       (let ((button (gtk:button-new-with-label "Push Item")))
         (g:signal-connect button "clicked"

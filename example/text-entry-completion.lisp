@@ -2,6 +2,8 @@
 ;;;;
 ;;;; GtkEntryCompletion provides a mechanism for adding support for completion
 ;;;; in GtkEntry.
+;;;;
+;;;; 2024-1-3
 
 (in-package :gtk3-example)
 
@@ -17,9 +19,9 @@
 ;; The popup does not get the correct height to show the completions.
 
 (defun example-text-entry-completion (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :title "Example Entry Buffer"
+                                 :title "Text Entry Buffer"
                                  :type :toplevel
                                  :application application
                                  :border-width 12
@@ -31,7 +33,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (gtk:container-add vbox
                          (make-instance 'gtk:label
                                         :label "<b>Entry with Completion</b>"

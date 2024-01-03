@@ -4,19 +4,21 @@
 ;;;; of a GtkStack object. This widget automatically updates it content based on
 ;;;; what is presently available in the GtkStack object, and using the "title"
 ;;;; child property to set the display labels.
+;;;;
+;;;; 2024-1-3
 
 (in-package :gtk3-example)
 
-(defun example-stack-sidebar (&optional (application nil))
-  (within-main-loop
+(defun example-stack-sidebar (&optional application)
+  (gtk:within-main-loop
     (let* ((window (make-instance 'gtk:window
-                                  :title "Example Stack Sidebar"
+                                  :title "Stack Sidebar"
                                   :type :toplevel
                                   :application application
                                   :width-request 500
                                   :height-request 450))
            (header (make-instance 'gtk:header-bar
-                                  :title "Example Stack Sidebar"
+                                  :title "Stack Sidebar"
                                   :show-close-button t))
            (box (make-instance 'gtk:box
                                :orientation :horizontal))
@@ -27,7 +29,7 @@
       (g:signal-connect window "destroy"
                                (lambda (widget)
                                  (declare (ignore widget))
-                                 (leave-gtk-main)))
+                                 (gtk:leave-gtk-main)))
       (setf (gtk:window-titlebar window) header)
       (gtk:box-pack-start box (make-instance 'gtk:separator
                                              :orientation :vertical)

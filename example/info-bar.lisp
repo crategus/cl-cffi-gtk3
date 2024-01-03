@@ -1,12 +1,14 @@
-;;;; Example Info Bar - 2022-12-21
+;;;; Example Info Bar
+;;;;
+;;;; 2024-1-3
 
 (in-package :gtk3-example)
 
 (defun example-info-bar (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let* ((window (make-instance 'gtk:window
                                   :type :toplevel
-                                  :title "Example Info bar"
+                                  :title "Info bar"
                                   :application application
                                   :border-width 12
                                   :default-width 250))
@@ -20,7 +22,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (gtk:widget-show message)
       ;; Add a label to the content area of the info bar
       (gtk:container-add content message)

@@ -3,9 +3,9 @@
 (in-package :gtk3-example)
 
 (defun example-spin-button (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :title "Example Spin Button"
+                                 :title "Spin Button"
                                  :type :toplevel
                                  :application application
                                  :default-width 300))
@@ -14,17 +14,14 @@
                                :homogeneous nil
                                :spacing 6
                                :border-width 12)))
-
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
-
+                          (gtk:leave-gtk-main)))
       (multiple-value-bind
           (second minute hour date month year day daylight-p zone)
           (get-decoded-time)
         (declare (ignore second minute hour day daylight-p zone))
-
         ;; A label for the three spin buttons for the input of day, month, year.
         (gtk:box-pack-start vbox
                             (make-instance 'gtk:label
@@ -34,7 +31,6 @@
                                            :margin-bottom 3
                                            :use-markup t)
                             :expand nil)
-
         (let ((hbox (make-instance 'gtk:box :orientation :horizontal)))
           ;; A vertical Box with a label and a spin button for a day.
           (let ((vbox (make-instance 'gtk:box :orientation :vertical))
@@ -53,7 +49,6 @@
             ;; FIXME: The entry does not show the default value.
             ;; What is the problem? We set the value explicitly.
             (setf (gtk:entry-text spinner) (format nil "~d" date))
-
             (gtk:box-pack-start vbox
                                 (make-instance 'gtk:label
                                                :label "Day :"
@@ -62,7 +57,6 @@
                                 :expand nil)
             (gtk:box-pack-start vbox spinner :expand nil)
             (gtk:box-pack-start hbox vbox :padding 6))
-
           ;; A vertical Box with a label and a spin button for the month.
           (let ((vbox (make-instance 'gtk:box :orientation :vertical))
                 (spinner (make-instance 'gtk:spin-button
@@ -77,11 +71,9 @@
                                         :climb-rate 0
                                         :digits 0
                                         :wrap t)))
-
           ;; FIXME: The entry does not show the default value.
           ;; What is the problem? We set the value explicitly.
           (setf (gtk:entry-text spinner) (format nil "~d" month))
-
           (gtk:box-pack-start vbox
                               (make-instance 'gtk:label
                                              :label "Month :"
@@ -90,7 +82,6 @@
                               :expand nil)
           (gtk:box-pack-start vbox spinner :expand nil)
           (gtk:box-pack-start hbox vbox :padding 6))
-
           ;; A vertival Box with a label and a spin button for the year.
           (let ((vbox (make-instance 'gtk:box :orientation :vertical))
                 (spinner (make-instance 'gtk:spin-button
@@ -105,11 +96,9 @@
                                         :climb-rate 0
                                         :digits 0
                                         :wrap t)))
-
           ;; FIXME: The entry does not show the default value.
           ;; What is the problem? We set the value explicitly.
           (setf (gtk:entry-text spinner) (format nil "~d" year))
-
           (gtk:box-pack-start vbox
                               (make-instance 'gtk:label
                                              :label "Year :"
@@ -120,7 +109,6 @@
           (gtk:box-pack-start hbox vbox :padding 6))
         ;; Place the hbox in the vbox
         (gtk:box-pack-start vbox hbox :padding 6)))
-
       ;; A label for the accelerated spin button.
       (gtk:box-pack-start vbox
                           (make-instance 'gtk:label
@@ -130,7 +118,6 @@
                                          :margin-bottom 3
                                          :use-markup t)
                             :expand nil)
-
       ;; A vertical Box with for the accelarated spin button
       (let ((spinner1 (make-instance 'gtk:spin-button
                                      :adjustment
@@ -174,7 +161,6 @@
          ;; FIXME: The entry does not show the default value.
          ;; What is the problem? We set the value.
         (setf (gtk:entry-text spinner2) (format nil "~d" 2))
-
         (let ((hbox (make-instance 'gtk:box :orientation :horizontal)))
           ;; Put the accelarated spin button with a label in a vertical box.
           (let ((vbox (make-instance 'gtk:box :orientation :vertical)))
@@ -186,7 +172,6 @@
                                 :expand nil)
             (gtk:box-pack-start vbox spinner1 :expand nil)
             (gtk:box-pack-start hbox vbox :padding 6))
-
           ;; Put the spin button for digits with a label in a vertical box.
           (let ((vbox (make-instance 'gtk:box :orientation :vertical)))
             (gtk:box-pack-start vbox
@@ -197,9 +182,7 @@
                                 :expand nil)
             (gtk:box-pack-start vbox spinner2 :expand nil)
             (gtk:box-pack-start hbox vbox :padding 6))
-
           (gtk:box-pack-start vbox hbox :padding 6))
-
         (let ((check (make-instance 'gtk:check-button
                                     :label "Snap to 0.5-ticks"
                                     :active t)))
@@ -208,7 +191,6 @@
                (setf (gtk:spin-button-snap-to-ticks spinner1)
                      (gtk:toggle-button-active widget))))
           (gtk:box-pack-start vbox check))
-
         (let ((check (make-instance 'gtk:check-button
                                     :label "Numeric only input mode"
                                     :active t)))
@@ -217,14 +199,12 @@
                (setf (gtk:spin-button-numeric spinner1)
                      (gtk:toggle-button-active widget))))
           (gtk:box-pack-start vbox check))
-
         (let ((label (make-instance 'gtk:label
                                     :label "0"
                                     :halign :start
                                     :margin-top 3
                                     :margin-bottom 3))
               (hbox (make-instance 'gtk:box :orientation :horizontal)))
-
           (let ((button (gtk:button-new-with-label "Value as Int")))
             (g:signal-connect button "clicked"
                (lambda (widget)
@@ -233,7 +213,6 @@
                        (format nil "~A"
                                (gtk:spin-button-value-as-int spinner1)))))
               (gtk:box-pack-start hbox button))
-
           (let ((button (gtk:button-new-with-label "Value as Float")))
             (g:signal-connect button "clicked"
                (lambda (widget)
@@ -242,7 +221,6 @@
                        (format nil "~A"
                                (gtk:spin-button-value spinner1)))))
             (gtk:box-pack-start hbox button))
-
           ;; Get the value of the accelerated spin button.
           (gtk:box-pack-start vbox
                               (make-instance 'gtk:label

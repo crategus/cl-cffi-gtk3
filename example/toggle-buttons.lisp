@@ -1,11 +1,13 @@
-;;;; Example Toggle Buttons - 2023-2-12
+;;;; Example Toggle Buttons
+;;;;
+;;;; 2024-1-3
 
 (in-package :gtk3-example)
 
 (defun example-toggle-buttons (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :title "Example Toggle Buttons"
+                                 :title "Toggle Buttons"
                                  :application application
                                  :type :toplevel
                                  :border-width 18))
@@ -19,7 +21,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
 
       ;; Create three radio buttons and put the buttons into the grid
       (let ((button (gtk:radio-button-new-with-label nil "Radio Button 1")))

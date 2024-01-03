@@ -1,11 +1,13 @@
-;;;; Example Scale Button - 2023-2-12
+;;;; Example Scale Button
+;;;;
+;;;; 2024-1-3
 
 (in-package :gtk3-example)
 
 (defun example-scale-button (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :title "Example Scale Button"
+                                 :title "Scale Button"
                                  :type :toplevel
                                  :application application
                                  :border-width 12
@@ -32,7 +34,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Pack and show the widgets
       (gtk:container-add window button)
       (gtk:widget-show-all window))))

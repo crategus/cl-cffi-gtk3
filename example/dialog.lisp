@@ -1,4 +1,6 @@
-;;;; Example Dialog Windows - 2023-7-24
+;;;; Example Dialog Windows
+;;;;
+;;;; 2024-1-3
 
 (in-package :gtk3-example)
 
@@ -89,7 +91,7 @@
     (gtk:widget-destroy dialog)))
 
 (defun example-dialogs (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :application application
                                  :type :toplevel
@@ -106,7 +108,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Show dialog
       (let ((button (make-instance 'gtk:button
                                    :label "Show Dialog")))

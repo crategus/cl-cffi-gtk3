@@ -1,11 +1,13 @@
-;;;; Example Scale Widget - 2023-2-12
+;;;; Example Scale Widget
+;;;;
+;;;; 2024-1-3
 
 (in-package :gtk3-example)
 
 (defun example-scale-widget (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let* ((window (make-instance 'gtk:window
-                                  :title "Example Scale Widget"
+                                  :title "Scale Widget"
                                   :type :toplevel
                                   :application application))
            (box1 (make-instance 'gtk:box
@@ -49,7 +51,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Packing of the global widgets hscale, vscale, and scrollbar
       (gtk:container-add window box1)
       (gtk:box-pack-start box1 box2)

@@ -1,13 +1,15 @@
-;;;; Example Text Entry Buffe - 2022-12-22
+;;;; Example Text Entry Buffer
 ;;;;
 ;;;; GtkEntryBuffer provides the text content in a GtkEntry.
+;;;;
+;;;; 2024-1-3
 
 (in-package :gtk3-example)
 
 (defun example-text-entry-buffer (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :title "Example Entry Buffer"
+                                 :title "Text Entry Buffer"
                                  :type :toplevel
                                  :application application
                                  :border-width 12
@@ -21,8 +23,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
-
+                          (gtk:leave-gtk-main)))
       (gtk:container-add vbox
                          (make-instance 'gtk:label
                                         :label "<b>First Entry</b>"
@@ -32,7 +33,6 @@
       (gtk:container-add vbox
                          (make-instance 'gtk:entry
                                         :buffer buffer))
-
       (gtk:container-add vbox
                          (make-instance 'gtk:label
                                         :label "<b>Second Entry</b>"
@@ -40,13 +40,10 @@
                                         :margin-top 12
                                         :margin-bottom 3
                                         :use-markup t))
-
       (gtk:container-add vbox
                          (make-instance 'gtk:entry
                                         :buffer buffer))
-
       (gtk:container-add hbox vbox)
-
       (gtk:container-add hbox
                          (make-instance 'gtk:label
                                         :valign :start

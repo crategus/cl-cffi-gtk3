@@ -1,4 +1,6 @@
-;;;; Example Level Bar - 2022-12-21
+;;;; Example Level Bar
+;;;;
+;;;; 2024-1-3
 
 (in-package :gtk3-example)
 
@@ -27,15 +29,15 @@
                                         background-color: green; }")
     (gtk:style-context-add-provider (gtk:widget-style-context levelbar)
                                     provider
-                                    +gtk-priority-application+)
+                                    gtk:+gtk-priority-application+)
     ;; Return the new level bar
     levelbar))
 
 (defun example-level-bar (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let* ((window (make-instance 'gtk:window
                                   :type :toplevel
-                                  :title "Example Level bar"
+                                  :title "Level bar"
                                   :application application
                                   :border-width 12
                                   :default-width 420
@@ -60,7 +62,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Bind adjustment value for the scale to the level bar values
       (g:object-bind-property adj "value" levelbar1 "value" :default)
       (g:object-bind-property adj "value" levelbar2 "value" :default)

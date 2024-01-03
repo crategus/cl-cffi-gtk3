@@ -1,9 +1,11 @@
-;;;; Link button - 2022-12-21
+;;;; Link button
+;;;;
+;;;; 2024-1-3
 
 (in-package :gtk3-example)
 
 (defun example-link-button (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :type :toplevel
                                  :title "Link Button"
@@ -17,7 +19,7 @@
       (g:signal-connect window "destroy"
                                (lambda (widget)
                                  (declare (ignore widget))
-                                 (leave-gtk-main)))
+                                 (gtk:leave-gtk-main)))
       (gtk:container-add grid
                          (make-instance 'gtk:label
                                         :use-markup t

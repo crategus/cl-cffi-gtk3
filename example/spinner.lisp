@@ -1,13 +1,15 @@
-;;;; Example Spinner - 2022-12-22
+;;;; Example Spinner
 ;;;;
 ;;;; GtkSpinner allows to show that background activity is on-going.
+;;;;
+;;;; 2024-1-3
 
 (in-package :gtk3-example)
 
 (defun example-spinner (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :title "Example Spinner"
+                                 :title "Spinner"
                                  :application application))
           (vbox (make-instance 'gtk:box
                                :orientation :vertical
@@ -18,7 +20,7 @@
       (g:signal-connect window "destroy"
                                (lambda (widget)
                                  (declare (ignore widget))
-                                 (leave-gtk-main)))
+                                 (gtk:leave-gtk-main)))
       (let ((hbox (make-instance 'gtk:box
                                  :orientation :horizontal
                                  :sensitive t)))

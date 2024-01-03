@@ -1,17 +1,19 @@
-;;;; Example Header Bar - 2022-12-21
+;;;; Example Header Bar
 ;;;;
 ;;;; GtkHeaderBar is a container that is suitable for implementing window
 ;;;; titlebars. One of its features is that it can position a title, and
 ;;;; optional subtitle, centered with regard to the full width, regardless of
 ;;;; variable-width content at the left or right. It is commonly used with the
 ;;;; gtk:window-titlebar function.
+;;;;
+;;;; 2024-1-3
 
 (in-package :gtk3-example)
 
-(defun example-header-bar (&optional (application nil))
-  (within-main-loop
+(defun example-header-bar (&optional application)
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :title "Example Header Bar"
+                                 :title "Header Bar"
                                  :type :toplevel
                                  :application application
                                  :default-width 600
@@ -24,7 +26,7 @@
       (g:signal-connect window "destroy"
                                (lambda (widget)
                                  (declare (ignore widget))
-                                 (leave-gtk-main)))
+                                 (gtk:leave-gtk-main)))
       (let* ((button (make-instance 'gtk:button))
              (icon (g:themed-icon-new "mail-send-receive"))
              (image (gtk:image-new-from-gicon icon :button)))

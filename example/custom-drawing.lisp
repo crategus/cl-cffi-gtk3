@@ -1,4 +1,4 @@
-;;;; Example Custom Drawing - 2023-1-27
+;;;; Example Custom Drawing
 ;;;;
 ;;;; Many applications cannot use GTK widgets, for a variety of reasons, but
 ;;;; still want their user interface to appear integrated with the rest of the
@@ -6,6 +6,8 @@
 ;;;; and the gtk:render APIs to achieve this.
 ;;;;
 ;;;; Note that this is a simple, non-interactive example.
+;;;;
+;;;; 2023-12-27
 
 (in-package :gtk3-example)
 
@@ -16,7 +18,7 @@
            (let ((gtype (g:type-from-name name)))
              (gtk:widget-path-append-type path gtype)))
           (t
-           (gtk:widget-path-append-type path +g-type-none+)
+           (gtk:widget-path-append-type path g:+g-type-none+)
            (setf (gtk:widget-path-iter-object-name path -1) name)))
     (do* ((mark (if next (elt selector next)) (if next (elt selector next)))
           (selector (if next (subseq selector (1+ next)))
@@ -380,11 +382,11 @@
     (cairo:destroy cr)))
 
 (defun example-custom-drawing (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :type :toplevel
                                  :application application
-                                 :title "Example Custom Drawing"
+                                 :title "Custom Drawing"
                                  :width-request 420
                                  :height-request 408))
           (area (make-instance 'gtk:drawing-area
@@ -394,7 +396,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (g:signal-connect area "draw" #'draw-callback)
       (gtk:container-add window area)
       (gtk:widget-show-all window))))

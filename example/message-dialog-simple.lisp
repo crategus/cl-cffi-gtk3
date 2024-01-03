@@ -1,10 +1,12 @@
-;;;; Simple Message Dialog - 2022-12-21
+;;;; Simple Message Dialog
+;;;;
+;;;; 2024-1-3
 
 (in-package #:gtk3-example)
 
 (defun example-message-dialog-simple (&optional application)
   (let ((response))
-    (within-main-loop
+    (gtk:within-main-loop
       (let ((dialog (make-instance 'gtk:message-dialog
                                    :application application
                                    :message-type :info
@@ -18,8 +20,8 @@
         (g:signal-connect dialog "destroy"
                           (lambda (widget)
                             (declare (ignore widget))
-                            (leave-gtk-main)))
-        ;; Signal handler for the dialog to handle the signal "response".
+                            (gtk:leave-gtk-main)))
+        ;; Signal handler for the dialog to handle the "response" signal.
         (g:signal-connect dialog "response"
                           (lambda (dialog response-id)
                             (setf response response-id)

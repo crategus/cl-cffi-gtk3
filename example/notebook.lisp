@@ -1,11 +1,13 @@
-;;;; Example Notebook - 2022-12-21
+;;;; Example Notebook
+;;;;
+;;;; 2024-1-3
 
 (in-package :gtk3-example)
 
-(defun example-notebook (&optional (application nil))
-  (within-main-loop
+(defun example-notebook (&optional application)
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :title "Example Notebook"
+                                 :title "Notebook"
                                  :application application
                                  :type :toplevel
                                  :default-width 300
@@ -15,7 +17,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (dotimes (i 3)
         (let ((page (make-instance 'gtk:label
                                    :label

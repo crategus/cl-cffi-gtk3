@@ -1,8 +1,10 @@
-;;;; Example Expander - 2022-12-20
+;;;; Example Expander
 ;;;;
 ;;;; GtkExpander allows to provide additional content that is initially hidden.
 ;;;; This is also known as "disclosure triangle". This example also shows how
 ;;;; to make the window resizable only if the expander is expanded.
+;;;;
+;;;; 2024-1-3
 
 (in-package :gtk3-example)
 
@@ -13,7 +15,7 @@
                                 :buttons :close
                                 :default-width 320
                                 :text
-                                "Example Expander in a Message Dialog"
+                                "Expander in a Message Dialog"
                                 :secondary-text
                                 "See Details for more Information."))
         (area (gtk:message-dialog-message-area dialog))
