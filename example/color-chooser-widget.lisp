@@ -1,11 +1,13 @@
-;;;; Color Chooser Widget - 2023-2-12
+;;;; Color Chooser Widget
+;;;;
+;;;; 2024-1-4
 
 (in-package :gtk3-example)
 
 (defun example-color-chooser-widget (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :title "Example Color Chooser Widget"
+                                 :title "Color Chooser Widget"
                                  :application application
                                  :type :toplevel
                                  :border-width 12
@@ -14,7 +16,7 @@
         (g:signal-connect window "destroy"
                           (lambda (widget)
                             (declare (ignore widget))
-                            (leave-gtk-main)))
+                            (gtk:leave-gtk-main)))
         (g:signal-connect color-chooser "color-activated"
             (lambda (chooser color)
               (declare (ignore chooser))

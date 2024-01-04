@@ -1,4 +1,6 @@
-;;;; Example File Chooser Button - 2023-2-12
+;;;; Example File Chooser Button
+;;;;
+;;;; 2024-1-4
 
 (in-package :gtk3-example)
 
@@ -19,9 +21,9 @@
                             "Preview URI :" preview-uri)))))
 
 (defun example-file-chooser-button (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let* ((window (make-instance 'gtk:window
-                                  :title "Example File Chooser Button"
+                                  :title "File Chooser Button"
                                   :type :toplevel
                                   :application application
                                   :border-width 24
@@ -53,7 +55,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
 
       (g:signal-connect button-folder "file-set"
                         (lambda (chooser)

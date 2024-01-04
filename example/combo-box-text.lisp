@@ -1,11 +1,13 @@
-;;;; Combo Box Text - 2023-2-12
+;;;; Combo Box Text
+;;;;
+;;;; 2024-1-4
 
 (in-package :gtk3-example)
 
 (defun example-combo-box-text (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :title "Example Combo Box Text"
+                                 :title "Combo Box Text"
                                  :type :toplevel
                                  :application application
                                  :border-width 12))
@@ -24,7 +26,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Setup the combo box
       (gtk:combo-box-text-append-text combo "First entry")
       (gtk:combo-box-text-append-text combo "Second entry")

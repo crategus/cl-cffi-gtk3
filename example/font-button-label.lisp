@@ -1,4 +1,6 @@
-;;;; Example Font Button Label - 2022-12-21
+;;;; Example Font Button Label
+;;;;
+;;;; 2024-1-4
 
 (in-package :gtk3-example)
 
@@ -9,9 +11,9 @@
           :test #'equal))
 
 (defun example-font-button-label (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :title "Example Font Chooser Button"
+                                 :title "Font Chooser Button"
                                  :type :toplevel
                                  :application application
                                  :border-width 18
@@ -28,7 +30,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (g:signal-connect button "font-set"
          (lambda (chooser)
            (let* (;; Get the font description
@@ -59,7 +61,7 @@
              (gtk:css-provider-load-from-data provider css-label)
              (gtk:style-context-add-provider context
                                              provider
-                                             +gtk-priority-user+))))
+                                             gtk:+gtk-priority-user+))))
       ;; Set a filter function to select fonts for the font chooser
       (gtk:font-chooser-set-filter-func button #'font-button-filter)
       ;; Pack the widgets

@@ -1,8 +1,10 @@
-;;;; Popovers - 2023-2-12
+;;;; Popovers
 ;;;;
 ;;;; A bubble-like window containing contextual information or options.
 ;;;; GtkPopovers can be attached to any widget, and will be displayed
 ;;;; within the same window, but on top of all its content.
+;;;;
+;;;; 2024-1-4
 
 (in-package #:gtk3-example)
 
@@ -24,7 +26,7 @@
     (create-popover parent content pos)))
 
 (defun example-popover (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let* ((window (make-instance 'gtk:window
                                   :title "Popover"
                                   :type :toplevel
@@ -37,7 +39,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (gtk:container-add window box)
       ;; Show a button with a popover
       (let* ((button (make-instance 'gtk:toggle-button

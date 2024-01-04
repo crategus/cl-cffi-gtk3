@@ -1,4 +1,6 @@
-;;;; Text View Find Next - 2023-2-12
+;;;; Text View Find Next
+;;;;
+;;;; 2023-12-27
 
 (in-package :gtk3-example)
 
@@ -13,9 +15,9 @@
           (gtk:text-view-scroll-mark-onscreen textview last-end))))))
 
 (defun example-text-view-find-next (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :title "Example Text View Find Next"
+                                 :title "Text View Find Next"
                                  :type :toplevel
                                  :application application
                                  :default-width 350
@@ -34,7 +36,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Search and select the text in the text buffer
       (g:signal-connect entry "search-changed"
           (lambda (widget)

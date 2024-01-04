@@ -1,9 +1,11 @@
-;;;; Text View Insert Widget - 2023-2-12
+;;;; Text View Insert Widget
+;;;;
+;;;; 2024-1-4
 
 (in-package :gtk3-example)
 
 (defun example-text-view-insert-widget (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :title "Text View Insert Widget"
                                  :type :toplevel
@@ -21,7 +23,7 @@
     (g:signal-connect window "destroy"
                       (lambda (widget)
                         (declare (ignore widget))
-                        (leave-gtk-main)))
+                        (gtk:leave-gtk-main)))
     ;; Signal handler to insert a widget at the current cursor position.
     (g:signal-connect button "clicked"
        (lambda (widget)

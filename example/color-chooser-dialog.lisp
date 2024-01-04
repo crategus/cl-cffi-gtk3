@@ -1,8 +1,10 @@
-;;;; Example Color Chooser Dialog - 2023-6-12
+;;;; Example Color Chooser Dialog
 ;;;;
 ;;;; Clicking on the drawing area opens a color chooser dialog to select a
 ;;;; background color for the drawing area. The default palettes are replaced
 ;;;; for this color chooser dialog.
+;;;;
+;;;; 2024-1-4
 
 (in-package :gtk3-example)
 
@@ -30,9 +32,9 @@
                       (gdk:rgba-parse "DarkSlateGray"))))
 
   (defun example-color-chooser-dialog (&optional application)
-    (within-main-loop
+    (gtk:within-main-loop
       (let ((window (make-instance 'gtk:window
-                                   :title "Example Color Chooser Dialog"
+                                   :title "Color Chooser Dialog"
                                    :type :toplevel
                                    :application application
                                    :default-width 400))
@@ -40,7 +42,7 @@
         (g:signal-connect window "destroy"
                           (lambda (widget)
                             (declare (ignore widget))
-                            (leave-gtk-main)))
+                            (gtk:leave-gtk-main)))
         ;; Draw the background color and a hint on the drawing area
         (g:signal-connect area "draw"
             (lambda (widget cr)

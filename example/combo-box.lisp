@@ -1,4 +1,6 @@
-;;;; Combo Box - 2022-12-20
+;;;; Combo Box
+;;;;
+;;;; 2024-1-4
 
 (in-package :gtk3-example)
 
@@ -28,10 +30,10 @@
         (setf (gtk:cell-renderer-sensitive cell) t))))
 
 (defun example-combo-box (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let* ((window (make-instance 'gtk:window
                                  :border-width 12
-                                 :title "Example Combo Box"
+                                 :title "Combo Box"
                                  :application application))
            (vbox1 (make-instance 'gtk:box
                                  :orientation :vertical
@@ -49,7 +51,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Setup Cell Renderer for icon
       (let ((renderer (gtk:cell-renderer-pixbuf-new)))
         (setf (gtk:cell-renderer-xpad renderer) 6) ; More space between cells

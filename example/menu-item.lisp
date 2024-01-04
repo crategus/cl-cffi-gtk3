@@ -1,4 +1,6 @@
-;;;; Example Image Menu Item - 2023-2-12
+;;;; Example Image Menu Item
+;;;;
+;;;; 2024-1-4
 
 (in-package :gtk3-example)
 
@@ -37,7 +39,7 @@
       menu-item))
 
 (defun example-menu-item (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let (;; Create a toplevel window.
           (window (make-instance 'gtk:window
                                  :title "Example Image Menu Item"
@@ -51,7 +53,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (gtk:container-add box (create-image-menu-item))
       (gtk:container-add box (create-image-menu-item-with-accel))
       (gtk:container-add window box)

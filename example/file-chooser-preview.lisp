@@ -1,4 +1,6 @@
-;;;; Example File Chooser Preview - 2023-2-12
+;;;; Example File Chooser Preview
+;;;;
+;;;; 2024-1-4
 
 (in-package :gtk3-example)
 
@@ -6,7 +8,7 @@
   (let ((response nil)
         (preview-width 256)
         (preview-height 256)
-        (chooser (gtk:file-chooser-dialog-new "Example File Chooser Preview"
+        (chooser (gtk:file-chooser-dialog-new "File Chooser Preview"
                                               parent
                                               :open
                                               "gtk-open" :accept

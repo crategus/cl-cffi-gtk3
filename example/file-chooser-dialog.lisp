@@ -1,9 +1,11 @@
-;;;; Example File Chooser Dialog - 2023-2-12
+;;;; Example File Chooser Dialog
+;;;;
+;;;; 2024-1-4
 
 (in-package :gtk3-example)
 
 (defun create-file-chooser-dialog (&optional parent)
-  (let ((dialog (gtk:file-chooser-dialog-new "Example File Chooser Dialog"
+  (let ((dialog (gtk:file-chooser-dialog-new "File Chooser Dialog"
                                              parent
                                              :open
                                              "gtk-open" :accept

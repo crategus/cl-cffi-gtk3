@@ -1,4 +1,6 @@
-;;;; Text View Tooltip - 2023-2-12
+;;;; Text View Tooltip
+;;;;
+;;;; 2024-1-4
 
 (in-package :gtk3-example)
 
@@ -71,7 +73,7 @@
                   (gtk:widget-show-all tooltip)))))))))
 
   (defun example-text-view-tooltip (&optional application)
-    (within-main-loop
+    (gtk:within-main-loop
       (let* ((window (make-instance 'gtk:window
                                     :title "Text View Tooltip"
                                     :type :toplevel
@@ -92,7 +94,7 @@
                           (when tooltip
                             (gtk:widget-destroy tooltip)
                             (setf tooltip nil))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
         ;; Signal handler for the text buffer of the text view
         (g:signal-connect buffer "insert-text"
            (lambda (buffer location text len)

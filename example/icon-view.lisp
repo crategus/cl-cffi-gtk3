@@ -1,4 +1,6 @@
-;;;; Example Icon View Content Type - 2023-2-12
+;;;; Example Icon View Content Type
+;;;;
+;;;; 2024-1-4
 
 ;; TODO: On Windows we do not get any icons. Can this be improved?
 
@@ -29,9 +31,9 @@
       model))
 
   (defun example-icon-view (&optional application)
-    (within-main-loop
+    (gtk:within-main-loop
       (let ((window (make-instance 'gtk:window
-                                   :title "Example Icon View"
+                                   :title "Icon View"
                                    :type :toplevel
                                    :application application
                                    :default-width 500
@@ -45,7 +47,7 @@
         (g:signal-connect window "destroy"
                           (lambda (widget)
                             (declare (ignore widget))
-                            (leave-gtk-main)))
+                            (gtk:leave-gtk-main)))
         (gtk:container-add scrolled view)
         (gtk:container-add window scrolled)
         (gtk:widget-show-all window)))))

@@ -1,4 +1,6 @@
-;;;; Color Chooser Palette - 2023-2-12
+;;;; Color Chooser Palette
+;;;;
+;;;; 2024-1-4
 
 (in-package :gtk3-example)
 
@@ -149,7 +151,7 @@
       ("CornflowerBlue"        #x6495ED    "rgb(100, 149, 237)")
       ("MediumSlateBlue"       #x7B68EE    "rgb(123, 104, 238)")
       ("RoyalBlue"             #x4169E1    "rgb( 65, 105, 225)")
-      ("Blue"                  #x0000FF	   "rgb(  0,   0, 255)")
+      ("Blue"                  #x0000FF    "rgb(  0,   0, 255)")
       ("MediumBlue"            #x0000CD    "rgb(  0,   0, 205)")
       ("DarkBlue"              #x00008B    "rgb(  0,   0, 139)")
       ("Navy"                  #x000080    "rgb(  0,   0, 128)")
@@ -203,10 +205,10 @@
       ("Black"                 #x000000    "rgb(  0,   0,   0)")))))
 
 (defun example-color-chooser-palette (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let* ((colors-per-line 9)
            (window (make-instance 'gtk:window
-                                  :title "Example Color Chooser Palette"
+                                  :title "Color Chooser Palette"
                                   :application application
                                   :type :toplevel
                                   :border-width 12
@@ -221,7 +223,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (g:signal-connect combo-add-palette "changed"
           (lambda (combo)
             (let* ((palette (gtk:combo-box-text-active-text combo))

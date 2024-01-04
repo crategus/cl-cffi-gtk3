@@ -1,7 +1,9 @@
-;;;; Example Tool Palette - 2023-2-12
+;;;; Example Tool Palette
 ;;;;
 ;;;; A tool palette widget shows groups of toolbar items as a grid of icons or
 ;;;; a list of names.
+;;;;
+;;;; 2024-1-4
 
 (in-package :gtk3-example)
 
@@ -151,11 +153,9 @@
 (defun canvas-item-draw (item cr preview)
   (let ((cx (gdk:pixbuf-width (canvas-item-pixbuf item)))
         (cy (gdk:pixbuf-height (canvas-item-pixbuf item))))
-
     (gdk:cairo-set-source-pixbuf cr (canvas-item-pixbuf item)
                                     (- (canvas-item-x item) (* 0.5d0 cx))
                                     (- (canvas-item-y item) (* 0.5d0 cy)))
-
     (if preview
         (cairo:paint-with-alpha cr 0.6d0)
         (cairo:paint cr))))
@@ -163,15 +163,11 @@
 (defun canvas-draw (widget cr)
   (declare (ignore widget))
   (let ((cr (glib:boxed-opaque-pointer cr)))
-
     (cairo:set-source-rgb cr 1.0 1.0 1.0)
     (cairo:paint cr)
-
     (dolist (item *canvas-items*)
       (canvas-item-draw item cr nil))
-
     (cairo:destroy cr)))
-
 
 (defun passive-canvas-drag-data-received (widget context x y selection info time)
   (let ((palette (gtk:drag-source-widget context))
@@ -191,20 +187,17 @@
                                        "GtkToolPalette")))
           do (setf palette
                    (gtk:widget-parent palette)))
-
     (when palette
       (setf tool-item
             (gtk:tool-palette-drag-item palette selection)))
-
     (when tool-item
       (let ((canvas-item (canvas-item-new widget tool-item x y)))
         (when canvas-item
           (push canvas-item *canvas-items*)
           (gtk:widget-queue-draw widget))))))
 
-
 (defun example-tool-palette (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let* (;; Create a toplevel window.
            (window (make-instance 'gtk:window
                                   :title "Example Tool Palette"
@@ -246,8 +239,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
-
+                          (gtk:leave-gtk-main)))
       ;; Orientation combo box
       (let ((combo (make-instance 'gtk:combo-box-text)))
         (g:signal-connect combo "changed"
@@ -273,7 +265,6 @@
                                           :margin-top 12
                                           :label "<b>Orientation</b>"))
         (gtk:container-add page-1 combo))
-
       ;; Style combo box
       (let ((combo (make-instance 'gtk:combo-box-text)))
         (g:signal-connect combo "changed"
@@ -304,7 +295,6 @@
                                           :label
                                           "<b>Style</b>"))
         (gtk:container-add page-1 combo))
-
       ;; Icon size combo box
       (let ((combo (make-instance 'gtk:combo-box-text)))
         (g:signal-connect combo "changed"
@@ -335,19 +325,16 @@
                                           :label
                                           "<b>Icon Size</b>"))
         (gtk:container-add page-1 combo))
-
       (gtk:notebook-append-page notebook
                                 page-1
                                 (make-instance 'gtk:label
                                                :label "Properties"))
-
       ;; Fill the tool palette
       (load-icon-items palette)
       ;; Add the palette to the scrolled window
       (gtk:container-add scroller palette)
       ;; Add the scrolled window to the content
       (gtk:container-add content scroller)
-
       ;; DnD for tool items
       (gtk:tool-palette-add-drag-dest palette
                                       palette
@@ -358,40 +345,22 @@
                         "drag-data-received"
                         #'palette-drag-date-received)
 
-
       ;; Passive DnD dest
-
       (g:signal-connect contents "draw" #'canvas-draw)
       (g:signal-connect contents "drag-data-received"
                                  #'passive-canvas-drag-data-received)
-
       (gtk:tool-palette-add-drag-dest palette contents :all :items :copy)
-
       (let ((page-2 (make-instance 'gtk:scrolled-window
                                    :border-width 6
                                    :hscrollbar-policy :automatic
                                    :vscrollbar-policy :always)))
         (gtk:container-add page-2 contents)
-
         (gtk:notebook-append-page notebook
                                   page-2
                                   (make-instance 'gtk:label
                                                  :label "Passive DnD Mode")))
-
       ;; Add the notebook to the action container
       (gtk:container-add action notebook)
-
-      ;; A Quit button
-      (let ((button (make-instance 'gtk:button
-                                   :label "Quit"
-                                   :margin-top 12)))
-        (g:signal-connect button "clicked"
-           (lambda (widget)
-             (declare (ignore widget))
-             (gtk:widget-destroy window)))
-        ;; Add the quit button to the action container
-        (gtk:container-add action button))
-
       ;; Add frame, content, and action to the window.
       (gtk:container-add content action)
       (gtk:container-add window content)

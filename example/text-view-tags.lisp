@@ -1,4 +1,6 @@
-;;;; Text View Tags - 2023-2-12
+;;;; Text View Tags
+;;;;
+;;;; 2024-1-4
 
 (in-package :gtk3-example)
 
@@ -11,9 +13,9 @@
           (gtk:text-buffer-remove-tag buffer tag start end)))))
 
 (defun example-text-view-tags (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let* ((window (make-instance 'gtk:window
-                                  :title "Example Text View Tags"
+                                  :title "Text View Tags"
                                   :type :toplevel
                                   :application application
                                   :default-width 350
@@ -29,7 +31,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Signal handler for cursor movements in the text buffer
       (g:signal-connect buffer "notify::cursor-position"
           (lambda (object pspec)

@@ -1,4 +1,6 @@
-;;;; Example Tree View Content Type - 2023-2-12
+;;;; Example Tree View Content Type
+;;;;
+;;;; 2024-1-4
 
 (in-package :gtk3-example)
 
@@ -61,9 +63,9 @@
       view))
 
   (defun example-tree-view-content-type (&optional application)
-    (within-main-loop
+    (gtk:within-main-loop
       (let ((window (make-instance 'gtk:window
-                                   :title "Example Tree View Content Type"
+                                   :title "Tree View Content Type"
                                    :type :toplevel
                                    :application application
                                    :default-width 550
@@ -73,7 +75,7 @@
         (g:signal-connect window "destroy"
                           (lambda (widget)
                             (declare (ignore widget))
-                            (leave-gtk-main)))
+                            (gtk:leave-gtk-main)))
         (gtk:container-add scrolled view)
         (gtk:container-add window scrolled)
         (gtk:widget-show-all window)))))

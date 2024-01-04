@@ -1,9 +1,11 @@
-;;;; Example Menu Popup - 2023-2-12
+;;;; Example Menu Popup
+;;;;
+;;; 2024-1-4
 
 (in-package :gtk3-example)
 
 (defun example-menu-popup (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :title "Example Popup Menu"
                                  :type :toplevel
@@ -27,6 +29,6 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (gtk:container-add window button)
       (gtk:widget-show-all window))))

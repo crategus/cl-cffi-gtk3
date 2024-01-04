@@ -1,4 +1,6 @@
-;;;; Font Chooser Button - 2023-2-12
+;;;; Font Chooser Button
+;;;;
+;;;; 2024-1-4
 
 (in-package :gtk3-example)
 
@@ -9,9 +11,9 @@
           :test #'equal))
 
 (defun example-font-button (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :title "Example Font Chooser Button"
+                                 :title "Font Chooser Button"
                                  :type :toplevel
                                  :application application
                                  :border-width 12
@@ -23,7 +25,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Set a filter function to select fonts for the font chooser
       (gtk:font-chooser-set-filter-func button #'font-filter)
       (g:signal-connect button "font-set"

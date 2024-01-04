@@ -1,11 +1,13 @@
-;;;; Simple Text View - 2023-2-12
+;;;; Simple Text View
+;;;;
+;;;; 2024-1-4
 
 (in-package :gtk3-example)
 
 (defun example-text-view-simple (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let* ((window (make-instance 'gtk:window
-                                  :title "Example Simple Text View"
+                                  :title "Simple Text View"
                                   :type :toplevel
                                   :application application
                                   :default-width 350
@@ -27,7 +29,7 @@
                                                end
                                                include-hidden-chars))
               (terpri)
-              (leave-gtk-main))))
+              (gtk:leave-gtk-main))))
       (setf (gtk:text-buffer-text buffer) *lorem-ipsum-short*)
       (gtk:container-add window textview)
       (gtk:widget-show-all window))))

@@ -1,11 +1,13 @@
-;;;; Text View Attributes - 2023-2-12
+;;;; Text View Attributes
+;;;;
+;;;; 2023-12-27
 
 (in-package :gtk3-example)
 
 (defun example-text-view-attributes (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let* ((window (make-instance 'gtk:window
-                                  :title "Example Text View Attributes"
+                                  :title "Text View Attributes"
                                   :type :toplevel
                                   :application application
                                   :default-width 350
@@ -20,7 +22,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (setf (gtk:text-buffer-text buffer) "Hello, this is some text.")
       ;; Change default font and color throughout the widget
       (gtk:css-provider-load-from-data provider
@@ -29,7 +31,7 @@
                                           font : 20px Purisa; }")
       (gtk:style-context-add-provider (gtk:widget-style-context textview)
                                       provider
-                                      +gtk-priority-application+)
+                                      gtk:+gtk-priority-application+)
       ;; Use a tag to change the color for just one part of the widget
       (let ((tag (gtk:text-buffer-create-tag buffer
                                              "blue_foreground"

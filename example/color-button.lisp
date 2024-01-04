@@ -1,15 +1,17 @@
-;;;; Example Color Button - 2023-2-12
+;;;; Example Color Button
 ;;;;
 ;;;; The example shows a color button. The button is initialized with the color
 ;;;; "Blue". The handler for the "color-set" signal prints the selected color
 ;;;; on the console.
+;;;;
+;;;; 2024-1-4
 
 (in-package :gtk3-example)
 
 (defun example-color-button (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :title "Example Color Button"
+                                 :title "Color Button"
                                  :type :toplevel
                                  :application application
                                  :border-width 12
@@ -20,7 +22,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (g:signal-connect button "color-set"
          (lambda (widget)
            (let ((rgba (gtk:color-chooser-rgba widget)))

@@ -1,4 +1,6 @@
-;;;; Example Tree View Path - 2023-2-12
+;;;; Example Tree View Path
+;;;;
+;;;; 2023-12-27
 
 (in-package :gtk3-example)
 
@@ -77,9 +79,9 @@
       view))
 
   (defun example-tree-view-path (&optional application)
-    (within-main-loop
+    (gtk:within-main-loop
       (let ((window (make-instance 'gtk:window
-                                   :title "Example Tree View Path"
+                                   :title "Tree View Path"
                                    :type :toplevel
                                    :application application
                                    :default-width 350
@@ -88,6 +90,6 @@
         (g:signal-connect window "destroy"
                           (lambda (widget)
                             (declare (ignore widget))
-                            (leave-gtk-main)))
+                            (gtk:leave-gtk-main)))
         (gtk:container-add window view)
         (gtk:widget-show-all window)))))

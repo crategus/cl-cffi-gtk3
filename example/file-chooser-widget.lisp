@@ -1,14 +1,16 @@
-;;;; Example File Chooser Widget - 2022-12-20
+;;;; Example File Chooser Widget
 ;;;;
 ;;;; In this example the options "Local only", "Select Multiple" and
 ;;;; "Show hidden" can be toggled with check buttons which are put in an extra
 ;;;; widget for the file chooser.
+;;;;
+;;;; 2024-1-4
 
 (in-package :gtk3-example)
 
 (defun create-file-chooser-widget (&optional parent)
   (let ((response nil)
-        (chooser (gtk:file-chooser-dialog-new "Example File Chooser Widget"
+        (chooser (gtk:file-chooser-dialog-new "File Chooser Widget"
                                               parent
                                               :open
                                               "gtk-open" :accept

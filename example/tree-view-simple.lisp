@@ -1,4 +1,6 @@
-;;;; Example Tree View Simple - 2023-2-12
+;;;; Example Tree View Simple
+;;;;
+;;;; 2024-1-4
 
 (in-package :gtk3-example)
 
@@ -73,9 +75,9 @@
       view))
 
   (defun example-tree-view-simple (&optional application)
-    (within-main-loop
+    (gtk:within-main-loop
       (let* ((window (make-instance 'gtk:window
-                                    :title "Example Simple Tree View"
+                                    :title "Simple Tree View"
                                     :type :toplevel
                                     :application application
                                     :default-width 350
@@ -84,7 +86,7 @@
         (g:signal-connect window "destroy"
                           (lambda (widget)
                             (declare (ignore widget))
-                            (leave-gtk-main)))
+                            (gtk:leave-gtk-main)))
         ;; Setup the selection handler
         (let ((selection (gtk:tree-view-selection view)))
           (setf (gtk:tree-selection-mode selection) :single)

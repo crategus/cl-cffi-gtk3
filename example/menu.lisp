@@ -1,13 +1,15 @@
-;;;; Example Menu - 2022-12-21
+;;;; Example Menu
+;;;;
+;;;; 2024-1-4
 
 (in-package :gtk3-example)
 
 (defun example-menu (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :type :toplevel
                                  :application application
-                                 :title "Example Menu"
+                                 :title "Menu Bar"
                                  :default-width 320
                                  :default-height 180))
           (vbox (make-instance 'gtk:box
@@ -15,7 +17,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Create the menu-bar and the items of the menu-bar
       (let ((menubar (make-instance 'gtk:menu-bar
                                     :visible t

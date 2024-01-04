@@ -1,16 +1,18 @@
-;;;; Example Color Button Label - 2023-2-12
+;;;; Example Color Button Label
 ;;;;
 ;;;; The example shows a color button. The button is initialized with the color
 ;;;; "Black". The handler for the "color-set" signal changes the color of the
 ;;;; "Color button" label. To change the color of the label the CSS color is
 ;;;; loaded in a CSS provider and the style context of the label is updated.
+;;;;
+;;;; 2024-1-4
 
 (in-package :gtk3-example)
 
 (defun example-color-button-label (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :title "Example Color Button"
+                                 :title "Color Button"
                                  :type :toplevel
                                  :application application
                                  :border-width 12
@@ -27,7 +29,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Handler for the "color-set" signal
       (g:signal-connect button "color-set"
          (lambda (widget)
@@ -39,7 +41,7 @@
              (gtk:css-provider-load-from-data provider css-label)
              (gtk:style-context-add-provider context
                                              provider
-                                             +gtk-priority-user+))))
+                                             gtk:+gtk-priority-user+))))
       ;; Pack and show the widgets
       (gtk:box-pack-start box button)
       (gtk:box-pack-start box label)
