@@ -1,4 +1,6 @@
-;;;; Create Page Setup Dialog - 2023-2-12
+;;;; Create Page Setup Dialog
+;;;;
+;;;; 2024-1-5
 
 (in-package :gtk3-example)
 
