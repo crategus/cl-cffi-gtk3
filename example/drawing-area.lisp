@@ -1,13 +1,15 @@
-;;;; Example Drawing area - 2022-12-20
+;;;; Example Drawing area
+;;;;
+;;;; 2024-1-5
 
 (in-package :gtk3-example)
 
 (defun example-drawing-area (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :type :toplevel
                                  :application application
-                                 :title "Example Drawing Area"
+                                 :title "Drawing Area"
                                  :default-width 400
                                  :default-height 300))
           ;; Create the drawing area
@@ -36,7 +38,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Show the window
       (gtk:container-add window area)
       (gtk:widget-show-all window))))

@@ -1,6 +1,8 @@
-;;;; Example Cursor - 2023-2-18
+;;;; Example Cursor
 ;;;;
 ;;;; Demonstrates a useful set of available cursors.
+;;;;
+;;;; 2024-1-5
 
 ;; FIXME: This example no longer shows the images for the cursor.
 ;; What is wrong?
@@ -44,11 +46,11 @@
     section))
 
 (defun example-cursor (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :type :toplevel
                                  :application application
-                                 :title "Demo Cursor"
+                                 :title "Cursor"
                                  :default-height 480
                                  :default-width 360
                                  :border-width 12))
@@ -75,7 +77,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Show the Global Settings related to cursors
       (let* ((settings (gtk:settings-default))
              (blink (gtk:settings-gtk-cursor-blink settings))

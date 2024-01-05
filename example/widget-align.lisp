@@ -1,15 +1,17 @@
-;;;; Example Align Widget - 2023-2-12
+;;;; Example Align Widget
 ;;;;
 ;;;; Similiar to example-alignment, but using the child properties "margin",
 ;;;; "valign", and "halign" of the button widget.  In distinction to
 ;;;; example-alignment the scaling of the button is not implemented.
+;;;;
+;;;; 2024-1-5
 
 (in-package :gtk3-example)
 
 (defun example-widget-align (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :title "Example Align Widget"
+                                 :title "Align Widget"
                                  :type :toplevel
                                  :application application
                                  :border-width 12
@@ -23,7 +25,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (let ((frame (make-instance 'gtk:frame
                                   :label "halign: start, valign: start"))
             (button (make-instance 'gtk:button

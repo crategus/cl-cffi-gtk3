@@ -1,4 +1,4 @@
-;;;; Pixbufs - 2023-2-18
+;;;; Pixbufs
 ;;;;
 ;;;; A GdkPixbuf represents an image, normally in RGB or RGBA format.
 ;;;; Pixbufs are normally used to load files from disk and perform
@@ -10,6 +10,8 @@
 ;;;  simple animation.
 ;;;;
 ;;;; Look at the Image demo for additional pixbuf usage examples.
+;;;;
+;;;; 2024-1-5
 
 (in-package :gtk3-example)
 
@@ -93,7 +95,7 @@
 ;; TODO: Find a way to calculate the width-request and height-request values.
 
 (defun example-pixbufs (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let* ((background (gdk:pixbuf-new-from-file
                            (sys-path "resource/background.jpg")))
            (width (gdk:pixbuf-width background))
@@ -115,7 +117,7 @@
                                  (when (not (= 0 timeout-id))
                                    (g:source-remove timeout-id)
                                    (setf timeout-id 0))
-                                 (leave-gtk-main)))
+                                 (gtk:leave-gtk-main)))
       (g:signal-connect area "draw"
           (lambda (widget cr)
             (declare (ignore widget))

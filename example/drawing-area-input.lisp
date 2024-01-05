@@ -1,4 +1,6 @@
-;;;; Example Drawing in response to input - 2023-4-5
+;;;; Example Drawing in response to input
+;;;;
+;;;; 2024-1-5
 
 (in-package :gtk3-example)
 
@@ -6,7 +8,7 @@
   (gtk:within-main-loop
     (let ((surface nil)
           (window (make-instance 'gtk:window
-                                 :title "Example Drawing"
+                                 :title "Drawing"
                                  :type :toplevel
                                  :application application))
           (area (make-instance 'gtk:drawing-area
@@ -60,7 +62,7 @@
                                            6
                                            6)))
            ;; We have handled the event, stop processing
-           +gdk-event-stop+))
+           gdk:+gdk-event-stop+))
       (g:signal-connect area "button-press-event"
          (lambda (widget event)
            (format t "BUTTON-PRESS-EVENT ~A~%" event)
