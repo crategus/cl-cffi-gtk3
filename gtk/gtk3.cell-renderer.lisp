@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -245,28 +245,29 @@
 (setf (documentation 'cell-renderer 'type)
  "@version{2023-2-22}
   @begin{short}
-    The @sym{gtk:cell-renderer} class is a base class of a set of objects used
+    The @class{gtk:cell-renderer} class is a base class of a set of objects used
     for rendering a cell to a @symbol{cairo:context-t} context.
   @end{short}
   These objects are used primarily by the @class{gtk:tree-view} widget, though
   they are not tied to them in any specific way. It is worth noting that the
-  @sym{gtk:cell-renderer} object is not a @class{gtk:widget} object and cannot
+  @class{gtk:cell-renderer} object is not a @class{gtk:widget} object and cannot
   be treated as such.
 
-  The primary use of a @sym{gtk:cell-renderer} object is for drawing a certain
+  The primary use of a @class{gtk:cell-renderer} object is for drawing a certain
   graphical elements on a Cairo context. Typically, one cell renderer is used
   to draw many cells on the screen. To this extent, it is not expected that a
-  @sym{gtk:cell-renderer} object keep any permanent state around. Instead, any
+  @class{gtk:cell-renderer} object keep any permanent state around. Instead, any
   state is set just prior to use using GObjects property system. Then, the cell
   is measured using the @fun{gtk:cell-renderer-preferred-size} function.
   Finally, the cell is rendered in the correct location using the
   @fun{gtk:cell-renderer-render} function.
 
   There are a number of rules that must be followed when writing a new
-  @sym{gtk:cell-renderer} class. First and formost, its important that a certain
-  set of properties will always yield a cell renderer of the same size, barring
-  a @code{GtkStyle} change. The @sym{gtk:cell-renderer} class also has a number
-  of generic properties that are expected to be honored by all children.
+  @class{gtk:cell-renderer} class. First and formost, its important that a
+  certain set of properties will always yield a cell renderer of the same size,
+  barring a @code{GtkStyle} change. The @class{gtk:cell-renderer} class also has
+  a number of generic properties that are expected to be honored by all
+  children.
 
   Beyond merely rendering a cell, cell renderers can optionally provide active
   user interface elements. A cell renderer can be \"activatable\" like the
@@ -277,7 +278,7 @@
   editable, you have to implement the @code{GtkCellRendererClass.activate} or
   @code{GtkCellRendererClass.start_editing} virtual functions, respectively.
 
-  Many properties of the @sym{gtk:cell-renderer} class and its subclasses have
+  Many properties of the @class{gtk:cell-renderer} class and its subclasses have
   a corresponding @code{set} property, e.g. the @code{cell-background-set}
   property corresponds to the @code{cell-background} property. These @code{set}
   properties reflect whether a property has been set or not. You should not set
@@ -292,7 +293,7 @@ lambda (renderer)    :run-first
       editing when the user presses the @kbd{Escape} key. See also the
       @fun{gtk:cell-renderer-stop-editing} function.
       @begin[code]{table}
-        @entry[renderer]{The @sym{gtk:cell-renderer} object which received the
+        @entry[renderer]{The @class{gtk:cell-renderer} object which received the
           signal.}
       @end{table}
     @subheading{The \"editing-started\" signal}
@@ -307,7 +308,7 @@ lambda (renderer editable path)    :run-first
       future releases, therefore you should check the type of the @arg{editable}
       argument before doing any specific setup.
       @begin[code]{table}
-        @entry[renderer]{The @sym{gtk:cell-renderer} object which received the
+        @entry[renderer]{The @class{gtk:cell-renderer} object which received the
           signal.}
         @entry[editable]{The @class{gtk:cell-editable} widget.}
         @entry[path]{A string with the path identifying the edited cell.}
@@ -390,7 +391,7 @@ lambda (renderer editable path)    :run-first
   @end{short}
   Cell background color.
   @begin[Warning]{dictionary}
-    The @sym{gtk:cell-renderer-cell-background-gdk} function has been deprecated
+    The @fun{gtk:cell-renderer-cell-background-gdk} function has been deprecated
     since version 3.4 and should not be used in newly written code. Use the
     @fun{gtk:cell-renderer-cell-background-rgba} function instead.
   @end{dictionary}
@@ -598,8 +599,8 @@ lambda (renderer editable path)    :run-first
     Accessor of the @slot[gtk:cell-renderer]{sensitive} slot of the
     @class{gtk:cell-renderer} class.
   @end{short}
-  The @sym{gtk:cell-renderer-sensitive} function returns the cell renderer's
-  sensitivity. The @sym{(setf gtk:cell-renderer-sensitive)} function sets the
+  The @fun{gtk:cell-renderer-sensitive} function returns the cell renderer's
+  sensitivity. The @setf{gtk:cell-renderer-sensitive} function sets the
   sensitivity.
   @see-class{gtk:cell-renderer}")
 
@@ -624,8 +625,8 @@ lambda (renderer editable path)    :run-first
     Accessor of the @slot[gtk:cell-renderer]{visible} of the
     @class{gtk:cell-renderer} class.
   @end{short}
-  The @sym{gtk:cell-renderer-sensitive} function returns the cell renderer's
-  visibility. The @sym{(setf gtk:cell-renderer-sensitive)} function sets the
+  The @fun{gtk:cell-renderer-sensitive} function returns the cell renderer's
+  visibility. The @setf{gtk:cell-renderer-sensitive} function sets the
   visibility.
   @see-class{gtk:cell-renderer}")
 
@@ -863,7 +864,7 @@ lambda (renderer editable path)    :run-first
   those in @arg{x-offset} and @arg{y-offset} are inclusive of the
   @slot[gtk:cell-renderer]{xpad} and @slot[gtk:cell-renderer]{ypad} properties.
   @begin[Warning]{dictionary}
-    The @sym{gtk:cell-renderer-size} function has been deprecated since version
+    The @fun{gtk:cell-renderer-size} function has been deprecated since version
     3.0 and should not be used in newly written code. Use the
     @fun{gtk:cell-renderer-preferred-size} function instead.
   @end{dictionary}
@@ -987,11 +988,11 @@ lambda (renderer editable path)    :run-first
     e.g. for @class{gtk:tree-view} widget, a string representation of
     a @class{gtk:tree-path} instance}
   @argument[background]{a @class{gdk:rectangle} instance with the background
-    area as passed to the function @fun{gtk:cell-renderer-render}}
+    area as passed to the @fun{gtk:cell-renderer-render} function}
   @argument[area]{a @class{gdk:rectangle} instance with the cell area as passed
-    to the function @fun{gtk:cell-renderer-render}}
+    to the @fun{gtk:cell-renderer-render} function}
   @argument[flags]{the @symbol{gtk:cell-renderer-state} render flags}
-  @return{A new @class{gtk:cell-editable} widget, or @code{nil}.}
+  @return{The new @class{gtk:cell-editable} widget, or @code{nil}.}
   @begin{short}
     Passes an activate event to the cell renderer for possible processing.
   @end{short}
@@ -1028,9 +1029,9 @@ lambda (renderer editable path)    :run-first
     Informs the cell renderer that the editing is stopped.
   @end{short}
   If @arg{canceled} is @em{true}, the cell renderer will emit the
-  \"editing-canceled\" signal. This function should be called by cell renderer
-  implementations in response to the \"editing-done\" signal of the
-  @class{gtk:cell-editable} widget.
+  @code{\"editing-canceled\"} signal. This function should be called by cell
+  renderer implementations in response to the @code{\"editing-done\"} signal of
+  the @class{gtk:cell-editable} widget.
   @see-class{gtk:cell-renderer}
   @see-class{gtk:cell-editable}
   @see-function{gtk:cell-renderer-start-editing}"
@@ -1068,11 +1069,11 @@ lambda (renderer editable path)    :run-first
   @argument[width]{an integer with the width of the cell renderer, or -1}
   @argument[height]{an integer with the height of the cell renderer, or -1}
   @begin{short}
-    The @sym{gtk:cell-renderer-fixed-size} function returns @arg{width} and
+    The @fun{gtk:cell-renderer-fixed-size} function returns @arg{width} and
     @arg{height} with the appropriate size of @arg{cell}.
   @end{short}
-  The @sym{(setf gtk:cell-renderer-fixed-size)} function sets the renderer size
-  to be explicit, independent of the properties set.
+  The @setf{gtk:cell-renderer-fixed-size} function sets the renderer size to be
+  explicit, independent of the properties set.
   @see-class{gtk:cell-renderer}"
   (cffi:with-foreign-objects ((width :int) (height :int))
     (%cell-renderer-fixed-size cell width height)
@@ -1153,10 +1154,10 @@ lambda (renderer editable path)    :run-first
   @argument[xpad]{an integer with the x padding of the cell renderer}
   @argument[ypad]{an integer with the y padding of the cell renderer}
   @begin{short}
-    The @sym{gtk:cell-renderer-padding} function returns the appropriate
+    The @fun{gtk:cell-renderer-padding} function returns the appropriate
     @arg{xpad} and @arg{ypad} of the cell renderer.
   @end{short}
-  The @sym{(setf gtk:cell-renderer-padding)} function sets the cell renderer's
+  The @setf{gtk:cell-renderer-padding} function sets the cell renderer's
   padding.
   @see-class{gtk:cell-renderer}"
   (cffi:with-foreign-objects ((xpad :int) (ypad :int))

@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -229,7 +229,7 @@
   widget.
 
   There are two major kinds of container widgets in GTK. Both are subclasses
-  of the abstract @sym{gtk:container} base class. The first type of container
+  of the abstract @class{gtk:container} base class. The first type of container
   widget has a single child widget and derives from the @class{gtk:bin} class.
   These containers are decorators, which add some kind of functionality to the
   child. For example, a @class{gtk:button} widget makes its child into a
@@ -259,7 +259,7 @@
   will request its sizes using the width-for-height APIs.
 
   @subheading{Child properties}
-  The @sym{gtk:container} widget introduces child properties. These are object
+  The @class{gtk:container} widget introduces child properties. These are object
   properties that are not specific to either the container or the contained
   widget, but rather to their relation. Typical examples of child properties
   are the position or pack-type of a widget which is contained in a
@@ -272,7 +272,7 @@
   or @fun{gtk:container-child-set} functions. To emit notification about child
   property changes, use the @fun{gtk:widget-child-notify} function.
   @begin[GtkContainer as GtkBuildable]{dictionary}
-    The @sym{gtk:container} implementation of the @class{gtk:buildable}
+    The @class{gtk:container} implementation of the @class{gtk:buildable}
     interface supports a @code{<packing>} element for children, which can
     contain multiple @code{<property>} elements that specify child properties
     for the child. Child properties can also be marked as translatable using
@@ -329,7 +329,7 @@ lambda (container widget)    :run-first
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- container-border-width -------------------------------------------------
+;;; --- gtk:container-border-width ---------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "border-width" 'container) t)
@@ -351,9 +351,9 @@ lambda (container widget)    :run-first
     Accessor of the @slot[gtk:container]{border-width} slot of the
     @class{gtk:container} class.
   @end{short}
-  The @sym{gtk:container-border-width} function retrieves the border width of
-  the container. The @sym{(setf gtk:container-border-width)} function sets the
-  border width.
+  The @fun{gtk:container-border-width} function retrieves the border width of
+  the container. The @setf{gtk:container-border-width} function sets the border
+  width.
 
   The border width of a container is the amount of space to leave around the
   outside of the container. Valid values are in the range [0, 65535] pixels.
@@ -368,7 +368,7 @@ lambda (container widget)    :run-first
   @see-class{gtk:alignment}
   @see-function{gtk:widget-size-request}")
 
-;;; --- container-child --------------------------------------------------------
+;;; --- gtk:container-child ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "child" 'container) t)
@@ -392,7 +392,7 @@ lambda (container widget)    :run-first
   @see-class{gtk:container}
   @see-class{gtk:widget}")
 
-;;; --- container-resize-mode --------------------------------------------------
+;;; --- gtk:container-resize-mode ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "resize-mode" 'container) t)
@@ -417,15 +417,15 @@ lambda (container widget)    :run-first
     Accessor of the @slot[gtk:container]{resize-mode} slot of the
     @class{gtk:container} class.
   @end{short}
-  The @sym{gtk:container-resize-mode} function returns the current resize mode
-  of the container. The @sym{(setf gtk:container-resize-mode)} function sets
-  the resize mode.
+  The @fun{gtk:container-resize-mode} function returns the current resize mode
+  of the container. The @setf{gtk:container-resize-mode} function sets the
+  resize mode.
 
   The resize mode of a container determines whether a resize request will be
   passed to the parent of the container, queued for later execution or executed
   immediately.
   @begin[Warning]{dictionary}
-    The @sym{gtk:container-resize-mode} function has been deprecated since
+    The @fun{gtk:container-resize-mode} function has been deprecated since
     version 3.12 and should not be used in newly written code. Resize modes are
     deprecated. They are not necessary anymore since frame clocks and might
     introduce obscure bugs if used.
@@ -453,7 +453,7 @@ lambda (container widget)    :run-first
   @class{gtk:grid} widgets, this function will pick default packing parameters
   that may not be correct. So consider functions such as the
   @fun{gtk:box-pack-start} and @fun{gtk:grid-attach} functions as an
-  alternative to the @sym{gtk:container-add} function in those cases.
+  alternative to the @fun{gtk:container-add} function in those cases.
 
   A widget may be added to only one container at a time. You cannot place the
   same widget inside two different containers.
@@ -522,7 +522,7 @@ lambda (container widget)    :run-first
  "@version{#2023-3-3}
   @argument[container]{a @class{gtk:container} widget}
   @begin{short}
-    Emits the \"check-resize\" signal on the container.
+    Emits the @code{\"check-resize\"} signal on the container.
   @end{short}
   @see-class{gtk:container}"
   (container (g:object container)))
@@ -580,7 +580,7 @@ lambda (widget)
   @end{short}
   See the @fun{gtk:container-forall} function for details on what constitutes
   an \"internal\" child. Most applications should use the
-  @sym{gtk:container-foreach} function, rather than the
+  @fun{gtk:container-foreach} function, rather than the
   @fun{gtk:container-forall} function.
   @see-class{gtk:container}
   @see-symbol{gtk:gtk-callback}
@@ -601,7 +601,7 @@ lambda (widget)
  #+liber-documentation
  "@version{2023-6-17}
   @argument[container]{a @class{gtk:container} widget}
-  @return{A list of the containers non-internal children.}
+  @return{The list of the containers non-internal children.}
   @begin{short}
     Returns a list with the non-internal children of the container.
   @end{short}
@@ -633,7 +633,7 @@ lambda (widget)
  "@version{2023-3-3}
   @argument[container]{a @class{gtk:container} widget}
   @argument[child]{a @class{gtk:widget} child widget of @arg{container}}
-  @return{A newly created @class{gtk:widget-path} instance.}
+  @return{The newly created @class{gtk:widget-path} instance.}
   @begin{short}
     Returns a newly created widget path representing all the widget hierarchy
     from the toplevel down to and including child.
@@ -663,7 +663,7 @@ lambda (widget)
   Containers requesting reallocation redraws get automatically redrawn if any
   of their children changed allocation.
   @begin[Warning]{dictionary}
-    The @sym{gtk:container-reallocate-redraws} function has been deprecated
+    The @fun{gtk:container-reallocate-redraws} function has been deprecated
     since version 3.14 and should not be used in newly written code. Call
     the @fun{gtk:widget-queue-draw} function.
   @end{dictionary}
@@ -695,14 +695,14 @@ lambda (widget)
   @begin{short}
     Accessor of the current focused child widget in the container.
   @end{short}
-  The @sym{gtk:container-focus-child} function returns the current focus child
+  The @fun{gtk:container-focus-child} function returns the current focus child
   widget which will receive the focus inside the container when the container
   is focussed. This is not the currently focused widget. That can be obtained
   by calling the @fun{gtk:window-focus} function. The
-  @sym{(setf gtk:container-focus-child)} function sets, or unsets, if the
-  @arg{child} argument is @code{nil}, the focused child of the container.
+  @setf{gtk:container-focus-child} function sets, or unsets, if the @arg{child}
+  argument is @code{nil}, the focused child of the container.
 
-  This function emits the \"set-focus-child\" signal of the container.
+  This function emits the @code{\"set-focus-child\"} signal of the container.
   Implementations of the @class{gtk:container} class can override the default
   behaviour by overriding the handler of this signal.
 
@@ -742,10 +742,9 @@ lambda (widget)
   @begin{short}
     Accessor of the vertical focus adjustment of the container.
   @end{short}
-  The @sym{gtk:container-focus-vadjustment} function retrieves the vertical
+  The @fun{gtk:container-focus-vadjustment} function retrieves the vertical
   focus adjustment for the container. The
-  @sym{(setf gtk:container-focus-vadjustment)} function sets the vertical
-  adjustment.
+  @setf{gtk:container-focus-vadjustment} function sets the vertical adjustment.
 
   Hooks up an adjustment to focus handling in a container, so when a child of
   the container is focused, the adjustment is scrolled to show that widget. The
@@ -783,10 +782,9 @@ lambda (widget)
   @begin{short}
     Accessor of the horizontal focus adjustment of the container.
   @end{short}
-  The @sym{gtk:container-focus-hadjustment} function retrieves the horizontal
-  focus adjustment for the container. The
-  @sym{(setf gtk:container-focus-hadjustment)} function sets the horizontal
-  adjustment.
+  The @fun{gtk:container-focus-hadjustment} function retrieves the horizontal
+  focus adjustment for the container. The @setf{gtk:container-focus-hadjustment}
+  function sets the horizontal adjustment.
 
   Hooks up an adjustment to focus handling in a container, so when a child of
   the container is focused, the adjustment is scrolled to show that widget. The
@@ -808,7 +806,7 @@ lambda (widget)
  "@version{#2021-9-12}
   @short{undocumented}
   @begin[Warning]{dictionary}
-    The @sym{gtk:container-resize-children} function has been deprecated since
+    The @fun{gtk:container-resize-children} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:container}"
@@ -822,7 +820,7 @@ lambda (widget)
  #+liber-documentation
  "@version{2023-3-3}
   @argument[container]{a @class{gtk:container} widget}
-  @return{A @class{g:type-t} type ID.}
+  @return{The @class{g:type-t} type ID.}
   @begin{short}
     Returns the type of the children supported by the container.
   @end{short}
@@ -849,7 +847,7 @@ lambda (widget)
     @arg{container}}
   @argument[args]{a list of strings with the child property names to get the
     values for}
-  @return{A list with the values of the properties.}
+  @return{The list with the values of the properties.}
   @begin{short}
     Gets the values of one or more child properties for a child widget of the
     container.
@@ -1016,8 +1014,8 @@ lambda (widget)
   @argument[property]{a string with the name of a child property installed on
     the class of @arg{container}}
   @begin{short}
-    Emits a \"child-notify\" signal for the @arg{property} child property on
-    @arg{widget}.
+    Emits a @code{\"child-notify\"} signal for the @arg{property} child
+    property on @arg{widget}.
   @end{short}
   This is an analogue of the @fun{g:object-notify} function for child
   properties. Also see the @fun{gtk:widget-child-notify} function.
@@ -1078,7 +1076,7 @@ lambda (widget)
   \"Internal\" children generally were not added by the user of the container,
   but were added by the container implementation itself. Most applications
   should use the @fun{gtk:container-foreach} function, rather than the
-  @sym{gtk:container-forall} function.
+  @fun{gtk:container-forall} function.
   @see-class{gtk:container}
   @see-symbol{gtk:gtk-callback}
   @see-function{gtk:container-foreach}"
@@ -1154,12 +1152,12 @@ lambda (widget)
   @begin{short}
     Accessor of the focus chain widgets of the container.
   @end{short}
-  The @sym{gtk:container-focus-chain} function retrieves the focus chain of the
+  The @fun{gtk:container-focus-chain} function retrieves the focus chain of the
   container, if one has been set explicitly. If no focus chain has been
   explicitly set, GTK computes the focus chain based on the positions of the
   children. In that case, GTK returns @em{false}. The
-  @sym{(setf gtk:container-focus-chain)} function sets a focus chain,
-  overriding the one computed automatically by GTK.
+  @setf{gtk:container-focus-chain} function sets a focus chain, overriding the
+  one computed automatically by GTK.
 
   In principle each widget in the chain should be a descendant of the container,
   but this is not enforced by this method, since it is allowed to set the focus
@@ -1167,9 +1165,9 @@ lambda (widget)
   always packed. The necessary checks are done when the focus chain is actually
   traversed.
   @begin[Warning]{dictionary}
-    The @sym{gtk:container-focus-chain} function has been deprecated since
+    The @fun{gtk:container-focus-chain} function has been deprecated since
     version 3.24 and should not be used in newly written code. For overriding
-    focus behavior, use the \"focus\" signal.
+    focus behavior, use the @code{\"focus\"} signal.
   @end{dictionary}
   @see-class{gtk:container}
   @see-class{gtk:widget}
@@ -1194,9 +1192,9 @@ lambda (widget)
     @fun{gtk:container-focus-chain} function.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:container-unset-focus-chain} function has been deprecated since
+    The @fun{gtk:container-unset-focus-chain} function has been deprecated since
     version 3.24 and should not be used in newly written code. For overriding
-    focus behavior, use the \"focus\" signal.
+    focus behavior, use the @code{\"focus\"} signal.
   @end{dictionary}
   @see-class{gtk:container}
   @see-function{gtk:container-focus-chain}"
@@ -1308,7 +1306,7 @@ lambda (widget)
  #+liber-documentation
  "@version{2023-6-17}
   @argument[gtype]{a @class{g:type-t} type ID}
-  @return{A list of @symbol{g:param-spec} instances.}
+  @return{The list of @symbol{g:param-spec} instances.}
   @short{Returns the child properties of a container type.}
   @begin[Note]{dictionary}
     In the Lisp binding we pass the type of a container class and not

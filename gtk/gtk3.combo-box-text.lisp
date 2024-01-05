@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -83,23 +83,23 @@
 
 #+liber-documentation
 (setf (documentation 'combo-box-text 'type)
- "@version{#2023-3-17}
+ "@version{2023-12-30}
   @begin{short}
-    The @sym{gtk:combo-box-text} widget is a simple variant of the
+    The @class{gtk:combo-box-text} widget is a simple variant of the
     @class{gtk:combo-box} widget that hides the model-view complexity for
     simple text-only use cases.
   @end{short}
 
-  To create a @sym{gtk:combo-box-text} widget, use the
+  To create a @class{gtk:combo-box-text} widget, use the
   @fun{gtk:combo-box-text-new} or @fun{gtk:combo-box-text-new-with-entry}
   functions.
 
-  You can add items to a @sym{gtk:combo-box-text} widget with the
+  You can add items to a @class{gtk:combo-box-text} widget with the
   @fun{gtk:combo-box-text-append-text}, @fun{gtk:combo-box-text-insert-text} or
   @fun{gtk:combo-box-text-prepend-text} functions and remove options with the
   @fun{gtk:combo-box-text-remove} function.
 
-  If the @sym{gtk:combo-box-text} widget contains an entry via the
+  If the @class{gtk:combo-box-text} widget contains an entry via the
   @slot[gtk:combo-box]{has-entry} property, its contents can be retrieved using
   the @fun{gtk:combo-box-text-active-text} function. The entry itself can be
   accessed by calling the @fun{gtk:bin-child} function on the combo box.
@@ -107,13 +107,13 @@
   You should not call the @fun{gtk:combo-box-model} function or attempt to pack
   more cells into this combo box via its @class{gtk:cell-layout} interface.
   @begin[GtkComboBoxText as GtkBuildable]{dictionary}
-    The @sym{gtk:combo-box-text} implementation of the @class{gtk:buildable}
+    The @class{gtk:combo-box-text} implementation of the @class{gtk:buildable}
     interface supports adding items directly using the @code{<items>} element
     and specifying @code{<item>} elements for each item. Each @code{<item>}
     element supports the regular translation attributes \"translatable\",
     \"context\" and \"comments\".
 
-    @b{Example:} A UI definition fragment specifying @sym{gtk:combo-box-text}
+    @b{Example:} A UI definition fragment specifying @class{gtk:combo-box-text}
     items
     @begin{pre}
 <object class=\"GtkComboBoxText\">
@@ -133,8 +133,8 @@ combobox
     ├── button.combo
     ╰── window.popup
     @end{pre}
-    The @sym{gtk:combo-box-text} implementation has a single CSS node with name
-    @code{combobox}. It adds the @code{.combo} style class to the main CSS
+    The @class{gtk:combo-box-text} implementation has a single CSS node with
+    name @code{combobox}. It adds the @code{.combo} style class to the main CSS
     nodes of its entry and button children, and the @code{.linked} class to the
     node of its internal box.
   @end{dictionary}
@@ -151,7 +151,7 @@ combobox
 (defun combo-box-text-new ()
  #+liber-documentation
  "@version{#2023-3-17}
-  @return{A new @class{gtk:combo-box-text} widget.}
+  @return{The new @class{gtk:combo-box-text} widget.}
   @begin{short}
     Creates a new combo box text widget, which is a @class{gtk:combo-box}
     widget just displaying strings.
@@ -171,7 +171,7 @@ combobox
 (defun combo-box-text-new-with-entry ()
  #+liber-documentation
  "@version{#2023-3-17}
-  @return{A new @class{gtk:combo-box-text} widget.}
+  @return{The new @class{gtk:combo-box-text} widget.}
   @begin{short}
     Creates a new combo box text widget, which is a @class{gtk:combo-box}
     widget just displaying strings.
@@ -195,7 +195,7 @@ combobox
 
 (defun combo-box-text-append (combo id text)
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{2023-12-30}
   @argument[combo]{a @class{gtk:combo-box-text} widget}
   @argument[id]{a string ID for this value, or @code{nil}}
   @argument[text]{a string with the text}

@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -140,25 +140,25 @@
   path. The GTK accelerator map code makes sure that the correct shortcut is
   displayed next to the menu item.
   @begin[Warning]{dictionary}
-    The @sym{gtk:action-group} class has been deprecated since version 3.10 and
-    should not be used in newly written code.
+    The @class{gtk:action-group} class has been deprecated since version 3.10
+    and should not be used in newly written code.
   @end{dictionary}
   @begin[GtkActionGroup as GtkBuildable]{dictionary}
-    The @sym{gtk:action-group} implementation of the @class{gtk:buildable}
+    The @class{gtk:action-group} implementation of the @class{gtk:buildable}
     interface accepts @class{gtk:action} objects as @code{<child>} elements in
     UI definitions.
 
     Note that it is probably more common to define actions and action groups in
     the code, since they are directly related to what the code can do.
 
-    The @sym{gtk:action-group} implementation of the @class{gtk:buildable}
+    The @class{gtk:action-group} implementation of the @class{gtk:buildable}
     interface supports a custom @code{<accelerator>} element, which has
     attributes named @code{key} and @code{modifiers} and allows to specify
     accelerators. This is similar to the @code{<accelerator>} element of a
     @class{gtk:widget} object, the main difference is that it does not allow
     you to specify a signal.
 
-    @b{Example:} A @sym{gtk:action-group} UI definition fragment.
+    @b{Example:} A @class{gtk:action-group} UI definition fragment.
     @begin{pre}
 <object class=\"GtkActionGroup\" id=\"actiongroup\">
   <child>
@@ -182,7 +182,7 @@ lambda (group action proxy)
       This is intended for simple customizations for which a custom action class
       would be too clumsy, e.g. showing tooltips for menuitems in the statusbar.
       @begin[code]{table}
-        @entry[group]{The @sym{gtk:action-group} object.}
+        @entry[group]{The @class{gtk:action-group} object.}
         @entry[action]{The @class{gtk:action} object.}
         @entry[proxy]{The @class{gtk:widget} proxy.}
       @end{table}
@@ -193,7 +193,7 @@ lambda (group action proxy)
         The signal is emitted after disconnecting a proxy from an action in the
         group.
         @begin[code]{table}
-          @entry[group]{The @sym{gtk:action-group} object.}
+          @entry[group]{The @class{gtk:action-group} object.}
           @entry[action]{The @class{gtk:action} object.}
           @entry[proxy]{The @class{gtk:widget} proxy.}
         @end{table}
@@ -204,7 +204,7 @@ lambda (group action)
         The signal is emitted just after the action in the action group is
         activated.
         @begin[code]{table}
-          @entry[group]{The @sym{gtk:action-group} object.}
+          @entry[group]{The @class{gtk:action-group} object.}
           @entry[action]{The @class{gtk:action} object.}
         @end{table}
       @subheading{The \"pre-activate\" signal}
@@ -214,7 +214,7 @@ lambda (group action)
         The signal is emitted just before the action in the action group is
         activated.
         @begin[code]{table}
-          @entry[group]{The @sym{gtk:action-group} object.}
+          @entry[group]{The @class{gtk:action-group} object.}
           @entry[action]{The @class{gtk:action} object.}
         @end{table}
   @end{dictionary}
@@ -229,7 +229,7 @@ lambda (group action)
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- action-group-accel-group -----------------------------------------------
+;;; --- gtk:action-group-accel-group -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "accel-group" 'action-group) t)
@@ -251,13 +251,13 @@ lambda (group action)
     @class{gtk:action-group} class.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:action-group-accel-group} function has been deprecated since
+    The @fun{gtk:action-group-accel-group} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:action-group}
   @see-class{gtk:accel-group}")
 
-;;; --- action-group-name ------------------------------------------------------
+;;; --- gtk:action-group-name --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "name" 'action-group) t)
@@ -273,18 +273,18 @@ lambda (group action)
  "@version{#2023-3-15}
   @syntax[]{(gtk:action-group-name object) => name}
   @argument[object]{a @class{gtk:action-group} object}
-  @return{A string with the name of the action group.}
+  @return{The string with the name of the action group.}
   @begin{short}
     Accessor of the @slot[gtk:action-group]{name} slot of the
     @class{gtk:action-group} class.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:action-group-name} function has been deprecated since version
+    The @fun{gtk:action-group-name} function has been deprecated since version
     3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:action-group}")
 
-;;; --- action-group-sensitive ---------------------------------------------
+;;; --- gtk:action-group-sensitive ---------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "sensitive" 'action-group) t)
@@ -306,12 +306,12 @@ lambda (group action)
     @class{gtk:action-group} class.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:action-group-sensitive} function has been deprecated since
+    The @fun{gtk:action-group-sensitive} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:action-group}")
 
-;;; --- action-group-visible ---------------------------------------------------
+;;; --- gtk:action-group-visible -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "visible" 'action-group) t)
@@ -333,7 +333,7 @@ lambda (group action)
     @class{gtk:action-group} class.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:action-group-visible} function has been deprecated since
+    The @fun{gtk:action-group-visible} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:action-group}")
@@ -354,7 +354,7 @@ lambda (group action)
     associating keybindings with the actions.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:action-group-new} function has been deprecated since version
+    The @fun{gtk:action-group-new} function has been deprecated since version
     3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:action-group}"
@@ -374,7 +374,7 @@ lambda (group action)
     name exists.}
   @short{Looks up an action in the action group by name.}
   @begin[Warning]{dictionary}
-    The @sym{gtk:action-group-action} function has been deprecated since
+    The @fun{gtk:action-group-action} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:action-group}
@@ -391,10 +391,10 @@ lambda (group action)
  #+liber-documentation
  "@version{#2023-3-15}
   @argument[group]{a @class{gtk:action-group} object}
-  @return{A list of the @class{gtk:action} objects in the action group.}
+  @return{The list of the @class{gtk:action} objects in the action group.}
   @short{Lists the actions in the action group.}
   @begin[Warning]{dictionary}
-    The @sym{gtk:action-group-list-actions} function has been deprecated since
+    The @fun{gtk:action-group-list-actions} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:action-group}
@@ -421,7 +421,7 @@ lambda (group action)
   attempts to use the accelerator associated with the stock ID of the action.
   Accel paths are set to @code{<Actions>/group-name/action-name}.
   @begin[Warning]{dictionary}
-    The @sym{gtk:action-group-add-action} function has been deprecated since
+    The @fun{gtk:action-group-add-action} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:action-group}
@@ -455,7 +455,7 @@ lambda (group action)
 
   Accel paths are set to <Actions>/group-name/action-name.
   @begin[Warning]{dictionary}
-    The @sym{gtk:action-group-add-action-with-accel} function has been
+    The @fun{gtk:action-group-add-action-with-accel} function has been
     deprecated since version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:action-group}
@@ -477,7 +477,7 @@ lambda (group action)
   @argument[action]{a @class{gtk:action} object}
   @short{Removes an action from the action group.}
   @begin[Warning]{dictionary}
-    The @sym{gtk:action-group-remove-action} function has been deprecated since
+    The @fun{gtk:action-group-remove-action} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:action-group}
@@ -506,7 +506,7 @@ lambda (group action)
       (liber:symbol-documentation 'action-entry)
  "@version{#2023-3-15}
   @begin{short}
-    The @sym{gtk:action-entry} structures are used with the
+    The @symbol{gtk:action-entry} structures are used with the
     @fun{gtk:action-group-add-actions} function to construct actions.
   @end{short}
   @begin{pre}
@@ -550,7 +550,7 @@ lambda (group action)
     This is a convenience function to create a number of actions and add them
     to the action group.
   @end{short}
-  The \"activate\" signals of the actions are connected to the callback
+  The @code{\"activate\"} signals of the actions are connected to the callback
   functions and their accel paths are set to
   @code{<Actions>/group-name/action-name}.
   @begin[Example]{dictionary}
@@ -568,7 +568,7 @@ lambda (group action)
     @end{pre}
   @end{dictionary}
   @begin[Warning]{dictionary}
-    The @sym{gtk:action-group-add-actions} function has been deprecated since
+    The @fun{gtk:action-group-add-actions} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:action-group}
@@ -675,11 +675,11 @@ lambda (group action)
     This is a convenience function to create a number of toggle actions and add
     them to the action group.
   @end{short}
-  The \"activate\" signals of the actions are connected to the callback
+  The @code{\"activate\"} signals of the actions are connected to the callback
   functions and their accel paths are set to
   @code{<Actions>/group-name/action-name}.
   @begin[Warning]{dictionary}
-    The @sym{gtk:action-group-add-toggle-actions} function has been deprecated
+    The @fun{gtk:action-group-add-toggle-actions} function has been deprecated
     since version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:action-group}
@@ -791,8 +791,8 @@ lambda (group action)
     This is a convenience function to create a group of radio actions and add
     them to the action group.
   @end{short}
-  The \"changed\" signal of the first radio action is connected to the
-  callback function @arg{on-change} and the accel paths of the actions are set
+  The @code{\"changed\"} signal of the first radio action is connected to the
+  @arg{on-change} callback function and the accel paths of the actions are set
   to @code{<Actions>/group-name/action-name}.
   @begin[Example]{dictionary}
     @begin{pre}
@@ -812,7 +812,7 @@ lambda (group action)
     @end{pre}
   @end{dictionary}
   @begin[Warning]{dictionary}
-    The @sym{gtk:action-group-add-radio-actions} function has been deprecated
+    The @fun{gtk:action-group-add-radio-actions} function has been deprecated
     since version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:action-group}
@@ -938,7 +938,7 @@ lambda (group action)
   If you are using GNU gettext, it is enough to set the translation domain with
   the @fun{gtk:action-group-set-translation-domain} function.
   @begin[Warning]{dictionary}
-    The @sym{gtk:action-group-set-translate-func} function has been deprecated
+    The @fun{gtk:action-group-set-translate-func} function has been deprecated
     since version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:action-group}
@@ -970,7 +970,7 @@ lambda (group action)
   If you are not using GNU gettext for localization, see the
   @fun{gtk:action-group-set-translate-func} function.
   @begin[Warning]{dictionary}
-    The @sym{gtk:action-group-set-translate-domain} function has been deprecated
+    The @fun{gtk:action-group-set-translate-domain} function has been deprecated
     since version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:action-group}
@@ -989,14 +989,14 @@ lambda (group action)
  "@version{#2023-3-15}
   @argument[group]{a @class{gtk:action-group} object}
   @argument[string]{a string}
-  @return{A string with the translation.}
+  @return{The string with the translation.}
   @begin{short}
     Translates a string using the specified @symbol{gtk:translate-func} callback
     function.
   @end{short}
   This is mainly intended for language bindings.
   @begin[Warning]{dictionary}
-    The @sym{gtk:action-group-translate-string} function has been deprecated
+    The @fun{gtk:action-group-translate-string} function has been deprecated
     since version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:action-group}

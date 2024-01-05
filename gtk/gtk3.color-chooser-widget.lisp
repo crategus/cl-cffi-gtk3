@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2012 - 2023 Dieter Kaiser
+;;; Copyright (C) 2012 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -80,7 +80,7 @@
 (setf (documentation 'color-chooser-widget 'type)
  "@version{2023-6-14}
   @begin{short}
-    The @sym{gtk:color-chooser-widget} widget lets the user select a color.
+    The @class{gtk:color-chooser-widget} widget lets the user select a color.
   @end{short}
   By default, the chooser presents a prefined palette of colors, plus a small
   number of settable custom colors. It is also possible to select a different
@@ -92,11 +92,11 @@
   colors. To change the initially selected color or to get the selected color
   use the @fun{gtk:color-chooser-rgba} function.
 
-  The @sym{gtk:color-chooser-widget} widget is used in the
+  The @class{gtk:color-chooser-widget} widget is used in the
   @class{gtk:color-chooser-dialog} widget to provide a dialog for selecting
   colors.
   @begin[CSS nodes]{dictionary}
-    The @sym{gtk:color-chooser-widget} class has a single CSS node with name
+    The @class{gtk:color-chooser-widget} class has a single CSS node with name
     @code{colorchooser}.
   @end{dictionary}
   @begin[Example]{dictionary}
@@ -104,7 +104,7 @@
     is output to the console.
     @begin{pre}
 (defun example-color-chooser-widget ()
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :title \"Example Color Chooser Widget\"
                                  :border-width 12
@@ -113,7 +113,7 @@
         (g:signal-connect window \"destroy\"
                           (lambda (widget)
                             (declare (ignore widget))
-                            (leave-gtk-main)))
+                            (gtk:leave-gtk-main)))
         (g:signal-connect color-chooser \"color-activated\"
             (lambda (chooser color)
               (declare (ignore chooser))
@@ -166,7 +166,7 @@
 (defun color-chooser-widget-new ()
  #+liber-documentation
  "@version{2023-6-14}
-  @return{A new @class{gtk:color-chooser-widget} widget.}
+  @return{The new @class{gtk:color-chooser-widget} widget.}
   @short{Creates a new color chooser widget.}
   @see-class{gtk:color-chooser-widget}"
   (make-instance 'color-chooser-widget))

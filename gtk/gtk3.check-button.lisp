@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -82,14 +82,15 @@
 
 #+liber-documentation
 (setf (documentation 'check-button 'type)
- "@version{#2023-2-16}
+ "@version{2023-12-30}
   @begin{short}
-    A @sym{gtk:check-button} widget places a discrete @class{gtk:toggle-button}
-    widget next to a widget, usually a @class{gtk:label} widget.
+    A @class{gtk:check-button} widget places a discrete
+    @class{gtk:toggle-button} widget next to a widget, usually a
+    @class{gtk:label} widget.
   @end{short}
   See the @class{gtk:toggle-button} documentation for more information about
-  toggle/check buttons. The important \"toggled\" signal is also inherited from
-  the @class{gtk:toggle-button} class.
+  toggle/check buttons. The important @code{\"toggled\"} signal is also
+  inherited from the @class{gtk:toggle-button} class.
 
   @image[check-button]{Figure: GtkCheckButton}
   @begin[CSS nodes]{dictionary}
@@ -98,7 +99,7 @@ checkbutton
 ├── check
 ╰── <child>
     @end{pre}
-    A @sym{gtk:check-button} widget with indicator, see the
+    A @class{gtk:check-button} widget with indicator, see the
     @fun{gtk:toggle-button-mode} function, has a main CSS node with name
     @code{checkbutton} and a subnode with name @code{check}.
     @begin{pre}
@@ -106,7 +107,7 @@ button.check
 ├── check
 ╰── <child>
     @end{pre}
-    A @sym{gtk:check-button} widget without indicator changes the name of its
+    A @class{gtk:check-button} widget without indicator changes the name of its
     main node to @code{button} and adds a @code{.check} style class to it. The
     subnode is invisible in this case.
   @end{dictionary}
@@ -152,7 +153,7 @@ button.check
 (defun check-button-new ()
  #+liber-documentation
  "@version{#2023-3-16}
-  @return{A @class{gtk:check-button} widget.}
+  @return{The @class{gtk:check-button} widget.}
   @short{Creates a new check button.}
   @see-class{gtk:check-button}
   @see-function{gtk:check-button-new-with-label}
@@ -169,9 +170,9 @@ button.check
 
 (defun check-button-new-with-label (label)
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{2024-1-1}
   @argument[label]{a string with the text for the check button}
-  @return{A @class{gtk:check-button} widget.}
+  @return{The @class{gtk:check-button} widget.}
   @begin{short}
     Creates a new check button with a @class{gtk:label} widget to the right
     of it.
@@ -197,7 +198,7 @@ button.check
  "@version{#2023-3-16}
   @argument[label]{a string with the text of the button, with an underscore in
     front of the mnemonic character}
-  @return{A @class{gtk:check-button} widget.}
+  @return{The @class{gtk:check-button} widget.}
   @begin{short}
     Creates a new check button widget containing a label.
   @end{short}

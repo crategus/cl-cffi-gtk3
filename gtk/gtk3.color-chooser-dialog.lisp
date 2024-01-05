@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2012 - 2023 Dieter Kaiser
+;;; Copyright (C) 2012 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -81,7 +81,8 @@
 (setf (documentation 'color-chooser-dialog 'type)
  "@version{2023-6-15}
   @begin{short}
-    The @sym{gtk:color-chooser-dialog} widget is a dialog for choosing a color.
+    The @class{gtk:color-chooser-dialog} widget is a dialog for choosing a
+    color.
   @end{short}
   It implements the @class{gtk:color-chooser} interface.
 
@@ -115,7 +116,7 @@
                       (gdk:rgba-parse \"DarkSlateGray\"))))
 
   (defun example-color-chooser-dialog (&optional application)
-    (within-main-loop
+    (gtk:within-main-loop
       (let ((window (make-instance 'gtk:window
                                    :title \"Example Color Chooser Dialog\"
                                    :type :toplevel
@@ -125,7 +126,7 @@
         (g:signal-connect window \"destroy\"
                           (lambda (widget)
                             (declare (ignore widget))
-                            (leave-gtk-main)))
+                            (gtk:leave-gtk-main)))
         ;; Draw the background color and a hint on the drawing area
         (g:signal-connect area \"draw\"
             (lambda (widget cr)
@@ -217,7 +218,7 @@
   @argument[title]{a string with the title of the dialog, or @code{nil}}
   @argument[parent]{a @class{gtk:window} transient parent of the dialog,
     or @code{nil}}
-  @return{A new @class{gtk:color-chooser-dialog} widget.}
+  @return{The new @class{gtk:color-chooser-dialog} widget.}
   @short{Creates a new color chooser dialog.}
   @see-class{gtk:window}
   @see-class{gtk:color-chooser-dialog}"

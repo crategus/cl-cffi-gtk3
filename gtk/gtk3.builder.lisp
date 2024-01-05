@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -183,21 +183,21 @@
 (setf (documentation 'builder 'type)
  "@version{2023-3-2}
   @begin{short}
-    A @sym{gtk:builder} object is an auxiliary object that reads textual
+    A @class{gtk:builder} object is an auxiliary object that reads textual
     descriptions of a user interface and instantiates the described objects.
   @end{short}
-  To create a @sym{gtk:builder} object from a user interface description,
+  To create a @class{gtk:builder} object from a user interface description,
   call the @fun{gtk:builder-new-from-file}, @fun{gtk:builder-new-from-resource}
   or @fun{gtk:builder-new-from-string} functions.
 
   In the (unusual) case that you want to add user interface descriptions from
-  multiple sources to the same @sym{gtk:builder} object you can call the
+  multiple sources to the same @class{gtk:builder} object you can call the
   @fun{gtk:builder-new} function to get an empty builder and populate it by
   (multiple) calls to the @fun{gtk:builder-add-from-file},
   @fun{gtk:builder-add-from-resource} or @fun{gtk:builder-add-from-string}
   functions.
 
-  A @sym{gtk:builder} object holds a reference to all objects that it has
+  A @class{gtk:builder} object holds a reference to all objects that it has
   constructed and drops these references when it is finalized. This finalization
   can cause the destruction of non-widget objects or widgets which are not
   contained in a toplevel window. For toplevel windows constructed by a builder,
@@ -217,14 +217,14 @@
   used to connect handlers to the named signals in the UI description.
 
   @subheading{GtkBuilder UI Definitions}
-  The @sym{gtk:builder} implementation parses textual descriptions of user
+  The @class{gtk:builder} implementation parses textual descriptions of user
   interfaces which are specified in an XML format which can be roughly
   described by the RELAX NG schema below. We refer to these descriptions as
-  @sym{gtk:builder} UI definitions or just UI definitions if the context is
-  clear. Do not confuse @sym{gtk:builder} UI Definitions with the deprecated
+  @class{gtk:builder} UI definitions or just UI definitions if the context is
+  clear. Do not confuse @class{gtk:builder} UI Definitions with the deprecated
   @class{gtk:ui-manager} UI Definitions, which are more limited in scope. It is
   common to use @code{.ui} as the filename extension for files containing
-  @sym{gtk:builder} UI definitions.
+  @class{gtk:builder} UI definitions.
   @begin{pre}
  start = element interface {
    attribute domain { text @} ?,
@@ -342,7 +342,7 @@
   been loaded yet, GTK tries to find the @code{_get_type()} from the class
   name by applying heuristics. This works in most cases, but if necessary, it
   is possible to specify the name of the @code{_get_type()} explictly with the
-  @code{\"type-func\"} attribute. As a special case, the @sym{gtk:builder}
+  @code{\"type-func\"} attribute. As a special case, the @class{gtk:builder}
   implementation allows to use an object that has been constructed by a
   @class{gtk:ui-manager} object in another part of the UI definition by
   specifying the ID of the @class{gtk:ui-manager} object in the
@@ -355,7 +355,7 @@
   as property value in other parts of the UI definition.
 
   @subheading{Note}
-  Prior to 2.20, the @sym{gtk:builder} implementation was setting the
+  Prior to 2.20, the @class{gtk:builder} implementation was setting the
   @code{\"name\"} property of constructed widgets to the @code{\"id\"}
   attribute. In GTK 2.20 or newer, you have to use the @fun{gtk:buildable-name}
   function instead of the @fun{gtk:widget-name} function to obtain the
@@ -370,7 +370,7 @@
   useful for string properties. It is also possible to specify a context to
   disambiguate short strings, and comments which may help the translators.
 
-  The @sym{gtk:builder} implementation can parse textual representations for
+  The @class{gtk:builder} implementation can parse textual representations for
   the most common property types: characters, strings, integers, floating point
   numbers, booleans, strings like \"TRUE\", \"t\", \"yes\", \"y\", \"1\" are
   interpreted as @em{true}, strings like \"FALSE\", \"f\", \"no\", \"n\", \"0\"
@@ -379,7 +379,7 @@
   value, optionally combined with \"|\", e.g. \"GTK_VISIBLE | GTK_REALIZED\",
   and colors, in a format understood by the @fun{gdk:rgba-parse} function.
   Objects can be referred to by their name. Pixbufs can be specified as a
-  filename of an image file to load. In general, the @sym{gtk:builder}
+  filename of an image file to load. In general, the @class{gtk:builder}
   implementation allows forward references to objects - an object does not have
   to be constructed before it can be referred to. The exception to this rule is
   that an object has to be constructed before it can be used as the value of a
@@ -403,7 +403,7 @@
   or to add further children, e.g. the @code{vbox} of a @class{gtk:dialog}
   widget. This can be achieved by setting the @code{\"internal-child\"} propery
   of the @code{<child>} element to a @em{true} value. Note that a
-  @sym{gtk:builder} object still requires an @code{<object>} element for the
+  @class{gtk:builder} object still requires an @code{<object>} element for the
   internal child, even if it has already been constructed.
 
   A number of widgets have different places where a child can be added, e.g.
@@ -412,7 +412,7 @@
   The possible values for the @code{\"type\"} attribute are described in the
   sections describing the widget specific portions of UI definitions.
 
-  @b{Example:} A @sym{gtk:builder} UI Definition
+  @b{Example:} A @class{gtk:builder} UI Definition
   @begin{pre}
 <interface>
   <object class=\"GtkDialog\" id=\"dialog1\">
@@ -450,7 +450,7 @@
 
   @subheading{Embedding other XML}
   Apart from the language for UI descriptions that has been explained in the
-  previous section, the @sym{gtk:builder} implementation can also parse XML
+  previous section, the @class{gtk:builder} implementation can also parse XML
   fragments of @code{GMenu} markup. The resulting @class{g:menu} object and its
   named submenus are available via the @fun{gtk:builder-object} function like
   other constructed objects.
@@ -458,7 +458,6 @@
   @see-constructor{gtk:builder-new-from-file}
   @see-constructor{gtk:builder-new-from-resource}
   @see-constructor{gtk:builder-new-from-string}
-  @see-constructor{gtk:builder-new-from-file}
   @see-slot{gtk:builder-translation-domain}
   @see-class{gtk:buildable}")
 
@@ -472,7 +471,7 @@
   @br{}
   The translation domain used when translating property values that have been
   marked as translatable in interface descriptions. If the translation domain
-  is @code{nil}, the @sym{gtk:builder} object uses GNU gettext, otherwise
+  is @code{nil}, the @class{gtk:builder} object uses GNU gettext, otherwise
   GLIB gettext. @br{}
   Default value: @code{nil}")
 
@@ -489,9 +488,9 @@
     Accessor of the @slot[gtk:builder]{translation-domain} slot of the
     @class{gtk:builder} class.
   @end{short}
-  The @sym{gtk:builder-translation-domain} function gets the translation domain
-  of @arg{object}. The @sym{(setf gtk:builder-translation-domain)} function sets
-  the translation domain.
+  The @fun{gtk:builder-translation-domain} function gets the translation domain
+  of @arg{object}. The @setf{gtk:builder-translation-domain} function sets the
+  translation domain.
   @see-class{gtk:builder}")
 
 ;;; ----------------------------------------------------------------------------
@@ -503,7 +502,7 @@
 (defun builder-new ()
  #+liber-documentation
  "@version{2023-3-2}
-  @return{A new @class{gtk:builder} object.}
+  @return{The new @class{gtk:builder} object.}
   @begin{short}
     Creates a new builder object.
   @end{short}
@@ -527,7 +526,7 @@
  #+liber-documentation
  "@version{2023-3-2}
   @argument[path]{a pathname or namestring with the file to load}
-  @return{A @class{gtk:builder} object containing the described interface.}
+  @return{The @class{gtk:builder} object containing the described interface.}
   @begin{short}
     Builds the @class{gtk:builder} UI definition from a user interface
     description file.
@@ -549,7 +548,7 @@
  #+liber-documentation
  "@version{2023-3-2}
   @argument[path]{a string with the @class{g:resource} path}
-  @return{A @class{gtk:builder} object containing the described interface.}
+  @return{The @class{gtk:builder} object containing the described interface.}
   @begin{short}
     Builds the @class{gtk:builder} UI definition from a resource path.
   @end{short}
@@ -577,7 +576,7 @@
  #+liber-documentation
  "@version{2023-3-2}
   @argument[string]{a string with the user interface description}
-  @return{A @class{gtk:builder} object containing the interface described by
+  @return{The @class{gtk:builder} object containing the interface described by
     @arg{string}.}
   @begin{short}
     Builds the user interface described by @arg{string} in the
@@ -686,7 +685,7 @@
  "@version{2023-3-2}
   @argument[builder]{a @class{gtk:builder} object}
   @argument[path]{a pathname or namestring with the name of the file to parse}
-  @return{A positive value on success, 0 if an error occurred.}
+  @return{The positive value on success, 0 if an error occurred.}
   @begin{short}
     Parses a file containing a @class{gtk:builder} UI definition and merges it
     with the current contents of the builder.
@@ -713,7 +712,7 @@
  "@version{2023-3-2}
   @argument[builder]{a @class{gtk:builder} object}
   @argument[path]{a string with the path of the resouce file to parse}
-  @return{A positive value on success, 0 if an error occured.}
+  @return{The positive value on success, 0 if an error occured.}
   @begin{short}
     Parses a resource file containing a @class{gtk:builder} UI definition and
     merges it with the current contents of the builder.
@@ -742,7 +741,7 @@
  "@version{2023-3-2}
   @argument[builder]{a @class{gtk:builder} object}
   @argument[string]{a string to parse}
-  @return{A positive value on success, 0 if an error occurred.}
+  @return{The positive value on success, 0 if an error occurred.}
   @begin{short}
     Parses a string containing a @class{gtk:builder} UI definition and merges
     it with the current contents of the builder.
@@ -772,7 +771,7 @@
   @argument[builder]{a @class{gtk:builder} object}
   @argument[path]{a pathname or namestring with the name of the file to parse}
   @argument[ids]{a list of strings with the object IDs to build}
-  @return{A positive value on success, 0 if an error occurred.}
+  @return{The positive value on success, 0 if an error occurred.}
   @begin{short}
     Parses a file containing a @class{gtk:builder} UI definition building only
     the requested objects and merges them with the current contents of builder.
@@ -823,7 +822,7 @@
   @argument[builder]{a @class{gtk:builder} object}
   @argument[string]{a string to parse}
   @argument[ids]{a list of strings with the object IDs to build}
-  @return{A positive value on success, 0 if an error occurred.}
+  @return{The positive value on success, 0 if an error occurred.}
   @begin{short}
     Parses a string containing a @class{gtk:builder} UI definition building only
     the requested objects and merges them with the current contents of builder.
@@ -872,7 +871,7 @@
   @argument[builder]{a @class{gtk:builder} object}
   @argument[path]{a string with the path of the resource file to parse}
   @argument[ids]{a list of strings with the object IDs to build}
-  @return{A positive value on success, 0 if an error occurred.}
+  @return{The positive value on success, 0 if an error occurred.}
   @begin{short}
     Parses a resource file containing a @class{gtk:builder} UI definition
     building only the requested objects and merges them with the current
@@ -1159,15 +1158,15 @@ lambda (builder object signal-name handler-name connect-object flags)
   @begin{short}
     Accessor of the application associated with the builder.
   @end{short}
-  The @sym{gtk:builder-application} function gets the application associated
-  with the builder. The @sym{(setf gtk:builder-application)} function sets the
+  The @fun{gtk:builder-application} function gets the application associated
+  with the builder. The @setf{gtk:builder-application} function sets the
   application.
 
   The application is used for creating action proxies as requested from XML
   that the builder is loading. By default, the builder uses the default
   application: the one from the @fun{g:application-default} function. If you
   want to use another application for constructing proxies, use the
-  @sym{(setf gtk:builder-application)} function.
+  @setf{gtk:builder-application} function.
 
   You only need this function if there is more than one
   @class{g:application} instance in your process. The @arg{application}

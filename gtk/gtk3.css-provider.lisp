@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2013 - 2023 Dieter Kaiser
+;;; Copyright (C) 2013 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -94,9 +94,9 @@
 
 #+liber-documentation
 (setf (documentation 'css-provider 'type)
- "@version{#2023-3-17}
+ "@version{2023-12-30}
   @begin{short}
-    The @sym{gtk:css-provider} object is an object implementing the
+    The @class{gtk:css-provider} object is an object implementing the
     @class{gtk:style-provider} interface.
   @end{short}
   It is able to parse CSS-like input in order to style widgets.
@@ -141,7 +141,7 @@ lambda (provider section error)    :run-last
       opt to defer parsing parts or all of the input to a later time than when
       a loading function was called.
       @begin[code]{table}
-        @entry[provider]{The @sym{gtk:css-provider} object that had a parsing
+        @entry[provider]{The @class{gtk:css-provider} object that had a parsing
           error.}
         @entry[section]{The @class{gtk:css-section} instance the error happened
           in.}
@@ -159,14 +159,14 @@ lambda (provider section error)    :run-last
 (cffi:defcfun ("gtk_css_provider_get_default" css-provider-default)
     (g:object css-provider)
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{2024-1-2}
   @return{The @class{gtk:css-provider} object used for fallback styling.}
   @begin{short}
     Returns the provider containing the style settings used as a fallback for
     all widgets.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:css-provider-default} function has been deprecated since
+    The @fun{gtk:css-provider-default} function has been deprecated since
     version 3.24 and should not be used in newly written code. Use the
     @fun{gtk:css-provider-new} function instead.
   @end{dictionary}
@@ -186,7 +186,7 @@ lambda (provider section error)    :run-last
 
 (defun css-provider-named (name variant)
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{2024-1-2}
   @argument[name]{a string with the theme name}
   @argument[variant]{a string with a variant to load}
   @return{The @class{gtk:css-provider} object with the theme loaded.}
@@ -213,7 +213,7 @@ lambda (provider section error)    :run-last
 
 (defun css-provider-load-from-data (provider data)
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{2023-12-30}
   @argument[provider]{a @class{gtk:css-provider} object}
   @argument[data]{a string with the CSS data}
   @begin{return}
@@ -224,8 +224,8 @@ lambda (provider section error)    :run-last
     Loads data into the CSS provider, making it clear any previously loaded
     information.
   @end{short}
-  To track errors while loading CSS, connect to the \"parsing-error\" signal
-  of the @class{gtk:css-provider} object.
+  To track errors while loading CSS, connect to the @code{\"parsing-error\"}
+  signal of the @class{gtk:css-provider} object.
   @see-class{gtk:css-provider}"
   (glib:with-ignore-g-error (err)
     (%css-provider-load-from-data provider data -1 err)))
@@ -253,8 +253,8 @@ lambda (provider section error)    :run-last
     Loads the data contained in @arg{file} into the CSS provider, making it
     clear any previously loaded information.
   @end{short}
-  To track errors while loading CSS, connect to the \"parsing-error\" signal
-  of the @class{gtk:css-provider} object.
+  To track errors while loading CSS, connect to the @code{\"parsing-error\"}
+  signal of the @class{gtk:css-provider} object.
   @see-class{gtk:css-provider}
   @see-class{g:file}"
   (glib:with-g-error (err)
@@ -286,8 +286,8 @@ lambda (provider section error)    :run-last
     Loads the data contained in @arg{path} into the CSS provider, making it
     clear any previously loaded information.
   @end{short}
-  To track errors while loading CSS, connect to the \"parsing-error\" signal
-  of the @class{gtk:css-provider} object.
+  To track errors while loading CSS, connect to the @code{\"parsing-error\"}
+  signal of the @class{gtk:css-provider} object.
   @see-class{gtk:css-provider}"
   (glib:with-g-error (err)
     (%css-provider-load-from-path provider (namestring path) err)))
@@ -308,8 +308,8 @@ lambda (provider section error)    :run-last
     Loads the data contained in the resource at @arg{path} into the CSS
     provider, clearing any previously loaded information.
   @end{short}
-  To track errors while loading CSS, connect to the \"parsing-error\" signal
-  of the @class{gtk:css-provider} object.
+  To track errors while loading CSS, connect to the @code{\"parsing-error\"}
+  signal of the @class{gtk:css-provider} object.
   @see-class{gtk:css-provider}
   @see-class{g:resource}"
   (provider (g:object css-provider))
@@ -325,8 +325,8 @@ lambda (provider section error)    :run-last
 
 (defun css-provider-new ()
  #+liber-documentation
- "@version{#2023-3-17}
-  @return{A new @class{gtk:css-provider} object.}
+ "@version{2023-12-30}
+  @return{The new @class{gtk:css-provider} object.}
   @short{Returns a newly created CSS provider object.}
   @see-class{gtk:css-provider}"
   (make-instance 'css-provider))
@@ -339,9 +339,9 @@ lambda (provider section error)    :run-last
 
 (cffi:defcfun ("gtk_css_provider_to_string" css-provider-to-string) :string
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{2024-1-2}
   @argument[provider]{a @class{gtk:css-provider} object to write to a string}
-  @return{A string representing the provider.}
+  @return{The string representing the provider.}
   @begin{short}
     Convertes the provider into a string representation in CSS format.
   @end{short}
@@ -413,7 +413,7 @@ lambda (provider section error)    :run-last
 (setf (liber:alias-for-symbol 'css-section-type)
       "GEnum"
       (liber:symbol-documentation 'css-section-type)
- "@version{#2023-3-17}
+ "@version{2024-1-2}
   @begin{short}
     The different types of sections indicate parts of a CSS document as parsed
     by the CSS parser of GTK.
@@ -471,8 +471,8 @@ lambda (provider section error)    :run-last
   @begin{short}
     Defines a part of a CSS document.
   @end{short}
-  The @sym{css-section} structure is opaque, and has no user visible fields. An
-  instance cannot be created from the Lisp side. Because sections are nested
+  The @class{css-section} structure is opaque, and has no user visible fields.
+  An instance cannot be created from the Lisp side. Because sections are nested
   into one another, you can use the @fun{gtk:css-section-parent} function to
   get the containing region.
   @see-class{gtk:css-provider}
@@ -484,17 +484,17 @@ lambda (provider section error)    :run-last
 
 (cffi:defcfun ("gtk_css_section_get_end_line" css-section-end-line) :uint
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{2024-1-2}
   @argument[section]{a @class{gtk:css-section} instance}
-  @return{An unsigned integer with the line number.}
+  @return{The unsigned integer with the line number.}
   @begin{short}
     Returns the line in the CSS document where this section end.
   @end{short}
   The line number is zero-indexed, so the first line of the document will
   return 0. This value may change in future invocations of this function if the
   section is not yet parsed completely. This will for example happen in the
-  \"parsing-error\" signal. The end position and line may be identical to the
-  start position and line for sections which failed to parse anything
+  @code{\"parsing-error\"} signal. The end position and line may be identical
+  to the start position and line for sections which failed to parse anything
   successfully.
   @see-class{gtk:css-section}
   @see-class{gtk:css-provider}"
@@ -509,9 +509,9 @@ lambda (provider section error)    :run-last
 (cffi:defcfun ("gtk_css_section_get_end_position" css-section-end-position)
     :uint
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{2024-1-2}
   @argument[section]{a @class{gtk:css-section} instance}
-  @return{An unsigned integer with the offset in bytes from the start of the
+  @return{The unsigned integer with the offset in bytes from the start of the
     line.}
   @begin{short}
     Returns the offset in bytes from the start of the current line returned via
@@ -519,8 +519,8 @@ lambda (provider section error)    :run-last
   @end{short}
   This value may change in future invocations of this function if the section
   is not yet parsed completely. This will for example happen in the
-  \"parsing-error\" signal. The end position and line may be identical to the
-  start position and line for sections which failed to parse anything
+  @code{\"parsing-error\"} signal. The end position and line may be identical
+  to the start position and line for sections which failed to parse anything
   successfully.
   @see-class{gtk:css-section}
   @see-class{gtk:css-provider}
@@ -586,7 +586,7 @@ lambda (provider section error)    :run-last
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[section]{a @class{gtk:css-section} instance}
-  @return{A @symbol{gtk:css-section-type} value for the section.}
+  @return{The @symbol{gtk:css-section-type} value for the section.}
   @begin{short}
     Gets the type of information that the section describes.
   @end{short}
@@ -602,9 +602,9 @@ lambda (provider section error)    :run-last
 
 (cffi:defcfun ("gtk_css_section_get_start_line" css-section-start-line) :uint
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{2024-1-2}
   @argument[section]{a @class{gtk:css-section} instance}
-  @return{An unsigned integer with the line number.}
+  @return{The unsigned integer with the line number.}
   @begin{short}
     Returns the line in the CSS document where this section starts.
   @end{short}
@@ -622,9 +622,9 @@ lambda (provider section error)    :run-last
 (cffi:defcfun ("gtk_css_section_get_start_position" css-section-start-position)
     :uint
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{2024-1-2}
   @argument[section]{a @class{gtk:css-section} instance}
-  @return{An unsigned integer with the offset in bytes from the start of the
+  @return{The unsigned integer with the offset in bytes from the start of the
     line.}
   @begin{short}
     Returns the offset in bytes from the start of the current line returned
