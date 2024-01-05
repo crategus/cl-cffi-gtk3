@@ -210,7 +210,7 @@
     (gtk-icon-factory-add factory "demo-gtk-logo" icon-set)))
 
 (defun example-window-application ()
-  (within-main-loop
+  (gtk:within-main-loop
     (let* ((window (make-instance 'gtk-window
                                    :type :toplevel
                                    :title "Example Application Window"
@@ -250,7 +250,7 @@
       (g-signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Create the actions
       (let ((open-action (make-instance 'gtk-action
                                         :name "Open"

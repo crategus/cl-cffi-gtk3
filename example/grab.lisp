@@ -1,7 +1,7 @@
 (in-package :gtk3-example)
 
 (defun example-grab ()
-  (within-main-loop
+  (gtk:within-main-loop
     (let (;; Create a toplevel window.
           (window (make-instance 'gtk:window
                                  :title "Example Grab Widget"
@@ -22,7 +22,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (g:signal-connect button1 "toggled"
           (lambda (widget)
             (if (gtk:toggle-button-active widget)

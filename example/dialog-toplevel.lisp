@@ -2,7 +2,7 @@
 
 (defun demo-dialog-toplevel (message)
  (let ((response nil))
-   (within-main-loop
+   (gtk:within-main-loop
     (let (;; Create the widgets
           (dialog (gtk-dialog-new-with-buttons "Demo Toplevel Dialog"
                                                nil ; No Parent window
@@ -17,7 +17,7 @@
                         (lambda (widget)
                           (declare (ignore widget))
                           ;; Quit the main loop and destroy the thread
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Ensure that the dialog window is destroyed when the user responds.
       (g-signal-connect dialog "response"
                         (lambda (dialog response-id)
@@ -26,7 +26,7 @@
       ;; Add the label, and show everything we have added to the dialog.
       (gtk-container-add (gtk-dialog-content-area dialog) label)
       (gtk-widget-show-all dialog)))
-    (join-gtk-main)
+    (gtk:join-gtk-main)
     (when response
       (format t "The response ID is ~A" response))))
 

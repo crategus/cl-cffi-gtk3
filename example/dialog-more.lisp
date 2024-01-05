@@ -43,7 +43,7 @@
     (gtk-widget-destroy dialog)))
 
 (defun example-dialog ()
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :type :toplevel
                                  :title "Example Dialog"
@@ -55,7 +55,7 @@
       (g-signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (gtk-container-add window vbox)
       (let ((button (make-instance 'gtk-button
                                    :label "Open a Dialog Window")))
@@ -81,13 +81,13 @@
 
 (defun example-dialog-new ()
   (let ((response))
-    (within-main-loop
+    (gtk:within-main-loop
       (let ((dialog (gtk-dialog-new)))
         ;; Signal handler for the dialog to handle the signal "destroy".
         (g-signal-connect dialog "destroy"
                           (lambda (widget)
                             (declare (ignore widget))
-                            (leave-gtk-main)))
+                            (gtk:leave-gtk-main)))
         ;; Signal handler for the dialog to handle the signal "response".
         (g-signal-connect dialog "response"
                           (lambda (dialog response-id)
@@ -98,12 +98,12 @@
         (setf (gtk-window-default-size dialog) '(300 200))
         ;; Show the dialog
         (gtk-widget-show-all dialog)))
-    (join-gtk-main)
+    (gtk:join-gtk-main)
     (format t "Back from message dialog with response-id : ~A~%" response)))
 
 (defun example-dialog-new-with-buttons ()
   (let ((response))
-    (within-main-loop
+    (gtk:within-main-loop
       (let ((dialog (gtk-dialog-new-with-buttons "Example Dialog New with Buttons"
                                                  nil
                                                  '(:modal)
@@ -113,7 +113,7 @@
         (g-signal-connect dialog "destroy"
                           (lambda (widget)
                             (declare (ignore widget))
-                            (leave-gtk-main)))
+                            (gtk:leave-gtk-main)))
         ;; Signal handler for the dialog to handle the signal "response".
         (g-signal-connect dialog "response"
                           (lambda (dialog response-id)
@@ -123,17 +123,17 @@
         (setf (gtk-window-default-size dialog) '(350 200))
         ;; Show the dialog
         (gtk-widget-show-all dialog)))
-    (join-gtk-main)
+    (gtk:join-gtk-main)
     (format t "Back from message dialog with response-id : ~A~%" response)))
 
 (defun example-dialog-ui ()
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((builder (make-instance 'gtk-builder)))
       (gtk-builder-add-from-file builder (sys-path "dialog.ui"))
       (let ((dialog (gtk-builder-object builder "dialog")))
         (g-signal-connect dialog "destroy"
                           (lambda (widget)
                             (declare (ignore widget))
-                            (leave-gtk-main)))
+                            (gtk:leave-gtk-main)))
       (gtk-widget-show-all dialog)))))
 

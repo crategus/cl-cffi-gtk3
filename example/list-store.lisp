@@ -47,7 +47,7 @@
     view))
 
 (defun example-simple-list-store ()
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :title "Example Simple List Store"
                                  :type :toplevel
@@ -58,7 +58,7 @@
       (g-signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (gtk-container-add window view)
       (gtk-widget-show-all window))))
 

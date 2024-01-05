@@ -1,7 +1,7 @@
 (in-package :gtk3-example)
 
 (defun example-menu-builder ()
-  (within-main-loop
+  (gtk:within-main-loop
       (setf (gtk:settings-gtk-shell-shows-app-menu (gtk:settings-default))
             nil)
       (setf (gtk:settings-gtk-shell-shows-menubar (gtk:settings-default))
@@ -13,6 +13,6 @@
         (g:signal-connect window "destroy"
                           (lambda (widget)
                             (declare (ignore widget))
-                            (leave-gtk-main)))
+                            (gtk:leave-gtk-main)))
       (gtk:widget-show-all window)))))
 

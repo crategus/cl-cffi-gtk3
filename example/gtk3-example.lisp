@@ -1,17 +1,5 @@
 (defpackage :gtk3-example
   (:use :split-sequence :common-lisp)
-  (:import-from :glib    #:+g-source-continue+
-                         #:+g-source-remove+)
-  (:import-from :gobject #:+g-type-none+
-                         #:gobject-class)
-  (:import-from :pango   #:+pango-scale+)
-  (:import-from :gdk     #:+gdk-event-propagate+
-                         #:+gdk-event-stop+)
-  (:import-from :gtk     #:within-main-loop
-                         #:leave-gtk-main
-                         #:join-gtk-main
-                         #:+gtk-priority-user+
-                         #:+gtk-priority-application+)
   (:export #:create-expander-dialog
            #:create-page-setup-dialog
            #:create-print-dialog
@@ -108,6 +96,7 @@
            #:example-overlay-interactive               ; Layout Widgets
            #:example-overlay-transparent               ; Layout Widgets
            #:example-paned-window                      ; Layout Widgets
+           #:example-pango-drawing
            #:example-pixbufs
            #:example-pixbuf-scale
            #:example-pointer-device

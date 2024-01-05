@@ -44,7 +44,7 @@
   view))
 
 (defun example-cell-renderer-properties ()
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :title "Example Cell Renderer Properties"
                                  :type :toplevel
@@ -54,6 +54,6 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (gtk:container-add window view)
       (gtk:widget-show-all window))))

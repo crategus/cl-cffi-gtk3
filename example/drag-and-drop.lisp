@@ -40,7 +40,7 @@
   (format t "   display : ~a~%" (gtk:selection-data-display selection)))
 
 (defun example-drag-and-drop ()
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :title "Example Drag and Drop"
                                  :type :toplevel
@@ -62,7 +62,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
 
       ;; Make the "well label" a DnD destination
       (gtk:drag-dest-set well-dest             ; widget that will accept a drop

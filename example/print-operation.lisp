@@ -58,11 +58,11 @@
     ;; Set the font for the header
     (let ((desc (pango:font-description-from-string "sans")))
       (setf (pango:font-description-size desc)
-            (* (print-data-header-font-size *data*) +pango-scale+))
+            (* (print-data-header-font-size *data*) pango:+pango-scale+))
       (setf (pango:layout-font-description layout) desc))
     ;; Set the text for the header
     (setf (pango:layout-text layout) (print-data-filename *data*))
-    (setf (pango:layout-width layout) (* width +pango-scale+))
+    (setf (pango:layout-width layout) (* width pango:+pango-scale+))
     (setf (pango:layout-alignment layout) :center)
 
     ;; Print the filename in the header
@@ -93,7 +93,7 @@
     ;; Set the font for the page
     (let ((desc (pango:font-description-from-string "monospace")))
       (setf (pango:font-description-size desc)
-            (* (print-data-font-size *data*) +pango-scale+))
+            (* (print-data-font-size *data*) pango:+pango-scale+))
       (setf (pango:layout-font-description layout) desc))
     ;; Move to the start of the page
     (cairo:move-to cr 0 (+ (print-data-header-height *data*)

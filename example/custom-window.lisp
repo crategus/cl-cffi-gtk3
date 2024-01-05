@@ -5,7 +5,7 @@
           :reader custom-window-label)
    (button :initform (make-instance 'gtk:button :label "Click me!")
            :reader custom-window-button))
-  (:metaclass gobject-class)
+  (:metaclass gobject:gobject-class)
   (:default-initargs :title "Custom window"
                      :default-width 320
                      :default-height 240))
@@ -24,12 +24,12 @@
 ;; Now we can use the custom-window as a composite widget.
 
 (defun example-custom-window ()
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'custom-window)))
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (gtk:widget-show-all window))))
 
 ;;; 2022-12-20

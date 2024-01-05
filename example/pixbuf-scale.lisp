@@ -5,7 +5,7 @@
 (in-package #:gtk3-example)
 
 (defun example-pixbuf-scale (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let* (;; Create a toplevel window.
            (window (make-instance 'gtk:window
                                   :type :toplevel
@@ -30,7 +30,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
 
       (g:signal-connect area "draw"
          (lambda (widget cr)

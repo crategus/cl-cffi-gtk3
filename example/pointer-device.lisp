@@ -41,20 +41,20 @@
                                             (gtk:widget-window event-box)
                                             0 100))
           ))
-                +gdk-event-stop+))
+                gdk:+gdk-event-stop+))
     ;; Add the image to the event box
     (gtk:container-add event-box image)
     ;; Return the event box with the image
     event-box))
 
 (defun example-pointer-device ()
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (gtk:window-new :toplevel)))
       ;; Signal handler for the window to handle the signal "destroy".
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Create an add event box with an image to the window
       (gtk:container-add window (create-event-box-for-pointer-device))
       ;; Show the window.

@@ -4,7 +4,7 @@
 
 (defun demo-app-chooser-dialog ()
   (let ((file-name nil))
-    (within-main-loop
+    (gtk:within-main-loop
       (let ((dialog (make-instance 'gtk-app-chooser-dialog
                                    :content-type "text/plain"
                                    :show-dialog-item t)))
@@ -13,7 +13,7 @@
                           (lambda (widget)
                             (declare (ignore widget))
                             ;; Quit the main loop and destroy the thread
-                            (leave-gtk-main)))
+                            (gtk:leave-gtk-main)))
         ;; Signal handler for the dialog to handle the signal "response".
         (g-signal-connect dialog "response"
            (lambda (dialog response-id)

@@ -371,7 +371,7 @@ do_search_entry (GtkWidget *do_widget)
     menu))
 
 (defun example-search-entry (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let* ((window (make-instance 'gtk:window
                                   :type :toplevel
                                   :application application
@@ -389,7 +389,7 @@ do_search_entry (GtkWidget *do_widget)
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
 
       ;; Add the search entry to the horizontal grid
       (gtk:container-add hbox entry)

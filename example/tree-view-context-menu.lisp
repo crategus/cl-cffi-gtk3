@@ -15,7 +15,7 @@
     (gtk:menu-popup-at-pointer menu event)))
 
 (defun example-tree-view-context-menu ()
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :title "Example Tree View Context Menu"
                                  :type :toplevel
@@ -25,7 +25,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Signal handler for button right clicked
       (g:signal-connect view "button-press-event"
           (lambda (widget event)

@@ -67,7 +67,7 @@ sem venenatis, vitae ultricies arcu laoreet."))
 (defun apply-css-to-widget (provider widget)
   (gtk:style-context-add-provider (gtk:widget-style-context widget)
                                   provider
-                                  +gtk-priority-user+)
+                                  gtk:+gtk-priority-user+)
   (when (g:type-is-a (g:type-from-instance widget) "GtkContainer")
     (gtk:container-forall widget
                           (lambda (widget)

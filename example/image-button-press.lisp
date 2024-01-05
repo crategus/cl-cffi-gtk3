@@ -19,20 +19,20 @@
                         (format t "Event box clicked at : ~6,2f, ~6,2f~%"
                                   (gdk:event-button-x event)
                                   (gdk:event-button-y event))
-                        +gdk-event-stop+))
+                        gdk:+gdk-event-stop+))
     ;; Add the image to the event box
     (gtk:container-add event-box image)
     ;; Return the event box with the image
     event-box))
 
 (defun example-image-button-press ()
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (gtk:window-new :toplevel)))
       ;; Signal handler for the window to handle the signal "destroy".
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Create an add event box with an image to the window
       (gtk:container-add window (create-image))
       ;; Show the window.

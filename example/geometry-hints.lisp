@@ -1,6 +1,6 @@
 
 (defun example-geometry-hints ()
-  (within-main-loop
+  (gtk:within-main-loop
     (let (;; Create a toplevel window.
           (window (gtk:window-new :toplevel))
           (box (make-instance 'gtk-box :orientation :vertical))
@@ -21,7 +21,7 @@
       (g-signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
 
       ;; Add the box to the window
       (gtk-container-add window box)

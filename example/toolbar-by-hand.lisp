@@ -3,7 +3,7 @@
 (in-package :gtk3-example)
 
 (defun example-toolbar-by-hand ()
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :type :toplevel
                                  :default-width 250
@@ -33,6 +33,6 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (gtk:container-add window vbox)
       (gtk:widget-show-all window))))

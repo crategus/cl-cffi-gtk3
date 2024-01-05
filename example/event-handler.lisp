@@ -13,7 +13,7 @@
   (gtk:main-do-event event))
 
 (defun example-event-handler ()
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :title "Example Event Handler"
                                  :type :toplevel
@@ -29,12 +29,12 @@
                           (format t "~a~%" (gtk:current-event-time))
                           (format t "~a~%" (gtk:current-event-state))
                           (format t "~a~%" (gtk:current-event-device))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Install the new event handler
       (gdk:event-handler-set #'my-event-handler)
       ;; Show the window.
       (gtk:widget-show-all window)))
-  (join-gtk-main)
+  (gtk:join-gtk-main)
   ;; Install gtk:main-do-event as the event handler
   (gdk:event-handler-set #'gtk:main-do-event))
 

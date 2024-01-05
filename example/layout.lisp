@@ -3,7 +3,7 @@
 (in-package :gtk3-example)
 
 (defun example-layout ()
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :type :toplevel
                                  :title "Layout Widget"
@@ -13,7 +13,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
 
       (gtk:layout-put layout
                       (make-instance 'gtk:button

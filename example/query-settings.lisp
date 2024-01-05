@@ -67,7 +67,7 @@
       view))
 
   (defun example-query-settings ()
-    (within-main-loop
+    (gtk:within-main-loop
       (let ((window (make-instance 'gtk:window
                                    :title "Example Query Settings"
                                    :type :toplevel
@@ -81,7 +81,7 @@
         (g:signal-connect window "destroy"
                           (lambda (widget)
                             (declare (ignore widget))
-                            (leave-gtk-main)))
+                            (gtk:leave-gtk-main)))
         ;; Pack and show the widgets
         (gtk:container-add scrolled view)
         (gtk:container-add window scrolled)

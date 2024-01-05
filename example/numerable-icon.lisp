@@ -12,7 +12,7 @@
 (in-package :gtk3-example)
 
 (defun example-numerable-icon (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let (;; Create a toplevel window
           (window (make-instance 'gtk:window
                                  :title "Example Numerable Icons"
@@ -27,7 +27,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Fill a 5 x 5 grid with numerable icons
       (dotimes (i 5)
         (dotimes (j 5)

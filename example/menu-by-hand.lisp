@@ -3,7 +3,7 @@
 (in-package :gtk3-example)
 
 (defun example-menu-by-hand ()
-  (within-main-loop
+  (gtk:within-main-loop
     ;; We set the "gtk:shell-shows-menubar" property to NIL to display the
     ;; menubar by the application itself and not by the desktop environment.
     (setf (gtk:settings-gtk-shell-shows-menubar (gtk:settings-default))
@@ -74,6 +74,6 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (gtk:container-add window vbox)
       (gtk:widget-show-all window))))

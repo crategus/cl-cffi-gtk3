@@ -3,7 +3,7 @@
 (in-package #:gtk-demo)
 
 (defun demo-app-chooser-button ()
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk-window
                                  :title "Demo Application Chooser Button"
                                  :type :toplevel
@@ -16,7 +16,7 @@
       (g-signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
 ;      (g-signal-connect button "font-set"
 ;         (lambda (widget)
 ;           (declare (ignore widget))

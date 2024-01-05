@@ -146,7 +146,7 @@
       view))
 
   (defun example-tree-view-editable ()
-    (within-main-loop
+    (gtk:within-main-loop
       (let* ((window (make-instance 'gtk:window
                                     :title "Example Tree View Editable"
                                     :type :toplevel
@@ -164,7 +164,7 @@
         (g:signal-connect window "destroy"
                           (lambda (widget)
                             (declare (ignore widget))
-                            (leave-gtk-main)))
+                            (gtk:leave-gtk-main)))
 
         ;; Setup the selection
         (let ((selection (gtk:tree-view-selection view)))

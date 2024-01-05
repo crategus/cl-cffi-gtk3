@@ -65,7 +65,7 @@
       view))
 
   (defun example-tree-view-drag-and-drop ()
-    (within-main-loop
+    (gtk:within-main-loop
       (let ((window (make-instance 'gtk:window
                                    :title "Example Tree View Drag and Drop"
                                    :type :toplevel
@@ -78,7 +78,7 @@
         (g:signal-connect window "destroy"
                           (lambda (widget)
                             (declare (ignore widget))
-                            (leave-gtk-main)))
+                            (gtk:leave-gtk-main)))
         (gtk:box-pack-start vbox
                             (make-instance 'gtk:label :label msg)
                             :expand nil)

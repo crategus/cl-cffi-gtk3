@@ -94,6 +94,7 @@
                (:file "page-setup-dialog"
                       :if-feature (:not :windows))
                (:file "paned-window")                  ; Layout Widgets
+               (:file "pango-drawing")
                (:file "pixbufs")
                (:file "pixbuf-scale")
                (:file "pointer-device")

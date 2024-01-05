@@ -3,7 +3,7 @@
 (in-package :gtk3-example)
 
 (defun example-text-view-search ()
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :title "Example Text View Search"
                                  :type :toplevel
@@ -23,7 +23,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Search and select the text in the text buffer
       (g:signal-connect entry "search-changed"
           (lambda (widget)

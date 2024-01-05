@@ -47,7 +47,7 @@
 (defun example-clipboard (&optional application)
   (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
-                                 :title "Example Clipboard"
+                                 :title "Clipboard"
                                  :type :toplevel
                                  :application application))
           (vbox (make-instance 'gtk:box

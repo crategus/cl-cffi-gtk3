@@ -22,7 +22,7 @@
            SOFTWARE."))
 
 (defun example-show-about-dialog ()
-  (within-main-loop
+  (gtk:within-main-loop
     (let (;; Create a toplevel window
           (window (gtk:window-new :toplevel))
           (button (make-instance 'gtk:button :label "Show About Dialog")))
@@ -30,7 +30,7 @@
       (g:signal-connect window "destroy"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (g:signal-connect button "clicked"
          (lambda (widget)
            (declare (ignore widget))
