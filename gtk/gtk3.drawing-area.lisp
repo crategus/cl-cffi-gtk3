@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -67,9 +67,9 @@
 
 #+liber-documentation
 (setf (documentation 'drawing-area 'type)
- "@version{#2023-3-17}
+ "@version{2023-12-30}
   @begin{short}
-    The @sym{gtk:drawing-area} widget is used for creating custom user
+    The @class{gtk:drawing-area} widget is used for creating custom user
     interface elements. It is essentially a blank widget. You can draw on it.
   @end{short}
   After creating a drawing area, the application may want to connect to:
@@ -79,16 +79,16 @@
       @fun{gtk:widget-add-events} function to enable events you wish to receive.
     @end{item}
     @begin{item}
-      The \"realize\" signal to take any necessary actions when the widget is
-      instantiated on a particular display. Create GDK resources in response
-      to this signal.
+      The @code{\"realize\"} signal to take any necessary actions when the
+      widget is instantiated on a particular display. Create GDK resources in
+      response to this signal.
     @end{item}
     @begin{item}
-      The \"configure-event\" signal to take any necessary actions when the
-      widget changes size.
+      The @code{\"configure-event\"} signal to take any necessary actions when
+      the widget changes size.
     @end{item}
     @begin{item}
-      The \"draw\" signal to handle redrawing the contents of the widget.
+      The @code{\"draw\"} signal to handle redrawing the contents of the widget.
     @end{item}
   @end{itemize}
   Draw signals are normally delivered when a drawing area first comes onscreen,
@@ -112,10 +112,10 @@
     Note that GDK automatically clears the exposed area before sending the
     expose event, and that drawing is implicitly clipped to the exposed area.
     If you want to have a theme-provided background, you need to call the
-    @fun{gtk:render-background} function in your \"draw\" signal handler.
+    @fun{gtk:render-background} function in your @code{\"draw\"} signal handler.
     @begin{pre}
 (defun example-drawing-area ()
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :type :toplevel
                                  :title \"Example Drawing Area\"
@@ -147,7 +147,7 @@
       (g:signal-connect window \"destroy\"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Show the window
       (gtk:container-add window area)
       (gtk:widget-show-all window))))
@@ -169,7 +169,7 @@
 (defun drawing-area-new ()
  #+liber-documentation
  "@version{#2023-3-17}
-  @return{A new @class{gtk:drawing-area} widget.}
+  @return{The new @class{gtk:drawing-area} widget.}
   @begin{short}
     Creates a new drawing area.
   @end{short}

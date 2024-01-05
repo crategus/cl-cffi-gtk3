@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -81,14 +81,14 @@
 (setf (documentation 'hsv 'type)
  "@version{2023-6-15}
   @begin{short}
-    The @sym{gtk:hsv} widget is the \"color wheel\" part of a complete color
+    The @class{gtk:hsv} widget is the \"color wheel\" part of a complete color
     selector widget.
   @end{short}
   It allows to select a color by determining its HSV components in an intuitive
   way. Moving the selection around the outer ring changes the hue, and moving
   the selection point inside the inner triangle changes value and saturation.
   @begin[Warning]{dictionary}
-    The @sym{gtk:hsv} widget has been deprecated since GTK 3.4 together with
+    The @class{gtk:hsv} widget has been deprecated since GTK 3.4 together with
     the @class{gtk:color-selection} widget, where it was used.
   @end{dictionary}
   @begin[Signal Details]{dictionary}
@@ -97,14 +97,14 @@
 lambda (hsv)    :run-first
       @end{pre}
       @begin[code]{table}
-        @entry[hsv]{The @sym{gtk:hsv} widget which received the signal.}
+        @entry[hsv]{The @class{gtk:hsv} widget which received the signal.}
       @end{table}
     @subheading{The \"move\" signal}
       @begin{pre}
 lambda (hsv direction)    :action
       @end{pre}
       @begin[code]{table}
-        @entry[hsv]{The @sym{gtk:hsv} widget which received the signal.}
+        @entry[hsv]{The @class{gtk:hsv} widget which received the signal.}
         @entry[direction]{A value of the @symbol{gtk:direction-type}
           enumeration.}
       @end{table}
@@ -122,12 +122,12 @@ lambda (hsv direction)    :action
 (defun hsv-new ()
  #+liber-documentation
  "@version{2023-6-15}
-  @return{A newly-created @class{gtk:hsv} widget.}
+  @return{The newly-created @class{gtk:hsv} widget.}
   @begin{short}
     Creates a new HSV color selector.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:hsv-new} function is deprecated since version 3.4 and should
+    The @fun{gtk:hsv-new} function is deprecated since version 3.4 and should
     not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:hsv}"
@@ -151,7 +151,7 @@ lambda (hsv direction)    :action
   @end{short}
   Color component values must be in the [0.0, 1.0] range.
   @begin[Warning]{dictionary}
-    The @sym{gtk:hsv-set-color} function is deprecated since version 3.4 and
+    The @fun{gtk:hsv-set-color} function is deprecated since version 3.4 and
     should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:hsv}"
@@ -186,7 +186,7 @@ lambda (hsv direction)    :action
   @end{short}
   Returned values will be in the [0.0, 1.0] range.
   @begin[Warning]{dictionary}
-    The @sym{gtk:hsv-get-color} function is deprecated since version 3.4 and
+    The @fun{gtk:hsv-get-color} function is deprecated since version 3.4 and
     should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:hsv}"
@@ -210,7 +210,7 @@ lambda (hsv direction)    :action
   @argument[width]{an integer with the width of the hue ring}
   @short{Sets the size and ring width of an HSV color selector.}
   @begin[Warning]{dictionary}
-    The @sym{gtk:hsv-set-metrics} function is deprecated since version 3.4 and
+    The @fun{gtk:hsv-set-metrics} function is deprecated since version 3.4 and
     should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:hsv}"
@@ -239,7 +239,7 @@ lambda (hsv direction)    :action
   @end{return}
   @short{Queries the size and ring width of an HSV color selector.}
   @begin[Warning]{dictionary}
-    The function @sym{gtk:hsv-get-metrics} is deprecated since version 3.4 and
+    The @fun{gtk:hsv-get-metrics} function is deprecated since version 3.4 and
     should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:hsv}"
@@ -269,7 +269,7 @@ lambda (hsv direction)    :action
   @end{short}
   This function queries whether the HSV color selector is being adjusted or not.
   @begin[Warning]{dictionary}
-    The @sym{gtk:hsv-is-adjusting} function is deprecated since version 3.4 and
+    The @fun{gtk:hsv-is-adjusting} function is deprecated since version 3.4 and
     should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:hsv}"

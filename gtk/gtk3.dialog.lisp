@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -233,7 +233,7 @@
   \"action area\". This is generally used for packing buttons into the dialog
   which may perform functions such as Cancel, OK, or Apply.
 
-  The @sym{gtk:dialog} widget is created with a call to to the
+  The @class{gtk:dialog} widget is created with a call to to the
   @fun{gtk:dialog-new} or @fun{gtk:dialog-new-with-buttons} functions. The
    @fun{gtk:dialog-new-with-buttons} function is recommended. It allows you to
   set the dialog title, some convenient flags, and add simple buttons.
@@ -251,12 +251,12 @@
   If you add buttons to a dialog using the @fun{gtk:dialog-new-with-buttons},
   @fun{gtk:dialog-add-button}, @fun{gtk:dialog-add-buttons}, or
   @fun{gtk:dialog-add-action-widget} functions, clicking the button will emit
-  a signal called \"response\" with a response ID that you specified. GTK will
-  never assign a meaning to positive response IDs. These are entirely
+  a signal called @code{\"response\"} with a response ID that you specified.
+  GTK will never assign a meaning to positive response IDs. These are entirely
   user-defined. But for convenience, you can use the response IDs in the
   @symbol{gtk:response-type} enumeration. These all have values less than zero.
-  If a dialog receives a delete event, the \"response\" signal will be emitted
-  with a @code{:delete-event} response ID.
+  If a dialog receives a delete event, the @code{\"response\"} signal will be
+  emitted with a @code{:delete-event} response ID.
 
   If you want to block waiting for a dialog to return before returning control
   flow to your code, you can call the @fun{gtk:dialog-run} function. This
@@ -269,7 +269,7 @@
   would need to create the dialog contents manually if you had more than a
   simple message in the dialog.
   @begin[Examples]{dictionary}
-    Simple @sym{gtk:dialog} widget usage:
+    Simple @class{gtk:dialog} widget usage:
     @begin{pre}
 ;; Function to open a dialog displaying the message provided.
 (defun quick-message (window message)
@@ -292,16 +292,16 @@
     You can use a dialog as a toplevel window from Lisp code. The
     following code shows a complete example of a function which displays a
     message in a dialog. In this case you have to connect to the
-    \"response\" signal. It is not possible to use the @fun{gtk:dialog-run} and
-    @fun{gtk:dialog-response} functions for this toplevel dialog. In the Lisp
-    binding your program will hang, when using this functions to run the dialog
-    and to get the response.
+    @code{\"response\"} signal. It is not possible to use the
+    @fun{gtk:dialog-run} and @fun{gtk:dialog-response} functions for this
+    toplevel dialog. In the Lisp binding your program will hang, when using
+    this functions to run the dialog and to get the response.
 
     A toplevel dialog which can be called from any Lisp code:
     @begin{pre}
 (defun example-dialog-toplevel (message)
  (let ((response nil))
-   (within-main-loop
+   (gtk:within-main-loop
     (let (;; Create the widgets
           (dialog (gtk:dialog-new-with-buttons \"Demo Toplevel Dialog\"
                                                nil ; No Parent window
@@ -311,12 +311,12 @@
                                                \"_Cancel\"
                                                :cancel))
           (label (gtk:label-new message)))
-      ;; Signal handler for the dialog to handle the signal \"destroy\".
+      ;; Signal handler for the dialog to handle the \"destroy\" signal.
       (g:signal-connect dialog \"destroy\"
                         (lambda (widget)
                           (declare (ignore widget))
                           ;; Quit the main loop and destroy the thread.
-                          (leave-gtk:main)))
+                          (gtk:leave-gtk-main)))
       ;; Get the response and destroy the dialog.
       (g:signal-connect dialog \"response\"
                         (lambda (dialog id)
@@ -326,17 +326,17 @@
       (gtk:container-add (gtk:dialog-content-area dialog) label)
       (gtk:widget-show-all dialog)))
     ;; Wait until the dialog is destroyed.
-    (join-gtk-main)
+    (gtk:join-gtk-main)
     (when response
       (format t \"The response ID is ~A\" response))))
     @end{pre}
   @end{dictionary}
   @begin[GtkDialog as GtkBuildable]{dictionary}
-    The @sym{gtk:dialog} implementation of the @class{gtk:buildable} interface
+    The @class{gtk:dialog} implementation of the @class{gtk:buildable} interface
     exposes the content area and action area as internal children with the names
     @code{vbox} and @code{action_area}.
 
-    The @sym{gtk:dialog} implementation supports a custom
+    The @class{gtk:dialog} implementation supports a custom
     @code{<action-widgets>} element, which can contain multiple
     @code{<action-widget>} elements. The @code{\"response\"} attribute specifies
     a numeric response, and the content of the element is the ID of the widget,
@@ -344,14 +344,14 @@
     response as default, set the @code{\"default\"} attribute of the
     @code{<action-widget>} element to true.
 
-    The @sym{gtk:dialog} implementation supports adding action widgets by
+    The @class{gtk:dialog} implementation supports adding action widgets by
     specifying @code{\"action\"} as the @code{\"type\"} attribute of a
     @code{<child>} element. The widget will be added either to the action area
     or the headerbar of the dialog, depending on the @code{use-header-bar}
     property. The response ID has to be associated with the action widget using
     the @code{<action-widgets>} element.
 
-    @b{Example:} A @sym{gtk:dialog} UI definition fragment.
+    @b{Example:} A @class{gtk:dialog} UI definition fragment.
     @begin{pre}
 <object class=\"GtkDialog\" id=\"dialog1\">
   <child type=\"action\">
@@ -413,7 +413,7 @@ lambda (dialog)    :action
       close the dialog. The default binding for this signal is the @kbd{Escape}
       key.
       @begin[code]{table}
-        @entry[dialog]{The @sym{gtk:dialog} widget on which the signal is
+        @entry[dialog]{The @class{gtk:dialog} widget on which the signal is
           emitted.}
       @end{table}
     @subheading{The \"response\" signal}
@@ -426,7 +426,7 @@ lambda (dialog response)    :run-last
       value of the @symbol{gtk:response-type} enumeration. Otherwise, it
       depends on which action widget was clicked.
       @begin[code]{table}
-        @entry[dialog]{The @sym{gtk:dialog} widget on which the signal is
+        @entry[dialog]{The @class{gtk:dialog} widget on which the signal is
           emitted.}
         @entry[response]{An integer with the response ID.}
       @end{table}
@@ -440,7 +440,7 @@ lambda (dialog response)    :run-last
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- dialog-use-header-bar --------------------------------------------------
+;;; --- gtk:dialog-use-header-bar ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "use-header-bar" 'dialog) t)
@@ -506,7 +506,7 @@ lambda (dialog response)    :run-last
   @argument[buttons]{pairs with a button text and the response ID for the
     button, which is a positive integer or a value of the
     @symbol{gtk:response-type} enumeration}
-  @return{A new @class{gtk:dialog} widget.}
+  @return{The new @class{gtk:dialog} widget.}
   @begin{short}
     Creates a new dialog with title @arg{title}, or @code{nil} for the default
     title, see the @fun{gtk:window-title} function, and transient parent
@@ -521,14 +521,14 @@ lambda (dialog response)    :run-last
   After the @arg{flags} argument, button text/response ID pairs should be
   listed. Button text can be arbitrary text. A response ID can be any positive
   number, or one of the values in the @symbol{gtk:response-type} enumeration.
-  If the user clicks one of these dialog buttons, the @sym{gtk:dialog} widget
-  will emit the \"response\" signal with the corresponding response ID. If a
-  @sym{gtk:dialog} widget receives the \"delete-event\" signal, it will emit
-  the \"response\" signal with a @code{:delete-event} response ID. However,
-  destroying a dialog does not emit the \"response\" signal. So be careful
-  relying on the \"response\" signal when using the @code{:destroy-with-parent}
-  flag. Buttons are from left to right, so the first button in the list will be
-  the leftmost button in the dialog.
+  If the user clicks one of these dialog buttons, the @class{gtk:dialog} widget
+  will emit the @code{\"response\"} signal with the corresponding response ID.
+  If a @class{gtk:dialog} widget receives the \"delete-event\" signal, it will
+  emit the @code{\"response\"} signal with a @code{:delete-event} response ID.
+  However, destroying a dialog does not emit the \"response\" signal. So be
+  careful relying on the \"response\" signal when using the
+  @code{:destroy-with-parent} flag. Buttons are from left to right, so the
+  first button in the list will be the leftmost button in the dialog.
   @begin[Examples]{dictionary}
     @begin{pre}
 (let ((dialog (gtk:dialog-new-with-buttons \"My dialog\"
@@ -575,28 +575,29 @@ lambda (dialog response)    :run-last
     @symbol{gtk:response-type} enumeration.}
   @begin{short}
     Blocks in a recursive main loop until the dialog either emits the
-    \"response\" signal, or is destroyed.
+    @code{\"response\"} signal, or is destroyed.
   @end{short}
-  If the dialog is destroyed during the call to the @sym{gtk:dialog-run}
+  If the dialog is destroyed during the call to the @fun{gtk:dialog-run}
   function, it returns the @code{:none} response ID. Otherwise, it returns the
-  response ID from the \"response\" signal emission.
+  response ID from the @code{\"response\"} signal emission.
 
-  Before entering the recursive main loop, the @sym{gtk:dialog-run} function
+  Before entering the recursive main loop, the @fun{gtk:dialog-run} function
   calls the @fun{gtk:widget-show} function on the dialog for you. Note that you
   still need to show any children of the dialog yourself.
 
-  During the execution of the @sym{gtk:dialog-run} function, the default
-  behavior of the \"delete-event\" signal is disabled. If the dialog receives
-  the \"delete-event\" signal, it will not be destroyed as windows usually are,
-  and the @sym{gtk:dialog-run} function will return the @code{:delete-event}
-  response ID. Also, during the execution of the @sym{gtk:dialog-run} function
-  the dialog will be modal. You can force the @sym{gtk:dialog-run} function to
-  return at any time by calling the @fun{gtk:dialog-response} function to emit
-  the \"response\" signal. Destroying the dialog during the execution of the
-  @sym{gtk:dialog-run} function is a very bad idea, because your post-run code
-  will not know whether the dialog was destroyed or not.
+  During the execution of the @fun{gtk:dialog-run} function, the default
+  behavior of the @code{\"delete-event\"} signal is disabled. If the dialog
+  receives the @code{\"delete-event\"} signal, it will not be destroyed as
+  windows usually are, and the @fun{gtk:dialog-run} function will return the
+  @code{:delete-event} response ID. Also, during the execution of the
+  @fun{gtk:dialog-run} function the dialog will be modal. You can force the
+  @fun{gtk:dialog-run} function to return at any time by calling the
+  @fun{gtk:dialog-response} function to emit the \"response\" signal.
+  Destroying the dialog during the execution of the @fun{gtk:dialog-run}
+  function is a very bad idea, because your post-run code will not know whether
+  the dialog was destroyed or not.
 
-  After the @sym{gtk:dialog-run} function returns, you are responsible for
+  After the @fun{gtk:dialog-run} function returns, you are responsible for
   hiding or destroying the dialog if you wish to do so.
   @begin[Examples]{dictionary}
     Typical usage of this function might be:
@@ -612,7 +613,7 @@ lambda (dialog response)    :run-last
     dialog, because it prevents the user from interacting with other windows in
     the same window group while the dialog is run, callbacks such as timeouts,
     IO channel watches, DND drops, etc, will be triggered during a
-    @sym{gtk:dialog-run} function call.
+    @fun{gtk:dialog-run} function call.
   @end{dictionary}
   @see-class{gtk:dialog}
   @see-symbol{gtk:response-type}
@@ -633,11 +634,11 @@ lambda (dialog response)    :run-last
   @argument[response]{a response ID, which is a positive integer or a value of
     the @symbol{gtk:response-type} enumeration}
   @begin{short}
-    Emits the \"response\" signal with the given response ID.
+    Emits the @code{\"response\"} signal with the given response ID.
   @end{short}
   Used to indicate that the user has responded to the dialog in some way.
   Typically either you or the @fun{gtk:dialog-run} function will be monitoring
-  the \"response\" signal and take appropriate action.
+  the @code{\"response\"} signal and take appropriate action.
   @see-class{gtk:dialog}
   @see-symbol{gtk:response-type}
   @see-function{gtk:dialog-run}"
@@ -660,8 +661,8 @@ lambda (dialog response)    :run-last
   @return{The @class{gtk:button} widget that was added.}
   @begin{short}
     Adds a button with the given text and sets things up so that clicking the
-    button will emit the \"response\" signal with the given @arg{response}
-    value.
+    button will emit the @code{\"response\"} signal with the given
+    @arg{response} value.
   @end{short}
   The button is appended to the end of the action area of the dialog.
   @see-class{gtk:dialog}
@@ -718,8 +719,8 @@ lambda (dialog response)    :run-last
     integer or a value of the @symbol{gtk:response-type} enumeration}
   @begin{short}
     Adds an activatable child widget to the action area of the dialog,
-    connecting a signal handler that will emit the \"response\" signal on the
-    dialog when the child widget is activated.
+    connecting a signal handler that will emit the @code{\"response\"} signal
+    on the dialog when the child widget is activated.
   @end{short}
   The child widget is appended to the end of the action area of the dialog. If
   you want to add a non-activatable widget, simply pack it into the action area
@@ -848,7 +849,7 @@ lambda (dialog response)    :run-last
   @return{The @class{gtk:widget} action area of the dialog.}
   @short{Returns the action area of the dialog.}
   @begin[Warning]{dictionary}
-    The @sym{gtk:dialog-action-area} function has been deprecated since version
+    The @fun{gtk:dialog-action-area} function has been deprecated since version
     3.12 and should not be used in newly written code. Direct access to the
     action area is discouraged. Use the @fun{gtk:dialog-add-button} function,
     etc.
@@ -912,7 +913,7 @@ lambda (dialog response)    :run-last
  "@version{#2023-3-17}
   @argument[screen]{a @class{gdk:screen} object, or @code{nil} to use the
     default screen}
-  @return{A boolean whether the alternative button order should be used.}
+  @return{The boolean whether the alternative button order should be used.}
   @begin{short}
     Returns @em{true} if dialogs are expected to use an alternative button
     order on the screen.
@@ -921,11 +922,11 @@ lambda (dialog response)    :run-last
   details about alternative button order.
 
   If you need to use this function, you should probably connect to the
-  \"notify:gtk-alternative-button-order\" signal on the @class{gtk:settings}
-  object associated to the screen, in order to be notified if the button order
-  setting changes.
+  @code{\"notify:gtk-alternative-button-order\"} signal on the
+  @class{gtk:settings} object associated to the screen, in order to be notified
+  if the button order setting changes.
   @begin[Warning]{dictionary}
-    The @sym{gtk:alternative-dialog-button-order} function has been deprecated
+    The @fun{gtk:alternative-dialog-button-order} function has been deprecated
     since version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:dialog}
@@ -982,7 +983,7 @@ lambda (dialog response)    :run-last
     @end{pre}
   @end{dictionary}
   @begin[Warning]{dictionary}
-    The @sym{gtk:dialog-set-alternative-button-order} function has been
+    The @fun{gtk:dialog-set-alternative-button-order} function has been
     deprecated since version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:dialog}
@@ -1022,7 +1023,7 @@ lambda (dialog response)    :run-last
 
   This function is for use by language bindings.
   @begin[Warning]{dictionary}
-    The @sym{gtk:dialog-set-alternative-button-order} function has been
+    The @fun{gtk:dialog-set-alternative-button-order} function has been
     deprecated since version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:dialog}"

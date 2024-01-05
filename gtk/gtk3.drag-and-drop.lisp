@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -99,7 +99,7 @@
       (liber:symbol-documentation 'dest-defaults)
  "@version{#2023-3-17}
   @begin{short}
-    The @sym{gtk:dest-defaults} flags specifies the various types of action
+    The @symbol{gtk:dest-defaults} flags specifies the various types of action
     that will be taken on behalf of the user for a drag destination site.
   @end{short}
   @begin{pre}
@@ -280,7 +280,7 @@
     Sets the widget as a proxy for drops to another window.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:drag-dest-set-proxy} function has been deprecated since version
+    The @fun{gtk:drag-dest-set-proxy} function has been deprecated since version
     3.22 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:widget}
@@ -375,11 +375,11 @@
   @argument[tlist]{a @symbol{gtk:target-list} instance of droppable targets,
     or @code{nil} for none}
   @begin{short}
-    The @sym{gtk:drag-dest-target-list} function returns the list of targets
+    The @fun{gtk:drag-dest-target-list} function returns the list of targets
     this widget can accept from drag and drop.
   @end{short}
-  The @sym{(setf gtk:drag-dest-target-list)} function sets the target types.
-  The widget must first be made into a drag destination with the
+  The @setf{gtk:drag-dest-target-list} function sets the target types. The
+  widget must first be made into a drag destination with the
   @fun{gtk:drag-dest-set} function.
   @see-class{gtk:widget}
   @see-class{gtk:target-list}
@@ -475,12 +475,12 @@
   @argument[widget]{a @class{gtk:widget} that is a drag destination}
   @argument[motion]{a boolean whether to accept all targets}
   @begin{short}
-    The @sym{gtk:drag-dest-track-motion} function returns whether the widget
+    The @fun{gtk:drag-dest-track-motion} function returns whether the widget
     has been configured to always emit \"drag-motion\" signals.
   @end{short}
-  The @sym{(setf gtk:drag-dest-track-motion)} function tells the widget to emit
-  \"drag-motion\" and \"drag-leave\" events regardless of the targets and the
-  @code{:motion} flag.
+  The @setf{gtk:drag-dest-track-motion} function tells the widget to emit
+  @code{\"drag-motion\"} and @code{\"drag-leave\"} events regardless of the
+  targets and the @code{:motion} flag.
 
   This may be used when a widget wants to do generic actions regardless of the
   targets that the source offers.
@@ -535,7 +535,7 @@
   When the data is received or the retrieval fails, GTK will emit a
   \"drag-data-received\" signal. Failure of the retrieval is indicated by the
   length field of the @arg{selection} signal parameter being negative. However,
-  when the @sym{gtk:drag-data} function is called implicitely because the
+  when the @fun{gtk:drag-data} function is called implicitely because the
   @code{:drop} flag was set, then the widget will not receive notification of
   failed drops.
   @see-class{gtk:widget}
@@ -631,8 +631,8 @@
 
   The @arg{event} argument is used to retrieve the timestamp that will be used
   internally to grab the pointer. If the @arg{event} argument is @code{nil},
-  then the @var{+gdk-current-time+} value will be used. However, you should try
-  to pass a real event in all cases, since that can be used by GTK to get
+  then the @var{gdk:+gdk-current-time+} value will be used. However, you should
+  try to pass a real event in all cases, since that can be used by GTK to get
   information about the start position of the drag, for example if the event is
   a @code{:motion-notify} event.
 
@@ -658,7 +658,7 @@
     @end{item}
   @end{enumerate}
   @begin[Warning]{dictionary}
-    The @sym{gtk:drag-begin} function has been deprecated since version 3.10
+    The @fun{gtk:drag-begin} function has been deprecated since version 3.10
     and should not be used in newly written code. Use the
     @fun{gtk:drag-begin-with-coordinates} function instead.
   @end{dictionary}
@@ -669,7 +669,7 @@
   @see-function{gtk:drag-source-set}
   @see-function{gdk:event-copy}
   @see-function{gdk:event-free}
-  @see-variable{+gdk-current-time+}"
+  @see-variable{gdk:+gdk-current-time+}"
   (widget (g:object widget))
   (targets (g:boxed target-list))
   (actions gdk:drag-action)
@@ -710,9 +710,9 @@
 
   The @arg{event} argument is used to retrieve the timestamp that will be used
   internally to grab the pointer. If the @arg{event} argument is @code{nil},
-  then the @var{+gdk-current-time+} value will be used. However, you should try
-  to pass a real event in all cases, since that can be used to get information
-  about the drag.
+  then the @var{gdk:+gdk-current-time+} value will be used. However, you should
+  try to pass a real event in all cases, since that can be used to get
+  information about the drag.
 
   Generally there are three cases when you want to start a drag by hand by
   calling this function:
@@ -846,7 +846,7 @@
     Sets the icon for a given drag from a stock ID.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:drag-set-icon-stock} function has been deprecated since
+    The @fun{gtk:drag-set-icon-stock} function has been deprecated since
     version 3.10 and should not be used in newly written code. Use the
     @fun{gtk:drag-set-icon-name} function instead.
   @end{dictionary}
@@ -1069,7 +1069,7 @@
     stock icon.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:drag-source-set-icon-stock} function has been deprecated since
+    The @fun{gtk:drag-source-set-icon-stock} function has been deprecated since
     version 3.10 and should not be used in newly written code. Use the
     @fun{gtk:drag-source-set-icon-name} function instead.
   @end{dictionary}
@@ -1163,11 +1163,10 @@
   @argument[tlist]{a  @class{gtk:target-list} instance with the draggable
     targets, or @code{nil} for none}
   @begin{short}
-    The @sym{gtk:drag-source-target-list} function gets the list of targets
+    The @fun{gtk:drag-source-target-list} function gets the list of targets
     this widget can provide for drag and drop.
   @end{short}
-  The @sym{(setf gtk:drag-source-target-list)} function changes the target
-  types.
+  The @setf{gtk:drag-source-target-list} function changes the target types.
 
   The widget must first be made into a drag source with the
   @fun{gtk:drag-source-set} function.

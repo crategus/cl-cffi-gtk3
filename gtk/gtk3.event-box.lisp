@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -86,18 +86,18 @@
 (setf (documentation 'event-box 'type)
  "@version{2023-2-23}
   @begin{short}
-    The @sym{gtk:event-box} widget is a subclass of the @class{gtk:bin} class
+    The @class{gtk:event-box} widget is a subclass of the @class{gtk:bin} class
     which also has its own window.
   @end{short}
   It is useful since it allows you to catch events for widgets which do not
   have their own window.
   @begin[Example]{dictionary}
-    This example demonstrates the usage of a @sym{gtk:event-box} widget - a
+    This example demonstrates the usage of a @class{gtk:event-box} widget - a
     label is created and set up so that a mouse-click on the label causes the
     program to exit.
    @begin{pre}
 (defun example-event-box ()
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :type :toplevel
                                  :title \"Example Event Box\"
@@ -111,7 +111,7 @@
       (g:signal-connect window \"destroy\"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Set the available events for the event box
       (setf (gtk:widget-events eventbox) :button-press-mask)
       ;; Connect a signal handler to the eventbox
@@ -162,10 +162,10 @@
     Accessor of the @slot[gtk:event-box]{above-child} slot of the
     @class{gtk:event-box} class.
   @end{short}
-  The @sym{gtk:event-box-above-child} function returns whether the event box
+  The @fun{gtk:event-box-above-child} function returns whether the event box
   window is above or below the windows of its child. The
-  @sym{(setf gtk:event-box-above-child)} function sets whether the event box
-  window is positioned above the windows of its child, as opposed to below it.
+  @setf{gtk:event-box-above-child} function sets whether the event box window
+  is positioned above the windows of its child, as opposed to below it.
 
   If the window is above, all events inside the event box will go to the event
   box. If the window is below, events in windows of child widgets will first
@@ -198,10 +198,10 @@
     Accessor of the @slot[gtk:event-box]{visible-window} slot of the
     @class{gtk:event-box} class.
   @end{short}
-  The @sym{gtk:event-box-visible-window} function returns whether the event box
-  has a visible window. The @sym{(setf gtk:event-box-visible-window)} function
-  sets whether the event box uses a visible or invisible child window. The
-  default is to use visible windows.
+  The @fun{gtk:event-box-visible-window} function returns whether the event box
+  has a visible window. The @setf{gtk:event-box-visible-window} function sets
+  whether the event box uses a visible or invisible child window. The default
+  is to use visible windows.
 
   In an invisible window event box, the window that the event box creates is a
   @code{:input-only} window, which means that it is invisible and only serves
@@ -243,7 +243,7 @@
 (defun event-box-new ()
  #+liber-documentation
  "@version{2023-2-23}
-  @return{A new @class{gtk:event-box} widget.}
+  @return{The new @class{gtk:event-box} widget.}
   @begin{short}
     Creates a new event box.
   @end{short}

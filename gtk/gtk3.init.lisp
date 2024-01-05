@@ -1,7 +1,7 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.init.lisp
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -81,23 +81,23 @@
     @begin{short}
       Wait until the GTK program terminates.
     @end{short}
-    @see-function{within-main-loop}
-    @see-function{leave-gtk-main}"
+    @see-function{gtk:within-main-loop}
+    @see-function{gtk:leave-gtk-main}"
     (when *main-thread*
       (bt:join-thread *main-thread*)))
 
   (defun leave-gtk-main ()
    #+liber-documentation
-   "@version{#2023-3-5}
+   "@version{2023-12-26}
     @begin{short}
       Makes the innermost invocation of the main loop return when it regains
       control.
     @end{short}
     In the Lisp binding to GTK the @fun{gtk:main-quit} function is not called,
-    but the @sym{leave-gtk-main} function. This function does some additional
-    bookkeeping, which is necessary to stop a Lisp program safely. See the
-    @fun{within-main-loop} documentation for an example.
-    @see-function{within-main-loop}
+    but the @fun{gtk:leave-gtk-main} function. This function does some
+    additional bookkeeping, which is necessary to stop a Lisp program safely.
+    See the @fun{gtk:within-main-loop} documentation for an example.
+    @see-function{gtk:within-main-loop}
     @see-function{gtk:main-quit}"
     (bt:with-lock-held (*main-thread-lock*)
       (decf *main-thread-level*)
@@ -130,7 +130,8 @@
              nil)
     (return-from-callback () nil)))
 
-(defun call-from-gtk-main-loop (func &key (priority g:+g-priority-default-idle+))
+(defun call-from-gtk-main-loop (func
+                                &key (priority glib:+g-priority-default-idle+))
   (glib::%idle-add-full priority
                         (cffi:callback call-from-main-loop-callback)
                         (glib:allocate-stable-pointer func)
@@ -139,9 +140,9 @@
 
 (defmacro within-main-loop (&body body)
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{2023-12-26}
   @begin{short}
-    The @sym{within-main-loop} macro is a wrapper around a GTK program.
+    The @fun{gtk:within-main-loop} macro is a wrapper around a GTK program.
   @end{short}
   The functionality of the macro corresponds to the @code{gtk_init()} and
   @code{gtk_main()} C functions which initialize and start a GTK program. Both
@@ -150,28 +151,28 @@
   to the @code{gtk_init()} function is called internally when loading the
   library, but is not exported.
 
-  To stop the execution of the main loop the @fun{leave-gtk-main} function is
-  called.
+  To stop the execution of the main loop the @fun{gtk:leave-gtk-main} function
+  is called.
   @begin[Example]{dictionary}
     An example with a simple window from the
     @url[http://www.crategus.com/books/cl-gtk/gtk-tutorial.html#example-simple-window]{GTK Lisp tutorial}
-    which shows the usage of the @sym{within-main-loop} macro:
+    which shows the usage of the @fun{gtk:within-main-loop} macro:
     @begin{pre}
 (defun example-simple-window ()
-  (within-main-loop
+  (gtk:within-main-loop
     (let (;; Create a toplevel window.
           (window (gtk:window-new :toplevel)))
-      ;; Signal handler for the window to handle the signal \"destroy\".
+      ;; Signal handler for the window to handle the \"destroy\" signal.
       (g:signal-connect window \"destroy\"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       ;; Show the window.
       (gtk-widget-show-all window))))
     @end{pre}
   @end{dictionary}
   @see-function{gtk:main}
-  @see-function{leave-gtk-main}"
+  @see-function{gtk:leave-gtk-main}"
   `(call-from-gtk-main-loop (lambda () ,@body)))
 
 (export 'within-main-loop)

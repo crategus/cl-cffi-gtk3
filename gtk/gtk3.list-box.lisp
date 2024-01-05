@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2023 Dieter Kaiser
+;;; Copyright (C) 2019 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -1335,13 +1335,11 @@ lambda (item)
 
 (cffi:defcfun ("gtk_list_box_row_get_index" list-box-row-index) :int
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{2024-1-2}
   @argument[row]{a @class{gtk:list-box-row} widget}
   @return{The integer with the index of the row in the list box, or -1 if the
     row is not in the list box.}
-  @begin{short}
-    Gets the current index of the row in its list box.
-  @end{short}
+  @short{Gets the current index of the row in its list box.}
   @see-class{gtk:list-box}
   @see-class{gtk:list-box-row}"
   (row (g:object list-box-row)))
