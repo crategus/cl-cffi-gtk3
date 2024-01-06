@@ -267,6 +267,11 @@
        "example-overlay-decorative"
        "gtk3-example"
        "overlay-decorative.lisp")
+      ("Overlay Transparent"
+       ":window"
+       "example-overlay-transparent"
+       "gtk3-example"
+       "overlay-transparent.lisp")
       ("Button Boxes"
        ":window"
        "example-button-box"
@@ -624,7 +629,12 @@
 
      ;; Pango demos
      "Pango"
-     (("Draw centered text"
+     (("Drawing using Pango with Cairo"
+      ":window"
+      "example-pango-drawing"
+      "gtk3-example"
+      "pango-drawing.lisp")
+      ("Draw centered text"
        ":drawfunc"
        "pango-draw-text-centered"
        "pango-example"
