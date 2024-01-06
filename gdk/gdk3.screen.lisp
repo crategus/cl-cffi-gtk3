@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -235,7 +235,7 @@ lambda (screen)    :run-last
 
 (cffi:defcfun ("gdk_screen_get_default" screen-default) (g:object screen)
  #+liber-documentation
- "@version{#2021-12-13}
+ "@version{2024-1-2}
   @begin{return}
     A @class{gdk:screen} object, or @code{nil} if there is no default display.
   @end{return}
@@ -368,7 +368,7 @@ lambda (screen)    :run-last
  #+liber-documentation
  "@version{#2021-12-13}
   @argument[screen]{a @class{gdk:screen} object}
-  @return{An integer with the index of @arg{screen}.}
+  @return{The integer with the index of @arg{screen}.}
   @begin{short}
     Gets the index of the screen among the screens in the display to which
     it belongs.
@@ -395,7 +395,7 @@ lambda (screen)    :run-last
  #+liber-documentation
  "@version{#2021-12-13}
   @argument[screen]{a @class{gdk:screen} object}
-  @return{An integer with the width of @arg{screen} in pixels.}
+  @return{The integer with the width of @arg{screen} in pixels.}
   @short{Gets the width of the screen in pixels.}
   @begin[Warning]{dictionary}
     The @fun{gdk:screen-width} function has been deprecated since version
@@ -418,7 +418,7 @@ lambda (screen)    :run-last
  #+liber-documentation
  "@version{#2021-12-13}
   @argument[screen]{a @class{gdk:screen} object}
-  @return{An integer with the height of @arg{screen} in pixels.}
+  @return{The integer with the height of @arg{screen} in pixels.}
   @short{Gets the height of the screen in pixels.}
   @begin[Warning]{dictionary}
     The @fun{gdk:screen-height} function has been deprecated since version
@@ -441,7 +441,7 @@ lambda (screen)    :run-last
  #+liber-documentation
  "@version{#2021-12-13}
   @argument[screen]{a @class{gdk:screen} object}
-  @return{An integer with the width of @arg{screen} in millimeters.}
+  @return{The integer with the width of @arg{screen} in millimeters.}
   @begin{short}
     Gets the width of the screen in millimeters.
   @end{short}
@@ -467,7 +467,7 @@ lambda (screen)    :run-last
  #+liber-documentation
  "@version{#2021-12-13}
   @argument[screen]{a @class{gdk:screen} object}
-  @return{An integer with the height of @arg{screen} in millimeters.}
+  @return{The integer with the height of @arg{screen} in millimeters.}
   @begin{short}
     Returns the height of the screen in millimeters.
   @end{short}
@@ -491,7 +491,7 @@ lambda (screen)    :run-last
  #+liber-documentation
  "@version{#2021-12-13}
   @argument[screen]{a relevant @class{gdk:screen} object}
-  @return{A list of @class{gdk:visual} objects for @arg{screen}.}
+  @return{The list of @class{gdk:visual} objects for @arg{screen}.}
   @begin{short}
     Lists the available visuals for the specified screen.
   @end{short}
@@ -535,7 +535,7 @@ lambda (screen)    :run-last
  #+liber-documentation
  "@version{#2021-12-13}
   @argument[screen]{a @class{gdk:screen} object}
-  @return{A string with the name of the default display.}
+  @return{The string with the name of the default display.}
   @begin{short}
     Determines the name to pass to the @fun{gdk:display-open} function to get
     a @class{gdk:display} object with this screen as the default screen.
@@ -559,7 +559,7 @@ lambda (screen)    :run-last
  #+liber-documentation
  "@version{#2021-12-13}
   @argument[screen]{a @class{gdk:screen} object}
-  @return{An integer with the number of monitors which @arg{screen} consists
+  @return{The integer with the number of monitors which @arg{screen} consists
     of.}
   @short{Returns the number of monitors which the screen consists of.}
   @begin[Warning]{dictionary}
@@ -581,7 +581,7 @@ lambda (screen)    :run-last
  #+liber-documentation
  "@version{#2021-12-13}
   @argument[screen]{a @class{gdk:screen} object}
-  @return{An integer with the index for the primary monitor, or 0 if none is
+  @return{The integer with the index for the primary monitor, or 0 if none is
     configured.}
   @begin{short}
     Gets the primary monitor for the screen.
@@ -618,7 +618,7 @@ lambda (screen)    :run-last
  "@version{#2021-12-13}
   @argument[screen]{a @class{gdk:screen} object}
   @argument[num]{an integer with the monitor number}
-  @return{A @class{gdk:rectangle} instance filled with the monitor geometry.}
+  @return{The @class{gdk:rectangle} instance filled with the monitor geometry.}
   @begin{short}
     Retrieves the rectangle representing the size and position of the
     individual monitor within the entire screen area.
@@ -659,7 +659,7 @@ lambda (screen)    :run-last
  "@version{#2021-12-13}
   @argument[screen]{a @class{gdk:screen} object}
   @argument[num]{an integer with the monitor number}
-  @return{A @class{gdk:rectangle} instance filled with the monitor workarea.}
+  @return{The @class{gdk:rectangle} instance filled with the monitor workarea.}
   @begin{short}
     Retrieves the rectangle representing the size and position of the
     \"work area\" on a monitor within the entire screen area.
@@ -757,7 +757,7 @@ lambda (screen)    :run-last
   @argument[screen]{a @class{gdk:screen} object}
   @argument[num]{an integer with the number of the monitor, between 0 and and
     the result of @code{(gdk:screen-n-monitors @arg{screen})}}
-  @return{An integer with the height of the monitor, or -1 if not available.}
+  @return{The integer with the height of the monitor, or -1 if not available.}
   @begin{short}
     Gets the height in millimeters of the specified monitor.
   @end{short}
@@ -783,7 +783,7 @@ lambda (screen)    :run-last
   @argument[screen]{a @class{gdk:screen} object}
   @argument[monitor-num]{an integer with the number of the monitor, between
     0 and and the result of @code{(gdk:screen-n-monitors @arg{screen})}}
-  @return{An integer with the width of the monitor, or -1 if not available.}
+  @return{The integer with the width of the monitor, or -1 if not available.}
   @begin{short}
     Gets the width in millimeters of the specified monitor, if available.
   @end{short}
@@ -841,7 +841,7 @@ lambda (screen)    :run-last
   @argument[screen]{a @class{gdk:screen} object to get scale factor for}
   @argument[num]{an integer with the number of the monitor, between
     0 and @code{(gdk:screen-n-monitors @arg{screen})}}
-  @return{An integer with the scale factor.}
+  @return{The integer with the scale factor.}
   @begin{short}
     Returns the internal scale factor that maps from monitor coordiantes to the
     actual device pixels.
