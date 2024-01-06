@@ -256,7 +256,7 @@
 
 (test gtk-style-context-property.1
   (let ((context (gtk:style-context-new)))
-    (with-foreign-object (value '(:struct g:value))
+    (cffi:with-foreign-object (value '(:struct g:value))
       (g:value-init value)
       (is-false (gtk::%style-context-property context "color" :normal value))
       (is-true value)

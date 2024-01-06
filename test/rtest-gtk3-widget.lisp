@@ -5,7 +5,7 @@
 
 ;;; --- Types and Values -------------------------------------------------------
 
-;;;  	GtkRequisition
+;;;     GtkRequisition
 
 (test gtk-requisition
   ;; Type check

@@ -325,4 +325,4 @@
   (let ((label (make-instance 'gtk:label :label "some text")))
     (is-false (gtk:label-current-uri label))))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-1-1

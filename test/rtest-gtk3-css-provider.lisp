@@ -7,7 +7,7 @@
 
 ;;;     GtkCssProvider
 
-(test css-provider-class
+(test gtk-css-provider-class
   ;; Type check
   (is (g:type-is-object "GtkCssProvider"))
   ;; Check the registered name
@@ -41,7 +41,7 @@
 
 ;;;     GtkCssSectionType
 
-(test css-section-type
+(test gtk-css-section-type
   ;; Check the type
   (is-true (g:type-is-enum "GtkCssSectionType"))
   ;; Check the registered name
@@ -79,32 +79,82 @@
 
 ;;;     GtkCssSection
 
+(test gtk-css-section-structure
+  ;; Type check
+  (is (g:type-is-a (g:gtype "GtkCssSection") g:+g-type-boxed+))
+  ;; Check the type initializer
+  (is (eq (g:gtype "GtkCssSection")
+          (g:gtype (cffi:foreign-funcall "gtk_css_section_get_type" :size)))))
 
 ;;; --- Functions --------------------------------------------------------------
 
 ;;;     gtk_css_provider_get_default
 
-(test css-provider-default
+(test gtk-css-provider-default
   (is (eq 'gtk:css-provider (type-of (gtk:css-provider-default)))))
 
 ;;;     gtk_css_provider_get_named
+
+(test gtk-css-provider-named
+  (is (typep (gtk:css-provider-named "Yaru" "dark") 'gtk:css-provider)))
+
 ;;;     gtk_css_provider_load_from_data
+
+(test gtk-css-provider-load-from-data
+  (let ((provider (gtk:css-provider-new)))
+    (is-true (gtk:css-provider-load-from-data provider
+                                              "button {
+                                                 padding: 3px; }
+                                               button > label {
+                                                 color: black;
+                                                 background-color: yellow; }
+                                               button:first-child > label {
+                                                 background-color: red; }
+                                               button:last-child > label {
+                                                 background-color : green; }"))
+    (is (string=
+"button {
+  padding-bottom: 3px;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 3px;
+}
+
+button > label {
+  background-color: rgb(255,255,0);
+  color: rgb(0,0,0);
+}
+
+button:first-child > label {
+  background-color: rgb(255,0,0);
+}
+
+button:last-child > label {
+  background-color: rgb(0,128,0);
+}
+"
+     (gtk:css-provider-to-string provider)))))
+
 ;;;     gtk_css_provider_load_from_file
 
 ;;;     gtk_css_provider_load_from_path
 
-(test css-provider-load-from-path
+(test gtk-css-provider-load-from-path
   (let ((provider (gtk:css-provider-new)))
     (is-true (gtk:css-provider-load-from-path provider
                  (sys-path "resource/rtest-gtk-css-provider.css")))
     (is-true (stringp (gtk:css-provider-to-string provider)))))
 
 ;;;     gtk_css_provider_load_from_resource
+
 ;;;     gtk_css_provider_new
+
+(test gtk-css-provider-new
+  (is (typep (gtk:css-provider-new) 'gtk:css-provider)))
 
 ;;;     gtk_css_provider_to_string
 
-(test css-provider-to-string
+(test gtk-css-provider-to-string
   (let ((provider (gtk:css-provider-new)))
     (is (string= "" (gtk:css-provider-to-string provider)))))
 
@@ -121,4 +171,4 @@
 ;;;     gtk_css_section_ref
 ;;;     gtk_css_section_unref
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-1-2

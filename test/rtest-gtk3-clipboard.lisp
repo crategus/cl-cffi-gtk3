@@ -284,7 +284,7 @@
              (format t " clipboard : ~a~%" clipboard)
              (format t "     atoms : ~a~%" atoms)
              (format t "   n-atoms : ~a~%" n-atoms)
-             (with-foreign-object (targets-ar 'gdk:atom-as-string n-atoms)
+             (cffi:with-foreign-object (targets-ar 'gdk:atom-as-string n-atoms)
                (loop for i from 0 below n-atoms
                      do (format t "    target : ~a~%"
                                   (cffi:mem-aref targets-ar

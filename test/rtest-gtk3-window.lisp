@@ -7,7 +7,7 @@
 
 ;;;     GtkWindowType
 
-(test window-type
+(test gtk-window-type
   ;; Check the type
   (is (g:type-is-enum "GtkWindowType"))
   ;; Check the type initializer
@@ -36,7 +36,7 @@
 
 ;;;     GtkWindowPosition
 
-(test window-position
+(test gtk-window-position
   ;; Check the type
   (is (g:type-is-enum "GtkWindowPosition"))
   ;; Check the type initializer
@@ -69,7 +69,7 @@
 
 ;;;     GtkWindow
 
-(test window-class
+(test gtk-window-class
   ;; Type check
   (is (g:type-is-object "GtkWindow"))
   ;; Check the registered name
@@ -83,12 +83,12 @@
           (g:type-parent "GtkWindow")))
   ;; Check the children
   #-windows
-  (is (equal '("GtkDialog" "GtkAssistant" "GtkOffscreenWindow" "GtkPlug"
-               "GtkShortcutsWindow" "GtkApplicationWindow")
+  (is (equal '("GtkApplicationWindow" "GtkAssistant" "GtkDialog"
+               "GtkOffscreenWindow" "GtkPlug" "GtkShortcutsWindow")
              (list-children "GtkWindow")))
   #+windows
-  (is (equal '("GtkDialog" "GtkAssistant" "GtkOffscreenWindow"
-               "GtkShortcutsWindow" "GtkApplicationWindow")
+  (is (equal '("GtkApplicationWindow" "GtkAssistant" "GtkDialog"
+               "GtkOffscreenWindow" "GtkShortcutsWindow")
              (list-children "GtkWindow")))
   ;; Check the interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
@@ -111,8 +111,12 @@
   (is (equal '()
              (list-child-properties "GtkWindow")))
   ;; Check the signals
-  (is (equal '()
+  (is (equal '("activate-default" "activate-focus" "enable-debugging"
+               "keys-changed" "set-focus")
              (list-signals "GtkWindow")))
+  ;; CSS information
+  (is (string= "window"
+               (gtk:widget-class-css-name "GtkWindow")))
   ;; Check the class definition
   (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkWindow" GTK-WINDOW
                        (:SUPERCLASS GTK-BIN :EXPORT T :INTERFACES
@@ -182,7 +186,7 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-(test window-properties
+(test gtk-window-properties
   (let ((window (make-instance 'gtk:window)))
     (is-true  (gtk:window-accept-focus window))
     (is-false (gtk:window-application window))
@@ -221,7 +225,7 @@
 
 ;;; --- Style Properties -------------------------------------------------------
 
-(test window-style-properties
+(test gtk-window-style-properties
   (let ((win (make-instance 'gtk:window)))
     (is (string= "menu:close"
                  (gtk:widget-style-property win "decoration-button-layout")))
@@ -229,8 +233,7 @@
 
 ;;; --- Signals ----------------------------------------------------------------
 
-(test window-signals
-  ;; Query info for "activate-default"
+(test gtk-window-activate-default-signal
   (let ((query (g:signal-query (g:signal-lookup "activate-default"
                                                 "GtkWindow"))))
     (is (string= "activate-default" (g:signal-query-signal-name query)))
@@ -240,8 +243,9 @@
     (is (string= "void" (g:type-name (g:signal-query-return-type query))))
     (is (equal '()
                (mapcar #'g:type-name (g:signal-query-param-types query))))
-    (is-false (g:signal-query-signal-detail query)))
-  ;; Query info for "activate-focus"
+    (is-false (g:signal-query-signal-detail query))))
+
+(test gtk-window-activate-focus-signal
   (let ((query (g:signal-query (g:signal-lookup "activate-focus" "GtkWindow"))))
     (is (string= "activate-focus" (g:signal-query-signal-name query)))
     (is (string= "GtkWindow" (g:type-name (g:signal-query-owner-type query))))
@@ -250,8 +254,9 @@
     (is (string= "void" (g:type-name (g:signal-query-return-type query))))
     (is (equal '()
                (mapcar #'g:type-name (g:signal-query-param-types query))))
-    (is-false (g:signal-query-signal-detail query)))
-  ;; Query info for "enable-debugging"
+    (is-false (g:signal-query-signal-detail query))))
+
+(test gtk-window-enable-debugging-signal
   (let ((query (g:signal-query (g:signal-lookup "enable-debugging"
                                                 "GtkWindow"))))
     (is (string= "enable-debugging" (g:signal-query-signal-name query)))
@@ -261,8 +266,9 @@
     (is (string= "gboolean" (g:type-name (g:signal-query-return-type query))))
     (is (equal '("gboolean")
                (mapcar #'g:type-name (g:signal-query-param-types query))))
-    (is-false (g:signal-query-signal-detail query)))
-  ;; Query info for "keys-changed"
+    (is-false (g:signal-query-signal-detail query))))
+
+(test gtk-window-keys-changed-signal
   (let ((query (g:signal-query (g:signal-lookup "keys-changed" "GtkWindow"))))
     (is (string= "keys-changed" (g:signal-query-signal-name query)))
     (is (string= "GtkWindow" (g:type-name (g:signal-query-owner-type query))))
@@ -271,8 +277,9 @@
     (is (string= "void" (g:type-name (g:signal-query-return-type query))))
     (is (equal '()
                (mapcar #'g:type-name (g:signal-query-param-types query))))
-    (is-false (g:signal-query-signal-detail query)))
-  ;; Query info for "set-focus"
+    (is-false (g:signal-query-signal-detail query))))
+
+(test gtk-window-set-focus-signal
   (let ((query (g:signal-query (g:signal-lookup "set-focus" "GtkWindow"))))
     (is (string= "set-focus" (g:signal-query-signal-name query)))
     (is (string= "GtkWindow" (g:type-name (g:signal-query-owner-type query))))
@@ -287,19 +294,16 @@
 
 ;;;     gtk_window_new
 
-(test window-new
+(test gtk-window-new
   (is (typep (gtk:window-new :toplevel) 'gtk:window))
   (is (typep (gtk:window-new :popup) 'gtk:window)))
 
-;;;     gtk_window_set_title                               Accessor
 ;;;     gtk_window_set_wmclass
-;;;     gtk_window_set_resizable                           Accessor
-;;;     gtk_window_get_resizable                           Accessor
 
 ;;;     gtk_window_add_accel_group
 ;;;     gtk_window_remove_accel_group
 
-(test window-add-accel-group
+(test gtk-window-add-accel-group
   (let ((window (gtk:window-new :toplevel))
         (group (gtk:accel-group-new)))
     (is-false (gtk:window-add-accel-group window group))
@@ -307,7 +311,6 @@
 
 ;;;     gtk_window_activate_focus
 ;;;     gtk_window_activate_default
-;;;     gtk_window_set_modal                               Accessor
 
 ;;;     gtk_window_set_default_geometry
 
@@ -318,9 +321,9 @@
 (test gtk-window-set-geometry-hints
   (let ((window (gtk:window-new :toplevel))
         (mask '(:win-gravity)))
-    (with-foreign-object (geometry '(:struct gdk:geometry))
-      (with-foreign-slots ((gdk::win-gravity)
-                           geometry (:struct gdk:geometry))
+    (cffi:with-foreign-object (geometry '(:struct gdk:geometry))
+      (cffi:with-foreign-slots ((gdk::win-gravity)
+                                geometry (:struct gdk:geometry))
         ;; Set the gravity value
         (setf gdk::win-gravity :north)
         ;; The default value
@@ -330,18 +333,8 @@
         ;; The new value
         (is (eq :north (gtk:window-gravity window)))))))
 
-;;;     gtk_window_set_gravity                             Accessor
-;;;     gtk_window_get_gravity                             Accessor
 ;;;     gtk_window_set_position
-;;;     gtk_window_set_transient_for                       Accessor
-;;;     gtk_window_set_attached_to                         Accessor
-;;;     gtk_window_set_destroy_with_parent                 Accessor
-;;;     gtk_window_set_hide_titlebar_when_maximized        Accessor
-;;;     gtk_window_set_screen                              Accessor
-;;;     gtk_window_get_screen                              Accessor
-;;;     gtk_window_is_active                               Accessor
-;;;     gtk_window_is_maximized                            Accessor
-;;;     gtk_window_has_toplevel_focus                      Accessor
+
 ;;;     gtk_window_list_toplevels
 
 (test gtk-window-list-toplevels
@@ -373,19 +366,7 @@
 ;;;     gtk_window_set_keep_below
 ;;;     gtk_window_begin_resize_drag
 ;;;     gtk_window_begin_move_drag
-;;;     gtk_window_set_decorated                           Accessor
-;;;     gtk_window_set_deletable                           Accessor
 ;;;     gtk_window_set_mnemonic_modifier
-;;;     gtk_window_set_type_hint                           Accessor
-;;;     gtk_window_set_skip_taskbar_hint                   Accessor
-;;;     gtk_window_set_skip_pager_hint                     Accessor
-;;;     gtk_window_set_urgency_hint                        Accessor
-;;;     gtk_window_set_accept_focus                        Accessor
-;;;     gtk_window_set_focus_on_map                        Accessor
-;;;     gtk_window_set_startup_id                          Accessor
-;;;     gtk_window_set_role                                Accessor
-;;;     gtk_window_get_decorated                           Accessor
-;;;     gtk_window_get_deletable                           Accessor
 ;;;     gtk_window_get_default_icon_list
 ;;;     gtk_window_get_default_icon_name
 
@@ -401,25 +382,10 @@
     (is (equal '(100 200)
                (multiple-value-list (gtk:window-default-size window))))))
 
-;;;     gtk_window_get_destroy_with_parent                 Accessor
-;;;     gtk_window_get_hide_titlebar_when_maximized        Accessor
-;;;     gtk_window_get_icon                                Accessor
 ;;;     gtk_window_get_icon_list
-;;;     gtk_window_get_icon_name                           Accessor
 ;;;     gtk_window_get_mnemonic_modifier
-;;;     gtk_window_get_modal                               Accessor
 ;;;     gtk_window_get_position
-;;;     gtk_window_get_role                                Accessor
 ;;;     gtk_window_get_size
-;;;     gtk_window_get_title                               Accessor
-;;;     gtk_window_get_transient_for                       Accessor
-;;;     gtk_window_get_attached_to                         Accessor
-;;;     gtk_window_get_type_hint                           Accessor
-;;;     gtk_window_get_skip_taskbar_hint                   Accessor
-;;;     gtk_window_get_skip_pager_hint                     Accessor
-;;;     gtk_window_get_urgency_hint                        Accessor
-;;;     gtk_window_get_accept_focus                        Accessor
-;;;     gtk_window_get_focus_on_map                        Accessor
 ;;;     gtk_window_get_group
 ;;;     gtk_window_has_group
 ;;;     gtk_window_get_window_type
@@ -432,26 +398,16 @@
 ;;;     gtk_window_set_default_icon
 ;;;     gtk_window_set_default_icon_from_file
 ;;;     gtk_window_set_default_icon_name
-;;;     gtk_window_set_icon                                Accessor
 ;;;     gtk_window_set_icon_list
 ;;;     gtk_window_set_icon_from_file
-;;;     gtk_window_set_icon_name                           Accessor
 ;;;     gtk_window_set_auto_startup_notification
 ;;;     gtk_window_get_opacity
 ;;;     gtk_window_set_opacity
-;;;     gtk_window_get_mnemonics_visible                   Accessor
-;;;     gtk_window_set_mnemonics_visible                   Accessor
-;;;     gtk_window_get_focus_visible                       Accessor
-;;;     gtk_window_set_focus_visible                       Accessor
-;;;     gtk_window_set_has_resize_grip                     Accessor
-;;;     gtk_window_get_has_resize_grip                     Accessor
 ;;;     gtk_window_resize_grip_is_visible
 ;;;     gtk_window_get_resize_grip_area
-;;;     gtk_window_get_application                         Accessor
-;;;     gtk_window_set_application                         Accessor
 ;;;     gtk_window_set_has_user_ref_count
 ;;;     gtk_window_set_titlebar
 ;;;     gtk_window_get_titlebar
 ;;;     gtk_window_set_interactive_debugging
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2023-12-29

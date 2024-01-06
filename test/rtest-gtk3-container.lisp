@@ -427,7 +427,7 @@
 ;; Find a child property of type gboolean
 
 (test gtk-container-class-find-child-property.1
-  (with-foreign-objects ((value '(:struct g:value)))
+  (cffi:with-foreign-objects ((value '(:struct g:value)))
     (is-true (g:value-init value "gboolean"))
     (let ((pspec (gtk:container-class-find-child-property "GtkBox" "expand")))
       ;; Type checks
@@ -452,7 +452,7 @@
 ;; Find a child property of an enumeration type
 
 (test gtk-container-class-find-child-property.2
-  (with-foreign-objects ((value '(:struct g:value)))
+  (cffi:with-foreign-objects ((value '(:struct g:value)))
     (is-true (g:value-init value "GtkPackType"))
     (let ((pspec (gtk:container-class-find-child-property "GtkBox"
                                                           "pack-type")))
@@ -479,7 +479,7 @@
 ;; Find a child property of type gint
 
 (test gtk-container-class-find-child-property.3
-  (with-foreign-objects ((value '(:struct g:value)))
+  (cffi:with-foreign-objects ((value '(:struct g:value)))
     (is-true (g:value-init value "gint"))
     (let ((pspec (gtk:container-class-find-child-property "GtkBox" "position")))
       ;; Type checks
