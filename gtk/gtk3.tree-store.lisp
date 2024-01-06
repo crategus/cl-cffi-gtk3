@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -91,7 +91,7 @@
 (setf (documentation 'tree-store 'type)
  "@version{#2023-3-28}
   @begin{short}
-    The @sym{gtk:tree-store} object is a list model for use with a
+    The @class{gtk:tree-store} object is a list model for use with a
     @class{gtk:tree-view} widget.
   @end{short}
   It implements the @class{gtk:tree-model} interface, and consequentialy, can
@@ -99,7 +99,7 @@
   @class{gtk:tree-sortable} interface so it can be sorted by the tree view.
   Finally, it also implements the tree drag and drop interfaces.
   @begin[GtkTreeStore as GtkBuildable]{dictionary}
-    The @sym{gtk:tree-store} implementation of the @class{gtk:buildable}
+    The @class{gtk:tree-store} implementation of the @class{gtk:buildable}
     interface allows to specify the model columns with a @code{<columns>}
     element that may contain multiple @code{<column>} elements, each specifying
     one model column. The \"type\" attribute specifies the data type for
@@ -142,7 +142,7 @@
  "@version{#2023-3-28}
   @argument[column-types]{all @class{g:type-t} types for the columns, from
     first to last}
-  @return{A new @class{gtk:tree-store} object.}
+  @return{The new @class{gtk:tree-store} object.}
   @begin{short}
     Creates a new tree store as with columns of the types passed in.
   @end{short}
@@ -250,8 +250,8 @@
     @end{pre}
   @end{dictionary}
   @begin[Note]{dictionary}
-    The Lisp implemenation does not support pairs of a column index and a value,
-    but a list of values. Therefore, it is not possible to set individual
+    The Lisp implementation does not support pairs of a column index and a
+    value, but a list of values. Therefore, it is not possible to set individual
     columns. See the @fun{gtk:tree-store-set-value} function for setting the
     value of single columns.
   @end{dictionary}
@@ -401,7 +401,7 @@
   @argument[store]{a @class{gtk:tree-store} object}
   @argument[parent]{a valid @class{gtk:tree-iter} iterator, or @code{nil}}
   @argument[position]{an integer with the position to insert the new row}
-  @return{A @class{gtk:tree-iter} iterator to the new row.}
+  @return{The @class{gtk:tree-iter} iterator to the new row.}
   @begin{short}
     Creates a new row at @arg{position}.
   @end{short}
@@ -511,7 +511,7 @@
   @argument[position]{an integer with the position to insert the new row, or -1
     to append after existing rows}
   @argument[values]{pairs of column number and value}
-  @return{A @class{gtk:tree-iter} iterator.}
+  @return{The @class{gtk:tree-iter} iterator.}
   @begin{short}
     Creates a new row at @arg{position}.
   @end{short}
@@ -526,12 +526,13 @@
   (gtk:tree-store-set store iter values)
   .. )
   @end{pre}
-  with the different that the former will only emit a \"row-inserted\" signal,
-  while the latter will emit \"row-inserted\", \"row-changed\" and if the tree
-  store is sorted, \"rows-reordered\". Since emitting the \"rows-reordered\"
-  signal repeatedly can affect the performance of the program, the
-  @sym{gtk:tree-store-insert-with-values} function should generally be preferred
-  when inserting rows in a sorted tree store.
+  with the different that the former will only emit a @code{\"row-inserted\"}
+  signal, while the latter will emit @code{\"row-inserted\"},
+  @code{\"row-changed\"} and if the tree store is sorted,
+  @code{\"rows-reordered\"} signals. Since emitting the
+  @code{\"rows-reordered\"} signal repeatedly can affect the performance of the
+  program, the @fun{gtk:tree-store-insert-with-values} function should generally
+  be preferred when inserting rows in a sorted tree store.
   @see-class{gtk:tree-store}
   @see-class{gtk:tree-iter}
   @see-function{gtk:tree-store-insert}
@@ -606,7 +607,7 @@
  "@version{#2023-3-28}
   @argument[store]{a @class{gtk:tree-store} object}
   @argument[parent]{a valid @class{gtk:tree-iter} iterator, or @code{nil}}
-  @return{A @class{gtk:tree-iterator} iterator.}
+  @return{The @class{gtk:tree-iterator} iterator.}
   @begin{short}
     Prepends a new row to @arg{store}.
   @end{short}

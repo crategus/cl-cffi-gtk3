@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -108,7 +108,7 @@
   @begin[Lisp Implemention]{dictionary}
     In the Lisp implementationt the @sym{gtk:%init} function is called
     automatically when loading the library @code{cl-cffi-gtk3}. Therefore
-    @sym{gtk:disable-setlocale} does not have any effect.
+    @fun{gtk:disable-setlocale} does not have any effect.
   @end{dictionary}
   @see-function{gtk:%init-check}")
 
@@ -168,7 +168,7 @@
   This function is only needed rare cases when the locale is changed after GTK
   has already been initialized.
   @begin[Example]{dictionary}
-    You can use the @sym{gtk:locale-direction} function to update the default
+    You can use the @fun{gtk:locale-direction} function to update the default
     text direction as follows:
     @begin{pre}
 (setf (gtk:widget-default-direction) (gtk:locale-direction))
@@ -245,7 +245,7 @@
     windowing system for some reason. If you want your program to fall back to a
     textual interface you want to call @fun{%gtk-init-check} instead.
 
-    Since 2.18, GTK calls signal @code{(SIGPIPE, SIG_IGN)} during
+    Since 2.18, GTK calls the @code{(SIGPIPE, SIG_IGN)} signal during
     initialization, to ignore @code{SIGPIPE} signals, since these are almost
     never wanted in graphical applications. If you do need to handle
     @code{SIGPIPE} for some reason, reset the handler after @code{gtk_init()},
@@ -425,14 +425,14 @@
   @begin{short}
     Runs the main loop until the @fun{gtk:main-quit} function is called.
   @end{short}
-  You can nest calls to the @sym{gtk:main} function. In that case the
+  You can nest calls to the @fun{gtk:main} function. In that case the
   @fun{gtk:main-quit} function will make the innermost invocation of the main
   loop return.
   @begin[Lisp Implementation]{dictionary}
-    In the Lisp binding to GTK the @sym{gtk:main} function is not called
-    directly but through the @fun{within-main-loop} macro. The
-    @fun{within-main-loop} macro does some additional bookkeeping, to run the
-    Lisp program in a separate thread.
+    In the Lisp binding to GTK the @fun{gtk:main} function is not called
+    directly but through the @fun{gtk:within-main-loop} macro. The
+    @fun{gtk:within-main-loop} macro does some additional bookkeeping, to run
+    the Lisp program in a separate thread.
   @end{dictionary}
   @begin[Example]{dictionary}
     In this example an idle source is excecuted from the main loop. The
@@ -444,7 +444,7 @@
   ;; Quit the main loop.
   (gtk:main-quit)
   ;; Remove the idle source.
-  +g-source-remove+)
+  glib:+g-source-remove+)
 
 (defun main ()
   ;; Add an idle source to the main loop.
@@ -454,7 +454,7 @@
   (gtk:main))
     @end{pre}
   @end{dictionary}
-  @see-function{within-main-loop}
+  @see-function{gtk:within-main-loop}
   @see-function{gtk:main-quit}"
   (gdk:with-gdk-threads-lock
     (%main)))
@@ -468,7 +468,7 @@
 (cffi:defcfun ("gtk_main_level" main-level) :uint
  #+liber-documentation
  "@version{#2023-3-5}
-  @return{An unsigned integer with the nesting level of the current invocation
+  @return{The unsigned integer with the nesting level of the current invocation
     of the main loop.}
   @begin{short}
     Asks for the current nesting level of the main loop.
@@ -490,14 +490,14 @@
   @end{short}
   See the @fun{gtk:main} function for an example.
   @begin[Lisp Implementation]{dictionary}
-    In the Lisp binding to GTK the @sym{gtk:main-quit} function is not called,
-    but the @fun{leave-gtk-main} function. The @fun{leave-gtk-main} function
-    does some additional bookkeeping, which is necessary to destroy the separate
-    thread for a Lisp program.
+    In the Lisp binding to GTK the @fun{gtk:main-quit} function is not called,
+    but the @fun{gtk:leave-gtk-main} function. The @fun{gtk:leave-gtk-main}
+    function does some additional bookkeeping, which is necessary to destroy
+    the separate thread for a Lisp program.
   @end{dictionary}
   @see-function{gtk:main}
-  @see-function{within-main-loop}
-  @see-function{leave-gtk-main}")
+  @see-function{gtk:within-main-loop}
+  @see-function{gtk:leave-gtk-main}")
 
 (export 'main-quit)
 
@@ -752,7 +752,7 @@
  "@version{#2023-3-5}
   @argument[widget]{a @class{gtk:widget} widget which gives up the grab}
   @short{Removes the grab from the given @arg{widget}.}
-  You have to pair calls to the @fun{gtk:grab-add} and @sym{gtk:grab-remove}
+  You have to pair calls to the @fun{gtk:grab-add} and @fun{gtk:grab-remove}
   functions. If @arg{widget} does not have the grab, this function does nothing.
   @see-class{gtk:widget}
   @see-function{gtk:grab-add}
@@ -802,7 +802,7 @@
     Removes a device grab from the given widget.
   @end{short}
   You have to pair calls to the @fun{gtk:device-grab-add} and
-  @sym{gtk:device-grab-remove} functions.
+  @fun{gtk:device-grab-remove} functions.
   @see-class{gtk:widget}
   @see-class{gdk:device}
   @see-function{gtk:device-grab-add}
@@ -884,13 +884,14 @@
     (g:boxed gdk:event :return)
  #+liber-documentation
  "@version{#2023-3-5}
-  @return{A copy of the current @class{gdk:event} instance, or @code{nil} if
+  @return{The copy of the current @class{gdk:event} instance, or @code{nil} if
     there is no current event.}
   @short{Obtains a copy of the event currently being processed by GTK.}
-  For example, if you are handling a \"clicked\" signal, the current event will
-  be the @class{gdk:event-button} event that triggered the \"clicked\" signal.
+  For example, if you are handling a @code{\"clicked\"} signal, the current
+  event will be the @class{gdk:event-button} event that triggered the
+  @code{\"clicked\"} signal.
   @begin[Example]{dictionary}
-    In this example the @sym{gtk:current-event} function is used in a signal
+    In this example the @fun{gtk:current-event} function is used in a signal
     handler to check for a button press event. This code is part of the GTK
     demo for popovers.
     @begin{pre}
@@ -930,14 +931,14 @@
 (cffi:defcfun ("gtk_get_current_event_time" current-event-time) :uint32
  #+liber-documentation
  "@version{#2023-3-5}
-  @return{An unsigned integer with the timestamp from the current event, or the
-    @var{+gdk-current-time+} value.}
+  @return{The unsigned integer with the timestamp from the current event, or the
+    @var{gdk:+gdk-current-time+} value.}
   @begin{short}
     If there is a current event and it has a timestamp, return that timestamp.
   @end{short}
-  Otherwise return the @var{+gdk-current-time+} value.
+  Otherwise return the @var{gdk:+gdk-current-time+} value.
   @see-function{gtk:current-event}
-  @see-variable{+gdk-current-time+}")
+  @see-variable{gdk:+gdk-current-time+}")
 
 (export 'current-event-time)
 
@@ -975,7 +976,7 @@
     (g:object gdk:device)
  #+liber-documentation
  "@version{#2023-3-5}
-  @return{A @class{gdk:device} object, or @code{nil}.}
+  @return{The @class{gdk:device} object, or @code{nil}.}
   @begin{short}
     If there is a current event and it has a device, return that device,
     otherwise return @code{nil}.
@@ -1024,11 +1025,11 @@
   function. Depending on the type of event, existence of modal dialogs, grabs,
   etc., the event may be propagated, if so, this function is used.
 
-  The @sym{gtk:propagate-event} function calls the @fun{gtk:widget-event}
+  The @fun{gtk:propagate-event} function calls the @fun{gtk:widget-event}
   function on each widget it decides to send the event to. So the
   @fun{gtk:widget-event} function is the lowest level function. It simply emits
   the event and possibly an event specific signal on a widget. The
-  @sym{gtk:propagate-event} function is a bit higher-level, and the
+  @fun{gtk:propagate-event} function is a bit higher-level, and the
   @fun{gtk:main-do-event} function is the highest level.
 
   All that said, you most likely do not want to use any of these functions.

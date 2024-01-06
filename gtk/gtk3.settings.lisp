@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -198,7 +198,7 @@
   (:none 2))
   @end{pre}
   @begin[Warning]{dictionary}
-    The @sym{gtk:im-preedit-style} enumeration has been deprecated since
+    The @symbol{gtk:im-preedit-style} enumeration has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:settings}
@@ -231,7 +231,7 @@
   (:none 2))
   @end{pre}
   @begin[Warning]{dictionary}
-    The @sym{gtk:im-status-style} enumeration has been deprecated since
+    The @symbol{gtk:im-status-style} enumeration has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:settings}
@@ -506,7 +506,7 @@
 (setf (documentation 'settings 'type)
  "@version{2023-3-7}
   @begin{short}
-    The @sym{gtk:settings} object provide a mechanism to share global settings
+    The @class{gtk:settings} object provide a mechanism to share global settings
     between applications.
   @end{short}
   On the X window system, this sharing is realized by an XSettings manager
@@ -520,7 +520,7 @@
 
   Applications can override system-wide settings with the accessor functions
   of the slots. This should be restricted to special cases though. The
-  @sym{gtk:settings} settings are not meant as an application configuration
+  @class{gtk:settings} settings are not meant as an application configuration
   facility. When doing so, you need to be aware that settings that are specific
   to individual widgets may not be available before the widget type has been
   realized at least once. The following example demonstrates a way to do this:
@@ -529,11 +529,11 @@
 (g:type-class-unref (g:type-class-ref \"GtkMenuItem\"))
 (setf (gtk:settings-gtk-menu-images (gtk:settings-default)) t)
   @end{pre}
-  There is one @sym{gtk:settings} object per screen. It can be obtained with
+  There is one @class{gtk:settings} object per screen. It can be obtained with
   the @fun{gtk:settings-for-screen} function, but in many cases, it is more
   convenient to use the @fun{gtk:widget-settings} function. The
-  @fun{gtk:settings-default} function returns the @sym{gtk:settings} object for
-  the default screen.
+  @fun{gtk:settings-default} function returns the @class{gtk:settings} object
+  for the default screen.
   @see-constructor{gtk:settings-default}
   @see-constructor{gtk:settings-for-screen}
   @see-slot{gtk:settings-color-hash}
@@ -813,7 +813,7 @@
   @end{short}
   Whether images should be shown on buttons.
   @begin[Warning]{dictionary}
-    The @sym{gtk:settings-gtk-button-images} function has been deprecated since
+    The @fun{gtk:settings-gtk-button-images} function has been deprecated since
     version 3.10 and should not be used in newly written code. This setting is
     deprecated. Application developers control whether a button should show an
     icon or not, on a per-button basis. If a button should show an icon, use
@@ -1821,7 +1821,7 @@
   @end{short}
   How to draw the input method preedit string.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:settings-gtk-im-preedit-style} has been deprecated
+    The @fun{gtk:settings-gtk-im-preedit-style} function has been deprecated
     since version 3.10 and should not be used in newly written code. This
     setting is ignored.
   @end{dictionary}
@@ -1856,7 +1856,7 @@
   @end{short}
   How to draw the input method statusbar.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:settings-gtk-im-status-style} has been deprecated
+    The @fun{gtk:settings-gtk-im-status-style} function has been deprecated
     since version 3.10 and should not be used in newly written code. This
     setting is ignored.
   @end{dictionary}
@@ -1921,7 +1921,7 @@
   using the cursor keys only. The @kbd{Tab}, @kbd{Shift} etc. keys cannot be
   expected to be present on the used input device.
   @begin[Warning]{dictionary}
-    The @sym{gtk:settings-gtk-keynav-cursor-only} function has been deprecated
+    The @fun{gtk:settings-gtk-keynav-cursor-only} function has been deprecated
     since version 3.10 and should not be used in newly written code. Generally,
     the behavior for touchscreen input should be performed dynamically based on
     the @fun{gdk:event-source-device} function.
@@ -3389,7 +3389,7 @@
  #+liber-documentation
  "@version{2023-3-7}
   @argument[screen]{a @class{gdk:screen} object}
-  @return{A @class{gtk:settings} object.}
+  @return{The @class{gtk:settings} object.}
   @begin{short}
     Gets the @class{gtk:settings} object for @arg{screen}, creating it if
     necessary.

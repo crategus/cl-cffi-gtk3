@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -383,7 +383,7 @@
 ;;; Accessors for GtkBorder
 ;;; ----------------------------------------------------------------------------
 
-;;; --- border-left ------------------------------------------------------------
+;;; --- gtk:border-left --------------------------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'border-left)
@@ -401,7 +401,7 @@
 
 (export 'border-left)
 
-;;; --- border-right -----------------------------------------------------------
+;;; --- gtk:border-right -------------------------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'border-right)
@@ -419,7 +419,7 @@
 
 (export 'border-right)
 
-;;; --- border-top -------------------------------------------------------------
+;;; --- gtk:border-top ---------------------------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'border-top)
@@ -437,7 +437,7 @@
 
 (export 'border-top)
 
-;;; --- border-bottom ----------------------------------------------------------
+;;; --- gtk:border-bottom ------------------------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'border-bottom)
@@ -481,19 +481,19 @@
 (setf (documentation 'style-context 'type)
  "@version{#2023-3-27}
   @begin{short}
-    The @sym{gtk:style-context} object stores styling information affecting a
+    The @class{gtk:style-context} object stores styling information affecting a
     widget defined by a @class{gtk:widget-path} instance.
   @end{short}
 
-  In order to construct the final style information, the @sym{gtk:style-context}
-  object queries information from all attached @class{gtk:style-provider}
-  objects. Style providers can be either attached explicitly to the style
-  context through the @fun{gtk:style-context-add-provider} function, or to the
-  screen through the @fun{gtk:style-context-add-provider-for-screen} function.
-  The resulting style is a combination of all information of the style provider
-  in priority order.
+  In order to construct the final style information, the
+  @class{gtk:style-context} object queries information from all attached
+  @class{gtk:style-provider} objects. Style providers can be either attached
+  explicitly to the style context through the
+  @fun{gtk:style-context-add-provider} function, or to the screen through the
+  @fun{gtk:style-context-add-provider-for-screen} function. The resulting style
+  is a combination of all information of the style provider in priority order.
 
-  For GTK widgets, any @sym{gtk:style-context} object returned by the
+  For GTK widgets, any @class{gtk:style-context} object returned by the
   @fun{gtk:widget-style-context} function will already have a
   @class{gtk:widget-path} instance, a @class{gdk:screen} object and a text
   direction information set. The style context will be also updated
@@ -536,11 +536,11 @@ lambda (context)    :run-first
       @end{pre}
       The signal is emitted when there is a change in the style context. For a
       style context returned by the @fun{gtk:widget-style-context} function,
-      the \"style-updated\" signal of the @class{gtk:widget} class might be
-      more convenient to use. The signal is useful when using the theming layer
-      standalone.
+      the @code{\"style-updated\"} signal of the @class{gtk:widget} class might
+      be more convenient to use. The signal is useful when using the theming
+      layer standalone.
       @begin[code]{table}
-        @entry[context]{The @sym{gtk:style-context} object which received the
+        @entry[context]{The @class{gtk:style-context} object which received the
           signal.}
       @end{table}
   @end{dictionary}
@@ -557,7 +557,7 @@ lambda (context)    :run-first
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- style-context-direction ------------------------------------------------
+;;; --- gtk:style-context-direction --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "direction" 'style-context) t)
@@ -579,15 +579,15 @@ lambda (context)    :run-first
     Accessor of the @slot[gtk:style-context]{direction} slot of the
     @class{gtk:style-context} class.
   @end{short}
-  The @sym{gtk:style-context-direction} function returns the widget direction
-  used for rendering. The @sym{(setf gtk:style-context-direction)} function
-  sets the reading direction.
+  The @fun{gtk:style-context-direction} function returns the widget direction
+  used for rendering. The @setf{gtk:style-context-direction} function sets the
+  reading direction.
 
   If you are using a style context returned from the
   @fun{gtk:widget-style-context} function, you do not need to call this
   yourself.
   @begin[Warning]{dictionary}
-    The @sym{gtk:style-context-direction} function has been deprecated since
+    The @fun{gtk:style-context-direction} function has been deprecated since
     version 3.8 and should not be used in newly written code. Use the
     @fun{gtk:style-context-state} function and check for the @code{:dir-ltr}
     and @code{:dir-rtl} values instead.
@@ -597,7 +597,7 @@ lambda (context)    :run-first
   @see-function{gtk:style-context-state}
   @see-function{gtk:widget-style-context}")
 
-;;; --- style-context-paint-clock ----------------------------------------------
+;;; --- gtk:style-context-paint-clock ------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "paint-clock" 'style-context) t)
@@ -622,7 +622,7 @@ lambda (context)    :run-first
   @see-class{gtk:style-context}
   @see-class{gdk:frame-clock}")
 
-;;; --- style-context-parent ---------------------------------------------------
+;;; --- gtk:style-context-parent -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "parent" 'style-context) t)
@@ -643,9 +643,8 @@ lambda (context)    :run-first
     Accessor of the @slot[gtk:style-context]{parent} slot of the
     @class{gtk:style-context} class.
   @end{short}
-  The @sym{gtk:style-context-parent} function gets the parent style context.
-  The @sym{(setf gtk:style-context-parent)} function sets the parent style
-  context.
+  The @fun{gtk:style-context-parent} function gets the parent style context.
+  The @setf{gtk:style-context-parent} function sets the parent style context.
 
   The parent style context is used to implement inheritance of properties. If
   you are using a style context returned from the @fun{gtk:widget-style-context}
@@ -653,7 +652,7 @@ lambda (context)    :run-first
   @see-class{gtk:style-context}
   @see-function{gtk:widget-style-context}")
 
-;;; --- style-context-screen ---------------------------------------------------
+;;; --- gtk:style-context-screen -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "screen" 'style-context) t)
@@ -673,8 +672,8 @@ lambda (context)    :run-first
     Accessor of the @slot[gtk:style-context]{screen} slot of the
     @class{gtk:style-context} class.
   @end{short}
-  The @sym{gtk:style-context-screen} function returns the screen to which the
-  style context is attached. The @sym{(setf gtk:style-context-screen)} function
+  The @fun{gtk:style-context-screen} function returns the screen to which the
+  style context is attached. The @setf{gtk:style-context-screen} function
   attaches the style context to the given screen.
 
   The screen is used to add style information from 'global' style providers,
@@ -721,7 +720,7 @@ lambda (context)    :run-first
 (cffi:defcfun ("gtk_style_context_add_provider" style-context-add-provider)
     :void
  #+liber-documentation
- "@version{#2023-3-27}
+ "@version{2023-12-30}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[provider]{a @class{gtk:style-provider} object}
   @argument[priority]{an unsigned integer with the priority of the style
@@ -732,8 +731,8 @@ lambda (context)    :run-first
   @end{short}
   The lower the priority of the style provider is, the earlier it will be used
   in the style construction. Typically this will be in the range between the
-  @var{+gtk-priority-fallback+} and
-  @var{+gtk-priority-user+} priorities.
+  @var{gtk:+gtk-priority-fallback+} and @var{gtk:+gtk-priority-user+}
+  priorities.
   @begin[Note]{dictionary}
     If both priorities are the same, a style provider object added through this
     function takes precedence over another added through the
@@ -755,7 +754,7 @@ lambda (context)    :run-first
 (cffi:defcfun ("gtk_style_context_add_provider_for_screen"
                style-context-add-provider-for-screen) :void
  #+liber-documentation
- "@version{#2023-3-27}
+ "@version{2024-1-2}
   @argument[screen]{a @class{gdk:screen} object}
   @argument[provider]{a @class{gtk:style-provider} object}
   @argument[priority]{an unsigned integer with the priority of the style
@@ -830,11 +829,11 @@ lambda (context)    :run-first
   @begin{short}
     Accessor of the junction sides of a style context.
   @end{short}
-  The @sym{gtk:style-context-junction-sides} function returns the sides where
+  The @fun{gtk:style-context-junction-sides} function returns the sides where
   rendered elements, mostly through the @fun{gtk:render-frame} function, will
   visually connect with other visual elements. The
-  @sym{(setf gtk:style-context-junction-sides)} function sets the sides where
-  rendered elements will visually connect with other visual elements.
+  @setf{gtk:style-context-junction-sides} function sets the sides where rendered
+  elements will visually connect with other visual elements.
 
   This is merely a hint that may or may not be honored by theming engines.
 
@@ -871,10 +870,10 @@ lambda (context)    :run-first
   @begin{short}
     Accessor of the widget path of the style context.
   @end{short}
-  The @sym{gtk:style-context-path} function returns the widget path used for
-  style matching. The @sym{(setf gtk:style-context-path)} function sets the
-  widget path. As a consequence, the style will be regenerated to match the new
-  given path.
+  The @fun{gtk:style-context-path} function returns the widget path used for
+  style matching. The @setf{gtk:style-context-path} function sets the widget
+  path. As a consequence, the style will be regenerated to match the new given
+  path.
 
   If you are using a style context returned from the
   @fun{gtk:widget-style-context} function, you do not need to call this
@@ -957,10 +956,10 @@ lambda (context)    :run-first
   @begin{short}
     Accessor of the @class{gdk:frame-clock} object of the style context.
   @end{short}
-  The @sym{gtk:style-context-frame-clock} function returns the frame clock to
+  The @fun{gtk:style-context-frame-clock} function returns the frame clock to
   which the style context is attached. The
-  @sym{(setf gtk:style-context-frame-clock)} function attaches the style context
-  to the given frame clock.
+  @setf{gtk:style-context-frame-clock} function attaches the style context to
+  the given frame clock.
 
   The frame clock is used for the timing of animations. If you are using a
   style context returned from the @fun{gtk:widget-style-context} function, you
@@ -999,9 +998,9 @@ lambda (context)    :run-first
   @begin{short}
     Accessor of the state used when rendering.
   @end{short}
-  The @sym{gtk:style-context-state} function returns the state to be used when
+  The @fun{gtk:style-context-state} function returns the state to be used when
   rendering with any of the @sym{gtk:render-*} functions. The
-  @sym{(setf gtk:style-context-state)} function sets the state.
+  @setf{gtk:style-context-state} function sets the state.
   @see-class{gtk:style-context}
   @see-symbol{gtk:state-flags}"
   (context (g:object style-context)))
@@ -1214,12 +1213,12 @@ lambda (context)    :run-first
   newly written code. CSS has no concept of \"background color\", as a
   background can be an image, or a gradient, or any other pattern including
   solid colors. The only reason why you would call the
-  @sym{gtk:style-context-background-color} function is to use the returned value
+  @fun{gtk:style-context-background-color} function is to use the returned value
   to draw the background with it. The correct way to achieve this result is to
   use the @fun{gtk:render-background} function instead, along with CSS style
   classes to modify the color to be rendered.
   @begin[Warning]{dictionary}
-    The @sym{gtk:style-context-background-color} function has been deprecated
+    The @fun{gtk:style-context-background-color} function has been deprecated
     since version 3.16 and should not be used in newly written code. Use the
     @fun{gtk:render-background} function instead.
   @end{dictionary}
@@ -1254,7 +1253,7 @@ lambda (context)    :run-first
     Gets the border color for a given state.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:style-context-border-color} function has been deprecated since
+    The @fun{gtk:style-context-border-color} function has been deprecated since
     version 3.16 and should not be used in newly written code. Use the
     @fun{gtk:render-frame} function instead.
   @end{dictionary}
@@ -1369,7 +1368,7 @@ lambda (context)    :run-first
     Returns the Pango font description for a given state.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:style-context-font} function has been deprecated since version
+    The @fun{gtk:style-context-font} function has been deprecated since version
     3.8 and should not be used in newly written code. Use the
     @fun{gtk:style-context-property} function for \"font\" or subproperties
     instead.
@@ -1398,7 +1397,7 @@ lambda (context)    :run-first
   @fun{gtk:widget-style-context} function, you do not need to call this
   yourself.
   @begin[Warning]{dictionary}
-    The @sym{gtk:style-context-invalidate} function has been deprecated since
+    The @fun{gtk:style-context-invalidate} function has been deprecated since
     version 3.12 and should not be used in newly written code. Style contexts
     are invalidated automatically.
   @end{dictionary}
@@ -1489,7 +1488,7 @@ lambda (context)    :run-first
     otherwise @code{nil}.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:style-context-lookup-icon-set} function has been deprecated
+    The @fun{gtk:style-context-lookup-icon-set} function has been deprecated
     since version 3.10 and should not be used in newly written code. Use the
     @fun{gtk:icon-theme-lookup-icon} function instead.
   @end{dictionary}
@@ -1531,7 +1530,7 @@ lambda (context)    :run-first
   If @arg{region-id} is @code{NULL}, all rendered elements using the style
   context will be affected by this state transition.
   @begin[Warning]{dictionary}
-    The @sym{gtk:style-context-notify-state-change} function has been deprecated
+    The @fun{gtk:style-context-notify-state-change} function has been deprecated
     since version 3.6 and should not be used in newly written code. This
     function does nothing.
   @end{dictionary}
@@ -1557,7 +1556,7 @@ lambda (context)    :run-first
     Pops an animatable region from the style context.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:style-context-pop-animatable-region} function has been
+    The @fun{gtk:style-context-pop-animatable-region} function has been
     deprecated since version 3.6 and should not be used in newly written code.
     This function does nothing.
   @end{dictionary}
@@ -1587,7 +1586,7 @@ lambda (context)    :run-first
   The @arg{region-id} used must be unique in the style context so the theming
   engine can uniquely identify rendered elements subject to a state transition.
   @begin[Warning]{dictionary}
-    The @sym{gtk:style-context-push-animatable-region} function has been
+    The @fun{gtk:style-context-push-animatable-region} function has been
     deprecated since version 3.6 and should not be used in newly written code.
     This function does nothing.
   @end{dictionary}
@@ -1712,7 +1711,7 @@ lambda (context)    :run-first
 (cffi:defcfun ("gtk_style_context_reset_widgets" style-context-reset-widgets)
     :void
  #+liber-documentation
- "@version{#2023-3-27}
+ "@version{2024-1-3}
   @argument[screen]{a @class{gdk:screen} object}
   @begin{short}
     This function recomputes the styles for all widgets under a particular
@@ -1745,7 +1744,7 @@ lambda (context)    :run-first
     specified in the style context for its current state.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:style-context-set-background} function has been deprecated
+    The @fun{gtk:style-context-set-background} function has been deprecated
     since version 3.18 and should not be used in newly written code. Use the
     @fun{gtk:render-background} function instead. Note that clients still using
     this function are now responsible for calling this function again whenever
@@ -1881,7 +1880,7 @@ GtkEntry.entry { ... @}
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[context]{a @class{gtk:style-context} object}
-  @return{A list of strings with the currently defined classes.}
+  @return{The list of strings with the currently defined classes.}
   @begin{short}
     Returns the list of classes currently defined in the style context.
   @end{short}
@@ -1924,7 +1923,7 @@ GtkEntry.entry { ... @}
     with a lowercase letter.
   @end{dictionary}
   @begin[Warning]{dictionary}
-    The @sym{gtk:style-context-add-region} function has been deprecated since
+    The @fun{gtk:style-context-add-region} function has been deprecated since
     version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:style-context}
@@ -1950,7 +1949,7 @@ GtkEntry.entry { ... @}
     Removes a region from the style context.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:style-context-remove-region} function has been deprecated
+    The @fun{gtk:style-context-remove-region} function has been deprecated
     since version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:style-context}"
@@ -1979,7 +1978,7 @@ GtkEntry.entry { ... @}
     Returns the region flags if the style context has the region defined.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:style-context-has-region} function has been deprecated since
+    The @fun{gtk:style-context-has-region} function has been deprecated since
     version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:style-context}
@@ -2004,7 +2003,7 @@ GtkEntry.entry { ... @}
     Returns the list of regions currently defined in the style context.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:style-context-list-regions} function has been deprecated since
+    The @fun{gtk:style-context-list-regions} function has been deprecated since
     version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:style-context}"
@@ -2034,9 +2033,9 @@ GtkEntry.entry { ... @}
   @begin{short}
     Accessor of the scale used for image assets for the style context.
   @end{short}
-  The @sym{gtk:style-context-scale} function returns the scale used for image
-  assets for the style context. The @sym{(setf gtk:style-context-scale)}
-  function sets the scale.
+  The @fun{gtk:style-context-scale} function returns the scale used for image
+  assets for the style context. The @setf{gtk:style-context-scale} function sets
+  the scale.
   @see-class{gtk:style-context}"
   (context (g:object style-context)))
 
@@ -2052,7 +2051,7 @@ GtkEntry.entry { ... @}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[flags]{a value of the @symbol{gtk:style-context-print-flags} flags
     that determine what to print}
-  @return{A string representing the style context.}
+  @return{The string representing the style context.}
   @begin{short}
     Converts the style context into a string representation.
   @end{short}
@@ -2154,20 +2153,17 @@ GtkEntry.entry { ... @}
 
 (defun render-background (context cr x y width height)
  #+liber-documentation
- "@version{#2023-3-27}
+ "@version{2024-1-2}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[cr]{a @symbol{cairo:context-t} context}
-  @argument[x]{a number, coerced to a double float, with the x origin of the
+  @argument[x]{a number coerced to a double float with the x origin of the
     render area}
-  @argument[y]{a number, coerced to a double float, with the y origin of the
+  @argument[y]{a number coerced to a double float with the y origin of the
     render area}
-  @argument[width]{a number, coerced to a double float, with the rectangle
-    width}
-  @argument[height]{a number, coerced to a double float, with the rectangle
+  @argument[width]{a number coerced to a double float with the rectangle width}
+  @argument[height]{a number coerced to a double float with the rectangle
     height}
-  @begin{short}
-    Renders the background of an element.
-  @end{short}
+  @short{Renders the background of an element.}
   @see-class{gtk:style-context}
   @see-symbol{cairo:context-t}"
   (%render-background context cr (coerce x 'double-float)
@@ -2200,7 +2196,7 @@ GtkEntry.entry { ... @}
   @argument[width]{a number, coerced to a double float, with a rectangle width}
   @argument[height]{a number, coerced to a double float, with a rectangle
     height}
-  @return{A @class{gdk:rectangle} instance.}
+  @return{The @class{gdk:rectangle} instance.}
   @begin{short}
     Returns the area that will be affected, i.e. drawn to, when calling the
     @fun{gtk:render-background} function for the given context and rectangle.
@@ -2397,16 +2393,15 @@ GtkEntry.entry { ... @}
 
 (defun render-frame (context cr x y width height)
  #+liber-documentation
- "@version{#2023-3-27}
+ "@version{2024-1-2}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[cr]{a @symbol{cairo:context-t} context}
-  @argument[x]{a number, coerced to a double float, with the x origin of the
+  @argument[x]{a number coerced to a double float with the x origin of the
     rectangle}
-  @argument[y]{a number, coerced to a double float, with the y origin of the
+  @argument[y]{a number coerced to a double float with the y origin of the
     rectangle}
-  @argument[width]{a number, coerced to a double float, with the rectangle
-    width}
-  @argument[height]{a number, coerced to a double float, with the rectangle
+  @argument[width]{a number coerced to a double float with the rectangle width}
+  @argument[height]{a number coerced to a double float with the rectangle
     height}
   @begin{short}
     Renders a frame around the rectangle defined by @arg{x}, @arg{y},
@@ -2462,7 +2457,7 @@ GtkEntry.entry { ... @}
   and @code{:bottom} gap sides, and y coordinates for @code{:left} and
   @code{:right} gap sides.
   @begin[Warning]{dictionary}
-    The @sym{gtk:render-frame-gap} function has been deprecated since version
+    The @fun{gtk:render-frame-gap} function has been deprecated since version
     3.24 and should not be used in newly written code. Use the
     @fun{gtk:render-frame} function instead. Themes can create gaps by omitting
     borders via CSS.
@@ -2730,7 +2725,7 @@ GtkEntry.entry { ... @}
   @argument[source]{a @class{gtk:icon-source} instance specifying the icon to
     render}
   @argument[size]{a @symbol{gtk:icon-size} size to render the icon at}
-  @return{A newly created @class{gdk-pixbuf:pixbuf} object containing the
+  @return{The newly created @class{gdk-pixbuf:pixbuf} object containing the
     rendered icon.}
   @begin{short}
     Renders the icon specified by @arg{source} at the given @arg{size},
@@ -2738,7 +2733,7 @@ GtkEntry.entry { ... @}
   @end{short}
   A size of -1 means render at the size of the source and do not scale.
   @begin[Warning]{dictionary}
-    The @sym{gtk:render-icon-pixbuf} function has been deprecated since version
+    The @fun{gtk:render-icon-pixbuf} function has been deprecated since version
     3.10 and should not be used in newly written code. Use the
     @fun{gtk:icon-theme-load-icon} function instead.
   @end{dictionary}

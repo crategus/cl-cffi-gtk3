@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -218,7 +218,7 @@
 
 #+liber-documentation
 (setf (documentation 'text-buffer 'type)
- "@version{#2023-3-7}
+ "@version{2024-1-2}
   @begin{short}
     You may wish to begin by reading the text widget conceptual overview which
     gives an overview of all the objects and data types related to the text
@@ -234,7 +234,7 @@ lambda (buffer tag start end)    :run-last
       runs before the default handler it must not invalidate the @arg{start} and
       @arg{end} iterators, or has to revalidate them.
       @begin[code]{table}
-        @entry[buffer]{The @sym{gtk:text-buffer} object which received the
+        @entry[buffer]{The @class{gtk:text-buffer} object which received the
           signal.}
         @entry[tag]{The @class{gtk:text-tag} applied tag.}
         @entry[start]{The @class{gtk:text-iter} start iterator of the range
@@ -249,7 +249,7 @@ lambda (buffer)    :run-last
       The signal is emitted at the beginning of a single user visible operation
       on a text buffer.
       @begin[code]{table}
-        @entry[buffer]{The @sym{gtk:text-buffer} object which received the
+        @entry[buffer]{The @class{gtk:text-buffer} object which received the
           signal.}
       @end{table}
     @subheading{The \"changed\" signal}
@@ -258,7 +258,7 @@ lambda (buffer)    :run-last
       @end{pre}
       The signal is emitted when the content of a text buffer has changed.
       @begin[code]{table}
-        @entry[buffer]{The @sym{gtk:text-buffer} object which received the
+        @entry[buffer]{The @class{gtk:text-buffer} object which received the
           signal.}
       @end{table}
     @subheading{The \"delete-range\" signal}
@@ -272,7 +272,7 @@ lambda (buffer start end)    :run-last
       to both point to the location where text was deleted. Handlers which run
       after the default handler do not have access to the deleted text.
       @begin[code]{table}
-        @entry[buffer]{The @sym{gtk:text-buffer} object which received the
+        @entry[buffer]{The @class{gtk:text-buffer} object which received the
           signal.}
         @entry[start]{The @class{gtk:text-iter} start iterator of the range
           to be deleted.}
@@ -286,7 +286,7 @@ lambda (buffer)    :run-last
       The signal is emitted at the end of a single user visible operation on
       the text buffer.
       @begin[code]{table}
-        @entry[buffer]{The @sym{gtk:text-buffer} object which received the
+        @entry[buffer]{The @class{gtk:text-buffer} object which received the
           signal.}
       @end{table}
     @subheading{The \"insert-child-anchor\" signal}
@@ -300,7 +300,7 @@ lambda (buffer location anchor)    :run-last
       default signal handler revalidates it to be placed after the inserted
       @arg{anchor}.
       @begin[code]{table}
-        @entry[buffer]{The @sym{gtk:text-buffer} object which received the
+        @entry[buffer]{The @class{gtk:text-buffer} object which received the
           signal.}
         @entry[location]{The @class{gtk:text-iter} position to insert
           @arg{anchor} in @arg{buffer}.}
@@ -316,7 +316,7 @@ lambda (buffer location pixbuf)    :run-last
       the @arg{location} iterator, or has to revalidate it. The default signal
       handler revalidates it to be placed after the inserted @arg{pixbuf}.
       @begin[code]{table}
-        @entry[buffer]{The @sym{gtk:text-buffer} object which received the
+        @entry[buffer]{The @class{gtk:text-buffer} object which received the
           signal.}
         @entry[location]{The @class{gtk:text-iter} position to insert
           @arg{pixbuf} in @arg{buffer}.}
@@ -332,7 +332,7 @@ lambda (buffer location text len)    :run-last
       to revalidate it. The default signal handler revalidates it to point to
       the end of the inserted text.
       @begin[code]{table}
-        @entry[buffer]{The @sym{gtk:text-buffer} object which received the
+        @entry[buffer]{The @class{gtk:text-buffer} object which received the
           signal.}
         @entry[location]{The @class{gtk:text-iter} position to insert @arg{text}
           in @arg{buffer}.}
@@ -346,7 +346,7 @@ lambda (buffer mark)    :run-last
       The signal is emitted as notification after a @class{gtk:text-mark}
       object is deleted.
       @begin[code]{table}
-        @entry[buffer]{The @sym{gtk:text-buffer} object which received the
+        @entry[buffer]{The @class{gtk:text-buffer} object which received the
           signal.}
         @entry[mark]{The @class{gtk:text-mark} object that was deleted.}
       @end{table}
@@ -357,7 +357,7 @@ lambda (buffer location mark)    :run-last
       The signal is emitted as notification after a @class{gtk:text-mark}
       object is set.
       @begin[code]{table}
-        @entry[buffer]{The @sym{gtk:text-buffer} object which received the
+        @entry[buffer]{The @class{gtk:text-buffer} object which received the
           signal.}
         @entry[location]{The @class{gtk:text-iter} location of @arg{mark} in
           @arg{buffer}.}
@@ -369,7 +369,7 @@ lambda (buffer)    :run-last
       @end{pre}
       The signal is emitted when the modified bit of a text buffer flips.
       @begin[code]{table}
-        @entry[buffer]{The @sym{gtk:text-buffer} object which received the
+        @entry[buffer]{The @class{gtk:text-buffer} object which received the
           signal.}
       @end{table}
     @subheading{The \"paste-done\" signal}
@@ -379,7 +379,7 @@ lambda (buffer clipboard)    :run-last
       The signal is emitted after paste operation has been completed. This is
       useful to properly scroll the view to the end of the pasted text.
       @begin[code]{table}
-        @entry[buffer]{The @sym{gtk:text-buffer} object which received the
+        @entry[buffer]{The @class{gtk:text-buffer} object which received the
           signal.}
         @entry[clipboard]{The @class{gtk:clipboard} object.}
       @end{table}
@@ -393,7 +393,7 @@ lambda (buffer tag start end)    :run-last
       invalidate the @arg{start} and @arg{end} iterators, or has to revalidate
       them.
       @begin[code]{table}
-        @entry[buffer]{The @sym{gtk:text-buffer} object which received the
+        @entry[buffer]{The @class{gtk:text-buffer} object which received the
           signal.}
         @entry[tag]{The @class{gtk:text-tag} object to be removed.}
         @entry[start]{The @class{gtk:text-iter} start iterator of the range
@@ -420,7 +420,7 @@ lambda (buffer tag start end)    :run-last
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- text-buffer-copy-target-list -------------------------------------------
+;;; --- gtk:text-buffer-copy-target-list ---------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "copy-target-list"
@@ -453,7 +453,7 @@ lambda (buffer tag start end)    :run-last
   @see-function{gtk:target-list-add-text-targets}
   @see-function{gtk:target-list-add-rich-text-targets}")
 
-;;; --- text-buffer-cursor-position --------------------------------------------
+;;; --- gtk:text-buffer-cursor-position ----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "cursor-position"
@@ -480,7 +480,7 @@ lambda (buffer tag start end)    :run-last
   buffer. It is useful for getting notified when the cursor moves.
   @see-class{gtk:text-buffer}")
 
-;;; --- text-buffer-has-selection ----------------------------------------------
+;;; --- gtk:text-buffer-has-selection ------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "has-selection"
@@ -504,7 +504,7 @@ lambda (buffer tag start end)    :run-last
   Indicates whether the text buffer has some text currently selected.
   @see-class{gtk:text-buffer}")
 
-;;; --- text-buffer-paste-target-list ------------------------------------------
+;;; --- gtk:text-buffer-paste-target-list --------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "paste-target-list"
@@ -537,7 +537,7 @@ lambda (buffer tag start end)    :run-last
   @see-function{gtk:target-list-add-targets}
   @see-function{gtk:target-list-add-rich-text-targets}")
 
-;;; --- text-buffer-tag-table --------------------------------------------------
+;;; --- gtk:text-buffer-tag-table ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "tag-table" 'text-buffer) t)
@@ -549,7 +549,7 @@ lambda (buffer tag start end)    :run-last
 (setf (liber:alias-for-function 'text-buffer-tag-table)
       "Accessor"
       (documentation 'text-buffer-tag-table 'function)
- "@version{#2023-3-7}
+ "@version{2024-1-2}
   @syntax[]{(gtk:text-buffer-tag-table object) => table}
   @argument[object]{a @class{gtk:text-buffer} object}
   @argument[table]{a @class{gtk:text-tag-table} object}
@@ -561,7 +561,7 @@ lambda (buffer tag start end)    :run-last
   @see-class{gtk:text-buffer}
   @see-class{gtk:text-tag-table}")
 
-;;; --- text-buffer-text -------------------------------------------------------
+;;; --- gtk:text-buffer-text ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "text" 'text-buffer) t)
@@ -573,7 +573,7 @@ lambda (buffer tag start end)    :run-last
 (setf (liber:alias-for-function 'text-buffer-text)
       "Accessor"
       (documentation 'text-buffer-text 'function)
- "@version{#2023-3-7}
+ "@version{2024-1-1}
   @syntax[]{(gtk:text-buffer-text object) => text}
   @syntax[]{(setf (gtk:text-buffer-text object) text)}
   @argument[object]{a @class{gtk:text-buffer} object}
@@ -582,10 +582,10 @@ lambda (buffer tag start end)    :run-last
     Accessor of the @slot[gtk:text-buffer]{text} slot of the
     @class{gtk:text-buffer} class.
   @end{short}
-  The @sym{gtk:text-buffer} function retrieves the text of the text buffer,
-  without child widgets and images. The @sym{(setf gtk:text-buffer-text)}
-  function deletes current contents of the text buffer, and inserts @arg{text}
-  instead. The text must be valid UTF-8.
+  The @fun{gtk:text-buffer} function retrieves the text of the text buffer,
+  without child widgets and images. The @setf{gtk:text-buffer-text} function
+  deletes current contents of the text buffer, and inserts @arg{text} instead.
+  The text must be valid UTF-8.
   @begin[Note]{dictionary}
     Use the @fun{gtk:text-buffer-get-text} function to retrieve a range of text
     from the text buffer and the @fun{gtk:text-buffer-get-slice} function to
@@ -606,7 +606,7 @@ lambda (buffer tag start end)    :run-last
  "@version{#2023-3-7}
   @argument[table]{an optional @class{gtk:text-tag-table} object, or no
     argument to create a new one}
-  @return{A new @class{gtk:text-buffer} object.}
+  @return{The new @class{gtk:text-buffer} object.}
   @begin{short}
     Creates a new text buffer.
   @end{short}
@@ -625,7 +625,7 @@ lambda (buffer tag start end)    :run-last
  #+liber-documentation
  "@version{#2023-3-7}
   @argument[buffer]{a @class{gtk:text-buffer} object}
-  @return{An integer with the number of lines in the text buffer.}
+  @return{The integer with the number of lines in the text buffer.}
   @begin{short}
     Obtains the number of lines in the text buffer.
   @end{short}
@@ -644,7 +644,7 @@ lambda (buffer tag start end)    :run-last
  #+liber-documentation
  "@version{#2023-3-7}
   @argument[buffer]{a @class{gtk:text-buffer} object}
-  @return{An integer with the number of characters in the text buffer.}
+  @return{The integer with the number of characters in the text buffer.}
   @begin{short}
     Gets the number of characters in the text buffer.
   @end{short}
@@ -684,7 +684,7 @@ lambda (buffer tag start end)    :run-last
     interaction, the default value is @em{false}}
   @argument[editable]{a boolean whether @arg{buffer} is editable by default,
     the default value is @em{true}}
-  @return{A boolean whether the text was actually inserted.}
+  @return{The boolean whether the text was actually inserted.}
   @begin{short}
     Inserts text in the text buffer.
   @end{short}
@@ -702,18 +702,18 @@ lambda (buffer tag start end)    :run-last
   does not have a tag affecting editability applied to it. Typically the result
   of the @fun{gtk:text-view-editable} function is appropriate here.
 
-  Emits the \"insert-text\" signal. Insertion actually occurs in the default
-  handler for the signal. The iterator is invalidated when insertion occurs,
-  because the text buffer contents change, but the default signal handler
-  revalidates it to point to the end of the inserted text.
+  Emits the @code{\"insert-text\"} signal. Insertion actually occurs in the
+  default handler for the signal. The iterator is invalidated when insertion
+  occurs, because the text buffer contents change, but the default signal
+  handler revalidates it to point to the end of the inserted text.
   @begin[Note]{dictionary}
-    The @sym{gtk:text-buffer-insert} function combines the
+    The @fun{gtk:text-buffer-insert} function combines the
     @code{gtk_text_buffer_insert()}, @code{gtk_text_buffer_insert_at_cursor()},
     @code{gtk_text_buffer_insert_interactive()}, and
     @code{gtk_text_buffer_insert_interactive_at_cursor()} functions into one
     function using the @arg{position}, @arg{interactive}, and @arg{editable}
     keyword arguments. The corresponding Lisp functions except for
-    @sym{gtk:text-buffer-insert} are not exported in the Lisp implementation.
+    @fun{gtk:text-buffer-insert} are not exported in the Lisp implementation.
   @end{dictionary}
   @see-class{gtk:text-buffer}
   @see-class{gtk:text-iter}
@@ -781,7 +781,7 @@ lambda (buffer tag start end)    :run-last
     buffer}
   @argument[text]{a string with the UTF-8 text}
   @argument[editable]{a boolean whether @arg{buffer} is editable by default}
-  @return{A boolean whether the text was actually inserted.}
+  @return{The boolean whether the text was actually inserted.}
   @begin{short}
     Like the @fun{gtk:text-buffer-insert} function, but the insertion will not
     occur if the iterator is at a non-editable location in the text buffer.
@@ -815,7 +815,7 @@ lambda (buffer tag start end)    :run-last
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[text]{a string with the text in UTF-8 format}
   @argument[editable]{a boolean whether @arg{buffer} is editable by default}
-  @return{A boolean whether the text was actually inserted.}
+  @return{The boolean whether the text was actually inserted.}
   @begin{short}
     Calls the @fun{gtk:text-buffer-insert-interactive} function at the cursor
     position.
@@ -855,7 +855,7 @@ lambda (buffer tag start end)    :run-last
   @argument[interactive]{a boolean whether the deletion is caused by user
     interaction}
   @argument[editable]{a boolean whether @arg{buffer} is editable by default}
-  @return{A boolean whether an insertion was possible.}
+  @return{The boolean whether an insertion was possible.}
   @begin{short}
     Copies text, tags, and pixbufs between the @arg{start} and @arg{end}
     iterators, the order of @arg{start} and @arg{end} does not matter, and
@@ -871,8 +871,8 @@ lambda (buffer tag start end)    :run-last
   iterator if no tags enclosing the iterator affect editability. Typically the
   result of the @fun{gtk:text-view-editable} function is appropriate here.
 
-  Implemented via emissions of the \"insert-text\" and \"apply-tag\" signals,
-  so expect those.
+  Implemented via emissions of the @code{\"insert-text\"} and
+  @code{\"apply-tag\"} signals, so expect those.
   @begin[Note]{dictionary}
     The Lisp implementation combines the two
     @code{gtk_text_buffer_insert_range()} and
@@ -910,7 +910,7 @@ lambda (buffer tag start end)    :run-last
   @argument[end]{a @class{gtk:text-iter} iterator with another position in the
     same buffer as @arg{start}}
   @argument[editable]{a boolean whether @arg{buffer} is editable by default}
-  @return{A boolean whether an insertion was possible at the iterator.}
+  @return{The boolean whether an insertion was possible at the iterator.}
   @begin{short}
     Same as the @fun{gtk:text-buffer-insert-range} function, but does nothing
     if the insertion point is not editable.
@@ -919,7 +919,7 @@ lambda (buffer tag start end)    :run-last
   iterator if no tags enclosing the iterator affect editability. Typically the
   result of the @fun{gtk:text-view-editable} function is appropriate here.
   @begin[Note]{dictionary}
-    The @sym{gtk:text-buffer-insert-range-interactive} function is called from
+    The @fun{gtk:text-buffer-insert-range-interactive} function is called from
     the @fun{gtk:text-buffer-insert-range} function.
   @end{dictionary}
   @see-class{gtk:text-buffer}
@@ -950,7 +950,7 @@ lambda (buffer tag start end)    :run-last
   @end{short}
   Equivalent to calling the @fun{gtk:text-buffer-insert} function, then the
   @fun{gtk:text-buffer-apply-tag} function on the inserted text. The
-  @sym{gtk:text-buffer-insert-with-tags} function is just a convenience
+  @fun{gtk:text-buffer-insert-with-tags} function is just a convenience
   function.
   @begin[Note]{dictionary}
     The Lisp implementation does not call the
@@ -1029,9 +1029,9 @@ lambda (buffer tag start end)    :run-last
     Inserts the text in @arg{markup} at the position of the iterator.
   @end{short}
   The text in @arg{markup} will be inserted in its entirety and must be valid
-  UTF-8. Emits the \"insert-text\" signal, possibly multiple times. Insertion
-  actually occurs in the default handler for the signal. The iterator will
-  point to the end of the inserted text on return.
+  UTF-8. Emits the @code{\"insert-text\"} signal, possibly multiple times.
+  Insertion actually occurs in the default handler for the signal. The iterator
+  will point to the end of the inserted text on return.
   @see-class{gtk:text-buffer}
   @see-class{gtk:text-iter}"
   (%text-buffer-insert-markup buffer iter markup -1))
@@ -1060,17 +1060,17 @@ lambda (buffer tag start end)    :run-last
   @argument[interactive]{a boolean whether the deletion is caused by user
     interaction}
   @argument[editable]{a boolean whether the text buffer is editable by default}
-  @return{A boolean whether some text was actually deleted.}
+  @return{The boolean whether some text was actually deleted.}
   @begin{short}
     Deletes text between the @arg{start} and @arg{end} iterators.
   @end{short}
   The order of the @arg{start} and @arg{end} iterators is not actually relevant.
-  The @sym{gtk:text-buffer-delete} function will reorder them. This function
-  actually emits the \"delete-range\" signal, and the default handler of that
-  signal deletes the text. Because the text buffer is modified, all outstanding
-  iterators become invalid after calling this function. However, the @arg{start}
-  and @arg{end} interators will be re-initialized to point to the location where
-  text was deleted.
+  The @fun{gtk:text-buffer-delete} function will reorder them. This function
+  actually emits the @code{\"delete-range\"} signal, and the default handler of
+  that signal deletes the text. Because the text buffer is modified, all
+  outstanding iterators become invalid after calling this function. However,
+  the @arg{start} and @arg{end} interators will be re-initialized to point to
+  the location where text was deleted.
 
   If the @arg{interactive} keyword argument is @em{true} deletes all editable
   text for each editable sub range of [@arg{start}, @arg{end}). The @arg{start}
@@ -1102,7 +1102,7 @@ lambda (buffer tag start end)    :run-last
   @argument[start]{a @class{gtk:text-iter} start of range to delete}
   @argument[end]{a @class{gtk:text-iter} end of range}
   @argument[editable]{a boolean whether @arg{buffer} is editable by default}
-  @return{A boolean whether some text was actually deleted.}
+  @return{The boolean whether some text was actually deleted.}
   @begin{short}
     Deletes all editable text in the given range.
   @end{short}
@@ -1171,12 +1171,12 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-get-text (buffer start end &optional include)
  #+liber-documentation
- "@version{#2023-3-7}
+ "@version{2024-1-2}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[start]{a @class{gtk:text-iter} start iterator of a range}
   @argument[end]{a @class{gtk:text-iter} end iterator of a range}
   @argument[include]{a boolean whether to include invisible text}
-  @return{An allocated UTF-8 string.}
+  @return{The allocated UTF-8 string.}
   @begin{short}
     Returns the text in the range [@arg{start}, @arg{end}).
   @end{short}
@@ -1211,7 +1211,7 @@ lambda (buffer tag start end)    :run-last
   @argument[start]{a @class{gtk:text-iter} start of a range}
   @argument[end]{a @class{gtk:text-iter} end of a range}
   @argument[include]{a boolean whether to include invisible text}
-  @return{An allocated UTF-8 string.}
+  @return{The allocated UTF-8 string.}
   @begin{short}
     Returns the text in the range [@arg{start}, @arg{end}).
   @end{short}
@@ -1276,7 +1276,7 @@ lambda (buffer tag start end)    :run-last
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[iter]{a @class{gtk:text-iter} location to insert the anchor}
   @argument[anchor]{an optional @class{gtk:text-child-anchor} object}
-  @return{A @class{gtk:text-child-anchor} child widget anchor.}
+  @return{The @class{gtk:text-child-anchor} child widget anchor.}
   @begin{short}
     Inserts a child widget anchor into the text buffer at @arg{iter}.
   @end{short}
@@ -1369,8 +1369,8 @@ lambda (buffer tag start end)    :run-last
   @class{gtk:text-mark} object, so you can ignore the return value if you like.
   Marks are owned by the text buffer and go away when the text buffer does.
 
-  Emits the \"mark-set\" signal as notification of the initial placement of
-  the mark.
+  Emits the @code{\"mark-set\"} signal as notification of the initial placement
+  of the mark.
   @see-class{gtk:text-buffer}
   @see-class{gtk:text-iter}
   @see-class{gtk:text-mark}
@@ -1399,7 +1399,7 @@ lambda (buffer tag start end)    :run-last
   @begin{short}
     Moves the mark to the new location @arg{pos}.
   @end{short}
-  Emits the \"mark-set\" signal as notification of the move.
+  Emits the @code{\"mark-set\"} signal as notification of the move.
   @see-class{gtk:text-buffer}
   @see-class{gtk:text-iter}
   @see-class{gtk:text-mark}"
@@ -1448,8 +1448,8 @@ lambda (buffer tag start end)    :run-last
   @code{nil} then there must not be another mark in the text buffer with the
   same name.
 
-  Emits the \"mark-set\" signal as notification of the initial placement of
-  the mark.
+  Emits the @code{\"mark-set\"} signal as notification of the initial placement
+  of the mark.
   @see-class{gtk:text-buffer}
   @see-class{gtk:text-mark}
   @see-class{gtk:text-iter}"
@@ -1481,8 +1481,8 @@ lambda (buffer tag start end)    :run-last
   the mark become invalid, until it gets added to a text buffer again with the
   @fun{gtk:text-buffer-add-mark} function. Use the @fun{gtk:text-mark-deleted}
   function to find out if a mark has been removed from its text buffer. The
-  \"mark-deleted\" signal will be emitted as notification after the mark is
-  deleted.
+  @code{\"mark-deleted\"} signal will be emitted as notification after the mark
+  is deleted.
   @begin[Note]{dictionary}
     The @code{gtk_text_buffer_delete_mark_by_name} function is included in
     this function and not exported in the Lisp library.
@@ -1527,7 +1527,7 @@ lambda (buffer tag start end)    :run-last
  "@version{#2023-3-7}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[name]{a string with a mark name}
-  @return{A @class{gtk:text-mark} object, or @code{nil}.}
+  @return{The @class{gtk:text-mark} object, or @code{nil}.}
   @begin{short}
     Returns the mark named @arg{name} in the text buffer, or @code{nil} if
     no such mark exists in the text buffer.
@@ -1551,7 +1551,7 @@ lambda (buffer tag start end)    :run-last
  #+liber-documentation
  "@version{#2023-3-7}
   @argument[buffer]{a @class{gtk:text-buffer} object}
-  @return{A @class{gtk:text-mark} insertion point mark.}
+  @return{The @class{gtk:text-mark} insertion point mark.}
   @begin{short}
     Returns the mark that represents the cursor (insertion point).
   @end{short}
@@ -1663,7 +1663,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-apply-tag (buffer tag start end)
  #+liber-documentation
- "@version{#2023-3-7}
+ "@version{2024-1-1}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[tag]{a @class{gtk:text-tag} object, or a string with the tag name}
   @argument[start]{a @class{gtk:text-iter} iterator with the start bound of
@@ -1671,7 +1671,7 @@ lambda (buffer tag start end)    :run-last
   @argument[end]{a @class{gtk:text-iter} iterator with the end bound of the
     range to be tagged}
   @begin{short}
-    Emits the \"apply-tag\" signal on the text buffer.
+    Emits the @code{\"apply-tag\"} signal on the text buffer.
   @end{short}
   The default handler for the signal applies @arg{tag} to the given range.
   The @arg{start} and @arg{end} iterators do not have to be in order.
@@ -1699,9 +1699,9 @@ lambda (buffer tag start end)    :run-last
   @argument[end]{a @class{gtk:text-iter} iterator with the end bound of the
     range to be tagged}
   @begin{short}
-    Calls the function @fun{gtk:text-tag-table-lookup} on the text buffer's tag
-    table to get a @class{gtk:text-tag} object, then calls the function
-    @fun{gtk:text-buffer-apply-tag}.
+    Calls the @fun{gtk:text-tag-table-lookup} function on the tag table of the
+    text buffer to get a @class{gtk:text-tag} object, then calls the
+    @fun{gtk:text-buffer-apply-tag} function.
   @end{short}
   @see-class{gtk:text-buffer}
   @see-class{gtk:text-tag}
@@ -1733,7 +1733,7 @@ lambda (buffer tag start end)    :run-last
   @argument[end]{a @class{gtk:text-iter} iterator with the end bound of the
     range to be untagged}
   @begin{short}
-    Emits the \"remove-tag\" signal.
+    Emits the @code{\"remove-tag\"} signal.
   @end{short}
   The default handler for the signal removes all occurrences of @arg{tag} from
   the given range. The @arg{start} and @arg{end} iterators do not have to be in
@@ -1762,9 +1762,9 @@ lambda (buffer tag start end)    :run-last
   @argument[end]{a @class{gtk:text-iter} iterator with other bound of range
     to be untagged}
   @begin{short}
-    Calls the function @fun{gtk:text-tag-table-lookup} on the text buffer's tag
-    table to get a @class{gtk:text-tag} object, then calls the function
-    @fun{gtk:text-buffer-remove-tag}.
+    Calls the @fun{gtk:text-tag-table-lookup} function on the tag table of the
+    text buffer to get a @class{gtk:text-tag} object, then calls the
+    @fun{gtk:text-buffer-remove-tag} function.
   @end{short}
   @see-class{gtk:text-buffer}
   @see-class{gtk:text-tag}
@@ -1783,7 +1783,7 @@ lambda (buffer tag start end)    :run-last
 (cffi:defcfun ("gtk_text_buffer_remove_all_tags" text-buffer-remove-all-tags)
     :void
  #+liber-documentation
- "@version{#2023-3-7}
+ "@version{2024-1-2}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[start]{a @class{gtk:text-iter} iterator with the start bound of the
     range to be untagged}
@@ -1811,7 +1811,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-create-tag (buffer name &rest args)
  #+liber-documentation
- "@version{#2023-3-7}
+ "@version{2024-1-1}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[name]{a string with the name of the new tag, or @code{nil}}
   @argument[args]{list of property keywords and values}
@@ -1864,7 +1864,7 @@ lambda (buffer tag start end)    :run-last
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[line]{an integer with the line number counting from 0}
   @argument[offset]{an integer with the char offset from the start of the line}
-  @return{A @class{gtk:text-iter} iterator.}
+  @return{The @class{gtk:text-iter} iterator.}
   @begin{short}
     Obtains an iterator pointing to @arg{offset} within the given line.
   @end{short}
@@ -1897,7 +1897,7 @@ lambda (buffer tag start end)    :run-last
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[offset]{an integer with the char offset from the start of the text
     buffer, counting from 0, or -1}
-  @return{A @class{gtk:text-iter} iterator.}
+  @return{The @class{gtk:text-iter} iterator.}
   @begin{short}
     Initializes the returned iterator to a position @arg{offset} chars from the
     start of the entire text buffer.
@@ -1928,7 +1928,7 @@ lambda (buffer tag start end)    :run-last
  "@version{#2023-3-7}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[line]{an integer with the line number counting from 0}
-  @return{A @class{gtk:text-iter} iterator.}
+  @return{The @class{gtk:text-iter} iterator.}
   @begin{short}
     Initializes the returned iterator to the start of the given line.
   @end{short}
@@ -1954,11 +1954,11 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-iter-at-line-index (buffer line index)
  #+liber-documentation
- "@version{#2023-3-7}
+ "@version{2024-1-2}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[line]{an integer with the line number counting from 0}
   @argument[index]{an integer with the byte index from the start of the line}
-  @return{A @class{gtk:text-iter} iterator.}
+  @return{The @class{gtk:text-iter} iterator.}
   @begin{short}
     Obtains an iterator pointing to @arg{index} within the given line.
   @end{short}
@@ -1992,7 +1992,7 @@ lambda (buffer tag start end)    :run-last
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[mark]{a @class{gtk:text-mark} object, or a string with the mark
     name in the text buffer}
-  @return{A @class{gtk:text-iter} interator.}
+  @return{The @class{gtk:text-iter} interator.}
   @begin{short}
     Returns the iterator with the current position of @arg{mark}.
   @end{short}
@@ -2022,7 +2022,7 @@ lambda (buffer tag start end)    :run-last
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[anchor]{a @class{gtk:text-child-anchor} anchor that appears in text
     buffer}
-  @return{A @class{gtk:text-iter} iterator.}
+  @return{The @class{gtk:text-iter} iterator.}
   @begin{short}
     Obtains the location of @arg{anchor} within the text buffer.
   @end{short}
@@ -2045,9 +2045,9 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-start-iter (buffer)
  #+liber-documentation
- "@version{#2023-3-7}
+ "@version{2024-1-1}
   @argument[buffer]{a @class{gtk:text-buffer} object}
-  @return{A @class{gtk:text-iter} iterator.}
+  @return{The @class{gtk:text-iter} iterator.}
   @begin{short}
     Returns an iterator with the first position in the text buffer.
   @end{short}
@@ -2072,9 +2072,9 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-end-iter (buffer)
  #+liber-documentation
- "@version{#2023-3-7}
+ "@version{2024-1-2}
   @argument[buffer]{a @class{gtk:text-buffer} object}
-  @return{A @class{gtk:text-iter} iterator.}
+  @return{The @class{gtk:text-iter} iterator.}
   @begin{short}
     Returns an iterator with the \"end iterator\", one past the last valid
     character in the text buffer.
@@ -2146,16 +2146,16 @@ lambda (buffer tag start end)    :run-last
   @begin{short}
     Returns @em{true} if the text buffer has been modified.
   @end{short}
-  The @sym{gtk:text-buffer-modified} function indicates whether the text buffer
+  The @fun{gtk:text-buffer-modified} function indicates whether the text buffer
   has been modified since the last call to the
-  @sym{(setf gtk:text-buffer-modified)} function.
+  @setf{gtk:text-buffer-modified} function.
 
   Used to keep track of whether the text buffer has been modified since the
   last time it was saved. Whenever the text buffer is saved to disk, call the
-  @sym{(setf gtk:text-buffer-modified)} function with the @em{false} value.
-  When the text buffer is modified, it will automatically toggle on the
-  modified bit again. When the modified bit flips, the text buffer emits a
-  \"modified-changed\" signal.
+  @setf{gtk:text-buffer-modified} function with the @em{false} value. When the
+  text buffer is modified, it will automatically toggle on the modified bit
+  again. When the modified bit flips, the text buffer emits a
+  @code{\"modified-changed\"} signal.
   @see-class{gtk:text-buffer}"
   (buffer (g:object text-buffer)))
 
@@ -2178,7 +2178,7 @@ lambda (buffer tag start end)    :run-last
   @argument[interactive]{a boolean whether the deletion is caused by user
     interaction}
   @argument[editable]{a boolean whether the text buffer is editable by default}
-  @return{A boolean whether there was a non-empty selection to delete.}
+  @return{The boolean whether there was a non-empty selection to delete.}
   @begin{short}
     Deletes the range between the \"insert\" and \"selection_bound\" marks,
     that is, the currently selected text.
@@ -2329,14 +2329,14 @@ lambda (buffer tag start end)    :run-last
     to the @fun{gtk:text-buffer-end-user-action} function are part of a single
     user visible operation.
   @end{short}
-  The operations between the @sym{gtk:text-buffer-begin-user-action} and
+  The operations between the @fun{gtk:text-buffer-begin-user-action} and
   @fun{gtk:text-buffer-end-user-action} functions can then be grouped when
   creating an undo stack. The text buffer maintains a count of calls to the
-  @sym{gtk:text-buffer-begin-user-action} function that have not been closed
+  @fun{gtk:text-buffer-begin-user-action} function that have not been closed
   with a call to the @fun{gtk:text-buffer-end-user-action} function, and emits
-  the \"begin-user-action\" and \"end-user-action\" signals only for the
-  outermost pair of calls. This allows you to build user actions from other
-  user actions.
+  the @code{\"begin-user-action\"} and @code{\"end-user-action\"} signals only
+  for the outermost pair of calls. This allows you to build user actions from
+  other user actions.
 
   The \"interactive\" text buffer mutation functions automatically call
   begin/end user action around the text buffer operations they perform, so there
@@ -2592,7 +2592,7 @@ lambda (buffer content iter data len create)
  #+liber-documentation
  "@version{#2023-3-7}
   @argument[buffer]{a @class{gtk:text-buffer} object}
-  @return{A list of @symbol{gdk:atom} as strings representing the registered
+  @return{The list of @symbol{gdk:atom} as strings representing the registered
     formats.}
   @begin{short}
     This function returns the rich text deserialize formats registered with the
@@ -2624,7 +2624,7 @@ lambda (buffer content iter data len create)
  #+liber-documentation
  "@version{#2023-3-7}
   @argument[buffer]{a @class{gtk:text-buffer} object}
-  @return{A list of @symbol{gdk:atom} as strings representing the registered
+  @return{The list of @symbol{gdk:atom} as strings representing the registered
     formats.}
   @begin{short}
     This function returns the rich text serialize formats registered with
@@ -2863,7 +2863,7 @@ lambda (buffer content start end)
     to serialize}
   @argument[end]{a @class{gtk:text-iter} end iterator of the block of text to
     serialize}
-  @return{A list with the serialized data, encoded as @arg{format}.}
+  @return{The list with the serialized data, encoded as @arg{format}.}
   @begin{short}
     This function serializes the portion of text between the @arg{start} and
     @arg{end} iterator in the rich text format represented by @arg{format}.

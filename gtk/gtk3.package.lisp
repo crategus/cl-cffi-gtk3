@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -1224,7 +1224,7 @@
     A simple usage of the @class{gtk:text-view} widget might look like this:
     @begin{pre}
 (defun example-text-view-simple ()
-  (within-main-loop
+  (gtk:within-main-loop
     (let* ((window (make-instance 'gtk:window
                                   :type :toplevel
                                   :title \"Example Simple Text View\"
@@ -1242,7 +1242,7 @@
                                                end
                                                include-hidden-chars))
               (terpri)
-              (leave-gtk-main))))
+              (gtk:leave-gtk-main))))
       (setf (gtk:text-buffer-text buffer) \"Some text for the text view.\")
       (gtk:container-add window view)
       (gtk:widget-show-all window))))
@@ -1260,7 +1260,7 @@
     use CSS to override their default values.
     @begin{pre}
 (defun example-text-view-attributes ()
-  (within-main-loop
+  (gtk:within-main-loop
     (let* ((window (make-instance 'gtk:window
                                   :type :toplevel
                                   :title \"Example Text View Attributes\"
@@ -1271,7 +1271,7 @@
       (g:signal-connect window \"destroy\"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (setf (gtk:text-buffer-text buffer) \"Hello, this is some text.\")
       ;; Change default font and color throughout the widget
       (gtk:css-provider-load-from-data provider
@@ -1809,7 +1809,7 @@ gtk_tree_view_append_column (GTK_TREE_VIEW (tree), column);
     @subheading{Selection handling}
       Most applications will need to not only deal with displaying data, but
       also receiving input events from users. To do this, simply get a reference
-      to a selection object and connect to the \"changed\" signal.
+      to a selection object and connect to the @code{\"changed\"} signal.
       @begin{pre}
 /* Prototype for selection handler callback */
 static void tree_selection_changed_cb (GtkTreeSelection *selection, gpointer data);
@@ -4266,7 +4266,7 @@ setup_tree (void)
       In the C library the main loop is executed with the @code{gtk_main()}
       function. In the Lisp binding this function is implemented as
       the @fun{gtk:main} function, but in general it is not used. The
-      @code{gtk_main()} function is replaced with the @fun{within-main-loop}
+      @code{gtk_main()} function is replaced with the @fun{gtk:within-main-loop}
       macro, which does all necessary work to run the main loop. See the
       example for a typical main function in the Lisp binding.
 
@@ -4284,7 +4284,7 @@ setup_tree (void)
       @b{Example:} Typical main function in Lisp for a GTK application.
       @begin{pre}
 (defun main ()
-  (within-main-loop
+  (gtk:within-main-loop
     (let (;; Create the main window.
           (window (gtk:window-new :toplevel)))
       ;; Set up the GUI elements

@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -86,9 +86,9 @@
 
 #+liber-documentation
 (setf (documentation 'radio-tool-button 'type)
- "@version{#2021-12-1}
+ "@version{2024-1-2}
   @begin{short}
-    The @sym{gtk:radio-tool-button} widget is a @class{gtk:tool-item} that
+    The @class{gtk:radio-tool-button} widget is a @class{gtk:tool-item} that
     contains a radio button, that is, a button that is part of a group of toggle
     buttons where only one button can be active at a time.
   @end{short}
@@ -98,7 +98,7 @@
   a new radio tool button that is part of the same group as an existing radio
   tool button.
   @begin[CSS nodes]{dictionary}
-    The @sym{gtk:radio-tool-button} implementation has a single CSS node with
+    The @class{gtk:radio-tool-button} implementation has a single CSS node with
     name @code{toolbutton}.
   @end{dictionary}
   @see-constructor{gtk:radio-tool-button-new}
@@ -168,7 +168,7 @@
   The new radio tool button will contain an icon and label from the stock item
   indicated by @arg{stock}.
   @begin[Warning]{dictionary}
-    The @sym{gtk:radio-tool-button-new-from-stock} function has been deprecated
+    The @fun{gtk:radio-tool-button-new-from-stock} function has been deprecated
     since version 3.10 and should not be used in newly written code. Use the
     @fun{gtk:radio-tool-button-new} function instead.
   @end{dictionary}
@@ -184,9 +184,9 @@
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_radio_tool_button_new_from_widget"
-           radio-tool-button-new-from-widget) (g:object tool-item)
+               radio-tool-button-new-from-widget) (g:object tool-item)
  #+liber-documentation
- "@version{#2022-3-22}
+ "@version{2024-1-2}
   @argument[group]{an existing @class{gtk:radio-tool-button} group, or
     @code{nil}}
   @return{The new @class{gtk:radio-tool-button} widget.}
@@ -209,14 +209,14 @@
  "@version{#2023-3-22}
   @argument[group]{an existing @class{gtk:radio-tool-button} widget}
   @argument[stock]{a string with the name of a stock item}
-  @return{A new @class{gtk:radio-tool-button} widget.}
+  @return{The new @class{gtk:radio-tool-button} widget.}
   @begin{short}
     Creates a new radio tool button adding it to the same group as @arg{group}.
   @end{short}
   The new radio tool button will contain an icon and label from the stock item
   indicated by @arg{stock}.
   @begin[Warning]{dictionary}
-    The @sym{gtk:radio-tool-button-new-with-stock-from-widget} function has
+    The @fun{gtk:radio-tool-button-new-with-stock-from-widget} function has
     been deprecated since version 3.10 and should not be used in newly written
     code. Use the @fun{gtk:radio-tool-button-new-from-widget} function instead.
   @end{dictionary}

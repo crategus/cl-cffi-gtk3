@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -125,7 +125,7 @@
       (liber:symbol-documentation 'target-flags)
  "@version{#2023-3-24}
   @begin{short}
-    The @sym{gtk:target-flags} flags is used to specify constraints on
+    The @symbol{gtk:target-flags} flags is used to specify constraints on
     a target entry.
   @end{short}
   @begin{pre}
@@ -189,7 +189,7 @@
       (documentation 'target-list 'type)
  "@version{2023-3-24}
   @begin{short}
-    A @sym{gtk:target-list} structure is used to represent a list of target
+    A @class{gtk:target-list} structure is used to represent a list of target
     entries.
   @end{short}
   This structure should be treated as opaque. A target entry is a list with the
@@ -198,7 +198,7 @@
     @entry[target]{A string representation of the target type.}
     @entry[flags]{The @symbol{gtk:target-flags} flags for DND.}
     @entry[info]{An application assigned integer ID which will get passed
-      as a parameter to e.g. the \"selection-get\" signal. It allows the
+      as a parameter to e.g. the @code{\"selection-get\"} signal. It allows the
       application to identify the target type without extensive string
       compares.}
   @end{table}
@@ -245,10 +245,10 @@
       (documentation 'selection-data 'type)
  "@version{#2023-3-24}
   @begin{short}
-    The @sym{gtk:selection-data} structure is used to store a chunk of data
+    The @class{gtk:selection-data} structure is used to store a chunk of data
     along with the data type and other associated information.
   @end{short}
-  The following fields of the @sym{gtk:selection-data} structure are private
+  The following fields of the @class{gtk:selection-data} structure are private
   and can only be retrieved with the corresponding accessor functions.
   @begin[code]{table}
     @entry[selection]{A @symbol{gdk:atom-as-string} as a string with the
@@ -631,7 +631,7 @@
  #+liber-documentation
  "@version{#2023-3-24}
   @argument[tlist]{a @class{gtk:target-list} instance}
-  @return{A list of target entries.}
+  @return{The list of target entries.}
   @begin{short}
     This function creates a list of target entries that contains the same
     targets as the passed @arg{tlist} argument.
@@ -798,8 +798,8 @@
   @argument[target]{a @symbol{gdk:atom-as-string} as a string with the form of
     information desired}
   @argument[time]{an unsigned integer with the time of request, usually of
-    triggering event, in emergency, you could use the @var{+gdk-current-time+}
-    value}
+    triggering event, in emergency, you could use the
+    @var{gdk:+gdk-current-time+} value}
   @begin{return}
     @em{True} if requested succeeded, @em{false} if we could not process
     request, e.g., there was already a request in process for this widget.
@@ -807,10 +807,10 @@
   @begin{short}
     Requests the contents of a selection.
   @end{short}
-  When received, a \"selection-received\" signal will be generated.
+  When received, a @code{\"selection-received\"} signal will be generated.
   @see-class{gtk:widget}
   @see-symbol{gdk:atom-as-string}
-  @see-variable{+gdk-current-time+}"
+  @see-variable{gdk:+gdk-current-time+}"
   (widget (g:object widget))
   (selection gdk:atom-as-string)
   (target gdk:atom-as-string)
@@ -867,10 +867,10 @@
   @argument[selection]{a @class{gtk:selection-data} instance}
   @argument[text]{a UTF-8 string}
   @begin{short}
-    The @sym{gtk:selection-data-text} function gets the contents of the
+    The @fun{gtk:selection-data-text} function gets the contents of the
     selection data as a UTF-8 string.
   @end{short}
-  The @sym{(setf gtk:selection-data-text)} function sets the contents of the
+  The @setf{gtk:selection-data-text} function sets the contents of the
   selection. The string is converted to the form determined by the target
   of the selection.
   @see-class{gtk:selection-data}"
@@ -899,10 +899,10 @@
   @argument[selection]{a @class{gtk:selection-data} instance}
   @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object}
   @begin{short}
-    The @sym{gtk:selection-data-pixbuf} function gets the contents of the
+    The @fun{gtk:selection-data-pixbuf} function gets the contents of the
     selection data as a @class{gdk-pixbuf:pixbuf} object.
   @end{short}
-  The @sym{(setf gtk:selection-data-pixbuf)} function sets the contents of the
+  The @setf{gtk:selection-data-pixbuf} function sets the contents of the
   selection. The pixbuf is converted to the form determined by the target of
   the selection.
   @see-class{gtk:selection-data}
@@ -931,10 +931,10 @@
   @argument[selection]{a @class{gtk:selection-data} instance}
   @argument[uris]{a list of strings holding URIs}
   @begin{short}
-    The @sym{gtk:selection-data-uris} function gets the contents of the
+    The @fun{gtk:selection-data-uris} function gets the contents of the
     selection data as a list of URIs.
   @end{short}
-  The @sym{(setf gtk:selection-data-uris)} function sets the contents of the
+  The @setf{gtk:selection-data-uris} function sets the contents of the
   selection. The string is converted to the form determined by the target
   of the selection.
   @see-class{gtk:selection-data}"
@@ -956,7 +956,7 @@
  #+liber-documentation
  "@version{#2023-3-24}
   @argument[selection]{a @class{gtk:selection-data} instance}
-  @return{A list of @symbol{gdk:atom-as-string} targets as strings.}
+  @return{The list of @symbol{gdk:atom-as-string} targets as strings.}
   @begin{short}
     Gets the contents of the selection as a list of targets.
   @end{short}
@@ -1079,7 +1079,7 @@
  #+liber-documentation
  "@version{#2023-3-24}
   @argument[data]{a @class{gtk:selection-data} instance}
-  @return{A @symbol{gdk:atom-as-string} as a string with the selection.}
+  @return{The @symbol{gdk:atom-as-string} as a string with the selection.}
   @begin{short}
     Retrieves the selection of the selection data.
   @end{short}
@@ -1098,7 +1098,7 @@
  #+liber-documentation
  "@version{#2023-3-24}
   @argument[data]{a @class{gtk:selection-data} instance}
-  @return{A pointer to the raw data.}
+  @return{The pointer to the raw data.}
   @begin{short}
     Retrieves the raw data of the selection.
   @end{short}
@@ -1115,7 +1115,7 @@
  #+liber-documentation
  "@version{#2023-3-24}
   @argument[data]{a @class{gtk:selection-data} instance}
-  @return{An integer with the length of the data.}
+  @return{The integer with the length of the data.}
   @begin{short}
     The length of the data of the selection.
   @end{short}
@@ -1165,7 +1165,7 @@
  #+liber-documentation
  "@version{#2023-3-24}
   @argument[data]{a @class{gtk:selection-data} instance}
-  @return{A @symbol{gdk:atom-as-string} as a string with the type of the
+  @return{The @symbol{gdk:atom-as-string} as a string with the type of the
     selection.}
   @begin{short}
     Retrieves the data type of the selection.
@@ -1184,7 +1184,7 @@
  #+liber-documentation
  "@version{#2023-3-24}
   @argument[data]{a @class{gtk:selection-data} instance}
-  @return{A @class{gdk:display} object.}
+  @return{The @class{gdk:display} object.}
   @begin{short}
     The display of the selection.
   @end{short}
@@ -1202,7 +1202,7 @@
  #+liber-documentation
  "@version{#2023-3-24}
   @argument[data]{a @class{gtk:selection-data} instance}
-  @return{An integer with the format.}
+  @return{The integer with the format.}
   @begin{short}
     Retrieves the format of the selection.
   @end{short}
@@ -1220,7 +1220,7 @@
  #+liber-documentation
  "@version{#2023-3-24}
   @argument[data]{a @class{gtk:selection-data} instance}
-  @return{A @symbol{gdk:atom-as-string} as a string with the target.}
+  @return{The @symbol{gdk:atom-as-string} as a string with the target.}
   @begin{short}
     The target of the selection.
   @end{short}

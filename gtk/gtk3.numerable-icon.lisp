@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2014 - 2023 Dieter Kaiser
+;;; Copyright (C) 2014 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -100,7 +100,7 @@
 (setf (documentation 'numerable-icon 'type)
  "@version{2022-12-21}
   @begin{short}
-    The @sym{gtk:numerable-icon} class is a subclass of the
+    The @class{gtk:numerable-icon} class is a subclass of the
     @class{g:emblemed-icon} class that can show a number or short string as an
     emblem.
   @end{short}
@@ -113,7 +113,7 @@
     @image[numerableicon]{} @image[numerableicon2]{}
   @end{dictionary}
   @begin[Warning]{dictionary}
-    The @sym{gtk:numerable-icon} class has been deprecated since version 3.14
+    The @class{gtk:numerable-icon} class has been deprecated since version 3.14
     and should not be used in newly written code.
   @end{dictionary}
   @see-slot{gtk:numerable-icon-background-icon}
@@ -152,20 +152,20 @@
     Accessor of the @slot[gtk:numerable-icon]{background-icon} slot of the
     @class{gtk:numerable-icon} class.
   @end{short}
-  The @sym{gtk:numerable-icon-background-icon} function returns the icon that
+  The @fun{gtk:numerable-icon-background-icon} function returns the icon that
   was set as the base background image, or @code{nil} if there is none. The
-  @sym{(setf gtk:numerable-icon-background-icon)} function updates the
-  background icon.
+  @setf{gtk:numerable-icon-background-icon} function updates the background
+  icon.
 
   If @arg{icon} is @code{nil}, the numerable icon will go back using style
   information or default theming for its background image.
 
   If this method is called and an icon name was already set as background for
   the numerable icon, @arg{icon} will be used, i.e. the last method called
-  between the @sym{gtk:numerable-icon-background-icon} and
+  between the @fun{gtk:numerable-icon-background-icon} and
   @fun{gtk:numerable-icon-background-icon-name} functions has always priority.
   @begin[Warning]{dictionary}
-    The @sym{gtk:numerable-icon-background-icon} function has been deprecated
+    The @fun{gtk:numerable-icon-background-icon} function has been deprecated
     since version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:numerable-icon}
@@ -194,20 +194,20 @@
     Accessor of the @slot[gtk:numerable-icon]{background-icon-name} slot of the
     @class{gtk:numerable-icon} class.
   @end{short}
-  The @sym{gtk:numerable-icon-background-icon-name} function returns the icon
+  The @fun{gtk:numerable-icon-background-icon-name} function returns the icon
   name used as the base background image, or @code{nil} if there is none. The
-  @sym{(setf gtk:numerable-icon-background-icon-name)} function updates the
-  background icon.
+  @setf{gtk:numerable-icon-background-icon-name} function updates the background
+  icon.
 
   If @arg{name} is @code{nil}, the numerable icon will go back using style
   information or default theming for its background image.
 
   If this method is called and a @class{g:icon} object was already set as
   background for the numerable icon, @arg{name} will be used, i.e. the last
-  method called between the @sym{gtk:numerable-icon-background-icon-name} and
+  method called between the @fun{gtk:numerable-icon-background-icon-name} and
   @fun{gtk:numerable-icon-background-icon} functions has always priority.
   @begin[Warning]{dictionary}
-    The @sym{gtk:numerable-icon-backgroun-icon-name} function has been
+    The @fun{gtk:numerable-icon-backgroun-icon-name} function has been
     deprecated since version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:numerable-icon}
@@ -235,18 +235,18 @@
     Accessor of the @slot[gtk:numerable-icon]{count} slot of the
     @class{gtk:numerable-icon} class.
   @end{short}
-  The @sym{gtk:numerable-icon-count} function returns the value currently
-  displayed by the numerable icon. The @sym{(setf gtk:numerable-icon-count)}
-  function sets the currently displayed value.
+  The @fun{gtk:numerable-icon-count} function returns the value currently
+  displayed by the numerable icon. The @setf{gtk:numerable-icon-count} function
+  sets the currently displayed value.
 
   The numeric value is always clamped to make it two digits, i.e. between -99
   and 99. Setting a count of zero removes the emblem. If this method is called,
   and a label was already set on the numerable icon, it will automatically be
   reset to @code{nil} before rendering the number, i.e. the last method called
-  between the @sym{gtk:numerable-icon-count} and @fun{gtk:numerable-icon-label}
+  between the @fun{gtk:numerable-icon-count} and @fun{gtk:numerable-icon-label}
   functions has always priority.
   @begin[Warning]{dictionary}
-    The @sym{gtk:numerable-icon-count} function has been deprecated since
+    The @fun{gtk:numerable-icon-count} function has been deprecated since
     version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:numerable-icon}
@@ -273,10 +273,10 @@
     Accessor of the @slot[gtk:numerable-icon]{label} slot of the
     @class{gtk:numerable-icon} class.
   @end{short}
-  The @sym{gtk:numerable-icon-label} function returns the currently displayed
+  The @fun{gtk:numerable-icon-label} function returns the currently displayed
   label of the numerable icon, or @code{nil}. The
-  @sym{(setf gtk:numerable-icon-label)} function sets the currently displayed
-  label. Setting an empty label removes the emblem.
+  @setf{gtk:numerable-icon-label} function sets the currently displayed label.
+  Setting an empty label removes the emblem.
 
   Note that this is meant for displaying short labels, such as roman numbers,
   or single letters. For roman numbers, consider using the Unicode characters
@@ -285,10 +285,10 @@
 
   If this method is called, and a number was already set on the icon, it will
   automatically be reset to zero before rendering the label, i.e. the last
-  method called between the @sym{gtk:numerable-icon-label} and
+  method called between the @fun{gtk:numerable-icon-label} and
   @fun{gtk:numerable-icon-count} functions has always priority.
   @begin[Warning]{dictionary}
-    The @sym{gtk:numerable-icon-label} function has been deprecated since
+    The @fun{gtk:numerable-icon-label} function has been deprecated since
     version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:numerable-icon}
@@ -316,12 +316,12 @@
     Accessor of the @slot[gtk:numerable-icon]{style-context} slot of the
     @class{gtk:numerable-icon} class.
   @end{short}
-  The @sym{gtk:numerable-icon-style-context} function returns the style context
+  The @fun{gtk:numerable-icon-style-context} function returns the style context
   used by the numerable icon for theming, or @code{nil} if there is none. The
-  @sym{(setf gtk:numerable-icon-style-context)} function updates the numerable
-  icon to fetch theme information.
+  @setf{gtk:numerable-icon-style-context} function updates the numerable icon
+  to fetch theme information.
   @begin[Warning]{dictionary}
-    The @sym{gtk:numerable-icon-style-context} function has been deprecated
+    The @fun{gtk:numerable-icon-style-context} function has been deprecated
     since version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:numerable-icon}
@@ -337,10 +337,10 @@
  #+liber-documentation
  "@version{2022-12-21}
   @argument[icon]{a @class{g:icon} object to overlay on}
-  @return{A new @class{gtk:numerable-icon} object.}
+  @return{The new @class{gtk:numerable-icon} object.}
   @short{Creates a new unthemed numerable icon.}
   @begin[Warning]{dictionary}
-    The @sym{gtk:numerable-icon-new} function has been deprecated since version
+    The @fun{gtk:numerable-icon-new} function has been deprecated since version
     3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:numerable-icon}
@@ -361,7 +361,7 @@
  "@version{2022-12-21}
   @argument[icon]{a @class{g:icon} object to overlay on}
   @argument[context]{a @class{gtk:style-context} object}
-  @return{A new @class{gtk:numerable-icon} object.}
+  @return{The new @class{gtk:numerable-icon} object.}
   @begin{short}
     Creates a new numerable icon which will themed according to the passed
     style context.
@@ -369,7 +369,7 @@
   This is a convenience constructor that calls the function
   @fun{gtk:numerable-icon-style-context} internally.
   @begin[Warning]{dictionary}
-    The function @sym{gtk:numerable-icon-new-with-style-context} has been
+    The @fun{gtk:numerable-icon-new-with-style-context} function has been
     deprecated since version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:numerable-icon}

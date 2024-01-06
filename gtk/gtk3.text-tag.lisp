@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -410,7 +410,7 @@
 
 #+liber-documentation
 (setf (documentation 'text-tag 'type)
- "@version{#2023-3-15}
+ "@version{2024-1-2}
   @begin{short}
     You may wish to begin by reading the text widget conceptual overview which
     gives an overview of all the objects and data types related to the text
@@ -421,7 +421,7 @@
   @class{gtk:text-buffer} object before using them with that text buffer. The
   @fun{gtk:text-buffer-create-tag} function is the best way to create tags.
 
-  For each property of the @sym{gtk:text-tag} class, there is a \"set\"
+  For each property of the @class{gtk:text-tag} class, there is a \"set\"
   property, e.g. \"font-set\" corresponds to \"font\". These \"set\" properties
   reflect whether a property has been set or not. They are maintained by GTK
   and you should not set them independently.
@@ -433,7 +433,7 @@ lambda (tag object event iter)    :run-last
       The signal is emitted when an event occurs on a region of the text buffer
       marked with this tag.
       @begin[code]{table}
-        @entry[tag]{The @sym{gtk:text-tag} object on which the signal is
+        @entry[tag]{The @class{gtk:text-tag} object on which the signal is
           emitted.}
         @entry[object]{The object the event was fired from, typically a
           @class{gtk:text-view} widget.}
@@ -516,7 +516,7 @@ lambda (tag object event iter)    :run-last
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- text-tag-accumulative-margin -------------------------------------------
+;;; --- gtk:text-tag-accumulative-margin ---------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "accumulative-margin"
@@ -548,7 +548,7 @@ lambda (tag object event iter)    :run-last
   the default.
   @see-class{gtk:text-tag}")
 
-;;; --- text-tag-background ----------------------------------------------------
+;;; --- gtk:text-tag-background ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "background" 'text-tag) t)
@@ -574,7 +574,7 @@ lambda (tag object event iter)    :run-last
   @see-function{gtk:text-tag-background-rgba}
   @see-function{gtk:text-tag-background-set}")
 
-;;; --- text-tag-background-full-height ----------------------------------------
+;;; --- gtk:text-tag-background-full-height ------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "background-full-height"
@@ -604,7 +604,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-background-full-height-set}")
 
-;;; --- text-tag-background-full-height-set ------------------------------------
+;;; --- gtk:text-tag-background-full-height-set --------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "background-full-height-set"
@@ -631,7 +631,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-background-full-height}")
 
-;;; --- text-tag-background-gdk ------------------------------------------------
+;;; --- gtk:text-tag-background-gdk --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "background-gdk" 'text-tag) t)
@@ -657,7 +657,7 @@ lambda (tag object event iter)    :run-last
   @end{short}
   The background color.
   @begin[Warning]{dictionary}
-    The @sym{gtk:text-tag-background-gdk} function has been deprecated since
+    The @fun{gtk:text-tag-background-gdk} function has been deprecated since
     version 3.4 and should not be used in newly written code. Use the
     @fun{gtk:text-tag-background-rgba} function instead.
   @end{dictionary}
@@ -665,7 +665,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gdk:color}
   @see-function{gtk:text-tag-background-rgba}")
 
-;;; --- text-tag-background-rgba -----------------------------------------------
+;;; --- gtk:text-tag-background-rgba -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "background-rgba" 'text-tag) t)
@@ -692,7 +692,7 @@ lambda (tag object event iter)    :run-last
   @see-function{gtk:text-tag-background}
   @see-function{gtk:text-tag-background-set}")
 
-;;; --- text-tag-background-set ------------------------------------------------
+;;; --- gtk:text-tag-background-set --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "background-set" 'text-tag) t)
@@ -719,7 +719,7 @@ lambda (tag object event iter)    :run-last
   @see-function{gtk:text-tag-background}
   @see-function{gtk:text-tag-background-rgba}")
 
-;;; --- text-tag-direction -----------------------------------------------------
+;;; --- gtk:text-tag-direction -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "direction" 'text-tag) t)
@@ -745,7 +745,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-symbol{gtk:text-direction}")
 
-;;; --- text-tag-editable ------------------------------------------------------
+;;; --- gtk:text-tag-editable --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "editable" 'text-tag) t)
@@ -770,7 +770,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-editable-set}")
 
-;;; --- text-tag-editable-set --------------------------------------------------
+;;; --- gtk:text-tag-editable-set ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "editable-set" 'text-tag) t)
@@ -795,7 +795,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-editable}")
 
-;;; --- text-tag-fallback ------------------------------------------------------
+;;; --- gtk:text-tag-fallback --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "fallback" 'text-tag) t)
@@ -822,7 +822,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-fallback-set}")
 
-;;; --- text-tag-fallback-set --------------------------------------------------
+;;; --- gtk:text-tag-fallback-set ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "fallback-set" 'text-tag) t)
@@ -846,7 +846,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-fallback}")
 
-;;; --- text-tag-family --------------------------------------------------------
+;;; --- gtk:text-tag-family ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "family" 'text-tag) t)
@@ -871,7 +871,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-family-set}")
 
-;;; --- text-tag-family-set ----------------------------------------------------
+;;; --- gtk:text-tag-family-set ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "family-set" 'text-tag) t)
@@ -896,7 +896,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-family}")
 
-;;; --- text-tag-font ----------------------------------------------------------
+;;; --- gtk:text-tag-font ------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "font" 'text-tag) t)
@@ -925,7 +925,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-class{pango:font-description}")
 
-;;; --- text-tag-font-desc -----------------------------------------------------
+;;; --- gtk:text-tag-font-desc -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "font-desc" 'text-tag) t)
@@ -951,7 +951,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-class{pango:font-description}")
 
-;;; --- text-tag-font-features -------------------------------------------------
+;;; --- gtk:text-tag-font-features ---------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "font-features" 'text-tag) t)
@@ -976,7 +976,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-font-features-set}")
 
-;;; --- text-tag-font-features-set ---------------------------------------------
+;;; --- gtk:text-tag-font-features-set -----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "font-features-set"
@@ -1003,7 +1003,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-font-features}")
 
-;;; --- text-tag-foreground ----------------------------------------------------
+;;; --- gtk:text-tag-foreground ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "foreground" 'text-tag) t)
@@ -1029,7 +1029,7 @@ lambda (tag object event iter)    :run-last
   @see-function{gtk:text-tag-foreground-rgba}
   @see-function{gtk:text-tag-foreground-set}")
 
-;;; --- text-tag-foreground-gdk ------------------------------------------------
+;;; --- gtk:text-tag-foreground-gdk --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "foreground-gdk" 'text-tag) t)
@@ -1055,7 +1055,7 @@ lambda (tag object event iter)    :run-last
   @end{short}
   The foreground color.
   @begin[Warning]{dictionary}
-    The @sym{gtk:text-tag-foreground-gdk} function has been deprecated since
+    The @fun{gtk:text-tag-foreground-gdk} function has been deprecated since
     version 3.4 and should not be used in newly written code. Use the
     @fun{gtk:text-tag-foreground-rgba} function instead.
   @end{dictionary}
@@ -1063,7 +1063,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gdk:color}
   @see-function{gtk:text-tag-foreground-rgba}")
 
-;;; --- text-tag-foreground-rgba -----------------------------------------------
+;;; --- gtk:text-tag-foreground-rgba -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "foreground-rgba" 'text-tag) t)
@@ -1090,7 +1090,7 @@ lambda (tag object event iter)    :run-last
   @see-function{gtk:text-tag-foreground}
   @see-function{gtk:text-tag-foreground-set}")
 
-;;; --- text-tag-foreground-set ------------------------------------------------
+;;; --- gtk:text-tag-foreground-set --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "foreground-set" 'text-tag) t)
@@ -1117,7 +1117,7 @@ lambda (tag object event iter)    :run-last
   @see-function{gtk:text-tag-foreground}
   @see-function{gtk:text-tag-foreground-rgba}")
 
-;;; --- text-tag-indent --------------------------------------------------------
+;;; --- gtk:text-tag-indent ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "indent" 'text-tag) t)
@@ -1142,7 +1142,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-indent-set}")
 
-;;; --- text-tag-indent-set ----------------------------------------------------
+;;; --- gtk:text-tag-indent-set ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "indent-set" 'text-tag) t)
@@ -1167,7 +1167,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-indent}")
 
-;;; --- text-tag-invisible -----------------------------------------------------
+;;; --- gtk:text-tag-invisible -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "invisible" 'text-tag) t)
@@ -1196,7 +1196,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-invisible-set}")
 
-;;; --- text-tag-invisible-set -------------------------------------------------
+;;; --- gtk:text-tag-invisible-set ---------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "invisible-set" 'text-tag) t)
@@ -1221,7 +1221,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-invisible}")
 
-;;; --- text-tag-justification -------------------------------------------------
+;;; --- gtk:text-tag-justification ---------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "justification" 'text-tag) t)
@@ -1249,7 +1249,7 @@ lambda (tag object event iter)    :run-last
   @see-symbol{gtk:justification}
   @see-function{gtk:text-tag-justification-set}")
 
-;;; --- text-tag-justification-set ---------------------------------------------
+;;; --- gtk:text-tag-justification-set -----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "justification-set" 'text-tag) t)
@@ -1275,7 +1275,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-justification}")
 
-;;; --- text-tag-language ------------------------------------------------------
+;;; --- gtk:text-tag-language --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "language" 'text-tag) t)
@@ -1307,7 +1307,7 @@ lambda (tag object event iter)    :run-last
   @see-function{gtk:default-language}
   @see-function{gtk:text-tag-language-set}")
 
-;;; --- text-tag-language-set --------------------------------------------------
+;;; --- gtk:text-tag-language-set ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "language-set" 'text-tag) t)
@@ -1332,7 +1332,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-language}")
 
-;;; --- text-tag-left-margin ---------------------------------------------------
+;;; --- gtk:text-tag-left-margin -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "left-margin" 'text-tag) t)
@@ -1358,7 +1358,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-left-margin-set}")
 
-;;; --- text-tag-left-margin-set -----------------------------------------------
+;;; --- gtk:text-tag-left-margin-set -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "left-margin-set" 'text-tag) t)
@@ -1384,7 +1384,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-left-margin}")
 
-;;; --- text-tag-letter-spacing ------------------------------------------------
+;;; --- gtk:text-tag-letter-spacing --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "letter-spacing" 'text-tag) t)
@@ -1411,7 +1411,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-letter-spacing-set}")
 
-;;; --- text-tag-letter-spacing-set --------------------------------------------
+;;; --- gtk:text-tag-letter-spacing-set ----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "letter-spacing-set"
@@ -1438,7 +1438,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-letter-spacing}")
 
-;;; --- text-tag-name ----------------------------------------------------------
+;;; --- gtk:text-tag-name ------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "name" 'text-tag) t)
@@ -1462,7 +1462,7 @@ lambda (tag object event iter)    :run-last
   Name used to refer to the text tag, @code{nil} for anonymous tags.
   @see-class{gtk:text-tag}")
 
-;;; --- text-tag-paragraph-background ------------------------------------------
+;;; --- gtk:text-tag-paragraph-background --------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "paragraph-background"
@@ -1489,14 +1489,14 @@ lambda (tag object event iter)    :run-last
   @see-function{gtk:text-tag-paragraph-background-rgba}
   @see-function{gtk:text-tag-paragraph-background-set}")
 
-;;; --- text-tag-paragraph-background-gdk --------------------------------------
+;;; --- gtk:text-tag-paragraph-background-gdk ----------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "paragraph-background-gdk"
                                                'text-tag) t)
  "The @code{paragraph-background-gdk} property of type @class{gdk:color}
   (Read / Write) @br{}
-  The paragraph background color as a as a @sym{gdk:color}. @br{}
+  The paragraph background color as a as a @class{gdk:color}. @br{}
   @em{Warning:} The @code{paragraph-background-gdk} property has been deprecated
   since version 3.4 and should not be used in newly written code. Use the
   @code{paragraph-background-rgba} property instead.")
@@ -1516,7 +1516,7 @@ lambda (tag object event iter)    :run-last
   @end{short}
   The paragraph background color.
   @begin[Warning]{dictionary}
-    The @sym{gtk:text-tag-paragraph-background-gdk} function has been deprecated
+    The @fun{gtk:text-tag-paragraph-background-gdk} function has been deprecated
     since version 3.4 and should not be used in newly written code. Use the
     @fun{gtk:text-tag-paragraph-background-rgba} funtion instead.
   @end{dictionary}
@@ -1524,7 +1524,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gdk:color}
   @see-function{gtk:text-tag-paragraph-background-rgba}")
 
-;;; --- text-tag-paragraph-background-rgba -------------------------------------
+;;; --- gtk:text-tag-paragraph-background-rgba ---------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "paragraph-background-rgba"
@@ -1552,7 +1552,7 @@ lambda (tag object event iter)    :run-last
   @see-function{gtk:text-tag-paragraph-background}
   @see-function{gtk:text-tag-paragraph-background-set}")
 
-;;; --- text-tag-paragraph-background-set --------------------------------------
+;;; --- gtk:text-tag-paragraph-background-set ----------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "paragraph-background-set"
@@ -1581,13 +1581,12 @@ lambda (tag object event iter)    :run-last
   @see-function{gtk:text-tag-paragraph-background}
   @see-function{gtk:text-tag-paragraph-background-rgba}")
 
-;;; --- text-tag-pixels-above-lines --------------------------------------------
+;;; --- gtk:text-tag-pixels-above-lines ----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "pixels-above-lines"
                                                'text-tag) t)
- "The @code{pixels-above-lines} property of type @code{:int} (Read / Write)
-  @br{}
+ "The @code{pixels-above-lines} property of type @code{:int} (Read / Write)@br{}
   Pixels of blank space above paragraphs. @br{}
   Allowed values: >= 0 @br{}
   Default value: 0")
@@ -1596,7 +1595,7 @@ lambda (tag object event iter)    :run-last
 (setf (liber:alias-for-function 'text-tag-pixels-above-lines)
       "Accessor"
       (documentation 'text-tag-pixels-above-lines 'function)
- "@version{#2023-3-15}
+ "@version{2024-1-1}
   @syntax[]{(gtk:text-tag-pixels-above-lines object) => pixels}
   @syntax[]{(setf (gtk:text-tag-pixels-above-lines object) pixels)}
   @argument[object]{a @class{gtk:text-tag} object}
@@ -1609,7 +1608,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-pixels-above-lines-set}")
 
-;;; --- text-tag-pixels-above-lines-set ----------------------------------------
+;;; --- gtk:text-tag-pixels-above-lines-set ------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "pixels-above-lines-set"
@@ -1637,7 +1636,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-pixels-above-lines}")
 
-;;; --- text-tag-pixels-below-lines --------------------------------------------
+;;; --- gtk:text-tag-pixels-below-lines ----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "pixels-below-lines"
@@ -1665,7 +1664,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-pixels-below-lines-set}")
 
-;;; --- text-tag-pixels-below-lines-set ----------------------------------------
+;;; --- gtk:text-tag-pixels-below-lines-set ------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "pixels-below-lines-set"
@@ -1693,7 +1692,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-pixels-below-lines}")
 
-;;; --- text-tag-pixels-inside-wrap --------------------------------------------
+;;; --- gtk:text-tag-pixels-inside-wrap ----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "pixels-inside-wrap"
@@ -1722,7 +1721,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-pixels-inside-wrap-set}")
 
-;;; --- text-tag-pixels-inside-wrap-set ----------------------------------------
+;;; --- gtk:text-tag-pixels-inside-wrap-set ------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "pixels-inside-wrap-set"
@@ -1750,7 +1749,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-pixels-inside-wrap}")
 
-;;; --- text-tag-right-margin --------------------------------------------------
+;;; --- gtk:text-tag-right-margin ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "right-margin" 'text-tag) t)
@@ -1776,7 +1775,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-right-margin-set}")
 
-;;; --- text-tag-right-margin-set ----------------------------------------------
+;;; --- gtk:text-tag-right-margin-set ------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "right-margin-set" 'text-tag) t)
@@ -1802,7 +1801,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-right-margin}")
 
-;;; --- text-tag-rise ----------------------------------------------------------
+;;; --- gtk:text-tag-rise ------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "rise" 'text-tag) t)
@@ -1830,7 +1829,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-rise-set}")
 
-;;; --- text-tag-rise-set ------------------------------------------------------
+;;; --- gtk:text-tag-rise-set --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "rise-set" 'text-tag) t)
@@ -1855,7 +1854,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-rise}")
 
-;;; --- text-tag-scale ---------------------------------------------------------
+;;; --- gtk:text-tag-scale -----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "scale" 'text-tag) t)
@@ -1885,7 +1884,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-scale-set}")
 
-;;; --- text-tag-scale-set -----------------------------------------------------
+;;; --- gtk:text-tag-scale-set -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "scale-set" 'text-tag) t)
@@ -1910,7 +1909,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-scale}")
 
-;;; --- text-tag-size ----------------------------------------------------------
+;;; --- gtk:text-tag-size ------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "size" 'text-tag) t)
@@ -1937,7 +1936,7 @@ lambda (tag object event iter)    :run-last
   @see-function{gtk:text-tag-size-points}
   @see-function{gtkt-text-tag-size-set}")
 
-;;; --- text-tag-size-points ---------------------------------------------------
+;;; --- gtk:text-tag-size-points -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "size-points" 'text-tag) t)
@@ -1964,7 +1963,7 @@ lambda (tag object event iter)    :run-last
   @see-function{gtk:text-tag-size}
   @see-function{gtk:text-tag-size-set}")
 
-;;; --- text-tag-size-set ------------------------------------------------------
+;;; --- gtk:text-tag-size-set --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "size-set" 'text-tag) t)
@@ -1990,7 +1989,7 @@ lambda (tag object event iter)    :run-last
   @see-function{gtk:text-tag-size}
   @see-function{gtk:text-tag-size-points}")
 
-;;; --- text-tag-stretch -------------------------------------------------------
+;;; --- gtk:text-tag-stretch ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "stretch" 'text-tag) t)
@@ -2018,7 +2017,7 @@ lambda (tag object event iter)    :run-last
   @see-symbol{pango:stretch}
   @see-function{gtk:text-tag-stretch-set}")
 
-;;; --- text-tag-stretch-set ---------------------------------------------------
+;;; --- gtk:text-tag-stretch-set -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "stretch-set" 'text-tag) t)
@@ -2043,7 +2042,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-stretch}")
 
-;;; --- text-tag-strikethrough -------------------------------------------------
+;;; --- gtk:text-tag-strikethrough ---------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "strikethrough" 'text-tag) t)
@@ -2069,7 +2068,7 @@ lambda (tag object event iter)    :run-last
   @see-function{gtk:text-tag-strikethrough-rgba}
   @see-function{gtk:text-tag-strikethrough-set}")
 
-;;; --- text-tag-strikethrough-rgba --------------------------------------------
+;;; --- gtk:text-tag-strikethrough-rgba ----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "strikethrough-rgba"
@@ -2098,7 +2097,7 @@ lambda (tag object event iter)    :run-last
   @see-function{gtk:text-tag-strikethrough}
   @see-function{gtk:text-tag-strikethrough-rgba-set}")
 
-;;; --- text-tag-strikethrough-rgba-set ----------------------------------------
+;;; --- gtk:text-tag-strikethrough-rgba-set ------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "strikethrough-rgba-set"
@@ -2126,7 +2125,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-strikethrough-rgba}")
 
-;;; --- text-tag-strikethrough-set ---------------------------------------------
+;;; --- gtk:text-tag-strikethrough-set -----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "strikethrough-set" 'text-tag) t)
@@ -2152,7 +2151,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-strikethrough}")
 
-;;; --- text-tag-style ---------------------------------------------------------
+;;; --- gtk:text-tag-style -----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "style" 'text-tag) t)
@@ -2179,7 +2178,7 @@ lambda (tag object event iter)    :run-last
   @see-symbol{pango:style}
   @see-function{gtk:text-tag-style-set}")
 
-;;; --- text-tag-style-set -----------------------------------------------------
+;;; --- gtk:text-tag-style-set -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "style-set" 'text-tag) t)
@@ -2204,7 +2203,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-style}")
 
-;;; --- text-tag-tabs ----------------------------------------------------------
+;;; --- gtk:text-tag-tabs ------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "tabs" 'text-tag) t)
@@ -2229,7 +2228,7 @@ lambda (tag object event iter)    :run-last
   @see-class{pango:tab-array}
   @see-function{gtk:text-tag-tabs-set}")
 
-;;; --- text-tag-tabs-set ------------------------------------------------------
+;;; --- gtk:text-tag-tabs-set --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "tabs-set" 'text-tag) t)
@@ -2254,7 +2253,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-tabs}")
 
-;;; --- text-tag-underline -----------------------------------------------------
+;;; --- gtk:text-tag-underline -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "underline" 'text-tag) t)
@@ -2282,7 +2281,7 @@ lambda (tag object event iter)    :run-last
   @see-function{gtk:text-tag-underline-rgba}
   @see-function{gtk:text-tag-underline-set}")
 
-;;; --- text-tag-underline-rgba ------------------------------------------------
+;;; --- gtk:text-tag-underline-rgba --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "underline-rgba" 'text-tag) t)
@@ -2318,7 +2317,7 @@ lambda (tag object event iter)    :run-last
   @see-function{gtk:text-tag-underline}
   @see-function{gtk:text-tag-underline-rgba-set}")
 
-;;; --- text-tag-underline-rgba-set --------------------------------------------
+;;; --- gtk:text-tag-underline-rgba-set ----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "underline-rgba-set"
@@ -2346,7 +2345,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-underline-rgba}")
 
-;;; --- text-tag-underline-set -------------------------------------------------
+;;; --- gtk:text-tag-underline-set ---------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "underline-set" 'text-tag) t)
@@ -2372,7 +2371,7 @@ lambda (tag object event iter)    :run-last
   @see-function{gtk:text-tag-underline}
   @see-function{gtk:text-tag-underline-rgba}")
 
-;;; --- text-tag-variant -------------------------------------------------------
+;;; --- gtk:text-tag-variant ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "variant" 'text-tag) t)
@@ -2400,7 +2399,7 @@ lambda (tag object event iter)    :run-last
   @see-symbol{pango:variant}
   @see-function{gtk:text-tag-variant-set}")
 
-;;; --- text-tag-variant-set ---------------------------------------------------
+;;; --- gtk:text-tag-variant-set -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "variant-set" 'text-tag) t)
@@ -2425,7 +2424,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-variant}")
 
-;;; --- text-tag-weight --------------------------------------------------------
+;;; --- gtk:text-tag-weight ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "weight" 'text-tag) t)
@@ -2454,7 +2453,7 @@ lambda (tag object event iter)    :run-last
   @see-symbol{pango:weight}
   @see-function{gtk:text-tag-weight-set}")
 
-;;; --- text-tag-weight-set ----------------------------------------------------
+;;; --- gtk:text-tag-weight-set ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "weight-set" 'text-tag) t)
@@ -2479,7 +2478,7 @@ lambda (tag object event iter)    :run-last
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-weight}")
 
-;;; --- text-tag-wrap-mode -----------------------------------------------------
+;;; --- gtk:text-tag-wrap-mode -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "wrap-mode" 'text-tag) t)
@@ -2507,7 +2506,7 @@ lambda (tag object event iter)    :run-last
   @see-symbol{gtk:wrap-mode}
   @see-function{gtk:text-tag-wrap-mode-set}")
 
-;;; --- text-tag-wrap-mode-set -------------------------------------------------
+;;; --- gtk:text-tag-wrap-mode-set ---------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "wrap-mode-set" 'text-tag) t)
@@ -2541,7 +2540,7 @@ lambda (tag object event iter)    :run-last
  "@version{#2023-3-15}
   @argument[name]{a string with the tag name, or @code{nil}}
   @argument[args]{list of property keywords and values}
-  @return{A new @class{gtk:text-tag} object.}
+  @return{The new @class{gtk:text-tag} object.}
   @begin{short}
     Creates a new tag.
   @end{short}
@@ -2577,8 +2576,8 @@ lambda (tag object event iter)    :run-last
   @begin{short}
     Accessor for the priority of a @class{gtk:text-tag} object.
   @end{short}
-  The @sym{gtk:text-tag-priority} function gets the tag priority. The
-  @sym{(setf gtk:text-tag-priority)} function sets the priority.
+  The @fun{gtk:text-tag-priority} function gets the tag priority. The
+  @setf{gtk:text-tag-priority} function sets the priority.
 
   Valid priorities are start at 0 and go to one less than the value of the
   result of the @fun{gtk:text-tag-table-size} function. Each tag in a tag table
@@ -2610,9 +2609,9 @@ lambda (tag object event iter)    :run-last
   @argument[event]{a @class{gdk:event} event}
   @argument[iter]{a @class{gtk:text-iter} iterator with the location where the
     event was received}
-  @return{A boolean whether the event was handled.}
+  @return{The boolean whether the event was handled.}
   @begin{short}
-    Emits the \"event\" signal on the tag object.
+    Emits the @code{\"event\"} signal on the tag object.
   @end{short}
   @see-class{gtk:text-tag}
   @see-class{gtk:text-iter}
@@ -2635,8 +2634,8 @@ lambda (tag object event iter)    :run-last
   @argument[changed]{a boolean whether the change affects the
     @class{gtk:text-view} layout}
   @begin{short}
-    Emits the \"tag-changed\" signal on the @class{gtk:text-tag-table} object
-    where the tag is included.
+    Emits the @code{\"tag-changed\"} signal on the @class{gtk:text-tag-table}
+    object where the tag is included.
   @end{short}
   The signal is already emitted when setting a @class{gtk:text-tag} property.
   This function is useful for a @class{gtk:text-tag} subclass.

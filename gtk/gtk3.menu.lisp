@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -212,28 +212,28 @@
 (setf (documentation 'menu 'type)
  "@version{#2023-3-21}
   @begin{short}
-    A @sym{gtk:menu} widget is a @class{gtk:menu-shell} widget that implements
+    A @class{gtk:menu} widget is a @class{gtk:menu-shell} widget that implements
     a drop down menu consisting of a list of @class{gtk:menu-item} widgets
     which can be navigated and activated by the user to perform application
     functions.
   @end{short}
 
-  A @sym{gtk:menu} widget is most commonly dropped down by activating a
+  A @class{gtk:menu} widget is most commonly dropped down by activating a
   @class{gtk:menu-item} widget in a @class{gtk:menu-bar} widget or popped up by
-  activating a @class{gtk:menu-item} widget in another @sym{gtk:menu} widget.
+  activating a @class{gtk:menu-item} widget in another @class{gtk:menu} widget.
 
-  A @sym{gtk:menu} widget can also be popped up by activating a
+  A @class{gtk:menu} widget can also be popped up by activating a
   @class{gtk:combo-box} widget. Other composite widgets such as the
-  @class{gtk:notebook} widget can pop up a @sym{gtk:menu} widget as well.
+  @class{gtk:notebook} widget can pop up a @class{gtk:menu} widget as well.
 
-  Applications can display a @sym{gtk:menu} widget as a popup menu by calling
+  Applications can display a @class{gtk:menu} widget as a popup menu by calling
   the @fun{gtk:menu-popup-at-pointer} function. The example below shows how an
   application can pop up a menu when a mouse button is pressed.
   @begin[Example]{dictionary}
     Example with a signal handler which displays a popup menu.
     @begin{pre}
 (defun example-menu-popup (&optional application)
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :type :toplevel
                                  :application application
@@ -257,7 +257,7 @@
       (g:signal-connect window \"destroy\"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
+                          (gtk:leave-gtk-main)))
       (gtk:container-add window button)
       (gtk:widget-show-all window))))
     @end{pre}
@@ -271,9 +271,10 @@ menu
 ├── <child>
 ╰── arrow.bottom
     @end{pre}
-    The main CSS node of the @sym{gtk:menu} implemenation has name @code{menu},
-    and there are two subnodes with name @code{arrow}, for scrolling menu
-    arrows. These subnodes get the @code{.top} and @code{.bottom} style classes.
+    The main CSS node of the @class{gtk:menu} implementation has name
+    @code{menu}, and there are two subnodes with name @code{arrow}, for
+    scrolling menu arrows. These subnodes get the @code{.top} and @code{.bottom}
+    style classes.
   @end{dictionary}
   @begin[Child Property Details]{dictionary}
     @begin[code]{table}
@@ -384,7 +385,7 @@ menu
 lambda (menu scrolltype)    :action
       @end{pre}
       @begin[code]{table}
-        @entry[menu]{A @sym{gtk:menu} widget.}
+        @entry[menu]{A @class{gtk:menu} widget.}
         @entry[scrolltype]{A value of the @symbol{gtk:scroll-type} enumeration.}
       @end{table}
     @subheading{The \"popped-up\" signal}
@@ -413,7 +414,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
       @slot[gtk:menu]{rect-anchor-dy}, and @slot[gtk:menu]{menu-type-hint}
       properties.
       @begin[code]{table}
-        @entry[menu]{A @sym{gtk:menu} widget that popped up.}
+        @entry[menu]{A @class{gtk:menu} widget that popped up.}
         @entry[flipped]{The position of @arg{menu} after any possible flipping
           or @code{nil} if the backend can not obtain it.}
         @entry[final]{The final position of @arg{menu} or @code{nil} if the
@@ -442,7 +443,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- menu-accel-group -------------------------------------------------------
+;;; --- gtk:menu-accel-group ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "accel-group" 'menu) t)
@@ -464,8 +465,8 @@ lambda (menu flipped final xflipped yflipped)    :run-first
     Accessor of the @slot[gtk:menu]{accel-group} slot of the @class{gtk:menu}
     class.
   @end{short}
-  The @sym{gtk:menu-accel-group} function gets the accelerator group which
-  holds global accelerators for the menu. The @sym{(setf gtk:menu-accel-group)}
+  The @fun{gtk:menu-accel-group} function gets the accelerator group which
+  holds global accelerators for the menu. The @setf{gtk:menu-accel-group}
   function sets the accelerator group.
 
   This accelerator group needs to also be added to all windows that this menu
@@ -475,7 +476,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
   @see-class{gtk:accel-group}
   @see-function{gtk:window-add-accel-group}")
 
-;;; --- menu-accel-path --------------------------------------------------------
+;;; --- gtk:menu-accel-path ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "accel-path" 'menu) t)
@@ -496,15 +497,15 @@ lambda (menu flipped final xflipped yflipped)    :run-first
     Accessor of the @slot[gtk:menu]{accel-path} slot of the @class{gtk:menu}
     class.
   @end{short}
-  The @sym{gtk:menu-accel-path} function retrieves the accelerator path for this
+  The @fun{gtk:menu-accel-path} function retrieves the accelerator path for this
   menu from which accelerator paths for its immediate children, its menu items,
-  can be constructed. The @sym{(setf gtk:menu-accel-path)} function sets an
+  can be constructed. The @setf{gtk:menu-accel-path} function sets an
   accelerator path.
 
   The main purpose of this function is to spare the programmer the inconvenience
   of having to call the @fun{gtk:menu-item-accel-path} function on each menu
   item that should support runtime user changable accelerators. Instead, by just
-  calling the @sym{gtk:menu-accel-path} function on their parent, each menu item
+  calling the @fun{gtk:menu-accel-path} function on their parent, each menu item
   of this menu, that contains a label describing its purpose, automatically
   gets an accel path assigned.
 
@@ -523,7 +524,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
   @see-function{gtk:menu-item-accel-path}
   @see-function{gtk:accel-map-add-entry}")
 
-;;; --- menu-active ------------------------------------------------------------
+;;; --- gtk:menu-active --------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "active" 'menu) t)
@@ -546,15 +547,14 @@ lambda (menu flipped final xflipped yflipped)    :run-first
   @begin{short}
     Accessor of the @slot[gtk:menu]{active} slot of the @class{gtk:menu} class.
   @end{short}
-  The @sym{gtk:menu-active} function returns the currently selected menu item
+  The @fun{gtk:menu-active} function returns the currently selected menu item
   from the menu, or -1 if no menu item is selected. The
-  @sym{(setf gtk:menu-active)} function selects the specified menu item. This
-  is used by the @class{gtk:combo-box} widget and should not be used by anyone
-  else.
+  @setf{gtk:menu-active} function selects the specified menu item. This is used
+  by the @class{gtk:combo-box} widget and should not be used by anyone else.
   @see-class{gtk:menu}
   @see-class{gtk:combo-box}")
 
-;;; --- menu-anchor-hints ------------------------------------------------------
+;;; --- gtk:menu-anchor-hints --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "anchor-hints" 'menu) t)
@@ -590,7 +590,8 @@ lambda (menu flipped final xflipped yflipped)    :run-first
   of the monitor. See the @fun{gtk:menu-popup-at-rect},
   @fun{gtk:menu-popup-at-widget}, @fun{gtk:menu-popup-at-pointer} functions,
   the @slot[gtk:menu]{rect-anchor-dx}, @slot[gtk:menu]{rect-anchor-dy},
-  @slot[gtk:menu]{menu-type-hint} properties, and the \"popped-up\" signal.
+  @slot[gtk:menu]{menu-type-hint} properties, and the @code{\"popped-up\"}
+  signal.
   @see-class{gtk:menu}
   @see-symbol{gdk:anchor-hints}
   @see-function{gtk:menu-popup-at-rect}
@@ -600,7 +601,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
   @see-function{gtk:menu-rect-anchor-dy}
   @see-function{gtk:menu-menu-type-hint}")
 
-;;; --- menu-attach-widget -----------------------------------------------------
+;;; --- gtk:menu-attach-widget -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "attach-widget" 'menu) t)
@@ -623,8 +624,8 @@ lambda (menu flipped final xflipped yflipped)    :run-first
     Accessor of the @slot[gtk:menu]{attach-widget} slot of the @class{gtk:menu}
     class.
   @end{short}
-  The @sym{gtk:menu-attach-widget} function returns the widget that the menu is
-  attached to. The @sym{(setf gtk:menu-attach-widget)} function sets the widget.
+  The @fun{gtk:menu-attach-widget} function returns the widget that the menu is
+  attached to. The @setf{gtk:menu-attach-widget} function sets the widget.
 
   Setting this property attaches the menu without a call of the
   @code{GtkMenuDetachFunc} callback function. If you need to use a detacher, use
@@ -633,7 +634,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
   @see-class{gtk:widget}
   @see-function{gtk:menu-attach-to-widget}")
 
-;;; --- menu-menu-type-hint ----------------------------------------------------
+;;; --- gtk:menu-menu-type-hint ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "menu-type-hint" 'menu) t)
@@ -660,7 +661,8 @@ lambda (menu flipped final xflipped yflipped)    :run-first
   object of the menu. See the @fun{gtk:menu-popup-at-rect},
   @fun{gtk:menu-popup-at-widget}, @fun{gtk:menu-popup-at-pointer} functions,
   the @slot[gtk:menu]{anchor-hints}, @slot[gtk:menu]{rect-anchor-dx},
-  @slot[gtk:menu]{rect-anchor-dy} properties, and the \"popped-up\" signal.
+  @slot[gtk:menu]{rect-anchor-dy} properties, and the @code{\"popped-up\"}
+  signal.
   @see-class{gtk:menu}
   @see-class{gdk:window}
   @see-symbol{gdk:window-type-hint}
@@ -671,7 +673,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
   @see-function{gtk:menu-rect-anchor-dx}
   @see-function{gtk:menu-rect-anchor-dy}")
 
-;;; --- menu-monitor -----------------------------------------------------------
+;;; --- gtk:menu-monitor -------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "monitor" 'menu) t)
@@ -693,9 +695,8 @@ lambda (menu flipped final xflipped yflipped)    :run-first
   @begin{short}
     Accessor of the @slot[gtk:menu]{monitor} slot of the @class{gtk:menu} class.
   @end{short}
-  The @sym{gtk:menu-monitor} function retrieves the number of the monitor on
-  which to show the menu. The @sym{(setf gtk:menu-monitor)} function sets the
-  monitor.
+  The @fun{gtk:menu-monitor} function retrieves the number of the monitor on
+  which to show the menu. The @setf{gtk:menu-monitor} function sets the monitor.
 
   This function should be called from a @symbol{gtk:menu-position-func} callback
   function if the menu should not appear on the same monitor as the pointer.
@@ -705,7 +706,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
   screen boundaries.
   @see-class{gtk:menu}")
 
-;;; --- menu-rect-anchor-dx ----------------------------------------------------
+;;; --- gtk:menu-rect-anchor-dx ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "rect-anchor-dx" 'menu) t)
@@ -732,7 +733,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
   See the @fun{gtk:menu-popup-at-rect}, @fun{gtk:menu-popup-at-widget},
   @fun{gtk:menu-popup-at-pointer} functions, the @slot[gtk:menu]{anchor-hints},
   @slot[gtk:menu]{rect-anchor-dx}, @slot[gtk:menu]{rect-anchor-dy} properties,
-  and the \"popped-up\" signal.
+  and the @code{\"popped-up\"} signal.
   @see-class{gtk:menu}
   @see-function{gtk:menu-popup-at-rect}
   @see-function{gtk:menu-popup-at-widget}
@@ -741,7 +742,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
   @see-function{gtk:menu-rect-anchor-dx}
   @see-function{gtk:menu-rect-anchor-dy}")
 
-;;; --- menu-rect-anchor-dy ----------------------------------------------------
+;;; --- gtk:menu-rect-anchor-dy ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "rect-anchor-dy" 'menu) t)
@@ -769,7 +770,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
   See the @fun{gtk:menu-popup-at-rect}, @fun{gtk:menu-popup-at-widget},
   @fun{gtk:menu-popup-at-pointer} functions, the @slot[gtk:menu]{anchor-hints},
   @slot[gtk:menu]{rect-anchor-dx}, @slot[gtk:menu]{rect-anchor-dy} properties,
-  and the \"popped-up\" signal.
+  and the @code{\"popped-up\"} signal.
   @see-class{gtk:menu}
   @see-function{gtk:menu-popup-at-rect}
   @see-function{gtk:menu-popup-at-widget}
@@ -778,7 +779,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
   @see-function{gtk:menu-rect-anchor-dx}
   @see-function{gtk:menu-rect-anchor-dy}")
 
-;;; --- menu-reserve-toggle-size -----------------------------------------------
+;;; --- gtk:menu-reserve-toggle-size -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "reserve-toggle-size"
@@ -805,17 +806,17 @@ lambda (menu flipped final xflipped yflipped)    :run-first
     Accessor of the @slot[gtk:menu]{reserve-toggle-size} slot of the
     @class{gtk:menu} class.
   @end{short}
-  The @sym{gtk:menu-reserve-toggle-size} function returns whether the menu
+  The @fun{gtk:menu-reserve-toggle-size} function returns whether the menu
   reserves space for toggles and icons, regardless of their actual presence.
-  The @sym{(setf gtk:menu-reserve-toggle-size)} function sets whether the menu
-  should reserve space.
+  The @setf{gtk:menu-reserve-toggle-size} function sets whether the menu should
+  reserve space.
 
   This property should only be changed from its default value for
   special purposes such as tabular menus. Regular menus that are connected to
   a menu bar or context menus should reserve toggle space for consistency.
   @see-class{gtk:menu}")
 
-;;; --- menu-tearoff-state -----------------------------------------------------
+;;; --- gtk:menu-tearoff-state -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "tearoff-state" 'menu) t)
@@ -838,20 +839,20 @@ lambda (menu flipped final xflipped yflipped)    :run-first
     Accessor of the @slot[gtk:menu]{tearoff-state} slot of the @class{gtk:menu}
     class.
   @end{short}
-  The @sym{gtk:menu-tearoff-state} function returns whether the menu is torn
-  off. The @sym{(setf gtk:menu-tearoff-state)} function changes the tearoff
-  state of the menu.
+  The @fun{gtk:menu-tearoff-state} function returns whether the menu is torn
+  off. The @setf{gtk:menu-tearoff-state} function changes the tearoff state of
+  the menu.
 
   A menu is normally displayed as drop down menu which persists as long as the
   menu is active. It can also be displayed as a tearoff menu which persists
   until it is closed or reattached.
   @begin[Warning]{dictionary}
-    The @sym{gtk:menu tearoff-state} function has been deprecated since version
+    The @fun{gtk:menu tearoff-state} function has been deprecated since version
     3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:menu}")
 
-;;; --- menu-tearoff-title -----------------------------------------------------
+;;; --- gtk:menu-tearoff-title -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "tearoff-title" 'menu) t)
@@ -875,15 +876,15 @@ lambda (menu flipped final xflipped yflipped)    :run-first
     Accessor of the @slot[gtk:menu]{tearoff-title} slot of the @class{gtk:menu}
     class.
   @end{short}
-  The @sym{gtk:menu-tearoff-title} function returns the title of the menu. The
-  @sym{(setf gtk:menu-tearoff-title)} function sets the title.
+  The @fun{gtk:menu-tearoff-title} function returns the title of the menu. The
+  @setf{gtk:menu-tearoff-title} function sets the title.
 
   The title is displayed when the menu is shown as a tearoff menu. If the
   @arg{title} argument is @code{nil}, the menu will see if it is attached to a
   parent menu item, and if so it will try to use the same text as that menu
   label of the item.
   @begin[Warning]{dictionary}
-    The @sym{gtk:menu-tearoff-title} function has been deprecated since version
+    The @fun{gtk:menu-tearoff-title} function has been deprecated since version
     3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:menu}")
@@ -892,7 +893,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 ;;; Child Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- menu-child-bottom-attach -----------------------------------------------
+;;; --- gtk:menu-child-bottom-attach -------------------------------------------
 
 (define-child-property menu-child-bottom-attach
                        "bottom-attach" "gint" t t t)
@@ -915,7 +916,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
   @see-class{gtk:menu}
   @see-class{gtk:widget}")
 
-;;; --- menu-child-left-attach -------------------------------------------------
+;;; --- gtk:menu-child-left-attach ---------------------------------------------
 
 (define-child-property menu-child-left-attach
                        "left-attach" "gint" t t t)
@@ -938,7 +939,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
   @see-class{gtk:menu}
   @see-class{gtk:widget}")
 
-;;; --- menu-child-right-attach ------------------------------------------------
+;;; --- gtk:menu-child-right-attach --------------------------------------------
 
 (define-child-property menu-child-right-attach
                        "right-attach" "gint" t t t)
@@ -961,7 +962,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
   @see-class{gtk:menu}
   @see-class{gtk:widget}")
 
-;;; --- menu-child-top-attach --------------------------------------------------
+;;; --- gtk:menu-child-top-attach ----------------------------------------------
 
 (define-child-property menu-child-top-attach
                        "top-attach" "gint" t t t)
@@ -993,7 +994,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 (defun menu-new ()
  #+liber-documentation
  "@version{#2023-3-21}
-  @return{A new @class{gtk:menu} widget.}
+  @return{The new @class{gtk:menu} widget.}
   @short{Creates a new menu.}
   @see-class{gtk:menu}"
   (make-instance 'menu))
@@ -1008,7 +1009,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
  #+liber-documentation
  "@version{2023-3-21}
   @argument[model]{a @class{g:menu-model} object}
-  @return{A new @class{gtk:menu} widget.}
+  @return{The new @class{gtk:menu} widget.}
   @begin{short}
     Creates a menu and populates it with menu items and submenus according to
     @arg{model}.
@@ -1139,7 +1140,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 
   Other properties that influence the behaviour of this function are
   the @slot[gtk:menu]{anchor-hints} and @slot[gtk:menu]{menu-type-hint}
-  properties. Connect to the \"popped-up\" signal to find out how it was
+  properties. Connect to the @code{\"popped-up\"} signal to find out how it was
   actually positioned.
   @see-class{gtk:menu}
   @see-class{gdk:window}
@@ -1195,7 +1196,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 
   Other properties that influence the behaviour of this function are
   the @slot[gtk:menu]{anchor-hints} and @slot[gtk:menu]{menu-type-hint}
-  properties. Connect to the \"popped-up\" signal to find out how it was
+  properties. Connect to the @code{\"popped-up\"} signal to find out how it was
   actually positioned.
   @see-class{gtk:menu}
   @see-class{gtk:widget}
@@ -1237,7 +1238,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
   Properties that influence the behaviour of this function are
   @slot[gtk:menu]{anchor-hints}, @slot[gtk:menu]{rect-anchor-dx},
   @slot[gtk:menu]{rect-anchor-dy}, and @slot[gtk:menu]{menu-type-hint}. Connect
-  to the \"popped-up\" signal to find out how it was actually positioned.
+  to the @code{\"popped-up\"} signal to find out how it was actually positioned.
   @see-class{gtk:menu}
   @see-class{gdk:event}
   @see-function{gtk:menu-popup-at-widget}
@@ -1356,7 +1357,7 @@ lambda (menu x y push)
   key press, that caused the initiation of the popup. Only if no such event is
   available, the @fun{gtk:current-event-time} function can be used instead.
   @begin[Warning]{dictionary}
-    The @sym{gtk:menu-popup-for-device} function has been deprecated since
+    The @fun{gtk:menu-popup-for-device} function has been deprecated since
     version 3.22 and should not be used in newly written code. Please use the
     @fun{gtk:menu-popup-at-widget}, @fun{gtk:menu-popup-at-pointer},
     or @fun{gtk:menu-popup-at-rect} functions instead.
@@ -1431,7 +1432,7 @@ lambda (menu x y push)
   caused the initiation of the popup. Only if no such event is available, the
   @fun{gtk:current-event-time} function can be used instead.
   @begin[Warning]{dictionary}
-    The @sym{gtk:menu-popup} function has been deprecated since version 3.22
+    The @fun{gtk:menu-popup} function has been deprecated since version 3.22
     and should not be used in newly written code. Please use the
     @fun{gtk:menu-popup-at-widget}, @fun{gtk:menu-popup-at-pointer}, or
     @fun{gtk:menu-popup-at-rect} functions instead.

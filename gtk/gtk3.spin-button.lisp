@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -149,8 +149,8 @@
       (liber:symbol-documentation 'spin-type)
  "@version{#2023-3-12}
   @begin{short}
-    The values of the @sym{gtk:spin-type} enumeration are used to specify the
-    change to make in the @fun{gtk:spin-button-spin} function.
+    The values of the @symbol{gtk:spin-type} enumeration are used to specify
+    the change to make in the @fun{gtk:spin-button-spin} function.
   @end{short}
   @begin{pre}
 (gobject:define-g-enum \"GtkSpinType\" spin-type
@@ -225,10 +225,10 @@
 
 #+liber-documentation
 (setf (documentation 'spin-button 'type)
- "@version{#2023-3-12}
+ "@version{2023-12-29}
   @begin{short}
-    A @sym{gtk:spin-button} widget is an ideal way to allow the user to set the
-    value of some attribute.
+    The @class{gtk:spin-button} widget is an ideal way to allow the user to set
+    the value of some attribute.
   @end{short}
   Rather than having to directly type a number into a @class{gtk:entry} widget,
   the spin button allows the user to click on one of two arrows to increment or
@@ -237,7 +237,7 @@
 
   @image[spinbutton]{Figure: GtkSpinButton}
 
-  The main properties of a @sym{gtk:spin-button} widget are through an
+  The main properties of a @class{gtk:spin-button} widget are through an
   adjustment. See the @class{gtk:adjustment} class for more details about an
   adjustment's properties. Note that the spin button will by default make its
   entry large enough to accomodate the lower and upper bounds of the adjustment,
@@ -263,7 +263,7 @@
  ╰── button.down
     @end{pre}
   @end{dictionary}
-  The @sym{gtk:spin-button} implementation main CSS node has the name
+  The @class{gtk:spin-button} implementation main CSS node has the name
   @code{spinbutton}. It creates subnodes for the entry and the two buttons,
   with these names. The button nodes have the @code{.up} and @code{.down} style
   classes. The @class{gtk:entry} subnodes, if present, are put below the
@@ -320,7 +320,7 @@ lambda (spinbutton scroll)    :action
       programmatically. The default bindings for this signal are Up/Down and
       PageUp and/PageDown.
       @begin[code]{table}
-        @entry[spinbutton]{The @sym{gtk:spin-button} widget on which the
+        @entry[spinbutton]{The @class{gtk:spin-button} widget on which the
           signal was emitted.}
         @entry[scroll]{A value of the @symbol{gtk:scroll-type} enumeration to
           specify the speed and amount of change.}
@@ -335,7 +335,7 @@ lambda (spinbutton new-value)    :run-last
       @arg{new-value} to the new value. The default conversion uses the
       @code{g_strtod()} function.
       @begin[code]{table}
-        @entry[spinbutton]{The @sym{gtk:spin-button} widget on which the
+        @entry[spinbutton]{The @class{gtk:spin-button} widget on which the
           signal was emitted.}
         @entry[new-value]{A pointer to a double float with the return location
           for the new value.}
@@ -390,8 +390,8 @@ lambda (spinbutton)    :run-last
   ... )
       @end{pre}
       @begin[code]{table}
-        @entry[spinbutton]{The @sym{gtk:spin-button} widget which received the
-          signal.}
+        @entry[spinbutton]{The @class{gtk:spin-button} widget which received
+          the signal.}
         @entry[Returns]{@em{True} if the value has been displayed.}
       @end{table}
     @subheading{The \"value-changed\" signal}
@@ -399,9 +399,9 @@ lambda (spinbutton)    :run-last
 lambda (spinbutton)    :run-last
       @end{pre}
       Is emitted when the value represented by @arg{spin-button} changes. Also
-      see the \"output\" signal.
+      see the @code{\"output\"} signal.
       @begin[code]{table}
-        @entry[spinbutton]{The @sym{gtk:spin-button} widget on which the
+        @entry[spinbutton]{The @class{gtk:spin-button} widget on which the
           signal was emitted.}
       @end{table}
     @subheading{The \"wrapped\" signal}
@@ -411,8 +411,8 @@ lambda (spinbutton)    :run-last
       Is emitted right after the spin button wraps from its maximum to minimum
       value or vice versa.
       @begin[code]{table}
-        @entry[spinbutton]{The @sym{gtk:spin-button} widget which received the
-          signal.}
+        @entry[spinbutton]{The @class{gtk:spin-button} widget which received
+          the signal.}
       @end{table}
   @end{dictionary}
   @see-constructor{gtk:spin-button-new}
@@ -431,7 +431,7 @@ lambda (spinbutton)    :run-last
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- spin-button-adjustment -------------------------------------------------
+;;; --- gtk:spin-button-adjustment ---------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "adjustment" 'spin-button) t)
@@ -453,13 +453,13 @@ lambda (spinbutton)    :run-last
     Accessor of the @slot[gtk:spin-button]{adjustment} slot of the
     @class{gtk:spin-button} class.
   @end{short}
-  The @sym{gtk:spin-button-adjustment} function gets the adjustment associated
-  with a spin button. The @sym{(setf gtk:spin-button-adjustment)} function
-  replaces the adjustment.
+  The @fun{gtk:spin-button-adjustment} function gets the adjustment associated
+  with a spin button. The @setf{gtk:spin-button-adjustment} function replaces
+  the adjustment.
   @see-class{gtk:spin-button}
   @see-class{gtk:adjustment}")
 
-;;; --- spin-button-climb-rate -------------------------------------------------
+;;; --- gtk:spin-button-climb-rate ---------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "climb-rate" 'spin-button) t)
@@ -481,12 +481,12 @@ lambda (spinbutton)    :run-last
     Accessor of the @slot[gtk:spin-button]{climb-rate} slot of the
     @class{gtk:spin-button} class.
   @end{short}
-  The @sym{gtk:spin-button-climb-rate} function gets the acceleration rate when
-  you hold down a button. The @sym{(setf gtk:spin-button-climb-rate} function
-  sets the acceleration rate.
+  The @fun{gtk:spin-button-climb-rate} function gets the acceleration rate when
+  you hold down a button. The @setf{gtk:spin-button-climb-rate} function sets
+  the acceleration rate.
   @see-class{gtk:spin-button}")
 
-;;; --- spin-button-digits -----------------------------------------------------
+;;; --- gtk:spin-button-digits -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "digits" 'spin-button) t)
@@ -509,12 +509,12 @@ lambda (spinbutton)    :run-last
     Accessor of the @slot[gtk:spin-button]{digits} slot of the
     @class{gtk:spin-button} class.
   @end{short}
-  The @sym{gtk:spin-button-digits} function fetches the precision to be
-  displayed by the spin button. The @sym{(setf gtk:spin-button-digits)}
-  function sets the precision. Up to 20 digit precision is allowed.
+  The @fun{gtk:spin-button-digits} function fetches the precision to be
+  displayed by the spin button. The @setf{gtk:spin-button-digits} function sets
+  the precision. Up to 20 digit precision is allowed.
   @see-class{gtk:spin-button}")
 
-;;; --- spin-button-numeric ----------------------------------------------------
+;;; --- gtk:spin-button-numeric ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "numeric" 'spin-button) t)
@@ -535,12 +535,12 @@ lambda (spinbutton)    :run-last
     Accessor of the @slot[gtk:spin-button]{numeric} slot of the
     @class{gtk:spin-button} class.
   @end{short}
-  The @sym{gtk:spin-button-numeric} function returns whether non numeric text
-  can be typed into the spin button. The @sym{(setf gtk:spin-button-numeric)}
+  The @fun{gtk:spin-button-numeric} function returns whether non numeric text
+  can be typed into the spin button. The @setf{gtk:spin-button-numeric}
   function sets the flag.
   @see-class{gtk:spin-button}")
 
-;;; --- spin-button-snap-to-ticks ----------------------------------------------
+;;; --- gtk:spin-button-snap-to-ticks ------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "snap-to-ticks" 'spin-button) t)
@@ -563,14 +563,14 @@ lambda (spinbutton)    :run-last
     Accessor of the @slot[gtk:spin-button]{snap-to-ticks} slot of the
     @class{gtk:spin-button} class.
   @end{short}
-  The @sym{gtk:spin-button-snap-to-ticks} function returns whether the values
-  are corrected to the nearest step. The
-  @sym{(setf gtk:spin-button-snap-to-ticks)} function sets the policy as to
-  whether values are corrected to the nearest step increment when a spin button
-  is activated after providing an invalid value.
+  The @fun{gtk:spin-button-snap-to-ticks} function returns whether the values
+  are corrected to the nearest step. The @setf{gtk:spin-button-snap-to-ticks}
+  function sets the policy as to whether values are corrected to the nearest
+  step increment when a spin button is activated after providing an invalid
+  value.
   @see-class{gtk:spin-button}")
 
-;;; --- spin-button-update-policy ----------------------------------------------
+;;; --- gtk:spin-button-update-policy ------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "update-policy" 'spin-button) t)
@@ -594,14 +594,14 @@ lambda (spinbutton)    :run-last
     Accessor of the @slot[gtk:spin-button]{update-policy} slot of the
     @class{gtk:spin-button} class.
   @end{short}
-  The @sym{gtk:spin-button-update-policy} function gets the update behavior of
-  a spin button. The @sym{(setf gtk:spin-button-update-policy)} function sets
-  the update behavior. This determines whether the spin button is always updated
-  or only when a valid value is set.
+  The @fun{gtk:spin-button-update-policy} function gets the update behavior of
+  a spin button. The @setf{gtk:spin-button-update-policy} function sets the
+  update behavior. This determines whether the spin button is always updated or
+  only when a valid value is set.
   @see-class{gtk:spin-button}
   @see-symbol{gtk:spin-button-update-policy}")
 
-;;; --- spin-button-value ------------------------------------------------------
+;;; --- gtk:spin-button-value --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "value" 'spin-button) t)
@@ -613,7 +613,7 @@ lambda (spinbutton)    :run-last
 (setf (liber:alias-for-function 'spin-button-value)
       "Accessor"
       (documentation 'spin-button-value 'function)
- "@version{#2023-3-12}
+ "@version{2023-12-29}
   @syntax[]{(gtk:spin-button-value object) => value}
   @syntax[]{(setf (gtk:spin-button-value object) value)}
   @argument[object]{a @class{gtk:spin-button} widget}
@@ -622,11 +622,11 @@ lambda (spinbutton)    :run-last
     Accessor of the @slot[gtk:spin-button]{value} slot of the
     @class{gtk:spin-button} class.
   @end{short}
-  The @sym{gtk:spin-button-value} function gets the value of the spin button.
-  The @sym{(setf gtk:spin-button-value)} function sets the value.
+  The @fun{gtk:spin-button-value} function gets the value of the spin button.
+  The @setf{gtk:spin-button-value} function sets the value.
   @see-class{gtk:spin-button}")
 
-;;; --- spin-button-wrap -------------------------------------------------------
+;;; --- gtk:spin-button-wrap ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "wrap" 'spin-button) t)
@@ -647,10 +647,10 @@ lambda (spinbutton)    :run-last
     Accessor of the @slot[gtk:spin-button]{wrap} slot of the
     @class{gtk:spin-button} class.
   @end{short}
-  The @sym{gtk:spin-button} function returns whether the spin button's value
+  The @fun{gtk:spin-button} function returns whether the spin button's value
   wraps around to the opposite limit when the upper or lower limit of the range
-  is exceeded. The @sym{(setf gtk:spin-button)} function sets the flag that
-  determines if a spin button value wraps around.
+  is exceeded. The @setf{gtk:spin-button} function sets the flag that determines
+  if a spin button value wraps around.
   @see-class{gtk:spin-button}")
 
 ;;; ----------------------------------------------------------------------------
@@ -797,10 +797,9 @@ lambda (spinbutton)    :run-last
   @begin{short}
     Accessor of the step and page increments of the spin button.
   @end{short}
-  The @sym{gtk:spin-button-increments} function gets the current step and page
+  The @fun{gtk:spin-button-increments} function gets the current step and page
   increments used by the spin button. The
-  @sym{(setf gtk:spin-button-increments)} function sets the step and page
-  increments.
+  @setf{gtk:spin-button-increments} function sets the step and page increments.
 
   This affects how quickly the value changes when the spin button's arrows are
   activated.
@@ -850,9 +849,9 @@ lambda (spinbutton)    :run-last
   @begin{short}
     Accessor of the minimum and maximum value of the spin button.
   @end{short}
-  The @sym{gtk:spin-button-range} function gets the minimum and maximum allowed
-  values for the spin button. The @sym{(setf gtk:spin-button-range)} function
-  sets the minimum and maximum allowable values.
+  The @fun{gtk:spin-button-range} function gets the minimum and maximum allowed
+  values for the spin button. The @setf{gtk:spin-button-range} function sets
+  the minimum and maximum allowable values.
 
   If the current value is outside this range, it will be adjusted to fit
   within the range, otherwise it will remain unchanged.
@@ -872,7 +871,7 @@ lambda (spinbutton)    :run-last
  #+liber-documentation
  "@version{#2023-3-12}
   @argument[spinbutton]{a @class{gtk:spin-button} widget}
-  @return{An integer with the value of @arg{spin-button}.}
+  @return{The integer with the value of @arg{spin-button}.}
   @begin{short}
     Gets the value of the spin button represented as an integer.
   @end{short}

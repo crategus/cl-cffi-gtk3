@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2023 Dieter Kaiser
+;;; Copyright (C) 2019 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -89,7 +89,7 @@
 (setf (documentation 'search-bar 'type)
  "@version{#2023-2-16}
   @begin{short}
-    The @sym{gtk:search-bar} widget is a container made to have a search entry
+    The @class{gtk:search-bar} widget is a container made to have a search entry
     built-in, possibly with additional connex widgets, such as drop-down menus,
     or buttons.
   @end{short}
@@ -108,7 +108,7 @@
   your search entry using the @fun{gtk:search-bar-connect-entry} function. The
   following example shows you how to create a more complex search entry.
   @begin[CSS nodes]{dictionary}
-    The @sym{gtk:search-bar} implementation has a single CSS node with name
+    The @class{gtk:search-bar} implementation has a single CSS node with name
     @code{searchbar}.
   @end{dictionary}
   @begin[Example]{dictionary}
@@ -182,7 +182,7 @@ main (gint argc,
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- search-bar-search-mode-enabled -----------------------------------------
+;;; --- gtk:search-bar-search-mode-enabled -------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "search-mode-enabled"
@@ -208,7 +208,7 @@ main (gint argc,
   Switches the search mode on or off.
   @see-class{gtk:search-bar}")
 
-;;; --- search-bar-show-close-button -------------------------------------------
+;;; --- gtk:search-bar-show-close-button ---------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "show-close-button"
@@ -231,8 +231,8 @@ main (gint argc,
     Accessor of the @slot[gtk:search-bar]{show-close-button} slot of the
     @class{gtk:search-bar} class.
   @end{short}
-  The @sym{gtk:search-bar-show-close-button} function returns whether the Close
-  button is shown. The @sym{(setf gtk:search-bar-show-close-button} function
+  The @fun{gtk:search-bar-show-close-button} function returns whether the Close
+  button is shown. The @setf{gtk:search-bar-show-close-button} function
   shows or hides the Close button. Applications that already have a \"search\"
   toggle button should not show a Close button in their search bar, as it
   duplicates the role of the toggle button.
@@ -245,7 +245,7 @@ main (gint argc,
 (defun search-bar-new ()
  #+liber-documentation
  "@version{#2023-2-16}
-  @return{A new @class{gtk:search-bar} widget.}
+  @return{The new @class{gtk:search-bar} widget.}
   @begin{short}
     Creates a search bar.
   @end{short}
@@ -298,19 +298,20 @@ main (gint argc,
 
 (cffi:defcfun ("gtk_search_bar_handle_event" search-bar-handle-event) :boolean
  #+liber-documentation
- "@version{#2023-2-16}
-  @argument[search-bar]{a @class{gtk:search-bar} widget}
-  @argument[event]{a @class{gdk:event} event containing key press events}
-  @return{@var{+gdk-event-stop+} if the key press event resulted in text being
-    entered in the search entry, and revealing the search bar if necessary,
-    @var{+gdk-event-propagate+} otherwise.}
+ "@version{#2023-12-19}
+  @argument[searchbar]{a @class{gtk:search-bar} widget}
+  @argument[event]{a @class{gdk:event} instance containing key press events}
+  @return{The @var{gdk:+gdk-event-stop+} value if the key press event resulted
+    in text being entered in the search entry, and revealing the search bar if
+    necessary, @var{gdk:+gdk-event-propagate+} otherwise.}
   @begin{short}
     This function should be called when the toplevel window which contains the
     search bar received a key event.
   @end{short}
   If the key event is handled by the search bar, the bar will be shown, the
-  entry populated with the entered text and @var{+gdk-event-stop+} will be
-  returned. The caller should ensure that events are not propagated further.
+  entry populated with the entered text and the @var{gdk:+gdk-event-stop+} value
+  will be returned. The caller should ensure that events are not propagated
+  further.
 
   If no entry has been connected to the search bar, using the
   @fun{gtk:search-bar-connect-entry} function, this function will return
@@ -344,7 +345,7 @@ create_toplevel (void)
   @end{dictionary}
   @see-class{gtk:search-bar}
   @see-function{gtk:search-bar-connect-entry}"
-  (search-bar (g:object search-bar))
+  (searchbar (g:object search-bar))
   (event (g:boxed gdk:event)))
 
 (export 'search-bar-handle-event)

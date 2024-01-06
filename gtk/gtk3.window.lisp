@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -37,32 +37,71 @@
 ;;;     GtkWindowType
 ;;;     GtkWindowPosition
 ;;;
+;;; Accessors
+;;;
+;;;     gtk_window_get_accept_focus
+;;;     gtk_window_set_accept_focus
+;;;     gtk_window_get_application
+;;;     gtk_window_set_application
+;;;     gtk_window_get_attached_to
+;;;     gtk_window_set_attached_to
+;;;     gtk_window_get_decorated
+;;;     gtk_window_set_decorated
+;;;     gtk_window_get_deletable
+;;;     gtk_window_set_deletable
+;;;     gtk_window_get_destroy_with_parent
+;;;     gtk_window_set_destroy_with_parent
+;;;     gtk_window_get_focus_on_map
+;;;     gtk_window_set_focus_on_map
+;;;     gtk_window_get_focus_visible
+;;;     gtk_window_set_focus_visible
+;;;     gtk_window_set_gravity
+;;;     gtk_window_get_gravity
+;;;     gtk_window_get_has_resize_grip
+;;;     gtk_window_set_has_resize_grip
+;;;     gtk_window_get_hide_titlebar_when_maximized
+;;;     gtk_window_set_hide_titlebar_when_maximized
+;;;     gtk_window_get_icon
+;;;     gtk_window_set_icon
+;;;     gtk_window_get_icon_name
+;;;     gtk_window_set_icon_name
+;;;     gtk_window_is_active
+;;;     gtk_window_is_maximized
+;;;     gtk_window_get_mnemonics_visible
+;;;     gtk_window_set_mnemonics_visible
+;;;     gtk_window_get_modal
+;;;     gtk_window_set_modal
+;;;     gtk_window_get_resizable
+;;;     gtk_window_set_resizable
+;;;     gtk_window_get_role
+;;;     gtk_window_set_role
+;;;     gtk_window_set_screen
+;;;     gtk_window_get_screen
+;;;     gtk_window_get_skip_pager_hint
+;;;     gtk_window_set_skip_pager_hint
+;;;     gtk_window_get_skip_taskbar_hint
+;;;     gtk_window_set_skip_taskbar_hint
+;;;     gtk_window_get_title
+;;;     gtk_window_set_title
+;;;     gtk_window_get_transient_for
+;;;     gtk_window_set_transient_for
+;;;     gtk_window_get_type_hint
+;;;     gtk_window_set_type_hint
+;;;     gtk_window_get_urgency_hint
+;;;     gtk_window_set_urgency_hint
+;;;
 ;;; Functions
 ;;;
 ;;;     gtk_window_new
-;;;     gtk_window_set_title                               Accessor
 ;;;     gtk_window_set_wmclass
-;;;     gtk_window_set_resizable                           Accessor
-;;;     gtk_window_get_resizable                           Accessor
 ;;;     gtk_window_add_accel_group
 ;;;     gtk_window_remove_accel_group
 ;;;     gtk_window_activate_focus
 ;;;     gtk_window_activate_default
-;;;     gtk_window_set_modal                               Accessor
 ;;;     gtk_window_set_default_size
 ;;;     gtk_window_set_default_geometry
 ;;;     gtk_window_set_geometry_hints
-;;;     gtk_window_set_gravity                             Accessor
-;;;     gtk_window_get_gravity                             Accessor
 ;;;     gtk_window_set_position
-;;;     gtk_window_set_transient_for                       Accessor
-;;;     gtk_window_set_attached_to                         Accessor
-;;;     gtk_window_set_destroy_with_parent                 Accessor
-;;;     gtk_window_set_hide_titlebar_when_maximized        Accessor
-;;;     gtk_window_set_screen                              Accessor
-;;;     gtk_window_get_screen                              Accessor
-;;;     gtk_window_is_active                               Accessor
-;;;     gtk_window_is_maximized                            Accessor
 ;;;     gtk_window_has_toplevel_focus
 ;;;     gtk_window_list_toplevels
 ;;;     gtk_window_add_mnemonic
@@ -84,47 +123,20 @@
 ;;;     gtk_window_maximize
 ;;;     gtk_window_unmaximize
 ;;;     gtk_window_fullscreen
-;;;     gtk_window_fullscreen_on_monitor ()
+;;;     gtk_window_fullscreen_on_monitor
 ;;;     gtk_window_unfullscreen
 ;;;     gtk_window_set_keep_above
 ;;;     gtk_window_set_keep_below
 ;;;     gtk_window_begin_resize_drag
 ;;;     gtk_window_begin_move_drag
-;;;     gtk_window_set_decorated                           Accessor
-;;;     gtk_window_set_deletable                           Accessor
 ;;;     gtk_window_set_mnemonic_modifier
-;;;     gtk_window_set_type_hint                           Accessor
-;;;     gtk_window_set_skip_taskbar_hint                   Accessor
-;;;     gtk_window_set_skip_pager_hint                     Accessor
-;;;     gtk_window_set_urgency_hint                        Accessor
-;;;     gtk_window_set_accept_focus                        Accessor
-;;;     gtk_window_set_focus_on_map                        Accessor
-;;;     gtk_window_set_startup_id                          Accessor
-;;;     gtk_window_set_role                                Accessor
-;;;     gtk_window_get_decorated                           Accessor
-;;;     gtk_window_get_deletable                           Accessor
 ;;;     gtk_window_get_default_icon_list
 ;;;     gtk_window_get_default_icon_name
 ;;;     gtk_window_get_default_size
-;;;     gtk_window_get_destroy_with_parent                 Accessor
-;;;     gtk_window_get_hide_titlebar_when_maximized        Accessor
-;;;     gtk_window_get_icon                                Accessor
 ;;;     gtk_window_get_icon_list
-;;;     gtk_window_get_icon_name                           Accessor
 ;;;     gtk_window_get_mnemonic_modifier
-;;;     gtk_window_get_modal                               Accessor
 ;;;     gtk_window_get_position
-;;;     gtk_window_get_role                                Accessor
 ;;;     gtk_window_get_size
-;;;     gtk_window_get_title                               Accessor
-;;;     gtk_window_get_transient_for                       Accessor
-;;;     gtk_window_get_attached_to                         Accessor
-;;;     gtk_window_get_type_hint                           Accessor
-;;;     gtk_window_get_skip_taskbar_hint                   Accessor
-;;;     gtk_window_get_skip_pager_hint                     Accessor
-;;;     gtk_window_get_urgency_hint                        Accessor
-;;;     gtk_window_get_accept_focus                        Accessor
-;;;     gtk_window_get_focus_on_map                        Accessor
 ;;;     gtk_window_get_group
 ;;;     gtk_window_has_group
 ;;;     gtk_window_get_window_type
@@ -137,23 +149,13 @@
 ;;;     gtk_window_set_default_icon
 ;;;     gtk_window_set_default_icon_from_file
 ;;;     gtk_window_set_default_icon_name
-;;;     gtk_window_set_icon                                Accessor
 ;;;     gtk_window_set_icon_list
 ;;;     gtk_window_set_icon_from_file
-;;;     gtk_window_set_icon_name                           Accessor
 ;;;     gtk_window_set_auto_startup_notification
 ;;;     gtk_window_get_opacity
 ;;;     gtk_window_set_opacity
-;;;     gtk_window_get_mnemonics_visible                   Accessor
-;;;     gtk_window_set_mnemonics_visible                   Accessor
-;;;     gtk_window_get_focus_visible                       Accessor
-;;;     gtk_window_set_focus_visible                       Accessor
-;;;     gtk_window_set_has_resize_grip                     Accessor
-;;;     gtk_window_get_has_resize_grip                     Accessor
 ;;;     gtk_window_resize_grip_is_visible
 ;;;     gtk_window_get_resize_grip_area
-;;;     gtk_window_get_application                         Accessor
-;;;     gtk_window_set_application                         Accessor
 ;;;     gtk_window_set_has_user_ref_count
 ;;;     gtk_window_set_titlebar
 ;;;     gtk_window_get_titlebar
@@ -244,7 +246,7 @@
 (setf (liber:alias-for-symbol 'window-type)
       "GEnum"
       (liber:symbol-documentation 'window-type)
- "@version{#2023-3-30}
+ "@version{2023-12-25}
   @begin{short}
     An enumeration for the possible types of a @class{gtk:window} widget.
   @end{short}
@@ -293,7 +295,7 @@
 (setf (liber:alias-for-symbol 'window-position)
       "GEnum"
       (liber:symbol-documentation 'window-position)
- "@version{#2023-3-30}
+ "@version{2023-12-25}
   @begin{short}
     Window placement can be influenced using this enumeration.
   @end{short}
@@ -441,9 +443,9 @@
 
 #+liber-documentation
 (setf (documentation 'window 'type)
- "@version{#2023-3-30}
+ "@version{2023-12-25}
   @begin{short}
-    A @sym{gtk:window} widget is a toplevel window which can contain other
+    A @class{gtk:window} widget is a toplevel window which can contain other
     widgets.
   @end{short}
 
@@ -453,7 +455,7 @@
   system and allow the user to manipulate the window, e.g. to resize it, move
   it, or close it.
   @begin[GtkWindow as GtkBuildable]{dictionary}
-    The @sym{gtk:window} implementation of the @class{gtk:buildable} interface
+    The @class{gtk:window} implementation of the @class{gtk:buildable} interface
     supports a custom @code{<accel-groups>} element, which supports any number
     of @code{<group>} elements representing the @class{gtk:accel-group} objects
     you want to add to your window. This is synonymous with the
@@ -471,7 +473,7 @@
  <!-- -->
  <object class=\"GtkAccelGroup\" id=\"accelgroup1\"/>
     @end{pre}
-    The @sym{gtk:window} implementation of the @class{gtk:buildable} interface
+    The @class{gtk:window} implementation of the @class{gtk:buildable} interface
     supports setting a child as the titlebar by specifying @code{\"titlebar\"}
     as the @code{\"type\"} attribute of a @code{<child>} element.
   @end{dictionary}
@@ -482,20 +484,20 @@
  ├── <titlebar child>.titlebar [.default-decoration]
  ╰── <child>
     @end{pre}
-    The @sym{gtk:window} implementation has a main CSS node with name
+    The @class{gtk:window} implementation has a main CSS node with name
     @code{window} and @code{.background} style class, and a subnode with name
     @code{decoration}.
 
     Style classes that are typically used with the main CSS node are
     @code{.csd}, when client-side decorations are in use, @code{.solid-csd},
     for client-side decorations without invisible borders, @code{.ssd}, used by
-    mutter when rendering server-side decorations. The @sym{gtk:window}
+    mutter when rendering server-side decorations. The @class{gtk:window}
     implementation also represents window states with the following style
     classes on the main node: @code{.tiled}, @code{.maximized},
     @code{.fullscreen}. Specialized types of window often add their own
     discriminating style classes, such as @code{.popup} or @code{.tooltip}.
 
-    The @sym{gtk:window} implementation adds the @code{.titlebar} and
+    The @class{gtk:window} implementation adds the @code{.titlebar} and
     @code{.default-decoration} style classes to the widget that is added as a
     titlebar child.
   @end{dictionary}
@@ -524,7 +526,7 @@ lambda (window)    :action
       The signal is a keybinding signal which gets emitted when the user
       activates the default widget of the window.
       @begin[code]{table}
-        @entry[window]{The @sym{gtk:window} widget which received the signal.}
+        @entry[window]{The @class{gtk:window} widget which received the signal.}
       @end{table}
     @subheading{The \"activate-focus\" signal}
       @begin{pre}
@@ -533,7 +535,7 @@ lambda (window)    :action
       The signal is a keybinding signal which gets emitted when the user
       activates the currently focused widget of the window.
       @begin[code]{table}
-        @entry[window]{The @sym{gtk:window} widget which received the signal.}
+        @entry[window]{The @class{gtk:window} widget which received the signal.}
       @end{table}
     @subheading{The \"enable-debugging\" signal}
       @begin{pre}
@@ -546,7 +548,7 @@ lambda (window toggle)    :action
       The default bindings for this signal are the @kbd{Ctrl-Shift-I} and
       @kbd{Ctrl-Shift-D} keys.
       @begin[code]{table}
-        @entry[window]{The @sym{gtk:window} widget on which the signal is
+        @entry[window]{The @class{gtk:window} widget on which the signal is
           emitted.}
         @entry[toggle]{A boolean which toggles the debugger.}
         @entry[Returns]{A boolean which is @em{true} if the key binding was
@@ -559,7 +561,7 @@ lambda (window)    :run-first
       The signal gets emitted when the set of accelerators or mnemonics that are
       associated with the window changes.
       @begin[code]{table}
-        @entry[window]{The @sym{gtk:window} widget which received the signal.}
+        @entry[window]{The @class{gtk:window} widget which received the signal.}
       @end{table}
     @subheading{The \"set-focus\" signal}
       @begin{pre}
@@ -568,7 +570,7 @@ lambda (window widget)    :run-last
       The signal is emitted whenever the currently focused widget in this window
       changes.
       @begin[code]{table}
-        @entry[window]{The @sym{gtk:window} widget which received the signal.}
+        @entry[window]{The @class{gtk:window} widget which received the signal.}
         @entry[widget]{The newly focused @class{gtk:widget} object.}
       @end{table}
   @end{dictionary}
@@ -613,7 +615,7 @@ lambda (window widget)    :run-last
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- window-accept-focus ----------------------------------------------------
+;;; --- gtk:window-accept-focus ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "accept-focus" 'window) t)
@@ -634,12 +636,12 @@ lambda (window widget)    :run-last
     Accessor of the @slot[gtk:window]{accept-focus} slot of the
     @class{gtk:window} class.
   @end{short}
-  The @sym{gtk:window-accept-focus} function gets the value of the hint. The
-  @sym{(setf gtk:window-accept-focus)} function sets the hint. Windows may set
-  a hint asking the desktop environment not to receive the input focus.
+  The @fun{gtk:window-accept-focus} function gets the value of the hint. The
+  @setf{gtk:window-accept-focus} function sets the hint. Windows may set a hint
+  asking the desktop environment not to receive the input focus.
   @see-class{gtk:window}")
 
-;;; --- window-application -----------------------------------------------------
+;;; --- gtk:window-application -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "application" 'window) t)
@@ -650,13 +652,13 @@ lambda (window widget)    :run-last
   @fun{g:application-hold} function for a way to keep it alive without windows.
   Normally, the connection between the application and the window will remain
   until the window is destroyed, but you can explicitly remove it by setting
-  the @code{application} property to @code{nil}.")
+  the @slot[gtk:window]{application} property to @code{nil}.")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'window-application)
       "Accessor"
       (documentation 'window-application 'function)
- "@version{#2023-3-30}
+ "@version{2024-1-1}
   @syntax[]{(gtk:window-application object) => application}
   @syntax[]{(setf (gtk:window-application object) application)}
   @argument[object]{a @class{gtk:window} widget}
@@ -665,14 +667,14 @@ lambda (window widget)    :run-last
     Accessor of the @slot[gtk:window]{application} slot of the
     @class{gtk:window} class.
   @end{short}
-  The @sym{gtk:window-application} function gets the application associated with
-  the window. The @sym{(setf gtk:window-application)} function sets or unsets
-  the application. The application will be kept alive for at least as long as
-  the window is open.
+  The @fun{gtk:window-application} function gets the application associated with
+  the window. The @setf{gtk:window-application} function sets or unsets the
+  application. The application will be kept alive for at least as long as the
+  window is open.
   @see-class{gtk:window}
   @see-class{gtk:application}")
 
-;;; --- window-attached-to -----------------------------------------------------
+;;; --- gtk:window-attached-to -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "attached-to" 'window) t)
@@ -697,9 +699,9 @@ lambda (window widget)    :run-last
     Accessor of the @slot[gtk:window]{attached-to} slot of the
     @class{gtk:window} class.
   @end{short}
-  The @sym{gtk:window-attached-to} function returns the widget where the window
+  The @fun{gtk:window-attached-to} function returns the widget where the window
   is attached, or @code{nil} if the window is not attached to any widget. The
-  @sym{(setf gtk:window-attached-to)} function marks the window as attached to
+  @setf{gtk:window-attached-to} function marks the window as attached to
   @arg{widget}. This creates a logical binding between the window and the widget
   it belongs to, which is used by GTK to propagate information such as styling
   or accessibility to the window as if it was a children of @arg{widget}.
@@ -718,7 +720,7 @@ lambda (window widget)    :run-last
   @see-class{gtk:widget}
   @see-function{gtk:window-transient-for}")
 
-;;; --- window-decorated -------------------------------------------------------
+;;; --- gtk:window-decorated ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "decorated" 'window) t)
@@ -739,7 +741,7 @@ lambda (window widget)    :run-last
     Accessor of the @slot[gtk:window]{decorated} slot of the @class{gtk:window}
     class.
   @end{short}
-  The @sym{gtk:window-decorated} function returns whether the window has been
+  The @fun{gtk:window-decorated} function returns whether the window has been
   set to have decorations such as a title bar.
 
   By default, windows are decorated with a title bar, resize controls, etc.
@@ -755,7 +757,7 @@ lambda (window widget)    :run-last
   @see-class{gtk:window}
   @see-function{gtk:widget-show}")
 
-;;; --- window-default-height --------------------------------------------------
+;;; --- gtk:window-default-height ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "default-height" 'window) t)
@@ -782,7 +784,7 @@ lambda (window widget)    :run-last
   @see-class{gtk:window}
   @see-function{gtk:window-default-size}")
 
-;;; --- window-default-width ---------------------------------------------------
+;;; --- gtk:window-default-width -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "default-width" 'window) t)
@@ -809,7 +811,7 @@ lambda (window widget)    :run-last
   @see-class{gtk:window}
   @see-function{gtk:window-default-size}")
 
-;;; --- window-deletable -------------------------------------------------------
+;;; --- gtk:window-deletable ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "deletable" 'window) t)
@@ -830,7 +832,7 @@ lambda (window widget)    :run-last
     Accessor of the @slot[gtk:window]{deletable} slot of the @class{gtk:window}
     class.
   @end{short}
-  The @sym{gtk:window-deletable} function returns whether the window has been
+  The @fun{gtk:window-deletable} function returns whether the window has been
   set to have a Close button.
 
   By default, windows have a Close button in the window frame. Some window
@@ -847,7 +849,7 @@ lambda (window widget)    :run-last
   @see-class{gtk:window}
   @see-function{gtk:widget-show}")
 
-;;; --- window-destroy-with-parent ---------------------------------------------
+;;; --- gtk:window-destroy-with-parent -----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "destroy-with-parent" 'window) t)
@@ -870,18 +872,18 @@ lambda (window widget)    :run-last
     Accessor of the @slot[gtk:window]{destroy-with-parent} slot of the
     @class{gtk:window} class.
   @end{short}
-  The @sym{gtk:window-destroy-with-parent} function returns whether the window
+  The @fun{gtk:window-destroy-with-parent} function returns whether the window
   will be destroyed with its transient parent. The
-  @sym{(setf gtk:window-destroy-with-parent)} function sets whether to destroy
-  the window with its transient parent. If the @arg{setting} argument is
-  @em{true}, then destroying the transient parent of the window will also
-  destroy the window itself.
+  @setf{gtk:window-destroy-with-parent} function sets whether to destroy the
+  window with its transient parent. If the @arg{setting} argument is @em{true},
+  then destroying the transient parent of the window will also destroy the
+  window itself.
 
   This is useful for dialogs that should not persist beyond the lifetime of the
   main window they are associated with.
   @see-class{gtk:window}")
 
-;;; --- window-focus-on-map ----------------------------------------------------
+;;; --- gtk:window-focus-on-map ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "focus-on-map" 'window) t)
@@ -907,7 +909,7 @@ lambda (window widget)    :run-last
   input focus when the window is mapped.
   @see-class{gtk:window}")
 
-;;; --- window-focus-visible ---------------------------------------------------
+;;; --- gtk:window-focus-visible -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "focus-visible" 'window) t)
@@ -938,7 +940,7 @@ lambda (window widget)    :run-last
   be set by applications.
   @see-class{gtk:window}")
 
-;;; --- window-gravity ---------------------------------------------------------
+;;; --- gtk:window-gravity -----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gravity" 'window) t)
@@ -971,7 +973,7 @@ lambda (window widget)    :run-last
   @see-symbol{gdk:gravity}
   @see-function{gtk:window-move}")
 
-;;; --- window-has-resize-grip -------------------------------------------------
+;;; --- gtk:window-has-resize-grip ---------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "has-resize-grip" 'window) t)
@@ -997,13 +999,13 @@ lambda (window widget)    :run-last
     @class{gtk:window} class.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:window-has-resize-grip} function has been deprecated since
+    The @fun{gtk:window-has-resize-grip} function has been deprecated since
     version 3.14 and should not be used in newly written code. Resize grips
     have been removed.
   @end{dictionary}
   @see-class{gtk:window}")
 
-;;; --- window-has-toplevel-focus ----------------------------------------------
+;;; --- gtk:window-has-toplevel-focus ------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "has-toplevel-focus" 'window) t)
@@ -1031,7 +1033,7 @@ lambda (window widget)    :run-last
   @see-class{gtk:plug}
   @see-function{gtk:window-is-active}")
 
-;;; --- window-hide-titlebar-when-maximized ------------------------------------
+;;; --- gtk:window-hide-titlebar-when-maximized --------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "hide-titlebar-when-maximized"
@@ -1055,10 +1057,10 @@ lambda (window widget)    :run-last
     Accessor of the @slot[gtk:window]{hide-titlebar-when-maximized} slot of the
     @class{gtk:window} class.
   @end{short}
-  The @sym{gtk:window-hide-titlebar-when-maximized} function returns whether
+  The @fun{gtk:window-hide-titlebar-when-maximized} function returns whether
   the window has requested to have its titlebar hidden when maximized. The
-  @sym{(setf gtk:window-hide-titlebar-when-maximized)} function sets whether to
-  hide the titlebar when the window is maximized.
+  @setf{gtk:window-hide-titlebar-when-maximized} function sets whether to hide
+  the titlebar when the window is maximized.
 
   If the @arg{setting} argument is @em{true}, then the window will request that
   its titlebar should be hidden when maximized. This is useful for windows that
@@ -1068,7 +1070,7 @@ lambda (window widget)    :run-last
   effect.
   @see-class{gtk:window}")
 
-;;; --- window-icon ------------------------------------------------------------
+;;; --- gtk:window-icon --------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "icon" 'window) t)
@@ -1089,12 +1091,12 @@ lambda (window widget)    :run-last
     Accessor of the @slot[gtk:window]{icon} slot of the @class{gtk:window}
     class.
   @end{short}
-  The @sym{gtk:window-icon} function gets the icon or if you have called the
+  The @fun{gtk:window-icon} function gets the icon or if you have called the
   @fun{gtk:window-icon-list} function, gets the first icon in the icon list.
-  The @sym{(setf gtk:window-icon)} function sets up the icon representing the
-  window. This icon is used when the window is minimized, also known as
-  iconified. Some window managers or desktop environments may also place it in
-  the window frame, or display it in other contexts.
+  The @setf{gtk:window-icon} function sets up the icon representing the window.
+  This icon is used when the window is minimized, also known as iconified. Some
+  window managers or desktop environments may also place it in the window frame,
+  or display it in other contexts.
 
   The icon should be provided in whatever size it was naturally drawn. That is,
   do not scale the image before passing it to GTK. Scaling is postponed until
@@ -1112,7 +1114,7 @@ lambda (window widget)    :run-last
   @see-function{gtk:window-icon-list}
   @see-function{gtk:window-default-icon-list}")
 
-;;; --- window-icon-name -------------------------------------------------------
+;;; --- gtk:window-icon-name ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "icon-name" 'window) t)
@@ -1134,9 +1136,9 @@ lambda (window widget)    :run-last
     Accessor of the @slot[gtk:window]{icon-name} slot of the @class{gtk:window}
     class.
   @end{short}
-  The @sym{gtk:window-icon-name} function returns the name of the themed icon
-  for the window. The @sym{(setf gtk:window-icon-name)} function sets the icon
-  for the window from a named themed icon. See the @class{gtk:icon-theme}
+  The @fun{gtk:window-icon-name} function returns the name of the themed icon
+  for the window. The @setf{gtk:window-icon-name} function sets the icon for
+  the window from a named themed icon. See the @class{gtk:icon-theme}
   documentation for more details.
 
   Note that this has nothing to do with the @code{WM_ICON_NAME} property which
@@ -1144,7 +1146,7 @@ lambda (window widget)    :run-last
   @see-class{gtk:window}
   @see-class{gtk:icon-theme}")
 
-;;; --- window-is-active -------------------------------------------------------
+;;; --- gtk:window-is-active ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "is-active" 'window) t)
@@ -1176,7 +1178,7 @@ lambda (window widget)    :run-last
   @see-class{gtk:plug}
   @see-function{gtk:window-has-toplevel-focus}")
 
-;;; --- window-is-maximized ----------------------------------------------------
+;;; --- gtk:window-is-maximized ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "is-maximized" 'window) t)
@@ -1206,7 +1208,7 @@ lambda (window widget)    :run-last
   @see-function{gtk:window-maximize}
   @see-function{gtk:window-unmaximize}")
 
-;;; --- window-mnemonics-visible -----------------------------------------------
+;;; --- gtk:window-mnemonics-visible -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "mnemonics-visible" 'window) t)
@@ -1237,7 +1239,7 @@ lambda (window widget)    :run-last
   @see-class{gtk:window}
   @see-function{gtk:settings-gtk-auto-mnemonics}")
 
-;;; --- window-modal -----------------------------------------------------------
+;;; --- gtk:window-modal -------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "modal" 'window) t)
@@ -1259,8 +1261,8 @@ lambda (window widget)    :run-last
     Accessor of the @slot[gtk:window]{modal} slot of the @class{gtk:window}
     class.
   @end{short}
-  The @sym{gtk:window-modal} function returns @em{true} if the window is set to
-  be modal and establishes a grab when shown. The @sym{(setf gtk:window-modal)}
+  The @fun{gtk:window-modal} function returns @em{true} if the window is set to
+  be modal and establishes a grab when shown. The @setf{gtk:window-modal}
   function sets a window modal or non-modal.
 
   Modal windows prevent interaction with other windows in the same application.
@@ -1271,7 +1273,7 @@ lambda (window widget)    :run-last
   @see-class{gtk:window}
   @see-function{gtk:window-transient-for}")
 
-;;; --- window-opacity ---------------------------------------------------------
+;;; --- gtk:window-opacity -----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "opacity" 'window) t)
@@ -1295,14 +1297,14 @@ lambda (window widget)    :run-last
     class.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:window-opacity} function has been deprecated since version 3.8
+    The @fun{gtk:window-opacity} function has been deprecated since version 3.8
     and should not be used in newly written code. Use the
     @fun{gtk:widget-opacity} function instead.
   @end{dictionary}
   @see-class{gtk:window}
   @see-function{gtk:widget-opacity}")
 
-;;; --- window-resizable -------------------------------------------------------
+;;; --- gtk:window-resizable ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "resizable" 'window) t)
@@ -1327,7 +1329,7 @@ lambda (window widget)    :run-last
   default.
   @see-class{gtk:window}")
 
-;;; --- window-resize-grip-visible ---------------------------------------------
+;;; --- gtk:window-resize-grip-visible -----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "resize-grip-visible" 'window) t)
@@ -1352,13 +1354,13 @@ lambda (window widget)    :run-last
     @class{gtk:window} class.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:window-resize-grip-visible} function has been deprecated
+    The @fun{gtk:window-resize-grip-visible} function has been deprecated
     since version 3.14 and should not be used in newly written code.
     Resize grips have been removed.
   @end{dictionary}
   @see-class{gtk:window}")
 
-;;; --- window-role ------------------------------------------------------------
+;;; --- gtk:window-role --------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "role" 'window) t)
@@ -1380,10 +1382,10 @@ lambda (window widget)    :run-last
     Accessor of the @slot[gtk:window]{role} slot of the @class{gtk:window}
     class.
   @end{short}
-  The @sym{gtk:window-role} function returns the role of the window if set, or
-  @code{nil}. The @sym{(setf gtk:window-role)} function sets an unique
-  identifier for the window to be used when restoring a session. This function
-  is only useful on X11, not with other GTK targets.
+  The @fun{gtk:window-role} function returns the role of the window if set, or
+  @code{nil}. The @setf{gtk:window-role} function sets an unique identifier for
+  the window to be used when restoring a session. This function is only useful
+  on X11, not with other GTK targets.
 
   In combination with the window title, the window role allows a window
   manager to identify \"the same\" window when an application is restarted. So
@@ -1396,7 +1398,7 @@ lambda (window widget)    :run-last
   restoring the session.
   @see-class{gtk:window}")
 
-;;; --- window-screen ----------------------------------------------------------
+;;; --- gtk:window-screen ------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "screen" 'window) t)
@@ -1416,14 +1418,14 @@ lambda (window widget)    :run-last
     Accessor of the @slot[gtk:window]{screen} slot of the @class{gtk:window}
     class.
   @end{short}
-  The @sym{gtk:window-screen} function returns the screen associated with the
-  window. The @sym{(setf gtk:window-screen)} function sets the screen where the
+  The @fun{gtk:window-screen} function returns the screen associated with the
+  window. The @setf{gtk:window-screen} function sets the screen where the
   window is displayed. If the window is already mapped, it will be unmapped,
   and then remapped on the new screen.
   @see-class{gtk:window}
   @see-class{gdk:screen}")
 
-;;; --- window-skip-pager-hint -------------------------------------------------
+;;; --- gtk:window-skip-pager-hint ---------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "skip-pager-hint" 'window) t)
@@ -1452,7 +1454,7 @@ lambda (window widget)    :run-last
   displays a thumbnail representation of the windows on the screen.
   @see-class{gtk:window}")
 
-;;; --- window-skip-taskbar-hint -----------------------------------------------
+;;; --- gtk:window-skip-taskbar-hint -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "skip-taskbar-hint" 'window) t)
@@ -1479,7 +1481,7 @@ lambda (window widget)    :run-last
   window in the task bar. This function sets this hint.
   @see-class{gtk:window}")
 
-;;; --- window-startup-id ------------------------------------------------------
+;;; --- gtk:window-startup-id --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "startup-id" 'window) t)
@@ -1500,7 +1502,7 @@ lambda (window widget)    :run-last
     Accessor of the @slot[gtk:window]{startup-id} slot of the @class{gtk:window}
     class.
   @end{short}
-  The @sym{(setf gtk:window-start-up-id)} function sets a string with startup
+  The @setf{gtk:window-start-up-id} function sets a string with startup
   notification identifier.
 
   Startup notification identifiers are used by the desktop environment to track
@@ -1517,7 +1519,7 @@ lambda (window widget)    :run-last
   @see-class{gdk:window}
   @see-function{gtk:window-present}")
 
-;;; --- window-title -----------------------------------------------------------
+;;; --- gtk:window-title -------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "title" 'window) t)
@@ -1538,8 +1540,8 @@ lambda (window widget)    :run-last
     Accessor of the @slot[gtk:window]{title} slot of the @class{gtk:window}
     class.
   @end{short}
-  The @sym{gtk:window-title} function retrieves the title of the window. The
-  @sym{(setf gtk:window-title)} function sets the title.
+  The @fun{gtk:window-title} function retrieves the title of the window. The
+  @setf{gtk:window-title} function sets the title.
 
   The title of a window will be displayed in the title bar. On the X11 Window
   System, the title bar is rendered by the window manager, so exactly how the
@@ -1549,11 +1551,11 @@ lambda (window widget)    :run-last
   document filename.
   @see-class{gtk:window}")
 
-;;; --- window-transient-for ---------------------------------------------------
+;;; --- gtk:window-transient-for -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "transient-for" 'window) t)
- "The @code{transient-for} property of type @sym{gtk:window}
+ "The @code{transient-for} property of type @class{gtk:window}
   (Read / Write / Construct) @br{}
   The transient parent of the window.")
 
@@ -1570,15 +1572,15 @@ lambda (window widget)    :run-last
     Accessor of the @slot[gtk:window]{transient-for} slot of the
     @class{gtk:window} class.
   @end{short}
-  The @sym{gtk:window-transient-for} function returns the transient parent for
+  The @fun{gtk:window-transient-for} function returns the transient parent for
   the window, or @code{nil} if no transient parent has been set. The
-  @sym{(setf gtk:window-transient-for)} function sets the parent window.
+  @setf{gtk:window-transient-for} function sets the parent window.
 
   Dialogs should be set transient for the main application window they were
   spawned from. This allows window managers to e.g. keep the dialog on top of
   the main window, or center the dialog over the main window. The
   @fun{gtk:dialog-new-with-buttons} function and other convenience functions
-  in GTK will sometimes call the @sym{gtk:window-transient-for} function on
+  in GTK will sometimes call the @fun{gtk:window-transient-for} function on
   your behalf.
 
   Passing @code{nil} for the @arg{parent} argument unsets the current transient
@@ -1589,7 +1591,7 @@ lambda (window widget)    :run-last
   @see-class{gtk:window}
   @see-function{gtk:dialog-new-with-buttons}")
 
-;;; --- window-type ------------------------------------------------------------
+;;; --- gtk:window-type --------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "type" 'window) t)
@@ -1615,7 +1617,7 @@ lambda (window widget)    :run-last
   @see-class{gtk:window}
   @see-symbol{gtk:window-type}")
 
-;;; --- window-type-hint -------------------------------------------------------
+;;; --- gtk:window-type-hint ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "type-hint" 'window) t)
@@ -1638,10 +1640,10 @@ lambda (window widget)    :run-last
     Accessor of the @slot[gtk:window]{type-hint} slot of the @class{gtk:window}
     class.
   @end{short}
-  The @sym{gtk:window-type-hint} function gets the type hint for the window. The
-  @sym{(setf gtk:window-type-hint)} function sets the type hint. By setting the
-  type hint for the window, you allow the window manager to decorate and handle
-  the window in a way which is suitable to the function of the window in your
+  The @fun{gtk:window-type-hint} function gets the type hint for the window. The
+  @setf{gtk:window-type-hint} function sets the type hint. By setting the type
+  hint for the window, you allow the window manager to decorate and handle the
+  window in a way which is suitable to the function of the window in your
   application.
 
   This function should be called before the window becomes visible.
@@ -1652,7 +1654,7 @@ lambda (window widget)    :run-last
   @see-symbol{gtk:window-type-hint}
   @see-function{gtk:dialog-new-with-button}")
 
-;;; --- window-urgency-hint ----------------------------------------------------
+;;; --- gtk:window-urgency-hint ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "urgency-hint" 'window) t)
@@ -1678,7 +1680,7 @@ lambda (window widget)    :run-last
   attention to the window. This function sets this hint.
   @see-class{gtk:window}")
 
-;;; --- window-window-position -------------------------------------------------
+;;; --- gtk:window-window-position ---------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "window-position" 'window) t)
@@ -1700,9 +1702,9 @@ lambda (window widget)    :run-last
     Accessor of the @slot[gtk:window]{window-position} slot of the
     @class{gtk:window} class.
   @end{short}
-  The @sym{(setf gtk:window-window-position)} function sets a position contraint
-  for this window. If the old or new constraint is the @code{:center-always}
-  value, this will also cause the window to be repositioned to satisfy the new
+  The @setf{gtk:window-window-position} function sets a position contraint for
+  this window. If the old or new constraint is the @code{:center-always} value,
+  this will also cause the window to be repositioned to satisfy the new
   constraint.
   @see-class{gtk:window}
   @see-symbol{gtk:window-position}")
@@ -1717,7 +1719,7 @@ lambda (window widget)    :run-last
  #+liber-documentation
  "@version{#2023-3-30}
   @argument[wtype]{a value of the @symbol{gtk:window-type} enumeration}
-  @return{A new @class{gtk:window} widget.}
+  @return{The new @class{gtk:window} widget.}
   @begin{short}
     Creates a new window, which is a toplevel window that can contain other
     widgets.
@@ -1869,11 +1871,11 @@ lambda (window widget)    :run-last
   @begin{short}
     Accessor of the default size of a @class{gtk:window} widget.
   @end{short}
-  The @sym{gtk:window-default-size} function gets the default size of the
-  window. The @sym{(setf gtk:window-default-size)} function sets the default
-  size. A value of -1 for the width or height indicates that a default size has
-  not been explicitly set for that dimension, so the \"natural\" size of the
-  window will be used.
+  The @fun{gtk:window-default-size} function gets the default size of the
+  window. The @setf{gtk:window-default-size} function sets the default size.
+  A value of -1 for the width or height indicates that a default size has not
+  been explicitly set for that dimension, so the \"natural\" size of the window
+  will be used.
 
   If the \"natural\" size of the window, its size request, is larger than the
   default, the default will be ignored. More generally, if the default size
@@ -1931,7 +1933,7 @@ lambda (window widget)    :run-last
  #+liber-documentation
  "@version{2023-3-30}
   @begin[Warning]{dictionary}
-    The @sym{gtk:window-set-default-geometry} function has been deprecated
+    The @fun{gtk:window-set-default-geometry} function has been deprecated
     since version 3.20 and should not be used in newly written code. This
     function does nothing. If you want to set a default size, use the
     @fun{gtk:window-default-size} function instead.
@@ -2109,10 +2111,10 @@ lambda (window widget)    :run-last
     Propagate a key press or release event to the focus widget and up the focus
     container chain until a widget handles the event.
   @end{short}
-  This is normally called by the default \"key-press-event\" and
-  \"key-release-event\" signal handlers for toplevel windows, however in some
-  cases it may be useful to call this directly when overriding the standard key
-  handling for a toplevel window.
+  This is normally called by the default @code{\"key-press-event\"} and
+  @code{\"key-release-event\"} signal handlers for toplevel windows, however in
+  some cases it may be useful to call this directly when overriding the standard
+  key handling for a toplevel window.
   @see-class{gtk:window}
   @see-class{gdk:event-key}"
   (window (g:object window))
@@ -2143,10 +2145,10 @@ lambda (window widget)    :run-last
   @begin{short}
     Accessor of the focus widget of the window.
   @end{short}
-  The @sym{gtk:window-focus} function retrieves the current focused widget
+  The @fun{gtk:window-focus} function retrieves the current focused widget
   within the window. If the @arg{focus} argument is not the current focus
-  widget, and is focusable, the @sym{(setf gtk:window-focus)} function sets it
-  as the focus widget for the window.
+  widget, and is focusable, the @setf{gtk:window-focus} function sets it as the
+  focus widget for the window.
 
   If the @arg{focus} argument is @code{nil}, unsets the focus widget for the
   window. To set the focus to a particular widget in the toplevel, it is usually
@@ -2188,9 +2190,9 @@ lambda (window widget)    :run-last
   @begin{short}
     Accessor of the default widget of the window.
   @end{short}
-  The @sym{gtk:window-default-widget} function returns the default widget for
-  the window. The @sym{(setf gtk:window-default-widget)} function sets or unsets
-  the default widget.
+  The @fun{gtk:window-default-widget} function returns the default widget for
+  the window. The @setf{gtk:window-default-widget} function sets or unsets the
+  default widget.
 
   The default widget is the widget that is activated when the user presses the
   @kbd{Enter} key in a dialog for example. When setting, rather than unsetting,
@@ -2200,8 +2202,8 @@ lambda (window widget)    :run-last
   widget you would like to make the default.
   @begin[Note]{dictionary}
     The C library has the @code{gtk_window_set_default ()} function, which is
-    implemented as the @sym{(setf gtk:window-default-widget)} function in the
-    Lisp API.
+    implemented as the @setf{gtk:window-default-widget} function in the Lisp
+    API.
   @end{dictionary}
   @see-class{gtk:window}
   @see-class{gtk:widget}
@@ -2305,8 +2307,8 @@ lambda (window widget)    :run-last
   It is permitted to call this function before showing a window, in which case
   the window will be iconified before it ever appears onscreen.
 
-  You can track iconification via the \"window-state-event\" signal on the
-  @class{gtk:widget} object.
+  You can track iconification via the @code{\"window-state-event\"} signal on
+  the @class{gtk:widget} object.
   @see-class{gtk:window}
   @see-class{gtk:widget}"
   (window (g:object window)))
@@ -2328,8 +2330,8 @@ lambda (window widget)    :run-last
   afterward, because other entities, e.g. the user or window manager, could
   iconify it again before your code which assumes deiconification gets to run.
 
-  You can track iconification via the \"window-state-event\" signal on the
-  @class{gtk:widget} object.
+  You can track iconification via the @code{\"window-state-event\"} signal on
+  the @class{gtk:widget} object.
   @see-class{gtk:window}
   @see-class{gtk:widget}"
   (window (g:object window)))
@@ -2355,7 +2357,7 @@ lambda (window widget)    :run-last
 
   It is permitted to call this function before showing a window.
 
-  You can track stickiness via the \"window-state-event\" signal on the
+  You can track stickiness via the @code{\"window-state-event\"} signal on the
   @class{gtk:widget} object.
   @see-class{gtk:window}
   @see-class{gtk:widget}"
@@ -2380,7 +2382,7 @@ lambda (window widget)    :run-last
   again. But normally the window will end up stuck. Just do not write code that
   crashes if not.
 
-  You can track stickiness via the \"window-state-event\" signal on the
+  You can track stickiness via the @code{\"window-state-event\"} signal on the
   @class{gtk:widget} object.
   @see-class{gtk:window}
   @see-class{gtk:widget}"
@@ -2407,8 +2409,8 @@ lambda (window widget)    :run-last
   It is permitted to call this function before showing a window, in which case
   the window will be maximized when it appears onscreen initially.
 
-  You can track maximization via the \"window-state-event\" signal on the
-  @class{gtk:widget} object, or by listening to notifications on the
+  You can track maximization via the @code{\"window-state-event\"} signal on
+  the @class{gtk:widget} object, or by listening to notifications on the
   @slot[gtk:window]{is-maximized} property.
   @see-class{gtk:window}
   @see-class{gtk:widget}
@@ -2434,8 +2436,8 @@ lambda (window widget)    :run-last
   But normally the window will end up unmaximized. Just do not write code that
   crashes if not.
 
-  You can track maximization via the \"window-state-event\" signal on the
-  @class{gtk:widget} object.
+  You can track maximization via the @code{\"window-state-event\"} signal on
+  the @class{gtk:widget} object.
   @see-class{gtk:window}
   @see-class{gtk:widget}"
   (window (g:object window)))
@@ -2459,8 +2461,8 @@ lambda (window widget)    :run-last
   fullscreen windows. But normally the window will end up fullscreen. Just do
   not write code that crashes if not.
 
-  You can track the fullscreen state via the \"window-state-event\" signal on
-  the @class{gtk:widget} object.
+  You can track the fullscreen state via the @code{\"window-state-event\"}
+  signal on the @class{gtk:widget} object.
   @see-class{gtk:window}
   @see-class{gtk:widget}"
   (window (g:object window)))
@@ -2484,8 +2486,8 @@ lambda (window widget)    :run-last
   Note that you should not assume the window is definitely full screen
   afterward.
 
-  You can track the fullscreen state via the \"window-state-event\" signal on
-  the @class{gtk:widget} widget.
+  You can track the fullscreen state via the @code{\"window-state-event\"}
+  signal on the @class{gtk:widget} widget.
   @see-class{gtk:window}
   @see-class{gtk:widget}
   @see-class{gdk:screen}"
@@ -2512,8 +2514,8 @@ lambda (window widget)    :run-last
   unfullscreen windows. But normally the window will end up restored to its
   normal state. Just do not write code that crashes if not.
 
-  You can track the fullscreen state via the \"window-state-event\" signal on
-  the @class{gtk:widget} object.
+  You can track the fullscreen state via the @code{\"window-state-event\"}
+  signal on the @class{gtk:widget} object.
   @see-class{gtk:window}
   @see-class{gtk:widget}"
   (window (g:object window)))
@@ -2540,8 +2542,8 @@ lambda (window widget)    :run-last
   It is permitted to call this function before showing a window, in which case
   the window will be kept above when it appears onscreen initially.
 
-  You can track the above state via the \"window-state-event\" signal on the
-  @class{gtk:widget} object.
+  You can track the above state via the @code{\"window-state-event\"} signal on
+  the @class{gtk:widget} object.
 
   Note that, according to the Extended Window Manager Hints specification, the
   above state is mainly meant for user preferences and should not be used by
@@ -2573,8 +2575,8 @@ lambda (window widget)    :run-last
   It is permitted to call this function before showing a window, in which case
   the window will be kept below when it appears onscreen initially.
 
-  You can track the below state via the \"window-state-event\" signal on the
-  @class{gtk:widget} object.
+  You can track the below state via the @code{\"window-state-event\"} signal on
+  the @class{gtk:widget} object.
 
   Note that, according to the Extended Window Manager Hints specification,
   the above state is mainly meant for user preferences and should not be used
@@ -2677,9 +2679,9 @@ lambda (window widget)    :run-last
   @begin{short}
     Accessor of the modifier mask used to activate mnemonics on the window.
   @end{short}
-  The @sym{gtk:window-mnemonic-modifier} function returns the mnemonic modifier
-  for the window. The @sym{(setf gtk:window-mnemonic-modifier)} function sets
-  the mnemonic modifier.
+  The @fun{gtk:window-mnemonic-modifier} function returns the mnemonic modifier
+  for the window. The @setf{gtk:window-mnemonic-modifier} function sets the
+  mnemonic modifier.
   @see-class{gtk:window}
   @see-symbol{gdk:modifier-type}"
   (window (g:object window)))
@@ -2713,11 +2715,11 @@ lambda (window widget)    :run-last
   @begin{short}
     Accessor of the icon list of the window.
   @end{short}
-  The @sym{gtk:window-icon-list} function returns the default icon list. The
-  @sym{(setf gtk:window-icon-list)} function sets an icon list to be used as
-  fallback for windows that have not had the @fun{gtk:window-icon-list} function
-  called on them to set up a window specific icon list. This function allows
-  you to set up the icon for all windows in your application at once.
+  The @fun{gtk:window-icon-list} function returns the default icon list. The
+  @setf{gtk:window-icon-list} function sets an icon list to be used as fallback
+  for windows that have not had the @fun{gtk:window-icon-list} function called
+  on them to set up a window specific icon list. This function allows you to
+  set up the icon for all windows in your application at once.
   @see-class{gtk:window}
   @see-class{gdk-pixbuf:pixbuf}
   @see-function{gtk:window-icon-list}")
@@ -2726,7 +2728,7 @@ lambda (window widget)    :run-last
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_window_get_default_icon_name ()
-;;; gtk_window_set_default_icon_name () -> window-default-icon-name
+;;; gtk_window_set_default_icon_name ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf window-default-icon-name) (name)
@@ -2745,9 +2747,9 @@ lambda (window widget)    :run-last
   @begin{short}
     Accessor of the default icon name of the window.
   @end{short}
-  The @sym{gtk:window-default-icon-name} function returns the fallback icon name
-  for windows. The @sym{(setf gtk:window-default-icon-name)} function sets an
-  icon to be used as fallback for windows that have not had the
+  The @fun{gtk:window-default-icon-name} function returns the fallback icon name
+  for windows. The @setf{gtk:window-default-icon-name} function sets an icon to
+  be used as fallback for windows that have not had the
   @fun{gtk:window-icon-list} function called on them from a named themed icon.
   @see-class{gtk:window}
   @see-function{gtk:window-icon-list}")
@@ -2777,19 +2779,18 @@ lambda (window widget)    :run-last
   @begin{short}
     Accessor of the icon list of the window.
   @end{short}
-  The @sym{gtk:window-icon-list} function retrieves the list of icons. The
-  @sym{(setf gtk:window-icon-list)} function sets up the icon representing
-  the window.
+  The @fun{gtk:window-icon-list} function retrieves the list of icons. The
+  @setf{gtk:window-icon-list} function sets up the icon representing the window.
 
   The icon is used when the window is minimized, also known as iconified. Some
   window managers or desktop environments may also place it in the window
   frame, or display it in other contexts.
 
-  The @sym{(setf gtk:window-icon-list)} function allows you to pass in the same
-  icon in several hand drawn sizes. The list should contain the natural sizes
-  your icon is available in. That is, do not scale the image before passing it
-  to GTK. Scaling is postponed until the last minute, when the desired final
-  size is known, to allow best quality.
+  The @setf{gtk:window-icon-list} function allows you to pass in the same icon
+  in several hand drawn sizes. The list should contain the natural sizes your
+  icon is available in. That is, do not scale the image before passing it to
+  GTK. Scaling is postponed until the last minute, when the desired final size
+  is known, to allow best quality.
 
   By passing several sizes, you may improve the final image quality of the
   icon, by reducing or eliminating automatic image scaling. Recommended sizes
@@ -2841,23 +2842,23 @@ lambda (window widget)    :run-last
 
   If you have not changed the window gravity, its gravity will be the
   @code{:north-west} value of the @symbol{gdk:gravity} enumeration. This means
-  that the @sym{gtk:window-position} function gets the position of the top-left
+  that the @fun{gtk:window-position} function gets the position of the top-left
   corner of the window manager frame for the window. The @fun{gtk:window-move}
   function sets the position of this same top-left corner.
 
-  The @sym{gtk:window-position} function is not 100 % reliable because the
+  The @fun{gtk:window-position} function is not 100 % reliable because the
   X Window System does not specify a way to obtain the geometry of the
   decorations placed on a window by the window manager. Thus GTK is using a
   \"best guess\" that works with most window managers.
 
   Moreover, nearly all window managers are historically broken with respect to
   their handling of window gravity. So moving a window to its current position
-  as returned by the @sym{gtk:window-position} function tends to result in
+  as returned by the @fun{gtk:window-position} function tends to result in
   moving the window slightly. Window managers are slowly getting better over
   time.
 
   If a window has @code{:static} gravity the window manager frame is not
-  relevant, and thus the @sym{gtk:window-position} function will always
+  relevant, and thus the @fun{gtk:window-position} function will always
   produce accurate results. However you can not use static gravity to do things
   like place a window in a corner of the screen, because static gravity ignores
   the window manager decorations.
@@ -2887,14 +2888,14 @@ lambda (window widget)    :run-last
   (width (:pointer :int))
   (height (:pointer :int)))
 
-;; The Lisp implemenation returns the size as a value list.
+;; The Lisp implementation returns the size as a value list.
 
 (defun window-size (window)
  #+liber-documentation
  "@version{#2023-3-30}
   @argument[window]{a @class{gtk:window} widget}
   @begin{return}
-    @arg{width} -- an integer with the width, or @code{nil}@br{}
+    @arg{width} -- an integer with the width, or @code{nil} @br{}
     @arg{height} -- an integer with the height, or @code{nil}
   @end{return}
   @begin{short}
@@ -2903,11 +2904,11 @@ lambda (window widget)    :run-last
   If the window is not onscreen, it returns the size GTK will suggest to the
   window manager for the initial window size, but this is not reliably the same
   as the size the window manager will actually select. The size obtained by the
-  @sym{gtk:window-size} function is the last size received in a
+  @fun{gtk:window-size} function is the last size received in a
   @class{gdk:event-configure} event, that is, GTK uses its locally stored size,
   rather than querying the X server for the size. As a result, if you call the
   @fun{gtk:window-resize} function then immediately call the
-  @sym{gtk:window-size} function, the size will not have taken effect yet.
+  @fun{gtk:window-size} function, the size will not have taken effect yet.
   After the window manager processes the resize request, GTK receives
   notification that the size has changed via a configure event, and the size of
   the window gets updated.
@@ -2917,9 +2918,10 @@ lambda (window widget)    :run-last
         Nearly any use of this function creates a race condition, because the
         size of the window may change between the time that you get the size and
         the time that you perform some action assuming that size is the current
-        size. To avoid race conditions, connect to the \"configure-event\"
-        signal on the window and adjust your size dependent state to match the
-        size delivered in the @class{gdk:event-configure} event.
+        size. To avoid race conditions, connect to the
+        @code{\"configure-event\"} signal on the window and adjust your size
+        dependent state to match the size delivered in the
+        @class{gdk:event-configure} event.
       @end{item}
       @begin{item}
         The returned size does not include the size of the window manager
@@ -3025,7 +3027,7 @@ lambda (window widget)    :run-last
 
   By default the gravity is the @code{:north-west} value of the
   @symbol{gdk:gravity} enumeration, so the reference point is simply the x, y
-  supplied to the @sym{gtk:window-move} function. The top-left corner of the
+  supplied to the @fun{gtk:window-move} function. The top-left corner of the
   window decorations, aka window frame or border, will be placed at x, y.
   Therefore, to position a window at the top left of the screen, you want to
   use the default gravity, which is @code{:north-west}, and move the window to
@@ -3070,26 +3072,26 @@ lambda (window widget)    :run-last
   @begin{short}
     Parses a standard X Window System geometry string.
   @end{short}
-  The @sym{gtk:window-parse-geometry} function does work on all GTK ports
+  The @fun{gtk:window-parse-geometry} function does work on all GTK ports
   including Win32 but is primarily intended for an X environment.
 
   If either a size or a position can be extracted from the geometry string,
-  the @sym{gtk:window-parse-geometry} function returns @em{true} and calls
+  the @fun{gtk:window-parse-geometry} function returns @em{true} and calls
   the @fun{gtk:window-default-size} and/or @fun{gtk:window-move} functions to
   resize/move the window.
 
-  If the @sym{gtk:window-parse-geometry} function returns @em{true}, it will
+  If the @fun{gtk:window-parse-geometry} function returns @em{true}, it will
   also set the @code{:user-pos} and/or @code{:user-size} hints of the
   @symbol{gdk:window-hints} flags indicating to the window manager that the
   size/position of the window was user specified. This causes most window
   managers to honor the geometry.
 
-  Note that for the @sym{gtk:window-parse-geometry} function to work as
+  Note that for the @fun{gtk:window-parse-geometry} function to work as
   expected, it has to be called when the window has its \"final\" size, i.e.
   after calling the @fun{gtk:widget-show-all} function on the contents and the
   @fun{gtk:window-set-geometry-hints} function on the window.
   @begin[Warning]{dictionary}
-    The @sym{gtk:window-parse-geometry} function has been deprecated since
+    The @fun{gtk:window-parse-geometry} function has been deprecated since
     version 3.20 and should not be used in newly written code. Geometry handling
     in GTK is deprecated.
   @end{dictionary}
@@ -3119,7 +3121,7 @@ lambda (window widget)    :run-last
   @end{short}
   Used by GUI builders only.
   @begin[Warning]{dictionary}
-    The @sym{gtk:window-reshow-with-initial-size} function has been deprecated
+    The @fun{gtk:window-reshow-with-initial-size} function has been deprecated
     since version 3.10 and should not be used in newly written code. GUI
     builders can call the @fun{gtk:widget-hide}, @fun{gtk:widget-unrealize}
     functions and then the @fun{gtk:widget-show} function on the window
@@ -3150,7 +3152,7 @@ lambda (window widget)    :run-last
   @fun{gtk:widget-size-request} function to set the request of the window to a
   smaller value.
 
-  If the @sym{gtk:window-resize} function is called before showing a window for
+  If the @fun{gtk:window-resize} function is called before showing a window for
   the first time, it overrides any default size set with the
   @fun{gtk:window-default-size} function.
 
@@ -3182,7 +3184,7 @@ lambda (window widget)    :run-last
     @fun{gtk:window-set-geometry-hints} function.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:window-resize-to-geometry} function has been deprecated since
+    The @fun{gtk:window-resize-to-geometry} function has been deprecated since
     version 3.20 and should not be used in newly written code. This function
     does nothing. Use the @fun{gtk:window-resize} function and compute the
     geometry yourself.
@@ -3307,7 +3309,7 @@ lambda (window widget)    :run-last
     Determines whether a resize grip is visible for the specified window.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:window-resize-grip-is-visible} function has been deprecated
+    The @fun{gtk:window-resize-grip-is-visible} function has been deprecated
     since version 3.14 and should not be used in newly written code. Resize
     grips have been removed.
   @end{dictionary}
@@ -3337,7 +3339,7 @@ lambda (window widget)    :run-last
     position, width and height.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:window-resize-grip-area} function has been deprecated since
+    The @fun{gtk:window-resize-grip-area} function has been deprecated since
     version 3.14 and should not be used in newly written code. Resize grips have
     been removed.
   @end{dictionary}
@@ -3371,7 +3373,7 @@ lambda (window widget)    :run-last
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_window_set_titlebar ()
-;;; gtk_window_get_titlebar () -> window-titlebar
+;;; gtk_window_get_titlebar ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf window-titlebar) (widget window)
@@ -3391,8 +3393,8 @@ lambda (window widget)    :run-last
   @begin{short}
     Accessor of the custom titlebar widget of the window.
   @end{short}
-  The @sym{gtk:window-titlebar} function returns the custom titlebar for the
-  window. The @sym{(setf gtk:window-titlebar)} function sets a custom titlebar.
+  The @fun{gtk:window-titlebar} function returns the custom titlebar for the
+  window. The @setf{gtk:window-titlebar} function sets a custom titlebar.
 
   If you set a custom titlebar, GTK will do its best to convince the window
   manager not to put its own titlebar on the window. Depending on the system,

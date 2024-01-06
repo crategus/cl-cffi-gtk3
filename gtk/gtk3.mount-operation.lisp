@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2013 - 2023 Dieter Kaiser
+;;; Copyright (C) 2013 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -243,8 +243,8 @@
   @file{http://www.gnome.org mailto:me@@gnome.org}.
 
   Ideally the @arg{timestamp} is taken from the event triggering the
-  @sym{gtk:show-uri} call. If @arg{timestamp} is not known you can take
-  @var{+gdk-current-time+}.
+  @fun{gtk:show-uri} function call. If @arg{timestamp} is not known you can
+  take @var{gdk:+gdk-current-time+}.
 
   This function can be used as a replacement for the @code{gnome_vfs_url_show()}
   and @code{gnome_url_show()} functions.

@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -116,7 +116,7 @@
  "@version{#2023-3-28}
   @short{Whether spacers are vertical lines or just blank.}
   @begin[Warning]{dictionary}
-    The @sym{gtk:toolbar-space-style} enumeration has been deprecated since
+    The @symbol{gtk:toolbar-space-style} enumeration has been deprecated since
     version 3.20 and should not be used in newly written code.
   @end{dictionary}
   @begin{pre}
@@ -155,7 +155,7 @@
 
 #+liber-documentation
 (setf (documentation 'toolbar 'type)
- "@version{#2023-3-28}
+ "@version{2024-1-2}
   @begin{short}
     A toolbar can contain instances of a subclass of @class{gtk:tool-item}
     widgets.
@@ -166,7 +166,7 @@
   @fun{gtk:container-remove} function. To add a button to the toolbar, add an
   instance of the @class{gtk:tool-button} class.
 
-  @image[toolbar]{GtkToolbar}
+  @image[toolbar]{Figure: GtkToolbar}
 
   Toolbar items can be visually grouped by adding instances of the
   @class{gtk:separator-tool-item} class to the toolbar. If the @code{expand}
@@ -175,9 +175,9 @@
   the end of the toolbar.
 
   Creating a context menu for the toolbar can be done by connecting to the
-  \"popup-context-menu\" signal.
+  @code{\"popup-context-menu\"} signal.
   @begin[CSS nodes]{dictionary}
-    The @sym{gtk:toolbar} implementation has a single CSS node with name
+    The @class{gtk:toolbar} implementation has a single CSS node with name
     @code{toolbar}.
   @end{dictionary}
   @begin[Child Property Details]{dictionary}
@@ -265,7 +265,8 @@ lambda (toolbar focus-home)    :action
       A keybinding signal used internally by GTK. The signal cannot be used in
       application code.
       @begin[code]{table}
-        @entry[toolbar]{The @sym{gtk:toolbar} widget which emitted the signal.}
+        @entry[toolbar]{The @class{gtk:toolbar} widget which emitted the
+          signal.}
         @entry[focus-home]{@em{True} if the first item should be focused.}
         @entry[Returns]{@em{True} if the signal was handled, @em{false} if not.}
       @end{table}
@@ -275,7 +276,8 @@ lambda (toolbar orientation)    :run-first
       @end{pre}
       Emitted when the orientation of the toolbar changes.
       @begin[code]{table}
-        @entry[toolbar]{The @sym{gtk:toolbar} widget which emitted the signal.}
+        @entry[toolbar]{The @class{gtk:toolbar} widget which emitted the
+          signal.}
         @entry[orientation]{The new value of the @symbol{gtk:orientation}
           enumeration of the toolbar.}
       @end{table}
@@ -290,7 +292,8 @@ lambda (toolbar x y button)    :run-last
        button number is given by the @arg{button} parameter. If the menu was
        popped up using the keyboard, @arg{button} is -1.
        @begin[code]{table}
-         @entry[toolbar]{The @sym{gtk:toolbar} widget which emitted the signal.}
+         @entry[toolbar]{The @class{gtk:toolbar} widget which emitted the
+           signal.}
          @entry[x]{An integer with the x coordinate of the point where the
            menu should appear.}
          @entry[y]{An integer with the y coordinate of the point where the
@@ -306,7 +309,8 @@ lambda (toolbar style)    :run-first
       @end{pre}
       Emitted when the style of the toolbar changes.
       @begin[code]{table}
-        @entry[toolbar]{The @sym{gtk:toolbar} widget which emitted the signal.}
+        @entry[toolbar]{The @class{gtk:toolbar} widget which emitted the
+          signal.}
         @entry[style]{The new value of the @symbol{gtk:toolbar-style}
           enumeration of the toolbar.}
       @end{table}
@@ -324,7 +328,7 @@ lambda (toolbar style)    :run-first
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- toolbar-icon-size---------------------------------------------------
+;;; --- gtk:toolbar-icon-size---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "icon-size" 'toolbar) t)
@@ -351,9 +355,9 @@ lambda (toolbar style)    :run-first
     Accessor of the @slot[gtk:toolbar]{icon-size} slot of the
     @class{gtk:toolbar} class.
   @end{short}
-  The @sym{gtk:toolbar-icon-size} function retrieves the icon size for the
-  toolbar. The @sym{(setf gtk:toolbar-icon-size)} function sets the size of
-  stock icons in the toolbar.
+  The @fun{gtk:toolbar-icon-size} function retrieves the icon size for the
+  toolbar. The @setf{gtk:toolbar-icon-size} function sets the size of stock
+  icons in the toolbar.
 
   You can call it both before you add the icons and after they have been added.
   The size you set will override user preferences for the default icon size.
@@ -364,7 +368,7 @@ lambda (toolbar style)    :run-first
   @see-function{gtk:toolbar-unset-icon-size}
   @see-function{gtk:settings-gtk-toolbar-icon-size}")
 
-;;; --- toolbar-icon-size-set --------------------------------------------------
+;;; --- gtk:toolbar-icon-size-set ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "icon-size-set" 'toolbar) t)
@@ -388,7 +392,7 @@ lambda (toolbar style)    :run-first
   @see-class{gtk:toolbar}
   @see-function{gtk:toolbar-icon-size}")
 
-;;; --- toolbar-show-arrow -----------------------------------------------------
+;;; --- gtk:toolbar-show-arrow -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "show-arrow" 'toolbar) t)
@@ -409,19 +413,18 @@ lambda (toolbar style)    :run-first
     Accessor of the @slot[gtk:toolbar]{show-arrow} slot of the
     @class{gtk:toolbar} class.
   @end{short}
-  The @sym{gtk:toolbar-show-arrow} function returns whether the toolbar has an
-  overflow menu. The @sym{(setf gtk:toolbar-show-arrow)} function sets whether
-  to show an overflow menu when the toolbar is not allocated enough size to show
-  all of its items. If @em{true}, items which cannot fit in the toolbar, and
-  which have a proxy menu item set by the @fun{gtk:tool-item-proxy-menu-item}
-  function or a \"create-menu-proxy\" signal handler, will be available in an
-  overflow menu, which can be opened by an added arrow button. If @em{false},
-  the toolbar will request enough size to fit all of its child items without
-  any overflow.
+  The @fun{gtk:toolbar-show-arrow} function returns whether the toolbar has an
+  overflow menu. The @setf{gtk:toolbar-show-arrow} function sets whether to show
+  an overflow menu when the toolbar is not allocated enough size to show all of
+  its items. If @em{true}, items which cannot fit in the toolbar, and which have
+  a proxy menu item set by the @fun{gtk:tool-item-proxy-menu-item} function or a
+  @code{\"create-menu-proxy\"} signal handler, will be available in an overflow
+  menu, which can be opened by an added arrow button. If @em{false}, the toolbar
+  will request enough size to fit all of its child items without any overflow.
   @see-class{gtk:toolbar}
   @see-function{gtk:tool-item-proxy-menu-item}")
 
-;;; --- toolbar-toolbar-style --------------------------------------------------
+;;; --- gtk:toolbar-toolbar-style ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "toolbar-style" 'toolbar) t)
@@ -444,10 +447,9 @@ lambda (toolbar style)    :run-first
     Accessor of the @slot[gtk:toolbar]{toolbar-style} slot of the
     @class{gtk:toolbar} class.
   @end{short}
-  The @sym{gtk:toolbar-toolbar-style} function retrieves whether the toolbar
-  has text, icons, or both. The @sym{(setf gtk:toolbar-toolbar-style)} function
-  alters the view of the toolbar to display either icons only, text only, or
-  both.
+  The @fun{gtk:toolbar-toolbar-style} function retrieves whether the toolbar
+  has text, icons, or both. The @setf{gtk:toolbar-toolbar-style} function alters
+  the view of the toolbar to display either icons only, text only, or both.
   @see-class{gtk:toolbar}
   @see-symbol{gtk:toolbar-style}
   @see-function{gtk:toolbar-unset-style}")
@@ -456,7 +458,7 @@ lambda (toolbar style)    :run-first
 ;;; Accessors of Child Properties
 ;;; ----------------------------------------------------------------------------
 
-;;; --- toolbar-child-expand ---------------------------------------------------
+;;; --- gtk:toolbar-child-expand -----------------------------------------------
 
 (define-child-property toolbar-child-expand "expand" "gboolean" t t t)
 
@@ -478,7 +480,7 @@ lambda (toolbar style)    :run-first
   @see-class{gtk:toolbar}
   @see-class{gtk:widget}")
 
-;;; --- toolbar-child-homogeneous ----------------------------------------------
+;;; --- gtk:toolbar-child-homogeneous ------------------------------------------
 
 (define-child-property toolbar-child-homogeneous "homogeneous" "gboolean" t t t)
 
@@ -524,7 +526,7 @@ lambda (toolbar style)    :run-first
 
 (cffi:defcfun ("gtk_toolbar_insert" toolbar-insert) :void
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{2024-1-2}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
   @argument[item]{a @class{gtk:tool-item} widget}
   @argument[pos]{an integer with the position of the new item}
@@ -573,7 +575,7 @@ lambda (toolbar style)    :run-first
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
-  @return{An integer with the number of @class{gtk:tool-item} widgets on the
+  @return{The integer with the number of @class{gtk:tool-item} widgets on the
     toolbar.}
   @short{Returns the number of tool items on the toolbar.}
   @see-class{gtk:toolbar}

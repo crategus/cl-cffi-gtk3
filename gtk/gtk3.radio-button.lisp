@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -106,7 +106,7 @@
 
   Every radio button is a member of some group of radio buttons. When one is
   selected, all other radio buttons in the same group are deselected. A
-  @sym{gtk:radio-button} widget is one way of giving the user a choice from
+  @class{gtk:radio-button} widget is one way of giving the user a choice from
   many options.
 
   Radio buttons are created with the @fun{gtk:radio-button-new} function,
@@ -118,22 +118,22 @@
 
   Alternatively, when adding widgets to an existing group of radio buttons,
   use the @fun{gtk:radio-button-new-from-widget} function with a
-  @sym{gtk:radio-button} widget that already has a group assigned to it. The
+  @class{gtk:radio-button} widget that already has a group assigned to it. The
   convenience @fun{gtk:radio-button-new-with-label-from-widget} function is
   also provided.
 
-  To retrieve the group a @sym{gtk:radio-button} widget is assigned to, use the
-  @fun{gtk:radio-button-get-group} function.
+  To retrieve the group a @class{gtk:radio-button} widget is assigned to, use
+  the @fun{gtk:radio-button-get-group} function.
 
-  To remove a @sym{gtk:radio-button} widget from one group and make it part of
-  a new one, use the @fun{gtk:radio-button-set-group} function.
+  To remove a @class{gtk:radio-button} widget from one group and make it part
+  of a new one, use the @fun{gtk:radio-button-set-group} function.
   @begin[CSS nodes]{dictionary}
     @begin{pre}
 radiobutton
 ├── radio
 ╰── <child>
     @end{pre}
-    A @sym{gtk:radio-button} widget with indicator, see the
+    A @class{gtk:radio-button} widget with indicator, see the
     @fun{gtk:toggle-button-mode} function, has a main CSS node with name
     @code{radiobutton} and a subnode with name @code{radio}.
     @begin{pre}
@@ -141,7 +141,7 @@ button.radio
 ├── radio
 ╰── <child>
     @end{pre}
-    A @sym{gtk:radio-button} implementation without indicator changes the name
+    A @class{gtk:radio-button} implementation without indicator changes the name
     of its main node to @code{button} and adds a @code{.radio} style class to
     it. The subnode is invisible in this case.
   @end{dictionary}
@@ -149,7 +149,7 @@ button.radio
     How to create a group of two radio buttons.
     @begin{pre}
 (defun example-radio-button ()
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :type :toplevel
                                  :title \"Example Radio Button\"
@@ -179,8 +179,8 @@ button.radio
       (gtk:widget-show-all window))))
     @end{pre}
     When an unselected radio button in the group is clicked the clicked radio
-    button receives the \"toggled\" signal, as does the previously selected
-    radio button. Inside the \"toggled\" handler, the
+    button receives the @code{\"toggled\"} signal, as does the previously
+    selected radio button. Inside the @code{\"toggled\"} signal handler, the
     @fun{gtk:toggle-button-active} function can be used to determine if the
     button has been selected or deselected.
   @end{dictionary}
@@ -196,7 +196,7 @@ lambda (button)    :run-first
       but not when the composition of the group that a button belongs to
       changes.
       @begin[code]{table}
-        @entry[button]{The @sym{gtk:radio-button} widget which received the
+        @entry[button]{The @class{gtk:radio-button} widget which received the
           signal.}
       @end{table}
   @end{dictionary}
@@ -217,7 +217,7 @@ lambda (button)    :run-first
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "group" 'radio-button) t)
- "The @code{group} property of type @sym{gtk:radio-button} (Write) @br{}
+ "The @code{group} property of type @class{gtk:radio-button} (Write) @br{}
   Sets a new group for a radio button.")
 
 #+liber-documentation
@@ -241,7 +241,7 @@ lambda (button)    :run-first
  "@version{#2023-3-22}
   @argument[group]{an existing @class{gtk:radio-button} group, or @code{nil} if
     you are creating a new group}
-  @return{A new @class{gtk:radio-button} widget.}
+  @return{The new @class{gtk:radio-button} widget.}
   @begin{short}
     Creates a new radio button.
   @end{short}
@@ -261,7 +261,7 @@ lambda (button)    :run-first
  #+liber-documentation
  "@version{#2023-3-22}
   @argument[member]{an existing @class{gtk:radio-button} widget}
-  @return{A new @class{gtk:radio-button} widget.}
+  @return{The new @class{gtk:radio-button} widget.}
   @begin{short}
     Creates a new radio button, adding it to the same group as @arg{member}.
   @end{short}
@@ -285,7 +285,7 @@ lambda (button)    :run-first
     you are creating a new group}
   @argument[label]{a string with the text label to display next to the radio
     button}
-  @return{A new @class{gtk:radio-button} widget.}
+  @return{The new @class{gtk:radio-button} widget.}
   @begin{short}
     Creates a new radio button with a text label.
   @end{short}
@@ -306,7 +306,7 @@ lambda (button)    :run-first
   @argument[member]{a @class{gtk:radio-button} widget to get the radio group
     from or @code{nil}}
   @argument[label]{a text string to display next to the radio button}
-  @return{A new @class{gtk:radio-button} widget.}
+  @return{The new @class{gtk:radio-button} widget.}
   @begin{short}
     Creates a new radio button with a text label, adding it to the same group
     as @arg{member}.
@@ -328,7 +328,7 @@ lambda (button)    :run-first
   @argument[group]{the @class{gtk:radio-button} group}
   @argument[label]{a string with the text of the button, with an underscore in
     front of the mnemonic character}
-  @return{A new @class{gtk:radio-button} widget.}
+  @return{The new @class{gtk:radio-button} widget.}
   @begin{short}
     Creates a new radio button containing a label, adding it to the same group
     as group.
@@ -354,7 +354,7 @@ lambda (button)    :run-first
     @code{nil}}
   @argument[label]{a string with the text of the button, with an underscore in
     front of the mnemonic character}
-  @return{A new @class{gtk:radio-button} widget.}
+  @return{The new @class{gtk:radio-button} widget.}
   @begin{short}
     Creates a new radio button containing a label.
   @end{short}

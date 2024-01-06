@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -175,7 +175,7 @@
   The basic idea is that creating an icon in the notification area is less
   annoying than popping up a dialog.
 
-  A @sym{gtk:status-icon} object can be used to display an icon in a
+  A @class{gtk:status-icon} object can be used to display an icon in a
   \"system tray\". The icon can have a tooltip, and the user can interact with
   it by activating it or popping up a context menu.
 
@@ -196,7 +196,7 @@
   Making it a widget would be impractical, since the system tray on Win32 does
   not allow to embed arbitrary widgets.
   @begin[Warning]{dictionary}
-    The @sym{gtk:status-icon} class has been deprecated in 3.14. You should
+    The @class{gtk:status-icon} class has been deprecated in 3.14. You should
     consider using notifications or more modern platform-specific APIs instead.
     GLib provides the @code{GNotification} API which works well with the
     @class{gtk:application} class on multiple platforms and environments, and
@@ -215,7 +215,7 @@ lambda (icon)    :action
       signals, this signal is meant to be used by applications and should be
       wrapped by language bindings.
       @begin[code]{table}
-        @entry[icon]{The @sym{gtk:status-icon} object which received the
+        @entry[icon]{The @class{gtk:status-icon} object which received the
           signal.}
       @end{table}
     @subheading{The \"button-press-event\" signal}
@@ -224,9 +224,9 @@ lambda (icon event)    :run-last
       @end{pre}
       The signal will be emitted when a button, typically from a mouse, is
       pressed. Whether this event is emitted is platform dependent. Use the
-      \"activate\" and \"popup-menu\" signals in preference.
+      @code{\"activate\"} and @code{\"popup-menu\"} signals in preference.
       @begin[code]{table}
-        @entry[icon]{The @sym{gtk:status-icon} object which received the
+        @entry[icon]{The @class{gtk:status-icon} object which received the
           signal.}
         @entry[event]{The @class{gdk:event-button} event which triggered this
           signal.}
@@ -239,9 +239,9 @@ lambda (icon event)    :run-last
       @end{pre}
       The signal will be emitted when a button, typically from a mouse, is
       released. Whether this event is emitted is platform dependent. Use the
-      \"activate\" and \"popup-menu\" signals in preference.
+      @code{\"activate\"} and @code{\"popup-menu\"} signals in preference.
       @begin[code]{table}
-        @entry[icon]{The @sym{gtk:status-icon} object which received the
+        @entry[icon]{The @class{gtk:status-icon} object which received the
           signal.}
         @entry[event]{The @class{gdk:event-button} event which triggered this
           signal.}
@@ -255,11 +255,11 @@ lambda (icon button time)    :action
       Gets emitted when the user brings up the context menu of the status icon.
       Whether status icons can have context menus and how these are activated is
       platform dependent. The @arg{button} and @arg{time} parameters should be
-      passed as the last arguments to the function @fun{gtk:menu-popup}. Unlike
+      passed as the last arguments to the @fun{gtk:menu-popup} function. Unlike
       most @code{:action} signals, this signal is meant to be used by
       applications and should be wrapped by language bindings.
       @begin[code]{table}
-        @entry[icon]{The @sym{gtk:status-icon} object which received the
+        @entry[icon]{The @class{gtk:status-icon} object which received the
           signal.}
         @entry[button]{An unsigned integer with the button that was pressed, or
           0 if the signal is not emitted in response to a button press event.}
@@ -281,7 +281,7 @@ lambda (icon x y mode tooltip)    :run-last
       function calls. Whether this signal is emitted is platform dependent. For
       plain text tooltips, use the @code{tooltip-text} property in preference.
       @begin[code]{table}
-        @entry[icon]{The @sym{gtk:status-icon} object which received the
+        @entry[icon]{The @class{gtk:status-icon} object which received the
           signal.}
         @entry[x]{An integer with the x coordinate of the cursor position where
           the request has been emitted, relative to @arg{icon}.}
@@ -301,7 +301,7 @@ lambda (icon event)    :run-last
       and 5 when the wheel is turned. Whether this event is emitted is platform
       dependent.
       @begin[code]{table}
-        @entry[icon]{The @sym{gtk:status-icon} object which received the
+        @entry[icon]{The @class{gtk:status-icon} object which received the
           signal.}
         @entry[event]{The @class{gdk:event-scroll} event which triggered this
           signal.}
@@ -315,7 +315,7 @@ lambda (icon size)    :run-last
       Gets emitted when the size available for the image changes, e.g. because
       the notification area got resized.
       @begin[code]{table}
-        @entry[icon]{The @sym{gtk:status-icon} object which received the
+        @entry[icon]{The @class{gtk:status-icon} object which received the
           signal.}
         @entry[size]{An integer with the new size.}
         @entry[Returns]{@em{True} if the icon was updated for the new size.
@@ -349,7 +349,7 @@ lambda (icon size)    :run-last
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- status-icon-embedded ---------------------------------------------------
+;;; --- gtk:status-icon-embedded -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "embedded" 'status-icon) t)
@@ -371,13 +371,13 @@ lambda (icon size)    :run-last
   @end{short}
   @em{True} if the status icon is embedded in a notification area.
   @begin[Warning]{dictionary}
-    The @sym{gtk:status-icon-embedded} function has been deprecated since
+    The @fun{gtk:status-icon-embedded} function has been deprecated since
     version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
   @see-function{gtk:status-icon-is-embedded}")
 
-;;; --- status-icon-file -------------------------------------------------------
+;;; --- gtk:status-icon-file ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "file" 'status-icon) t)
@@ -399,12 +399,12 @@ lambda (icon size)    :run-last
   @end{short}
   Filename to load and display.
   @begin[Warning]{dictionary}
-    The @sym{gtk:status-icon-file} function has been deprecated since version
+    The @fun{gtk:status-icon-file} function has been deprecated since version
     3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}")
 
-;;; --- status-icon-gicon ------------------------------------------------------
+;;; --- gtk:status-icon-gicon --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gicon" 'status-icon) t)
@@ -425,14 +425,14 @@ lambda (icon size)    :run-last
     Accessor of the @slot[gtk:status-icon]{gicon} slot of the
     @class{gtk:status-icon} class.
   @end{short}
-  The @sym{gtk:status-icon-gicon} function retrieves icon being displayed by the
-  status icon. The @sym{(setf gtk:status-icon-gicon)} function sets the icon.
+  The @fun{gtk:status-icon-gicon} function retrieves icon being displayed by the
+  status icon. The @setf{gtk:status-icon-gicon} function sets the icon.
 
   The storage type of the status icon must be the value @code{:empty} or
   @code{:gicon} of the @symbol{gtk:image-type} enumeration. See the
   @fun{gtk:status-icon-storage-type} function.
   @begin[Warning]{dictionary}
-    The @sym{gtk:status-icon-gicon} function has been deprecated since version
+    The @fun{gtk:status-icon-gicon} function has been deprecated since version
     3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
@@ -440,21 +440,21 @@ lambda (icon size)    :run-last
   @see-symbol{gtk:image-type}
   @see-function{gtk:status-icon-storage-type}")
 
-;;; --- status-icon-has-tooltip ------------------------------------------------
+;;; --- gtk:status-icon-has-tooltip --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "has-tooltip" 'status-icon) t)
  "The @code{has-tooltip} property of type @code{:boolean} (Read / Write) @br{}
-  Enables or disables the emission of \"query-tooltip\" signals on the status
-  icon. A value of @em{true} indicates that the status icon can have a tooltip,
-  in this case the status icon will be queried using the \"query-tooltip\"
-  signal to determine whether it will provide a tooltip or not. Note that
-  setting this property to @em{true} for the first time will change the event
-  masks of the windows of this status icon to include \"leave-notify\" and
-  \"motion-notify\" signals. This will not be undone when the property is set
-  to @em{false} again. Whether this property is respected is platform dependent.
-  For plain text tooltips, use the @code{tooltip-text} property in preference.
-  @br{}
+  Enables or disables the emission of @code{\"query-tooltip\"} signals on the
+  status icon. A value of @em{true} indicates that the status icon can have a
+  tooltip, in this case the status icon will be queried using the
+  @code{\"query-tooltip\"} signal to determine whether it will provide a tooltip
+  or not. Note that setting this property to @em{true} for the first time will
+  change the event masks of the windows of this status icon to include
+  @code{\"leave-notify\"} and @code{\"motion-notify\"} signals. This will not be
+  undone when the property is set to @em{false} again. Whether this property is
+  respected is platform dependent. For plain text tooltips, use the
+  @slot[gtk:status-icon]{tooltip-text} property in preference. @br{}
   Default value: @em{false}")
 
 #+liber-documentation
@@ -470,28 +470,28 @@ lambda (icon size)    :run-last
     Accessor of the @slot[gtk:status-icon]{has-tooltip} slot of the
     @class{gtk:status-icon} class.
   @end{short}
-  The @sym{gtk:status-icon-has-tooltip} function returns the current value of
+  The @fun{gtk:status-icon-has-tooltip} function returns the current value of
   the @slot[gtk:status-icon]{has-tooltip} property. The
-  @sym{(setf gtk:status-icon-has-tooltip)} function sets the property.
+  @setf{gtk:status-icon-has-tooltip} function sets the property.
 
-  Enables or disables the emission of \"query-tooltip\" signals on the status
-  icon. A value of @em{true} indicates that the status icon can have a tooltip,
-  in this case the status icon will be queried using the \"query-tooltip\"
-  signal to determine whether it will provide a tooltip or not. Note that
-  setting this property to @em{true} for the first time will change the event
-  masks of the windows of this status icon to include \"leave-notify\" and
-  \"motion-notify\" signals. This will not be undone when the property is set
-  to @em{false} again. Whether this property is respected is platform dependent.
-  For plain text tooltips, use the @slot[gtk:status-icon]{tooltip-text}
-  property in preference.
+  Enables or disables the emission of @code{\"query-tooltip\"} signals on the
+  status icon. A value of @em{true} indicates that the status icon can have a
+  tooltip, in this case the status icon will be queried using the
+  @code{\"query-tooltip\"} signal to determine whether it will provide a tooltip
+  or not. Note that setting this property to @em{true} for the first time will
+  change the event masks of the windows of this status icon to include
+  @code{\"leave-notify\"} and @code{\"motion-notify\"} signals. This will not be
+  undone when the property is set to @em{false} again. Whether this property is
+  respected is platform dependent. For plain text tooltips, use the
+  @slot[gtk:status-icon]{tooltip-text} property in preference.
   @begin[Warning]{dictionary}
-    The @sym{gtk:status-icon-has-tooltip} function has been deprecated since
+    The @fun{gtk:status-icon-has-tooltip} function has been deprecated since
     version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
   @see-function{gtk:status-icon-tooltip-text}")
 
-;;; --- status-icon-icon-name --------------------------------------------------
+;;; --- gtk:status-icon-icon-name ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "icon-name" 'status-icon) t)
@@ -512,22 +512,22 @@ lambda (icon size)    :run-last
     Accessor of the @slot[gtk:status-icon]{icon-name} slot of the
     @class{gtk:status-icon} class.
   @end{short}
-  The @sym{gtk:status-icon-icon-name} function gets the name of the icon being
-  displayed by the status icon. The @sym{(setf gtk:status-icon-icon-name)}
-  function sets the name.
+  The @fun{gtk:status-icon-icon-name} function gets the name of the icon being
+  displayed by the status icon. The @setf{gtk:status-icon-icon-name} function
+  sets the name.
 
   The storage type of the status icon must be the value @code{:empty} or
   @code{:icon-name} of the @symbol{gtk:image-type} enumeration. See the
   @fun{gtk:status-icon-storage-type} function.
   @begin[Warning]{dictionary}
-    The @sym{gtk:status-icon-icon-name} function has been deprecated since
+    The @fun{gtk:status-icon-icon-name} function has been deprecated since
     version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
   @see-symbol{gtk:image-type}
   @see-function{gtk:status-icon-storage-type}")
 
-;;; --- status-icon-orientation ------------------------------------------------
+;;; --- gtk:status-icon-orientation --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "orientation" 'status-icon) t)
@@ -549,13 +549,13 @@ lambda (icon size)    :run-last
   @end{short}
   The orientation of the tray in which the status icon is embedded.
   @begin[Warning]{dictionary}
-    The @sym{gtk:status-icon-orientation} function has been deprecated since
+    The @fun{gtk:status-icon-orientation} function has been deprecated since
     version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
   @see-symbol{gtk:orientation}")
 
-;;; --- status-icon-pixbuf -----------------------------------------------------
+;;; --- gtk:status-icon-pixbuf -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "pixbuf" 'status-icon) t)
@@ -576,15 +576,14 @@ lambda (icon size)    :run-last
     Accessor of the @slot[gtk:status-icon]{pixbuf} slot of the
     @class{gtk:status-icon} class.
   @end{short}
-  The @sym{gtk:status-icon-pixbuf} function gets the pixbuf being displayed by
-  the status icon. The @sym{(setf gtk:status-icon-pixbuf)} function sets the
-  pixbuf.
+  The @fun{gtk:status-icon-pixbuf} function gets the pixbuf being displayed by
+  the status icon. The @setf{gtk:status-icon-pixbuf} function sets the pixbuf.
 
   The storage type of the status icon must be the value @code{:empty} or
   @code{:pixbuf} of the @symbol{gtk:image-type} enumeration. See the
   @fun{gtk:status-icon-storage-type} function.
   @begin[Warning]{dictionary}
-    The @sym{gtk:status-icon-pixbuf} function has been deprecated since version
+    The @fun{gtk:status-icon-pixbuf} function has been deprecated since version
     3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
@@ -592,7 +591,7 @@ lambda (icon size)    :run-last
   @see-symbol{gtk:image-type}
   @see-function{gtk:status-icon-storage-type}")
 
-;;; --- status-icon-screen -----------------------------------------------------
+;;; --- gtk:status-icon-screen -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "screen" 'status-icon) t)
@@ -612,18 +611,18 @@ lambda (icon size)    :run-last
     Accessor of the @slot[gtk:status-icon]{screen} slot of the
     @class{gtk:status-icon} class.
   @end{short}
-  The @sym{gtk:status-icon-screen} function returns the screen associated with
-  the status icon. The @sym{(setf gtk:status-icon-screen)} function sets the
-  screen. If the icon is already mapped, it will be unmapped, and then remapped
-  on the new screen.
+  The @fun{gtk:status-icon-screen} function returns the screen associated with
+  the status icon. The @setf{gtk:status-icon-screen} function sets the screen.
+  If the icon is already mapped, it will be unmapped, and then remapped on the
+  new screen.
   @begin[Warning]{dictionary}
-    The @sym{gtk:status-icon-screen} function has been deprecated since version
+    The @fun{gtk:status-icon-screen} function has been deprecated since version
     3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
   @see-class{gdk:screen}")
 
-;;; --- status-icon-size -------------------------------------------------------
+;;; --- gtk:status-icon-size ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "size" 'status-icon) t)
@@ -644,22 +643,22 @@ lambda (icon size)    :run-last
     Accessor of the @slot[gtk:status-icon]{size} slot of the
     @class{gtk:status-icon} class.
   @end{short}
-  The @sym{gtk:status-icon-size} function gets the size in pixels that is
+  The @fun{gtk:status-icon-size} function gets the size in pixels that is
   available for the image.
 
   Stock icons and named icons adapt their size automatically if the size of the
-  notification area changes. For other storage types, the \"size-changed\"
-  signal can be used to react to size changes. Note that the returned size is
-  only meaningful while the status icon is embedded. See the
-  @fun{gtk:status-icon-is-embedded} function.
+  notification area changes. For other storage types, the
+  @code{\"size-changed\"} signal can be used to react to size changes. Note that
+  the returned size is only meaningful while the status icon is embedded. See
+  the @fun{gtk:status-icon-is-embedded} function.
   @begin[Warning]{dictionary}
-    The @sym{gtk:status-icon-size} function has been deprecated since version
+    The @fun{gtk:status-icon-size} function has been deprecated since version
     3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
   @see-function{gtk:status-icon-is-embedded}")
 
-;;; --- status-icon-stock ------------------------------------------------------
+;;; --- gtk:status-icon-stock --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "stock" 'status-icon) t)
@@ -683,22 +682,22 @@ lambda (icon size)    :run-last
     Accessor of the @slot[gtk:status-icon]{stock} slot of the
     @class{gtk:status-icon} class.
   @end{short}
-  The @sym{gtk:status-icon-stock} function gets the ID of the stock icon being
-  displayed by the status icon. The @sym{(setf gtk:status-icon-stock)}
-  function sets the stock ID.
+  The @fun{gtk:status-icon-stock} function gets the ID of the stock icon being
+  displayed by the status icon. The @setf{gtk:status-icon-stock} function sets
+  the stock ID.
 
   The storage type of the status icon must be the value @code{:empty} or
   @code{:stock} of the @symbol{gtk:image-type} enumeration. See the
   @fun{gtk:status-icon-storage-type} function.
   @begin[Warning]{dictionary}
-    The @sym{gtk:status-icon-stock} function has been deprecated since version
+    The @fun{gtk:status-icon-stock} function has been deprecated since version
     3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
   @see-symbol{gtk:image-type}
   @see-function{gtk:status-icon-storage-type}")
 
-;;; --- status-icon-storage-type -----------------------------------------------
+;;; --- gtk:status-icon-storage-type -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "storage-type" 'status-icon) t)
@@ -718,18 +717,18 @@ lambda (icon size)    :run-last
     Accessor of the @slot[gtk:status-icon]{storage-type} slot of the
     @class{gtk:status-icon} class.
   @end{short}
-  The @sym{gtk:status-icon-storage-type} function gets the type of
+  The @fun{gtk:status-icon-storage-type} function gets the type of
   representation being used by the status icon to store image data. If the
   status icon has no image data, the return value will be the @code{:empty}
   value.
   @begin[Warning]{dictionary}
-    The @sym{gtk:status-icon-storage-type} value has been deprecated since
+    The @fun{gtk:status-icon-storage-type} value has been deprecated since
     version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
   @see-symbol{gtk:image-type}")
 
-;;; --- status-icon-title --------------------------------------------------
+;;; --- gtk:status-icon-title --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "title" 'status-icon) t)
@@ -752,18 +751,18 @@ lambda (icon size)    :run-last
     Accessor of the @slot[gtk:status-icon]{title} slot of the
     @class{gtk:status-icon} class.
   @end{short}
-  The @sym{gtk:status-icon-title} function gets the title of the status icon.
-  The @sym{(setf gtk:status-icon-title)} function sets the title.
+  The @fun{gtk:status-icon-title} function gets the title of the status icon.
+  The @setf{gtk:status-icon-title} function sets the title.
 
   This should be a short, human readable, localized string describing the status
   icon. It may be used by tools like screen readers to render the status icon.
   @begin[Warning]{dictionary}
-    The @sym{gtk:status-icon-title} function has been deprecated since version
+    The @fun{gtk:status-icon-title} function has been deprecated since version
     3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}")
 
-;;; --- status-icon-tooltip-markup ---------------------------------------------
+;;; --- gtk:status-icon-tooltip-markup -----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "tooltip-markup" 'status-icon) t)
@@ -773,8 +772,8 @@ lambda (icon size)    :run-last
   function. This is a convenience property which will take care of getting the
   tooltip shown if the given string is not @code{nil}. The @code{has-tooltip}
   property will automatically be set to @em{true} and the default handler for
-  the \"query-tooltip\" signal will take care of displaying the tooltip. On
-  some platforms, embedded markup will be ignored. @br{}
+  the @code{\"query-tooltip\"} signal will take care of displaying the tooltip.
+  On some platforms, embedded markup will be ignored. @br{}
   Default value: @code{nil}")
 
 #+liber-documentation
@@ -791,24 +790,24 @@ lambda (icon size)    :run-last
     Accessor of the @slot[gtk:status-icon]{tooltip-markup} slot of the
     @class{gtk:status-icon} class.
   @end{short}
-  The @sym{gtk:status-icon-tooltip-markup} function gets the contents of the
-  tooltip for the status icon. The @sym{(setf gtk:status-icon-tooltip-markup)}
+  The @fun{gtk:status-icon-tooltip-markup} function gets the contents of the
+  tooltip for the status icon. The @setf{gtk:status-icon-tooltip-markup}
   function sets @arg{markup} as the contents of the tooltip, which is marked up
   with the Pango text markup language.
 
   This function will take care of setting the
   @slot[gtk:status-icon]{has-tooltip} property to @em{true} and of the default
-  handler for the \"query-tooltip\" signal. See also the
+  handler for the @code{\"query-tooltip\"} signal. See also the
   @fun{gtk:tooltip-markup} function.
   @begin[Warning]{dictionary}
-    The @sym{gtk:status-icon-tooltip-markup} function has been deprecated since
+    The @fun{gtk:status-icon-tooltip-markup} function has been deprecated since
     version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
   @see-function{gtk:tooltip-markup}
   @see-function{gtk:status-icon-has-tooltip}")
 
-;;; --- status-icon-tooltip-text -------------------------------------------
+;;; --- gtk:status-icon-tooltip-text -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "tooltip-text" 'status-icon) t)
@@ -817,10 +816,10 @@ lambda (icon size)    :run-last
   @fun{gtk:tooltip-set-text} function. This is a convenience property which will
   take care of getting the tooltip shown if the given string is not @code{nil}.
   The @code{has-tooltip} property will automatically be set to @em{true} and the
-  default handler for the \"query-tooltip\" signal will take care of displaying
-  the tooltip. Note that some platforms have limitations on the length of
-  tooltips that they allow on status icons, e.g. Windows only shows the first
-  64 characters. @br{}
+  default handler for the @code{\"query-tooltip\"} signal will take care of
+  displaying the tooltip. Note that some platforms have limitations on the
+  length of tooltips that they allow on status icons, e.g. Windows only shows
+  the first 64 characters. @br{}
   Default value: @code{nil}")
 
 #+liber-documentation
@@ -836,21 +835,21 @@ lambda (icon size)    :run-last
     Accessor of the @slot[gtk:status-icon]{tooltip-text} slot of the
     @class{gtk:status-icon} class.
   @end{short}
-  The @sym{gtk:status-icon-tooltip-text} function gets the contents of the
-  tooltip for the status icon. The @sym{(setf gtk:status-icon-tooltip-text)}
-  function sets the text of the tooltip.
+  The @fun{gtk:status-icon-tooltip-text} function gets the contents of the
+  tooltip for the status icon. The @setf{gtk:status-icon-tooltip-text} function
+  sets the text of the tooltip.
 
   This function will take care of setting the
   @slot[gtk:status-icon]{has-tooltip} property to @em{true} and of the default
-  handler for the \"query-tooltip\" signal.
+  handler for the @code{\"query-tooltip\"} signal.
   @begin[Warning]{dictionary}
-    The @sym{gtk:status-icon-tooltip-text} function has been deprecated since
+    The @fun{gtk:status-icon-tooltip-text} function has been deprecated since
     version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
   @see-function{gtk:status-icon-has-tooltip}")
 
-;;; --- status-icon-visible ----------------------------------------------------
+;;; --- gtk:status-icon-visible ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "visible" 'status-icon) t)
@@ -871,14 +870,14 @@ lambda (icon size)    :run-last
     Accessor of the @slot[gtk:status-icon]{visible} slot of the
     @class{gtk:status-icon} class.
   @end{short}
-  The @sym{gtk:status-icon-visible} function returns whether the status icon is
-  visible or not. The @sym{(setf gtk:status-icon-visible)} functon sets the
+  The @fun{gtk:status-icon-visible} function returns whether the status icon is
+  visible or not. The @setf{gtk:status-icon-visible} functon sets the
   visibility.
 
   Note that being visible does not guarantee that the user can actually see the
   icon, see also the @fun{gtk:status-icon-is-embedded} function.
   @begin[Warning]{dictionary}
-    The @sym{gtk:status-icon-visible} function has been deprecated since version
+    The @fun{gtk:status-icon-visible} function has been deprecated since version
     3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
@@ -893,10 +892,10 @@ lambda (icon size)    :run-last
 (defun status-icon-new ()
  #+liber-documentation
  "@version{#2023-3-27}
-  @return{A new @class{gtk:status-icon} object.}
+  @return{The new @class{gtk:status-icon} object.}
   @short{Creates an empty status icon.}
   @begin[Warning]{dictionary}
-    The @sym{gtk:status-icon-new} function has been deprecated since version
+    The @fun{gtk:status-icon-new} function has been deprecated since version
     3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}"
@@ -913,14 +912,14 @@ lambda (icon size)    :run-last
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object}
-  @return{A new @class{gtk:status-icon} object.}
+  @return{The new @class{gtk:status-icon} object.}
   @begin{short}
     Creates a status icon displaying @arg{pixbuf}.
   @end{short}
   The image will be scaled down to fit in the available space in the
   notification area, if necessary.
   @begin[Warning]{dictionary}
-    The @sym{gtk:status-icon-new-from-pixbuf} function has been deprecated
+    The @fun{gtk:status-icon-new-from-pixbuf} function has been deprecated
     since version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
@@ -938,14 +937,14 @@ lambda (icon size)    :run-last
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[filename]{a string with the filename}
-  @return{A new @class{gtk:status-icon} object.}
+  @return{The new @class{gtk:status-icon} object.}
   @begin{short}
     Creates a status icon displaying the icon from a file.
   @end{short}
   The image will be scaled down to fit in the available space in the
   notification area, if necessary.
   @begin[Warning]{dictionary}
-    The @sym{gtk:status-icon-new-from-file} function has been deprecated since
+    The @fun{gtk:status-icon-new-from-file} function has been deprecated since
     version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}"
@@ -962,13 +961,13 @@ lambda (icon size)    :run-last
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[stock-id]{a string with a stock icon ID}
-  @return{A new @class{gtk:status-icon} object.}
+  @return{The new @class{gtk:status-icon} object.}
   @begin{short}
     Creates a status icon displaying a stock icon.
   @end{short}
   Sample stock icon names are \"gtk-open\", \"gtk-quit\".
   @begin[Warning]{dictionary}
-    The @sym{gtk:status-icon-new-from-stock} function has been deprecated since
+    The @fun{gtk:status-icon-new-from-stock} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}"
@@ -985,13 +984,13 @@ lambda (icon size)    :run-last
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[name]{a string with an icon name}
-  @return{A new @class{gtk:status-icon} object.}
+  @return{The new @class{gtk:status-icon} object.}
   @begin{short}
     Creates a status icon displaying an icon from the current icon theme.
   @end{short}
   If the current icon theme is changed, the icon will be updated appropriately.
   @begin[Warning]{dictionary}
-    The @sym{gtk:status-icon-new-from-icon-name} function has been deprecated
+    The @fun{gtk:status-icon-new-from-icon-name} function has been deprecated
     since version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}"
@@ -1008,13 +1007,13 @@ lambda (icon size)    :run-last
  #+liber-documentation
  "@version{#2023-3-27}
   @argument[icon]{a @class{g:icon} object}
-  @return{A new @class{gtk:status-icon} object.}
+  @return{The new @class{gtk:status-icon} object.}
   @begin{short}
     Creates a status icon displaying a @class{g:icon} object.
   @end{short}
   If the icon is a themed icon, it will be updated when the theme changes.
   @begin[Warning]{dictionary}
-    The @sym{gtk:status-icon-new-from-gicon} function has been deprecated since
+    The @fun{gtk:status-icon-new-from-gicon} function has been deprecated since
     version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
@@ -1038,7 +1037,7 @@ lambda (icon size)    :run-last
   @end{short}
   See the @fun{gtk:status-icon-new-from-pixbuf} function for details.
   @begin[Warning]{dictionary}
-    The @sym{gtk:status-icon-set-from-pixbuf} function has been deprecated
+    The @fun{gtk:status-icon-set-from-pixbuf} function has been deprecated
     since version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
@@ -1063,7 +1062,7 @@ lambda (icon size)    :run-last
   @end{short}
   See the @fun{gtk:status-icon-new-from-file} function for details.
   @begin[Warning]{dictionary}
-    The @sym{gtk:status-icon-set-from-file} function has been deprecated since
+    The @fun{gtk:status-icon-set-from-file} function has been deprecated since
     version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
@@ -1088,7 +1087,7 @@ lambda (icon size)    :run-last
   @end{short}
   See the @fun{gtk:status-icon-new-from-stock} function for details.
   @begin[Warning]{dictionary}
-    The @sym{gtk:status-icon-set-from-stock} function has been deprecated since
+    The @fun{gtk:status-icon-set-from-stock} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
@@ -1114,7 +1113,7 @@ lambda (icon size)    :run-last
   @end{short}
   See the @fun{gtk:status-icon-new-from-icon-name} function for details.
   @begin[Warning]{dictionary}
-    The @sym{gtk:status-icon-set-from-icon-name} function has been deprecated
+    The @fun{gtk:status-icon-set-from-icon-name} function has been deprecated
     since version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
@@ -1139,7 +1138,7 @@ lambda (icon size)    :run-last
   @end{short}
   See the @fun{gtk:status-icon-new-from-gicon} function for details.
   @begin[Warning]{dictionary}
-    The @sym{gtk:status-icon-set-from-gicon} function has been deprecated since
+    The @fun{gtk:status-icon-set-from-gicon} function has been deprecated since
     version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}
@@ -1164,7 +1163,7 @@ lambda (icon size)    :run-last
   This should be a string identifying this icon. It may be used for sorting the
   icons in the tray and will not be shown to the user.
   @begin[Warning]{dictionary}
-    The @sym{gtk:status-icon-set-name} function has been deprecated since
+    The @fun{gtk:status-icon-set-name} function has been deprecated since
     version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}"
@@ -1188,7 +1187,7 @@ lambda (icon size)    :run-last
     Returns whether the status icon is embedded in a notification area.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:status-icon-is-embedded} function has been deprecated since
+    The @fun{gtk:status-icon-is-embedded} function has been deprecated since
     version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:status-icon}"

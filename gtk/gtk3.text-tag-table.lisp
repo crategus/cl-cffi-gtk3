@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -79,12 +79,12 @@
   @begin{short}
     A tag table defines a set of tags that can be used together.
   @end{short}
-  Each tag is stored in a @sym{gtk:text-tag-table} object. Each text buffer has
-  one tag table associated with it. Only tags from that tag table can be used
-  with the text buffer. A single tag table can be shared between multiple text
-  buffers, however.
+  Each tag is stored in a @class{gtk:text-tag-table} object. Each text buffer
+  has one tag table associated with it. Only tags from that tag table can be
+  used with the text buffer. A single tag table can be shared between multiple
+  text buffers, however.
   @begin[GtkTextTagTable as GtkBuildable]{dictionary}
-    The @sym{gtk:text-tag-table} implementation of the @class{gtk:buildable}
+    The @class{gtk:text-tag-table} implementation of the @class{gtk:buildable}
     interface supports adding tags by specifying @code{\"tag\"} as the
     @code{type} attribute of a @code{<child>} element.
 
@@ -103,7 +103,7 @@
 lambda (table tag)    :run-last
       @end{pre}
       @begin[code]{table}
-        @entry[table]{The @sym{gtk:text-tag-table} object which received the
+        @entry[table]{The @class{gtk:text-tag-table} object which received the
           signal.}
         @entry[tag]{The added @class{gtk:text-tag} object.}
       @end{table}
@@ -112,7 +112,7 @@ lambda (table tag)    :run-last
 lambda (table tag changed)    :run-last
       @end{pre}
       @begin[code]{table}
-        @entry[table]{The @sym{gtk:text-tag-table} object which received the
+        @entry[table]{The @class{gtk:text-tag-table} object which received the
           signal.}
         @entry[tag]{The changed @class{gtk:text-tag} object.}
         @entry[changed]{A boolean whether the size has been changed.}
@@ -122,7 +122,7 @@ lambda (table tag changed)    :run-last
 lambda (table tag)    :run-last
       @end{pre}
       @begin[code]{table}
-        @entry[table]{The @sym{gtk:text-tag-table} object which received the
+        @entry[table]{The @class{gtk:text-tag-table} object which received the
           signal.}
         @entry[tag]{The removed @class{gtk:text-tag} object.}
       @end{table}
@@ -140,7 +140,7 @@ lambda (table tag)    :run-last
 (defun text-tag-table-new ()
  #+liber-documentation
  "@version{#2023-3-28}
-  @return{A new @class{gtk:text-tag-table} object.}
+  @return{The new @class{gtk:text-tag-table} object.}
   @begin{short}
     Creates a new tag table.
   @end{short}
@@ -156,10 +156,10 @@ lambda (table tag)    :run-last
 
 (cffi:defcfun ("gtk_text_tag_table_add" text-tag-table-add) :boolean
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{2024-1-2}
   @argument[table]{a @class{gtk:text-tag-table} object}
   @argument[tag]{a @class{gtk:text-tag} object}
-  @return{A boolean which is @em{true} on success.}
+  @return{The boolean which is @em{true} on success.}
   @begin{short}
     Adds a tag to the tag table.
   @end{short}
@@ -282,7 +282,7 @@ lambda (tag)
  #+liber-documentation
  "@version{#2023-3-28}
   @argument[table]{a @class{gtk:text-tag-table} object}
-  @return{An integer with the number of tags in @arg{table}.}
+  @return{The integer with the number of tags in @arg{table}.}
   @begin{short}
     Returns the size of the number of tags in the tag table.
   @end{short}

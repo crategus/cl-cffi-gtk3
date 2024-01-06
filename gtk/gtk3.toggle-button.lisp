@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -105,9 +105,9 @@
 
 #+liber-documentation
 (setf (documentation 'toggle-button 'type)
- "@version{#2021-10-11}
+ "@version{2023-12-29}
   @begin{short}
-    A @sym{gtk:toggle-button} widget is a @class{gtk:button} widget which will
+    A @class{gtk:toggle-button} widget is a @class{gtk:button} widget which will
     remain \"pressed-in\" when clicked.
   @end{short}
   Clicking again will cause the toggle button to return to its normal state.
@@ -120,14 +120,14 @@
   @class{gtk:image} widget, into the container of the toggle button. See the
   @class{gtk:button} widget for more information.
 
-  The state of a @sym{gtk:toggle-button} widget can be set and retrieved using
+  The state of a @class{gtk:toggle-button} widget can be set and retrieved using
   the @fun{gtk:toggle-button-active} function.
 
   To simply switch the state of a toggle button, use the
   @fun{gtk:toggle-button-toggled} function.
   @begin[CSS nodes]{dictionary}
-    The @sym{gtk:toggle-button} implementation has a single CSS node with name
-    @code{button}. To differentiate it from a plain button, it gets the
+    The @class{gtk:toggle-button} implementation has a single CSS node with
+    name @code{button}. To differentiate it from a plain button, it gets the
     @code{.toggle} style class.
   @end{dictionary}
   @begin[Example]{dictionary}
@@ -135,7 +135,7 @@
     buttons are used to switch the column and row spacing of a grid.
     @begin{pre}
 (defun example-grid-spacing ()
-  (within-main-loop
+  (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :type :toplevel
                                  :title \"Example Grid Spacing\"
@@ -152,35 +152,27 @@
                                   :label \"More Col Spacing\"))
           (button3 (make-instance 'gtk:button
                                   :label \"Button 3\")))
-
       (g:signal-connect window \"destroy\"
                         (lambda (widget)
                           (declare (ignore widget))
-                          (leave-gtk-main)))
-
+                          (gtk:leave-gtk-main)))
       (g:signal-connect button1 \"toggled\"
          (lambda (widget)
            (if (gtk:toggle-button-active widget)
-               (progn
-                 (setf (gtk:grid-row-spacing grid) 24)
-                 (setf (gtk:button-label widget) \"Less Row Spacing\"))
-               (progn
-                 (setf (gtk:grid-row-spacing grid) 6)
-                 (setf (gtk:button-label widget) \"More Row Spacing\")))))
+               (setf (gtk:grid-row-spacing grid) 24
+                     (gtk:button-label widget) \"Less Row Spacing\")
+               (setf (gtk:grid-row-spacing grid) 6
+                     (gtk:button-label widget) \"More Row Spacing\"))))
       (g:signal-connect button2 \"toggled\"
          (lambda (widget)
            (if (gtk:toggle-button-active widget)
-               (progn
-                 (setf (gtk:grid-column-spacing grid) 24)
-                 (setf (gtk:button-label widget) \"Less Col Spacing\"))
-               (progn
-                 (setf (gtk:grid-column-spacing grid) 6)
-                 (setf (gtk:button-label widget) \"More Col Spacing\")))))
-
+               (setf (gtk:grid-column-spacing grid) 24
+                     (gtk:button-label widget) \"Less Col Spacing\")
+               (setf (gtk:grid-column-spacing grid) 6
+                     (gtk:button-label widget) \"More Col Spacing\"))))
       (gtk:grid-attach grid button1 0 0 1 1)
       (gtk:grid-attach grid button2 1 0 1 1)
       (gtk:grid-attach grid button3 0 1 2 1)
-
       (gtk:container-add window grid)
       (gtk:widget-show-all window))))
     @end{pre}
@@ -193,7 +185,7 @@ lambda (togglebutton)    :run-first
       Should be connected if you wish to perform an action whenever the
       state of the toggle button is changed.
       @begin[code]{table}
-        @entry[togglebutton]{The @sym{gtk:toggle-button} widget which received
+        @entry[togglebutton]{The @class{gtk:toggle-button} widget which received
           the signal.}
       @end{table}
   @end{dictionary}
@@ -211,7 +203,7 @@ lambda (togglebutton)    :run-first
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- toggle-button-active ---------------------------------------------------
+;;; --- gtk:toggle-button-active -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "active" 'toggle-button) t)
@@ -223,7 +215,7 @@ lambda (togglebutton)    :run-first
 (setf (liber:alias-for-function 'toggle-button-active)
       "Accessor"
       (documentation 'toggle-button-active 'function)
- "@version{#2023-3-28}
+ "@version{2023-12-29}
   @syntax[]{(gtk:toggle-button-active object) => is-active}
   @syntax[]{(setf (gtk:toggle-button-active object) is-active)}
   @argument[object]{a @class{gtk:toggle-button} widget}
@@ -232,15 +224,15 @@ lambda (togglebutton)    :run-first
     Accessor of the @slot[gtk:toggle-button]{active} slot of the
     @class{gtk:toggle-button} class.
   @end{short}
-  The @sym{gtk:toggle-button-active} function queries a toggle button and
+  The @fun{gtk:toggle-button-active} function queries a toggle button and
   returns its current state. Returns @em{true} if the toggle button is pressed
-  in and @em{false} if it is raised. The @sym{(setf gtk:toggle-button-active)}
+  in and @em{false} if it is raised. The @setf{gtk:toggle-button-active}
   function sets the status of the toggle button.
 
-  This action causes the \"toggled\" signal to be emitted.
+  This action causes the @code{\"toggled\"} signal to be emitted.
   @see-class{gtk:toggle-button}")
 
-;;; --- toggle-button-draw-indicator -------------------------------------------
+;;; --- gtk:toggle-button-draw-indicator ---------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "draw-indicator"
@@ -254,7 +246,7 @@ lambda (togglebutton)    :run-first
 (setf (liber:alias-for-function 'toggle-button-draw-indicator)
       "Accessor"
       (documentation 'toggle-button-draw-indicator 'function)
- "@version{#2023-3-28}
+ "@version{2023-12-29}
   @syntax[]{(gtk:toggle-button-draw-indicator object) => indicator}
   @syntax[]{(setf (gtk:toggle-button-draw-indicator object) indicator)}
   @argument[object]{a @class{gtk:toggle-button} widget}
@@ -267,7 +259,7 @@ lambda (togglebutton)    :run-first
   If the toggle part of the button is displayed.
   @see-class{gtk:toggle-button}")
 
-;;; --- toggle-button-inconsistent ---------------------------------------------
+;;; --- gtk:toggle-button-inconsistent -----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "inconsistent" 'toggle-button) t)
@@ -279,7 +271,7 @@ lambda (togglebutton)    :run-first
 (setf (liber:alias-for-function 'toggle-button-inconsistent)
       "Accessor"
       (documentation 'toggle-button-inconsistent 'function)
- "@version{#2023-3-28}
+ "@version{2023-12-29}
   @syntax[]{(gtk:toggle-button-inconsistent object) => setting}
   @syntax[]{(setf (gtk:toggle-button-inconsistent object) setting)}
   @argument[object]{a @class{gtk:toggle-button} widget}
@@ -294,8 +286,8 @@ lambda (togglebutton)    :run-first
   an \"in between\" state. This function turns on \"in between\" display.
   Normally you would turn off the inconsistent state again if the user toggles
   the toggle button. This has to be done manually, the
-  @sym{(setf gtk:toggle-button-inconsistent)} function only affects visual
-  appearance, it does not affect the semantics of the button.
+  @setf{gtk:toggle-button-inconsistent} function only affects visual appearance,
+  it does not affect the semantics of the button.
   @see-class{gtk:toggle-button}")
 
 ;;; ----------------------------------------------------------------------------
@@ -306,8 +298,8 @@ lambda (togglebutton)    :run-first
 
 (defun toggle-button-new ()
  #+liber-documentation
- "@version{#2023-3-28}
-  @return{A new @class{gtk:toggle-button} widget.}
+ "@version{2023-12-29}
+  @return{The new @class{gtk:toggle-button} widget.}
   @begin{short}
     Creates a new toggle button.
   @end{short}
@@ -329,10 +321,10 @@ lambda (togglebutton)    :run-first
 
 (defun toggle-button-new-with-label (label)
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{2023-12-29}
   @argument[label]{a string containing the message to be placed in the toggle
     button}
-  @return{A new @class{gtk:toggle-button} widget.}
+  @return{The new @class{gtk:toggle-button} widget.}
   @short{Creates a new toggle button with a text label.}
   @see-class{gtk:toggle-button}
   @see-function{gtk:toggle-button-new}
@@ -351,10 +343,10 @@ lambda (togglebutton)    :run-first
 (cffi:defcfun ("gtk_toggle_button_new_with_mnemonic"
                toggle-button-new-with-mnemonic) (g:object widget)
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{2023-12-29}
   @argument[label]{a string with the text of the button, with an underscore in
     front of the mnemonic character}
-  @return{A new @class{gtk:toggle-button} widget.}
+  @return{The new @class{gtk:toggle-button} widget.}
   @begin{short}
     Creates a new toggle button containing a label.
   @end{short}
@@ -387,10 +379,10 @@ lambda (togglebutton)    :run-first
   @begin{short}
     Accessor of the mode of the toggle button.
   @end{short}
-  The @sym{gtk:toggle-button-mode} function retrieves whether the button is
+  The @fun{gtk:toggle-button-mode} function retrieves whether the button is
   displayed as a separate indicator and label. The
-  @sym{(setf gtk:toggle-button-mode)} function sets whether the button is
-  displayed as a separate indicator and label.
+  @setf{gtk:toggle-button-mode} function sets whether the button is displayed
+  as a separate indicator and label.
 
   You can call this function on a check button or a radio button with the
   @em{false} value for @arg{draw-indicator} to make the button look like a
@@ -401,7 +393,7 @@ lambda (togglebutton)    :run-first
   from the @class{gtk:toggle-button} class, not instances of the
   @class{gtk:toggle-button} class itself.
   @begin[Note]{dictionary}
-    The @sym{gtk:toggle-button-mode} function is equivalent to the
+    The @fun{gtk:toggle-button-mode} function is equivalent to the
     @fun{gtk:toggle-button-draw-indicator} function.
   @end{dictionary}
   @see-class{gtk:toggle-button}
@@ -419,7 +411,7 @@ lambda (togglebutton)    :run-first
  "@version{#2023-3-28}
   @argument[button]{a @class{gtk:toggle-button} widget}
   @begin{short}
-    Emits the \"toggled\" signal on the toggle button.
+    Emits the @code{\"toggled\"} signal on the toggle button.
   @end{short}
   There is no good reason for an application ever to call this function.
   @see-class{gtk:toggle-button}"
