@@ -883,7 +883,7 @@ lambda (combo)    :action
     Accessor of the @slot[gtk:combo-box]{row-span-column} slot of the
     @class{gtk:combo-box} class.
   @end{short}
-  The @@fun{gtk:combo-box-row-span-column} function returns the column with row
+  The @fun{gtk:combo-box-row-span-column} function returns the column with row
   span information for the combo box. The @setf{gtk:combo-box-row-span-column}
   function sets the column with row span information. The row span column
   contains integers which indicate how many rows an item should span.
