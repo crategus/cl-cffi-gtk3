@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -140,14 +140,14 @@
 (setf (documentation 'accel-group 'type)
  "@version{2023-3-1}
   @begin{short}
-    A @sym{gtk:accel-group} object represents a group of keyboard accelerators,
-    typically attached to a toplevel @class{gtk:window} widget with the
-    @fun{gtk:window-add-accel-group} function.
+    A @class{gtk:accel-group} object represents a group of keyboard
+    accelerators, typically attached to a toplevel @class{gtk:window} widget
+    with the @fun{gtk:window-add-accel-group} function.
   @end{short}
-  Usually you will not need to create a @sym{gtk:accel-group} object directly.
+  Usually you will not need to create a @class{gtk:accel-group} object directly.
   Instead, when using the @class{gtk:ui-manager} class, GTK automatically sets
-  up the accelerators for your menus in the @sym{gtk:accel-group} object of the
-  UI manager.
+  up the accelerators for your menus in the @class{gtk:accel-group} object of
+  the UI manager.
 
   Note that accelerators are different from mnemonics. Accelerators are
   shortcuts for activating a menu item. They appear alongside the menu item
@@ -161,10 +161,10 @@
       @begin{pre}
 lambda (group acceleratable keyval modifier)    :detailed
       @end{pre}
-      The signal is an implementation detail of the @sym{gtk:accel-group} class
-      and not meant to be used by applications.
+      The signal is an implementation detail of the @class{gtk:accel-group}
+      class and not meant to be used by applications.
       @begin[code]{table}
-        @entry[group]{The @sym{gtk:accel-group} object which received the
+        @entry[group]{The @class{gtk:accel-group} object which received the
           signal.}
         @entry[acceleratable]{The @class{g:object} object on which the
           accelerator was activated.}
@@ -182,7 +182,7 @@ lambda (group keyval modifier func)    :detailed
       display an associated accelerator should connect to this signal, and
       rebuild their visual representation if @arg{func} is theirs.
       @begin[code]{table}
-        @entry[group]{The @sym{gtk:accel-group} object which received the
+        @entry[group]{The @class{gtk:accel-group} object which received the
           signal.}
         @entry[keyval]{An unsigned integer with the accelerator keyval.}
         @entry[modifier]{The @symbol{gdk:modifier-type} modifier combination of
@@ -205,7 +205,7 @@ lambda (group keyval modifier func)    :detailed
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- accel-group-is-locked --------------------------------------------------
+;;; --- gtk:accel-group-is-locked ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "is-locked" 'accel-group) t)
@@ -225,7 +225,7 @@ lambda (group keyval modifier func)    :detailed
     Accessor of the @slot[gtk:accel-group]{is-locked} slot of the
     @class{gtk:accel-group} class.
   @end{short}
-  The @sym{gtk:accel-group-is-locked} function returns @em{true} if there are
+  The @fun{gtk:accel-group-is-locked} function returns @em{true} if there are
   one or more locks on the accelerator group, @em{false} otherwise. Locks are
   added and removed using the @fun{gtk:accel-group-lock} and
   @fun{gtk:accel-group-unlock} functions.
@@ -233,7 +233,7 @@ lambda (group keyval modifier func)    :detailed
   @see-function{gtk:accel-group-lock}
   @see-function{gtk:accel-group-unlock}")
 
-;;; --- accel-group-modifier-mask ----------------------------------------------
+;;; --- gtk:accel-group-modifier-mask ------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "modifier-mask" 'accel-group) t)
@@ -255,7 +255,7 @@ lambda (group keyval modifier func)    :detailed
     Accessor of the @slot[gtk:accel-group]{modifier-mask} slot of the
     @class{gtk:accel-group} class.
   @end{short}
-  The @sym{gtk:accel-group-modifier-mask} function gets the modifier mask for
+  The @fun{gtk:accel-group-modifier-mask} function gets the modifier mask for
   this accelerator group. For example, the @code{:control-mask},
   @code{:shift-mask} values, etc.
   @see-class{gtk:accel-group}
@@ -268,7 +268,7 @@ lambda (group keyval modifier func)    :detailed
 (defun accel-group-new ()
  #+liber-documentation
  "@version{2023-3-1}
-  @return{A new @class{gtk:accel-group} object.}
+  @return{The new @class{gtk:accel-group} object.}
   @short{Creates a new accelerator group.}
   @see-class{gtk:accel-group}"
   (make-instance 'accel-group))
@@ -680,7 +680,7 @@ lambda (group keyval modifier func)    :detailed
  "@version{2023-3-1}
   @argument[key]{an unsigned integer with the accelerator keyval}
   @argument[mask]{a @symbol{gdk:modifier-type} accelerator modifier mask}
-  @return{A string with the accelerator name.}
+  @return{The string with the accelerator name.}
   @begin{short}
     Converts an accelerator keyval and modifier mask into a string parseable by
     the @fun{gtk:accelerator-parse} function.
@@ -711,7 +711,7 @@ lambda (group keyval modifier func)    :detailed
  "@version{2023-3-1}
   @argument[key]{an unsigned integer with the accelerator keyval}
   @argument[mask]{a @symbol{gdk:modifier-type} accelerator modifier mask}
-  @return{A string representing the accelerator.}
+  @return{The string representing the accelerator.}
   @begin{short}
     Converts an accelerator keyval and modifier mask into a string which can be
     used to represent the accelerator to the user.
@@ -849,8 +849,8 @@ lambda (group keyval modifier func)    :detailed
   @begin{short}
      Accessor of the default accelerator modifier mask.
   @end{short}
-  The @sym{gtk:accelerator-default-mod-mask} function gets the default
-  accelerator modifier mask. The @sym{(setf gtk:accelerator-default-mod-mask)}
+  The @fun{gtk:accelerator-default-mod-mask} function gets the default
+  accelerator modifier mask. The @setf{gtk:accelerator-default-mod-mask}
   function sets the modifiers that will be considered significant for keyboard
   accelerators.
 

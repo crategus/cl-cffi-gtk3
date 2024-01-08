@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -87,7 +87,7 @@
 (setf (documentation 'accel-label 'type)
  "@version{#2023-3-15}
   @begin{short}
-    The @sym{gtk:accel-label} widget is a subclass of the @class{gtk:label}
+    The @class{gtk:accel-label} widget is a subclass of the @class{gtk:label}
     class that also displays an accelerator key on the right of the label text,
     e.g. \"Ctrl+Q\".
   @end{short}
@@ -100,8 +100,8 @@
   widget is set by calling the @fun{gtk:accel-label-accel-widget} function.
 
   For example, a @class{gtk:menu-item} widget may have an accelerator added to
-  emit the \"activate\" signal when the \"Ctrl+Q\" key combination is pressed.
-  A @sym{gtk:accel-label} widget is created and added to the
+  emit the @code{\"activate\"} signal when the @kbd{Ctrl+Q} key combination is
+  pressed. A @class{gtk:accel-label} widget is created and added to the
   @class{gtk:menu-item} widget, and the @fun{gtk:accel-label-accel-widget}
   function is called with the @class{gtk:menu-item} widget as the second
   argument. The accel label will now display \"Ctrl+Q\" after its label.
@@ -109,9 +109,9 @@
   Note that creating a @class{gtk:menu-item} widget with the
   @fun{gtk:menu-item-new-with-label} function, or one of the similar functions
   for the @class{gtk:check-menu-item} and @class{gtk:radio-menu-item} widgets,
-  automatically adds a @sym{gtk:accel-label} widget to the @class{gtk:menu-item}
-  widget and calls the @fun{gtk:accel-label-accel-widget} function to set it up
-  for you.
+  automatically adds a @class{gtk:accel-label} widget to the
+  @class{gtk:menu-item} widget and calls the @fun{gtk:accel-label-accel-widget}
+  function to set it up for you.
 
   A accel label will only display accelerators which have the @code{:visible}
   value of the @symbol{gtk:accel-flags} flags set. A accel label can display
@@ -146,7 +146,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- accel-label-accel-closure ----------------------------------------------
+;;; --- gtk:accel-label-accel-closure ------------------------------------------
 
 ;; TODO: GClosure is in the C implementatin a boxed type, but not in Lisp.
 ;; Therefore the accessor for accel-closure does not work.
@@ -171,14 +171,14 @@
     Accessor of the @slot[gtk:accel-label]{accel-closure} slot of the
     @class{gtk:accel-label} class.
   @end{short}
-  The @sym{gtk:accel-label-accel-closure} function gets the closure to be
-  monitored by this accelerator. The @sym{(setf gtk:accel-label-accel-closure)}
+  The @fun{gtk:accel-label-accel-closure} function gets the closure to be
+  monitored by this accelerator. The @setf{gtk:accel-label-accel-closure}
   function sets the closure. The closure must be connected to an accelerator
   group, see the @code{gtk_accel_group_connect()} function.
   @see-class{gtk:accel-label}
   @see-symbol{g:closure}")
 
-;;; --- accel-label-accel-widget -----------------------------------------------
+;;; --- gtk:accel-label-accel-widget -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "accel-widget" 'accel-label) t)
@@ -199,9 +199,9 @@
     Accessor of the @slot[gtk:accel-label]{accel-widget} slot of the
     @class{gtk:accel-label} class.
   @end{short}
-  The @sym{gtk:accel-label-accel-widget} function returns the widget monitored
-  by the accelerator label. The @sym{(setf gtk:accel-label-accel-widget)}
-  function sets the widget.
+  The @fun{gtk:accel-label-accel-widget} function returns the widget monitored
+  by the accelerator label. The @setf{gtk:accel-label-accel-widget} function
+  sets the widget.
   @see-class{gtk:accel-label}
   @see-class{gtk:widget}")
 
@@ -215,7 +215,7 @@
  #+liber-documentation
  "@version{#2023-3-15}
   @argument[text]{a string with the text of the label}
-  @return{A new @class{gtk:accel-label} widget.}
+  @return{The new @class{gtk:accel-label} widget.}
   @begin{short}
     Creates a new accel label.
   @end{short}
@@ -233,7 +233,7 @@
   #+liber-documentation
  "@version{#2023-3-15}
   @argument[label]{a @class{gtk:accel-label} widget}
-  @return{An integer with the width needed to display the accelerator key(s).}
+  @return{The integer with the width needed to display the accelerator key(s).}
   @begin{short}
     Returns the width needed to display the accelerator key(s).
   @end{short}

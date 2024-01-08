@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -104,9 +104,9 @@
   @code{\"Edit/Select All\"}. So a full valid accelerator path may look like:
   @code{\"<Gimp-Toolbox>/File/Dialogs/Tool Options...\"}.
 
-  All accelerators are stored inside one global @sym{gtk:accel-map} object that
-  can be obtained using the @fun{gtk:accel-map-get} function. See Monitoring
-  changes for additional details.
+  All accelerators are stored inside one global @class{gtk:accel-map} object
+  that can be obtained using the @fun{gtk:accel-map-get} function. See
+  Monitoring changes for additional details.
 
   @subheading{Manipulating accelerators}
     New accelerators can be added using the @fun{gtk:accel-map-add-entry}
@@ -125,10 +125,11 @@
     @fun{gtk:accel-map-load} functions are provided.
 
   @subheading{Monitoring changes}
-    A @sym{gtk:accel-map} object is only useful for monitoring changes of
-    accelerators. By connecting to the \"changed\" signal, one can monitor
-    changes of all accelerators. It is also possible to monitor only a single
-    accelerator path by using it as a detail of the \"changed\" signal.
+    A @class{gtk:accel-map} object is only useful for monitoring changes of
+    accelerators. By connecting to the @code{\"changed\"} signal, one can
+    monitor changes of all accelerators. It is also possible to monitor only a
+    single accelerator path by using it as a detail of the @code{\"changed\"}
+    signal.
   @begin[Signal Details]{dictionary}
     @subheading{The \"changed\" signal}
       @begin{pre}
@@ -138,7 +139,7 @@ lambda (object path key mods)    :has-details
       as the detail for the signal, so it is possible to connect to
       \"changed::accel-path\".
     @begin[arg]{table}
-      @entry[object]{The global @sym{gtk:accel-map} object.}
+      @entry[object]{The global @class{gtk:accel-map} object.}
       @entry[path]{A string with the path of the accelerator that changed.}
       @entry[key]{An unsigned integer with the key value for the new
         accelerator.}
@@ -418,8 +419,8 @@ lambda (object path key mods)    :has-details
     Gets the singleton global @class{gtk:accel-map} object.
   @end{short}
   This object is useful only for notification of changes to the accelerator map
-  via the \"changed\" signal. It is not a parameter to the other accelerator
-  map functions.
+  via the @code{\"changed\"} signal. It is not a parameter to the other
+  accelerator map functions.
   @see-class{gtk:accel-map}")
 
 (export 'accel-map-get)
