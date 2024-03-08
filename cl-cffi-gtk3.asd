@@ -24,7 +24,7 @@
 
 (defsystem :cl-cffi-gtk3
   :name "cl-cffi-gtk3"
-  :version "0.4.0"
+  :version "0.5.0"
   :author "Dieter Kaiser"
   :license "MIT"
   :serial t
@@ -363,7 +363,7 @@
 
 (defsystem :cl-cffi-gtk3/init
   :name "cl-cffi-gtk3/init"
-  :version "0.4.0"
+  :version "0.5.0"
   :author "Dieter Kaiser"
   :license "MIT"
   :serial t
@@ -374,7 +374,7 @@
 
 (defsystem :cl-cffi-gtk3/test
   :name "cl-cffi-gtk3/test"
-  :version "0.4.0"
+  :version "0.5.0"
   :author "Dieter Kaiser"
   :license "MIT"
   :depends-on (:cl-cffi-gtk3 :fiveam)
