@@ -452,7 +452,7 @@ lambda (listbox)    :action
 
 (defun list-box-new ()
  #+liber-documentation
- "@version{2014-1-1}
+ "@version{2024-1-1}
   @return{The new @class{gtk:list-box} widget.}
   @short{Creates a new list box.}
   @see-class{gtk:list-box}"
