@@ -13,7 +13,7 @@
 ;  TODO: Check this: We have no type initializer!?
 ;  (is (eq (g:gtype "CairoSurface")
 ;          (g:gtype (cffi:foreign-funcall "cairo_surface_get_type" :size))))
-  (cairo:with-cairo-image-surface (surface :rgb24 100 150)
+  (cairo:with-image-surface (surface :rgb24 100 150)
     (let ((cairosurface nil))
       ;; CairoSurface cannot be created from the Lisp side
       (signals (error) (make-instance 'gdk:cairo-surface))
@@ -33,7 +33,7 @@
 ;  TODO: Check this: We have no type initializer!?
 ;  (is (eq (g:gtype "CairoContext")
 ;          (g:gtype (cffi:foreign-funcall "cairo_context_get_type" :size))))
-  (cairo:with-cairo-context-for-image-surface (context :rgb24 100 150)
+  (cairo:with-context-for-image-surface (context :rgb24 100 150)
     (let ((cairocontext nil))
       ;; CairoContext cannot be created from the Lisp side
       (signals (error) (make-instance 'gdk:cairo-context))
