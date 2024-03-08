@@ -7,7 +7,7 @@
 
 ;;;     GtkWrapMode                                     <--- gtk.text-view.lisp
 
-(test wrap-mode
+(test gtk-wrap-mode
   ;; Check the type
   (is (g:type-is-enum "GtkWrapMode"))
   ;; Check the type initializer
@@ -39,7 +39,7 @@
 
 ;;;     GtkTextTag
 
-(test text-tag-class
+(test gtk-text-tag-class
   ;; Type check
   (is (g:type-is-object "GtkTextTag"))
   ;; Check the registered name
@@ -236,7 +236,7 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-(test text-tag-properties
+(test gtk-text-tag-properties
   (let ((tag (make-instance 'gtk:text-tag)))
     (is-false (gtk:text-tag-accumulative-margin tag))
     ;; Property "background" is not writeable
@@ -319,7 +319,7 @@
 
 ;;;     gtk_text_tag_new
 
-(test text-tag-new
+(test gtk-text-tag-new
   (is (typep (gtk:text-tag-new "tag") 'gtk:text-tag))
   (is (typep (gtk:text-tag-new "bold" :weight 700) 'gtk:text-tag))
   (is (typep (gtk:text-tag-new "blue-foreground" :foreground "blue")
@@ -332,7 +332,7 @@
 ;;;     gtk_text_tag_get_priority
 ;;;     gtk_text_tag_set_priority
 
-(test text-tag-priority
+(test gtk-text-tag-priority
   (let ((tag1 (gtk:text-tag-new "bold" :weight 700))
         (tag2 (gtk:text-tag-new "font" :font "fixed"))
         (table (gtk:text-tag-table-new)))
@@ -354,7 +354,7 @@
 ;;;     gtk_text_tag_changed
 
 #+nil
-(test text-tag-signals
+(test gtk-text-tag-signals
   (let* ((tag (gtk:text-tag-new "bold"))
          (buffer (make-instance 'gtk:text-buffer :text "Some text."))
          (table (gtk:text-buffer-tag-table buffer))
@@ -392,4 +392,4 @@
 ;;;     gtk_text_attributes_unref
 ;;;     gtk_text_attributes_ref
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-3-8
