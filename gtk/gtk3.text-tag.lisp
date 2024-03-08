@@ -1861,7 +1861,7 @@ lambda (tag object event iter)    :run-last
  "The @code{scale} property of type @code{:double} (Read / Write) @br{}
   Font size as a scale factor relative to the default font size. This properly
   adapts to theme changes etc. so is recommended. Pango predefines some scales
-  such as the @var{+pango-scale-x-large+} value. @br{}
+  such as the @var{pango:+scale-x-large+} value. @br{}
   Allowed values: >= 0 @br{}
   Default value: 1")
 
@@ -1869,7 +1869,7 @@ lambda (tag object event iter)    :run-last
 (setf (liber:alias-for-function 'text-tag-scale)
       "Accessor"
       (documentation 'text-tag-scale 'function)
- "@version{#2023-3-15}
+ "@version{2024-3-8}
   @syntax[]{(gtk:text-tag-scale object) => scale}
   @syntax[]{(setf (gtk:text-tag-scale object) scale)}
   @argument[object]{a @class{gtk:text-tag} object}
@@ -1878,10 +1878,11 @@ lambda (tag object event iter)    :run-last
     Accessor of the @slot[gtk:text-tag]{scale} slot of the
     @class{gtk:text-tag} class.
   @end{short}
-  Font size as a scale factor relative to the default font size. This properly
+  Font size as a scale factor relative to the default font size. This property
   adapts to theme changes etc. so is recommended. Pango predefines some scales
-  such as the @var{+pango-scale-x-large+} value.
+  such as the @var{pango:+scale-x-large+} value.
   @see-class{gtk:text-tag}
+  @see-varialble{pango:+scale-x-large+}
   @see-function{gtk:text-tag-scale-set}")
 
 ;;; --- gtk:text-tag-scale-set -------------------------------------------------
