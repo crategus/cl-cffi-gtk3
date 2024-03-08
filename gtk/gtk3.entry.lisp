@@ -2603,7 +2603,7 @@ lambda (entry)    :action
   You will need to connect to the @code{\"notify::scroll-offset\"} signal to
   track this. Remember when using the @class{pango:layout} functions you need
   to convert to and from pixels using the @fun{pango:pixels} function or
-  the @var{pango:+pango-scale+} constant.
+  the @var{pango:+scale+} constant.
 
   Keep in mind that the layout text may contain a preedit string, so the
   @fun{gtk:entry-layout-index-to-text-index} and
@@ -2614,7 +2614,7 @@ lambda (entry)    :action
   @see-function{gtk:entry-layout-index-to-text-index}
   @see-function{gtk:entry-text-index-to-layout-index}
   @see-function{pango:pixels}
-  @see-variable{pango:+pango-scale+}"
+  @see-variable{pango:+scale+}"
   (cffi:with-foreign-objects ((x :int) (y :int))
     (%entry-get-layout-offsets entry x y)
     (values (cffi:mem-ref x :int)

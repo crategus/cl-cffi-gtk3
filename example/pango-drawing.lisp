@@ -59,7 +59,7 @@
                (multiple-value-bind (width height)
                    (pango:layout-size layout)
                  (declare (ignore height))
-                 (cairo:move-to cr (- (/ width 2 pango:+pango-scale+))
+                 (cairo:move-to cr (- (/ width 2 pango:+scale+))
                                    (- circle)))
                (pango:cairo-show-layout cr layout)
                (cairo:restore cr)))

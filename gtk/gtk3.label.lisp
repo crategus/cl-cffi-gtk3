@@ -1391,7 +1391,7 @@ lambda (label menu)    :run-last
   the events, and pack the label inside it, since labels are windowless. Labels
   return @em{false} from the @fun{gtk:widget-has-window} function. Remember
   when using the @class{pango:layout} functions you need to convert to and from
-  pixels using the @fun{pango:pixels} function or the @var{pango:+pango-scale+}
+  pixels using the @fun{pango:pixels} function or the @var{pango:+scale+}
   constant.
   @begin[Example]{dictionary}
     @begin{pre}
@@ -1406,7 +1406,7 @@ lambda (label menu)    :run-last
   @see-class{gtk:label}
   @see-class{gtk:event-box}
   @see-class{pango:layout}
-  @see-variable{pango:+pango-scale+}
+  @see-variable{pango:+scale+}
   @see-function{pango:pixels}
   @see-function{gtk:widget-has-window}"
   (cffi:with-foreign-objects ((x :int) (y :int))

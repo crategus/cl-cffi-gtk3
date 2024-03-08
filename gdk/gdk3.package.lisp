@@ -1229,7 +1229,7 @@ got_value (gpointer user_data)
     Pango functions like the @fun{pango:layout-text} function and get its size
     with the @fun{pango:layout-size} function. Note that Pango uses a fixed
     point system internally, so converting between Pango units and pixels using
-    the @var{pango:+pango-scale+} constant or the @fun{pango:pixels} function.
+    the @var{pango:+scale+} constant or the @fun{pango:pixels} function.
 
     Rendering a Pango layout is done most simply with the
     @fun{pango:cairo-show-layout} function. You can also draw pieces of the
@@ -1295,7 +1295,7 @@ got_value (gpointer user_data)
                (multiple-value-bind (width height)
                    (pango:layout-size layout)
                  (declare (ignore height))
-                 (cairo:move-to cr (- (/ width 2 pango:+pango-scale+))
+                 (cairo:move-to cr (- (/ width 2 pango:+scale+))
                                    (- circle)))
                (pango:cairo-show-layout cr layout)
                (cairo:restore cr)))

@@ -464,11 +464,11 @@ format_value_callback (GtkScale *scale,
   @end{short}
   Remember when using the @class{pango-layout} functions you need to convert
   to and from pixels using the @fun{pango-pixels} function or the
-  @var{pango:+pango-scale+} constant. If the @slot[gtk:scale]{draw-value}
-  property is @code{nil}, the return values are undefined.
+  @var{pango:+scale+} constant. If the @slot[gtk:scale]{draw-value} property
+  is @code{nil}, the return values are undefined.
   @see-class{gtk:scale}
   @see-function{pango-pixels}
-  @see-variable{pango:+pango-scale+}"
+  @see-variable{pango:+scale+}"
   (cffi:with-foreign-objects ((x :int) (y :int))
     (%scale-get-layout-offsets scale x y)
     (values (cffi:mem-ref x :int)
