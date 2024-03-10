@@ -3,11 +3,53 @@
 (def-suite gtk-tree-view :in gtk-suite)
 (in-suite gtk-tree-view)
 
+(defun create-and-fill-model-simple ()
+  (let ((model (gtk:tree-store-new "gchararray" "gchararray" "guint")))
+    ;; First Book
+    (let ((iter (gtk:tree-store-append model nil))) ; Toplevel iterator
+      ;; Set the toplevel row
+      (gtk:tree-store-set model
+                          iter
+                          "The Art of Computer Programming"
+                          "Donald E. Knuth"
+                          2011)
+      ;; Append and set child rows
+      (gtk:tree-store-set model
+                          (gtk:tree-store-append model iter) ; Child iterator
+                          "Volume 1: Fundamental Algorithms"
+                          ""
+                          1997)
+      (gtk:tree-store-set model
+                          (gtk:tree-store-append model iter) ; Child iterator
+                          "Volume 2: Seminumerical Algorithms"
+                          ""
+                          1998)
+      (gtk:tree-store-set model
+                          (gtk:tree-store-append model iter) ; Child iterator
+                          "Volume 3: Sorting and Searching"
+                          ""
+                          1998))
+    ;; Second Book
+    (let ((iter (gtk:tree-store-append model nil))) ; Toplevel iterator
+      (gtk:tree-store-set model
+                          iter
+                          "Let Over Lambda"
+                          "Doug Hoyte"
+                          2008))
+    ;; Third Book
+    (let ((iter (gtk:tree-store-append model nil))) ; Toplevel iterator
+      (gtk:tree-store-set model
+                          iter
+                          "On Lisp"
+                          "Paul Graham"
+                          1993))
+    model))
+
 ;;; --- Types and Values -------------------------------------------------------
 
 ;;;     GtkTreeViewDropPosition
 
-(test tree-view-drop-position
+(test gtk-tree-view-drop-position
   ;; Check the type
   (is (g:type-is-enum "GtkTreeViewDropPosition"))
   ;; Check the type initializer
@@ -40,11 +82,9 @@
                              (:INTO-OR-AFTER 3))
              (gobject:get-g-type-definition "GtkTreeViewDropPosition"))))
 
-;;;     GtkTreeViewPrivate
-
 ;;;     GtkTreeViewGridLines
 
-(test tree-view-grid-lines
+(test gtk-tree-view-grid-lines
   ;; Check the type
   (is (g:type-is-enum "GtkTreeViewGridLines"))
   ;; Check the type initializer
@@ -80,7 +120,7 @@
 
 ;;;     GtkTreeView
 
-(test tree-view-class
+(test gtk-tree-view-class
   ;; Type check
   (is (g:type-is-object "GtkTreeView"))
   ;; Check the registered name
@@ -97,7 +137,7 @@
   ;; Check the interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable" "GtkScrollable")
              (list-interfaces "GtkTreeView")))
-  ;; Check the class properties
+  ;; Check the properties
   #-windows
   (is (equal '("activate-on-single-click" "enable-grid-lines" "enable-search"
                "enable-tree-lines" "expander-column" "fixed-height-mode"
@@ -116,7 +156,7 @@
                "rules-hint" "search-column" "show-expanders" "tooltip-column"
                "vadjustment" "vscroll-policy")
              (list-properties "GtkTreeView")))
-  ;; Check the style properties.
+  ;; Check the style properties
   (is (equal '("allow-rules" "even-row-color" "expander-size"
                "grid-line-pattern" "grid-line-width" "horizontal-separator"
                "indent-expanders" "odd-row-color" "tree-line-pattern"
@@ -181,7 +221,7 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-(test tree-view-properties
+(test gtk-tree-view-properties
   (let ((view (make-instance 'gtk:tree-view)))
     (is-false (gtk:tree-view-activate-on-single-click view))
     (is (eq :none (gtk:tree-view-enable-grid-lines view)))
@@ -204,58 +244,55 @@
 
 ;;; --- Style Properties -------------------------------------------------------
 
-;;;             gboolean    allow-rules                 Read
-;;;             GdkColor*   even-row-color              Read
-;;;                 gint    expander-size               Read
-;;;                gchar*   grid-line-pattern           Read
-;;;                 gint    grid-line-width             Read
-;;;                 gint    horizontal-separator        Read
-;;;             gboolean    indent-expanders            Read
-;;;             GdkColor*   odd-row-color               Read
-;;;                gchar*   tree-line-pattern           Read
-;;;                 gint    tree-line-width             Read
-;;;                 gint    vertical-separator          Read
+(test gtk-tree-view-style-properties
+  (let ((view (make-instance 'gtk:tree-view)))
+    (is-true (gtk:widget-style-property view "allow-rules"))
+    (is-false (gtk:widget-style-property view "even-row-color"))
+    (is (= 16 (gtk:widget-style-property view "expander-size")))
+    (is (string= "" (gtk:widget-style-property view "grid-line-pattern")))
+    (is (= 1 (gtk:widget-style-property view "grid-line-width")))
+    (is (= 4 (gtk:widget-style-property view "horizontal-separator")))
+    (is-true (gtk:widget-style-property view "indent-expanders"))
+    (is-false (gtk:widget-style-property view "odd-row-color"))
+    (is (string= "" (gtk:widget-style-property view "tree-line-pattern")))
+    (is (= 1 (gtk:widget-style-property view "tree-line-width")))
+    (is (= 2 (gtk:widget-style-property view "vertical-separator")))))
 
 ;;; --- Signals ----------------------------------------------------------------
 
-;;;                 void    columns-changed             Run Last
-;;;                 void    cursor-changed              Run Last
-;;;             gboolean    expand-collapse-cursor-row  Action
-;;;             gboolean    move-cursor                 Action
-;;;                 void    row-activated               Action
-;;;                 void    row-collapsed               Run Last
-;;;                 void    row-expanded                Run Last
-;;;             gboolean    select-all                  Action
-;;;             gboolean    select-cursor-parent        Action
-;;;             gboolean    select-cursor-row           Action
-;;;             gboolean    start-interactive-search    Action
-;;;             gboolean    test-collapse-row           Run Last
-;;;             gboolean    test-expand-row             Run Last
-;;;             gboolean    toggle-cursor-row           Action
-;;;             gboolean    unselect-all                Action
-
+;;;     columns-changed
+;;;     cursor-changed
+;;;     expand-collapse-cursor-row
+;;;     move-cursor
+;;;     row-activated
+;;;     row-collapsed
+;;;     row-expanded
+;;;     select-all
+;;;     select-cursor-parent
+;;;     select-cursor-row
+;;;     start-interactive-search
+;;;     test-collapse-row
+;;;     test-expand-row
+;;;     toggle-cursor-row
+;;;     unselect-all
 
 ;;; --- Functions --------------------------------------------------------------
 
-;;;     GtkTreeViewColumnDropFunc
-;;;     GtkTreeViewMappingFunc
-;;;     GtkTreeViewSearchEqualFunc
-
 ;;;     gtk_tree_view_new
 
-(test tree-view-new
+(test gtk-tree-view-new
   (is (typep (gtk:tree-view-new) 'gtk:tree-view)))
 
 ;;;     gtk_tree_view_new_with_model
 
-(test tree-view-new-with-model
+(test gtk-tree-view-new-with-model
   (is (typep (gtk:tree-view-new-with-model nil) 'gtk:tree-view))
   (is (typep (gtk:tree-view-new-with-model (create-and-fill-list-store))
              'gtk:tree-view)))
 
 ;;;     gtk_tree_view_get_selection
 
-(test tree-view-selection
+(test gtk-tree-view-selection
   (is (typep (gtk:tree-view-selection (gtk:tree-view-new)) 'gtk:tree-selection))
   (is (typep (gtk:tree-view-selection
                  (gtk:tree-view-new-with-model
@@ -266,7 +303,7 @@
 
 ;;;     gtk_tree_view_append_column
 
-(test tree-view-append-column
+(test gtk-tree-view-append-column
   (let ((view (gtk:tree-view-new)))
     (is (= 1
            (gtk:tree-view-append-column view
@@ -277,7 +314,7 @@
 
 ;;;     gtk_tree_view_remove_column
 
-(test tree-view-remove-column
+(test gtk-tree-view-remove-column
   (let ((view (gtk:tree-view-new))
         (column1 (make-instance 'gtk:tree-view-column))
         (column2 (make-instance 'gtk:tree-view-column))
@@ -293,7 +330,7 @@
 
 ;;;     gtk_tree_view_insert_column
 
-(test tree-view-insert-column
+(test gtk-tree-view-insert-column
   (let ((view (gtk:tree-view-new)))
     (is (= 1
            (gtk:tree-view-insert-column view
@@ -313,11 +350,59 @@
                                         1)))))
 
 ;;;     gtk_tree_view_insert_column_with_attributes
+
+(test gtk-tree-view-insert-column-with-attributes
+  (let* ((model (create-and-fill-model-simple))
+         (view (gtk:tree-view-new-with-model model)))
+    (let ((renderer (gtk:cell-renderer-text-new)))
+      (is (= 1 (gtk:tree-view-insert-column-with-attributes
+                       view
+                       0
+                       "Title"
+                       renderer
+                       "text" 0))))
+    (let ((renderer (gtk:cell-renderer-text-new)))
+      (is (= 2 (gtk:tree-view-insert-column-with-attributes
+                       view
+                       1
+                       "Author"
+                       renderer
+                       "text" 1))))
+    (let ((renderer (gtk:cell-renderer-text-new)))
+      (is (= 3 (gtk:tree-view-insert-column-with-attributes
+                       view
+                       2
+                       "Year"
+                       renderer
+                       "text" 2))))
+    (is (equal '("Title" "Author" "Year")
+               (mapcar #'gtk:tree-view-column-title
+                       (gtk:tree-view-columns view))))))
+
 ;;;     gtk_tree_view_insert_column_with_data_func
+
+;; TODO: GtkTreeCellDataFunc is not called. What is the problem!?
+
+(test gtk-tree-view-insert-column-with-data-func
+  (let* ((model (create-and-fill-model-simple))
+         (view (gtk:tree-view-new-with-model model)))
+    (let ((renderer (gtk:cell-renderer-text-new)))
+      (is (= 1 (gtk:tree-view-insert-column-with-data-func
+                       view
+                       0
+                       "Title"
+                       renderer
+                       (lambda (column renderer model iter)
+                         (format t "in GtkTreeCellDataFunc~%")
+                         (format t "   column : ~a~%" column)
+                         (format t " renderer : ~a~%" renderer)
+                         (format t "    model : ~a~%" model)
+                         (format t "     iter : ~a~%" iter))))))
+                       ))
 
 ;;;     gtk_tree_view_get_n_columns
 
-(test tree-view-n-columns
+(test gtk-tree-view-n-columns
   (let ((view (gtk:tree-view-new)))
     (is (= 1
            (gtk:tree-view-append-column view
@@ -330,7 +415,7 @@
 
 ;;;     gtk_tree_view_get_column
 
-(test tree-view-column
+(test gtk-tree-view-column
   (let ((view (gtk:tree-view-new))
         (column1 (make-instance 'gtk:tree-view-column))
         (column2 (make-instance 'gtk:tree-view-column))
@@ -347,7 +432,7 @@
 
 ;;;     gtk_tree_view_get_columns
 
-(test tree-view-columns
+(test gtk-tree-view-columns
   (let ((view (gtk:tree-view-new))
         (column1 (make-instance 'gtk:tree-view-column))
         (column2 (make-instance 'gtk:tree-view-column))
@@ -361,24 +446,59 @@
 
 ;;;     gtk_tree_view_move_column_after
 
-(test tree-view-move-column-after
+(test gtk-tree-view-move-column-after.1
   (let ((view (gtk:tree-view-new))
+        (column0 (make-instance 'gtk:tree-view-column))
         (column1 (make-instance 'gtk:tree-view-column))
-        (column2 (make-instance 'gtk:tree-view-column))
-        (column3 (make-instance 'gtk:tree-view-column)))
+        (column2 (make-instance 'gtk:tree-view-column)))
     ;; Add columns to the tree view
-    (is (= 1 (gtk:tree-view-append-column view column1)))
-    (is (= 2 (gtk:tree-view-append-column view column2)))
-    (is (= 3 (gtk:tree-view-append-column view column3)))
-    ;; Get tree view columns
-    (is-false (gtk:tree-view-move-column-after view column1 column3))))
+    (is (= 1 (gtk:tree-view-append-column view column0)))
+    (is (= 2 (gtk:tree-view-append-column view column1)))
+    (is (= 3 (gtk:tree-view-append-column view column2)))
+    ;; Move columns
+    (is-false (gtk:tree-view-move-column-after view column0 column2))
+    (is (eq column1 (gtK:tree-view-column view 0)))
+    (is (eq column2 (gtk:tree-view-column view 1)))
+    (is (eq column0 (gtk:tree-view-column view 2)))))
 
+(test gtk-tree-view-move-column-after.2
+  (let ((view (gtk:tree-view-new))
+        (column0 (make-instance 'gtk:tree-view-column))
+        (column1 (make-instance 'gtk:tree-view-column))
+        (column2 (make-instance 'gtk:tree-view-column)))
+    ;; Add columns to the tree view
+    (is (= 1 (gtk:tree-view-append-column view column0)))
+    (is (= 2 (gtk:tree-view-append-column view column1)))
+    (is (= 3 (gtk:tree-view-append-column view column2)))
+    ;; Move columns
+    (is-false (gtk:tree-view-move-column-after view column2 nil))
+    (is (eq column2 (gtK:tree-view-column view 0)))
+    (is (eq column0 (gtk:tree-view-column view 1)))
+    (is (eq column1 (gtk:tree-view-column view 2)))))
+
+;;;     GtkTreeViewColumnDropFunc
 ;;;     gtk_tree_view_set_column_drag_function
+
+(test gtk-tree-view-set-column-drag-function
+  (let ((view (gtk:tree-view-new)))
+    (is-false (gtk:tree-view-set-column-drag-function view 
+                      (lambda (view column prev next)
+                        (declare (ignore view column prev next))
+                        t)))
+    (is-false (gtk:tree-view-set-column-drag-function view nil))))
+
 ;;;     gtk_tree_view_scroll_to_point
 ;;;     gtk_tree_view_scroll_to_cell
 ;;;     gtk_tree_view_set_cursor
 ;;;     gtk_tree_view_set_cursor_on_cell
+
 ;;;     gtk_tree_view_get_cursor
+
+(test gtk-tree-view-get-cursor
+  (let ((view (gtk:tree-view-new)))
+    (is (equal '(nil nil)
+               (multiple-value-list (gtk:tree-view-get-cursor view))))))
+
 ;;;     gtk_tree_view_row_activated
 ;;;     gtk_tree_view_expand_all
 ;;;     gtk_tree_view_collapse_all
@@ -403,7 +523,7 @@
 
 ;;;     gtk_tree_view_enable_model_drag_dest
 
-(test tree-view-enable-model-drag-dest
+(test gtk-tree-view-enable-model-drag-dest
   (let ((targets '(("text/html" :none 0)
                    ("STRING" :none 1)
                    ("number" :none 2)
@@ -414,7 +534,7 @@
 
 ;;;     gtk_tree_view_enable_model_drag_source
 
-(test tree-view-enable-model-drag-source
+(test gtk-tree-view-enable-model-drag-source
   (let ((targets '(("text/html" :none 0)
                    ("STRING" :none 1)
                    ("number" :none 2)
@@ -458,4 +578,5 @@
 ;;;     gtk_tree_view_set_tooltip_cell
 ;;;     gtk_tree_view_get_tooltip_context
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-3-10
+
