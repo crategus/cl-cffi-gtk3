@@ -481,7 +481,7 @@
 
 (test gtk-tree-view-set-column-drag-function
   (let ((view (gtk:tree-view-new)))
-    (is-false (gtk:tree-view-set-column-drag-function view 
+    (is-false (gtk:tree-view-set-column-drag-function view
                       (lambda (view column prev next)
                         (declare (ignore view column prev next))
                         t)))
@@ -579,4 +579,3 @@
 ;;;     gtk_tree_view_get_tooltip_context
 
 ;;; 2024-3-10
-
