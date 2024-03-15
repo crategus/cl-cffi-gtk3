@@ -247,11 +247,9 @@
 (setf (liber:alias-for-symbol 'tree-view-drop-position)
       "GEnum"
       (liber:symbol-documentation 'tree-view-drop-position)
- "@version{2024-3-9}
-  @begin{short}
-    An enumeration for determining where a dropped row goes in a tree view.
-  @end{short}
-  @begin{pre}
+ "@version{2024-3-13}
+ @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkTreeViewDropPosition\" tree-view-drop-position
   (:export t
    :type-initializer \"gtk_tree_view_drop_position_get_type\")
@@ -259,13 +257,20 @@
   (:after 1)
   (:into-or-before 2)
   (:into-or-after 3))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:before]{Dropped row is inserted before.}
-    @entry[:after]{Dropped row is inserted after.}
-    @entry[:into-or-before]{Dropped row becomes a child or is inserted before.}
-    @entry[:into-or-after]{Dropped row becomes a child or is inserted after.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:before]{Dropped row is inserted before.}
+      @entry[:after]{Dropped row is inserted after.}
+      @entry[:into-or-before]{Dropped row becomes a child or is inserted
+        before.}
+      @entry[:into-or-after]{Dropped row becomes a child or is inserted after.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    An enumeration for determining where a dropped row goes in a tree view.
+  @end{short}
   @see-class{gtk:tree-view}")
 
 ;;; ----------------------------------------------------------------------------
@@ -284,11 +289,9 @@
 (setf (liber:alias-for-symbol 'tree-view-grid-lines)
       "GEnum"
       (liber:symbol-documentation 'tree-view-grid-lines)
- "@version{2024-3-9}
-  @begin{short}
-    Used to indicate which grid lines to draw in a tree view.
-  @end{short}
-  @begin{pre}
+ "@version{2024-3-13}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkTreeViewGridLines\" tree-view-grid-lines
   (:export t
    :type-initializer \"gtk_tree_view_grid_lines_get_type\")
@@ -296,13 +299,19 @@
   (:horizontal 1)
   (:vertical 2)
   (:both 3))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:none]{No grid lines.}
-    @entry[:horizontal]{Horizontal grid lines.}
-    @entry[:vertical]{Vertical grid lines.}
-    @entry[:both]{Horizontal and vertical grid lines.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:none]{No grid lines.}
+      @entry[:horizontal]{Horizontal grid lines.}
+      @entry[:vertical]{Vertical grid lines.}
+      @entry[:both]{Horizontal and vertical grid lines.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    An enumeration used to indicate which grid lines to draw in a tree view.
+  @end{short}
   @see-class{gtk:tree-view}")
 
 ;;; ----------------------------------------------------------------------------
@@ -373,33 +382,31 @@
 
 #+liber-documentation
 (setf (documentation 'tree-view 'type)
- "@version{2024-3-10}
+ "@version{2024-3-11}
   @begin{short}
-    Widget that displays any object that implements the @class{gtk:tree-model}
-    interface.
+    The @class{gtk:tree-view} widget displays any object that implements the
+    @class{gtk:tree-model} interface.
   @end{short}
-  Please refer to the tree widget conceptual overview for an overview of all
-  the objects and data types related to the tree widget and how they work
+  Please refer to the tree view conceptual overview for an overview of all
+  the objects and data types related to the tree view and how they work
   together.
-
-  Several different coordinate systems are exposed in the @class{gtk:tree-view}
-  API. These are:
 
   @image[tree-view-coordinates]{Figure: GtkTreeView}
 
-  Coordinate systems in the @class{gtk:tree-view} API:
-  @begin[em]{table}
+  Several different coordinate systems are exposed in the @class{gtk:tree-view}
+  API:
+  @begin[]{table}
      @entry[Widget coordinates]{Coordinates relative to the widget. Usually
-       the window from the @fun{gtk:widget-window} function.}
-    @entry[Bin window coordinates]{Coordinates relative to the window that
-      the @class{gtk:tree-view} widget renders to.}
+       the GDK window from the @fun{gtk:widget-window} function.}
+    @entry[GDK window coordinates (Bin window)]{Coordinates relative to the
+      GDK window that the @class{gtk:tree-view} widget renders to.}
     @entry[Tree coordinates]{Coordinates relative to the entire scrollable area
       of the @class{gtk:tree-view} widget. These coordinates start at
-      @code{(0, 0)} for row @code{0} of the tree.}
+      @code{(0, 0)} for row @code{0} of the tree view.}
   @end{table}
   Several functions are available for converting between the different
-  coordinate systems. The most common translations are between widget and bin
-  window coordinates and between bin window and tree coordinates. For the
+  coordinate systems. The most common translations are between widget and GDK
+  window coordinates and between GDK window and tree view coordinates. For the
   former you can use the @fun{gtk:tree-view-convert-widget-to-bin-window-coords}
   function (and vice versa), for the latter the
   @fun{gtk:tree-view-convert-bin-window-to-tree-coords} function (and vice
@@ -445,9 +452,9 @@
     @end{pre}
     The @class{gtk:tree-view} implementation has a main CSS node with name
     @code{treeview} and @code{.view} style class. It has a subnode with name
-    @code{header}, which is the parent for all the column header widgets' CSS
-    nodes. For rubberband selection, a subnode with name @code{rubberband} is
-    used.
+    @code{header}, which is the parent for all the widgets of the column header
+    CSS nodes. For rubberband selection, a subnode with name @code{rubberband}
+    is used.
   @end{dictionary}
   @begin[Style Property Details]{dictionary}
     @begin[code]{table}
@@ -555,23 +562,23 @@ lambda (view arg1 arg2 arg3)    :action
       @begin{pre}
 lambda (view step direction)    :action
       @end{pre}
-      Keybinding signal which gets emitted when the user presses one of the
+      Key binding signal which gets emitted when the user presses one of the
       cursor keys. Applications should not connect to it, but may emit it with
       the @fun{g:signal-emit} function if they need to control the cursor
       programmatically. In contrast to the @fun{gtk:tree-view-get-cursor}
       and @fun{gtk:tree-view-set-cursor-on-cell} functions when moving
-      horizontally \"move-cursor\" does not reset the current selection.
+      horizontally the @code{\"move-cursor\"} signal does not reset the current
+      selection.
       @begin[code]{table}
         @entry[view]{The @class{gtk:tree-view} widget on which the signal is
           emitted.}
         @entry[step]{The granularity of the move, as a value of the
-          @symbol{gtk:movement-step} enumeration. The values
-          @code{:logical-positions}, @code{:visual-positions},
-          @code{:display-lines}, @code{:pages} and @code{:buffer-ends} are
-          supported. The values @code{:logical-positions} and
-          @code{:visual-positions} are treated identically.}
-        @entry[direction]{An integer with the direction to move: +1 to move
-          forwards; -1 to move backwards. The resulting movement is undefined
+          @symbol{gtk:movement-step} enumeration. The @code{:logical-positions},
+          @code{:visual-positions}, @code{:display-lines}, @code{:pages} and
+          @code{:buffer-ends} values are supported. The @code{:visual-positions}
+          and @code{:logical-positions} values are treated identically.}
+        @entry[direction]{The integer with the direction to move: +1 to move
+          forwards and -1 to move backwards. The resulting movement is undefined
           for all other values.}
         @entry[Returns]{@em{True} if @arg{step} is supported, @em{false}
           otherwise.}
@@ -583,9 +590,7 @@ lambda (view path column)    :action
       The signal is emitted when the @fun{gtk:tree-view-row-activated} function
       is called or the user double clicks a tree view row. It is also emitted
       when a non-editable row is selected and one of the @kbd{Space},
-      @kbd{Shift+Space}, @kbd{Return} or @kbd{Enter} keys is pressed. For
-      selection handling refer to the tree widget conceptual overview as well
-      as the @class{gtk:tree-selection} API documentation.
+      @kbd{Shift+Space}, @kbd{Return} or @kbd{Enter} keys is pressed.
       @begin[code]{table}
         @entry[view]{The @class{gtk:tree-view} widget on which the signal is
           emitted.}
@@ -602,7 +607,7 @@ lambda (view iter path)    :run-last
         @entry[view]{The @class{gtk:tree-view} widget on which the signal is
           emitted.}
         @entry[iter]{The @class{gtk:tree-iter} iterator of the collapsed row.}
-        @entry[path]{A @class{gtk:tree-path} instance that points to the row.}
+        @entry[path]{The @class{gtk:tree-path} instance that points to the row.}
       @end{table}
     @subheading{The \"row-expanded\" signal}
       @begin{pre}
@@ -613,7 +618,7 @@ lambda (view iter path)    :run-last
         @entry[view]{The @class{gtk:tree-view} widget on which the signal is
           emitted.}
         @entry[iter]{The @class{gtk:tree-iter} iterator of the expanded row.}
-        @entry[path]{A @class{gtk:tree-path} instance that points to the row.}
+        @entry[path]{The @class{gtk:tree-path} instance that points to the row.}
       @end{table}
     @subheading{The \"select-all\" signal}
       @begin{pre}
@@ -659,7 +664,7 @@ lambda (view iter path)    :run-last
           emitted.}
         @entry[iter]{The @class{gtk:tree-iter} iterator of the row to
           collapsed.}
-        @entry[path]{A @class{gtk:tree-path} instance that points to the row.}
+        @entry[path]{The @class{gtk:tree-path} instance that points to the row.}
         @entry[Returns]{@em{False} to allow collapsing, @em{true} to reject.}
       @end{table}
     @subheading{The \"test-expand-row\" signal}
@@ -672,7 +677,7 @@ lambda (view iter path)    :run-last
         @entry[view]{The @class{gtk:tree-view} widget on which the signal is
           emitted.}
         @entry[iter]{The @class{gtk:tree-iter} iterator of the row to expand.}
-        @entry[path]{A @class{gtk:tree-path} instance that points to the row.}
+        @entry[path]{The @class{gtk:tree-path} instance that points to the row.}
         @entry[Returns]{@em{False} to allow expansion, @em{true} to reject.}
       @end{table}
     @subheading{The \"toggle-cursor-row\" signal}
@@ -780,7 +785,7 @@ lambda (view)    :action
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "enable-search" 'tree-view) t)
  "The @code{enable-search} property of type @code{:boolean} (Read / Write) @br{}
-  View allows user to search through columns interactively. @br{}
+  The tree view allows user to search through columns interactively. @br{}
   Default value: @em{true}")
 
 #+liber-documentation
@@ -875,8 +880,7 @@ lambda (view)    :action
   @br{}
   Setting this property to @em{true} speeds up the tree view by assuming that
   all rows have the same height. Only enable this option if all rows are the
-  same height. Please see the @fun{gtk:tree-view-fixed-height-mode} function
-  for more information on this option. @br{}
+  same height. @br{}
   Default value: @em{false}")
 
 #+liber-documentation
@@ -966,19 +970,18 @@ lambda (view)    :action
  "The @code{hover-expand} property of type @code{:boolean} (Read / Write) @br{}
   Enables or disables the hover expansion mode of the tree view. Hover
   expansion makes rows expand or collapse if the pointer moves over them.
-  This mode is primarily intended for tree views in popups, e.g. in
-  @class{gtk:combo-box} or @class{gtk:entry-completion} widgets. @br{}
+  This mode is primarily intended for tree views in popups. @br{}
   Default value: @em{false}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'tree-view-hover-expand)
       "Accessor"
       (documentation 'tree-view-hover-expand 'function)
- "@version{2024-3-10}
+ "@version{2024-3-11}
   @syntax{(gtk:tree-view-hover-expand object) => expand}
   @syntax{(setf (gtk:tree-view-hover-expand object) expand)}
   @argument[object]{a @class{gtk:tree-view} widget}
-  @argument[expand]{@em{true} to enable hover selection mode}
+  @argument[expand]{@em{true} to enable hover expansion mode}
   @begin{short}
     Accessor of the @slot[gtk:tree-view]{hover-expand} slot of the
     @class{gtk:tree-view} class.
@@ -998,9 +1001,8 @@ lambda (view)    :action
   @br{}
   Enables or disables the hover selection mode of the tree view. Hover
   selection makes the selected row follow the pointer. Currently, this works
-  only for the selection modes @code{:single} and @code{:browse}. This mode is
-  primarily intended for tree views in popups, e.g. in @class{gtk:combo-box}
-  or @class{gtk:entry-completion} widgets. @br{}
+  only for the @code{:single} and @code{:browse} selection modes. This mode is
+  primarily intended for tree views in popups. @br{}
   Default value: @em{false}")
 
 #+liber-documentation
@@ -1092,14 +1094,14 @@ lambda (view)    :action
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "reorderable" 'tree-view) t)
  "The @code{reorderable} property of type @code{:boolean} (Read / Write) @br{}
-  View is reorderable. @br{}
+  The tree view is reorderable. @br{}
   Default value: @em{false}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'tree-view-reorderable)
       "Accessor"
       (documentation 'tree-view-reorderable 'function)
- "@version{2024-3-10}
+ "@version{2024-3-11}
   @syntax{(gtk:tree-view-reorderable object) => reorderable}
   @syntax{(setf (gtk:tree-view-reorderable object) rorderable)}
   @argument[object]{a @class{gtk:tree-view} widget}
@@ -1115,10 +1117,10 @@ lambda (view)    :action
   Both the @class{gtk:tree-store} and the @class{gtk:list-store} classes support
   these. If the @arg{reorderable} argument is @em{true}, then the user can
   reorder the model by dragging and dropping rows. The developer can listen to
-  these changes by connecting to the model's @code{\"row-inserted\"} and
-  @code{\"row-deleted\"} signals. The reordering is implemented by setting up
-  the tree view as a drag source and destination. Therefore, drag and drop can
-  not be used in a reorderable view for any other purpose.
+  these changes by connecting to the @code{\"row-inserted\"} and
+  @code{\"row-deleted\"} signals of the model. The reordering is implemented by
+  setting up the tree view as a drag source and destination. Therefore, drag and
+  drop can not be used in a reorderable view for any other purpose.
 
   This function does not give you any degree of control over the order - any
   reordering is allowed. If more control is needed, you should probably handle
@@ -1147,7 +1149,7 @@ lambda (view)    :action
   @syntax{(gtk:tree-view-rubber-banding object) => enable}
   @syntax{(setf (gtk:tree-view-rubber-banding object) enable)}
   @argument[object]{a @class{gtk:tree-view} widget}
-  @argument[enable]{@em{true}, to enable rubber banding}
+  @argument[enable]{@em{true} to enable rubber banding}
   @begin{short}
     Accessor of the @slot[gtk:tree-view]{rubber-banding} slot of the
     @class{gtk:tree-view} class.
@@ -1167,8 +1169,7 @@ lambda (view)    :action
  "The @code{rules-hint} property of type @code{:boolean} (Read / Write) @br{}
   Set a hint to the theme engine to draw rows in alternating colors. @br{}
   @em{Warning:} The @code{rules-hint} property has been deprecated since version
-  3.14 and should not be used in newly written code. The theme is responsible
-  for drawing rows using zebra striping. @br{}
+  3.14. The theme is responsible for drawing rows using zebra striping. @br{}
   Default value: @em{false}")
 
 #+liber-documentation
@@ -1195,7 +1196,7 @@ lambda (view)    :action
   useful from a functional standpoint, since it has lots of columns, generally.
   @begin[Warning]{dictionary}
     The @fun{gtk:tree-view-rules-hint} function has been deprecated since
-    version 3.14 and should not be used in newly written code.
+    version 3.14.
   @end{dictionary}
   @see-class{gtk:tree-view}")
 
@@ -1288,8 +1289,8 @@ lambda (view)    :action
   @syntax{(gtk:tree-view-tooltip-column object) => column}
   @syntax{(setf (gtk:tree-view-tooltip-column object) column)}
   @argument[object]{a @class{gtk:tree-view} widget}
-  @argument[column]{an integer which is a valid column number for tree
-    view's model}
+  @argument[column]{an integer which is a valid column number for the model
+    of the tree view}
   @begin{short}
     Accessor of the @slot[gtk:tree-view]{tooltip-column} slot of the
     @class{gtk:tree-view} class.
@@ -1418,7 +1419,7 @@ lambda (view)    :action
   @begin{short}
     Appends @arg{column} to the list of columns in the tree view.
   @end{short}
-  If @arg{view} has fixed height mode enabled, then @arg{column} must have
+  If the tree view has fixed height mode enabled, then @arg{column} must have
   its @slot[gtk:tree-view-column]{sizing} property set to be the @code{:fixed}
   value.
   @see-class{gtk:tree-view}
@@ -1459,12 +1460,12 @@ lambda (view)    :action
   @argument[pos]{an integer with the position to insert @arg{column} in}
   @return{The integer with the number of columns in @arg{view} after insertion.}
   @begin{short}
-    This inserts the column into the @arg{view} at the given position.
+    This inserts the column into the tree view at the given position.
   @end{short}
   If the @arg{pos} argument is -1, then the column is inserted at the end. If
-  @arg{view} has the @slot[gtk:tree-view]{fixed-height-mode} property enabled,
-  then @arg{column} must have its @slot[gtk:tree-view-column]{sizing} property
-  set to be the @code{:fixed} value.
+  the tree view has the @slot[gtk:tree-view]{fixed-height-mode} property
+  enabled, then @arg{column} must have its @slot[gtk:tree-view-column]{sizing}
+  property set to be the @code{:fixed} value.
   @see-class{gtk:tree-view}
   @see-class{gtk:tree-view-column}
   @see-function{gtk:tree-view-fixed-height-mode}
@@ -1484,22 +1485,45 @@ lambda (view)    :action
                                                 title
                                                 renderer &rest attributes)
  #+liber-documentation
- "@version{2024-3-10}
+ "@version{2024-3-13}
   @argument[view]{a @class{gtk:tree-view} widget}
   @argument[pos]{an integer with the position to insert the new column in}
   @argument[title]{a string with the title to set the header to}
   @argument[renderer]{a @class{gtk:cell-renderer} object}
-  @argument[attributes]{a list of attributes}
+  @argument[attributes]{pairs of @arg{attribute} and @arg{colnum}}
+  @argument[attribute]{a string with the name of a property of @arg{renderer}}
+  @argument[colnum]{an integer with the column in the model with the value for
+    @arg{attribute}}
   @return{The integer with the number of columns in @arg{view} after insertion.}
   @begin{short}
     Creates a new @class{gtk:tree-view-column} object and inserts it into the
     tree view at @arg{pos}.
   @end{short}
   If the @arg{pos} argument is -1, then the newly created column is inserted at
-  the end. The column is initialized with the attributes given. If @arg{view}
+  the end. The column is initialized with the attributes given. If the tree view
   has the @slot[gtk:tree-view]{fixed-height-mode} property enabled, then the
   new column will have its @slot[gtk:tree-view-column]{sizing} property set to
   be the @code{:fixed} value.
+  @begin{examples}
+    Insert a new column in a tree view with a cell renderer for displaying text.
+    The @slot[gtk:cell-renderer-text]{text},
+    @slot[gtk:cell-renderer-text]{weight} and
+    @slot[gtk:cell-renderer-text]{foreground} properties are connected to the
+    column 0, column 5 and column 6 in the model for the tree view.
+    @begin{pre}
+(let* ((model (create-and-fill-model-simple))
+       (view (gtk:tree-view-new-with-model model))
+       (renderer (gtk:cell-renderer-text-new)))
+  (gtk:tree-view-insert-column-with-attributes view
+                                               0
+                                               \"Title\"
+                                               renderer
+                                               \"text\" 0
+                                               \"weight\" 5
+                                               \"foreground\" 6)
+  ... )
+    @end{pre}
+  @end{examples}
   @see-class{gtk:tree-view}
   @see-class{gtk:cell-renderer}
   @see-class{gtk:tree-view-column}
@@ -1521,13 +1545,13 @@ lambda (view)    :action
 
 (defun tree-view-insert-column-with-data-func (view pos title renderer func)
  #+liber-documentation
- "@version{2024-3-10}
+ "@version{2024-3-12}
   @argument[view]{a @class{gtk:tree-view} widget}
   @argument[pos]{an integer with the position to insert the new column in}
   @argument[title]{an string with the title to set the header to}
   @argument[renderer]{a @class{gtk:cell-renderer} object}
   @argument[func]{a @symbol{gtk:tree-cell-data-func} callback function to set
-    attributes of cell renderer}
+    the attributes of @arg{renderer}}
   @return{The integer with the number of columns in @arg{view} after insertion.}
   @begin{short}
     Convenience function that inserts a new column into the tree view with the
@@ -1535,10 +1559,39 @@ lambda (view)    :action
     to set cell renderer attributes (normally using data from the model).
   @end{short}
   See also the @fun{gtk:tree-view-column-set-cell-data-func} and
-  @fun{gtk:tree-view-column-pack-start} functions. If @arg{view} has the
+  @fun{gtk:tree-view-column-pack-start} functions. If the tree view has the
   @slot[gtk:tree-view]{fixed-height-mode} property enabled, then the new column
   will have its @slot[gtk:tree-view-column]{sizing} property set to be the
   @code{:fixed} value.
+  @begin{examples}
+    In this example, the cell data function takes the year of birth from the
+    model, calculates the age and formats a suitable text that is displayed in
+    the tree view.
+    @begin{pre}
+(defun age-cell-data-sortable (column renderer model iter)
+  (declare (ignore column))
+  (let ((year (sixth (multiple-value-list (get-decoded-time))))
+        (text nil)
+        (value (gtk:tree-model-value model iter colyearborn)))
+    (if (and (< value year) (> value 0))
+        (progn
+          (setf text (format nil \"~a  years old\" (- year value)))
+          (setf (gtk:cell-renderer-text-foreground-set renderer) nil))
+        (progn
+          (setf text \"age unknown\")
+          (setf (gtk:cell-renderer-text-foreground renderer) \"Red\")))
+    (setf (gtk:cell-renderer-text-text renderer) text)))
+
+;; Insert a column with the cell data function
+(let* ((renderer (gtk:cell-renderer-text-new)))
+  (gtk:tree-view-insert-column-with-data-func view
+                                              -1
+                                              \"Age\"
+                                              renderer
+                                              #'age-cell-data-sortable)
+  ... )
+    @end{pre}
+  @end{examples}
   @see-class{gtk:tree-view}
   @see-class{gtk:cell-renderer}
   @see-symbol{gtk:tree-cell-data-func}
@@ -1562,9 +1615,9 @@ lambda (view)    :action
 
 (cffi:defcfun ("gtk_tree_view_get_n_columns" tree-view-n-columns) :int
  #+liber-documentation
- "@version{2024-3-10}
+ "@version{2024-3-12}
   @argument[view]{a @class{gtk:tree-view} widget}
-  @return{The integer with the number of columns in the tree view.}
+  @return{The integer with the number of columns in @arg{view}.}
   @short{Queries the number of columns in the given tree view.}
   @see-class{gtk:tree-view}"
   (view (g:object tree-view)))
@@ -1621,13 +1674,13 @@ lambda (view)    :action
 (cffi:defcfun ("gtk_tree_view_move_column_after" tree-view-move-column-after)
     :void
  #+liber-documentation
- "@version{2024-3-10}
+ "@version{2024-3-12}
   @argument[view]{a @class{gtk:tree-view} widget}
   @argument[column]{a @class{gtk:tree-view-column} object to be moved}
   @argument[base]{a @class{gtk:tree-view-column} object to be moved relative
     to, or @code{nil}}
   @begin{short}
-    Moves @arg{column} to be after to @arg{base}.
+    Moves @arg{column} to be after @arg{base}.
   @end{short}
   If the @arg{base} argument is @code{nil}, then @arg{column} is placed in the
   first position.
@@ -1658,10 +1711,18 @@ lambda (view)    :action
 (setf (liber:alias-for-symbol 'tree-view-column-drop-func)
       "Callback"
       (liber:symbol-documentation 'tree-view-column-drop-func)
- "@version{#2024-3-10}
+ "@version{#2024-3-13}
+  @syntax{lambda (view column prev next) => result}
+  @argument[view]{a @class{gtk:tree-view} widget}
+  @argument[column]{a @class{gtk:tree-view-column} object being dragged}
+  @argument[prev]{a @class{gtk:tree-view-column} object on one side of
+    @arg{column}}
+  @argument[next]{a @class{gtk:tree-view-column} object on the other side of
+    @arg{column}}
+  @argument[result]{@em{true}, if @arg{column} can be dropped in this spot}
   @begin{short}
-    Callback function type for determining whether @arg{column} can be dropped
-    in a particular spot as determined by @arg{prev} and @arg{next}.
+    Callback function for determining whether @arg{column} can be dropped in a
+    particular spot as determined by @arg{prev} and @arg{next}.
   @end{short}
   In left to right locales, @arg{prev} is on the left of the potential drop
   spot, and @arg{next} is on the right. In right to left mode, this is reversed.
@@ -1669,20 +1730,9 @@ lambda (view)    :action
   spot. Please note that returning @em{true} does not actually indicate that
   the column drop was made, but is meant only to indicate a possible drop spot
   to the user.
-  @begin{pre}
-lambda (view column prev next)
-  @end{pre}
-  @begin[code]{table}
-    @entry[view]{The @class{gtk:tree-view} widget.}
-    @entry[column]{The @class{gtk:tree-view-column} object being dragged.}
-    @entry[prev]{The @class{gtk:tree-view-column} object on one side of
-      @arg{column}.}
-    @entry[next]{The @class{gtk:tree-view-column} object on the other side of
-      @arg{column}.}
-    @entry[Return]{@em{True}, if @arg{column} can be dropped in this spot.}
-  @end{table}
   @see-class{gtk:tree-view}
-  @see-class{gtk:tree-view-column}")
+  @see-class{gtk:tree-view-column}
+  @see-function{gtk:tree-view-set-column-drag-function}")
 
 (export 'tree-view-column-drop-func)
 
@@ -1699,7 +1749,7 @@ lambda (view column prev next)
 
 (defun tree-view-set-column-drag-function (view func)
  #+liber-documentation
- "@version{2024-3-10}
+ "@version{2024-3-12}
   @argument[view]{a @class{gtk:tree-view} widget}
   @argument[func]{a @symbol{gtk:tree-view-column-drop-func} callback function
     to determine which columns are reorderable, or @code{nil}}
@@ -1713,14 +1763,11 @@ lambda (view column prev next)
   object being dragged, and the two @class{gtk:tree-view-column} objects
   determining the drop spot. If either of the @class{gtk:tree-view-column}
   arguments for the drop spot are @code{nil}, then they indicate an edge. If
-  @arg{func} is set to be @code{nil}, then @arg{view} reverts to the default
-  behavior of allowing all columns to be dropped everywhere.
-  @begin[Warning]{dictionary}
-    The @class{gtk:tree-view} implementation is deprecated since 4.10. Please
-    do not use it in newly written code.
-  @end{dictionary}
+  the @arg{func} argument is set to be @code{nil}, then the tree view reverts
+  to the default behavior of allowing all columns to be dropped everywhere.
   @see-class{gtk:tree-view}
-  @see-class{gtk:tree-view-column}"
+  @see-class{gtk:tree-view-column}
+  @see-symbol{gtk:tree-view-column-drop-func}"
   (if func
       (%tree-view-set-column-drag-function
               view
@@ -1773,25 +1820,25 @@ lambda (view column prev next)
   (view (g:object tree-view))
   (path (g:boxed tree-path))
   (column (g:object tree-view-column))
-  (use-align :boolean)
-  (row-align :float)
-  (col-align :float))
+  (usealign :boolean)
+  (rowalign :float)
+  (colalign :float))
 
 (defun tree-view-scroll-to-cell (view path column
                                       &optional
-                                      (row-align 0.5 row-align-supplied-p)
-                                      (col-align 0.5 col-align-supplied-p))
+                                      (rowalign 0.5 rowalign-supplied-p)
+                                      (colalign 0.5 colalign-supplied-p))
  #+liber-documentation
- "@version{#2024-3-10}
+ "@version{#2024-3-12}
   @argument[view]{a @class{gtk:tree-view} widget}
   @argument[path]{a @class{gtk:tree-path} instance of the row to move to, or
     @code{nil}}
   @argument[column]{a @class{gtk:tree-view-column} object to move horizontally
     to, or @code{nil}}
-  @argument[row-align]{an optional float with the vertical alignment of the row
-    specified by path, the default is 0.5}
-  @argument[col-align]{an optional float with the horizontal alignment of the
-    column specified by column, the default is 0.5}
+  @argument[rowalign]{an optional float with the vertical alignment of the row
+    specified by @arg{path}, the default is 0.5}
+  @argument[colalign]{an optional float with the horizontal alignment of the
+    column specified by @arg{column}, the default is 0.5}
   @begin{short}
     Moves the alignments of the tree view to the position specified by
     @arg{column} and @arg{path}.
@@ -1799,8 +1846,8 @@ lambda (view column prev next)
   If the @arg{column} argument is @code{nil}, then no horizontal scrolling
   occurs. Likewise, if the @arg{path} argument is @code{nil} no vertical
   scrolling occurs. At a minimum, one of @arg{column} or @arg{path} need to be
-  non-@code{nil}. The @arg{row-align} argument determines where the row is
-  placed, and the @arg{col-align} argument determines where @arg{column} is
+  non-@code{nil}. The @arg{rowalign} argument determines where the row is
+  placed, and the @arg{colalign} argument determines where @arg{column} is
   placed. Both are expected to be between 0.0 and 1.0. The 0.0 value means
   left/top alignment, the 1.0 value means right/bottom alignment, and the
   0.5 value means center.
@@ -1816,9 +1863,9 @@ lambda (view column prev next)
   (%tree-view-scroll-to-cell view
                              path
                              column
-                             (or row-align-supplied-p col-align-supplied-p)
-                             row-align
-                             col-align))
+                             (or rowalign-supplied-p colalign-supplied-p)
+                             rowalign
+                             colalign))
 
 (export 'tree-view-scroll-to-cell)
 
@@ -1834,7 +1881,7 @@ lambda (view column prev next)
 
 (defun tree-view-set-cursor (view path &key focus start)
  #+liber-documentation
- "@version{#2024-3-10}
+ "@version{#2024-3-12}
   @argument[view]{a @class{gtk:tree-view} widget}
   @argument[path]{a @class{gtk:tree-path} instance}
   @argument[focus]{a @class{gtk:tree-view-column} object, or @code{nil}}
@@ -1843,11 +1890,11 @@ lambda (view column prev next)
   @begin{short}
     Sets the current keyboard focus to be at @arg{path}, and selects it.
   @end{short}
-  This is useful when you want to focus the user's attention on a particular
-  row. If the @arg{focus} argument is not @code{nil}, then focus is given to
-  the column specified by it. Additionally, if the @arg{focus} argument is
-  specified, and the @arg{start} argument is @em{true}, then editing should be
-  started in the specified cell. This function is often followed by the
+  This is useful when you want to focus the attention of the user on a
+  particular row. If the @arg{focus} argument is not @code{nil}, then focus is
+  given to the column specified by it. Additionally, if the @arg{focus} argument
+  is specified, and the @arg{start} argument is @em{true}, then editing should
+  be started in the specified cell. This function is often followed by the
   @fun{gtk:widget-grab-focus} function in order to give keyboard focus to the
   widget. Please note that editing can only happen when the tree view is
   realized.
@@ -1876,7 +1923,7 @@ lambda (view column prev next)
 
 (defun tree-view-set-cursor-on-cell (view path &key focus cell start)
  #+liber-documentation
- "@version{#2024-3-10}
+ "@version{#2024-3-12}
   @argument[view]{a @class{gtk:tree-view} widget}
   @argument[path]{a @class{gtk:tree-path} instance}
   @argument[focus]{a @class{gtk:tree-view-column}, or @code{nil}}
@@ -1885,16 +1932,17 @@ lambda (view column prev next)
   @begin{short}
     Sets the current keyboard focus to be at @arg{path}, and selects it.
   @end{short}
-  This is useful when you want to focus the user's attention on a particular
-  row. If the @arg{focus} argument is not @code{nil}, then focus is given to
-  the column specified by it. If the @arg{focus} and @arg{cell} arguments are
-  not @code{nil}, and the @arg{focus} argument contains 2 or more editable or
-  activatable cells, then focus is given to the cell specified by @arg{cell}.
-  Additionally, if the @arg{focus} argument is specified, and the @arg{start}
-  argument is @em{true}, then editing should be started in the specified cell.
-  This function is often followed by the @fun{gtk:widget-grab-focus} function
-  in order to give keyboard focus to the widget. Please note that editing can
-  only happen when the tree view is realized.
+  This is useful when you want to focus the attention of the user on a
+  particular row. If the @arg{focus} argument is not @code{nil}, then focus is
+  given to the column specified by it. If the @arg{focus} and @arg{cell}
+  arguments are not @code{nil}, and the @arg{focus} argument contains 2 or more
+  editable or activatable cells, then focus is given to the cell specified by
+  @arg{cell}. Additionally, if the @arg{focus} argument is specified, and the
+  @arg{start} argument is @em{true}, then editing should be started in the
+  specified cell. This function is often followed by the
+  @fun{gtk:widget-grab-focus} function in order to give keyboard focus to the
+  widget. Please note that editing can only happen when the tree view is
+  realized.
 
   If the @arg{path} argument is invalid for the model, the current cursor
   (if any) will be unset and the function will return without failing.
@@ -1918,19 +1966,20 @@ lambda (view column prev next)
 
 (defun tree-view-get-cursor (view)
  #+liber-documentation
- "@version{2024-3-10}
+ "@version{2024-3-12}
   @argument[view]{a @class{gtk:tree-view} widget}
   @begin{return}
-    @arg{path} -- a current @class{gtk:tree-path} instance with the cursor path,
+    @arg{path} -- a @class{gtk:tree-path} instance with the current cursor path,
       or @code{nil} @br{}
-    @arg{focus} -- a current @class{gtk:tree-view-column} object with the focus
+    @arg{focus} -- a @class{gtk:tree-view-column} object with the current focus
       column, or @code{nil}
   @end{return}
   @begin{short}
-    Returns @arg{path} and @arg{focus} with the current path and focus column.
+    Returns the current path and focus column.
   @end{short}
-  If the cursor is not currently set, then @arg{path} will be @code{nil}. If no
-  column currently has focus, then @arg{focus} will be @code{nil}.
+  If the cursor is not currently set, then the @arg{path} value will be
+  @code{nil}. If no column currently has focus, then the @arg{focus} value will
+  be @code{nil}.
   @see-class{gtk:tree-view}
   @see-class{gtk:tree-path}
   @see-class{gtk:tree-view-column}"
@@ -2071,18 +2120,14 @@ lambda (view column prev next)
 (setf (liber:alias-for-symbol 'tree-view-mapping-func)
       "Callback"
       (liber:symbol-documentation 'tree-view-mapping-func)
- "@version{#2024-3-10}
+ "@version{#2024-3-13}
+  @syntax{lambda (view path)}
+  @argument[view]{a @class{gtk:tree-view} widget}
+  @argument[path]{a @class{gtk:tree-path} instance that is expanded}
   @begin{short}
     Callback function used for the @fun{gtk:tree-view-map-expanded-rows}
     function.
   @end{short}
-  @begin{pre}
-lambda (view path)
-  @end{pre}
-  @begin[code]{table}
-    @entry[view]{The @class{gtk:tree-view} widget.}
-    @entry[path]{The @class{gtk:tree-path} instance that is expanded.}
-  @end{table}
   @see-class{gtk:tree-view}
   @see-class{gtk:tree-path}
   @see-function{gtk:tree-view-map-expanded-rows}")
@@ -2153,12 +2198,12 @@ lambda (view path)
 
 (defun tree-view-path-at-pos (view x y)
  #+liber-documentation
- "@version{#2024-3-10}
+ "@version{#2024-3-12}
   @argument[view]{a @class{gtk:tree-view} widget}
   @argument[x]{an integer with the x position to be identified (relative to
-    the bin window)}
+    the GDK window)}
   @argument[y]{an integer with the y position to be identified (relative to
-    the bin window)}
+    the GDK window)}
   @begin{return}
     @arg{path} -- a @class{gtk:tree-path} instance, or @code{nil} @br{}
     @arg{column} -- a @class{gtk:tree-view-column} object, or @code{nil} @br{}
@@ -2166,13 +2211,13 @@ lambda (view path)
     @arg{ycell} -- an integer with the y coordinate relative to the cell
   @end{return}
   @begin{short}
-    Finds the path at the point @code{(x, y)}, relative to the bin window
+    Finds the path at the point @code{(x, y)}, relative to the GDK window
     coordinates.
   @end{short}
   Please see the @fun{gtk:tree-view-bin-window} function. That is, @arg{x} and
   @arg{y} are relative to an events coordinates. The @arg{x} and @arg{y}
   coordinates must come from an event on the tree view only where the event
-  window from the @fun{gdk:event-window} function is equal to the bin window
+  window from the @fun{gdk:event-window} function is equal to the GDK window
   from the @fun{gtk:tree-view-bin-window} function. It is primarily for things
   like popup menus.
 
@@ -2180,7 +2225,7 @@ lambda (view path)
   @class{gtk:tree-path} instance at that point. If the @arg{column} argument is
   non-@code{nil}, then it will be filled with the column at that point. The
   @arg{xcell} and @arg{ycell} values return the coordinates relative to the
-  cell background, i.e. the @code{background-area} passed to the
+  cell background, i.e. the @code{background} value passed to the
   @fun{gtk:cell-renderer-render} function. This function is only meaningful if
   the tree view is realized. Therefore this function will always return
   @code{nil} if the tree view is not realized or does not have a model.
@@ -2227,12 +2272,12 @@ lambda (view path)
 
 (defun tree-view-is-blank-at-pos (view x y)
  #+liber-documentation
- "@version{#2024-3-10}
+ "@version{#2024-3-12}
   @argument[view]{a @class{gtk:tree-view} widget}
   @argument[x]{an integer with the x position to be identified (relative to
-    the bin window)}
+    the GDK window)}
   @argument[y]{an integer with the y position to be identified (relative to
-    the bin window)}
+    the GDK window)}
   @begin{return}
     @arg{path} -- a @class{gtk:tree-path} instance, or @code{nil} @br{}
     @arg{column} -- a @class{gtk:tree-view-column} object, or @code{nil} @br{}
@@ -2250,7 +2295,7 @@ lambda (view path)
   selection, having a custom context menu or starting rubber banding.
 
   The @arg{x} and @arg{y} coordinates that are provided must be relative to the
-  bin window coordinates. That is, @arg{x} and @arg{y} must come from an event
+  GDK window coordinates. That is, @arg{x} and @arg{y} must come from an event
   on the tree view where the window from the @fun{gdk:event-window} function
   is equal to the window from the @fun{gtk:tree-view-bin-window} function.
 
@@ -2258,7 +2303,7 @@ lambda (view path)
   @code{\"query-tooltip\"} signal, please see the
   @fun{gtk:tree-view-convert-widget-to-bin-window-coords} function.
 
-  The @arg{path}, @arg{column}, @arg{xcell} and @arg{ycell} arguments will
+  The @arg{path}, @arg{column}, @arg{xcell} and @arg{ycell} values will
   be returned likewise as for the @fun{gtk:tree-view-path-at-pos} function.
   @see-class{gtk:tree-view}
   @see-class{gtk:tree-path}
@@ -2301,17 +2346,17 @@ lambda (view path)
     to get only horizontal coordinates}
   @argument[column]{a @class{gtk:tree-view-column} object for the column, or
     @code{nil} to get only vertical coordinates}
-  @return{The @class{gdk:rectangle} instance with the cell rectangle.}
+  @return{The @class{gdk:rectangle} instance with the cell area.}
   @begin{short}
-    Returns the bounding rectangle in bin window coordinates for the cell at
+    Returns the bounding rectangle in GDK window coordinates for the cell at
     the row specified by @arg{path} and the column specified by @arg{column}.
   @end{short}
   If the @arg{path} argument is @code{nil}, or points to a path not currently
-  displayed, the @arg{y} and @arg{height} fields of the rectangle will be filled
-  with 0. If the @arg{column} argument is @code{nil}, the @arg{x} and
+  displayed, the @arg{y} and @arg{height} fields of the rectangle will be
+  filled with 0. If the @arg{column} argument is @code{nil}, the @arg{x} and
   @arg{width} fields will be filled with 0. The sum of all cell rectangles does
   not cover the entire tree. There are extra pixels in between rows, for
-  example. The returned rectangle is equivalent to the @arg{cell-area} passed
+  example. The returned rectangle is equivalent to the @arg{area} value passed
   to the @fun{gtk:cell-renderer-render} function. This function is only valid
   if the tree view is realized.
   @see-class{gtk:tree-view}
@@ -2347,16 +2392,16 @@ lambda (view path)
   @return{The @class{gdk:rectangle} instance with the cell background
     rectangle.}
   @begin{short}
-    Returns the bounding rectangle in the bin window coordinates for the cell
+    Returns the bounding rectangle in the GDK window coordinates for the cell
     at the row specified by @arg{path} and the column specified by @arg{column}.
   @end{short}
   If the @arg{path} argument is @code{nil}, or points to a node not found in
   the tree, the @arg{y} and @arg{height} fields of the rectangle will be filled
   with 0. If the @arg{column} argument is @code{nil}, the @arg{x} and
   @arg{width} fields will be filled with 0. The returned rectangle is equivalent
-  to the @code{background-area} passed to the @fun{gtk:cell-renderer-render}
-  function. These background areas tile to cover the entire bin window. Contrast
-  with the @code{cell-area}, returned by the @fun{gtk:tree-view-cell-area}
+  to the @arg{background} value passed to the @fun{gtk:cell-renderer-render}
+  function. These background areas tile to cover the entire GDK window. Contrast
+  with the @code{area} value, returned by the @fun{gtk:tree-view-cell-area}
   function, which returns only the cell itself, excluding surrounding borders
   and the tree expander area.
   @see-class{gtk:tree-view}
@@ -2388,7 +2433,7 @@ lambda (view path)
     Returns the rectangle with the currently visible region of the tree view
     buffer, in tree view coordinates.
   @end{short}
-  Convert to the bin window coordinates with the
+  Convert to the GDK window coordinates with the
   @fun{gtk:tree-view-convert-tree-to-bin-window-coords} function. Tree
   coordinates start at @code{(0,0)} for the first row of the tree view, and
   cover the entire scrollable area of the tree view.
@@ -2472,16 +2517,16 @@ lambda (view path)
 
 (defun tree-view-convert-bin-window-to-tree-coords (view x y)
  #+liber-documentation
- "@version{#2024-3-10}
+ "@version{#2024-3-12}
   @argument[view]{a @class{gtk:tree-view} widget}
-  @argument[x]{an integer with the x coordinate relative to bin window}
-  @argument[y]{an integer with the y coordinate relative to bin window}
+  @argument[x]{an integer with the x coordinate relative to GDK window}
+  @argument[y]{an integer with the y coordinate relative to GDK window}
   @begin{return}
     @arg{tx} -- an integer with the tree x coordinate @br{}
     @arg{ty} -- an integer with the tree y coordinate
   @end{return}
   @begin{short}
-    Converts bin window coordinates to coordinates for the tree view (the full
+    Converts GDK window coordinates to coordinates for the tree view (the full
     scrollable area of the tree view).
   @end{short}
   @see-class{gtk:tree-view}"
@@ -2506,16 +2551,16 @@ lambda (view path)
 
 (defun tree-view-convert-bin-window-to-widget-coords (view x y)
  #+liber-documentation
- "@version{#2024-3-10}
+ "@version{#2024-3-12}
   @argument[view]{a @class{gtk:tree-view} widget}
-  @argument[x]{an integer with the bin window x coordinate}
-  @argument[y]{an integer with the bin window y coordinate}
+  @argument[x]{an integer with the GDK window x coordinate}
+  @argument[y]{an integer with the GDK window y coordinate}
   @begin{return}
     @arg{wx} -- an integer with the widget x coordinate @br{}
     @arg{wy} -- an integer with the widget y coordinate
   @end{return}
   @begin{short}
-    Converts bin window coordinates, see the @fun{gtk:tree-view-bin-window}
+    Converts GDK window coordinates, see the @fun{gtk:tree-view-bin-window}
     function, to widget relative coordinates.
   @end{short}
   @see-class{gtk:tree-view}
@@ -2541,17 +2586,17 @@ lambda (view path)
 
 (defun tree-view-convert-tree-to-bin-window-coords (view x y)
  #+liber-documentation
- "@version{#2024-3-10}
+ "@version{#2024-3-12}
   @argument[view]{a @class{gtk:tree-view} widget}
   @argument[x]{an integer with the tree x coordinate}
   @argument[y]{an integer with the tree y coordinate}
   @begin{return}
-    @arg{bx} -- an integer with the x coordinate relative to bin window @br{}
-    @arg{by} -- an integer with the y coordinate relative to bin window
+    @arg{bx} -- an integer with the x coordinate relative to GDK window @br{}
+    @arg{by} -- an integer with the y coordinate relative to GDK window
   @end{return}
   @begin{short}
     Converts tree view coordinates, coordinates in full scrollable area of the
-    tree view, to bin window coordinates.
+    tree view, to GDK window coordinates.
   @end{short}
   @see-class{gtk:tree-view}"
   (cffi:with-foreign-objects ((bx :int) (by :int))
@@ -2609,16 +2654,16 @@ lambda (view path)
 
 (defun tree-view-convert-widget-to-bin-window-coords (view x y)
  #+liber-documentation
- "@version{#2024-3-10}
+ "@version{#2024-3-12}
   @argument[view]{a @class{gtk:tree-view} widget}
   @argument[x]{an integer with the x coordinate relative to the widget}
   @argument[y]{an integer with the y coordinate relative to the widget}
   @begin{return}
-    @code{bx} -- an integer with the bin window x coordinate @br{}
-    @code{by} -- an integer with the bin window y coordinate
+    @code{bx} -- an integer with the GDK window x coordinate @br{}
+    @code{by} -- an integer with the GDK window y coordinate
   @end{return}
   @begin{short}
-    Converts widget coordinates to coordinates for the bin window, see the
+    Converts widget coordinates to coordinates for the GDK window, see the
     @fun{gtk:tree-view-bin-window} function.
   @end{short}
   @see-class{gtk:tree-view}
@@ -2668,8 +2713,6 @@ lambda (view path)
 ;;; gtk_tree_view_enable_model_drag_dest ()
 ;;; ----------------------------------------------------------------------------
 
-;; TODO: Improve the documentation for target entries
-
 (cffi:defcfun ("gtk_tree_view_enable_model_drag_dest"
                %tree-view-enable-model-drag-dest) :void
   (view (g:object tree-view))
@@ -2679,19 +2722,38 @@ lambda (view path)
 
 (defun tree-view-enable-model-drag-dest (view targets actions)
  #+liber-documentation
- "@version{2024-3-10}
+ "@version{2024-3-13}
   @argument[view]{a @class{gtk:tree-view} widget}
-  @argument[targets]{a list of target entries that the drag will support}
+  @argument[targets]{a list of @code{(target flags info)} target entries that
+    the drag will support}
+  @argument[target]{a string representation of the target type}
+  @argument[flags]{a @symbol{gtk:target-flags} value for DND}
+  @argument[info]{an application assigned integer ID}
   @argument[actions]{a @symbol{gdk:drag-action} value with the bitmask of
     possible actions for a drag from this widget}
   @begin{short}
     Turns the tree view into a drop destination for automatic DND.
   @end{short}
-  Calling this method sets the @slot[gkt:tree-view]{reorderable} property to
-  the @em{false} value.
+  Calling this method sets the @slot[gtk:tree-view]{reorderable} property to
+  the @em{false} value. See the @class{gtk:target-list} structure and the
+  @fun{gtk:target-list-new} function for more documentation of target entries.
+  @begin{examples}
+    @begin{pre}
+(let ((targets '((\"text/html\" :none 0)
+                 (\"STRING\" :none 1)
+                 (\"number\" :none 2)
+                 (\"image/jpeg\" :none 3)
+                 (\"text/uri-list\" :none 4))))
+    (gtk:tree-view-enable-model-drag-dest view targets :copy)
+    ... )
+    @end{pre}
+  @end{examples}
   @see-class{gtk:tree-view}
+  @see-class{gtk:target-list}
   @see-symbol{gdk:drag-action}
-  @see-function{gtk:tree-view-reorderable}"
+  @see-symbol{gtk:target-flags}
+  @see-function{gtk:tree-view-reorderable}
+  @see-function{gtk:target-list-new}"
   (let ((n-targets (length targets)))
     (cffi:with-foreign-object (targets-ptr '(:struct %target-entry) n-targets)
       (iter (for i from 0 below n-targets)
@@ -2725,22 +2787,29 @@ lambda (view path)
 
 (defun tree-view-enable-model-drag-source (view mask targets actions)
  #+liber-documentation
- "@version{2024-3-10}
+ "@version{2024-3-13}
   @argument[view]{a @class{gtk:tree-view} widget}
   @argument[mask]{a @symbol{gdk:modifier-type} value with the mask of allowed
     buttons to start drag}
-  @argument[targets]{a list of target entries that the drag will support}
+  @argument[targets]{a list of @code{(target flags info)} target entries that
+    the drag will support}
+  @argument[target]{a string representation of the target type}
+  @argument[flags]{a @symbol{gtk:target-flags} value for DND}
+  @argument[info]{an application assigned integer ID}
   @argument[actions]{a @symbol{gdk:drag-action} value with the bitmask of
     possible actions for a drag from this widget}
   @begin{short}
     Turns the tree view into a drag source for automatic DND.
   @end{short}
   Calling this method sets the @slot[gtk:tree-view]{reorderable} property to
-  the @em{false} value.
+  the @em{false} value. See the @class{gtk:target-list} structure and the
+  @fun{gtk:target-list-new} function for more documentation of target entries.
   @see-class{gtk:tree-view}
+  @see-class{gtk:target-list}
   @see-symbol{gdk:modifier-type}
   @see-symbol{gdk:drag-action}
-  @see-function{gtk:tree-view-reorderable}"
+  @see-function{gtk:tree-view-reorderable}
+  @see-function{gtk:target-list-new}"
   (let ((n-targets (length targets)))
     (cffi:with-foreign-object (targets-ptr '(:struct %target-entry) n-targets)
       (iter (for i from 0 below n-targets)
@@ -2917,14 +2986,14 @@ lambda (view path)
                tree-view-create-row-drag-icon)
     (:pointer (:struct cairo:surface-t))
  #+liber-documentation
- "@version{#2024-3-10}
+ "@version{#2024-3-12}
   @argument[view]{a @class{gtk:tree-view} widget}
   @argument[path]{a @class{gtk:tree-path} instance}
   @return{The newly allocated @symbol{cairo:surface-t} instance of the drag
     icon.}
   @begin{short}
     Creates a @symbol{cairo:surface-t} instance for the representation of the
-    row at path.
+    row at @arg{path}.
   @end{short}
   This image is used for a drag icon.
   @see-class{gtk:tree-view}
@@ -2954,24 +3023,20 @@ lambda (view path)
 (setf (liber:alias-for-symbol 'tree-view-search-equal-func)
       "Callback"
       (liber:symbol-documentation 'tree-view-search-equal-func)
- "@version{#2024-3-10}
+ "@version{#2024-3-13}
+  @syntax{lambda (model column key iter data) => result}
+  @argument[model]{a @class{gtk:tree-model} object being searched}
+  @argument[column]{an integer with the search column set by the
+    @fun{gtk:tree-view-search-column} function}
+  @argument[key]{a key string to compare with}
+  @argument[iter]{a @class{gtk:tree-iter} iterator pointing the row of
+    @arg{model} that should be compared with @arg{key}}
+  @argument[result]{@em{false} if the row matches, @em{true} otherwise}
   @begin{short}
-    A callback function used for checking whether a row in model matches a
+    A callback function used for checking whether a row in the model matches a
     search key string entered by the user.
   @end{short}
   Note the return value is reversed from what you would normally expect.
-  @begin{pre}
-lambda (model column key iter data)
-  @end{pre}
-  @begin[code]{table}
-    @entry[model]{The @class{gtk:tree-model} object being searched.}
-    @entry[column]{An integer with the search column set by the
-      @fun{gtk:tree-view-search-column} function.}
-    @entry[key]{The key string to compare with.}
-    @entry[iter]{The @class{gtk:tree-iter} iterator pointing the row of
-      @arg{model} that should be compared with @arg{key}.}
-    @entry[Return]{@em{False} if the row matches, @em{true} otherwise.}
-  @end{table}
   @see-class{gtk:tree-model}
   @see-class{gtk:tree-iter}
   @see-function{gtk:tree-view-set-search-equal-func}")
@@ -2979,18 +3044,7 @@ lambda (model column key iter data)
 (export 'tree-view-search-equal-func)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_view_get_search_equal_func ()
-;;;
-;;; GtkTreeViewSearchEqualFunc
-;;; gtk_tree_view_get_search_equal_func (GtkTreeView *tree_view);
-;;;
-;;; Returns the compare function currently in use.
-;;;
-;;; tree_view :
-;;;     A GtkTreeView
-;;;
-;;; Returns :
-;;;     the currently used compare function for the search code.
+;;; gtk_tree_view_get_search_equal_func ()                  not needed
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
@@ -3046,17 +3100,15 @@ lambda (model column key iter data)
   @argument[entry]{a @class{gtk:entry} widget the interactive search code of
     the tree view should use or @code{nil}}
   @begin{short}
-    Accessor of the @class{gtk:entry} widget which is currently in use as
-    interactive search entry for the tree view.
+    The @fun{gtk:tree-view-search-entry} function returns the search entry which
+    is currently in use as interactive search entry for the tree view.
   @end{short}
-  The @fun{gtk:tree-view-search-entry} function returns the search entry which
-  is currently in use as interactive search entry for the tree view. In case
-  the built-in entry is being used, @code{nil} will be returned. The
+  In case the built-in entry is being used, @code{nil} will be returned. The
   @setf{gtk:tree-view-search-entry} function sets the search entry.
 
   This is useful when you want to provide a search entry in your interface at
-  all time at a fixed position. Passing @code{nil} for @arg{entry} will make
-  the interactive search code use the built-in popup entry again.
+  all time at a fixed position. Passing the @code{nil} value for @arg{entry}
+  will make the interactive search code use the built-in popup entry again.
   @see-class{gtk:tree-view}
   @see-class{gtk:entry}"
   (view (g:object tree-view)))
@@ -3079,37 +3131,21 @@ lambda (model column key iter data)
 (setf (liber:alias-for-symbol 'tree-view-search-position-func)
       "Callback"
       (liber:symbol-documentation 'tree-view-search-position-func)
- "@version{#2024-3-10}
+ "@version{#2024-3-13}
+  @syntax{lambda (view dialog)}
+  @argument[view]{a @class{gtk:tree-view} widget}
+  @argument[dialog]{a @class{gtk:widget} object}
   @begin{short}
-    No documentation.
+    Callback function to use when positioning the search dialog.
   @end{short}
-  @begin{pre}
-lambda (view dialog)
-  @end{pre}
-  @begin[code]{table}
-    @entry[view]{The @class{gtk:tree-view} widget.}
-    @entry[dialog]{The @class{gtk:widget} object.}
-  @end{table}
   @see-class{gtk:tree-view}
-  @see-class{gtk:widget}")
+  @see-class{gtk:widget}
+  @see-function{gtk:tree-view-set-search-position-func}")
 
 (export 'tree-view-search-position-func)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_view_get_search_position_func ()
-;;;
-;;; GtkTreeViewSearchPositionFunc
-;;; gtk_tree_view_get_search_position_func (GtkTreeView *tree_view);
-;;;
-;;; Returns the positioning function currently in use.
-;;;
-;;; tree_view :
-;;;     A GtkTreeView
-;;;
-;;; Returns :
-;;;     the currently used function for positioning the search dialog.
-;;;
-;;; Since 2.10
+;;; gtk_tree_view_get_search_position_func ()               not needed
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
@@ -3150,43 +3186,11 @@ lambda (view dialog)
 (export 'tree-view-set-search-position-func)
 
 ;;; ----------------------------------------------------------------------------
-;;; GtkTreeDestroyCountFunc ()
-;;;
-;;; void (*GtkTreeDestroyCountFunc) (GtkTreeView *tree_view,
-;;;                                  GtkTreePath *path,
-;;;                                  gint children,
-;;;                                  gpointer user_data);
+;;; GtkTreeDestroyCountFunc ()                              Deprecated 3.4
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_view_set_destroy_count_func ()
-;;;
-;;; void gtk_tree_view_set_destroy_count_func (GtkTreeView *tree_view,
-;;;                                            GtkTreeDestroyCountFunc func,
-;;;                                            gpointer data,
-;;;                                            GDestroyNotify destroy);
-;;;
-;;; Warning
-;;;
-;;; gtk_tree_view_set_destroy_count_func has been deprecated since version 3.4
-;;; and should not be used in newly written code. Accessibility does not need
-;;; the function anymore.
-;;;
-;;; This function should almost never be used. It is meant for private use by
-;;; ATK for determining the number of visible children that are removed when
-;;; the user collapses a row, or a row is deleted.
-;;;
-;;; tree_view :
-;;;     A GtkTreeView.
-;;;
-;;; func :
-;;;     Function to be called when a view row is destroyed, or NULL.
-;;;
-;;; data :
-;;;     User data to be passed to func, or NULL.
-;;;
-;;; destroy :
-;;;     Destroy notifier for data, or NULL.
+;;; gtk_tree_view_set_destroy_count_func ()                 Deprecated 3.4
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
@@ -3206,21 +3210,18 @@ lambda (view dialog)
 (setf (liber:alias-for-symbol 'tree-view-row-separator-func)
       "Callback"
       (liber:symbol-documentation 'tree-view-row-separator-func)
- "@version{#2024-3-10}
+ "@version{#2024-3-13}
+  @syntax{lambda (model iter) => result}
+  @argument[model]{a @class{gtk:tree-model} object}
+  @argument[iter]{a @class{gtk:tree-iter} instance pointing at a row in the
+    model}
+  @argument[result]{@em{true} if the row is a separator}
   @begin{short}
-    Callback function type for determining whether the row pointed to by
-    @arg{iter} should be rendered as a separator.
+    Callback function for determining whether the row pointed to by @arg{iter}
+    should be rendered as a separator.
   @end{short}
   A common way to implement this is to have a boolean column in the model,
   whose values the callback function returns.
-  @begin{pre}
-lambda (model iter)
-  @end{pre}
-  @begin[code]{table}
-    @entry[model]{The @class{gtk:tree-model} object.}
-    @entry[iter]{The @class{gtk:tree-iter} instance pointing at a row in model.}
-    @entry[Return]{@em{True} if the row is a separator.}
-  @end{table}
   @see-class{gtk:tree-view}
   @see-class{gtk:tree-model}
   @see-class{gtk:tree-iter}")
@@ -3228,20 +3229,7 @@ lambda (model iter)
 (export 'tree-view-row-separator-func)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_view_get_row_separator_func ()
-;;;
-;;; GtkTreeViewRowSeparatorFunc
-;;; gtk_tree_view_get_row_separator_func (GtkTreeView *tree_view);
-;;;
-;;; Returns the current row separator function.
-;;;
-;;; tree_view :
-;;;     a GtkTreeView
-;;;
-;;; Returns :
-;;;     the current row separator function.
-;;;
-;;; Since 2.6
+;;; gtk_tree_view_get_row_separator_func ()                 not needed
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
@@ -3369,7 +3357,7 @@ lambda (model iter)
 (cffi:defcfun ("gtk_tree_view_set_tooltip_cell" tree-view-set-tooltip-cell)
     :void
  #+liber-documentation
- "@version{#2024-3-10}
+ "@version{#2024-3-12}
   @argument[view]{a @class{gtk:tree-view} widget}
   @argument[tooltip]{a @class{gtk:tooltip} object}
   @argument[path]{a @class{gtk:tree-path} instance or @code{nil}}
@@ -3384,10 +3372,10 @@ lambda (model iter)
   the @fun{gtk:tooltip-set-tip-area} function.
 
   Note that if the @arg{path} argument is not specified and @arg{renderer} is
-  set and part of a @arg{column} containing the expander, the @arg{tooltip}
-  might not show and hide at the correct position. In such cases @arg{path}
-  must be set to the current node under the mouse cursor for this function to
-  operate correctly.
+  set and part of a @arg{column} containing the expander, the tooltip might not
+  show and hide at the correct position. In such cases @arg{path} must be set
+  to the current node under the mouse cursor for this function to operate
+  correctly.
 
   See also the @fun{gtk:tree-view-tooltip-column} function for a simpler
   alternative.
@@ -3425,9 +3413,9 @@ lambda (model iter)
     @arg{y} -- an integer with the y coordinate (relative to widget
       coordinates) @br{}
     @arg{tip} -- a boolean whether this is a keyboard tooltip or not @br{}
-    @arg{model} -- a @class{gtk:tree-model} object or @code{nil} @br{}
-    @arg{path}  -- a @class{gtk:tree-path} instance or @code{nil} @br{}
-    @arg{iter}  -- a @class{gtk:tree-iter} iterator or @code{nil}
+    @arg{model} -- a @class{gtk:tree-model} object @br{}
+    @arg{path}  -- a @class{gtk:tree-path} instance @br{}
+    @arg{iter}  -- a @class{gtk:tree-iter} iterator
   @end{return}
   @begin{short}
     This function is supposed to be used in a @code{\"query-tooltip\"} signal
@@ -3439,10 +3427,9 @@ lambda (model iter)
   The return value indicates whether there is a tree view row at the given
   coordinates (@em{true}) or not (@em{false}) for mouse tooltips. For keyboard
   tooltips the row returned will be the cursor row. When @em{true}, then any of
-  @arg{model}, @arg{path} and @arg{iter} which have been provided will be set to
-  point to that row and the corresponding model. @arg{x} and @arg{y} will always
-  be converted to be relative to @arg{view}'s \"bin window\" if @arg{tip}
-  is @em{false}.
+  @arg{model}, @arg{path} and @arg{iter} values will be set to point to that row
+  and the corresponding model. @arg{x} and @arg{y} will always be converted to
+  be relative to \"GDK window\" of the tree view if @arg{tip} is @em{false}.
   @see-class{gtk:tree-view}"
   (cffi:with-foreign-objects ((x :int)
                               (y :int)
