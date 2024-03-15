@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -253,9 +253,9 @@
 (setf (liber:alias-for-function 'box-baseline-position)
       "Accessor"
       (documentation 'box-baseline-position 'function)
- "@version{2023-12-30}
-  @syntax[]{(gtk:box-baseline-position object) => position}
-  @syntax[]{(setf (gtk:box-baseline-position object) position)}
+ "@version{2024-3-15}
+  @syntax{(gtk:box-baseline-position object) => position}
+  @syntax{(setf (gtk:box-baseline-position object) position)}
   @argument[object]{a @class{gtk:box} container widget}
   @argument[position]{a baseline position of type
     @symbol{gtk:baseline-position}}
@@ -286,9 +286,9 @@
 (setf (liber:alias-for-function 'box-homogeneous)
       "Accessor"
       (documentation 'box-homogeneous 'function)
- "@version{2023-12-30}
-  @syntax[]{(gtk:box-homogeneous object) => homogeneous}
-  @syntax[]{(setf (gtk:box-homogeneous object) homogeneous)}
+ "@version{2024-3-15}
+  @syntax{(gtk:box-homogeneous object) => homogeneous}
+  @syntax{(setf (gtk:box-homogeneous object) homogeneous)}
   @argument[object]{a @class{gtk:box} container widget}
   @argument[homogeneous]{@em{true} to create equal allotments, @em{false}
     for variable allotments}
@@ -315,9 +315,9 @@
 (setf (liber:alias-for-function 'box-spacing)
       "Accessor"
       (documentation 'box-spacing 'function)
- "@version{2023-12-30}
-  @syntax[]{(gtk:box-spacing object) => spacing}
-  @syntax[]{(setf (gtk:box-spacing object) spacing)}
+ "@version{2024-3-15}
+  @syntax{(gtk:box-spacing object) => spacing}
+  @syntax{(setf (gtk:box-spacing object) spacing)}
   @argument[object]{a @class{gtk:box} container widget}
   @argument[spacing]{an integer with the number of pixels to put between
     children}
@@ -341,9 +341,9 @@
 (setf (liber:alias-for-function 'box-child-expand)
       "Accessor"
       (documentation 'box-child-expand 'function)
- "@version{2023-12-30}
-  @syntax[]{(gtk:box-child-expand container child) => expand}
-  @syntax[]{(setf (gtk:box-child-expand container child) expand)}
+ "@version{2024-3-15}
+  @syntax{(gtk:box-child-expand container child) => expand}
+  @syntax{(setf (gtk:box-child-expand container child) expand)}
   @argument[container]{a @class{gtk:box} container widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[expand]{@em{true}, if @arg{child} is to be given extra space}
@@ -353,10 +353,10 @@
   Whether the child widget should receive extra space when the parent widget
   grows. The @slot[gtk:widget]{hexpand} or @slot[gtk:widget]{vexpand} properties
   are the preferred way to influence whether the child widget receives extra
-  space, by setting the expand property of the child widget corresponding to the
-  orientation of the box. In contrast to the
-  @slot[gtk:widget]{hexpand} property, the @code{expand} child property does not
-  cause the box to expand itself.
+  space, by setting the expand property of the child widget corresponding to
+  the orientation of the box. In contrast to the
+  @slot[gtk:widget]{hexpand} property, the @code{expand} child property does
+  not cause the box to expand itself.
   @see-class{gtk:box}
   @see-class{gtk:widget}
   @see-function{gtk:widget-hexpand}
@@ -370,11 +370,11 @@
 (setf (liber:alias-for-function 'box-child-fill)
       "Accessor"
       (documentation 'box-child-fill 'function)
- "@version{2023-12-30}
-  @syntax[]{(gtk:box-child-expand container child) => fill}
-  @syntax[]{(setf (gtk:box-child-expand container child) fill)}
+ "@version{2024-3-15}
+  @syntax{(gtk:box-child-expand container child) => fill}
+  @syntax{(setf (gtk:box-child-expand container child) fill)}
   @argument[container]{a @class{gtk:box} container widget}
-  @argument[child]{the @class{gtk:widget} child widget}
+  @argument[child]{a @class{gtk:widget} child widget}
   @argument[fill]{@em{true}, if space given to @arg{child} by the expand option}
   @begin{short}
     Accessor of the @code{fill} child property of the @class{gtk:box} class.
@@ -399,12 +399,12 @@
 (setf (liber:alias-for-function 'box-child-pack-type)
       "Accessor"
       (documentation 'box-child-pack-type 'function)
- "@version{2023-12-30}
-  @syntax[]{(gtk:box-child-pack-type container child) => pack-type}
-  @syntax[]{(setf (gtk:box-child-pack-type container child) pack-type)}
+ "@version{2024-3-15}
+  @syntax{(gtk:box-child-pack-type container child) => packtype}
+  @syntax{(setf (gtk:box-child-pack-type container child) packtype)}
   @argument[container]{a @class{gtk:box} container widget}
-  @argument[child]{the @class{gtk:widget} child widget}
-  @argument[pack-type]{a value of the @symbol{gtk:pack-type} enumeration}
+  @argument[child]{a @class{gtk:widget} child widget}
+  @argument[packtype]{a value of the @symbol{gtk:pack-type} enumeration}
   @begin{short}
     Accessor of the @code{pack-type} child property of the @class{gtk:box}
     class.
@@ -423,9 +423,9 @@
 (setf (liber:alias-for-function 'box-child-padding)
       "Accessor"
       (documentation 'box-child-padding 'function)
- "@version{2023-12-30}
-  @syntax[]{(gtk:box-child-padding container child) => padding}
-  @syntax[]{(setf (gtk:box-child-padding container child) padding)}
+ "@version{2024-3-15}
+  @syntax{(gtk:box-child-padding container child) => padding}
+  @syntax{(setf (gtk:box-child-padding container child) padding)}
   @argument[container]{a @class{gtk:box} container widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[padding]{an unsigned integer with extra space in pixels to put
@@ -447,9 +447,9 @@
 (setf (liber:alias-for-function 'box-child-position)
       "Accessor"
       (documentation 'box-child-position 'function)
- "@version{2023-12-30}
-  @syntax[]{(gtk:box-child-position container child) => position}
-  @syntax[]{(setf (gtk:box-child-position container child) position)}
+ "@version{2024-3-15}
+  @syntax{(gtk:box-child-position container child) => position}
+  @syntax{(setf (gtk:box-child-position container child) position)}
   @argument[container]{a @class{gtk:box} container widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[position]{an integer with the position of @arg{child} in a box}
@@ -468,8 +468,8 @@
 
 (defun box-new (orientation &optional (spacing 0))
  #+liber-documentation
- "@version{2023-12-30}
-  @argument[orientation]{the orientation of type @symbol{gtk:orientation}}
+ "@version{2024-3-15}
+  @argument[orientation]{a @symbol{gtk:orientation} value with the orientation}
   @argument[spacing]{an optional integer with the number of pixels to place by
     default between children}
   @return{The new @class{gtk:box} widget.}
@@ -500,9 +500,9 @@
 
 (defun box-pack-start (box child &key (expand t) (fill t) (padding 0))
  #+liber-documentation
- "@version{2023-12-26}
+ "@version{2024-3-15}
   @argument[box]{a @class{gtk:box} container widget}
-  @argument[child]{the @class{gtk:widget} child widget to be added to @arg{box}}
+  @argument[child]{a @class{gtk:widget} child widget to be added to @arg{box}}
   @argument[expand]{@em{true} if @arg{child} is to be given extra space
     allocated to @arg{box}}
   @argument[fill]{@em{true} if space given to @arg{child} by the expand option
@@ -556,9 +556,9 @@
 
 (defun box-pack-end (box child &key (expand t) (fill t) (padding 0))
  #+liber-documentation
- "@version{2023-12-30}
+ "@version{2024-3-15}
   @argument[box]{a @class{gtk:box} container widget}
-  @argument[child]{the @class{gtk:widget} child widget to be added to @arg{box}}
+  @argument[child]{a @class{gtk:widget} child widget to be added to @arg{box}}
   @argument[expand]{@em{true} if @arg{child} is to be given extra space
     allocated to @arg{box}}
   @argument[fill]{@em{true} if space given to @arg{child} by the @arg{expand}
@@ -604,9 +604,9 @@
 
 (cffi:defcfun ("gtk_box_reorder_child" box-reorder-child) :void
  #+liber-documentation
- "@version{2023-12-30}
+ "@version{2024-3-15}
   @argument[box]{a @class{gtk:box} container widget}
-  @argument[child]{the @class{gtk:widget} child widget to move}
+  @argument[child]{a @class{gtk:widget} child widget to move}
   @argument[position]{an integer with the position for @arg{child} in the
     list of children of @arg{box}, starting from 0, if negative, indicates the
     end of the list}
@@ -645,7 +645,7 @@
     @arg{expand} -- a boolean with the @code{expand} child property @br{}
     @arg{fill} -- a boolean with the @code{fill} child property @br{}
     @arg{padding} -- an integer with the @code{padding} child property @br{}
-    @arg{pack-type} -- a value of the @symbol{gtk:pack-type} enumeration
+    @arg{packtype} -- a value of the @symbol{gtk:pack-type} enumeration
   @end{return}
   @begin{short}
     Obtains information about how the child widget is packed into the box.
@@ -672,20 +672,20 @@
 (export 'box-query-child-packing)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_box_set_child_packing () -> box-child-packing
+;;; gtk_box_set_child_packing ()
 ;;; ----------------------------------------------------------------------------
 
-(defun box-child-packing (box child expand fill padding pack-type)
+(defun box-child-packing (box child expand fill padding packtype)
  #+liber-documentation
- "@version{2023-12-30}
+ "@version{2024-3-15}
   @argument[box]{a @class{gtk:box} container widget}
-  @argument[child]{the @class{gtk:widget} child widget to set}
+  @argument[child]{a @class{gtk:widget} child widget to set}
   @argument[expand]{a boolean with the value of the @code{expand} child
     property}
   @argument[fill]{a boolean with the value of the @code{fill} child property}
   @argument[padding]{an integer with the value of the @code{padding} child
     property}
-  @argument[pack-type]{a value of the @symbol{gtk:pack-type} enumeration}
+  @argument[packtype]{a value of the @symbol{gtk:pack-type} enumeration}
   @begin{short}
     Sets the way the child widget is packed into the box.
   @end{short}
@@ -706,13 +706,13 @@
   (setf (box-child-expand box child) expand
         (box-child-fill box child) fill
         (box-child-padding box child) padding
-        (box-child-pack-type box child) pack-type))
+        (box-child-pack-type box child) packtype))
 
 (export 'box-child-packing)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_box_get_center_widget ()
-;;; gtk_box_set_center_widget () -> box-center-widget
+;;; gtk_box_set_center_widget ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf box-center-widget) (widget box)
@@ -724,18 +724,18 @@
 
 (cffi:defcfun ("gtk_box_get_center_widget" box-center-widget) (g:object widget)
  #+liber-documentation
- "@version{2023-12-30}
-  @syntax[]{(gtk:box-center-widget box) => widget}
-  @syntax[]{(setf (gtk:box-center-widget box) widget)}
+ "@version{2024-3-15}
+  @syntax{(gtk:box-center-widget box) => widget}
+  @syntax{(setf (gtk:box-center-widget box) widget)}
   @argument[box]{a @class{gtk:box} container widget}
   @argument[widget]{a @class{gtk:widget} child widget to center}
   @begin{short}
-    Accessor of the center widget of the @class{gtk:box} class.
+    The @fun{gtk:box-center-widget} function retrieves the center widget of the
+    box.
   @end{short}
-  The @fun{gtk:box-center-widget} function retrieves the center widget of the
-  box. The @setf{gtk:box-center-widget} function sets a center widget. That is
-  a child widget that will be centered with respect to the full width of the
-  box, even if the children at either side take up different amounts of space.
+  The @setf{gtk:box-center-widget} function sets a center widget. That is a
+  child widget that will be centered with respect to the full width of the box,
+  even if the children at either side take up different amounts of space.
   @see-class{gtk:box}
   @see-class{gtk:widget}"
   (box (g:object box)))
