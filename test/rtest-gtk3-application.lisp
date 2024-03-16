@@ -315,4 +315,4 @@
     (is (equal '("win::close" "win::save")
                (gtk:application-actions-for-accel application "<Control>q")))))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-3-15

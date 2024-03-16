@@ -101,9 +101,9 @@
   interfaces, to let you add window specific actions that will be exported by
   the associated @class{gtk:application} instance, together with its
   application-wide actions. Window specific actions are prefixed with the
-  \"win.\" prefix and application-wide actions are prefixed with the \"app.\"
-  prefix. Actions must be addressed with the prefixed name when referring to
-  them from a @class{g:menu-model} object.
+  @code{\"win.\"} prefix and application-wide actions are prefixed with the
+  @code{\"app.\"} prefix. Actions must be addressed with the prefixed name when
+  referring to them from a @class{g:menu-model} object.
 
   Note that widgets that are placed inside an application window can also
   activate these actions, if they implement the @class{gtk:actionable}
@@ -123,9 +123,10 @@
 
   If the desktop environment does not display the menubar, then the application
   window will automatically show a @class{gtk:menu-bar} widget for it. This
-  behaviour can be overridden with the @code{show-menubar} property. If the
-  desktop environment does not display the application menu, then it will
-  automatically be included in the menubar.
+  behaviour can be overridden with the
+  @slot[gtk:application-window]{show-menubar} property. If the desktop
+  environment does not display the application menu, then it will automatically
+  be included in the menubar.
 
   @b{Example:} An application window with a menubar
   @begin{pre}
@@ -161,8 +162,8 @@
 
   Attribute values can be translated using GNU gettext, like other
   @class{gtk:builder} content. @code{<attribute>} elements can be marked for
-  translation with a translatable = \"yes\" attribute. It is also possible to
-  specify message context and translator comments, using the context and
+  translation with a translatable @code{\"yes\"} attribute. It is also possible
+  to specify message context and translator comments, using the context and
   comments attributes. To make use of this, the @class{gtk:builder} object must
   have been given the GNU gettext domain to use.
 
@@ -176,18 +177,18 @@
     @item{@code{submenu-action}: name of an action that may be used to
       determine if a submenu can be opened}
     @item{@code{hidden-when}: a string used to determine when the item will be
-      hidden. Possible values include \"action-disabled\", \"action-missing\",
-      \"macos-menubar\".}
+      hidden. Possible values include @code{\"action-disabled\"},
+      @code{\"action-missing\"}, @code{\"macos-menubar\"}.}
   @end{itemize}
   The following attributes are used when constructing sections:
   @begin{itemize}
     @item{@code{label}: a user visible string to use as section heading}
     @item{@code{display-hint}: a string used to determine special formatting
-      for the section. Possible values include \"horizontal-buttons\".}
+      for the section. Possible values include @code{\"horizontal-buttons\"}.}
     @item{@code{text-direction}: a string used to determine the
-      @symbol{gtk:text-direction} value to use when \"display-hint\" is set to
-      \"horizontal-buttons\". Possible values include \"rtl\", \"ltr\", and
-      \"none\".}
+      @symbol{gtk:text-direction} value to use when @code{\"display-hint\"} is
+      set to @code{\"horizontal-buttons\"}. Possible values include
+      @code{\"rtl\"}, @code{\"ltr\"}, and @code{\"none\"}.}
   @end{itemize}
   The following attributes are used when constructing submenus:
   @begin{itemize}
@@ -227,9 +228,9 @@
 (setf (liber:alias-for-function 'application-window-show-menubar)
       "Accessor"
       (documentation 'application-window-show-menubar 'function)
- "@version{2023-12-24}
-  @syntax[]{(gtk:application-window-show-menubar object) => show}
-  @syntax[]{(setf (gtk:application-window-show-menubar object) show)}
+ "@version{2024-3-15}
+  @syntax{(gtk:application-window-show-menubar object) => show}
+  @syntax{(setf (gtk:application-window-show-menubar object) show)}
   @argument[window]{a @class{gtk:application-window} widget}
   @argument[show]{a boolean whether to show a menubar when needed}
   @begin{short}
@@ -286,28 +287,28 @@
 ;;; gtk_application_window_set_help_overlay ()
 ;;; ----------------------------------------------------------------------------
 
-(defun (setf application-window-help-overlay) (help-overlay window)
+(defun (setf application-window-help-overlay) (overlay window)
   (cffi:foreign-funcall "gtk_application_window_set_help_overlay"
                         (g:object application-window) window
-                        (g:object shortcuts-window) help-overlay
+                        (g:object shortcuts-window) overlay
                         :void)
-  help-overlay)
+  overlay)
 
 (cffi:defcfun ("gtk_application_window_get_help_overlay"
                application-window-help-overlay) (g:object shortcuts-window)
  #+liber-documentation
- "@version{2023-12-24}
-  @syntax[]{(gtk:application-window-help-overlay window) => help-overlay}
-  @syntax[]{(setf (gtk:application-window-help-overlay window) help-overlay)}
+ "@version{2024-3-15}
+  @syntax{(gtk:application-window-help-overlay window) => overlay}
+  @syntax{(setf (gtk:application-window-help-overlay window) overlay)}
   @argument[window]{a @class{gtk:application-window} widget}
-  @argument[help-overlay]{a @class{gtk:shortcuts-window} widget}
+  @argument[overlay]{a @class{gtk:shortcuts-window} widget}
   @begin{short}
     Accessor of the shortcuts window associated with the application window.
   @end{short}
   The @fun{gtk:application-window-help-overlay} function gets the shortcuts
   window. The @setf{gtk:applicaton-window-help-overlay} function associates a
   shortcuts window with the application window, and sets up an action with the
-  name \"win.show-help-overlay\" to present it.
+  name @code{\"win.show-help-overlay\"} to present it.
   @see-class{gtk:application-window}
   @see-class{gtk:shortcuts-window}"
   (window (g:object application-window)))

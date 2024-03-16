@@ -5,7 +5,7 @@
 
 ;;; --- GtkApplicationWindow ---------------------------------------------------
 
-(test application-window-class
+(test gtk-application-window-class
   ;; Type check
   (is (g:type-is-object "GtkApplicationWindow"))
   ;; Check the registered name
@@ -46,7 +46,7 @@
 
 ;;; --- gtk-application-window-show-menubar ------------------------------------
 
-(test application-window-show-menubar
+(test gtk-application-window-show-menubar
   (let ((window (make-instance 'gtk:application-window)))
     ;; Default value is true
     (is-true  (gtk:application-window-show-menubar window))
@@ -58,7 +58,7 @@
 
 ;;; --- gtk-application-window-new ---------------------------------------------
 
-(test application-window-new
+(test gtk-application-window-new
   (let ((application (make-instance 'gtk:application)))
     (is (typep application 'gtk:application))
     ;; Works only for a registered application
@@ -68,7 +68,7 @@
 
 ;;; --- gtk-application-window-id ----------------------------------------------
 
-(test application-window-id
+(test gtk-application-window-id
   (let ((window (make-instance 'gtk:application-window)))
     ;; Zero if the window is not added to a GtkApplication
     (is (= 0 (gtk:application-window-id window)))))
@@ -76,7 +76,7 @@
 ;;; --- gtk_application_window_set_help_overlay --------------------------------
 ;;; --- gtk_application_window_get_help_overlay --------------------------------
 
-(test application-window-help-overlay
+(test gtk-application-window-help-overlay
   (let ((window (make-instance 'gtk:application-window))
         (help-overlay (make-instance 'gtk:shortcuts-window)))
     ;; Default value is nil
@@ -87,4 +87,4 @@
     (is (typep (gtk:application-window-help-overlay window)
                'gtk:shortcuts-window))))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-3-15
