@@ -200,8 +200,8 @@
       "Accessor"
       (documentation 'popover-menu-visible-submenu 'function)
  "@version{#2023-3-12}
-  @syntax[]{(gtk:popover-menu-visible-submenu object) => submenu}
-  @syntax[]{(setf (gtk:popover-menu-visible-submenu object) submenu)}
+  @syntax{(gtk:popover-menu-visible-submenu object) => submenu}
+  @syntax{(setf (gtk:popover-menu-visible-submenu object) submenu)}
   @argument[object]{a @class{gtk:popover-menu} widget}
   @argument[submenu]{a string with the name of the submenu}
   @begin{short}
@@ -224,8 +224,8 @@
       "Accessor"
       (documentation 'popover-menu-child-position 'function)
  "@version{#2023-3-12}
-  @syntax[]{(gtk:popover-menu-child-position container child) => position}
-  @syntax[]{(setf (gtk:popover-menu-child-position container child) position)}
+  @syntax{(gtk:popover-menu-child-position container child) => position}
+  @syntax{(setf (gtk:popover-menu-child-position container child) position)}
   @argument[container]{a @class{gtk:popover-menu} widget}
   @argument[child]{a @class{gtk:widget} object}
   @argument[position]{an integer with the index of the child in the parent}
@@ -246,8 +246,8 @@
       "Accessor"
       (documentation 'popover-menu-child-submenu 'function)
  "@version{#2023-3-12}
-  @syntax[]{(gtk:popover-menu-child-submenu container child) => submenu}
-  @syntax[]{(setf (gtk:popover-menu-child-submenu container child) submenu)}
+  @syntax{(gtk:popover-menu-child-submenu container child) => submenu}
+  @syntax{(setf (gtk:popover-menu-child-submenu container child) submenu)}
   @argument[container]{a @class{gtk:popover-menu} widget}
   @argument[child]{a @class{gtk:widget} object}
   @argument[submenu]{a string with the name of the submenu}

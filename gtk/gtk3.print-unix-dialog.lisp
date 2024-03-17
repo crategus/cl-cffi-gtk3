@@ -264,8 +264,8 @@
       "Accessor"
       (documentation 'print-unix-dialog-current-page 'function)
  "@version{#2023-2-8}
-  @syntax[]{(gtk:print-unix-dialog-current-page object) => page}
-  @syntax[]{(setf (gtk:print-unix-dialog-current-page object) page)}
+  @syntax{(gtk:print-unix-dialog-current-page object) => page}
+  @syntax{(setf (gtk:print-unix-dialog-current-page object) page)}
   @argument[object]{a @class{gtk:print-unix-dialog} widget}
   @argument[page]{an integer with the current page number}
   @begin{short}
@@ -293,8 +293,8 @@
       "Accessor"
       (documentation 'print-unix-dialog-embed-page-setup 'function)
  "@version{#2023-2-8}
-  @syntax[]{(gtk:print-unix-dialog-embed-page-setup object) => embed}
-  @syntax[]{(setf (gtk:print-unix-dialog-embed-page-setup object) embed)}
+  @syntax{(gtk:print-unix-dialog-embed-page-setup object) => embed}
+  @syntax{(setf (gtk:print-unix-dialog-embed-page-setup object) embed)}
   @argument[object]{a @class{gtk:print-unix-dialog} widget}
   @argument[embed]{a boolean whether embed page setup selection}
   @begin{short}
@@ -319,8 +319,8 @@
       "Accessor"
       (documentation 'print-unix-dialog-has-selection 'function)
  "@version{#2023-2-8}
-  @syntax[]{(gtk:print-unix-dialog-has-selection object) => setting}
-  @syntax[]{(setf (gtk:print-unix-dialog-has-selection object) setting)}
+  @syntax{(gtk:print-unix-dialog-has-selection object) => setting}
+  @syntax{(setf (gtk:print-unix-dialog-has-selection object) setting)}
   @argument[object]{a @class{gtk:print-unix-dialog} widget}
   @argument[setting]{@em{true} indicates that a selection exists}
   @begin{short}
@@ -344,8 +344,8 @@
       "Accessor"
       (documentation 'print-unix-dialog-manual-capabilities 'function)
  "@version{#2023-2-8}
-  @syntax[]{(gtk:print-unix-dialog-manual-capabilities) => capabilities}
-  @syntax[]{(setf (gtk:print-unix-dialog-manual-capabilities object) capabilities)}
+  @syntax{(gtk:print-unix-dialog-manual-capabilities) => capabilities}
+  @syntax{(setf (gtk:print-unix-dialog-manual-capabilities object) capabilities)}
   @argument[object]{a @class{gtk:print-unix-dialog} widget}
   @argument[capabilities]{a @symbol{gtk:print-capabilities} value with the
     printing capabilities of the application}
@@ -374,8 +374,8 @@
       "Accessor"
       (documentation 'print-unix-dialog-page-setup 'function)
  "@version{#2023-2-8}
-  @syntax[]{(gtk:print-unix-dialog-page-setup) => setup}
-  @syntax[]{(setf (gtk:print-unix-dialog-page-setup object) setup)}
+  @syntax{(gtk:print-unix-dialog-page-setup) => setup}
+  @syntax{(setf (gtk:print-unix-dialog-page-setup object) setup)}
   @argument[object]{a @class{gtk:print-unix-dialog} widget}
   @argument[setup]{a @class{gtk:page-setup} object}
   @begin{short}
@@ -402,8 +402,8 @@
       "Accessor"
       (documentation 'print-unix-dialog-print-settings 'function)
  "@version{#2023-2-8}
-  @syntax[]{(gtk:print-unix-dialog-print-settings object) => settings}
-  @syntax[]{(setf (gtk:print-unix-dialog-print-settings object) settings)}
+  @syntax{(gtk:print-unix-dialog-print-settings object) => settings}
+  @syntax{(setf (gtk:print-unix-dialog-print-settings object) settings)}
   @argument[object]{a @class{gtk:print-unix-dialog} widget}
   @argument[settings]{a @class{gtk:print-settings} object}
   @begin{short}
@@ -433,7 +433,7 @@
       "Accessor"
       (documentation 'print-unix-dialog-selected-printer 'function)
  "@version{#2023-2-8}
-  @syntax[]{(gtk:print-unix-dialog-selected-printer object) => printer}
+  @syntax{(gtk:print-unix-dialog-selected-printer object) => printer}
   @argument[object]{a @class{gtk:print-unix-dialog} widget}
   @argument[printer]{a @class{gtk:printer} object}
   @begin{short}
@@ -459,8 +459,8 @@
       "Accessor"
       (documentation 'print-unix-dialog-support-selection 'function)
  "@version{#2023-2-8}
-  @syntax[]{(gtk:print-unix-dialog-support-selection) => selection}
-  @syntax[]{(setf (gtk:print-unix-dialog-support-selection object) selection)}
+  @syntax{(gtk:print-unix-dialog-support-selection) => selection}
+  @syntax{(setf (gtk:print-unix-dialog-support-selection object) selection)}
   @argument[object]{a @class{gtk:print-unix-dialog} widget}
   @argument[selection]{@em{true} to allow print selection}
   @begin{short}
@@ -504,8 +504,8 @@
 (defun print-unix-dialog-settings (dialog)
  #+liber-documentation
  "@version{#2023-2-8}
-  @syntax[]{(gtk:print-unix-dialog-settings object) => settings}
-  @syntax[]{(setf (gtk:print-unix-dialog-settings object) settings)}
+  @syntax{(gtk:print-unix-dialog-settings object) => settings}
+  @syntax{(setf (gtk:print-unix-dialog-settings object) settings)}
   @argument[dialog]{a @class{gtk:print-unix-dialog} widget}
   @argument[settings]{a @class{gtk:print-settings} object}
   @begin{short}

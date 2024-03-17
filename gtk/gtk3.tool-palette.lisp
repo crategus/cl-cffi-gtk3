@@ -267,8 +267,8 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
       "Accessor"
       (documentation 'tool-palette-icon-size 'function)
  "@version{#2023-3-28}
-  @syntax[]{(gtk:tool-palette-icon-size object) => icon-size}
-  @syntax[]{(setf (gtk:tool-palette-icon-size object) icon-size)}
+  @syntax{(gtk:tool-palette-icon-size object) => icon-size}
+  @syntax{(setf (gtk:tool-palette-icon-size object) icon-size)}
   @argument[palette]{a @class{gtk:tool-palette} widget}
   @argument[icon-size]{a value of the @symbol{gtk:icon-size} enumeration that
     icons in the tool palette shall have}
@@ -295,8 +295,8 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
       "Accessor"
       (documentation 'tool-palette-icon-size-set 'function)
  "@version{#2023-3-28}
-  @syntax[]{(gtk:tool-palette-icon-size.set object) => setting}
-  @syntax[]{(setf (gtk:tool-palette-icon-size-set object) setting)}
+  @syntax{(gtk:tool-palette-icon-size.set object) => setting}
+  @syntax{(setf (gtk:tool-palette-icon-size-set object) setting)}
   @argument[palette]{a @class{gtk:tool-palette} widget}
   @argument[setting]{a boolean whether the @slot[gtk:tool-palette]{icon-size}
     property has been set}
@@ -323,8 +323,8 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
       "Accessor"
       (documentation 'tool-palette-toolbar-style 'function)
  "@version{#2023-3-28}
-  @syntax[]{(gtk:tool-palette-toolbar-style object) => style}
-  @syntax[]{(setf (gtk:tool-palette-toolbar-style object) style)}
+  @syntax{(gtk:tool-palette-toolbar-style object) => style}
+  @syntax{(setf (gtk:tool-palette-toolbar-style object) style)}
   @argument[palette]{a @class{gtk:tool-palette} widget}
   @argument[style]{a value of the @symbol{gtk:toolbar-style} enumeration that
     items in the tool palette shall have}
@@ -353,8 +353,8 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
       "Accessor"
       (documentation 'tool-palette-child-exclusive 'function)
  "@version{#2023-3-28}
-  @syntax[]{(gtk:tool-palette-child-exclusive container child) => exclusive}
-  @syntax[]{(setf (gtk:tool-palette-child-exclusive container child) exclusive)}
+  @syntax{(gtk:tool-palette-child-exclusive container child) => exclusive}
+  @syntax{(setf (gtk:tool-palette-child-exclusive container child) exclusive)}
   @argument[container]{a @class{gtk:tool-palette} widget}
   @argument[child]{a @class{gtk:tool-item-group} widget which is a child of
     @arg{container}}
@@ -383,8 +383,8 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
       "Accessor"
       (documentation 'tool-palette-child-expand 'function)
  "@version{#2023-3-28}
-  @syntax[]{(gtk:tool-palette-child-expand container child) => expand}
-  @syntax[]{(setf (gtk:tool-palette-child-expand container child) expand)}
+  @syntax{(gtk:tool-palette-child-expand container child) => expand}
+  @syntax{(setf (gtk:tool-palette-child-expand container child) expand)}
   @argument[container]{a @class{gtk:tool-palette} widget}
   @argument[child]{a @class{gtk:tool-item-group} widget which is a child of
     @arg{container}}
@@ -457,8 +457,8 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
                tool-palette-group-position) :int
  #+liber-documentation
  "@version{#2023-3-28}
-  @syntax[]{(gtk:tool-palette-group-position palette group) => position}
-  @syntax[]{(setf (gtk:tool-palette-group-position palette group) position)}
+  @syntax{(gtk:tool-palette-group-position palette group) => position}
+  @syntax{(setf (gtk:tool-palette-group-position palette group) position)}
   @argument[palette]{a @class{gtk:tool-palette} widget}
   @argument[group]{a @class{gtk:tool-item-group} widget which is a child of
     @arg{palette}}

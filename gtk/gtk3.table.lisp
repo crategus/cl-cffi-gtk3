@@ -270,8 +270,8 @@
       "Accessor"
       (documentation 'table-column-spacing 'function)
  "@version{2023-12-28}
-  @syntax[]{(gtk:table-column-spacing object) => spacing}
-  @syntax[]{(setf (gtk:table-column-spacing object) spacing)}
+  @syntax{(gtk:table-column-spacing object) => spacing}
+  @syntax{(setf (gtk:table-column-spacing object) spacing)}
   @argument[table]{a @class{gtk:table} widget}
   @argument[spacing]{an unsigned integer with the number of pixels of space to
     place between every column in the table}
@@ -311,8 +311,8 @@
       "Accessor"
       (documentation 'table-homogeneous 'function)
  "@version{2023-12-28}
-  @syntax[]{(gtk:table-homogeneous object) => homogeneous}
-  @syntax[]{(setf (gtk:table-homogeneous object) homogeneous)}
+  @syntax{(gtk:table-homogeneous object) => homogeneous}
+  @syntax{(setf (gtk:table-homogeneous object) homogeneous)}
   @argument[object]{a @class{gtk:table} widget}
   @argument[homogeneous]{set to @em{true} to ensure all table cells are the
     same size, set to @em{false} if this is not the desired behaviour}
@@ -349,8 +349,8 @@
       "Accessor"
       (documentation 'table-n-columns 'function)
  "@version{2023-12-28}
-  @syntax[]{(gtk:table-n-columns object) => n-columns}
-  @syntax[]{(setf (gtk:table-n-columns object) n-columns)}
+  @syntax{(gtk:table-n-columns object) => n-columns}
+  @syntax{(setf (gtk:table-n-columns object) n-columns)}
   @argument[object]{a @class{gtk:table} widget}
   @argument[n-columns]{an unsigned integer with the number of columns}
   @begin{short}
@@ -380,8 +380,8 @@
       "Accessor"
       (documentation 'table-n-rows 'function)
  "@version{2023-12-28}
-  @syntax[]{(gtk:table-n-rows object) => n-rows}
-  @syntax[]{(setf (gtk:table-n-rows object) n-rows)}
+  @syntax{(gtk:table-n-rows object) => n-rows}
+  @syntax{(setf (gtk:table-n-rows object) n-rows)}
   @argument[object]{a @class{gtk:table} widget}
   @argument[n-rows]{an unsigned integer with the number of rows}
   @begin{short}
@@ -411,8 +411,8 @@
       "Accessor"
       (documentation 'table-row-spacing 'function)
  "@version{2023-12-28}
-  @syntax[]{(gtk:table-row-spacing object) => spacing}
-  @syntax[]{(setf (gtk:table-row-spacing object) spacing)}
+  @syntax{(gtk:table-row-spacing object) => spacing}
+  @syntax{(setf (gtk:table-row-spacing object) spacing)}
   @argument[table]{a @class{gtk:table} widget}
   @argument[spacing]{an unsigned integer with the number of pixels of space to
     place between every row in the table}
@@ -451,8 +451,8 @@
       "Accessor"
       (documentation 'table-child-bottom-attach 'function)
  "@version{2023-12-28}
-  @syntax[]{(gtk:table-child-bottom-attach container child) => attach}
-  @syntax[]{(setf (gtk:table-child-bottom-attach container child) attach)}
+  @syntax{(gtk:table-child-bottom-attach container child) => attach}
+  @syntax{(setf (gtk:table-child-bottom-attach container child) attach)}
   @argument[container]{a @class{gtk:table} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[attach]{an unsigned integer with the row number to attach the
@@ -480,8 +480,8 @@
       "Accessor"
       (documentation 'table-child-left-attach 'function)
  "@version{2023-12-28}
-  @syntax[]{(gtk:table-child-left-attach container child) => attach}
-  @syntax[]{(setf (gtk:table-child-left-attach container child) attach)}
+  @syntax{(gtk:table-child-left-attach container child) => attach}
+  @syntax{(setf (gtk:table-child-left-attach container child) attach)}
   @argument[container]{a @class{gtk:table} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[attach]{an unsigned integer with the column number to attach the
@@ -509,8 +509,8 @@
       "Accessor"
       (documentation 'table-child-right-attach 'function)
  "@version{2023-12-28}
-  @syntax[]{(gtk:table-child-right-attach container child) => attach}
-  @syntax[]{(setf (gtk:table-child-right-attach container child) attach)}
+  @syntax{(gtk:table-child-right-attach container child) => attach}
+  @syntax{(setf (gtk:table-child-right-attach container child) attach)}
   @argument[container]{a @class{gtk:table} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[attach]{an unsigned integer with the column number to attach the
@@ -538,8 +538,8 @@
       "Accessor"
       (documentation 'table-child-top-attach 'function)
  "@version{2023-12-28}
-  @syntax[]{(gtk:table-child-top-attach container child) => attach}
-  @syntax[]{(setf (gtk:table-child-top-attach container child) attach)}
+  @syntax{(gtk:table-child-top-attach container child) => attach}
+  @syntax{(setf (gtk:table-child-top-attach container child) attach)}
   @argument[container]{a @class{gtk:table} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[attach]{an unsigned integer with the row number to attach the top
@@ -568,8 +568,8 @@
       "Accessor"
       (documentation 'table-child-x-options 'function)
  "@version{2023-12-28}
-  @syntax[]{(gtk:table-child-x-options container child) => options}
-  @syntax[]{(setf (gtk:table-child-x-options container child) options)}
+  @syntax{(gtk:table-child-x-options container child) => options}
+  @syntax{(setf (gtk:table-child-x-options container child) options)}
   @argument[container]{a @class{gtk:table} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[options]{the @symbol{gtk:attach-options} flags}
@@ -598,8 +598,8 @@
       "Accessor"
       (documentation 'table-child-y-options 'function)
  "@version{2023-12-28}
-  @syntax[]{(gtk:table-child-y-options container child) => options}
-  @syntax[]{(setf (gtk:table-child-y-options container child) options)}
+  @syntax{(gtk:table-child-y-options container child) => options}
+  @syntax{(setf (gtk:table-child-y-options container child) options)}
   @argument[container]{a @class{gtk:table} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[options]{the @symbol{gtk:attach-options} flags}
@@ -627,8 +627,8 @@
       "Accessor"
       (documentation 'table-child-x-padding 'function)
  "@version{2023-12-28}
-  @syntax[]{(gtk:table-child-x-padding container child) => padding}
-  @syntax[]{(setf (gtk:table-child-x-padding container child) padding)}
+  @syntax{(gtk:table-child-x-padding container child) => padding}
+  @syntax{(setf (gtk:table-child-x-padding container child) padding)}
   @argument[container]{a @class{gtk:table} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[padding]{an unsigned integer with the space to put between the
@@ -657,8 +657,8 @@
       "Accessor"
       (documentation 'table-child-y-padding 'function)
  "@version{2023-12-28}
-  @syntax[]{(gtk:table-child-y-padding container child) => padding}
-  @syntax[]{(setf (gtk:table-child-y-padding container child) padding)}
+  @syntax{(gtk:table-child-y-padding container child) => padding}
+  @syntax{(setf (gtk:table-child-y-padding container child) padding)}
   @argument[container]{a @class{gtk:table} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[padding]{an unsigned integer with the space to put between the

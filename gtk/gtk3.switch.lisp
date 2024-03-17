@@ -188,8 +188,8 @@
       "Accessor"
       (documentation 'switch-active 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:switch-active object) => is-active)}
-  @syntax[]{(setf (gtk:switch-active object) is-active)}
+  @syntax{(gtk:switch-active object) => is-active)}
+  @syntax{(setf (gtk:switch-active object) is-active)}
   @argument[object]{a @class{gtk:switch} widget}
   @argument[is-active]{@em{true} if the switch should be active,
     and @em{false} otherwise}
@@ -216,8 +216,8 @@
       "Accessor"
       (documentation 'switch-state 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:switch-state object) => state)}
-  @syntax[]{(setf (gtk:switch-state object) state)}
+  @syntax{(gtk:switch-state object) => state)}
+  @syntax{(setf (gtk:switch-state object) state)}
   @argument[object]{a @class{gtk:switch} widget}
   @argument[state]{a boolean with the state}
   @begin{short}

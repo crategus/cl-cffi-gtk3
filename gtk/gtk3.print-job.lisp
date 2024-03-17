@@ -169,7 +169,7 @@ lambda (job)    :run-last
       "Accessor"
       (documentation 'print-job-page-setup 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:print-job-page-setup object) => page-setup}
+  @syntax{(gtk:print-job-page-setup object) => page-setup}
   @argument[object]{a @class{gtk:print-job} object}
   @argument[page-setup]{a @class{gtk:page-setup} object}
   @begin{short}
@@ -192,7 +192,7 @@ lambda (job)    :run-last
       "Accessor"
       (documentation 'print-job-printer 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:print-job-printer object) => printer}
+  @syntax{(gtk:print-job-printer object) => printer}
   @argument[object]{a @class{gtk:print-job} object}
   @argument[printer]{a @class{gtk:printer} object}
   @begin{short}
@@ -216,7 +216,7 @@ lambda (job)    :run-last
       "Accessor"
       (documentation 'print-job-settings 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:print-job-settings object) => settings}
+  @syntax{(gtk:print-job-settings object) => settings}
   @argument[object]{a @class{gtk:print-job} object}
   @argument[settings]{a @class{gtk:print-settings} object}
   @begin{short}
@@ -241,7 +241,7 @@ lambda (job)    :run-last
       "Accessor"
       (documentation 'print-job-title 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:print-job-title object) => title}
+  @syntax{(gtk:print-job-title object) => title}
   @argument[object]{a @class{gtk:print-job} object}
   @argument[title]{a string with the job title.}
   @begin{short}
@@ -267,8 +267,8 @@ lambda (job)    :run-last
       "Accessor"
       (documentation 'print-job-track-print-status 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:print-job-track-print-status object) => track-status}
-  @syntax[]{(setf (gtk:print-job-track-print-status object) track-status)}
+  @syntax{(gtk:print-job-track-print-status object) => track-status}
+  @syntax{(setf (gtk:print-job-track-print-status object) track-status)}
   @argument[object]{a @class{gtk:print-job} object}
   @argument[track-status]{@em{true} to track status after printing}
   @begin{short}
@@ -487,8 +487,8 @@ lambda (job)
 (cffi:defcfun ("gtk_print_job_get_pages" print-job-pages) print-pages
  #+liber-documentation
  "@version{#2021-12-25}
-  @syntax[]{(gtk:print-job-pages job) => pages}
-  @syntax[]{(setf (gtk:print-job-pages job) pages)}
+  @syntax{(gtk:print-job-pages job) => pages}
+  @syntax{(setf (gtk:print-job-pages job) pages)}
   @argument[job]{a @class{gtk:print-job} object}
   @argument[pages]{a @symbol{gtk:print-pages} setting}
   @begin{short}
@@ -514,8 +514,8 @@ lambda (job)
 (defun print-job-page-ranges (job)
  #+liber-documentation
  "@version{#2023-3-21}
-  @syntax[]{(gtk:print-job-page-ranges job) => page-ranges}
-  @syntax[]{(setf (gtk:print-job-page-ranges job) page-ranges)}
+  @syntax{(gtk:print-job-page-ranges job) => page-ranges}
+  @syntax{(setf (gtk:print-job-page-ranges job) page-ranges)}
   @argument[job]{a @class{gtk:print-job} object}
   @argument[page-ranges]{a list of integers with the page ranges}
   @begin{short}
@@ -545,8 +545,8 @@ lambda (job)
 (cffi:defcfun ("gtk_print_job_get_page_set" print-job-page-set) page-set
  #+liber-documentation
  "@version{#2023-3-21}
-  @syntax[]{(gtk:print-job-page-set job) => page-set}
-  @syntax[]{(setf (gtk:print-job-page-set job) page-set)}
+  @syntax{(gtk:print-job-page-set job) => page-set}
+  @syntax{(setf (gtk:print-job-page-set job) page-set)}
   @argument[job]{a @class{gtk:print-job} object}
   @argument[page-set]{a @symbol{gtk:page-set} setting}
   @begin{short}
@@ -575,8 +575,8 @@ lambda (job)
 (cffi:defcfun ("gtk_print_job_get_num_copies" print-job-num-copies) :int
  #+liber-documentation
  "@version{#2023-3-21}
-  @syntax[]{(gtk:print-job-num-copies job) => num-copies}
-  @syntax[]{(setf (gtk:print-job-num-copies job) num-copies)}
+  @syntax{(gtk:print-job-num-copies job) => num-copies}
+  @syntax{(setf (gtk:print-job-num-copies job) num-copies)}
   @argument[job]{a @class{gtk:print-job} object}
   @argument[num-copies]{an integer with the number of copies}
   @begin{short}
@@ -605,8 +605,8 @@ lambda (job)
 (cffi:defcfun ("gtk_print_job_get_scale" print-job-scale) :double
  #+liber-documentation
  "@version{#2023-3-21}
-  @syntax[]{(gtk:print-job-scale job) => scale}
-  @syntax[]{(setf (gtk:print-job-scale job) scale)}
+  @syntax{(gtk:print-job-scale job) => scale}
+  @syntax{(setf (gtk:print-job-scale job) scale)}
   @argument[job]{a @class{gtk:print-job} object}
   @argument[scale]{a double float with the scale}
   @begin{short}
@@ -635,8 +635,8 @@ lambda (job)
 (cffi:defcfun ("gtk_print_job_get_n_up" print-job-n-up) :uint
  #+liber-documentation
  "@version{#2023-3-21}
-  @syntax[]{(gtk:print-job-n-up job) => n-up}
-  @syntax[]{(setf (gtk:print-job-n-up job) n-up)}
+  @syntax{(gtk:print-job-n-up job) => n-up}
+  @syntax{(setf (gtk:print-job-n-up job) n-up)}
   @argument[job]{a @class{gtk:print-job} object}
   @argument[n-up]{an unsigned integer with the n-up value}
   @begin{short}
@@ -666,8 +666,8 @@ lambda (job)
     number-up-layout
  #+liber-documentation
  "@version{#2023-3-21}
-  @syntax[]{(gtk:print-job-n-up-layout job) => layout}
-  @syntax[]{(setf (gtk:print-job-n-up-layout job) layout)}
+  @syntax{(gtk:print-job-n-up-layout job) => layout}
+  @syntax{(setf (gtk:print-job-n-up-layout job) layout)}
   @argument[job]{a @class{gtk:print-job} object}
   @argument[layout]{the layout setting of type @symbol{gtk:number-up-layout}}
   @return{The n-up layout.}
@@ -697,8 +697,8 @@ lambda (job)
 (cffi:defcfun ("gtk_print_job_get_rotate" print-job-rotate) :boolean
  #+liber-documentation
  "@version{#2023-3-21}
-  @syntax[]{(gtk:print-job-rotate job) => rotate}
-  @syntax[]{(setf (gtk:print-job-rotate job) rotate)}
+  @syntax{(gtk:print-job-rotate job) => rotate}
+  @syntax{(setf (gtk:print-job-rotate job) rotate)}
   @argument[job]{a @class{gtk:print-job} object}
   @argument[rotate]{a boolean whether to print rotated}
   @begin{short}
@@ -727,8 +727,8 @@ lambda (job)
 (cffi:defcfun ("gtk_print_job_get_collate" print-job-collate) :boolean
  #+liber-documentation
  "@version{#2023-3-21}
-  @syntax[]{(gtk:print-job-collate job) => collate}
-  @syntax[]{(setf (gtk:print-job-collate job) collate)}
+  @syntax{(gtk:print-job-collate job) => collate}
+  @syntax{(setf (gtk:print-job-collate job) collate)}
   @argument[job]{a @class{gtk:print-job} object}
   @argument[collate]{a boolean whether the job is printed collated}
   @return{Whether the job is printed collated.}
@@ -758,8 +758,8 @@ lambda (job)
 (cffi:defcfun ("gtk_print_job_get_reverse" print-job-reverse) :boolean
  #+liber-documentation
  "@version{#2023-3-21}
-  @syntax[]{(gtk:print-job-reverse job) => reverse}
-  @syntax[]{(setf (gtk:print-job-reverse job) reverse)}
+  @syntax{(gtk:print-job-reverse job) => reverse}
+  @syntax{(setf (gtk:print-job-reverse job) reverse)}
   @argument[job]{a @class{gtk:print-job} object}
   @argument[reverse]{a boolean whether the job is printed reversed}
   @begin{short}

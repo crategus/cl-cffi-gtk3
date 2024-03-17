@@ -131,8 +131,8 @@
       "Accessor"
       (documentation 'stack-switcher-icon-size 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:stack-switcher-icon-size object) => size}
-  @syntax[]{(setf (gtk:stack-switcher-icon-size object) size)}
+  @syntax{(gtk:stack-switcher-icon-size object) => size}
+  @syntax{(setf (gtk:stack-switcher-icon-size object) size)}
   @argument[object]{a @class{gtk:stack-switcher} widget}
   @argument[size]{an integer with size of the image}
   @begin{short}
@@ -155,8 +155,8 @@
       "Accessor"
       (documentation 'stack-switcher-stack 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:stack-switcher-stack object) => stack}
-  @syntax[]{(setf (gtk:stack-switcher-stack object) stack)}
+  @syntax{(gtk:stack-switcher-stack object) => stack}
+  @syntax{(setf (gtk:stack-switcher-stack object) stack)}
   @argument[object]{a @class{gtk:stack-switcher} widget}
   @argument[stack]{a @class{gtk:stack} widget}
   @begin{short}

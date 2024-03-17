@@ -309,7 +309,7 @@ lambda (widget)    :action
       "Accessor"
       (documentation 'paned-max-position 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:paned-max-position object) => position}
+  @syntax{(gtk:paned-max-position object) => position}
   @argument[object]{a @class{gtk:paned} widget}
   @argument[position]{an integer with the largest possible position}
   @begin{short}
@@ -338,7 +338,7 @@ lambda (widget)    :action
       "Accessor"
       (documentation 'paned-min-position 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:paned-min-position object) => position}
+  @syntax{(gtk:paned-min-position object) => position}
   @argument[object]{a @class{gtk:paned} widget}
   @argument[position]{an integer with the smallest possible position}
   @begin{short}
@@ -366,8 +366,8 @@ lambda (widget)    :action
       "Accessor"
       (documentation 'paned-position 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:paned-position object) => position}
-  @syntax[]{(setf (gtk:paned-position position) position)}
+  @syntax{(gtk:paned-position object) => position}
+  @syntax{(setf (gtk:paned-position position) position)}
   @argument[object]{a @class{gtk:paned} widget}
   @argument[position]{an integer with the pixel position of divider, a negative
     value means that the position is unset}
@@ -396,8 +396,8 @@ lambda (widget)    :action
       "Accessor"
       (documentation 'paned-position-set 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:paned-position-set object) => setting}
-  @syntax[]{(setf (gtk:paned-position-set position) setting)}
+  @syntax{(gtk:paned-position-set object) => setting}
+  @syntax{(setf (gtk:paned-position-set position) setting)}
   @argument[object]{a @class{gtk:paned} widget}
   @argument[setting]{a boolean whether the @slot[gtk:paned]{position} property
     should be used}
@@ -427,8 +427,8 @@ lambda (widget)    :action
       "Accessor"
       (documentation 'paned-wide-handle 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:paned-wide-handle object) => wide}
-  @syntax[]{(setf (gtk:paned-wide-handle object) wide)}
+  @syntax{(gtk:paned-wide-handle object) => wide}
+  @syntax{(setf (gtk:paned-wide-handle object) wide)}
   @argument[object]{a @class{gtk:paned} widget}
   @argument[wide]{a boolean with the value of the @slot[gtk:paned]{wide-handle}
     property}
@@ -456,8 +456,8 @@ lambda (widget)    :action
       "Accessor"
       (documentation 'paned-child-resize 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:paned-child-resize container child) => resize)}
-  @syntax[]{(setf (gtk:paned-child-resize container child) resize)}
+  @syntax{(gtk:paned-child-resize container child) => resize)}
+  @syntax{(setf (gtk:paned-child-resize container child) resize)}
   @argument[container]{a @class{gtk:paned} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[resize]{a boolean whether the child widget expands and shrinks
@@ -483,8 +483,8 @@ lambda (widget)    :action
       "Accessor"
       (documentation 'paned-child-shrink 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:paned-child-shrink container child) => shrink)}
-  @syntax[]{(setf (gtk:paned-child-shrink container child) shrink)}
+  @syntax{(gtk:paned-child-shrink container child) => shrink)}
+  @syntax{(setf (gtk:paned-child-shrink container child) shrink)}
   @argument[container]{a @class{gtk:paned} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[shrink]{a boolean whether the child widget can be made smaller than

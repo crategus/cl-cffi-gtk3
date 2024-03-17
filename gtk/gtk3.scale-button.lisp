@@ -178,8 +178,8 @@ lambda (button value)    :run-last
       "Accessor"
       (documentation 'scale-button-adjustment 'function)
  "@version{#2023-3-24}
-  @syntax[]{(gtk:scale-button-adjustment object object) => adjustment}
-  @syntax[]{(setf (gtk:scale-button-adjustment object) adjustment)}
+  @syntax{(gtk:scale-button-adjustment object object) => adjustment}
+  @syntax{(setf (gtk:scale-button-adjustment object) adjustment)}
   @argument[object]{a @class{gtk:scale-button} widget}
   @argument[adjustment]{a @class{gtk:adjustment} object}
   @begin{short}
@@ -212,8 +212,8 @@ lambda (button value)    :run-last
       "Accessor"
       (documentation 'scale-button-icons 'function)
  "@version{#2023-3-24}
-  @syntax[]{(gtk:scale-button-icons object object) => icons}
-  @syntax[]{(setf (gtk:scale-button-icons object) icons)}
+  @syntax{(gtk:scale-button-icons object object) => icons}
+  @syntax{(setf (gtk:scale-button-icons object) icons)}
   @argument[object]{a @class{gtk:scale-button} widget}
   @argument[icons]{a list of strings with the icon names}
   @begin{short}
@@ -248,8 +248,8 @@ lambda (button value)    :run-last
       "Accessor"
       (documentation 'scale-button-size 'function)
  "@version{#2023-3-24}
-  @syntax[]{(gtk:scale-button-size object object) => size}
-  @syntax[]{(setf (gtk:scale-button-size object) size)}
+  @syntax{(gtk:scale-button-size object object) => size}
+  @syntax{(setf (gtk:scale-button-size object) size)}
   @argument[object]{a @class{gtk:scale-button} widget}
   @argument[size]{a value of the @symbol{gtk:icon-size} enumeration}
   @begin{short}
@@ -273,8 +273,8 @@ lambda (button value)    :run-last
       "Accessor"
       (documentation 'scale-button-value 'function)
  "@version{#2023-3-24}
-  @syntax[]{(gtk:scale-button-value object) => value}
-  @syntax[]{(setf (gtk:scale-button-value object) value)}
+  @syntax{(gtk:scale-button-value object) => value}
+  @syntax{(setf (gtk:scale-button-value object) value)}
   @argument[object]{a @class{gtk:scale-button} widget}
   @argument[value]{a double float with the value of the scale button}
   @begin{short}

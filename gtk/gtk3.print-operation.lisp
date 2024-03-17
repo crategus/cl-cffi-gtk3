@@ -763,8 +763,8 @@ lambda (operation widget setup settings)    :run-last
       "Accessor"
       (documentation 'print-operation-allow-async 'function)
  "@version{2023-2-10}
-  @syntax[]{(gtk:print-operation-allow-async object) => setting}
-  @syntax[]{(setf (gtk:print-operation-allow-aysnc object) setting)}
+  @syntax{(gtk:print-operation-allow-async object) => setting}
+  @syntax{(setf (gtk:print-operation-allow-aysnc object) setting)}
   @argument[object]{a @class{gtk:print-operation} object}
   @argument[setting]{@em{true} to allow asynchronous operation}
   @begin{short}
@@ -795,8 +795,8 @@ lambda (operation widget setup settings)    :run-last
       "Accessor"
       (documentation 'print-operation-current-page 'function)
  "@version{2023-2-10}
-  @syntax[]{(gtk:print-operation-current-page object) => page}
-  @syntax[]{(setf (gtk:print-operation-current-page object) page)}
+  @syntax{(gtk:print-operation-current-page object) => page}
+  @syntax{(setf (gtk:print-operation-current-page object) page)}
   @argument[object]{a @class{gtk:print-operation} object}
   @argument[page]{an integer with the current page, 0-based}
   @begin{short}
@@ -827,8 +827,8 @@ lambda (operation widget setup settings)    :run-last
       "Accessor"
       (documentation 'print-operation-custom-tab-label 'function)
  "@version{2023-2-10}
-  @syntax[]{(gtk:print-operation-tab-label object) => label}
-  @syntax[]{(setf (gtk:print-operation-tab-label object) label)}
+  @syntax{(gtk:print-operation-tab-label object) => label}
+  @syntax{(setf (gtk:print-operation-tab-label object) label)}
   @argument[object]{a @class{gtk:print-operation} object}
   @argument[label]{a string with the label to use, or @code{nil} to use
     the default label}
@@ -856,8 +856,8 @@ lambda (operation widget setup settings)    :run-last
       "Accessor"
       (documentation 'print-operation-default-page-setup 'function)
  "@version{2023-2-10}
-  @syntax[]{(gtk:print-operation-default-page-setup object) => setup}
-  @syntax[]{(setf (gtk:print-operation-default-page-setup object) setup)}
+  @syntax{(gtk:print-operation-default-page-setup object) => setup}
+  @syntax{(setf (gtk:print-operation-default-page-setup object) setup)}
   @argument[object]{a @class{gtk:print-operation} object}
   @argument[setup]{a @class{gtk:page-setup} object, or @code{nil}}
   @begin{short}
@@ -890,8 +890,8 @@ lambda (operation widget setup settings)    :run-last
       "Accessor"
       (documentation 'print-operation-embed-page-setup 'function)
  "@version{2023-2-10}
-  @syntax[]{(gtk:print-operation-embed-page-setup object) => embed}
-  @syntax[]{(setf (gtk:print-operation-embed-page-setup object) embed)}
+  @syntax{(gtk:print-operation-embed-page-setup object) => embed}
+  @syntax{(setf (gtk:print-operation-embed-page-setup object) embed)}
   @argument[object]{a @class{gtk:print-operation} object}
   @argument[embed]{@em{true} to embed page setup selection in the print dialog}
   @begin{short}
@@ -923,8 +923,8 @@ lambda (operation widget setup settings)    :run-last
       "Accessor"
       (documentation 'print-operation-export-filename 'function)
  "@version{2023-2-10}
-  @syntax[]{(gtk:print-operation-export-filename object) => filename}
-  @syntax[]{(setf (gtk:print-operation-export-filename object) filename)}
+  @syntax{(gtk:print-operation-export-filename object) => filename}
+  @syntax{(setf (gtk:print-operation-export-filename object) filename)}
   @argument[object]{a @class{gtk:print-operation} object}
   @argument[filename]{a string with the filename for the exported file}
   @begin{short}
@@ -957,8 +957,8 @@ lambda (operation widget setup settings)    :run-last
       "Accessor"
       (documentation 'print-operation-has-selection 'function)
  "@version{2023-2-10}
-  @syntax[]{(gtk:print-operation-has-selection object object) => setting}
-  @syntax[]{(setf (gtk:print-operation-has-selection object) setting)}
+  @syntax{(gtk:print-operation-has-selection object object) => setting}
+  @syntax{(setf (gtk:print-operation-has-selection object) setting)}
   @argument[object]{a @class{gtk:print-operation} object}
   @argument[setting]{@em{true} indicates that a selection exists}
   @begin{short}
@@ -990,8 +990,8 @@ lambda (operation widget setup settings)    :run-last
       "Accessor"
       (documentation 'print-operation-job-name 'function)
  "@version{2023-2-10}
-  @syntax[]{(gtk:print-operation-job-name object) => name}
-  @syntax[]{(setf (gtk:print-operation-job-name object) name)}
+  @syntax{(gtk:print-operation-job-name object) => name}
+  @syntax{(setf (gtk:print-operation-job-name object) name)}
   @argument[object]{a @class{gtk:print-operation} object}
   @argument[name]{a string that identifies the print job}
   @begin{short}
@@ -1023,8 +1023,8 @@ lambda (operation widget setup settings)    :run-last
       "Accessor"
       (documentation 'print-operation-n-pages 'function)
  "@version{2023-2-10}
-  @syntax[]{(gtk:print-operation-n-pages object) => n-pages}
-  @syntax[]{(setf (gtk:print-operation-n-pages object) n-pages)}
+  @syntax{(gtk:print-operation-n-pages object) => n-pages}
+  @syntax{(setf (gtk:print-operation-n-pages object) n-pages)}
   @argument[object]{a @class{gtk:print-operation} object}
   @argument[n-pages]{an integer with the number of pages}
   @begin{short}
@@ -1061,7 +1061,7 @@ lambda (operation widget setup settings)    :run-last
       "Accessor"
       (documentation 'print-operation-n-pages-to-print 'function)
  "@version{2023-2-10}
-  @syntax[]{(gtk:print-operation-n-pages-to-print object) => n-pages}
+  @syntax{(gtk:print-operation-n-pages-to-print object) => n-pages}
   @argument[object]{a @class{gtk:print-operation} object}
   @argument[n-pages]{an integer with the number of pages to print}
   @begin{short}
@@ -1095,8 +1095,8 @@ lambda (operation widget setup settings)    :run-last
       "Accessor"
       (documentation 'print-operation-print-settings 'function)
  "@version{2023-2-10}
-  @syntax[]{(gtk:print-operation-print-settings object) => settings}
-  @syntax[]{(setf (gtk:print-operation-print-settings object) settings)}
+  @syntax{(gtk:print-operation-print-settings object) => settings}
+  @syntax{(setf (gtk:print-operation-print-settings object) settings)}
   @argument[object]{a @class{gtk:print-operation} object}
   @argument[settings]{a @class{gtk:print-settings} object}
   @begin{short}
@@ -1128,8 +1128,8 @@ lambda (operation widget setup settings)    :run-last
       "Accessor"
       (documentation 'print-operation-show-progress 'function)
  "@version{2023-2-10}
-  @syntax[]{(gtk:print-operation-show-progress object) => show-progress}
-  @syntax[]{(setf (gtk:print-operation-show-progress object) show-progress)}
+  @syntax{(gtk:print-operation-show-progress object) => show-progress}
+  @syntax{(setf (gtk:print-operation-show-progress object) show-progress)}
   @argument[object]{a @class{gtk:print-operation} object}
   @argument[show-progress]{@em{true} to show a progress dialog}
   @begin{short}
@@ -1154,7 +1154,7 @@ lambda (operation widget setup settings)    :run-last
       "Accessor"
       (documentation 'print-operation-status 'function)
  "@version{2023-2-10}
-  @syntax[]{(gtk:print-operation-status object) => status}
+  @syntax{(gtk:print-operation-status object) => status}
   @argument[object]{a @class{gtk:print-operation} object}
   @argument[status]{a @symbol{gtk:print-status} value with the status of the
     print operation}
@@ -1185,7 +1185,7 @@ lambda (operation widget setup settings)    :run-last
       "Accessor"
       (documentation 'print-operation-status-string 'function)
  "@version{2023-2-10}
-  @syntax[]{(gtk:print-operation-status-string object) => status-string}
+  @syntax{(gtk:print-operation-status-string object) => status-string}
   @argument[object]{a @class{gtk:print-operation} object}
   @argument[status-string]{a string representation of the status of the print
     operation}
@@ -1218,8 +1218,8 @@ lambda (operation widget setup settings)    :run-last
       "Accessor"
       (documentation 'print-operation-support-selection 'function)
  "@version{2023-2-10}
-  @syntax[]{(gtk:print-operation-status-support-selection object) => support-selection}
-  @syntax[]{(setf (gtk:print-operation-support-selection object) support-selection)}
+  @syntax{(gtk:print-operation-status-support-selection object) => support-selection}
+  @syntax{(setf (gtk:print-operation-support-selection object) support-selection)}
   @argument[object]{a @class{gtk:print-operation} object}
   @argument[support-selection]{@em{true} to support selection}
   @begin{short}
@@ -1251,8 +1251,8 @@ lambda (operation widget setup settings)    :run-last
       "Accessor"
       (documentation 'print-operation-track-print-status 'function)
  "@version{2023-2-10}
-  @syntax[]{(gtk:print-operation-track-print-status object) => track-status}
-  @syntax[]{(setf (gtk:print-operation-track-print-status object) track-status)}
+  @syntax{(gtk:print-operation-track-print-status object) => track-status}
+  @syntax{(setf (gtk:print-operation-track-print-status object) track-status)}
   @argument[object]{a @class{gtk:print-operation} object}
   @argument[track-status]{@em{true} to track status after printing}
   @begin{short}
@@ -1283,8 +1283,8 @@ lambda (operation widget setup settings)    :run-last
       "Accessor"
       (documentation 'print-operation-unit 'function)
  "@version{2023-2-10}
-  @syntax[]{(gtk:print-operation-unit object) => unit}
-  @syntax[]{(setf (gtk:print-operation-unit object) unit)}
+  @syntax{(gtk:print-operation-unit object) => unit}
+  @syntax{(setf (gtk:print-operation-unit object) unit)}
   @argument[object]{a @class{gtk:print-operation} object}
   @argument[unit]{a @symbol{gtk:unit} value to use}
   @begin{short}
@@ -1317,8 +1317,8 @@ lambda (operation widget setup settings)    :run-last
       "Accessor"
       (documentation 'print-operation-use-full-page 'function)
  "@version{2023-2-10}
-  @syntax[]{(gtk:print-operation-use-full-page object) => full-page}
-  @syntax[]{(setf (gtk:print-operation-use-full-page object) full-page)}
+  @syntax{(gtk:print-operation-use-full-page object) => full-page}
+  @syntax{(setf (gtk:print-operation-use-full-page object) full-page)}
   @argument[object]{a @class{gtk:print-operation} object}
   @argument[full-page]{@em{true} to set up the @class{gtk:print-context} for
     the full page}

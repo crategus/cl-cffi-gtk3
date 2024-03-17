@@ -128,8 +128,8 @@
       "Accessor"
       (documentation 'recent-chooser-menu-show-numbers 'function)
  "@version{#2023-3-24}
-  @syntax[]{(gtk:recent-chooser-menu-show-numbers object) => show-numbers}
-  @syntax[]{(setf (gtk:recent-chooser-menu-show-numbers object) show-numbers)}
+  @syntax{(gtk:recent-chooser-menu-show-numbers object) => show-numbers}
+  @syntax{(setf (gtk:recent-chooser-menu-show-numbers object) show-numbers)}
   @argument[obect]{a @class{gtk:recent-chooser-menu} widget}
   @argument[show-numbers]{a boolean whether to show numbers}
   @begin{short}

@@ -216,8 +216,8 @@ lambda (togglebutton)    :run-first
       "Accessor"
       (documentation 'toggle-button-active 'function)
  "@version{2023-12-29}
-  @syntax[]{(gtk:toggle-button-active object) => is-active}
-  @syntax[]{(setf (gtk:toggle-button-active object) is-active)}
+  @syntax{(gtk:toggle-button-active object) => is-active}
+  @syntax{(setf (gtk:toggle-button-active object) is-active)}
   @argument[object]{a @class{gtk:toggle-button} widget}
   @argument[is-active]{@em{true} if the toggle button should be pressed in}
   @begin{short}
@@ -247,8 +247,8 @@ lambda (togglebutton)    :run-first
       "Accessor"
       (documentation 'toggle-button-draw-indicator 'function)
  "@version{2023-12-29}
-  @syntax[]{(gtk:toggle-button-draw-indicator object) => indicator}
-  @syntax[]{(setf (gtk:toggle-button-draw-indicator object) indicator)}
+  @syntax{(gtk:toggle-button-draw-indicator object) => indicator}
+  @syntax{(setf (gtk:toggle-button-draw-indicator object) indicator)}
   @argument[object]{a @class{gtk:toggle-button} widget}
   @argument[indicator]{a boolean whether the toggle part of the button is
     displayed}
@@ -272,8 +272,8 @@ lambda (togglebutton)    :run-first
       "Accessor"
       (documentation 'toggle-button-inconsistent 'function)
  "@version{2023-12-29}
-  @syntax[]{(gtk:toggle-button-inconsistent object) => setting}
-  @syntax[]{(setf (gtk:toggle-button-inconsistent object) setting)}
+  @syntax{(gtk:toggle-button-inconsistent object) => setting}
+  @syntax{(setf (gtk:toggle-button-inconsistent object) setting)}
   @argument[object]{a @class{gtk:toggle-button} widget}
   @argument[setting]{@em{true} if state is inconsistent}
   @begin{short}
@@ -371,8 +371,8 @@ lambda (togglebutton)    :run-first
 (defun toggle-button-mode (button)
  #+liber-documentation
  "@version{#2023-3-28}
-  @syntax[]{(gtk:toggle-button-mode button) => draw-indicator}
-  @syntax[]{(setf (gtk:toggle-button-mode button) draw-indicator)}
+  @syntax{(gtk:toggle-button-mode button) => draw-indicator}
+  @syntax{(setf (gtk:toggle-button-mode button) draw-indicator)}
   @argument[button]{a @class{gtk:toggle-button} widget}
   @argument[draw-indicator]{if @em{true}, draw the button as a separate
     indicator and label, if @em{false}, draw the button like a normal button}

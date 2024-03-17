@@ -862,8 +862,8 @@
 (cffi:defcfun ("gtk_selection_data_get_text" selection-data-text) :string
  #+liber-documentation
  "@version{#2023-3-24}
-  @syntax[]{(gtk:selection-data-text selection) => text}
-  @syntax[]{(setf (gtk:selection-data-text selection) text)}
+  @syntax{(gtk:selection-data-text selection) => text}
+  @syntax{(setf (gtk:selection-data-text selection) text)}
   @argument[selection]{a @class{gtk:selection-data} instance}
   @argument[text]{a UTF-8 string}
   @begin{short}
@@ -894,8 +894,8 @@
     (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
  "@version{#2023-3-24}
-  @syntax[]{(gtk:selection-data-pixbuf selection) => pixbuf}
-  @syntax[]{(setf (gtk:selection-data-pixbuf selection) pixbuf)}
+  @syntax{(gtk:selection-data-pixbuf selection) => pixbuf}
+  @syntax{(setf (gtk:selection-data-pixbuf selection) pixbuf)}
   @argument[selection]{a @class{gtk:selection-data} instance}
   @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object}
   @begin{short}
@@ -926,8 +926,8 @@
 (cffi:defcfun ("gtk_selection_data_get_uris" selection-data-uris) g:strv-t
  #+liber-documentation
  "@version{#2023-3-24}
-  @syntax[]{(gtk:selection-data-uris selection) => uris}
-  @syntax[]{(setf (gtk:selection-data-uris selection) uris)}
+  @syntax{(gtk:selection-data-uris selection) => uris}
+  @syntax{(setf (gtk:selection-data-uris selection) uris)}
   @argument[selection]{a @class{gtk:selection-data} instance}
   @argument[uris]{a list of strings holding URIs}
   @begin{short}

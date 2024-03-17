@@ -129,7 +129,7 @@
       "Accessor"
       (documentation 'text-mark-left-gravity 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-mark-left-gravity object) => gravity}
+  @syntax{(gtk:text-mark-left-gravity object) => gravity}
   @argument[object]{a @class{gtk:text-mark} object}
   @return{@em{True} if the text mark has left gravity.}
   @begin{short}
@@ -154,7 +154,7 @@
       "Accessor"
       (documentation 'text-mark-name 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-mark-name object) => name}
+  @syntax{(gtk:text-mark-name object) => name}
   @argument[object]{a @class{gtk:text-mark} object}
   @argument[name]{a string with the name of the text mark}
   @begin{short}
@@ -215,8 +215,8 @@
 (cffi:defcfun ("gtk_text_mark_get_visible" text-mark-visible) :boolean
  #+liber-documentation
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-mark-visible mark) => visibility}
-  @syntax[]{(setf (gtk:text-mark-visible mark) visibility)}
+  @syntax{(gtk:text-mark-visible mark) => visibility}
+  @syntax{(setf (gtk:text-mark-visible mark) visibility)}
   @argument[mark]{a @class{gtk:text-mark} object}
   @argument[visibility]{a boolean whether the text mark is visible}
   @return{@em{True} if the text mark is visible.}

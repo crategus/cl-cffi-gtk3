@@ -264,8 +264,8 @@ format_value_callback (GtkScale *scale,
       "Accessor"
       (documentation 'scale-digits 'function)
  "@version{#2023-3-24}
-  @syntax[]{(gtk:scale-digits object) => digits}
-  @syntax[]{(setf (gtk:scale-digits object) digits)}
+  @syntax{(gtk:scale-digits object) => digits}
+  @syntax{(setf (gtk:scale-digits object) digits)}
   @argument[object]{a @class{gtk:scale} widget}
   @argument[digits]{an integer with the number of decimal places to display,
     e.g. use 1 to display 1.0, 2 to display 1.00, etc}
@@ -293,8 +293,8 @@ format_value_callback (GtkScale *scale,
       "Accessor"
       (documentation 'scale-draw-value 'function)
  "@version{#2023-3-24}
-  @syntax[]{(gtk:scale-draw-value object) => draw-value}
-  @syntax[]{(setf (gtk:scale-digits object) draw-value)}
+  @syntax{(gtk:scale-draw-value object) => draw-value}
+  @syntax{(setf (gtk:scale-digits object) draw-value)}
   @argument[object]{a @class{gtk:scale} widget}
   @argument[draw-value]{@em{true} to draw the value}
   @begin{short}
@@ -320,8 +320,8 @@ format_value_callback (GtkScale *scale,
       "Accessor"
       (documentation 'scale-has-origin 'function)
  "@version{#2023-3-24}
-  @syntax[]{(gtk:scale-has-origin object) => has-origin}
-  @syntax[]{(setf (gtk:scale-digits object) has-origin)}
+  @syntax{(gtk:scale-has-origin object) => has-origin}
+  @syntax{(setf (gtk:scale-digits object) has-origin)}
   @argument[object]{a @class{gtk:scale} widget}
   @argument[has-origin]{@em{true} if the scale has an origin}
   @begin{short}
@@ -350,8 +350,8 @@ format_value_callback (GtkScale *scale,
       "Accessor"
       (documentation 'scale-value-pos 'function)
  "@version{#2023-3-24}
-  @syntax[]{(gtk:scale-value-pos object) => pos}
-  @syntax[]{(setf (gtk:scale-digits object) pos)}
+  @syntax{(gtk:scale-value-pos object) => pos}
+  @syntax{(setf (gtk:scale-digits object) pos)}
   @argument[object]{a @class{gtk:scale} widget}
   @argument[pos]{a @symbol{gtk:position-type} value with the position in which
     the current value is displayed}

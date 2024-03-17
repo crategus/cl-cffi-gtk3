@@ -724,8 +724,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'text-view-accepts-tab 'function)
  "@version{#2023-3-8}
-  @syntax[]{(gtk:text-view-accepts-tab object) => accepts}
-  @syntax[]{(setf (gtk:text-view-accepts-tab object) accepts)}
+  @syntax{(gtk:text-view-accepts-tab object) => accepts}
+  @syntax{(setf (gtk:text-view-accepts-tab object) accepts)}
   @argument[object]{a @class{gtk:text-view} widget}
   @argument[accepts]{@em{true} if pressing the @kbd{Tab} key should insert a
     tab character, @em{false}, if pressing the @kbd{Tab} key should move the
@@ -760,8 +760,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'text-view-bottom-margin 'function)
  "@version{#2023-3-13}
-  @syntax[]{(gtk:text-view-bottom-margin object) => margin}
-  @syntax[]{(setf (gtk:text-view-bottom-margin object) margin)}
+  @syntax{(gtk:text-view-bottom-margin object) => margin}
+  @syntax{(setf (gtk:text-view-bottom-margin object) margin)}
   @argument[object]{a @class{gtk:text-view} widget}
   @argument[margin]{an integer with the bottom margin in pixels}
   @begin{short}
@@ -789,8 +789,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'text-view-buffer 'function)
  "@version{2024-1-1}
-  @syntax[]{(gtk:text-view-buffer object) => buffer}
-  @syntax[]{(setf (gtk:text-view-buffer object) buffer)}
+  @syntax{(gtk:text-view-buffer object) => buffer}
+  @syntax{(setf (gtk:text-view-buffer object) buffer)}
   @argument[object]{a @class{gtk:text-view} widget}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @begin{short}
@@ -817,8 +817,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'text-view-cursor-visible 'function)
  "@version{#2023-3-8}
-  @syntax[]{(gtk:text-view-cursor-visible object) => setting}
-  @syntax[]{(setf (gtk:text-view-cursor-visible object) setting)}
+  @syntax{(gtk:text-view-cursor-visible object) => setting}
+  @syntax{(setf (gtk:text-view-cursor-visible object) setting)}
   @argument[object]{a @class{gtk:text-view} widget}
   @argument[setting]{a boolean whether to show the insertion cursor}
   @begin{short}
@@ -846,8 +846,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'text-view-editable 'function)
  "@version{#2023-3-8}
-  @syntax[]{(gtk:text-view-editable object) => setting}
-  @syntax[]{(setf (gtk:text-view-editable object) setting)}
+  @syntax{(gtk:text-view-editable object) => setting}
+  @syntax{(setf (gtk:text-view-editable object) setting)}
   @argument[object]{a @class{gtk:text-view} widget}
   @argument[setting]{a boolean whether the text view is editable}
   @begin{short}
@@ -879,8 +879,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'text-view-im-module 'function)
  "@version{#2023-3-8}
-  @syntax[]{(gtk:text-view-im-module object) => module}
-  @syntax[]{(setf (gtk:text-view-im-module object) module)}
+  @syntax{(gtk:text-view-im-module object) => module}
+  @syntax{(setf (gtk:text-view-im-module object) module)}
   @argument[object]{a @class{gtk:text-view} widget}
   @argument[module]{a string with the IM module to use for the entry}
   @begin{short}
@@ -908,8 +908,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'text-view-indent 'function)
  "@version{#2023-3-8}
-  @syntax[]{(gtk:text-view-indent object) => indent}
-  @syntax[]{(setf (gtk:text-view-indent object) indent)}
+  @syntax{(gtk:text-view-indent object) => indent}
+  @syntax{(setf (gtk:text-view-indent object) indent)}
   @argument[object]{a @class{gtk:text-view} widget}
   @argument[indent]{an integer with the indentation in pixels}
   @begin{short}
@@ -939,8 +939,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'text-view-input-hints 'function)
  "@version{#2023-3-8}
-  @syntax[]{(gtk:text-view-input-hints object) => hints}
-  @syntax[]{(setf (gtk:text-view-input-hints object) hints)}
+  @syntax{(gtk:text-view-input-hints object) => hints}
+  @syntax{(setf (gtk:text-view-input-hints object) hints)}
   @argument[object]{a @class{gtk:text-view} widget}
   @argument[hints]{a @symbol{gtk:input-hints} value with the hints}
   @begin{short}
@@ -969,8 +969,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'text-view-input-purpose 'function)
  "@version{#2023-3-8}
-  @syntax[]{(gtk:text-view-input-purpose object) => purpose}
-  @syntax[]{(setf (gtk:text-view-input-purpose object) purpose)}
+  @syntax{(gtk:text-view-input-purpose object) => purpose}
+  @syntax{(setf (gtk:text-view-input-purpose object) purpose)}
   @argument[object]{a @class{gtk:text-view} widget}
   @argument[purpose]{a @symbol{gtk:input-purpose} value with the purpose}
   @begin{short}
@@ -998,8 +998,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'text-view-justification 'function)
  "@version{#2023-3-8}
-  @syntax[]{(gtk:text-view-justification object) => justification}
-  @syntax[]{(setf (gtk:text-view-justification object) justification)}
+  @syntax{(gtk:text-view-justification object) => justification}
+  @syntax{(setf (gtk:text-view-justification object) justification)}
   @argument[object]{a @class{gtk:text-view} widget}
   @argument[justification]{a @symbol{gtk:justification} value}
   @begin{short}
@@ -1028,8 +1028,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'text-view-left-margin 'function)
  "@version{2024-1-1}
-  @syntax[]{(gtk:text-view-left-margin object) => margin}
-  @syntax[]{(setf (gtk:text-view-left-margin object) margin)}
+  @syntax{(gtk:text-view-left-margin object) => margin}
+  @syntax{(setf (gtk:text-view-left-margin object) margin)}
   @argument[object]{a @class{gtk:text-view} widget}
   @argument[margin]{an integer with the left margin in pixels}
   @begin{short}
@@ -1056,8 +1056,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'text-view-monospace 'function)
  "@version{#2023-3-8}
-  @syntax[]{(gtk:text-view-monospace object) => monospace}
-  @syntax[]{(setf (gtk:text-view-monospace object) monospace)}
+  @syntax{(gtk:text-view-monospace object) => monospace}
+  @syntax{(setf (gtk:text-view-monospace object) monospace)}
   @argument[object]{a @class{gtk:text-view} widget}
   @argument[monospace]{@em{true} to request monospace styling}
   @begin{short}
@@ -1083,8 +1083,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'text-view-overwrite 'function)
  "@version{#2023-3-8}
-  @syntax[]{(gtk:text-view-overwrite object) => overwrite}
-  @syntax[]{(setf (gtk:text-view-overwrite object) overwrite)}
+  @syntax{(gtk:text-view-overwrite object) => overwrite}
+  @syntax{(setf (gtk:text-view-overwrite object) overwrite)}
   @argument[object]{a @class{gtk:text-view} widget}
   @argument[overwrite]{@em{true} to turn on overwrite mode, @em{false} to turn
     it off}
@@ -1113,8 +1113,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'text-view-pixels-above-lines 'function)
  "@version{#2023-3-8}
-  @syntax[]{(gtk:text-view-pixels-above-lines object) => pixels}
-  @syntax[]{(setf (gtk:text-view-pixels-above-lines object) pixels)}
+  @syntax{(gtk:text-view-pixels-above-lines object) => pixels}
+  @syntax{(setf (gtk:text-view-pixels-above-lines object) pixels)}
   @argument[object]{a @class{gtk:text-view} widget}
   @argument[pixels]{an integer with the pixels above paragraphs}
   @begin{short}
@@ -1146,8 +1146,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'text-view-pixels-below-lines 'function)
  "@version{#2023-3-8}
-  @syntax[]{(gtk:text-view-pixels-below-lines object) => pixels}
-  @syntax[]{(setf (gtk:text-view-pixels-below-lines object) pixels)}
+  @syntax{(gtk:text-view-pixels-below-lines object) => pixels}
+  @syntax{(setf (gtk:text-view-pixels-below-lines object) pixels)}
   @argument[object]{a @class{gtk:text-view} widget}
   @argument[pixels]{an integer with the pixels below paragraphs}
   @begin{short}
@@ -1179,8 +1179,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'text-view-pixels-inside-wrap 'function)
  "@version{#2023-3-8}
-  @syntax[]{(gtk:text-view-pixels-inside-wrap object) => pixels}
-  @syntax[]{(setf (gtk:text-view-pixels-inside-wrap object) pixels)}
+  @syntax{(gtk:text-view-pixels-inside-wrap object) => pixels}
+  @syntax{(setf (gtk:text-view-pixels-inside-wrap object) pixels)}
   @argument[object]{a @class{gtk:text-view} widget}
   @argument[pixels]{an integer with the default number of pixels between
     wrapped lines}
@@ -1211,8 +1211,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'text-view-populate-all 'function)
  "@version{#2023-3-8}
-  @syntax[]{(gtk:text-view-populate-all object) => populate}
-  @syntax[]{(setf (gtk:text-view-populate-all object) populate)}
+  @syntax{(gtk:text-view-populate-all object) => populate}
+  @syntax{(setf (gtk:text-view-populate-all object) populate)}
   @argument[object]{a @class{gtk:text-view} widget}
   @argument[populate]{a boolean whether the @code{\"populate-all\"} signal is
     also emitted for touch popups}
@@ -1238,8 +1238,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'text-view-right-margin 'function)
  "@version{#2023-3-8}
-  @syntax[]{(gtk:text-view-right-margin object) => margin}
-  @syntax[]{(setf (gtk:text-view-right-margin object) margin)}
+  @syntax{(gtk:text-view-right-margin object) => margin}
+  @syntax{(setf (gtk:text-view-right-margin object) margin)}
   @argument[object]{a @class{gtk:text-view} widget}
   @argument[margin]{an integer with the right margin in pixels}
   @begin{short}
@@ -1266,8 +1266,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'text-view-tabs 'function)
  "@version{#2023-3-8}
-  @syntax[]{(gtk:text-view-tabs object) => tabs}
-  @syntax[]{(setf (gtk:text-view-tabs object) tabs)}
+  @syntax{(gtk:text-view-tabs object) => tabs}
+  @syntax{(setf (gtk:text-view-tabs object) tabs)}
   @argument[object]{a @class{gtk:text-view} widget}
   @argument[tabs]{a @class{pango:tab-array} instance with the tabs}
   @begin{short}
@@ -1300,8 +1300,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'text-view-top-margin 'function)
  "@version{#2023-3-13}
-  @syntax[]{(gtk:text-view-top-margin object) => margin}
-  @syntax[]{(setf (gtk:text-view-top-margin object) margin)}
+  @syntax{(gtk:text-view-top-margin object) => margin}
+  @syntax{(setf (gtk:text-view-top-margin object) margin)}
   @argument[object]{a @class{gtk:text-view} widget}
   @argument[margin]{an integer with the top margin in pixels}
   @begin{short}
@@ -1331,8 +1331,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'text-view-wrap-mode 'function)
  "@version{#2023-3-8}
-  @syntax[]{(gtk:text-view-wrap-mode object) => mode}
-  @syntax[]{(setf (gtk:text-view-wrap-mode object) mode)}
+  @syntax{(gtk:text-view-wrap-mode object) => mode}
+  @syntax{(setf (gtk:text-view-wrap-mode object) mode)}
   @argument[object]{a @class{gtk:text-view} widget}
   @argument[mode]{a value of the @symbol{gtk:wrap-mode} enumeration}
   @begin{short}
@@ -2035,8 +2035,8 @@ lambda (view)    :action
                text-view-border-window-size) :int
  #+liber-documentation
  "@version{#2023-3-8}
-  @syntax[]{(gtk:text-view-border-window-size view wtype) => size}
-  @syntax[]{(setf (gtk:text-view-border-window-size view wtype) size)}
+  @syntax{(gtk:text-view-border-window-size view wtype) => size}
+  @syntax{(setf (gtk:text-view-border-window-size view wtype) size)}
   @argument[view]{a @class{gtk:text-view} widget}
   @argument[wtype]{a value of the @symbol{gtk:text-window-type} enumeration}
   @argument[size]{an integer with the width or height of the window}
@@ -2432,7 +2432,7 @@ lambda (view)    :action
 (cffi:defcfun ("gtk_text_view_reset_cursor_blink" text-view-reset-cursor-blink)
     :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2024-3-16}
   @argument[view]{a @class{gtk:text-view} widget}
   @begin{short}
     Ensures that the cursor is shown, i.e. not in an 'off' blink interval, and
@@ -2440,7 +2440,8 @@ lambda (view)    :action
     disabled.
   @end{short}
   This function should be called in response to user input, e.g. from derived
-  classes that override the \"key-press-event\" handler of the text view.
+  classes that override the @code{\"key-press-event\"} signal handler of the
+  text view.
   @see-class{gtk:text-view}"
   (view (g:object text-view)))
 

@@ -120,8 +120,8 @@
       "Accessor"
       (documentation 'shortcuts-group-accel-size-group 'function)
  "@version{#2023-2-14}
-  @syntax[]{(gtk:shortcuts-group-accel-size-group object) => group}
-  @syntax[]{(setf (gtk:shortcuts-group-accel-size-group object) group)}
+  @syntax{(gtk:shortcuts-group-accel-size-group object) => group}
+  @syntax{(setf (gtk:shortcuts-group-accel-size-group object) group)}
   @argument[object]{a @class{gtk:shortcuts-group} widget}
   @argument[group]{a @class{gtk:size-group} object}
   @begin{short}
@@ -147,8 +147,8 @@
       "Accessor"
       (documentation 'shortcuts-group-height 'function)
  "@version{#2023-2-14}
-  @syntax[]{(gtk:shortcuts-group-height object) => height}
-  @syntax[]{(setf (gtk:shortcuts-group-height object) height)}
+  @syntax{(gtk:shortcuts-group-height object) => height}
+  @syntax{(setf (gtk:shortcuts-group-height object) height)}
   @argument[object]{a @class{gtk:shortcuts-group} widget}
   @argument[height]{an unsigned integer with the measure for the number of
     lines}
@@ -173,8 +173,8 @@
       "Accessor"
       (documentation 'shortcuts-group-title 'function)
  "@version{#2023-2-14}
-  @syntax[]{(gtk:shortcuts-group-title object) => title}
-  @syntax[]{(setf (gtk:shortcuts-group-title object) title)}
+  @syntax{(gtk:shortcuts-group-title object) => title}
+  @syntax{(setf (gtk:shortcuts-group-title object) title)}
   @argument[object]{a @class{gtk:shortcuts-group} widget}
   @argument[title]{a string with the title for this group of shortcuts}
   @begin{short}
@@ -199,8 +199,8 @@
       "Accessor"
       (documentation 'shortcuts-group-title-size-group 'function)
  "@version{#2023-2-14}
-  @syntax[]{(gtk:shortcuts-group-title-size-group object) => group}
-  @syntax[]{(setf (gtk:shortcuts-group-title-size-group object) group)}
+  @syntax{(gtk:shortcuts-group-title-size-group object) => group}
+  @syntax{(setf (gtk:shortcuts-group-title-size-group object) group)}
   @argument[object]{a @class{gtk:shortcuts-group} widget}
   @argument[group]{a @class{gtk:size-group} object}
   @begin{short}
@@ -228,8 +228,8 @@
       "Accessor"
       (documentation 'shortcuts-group-view 'function)
  "@version{#2023-2-14}
-  @syntax[]{(gtk:shortcuts-group-view object) => view}
-  @syntax[]{(setf (gtk:shortcuts-group-view object) view)}
+  @syntax{(gtk:shortcuts-group-view object) => view}
+  @syntax{(setf (gtk:shortcuts-group-view object) view)}
   @argument[object]{a @class{gtk:shortcuts-group} widget}
   @argument[view]{a string with an optional view}
   @begin{short}

@@ -158,7 +158,7 @@
       "Accessor"
       (documentation 'tree-model-sort-model 'function)
  "@version{#2023-1-21}
-  @syntax[]{(gtk:tree-model-sort-model object) => model}
+  @syntax{(gtk:tree-model-sort-model object) => model}
   @argument[object]{a @class{gtk:tree-model-sort} object}
   @argument[model]{a @class{gtk:tree-model} child model being sorted}
   @begin{short}

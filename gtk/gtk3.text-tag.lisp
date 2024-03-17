@@ -534,8 +534,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-accumulative-margin 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-accumulative-margin object) => setting}
-  @syntax[]{(setf (gtk:text-tag-accumulative-margin object) setting)}
+  @syntax{(gtk:text-tag-accumulative-margin object) => setting}
+  @syntax{(setf (gtk:text-tag-accumulative-margin object) setting)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[setting]{a boolean whether the margins accumulate}
   @begin{short}
@@ -561,8 +561,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-background 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-background object) => background}
-  @syntax[]{(setf (gtk:text-tag-background object) background)}
+  @syntax{(gtk:text-tag-background object) => background}
+  @syntax{(setf (gtk:text-tag-background object) background)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[background]{a string with the background color}
   @begin{short}
@@ -590,8 +590,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-background-full-height 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-background-full-height object) => setting}
-  @syntax[]{(setf (gtk:text-tag-background-full-height object) setting)}
+  @syntax{(gtk:text-tag-background-full-height object) => setting}
+  @syntax{(setf (gtk:text-tag-background-full-height object) setting)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[setting]{a boolean whether the background fills the entire line
     height}
@@ -619,8 +619,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-background-full-height-set 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-background-full-height-set object) => setting}
-  @syntax[]{(setf (gtk:text-tag-background-full-height-set object) setting)}
+  @syntax{(gtk:text-tag-background-full-height-set object) => setting}
+  @syntax{(setf (gtk:text-tag-background-full-height-set object) setting)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[setting]{a boolean whether this tag affects background height}
   @begin{short}
@@ -647,8 +647,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-background-gdk 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-background-gdk object) => color}
-  @syntax[]{(setf (gtk:text-tag-background-gdk object) color)}
+  @syntax{(gtk:text-tag-background-gdk object) => color}
+  @syntax{(setf (gtk:text-tag-background-gdk object) color)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[color]{a @class{gdk:color} color}
   @begin{short}
@@ -678,8 +678,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-background-rgba 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-background-rgba object) => color}
-  @syntax[]{(setf (gtk:text-tag-background-rgba object) color)}
+  @syntax{(gtk:text-tag-background-rgba object) => color}
+  @syntax{(setf (gtk:text-tag-background-rgba object) color)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[color]{a @class{gdk:rgba} color}
   @begin{short}
@@ -706,8 +706,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-background-set 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-background-set object) => setting}
-  @syntax[]{(setf (gtk:text-tag-background-set object) setting)}
+  @syntax{(gtk:text-tag-background-set object) => setting}
+  @syntax{(setf (gtk:text-tag-background-set object) setting)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[setting]{a boolean whether this tag affects the background color}
   @begin{short}
@@ -733,8 +733,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-direction 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-direction object) => direction}
-  @syntax[]{(setf (gtk:text-tag-direction object) direction)}
+  @syntax{(gtk:text-tag-direction object) => direction}
+  @syntax{(setf (gtk:text-tag-direction object) direction)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[direction]{a value of the @symbol{gtk:text-direction} enumeration}
   @begin{short}
@@ -758,8 +758,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-editable 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-editable object) => editable}
-  @syntax[]{(setf (gtk:text-tag-editable object) editable)}
+  @syntax{(gtk:text-tag-editable object) => editable}
+  @syntax{(setf (gtk:text-tag-editable object) editable)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[editable]{a boolean whether the text can be modified}
   @begin{short}
@@ -783,8 +783,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-editable-set 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-editable-set object) => setting}
-  @syntax[]{(setf (gtk:text-tag-editable-set object) setting)}
+  @syntax{(gtk:text-tag-editable-set object) => setting}
+  @syntax{(setf (gtk:text-tag-editable-set object) setting)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[setting]{a boolean whether this tag affects text editability}
   @begin{short}
@@ -809,8 +809,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-fallback 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-fallback object) => fallback}
-  @syntax[]{(setf (gtk:text-tag-fallback object) fallback)}
+  @syntax{(gtk:text-tag-fallback object) => fallback}
+  @syntax{(setf (gtk:text-tag-fallback object) fallback)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[fallback]{a boolean whether font fallback is enabled}
   @begin{short}
@@ -835,8 +835,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-fallback-set 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-fallback-set object) => setting}
-  @syntax[]{(setf (gtk:text-tag-fallback-set object) setting)}
+  @syntax{(gtk:text-tag-fallback-set object) => setting}
+  @syntax{(setf (gtk:text-tag-fallback-set object) setting)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[setting]{a boolean whether this affects font fallback}
   @begin{short}
@@ -859,8 +859,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-family 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-family object) => family}
-  @syntax[]{(setf (gtk:text-tag-family object) family)}
+  @syntax{(gtk:text-tag-family object) => family}
+  @syntax{(setf (gtk:text-tag-family object) family)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[family]{a string with the name of the font family}
   @begin{short}
@@ -884,8 +884,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-family-set 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-family-set object) => setting}
-  @syntax[]{(setf (gtk:text-tag-family-set object) setting)}
+  @syntax{(gtk:text-tag-family-set object) => setting}
+  @syntax{(setf (gtk:text-tag-family-set object) setting)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[setting]{a boolean whether this tag affects the font family}
   @begin{short}
@@ -911,8 +911,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-font 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-font object) => font}
-  @syntax[]{(setf (gtk:text-tag-font object) font)}
+  @syntax{(gtk:text-tag-font object) => font}
+  @syntax{(setf (gtk:text-tag-font object) font)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[font]{a string with a font description}
   @begin{short}
@@ -938,8 +938,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-font-desc 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-font-desc object) => desc}
-  @syntax[]{(setf (gtk:text-tag-font object) desc)}
+  @syntax{(gtk:text-tag-font-desc object) => desc}
+  @syntax{(setf (gtk:text-tag-font object) desc)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[desc]{a @class{pango:font-description} instance with a font
     description}
@@ -964,8 +964,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-font-features 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-font-features object) => features}
-  @syntax[]{(setf (gtk:text-tag-font-features object) features)}
+  @syntax{(gtk:text-tag-font-features object) => features}
+  @syntax{(setf (gtk:text-tag-font-features object) features)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[features]{a string with the OpenType font features}
   @begin{short}
@@ -991,8 +991,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-font-features-set 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-font-features-set object) => setting}
-  @syntax[]{(setf (gtk:text-tag-font-features-set object) setting)}
+  @syntax{(gtk:text-tag-font-features-set object) => setting}
+  @syntax{(setf (gtk:text-tag-font-features-set object) setting)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[setting]{a boolean whether this tag affects font features}
   @begin{short}
@@ -1016,8 +1016,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-foreground 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-foreground object) => color}
-  @syntax[]{(setf (gtk:text-tag-foreground object) color)}
+  @syntax{(gtk:text-tag-foreground object) => color}
+  @syntax{(setf (gtk:text-tag-foreground object) color)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[color]{a string with the foreground color}
   @begin{short}
@@ -1045,8 +1045,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-foreground-gdk 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-foreground-gdk object) => color}
-  @syntax[]{(setf (gtk:text-tag-foreground-gdk object) color)}
+  @syntax{(gtk:text-tag-foreground-gdk object) => color}
+  @syntax{(setf (gtk:text-tag-foreground-gdk object) color)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[color]{a @class{gdk:color} color}
   @begin{short}
@@ -1076,8 +1076,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-foreground-rgba 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-foreground-rgba object) => color}
-  @syntax[]{(setf (gtk:text-tag-foreground-rgba object) color)}
+  @syntax{(gtk:text-tag-foreground-rgba object) => color}
+  @syntax{(setf (gtk:text-tag-foreground-rgba object) color)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[color]{a @class{gdk:rgba} color}
   @begin{short}
@@ -1104,8 +1104,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-foreground-set 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-foreground-set object) => setting}
-  @syntax[]{(setf (gtk:text-tag-foreground-set object) setting)}
+  @syntax{(gtk:text-tag-foreground-set object) => setting}
+  @syntax{(setf (gtk:text-tag-foreground-set object) setting)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[setting]{a @class{gdk:rgba} color}
   @begin{short}
@@ -1130,8 +1130,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-indent 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-indent object) => indent}
-  @syntax[]{(setf (gtk:text-tag-indent object) indent)}
+  @syntax{(gtk:text-tag-indent object) => indent}
+  @syntax{(setf (gtk:text-tag-indent object) indent)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[indent]{an integer with the amount to indent}
   @begin{short}
@@ -1155,8 +1155,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-indent-set 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-indent-set object) => setting}
-  @syntax[]{(setf (gtk:text-tag-indent-set object) setting)}
+  @syntax{(gtk:text-tag-indent-set object) => setting}
+  @syntax{(setf (gtk:text-tag-indent-set object) setting)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[setting]{a boolean whether this tag affects indentation}
   @begin{short}
@@ -1182,8 +1182,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-invisible 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-invisible object) => invisible}
-  @syntax[]{(setf (gtk:text-tag-invisible object) invisible)}
+  @syntax{(gtk:text-tag-invisible object) => invisible}
+  @syntax{(setf (gtk:text-tag-invisible object) invisible)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[invisible]{a boolean whether this text is hidden}
   @begin{short}
@@ -1209,8 +1209,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-invisible-set 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-invisible-set object) => setting}
-  @syntax[]{(setf (gtk:text-tag-invisible-set object) setting)}
+  @syntax{(gtk:text-tag-invisible-set object) => setting}
+  @syntax{(setf (gtk:text-tag-invisible-set object) setting)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[setting]{a boolean whether this tag affects visibility}
   @begin{short}
@@ -1235,8 +1235,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-justification 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-justification object) => justification}
-  @syntax[]{(setf (gtk:text-tag-justification object) justification)}
+  @syntax{(gtk:text-tag-justification object) => justification}
+  @syntax{(setf (gtk:text-tag-justification object) justification)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[justification]{a value of the @symbol{gtk:justification}
     enumeration}
@@ -1263,8 +1263,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-justification-set 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-justification-set object) => setting}
-  @syntax[]{(setf (gtk:text-tag-justification-set object) setting)}
+  @syntax{(gtk:text-tag-justification-set object) => setting}
+  @syntax{(setf (gtk:text-tag-justification-set object) setting)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[setting]{a boolean whether this tag affects paragraph justification}
   @begin{short}
@@ -1291,8 +1291,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-language 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-language object) => language}
-  @syntax[]{(setf (gtk:text-tag-language object) language)}
+  @syntax{(gtk:text-tag-language object) => language}
+  @syntax{(setf (gtk:text-tag-language object) language)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[language]{a string with language this text is in}
   @begin{short}
@@ -1320,8 +1320,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-language-set 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-language-set object) => setting}
-  @syntax[]{(setf (gtk:text-tag-language-set object) setting)}
+  @syntax{(gtk:text-tag-language-set object) => setting}
+  @syntax{(setf (gtk:text-tag-language-set object) setting)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[setting]{a boolean whether this tag affects the language}
   @begin{short}
@@ -1346,8 +1346,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-left-margin 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-left-margin object) => margin}
-  @syntax[]{(setf (gtk:text-tag-left-margin object) margin)}
+  @syntax{(gtk:text-tag-left-margin object) => margin}
+  @syntax{(setf (gtk:text-tag-left-margin object) margin)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[margin]{an integer with the width of the left margin in pixels}
   @begin{short}
@@ -1372,8 +1372,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-left-margin-set 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-left-margin-set object) => setting}
-  @syntax[]{(setf (gtk:text-tag-left-margin-set object) setting)}
+  @syntax{(gtk:text-tag-left-margin-set object) => setting}
+  @syntax{(setf (gtk:text-tag-left-margin-set object) setting)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[setting]{a boolean whether this tag affects the left margin}
   @begin{short}
@@ -1398,8 +1398,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-letter-spacing 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-letter-spacing object) => spacing}
-  @syntax[]{(setf (gtk:text-tag-letter-spacing object) spacing)}
+  @syntax{(gtk:text-tag-letter-spacing object) => spacing}
+  @syntax{(setf (gtk:text-tag-letter-spacing object) spacing)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[spacing]{an integer with extra spacing between graphems in Pango
     units}
@@ -1426,8 +1426,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-letter-spacing-set 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-letter-spacing-set object) => setting}
-  @syntax[]{(setf (gtk:text-tag-letter-spacing-set object) setting)}
+  @syntax{(gtk:text-tag-letter-spacing-set object) => setting}
+  @syntax{(setf (gtk:text-tag-letter-spacing-set object) setting)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[setting]{a boolean whether this tag affects letter spacing}
   @begin{short}
@@ -1452,7 +1452,7 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-name 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-name name) => name}
+  @syntax{(gtk:text-tag-name name) => name}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[name]{a string with the name of the text tag}
   @begin{short}
@@ -1476,8 +1476,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-paragraph-background 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-paragraph-background object) => color}
-  @syntax[]{(setf (gtk:text-tag-paragraph-background object) color)}
+  @syntax{(gtk:text-tag-paragraph-background object) => color}
+  @syntax{(setf (gtk:text-tag-paragraph-background object) color)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[color]{a string with the paragraph background color}
   @begin{short}
@@ -1506,8 +1506,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-paragraph-background-gdk 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-paragraph-background-gdk object) => color}
-  @syntax[]{(setf (gtk:text-tag-paragraph-background-gdk object) color)}
+  @syntax{(gtk:text-tag-paragraph-background-gdk object) => color}
+  @syntax{(setf (gtk:text-tag-paragraph-background-gdk object) color)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[color]{a @class{gdk:color} color}
   @begin{short}
@@ -1538,8 +1538,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-paragraph-background-rgba 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-paragraph-background-rgba object) => color}
-  @syntax[]{(setf (gtk:text-tag-paragraph-background-rgba object) color)}
+  @syntax{(gtk:text-tag-paragraph-background-rgba object) => color}
+  @syntax{(setf (gtk:text-tag-paragraph-background-rgba object) color)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[color]{a @class{gdk:rgba} color}
   @begin{short}
@@ -1567,8 +1567,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-paragraph-background-set 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-paragraph-background-set object) => setting}
-  @syntax[]{(setf (gtk:text-tag-paragraph-background-set object) setting)}
+  @syntax{(gtk:text-tag-paragraph-background-set object) => setting}
+  @syntax{(setf (gtk:text-tag-paragraph-background-set object) setting)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[setting]{a boolean whether this affects the paragraph background
     color}
@@ -1596,8 +1596,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-pixels-above-lines 'function)
  "@version{2024-1-1}
-  @syntax[]{(gtk:text-tag-pixels-above-lines object) => pixels}
-  @syntax[]{(setf (gtk:text-tag-pixels-above-lines object) pixels)}
+  @syntax{(gtk:text-tag-pixels-above-lines object) => pixels}
+  @syntax{(setf (gtk:text-tag-pixels-above-lines object) pixels)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[pixels]{an integer with the pixels of blank space above paragraphs}
   @begin{short}
@@ -1623,8 +1623,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-pixels-above-lines-set 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-pixels-above-lines-set object) => setting}
-  @syntax[]{(setf (gtk:text-tag-pixels-above-lines-set object) setting)}
+  @syntax{(gtk:text-tag-pixels-above-lines-set object) => setting}
+  @syntax{(setf (gtk:text-tag-pixels-above-lines-set object) setting)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[setting]{a boolean whether this tag affects the number of pixels
     above lines}
@@ -1652,8 +1652,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-pixels-below-lines 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-pixels-below-lines object) => pixels}
-  @syntax[]{(setf (gtk:text-tag-pixels-below-lines object) pixels)}
+  @syntax{(gtk:text-tag-pixels-below-lines object) => pixels}
+  @syntax{(setf (gtk:text-tag-pixels-below-lines object) pixels)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[pixels]{an integer with the pixels of blank space below paragraphs}
   @begin{short}
@@ -1679,8 +1679,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-pixels-below-lines-set 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-pixels-below-lines-set object) => setting}
-  @syntax[]{(setf (gtk:text-tag-pixels-below-lines-set object) setting)}
+  @syntax{(gtk:text-tag-pixels-below-lines-set object) => setting}
+  @syntax{(setf (gtk:text-tag-pixels-below-lines-set object) setting)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[setting]{a boolean whether this tag affects the number of pixels
     below lines}
@@ -1708,8 +1708,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-pixels-inside-wrap 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-pixels-inside-wrap object) => pixels}
-  @syntax[]{(setf (gtk:text-tag-pixels-inside-wrap object) pixels)}
+  @syntax{(gtk:text-tag-pixels-inside-wrap object) => pixels}
+  @syntax{(setf (gtk:text-tag-pixels-inside-wrap object) pixels)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[pixels]{an integer with the pixels of blank space between wrapped
     lines in a paragraph}
@@ -1736,8 +1736,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-pixels-inside-wrap-set 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-pixels-inside-wrap-set object) => setting}
-  @syntax[]{(setf (gtk:text-tag-pixels-inside-wrap-set object) setting)}
+  @syntax{(gtk:text-tag-pixels-inside-wrap-set object) => setting}
+  @syntax{(setf (gtk:text-tag-pixels-inside-wrap-set object) setting)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[setting]{a boolean whether this tag affects the number of pixels
     between wrapped lines}
@@ -1763,8 +1763,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-right-margin 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-right-margin object) => margin}
-  @syntax[]{(setf (gtk:text-tag-right-margin object) margin)}
+  @syntax{(gtk:text-tag-right-margin object) => margin}
+  @syntax{(setf (gtk:text-tag-right-margin object) margin)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[margin]{an integer with the right margin in pixels}
   @begin{short}
@@ -1789,8 +1789,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-right-margin-set 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-right-margin-set object) => setting}
-  @syntax[]{(setf (gtk:text-tag-right-margin-set object) setting)}
+  @syntax{(gtk:text-tag-right-margin-set object) => setting}
+  @syntax{(setf (gtk:text-tag-right-margin-set object) setting)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[setting]{a boolean whether this tag affects the right margin}
   @begin{short}
@@ -1815,8 +1815,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-rise 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-rise object) => rise}
-  @syntax[]{(setf (gtk:text-tag-rise object) rise)}
+  @syntax{(gtk:text-tag-rise object) => rise}
+  @syntax{(setf (gtk:text-tag-rise object) rise)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[rise]{an integer with the offset of text above the baseline in
     Pango units}
@@ -1842,8 +1842,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-rise-set 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-rise-set object) => setting}
-  @syntax[]{(setf (gtk:text-tag-rise-set object) setting)}
+  @syntax{(gtk:text-tag-rise-set object) => setting}
+  @syntax{(setf (gtk:text-tag-rise-set object) setting)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[setting]{a boolean whether this tag affects the rise}
   @begin{short}
@@ -1870,8 +1870,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-scale 'function)
  "@version{2024-3-8}
-  @syntax[]{(gtk:text-tag-scale object) => scale}
-  @syntax[]{(setf (gtk:text-tag-scale object) scale)}
+  @syntax{(gtk:text-tag-scale object) => scale}
+  @syntax{(setf (gtk:text-tag-scale object) scale)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[scale]{a double float with the font size as a scale factor}
   @begin{short}
@@ -1898,8 +1898,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-scale-set 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-scale-set object) => setting}
-  @syntax[]{(setf (gtk:text-tag-scale-set object) setting)}
+  @syntax{(gtk:text-tag-scale-set object) => setting}
+  @syntax{(setf (gtk:text-tag-scale-set object) setting)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[setting]{a boolean whether this tag scales the font size}
   @begin{short}
@@ -1924,8 +1924,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-size 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-size object) => size}
-  @syntax[]{(setf (gtk:text-tag-size object) size)}
+  @syntax{(gtk:text-tag-size object) => size}
+  @syntax{(setf (gtk:text-tag-size object) size)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[size]{an integer with the the font size in Pango units}
   @begin{short}
@@ -1951,8 +1951,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-size-points 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-size-points object) => size}
-  @syntax[]{(setf (gtk:text-tag-size-points object) size)}
+  @syntax{(gtk:text-tag-size-points object) => size}
+  @syntax{(setf (gtk:text-tag-size-points object) size)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[size]{a double float with the the font size in points}
   @begin{short}
@@ -1977,8 +1977,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-size-set 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-size-set object) => setting}
-  @syntax[]{(setf (gtk:text-tag-size-set object) setting)}
+  @syntax{(gtk:text-tag-size-set object) => setting}
+  @syntax{(setf (gtk:text-tag-size-set object) setting)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[setting]{a boolean whether this tag affects the font size}
   @begin{short}
@@ -2004,8 +2004,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-stretch 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-stretch object) => stretch}
-  @syntax[]{(setf (gtk:text-tag-stretch object) stretch)}
+  @syntax{(gtk:text-tag-stretch object) => stretch}
+  @syntax{(setf (gtk:text-tag-stretch object) stretch)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[stretch]{a value of the @symbol{pango:stretch} enumeration}
   @begin{short}
@@ -2031,8 +2031,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-stretch-set 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-stretch-set object) => setting}
-  @syntax[]{(setf (gtk:text-tag-stretch-set object) setting)}
+  @syntax{(gtk:text-tag-stretch-set object) => setting}
+  @syntax{(setf (gtk:text-tag-stretch-set object) setting)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[setting]{a boolean whether this tag afects the font stretch}
   @begin{short}
@@ -2056,8 +2056,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-strikethrough 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-strikethrough object) => strikethrough}
-  @syntax[]{(setf (gtk:text-tag-strikethrough object) strikethrough)}
+  @syntax{(gtk:text-tag-strikethrough object) => strikethrough}
+  @syntax{(setf (gtk:text-tag-strikethrough object) strikethrough)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[strikethrough]{a boolean whether to strike through the text}
   @begin{short}
@@ -2084,8 +2084,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-strikethrough-rgba 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-strikethrough-rgba object) => color}
-  @syntax[]{(setf (gtk:text-tag-strikethrough-rgba object) color)}
+  @syntax{(gtk:text-tag-strikethrough-rgba object) => color}
+  @syntax{(setf (gtk:text-tag-strikethrough-rgba object) color)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[color]{a @class{gdk:rgba} color}
   @begin{short}
@@ -2113,8 +2113,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-strikethrough-rgba-set 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-strikethrough-rgba-set object) => setting}
-  @syntax[]{(setf (gtk:text-tag-strikethrough-rgba-set object) setting)}
+  @syntax{(gtk:text-tag-strikethrough-rgba-set object) => setting}
+  @syntax{(setf (gtk:text-tag-strikethrough-rgba-set object) setting)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[setting]{a boolean whether a @slot[gtk:text-tag]{strikethrough-rgba}
     property has been set}
@@ -2140,8 +2140,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-strikethrough-set 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-strikethrough-set object) => setting}
-  @syntax[]{(setf (gtk:text-tag-strikethrough-set object) setting)}
+  @syntax{(gtk:text-tag-strikethrough-set object) => setting}
+  @syntax{(setf (gtk:text-tag-strikethrough-set object) setting)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[setting]{a boolean whether this tag affects strikethrough}
   @begin{short}
@@ -2165,8 +2165,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-style 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-style object) => style}
-  @syntax[]{(setf (gtk:text-tag-style object) style)}
+  @syntax{(gtk:text-tag-style object) => style}
+  @syntax{(setf (gtk:text-tag-style object) style)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[style]{a value of the @symbol{pango:style} enumeration}
   @begin{short}
@@ -2192,8 +2192,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-style-set 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-style-set object) => setting}
-  @syntax[]{(setf (gtk:text-tag-style-set object) setting)}
+  @syntax{(gtk:text-tag-style-set object) => setting}
+  @syntax{(setf (gtk:text-tag-style-set object) setting)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[setting]{a boolean whether this tag affects the font style}
   @begin{short}
@@ -2216,8 +2216,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-tabs 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-tabs object) => tabs}
-  @syntax[]{(setf (gtk:text-tag-tabs object) tabs)}
+  @syntax{(gtk:text-tag-tabs object) => tabs}
+  @syntax{(setf (gtk:text-tag-tabs object) tabs)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[tabs]{a @class{pango:tab-array} instance with the custom tabs}
   @begin{short}
@@ -2242,8 +2242,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-tabs-set 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-tabs-set object) => setting}
-  @syntax[]{(setf (gtk:text-tag-tabs-set object) setting)}
+  @syntax{(gtk:text-tag-tabs-set object) => setting}
+  @syntax{(setf (gtk:text-tag-tabs-set object) setting)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[setting]{a boolean whether this affects tabs}
   @begin{short}
@@ -2268,8 +2268,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-underline 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-underline object) => underline}
-  @syntax[]{(setf (gtk:text-tag-underline object) underline)}
+  @syntax{(gtk:text-tag-underline object) => underline}
+  @syntax{(setf (gtk:text-tag-underline object) underline)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[underline]{a value of the @symbol{pango:underline} enumeration}
   @begin{short}
@@ -2299,8 +2299,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-underline-rgba 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-underline-rgba object) => color}
-  @syntax[]{(setf (gtk:text-tag-underline-rgba object) color)}
+  @syntax{(gtk:text-tag-underline-rgba object) => color}
+  @syntax{(setf (gtk:text-tag-underline-rgba object) color)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[color]{a @class{gdk:rgba} color}
   @begin{short}
@@ -2333,8 +2333,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-underline-rgba-set 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-underline-rgba-set object) => setting}
-  @syntax[]{(setf (gtk:text-tag-underline-rgba-set object) setting)}
+  @syntax{(gtk:text-tag-underline-rgba-set object) => setting}
+  @syntax{(setf (gtk:text-tag-underline-rgba-set object) setting)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[setting]{a boolean whether the @slot[gtk:text-tag]{underline-rgba}
     property has been set}
@@ -2359,8 +2359,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-underline-set 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-underline-set object) => setting}
-  @syntax[]{(setf (gtk:text-tag-underline-set object) setting)}
+  @syntax{(gtk:text-tag-underline-set object) => setting}
+  @syntax{(setf (gtk:text-tag-underline-set object) setting)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[setting]{a boolean whether this tag affects underlining}
   @begin{short}
@@ -2386,8 +2386,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-variant 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-variant object) => variant}
-  @syntax[]{(setf (gtk:text-tag-variant object) variant)}
+  @syntax{(gtk:text-tag-variant object) => variant}
+  @syntax{(setf (gtk:text-tag-variant object) variant)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[variant]{a value of the @symbol{pango:variant} enumeration}
   @begin{short}
@@ -2413,8 +2413,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-variant-set 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-variant-set object) => setting}
-  @syntax[]{(setf (gtk:text-tag-variant-set object) setting)}
+  @syntax{(gtk:text-tag-variant-set object) => setting}
+  @syntax{(setf (gtk:text-tag-variant-set object) setting)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[setting]{a boolean whether this affects the font variant}
   @begin{short}
@@ -2440,8 +2440,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-weight 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-weight object) => weight}
-  @syntax[]{(setf (gtk:text-tag-weight object) weight)}
+  @syntax{(gtk:text-tag-weight object) => weight}
+  @syntax{(setf (gtk:text-tag-weight object) weight)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[weight]{an integer for the font weight}
   @begin{short}
@@ -2467,8 +2467,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-weight-set 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-weight-set object) => setting}
-  @syntax[]{(setf (gtk:text-tag-weight-set object) setting)}
+  @syntax{(gtk:text-tag-weight-set object) => setting}
+  @syntax{(setf (gtk:text-tag-weight-set object) setting)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[setting]{a boolean whether this tag affects the font weight}
   @begin{short}
@@ -2494,8 +2494,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-wrap-mode 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-wrap-mode object) => wrap-mode}
-  @syntax[]{(setf (gtk:text-tag-wrap-mode object) wrap-mode)}
+  @syntax{(gtk:text-tag-wrap-mode object) => wrap-mode}
+  @syntax{(setf (gtk:text-tag-wrap-mode object) wrap-mode)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[wrap-mode]{a value of the @symbol{gtk:wrap-mode} enumeration}
   @begin{short}
@@ -2520,8 +2520,8 @@ lambda (tag object event iter)    :run-last
       "Accessor"
       (documentation 'text-tag-wrap-mode-set 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-wrap-mode-set object) => setting}
-  @syntax[]{(setf (gtk:text-tag-wrap-mode-set object) setting)}
+  @syntax{(gtk:text-tag-wrap-mode-set object) => setting}
+  @syntax{(setf (gtk:text-tag-wrap-mode-set object) setting)}
   @argument[object]{a @class{gtk:text-tag} object}
   @argument[setting]{a boolean whether this tag affects line wrap mode}
   @begin{short}
@@ -2570,8 +2570,8 @@ lambda (tag object event iter)    :run-last
 (cffi:defcfun ("gtk_text_tag_get_priority" text-tag-priority) :int
  #+liber-documentation
  "@version{#2023-3-15}
-  @syntax[]{(gtk:text-tag-priority tag) => priority}
-  @syntax[]{(setf (gtk:text-tag-priority tag) priority)}
+  @syntax{(gtk:text-tag-priority tag) => priority}
+  @syntax{(setf (gtk:text-tag-priority tag) priority)}
   @argument[tag]{a @class{gtk:text-tag} object}
   @argument[priority]{an integer with the priority}
   @begin{short}

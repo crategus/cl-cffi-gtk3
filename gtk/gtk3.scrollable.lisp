@@ -180,8 +180,8 @@
       "Accessor"
       (documentation 'scrollable-hadjustment 'function)
  "@version{#2023-3-24}
-  @syntax[]{(gtk:scrollable-hadjustment object) => hadjustment}
-  @syntax[]{(setf (gtk:scrollable-hadjustment object) hadjustment)}
+  @syntax{(gtk:scrollable-hadjustment object) => hadjustment}
+  @syntax{(setf (gtk:scrollable-hadjustment object) hadjustment)}
   @argument[object]{a @class{gtk:scrollable} widget}
   @argument[hadjustment]{a @class{gtk:adjustment} object}
   @begin{short}
@@ -211,8 +211,8 @@
       "Accessor"
       (documentation 'scrollable-hscroll-policy 'function)
  "@version{#2023-3-24}
-  @syntax[]{(gtk:scrollable-hscroll-policy object) => policy}
-  @syntax[]{(setf (gtk:scrollable-hscroll-policy object) policy)}
+  @syntax{(gtk:scrollable-hscroll-policy object) => policy}
+  @syntax{(setf (gtk:scrollable-hscroll-policy object) policy)}
   @argument[object]{a @class{gtk:scrollable} widget}
   @argument[policy]{a @symbol{gtk:scrollable-policy} value for the horizontal
     scrolling policy}
@@ -243,8 +243,8 @@
       "Accessor"
       (documentation 'scrollable-vadjustment 'function)
  "@version{#2023-3-24}
-  @syntax[]{(gtk:scrollable-vadjustment object) => vadjustment}
-  @syntax[]{(setf (gtk:scrollable-vadjustment object) vadjustment)}
+  @syntax{(gtk:scrollable-vadjustment object) => vadjustment}
+  @syntax{(setf (gtk:scrollable-vadjustment object) vadjustment)}
   @argument[object]{a @class{gtk:scrollable} widget}
   @argument[vadjustment]{a @class{gtk:adjustment} object}
   @begin{short}
@@ -274,8 +274,8 @@
       "Accessor"
       (documentation 'scrollable-vscroll-policy 'function)
  "@version{#2023-3-24}
-  @syntax[]{(gtk:scrollable-vscroll-policy object) => policy}
-  @syntax[]{(setf (gtk:scrollable-vscroll-policy object) policy)}
+  @syntax{(gtk:scrollable-vscroll-policy object) => policy}
+  @syntax{(setf (gtk:scrollable-vscroll-policy object) policy)}
   @argument[object]{a @class{gtk:scrollable} widget}
   @argument[policy]{a @symbol{gtk:scrollable-policy} value for the vertical
     scrolling policy}

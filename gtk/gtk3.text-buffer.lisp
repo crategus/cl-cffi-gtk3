@@ -435,7 +435,7 @@ lambda (buffer tag start end)    :run-last
       "Accessor"
       (documentation 'text-buffer-copy-target-list 'function)
  "@version{#2023-3-7}
-  @syntax[]{(gtk:text-buffer-copy-target-list object) => tlist}
+  @syntax{(gtk:text-buffer-copy-target-list object) => tlist}
   @argument[object]{a @class{gtk:text-buffer} object}
   @argument[tlist]{a @class{gtk:target-list} instance}
   @begin{short}
@@ -469,7 +469,7 @@ lambda (buffer tag start end)    :run-last
       "Accessor"
       (documentation 'text-buffer-cursor-position 'function)
  "@version{#2023-3-7}
-  @syntax[]{(gtk:text-buffer-cursor-position object) => position}
+  @syntax{(gtk:text-buffer-cursor-position object) => position}
   @argument[object]{a @class{gtk:text-buffer} object}
   @argument[position]{an integer with the position of the insert mark}
   @begin{short}
@@ -494,7 +494,7 @@ lambda (buffer tag start end)    :run-last
       "Accessor"
       (documentation 'text-buffer-has-selection 'function)
  "@version{#2023-3-7}
-  @syntax[]{(gtk:text-buffer-has-selection object) => setting}
+  @syntax{(gtk:text-buffer-has-selection object) => setting}
   @argument[object]{a @class{gtk:text-buffer} object}
   @argument[setting]{@em{true} if there is text selected}
   @begin{short}
@@ -519,7 +519,7 @@ lambda (buffer tag start end)    :run-last
       "Accessor"
       (documentation 'text-buffer-paste-target-list 'function)
  "@version{#2023-3-7}
-  @syntax[]{(gtk:text-buffer-paste-target-list object) => tlist}
+  @syntax{(gtk:text-buffer-paste-target-list object) => tlist}
   @argument[object]{a @class{gtk:text-buffer} object}
   @argument[tlist]{a @class{gtk:target-list} instance}
   @begin{short}
@@ -550,7 +550,7 @@ lambda (buffer tag start end)    :run-last
       "Accessor"
       (documentation 'text-buffer-tag-table 'function)
  "@version{2024-1-2}
-  @syntax[]{(gtk:text-buffer-tag-table object) => table}
+  @syntax{(gtk:text-buffer-tag-table object) => table}
   @argument[object]{a @class{gtk:text-buffer} object}
   @argument[table]{a @class{gtk:text-tag-table} object}
   @begin{short}
@@ -574,8 +574,8 @@ lambda (buffer tag start end)    :run-last
       "Accessor"
       (documentation 'text-buffer-text 'function)
  "@version{2024-1-1}
-  @syntax[]{(gtk:text-buffer-text object) => text}
-  @syntax[]{(setf (gtk:text-buffer-text object) text)}
+  @syntax{(gtk:text-buffer-text object) => text}
+  @syntax{(setf (gtk:text-buffer-text object) text)}
   @argument[object]{a @class{gtk:text-buffer} object}
   @argument[text]{a string with the UTF-8 text}
   @begin{short}
@@ -672,10 +672,10 @@ lambda (buffer tag start end)    :run-last
                                             (editable t))
  #+liber-documentation
  "@version{#2023-3-7}
-  @syntax[]{(gtk:text-buffer-insert buffer text) => t}
-  @syntax[]{(gtk:text-buffer-insert buffer text :position position) => t}
-  @syntax[]{(gtk:text-buffer-insert buffer text :interactive t) => t}
-  @syntax[]{(gtk:text-buffer-insert buffer text :interactive t :editable nil) => t}
+  @syntax{(gtk:text-buffer-insert buffer text) => t}
+  @syntax{(gtk:text-buffer-insert buffer text :position position) => t}
+  @syntax{(gtk:text-buffer-insert buffer text :interactive t) => t}
+  @syntax{(gtk:text-buffer-insert buffer text :interactive t :editable nil) => t}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[text]{a string with the text in UTF-8 format}
   @argument[position]{a @class{gtk:text-iter} iterator or the default value
@@ -843,10 +843,10 @@ lambda (buffer tag start end)    :run-last
                                  &key interactive editable)
  #+liber-documentation
  "@version{#2023-3-7}
-  @syntax[]{(gtk:text-buffer-insert-range buffer iter start end) => t}
-  @syntax[]{(gtk:text-buffer-insert-range buffer iter start end :interactive t)
+  @syntax{(gtk:text-buffer-insert-range buffer iter start end) => t}
+  @syntax{(gtk:text-buffer-insert-range buffer iter start end :interactive t)
     => t}
-  @syntax[]{(gtk:text-buffer-insert-range buffer iter start end :interactive t
+  @syntax{(gtk:text-buffer-insert-range buffer iter start end :interactive t
     :editable t) => t}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[iter]{a @class{gtk:text-iter} position in text buffer}
@@ -1050,9 +1050,9 @@ lambda (buffer tag start end)    :run-last
 (defun text-buffer-delete (buffer start end &key interactive editable)
  #+liber-documentation
  "@version{#2023-3-7}
-  @syntax[]{(gtk:text-buffer-delete buffer start end) => t}
-  @syntax[]{(gtk:text-buffer-delete buffer start end :interactive t) => t}
-  @syntax[]{(gtk:text-buffer-delete buffer start end :interactive t
+  @syntax{(gtk:text-buffer-delete buffer start end) => t}
+  @syntax{(gtk:text-buffer-delete buffer start end :interactive t) => t}
+  @syntax{(gtk:text-buffer-delete buffer start end :interactive t
     :editable t) => t}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[start]{a @class{gtk:text-iter} start position in the text buffer}
@@ -2139,8 +2139,8 @@ lambda (buffer tag start end)    :run-last
 
 (cffi:defcfun ("gtk_text_buffer_get_modified" text-buffer-modified) :boolean
  "@version{#2023-3-7}
-  @syntax[]{(gtk:text-buffer-modified buffer) => setting}
-  @syntax[]{(setf (gtk:text-buffer-modified buffer) setting)}
+  @syntax{(gtk:text-buffer-modified buffer) => setting}
+  @syntax{(setf (gtk:text-buffer-modified buffer) setting)}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[setting]{a boolean with the modification flag setting}
   @begin{short}
@@ -2546,8 +2546,8 @@ lambda (buffer content iter data len create)
                text-buffer-deserialize-can-create-tags) :boolean
  #+liber-documentation
  "@version{#2023-3-7}
-  @syntax[]{(gtk:text-buffer-deserialize-can-create-tags buffer format) => create}
-  @syntax[]{(setf (gtk:text-buffer-deserialize-can-create-tags buffer format) create)}
+  @syntax{(gtk:text-buffer-deserialize-can-create-tags buffer format) => create}
+  @syntax{(setf (gtk:text-buffer-deserialize-can-create-tags buffer format) create)}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[format]{a @symbol{gdk:atom} as a string representing a registered
     rich text format}

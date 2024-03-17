@@ -112,8 +112,8 @@
       "Accessor"
       (documentation 'recent-action-show-numbers 'function)
  "@version{#2023-3-24}
-  @syntax[]{(gtk:recent-action-show-numbers object) => show-numbers}
-  @syntax[]{(setf (gtk:recent-action-show-numbers object) show-numbers)}
+  @syntax{(gtk:recent-action-show-numbers object) => show-numbers}
+  @syntax{(setf (gtk:recent-action-show-numbers object) show-numbers)}
   @argument[object]{a @class{gtk:recent-action} object}
   @argument[show-numbers]{@em{true} if the shown items should be numbered}
   @begin{short}

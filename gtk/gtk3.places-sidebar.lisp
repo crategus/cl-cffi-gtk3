@@ -516,8 +516,8 @@ lambda (sidebar mount)    :run-first
       "Accessor"
       (documentation 'places-sidebar-local-only 'function)
  "@version{#2023-3-6}
-  @syntax[]{(gtk:places-sidebar-local-only object) => local-only}
-  @syntax[]{(setf (gtk:places-sidebar-local-only object) local-only)}
+  @syntax{(gtk:places-sidebar-local-only object) => local-only}
+  @syntax{(setf (gtk:places-sidebar-local-only object) local-only)}
   @argument[object]{a @class{gtk:places-sidebar} widget}
   @argument[local-only]{a boolean whether to show only local files}
   @begin{short}
@@ -539,8 +539,8 @@ lambda (sidebar mount)    :run-first
       "Accessor"
       (documentation 'places-sidebar-location 'function)
  "@version{#2023-3-6}
-  @syntax[]{(gtk:places-sidebar-location object) => location}
-  @syntax[]{(setf (gtk:places-sidebar-location object) location)}
+  @syntax{(gtk:places-sidebar-location object) => location}
+  @syntax{(setf (gtk:places-sidebar-location object) location)}
   @argument[object]{a @class{gtk:places-sidebar} widget}
   @argument[location]{a @class{g:file} object with a location to select, or
     @code{nil} for no current path}
@@ -579,8 +579,8 @@ lambda (sidebar mount)    :run-first
       "Accessor"
       (documentation 'places-sidebar-open-flags 'function)
  "@version{#2023-3-6}
-  @syntax[]{(gtk:places-sidebar-open-flags object) => flags}
-  @syntax[]{(setf (gtk:places-sidebar-open-flags object) flags)}
+  @syntax{(gtk:places-sidebar-open-flags object) => flags}
+  @syntax{(setf (gtk:places-sidebar-open-flags object) flags)}
   @argument[object]{a @class{gtk:places-sidebar} widget}
   @argument[flags]{a @symbol{gtk:places-open-flags} bitmask of modes in which
     the calling application can open locations}
@@ -622,8 +622,8 @@ lambda (sidebar mount)    :run-first
       "Accessor"
       (documentation 'places-sidebar-populate-all 'function)
  "@version{#2023-3-13}
-  @syntax[]{(gtk:places-sidebar-populate-all object) => populate-all}
-  @syntax[]{(setf (gtk:places-sidebar-populate-all object) populate-all)}
+  @syntax{(gtk:places-sidebar-populate-all object) => populate-all}
+  @syntax{(setf (gtk:places-sidebar-populate-all object) populate-all)}
   @argument[object]{a @class{gtk:places-sidebar} widget}
   @argument[populate-all]{a boolean whether the \"populate-all\" signal is also
     emitted for popovers}
@@ -651,8 +651,8 @@ lambda (sidebar mount)    :run-first
       "Accessor"
       (documentation 'places-sidebar-show-connect-to-server 'function)
  "@version{#2023-3-6}
-  @syntax[]{(gtk:places-sidebar-show-connect-to-server object) => setting}
-  @syntax[]{(setf (gtk:places-sidebar-show-connect-to-server object) setting)}
+  @syntax{(gtk:places-sidebar-show-connect-to-server object) => setting}
+  @syntax{(setf (gtk:places-sidebar-show-connect-to-server object) setting)}
   @argument[object]{a @class{gtk:places-sidebar} widget}
   @argument[setting]{a boolean whether to show an item for the Connect to
     Server command}
@@ -688,8 +688,8 @@ lambda (sidebar mount)    :run-first
       "Accessor"
       (documentation 'places-sidebar-show-desktop 'function)
  "@version{#2023-3-6}
-  @syntax[]{(gtk:places-sidebar-show-desktop) => show-desktop}
-  @syntax[]{(setf (gtk:places-sidebar-show-desktop object) show-desktop)}
+  @syntax{(gtk:places-sidebar-show-desktop) => show-desktop}
+  @syntax{(setf (gtk:places-sidebar-show-desktop object) show-desktop)}
   @argument[object]{a @class{gtk:places-sidebar} widget}
   @argument[show-desktop]{a boolean whether to show an item for the Desktop
     folder}
@@ -719,8 +719,8 @@ lambda (sidebar mount)    :run-first
       "Accessor"
       (documentation 'places-sidebar-show-enter-location 'function)
  "@version{#2023-3-6}
-  @syntax[]{(gtk:places-sidebar-show-enter-location) => setting}
-  @syntax[]{(setf (gtk:places-sidebar-show-enter-location object) setting)}
+  @syntax{(gtk:places-sidebar-show-enter-location) => setting}
+  @syntax{(setf (gtk:places-sidebar-show-enter-location object) setting)}
   @argument[object]{a @class{gtk:places-sidebar} widget}
   @argument{setting]{a boolean whether to show an item to enter a location}
   @begin{short}
@@ -749,8 +749,8 @@ lambda (sidebar mount)    :run-first
       "Accessor"
       (documentation 'places-sidebar-show-other-locations 'function)
  "@version{#2023-3-13}
-  @syntax[]{(gtk:places-sidebar-show-other-locations) => setting}
-  @syntax[]{(setf (gtk:places-sidebar-show-other-locations object) setting)}
+  @syntax{(gtk:places-sidebar-show-other-locations) => setting}
+  @syntax{(setf (gtk:places-sidebar-show-other-locations object) setting)}
   @argument[object]{a @class{gtk:places-sidebar} widget}
   @argument[setting]{a boolean whether to show an item for the Other Locations
     view}
@@ -780,8 +780,8 @@ lambda (sidebar mount)    :run-first
       "Accessor"
       (documentation 'places-sidebar-show-recent 'function)
  "@version{#2023-3-13}
-  @syntax[]{(gtk:places-sidebar-show-recent) => show-recent}
-  @syntax[]{(setf (gtk:places-sidebar-show-recent object) show-recent)}
+  @syntax{(gtk:places-sidebar-show-recent) => show-recent}
+  @syntax{(setf (gtk:places-sidebar-show-recent object) show-recent)}
   @argument[object]{a @class{gtk:places-sidebar} widget}
   @argument[show-recent]{a boolean whether to show an item for recent files}
   @begin{short}
@@ -808,8 +808,8 @@ lambda (sidebar mount)    :run-first
       "Accessor"
       (documentation 'places-sidebar-show-starred-location 'function)
  "@version{#2023-3-13}
-  @syntax[]{(gtk:places-sidebar-show-starred-location object) => setting}
-  @syntax[]{(setf (gtk:places-sidebar-show-starred-location object) setting)}
+  @syntax{(gtk:places-sidebar-show-starred-location object) => setting}
+  @syntax{(setf (gtk:places-sidebar-show-starred-location object) setting)}
   @argument[object]{a @class{gtk:places-sidebar} widget}
   @argument[setting]{a boolean whether the sidebar includes an item to show
     starred files}
@@ -833,8 +833,8 @@ lambda (sidebar mount)    :run-first
       "Accessor"
       (documentation 'places-sidebar-show-trash 'function)
  "@version{#2023-3-13}
-  @syntax[]{(gtk:places-sidebar-show-trash) => show-trash}
-  @syntax[]{(setf (gtk:places-sidebar-show-trash object) show-trash)}
+  @syntax{(gtk:places-sidebar-show-trash) => show-trash}
+  @syntax{(setf (gtk:places-sidebar-show-trash object) show-trash)}
   @argument[object]{a @class{gtk:places-sidebar} widget}
   @argument[show-trash]{a boolean whether to show an item for the Trash
     location}

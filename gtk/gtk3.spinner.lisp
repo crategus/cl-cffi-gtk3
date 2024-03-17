@@ -106,8 +106,8 @@
       "Accessor"
       (documentation 'spinner-active 'function)
  "@version{#2023-3-26}
-  @syntax[]{(gtk:spinner-active object) => active}
-  @syntax[]{(setf (gtk:spinner-active object) active)}
+  @syntax{(gtk:spinner-active object) => active}
+  @syntax{(setf (gtk:spinner-active object) active)}
   @argument[object]{a @class{gtk:spinner} widget}
   @argument[active]{a boolean whether the spinner is active}
   @begin{short}
