@@ -7,7 +7,7 @@
 
 ;;;     GtkCellRendererToggle
 
-(test cell-renderer-toggle-class
+(test gtk-cell-renderer-toggle-class
   ;; Type check
   (is (g:type-is-object "GtkCellRendererToggle"))
   ;; Check the registered name
@@ -51,7 +51,7 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-(test cell-renderer-toggle-properties
+(test gtk-cell-renderer-toggle-properties
   (let ((renderer (make-instance 'gtk:cell-renderer-toggle)))
     (is-true (gtk:cell-renderer-toggle-activatable renderer))
     (is-false (gtk:cell-renderer-toggle-active renderer))
@@ -67,7 +67,7 @@
 
 ;;;     gtk_cell_renderer_toggle_new
 
-(test cell-renderer-toggle-new
+(test gtk-cell-renderer-toggle-new
   (is (typep (gtk:cell-renderer-toggle-new) 'gtk:cell-renderer-toggle)))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-3-17

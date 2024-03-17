@@ -7,7 +7,7 @@
 
 ;;;     GtkCellRendererProgress
 
-(test cell-renderer-progress-class
+(test gtk-cell-renderer-progress-class
   ;; Type check
   (is (g:type-is-object "GtkCellRendererProgress"))
   ;; Check the registered name
@@ -55,15 +55,20 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-;;;     inverted
-;;;     pulse
-;;;     text
-;;;     text-xalign
-;;;     text-yalign
-;;;     value
+(test gtk-cell-renderer-progress-properties
+  (let ((renderer (make-instance 'gtk:cell-renderer-progress)))
+    (is-false (gtk:cell-renderer-progress-inverted renderer))
+    (is (= -1 (gtk:cell-renderer-progress-pulse renderer)))
+    (is-false (gtk:cell-renderer-progress-text renderer))
+    (is (= 0.5 (gtk:cell-renderer-progress-text-xalign renderer)))
+    (is (= 0.5 (gtk:cell-renderer-progress-text-yalign renderer)))
+    (is (= 0 (gtk:cell-renderer-progress-value renderer)))))
 
 ;;; --- Functions --------------------------------------------------------------
 
 ;;;     gtk_cell_renderer_progress_new
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+(test gtk-cell-renderer-progress-new
+  (is (typep (gtk:cell-renderer-progress-new) 'gtk:cell-renderer-progress)))
+
+;;; 2024-3-17

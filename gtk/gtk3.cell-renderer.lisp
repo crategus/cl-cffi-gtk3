@@ -37,9 +37,16 @@
 ;;;     GtkCellRendererMode
 ;;;     GtkCellRenderer
 ;;;
+;;; Accessors
+;;;
+;;;     gtk_cell_renderer_get_sensitive
+;;;     gtk_cell_renderer_set_sensitive
+;;;     gtk_cell_renderer_get_visible
+;;;     gtk_cell_renderer_set_visible
+;;;
 ;;; Functions
 ;;;
-;;;     gtk_cell_renderer_class_set_accessible_type
+;;;     gtk_cell_renderer_class_set_accessible_type         not implemented
 ;;;     gtk_cell_renderer_get_aligned_area
 ;;;     gtk_cell_renderer_get_size
 ;;;     gtk_cell_renderer_render
@@ -48,10 +55,6 @@
 ;;;     gtk_cell_renderer_stop_editing
 ;;;     gtk_cell_renderer_get_fixed_size
 ;;;     gtk_cell_renderer_set_fixed_size
-;;;     gtk_cell_renderer_get_visible                      Accessor
-;;;     gtk_cell_renderer_set_visible                      Accessor
-;;;     gtk_cell_renderer_get_sensitive                    Accessor
-;;;     gtk_cell_renderer_set_sensitive                    Accessor
 ;;;     gtk_cell_renderer_get_alignment
 ;;;     gtk_cell_renderer_set_alignment
 ;;;     gtk_cell_renderer_get_padding
@@ -122,9 +125,9 @@
 (setf (liber:alias-for-symbol 'cell-renderer-state)
       "GFlags"
       (liber:symbol-documentation 'cell-renderer-state)
- "@version{2023-2-22}
-  @short{Tells how a cell is to be rendererd.}
-  @begin{pre}
+ "@version{2024-3-15}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-flags \"GtkCellRendererState\" cell-renderer-state
   (:export t
    :type-initializer \"gtk_cell_renderer_state_get_type\")
@@ -135,17 +138,21 @@
   (:focused     #.(ash 1 4))
   (:expandable  #.(ash 1 5))
   (:expanded    #.(ash 1 6)))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:selected]{The cell is currently selected, and probably has a
-      selection colored background to render to.}
-    @entry[:prelit]{The mouse is hovering over the cell.}
-    @entry[:insensitive]{The cell is drawn in an insensitive manner.}
-    @entry[:sorted]{The cell is in a sorted row.}
-    @entry[:focused]{The cell is in the focus row.}
-    @entry[:expandable]{The cell is in a row that can be expanded.}
-    @entry[:expanded]{The cell is in a row that is expanded.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:selected]{The cell is currently selected, and probably has a
+        selection colored background to render to.}
+      @entry[:prelit]{The mouse is hovering over the cell.}
+      @entry[:insensitive]{The cell is drawn in an insensitive manner.}
+      @entry[:sorted]{The cell is in a sorted row.}
+      @entry[:focused]{The cell is in the focus row.}
+      @entry[:expandable]{The cell is in a row that can be expanded.}
+      @entry[:expanded]{The cell is in a row that is expanded.}
+    @end{table}
+  @end{values}
+  @short{Tells how a cell is to be rendererd.}
   @see-class{gtk:cell-renderer}")
 
 ;;; ----------------------------------------------------------------------------
@@ -163,24 +170,28 @@
 (setf (liber:alias-for-symbol 'cell-renderer-mode)
       "GEnum"
       (liber:symbol-documentation 'cell-renderer-mode)
- "@version{2023-2-22}
-  @short{Identifies how the user can interact with a particular cell.}
-  @begin{pre}
+ "@version{2024-3-15}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkCellRendererMode\" cell-renderer-mode
   (:export t
    :type-initializer \"gtk_cell_renderer_mode_get_type\")
   (:inert 0)
   (:activatable 1)
   (:editable 2))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:inert]{The cell is just for display and cannot be interacted with.
-      Note that this does not mean that e.g. the row being drawn cannot be
-      selected - just that a particular element of it cannot be individually
-      modified.}
-    @entry[:activatable]{The cell can be clicked.}
-    @entry[:editable]{The cell can be edited or otherwise modified.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:inert]{The cell is just for display and cannot be interacted with.
+        Note that this does not mean that e.g. the row being drawn cannot be
+        selected - just that a particular element of it cannot be individually
+        modified.}
+      @entry[:activatable]{The cell can be clicked.}
+      @entry[:editable]{The cell can be edited or otherwise modified.}
+    @end{table}
+  @end{values}
+  @short{Identifies how the user can interact with a particular cell.}
   @see-class{gtk:cell-renderer}")
 
 ;;; ----------------------------------------------------------------------------
@@ -243,7 +254,7 @@
 
 #+liber-documentation
 (setf (documentation 'cell-renderer 'type)
- "@version{2023-2-22}
+ "@version{2024-3-15}
   @begin{short}
     The @class{gtk:cell-renderer} class is a base class of a set of objects used
     for rendering a cell to a @symbol{cairo:context-t} context.
@@ -311,7 +322,7 @@ lambda (renderer editable path)    :run-first
         @entry[renderer]{The @class{gtk:cell-renderer} object which received the
           signal.}
         @entry[editable]{The @class{gtk:cell-editable} widget.}
-        @entry[path]{A string with the path identifying the edited cell.}
+        @entry[path]{The string with the path identifying the edited cell.}
       @end{table}
   @end{dictionary}
   @see-slot{gtk:cell-renderer-cell-background}
@@ -336,7 +347,7 @@ lambda (renderer editable path)    :run-first
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- cell-renderer-cell-background ------------------------------------------
+;;; --- gtk:cell-renderer-cell-background --------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "cell-background"
@@ -349,8 +360,8 @@ lambda (renderer editable path)    :run-first
 (setf (liber:alias-for-function 'cell-renderer-cell-background)
       "Accessor"
       (documentation 'cell-renderer-cell-background 'function)
- "@version{#2023-2-22}
-  @syntax[]{(setf (gtk:cell-renderer-cell-background object) background)}
+ "@version{2024-3-15}
+  @syntax{(setf (gtk:cell-renderer-cell-background object) background)}
   @argument[object]{a @class{gtk:cell-renderer} object}
   @argument[background]{a string with the cell background color}
   @begin{short}
@@ -363,7 +374,7 @@ lambda (renderer editable path)    :run-first
   @see-class{gtk:cell-renderer}
   @see-function{gtk:cell-renderer-cell-background-rgba}")
 
-;;; --- cell-renderer-cell-background-gdk --------------------------------------
+;;; --- gtk:cell-renderer-cell-background-gdk ----------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "cell-background-gdk"
@@ -379,9 +390,9 @@ lambda (renderer editable path)    :run-first
 (setf (liber:alias-for-function 'cell-renderer-cell-background-gdk)
       "Accessor"
       (documentation 'cell-renderer-cell-background-gdk 'function)
- "@version{#2023-2-22}
-  @syntax[]{(gtk:cell-renderer-cell-background-gdk object) => background}
-  @syntax[]{(setf (gtk:cell-renderer-cell-background-gdk object) background)}
+ "@version{2024-3-15}
+  @syntax{(gtk:cell-renderer-cell-background-gdk object) => background}
+  @syntax{(setf (gtk:cell-renderer-cell-background-gdk object) background)}
   @argument[object]{a @class{gtk:cell-renderer} object}
   @argument[background]{a @class{gdk:color} color with the cell background
     color}
@@ -399,7 +410,7 @@ lambda (renderer editable path)    :run-first
   @see-class{gdk:color}
   @see-function{gtk:cell-renderer-cell-background-rgba}")
 
-;;; --- cell-renderer-cell-background-rgba -------------------------------------
+;;; --- gtk:cell-renderer-cell-background-rgba ---------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "cell-background-rgba"
@@ -412,9 +423,9 @@ lambda (renderer editable path)    :run-first
 (setf (liber:alias-for-function 'cell-renderer-cell-background-rgba)
       "Accessor"
       (documentation 'cell-renderer-cell-background-rgba 'function)
- "@version{#2023-2-22}
-  @syntax[]{(gtk:cell-renderer-cell-background-rgba object) => background}
-  @syntax[]{(setf (gtk:cell-renderer-cell-background-rgba object) background)}
+ "@version{2024-3-15}
+  @syntax{(gtk:cell-renderer-cell-background-rgba object) => background}
+  @syntax{(setf (gtk:cell-renderer-cell-background-rgba object) background)}
   @argument[object]{a @class{gtk:cell-renderer} object}
   @argument[background]{a @class{gdk:rgba} color with the cell background color}
   @begin{short}
@@ -426,7 +437,7 @@ lambda (renderer editable path)    :run-first
   @see-class{gdk:rgba}
   @see-function{gtk:cell-renderer-cell-background-set}")
 
-;;; --- cell-renderer-cell-background-set --------------------------------------
+;;; --- gtk:cell-renderer-cell-background-set ----------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "cell-background-set"
@@ -440,9 +451,9 @@ lambda (renderer editable path)    :run-first
 (setf (liber:alias-for-function 'cell-renderer-cell-background-set)
       "Accessor"
       (documentation 'cell-renderer-cell-background-set 'function)
- "@version{#2023-2-22}
-  @syntax[]{(gtk:cell-renderer-cell-background-set object) => setting}
-  @syntax[]{(setf (gtk:cell-renderer-cell-background-set object) setting)}
+ "@version{2024-3-15}
+  @syntax{(gtk:cell-renderer-cell-background-set object) => setting}
+  @syntax{(setf (gtk:cell-renderer-cell-background-set object) setting)}
   @argument[object]{a @class{gtk:cell-renderer} object}
   @argument[setting]{a boolean whether this tag affects the cell background
     color}
@@ -455,7 +466,7 @@ lambda (renderer editable path)    :run-first
   @see-function{gtk:cell-renderer-cell-background}
   @see-function{gtk:cell-renderer-cell-background-rgba}")
 
-;;; --- cell-renderer-editing --------------------------------------------------
+;;; --- gtk:cell-renderer-editing ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "editing" 'cell-renderer) t)
@@ -467,8 +478,8 @@ lambda (renderer editable path)    :run-first
 (setf (liber:alias-for-function 'cell-renderer-editing)
       "Accessor"
       (documentation 'cell-renderer-editing 'function)
- "@version{#2023-2-22}
-  @syntax[]{(gtk:cell-renderer-editing object) => setting}
+ "@version{2024-3-15}
+  @syntax{(gtk:cell-renderer-editing object) => setting}
   @argument[object]{a @class{gtk:cell-renderer} object}
   @argument[setting]{a boolean whether the cell renderer is in editing mode}
   @begin{short}
@@ -478,7 +489,7 @@ lambda (renderer editable path)    :run-first
   Whether the cell renderer is currently in editing mode.
   @see-class{gtk:cell-renderer}")
 
-;;; --- cell-renderer-height ---------------------------------------------------
+;;; --- gtk:cell-renderer-height -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "height" 'cell-renderer) t)
@@ -491,9 +502,9 @@ lambda (renderer editable path)    :run-first
 (setf (liber:alias-for-function 'cell-renderer-height)
       "Accessor"
       (documentation 'cell-renderer-height 'function)
- "@version{#2023-2-22}
-  @syntax[]{(gtk:cell-renderer-height object) => height}
-  @syntax[]{(setf (gtk:cell-renderer-height object) height)}
+ "@version{2024-3-15}
+  @syntax{(gtk:cell-renderer-height object) => height}
+  @syntax{(setf (gtk:cell-renderer-height object) height)}
   @argument[object]{a @class{gtk:cell-renderer} object}
   @argument[height]{an integer with the fixed height}
   @begin{short}
@@ -504,7 +515,7 @@ lambda (renderer editable path)    :run-first
   @see-class{gtk:cell-renderer}
   @see-function{gtk:cell-renderer-width}")
 
-;;; --- cell-renderer-is-expanded ----------------------------------------------
+;;; --- gtk:cell-renderer-is-expanded ------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "is-expanded" 'cell-renderer) t)
@@ -516,9 +527,9 @@ lambda (renderer editable path)    :run-first
 (setf (liber:alias-for-function 'cell-renderer-is-expanded)
       "Accessor"
       (documentation 'cell-renderer-is-expanded 'function)
- "@version{#2023-2-22}
-  @syntax[]{(gtk:cell-renderer-is-expanded object) => setting}
-  @syntax[]{(setf (gtk:cell-renderer-is-expanded object) setting)}
+ "@version{2024-3-15}
+  @syntax{(gtk:cell-renderer-is-expanded object) => setting}
+  @syntax{(setf (gtk:cell-renderer-is-expanded object) setting)}
   @argument[object]{a @class{gtk:cell-renderer} object}
   @argument[setting]{a boolean whether the row is expanded}
   @begin{short}
@@ -528,7 +539,7 @@ lambda (renderer editable path)    :run-first
   Row is an expander row, and is expanded.
   @see-class{gtk:cell-renderer}")
 
-;;; --- cell-renderer-is-expander ----------------------------------------------
+;;; --- gtk:cell-renderer-is-expander ------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "is-expander" 'cell-renderer) t)
@@ -540,9 +551,9 @@ lambda (renderer editable path)    :run-first
 (setf (liber:alias-for-function 'cell-renderer-is-expander)
       "Accessor"
       (documentation 'cell-renderer-is-expander 'function)
- "@version{#2023-2-22}
-  @syntax[]{(gtk:cell-renderer-is-expander object) => setting}
-  @syntax[]{(setf (gtk:cell-renderer-is-expander object) setting)}
+ "@version{2024-3-15}
+  @syntax{(gtk:cell-renderer-is-expander object) => setting}
+  @syntax{(setf (gtk:cell-renderer-is-expander object) setting)}
   @argument[object]{a @class{gtk:cell-renderer} object}
   @argument[setting]{a boolean whether the row has children}
   @begin{short}
@@ -552,7 +563,7 @@ lambda (renderer editable path)    :run-first
   Row has children.
   @see-class{gtk:cell-renderer}")
 
-;;; --- cell-renderer-mode -----------------------------------------------------
+;;; --- gtk:cell-renderer-mode -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "mode" 'cell-renderer) t)
@@ -565,9 +576,9 @@ lambda (renderer editable path)    :run-first
 (setf (liber:alias-for-function 'cell-renderer-mode)
       "Accessor"
       (documentation 'cell-renderer-mode 'function)
- "@version{#2023-2-22}
-  @syntax[]{(gtk:cell-renderer-mode object) => mode}
-  @syntax[]{(setf (gtk:cell-renderer-mode object) mode)}
+ "@version{2024-3-15}
+  @syntax{(gtk:cell-renderer-mode object) => mode}
+  @syntax{(setf (gtk:cell-renderer-mode object) mode)}
   @argument[object]{a @class{gtk:cell-renderer} object}
   @argument[mode]{a value of the @symbol{gtk:cell-renderer-mode} enumeration}
   @begin{short}
@@ -578,7 +589,7 @@ lambda (renderer editable path)    :run-first
   @see-class{gtk:cell-renderer}
   @see-symbol{gtk:cell-renderer-mode}")
 
-;;; --- cell-renderer-sensitive ------------------------------------------------
+;;; --- gtk:cell-renderer-sensitive --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "sensitive" 'cell-renderer) t)
@@ -590,9 +601,9 @@ lambda (renderer editable path)    :run-first
 (setf (liber:alias-for-function 'cell-renderer-sensitive)
       "Accessor"
       (documentation 'cell-renderer-sensitive 'function)
- "@version{#2023-2-22}
-  @syntax[]{(gtk:cell-renderer-sensitive object) => sensitive}
-  @syntax[]{(setf (gtk:cell-renderer-sensitive object) sensitive)}
+ "@version{2024-3-15}
+  @syntax{(gtk:cell-renderer-sensitive object) => sensitive}
+  @syntax{(setf (gtk:cell-renderer-sensitive object) sensitive)}
   @argument[object]{a @class{gtk:cell-renderer} object}
   @argument[sensitive]{a boolean with the sensitivity of the cell}
   @begin{short}
@@ -604,7 +615,7 @@ lambda (renderer editable path)    :run-first
   sensitivity.
   @see-class{gtk:cell-renderer}")
 
-;;; --- cell-renderer-visible --------------------------------------------------
+;;; --- gtk:cell-renderer-visible ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "visible" 'cell-renderer) t)
@@ -616,9 +627,9 @@ lambda (renderer editable path)    :run-first
 (setf (liber:alias-for-function 'cell-renderer-visible)
       "Accessor"
       (documentation 'cell-renderer-visible 'function)
- "@version{#2023-2-22}
-  @syntax[]{(gtk:cell-renderer-visible object) => visible}
-  @syntax[]{(setf (gtk:cell-renderer-visible object) visible)}
+ "@version{2024-3-15}
+  @syntax{(gtk:cell-renderer-visible object) => visible}
+  @syntax{(setf (gtk:cell-renderer-visible object) visible)}
   @argument[object]{a @class{gtk:cell-renderer} object}
   @argument[visible]{a boolean with the visibility of the cell}
   @begin{short}
@@ -630,7 +641,7 @@ lambda (renderer editable path)    :run-first
   visibility.
   @see-class{gtk:cell-renderer}")
 
-;;; --- cell-renderer-width ----------------------------------------------------
+;;; --- gtk:cell-renderer-width ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "width" 'cell-renderer) t)
@@ -643,9 +654,9 @@ lambda (renderer editable path)    :run-first
 (setf (liber:alias-for-function 'cell-renderer-width)
       "Accessor"
       (documentation 'cell-renderer-width 'function)
- "@version{#2023-2-22}
-  @syntax[]{(gtk:cell-renderer-width object) => width}
-  @syntax[]{(setf (gtk:cell-renderer-width object) width)}
+ "@version{2024-3-15}
+  @syntax{(gtk:cell-renderer-width object) => width}
+  @syntax{(setf (gtk:cell-renderer-width object) width)}
   @argument[object]{a @class{gtk:cell-renderer} object}
   @argument[width]{an integer with the fixed width}
   @begin{short}
@@ -656,7 +667,7 @@ lambda (renderer editable path)    :run-first
   @see-class{gtk:cell-renderer}
   @see-function{gtk:cell-renderer-height}")
 
-;;; --- cell-renderer-xalign ---------------------------------------------------
+;;; --- gtk:cell-renderer-xalign -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "xalign" 'cell-renderer) t)
@@ -670,9 +681,9 @@ lambda (renderer editable path)    :run-first
 (setf (liber:alias-for-function 'cell-renderer-xalign)
       "Accessor"
       (documentation 'cell-renderer-xalign 'function)
- "@version{#2023-2-22}
-  @syntax[]{(gtk:cell-renderer-xalign object) => align}
-  @syntax[]{(setf (gtk:cell-renderer-xalign object) align)}
+ "@version{2024-3-15}
+  @syntax{(gtk:cell-renderer-xalign object) => align}
+  @syntax{(setf (gtk:cell-renderer-xalign object) align)}
   @argument[object]{a @class{gtk:cell-renderer} object}
   @argument[align]{a float with the x alignment}
   @begin{short}
@@ -684,7 +695,7 @@ lambda (renderer editable path)    :run-first
   @see-class{gtk:cell-renderer}
   @see-function{gtk:cell-renderer-yalign}")
 
-;;; --- cell-renderer-xpad -----------------------------------------------------
+;;; --- gtk:cell-renderer-xpad -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "xpad" 'cell-renderer) t)
@@ -696,9 +707,9 @@ lambda (renderer editable path)    :run-first
 (setf (liber:alias-for-function 'cell-renderer-xpad)
       "Accessor"
       (documentation 'cell-renderer-xpad 'function)
- "@version{#2023-2-22}
-  @syntax[]{(gtk:cell-renderer-xpad object) => padding}
-  @syntax[]{(setf (gtk:cell-renderer-xpad object) padding)}
+ "@version{2024-3-15}
+  @syntax{(gtk:cell-renderer-xpad object) => padding}
+  @syntax{(setf (gtk:cell-renderer-xpad object) padding)}
   @argument[object]{a @class{gtk:cell-renderer} object}
   @argument[padding]{a unsigned integer with the padding}
   @begin{short}
@@ -709,7 +720,7 @@ lambda (renderer editable path)    :run-first
   @see-class{gtk:cell-renderer}
   @see-function{gtk:cell-renderer-ypad}")
 
-;;; --- cell-renderer-yalign ---------------------------------------------------
+;;; --- gtk:cell-renderer-yalign -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "yalign" 'cell-renderer) t)
@@ -722,9 +733,9 @@ lambda (renderer editable path)    :run-first
 (setf (liber:alias-for-function 'cell-renderer-yalign)
       "Accessor"
       (documentation 'cell-renderer-yalign 'function)
- "@version{#2023-2-22}
-  @syntax[]{(gtk:cell-renderer-yalign object) => align}
-  @syntax[]{(setf (gtk:cell-renderer-yalign object) align)}
+ "@version{2024-3-15}
+  @syntax{(gtk:cell-renderer-yalign object) => align}
+  @syntax{(setf (gtk:cell-renderer-yalign object) align)}
   @argument[object]{a @class{gtk:cell-renderer} object}
   @argument[align]{a float with the y alignment}
   @begin{short}
@@ -735,7 +746,7 @@ lambda (renderer editable path)    :run-first
   @see-class{gtk:cell-renderer}
   @see-function{gtk:cell-renderer-xalign}")
 
-;;; --- cell-renderer-ypad -----------------------------------------------------
+;;; --- gtk:cell-renderer-ypad -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "ypad" 'cell-renderer) t)
@@ -747,9 +758,9 @@ lambda (renderer editable path)    :run-first
 (setf (liber:alias-for-function 'cell-renderer-ypad)
       "Accessor"
       (documentation 'cell-renderer-ypad 'function)
- "@version{#2023-2-22}
-  @syntax[]{(gtk:cell-renderer-ypad object) => padding}
-  @syntax[]{(setf (gtk:cell-renderer-ypad object) padding)}
+ "@version{2024-3-15}
+  @syntax{(gtk:cell-renderer-ypad object) => padding}
+  @syntax{(setf (gtk:cell-renderer-ypad object) padding)}
   @argument[object]{a @class{gtk:cell-renderer} object}
   @argument[padding]{a unsigned integer with the padding}
   @begin{short}
@@ -795,20 +806,22 @@ lambda (renderer editable path)    :run-first
   (area (g:boxed gdk:rectangle))
   (aligned (g:boxed gdk:rectangle)))
 
-(defun cell-renderer-aligned-area (cell widget flags area)
+(defun cell-renderer-aligned-area (renderer widget flags area)
  #+liber-documentation
- "@version{#2023-2-22}
-  @argument[cell]{a @class{gtk:cell-renderer} object}
-  @argument[widget]{a @class{gtk:widget} object this cell will be rendering to}
-  @argument[flags]{a @symbol{gtk:cell-renderer-state} render flags}
+ "@version{#2024-3-15}
+  @argument[renderer]{a @class{gtk:cell-renderer} object}
+  @argument[widget]{a @class{gtk:widget} object this cell renderer will be
+    rendering to}
+  @argument[flags]{a @symbol{gtk:cell-renderer-state} value with the render
+    flags}
   @argument[area]{a @class{gdk:rectangle} instance  with the cell area which
     would be passed to the @fun{gtk:cell-renderer-render} function}
   @begin{return}
-    A @class{gdk:rectangle} area for the space inside @arg{area} that would
+    The @class{gdk:rectangle} area for the space inside @arg{area} that would
     acually be used to render.
   @end{return}
   @begin{short}
-    Gets the aligned area used by @arg{cell} inside @arg{area}.
+    Gets the aligned area used by the cell renderer inside @arg{area}.
   @end{short}
   Used for finding the appropriate edit and focus rectangle.
   @see-class{gtk:cell-renderer}
@@ -817,13 +830,13 @@ lambda (renderer editable path)    :run-first
   @see-symbol{gtk:cell-renderer-state}
   @see-function{gtk:cell-renderer-render}"
   (let ((aligned (gdk:rectangle-new)))
-    (%cell-renderer-aligned-area cell widget flags area aligned)
+    (%cell-renderer-aligned-area renderer widget flags area aligned)
     aligned))
 
 (export 'cell-renderer-aligned-area)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_cell_renderer_get_size () -> cell-renderer-size
+;;; gtk_cell_renderer_get_size ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_cell_renderer_get_size" %cell-renderer-size) :void
@@ -837,20 +850,21 @@ lambda (renderer editable path)    :run-first
 
 (defun cell-renderer-size (cell widget area)
  #+liber-documentation
- "@version{2023-2-22}
-  @argument[cell]{a @class{gtk:cell-renderer} object}
-  @argument[widget]{a @class{gtk:widget} object the renderer is rendering to}
+ "@version{2024-3-24}
+  @argument[renderer]{a @class{gtk:cell-renderer} object}
+  @argument[widget]{a @class{gtk:widget} object the cell renderer is rendering
+    to}
   @argument[area]{a @class{gdk:rectangle} instance with the area a cell will be
     allocated, or @code{nil}}
   @begin{return}
-    @code{x-offset} -- an integer with the x offset of cell relative to
-                       @arg{area}, or @code{nil} @br{}
-    @code{y-offset} -- an integer with the y offset of cell relative to
-                       @arg{area}, or @code{nil} @br{}
-    @code{width}    -- an integer with the width needed to render a cell,
-                       or @code{nil} @br{}
-    @code{height}   -- an integer with the height needed to render a cell,
-                       or @code{nil}
+    @code{xoffset} -- an integer with the x offset of cell relative to
+      @arg{area}, or @code{nil} @br{}
+    @code{yoffset} -- an integer with the y offset of cell relative to
+      @arg{area}, or @code{nil} @br{}
+    @code{width} -- an integer with the width needed to render a cell,
+      or @code{nil} @br{}
+    @code{height} -- an integer with the height needed to render a cell,
+      or @code{nil}
   @end{return}
   @begin{short}
     Obtains the width and height needed to render the cell.
@@ -861,7 +875,7 @@ lambda (renderer editable path)    :run-first
   of the cell relative to this location.
 
   Please note that the values set in @arg{width} and @arg{height}, as well as
-  those in @arg{x-offset} and @arg{y-offset} are inclusive of the
+  those in @arg{xoffset} and @arg{yoffset} are inclusive of the
   @slot[gtk:cell-renderer]{xpad} and @slot[gtk:cell-renderer]{ypad} properties.
   @begin[Warning]{dictionary}
     The @fun{gtk:cell-renderer-size} function has been deprecated since version
@@ -873,19 +887,19 @@ lambda (renderer editable path)    :run-first
   @see-class{gdk:rectangle}
   @see-function{gtk:cell-renderer-render}
   @see-function{gtk:cell-renderer-preferred-size}"
-  (cffi:with-foreign-objects ((x-offset :int)
-                              (y-offset :int)
+  (cffi:with-foreign-objects ((xoffset :int)
+                              (yoffset :int)
                               (width :int)
                               (height :int))
     (%cell-renderer-size cell
                          widget
                          area
-                         x-offset
-                         y-offset
+                         xoffset
+                         yoffset
                          width
                          height)
-    (values (cffi:mem-ref x-offset :int)
-            (cffi:mem-ref y-offset :int)
+    (values (cffi:mem-ref xoffset :int)
+            (cffi:mem-ref yoffset :int)
             (cffi:mem-ref width :int)
             (cffi:mem-ref height :int))))
 
@@ -897,13 +911,13 @@ lambda (renderer editable path)    :run-first
 
 (cffi:defcfun ("gtk_cell_renderer_render" cell-renderer-render) :void
  #+liber-documentation
- "@version{#2023-2-22}
-  @argument[cell]{a @class{gtk:cell-renderer} object}
-  @argument[cr]{a @symbol{cairo:context-t} context to draw to}
-  @argument[widget]{a @class{gtk:widget} object owning window}
+ "@version{#2024-3-15}
+  @argument[renderer]{a @class{gtk:cell-renderer} object}
+  @argument[cr]{a @symbol{cairo:context-t} instance with the context to draw to}
+  @argument[widget]{a @class{gtk:widget} object owning the window}
   @argument[background]{a @class{gdk:rectangle} instance with entire cell area
     including tree expanders and maybe padding on the sides}
-  @argument[cell]{a @class{gdk:rectangle} instance with the area normally
+  @argument[area]{a @class{gdk:rectangle} instance with the area normally
     rendered by a cell renderer}
   @argument[flags]{a @symbol{gtk:cell-renderer-state} value that affect
     rendering}
@@ -911,17 +925,19 @@ lambda (renderer editable path)    :run-first
     Invokes the virtual render function of the cell renderer.
   @end{short}
   The passed-in rectangles are areas in @arg{cr}. Most renderers will draw
-  within @arg{area}. The @code{xalign}, @code{yalign}, @code{xpad},
-  and @code{ypad} fields of the cell renderer should be honored with respect to
-  @arg{area}. The @arg{background} argument includes the blank space around the
-  cell, and also the area containing the tree expander. So the @arg{background}
-  rectangles for all cells tile to cover the entire window.
+  within @arg{area}. The @slot[gtk:cell-renderer]{xalign},
+  @slot[gtk:cell-renderer]{yalign}, @slot[gtk:cell-renderer]{xpad}, and
+  @slot[gtk:cell-renderer]{ypad} properties of the cell renderer should be
+  honored with respect to @arg{area}. The @arg{background} argument includes
+  the blank space around the cell, and also the area containing the tree
+  expander. So the @arg{background} rectangles for all cells tile to cover the
+  entire window.
   @see-class{gtk:cell-renderer}
   @see-class{gtk:widget}
   @see-class{gdk:rectangle}
   @see-symbol{cairo:context-t}
   @see-symbol{gtk:cell-renderer-state}"
-  (cell (g:object cell-renderer))
+  (renderer (g:object cell-renderer))
   (cr (:pointer (:struct cairo:context-t)))
   (widget (g:object widget))
   (background (g:boxed gdk:rectangle))
@@ -936,13 +952,13 @@ lambda (renderer editable path)    :run-first
 
 (cffi:defcfun ("gtk_cell_renderer_activate" cell-renderer-activate) :boolean
  #+liber-documentation
- "@version{#2023-2-22}
-  @argument[cell]{a @class{gtk:cell-renderer} object}
+ "@version{#2024-3-15}
+  @argument[renderer]{a @class{gtk:cell-renderer} object}
   @argument[event]{a @class{gdk:event} event}
   @argument[widget]{a @class{gtk:widget} object that received the event}
-  @argument[path]{widget dependent string representation of the event location,
-    e.g. for a @class{gtk:tree-view} widget, a string representation of a
-    @class{gtk:tree-path} instance}
+  @argument[path]{a string with the widget dependent representation of the event
+    location, e.g. for a @class{gtk:tree-view} widget, a string representation
+    of a @class{gtk:tree-path} instance}
   @argument[background]{a @class{gdk:rectangle} instance with the background
     area as passed to the @fun{gtk:cell-renderer-render} function}
   @argument[area]{a @class{gdk:rectangle} instance with the cell area as passed
@@ -963,7 +979,7 @@ lambda (renderer editable path)    :run-first
   @see-class{gdk:event}
   @see-symbol{gtk:cell-renderer-state}
   @see-function{gtk:cell-renderer-render}"
-  (cell (g:object cell-renderer))
+  (renderer (g:object cell-renderer))
   (event (g:boxed gdk:event))
   (widget (g:object widget))
   (path :string)
@@ -980,12 +996,12 @@ lambda (renderer editable path)    :run-first
 (cffi:defcfun ("gtk_cell_renderer_start_editing" cell-renderer-start-editing)
     (g:object cell-editable)
  #+liber-documentation
- "@version{#2023-2-22}
-  @argument[cell]{a @class{gtk:cell-renderer} object}
+ "@version{#2024-3-15}
+  @argument[renderer]{a @class{gtk:cell-renderer} object}
   @argument[event]{a @class{gdk:event} event}
   @argument[widget]{a @class{gtk:widget} object that received the event}
-  @argument[path]{widget dependent string representation of the event location,
-    e.g. for @class{gtk:tree-view} widget, a string representation of
+  @argument[path]{a string with the widget dependent representation of the event
+    location, e.g. for @class{gtk:tree-view} widget, a string representation of
     a @class{gtk:tree-path} instance}
   @argument[background]{a @class{gdk:rectangle} instance with the background
     area as passed to the @fun{gtk:cell-renderer-render} function}
@@ -1005,7 +1021,7 @@ lambda (renderer editable path)    :run-first
   @see-class{gdk:rectangle}
   @see-symbol{gtk:cell-renderer-state}
   @see-function{gtk:cell-renderer-render}"
-  (cell (g:object cell-renderer))
+  (renderer (g:object cell-renderer))
   (event (g:boxed gdk:event))
   (widget (g:object widget))
   (path :string)
@@ -1022,33 +1038,33 @@ lambda (renderer editable path)    :run-first
 (cffi:defcfun ("gtk_cell_renderer_stop_editing" cell-renderer-stop-editing)
     :void
  #+liber-documentation
- "@version{#2023-2-22}
-  @argument[cell]{a @class{gtk:cell-renderer} object}
+ "@version{#2024-3-15}
+  @argument[renderer]{a @class{gtk:cell-renderer} object}
   @argument[canceled]{@em{true} if the editing has been canceled}
   @begin{short}
     Informs the cell renderer that the editing is stopped.
   @end{short}
-  If @arg{canceled} is @em{true}, the cell renderer will emit the
+  If the @arg{canceled} argument is @em{true}, the cell renderer will emit the
   @code{\"editing-canceled\"} signal. This function should be called by cell
   renderer implementations in response to the @code{\"editing-done\"} signal of
   the @class{gtk:cell-editable} widget.
   @see-class{gtk:cell-renderer}
   @see-class{gtk:cell-editable}
   @see-function{gtk:cell-renderer-start-editing}"
-  (cell (g:object cell-renderer))
+  (renderer (g:object cell-renderer))
   (canceled :boolean))
 
 (export 'cell-renderer-stop-editing)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_cell_renderer_get_fixed_size ()
-;;; gtk_cell_renderer_set_fixed_size () -> cell-renderer-fixed-size
+;;; gtk_cell_renderer_set_fixed_size ()
 ;;; ----------------------------------------------------------------------------
 
-(defun (setf cell-renderer-fixed-size) (value cell)
+(defun (setf cell-renderer-fixed-size) (value renderer)
   (destructuring-bind (width height) value
     (cffi:foreign-funcall "gtk_cell_renderer_set_fixed_size"
-                          (g:object cell-renderer) cell
+                          (g:object cell-renderer) renderer
                           :int width
                           :int height
                           :void)
@@ -1056,27 +1072,27 @@ lambda (renderer editable path)    :run-first
 
 (cffi:defcfun ("gtk_cell_renderer_get_fixed_size" %cell-renderer-fixed-size)
     :void
-  (cell (g:object cell-renderer))
+  (renderer (g:object cell-renderer))
   (width (:pointer :int))
   (height (:pointer :int)))
 
-(defun cell-renderer-fixed-size (cell)
+(defun cell-renderer-fixed-size (renderer)
  #+liber-documentation
- "@version{#2023-2-22}
-  @syntax[]{(gtk:cell-renderer-fixed-size cell) => width, height}
-  @syntax[]{(setf (gtk:cell-renderer-fixe-size cell) (list width height))}
-  @argument[cell]{a @class{gtk:cell-renderer} object}
+ "@version{#2024-3-15}
+  @syntax{(gtk:cell-renderer-fixed-size renderer) => width, height}
+  @syntax{(setf (gtk:cell-renderer-fixe-size renderer) (list width height))}
+  @argument[renderer]{a @class{gtk:cell-renderer} object}
   @argument[width]{an integer with the width of the cell renderer, or -1}
   @argument[height]{an integer with the height of the cell renderer, or -1}
   @begin{short}
     The @fun{gtk:cell-renderer-fixed-size} function returns @arg{width} and
-    @arg{height} with the appropriate size of @arg{cell}.
+    @arg{height} with the appropriate size of @arg{renderer}.
   @end{short}
   The @setf{gtk:cell-renderer-fixed-size} function sets the renderer size to be
   explicit, independent of the properties set.
   @see-class{gtk:cell-renderer}"
   (cffi:with-foreign-objects ((width :int) (height :int))
-    (%cell-renderer-fixed-size cell width height)
+    (%cell-renderer-fixed-size renderer width height)
     (values (cffi:mem-ref width :int)
             (cffi:mem-ref height :int))))
 
@@ -1084,31 +1100,31 @@ lambda (renderer editable path)    :run-first
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_cell_renderer_get_alignment ()
-;;; gtk_cell_renderer_set_alignment () -> cell-renderer-alignment
+;;; gtk_cell_renderer_set_alignment ()
 ;;; ----------------------------------------------------------------------------
 
-(defun (setf cell-renderer-alignment) (value cell)
+(defun (setf cell-renderer-alignment) (value renderer)
   (destructuring-bind (xalign yalign) value
     (let ((xalign (coerce xalign 'single-float))
           (yalign (coerce yalign 'single-float)))
       (cffi:foreign-funcall "gtk_cell_renderer_set_alignment"
-                            (g:object cell-renderer) cell
+                            (g:object cell-renderer) renderer
                             :float xalign
                             :float yalign
                             :void)
        (values xalign yalign))))
 
 (cffi:defcfun ("gtk_cell_renderer_get_alignment" %cell-renderer-alignment) :void
-  (cell (g:object cell-renderer))
+  (renderer (g:object cell-renderer))
   (xalign (:pointer :float))
   (yalign (:pointer :float)))
 
-(defun cell-renderer-alignment (cell)
+(defun cell-renderer-alignment (renderer)
  #+liber-documentation
- "@version{2023-12-3}
-  @syntax[]{(gtk:cell-renderer-alignment cell) => xalign, yalign}
-  @syntax[]{(setf (gtk:cell-renderer-alignment cell) (list xalign yalign))}
-  @argument[cell]{a @class{gtk:cell-renderer} object}
+ "@version{2024-3-15}
+  @syntax{(gtk:cell-renderer-alignment renderer) => xalign, yalign}
+  @syntax{(setf (gtk:cell-renderer-alignment renderer) (list xalign yalign))}
+  @argument[renderer]{a @class{gtk:cell-renderer} object}
   @argument[xalign]{a float with the x alignment of the cell renderer}
   @argument[yalign]{a float with the y alignment of the cell renderer}
   @begin{short}
@@ -1120,7 +1136,7 @@ lambda (renderer editable path)    :run-first
   values are coerced to float values before assignment.
   @see-class{gtk:cell-renderer}"
   (cffi:with-foreign-objects ((xalign :float) (yalign :float))
-    (%cell-renderer-alignment cell xalign yalign)
+    (%cell-renderer-alignment renderer xalign yalign)
     (values (cffi:mem-ref xalign :float)
             (cffi:mem-ref yalign :float))))
 
@@ -1128,40 +1144,40 @@ lambda (renderer editable path)    :run-first
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_cell_renderer_get_padding ()
-;;; gtk_cell_renderer_set_padding () -> cell-renderer-padding
+;;; gtk_cell_renderer_set_padding ()
 ;;; ----------------------------------------------------------------------------
 
-(defun (setf cell-renderer-padding) (value cell)
+(defun (setf cell-renderer-padding) (value renderer)
   (destructuring-bind (xpad ypad) value
     (cffi:foreign-funcall "gtk_cell_renderer_set_padding"
-                          (g:object cell-renderer) cell
+                          (g:object cell-renderer) renderer
                           :int xpad
                           :int ypad
                           :void)
      (values xpad ypad)))
 
 (cffi:defcfun ("gtk_cell_renderer_get_padding" %cell-renderer-padding) :void
-  (cell (g:object cell-renderer))
+  (renderer (g:object cell-renderer))
   (xpad (:pointer :int))
   (ypad (:pointer :int)))
 
-(defun cell-renderer-padding (cell)
+(defun cell-renderer-padding (renderer)
  #+liber-documentation
- "@version{#2023-2-22}
-  @syntax[]{(gtk:cell-renderer-padding cell) => xpad, ypad}
-  @syntax[]{(setf gtk:cell-renderer-padding cell) (list xpad ypad))}
-  @argument[cell]{a @class{gtk:cell-renderer} object}
+ "@version{#2024-3-15}
+  @syntax{(gtk:cell-renderer-padding renderer) => xpad, ypad}
+  @syntax{(setf gtk:cell-renderer-padding renderer) (list xpad ypad))}
+  @argument[renderer]{a @class{gtk:cell-renderer} object}
   @argument[xpad]{an integer with the x padding of the cell renderer}
   @argument[ypad]{an integer with the y padding of the cell renderer}
   @begin{short}
     The @fun{gtk:cell-renderer-padding} function returns the appropriate
     @arg{xpad} and @arg{ypad} of the cell renderer.
   @end{short}
-  The @setf{gtk:cell-renderer-padding} function sets the cell renderer's
-  padding.
+  The @setf{gtk:cell-renderer-padding} function sets the padding of the cell
+  renderer.
   @see-class{gtk:cell-renderer}"
   (cffi:with-foreign-objects ((xpad :int) (ypad :int))
-    (%cell-renderer-padding cell xpad ypad)
+    (%cell-renderer-padding renderer xpad ypad)
     (values (cffi:mem-ref xpad :int)
             (cffi:mem-ref ypad :int))))
 
@@ -1173,22 +1189,23 @@ lambda (renderer editable path)    :run-first
 
 (cffi:defcfun ("gtk_cell_renderer_get_state" cell-renderer-state) state-flags
  #+liber-documentation
- "@version{#2023-2-22}
-  @argument[cell]{a @class{gtk:cell-renderer}, or @code{nil}}
+ "@version{#2024-3-15}
+  @argument[renderer]{a @class{gtk:cell-renderer}, or @code{nil}}
   @argument[widget]{a @class{gtk:widget} object, or @code{nil}}
-  @argument[state]{s @symbol{gtk:cell-renderer-state} cell renderer state}
-  @return{The @symbol{gtk:state-flags} state flags applying to the cell
-    renderer.}
+  @argument[state]{a @symbol{gtk:cell-renderer-state} value with the cell
+    renderer state}
+  @return{The @symbol{gtk:state-flags} value with the state flags applying to
+    the cell renderer.}
   @begin{short}
-    Translates the cell renderer state to @symbol{gtk:state-flags} flags,
-    based on the cell renderer and widget sensitivity, and the given
-    @symbol{gtk:cell-renderer-state} flags.
+  Translates the cell renderer state to @symbol{gtk:state-flags} flags, based
+  on the cell renderer and widget sensitivity, and the given
+  @symbol{gtk:cell-renderer-state} flags.
   @end{short}
   @see-class{gtk:cell-renderer}
   @see-class{gtk:widget}
   @see-symbol{gtk:state-flags}
   @see-symbol{gtk:cell-renderer-state}"
-  (cell (g:object cell-renderer))
+  (renderer (g:object cell-renderer))
   (widget (g:object widget))
   (state cell-renderer-state))
 
@@ -1201,14 +1218,14 @@ lambda (renderer editable path)    :run-first
 (cffi:defcfun ("gtk_cell_renderer_is_activatable" cell-renderer-is-activatable)
     :boolean
  #+liber-documentation
- "@version{#2023-2-22}
-  @argument[cell]{a @class{gtk:cell-renderer} object}
+ "@version{#2024-3-15}
+  @argument[renderer]{a @class{gtk:cell-renderer} object}
   @return{@em{True} if the cell renderer can do anything when activated.}
   @begin{short}
     Checks whether the cell renderer can do something when activated.
   @end{short}
   @see-class{gtk:cell-renderer}"
-  (cell (g:object cell-renderer)))
+  (renderer (g:object cell-renderer)))
 
 (export 'cell-renderer-is-activatable)
 
@@ -1218,30 +1235,31 @@ lambda (renderer editable path)    :run-first
 
 (cffi:defcfun ("gtk_cell_renderer_get_preferred_height"
           %cell-renderer-preferred-height) :void
-  (cell (g:object cell-renderer))
+  (renderer (g:object cell-renderer))
   (widget (g:object widget))
-  (minimum-size (:pointer :int))
-  (natural-size (:pointer :int)))
+  (minimum (:pointer :int))
+  (natural (:pointer :int)))
 
-(defun cell-renderer-preferred-height (cell widget)
+(defun cell-renderer-preferred-height (renderer widget)
  #+liber-documentation
- "@version{#2023-2-22}
-  @argument[cell]{a @class{gtk:cell-renderer} object}
+ "@version{#2024-3-15}
+  @argument[renderer]{a @class{gtk:cell-renderer} object}
   @argument[widget]{a @class{gtk:widget} object this cell renderer will be
     rendering to}
   @begin{return}
-    @code{minimum-size} -- an integer with the minimum size @br{}
-    @code{natural-size} -- an integer with the natural size
+    @code{minimum} -- an integer with the minimum size @br{}
+    @code{natural} -- an integer with the natural size
   @end{return}
   @begin{short}
-    Retreives a cell renderer's natural size when rendered to widget.
+    Retreives the minimum and natural size of a cell renderer when rendered to
+    @arg{widget}.
   @end{short}
   @see-class{gtk:cell-renderer}
   @see-class{gtk:widget}"
-  (cffi:with-foreign-objects ((minimum-size :int) (natural-size :int))
-    (%cell-renderer-preferred-height cell widget minimum-size natural-size)
-    (values (cffi:mem-ref minimum-size :int)
-            (cffi:mem-ref natural-size :int))))
+  (cffi:with-foreign-objects ((minimum :int) (natural :int))
+    (%cell-renderer-preferred-height renderer widget minimum natural)
+    (values (cffi:mem-ref minimum :int)
+            (cffi:mem-ref natural :int))))
 
 (export 'cell-renderer-preferred-height)
 
@@ -1251,75 +1269,74 @@ lambda (renderer editable path)    :run-first
 
 (cffi:defcfun ("gtk_cell_renderer_get_preferred_height_for_width"
                %cell-renderer-preferred-height-for-width) :void
-  (cell (g:object cell-renderer))
+  (renderer (g:object cell-renderer))
   (widget (g:object widget))
   (width :int)
-  (minimum-height (:pointer :int))
-  (natural-height (:pointer :int)))
+  (minimum (:pointer :int))
+  (natural (:pointer :int)))
 
-(defun cell-renderer-preferred-height-for-width (cell widget width)
+(defun cell-renderer-preferred-height-for-width (renderer widget width)
  #+liber-documentation
- "@version{#2023-2-22}
-  @argument[cell]{a @class{gtk:cell-renderer} object}
+ "@version{#2024-3-15}
+  @argument[renderer]{a @class{gtk:cell-renderer} object}
   @argument[widget]{a @class{gtk:widget} object this cell renderer will be
     rendering to}
   @argument[width]{an integer with the size which is available for allocation}
   @begin{return}
-    @code{minimum-height} -- an integer with the minimum size @br{}
-    @code{natural-height} -- an integer with  the preferred size
+    @code{minimum} -- an integer with the minimum size @br{}
+    @code{natural} -- an integer with  the preferred size
   @end{return}
   @begin{short}
-    Retreives a cell renderers's minimum and natural height if it were rendered
-    to @arg{widget} with the specified width.
+    Retreives the minimum and natural height of a cell renderer if it were
+    rendered to @arg{widget} with the specified width.
   @end{short}
   @see-class{gtk:cell-renderer}
   @see-class{gtk:widget}"
-  (cffi:with-foreign-objects ((minimum-height :int) (natural-height :int))
-    (%cell-renderer-preferred-height-for-width cell
+  (cffi:with-foreign-objects ((minimum :int) (natural :int))
+    (%cell-renderer-preferred-height-for-width renderer
                                                widget
                                                width
-                                               minimum-height
-                                               natural-height)
-    (values (cffi:mem-ref minimum-height :int)
-            (cffi:mem-ref natural-height :int))))
+                                               minimum
+                                               natural)
+    (values (cffi:mem-ref minimum :int)
+            (cffi:mem-ref natural :int))))
 
 (export 'cell-renderer-preferred-height-for-width)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_cell_renderer_get_preferred_size () -> cell-renderer-preferred-size
+;;; gtk_cell_renderer_get_preferred_size ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_cell_renderer_get_preferred_size"
                %cell-renderer-preferred-size) :void
-  (cell (g:object cell-renderer))
+  (renderer (g:object cell-renderer))
   (widget (g:object widget))
-  (minimum-size (g:boxed requisition))
-  (natural-size (g:boxed requisition)))
+  (minimum (g:boxed requisition))
+  (natural (g:boxed requisition)))
 
-(defun cell-renderer-preferred-size (cell widget)
+(defun cell-renderer-preferred-size (renderer widget)
  #+liber-documentation
- "@version{#2023-2-22}
-  @argument[cell]{a @class{gtk:cell-renderer} object}
+ "@version{#2024-3-15}
+  @argument[renderer]{a @class{gtk:cell-renderer} object}
   @argument[widget]{a @class{gtk:widget} object this cell renderer will be
     rendering to}
   @begin{return}
-    @arg{minimum-size} -- a @class{gtk:requisition} instance with the minimum
+    @arg{minimum} -- a @class{gtk:requisition} instance with the minimum
     size @br{}
-    @arg{natural-size} -- a @class{gtk:requisition} instance with the natural
+    @arg{natural} -- a @class{gtk:requisition} instance with the natural
     size
   @end{return}
   @begin{short}
     Retrieves the minimum and natural size of a cell renderer taking into
-    account the widget's preference for height-for-width management.
+    account the preference for height-for-width management of the widget.
   @end{short}
   @see-class{gtk:cell-renderer}
   @see-class{gtk:widget}
   @see-class{gtk:requisition}"
-  (let ((minimum-size (make-requisition))
-        (natural-size (make-requisition)))
-    (%cell-renderer-preferred-size cell widget minimum-size natural-size)
-    (values minimum-size
-            natural-size)))
+  (let ((minimum (make-requisition))
+        (natural (make-requisition)))
+    (%cell-renderer-preferred-size renderer widget minimum natural)
+    (values minimum natural)))
 
 (export 'cell-renderer-preferred-size)
 
@@ -1329,30 +1346,31 @@ lambda (renderer editable path)    :run-first
 
 (cffi:defcfun ("gtk_cell_renderer_get_preferred_width"
                %cell-renderer-preferred-width) :void
-  (cell (g:object cell-renderer))
+  (renderer (g:object cell-renderer))
   (widget (g:object widget))
-  (minimum-size (:pointer :int))
-  (natural-size (:pointer :int)))
+  (minimum (:pointer :int))
+  (natural (:pointer :int)))
 
-(defun cell-renderer-preferred-width (cell widget)
+(defun cell-renderer-preferred-width (renderer widget)
  #+liber-documentation
- "@version{#2023-2-22}
-  @argument[cell]{a @class{gtk:cell-renderer} object}
+ "@version{#2024-3-15}
+  @argument[renderer]{a @class{gtk:cell-renderer} object}
   @argument[widget]{a @class{gtk:widget} object this cell renderer will be
     rendering to}
   @begin{return}
-    @code{minimum-size} -- an integer with the minimum size @br{}
-    @code{natural-size} -- an integer the natural size
+    @code{minimum} -- an integer with the minimum size @br{}
+    @code{natural} -- an integer the natural size
   @end{return}
   @begin{short}
-    Retreives a cell renderer's natural size when rendered to widget.
+    Retreives the minimum and natural size of a cell renderer when rendered to
+    @arg{widget}.
   @end{short}
   @see-class{gtk:cell-renderer}
   @see-class{gtk:widget}"
-  (cffi:with-foreign-objects ((minimum-size :int) (natural-size :int))
-    (%cell-renderer-preferred-width cell widget minimum-size natural-size)
-    (values (cffi:mem-ref minimum-size :int)
-            (cffi:mem-ref natural-size :int))))
+  (cffi:with-foreign-objects ((minimum :int) (natural :int))
+    (%cell-renderer-preferred-width renderer widget minimum natural)
+    (values (cffi:mem-ref minimum :int)
+            (cffi:mem-ref natural :int))))
 
 (export 'cell-renderer-preferred-width)
 
@@ -1362,37 +1380,37 @@ lambda (renderer editable path)    :run-first
 
 (cffi:defcfun ("gtk_cell_renderer_get_preferred_width_for_height"
                %cell-renderer-preferred-width-for-height) :void
-  (cell (g:object cell-renderer))
+  (renderer (g:object cell-renderer))
   (widget (g:object widget))
   (height :int)
-  (minimum-width (:pointer :int))
-  (natural-width (:pointer :int)))
+  (minimum (:pointer :int))
+  (natural (:pointer :int)))
 
-(defun cell-renderer-preferred-width-for-height (cell widget height)
+(defun cell-renderer-preferred-width-for-height (renderer widget height)
  #+liber-documentation
- "@version{#2023-2-22}
-  @argument[cell]{a @class{gtk:cell-renderer} object}
+ "@version{#2024-3-15}
+  @argument[renderer]{a @class{gtk:cell-renderer} object}
   @argument[widget]{a @class{gtk:widget} object this cell renderer will be
     rendering to}
   @argument[height]{an integer with the size which is available for allocation}
   @begin{return}
-    @code{minimum-width} -- an integer with the minimum size @br{}
-    @code{natural-width} -- an integer with the preferred size
+    @code{minimum} -- an integer with the minimum size @br{}
+    @code{natural} -- an integer with the preferred size
   @end{return}
   @begin{short}
-    Retreives a cell renderers's minimum and natural width if it were rendered
+    Retreives the minimum and natural of a cell renderer if it were rendered
     to @arg{widget} with the specified height.
   @end{short}
   @see-class{gtk:cell-renderer}
   @see-class{gtk:widget}"
-  (cffi:with-foreign-objects ((minimum-width :int) (natural-width :int))
-    (%cell-renderer-preferred-width-for-height cell
+  (cffi:with-foreign-objects ((minimum :int) (natural :int))
+    (%cell-renderer-preferred-width-for-height renderer
                                                widget
                                                height
-                                               minimum-width
-                                               natural-width)
-    (values (cffi:mem-ref minimum-width :int)
-            (cffi:mem-ref natural-width :int))))
+                                               minimum
+                                               natural)
+    (values (cffi:mem-ref minimum :int)
+            (cffi:mem-ref natural :int))))
 
 (export 'cell-renderer-preferred-width-for-height)
 
@@ -1403,8 +1421,8 @@ lambda (renderer editable path)    :run-first
 (cffi:defcfun ("gtk_cell_renderer_get_request_mode" cell-renderer-request-mode)
     size-request-mode
  #+liber-documentation
- "@version{#2023-2-22}
-  @argument[cell]{a @class{gtk:cell-renderer} object}
+ "@version{#2024-3-15}
+  @argument[renderer]{a @class{gtk:cell-renderer} object}
   @return{The @symbol{gtk:size-request-mode} mode preferred by this cell
     renderer.}
   @begin{short}
@@ -1413,9 +1431,8 @@ lambda (renderer editable path)    :run-first
   @end{short}
   @see-class{gtk:cell-renderer}
   @see-symbol{gtk:size-request-mode}"
-  (cell (g:object cell-renderer)))
+  (renderer (g:object cell-renderer)))
 
 (export 'cell-renderer-request-mode)
 
 ;;; --- End of file gtk3.cell-renderer.lisp ------------------------------------
-

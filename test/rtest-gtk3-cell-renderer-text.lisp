@@ -7,7 +7,7 @@
 
 ;;;     GtkCellRendererText
 
-(test cell-renderer-text-class
+(test gtk-cell-renderer-text-class
   ;; Type check
   (is (g:type-is-object "GtkCellRendererText"))
   ;; Check the registered name
@@ -44,7 +44,7 @@
   (is (equal '("edited")
              (list-signals "GtkCellRendererText")))
   ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkCellRendererText" 
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkCellRendererText"
                                              GTK-CELL-RENDERER-TEXT
                        (:SUPERCLASS GTK-CELL-RENDERER :EXPORT T :INTERFACES NIL
                         :TYPE-INITIALIZER "gtk_cell_renderer_text_get_type")
@@ -149,7 +149,7 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-(test cell-renderer-text-properties
+(test gtk-cell-renderer-text-properties
   (let ((cell (gtk:cell-renderer-text-new)))
     (is-false (gtk:cell-renderer-text-align-set cell))
     (is (eq :left (gtk:cell-renderer-text-alignment cell)))
@@ -210,9 +210,9 @@
 
 ;;;     gtk_cell_renderer_text_new
 
-(test cell-renderer-text-new
+(test gtk-cell-renderer-text-new
   (is (typep (gtk:cell-renderer-text-new) 'gtk:cell-renderer-text)))
 
 ;;;     gtk_cell_renderer_text_set_fixed_height_from_font
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-3-17

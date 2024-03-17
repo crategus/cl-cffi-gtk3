@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -88,9 +88,9 @@
 
 #+liber-documentation
 (setf (documentation 'cell-renderer-progress 'type)
- "@version{2023-2-20}
+ "@version{2024-3-17}
   @begin{short}
-    The @sym{gtk:cell-renderer-progress} object renders a numeric value as a
+    The @class{gtk:cell-renderer-progress} object renders a numeric value as a
     progress bar in a cell.
   @end{short}
   Additionally, it can display a text on top of the progress bar.
@@ -107,7 +107,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- cell-renderer-progress-inverted ----------------------------------------
+;;; --- gtk:cell-renderer-progress-inverted ------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "inverted"
@@ -120,9 +120,9 @@
 (setf (liber:alias-for-function 'cell-renderer-progress-inverted)
       "Accessor"
       (documentation 'cell-renderer-progress-inverted 'function)
- "@version{#2023-2-20}
-  @syntax[]{(gtk:cell-renderer-progress-inverted object) => setting}
-  @syntax[]{(setf (gtk:cell-renderer-progress-inverted object) setting)}
+ "@version{2024-3-17}
+  @syntax{(gtk:cell-renderer-progress-inverted object) => setting}
+  @syntax{(setf (gtk:cell-renderer-progress-inverted object) setting)}
   @argument[object]{a @class{gtk:cell-renderer-progress} object}
   @argument[setting]{a boolean whether to invert the direction in which the
     progress bar grows}
@@ -133,7 +133,7 @@
   Invert the direction in which the progress bar grows.
   @see-class{gtk:cell-renderer-progress}")
 
-;;; --- cell-renderer-progress-pulse -------------------------------------------
+;;; --- gtk:cell-renderer-progress-pulse ---------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "pulse"
@@ -152,9 +152,9 @@
 (setf (liber:alias-for-function 'cell-renderer-progress-pulse)
       "Accessor"
       (documentation 'cell-renderer-progress-pulse 'function)
- "@version{#2023-2-20}
-  @syntax[]{(gtk:cell-renderer-progress-pulse object) => pulse}
-  @syntax[]{(setf (gtk:cell-renderer-progress-pulse object) pulse)}
+ "@version{2024-3-17}
+  @syntax{(gtk:cell-renderer-progress-pulse object) => pulse}
+  @syntax{(setf (gtk:cell-renderer-progress-pulse object) pulse)}
   @argument[object]{a @class{gtk:cell-renderer-progress} object}
   @argument[pulse]{an integer for the pulse value}
   @begin{short}
@@ -169,7 +169,7 @@
   completion, set the property to @code{G_MAXINT}.
   @see-class{gtk:cell-renderer-progress}")
 
-;;; --- cell-renderer-progress-text --------------------------------------------
+;;; --- gtk:cell-renderer-progress-text ----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "text"
@@ -184,9 +184,9 @@
 (setf (liber:alias-for-function 'cell-renderer-progress-text)
       "Accessor"
       (documentation 'cell-renderer-progress-text 'function)
- "@version{#2023-2-20}
-  @syntax[]{(gtk:cell-renderer-progress-text object) => text}
-  @syntax[]{(setf (gtk:cell-renderer-progress-text object) text)}
+ "@version{2024-3-17}
+  @syntax{(gtk:cell-renderer-progress-text object) => text}
+  @syntax{(setf (gtk:cell-renderer-progress-text object) text)}
   @argument[object]{a @class{gtk:cell-renderer-progress} object}
   @argument[text]{a string for the label which will be drawn over the progress
     bar}
@@ -199,24 +199,24 @@
   property to an empty string causes no label to be displayed.
   @see-class{gtk:cell-renderer-progress}")
 
-;;; --- cell-renderer-progress-text-xalign -------------------------------------
+;;; --- gtk:cell-renderer-progress-text-xalign ---------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "text-xalign"
                                                'cell-renderer-progress) t)
  "The @code{text-xalign} property of type @code{:float} (Read / Write) @br{}
   Controls the horizontal alignment of the text in the progress bar. Valid
-  values range from 0 (left) to 1 (right). Reserved for RTL layouts. @br{}
-  Allowed values: [0,1] @br{}
+  values range from 0.0 (left) to 1.0 (right). Reserved for RTL layouts. @br{}
+  Allowed values: [0.0, 1.0] @br{}
   Default value: 0.5")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'cell-renderer-progress-text-xalign)
       "Accessor"
       (documentation 'cell-renderer-progress-text-xalign 'function)
- "@version{#2023-2-20}
-  @syntax[]{(gtk:cell-renderer-progress-text-xalign object) => align}
-  @syntax[]{(setf (gtk:cell-renderer-progress-text-xalign object) align)}
+ "@version{2024-3-17}
+  @syntax{(gtk:cell-renderer-progress-text-xalign object) => align}
+  @syntax{(setf (gtk:cell-renderer-progress-text-xalign object) align)}
   @argument[object]{a @class{gtk:cell-renderer-progress} object}
   @argument[align]{a float which controls the horizontal alignment}
   @begin{short}
@@ -224,27 +224,27 @@
     @class{gtk:cell-renderer-progress} class.
   @end{short}
   Controls the horizontal alignment of the text in the progress bar. Valid
-  values range from 0 (left) to 1 (right). Reserved for RTL layouts.
+  values range from 0.0 (left) to 1.0 (right). Reserved for RTL layouts.
   @see-class{gtk:cell-renderer-progress}")
 
-;;; --- cell-renderer-progress-text-yalign -------------------------------------
+;;; --- gtk:cell-renderer-progress-text-yalign ---------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "text-yalign"
                                                'cell-renderer-progress) t)
  "The @code{text-yalign} property of type @code{:float} (Read / Write) @br{}
   Controls the vertical alignment of the text in the progress bar. Valid values
-  range from 0 (top) to 1 (bottom). @br{}
-  Allowed values: [0,1] @br{}
+  range from 0.0 (top) to 1.0 (bottom). @br{}
+  Allowed values: [0.0, 1.0] @br{}
   Default value: 0.5")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'cell-renderer-progress-text-yalign)
       "Accessor"
       (documentation 'cell-renderer-progress-text-yalign 'function)
- "@version{#2023-2-20}
-  @syntax[]{(gtk:cell-renderer-progress-text-yalign object) => align}
-  @syntax[]{(setf (gtk:cell-renderer-progress-text-yalign object) align)}
+ "@version{2024-3-17}
+  @syntax{(gtk:cell-renderer-progress-text-yalign object) => align}
+  @syntax{(setf (gtk:cell-renderer-progress-text-yalign object) align)}
   @argument[object]{a @class{gtk:cell-renderer-progress} object}
   @argument[align]{a float which controls the vertical alignment}
   @begin{short}
@@ -252,10 +252,10 @@
     @class{gtk:cell-renderer-progress} class.
   @end{short}
   Controls the vertical alignment of the text in the progress bar. Valid values
-  range from 0 (top) to 1 (bottom).
+  range from 0.0 (top) to 1.0 (bottom).
   @see-class{gtk:cell-renderer-progress}")
 
-;;; --- cell-renderer-progress-value -------------------------------------------
+;;; --- gtk:cell-renderer-progress-value ---------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "value"
@@ -263,16 +263,16 @@
  "The @code{value} property of type @code{:int} (Read / Write) @br{}
   Determines the percentage to which the progress bar will be \"filled in\".
   @br{}
-  Allowed values: [0,100] @br{}
+  Allowed values: [0, 100] @br{}
   Default value: 0")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'cell-renderer-progress-value)
       "Accessor"
       (documentation 'cell-renderer-progress-value 'function)
- "@version{#2023-2-20}
-  @syntax[]{(gtk:cell-renderer-progress-value object) => value}
-  @syntax[]{(setf (gtk:cell-renderer-progress-value object) value)}
+ "@version{2024-3-17}
+  @syntax{(gtk:cell-renderer-progress-value object) => value}
+  @syntax{(setf (gtk:cell-renderer-progress-value object) value)}
   @argument[object]{a @class{gtk:cell-renderer-progress} object}
   @argument[value]{an integer which determines the percentage the progress bar
     will be filled in}
@@ -291,7 +291,7 @@
 
 (defun cell-renderer-progress-new ()
  #+liber-documentation
- "@version{#2023-2-20}
+ "@version{2024-3-17}
   @return{The new @class{gtk:cell-renderer-progress} object.}
   @begin{short}
     Creates a new cell renderer progress object.

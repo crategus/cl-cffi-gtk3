@@ -147,23 +147,6 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-;;;     cell-background
-;;;     cell-background-gdk
-;;;     cell-background-rgba
-;;;     cell-background-set
-;;;     editing
-;;;     height
-;;;     is-expanded
-;;;     is-expander
-;;;     mode
-;;;     sensitive
-;;;     visible
-;;;     width
-;;;     xalign
-;;;     xpad
-;;;     yalign
-;;;     ypad
-
 (test gtk-cell-renderer-properties
   (let ((renderer (make-instance 'gtk:cell-renderer-text)))
     (signals (error) (gtk:cell-renderer-cell-background renderer))
@@ -228,13 +211,15 @@
     #-windows
     (is (equal '(0 0 4 21)
                 (multiple-value-list
-                  (gtk:cell-renderer-size renderer (make-instance 'gtk:button)
-                                                   (gdk:rectangle-new)))))
+                  (gtk:cell-renderer-size renderer
+                                          (make-instance 'gtk:button)
+                                          (gdk:rectangle-new)))))
     #+windows
     (is (equal '(0 0 4 19)
                 (multiple-value-list
-                  (gtk:cell-renderer-size renderer (make-instance 'gtk:button)
-                                                   (gdk:rectangle-new)))))))
+                  (gtk:cell-renderer-size renderer
+                                          (make-instance 'gtk:button)
+                                          (gdk:rectangle-new)))))))
 
 ;;;     gtk_cell_renderer_render
 ;;;     gtk_cell_renderer_activate
@@ -242,10 +227,6 @@
 ;;;     gtk_cell_renderer_stop_editing
 ;;;     gtk_cell_renderer_get_fixed_size
 ;;;     gtk_cell_renderer_set_fixed_size
-;;;     gtk_cell_renderer_get_visible                      Accessor
-;;;     gtk_cell_renderer_set_visible                      Accessor
-;;;     gtk_cell_renderer_get_sensitive                    Accessor
-;;;     gtk_cell_renderer_set_sensitive                    Accessor
 
 ;;;     gtk_cell_renderer_get_alignment
 ;;;     gtk_cell_renderer_set_alignment
@@ -279,5 +260,5 @@
 ;;;     gtk_cell_renderer_get_preferred_width_for_height
 ;;;     gtk_cell_renderer_get_request_mode
 
-;;; --- 2023-12-3 --------------------------------------------------------------
+;;; 2024-3-15
 

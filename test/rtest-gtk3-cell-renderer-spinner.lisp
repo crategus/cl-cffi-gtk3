@@ -7,7 +7,7 @@
 
 ;;;     GtkCellRendererSpinner
 
-(test cell-renderer-spinner-class
+(test gtk-cell-renderer-spinner-class
   ;; Type check
   (is (g:type-is-object "GtkCellRendererSpinner"))
   ;; Check the registered name
@@ -47,7 +47,7 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-(test cell-renderer-spinner-properties
+(test gtk-cell-renderer-spinner-properties
   (let ((renderer (make-instance 'gtk:cell-renderer-spinner)))
     (is-false (gtk:cell-renderer-spinner-active renderer))
     (is (= 0 (gtk:cell-renderer-spinner-pulse renderer)))
@@ -57,7 +57,7 @@
 
 ;;;     gtk_cell_renderer_spinner_new
 
-(test cell-renderer-spinner-new
+(test gtk-cell-renderer-spinner-new
   (is (typep (gtk:cell-renderer-spinner-new) 'gtk:cell-renderer-spinner)))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-3-17

@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -81,13 +81,13 @@
 
 #+liber-documentation
 (setf (documentation 'cell-renderer-combo 'type)
- "@version{#2023-2-14}
+ "@version{2024-3-17}
   @begin{short}
-    The @sym{gtk:cell-renderer-combo} object renders text in a cell like the
+    The @class{gtk:cell-renderer-combo} object renders text in a cell like the
     @class{gtk:cell-renderer-text} object from which it is derived.
   @end{short}
   But while the @class{gtk:cell-renderer-text} object offers a simple entry to
-  edit the text, the @sym{gtk:cell-renderer-combo} object offers a the
+  edit the text, the @class{gtk:cell-renderer-combo} object offers a the
   @class{gtk:combo-box} widget to edit the text. The values to display in the
   combo box are taken from the tree model specified in the @code{model}
   property.
@@ -103,20 +103,20 @@ lambda (combo path iter)    :run-last
       @end{pre}
       The signal is emitted each time after the user selected an item in the
       combo box, either by using the mouse or the arrow keys. Contrary to the
-      @class{gtk:combo-box} widget, the \"changed\" signal is not emitted for
-      changes made to a selected item in the entry. The @arg{iter} argument
+      @class{gtk:combo-box} widget, the @code{\"changed\"} signal is not emitted
+      for changes made to a selected item in the entry. The @arg{iter} argument
       corresponds to the newly selected item in the combo box and it is relative
       to the @class{gtk:tree-model} object set via the model property on the
-      @sym{gtk:cell-renderer-combo} object. Note that as soon as you change the
-      model displayed in the tree view, the tree view will immediately cease
+      @class{gtk:cell-renderer-combo} object. Note that as soon as you change
+      the model displayed in the tree view, the tree view will immediately cease
       the editing operating. This means that you most probably want to refrain
       from changing the model until the combo cell renderer emits the edited or
-      \"editing-canceled\" signal.
+      @code{\"editing-canceled\"} signal.
       @begin[code]{table}
-        @entry[combo]{The @sym{gtk:cell-renderer-combo} object on which the
+        @entry[combo]{The @class{gtk:cell-renderer-combo} object on which the
           signal is emitted.}
-        @entry[path]{A string of the path identifying the edited cell, relative
-          to the tree view model.}
+        @entry[path]{The string of the path identifying the edited cell,
+          relative to the tree view model.}
         @entry[iter]{The @class{gtk:tree-iter} iterator selected in the combo
            box, relative to the combo box model.}
        @end{table}
@@ -130,7 +130,7 @@ lambda (combo path iter)    :run-last
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- cell-renderer-combo-has-entry ------------------------------------------
+;;; --- gtk:cell-renderer-combo-has-entry --------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "has-entry"
@@ -144,9 +144,9 @@ lambda (combo path iter)    :run-last
 (setf (liber:alias-for-function 'cell-renderer-combo-has-entry)
       "Accessor"
       (documentation 'cell-renderer-combo-has-entry 'function)
- "@version{#2023-2-14}
-  @syntax[]{(gtk:cell-renderer-combo-has-entry object) => setting}
-  @syntax[]{(setf (gtk:cell-renderer-combo-has-entry object) setting)}
+ "@version{2024-3-17}
+  @syntax{(gtk:cell-renderer-combo-has-entry object) => setting}
+  @syntax{(setf (gtk:cell-renderer-combo-has-entry object) setting)}
   @argument[object]{a @class{gtk:cell-renderer-combo} object}
   @argument[setting]{a boolean whether the cell renderer will include an entry}
   @begin{short}
@@ -157,21 +157,22 @@ lambda (combo path iter)    :run-last
   values other than the ones in the popup list.
   @see-class{gtk:cell-renderer-combo}")
 
-;;; --- cell-renderer-combo-model ----------------------------------------------
+;;; --- gtk:cell-renderer-combo-model ------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "model" 'cell-renderer-combo) t)
  "The @code{model} property of type @class{gtk:tree-model} (Read / Write) @r{}
   Holds a tree model containing the possible values for the combo box. Use the
-  @code{text-column} property to specify the column holding the values.")
+  @slot[gtk:cell-renderer-combo]{text-column} property to specify the column
+  holding the values.")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'cell-renderer-combo-model)
       "Accessor"
       (documentation 'cell-renderer-combo-model 'function)
- "@version{#2023-2-14}
-  @syntax[]{(gtk:cell-renderer-combo-model object) => model}
-  @syntax[]{(setf (gtk:cell-renderer-combo-model object) model)}
+ "@version{2024-3-17}
+  @syntax{(gtk:cell-renderer-combo-model object) => model}
+  @syntax{(setf (gtk:cell-renderer-combo-model object) model)}
   @argument[object]{a @class{gtk:cell-renderer-combo} object}
   @argument[model]{a @class{gtk:tree-model} object}
   @begin{short}
@@ -179,21 +180,24 @@ lambda (combo path iter)    :run-last
     @class{gtk:cell-renderer-combo} class.
   @end{short}
   Holds a tree model containing the possible values for the combo box. Use the
-  @code{text-column} property to specify the column holding the values.
+  @slot[gtk:cell-renderer-combo]{text-column} property to specify the column
+  holding the values.
   @see-class{gtk:cell-renderer-combo}
-  @see-class{gtk:tree-model}")
+  @see-class{gtk:tree-model}
+  @see-function{gtk:cell-renderer-combo-text-column}")
 
-;;; --- cell-renderer-combo-text-column ----------------------------------------
+;;; --- gtk:cell-renderer-combo-text-column ------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "text-column"
                                                'cell-renderer-combo) t)
  "The @code{text-column} property of type @code{:int} (Read / Write) @br{}
   Specifies the model column which holds the possible values for the combo
-  box. Note that this refers to the model specified in the model property, not
-  the model backing the tree view to which this cell renderer is attached. The
-  @sym{gtk:cell-renderer-combo} object automatically adds a text cell renderer
-  for this column to its combo box. @br{}
+  box. Note that this refers to the model specified in the
+  @slot[gtk:cell-renderer-combo]{model} property, not the model backing the
+  tree view to which this cell renderer is attached. The
+  @class{gtk:cell-renderer-combo} object automatically adds a text cell
+  renderer for this column to its combo box. @br{}
   Allowed values: >= -1 @br{}
   Default value: -1")
 
@@ -201,9 +205,9 @@ lambda (combo path iter)    :run-last
 (setf (liber:alias-for-function 'cell-renderer-combo-text-column)
       "Accessor"
       (documentation 'cell-renderer-combo-text-column 'function)
- "@version{#2023-2-14}
-  @syntax[]{(gtk:cell-renderer-combo-text-column object) => column}
-  @syntax[]{(setf (gtk:cell-renderer-combo-text-column object) column)}
+ "@version{2024-3-17}
+  @syntax{(gtk:cell-renderer-combo-text-column object) => column}
+  @syntax{(setf (gtk:cell-renderer-combo-text-column object) column)}
   @argument[object]{a @class{gtk:cell-renderer-combo} object}
   @argument[column]{an integer which specifies the model colum which holds the
     possible values for the combo box}
@@ -212,11 +216,13 @@ lambda (combo path iter)    :run-last
     @class{gtk:cell-renderer-combo} class.
   @end{short}
   Specifies the model column which holds the possible values for the combo
-  box. Note that this refers to the model specified in the model property, not
-  the model backing the tree view to which this cell renderer is attached. The
-  @sym{gtk:cell-renderer-combo} object automatically adds a text cell renderer
+  box. Note that this refers to the model specified in the
+  @slot[gtk:cell-renderer-combo]{model} property, not the model backing the
+  tree view to which this cell renderer is attached. The
+  @class{gtk:cell-renderer-combo} object automatically adds a text cell renderer
   for this column to its combo box.
-  @see-class{gtk:cell-renderer-combo}")
+  @see-class{gtk:cell-renderer-combo}
+  @see-function{gtk:cell-renderer-combo-model}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_cell_renderer_combo_new ()
@@ -226,7 +232,7 @@ lambda (combo path iter)    :run-last
 
 (defun cell-renderer-combo-new ()
  #+liber-documentation
- "@version{#2023-2-14}
+ "@version{2024-3-17}
   @return{The new @class{gtk:cell-renderer-combo} object.}
   @begin{short}
     Creates a new cell renderer combo.
@@ -234,14 +240,16 @@ lambda (combo path iter)    :run-last
   Adjust how text is drawn using object properties. Object properties can be
   set globally, with the @fun{g:object-property} function. Also, with the
   @class{gtk:tree-view-column} object, you can bind a property to a value in a
-  @class{gtk:tree-model} object. For example, you can bind the \"text\" property
-  on the cell renderer to a string value in the model, thus rendering a
-  different string in each row of the @class{gtk:tree-view} widget.
+  @class{gtk:tree-model} object. For example, you can bind the
+  @slot[gtk:cell-renderer-text]{text} property on the cell renderer to a string
+  value in the model, thus rendering a different string in each row of the
+  @class{gtk:tree-view} widget.
   @see-class{gtk:cell-renderer-combo}
   @see-class{gtk:tree-view}
   @see-class{gtk:tree-view-column}
   @see-class{gtk:tree-model}
-  @see-function{g:object-property}"
+  @see-function{g:object-property}
+  @see-function{gtk:cell-renderer-text-text}"
   (make-instance 'cell-renderer-combo))
 
 (export 'cell-renderer-combo-new)

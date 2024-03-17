@@ -7,7 +7,7 @@
 
 ;;;     GtkCellRendererSpin
 
-(test cell-renderer-spin-class
+(test gtk-cell-renderer-spin-class
   ;; Type check
   (is (g:type-is-object "GtkCellRendererSpin"))
   ;; Check the registered name
@@ -33,7 +33,7 @@
   (is (equal '()
              (list-signals "GtkCellRendererSpin")))
   ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkCellRendererSpin" 
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkCellRendererSpin"
                                              GTK-CELL-RENDERER-SPIN
                        (:SUPERCLASS GTK-CELL-RENDERER-TEXT :EXPORT T
                         :INTERFACES NIL :TYPE-INITIALIZER
@@ -48,7 +48,7 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-(test cell-renderer-spin-properties
+(test gtk-cell-renderer-spin-properties
   (let ((cell (make-instance 'gtk:cell-renderer-spin)))
     (is-false (gtk:cell-renderer-spin-adjustment cell))
     (is (typep  (setf (gtk:cell-renderer-spin-adjustment cell)
@@ -61,7 +61,7 @@
 
 ;;;     gtk_cell_renderer_spin_new
 
-(test cell-renderer-spin-new
+(test gtk-cell-renderer-spin-new
   (is (typep (gtk:cell-renderer-spin-new) 'gtk:cell-renderer-spin)))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-3-17

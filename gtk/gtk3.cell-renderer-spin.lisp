@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -77,22 +77,23 @@
 
 #+liber-documentation
 (setf (documentation 'cell-renderer-spin 'type)
- "@version{2023-2-21}
+ "@version{2024-3-17}
   @begin{short}
-    The @sym{gtk:cell-renderer-spin} object renders text in a cell like
+    The @class{gtk:cell-renderer-spin} object renders text in a cell like
     the @class{gtk:cell-renderer-text} object from which it is derived.
   @end{short}
   But while the @class{gtk:cell-renderer-text} object offers a simple entry to
-  edit the text, the @sym{gtk:cell-renderer-spin} object offers a
+  edit the text, the @class{gtk:cell-renderer-spin} object offers a
   @class{gtk:spin-button} widget. Of course, that means that the text has to be
   parseable as a floating point number.
 
   The range of the spin button is taken from the adjustment property of the
   cell renderer, which can be set explicitly or mapped to a column in the tree
-  model, like all properties of cell renders. The @sym{gtk:cell-renderer-spin}
-  object also has properties for the \"climb-rate\" and the number of \"digits\"
-  to display. Other @class{gtk:spin-button} properties can be set in a handler
-  for the \"editing-started\" signal.
+  model, like all properties of cell renders. The @class{gtk:cell-renderer-spin}
+  object also has the @slot[gtk:cell-renderer-spin]{climb-rate} and
+  @slot[gtk:cell-renderer-spin]{digits} properties to display. Other
+  @class{gtk:spin-button} properties can be set in a handler for the
+  @code{\"editing-started\"} signal.
   @see-constructor{gtk:cell-renderer-spin-new}
   @see-slot{gtk:cell-renderer-spin-adjustment}
   @see-slot{gtk:cell-renderer-spin-climb-rate}
@@ -104,7 +105,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- cell-renderer-spin-adjustment ------------------------------------------
+;;; --- gtk:cell-renderer-spin-adjustment --------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "adjustment"
@@ -118,9 +119,9 @@
 (setf (liber:alias-for-function 'cell-renderer-spin-adjustment)
       "Accessor"
       (documentation 'cell-renderer-spin-adjustment 'function)
- "@version{2023-2-21}
-  @syntax[]{(gtk:cell-renderer-spin-adjustment object) => adjustment}
-  @syntax[]{(setf (gtk:cell-renderer-spin-adjustment object) adjustment)}
+ "@version{2024-3-17}
+  @syntax{(gtk:cell-renderer-spin-adjustment object) => adjustment}
+  @syntax{(setf (gtk:cell-renderer-spin-adjustment object) adjustment)}
   @argument[object]{a @class{gtk:cell-renderer-spin} object}
   @argument[adjustment]{a @class{gtk:adjustment} object}
   @begin{short}
@@ -132,7 +133,7 @@
   @see-class{gtk:cell-renderer-spin}
   @see-class{gtk:adjustment}")
 
-;;; --- cell-renderer-spin-climb-rate ------------------------------------------
+;;; --- gtk:cell-renderer-spin-climb-rate --------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "climb-rate"
@@ -146,11 +147,11 @@
 (setf (liber:alias-for-function 'cell-renderer-spin-climb-rate)
       "Accessor"
       (documentation 'cell-renderer-spin-climb-rate 'function)
- "@version{2023-2-21}
-  @syntax[]{(gtk:cell-renderer-spin-climb-rate object) => climb-rate}
-  @syntax[]{(setf (gtk:cell-renderer-spin-climb-rate object) climb-rate)}
+ "@version{2024-3-17}
+  @syntax{(gtk:cell-renderer-spin-climb-rate object) => rate}
+  @syntax{(setf (gtk:cell-renderer-spin-climb-rate object) rate)}
   @argument[object]{a @class{gtk:cell-renderer-spin} object}
-  @argument[climb-rate]{a double float with the acceleration rate}
+  @argument[rate]{a double float with the acceleration rate}
   @begin{short}
     Accessor of the @slot[gtk:cell-renderer-spin]{climb-rate} slot of the
     @class{gtk:cell-renderer-spin} class.
@@ -158,7 +159,7 @@
   The acceleration rate when you hold down a button.
   @see-class{gtk:cell-renderer-spin}")
 
-;;; --- cell-renderer-spin-digits ----------------------------------------------
+;;; --- gtk:cell-renderer-spin-digits ------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "digits" 'cell-renderer-spin) t)
@@ -171,9 +172,9 @@
 (setf (liber:alias-for-function 'cell-renderer-spin-digits)
       "Accessor"
       (documentation 'cell-renderer-spin-digits 'function)
- "@version{2023-2-21}
-  @syntax[]{(gtk:cell-renderer-spin-digits object) => digits}
-  @syntax[]{(setf (gtk:cell-renderer-spin-digits object) digits)}
+ "@version{2024-3-17}
+  @syntax{(gtk:cell-renderer-spin-digits object) => digits}
+  @syntax{(setf (gtk:cell-renderer-spin-digits object) digits)}
   @argument[object]{a @class{gtk:cell-renderer-spin} object}
   @argument[digits]{an unsigned integer with the number of decimal places to
     display}
