@@ -203,8 +203,8 @@ lambda (item)    :run-last
       "Accessor"
       (documentation 'tool-item-is-important 'function)
  "@version{#2023-3-28}
-  @syntax[]{gtk:tool-item-is-important object) => setting}
-  @syntax[]{(setf (gtk:tool-item-is-important object) setting)}
+  @syntax{gtk:tool-item-is-important object) => setting}
+  @syntax{(setf (gtk:tool-item-is-important object) setting)}
   @argument[object]{a @class{gtk:tool-item} widget}
   @argument[setting]{a boolean whether the tool item should be considered
     important}
@@ -240,8 +240,8 @@ lambda (item)    :run-last
       "Accessor"
       (documentation 'tool-item-visible-horizontal 'function)
  "@version{#2023-3-28}
-  @syntax[]{gtk:tool-item-visible-horizontal object) => visible}
-  @syntax[]{(setf (gtk:tool-item-visible-horizontal object) visible)}
+  @syntax{gtk:tool-item-visible-horizontal object) => visible}
+  @syntax{(setf (gtk:tool-item-visible-horizontal object) visible)}
   @argument[object]{a @class{gtk:tool-item} widget}
   @argument[visible]{a boolean whether @arg{object} is visible when in
     horizontal mode}
@@ -271,8 +271,8 @@ lambda (item)    :run-last
       "Accessor"
       (documentation 'tool-item-visible-vertical 'function)
  "@version{#2023-3-28}
-  @syntax[]{gtk:tool-item-visible-vertical object) => visible}
-  @syntax[]{(setf (gtk:tool-item-visible-vertical object) visible)}
+  @syntax{gtk:tool-item-visible-vertical object) => visible}
+  @syntax{(setf (gtk:tool-item-visible-vertical object) visible)}
   @argument[object]{a @class{gtk:tool-item} widget}
   @argument[visible]{a boolean whether @arg{object} is visible when the toolbar
     is in vertical mode}
@@ -321,8 +321,8 @@ lambda (item)    :run-last
 (cffi:defcfun ("gtk_tool_item_get_homogeneous" tool-item-homogeneous) :boolean
  #+liber-documentation
  "@version{#2023-3-28}
-  @syntax[]{(gtk:tool-item-homogeneous tool-item) => homogeneous}
-  @syntax[]{(setf (gtk:tool-item-homogeneous tool-item) homogeneous)}
+  @syntax{(gtk:tool-item-homogeneous tool-item) => homogeneous}
+  @syntax{(setf (gtk:tool-item-homogeneous tool-item) homogeneous)}
   @argument[item]{a @class{gtk:tool-item} widget}
   @argument[homogeneous]{a boolean whether @arg{item} is the same size as other
     homogeneous items}
@@ -356,8 +356,8 @@ lambda (item)    :run-last
 (cffi:defcfun ("gtk_tool_item_get_expand" tool-item-expand) :boolean
  #+liber-documentation
  "@version{#2023-3-28}
-  @syntax[]{(gtk:tool-item-expand tool-item) => expand}
-  @syntax[]{(setf (gtk:tool-item-expand tool-item) expand)}
+  @syntax{(gtk:tool-item-expand tool-item) => expand}
+  @syntax{(setf (gtk:tool-item-expand tool-item) expand)}
   @argument[item]{a @class{gtk:tool-item} widget}
   @argument[expand]{a boolean whether @arg{item} is allocated extra space}
   @begin{short}
@@ -435,8 +435,8 @@ lambda (item)    :run-last
     :boolean
  #+liber-documentation
  "@version{#2023-3-28}
-  @syntax[]{(gtk:tool-item-use-drag-window tool-item) => setting}
-  @syntax[]{(setf (gtk:tool-item-use-drag-window tool-item) setting)}
+  @syntax{(gtk:tool-item-use-drag-window tool-item) => setting}
+  @syntax{(setf (gtk:tool-item-use-drag-window tool-item) setting)}
   @argument[item]{a @class{gtk:tool-item} widget}
   @argument[setting]{a boolean whether @arg{item} has a drag window}
   @begin{short}
@@ -676,8 +676,8 @@ lambda (item)    :run-last
     (g:object widget)
  #+liber-documentation
  "@version{#2023-3-28}
-  @syntax[]{(gtk:tool-item-proxy-menu-item item id) => menuitem}
-  @syntax[]{(setf (gtk:tool-item-proxy-menu-item item id) menuitem)}
+  @syntax{(gtk:tool-item-proxy-menu-item item id) => menuitem}
+  @syntax{(setf (gtk:tool-item-proxy-menu-item item id) menuitem)}
   @argument[item]{a @class{gtk:tool-item} widget}
   @argument[id]{a string used to identify the menu item}
   @argument[menuitem]{a @class{gtk:menu-item} to be used in the overflow menu}

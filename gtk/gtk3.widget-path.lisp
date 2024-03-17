@@ -505,8 +505,8 @@
 (cffi:defcfun ("gtk_widget_path_iter_get_name" widget-path-iter-name) :string
  #+liber-documentation
  "@version{#2023-3-30}
-  @syntax[]{(gtk:widget-path-iter-name path pos) => name}
-  @syntax[]{(setf (gtk:widget-path-iter-name path pos) name)}
+  @syntax{(gtk:widget-path-iter-name path pos) => name}
+  @syntax{(setf (gtk:widget-path-iter-name path pos) name)}
   @argument[path]{a @class{gtk:widget-path} instance}
   @argument[pos]{an integer with the position, -1 for the path head}
   @argument[name]{a string with the widget name}
@@ -539,8 +539,8 @@
                widget-path-iter-object-name) :string
  #+liber-documentation
  "@version{#2023-3-30}
-  @syntax[]{(gtk:widget-path-iter-object-name path pos) => name}
-  @syntax[]{(setf (gtk:widget-path-iter-object-name path pos) name)}
+  @syntax{(gtk:widget-path-iter-object-name path pos) => name}
+  @syntax{(setf (gtk:widget-path-iter-object-name path pos) name)}
   @argument[path]{a @class{gtk:widget-path} instance}
   @argument[pos]{an integer with the position, -1 for the path head}
   @argument[name]{a string with the object name to set or @code{nil} to unset}
@@ -573,8 +573,8 @@
                widget-path-iter-object-type) g:type-t
  #+liber-documentation
  "@version{#2023-3-30}
-  @syntax[]{(gtk:widget-path-iter-object-type path pos) => gtype}
-  @syntax[]{(setf (gtk:widget-path-iter-object-type path pos) gtype)}
+  @syntax{(gtk:widget-path-iter-object-type path pos) => gtype}
+  @syntax{(setf (gtk:widget-path-iter-object-type path pos) gtype)}
   @argument[path]{a @class{gtk:widget-path} instance}
   @argument[pos]{an integer with the position, -1 for the path head}
   @argument[gtype]{a @class{g:type-t} type}
@@ -666,8 +666,8 @@
                widget-path-iter-state) state-flags
  #+liber-documentation
  "@version{#2023-3-30}
-  @syntax[]{(gtk:widget-path-iter-state path pos) => state}
-  @syntax[]{(setf (gtk:widget-path-iter-state path pos) state)}
+  @syntax{(gtk:widget-path-iter-state path pos) => state}
+  @syntax{(setf (gtk:widget-path-iter-state path pos) state)}
   @argument[path]{a @class{gtk:widget-path} instance}
   @argument[pos]{an integer with the position , -1 for the path head}
   @argument[state]{a @symbol{gtk:state-flags} value to set or unset}

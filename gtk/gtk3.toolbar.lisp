@@ -346,8 +346,8 @@ lambda (toolbar style)    :run-first
       "Accessor"
       (documentation 'toolbar-icon-size 'function)
  "@version{#2023-3-28}
-  @syntax[]{(gtk:toolbar-icon-size object) => size}
-  @syntax[]{(setf (gtk:toolbar-icon-size object) size)}
+  @syntax{(gtk:toolbar-icon-size object) => size}
+  @syntax{(setf (gtk:toolbar-icon-size object) size)}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
   @argument[size]{a value of the @symbol{gtk:icon-size} enumeration that stock
     icons in the toolbar shall have}
@@ -381,8 +381,8 @@ lambda (toolbar style)    :run-first
       "Accessor"
       (documentation 'toolbar-icon-size-set 'function)
  "@version{#2023-3-28}
-  @syntax[]{(gtk:toolbar-icon-size-set object) => setting}
-  @syntax[]{(setf (gtk:toolbar-icon-size-set object) setting)}
+  @syntax{(gtk:toolbar-icon-size-set object) => setting}
+  @syntax{(setf (gtk:toolbar-icon-size-set object) setting)}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
   @argument[setting]{a boolean whether the icon size property is set}
   @begin{short}
@@ -405,8 +405,8 @@ lambda (toolbar style)    :run-first
       "Accessor"
       (documentation 'toolbar-show-arrow 'function)
  "@version{#2023-3-28}
-  @syntax[]{(gtk:toolbar-show-arrow object) => setting}
-  @syntax[]{(setf (gtk:toolbar-show-arrow object) setting)}
+  @syntax{(gtk:toolbar-show-arrow object) => setting}
+  @syntax{(setf (gtk:toolbar-show-arrow object) setting)}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
   @argument[setting]{a boolean whether to show an overflow menu}
   @begin{short}
@@ -438,8 +438,8 @@ lambda (toolbar style)    :run-first
       "Accessor"
       (documentation 'toolbar-toolbar-style 'function)
  "@version{#2023-3-28}
-  @syntax[]{(gtk:toolbar-toolbar-style object) => style}
-  @syntax[]{(setf (gtk:toolbar-toolbar-style object) style)}
+  @syntax{(gtk:toolbar-toolbar-style object) => style}
+  @syntax{(setf (gtk:toolbar-toolbar-style object) style)}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
   @argument[style]{the style as a value of the @symbol{gtk:toolbar-style}
     enumeration for @arg{toolbar}}
@@ -467,8 +467,8 @@ lambda (toolbar style)    :run-first
       "Accessor"
       (documentation 'toolbar-child-expand 'function)
  "@version{#2023-3-28}
-  @syntax[]{(gtk:toolbar-child-expand container child) => expand}
-  @syntax[]{(setf (gtk:toolbar-child-expand container child) expand)}
+  @syntax{(gtk:toolbar-child-expand container child) => expand}
+  @syntax{(setf (gtk:toolbar-child-expand container child) expand)}
   @argument[container]{a @class{gtk:toolbar} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[expand]{a boolean whether the item should receive extra space when
@@ -489,8 +489,8 @@ lambda (toolbar style)    :run-first
       "Accessor"
       (documentation 'toolbar-child-homogeneous 'function)
  "@version{#2023-3-28}
-  @syntax[]{(gtk:toolbar-child-homogeneous container child) => expand}
-  @syntax[]{(setf (gtk:toolbar-child-homogeneous container child) expand)}
+  @syntax{(gtk:toolbar-child-homogeneous container child) => expand}
+  @syntax{(setf (gtk:toolbar-child-homogeneous container child) expand)}
   @argument[container]{a @class{gtk:toolbar} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[homogeneous]{a boolean whether the item should be the same size as
@@ -524,29 +524,33 @@ lambda (toolbar style)    :run-first
 ;;; gtk_toolbar_insert ()
 ;;; ----------------------------------------------------------------------------
 
-(cffi:defcfun ("gtk_toolbar_insert" toolbar-insert) :void
+(cffi:defcfun ("gtk_toolbar_insert" %toolbar-insert) :void
+  (toolbar (g:object toolbar))
+  (item (g:object tool-item))
+  (pos :int))
+
+(defun toolbar-insert (toolbar item &optional (pos -1))
  #+liber-documentation
- "@version{2024-1-2}
+ "@version{2024-3-15}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
   @argument[item]{a @class{gtk:tool-item} widget}
-  @argument[pos]{an integer with the position of the new item}
+  @argument[pos]{an optional integer with the position of the new item,
+    the default value is -1}
   @begin{short}
     Insert a @class{gtk:tool-item} widget into the toolbar at position
     @arg{pos}.
   @end{short}
   If the @arg{pos} argument is 0 the item is prepended to the start of the
-  toolbar. If the @arg{pos} argument is negative, the item is appended to the
-  end of the toolbar.
+  toolbar. If the @arg{pos} argument is negative, the default, the item is
+  appended to the end of the toolbar.
   @see-class{gtk:toolbar}
   @see-class{gtk:tool-item}"
-  (toolbar (g:object toolbar))
-  (item (g:object tool-item))
-  (pos :int))
+  (%toolbar-insert toolbar item pos))
 
 (export 'toolbar-insert)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_toolbar_get_item_index () -> toolbar-item-index
+;;; gtk_toolbar_get_item_index ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_toolbar_get_item_index" toolbar-item-index) :int

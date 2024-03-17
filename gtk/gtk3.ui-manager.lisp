@@ -479,8 +479,8 @@ lambda (manager action)    :no-recurse
       "Accessor"
       (documentation 'ui-manager-add-tearoffs 'function)
  "@version{#2023-3-29}
-  @syntax[]{(gtk:ui-manager-add-tearoffs object) => tearoffs}
-  @syntax[]{(setf (gtk:ui-manager-add-tearoffs object) tearoffs)}
+  @syntax{(gtk:ui-manager-add-tearoffs object) => tearoffs}
+  @syntax{(setf (gtk:ui-manager-add-tearoffs object) tearoffs)}
   @argument[object]{a @class{gtk:ui-manager} object}
   @argument[tearoffs]{a boolean whether tearoff menu items are added}
   @begin{short}
@@ -514,7 +514,7 @@ lambda (manager action)    :no-recurse
       "Accessor"
       (documentation 'ui-manager-ui 'function)
  "@version{#2023-3-29}
-  @syntax[]{(gtk:ui-manager-ui object) => ui}
+  @syntax{(gtk:ui-manager-ui object) => ui}
   @argument[object]{a @class{gtk:ui-manager} object}
   @argument[ui]{a string containing a XML representation of the merged UI}
   @begin{short}

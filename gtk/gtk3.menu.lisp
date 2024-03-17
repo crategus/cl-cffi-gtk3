@@ -456,8 +456,8 @@ lambda (menu flipped final xflipped yflipped)    :run-first
       "Accessor"
       (documentation 'menu-accel-group 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:menu-accel-group object) => group}
-  @syntax[]{(setf (gtk:menu-accel-group object) group)}
+  @syntax{(gtk:menu-accel-group object) => group}
+  @syntax{(setf (gtk:menu-accel-group object) group)}
   @argument[object]{a @class{gtk:menu} widget}
   @argument[group]{a @class{gtk:accel-group} object to be associated with the
     menu}
@@ -489,8 +489,8 @@ lambda (menu flipped final xflipped yflipped)    :run-first
       "Accessor"
       (documentation 'menu-accel-path 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:menu-accel-path object) => path}
-  @syntax[]{(setf (gtk:menu-accel-path object) path)}
+  @syntax{(gtk:menu-accel-path object) => path}
+  @syntax{(setf (gtk:menu-accel-path object) path)}
   @argument[object]{a @class{gtk:menu} widget}
   @argument[path]{a string with a valid accelerator path}
   @begin{short}
@@ -539,8 +539,8 @@ lambda (menu flipped final xflipped yflipped)    :run-first
       "Accessor"
       (documentation 'menu-active 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:menu-active object) => active}
-  @syntax[]{(setf (gtk:menu-active object) active)}
+  @syntax{(gtk:menu-active object) => active}
+  @syntax{(setf (gtk:menu-active object) active)}
   @argument[object]{a @class{gtk:menu} widget}
   @argument[active]{an integer with the index of the currently selected menu
     item}
@@ -571,8 +571,8 @@ lambda (menu flipped final xflipped yflipped)    :run-first
       "Accessor"
       (documentation 'menu-anchor-hints 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:menu-anchor-hints object) => hints}
-  @syntax[]{(setf (gtk:menu-anchor-hints object) hints)}
+  @syntax{(gtk:menu-anchor-hints object) => hints}
+  @syntax{(setf (gtk:menu-anchor-hints object) hints)}
   @argument[object]{a @class{gtk:menu} widget}
   @argument[hints]{a value of the @symbol{gdk:anchor-hints} flags}
   @begin{short}
@@ -616,8 +616,8 @@ lambda (menu flipped final xflipped yflipped)    :run-first
       "Accessor"
       (documentation 'menu-attach-widget 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:menu-attach-widget object) => widget}
-  @syntax[]{(setf (gtk:menu-attach-widget object) widget)}
+  @syntax{(gtk:menu-attach-widget object) => widget}
+  @syntax{(setf (gtk:menu-attach-widget object) widget)}
   @argument[object]{a @class{gtk:menu} widget}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
@@ -649,8 +649,8 @@ lambda (menu flipped final xflipped yflipped)    :run-first
       "Accessor"
       (documentation 'menu-menu-type-hint 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:menu-menu-type-hint object) => hint}
-  @syntax[]{(setf (gtk:menu-menu-type-hint object) hint)}
+  @syntax{(gtk:menu-menu-type-hint object) => hint}
+  @syntax{(setf (gtk:menu-menu-type-hint object) hint)}
   @argument[object]{a @class{gtk:menu} widget}
   @argument[hint]{a value of the @symbol{gdk:window-type-hint} enumeration}
   @begin{short}
@@ -687,8 +687,8 @@ lambda (menu flipped final xflipped yflipped)    :run-first
       "Accessor"
       (documentation 'menu-monitor 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:menu-monitor object) => num}
-  @syntax[]{(setf (gtk:menu-monitor object) num)}
+  @syntax{(gtk:menu-monitor object) => num}
+  @syntax{(setf (gtk:menu-monitor object) num)}
   @argument[object]{a @class{gtk:menu} widget}
   @argument[num]{an integer with the number of the monitor on which the menu
     should be popped up}
@@ -721,8 +721,8 @@ lambda (menu flipped final xflipped yflipped)    :run-first
       "Accessor"
       (documentation 'menu-rect-anchor-dx 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:menu-rect-anchor-dx object) => anchor}
-  @syntax[]{(setf (gtk:menu-rect-anchor-dx object) anchor)}
+  @syntax{(gtk:menu-rect-anchor-dx object) => anchor}
+  @syntax{(setf (gtk:menu-rect-anchor-dx object) anchor)}
   @argument[object]{a @class{gtk:menu} widget}
   @argument[anchor]{an integer with the horizontal offset to apply to the menu}
   @begin{short}
@@ -757,8 +757,8 @@ lambda (menu flipped final xflipped yflipped)    :run-first
       "Accessor"
       (documentation 'menu-rect-anchor-dy 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:menu-rect-anchor-dy object) => anchor}
-  @syntax[]{(setf (gtk:menu-rect-anchor-dy object) anchor)}
+  @syntax{(gtk:menu-rect-anchor-dy object) => anchor}
+  @syntax{(setf (gtk:menu-rect-anchor-dy object) anchor)}
   @argument[object]{a @class{gtk:menu} widget}
   @argument[anchor]{an integer with the vertical offset to apply to the menu}
   @begin{short}
@@ -798,8 +798,8 @@ lambda (menu flipped final xflipped yflipped)    :run-first
       "Accessor"
       (documentation 'menu-reserve-toggle-size 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:menu-reserve-toggle-size object) => reserve}
-  @syntax[]{(setf (gtk:menu-reserve-toggle-size object) reserve)}
+  @syntax{(gtk:menu-reserve-toggle-size object) => reserve}
+  @syntax{(setf (gtk:menu-reserve-toggle-size object) reserve)}
   @argument[object]{a @class{gtk:menu} widget}
   @argument[reserve]{a boolean whether to reserve size for toggles}
   @begin{short}
@@ -831,8 +831,8 @@ lambda (menu flipped final xflipped yflipped)    :run-first
       "Accessor"
       (documentation 'menu-tearoff-state 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:menu-tearoff-state object) => state}
-  @syntax[]{(setf (gtk:menu-tearoff-state object) state)}
+  @syntax{(gtk:menu-tearoff-state object) => state}
+  @syntax{(setf (gtk:menu-tearoff-state object) state)}
   @argument[object]{a @class{gtk:menu} widget}
   @argument[state]{if @em{true}, @arg{menu} is displayed as a tearoff menu}
   @begin{short}
@@ -868,8 +868,8 @@ lambda (menu flipped final xflipped yflipped)    :run-first
       "Accessor"
       (documentation 'menu-tearoff-title 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:menu-tearoff-title object) => title}
-  @syntax[]{(setf (gtk:menu-tearoff-title object) title)}
+  @syntax{(gtk:menu-tearoff-title object) => title}
+  @syntax{(setf (gtk:menu-tearoff-title object) title)}
   @argument[object]{a @class{gtk:menu} widget}
   @argument[title]{a string containing the title for the menu}
   @begin{short}
@@ -903,8 +903,8 @@ lambda (menu flipped final xflipped yflipped)    :run-first
       "Accessor"
       (documentation 'menu-child-bottom-attach 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:menu-child-bottom-attach container child) => attach}
-  @syntax[]{(setf (gtk:menu-child-bottom-attach container child) attach)}
+  @syntax{(gtk:menu-child-bottom-attach container child) => attach}
+  @syntax{(setf (gtk:menu-child-bottom-attach container child) attach)}
   @argument[container]{a @class{gtk:menu} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[attach]{an integer with the row number}
@@ -926,8 +926,8 @@ lambda (menu flipped final xflipped yflipped)    :run-first
       "Accessor"
       (documentation 'menu-child-left-attach 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:menu-child-left-attach container child) => attach}
-  @syntax[]{(setf (gtk:menu-child-left-attach container child) attach)}
+  @syntax{(gtk:menu-child-left-attach container child) => attach}
+  @syntax{(setf (gtk:menu-child-left-attach container child) attach)}
   @argument[container]{a @class{gtk:menu} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[attach]{an integer with the column number}
@@ -949,8 +949,8 @@ lambda (menu flipped final xflipped yflipped)    :run-first
       "Accessor"
       (documentation 'menu-child-right-attach 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:menu-child-right-attach container child) => attach}
-  @syntax[]{(setf (gtk:menu-child-right-attach container child) attach)}
+  @syntax{(gtk:menu-child-right-attach container child) => attach}
+  @syntax{(setf (gtk:menu-child-right-attach container child) attach)}
   @argument[container]{a @class{gtk:menu} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[attach]{an integer with the column number}
@@ -972,8 +972,8 @@ lambda (menu flipped final xflipped yflipped)    :run-first
       "Accessor"
       (documentation 'menu-child-top-attach 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:menu-child-top-attach container child) => attach}
-  @syntax[]{(setf (gtk:menu-child-top-attach container child) attach)}
+  @syntax{(gtk:menu-child-top-attach container child) => attach}
+  @syntax{(setf (gtk:menu-child-top-attach container child) attach)}
   @argument[container]{a @class{gtk:menu} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[attach]{an integer with the row number}
@@ -993,7 +993,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 
 (defun menu-new ()
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{2024-3-14}
   @return{The new @class{gtk:menu} widget.}
   @short{Creates a new menu.}
   @see-class{gtk:menu}"
@@ -1222,23 +1222,23 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 
 (cffi:defcfun ("gtk_menu_popup_at_pointer" menu-popup-at-pointer) :void
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{2024-3-14}
   @argument[menu]{a @class{gtk:menu} widget}
-  @argument[event]{a @class{gdk:event} instance that initiated this request of
+  @argument[event]{a @class{gdk:event} instance that initiated this request, or
     @code{nil} if it is the current event}
   @begin{short}
-    Displays menu and makes it available for selection.
+    Displays the menu and makes it available for selection.
   @end{short}
   See the @fun{gtk:menu-popup-at-widget} function to pop up a menu at a widget.
   The @fun{gtk:menu-popup-at-rect} function also allows you to position a menu
   at an arbitrary rectangle.
 
   The menu will be positioned at the pointer associated with @arg{event}.
-
-  Properties that influence the behaviour of this function are
+  Properties that influence the behaviour of this function are the
   @slot[gtk:menu]{anchor-hints}, @slot[gtk:menu]{rect-anchor-dx},
-  @slot[gtk:menu]{rect-anchor-dy}, and @slot[gtk:menu]{menu-type-hint}. Connect
-  to the @code{\"popped-up\"} signal to find out how it was actually positioned.
+  @slot[gtk:menu]{rect-anchor-dy}, and @slot[gtk:menu]{menu-type-hint}
+  properties. Connect to the @code{\"popped-up\"} signal to find out how it was
+  actually positioned.
   @see-class{gtk:menu}
   @see-class{gdk:event}
   @see-function{gtk:menu-popup-at-widget}

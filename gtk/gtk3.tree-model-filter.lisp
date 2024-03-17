@@ -185,8 +185,8 @@
       "Accessor"
       (documentation 'tree-model-filter-child-model 'function)
  "@version{#2023-1-21}
-  @syntax[]{(gtk:tree-model-filter-child-model object) => model}
-  @syntax[]{(setf (gtk:tree-model-filter-child-model object) model)}
+  @syntax{(gtk:tree-model-filter-child-model object) => model}
+  @syntax{(setf (gtk:tree-model-filter-child-model object) model)}
   @argument[object]{a @class{gtk:tree-model-filter} object}
   @argument[model]{a @class{gtk:tree-model} object}
   @begin{short}
@@ -211,8 +211,8 @@
       "Accessor"
       (documentation 'tree-model-filter-virtual-root 'function)
  "@version{#2023-1-21}
-  @syntax[]{(gtk:tree-model-filter-virtual-root object) => root}
-  @syntax[]{(setf (gtk:tree-model-filter-virtual-root object) root)}
+  @syntax{(gtk:tree-model-filter-virtual-root object) => root}
+  @syntax{(setf (gtk:tree-model-filter-virtual-root object) root)}
   @argument[object]{a @class{gtk:tree-model-filter} object}
   @argument[root]{a @class{gtk:tree-path} instance}
   @begin{short}
