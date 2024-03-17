@@ -160,8 +160,8 @@
       "Accessor"
       (documentation 'cell-area-box-spacing 'function)
  "@version{#2023-2-20}
-  @syntax[]{(gtk:cell-area-box-spacing object) => spacing}
-  @syntax[]{(setf (gtk:cell-area-box-spacing object) spacing)}
+  @syntax{(gtk:cell-area-box-spacing object) => spacing}
+  @syntax{(setf (gtk:cell-area-box-spacing object) spacing)}
   @argument[object]{a @class{gtk:cell-area-box} widget}
   @argument[spacing]{an integer with the space to add between
     @class{gtk:cell-renderer} objects.}
@@ -188,8 +188,8 @@
       "Accessor"
       (documentation 'cell-area-box-child-align 'function)
  "@version{#2023-2-20}
-  @syntax[]{(gtk:cell-area-box-child-align container child) => align}
-  @syntax[]{(setf (gtk:cell-area-box-child-align container child) align)}
+  @syntax{(gtk:cell-area-box-child-align container child) => align}
+  @syntax{(setf (gtk:cell-area-box-child-align container child) align)}
   @argument[container]{a @class{gtk:cell-area-box} object}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[align]{a boolean whether the cell renderer should be aligned in
@@ -211,8 +211,8 @@
       "Accessor"
       (documentation 'cell-area-box-child-expand 'function)
  "@version{#2023-2-20}
-  @syntax[]{(gtk:cell-area-box-child-expand container child) => expand}
-  @syntax[]{(setf (gtk:cell-area-box-child-expand container child) expand)}
+  @syntax{(gtk:cell-area-box-child-expand container child) => expand}
+  @syntax{(setf (gtk:cell-area-box-child-expand container child) expand)}
   @argument[container]{a @class{gtk:cell-area-box} object}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[expand]{a boolean whether the cell renderer should receive extra
@@ -236,8 +236,8 @@
       "Accessor"
       (documentation 'cell-area-box-child-fixed-size 'function)
  "@version{#2023-2-20}
-  @syntax[]{(gtk:cell-area-box-child-fixed-size container child) => size}
-  @syntax[]{(setf (gtk:cell-area-box-child-fixed-size container child) size)}
+  @syntax{(gtk:cell-area-box-child-fixed-size container child) => size}
+  @syntax{(setf (gtk:cell-area-box-child-fixed-size container child) size)}
   @argument[container]{a @class{gtk:cell-area-box} object}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[size]{a boolean whether the cell renderer should require the same
@@ -261,8 +261,8 @@
       "Accessor"
       (documentation 'cell-area-box-child-pack-type 'function)
  "@version{#2023-2-20}
-  @syntax[]{(gtk:cell-area-box-child-pack-type container child) => pack-type}
-  @syntax[]{(setf (gtk:cell-area-box-child-pack-type container child) pack-type)}
+  @syntax{(gtk:cell-area-box-child-pack-type container child) => pack-type}
+  @syntax{(setf (gtk:cell-area-box-child-pack-type container child) pack-type)}
   @argument[container]{a @class{gtk:cell-area-box} object}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[pack-type]{a @symbol{gtk:pack-type} value}

@@ -164,8 +164,8 @@ lambda (widget name)    :has-details
       "Accessor"
       (documentation 'app-chooser-button-heading 'function)
  "@version{#2023-2-14}
-  @syntax[]{(gtk:app-chooser-button-heading object) => heading}
-  @syntax[]{(setf (gtk:app-chooser-button-heading object) heading)}
+  @syntax{(gtk:app-chooser-button-heading object) => heading}
+  @syntax{(setf (gtk:app-chooser-button-heading object) heading)}
   @argument[object]{a @class{gtk:app-chooser-button} widget}
   @argument[heading]{a string containing Pango markup}
   @begin{short}
@@ -194,8 +194,8 @@ lambda (widget name)    :has-details
       "Accessor"
       (documentation 'app-chooser-button-show-default-item 'function)
  "@version{#2023-2-14}
-  @syntax[]{(gtk:app-chooser-button-show-default-item object) => setting}
-  @syntax[]{(setf (gtk:app-chooser-button-show-default-item object) setting)}
+  @syntax{(gtk:app-chooser-button-show-default-item object) => setting}
+  @syntax{(setf (gtk:app-chooser-button-show-default-item object) setting)}
   @argument[object]{a @class{gtk:app-chooser-button} widget}
   @argument[setting]{a boolean whether the dropdown menu should show the default
     application}
@@ -226,8 +226,8 @@ lambda (widget name)    :has-details
       "Accessor"
       (documentation 'app-chooser-button-show-dialog-item 'function)
  "@version{#2023-2-14}
-  @syntax[]{(gtk:app-chooser-button-show-dialog-item object) => setting}
-  @syntax[]{(setf (gtk:app-chooser-button-show-dialog-item object) setting)}
+  @syntax{(gtk:app-chooser-button-show-dialog-item object) => setting}
+  @syntax{(setf (gtk:app-chooser-button-show-dialog-item object) setting)}
   @argument[object]{a @class{gtk:app-chooser-button} widget}
   @argument[setting]{a boolean whether the dropdown menu should show a
     @class{gtk:app-chooser-dialog} widget}

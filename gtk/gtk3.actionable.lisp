@@ -115,8 +115,8 @@
       "Accessor"
       (documentation 'actionable-action-name 'function)
  "@version{2023-6-17}
-  @syntax[]{(gtk:actionable-action-name object) => name}
-  @syntax[]{(setf (gtk:actionable-action-name object) name)}
+  @syntax{(gtk:actionable-action-name object) => name}
+  @syntax{(setf (gtk:actionable-action-name object) name)}
   @argument[object]{a @class{gtk:actionable} widget}
   @argument[name]{a string with the action name, or @code{nil}}
   @begin{short}
@@ -163,8 +163,8 @@
       "Accessor"
       (documentation 'actionable-action-target 'function)
  "@version{2023-6-17}
-  @syntax[]{(gtk:actionable-action-target object) => value}
-  @syntax[]{(setf (gtk:actionable-action-target object) value)}
+  @syntax{(gtk:actionable-action-target object) => value}
+  @syntax{(setf (gtk:actionable-action-target object) value)}
   @argument[object]{a @class{gtk:actionable} widget}
   @argument[value]{a @type{g:variant} parameter as the target value, or
     @code{null-pointer}}

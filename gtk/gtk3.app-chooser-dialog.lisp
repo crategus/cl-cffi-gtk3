@@ -147,8 +147,8 @@
       "Accessor"
       (documentation 'app-chooser-dialog-heading 'function)
  "@version{2023-2-18}
-  @syntax[]{gtk:app-chooser-dialog-heading object) => heading}
-  @syntax[]{(setf (gtk:app-chooser-dialog-heading object) heading)}
+  @syntax{gtk:app-chooser-dialog-heading object) => heading}
+  @syntax{(setf (gtk:app-chooser-dialog-heading object) heading)}
   @argument[object]{a @class{gtk:app-chooser-dialog} widget}
   @argument[heading]{a string containing Pango markup}
   @begin{short}

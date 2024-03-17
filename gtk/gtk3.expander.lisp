@@ -256,8 +256,8 @@ lambda (expander)   :action
       "Accessor"
       (documentation 'expander-expanded 'function)
  "@version{#2023-3-17}
-  @syntax[]{(gtk:expander-expanded object) => expanded}
-  @syntax[]{(setf (gtk:expander-expanded object) expanded)}
+  @syntax{(gtk:expander-expanded object) => expanded}
+  @syntax{(setf (gtk:expander-expanded object) expanded)}
   @argument[object]{a @class{gtk:expander} widget}
   @argument[expanded]{a boolean whether the child widget is revealed}
   @begin{short}
@@ -283,8 +283,8 @@ lambda (expander)   :action
       "Accessor"
       (documentation 'expander-label 'function)
  "@version{#2023-3-17}
-  @syntax[]{(gtk:expander-label object) => label}
-  @syntax[]{(setf (gtk:expander-label object) label)}
+  @syntax{(gtk:expander-label object) => label}
+  @syntax{(setf (gtk:expander-label object) label)}
   @argument[object]{a @class{gtk:expander} widget}
   @argument[label]{a string with the text of the label of the expander}
   @begin{short}
@@ -315,8 +315,8 @@ lambda (expander)   :action
       "Accessor"
       (documentation 'expander-label-fill 'function)
  "@version{#2023-3-17}
-  @syntax[]{(gtk:expander-label-fill object) => label-fill}
-  @syntax[]{(setf (gtk:expander-label-fill object) label-fill)}
+  @syntax{(gtk:expander-label-fill object) => label-fill}
+  @syntax{(setf (gtk:expander-label-fill object) label-fill)}
   @argument[object]{a @class{gtk:expander} widget}
   @argument[label-fill]{@em{true} if the label should should fill all available
     horizontal space}
@@ -343,8 +343,8 @@ lambda (expander)   :action
       "Accessor"
       (documentation 'expander-label-widget 'function)
  "@version{#2023-3-17}
-  @syntax[]{(gtk:expander-label-widget object) => label-widget}
-  @syntax[]{(setf gtk:expander-label-widget object) label-widget)}
+  @syntax{(gtk:expander-label-widget object) => label-widget}
+  @syntax{(setf gtk:expander-label-widget object) label-widget)}
   @argument[object]{a @class{gtk:expander} widget}
   @argument[label-widget]{a @class{gtk:widget} label widget}
   @begin{short}
@@ -374,8 +374,8 @@ lambda (expander)   :action
       "Accessor"
       (documentation 'expander-resize-toplevel 'function)
  "@version{#2023-3-17}
-  @syntax[]{(gtk:expander-resize-toplevel object) => resize-toplevel}
-  @syntax[]{(setf (gtk:expander-resize-toplevel object) resize-toplevel)}
+  @syntax{(gtk:expander-resize-toplevel object) => resize-toplevel}
+  @syntax{(setf (gtk:expander-resize-toplevel object) resize-toplevel)}
   @argument[object]{a @class{gtk:expander} widget}
   @argument[resize-toplevel]{a boolean whether to resize the toplevel}
   @begin{short}
@@ -406,8 +406,8 @@ lambda (expander)   :action
       "Accessor"
       (documentation 'expander-spacing 'function)
  "@version{#2023-3-17}
-  @syntax[]{(gtk:expander-spacing object) => spacing}
-  @syntax[]{(setf (gtk:expand-spacing object) spacing)}
+  @syntax{(gtk:expander-spacing object) => spacing}
+  @syntax{(setf (gtk:expand-spacing object) spacing)}
   @argument[object]{a @class{gtk:expander} widget}
   @argument[spacing]{an integer with the distance between the expander and
     child widget in pixels}
@@ -439,8 +439,8 @@ lambda (expander)   :action
       "Accessor"
       (documentation 'expander-use-markup 'function)
  "@version{#2023-3-17}
-  @syntax[]{(gtk:expander-use-markup object) => use-markup}
-  @syntax[]{(setf (gtk:expander-use-markup object) use-markup)}
+  @syntax{(gtk:expander-use-markup object) => use-markup}
+  @syntax{(setf (gtk:expander-use-markup object) use-markup)}
   @argument[object]{a @class{gtk:expander} widget}
   @argument[use-markup]{@em{true} if the text of the label should be parsed for
     markup}
@@ -470,8 +470,8 @@ lambda (expander)   :action
       "Accessor"
       (documentation 'expander-use-underline 'function)
  "@version{#2023-3-17}
-  @syntax[]{(gtk:expander-use-underline object) => use-underline}
-  @syntax[]{(setf (gtk:expander-use-underline object) use-underline)}
+  @syntax{(gtk:expander-use-underline object) => use-underline}
+  @syntax{(setf (gtk:expander-use-underline object) use-underline)}
   @argument[object]{a @class{gtk:expander} widget}
   @argument[use-underline]{@em{true} if underlines in the text indicate
     mnemonics}

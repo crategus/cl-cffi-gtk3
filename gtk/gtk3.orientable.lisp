@@ -97,8 +97,8 @@
       "Accessor"
       (documentation 'orientable-orientation 'function)
  "@version{2023-2-27}
-  @syntax[]{(gtk:orientable-orientation object) => orientation}
-  @syntax[]{(setf (gtk:orientable-orientation object) orientation)}
+  @syntax{(gtk:orientable-orientation object) => orientation}
+  @syntax{(setf (gtk:orientable-orientation object) orientation)}
   @argument[object]{a @class{gtk:orientable} widget}
   @argument[orientation]{a value of the @symbol{gtk:orientation} enumeration}
   @begin{short}

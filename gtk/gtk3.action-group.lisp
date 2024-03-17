@@ -242,8 +242,8 @@ lambda (group action)
       "Accessor"
       (documentation 'action-group-accel-group 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:action-group-accel-group object) => group}
-  @syntax[]{(setf (gtk:action-group-accel-group object) group)}
+  @syntax{(gtk:action-group-accel-group object) => group}
+  @syntax{(setf (gtk:action-group-accel-group object) group)}
   @argument[object]{a @class{gtk:action-group} object}
   @argument[group]{a @class{gtk:accel-group} object to set or @code{nil}}
   @begin{short}
@@ -271,7 +271,7 @@ lambda (group action)
       "Accessor"
       (documentation 'action-group-name 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:action-group-name object) => name}
+  @syntax{(gtk:action-group-name object) => name}
   @argument[object]{a @class{gtk:action-group} object}
   @return{The string with the name of the action group.}
   @begin{short}
@@ -297,8 +297,8 @@ lambda (group action)
       "Accessor"
       (documentation 'action-group-sensitive 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:action-group-sensitive object) => sensitive}
-  @syntax[]{(setf (gtk:action-group-sensitive object) sensitive)}
+  @syntax{(gtk:action-group-sensitive object) => sensitive}
+  @syntax{(setf (gtk:action-group-sensitive object) sensitive)}
   @argument[object]{a @class{gtk:action-group} object}
   @argument[sensitive]{a boolean with the sensitivity}
   @begin{short}
@@ -324,8 +324,8 @@ lambda (group action)
       "Accessor"
       (documentation 'action-group-visible 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:action-group-visible object) => visible}
-  @syntax[]{(setf (gtk:action-group-visible object) visible)}
+  @syntax{(gtk:action-group-visible object) => visible}
+  @syntax{(setf (gtk:action-group-visible object) visible)}
   @argument[object]{a @class{gtk:action-group} object}
   @argument[visible]{a boolean with the visibility}
   @begin{short}

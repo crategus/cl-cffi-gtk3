@@ -127,8 +127,8 @@ lambda (gesture x y)    :run-last
       "Accessor"
       (documentation 'gesture-long-press-delay-factor 'function)
  "@version{#2023-3-6}
-  @syntax[]{(gtk:gesture-long-press-delay-factor object) => delay-factor)}
-  @syntax[]{(setf (gtk:gesture-long-press-delay-factor object) delay-factor)}
+  @syntax{(gtk:gesture-long-press-delay-factor object) => delay-factor)}
+  @syntax{(setf (gtk:gesture-long-press-delay-factor object) delay-factor)}
   @argument[object]{a @class{gtk:gesture-long-press} object}
   @argument[delay-factor]{a double float with the factor by which to modify
     the default timeout}

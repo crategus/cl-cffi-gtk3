@@ -192,8 +192,8 @@
       "Accessor"
       (documentation 'menu-bar-child-pack-direction 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:menu-bar-child-pack-direction object) => direction}
-  @syntax[]{(setf (gtk:menu-bar-child-pack-direction object) direction)}
+  @syntax{(gtk:menu-bar-child-pack-direction object) => direction}
+  @syntax{(setf (gtk:menu-bar-child-pack-direction object) direction)}
   @argument[object]{a @class{gtk:menu-bar} widget}
   @argument[direction]{a value of the @symbol{gtk:pack-direction} enumeration}
   @begin{short}
@@ -222,8 +222,8 @@
       "Accessor"
       (documentation 'menu-bar-pack-direction 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:menu-bar-pack-direction object) => direction}
-  @syntax[]{(setf (gtk:menu-bar-pack-direction object) direction)}
+  @syntax{(gtk:menu-bar-pack-direction object) => direction}
+  @syntax{(setf (gtk:menu-bar-pack-direction object) direction)}
   @argument[menubar]{a @class{gtk:menu-bar} widget}
   @argument[direction]{a value of the @symbol{gtk:pack-direction} enumeration}
   @begin{short}

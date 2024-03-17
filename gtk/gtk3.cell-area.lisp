@@ -538,7 +538,7 @@ lambda (area renderer editable)    :run-first
       "Accessor"
       (documentation 'cell-area-edit-widget 'function)
  "@version{#2023-3-16}
-  @syntax[]{(gtk:cell-area-edit-widget object) => edit-widget}
+  @syntax{(gtk:cell-area-edit-widget object) => edit-widget}
   @argument[object]{a @class{gtk:cell-area} object}
   @argument[edit-widget]{a @class{gtk:cell-editable} widget}
   @begin{short}
@@ -564,7 +564,7 @@ lambda (area renderer editable)    :run-first
       "Accessor"
       (documentation 'cell-area-edited-cell 'function)
  "@version{#2023-3-16}
-  @syntax[]{(gtk:cell-area-edited-cell object) => renderer}
+  @syntax{(gtk:cell-area-edited-cell object) => renderer}
   @argument[object]{a @class{gtk:cell-area} object}
   @argument[renderer]{a @class{gtk:cell-renderer} object}
   @begin{short}
@@ -589,8 +589,8 @@ lambda (area renderer editable)    :run-first
       "Accessor"
       (documentation 'cell-area-focus-cell 'function)
  "@version{#2023-3-16}
-  @syntax[]{(gtk:cell-area-edited-cell object) => renderer}
-  @syntax[]{(setf (gtk:cell-area-edited-cell object) renderer}
+  @syntax{(gtk:cell-area-edited-cell object) => renderer}
+  @syntax{(setf (gtk:cell-area-edited-cell object) renderer}
   @argument[object]{a @class{gtk:cell-area} object}
   @argument[renderer]{a @class{gtk:cell-renderer} object to give focus to}
   @begin{short}
@@ -1670,8 +1670,8 @@ lambda (renderer cell background)
 (defun cell-area-cell-property (area renderer property)
  #+liber-documentation
  "@version{#2023-3-16}
-  @syntax[]{(gtk:cell-area-property area renderer property) => value}
-  @syntax[]{(setf (gtk:cell-area-property area renderer property) value)}
+  @syntax{(gtk:cell-area-property area renderer property) => value}
+  @syntax{(setf (gtk:cell-area-property area renderer property) value)}
   @argument[area]{a @class{gtk:cell-area} object}
   @argument[renderer]{a @class{gtk:cell-renderer} object which is inside
     @arg{area}}

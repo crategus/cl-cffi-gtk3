@@ -162,8 +162,8 @@
       "Accessor"
       (documentation 'accel-label-accel-closure 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:accel-label-accel-closure object) => closure}
-  @syntax[]{(setf (gtk:accel-label-accel-closure object) closure)}
+  @syntax{(gtk:accel-label-accel-closure object) => closure}
+  @syntax{(setf (gtk:accel-label-accel-closure object) closure)}
   @argument[label]{a @class{gtk:accel-label} widget}
   @argument[closure]{a @symbol{g:closure} instance to monitor for accelerator
     changes}
@@ -191,8 +191,8 @@
       "Accessor"
       (documentation 'accel-label-accel-widget 'function)
  "@version{#2023-3-15}
-  @syntax[]{(gtk:accel-label-accel-widget object) => widget}
-  @syntax[]{(setf (gtk:accel-label-accel-widget object) widget)}
+  @syntax{(gtk:accel-label-accel-widget object) => widget}
+  @syntax{(setf (gtk:accel-label-accel-widget object) widget)}
   @argument[label]{a @class{gtk:accel-label} widget}
   @argument[widget]{a @class{gtk:widget} object to be monitored}
   @begin{short}

@@ -397,8 +397,8 @@ lambda (editable text length position)    :run-last
 (cffi:defcfun ("gtk_editable_get_position" editable-position) :int
  #+liber-documentation
  "@version{2023-2-13}
-  @syntax[]{(gtk:editable-position editable) => position}
-  @syntax[]{(setf (gtk:editable-position editable) position)}
+  @syntax{(gtk:editable-position editable) => position}
+  @syntax{(setf (gtk:editable-position editable) position)}
   @argument[editable]{a @class{gtk:editable} widget}
   @argument[position]{an integer with the position of the cursor}
   @begin{short}
@@ -434,8 +434,8 @@ lambda (editable text length position)    :run-last
 (cffi:defcfun ("gtk_editable_get_editable" editable-editable) :boolean
  #+liber-documentation
  "@version{2023-2-13}
-  @syntax[]{(gtk:editable-editable editable) => setting}
-  @syntax[]{(setf (gtk:editable-editable editable) setting)}
+  @syntax{(gtk:editable-editable editable) => setting}
+  @syntax{(setf (gtk:editable-editable editable) setting)}
   @argument[editable]{a @class{gtk:editable} widget}
   @argument[setting]{@em{true} if the user is allowed to edit the text in the
     widget}

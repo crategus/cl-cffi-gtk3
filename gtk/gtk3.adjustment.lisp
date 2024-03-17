@@ -174,8 +174,8 @@ lambda (adjustment)    :no-recurse
       "Accessor"
       (documentation 'adjustment-lower 'function)
  "@version{2023-3-14}
-  @syntax[]{(gtk:adjustment-lower object) => lower}
-  @syntax[]{(setf (gtk:adjustment-lower object) lower)}
+  @syntax{(gtk:adjustment-lower object) => lower}
+  @syntax{(setf (gtk:adjustment-lower object) lower)}
   @argument[object]{a @class{gtk:adjustment} object}
   @argument[lower]{a number coerced to a double float with the minimum value}
   @begin{short}
@@ -214,8 +214,8 @@ lambda (adjustment)    :no-recurse
       "Accessor"
       (documentation 'adjustment-page-increment 'function)
  "@version{2023-3-14}
-  @syntax[]{(gtk:adjustment-page-increment object) => page-increment}
-  @syntax[]{(setf (gtk:adjustment-page-increment object) page-increment)}
+  @syntax{(gtk:adjustment-page-increment object) => page-increment}
+  @syntax{(setf (gtk:adjustment-page-increment object) page-increment)}
   @argument[object]{a @class{gtk:adjustment} object}
   @argument[page-increment]{a number coerced to a double float with the page
     increment}
@@ -248,8 +248,8 @@ lambda (adjustment)    :no-recurse
       "Accessor"
       (documentation 'adjustment-page-size 'function)
  "@version{2023-3-14}
-  @syntax[]{(gtk:adjustment-page-size object) => size}
-  @syntax[]{(setf (gtk:adjustment-page-size object) size)}
+  @syntax{(gtk:adjustment-page-size object) => size}
+  @syntax{(setf (gtk:adjustment-page-size object) size)}
   @argument[object]{a @class{gtk:adjustment} object}
   @argument[size]{a number coerced to a double float with the page size}
   @begin{short}
@@ -279,8 +279,8 @@ lambda (adjustment)    :no-recurse
       "Accessor"
       (documentation 'adjustment-step-increment 'function)
  "@version{2023-3-14}
-  @syntax[]{(gtk:adjustment-step-increment object) => increment}
-  @syntax[]{(setf (gtk:adjustment-step-increment object) increment)}
+  @syntax{(gtk:adjustment-step-increment object) => increment}
+  @syntax{(setf (gtk:adjustment-step-increment object) increment)}
   @argument[object]{a @class{gtk:adjustment} object}
   @argument[increment]{a number coerced to a double float with the step
     increment}
@@ -313,8 +313,8 @@ lambda (adjustment)    :no-recurse
       "Accessor"
       (documentation 'adjustment-upper 'function)
  "@version{2023-3-14}
-  @syntax[]{(gtk:adjustment-upper object) => upper}
-  @syntax[]{(setf (gtk:adjustment-upper object) upper)}
+  @syntax{(gtk:adjustment-upper object) => upper}
+  @syntax{(setf (gtk:adjustment-upper object) upper)}
   @argument[object]{a @class{gtk:adjustment} object}
   @argument[upper]{a number coerced to a double float with the maximum value}
   @begin{short}
@@ -350,8 +350,8 @@ lambda (adjustment)    :no-recurse
       "Accessor"
       (documentation 'adjustment-value 'function)
  "@version{2023-3-14}
-  @syntax[]{(gtk:adjustment-value object) => value}
-  @syntax[]{(setf (gtk:adjustment-value object) value)}
+  @syntax{(gtk:adjustment-value object) => value}
+  @syntax{(setf (gtk:adjustment-value object) value)}
   @argument[object]{a @class{gtk:adjustment} object}
   @argument[value]{a number coerced to a double float with the value}
   @begin{short}

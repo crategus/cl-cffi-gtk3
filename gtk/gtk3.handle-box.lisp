@@ -186,7 +186,7 @@ lambda (handlebox widget)    :run-first
       "Accessor"
       (documentation 'handle-box-child-detached 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:handle-box-child-detached object) => detached}
+  @syntax{(gtk:handle-box-child-detached object) => detached}
   @argument[object]{a @class{gtk:handle-box} widget}
   @argument[detached]{a boolean whether the child is detached}
   @begin{short}
@@ -215,8 +215,8 @@ lambda (handlebox widget)    :run-first
       "Accessor"
       (documentation 'handle-box-handle-position 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:handle-box-handle-position object) => position}
-  @syntax[]{(setf (gtk:handle-box-handle-position object) position)}
+  @syntax{(gtk:handle-box-handle-position object) => position}
+  @syntax{(setf (gtk:handle-box-handle-position object) position)}
   @argument[object]{a @class{gtk:handle-box} widget}
   @argument[position]{a value of the @symbol{gtk:position-type} enumeration}
   @begin{short}
@@ -248,8 +248,8 @@ lambda (handlebox widget)    :run-first
       "Accessor"
       (documentation 'handle-box-shadow-type 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:handle-box-shadow-type object) => shadow-type}
-  @syntax[]{(setf (gtk:handle-box-shadow-type object) shadow-type)}
+  @syntax{(gtk:handle-box-shadow-type object) => shadow-type}
+  @syntax{(setf (gtk:handle-box-shadow-type object) shadow-type)}
   @argument[object]{a @class{gtk:handle-box} widget}
   @argument[shadow-type]{a value of the @symbol{gtk:shadow-type} enumeration}
   @begin{short}
@@ -282,8 +282,8 @@ lambda (handlebox widget)    :run-first
       "Accessor"
       (documentation 'handle-box-snap-edge 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:handle-box-snap-edge object) => edge}
-  @syntax[]{(setf (gtk:handle-box-snap-edge object) edge)}
+  @syntax{(gtk:handle-box-snap-edge object) => edge}
+  @syntax{(setf (gtk:handle-box-snap-edge object) edge)}
   @argument[object]{a @class{gtk:handle-box} widget}
   @argument[edge]{a value of the @symbol{gtk:position-type} enumeration}
   @begin{short}
@@ -324,8 +324,8 @@ lambda (handlebox widget)    :run-first
       "Accessor"
       (documentation 'handle-box-snap-edge-set 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:handle-box-snap-edge-set object) => setting}
-  @syntax[]{(setf (gtk:handle-box-snap-edge-set object) setting)}
+  @syntax{(gtk:handle-box-snap-edge-set object) => setting}
+  @syntax{(setf (gtk:handle-box-snap-edge-set object) setting)}
   @argument[object]{a @class{gtk:handle-box} widget}
   @argument[setting]{a boolean whether to use the value from the
     @slot[gtk:handle-box]{snap-edge} property}

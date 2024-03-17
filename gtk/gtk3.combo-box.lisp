@@ -418,8 +418,8 @@ lambda (combo)    :action
       "Accessor"
       (documentation 'combo-box-active 'function)
  "@version{#2023-3-17}
-  @syntax[]{(gtk:combo-box-active object) => index}
-  @syntax[]{(setf (gtk:combo-box-active object) index)}
+  @syntax{(gtk:combo-box-active object) => index}
+  @syntax{(setf (gtk:combo-box-active object) index)}
   @argument[object]{a @class{gtk:combo-box} widget}
   @argument[index]{an integer with the index in the model passed during
     construction, or -1 to have no active item}
@@ -451,8 +451,8 @@ lambda (combo)    :action
       "Accessor"
       (documentation 'combo-box-active-id 'function)
  "@version{#2023-3-17}
-  @syntax[]{(gtk:combo-box-active-id object) => active-id}
-  @syntax[]{(setf (gtk:combo-box-active-id object) active-id)}
+  @syntax{(gtk:combo-box-active-id object) => active-id}
+  @syntax{(setf (gtk:combo-box-active-id object) active-id)}
   @argument[object]{a @class{gtk:combo-box} widget}
   @argument[active-id]{a string with the ID of the row to select, or @code{nil}}
   @begin{short}
@@ -488,8 +488,8 @@ lambda (combo)    :action
       "Accessor"
       (documentation 'combo-box-add-tearoffs 'function)
  "@version{#2023-3-17}
-  @syntax[]{(gtk:combo-box-add-tearoffs object) => add-tearoffs}
-  @syntax[]{(setf (gtk:combo-box-add-tearoffs object) add-tearoffs)}
+  @syntax{(gtk:combo-box-add-tearoffs object) => add-tearoffs}
+  @syntax{(setf (gtk:combo-box-add-tearoffs object) add-tearoffs)}
   @argument[object]{a @class{gtk:combo-box} widget}
   @argument[add-tearoffs]{@em{true} to add tearoff menu items}
   @begin{short}
@@ -520,8 +520,8 @@ lambda (combo)    :action
       "Accessor"
       (documentation 'combo-box-button-sensitivity 'function)
  "@version{#2023-3-17}
-  @syntax[]{(gtk:combo-box-button-sensitivity object) => sensitivity}
-  @syntax[]{(setf (gtk:combo-box-button-sensitivity object) sensitivity)}
+  @syntax{(gtk:combo-box-button-sensitivity object) => sensitivity}
+  @syntax{(setf (gtk:combo-box-button-sensitivity object) sensitivity)}
   @argument[object]{a @class{gtk:combo-box} widget}
   @argument[sensitivity]{a value of the @symbol{gtk:sensitivity-type}
     enumeration}
@@ -556,8 +556,8 @@ lambda (combo)    :action
       "Accessor"
       (documentation 'combo-box-cell-area 'function)
  "@version{#2023-3-17}
-  @syntax[]{(gtk:combo-box-button-cell-area object) => area}
-  @syntax[]{(setf (gtk:combo-box-cell-area object) area)}
+  @syntax{(gtk:combo-box-button-cell-area object) => area}
+  @syntax{(setf (gtk:combo-box-cell-area object) area)}
   @argument[object]{a @class{gtk:combo-box} widget}
   @argument[area]{a @class{gtk:cell-area} object used to layout cell renderes}
   @begin{short}
@@ -593,8 +593,8 @@ lambda (combo)    :action
       "Accessor"
       (documentation 'combo-box-column-span-column 'function)
  "@version{#2023-3-17}
-  @syntax[]{(gtk:combo-box-column-span-column object) => column-span}
-  @syntax[]{(setf (gtk:combo-box-column-span-column object) column-span)}
+  @syntax{(gtk:combo-box-column-span-column object) => column-span}
+  @syntax{(setf (gtk:combo-box-column-span-column object) column-span)}
   @argument[object]{a @class{gtk:combo-box} widget}
   @argument[column-span]{an integer with a column in the model passed during
     construction}
@@ -626,8 +626,8 @@ lambda (combo)    :action
       "Accessor"
       (documentation 'combo-box-entry-text-column 'function)
  "@version{#2023-3-17}
-  @syntax[]{(gtk:combo-box-entry-text-column object) => text-column}
-  @syntax[]{(setf (gtk:combo-box-entry-text-column object) text-column)}
+  @syntax{(gtk:combo-box-entry-text-column object) => text-column}
+  @syntax{(setf (gtk:combo-box-entry-text-column object) text-column)}
   @argument[object]{a @class{gtk:combo-box} widget}
   @argument[text-column]{an integer with a column in model to get the strings
     from for the internal entry}
@@ -659,8 +659,8 @@ lambda (combo)    :action
       "Accessor"
       (documentation 'combo-box-focus-on-click 'function)
  "@version{#2023-3-17}
-  @syntax[]{(gtk:combo-box-focus-on-click object) => focus-on-click}
-  @syntax[]{(setf (gtk:combo-box-focus-on-click object) focus-on-click)}
+  @syntax{(gtk:combo-box-focus-on-click object) => focus-on-click}
+  @syntax{(setf (gtk:combo-box-focus-on-click object) focus-on-click)}
   @argument[object]{a @class{gtk:combo-box} widget}
   @argument[focus-on-click]{a boolean whether the combo box grabs focus when
     clicked with the mouse}
@@ -698,7 +698,7 @@ lambda (combo)    :action
       "Accessor"
       (documentation 'combo-box-has-entry 'function)
  "@version{#2023-3-17}
-  @syntax[]{(gtk:combo-box-has-entry object) => has-entry}
+  @syntax{(gtk:combo-box-has-entry object) => has-entry}
   @argument[object]{a @class{gtk:combo-box} widget}
   @argument[has-entry]{a boolean whether the combo box has an entry}
   @begin{short}
@@ -722,8 +722,8 @@ lambda (combo)    :action
       "Accessor"
       (documentation 'combo-box-has-frame 'function)
  "@version{#2023-3-17}
-  @syntax[]{(gtk:combo-box-has-frame object) => has-frame}
-  @syntax[]{(setf (gtk:combo-box-has-frame object) has-frame)}
+  @syntax{(gtk:combo-box-has-frame object) => has-frame}
+  @syntax{(setf (gtk:combo-box-has-frame object) has-frame)}
   @argument[object]{a @class{gtk:combo-box} widget}
   @argument[has-frame]{a boolean whether a frame is drawn around the entry}
   @begin{short}
@@ -748,8 +748,8 @@ lambda (combo)    :action
       "Accessor"
       (documentation 'combo-box-id-column 'function)
  "@version{#2023-3-17}
-  @syntax[]{(gtk:combo-box-id-column object) => id-column}
-  @syntax[]{(setf (gtk:combo-box-id-column object) id-column)}
+  @syntax{(gtk:combo-box-id-column object) => id-column}
+  @syntax{(setf (gtk:combo-box-id-column object) id-column)}
   @argument[object]{a @class{gtk:combo-box} widget}
   @argument[id-column]{an integer with a column in model to get string IDs for
     values from}
@@ -777,8 +777,8 @@ lambda (combo)    :action
       "Accessor"
       (documentation 'combo-box-model 'function)
  "@version{#2023-3-17}
-  @syntax[]{(gtk:combo-box-model object) => model}
-  @syntax[]{(setf (gtk:combo-box-model object) model)}
+  @syntax{(gtk:combo-box-model object) => model}
+  @syntax{(setf (gtk:combo-box-model object) model)}
   @argument[object]{a @class{gtk:combo-box} widget}
   @argument[model]{a @class{gtk:tree-model} object}
   @begin{short}
@@ -813,8 +813,8 @@ lambda (combo)    :action
       "Accessor"
       (documentation 'combo-box-popup-fixed-width 'function)
  "@version{#2023-3-17}
-  @syntax[]{(gtk:combo-box-popup-fixed-width object) => fixed}
-  @syntax[]{(setf (gtk:combo-box-popup-fixed-width object) fixed)}
+  @syntax{(gtk:combo-box-popup-fixed-width object) => fixed}
+  @syntax{(setf (gtk:combo-box-popup-fixed-width object) fixed)}
   @argument[object]{a @class{gtk:combo-box} widget}
   @argument[fixed]{a boolean whether to use a fixed popup width}
   @begin{short}
@@ -842,8 +842,8 @@ lambda (combo)    :action
       "Accessor"
       (documentation 'combo-box-popup-shown 'function)
  "@version{#2023-3-17}
-  @syntax[]{(gtk:combo-box-popup-shown object) => popup-shown}
-  @syntax[]{(setf (gtk:combo-box-popup-shown object) popup-shown)}
+  @syntax{(gtk:combo-box-popup-shown object) => popup-shown}
+  @syntax{(setf (gtk:combo-box-popup-shown object) popup-shown)}
   @argument[object]{a @class{gtk:combo-box} widget}
   @argument[popup-shown]{a boolean whether the combo boxes dropdown is popped
     up}
@@ -874,8 +874,8 @@ lambda (combo)    :action
       "Accessor"
       (documentation 'combo-box-row-span-column 'function)
  "@version{#2023-3-17}
-  @syntax[]{(gtk:combo-box-row-span-column object) => row-span}
-  @syntax[]{(setf (gtk:combo-box-row-span-column object) row-span)}
+  @syntax{(gtk:combo-box-row-span-column object) => row-span}
+  @syntax{(setf (gtk:combo-box-row-span-column object) row-span)}
   @argument[object]{a @class{gtk:combo-box} widget}
   @argument[row-span]{an integer with a column in the model passed during
     construction}
@@ -905,8 +905,8 @@ lambda (combo)    :action
       "Accessor"
       (documentation 'combo-box-tearoff-title 'function)
  "@version{#2023-3-17}
-  @syntax[]{(gtk:combo-box-tearoff-title object) => title}
-  @syntax[]{(setf (gtk:combo-box-tearoff-title object) title)}
+  @syntax{(gtk:combo-box-tearoff-title object) => title}
+  @syntax{(setf (gtk:combo-box-tearoff-title object) title)}
   @argument[object]{a @class{gtk:combo-box} widget}
   @argument[title]{a string with a title}
   @begin{short}
@@ -937,8 +937,8 @@ lambda (combo)    :action
       "Accessor"
       (documentation 'combo-box-wrap-width 'function)
  "@version{#2023-3-17}
-  @syntax[]{(gtk:combo-box-wrap-width object) => width}
-  @syntax[]{(setf (gtk:combo-box-wrap-width object) width)}
+  @syntax{(gtk:combo-box-wrap-width object) => width}
+  @syntax{(setf (gtk:combo-box-wrap-width object) width)}
   @argument[object]{a @class{gtk:combo-box} widget}
   @argument[width]{an integer with the preferred number of columns}
   @begin{short}
@@ -1111,8 +1111,8 @@ lambda (combo)    :action
 (defun combo-box-active-iter (combo)
  #+liber-documentation
  "@version{#2023-3-17}
-  @syntax[]{(gtk:combo-box-active-iter combo-box) => iter}
-  @syntax[]{(setf (gtk:combo-box-active-iter combo-box) iter)}
+  @syntax{(gtk:combo-box-active-iter combo-box) => iter}
+  @syntax{(setf (gtk:combo-box-active-iter combo-box) iter)}
   @argument[combo]{a @class{gtk:combo-box} widget}
   @argument[iter]{the @class{gtk:tree-iter}, or @code{nil}}
   @begin{short}

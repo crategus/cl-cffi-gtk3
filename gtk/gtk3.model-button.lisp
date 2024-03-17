@@ -271,8 +271,8 @@ button.model
       "Accessor"
       (documentation 'model-button-active 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:model-button-active object) => active}
-  @syntax[]{(setf (gtk:model-button-active object) active)}
+  @syntax{(gtk:model-button-active object) => active}
+  @syntax{(setf (gtk:model-button-active object) active)}
   @argument[object]{a @class{gtk:model-button} widget}
   @argument[active]{a boolean with the state of the button}
   @begin{short}
@@ -298,8 +298,8 @@ button.model
       "Accessor"
       (documentation 'model-button-centered 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:model-button-centered object) => centered}
-  @syntax[]{(setf (gtk:model-button-centered object) centered)}
+  @syntax{(gtk:model-button-centered object) => centered}
+  @syntax{(setf (gtk:model-button-centered object) centered)}
   @argument[object]{a @class{gtk:model-button} widget}
   @argument[active]{a boolean whether to render the button contents centered
     instead of left-aligned}
@@ -323,8 +323,8 @@ button.model
       "Accessor"
       (documentation 'model-button-icon 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:model-button-icon object) => icon}
-  @syntax[]{(setf (gtk:model-button-icon object) icon)}
+  @syntax{(gtk:model-button-icon object) => icon}
+  @syntax{(setf (gtk:model-button-icon object) icon)}
   @argument[object]{a @class{gtk:model-button} widget}
   @argument[icon]{a @class{g:icon} object}
   @begin{short}
@@ -351,8 +351,8 @@ button.model
       "Accessor"
       (documentation 'model-button-iconic 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:model-button-iconic object) => iconic}
-  @syntax[]{(setf (gtk:model-button-iconic object) iconic)}
+  @syntax{(gtk:model-button-iconic object) => iconic}
+  @syntax{(setf (gtk:model-button-iconic object) iconic)}
   @argument[object]{a @class{gtk:model-button} widget}
   @argument[iconic]{a boolean whether the button will show an icon}
   @begin{short}
@@ -379,8 +379,8 @@ button.model
       "Accessor"
       (documentation 'model-button-inverted 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:model-button-inverted object) => inverted}
-  @syntax[]{(setf (gtk:model-button-inverted object) inverted)}
+  @syntax{(gtk:model-button-inverted object) => inverted}
+  @syntax{(setf (gtk:model-button-inverted object) inverted)}
   @argument[object]{a @class{gtk:model-button} widget}
   @argument[inverted]{a boolean whether to show the submenu indicator at the
     opposite side than normal}
@@ -406,8 +406,8 @@ button.model
       "Accessor"
       (documentation 'model-button-menu-name 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:model-button-menu-name object) => name}
-  @syntax[]{(setf (gtk:model-button-menu-name object) name)}
+  @syntax{(gtk:model-button-menu-name object) => name}
+  @syntax{(setf (gtk:model-button-menu-name object) name)}
   @argument[object]{a @class{gtk:model-button} widget}
   @argument[name]{a string with the name of a submenu}
   @begin{short}
@@ -433,8 +433,8 @@ button.model
       "Accessor"
       (documentation 'model-button-role 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:model-button-role object) => role}
-  @syntax[]{(setf (gtk:model-button-role object) role)}
+  @syntax{(gtk:model-button-role object) => role}
+  @syntax{(setf (gtk:model-button-role object) role)}
   @argument[object]{a @class{gtk:model-button} widget}
   @argument[role]{a value of the @symbol{gtk:button-role} enumeration}
   @begin{short}
@@ -460,8 +460,8 @@ button.model
       "Accessor"
       (documentation 'model-button-text 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:model-button-text object) => text}
-  @syntax[]{(setf (gtk:model-button-text object) text)}
+  @syntax{(gtk:model-button-text object) => text}
+  @syntax{(setf (gtk:model-button-text object) text)}
   @argument[object]{a @class{gtk:model-button} widget}
   @argument[text]{a string with the label for the button}
   @begin{short}
@@ -486,8 +486,8 @@ button.model
       "Accessor"
       (documentation 'model-button-use-markup 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:model-button-use-markup object) => use-markup}
-  @syntax[]{(setf (gtk:model-button-use-markup object) use-markup)}
+  @syntax{(gtk:model-button-use-markup object) => use-markup}
+  @syntax{(setf (gtk:model-button-use-markup object) use-markup)}
   @argument[object]{a @class{gtk:model-button} widget}
   @argument[use-markup]{a boolean whether to use Pango markup}
   @begin{short}

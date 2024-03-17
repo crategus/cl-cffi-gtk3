@@ -117,7 +117,7 @@
       "Accessor"
       (documentation 'app-chooser-content-type 'function)
  "@version{#2023-2-14}
-  @syntax[]{(gtk:app-chooser-content-type object) => content-type}
+  @syntax{(gtk:app-chooser-content-type object) => content-type}
   @argument[object]{a @class{gtk:app-chooser} object}
   @argument[content-type]{a string with the content type}
   @begin{short}

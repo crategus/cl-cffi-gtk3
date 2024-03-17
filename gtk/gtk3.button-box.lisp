@@ -257,8 +257,8 @@
       "Accessor"
       (documentation 'button-box-layout-style 'function)
  "@version{2023-12-30}
-  @syntax[]{(gtk:button-box-layout-style object) => style}
-  @syntax[]{(setf (gtk:button-box-layout-style object) style)}
+  @syntax{(gtk:button-box-layout-style object) => style}
+  @syntax{(setf (gtk:button-box-layout-style object) style)}
   @argument[object]{a @class{gtk:button-box} widget}
   @argument[style]{a value of the @symbol{gtk:button-box-style} enumeration}
   @begin{short}
@@ -286,8 +286,8 @@
       "Accessor"
       (documentation 'button-box-child-non-homogeneous 'function)
  "@version{2023-12-30}
-  @syntax[]{(gtk:button-box-child-non-homogeneous container child) => setting}
-  @syntax[]{(setf (gtk:button-box-child-non-homogeneous container child) setting)}
+  @syntax{(gtk:button-box-child-non-homogeneous container child) => setting}
+  @syntax{(setf (gtk:button-box-child-non-homogeneous container child) setting)}
   @argument[container]{a @class{gtk:button-box} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[setting]{a boolean whether the child widget is not subject to
@@ -312,8 +312,8 @@
       "Accessor"
       (documentation 'button-box-child-secondary 'function)
  "@version{2023-12-30}
-  @syntax[]{(gtk:button-box-child-secondary container child) => setting}
-  @syntax[]{(setf (gtk:button-box-child-secondary container child) setting)}
+  @syntax{(gtk:button-box-child-secondary container child) => setting}
+  @syntax{(setf (gtk:button-box-child-secondary container child) setting)}
   @argument[container]{a @class{gtk:button-box} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[setting]{if @em{true}, the child widget appears in a secondary
@@ -369,8 +369,8 @@
 (defun button-box-layout (buttonbox)
  #+liber-documentation
  "@version{2023-12-30}
-  @syntax[]{(gtk:button-box-layout button-box) => style}
-  @syntax[]{(setf (gtk:button-box-layout button-box) style)}
+  @syntax{(gtk:button-box-layout button-box) => style}
+  @syntax{(setf (gtk:button-box-layout button-box) style)}
   @argument[buttonbox]{a @class{gtk:button-box} widget}
   @argument[style]{a value of the @symbol{gtk:button-box-style} enumeration}
   @begin{short}

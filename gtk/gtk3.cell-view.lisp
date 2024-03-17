@@ -181,8 +181,8 @@
       "Accessor"
       (documentation 'cell-view-background 'function)
  "@version{#2023-3-16}
-  @syntax[]{(gtk:cell-view-background object) => background}
-  @syntax[]{(setf (gtk:cell-view-background object) background)}
+  @syntax{(gtk:cell-view-background object) => background}
+  @syntax{(setf (gtk:cell-view-background object) background)}
   @argument[object]{a @class{gtk:cell-view} widget}
   @argument[background]{a background color as a string}
   @begin{short}
@@ -207,8 +207,8 @@
       "Accessor"
       (documentation 'cell-view-background-gdk 'function)
  "@version{#2023-3-16}
-  @syntax[]{(gtk:cell-view-background object) => background-gdk}
-  @syntax[]{(setf (gtk:cell-view-background object) background-gdk)}
+  @syntax{(gtk:cell-view-background object) => background-gdk}
+  @syntax{(setf (gtk:cell-view-background object) background-gdk)}
   @argument[object]{a @class{gtk:cell-view} widget}
   @argument[background-gdk]{a @class{gdk:color} background color}
   @begin{short}
@@ -237,8 +237,8 @@
       "Accessor"
       (documentation 'cell-view-background-rgba 'function)
  "@version{#2023-3-16}
-  @syntax[]{(gtk:cell-view-background-rgba object) => rgba}
-  @syntax[]{(setf (gtk:cell-view-background-rgba object) rgba)}
+  @syntax{(gtk:cell-view-background-rgba object) => rgba}
+  @syntax{(setf (gtk:cell-view-background-rgba object) rgba)}
   @argument[object]{a @class{gtk:cell-view} object}
   @argument[rgba]{a @class{gdk:rgba} background color}
   @begin{short}
@@ -265,8 +265,8 @@
       "Accessor"
       (documentation 'cell-view-background-set 'function)
  "@version{#2023-3-16}
-  @syntax[]{(gtk:cell-view-background-set object) => setting}
-  @syntax[]{(setf (gtk:cell-view-background-set object) setting)}
+  @syntax{(gtk:cell-view-background-set object) => setting}
+  @syntax{(setf (gtk:cell-view-background-set object) setting)}
   @argument[object]{a @class{gtk:cell-view} object}
   @argument[setting]{a boolean whether this tag effects the background color}
   @begin{short}
@@ -290,8 +290,8 @@
       "Accessor"
       (documentation 'cell-view-cell-area 'function)
  "@version{#2023-3-16}
-  @syntax[]{(gtk:cell-view-cell-area object) => cellarea}
-  @syntax[]{(setf (gtk:cell-view-cell-area object) cellarea)}
+  @syntax{(gtk:cell-view-cell-area object) => cellarea}
+  @syntax{(setf (gtk:cell-view-cell-area object) cellarea)}
   @argument[object]{a @class{gtk:cell-view} object}
   @argument[cellarea]{a @class{gtk:cell-area} object}
   @begin{short}
@@ -326,8 +326,8 @@
       "Accessor"
       (documentation 'cell-view-cell-area-context 'function)
  "@version{#2023-3-16}
-  @syntax[]{(gtk:cell-view-cell-area-context object) => context}
-  @syntax[]{(setf (gtk:cell-view-cell-area-context object) context)}
+  @syntax{(gtk:cell-view-cell-area-context object) => context}
+  @syntax{(setf (gtk:cell-view-cell-area-context object) context)}
   @argument[object]{a @class{gtk:cell-view} object}
   @argument[cellarea]{a @class{gtk:cell-area-context} object}
   @begin{short}
@@ -361,8 +361,8 @@
       "Accessor"
       (documentation 'cell-view-draw-sensitive 'function)
  "@version{#2023-3-16}
-  @syntax[]{(gtk:cell-view-draw-sensitive object) => draw-sensitive}
-  @syntax[]{(setf (gtk:cell-view-draw-sensitive object) draw-sensitive)}
+  @syntax{(gtk:cell-view-draw-sensitive object) => draw-sensitive}
+  @syntax{(setf (gtk:cell-view-draw-sensitive object) draw-sensitive)}
   @argument[object]{a @class{gtk:cell-view} object}
   @argument[draw-sensitive]{a boolean whether to draw all cells in a sensitive
     state}
@@ -396,8 +396,8 @@
       "Accessor"
       (documentation 'cell-view-fit-model 'function)
  "@version{#2023-3-16}
-  @syntax[]{(gtk:cell-view-fit-model object) => fit-model}
-  @syntax[]{(setf (gtk:cell-view-fit-model object) fit-model)}
+  @syntax{(gtk:cell-view-fit-model object) => fit-model}
+  @syntax{(setf (gtk:cell-view-fit-model object) fit-model)}
   @argument[object]{a @class{gtk:cell-view} object}
   @argument[fit-model]{whether the cell view should request space for the whole
     model}
@@ -427,8 +427,8 @@
       "Accessor"
       (documentation 'cell-view-model 'function)
  "@version{#2023-3-16}
-  @syntax[]{(gtk:cell-view-model object) => model}
-  @syntax[]{(setf (gtk:cell-view-model object) model)}
+  @syntax{(gtk:cell-view-model object) => model}
+  @syntax{(setf (gtk:cell-view-model object) model)}
   @argument[object]{a @class{gtk:cell-view} object}
   @argument[model]{a @class{gtk:tree-model} object}
   @begin{short}
@@ -569,8 +569,8 @@
     (g:boxed tree-path :return)
  #+liber-documentation
  "@version{#2023-3-16}
-  @syntax[]{(gtk:cell-view-display-row cellview) => path}
-  @syntax[]{(setf (gtk:cell-view-display-row cellview) path)}
+  @syntax{(gtk:cell-view-display-row cellview) => path}
+  @syntax{(setf (gtk:cell-view-display-row cellview) path)}
   @argument[cellview]{a @class{gtk:cell-view} widget}
   @argument[path]{a @class{gtk:tree-path} instance or @code{nil} to unset}
   @begin{short}

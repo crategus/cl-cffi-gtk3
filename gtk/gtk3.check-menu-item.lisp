@@ -177,8 +177,8 @@ lambda (item)    :run-first
       "Accessor"
       (documentation 'check-menu-item-active 'function)
  "@version{2023-2-27}
-  @syntax[]{(gtk:check-menu-item-active object) => is-active}
-  @syntax[]{(setf (gtk:checkk-menu-item-active object) is-active)}
+  @syntax{(gtk:check-menu-item-active object) => is-active}
+  @syntax{(setf (gtk:checkk-menu-item-active object) is-active)}
   @argument[object]{a @class{gtk:check-menu-item} widget}
   @argument[is-active]{a boolean value indicating whether the check box
     is active}
@@ -205,8 +205,8 @@ lambda (item)    :run-first
       "Accessor"
       (documentation 'check-menu-item-draw-as-radio 'function)
  "@version{2023-2-27}
-  @syntax[]{(gtk:check-menu-item-draw-as-radio object) => setting}
-  @syntax[]{(setf (gtk:checkk-menu-item-draw-as-radio object) setting)}
+  @syntax{(gtk:check-menu-item-draw-as-radio object) => setting}
+  @syntax{(setf (gtk:checkk-menu-item-draw-as-radio object) setting)}
   @argument[object]{a @class{gtk:check-menu-item} widget}
   @argument[setting]{a boolean whether @arg{objct} is drawn like a
     @class{gtk:radio-menu-item} widget}
@@ -235,8 +235,8 @@ lambda (item)    :run-first
       "Accessor"
       (documentation 'check-menu-item-inconsistent 'function)
  "@version{2023-2-27}
-  @syntax[]{(gtk:check-menu-item-inconsistent object) => setting}
-  @syntax[]{(setf (gtk:checkk-menu-item-inconsistent object) setting)}
+  @syntax{(gtk:check-menu-item-inconsistent object) => setting}
+  @syntax{(setf (gtk:checkk-menu-item-inconsistent object) setting)}
   @argument[object]{a @class{gtk:check-menu-item} widget}
   @argument[setting]{@em{true} to display an \"inconsistent\" third state check}
   @begin{short}

@@ -224,8 +224,8 @@ pad_controller = gtk_pad_controller_new (window, action_group, NULL);
       "Accessor"
       (documentation 'pad-controller-action-group 'function)
  "@version{2023-3-11}
-  @syntax[]{(gtk:pad-controller-action-group object) => group)}
-  @syntax[]{(setf (gtk:pad-controller-action-group object) group)}
+  @syntax{(gtk:pad-controller-action-group object) => group)}
+  @syntax{(setf (gtk:pad-controller-action-group object) group)}
   @argument[object]{a @class{gtk:pad-controller} object}
   @argument[group]{a @class{g:action-group} object}
   @begin{short}
@@ -248,8 +248,8 @@ pad_controller = gtk_pad_controller_new (window, action_group, NULL);
       "Accessor"
       (documentation 'pad-controller-pad 'function)
  "@version{2023-3-11}
-  @syntax[]{(gtk:pad-controller-pad object) => pad)}
-  @syntax[]{(setf (gtk:pad-controller-pad object) pad)}
+  @syntax{(gtk:pad-controller-pad object) => pad)}
+  @syntax{(setf (gtk:pad-controller-pad object) pad)}
   @argument[object]{a @class{gtk:pad-controller} object}
   @argument[pad]{a @class{gdk:device} object}
   @begin{short}

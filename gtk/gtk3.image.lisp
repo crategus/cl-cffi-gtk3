@@ -321,8 +321,8 @@
       "Accessor"
       (documentation 'image-file 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:image-file object) => filename}
-  @syntax[]{(setf (gtk:image-file object) filename)}
+  @syntax{(gtk:image-file object) => filename}
+  @syntax{(setf (gtk:image-file object) filename)}
   @argument[object]{a @class{gtk:image} widget}
   @argument[filename]{a string with the name of the file to load and display}
   @begin{short}
@@ -344,8 +344,8 @@
       "Accessor"
       (documentation 'image-gicon 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:image-gicon object) => gicon}
-  @syntax[]{(setf (gtk:image-gicon object) gicon)}
+  @syntax{(gtk:image-gicon object) => gicon}
+  @syntax{(setf (gtk:image-gicon object) gicon)}
   @argument[object]{a @class{gtk:image} widget}
   @argument[gicon]{a @class{g:icon} icon}
   @begin{short}
@@ -371,8 +371,8 @@
       "Accessor"
       (documentation 'image-icon-name 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:image-icon-name object) => icon-name}
-  @syntax[]{(setf (gtk:image-icon-name object) icon-name)}
+  @syntax{(gtk:image-icon-name object) => icon-name}
+  @syntax{(setf (gtk:image-icon-name object) icon-name)}
   @argument[object]{a @class{gtk:image} widget}
   @argument[icon-name]{a string with the name of the icon}
   @begin{short}
@@ -399,8 +399,8 @@
       "Accessor"
       (documentation 'image-icon-set 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:image-icon-set object) => icon-set}
-  @syntax[]{(setf (gtk:image-icon-set object) icon-set)}
+  @syntax{(gtk:image-icon-set object) => icon-set}
+  @syntax{(setf (gtk:image-icon-set object) icon-set)}
   @argument[object]{a @class{gtk:image} widget}
   @argument[icon-set]{an icon set of type @class{gtk:icon-set}}
   @begin{short}
@@ -429,8 +429,8 @@
       "Accessor"
       (documentation 'image-icon-size 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:image-icon-size object) => icon-size}
-  @syntax[]{(setf (gtk:image-icon-size object) icon-size)}
+  @syntax{(gtk:image-icon-size object) => icon-size}
+  @syntax{(setf (gtk:image-icon-size object) icon-size)}
   @argument[object]{a @class{gtk:image} widget}
   @argument[icon-set]{an integer with the icon size}
   @begin{short}
@@ -458,8 +458,8 @@
       "Accessor"
       (documentation 'image-pixbuf 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:image-pixbuf object) => pixbuf}
-  @syntax[]{(setf (gtk:image-pixbuf object) pixbuf)}
+  @syntax{(gtk:image-pixbuf object) => pixbuf}
+  @syntax{(setf (gtk:image-pixbuf object) pixbuf)}
   @argument[object]{a @class{gtk:image} widget}
   @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object}
   @begin{short}
@@ -489,8 +489,8 @@
       "Accessor"
       (documentation 'image-pixbuf-animation 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:image-pixbuf-animation object) => animation}
-  @syntax[]{(setf (gtk:image-pixbuf-animation object) animation)}
+  @syntax{(gtk:image-pixbuf-animation object) => animation}
+  @syntax{(setf (gtk:image-pixbuf-animation object) animation)}
   @argument[object]{a @class{gtk:image} widget}
   @argument[animation]{a @class{gdk-pixbuf:pixbuf-animation} object}
   @begin{short}
@@ -516,8 +516,8 @@
       "Accessor"
       (documentation 'image-pixel-size 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:image-pixel-size object) => size}
-  @syntax[]{(setf (gtk:image-pixel-size object) size)}
+  @syntax{(gtk:image-pixel-size object) => size}
+  @syntax{(setf (gtk:image-pixel-size object) size)}
   @argument[object]{a @class{gtk:image} widget}
   @argument[size]{an integer with the new pixel size}
   @begin{short}
@@ -544,8 +544,8 @@
       "Accessor"
       (documentation 'image-resource 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:image-resource object) => path}
-  @syntax[]{(setf (gtk:image-resource object) path)}
+  @syntax{(gtk:image-resource object) => path}
+  @syntax{(setf (gtk:image-resource object) path)}
   @argument[object]{a @class{gtk:image} widget}
   @argument[path]{a string with a resource path}
   @begin{short}
@@ -570,8 +570,8 @@
       "Accessor"
       (documentation 'image-stock 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:image-stock object) => stock}
-  @syntax[]{(setf (gtk:image-stock object) stock)}
+  @syntax{(gtk:image-stock object) => stock}
+  @syntax{(setf (gtk:image-stock object) stock)}
   @argument[object]{a @class{gtk:image} widget}
   @argument[stock]{a string with a stock ID}
   @begin{short}
@@ -598,8 +598,8 @@
       "Accessor"
       (documentation 'image-storage-type 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:image-storage-type object) => type}
-  @syntax[]{(setf (gtk:image-storage-type object) type)}
+  @syntax{(gtk:image-storage-type object) => type}
+  @syntax{(setf (gtk:image-storage-type object) type)}
   @argument[object]{a @class{gtk:image} widget}
   @argument[type]{a value of the @symbol{gtk:image-type} enumeration}
   @begin{short}
@@ -628,8 +628,8 @@
       "Accessor"
       (documentation 'image-surface 'function)
  "@version{2023-2-20}
-  @syntax[]{(gtk:image-surface object) => surface}
-  @syntax[]{(setf (gtk:image-surface object) surface)}
+  @syntax{(gtk:image-surface object) => surface}
+  @syntax{(setf (gtk:image-surface object) surface)}
   @argument[object]{a @class{gtk:image} widget}
   @argument[surface]{a @class{gdk:cairo-surface} instance}
   @begin{short}
@@ -654,8 +654,8 @@
       "Accessor"
       (documentation 'image-use-fallback 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:image-use-fallback object) => use-fallback}
-  @syntax[]{(setf (gtk:image-use-fallback object) use-fallback)}
+  @syntax{(gtk:image-use-fallback object) => use-fallback}
+  @syntax{(setf (gtk:image-use-fallback object) use-fallback)}
   @argument[object]{a @class{gtk:image} widget}
   @argument[use-fallback]{a boolean whether to use standard icon names fallback}
   @begin{short}

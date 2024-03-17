@@ -278,8 +278,8 @@ lambda (infobar response)    :run-last
       "Accessor"
       (documentation 'info-bar-message-type 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:info-bar-message-type object) => message-type}
-  @syntax[]{(setf (gtk:info-bar-message-type object) message-type)}
+  @syntax{(gtk:info-bar-message-type object) => message-type}
+  @syntax{(setf (gtk:info-bar-message-type object) message-type)}
   @argument[object]{a @class{gtk:info-bar} widget}
   @argument[message-type]{a value of the @symbol{gtk:message-type} enumeration}
   @begin{short}
@@ -307,8 +307,8 @@ lambda (infobar response)    :run-last
       "Accessor"
       (documentation 'info-bar-revealed 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:info-bar-revealed object) => revealed}
-  @syntax[]{(setf (gtk:info-bar-revealed object) revealed)}
+  @syntax{(gtk:info-bar-revealed object) => revealed}
+  @syntax{(setf (gtk:info-bar-revealed object) revealed)}
   @argument[object]{a @class{gtk:info-bar} widget}
   @argument[revealed]{a boolean whether the action bar shows its contents}
   @begin{short}
@@ -339,8 +339,8 @@ lambda (infobar response)    :run-last
       "Accessor"
       (documentation 'info-bar-show-close-button 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:info-bar-show-close-button object) => setting}
-  @syntax[]{(setf (gtk:info-bar-show-close-button object) setting)}
+  @syntax{(gtk:info-bar-show-close-button object) => setting}
+  @syntax{(setf (gtk:info-bar-show-close-button object) setting)}
   @argument[object]{a @class{gtk:info-bar} widget}
   @argument[setting]{@em{true} to include a Close button}
   @begin{short}

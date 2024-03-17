@@ -166,8 +166,8 @@ lambda (overlay widget allocation)    :run-last
       "Accessor"
       (documentation 'overlay-child-index 'function)
  "@version{2024-1-1}
-  @syntax[]{(gtk:overlay-child-index object) => index)}
-  @syntax[]{(setf (gtk:overlay-child-index object) index)}
+  @syntax{(gtk:overlay-child-index object) => index)}
+  @syntax{(setf (gtk:overlay-child-index object) index)}
   @argument[container]{a @class{gtk:overlay} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[index]{an integer with the index of the child widget in the parent}
@@ -189,8 +189,8 @@ lambda (overlay widget allocation)    :run-last
       "Accessor"
       (documentation 'overlay-child-pass-through 'function)
  "@version{2024-1-1}
-  @syntax[]{(gtk:overlay-child-pass-through container child) => setting)}
-  @syntax[]{(setf (gtk:overlay-child-pass-through container child) setting)}
+  @syntax{(gtk:overlay-child-pass-through container child) => setting)}
+  @syntax{(setf (gtk:overlay-child-pass-through container child) setting)}
   @argument[container]{a @class{gtk:overlay} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[setting]{a boolean whether to pass through input}

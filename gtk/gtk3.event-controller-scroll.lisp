@@ -226,8 +226,8 @@ lambda (controller)    :run-first
       "Accessor"
       (documentation 'event-controller-scroll-flags 'function)
  "@version{#2023-3-1}
-  @syntax[]{(gtk:event-controller-scroll-flags object) => flags)}
-  @syntax[]{(setf (gtk:event-controller-scroll-flags object) flags)}
+  @syntax{(gtk:event-controller-scroll-flags object) => flags)}
+  @syntax{(setf (gtk:event-controller-scroll-flags object) flags)}
   @argument[object]{a @class{gtk:event-controller-scroll} object}
   @argument[flags]{a @symbol{gtk:event-controller-scroll-flags} value with
     the behavior flags}

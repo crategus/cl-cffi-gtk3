@@ -133,7 +133,7 @@
       "Accessor"
       (documentation 'cell-area-context-area 'function)
  "@version{#2023-1-21}
-  @syntax[]{(gtk:cell-area-context-area object) => area}
+  @syntax{(gtk:cell-area-context-area object) => area}
   @argument[context]{a @class{gtk:cell-area-context} object}
   @argument[area]{a @class{gtk:cell-area} object}
   @begin{short}
@@ -169,8 +169,8 @@
       "Accessor"
       (documentation 'cell-area-context-minimum-height 'function)
  "@version{#2023-1-21}
-  @syntax[]{(gtk:cell-area-context-minimum-height object) => height}
-  @syntax[]{(setf (gtk:cell-area-context-minimum-height object) height}
+  @syntax{(gtk:cell-area-context-minimum-height object) => height}
+  @syntax{(setf (gtk:cell-area-context-minimum-height object) height}
   @argument[context]{a @class{gtk:cell-area-context} object}
   @argument[height]{an integer with the minimum height}
   @begin{short}
@@ -202,8 +202,8 @@
       "Accessor"
       (documentation 'cell-area-context-minimum-width 'function)
  "@version{#2023-1-21}
-  @syntax[]{(gtk:cell-area-context-minimum-width object) => width}
-  @syntax[]{(setf (gtk:cell-area-context-minimum-width object) width}
+  @syntax{(gtk:cell-area-context-minimum-width object) => width}
+  @syntax{(setf (gtk:cell-area-context-minimum-width object) width}
   @argument[context]{a @class{gtk:cell-area-context} object}
   @argument[width]{an integer with the minimum width}
   @begin{short}
@@ -235,8 +235,8 @@
       "Accessor"
       (documentation 'cell-area-context-natural-height 'function)
  "@version{#2023-1-21}
-  @syntax[]{(gtk:cell-area-context-natural-height object) => height}
-  @syntax[]{(setf (gtk:cell-area-context-natural-height object) height}
+  @syntax{(gtk:cell-area-context-natural-height object) => height}
+  @syntax{(setf (gtk:cell-area-context-natural-height object) height}
   @argument[context]{a @class{gtk:cell-area-context} object}
   @argument[height]{an integer with the natural height}
   @begin{short}
@@ -268,8 +268,8 @@
       "Accessor"
       (documentation 'cell-area-context-natural-width 'function)
  "@version{#2023-1-21}
-  @syntax[]{(gtk:cell-area-context-natural-width object) => width}
-  @syntax[]{(setf (gtk:cell-area-context-natural-width object) width}
+  @syntax{(gtk:cell-area-context-natural-width object) => width}
+  @syntax{(setf (gtk:cell-area-context-natural-width object) width}
   @argument[context]{a @class{gtk:cell-area-context} object}
   @argument[width]{an integer with the natural width}
   @begin{short}

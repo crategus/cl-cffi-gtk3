@@ -611,8 +611,8 @@ lambda (chooser)    :run-last
       "Accessor"
       (documentation 'file-chooser-action 'function)
  "@version{2023-6-11}
-  @syntax[]{(gtk:file-chooser-action object) => action}
-  @syntax[]{(setf (gtk:file-chooser-action object) action)}
+  @syntax{(gtk:file-chooser-action object) => action}
+  @syntax{(setf (gtk:file-chooser-action object) action)}
   @argument[object]{a @class{gtk:file-chooser} widget}
   @argument[action]{a value of the @symbol{gtk:file-chooser-action} enumeration}
   @begin{short}
@@ -643,8 +643,8 @@ lambda (chooser)    :run-last
       "Accessor"
       (documentation 'file-chooser-create-folders 'function)
  "@version{2023-6-11}
-  @syntax[]{(gtk:file-chooser-create-folders object) => create-folders}
-  @syntax[]{(setf (gtk:file-chooser-create-folders object) create-folders)}
+  @syntax{(gtk:file-chooser-create-folders object) => create-folders}
+  @syntax{(setf (gtk:file-chooser-create-folders object) create-folders)}
   @argument[object]{a @class{gtk:file-chooser} widget}
   @argument[create-folders]{@em{true} if the New Folder button should be
     displayed}
@@ -677,8 +677,8 @@ lambda (chooser)    :run-last
       "Accessor"
       (documentation 'file-chooser-do-overwrite-confirmation 'function)
  "@version{2023-6-11}
-  @syntax[]{(gtk:file-chooser-do-overwrite-confirmation object) => confirm}
-  @syntax[]{(setf (gtk:file-chooser-do-overwrite-confirmation object) confirm)}
+  @syntax{(gtk:file-chooser-do-overwrite-confirmation object) => confirm}
+  @syntax{(setf (gtk:file-chooser-do-overwrite-confirmation object) confirm)}
   @argument[object]{a @class{gtk:file-chooser} widget}
   @argument[confirm]{a boolean whether to confirm overwriting in @code{:save}
     mode}
@@ -716,8 +716,8 @@ lambda (chooser)    :run-last
       "Accessor"
       (documentation 'file-chooser-extra-widget 'function)
  "@version{2023-6-11}
-  @syntax[]{(gtk:file-chooser-extra-widget object) => extra-widget}
-  @syntax[]{(setf (gtk:file-chooser-extra-widget object) extra-widget)}
+  @syntax{(gtk:file-chooser-extra-widget object) => extra-widget}
+  @syntax{(setf (gtk:file-chooser-extra-widget object) extra-widget)}
   @argument[object]{a @class{gtk:file-chooser} widget}
   @argument[extra-widget]{a @class{gtk:widget} widget for extra options}
   @begin{short}
@@ -743,8 +743,8 @@ lambda (chooser)    :run-last
       "Accessor"
       (documentation 'file-chooser-filter 'function)
  "@version{2023-6-11}
-  @syntax[]{(gtk:file-chooser-filter object) => filter}
-  @syntax[]{(setf (gtk:file-chooser-filter object) filter)}
+  @syntax{(gtk:file-chooser-filter object) => filter}
+  @syntax{(setf (gtk:file-chooser-filter object) filter)}
   @argument[object]{a @class{gtk:file-chooser} widget}
   @argument[filter]{a @class{gtk:file-filter} object}
   @begin{short}
@@ -775,8 +775,8 @@ lambda (chooser)    :run-last
       "Accessor"
       (documentation 'file-chooser-local-only 'function)
  "@version{2023-6-11}
-  @syntax[]{(gtk:file-chooser-local-only object) => local-only}
-  @syntax[]{(setf (gtk:file-chooser-local-only object) local-only)}
+  @syntax{(gtk:file-chooser-local-only object) => local-only}
+  @syntax{(setf (gtk:file-chooser-local-only object) local-only)}
   @argument[object]{a @class{gtk:file-chooser} widget}
   @argument[local-only]{@em{true} if only local files can be selected}
   @begin{short}
@@ -812,8 +812,8 @@ lambda (chooser)    :run-last
       "Accessor"
       (documentation 'file-chooser-preview-widget 'function)
  "@version{#2023-3-14}
-  @syntax[]{(gtk:file-chooser-preview-widget object) => widget}
-  @syntax[]{(setf (gtk:file-chooser-preview-widget object) widget)}
+  @syntax{(gtk:file-chooser-preview-widget object) => widget}
+  @syntax{(setf (gtk:file-chooser-preview-widget object) widget)}
   @argument[object]{a @class{gtk:file-chooser} widget}
   @argument[widget]{a @class{gtk:widget} for displaying preview}
   @begin{short}
@@ -858,8 +858,8 @@ lambda (chooser)    :run-last
       "Accessor"
       (documentation 'file-chooser-preview-widget-active 'function)
  "@version{2023-6-11}
-  @syntax[]{(gtk:file-chooser-preview-widget-active object) => active}
-  @syntax[]{(setf (gtk:file-chooser-preview-widget-active object) active)}
+  @syntax{(gtk:file-chooser-preview-widget-active object) => active}
+  @syntax{(setf (gtk:file-chooser-preview-widget-active object) active)}
   @argument[object]{a @class{gtk:file-chooser} widget}
   @argument[active]{a boolean whether to display the user-specified preview
     widget}
@@ -894,8 +894,8 @@ lambda (chooser)    :run-last
       "Accessor"
       (documentation 'file-chooser-select-multiple 'function)
  "@version{2023-6-11}
-  @syntax[]{(gtk:file-chooser-select-multiple object) => multiple}
-  @syntax[]{(setf (gtk:file-chooser-select-multiple object) multiple)}
+  @syntax{(gtk:file-chooser-select-multiple object) => multiple}
+  @syntax{(setf (gtk:file-chooser-select-multiple object) multiple)}
   @argument[object]{a @class{gtk:file-chooser} widget}
   @argument[multiple]{@em{true} if multiple files can be selected}
   @begin{short}
@@ -926,8 +926,8 @@ lambda (chooser)    :run-last
       "Accessor"
       (documentation 'file-chooser-show-hidden 'function)
  "@version{2023-6-11}
-  @syntax[]{(gtk:file-chooser-show-hidden object) => setting}
-  @syntax[]{(setf (gtk:file-chooser-show-hidden object) setting)}
+  @syntax{(gtk:file-chooser-show-hidden object) => setting}
+  @syntax{(setf (gtk:file-chooser-show-hidden object) setting)}
   @argument[object]{a @class{gtk:file-chooser} widget}
   @argument[setting]{@em{true} if hidden files and folders should be displayed}
   @begin{short}
@@ -954,8 +954,8 @@ lambda (chooser)    :run-last
       "Accessor"
       (documentation 'file-chooser-use-preview-label 'function)
  "@version{2023-6-11}
-  @syntax[]{(gtk:file-chooser-use-preview-label object) => setting}
-  @syntax[]{(setf (gtk:file-chooser-use-preview-label object) setting)}
+  @syntax{(gtk:file-chooser-use-preview-label object) => setting}
+  @syntax{(setf (gtk:file-chooser-use-preview-label object) setting)}
   @argument[object]{a @class{gtk:file-chooser} widget}
   @argument[setting]{a boolean whether to display a stock label with the name
     of the previewed file}
@@ -990,8 +990,8 @@ lambda (chooser)    :run-last
     (:string :free-from-foreign t :encoding :utf-8)
  #+liber-documentation
  "@version{2023-6-11}
-  @syntax[]{(gtk:file-chooser-current-name chooser) => name}
-  @syntax[]{(setf (gtk:file-chooser-current-name chooser) name)}
+  @syntax{(gtk:file-chooser-current-name chooser) => name}
+  @syntax{(setf (gtk:file-chooser-current-name chooser) name)}
   @argument[chooser]{a @class{gtk:file-chooser} widget}
   @argument[name]{a string with the filename to use, as a UTF-8 string}
   @begin{short}
@@ -1039,8 +1039,8 @@ lambda (chooser)    :run-last
     (:string :free-from-foreign t)
  #+liber-documentation
  "@version{2023-6-11}
-  @syntax[]{(gtk:file-chooser-filename chooser) => filename}
-  @syntax[]{(setf (gtk:file-chooser-filename chooser) filename)}
+  @syntax{(gtk:file-chooser-filename chooser) => filename}
+  @syntax{(setf (gtk:file-chooser-filename chooser) filename)}
   @argument[chooser]{a @class{gtk:file-chooser} widget}
   @argument[filename]{a string with the filename to set as current}
   @begin{short}
@@ -1203,8 +1203,8 @@ lambda (chooser)    :run-last
                 file-chooser-current-folder) :string
  #+liber-documentation
  "@version{2023-6-11}
-  @syntax[]{(gtk:file-chooser-current-folder chooser) => filename}
-  @syntax[]{(setf (gtk:file-chooser-current-folder chooser) filename)}
+  @syntax{(gtk:file-chooser-current-folder chooser) => filename}
+  @syntax{(setf (gtk:file-chooser-current-folder chooser) filename)}
   @argument[chooser]{a @class{gtk:file-chooser} widget}
   @argument[filename]{a string with the full path of the new current folder}
   @begin{short}
@@ -1247,8 +1247,8 @@ lambda (chooser)    :run-last
 (cffi:defcfun ("gtk_file_chooser_get_uri" file-chooser-uri) :string
  #+liber-documentation
  "@version{#2023-3-14}
-  @syntax[]{(gtk:file-chooser-uri chooser) => uri}
-  @syntax[]{(setf (gtk:file-chooser-uri chooser) uri)}
+  @syntax{(gtk:file-chooser-uri chooser) => uri}
+  @syntax{(setf (gtk:file-chooser-uri chooser) uri)}
   @argument[chooser]{a @class{gtk:file-chooser} widget}
   @argument[uri]{a string with the URI to set as current}
   @begin{short}
@@ -1375,8 +1375,8 @@ lambda (chooser)    :run-last
                 file-chooser-current-folder-uri) :string
  #+liber-documentation
  "@version{#2023-3-14}
-  @syntax[]{(gtk:file-chooser-current-folder-uri chooser) => uri}
-  @syntax[]{(setf (gtk:file-chooser-current-folder-uri chooser) uri)}
+  @syntax{(gtk:file-chooser-current-folder-uri chooser) => uri}
+  @syntax{(setf (gtk:file-chooser-current-folder-uri chooser) uri)}
   @argument[chooser]{a @class{gtk:file-chooser} widget}
   @argument[uri]{a string with the URI for the current folder}
   @begin{short}
@@ -1711,8 +1711,8 @@ lambda (chooser)    :run-last
                 file-chooser-current-folder-file) (g:object g:file)
  #+liber-documentation
  "@version{#2023-3-14}
-  @syntax[]{(gtk:file-chooser-current-folder-file chooser) => file}
-  @syntax[]{(setf (gtk:file-chooser-current-folder-file chooser) file)}
+  @syntax{(gtk:file-chooser-current-folder-file chooser) => file}
+  @syntax{(setf (gtk:file-chooser-current-folder-file chooser) file)}
   @argument[chooser]{a @class{gtk:file-chooser} widget}
   @argument[file]{a @class{g:file} object for the folder}
   @begin{short}
@@ -1749,8 +1749,8 @@ lambda (chooser)    :run-last
 (cffi:defcfun ("gtk_file_chooser_get_file" file-chooser-file) (g:object g:file)
  #+liber-documentation
  "@version{#2023-3-14}
-  @syntax[]{(gtk:file-chooser-file chooser) => file}
-  @syntax[]{(setf (gtk:file-chooser-file chooser) file)}
+  @syntax{(gtk:file-chooser-file chooser) => file}
+  @syntax{(setf (gtk:file-chooser-file chooser) file)}
   @argument[chooser]{a @class{gtk:file-chooser} widget}
   @argument[file]{a @class{g:file} object for the file}
   @begin{short}

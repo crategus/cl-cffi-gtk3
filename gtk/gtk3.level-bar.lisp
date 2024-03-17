@@ -336,8 +336,8 @@ lambda (levelbar name)    :detailed
       "Accessor"
       (documentation 'level-bar-inverted 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:level-bar-inverted object) => inverted}
-  @syntax[]{(setf (gtk:level-bar-inverted object) inverted)}
+  @syntax{(gtk:level-bar-inverted object) => inverted}
+  @syntax{(setf (gtk:level-bar-inverted object) inverted)}
   @argument[object]{a @class{gtk:level-bar} widget}
   @argument[inverted]{@em{true} to invert the level bar}
   @begin{short}
@@ -364,8 +364,8 @@ lambda (levelbar name)    :detailed
       "Accessor"
       (documentation 'level-bar-max-value 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:level-bar-max-value object) => value}
-  @syntax[]{(setf (gtk:level-bar-max-value object) value)}
+  @syntax{(gtk:level-bar-max-value object) => value}
+  @syntax{(setf (gtk:level-bar-max-value object) value)}
   @argument[object]{a @class{gtk:level-bar} widget}
   @argument[value]{a double float with a positive value}
   @begin{short}
@@ -393,8 +393,8 @@ lambda (levelbar name)    :detailed
       "Accessor"
       (documentation 'level-bar-min-value 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:level-bar-min-value object) => value}
-  @syntax[]{(setf (gtk:level-bar-min-value object) value)}
+  @syntax{(gtk:level-bar-min-value object) => value}
+  @syntax{(setf (gtk:level-bar-min-value object) value)}
   @argument[object]{a @class{gtk:level-bar} widget}
   @argument[value]{a double float with a positive value}
   @begin{short}
@@ -427,8 +427,8 @@ lambda (levelbar name)    :detailed
       "Accessor"
       (documentation 'level-bar-mode 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:level-bar-mode object) => mode}
-  @syntax[]{(setf (gtk:level-bar-mode object) mode)}
+  @syntax{(gtk:level-bar-mode object) => mode}
+  @syntax{(setf (gtk:level-bar-mode object) mode)}
   @argument[object]{a @class{gtk:level-bar} widget}
   @argument[mode]{a value of the @symbol{gtk:level-bar-mode} enumeration}
   @begin{short}
@@ -455,8 +455,8 @@ lambda (levelbar name)    :detailed
       "Accessor"
       (documentation 'level-bar-value 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:level-bar-value object) >= value}
-  @syntax[]{(setf (gtk:level-bar-value object) value)}
+  @syntax{(gtk:level-bar-value object) >= value}
+  @syntax{(setf (gtk:level-bar-value object) value)}
   @argument[object]{a @class{gtk:level-bar} widget}
   @argument[value]{a double float with a value in the interval between the
     @slot[gtk:level-bar]{min-value} and @slot[gtk:level-bar]{max-value} values}

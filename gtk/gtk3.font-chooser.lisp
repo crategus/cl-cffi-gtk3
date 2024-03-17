@@ -217,8 +217,8 @@ lambda (fontchooser fontname)    :run-first
       "Accessor"
       (documentation 'font-chooser-font 'function)
  "@version{2023-6-16}
-  @syntax[]{(gtk:font-chooser-font object) => fontname}
-  @syntax[]{(setf (gtk:font-chooser-font object) fontname)}
+  @syntax{(gtk:font-chooser-font object) => fontname}
+  @syntax{(setf (gtk:font-chooser-font object) fontname)}
   @argument[object]{a @class{gtk:font-chooser} widget}
   @argument[fontname]{a string with the font name like \"Helvetica 12\" or
     \"Times Bold 18\"}
@@ -253,8 +253,8 @@ lambda (fontchooser fontname)    :run-first
       "Accessor"
       (documentation 'font-chooser-font-desc 'function)
  "@version{2023-6-16}
-  @syntax[]{(gtk:font-chooser-font-desc object) => font-desc}
-  @syntax[]{(setf (gtk:font-chooser-font-desc object) font-desc)}
+  @syntax{(gtk:font-chooser-font-desc object) => font-desc}
+  @syntax{(setf (gtk:font-chooser-font-desc object) font-desc)}
   @argument[object]{a @class{gtk:font-chooser} widget}
   @argument[font-desc]{a @class{pango:font-description} instance}
   @begin{short}
@@ -285,7 +285,7 @@ lambda (fontchooser fontname)    :run-first
       "Accessor"
       (documentation 'font-chooser-font-features 'function)
  "@version{2023-6-16}
-  @syntax[]{(gtk:font-chooser-font-features object) => features}
+  @syntax{(gtk:font-chooser-font-features object) => features}
   @argument[object]{a @class{gtk:font-chooser} widget}
   @argument[features]{a string with the currently selected font features}
   @begin{short}
@@ -311,8 +311,8 @@ lambda (fontchooser fontname)    :run-first
       "Accessor"
       (documentation 'font-chooser-language 'function)
  "@version{2023-6-16}
-  @syntax[]{(gtk:font-chooser-language object) => language}
-  @syntax[]{(setf (gtk:font-chooser-language object) language)}
+  @syntax{(gtk:font-chooser-language object) => language}
+  @syntax{(setf (gtk:font-chooser-language object) language)}
   @argument[object]{a @class{gtk:font-chooser} widget}
   @argument[language]{a RFC-3066 format string representing the language}
   @begin{short}
@@ -344,8 +344,8 @@ lambda (fontchooser fontname)    :run-first
       "Accessor"
       (documentation 'font-chooser-level 'function)
  "@version{2023-6-16}
-  @syntax[]{(gtk:font-chooser-level object) => level}
-  @syntax[]{(setf (gtk:font-chooser-level object) level)}
+  @syntax{(gtk:font-chooser-level object) => level}
+  @syntax{(setf (gtk:font-chooser-level object) level)}
   @argument[object]{a @class{gtk:font-chooser} widget}
   @argument[level]{a @symbol{gtk:font-chooser-level} value with the desired
     level of granularity}
@@ -372,8 +372,8 @@ lambda (fontchooser fontname)    :run-first
       "Accessor"
       (documentation 'font-chooser-preview-text 'function)
  "@version{2023-6-16}
-  @syntax[]{(gtk:font-chooser-preview-text object) => text}
-  @syntax[]{(setf (gtk:font-chooser-preview-text object) text)}
+  @syntax{(gtk:font-chooser-preview-text object) => text}
+  @syntax{(setf (gtk:font-chooser-preview-text object) text)}
   @argument[object]{a @class{gtk:font-chooser} widget}
   @argument[text]{a string with the text to display in the preview area}
   @begin{short}
@@ -402,8 +402,8 @@ lambda (fontchooser fontname)    :run-first
       "Accessor"
       (documentation 'font-chooser-show-preview-entry 'function)
  "@version{2023-6-16}
-  @syntax[]{(gtk:font-chooser-show-preview-entry object) => show-entry}
-  @syntax[]{(setf (gtk:font-chooser-show-preview-entry object) show-entry)}
+  @syntax{(gtk:font-chooser-show-preview-entry object) => show-entry}
+  @syntax{(setf (gtk:font-chooser-show-preview-entry object) show-entry)}
   @argument[object]{a @class{gtk:font-chooser} widget}
   @argument[show-entry]{a boolean whether to show the editable preview entry or
     not}
@@ -598,8 +598,8 @@ lambda (family face)
     (g:object pango:font-map)
  #+liber-documentation
  "@version{2023-6-16}
-  @syntax[]{(gtk:font-chooser-font-map fontchooser) => fontmap}
-  @syntax[]{(setf (gtk:font-chooser-font-map fontchooser) fontmap)}
+  @syntax{(gtk:font-chooser-font-map fontchooser) => fontmap}
+  @syntax{(setf (gtk:font-chooser-font-map fontchooser) fontmap)}
   @argument[fontchooser]{a @class{gtk:font-chooser} widget}
   @argument[fontmap]{a @class{pango:font-map} object, or @code{nil}}
   @begin{short}

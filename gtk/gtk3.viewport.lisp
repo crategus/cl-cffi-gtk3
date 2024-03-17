@@ -133,8 +133,8 @@
       "Accessor"
       (documentation 'viewport-shadow-type 'function)
  "@version{#2023-3-29}
-  @syntax[]{(gtk:viewport-shadow-type object) => type}
-  @syntax[]{(setf (gtk:viewport-shadow-type object) type)}
+  @syntax{(gtk:viewport-shadow-type object) => type}
+  @syntax{(setf (gtk:viewport-shadow-type object) type)}
   @argument[viewport]{a @class{gtk:viewport} widget}
   @argument[type]{a @symbol{gtk:shadow-type} value for the shadow type}
   @begin{short}

@@ -139,8 +139,8 @@
       "Accessor"
       (documentation 'color-selection-dialog-cancel-button 'function)
  "@version{2023-6-15}
-  @syntax[]{(gtk:color-selection-dialog-cancel-button object) => button}
-  @syntax[]{(setf (gtk:color-selection-dialog-cancel-button object) button)}
+  @syntax{(gtk:color-selection-dialog-cancel-button object) => button}
+  @syntax{(setf (gtk:color-selection-dialog-cancel-button object) button)}
   @argument[object]{a @class{gtk:color-selection-dialog} widget}
   @argument[button]{a @class{gtk:widget} button}
   @begin{short}
@@ -168,8 +168,8 @@
       "Accessor"
       (documentation 'color-selection-dialog-color-selection 'function)
  "@version{2023-6-15}
-  @syntax[]{(gtk:color-selection-dialog-color-selection object) => selection}
-  @syntax[]{(setf (gtk:color-selection-dialog-color-selection object) selection)}
+  @syntax{(gtk:color-selection-dialog-color-selection object) => selection}
+  @syntax{(setf (gtk:color-selection-dialog-color-selection object) selection)}
   @argument[object]{a @class{gtk:color-selection-dialog} widget}
   @argument[selection]{a @class{gtk:color-selection} widget}
   @begin{short}
@@ -198,8 +198,8 @@
       "Accessor"
       (documentation 'color-selection-dialog-help-button 'function)
  "@version{2023-6-15}
-  @syntax[]{(gtk:color-selection-dialog-help-button object) => button}
-  @syntax[]{(setf (gtk:color-selection-dialog-help-button object) button)}
+  @syntax{(gtk:color-selection-dialog-help-button object) => button}
+  @syntax{(setf (gtk:color-selection-dialog-help-button object) button)}
   @argument[object]{a @class{gtk:color-selection-dialog} widget}
   @argument[button]{a @class{gtk:widget} button}
   @begin{short}
@@ -227,8 +227,8 @@
       "Accessor"
       (documentation 'color-selection-dialog-ok-button 'function)
  "@version{2023-6-15}
-  @syntax[]{(gtk:color-selection-dialog-ok-button object) => button}
-  @syntax[]{(setf (gtk:color-selection-dialog-ok-button object) button)}
+  @syntax{(gtk:color-selection-dialog-ok-button object) => button}
+  @syntax{(setf (gtk:color-selection-dialog-ok-button object) button)}
   @argument[object]{a @class{gtk:color-selection-dialog} widget}
   @argument[button]{a @class{gtk:widget} button}
   @begin{short}

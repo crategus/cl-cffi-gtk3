@@ -184,8 +184,8 @@
       "Accessor"
       (documentation 'header-bar-custom-title 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:header-bar-custom-title object) => widget}
-  @syntax[]{(setf (gtk:header-bar-custom-title object) widget)}
+  @syntax{(gtk:header-bar-custom-title object) => widget}
+  @syntax{(setf (gtk:header-bar-custom-title object) widget)}
   @argument[object]{a @class{gtk:header-bar} widget}
   @argument[widget]{a @class{gtk:widget} custom widget to use for a title}
   @begin{short}
@@ -226,8 +226,8 @@
       "Accessor"
       (documentation 'header-bar-decoration-layout 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:header-bar-decoration-layout object) => layout}
-  @syntax[]{(setf (gtk:header-bar-decoration-layout object) layout)}
+  @syntax{(gtk:header-bar-decoration-layout object) => layout}
+  @syntax{(setf (gtk:header-bar-decoration-layout object) layout)}
   @argument[object]{a @class{gtk:header-bar} widget}
   @argument[layout]{a string with the decoration layout, or @code{nil} to unset
     the layout}
@@ -271,8 +271,8 @@
       "Accessor"
       (documentation 'header-bar-decoration-layout-set 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:header-bar-decoration-layout-set object) => setting}
-  @syntax[]{(setf (gtk:header-bar-decoration-layout-set object) setting)}
+  @syntax{(gtk:header-bar-decoration-layout-set object) => setting}
+  @syntax{(setf (gtk:header-bar-decoration-layout-set object) setting)}
   @argument[object]{a @class{gtk:header-bar} widget}
   @argument[setting]{a boolean whether a decoration layout is set}
   @begin{short}
@@ -298,8 +298,8 @@
       "Accessor"
       (documentation 'header-bar-has-subtitle 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:header-bar-has-subtitle object) => setting}
-  @syntax[]{(setf gtk:header-bar-has-subtitle object) setting)}
+  @syntax{(gtk:header-bar-has-subtitle object) => setting}
+  @syntax{(setf gtk:header-bar-has-subtitle object) setting)}
   @argument[object]{a @class{gtk:header-bar} widget}
   @argument[setting]{@em{true} to reserve space for a subtitle}
   @begin{short}
@@ -330,8 +330,8 @@
       "Accessor"
       (documentation 'header-bar-show-close-button 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:header-bar-show-close-button object) => setting}
-  @syntax[]{(setf gtk:header-bar-show-close-button object) setting)}
+  @syntax{(gtk:header-bar-show-close-button object) => setting}
+  @syntax{(setf gtk:header-bar-show-close-button object) setting)}
   @argument[object]{a @class{gtk:header-bar} widget}
   @argument[setting]{@em{true} to show standard window decorations}
   @begin{short}
@@ -358,8 +358,8 @@
       "Accessor"
       (documentation 'header-bar-spacing 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:header-bar-spacing object) => spacing}
-  @syntax[]{(setf gtk:header-bar-spacing object) spacing)}
+  @syntax{(gtk:header-bar-spacing object) => spacing}
+  @syntax{(setf gtk:header-bar-spacing object) spacing)}
   @argument[object]{a @class{gtk:header-bar} widget}
   @argument[spacing]{an integer with the amount of space between children}
   @begin{short}
@@ -382,8 +382,8 @@
       "Accessor"
       (documentation 'header-bar-subtitle 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:header-bar-subtitle object) => subtitle}
-  @syntax[]{(setf (gtk:header-bar-subtitle object) subtitle)}
+  @syntax{(gtk:header-bar-subtitle object) => subtitle}
+  @syntax{(setf (gtk:header-bar-subtitle object) subtitle)}
   @argument[object]{a @class{gtk:header-bar} widget}
   @argument[subtitle]{a string with the subtitle, or @code{nil}}
   @begin{short}
@@ -414,8 +414,8 @@
       "Accessor"
       (documentation 'header-bar-title 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:header-bar-title object) => title}
-  @syntax[]{(setf (gtk:header-bar-title object) title)}
+  @syntax{(gtk:header-bar-title object) => title}
+  @syntax{(setf (gtk:header-bar-title object) title)}
   @argument[object]{a @class{gtk:header-bar} widget}
   @argument[title]{a string with the title, or @code{nil}.}
   @begin{short}
@@ -444,8 +444,8 @@
       "Accessor"
       (documentation 'header-bar-child-pack-type 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:header-bar-child-pack-type object) => pack-type)}
-  @syntax[]{(setf (gtk:header-bar-child-pack-type object) pack-type)}
+  @syntax{(gtk:header-bar-child-pack-type object) => pack-type)}
+  @syntax{(setf (gtk:header-bar-child-pack-type object) pack-type)}
   @argument[container]{a @class{gtk:header-bar} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[pack-type]{a value of the @symbol{gtk:pack-type} enumeration for
@@ -470,8 +470,8 @@
       "Accessor"
       (documentation 'header-bar-child-position 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:header-bar-child-position object) => position)}
-  @syntax[]{(setf (gtk:header-bar-child-position object) position)}
+  @syntax{(gtk:header-bar-child-position object) => position)}
+  @syntax{(setf (gtk:header-bar-child-position object) position)}
   @argument[container]{a @class{gtk:header-bar} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[position]{an integer with the index of the child widget in the

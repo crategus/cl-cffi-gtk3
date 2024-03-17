@@ -198,7 +198,7 @@
       "Accessor"
       (documentation 'image-menu-item-accel-group 'function)
  "@version{#2023-3-12}
-  @syntax[]{(setf (gtk:image-menu-item-accel-group object) group)}
+  @syntax{(setf (gtk:image-menu-item-accel-group object) group)}
   @argument[object]{a @class{gtk:image-menu-item} widget}
   @argument[group]{a @class{gtk:accel-group} object}
   @begin{short}
@@ -239,8 +239,8 @@
       "Accessor"
       (documentation 'image-menu-item-always-show-image 'function)
  "@version{#2023-3-12}
-  @syntax[]{(gtk:image-menu-item-always-show-image object) => always-show}
-  @syntax[]{(setf (gtk:image-menu-item-always-show-image object) always-show)}
+  @syntax{(gtk:image-menu-item-always-show-image object) => always-show}
+  @syntax{(setf (gtk:image-menu-item-always-show-image object) always-show)}
   @argument[object]{a @class{gtk:image-menu-item} widget}
   @argument[always-show]{@em{true} if the menu item should always show the
     image}
@@ -271,8 +271,8 @@
       "Accessor"
       (documentation 'image-menu-item-image 'function)
  "@version{#2023-3-12}
-  @syntax[]{(gtk:image-menu-item-image object) => image}
-  @syntax[]{(setf (gtk:image-menu-item-image object) image)}
+  @syntax{(gtk:image-menu-item-image object) => image}
+  @syntax{(setf (gtk:image-menu-item-image object) image)}
   @argument[object]{a @class{gtk:image-menu-item} widget}
   @argument[image]{a @class{gtk:widget} object to set as the image for the menu
     item}
@@ -308,8 +308,8 @@
       "Accessor"
       (documentation 'image-menu-item-use-stock 'function)
  "@version{#2023-3-12}
-  @syntax[]{(gtk:image-menu-item-use-stock object) => use-stock}
-  @syntax[]{(setf (gtk:image-menu-item-use-stock object) use-stock)}
+  @syntax{(gtk:image-menu-item-use-stock object) => use-stock}
+  @syntax{(setf (gtk:image-menu-item-use-stock object) use-stock)}
   @argument[object]{a @class{gtk:image-menu-item} widget}
   @argument[use-stock]{@em{true} if the menu item should use a stock item}
   @begin{short}
