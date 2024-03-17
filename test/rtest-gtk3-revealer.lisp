@@ -99,11 +99,6 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-;;;     child-revealed
-;;;     reveal-child
-;;;     transition-duration
-;;;     transition-type
-
 (test gtk-revealer-properties
   (let ((revealer (make-instance 'gtk:revealer)))
     (is-false (gtk:revealer-child-revealed revealer))
@@ -118,4 +113,4 @@
 (test gtk-revealer-new
   (is (typep (gtk:revealer-new) 'gtk:revealer)))
 
-;;; 2024-1-1
+;;; 2024-3-17

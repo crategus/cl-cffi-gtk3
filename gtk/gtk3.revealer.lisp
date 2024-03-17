@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2023 Dieter Kaiser
+;;; Copyright (C) 2019 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -92,12 +92,9 @@
 (setf (liber:alias-for-symbol 'revealer-transition-type)
       "GEnum"
       (liber:symbol-documentation 'revealer-transition-type)
- "@version{2024-1-1}
-  @begin{short}
-    These enumeration values describe the possible transitions when the child
-    widget of a @class{gtk:revealer} widget is shown or hidden.
-  @end{short}
-  @begin{pre}
+ "@version{2024-3-17}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkRevealerTransitionType\" revealer-transition-type
   (:export t
    :type-initializer \"gtk_revealer_transition_type_get_type\")
@@ -107,15 +104,22 @@
   (:slide-left 3)
   (:slide-up 4)
   (:slide-down 5))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:none]{No transition}
-    @entry[:crossfade]{Fade in.}
-    @entry[:slide-right]{Slide in from the left.}
-    @entry[:slide-left]{Slide in from the right.}
-    @entry[:slide-up]{Slide in from the bottom.}
-    @entry[:slide-down]{Slide in from the top.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:none]{No transition}
+      @entry[:crossfade]{Fade in.}
+      @entry[:slide-right]{Slide in from the left.}
+      @entry[:slide-left]{Slide in from the right.}
+      @entry[:slide-up]{Slide in from the bottom.}
+      @entry[:slide-down]{Slide in from the top.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    These enumeration values describe the possible transitions when the child
+    widget of a @class{gtk:revealer} widget is shown or hidden.
+  @end{short}
   @see-class{gtk:revealer}")
 
 ;;; ----------------------------------------------------------------------------

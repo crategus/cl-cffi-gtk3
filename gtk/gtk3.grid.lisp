@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2012 - 2023 Dieter Kaiser
+;;; Copyright (C) 2012 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -197,9 +197,9 @@
 (setf (liber:alias-for-function 'grid-baseline-row)
       "Accessor"
       (documentation 'grid-baseline-row 'function)
- "@version{2023-12-30}
-  @syntax[]{(gtk:grid-baseline-row object) => row}
-  @syntax[]{(setf (gtk:grid-baseline-row object) row)}
+ "@version{2024-3-17}
+  @syntax{(gtk:grid-baseline-row object) => row}
+  @syntax{(setf (gtk:grid-baseline-row object) row)}
   @argument[object]{a @class{gtk:grid} widget}
   @argument[row]{an integer with the row index}
   @begin{short}
@@ -226,9 +226,9 @@
 (setf (liber:alias-for-function 'grid-column-homogeneous)
       "Accessor"
       (documentation 'grid-column-homogeneous 'function)
- "@version{2023-12-30}
-  @syntax[]{(gtk:grid-column-homogeneous object) => homogenous}
-  @syntax[]{(setf (gtk:grid-column-homogeneous object) homogenous)}
+ "@version{2024-3-17}
+  @syntax{(gtk:grid-column-homogeneous object) => homogenous}
+  @syntax{(setf (gtk:grid-column-homogeneous object) homogenous)}
   @argument[object]{a @class{gtk:grid} widget}
   @argument[homogeneous]{@em{true} to make columns homogeneous}
   @begin{short}
@@ -254,9 +254,9 @@
 (setf (liber:alias-for-function 'grid-column-spacing)
       "Accessor"
       (documentation 'grid-column-spacing 'function)
- "@version{2023-12-30}
-  @syntax[]{(gtk:grid-column-spacing object) => spacing}
-  @syntax[]{(setf (gtk:grid-column-spacing object) spacing)}
+ "@version{2024-3-17}
+  @syntax{(gtk:grid-column-spacing object) => spacing}
+  @syntax{(setf (gtk:grid-column-spacing object) spacing)}
   @argument[object]{a @class{gtk:grid} widget}
   @argument[spacing]{an integer with the amount of space to insert between
     columns}
@@ -283,9 +283,9 @@
 (setf (liber:alias-for-function 'grid-row-homogeneous)
       "Accessor"
       (documentation 'grid-row-homogeneous 'function)
- "@version{2023-12-30}
-  @syntax[]{(gtk:grid-row-homogeneous object) => homogeneous}
-  @syntax[]{(setf (gtk:grid-row-homogeneous object) homogeneous)}
+ "@version{2024-3-17}
+  @syntax{(gtk:grid-row-homogeneous object) => homogeneous}
+  @syntax{(setf (gtk:grid-row-homogeneous object) homogeneous)}
   @argument[object]{a @class{gtk:grid} widget}
   @argument[homogeneous]{@em{true} to make rows homogeneous}
   @begin{short}
@@ -311,9 +311,9 @@
 (setf (liber:alias-for-function 'grid-row-spacing)
       "Accessor"
       (documentation 'grid-row-spacing 'function)
- "@version{2023-12-30}
-  @syntax[]{(gtk:grid-row-spacing object) => spacing}
-  @syntax[]{(setf (gtk:grid-row-spacing object) spacing)}
+ "@version{2024-3-17}
+  @syntax{(gtk:grid-row-spacing object) => spacing}
+  @syntax{(setf (gtk:grid-row-spacing object) spacing)}
   @argument[object]{a @class{gtk:grid} widget}
   @argument[spacing]{an integer with the amount of space to insert between rows}
   @begin{short}
@@ -338,9 +338,9 @@
 (setf (liber:alias-for-function 'grid-child-height)
       "Accessor"
       (documentation 'grid-child-height 'function)
- "@version{2023-12-30}
-  @syntax[]{(gtk:grid-child-height container child) => height}
-  @syntax[]{(setf (gtk:grid-child-height container child) height)}
+ "@version{2024-3-17}
+  @syntax{(gtk:grid-child-height container child) => height}
+  @syntax{(setf (gtk:grid-child-height container child) height)}
   @argument[container]{a @class{gtk:grid} widget}
   @argument[child]{a @class{gtk:widget} object}
   @argument[height]{an integer with the height}
@@ -360,9 +360,9 @@
 (setf (liber:alias-for-function 'grid-child-left-attach)
       "Accessor"
       (documentation 'grid-child-left-attach 'function)
- "@version{2023-12-30}
-  @syntax[]{(gtk:grid-child-left-attach container child) => left-attach}
-  @syntax[]{(setf (gtk:grid-child-left-attach container child) left-attach)}
+ "@version{2024-3-17}
+  @syntax{(gtk:grid-child-left-attach container child) => left-attach}
+  @syntax{(setf (gtk:grid-child-left-attach container child) left-attach)}
   @argument[container]{a @class{gtk:grid} widget}
   @argument[child]{a @class{gtk:widget} object}
   @argument[left-attach]{an integer with the left attach}
@@ -383,9 +383,9 @@
 (setf (liber:alias-for-function 'grid-child-top-attach)
       "Accessor"
       (documentation 'grid-child-top-attach 'function)
- "@version{2023-12-30}
-  @syntax[]{(gtk:grid-child-top-attach container child) => top-attach}
-  @syntax[]{(setf (gtk:grid-child-top-attach container child) top-attach)}
+ "@version{2024-3-17}
+  @syntax{(gtk:grid-child-top-attach container child) => top-attach}
+  @syntax{(setf (gtk:grid-child-top-attach container child) top-attach)}
   @argument[container]{a @class{gtk:grid} widget}
   @argument[child]{a @class{gtk:widget} object}
   @argument[top-attach]{an integer with the top attach}
@@ -406,9 +406,9 @@
 (setf (liber:alias-for-function 'grid-child-width)
       "Accessor"
       (documentation 'grid-child-width 'function)
- "@version{2023-12-30}
-  @syntax[]{(gtk:grid-child-width container child) => width}
-  @syntax[]{(setf (gtk:grid-child-width container child) width)}
+ "@version{2024-3-17}
+  @syntax{(gtk:grid-child-width container child) => width}
+  @syntax{(setf (gtk:grid-child-width container child) width)}
   @argument[container]{a @class{gtk:grid} widget}
   @argument[child]{a @class{gtk:widget} object}
   @argument[width]{an integer with the width}
@@ -479,7 +479,7 @@
 
 (cffi:defcfun ("gtk_grid_attach_next_to" grid-attach-next-to) :void
  #+liber-documentation
- "@version{2023-12-30}
+ "@version{2024-3-17}
   @argument[grid]{a @class{gtk:grid} widget}
   @argument[child]{a @class{gtk:widget} widget to add}
   @argument[sibling]{a @class{gtk:widget} child widget of grid that @arg{child}
@@ -495,8 +495,8 @@
     Adds a child widget to the grid.
   @end{short}
   The child widget is placed next to @arg{sibling}, on the side determined
-  by @arg{side}. When @arg{sibling} is @code{nil}, the child widget is
-  placed in row, for left or right placement, or column 0, for top or bottom
+  by @arg{side}. When the @arg{sibling} argument is @code{nil}, the child widget
+  is placed in row, for left or right placement, or column 0, for top or bottom
   placement, at the end indicated by @arg{side}.
   @see-class{gtk:grid}
   @see-class{gtk:widget}
@@ -642,8 +642,9 @@
     Inserts a row or column at the specified position.
   @end{short}
   The new row or column is placed next to @arg{sibling}, on the side determined
-  by @arg{side}. If side is @code{:top} or @code{:bottom}, a row is inserted.
-  If @arg{side} is @code{:left} of @code{:right}, a column is inserted.
+  by @arg{side}. If the @arg{side} argument is @code{:top} or @code{:bottom}, a
+  row is inserted. If the @arg{side} argument is @code{:left} of @code{:right},
+  a column is inserted.
   @see-class{gtk:grid}
   @see-class{gtk:widget}
   @see-symbol{gtk:position-type}
@@ -671,9 +672,9 @@
 (cffi:defcfun ("gtk_grid_get_row_baseline_position"
                grid-row-baseline-position) position-type
  #+liber-documentation
- "@version{2023-12-30}
-  @syntax[]{(gtk:grid-row-baseline-position grid row) => position}
-  @syntax[]{(setf (gtk:grid-row-baseline-position grid row) position)}
+ "@version{2024-3-17}
+  @syntax{(gtk:grid-row-baseline-position grid row) => position}
+  @syntax{(setf (gtk:grid-row-baseline-position grid row) position)}
   @argument[grid]{a @class{gtk:grid} widget}
   @argument[row]{an integer with a row index}
   @argument[position]{a @symbol{gtk:position-type} value}
