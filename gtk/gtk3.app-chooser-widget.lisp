@@ -204,8 +204,8 @@ lambda (widget menu application)    :run-first
       "Accessor"
       (documentation 'app-chooser-widget-default-text 'function)
  "@version{#2023-2-15}
-  @syntax[]{(gtk:app-chooser-widget-default-text object) => text}
-  @syntax[]{(setf (gtk:app-chooser-widget-default-text object) text)}
+  @syntax{(gtk:app-chooser-widget-default-text object) => text}
+  @syntax{(setf (gtk:app-chooser-widget-default-text object) text)}
   @argument[object]{a @class{gtk:app-chooser-widget} widget}
   @argument[text]{a string with the text that appears in the widget}
   @begin{short}
@@ -235,8 +235,8 @@ lambda (widget menu application)    :run-first
       "Accessor"
       (documentation 'app-chooser-widget-show-all 'function)
  "@version{#2023-2-15}
-  @syntax[]{(gtk:app-chooser-widget-show-all object) => setting}
-  @syntax[]{(setf (gtk:app-chooser-widget-show-all object) setting)}
+  @syntax{(gtk:app-chooser-widget-show-all object) => setting}
+  @syntax{(setf (gtk:app-chooser-widget-show-all object) setting)}
   @argument[object]{a @class{gtk:app-chooser-widget} widget}
   @argument[setting]{a boolean whether the application chooser presents all
     applications in a single list}
@@ -268,8 +268,8 @@ lambda (widget menu application)    :run-first
       "Accessor"
       (documentation 'app-chooser-widget-show-default 'function)
  "@version{#2023-2-15}
-  @syntax[]{(gtk:app-chooser-widget-show-default object) => setting}
-  @syntax[]{(setf (gtk:app-chooser-widget-show-default object) setting)}
+  @syntax{(gtk:app-chooser-widget-show-default object) => setting}
+  @syntax{(setf (gtk:app-chooser-widget-show-default object) setting)}
   @argument[object]{a @class{gtk:app-chooser-widget} widget}
   @argument[setting]{a boolean whether the application chooser should show the
     default handler}
@@ -300,8 +300,8 @@ lambda (widget menu application)    :run-first
       "Accessor"
       (documentation 'app-chooser-widget-show-fallback 'function)
  "@version{#2023-2-15}
-  @syntax[]{(gtk:app-chooser-widget-show-fallback object) => setting}
-  @syntax[]{(setf (gtk:app-chooser-widget-show-fallback object) setting)}
+  @syntax{(gtk:app-chooser-widget-show-fallback object) => setting}
+  @syntax{(setf (gtk:app-chooser-widget-show-fallback object) setting)}
   @argument[object]{a @class{gtk:app-chooser-widget} widget}
   @argument[setting]{a boolean whether the application chooser should show a
     section for fallback applications}
@@ -332,8 +332,8 @@ lambda (widget menu application)    :run-first
       "Accessor"
       (documentation 'app-chooser-widget-show-other 'function)
  "@version{#2023-2-15}
-  @syntax[]{(gtk:app-chooser-widget-show-other object) => setting}
-  @syntax[]{(setf (gtk:app-chooser-widget-show-other object) setting)}
+  @syntax{(gtk:app-chooser-widget-show-other object) => setting}
+  @syntax{(setf (gtk:app-chooser-widget-show-other object) setting)}
   @argument[object]{a @class{gtk:app-chooser-widget} widget}
   @argument[setting]{a boolean whether the application chooser should show a
     section for other applications}
@@ -365,8 +365,8 @@ lambda (widget menu application)    :run-first
       "Accessor"
       (documentation 'app-chooser-widget-show-recommended 'function)
  "@version{#2023-2-15}
-  @syntax[]{(gtk:app-chooser-widget-show-recommended object) => setting}
-  @syntax[]{(setf (gtk:app-chooser-widget-show-recommended object) setting)}
+  @syntax{(gtk:app-chooser-widget-show-recommended object) => setting}
+  @syntax{(setf (gtk:app-chooser-widget-show-recommended object) setting)}
   @argument[object]{a @class{gtk:app-chooser-widget} widget}
   @argument[setting]{a boolean whether the application chooser shuld show a
     section for recommended applications}

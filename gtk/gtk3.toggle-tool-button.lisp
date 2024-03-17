@@ -129,8 +129,8 @@ lambda (button)    :run-first
       "Accessor"
       (documentation 'toggle-tool-button-active 'function)
  "@version{2024-1-2}
-  @syntax[]{(gtk:toggle-tool-button-active object) => setting}
-  @syntax[]{(setf (gtk:toggle-tool-button-active object) setting)}
+  @syntax{(gtk:toggle-tool-button-active object) => setting}
+  @syntax{(setf (gtk:toggle-tool-button-active object) setting)}
   @argument[object]{a @class{gtk:toggle-tool-button} widget}
   @argument[setting]{a boolean whether the toggle tool button should be
     active}

@@ -162,8 +162,8 @@
       "Accessor"
       (documentation 'event-controller-propagation-phase 'function)
  "@version{#2023-1-21}
-  @syntax[]{(gtk:event-controller-propagation-phase object) => phase)}
-  @syntax[]{(setf (gtk:event-controller-propagation-phase object) phase)}
+  @syntax{(gtk:event-controller-propagation-phase object) => phase)}
+  @syntax{(setf (gtk:event-controller-propagation-phase object) phase)}
   @argument[object]{a @class{gtk:event-controller} object}
   @argument[phase]{a propagation phase of @symbol{gtk:propagation-phase} type}
   @begin{short}
@@ -196,8 +196,8 @@
       "Accessor"
       (documentation 'event-controller-widget 'function)
  "@version{#2023-1-21}
-  @syntax[]{(gtk:event-controller-widget object) => widget)}
-  @syntax[]{(setf (gtk:event-controller-widget object) widget)}
+  @syntax{(gtk:event-controller-widget object) => widget)}
+  @syntax{(setf (gtk:event-controller-widget object) widget)}
   @argument[object]{a @class{gtk:event-controller} object}
   @begin{short}
     Accessor of the @slot[gtk:event-controller]{widget} slot of the

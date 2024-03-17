@@ -330,8 +330,8 @@
 (cffi:defcfun ("gtk_text_iter_get_offset" text-iter-offset) :int
  #+liber-documentation
  "@version{2023-2-2}
-  @syntax[]{(gtk:text-iter-offset iter) => offset}
-  @syntax[]{(setf (gtk:text-iter-offset iter) offset)}
+  @syntax{(gtk:text-iter-offset iter) => offset}
+  @syntax{(setf (gtk:text-iter-offset iter) offset)}
   @argument[iter]{a @class{gtk:text-iter} instance}
   @argument[offset]{an integer with a character offset}
   @begin{short}
@@ -366,8 +366,8 @@
 (cffi:defcfun ("gtk_text_iter_get_line" text-iter-line) :int
  #+liber-documentation
  "@version{2023-2-2}
-  @syntax[]{(gtk:text-iter-line iter) => line}
-  @syntax[]{(setf (gtk:text-iter-line iter) line)}
+  @syntax{(gtk:text-iter-line iter) => line}
+  @syntax{(setf (gtk:text-iter-line iter) line)}
   @argument[iter]{a @class{gtk:text-iter} instance}
   @argument[line]{an integer with the line number, counted from 0}
   @begin{short}
@@ -402,8 +402,8 @@
 (cffi:defcfun ("gtk_text_iter_get_line_offset" text-iter-line-offset) :int
  #+liber-documentation
  "@version{2023-2-2}
-  @syntax[]{(gtk:text-iter-line-offset iter) => offset}
-  @syntax[]{(setf (gtk:text-iter-line-offset iter) offset)}
+  @syntax{(gtk:text-iter-line-offset iter) => offset}
+  @syntax{(setf (gtk:text-iter-line-offset iter) offset)}
   @argument[iter]{a @class{gtk:text-iter} instance}
   @argument[offset]{an integer with a character offset relative to the start of
     the current line of the iterator}
@@ -443,8 +443,8 @@
 (cffi:defcfun ("gtk_text_iter_get_line_index" text-iter-line-index) :int
  #+liber-documentation
  "@version{2023-2-2}
-  @syntax[]{(gtk:text-iter-line-index iter) => index}
-  @syntax[]{(setf (gtk:text-iter-line-offset iter) index)}
+  @syntax{(gtk:text-iter-line-index iter) => index}
+  @syntax{(setf (gtk:text-iter-line-offset iter) index)}
   @argument[iter]{a @class{gtk:text-iter} instance}
   @argument[index]{an integer with a byte index relative to the start of the
     current line of the iterator}
@@ -483,8 +483,8 @@
                text-iter-visible-line-index) :int
  #+liber-documentation
  "@version{2023-2-2}
-  @syntax[]{(gtk:text-iter-visible-line-index iter) => index}
-  @syntax[]{(setf (gtk:text-iter-visible-line-index iter) index)}
+  @syntax{(gtk:text-iter-visible-line-index iter) => index}
+  @syntax{(setf (gtk:text-iter-visible-line-index iter) index)}
   @argument[iter]{a @class{gtk:text-iter} instance}
   @argument[index]{an integer with a byte index}
   @begin{short}
@@ -518,8 +518,8 @@
                text-iter-visible-line-offset) :int
  #+liber-documentation
  "@version{#2023-2-2}
-  @syntax[]{(gtk:text-iter-visible-line-offset iter) => offset}
-  @syntax[]{(setf (gtk:text-iter-visible-line-offset iter) offset)}
+  @syntax{(gtk:text-iter-visible-line-offset iter) => offset}
+  @syntax{(setf (gtk:text-iter-visible-line-offset iter) offset)}
   @argument[iter]{a @class{gtk:text-iter} instance}
   @argument[offset]{an integer with a character offset}
   @begin{short}

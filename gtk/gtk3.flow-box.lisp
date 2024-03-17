@@ -356,8 +356,8 @@ lambda (flowbox)    :action
       "Accessor"
       (documentation 'flow-box-activate-on-single-click 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:flow-box-activate-on-single-click object) => setting}
-  @syntax[]{(setf (gtk:flow-box-activate-on-single-click object) setting)}
+  @syntax{(gtk:flow-box-activate-on-single-click object) => setting}
+  @syntax{(setf (gtk:flow-box-activate-on-single-click object) setting)}
   @argument[object]{a @class{gtk:flow-box} widget}
   @argument[setting]{@em{false} to emit the @code{\"child-activated\"} signal
     on a single click}
@@ -384,8 +384,8 @@ lambda (flowbox)    :action
       "Accessor"
       (documentation 'flow-box-column-spacing 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:flow-box-column-spacing object) => spacing}
-  @syntax[]{(setf (gtk:flow-box-column-spacing object) spacing)}
+  @syntax{(gtk:flow-box-column-spacing object) => spacing}
+  @syntax{(setf (gtk:flow-box-column-spacing object) spacing)}
   @argument[object]{a @class{gtk:flow-box} widget}
   @argument[spacing]{An unsigned integer with the spacing to use.}
   @begin{short}
@@ -411,8 +411,8 @@ lambda (flowbox)    :action
       "Accessor"
       (documentation 'flow-box-homogeneous 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:flow-box-homogeneous object) => homogeneous}
-  @syntax[]{(setf (gtk:flow-box-homogeneous object) homogeneous)}
+  @syntax{(gtk:flow-box-homogeneous object) => homogeneous}
+  @syntax{(setf (gtk:flow-box-homogeneous object) homogeneous)}
   @argument[object]{a @class{gtk:flow-box} widget}
   @argument[homogeneous]{@em{true} to create equal allotments, @em{false} for
     variable allotments}
@@ -441,8 +441,8 @@ lambda (flowbox)    :action
       "Accessor"
       (documentation 'flow-box-max-children-per-line 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:flow-box-max-children-per-line object) => n-children}
-  @syntax[]{(setf (gtk:flow-box-max-children-per-line object) n-children)}
+  @syntax{(gtk:flow-box-max-children-per-line object) => n-children}
+  @syntax{(setf (gtk:flow-box-max-children-per-line object) n-children)}
   @argument[object]{a @class{gtk:flow-box} widget}
   @argument[n-children]{an unsigned integer with the maximum number of children
     per line}
@@ -478,8 +478,8 @@ lambda (flowbox)    :action
       "Accessor"
       (documentation 'flow-box-min-children-per-line 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:flow-box-min-children-per-line object) => n-children}
-  @syntax[]{(setf (gtk:flow-box-min-children-per-line object) n-children)}
+  @syntax{(gtk:flow-box-min-children-per-line object) => n-children}
+  @syntax{(setf (gtk:flow-box-min-children-per-line object) n-children)}
   @argument[object]{a @class{gtk:flow-box} widget}
   @argument[n-children]{an unsigned integer with the minimum number of children
     per line}
@@ -507,8 +507,8 @@ lambda (flowbox)    :action
       "Accessor"
       (documentation 'flow-box-row-spacing 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:flow-box-row-spacing object) => spacing}
-  @syntax[]{(setf (gtk:flow-box-row-spacing object) spacing)}
+  @syntax{(gtk:flow-box-row-spacing object) => spacing}
+  @syntax{(setf (gtk:flow-box-row-spacing object) spacing)}
   @argument[object]{a @class{gtk:flow-box} widget}
   @argument[spacing]{an unsigned integer with the spacing to use}
   @begin{short}
@@ -535,8 +535,8 @@ lambda (flowbox)    :action
       "Accessor"
       (documentation 'flow-box-selection-mode 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:flow-box-selection-mode object) => mode}
-  @syntax[]{(setf (gtk:flow-box-selection-mode object) mode)}
+  @syntax{(gtk:flow-box-selection-mode object) => mode}
+  @syntax{(setf (gtk:flow-box-selection-mode object) mode)}
   @argument[object]{a @class{gtk:flow-box} widget}
   @argument[mode]{a value of the @symbol{gtk:selection-mode} enumeration}
   @begin{short}

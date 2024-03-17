@@ -113,8 +113,8 @@
       "Accessor"
       (documentation 'separator-tool-item-draw 'function)
  "@version{#2023-3-24}
-  @syntax[]{(gtk:separator-tool-item-draw object) => draw)}
-  @syntax[]{(setf (gtk:separator-tool-item-draw object) draw)}
+  @syntax{(gtk:separator-tool-item-draw object) => draw)}
+  @syntax{(setf (gtk:separator-tool-item-draw object) draw)}
   @argument[object]{a @class{gtk:separator-tool-item} widget}
   @argument[draw]{a boolean whether @arg{object} is drawn as a vertical line}
   @begin{short}

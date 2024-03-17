@@ -1001,8 +1001,8 @@
     (:string :free-from-foreign nil)
  #+liber-documentation
  "@version{#2023-3-27}
-  @syntax[]{(gtk:icon-source-filename source) => filename}
-  @syntax[]{(setf (gtk:icon-source-filename source) filename)}
+  @syntax{(gtk:icon-source-filename source) => filename}
+  @syntax{(setf (gtk:icon-source-filename source) filename)}
   @argument[source]{a @class{gtk:icon-source} instance}
   @argument[filename]{a string with the image file to use}
   @begin{short}
@@ -1060,8 +1060,8 @@
     (:string :free-from-foreign nil)
  #+liber-documentation
  "@version{#2023-3-27}
-  @syntax[]{(gtk:icon-source-icon-name source) => name}
-  @syntax[]{(setf (gtk:icon-source-icon-name source) name)}
+  @syntax{(gtk:icon-source-icon-name source) => name}
+  @syntax{(setf (gtk:icon-source-icon-name source) name)}
   @argument[source]{a @class{gtk:icon-source} instance}
   @argument[name]{a string with the name of the icon to use}
   @begin{short}

@@ -390,8 +390,8 @@
       "Accessor"
       (documentation 'border-left 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:border-left instance) => left}
-  @syntax[]{(setf gtk:border-left instance) left)}
+  @syntax{(gtk:border-left instance) => left}
+  @syntax{(setf gtk:border-left instance) left)}
   @argument[instance]{a @class{gtk:border} instance}
   @argument[left]{an integer with the width of the left border}
   @begin{short}
@@ -408,8 +408,8 @@
       "Accessor"
       (documentation 'border-right 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:border-right instance) => right}
-  @syntax[]{(setf gtk:border-right instance) right)}
+  @syntax{(gtk:border-right instance) => right}
+  @syntax{(setf gtk:border-right instance) right)}
   @argument[instance]{a @class{gtk:border} instance}
   @argument[right]{an integer with the width of the right border}
   @begin{short}
@@ -426,8 +426,8 @@
       "Accessor"
       (documentation 'border-top 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:border-top instance) => top}
-  @syntax[]{(setf gtk:border-top instance) top)}
+  @syntax{(gtk:border-top instance) => top}
+  @syntax{(setf gtk:border-top instance) top)}
   @argument[instance]{a @class{gtk:border} instance}
   @argument[top]{an integer with the width of the top border}
   @begin{short}
@@ -444,8 +444,8 @@
       "Accessor"
       (documentation 'border-bottom 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:border-top instance) => bottom}
-  @syntax[]{(setf gtk:border-top instance) bottom)}
+  @syntax{(gtk:border-top instance) => bottom}
+  @syntax{(setf gtk:border-top instance) bottom)}
   @argument[instance]{a @class{gtk:border} instance}
   @argument[bottom]{an integer with the width of the bottom border}
   @begin{short}
@@ -571,8 +571,8 @@ lambda (context)    :run-first
       "Accessor"
       (documentation 'style-context-direction 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:style-context-direction object) => direction}
-  @syntax[]{(setf (gtk:style-context-direction object) direction)}
+  @syntax{(gtk:style-context-direction object) => direction}
+  @syntax{(setf (gtk:style-context-direction object) direction)}
   @argument[object]{a @class{gtk:style-context} object}
   @argument[direction]{a value of the @symbol{gtk:text-direction} enumeration}
   @begin{short}
@@ -610,8 +610,8 @@ lambda (context)    :run-first
       "Accessor"
       (documentation 'style-context-paint-clock 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:style-context-paint-clock object) => clock}
-  @syntax[]{(setf (gtk:style-context-paint-clock object) clock)}
+  @syntax{(gtk:style-context-paint-clock object) => clock}
+  @syntax{(setf (gtk:style-context-paint-clock object) clock)}
   @argument[object]{a @class{gtk:style-context} object}
   @argument[clock]{a @class{gdk:frame-clock} object}
   @begin{short}
@@ -635,8 +635,8 @@ lambda (context)    :run-first
       "Accessor"
       (documentation 'style-context-parent 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:style-context-parent object) => parent}
-  @syntax[]{(setf (gtk:style-context-parent object) parent)}
+  @syntax{(gtk:style-context-parent object) => parent}
+  @syntax{(setf (gtk:style-context-parent object) parent)}
   @argument[object]{a @class{gtk:style-context} object}
   @argument[parent]{a @class{gtk:style-context} parent object or @code{nil}}
   @begin{short}
@@ -664,8 +664,8 @@ lambda (context)    :run-first
       "Accessor"
       (documentation 'style-context-screen 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:style-context-screen object) => screen}
-  @syntax[]{(setf (gtk:style-context-screen object) screen)}
+  @syntax{(gtk:style-context-screen object) => screen}
+  @syntax{(setf (gtk:style-context-screen object) screen)}
   @argument[object]{a @class{gtk:style-context} object}
   @argument[screen]{a @class{gdk:screen} object}
   @begin{short}
@@ -822,8 +822,8 @@ lambda (context)    :run-first
                style-context-junction-sides) junction-sides
  #+liber-documentation
  "@version{#2023-3-27}
-  @syntax[]{(gtk:style-context-junction-sides context) => sides}
-  @syntax[]{(setf (gtk:style-context-junction-sides context) sides)}
+  @syntax{(gtk:style-context-junction-sides context) => sides}
+  @syntax{(setf (gtk:style-context-junction-sides context) sides)}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[sides]{a value of the @symbol{gtk:junction-sides} flags}
   @begin{short}
@@ -863,8 +863,8 @@ lambda (context)    :run-first
     (g:boxed widget-path)
  #+liber-documentation
  "@version{#2023-3-27}
-  @syntax[]{(gtk:style-context-path context) => path}
-  @syntax[]{(setf (gtk:style-context-path context) path)}
+  @syntax{(gtk:style-context-path context) => path}
+  @syntax{(setf (gtk:style-context-path context) path)}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[path]{a @class{gtk:widget-path} instance}
   @begin{short}
@@ -949,8 +949,8 @@ lambda (context)    :run-first
     (g:object gdk:frame-clock)
  #+liber-documentation
  "@version{#2023-3-27}
-  @syntax[]{(gtk:style-context-frame-clock context) => clock}
-  @syntax[]{(setf (gtk:style-context-frame-clock context) clock)}
+  @syntax{(gtk:style-context-frame-clock context) => clock}
+  @syntax{(setf (gtk:style-context-frame-clock context) clock)}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[clock]{a @class{gdk:frame-clock} object}
   @begin{short}
@@ -991,8 +991,8 @@ lambda (context)    :run-first
 (cffi:defcfun ("gtk_style_context_get_state" style-context-state) state-flags
  #+liber-documentation
  "@version{#2023-3-27}
-  @syntax[]{(gtk:style-context-state context) => state}
-  @syntax[]{(setf (gtk:style-context-state context) state)}
+  @syntax{(gtk:style-context-state context) => state}
+  @syntax{(setf (gtk:style-context-state context) state)}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[state]{a value of the @symbol{gtk:state-flags} flags to represent}
   @begin{short}
@@ -2026,8 +2026,8 @@ GtkEntry.entry { ... @}
 (cffi:defcfun ("gtk_style_context_get_scale" style-context-scale) :int
  #+liber-documentation
  "@version{#2023-3-27}
-  @syntax[]{(gtk:style-context-scale context) => scale}
-  @syntax[]{(setf (gtk:style-context-scale context) scale)}
+  @syntax{(gtk:style-context-scale context) => scale}
+  @syntax{(setf (gtk:style-context-scale context) scale)}
   @argument[context]{a @class{gtk:style-context} object}
   @argument[scale]{an integer with a scale}
   @begin{short}

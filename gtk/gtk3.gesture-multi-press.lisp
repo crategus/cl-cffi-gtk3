@@ -174,8 +174,8 @@ lambda (gesture)    :run-last
 (defun gesture-multi-press-area (gesture)
  #+liber-documentation
  "@version{#2023-3-6}
-  @syntax[]{(gtk:gesture-multi-press-area gesture) => rect}
-  @syntax[]{(setf (gtk:gesture-multi-press-area gesture) rect)}
+  @syntax{(gtk:gesture-multi-press-area gesture) => rect}
+  @syntax{(setf (gtk:gesture-multi-press-area gesture) rect)}
   @argument[gesture]{a @class{gtk:gesture-multi-press} object}
   @argument[rect]{a @class{gdk:rectangle} instance with the press area}
   @begin{short}

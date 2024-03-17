@@ -166,8 +166,8 @@ lambda (shortcutswindow)    :action
       "Accessor"
       (documentation 'shortcuts-window-section-name 'function)
  "@version{#2023-2-28}
-  @syntax[]{(gtk:shortcuts-window-section-name object) => section-name}
-  @syntax[]{(setf (gtk:shortcuts-window-section-name object) section-name)}
+  @syntax{(gtk:shortcuts-window-section-name object) => section-name}
+  @syntax{(setf (gtk:shortcuts-window-section-name object) section-name)}
   @argument[object]{a @class{gtk:shortcuts-window} widget}
   @argument[section-name]{a string with a name of the section to show}
   @begin{short}
@@ -196,8 +196,8 @@ lambda (shortcutswindow)    :action
       "Accessor"
       (documentation 'shortcuts-window-view-name 'function)
  "@version{#2023-2-28}
-  @syntax[]{(gtk:shortcuts-window-view-name object) => view-name}
-  @syntax[]{(setf (gtk:shortcuts-window-view-name object) view-name)}
+  @syntax{(gtk:shortcuts-window-view-name object) => view-name}
+  @syntax{(setf (gtk:shortcuts-window-view-name object) view-name)}
   @argument[object]{a @class{gtk:shortcuts-window} widget}
   @argument[view-name]{a string with the view name by which to filter the
     contents}

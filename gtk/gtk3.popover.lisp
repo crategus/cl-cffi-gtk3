@@ -257,8 +257,8 @@
       "Accessor"
       (documentation 'popover-constrain-to 'function)
  "@version{#2023-3-13}
-  @syntax[]{(gtk:popover-constrain-to object) => constraint}
-  @syntax[]{(setf (gtk:popover-constrain-to object) constraint)}
+  @syntax{(gtk:popover-constrain-to object) => constraint}
+  @syntax{(setf (gtk:popover-constrain-to object) constraint)}
   @argument[object]{a @class{gtk:popover} widget}
   @argument[constraint]{a value of the @symbol{gtk:popover-constraint}
     enumeration}
@@ -289,8 +289,8 @@
       "Accessor"
       (documentation 'popover-modal 'function)
  "@version{#2023-3-12}
-  @syntax[]{(gtk:popover-modal object) => modal}
-  @syntax[]{(setf (gtk:popover-modal object) modal)}
+  @syntax{(gtk:popover-modal object) => modal}
+  @syntax{(setf (gtk:popover-modal object) modal)}
   @argument[object]{a @class{gtk:popover} widget}
   @argument[modal]{a boolean, that is @em{true} to make the popover claim all
     input within the toplevel}
@@ -318,8 +318,8 @@
       "Accessor"
       (documentation 'popover-pointing-to 'function)
  "@version{#2023-3-12}
-  @syntax[]{(gtk:popover-pointing-to object) => rect}
-  @syntax[]{(setf (gtk:popover-pointing-to object) rect)}
+  @syntax{(gtk:popover-pointing-to object) => rect}
+  @syntax{(setf (gtk:popover-pointing-to object) rect)}
   @argument[object]{a @class{gtk:popover} widget}
   @argument[rect]{a @class{gdk:rectangle} instance to point to}
   @begin{short}
@@ -347,8 +347,8 @@
       "Accessor"
       (documentation 'popover-position 'function)
  "@version{#2023-3-12}
-  @syntax[]{(gtk:popover-pointing-to object) => position}
-  @syntax[]{(setf (gtk:popover-pointing-to object) position)}
+  @syntax{(gtk:popover-pointing-to object) => position}
+  @syntax{(setf (gtk:popover-pointing-to object) position)}
   @argument[object]{a @class{gtk:popover} widget}
   @argument[position]{a @symbol{gtk:position-type} value with the preferred
     popover position}
@@ -380,8 +380,8 @@
       "Accessor"
       (documentation 'popover-relative-to 'function)
  "@version{#2023-3-12}
-  @syntax[]{(gtk:popover-relative-to object) => relative-to}
-  @syntax[]{(setf (gtk:popover-relative-to object) relative-to)}
+  @syntax{(gtk:popover-relative-to object) => relative-to}
+  @syntax{(setf (gtk:popover-relative-to object) relative-to)}
   @argument[object]{a @class{gtk:popover} widget}
   @argument[relative-to]{a @class{gtk:widget} object}
   @begin{short}
@@ -421,8 +421,8 @@
       "Accessor"
       (documentation 'popover-transitions-enabled 'function)
  "@version{#2023-3-12}
-  @syntax[]{(gtk:popover-transitions-enabled object) => enabled}
-  @syntax[]{(setf (gtk:popover-transitions-enabled object) enabled)}
+  @syntax{(gtk:popover-transitions-enabled object) => enabled}
+  @syntax{(setf (gtk:popover-transitions-enabled object) enabled)}
   @argument[object]{a @class{gtk:popover} widget}
   @argument[enabled]{a boolean whether transitions are enabled}
   @begin{short}
@@ -602,8 +602,8 @@
     (g:object widget)
  #+liber-documentation
  "@version{#2023-3-13}
-  @syntax[]{(gtk:popover-default-widget popover) => widget}
-  @syntax[]{(setf (gtk:popover-default-widget popover) widget)}
+  @syntax{(gtk:popover-default-widget popover) => widget}
+  @syntax{(setf (gtk:popover-default-widget popover) widget)}
   @argument[popover]{a @class{gtk:popover} widget}
   @argument[widget]{a default @class{gtk:widget} object, or @code{nil}}
   @begin{short}

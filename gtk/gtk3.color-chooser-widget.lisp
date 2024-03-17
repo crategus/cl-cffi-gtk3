@@ -144,8 +144,8 @@
       "Accessor"
       (documentation 'color-chooser-widget-show-editor 'function)
  "@version{2023-6-14}
-  @syntax[]{(gtk:color-chooser-widget-show-editor object) => show-editor}
-  @syntax[]{(setf (gtk:color-chooser-widget-show-editor object) show-editor)}
+  @syntax{(gtk:color-chooser-widget-show-editor object) => show-editor}
+  @syntax{(setf (gtk:color-chooser-widget-show-editor object) show-editor)}
   @argument[object]{a @class{gtk:color-chooser-widget} widget}
   @argument[show-editor]{a boolean whether to show the single-color editor}
   @begin{short}

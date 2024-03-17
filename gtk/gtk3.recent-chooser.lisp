@@ -288,8 +288,8 @@ lambda (chooser)    :run-last
       "Accessor"
       (documentation 'recent-chooser-filter 'function)
  "@version{#2023-3-24}
-  @syntax[]{(gtk:recent-chooser-filter objet) => filter}
-  @syntax[]{(setf (gtk:recent-chooser-filter object) filter)}
+  @syntax{(gtk:recent-chooser-filter objet) => filter}
+  @syntax{(setf (gtk:recent-chooser-filter object) filter)}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
   @argument[filter]{a @class{gtk:recent-filter} object}
   @begin{short}
@@ -321,8 +321,8 @@ lambda (chooser)    :run-last
       "Accessor"
       (documentation 'recent-chooser-limit 'function)
  "@version{#2023-3-24}
-  @syntax[]{(gtk:recent-chooser-limit objet) => limit}
-  @syntax[]{(setf (gtk:recent-chooser-limit object) limit)}
+  @syntax{(gtk:recent-chooser-limit objet) => limit}
+  @syntax{(setf (gtk:recent-chooser-limit object) limit)}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
   @argument[limit]{a positive integer, or -1 for all items}
   @begin{short}
@@ -352,8 +352,8 @@ lambda (chooser)    :run-last
       "Accessor"
       (documentation 'recent-chooser-local-only 'function)
  "@version{#2023-3-24}
-  @syntax[]{(gtk:recent-chooser-local-only objet) => local-only}
-  @syntax[]{(setf (gtk:recent-chooser-local-only object) local-only)}
+  @syntax{(gtk:recent-chooser-local-only objet) => local-only}
+  @syntax{(setf (gtk:recent-chooser-local-only object) local-only)}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
   @argument[local-only]{@em{true} if only local files can be shown}
   @begin{short}
@@ -386,8 +386,8 @@ lambda (chooser)    :run-last
       "Accessor"
       (documentation 'recent-chooser-recent-manager 'function)
  "@version{#2023-3-24}
-  @syntax[]{(gtk:recent-chooser-recent-manager objet) => recent-manager}
-  @syntax[]{(setf (gtk:recent-chooser-recent-manager object) recent-manager)}
+  @syntax{(gtk:recent-chooser-recent-manager objet) => recent-manager}
+  @syntax{(setf (gtk:recent-chooser-recent-manager object) recent-manager)}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
   @argument[recent-manager]{a @class{gtk:recent-manager} object}
   @begin{short}
@@ -414,8 +414,8 @@ lambda (chooser)    :run-last
       "Accessor"
       (documentation 'recent-chooser-select-multiple 'function)
  "@version{#2023-3-24}
-  @syntax[]{(gtk:recent-chooser-select-multiple objet) => select-multiple}
-  @syntax[]{(setf (gtk:recent-chooser-select-multiple object) select-multiple)}
+  @syntax{(gtk:recent-chooser-select-multiple objet) => select-multiple}
+  @syntax{(setf (gtk:recent-chooser-select-multiple object) select-multiple)}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
   @argument[select-multiple]{@em{true} if @arg{chooser} can select more than
     one item}
@@ -442,8 +442,8 @@ lambda (chooser)    :run-last
       "Accessor"
       (documentation 'recent-chooser-show-icons 'function)
  "@version{#2023-3-24}
-  @syntax[]{(gtk:recent-chooser-show-icons objet) => show-icons}
-  @syntax[]{(setf (gtk:recent-chooser-show-icons object) show-icons)}
+  @syntax{(gtk:recent-chooser-show-icons objet) => show-icons}
+  @syntax{(setf (gtk:recent-chooser-show-icons object) show-icons)}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
   @argument[show-icons]{a boolean whether to show an icon near the resource}
   @begin{short}
@@ -474,8 +474,8 @@ lambda (chooser)    :run-last
       "Accessor"
       (documentation 'recent-chooser-show-not-found 'function)
  "@version{#2023-3-24}
-  @syntax[]{(gtk:recent-chooser-show-not-found objet) => show-not-found}
-  @syntax[]{(setf (gtk:recent-chooser-show-not-found object) show-not-found)}
+  @syntax{(gtk:recent-chooser-show-not-found objet) => show-not-found}
+  @syntax{(setf (gtk:recent-chooser-show-not-found object) show-not-found)}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
   @argument[show-not-found]{a boolean whether to show the local items we did
     not find}
@@ -504,8 +504,8 @@ lambda (chooser)    :run-last
       "Accessor"
       (documentation 'recent-chooser-show-private 'function)
  "@version{#2023-3-24}
-  @syntax[]{(gtk:recent-chooser-show-private objet) => show-private}
-  @syntax[]{(setf (gtk:recent-chooser-show-private object) show-private)}
+  @syntax{(gtk:recent-chooser-show-private objet) => show-private}
+  @syntax{(setf (gtk:recent-chooser-show-private object) show-private)}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
   @argument[show-private]{@em{true} to show private items, @em{false} otherwise}
   @begin{short}
@@ -532,8 +532,8 @@ lambda (chooser)    :run-last
       "Accessor"
       (documentation 'recent-chooser-show-tips 'function)
  "@version{#2023-3-24}
-  @syntax[]{(gtk:recent-chooser-show-tips objet) => show-tips}
-  @syntax[]{(setf (gtk:recent-chooser-show-tips object) show-tips)}
+  @syntax{(gtk:recent-chooser-show-tips objet) => show-tips}
+  @syntax{(setf (gtk:recent-chooser-show-tips object) show-tips)}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
   @argument[show-tips]{@em{true} if tooltips should be shown}
   @begin{short}
@@ -561,8 +561,8 @@ lambda (chooser)    :run-last
       "Accessor"
       (documentation 'recent-chooser-sort-type 'function)
  "@version{#2023-3-24}
-  @syntax[]{(gtk:recent-chooser-sort-type objet) => sort-type}
-  @syntax[]{(setf (gtk:recent-chooser-sort-type object) sort-type)}
+  @syntax{(gtk:recent-chooser-sort-type objet) => sort-type}
+  @syntax{(setf (gtk:recent-chooser-sort-type object) sort-type)}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
   @argument[sort-type]{sort order of type @see-symbol{gtk:recent-sort-type}
     that the chooser should use}
@@ -667,8 +667,8 @@ lambda (item1 item2)
     :string
  #+liber-documentation
  "@version{#2023-3-24}
-  @syntax[]{(gtk:recent-chooser-current-uri chooser) => uri}
-  @syntax[]{(setf (gtk:recent-chooser-current-uri chooser) uri)}
+  @syntax{(gtk:recent-chooser-current-uri chooser) => uri}
+  @syntax{(setf (gtk:recent-chooser-current-uri chooser) uri)}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
   @argument[uri]{a string with the URI}
   @begin{short}

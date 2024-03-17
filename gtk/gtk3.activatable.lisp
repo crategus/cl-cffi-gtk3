@@ -123,8 +123,8 @@
       "Accessor"
       (documentation 'activatable-related-action 'function)
  "@version{2023-2-27}
-  @syntax[]{(gtk:activatable-related-action object) => action}
-  @syntax[]{(setf (gtk:activatable-related-action object) action)}
+  @syntax{(gtk:activatable-related-action object) => action}
+  @syntax{(setf (gtk:activatable-related-action object) action)}
   @argument[activatable]{a @class{gtk:activatable} widget}
   @argument[action]{a @class{gtk:action} object to set}
   @begin{short}
@@ -156,8 +156,8 @@
       "Accessor"
       (documentation 'activatable-use-action-appearance 'function)
  "@version{2023-2-27}
-  @syntax[]{(gtk:activatable-use-action-appearance object) => action}
-  @syntax[]{(setf (gtk:activatable-use-action-appearance object) action)}
+  @syntax{(gtk:activatable-use-action-appearance object) => action}
+  @syntax{(setf (gtk:activatable-use-action-appearance object) action)}
   @argument[activatable]{a @class{gtk:activatable} widget}
   @argument[use-appearance]{a boolean whether to use the actions appearance}
   @begin{short}

@@ -132,8 +132,8 @@
       "Accessor"
       (documentation 'action-bar-child-pack-type 'function)
  "@version{2023-12-29}
-  @syntax[]{(gtk:action-bar-child-pack-type container child) => pack-type)}
-  @syntax[]{(setf (gtk:action-bar-child-pack-type container child) pack-type)}
+  @syntax{(gtk:action-bar-child-pack-type container child) => pack-type)}
+  @syntax{(setf (gtk:action-bar-child-pack-type container child) pack-type)}
   @argument[container]{a @class{gtk:action-bar} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[pack-type]{a value of the @symbol{gtk:pack-type} enumeration for
@@ -158,8 +158,8 @@
       "Accessor"
       (documentation 'action-bar-child-position 'function)
  "@version{2023-12-29}
-  @syntax[]{(gtk:action-bar-child-position object) => position)}
-  @syntax[]{(setf (gtk:action-bar-child-position object) position)}
+  @syntax{(gtk:action-bar-child-position object) => position)}
+  @syntax{(setf (gtk:action-bar-child-position object) position)}
   @argument[container]{a @class{gtk:action-bar} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[position]{an integer with the index of the child widget in the
@@ -246,8 +246,8 @@
     (g:object widget)
  #+liber-documentation
  "@version{2023-12-29}
-  @syntax[]{(gtk:action-bar-center-widget actionbar) => widget}
-  @syntax[]{(setf (gtk:action-bar-center-widget actionbar) widget)}
+  @syntax{(gtk:action-bar-center-widget actionbar) => widget}
+  @syntax{(setf (gtk:action-bar-center-widget actionbar) widget)}
   @argument[actionbar]{a @class{gtk:action-bar} widget}
   @argument[widget]{a @class{gtk:widget} object to use for the center widget}
   @begin{short}

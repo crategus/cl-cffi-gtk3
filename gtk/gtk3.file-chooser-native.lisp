@@ -266,8 +266,8 @@ g_object_unref (native);
       "Accessor"
       (documentation 'file-chooser-native-accept-label 'function)
  "@version{#2023-6-12}
-  @syntax[]{(gtk:file-chooser-native-accept-label object) => label}
-  @syntax[]{(setf (gtk:file-chooser-native-accept-label object) label)}
+  @syntax{(gtk:file-chooser-native-accept-label object) => label}
+  @syntax{(setf (gtk:file-chooser-native-accept-label object) label)}
   @argument[object]{a @class{gtk:file-chooser-native} widget}
   @argument[label]{a string with the custom label or @code{nil} for the default}
   @begin{short}
@@ -299,8 +299,8 @@ g_object_unref (native);
       "Accessor"
       (documentation 'file-chooser-native-cancel-label 'function)
  "@version{#2023-6-12}
-  @syntax[]{(gtk:file-chooser-native-cancel-label object) => label}
-  @syntax[]{(setf (gtk:file-chooser-native-cancel-label object) label)}
+  @syntax{(gtk:file-chooser-native-cancel-label object) => label}
+  @syntax{(setf (gtk:file-chooser-native-cancel-label object) label)}
   @argument[object]{a @class{gtk:file-chooser-native} widget}
   @argument[label]{a string with the custom label or @code{nil} for the default}
   @begin{short}

@@ -151,8 +151,8 @@
       "Accessor"
       (documentation 'fixed-child-x 'function)
  "@version{2023-3-17}
-  @syntax[]{(gtk:fixed-child-x container child) => x}
-  @syntax[]{(setf (gtk:fixed-child-x container child) x)}
+  @syntax{(gtk:fixed-child-x container child) => x}
+  @syntax{(setf (gtk:fixed-child-x container child) x)}
   @argument[container]{a @class{gtk:fixed} widget}
   @argument[child]{a @class{gtk:widget} object}
   @argument[x]{an integer with the x position of the child}
@@ -173,8 +173,8 @@
       "Accessor"
       (documentation 'fixed-child-y 'function)
  "@version{2023-3-17}
-  @syntax[]{(gtk:fixed-child-y container child) => y}
-  @syntax[]{(setf (gtk:fixed-child-y container child) y)}
+  @syntax{(gtk:fixed-child-y container child) => y}
+  @syntax{(setf (gtk:fixed-child-y container child) y)}
   @argument[container]{a @class{gtk:fixed} widget}
   @argument[child]{a @class{gtk:widget} object}
   @argument[y]{an integer with the y position of the child}

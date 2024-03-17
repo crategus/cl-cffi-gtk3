@@ -165,8 +165,8 @@ lambda (gesture n-press x y)    :run-last
       "Accessor"
       (documentation 'gesture-pan-orientation 'function)
  "@version{#2023-1-21}
-  @syntax[]{(gtk:gesture-pan-orientation object) => orientation)}
-  @syntax[]{(setf (gtk:gesture-pan-orientation object) orientation)}
+  @syntax{(gtk:gesture-pan-orientation object) => orientation)}
+  @syntax{(setf (gtk:gesture-pan-orientation object) orientation)}
   @argument[object]{a @class{gtk:gesture} object}
   @argument[orientation]{expected orientation of type @symbol{gtk:orientation}}
   @begin{short}

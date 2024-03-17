@@ -264,8 +264,8 @@ progressbar[.osd]
       "Accessor"
       (documentation 'progress-bar-ellipsize 'function)
  "@version{2024-1-1}
-  @syntax[]{(gtk:progress-bar-ellipsize object) => mode}
-  @syntax[]{(setf (gtk:progress-bar-ellipsize object) mode)}
+  @syntax{(gtk:progress-bar-ellipsize object) => mode}
+  @syntax{(setf (gtk:progress-bar-ellipsize object) mode)}
   @argument[object]{a @class{gtk:progress-bar} widget}
   @argument[mode]{a value of the @symbol{pango:ellipsize-mode} enumeration}
   @begin{short}
@@ -293,8 +293,8 @@ progressbar[.osd]
       "Accessor"
       (documentation 'progress-bar-fraction 'function)
  "@version{2024-1-1}
-  @syntax[]{(gtk:progress-bar-fraction object) => fraction}
-  @syntax[]{(setf (gtk:progress-bar-fraction object) fraction)}
+  @syntax{(gtk:progress-bar-fraction object) => fraction}
+  @syntax{(setf (gtk:progress-bar-fraction object) fraction)}
   @argument[object]{a @class{gtk:progress-bar} widget}
   @argument[fraction]{a double float with the fraction of the task that is
     been completed}
@@ -322,8 +322,8 @@ progressbar[.osd]
       "Accessor"
       (documentation 'progress-bar-inverted 'function)
  "@version{2024-1-1}
-  @syntax[]{(gtk:progress-bar-inverted object) => inverted}
-  @syntax[]{(setf (gtk:progress-bar-inverted object) inverted)}
+  @syntax{(gtk:progress-bar-inverted object) => inverted}
+  @syntax{(setf (gtk:progress-bar-inverted object) inverted)}
   @argument[object]{a @class{gtk:progress-bar} widget}
   @argument[inverted]{@em{true} to invert the progress bar}
   @begin{short}
@@ -348,8 +348,8 @@ progressbar[.osd]
       "Accessor"
       (documentation 'progress-bar-pulse-step 'function)
  "@version{2024-1-1}
-  @syntax[]{(gtk:progress-bar-pulse-step object) => fraction}
-  @syntax[]{(setf (gtk:progress-bar-pulse-step object) fraction)}
+  @syntax{(gtk:progress-bar-pulse-step object) => fraction}
+  @syntax{(setf (gtk:progress-bar-pulse-step object) fraction)}
   @argument[object]{a @class{gtk:progress-bar} widget}
   @argument[fraction]{a double float with the fraction between 0.0 and 1.0}
   @begin{short}
@@ -381,8 +381,8 @@ progressbar[.osd]
       "Accessor"
       (documentation 'progress-bar-show-text 'function)
  "@version{2024-1-1}
-  @syntax[]{(gtk:progress-bar-show-text object) => setting}
-  @syntax[]{(setf (gtk:progress-bar-show-text object) setting)}
+  @syntax{(gtk:progress-bar-show-text object) => setting}
+  @syntax{(setf (gtk:progress-bar-show-text object) setting)}
   @argument[object]{a @class{gtk:progress-bar} widget}
   @argument[setting]{a boolean whether to show superimposed text}
   @begin{short}
@@ -417,8 +417,8 @@ progressbar[.osd]
       "Accessor"
       (documentation 'progress-bar-text 'function)
  "@version{2024-1-1}
-  @syntax[]{(gtk:progress-bar-text object) => text}
-  @syntax[]{(setf (gtk:progress-bar-text object) text)}
+  @syntax{(gtk:progress-bar-text object) => text}
+  @syntax{(setf (gtk:progress-bar-text object) text)}
   @argument[object]{a @class{gtk:progress-bar} widget}
   @argument[text]{a UTF-8 string, or @code{nil}}
   @begin{short}

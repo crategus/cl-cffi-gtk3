@@ -198,8 +198,8 @@ lambda (row)    :action
       "Accessor"
       (documentation 'list-box-row-activatable 'function)
  "@version{2024-1-1}
-  @syntax[]{(gtk:list-box-row-activatable object) => activatable}
-  @syntax[]{(setf (gtk:list-box-row-activatable object) activatable)}
+  @syntax{(gtk:list-box-row-activatable object) => activatable}
+  @syntax{(setf (gtk:list-box-row-activatable object) activatable)}
   @argument[object]{a @class{gtk:list-box-row} widget}
   @argument[activatable]{@em{true} to mark the row as activatable}
   @begin{short}
@@ -224,8 +224,8 @@ lambda (row)    :action
       "Accessor"
       (documentation 'list-box-row-selectable 'function)
  "@version{2024-1-1}
-  @syntax[]{(gtk:list-box-row-selectable object) => selectable}
-  @syntax[]{(setf (gtk:list-box-row-selectable object) selectable)}
+  @syntax{(gtk:list-box-row-selectable object) => selectable}
+  @syntax{(setf (gtk:list-box-row-selectable object) selectable)}
   @argument[object]{a @class{gtk:list-box-row} widget}
   @argument[selectable]{@em{true} to mark the row as selectable}
   @begin{short}
@@ -398,8 +398,8 @@ lambda (listbox)    :action
       "Accessor"
       (documentation 'list-box-activate-on-single-click 'function)
  "@version{2024-1-1}
-  @syntax[]{(gtk:list-box-activate-on-single-click object) => setting}
-  @syntax[]{(setf (gtk:list-box-activate-on-single-click object) setting)}
+  @syntax{(gtk:list-box-activate-on-single-click object) => setting}
+  @syntax{(setf (gtk:list-box-activate-on-single-click object) setting)}
   @argument[object]{a @class{gtk:list-box} widget}
   @argument[setting]{a boolean whether to activate the row on a single click}
   @begin{short}
@@ -430,8 +430,8 @@ lambda (listbox)    :action
       "Accessor"
       (documentation 'list-box-selection-mode 'function)
  "@version{2024-1-1}
-  @syntax[]{(gtk:list-box-selection-mode object) => mode}
-  @syntax[]{(setf (gtk:list-box-selection-mode object) mode)}
+  @syntax{(gtk:list-box-selection-mode object) => mode}
+  @syntax{(setf (gtk:list-box-selection-mode object) mode)}
   @argument[object]{a @class{gtk:list-box} widget}
   @argument[mode]{a value of the @symbol{gtk:selection-mode} enumeration}
   @begin{short}
@@ -700,8 +700,8 @@ lambda (listbox row)
     (g:object adjustment)
  #+liber-documentation
  "@version{2024-1-1}
-  @syntax[]{(gtk:list-box-adjustment listbox) => adjustment}
-  @syntax[]{(setf (gtk:list-box-adjustment listbox) adjustment)}
+  @syntax{(gtk:list-box-adjustment listbox) => adjustment}
+  @syntax{(setf (gtk:list-box-adjustment listbox) adjustment)}
   @argument[listbox]{a @class{gtk:list-box} widget}
   @argument[adjustment]{a @class{gtk:adjustment} object}
   @begin{short}
@@ -1304,8 +1304,8 @@ lambda (item)
     (g:object widget)
  #+liber-documentation
  "@version{#2023-3-20}
-  @syntax[]{(gtk:list-box-row-header row) => header}
-  @syntax[]{(setf (gtk:list-box-row-header row) header)}
+  @syntax{(gtk:list-box-row-header row) => header}
+  @syntax{(setf (gtk:list-box-row-header row) header)}
   @argument[row]{a @class{gtk:list-box-row} widget}
   @argument[header]{a @class{gtk:widget} object}
   @begin{short}

@@ -115,8 +115,8 @@
       "Accessor"
       (documentation 'stack-sidebar-stack 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:stack-sidebar-stack object) => stack}
-  @syntax[]{(setf (gtk:stack-sidebar-stack object) stack)}
+  @syntax{(gtk:stack-sidebar-stack object) => stack}
+  @syntax{(setf (gtk:stack-sidebar-stack object) stack)}
   @argument[object]{a @class{gtk:stack-sidebar} widget}
   @argument[stack]{a @class{gtk:stack} widget}
   @begin{short}

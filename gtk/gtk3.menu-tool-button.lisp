@@ -152,8 +152,8 @@ lambda (button)    :run-first
       "Accessor"
       (documentation 'menu-tool-button-menu 'function)
  "@version{#2023-2-27}
-  @syntax[]{(gtk:menu-tool-button-menu object) => menu}
-  @syntax[]{(setf (gtk:menu-tool-button-menu object) menu)}
+  @syntax{(gtk:menu-tool-button-menu object) => menu}
+  @syntax{(setf (gtk:menu-tool-button-menu object) menu)}
   @argument[object]{a @class{gtk:menu-tool-button} widget}
   @argument[menu]{a @class{gtk:menu} associated with @arg{button}}
   @begin{short}

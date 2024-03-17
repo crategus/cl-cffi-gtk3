@@ -263,8 +263,8 @@
 (cffi:defcfun ("gtk_recent_filter_get_name" recent-filter-name) :string
  #+liber-documentation
  "@version{#2023-3-24}
-  @syntax[]{(gtk:recent-filter-name filter) => name}
-  @syntax[]{(setf (gtk:recent-filter-name filter) name)}
+  @syntax{(gtk:recent-filter-name filter) => name}
+  @syntax{(setf (gtk:recent-filter-name filter) name)}
   @argument[filter]{a @class{gtk:recent-filter} object}
   @argument[name]{a string with the human readable name of @arg{filter}}
   @begin{short}

@@ -154,8 +154,8 @@ lambda (button)    :run-last
       "Accessor"
       (documentation 'link-button-uri 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:link-button-uri object) => uri}
-  @syntax[]{(setf (gtk:link-button-uri object) uri)}
+  @syntax{(gtk:link-button-uri object) => uri}
+  @syntax{(setf (gtk:link-button-uri object) uri)}
   @argument[object]{a @class{gtk:link-button} widget}
   @argument[uri]{a string with a valid URI}
   @begin{short}
@@ -181,8 +181,8 @@ lambda (button)    :run-last
       "Accessor"
       (documentation 'link-button-visited 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:link-button-visited object) => visited}
-  @syntax[]{(setf (gtk:link-button-visited object) visited)}
+  @syntax{(gtk:link-button-visited object) => visited}
+  @syntax{(setf (gtk:link-button-visited object) visited)}
   @argument[object]{a @class{gtk:link-button} widget}
   @argument[visited]{a boolean with the \"visited\" state}
   @begin{short}

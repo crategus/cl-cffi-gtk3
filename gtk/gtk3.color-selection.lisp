@@ -168,8 +168,8 @@ lambda (selection)    :run-first
       "Accessor"
       (documentation 'color-selection-current-alpha 'function)
  "@version{2023-6-14}
-  @syntax[]{(gtk:color-selection-current-alpha object) => alpha}
-  @syntax[]{(setf (gtk:color-selection-current-alpha object) alpha)}
+  @syntax{(gtk:color-selection-current-alpha object) => alpha}
+  @syntax{(setf (gtk:color-selection-current-alpha object) alpha)}
   @argument[object]{a @class{gtk:color-selection} widget}
   @argument[alpha]{an integer between 0 and 65535}
   @begin{short}
@@ -200,8 +200,8 @@ lambda (selection)    :run-first
       "Accessor"
       (documentation 'color-selection-current-color 'function)
  "@version{2023-6-14}
-  @syntax[]{(gtk:color-selection-current-color object) => color}
-  @syntax[]{(setf (gtk:color-selection-current-color object) color)}
+  @syntax{(gtk:color-selection-current-color object) => color}
+  @syntax{(setf (gtk:color-selection-current-color object) color)}
   @argument[object]{a @class{gtk:color-selection} widget}
   @argument[color]{a @class{gdk:color} color}
   @begin{short}
@@ -232,8 +232,8 @@ lambda (selection)    :run-first
       "Accessor"
       (documentation 'color-selection-current-rgba 'function)
  "@version{2023-6-14}
-  @syntax[]{(gtk:color-selection-current-rgba object) => rgba}
-  @syntax[]{(setf (gtk:color-selection-current-rgba object) rgba)}
+  @syntax{(gtk:color-selection-current-rgba object) => rgba}
+  @syntax{(setf (gtk:color-selection-current-rgba object) rgba)}
   @argument[object]{a @class{gtk:color-selection} widget}
   @argument[rgba]{a @class{gdk:rgba} color to set the current color with}
   @begin{short}
@@ -266,8 +266,8 @@ lambda (selection)    :run-first
       "Accessor"
       (documentation 'color-selection-has-opacity-control 'function)
  "@version{2023-6-14}
-  @syntax[]{(gtk:color-selection-has-opacity-control object) => has-opacity}
-  @syntax[]{(setf (gtk:color-selection-has-opacity-control object) has-opacity)}
+  @syntax{(gtk:color-selection-has-opacity-control object) => has-opacity}
+  @syntax{(setf (gtk:color-selection-has-opacity-control object) has-opacity)}
   @argument[object]{a @class{gtk:color-selection} widget}
   @argument[has-opacity]{@em{true} if the color selector can set the opacity,
     @em{false} otherwise}
@@ -299,8 +299,8 @@ lambda (selection)    :run-first
       "Accessor"
       (documentation 'color-selection-has-palette 'function)
  "@version{2023-6-14}
-  @syntax[]{(gtk:color-selection-has-palette object) => has-palette}
-  @syntax[]{(setf (gtk:color-selection-has-palette object) has-palette)}
+  @syntax{(gtk:color-selection-has-palette object) => has-palette}
+  @syntax{(setf (gtk:color-selection-has-palette object) has-palette)}
   @argument[object]{a @class{gtk:color-selection} widget}
   @argument[has-palette]{@em{true} if the color palette is to be visible,
     @em{false} otherwise}
@@ -353,8 +353,8 @@ lambda (selection)    :run-first
                 color-selection-previous-alpha) :uint16
  #+liber-documentation
  "@version{2023-6-14}
-  @syntax[]{(gtk:color-selection-previous-alpha selection) => alpha}
-  @syntax[]{(setf (gtk:color-selection-previous-alpha selection) alpha)}
+  @syntax{(gtk:color-selection-previous-alpha selection) => alpha}
+  @syntax{(setf (gtk:color-selection-previous-alpha selection) alpha)}
   @argument[selection]{a @class{gtk:color-selection} widget}
   @argument[alpha]{an integer between 0 and 65535}
   @begin{short}
@@ -396,8 +396,8 @@ lambda (selection)    :run-first
 (defun color-selection-previous-color (selection)
  #+liber-documentation
  "@version{2023-6-14}
-  @syntax[]{(gtk:color-selection-previous-color selection) => color}
-  @syntax[]{(setf (gtk:color-selection-previous-color selection) color)}
+  @syntax{(gtk:color-selection-previous-color selection) => color}
+  @syntax{(setf (gtk:color-selection-previous-color selection) color)}
   @argument[selection]{a @class{gtk:color-selection} widget}
   @argument[color]{a @class{gdk:color} color}
   @begin{short}
@@ -445,8 +445,8 @@ lambda (selection)    :run-first
 (defun color-selection-previous-rgba (selection)
  #+liber-documentation
  "@version{2023-6-14}
-  @syntax[]{(gtk:color-selection-previous-rgba selection) => rgba}
-  @syntax[]{(setf (gtk:color-selection-previous-rgba selection) rgba)}
+  @syntax{(gtk:color-selection-previous-rgba selection) => rgba}
+  @syntax{(setf (gtk:color-selection-previous-rgba selection) rgba)}
   @argument[selection]{a @class{gtk:color-selection} widget}
   @argument[rgba]{a @class{gdk:rgba} color to set the previous color with}
   @begin{short}

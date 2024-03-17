@@ -342,8 +342,8 @@ lambda (calendar)    :run-first
       "Accessor"
       (documentation 'calendar-day 'function)
  "@version{2023-12-30}
-  @syntax[]{(gtk:calender-day object) => day}
-  @syntax[]{(setf (gtk:calendar-day object) day)}
+  @syntax{(gtk:calender-day object) => day}
+  @syntax{(setf (gtk:calendar-day object) day)}
   @argument[object]{a @class{gtk:calendar} widget}
   @argument[day]{an integer with the selected day}
   @begin{short}
@@ -373,8 +373,8 @@ lambda (calendar)    :run-first
       "Accessor"
       (documentation 'calendar-detail-height-rows 'function)
  "@version{2023-12-30}
-  @syntax[]{(gtk:calendar-detail-height-rows object) => rows}
-  @syntax[]{(setf (gtk:calendar-detail-height-rows object) rows)}
+  @syntax{(gtk:calendar-detail-height-rows object) => rows}
+  @syntax{(setf (gtk:calendar-detail-height-rows object) rows)}
   @argument[object]{a @class{gtk:calendar} widget}
   @argument[rows]{an integer with the detail height in rows}
   @begin{short}
@@ -401,8 +401,8 @@ lambda (calendar)    :run-first
       "Accessor"
       (documentation 'calendar-detail-width-chars 'function)
  "@version{2023-12-30}
-  @syntax[]{(gtk:calendar-detail-width-chars object) => chars}
-  @syntax[]{(setf (gtk:calendar-detail-width-chars object) chars)}
+  @syntax{(gtk:calendar-detail-width-chars object) => chars}
+  @syntax{(setf (gtk:calendar-detail-width-chars object) chars)}
   @argument[object]{a @class{gtk:calendar} widget}
   @argument[chars]{an integer with the detail width in characters}
   @begin{short}
@@ -429,8 +429,8 @@ lambda (calendar)    :run-first
       "Accessor"
       (documentation 'calendar-month 'function)
  "@version{2023-12-30}
-  @syntax[]{(gtk:calendar-month object) => month}
-  @syntax[]{(setf (gtk:calendar-month object) month)}
+  @syntax{(gtk:calendar-month object) => month}
+  @syntax{(setf (gtk:calendar-month object) month)}
   @argument[object]{a @class{gtk:calendar} widget}
   @argument[month]{an integer with the selected month}
   @begin{short}
@@ -455,8 +455,8 @@ lambda (calendar)    :run-first
       "Accessor"
       (documentation 'calendar-no-month-change 'function)
  "@version{2023-12-30}
-  @syntax[]{(gtk:calendar-no-month-change object) => no-change}
-  @syntax[]{(setf (gtk:calendar-no-month-change object) no-change)}
+  @syntax{(gtk:calendar-no-month-change object) => no-change}
+  @syntax{(setf (gtk:calendar-no-month-change object) no-change)}
   @argument[object]{a @class{gtk:calendar} widget}
   @argument[no-change]{a boolean whether the selected month can be changed}
   @begin{short}
@@ -480,8 +480,8 @@ lambda (calendar)    :run-first
       "Accessor"
       (documentation 'calendar-show-day-names 'function)
  "@version{2023-12-30}
-  @syntax[]{(gtk:calendar-show-day-names object) => show-day-names}
-  @syntax[]{(setf (gtk:calendar-show-day-names object) show-day-names)}
+  @syntax{(gtk:calendar-show-day-names object) => show-day-names}
+  @syntax{(setf (gtk:calendar-show-day-names object) show-day-names)}
   @argument[object]{a @class{gtk:calendar} widget}
   @argument[show-day-names]{a boolean whether day names are displayed}
   @begin{short}
@@ -506,8 +506,8 @@ lambda (calendar)    :run-first
       "Accessor"
       (documentation 'calendar-show-details 'function)
  "@version{2023-12-30}
-  @syntax[]{(gtk:calendar-show-details object) => show-details}
-  @syntax[]{(setf (gtk:calendar-show-details object) show-details)}
+  @syntax{(gtk:calendar-show-details object) => show-details}
+  @syntax{(setf (gtk:calendar-show-details object) show-details)}
   @argument[object]{a @class{gtk:calendar} widget}
   @argument[show-details]{a boolean whether details are shown}
   @begin{short}
@@ -532,8 +532,8 @@ lambda (calendar)    :run-first
       "Accessor"
       (documentation 'calendar-show-heading 'function)
  "@version{2023-12-30}
-  @syntax[]{(gtk:calendar-show-heading object) => show-heading}
-  @syntax[]{(setf (gtk:calendar-show-heading object) show-heading)}
+  @syntax{(gtk:calendar-show-heading object) => show-heading}
+  @syntax{(setf (gtk:calendar-show-heading object) show-heading)}
   @argument[object]{a @class{gtk:calendar} widget}
   @argument[show-heading]{a boolean whether a heading is displayed}
   @begin{short}
@@ -558,8 +558,8 @@ lambda (calendar)    :run-first
       "Accessor"
       (documentation 'calendar-show-week-numbers 'function)
  "@version{2023-12-30}
-  @syntax[]{(gtk:calendar-show-week-numbers object) => show-week-numbers}
-  @syntax[]{(setf (gtk:calendar-show-week-numbers object) show-week-numbers)}
+  @syntax{(gtk:calendar-show-week-numbers object) => show-week-numbers}
+  @syntax{(setf (gtk:calendar-show-week-numbers object) show-week-numbers)}
   @argument[object]{a @class{gtk:calendar} widget}
   @argument[show-week-numbers]{a boolean whether week numbers are displayed}
   @begin{short}
@@ -583,8 +583,8 @@ lambda (calendar)    :run-first
       "Accessor"
       (documentation 'calendar-year 'function)
  "@version{2023-12-30}
-  @syntax[]{(gtk:calendar-year object) => year}
-  @syntax[]{(setf (gtk:calendar-year object) year)}
+  @syntax{(gtk:calendar-year object) => year}
+  @syntax{(setf (gtk:calendar-year object) year)}
   @argument[object]{a @class{gtk:calendar} widget}
   @argument[year]{an integer with the selected year}
   @begin{short}
@@ -754,8 +754,8 @@ lambda (calendar)    :run-first
     calendar-display-options
  #+liber-documentation
  "@version{#2023-3-16}
-  @syntax[]{(gtk:calendar-display-options calendar) => flags}
-  @syntax[]{(setf (gtk:calendar-display-options calendar) flags)}
+  @syntax{(gtk:calendar-display-options calendar) => flags}
+  @syntax{(setf (gtk:calendar-display-options calendar) flags)}
   @argument[calendar]{a @class{gtk:calendar} widget}
   @argument[flags]{the @symbol{gtk:calendar-display-options} flags}
   @begin{short}

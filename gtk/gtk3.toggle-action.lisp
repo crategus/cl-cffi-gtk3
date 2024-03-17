@@ -131,8 +131,8 @@ lambda (action)    :run-first
       "Accessor"
       (documentation 'toggle-action-active 'function)
  "@version{#2023-3-28}
-  @syntax[]{(gtk:toggle-action-active object) => is-active}
-  @syntax[]{(setf (gtk:toggle-action-active object) is-active)}
+  @syntax{(gtk:toggle-action-active object) => is-active}
+  @syntax{(setf (gtk:toggle-action-active object) is-active)}
   @argument[object]{a @class{gtk:toggle-action} object}
   @argument[is-active]{a boolean whether the action should be checked or not}
   @begin{short}
@@ -162,8 +162,8 @@ lambda (action)    :run-first
       "Accessor"
       (documentation 'toggle-action-draw-as-radio 'function)
  "@version{#2023-3-28}
-  @syntax[]{(gtk:toggle-action-draw-as-radio object) => draw-as-radio}
-  @syntax[]{(setf (gtk:toggle-action-draw-as-radio object) draw-as-radio)}
+  @syntax{(gtk:toggle-action-draw-as-radio object) => draw-as-radio}
+  @syntax{(setf (gtk:toggle-action-draw-as-radio object) draw-as-radio)}
   @argument[object]{a @class{gtk:toggle-action} object}
   @argument[draw-as-radio]{a boolean whether the action should have proxies
     like a radio action}

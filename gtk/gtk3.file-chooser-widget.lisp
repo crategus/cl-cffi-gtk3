@@ -287,8 +287,8 @@ lambda (widget)    :action
       "Accessor"
       (documentation 'file-chooser-widget-search-mode 'function)
  "@version{#2023-3-17}
-  @syntax[]{(gtk:file-chooser-widget object) => search-mode}
-  @syntax[]{(setf (gtk:file-chooser-widget object) search-mode)}
+  @syntax{(gtk:file-chooser-widget object) => search-mode}
+  @syntax{(setf (gtk:file-chooser-widget object) search-mode)}
   @argument[object]{a @class{gtk:file-chooser-widget} widget}
   @argument[search-mode]{a boolean whether in search mode}
   @begin{short}
@@ -311,8 +311,8 @@ lambda (widget)    :action
       "Accessor"
       (documentation 'file-chooser-widget-subtitle 'function)
  "@version{#2023-3-17}
-  @syntax[]{(gtk:file-chooser-widget object) => subtitle}
-  @syntax[]{(setf (gtk:file-chooser-widget object) subtitle)}
+  @syntax{(gtk:file-chooser-widget object) => subtitle}
+  @syntax{(setf (gtk:file-chooser-widget object) subtitle)}
   @argument[object]{a @class{gtk:file-chooser-widget} widget}
   @argument[subtitle]{a string with the subtitle}
   @begin{short}
