@@ -749,19 +749,11 @@ lambda (assistant page)    :run-last
 (setf (liber:alias-for-symbol 'assistant-page-func)
       "Callback"
       (liber:symbol-documentation 'assistant-page-func)
- "@version{#2024-3-16}
-  @begin{declaration}
-    @begin{pre}
-lambda (current) => result
-    @end{pre}
-  @end{declaration}
-  @begin{values}
-    @begin[code]{table}
-      @entry[current]{The integer with the page number used to calculate the
-        next page.}
-      @entry[result]{The integer with the next page number.}
-    @end{table}
-  @end{values}
+ "@version{#2024-3-17}
+  @syntax{lambda (current) => result}
+  @argument[current]{an integer with the page number used to calculate the next
+    page}
+  @argument[result]{an integer with the next page number}
   @begin{short}
     A callback function used by the @fun{gtk:assistant-set-forward-page-func}
     function to know which is the next page given a current one.
