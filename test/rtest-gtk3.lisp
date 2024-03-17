@@ -9,6 +9,8 @@
 
 (in-package :gtk-test)
 
+(defvar *first-run-gtk-test* t)
+
 (def-suite gtk-test)
 (def-suite gtk-suite :in gtk-test)
 (def-suite gdk-suite :in gtk-test)
@@ -49,6 +51,10 @@
 (defun list-interface-properties (gtype)
   (mapcar #'g:param-spec-name
           (g:object-interface-list-properties gtype)))
+
+(defun list-interface-prerequisites (gtype)
+  (mapcar #'g:type-name
+          (g:type-interface-prerequisites gtype)))
 
 ;; A sorted list of the class style property names without inherited properties
 (defun list-style-properties (gtype)
