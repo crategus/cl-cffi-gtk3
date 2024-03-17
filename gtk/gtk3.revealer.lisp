@@ -183,7 +183,7 @@
       "Accessor"
       (documentation 'revealer-child-revealed 'function)
  "@version{2024-1-1}
-  @syntax[]{(gtk:revealer-child-revealed object) => revealed}
+  @syntax{(gtk:revealer-child-revealed object) => revealed}
   @argument[object]{a @class{gtk:revealer} widget}
   @argument[revealed]{a boolean whether the child widget is revealed}
   @begin{short}
@@ -208,8 +208,8 @@
       "Accessor"
       (documentation 'revealer-reveal-child 'function)
  "@version{2024-1-1}
-  @syntax[]{(gtk:revealer-reveal-child object) => reveal}
-  @syntax[]{(setf (gtk:revealer-reveal-child object) reveal)}
+  @syntax{(gtk:revealer-reveal-child object) => reveal}
+  @syntax{(setf (gtk:revealer-reveal-child object) reveal)}
   @argument[object]{a @class{gtk:revealer} widget}
   @argument[reveal]{@em{true} to reveal the child widget}
   @begin{short}
@@ -243,8 +243,8 @@
       "Accessor"
       (documentation 'revealer-transition-duration 'function)
  "@version{2024-1-1}
-  @syntax[]{(gtk:revealer-transition-duration object) => duration}
-  @syntax[]{(setf (gtk:revealer-transition-duration object) duration)}
+  @syntax{(gtk:revealer-transition-duration object) => duration}
+  @syntax{(setf (gtk:revealer-transition-duration object) duration)}
   @argument[object]{a @class{gtk:revealer} widget}
   @argument[duration]{an unsigned integer with the duration, in milliseconds}
   @begin{short}
@@ -270,8 +270,8 @@
       "Accessor"
       (documentation 'revealer-transition-type 'function)
  "@version{2024-1-1}
-  @syntax[]{(gtk:revealer-transition-type object) => setting}
-  @syntax[]{(setf (gtk:revealer-transition-type object) setting)}
+  @syntax{(gtk:revealer-transition-type object) => setting}
+  @syntax{(setf (gtk:revealer-transition-type object) setting)}
   @argument[object]{a @class{gtk:revealer} widget}
   @argument[setting]{a value of the @symbol{gtk:revealer-transition-type}
     enumeration}

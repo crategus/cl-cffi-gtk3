@@ -183,8 +183,8 @@ frame
       "Accessor"
       (documentation 'frame-label 'function)
  "@version{2023-2-18}
-  @syntax[]{(gtk:frame-label object) => label}
-  @syntax[]{(setf (gtk:frame-label object) label)}
+  @syntax{(gtk:frame-label object) => label}
+  @syntax{(setf (gtk:frame-label object) label)}
   @argument[object]{a @class{gtk:frame} widget}
   @argument[label]{a string with the text to use as the label of the frame}
   @begin{short}
@@ -216,8 +216,8 @@ frame
       "Accessor"
       (documentation 'frame-label-widget 'function)
  "@version{2023-2-18}
-  @syntax[]{(gtk:frame-label-widget object) => widget}
-  @syntax[]{(setf (gtk:frame-label-widget object) widget)}
+  @syntax{(gtk:frame-label-widget object) => widget}
+  @syntax{(setf (gtk:frame-label-widget object) widget)}
   @argument[object]{a @class{gtk:frame} widget}
   @argument[widget]{a @class{gtk:widget} label widget}
   @begin{short}
@@ -246,8 +246,8 @@ frame
       "Accessor"
       (documentation 'frame-label-xalign 'function)
  "@version{2023-2-18}
-  @syntax[]{(gtk:frame-label-xalign object) => xalign}
-  @syntax[]{(setf (gtk:frame-label-xalign object) xalign)}
+  @syntax{(gtk:frame-label-xalign object) => xalign}
+  @syntax{(setf (gtk:frame-label-xalign object) xalign)}
   @argument[object]{a @class{gtk:frame} widget}
   @argument[xalign]{a float with the horizontal alignment of the label}
   @begin{short}
@@ -271,8 +271,8 @@ frame
       "Accessor"
       (documentation 'frame-label-yalign 'function)
  "@version{2023-2-18}
-  @syntax[]{(gtk:frame-label-yalign object) => yalign}
-  @syntax[]{(setf (gtk:frame-label-yalign object) yalign)}
+  @syntax{(gtk:frame-label-yalign object) => yalign}
+  @syntax{(setf (gtk:frame-label-yalign object) yalign)}
   @argument[object]{a @class{gtk:frame} widget}
   @argument[yalign]{a float with the vertical alignment of the label}
   @begin{short}
@@ -296,8 +296,8 @@ frame
       "Accessor"
       (documentation 'frame-shadow-type 'function)
  "@version{2023-2-18}
-  @syntax[]{(gtk:frame-shadow-type object) => type}
-  @syntax[]{(setf (gtk:frame-shadow-type object) type)}
+  @syntax{(gtk:frame-shadow-type object) => type}
+  @syntax{(setf (gtk:frame-shadow-type object) type)}
   @argument[object]{a @class{gtk:frame} widget}
   @argument[type]{a value of the @symbol{gtk:shadow-type} enumeration}
   @begin{short}
@@ -342,8 +342,8 @@ frame
 (defun frame-label-align (frame)
  #+liber-documentation
  "@version{2023-2-18}
-  @syntax[]{(gtk:frame-label-align frame) => xalign, yalign}
-  @syntax[]{(setf (gtk:frame-label-align frame) (list xalign yalign))}
+  @syntax{(gtk:frame-label-align frame) => xalign, yalign}
+  @syntax{(setf (gtk:frame-label-align frame) (list xalign yalign))}
   @argument[frame]{a @class{gtk:frame} widget}
   @argument[xalign]{a float with the position of the label along the top edge
     of the widget, a value of 0.0 represents left alignment, 1.0 represents

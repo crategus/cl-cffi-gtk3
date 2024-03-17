@@ -148,8 +148,8 @@
                page-setup-unix-dialog-page-setup) (g:object page-setup)
  #+liber-documentation
  "@version{#2023-3-21}
-  @syntax[]{(gtk:page-setup-unix-dialog-page-setup dialog) => setup}
-  @syntax[]{(setf (gtk:page-setup-unix-dialog-page-setup dialog) setup)}
+  @syntax{(gtk:page-setup-unix-dialog-page-setup dialog) => setup}
+  @syntax{(setf (gtk:page-setup-unix-dialog-page-setup dialog) setup)}
   @argument[dialog]{a @class{gtk:page-setup-unix-dialog} widget}
   @argument[setup]{a @class{gtk:page-setup} object}
   @begin{short}
@@ -180,8 +180,8 @@
                page-setup-unix-dialog-print-settings) :void
  #+liber-documentation
  "@version{#2023-3-21}
-  @syntax[]{(gtk:page-setup-unix-dialog-print-settings dialog) => settings}
-  @syntax[]{(setf (gtk:page-setup-unix-dialog-print-settings dialog) settings)}
+  @syntax{(gtk:page-setup-unix-dialog-print-settings dialog) => settings}
+  @syntax{(setf (gtk:page-setup-unix-dialog-print-settings dialog) settings)}
   @argument[dialog]{a @class{gtk:page-setup-unix-dialog} widget}
   @argument[settings]{a @class{gtk:print-settings} object}
   @begin{short}

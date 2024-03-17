@@ -160,8 +160,8 @@
       "Accessor"
       (documentation 'lock-button-permission 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:lock-button-permission object) => permission}
-  @syntax[]{(setf (gtk:lock-button-permission object) permission)}
+  @syntax{(gtk:lock-button-permission object) => permission}
+  @syntax{(setf (gtk:lock-button-permission object) permission)}
   @argument[object]{a @class{gtk:lock-button} widget}
   @argument[permission]{a @class{g:permission} object, or @code{nil}}
   @begin{short}
@@ -188,8 +188,8 @@
       "Accessor"
       (documentation 'lock-button-text-lock 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:lock-button-text-lock object) => text}
-  @syntax[]{(setf (gtk:lock-button-text-lock object) text)}
+  @syntax{(gtk:lock-button-text-lock object) => text}
+  @syntax{(setf (gtk:lock-button-text-lock object) text)}
   @argument[object]{a @class{gtk:lock-button} widget}
   @argument[text]{a string with the text to display}
   @begin{short}
@@ -213,8 +213,8 @@
       "Accessor"
       (documentation 'lock-button-text-unlock 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:lock-button-text-unlock object) => text}
-  @syntax[]{(setf (gtk:lock-button-text-unlock object) text)}
+  @syntax{(gtk:lock-button-text-unlock object) => text}
+  @syntax{(setf (gtk:lock-button-text-unlock object) text)}
   @argument[object]{a @class{gtk:lock-button} widget}
   @argument[text]{a string with the text to display}
   @begin{short}
@@ -238,8 +238,8 @@
       "Accessor"
       (documentation 'lock-button-tooltip-lock 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:lock-button-tooltip-lock object) => tooltip}
-  @syntax[]{(setf (gtk:lock-button-tooltip-lock object) tooltip)}
+  @syntax{(gtk:lock-button-tooltip-lock object) => tooltip}
+  @syntax{(setf (gtk:lock-button-tooltip-lock object) tooltip)}
   @argument[object]{a @class{gtk:lock-button} widget}
   @argument[tooltip]{a string with the tooltip to display}
   @begin{short}
@@ -266,8 +266,8 @@
       "Accessor"
       (documentation 'lock-button-tooltip-not-authorized 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:lock-button-tooltip-not-authorized object) => tooltip}
-  @syntax[]{(setf (gtk:lock-button-tooltip-not-authorized object) tooltip)}
+  @syntax{(gtk:lock-button-tooltip-not-authorized object) => tooltip}
+  @syntax{(setf (gtk:lock-button-tooltip-not-authorized object) tooltip)}
   @argument[object]{a @class{gtk:lock-button} widget}
   @argument[tooltip]{a string with the tooltip to display}
   @begin{short}
@@ -291,8 +291,8 @@
       "Accessor"
       (documentation 'lock-button-tooltip-unlock 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:lock-button-tooltip-unlock object) => tooltip}
-  @syntax[]{(setf (gtk:lock-button-tooltip-unlock object) tooltip)}
+  @syntax{(gtk:lock-button-tooltip-unlock object) => tooltip}
+  @syntax{(setf (gtk:lock-button-tooltip-unlock object) tooltip)}
   @argument[object]{a @class{gtk:lock-button} widget}
   @argument[tooltip]{a string with the tooltip to display}
   @begin{short}

@@ -178,8 +178,8 @@ lambda (widget)    :run-first
       "Accessor"
       (documentation 'font-button-font-name 'function)
  "@version{2023-6-16}
-  @syntax[]{(gtk:font-button-font-name object) => fontname}
-  @syntax[]{(setf (gtk:font-button-font-name object) fontname)}
+  @syntax{(gtk:font-button-font-name object) => fontname}
+  @syntax{(setf (gtk:font-button-font-name object) fontname)}
   @argument[object]{a @class{gtk:font-button} widget}
   @argument[fontname]{a string with the name of the font to display in the font
     chooser dialog}
@@ -223,8 +223,8 @@ lambda (widget)    :run-first
       "Accessor"
       (documentation 'font-button-show-size 'function)
  "@version{2023-6-16}
-  @syntax[]{(gtk:font-button-show-size object) => show-size}
-  @syntax[]{(setf (gtk:font-button-show-size object) show-size)}
+  @syntax{(gtk:font-button-show-size object) => show-size}
+  @syntax{(setf (gtk:font-button-show-size object) show-size)}
   @argument[object]{a @class{gtk:font-button} widget}
   @argument[show-size]{@em{true} if font size should be displayed in dialog}
   @begin{short}
@@ -250,8 +250,8 @@ lambda (widget)    :run-first
       "Accessor"
       (documentation 'font-button-show-style 'function)
  "@version{2023-6-16}
-  @syntax[]{(gtk:font-button-show-style object) => show-style}
-  @syntax[]{(setf (gtk:font-button-show-style object) show-style)}
+  @syntax{(gtk:font-button-show-style object) => show-style}
+  @syntax{(setf (gtk:font-button-show-style object) show-style)}
   @argument[object]{a @class{gtk:font-button} widget}
   @argument[show-style]{@em{true} if font style should be displayed in label}
   @begin{short}
@@ -275,8 +275,8 @@ lambda (widget)    :run-first
       "Accessor"
       (documentation 'font-button-title 'function)
  "@version{2023-6-16}
-  @syntax[]{(gtk:font-button-title object) => title}
-  @syntax[]{(setf (gtk:font-button-title object) title)}
+  @syntax{(gtk:font-button-title object) => title}
+  @syntax{(setf (gtk:font-button-title object) title)}
   @argument[object]{a @class{gtk:font-button} widget}
   @argument[title]{a string containing the font chooser dialog title}
   @begin{short}
@@ -303,8 +303,8 @@ lambda (widget)    :run-first
       "Accessor"
       (documentation 'font-button-use-font 'function)
  "@version{2023-6-16}
-  @syntax[]{(gtk:font-button-title object) => use-font}
-  @syntax[]{(setf (gtk:font-button-title object) use-font)}
+  @syntax{(gtk:font-button-title object) => use-font}
+  @syntax{(setf (gtk:font-button-title object) use-font)}
   @argument[object]{a @class{gtk:font-button} widget}
   @argument[use-font]{if @em{true}, font name will be written using font chosen}
   @begin{short}
@@ -329,8 +329,8 @@ lambda (widget)    :run-first
       "Accessor"
       (documentation 'font-button-use-size 'function)
  "@version{2023-6-16}
-  @syntax[]{(gtk:font-button-use-size object) => use-size}
-  @syntax[]{(setf (gtk:font-button-use-size object) use-size)}
+  @syntax{(gtk:font-button-use-size object) => use-size}
+  @syntax{(setf (gtk:font-button-use-size object) use-size)}
   @argument[object]{a @class{gtk:font-button} widget}
   @argument[use-size]{if @em{true}, the font name will be written using the
     selected size}

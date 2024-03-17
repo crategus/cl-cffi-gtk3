@@ -179,8 +179,8 @@ lambda (widget)    :run-first
       "Accessor"
       (documentation 'file-chooser-button-dialog 'function)
  "@version{2023-6-11}
-  @syntax[]{(gtk:file-chooser-button-dialog object) => dialog}
-  @syntax[]{(setf (gtk:file-chooser-button-dialog object) dialog)}
+  @syntax{(gtk:file-chooser-button-dialog object) => dialog}
+  @syntax{(setf (gtk:file-chooser-button-dialog object) dialog)}
   @argument[object]{a @class{gtk:file-chooser-button} widget}
   @argument[dialog]{a @class{gtk:file-chooser-dialog} widget}
   @begin{short}
@@ -209,8 +209,8 @@ lambda (widget)    :run-first
       "Accessor"
       (documentation 'file-chooser-button-focus-on-click 'function)
  "@version{2023-6-11}
-  @syntax[]{(gtk:file-chooser-button-focus-on-click object) => focus-on-click}
-  @syntax[]{(setf (gtk:file-chooser-button-focus-on-click object) focus-on-click)}
+  @syntax{(gtk:file-chooser-button-focus-on-click object) => focus-on-click}
+  @syntax{(setf (gtk:file-chooser-button-focus-on-click object) focus-on-click)}
   @argument[object]{a @class{gtk:file-chooser-button} widget to modify}
   @argument[focus-on-click]{a boolean whether the button grabs focus when
     clicked with the mouse}
@@ -247,8 +247,8 @@ lambda (widget)    :run-first
       "Accessor"
       (documentation 'file-chooser-button-title 'function)
  "@version{2023-6-11}
-  @syntax[]{(gtk:file-chooser-button-title object) => title}
-  @syntax[]{(setf (gtk:file-chooser-button-title object) title)}
+  @syntax{(gtk:file-chooser-button-title object) => title}
+  @syntax{(setf (gtk:file-chooser-button-title object) title)}
   @argument[object]{a @class{gtk:file-chooser-button} widget to modify}
   @argument[title]{a string with the browse dialog title}
   @begin{short}
@@ -275,8 +275,8 @@ lambda (widget)    :run-first
       "Accessor"
       (documentation 'file-chooser-button-width-chars 'function)
  "@version{2023-6-11}
-  @syntax[]{(gtk:file-chooser-button-width-chars object) => n-chars}
-  @syntax[]{(setf (gtk:file-chooser-button-width-chars object) n-chars)}
+  @syntax{(gtk:file-chooser-button-width-chars object) => n-chars}
+  @syntax{(setf (gtk:file-chooser-button-width-chars object) n-chars)}
   @argument[object]{a @class{gtk:file-chooser-button} widget to modify}
   @argument[n-chars]{an integer with the width, in characters}
   @begin{short}

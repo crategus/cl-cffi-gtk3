@@ -154,8 +154,8 @@
       "Accessor"
       (documentation 'event-box-above-child 'function)
  "@version{2023-2-23}
-  @syntax[]{(gtk:event-box-above-child object) => above-child}
-  @syntax[]{(setf gtk:event-box-above-child object) above-child)}
+  @syntax{(gtk:event-box-above-child object) => above-child}
+  @syntax{(setf gtk:event-box-above-child object) above-child)}
   @argument[object]{a @class{gtk:event-box} widget}
   @argument[above-child]{@em{true} if the event box window is above its child}
   @begin{short}
@@ -189,8 +189,8 @@
       "Accessor"
       (documentation 'event-box-visible-window 'function)
  "@version{2023-2-23}
-  @syntax[]{(gtk:event-box-visible-window object) => visible-window}
-  @syntax[]{(setf gtk:event-box-visible-window object) visible-window)}
+  @syntax{(gtk:event-box-visible-window object) => visible-window}
+  @syntax{(setf gtk:event-box-visible-window object) visible-window)}
   @argument[object]{a @class{gtk:event-box} widget}
   @argument[visible-window]{@em{true} to make the event box have a visible
     window}

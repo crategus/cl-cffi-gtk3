@@ -315,8 +315,8 @@
       "Accessor"
       (documentation 'stack-hhomogeneous 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:stack-hhomogeneous object) => homogeneous}
-  @syntax[]{(setf (gtk:stack-hhomogeneous object) homogeneous)}
+  @syntax{(gtk:stack-hhomogeneous object) => homogeneous}
+  @syntax{(setf (gtk:stack-hhomogeneous object) homogeneous)}
   @argument[object]{a @class{gtk:stack} widget}
   @argument[homogeneous]{@em{true} to make stack horizontally homogeneous}
   @begin{short}
@@ -347,8 +347,8 @@
       "Accessor"
       (documentation 'stack-homogeneous 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:stack-homogeneous object) => homogeneous}
-  @syntax[]{(setf (gtk:stack-homogeneous object) homogeneous)}
+  @syntax{(gtk:stack-homogeneous object) => homogeneous}
+  @syntax{(setf (gtk:stack-homogeneous object) homogeneous)}
   @argument[object]{a @class{gtk:stack} widget}
   @argument[homogeneous]{@em{true} to make the stack homogeneous}
   @begin{short}
@@ -383,8 +383,8 @@
       "Accessor"
       (documentation 'stack-interpolate-size 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:stack-interpolate-size object) => interpolate}
-  @syntax[]{(setf (gtk:stack-interpolate-size object) interpolate)}
+  @syntax{(gtk:stack-interpolate-size object) => interpolate}
+  @syntax{(setf (gtk:stack-interpolate-size object) interpolate)}
   @argument[object]{a @class{gtk:stack} widget}
   @argument[interpolate]{@em{true} if child sizes are interpolated}
   @begin{short}
@@ -416,8 +416,8 @@
       "Accessor"
       (documentation 'stack-transition-duration 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:stack-transition-duration object) => duration}
-  @syntax[]{(setf (gtk:stack-transition-duration object) duration)}
+  @syntax{(gtk:stack-transition-duration object) => duration}
+  @syntax{(setf (gtk:stack-transition-duration object) duration)}
   @argument[object]{a @class{gtk:stack} widget}
   @argument[duration]{an unsigned integer with the duration, in milliseconds}
   @begin{short}
@@ -442,7 +442,7 @@
       "Accessor"
       (documentation 'stack-transition-running 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:stack-transition-running object) => running}
+  @syntax{(gtk:stack-transition-running object) => running}
   @argument[object]{a @class{gtk:stack} widget}
   @begin{short}
     Accessor of the @slot[gtk:stack]{transition-running} slot of the
@@ -466,8 +466,8 @@
       "Accessor"
       (documentation 'stack-transition-type 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:stack-transition-type object) => setting}
-  @syntax[]{(setf (gtk:stack-transition-type object) setting)}
+  @syntax{(gtk:stack-transition-type object) => setting}
+  @syntax{(setf (gtk:stack-transition-type object) setting)}
   @argument[object]{a @class{gtk:stack} widget}
   @argument[setting]{a value of the @symbol{gtk:stack-transition-type}
     enumeration}
@@ -500,8 +500,8 @@
       "Accessor"
       (documentation 'stack-vhomogeneous 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:stack-vhomogeneous object) => homogeneous}
-  @syntax[]{(setf (gtk:stack-vhomogeneous object) homogeneous)}
+  @syntax{(gtk:stack-vhomogeneous object) => homogeneous}
+  @syntax{(setf (gtk:stack-vhomogeneous object) homogeneous)}
   @argument[object]{a @class{gtk:stack} widget}
   @argument[homogeneous]{@em{true} to make the stack vertically homogeneous}
   @begin{short}
@@ -532,8 +532,8 @@
       "Accessor"
       (documentation 'stack-visible-child 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:stack-visible-child object) => child}
-  @syntax[]{(setf (gtk:stack-visible-child object) child)}
+  @syntax{(gtk:stack-visible-child object) => child}
+  @syntax{(setf (gtk:stack-visible-child object) child)}
   @argument[object]{a @class{gtk:stack} widget}
   @argument[child]{a @class{gtk:widget} child widget of the stack}
   @begin{short}
@@ -570,8 +570,8 @@
       "Accessor"
       (documentation 'stack-visible-child-name 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:stack-visible-child-name object) => name}
-  @syntax[]{(setf (gtk:stack-visible-child-name object) name)}
+  @syntax{(gtk:stack-visible-child-name object) => name}
+  @syntax{(setf (gtk:stack-visible-child-name object) name)}
   @argument[object]{a @class{gtk:stack} widget}
   @argument[name]{a string with the name of the visible child of the stack}
   @begin{short}
@@ -607,8 +607,8 @@
       "Accessor"
       (documentation 'stack-child-icon-name 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:stack-child-icon-name object) => name)}
-  @syntax[]{(setf (gtk:stack-child-icon-name object) name)}
+  @syntax{(gtk:stack-child-icon-name object) => name)}
+  @syntax{(setf (gtk:stack-child-icon-name object) name)}
   @argument[container]{a @class{gtk:stack} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[name]{a string with the icon name of the child page}
@@ -630,8 +630,8 @@
       "Accessor"
       (documentation 'stack-child-name 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:stack-child-name object) => name)}
-  @syntax[]{(setf (gtk:stack-child-name object) name)}
+  @syntax{(gtk:stack-child-name object) => name)}
+  @syntax{(setf (gtk:stack-child-name object) name)}
   @argument[container]{a @class{gtk:stack} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[name]{a string with the name of the child page}
@@ -652,8 +652,8 @@
       "Accessor"
       (documentation 'stack-child-needs-attention 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:stack-child-needs-attention container child) => attention)}
-  @syntax[]{(setf (gtk:stack-child-needs-attention container child) attention)}
+  @syntax{(gtk:stack-child-needs-attention container child) => attention)}
+  @syntax{(setf (gtk:stack-child-needs-attention container child) attention)}
   @argument[container]{a @class{gtk:stack} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[attention]{a boolean whether the child page requires attention}
@@ -679,8 +679,8 @@
       "Accessor"
       (documentation 'stack-child-position 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:stack-child-position container child) => position)}
-  @syntax[]{(setf (gtk:stack-child-position container child) position)}
+  @syntax{(gtk:stack-child-position container child) => position)}
+  @syntax{(setf (gtk:stack-child-position container child) position)}
   @argument[container]{a @class{gtk:stack} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[position]{an integer with the index of the child page in the parent}
@@ -702,8 +702,8 @@
       "Accessor"
       (documentation 'stack-child-title 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:stack-child-title container child) => title)}
-  @syntax[]{(setf (gtk:stack-child-title container child) title)}
+  @syntax{(gtk:stack-child-title container child) => title)}
+  @syntax{(setf (gtk:stack-child-title container child) title)}
   @argument[container]{a @class{gtk:stack} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[title]{a string with the title of the child page}

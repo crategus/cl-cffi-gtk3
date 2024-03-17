@@ -459,8 +459,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'icon-view-activate-on-single-click 'function)
  "@version{#2023-3-10}
-  @syntax[]{(gtk:icon-view-activate-on-single-click object) => setting}
-  @syntax[]{(setf (gtk:icon-view-activate-on-single-click object) setting)}
+  @syntax{(gtk:icon-view-activate-on-single-click object) => setting}
+  @syntax{(setf (gtk:icon-view-activate-on-single-click object) setting)}
   @argument[object]{a @class{gtk:icon-view} widget}
   @argument[setting]{a boolean that is @em{true} to emit the \"item-activated\"
     signal on a single click}
@@ -487,7 +487,7 @@ lambda (view)    :action
       "Accessor"
       (documentation 'icon-view-cell-area 'function)
  "@version{#2023-3-10}
-  @syntax[]{(gtk:icon-view-cell-area object) => area}
+  @syntax{(gtk:icon-view-cell-area object) => area}
   @argument[object]{a @class{gtk:icon-view} widget}
   @argument[area]{a @class{gtk:cell-area} object used to layout cell renderers}
   @begin{short}
@@ -518,8 +518,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'icon-view-column-spacing 'function)
  "@version{#2023-3-10}
-  @syntax[]{(gtk:icon-view-column-spacing object) => column-spacing}
-  @syntax[]{(setf (gtk:icon-view-column-spacing object) column-spacing)}
+  @syntax{(gtk:icon-view-column-spacing object) => column-spacing}
+  @syntax{(setf (gtk:icon-view-column-spacing object) column-spacing)}
   @argument[object]{a @class{gtk:icon-view} widget}
   @argument[column-spacing]{an integer with the column spacing}
   @begin{short}
@@ -545,8 +545,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'icon-view-columns 'function)
  "@version{#2023-3-10}
-  @syntax[]{(gtk:icon-view-columns object) => columns}
-  @syntax[]{(setf (gtk:icon-view-columns object) columns)}
+  @syntax{(gtk:icon-view-columns object) => columns}
+  @syntax{(setf (gtk:icon-view-columns object) columns)}
   @argument[object]{a @class{gtk:icon-view} widget}
   @argument[columns]{an integer with the number of columns}
   @begin{short}
@@ -572,8 +572,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'icon-view-item-orientation 'function)
  "@version{#2023-3-10}
-  @syntax[]{(gtk:icon-view-item-orientation object) => orientation}
-  @syntax[]{(setf (gtk:icon-view-item-orientation object) orientation)}
+  @syntax{(gtk:icon-view-item-orientation object) => orientation}
+  @syntax{(setf (gtk:icon-view-item-orientation object) orientation)}
   @argument[object]{a @class{gtk:icon-view} widget}
   @argument[orientation]{a value of the @symbol{gtk:orientation} enumeration
     with the relative position of texts and icons}
@@ -599,8 +599,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'icon-view-item-padding 'function)
  "@version{#2023-3-10}
-  @syntax[]{(gtk:icon-view-item-padding object) => padding}
-  @syntax[]{(setf (gtk:icon-view-item-padding object) padding)}
+  @syntax{(gtk:icon-view-item-padding object) => padding}
+  @syntax{(setf (gtk:icon-view-item-padding object) padding)}
   @argument[object]{a @class{gtk:icon-view} widget}
   @argument[padding]{an integer with the item padding}
   @begin{short}
@@ -625,8 +625,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'icon-view-item-width 'function)
  "@version{#2023-3-10}
-  @syntax[]{(gtk:icon-view-item-width object) => width}
-  @syntax[]{(setf (gtk:icon-view-item-width object) width)}
+  @syntax{(gtk:icon-view-item-width object) => width}
+  @syntax{(setf (gtk:icon-view-item-width object) width)}
   @argument[object]{a @class{gtk:icon-view} widget}
   @argument[width]{an integer with the width for each item}
   @begin{short}
@@ -651,8 +651,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'icon-view-margin 'function)
  "@version{#2023-3-10}
-  @syntax[]{(gtk:icon-view-margin object) => margin}
-  @syntax[]{(setf (gtk:icon-view-margin object) margin)}
+  @syntax{(gtk:icon-view-margin object) => margin}
+  @syntax{(setf (gtk:icon-view-margin object) margin)}
   @argument[object]{a @class{gtk:icon-view} widget}
   @argument[margin]{an integer with the margin}
   @begin{short}
@@ -681,8 +681,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'icon-view-markup-column 'function)
  "@version{#2023-3-10}
-  @syntax[]{(gtk:icon-view-markup-column object) => column}
-  @syntax[]{(setf (gtk:icon-view-markup-column object) column)}
+  @syntax{(gtk:icon-view-markup-column object) => column}
+  @syntax{(setf (gtk:icon-view-markup-column object) column)}
   @argument[object]{a @class{gtk:icon-view} widget}
   @argument[column]{an integer with a column in the currently used model, or -1
     to display no text}
@@ -712,8 +712,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'icon-view-model 'function)
  "@version{#2023-3-10}
-  @syntax[]{(gtk:icon-view-model object) => model}
-  @syntax[]{(setf (gtk:icon-view-model object) model)}
+  @syntax{(gtk:icon-view-model object) => model}
+  @syntax{(setf (gtk:icon-view-model object) model)}
   @argument[object]{a @class{gtk:icon-view} widget}
   @argument[model]{the @class{gtk:tree-model} object}
   @begin{short}
@@ -745,8 +745,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'icon-view-pixbuf-column 'function)
  "@version{#2023-3-12}
-  @syntax[]{(gtk:icon-view-pixbuf-column object) => column}
-  @syntax[]{(setf (gtk:icon-view-pixbuf-column object) column)}
+  @syntax{(gtk:icon-view-pixbuf-column object) => column}
+  @syntax{(setf (gtk:icon-view-pixbuf-column object) column)}
   @argument[object]{a @class{gtk:icon-view} widget}
   @argument[column]{an integer with a column in the currently used model, or
     -1 to disable}
@@ -775,8 +775,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'icon-view-reorderable 'function)
  "@version{#2023-3-10}
-  @syntax[]{(gtk:icon-view-reorderable object) => reorderable}
-  @syntax[]{(setf (gtk:icon-view-reorderable object) reorderable)}
+  @syntax{(gtk:icon-view-reorderable object) => reorderable}
+  @syntax{(setf (gtk:icon-view-reorderable object) reorderable)}
   @argument[object]{a @class{gtk:icon-view} widget}
   @argument[reorderable]{@em{true}, if the list of items can be reordered}
   @begin{short}
@@ -820,8 +820,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'icon-view-row-spacing 'function)
  "@version{#2023-3-10}
-  @syntax[]{(gtk:icon-view-row-spacing object) => spacing}
-  @syntax[]{(setf (gtk:icon-view-row-spacing object) spacing)}
+  @syntax{(gtk:icon-view-row-spacing object) => spacing}
+  @syntax{(setf (gtk:icon-view-row-spacing object) spacing)}
   @argument[object]{a @class{gtk:icon-view} widget}
   @argument[spacing]{an integer with the row spacing}
   @begin{short}
@@ -847,8 +847,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'icon-view-selection-mode 'function)
  "@version{#2023-3-10}
-  @syntax[]{(gtk:icon-view-selection-mode object) => mode}
-  @syntax[]{(setf (gtk:icon-view-selection-mode object) mode)}
+  @syntax{(gtk:icon-view-selection-mode object) => mode}
+  @syntax{(setf (gtk:icon-view-selection-mode object) mode)}
   @argument[object]{a @class{gtk:icon-view} widget}
   @argument[mode]{a value of the @symbol{gtk:selection-mode} enumeration}
   @begin{short}
@@ -876,8 +876,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'icon-view-spacing 'function)
  "@version{#2023-3-10}
-  @syntax[]{(gtk:icon-view-spacing object) => spacing}
-  @syntax[]{(setf (gtk:icon-view-spacing object) spacing)}
+  @syntax{(gtk:icon-view-spacing object) => spacing}
+  @syntax{(setf (gtk:icon-view-spacing object) spacing)}
   @argument[object]{a @class{gtk:icon-view} widget}
   @argument[spacing]{an integer with the spacing}
   @begin{short}
@@ -905,8 +905,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'icon-view-text-column 'function)
  "@version{#2023-3-10}
-  @syntax[]{(gtk:icon-view-text-column object) => column}
-  @syntax[]{(setf (gtk:icon-view-text-column object) column)}
+  @syntax{(gtk:icon-view-text-column object) => column}
+  @syntax{(setf (gtk:icon-view-text-column object) column)}
   @argument[object]{a @class{gtk:icon-view} widget}
   @argument[column]{an integer with a column in the currently used model, or
     -1 to display no text}
@@ -933,8 +933,8 @@ lambda (view)    :action
       "Accessor"
       (documentation 'icon-view-tooltip-column 'function)
  "@version{#2023-3-10}
-  @syntax[]{(gtk:icon-view-tooltip-column object) => column}
-  @syntax[]{(setf (gtk:icon-view-tooltip-column object) column)}
+  @syntax{(gtk:icon-view-tooltip-column object) => column}
+  @syntax{(setf (gtk:icon-view-tooltip-column object) column)}
   @argument[object]{a @class{gtk:icon-view} widget}
   @argument[column]{an integer, which is a valid column number for
     @arg{object}'s model}

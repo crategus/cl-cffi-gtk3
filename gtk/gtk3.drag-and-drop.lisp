@@ -369,8 +369,8 @@
     (g:boxed target-list)
  #+liber-documentation
  "@version{#2023-3-17}
-  @syntax[]{(gtk:dag-dest-target-list widget) => tlist}
-  @syntax[]{(setf (gtk:drag-dest-target-list widget) tlist)}
+  @syntax{(gtk:dag-dest-target-list widget) => tlist}
+  @syntax{(setf (gtk:drag-dest-target-list widget) tlist)}
   @argument[widget]{a @class{gtk:widget} object that is a drag destination}
   @argument[tlist]{a @symbol{gtk:target-list} instance of droppable targets,
     or @code{nil} for none}
@@ -470,8 +470,8 @@
 (cffi:defcfun ("gtk_drag_dest_get_track_motion" drag-dest-track-motion) :boolean
  #+liber-documentation
  "@version{#2023-3-17}
-  @syntax[]{(gtk:drag-dest-track-motion widget) => motion}
-  @syntax[]{(setf (gtk:drag-dest-track-motion widget) motion)}
+  @syntax{(gtk:drag-dest-track-motion widget) => motion}
+  @syntax{(setf (gtk:drag-dest-track-motion widget) motion)}
   @argument[widget]{a @class{gtk:widget} that is a drag destination}
   @argument[motion]{a boolean whether to accept all targets}
   @begin{short}
@@ -1157,8 +1157,8 @@
     (g:boxed target-list)
  #+liber-documentation
  "@version{#2023-3-17}
-  @syntax[]{(gtk:drag-source-target-list widget) => tlist}
-  @syntax[]{(setf (gtk:drag-source-target-list widget) tlist)}
+  @syntax{(gtk:drag-source-target-list widget) => tlist}
+  @syntax{(setf (gtk:drag-source-target-list widget) tlist)}
   @argument[widget]{a @class{gtk:widget} that is a drag source}
   @argument[tlist]{a  @class{gtk:target-list} instance with the draggable
     targets, or @code{nil} for none}

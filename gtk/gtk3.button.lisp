@@ -385,8 +385,8 @@ lambda (button)    :run-first
       "Accessor"
       (documentation 'button-always-show-image 'function)
  "@version{2023-12-30}
-  @syntax[]{(gtk:button-always-show-image object) => setting}
-  @syntax[]{(setf (gtk:button-always-show-image object) setting)}
+  @syntax{(gtk:button-always-show-image object) => setting}
+  @syntax{(setf (gtk:button-always-show-image object) setting)}
   @argument[object]{a @class{gtk:button} widget}
   @argument[setting]{@em{true} if the button should always show the image}
   @begin{short}
@@ -418,8 +418,8 @@ lambda (button)    :run-first
       "Accessor"
       (documentation 'button-focus-on-click 'function)
  "@version{2023-12-30}
-  @syntax[]{(gtk:button-focus-on-click object) => setting}
-  @syntax[]{(setf (gtk:button-focus-on-click object) setting)}
+  @syntax{(gtk:button-focus-on-click object) => setting}
+  @syntax{(setf (gtk:button-focus-on-click object) setting)}
   @argument[object]{a @class{gtk:button} widget}
   @argument[setting]{a boolean whether the button grabs focus when clicked with
     the mouse}
@@ -454,8 +454,8 @@ lambda (button)    :run-first
       "Accessor"
       (documentation 'button-image 'function)
  "@version{2023-12-30}
-  @syntax[]{(gtk:button-image object) => image}
-  @syntax[]{(setf (gtk:button-image object) image)}
+  @syntax{(gtk:button-image object) => image}
+  @syntax{(setf (gtk:button-image object) image)}
   @argument[object]{a @class{gtk:button} widget}
   @argument[image]{a @class{gtk:widget} to set as the image for the button}
   @begin{short}
@@ -490,8 +490,8 @@ lambda (button)    :run-first
       "Accessor"
       (documentation 'button-image-position 'function)
  "@version{2023-12-30}
-  @syntax[]{(gtk:button-image-position object) => position}
-  @syntax[]{(setf (gtk:button-image-position object) position)}
+  @syntax{(gtk:button-image-position object) => position}
+  @syntax{(setf (gtk:button-image-position object) position)}
   @argument[object]{a @class{gtk:button} widget}
   @argument[position]{a value of the @symbol{gtk:position-type} enumeration}
   @begin{short}
@@ -518,8 +518,8 @@ lambda (button)    :run-first
       "Accessor"
       (documentation 'button-label 'function)
  "@version{2023-12-30}
-  @syntax[]{(gtk:button-label object) => label}
-  @syntax[]{(setf (gtk:button-label object) label)}
+  @syntax{(gtk:button-label object) => label}
+  @syntax{(setf (gtk:button-label object) label)}
   @argument[object]{a @class{gtk:button} widget}
   @argument[label]{a string with the text of the label}
   @begin{short}
@@ -549,8 +549,8 @@ lambda (button)    :run-first
       "Accessor"
       (documentation 'button-relief 'function)
  "@version{2023-12-30}
-  @syntax[]{(gtk:button-relief object) => style}
-  @syntax[]{(setf (gtk:button-relief object) style)}
+  @syntax{(gtk:button-relief object) => style}
+  @syntax{(setf (gtk:button-relief object) style)}
   @argument[object]{a @class{gtk:button} widget you want to set relief
     styles of}
   @argument[style]{a @symbol{gtk:relief-style} value}
@@ -584,8 +584,8 @@ lambda (button)    :run-first
       "Accessor"
       (documentation 'button-use-stock 'function)
  "@version{2023-12-30}
-  @syntax[]{(gtk:button-use-stock object) => setting}
-  @syntax[]{(setf (gtk:button-use-stock object) setting)}
+  @syntax{(gtk:button-use-stock object) => setting}
+  @syntax{(setf (gtk:button-use-stock object) setting)}
   @argument[object]{a @class{gtk:button} widget}
   @argument[setting]{@em{true} if the button should use a stock item}
   @begin{short}
@@ -613,8 +613,8 @@ lambda (button)    :run-first
       "Accessor"
       (documentation 'button-use-underline 'function)
  "@version{2023-12-30}
-  @syntax[]{(gtk:button-use-underline object) => setting}
-  @syntax[]{(setf (gtk:button-use-underline object) setting)}
+  @syntax{(gtk:button-use-underline object) => setting}
+  @syntax{(setf (gtk:button-use-underline object) setting)}
   @argument[object]{a @class{gtk:button} widget}
   @argument[setting]{@em{true} if underlines in the text indicate mnemonics}
   @begin{short}
@@ -646,8 +646,8 @@ lambda (button)    :run-first
       "Accessor"
       (documentation 'button-xalign 'function)
  "@version{2023-12-30}
-  @syntax[]{(gtk:button-xalign object) => xalign}
-  @syntax[]{(setf (gtk:button-xalign object) xalign)}
+  @syntax{(gtk:button-xalign object) => xalign}
+  @syntax{(setf (gtk:button-xalign object) xalign)}
   @argument[object]{a @class{gtk:button} widget}
   @argument[xalign]{a float for the horizontal alignment}
   @begin{short}
@@ -680,8 +680,8 @@ lambda (button)    :run-first
       "Accessor"
       (documentation 'button-yalign 'function)
  "@version{2023-12-30}
-  @syntax[]{(gtk:button-yalign object) => yalign}
-  @syntax[]{(setf (gtk:button-yalign object) yalign)}
+  @syntax{(gtk:button-yalign object) => yalign}
+  @syntax{(setf (gtk:button-yalign object) yalign)}
   @argument[object]{a @class{gtk:button} widget}
   @argument[xalign]{a float for the vertical alignment}
   @begin{short}
@@ -933,8 +933,8 @@ lambda (button)    :run-first
 (defun button-alignment (button)
  #+liber-documentation
  "@version{2023-12-30}
-  @syntax[]{(gtk:button-alignment button) => (list xalign yalign)}
-  @syntax[]{(setf (gtk:button-alignment button) (list xalign yalign))}
+  @syntax{(gtk:button-alignment button) => (list xalign yalign)}
+  @syntax{(setf (gtk:button-alignment button) (list xalign yalign))}
   @argument[button]{a @class{gtk:button} widget}
   @argument[xalign]{a float with the horizontal position of the child, the
     value 0.0 is left aligned, 1.0 is right aligned}

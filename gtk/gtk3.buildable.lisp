@@ -106,8 +106,8 @@
 (cffi:defcfun ("gtk_buildable_get_name" buildable-name) :string
  #+liber-documentation
  "@version{#2023-3-15}
-  @syntax[]{(gtk:buildable-name buildable) => name}
-  @syntax[]{(setf (gtk:buildable-name buildable) name)}
+  @syntax{(gtk:buildable-name buildable) => name}
+  @syntax{(setf (gtk:buildable-name buildable) name)}
   @argument[buildable]{a @class{gtk:buildable} widget}
   @argument[name]{a string with the name}
   @begin{short}

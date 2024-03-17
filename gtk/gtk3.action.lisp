@@ -272,8 +272,8 @@ lambda (action)    :no-recurse
       "Accessor"
       (documentation 'action-action-group 'function)
  "@version{#2023-3-12}
-  @syntax[]{gtk:action-action-group object) => group}
-  @syntax[]{(setf (gtk:action-action-group object) group)}
+  @syntax{gtk:action-action-group object) => group}
+  @syntax{(setf (gtk:action-action-group object) group)}
   @argument[object]{a @class{gtk:action} object}
   @argument[group]{a @class{gtk:action-group} object}
   @begin{short}
@@ -306,8 +306,8 @@ lambda (action)    :no-recurse
       "Accessor"
       (documentation 'action-always-show-image 'function)
  "@version{#2023-3-12}
-  @syntax[]{(gtk:action-always-show-image object) => always-show}
-  @syntax[]{(setf (gtk:action-always-show-image object) always-show)}
+  @syntax{(gtk:action-always-show-image object) => always-show}
+  @syntax{(setf (gtk:action-always-show-image object) always-show)}
   @argument[object]{a @class{gtk:action} object}
   @argument[always-show]{@em{true} if menu item proxies should always show
     their image}
@@ -344,8 +344,8 @@ lambda (action)    :no-recurse
       "Accessor"
       (documentation 'action-gicon 'function)
  "@version{#2023-3-12}
-  @syntax[]{(gtk:action-gicon object) => icon}
-  @syntax[]{(setf (gtk:action-gicon object) icon)}
+  @syntax{(gtk:action-gicon object) => icon}
+  @syntax{(setf (gtk:action-gicon object) icon)}
   @argument[object]{a @class{gtk:action} object}
   @argument[icon]{a @class{g:icon} object}
   @begin{short}
@@ -381,8 +381,8 @@ lambda (action)    :no-recurse
       "Accessor"
       (documentation 'action-hide-if-empty 'function)
  "@version{#2023-3-12}
-  @syntax[]{(gtk:action-hide-if-empty object) => hide-if-empty}
-  @syntax[]{(setf (gtk:action-hide-if-empty object) hide-if-empty)}
+  @syntax{(gtk:action-hide-if-empty object) => hide-if-empty}
+  @syntax{(setf (gtk:action-hide-if-empty object) hide-if-empty)}
   @argument[object]{a @class{gtk:action} object}
   @argument[hide-if-empty]{a boolean whether empty menu proxies are hidden}
   @begin{short}
@@ -413,8 +413,8 @@ lambda (action)    :no-recurse
       "Accessor"
       (documentation 'action-icon-name 'function)
  "@version{#2023-3-12}
-  @syntax[]{(gtk:action-icon-name object) => name}
-  @syntax[]{(setf (gtk:action-icon-name object) name)}
+  @syntax{(gtk:action-icon-name object) => name}
+  @syntax{(setf (gtk:action-icon-name object) name)}
   @argument[object]{a @class{gtk:action} object}
   @argument[name]{a string with the icon name to set}
   @begin{short}
@@ -453,8 +453,8 @@ lambda (action)    :no-recurse
       "Accessor"
       (documentation 'action-is-important 'function)
  "@version{#2023-3-12}
-  @syntax[]{(gtk:action-is-important object) => is-important}
-  @syntax[]{(setf (gtk:action-is-important object) is-important)}
+  @syntax{(gtk:action-is-important object) => is-important}
+  @syntax{(setf (gtk:action-is-important object) is-important)}
   @argument[object]{a @class{gtk:action} object}
   @argument[is-important]{@em{true} to make the action important}
   @begin{short}
@@ -490,8 +490,8 @@ lambda (action)    :no-recurse
       "Accessor"
       (documentation 'action-label 'function)
  "@version{#2023-3-12}
-  @syntax[]{(gtk:action-label object) => label}
-  @syntax[]{(setf (gtk:action-label object) label)}
+  @syntax{(gtk:action-label object) => label}
+  @syntax{(setf (gtk:action-label object) label)}
   @argument[object]{a @class{gtk:action} object}
   @argument[label]{a string with the label text to set}
   @begin{short}
@@ -528,7 +528,7 @@ lambda (action)    :no-recurse
       "Accessor"
       (documentation 'action-name 'function)
  "@version{#2023-3-12}
-  @syntax[]{(gtk:action-name object) => name}
+  @syntax{(gtk:action-name object) => name}
   @argument[object]{a @class{gtk:action} object}
   @argument[name]{a string with the name of the action}
   @begin{short}
@@ -555,8 +555,8 @@ lambda (action)    :no-recurse
       "Accessor"
       (documentation 'action-sensitive 'function)
  "@version{#2023-3-12}
-  @syntax[]{(gtk:action-sensitive object) => sensitive}
-  @syntax[]{(setf (gtk:action-sensitive object) sensitive)}
+  @syntax{(gtk:action-sensitive object) => sensitive}
+  @syntax{(setf (gtk:action-sensitive object) sensitive)}
   @argument[object]{a @class{gtk:action} object}
   @argument[sensitive]{@em{true} to make the action sensitive}
   @begin{short}
@@ -590,8 +590,8 @@ lambda (action)    :no-recurse
       "Accessor"
       (documentation 'action-short-label 'function)
  "@version{#2023-3-12}
-  @syntax[]{(gtk:action-short-label object) => label}
-  @syntax[]{(setf (gtk:action-short-label object) label)}
+  @syntax{(gtk:action-short-label object) => label}
+  @syntax{(setf (gtk:action-short-label object) label)}
   @argument[object]{a @class{gtk:action} object}
   @argument[label]{a string with the label text to set}
   @begin{short}
@@ -626,8 +626,8 @@ lambda (action)    :no-recurse
       "Accessor"
       (documentation 'action-stock-id 'function)
  "@version{#2023-3-12}
-  @syntax[]{(gtk:action-stock-id object) => stock-id}
-  @syntax[]{(setf (gtk:action-stock-id object) stock-id)}
+  @syntax{(gtk:action-stock-id object) => stock-id}
+  @syntax{(setf (gtk:action-stock-id object) stock-id)}
   @argument[object]{a @class{gtk:action} object}
   @argument[stock-id]{a string with the stock ID}
   @begin{short}
@@ -660,8 +660,8 @@ lambda (action)    :no-recurse
       "Accessor"
       (documentation 'action-tooltip 'function)
  "@version{#2023-3-12}
-  @syntax[]{(gtk:action-tooltip object) => tooltip}
-  @syntax[]{(setf (gtk:action-tooltip object) tooltip)}
+  @syntax{(gtk:action-tooltip object) => tooltip}
+  @syntax{(setf (gtk:action-tooltip object) tooltip)}
   @argument[object]{a @class{gtk:action} object}
   @argument[tooltip]{a string with the tooltip text}
   @begin{short}
@@ -689,8 +689,8 @@ lambda (action)    :no-recurse
       "Accessor"
       (documentation 'action-visible 'function)
  "@version{#2023-3-12}
-  @syntax[]{(gtk:action-visible object) => visible}
-  @syntax[]{(setf (gtk:action-visible object) visible)}
+  @syntax{(gtk:action-visible object) => visible}
+  @syntax{(setf (gtk:action-visible object) visible)}
   @argument[object]{a @class{gtk:action} object}
   @argument[visible]{@em{true} to make the action visible}
   @begin{short}
@@ -724,8 +724,8 @@ lambda (action)    :no-recurse
       "Accessor"
       (documentation 'action-visible-horizontal 'function)
  "@version{#2023-3-12}
-  @syntax[]{(gtk:action-visible-horizontal object) => visible}
-  @syntax[]{(setf (gtk:action-visible-horizontal object) visible)}
+  @syntax{(gtk:action-visible-horizontal object) => visible}
+  @syntax{(setf (gtk:action-visible-horizontal object) visible)}
   @argument[object]{a @class{gtk:action} object}
   @argument[visible]{@em{true} to make the action visible horizontally}
   @begin{short}
@@ -756,8 +756,8 @@ lambda (action)    :no-recurse
       "Accessor"
       (documentation 'action-visible-overflown 'function)
  "@version{#2023-3-12}
-  @syntax[]{(gtk:action-visible-overflow object) => visible}
-  @syntax[]{(setf (gtk:action-visible-overflow object) visible)}
+  @syntax{(gtk:action-visible-overflow object) => visible}
+  @syntax{(setf (gtk:action-visible-overflow object) visible)}
   @argument[object]{a @class{gtk:action} object}
   @argument[visible]{a boolean whether a toolbar overflow menu is shown}
   @begin{short}
@@ -787,8 +787,8 @@ lambda (action)    :no-recurse
       "Accessor"
       (documentation 'action-visible-vertical 'function)
  "@version{#2023-3-12}
-  @syntax[]{(gtk:action-visible-vertical object) => visible}
-  @syntax[]{(setf (gtk:action-visible-vertical object) visible)}
+  @syntax{(gtk:action-visible-vertical object) => visible}
+  @syntax{(setf (gtk:action-visible-vertical object) visible)}
   @argument[object]{a @class{gtk:action} object}
   @argument[visible]{@em{true} to make the action visible vertically}
   @begin{short}
@@ -1191,8 +1191,8 @@ lambda (action)    :no-recurse
 (cffi:defcfun ("gtk_action_get_accel_path" action-accel-path) :string
  #+liber-documentation
  "@version{#2023-3-12}
-  @syntax[]{(gtk:action-accel-path action) => path}
-  @syntax[]{(setf (gtk:action-accel-path action) path)}
+  @syntax{(gtk:action-accel-path action) => path}
+  @syntax{(setf (gtk:action-accel-path action) path)}
   @argument[action]{a @class{gtk:action} object}
   @argument[path]{a string with the accelerator path}
   @begin{short}

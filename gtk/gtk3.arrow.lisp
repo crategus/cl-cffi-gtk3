@@ -144,8 +144,8 @@
       "Accessor"
       (documentation 'arrow-arrow-type 'function)
  "@version{2023-12-30}
-  @syntax[]{(gtk:arrow-arrow-type object) => arrow-type}
-  @syntax[]{(setf (gtk:arrow-arrow-type object) arrow-type)}
+  @syntax{(gtk:arrow-arrow-type object) => arrow-type}
+  @syntax{(setf (gtk:arrow-arrow-type object) arrow-type)}
   @argument[object]{a @class{gtk:arrow} widget}
   @argument[arrow-type]{a value of the @symbol{gtk:arrow-type} enumeration}
   @begin{short}
@@ -176,8 +176,8 @@
       "Accessor"
       (documentation 'arrow-shadow-type 'function)
  "@version{2023-12-30}
-  @syntax[]{(gtk:arrow-shadow-type object) => shadow-type}
-  @syntax[]{(setf (gtk:arrow-shadow-type object) shadow-type)}
+  @syntax{(gtk:arrow-shadow-type object) => shadow-type}
+  @syntax{(setf (gtk:arrow-shadow-type object) shadow-type)}
   @argument[object]{a @class{gtk:arrow} widget}
   @argument[shadow-type]{a value of the @symbol{gtk:shadow-type} enumeration}
   @begin{short}

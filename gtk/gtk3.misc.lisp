@@ -113,8 +113,8 @@
       "Accessor"
       (documentation 'misc-xalign 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:misc-xalign object) => xalign}
-  @syntax[]{(setf (gtk:misc-xalign object) xalign)}
+  @syntax{(gtk:misc-xalign object) => xalign}
+  @syntax{(setf (gtk:misc-xalign object) xalign)}
   @argument[object]{a @class{gtk:misc} widget}
   @argument[xalign]{a float with the horizontal alignment}
   @begin{short}
@@ -141,8 +141,8 @@
       "Accessor"
       (documentation 'misc-xpad 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:misc-xpad object) => xpad}
-  @syntax[]{(setf (gtk:misc-xpad object) xpad)}
+  @syntax{(gtk:misc-xpad object) => xpad}
+  @syntax{(setf (gtk:misc-xpad object) xpad)}
   @argument[object]{a @class{gtk:misc} widget}
   @argument[xpad]{an integer with the amount of space to add}
   @begin{short}
@@ -168,8 +168,8 @@
       "Accessor"
       (documentation 'misc-yalign 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:misc-yalign object) => yalign}
-  @syntax[]{(setf (gtk:misc-yalign object) yalign)}
+  @syntax{(gtk:misc-yalign object) => yalign}
+  @syntax{(setf (gtk:misc-yalign object) yalign)}
   @argument[object]{a @class{gtk:misc} widget}
   @argument[yalign]{a float with the vertical alignment}
   @begin{short}
@@ -195,8 +195,8 @@
       "Accessor"
       (documentation 'misc-ypad 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:misc-ypad object) => ypad}
-  @syntax[]{(setf (gtk:misc-ypad object) ypad)}
+  @syntax{(gtk:misc-ypad object) => ypad}
+  @syntax{(setf (gtk:misc-ypad object) ypad)}
   @argument[object]{a @class{gtk:misc} widget}
   @argument[ypad]{an integer with the amount of space to add}
   @begin{short}

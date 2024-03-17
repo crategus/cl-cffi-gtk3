@@ -643,8 +643,8 @@
       "Accessor"
       (documentation 'settings-color-hash 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-color-hash object) => setting}
-  @syntax[]{(setf (gtk:settings-color-hash object) setting)}
+  @syntax{(gtk:settings-color-hash object) => setting}
+  @syntax{(setf (gtk:settings-color-hash object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a @code{GHashTable} instance}
   @begin{short}
@@ -676,8 +676,8 @@
       "Accessor"
       (documentation 'settings-gtk-alternative-button-order 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-alternative-button-order object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-alternative-button-order object) setting)}
+  @syntax{(gtk:settings-gtk-alternative-button-order object) => setting}
+  @syntax{(setf (gtk:settings-gtk-alternative-button-order object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a boolean whether buttons in dialogs should use the
    alternative button order}
@@ -705,8 +705,8 @@
       "Accessor"
       (documentation 'settings-gtk-alternative-sort-arrows 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-alternative-sort-arrows object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-alternative-sort-arrows object) setting)}
+  @syntax{(gtk:settings-gtk-alternative-sort-arrows object) => setting}
+  @syntax{(setf (gtk:settings-gtk-alternative-sort-arrows object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a boolean which controls the direction of sort indicators}
   @begin{short}
@@ -735,8 +735,8 @@
       "Accessor"
       (documentation 'settings-gtk-application-prefer-dark-theme 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-application-prefer-dark-theme object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-application-prefer-dark-theme object) setting)}
+  @syntax{(gtk:settings-gtk-application-prefer-dark-theme object) => setting}
+  @syntax{(setf (gtk:settings-gtk-application-prefer-dark-theme object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a boolean whether the application prefers to use a dark
     theme}
@@ -767,8 +767,8 @@
       "Accessor"
       (documentation 'settings-gtk-auto-mnemonics 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-auto-mnemonics object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-auto-mnemonics object) setting)}
+  @syntax{(gtk:settings-gtk-auto-mnemonics object) => setting}
+  @syntax{(setf (gtk:settings-gtk-auto-mnemonics object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a boolean whether mnemonics should be automically shown}
   @begin{short}
@@ -803,8 +803,8 @@
       "Accessor"
       (documentation 'settings-gtk-button-images 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-button-images object) => setting}
-  @syntax[]{(setf gtk:settings-gtk-button-images object) setting)}
+  @syntax{(gtk:settings-gtk-button-images object) => setting}
+  @syntax{(setf gtk:settings-gtk-button-images object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a boolean whether images should be shown on buttons}
   @begin{short}
@@ -844,8 +844,8 @@
       "Accessor"
       (documentation 'settings-gtk-can-change-accels 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-can-change-accels object) => setting}
-  @syntax[]{(setf gtk:settings-gtk-can-change-accels object) setting)}
+  @syntax{(gtk:settings-gtk-can-change-accels object) => setting}
+  @syntax{(setf gtk:settings-gtk-can-change-accels object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a boolean whether menu accelerators can be changed}
   @begin{short}
@@ -874,8 +874,8 @@
       "Accessor"
       (documentation 'settings-gtk-color-palette 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-color-palette object) => setting}
-  @syntax[]{(setf gtk:settings-gtk-color-palette object) setting)}
+  @syntax{(gtk:settings-gtk-color-palette object) => setting}
+  @syntax{(setf gtk:settings-gtk-color-palette object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a string with the palette to use}
   @begin{short}
@@ -909,8 +909,8 @@
       "Accessor"
       (documentation 'settings-gtk-color-scheme 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-color-scheme object) => setting}
-  @syntax[]{(setf gtk:settings-gtk-color-scheme object) setting)}
+  @syntax{(gtk:settings-gtk-color-scheme object) => setting}
+  @syntax{(setf gtk:settings-gtk-color-scheme object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a string with a palette of named colors}
   @begin{short}
@@ -942,8 +942,8 @@
       "Accessor"
       (documentation 'settings-gtk-cursor-aspect-ratio 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-cursor-aspect-ratio object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-cursor-aspect-ratio object) setting)}
+  @syntax{(gtk:settings-gtk-cursor-aspect-ratio object) => setting}
+  @syntax{(setf (gtk:settings-gtk-cursor-aspect-ratio object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a float with the aspect ratio of the text caret}
   @begin{short}
@@ -968,8 +968,8 @@
       "Accessor"
       (documentation 'settings-gtk-cursor-blink 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-cursor-blink object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-cursor-blink object) setting)}
+  @syntax{(gtk:settings-gtk-cursor-blink object) => setting}
+  @syntax{(setf (gtk:settings-gtk-cursor-blink object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a boolean whether the cursor should blink}
   @begin{short}
@@ -998,8 +998,8 @@
       "Accessor"
       (documentation 'settings-gtk-cursor-blink-time 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-cursor-blink-time object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-cursor-blink-time object) setting)}
+  @syntax{(gtk:settings-gtk-cursor-blink-time object) => setting}
+  @syntax{(setf (gtk:settings-gtk-cursor-blink-time object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{an integer with the length of the cursor blink cycle,
     in milliseconds}
@@ -1028,8 +1028,8 @@
       "Accessor"
       (documentation 'settings-gtk-cursor-blink-timeout 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-cursor-blink-timeout object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-cursor-blink-timeout object) setting)}
+  @syntax{(gtk:settings-gtk-cursor-blink-timeout object) => setting}
+  @syntax{(setf (gtk:settings-gtk-cursor-blink-timeout object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{an integer with the time after which the cursor stops
     blinking, in seconds}
@@ -1057,8 +1057,8 @@
       "Accessor"
       (documentation 'settings-gtk-cursor-theme-name 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-cursor-theme-name object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-cursor-theme-name object) setting)}
+  @syntax{(gtk:settings-gtk-cursor-theme-name object) => setting}
+  @syntax{(setf (gtk:settings-gtk-cursor-theme-name object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a string with the cursor theme name}
   @begin{short}
@@ -1084,8 +1084,8 @@
       "Accessor"
       (documentation 'settings-gtk-cursor-theme-size 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-cursor-theme-size object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-cursor-theme-size object) setting)}
+  @syntax{(gtk:settings-gtk-cursor-theme-size object) => setting}
+  @syntax{(setf (gtk:settings-gtk-cursor-theme-size object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{an integer with the size to use for cursors}
   @begin{short}
@@ -1122,8 +1122,8 @@
       "Accessor"
       (documentation 'settings-gtk-decoration-layout 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-decoration-layout object) => setting}
-  @syntax[]{(setf gtk:settings-gtk-decoration-layout object) setting)}
+  @syntax{(gtk:settings-gtk-decoration-layout object) => setting}
+  @syntax{(setf gtk:settings-gtk-decoration-layout object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a string with the settings for buttons}
   @begin{short}
@@ -1170,8 +1170,8 @@
       "Accessor"
       (documentation 'settings-gtk-dialogs-use-header 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-dialogs-use-header object) => setting}
-  @syntax[]{(setf gtk:settings-gtk-dialogs-use-header object) setting)}
+  @syntax{(gtk:settings-gtk-dialogs-use-header object) => setting}
+  @syntax{(setf gtk:settings-gtk-dialogs-use-header object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a boolean whether dialogs use a header bar}
   @begin{short}
@@ -1201,8 +1201,8 @@
       "Accessor"
       (documentation 'settings-gtk-dnd-drag-threshold 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-dnd-drag-threshold object) => setting}
-  @syntax[]{(setf gtk:settings-gtk-dnd-drag-threshold object) setting)}
+  @syntax{(gtk:settings-gtk-dnd-drag-threshold object) => setting}
+  @syntax{(setf gtk:settings-gtk-dnd-drag-threshold object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{an integer with the number of pixels the cursor can move}
   @begin{short}
@@ -1229,8 +1229,8 @@
       "Accessor"
       (documentation 'settings-gtk-double-click-distance 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-double-click-distance object) => setting}
-  @syntax[]{(setf gtk:settings-gtk-double-click-distance object) setting)}
+  @syntax{(gtk:settings-gtk-double-click-distance object) => setting}
+  @syntax{(setf gtk:settings-gtk-double-click-distance object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{an integer with the maximum distance in pixels}
   @begin{short}
@@ -1258,8 +1258,8 @@
       "Accessor"
       (documentation 'settings-gtk-double-click-time 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-double-click-time object) => setting}
-  @syntax[]{(setf gtk:settings-gtk-double-click-time object) setting)}
+  @syntax{(gtk:settings-gtk-double-click-time object) => setting}
+  @syntax{(setf gtk:settings-gtk-double-click-time object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{an integer with the maximum time allowed between two
     clicks}
@@ -1287,8 +1287,8 @@
       "Accessor"
       (documentation 'settings-gtk-enable-accels 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-enable-accels object) => setting}
-  @syntax[]{(setf gtk:settings-gtk-enable-accels object) setting)}
+  @syntax{(gtk:settings-gtk-enable-accels object) => setting}
+  @syntax{(setf gtk:settings-gtk-enable-accels object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a boolean whether menu items should have visible
     accelerators}
@@ -1315,8 +1315,8 @@
       "Accessor"
       (documentation 'settings-gtk-enable-animations 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-enable-animations object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-enable-animations object) setting)}
+  @syntax{(gtk:settings-gtk-enable-animations object) => setting}
+  @syntax{(setf (gtk:settings-gtk-enable-animations object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a boolean whether to enable animations}
   @begin{short}
@@ -1344,8 +1344,8 @@
       "Accessor"
       (documentation 'settings-gtk-enable-event-sounds 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-enable-event-sounds object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-enable-event-sounds object) setting)}
+  @syntax{(gtk:settings-gtk-enable-event-sounds object) => setting}
+  @syntax{(setf (gtk:settings-gtk-enable-event-sounds object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a boolean whether to play any event sounds at all}
   @begin{short}
@@ -1376,8 +1376,8 @@
       "Accessor"
       (documentation 'settings-gtk-enable-input-feedback-sounds 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-enable-input-feedback-sounds object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-enable-input-feedback-sounds object) setting)}
+  @syntax{(gtk:settings-gtk-enable-input-feedback-sounds object) => setting}
+  @syntax{(setf (gtk:settings-gtk-enable-input-feedback-sounds object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a boolean whether to play any event sounds at all}
   @begin{short}
@@ -1410,8 +1410,8 @@
       "Accessor"
       (documentation 'settings-gtk-enable-mnemonics 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-enable-mnemonics object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-enable-mnemonics object) setting)}
+  @syntax{(gtk:settings-gtk-enable-mnemonics object) => setting}
+  @syntax{(setf (gtk:settings-gtk-enable-mnemonics object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a boolean whether labels and menu items should have
     visible mnemonics}
@@ -1444,8 +1444,8 @@
       "Accessor"
       (documentation 'settings-gtk-enable-primary-paste 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-enable-primary-paste object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-enable-primary-paste object) setting)}
+  @syntax{(gtk:settings-gtk-enable-primary-paste object) => setting}
+  @syntax{(setf (gtk:settings-gtk-enable-primary-paste object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a boolean whether a middle click should paste the
     \"PRIMARY\" clipboard}
@@ -1475,8 +1475,8 @@
       "Accessor"
       (documentation 'settings-gtk-enable-tooltips 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-enable-tooltips object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-enable-tooltips object) setting)}
+  @syntax{(gtk:settings-gtk-enable-tooltips object) => setting}
+  @syntax{(setf (gtk:settings-gtk-enable-tooltips object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a boolean whether tooltips should be shown}
   @begin{short}
@@ -1507,8 +1507,8 @@
       "Accessor"
       (documentation 'settings-gtk-entry-password-hint-timeout 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-entry-password-hint-timeout object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-entry-password-hint-timeout object) setting)}
+  @syntax{(gtk:settings-gtk-entry-password-hint-timeout object) => setting}
+  @syntax{(setf (gtk:settings-gtk-entry-password-hint-timeout object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{an unsigned integer for how long to show the last input}
   @begin{short}
@@ -1535,8 +1535,8 @@
       "Accessor"
       (documentation 'settings-gtk-entry-select-on-focus 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-entry-select-on-focus object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-entry-select-on-focus object) setting)}
+  @syntax{(gtk:settings-gtk-entry-select-on-focus object) => setting}
+  @syntax{(setf (gtk:settings-gtk-entry-select-on-focus object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a boolean whether to select the contents of an entry}
   @begin{short}
@@ -1564,8 +1564,8 @@
       "Accessor"
       (documentation 'settings-gtk-error-bell 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-error-bell object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-error-bell object) setting)}
+  @syntax{(gtk:settings-gtk-error-bell object) => setting}
+  @syntax{(setf (gtk:settings-gtk-error-bell object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a boolean whether errors well cause a beep}
   @begin{short}
@@ -1597,8 +1597,8 @@
       "Accessor"
       (documentation 'settings-gtk-fallback-icon-theme 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-fallback-icon-theme object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-fallback-icon-theme object) setting)}
+  @syntax{(gtk:settings-gtk-fallback-icon-theme object) => setting}
+  @syntax{(setf (gtk:settings-gtk-fallback-icon-theme object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a string with the name of an icon theme}
   @begin{short}
@@ -1632,8 +1632,8 @@
       "Accessor"
       (documentation 'settings-gtk-file-chooser-backend 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-file-chooser-backend object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-file-chooser-backend object) setting)}
+  @syntax{(gtk:settings-gtk-file-chooser-backend object) => setting}
+  @syntax{(setf (gtk:settings-gtk-file-chooser-backend object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a string with the backend to use by default}
   @begin{short}
@@ -1661,8 +1661,8 @@
       "Accessor"
       (documentation 'settings-gtk-font-name 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-font-name object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-font-name object) setting)}
+  @syntax{(gtk:settings-gtk-font-name object) => setting}
+  @syntax{(setf (gtk:settings-gtk-font-name object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a string with the name of the default font to use}
   @begin{short}
@@ -1687,8 +1687,8 @@
       "Accessor"
       (documentation 'settings-gtk-fontconfig-timestamp 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-fontconfig-timestamp object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-fontconfig-timestamp object) setting)}
+  @syntax{(gtk:settings-gtk-fontconfig-timestamp object) => setting}
+  @syntax{(setf (gtk:settings-gtk-fontconfig-timestamp object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{an unsigned integer with the timestamp}
   @begin{short}
@@ -1716,8 +1716,8 @@
       "Accessor"
       (documentation 'settings-gtk-icon-sizes 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-icon-sizes object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-icon-sizes object) setting)}
+  @syntax{(gtk:settings-gtk-icon-sizes object) => setting}
+  @syntax{(setf (gtk:settings-gtk-icon-sizes object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a string with a list of icon sizes}
   @begin{short}
@@ -1746,8 +1746,8 @@
       "Accessor"
       (documentation 'settings-gtk-icon-theme-name 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-icon-theme-name object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-icon-theme-name object) setting)}
+  @syntax{(gtk:settings-gtk-icon-theme-name object) => setting}
+  @syntax{(setf (gtk:settings-gtk-icon-theme-name object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a string with the icon theme name}
   @begin{short}
@@ -1775,8 +1775,8 @@
       "Accessor"
       (documentation 'settings-gtk-im-module 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-im-module object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-im-module object) setting)}
+  @syntax{(gtk:settings-gtk-im-module object) => setting}
+  @syntax{(setf (gtk:settings-gtk-im-module object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a string with the IM module}
   @begin{short}
@@ -1811,8 +1811,8 @@
       "Accessor"
       (documentation 'settings-gtk-im-preedit-style 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-im-preedit-style object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-im-preedit-style object) setting)}
+  @syntax{(gtk:settings-gtk-im-preedit-style object) => setting}
+  @syntax{(setf (gtk:settings-gtk-im-preedit-style object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a @symbol{gtk:im-preedit-style} value}
   @begin{short}
@@ -1846,8 +1846,8 @@
       "Accessor"
       (documentation 'settings-gtk-im-status-style 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-im-status-style object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-im-status-style object) setting)}
+  @syntax{(gtk:settings-gtk-im-status-style object) => setting}
+  @syntax{(setf (gtk:settings-gtk-im-status-style object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a @symbol{gtk:im-status-style} value}
   @begin{short}
@@ -1877,8 +1877,8 @@
       "Accessor"
       (documentation 'settings-gtk-key-theme-name 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-key-theme-name object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-key-theme-name object) setting)}
+  @syntax{(gtk:settings-gtk-key-theme-name object) => setting}
+  @syntax{(setf (gtk:settings-gtk-key-theme-name object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a string with the key theme name}
   @begin{short}
@@ -1909,8 +1909,8 @@
       "Accessor"
       (documentation 'settings-gtk-keynav-cursor-only 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-keynav-cursor-only object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-keynav-cursor-only object) setting)}
+  @syntax{(gtk:settings-gtk-keynav-cursor-only object) => setting}
+  @syntax{(setf (gtk:settings-gtk-keynav-cursor-only object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a boolean whether using the cursor keys only}
   @begin{short}
@@ -1945,8 +1945,8 @@
       "Accessor"
       (documentation 'settings-gtk-keynav-use-caret 'function)
  "@version{2023-3-13}
-  @syntax[]{(gtk:settings-gtk-keynav-use-caret object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-keynav-use-caret object) setting)}
+  @syntax{(gtk:settings-gtk-keynav-use-caret object) => setting}
+  @syntax{(setf (gtk:settings-gtk-keynav-use-caret object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a boolean whether GTK should make sure that text can be
     navigated with a caret}
@@ -1977,8 +1977,8 @@
       "Accessor"
       (documentation 'settings-gtk-keynav-wrap-around 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-keynav-wrap-around object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-keynav-wrap-around object) setting)}
+  @syntax{(gtk:settings-gtk-keynav-wrap-around object) => setting}
+  @syntax{(setf (gtk:settings-gtk-keynav-wrap-around object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a boolean whether widgets will wrap around when doing
     keyboard navigation}
@@ -2009,8 +2009,8 @@
       "Accessor"
       (documentation 'settings-gtk-label-select-on-focus 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-label-select-on-focus object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-label-select-on-focus object) setting)}
+  @syntax{(gtk:settings-gtk-label-select-on-focus object) => setting}
+  @syntax{(setf (gtk:settings-gtk-label-select-on-focus object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a boolean whether to select the contents of a selectable
     label}
@@ -2037,8 +2037,8 @@
       "Accessor"
       (documentation 'settings-gtk-long-press-time 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-long-press-time object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-long-press-time object) setting)}
+  @syntax{(gtk:settings-gtk-long-press-time object) => setting}
+  @syntax{(setf (gtk:settings-gtk-long-press-time object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{an unsigned integer with the time for a button or touch
     press to be considered a \"long press\"}
@@ -2068,8 +2068,8 @@
       "Accessor"
       (documentation 'settings-gtk-menu-bar-accel 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-menu-bar-accel object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-menu-bar-accel object) setting)}
+  @syntax{(gtk:settings-gtk-menu-bar-accel object) => setting}
+  @syntax{(setf (gtk:settings-gtk-menu-bar-accel object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a string with the keybinding to activate the menu bar}
   @begin{short}
@@ -2103,8 +2103,8 @@
       "Accessor"
       (documentation 'settings-gtk-menu-bar-popup-delay 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-menu-bar-popup-delay object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-menu-bar-popup-delay object) setting)}
+  @syntax{(gtk:settings-gtk-menu-bar-popup-delay object) => setting}
+  @syntax{(setf (gtk:settings-gtk-menu-bar-popup-delay object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{an integer with the delay before the submenus of a menu
     bar appear}
@@ -2142,8 +2142,8 @@
       "Accessor"
       (documentation 'settings-gtk-menu-images 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-menu-images object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-menu-images object) setting)}
+  @syntax{(gtk:settings-gtk-menu-images object) => setting}
+  @syntax{(setf (gtk:settings-gtk-menu-images object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a boolean whether images should be shown in menus}
   @begin{short}
@@ -2184,8 +2184,8 @@
       "Accessor"
       (documentation 'settings-gtk-menu-popdown-delay 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-menu-popdown-delay object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-menu-popdown-delay object) setting)}
+  @syntax{(gtk:settings-gtk-menu-popdown-delay object) => setting}
+  @syntax{(setf (gtk:settings-gtk-menu-popdown-delay object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{an integer with the before hiding a submenu}
   @begin{short}
@@ -2221,8 +2221,8 @@
       "Accessor"
       (documentation 'settings-gtk-menu-popup-delay 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-menu-popup-delay object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-menu-popup-delay object) setting)}
+  @syntax{(gtk:settings-gtk-menu-popup-delay object) => setting}
+  @syntax{(setf (gtk:settings-gtk-menu-popup-delay object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{an integer with the minimum time the pointer must stay
     over a menu item before the submenu appear}
@@ -2251,8 +2251,8 @@
       "Accessor"
       (documentation 'settings-gtk-modules 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-modules object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-modules object) setting)}
+  @syntax{(gtk:settings-gtk-modules object) => setting}
+  @syntax{(setf (gtk:settings-gtk-modules object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a string with a list of currently active GTK modules}
   @begin{short}
@@ -2278,8 +2278,8 @@
       "Accessor"
       (documentation 'settings-gtk-overlay-scrolling 'function)
  "@version{2023-3-13}
-  @syntax[]{(gtk:settings-gtk-overlay-scrolling object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-overlay-scrolling object) setting)}
+  @syntax{(gtk:settings-gtk-overlay-scrolling object) => setting}
+  @syntax{(setf (gtk:settings-gtk-overlay-scrolling object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a boolean whether scrolled windows may use overlayed
     scrolled indicators}
@@ -2307,8 +2307,8 @@
       "Accessor"
       (documentation 'settings-gtk-primary-button-warps-slider 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-primary-button-warps-slider object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-primary-button-warps-slider object) setting)}
+  @syntax{(gtk:settings-gtk-primary-button-warps-slider object) => setting}
+  @syntax{(setf (gtk:settings-gtk-primary-button-warps-slider object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a boolean whether a click should scroll to the click
     position}
@@ -2338,8 +2338,8 @@
       "Accessor"
       (documentation 'settings-gtk-print-backends 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-print-backends object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-print-backends object) setting)}
+  @syntax{(gtk:settings-gtk-print-backends object) => setting}
+  @syntax{(setf (gtk:settings-gtk-print-backends object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a string with a list of print backends}
   @begin{short}
@@ -2373,8 +2373,8 @@
       "Accessor"
       (documentation 'settings-gtk-print-preview-command 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-print-preview-command object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-print-preview-command object) setting)}
+  @syntax{(gtk:settings-gtk-print-preview-command object) => setting}
+  @syntax{(setf (gtk:settings-gtk-print-preview-command object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a string with a command to run for displaying the print
     preview}
@@ -2408,8 +2408,8 @@
       "Accessor"
       (documentation 'settings-gtk-recent-files-enabled 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-recent-files-enabled object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-recent-files-enabled object) setting)}
+  @syntax{(gtk:settings-gtk-recent-files-enabled object) => setting}
+  @syntax{(setf (gtk:settings-gtk-recent-files-enabled object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a boolean whether GTK should keep track of items inside
     the recently used resources list}
@@ -2442,8 +2442,8 @@
       "Accessor"
       (documentation 'settings-gtk-recent-files-limit 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-recent-files-limit object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-recent-files-limit object) setting)}
+  @syntax{(gtk:settings-gtk-recent-files-limit object) => setting}
+  @syntax{(setf (gtk:settings-gtk-recent-files-limit object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{an integer with the number of recently used files}
   @begin{short}
@@ -2480,8 +2480,8 @@
       "Accessor"
       (documentation 'settings-gtk-recent-files-max-age 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-recent-files-max-age object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-recent-files-max-age object) setting)}
+  @syntax{(gtk:settings-gtk-recent-files-max-age object) => setting}
+  @syntax{(setf (gtk:settings-gtk-recent-files-max-age object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{an integer with the maximum age, in days}
   @begin{short}
@@ -2513,8 +2513,8 @@
       "Accessor"
       (documentation 'settings-gtk-scrolled-window-placement 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-scrolled-window-placement object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-scrolled-window-placement object) setting)}
+  @syntax{(gtk:settings-gtk-scrolled-window-placement object) => setting}
+  @syntax{(setf (gtk:settings-gtk-scrolled-window-placement object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a @symbol{gtk:corner-type} value}
   @begin{short}
@@ -2547,8 +2547,8 @@
       "Accessor"
       (documentation 'settings-gtk-shell-shows-app-menu 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-shell-shows-app-menu object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-shell-shows-app-menu object) setting)}
+  @syntax{(gtk:settings-gtk-shell-shows-app-menu object) => setting}
+  @syntax{(setf (gtk:settings-gtk-shell-shows-app-menu object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a boolean whether the environment is displaying the
     application menu}
@@ -2576,8 +2576,8 @@
       "Accessor"
       (documentation 'settings-gtk-shell-shows-desktop 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-shell-shows-desktop object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-shell-shows-desktop object) setting)}
+  @syntax{(gtk:settings-gtk-shell-shows-desktop object) => setting}
+  @syntax{(setf (gtk:settings-gtk-shell-shows-desktop object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a boolean whether the environment is displaying the
     desktop folder}
@@ -2605,8 +2605,8 @@
       "Accessor"
       (documentation 'settings-gtk-shell-shows-menubar 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-shell-shows-menubar object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-shell-shows-menubar object) setting)}
+  @syntax{(gtk:settings-gtk-shell-shows-menubar object) => setting}
+  @syntax{(setf (gtk:settings-gtk-shell-shows-menubar object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a boolean whether the environment is displaying the
     menubar}
@@ -2637,8 +2637,8 @@
       "Accessor"
       (documentation 'settings-gtk-show-input-method-menu 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-show-input-method-menu object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-show-input-method-menu object) setting)}
+  @syntax{(gtk:settings-gtk-show-input-method-menu object) => setting}
+  @syntax{(setf (gtk:settings-gtk-show-input-method-menu object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a boolean whether context menus should offer to change
     the input method}
@@ -2674,8 +2674,8 @@
       "Accessor"
       (documentation 'settings-gtk-show-unicode-menu 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-show-unicode-menu object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-show-unicode-menu object) setting)}
+  @syntax{(gtk:settings-gtk-show-unicode-menu object) => setting}
+  @syntax{(setf (gtk:settings-gtk-show-unicode-menu object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a boolean whether the context menus should offer to
     insert control characters}
@@ -2708,8 +2708,8 @@
       "Accessor"
       (documentation 'settings-gtk-sound-theme-name 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-sound-theme-name object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-sound-theme-name object) setting)}
+  @syntax{(gtk:settings-gtk-sound-theme-name object) => setting}
+  @syntax{(setf (gtk:settings-gtk-sound-theme-name object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a string with the sound theme name}
   @begin{short}
@@ -2737,8 +2737,8 @@
       "Accessor"
       (documentation 'settings-gtk-split-cursor 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-split-cursor object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-split-cursor object) setting)}
+  @syntax{(gtk:settings-gtk-split-cursor object) => setting}
+  @syntax{(setf (gtk:settings-gtk-split-cursor object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a boolean whether two cursors should be displayed for
     mixed left-to-right and right-to-left text}
@@ -2762,8 +2762,8 @@
       "Accessor"
       (documentation 'settings-gtk-theme-name 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-theme-name object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-theme-name object) setting)}
+  @syntax{(gtk:settings-gtk-theme-name object) => setting}
+  @syntax{(setf (gtk:settings-gtk-theme-name object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a string with the theme name}
   @begin{short}
@@ -2792,8 +2792,8 @@
       "Accessor"
       (documentation 'settings-gtk-timeout-expand 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-timeout-expand object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-timeout-expand object) setting)}
+  @syntax{(gtk:settings-gtk-timeout-expand object) => setting}
+  @syntax{(setf (gtk:settings-gtk-timeout-expand object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{an integer with the expand value for timeouts}
   @begin{short}
@@ -2826,8 +2826,8 @@
       "Accessor"
       (documentation 'settings-gtk-timeout-initial 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-timeout-initial object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-timeout-initial object) setting)}
+  @syntax{(gtk:settings-gtk-timeout-initial object) => setting}
+  @syntax{(setf (gtk:settings-gtk-timeout-initial object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{an integer with the starting value for timeouts}
   @begin{short}
@@ -2860,8 +2860,8 @@
       "Accessor"
       (documentation 'settings-gtk-timeout-repeat 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-timeout-repeat object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-timeout-repeat object) setting)}
+  @syntax{(gtk:settings-gtk-timeout-repeat object) => setting}
+  @syntax{(setf (gtk:settings-gtk-timeout-repeat object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{an integer with the repeat value for timeouts}
   @begin{short}
@@ -2892,8 +2892,8 @@
       "Accessor"
       (documentation 'settings-gtk-titlebar-double-click 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-titlebar-double-click object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-titlebar-double-click object) setting)}
+  @syntax{(gtk:settings-gtk-titlebar-double-click object) => setting}
+  @syntax{(setf (gtk:settings-gtk-titlebar-double-click object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a string with an action}
   @begin{short}
@@ -2922,8 +2922,8 @@
       "Accessor"
       (documentation 'settings-gtk-titlebar-middle-click 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-titlebar-middle-click object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-titlebar-middle-click object) setting)}
+  @syntax{(gtk:settings-gtk-titlebar-middle-click object) => setting}
+  @syntax{(setf (gtk:settings-gtk-titlebar-middle-click object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a string with an action}
   @begin{short}
@@ -2952,8 +2952,8 @@
       "Accessor"
       (documentation 'settings-gtk-titlebar-right-click 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-titlebar-right-click object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-titlebar-right-click object) setting)}
+  @syntax{(gtk:settings-gtk-titlebar-right-click object) => setting}
+  @syntax{(setf (gtk:settings-gtk-titlebar-right-click object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a string with an action}
   @begin{short}
@@ -2983,8 +2983,8 @@
       "Accessor"
       (documentation 'settings-gtk-toolbar-icon-size 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-toolbar-icon-size object) => size}
-  @syntax[]{(setf (gtk:settings-gtk-toolbar-icon-size object) size)}
+  @syntax{(gtk:settings-gtk-toolbar-icon-size object) => size}
+  @syntax{(setf (gtk:settings-gtk-toolbar-icon-size object) size)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[size]{a @symbol{gtk:icon-size} value with the icon size}
   @begin{short}
@@ -3016,8 +3016,8 @@
       "Accessor"
       (documentation 'settings-gtk-toolbar-style 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-toolbar-style object) => style}
-  @syntax[]{(setf (gtk:settings-gtk-toolbar-style object) style)}
+  @syntax{(gtk:settings-gtk-toolbar-style object) => style}
+  @syntax{(setf (gtk:settings-gtk-toolbar-style object) style)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[style]{a @symbol{gtk:toolbar-style} value with the size of icons}
   @begin{short}
@@ -3052,8 +3052,8 @@
       "Accessor"
       (documentation 'settings-gtk-tooltip-browse-mode-timeout 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-tooltip-browse-mode-timeout object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-tooltip-browse-mode-timeout object) setting)}
+  @syntax{(gtk:settings-gtk-tooltip-browse-mode-timeout object) => setting}
+  @syntax{(setf (gtk:settings-gtk-tooltip-browse-mode-timeout object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{an integer with the amount of time, in milliseconds}
   @begin{short}
@@ -3093,8 +3093,8 @@
       "Accessor"
       (documentation 'settings-gtk-tooltip-browse-timeout 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-tooltip-browse-timeout object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-tooltip-browse-timeout object) setting)}
+  @syntax{(gtk:settings-gtk-tooltip-browse-timeout object) => setting}
+  @syntax{(setf (gtk:settings-gtk-tooltip-browse-timeout object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{an integer with the amount of time, in milliseconds}
   @begin{short}
@@ -3134,8 +3134,8 @@
       "Accessor"
       (documentation 'settings-gtk-tooltip-timeout 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-tooltip-timeout object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-tooltip-timeout object) setting)}
+  @syntax{(gtk:settings-gtk-tooltip-timeout object) => setting}
+  @syntax{(setf (gtk:settings-gtk-tooltip-timeout object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{an integer with the time after which a tooltip could
     appear}
@@ -3172,8 +3172,8 @@
       "Accessor"
       (documentation 'settings-gtk-touchscreen-mode 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-touchscreen-mode object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-touchscreen-mode object) setting)}
+  @syntax{(gtk:settings-gtk-touchscreen-mode object) => setting}
+  @syntax{(setf (gtk:settings-gtk-touchscreen-mode object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a boolean whether motion notify events are delivered on
     this screen}
@@ -3211,8 +3211,8 @@
       "Accessor"
       (documentation 'settings-gtk-visible-focus 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-visible-focus object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-visible-focus object) setting)}
+  @syntax{(gtk:settings-gtk-visible-focus object) => setting}
+  @syntax{(setf (gtk:settings-gtk-visible-focus object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a @symbol{gtk:policy-type} value whether focus rectangles
     should be visible}
@@ -3244,8 +3244,8 @@
       "Accessor"
       (documentation 'settings-gtk-xft-antialias 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-xft-antialias object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-xft-antialias object) setting)}
+  @syntax{(gtk:settings-gtk-xft-antialias object) => setting}
+  @syntax{(setf (gtk:settings-gtk-xft-antialias object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a boolean whether to antialias Xft fonts}
   @begin{short}
@@ -3269,8 +3269,8 @@
       "Accessor"
       (documentation 'settings-gtk-xft-dpi 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-xft-dpi object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-xft-dpi object) setting)}
+  @syntax{(gtk:settings-gtk-xft-dpi object) => setting}
+  @syntax{(setf (gtk:settings-gtk-xft-dpi object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{an integer with the resolution for Xft}
   @begin{short}
@@ -3294,8 +3294,8 @@
       "Accessor"
       (documentation 'settings-gtk-xft-hinting 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-xft-hinting object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-xft-hinting object) setting)}
+  @syntax{(gtk:settings-gtk-xft-hinting object) => setting}
+  @syntax{(setf (gtk:settings-gtk-xft-hinting object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{an integer whether to hint Xft fonts}
   @begin{short}
@@ -3321,8 +3321,8 @@
       "Accessor"
       (documentation 'settings-gtk-xft-hintstyle 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-xft-hintstyle object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-xft-hintstyle object) setting)}
+  @syntax{(gtk:settings-gtk-xft-hintstyle object) => setting}
+  @syntax{(setf (gtk:settings-gtk-xft-hintstyle object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a string with the deegree of hinting}
   @begin{short}
@@ -3347,8 +3347,8 @@
       "Accessor"
       (documentation 'settings-gtk-xft-rgba 'function)
  "@version{2023-3-7}
-  @syntax[]{(gtk:settings-gtk-xft-rgba object) => setting}
-  @syntax[]{(setf (gtk:settings-gtk-xft-rgba object) setting)}
+  @syntax{(gtk:settings-gtk-xft-rgba object) => setting}
+  @syntax{(setf (gtk:settings-gtk-xft-rgba object) setting)}
   @argument[object]{a @class{gtk:settings} object}
   @argument[setting]{a string with the type of subpixel antialiasing}
   @begin{short}

@@ -330,8 +330,8 @@ lambda (gesture sequence)    :run-last
       "Accessor"
       (documentation 'gesture-n-points 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:gesture-n-points object) => n-points)}
-  @syntax[]{(setf (gtk:gesture-n-points object) n-points)}
+  @syntax{(gtk:gesture-n-points object) => n-points)}
+  @syntax{(setf (gtk:gesture-n-points object) n-points)}
   @argument[object]{a @class{gtk:gesture} object}
   @argument[n-points]{an integer with the number of touch points}
   @begin{short}
@@ -354,8 +354,8 @@ lambda (gesture sequence)    :run-last
       "Accessor"
       (documentation 'gesture-window 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:gesture-window object) => window)}
-  @syntax[]{(setf (gtk:gesture-window object) window)}
+  @syntax{(gtk:gesture-window object) => window)}
+  @syntax{(setf (gtk:gesture-window object) window)}
   @argument[object]{a @class{gtk:gesture} object}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}
@@ -444,8 +444,8 @@ lambda (gesture sequence)    :run-last
     event-sequence-state
  #+liber-documentation
  "@version{#2023-3-5}
-  @syntax[]{(gtk:gesture-sequence-state gesture sequence) => state}
-  @syntax[]{(setf (gtk:gesture-sequence-state gesture sequence) state)}
+  @syntax{(gtk:gesture-sequence-state gesture sequence) => state}
+  @syntax{(setf (gtk:gesture-sequence-state gesture sequence) state)}
   @argument[gesture]{a @class{gtk:gesture} object}
   @argument[sequence]{a @class{gdk:event-sequence} instance}
   @argument[state]{a @symbol{gtk:event-sequence-state} value}

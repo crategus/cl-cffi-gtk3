@@ -501,8 +501,8 @@ lambda (label menu)    :run-last
       "Accessor"
       (documentation 'label-angle 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:label-angle object) => angle}
-  @syntax[]{(setf (gtk:label-angle object) angle)}
+  @syntax{(gtk:label-angle object) => angle}
+  @syntax{(setf (gtk:label-angle object) angle)}
   @argument[object]{a @class{gtk:label} widget}
   @argument[angle]{a double float with the angle that the baseline of the
     label makes with the horizontal, in degrees, measured counterclockwise}
@@ -530,8 +530,8 @@ lambda (label menu)    :run-last
       "Accessor"
       (documentation 'label-attributes 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:label-attributes object) => attrs}
-  @syntax[]{(setf (gtk:label-attributes object) attrs)}
+  @syntax{(gtk:label-attributes object) => attrs}
+  @syntax{(setf (gtk:label-attributes object) attrs)}
   @argument[object]{a @class{gtk:label} widget}
   @argument[attrs]{a @class{pango:attr-list} instance}
   @begin{short}
@@ -577,8 +577,8 @@ lambda (label menu)    :run-last
       "Accessor"
       (documentation 'label-cursor-position 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:label-cursor-position object) => position}
-  @syntax[]{(setf (gtk:label-cursor-position object) position)}
+  @syntax{(gtk:label-cursor-position object) => position}
+  @syntax{(setf (gtk:label-cursor-position object) position)}
   @argument[object]{a @class{gtk:label} widget}
   @argument[position]{an integer with the position of the insertion cursor}
   @begin{short}
@@ -610,8 +610,8 @@ lambda (label menu)    :run-last
       "Accessor"
       (documentation 'label-ellipsize 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:label-ellipsize object) => mode}
-  @syntax[]{(setf (gtk:label-ellipsize object) mode)}
+  @syntax{(gtk:label-ellipsize object) => mode}
+  @syntax{(setf (gtk:label-ellipsize object) mode)}
   @argument[object]{a @class{gtk:label} widget}
   @argument[mode]{a value of the @symbol{pango:ellipsize-mode} enumeration}
   @begin{short}
@@ -641,8 +641,8 @@ lambda (label menu)    :run-last
       "Accessor"
       (documentation 'label-justify 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:label-justify object) => justify}
-  @syntax[]{(setf (gtk:label-justify object) justify)}
+  @syntax{(gtk:label-justify object) => justify}
+  @syntax{(setf (gtk:label-justify object) justify)}
   @argument[object]{a @class{gtk:label} widget}
   @argument[justify]{a value of the @symbol{gtk:justification} enumeration}
   @begin{short}
@@ -676,8 +676,8 @@ lambda (label menu)    :run-last
       "Accessor"
       (documentation 'label-label 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:label-label object) => text}
-  @syntax[]{(setf (gtk:label-label object) text)}
+  @syntax{(gtk:label-label object) => text}
+  @syntax{(setf (gtk:label-label object) text)}
   @argument[object]{a @class{gtk:label} widget}
   @argument[text]{a string with the text for the label}
   @begin{short}
@@ -713,8 +713,8 @@ lambda (label menu)    :run-last
       "Accessor"
       (documentation 'label-lines 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:label-lines object) => lines}
-  @syntax[]{(setf (gtk:label-lines object) lines)}
+  @syntax{(gtk:label-lines object) => lines}
+  @syntax{(setf (gtk:label-lines object) lines)}
   @argument[object]{a @class{gtk:label} widget}
   @argument[lines]{an integer with the desired number of lines, or -1}
   @begin{short}
@@ -746,8 +746,8 @@ lambda (label menu)    :run-last
       "Accessor"
       (documentation 'label-max-width-chars 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:label-max-width-chars object) => n-chars}
-  @syntax[]{(setf (gtk:label-max-width-chars object) n-chars)}
+  @syntax{(gtk:label-max-width-chars object) => n-chars}
+  @syntax{(setf (gtk:label-max-width-chars object) n-chars)}
   @argument[object]{a @class{gtk:label} widget}
   @argument[n-chars]{an integer with the desired maximum width, in characters}
   @begin{short}
@@ -772,7 +772,7 @@ lambda (label menu)    :run-last
       "Accessor"
       (documentation 'label-mnemonic-keyval 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:label-mnemonic-keyval object) => keyval}
+  @syntax{(gtk:label-mnemonic-keyval object) => keyval}
   @argument[object]{a @class{gtk:label} widget}
   @argument[keyval]{an unsigned integer with the keyval}
   @begin{short}
@@ -805,8 +805,8 @@ lambda (label menu)    :run-last
       "Accessor"
       (documentation 'label-mnemonic-widget 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:label-mnemonic-widget object) => widget}
-  @syntax[]{(setf (gtk:label-mnemonic-widget object) widget)}
+  @syntax{(gtk:label-mnemonic-widget object) => widget}
+  @syntax{(setf (gtk:label-mnemonic-widget object) widget)}
   @argument[object]{a @class{gtk:label} widget}
   @argument[widget]{a @class{gtk:widget} widget target}
   @begin{short}
@@ -853,7 +853,7 @@ lambda (label menu)    :run-last
       "Accessor"
       (documentation 'label-pattern 'function)
  "@version{2023-3-5}
-  @syntax[]{(setf (gtk:label-pattern object) pattern)}
+  @syntax{(setf (gtk:label-pattern object) pattern)}
   @argument[object]{the @class{gtk:label} you want to set the pattern to}
   @argument[pattern]{a string with the pattern as described below}
   @begin{short}
@@ -879,8 +879,8 @@ lambda (label menu)    :run-last
       "Accessor"
       (documentation 'label-selectable 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:label-selectable object) => selectable}
-  @syntax[]{(setf (gtk:label-selectable object) selectable)}
+  @syntax{(gtk:label-selectable object) => selectable}
+  @syntax{(setf (gtk:label-selectable object) selectable)}
   @argument[object]{a @class{gtk:label} widget}
   @argument[selectable]{@em{true} to allow selecting text in the label}
   @begin{short}
@@ -906,7 +906,7 @@ lambda (label menu)    :run-last
       "Accessor"
       (documentation 'label-selection-bound 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:label-selection-bound object) => bound}
+  @syntax{(gtk:label-selection-bound object) => bound}
   @argument[object]{a @class{gtk:label} widget}
   @argument[bound]{an integer with a position}
   @begin{short}
@@ -934,8 +934,8 @@ lambda (label menu)    :run-last
       "Accessor"
       (documentation 'label-single-line-mode 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:label-single-line-mode object) => mode}
-  @syntax[]{(setf (gtk:label-single-line-mode object) mode)}
+  @syntax{(gtk:label-single-line-mode object) => mode}
+  @syntax{(setf (gtk:label-single-line-mode object) mode)}
   @argument[object]{a @class{gtk:label} widget}
   @argument[mode]{@em{true} if the label should be in single line mode}
   @begin{short}
@@ -964,8 +964,8 @@ lambda (label menu)    :run-last
       "Accessor"
       (documentation 'label-track-visited-links 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:label-track-visited-links object) => setting}
-  @syntax[]{(setf (gtk:label-track-visited-links object) setting)}
+  @syntax{(gtk:label-track-visited-links object) => setting}
+  @syntax{(setf (gtk:label-track-visited-links object) setting)}
   @argument[object]{a @class{gtk:label} widget}
   @argument[setting]{@em{true} to track visited links}
   @begin{short}
@@ -991,8 +991,8 @@ lambda (label menu)    :run-last
       "Accessor"
       (documentation 'label-use-markup 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:label-use-markup object) => setting}
-  @syntax[]{(setf (gtk:label-use-markup object) setting)}
+  @syntax{(gtk:label-use-markup object) => setting}
+  @syntax{(setf (gtk:label-use-markup object) setting)}
   @argument[object]{a @class{gtk:label} widget}
   @argument[setting]{@em{true} if the text of the label should be parsed for
     markup}
@@ -1021,8 +1021,8 @@ lambda (label menu)    :run-last
       "Accessor"
       (documentation 'label-use-underline 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:label-use-underline object) => setting}
-  @syntax[]{(setf (gtk:label-use-underline object) setting)}
+  @syntax{(gtk:label-use-underline object) => setting}
+  @syntax{(setf (gtk:label-use-underline object) setting)}
   @argument[object]{a @class{gtk:label} widget}
   @argument[setting]{@em{true} if underlines in the text indicate mnemonics}
   @begin{short}
@@ -1053,8 +1053,8 @@ lambda (label menu)    :run-last
       "Accessor"
       (documentation 'label-width-chars 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:label-width-chars object) => n-chars}
-  @syntax[]{(setf (gtk:label-width-chars object) n-chars)}
+  @syntax{(gtk:label-width-chars object) => n-chars}
+  @syntax{(setf (gtk:label-width-chars object) n-chars)}
   @argument[object]{a @class{gtk:label} widget}
   @argument[n-chars]{an integer with the new desired width, in characters}
   @begin{short}
@@ -1079,8 +1079,8 @@ lambda (label menu)    :run-last
       "Accessor"
       (documentation 'label-wrap 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:label-wrap object) => wrap}
-  @syntax[]{(setf (gtk:label-wrap object) wrap)}
+  @syntax{(gtk:label-wrap object) => wrap}
+  @syntax{(setf (gtk:label-wrap object) wrap)}
   @argument[object]{a @class{gtk:label} widget}
   @argument[wrap]{a boolean whether lines are wrapped}
   @begin{short}
@@ -1105,8 +1105,8 @@ lambda (label menu)    :run-last
       "Accessor"
       (documentation 'label-wrap-mode 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:label-wrap-mode object) => setting}
-  @syntax[]{(setf (gtk:label-wrap-mode object) setting)}
+  @syntax{(gtk:label-wrap-mode object) => setting}
+  @syntax{(setf (gtk:label-wrap-mode object) setting)}
   @argument[object]{a @class{gtk:label} widget}
   @argument[setting]{a value of the @symbol{pango:wrap-mode} enumeration}
   @begin{short}
@@ -1137,8 +1137,8 @@ lambda (label menu)    :run-last
       "Accessor"
       (documentation 'label-xalign 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:label-xalign object) => xalign}
-  @syntax[]{(setf (gtk:label-xalign object) xalign)}
+  @syntax{(gtk:label-xalign object) => xalign}
+  @syntax{(setf (gtk:label-xalign object) xalign)}
   @argument[object]{a @class{gtk:label} widget}
   @argument[xalign]{a float with the xalign value, between 0 and 1}
   @begin{short}
@@ -1167,8 +1167,8 @@ lambda (label menu)    :run-last
       "Accessor"
       (documentation 'label-yalign 'function)
  "@version{2023-3-5}
-  @syntax[]{(gtk:label-yalign object) => yalign}
-  @syntax[]{(setf (gtk:label-yalign object) yalign)}
+  @syntax{(gtk:label-yalign object) => yalign}
+  @syntax{(setf (gtk:label-yalign object) yalign)}
   @argument[object]{a @class{gtk:label} widget}
   @argument[yalign]{a float with the yalign value, between 0 and 1}
   @begin{short}
@@ -1217,8 +1217,8 @@ lambda (label menu)    :run-last
 (cffi:defcfun ("gtk_label_get_text" label-text) :string
  #+liber-documentation
  "@version{2023-3-5}
-  @syntax[]{(gtk:label-text label) => text}
-  @syntax[]{(setf (gtk:label-text-label) text)}
+  @syntax{(gtk:label-text label) => text}
+  @syntax{(setf (gtk:label-text-label) text)}
   @argument[label]{a @class{gtk:label} widget}
   @argument[text]{a string with the text}
   @begin{short}
@@ -1299,8 +1299,8 @@ lambda (label menu)    :run-last
 (cffi:defcfun ("gtk_label_get_line_wrap" label-line-wrap) :boolean
  #+liber-documentation
  "@version{2023-3-5}
-  @syntax[]{(gtk:label-line-wrap label) => wrap}
-  @syntax[]{(setf (gtk:label-line-wrap label) wrap)}
+  @syntax{(gtk:label-line-wrap label) => wrap}
+  @syntax{(setf (gtk:label-line-wrap label) wrap)}
   @argument[label]{a @class{gtk:label} widget}
   @argument[wrap]{a boolean whether the lines of the label are automatically
     wrapped}
@@ -1342,8 +1342,8 @@ lambda (label menu)    :run-last
     pango:wrap-mode
  #+liber-documentation
  "@version{2023-3-5}
-  @syntax[]{(gtk:label-line-wrap-mode label) => mode}
-  @syntax[]{(setf (gtk:label-line-wrap-mode label) mode)}
+  @syntax{(gtk:label-line-wrap-mode label) => mode}
+  @syntax{(setf (gtk:label-line-wrap-mode label) mode)}
   @argument[label]{a @class{gtk:label} widget}
   @argument[mode]{a @symbol{pango:wrap-mode} value with the line wrapping mode}
   @begin{short}

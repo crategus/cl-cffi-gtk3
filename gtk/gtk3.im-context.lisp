@@ -243,8 +243,8 @@ lambda (context)    :run-last
       "Accessor"
       (documentation 'im-context-input-hints 'function)
  "@version{#2023-2-28}
-  @syntax[]{(gtk:im-context-input-hints object) => hints}
-  @syntax[]{(setf (gtk:im-context-input-hints object) hints)}
+  @syntax{(gtk:im-context-input-hints object) => hints}
+  @syntax{(setf (gtk:im-context-input-hints object) hints)}
   @argument[object]{a @class{gtk:im-context} object}
   @argument[hints]{a value of the @symbol{gtk:input-hints} enumeration}
   @begin{short}
@@ -269,8 +269,8 @@ lambda (context)    :run-last
       "Accessor"
       (documentation 'im-context-input-purpose 'function)
  "@version{#2023-2-28}
-  @syntax[]{(gtk:im-context-input-purpose object) => purpose}
-  @syntax[]{(setf (gtk:im-context-input-purpose object) purpose)}
+  @syntax{(gtk:im-context-input-purpose object) => purpose}
+  @syntax{(setf (gtk:im-context-input-purpose object) purpose)}
   @argument[object]{a @class{gtk:im-context} object}
   @argument[purpose]{a value of the @symbol{gtk:input-purpose}
     enumeration}

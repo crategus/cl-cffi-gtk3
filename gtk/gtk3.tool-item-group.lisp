@@ -210,8 +210,8 @@
       "Accessor"
       (documentation 'tool-item-group-collapsed 'function)
  "@version{#2023-2-27}
-  @syntax[]{(gtk:tool-item-group-collapsed object) => collapsed}
-  @syntax[]{(setf (gtk:tool-item-group-collapsed object) collapsed)}
+  @syntax{(gtk:tool-item-group-collapsed object) => collapsed}
+  @syntax{(setf (gtk:tool-item-group-collapsed object) collapsed)}
   @argument[object]{a @class{gtk:tool-item-group} widget}
   @argument[collapsed]{a boolean whether the group should be collapsed
     or expanded}
@@ -238,8 +238,8 @@
       "Accessor"
       (documentation 'tool-item-group-ellipsize 'function)
  "@version{#2023-2-27}
-  @syntax[]{(gtk:tool-item-group-ellipsize object) => ellipsize}
-  @syntax[]{(setf (gtk:tool-item-group-ellipsize object) ellipsize)}
+  @syntax{(gtk:tool-item-group-ellipsize object) => ellipsize}
+  @syntax{(setf (gtk:tool-item-group-ellipsize object) ellipsize)}
   @argument[object]{a @class{gtk:tool-item-group} widget}
   @argument[ellipsize]{a @symbol{pango:ellipsize-mode} value for labels in
     @arg{group}}
@@ -269,8 +269,8 @@
       "Accessor"
       (documentation 'tool-item-group-header-relief 'function)
  "@version{#2023-2-27}
-  @syntax[]{(gtk:tool-item-group-header-relief object) => style}
-  @syntax[]{(setf (gtk:tool-item-group-header-relief object) style)}
+  @syntax{(gtk:tool-item-group-header-relief object) => style}
+  @syntax{(setf (gtk:tool-item-group-header-relief object) style)}
   @argument[group]{a @class{gtk:tool-item-group} widget}
   @argument[object]{a value of the @symbol{gtk:relief-style} enumeration}
   @begin{short}
@@ -297,8 +297,8 @@
       "Accessor"
       (documentation 'tool-item-group-label 'function)
  "@version{#2023-2-27}
-  @syntax[]{(gtk:tool-item-group-label object) => label}
-  @syntax[]{(setf (gtk:tool-item-group-label object) label)}
+  @syntax{(gtk:tool-item-group-label object) => label}
+  @syntax{(setf (gtk:tool-item-group-label object) label)}
   @argument[object]{a @class{gtk:tool-item-group} widget}
   @argument[label]{a string with the new human readable label of of the group}
   @begin{short}
@@ -329,8 +329,8 @@
       "Accessor"
       (documentation 'tool-item-group-label-widget 'function)
  "@version{#2023-2-27}
-  @syntax[]{(gtk:tool-item-group-label-widget object) => label-widget}
-  @syntax[]{(setf (gtk:tool-item-group-label-widget object) label-widget)}
+  @syntax{(gtk:tool-item-group-label-widget object) => label-widget}
+  @syntax{(setf (gtk:tool-item-group-label-widget object) label-widget)}
   @argument[object]{a @class{gtk:tool-item-group} widget}
   @argument[label-widget]{a @class{gtk:widget} widget to be displayed in place
     of the usual label}
@@ -362,8 +362,8 @@
       "Accessor"
       (documentation 'tool-item-group-child-expand 'function)
  "@version{#2023-2-27}
-  @syntax[]{(gtk:tool-item-group-child-expand container child) => expand}
-  @syntax[]{(setf (gtk:tool-item-group-child-expand container child) expand)}
+  @syntax{(gtk:tool-item-group-child-expand container child) => expand}
+  @syntax{(setf (gtk:tool-item-group-child-expand container child) expand)}
   @argument[container]{a @class{gtk:tool-item-group} widget}
   @argument[child]{a @class{gtk:widget} child object}
   @argument[expand]{a boolean whether the item should receive extra space when
@@ -385,8 +385,8 @@
       "Accessor"
       (documentation 'tool-item-group-child-fill 'function)
  "@version{#2023-2-27}
-  @syntax[]{(gtk:tool-item-group-child-fill container child) => fill}
-  @syntax[]{(setf (gtk:tool-item-group-child-fill container child) fill)}
+  @syntax{(gtk:tool-item-group-child-fill container child) => fill}
+  @syntax{(setf (gtk:tool-item-group-child-fill container child) fill)}
   @argument[container]{a @class{gtk:tool-item-group} widget}
   @argument[child]{a @class{gtk:widget} child object}
   @argument[fill]{a boolean whether the item should fill the available
@@ -408,8 +408,8 @@
       "Accessor"
       (documentation 'tool-item-group-child-homogeneous 'function)
  "@version{#2023-2-27}
-  @syntax[]{(gtk:tool-item-group-child-homogeneous container child) => homogeneous}
-  @syntax[]{(setf (gtk:tool-item-group-child-homogeneous container child) homogeneous)}
+  @syntax{(gtk:tool-item-group-child-homogeneous container child) => homogeneous}
+  @syntax{(setf (gtk:tool-item-group-child-homogeneous container child) homogeneous)}
   @argument[container]{a @class{gtk:tool-item-group} widget}
   @argument[child]{a @class{gtk:widget} child object}
   @argument[fill]{a boolean whether the item should be the same size
@@ -431,8 +431,8 @@
       "Accessor"
       (documentation 'tool-item-group-child-new-row 'function)
  "@version{#2023-2-27}
-  @syntax[]{(gtk:tool-item-group-child-new-row container child) => new-row}
-  @syntax[]{(setf (gtk:tool-item-group-child-new-row container child) new-row)}
+  @syntax{(gtk:tool-item-group-child-new-row container child) => new-row}
+  @syntax{(setf (gtk:tool-item-group-child-new-row container child) new-row)}
   @argument[container]{a @class{gtk:tool-item-group} widget}
   @argument[child]{a @class{gtk:widget} child object}
   @argument[new-row]{a boolean whether the item should start a new row}
@@ -453,8 +453,8 @@
       "Accessor"
       (documentation 'tool-item-group-child-position 'function)
  "@version{#2023-2-27}
-  @syntax[]{(gtk:tool-item-group-child-position container child) => position}
-  @syntax[]{(setf (gtk:tool-item-group-child-position container child) position)}
+  @syntax{(gtk:tool-item-group-child-position container child) => position}
+  @syntax{(setf (gtk:tool-item-group-child-position container child) position)}
   @argument[container]{a @class{gtk:tool-item-group} widget}
   @argument[child]{a @class{gtk:widget} child object}
   @argument[position]{an integer with the position of the item within the group}

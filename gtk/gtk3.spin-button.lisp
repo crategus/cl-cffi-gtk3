@@ -444,8 +444,8 @@ lambda (spinbutton)    :run-last
       "Accessor"
       (documentation 'spin-button-adjustment 'function)
  "@version{#2023-3-12}
-  @syntax[]{(gtk:spin-button-adjustment object) => adjustment}
-  @syntax[]{(setf (gtk:spint-button-adjustment object) adjustment)}
+  @syntax{(gtk:spin-button-adjustment object) => adjustment}
+  @syntax{(setf (gtk:spint-button-adjustment object) adjustment)}
   @argument[object]{a @class{gtk:spin-button} widget}
   @argument[adjustment]{a @class{gtk:adjustment} object to replace the existing
     adjustment}
@@ -473,8 +473,8 @@ lambda (spinbutton)    :run-last
       "Accessor"
       (documentation 'spin-button-climb-rate 'function)
  "@version{#2023-3-12}
-  @syntax[]{(gtk:spin-button-climb-rate object) => rate}
-  @syntax[]{(setf (gtk:spint-button-climb-rate object) rate)}
+  @syntax{(gtk:spin-button-climb-rate object) => rate}
+  @syntax{(setf (gtk:spint-button-climb-rate object) rate)}
   @argument[object]{a @class{gtk:spin-button} widget}
   @argument[rate]{a double float with the acceleration rate}
   @begin{short}
@@ -500,8 +500,8 @@ lambda (spinbutton)    :run-last
       "Accessor"
       (documentation 'spin-button-digits 'function)
  "@version{#2023-3-12}
-  @syntax[]{(gtk:spin-button-digits object) => digits}
-  @syntax[]{(setf (gtk:spint-button-digits object) digits)}
+  @syntax{(gtk:spin-button-digits object) => digits}
+  @syntax{(setf (gtk:spint-button-digits object) digits)}
   @argument[object]{a @class{gtk:spin-button} widget}
   @argument[digits]{an unsigned integer with the number of digits after the
     decimal point to be displayed for the spin button's value}
@@ -527,8 +527,8 @@ lambda (spinbutton)    :run-last
       "Accessor"
       (documentation 'spin-button-numeric 'function)
  "@version{#2023-3-12}
-  @syntax[]{(gtk:spin-button-numeric object) => numeric}
-  @syntax[]{(setf (gtk:spin-button-numeric object) numeric)}
+  @syntax{(gtk:spin-button-numeric object) => numeric}
+  @syntax{(setf (gtk:spin-button-numeric object) numeric)}
   @argument[object]{a @class{gtk:spin-button} widget}
   @argument[numeric]{a boolean indicating if only numeric entry is allowed}
   @begin{short}
@@ -554,8 +554,8 @@ lambda (spinbutton)    :run-last
       "Accessor"
       (documentation 'spin-button-snap-to-ticks 'function)
  "@version{#2023-3-12}
-  @syntax[]{(gtk:spin-button-snap-to-ticks object) => snap-to-ticks}
-  @syntax[]{(setf (gtk:spin-button-snap-to-ticks object) snap-to-ticks)}
+  @syntax{(gtk:spin-button-snap-to-ticks object) => snap-to-ticks}
+  @syntax{(setf (gtk:spin-button-snap-to-ticks object) snap-to-ticks)}
   @argument[object]{a @class{gtk:spin-button} widget}
   @argument[snap-to-ticks]{a boolean indicating if invalid values should be
     corrected}
@@ -585,8 +585,8 @@ lambda (spinbutton)    :run-last
       "Accessor"
       (documentation 'spin-button-update-policy 'function)
  "@version{#2023-3-12}
-  @syntax[]{(gtk:spin-button-update-policy object) => update-policy}
-  @syntax[]{(setf (gtk:spin-button-upadate-policy object) update-policy)}
+  @syntax{(gtk:spin-button-update-policy object) => update-policy}
+  @syntax{(setf (gtk:spin-button-upadate-policy object) update-policy)}
   @argument[object]{a @class{gtk:spin-button} widget}
   @argument[policy]{a value of the @symbol{gtk:spin-button-update-policy}
     enumeration}
@@ -614,8 +614,8 @@ lambda (spinbutton)    :run-last
       "Accessor"
       (documentation 'spin-button-value 'function)
  "@version{2023-12-29}
-  @syntax[]{(gtk:spin-button-value object) => value}
-  @syntax[]{(setf (gtk:spin-button-value object) value)}
+  @syntax{(gtk:spin-button-value object) => value}
+  @syntax{(setf (gtk:spin-button-value object) value)}
   @argument[object]{a @class{gtk:spin-button} widget}
   @argument[value]{a double float with the value of the spin button}
   @begin{short}
@@ -639,8 +639,8 @@ lambda (spinbutton)    :run-last
       "Accessor"
       (documentation 'spin-button-wrap 'function)
  "@version{#2023-3-12}
-  @syntax[]{(gtk:spin-button-value object) => wrap}
-  @syntax[]{(setf (gtk:spin-button-value object) wrap)}
+  @syntax{(gtk:spin-button-value object) => wrap}
+  @syntax{(setf (gtk:spin-button-value object) wrap)}
   @argument[object]{a @class{gtk:spin-button} widget}
   @argument[wrap]{a boolean indicating if wrapping behavior is performed}
   @begin{short}
@@ -789,8 +789,8 @@ lambda (spinbutton)    :run-last
 (defun spin-button-increments (spinbutton)
  #+liber-documentation
  "@version{#2023-3-12}
-  @syntax[]{(gtk:spin-button-increments spin-button) => step, page}
-  @syntax[]{(setf (gtk:spin-button-increments spin-button) (list step page))}
+  @syntax{(gtk:spin-button-increments spin-button) => step, page}
+  @syntax{(setf (gtk:spin-button-increments spin-button) (list step page))}
   @argument[spinbutton]{a @class{gtk:spin-button} widget}
   @argument[step]{a double float increment applied for a button 1 press}
   @argument[page]{a double float increment applied for a button 2 press}
@@ -841,8 +841,8 @@ lambda (spinbutton)    :run-last
 (defun spin-button-range (spinbutton)
  #+liber-documentation
  "@version{#2023-3-12}
-  @syntax[]{(gtk:spin-button-range spin-button) => min, max}
-  @syntax[]{(setf (gtk:spin-button-range spin-button) (list min max))}
+  @syntax{(gtk:spin-button-range spin-button) => min, max}
+  @syntax{(setf (gtk:spin-button-range spin-button) (list min max))}
   @argument[spinbutton]{a @class{gtk:spin-button} widget}
   @argument[min]{a double float minimum allowable value}
   @argument[max]{a double float maximum allowable value}

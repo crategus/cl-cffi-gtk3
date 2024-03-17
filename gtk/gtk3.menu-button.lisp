@@ -216,8 +216,8 @@
       "Accessor"
       (documentation 'menu-button-align-widget 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:menu-button-align-widget object) => widget}
-  @syntax[]{(setf (gtk:menu-button-align-widget object) widget)}
+  @syntax{(gtk:menu-button-align-widget object) => widget}
+  @syntax{(setf (gtk:menu-button-align-widget object) widget)}
   @argument[object]{a @class{gtk:menu-button} widget}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
@@ -253,8 +253,8 @@
       "Accessor"
       (documentation 'menu-button-direction 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:menu-button-direction object) => direction}
-  @syntax[]{(setf (gtk:menu-button-direction object) direction)}
+  @syntax{(gtk:menu-button-direction object) => direction}
+  @syntax{(setf (gtk:menu-button-direction object) direction)}
   @argument[object]{a @class{gtk:menu-button} widget}
   @argument[direction]{a value of the @symbol{gtk:arrow-type} enumeration}
   @begin{short}
@@ -291,8 +291,8 @@
       "Accessor"
       (documentation 'menu-button-menu-model 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:menu-button-menu-model object) => model}
-  @syntax[]{(setf (gtk:menu-button-menu-model object) model)}
+  @syntax{(gtk:menu-button-menu-model object) => model}
+  @syntax{(setf (gtk:menu-button-menu-model object) model)}
   @argument[object]{a @class{gtk:menu-button} widget}
   @argument[model]{a @class{g:menu-model} object, or @code{nil} to unset and
     disable the button}
@@ -336,8 +336,8 @@
       "Accessor"
       (documentation 'menu-button-popover 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:menu-button-popover object) => popover}
-  @syntax[]{(setf (gtk:menu-button-popover object) popover)}
+  @syntax{(gtk:menu-button-popover object) => popover}
+  @syntax{(setf (gtk:menu-button-popover object) popover)}
   @argument[object]{a @class{gtk:menu-button} widget}
   @argument[popover]{a @class{gtk:popover} widget, or @code{nil} to unset and
     disable the button}
@@ -370,8 +370,8 @@
       "Accessor"
       (documentation 'menu-button-popup 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:menu-button-popup object) => popup}
-  @syntax[]{(setf (gtk:menu-button-popup object) popup)}
+  @syntax{(gtk:menu-button-popup object) => popup}
+  @syntax{(setf (gtk:menu-button-popup object) popup)}
   @argument[object]{a @class{gtk:menu-button} widget}
   @argument[menu]{a @class{gtk:menu} widget, or @code{nil} to unset and disable
   the button}
@@ -407,8 +407,8 @@
       "Accessor"
       (documentation 'menu-button-use-popover 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:menu-button-use-popover object) => use-popover}
-  @syntax[]{(setf (gtk:menu-button-use-popover object) use-popover)}
+  @syntax{(gtk:menu-button-use-popover object) => use-popover}
+  @syntax{(setf (gtk:menu-button-use-popover object) use-popover)}
   @argument[object]{a @class{gtk:menu-button} widget}
   @argument[use-popover]{@em{true} to construct a popover from the menu model}
   @begin{short}

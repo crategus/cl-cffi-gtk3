@@ -362,7 +362,7 @@ lambda (icon size)    :run-last
       "Accessor"
       (documentation 'status-icon-embedded 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:status-icon-embedded object) => embedded}
+  @syntax{(gtk:status-icon-embedded object) => embedded}
   @argument[object]{a @class{gtk:status-icon} object}
   @argument[embedded]{a boolean whether the status icon is embedded}
   @begin{short}
@@ -390,7 +390,7 @@ lambda (icon size)    :run-last
       "Accessor"
       (documentation 'status-icon-file 'function)
  "@version{#2023-3-27}
-  @syntax[]{(setf (gtk:status-icon-file object) file)}
+  @syntax{(setf (gtk:status-icon-file object) file)}
   @argument[object]{a @class{gtk:status-icon} object}
   @argument[file]{a string with a filename}
   @begin{short}
@@ -417,8 +417,8 @@ lambda (icon size)    :run-last
       "Accessor"
       (documentation 'status-icon-gicon 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:status-icon-gicon object) => icon}
-  @syntax[]{(setf (gtk:status-icon-gicon object) icon)}
+  @syntax{(gtk:status-icon-gicon object) => icon}
+  @syntax{(setf (gtk:status-icon-gicon object) icon)}
   @argument[object]{a @class{gtk:status-icon} widget}
   @argument[icon]{a @class{g:icon} object}
   @begin{short}
@@ -462,8 +462,8 @@ lambda (icon size)    :run-last
       "Accessor"
       (documentation 'status-icon-has-tooltip 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:status-icon-has-tooltip object) => has-tooltip}
-  @syntax[]{(setf (gtk:status-icon-has-tooltip object) has-tooltip)}
+  @syntax{(gtk:status-icon-has-tooltip object) => has-tooltip}
+  @syntax{(setf (gtk:status-icon-has-tooltip object) has-tooltip)}
   @argument[object]{a @class{gtk:status-icon} widget}
   @argument[has-tooltip]{a boolean whether or not the status icon has a tooltip}
   @begin{short}
@@ -504,8 +504,8 @@ lambda (icon size)    :run-last
       "Accessor"
       (documentation 'status-icon-icon-name 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:status-icon-icon-name object) => name}
-  @syntax[]{(setf (gtk:status-icon-icon-name object) name)}
+  @syntax{(gtk:status-icon-icon-name object) => name}
+  @syntax{(setf (gtk:status-icon-icon-name object) name)}
   @argument[object]{a @class{gtk:status-icon} widget}
   @argument[name]{a string with the name of the icon from the icon theme}
   @begin{short}
@@ -540,7 +540,7 @@ lambda (icon size)    :run-last
       "Accessor"
       (documentation 'status-icon-orientation 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:status-icon-orientation object) => orientation}
+  @syntax{(gtk:status-icon-orientation object) => orientation}
   @argument[object]{a @class{gtk:status-icon} widget}
   @argument[orientation]{a value of the @symbol{gtk:orientation} enumeration}
   @begin{short}
@@ -568,8 +568,8 @@ lambda (icon size)    :run-last
       "Accessor"
       (documentation 'status-icon-pixbuf 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:status-icon-pixbuf object) => pixbuf}
-  @syntax[]{(setf (gtk:status-icon-pixbuf object) pixbuf)}
+  @syntax{(gtk:status-icon-pixbuf object) => pixbuf}
+  @syntax{(setf (gtk:status-icon-pixbuf object) pixbuf)}
   @argument[object]{a @class{gtk:status-icon} widget}
   @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object}
   @begin{short}
@@ -603,8 +603,8 @@ lambda (icon size)    :run-last
       "Accessor"
       (documentation 'status-icon-screen 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:status-icon-screen object) => screen}
-  @syntax[]{(setf (gtk:status-icon-screen object) screen)}
+  @syntax{(gtk:status-icon-screen object) => screen}
+  @syntax{(setf (gtk:status-icon-screen object) screen)}
   @argument[object]{a @class{gtk:status-icon} widget}
   @argument[screen]{a @class{gdk:screen} object}
   @begin{short}
@@ -636,7 +636,7 @@ lambda (icon size)    :run-last
       "Accessor"
       (documentation 'status-icon-size 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:status-icon-size object) => size}
+  @syntax{(gtk:status-icon-size object) => size}
   @argument[object]{a @class{gtk:status-icon} widget}
   @argument[size]{an integer with the size of the icon}
   @begin{short}
@@ -674,8 +674,8 @@ lambda (icon size)    :run-last
       "Accessor"
       (documentation 'status-icon-stock 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:status-icon-stock object) => stock-id}
-  @syntax[]{(setf (gtk:status-icon-stock object) stock-id)}
+  @syntax{(gtk:status-icon-stock object) => stock-id}
+  @syntax{(setf (gtk:status-icon-stock object) stock-id)}
   @argument[object]{a @class{gtk:status-icon} widget}
   @argument[stock-id]{a string with the stock ID}
   @begin{short}
@@ -710,7 +710,7 @@ lambda (icon size)    :run-last
       "Accessor"
       (documentation 'status-icon-storage-type 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:status-icon-storage-type object) => storage-type}
+  @syntax{(gtk:status-icon-storage-type object) => storage-type}
   @argument[object]{a @class{gtk:status-icon} widget}
   @argument[storage-type]{a value of the @symbol{gtk:image-type} enumeration}
   @begin{short}
@@ -743,8 +743,8 @@ lambda (icon size)    :run-last
       "Accessor"
       (documentation 'status-icon-title 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:status-icon-title object) => title}
-  @syntax[]{(setf (gtk:status-icon-title object) title)}
+  @syntax{(gtk:status-icon-title object) => title}
+  @syntax{(setf (gtk:status-icon-title object) title)}
   @argument[object]{a @class{gtk:status-icon} widget}
   @argument[title]{a string with the title}
   @begin{short}
@@ -781,8 +781,8 @@ lambda (icon size)    :run-last
       "Accessor"
       (documentation 'status-icon-tooltip-markup 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:status-icon-tooltip-markup object) => markup}
-  @syntax[]{(setf (gtk:status-icon-tooltip-markup object) markup)}
+  @syntax{(gtk:status-icon-tooltip-markup object) => markup}
+  @syntax{(setf (gtk:status-icon-tooltip-markup object) markup)}
   @argument[object]{a @class{gtk:status-icon} widget}
   @argument[markup]{a string with the contents of the tooltip for the status
     icon, or @code{nil}}
@@ -827,8 +827,8 @@ lambda (icon size)    :run-last
       "Accessor"
       (documentation 'status-icon-tooltip-text 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:status-icon-tooltip-text object) => text}
-  @syntax[]{(setf (gtk:status-icon-tooltip-text object) text)}
+  @syntax{(gtk:status-icon-tooltip-text object) => text}
+  @syntax{(setf (gtk:status-icon-tooltip-text object) text)}
   @argument[object]{a @class{gtk:status-icon} widget}
   @argument[text]{a string with the contents of the tooltip for the status icon}
   @begin{short}
@@ -862,8 +862,8 @@ lambda (icon size)    :run-last
       "Accessor"
       (documentation 'status-icon-visible 'function)
  "@version{#2023-3-27}
-  @syntax[]{(gtk:status-icon-visible object) => visible}
-  @syntax[]{(setf (gtk:status-icon-visible object) visible)}
+  @syntax{(gtk:status-icon-visible object) => visible}
+  @syntax{(setf (gtk:status-icon-visible object) visible)}
   @argument[object]{a @class{gtk:status-icon} widget}
   @argument[visible]{@em{true} to show the status icon, @em{false} to hide it}
   @begin{short}

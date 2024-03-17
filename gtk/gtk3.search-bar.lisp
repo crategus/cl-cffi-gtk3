@@ -197,8 +197,8 @@ main (gint argc,
       "Accessor"
       (documentation 'search-bar-search-mode-enabled 'function)
  "@version{#2023-2-16}
-  @syntax[]{(gtk:search-bar-search-mode-enabled object) => search-mode}
-  @syntax[]{(setf (gtk:search-bar-search-mode-enabled object) search-mode)}
+  @syntax{(gtk:search-bar-search-mode-enabled object) => search-mode}
+  @syntax{(setf (gtk:search-bar-search-mode-enabled object) search-mode)}
   @argument[object]{a @class{gtk:search-bar} widget}
   @argument[search-mode]{a boolean with the state of the search mode}
   @begin{short}
@@ -223,8 +223,8 @@ main (gint argc,
       "Accessor"
       (documentation 'search-bar-show-close-button 'function)
  "@version{#2023-2-16}
-  @syntax[]{(gtk:search-bar-show-close-button object) => visible}
-  @syntax[]{(setf (gtk:search-bar-show-close-button object) visible)}
+  @syntax{(gtk:search-bar-show-close-button object) => visible}
+  @syntax{(setf (gtk:search-bar-show-close-button object) visible)}
   @argument[object]{a @class{gtk:search-bar} widget}
   @argument[visible]{a boolean whether the Close button will be shown or not}
   @begin{short}

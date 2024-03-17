@@ -140,8 +140,8 @@ lambda (action current)    :no-recurse
       "Accessor"
       (documentation 'radio-action-current-value 'function)
  "@version{#2023-3-22}
-  @syntax[]{(gtk:radio-action-current-value object) => current-value}
-  @syntax[]{(setf (gtk:radio-action-current-value object) current-value)}
+  @syntax{(gtk:radio-action-current-value object) => current-value}
+  @syntax{(setf (gtk:radio-action-current-value object) current-value)}
   @argument[object]{a @class{gtk:radio-action} object}
   @argument[current-value]{an integer with the value}
   @begin{short}
@@ -170,8 +170,8 @@ lambda (action current)    :no-recurse
       "Accessor"
       (documentation 'radio-action-group 'function)
  "@version{#2023-3-22}
-  @syntax[]{(gtk:radio-action-group object) => group}
-  @syntax[]{(setf (gtk:radio-action-group object) group)}
+  @syntax{(gtk:radio-action-group object) => group}
+  @syntax{(setf (gtk:radio-action-group object) group)}
   @argument[object]{a @class{gtk:radio-action} object}
   @argument[group]{a list of @class{gtk:radion-action} objects representing a
     radio group}
@@ -218,8 +218,8 @@ while (/* more actions to add */)
       "Accessor"
       (documentation 'radio-action-value 'function)
  "@version{#2023-3-22}
-  @syntax[]{(gtk:radio-action-value object) => value}
-  @syntax[]{(setf (gtk:radio-action-value object) value)}
+  @syntax{(gtk:radio-action-value object) => value}
+  @syntax{(setf (gtk:radio-action-value object) value)}
   @argument[object]{a @class{gtk:radio-action} object}
   @argument[value]{an integer with the value which can be used to determine
     which action is active}

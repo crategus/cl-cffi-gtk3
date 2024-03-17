@@ -119,8 +119,8 @@
       "Accessor"
       (documentation 'font-chooser-widget-tweak-action 'function)
  "@version{2023-6-16}
-  @syntax[]{(gtk:font-chooser-widget-tweak-action object) => tweak-action}
-  @syntax[]{(setf (gtk:font-chooser-widget-tweak-action object) tweak-action)}
+  @syntax{(gtk:font-chooser-widget-tweak-action object) => tweak-action}
+  @syntax{(setf (gtk:font-chooser-widget-tweak-action object) tweak-action)}
   @argument[object]{a @class{gtk:font-chooser-widget} widget}
   @argument[tweak-action]{a @class{g:action} toggle action}
   @begin{short}

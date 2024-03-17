@@ -343,8 +343,8 @@ lambda (container widget)    :run-first
       "Accessor"
       (documentation 'container-border-width 'function)
  "@version{2023-3-3}
-  @syntax[]{(gtk:container-border-width object) => width}
-  @syntax[]{(setf gtk:container-border-width object) width)}
+  @syntax{(gtk:container-border-width object) => width}
+  @syntax{(setf gtk:container-border-width object) width)}
   @argument[object]{a @class{gtk:container} widget}
   @argument[width]{an unsigned integer with the border width}
   @begin{short}
@@ -380,8 +380,8 @@ lambda (container widget)    :run-first
       "Accessor"
       (documentation 'container-child 'function)
  "@version{2023-3-3}
-  @syntax[]{(gtk:container-child object) => child}
-  @syntax[]{(setf gtk:container-child object) child)}
+  @syntax{(gtk:container-child object) => child}
+  @syntax{(setf gtk:container-child object) child)}
   @argument[object]{a @class{gtk:container} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @begin{short}
@@ -409,8 +409,8 @@ lambda (container widget)    :run-first
       "Accessor"
       (documentation 'container-resize-mode 'function)
  "@version{2023-3-3}
-  @syntax[]{(gtk:container-resize-mode object) => mode}
-  @syntax[]{(setf gtk:container-resize-mode object) mode)}
+  @syntax{(gtk:container-resize-mode object) => mode}
+  @syntax{(setf gtk:container-resize-mode object) mode)}
   @argument[object]{a @class{gtk:container} widget}
   @argument[mode]{a value of the @symbol{gtk:resize-mode} enumeration}
   @begin{short}
@@ -688,8 +688,8 @@ lambda (widget)
     (g:object widget)
  #+liber-documentation
  "@version{2023-3-3}
-  @syntax[]{(gtk:container-focus-child container) => child}
-  @syntax[]{(setf (gtk:container-focus-child container) child)}
+  @syntax{(gtk:container-focus-child container) => child}
+  @syntax{(setf (gtk:container-focus-child container) child)}
   @argument[container]{a @class{gtk:container} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @begin{short}
@@ -734,8 +734,8 @@ lambda (widget)
     (g:object adjustment)
  #+liber-documentation
  "@version{#2023-3-3}
-  @syntax[]{(gtk:container-focus-vadjustment container) => adjustment}
-  @syntax[]{(setf (gtk:container-focus-vadjustment container) adjustment)}
+  @syntax{(gtk:container-focus-vadjustment container) => adjustment}
+  @syntax{(setf (gtk:container-focus-vadjustment container) adjustment)}
   @argument[container]{a @class{gtk:container} widget}
   @argument[adjustment]{a @class{gtk:adjustment} object which should be
     adjusted when the focus is moved among the descendents of the container}
@@ -774,8 +774,8 @@ lambda (widget)
     (g:object adjustment)
  #+liber-documentation
  "@version{#2023-3-3}
-  @syntax[]{(gtk:container-focus-hadjustment container) => adjustment}
-  @syntax[]{(setf (gtk:container-focus-hadjustment container) adjustment)}
+  @syntax{(gtk:container-focus-hadjustment container) => adjustment}
+  @syntax{(setf (gtk:container-focus-hadjustment container) adjustment)}
   @argument[container]{a @class{gtk:container} widget}
   @argument[adjustment]{a @class{gtk:adjustment} object which should be
     adjusted when the focus is moved among the descendents of the container}
@@ -919,8 +919,8 @@ lambda (widget)
 (defun container-child-property (container child property &optional gtype)
  #+liber-documentation
  "@version{2023-3-3}
-  @syntax[]{(gtk:container-child-property container child property) => value}
-  @syntax[]{(setf (gtk:container-child-property container child property) value)}
+  @syntax{(gtk:container-child-property container child property) => value}
+  @syntax{(setf (gtk:container-child-property container child property) value)}
   @argument[container]{a @class{gtk:container} widget}
   @argument[child]{a @class{gtk:widget} object which is a child of
     @arg{container}}
@@ -1144,8 +1144,8 @@ lambda (widget)
 (defun container-focus-chain (container)
  #+liber-documentation
  "@version{2023-3-3}
-  @syntax[]{(gtk:container-focus-chain container) => focusable}
-  @syntax[]{(setf (gtk:container-focus-chain container) focusable)}
+  @syntax{(gtk:container-focus-chain container) => focusable}
+  @syntax{(setf (gtk:container-focus-chain container) focusable)}
   @argument[container]{a @class{gtk:container} widget}
   @argument[focusable]{a list of @class{gtk:widget} widgets representing the
     focus chain}

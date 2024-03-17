@@ -218,7 +218,7 @@ lambda (group keyval modifier func)    :detailed
       "Accessor"
       (documentation 'accel-group-is-locked 'function)
  "@version{2023-3-1}
-  @syntax[]{(gtk:accel-group-is-locked object) => is-locked}
+  @syntax{(gtk:accel-group-is-locked object) => is-locked}
   @argument[object]{a @class{gtk:accel-group} object}
   @argument[is-locked]{a boolean whether the accelerator group is locked}
   @begin{short}
@@ -248,7 +248,7 @@ lambda (group keyval modifier func)    :detailed
       "Accessor"
       (documentation 'accel-group-modifier-mask 'function)
  "@version{2023-3-1}
-  @syntax[]{(gtk:accelerator-group object) => mask}
+  @syntax{(gtk:accelerator-group object) => mask}
   @argument[object]{a @class{gtk:accel-group} object}
   @argument[mask]{a @symbol{gdk:modifier-type} value with the modifier mask}
   @begin{short}
@@ -843,8 +843,8 @@ lambda (group keyval modifier func)    :detailed
                accelerator-default-mod-mask) gdk:modifier-type
  #+liber-documentation
  "@version{2023-3-1}
-  @syntax[]{(gtk:accelerator-default-mod-mask) => mask}
-  @syntax[]{(setf (gtk:accelerator-default-mod-mask) mask)}
+  @syntax{(gtk:accelerator-default-mod-mask) => mask}
+  @syntax{(setf (gtk:accelerator-default-mod-mask) mask)}
   @argument[mask]{a @symbol{gdk:modifier-type} accelerator modifier mask}
   @begin{short}
      Accessor of the default accelerator modifier mask.

@@ -130,8 +130,8 @@ lambda (chooser color)    :run-first
       "Accessor"
       (documentation 'color-chooser-rgba 'function)
  "@version{2023-6-12}
-  @syntax[]{(gtk:color-chooser-rgba object) => color}
-  @syntax[]{(setf (gtk:color-chooser-rgba object) color)}
+  @syntax{(gtk:color-chooser-rgba object) => color}
+  @syntax{(setf (gtk:color-chooser-rgba object) color)}
   @argument[object]{a @class{gtk:color-chooser} widget}
   @argument[color]{a @struct{gdk:rgba} color}
   @begin{short}
@@ -164,8 +164,8 @@ lambda (chooser color)    :run-first
       "Accessor"
       (documentation 'color-chooser-use-alpha 'function)
  "@version{2023-6-12}
-  @syntax[]{(gtk:color-chooser-use-alpha object) => use-alpha}
-  @syntax[]{(setf (gtk:color-chooser-use-alpha object) use-alpha)}
+  @syntax{(gtk:color-chooser-use-alpha object) => use-alpha}
+  @syntax{(setf (gtk:color-chooser-use-alpha object) use-alpha)}
   @argument[object]{a @class{gtk:color-chooser} widget}
   @argument[use-alpha]{@em{true} if the color chooser should use alpha channel,
     @em{false} if not}

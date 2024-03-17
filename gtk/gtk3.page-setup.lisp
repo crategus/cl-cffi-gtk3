@@ -170,8 +170,8 @@
     page-orientation
  #+liber-documentation
  "@version{#2023-3-21}
-  @syntax[]{(gtk:page-setup-orientation setup) => orientation}
-  @syntax[]{(setf (gtk:page-setup-orientation setup) orientation)}
+  @syntax{(gtk:page-setup-orientation setup) => orientation}
+  @syntax{(setf (gtk:page-setup-orientation setup) orientation)}
   @argument[setup]{a @class{gtk:page-setup} object}
   @argument[orientation]{a @symbol{gtk:page-orientation} value}
   @begin{short}
@@ -212,8 +212,8 @@
     (g:boxed paper-size)
  #+liber-documentation
  "@version{#2023-3-21}
-  @syntax[]{(gtk:page-setup-paper-size setup) => size}
-  @syntax[]{(setf (gtk:page-setup-paper-size setup) size)}
+  @syntax{(gtk:page-setup-paper-size setup) => size}
+  @syntax{(setf (gtk:page-setup-paper-size setup) size)}
   @argument[setup]{a @class{gtk:page-setup} object}
   @argument[size]{a @class{gtk:paper-size} instance}
   @begin{short}
@@ -246,8 +246,8 @@
 (cffi:defcfun ("gtk_page_setup_get_top_margin" page-setup-top-margin) :double
  #+liber-documentation
  "@version{#2023-3-21}
-  @syntax[]{(gtk:page-setup-top-margin setup unit) => margin}
-  @syntax[]{(setf (gtk:page-setup-top-margin setup unit) margin)}
+  @syntax{(gtk:page-setup-top-margin setup unit) => margin}
+  @syntax{(setf (gtk:page-setup-top-margin setup unit) margin)}
   @argument[setup]{a @class{gtk:page-setup} object}
   @argument[unit]{a @symbol{gtk:unit} value}
   @argument[margin]{a double float with the top margin in units of @arg{unit}}
@@ -281,8 +281,8 @@
     :double
  #+liber-documentation
  "@version{#2023-3-21}
-  @syntax[]{(gtk:page-setup-bottom-margin setup unit) => margin}
-  @syntax[]{(setf gtk:page-setup-bottom-margin setup unit) margin)}
+  @syntax{(gtk:page-setup-bottom-margin setup unit) => margin}
+  @syntax{(setf gtk:page-setup-bottom-margin setup unit) margin)}
   @argument[setup]{a @class{gtk:page-setup} object}
   @argument[unit]{a @symbol{gtk:unit} value}
   @argument[margin]{a double float with the bottom margin in units of
@@ -316,8 +316,8 @@
 (cffi:defcfun ("gtk_page_setup_get_left_margin" page-setup-left-margin) :double
  #+liber-documentation
  "@version{#2023-3-21}
-  @syntax[]{(gtk:page-setup-left-margin setup unit) => margin}
-  @syntax[]{(setf gtk:page-setup-left-margin setup unit) margin)}
+  @syntax{(gtk:page-setup-left-margin setup unit) => margin}
+  @syntax{(setf gtk:page-setup-left-margin setup unit) margin)}
   @argument[setup]{a @class{gtk:page-setup} object}
   @argument[unit]{a @symbol{gtk:unit} value}
   @argument[margin]{a double float with the left margin in units of @arg{unit}}
@@ -351,8 +351,8 @@
     :double
  #+liber-documentation
  "@version{#2023-3-21}
-  @syntax[]{(gtk:page-setup-right-margin setup unit) => margin}
-  @syntax[]{(setf gtk:page-setup-right-margin setup unit) margin)}
+  @syntax{(gtk:page-setup-right-margin setup unit) => margin}
+  @syntax{(setf gtk:page-setup-right-margin setup unit) margin)}
   @argument[setup]{a @class{gtk:page-setup} object}
   @argument[unit]{a @symbol{gtk:unit} value}
   @argument[margin]{a double float with the right margin in units of @arg{unit}}

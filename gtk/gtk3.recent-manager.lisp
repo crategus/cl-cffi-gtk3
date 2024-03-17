@@ -319,8 +319,8 @@ lambda (manager)    :run-first
       "Accessor"
       (documentation 'recent-manager-filename 'function)
  "@version{2023-1-29}
-  @syntax[]{(gtk:recent-manager-filename object) => filename}
-  @syntax[]{(setf (gtk:recent-manager-filename object) filename)}
+  @syntax{(gtk:recent-manager-filename object) => filename}
+  @syntax{(setf (gtk:recent-manager-filename object) filename)}
   @argument[object]{a @class{gtk:recent-manager} object}
   @argument[filename]{a string with the full path to the file}
   @begin{short}
@@ -345,8 +345,8 @@ lambda (manager)    :run-first
       "Accessor"
       (documentation 'recent-manager-size 'function)
  "@version{2023-1-29}
-  @syntax[]{(gtk:recent-manager-size object) => size}
-  @syntax[]{(setf (gtk:recent-manager-size object) size)}
+  @syntax{(gtk:recent-manager-size object) => size}
+  @syntax{(setf (gtk:recent-manager-size object) size)}
   @argument[object]{a @class{gtk:recent-manager} object}
   @argument[size]{an integer with the size of the resources list}
   @begin{short}

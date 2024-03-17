@@ -148,8 +148,8 @@
       "Accessor"
       (documentation 'layout-height 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:layout-height object) => height}
-  @syntax[]{(setf (gtk:layout-height object) height)}
+  @syntax{(gtk:layout-height object) => height}
+  @syntax{(setf (gtk:layout-height object) height)}
   @argument[object]{a @class{gtk:layout} widget}
   @argument[height]{an unsigned integer with the height of the layout}
   @begin{short}
@@ -175,8 +175,8 @@
       "Accessor"
       (documentation 'layout-width 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:layout-width object) => width}
-  @syntax[]{(setf (gtk:layout-width object) width)}
+  @syntax{(gtk:layout-width object) => width}
+  @syntax{(setf (gtk:layout-width object) width)}
   @argument[object]{a @class{gtk:layout} widget}
   @argument[width]{an unsigned integer with the width of the layout}
   @begin{short}
@@ -200,8 +200,8 @@
       "Accessor"
       (documentation 'layout-child-x 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:layout-child-x container cild) => x}
-  @syntax[]{(setf (gtk:layout-child-x container child) x)}
+  @syntax{(gtk:layout-child-x container cild) => x}
+  @syntax{(setf (gtk:layout-child-x container child) x)}
   @argument[container]{a @class{gtk:layout} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[x]{an integer with the x position of the child widget}
@@ -221,8 +221,8 @@
       "Accessor"
       (documentation 'layout-child-y 'function)
  "@version{#2023-3-20}
-  @syntax[]{(gtk:layout-child-y container cild) => y}
-  @syntax[]{(setf (gtk:layout-child-y container child) y)}
+  @syntax{(gtk:layout-child-y container cild) => y}
+  @syntax{(setf (gtk:layout-child-y container child) y)}
   @argument[container]{a @class{gtk:layout} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[y]{an integer with the y position of the child widget}
@@ -329,8 +329,8 @@
 (defun layout-size (layout)
  #+liber-documentation
  "@version{#2023-3-20}
-  @syntax[]{(gtk:layout-size layout) => width, height}
-  @syntax[]{(setf (gtk:layout-size layout) '(width height))}
+  @syntax{(gtk:layout-size layout) => width, height}
+  @syntax{(setf (gtk:layout-size layout) '(width height))}
   @argument[layout]{a @class{gtk:layout} widget}
   @argument[width]{an unsigned integer with the width of the entire scrollable
     area}

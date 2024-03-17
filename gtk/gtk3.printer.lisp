@@ -210,7 +210,7 @@ lambda (printer success)    :run-last
       "Accessor"
       (documentation 'printer-accepting-jobs 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:printer-accepting-jobs object) => accepting-jobs}
+  @syntax{(gtk:printer-accepting-jobs object) => accepting-jobs}
   @argument[object]{a @class{gtk:printer} object}
   @argument[accepting-jobs]{a boolean whether the printer is accepting jobs}
   @begin{short}
@@ -234,7 +234,7 @@ lambda (printer success)    :run-last
       "Accessor"
       (documentation 'printer-accepts-pdf 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:printer-accepts-pdf object) => accepts-pdf}
+  @syntax{(gtk:printer-accepts-pdf object) => accepts-pdf}
   @argument[object]{a @class{gtk:printer} object}
   @argument[accepts-pdf]{a boolean whether the printer can accept PDF}
   @begin{short}
@@ -258,7 +258,7 @@ lambda (printer success)    :run-last
       "Accessor"
       (documentation 'printer-accepts-ps 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:printer-accepts-ps object) => accepts-ps}
+  @syntax{(gtk:printer-accepts-ps object) => accepts-ps}
   @argument[object]{a @class{gtk:printer} object}
   @argument[accepts-ps]{a boolean whether the printer can accept PostScript}
   @begin{short}
@@ -281,7 +281,7 @@ lambda (printer success)    :run-last
       "Accessor"
       (documentation 'printer-backend 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:printer-backend object) => backend}
+  @syntax{(gtk:printer-backend object) => backend}
   @argument[object]{a @class{gtk:printer} object}
   @argument[backend]{a @class{gtk:print-backend} object}
   @return{The @class{gtk:print-backend} backend of printer.}
@@ -306,7 +306,7 @@ lambda (printer success)    :run-last
       "Accessor"
       (documentation 'printer-icon-name 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:printer-icon-name object) => icon-name}
+  @syntax{(gtk:printer-icon-name object) => icon-name}
   @argument[object]{a @class{gtk:printer} object}
   @argument[icon-name]{a string with the icon name}
   @begin{short}
@@ -330,7 +330,7 @@ lambda (printer success)    :run-last
       "Accessor"
       (documentation 'printer-is-virtual 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:printer-is-virtual object) => is-virtual}
+  @syntax{(gtk:printer-is-virtual object) => is-virtual}
   @argument[object]{a @class{gtk:printer} object}
   @argument[is-virtual]{a boolean whether the printer is real hardware printer}
   @begin{short}
@@ -355,7 +355,7 @@ lambda (printer success)    :run-last
       "Accessor"
       (documentation 'printer-job-count 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:printer-job-count object) => count}
+  @syntax{(gtk:printer-job-count object) => count}
   @argument[object]{a @class{gtk:printer} object}
   @argument[count]{an integer with he number of jobs queued on the printer}
   @begin{short}
@@ -378,7 +378,7 @@ lambda (printer success)    :run-last
       "Accessor"
       (documentation 'printer-location 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:printer-location object) => location}
+  @syntax{(gtk:printer-location object) => location}
   @argument[object]{a @class{gtk:printer} object}
   @argument[location]{a string with the location of the printer}
   @begin{short}
@@ -402,7 +402,7 @@ lambda (printer success)    :run-last
       "Accessor"
       (documentation 'printer-name 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:printer-name object) => name}
+  @syntax{(gtk:printer-name object) => name}
   @argument[object]{a @class{gtk:printer} object}
   @argument[name]{a string with the name of the printer}
   @begin{short}
@@ -426,7 +426,7 @@ lambda (printer success)    :run-last
       "Accessor"
       (documentation 'printer-paused 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:printer-paused object) => paused}
+  @syntax{(gtk:printer-paused object) => paused}
   @argument[object]{a @class{gtk:printer} object}
   @argument[paused]{a boolean whether the printer is paused}
   @begin{short}
@@ -449,7 +449,7 @@ lambda (printer success)    :run-last
       "Accessor"
       (documentation 'printer-state-message 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:printer-state-message object) => message}
+  @syntax{(gtk:printer-state-message object) => message}
   @argument[object]{a @class{gtk:printer} object}
   @argument[message]{a string with the current state of the printer}
   @begin{short}

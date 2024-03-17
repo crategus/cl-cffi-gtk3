@@ -144,8 +144,8 @@
       "Accessor"
       (documentation 'numerable-icon-background-icon 'function)
  "@version{2022-12-21}
-  @syntax[]{(gtk:numerable-icon-background-icon object) => icon}
-  @syntax[]{(setf (gtk:numerable-icon-background-icon object) icon)}
+  @syntax{(gtk:numerable-icon-background-icon object) => icon}
+  @syntax{(setf (gtk:numerable-icon-background-icon object) icon)}
   @argument[object]{a @class{gtk:numerable-icon} object}
   @argument[icon]{a @class{g:icon} object, or @code{nil}}
   @begin{short}
@@ -186,8 +186,8 @@
       "Accessor"
       (documentation 'numerable-icon-background-icon-name 'function)
  "@version{2022-12-21}
-  @syntax[]{(gtk:numerable-icon-background-icon-name object) => name}
-  @syntax[]{(setf (gtk:numerable-icon-background-icon-name object) name)}
+  @syntax{(gtk:numerable-icon-background-icon-name object) => name}
+  @syntax{(setf (gtk:numerable-icon-background-icon-name object) name)}
   @argument[object]{a @class{gtk:numerable-icon} object}
   @argument[name]{a string with an icon name, or @code{nil}}
   @begin{short}
@@ -227,8 +227,8 @@
       "Accessor"
       (documentation 'numerable-icon-count 'function)
  "@version{2022-12-21}
-  @syntax[]{(gtk:numerable-icon-count object) => count}
-  @syntax[]{(setf (gtk:numerable-icon-count object) count)}
+  @syntax{(gtk:numerable-icon-count object) => count}
+  @syntax{(setf (gtk:numerable-icon-count object) count)}
   @argument[object]{a @class{gtk:numerable-icon} object}
   @argument[count]{an integer between -99 and 99}
   @begin{short}
@@ -265,8 +265,8 @@
       "Accessor"
       (documentation 'numerable-icon-label 'function)
  "@version{2022-12-21}
-  @syntax[]{(gtk:numerable-icon-label object) => label}
-  @syntax[]{(setf (gtk:numerable-icon-label object) label)}
+  @syntax{(gtk:numerable-icon-label object) => label}
+  @syntax{(setf (gtk:numerable-icon-label object) label)}
   @argument[object]{a @class{gtk:numerable-icon} object}
   @argument[label]{a string with a short label, or @code{nil}}
   @begin{short}
@@ -308,8 +308,8 @@
       "Accessor"
       (documentation 'numerable-icon-style-context 'function)
  "@version{2022-12-21}
-  @syntax[]{(gtk:numerable-icon-style-context object) => style}
-  @syntax[]{(setf (gtk:numerable-icon-style-context object) style)}
+  @syntax{(gtk:numerable-icon-style-context object) => style}
+  @syntax{(setf (gtk:numerable-icon-style-context object) style)}
   @argument[object]{a @class{gtk:numerable-icon} object}
   @argument[style]{a @class{gtk:style-context} object}
   @begin{short}

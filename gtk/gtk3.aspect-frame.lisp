@@ -126,8 +126,8 @@
       "Accessor"
       (documentation 'aspect-frame-obey-child 'function)
  "@version{2023-12-30}
-  @syntax[]{(gtk:aspect-frame-obey-child object) => obey-child}
-  @syntax[]{(setf (gtk:aspect-frame-obey-child object) obey-child)}
+  @syntax{(gtk:aspect-frame-obey-child object) => obey-child}
+  @syntax{(setf (gtk:aspect-frame-obey-child object) obey-child)}
   @argument[object]{a @class{gtk:aspect-frame} widget}
   @argument[obey-child]{a boolean whether to force the aspect ratio}
   @begin{short}
@@ -152,8 +152,8 @@
       "Accessor"
       (documentation 'aspect-frame-ratio 'function)
  "@version{2023-12-30}
-  @syntax[]{(gtk:aspect-frame-ratio object) => ratio}
-  @syntax[]{(setf (gtk:aspect-frame-ratio object) ratio)}
+  @syntax{(gtk:aspect-frame-ratio object) => ratio}
+  @syntax{(setf (gtk:aspect-frame-ratio object) ratio)}
   @argument[object]{a @class{gtk:aspect-frame} widget}
   @argument[ratio]{a float with an aspect ratio}
   @begin{short}
@@ -178,8 +178,8 @@
       "Accessor"
       (documentation 'aspect-frame-xalign 'function)
  "@version{2023-12-30}
-  @syntax[]{(gtk:aspect-frame-xalign object) => xalign}
-  @syntax[]{(setf (gtk:aspect-frame-xalign object) xalign)}
+  @syntax{(gtk:aspect-frame-xalign object) => xalign}
+  @syntax{(setf (gtk:aspect-frame-xalign object) xalign)}
   @argument[object]{a @class{gtk:aspect-frame} widget}
   @argument[xalign]{a float with the x alignment of the child widget}
   @begin{short}
@@ -203,8 +203,8 @@
       "Accessor"
       (documentation 'aspect-frame-yalign 'function)
  "@version{2023-12-30}
-  @syntax[]{(gtk:aspect-frame-yalign object) => yalign}
-  @syntax[]{(setf (gtk:aspect-frame-yalign object) yalign)}
+  @syntax{(gtk:aspect-frame-yalign object) => yalign}
+  @syntax{(setf (gtk:aspect-frame-yalign object) yalign)}
   @argument[object]{a @class{gtk:aspect-frame} widget}
   @argument[yalign]{a float with the y alignment of the child widget}
   @begin{short}
