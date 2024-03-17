@@ -448,7 +448,7 @@
        "text-view-tooltip.lisp"))
 
      "Tree, List and Icon Grid Widgets"
-     (("Simple Tree View"
+     (("Tree View Simple"
        ":window"
        "example-tree-view-simple"
        "gtk3-example"
@@ -458,6 +458,26 @@
        "example-tree-view-path"
        "gtk3-example"
        "tree-view-path.lisp")
+      ("Tree View Context Menu"
+       ":window"
+       "example-tree-view-context-menu"
+       "gtk3-example"
+       "tree-view-context-menu.lisp")
+      ("Tree View Editable"
+       ":window"
+       "example-tree-view-editable"
+       "gtk3-example"
+       "tree-view-editable.lisp")
+      ("Tree View Sortable"
+       ":window"
+       "example-tree-view-sortable"
+       "gtk3-example"
+       "tree-view-sortable.lisp")
+      ("Tree View Drag and Drop"
+       ":window"
+       "example-tree-view-drag-and-drop"
+       "gtk3-example"
+       "tree-view-drag-and-drop.lisp")
       ("Tree View Content Type"
        ":window"
        "example-tree-view-content-type"

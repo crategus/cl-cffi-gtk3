@@ -4,7 +4,7 @@
 
 (in-package :gtk3-example)
 
-(let ((col-icon 0) (col-icon-name 1) (col-mime-type 2) (col-desc 3))
+(let ((colicon 0) (coliconname 1) (colmimetype 2) (coldesc 3))
 
   (defun create-and-fill-model-content-type ()
     (let ((data (g:content-types-registered))
@@ -35,30 +35,30 @@
            (renderer (gtk:cell-renderer-pixbuf-new)))
        (setf (gtk:tree-view-column-title column) "Icon")
        (gtk:tree-view-column-pack-start column renderer :expand nil)
-       (gtk:tree-view-column-set-attributes column
-                                            renderer
-                                            "pixbuf"
-                                            col-icon)
+       (gtk:tree-view-column-add-attribute column
+                                           renderer
+                                           "pixbuf"
+                                           colicon)
        (setf renderer (gtk:cell-renderer-text-new))
        (gtk:tree-view-column-pack-start column renderer :expand nil)
-       (gtk:tree-view-column-set-attributes column
-                                            renderer
-                                            "text"
-                                            col-icon-name)
+       (gtk:tree-view-column-add-attribute column
+                                           renderer
+                                           "text"
+                                           coliconname)
         (gtk:tree-view-append-column view column))
       ;; Second column for the MIME Type
       (let* ((renderer (gtk:cell-renderer-text-new))
              (column (gtk:tree-view-column-new-with-attributes "MIME Type"
                                                                renderer
                                                                "text"
-                                                                col-mime-type)))
+                                                                colmimetype)))
         (gtk:tree-view-append-column view column))
       ;; Third column for the description
       (let* ((renderer (gtk:cell-renderer-text-new))
              (column (gtk:tree-view-column-new-with-attributes "Descripton"
                                                                renderer
                                                                "text"
-                                                               col-desc)))
+                                                               coldesc)))
         (gtk:tree-view-append-column view column))
       view))
 
@@ -76,6 +76,9 @@
                           (lambda (widget)
                             (declare (ignore widget))
                             (gtk:leave-gtk-main)))
+        ;; Set the tree view reorderable
+        (setf (gtk:tree-view-reorderable view) t)
+        ;; Pack and show the widgets
         (gtk:container-add scrolled view)
         (gtk:container-add window scrolled)
         (gtk:widget-show-all window)))))

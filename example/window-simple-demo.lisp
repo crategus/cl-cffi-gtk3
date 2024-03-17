@@ -14,7 +14,7 @@
           (window (gtk:window-new :toplevel)))
       ;; Add the window to the list of windows of the application
       (when application
-        (setf (gtk:window-application window) application))
+        (gtk:application-add-window application window))
       ;; Signal handler for the window to handle the signal "destroy".
       (g:signal-connect window "destroy"
                         (lambda (widget)

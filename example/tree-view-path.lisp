@@ -1,10 +1,10 @@
 ;;;; Example Tree View Path
 ;;;;
-;;;; 2023-12-27
+;;;; 2024-3-13
 
 (in-package :gtk3-example)
 
-(let ((col-path 0) (col-entry 1))
+(let ((colpath 0) (colentry 1))
 
   (defun create-and-fill-model-path ()
     (let* ((model (gtk:tree-store-new "gchararray" "gchararray"))
@@ -68,13 +68,13 @@
              (column (gtk:tree-view-column-new-with-attributes "Path"
                                                                renderer
                                                                "text"
-                                                               col-path)))
+                                                               colpath)))
         (gtk:tree-view-append-column view column))
       (let* ((renderer (gtk:cell-renderer-text-new))
              (column (gtk:tree-view-column-new-with-attributes "Entry"
                                                                renderer
                                                                "text"
-                                                               col-entry)))
+                                                               colentry)))
         (gtk:tree-view-append-column view column))
       view))
 

@@ -1,5 +1,7 @@
 ;;;; Example Tree View Drag and Drop - 2022-12-22
 
+;; TODO: This example no longer works. What is the problem?
+
 (in-package :gtk3-example)
 
 (let ((col-uri 0)
@@ -39,7 +41,18 @@
                                                                 col-uri)))
         (gtk:tree-view-append-column view column))
 
-      (gtk:drag-dest-set view :all targets '(:copy :move :link))
+       (gtk:drag-dest-set view :all targets '(:copy :move :link))
+
+;      (gtk:tree-view-enable-model-drag-dest view targets '(:copy :move :link))
+
+      (g:signal-connect view "drag-motion"
+          (lambda (widget context x y time)
+            (declare (ignore widget))
+            (format t " in DRAG-MOTION~%")
+            (format t "    context : ~a~%" context)
+            (format t "          x : ~a~%" x)
+            (format t "          y : ~a~%" y)
+            (format t "       time : ~a~%" time)))
 
       (g:signal-connect view "drag-data-received"
           (lambda (widget context x y data info time)
@@ -59,15 +72,14 @@
 
               (gtk:list-store-set model (gtk:list-store-append model)
                                   url)
-
       ))))
-
       view))
 
-  (defun example-tree-view-drag-and-drop ()
+  (defun example-tree-view-drag-and-drop (&optional application)
     (gtk:within-main-loop
       (let ((window (make-instance 'gtk:window
                                    :title "Example Tree View Drag and Drop"
+                                   :application application
                                    :type :toplevel
                                    :default-width 350
                                    :default-height 200))

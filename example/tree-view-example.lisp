@@ -73,10 +73,11 @@
 
       view))
 
-  (defun example-tree-view-example ()
+  (defun example-tree-view-example (&optional application)
     (gtk:within-main-loop
       (let ((window (make-instance 'gtk:window
                                    :title "Example Tree View"
+                                   :application application
                                    :type :toplevel
                                    :default-width 350
                                    :default-height 200))

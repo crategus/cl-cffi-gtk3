@@ -39,6 +39,7 @@
                (:file "custom-drawing")
                (:file "custom-window")
                (:file "dialog")                        ; Dialog Windows
+               (:file "dialog-more")
                (:file "drag-and-drop")
                (:file "drag-and-drop-action")
                (:file "drag-and-drop-simple")
