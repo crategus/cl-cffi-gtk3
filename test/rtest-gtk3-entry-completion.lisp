@@ -7,7 +7,7 @@
 
 ;;;     GtkEntryCompletion
 
-(test entry-completion-class
+(test gtk-entry-completion-class
   ;; Type check
   (is (g:type-is-object "GtkEntryCompletion"))
   ;; Check the registered name
@@ -63,42 +63,44 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-;;;     GtkCellArea*   cell-area             Read / Write / Construct Only
-;;;        gboolean    inline-completion     Read / Write
-;;;        gboolean    inline-selection      Read / Write
-;;;            gint    minimum-key-length    Read / Write
-;;;    GtkTreeModel*   model                 Read / Write
-;;;        gboolean    popup-completion      Read / Write
-;;;        gboolean    popup-set-width       Read / Write
-;;;        gboolean    popup-single-match    Read / Write
-;;;            gint    text-column           Read / Write
+(test gtk-entry-completion-properties
+  (let ((completion (make-instance 'gtk:entry-completion)))
+    (is (typep (gtk:entry-completion-cell-area completion) 'gtk:cell-area))
+    (is-false (gtk:entry-completion-inline-completion completion))
+    (is-false (gtk:entry-completion-inline-selection completion))
+    (is (= 1 (gtk:entry-completion-minimum-key-length completion)))
+    (is-false (gtk:entry-completion-model completion))
+    (is-true (gtk:entry-completion-popup-completion completion))
+    (is-true (gtk:entry-completion-popup-set-width completion))
+    (is-true (gtk:entry-completion-popup-single-match completion))
+    (is (= -1 (gtk:entry-completion-text-column completion)))))
 
 ;;; --- Signals ----------------------------------------------------------------
 
-;;;            void    action-activated      Run Last
-;;;        gboolean    cursor-on-match       Run Last
-;;;        gboolean    insert-prefix         Run Last
-;;;        gboolean    match-selected        Run Last
-;;;            void    no-matches            Run Last
+;;;     action-activated
+;;;     cursor-on-match
+;;;     insert-prefix
+;;;     match-selected
+;;;     no-matches
 
 ;;; --- Functions --------------------------------------------------------------
 
 ;;;     GtkEntryCompletionMatchFunc
 
-#+nil
-(test entry-completion-match-func
-  (is (equal '()
-             (macroexpand '(define-cb-methods gtk:entry-completion-match-func :int
-                               ((current-page :int)))))))
-
 ;;;     gtk_entry_completion_new
+
+(test gtk-entry-completion-new
+  (is (typep (gtk:entry-completion-new) 'gtk:entry-completion)))
+
 ;;;     gtk_entry_completion_new_with_area
+
+(test gtk-entry-completion-new-with-area
+  (let ((area (gtk:cell-area-box-new)))
+    (is (typep (gtk:entry-completion-new-with-area area)
+               'gtk:entry-completion))))
+
 ;;;     gtk_entry_completion_get_entry
-;;;     gtk_entry_completion_set_model
-;;;     gtk_entry_completion_get_model
 ;;;     gtk_entry_completion_set_match_func
-;;;     gtk_entry_completion_set_minimum_key_length
-;;;     gtk_entry_completion_get_minimum_key_length
 ;;;     gtk_entry_completion_compute_prefix
 ;;;     gtk_entry_completion_complete
 ;;;     gtk_entry_completion_get_completion_prefix
@@ -106,17 +108,5 @@
 ;;;     gtk_entry_completion_insert_action_text
 ;;;     gtk_entry_completion_insert_action_markup
 ;;;     gtk_entry_completion_delete_action
-;;;     gtk_entry_completion_set_text_column
-;;;     gtk_entry_completion_get_text_column
-;;;     gtk_entry_completion_set_inline_completion
-;;;     gtk_entry_completion_get_inline_completion
-;;;     gtk_entry_completion_set_inline_selection
-;;;     gtk_entry_completion_get_inline_selection
-;;;     gtk_entry_completion_set_popup_completion
-;;;     gtk_entry_completion_get_popup_completion
-;;;     gtk_entry_completion_set_popup_set_width
-;;;     gtk_entry_completion_get_popup_set_width
-;;;     gtk_entry_completion_set_popup_single_match
-;;;     gtk_entry_completion_get_popup_single_match
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-3-17
