@@ -7,7 +7,7 @@
 
 ;;;     GtkDialogFlags
 
-(test dialog-flags
+(test gtk-dialog-flags
   ;; Check the type
   (is (g:type-is-flags "GtkDialogFlags"))
   ;; Check the registered name
@@ -38,7 +38,7 @@
 
 ;;;     GtkResponseType
 
-(test response-type
+(test gtk-response-type
   ;; Check the type
   (is (g:type-is-enum "GtkResponseType"))
   ;; Check the type initializer
@@ -80,7 +80,7 @@
 
 ;;;     GtkDialog
 
-(test dialog-class
+(test gtk-dialog-class
   ;; Type check
   (is (g:type-is-object "GtkDialog"))
   ;; Check the registered name
@@ -132,17 +132,17 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-(test dialog-properties.1
+(test gtk-dialog-properties.1
   (let ((dialog (make-instance 'gtk:dialog)))
     (is (= 0 (gtk:dialog-use-header-bar dialog)))))
 
-(test dialog-properties.2
+(test gtk-dialog-properties.2
   (let ((dialog (make-instance 'gtk:dialog :use-header-bar 1)))
     (is (= 1 (gtk:dialog-use-header-bar dialog)))))
 
 ;;; --- Style Properties -------------------------------------------------------
 
-(test dialog-style-properties
+(test gtk-dialog-style-properties
   (let ((dialog (make-instance 'gtk:dialog)))
     (is (= 0 (gtk:widget-style-property dialog "action-area-border")))
     (is (= 4 (gtk:widget-style-property dialog "button-spacing")))
@@ -151,9 +151,7 @@
 
 ;;; --- Signals ----------------------------------------------------------------
 
-;;;     void   close                   Action
-
-(test dialog-signal-close
+(test gtk-dialog-signal-close
   ;; Check the list of signals
   (is (member "close"
               (mapcar #'g:signal-name (g:signal-list-ids "GtkDialog"))
@@ -170,9 +168,7 @@
                      #'string<)))
     (is-false (g:signal-query-signal-detail query))))
 
-;;;     void   response                Run Last
-
-(test dialog-signal-response
+(test gtk-dialog-signal-response
   ;; Check the list of signals
   (is (member "response"
               (mapcar #'g:signal-name (g:signal-list-ids "GtkDialog"))
@@ -194,7 +190,7 @@
 ;;;     gtk_dialog_new
 ;;;     gtk_dialog_new-with-buttons
 
-(test dialog-new
+(test gtk-dialog-new
   (is (typep (gtk:dialog-new) 'gtk:dialog))
   (is (typep (gtk:dialog-new-with-buttons "title"
                                           nil :modal "OK" 1 "Cancel" 2)
@@ -208,7 +204,7 @@
 
 ;;;     gtk_dialog_add_button
 
-(test dialog-add-button
+(test gtk-dialog-add-button
   (let ((dialog (make-instance 'gtk:dialog)))
     ;; No button in the action area
     (is (= 0 (length (gtk:container-children (gtk:dialog-action-area dialog)))))
@@ -226,7 +222,7 @@
 
 ;;;     gtk_dialog_add_buttons
 
-(test dialog-add-buttons
+(test gtk-dialog-add-buttons
   (let ((dialog (make-instance 'gtk:dialog)))
     ;; No button in the action area
     (is (= 0 (length (gtk:container-children (gtk:dialog-action-area dialog)))))
@@ -239,7 +235,7 @@
 
 ;;;     gtk_dialog_add_action_widget
 
-(test dialog-add-action-widget
+(test gtk-dialog-add-action-widget
   (let ((dialog (make-instance 'gtk:dialog))
         (widget (make-instance 'gtk:button :label "BUTTON")))
     (is-false (gtk:dialog-add-action-widget dialog widget 1))
@@ -249,14 +245,14 @@
 
 ;;;     gtk_dialog_set_default_response
 
-(test dialog-set-default-response
+(test gtk-dialog-set-default-response
   (let ((dialog (make-instance 'gtk:dialog)))
     (is-false (gtk:dialog-add-buttons dialog "button1" 1 "button2" 2))
     (is-false (gtk:dialog-set-default-response dialog 2))))
 
 ;;;     gtk_dialog_set_response_sensitive
 
-(test dialog-set-response-sensitive
+(test gtk-dialog-set-response-sensitive
   (let ((dialog (make-instance 'gtk:dialog)))
     (is-false (gtk:dialog-add-buttons dialog "button1" 1 "button2" 2))
     (is-false (gtk:dialog-set-response-sensitive dialog 1 t))
@@ -270,7 +266,7 @@
 
 ;;;     gtk_dialog_action_area
 
-(test dialog-action-area
+(test gtk-dialog-action-area
   (let ((dialog (gtk:dialog-new-with-buttons "title"
                                              nil :modal "OK" 1 "Cancel" 2)))
     (is (typep (gtk:dialog-action-area dialog) 'gtk:button-box))
@@ -279,15 +275,17 @@
 
 ;;;     gtk_dialog_content_area
 
-(test dialog-content-area
+(test gtk-dialog-content-area
   (let ((dialog (gtk:dialog-new-with-buttons "title"
                                              nil :modal "OK" 1 "Cancel" 2)))
     (is (typep (gtk:dialog-content-area dialog) 'gtk:box))
     (is (eq :vertical
             (gtk:orientable-orientation (gtk:dialog-content-area dialog))))))
 
+;;;     gtk_dialog_get_header_bar
+
 ;;;     gtk_alternative_dialog_button_order
 ;;;     gtk_dialog_set_alternative_button_order
 ;;;     gtk_dialog_set_alternative_button_order_from_array
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-3-16

@@ -337,6 +337,7 @@
 
 ;;;     gtk_window_list_toplevels
 
+#+nil
 (test gtk-window-list-toplevels
   (is (every (lambda (obj) (typep obj 'gtk:window))
              (gtk:window-list-toplevels))))

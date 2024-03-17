@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -31,14 +31,19 @@
 ;;;
 ;;;     A widget which is not displayed
 ;;;
-;;; Synopsis
+;;; Types and Values
 ;;;
 ;;;     GtkInvisible
 ;;;
-;;;     gtk_invisible_new
-;;;     gtk_invisible_new_for_screen
+;;; Accessors
+;;;
 ;;;     gtk_invisible_set_screen                           Accessor
 ;;;     gtk_invisible_get_screen                           Accessor
+;;;
+;;; Functions
+;;;
+;;;     gtk_invisible_new
+;;;     gtk_invisible_new_for_screen
 ;;;
 ;;; Properties
 ;;;
@@ -74,9 +79,9 @@
 
 #+liber-documentation
 (setf (documentation 'invisible 'type)
- "@version{#2023-3-20}
+ "@version{2024-3-17}
   @begin{short}
-    The @sym{gtk:invisible} widget is used internally in GTK, and is probably
+    The @class{gtk:invisible} widget is used internally in GTK, and is probably
     not very useful for application developers.
   @end{short}
   It is used for reliable pointer grabs and selection handling in the code for
@@ -99,18 +104,18 @@
 (setf (liber:alias-for-function 'invisible-screen)
       "Accessor"
       (documentation 'invisible-screen 'function)
- "@version{#2023-3-20}
-  @syntax[]{(gtk:invisible-screen object) => screen}
-  @syntax[]{(setf (gtk:invisible-screen object) screen)}
+ "@version{2024-3-17}
+  @syntax{(gtk:invisible-screen object) => screen}
+  @syntax{(setf (gtk:invisible-screen object) screen)}
   @argument[object]{a @class{gtk:invisible} widget}
   @argument[screen]{a @class{gdk:screen} object}
   @begin{short}
     Accessor of the @slot[gtk:invisible]{screen} slot of the
     @class{gtk:invisible} class.
   @end{short}
-  The @sym{gtk:invisible-screen} function returns the screen associated with
-  the invisible widget. The @sym{(setf gtk:invisible-screen)} function sets the
-  screen where the invisible widget will be displayed.
+  The @fun{gtk:invisible-screen} function returns the screen associated with
+  the invisible widget. The @setf{gtk:invisible-screen} function sets the screen
+  where the invisible widget will be displayed.
   @see-class{gtk:invisible}
   @see-class{gdk:screen}")
 
@@ -122,8 +127,8 @@
 
 (defun invisible-new ()
  #+liber-documentation
- "@version{#2023-3-20}
-  @return{A new @class{gtk:invisible} widget.}
+ "@version{2024-3-17}
+  @return{The new @class{gtk:invisible} widget.}
   @begin{short}
     Creates a new invisible widget.
   @end{short}
@@ -146,10 +151,10 @@
 
 (defun invisible-new-for-screen (screen)
  #+liber-documentation
- "@version{#2023-3-20}
-  @argument[screen]{a @class{gdk:screen} object which identifies on which the
-    @class{gtk:invisible} widget will be created}
-  @return{A newly created @class{gtk:invisible} widget.}
+ "@version{2024-3-17}
+  @argument[screen]{a @class{gdk:screen} object which identifies the screen on
+    which the @class{gtk:invisible} widget will be created}
+  @return{The newly created @class{gtk:invisible} widget.}
   @begin{short}
     Creates a new invisible widget for a specified screen.
   @end{short}

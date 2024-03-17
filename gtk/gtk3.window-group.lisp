@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -65,10 +65,10 @@
 
 #+liber-documentation
 (setf (documentation 'window-group 'type)
- "@version{#2023-3-30}
+ "@version{2024-3-17}
   @begin{short}
-    A @sym{gtk:window-group} object restricts the effect of grabs to windows in
-    the same group, thereby making window groups almost behave like separate
+    A @class{gtk:window-group} object restricts the effect of grabs to windows
+    in the same group, thereby making window groups almost behave like separate
     applications.
   @end{short}
 
@@ -80,7 +80,8 @@
   windows in the window group are subsequently destroyed, then they will be
   removed from the window group and drop their references on the window group.
   When all window have been removed, the window group will be freed.
-  @see-constructor{gtk:window-group-new}")
+  @see-constructor{gtk:window-group-new}
+  @see-class{gtk:window}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_window_group_new ()
@@ -90,8 +91,8 @@
 
 (defun window-group-new ()
  #+liber-documentation
- "@version{#2023-3-30}
-  @return{A new @class{gtk:window-group} object.}
+ "@version{2024-3-17}
+  @return{The new @class{gtk:window-group} object.}
   @begin{short}
     Creates a new window group.
   @end{short}
@@ -109,9 +110,9 @@
 
 (cffi:defcfun (window-group-add-window "gtk_window_group_add_window") :void
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{2024-3-17}
   @argument[group]{a @class{gtk:window-group} object}
-  @argument[window]{the @class{gtk:window} widget to add}
+  @argument[window]{a @class{gtk:window} widget to add}
   @begin{short}
     Adds a window to a window group.
   @end{short}
@@ -129,9 +130,9 @@
 (cffi:defcfun ("gtk_window_group_remove_window" window-group-remove-window)
     :void
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{2024-3-17}
   @argument[group]{a @class{gtk:window-group} object}
-  @argument[window]{the @class{gtk:window} widget to remove}
+  @argument[window]{a @class{gtk:window} widget to remove}
   @begin{short}
     Removes a window from a window group.
   @end{short}
@@ -147,11 +148,11 @@
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_group_list_windows" window-group-list-windows)
-    (g:list-t window)
+    (g:list-t (g:object window))
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{2024-3-17}
   @argument[group]{a @class{gtk:window-group} object}
-  @return{A list of windows inside the window group.}
+  @return{The list of @class{gtk:window} widgets inside the window group.}
   @begin{short}
     Returns a list of windows that belong to the window group.
   @end{short}
@@ -162,7 +163,7 @@
 (export 'window-group-list-windows)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_group_get_current_grab () -> window-group-current-grab
+;;; gtk_window_group_get_current_grab ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_group_get_current_grab" window-group-current-grab)
@@ -184,7 +185,6 @@
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_window_group_get_current_device_grab ()
-;;; -> window-group-current-device-grab
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_group_get_current_device_grab"

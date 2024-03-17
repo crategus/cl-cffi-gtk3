@@ -7,7 +7,7 @@
 
 ;;;     GtkOffscreenWindow
 
-(test offscreen-window-class
+(test gtk-offscreen-window-class
   ;; Type check
   (is (g:type-is-object "GtkOffscreenWindow"))
   ;; Check the registered name
@@ -38,7 +38,7 @@
   (is (equal '()
              (list-signals "GtkOffscreenWindow")))
   ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkOffscreenWindow" 
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkOffscreenWindow"
                                              GTK-OFFSCREEN-WINDOW
                        (:SUPERCLASS GTK-WINDOW :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable")
@@ -47,9 +47,24 @@
              (gobject:get-g-type-definition "GtkOffscreenWindow"))))
 
 ;;; --- Functions --------------------------------------------------------------
-;;;
+
 ;;;     gtk_offscreen_window_new
+
+(test gtk-offscreen-window-new
+  (is (typep (gtk:offscreen-window-new) 'gtk:offscreen-window)))
+
 ;;;     gtk_offscreen_window_get_surface
+
+#+nil
+(test gtk-offscreen-window-surface
+  (let ((offscreen (gtk:offscreen-window-new)))
+    (is-false (gtk:offscreen-window-surface offscreen))))
+
 ;;;     gtk_offscreen_window_get_pixbuf
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+#+nil
+(test gtk-offscreen-window-pixbuf
+  (let ((offscreen (gtk:offscreen-window-new)))
+    (is-false (gtk:offscreen-window-pixbuf offscreen))))
+
+;;; 2024-3-17

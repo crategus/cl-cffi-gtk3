@@ -7,6 +7,41 @@
 
 ;;;     GtkAssistantPageType
 
+(test gtk-assistant-page-type
+  ;; Check the type
+  (is (g:type-is-enum "GtkAssistantPageType"))
+  ;; Check the type initializer
+  (is (eq (g:gtype "GtkAssistantPageType")
+          (g:gtype (cffi:foreign-funcall "gtk_assistant_page_type_get_type"
+                                         :size))))
+  ;; Check the registered name
+  (is (eq 'gtk:assistant-page-type
+          (glib:symbol-for-gtype "GtkAssistantPageType")))
+  ;; Check the names
+  (is (equal '("GTK_ASSISTANT_PAGE_CONTENT" "GTK_ASSISTANT_PAGE_INTRO"
+               "GTK_ASSISTANT_PAGE_CONFIRM" "GTK_ASSISTANT_PAGE_SUMMARY"
+               "GTK_ASSISTANT_PAGE_PROGRESS" "GTK_ASSISTANT_PAGE_CUSTOM")
+             (list-enum-item-name "GtkAssistantPageType")))
+  ;; Check the values
+  (is (equal '(0 1 2 3 4 5)
+             (list-enum-item-value "GtkAssistantPageType")))
+  ;; Check the nick names
+  (is (equal '("content" "intro" "confirm" "summary" "progress" "custom")
+             (list-enum-item-nick "GtkAssistantPageType")))
+  ;; Check the enum definition
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkAssistantPageType"
+                                     GTK-ASSISTANT-PAGE-TYPE
+                                     (:EXPORT T
+                                      :TYPE-INITIALIZER
+                                      "gtk_assistant_page_type_get_type")
+                                     (:CONTENT 0)
+                                     (:INTRO 1)
+                                     (:CONFIRM 2)
+                                     (:SUMMARY 3)
+                                     (:PROGRESS 4)
+                                     (:CUSTOM 5))
+             (gobject:get-g-type-definition "GtkAssistantPageType"))))
+
 ;;;     GtkAssistant
 
 (test gtk-assistant-class
@@ -59,13 +94,6 @@
 
 ;;; --- Child Properties -------------------------------------------------------
 
-;;;     complete
-;;;     has-padding
-;;;     header-image                                        not exported
-;;;     page-type
-;;;     sidebar-image                                       not exported
-;;;     title
-
 (test gtk-assistant-child-properties
   (let ((assistant (make-instance 'gtk:assistant))
         (page (make-instance 'gtk:box)))
@@ -80,9 +108,6 @@
     (is-false (gtk:assistant-child-title assistant page))))
 
 ;;; --- Style Properties -------------------------------------------------------
-
-;;;     content-padding
-;;;     header-padding
 
 (test gtk-assistant-style-properties
   (let ((assistant (make-instance 'gtk:assistant)))
@@ -135,4 +160,4 @@
 ;;;     gtk_assistant_next_page
 ;;;     gtk_assistant_previous_page
 
-;;; 2023-12-30
+;;; 2024-3-16

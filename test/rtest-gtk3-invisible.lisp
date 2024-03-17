@@ -7,7 +7,7 @@
 
 ;;;     GtkInvisible
 
-(test invisible-class
+(test gtk-invisible-class
   ;; Type check
   (is (g:type-is-object "GtkInvisible"))
   ;; Check the registered name
@@ -44,7 +44,7 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-(test invisible-properties
+(test gtk-invisible-properties
   (let ((invisible (make-instance 'gtk:invisible)))
     (is (typep (gtk:invisible-screen invisible) 'gdk:screen))
     (is (eq (gdk:screen-default) (gtk:invisible-screen invisible)))))
@@ -53,16 +53,16 @@
 
 ;;;     gtk_invisible_new
 
-(test invisible-new
+(test gtk-invisible-new
   (let ((invisible (gtk:invisible-new)))
     (is (typep invisible 'gtk:invisible))
     (is (eq (gdk:screen-default) (gtk:invisible-screen invisible)))))
 
 ;;;     gtk_invisible_new_for_screen
 
-(test invisible-new-for-screen
+(test gtk-invisible-new-for-screen
   (let ((invisible (gtk:invisible-new-for-screen (gdk:screen-default))))
     (is (typep invisible 'gtk:invisible))
     (is (eq (gdk:screen-default) (gtk:invisible-screen invisible)))))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-3-17

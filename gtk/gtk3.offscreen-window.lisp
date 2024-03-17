@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2012 - 2023 Dieter Kaiser
+;;; Copyright (C) 2012 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -72,9 +72,9 @@
 
 #+liber-documentation
 (setf (documentation 'offscreen-window 'type)
- "@version{#2023-3-21}
+ "@version{2024-3-17}
   @begin{short}
-    The @sym{gtk:offscreen-window} widget is strictly intended to be used for
+    The @class{gtk:offscreen-window} widget is strictly intended to be used for
     obtaining snapshots of widgets that are not part of a normal widget
     hierarchy.
   @end{short}
@@ -86,13 +86,13 @@
   offscreen window and then retrieve the snapshot as a @symbol{cairo:surface-t}
   instance or @class{gdk-pixbuf:pixbuf} object.
 
-  The @sym{gtk:offscreen-window} widget derives from the @class{gtk:window}
+  The @class{gtk:offscreen-window} widget derives from the @class{gtk:window}
   class only as an implementation detail. Applications should not use any API
   specific to the @class{gtk:window} class to operate on this object. It should
   be treated as a @class{gtk:bin} widget that has no parent widget.
 
-  When contained offscreen widgets are redrawn, the @sym{gtk:offscreen-window}
-  widget will emit a \"damage-event\" signal.
+  When contained offscreen widgets are redrawn, the @class{gtk:offscreen-window}
+  widget will emit a @code{\"damage-event\"} signal.
   @see-constructor{gtk:offscreen-window-new}
   @see-class{gtk:bin}
   @see-class{gtk:window}
@@ -107,8 +107,8 @@
 
 (defun offscreen-window-new ()
  #+liber-documentation
- "@version{#2023-3-21}
-  @return{A @class{gtk:offscreen-window} widget.}
+ "@version{2024-3-17}
+  @return{The @class{gtk:offscreen-window} widget.}
   @begin{short}
     Creates a toplevel container widget that is used to retrieve snapshots of
     widgets without showing them on the screen.
@@ -119,16 +119,19 @@
 (export 'offscreen-window-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_offscreen_window_get_surface () -> offscreen-window-surface
+;;; gtk_offscreen_window_get_surface ()
 ;;; ----------------------------------------------------------------------------
 
-(cffi:defcfun ("gtk_offscreen_window_get_surface" offscreen-window-surface)
+(cffi:defcfun ("gtk_offscreen_window_get_surface" %offscreen-window-surface)
     (:pointer (:struct cairo:surface-t))
+  (offscreen (g:object offscreen-window)))
+
+(defun offscreen-window-surface (offscreen)
  #+liber-documentation
- "@version{#2023-3-21}
-  @argument[offscreen]{the @class{gtk:offscreen-window} contained widget}
-  @return{A @symbol{cairo:surface-t} instance to the @arg{offscreen} surface,
-    or a @code{null-pointer}.}
+ "@version{2024-3-17}
+  @argument[offscreen]{a @class{gtk:offscreen-window} widget}
+  @return{The @symbol{cairo:surface-t} instance to the @arg{offscreen} surface,
+    or @code{nil}.}
   @begin{short}
     Retrieves a snapshot of the contained widget in the form of a
     @symbol{cairo:surface-t} instance.
@@ -138,20 +141,22 @@
   @see-class{gtk:offscreen-window}
   @see-symbol{cairo:surface-t}
   @see-function{gtk:offscreen-window-pixbuf}"
-  (offscreen (g:object offscreen-window)))
+  (let ((surface (%offscreen-window-surface offscreen)))
+    (unless (cffi:null-pointer-p surface)
+      surface)))
 
 (export 'offscreen-window-surface)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_offscreen_window_get_pixbuf () -> offscreen-window-pixbuf
+;;; gtk_offscreen_window_get_pixbuf ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_offscreen_window_get_pixbuf" offscreen-window-pixbuf)
     (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
- "@version{#2023-3-21}
-  @argument[offscreen]{the @class{gtk:offscreen-window} contained widget}
-  @return{A @class{gdk-pixbuf:pixbuf} object, or @code{nil}.}
+ "@version{2024-3-17}
+  @argument[offscreen]{a @class{gtk:offscreen-window} widget}
+  @return{The @class{gdk-pixbuf:pixbuf} object, or @code{nil}.}
   @begin{short}
     Retrieves a snapshot of the contained widget in the form of a
     @class{gdk-pixbuf:pixbuf} object.

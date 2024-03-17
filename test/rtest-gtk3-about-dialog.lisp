@@ -7,9 +7,61 @@
 
 ;;;     GtkLicense
 
+(test gtk-license
+  ;; Check the type
+  (is (g:type-is-enum "GtkLicense"))
+  ;; Check the type initializer
+  (is (eq (g:gtype "GtkLicense")
+          (g:gtype (cffi:foreign-funcall "gtk_license_get_type" :size))))
+  ;; Check the registered name
+  (is (eq 'gtk:license
+          (glib:symbol-for-gtype "GtkLicense")))
+  ;; Check the names
+  (is (equal '("GTK_LICENSE_UNKNOWN" "GTK_LICENSE_CUSTOM" "GTK_LICENSE_GPL_2_0"
+               "GTK_LICENSE_GPL_3_0" "GTK_LICENSE_LGPL_2_1"
+               "GTK_LICENSE_LGPL_3_0" "GTK_LICENSE_BSD" "GTK_LICENSE_MIT_X11"
+               "GTK_LICENSE_ARTISTIC" "GTK_LICENSE_GPL_2_0_ONLY"
+               "GTK_LICENSE_GPL_3_0_ONLY" "GTK_LICENSE_LGPL_2_1_ONLY"
+               "GTK_LICENSE_LGPL_3_0_ONLY" "GTK_LICENSE_AGPL_3_0"
+               "GTK_LICENSE_AGPL_3_0_ONLY" "GTK_LICENSE_BSD_3"
+               "GTK_LICENSE_APACHE_2_0" "GTK_LICENSE_MPL_2_0")
+             (list-enum-item-name "GtkLicense")))
+  ;; Check the values
+  (is (equal '(0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17)
+             (list-enum-item-value "GtkLicense")))
+  ;; Check the nick names
+  (is (equal '("unknown" "custom" "gpl-2-0" "gpl-3-0" "lgpl-2-1" "lgpl-3-0"
+               "bsd" "mit-x11" "artistic" "gpl-2-0-only" "gpl-3-0-only"
+               "lgpl-2-1-only" "lgpl-3-0-only" "agpl-3-0" "agpl-3-0-only"
+               "bsd-3" "apache-2-0" "mpl-2-0")
+             (list-enum-item-nick "GtkLicense")))
+  ;; Check the enum definition
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkLicense" GTK-LICENSE
+                                     (:EXPORT T
+                                      :TYPE-INITIALIZER "gtk_license_get_type")
+                                     (:UNKNOWN 0)
+                                     (:CUSTOM 1)
+                                     (:GPL-2-0 2)
+                                     (:GPL-3-0 3)
+                                     (:LGPL-2-1 4)
+                                     (:LGPL-3-0 5)
+                                     (:BSD 6)
+                                     (:MIT-X11 7)
+                                     (:ARTISTIC 8)
+                                     (:GPL-2-0-ONLY 9)
+                                     (:GPL-3-0-ONLY 10)
+                                     (:LGPL-2-1-ONLY 11)
+                                     (:LGPL-3-0-ONLY 12)
+                                     (:AGPL-3-0 13)
+                                     (:AGPL-3-0-ONLY 14)
+                                     (:BSD-3 15)
+                                     (:APACHE-2-0 16)
+                                     (:MPL-2-0 17))
+             (gobject:get-g-type-definition "GtkLicense"))))
+
 ;;;     GtkAboutDialog
 
-(test about-dialog-class
+(test gtk-about-dialog-class
   ;; Type check
   (is (g:type-is-object "GtkAboutDialog"))
   ;; Check the registered name
@@ -80,7 +132,7 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-(test about-dialog-properties
+(test gtk-about-dialog-properties
   (let ((dialog (make-instance 'gtk:about-dialog)))
     (is-false (gtk:about-dialog-artists dialog))
     (is-false (gtk:about-dialog-authors dialog))
@@ -100,42 +152,16 @@
 
 ;;; --- Signals ----------------------------------------------------------------
 
-;;;       gboolean    activate-link         Run Last
+;;;     activate-link
 
 ;;; --- Functions --------------------------------------------------------------
 
 ;;;     gtk_about_dialog_new
-;;;     gtk_about_dialog_get_program_name                  Accessor
-;;;     gtk_about_dialog_set_program_name                  Accessor
-;;;     gtk_about_dialog_get_version                       Accessor
-;;;     gtk_about_dialog_set_version                       Accessor
-;;;     gtk_about_dialog_get_copyright                     Accessor
-;;;     gtk_about_dialog_set_copyright                     Accessor
-;;;     gtk_about_dialog_get_comments                      Accessor
-;;;     gtk_about_dialog_set_comments                      Accessor
-;;;     gtk_about_dialog_get_license                       Accessor
-;;;     gtk_about_dialog_set_license                       Accessor
-;;;     gtk_about_dialog_get_wrap_license                  Accessor
-;;;     gtk_about_dialog_set_wrap_license                  Accessor
-;;;     gtk_about_dialog_get_license_type                  Accessor
-;;;     gtk_about_dialog_set_license_type                  Accessor
-;;;     gtk_about_dialog_get_website                       Accessor
-;;;     gtk_about_dialog_set_website                       Accessor
-;;;     gtk_about_dialog_get_website_label                 Accessor
-;;;     gtk_about_dialog_set_website_label                 Accessor
-;;;     gtk_about_dialog_get_authors                       Accessor
-;;;     gtk_about_dialog_set_authors                       Accessor
-;;;     gtk_about_dialog_get_artists                       Accessor
-;;;     gtk_about_dialog_set_artists                       Accessor
-;;;     gtk_about_dialog_get_documenters                   Accessor
-;;;     gtk_about_dialog_set_documenters                   Accessor
-;;;     gtk_about_dialog_get_translator_credits            Accessor
-;;;     gtk_about_dialog_set_translator_credits            Accessor
-;;;     gtk_about_dialog_get_logo                          Accessor
-;;;     gtk_about_dialog_set_logo                          Accessor
-;;;     gtk_about_dialog_get_logo_icon_name                Accessor
-;;;     gtk_about_dialog_set_logo_icon_name                Accessor
+
+(test gtk-about-dialog-new
+  (is (typep (gtk:about-dialog-new) 'gtk:about-dialog)))
+
 ;;;     gtk_about_dialog_add_credit_section
 ;;;     gtk_show_about_dialog
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-3-16
