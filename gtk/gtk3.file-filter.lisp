@@ -153,8 +153,8 @@
 (defun file-filter-info-contains (info)
  #+liber-documentation
  "@version{#2023-3-14}
-  @syntax[]{(gtk:file-filter-info-contains info) => contains}
-  @syntax[]{(setf (gtk:file-filter-info-contains info) contains)}
+  @syntax{(gtk:file-filter-info-contains info) => contains}
+  @syntax{(setf (gtk:file-filter-info-contains info) contains)}
   @argument[info]{a @symbol{gtk:file-filter-info} instance}
   @argument[contains]{a @symbol{gtk:file-filter-flags} value}
   @begin{short}
@@ -169,8 +169,8 @@
 (defun file-filter-info-filename (info)
  #+liber-documentation
  "@version{#2023-3-14}
-  @syntax[]{(gtk:file-filter-info-filename info) => filename}
-  @syntax[]{(setf (gtk:file-filter-info-filename info) filename)}
+  @syntax{(gtk:file-filter-info-filename info) => filename}
+  @syntax{(setf (gtk:file-filter-info-filename info) filename)}
   @argument[info]{a @symbol{gtk:file-filter-info} instance}
   @argument[filename]{a string with the filename being tested}
   @begin{short}
@@ -184,8 +184,8 @@
 (defun file-filter-info-uri (info)
  #+liber-documentation
  "@version{#2023-3-14}
-  @syntax[]{(gtk:file-filter-info-uri info) => uri}
-  @syntax[]{(setf (gtk:file-filter-info-uri info) uri)}
+  @syntax{(gtk:file-filter-info-uri info) => uri}
+  @syntax{(setf (gtk:file-filter-info-uri info) uri)}
   @argument[info]{a @symbol{gtk:file-filter-info} instance}
   @argument[uri]{a string with the URI being tested}
   @begin{short}
@@ -199,8 +199,8 @@
 (defun file-filter-info-display-name (info)
  #+liber-documentation
  "@version{#2023-3-14}
-  @syntax[]{(gtk:file-filter-info-display-name info) => display-name}
-  @syntax[]{(setf (gtk:file-filter-info-display-name info) display-name)}
+  @syntax{(gtk:file-filter-info-display-name info) => display-name}
+  @syntax{(setf (gtk:file-filter-info-display-name info) display-name)}
   @argument[info]{a @symbol{gtk:file-filter-info} instance}
   @argument[display-name]{a string that will be used to display in the
     file chooser}
@@ -215,8 +215,8 @@
 (defun file-filter-info-mime-type (info)
  #+liber-documentation
  "@version{#2023-3-14}
-  @syntax[]{(gtk:file-filter-info-mime-type info) => mime-type}
-  @syntax[]{(setf (gtk:file-filter-info-mime-type info) mime-type)}
+  @syntax{(gtk:file-filter-info-mime-type info) => mime-type}
+  @syntax{(setf (gtk:file-filter-info-mime-type info) mime-type)}
   @argument[info]{a @symbol{gtk:file-filter-info} instance}
   @argument[mime-type]{a string with the MIME type of the file}
   @begin{short}
@@ -340,8 +340,8 @@
 (cffi:defcfun ("gtk_file_filter_get_name" file-filter-name) :string
  #+liber-documentation
  "@version{2023-6-11}
-  @syntax[]{(gtk:file-filter-name filter) => name}
-  @syntax[]{(setf (gtk:file-filter-name filter) name)}
+  @syntax{(gtk:file-filter-name filter) => name}
+  @syntax{(setf (gtk:file-filter-name filter) name)}
   @argument[filter]{a @class{gtk:file-filter} object}
   @argument[name]{a string with the human readable name for the filter,
     or @code{nil} to remove any existing name}
@@ -562,15 +562,15 @@ lambda (info)
 (cffi:defcfun ("gtk_file_filter_new_from_gvariant"
                 file-filter-new-from-gvariant) (g:object file-filter)
  #+liber-documentation
- "@version{2023-6-11}
-  @argument[variant]{a @code{a{sv@}} @symbol{g:variant} instance}
-  @return{A new @class{gtk:file-filter} object.}
+ "@version{2024-3-17}
+  @argument[variant]{a @type{g:variant} instance of type @code{a{sv@}}}
+  @return{The new @class{gtk:file-filter} object.}
   @begin{short}
     Deserialize a file filter from an @code{a{sv@}} variant in the format
     produced by the @fun{gtk:file-filter-to-gvariant} function.
   @end{short}
   @see-class{gtk:file-filter}
-  @see-symbol{g:variant}
+  @see-type{g:variant}
   @see-function{gtk:file-filter-to-gvariant}"
   (variant (:pointer (:struct g:variant))))
 
@@ -583,14 +583,14 @@ lambda (info)
 (cffi:defcfun ("gtk_file_filter_to_gvariant" file-filter-to-gvariant)
     (:pointer (:struct g:variant))
  #+liber-documentation
- "@version{2023-6-11}
+ "@version{2024-3-17}
   @argument[filter]{a @class{gtk:file-filter} object}
-  @return{A new @symbol{g:variant} instance.}
+  @return{The new @type{g:variant} instance.}
   @begin{short}
     Serialize a file filter to a @code{a{sv@}} variant.
   @end{short}
   @see-class{gtk:file-filter}
-  @see-symbol{g:variant}"
+  @see-type{g:variant}"
   (filter (g:object file-filter)))
 
 (export 'file-filter-to-gvariant)

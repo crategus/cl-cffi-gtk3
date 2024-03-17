@@ -151,8 +151,8 @@ lambda (buffer position chars n-chars)    :run-first
       "Accessor"
       (documentation 'entry-buffer-length 'function)
  "@version{2023-1-30}
-  @syntax[]{(gtk:entry-buffer-length object) => length}
-  @syntax[]{(setf (gtk:entry-buffer-length object) length)}
+  @syntax{(gtk:entry-buffer-length object) => length}
+  @syntax{(setf (gtk:entry-buffer-length object) length)}
   @argument[object]{a @class{gtk:entry-buffer} object}
   @argument[length]{an unsigned integer with the length of the text}
   @begin{short}
@@ -178,8 +178,8 @@ lambda (buffer position chars n-chars)    :run-first
       "Accessor"
       (documentation 'entry-buffer-max-length 'function)
  "@version{2023-1-30}
-  @syntax[]{(gtk:entry-buffer-max-length object) => length}
-  @syntax[]{(setf gtk:entry-buffer-max-length object) length)}
+  @syntax{(gtk:entry-buffer-max-length object) => length}
+  @syntax{(setf gtk:entry-buffer-max-length object) length)}
   @argument[object]{a @class{gtk:entry-buffer} object}
   @argument[length]{an integer with the maximum length of the entry buffer,
     or 0 for no maximum, the value passed in will be clamped to the range
@@ -208,8 +208,8 @@ lambda (buffer position chars n-chars)    :run-first
       "Accessor"
       (documentation 'entry-buffer-text 'function)
  "@version{2023-1-30}
-  @syntax[]{(gtk:entry-buffer-text object) => text}
-  @syntax[]{(setf gtk:entry-buffer-text object) text)}
+  @syntax{(gtk:entry-buffer-text object) => text}
+  @syntax{(setf gtk:entry-buffer-text object) text)}
   @argument[object]{a @class{gtk:entry-buffer} object}
   @argument[text]{a string with the contents of the entry buffer}
   @begin{short}

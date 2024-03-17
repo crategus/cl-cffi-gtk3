@@ -148,8 +148,8 @@ lambda (dialog id)    :run-last
       "Accessor"
       (documentation 'native-dialog-modal 'function)
  "@version{#2023-6-10}
-  @syntax[]{(gtk:native-dialog-modal object) => modal}
-  @syntax[]{(setf (gtk:native-dialog-modal object) modal)}
+  @syntax{(gtk:native-dialog-modal object) => modal}
+  @syntax{(setf (gtk:native-dialog-modal object) modal)}
   @argument[object]{a @class{gtk:native-dialog} widget}
   @argument[modal]{a boolean whether the dialog window should be modal with
     respect to the transient parent}
@@ -179,8 +179,8 @@ lambda (dialog id)    :run-last
       "Accessor"
       (documentation 'native-dialog-title 'function)
  "@version{#2023-6-10}
-  @syntax[]{(gtk:native-dialog-title object) => title}
-  @syntax[]{(setf (gtk:native-dialog-title object) title)}
+  @syntax{(gtk:native-dialog-title object) => title}
+  @syntax{(setf (gtk:native-dialog-title object) title)}
   @argument[object]{a @class{gtk:native-dialog} widget}
   @argument[title]{a string with the title of the dialog window, or @code{nil}
     if none has been set}
@@ -206,8 +206,8 @@ lambda (dialog id)    :run-last
       "Accessor"
       (documentation 'native-dialog-transient-for 'function)
  "@version{#2023-6-10}
-  @syntax[]{(gtk:native-dialog-transient-for object) => parent}
-  @syntax[]{(setf (gtk:native-dialog-transient-for object) parent)}
+  @syntax{(gtk:native-dialog-transient-for object) => parent}
+  @syntax{(setf (gtk:native-dialog-transient-for object) parent)}
   @argument[object]{a @class{gtk:native-dialog} widget}
   @argument[parent]{a @class{gtk:window} transient parent for the dialog window}
   @begin{short}
@@ -238,8 +238,8 @@ lambda (dialog id)    :run-last
       "Accessor"
       (documentation 'native-dialog-visible 'function)
  "@version{#2023-6-10}
-  @syntax[]{(gtk:native-dialog-visible object) => visible}
-  @syntax[]{(setf (gtk:native-dialog-visible object) visible)}
+  @syntax{(gtk:native-dialog-visible object) => visible}
+  @syntax{(setf (gtk:native-dialog-visible object) visible)}
   @argument[object]{a @class{gtk:native-dialog} widget}
   @argument[visible]{a boolean whether the dialog window is visible}
   @begin{short}

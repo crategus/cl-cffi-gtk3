@@ -108,8 +108,8 @@
       "Accessor"
       (documentation 'volume-button-use-symbolic 'function)
  "@version{#2023-3-29}
-  @syntax[]{(gtk:volume-button-use-symbolic object) => use-symbolic}
-  @syntax[]{(setf (gtk:volume-button-use-symbolic object) use-symbolic)}
+  @syntax{(gtk:volume-button-use-symbolic object) => use-symbolic}
+  @syntax{(setf (gtk:volume-button-use-symbolic object) use-symbolic)}
   @argument[object]{a @class{gtk:volume-button} widget}
   @argument[use-symbolic]{a boolean whether to use symbolic icons}
   @begin{short}

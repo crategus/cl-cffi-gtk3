@@ -127,8 +127,8 @@
       "Accessor"
       (documentation 'gesture-single-button 'function)
  "@version{#2023-1-21}
-  @syntax[]{(gtk:gesture-single-button object) => button)}
-  @syntax[]{(setf (gtk:gesture-single-button object) button)}
+  @syntax{(gtk:gesture-single-button object) => button)}
+  @syntax{(setf (gtk:gesture-single-button object) button)}
   @argument[object]{a @class{gtk:gesture-single} object}
   @argument[button]{button number to listen to, or 0 for any button}
   @begin{short}
@@ -156,8 +156,8 @@
       "Accessor"
       (documentation 'gesture-single-exclusive 'function)
  "@version{#2023-1-21}
-  @syntax[]{(gtk:gesture-single-exclusive object) => exclusive)}
-  @syntax[]{(setf (gtk:gesture-single-exclusive object) exclusive)}
+  @syntax{(gtk:gesture-single-exclusive object) => exclusive)}
+  @syntax{(setf (gtk:gesture-single-exclusive object) exclusive)}
   @argument[object]{a @class{gtk:gesture-single} object}
   @argument[exclusive]{@em{true} to make gesture exclusive}
   @begin{short}
@@ -184,8 +184,8 @@
       "Accessor"
       (documentation 'gesture-single-touch-only 'function)
  "@version{#2023-1-21}
-  @syntax[]{(gtk:gesture-single-touch-only object) => touch-only)}
-  @syntax[]{(setf (gtk:gesture-single-touch-only object) touch-only)}
+  @syntax{(gtk:gesture-single-touch-only object) => touch-only)}
+  @syntax{(setf (gtk:gesture-single-touch-only object) touch-only)}
   @argument[object]{a @class{gtk:gesture-single} object}
   @argument[touch-only]{a boolean whether gesture handles only touch events}
   @begin{short}

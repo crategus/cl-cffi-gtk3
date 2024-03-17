@@ -216,8 +216,8 @@
       "Accessor"
       (documentation 'size-group-ignore-hidden 'function)
  "@version{#2023-2-23}
-  @syntax[]{(gtk:size-group-ignore-hidden object) => ignore-hidden}
-  @syntax[]{(setf (gtk:size-group-ignore-hidden object) ignore-hidden)}
+  @syntax{(gtk:size-group-ignore-hidden object) => ignore-hidden}
+  @syntax{(setf (gtk:size-group-ignore-hidden object) ignore-hidden)}
   @argument[size-group]{a @class{gtk:size-group} object}
   @argument[ignore-hidden]{a boolean whether unmapped widgets should be ignored
     when calculating the size}
@@ -255,8 +255,8 @@
       "Accessor"
       (documentation 'size-group-mode 'function)
  "@version{#2023-2-23}
-  @syntax[]{(gtk:size-group-mode object) => mode}
-  @syntax[]{(setf (gtk:size-group-mode object) mode)}
+  @syntax{(gtk:size-group-mode object) => mode}
+  @syntax{(setf (gtk:size-group-mode object) mode)}
   @argument[size-group]{a @class{gtk:size-group} object}
   @argument[mode]{a @symbol{gtk:size-group-mode} value to set for the size
     group}
