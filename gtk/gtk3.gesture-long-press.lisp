@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2023 Dieter Kaiser
+;;; Copyright (C) 2019 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -76,7 +76,7 @@
 (setf (documentation 'gesture-long-press 'type)
  "@version{#2023-3-6}
   @begin{short}
-    The @sym{gtk:gesture-long-press} object is a @class{gtk:gesture}
+    The @class{gtk:gesture-long-press} object is a @class{gtk:gesture}
     implementation able to recognize long presses, triggering the \"pressed\"
     after the timeout is exceeded.
   @end{short}
@@ -90,7 +90,7 @@ lambda (gesture)    :run-last
       The signal is emitted whenever a press moved too far, or was released
       before the \"pressed\" signal happened.
       @begin[code]{table}
-        @entry[gesture]{The @sym{gtk:gesture-long-press} object which received
+        @entry[gesture]{The @class{gtk:gesture-long-press} object which received
           the signal.}
       @end{table}
     @subheading{The \"pressed\" signal}
@@ -100,7 +100,7 @@ lambda (gesture x y)    :run-last
       The signal is emitted whenever a press goes unmoved/unreleased longer
       than what the GTK defaults tell.
       @begin[code]{table}
-        @entry[gesture]{The @sym{gtk:gesture-long-press} object which received
+        @entry[gesture]{The @class{gtk:gesture-long-press} object which received
           the signal.}
         @entry[x]{A double float with the x coordinate where the press happened,
           relative to the widget allocation.}
@@ -112,7 +112,7 @@ lambda (gesture x y)    :run-last
   @see-slot{gtk:gesture-long-press-delay-factor}
   @see-class{gtk:gesture}")
 
-;;; --- gesture-long-press-delay-factor ----------------------------------------
+;;; --- gtk:gesture-long-press-delay-factor ------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "delay-factor"

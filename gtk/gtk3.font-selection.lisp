@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -74,11 +74,11 @@
 (setf (documentation 'font-selection 'type)
  "@version{#2013-6-18}
   @subheading{Warning}
-    The @sym{gtk:font-selection} widget is deprecated and should not be used in
-    newly written code. Use the @class{gtk:font-chooser} widget.
+    The @class{gtk:font-selection} widget is deprecated and should not be used
+    in newly written code. Use the @class{gtk:font-chooser} widget.
 
   @begin{short}
-    The @sym{gtk:font-selection} widget lists the available fonts, styles and
+    The @class{gtk:font-selection} widget lists the available fonts, styles and
     sizes, allowing the user to select a font. It is used in the
     @class{gtk:font-selection-dialog} widget to provide a dialog box for
     selecting fonts.
@@ -93,8 +93,8 @@
   To change the text which is shown in the preview area, use the
   @fun{gtk:font-selection-set-preview-text} function.
 
-  In GTK+ 3.2, the @sym{gtk:font-selection} widget has been deprecated in favor
-  of the @class{gtk:font-chooser} widget.
+  In GTK 3.2, the @class{gtk:font-selection} widget has been deprecated in
+  favor of the @class{gtk:font-chooser} widget.
   @see-slot{gtk:font-selection-font-name}
   @see-slot{gtk:font-selection-preview-text}
   @see-function{gtk:font-selection-set-font-name}
@@ -105,7 +105,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- font-selection-font-name -----------------------------------------------
+;;; --- gtk:font-selection-font-name -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "font-name" 'font-selection) t)
@@ -122,7 +122,7 @@
   @class{gtk:font-selection} class.
   @see-class{gtk:font-selection}")
 
-;;; --- font-selection-preview-text --------------------------------------------
+;;; --- gtk:font-selection-preview-text ----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "preview-text"
@@ -145,7 +145,7 @@
 ;;; Accessors of Child Properties
 ;;; ----------------------------------------------------------------------------
 
-;;; --- font-selection-child-expand --------------------------------------------
+;;; --- gtk:font-selection-child-expand ----------------------------------------
 
 (define-child-property font-selection-child-expand
                        "expand" "gboolean" t t nil)
@@ -159,7 +159,7 @@
   @class{gtk:font-selection} class.
   @see-class{gtk:font-selection}")
 
-;;; --- font-selection-child-fill ----------------------------------------------
+;;; --- gtk:font-selection-child-fill ------------------------------------------
 
 (define-child-property font-selection-child-fill
                        "fill" "gboolean" t t nil)
@@ -173,7 +173,7 @@
   @class{gtk:font-selection} class.
   @see-class{gtk:font-selection}")
 
-;;; --- font-selection-child-padding -------------------------------------------
+;;; --- gtk:font-selection-child-padding ---------------------------------------
 
 (define-child-property font-selection-child-padding
                        "padding" "guint" t t nil)
@@ -187,7 +187,7 @@
   @class{gtk:font-selection} class.
   @see-class{gtk:font-selection}")
 
-;;; --- font-selection-child-pack-type -----------------------------------------
+;;; --- gtk:font-selection-child-pack-type -------------------------------------
 
 (define-child-property font-selection-child-pack-type
                        "pack-type" "GtkPackType" t t nil)
@@ -201,7 +201,7 @@
   @class{gtk:font-selection} class.
   @see-class{gtk:font-selection}")
 
-;;; --- font-selection-child-position ------------------------------------------
+;;; --- gtk:font-selection-child-position --------------------------------------
 
 (define-child-property font-selection-child-position
                        "position" "gint" t t nil)
@@ -229,7 +229,7 @@
     Creates a new @class{gtk:font-selection} widget.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:font-selection-new} function is deprecated and should not be
+    The @fun{gtk:font-selection-new} function is deprecated and should not be
     used in newly written code. Use @class{gtk:font-chooser}.
   @end{dictionary}
   @see-class{gtk:font-selection}"
@@ -248,7 +248,7 @@
   @return{A string with the name of the current font, or @code{nil} if no font
     is selected.}
   @subheading{Warning}
-    The @sym{gtk:font-selection-get-font-name} function has been deprecated
+    The @fun{gtk:font-selection-get-font-name} function has been deprecated
     since version 3.2 and should not be used in newly written code. Use
     @class{gtk:font-chooser}.
 
@@ -282,7 +282,7 @@
     exists or if the @arg{fontsel} does not belong to a particular screen yet.
   @end{return}
   @subheading{Warning}
-    The @sym{gtk:font-selection-set-font-name} function has been deprecated
+    The @fun{gtk:font-selection-set-font-name} function has been deprecated
     since version 3.2 and should not be used in newly written code.
     Use @class{gtk:font-chooser}.
 
@@ -308,7 +308,7 @@
   @argument[fontsel]{a @class{gtk:font-selection} widget}
   @return{The text displayed in the preview area.}
   @subheading{Warning}
-    The @sym{gtk:font-selection-get-preview-text} function has been deprecated
+    The @fun{gtk:font-selection-get-preview-text} function has been deprecated
     since version 3.2 and should not be used in newly written code.
     Use @class{gtk:font-chooser}.
 
@@ -330,7 +330,7 @@
   @argument[fontsel]{a @class{gtk:font-selection} widget}
   @argument[text]{the text to display in the preview area}
   @subheading{Warning}
-    The @sym{gtk:font-selection-set-preview-text} function has been deprecated
+    The @fun{gtk:font-selection-set-preview-text} function has been deprecated
     since version 3.2 and should not be used in newly written code.
     Use @class{gtk:font-chooser}.
 
@@ -354,7 +354,7 @@
     A @class{pango-font-face} representing the selected font group details.
   @end{return}
   @subheading{Warning}
-    The @sym{gtk:font-selection-get-face} function has been deprecated since
+    The @fun{gtk:font-selection-get-face} function has been deprecated since
     version 3.2 and should not be used in newly written code.
     Use @class{gtk:font-chooser}.
 
@@ -376,7 +376,7 @@
   @argument[fontsel]{a @class{gtk:font-selection} widget}
   @return{A @class{gtk:widget} that is part of fontsel.}
   @subheading{Warning}
-    The @sym{gtk:font-selection-get-face-list} function has been deprecated
+    The @fun{gtk:font-selection-get-face-list} function has been deprecated
     since version 3.2 and should not be used in newly written code.
     Use @class{gtk:font-chooser}.
 
@@ -402,7 +402,7 @@
     @arg{fontsel} and must not be modified or freed.
   @end{return}
   @subheading{Warning}
-    The @sym{gtk:font-selection-get-family} function has been deprecated since
+    The @fun{gtk:font-selection-get-family} function has been deprecated since
     version 3.2 and should not be used in newly written code.
     Use @class{gtk:font-chooser}.
 
@@ -425,7 +425,7 @@
     is selected.
   @end{return}
   @subheading{Warning}
-    The @sym{gtk:font-selection-get-size} function has been deprecated since
+    The @fun{gtk:font-selection-get-size} function has been deprecated since
     version 3.2 and should not be used in newly written code.
     Use @class{gtk:font-chooser}.
 
@@ -444,7 +444,7 @@
   @argument[fontsel]{a @class{gtk:font-selection} widget}
   @return{A @class{gtk:widget} that is part of @arg{fontsel}.}
   @subheading{Warning}
-    The @sym{gtk:font-selection-get-family-list} function has been deprecated
+    The @fun{gtk:font-selection-get-family-list} function has been deprecated
     since version 3.2 and should not be used in newly written code.
     Use @class{gtk:font-chooser}.
 
@@ -466,7 +466,7 @@
   @argument[fontsel]{a @class{gtk:font-selection} widget}
   @return{A @class{gtk:widget} that is part of @arg{fontsel}.}
   @subheading{Warning}
-    The @sym{gtk:font-selection-get-preview-entry} function has been deprecated
+    The @fun{gtk:font-selection-get-preview-entry} function has been deprecated
     since version 3.2 and should not be used in newly written code.
     Use @class{gtk:font-chooser}.
 
@@ -487,7 +487,7 @@
   @argument[fontsel]{a @class{gtk:font-selection} widget}
   @return{A @class{gtk:widget} that is part of @arg{fontsel}.}
   @subheading{Warning}
-    The @sym{gtk:font-selection-get-size-entry} function has been deprecated
+    The @fun{gtk:font-selection-get-size-entry} function has been deprecated
     since version 3.2 and should not be used in newly written code.
     Use @class{gtk:font-chooser}.
 
@@ -509,7 +509,7 @@
   @argument[fontsel]{a @class{gtk:font-selection} widget}
   @return{A @class{gtk:widget} that is part of @arg{fontsel}.}
   @subheading{Warning}
-    The @sym{gtk:font-selection-get-size-list} function has been deprecated
+    The @fun{gtk:font-selection-get-size-list} function has been deprecated
     since version 3.2 and should not be used in newly written code.
     Use @class{gtk:font-chooser}.
 

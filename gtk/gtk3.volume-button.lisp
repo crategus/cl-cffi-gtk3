@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -83,7 +83,7 @@
 (setf (documentation 'volume-button 'type)
  "@version{#2023-3-29}
   @begin{short}
-    The @sym{gtk:volume-button} class is a subclass of the
+    The @class{gtk:volume-button} class is a subclass of the
     @class{gtk:scale-button} class that has been tailored for use as a volume
     control widget with suitable icons, tooltips and accessible labels.
   @end{short}
@@ -130,7 +130,7 @@
 (defun volume-button-new ()
  #+liber-documentation
  "@version{#2023-3-29}
-  @return{A new @class{gtk:volume-button} widget.}
+  @return{The new @class{gtk:volume-button} widget.}
   @begin{short}
     Creates a volume button, with a range between 0.0 and 1.0, with
     a stepping of 0.02.

@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2013 - 2023 Dieter Kaiser
+;;; Copyright (C) 2013 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -154,14 +154,14 @@
 (setf (documentation 'printer 'type)
  "@version{#2023-3-21}
   @begin{short}
-    A @sym{gtk:printer} object represents a printer.
+    The @class{gtk:printer} object represents a printer.
   @end{short}
   You only need to deal directly with printers if you use the non-portable
   @class{gtk:print-unix-dialog} API.
 
-  A @sym{gtk:printer} object allows to get status information about the printer,
-  such as its description, its location, the number of queued jobs, etc. Most
-  importantly, a @sym{gtk:printer} object can be used to create a
+  The @class{gtk:printer} object allows to get status information about the
+  printer, such as its description, its location, the number of queued jobs,
+  etc. Most importantly, a @class{gtk:printer} object can be used to create a
   @class{gtk:print-job} object, which lets you print to the printer.
   @begin[Signal Details]{dictionary}
     @subheading{The \"details-acquired\" signal}
@@ -172,7 +172,7 @@ lambda (printer success)    :run-last
       printer from the print backend. The success parameter indicates if the
       information was actually obtained.
       @begin[code]{table}
-        @entry[printer]{The @sym{gtk:printer} object on which the signal is
+        @entry[printer]{The @class{gtk:printer} object on which the signal is
           emitted.}
         @entry[success]{@em{True} if the details were successfully acquired.}
       @end{table}
@@ -197,7 +197,7 @@ lambda (printer success)    :run-last
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- printer-accepting-jobs -------------------------------------------------
+;;; --- gtk:printer-accepting-jobs ---------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "accepting-jobs" 'printer) t)
@@ -220,7 +220,7 @@ lambda (printer success)    :run-last
   @see-class{gtk:printer}
   @see-function{gtk:printer-is-accepting-jobs}")
 
-;;; --- printer-accepts-pdf ----------------------------------------------------
+;;; --- gtk:printer-accepts-pdf ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "accepts-pdf" 'printer) t)
@@ -244,7 +244,7 @@ lambda (printer success)    :run-last
   Returns whether the printer accepts input in PDF format.
   @see-class{gtk:printer}")
 
-;;; --- printer-accepts-ps -----------------------------------------------------
+;;; --- gtk:printer-accepts-ps -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "accepts-ps" 'printer) t)
@@ -268,7 +268,7 @@ lambda (printer success)    :run-last
   Returns whether the printer accepts input in PostScript format.
   @see-class{gtk:printer}")
 
-;;; --- printer-backend --------------------------------------------------------
+;;; --- gtk:printer-backend ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "backend" 'printer) t)
@@ -293,7 +293,7 @@ lambda (printer success)    :run-last
   @see-class{gtk:printer}
   @see-class{gtk:print-backend}")
 
-;;; --- printer-icon-name ------------------------------------------------------
+;;; --- gtk:printer-icon-name --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "icon-name" 'printer) t)
@@ -316,7 +316,7 @@ lambda (printer success)    :run-last
   Gets the name of the icon to use for the printer.
   @see-class{gtk:printer}")
 
-;;; --- printer-is-virtual -----------------------------------------------------
+;;; --- gtk:printer-is-virtual -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "is-virtual" 'printer) t)
@@ -341,7 +341,7 @@ lambda (printer success)    :run-last
   printer hardware, but something like a CUPS class.
   @see-class{gtk:printer}")
 
-;;; --- printer-job-count ------------------------------------------------------
+;;; --- gtk:printer-job-count --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "job-count" 'printer) t)
@@ -365,7 +365,7 @@ lambda (printer success)    :run-last
   Gets the number of jobs currently queued on the printer.
   @see-class{gtk:printer}")
 
-;;; --- printer-location -------------------------------------------------------
+;;; --- gtk:printer-location ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "location" 'printer) t)
@@ -388,7 +388,7 @@ lambda (printer success)    :run-last
   Returns a description of the location of the printer.
   @see-class{gtk:printer}")
 
-;;; --- printer-name -----------------------------------------------------------
+;;; --- gtk:printer-name -------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "name" 'printer) t)
@@ -412,7 +412,7 @@ lambda (printer success)    :run-last
   Returns the name of the printer.
   @see-class{gtk:printer}")
 
-;;; --- printer-paused -----------------------------------------------------
+;;; --- gtk:printer-paused -----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "paused" 'printer) t)
@@ -436,7 +436,7 @@ lambda (printer success)    :run-last
   @see-class{gtk:printer}
   @see-function{gtk:printer-is-paused}")
 
-;;; --- printer-state-message --------------------------------------------------
+;;; --- gtk:printer-state-message ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "state-message" 'printer) t)
@@ -726,11 +726,11 @@ lambda (printer success)    :run-last
     Retrieve the hard margins of the printer, i.e. the margins that define
     the area at the borders of the paper that the printer cannot print to.
   @end{short}
-  @begin[Note]{dictionary}
+  @begin{notes}
     This will not succeed unless the details of the printer are available,
     see the @fun{gtk:printer-has-details} and @fun{gtk:printer-request-details}
     functions.
-  @end{dictionary}
+  @end{notes}
   @see-class{gtk:printer}
   @see-function{gtk:printer-has-details}
   @see-function{gtk:printer-request-details}"

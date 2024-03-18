@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -95,7 +95,7 @@
 (setf (documentation 'layout 'type)
  "@version{#2023-3-20}
   @begin{short}
-    The @sym{gtk:layout} widget is similar to the @class{gtk:drawing-area}
+    The @class{gtk:layout} widget is similar to the @class{gtk:drawing-area}
     widget in that it is a \"blank slate\" and does not do anything but paint
     a blank background by default.
   @end{short}
@@ -105,7 +105,7 @@
   a @class{gtk:drawing-area} widget is a better choice since it has lower
   overhead.
 
-  When handling expose events on a @sym{gtk:layout} widget, you must draw to
+  When handling expose events on a @class{gtk:layout} widget, you must draw to
   the @class{gdk:window} object returned by the @fun{gtk:layout-bin-window}
   function, rather than to the one returned by the @fun{gtk:widget-window}
   function as you would for a drawing area.
@@ -134,7 +134,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- layout-height ----------------------------------------------------------
+;;; --- gtk:layout-height ------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "height" 'layout) t)
@@ -157,11 +157,11 @@
     class.
   @end{short}
 
-  The @sym{gtk:layout-height} function gets the height of the layout. The
-  @sym{(setf gtk:layout-height)} function sets the height.
+  The @fun{gtk:layout-height} function gets the height of the layout. The
+  @setf{gtk:layout-height} function sets the height.
   @see-class{gtk:layout}")
 
-;;; --- layout-width -----------------------------------------------------------
+;;; --- gtk:layout-width -------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "width" 'layout) t)
@@ -183,15 +183,15 @@
     Accessor of the @slot[gtk:layout]{width} slot of the @class{gtk:layout}
     class.
   @end{short}
-  The @sym{gtk:layout-width} function gets the width of the layout. The
-  @sym{(setf gtk:layout-width)} function sets the width.
+  The @fun{gtk:layout-width} function gets the width of the layout. The
+  @setf{gtk:layout-width} function sets the width.
   @see-class{gtk:layout}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; Child Property and Child Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- layout-child-x ---------------------------------------------------------
+;;; --- gtk:layout-child-x -----------------------------------------------------
 
 (define-child-property layout-child-x "x" "gint" t t t)
 
@@ -212,7 +212,7 @@
   @see-class{gtk:layout}
   @see-class{gtk:widget}")
 
-;;; --- layout-child-y ---------------------------------------------------------
+;;; --- gtk:layout-child-y -----------------------------------------------------
 
 (define-child-property layout-child-y "y" "gint" t t t)
 
@@ -314,7 +314,7 @@
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_layout_get_size ()
-;;; gtk_layout_set_size () -> layout-size
+;;; gtk_layout_set_size ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf layout-size) (value layout)
@@ -339,9 +339,9 @@
   @begin{short}
     Accessor of the width and height of the scrollable area.
   @end{short}
-  The @sym{gtk:layout-size} function gets the size in pixels that has been set
+  The @fun{gtk:layout-size} function gets the size in pixels that has been set
   on the layout, and that determines the total extents of the scrollbar of the
-  layout area. The @sym{(setf gtk:layout-size)} function sets the size.
+  layout area. The @setf{gtk:layout-size} function sets the size.
   @begin[Lisp binding]{dictionary}
     In the Lisp binding the @fun{gtk:layout-width} and @fun{gtk:layout-height}
     functions get or set the width and height of the scrollable area.

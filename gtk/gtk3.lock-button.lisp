@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2021 - 2023 Dieter Kaiser
+;;; Copyright (C) 2021 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -103,7 +103,7 @@
 (setf (documentation 'lock-button 'type)
  "@version{#2023-3-20}
   @begin{short}
-    The @sym{gtk:lock-button} widget is a widget that can be used in control
+    The @class{gtk:lock-button} widget is a widget that can be used in control
     panels or preference dialogs to allow users to obtain and revoke
     authorizations needed to operate the controls.
   @end{short}
@@ -147,7 +147,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- lock-button-permission -------------------------------------------------
+;;; --- gtk:lock-button-permission ---------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "permission" 'lock-button) t)
@@ -168,13 +168,13 @@
     Accessor of the @slot[gtk:lock-button]{permission} slot of the
     @class{gtk:lock-button} class.
   @end{short}
-  The @sym{gtk:lock-button-permission} function obtains the permission that
-  controls the lock button. The @sym{gtk:lock-button-permission} function sets
+  The @fun{gtk:lock-button-permission} function obtains the permission that
+  controls the lock button. The @setf{gtk:lock-button-permission} function sets
   the permission.
   @see-class{gtk:lock-button}
   @see-class{g:permission}")
 
-;;; --- lock-button-text-lock --------------------------------------------------
+;;; --- gtk:lock-button-text-lock ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "text-lock" 'lock-button) t)
@@ -199,7 +199,7 @@
   The text to display when prompting the user to lock.
   @see-class{gtk:lock-button}")
 
-;;; --- lock-button-text-unlock ------------------------------------------------
+;;; --- gtk:lock-button-text-unlock --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "text-unlock" 'lock-button) t)
@@ -224,7 +224,7 @@
   The text to display when prompting the user to unlock.
   @see-class{gtk:lock-button}")
 
-;;; --- lock-button-tooltip-lock -----------------------------------------------
+;;; --- gtk:lock-button-tooltip-lock -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "tooltip-lock" 'lock-button) t)
@@ -249,7 +249,7 @@
   The tooltip to display when prompting the user to lock.
   @see-class{gtk:lock-button}")
 
-;;; --- lock-button-tooltip-not-authorized -------------------------------------
+;;; --- gtk:lock-button-tooltip-not-authorized ---------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "tooltip-not-authorized"
@@ -277,7 +277,7 @@
   The tooltip to display when prompting the user cannot obtain authorization.
   @see-class{gtk:lock-button}")
 
-;;; --- lock-button-tooltip-unlock ---------------------------------------------
+;;; --- gtk:lock-button-tooltip-unlock -----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "tooltip-unlock" 'lock-button) t)

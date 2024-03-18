@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -307,8 +307,8 @@
       the actions are shown.}
   @end{table}
   @begin[Warning]{dictionary}
-    The @sym{gtk:ui-manager-item-type} flags has been deprecated since version
-    3.10 and should not be used in newly written code.
+    The @symbol{gtk:ui-manager-item-type} flags has been deprecated since
+    version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:ui-manager}
   @see-function{gtk:ui-manager-add-ui}")
@@ -332,7 +332,7 @@
 (setf (documentation 'ui-manager 'type)
  "@version{#2023-3-29}
   @begin{short}
-    A @sym{gtk:ui-manager} object constructs a user interface, menus and
+    A @class{gtk:ui-manager} object constructs a user interface, menus and
     toolbars, from one or more UI definitions, which reference actions from one
     or more action groups.
   @end{short}
@@ -341,25 +341,25 @@
   @url[https://developer.gnome.org/gtk3/stable/GtkUIManager.html]{GTKUIManager}
   documentation for a description of the UI definitions.
   @begin[Warning]{dictionary}
-    The @sym{gtk:ui-manager} class is deprecated since GTK 3.10. To construct
+    The @class{gtk:ui-manager} class is deprecated since GTK 3.10. To construct
     user interfaces from XML definitions, you should use the
     @class{gtk:builder}, @class{g:menu-model} classes, et al. To work with
     actions, use the @class{g:action}, @class{gtk:actionable} classes et al.
     These newer classes support richer functionality and integration with
     various desktop shells. It should be possible to migrate most/all
-    functionality from the @sym{gtk:ui-manager} class.
+    functionality from the @class{gtk:ui-manager} class.
   @end{dictionary}
   @begin[GtkUIManager as GtkBuildable]{dictionary}
-    The @sym{gtk:ui-manager} implementation of the @class{gtk:buildable}
+    The @class{gtk:ui-manager} implementation of the @class{gtk:buildable}
     interface accepts @class{gtk:action-group} objects as @code{<child>}
-    elements in UI definitions. A @sym{gtk:ui-manager} UI definition can be
-    embedded in an @sym{gtk:ui-manager} @code{<object>} element in a
+    elements in UI definitions. A @class{gtk:ui-manager} UI definition can be
+    embedded in an @class{gtk:ui-manager} @code{<object>} element in a
     @class{gtk:builder} UI definition. The widgets that are constructed by a
-    @sym{gtk:ui-manager} object can be embedded in other parts of the
+    @class{gtk:ui-manager} object can be embedded in other parts of the
     constructed user interface with the help of the @code{constructor}
     attribute. See the example below.
 
-    @b{Example:} An embedded @sym{gtk:ui-manager} UI definition
+    @b{Example:} An embedded @class{gtk:ui-manager} UI definition
     @begin{pre}
 <object class=\"GtkUIManager\" id=\"uiman\">
     <child>
@@ -392,7 +392,7 @@ lambda (manager)    :no-recurse
       @end{pre}
       The signal is emitted whenever the set of actions changes.
       @begin[code]{table}
-        @entry[manager]{The @sym{gtk:ui-manager} object which received the
+        @entry[manager]{The @class{gtk:ui-manager} object which received the
           signal.}
       @end{table}
     @subheading{The \"add-widget\" signal}
@@ -403,7 +403,7 @@ lambda (manager widget)    :no-recurse
       emitted for generated popup menus, which can be obtained by the
       @fun{gtk:ui-manager-widget} function.
       @begin[code]{table}
-        @entry[manager]{The @sym{gtk:ui-manager} object which received the
+        @entry[manager]{The @class{gtk:ui-manager} object which received the
           signal.}
         @entry[widget]{The added @class{gtk:widget} object.}
       @end{table}
@@ -415,7 +415,7 @@ lambda (manager action proxy)    :no-recurse
       intended for simple customizations for which a custom action class would
       be too clumsy, e.g. showing tooltips for menuitems in the statusbar.
       @begin[code]{table}
-        @entry[manager]{The @sym{gtk:ui-manager} object which receibed the
+        @entry[manager]{The @class{gtk:ui-manager} object which receibed the
           signal.}
         @entry[action]{The @class{gtk:action} object.}
         @entry[proxy]{The @class{gtk:widget} proxy.}
@@ -426,7 +426,7 @@ lambda (manager action proxy)    :no-recurse
       @end{pre}
       The signal is emitted after disconnecting a proxy from an action.
       @begin[code]{table}
-        @entry[manager]{The @sym{gtk:ui-manager} object which received the
+        @entry[manager]{The @class{gtk:ui-manager} object which received the
           signal.}
         @entry[action]{The @class{gtk:action} object.}
         @entry[proxy]{The @class{gtk:widget} proxy.}
@@ -438,7 +438,7 @@ lambda (manager action)    :no-recurse
       The signal is emitted just after the action is activated. This is intended
       for applications to get notification just after any action is activated.
       @begin[code]{table}
-        @entry[manager]{The @sym{gtk:ui-manager} object which received the
+        @entry[manager]{The @class{gtk:ui-manager} object which received the
           signal.}
         @entry[action]{The @class{gtk:action} object.}
       @end{table}
@@ -450,7 +450,7 @@ lambda (manager action)    :no-recurse
       intended for applications to get notification just before any action is
       activated.
       @begin[code]{table}
-        @entry[manager]{The @sym{gtk:ui-manager} object which received the
+        @entry[manager]{The @class{gtk:ui-manager} object which received the
           signal.}
         @entry[action]{The @class{gtk:action} object.}
       @end{table}
@@ -464,7 +464,7 @@ lambda (manager action)    :no-recurse
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- ui-manager-add-tearoffs ------------------------------------------------
+;;; --- gtk:ui-manager-add-tearoffs --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "add-tearoffs" 'ui-manager) t)
@@ -487,21 +487,21 @@ lambda (manager action)    :no-recurse
     Accessor of the @slot[gtk:ui-manager]{add-tearoffs} slot of the
     @class{gtk:ui-manager} class.
   @end{short}
-  The @sym{gtk:ui-manager-add-tearoffs} function returns whether menus
+  The @fun{gtk:ui-manager-add-tearoffs} function returns whether menus
   generated by the UI manager will have tearoff menu items. The
-  @sym{(setf gtk:ui-manager-add-tearoffs)} function sets the
+  @setf{gtk:ui-manager-add-tearoffs} function sets the
   @slot[gtk:ui-manager]{add-tearoffs} property.
 
   Note that this only affects regular menus. Generated popup menus never have
   tearoff menu items.
   @begin[Warning]{dictionary}
-    The @sym{gtk:ui-manager-add-tearoffs} function has been deprecated since
+    The @fun{gtk:ui-manager-add-tearoffs} function has been deprecated since
     version 3.4 and should not be used in newly written code. Tearoff menus are
     deprecated and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:ui-manager}")
 
-;;; --- ui-manager-ui ----------------------------------------------------------
+;;; --- gtk:ui-manager-ui ------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "ui" 'ui-manager) t)
@@ -523,7 +523,7 @@ lambda (manager action)    :no-recurse
   @end{short}
   Creates a UI definition of the merged UI.
   @begin[Warning]{dictionary}
-    The @sym{gtk:ui-manager-ui} function has been deprecated since version
+    The @fun{gtk:ui-manager-ui} function has been deprecated since version
     3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:ui-manager}")
@@ -540,7 +540,7 @@ lambda (manager action)    :no-recurse
   @return{A new @class{gtk:ui-manager} object.}
   @short{Creates a new UI manager object.}
   @begin[Warning]{dictionary}
-    The @sym{gtk:ui-manager-new} function has been deprecated since version
+    The @fun{gtk:ui-manager-new} function has been deprecated since version
     3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:ui-manager}"
@@ -569,7 +569,7 @@ lambda (manager action)    :no-recurse
   If @arg{pos} is larger than the number of action groups in the UI manager, or
   negative, @arg{group} will be inserted at the end of the internal list.
   @begin[Warning]{dictionary}
-    The @sym{gtk:ui-manager-acton-group} function has been deprecated since
+    The @fun{gtk:ui-manager-acton-group} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:ui-manager}
@@ -595,7 +595,7 @@ lambda (manager action)    :no-recurse
     UI manager.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:ui-manager-remove-action-group} function has been deprecated
+    The @fun{gtk:ui-manager-remove-action-group} function has been deprecated
     since version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:ui-manager}
@@ -606,7 +606,7 @@ lambda (manager action)    :no-recurse
 (export 'ui-manager-remove-action-group)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_ui_manager_get_action_groups () -> ui-manager-action-groups
+;;; gtk_ui_manager_get_action_groups ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_ui_manager_get_action_groups" ui-manager-action-groups)
@@ -617,7 +617,7 @@ lambda (manager action)    :no-recurse
   @return{A list of @class{gtk:action-group} objects.}
   @short{Returns the list of action groups associated with the UI manager.}
   @begin[Warning]{dictionary}
-    The @sym{gtk:ui-manager-action-groups} function has been deprecated since
+    The @fun{gtk:ui-manager-action-groups} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:ui-manager}
@@ -627,7 +627,7 @@ lambda (manager action)    :no-recurse
 (export 'ui-manager-action-groups)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_ui_manager_get_accel_group () -> ui-manager-accel-group
+;;; gtk_ui_manager_get_accel_group ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_ui_manager_get_accel_group" ui-manager-accel-group)
@@ -640,7 +640,7 @@ lambda (manager action)    :no-recurse
     Returns the accelerator group associated with the UI manager.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:ui-manager-accel-group} function has been deprecated since
+    The @fun{gtk:ui-manager-accel-group} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:ui-manager}
@@ -650,7 +650,7 @@ lambda (manager action)    :no-recurse
 (export 'ui-manager-accel-group)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_ui_manager_get_widget () -> ui-manager-widget
+;;; gtk_ui_manager_get_widget ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_ui_manager_get_widget" ui-manager-widget) (g:object widget)
@@ -679,7 +679,7 @@ lambda (manager action)    :no-recurse
   function to some container or explicitly reference them, they will survive
   the destruction of the UI manager.
   @begin[Warning]{dictionary}
-    The @sym{gtk:ui-manager-widget} function has been deprecated since version
+    The @fun{gtk:ui-manager-widget} function has been deprecated since version
     3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:ui-manager}
@@ -690,7 +690,7 @@ lambda (manager action)    :no-recurse
 (export 'ui-manager-widget)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_ui_manager_get_toplevels () -> ui-manager-toplevels
+;;; gtk_ui_manager_get_toplevels ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_ui_manager_get_toplevels" ui-manager-toplevels)
@@ -708,7 +708,7 @@ lambda (manager action)    :no-recurse
     Obtains a list of all toplevel widgets of the requested types.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:ui-manager-toplevels} function has been deprecated since
+    The @fun{gtk:ui-manager-toplevels} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:ui-manager}
@@ -719,7 +719,7 @@ lambda (manager action)    :no-recurse
 (export 'ui-manager-toplevels)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_ui_manager_get_action () -> ui-manager-action
+;;; gtk_ui_manager_get_action ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_ui_manager_get_action" ui-manager-action) g:object
@@ -737,7 +737,7 @@ lambda (manager action)    :no-recurse
   See the @fun{gtk:ui-manager-widget} function for more information about
   paths.
   @begin[Warning]{dictionary}
-    The @sym{gtk:ui-manager-action} function has been deprecated since
+    The @fun{gtk:ui-manager-action} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:ui-manager}
@@ -773,7 +773,7 @@ lambda (manager action)    :no-recurse
     current contents of manager.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:ui-manager-add-ui-from-resource} function has been deprecated
+    The @fun{gtk:ui-manager-add-ui-from-resource} function has been deprecated
     since version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:ui-manager}
@@ -812,7 +812,7 @@ lambda (manager action)    :no-recurse
   @end{short}
   An enclosing @code{<ui>} element is added if it is missing.
   @begin[Warning]{dictionary}
-    The @sym{gtk:ui-manager-add-ui-from-string} function has been deprecated
+    The @fun{gtk:ui-manager-add-ui-from-string} function has been deprecated
     since version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:ui-manager}
@@ -847,7 +847,7 @@ lambda (manager action)    :no-recurse
     contents of manager.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:ui-manager-add-ui-from-file} function has been deprecated
+    The @fun{gtk:ui-manager-add-ui-from-file} function has been deprecated
     since version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:ui-manager}
@@ -871,7 +871,7 @@ lambda (manager action)    :no-recurse
     @fun{gtk:ui-manager-add-ui} function.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:ui-manager-new-merge-id} function has been deprecated since
+    The @fun{gtk:ui-manager-new-merge-id} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:ui-manager}
@@ -909,7 +909,7 @@ lambda (manager action)    :no-recurse
   If @arg{path} points to a menuitem or toolitem, the new element will be
   inserted before or after this item, depending on @arg{top}.
   @begin[Warning]{dictionary}
-    The @sym{gtk:ui-manager-add-ui} function has been deprecated since version
+    The @fun{gtk:ui-manager-add-ui} function has been deprecated since version
     3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:ui-manager}
@@ -939,7 +939,7 @@ lambda (manager action)    :no-recurse
     Unmerges the part of managers content identified by @arg{id}.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:ui-manager-remove-ui} function has been deprecated since
+    The @fun{gtk:ui-manager-remove-ui} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:ui-manager}
@@ -965,7 +965,7 @@ lambda (manager action)    :no-recurse
   useful is to enforce that the menubar and toolbar have been added to the main
   window before showing it.
   @begin[Warning]{dictionary}
-    The @sym{gtk:ui-manager-ensure-update} function has been deprecated since
+    The @fun{gtk:ui-manager-ensure-update} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:ui-manager}"

@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2023 Dieter Kaiser
+;;; Copyright (C) 2019 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -91,7 +91,7 @@
 (setf (documentation 'shortcuts-section 'type)
  "@version{#2023-2-28}
   @begin{short}
-    A @sym{gtk:shortcuts-section} widget collects all the keyboard shortcuts
+    The @class{gtk:shortcuts-section} widget collects all the keyboard shortcuts
     and gestures for a major application mode.
   @end{short}
   If your application needs multiple sections, you should give each section a
@@ -109,7 +109,7 @@
 lambda (section arg)    :action
       @end{pre}
       @begin[code]{table}
-        @entry[section]{The @sym{gtk:shortcuts-section} widget.}
+        @entry[section]{The @class{gtk:shortcuts-section} widget.}
         @entry[arg]{An integer.}
       @end{table}
   @end{dictionary}
@@ -123,7 +123,7 @@ lambda (section arg)    :action
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- shortcuts-section-max-height -------------------------------------------
+;;; --- gtk:shortcuts-section-max-height ---------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "max-height"
@@ -153,7 +153,7 @@ lambda (section arg)    :action
   columns. The default value of 15 should work in for most cases.
   @see-class{gtk:shortcuts-section}")
 
-;;; --- shortcuts-section-section-name -----------------------------------------
+;;; --- gtk:shortcuts-section-section-name -------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "section-name"
@@ -184,7 +184,7 @@ lambda (section arg)    :action
   @class{gtk:shortcuts-window} widget.
   @see-class{gtk:shortcuts-section}")
 
-;;; --- shortcuts-section-title ------------------------------------------------
+;;; --- gtk:shortcuts-section-title --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "title" 'shortcuts-section) t)
@@ -212,7 +212,7 @@ lambda (section arg)    :action
   a title, since the section selector will not be shown in this case.
   @see-class{gtk:shortcuts-section}")
 
-;;; --- shortcuts-section-view-name --------------------------------------------
+;;; --- gtk:shortcuts-section-view-name ----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "view-name"

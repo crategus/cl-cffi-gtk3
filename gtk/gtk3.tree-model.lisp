@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -321,14 +321,14 @@
 
 (cffi:defcfun ("gtk_tree_path_to_string" tree-path-to-string) :string
  #+liber-documentation
- "@version{2021-3-4}
+ "@version{2024-3-13}
   @argument[path]{a @class{gtk:tree-path} instance}
   @return{A string with the representation of the tree path.}
   @short{Generates a string representation of the tree path.}
   This string is a ':' separated list of numbers. For example, \"4:10:0:3\"
   would be an acceptable return value for this string.
   @see-class{gtk:tree-path}
-  @see-function{gtk:tree-path-from-string}"
+  @see-function{gtk:tree-path-new-from-string}"
   (path (g:boxed tree-path)))
 
 (export 'tree-path-to-string)
@@ -1237,7 +1237,7 @@ lambda (model path iter new-order)    :run-first
 (export 'tree-model-column-type)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_model_get_iter () -> tree-model-iter
+;;; gtk_tree_model_get_iter ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_model_get_iter" %tree-model-iter) :boolean
@@ -1247,9 +1247,9 @@ lambda (model path iter new-order)    :run-first
 
 (defun tree-model-iter (model path)
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{2024-3-15}
   @argument[model]{a @class{gtk:tree-model} object}
-  @argument[path]{the @class{gtk:tree-path} instance}
+  @argument[path]{a @class{gtk:tree-path} instance}
   @return{The @class{gtk:tree-iter} iterator or @code{nil}, if the iterator is
     not set.}
   @begin{short}
@@ -1266,7 +1266,7 @@ lambda (model path iter new-order)    :run-first
 (export 'tree-model-iter)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_model_get_iter_from_string () -> tree-model-iter-from-string
+;;; gtk_tree_model_get_iter_from_string ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_model_get_iter_from_string"
@@ -1277,7 +1277,7 @@ lambda (model path iter new-order)    :run-first
 
 (defun tree-model-iter-from-string (model pathstr)
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{2024-3-14}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[pathstr]{a string representation of a @class{gtk:tree-path} object}
   @return{The @class{gtk:tree-iter} iterator.}
@@ -1295,7 +1295,7 @@ lambda (model path iter new-order)    :run-first
 (export 'tree-model-iter-from-string)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_model_get_iter_first () -> tree-model-iter-first
+;;; gtk_tree_model_get_iter_first ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_model_get_iter_first" %tree-model-iter-first) :boolean
@@ -1304,13 +1304,13 @@ lambda (model path iter new-order)    :run-first
 
 (defun tree-model-iter-first (model)
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{2024-3-14}
   @argument[model]{a @class{gtk:tree-model} object}
-  @return{A @class{gtk:tree-iter} iterator.}
+  @return{The @class{gtk:tree-iter} iterator.}
   @begin{short}
-    Returns the first iterator in the tree, the one at the path \"0\".
+    Returns the first iterator in the tree model, the one at the path \"0\".
   @end{short}
-  Returns @code{nil} if the tree is empty.
+  Returns @code{nil} if the tree model is empty.
   @see-class{gtk:tree-model}
   @see-class{gtk:tree-iter}
   @see-function{gtk:tree-model-iter-next}"
@@ -1321,13 +1321,13 @@ lambda (model path iter new-order)    :run-first
 (export 'tree-model-iter-first)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_model_get_path () -> tree-model-path
+;;; gtk_tree_model_get_path ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_model_get_path" tree-model-path)
     (g:boxed tree-path :return)
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{2024-3-13}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[iter]{a @class{gtk:tree-iter} iterator}
   @return{A newly created @class{gtk:tree-path} instance.}
@@ -1343,7 +1343,7 @@ lambda (model path iter new-order)    :run-first
 (export 'tree-model-path)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_model_get_value () -> tree-model-value
+;;; gtk_tree_model_get_value ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_model_get_value" %tree-model-value) :void
@@ -1352,21 +1352,21 @@ lambda (model path iter new-order)    :run-first
   (column :int)
   (value (:pointer (:struct g:value))))
 
-(defun tree-model-value (model iter column)
+(defun tree-model-value (model iter colnum)
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{2024-3-12}
   @argument[model]{a @class{gtk:tree-model} object}
-  @argument[iter]{the @class{gtk:tree-iter} iterator}
-  @argument[column]{an integer with the column to lookup the value at}
-  @return{The value at @arg{column}.}
+  @argument[iter]{a @class{gtk:tree-iter} iterator}
+  @argument[colnum]{an integer with the column to lookup the value at}
+  @return{The value at @arg{colnum}.}
   @begin{short}
-    Returns the value at @arg{column}.
+    Returns the value at @arg{colnum}.
   @end{short}
   @see-class{gtk:tree-model}
   @see-class{gtk:tree-iter}"
   (cffi:with-foreign-object (value '(:struct g:value))
     (g:value-init value)
-    (%tree-model-value model iter column value)
+    (%tree-model-value model iter colnum value)
     (prog1
       (gobject:parse-g-value value)
       (g:value-unset value))))
@@ -1383,10 +1383,10 @@ lambda (model path iter new-order)    :run-first
 
 (defun tree-model-iter-next (model iter)
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{2024-3-14}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[iter]{a @class{gtk:tree-iter} iterator}
-  @return{A @class{gtk:tree-iter} iterator.}
+  @return{The @class{gtk:tree-iter} iterator.}
   @begin{short}
     Returns the iterator to the node following @arg{iter} at the current level.
   @end{short}

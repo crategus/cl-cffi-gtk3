@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -71,7 +71,7 @@
 (setf (documentation 'misc 'type)
  "@version{2023-2-27}
   @short{Base class for widgets with alignments and padding.}
-  The @sym{gtk:misc} widget is an abstract widget which is not useful itself,
+  The @class{gtk:misc} widget is an abstract widget which is not useful itself,
   but is used to derive subclasses which have alignment and padding attributes.
 
   The horizontal and vertical padding attributes allows extra space to be
@@ -85,8 +85,8 @@
     Note that the desired effect can in most cases be achieved by using the
     @slot[gtk:widget]{halign}, @slot[gtk:widget]{valign} and
     @slot[gtk:widget]{margin} properties on the child widget, so the
-    @sym{gtk:misc} widget should not be used in new code. To reflect this fact,
-    all @sym{gtk:misc} API has been deprecated.
+    @class{gtk:misc} widget should not be used in new code. To reflect this fact,
+    all @class{gtk:misc} API has been deprecated.
   @end{dictionary}
   @see-function{gtk:widget-halign}
   @see-function{gtk:widget-valign}
@@ -96,7 +96,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- misc-xalign ------------------------------------------------------------
+;;; --- gtk:misc-xalign --------------------------------------------------------
 
 ;; not exported
 
@@ -124,7 +124,7 @@
   for RTL layouts.
   @see-class{gtk:misc}")
 
-;;; --- misc-xpad --------------------------------------------------------------
+;;; --- gtk:misc-xpad ----------------------------------------------------------
 
 ;; not exported
 
@@ -152,7 +152,7 @@
   pixels.
   @see-class{gtk:misc}")
 
-;;; --- misc-yalign --------------------------------------------------------
+;;; --- gtk:misc-yalign --------------------------------------------------------
 
 ;; not exported
 
@@ -178,7 +178,7 @@
   The vertical alignment, from 0.0 (top) to 1.0 (bottom).
   @see-class{gtk:misc}")
 
-;;; --- misc-ypad ----------------------------------------------------------
+;;; --- gtk:misc-ypad ----------------------------------------------------------
 
 ;; not exported
 
@@ -222,7 +222,7 @@
     to 1.0 (bottom)}
   @short{Sets the alignment of the widget.}
   @begin[Warning]{dictionary}
-    The @sym{gtk:misc-set-alignment} function has been deprecated since version
+    The @fun{gtk:misc-set-alignment} function has been deprecated since version
     3.14 and should not be used in newly written code. Use @class{gtk:widget}
     alignment and margin properties.
   @end{dictionary}
@@ -249,7 +249,7 @@
     and bottom of the widget, in pixels}
   @short{Sets the amount of space to add around the widget.}
   @begin[Warning]{dictionary}
-    The @sym{gtk:misc-set-padding} function has been deprecated since version
+    The @fun{gtk:misc-set-padding} function has been deprecated since version
     3.14 and should not be used in newly written code. Use @class{gtk:widget}
     alignment and margin properties.
   @end{dictionary}
@@ -276,7 +276,7 @@
   @end{return}
   @short{Gets the x and y alignment of the widget within its allocation.}
   @begin[Warning]{dictionary}
-    The @sym{gtk:misc-get-alignment} function has been deprecated since version
+    The @fun{gtk:misc-get-alignment} function has been deprecated since version
     3.14 and should not be used in newly written code. Use @class{gtk:widget}
     alignment and margin properties.
   @end{dictionary}
@@ -303,7 +303,7 @@
   @end{return}
   @short{Gets the padding in the x and y directions of the widget.}
   @begin[Warning]{dictionary}
-    The @sym{gtk:misc-get-padding} function has been deprecated since version
+    The @fun{gtk:misc-get-padding} function has been deprecated since version
     3.14 and should not be used in newly written code. Use @class{gtk:widget}
     alignment and margin properties.
   @end{dictionary}

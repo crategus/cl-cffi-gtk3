@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -85,14 +85,15 @@
  nil)
 
 (setf (documentation 'statusbar 'type)
- "@version{#2023-3-27}
+ "@version{2024-3-14}
   @begin{short}
-    A @sym{gtk:statusbar} widget is usually placed along the bottom of the
-    main @class{gtk:window} widget of the application. It may provide a regular
-    commentary of the status of the application as is usually the case in a web
-    browser, for example, or may be used to simply output a message when the
-    status changes, when an upload is complete in an FTP client, for example.
+    The @class{gtk:statusbar} widget is usually placed along the bottom of the
+    main @class{gtk:window} widget of the application.
   @end{short}
+  It may provide a regular commentary of the status of the application as is
+  usually the case in a web browser, for example, or may be used to simply
+  output a message when the status changes, when an upload is complete in an
+  FTP client, for example.
 
   @image[statusbar]{Figure: GtkStatusbar}
 
@@ -120,7 +121,7 @@
   the stack if its message ID was recorded at the time it was added. This is
   done using the @fun{gtk:statusbar-remove} function.
   @begin[CSS node]{dictionary}
-    The @sym{gtk:statusbar} implementation has a single CSS node with name
+    The @class{gtk:statusbar} implementation has a single CSS node with name
     @code{statusbar}.
   @end{dictionary}
   @begin[Style Property Details]{dictionary}
@@ -145,7 +146,7 @@ lambda (statusbar context text)    :run-last
       Is emitted whenever a new message is popped off the stack of the status
       bar.
       @begin[code]{table}
-        @entry[statusbar]{The @sym{gtk:statusbar} widget which received the
+        @entry[statusbar]{The @class{gtk:statusbar} widget which received the
           signal.}
         @entry[context]{An unsigned integer with the context ID of the
           relevant message/statusbar.}
@@ -158,7 +159,7 @@ lambda (statusbar context text)    :run-last
       Is emitted whenever a new message gets pushed onto the stack of the status
       bar.
       @begin[code]{table}
-        @entry[statusbar]{The @sym{gtk:statusbar} widget which received the
+        @entry[statusbar]{The @class{gtk:statusbar} widget which received the
           signal.}
         @entry[context]{An unsigned integer with the context ID of the
           relevant message/statusbar.}
@@ -184,20 +185,20 @@ lambda (statusbar context text)    :run-last
 (export 'statusbar-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_statusbar_get_context_id () -> statusbar-context-id
+;;; gtk_statusbar_get_context_id ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_statusbar_get_context_id" %statusbar-get-context-id) :uint
   (statusbar (g:object statusbar))
-  (context-description :string))
+  (context :string))
 
 (defun statusbar-context-id (statusbar context)
  #+liber-documentation
- "@version{#2023-3-27}
+ "@version{2024-3-14}
   @argument[statusbar]{a @class{gtk:statusbar} widget}
   @argument[context]{a string with the textual description of what context the
     new message is being used in}
-  @return{An integer context ID.}
+  @return{The unsigned integer with the context ID.}
   @begin{short}
     Returns a new context identifier, given a description of the actual context.
   @end{short}
@@ -220,12 +221,12 @@ lambda (statusbar context text)    :run-last
 
 (defun statusbar-push (statusbar context text)
  #+liber-documentation
- "@version{#2023-3-27}
+ "@version{2024-3-14}
   @argument[statusbar]{a @class{gtk:statusbar} widget}
   @argument[context]{an unsigned integer with the context ID of the message, as
     returned by the @fun{gtk:statusbar-context-id} function}
   @argument[text]{a string with the message to add to @arg{statusbar}}
-  @return{An unsigned integer with a message ID that can be used with the
+  @return{The unsigned integer with a message ID that can be used with the
     @fun{gtk:statusbar-remove} function.}
   @begin{short}
     Pushes a new message onto the stack of the statusbar.
@@ -247,7 +248,7 @@ lambda (statusbar context text)    :run-last
 
 (defun statusbar-pop (statusbar context)
  #+liber-documentation
- "@version{#2023-3-27}
+ "@version{2024-3-14}
   @argument[statusbar]{a @class{gtk:statusbar} widget}
   @argument[context]{an unsigned integer with a context identifier}
   @begin{short}
@@ -315,7 +316,7 @@ lambda (statusbar context text)    :run-last
 (export 'statusbar-remove-all)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_statusbar_get_message_area () -> statusbar-message-area
+;;; gtk_statusbar_get_message_area ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_statusbar_get_message_area" statusbar-message-area)

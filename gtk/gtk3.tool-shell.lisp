@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -70,13 +70,13 @@
       (documentation 'tool-shell 'type)
  "@version{#2023-2-27}
   @begin{short}
-    The @sym{gtk:tool-shell} interface allows container widgets to provide
+    The @class{gtk:tool-shell} interface allows container widgets to provide
     additional information when embedding @class{gtk:tool-item} widgets.
   @end{short}
   @see-class{gtk:tool-item}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_shell_get_ellipsize_mode () -> tool-shell-ellipsize-mode
+;;; gtk_tool_shell_get_ellipsize_mode ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_shell_get_ellipsize_mode" tool-shell-ellipsize-mode)
@@ -98,7 +98,7 @@
 (export 'tool-shell-ellipsize-mode)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_shell_get_icon_size () -> tool-shell-icon-size
+;;; gtk_tool_shell_get_icon_size ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_shell_get_icon_size" tool-shell-icon-size) icon-size
@@ -119,7 +119,7 @@
 (export 'tool-shell-icon-size)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_shell_get_orientation () -> tool-shell-orientation
+;;; gtk_tool_shell_get_orientation ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_shell_get_orientation" tool-shell-orientation)
@@ -141,7 +141,7 @@
 (export 'tool-shell-orientation)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_shell_get_relief_style () -> tool-shell-relief-style
+;;; gtk_tool_shell_get_relief_style ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_shell_get_relief_style" tool-shell-relief-style)
@@ -163,7 +163,7 @@
 (export 'tool-shell-relief-style)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_shell_get_style () -> tool-shell-style
+;;; gtk_tool_shell_get_style ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_shell_get_style" tool-shell-style) toolbar-style
@@ -184,7 +184,7 @@
 (export 'tool-shell-style)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_shell_get_text_alignment () -> tool-shell-text-alignment
+;;; gtk_tool_shell_get_text_alignment ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_shell_get_text_alignment" tool-shell-text-alignment)
@@ -205,7 +205,7 @@
 (export 'tool-shell-text-alignment)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_shell_get_text_orientation () -> tool-shell-text-orientation
+;;; gtk_tool_shell_get_text_orientation ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_shell_get_text_orientation"
@@ -250,7 +250,7 @@
 (export 'tool-shell-rebuild-menu)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_shell_get_text_size_group () -> tool-shell-text-size-group
+;;; gtk_tool_shell_get_text_size_group ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_shell_get_text_size_group" tool-shell-text-size-group)

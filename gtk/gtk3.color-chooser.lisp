@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2012 - 2023 Dieter Kaiser
+;;; Copyright (C) 2012 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -83,7 +83,7 @@
       (documentation 'color-chooser 'type)
  "@version{2023-6-12}
   @begin{short}
-    The @sym{gtk:color-chooser} interface is an interface that is implemented
+    The @class{gtk:color-chooser} interface is an interface that is implemented
     by widgets for choosing colors.
   @end{short}
   Depending on the situation, colors may be allowed to have alpha
@@ -100,7 +100,7 @@ lambda (chooser color)    :run-first
       the user presses one of the @kbd{Space}, @kbd{Shift+Space}, @kbd{Return}
       or @kbd{Enter} keys.
       @begin[code]{table}
-        @entry[chooser]{The @sym{gtk:color-chooser} widget which received
+        @entry[chooser]{The @class{gtk:color-chooser} widget which received
           the signal.}
         @entry[color]{The @struct{gdk:rgba} color.}
       @end{table}
@@ -116,7 +116,7 @@ lambda (chooser color)    :run-first
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- color-chooser-rgba -----------------------------------------------------
+;;; --- gtk:color-chooser-rgba -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "rgba" 'color-chooser) t)
@@ -138,8 +138,8 @@ lambda (chooser color)    :run-first
     Accessor of the @slot[gtk:color-chooser]{rgba} slot of the
     @class{gtk:color-chooser} class.
   @end{short}
-  The @sym{gtk:color-chooser-rgba} function gets the currently selected color.
-  The @sym{(setf gtk:color-chooser-rgba)} function sets the color.
+  The @fun{gtk:color-chooser-rgba} function gets the currently selected color.
+  The @setf{gtk:color-chooser-rgba} function sets the color.
 
   The @code{rgba} property contains the currently selected color, as a
   @struct{gdk:rgba} color. The property can be set to change the current
@@ -147,7 +147,7 @@ lambda (chooser color)    :run-first
   @see-class{gtk:color-chooser}
   @see-struct{gdk:rgba}")
 
-;;; --- color-chooser-use-alpha ------------------------------------------------
+;;; --- gtk:color-chooser-use-alpha --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "use-alpha" 'color-chooser) t)
@@ -173,8 +173,8 @@ lambda (chooser color)    :run-first
     Accessor of the @slot[gtk:color-chooser]{use-alpha} slot of the
     @class{gtk:color-chooser} class.
   @end{short}
-  The @sym{gtk:color-chooser-use-alpha} function returns whether the color
-  chooser shows the alpha channel. The @sym{(setf gtk:color-chooser-use-alpha)}
+  The @fun{gtk:color-chooser-use-alpha} function returns whether the color
+  chooser shows the alpha channel. The @setf{gtk:color-chooser-use-alpha}
   function sets whether or not the color chooser should use the alpha channel.
   @see-class{gtk:color-chooser}")
 

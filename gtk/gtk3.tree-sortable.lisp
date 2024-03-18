@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -71,12 +71,12 @@
 ;;; ----------------------------------------------------------------------------
 
 #+liber-documentation
-(setf (liber:alias-for-variable '+gtk-tree-sortable-default-sort-column-id+)
+(setf (liber:alias-for-variable '+default-sort-column-id+)
       "Constant")
 
-(defconstant +gtk-tree-sortable-default-sort-column-id+ -1
+(defconstant +default-sort-column-id+ -1
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{2024-3-15}
   @variable-value{-1}
   @begin{short}
     The default sort column ID can be used to make a @class{gtk:tree-sortable}
@@ -86,19 +86,19 @@
   @see-class{gtk:tree-sortable}
   @see-function{gtk:tree-sortable-sort-column-id}")
 
-(export '+gtk-tree-sortable-default-sort-column-id+)
+(export '+default-sort-column-id+)
 
 ;;; ----------------------------------------------------------------------------
 ;;; GTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID
 ;;; ----------------------------------------------------------------------------
 
 #+liber-documentation
-(setf (liber:alias-for-variable '+gtk-tree-sortable-unsorted-sort-column-id+)
+(setf (liber:alias-for-variable '+unsorted-sort-column-id+)
       "Constant")
 
-(defconstant +gtk-tree-sortable-unsorted-sort-column-id+ -2
+(defconstant +unsorted-sort-column-id+ -2
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{2024-3-15}
   @variable-value{-2}
   @begin{short}
     The unsorted sort column ID can be used to make a @class{gtk:tree-sortable}
@@ -108,7 +108,7 @@
   @see-class{gtk:tree-sortable}
   @see-function{gtk:tree-sortable-sort-column-id}")
 
-(export '+gtk-tree-sortable-unsorted-sort-column-id+)
+(export '+unsorted-sort-column-id+)
 
 ;;; ----------------------------------------------------------------------------
 ;;; GtkTreeSortable
@@ -125,8 +125,8 @@
       (documentation 'tree-sortable 'type)
  "@version{#2023-3-28}
   @begin{short}
-    The @sym{gtk:tree-sortable} interface is an interface to be implemented by
-    tree models which support sorting.
+    The @class{gtk:tree-sortable} interface is an interface to be implemented
+    by tree models which support sorting.
   @end{short}
   The @class{gtk:tree-view} widget uses the methods provided by this interface
   to sort the model.
@@ -139,7 +139,7 @@ lambda (sortable)    : Run Last
       is changed. The signal is emitted before the contents of @arg{sortable}
       are resorted.
       @begin[code]{table}
-        @entry[sortable]{The @sym{gtk:sortable} object on which the signal is
+        @entry[sortable]{The @class{gtk:sortable} object on which the signal is
         emitted.}
       @end{table}
   @end{dictionary}
@@ -224,15 +224,15 @@ lambda (sortable)    : Run Last
       (liber:symbol-documentation 'tree-iter-compare-func)
  "@version{#2023-3-28}
   @begin{short}
-    A @sym{gtk:tree-iter-compare-func} callback function should return a
+    A @symbol{gtk:tree-iter-compare-func} callback function should return a
     negative integer, zero, or a positive integer if @arg{iter1} sorts before
     @arg{iter2}, @arg{iter1} sorts with @arg{iter2}, or @arg{iter1} sorts after
     @arg{iter2} respectively.
   @end{short}
   If two iterators compare as equal, their order in the sorted model is
   undefined. In order to ensure that the @class{gtk:tree-sortable} object
-  behaves as expected, the @sym{gtk:tree-iter-compare-func} callback function
-  must define a partial order on the model, i.e. it must be reflexive,
+  behaves as expected, the @symbol{gtk:tree-iter-compare-func} callback
+  function must define a partial order on the model, i.e. it must be reflexive,
   antisymmetric and transitive.
 
   For example, if the model is a product catalogue, then a compare function for
@@ -275,6 +275,7 @@ lambda (sortable)    : Run Last
 ;;; gtk_tree_sortable_get_sort_column_id ()
 ;;; ----------------------------------------------------------------------------
 
+#+nil
 (defun (setf tree-sortable-sort-column-id) (value sortable)
   (destructuring-bind (column-id order)
       (if (listp value)
@@ -286,41 +287,49 @@ lambda (sortable)    : Run Last
                           sort-type order)
     value))
 
+(defun (setf tree-sortable-sort-column-id) (value
+                                            sortable
+                                            &optional (order :ascending))
+  (cffi:foreign-funcall "gtk_tree_sortable_set_sort_column_id"
+                        (g:object tree-sortable) sortable
+                        :int value
+                        sort-type order)
+  (values value order))
+
 (cffi:defcfun ("gtk_tree_sortable_get_sort_column_id"
                %tree-sortable-sort-column-id) :boolean
   (sortable (g:object tree-sortable))
-  (column-id (:pointer :int))
+  (id (:pointer :int))
   (order (:pointer sort-type)))
 
 (defun tree-sortable-sort-column-id (sortable)
  #+liber-documentation
- "@version{#2023-3-28}
-  @syntax[]{(gtk:tree-sortable-sort-column-id sortable) => colum-id, order}
-  @syntax[]{(setf (gtk:tree-sortable-sort-column-id sortable) column-id)}
-  @syntax[]{(setf (gtk:tree-sortable-sort-column-id sortable) '(column-id order))}
+ "@version{2024-3-15}
+  @syntax{(gtk:tree-sortable-sort-column-id sortable) => id, order}
+  @syntax{(setf (gtk:tree-sortable-sort-column-id sortable) id)}
+  @syntax{(setf (gtk:tree-sortable-sort-column-id sortable order) id))}
   @argument[sortable]{a @class{gtk:tree-sortable} object}
-  @argument[column-id]{an integer with the sort column ID}
+  @argument[id]{an integer with the sort column ID}
   @argument[order]{a value of the @symbol{gtk:sort-type} enumeration}
   @begin{short}
-    Accessor of the sort column ID and the sort order of the tree sortable.
-    Returns the current sort column and the order.
+    The @fun{gtk:tree-sortable-sort-column-id} function returns the current
+    sort column ID and the sort order.
   @end{short}
-  The @sym{gtk:tree-sortable-sort-column-id} function returns the current sort
-  column ID and the sort order. The
-  @sym{(setf gtk:tree-sortable-sort-column-id)} function sets the sort column
+  The @setf{gtk:tree-sortable-sort-column-id} function sets the sort column
   ID and the sort order. If no sort order is given, the sort order is set to
   the default value @code{:ascending}.
 
   The sortable will resort itself to reflect this change, after emitting a
-  \"sort-column-changed\" signal. The argument @code{column-id} may either be a
-  regular column ID, or one of the following special values:
-  @var{+gtk-tree-sortable-default-sort-column-id+} or
-  @var{+gtk-tree-sortable-unsorted-column-id+}.
+  @code{\"sort-column-changed\"} signal. The @code{id} argument may either be a
+  regular column ID, or one of the @var{gtk:+default-sort-column-id+} or
+  @var{gtk:+unsorted-column-id+} special values.
   @see-class{gtk:tree-sortable}
-  @see-symbol{gtk:sort-type}"
-  (cffi:with-foreign-objects ((sort-column-id :int) (order 'sort-type))
-    (%tree-sortable-sort-column-id sortable sort-column-id order)
-    (values (cffi:mem-ref sort-column-id :int)
+  @see-symbol{gtk:sort-type}
+  @see-variable{gtk:+default-sort-column-id+}
+  @see-variable{gtk:+unsorted-column-id+}"
+  (cffi:with-foreign-objects ((id :int) (order 'sort-type))
+    (%tree-sortable-sort-column-id sortable id order)
+    (values (cffi:mem-ref id :int)
             (cffi:mem-ref order 'sort-type))))
 
 (export 'tree-sortable-sort-column-id)
@@ -337,23 +346,23 @@ lambda (sortable)    : Run Last
   (data :pointer)
   (destroy-notify :pointer))
 
-(defun tree-sortable-set-sort-func (sortable column-id func)
+(defun tree-sortable-set-sort-func (sortable id func)
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{2024-3-15}
   @argument[sortable]{a @class{gtk:tree-sortable} object}
-  @argument[column-id]{an integer with the sort column ID to set the function
+  @argument[id]{an integer with the sort column ID to set the function
     for}
   @argument[func]{a @symbol{gtk:tree-iter-compare-func} callback function}
   @begin{short}
     Sets the comparison function used when sorting to be @arg{func}.
   @end{short}
   If the current sort column ID of @arg{sortable} is the same as
-  @arg{column-id}, then the model will sort using this function.
+  @arg{id}, then the model will sort using this function.
   @see-class{gtk:tree-sortable}
   @see-symbol{gtk:tree-iter-compare-func}"
   (%tree-sortable-set-sort-func
           sortable
-          column-id
+          id
           (cffi:callback tree-iter-compare-func)
           (glib:allocate-stable-pointer func)
           (cffi:callback glib:stable-pointer-destroy-notify)))

@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2023 Dieter Kaiser
+;;; Copyright (C) 2019 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -70,7 +70,7 @@
 (setf (documentation 'gesture-swipe 'type)
  "@version{#2023-1-21}
   @begin{short}
-    The @sym{gtk:gesture-swipe} object is a @class{gtk:gesture} implementation
+    The @class{gtk:gesture-swipe} object is a @class{gtk:gesture} implementation
     able to recognize swipes, after a press/move/.../move/release sequence
     happens, the \"swipe\" signal will be emitted, providing the velocity and
     directionality of the sequence at the time it was lifted.
@@ -89,11 +89,11 @@ lambda (gesture velocity-x velocity-y)    :run-last
     The signal is emitted when the recognized gesture is finished, velocity
     and direction are a product of previously recorded events.
     @begin[code]{table}
-      @entry[gesture]{The @sym{gtk:gesture-multi-press} object which
+      @entry[gesture]{The @class{gtk:gesture-multi-press} object which
         received the signal.}
-      @entry[velocity-x]{A double float with the velocity in the x axis,
+      @entry[velocity-x]{The double float with the velocity in the x axis,
         in pixels/sec.}
-      @entry[velocity-y]{A double float with the velocity in the y axis,
+      @entry[velocity-y]{The double float with the velocity in the y axis,
         in pixels/sec.}
     @end{table}
   @end{dictionary}

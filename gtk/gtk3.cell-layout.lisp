@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -73,13 +73,13 @@
       (documentation 'cell-layout 'type)
  "@version{#2023-3-16}
   @begin{short}
-    The @sym{gtk:cell-layout} interface is an interface to be implemented by
+    The @class{gtk:cell-layout} interface is an interface to be implemented by
     all objects which want to provide a @class{gtk:tree-view-column} object
     like API for packing cells, setting attributes and data functions.
   @end{short}
 
   One of the notable features provided by implementations of the
-  @sym{gtk:cell-layout} interface are attributes. Attributes let you set the
+  @class{gtk:cell-layout} interface are attributes. Attributes let you set the
   properties in flexible ways. They can just be set to constant values like
   regular properties. But they can also be mapped to a column of the underlying
   tree model with the @fun{gtk:cell-layout-add-attribute} function, which means
@@ -88,13 +88,13 @@
   with the @fun{gtk:cell-layout-set-cell-data-func} function that is called to
   determine the value of the attribute for each cell that is rendered.
   @begin[GtkCellLayouts as GtkBuildable]{dictionary}
-    Implementations of the @sym{gtk:cell-layout} interface which also implement
-    the @class{gtk:buildable} interface accept @class{gtk:cell-renderer}
-    objects as @code{<child>} elements in UI definitions. They support a custom
-    @code{<attributes>} element for their children, which can contain multiple
-    @code{<attribute>} elements. Each @code{<attribute>} element has a name
-    attribute which specifies a property of the cell renderer. The content of
-    the element is the attribute value.
+    Implementations of the @class{gtk:cell-layout} interface which also
+    implement the @class{gtk:buildable} interface accept
+    @class{gtk:cell-renderer} objects as @code{<child>} elements in UI
+    definitions. They support a custom @code{<attributes>} element for their
+    children, which can contain multiple @code{<attribute>} elements. Each
+    @code{<attribute>} element has a name attribute which specifies a property
+    of the cell renderer. The content of the element is the attribute value.
 
     @b{Example:} A UI definition fragment specifying attributes
     @begin{pre}
@@ -107,9 +107,9 @@
   </child>
 </object>
     @end{pre}
-    Furthermore for implementations of the @sym{gtk:cell-layout} interface that
-    use a @class{gtk:cell-area} object to lay out cells, all
-    @sym{gtk:cell-layout} objects in GTK+ use a @class{gtk:cell-area} object,
+    Furthermore for implementations of the @class{gtk:cell-layout} interface
+    that use a @class{gtk:cell-area} object to lay out cells, all
+    @class{gtk:cell-layout} objects in GTK+ use a @class{gtk:cell-area} object,
     cell properties can also be defined in the format by specifying the custom
     @code{<cell-packing>} attribute which can contain multiple @code{<property>}
     elements defined in the normal way.
@@ -343,21 +343,17 @@
 (setf (liber:alias-for-symbol 'cell-layout-data-func)
       "Callback"
       (liber:symbol-documentation 'cell-layout-data-func)
- "@version{#2023-3-16}
+ "@version{#2024-3-18}
+  @syntax{lambda (layout cell model iter)}
+  @argument[layout]{a @class{gtk:cell-layout} object}
+  @argument[cell]{a @class{gtk:cell-renderer} object whose value is to be set}
+  @argument[model]{a @class{gtk:tree-model} object}
+  @argument[iter]{a @class{gtk:tree-iter} iterator indicating the row to set
+    the value for}
   @begin{short}
     A callback function which should set the value of @arg{layout}'s cell
    renderer(s) as appropriate.
   @end{short}
-  @begin{pre}
-lambda (layout cell model iter)
-  @end{pre}
-  @begin[code]{table}
-    @entry[layout]{A @class{gtk:cell-layout} object.}
-    @entry[cell]{The @class{gtk:cell-renderer} object whose value is to be set.}
-    @entry[model]{The @class{gtk:tree-model} object.}
-    @entry[iter]{A @class{gtk:tree-iter} iterator indicating the row to set
-      the value for.}
-  @end{table}
   @see-class{gtk:tree-view-column}
   @see-function{gtk:tree-view-column-set-cell-data-func}")
 

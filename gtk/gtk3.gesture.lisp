@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2023 Dieter Kaiser
+;;; Copyright (C) 2019 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -139,22 +139,22 @@
 (setf (documentation 'gesture 'type)
  "@version{2023-3-5}
   @begin{short}
-    The @sym{gtk:gesture} object is the base object for gesture recognition,
+    The @class{gtk:gesture} object is the base object for gesture recognition,
     although this object is quite generalized to serve as a base for multi-touch
     gestures, it is suitable to implement single-touch and pointer-based
     gestures, using the special @code{nil} value for the
     @class{gdk:event-sequence} instance for these.
   @end{short}
 
-  The number of touches that a @sym{gtk:gesture} object need to be recognized is
-  controlled by the @code{n-points} property, if a gesture is keeping track of
-  less or more than that number of sequences, it won't check whether the gesture
-  is recognized.
+  The number of touches that a @class{gtk:gesture} object need to be recognized
+  is controlled by the @code{n-points} property, if a gesture is keeping track
+  of less or more than that number of sequences, it will not check whether the
+  gesture is recognized.
 
   As soon as the gesture has the expected number of touches, the gesture will
   run the \"check\" signal regularly on input events until the gesture is
   recognized, the criteria to consider a gesture as \"recognized\" is left to
-  @sym{gtk:gesture} subclasses.
+  @class{gtk:gesture} subclasses.
 
   A recognized gesture will then emit the following signals:
 
@@ -183,7 +183,7 @@
 
   @subheading{States of a sequence}
   Whenever input interaction happens, a single event may trigger a cascade of
-  @sym{gtk:gesture} objects, both across the parents of the widget receiving
+  @class{gtk:gesture} objects, both across the parents of the widget receiving
   the event and in parallel within an individual widget. It is a responsibility
   of the widgets using those gestures to set the state of touch sequences
   accordingly in order to enable cooperation of gestures around the
@@ -224,15 +224,15 @@
   lifetimes of a @class{gdk:event-sequence} instance.
 
   @subheading{Touchpad gestures}
-  On the platforms that support it, the @sym{gtk:gesture} object will handle
+  On the platforms that support it, the @class{gtk:gesture} object will handle
   transparently touchpad gesture events. The only precautions users of the
-  @sym{gtk:gesture} object should do to enable this support are:
+  @class{gtk:gesture} object should do to enable this support are:
   @begin{itemize}
     @item{Enabling @code{GDK_TOUCHPAD_GESTURE_MASK} on their
       @class{gdk:window} objects.}
     @item{If the gesture has the @code{:phase-none} propagation phase, ensuring
       @code{:touchpad-swipe} and @code{:touchpad-pinch} events are handled by
-      the @sym{gtk:gesture} object}
+      the @class{gtk:gesture} object}
   @end{itemize}
   @begin[Signal Details]{dictionary}
     @subheading{The \"begin\" signal}
@@ -246,7 +246,8 @@ lambda (gesture sequence)    :run-last
       that situation sequence will not pertain to the current set of active
       touches, so do not rely on this being true.
       @begin[code]{table}
-        @entry[gesture]{The @sym{gtk:gesture} object which received the signal.}
+        @entry[gesture]{The @class{gtk:gesture} object which received the
+          signal.}
         @entry[sequence]{The @class{gdk:event-sequence} event that made the
           gesture to be recognized.}
       @end{table}
@@ -261,7 +262,8 @@ lambda (gesture sequence)    :run-last
       @fun{gtk:gesture-sequence-state} function. The @arg{gesture} argument
       must forget everything about @arg{sequence} as a reaction to the signal.
       @begin[code]{table}
-        @entry[gesture]{The @sym{gtk:gesture} object which received the signal.}
+        @entry[gesture]{The @class{gtk:gesture} object which received the
+          signal.}
         @entry[sequence]{The @class{gdk:event-sequence} event that was
           cancelled.}
       @end{table}
@@ -278,7 +280,8 @@ lambda (gesture sequence)    :run-last
       This situation may be detected by checking through the
       @fun{gtk:gesture-handles-sequence} function.
       @begin[code]{table}
-        @entry[gesture]{The @sym{gtk:gesture} object which received the signal.}
+        @entry[gesture]{The @class{gtk:gesture} object which received the
+          signal.}
         @entry[sequence]{The @class{gdk:event-sequence} event that made
           gesture recognition to finish.}
       @end{table}
@@ -290,7 +293,8 @@ lambda (gesture sequence state)    :run-last
       @fun{gtk:gesture-sequence-state} function to know more about the
       expectable sequence lifetimes.
       @begin[code]{table}
-        @entry[gesture]{The @sym{gtk:gesture} object which received the signal.}
+        @entry[gesture]{The @class{gtk:gesture} object which received the
+          signal.}
         @entry[sequence]{The @class{gdk:event-sequence} event that was
           cancelled.}
         @entry[state]{The new @symbol{gtk:event-sequence-state} value.}
@@ -303,7 +307,8 @@ lambda (gesture sequence)    :run-last
       recognized. The @arg{sequence} argument is guaranteed to pertain to the
       set of active touches.
       @begin[code]{table}
-        @entry[gesture]{The @sym{gtk:gesture} object which received the signal.}
+        @entry[gesture]{The @class{gtk:gesture} object which received the
+          signal.}
         @entry[sequence]{The @class{gdk:event-sequence} event that was updated.}
       @end{table}
   @end{dictionary}
@@ -316,7 +321,7 @@ lambda (gesture sequence)    :run-last
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- gesture-n-points -------------------------------------------------------
+;;; --- gtk:gesture-n-points ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "n-points" 'gesture) t)
@@ -341,7 +346,7 @@ lambda (gesture sequence)    :run-last
   The number of touch points that trigger recognition on this gesture.
   @see-class{gtk:gesture}")
 
-;;; --- gesture-window ---------------------------------------------------------
+;;; --- gtk:gesture-window -----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "window" 'gesture) t)
@@ -362,12 +367,12 @@ lambda (gesture sequence)    :run-last
     Accessor of the @slot[gtk:gesture]{window} slot of the
     @class{gtk:gesture} class.
   @end{short}
-  The @sym{gtk:gesture-window} function returns the user-defined window that
-  receives the events handled by the gesture. The
-  @sym{(setf gtk:gesture-window)} function sets a specific window to receive
-  events about, so gesture will effectively handle only events targeting window,
-  or a child of it. The @arg{window} argument must pertain to the
-  @fun{gtk:event-controller-widget} function.
+  The @fun{gtk:gesture-window} function returns the user-defined window that
+  receives the events handled by the gesture. The @setf{gtk:gesture-window}
+  function sets a specific window to receive events about, so gesture will
+  effectively handle only events targeting window, or a child of it. The
+  @arg{window} argument must pertain to the @fun{gtk:event-controller-widget}
+  function.
   @see-class{gtk:gesture}
   @see-class{gdk:window}
   @see-function{gtk:event-controller-widget}")
@@ -429,7 +434,7 @@ lambda (gesture sequence)    :run-last
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_gesture_set_sequence_state ()
-;;; gtk_gesture_get_sequence_state () -> gesture-sequence-state
+;;; gtk_gesture_get_sequence_state ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf gesture-sequence-state) (state gesture sequence)
@@ -450,14 +455,14 @@ lambda (gesture sequence)    :run-last
   @argument[sequence]{a @class{gdk:event-sequence} instance}
   @argument[state]{a @symbol{gtk:event-sequence-state} value}
   @begin{short}
-  The @sym{gtk:gesture-sequence-state} function returns the sequence state, as
+  The @fun{gtk:gesture-sequence-state} function returns the sequence state, as
   seen by @arg{gesture}.
   @end{short}
-  The @sym{gtk:gesture-sequence-state} function sets the state of @arg{sequence}
-  in @arg{gesture}. Sequences start in @code{:none} state, and whenever they
-  change state, they can never go back to that state. Likewise, sequences in
-  @code{:denied} cannot turn back to a not denied state. With these rules, the
-  lifetime of an event sequence is constrained to the next four:
+  The @setf{gtk:gesture-sequence-state} function sets the state of
+  @arg{sequence} in @arg{gesture}. Sequences start in @code{:none} state, and
+  whenever they change state, they can never go back to that state. Likewise,
+  sequences in @code{:denied} cannot turn back to a not denied state. With these
+  rules, the lifetime of an event sequence is constrained to the next four:
   @begin{itemize}
     @item{None}
     @item{None → Denied}

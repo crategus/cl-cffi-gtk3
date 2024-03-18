@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -111,11 +111,11 @@
       (documentation 'recent-info 'type)
  "@version{2023-2-5}
   @begin{short}
-    The @sym{gtk:recent-info} structure constains all the meta-data associated
+    The @class{gtk:recent-info} structure constains all the meta-data associated
     with an entry in the recently used files list.
   @end{short}
-  The @sym{gtk:recent-info} structure is an opaque data structure whose members
-  can only be accessed using the provided API.
+  The @class{gtk:recent-info} structure is an opaque data structure whose
+  members can only be accessed using the provided API.
   @see-class{gtk:recent-manager}")
 
 ;;; ----------------------------------------------------------------------------
@@ -243,8 +243,8 @@
 (setf (documentation 'recent-manager 'type)
  "@version{2023-1-29}
   @begin{short}
-    The @sym{gtk:recent-manager} object provides a facility for adding, removing
-    and looking up recently used files.
+    The @class{gtk:recent-manager} object provides a facility for adding,
+    removing and looking up recently used files.
   @end{short}
   Each recently used file is identified by its URI, and has meta-data associated
   to it, like the names and command lines of the applications that have
@@ -253,8 +253,8 @@
   by the applications that have registered it. The recently used files list is
   per user.
 
-  The @sym{gtk:recent-manager} object acts like a database of all the recently
-  used files. You can create new @sym{gtk:recent-manager} objects, but it is
+  The @class{gtk:recent-manager} object acts like a database of all the recently
+  used files. You can create new @class{gtk:recent-manager} objects, but it is
   more efficient to use the default manager created by GTK. Adding a new
   recently used file is as simple as:
   @begin{pre}
@@ -263,9 +263,9 @@
   (gtk:recent-manager-add-item manager uri)
   ... )
   @end{pre}
-  The @sym{gtk:recent-manager} will try to gather all the needed information
-  from the file itself through GIO. Looking up the meta-data associated with a
-  recently used file given its URI requires calling the
+  The @class{gtk:recent-manager} object will try to gather all the needed
+  information from the file itself through GIO. Looking up the meta-data
+  associated with a recently used file given its URI requires calling the
   @fun{gtk:recent-manager-lookup-item} function:
   @begin{pre}
 (let* ((uri \"file:///home/ ... uri to look up ...\")
@@ -277,7 +277,7 @@
   @end{pre}
   In order to retrieve the list of recently used files, you can use the
   @fun{gtk:recent-manager-items} function, which returns a list of
-  @class{gtk:recent-info} instances. A @sym{gtk:recent-manager} object is the
+  @class{gtk:recent-info} instances. A @class{gtk:recent-manager} object is the
   model used to populate the contents of one, or more @class{gtk:recent-chooser}
   implementations. The maximum age of the recently used files list is
   controllable through the @slot[gtk:settings]{gtk-recent-files-max-age}
@@ -291,8 +291,8 @@ lambda (manager)    :run-first
       contents, either by calling the @fun{gtk:recent-manager-add-item} function
       or by another application.
       @begin[code]{table}
-        @entry[manager]{The @sym{gtk:recent-manager} object which received the
-          signal.}
+        @entry[manager]{The @class{gtk:recent-manager} object which received
+          the signal.}
       @end{table}
   @end{dictionary}
   @see-constructor{gtk:recent-manager-new}
@@ -304,7 +304,7 @@ lambda (manager)    :run-first
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- recent-manager-filename ------------------------------------------------
+;;; --- gtk:recent-manager-filename --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "filename" 'recent-manager) t)
@@ -331,7 +331,7 @@ lambda (manager)    :run-first
   resources list.
   @see-class{gtk:recent-manager}")
 
-;;; --- recent-manager-size ----------------------------------------------------
+;;; --- gtk:recent-manager-size ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "size" 'recent-manager) t)
@@ -990,7 +990,7 @@ lambda (manager)    :run-first
 (export 'recent-info-has-group)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_recent_info_get_icon () -> recent-info-icon
+;;; gtk_recent_info_get_icon ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_recent_info_get_icon" recent-info-icon)
@@ -1013,7 +1013,7 @@ lambda (manager)    :run-first
 (export 'recent-info-icon)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_recent_info_get_gicon () -> recent-info-gicon
+;;; gtk_recent_info_get_gicon ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_recent_info_get_gicon" recent-info-gicon) (g:object g:icon)
@@ -1031,7 +1031,7 @@ lambda (manager)    :run-first
 (export 'recent-info-gicon)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_recent_info_get_short_name () -> recent-info-short-name
+;;; gtk_recent_info_get_short_name ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_recent_info_get_short_name" recent-info-short-name)
@@ -1052,7 +1052,7 @@ lambda (manager)    :run-first
 (export 'recent-info-short-name)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_recent_info_get_uri_display () -> recent-info-uri-display
+;;; gtk_recent_info_get_uri_display ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_recent_info_get_uri_display" recent-info-uri-display)
@@ -1076,7 +1076,7 @@ lambda (manager)    :run-first
 (export 'recent-info-uri-display)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_recent_info_get_age () -> recent-info-age
+;;; gtk_recent_info_get_age ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_recent_info_get_age" recent-info-age) :int

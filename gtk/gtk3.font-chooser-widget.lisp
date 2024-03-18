@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2012 - 2023 Dieter Kaiser
+;;; Copyright (C) 2012 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -80,8 +80,8 @@
 (setf (documentation 'font-chooser-widget 'type)
  "@version{2023-6-16}
   @begin{short}
-    The @sym{gtk:font-chooser-widget} widget lists the available fonts, styles
-    and sizes, allowing the user to select a font.
+    The @class{gtk:font-chooser-widget} widget lists the available fonts,
+    styles and sizes, allowing the user to select a font.
   @end{short}
   It is used in the @class{gtk:font-chooser-dialog} widget to provide a dialog
   box for selecting fonts.
@@ -92,8 +92,8 @@
   To change the text which is shown in the preview area, use the
   @fun{gtk:font-chooser-preview-text} function.
   @begin[CSS nodes]{dictionary}
-    The @sym{gtk:font-chooser-widget} implementation has a single CSS node with
-    name @code{fontchooser}.
+    The @class{gtk:font-chooser-widget} implementation has a single CSS node
+    with name @code{fontchooser}.
   @end{dictionary}
   @see-constructor{gtk:font-chooser-widget-new}
   @see-slot{gtk:font-chooser-widget-tweak-action}
@@ -103,7 +103,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- font-chooser-widget-tweak-action ---------------------------------------
+;;; --- gtk:font-chooser-widget-tweak-action -----------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "tweak-action"

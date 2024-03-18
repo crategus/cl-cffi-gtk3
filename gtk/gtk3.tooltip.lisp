@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -86,7 +86,7 @@
     @begin{item}
       Connect to the \"query-tooltip\" signal. The signal will be emitted when
       a tooltip is supposed to be shown. One of the arguments passed to the
-      signal handler is a @sym{gtk:tooltip} object. This is the object that we
+      signal handler is a @class{gtk:tooltip} object. This is the object that we
       are about to display as a tooltip, and can be manipulated in your callback
       function using functions like the @fun{gtk:tooltip-set-icon} function.
       There are functions for setting the markup of the tooltip, setting an
@@ -204,7 +204,7 @@
   @end{short}
   If @arg{stockid} is @code{nil}, the image will be hidden.
   @begin[Warning]{dictionary}
-    The @sym{gtk:tooltip-set-icon-from-stock} function has been deprecated
+    The @fun{gtk:tooltip-set-icon-from-stock} function has been deprecated
     since version 3.10 and should not be used in newly written code. Use the
     @fun{gtk:tooltip-set-icon-from-icon-name} function instead.
   @end{dictionary}

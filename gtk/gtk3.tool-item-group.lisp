@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2012 - 2023 Dieter Kaiser
+;;; Copyright (C) 2012 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -123,12 +123,12 @@
 (setf (documentation 'tool-item-group 'type)
  "@version{#2023-2-27}
   @begin{short}
-    A @sym{gtk:tool-item-group} widget is used together with a
+    A @class{gtk:tool-item-group} widget is used together with a
     @class{gtk:tool-palette} widget to add @class{gtk:tool-item} widgets to a
     palette like container with different categories and drag and drop support.
   @end{short}
   @begin[CSS nodes]{dictionary}
-    The @sym{gtk:tool-item-group} implementation has a single CSS node named
+    The @class{gtk:tool-item-group} implementation has a single CSS node named
     @code{toolitemgroup}.
   @end{dictionary}
   @begin[Child Property Details]{dictionary}
@@ -197,7 +197,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- tool-item-group-collapsed ----------------------------------------------
+;;; --- gtk:tool-item-group-collapsed ------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "collapsed" 'tool-item-group) t)
@@ -219,12 +219,12 @@
     Accessor of the @slot[gtk:tool-item-group]{collapsed} slot of the
     @class{gtk:tool-item-group} class.
   @end{short}
-  The @sym{gtk:tool-item-group-collapsed} function gets whether the tool item
-  group is collapsed or expanded. The @sym{(setf gtk:tool-item-group-collapsed)}
+  The @fun{gtk:tool-item-group-collapsed} function gets whether the tool item
+  group is collapsed or expanded. The @setf{gtk:tool-item-group-collapsed}
   function sets whether the tool item group should be collapsed or expanded.
   @see-class{gtk:tool-item-group}")
 
-;;; --- tool-item-group-ellipsize ----------------------------------------------
+;;; --- gtk:tool-item-group-ellipsize ------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "ellipsize" 'tool-item-group) t)
@@ -247,14 +247,13 @@
     Accessor of the @slot[gtk:tool-item-group]{ellipsize} slot of the
     @class{gtk:tool-item-group} class.
   @end{short}
-  The @sym{gtk:tool-item-group-ellipsize} function gets the ellipsization mode
-  of the tool item group. The @sym{(setf gtk:tool-item-group-ellipsize)}
-  function sets the ellipsization mode which should be used by labels in the
-  tool item group.
+  The @fun{gtk:tool-item-group-ellipsize} function gets the ellipsization mode
+  of the tool item group. The @setf{gtk:tool-item-group-ellipsize} function sets
+  the ellipsization mode which should be used by labels in the tool item group.
   @see-class{gtk:tool-item-group}
   @see-symbol{pango:ellipsize-mode}")
 
-;;; --- tool-item-group-header-relief ------------------------------------------
+;;; --- gtk:tool-item-group-header-relief --------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "header-relief"
@@ -277,14 +276,14 @@
     Accessor of the @slot[gtk:tool-item-group]{header-relief} slot of the
     @class{gtk:tool-item-group} class.
   @end{short}
-  The @sym{gtk:tool-item-group-header-relief} function gets the relief mode of
+  The @fun{gtk:tool-item-group-header-relief} function gets the relief mode of
   the header button of the tool item group. The
-  @sym{(setf gtk:tool-item-group-header-relief)} function sets the button
-  relief of the group header.
+  @setf{gtk:tool-item-group-header-relief} function sets the button relief of
+  the group header.
   @see-class{gtk:tool-item-group}
   @see-symbol{gtk:relief-style}")
 
-;;; --- tool-item-group-label --------------------------------------------------
+;;; --- gtk:tool-item-group-label ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "label" 'tool-item-group) t)
@@ -305,9 +304,9 @@
     Accessor of the @slot[gtk:tool-item-group]{label} slot of the
     @class{gtk:tool-item-group} class.
   @end{short}
-  The @sym{gtk:tool-item-group-label} function gets the label of the tool item
-  group. The @sym{(setf gtk:tool-item-group-label)} function sets the label of
-  the tool item group.
+  The @fun{gtk:tool-item-group-label} function gets the label of the tool item
+  group. The @setf{gtk:tool-item-group-label} function sets the label of the
+  tool item group.
 
   The label is displayed in the header of the group. Note that @code{nil} is
   returned if a custom label has been set with the
@@ -315,7 +314,7 @@
   @see-class{gtk:tool-item-group}
   @see-function{gtk:tool-item-group-label-widget}")
 
-;;; --- tool-item-group-label-widget -------------------------------------------
+;;; --- gtk:tool-item-group-label-widget ---------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "label-widget"
@@ -338,9 +337,9 @@
     Accessor of the @slot[gtk:tool-item-group]{label-widget} slot of the
     @class{gtk:tool-item-group} class.
   @end{short}
-  The @sym{gtk:tool-item-group-label-widget} function gets the label widget of
-  the tool item group. The @sym{(setf gtk:tool-item-group-label-widget)}
-  function sets the label of the tool item group.
+  The @fun{gtk:tool-item-group-label-widget} function gets the label widget of
+  the tool item group. The @setf{gtk:tool-item-group-label-widget} function sets
+  the label of the tool item group.
 
   The label widget is displayed in the header of the group, in place of the
   usual label.
@@ -352,7 +351,7 @@
 ;;; Accessors of Child Properties
 ;;; ----------------------------------------------------------------------------
 
-;;; --- tool-item-group-child-expand -------------------------------------------
+;;; --- gtk:tool-item-group-child-expand ---------------------------------------
 
 (define-child-property tool-item-group-child-expand
                        "expand" "gboolean" t t t)
@@ -375,7 +374,7 @@
   @see-class{gtk:tool-item-group}
   @see-class{gtk:widget}")
 
-;;; --- tool-item-group-child-fill ---------------------------------------------
+;;; --- gtk:tool-item-group-child-fill -----------------------------------------
 
 (define-child-property tool-item-group-child-fill
                        "fill" "gboolean" t t t)
@@ -398,7 +397,7 @@
   @see-class{gtk:tool-item-group}
   @see-class{gtk:widget}")
 
-;;; --- tool-item-group-child-homogeneous --------------------------------------
+;;; --- gtk:tool-item-group-child-homogeneous ----------------------------------
 
 (define-child-property tool-item-group-child-homogeneous
                        "homogeneous" "gboolean" t t t)
@@ -421,7 +420,7 @@
   @see-class{gtk:tool-item-group}
   @see-class{gtk:widget}")
 
-;;; --- tool-item-group-child-new-row ------------------------------------------
+;;; --- gtk:tool-item-group-child-new-row --------------------------------------
 
 (define-child-property tool-item-group-child-new-row
                        "new-row" "gboolean" t t t)
@@ -443,7 +442,7 @@
   @see-class{gtk:tool-item-group}
   @see-class{gtk:widget}")
 
-;;; --- tool-item-group-child-position -----------------------------------------
+;;; --- gtk:tool-item-group-child-position -------------------------------------
 
 (define-child-property tool-item-group-child-position
                        "position" "gint" t t t)
@@ -462,9 +461,9 @@
     Accessor of the @code{position} child property of the
     @class{gtk:tool-item-group} class.
   @end{short}
-  The @sym{gtk:tool-item-group-child-position} function gets the position of
+  The @fun{gtk:tool-item-group-child-position} function gets the position of
   @arg{item} in the list of children of @arg{container}, or -1 if @arg{item}
-  is no child of @arg{container}. The @sym{gtk:tool-item-group-child-position}
+  is no child of @arg{container}. The @setf{gtk:tool-item-group-child-position}
   function sets the position, starting with 0, the position -1 means end of
   list.
   @see-class{gtk:tool-item-group}
@@ -472,7 +471,7 @@
   @see-class{gtk:widget}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_item_group_get_drop_item () -> tool-item-group-drop-item
+;;; gtk_tool_item_group_get_drop_item ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_item_group_get_drop_item" tool-item-group-drop-item)
@@ -499,7 +498,7 @@
 ;; Implemented as tool-item-group-child-position
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_item_group_get_n_items () -> tool-item-n-items
+;;; gtk_tool_item_group_get_n_items ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_item_group_get_n_items" tool-item-group-n-items) :uint
@@ -517,7 +516,7 @@
 (export 'tool-item-group-n-items)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_item_group_get_nth_item () -> tool-item-group-nth-item
+;;; gtk_tool_item_group_get_nth_item ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_item_group_get_nth_item" tool-item-group-nth-item)

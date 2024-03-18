@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -74,7 +74,7 @@
 (setf (documentation 'tearoff-menu-item 'type)
  "@version{#2023-3-28}
   @begin{short}
-    A @sym{gtk:tearoff-menu-item} widget is a special @class{gtk:menu-item}
+    The @class{gtk:tearoff-menu-item} widget is a special @class{gtk:menu-item}
     widget which is used to tear off and reattach its menu.
   @end{short}
 
@@ -87,7 +87,7 @@
   tearoff menu can be reattached. Activating it will erase the tearoff menu
   window.
   @begin[Warning]{dictionary}
-    The @sym{gtk:tearoff-menu-item} widget is deprecated since GTK 3.4 and
+    The @class{gtk:tearoff-menu-item} widget is deprecated since GTK 3.4 and
     should not be used in newly written code. Menus are not meant to be torn
     around.
   @end{dictionary}
@@ -105,7 +105,7 @@
   @return{A new @class{gtk:tearoff-menu-item} widget.}
   @short{Creates a new tearoff menu.}
   @begin[Warning]{dictionary}
-    The @sym{gtk:tearoff-menu-item-new} function has been deprecated since
+    The @fun{gtk:tearoff-menu-item-new} function has been deprecated since
     version 3.4 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:tearoff-menu-item}"

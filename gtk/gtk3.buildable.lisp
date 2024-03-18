@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -75,25 +75,26 @@
     description.
   @end{short}
 
-  The @sym{gtk:buildable} interface allows objects to extend and customize
+  The @class{gtk:buildable} interface allows objects to extend and customize
   their deserialization from @class{gtk:builder} UI descriptions. The interface
   includes methods for setting names and properties of objects, parsing custom
   tags and constructing child objects.
 
-  The @sym{gtk:buildable} interface is implemented by all widgets and many of
+  The @class{gtk:buildable} interface is implemented by all widgets and many of
   the non-widget objects that are provided by GTK. The main user of this
   interface is the @class{gtk:builder} class. There should be very little need
-  for applications to call any functions from the @sym{gtk:buildable} interface.
-  @begin[Note]{dictionary}
+  for applications to call any functions from the @class{gtk:buildable}
+  interface.
+  @begin{notes}
     An object only needs to implement this interface if it needs to extend the
     @class{gtk:builder} format or run any extra routines at deserialization
     time.
-  @end{dictionary}
+  @end{notes}
   @see-class{gtk:builder}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_buildable_set_name ()
-;;; gtk_buildable_get_name () -> buildable-name
+;;; gtk_buildable_get_name ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf buildable-name) (name buildable)
@@ -113,8 +114,8 @@
   @begin{short}
     Accessor of the name of the buildable widget.
   @end{short}
-  The @sym{gtk:buildable-name} function gets the name of the buildable widget.
-  The @sym{(setf gtk:buildable-name)} function sets the name.
+  The @fun{gtk:buildable-name} function gets the name of the buildable widget.
+  The @setf{gtk:buildable-name} function sets the name.
 
   The @class{gtk:builder} object sets the name based on the the
   @class{gtk:builder} UI definition used to construct the buildable widget.

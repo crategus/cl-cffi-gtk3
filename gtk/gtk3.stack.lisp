@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2023 Dieter Kaiser
+;;; Copyright (C) 2019 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -231,13 +231,13 @@
 (setf (documentation 'stack 'type)
  "@version{#2023-3-27}
   @begin{short}
-    The @sym{gtk:stack} widget is a container which only shows one of its
+    The @class{gtk:stack} widget is a container which only shows one of its
     children at a time.
   @end{short}
-  In contrast to the @class{gtk:notebook} widget, the @sym{gtk:stack} widget
+  In contrast to the @class{gtk:notebook} widget, the @class{gtk:stack} widget
   does not provide a means for users to change the visible child. Instead, the
-  @class{gtk:stack-switcher} widget can be used with the @sym{gtk:stack} widget
-  to provide this functionality.
+  @class{gtk:stack-switcher} widget can be used with the @class{gtk:stack}
+  widget to provide this functionality.
 
   @image[stack]{Figure: GtkStack}
 
@@ -245,7 +245,8 @@
   controlled with the @fun{gtk:stack-transition-type} function. These animations
   respect the @slot[gtk:settings]{gtk-enable-animations} setting.
   @begin[CSS nodes]{dictionary}
-    The @sym{gtk:stack} implementation has a single CSS node named @code{stack}.
+    The @class{gtk:stack} implementation has a single CSS node named
+    @code{stack}.
   @end{dictionary}
   @begin[Child Property Details]{dictionary}
     @begin[code]{table}
@@ -302,7 +303,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- stack-hhomogeneous -----------------------------------------------------
+;;; --- gtk:stack-hhomogeneous -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "hhomogeneous" 'stack) t)
@@ -323,9 +324,9 @@
     Accessor of the @slot[gtk:stack]{hhomogeneous} slot of the @class{gtk:stack}
     class.
   @end{short}
-  The @sym{gtk:stack-hhomogeneous} function gets whether the stack is
-  horizontally homogeneous. The @sym{(setf gtk:stack-hhomogeneous)} function
-  sets the stack to be horizontally homogeneous or not.
+  The @fun{gtk:stack-hhomogeneous} function gets whether the stack is
+  horizontally homogeneous. The @setf{gtk:stack-hhomogeneous} function sets the
+  stack to be horizontally homogeneous or not.
 
   If the stack is homogeneous, the stack will request the same width for all its
   children. If it is not, the stack may change width when a different child
@@ -334,7 +335,7 @@
   @see-function{gtk:stack-homogeneous}
   @see-function{gtk:stack-vhomogeneous}")
 
-;;; --- stack-homogeneous ------------------------------------------------------
+;;; --- gtk:stack-homogeneous --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "homogeneous" 'stack) t)
@@ -355,11 +356,11 @@
     Accessor of the @slot[gtk:stack]{homogeneous} slot of the @class{gtk:stack}
     class.
   @end{short}
-  The @sym{gtk:stack-homogeneous} function gets whether the stack is
-  homogeneous. The @sym{(setf gtk:stack-homogeneous)} function sets the stack
-  to be homogeneous or not. If it is homogeneous, the stack will request the
-  same size for all its children. If it is not, the stack may change size when
-  a different child becomes visible.
+  The @fun{gtk:stack-homogeneous} function gets whether the stack is
+  homogeneous. The @setf{gtk:stack-homogeneous} function sets the stack to be
+  homogeneous or not. If it is homogeneous, the stack will request the same size
+  for all its children. If it is not, the stack may change size when a different
+  child becomes visible.
 
   Since 3.16, homogeneity can be controlled separately for horizontal and
   vertical size, with the @slot[gtk:stack]{hhomogeneous} and
@@ -368,7 +369,7 @@
   @see-function{gtk:stack-hhomogeneous}
   @see-function{gtk:stack-vhomogeneous}")
 
-;;; --- stack-interpolate-size -------------------------------------------------
+;;; --- gtk:stack-interpolate-size ---------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "interpolate-size" 'stack) t)
@@ -391,10 +392,10 @@
     Accessor of the @slot[gtk:stack]{interpolate-size} slot of the
     @class{gtk:stack} class.
   @end{short}
-  The @sym{gtk:stack-interpolate-size} function returns whether the stack is
+  The @fun{gtk:stack-interpolate-size} function returns whether the stack is
   set up to interpolate between the sizes of children on page switch. The
-  @sym{(setf gtk:stack-interpolate-size)} function sets whether or not stack
-  will interpolate its size when changing the visible child.
+  @setf{gtk:stack-interpolate-size} function sets whether or not stack will
+  interpolate its size when changing the visible child.
 
   If the @slot[gtk:stack]{interpolate-size} property is set to @em{true}, the
   stack will interpolate its size between the current one and the one it will
@@ -402,7 +403,7 @@
   duration.
   @see-class{gtk:stack}")
 
-;;; --- stack-transition-duration ----------------------------------------------
+;;; --- gtk:stack-transition-duration ------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "transition-duration" 'stack) t)
@@ -424,12 +425,12 @@
     Accessor of the @slot[gtk:stack]{transition-duration} slot of the
     @class{gtk:stack} class.
   @end{short}
-  The @sym{gtk:stack-transition-duration} function returns the amount of time
+  The @fun{gtk:stack-transition-duration} function returns the amount of time
   in milliseconds that transitions between pages in the stack will take. The
-  @sym{(setf gtk:stack-transition-duration)} function sets the duration.
+  @setf{gtk:stack-transition-duration} function sets the duration.
   @see-class{gtk:stack}")
 
-;;; --- stack-transition-running -------------------------------------------
+;;; --- gtk:stack-transition-running -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "transition-running" 'stack) t)
@@ -448,11 +449,11 @@
     Accessor of the @slot[gtk:stack]{transition-running} slot of the
     @class{gtk:stack} class.
   @end{short}
-  The @sym{gtk:stack-transition-running} function returns whether the stack is
+  The @fun{gtk:stack-transition-running} function returns whether the stack is
   currently in a transition from one page to another.
   @see-class{gtk:stack}")
 
-;;; --- stack-transition-type --------------------------------------------------
+;;; --- gtk:stack-transition-type ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "transition-type" 'stack) t)
@@ -475,11 +476,11 @@
     Accessor of the @slot[gtk:stack]{transition-type} slot of the
     @class{gtk:stack} class.
   @end{short}
-  The @sym{gtk:stack-transition-type} function gets the type of animation that
+  The @fun{gtk:stack-transition-type} function gets the type of animation that
   will be used for transitions between pages in the stack. The
-  @sym{(setf gtk:stack-transition-type)} function sets the type of animation
-  that will be used for transitions between pages in the stack. Available types
-  include various kinds of fades and slides.
+  @setf{gtk:stack-transition-type} function sets the type of animation that will
+  be used for transitions between pages in the stack. Available types include
+  various kinds of fades and slides.
 
   The transition type can be changed without problems at runtime, so it is
   possible to change the animation based on the page that is about to become
@@ -487,7 +488,7 @@
   @see-class{gtk:stack}
   @see-symbol{gtk:stack-transition-type}")
 
-;;; --- stack-vhomogeneous -----------------------------------------------------
+;;; --- gtk:stack-vhomogeneous -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "vhomogeneous" 'stack) t)
@@ -508,9 +509,9 @@
     Accessor of the @slot[gtk:stack]{vhomogeneous} slot of the
     @class{gtk:stack} class.
   @end{short}
-  The @sym{gtk:stack-vhomogeneous} function gets whether the stack is vertically
-  homogeneous. The @sym{(setf gtk:stack-vhomogeneous)} function sets the stack
-  to be vertically homogeneous or not.
+  The @fun{gtk:stack-vhomogeneous} function gets whether the stack is vertically
+  homogeneous. The @setf{gtk:stack-vhomogeneous} function sets the stack to be
+  vertically homogeneous or not.
 
   If the stack is homogeneous, the stack will request the same height for all
   its children. If it is not, the stack may change height when a different
@@ -519,7 +520,7 @@
   @see-function{gtk:stack-homogeneous}
   @see-function{gtk:stack-hhomogeneous}")
 
-;;; --- stack-visible-child ----------------------------------------------------
+;;; --- gtk:stack-visible-child ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "visible-child" 'stack) t)
@@ -540,10 +541,10 @@
     Accessor of the @slot[gtk:stack]{visible-child} slot of the
     @class{gtk:stack} class.
   @end{short}
-  The @sym{gtk:stack-visible-child} function gets the currently visible child
+  The @fun{gtk:stack-visible-child} function gets the currently visible child
   widget of the stack, or @code{nil} if there are no visible children. The
-  @sym{(setf gtk:stack-visible-child)} function makes the child widget the
-  visible child widget of the stack.
+  @setf{gtk:stack-visible-child} function makes the child widget the visible
+  child widget of the stack.
 
   If the child widget is different from the currently visible child widget,
   the transition between the two will be animated with the current transition
@@ -556,7 +557,7 @@
   @see-class{gtk:widget}
   @see-function{gtk:widget-show}")
 
-;;; --- stack-visible-child-name -----------------------------------------------
+;;; --- gtk:stack-visible-child-name -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "visible-child-name" 'stack) t)
@@ -578,10 +579,10 @@
     Accessor of the @slot[gtk:stack]{visible-child-name} slot of the
     @class{gtk:stack} class.
   @end{short}
-  The @sym{gtk:stack-visible-child-name} function returns the name of the
+  The @fun{gtk:stack-visible-child-name} function returns the name of the
   currently visible child of the stack, or @code{nil} if there is no visible
-  child. The @sym{(setf gtk:stack-visible-child-name)} function makes the child
-  widget with the given name visible.
+  child. The @setf{gtk:stack-visible-child-name} function makes the child widget
+  with the given name visible.
 
   If the child widget is different from the currently visible child, the
   transition between the two will be animated with the current transition type
@@ -597,7 +598,7 @@
 ;;; Child Accessor Implementation
 ;;; ----------------------------------------------------------------------------
 
-;;; --- stack-child-icon-name --------------------------------------------------
+;;; --- gtk:stack-child-icon-name ----------------------------------------------
 
 (define-child-property stack-child-icon-name
                        "icon-name" "gchararray" t t t)
@@ -620,7 +621,7 @@
   @see-class{gtk:stack}
   @see-class{gtk:widget}")
 
-;;; --- stack-child-name -------------------------------------------------------
+;;; --- gtk:stack-child-name ---------------------------------------------------
 
 (define-child-property stack-child-name
                        "name" "gchararray" t t t)
@@ -642,7 +643,7 @@
   @see-class{gtk:stack}
   @see-class{gtk:widget}")
 
-;;; --- stack-child-needs-attention --------------------------------------------
+;;; --- gtk:stack-child-needs-attention ----------------------------------------
 
 (define-child-property stack-child-needs-attention
                        "needs-attention" "gboolean" t t t)
@@ -669,7 +670,7 @@
   @see-class{gtk:stack-switcher}
   @see-class{gtk:widget}")
 
-;;; --- stack-child-position ---------------------------------------------------
+;;; --- gtk:stack-child-position -----------------------------------------------
 
 (define-child-property stack-child-position
                        "position" "gint" t t t)
@@ -692,7 +693,7 @@
   @see-class{gtk:stack}
   @see-class{gtk:widget}")
 
-;;; --- stack-child-title ------------------------------------------------------
+;;; --- gtk:stack-child-title --------------------------------------------------
 
 (define-child-property stack-child-title
                        "title" "gchararray" t t t)

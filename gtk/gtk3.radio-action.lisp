@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -91,13 +91,13 @@
 (setf (documentation 'radio-action 'type)
  "@version{#2023-3-22}
   @begin{short}
-    The @sym{gtk:radio-action} object is similar to the
+    The @class{gtk:radio-action} object is similar to the
     @class{gtk:radio-menu-item} widget.
   @end{short}
   A number of radio actions can be linked together so that only one may be
   active at any one time.
   @begin[Warning]{dictionary}
-    The @sym{gtk:radio-action} class has been deprecated since version 3.10
+    The @class{gtk:radio-action} class has been deprecated since version 3.10
     and should not be used in newly written code.
   @end{dictionary}
   @begin[Signal Details]{dictionary}
@@ -109,9 +109,9 @@ lambda (action current)    :no-recurse
       member is changed. The signal gets emitted after the \"activate\" signals
       for the previous and current active members.
       @begin[code]{table}
-        @entry[action]{The @sym{gtk:radio-action} object on which the signal
+        @entry[action]{The @class{gtk:radio-action} object on which the signal
           is emitted.}
-        @entry[current]{The @sym{gtk:radio-action} member of the action group
+        @entry[current]{The @class{gtk:radio-action} member of the action group
           which has just been activated.}
       @end{table}
   @end{dictionary}
@@ -126,7 +126,7 @@ lambda (action current)    :no-recurse
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- radio-action-current-value ---------------------------------------------
+;;; --- gtk:radio-action-current-value -----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "current-value" 'radio-action) t)
@@ -148,17 +148,17 @@ lambda (action current)    :no-recurse
     Accessor of the @slot[gtk:radio-acton]{current-value} slot of the
     @class{gtk:radio-action} class.
   @end{short}
-  The @sym{gtk:radio-action-current-value} function obtains the value property
+  The @fun{gtk:radio-action-current-value} function obtains the value property
   of the currently active member of the group to which the radio action belongs.
-  The @sym{(setf gtk:radio-action-current-value)} function sets the currently
-  active group member.
+  The @setf{gtk:radio-action-current-value} function sets the currently active
+  group member.
   @begin[Warning]{dictionary}
-    The @sym{gtk:radio-action-current-value} function has been deprecated since
+    The @fun{gtk:radio-action-current-value} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:radio-action}")
 
-;;; --- radio-action-group -----------------------------------------------------
+;;; --- gtk:radio-action-group -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "group" 'radio-action) t)
@@ -179,9 +179,9 @@ lambda (action current)    :no-recurse
     Accessor of the @slot[gtk:radio-action]{group} slot of the
     @class{gtk:radio-action} class.
   @end{short}
-  The @sym{gtk:radio-action-group} function returns the list representing the
-  radio group for this object. The @sym{(setf gtk:radio-action-group)} function
-  sets the radio group.
+  The @fun{gtk:radio-action-group} function returns the list representing the
+  radio group for this object. The @setf{gtk:radio-action-group} function sets
+  the radio group.
 
   Note that the returned list is only valid until the next change to the group.
   A common way to set up a group of radio group is the following:
@@ -198,12 +198,12 @@ while (/* more actions to add */)
   @}
   @end{pre}
   @begin[Warning]{dictionary}
-    The @sym{gtk:radio-action-group} function has been deprecated since version
+    The @fun{gtk:radio-action-group} function has been deprecated since version
     3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:radio-action}")
 
-;;; --- radio-action-value -----------------------------------------------------
+;;; --- gtk:radio-action-value -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "value" 'radio-action) t)
@@ -231,7 +231,7 @@ while (/* more actions to add */)
   which action in the group is currently active in an \"activate\" or
   \"changed\" signal handler.
   @begin[Warning]{dictionary}
-    The @sym{gtk:radio-action-value} function has been deprecated since version
+    The @fun{gtk:radio-action-value} function has been deprecated since version
     3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:radio-action}")
@@ -259,7 +259,7 @@ while (/* more actions to add */)
   To add the action to a @class{gtk-action-group} object and set the accelerator
   for the action, call the @fun{gtk-action-group-add-action} function.
   @begin[Warning]{dictionary}
-    The @sym{gtk:radio-action-new} function has been deprecated since version
+    The @fun{gtk:radio-action-new} function has been deprecated since version
     3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:radio-action}
@@ -304,7 +304,7 @@ while (/* more actions to add */)
   @}
   @end{pre}
   @begin[Warning]{dictionary}
-    The @sym{gtk:radio-action-join-group} function has been deprecated since
+    The @fun{gtk:radio-action-join-group} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:radio-action}

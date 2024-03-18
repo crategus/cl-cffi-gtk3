@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -280,8 +280,8 @@ lambda (menushell)    :run-first
       "Accessor"
       (documentation 'menu-shell-take-focus 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:menu-shell-take-focus object) => take-focus}
-  @syntax[]{(setf (gtk:menu-shell-take-focus object) take-focus)}
+  @syntax{(gtk:menu-shell-take-focus object) => take-focus}
+  @syntax{(setf (gtk:menu-shell-take-focus object) take-focus)}
   @argument[object]{a @class{gtk:menu-shell} widget}
   @argument[take-focus]{@em{true} if the menu shell widget should take the
     keyboard focus on popup}
@@ -300,7 +300,7 @@ lambda (menushell)    :run-first
   about recursively setting it for your entire menu hierarchy. Only when
   programmatically picking a submenu and popping it up manually, the
   @arg{take-focus} property of the submenu needs to be set explicitely.
-  @begin[Note]{dictionary}
+  @begin{notes}
     The setting of @arg{take-focus} to @em{false} has side-effects. If the focus
     is in some other application, it keeps the focus and keyboard navigation in
     the menu does not work. Consequently, keyboard navigation on the menu will
@@ -308,7 +308,7 @@ lambda (menushell)    :run-first
     To avoid confusing the user, menus with @arg{take-focus} set to @em{false}
     should not display mnemonics or accelerators, since it cannot be guaranteed
     that they will work.
-  @end{dictionary}
+  @end{notes}
   @see-class{gtk:menu-shell}")
 
 ;;; ----------------------------------------------------------------------------
@@ -317,11 +317,11 @@ lambda (menushell)    :run-first
 
 (cffi:defcfun ("gtk_menu_shell_append" menu-shell-append) :void
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{2024-3-14}
   @argument[menushell]{a @class{gtk:menu-shell} widget}
-  @argument[child]{the @class{gtk:widget} child widget to add}
+  @argument[child]{a @class{gtk:widget} child widget to add}
   @begin{short}
-    Adds a new menu item to the end of the menu shell's item list.
+    Adds a new menu item to the end of the of the item list of the menu shell.
   @end{short}
   @see-class{gtk:menu-shell}
   @see-class{gtk:widget}

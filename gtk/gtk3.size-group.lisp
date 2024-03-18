@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -122,27 +122,27 @@
 (setf (documentation 'size-group 'type)
  "@version{#2023-2-23}
   @begin{short}
-    A @sym{gtk:size-group} object provides a mechanism for grouping a number of
-    widgets together so they all request the same amount of space. This is
+    The @class{gtk:size-group} object provides a mechanism for grouping a number
+    of widgets together so they all request the same amount of space. This is
     typically useful when you want a column of widgets to have the same size,
     but you cannot use a @class{gtk:grid} widget.
   @end{short}
 
-  In detail, the size requested for each widget in a @sym{gtk:size-group} object
-  is the maximum of the sizes that would have been requested for each widget in
-  the size group if they were not in the size group. The mode of the size
-  group, see the @fun{gtk:size-group-mode} function, determines whether this
-  applies to the horizontal size, the vertical size, or both sizes.
+  In detail, the size requested for each widget in a @class{gtk:size-group}
+  object is the maximum of the sizes that would have been requested for each
+  widget in the size group if they were not in the size group. The mode of the
+  size group, see the @fun{gtk:size-group-mode} function, determines whether
+  this applies to the horizontal size, the vertical size, or both sizes.
 
   Note that size groups only affect the amount of space requested, not the
   size that the widgets finally receive. If you want the widgets in a
-  @sym{gtk:size-group} object to actually be the same size, you need to pack
+  @class{gtk:size-group} object to actually be the same size, you need to pack
   them in such a way that they get the size they request and not more. For
   example, if you are packing your widgets into a table, you would not include
   the @code{:fill} flag.
 
-  The @sym{gtk:size-group} objects are referenced by each widget in the size
-  group, so once you have added all widgets to a @sym{gtk:size-group} object,
+  The @class{gtk:size-group} objects are referenced by each widget in the size
+  group, so once you have added all widgets to a @class{gtk:size-group} object,
   you can drop the initial reference to the size group with the
   @fun{g:object-unref} function. If the widgets in the size group are
   subsequently destroyed, then they will be removed from the size group and drop
@@ -176,7 +176,8 @@
     one for each member of the size group. The name attribute gives the ID of
     the widget.
 
-    @b{Example:} A UI definition fragment with the @sym{gtk:size-group} object.
+    @b{Example:} A UI definition fragment with the @class{gtk:size-group}
+    object.
     @begin{pre}
 <object class=\"GtkSizeGroup\">
   <property name=\"mode\">GTK_SIZE_GROUP_HORIZONTAL</property>
@@ -195,7 +196,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- size-group-ignore-hidden -----------------------------------------------
+;;; --- gtk:size-group-ignore-hidden -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "ignore-hidden" 'size-group) t)
@@ -225,12 +226,12 @@
     Accessor of the @slot[gtk:size-group]{ignore-hidden} slot of the
     @class{gtk:size-group} class.
   @end{short}
-  The @sym{gtk:size-group-ignore-hidden} function returns if invisible widgets
-  are ignored when calculating the size. The
-  @sym{(setf gtk:size-group-ignore-hidden)} function sets whether unmapped
-  widgets should be ignored when calculating the size.
+  The @fun{gtk:size-group-ignore-hidden} function returns if invisible widgets
+  are ignored when calculating the size. The @setf{gtk:size-group-ignore-hidden}
+  function sets whether unmapped widgets should be ignored when calculating the
+  size.
   @begin[Warning]{dictionary}
-    The @sym{gtk:size-group-ignore-hidden} function has been deprecated since
+    The @fun{gtk:size-group-ignore-hidden} function has been deprecated since
     version 3.22 and should not be used in newly written code. Measuring the
     size of hidden widgets has not worked reliably for a long time. In most
     cases, they will report a size of 0 nowadays, and thus, their size will not
@@ -240,7 +241,7 @@
   @end{dictionary}
   @see-class{gtk:size-group}")
 
-;;; --- size-group-mode ----------------------------------------------------
+;;; --- gtk:size-group-mode ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "mode" 'size-group) t)
@@ -264,9 +265,9 @@
     Accessor of the @slot[gtk:size-group]{mode} slot of the
     @class{gtk:size-group} class.
   @end{short}
-  The @sym{gtk:size-group-mode} function gets the current mode of the size
-  group. The @sym{(setf gtk:size-group-mode)} function sets the mode of the
-  size group.
+  The @fun{gtk:size-group-mode} function gets the current mode of the size
+  group. The @setf{gtk:size-group-mode} function sets the mode of the size
+  group.
 
   The mode of the size group determines whether the widgets in the size group
   should all have the same horizontal requisition, @code{:horizontal}, all have

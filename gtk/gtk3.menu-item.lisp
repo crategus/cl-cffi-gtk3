@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -135,7 +135,7 @@
 (setf (documentation 'menu-item 'type)
  "@version{#2023-3-21}
   @begin{short}
-    The @sym{gtk:menu-item} widget and the derived widgets are the only valid
+    The @class{gtk:menu-item} widget and the derived widgets are the only valid
     childs for menus. Their function is to correctly handle highlighting,
     alignment, events and submenus.
   @end{short}
@@ -143,7 +143,7 @@
   As it derives from the @class{gtk:bin} class it can hold any valid child
   widget, although only a few are really useful.
   @begin[GtkMenuItem as GtkBuildable]{dictionary}
-    The @sym{gtk:menu-item} implementation of the @class{gtk:buildable}
+    The @class{gtk:menu-item} implementation of the @class{gtk:buildable}
     interface supports adding a submenu by specifying @code{\"submenu\"} as the
     @code{\"type\"} attribute of a @code{<child>} element.
 
@@ -162,7 +162,7 @@ menuitem
 ├── <child>
 ╰── [arrow.right]
     @end{pre}
-    The @sym{gtk:menu-item} class has a single CSS node with name
+    The @class{gtk:menu-item} class has a single CSS node with name
     @code{menuitem}. If the menu item has a submenu, it gets another CSS node
     with name @code{arrow}, which has the @code{.left} or @code{.right} style
     class.
@@ -242,7 +242,8 @@ lambda (item)    :action
       @end{pre}
       Emitted when the menu item is activated.
       @begin[code]{table}
-        @entry[item]{The @sym{gtk:menu-item} widget which received the signal.}
+        @entry[item]{The @class{gtk:menu-item} widget which received the
+          signal.}
       @end{table}
     @subheading{The \"activate-item\" signal}
       @begin{pre}
@@ -251,28 +252,32 @@ lambda (item)    :run-first
       Emitted when the menu item is activated, but also if the menu item has a
       submenu. For normal applications, the relevant signal is \"activate\".
       @begin[code]{table}
-        @entry[item]{The @sym{gtk:menu-item} widget which received the signal.}
+        @entry[item]{The @class{gtk:menu-item} widget which received the
+          signal.}
       @end{table}
     @subheading{The \"deselect\" signal}
       @begin{pre}
 lambda (item)    :run-first
       @end{pre}
       @begin[code]{table}
-        @entry[item]{The @sym{gtk:menu-item} widget which received the signal.}
+        @entry[item]{The @class{gtk:menu-item} widget which received the
+          signal.}
       @end{table}
     @subheading{The \"select\" signal}
       @begin{pre}
 lambda (item)    :run-first
       @end{pre}
       @begin[code]{table}
-        @entry[item]{The @sym{gtk:menu-item} widget which received the signal.}
+        @entry[item]{The @class{gtk:menu-item} widget which received the
+          signal.}
       @end{table}
     @subheading{The \"toggle-size-allocate\" signal}
       @begin{pre}
 lambda (item arg)    :run-first
       @end{pre}
       @begin[code]{table}
-        @entry[item]{The @sym{gtk:menu-item} widget which received the signal.}
+        @entry[item]{The @class{gtk:menu-item} widget which received the
+          signal.}
         @entry[arg]{An integer which is not documented.}
       @end{table}
     @subheading{The \"toggle-size-request\" signal}
@@ -280,7 +285,8 @@ lambda (item arg)    :run-first
 lambda (item arg)    :run-first
       @end{pre}
       @begin[code]{table}
-        @entry[item]{The @sym{gtk:menu-item} widget which received the signal.}
+        @entry[item]{The @class{gtk:menu-item} widget which received the
+          signal.}
         @entry[arg]{A pointer which is not documented.}
       @end{table}
   @end{dictionary}
@@ -299,7 +305,7 @@ lambda (item arg)    :run-first
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- menu-item-accel-path ---------------------------------------------------
+;;; --- gtk:menu-item-accel-path -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "accel-path" 'menu-item) t)
@@ -314,8 +320,8 @@ lambda (item arg)    :run-first
       "Accessor"
       (documentation 'menu-item-accel-path 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:menu-item-accel-path object) => path}
-  @syntax[]{(setf (gtk:menu-item-accel-path object) path)}
+  @syntax{(gtk:menu-item-accel-path object) => path}
+  @syntax{(setf (gtk:menu-item-accel-path object) path)}
   @argument[item]{a valid @class{gtk:menu-item} widget}
   @argument[path]{a string with the accelerator path, corresponding to
     this functionality of the menu item, or @code{nil} to unset the current
@@ -324,8 +330,8 @@ lambda (item arg)    :run-first
     Accessor of the @slot[gtk:menu-item]{accel-path} slot of the
     @class{gtk:menu-item} class.
   @end{short}
-  The @sym{gtk:menu-item-accel-path} function retrieve the accelerator path that
-  was previously set on the menu item. The @sym{(setf gtk:menu-item-accel-path)}
+  The @fun{gtk:menu-item-accel-path} function retrieve the accelerator path that
+  was previously set on the menu item. The @setf{gtk:menu-item-accel-path}
   function sets the accelerator path on the menu item, through which runtime
   changes of the accelerator of the menu item caused by the user can be
   identified and saved to persistent storage, see the @fun{gtk:accel-map-save}
@@ -350,7 +356,7 @@ lambda (item arg)    :run-first
   @see-function{gtk:menu-accel-group}
   @see-function{gtk:widget-set-accel-path}")
 
-;;; --- menu-item-label --------------------------------------------------------
+;;; --- gtk:menu-item-label ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "label" 'menu-item) t)
@@ -363,19 +369,19 @@ lambda (item arg)    :run-first
       "Accessor"
       (documentation 'menu-item-label 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:menu-item-label object) => label}
-  @syntax[]{(setf (gtk:menu-item-label object) label)}
+  @syntax{(gtk:menu-item-label object) => label}
+  @syntax{(setf (gtk:menu-item-label object) label)}
   @argument[object]{a @class{gtk:menu-item} widget}
   @argument[label]{a string with the text you want to set}
   @begin{short}
     Accessor of the @slot[gtk:menu-item]{label} slot of the
     @class{gtk:menu-item} class.
   @end{short}
-  The @sym{gtk:menu-item-label} function gets the text on the menu item label.
-  The @sym{(setf gtk:menu-item-label)} function sets the text.
+  The @fun{gtk:menu-item-label} function gets the text on the menu item label.
+  The @setf{gtk:menu-item-label} function sets the text.
   @see-class{gtk:menu-item}")
 
-;;; --- menu-item-right-justified ----------------------------------------------
+;;; --- gtk:menu-item-right-justified ------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "right-justified" 'menu-item) t)
@@ -390,8 +396,8 @@ lambda (item arg)    :run-first
       "Accessor"
       (documentation 'menu-item-right-justified 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:menu-item-right-justified object) => justified}
-  @syntax[]{(setf (gtk:menu-item-right-justified object) justified)}
+  @syntax{(gtk:menu-item-right-justified object) => justified}
+  @syntax{(setf (gtk:menu-item-right-justified object) justified)}
   @argument[item]{a @class{gtk:menu-item} widget}
   @argument[justified]{if @em{true} the menu item will appear at the far right
     if added to a menu bar}
@@ -399,16 +405,16 @@ lambda (item arg)    :run-first
     Accessor of the @slot[gtk:menu-item]{right-justified} slot of the
     @class{gtk:menu-item} class.
   @end{short}
-  The @sym{gtk:menu-item-right-justified} function gets whether the menu item
+  The @fun{gtk:menu-item-right-justified} function gets whether the menu item
   appears justified at the right side of the menu bar. The
-  @sym{(setf gtk:menu-item-right-justified)} function sets whether the menu
-  item appears justified at the right side.
+  @setf{gtk:menu-item-right-justified} function sets whether the menu item
+  appears justified at the right side.
 
   This was traditionally done for \"Help\" menu items, but is now considered a
   bad idea. If the widget layout is reversed for a right-to-left language like
   Hebrew or Arabic, right-justified menu items appear at the left.
   @begin[Warning]{dictionary}
-    The @sym{gtk:menu-item-right-justified} function has been deprecated since
+    The @fun{gtk:menu-item-right-justified} function has been deprecated since
     version 3.2 and should not be used in newly written code. If you insist on
     using it, use the @fun{gtk:widget-hexpand} and @fun{gtk:widget-halign}
     functions.
@@ -417,7 +423,7 @@ lambda (item arg)    :run-first
   @see-function{gtk:widget-halign}
   @see-function{gtk:widget-hexpand}")
 
-;;; --- menu-item-submenu ------------------------------------------------------
+;;; --- gtk:menu-item-submenu --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "submenu" 'menu-item) t)
@@ -429,22 +435,22 @@ lambda (item arg)    :run-first
       "Accessor"
       (documentation 'menu-item-submenu 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:menu-item-submenu object) => submenu}
-  @syntax[]{(setf (gtk:menu-item-submenu object) submenu)}
+  @syntax{(gtk:menu-item-submenu object) => submenu}
+  @syntax{(setf (gtk:menu-item-submenu object) submenu)}
   @argument[object]{a @class{gtk:menu-item} widget}
   @argument[submenu]{a @class{gtk:menu} submenu, or @code{nil}}
   @begin{short}
     Accessor of the @slot[gtk:menu-item]{submenu} slot of the
     @class{gtk:menu-item} class.
   @end{short}
-  The @sym{gtk:menu-item-submenu} function gets the submenu underneath this
-  menu item, if any. The @sym{(setf gtk:menu-item-submenu)} function sets or
-  replaces the submenu of the menu item, or removes it when a @code{nil}
-  submenu is passed.
+  The @fun{gtk:menu-item-submenu} function gets the submenu underneath this
+  menu item, if any. The @setf{gtk:menu-item-submenu} function sets or replaces
+  the submenu of the menu item, or removes it when a @code{nil} submenu is
+  passed.
   @see-class{gtk:menu-item}
   @see-class{gtk:menu}")
 
-;;; --- menu-item-use-underline ------------------------------------------------
+;;; --- gtk:menu-item-use-underline --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "use-underline" 'menu-item) t)
@@ -457,15 +463,15 @@ lambda (item arg)    :run-first
       "Accessor"
       (documentation 'menu-item-use-underline 'function)
  "@version{#2023-3-21}
-  @syntax[]{(gtk:menu-item-use-underline object) => setting}
-  @syntax[]{(setf (gtk:menu-item-use-underline object) setting)}
+  @syntax{(gtk:menu-item-use-underline object) => setting}
+  @syntax{(setf (gtk:menu-item-use-underline object) setting)}
   @argument[item]{a @class{gtk:menu-item} widget}
   @argument[setting]{@em{true} if underlines in the text indicate mnemonics}
   @begin{short}
     Accessor of the @slot[gtk:menu-item]{use-underline} slot of the
     @class{gtk:menu-item} class.
   @end{short}
-  The @sym{gtk:menu-item-use-underline} function checks if an underline in the
+  The @fun{gtk:menu-item-use-underline} function checks if an underline in the
   text indicates the next character should be used for the mnemonic accelerator
   key. If @em{true}, an underline in the text indicates the next character
   should be used for the mnemonic accelerator key.
@@ -495,7 +501,7 @@ lambda (item arg)    :run-first
 
 (defun menu-item-new-with-label (label)
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{2024-3-14}
   @argument[label]{a string with the text for the label}
   @return{The newly created @class{gtk:menu-item} widget.}
   @short{Creates a new menu item whose child is a @class{gtk:label} widget.}
@@ -620,7 +626,7 @@ lambda (item arg)    :run-first
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_menu_item_get_reserve_indicator
-;;; gtk_menu_item_set_reserve_indicator -> menu-item-reserve-indicator
+;;; gtk_menu_item_set_reserve_indicator
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf menu-item-reserve-indicator) (reserve item)
@@ -634,19 +640,19 @@ lambda (item arg)    :run-first
                menu-item-reserve-indicator) :boolean
  #+liber-documentation
  "@version{#2023-3-21}
-  @syntax[]{(gtk:menu-item-reserve-indicator item) => reserve}
-  @syntax[]{(setf (gtk:menu-item-reserve-indicator item) reserve)}
+  @syntax{(gtk:menu-item-reserve-indicator item) => reserve}
+  @syntax{(setf (gtk:menu-item-reserve-indicator item) reserve)}
   @argument[item]{a @class{gtk:menu-item} widget}
   @argument[reserve]{a boolean whether the menu item always reserves space for
     the submenu indicator}
   @begin{short}
     Accessor of the reserve indicator of the menu item.
   @end{short}
-  The @sym{gtk:menu-item-reserve-indicator} function returns whether the menu
+  The @fun{gtk:menu-item-reserve-indicator} function returns whether the menu
   item reserves space for the submenu indicator, regardless if it has a submenu
-  or not. The @sym{(setf gtk:menu-item-reserve-indicator)} function sets whether
-  the menu item should reserve space. There should be little need for
-  applications to call this functions.
+  or not. The @setf{gtk:menu-item-reserve-indicator} function sets whether the
+  menu item should reserve space. There should be little need for applications
+  to call this functions.
   @see-class{gtk:menu-item}"
   (item (g:object menu-item)))
 

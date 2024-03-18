@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -103,7 +103,7 @@
 (setf (documentation 'file-chooser-button 'type)
  "@version{#2023-3-17}
   @begin{short}
-    The @sym{gtk:file-chooser-button} widget is a widget that lets the user
+    The @class{gtk:file-chooser-button} widget is a widget that lets the user
     select a file.
   @end{short}
 
@@ -115,26 +115,26 @@
   This widget does not support setting the
   @slot[gtk:file-chooser]{select-multiple} property to @em{true}.
 
-  The @sym{gtk:file-chooser-button} widget supports the @code{:open} and
+  The @class{gtk:file-chooser-button} widget supports the @code{:open} and
   @code{:select-folder} values of the @symbol{gtk:file-chooser-action}
   enumeration.
-  @begin[Example]{dictionary}
+  @begin{examples}
     Create a button to let the user select a file.
     @begin{pre}
 (let ((button (gtk:file-chooser-button-new \"Select a file\" :open)))
   (setf (gtk:file-chooser-current-folder button) \"/etc\")
   ... )
     @end{pre}
-  @end{dictionary}
-  @begin[Note]{dictionary}
-    The @sym{gtk:file-chooser-button} widget will ellipsize the label, and thus
-    will request little horizontal space. To give the button more space, you
-    should call the @fun{gtk:widget-preferred-size},
+  @end{examples}
+  @begin{notes}
+    The @class{gtk:file-chooser-button} widget will ellipsize the label, and
+    thus will request little horizontal space. To give the button more space,
+    you should call the @fun{gtk:widget-preferred-size},
     @fun{gtk:file-chooser-button-width-chars} functions, or pack the button in
     such a way that other interface elements give space to the widget.
-  @end{dictionary}
+  @end{notes}
   @begin[CSS nodes]{dictionary}
-    The @sym{gtk:file-chooser-button} implementation has a CSS node with name
+    The @class{gtk:file-chooser-button} implementation has a CSS node with name
     @code{filechooserbutton}, containing a subnode for the internal button with
     name @code{button} and @code{.file} style class.
   @end{dictionary}
@@ -146,7 +146,7 @@ lambda (widget)    :run-first
       The signal is emitted when the user selects a file. Note that this signal
       is only emitted when the user changes the file.
       @begin[code]{table}
-        @entry[widget]{The @sym{gtk:file-chooser-button} widget which received
+        @entry[widget]{The @class{gtk:file-chooser-button} widget which received
           the signal.}
       @end{table}
   @end{dictionary}
@@ -162,7 +162,7 @@ lambda (widget)    :run-first
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- file-chooser-button-dialog ---------------------------------------------
+;;; --- gtk:file-chooser-button-dialog -----------------------------------------
 
 ;; This property is not readable or writable. We do not export the accessor.
 
@@ -193,7 +193,7 @@ lambda (widget)    :run-first
 
 (unexport 'file-chooser-button-dialog)
 
-;;; --- file-chooser-button-focus-on-click -------------------------------------
+;;; --- gtk:file-chooser-button-focus-on-click ---------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "focus-on-click"
@@ -218,23 +218,23 @@ lambda (widget)    :run-first
     Accessor of the @slot[gtk:file-chooser-button]{focus-on-click} slot of the
     @class{gtk:file-chooser-button} class.
   @end{short}
-  The @sym{gtk:file-chooser-button-focus-on-click} function returns whether the
+  The @fun{gtk:file-chooser-button-focus-on-click} function returns whether the
   button grabs focus when it is clicked with the mouse. The
-  @sym{(setf gtk:file-chooser-button-focus-on-click)} function sets whether the
-  button will grab focus.
+  @setf{gtk:file-chooser-button-focus-on-click} function sets whether the button
+  will grab focus.
 
   Making mouse clicks not grab focus is useful in places like toolbars where
   you do not want the keyboard focus removed from the main area of the
   application.
   @begin[Warning]{dictionary}
-    The @sym{gtk:file-chooser-button-focus-on-click} function has been
+    The @fun{gtk:file-chooser-button-focus-on-click} function has been
     deprecated since version 3.20 and should not be used in newly written code.
     Use the @fun{gtk:widget-focus-on-click} function instead.
   @end{dictionary}
   @see-class{gtk:file-chooser-button}
   @see-function{gtk:widget-focus-on-click}")
 
-;;; --- file-chooser-button-title ----------------------------------------------
+;;; --- gtk:file-chooser-button-title ------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "title" 'file-chooser-button) t)
@@ -255,12 +255,12 @@ lambda (widget)    :run-first
     Accessor of the @slot[gtk:file-chooser-button]{title} slot of the
     @class{gtk:file-chooser-button} class.
   @end{short}
-  The @sym{gtk:file-chooser-button-title} function retrieves the title of the
+  The @fun{gtk:file-chooser-button-title} function retrieves the title of the
   browse dialog used by the the file chooser button. The
-  @sym{(setf gtk:file-chooser-button-title)} function sets the title.
+  @setf{gtk:file-chooser-button-title} function sets the title.
   @see-class{gtk:file-chooser-button}")
 
-;;; --- file-chooser-button-width-chars ----------------------------------------
+;;; --- gtk:file-chooser-button-width-chars ------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "width-chars"
@@ -283,9 +283,9 @@ lambda (widget)    :run-first
     Accessor of the @slot[gtk:file-chooser-button]{width-chars} slot of the
     @class{gtk:file-chooser-button} class.
   @end{short}
-  The @sym{gtk:file-chooser-button-width-chars} retrieves the width in
+  The @fun{gtk:file-chooser-button-width-chars} retrieves the width in
   characters of the file chooser button's entry and/or label. The
-  @sym{(setf gtk:file-chooser-button-width-chars)} function sets the width, in
+  @setf{gtk:file-chooser-button-width-chars} function sets the width, in
   characters, that the file chooser button will use.
   @see-class{gtk:file-chooser-button}")
 

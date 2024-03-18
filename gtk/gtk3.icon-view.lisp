@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -266,20 +266,20 @@
 (setf (documentation 'icon-view 'type)
  "@version{#2023-3-10}
   @begin{short}
-    The @sym{gtk:icon-view} widget provides an alternative view on a
+    The @class{gtk:icon-view} widget provides an alternative view on a
     @class{gtk:tree-model} object.
   @end{short}
   It displays the model as a grid of icons with labels. Like the
   @class{gtk:tree-view} widget, it allows to select one or multiple items,
   depending on the selection mode, see the @fun{gtk:icon-view-selection-mode}
   function. In addition to selection with the arrow keys, the
-  @sym{gtk:icon-view} widget supports rubberband selection, which is controlled
-  by dragging the pointer.
+  @class{gtk:icon-view} widget supports rubberband selection, which is
+  controlled by dragging the pointer.
 
   @image[icon-view]{}
 
   Note that if the tree model is backed by an actual tree store, as opposed to
-  a flat list where the mapping to icons is obvious, the @sym{gtk:icon-view}
+  a flat list where the mapping to icons is obvious, the @class{gtk:icon-view}
   widget will only display the first level of the tree and ignore the tree's
   branches.
   @begin[Style Property Details]{dictionary}
@@ -316,7 +316,7 @@ lambda (view)    :action
       activation programmatically. The default bindings for this signal are the
       @kbd{Space}, @kbd{Return} and @kbd{Enter} keys.
       @begin[code]{table}
-        @entry[view]{The @sym{gtk:icon-view} widget on which the signal is
+        @entry[view]{The @class{gtk:icon-view} widget on which the signal is
           emitted.}
       @end{table}
     @subheading{The \"item-activated\" signal}
@@ -328,7 +328,7 @@ lambda (view path)    :run-last
       non-editable item is selected and one of the @kbd{Space}, @kbd{Return} or
       @kbd{Enter} keys is pressed.
       @begin[code]{table}
-        @entry[view]{The @sym{gtk:icon-view} widget on which the signal is
+        @entry[view]{The @class{gtk:icon-view} widget on which the signal is
           emitted.}
         @entry[path]{The @class{gtk:tree-path} instance for the activated item.}
       @end{table}
@@ -348,7 +348,8 @@ lambda (view step count)    :action
       All of these will extend the selection when combined with the @kbd{Shift}
       modifier.
       @begin[code]{table}
-        @entry[view]{The @sym{gtk:icon-view} widget which received the signal.}
+        @entry[view]{The @class{gtk:icon-view} widget which received the
+          signal.}
         @entry[step]{The granularity of the move, as a value of the
           @symbol{gtk:movement-step} enumeration.}
         @entry[count]{An integer with the number of step units to move.}
@@ -363,7 +364,7 @@ lambda (view)    :action
       programmatically. The default binding for this signal is the @kbd{Ctrl-a}
       key.
       @begin[code]{table}
-        @entry[view]{The @sym{gtk:icon-view} widget on which the signal is
+        @entry[view]{The @class{gtk:icon-view} widget on which the signal is
           emitted.}
       @end{table}
     @subheading{The \"select-cursor-item\" signal}
@@ -375,7 +376,7 @@ lambda (view)    :action
       it with the @fun{g:signal-emit} function if they need to control selection
       programmatically. There is no default binding for this signal.
       @begin[code]{table}
-        @entry[view]{The @sym{gtk:icon-view} widget on which the signal is
+        @entry[view]{The @class{gtk:icon-view} widget on which the signal is
           emitted.}
       @end{table}
     @subheading{The \"selection-changed\" signal}
@@ -385,7 +386,7 @@ lambda (view)    :run-first
      The signal is emitted when the selection changes, i.e. the set of selected
      items.
      @begin[code]{table}
-       @entry[view]{The @sym{gtk:icon-view} widget on which the signal is
+       @entry[view]{The @class{gtk:icon-view} widget on which the signal is
          emitted.}
      @end{table}
     @subheading{The \"toggle-cursor-item\" signal}
@@ -399,7 +400,7 @@ lambda (view)    :action
       programmatically. The default binding for this signal is the
       @kbd{Ctrl-Space} key.
       @begin[code]{table}
-        @entry[view]{The @sym{gtk:icon-view} widget on which the signal is
+        @entry[view]{The @class{gtk:icon-view} widget on which the signal is
           emitted.}
       @end{table}
     @subheading{The \"unselect-all\" signal}
@@ -412,7 +413,7 @@ lambda (view)    :action
       programmatically. The default binding for this signal is the
       @kbd{Ctrl-Shift-a} key.
       @begin[code]{table}
-        @entry[view]{The @sym{gtk:icon-view} widget on which the signal is
+        @entry[view]{The @class{gtk:icon-view} widget on which the signal is
           emitted.}
       @end{table}
   @end{dictionary}
@@ -443,7 +444,7 @@ lambda (view)    :action
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- icon-view-activate-on-single-click -------------------------------------
+;;; --- gtk:icon-view-activate-on-single-click ---------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "activate-on-single-click"
@@ -472,7 +473,7 @@ lambda (view)    :action
   of a double click.
   @see-class{gtk:icon-view}")
 
-;;; --- icon-view-cell-area ----------------------------------------------------
+;;; --- gtk:icon-view-cell-area ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "cell-area" 'icon-view) t)
@@ -503,7 +504,7 @@ lambda (view)    :action
   @see-class{gtk:cell-area-box}
   @see-function{gtk:icon-view-new-with-area}")
 
-;;; --- icon-view-column-spacing -----------------------------------------------
+;;; --- gtk:icon-view-column-spacing -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "column-spacing" 'icon-view) t)
@@ -529,7 +530,7 @@ lambda (view)    :action
   Specifies the space which is inserted between the columns of the icon view.
   @see-class{gtk:icon-view}")
 
-;;; --- icon-ciew-columns ------------------------------------------------------
+;;; --- gtk:icon-ciew-columns --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "columns" 'icon-view) t)
@@ -557,7 +558,7 @@ lambda (view)    :action
   number of columns will be chosen automatically to fill the available area.
   @see-class{gtk:icon-view}")
 
-;;; --- icon-view-item-orientation ---------------------------------------------
+;;; --- gtk:icon-view-item-orientation -----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "item-orientation" 'icon-view) t)
@@ -585,7 +586,7 @@ lambda (view)    :action
   @see-class{gtk:icon-view}
   @see-symbol{gtk:orientation}")
 
-;;; --- icon-view-item-padding -------------------------------------------------
+;;; --- gtk:icon-view-item-padding ---------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "item-padding" 'icon-view) t)
@@ -610,7 +611,7 @@ lambda (view)    :action
   Specifies the padding around each of the icon view's items.
   @see-class{gtk:icon-view}")
 
-;;; --- icon-view-item-width ---------------------------------------------------
+;;; --- gtk:icon-view-item-width -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "item-width" 'icon-view) t)
@@ -637,7 +638,7 @@ lambda (view)    :action
   will automatically determine a suitable item size.
   @see-class{gtk:icon-view}")
 
-;;; --- icon-view-margin -------------------------------------------------------
+;;; --- gtk:icon-view-margin ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "margin" 'icon-view) t)
@@ -663,7 +664,7 @@ lambda (view)    :action
   the icon view.
   @see-class{gtk:icon-view}")
 
-;;; --- icon-view-markup-column ------------------------------------------------
+;;; --- gtk:icon-view-markup-column --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "markup-column" 'icon-view) t)
@@ -690,9 +691,9 @@ lambda (view)    :action
     Accessor of the @slot[gtk:icon-view]{markup-column} slot of
     the @class{gtk:icon-view} class.
   @end{short}
-  The @sym{gtk:icon-view-markup-column} function returns the column with markup
-  text for the icon view. The @sym{(setf gtk:icon-view-markup-column)} function
-  sets the column with markup information.
+  The @fun{gtk:icon-view-markup-column} function returns the column with markup
+  text for the icon view. The @setf{gtk:icon-view-markup-column} function sets
+  the column with markup information.
 
   The markup column must be of type \"gchararray\". If the markup column is set
   to something, it overrides the text column set by the
@@ -700,7 +701,7 @@ lambda (view)    :action
   @see-class{gtk:icon-view}
   @see-function{gtk:icon-view-text-column}")
 
-;;; --- icon-view-model --------------------------------------------------------
+;;; --- gtk:icon-view-model ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "model" 'icon-view) t)
@@ -720,16 +721,16 @@ lambda (view)    :action
     Accessor of the @slot[gtk:icon-view]{model} slot of the
     @class{gtk:icon-view} class.
   @end{short}
-  The @sym{gtk:icon-view-model} function returns the model the
+  The @fun{gtk:icon-view-model} function returns the model the
   @class{gtk:icon-view} widget is based on. Returns @code{nil} if the model is
-  unset. The @sym{(setf gtk:icon-view-model)} function sets the model.
+  unset. The @setf{gtk:icon-view-model} function sets the model.
 
   If the icon view already has a model set, it will remove it before setting
   the new model. If @arg{model} is @code{nil}, then it will unset the old model.
   @see-class{gtk:icon-view}
   @see-class{gtk:tree-model}")
 
-;;; --- icon-view-pixbuf-column ------------------------------------------------
+;;; --- gtk:icon-view-pixbuf-column --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "pixbuf-column" 'icon-view) t)
@@ -754,15 +755,15 @@ lambda (view)    :action
     Accessor of the @slot[gtk:icon-view]{pixbuf-column} slot of the
     @class{gtk:icon-view} class.
   @end{short}
-  The @sym{gtk:icon-view-pixbuf-column} function returns the column with pixbufs
-  for the icon view. The @sym{(setf gtk:icon-view-pixbuf-column} function sets
-  the column with pixbufs.
+  The @fun{gtk:icon-view-pixbuf-column} function returns the column with pixbufs
+  for the icon view. The @setf{gtk:icon-view-pixbuf-column} function sets the
+  column with pixbufs.
 
   The pixbuf column must be of type \"GdkPixbuf\".
   @see-class{gtk:icon-view}
   @see-class{gdk-pixbuf:pixbuf}")
 
-;;; --- icon-view-reorderable --------------------------------------------------
+;;; --- gtk:icon-view-reorderable ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "reorderable" 'icon-view) t)
@@ -783,8 +784,8 @@ lambda (view)    :action
     Accessor of the @slot[gtk:icon-view]{reorderable} slot of the
     @class{gtk:icon-view} class.
   @end{short}
-  The @sym{gtk:icon-view-reorderable} function retrieves whether the user can
-  reorder the list via drag and drop. The @sym{(setf gtk:icon-view-reorderable)}
+  The @fun{gtk:icon-view-reorderable} function retrieves whether the user can
+  reorder the list via drag and drop. The @setf{gtk:icon-view-reorderable}
   function sets whether the user can reorder the list. This function is a
   convenience function to allow you to reorder models that support the
   @class{gtk:tree-drag-source} and the @class{gtk:tree-drag-dest} interfaces.
@@ -806,7 +807,7 @@ lambda (view)    :action
   @see-class{gtk:list-store}
   @see-class{gtk:tree-store}")
 
-;;; --- icon-view-row-spacing --------------------------------------------------
+;;; --- gtk:icon-view-row-spacing ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "row-spacing" 'icon-view) t)
@@ -831,7 +832,7 @@ lambda (view)    :action
   Specifies the space which is inserted between the rows of the icon view.
   @see-class{gtk:icon-view}")
 
-;;; --- icon-view-selection-mode -----------------------------------------------
+;;; --- gtk:icon-view-selection-mode -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "selection-mode" 'icon-view) t)
@@ -855,13 +856,13 @@ lambda (view)    :action
     Accessor of the @slot[gtk:icon-view]{selection-mode} slot of the
     @class{gtk:icon-view} class.
   @end{short}
-  The @sym{gtk:icon-view-selection-mode} function gets the selection mode of
-  the icon view. The @sym{(setf gtk:icon-view-selection-mode)} function sets
-  the selection mode.
+  The @fun{gtk:icon-view-selection-mode} function gets the selection mode of
+  the icon view. The @setf{gtk:icon-view-selection-mode} function sets the
+  selection mode.
   @see-class{gtk:icon-view}
   @see-symbol{gtk:selection-mode}")
 
-;;; --- icon-view-spacing ------------------------------------------------------
+;;; --- gtk:icon-view-spacing --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "spacing" 'icon-view) t)
@@ -888,7 +889,7 @@ lambda (view)    :action
   the text, of an item.
   @see-class{gtk:icon-view}")
 
-;;; --- icon-view-text-column --------------------------------------------------
+;;; --- gtk:icon-view-text-column ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "text-column" 'icon-view) t)
@@ -914,12 +915,12 @@ lambda (view)    :action
     Accessor of the @slot[gtk:icon-view]{text-column} slot of the
     @class{gtk:icon-view} class.
   @end{short}
-  The @sym{gtk:icon-view-text-column} function returns the column with text for
-  the icon view. The @sym{(setf gtk:icon-view-text-column)} function sets the
-  column. The text column must be of type \"gchararray\".
+  The @fun{gtk:icon-view-text-column} function returns the column with text for
+  the icon view. The @setf{gtk:icon-view-text-column} function sets the column.
+  The text column must be of type \"gchararray\".
   @see-class{gtk:icon-view}")
 
-;;; --- icon-view-tooltip-column -----------------------------------------------
+;;; --- gtk:icon-view-tooltip-column -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "tooltip-column" 'icon-view) t)
@@ -942,10 +943,9 @@ lambda (view)    :action
     Accessor of the @slot[gtk:icon-view]{tooltip-column} slot of the
     @class{gtk:icon-view} class.
   @end{short}
-  The @sym{gtk:icon-view-tooltip-column} function returns the column of the
+  The @fun{gtk:icon-view-tooltip-column} function returns the column of the
   icon view's model which is being used for displaying tooltips on the icon
-  view's rows. The @sym{(setf gtk:icon-view-tooltip-column)} function sets the
-  column.
+  view's rows. The @setf{gtk:icon-view-tooltip-column} function sets the column.
 
   If you only plan to have simple (text-only) tooltips on full items, you can
   use this function to have the @class{gtk:icon-view} widget handle these
@@ -1029,7 +1029,7 @@ lambda (view)    :action
 (export 'icon-view-new-with-model)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_view_get_path_at_pos () -> icon-view-path-at-pos
+;;; gtk_icon_view_get_path_at_pos ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_view_get_path_at_pos" icon-view-path-at-pos)
@@ -1061,7 +1061,7 @@ lambda (view)    :action
 (export 'icon-view-path-at-pos)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_view_get_item_at_pos () -> icon-view-item-at-pos
+;;; gtk_icon_view_get_item_at_pos ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_view_get_item_at_pos" %icon-view-item-at-pos) :boolean
@@ -1270,7 +1270,7 @@ lambda (view path)
 (export 'icon-view-selected-foreach)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_view_get_cell_rect () -> icon-view-cell-rect
+;;; gtk_icon_view_get_cell_rect ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_view_get_cell_rect" %icon-view-cell-rect) :boolean
@@ -1361,7 +1361,7 @@ lambda (view path)
 (export 'icon-view-path-is-selected)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_view_get_selected_items () -> icon-view-selected-items
+;;; gtk_icon_view_get_selected_items ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_view_get_selected_items" icon-view-selected-items)
@@ -1489,7 +1489,7 @@ lambda (view path)
 (export 'icon-view-scroll-to-path)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_view_get_visible_range () -> icon-view-visible-range
+;;; gtk_icon_view_get_visible_range ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_view_get_visible_range" %icon-view-visible-range)
@@ -1577,7 +1577,7 @@ lambda (view path)
 (export 'icon-view-set-tooltip-cell)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_view_get_tooltip_context () -> icon-view-tooltip-context
+;;; gtk_icon_view_get_tooltip_context ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_view_get_tooltip_context" %icon-view-tooltip-context)
@@ -1646,7 +1646,7 @@ lambda (view path)
 (export 'icon-view-tooltip-context)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_view_get_item_row () -> icon-view-item-row
+;;; gtk_icon_view_get_item_row ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_view_get_item_row" icon-view-item-row) :int
@@ -1667,7 +1667,7 @@ lambda (view path)
 (export 'icon-view-item-row)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_view_get_item_column () -> icon-view-item-column
+;;; gtk_icon_view_get_item_column ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_view_get_item_column" icon-view-item-column) :int
@@ -1882,7 +1882,7 @@ lambda (view path)
 (export 'icon-view-get-drag-dest-item)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_view_get_dest_item_at_pos () -> icon-view-dest-item-at-pos
+;;; gtk_icon_view_get_dest_item_at_pos ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_view_get_dest_item_at_pos" %icon-view-dest-item-at-pos)

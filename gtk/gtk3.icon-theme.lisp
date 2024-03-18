@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -294,7 +294,7 @@
   more efficient to use the standard icon theme for the @class{gdk:screen}
   object so that the icon information is shared with other people looking up
   icons.
-  @begin[Example]{dictionary}
+  @begin{examples}
     In the case where the default screen is being used, looking up an icon can
     be as simple as:
     @begin{pre}
@@ -305,7 +305,7 @@
                                          0)))        ; no flags
    ... )
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @begin[Signal Details]{dictionary}
     @subheading{The \"changed\" signal}
       @begin{pre}
@@ -345,13 +345,13 @@ lambda (theme)    :run-last
 (export 'icon-theme-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_theme_get_default () -> icon-theme-default
+;;; gtk_icon_theme_get_default ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_theme_get_default" icon-theme-default)
     (g:object icon-theme)
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{2024-3-12}
   @begin{return}
     A unique @class{gtk:icon-theme} object associated with the default screen.
   @end{return}
@@ -439,8 +439,8 @@ lambda (theme)    :run-last
 (defun icon-theme-search-path (theme)
  #+liber-documentation
  "@version{#2023-3-20}
-  @syntax[]{(gtk:icon-theme-search-path theme) => path}
-  @syntax[]{(setf (gtk:icon-theme-search-path theme) path)}
+  @syntax{(gtk:icon-theme-search-path theme) => path}
+  @syntax{(setf (gtk:icon-theme-search-path theme) path)}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @argument[path]{a list of strings with directories that are searched for icon
     themes}
@@ -462,7 +462,7 @@ lambda (theme)    :run-last
   for the icon name. This is legacy feature, and new icons should be put into
   the fallback icon theme, which is called Hicolor, rather than directly on the
   icon path.
-  @begin[Examples]{dictionary}
+  @begin{examples}
     @begin{pre}
 (gtk:icon-theme-default) => #<GTK-ICON-THEME {1001A1A1A3@}>
 (gtk:icon-theme-search-path *)
@@ -473,7 +473,7 @@ lambda (theme)    :run-last
     \"/usr/local/share/pixmaps\" \"/usr/share/pixmaps\"
     \"/var/lib/snapd/desktop/pixmaps\" \"/var/lib/snapd/desktop/pixmaps\")
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:icon-theme}"
   (cffi:with-foreign-objects ((path 'g:strv-t) (n-elements :int))
     (%icon-theme-search-path theme path n-elements)
@@ -840,7 +840,7 @@ lambda (theme)    :run-last
 
 (defun icon-theme-load-icon (theme name size flags)
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{2024-3-12}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @argument[name]{a string with the name of the icon to lookup}
   @argument[size]{an integer with the desired icon size, the resulting icon may
@@ -857,11 +857,12 @@ lambda (theme)    :run-last
   @fun{gtk:icon-info-load-icon} function.
 
   Note that you probably want to listen for icon theme changes and update the
-  icon. This is usually done by connecting to the \"style-updated\" signal.
-  If for some reason you do not want to update the icon when the icon theme
-  changes, you should consider using the @fun{gdk-pixbuf:pixbuf-copy} function
-  to make a private copy of the pixbuf returned by this function. Otherwise GTK
-  may need to keep the old icon theme loaded, which would be a waste of memory.
+  icon. This is usually done by connecting to the @code{\"style-updated\"}
+  signal. If for some reason you do not want to update the icon when the icon
+  theme changes, you should consider using the @fun{gdk-pixbuf:pixbuf-copy}
+  function to make a private copy of the pixbuf returned by this function.
+  Otherwise GTK may need to keep the old icon theme loaded, which would be a
+  waste of memory.
   @see-class{gtk:icon-theme}
   @see-class{gdk-pixbuf:pixbuf}
   @see-symbol{gtk:icon-lookup-flags}
@@ -985,14 +986,14 @@ lambda (theme)    :run-last
     Gets the list of contexts available within the current hierarchy of icon
     themes.
   @end{short}
-  @begin[Example]{dictionary}
+  @begin{examples}
     @begin{pre}
 (gtk:icon-theme-list-contexts (gtk:icon-theme-default))
 => (\"International\" \"Emotes\" \"Places\" \"stock\" \"FileSystems\"
     \"Devices\" \"Applications\" \"Actions\" \"Categories\" \"Animations\"
     \"MimeTypes\" \"Stock\" \"Status\" \"Emblems\")
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:icon-theme}
   @see-function{gtk:icon-theme-list-icons}"
   (theme (g:object icon-theme)))
@@ -1217,14 +1218,14 @@ lambda (theme)    :run-last
   of this is small emblem icons that can be attached to a larger icon. These
   icons will be given the same base size as the larger icons to which they are
   attached.
-  @begin[Example]{dictionary}
+  @begin{examples}
     @begin{pre}
 (gtk:icon-theme-lookup-icon (gtk:icon-theme-default) \"battery\" 0 0)
 => #.(SB-SYS:INT-SAP #X01D3F840)
 (gtk:icon-info-base-size *)
 => 24
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:icon-info}
   @see-function{gtk:icon-info-base-scale}"
   (info (:pointer (:struct icon-info))))
@@ -1246,14 +1247,14 @@ lambda (theme)    :run-last
   The base scale is a scale for the icon that was specified by the icon theme
   creator. For instance an icon drawn for a high DPI screen with window scale 2
   for a base size of 32 will be 64 pixels tall and have a base scale of 2.
-  @begin[Example]{dictionary}
+  @begin{examples}
     @begin{pre}
 (gtk:icon-theme-lookup-icon (gtk:icon-theme-default) \"battery\" 0 0)
 => #.(SB-SYS:INT-SAP #X01D3F840)
 (gtk:icon-info-base-scale *)
 => 1
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:icon-info}
   @see-function{gtk:icon-info-base-size}"
   (info (:pointer (:struct icon-info))))
@@ -1278,14 +1279,14 @@ lambda (theme)    :run-last
   @fun{gtk:icon-theme-lookup-icon} function, there may be no filename if a
   built-in icon is returned. In this case, you should use the
   @fun{gtk:icon-info-builtin-pixbuf} function.
-  @begin[Example]{dictionary}
+  @begin{examples}
     @begin{pre}
 (gtk:icon-theme-lookup-icon (gtk:icon-theme-default) \"battery\" 0 0)
 => #.(SB-SYS:INT-SAP #X01D3F840)
 (gtk:icon-info-filename *)
 => \"/usr/share/icons/Humanity/devices/24/battery.svg\"
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-symbol{gtk:icon-info}
   @see-function{gtk:icon-info-builtin-pixbuf}
   @see-function{gtk:icon-theme-lookup-icon}"

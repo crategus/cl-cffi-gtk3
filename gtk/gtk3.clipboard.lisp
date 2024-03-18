@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -104,8 +104,9 @@
 (setf (documentation 'clipboard 'type)
  "@version{#2023-3-16}
   @begin{short}
-    The @sym{gtk:clipboard} object represents a clipboard of data shared between
-    different processes or between different widgets in the same process.
+    The @class{gtk:clipboard} object represents a clipboard of data shared
+    between different processes or between different widgets in the same
+    process.
   @end{short}
   Each clipboard is identified by a name encoded as a
   @symbol{gtk:atom-as-string} type. Conversion to and from strings can be done
@@ -152,8 +153,8 @@ lambda (clipboard event)    :run-first
       The signal is emitted when GTK receives an event that indicates that the
       ownership of the selection associated with the clipboard has changed.
       @begin[arg]{table}
-        @entry[clipboard]{The @sym{gtk:clipboard} object on which the signal is
-          emitted.}
+        @entry[clipboard]{The @class{gtk:clipboard} object on which the signal
+          is emitted.}
         @entry[event]{The @class{gdk:event-owner-change} event.}
       @end{table}
   @end{dictionary}
@@ -177,21 +178,17 @@ lambda (clipboard event)    :run-first
 (setf (liber:alias-for-symbol 'clipboard-received-func)
       "Callback"
       (liber:symbol-documentation 'clipboard-received-func)
- "@version{#2023-3-16}
+ "@version{#2024-3-18}
+  @syntax{lambda (clipboard selection)}
+  @argument[clipboard]{a @class{gtk:clipboard} object}
+  @argument[selection]{a @class{gtk:selection-data} instance containing the data
+    that was received. If retrieving the data failed, then the @arg{length}
+    field of the selection data will be negative}
   @begin{short}
     A callback function to be called when the results of the
     @fun{gtk:clipboard-request-contents} function are received, or when the
     request fails.
   @end{short}
-  @begin{pre}
- lambda (clipboard selection)
-  @end{pre}
-  @begin[code]{table}
-    @entry[clipboard]{A @class{gtk:clipboard} object.}
-    @entry[selection]{A @class{gtk:selection-data} instance containing the data
-      that was received. If retrieving the data failed, then the @arg{length}
-      field of the selection data will be negative.}
-  @end{table}
   @see-class{gtk:clipboard}
   @see-class{gtk:selection-data}
   @see-function{gtk:selection-data-length}
@@ -216,20 +213,16 @@ lambda (clipboard event)    :run-first
 (setf (liber:alias-for-symbol 'clipboard-text-received-func)
       "Callback"
       (liber:symbol-documentation 'clipboard-text-received-func)
- "@version{#2023-3-16}
+ "@version{#2024-3-18}
+  @syntax{lambda (clipboard text)}
+  @argument[clipboard]{a @class{gtk:clipboard} object}
+  @argument[text]{a text received, as a UTF-8 encoded string, or @code{nil} if
+    retrieving the data failed}
   @begin{short}
     A callback function to be called when the results of the
     @fun{gtk:clipboard-request-text} function are received, or when the request
     fails.
   @end{short}
-  @begin{pre}
- lambda (clipboard text)
-  @end{pre}
-  @begin[code]{table}
-    @entry[clipboard]{A @class{gtk:clipboard} object.}
-    @entry[text]{The text received, as a UTF-8 encoded string, or @code{nil} if
-      retrieving the data failed.}
-  @end{table}
   @see-class{gtk:clipboard}
   @see-function{gtk:clipboard-request-text}")
 
@@ -252,19 +245,15 @@ lambda (clipboard event)    :run-first
 (setf (liber:alias-for-symbol 'clipboard-image-received-func)
       "Callback"
       (liber:symbol-documentation 'clipboard-image-received-func)
- "@version{#2023-3-16}
+ "@version{#2024-3-18}
+  @syntax{lambda (clipboard pixbuf)}
+  @argument[clipboard]{a @class{gtk:clipboard} object}
+  @argument[pixbuf]{a received @class{gdk-pixbuf:pixbuf} object}
   @begin{short}
     A callback function to be called when the results of the
     @fun{gtk:clipboard-request-image} function are received, or when the
     request fails.
   @end{short}
-  @begin{pre}
- lambda (clipboard pixbuf)
-  @end{pre}
-  @begin[code]{table}
-    @entry[clipboard]{A @class{gtk:clipboard} object.}
-    @entry[pixbuf]{The received @class{gdk-pixbuf:pixbuf} object.}
-  @end{table}
   @see-class{gtk:clipboard}
   @see-class{gdk-pixbuf:pixbuf}
   @see-function{gtk:clipboard-request-image}")
@@ -289,21 +278,17 @@ lambda (clipboard event)    :run-first
 (setf (liber:alias-for-symbol 'clipboard-targets-received-func)
       "Callback"
       (liber:symbol-documentation 'clipboard-targets-received-func)
- "@version{#2023-3-16}
+ "@version{#2024-3-18}
+  @syntax{lambda (clipboard atoms n-atoms)}
+  @argument[clipboard]{a @class{gtk:clipboard} object}
+  @argument[atoms]{a pointer to a foreign C array of @symbol{gdk:atom-as-string}
+    atoms}
+  @argument[n-atoms]{an integer with the length of the atoms array}
   @begin{short}
     A callback function to be called when the results of the
     @fun{gtk:clipboard-request-targets} function are received, or when the
     request fails.
   @end{short}
-  @begin{pre}
-lambda (clipboard atoms n-atoms)
-  @end{pre}
-  @begin[code]{table}
-    @entry[clipboard]{A @class{gtk:clipboard} object.}
-    @entry[atoms]{A pointer to a foreign C array of @symbol{gdk:atom-as-string}
-      atoms.}
-    @entry[n-atoms]{An integer with the length of the atoms array.}
-  @end{table}
   @see-class{gtk:clipboard}
   @see-class{gdk:atom-as-string}
   @see-function{gtk:clipboard-request-targets}")

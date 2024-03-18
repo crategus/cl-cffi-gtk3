@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -306,25 +306,28 @@
 (setf (liber:alias-for-symbol 'orientation)
       "GEnum"
       (liber:symbol-documentation 'orientation)
- "@version{2023-3-6}
-  @begin{short}
-    Represents the orientation of widgets which can be switched between
-    horizontal and vertical orientation on the fly, like the @class{gtk:toolbar}
-    widget.
-  @end{short}
-  @begin{pre}
+ "@version{2024-3-14}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkOrientation\" orientation
   (:export t
    :type-initializer \"gtk_orientation_get_type\")
   (:horizontal 0)
   (:vertical 1))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:horizontal]{The widget is in horizontal orientation.}
-    @entry[:vertical]{The widget is in vertical orientation.}
-  @end{table}
-  @see-class{gtk:orientable}
-  @see-class{gtk:toolbar}")
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:horizontal]{The widget is in horizontal orientation.}
+      @entry[:vertical]{The widget is in vertical orientation.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Represents the orientation of widgets which implements the
+    @class{gtk:orientable} interface and can be switched between horizontal and
+    vertical orientation on the fly.
+  @end{short}
+  @see-class{gtk:orientable}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; enum GtkPackType
@@ -542,9 +545,9 @@
 (setf (liber:alias-for-symbol 'selection-mode)
       "GEnum"
       (liber:symbol-documentation 'selection-mode)
- "@version{2023-3-6}
-  @short{Used to control what selections users are allowed to make.}
-  @begin{pre}
+ "@version{2024-3-14}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkSelectionMode\" selection-mode
   (:export t
    :type-initializer \"gtk_selection_mode_get_type\")
@@ -552,20 +555,24 @@
   (:single 1)
   (:browse 2)
   (:multiple 3))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:none]{No selection is possible.}
-    @entry[:single]{Zero or one element may be selected.}
-    @entry[:browse]{Exactly one element is selected. In some circumstances,
-      such as initially or during a search operation, it is possible for no
-      element to be selected with the @code{:browse} value. What is really
-      enforced is that the user cannot deselect a currently selected element
-      except by selecting another element.}
-    @entry[:multiple]{Any number of elements may be selected. The @kbd{Ctrl}
-      key may be used to enlarge the selection, and the @kbd{Shift} key to
-      select between the focus and the child pointed to. Some widgets may also
-      allow click-drag to select a range of elements.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:none]{No selection is possible.}
+      @entry[:single]{Zero or one element may be selected.}
+      @entry[:browse]{Exactly one element is selected. In some circumstances,
+        such as initially or during a search operation, it is possible for no
+        element to be selected with the @code{:browse} value. What is really
+        enforced is that the user cannot deselect a currently selected element
+        except by selecting another element.}
+      @entry[:multiple]{Any number of elements may be selected. The @kbd{Ctrl}
+        key may be used to enlarge the selection, and the @kbd{Shift} key to
+        select between the focus and the child pointed to. Some widgets may
+        also allow click-drag to select a range of elements.}
+    @end{table}
+  @end{values}
+  @short{Used to control what selections users are allowed to make.}
   @see-class{gtk:flow-box}
   @see-class{gtk:list-box}
   @see-class{gtk:icon-view}

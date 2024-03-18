@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -187,8 +187,8 @@
 (setf (documentation 'print-settings 'type)
  "@version{2023-2-11}
   @begin{short}
-    A @sym{gtk:print-settings} object represents the settings of a print dialog
-    in a system independent way.
+    A @class{gtk:print-settings} object represents the settings of a print
+    dialog in a system independent way.
   @end{short}
   The main use for this object is that once you have printed you can get a
   settings object that represents the settings the user chose, and the next
@@ -663,9 +663,9 @@ lambda (key value)
   @begin{short}
     Accessor of the boolean value of a key in a print setting.
   @end{short}
-  The @sym{gtk:print-settings-bool} function returns the boolean represented
+  The @fun{gtk:print-settings-bool} function returns the boolean represented
   by the value that is associated with @arg{key}. The
-  @sym{(setf gtk:print-settings-bool)} function sets @arg{key} to a boolean
+  @setf{gtk:print-settings-bool} function sets @arg{key} to a boolean
   value.
 
   The string \"true\" represents @em{true}, any other string @em{false}.
@@ -699,9 +699,9 @@ lambda (key value)
   @begin{short}
     Accessor of the double float value of a key in a print setting.
   @end{short}
-  The @sym{gtk:print-settings-double} function gets the double float value of
-  @arg{key}. The @sym{(setf gkt-print-settings-double)} function sets @arg{key}
-  to a double float value.
+  The @fun{gtk:print-settings-double} function gets the double float value of
+  @arg{key}. The @setf{gtk:print-settings-double} function sets @arg{key} to a
+  double float value.
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-double-with-default}"
   (settings (g:object print-settings))
@@ -766,10 +766,10 @@ lambda (key value)
   @begin{short}
     Accessor of the length value of a key in a print setting.
   @end{short}
-  The @sym{gtk:print-settings-length} function returns the length value of
-  @arg{key}, converted to @arg{unit}. The @sym{(setf gtk:print-settings-length)}
+  The @fun{gtk:print-settings-length} function returns the length value of
+  @arg{key}, converted to @arg{unit}. The @setf{gtk:print-settings-length}
   function associates a length in units of @arg{unit} with @arg{key}.
-  @begin[Example]{dictionary}
+  @begin{examples}
     @begin{pre}
 (setq settings (make-instance 'gtk:print-settings))
 => #<gtk:print-SETTINGS {1004A34623@}>
@@ -777,7 +777,7 @@ lambda (key value)
 (gtk:print-settings-length settings \"paper-width\" :mm)
 => 100.0d0
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:print-settings}
   @see-symbol{gtk:unit}"
   (settings (g:object print-settings))
@@ -809,9 +809,9 @@ lambda (key value)
   @begin{short}
     Accessor of the integer value of a key in a print setting.
   @end{short}
-  The @sym{gtk:print-settings-int} function returns the integer value of
-  @arg{key}, or 0. The @sym{(setf gtk:print-settings-int)} function sets
-  @arg{key} to an integer value.
+  The @fun{gtk:print-settings-int} function returns the integer value of
+  @arg{key}, or 0. The @setf{gtk:print-settings-int} function sets @arg{key} to
+  an integer value.
   @see-class{gtk:print-settings}
   @see-class{gtk:print-settings-int-with-default}"
   (settings (g:object print-settings))
@@ -865,9 +865,9 @@ lambda (key value)
   @begin{short}
     Accessor of the printer name of a print setting.
   @end{short}
-  The @sym{gtk:print-settings-printer} function obtains the value of
-  \"printer\". The @sym{(setf gtk:print-settings-printer)} function sets
-  \"printer\" to @arg{printer}.
+  The @fun{gtk:print-settings-printer} function obtains the value of
+  \"printer\". The @setf{gtk:print-settings-printer} function sets \"printer\"
+  to @arg{printer}.
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-set}
   @see-function{gtk:print-settings-get}"
@@ -899,9 +899,9 @@ lambda (key value)
   @begin{short}
     Accessor of the \"orientation\" value of a print setting.
   @end{short}
-  The @sym{gtk:print-settings-orientation} function gets the value of
+  The @fun{gtk:print-settings-orientation} function gets the value of
   \"orientation\", converted to a @symbol{gtk:page-orientation} value. The
-   @sym{(setf gtk:print-settings-orientation)} function sets the value of
+   @setf{gtk:print-settings-orientation} function sets the value of
    \"orientation\".
   @see-class{gtk:print-settings}
   @see-symbol{gtk:page-orientation}
@@ -934,11 +934,11 @@ lambda (key value)
   @begin{short}
     Accessor of the \"paper-format\" of a print setting.
   @end{short}
-  The @sym{gtk:print-settings-paper-size} function gets the value of
+  The @fun{gtk:print-settings-paper-size} function gets the value of
   \"paper-format\", converted to a @class{gtk:paper-size} instance. The
-  @sym{(setf gtk:print-settings-paper-size)} function sets the value of
+  @setf{gtk:print-settings-paper-size} function sets the value of
   \"paper-format\", \"paper-width\", and \"paper-height\".
-  @begin[Example]{dictionary}
+  @begin{examples}
     @begin{pre}
 (setq settings (make-instance 'gtk:print-settings))
 => #<gtk:print-SETTINGS {1001A0F643@}>
@@ -947,7 +947,7 @@ lambda (key value)
 (gtk:print-settings-paper-size settings)
 => #<GTK:PAPER-SIZE {1001A24B63@}>
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:print-settings}
   @see-class{gtk:paper-size}
   @see-function{gtk:print-settings-set}
@@ -981,9 +981,9 @@ lambda (key value)
   @begin{short}
     Accessor of the paper width of a print setting, in units of @arg{unit}.
   @end{short}
-  The @sym{gtk:print-settings-paper-width} function gets the value of
+  The @fun{gtk:print-settings-paper-width} function gets the value of
   \"paper-width\" converted to @arg{unit}. The
-  @sym{(setf gtk:print-settings-paper-width)} function sets the value of
+  @setf{gtk:print-settings-paper-width} function sets the value of
   \"paper-width\".
   @see-class{gtk:print-settings}
   @see-symbol{gtk:unit}
@@ -1019,9 +1019,9 @@ lambda (key value)
   @begin{short}
     Accessor of the paper height of a print setting, in units of @arg{unit}.
   @end{short}
-  The @sym{gtk:print-settings-paper-height} function gets the value of
+  The @fun{gtk:print-settings-paper-height} function gets the value of
   \"paper-height\", converted to @arg{unit}. The
-  @sym{(setf gtk:print-settings-paper-height)} function sets the value of
+  @setf{gtk:print-settings-paper-height} function sets the value of
   \"paper-height\".
   @see-class{gtk:print-settings}
   @see-symbol{gtk:unit}
@@ -1055,9 +1055,9 @@ lambda (key value)
   @begin{short}
     Accessor of \"use-color\" of a print setting.
   @end{short}
-  The @sym{gtk:print-settings-use-color} function gets the value of
-  \"use-color\". The @sym{(setf gtk:print-settings-use-color)} function sets
-  the value of \"use-color\".
+  The @fun{gtk:print-settings-use-color} function gets the value of
+  \"use-color\". The @setf{gtk:print-settings-use-color} function sets the
+  value of \"use-color\".
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-set}
   @see-function{gtk:print-settings-get}"
@@ -1087,9 +1087,8 @@ lambda (key value)
   @begin{short}
     Accessor of \"collate\" of a print setting.
   @end{short}
-  The @sym{gtk:print-settings-collate} function gets the value of \"collate\".
-  The @sym{(setf gtk:print-settings-collate)} function sets the value of
-  \"collate\".
+  The @fun{gtk:print-settings-collate} function gets the value of \"collate\".
+  The @setf{gtk:print-settings-collate} function sets the value of \"collate\".
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-set}
   @see-function{gtk:print-settings-get}"
@@ -1120,9 +1119,8 @@ lambda (key value)
   @begin{short}
     Accessor of \"reverse\" of a print setting.
   @end{short}
-  The @sym{gtk:print-settings-reverse} function gets the value of \"reverse\".
-  The @sym{(setf gtk:print-settings-reverse)} function sets the value of
-  \"reserve\".
+  The @fun{gtk:print-settings-reverse} function gets the value of \"reverse\".
+  The @setf{gtk:print-settings-reverse} function sets the value of \"reserve\".
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-set}
   @see-function{gtk:print-settings-get}"
@@ -1153,9 +1151,9 @@ lambda (key value)
   @begin{short}
     Accessor of \"duplex\" of a print setting.
   @end{short}
-  Whether to print the output in duplex. The @sym{gtk:print-settings-duplex}
-  function gets the value of \"duplex\". The
-  @sym{(setf gtk:print-settings-duplex)} function sets the value of \"duplex\".
+  Whether to print the output in duplex. The @fun{gtk:print-settings-duplex}
+  function gets the value of \"duplex\". The @setf{gtk:print-settings-duplex}
+  function sets the value of \"duplex\".
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-set}
   @see-function{gtk:print-settings-get}"
@@ -1186,9 +1184,8 @@ lambda (key value)
   @begin{short}
     Accessor of \"quality\" of a print setting.
   @end{short}
-  The @sym{gtk:print-settings-quality} function gets the value of \"quality\".
-  The @sym{(setf gtk:print-settings-quality)} function sets the value of
-  \"quality\".
+  The @fun{gtk:print-settings-quality} function gets the value of \"quality\".
+  The @setf{gtk:print-settings-quality} function sets the value of \"quality\".
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-set}
   @see-function{gtk:print-settings-get}"
@@ -1218,8 +1215,8 @@ lambda (key value)
   @begin{short}
     Accessor of \"n-copies\" of a print setting.
   @end{short}
-  The number of copies to print. The @sym{gtk:print-settings-n-copies} function
-  gets the value of \"n-copies\". The @sym{(setf gtk:print-settings-n-copies)}
+  The number of copies to print. The @fun{gtk:print-settings-n-copies} function
+  gets the value of \"n-copies\". The @setf{gtk:print-settings-n-copies}
   function sets the value of \"n-copies\".
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-set}
@@ -1250,9 +1247,9 @@ lambda (key value)
   @begin{short}
     Accessor of \"number-up\" of a print setting.
   @end{short}
-  The number of pages per sheet. The @sym{gtk:print-settings-number-up} gets
-  the value of \"number-up\". The @sym{(setf gtk:print-settings-number-up)}
-  function sets the value of \"number-up\".
+  The number of pages per sheet. The @fun{gtk:print-settings-number-up} gets
+  the value of \"number-up\". The @setf{gtk:print-settings-number-up} function
+  sets the value of \"number-up\".
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-set}
   @see-function{gtk:print-settings-get}"
@@ -1284,9 +1281,9 @@ lambda (key value)
     Accessor of \"number-up-layout\" of a print setting.
   @end{short}
   Layout of page in number-up mode. The
-  @sym{gtk:print-settings-number-up-layout} function gets the value of
-  \"number-up-layout\". The @sym{(setf gtk:print-settings-number-up-layout)}
-  function sets the value of \"number-up-layout\".
+  @fun{gtk:print-settings-number-up-layout} function gets the value of
+  \"number-up-layout\". The @setf{gtk:print-settings-number-up-layout} function
+  sets the value of \"number-up-layout\".
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-set}
   @see-function{gtk:print-settings-get}"
@@ -1317,10 +1314,9 @@ lambda (key value)
   @begin{short}
     Accessor of \"resolution\" of a print setting.
   @end{short}
-  The resolution in dpi. The @sym{gtk:print-settings-resolution} function gets
-  the value of \"resolution\". The @sym{(setf gtk:print-settings-resolution)}
-  function sets the values of \"resolution\", \"resolution-x\" and
-  \"resolution-y\".
+  The resolution in dpi. The @fun{gtk:print-settings-resolution} function gets
+  the value of \"resolution\". The @setf{gtk:print-settings-resolution} function
+  sets the values of \"resolution\", \"resolution-x\" and \"resolution-y\".
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-set-resolution_xy}"
   (settings (g:object print-settings)))
@@ -1401,17 +1397,16 @@ lambda (key value)
  #+liber-documentation
  "@version{2023-2-11}
   @syntax{(gtk:print-settings-printer-lpi settings) => printer-lpi}
-  @syntax{(setf (gtk:print-settings-printer-lip settings) printer-lpi)}
+  @syntax{(setf (gtk:print-settings-printer-lpi settings) printer-lpi)}
   @argument[settings]{a @class{gtk:print-settings} object}
   @argument[lpi]{a number coerced to a double float with the resolution in lpi
     (lines per inch)}
   @begin{short}
-    Accessor of \"printer-lip\" of a print setting.
+    Accessor of \"printer-lpi\" of a print setting.
   @end{short}
-  The resolution in lpi (lines per inch). The @sym{gtk:print-settings} function
-  gets the value of \"print-lpi\". The
-  @sym{(setf gtk:print-settings-printer-lip)} function sets the values of
-  \"printer-lpi\".
+  The resolution in lpi (lines per inch). The @fun{gtk:print-settings} function
+  gets the value of \"print-lpi\". The @setf{gtk:print-settings-printer-lpi}
+  function sets the values of \"printer-lpi\".
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-get}
   @see-function{gtk:print-settings-set}"
@@ -1441,9 +1436,9 @@ lambda (key value)
   @begin{short}
     Accessor of \"scale\" of a print setting.
   @end{short}
-  The scale in percent. The @sym{gtk:print-settings-scale} function gets the
-  value of \"scale\". The @sym{(setf gtk:print-settings-scale)} function sets
-  the values of \"scale\".
+  The scale in percent. The @fun{gtk:print-settings-scale} function gets the
+  value of \"scale\". The @setf{gtk:print-settings-scale} function sets the
+  values of \"scale\".
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-get}
   @see-function{gtk:print-settings-set}"
@@ -1474,8 +1469,8 @@ lambda (key value)
   @begin{short}
     Accessor of \"print-pages\" of a print setting.
   @end{short}
-  Which pages to print. The @sym{gtk:print-settings-print-pages} function gets
-  the value of \"print-pages\". The @sym{(setf gtk:print-settings-print-pages)}
+  Which pages to print. The @fun{gtk:print-settings-print-pages} function gets
+  the value of \"print-pages\". The @setf{gtk:print-settings-print-pages}
   function sets the values of \"print-pages\".
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-get}
@@ -1499,10 +1494,10 @@ lambda (key value)
   @begin{short}
     Accessor of \"page-ranges\" of a print setting.
   @end{short}
-  The @sym{gtk:print-settings-page-ranges} function gets the value of
-  \"page-ranges\". The @sym{(setf gtk:print-settings-page-ranges)} function
-  sets the value of \"page-ranges\".
-  @begin[Example]{dictionary}
+  The @fun{gtk:print-settings-page-ranges} function gets the value of
+  \"page-ranges\". The @setf{gtk:print-settings-page-ranges} function sets the
+  value of \"page-ranges\".
+  @begin{examples}
     @begin{pre}
 (setq settings (gtk:print-settings-new))
 => #<gtk:print-SETTINGS {1001929323@}>
@@ -1511,7 +1506,7 @@ lambda (key value)
 (gtk:print-settings-page-ranges settings)
 => ((1) (15 20) (25))
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-get}
   @see-function{gtk:print-settings-set}"
@@ -1564,9 +1559,9 @@ lambda (key value)
   @begin{short}
     Accessor of \"page-set\" of a print setting.
   @end{short}
-  The set of pages to print. The @sym{gtk:print-settings-page-set} function gets
-  the value of \"page-set\". The @sym{(setf gtk:print-settings-page-set)}
-  function sets the values of \"page-set\".
+  The set of pages to print. The @fun{gtk:print-settings-page-set} function gets
+  the value of \"page-set\". The @setf{gtk:print-settings-page-set} function
+  sets the values of \"page-set\".
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-get}
   @see-function{gtk:print-settings-set}"
@@ -1597,10 +1592,9 @@ lambda (key value)
   @begin{short}
     Accessor of \"default-source\" of a print setting.
   @end{short}
-  The default source. The @sym{gtk:print-settings-default-source} function gets
-  the value of \"default-source\". The
-  @sym{(setf gtk:print-settings-default-source)} function sets the value of
-  \"default-source\".
+  The default source. The @fun{gtk:print-settings-default-source} function gets
+  the value of \"default-source\". The @setf{gtk:print-settings-default-source}
+  function sets the value of \"default-source\".
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-get}
   @see-function{gtk:print-settings-set}"
@@ -1631,9 +1625,9 @@ lambda (key value)
   @begin{short}
     Accessor of \"media-type\" of a print setting.
   @end{short}
-  The @sym{gtk:print-settings-media-type} function gets the value of
-  \"media-type\". The @sym{(setf gtk:print-settings-media-type)} function sets
-  the value of \"media-type\".
+  The @fun{gtk:print-settings-media-type} function gets the value of
+  \"media-type\". The @setf{gtk:print-settings-media-type} function sets the
+  value of \"media-type\".
 
   The set of media types is defined in PWG 5101.1-2002 PWG.
   @see-class{gtk:print-settings}
@@ -1665,9 +1659,8 @@ lambda (key value)
   @begin{short}
     Accessor of \"dither\" of a print setting.
   @end{short}
-  The @sym{gtk:print-settings-dither} function gets the value of \"dither\".
-  The @sym{(setf gtk:print-settings-dither)} function sets the value of
-  \"dither\".
+  The @fun{gtk:print-settings-dither} function gets the value of \"dither\".
+  The @setf{gtk:print-settings-dither} function sets the value of \"dither\".
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-get}
   @see-function{gtk:print-settings-set}"
@@ -1698,9 +1691,9 @@ lambda (key value)
   @begin{short}
     Accessor of \"finishings\" of a print setting.
   @end{short}
-  The @sym{gtk:print-settings-finishings} function gets the value of
-  \"finishings\". The @sym{(setf gtk:print-settings-finishings)} function sets
-  the value of \"finishing\".
+  The @fun{gtk:print-settings-finishings} function gets the value of
+  \"finishings\". The @setf{gtk:print-settings-finishings} function sets the
+  value of \"finishing\".
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-get}
   @see-function{gtk:print-settings-set}"
@@ -1731,9 +1724,9 @@ lambda (key value)
   @begin{short}
     Accessor of \"output-bin\" of a print setting.
   @end{short}
-  The @sym{gtk:print-settings-outpu-bin} function gets the value of
-  \"output-bin\". The @sym{(setf gtk:print-settings-output-bin)} function sets
-  the value of \"output-bin\".
+  The @fun{gtk:print-settings-outpu-bin} function gets the value of
+  \"output-bin\". The @setf{gtk:print-settings-output-bin} function sets the
+  value of \"output-bin\".
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-get}
   @see-function{gtk:print-settings-set}"
@@ -1814,7 +1807,7 @@ lambda (key value)
     Deserialize print settings from an @code{a{sv@}} variant in the format
     produced by the @fun{gtk:print-settings-to-gvariant} function.
   @end{short}
-  @begin[Example]{dictionary}
+  @begin{examples}
     @begin{pre}
  (let* ((variant (g:variant-parse \"a{sv@}\"
                                   \"{'scale': <'100'>,
@@ -1835,7 +1828,7 @@ lambda (key value)
       'reverse': <'false'>, 'collate': <'false'>,
       'output-file-format': <'pdf'>@}\"
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:print-settings}
   @see-type{g:variant}
   @see-function{gtk:print-settings-to-gvariant}"

@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -72,19 +72,19 @@
 (setf (documentation 'print-context 'type)
  "@version{2023-2-11}
   @begin{short}
-    A @sym{gtk:print-context} object encapsulates context information that is
-    required when drawing pages for printing, such as the Cairo context and
+    The @class{gtk:print-context} object encapsulates context information that
+    is required when drawing pages for printing, such as the Cairo context and
     important parameters like page size and resolution.
   @end{short}
   It also lets you easily create a @class{pango:layout} object and
   @class{pango:context} objects that match the font metrics of the Cairo
   surface.
 
-  The @sym{gtk:print-context} object gets passed to the \"begin-print\",
+  The @class{gtk:print-context} object gets passed to the \"begin-print\",
   \"end-print\", \"request-page-setup\" and \"draw-page\" signals on the print
   operation.
-  @begin[Example]{dictionary}
-    Using the @sym{gtk:print-context} object in a \"draw-page\" callback.
+  @begin{examples}
+    Using the @class{gtk:print-context} object in a \"draw-page\" callback.
     @begin{pre}
 (defun draw-page (operation context page-nr)
   (declare (ignore operation page-nr))
@@ -125,7 +125,7 @@
     (cairo-set-source-rgb cr 0 0.0 1.0)
     (cairo-fill cr)))
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:print-operation}")
 
 ;;; ----------------------------------------------------------------------------

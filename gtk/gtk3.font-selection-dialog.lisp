@@ -5,7 +5,7 @@
 ;;; Version 3.6.4. See <http://www.gtk.org>. The API documentation of the
 ;;; Lisp Binding is available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -76,11 +76,11 @@
   To change the text which is shown in the preview area, use the
   @fun{gtk:font-selection-dialog-set-preview-text} function.
 
-  In GTK 3.2, the @sym{gtk:font-selection-dialog} widget has been deprecated in
-  favor of the @class{gtk:font-chooser-dialog} widget.
+  In GTK 3.2, the @class{gtk:font-selection-dialog} widget has been deprecated
+  in favor of the @class{gtk:font-chooser-dialog} widget.
 
   @subheading{GtkFontSelectionDialog as GtkBuildable}
-    The @sym{gtk:font-selection-dialog} implementation of the
+    The @class{gtk:font-selection-dialog} implementation of the
     @class{gtk:buildable} interface exposes the embedded
     @class{gtk:font-selection} as internal child with the name
     \"font_selection\". It also exposes the buttons with the names
@@ -89,7 +89,8 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_font_selection_dialog_new ()
 ;;;
-;;; GtkWidget * gtk_font_selection_dialog_new (const gchar *title);
+;;; GtkWidget *
+;;; gtk_font_selection_dialog_new (const gchar *title)
 ;;;
 ;;; Warning
 ;;;
@@ -108,8 +109,8 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_font_selection_dialog_get_font_name ()
 ;;;
-;;; gchar * gtk_font_selection_dialog_get_font_name
-;;;                                               (GtkFontSelectionDialog *fsd);
+;;; gchar *
+;;; gtk_font_selection_dialog_get_font_name (GtkFontSelectionDialog *fsd)
 ;;;
 ;;; Warning
 ;;;
@@ -136,9 +137,9 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_font_selection_dialog_set_font_name ()
 ;;;
-;;; gboolean gtk_font_selection_dialog_set_font_name
-;;;                                                (GtkFontSelectionDialog *fsd,
-;;;                                                 const gchar *fontname);
+;;; gboolean
+;;; gtk_font_selection_dialog_set_font_name (GtkFontSelectionDialog *fsd,
+;;;                                          const gchar *fontname)
 ;;;
 ;;; Warning
 ;;;
@@ -161,8 +162,8 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_font_selection_dialog_get_preview_text ()
 ;;;
-;;; const gchar * gtk_font_selection_dialog_get_preview_text
-;;;                                               (GtkFontSelectionDialog *fsd);
+;;; const gchar *
+;;; gtk_font_selection_dialog_get_preview_text (GtkFontSelectionDialog *fsd)
 ;;;
 ;;; Warning
 ;;;
@@ -182,9 +183,9 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_font_selection_dialog_set_preview_text ()
 ;;;
-;;; void gtk_font_selection_dialog_set_preview_text
-;;;                                                (GtkFontSelectionDialog *fsd,
-;;;                                                 const gchar *text);
+;;; void
+;;; gtk_font_selection_dialog_set_preview_text (GtkFontSelectionDialog *fsd,
+;;;                                             const gchar *text)
 ;;;
 ;;; Warning
 ;;;
@@ -203,8 +204,8 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_font_selection_dialog_get_cancel_button ()
 ;;;
-;;; GtkWidget * gtk_font_selection_dialog_get_cancel_button
-;;;                                               (GtkFontSelectionDialog *fsd);
+;;; GtkWidget *
+;;; gtk_font_selection_dialog_get_cancel_button (GtkFontSelectionDialog *fsd)
 ;;;
 ;;; Warning
 ;;;
@@ -226,8 +227,8 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_font_selection_dialog_get_ok_button ()
 ;;;
-;;; GtkWidget * gtk_font_selection_dialog_get_ok_button
-;;;                                               (GtkFontSelectionDialog *fsd);
+;;; GtkWidget *
+;;; gtk_font_selection_dialog_get_ok_button (GtkFontSelectionDialog *fsd)
 ;;;
 ;;; Warning
 ;;;
@@ -248,8 +249,8 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_font_selection_dialog_get_font_selection ()
 ;;;
-;;; GtkWidget * gtk_font_selection_dialog_get_font_selection
-;;;                                               (GtkFontSelectionDialog *fsd);
+;;; GtkWidget *
+;;; gtk_font_selection_dialog_get_font_selection (GtkFontSelectionDialog *fsd)
 ;;;
 ;;; Warning
 ;;;

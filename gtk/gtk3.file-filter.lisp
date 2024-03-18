@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -123,8 +123,8 @@
       (liber:symbol-documentation 'file-filter-info)
  "@version{#2023-3-14}
   @begin{short}
-    A @sym{gtk:file-filter-info} structure is used to pass information about
-    the tested file to the @fun{gtk:file-filter-filter} function.
+    The @class{gtk:file-filter-info} structure is used to pass information
+    about the tested file to the @fun{gtk:file-filter-filter} function.
   @end{short}
   @begin{pre}
 (cffi:defcstruct gtk:file-filter
@@ -248,7 +248,7 @@
 (setf (documentation 'file-filter 'type)
  "@version{2023-6-11}
   @begin{short}
-    A @sym{gtk:file-filter} object can be used to restrict the files being
+    The @class{gtk:file-filter} object can be used to restrict the files being
     shown in a @class{gtk:file-chooser} widget.
   @end{short}
   Files can be filtered based on their name with the
@@ -259,22 +259,24 @@
   Filtering by MIME types handles aliasing and subclassing of mime types. E.g.
   a filter for @code{text/plain} also matches a file with MIME type
   @code{application/rtf}, since @code{application/rtf} is a subclass of
-  @code{text/plain}. Note that the @sym{gtk:file-filter} object allows wildcards
-  for the subtype of a MIME type, so you can e.g. filter for @code{image/*}.
+  @code{text/plain}. Note that the @class{gtk:file-filter} object allows
+  wildcards for the subtype of a MIME type, so you can e.g. filter for
+  @code{image/*}.
 
   Normally, filters are used by adding them to a @class{gtk:file-chooser}
   widget, see the @fun{gtk:file-chooser-add-filter} function, but it is also
   possible to manually use a filter on a file with the
   @fun{gtk:file-filter-filter} function.
   @begin[GtkFileFilter as GtkBuildable]{dictionary}
-    The @sym{gtk:file-filter} implementation of the @class{gtk:buildable}
+    The @class{gtk:file-filter} implementation of the @class{gtk:buildable}
     interface supports adding rules using the @code{<mime-types>},
     @code{<patterns>} and @code{<applications>} elements and listing the rules
     within. Specifying a @code{<mime-type>} or @code{<pattern>} is the same as
     calling the @fun{gtk:file-filter-add-mime-type} or
     @fun{gtk:file-filter-add-pattern} functions.
 
-    @b{Example:} A UI definition fragment specifying @sym{gtk:file-filter} rules
+    @b{Example:} A UI definition fragment specifying @class{gtk:file-filter}
+    rules
     @begin{pre}
 <object class=\"GtkFileFilter\">
   <mime-types>
@@ -309,14 +311,14 @@
   you add rules with the @fun{gtk:file-filter-add-mime-type},
   @fun{gtk:file-filter-add-pattern}, or @fun{gtk:file-filter-add-custom}
   functions.
-  @begin[Example]{dictionary}
+  @begin{examples}
     To create a filter that accepts any file, use:
     @begin{pre}
 (let ((filter (gtk:file-filter-new)))
   (gtk:file-filter-add-pattern filter \"*\")
   ... )
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:file-filter}
   @see-function{gtk:file-filter-add-mime-type}
   @see-function{gtk:file-filter-add-pattern}
@@ -327,7 +329,7 @@
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_file_filter_get_name ()
-;;; gtk_file_filter_set_name () -> file-filter-name
+;;; gtk_file_filter_set_name ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf file-filter-name) (name filter)
@@ -348,10 +350,10 @@
   @begin{short}
     Accessor of the human readable name of the file filter.
   @end{short}
-  The @sym{gtk:file-filter-name} function gets the human readable name for the
-  file filter. The @sym{(setf gtk:file-filter-name)} function sets the human
-  readable name. This is the string that will be displayed in the file selector
-  user interface if there is a selectable list of filters.
+  The @fun{gtk:file-filter-name} function gets the human readable name for the
+  file filter. The @setf{gtk:file-filter-name} function sets the human readable
+  name. This is the string that will be displayed in the file selector user
+  interface if there is a selectable list of filters.
   @see-class{gtk:file-filter}"
   (filter (g:object file-filter)))
 
@@ -470,7 +472,7 @@ lambda (info)
   The bitfield needed which is passed in provides information about what sorts
   of information that the filter function needs. This allows GTK to avoid
   retrieving expensive information when it is not needed by the filter.
-  @begin[Example]{dictionary}
+  @begin{examples}
     @begin{pre}
 (defun custom-file-filter (filter-info)
   ;; Select files with upcase characters in the display name
@@ -487,7 +489,7 @@ lambda (info)
   (gtk:file-chooser-add-filter chooser filter-custom)
   ... )
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:file-filter}
   @see-symbol{gtk:file-filter-flags}"
   (%file-filter-add-custom filter

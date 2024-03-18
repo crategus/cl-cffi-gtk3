@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2020 - 2023 Dieter Kaiser
+;;; Copyright (C) 2020 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -150,7 +150,7 @@
       (documentation 'text-attributes 'type)
  "@version{#2021-8-19}
   @begin{short}
-    Using the @sym{gtk:text-attributes} structure directly should rarely be
+    Using the @class{gtk:text-attributes} structure directly should rarely be
     necessary.
   @end{short}
   It is primarily useful with the @fun{gtk:text-iter-attributes} function. As

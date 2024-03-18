@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -94,17 +94,17 @@
 (setf (documentation 'tree-selection 'type)
  "@version{2023-2-19}
   @begin{short}
-    The @sym{gtk:tree-selection} object is a helper object to manage the
+    The @class{gtk:tree-selection} object is a helper object to manage the
     selection for a @class{gtk:tree-view} widget.
   @end{short}
-  The @sym{gtk:tree-selection} object is automatically created when a new
+  The @class{gtk:tree-selection} object is automatically created when a new
   @class{gtk:tree-view} widget is created, and cannot exist independentally of
-  this widget. The primary reason the @sym{gtk:tree-selection} objects exists
+  this widget. The primary reason the @class{gtk:tree-selection} objects exists
   is for cleanliness of code and API. That is, there is no conceptual reason
   all these functions could not be methods on the @class{gtk:tree-view} widget
   instead of a separate function.
 
-  The @sym{gtk:tree-selection} object is gotten from a @class{gtk:tree-view}
+  The @class{gtk:tree-selection} object is gotten from a @class{gtk:tree-view}
   widget by calling the @fun{gtk:tree-view-selection} function. It can be
   manipulated to check the selection status of the tree view, as well as select
   and deselect individual rows. Selection is done completely tree view side. As
@@ -127,7 +127,7 @@ lambda (selection)    :run-first
       rows are selected, and it may occasionally be emitted when nothing has
       happened.
       @begin[code]{table}
-        @entry[selection]{The @sym{gtk:tree-selection} object which received
+        @entry[selection]{The @class{gtk:tree-selection} object which received
         the signal.}
       @end{table}
   @end{dictionary}
@@ -151,19 +151,19 @@ lambda (selection)    :run-first
 (setf (liber:alias-for-function 'tree-selection-mode)
       "Accessor"
       (documentation 'tree-selection-mode 'function)
- "@version{2023-2-19}
-  @syntax[]{(gtk:tree-selection-mode object) => mode}
-  @syntax[]{(setf (gtk:tree-selection-mode object) mode)}
+ "@version{2024-3-12}
+  @syntax{(gtk:tree-selection-mode object) => mode}
+  @syntax{(setf (gtk:tree-selection-mode object) mode)}
   @argument[object]{a @class{gtk:tree-selection} object}
-  @argument[mode]{a value of the @symbol{gtk:selection-mode} enumeration}
+  @argument[mode]{a @symbol{gtk:selection-mode} value}
   @begin{short}
     Accessor of the @slot[gtk:tree-selection]{mode} slot of the
     @class{gtk:tree-selection} class.
   @end{short}
-  The @sym{gtk:tree-selection-mode} function gets the current selection mode of
-  the selection. The @sym{(setf gtk:tree-selection-mode)} function sets the
-  selection mode. If the previous type was @code{:multiple}, then the anchor is
-  kept selected, if it was previously selected.
+  The @fun{gtk:tree-selection-mode} function gets the current selection mode of
+  the selection. The @setf{gtk:tree-selection-mode} function sets the selection
+  mode. If the previous mode was @code{:multiple}, then the anchor is kept
+  selected, if it was previously selected.
   @see-class{gtk:tree-selection}
   @see-symbol{gtk:selection-mode}")
 
@@ -326,18 +326,16 @@ lambda (model path iter)
   (selection (g:object tree-selection)))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_selection_get_tree_view () -> tree-selection-tree-view
+;;; gtk_tree_selection_get_tree_view ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_selection_get_tree_view" tree-selection-tree-view)
     (g:object tree-view)
  #+liber-documentation
- "@version{2023-2-19}
+ "@version{2024-3-12}
   @argument[selection]{a @class{gtk:tree-selection} object}
-  @return{A @class{gtk:tree-view} widget.}
-  @begin{short}
-    Returns the tree view associated with @arg{selection}.
-  @end{short}
+  @return{The @class{gtk:tree-view} widget.}
+  @short{Returns the tree view associated with @arg{selection}.}
   @see-class{gtk:tree-selection}
   @see-class{gtk:tree-view}"
   (selection (g:object tree-selection)))
@@ -345,7 +343,7 @@ lambda (model path iter)
 (export 'tree-selection-tree-view)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_selection_get_selected () -> tree-selection-selected
+;;; gtk_tree_selection_get_selected ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_selection_get_selected" %tree-selection-selected)
@@ -356,7 +354,7 @@ lambda (model path iter)
 
 (defun tree-selection-selected (selection)
  #+liber-documentation
- "@version{#2023-2-19}
+ "@version{2024-3-14}
   @argument[selection]{a @class{gtk:tree-selection} object}
   @begin{return}
     The @class{gtk:tree-iter} iterator of the selected node, or @code{nil}
@@ -364,17 +362,17 @@ lambda (model path iter)
   @end{return}
   @begin{short}
     Returns the iterator to the currently selected node if the selection mode
-    is set to the values @code{:single} or @code{:browse} of the
+    is set to the @code{:single} or @code{:browse} values of the
     @symbol{gtk:selection-mode} enumeration.
   @end{short}
-  This function will not work if you use the selection mode @code{:multiple}.
-  @begin[Note]{dictionary}
+  This function will not work if you use the @code{:multiple} selection mode.
+  @begin{notes}
     As a convenience the C implementation also gets the current model of the
     tree view wiget associated with the selection. Use the
     @fun{gtk:tree-selection-tree-view} and @fun{gtk:tree-view-model} functions
     instead to get the model.
-  @end{dictionary}
-  @begin[Example]{dictionary}
+  @end{notes}
+  @begin{examples}
     @begin{pre}
 (let* ((model (gtk:tree-view-model view))
        (selection (gtk:tree-view-selection view))
@@ -387,7 +385,7 @@ lambda (model path iter)
       ...
   ... )
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:tree-selection}
   @see-class{gtk:tree-iter}
   @see-symbol{gtk:selection-mode}
@@ -455,12 +453,12 @@ lambda (model path iter)
   function, you may want to convert the returned list into a list of
   @class{gtk:tree-row-reference} objects. To do this, you can use the
   @fun{gtk:tree-row-reference-new} function.
-  @begin[Note]{dictionary}
+  @begin{notes}
     As a convenience the C implementation also gets the current model of the
     tree view wiget associated with the selection. Use the
     @fun{gtk:tree-selection-tree-view} and @fun{gtk:tree-view-model} functions
     instead to get the model.
-  @end{dictionary}
+  @end{notes}
   @see-class{gtk:tree-selection}
   @see-class{gtk:tree-path}
   @see-class{gtk:tree-row-reference}
@@ -563,12 +561,10 @@ lambda (model path iter)
 (cffi:defcfun ("gtk_tree_selection_select_iter" tree-selection-select-iter)
     :void
  #+liber-documentation
- "@version{#2023-2-19}
+ "@version{2024-3-14}
   @argument[selection]{a @class{gtk:tree-selection} object}
   @argument[iter]{a @class{gtk:tree-iter} iterator to be selected}
-  @begin{short}
-    Selects the specified iterator.
-  @end{short}
+  @short{Selects the specified iterator.}
   @see-class{gtk:tree-selection}
   @see-class{gtk:tree-iter}
   @see-function{gtk:tree-selection-select-path}

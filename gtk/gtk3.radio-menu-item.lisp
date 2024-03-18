@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -115,7 +115,7 @@
 lambda (radiomenuitem)    :run-first
       @end{pre}
       @begin[code]{table}
-        @entry[radiomenuitem]{The @sym{gtk:radio-menu-item} widget which
+        @entry[radiomenuitem]{The @class{gtk:radio-menu-item} widget which
           received the signal.}
       @end{table}
   @end{dictionary}
@@ -341,7 +341,7 @@ lambda (radiomenuitem)    :run-first
   manangement of the opaque @code{g:slist-t} structure of the
   @fun{gtk:radio-menu-item-get-group} and @fun{gtk:radio-menu-item-set-group}
   functions.
-  @begin[Example]{dictionary}
+  @begin{examples}
   A common way to set up a group of radio menu item instances is:
     @begin{pre}
 (let (item lastitem)
@@ -351,7 +351,7 @@ lambda (radiomenuitem)    :run-first
     (gtk:radio-menu-item-join-group item lastitem)
     (setf lastitem item)))
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:radio-menu-item}"
   (item (g:object radio-menu-item))
   (group (g:object radio-menu-item)))

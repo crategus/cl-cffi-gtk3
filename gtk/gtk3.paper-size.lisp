@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -141,15 +141,15 @@
       (documentation 'paper-size 'type)
  "@version{2023-2-5}
   @begin{short}
-    The @sym{gtk:paper-size} instance handles paper sizes.
+    The @class{gtk:paper-size} instance handles paper sizes.
   @end{short}
-  The @sym{gtk:paper-size} structure is opaque, and has no user visible fields.
-  It uses the standard called \"PWG 5101.1-2002 PWG: Standard for Media
+  The @class{gtk:paper-size} structure is opaque, and has no user visible
+  fields. It uses the standard called \"PWG 5101.1-2002 PWG: Standard for Media
   Standardized Names\" to name the paper sizes and to get the data for the page
-  sizes. In addition to standard paper sizes, the @sym{gtk:paper-size} structure
-  allows to construct custom paper sizes with arbitrary dimensions.
+  sizes. In addition to standard paper sizes, the @class{gtk:paper-size}
+  structure allows to construct custom paper sizes with arbitrary dimensions.
 
-  The @sym{gtk:paper-size} structure stores not only the dimensions (width and
+  The @class{gtk:paper-size} structure stores not only the dimensions (width and
   height) of a paper size and its name, it also provides default print margins.
   @see-class{gtk:page-setup}")
 
@@ -396,7 +396,7 @@
 (export 'paper-size-is-equal)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paper_size_get_paper_sizes () -> paper-size-paper-sizes
+;;; gtk_paper_size_get_paper_sizes ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paper_size_get_paper_sizes" paper-size-paper-sizes)
@@ -417,7 +417,7 @@
 (export 'paper-size-paper-sizes)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paper_size_get_name () -> paper-size-name
+;;; gtk_paper_size_get_name ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paper_size_get_name" paper-size-name) :string
@@ -434,7 +434,7 @@
 (export 'paper-size-name)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paper_size_get_display_name () -> paper-size-display-name
+;;; gtk_paper_size_get_display_name ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paper_size_get_display_name" paper-size-display-name)
@@ -452,7 +452,7 @@
 (export 'paper-size-display-name)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paper_size_get_ppd_name () -> paper-size-ppd-name
+;;; gtk_paper_size_get_ppd_name ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paper_size_get_ppd_name" paper-size-ppd-name) :string
@@ -469,7 +469,7 @@
 (export 'paper-size-ppd-name)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paper_size_get_width () -> paper-size-width
+;;; gtk_paper_size_get_width ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paper_size_get_width" paper-size-width) :double
@@ -491,7 +491,7 @@
 (export 'paper-size-width)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paper_size_get_height () -> paper-size-height
+;;; gtk_paper_size_get_height ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paper_size_get_height" paper-size-height) :double
@@ -576,7 +576,7 @@
 (export 'paper-size-set-size)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paper_size_get_default_top_margin () -> paper-size-default-top-margin
+;;; gtk_paper_size_get_default_top_margin ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paper_size_get_default_top_margin"
@@ -600,7 +600,6 @@
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_paper_size_get_default_bottom_margin ()
-;;; -> paper-size-default-bottom-margin
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paper_size_get_default_bottom_margin"
@@ -624,7 +623,6 @@
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_paper_size_get_default_left_margin ()
-;;; -> paper-size-default-left-margin
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paper_size_get_default_left_margin"
@@ -648,7 +646,6 @@
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_paper_size_get_default_right_margin ()
-;;; -> paper-size-default-right-margin
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paper_size_get_default_right_margin"
@@ -671,7 +668,7 @@
 (export 'paper-size-default-right-margin)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paper_size_get_default () -> paper-size-default
+;;; gtk_paper_size_get_default ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paper_size_get_default" paper-size-default) :string
@@ -684,11 +681,11 @@
     Returns the name of the default paper size, which depends on the current
     locale.
   @end{short}
-  @begin[Example]{dictionary}
+  @begin{examples}
     @begin{pre}
 (gtk:paper-size-default) => \"iso_a4\"
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:paper-size}")
 
 (export 'paper-size-default)
@@ -783,14 +780,14 @@
   @begin{short}
     Serialize a paper size to a @code{a{sv@}} variant instance.
   @end{short}
-  @begin[Example]{dictionary}
+  @begin{examples}
     @begin{pre}
 (gtk:paper-size-to-gvariant (gtk:paper-size-new))
 => #.(SB-SYS:INT-SAP #X00F02070)
 (g:variant-print * nil)
 => \"{'PPDName': <'A4'>, 'DisplayName': <'A4'>, 'Width': <210.0>, 'Height': <297.0>@}\"
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:paper-size}
   @see-type{g:variant}"
   (size (g:boxed paper-size)))

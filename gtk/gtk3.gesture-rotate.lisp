@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2023 Dieter Kaiser
+;;; Copyright (C) 2019 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -69,7 +69,7 @@
 (setf (documentation 'gesture-rotate 'type)
  "@version{#2023-3-6}
   @begin{short}
-    The @sym{gtk:gesture-rotate} object is a @class{gtk:gesture} implementation
+    The @class{gtk:gesture-rotate} object is a @class{gtk:gesture} implementation
     able to recognize 2-finger rotations, whenever the angle between both
     handled sequences changes, the \"angle-changed\" signal is emitted.
   @end{short}
@@ -80,11 +80,11 @@ lambda (gesture angle delta)    :run-first
     @end{pre}
     The signal is emitted when the angle between both tracked points changes.
     @begin[code]{table}
-      @entry[gesture]{The @sym{gtk:gesture-rotate} object which received the
+      @entry[gesture]{The @class{gtk:gesture-rotate} object which received the
         signal.}
-      @entry[angle]{A double float with the current angle in radians.}
-      @entry[delta]{A double float with the difference with the starting angle,
-        in radians.}
+      @entry[angle]{The double float with the current angle in radians.}
+      @entry[delta]{The double float with the difference with the starting
+        angle, in radians.}
     @end{table}
   @end{dictionary}
   @see-constructor{gtk:gesture-rotate-new}

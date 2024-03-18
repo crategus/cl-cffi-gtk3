@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2020 - 2023 Dieter Kaiser
+;;; Copyright (C) 2020 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -101,7 +101,7 @@
   same as other native applications and supporting platform specific features.
 
   The @class{gtk:dialog} functions cannot be used on such objects, but we need
-  a similar API in order to drive them. The @sym{gtk:native-dialog} object is
+  a similar API in order to drive them. The @class{gtk:native-dialog} object is
   an API that allows you to do this. It allows you to set various common
   properties on the dialog, as well as show and hide it and get a \"response\"
   signal when the user finished with the dialog.
@@ -119,7 +119,7 @@ lambda (dialog id)    :run-last
       @fun{gtk:native-dialog-hide} function before the user responds to the
       dialog window this signal will not be emitted.
       @begin[code]{table}
-        @entry[dialog]{The @sym{gtk:native-dialog} widget which received the
+        @entry[dialog]{The @class{gtk:native-dialog} widget which received the
           signal.}
         @entry[id]{An integer with the response ID.}
       @end{table}
@@ -135,7 +135,7 @@ lambda (dialog id)    :run-last
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- native-dialog-modal ----------------------------------------------------
+;;; --- gtk:native-dialog-modal ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "modal" 'native-dialog) t)
@@ -157,17 +157,17 @@ lambda (dialog id)    :run-last
     Accessor of the @slot[gtk:native-dialog]{modal} slot of the
     @class{gtk:native-dialog} class.
   @end{short}
-  The @sym{gtk:native-dialog-modal} function returns whether the dialog window
-  is modal. The @sym{(setf gtk:native-dialog-modal)} function sets a dialog
-  window modal or non-modal. Modal dialog windows prevent interaction with
-  other windows in the same application. To keep modal dialogs on top of main
+  The @fun{gtk:native-dialog-modal} function returns whether the dialog window
+  is modal. The @setf{gtk:native-dialog-modal} function sets a dialog window
+  modal or non-modal. Modal dialog windows prevent interaction with other
+  windows in the same application. To keep modal dialogs on top of main
   application windows, use the @fun{gtk:native-dialog-transient-for} functiom
   to make the dialog window transient for the parent. Most window managers will
   then disallow lowering the dialog window below the parent.
   @see-class{gtk:native-dialog}
   @see-function{gtk:native-dialog-transient-for}")
 
-;;; --- native-dialog-title ----------------------------------------------------
+;;; --- gtk:native-dialog-title ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "title" 'native-dialog) t)
@@ -188,11 +188,11 @@ lambda (dialog id)    :run-last
     Accessor of the @slot[gtk:native-dialog]{title} slot of the
     @class{gtk:native-dialog} class.
   @end{short}
-  The @sym{gtk:native-dialog-title} function gets the title of the dialog
-  window. The @sym{(setf gtk:native-dialog-title)} function sets the title.
+  The @fun{gtk:native-dialog-title} function gets the title of the dialog
+  window. The @setf{gtk:native-dialog-title} function sets the title.
   @see-class{gtk:native-dialog}")
 
-;;; --- native-dialog-transient-for --------------------------------------------
+;;; --- gtk:native-dialog-transient-for ----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "transient-for"
@@ -214,8 +214,8 @@ lambda (dialog id)    :run-last
     Accessor of the @slot[gtk:native-dialog]{transient-for} slot of the
     @class{gtk:native-dialog} class.
   @end{short}
-  The @sym{gtk:native-dialog-transient-for} function fetches the transient
-  parent for the dialog window. The @sym{(setf gtk:native-dialog-transient-for)}
+  The @fun{gtk:native-dialog-transient-for} function fetches the transient
+  parent for the dialog window. The @setf{gtk:native-dialog-transient-for}
   function sets the transient parent.
 
   Dialogs should be set transient for the main application window they were
@@ -226,7 +226,7 @@ lambda (dialog id)    :run-last
   @see-class{gtk:native-dialog}
   @see-class{gtk:window}")
 
-;;; --- native-dialog-visible --------------------------------------------------
+;;; --- gtk:native-dialog-visible ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "visible" 'native-dialog) t)
@@ -335,7 +335,7 @@ lambda (dialog id)    :run-last
 
   After the @fun{gtk:native-dialog-run} function returns, then dialog window
   will be hidden.
-  @begin[Example]{dictionary}
+  @begin{examples}
     Typical usage of this function might be:
     @begin{pre}
 gint result = gtk_native_dialog_run (GTK_NATIVE_DIALOG (dialog));
@@ -350,7 +350,7 @@ switch (result)
   @}
 g_object_unref (dialog);
     @end{pre}
-  @end{dictionary}
+  @end{examples}
 
   Note that even though the recursive main loop gives the effect of a modal
   dialog window, it prevents the user from interacting with other windows in
