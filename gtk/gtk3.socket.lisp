@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -76,14 +76,14 @@
 (setf (documentation 'socket 'type)
  "@version{#2023-2-28}
   @begin{short}
-    Together with the @class{gtk:plug} widget, the @sym{gtk:socket} widget
+    Together with the @class{gtk:plug} widget, the @class{gtk:socket} widget
     provides the ability to embed widgets from one process into another process
     in a fashion that is transparent to the user.
   @end{short}
-  One process creates a @sym{gtk:socket} widget and passes that widget's window
-  ID to the other process, which then creates a @class{gtk:plug} widget with
-  that window ID. Any widgets contained in the @class{gtk:plug} widget then
-  will appear inside the first application's window.
+  One process creates a @class{gtk:socket} widget and passes that widget's
+  window ID to the other process, which then creates a @class{gtk:plug} widget
+  with that window ID. Any widgets contained in the @class{gtk:plug} widget
+  then will appear inside the first application's window.
 
   The socket's window ID is obtained by using the@fun{gtk:socket-id} function.
   Before using this function, the socket must have been realized, and for hence,
@@ -118,14 +118,14 @@ g_print (\"The ID of the sockets window is
   running. To prevent this from happening, you can connect to the
   \"plug-removed\" signal.
 
-  The communication between a @sym{gtk:socket} and a @class{gtk:plug} widget
+  The communication between a @class{gtk:socket} and a @class{gtk:plug} widget
   follows the XEmbed protocol. This protocol has also been implemented in other
   toolkits, e.g. Qt, allowing the same level of integration when embedding a
   Qt widget in GTK or vice versa.
 
-  The @class{gtk:plug} and @sym{gtk:socket} widgets are only available when GTK
-  is compiled for the X11 platform and @code{GDK_WINDOWING_X11} is defined. They
-  can only be used on a @code{GdkX11Display} object.
+  The @class{gtk:plug} and @class{gtk:socket} widgets are only available when
+  GTK is compiled for the X11 platform and @code{GDK_WINDOWING_X11} is defined.
+  They can only be used on a @code{GdkX11Display} object.
   @begin[Signal Details]{dictionary}
     @subheading{The \"plug-added\" signal}
       @begin{pre}
@@ -133,17 +133,17 @@ lambda (socket)    :run-last
       @end{pre}
       The signal is emitted when a client is successfully added to the socket.
       @begin[code]{table}
-        @entry[socket]{The @sym{gtk:socket} widget which received the signal.}
+        @entry[socket]{The @class{gtk:socket} widget which received the signal.}
       @end{table}
     @subheading{The \"plug-removed\" signal}
       @begin{pre}
 lambda (socket)    :run-last
       @end{pre}
       The signal is emitted when a client is removed from the socket. The
-      default action is to destroy the @sym{gtk:socket} widget, so if you want
+      default action is to destroy the @class{gtk:socket} widget, so if you want
       to reuse it you must add a signal handler that returns @em{true}.
       @begin[code]{table}
-        @entry[socket]{The @sym{gtk:socket} widget which received the signal.}
+        @entry[socket]{The @class{gtk:socket} widget which received the signal.}
         @entry[Returns]{@em{True} to stop other handlers from being invoked.}
       @end{table}
   @end{dictionary}
@@ -183,7 +183,7 @@ lambda (socket)    :run-last
   @class{gtk:plug} widget in a @class{gtk:socket} widget, you can either create
   the @class{gtk:plug} widget with the @fun{gtk:plug-new} function, call the
   @fun{gtk:plug-id} function to get the window ID of the plug, and then pass
-  that to the @sym{gtk:socket-add-id} function, or you can call the
+  that to the @fun{gtk:socket-add-id} function, or you can call the
   @fun{gtk:socket-id} function to get the window ID for the socket, and call
   the @fun{gtk:plug-new} function passing in that ID.
 

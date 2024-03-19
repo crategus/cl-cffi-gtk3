@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -83,24 +83,24 @@
 (setf (documentation 'tree-model-sort 'type)
  "@version{#2023-1-23}
   @begin{short}
-    The @sym{gtk:tree-model-sort} object is a model which implements the
+    The @class{gtk:tree-model-sort} object is a model which implements the
     @class{gtk:tree-sortable} interface.
   @end{short}
   It does not hold any data itself, but rather is created with a child model
   and proxies its data. It has identical column types to this child model, and
   the changes in the child are propagated. The primary purpose of this model is
   to provide a way to sort a different model without modifying it. Note that
-  the sort function used by the @sym{gtk:tree-model-sort} object is not
+  the sort function used by the @class{gtk:tree-model-sort} object is not
   guaranteed to be stable.
 
   The use of this is best demonstrated through an example. In the following
   sample code we create two @class{gtk:tree-view} widgets each with a view of
-  the same data. As the model is wrapped here by a @sym{gtk:tree-model-sort}
+  the same data. As the model is wrapped here by a @class{gtk:tree-model-sort}
   object, the two @class{gtk:tree-view} widgets can each sort their view of the
   data without affecting the other. By contrast, if we simply put the same
   model in each widget, then sorting the first would sort the second.
 
-  @b{Example:} Using a @sym{gtk:tree-model-sort} object
+  @b{Example:} Using a @class{gtk:tree-model-sort} object
   @begin{pre}
 (let* (;; Get the child model
        (child-model (gtk:my-model()))
@@ -165,7 +165,7 @@
     Accessor of the @slot[gtk:tree-model-sort]{model} slot of the
     @class{gtk:tree-model-sort} class.
   @end{short}
-  The @sym{gtk:tree-model-sort-model} function returns the model the
+  The @fun{gtk:tree-model-sort-model} function returns the model the
   @class{gtk:tree-model-sort} object is sorting.
   @see-class{gtk:tree-model}
   @see-class{gtk:tree-model-sort}")

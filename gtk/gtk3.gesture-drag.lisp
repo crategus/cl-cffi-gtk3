@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2023 Dieter Kaiser
+;;; Copyright (C) 2019 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -74,7 +74,7 @@
 (setf (documentation 'gesture-drag 'type)
  "@version{#2023-1-21}
   @begin{short}
-    The @sym{gtk:gesture-drag} object is a @class{gtk:gesture} implementation
+    The @class{gtk:gesture-drag} object is a @class{gtk:gesture} implementation
     that recognizes drag operations.
   @end{short}
   The drag operation itself can be tracked throught the \"drag-begin\",
@@ -88,7 +88,7 @@ lambda (gesture start-x start-y)    :run-last
       @end{pre}
       The signal is emitted whenever dragging starts.
       @begin[code]{table}
-        @entry[gesture]{The @sym{gtk:gesture-drag} object which received the
+        @entry[gesture]{The @class{gtk:gesture-drag} object which received the
           signal.}
         @entry[start-x]{A double float with the x coordinate, relative to the
           widget allocation.}
@@ -101,7 +101,7 @@ lambda (gesture offset-x offset-y)    :run-last
       @end{pre}
       The signal is emitted whenever the dragging is finished.
       @begin[code]{table}
-        @entry[gesture]{The @sym{gtk:gesture-drag} object which received the
+        @entry[gesture]{The @class{gtk:gesture-drag} object which received the
           signal.}
         @entry[offset-x]{A double float with the x offset, relative to the
           start point.}
@@ -114,7 +114,7 @@ lambda (gesture offset-x offset-y)    :run-last
       @end{pre}
       The signal is emitted whenever the dragging point moves.
       @begin[code]{table}
-        @entry[gesture]{The @sym{gtk:gesture-drag} object which received the
+        @entry[gesture]{The @class{gtk:gesture-drag} object which received the
           signal.}
         @entry[offset-x]{A double float with the x offset, relative to the
           start point.}
@@ -143,7 +143,7 @@ lambda (gesture offset-x offset-y)    :run-last
 (export 'gesture-drag-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_gesture_drag_get_start_point () -> gesture-drag-start-point
+;;; gtk_gesture_drag_get_start_point ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_gesture_drag_get_start_point" %gesture-drag-start-point)
@@ -174,7 +174,7 @@ lambda (gesture offset-x offset-y)    :run-last
 (export 'gesture-drag-start-point)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_gesture_drag_get_offset () -> gesture-drag-offset
+;;; gtk_gesture_drag_get_offset ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_gesture_drag_get_offset" %gesture-drag-offset) :boolean

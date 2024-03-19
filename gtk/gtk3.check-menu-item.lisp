@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -106,7 +106,7 @@
 (setf (documentation 'check-menu-item 'type)
  "@version{2023-2-27}
   @begin{short}
-    A @sym{gtk:check-menu-item} widget is a menu item that maintains the state
+    A @class{gtk:check-menu-item} widget is a menu item that maintains the state
     of a boolean value in addition to a @class{gtk:menu-item} usual role in
     activating application code.
   @end{short}
@@ -120,8 +120,8 @@ menuitem
 ├── check.left
 ╰── <child>
     @end{pre}
-    The @sym{gtk:check-menu-item} implementation has a main CSS node with name
-    @code{menuitem}, and a subnode with name @code{check}, which gets the
+    The @class{gtk:check-menu-item} implementation has a main CSS node with
+    name @code{menuitem}, and a subnode with name @code{check}, which gets the
     @code{.left} or @code{.right} style class.
   @end{dictionary}
   @begin[Style Property Details]{dictionary}
@@ -164,7 +164,7 @@ lambda (item)    :run-first
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- check-menu-item-active -------------------------------------------------
+;;; --- gtk:check-menu-item-active ---------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "active" 'check-menu-item) t)
@@ -186,12 +186,12 @@ lambda (item)    :run-first
     Accessor of the @slot[gtk:check-menu-item]{active} slot of the
     @class{gtk:check-menu-item} class.
   @end{short}
-  The @sym{gtk:check-menu-item-active} returns whether the check menu item is
-  active. The @sym{(setf gtk:check-menu-item-active)} sets the active state of
-  the menu item's check box.
+  The @fun{gtk:check-menu-item-active} returns whether the check menu item is
+  active. The @setf{gtk:check-menu-item-active} function sets the active state
+  of the menu item's check box.
   @see-class{gtk:check-menu-item}")
 
-;;; --- check-menu-item-draw-as-radio ------------------------------------------
+;;; --- gtk:check-menu-item-draw-as-radio --------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "draw-as-radio"
@@ -214,14 +214,14 @@ lambda (item)    :run-first
     Accessor of the @slot[gtk:check-menu-item]{draw-as-radio} slot of the
     @class{gtk:check-menu-item} class.
   @end{short}
-  The @sym{gtk:check-menu-item-draw-as-radio} function returns whether
+  The @fun{gtk:check-menu-item-draw-as-radio} function returns whether
   @arg{object} looks like a @class{gtk:radio-menu-item} widget. The
-  @sym{(setf gtk:check-menu-item-draw-as-radio)} function sets whether
-  @arg{object} is drawn like a @class{gtk:radio-menu-item} widget.
+  @setf{gtk:check-menu-item-draw-as-radio} function sets whether @arg{object}
+  is drawn like a @class{gtk:radio-menu-item} widget.
   @see-class{gtk:check-menu-item}
   @see-class{gtk:radio-menu-item}")
 
-;;; --- check-menu-item-inconsistent -------------------------------------------
+;;; --- gtk:check-menu-item-inconsistent ---------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "inconsistent"
@@ -250,7 +250,7 @@ lambda (item)    :run-first
 
   This function turns on \"in between\" display. Normally you would turn off the
   inconsistent state again if the user explicitly selects a setting. This has to
-  be done manually, the @sym{gtk:check-menu-item-inconsistent} function only
+  be done manually, the @fun{gtk:check-menu-item-inconsistent} function only
   affects visual appearance, it does not affect the semantics of the widget.
   @see-class{gtk:check-menu-item}")
 

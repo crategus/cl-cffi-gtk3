@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2013 - 2023 Dieter Kaiser
+;;; Copyright (C) 2013 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -103,16 +103,16 @@
 (setf (documentation 'app-chooser-button 'type)
  "@version{#2023-2-14}
   @begin{short}
-    The @sym{gtk:app-chooser-button} widget is a widget that lets the user
+    The @class{gtk:app-chooser-button} widget is a widget that lets the user
     select an application.
   @end{short}
   It implements the @class{gtk:app-chooser} interface.
 
-  Initially, a @sym{gtk:app-chooser-button} widget selects the first application
+  Initially, a @class{gtk:app-chooser-button} widget selects the first application
   in its list, which will either be the most recently used application or, if
   the @code{show-default-item} property is @em{true}, the default application.
 
-  The list of applications shown in a @sym{gtk:app-chooser-button} widget
+  The list of applications shown in a @class{gtk:app-chooser-button} widget
   includes the recommended applications for the given content type. When the
   @code{show-default-item} property is set, the default application is also
   included. To let the user chooser other applications, you can set the
@@ -133,7 +133,7 @@ lambda (widget name)    :has-details
       @fun{gtk:app-chooser-button-append-custom-item} function, is activated
       from the dropdown menu.
       @begin[code]{table}
-        @entry[widget]{The @sym{gtk:app-chooser-button} widget which received
+        @entry[widget]{The @class{gtk:app-chooser-button} widget which received
           the signal.}
         @entry[name]{A string with the name of the activated item.}
       @end{table}
@@ -150,7 +150,7 @@ lambda (widget name)    :has-details
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- app-chooser-button-heading ---------------------------------------------
+;;; --- gtk:app-chooser-button-heading -----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "heading" 'app-chooser-button) t)
@@ -172,13 +172,13 @@ lambda (widget name)    :has-details
     Accessor of the @slot[gtk:app-chooser-button]{heading} slot of the
     @class{gtk:app-chooser-button} class.
   @end{short}
-  The @sym{gtk:app-chooser-button-heading} function returns the text to display
-  at the top of the dialog. The @sym{(setf gtk:app-chooser-button-heading)}
-  function sets the text to display at the top of the dialog. If the heading is
-  not set, the dialog displays a default text.
+  The @fun{gtk:app-chooser-button-heading} function returns the text to display
+  at the top of the dialog. The @setf{gtk:app-chooser-button-heading} function
+  sets the text to display at the top of the dialog. If the heading is not set,
+  the dialog displays a default text.
   @see-class{gtk:app-chooser-button}")
 
-;;; --- app-chooser-button-show-default-item -----------------------------------
+;;; --- gtk:app-chooser-button-show-default-item -------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "show-default-item"
@@ -203,14 +203,14 @@ lambda (widget name)    :has-details
     Accessor of the @slot[gtk:app-chooser-button]{show-default-item} slot of
     the @class{gtk:app-chooser-button} class.
   @end{short}
-  The @sym{gtk:app-chooser-button-show-default-item} function returns whether
+  The @fun{gtk:app-chooser-button-show-default-item} function returns whether
   the dropdown menu of the button should show the default application. The
-  @sym{(setf gtk:app-chooser-button-show-default-item)} function sets whether
-  the dropdown menu of the button should show the default application for the
-  given content type at top.
+  @setf{gtk:app-chooser-button-show-default-item} function sets whether the
+  dropdown menu of the button should show the default application for the given
+  content type at top.
   @see-class{gtk:app-chooser-button}")
 
-;;; --- app-chooser-button-show-dialog-item ------------------------------------
+;;; --- gtk:app-chooser-button-show-dialog-item --------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "show-dialog-item"
@@ -218,7 +218,7 @@ lambda (widget name)    :has-details
  "The @code{show-dialog-item} property of type @code{:boolean}
   (Read / Write / Construct) @br{}
   Whether the dropdown menu should show an item that triggers a
-  @sym{gtk:app-chooser-dialog} widget when clicked. @br{}
+  @class{gtk:app-chooser-dialog} widget when clicked. @br{}
   Default value: @em{false}")
 
 #+liber-documentation
@@ -235,11 +235,10 @@ lambda (widget name)    :has-details
     Accessor of the @slot[gtk:app-chooser-button]{show-dialog-item} slot of
     the @class{gtk:app-chooser-button} class.
   @end{short}
-  The @sym{gtk:app-chooser-button-show-dialog-item} function returns whether
+  The @fun{gtk:app-chooser-button-show-dialog-item} function returns whether
   the dropdown menu of the button should show an entry to trigger a
   @class{gtk:app-chooser-dialog} widget. The
-  @sym{(setf gtk:app-chooser-button-show-dialog-item)} function sets the
-  property.
+  @setf{gtk:app-chooser-button-show-dialog-item} function sets the property.
   @see-class{gtk:app-chooser-button}
   @see-class{gtk:app-chooser-dialog}")
 

@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -226,7 +226,7 @@
 (setf (documentation 'recent-chooser 'type)
  "@version{#2023-3-24}
   @begin{short}
-    The @sym{gtk:recent-chooser} interface is an interface that can be
+    The @class{gtk:recent-chooser} interface is an interface that can be
     implemented by widgets displaying the list of recently used files.
   @end{short}
   In GTK, the main objects that implement this interface are the
@@ -241,8 +241,8 @@ lambda (chooser)    :run-last
       recent chooser. This can happen by double-clicking on an item in the
       recently used resources list, or by pressing the @kbd{Enter} key.
       @begin[code]{table}
-        @entry[chooser]{The @sym{gtk:recent-chooser} object which received the
-          signal.}
+        @entry[chooser]{The @class{gtk:recent-chooser} object which received
+          the signal.}
       @end{table}
     @subheading{The \"selection-changed\" signal}
       @begin{pre}
@@ -253,8 +253,8 @@ lambda (chooser)    :run-last
       selection with the mouse or the keyboard, or when explicitely calling
       functions to change the selection.
       @begin[code]{table}
-        @entry[chooser]{The @sym{gtk:recent-chooser} object which received the
-          signal.}
+        @entry[chooser]{The @class{gtk:recent-chooser} object which received
+          the signal.}
       @end{table}
   @end{dictionary}
   @see-slot{gtk:recent-chooser-filter}
@@ -275,7 +275,7 @@ lambda (chooser)    :run-last
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- recent-chooser-filter --------------------------------------------------
+;;; --- gtk:recent-chooser-filter ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "filter" 'recent-chooser) t)
@@ -296,15 +296,14 @@ lambda (chooser)    :run-last
     Accessor of the @slot[gtk:recent-chosser]{filter} slot of the
     @class{gtk:recent-chooser} class.
   @end{short}
-  The @sym{gtk:recent-chooser-filter} function gets the
+  The @fun{gtk:recent-chooser-filter} function gets the
   @class{gtk:recent-filter} object currently used by @arg{chooser} to affect
   the display of the recently used resources. The
-  @sym{(setf gtk:recent-chooser-filter object) filter)} function sets the
-  filter.
+  @setf{gtk:recent-chooser-filter object) filter} function sets the filter.
   @see-class{gtk:recent-chooser}
   @see-class{gtk:recent-filter}")
 
-;;; --- recent-chooser-limit ---------------------------------------------------
+;;; --- gtk:recent-chooser-limit -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "limit" 'recent-chooser) t)
@@ -312,7 +311,7 @@ lambda (chooser)    :run-last
   The maximum number of recently used resources to be displayed, or -1 to
   display all items. By default, the @symbol{gtk:recent-files-limit} setting
   is respected. You can override that limit on a particular instance of the
-  @sym{gtk:recent-chooser} widget by setting this property. @br{}
+  @class{gtk:recent-chooser} widget by setting this property. @br{}
   Allowed values: >= -1 @br{}
   Default value: -1")
 
@@ -329,22 +328,21 @@ lambda (chooser)    :run-last
     Accessor of the @slot[gtk:recent-chooser]{limit} slot of the
     @class{gtk:recent-chooser} class.
   @end{short}
-  The @sym{gtk:recent-chooser-limit} function gets the number of items returned
+  The @fun{gtk:recent-chooser-limit} function gets the number of items returned
   by the @fun{gtk:recent-chooser-items} and @fun{gtk:recent-chooser-uris}
-  functions. The @sym{(setf gtk:recent-chooser-limit)} function sets the number
-  of items that should be returned by the @fun{gtk:recent-chooser-items} and
+  functions. The @setf{gtk:recent-chooser-limit} function sets the number of
+  items that should be returned by the @fun{gtk:recent-chooser-items} and
   @fun{gtk:recent-chooser-uris} functions.
   @see-class{gtk:recent-chooser}
   @see-function{gtk:recent-chooser-items}
   @see-function{gtk:recent-chooser-uris}")
 
-;;; --- recent-chooser-local-only ----------------------------------------------
+;;; --- gtk:recent-chooser-local-only ------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "local-only" 'recent-chooser) t)
  "The @code{local-only} property of type @code{:boolean} (Read / Write) @br{}
-  Whether this @sym{gtk:recent-chooser} should display only local (file:)
-  resources. @br{}
+  Whether recent chooser should display only local (file:) resources. @br{}
   Default value: @em{true}")
 
 #+liber-documentation
@@ -360,9 +358,9 @@ lambda (chooser)    :run-last
     Accessor of the @slot[gtk:recent-chooser]{local-only} slot of the
     @class{gtk:recent-chooser} class.
   @end{short}
-  The @sym{gtk:recent-chooser-local-only} function gets whether only local
+  The @fun{gtk:recent-chooser-local-only} function gets whether only local
   resources should be shown in the recently used resources selector. The
-  @sym{(setf gtk:recent-chooser-local-only)} function sets whether only local
+  @setf{gtk:recent-chooser-local-only} function sets whether only local
   resources, that is resources using the file:// URI scheme, should be shown in
   the recently used resources selector.
 
@@ -371,7 +369,7 @@ lambda (chooser)    :run-last
   file system.
   @see-class{gtk:recent-chooser}")
 
-;;; --- recent-chooser-recent-manager ------------------------------------------
+;;; --- gtk:recent-chooser-recent-manager --------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "recent-manager"
@@ -399,7 +397,7 @@ lambda (chooser)    :run-last
   @see-class{gtk:recent-chooser}
   @see-class{gtk:recent-manager}")
 
-;;; --- recent-chooser-select-multiple -----------------------------------------
+;;; --- gtk:recent-chooser-select-multiple -------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "select-multiple"
@@ -423,13 +421,13 @@ lambda (chooser)    :run-last
     Accessor of the @slot[gtk:recent-chooser]{select-multiple} slot of the
     @class{gtk:recent-chooser} class.
   @end{short}
-  The @sym{gtk:recent-chooser-select-multiple} function gets whether
+  The @fun{gtk:recent-chooser-select-multiple} function gets whether
   @arg{chooser} can select multiple items. The
-  @sym{(setf gtk:recent-choose-select-multiple)} function sets whether
-  @arg{chooser} can select multiple items.
+  @setf{gtk:recent-choose-select-multiple} function sets whether @arg{chooser}
+  can select multiple items.
   @see-class{gtk:recent-chooser}")
 
-;;; --- recent-chooser-show-icons ------------------------------------------
+;;; --- gtk:recent-chooser-show-icons ------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "show-icons" 'recent-chooser) t)
@@ -450,13 +448,13 @@ lambda (chooser)    :run-last
     Accessor of the slot @slot[gtk:recent-chooser]{show-icons} of the
     @class{gtk:recent-chooser} class.
   @end{short}
-  The @sym{gtk:recent-chooser-show-icons} function retrieves whether
+  The @fun{gtk:recent-chooser-show-icons} function retrieves whether
   @arg{chooser} should show an icon near the resource. The
-  @sym{(setf gtk:recent-chooser-show-icons)} function sets whether
-  @arg{chooser} should show an icon near the resource when displaying it.
+  @setf{gtk:recent-chooser-show-icons} function sets whether @arg{chooser}
+  should show an icon near the resource when displaying it.
   @see-class{gtk:recent-chooser}")
 
-;;; --- recent-chooser-show-not-found ------------------------------------------
+;;; --- gtk:recent-chooser-show-not-found --------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "show-not-found"
@@ -483,14 +481,14 @@ lambda (chooser)    :run-last
     Accessor of the @slot[gtk:recent-chooser]{show-not-found} slot of the
     @class{gtk:recent-chooser} class.
   @end{short}
-  The @sym{gtk:recent-chooser-show-not-found} function retrieves whether
+  The @fun{gtk:recent-chooser-show-not-found} function retrieves whether
   @arg{chooser} should show the recently used resources that were not found.
-  The @sym{(setf gtk:recent-chooser-show-not-found)} function sets whether
+  The @setf{gtk:recent-chooser-show-not-found} function sets whether
   @arg{chooser} should display the recently used resources that it did not
   find. This only applies to local resources.
   @see-class{gtk:recent-chooser}")
 
-;;; --- recent-chooser-show-private --------------------------------------------
+;;; --- gtk:recent-chooser-show-private ----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "show-private"
@@ -512,13 +510,13 @@ lambda (chooser)    :run-last
     Accessor of the @slot[gtk:recent-chooser]{show-private} slot of the
     @class{gtk:recent-chooser} class.
   @end{short}
-  The @sym{gtk:recent-chooser-show-private} function returns whether
+  The @fun{gtk:recent-chooser-show-private} function returns whether
   @arg{chooser} should display recently used resources registered as private.
-  The @sym{(setf gtk:recent-chooser-show-private)} function sets whether to
-  show recently used resources marked registered as private.
+  The @setf{gtk:recent-chooser-show-private} function sets whether to show
+  recently used resources marked registered as private.
   @see-class{gtk:recent-chooser}")
 
-;;; --- recent-chooser-show-tips -----------------------------------------------
+;;; --- gtk:recent-chooser-show-tips -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "show-tips" 'recent-chooser) t)
@@ -540,14 +538,14 @@ lambda (chooser)    :run-last
     Accessor of the @slot[gtk:recent-chooser]{show-tips} slot of the
     @class{gtk:recent-chooser} class.
   @end{short}
-  The @sym{gtk:recent-chooser-show-tips} function gets whether @arg{chooser}
+  The @fun{gtk:recent-chooser-show-tips} function gets whether @arg{chooser}
   should display tooltips containing the full path of a recently user resource.
-  The @sym{(setf gtk:recent-chooser-show-tips)} function sets whether to show a
+  The @setf{gtk:recent-chooser-show-tips} function sets whether to show a
   tooltips containing the full path of each recently used resource in a
   @class{gtk:recent-chooser} widget.
   @see-class{gtk:recent-chooser}")
 
-;;; --- recent-chooser-sort-type -----------------------------------------------
+;;; --- gtk:recent-chooser-sort-type -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "sort-type" 'recent-chooser) t)
@@ -570,10 +568,9 @@ lambda (chooser)    :run-last
     Accessor of the @slot[gtk:recent-chooser]{sort-type} slot of the
     @class{gtk:recent-chooser} class.
   @end{short}
-  The @sym{gtk:recent-chooser-sort-type} function gets the sort order that the
-  chooser should use. The @sym{(setf gtk:recent-chooser-sort-type)} function
-  changes the sorting order of the recently used resources list displayed by
-  chooser.
+  The @fun{gtk:recent-chooser-sort-type} function gets the sort order that the
+  chooser should use. The @setf{gtk:recent-chooser-sort-type} function changes
+  the sorting order of the recently used resources list displayed by chooser.
   @see-class{gtk:recent-chooser}
   @see-symbol{gtk:recent-sort-type}")
 
@@ -650,7 +647,7 @@ lambda (item1 item2)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_recent_chooser_get_current_uri ()
-;;; gtk_recent_chooser_set_current_uri () -> recent-chooser-current-uri
+;;; gtk_recent_chooser_set_current_uri ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_recent_chooser_set_current_uri"
@@ -674,16 +671,16 @@ lambda (item1 item2)
   @begin{short}
     Accessor of the URI currently selected by @arg{chooser}.
   @end{short}
-  The @sym{gtk:recent-chooser-current-uri} function gets the URI currently
-  selected by @arg{chooser}. The @sym{(setf gtk:recent-chooser-current-uri)}
-  function sets @arg{uri} as the current URI for @arg{chooser}.
+  The @fun{gtk:recent-chooser-current-uri} function gets the URI currently
+  selected by @arg{chooser}. The @setf{gtk:recent-chooser-current-uri} function
+  sets @arg{uri} as the current URI for @arg{chooser}.
   @see-class{gtk:recent-chooser}"
   (chooser (g:object recent-chooser)))
 
 (export 'recent-chooser-current-uri)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_recent_chooser_get_current_item () -> recent-chooser-current-item
+;;; gtk_recent_chooser_get_current_item ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_recent_chooser_get_current_item"
@@ -807,7 +804,7 @@ lambda (item1 item2)
 (export 'recent-chooser-items)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_recent_chooser_get_uris () -> recent-chooser-uris
+;;; gtk_recent_chooser_get_uris ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_recent_chooser_get_uris" %recent-chooser-uris) g:strv-t

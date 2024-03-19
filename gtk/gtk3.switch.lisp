@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -96,7 +96,7 @@
 (setf (documentation 'switch 'type)
  "@version{#2023-3-27}
   @begin{short}
-    The @sym{gtk:switch} widget is a widget that has two states: on or off.
+    The @class{gtk:switch} widget is a widget that has two states: on or off.
   @end{short}
 
   @image[switch]{Figure: GtkSwitch}
@@ -108,7 +108,7 @@
  switch
  ╰── slider
     @end{pre}
-    The @sym{gtk:switch} implementation has two CSS nodes, the main node with
+    The @class{gtk:switch} implementation has two CSS nodes, the main node with
     the name @code{switch} and a subnode named @code{slider}. Neither of them
     is using any style classes.
   @end{dictionary}
@@ -137,7 +137,7 @@
   @begin[Signal Details]{dictionary}
     @subheading{The \"activate\" signal}
       @begin{pre}
- lambda (widget)    :action
+lambda (widget)    :action
       @end{pre}
       The signal on the switch is an action signal and emitting it causes the
       switch to animate. Applications should never connect to this signal, but
@@ -147,7 +147,7 @@
       @end{table}
     @subheading{The \"state-set\" signal}
       @begin{pre}
- lambda (widget state)    :run-last
+lambda (widget state)    :run-last
       @end{pre}
       The signal on the switch is emitted to change the underlying state. It is
       emitted when the user changes the switch position. The default handler
@@ -163,7 +163,7 @@
       switch, while the @code{active} property is represented by the position
       of the switch.
       @begin[code]{table}
-        @entry[widget]{The @sym{gtk:switch} widget which received the signal.}
+        @entry[widget]{The @class{gtk:switch} widget which received the signal.}
         @entry[state]{A boolean with the state of the switch.}
         @entry[Returns]{@em{True} to stop the signal emission.}
       @end{table}
@@ -175,7 +175,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- switch-active ----------------------------------------------------------
+;;; --- gtk:switch-active ------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "active" 'switch) t)
@@ -197,12 +197,12 @@
     Accessor of the @slot[gtk:switch]{active} slot of the @class{gtk:switch}
     class.
   @end{short}
-  The @sym{gtk:switch-active} function gets whether the switch is in its \"on\"
-  or \"off\" state. The @sym{(setf gtk:switch-active)} function changes the
-  state of the switch to the desired one.
+  The @fun{gtk:switch-active} function gets whether the switch is in its \"on\"
+  or \"off\" state. The @setf{gtk:switch-active} function changes the state of
+  the switch to the desired one.
   @see-class{gtk:switch}")
 
-;;; --- switch-state -----------------------------------------------------------
+;;; --- gtk:switch-state -------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "state" 'switch) t)
@@ -224,9 +224,8 @@
     Accessor of the @slot[gtk:switch]{state} slot of the @class{gtk:switch}
     class.
   @end{short}
-  The @sym{gtk:switch-active} function gets the underlying state of the switch.
-  The @sym{(setf gtk:switch-active)} function sets the underlying state of the
-  switch.
+  The @fun{gtk:switch-active} function gets the underlying state of the switch.
+  The @setf{gtk:switch-active} function sets the underlying state of the switch.
 
   Normally, this is the same as the @slot[gtk:switch]{active} property, unless
   the switch is set up for delayed state changes. This function is typically

@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -82,7 +82,7 @@
 (setf (documentation 'separator-tool-item 'type)
  "@version{#2023-3-24}
   @begin{short}
-    A @sym{gtk:separator-tool-item} widget is a @class{gtk:tool-item} widget
+    The @class{gtk:separator-tool-item} widget is a @class{gtk:tool-item} widget
     that separates groups of other @class{gtk:tool-item} widgets.
   @end{short}
   Depending on the theme, a separator tool item will often look like a vertical
@@ -93,7 +93,7 @@
   will act as a \"spring\" that forces other items to the ends of the toolbar.
 
   Use the @fun{gtk:separator-tool-item-new} function to create a new
-  @sym{gtk:separator-tool-item} widget.
+  @class{gtk:separator-tool-item} widget.
   @see-constructor{gtk:separator-tool-item-new}
   @see-slot{gtk:separator-tool-item-draw}
   @see-class{gtk:tool-item}")
@@ -121,10 +121,10 @@
     Accessor of the @slot[gtk:separator-tool-item]{draw} slot of the
     @class{gtk:separator-tool-item} class.
   @end{short}
-  The @sym{gtk:separator-tool-item-draw} function returns whether the separator
+  The @fun{gtk:separator-tool-item-draw} function returns whether the separator
   tool item is drawn as a line, or just blank. The
-  @sym{(setf gtk:separator-tool-item-draw)} function returns whether item is
-  drawn as a vertical line, or just blank.
+  @setf{gtk:separator-tool-item-draw} function returns whether item is drawn as
+  a vertical line, or just blank.
 
   Setting this to @em{false} along with the @fun{gtk:tool-item-expand} function
   is useful to create an item that forces following items to the end of the

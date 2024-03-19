@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2013 - 2023 Dieter Kaiser
+;;; Copyright (C) 2013 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -118,7 +118,7 @@
 (setf (documentation 'print-job 'type)
  "@version{#2023-3-21}
   @begin{short}
-    A @sym{gtk:print-job} object represents a job that is sent to a printer.
+    The @class{gtk:print-job} object represents a job that is sent to a printer.
   @end{short}
   You only need to deal directly with print jobs if you use the non-portable
   @class{gtk:print-unix-dialog} API.
@@ -126,7 +126,7 @@
   Use the @fun{gtk:print-job-surface} function to obtain the Cairo surface onto
   which the pages must be drawn. Use the @fun{gtk:print-job-send} function to
   send the finished job to the printer. If you do not use Cairo the
-  @sym{gtk:print-job} object also supports printing of manually generated
+  @class{gtk:print-job} object also supports printing of manually generated
   PostScript, via the @fun{gtk:print-job-set-source-file} function.
   @begin[Signal Details]{dictionary}
     @subheading{The \"status-changed\" signal}
@@ -136,7 +136,7 @@ lambda (job)    :run-last
       Gets emitted when the status of a job changes. The signal handler can use
       the @fun{gtk:print-job-status} function to obtain the new status.
       @begin[code]{table}
-        @entry[job]{The @sym{gtk:print-job} object on which the signal was
+        @entry[job]{The @class{gtk:print-job} object on which the signal was
         emitted.}
       @end{table}
   @end{dictionary}
@@ -156,7 +156,7 @@ lambda (job)    :run-last
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- print-job-page-setup ---------------------------------------------------
+;;; --- gtk:print-job-page-setup -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "page-setup" 'print-job) t)
@@ -179,7 +179,7 @@ lambda (job)    :run-last
   @see-class{gtk:print-job}
   @see-class{gtk:page-setup}")
 
-;;; --- print-job-printer ------------------------------------------------------
+;;; --- gtk:print-job-printer --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "printer" 'print-job) t)
@@ -203,7 +203,7 @@ lambda (job)    :run-last
   @see-class{gtk:print-job}
   @see-class{gtk:printer}")
 
-;;; --- print-job-settings -----------------------------------------------------
+;;; --- gtk:print-job-settings -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "settings" 'print-job) t)
@@ -227,7 +227,7 @@ lambda (job)    :run-last
   @see-class{gtk:print-job}
   @see-class{gtk:print-settings}")
 
-;;; --- print-job-title --------------------------------------------------------
+;;; --- gtk:print-job-title ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "title" 'print-job) t)
@@ -251,7 +251,7 @@ lambda (job)    :run-last
   Gets the job title.
   @see-class{gtk:print-job}")
 
-;;; --- print-job-track-print-status -------------------------------------------
+;;; --- gtk:print-job-track-print-status ---------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "track-print-status"
@@ -275,7 +275,7 @@ lambda (job)    :run-last
     Accessor of the @slot[gtk:print-job]{track-print-status} slot of the
     @class{gtk:print-job} class.
   @end{short}
-  The @sym{gtk:print-job-track-print-status} function returns whether jobs will
+  The @fun{gtk:print-job-track-print-status} function returns whether jobs will
   be tracked after printing.
 
   If @arg{track-status} is @em{true}, the print job will try to continue
@@ -473,8 +473,8 @@ lambda (job)
 (export 'print-job-send)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_job_get_pages () -> print-job-pages
-;;; gtk_print_job_set_pages () -> (setf print-job-pages)
+;;; gtk_print_job_get_pages ()
+;;; gtk_print_job_set_pages ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf print-job-pages) (pages job)
@@ -494,9 +494,9 @@ lambda (job)
   @begin{short}
     Accessor of the page setting for the print job.
   @end{short}
-  The @sym{gtk:print-job-pages} function gets the pages setting for the print
-  job. The @sym{(setf gtk:print-job-pages)} function sets the pages setting for
-  the print job.
+  The @fun{gtk:print-job-pages} function gets the pages setting for the print
+  job. The @setf{gtk:print-job-pages} function sets the pages setting for the
+  print job.
   @see-class{gtk:print-job}
   @see-symbol{gtk:print-pages}"
   (job (g:object print-job)))
@@ -504,8 +504,8 @@ lambda (job)
 (export 'print-job-pages)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_job_get_page_ranges () -> print-job-page-ranges
-;;; gtk_print_job_set_page_ranges () -> (setf print-job-page-ranges)
+;;; gtk_print_job_get_page_ranges ()
+;;; gtk_print_job_set_page_ranges ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf print-job-page-ranges) (ranges job)
@@ -521,9 +521,8 @@ lambda (job)
   @begin{short}
     Accessor of the page ranges for the print job.
   @end{short}
-  The @sym{gtk:print-job-page-ranges} function gets the page ranges for the
-  print job. The @sym{(setf gtk:print-job-page-ranges)} function sets the page
-  ranges.
+  The @fun{gtk:print-job-page-ranges} function gets the page ranges for the
+  print job. The @setf{gtk:print-job-page-ranges} function sets the page ranges.
   @see-class{gtk:print-job}
   @see-function{gtk:print-settings-page-ranges}"
   (print-settings-page-ranges (print-job-settings job)))
@@ -531,8 +530,8 @@ lambda (job)
 (export 'print-job-page-ranges)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_job_get_page_set () -> print-job-page-set
-;;; gtk_print_job_set_page_set () -> (setf print-job-page-set)
+;;; gtk_print_job_get_page_set ()
+;;; gtk_print_job_set_page_set ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf print-job-page-set) (page-set job)
@@ -552,9 +551,8 @@ lambda (job)
   @begin{short}
     Accessor of the @symbol{gtk:page-set} setting for the print job.
   @end{short}
-  The @sym{gtk:print-job-page-set} function gets the setting for the print job.
-  The @sym{(setf gtk:print-job-page-set)} function sets the setting for the
-  print job.
+  The @fun{gtk:print-job-page-set} function gets the setting for the print job.
+  The @setf{gtk:print-job-page-set} function sets the setting for the print job.
   @see-class{gtk:print-job}
   @see-symbol{gtk:page-set}"
   (job (g:object print-job)))
@@ -562,8 +560,8 @@ lambda (job)
 (export 'print-job-page-set)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_job_get_num_copies () -> print-job-num-copies
-;;; gtk_print_job_set_num_copies () -> (setf print-job-num-copies)
+;;; gtk_print_job_get_num_copies ()
+;;; gtk_print_job_set_num_copies ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf print-job-numcopies) (num-copies job)
@@ -582,17 +580,17 @@ lambda (job)
   @begin{short}
     Accessor of the number of copies for the print job.
   @end{short}
-  The @sym{gtk:print-job-num-copies} function gets the number of copies of the
-  print job. The @sym{(setf gtk:print-job-num-copies)} function sets the number
-  of copies for the print job.
+  The @fun{gtk:print-job-num-copies} function gets the number of copies of the
+  print job. The @setf{gtk:print-job-num-copies} function sets the number of
+  copies for the print job.
   @see-class{gtk:print-job}"
   (job (g:object print-job)))
 
 (export 'print-job-num-copies)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_job_get_scale () -> print-job-scale
-;;; gtk_print_job_set_scale () -> (setf print-job-scale)
+;;; gtk_print_job_get_scale ()
+;;; gtk_print_job_set_scale ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf print-job-scale) (scale job)
@@ -612,17 +610,17 @@ lambda (job)
   @begin{short}
     Accessor of the scale for the print job.
   @end{short}
-  The @sym{gtk:print-job-scale} function gets the scale for the print job,
-  where 1.0 means unscaled. The @sym{(setf gtk:print-job-scale)} function sets
-  the scale for the print job.
+  The @fun{gtk:print-job-scale} function gets the scale for the print job,
+  where 1.0 means unscaled. The @setf{gtk:print-job-scale} function sets the
+  scale for the print job.
   @see-class{gtk:print-job}"
   (job (g:object print-job)))
 
 (export 'print-job-scale)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_job_get_n_up () -> print-job-n-up
-;;; gtk_print_job_set_n_up () -> (setf print-job-n-up)
+;;; gtk_print_job_get_n_up ()
+;;; gtk_print_job_set_n_up ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf print-job-n-up) (n-up job)
@@ -642,17 +640,17 @@ lambda (job)
   @begin{short}
     Accessor of the n-up setting for the print job.
   @end{short}
-  The @sym{gtk:print-job-n-up} function gets the n-up setting for the print
-  job. The @sym{(setf gtk:print-job-n-up)} function sets the n-up setting for
-  the print job.
+  The @fun{gtk:print-job-n-up} function gets the n-up setting for the print
+  job. The @setf{gtk:print-job-n-up} function sets the n-up setting for the
+  print job.
   @see-class{gtk:print-job}"
   (job (g:object print-job)))
 
 (export 'print-job-n-up)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_job_get_n_up_layout () -> print-job-n-up-layout
-;;; gtk_print_job_set_n_up_layout () -> (setf print-job-n-up-layout)
+;;; gtk_print_job_get_n_up_layout ()
+;;; gtk_print_job_set_n_up_layout ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf print-job-n-up-layout) (layout job)
@@ -674,9 +672,9 @@ lambda (job)
   @begin{short}
     Accessor of the layout setting for the print job.
   @end{short}
-  The @sym{gtk:print-job-n-up-layout} function gets the layout setting for the
-  print job. The @sym{(setf gtk:print-job-n-up-layout)} function sets the
-  layout setting for the print job.
+  The @fun{gtk:print-job-n-up-layout} function gets the layout setting for the
+  print job. The @setf{gtk:print-job-n-up-layout} function sets the layout
+  setting for the print job.
   @see-class{gtk:print-job}"
   (job (g:object print-job)))
 
@@ -704,9 +702,9 @@ lambda (job)
   @begin{short}
     Accessor of the rotate setting for the print job.
   @end{short}
-  The @sym{gtk:print-job-rotate} function gets whether the job is printed
-  rotated. The @sym{(setf gtk:print-job-rotate)} function sets whether the job
-  is printed rotated.
+  The @fun{gtk:print-job-rotate} function gets whether the job is printed
+  rotated. The @setf{gtk:print-job-rotate} function sets whether the job is
+  printed rotated.
   @see-class{gtk:print-job}"
   (job (g:object print-job)))
 
@@ -735,9 +733,9 @@ lambda (job)
   @begin{short}
     Accessor of the collate setting of the print job.
   @end{short}
-  The @sym{gtk:print-job-collate} function gets whether the job is printed
-  collated. The @sym{(setf gtk:print-job-collate)} function sets whether the
-  job is printed collated.
+  The @fun{gtk:print-job-collate} function gets whether the job is printed
+  collated. The @setf{gtk:print-job-collate} function sets whether the job is
+  printed collated.
   @see-class{gtk:print-job}"
   (job (g:object print-job)))
 
@@ -765,9 +763,9 @@ lambda (job)
   @begin{short}
     Accessor of the reverse setting of the print job.
   @end{short}
-  The @sym{gtk:print-job-reverse} function gets whether the job is printed
-  reversed. The @sym{(setf gtk:print-job-reverse)} function sets whether the
-  job is printed reversed.
+  The @fun{gtk:print-job-reverse} function gets whether the job is printed
+  reversed. The @setf{gtk:print-job-reverse} function sets whether the job is
+  printed reversed.
   @see-class{gtk:print-job}"
   (job (g:object print-job)))
 

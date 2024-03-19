@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2023 Dieter Kaiser
+;;; Copyright (C) 2019 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -73,7 +73,7 @@
 (setf (documentation 'gesture-multi-press 'type)
  "@version{#2023-3-6}
   @begin{short}
-    The @sym{gtk:gesture-multi-press} object is a @class{gtk:gesture}
+    The @class{gtk:gesture-multi-press} object is a @class{gtk:gesture}
     implementation able to recognize multiple clicks on a nearby zone, which can
     be listened for through the \"pressed\" signal.
   @end{short}
@@ -91,7 +91,7 @@ lambda (gesture n-press x y)    :run-last
       @end{pre}
       The signal is emitted whenever a button or touch press happens.
       @begin[code]{table}
-        @entry[gesture]{The @sym{gtk:gesture-multi-press} object which
+        @entry[gesture]{The @class{gtk:gesture-multi-press} object which
           received the signal.}
         @entry[n-press]{An integer with how many touch/button presses happened
           with this one.}
@@ -110,7 +110,7 @@ lambda (gesture n-press x y)    :run-last
       the press and its release, the @arg{n-press} argument will only start over
       at the next press.
       @begin[code]{table}
-        @entry[gesture]{The @sym{gtk:gesture-multi-press} object which
+        @entry[gesture]{The @class{gtk:gesture-multi-press} object which
           received the signal.}
         @entry[n-press]{An integer with the number of press that is paired with
           this release.}
@@ -126,7 +126,7 @@ lambda (gesture)    :run-last
       The signal is emitted whenever any time/distance threshold has been
       exceeded.
       @begin[code]{table}
-        @entry[gesture]{The @sym{gtk:gesture-multi-press} object which
+        @entry[gesture]{The @class{gtk:gesture-multi-press} object which
         received the signal.}
       @end{table}
   @end{dictionary}
@@ -156,7 +156,7 @@ lambda (gesture)    :run-last
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_gesture_multi_press_get_area ()
-;;; gtk_gesture_multi_press_set_area () -> gesture-multi-press-area
+;;; gtk_gesture_multi_press_set_area ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf gesture-multi-press-area) (rect gesture)
@@ -181,8 +181,8 @@ lambda (gesture)    :run-last
   @begin{short}
     Accessor of the press area of the gesture.
   @end{short}
-  The @sym{gtk:gesture-multi-press-area} function gets the press area. The
-  @sym{(setf gtk:gesture-multi-press-area)} function sets the press area.
+  The @fun{gtk:gesture-multi-press-area} function gets the press area. The
+  @setf{gtk:gesture-multi-press-area} function sets the press area.
 
   If the @arg{rect} argument is non-@code{nil}, the press area will be checked
   to be confined within the rectangle, otherwise the button count will be reset

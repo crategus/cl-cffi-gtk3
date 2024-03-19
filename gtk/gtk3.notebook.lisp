@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -211,14 +211,14 @@
 (setf (documentation 'notebook 'type)
  "@version{#2023-3-21}
   @begin{short}
-    The @sym{gtk:notebook} widget is a @class{gtk:container} widget whose
+    The @class{gtk:notebook} widget is a @class{gtk:container} widget whose
     children are pages that can be switched between using tab labels along one
     edge.
   @end{short}
 
   @image[notebook]{Figure: GtkNotebook}
 
-  There are many configuration options for @sym{gtk:notebook} widgets. Among
+  There are many configuration options for @class{gtk:notebook} widgets. Among
   other things, you can choose on which edge the tabs appear, see the
   @fun{gtk:notebook-tab-pos} function, whether, if there are too many tabs to
   fit the notebook should be made bigger or scrolling arrows added, see the
@@ -226,7 +226,7 @@
   allowing the users to switch pages, see the @fun{gtk:notebook-popup-enable}
   and @fun{gtk:notebook-popup-disable} functions.
   @begin[GtkNotebook as GtkBuildable]{dictionary}
-    The @sym{gtk:notebook} implementation of the @class{gtk:buildable}
+    The @class{gtk:notebook} implementation of the @class{gtk:buildable}
     interface supports placing children into tabs by specifying @code{\"tab\"}
     as the @code{\"type\"} attribute of a @code{<child>} element. Note that the
     content of the tab must be created before the tab can be filled. A tab child
@@ -235,7 +235,7 @@
     or @code{\"action-end\"} as the @code{\"type\"} attribute of the
     @code{<child>} element.
 
-    @b{Example:} A UI definition fragment with the @sym{gtk:notebook} widget
+    @b{Example:} A UI definition fragment with the @class{gtk:notebook} widget
     @begin{pre}
 <object class=\"GtkNotebook\">
   <child>
@@ -271,7 +271,7 @@ notebook
     │
     ╰── <child>
     @end{pre}
-    The @sym{gtk:notebook} implementation has a main CSS node with name
+    The @class{gtk:notebook} implementation has a main CSS node with name
     @code{notebook}, a subnode with name @code{header} and below that a subnode
     with name @code{tabs} which contains one subnode per tab with name
     @code{tab}.
@@ -426,7 +426,7 @@ notebook
 lambda (notebook offset)    :action
       @end{pre}
       @begin[code]{table}
-        @entry[notebook]{The @sym{gtk:notebook} widget emitting the signal.}
+        @entry[notebook]{The @class{gtk:notebook} widget emitting the signal.}
         @entry[offset]{An integer with the offset to step forward or backward
           for a negative integer.}
       @end{table}
@@ -440,12 +440,12 @@ lambda (notebook page x y)    :run-last
       window and adding the necessary properties to the notebook, e.g. the
       @code{group-name} property.
       @begin[code]{table}
-        @entry[notebook]{The @sym{gtk:notebook} widget emitting the signal.}
+        @entry[notebook]{The @class{gtk:notebook} widget emitting the signal.}
         @entry[page]{The @class{gtk:widget} tab of @arg{notebook} that is being
           detached.}
         @entry[x]{An integer with the x coordinate where the drop happens.}
         @entry[y]{An integer with the y coordinate where the drop happens.}
-        @entry[Returns]{A @sym{gtk:notebook} widget that @arg{page} should be
+        @entry[Returns]{A @class{gtk:notebook} widget that @arg{page} should be
           added to, or @code{nil}.}
       @end{table}
     @subheading{The \"focus-tab\" signal}
@@ -453,7 +453,7 @@ lambda (notebook page x y)    :run-last
 lambda (notebook tab)    :action
       @end{pre}
       @begin[code]{table}
-        @entry[notebook]{The @sym{gtk:notebook} widget emitting the signal.}
+        @entry[notebook]{The @class{gtk:notebook} widget emitting the signal.}
         @entry[tab]{A value of the @symbol{gtk:notebook-tab} enumeration.}
       @end{table}
     @subheading{The \"move-focus-out\" signal}
@@ -461,7 +461,7 @@ lambda (notebook tab)    :action
 lambda (notebook direction)    :action
       @end{pre}
       @begin[code]{table}
-        @entry[notebook]{The @sym{gtk:notebook} widget emitting the signal.}
+        @entry[notebook]{The @class{gtk:notebook} widget emitting the signal.}
         @entry[direction]{A value of the @symbol{gtk:direction-type}
           enumeration.}
       @end{table}
@@ -472,7 +472,7 @@ lambda (notebook child num)    :run-last
       The signal is emitted in the notebook right after a page is added to the
       notebook.
       @begin[code]{table}
-        @entry[notebook]{The @sym{gtk:notebook} widget emitting the signal.}
+        @entry[notebook]{The @class{gtk:notebook} widget emitting the signal.}
         @entry[child]{The @class{gtk:widget} child page affected.}
         @entry[num]{An unsigned integer with the child page number.}
       @end{table}
@@ -483,7 +483,7 @@ lambda (notebook child num)   :run-last
       The signal is emitted in the notebook right after a page is removed from
       the notebook.
       @begin[code]{table}
-        @entry[notebook]{The @sym{gtk:notebook} widget emitting the signal.}
+        @entry[notebook]{The @class{gtk:notebook} widget emitting the signal.}
         @entry[child]{The @class{gtk:widget} child page affected.}
         @entry[num]{An unsigned integer with the child page number.}
       @end{table}
@@ -494,7 +494,7 @@ lambda (notebook child num)    :run-last
       The signal is emitted in the notebook right after a page has been
       reordered.
       @begin[code]{table}
-        @entry[notebook]{The @sym{gtk:notebook} widget emitting the signal.}
+        @entry[notebook]{The @class{gtk:notebook} widget emitting the signal.}
         @entry[child]{The @class{gtk:widget} child page affected.}
         @entry[num]{An unsigned integer with the child page number.}
       @end{table}
@@ -503,7 +503,7 @@ lambda (notebook child num)    :run-last
 lambda (notebook direction move-to-last)   :action
       @end{pre}
       @begin[code]{table}
-        @entry[notebook]{The @sym{gtk:notebook} widget emitting the signal.}
+        @entry[notebook]{The @class{gtk:notebook} widget emitting the signal.}
         @entry[direction]{A value of the @symbol{gtk:direction-type}
           enumeration.}
         @entry[move-to-last]{A boolean.}
@@ -513,7 +513,7 @@ lambda (notebook direction move-to-last)   :action
 lambda (notebook move-focus)    :action
       @end{pre}
       @begin[code]{table}
-        @entry[notebook]{The @sym{gtk:notebook} widget emitting the signal.}
+        @entry[notebook]{The @class{gtk:notebook} widget emitting the signal.}
         @entry[move-focus]{A boolean.}
       @end{table}
     @subheading{The \"switch-page\" signal}
@@ -522,7 +522,7 @@ lambda (notebook page num)    :run-last
       @end{pre}
       Emitted when the user or a function changes the current page.
       @begin[code]{table}
-        @entry[notebook]{The @sym{gtk:notebook} widget emitting the signal.}
+        @entry[notebook]{The @class{gtk:notebook} widget emitting the signal.}
         @entry[page]{The @class{gtk:widget} current page.}
         @entry[num]{An unsigned integer with the index of the page.}
       @end{table}
@@ -540,7 +540,7 @@ lambda (notebook page num)    :run-last
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- notebook-enable-popup --------------------------------------------------
+;;; --- gtk:notebook-enable-popup ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "enable-popup" 'notebook) t)
@@ -568,7 +568,7 @@ lambda (notebook page num)    :run-last
   @see-function{gtk:notebook-popup-enable}
   @see-function{gtk:notebook-popup-disable}")
 
-;;; --- notebook-group-name ----------------------------------------------------
+;;; --- gtk:notebook-group-name ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "group-name" 'notebook) t)
@@ -590,15 +590,15 @@ lambda (notebook page num)    :run-last
     Accessor of the @slot[gtk:notebook]{group-name} slot of the
     @class{gtk:notebook} class.
   @end{short}
-  The @sym{gtk:notebook-group-name} function gets the current group name for the
-  notebook. The @sym{(setf gtk:notebook-group-name)} function sets a group name.
+  The @fun{gtk:notebook-group-name} function gets the current group name for the
+  notebook. The @setf{gtk:notebook-group-name} function sets a group name.
 
   Notebooks with the same name will be able to exchange tabs via drag and
   drop. A notebook with a @code{nil} group name will not be able to exchange
   tabs with any other notebook.
   @see-class{gtk:notebook}")
 
-;;; --- notebook-page ----------------------------------------------------------
+;;; --- gtk:notebook-page ------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "page" 'notebook) t)
@@ -623,7 +623,7 @@ lambda (notebook page num)    :run-last
   The index of the current page.
   @see-class{gtk:notebook}")
 
-;;; --- notebook-scrollable ----------------------------------------------------
+;;; --- gtk:notebook-scrollable ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "scrollable" 'notebook) t)
@@ -644,13 +644,13 @@ lambda (notebook page num)    :run-last
     Accessor of the @slot[gtk:notebook]{scrollable} slot of the
     @class{gtk:notebook} class.
   @end{short}
-  The @sym{gtk:notebook-scrollable} function returns whether the tab label area
+  The @fun{gtk:notebook-scrollable} function returns whether the tab label area
   has arrows for scrolling if there are too many tabs to fit in the area. The
-  @sym{(setf gtk:notebook-scrollable)} function sets whether the tab label area
-  will have arrows for scrolling.
+  @setf{gtk:notebook-scrollable} function sets whether the tab label area will
+  have arrows for scrolling.
   @see-class{gtk:notebook}")
 
-;;; --- notebook-show-border ---------------------------------------------------
+;;; --- gtk:notebook-show-border -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "show-border" 'notebook) t)
@@ -672,16 +672,16 @@ lambda (notebook page num)    :run-last
     Accessor of the @slot[gtk:notebook]{show-border} slot of the
     @class{gtk:notebook} class.
   @end{short}
-  The @sym{gtk:notebook-show-border} function returns whether a bevel will be
-  drawn around the notebook pages. The @sym{(setf gtk:notebook-show-border)}
-  function sets whether a bevel will be drawn.
+  The @fun{gtk:notebook-show-border} function returns whether a bevel will be
+  drawn around the notebook pages. The @setf{gtk:notebook-show-border} function
+  sets whether a bevel will be drawn.
 
   This only has a visual effect when the tabs are not shown. See the
   @fun{gtk:notebook-show-tabs} function.
   @see-class{gtk:notebook}
   @see-function{gtk:notebook-show-tabs}")
 
-;;; --- notebook-show-tabs -----------------------------------------------------
+;;; --- gtk:notebook-show-tabs -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "show-tabs" 'notebook) t)
@@ -702,12 +702,12 @@ lambda (notebook page num)    :run-last
     Accessor of the @slot[gtk:notebook]{show-tabs} slot of the
     @class{gtk:notebook} class.
   @end{short}
-  The @sym{gtk:notebook-show-tabs} function returns whether the tabs of the
-  notebook are shown. The @sym{(setf gtk:notebook-show-tabs)} function sets
-  whether to show the tabs.
+  The @fun{gtk:notebook-show-tabs} function returns whether the tabs of the
+  notebook are shown. The @setf{gtk:notebook-show-tabs} function sets whether
+  to show the tabs.
   @see-class{gtk:notebook}")
 
-;;; --- notebook-tab-pos -------------------------------------------------------
+;;; --- gtk:notebook-tab-pos ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "tab-pos" 'notebook) t)
@@ -730,9 +730,9 @@ lambda (notebook page num)    :run-last
     Accessor of the @slot[gtk:notebook]{tab-pos} slot of the
     @class{gtk:notebook} class.
   @end{short}
-  The @sym{gtk:notebook-tab-pos} function gets the edge at which the tabs for
+  The @fun{gtk:notebook-tab-pos} function gets the edge at which the tabs for
   switching pages in the notebook are drawn. The
-  @sym{(setf gtk:notebook-tab-pos)} function sets the edge.
+  @setf{gtk:notebook-tab-pos} function sets the edge.
   @see-class{gtk:notebook}
   @see-symbol{gtk:position-type}")
 
@@ -740,7 +740,7 @@ lambda (notebook page num)    :run-last
 ;;; Child Property and Child Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- notebook-child-detachable ----------------------------------------------
+;;; --- gtk:notebook-child-detachable ------------------------------------------
 
 (define-child-property notebook-child-detachable "detachable" "gboolean" t t t)
 
@@ -762,7 +762,7 @@ lambda (notebook page num)    :run-last
   @see-class{gtk:notebook}
   @see-class{gtk:widget}")
 
-;;; --- notebook-child-menu-label ----------------------------------------------
+;;; --- gtk:notebook-child-menu-label ------------------------------------------
 
 (define-child-property notebook-child-menu-label
                        "menu-label" "gchararray" t t t)
@@ -786,7 +786,7 @@ lambda (notebook page num)    :run-last
   @see-class{gtk:notebook}
   @see-class{gtk:widget}")
 
-;;; --- notebook-child-position ------------------------------------------------
+;;; --- gtk:notebook-child-position --------------------------------------------
 
 (define-child-property notebook-child-position "position" "gint" t t t)
 
@@ -809,7 +809,7 @@ lambda (notebook page num)    :run-last
   @see-class{gtk:notebook}
   @see-class{gtk:widget}")
 
-;;; --- notebook-child-reorderable ---------------------------------------------
+;;; --- gtk:notebook-child-reorderable -----------------------------------------
 
 (define-child-property notebook-child-reorderable
                        "reorderable" "gboolean" t t t)
@@ -832,7 +832,7 @@ lambda (notebook page num)    :run-last
   @see-class{gtk:notebook}
   @see-class{gtk:widget}")
 
-;;; --- notebook-child-tab-expand ----------------------------------------------
+;;; --- gtk:notebook-child-tab-expand ------------------------------------------
 
 (define-child-property notebook-child-tab-expand "tab-expand" "gboolean" t t t)
 
@@ -854,7 +854,7 @@ lambda (notebook page num)    :run-last
   @see-class{gtk:notebook}
   @see-class{gtk:widget}")
 
-;;; --- notebook-child-tab-fill ------------------------------------------------
+;;; --- gtk:notebook-child-tab-fill --------------------------------------------
 
 (define-child-property notebook-child-tab-fill "tab-fill" "gboolean" t t t)
 
@@ -877,7 +877,7 @@ lambda (notebook page num)    :run-last
   @see-class{gtk:notebook}
   @see-class{gtk:widget}")
 
-;;; --- notebook-child-tab-level -----------------------------------------------
+;;; --- gtk:notebook-child-tab-level -------------------------------------------
 
 (define-child-property notebook-child-tab-label "tab-label" "gchararray" t t t)
 
@@ -918,7 +918,7 @@ lambda (notebook page num)    :run-last
 (export 'notebook-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; notebook-add-page
+;;; gtk:notebook-add-page
 ;;; ----------------------------------------------------------------------------
 
 (defun notebook-add-page (notebook child tab &key (position :end) menu)
@@ -1238,12 +1238,12 @@ lambda (notebook page num)    :run-last
     Removes a page from the notebook given the page widget or its index in the
     notebook.
   @end{short}
-  @begin[Note]{dictionary}
+  @begin{notes}
     In the Lisp implementation the argument can be an integer for the index or
     the page widget. The index of the page widget is got with the
     @fun{gtk:notebook-page-num} function and passed to the C function.
-  @end{dictionary}
-  @begin[Example]{dictionary}
+  @end{notes}
+  @begin{examples}
     @begin{pre}
 (defvar notebook (make-instance 'gtk:notebook))
 => NOTEBOOK
@@ -1256,7 +1256,7 @@ lambda (notebook page num)    :run-last
 => 0
 (gtk:notebook-remove-page notebook 0)
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:notebook}
   @see-function{gtk:notebook-page-num}"
   (%notebook-remove-page notebook
@@ -1389,10 +1389,10 @@ lambda (notebook page num)    :run-last
   @end{short}
   If the user clicks with the right mouse button on the tab labels, a menu with
   all the pages will be popped up.
-  @begin[Note]{dictionary}
+  @begin{notes}
     This function calls the @fun{gtk:notebook-enable-popup} function with the
     @em{true} value.
-  @end{dictionary}
+  @end{notes}
   @see-class{gtk:notebook}
   @see-function{gtk:notebook-popup-disable}
   @see-function{gtk:notebook-enable-popup}"
@@ -1414,10 +1414,10 @@ lambda (notebook page num)    :run-last
     Disables the popup menu.
   @end{short}
   See the @fun{gtk:notebook-popup-enable} function.
-  @begin[Note]{dictionary}
+  @begin{notes}
     This function calls the @fun{gtk:notebook-enable-popup} function with the
     @em{false} value.
-  @end{dictionary}
+  @end{notes}
   @see-class{gtk:notebook}
   @see-function{gtk:notebook-popup-enable}
   @see-function{gtk:notebook-enable-popup}"
@@ -1427,7 +1427,7 @@ lambda (notebook page num)    :run-last
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_notebook_get_current_page ()
-;;; gtk_notebook_set_current_page () -> notebook-current-page
+;;; gtk_notebook_set_current_page ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf notebook-current-page) (num notebook)
@@ -1449,10 +1449,9 @@ lambda (notebook page num)    :run-last
   @begin{short}
     Accessor of the current page of the notebook.
   @end{short}
-  The @sym{gtk:notebook-current-page} function returns an integer with the
+  The @fun{gtk:notebook-current-page} function returns an integer with the
   index starting from 0 of the page number of the current page. The
-  @sym{(setf gtk:notebook-current-page)} function switches to the given page
-  number.
+  @setf{gtk:notebook-current-page} function switches to the given page number.
 
   Note that due to historical reasons, the @class{gtk:notebook} widget refuses
   to switch to a page unless the child widget is visible. Therefore, it is
@@ -1464,7 +1463,7 @@ lambda (notebook page num)    :run-last
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_notebook_get_menu_label ()
-;;; gtk_notebook_set_menu_label () -> notebook-menu-label
+;;; gtk_notebook_set_menu_label ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf notebook-menu-label) (value notebook child)
@@ -1488,10 +1487,10 @@ lambda (notebook page num)    :run-last
   @begin{short}
     Accessor of the menu label of the notebook.
   @end{short}
-  The @sym{gtk:notebook-menu-label} function returns the menu label, or
+  The @fun{gtk:notebook-menu-label} function returns the menu label, or
   @code{nil} if the notebook page does not have a menu label other than the
-  default tab label. The @sym{(setf gtk:notebook-menu-label)} function changes
-  the menu label for the page containing the child.
+  default tab label. The @setf{gtk:notebook-menu-label} function changes the
+  menu label for the page containing the child.
   @see-class{gtk:notebook}
   @see-class{gtk:widget}
   @see-function{gtk:notebook-menu-label-text}
@@ -1502,7 +1501,7 @@ lambda (notebook page num)    :run-last
 (export 'notebook-menu-label)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_notebook_get_nth_page () -> notebook-nth-page
+;;; gtk_notebook_get_nth_page ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_notebook" notebook-nth-page) (g:object widget)
@@ -1524,7 +1523,7 @@ lambda (notebook page num)    :run-last
 (export 'notebook-nth-page)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_notebook_get_n_pages () -> notebook-n-pages
+;;; gtk_notebook_get_n_pages ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_notebook_get_n_pages" notebook-n-pages) :int
@@ -1540,7 +1539,7 @@ lambda (notebook page num)    :run-last
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_notebook_get_tab_label ()
-;;; gtk_notebook_set_tab_label () -> notebook-tab-label
+;;; gtk_notebook_set_tab_label ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf notebook-tab-label) (value notebook child)
@@ -1564,12 +1563,12 @@ lambda (notebook page num)    :run-last
   @begin{short}
     Accessor of the tab label of the notebook child.
   @end{short}
-  The @sym{gtk:notebook-tab-label} function returns the tab label widget for
+  The @fun{gtk:notebook-tab-label} function returns the tab label widget for
   the page child. The @code{nil} value is returned if the child is not in the
   notebook or if no tab label has been set for the child. The
-  @sym{(setf gtk:notebook-tab-label)} function changes the tab label for the
-  child page. If the @code{nil} value is specified for @arg{tab}, then the page
-  will have the label 'page N'.
+  @setf{gtk:notebook-tab-label} function changes the tab label for the child
+  page. If the @code{nil} value is specified for @arg{tab}, then the page will
+  have the label 'page N'.
   @see-class{gtk:notebook}
   @see-class{gtk:widget}
   @see-function{gtk:notebook-tab-label-text}
@@ -1581,7 +1580,7 @@ lambda (notebook page num)    :run-last
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_notebook_get_menu_label_text ()
-;;; gtk_notebook_set_menu_label_text () -> notebook-menu-label-text
+;;; gtk_notebook_set_menu_label_text ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf notebook-menu-label-text) (value notebook child)
@@ -1598,14 +1597,14 @@ lambda (notebook page num)    :run-last
   @begin{short}
     Accessor of the text of the menu label.
   @end{short}
-  The @sym{gtk:notebook-menu-label-text} function retrieves the text of the
+  The @fun{gtk:notebook-menu-label-text} function retrieves the text of the
   menu label for the page containing child. The
-  @sym{(setf gtk:notebook-menu-label-text)} function creates a new label and
-  sets it as the menu label of the child page.
-  @begin[Note]{dictionary}
+  @setf{gtk:notebook-menu-label-text} function creates a new label and sets it
+  as the menu label of the child page.
+  @begin{notes}
     This function is implemented with the @fun{gtk:notebook-child-menu-label}
     function.
-  @end{dictionary}
+  @end{notes}
   @see-class{gtk:notebook}
   @see-class{gtk:widget}
   @see-function{gtk:notebook-menu-label}
@@ -1616,7 +1615,7 @@ lambda (notebook page num)    :run-last
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_notebook_get_tab_label_text ()
-;;; gtk_notebook_set_tab_label_text () -> notebook-tab-label-text
+;;; gtk_notebook_set_tab_label_text ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf notebook-tab-label-text) (value notebook child)
@@ -1634,14 +1633,14 @@ lambda (notebook page num)    :run-last
   @begin{short}
     Accessor of the label text of the tab label widget.
   @end{short}
-  The @sym{gtk:notebook-tab-label-text} function retrieves the text of the tab
+  The @fun{gtk:notebook-tab-label-text} function retrieves the text of the tab
   label for the page containing child. The
-  @sym{(setf gtk:notebook-tab-label-text)} function creates a new label and
-  sets it as the tab label for the page containing child.
-  @begin[Note]{dictionary}
+  @setf{gtk:notebook-tab-label-text} function creates a new label and sets it
+  as the tab label for the page containing child.
+  @begin{notes}
     This function is implemented with the @fun{gtk:notebook-child-tab-label}
     function.
-  @end{dictionary}
+  @end{notes}
   @see-class{gtk:notebook}
   @see-class{gtk:widget}
   @see-function{gtk:notebook-tab-label}
@@ -1652,7 +1651,7 @@ lambda (notebook page num)    :run-last
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_notebook_set_tab_reorderable ()
-;;; gtk_notebook_get_tab_reorderable () -> notebook-tab-reorderable
+;;; gtk_notebook_get_tab_reorderable ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf notebook-tab-reorderable) (reorderable notebook child)
@@ -1669,14 +1668,14 @@ lambda (notebook page num)    :run-last
   @begin{short}
     Accessor of the @code{reorderable} child property of the notebook page.
   @end{short}
-  The @sym{gtk:notebook-tab-reorderable} function gets whether the tab can be
+  The @fun{gtk:notebook-tab-reorderable} function gets whether the tab can be
   reordered via drag and drop or not. The
-  @sym{(setf gtk:notebook-tab-reorderable)} function sets whether the notebook
-  tab can be reordered.
-  @begin[Note]{dictionary}
+  @setf{gtk:notebook-tab-reorderable} function sets whether the notebook tab
+  can be reordered.
+  @begin{notes}
     This function duplicates the implementation of the
     @fun{gtk:notebook-child-reorderable} function.
-  @end{dictionary}
+  @end{notes}
   @see-class{gtk:notebook}
   @see-class{gtk:widget}
   @see-function{gtk:notebook-child-reorderable}"
@@ -1686,7 +1685,7 @@ lambda (notebook page num)    :run-last
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_notebook_get_tab_detachable ()
-;;; gtk_notebook_set_tab_detachable () -> notebook-tab-detachable
+;;; gtk_notebook_set_tab_detachable ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf notebook-tab-detachable) (value notebook child)
@@ -1703,15 +1702,15 @@ lambda (notebook page num)    :run-last
   @begin{short}
     Accessor of the @code{detachable} child property of the notebook.
   @end{short}
-  The @sym{gtk:notebook-tab-detachable} function returns whether the tab
+  The @fun{gtk:notebook-tab-detachable} function returns whether the tab
   content can be detached from the notebook to another notebook or widget. The
-  @sym{(setf gtk:notebook-tab-detachable)} function sets whether the tab can be
+  @setf{gtk:notebook-tab-detachable} function sets whether the tab can be
   detached.
 
   Note that two notebooks must share a common group identificator, see the
   @fun{gtk:notebook-group-name} function, to allow automatic tabs interchange
   between them.
-  @begin[Example]{dictionary}
+  @begin{examples}
     If you want a widget to interact with a notebook through DnD, i.e. accept
     dragged tabs from it, it must be set as a drop destination and accept the
     \"GTK_NOTEBOOK_TAB\" target. The notebook will fill the selection with a
@@ -1740,7 +1739,7 @@ on_drop_zone_drag_data_received (GtkWidget        *widget,
     @end{pre}
     If you want a notebook to accept drags from other widgets, you will have to
     set your own DnD code to do it.
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:notebook}
   @see-class{gtk:widget}
   @see-function{gtk:notebook-child-detachable}
@@ -1793,7 +1792,7 @@ on_drop_zone_drag_data_received (GtkWidget        *widget,
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_notebook_get_action_widget ()
-;;; gtk_notebook_set_action_widget () -> notebook-action-widget
+;;; gtk_notebook_set_action_widget ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf notebook-action-widget) (value notebook pack-type)
@@ -1817,11 +1816,11 @@ on_drop_zone_drag_data_received (GtkWidget        *widget,
   @begin{short}
     Accessor of the action widget of the notebook.
   @end{short}
-  The @sym{gtk:notebook-action-widget} function gets one of the action widgets.
-  The @sym{(setf gtk:notebook-action-widget)} function sets the widget as one
-  of the action widgets. Depending on the pack type the widget will be placed
-  before or after the tabs. You can use a @class{gtk:box} widget if you need to
-  pack more than one widget on the same side.
+  The @fun{gtk:notebook-action-widget} function gets one of the action widgets.
+  The @setf{gtk:notebook-action-widget} function sets the widget as one of the
+  action widgets. Depending on the pack type the widget will be placed before
+  or after the tabs. You can use a @class{gtk:box} widget if you need to pack
+  more than one widget on the same side.
 
   Note that action widgets are \"internal\" children of the notebook and thus
   not included in the list returned from the @fun{gtk:container-foreach}

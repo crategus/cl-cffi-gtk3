@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -121,7 +121,7 @@
 (setf (documentation 'tool-item 'type)
  "@version{#2023-3-28}
   @begin{short}
-    The @sym{gtk:tool-item} widget is a widget that can appear on a toolbar.
+    The @class{gtk:tool-item} widget is a widget that can appear on a toolbar.
   @end{short}
   To create a toolbar item that contain something else than a button, use the
   @fun{gtk:tool-item-new} function. Use the @fun{gtk:container-add} function to
@@ -161,7 +161,8 @@ lambda (item)    :run-last
       @fun{gtk:tool-item-rebuild-menu} function to invalidate the cache and
       ensure that the toolbar rebuilds its overflow menu.
       @begin[code]{table}
-        @entry[item]{The @sym{gtk:tool-item} widget the signal was emitted on.}
+        @entry[item]{The @class{gtk:tool-item} widget the signal was emitted
+          on.}
         @entry[Returns]{@em{True} if the signal was handled, @em{false} if not.}
       @end{table}
     @subheading{The \"toolbar-reconfigured\" signal}
@@ -169,14 +170,14 @@ lambda (item)    :run-last
 lambda (item)    :run-last
       @end{pre}
       The signal is emitted when some property of the toolbar that the item is
-      a child of changes. For custom subclasses of the @sym{gtk:tool-item}
+      a child of changes. For custom subclasses of the @class{gtk:tool-item}
       class, the default handler of this signal use the
       @fun{gtk:tool-shell-orientation}, @fun{gtk:tool-shell-style},
       @fun{gtk:tool-shell-icon-size}, or @fun{gtk:tool-shell-relief-style}
       functions to find out what the toolbar should look like and change
       themselves accordingly.
       @begin[code]{table}
-        @entry[item]{The @sym{gtk:tool-item} widget the signal was emitted
+        @entry[item]{The @class{gtk:tool-item} widget the signal was emitted
           on.}
       @end{table}
   @end{dictionary}
@@ -189,7 +190,7 @@ lambda (item)    :run-last
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- tool-item-is-important -------------------------------------------------
+;;; --- gtk:tool-item-is-important ---------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "is-important" 'tool-item) t)
@@ -212,9 +213,9 @@ lambda (item)    :run-last
     Accessor of the @slot[gtk:tool-item]{is-important} slot of the
     @class{gtk:tool-item} class.
   @end{short}
-  The @sym{gtk:tool-item-is-important} function returns whether the tool item
-  is considered important. The @sym{(setf gtk:tool-item-is-important)} function
-  sets whether the tool item should be considered important.
+  The @fun{gtk:tool-item-is-important} function returns whether the tool item
+  is considered important. The @setf{gtk:tool-item-is-important} function sets
+  whether the tool item should be considered important.
 
   The @class{gtk:tool-button} class uses this property to determine whether to
   show or hide its label when the toolbar style is @code{:both-horiz}. The
@@ -224,7 +225,7 @@ lambda (item)    :run-last
   @see-class{gtk:tool-button}
   @see-symbol{gtk:toolbar-style}")
 
-;;; --- tool-item-visible-horizontal -------------------------------------------
+;;; --- gtk:tool-item-visible-horizontal ---------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "visible-horizontal"
@@ -249,13 +250,13 @@ lambda (item)    :run-last
     Accessor of the @slot[gtk:tool-item]{visible-horizontal} slot of the
     @class{gtk:tool-item} class.
   @end{short}
-  The @sym{gtk:tool-item-visible-horizontal} function returns whether the tool
+  The @fun{gtk:tool-item-visible-horizontal} function returns whether the tool
   item is visible on toolbars that are docked horizontally. The
-  @sym{(setf gtk:tool-item-visible-horizontal)} function sets whether the tool
-  item is visible when the toolbar is docked horizontally.
+  @setf{gtk:tool-item-visible-horizontal} function sets whether the tool item
+  is visible when the toolbar is docked horizontally.
   @see-class{gtk:tool-item}")
 
-;;; --- tool-item-visible-vertical ---------------------------------------------
+;;; --- gtk:tool-item-visible-vertical -----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "visible-vertical"
@@ -280,10 +281,10 @@ lambda (item)    :run-last
     Accessor of the @slot[gtk:tool-item]{visible-vertical} slot of the
     @class{gtk:tool-item} class.
   @end{short}
-  The @sym{gtk:tool-item-visible-vertical} function returns whether the tool
+  The @fun{gtk:tool-item-visible-vertical} function returns whether the tool
   item is visible when the toolbar is docked vertically. The
-  @sym{(setf gtk:tool-item-visible-vertical)} function sets whether the tool
-  item is visible when the toolbar is docked vertically.
+  @setf{gtk:tool-item-visible-vertical} function sets whether the tool item is
+  visible when the toolbar is docked vertically.
 
   Some tool items, such as text entries, are too wide to be useful on a
   vertically docked toolbar. If the @arg{visible} argument is @em{false} the
@@ -308,7 +309,7 @@ lambda (item)    :run-last
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_tool_item_get_homogeneous ()
-;;; gtk_tool_item_set_homogeneous () -> tool-item-homogeneous
+;;; gtk_tool_item_set_homogeneous ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf tool-item-homogeneous) (homogeneous item)
@@ -329,10 +330,10 @@ lambda (item)    :run-last
   @begin{short}
     Accessor of the homogeneous property of the tool item.
   @end{short}
-  The @sym{gtk:tool-item-homogeneous} function returns whether @arg{item} is
+  The @fun{gtk:tool-item-homogeneous} function returns whether @arg{item} is
   the same size as other homogeneous items. The
-  @sym{(setf gtk:tool-item-homogeneous)} function sets whether @arg{item} is to
-  be allocated the same size as other homogeneous items.
+  @setf{gtk:tool-item-homogeneous} function sets whether @arg{item} is to be
+  allocated the same size as other homogeneous items.
 
   The effect is that all homogeneous items will have the same width as the
   widest of the items.
@@ -343,7 +344,7 @@ lambda (item)    :run-last
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_tool_item_get_expand ()
-;;; gtk_tool_item_set_expand () -> tool-item-expand
+;;; gtk_tool_item_set_expand ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf tool-item-expand) (expand item)
@@ -363,12 +364,11 @@ lambda (item)    :run-last
   @begin{short}
     Accessor of the expand property of the tool item.
   @end{short}
-  The @sym{gtk:tool-item-expand} function returns whether @arg{item} is
-  allocated extra space. The @sym{(setf gtk:tool-item-expand)} function sets
-  whether @arg{item} is allocated extra space when there is more room on
-  the toolbar then needed for the tool items. The effect is that the tool item
-  gets bigger when the toolbar gets bigger and smaller when the toolbar gets
-  smaller.
+  The @fun{gtk:tool-item-expand} function returns whether @arg{item} is
+  allocated extra space. The @setf{gtk:tool-item-expand} function sets whether
+  @arg{item} is allocated extra space when there is more room on the toolbar
+  then needed for the tool items. The effect is that the tool item gets bigger
+  when the toolbar gets bigger and smaller when the toolbar gets smaller.
   @see-class{gtk:tool-item}"
   (item (g:object tool-item)))
 
@@ -421,7 +421,7 @@ lambda (item)    :run-last
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_tool_item_get_use_drag_window ()
-;;; gtk_tool_item_set_use_drag_window () -> tool-item-use-drag-window
+;;; gtk_tool_item_set_use_drag_window ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf tool-item-use-drag-window) (setting item)
@@ -442,9 +442,9 @@ lambda (item)    :run-last
   @begin{short}
     Accessor of the use drag window property of the tool item.
   @end{short}
-  The @sym{gtk:tool-item-use-drag-window} function returns whether @arg{item}
-  has a drag window. The @sym{(setf gtk:tool-item-use-drag-window)} function
-  sets whether @arg{item} has a drag window.
+  The @fun{gtk:tool-item-use-drag-window} function returns whether @arg{item}
+  has a drag window. The @setf{gtk:tool-item-use-drag-window} function sets
+  whether @arg{item} has a drag window.
 
   When @em{true} the tool item can be used as a drag source through
   the @fun{gtk:drag-source-set} function. When @arg{item} has a drag window it
@@ -457,7 +457,7 @@ lambda (item)    :run-last
 (export 'tool-item-use-drag-window)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_item_get_ellipsize_mode () -> tool-item-ellipsize-mode
+;;; gtk_tool_item_get_ellipsize_mode ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_item_get_ellipsize_mode" tool-item-ellipsize-mode)
@@ -481,7 +481,7 @@ lambda (item)    :run-last
 (export 'tool-item-ellipsize-mode)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_item_get_icon_size () -> tool-item-icon-size
+;;; gtk_tool_item_get_icon_size ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_item_get_icon_size" tool-item-icon-size) icon-size
@@ -503,7 +503,7 @@ lambda (item)    :run-last
 (export 'tool-item-icon-size)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_item_get_orientation () -> tool-item-orientation
+;;; gtk_tool_item_get_orientation ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_item_get_orientation" tool-item-orientation)
@@ -527,7 +527,7 @@ lambda (item)    :run-last
 (export 'tool-item-orientation)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_item_get_toolbar_style () -> tool-item-toolbar-style
+;;; gtk_tool_item_get_toolbar_style ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_item_get_toolbar_style" tool-item-toolbar-style)
@@ -564,7 +564,7 @@ lambda (item)    :run-last
 (export 'tool-item-toolbar-style)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_item_get_relief_style () -> tool-item-relief-style
+;;; gtk_tool_item_get_relief_style ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_item_get_relief_style" tool-item-relief-style)
@@ -589,7 +589,7 @@ lambda (item)    :run-last
 (export 'tool-item-relief-style)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_item_get_text_alignment () -> tool-item-text-alignment
+;;; gtk_tool_item_get_text_alignment ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_item_get_text_alignment" tool-item-text-alignment)
@@ -611,7 +611,7 @@ lambda (item)    :run-last
 (export 'tool-item-text-alignment)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_item_get_text_orientation () -> tool-item-text-orientation
+;;; gtk_tool_item_get_text_orientation ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_item_get_text_orientation" tool-item-text-orientation)
@@ -661,7 +661,7 @@ lambda (item)    :run-last
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_tool_item_get_proxy_menu_item ()
-;;; gtk_tool_item_set_proxy_menu_item () -> tool-item-proxy-menu-item
+;;; gtk_tool_item_set_proxy_menu_item ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf tool-item-proxy-menu-item) (menuitem item id)
@@ -684,9 +684,9 @@ lambda (item)    :run-last
   @begin{short}
     Accessor of the proxy menu item of the tool item.
   @end{short}
-  The @sym{gtk:tool-item-proxy-menu-item} function gets the menu item used in
-  the toolbar overflow menu. The @sym{(setf gtk:tool-item-proxy-menu-item)}
-  function sets the menu item used in the toolbar overflow menu.
+  The @fun{gtk:tool-item-proxy-menu-item} function gets the menu item used in
+  the toolbar overflow menu. The @setf{gtk:tool-item-proxy-menu-item} function
+  sets the menu item used in the toolbar overflow menu.
 
   Custom subclasses of the @class{gtk:tool-item} class should use this function
   to update their menu item when the @class{gtk:tool-item} changes. That the
@@ -744,7 +744,7 @@ lambda (item)    :run-last
 (export 'tool-item-toolbar-reconfigured)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_item_get_text_size_group () -> tool-item-text-size-group
+;;; gtk_tool_item_get_text_size_group ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_item_get_text_size_group" tool-item-text-size-group)

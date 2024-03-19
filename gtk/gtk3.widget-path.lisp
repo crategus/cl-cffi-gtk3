@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2013 - 2023 Dieter Kaiser
+;;; Copyright (C) 2013 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -140,11 +140,12 @@
       (documentation 'widget-path 'type)
  "@version{#2023-3-30}
   @begin{short}
-    The @sym{gtk:widget-path} structure is a boxed type that represents a widget
-    hierarchy from the topmost widget, typically a toplevel, to any child.
+    The @class{gtk:widget-path} structure is a boxed type that represents a
+    widget hierarchy from the topmost widget, typically a toplevel, to any
+    child.
   @end{short}
-  The @sym{gtk:widget-path} structure is opaque, and has no user visible fields.
-  This widget path abstraction is used in the @class{gtk:style-context}
+  The @class{gtk:widget-path} structure is opaque, and has no user visible
+  fields. This widget path abstraction is used in the @class{gtk:style-context}
   implementation on behalf of the real widget in order to query style
   information.
 
@@ -152,7 +153,7 @@
   directly, as there is the @fun{gtk:widget-path} function, and the style
   context returned by the @fun{gtk:widget-style-context} function will be
   automatically updated on widget hierarchy changes.
-  @begin[Example]{dictionary}
+  @begin{examples}
     Defining a button within a window:
     @begin{pre}
 (let ((path (gtk:widget-path-new)))
@@ -180,7 +181,7 @@
     @end{pre}
     All this information will be used to match the style information that
     applies to the described widget.
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:style-context}")
 
 ;;; ----------------------------------------------------------------------------
@@ -426,12 +427,12 @@
     defined in @arg{path}.
   @end{short}
   See the @fun{gtk:style-context-add-region} function.
-  @begin[Note]{dictionary}
+  @begin{notes}
     Region names must only contain lowercase letters and '-', starting always
     with a lowercase letter.
-  @end{dictionary}
+  @end{notes}
   @begin[Warning]{dictionary}
-    The @sym{gtk:widget-path-iter-add-region} function has been deprecated since
+    The @fun{gtk:widget-path-iter-add-region} function has been deprecated since
     version 3.14 and should not be used in newly written code. The use of
     regions is deprecated.
   @end{dictionary}
@@ -480,7 +481,7 @@
     defined in @arg{path}.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:widget-path-iter-clear-regions} function has been deprecated
+    The @fun{gtk:widget-path-iter-clear-regions} function has been deprecated
     since version 3.14 and should not be used in newly written code. The use of
     regions is deprecated.
   @end{dictionary}
@@ -492,7 +493,7 @@
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_widget_path_iter_get_name ()
-;;; gtk_widget_path_iter_set_name () -> widget-path-iter-name
+;;; gtk_widget_path_iter_set_name ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf widget-path-iter-name) (value path pos)
@@ -513,10 +514,10 @@
   @begin{short}
     Accessor of the widget name.
   @end{short}
-  The @sym{gtk:widget-path-iter-name} function returns the name corresponding
+  The @fun{gtk:widget-path-iter-name} function returns the name corresponding
   to the widget found at the position @arg{pos} in the widget hierarchy defined
-  by @arg{path}. The @sym{(setf gtk:widget-path-iter-name)} function sets the
-  widget name.
+  by @arg{path}. The @setf{gtk:widget-path-iter-name} function sets the widget
+  name.
   @see-class{gtk:widget-path}"
   (path (g:boxed widget-path))
   (pos :int))
@@ -525,7 +526,7 @@
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_widget_path_iter_get_object_name ()
-;;; gtk_widget_path_iter_set_object_name () -> widget-path-iter-object-name
+;;; gtk_widget_path_iter_set_object_name ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf widget-path-iter-object-name) (value path pos)
@@ -547,10 +548,10 @@
   @begin{short}
     Accessor of the object name.
   @end{short}
-  The @sym{gtk:widget-path-iter-object-name} function returns the object name
+  The @fun{gtk:widget-path-iter-object-name} function returns the object name
   that is at position @arg{pos} in the widget hierarchy defined in @arg{path}.
-  The @sym{(setf gtk:widget-path-iter-object-name)} function sets the object
-  name. When set, the object name overrides the object type when matching CSS.
+  The @setf{gtk:widget-path-iter-object-name} function sets the object name.
+  When set, the object name overrides the object type when matching CSS.
   @see-class{gtk:widget-path}"
   (path (g:boxed widget-path))
   (pos :int))
@@ -559,7 +560,7 @@
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_widget_path_iter_get_object_type ()
-;;; gtk_widget_path_iter_set_object_type () -> widget-path-iter-object-type
+;;; gtk_widget_path_iter_set_object_type ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf widget-path-iter-object-type) (value path pos)
@@ -581,18 +582,18 @@
   @begin{short}
     Accessor of the object type.
   @end{short}
-  The @sym{gtk:widget-path-iter-object-type} function returns the
+  The @fun{gtk:widget-path-iter-object-type} function returns the
   @class{g:type-t} type of the object that is at position @arg{pos} in the
   widget hierarchy defined in @arg{path}. The
-  @sym{(setf gtk:widget-path-iter-object-type)} function sets the object type.
-  @begin[Example]{dictionary}
+  @setf{gtk:widget-path-iter-object-type} function sets the object type.
+  @begin{examples}
     @begin{pre}
 (setq widget (make-instance 'gtk:button))
 => #<GTK-BUTTON {10027EB373@}>
 (gtk:widget-path-iter-object-type (gtk:widget-path *) -1)
 => #<GTYPE :name \"GtkButton\" :id 23267040>
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:widget-path}
   @see-class{g:type-t}"
   (path (g:boxed widget-path))
@@ -601,7 +602,7 @@
 (export 'widget-path-iter-object-type)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_widget_path_iter_get_siblings () -> widget-path-iter-siblings
+;;; gtk_widget_path_iter_get_siblings ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_widget_path_iter_get_siblings" widget-path-iter-siblings)
@@ -625,7 +626,6 @@
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_widget_path_iter_get_sibling_index ()
-;;; -> widget-path-iter-siblings-index
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_widget_path_iter_get_sibling_index"
@@ -652,7 +652,7 @@
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_widget_path_iter_get_state ()
-;;; gtk_widget_path_iter_set_state () -> widget-path-iter-state
+;;; gtk_widget_path_iter_set_state ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf widget-path-iter-state) (value path pos)
@@ -674,14 +674,14 @@
   @begin{short}
     Accessor of the state flags.
   @end{short}
-  The @sym{gtk:widget-path-iter-state} function returns the state flags
+  The @fun{gtk:widget-path-iter-state} function returns the state flags
   corresponding to the widget found at the position @arg{pos} in the widget
-  hierarchy defined by @arg{path}. The @sym{(setf gtk:widget-path-iter-state)}
+  hierarchy defined by @arg{path}. The @setf{gtk:widget-path-iter-state}
   function sets the state flags.
 
   If you want to update just a single state flag, you need to do this manually,
   as this function updates all state flags.
-  @begin[Example]{dictionary}
+  @begin{examples}
     Setting more flags
     @begin{pre}
 (let ((flags (gtk:widget-path-iter-state path pos)))
@@ -694,7 +694,7 @@
   (setf (gtk:widget-path-iter-state path pos)
         (set-difference flags '(:active))))
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:widget-path}
   @see-symbol{gtk:state-flags}"
   (path (g:boxed widget-path))
@@ -857,7 +857,7 @@
     @arg{pos} in the widget hierarchy defined by @arg{path}.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:widget-path-iter-has-region} function has been deprecated since
+    The @fun{gtk:widget-path-iter-has-region} function has been deprecated since
     version 3.14 and should not be used in newly written code. The use of
     regions is deprecated.
   @end{dictionary}
@@ -906,7 +906,7 @@
     @arg{pos} in the hierarchy defined in @arg{path}.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:widget-path-iter-list-regions} function has been deprecated
+    The @fun{gtk:widget-path-iter-list-regions} function has been deprecated
     since version 3.14 and should not be used in newly written code. The use of
     regions is deprecated.
   @end{dictionary}
@@ -954,7 +954,7 @@
     hierarchy defined in @arg{path}.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:widget-path-iter-remove-region} function has been deprecated
+    The @fun{gtk:widget-path-iter-remove-region} function has been deprecated
     since version 3.14 and should not be used in newly written code. The use of
     regions is deprecated.
   @end{dictionary}

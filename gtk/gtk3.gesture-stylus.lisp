@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2023 Dieter Kaiser
+;;; Copyright (C) 2019 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -75,8 +75,8 @@
 (setf (documentation 'gesture-stylus 'type)
  "@version{#2023-1-21}
   @begin{short}
-    The @sym{gtk:gesture-stylus} object is a @class{gtk:gesture} implementation
-    specific to stylus input.
+    The @class{gtk:gesture-stylus} object is a @class{gtk:gesture}
+    implementation specific to stylus input.
   @end{short}
   The provided signals just provide the basic information.
   @begin[Signal Details]{dictionary}
@@ -85,7 +85,7 @@
 lambda (gesture arg1 arg2)    :run-last
     @end{pre}
     @begin[code]{table}
-      @entry[gesture]{The @sym{gtk:gesture-stylus} object on which the signal
+      @entry[gesture]{The @class{gtk:gesture-stylus} object on which the signal
         is emitted.}
       @entry[arg1]{A not documented double float.}
       @entry[arg2]{A not documented double float.}
@@ -95,7 +95,7 @@ lambda (gesture arg1 arg2)    :run-last
 lambda (gesture arg1 arg2)    :run-last
     @end{pre}
     @begin[code]{table}
-      @entry[gesture]{The @sym{gtk:gesture-stylus} object on which the signal
+      @entry[gesture]{The @class{gtk:gesture-stylus} object on which the signal
         is emitted.}
       @entry[arg1]{A not documented double float.}
       @entry[arg2]{A not documented double float.}
@@ -105,7 +105,7 @@ lambda (gesture arg1 arg2)    :run-last
 lambda (gesture arg1 arg2)    :run-last
     @end{pre}
     @begin[code]{table}
-      @entry[gesture]{The @sym{gtk:gesture-stylus} object on which the signal
+      @entry[gesture]{The @class{gtk:gesture-stylus} object on which the signal
         is emitted.}
       @entry[arg1]{A not documented double float.}
       @entry[arg2]{A not documented double float.}
@@ -115,7 +115,7 @@ lambda (gesture arg1 arg2)    :run-last
 lambda (gesture arg1 arg2)    :run-last
     @end{pre}
     @begin[code]{table}
-      @entry[gesture]{The @sym{gtk:gesture-stylus} object on which the signal
+      @entry[gesture]{The @class{gtk:gesture-stylus} object on which the signal
         is emitted.}
       @entry[arg1]{A not documented double float.}
       @entry[arg2]{A not documented double float.}
@@ -143,7 +143,7 @@ lambda (gesture arg1 arg2)    :run-last
 (export 'gesture-stylus-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_gesture_stylus_get_axis () -> gesture-stylus-axis
+;;; gtk_gesture_stylus_get_axis ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_gesture_stylus_get_axis" %gesture-stylus-axis) :boolean
@@ -196,7 +196,7 @@ lambda (gesture arg1 arg2)    :run-last
 ;; TODO: Implement the function
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_gesture_stylus_get_device_tool () -> gesture-stylus-device-tool
+;;; gtk_gesture_stylus_get_device_tool ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_gesture_stylus_get_device_tool" gesture-stylus-device-tool)

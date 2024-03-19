@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2012 - 2023 Dieter Kaiser
+;;; Copyright (C) 2012 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -114,7 +114,7 @@
 (setf (documentation 'info-bar 'type)
  "@version{#2023-3-20}
   @begin{short}
-    The @sym{gtk:info-bar} widget can be used to show messages to the user
+    The @class{gtk:info-bar} widget can be used to show messages to the user
     without showing a dialog.
   @end{short}
   It is often temporarily shown at the top or bottom of a document. In contrast
@@ -123,7 +123,7 @@
 
   @image[info-bar]{Figure: GtkInfoBar}
 
-  The API of the @sym{gtk:info-bar} widget is very similar to the
+  The API of the @class{gtk:info-bar} widget is very similar to the
   @class{gtk:dialog} widget, allowing you to add buttons to the action area
   with the @fun{gtk:info-bar-add-button} or @fun{gtk:info-bar-new-with-buttons}
   functions. The sensitivity of action widgets can be controlled with the
@@ -135,7 +135,7 @@
   by classified as error message, warning, informational message, etc, by using
   the @fun{gtk:info-bar-message-type} function. GTK uses the message type to
   determine the background color of the message area.
-  @begin[Example]{dictionary}
+  @begin{examples}
     Simple info bar usage.
     @begin{pre}
 (defun create-info-bar ()
@@ -163,20 +163,20 @@
     (setf (gtk:info-bar-message-type info-bar) type)
     (gtk:widget-show info-bar)))
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @begin[GtkInfoBar as GtkBuildable]{dictionary}
-    The @sym{gtk:info-bar} implementation of the @class{gtk:buildable} interface
-    exposes the content area and action area as internal children with the names
-    @code{content_area} and @code{action_area}.
+    The @class{gtk:info-bar} implementation of the @class{gtk:buildable}
+    interface exposes the content area and action area as internal children
+    with the names @code{content_area} and @code{action_area}.
 
-    The @sym{gtk:info-bar} implementation supports a custom
+    The @class{gtk:info-bar} implementation supports a custom
     @code{<action-widgets>} element, which can contain multiple
     @code{<action-widget>} elements. The @code{response} attribute specifies a
     numeric response, and the content of the element is the ID of widget, which
     should be a child of the dialogs action area.
   @end{dictionary}
   @begin[CSS nodes]{dictionary}
-    The @sym{gtk:info-bar} implementation has a single CSS node with name
+    The @class{gtk:info-bar} implementation has a single CSS node with name
     @code{infobar}. The node may get one of the @code{.info}, @code{.warning},
     @code{.error} or @code{.question} style classes, depending on the message
     type.
@@ -235,7 +235,7 @@ lambda (infobar)    :action
       keybinding to dismiss the info bar. The default binding for this signal
       is the @kbd{Escape} key. @br{}
       @begin[code]{table}
-        @entry[infobar]{The @sym{gtk:info-bar} widget on which the signal is
+        @entry[infobar]{The @class{gtk:info-bar} widget on which the signal is
           emitted.}
       @end{table}
     @subheading{The \"response\" signal}
@@ -246,7 +246,7 @@ lambda (infobar response)    :run-last
       calls the @fun{gtk:dialog-response} function. The @arg{response} argument
       depends on which action widget was clicked. @br{}
       @begin[code]{table}
-        @entry[infobar]{The @sym{gtk:info-bar} widget on which the signal is
+        @entry[infobar]{The @class{gtk:info-bar} widget on which the signal is
           emitted.}
         @entry[response]{An integer with the response ID.}
       @end{table}
@@ -263,7 +263,7 @@ lambda (infobar response)    :run-last
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- info-bar-message-type --------------------------------------------------
+;;; --- gtk:info-bar-message-type ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "message-type" 'info-bar) t)
@@ -286,15 +286,15 @@ lambda (infobar response)    :run-last
     Accessor of the @slot[gtk:info-bar]{message-type} slot of the
     @class{gtk:info-bar} class.
   @end{short}
-  The @sym{gtk:info-bar-message-type} function returns the message type of the
-  message area. The @sym{(setf gtk:info-bar-message-type)} function sets the
-  message type.
+  The @fun{gtk:info-bar-message-type} function returns the message type of the
+  message area. The @setf{gtk:info-bar-message-type} function sets the message
+  type.
 
   GTK uses this type to determine what color to use when drawing the message
   area.
   @see-class{gtk:info-bar}")
 
-;;; --- info-bar-revealed ------------------------------------------------------
+;;; --- gtk:info-bar-revealed --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "revealed" 'info-bar) t)
@@ -315,8 +315,8 @@ lambda (infobar response)    :run-last
     Accessor of the @slot[gtk:info-bar]{revealed} slot of the
     @class{gtk:info-bar} class.
   @end{short}
-  The @sym{gtk:info-bar-revealed} function returns the current value of the
-  @slot[gtk:info-bar]{revealed} property. The @sym{(setf gtk:info-bar-revealed)}
+  The @fun{gtk:info-bar-revealed} function returns the current value of the
+  @slot[gtk:info-bar]{revealed} property. The @setf{gtk:info-bar-revealed}
   function sets the property.
 
   This will cause the info bar to show up with a slide-in transition. Note that
@@ -324,7 +324,7 @@ lambda (infobar response)    :run-last
   any effect if it is invisible.
   @see-class{gtk:info-bar}")
 
-;;; --- info-bar-show-close-button ---------------------------------------------
+;;; --- gtk:info-bar-show-close-button -----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "show-close-button"
@@ -347,13 +347,13 @@ lambda (infobar response)    :run-last
     Accessor of the @slot[gtk:info-bar]{show-close-button} slot of the
     @class{gtk:info-bar} class.
   @end{short}
-  The @sym{gtk:info-bar-show-close-button} function returns whether the widget
+  The @fun{gtk:info-bar-show-close-button} function returns whether the widget
   will display a standard Close button. If @em{true}, a standard Close button
   is shown. When clicked it emits the @code{:close} response.
   @see-class{gtk:info-bar}")
 
 ;;; ----------------------------------------------------------------------------
-;;; info-bar-new
+;;; gtk_info_bar_new ()
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline info-bar-new))
@@ -369,7 +369,7 @@ lambda (infobar response)    :run-last
 (export 'info-bar-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; info-bar-new-with-buttons
+;;; gtk_info_bar_new_with_buttons ()
 ;;; ----------------------------------------------------------------------------
 
 (defun info-bar-new-with-buttons (&rest args)
@@ -393,7 +393,7 @@ lambda (infobar response)    :run-last
 (export 'info-bar-new-with-buttons)
 
 ;;; ----------------------------------------------------------------------------
-;;; info-bar-add-action-widget
+;;; gtk_info_bar_add_action_widget ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_info_bar_add_action_widget" info-bar-add-action-widget)
@@ -417,7 +417,7 @@ lambda (infobar response)    :run-last
 (export 'info-bar-add-action-widget)
 
 ;;; ----------------------------------------------------------------------------
-;;; info-bar-add-button
+;;; gtk_info_bar_add_button ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_info_bar_add_button" info-bar-add-button) (g:object widget)
@@ -443,7 +443,7 @@ lambda (infobar response)    :run-last
 (export 'info-bar-add-button)
 
 ;;; ----------------------------------------------------------------------------
-;;; info-bar-add-buttons
+;;; gtk_info_bar_add_buttons ()
 ;;; ----------------------------------------------------------------------------
 
 (defun info-bar-add-buttons (infobar &rest args)
@@ -465,7 +465,7 @@ lambda (infobar response)    :run-last
 (export 'info-bar-add-buttons)
 
 ;;; ----------------------------------------------------------------------------
-;;; info-bar-set-response-sensitive
+;;; gtk_info_bar_set_response_sensitive ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_info_bar_set_response_sensitive"
@@ -489,7 +489,7 @@ lambda (infobar response)    :run-last
 (export 'info-bar-set-response-sensitive)
 
 ;;; ----------------------------------------------------------------------------
-;;; info-bar-set-default-response
+;;; gtk_info_bar_set_default_response ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_info_bar_set_default_response"
@@ -529,7 +529,7 @@ lambda (infobar response)    :run-last
 (export 'info-bar-response)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_info_bar_get_action_area -> info-bar-action-area
+;;; gtk_info_bar_get_action_area ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_info_bar_get_action_area" info-bar-action-area)
@@ -546,7 +546,7 @@ lambda (infobar response)    :run-last
 (export 'info-bar-action-area)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_info_bar_get_content_area -> info-bar-content-area
+;;; gtk_info_bar_get_content_area ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_info_bar_get_content_area" info-bar-content-area)

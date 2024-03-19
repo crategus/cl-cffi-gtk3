@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2023 Dieter Kaiser
+;;; Copyright (C) 2019 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -84,14 +84,15 @@
 (setf (documentation 'popover-menu 'type)
  "@version{#2023-3-12}
   @begin{short}
-    The @sym{gtk:popover-menu} class is a subclass of the @class{gtk:popover}
+    The @class{gtk:popover-menu} class is a subclass of the @class{gtk:popover}
     class that treats its children like menus and allows switching between them.
   @end{short}
   It is meant to be used primarily together with @class{gtk:model-button}
   widgets, but any widget can be used, such as @class{gtk:spin-button} or
-  @class{gtk:scale} widgets. In this respect, the @sym{gtk:popover-menu} widget
-  is more flexible than popovers that are created from a @class{g:menu-model}
-  object with the @fun{gtk:popover-new-from-model} function.
+  @class{gtk:scale} widgets. In this respect, the @class{gtk:popover-menu}
+  widget is more flexible than popovers that are created from a
+  @class{g:menu-model} object with the @fun{gtk:popover-new-from-model}
+  function.
 
   To add a child as a submenu, set the @code{submenu} child property to the
   name of the submenu. To let the user open this submenu, add a
@@ -104,7 +105,7 @@
   @slot[gtk:model-button]{centered} properties to achieve a title-like
   appearance and place the submenu indicator at the opposite side. To switch
   back to the main menu, use @code{main} as the menu name.
-  @begin[Example]{dictionary}
+  @begin{examples}
     @begin{pre}
 <object class=\"GtkPopoverMenu\">
   <child>
@@ -152,11 +153,11 @@
   </child>
 </object>
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @begin[CSS nodes]{dictionary}
     Just like normal popovers created using the @fun{gtk:popover-new-from-model}
-    function, the @sym{gtk:popover-menu} instances have a single CSS node called
-    @code{popover} and get the @code{.menu} style class.
+    function, the @class{gtk:popover-menu} instances have a single CSS node
+    called @code{popover} and get the @code{.menu} style class.
   @end{dictionary}
   @begin[Child Property Details]{dictionary}
     @begin[code]{table}
@@ -185,7 +186,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- popover-menu-visible-submenu -------------------------------------------
+;;; --- gtk:popover-menu-visible-submenu ---------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "visible-submenu"
@@ -215,7 +216,7 @@
 ;;; Child Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- popover-menu-child-position --------------------------------------------
+;;; --- gtk:popover-menu-child-position ----------------------------------------
 
 (define-child-property popover-menu-child-position "position" "gint" t t t)
 
@@ -237,7 +238,7 @@
   @see-class{gtk:popover-menu}
   @see-class{gtk:widget}")
 
-;;; --- popover-menu-child-submenu ---------------------------------------------
+;;; --- gtk:popover-menu-child-submenu -----------------------------------------
 
 (define-child-property popover-menu-child-submenu "submenu" "gchararray" t t t)
 

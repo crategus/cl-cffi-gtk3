@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -75,7 +75,7 @@
 (setf (documentation 'file-chooser-dialog 'type)
  "@version{2023-6-11}
   @begin{short}
-    The @sym{gtk:file-chooser-dialog} widget is a dialog box suitable for use
+    The @class{gtk:file-chooser-dialog} widget is a dialog box suitable for use
     with \"File/Open\" or \"File/Save as\" commands.
   @end{short}
   This widget works by putting a @class{gtk:file-chooser-widget} widget inside
@@ -84,13 +84,13 @@
   the file chooser dialog as well as those for the @class{gtk:dialog} widget.
 
   @image[file-chooser-dialog]{GtkFileChooserDialog}
-  Note that the @sym{gtk:file-chooser-dialog} widget does not have any methods
+  Note that the @class{gtk:file-chooser-dialog} widget does not have any methods
   of its own. Instead, you should use the functions that work on a
   @class{gtk:file-chooser} interface.
 
   @b{Example:} Typical usage @br{}
   In the simplest of cases, you can the following code to use the
-  @sym{gtk:file-chooser-dialog} widget to select a file for opening:
+  @class{gtk:file-chooser-dialog} widget to select a file for opening:
   @begin{pre}
 (defun create-file-chooser-dialog-open (window)
   (let ((dialog (gtk:file-chooser-dialog-new \"Open File\"
@@ -124,7 +124,7 @@
   @end{pre}
   @subheading{Setting up a file chooser dialog}
     There are various cases in which you may need to use a
-    @sym{gtk:file-chooser-dialog} widget:
+    @class{gtk:file-chooser-dialog} widget:
     @begin{itemize}
       @begin{item}
         To select a file for opening, as for a File/Open command. Use
@@ -155,7 +155,7 @@
     doing a File/Save As command and you already have a file saved somewhere.
 
   @subheading{Response Codes}
-    The @sym{gtk:file-chooser-dialog} widget inherits from the
+    The @class{gtk:file-chooser-dialog} widget inherits from the
     @class{gtk:dialog} widget, so buttons that go in its action area have
     response codes such as @code{:accept} and @code{:cancel}. For example, you
     could call the @fun{gtk:file-chooser-dialog-new} function as follows:
@@ -171,7 +171,7 @@
     response identifiers from the @symbol{gtk:response-type} enumeration. For
     most dialog boxes you can use your own custom response codes rather than
     the ones in the @symbol{gtk:response-type} enumeration, but the
-    @sym{gtk:file-chooser-dialog} widget assumes that its \"accept\"-type
+    @class{gtk:file-chooser-dialog} widget assumes that its \"accept\"-type
     action, e.g. an \"Open\" or \"Save\" button, will have one of the following
     response codes:
     @begin{pre}
@@ -180,14 +180,14 @@
      @code{:yes}
      @code{:apply}
     @end{pre}
-    This is because the @sym{gtk:file-chooser-dialog} widget must intercept
+    This is because the @class{gtk:file-chooser-dialog} widget must intercept
     responses and switch to folders if appropriate, rather than letting the
     dialog terminate - the implementation uses these known response codes to
     know which responses can be blocked if appropriate.
 
   @subheading{Note}
     To summarize, make sure you use a stock response code when you use the
-    @sym{gtk:file-chooser-dialog} widget to ensure proper operation.
+    @class{gtk:file-chooser-dialog} widget to ensure proper operation.
   @see-constructor{gtk:file-chooser-dialog-new}
   @see-class{gtk:dialog}
   @see-class{gtk:file-chooser}

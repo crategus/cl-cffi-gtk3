@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2012 - 2023 Dieter Kaiser
+;;; Copyright (C) 2012 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -141,7 +141,7 @@
 (setf (documentation 'cell-area 'type)
  "@version{2023-5-13}
   @begin{short}
-    The @sym{gtk:cell-area} class is an abstract class for
+    The @class{gtk:cell-area} class is an abstract class for
     @class{gtk:cell-layout} widgets, also referred to as \"layouting widgets\",
     to interface with an arbitrary number of @class{gtk:cell-renderer} objects
     and interact with the user for a given @class{gtk:tree-model} row.
@@ -150,13 +150,13 @@
   The cell area handles events, focus navigation, drawing and size requests
   and allocations for a given row of data.
 
-  Usually users do not have to interact with the @sym{gtk:cell-area} object
+  Usually users do not have to interact with the @class{gtk:cell-area} object
   directly unless they are implementing a cell-layouting widget themselves.
 
   @subheading{Requesting area sizes}
   As outlined in the @class{gtk:widget} geometry management section, GTK uses a
   height-for-width geometry management system to compute the sizes of widgets
-  and user interfaces. The @sym{gtk:cell-area} object uses the same semantics
+  and user interfaces. The @class{gtk:cell-area} object uses the same semantics
   to calculate the size of an area for an arbitrary number of
   @class{gtk:tree-model} rows.
 
@@ -170,13 +170,13 @@
   It is also important for areas to maintain some cell alignments with areas
   rendered for adjacent rows, cells can appear \"columnized\" inside an area
   even when the size of cells are different in each row. For this reason the
-  @sym{gtk:cell-area} object uses a @class{gtk:cell-area-context} object to
+  @class{gtk:cell-area} object uses a @class{gtk:cell-area-context} object to
   store the alignments and sizes along the way, as well as the overall largest
   minimum and natural size for all the rows which have been calculated with the
   said context.
 
   The @class{gtk:cell-area-context} object is an opaque object specific to the
-  @sym{gtk:cell-area} object which created it, see the
+  @class{gtk:cell-area} object which created it, see the
   @fun{gtk:cell-area-create-context} function. The owning cell-layouting widget
   can create as many contexts as it wishes to calculate sizes of rows which
   should receive the same size in at least one orientation, horizontally or
@@ -250,7 +250,7 @@ foo_get_preferred_width (GtkWidget       *widget,
   store the data, actually, it does not know how much space the layouting widget
   plans to allocate it for every row. It is up to the layouting widget to render
   each row of data with the appropriate height and width which was requested by
-  the @sym{gtk:cell-area} object.
+  the @class{gtk:cell-area} object.
 
   In order to request the height for width of all the rows at the root level
   of a @class{gtk:tree-model} object one would do the following:
@@ -343,15 +343,15 @@ while (valid)
   @subheading{Handling Events and Driving Keyboard Focus}
   Passing events to the area is as simple as handling events on any normal
   widget and then passing them to the the @fun{gtk:cell-area-event} function
-  API as they come in. Usually the @sym{gtk:cell-area} object is only interested
-  in button events, however some customized derived areas can be implemented who
-  are interested in handling other events. Handling an event can trigger the
-  \"focus-changed\" signal to fire. As well as \"add-editable\" in the case
-  that an editable cell was clicked and needs to start editing. You can call
-  the @fun{gtk:cell-area-stop-editing} function at any time to cancel any cell
-  editing that is currently in progress.
+  API as they come in. Usually the @class{gtk:cell-area} object is only
+  interested in button events, however some customized derived areas can be
+  implemented who are interested in handling other events. Handling an event can
+  trigger the @code{\"focus-changed\"} signal to fire. As well as
+  @code{\"add-editable\"} signal in the case that an editable cell was clicked
+  and needs to start editing. You can call the @fun{gtk:cell-area-stop-editing}
+  function at any time to cancel any cell editing that is currently in progress.
 
-  The @sym{gtk:cell-area} object drives keyboard focus from cell to cell in a
+  The @class{gtk:cell-area} object drives keyboard focus from cell to cell in a
   way similar to @class{gtk:widget} object. For layouting widgets that support
   giving focus to cells it is important to remember to pass the
   @code{GTK_CELL_RENDERER_FOCUSED} value to the area functions for the row that
@@ -361,7 +361,7 @@ while (valid)
   @code{focus()} virtual method. The layouting widget is always responsible
   for knowing where @class{gtk:tree-model} rows are rendered inside the
   widget, so at @code{focus()} time the layouting widget should use the
-  @sym{gtk:cell-area} methods to navigate focus inside the area and then
+  @class{gtk:cell-area} methods to navigate focus inside the area and then
   observe the @symbol{gtk:direction-type} value to pass the focus to adjacent
   rows and areas.
 
@@ -434,7 +434,7 @@ foo_focus (GtkWidget       *widget,
   @symbol{gtk:direction-type} values to the way it lays out its cells.
 
   @subheading{Cell Properties}
-  The @sym{gtk:cell-area} class introduces cell properties for
+  The @class{gtk:cell-area} class introduces cell properties for
   @class{gtk:cell-renderer} objects in very much the same way that the
   @class{gtk:container} class introduces child properties for
   @class{gtk:widget} objects. This provides some general interfaces for defining
@@ -462,7 +462,7 @@ lambda (area renderer editable cell-area path)    :run-first
       @arg{editable} should be added to the owning cell-layouting widget at
       @arg{cell-area}.
       @begin[code]{table}
-        @entry[area]{The @sym{gtk:cell-area} object where editing started.}
+        @entry[area]{The @class{gtk:cell-area} object where editing started.}
         @entry[renderer]{The @class{gtk:cell-renderer} object that started the
           edited.}
         @entry[editable]{The @class{gtk:cell-editable} widget to add.}
@@ -479,7 +479,8 @@ lambda (area model iter is-expander is-expanded)    :run-first
       The signal is emitted whenever applying attributes to the cell area from
       the model.
       @begin[code]{table}
-        @entry[area]{The @sym{gtk:cell-area} object to apply the attributes to.}
+        @entry[area]{The @class{gtk:cell-area} object to apply the attributes
+          to.}
         @entry[model]{The @class{gtk:tree-model} object to apply the attributes
           from.}
         @entry[iter]{The @class{gtk:tree-iter} instance indicating which row to
@@ -498,7 +499,7 @@ lambda (area renderer path)    :run-first
       change, this is because focus may change to the same renderer in the same
       cell area for a different row of data.
       @begin[code]{table}
-        @entry[area]{The @sym{gtk:cell-area} object where focus changed.}
+        @entry[area]{The @class{gtk:cell-area} object where focus changed.}
         @entry[renderer]{The @class{gtk:cell-renderer} object that has focus.}
         @entry[path]{The current @class{gtk:tree-path} string set for area.}
       @end{table}
@@ -509,7 +510,7 @@ lambda (area renderer editable)    :run-first
       Indicates that editing finished on @arg{renderer} and that @arg{editable}
       should be removed from the owning cell-layouting widget.
       @begin[code]{table}
-        @entry[area]{The @sym{gtk:cell-area} object where editing finished.}
+        @entry[area]{The @class{gtk:cell-area} object where editing finished.}
         @entry[renderer]{The @class{gtk:cell-renderer} object that finished
           editeding.}
         @entry[editable]{The @class{gtk:cell-editable} widget to remove.}
@@ -524,7 +525,7 @@ lambda (area renderer editable)    :run-first
 ;;; Property Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- cell-area-edit-widget --------------------------------------------------
+;;; --- gtk:cell-area-edit-widget ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "edit-widget" 'cell-area) t)
@@ -545,12 +546,12 @@ lambda (area renderer editable)    :run-first
     Accessor of the @slot[gtk:cell-area]{edit-widget} slot of the
     @class{gtk:cell-area} class.
   @end{short}
-  The @sym{gtk:cell-area-edit-widget} function gets the widget currently used
+  The @fun{gtk:cell-area-edit-widget} function gets the widget currently used
   to edit the currently edited cell.
   @see-class{gtk:cell-area}
   @see-class{gtk:cell-editable}")
 
-;;; --- cell-area-edited-cell --------------------------------------------------
+;;; --- gtk:cell-area-edited-cell ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "edited-cell" 'cell-area) t)
@@ -571,12 +572,12 @@ lambda (area renderer editable)    :run-first
     Accessor of the @slot[gtk:cell-area]{edited-cell} slot of the
     @class{gtk:cell-area} class.
   @end{short}
-  The @sym{gtk:cell-area-edited-cell} function gets the
+  The @fun{gtk:cell-area-edited-cell} function gets the
   @class{gtk:cell-renderer} object in the area that is currently being edited.
   @see-class{gtk:cell-area}
   @see-class{gtk:cell-renderer}")
 
-;;; --- cell-area-focus-cell ---------------------------------------------------
+;;; --- gtk:cell-area-focus-cell -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "focus-cell" 'cell-area) t)
@@ -597,9 +598,9 @@ lambda (area renderer editable)    :run-first
     Accessor of the @slot[gtk:cell-area]{focus-cell} slot of the
     @class{gtk:cell-area} class.
   @end{short}
-  The @sym{gtk:cell-area-focus-cell} function retrieves the currently focused
-  cell for the area. The @sym{(setf gtk:cell-area-focus-cell)} function
-  explicitly sets the currently focused cell to @arg{renderer}.
+  The @fun{gtk:cell-area-focus-cell} function retrieves the currently focused
+  cell for the area. The @setf{gtk:cell-area-focus-cell} function explicitly
+  sets the currently focused cell to @arg{renderer}.
 
   This is generally called by implementations of the
   @code{GtkCellAreaClass.focus()} or @code{GtkCellAreaClass.event()} functions,
@@ -700,19 +701,15 @@ lambda (area renderer editable)    :run-first
 (setf (liber:alias-for-symbol 'cell-callback)
       "Callback"
       (liber:symbol-documentation 'cell-callback)
- "@version{2023-5-13}
+ "@version{2024-3-18}
+  @syntax{lambda (renderer) => result}
+  @argument[renderer]{a @class{gtk:cell-renderer} object to operate on}
+  @argument[result]{@em{true} to stop iterating over cells}
   @begin{short}
     The type of the callback function used for iterating over the cell renderers
     of a @class{gtk:cell-area} object, see the @fun{gtk:cell-area-foreach}
     function.
   @end{short}
-  @begin{pre}
-lambda (renderer)
-  @end{pre}
-  @begin[code]{table}
-    @entry[renderer]{The @class{gtk:cell-renderer} object to operate on.}
-    @entry[Returns]{@em{True} to stop iterating over cells.}
-  @end{table}
   @see-class{gtk:cell-area}
   @see-class{gtk:cell-renderer}
   @see-function{gtk:cell-area-foreach}")
@@ -761,25 +758,21 @@ lambda (renderer)
 (setf (liber:alias-for-symbol 'cell-alloc-callback)
       "Callback"
       (liber:symbol-documentation 'cell-alloc-callback)
- "@version{2023-5-13}
+ "@version{2024-3-18}
+  @syntax{lambda (renderer cell background) => result}
+  @argument[renderer]{a @class{gtk:cell-renderer} object to operate on}
+  @argument[cell]{a @class{gdk:rectangle} area allocated to @arg{renderer}
+    inside the rectangle provided to the @fun{gtk:cell-area-foreach-alloc}
+    function}
+  @entry[background]{a @class{gdk:rectangle} background area for @arg{renderer}
+    inside the background area provided to the @fun{gtk:cell-area-foreach-alloc}
+    function}
+  @entry[result]{@em{true} to stop iterating over cells}
   @begin{short}
     The type of the callback function used for iterating over the cell
     renderers of a @class{gtk:cell-area} object, see the
     @fun{gtk:cell-area-foreach-alloc} function.
   @end{short}
-  @begin{pre}
-lambda (renderer cell background)
-  @end{pre}
-  @begin[code]{table}
-    @entry[renderer]{The @class{gtk:cell-renderer} object to operate on.}
-    @entry[cell]{The @class{gdk:rectangle} area allocated to @arg{renderer}
-      inside the rectangle provided to the @fun{gtk:cell-area-foreach-alloc}
-      function.}
-    @entry[background]{The @class{gdk:rectangle} background area for
-      @arg{renderer} inside the background area provided to the
-      @fun{gtk:cell-area-foreach-alloc} function.}
-    @entry[Returns]{@em{True} to stop iterating over cells.}
-  @end{table}
   @see-class{gtk:cell-area}
   @see-class{gtk:cell-renderer}
   @see-class{gdk:rectangle}
@@ -1075,7 +1068,7 @@ lambda (renderer cell background)
 (export 'cell-area-request-mode)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_cell_area_get_preferred_width () -> cell-area-preferred-width
+;;; gtk_cell_area_get_preferred_width ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_cell_area_get_preferred_width" %cell-area-preferred-width)
@@ -1158,7 +1151,7 @@ lambda (renderer cell background)
   along  the way while calling the @fun{gtk:cell-area-preferred-width} function.
   It is important to perform a series of @fun{gtk:cell-area-preferred-width}
   requests with @arg{context} first and then call the
-  @sym{gtk:cell-area-preferred-height-for-width} function on each cell area
+  @fun{gtk:cell-area-preferred-height-for-width} function on each cell area
   individually to get the height for width of each fully requested row.
 
   If at some point, the width of a single row changes, it should be requested
@@ -1183,7 +1176,7 @@ lambda (renderer cell background)
 (export 'cell-area-preferred-height-for-width)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_cell_area_get_preferred_height () -> cell-area-preferred-height
+;;; gtk_cell_area_get_preferred_height ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_cell_area_get_preferred_height" %cell-area-preferred-height)
@@ -1266,7 +1259,7 @@ lambda (renderer cell background)
   along the way while calling the @fun{gtk:cell-area-preferred-height} function.
   It is important to perform a series of the
   @fun{gtk:cell-area-preferred-height} function requests with @arg{context}
-  first and then call the @sym{gtk:cell-area-preferred-width-for-height}
+  first and then call the @fun{gtk:cell-area-preferred-width-for-height}
   function on each cell area individually to get the height for width of each
   fully requested row.
 
@@ -1493,10 +1486,10 @@ lambda (renderer cell background)
   @argument[gtype]{a @class{g:type-t} type ID}
   @return{A list of @symbol{g:param-spec} instances.}
   @short{Returns the cell properties of a cell area class.}
-  @begin[Note]{dictionary}
+  @begin{notes}
     In the Lisp binding we pass the type of a cell area class and not
     a pointer to the cell area class as argument to the function.
-  @end{dictionary}
+  @end{notes}
   @see-class{gtk:cell-area}
   @see-class{g:type-t}
   @see-class{g:param-spec}"
@@ -1640,7 +1633,7 @@ lambda (renderer cell background)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_cell_area_cell_set_property ()
-;;; gtk_cell_area_cell_get_property () -> cell-area-cell-property
+;;; gtk_cell_area_cell_get_property ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_cell_area_cell_set_property" %cell-area-cell-set-property)

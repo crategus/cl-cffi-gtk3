@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -75,16 +75,16 @@
 (setf (documentation 'recent-chooser-widget 'type)
  "@version{#2023-3-24}
   @begin{short}
-    The @sym{gtk:recent-chooser-widget} widget is a widget suitable for
+    The @class{gtk:recent-chooser-widget} widget is a widget suitable for
     selecting recently used files.
   @end{short}
   It is the main building block of a @class{gtk:recent-chooser-dialog} widget.
   Most applications will only need to use the latter. You can use
-  @sym{gtk:recent-chooser-widget} widget as part of a larger window if you have
-  special needs.
+  @class{gtk:recent-chooser-widget} widget as part of a larger window if you
+  have special needs.
 
-  Note that the @sym{gtk:recent-chooser-widget} widget does not have any methods
-  of its own. Instead, you should use the functions that work on a
+  Note that the @class{gtk:recent-chooser-widget} widget does not have any
+  methods of its own. Instead, you should use the functions that work on a
   @class{gtk:recent-chooser} widget.
   @see-constructor{gtk:recent-chooser-widget-new}
   @see-constructor{gtk:recent-chooser-widget-for-manager}

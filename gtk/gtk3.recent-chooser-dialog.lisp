@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -78,7 +78,7 @@
  "@version{#2023-3-1}
   @image[recentchooserdialog]{}
   @begin{short}
-    The @sym{gtk:recent-chooser-dialog} widget is a dialog box suitable for
+    The @class{gtk:recent-chooser-dialog} widget is a dialog box suitable for
     displaying the recently used documents.
   @end{short}
   This widgets works by putting a @class{gtk:recent-chooser-widget} widget
@@ -86,12 +86,12 @@
   interface, so you can use all the @class{gtk:recent-chooser} functions on the
   recent chooser dialog as well as those for the @class{gtk:dialog} widget.
 
-  Note that the @sym{gtk:recent-chooser-dialog} widget does not have any
+  Note that the @class{gtk:recent-chooser-dialog} widget does not have any
   methods of its own. Instead, you should use the functions that work on a
   @class{gtk:recent-chooser} widget.
-  @begin[Example]{dictionary}
+  @begin{examples}
     In the simplest of cases, you can use the following code to use a
-    @sym{gtk:recent-chooser-dialog} widget to select a recently used file:
+    @class{gtk:recent-chooser-dialog} widget to select a recently used file:
     @begin{pre}
 GtkWidget *dialog;
 
@@ -112,7 +112,7 @@ if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_ACCEPT)
 
 gtk_widget_destroy (dialog);
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-constructor{gtk:recent-chooser-dialog-new}
   @see-constructor{gtk:recent-chooser-dialog-new-for-manager}
   @see-class{gtk:recent-chooser}

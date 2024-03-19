@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -75,13 +75,13 @@
 (setf (documentation 'im-context-simple 'type)
  "@version{#2023-2-28}
   @begin{short}
-    The @sym{gtk:im-context-simple} object is a simple input method context
+    The @class{gtk:im-context-simple} object is a simple input method context
     supporting table-based input methods.
   @end{short}
   It has a built-in table of compose sequences that is derived from the X11
   Compose files.
 
-  The @sym{gtk:im-context-simple} object reads additional compose sequences
+  The @class{gtk:im-context-simple} object reads additional compose sequences
   from the first of the following files that is found:
   @file{~/.config/gtk-3.0/Compose}, @file{~/.XCompose},
   @file{/usr/share/X11/locale/$locale/Compose}, for locales that have a
@@ -89,7 +89,7 @@
   Compose(5) manual page.
 
   @subheading{Unicode characters}
-  The @sym{gtk:im-context-simple} class also supports numeric entry of Unicode
+  The @class{gtk:im-context-simple} class also supports numeric entry of Unicode
   characters by typing the @kbd{Ctrl-Shift-u} key, followed by a hexadecimal
   Unicode codepoint. For example, @kbd{Ctrl-Shift-u 1 2 3 Enter} yields U+0123
   LATIN SMALL LETTER G WITH CEDILLA, i.e. ģ.
@@ -109,10 +109,11 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_im_context_simple_add_table ()
 ;;;
-;;; void gtk_im_context_simple_add_table (GtkIMContextSimple *context_simple,
-;;;                                       guint16 *data,
-;;;                                       gint max_seq_len,
-;;;                                       gint n_seqs);
+;;; void
+;;; gtk_im_context_simple_add_table (GtkIMContextSimple *context_simple,
+;;;                                  guint16 *data,
+;;;                                  gint max_seq_len,
+;;;                                  gint n_seqs)
 ;;;
 ;;; Adds an additional table to search to the input context. Each row of the
 ;;; table consists of max_seq_len key symbols followed by two guint16

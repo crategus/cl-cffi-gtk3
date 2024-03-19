@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2023 Dieter Kaiser
+;;; Copyright (C) 2019 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -69,7 +69,7 @@
 (setf (documentation 'event-controller-motion 'type)
  "@version{#2023-3-1}
   @begin{short}
-    The @sym{gtk:event-controller-motion} object is an event controller meant
+    The @class{gtk:event-controller-motion} object is an event controller meant
     for situations where you need to track the position of the pointer.
   @end{short}
   @begin[Signal Details]{dictionary}
@@ -79,7 +79,7 @@ lambda (controller x y)    :run-first
       @end{pre}
       Signals that the pointer has entered the widget.
       @begin[code]{table}
-        @entry[controller]{The @sym{gtk:event-controller-motion} object that
+        @entry[controller]{The @class{gtk:event-controller-motion} object that
           received the signal.}
         @entry[x]{a double float with the x coordinate}
         @entry[y]{a double float with the y coordinate}
@@ -90,7 +90,7 @@ lambda (controller)    :run-first
       @end{pre}
       Signals that pointer has left the widget.
       @begin[code]{table}
-        @entry[controller]{The @sym{gtk:event-controller-motion} object that
+        @entry[controller]{The @class{gtk:event-controller-motion} object that
           received the signal.}
       @end{table}
     @subheading{The \"motion\" signal}
@@ -99,7 +99,7 @@ lambda (controller x y)    :run-first
       @end{pre}
       Emitted when the pointer moves inside the widget.
       @begin[code]{table}
-        @entry[controller]{The @sym{gtk:event-controller-motion} object that
+        @entry[controller]{The @class{gtk:event-controller-motion} object that
           received the signal.}
         @entry[x]{a double float with the x coordinate}
         @entry[y]{a double float with the y coordinate}

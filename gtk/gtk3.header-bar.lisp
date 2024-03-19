@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2016 - 2023 Dieter Kaiser
+;;; Copyright (C) 2016 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -123,7 +123,7 @@
 (setf (documentation 'header-bar 'type)
  "@version{#2023-3-20}
   @begin{short}
-    The @sym{gtk:header-bar} widget is similar to a horizontal @class{gtk:box}
+    The @class{gtk:header-bar} widget is similar to a horizontal @class{gtk:box}
     widget. It allows children to be placed at the start or the end. In
     addition, it allows a title and subtitle to be displayed.
   @end{short}
@@ -136,7 +136,7 @@
   none is currently set. If a subtitle is not needed, the space reservation can
   be turned off with the @fun{gtk:header-bar-has-subtitle} function.
 
-  The @sym{gtk:header-bar} widget can add typical window frame controls, such
+  The @class{gtk:header-bar} widget can add typical window frame controls, such
   as Minimize, Maximize and Close buttons, or the window icon.
   @begin[Child Property Details]{dictionary}
     @begin[code]{table}
@@ -171,7 +171,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- header-bar-custom-title ------------------------------------------------
+;;; --- gtk:header-bar-custom-title --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "custom-title" 'header-bar) t)
@@ -192,9 +192,9 @@
     Accessor of the @slot[gtk:header-bar]{custom-title} slot of the
     @class{gtk:header-bar} class.
   @end{short}
-  The @sym{gtk:header-bar-custom-title} function retrieves the custom title
-  widget of the header bar. The @sym{(setf gtk:header-bar-custom-title)}
-  function sets a custom title widget.
+  The @fun{gtk:header-bar-custom-title} function retrieves the custom title
+  widget of the header bar. The @setf{gtk:header-bar-custom-title} function
+  sets a custom title widget.
 
   The title should help a user identify the current view. This supersedes any
   title set by the @fun{gtk:header-bar-title} or @fun{gtk:header-bar-subtitle}
@@ -208,7 +208,7 @@
   @see-function{gtk:header-bar-title}
   @see-function{gtk:header-bar-subtitle}")
 
-;;; --- header-bar-decoration-layout -------------------------------------------
+;;; --- gtk:header-bar-decoration-layout ---------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "decoration-layout"
@@ -235,8 +235,8 @@
     Accessor of the @slot[gtk:header-bar]{decoration-layout} slot of the
     @class{gtk:header-bar} class.
   @end{short}
-  The @sym{gtk:header-bar-decoration-layout} function gets the decoration
-  layout. The @sym{(setf gtk:header-bar-decoration-layout)} function sets the
+  The @fun{gtk:header-bar-decoration-layout} function gets the decoration
+  layout. The @setf{gtk:header-bar-decoration-layout} function sets the
   decoration layout for the header bar, overriding the
   @slot[gtk:settings]{gtk-decoration-layout} setting.
 
@@ -256,7 +256,7 @@
   @see-class{gtk:header-bar}
   @see-function{gtk:settings-gtk-decoration-layout}")
 
-;;; --- header-bar-decoration-layout-set ---------------------------------------
+;;; --- gtk:header-bar-decoration-layout-set -----------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "decoration-layout-set"
@@ -284,7 +284,7 @@
   @see-class{gtk:header-bar}
   @see-function{gtk:header-bar-decoration-layout}")
 
-;;; --- header-bar-has-subtitle ------------------------------------------------
+;;; --- gtk:header-bar-has-subtitle --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "has-subtitle" 'header-bar) t)
@@ -306,13 +306,13 @@
     Accessor of the @slot[gtk:header-bar]{has-subtitle} slot of the
     @class{gtk:header-bar} class.
   @end{short}
-  The @sym{gtk:header-bar-has-subtitle} function retrieves whether the header
+  The @fun{gtk:header-bar-has-subtitle} function retrieves whether the header
   bar reserves space for a subtitle, regardless if one is currently set or not.
-  The @sym{(setf gtk:header-bar-has-subtitle)} function sets whether the header
-  bar should reserve space for a subtitle.
+  The @setf{gtk:header-bar-has-subtitle} function sets whether the header bar
+  should reserve space for a subtitle.
   @see-class{gtk:header-bar}")
 
-;;; --- header-bar-show-close-button -------------------------------------------
+;;; --- gtk:header-bar-show-close-button ---------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "show-close-button"
@@ -338,13 +338,13 @@
     Accessor of the @slot[gtk:header-bar]{show-close-button} slot of the
     @class{gtk:header-bar} class.
   @end{short}
-  The @sym{gtk:header-bar-show-close-button} function returns whether the header
+  The @fun{gtk:header-bar-show-close-button} function returns whether the header
   bar shows the standard window decorations, including Close, Maximize, and
-  Minimize buttons. The @sym{(setf gtk:header-bar-show-close-button)} function
-  sets whether the header bar shows decorations.
+  Minimize buttons. The @setf{gtk:header-bar-show-close-button} function sets
+  whether the header bar shows decorations.
   @see-class{gtk:header-bar}")
 
-;;; --- header-bar-spacing -----------------------------------------------------
+;;; --- gtk:header-bar-spacing -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "spacing" 'header-bar) t)
@@ -369,7 +369,7 @@
   The amount of space between children in pixels.
   @see-class{gtk:header-bar}")
 
-;;; --- header-bar-subtitle ----------------------------------------------------
+;;; --- gtk:header-bar-subtitle ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "subtitle" 'header-bar) t)
@@ -390,10 +390,10 @@
     Accessor of the @slot[gtk:header-bar]{subtitle} slot of the
     @class{gtk:header-bar} class.
   @end{short}
-  The @sym{gtk:header-bar-subtitle} function retrieves the subtitle of the
-  header bar. The @sym{(setf gtk:header-bar-subtitle)} function sets the
-  subtitle. The title should give a user an additional detail to help him
-  identify the current view.
+  The @fun{gtk:header-bar-subtitle} function retrieves the subtitle of the
+  header bar. The @setf{gtk:header-bar-subtitle} function sets the subtitle.
+  The title should give a user an additional detail to help him identify the
+  current view.
 
   Note that the @class{gtk:header-bar} widget by default reserves room for the
   subtitle, even if none is currently set. If this is not desired, set the
@@ -401,7 +401,7 @@
   @see-class{gtk:header-bar}
   @see-function{gtk:header-bar-has-subtitle}")
 
-;;; --- header-bar-title -------------------------------------------------------
+;;; --- gtk:header-bar-title ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "title" 'header-bar) t)
@@ -422,9 +422,9 @@
     Accessor of the @slot[gtk:header-bar]{title} slot of the
     @class{gtk:header-bar} class.
   @end{short}
-  The @sym{gtk:header-bar-title} function retrieves the title of the header
+  The @fun{gtk:header-bar-title} function retrieves the title of the header
   bar, or @code{nil} if none has been set explicitly. The
-  @sym{(setf gtk:header-bar-title)} function sets the title,
+  @setf{gtk:header-bar-title} function sets the title.
 
   The title should help a user identify the current view. A good title should
   not include the application name.
@@ -434,7 +434,7 @@
 ;;; Child Property and Child Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- header-bar-child-pack-type ---------------------------------------------
+;;; --- gtk:header-bar-child-pack-type -----------------------------------------
 
 (define-child-property header-bar-child-pack-type
                        "pack-type" "GtkPackType" t t t)
@@ -460,7 +460,7 @@
   @see-class{gtk:widget}
   @see-symbol{gtk:pack-type}")
 
-;;; --- header-bar-child-position ----------------------------------------------
+;;; --- gtk:header-bar-child-position ------------------------------------------
 
 (define-child-property header-bar-child-position
                        "position" "gint" t t t)

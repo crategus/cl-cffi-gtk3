@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2012 - 2023 Dieter Kaiser
+;;; Copyright (C) 2012 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -88,17 +88,18 @@
 (setf (documentation 'cell-area-box 'type)
  "@version{2023-2-20}
   @begin{short}
-    The @sym{gtk:cell-area-box} object renders cell renderers into a row or a
+    The @class{gtk:cell-area-box} object renders cell renderers into a row or a
     column depending on its orientation, which is a value of the
     @symbol{gtk:orientation} enumeration.
   @end{short}
-  The @sym{gtk:cell-area-box} object uses a notion of packing. Packing refers
+  The @class{gtk:cell-area-box} object uses a notion of packing. Packing refers
   to adding cell renderers with reference to a particular position in a
-  @sym{gtk:cell-area-box} object. There are two reference positions: the start
-  and the end of the box. When the @sym{gtk:cell-area-box} object is oriented in
-  the @code{:vertical} orientation, the start is defined as the top of the box
-  and the end is defined as the bottom. In the @code{:horizontal} orientation
-  start is defined as the left side and the end is defined as the right side.
+  @class{gtk:cell-area-box} object. There are two reference positions: the start
+  and the end of the box. When the @class{gtk:cell-area-box} object is oriented
+  in the @code{:vertical} orientation, the start is defined as the top of the
+  box and the end is defined as the bottom. In the @code{:horizontal}
+  orientation start is defined as the left side and the end is defined as the
+  right side.
 
   Alignments of @class{gtk:cell-renderer} objects rendered in adjacent rows can
   be configured by configuring the @code{align} child cell property with the
@@ -169,8 +170,8 @@
     Accessor of the @slot[gtk:cell-area-box]{spacing} slot of the
     @class{gtk:cell-area-box} class.
   @end{short}
-  The @sym{gtk:cell-area-box-spacing} function gets the spacing added between
-  cell renderers. The @sym{(setf gtk:cell-area-box-spacing)} function sets the
+  The @fun{gtk:cell-area-box-spacing} function gets the spacing added between
+  cell renderers. The @setf{gtk:cell-area-box-spacing} function sets the
   spacing.
   @see-class{gtk:cell-area-box}
   @see-class{gtk:cell-renderer}")
@@ -179,7 +180,7 @@
 ;;; Accessors of Child Properties
 ;;; ----------------------------------------------------------------------------
 
-;;; --- cell-area-box-child-align ----------------------------------------------
+;;; --- gtk:cell-area-box-child-align ------------------------------------------
 
 (define-child-property cell-area-box-child-align "align" "gboolean" t t t)
 
@@ -202,7 +203,7 @@
   @see-class{gtk:cell-area-box}
   @see-class{gtk:widget}")
 
-;;; --- cell-area-box-child-expand ---------------------------------------------
+;;; --- gtk:cell-area-box-child-expand -----------------------------------------
 
 (define-child-property cell-area-box-child-expand "expand" "gboolean" t t t)
 
@@ -226,7 +227,7 @@
   @see-class{gtk:cell-area-box}
   @see-class{gtk:widget}")
 
-;;; --- cell-area-box-child-fixed-size -----------------------------------------
+;;; --- gtk:cell-area-box-child-fixed-size -------------------------------------
 
 (define-child-property cell-area-box-child-fixed-size
                        "fixed-size" "gboolean" t t t)
@@ -251,7 +252,7 @@
   @see-class{gtk:cell-area-box}
   @see-class{gtk:widget}")
 
-;;; --- cell-area-box-child-pack-type ------------------------------------------
+;;; --- gtk:cell-area-box-child-pack-type --------------------------------------
 
 (define-child-property cell-area-box-child-pack-type
                        "pack-type" "gboolean" t t t)

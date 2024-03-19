@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2023 Dieter Kaiser
+;;; Copyright (C) 2019 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -149,14 +149,14 @@
 (setf (documentation 'model-button 'type)
  "@version{#2023-3-21}
   @begin{short}
-    The @sym{gtk:model-button} class is a button class that can use a
+    The @class{gtk:model-button} class is a button class that can use a
     @class{g:action} object as its model.
   @end{short}
   In contrast to the @class{gtk:toggle-button} or @class{gtk:radio-button}
   classes, which can also be backed by a @class{g:action} object via the
-  @code{action-name} property, the @sym{gtk:model-button} widget will adapt its
-  appearance according to the kind of action it is backed by, and appear either
-  as a plain, check or radio button.
+  @code{action-name} property, the @class{gtk:model-button} widget will adapt
+  its appearance according to the kind of action it is backed by, and appear
+  either as a plain, check or radio button.
 
   Model buttons are used with popovers from a menu model with the
   @fun{gtk:popover-new-from-model} function. They can also be used manually in
@@ -175,11 +175,11 @@
   and @code{iconic} properties.
 
   Model buttons have built-in support for submenus in the
-  @class{gtk:popover-menu} widget. To make a @sym{gtk:model-button} widget that
-  opens a submenu when activated, set the @code{menu-name} property. To make a
-  button that goes back to the parent menu, you should set the @code{inverted}
-  property to place the submenu indicator at the opposite side.
-  @begin[Example]{dictionary}
+  @class{gtk:popover-menu} widget. To make a @class{gtk:model-button} widget
+  that opens a submenu when activated, set the @code{menu-name} property. To
+  make a button that goes back to the parent menu, you should set the
+  @code{inverted} property to place the submenu indicator at the opposite side.
+  @begin{examples}
     @begin{pre}
 <object class=\"GtkPopoverMenu\">
   <child>
@@ -211,7 +211,7 @@
   </child>
 </object>
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @begin[CSS nodes]{dictionary}
     @begin{pre}
 modelbutton
@@ -226,7 +226,7 @@ modelbutton
 ├── <child>
 ╰── arrow
     @end{pre}
-    The @sym{gtk:model-button} implementation has a main CSS node with name
+    The @class{gtk:model-button} implementation has a main CSS node with name
     @code{modelbutton}, and a subnode, which will have the name @code{check},
     @code{radio} or @code{arrow}, depending on the role of the button and
     whether it has a menu name set.
@@ -257,7 +257,7 @@ button.model
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- model-button-active ----------------------------------------------------
+;;; --- gtk:model-button-active ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "active" 'model-button) t)
@@ -284,7 +284,7 @@ button.model
   @see-class{gtk:model-button}
   @see-class{g:action}")
 
-;;; --- model-button-centered --------------------------------------------------
+;;; --- gtk:model-button-centered ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "centered" 'model-button) t)
@@ -311,7 +311,7 @@ button.model
   property should be set for title-like items.
   @see-class{gtk:model-button}")
 
-;;; --- model-button-icon ------------------------------------------------------
+;;; --- gtk:model-button-icon --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "icon" 'model-button) t)
@@ -336,7 +336,7 @@ button.model
   @see-class{g:icon}
   @see-function{gtk:model-button-iconic}")
 
-;;; --- model-button-iconic ----------------------------------------------------
+;;; --- gtk:model-button-iconic ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "iconic" 'model-button) t)
@@ -365,7 +365,7 @@ button.model
   @see-class{gtk:model-button}
   @see-function{gtk:model-button-icon}")
 
-;;; --- model-button-inverted --------------------------------------------------
+;;; --- gtk:model-button-inverted ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "inverted" 'model-button) t)
@@ -392,7 +392,7 @@ button.model
   property should be set for model buttons that 'go back' to a parent menu.
   @see-class{gtk:model-button}")
 
-;;; --- model-button-menu-name -------------------------------------------------
+;;; --- gtk:model-button-menu-name ---------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "menu-name" 'model-button) t)
@@ -418,7 +418,7 @@ button.model
   the button should not have an action associated with it.
   @see-class{gtk:model-button}")
 
-;;; --- model-button-role ------------------------------------------------------
+;;; --- gtk:model-button-role --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "role" 'model-button) t)
@@ -447,7 +447,7 @@ button.model
   @see-class{gtk:model-button}
   @see-symbol{gtk:button-role}")
 
-;;; --- model-button-text ------------------------------------------------------
+;;; --- gtk:model-button-text --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "text" 'model-button) t)
@@ -471,7 +471,7 @@ button.model
   The label for the button.
   @see-class{gtk:model-button}")
 
-;;; --- model-button-use-markup ------------------------------------------------
+;;; --- gtk:model-button-use-markup --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "use-markup" 'model-button) t)

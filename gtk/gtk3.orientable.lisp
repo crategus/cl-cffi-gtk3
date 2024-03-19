@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -71,10 +71,10 @@
   @begin{short}
     An interface for flippable widgets.
   @end{short}
-  The @sym{gtk:orientable} interface is implemented by all widgets that can be
-  oriented horizontally or vertically. Historically, such widgets have been
+  The @class{gtk:orientable} interface is implemented by all widgets that can
+  be oriented horizontally or vertically. Historically, such widgets have been
   realized as subclasses of a common base class, e.g. GtkBox, GtkHBox, GtkVBox.
-  The @sym{gtk:orientable} interface is more flexible in that it allows the
+  The @class{gtk:orientable} interface is more flexible in that it allows the
   orientation to be changed at runtime, allowing the widgets to \"flip\".
   @see-slot{gtk:orientable-orientation}
   @see-class{gtk:box}")
@@ -83,7 +83,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- orientable-orientation -------------------------------------------------
+;;; --- gtk:orientable-orientation ---------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "orientation" 'orientable) t)
@@ -105,9 +105,9 @@
     Accessor of the @slot[gtk:orientable]{orientation} slot of the
     @class{gtk:orientable} interface.
   @end{short}
-  The @sym{gtk:orientable-orientation} function returns the orientation of the
-  orientable widget. The @sym{(setf gtk:orientable-orientation)} function sets
-  the orientation.
+  The @fun{gtk:orientable-orientation} function returns the orientation of the
+  orientable widget. The @setf{gtk:orientable-orientation} function sets the
+  orientation.
   @see-class{gtk:orientable}
   @see-symbol{gtk:orientation}")
 

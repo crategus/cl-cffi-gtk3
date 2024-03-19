@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -90,10 +90,10 @@
 (setf (documentation 'tree-model-filter 'type)
  "@version{#2023-1-21}
   @begin{short}
-    A @sym{gtk:tree-model-filter} object is a tree model which wraps another
+    A @class{gtk:tree-model-filter} object is a tree model which wraps another
     tree model.
   @end{short}
-  The @sym{gtk:tree-model-filter} object can do the following things:
+  The @class{gtk:tree-model-filter} object can do the following things:
   @begin{itemize}
     @begin{item}
       Filter specific rows, based on data from a \"visible column\", a column
@@ -116,17 +116,17 @@
   The basic API is similar to the @class{gtk:tree-model-sort} object. For an
   example on its usage, see the @class{gtk:tree-model-sort} documentation.
 
-  When using the @sym{gtk:tree-model-filter} object, it is important to realize
-  that the @sym{gtk:tree-model-filter} object maintains an internal cache of all
-  nodes which are visible in its clients. The cache is likely to be a subtree of
-  the tree exposed by the child model. The @sym{gtk:tree-model-filter} object
-  will not cache the entire child model when unnecessary to not compromise the
-  caching mechanism that is exposed by the reference counting scheme. If the
-  child model implements reference counting, unnecessary signals may not be
-  emitted because of reference counting rule 3, see the @class{gtk:tree-model}
-  documentation. Note that e.g. the @class{gtk:tree-store} object does not
-  implement reference counting and will always emit all signals, even when the
-  receiving node is not visible.
+  When using the @class{gtk:tree-model-filter} object, it is important to
+  realize that the @class{gtk:tree-model-filter} object maintains an internal
+  cache of all nodes which are visible in its clients. The cache is likely to
+  be a subtree of the tree exposed by the child model. The
+  @class{gtk:tree-model-filter} object will not cache the entire child model
+  when unnecessary to not compromise the caching mechanism that is exposed by
+  the reference counting scheme. If the child model implements reference
+  counting, unnecessary signals may not be emitted because of reference counting
+  rule 3, see the @class{gtk:tree-model} documentation. Note that e.g. the
+  @class{gtk:tree-store} object does not implement reference counting and will
+  always emit all signals, even when the receiving node is not visible.
 
   Because of this, limitations for possible visible functions do apply. In
   general, visible functions should only use data or properties from the node
@@ -138,20 +138,20 @@
 
   Determining the visibility state of a given node based on the state of its
   child nodes is a frequently occurring use case. Therefore, the
-  @sym{gtk:tree-model-filter} object explicitly supports this. For example, when
-  a node does not have any children, you might not want the node to be visible.
-  As soon as the first row is added to the node's child level, or the last row
-  removed, the node's visibility should be updated.
+  @class{gtk:tree-model-filter} object explicitly supports this. For example,
+  when a node does not have any children, you might not want the node to be
+  visible. As soon as the first row is added to the node's child level, or the
+  last row removed, the node's visibility should be updated.
 
   This introduces a dependency from the node on its child nodes. In order to
-  accommodate this, the @sym{gtk:tree-model-filter} object must make sure the
+  accommodate this, the @class{gtk:tree-model-filter} object must make sure the
   necesary signals are received from the child model. This is achieved by
   building, for all nodes which are exposed as visible nodes to
-  the @sym{gtk:tree-model-filter} objects clients, the child level (if any) and
-  take a reference on the first node in this level. Furthermore, for every
-  \"row-inserted\", \"row-changed\" or \"row-deleted\" signal, also these which
-  were not handled because the node was not cached, the
-  @sym{gtk:tree-model-filter} object will check if the visibility state of
+  the @class{gtk:tree-model-filter} objects clients, the child level (if any)
+  and take a reference on the first node in this level. Furthermore, for every
+  @code{\"row-inserted\"}, @code{\"row-changed\"} or @code{\"row-deleted\"}
+  signal, also these which were not handled because the node was not cached, the
+  @class{gtk:tree-model-filter} object will check if the visibility state of
   any parent node has changed.
 
   Beware, however, that this explicit support is limited to these two cases.
@@ -171,7 +171,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- tree-model-filter-child-model ------------------------------------------
+;;; --- gtk:tree-model-filter-child-model --------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "child-model"
@@ -197,7 +197,7 @@
   @see-class{gtk:tree-model-filter}
   @see-class{gtk:tree-model}")
 
-;;; --- tree-model-filter-virtual-root -----------------------------------------
+;;; --- gtk:tree-model-filter-virtual-root -------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "virtual-root"
@@ -438,7 +438,7 @@ lambda (model iter value column)
 (export 'tree-model-filter-set-visible-column)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_model_filter_get_model () -> tree-model-filter-model
+;;; gtk_tree_model_filter_get_model ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_model_filter_get_model" tree-model-filter-model)

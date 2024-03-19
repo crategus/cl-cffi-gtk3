@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -78,7 +78,7 @@
 (setf (documentation 'text-mark 'type)
  "@version{#2023-3-15}
   @begin{short}
-    A @sym{gtk:text-mark} object is like a bookmark in a text buffer.
+    The @class{gtk:text-mark} object is like a bookmark in a text buffer.
   @end{short}
   It preserves a position in the text.
 
@@ -101,8 +101,8 @@
   buffer, a text mark is essentially useless.
 
   Text marks optionally have names. These can be convenient to avoid passing
-  the @sym{gtk:text-mark} object around. Text marks are typically created using
-  the @fun{gtk:text-buffer-create-mark} function.
+  the @class{gtk:text-mark} object around. Text marks are typically created
+  using the @fun{gtk:text-buffer-create-mark} function.
   @see-constructor{gtk:text-mark-new}
   @see-slot{gtk:text-mark-left-gravity}
   @see-slot{gtk:text-mark-name}
@@ -115,7 +115,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- text-mark-left-gravity -------------------------------------------------
+;;; --- gtk:text-mark-left-gravity ---------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "left-gravity" 'text-mark) t)
@@ -136,11 +136,11 @@
     Accessor of the @slot[gtk:text-mark]{left-gravity} slot of the
     @class{gtk:text-mark} class.
   @end{short}
-  The @sym{gtk:text-mark-left-gravity} function determines whether the text
+  The @fun{gtk:text-mark-left-gravity} function determines whether the text
   mark has left gravity.
   @see-class{gtk:text-mark}")
 
-;;; --- text-mark-name ---------------------------------------------------------
+;;; --- gtk:text-mark-name -----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "name" 'text-mark) t)
@@ -161,7 +161,7 @@
     Accessor of the @slot[gtk:text-mark]{name} slot of the
     @class{gtk:text-mark} class.
   @end{short}
-  The @sym{gtk:text-mark-name} function returns the name of the text mark or
+  The @fun{gtk:text-mark-name} function returns the name of the text mark or
   @code{nil} for anonymous text marks.
   @see-class{gtk:text-mark}")
 
@@ -202,7 +202,7 @@
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_text_mark_set_visible ()
-;;; gtk_text_mark_get_visible () -> text-mark-visible
+;;; gtk_text_mark_get_visible ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf text-mark-visible) (visibility mark)
@@ -223,9 +223,9 @@
   @begin{short}
     Accessor for the visibility of a text mark.
   @end{short}
-  The @sym{gtk:text-mark-visible} function returns @em{true} if the text mark
+  The @fun{gtk:text-mark-visible} function returns @em{true} if the text mark
   is visible, i.e. a cursor is displayed for it. The
-  @sym{(setf gtk:text-mark-visible)} function sets the visibility.
+  @setf{gtk:text-mark-visible} function sets the visibility.
 
   The insertion point is normally visible, i.e. you can see it as a vertical
   bar. Also, the text widget uses a visible text mark to indicate where a drop
@@ -237,7 +237,7 @@
 (export 'text-mark-visible)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_mark_get_deleted () -> text-mark-deleted
+;;; gtk_text_mark_get_deleted ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_mark_get_deleted" text-mark-deleted) :boolean
@@ -259,7 +259,7 @@
 (export 'text-mark-deleted)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_mark_get_buffer () -> text-mark-buffer
+;;; gtk_text_mark_get_buffer ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_mark_get_buffer" text-mark-buffer)

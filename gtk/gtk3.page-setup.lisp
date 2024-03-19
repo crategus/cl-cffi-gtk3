@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -89,7 +89,8 @@
 (setf (documentation 'page-setup 'type)
  "@version{#2023-3-21}
   @begin{short}
-    A @sym{gtk:page-setup} object stores the page size, orientation and margins.
+    A @class{gtk:page-setup} object stores the page size, orientation and
+    margins.
   @end{short}
   The idea is that you can get one of these from the page setup dialog and then
   pass it to the @class{gtk:print-operation} object when printing. The benefit
@@ -102,10 +103,10 @@
   the layout margins that a word processor uses. They are typically used to
   determine the minimal size for the layout margins.
 
-  To obtain a @sym{gtk:page-setup} object use the @fun{gtk:page-setup-new}
+  To obtain a @class{gtk:page-setup} object use the @fun{gtk:page-setup-new}
   function to get the defaults, or use the @fun{gtk:print-run-page-setup-dialog}
   function to show the page setup dialog and receive the resulting page setup.
-  @begin[Example]{dictionary}
+  @begin{examples}
     A page setup dialog.
     @begin{pre}
 (defun do-page-setup (settings page-setup)
@@ -115,7 +116,7 @@
   ;; Return the new page setup from the dialog
   (gtk:print-run-page-setup-dialog window page-setup settings))
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-constructor{gtk:page-setup-new}
   @see-constructor{gtk:page-setup-new-from-file}
   @see-constructor{gtk:page-setup-new-from-key-file}
@@ -177,19 +178,19 @@
   @begin{short}
     Accessor for the page orientation of a page setup object.
   @end{short}
-  The @sym{gtk:page-setup-orientation} function gets the page orientation of
-  the page setup object. The @sym{(setf gtk:page-setup-orientation)} function
-  sets the page orientation.
+  The @fun{gtk:page-setup-orientation} function gets the page orientation of
+  the page setup object. The @setf{gtk:page-setup-orientation} function sets
+  the page orientation.
 
   Possible values are @code{:portrait} and @code{:landscape}.
-  @begin[Example]{dictionary}
+  @begin{examples}
     Get the default page orientation.
     @begin{pre}
 (let ((setup (gtk:page-setup-new)))
   (gtk:page-setup-orientation setup))
 => :PORTRAIT
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:page-setup}
   @see-symbol{gtk:page-orientation}"
   (setup (g:object page-setup)))
@@ -198,7 +199,7 @@
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_page_setup_get_paper_size ()
-;;; gtk_page_setup_set_paper_size () -> page-setup-paper-size
+;;; gtk_page_setup_set_paper_size ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf page-setup-paper-size) (size setup)
@@ -219,9 +220,9 @@
   @begin{short}
     Accessor for the paper size of a page setup object.
   @end{short}
-  The @sym{gtk:page-setup-paper-size} function gets the paper size of the page
-  setup object. The @sym{(setf gtk:page-setup-paper-size)} function sets the
-  paper size without changing the margins. See the
+  The @fun{gtk:page-setup-paper-size} function gets the paper size of the page
+  setup object. The @setf{gtk:page-setup-paper-size} function sets the paper
+  size without changing the margins. See the
   @fun{gtk:page-setup-set-paper-size-and-default-margins} function.
   @see-class{gtk:page-setup}
   @see-class{gtk:paper-size}
@@ -232,7 +233,7 @@
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_page_setup_get_top_margin ()
-;;; gtk_page_setup_set_top_margin () -> page-setup-top-margin
+;;; gtk_page_setup_set_top_margin ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf page-setup-top-margin) (margin setup unit)
@@ -254,9 +255,9 @@
   @begin{short}
     Accessor of the top margin of the page setup in units of @arg{unit}.
   @end{short}
-  The @sym{gtk:page-setup-top-margin} function gets the top margin of the page
-  setup in units of @arg{unit}. The @sym{(setf gtk:page-setup-top-margin)}
-  function sets the top margin.
+  The @fun{gtk:page-setup-top-margin} function gets the top margin of the page
+  setup in units of @arg{unit}. The @setf{gtk:page-setup-top-margin} function
+  sets the top margin.
   @see-class{gtk:page-setup}
   @see-symbol{gtk:unit}"
   (setup (g:object page-setup))
@@ -266,7 +267,7 @@
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_page_setup_get_bottom_margin ()
-;;; gtk_page_setup_set_bottom_margin () -> page-setup-bottom-margin
+;;; gtk_page_setup_set_bottom_margin ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf page-setup-bottom-margin) (margin setup unit)
@@ -290,9 +291,9 @@
   @begin{short}
     Accessor of the bottom margin of the page setup in units of @arg{unit}.
   @end{short}
-  The @sym{gtk:page-setup-bottom-margin} function gets the bottom margin of
+  The @fun{gtk:page-setup-bottom-margin} function gets the bottom margin of
   the page setup in units of @arg{unit}. The
-  @sym{(setf gtk:page-setup-bottom-margin)} function sets the bottom margin.
+  @setf{gtk:page-setup-bottom-margin} function sets the bottom margin.
   @see-class{gtk:page-setup}
   @see-symbol{gtk:unit}"
   (setup (g:object page-setup))
@@ -302,7 +303,7 @@
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_page_setup_get_left_margin ()
-;;; gtk_page_setup_set_left_margin () -> page-setup-left-margin
+;;; gtk_page_setup_set_left_margin ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf page-setup-left-margin) (margin setup unit)
@@ -324,8 +325,8 @@
   @begin{short}
     Accessor of the left margin of the page setup in units of @arg{unit}.
   @end{short}
-  The @sym{gtk:page-setup-left-margin} function gets the left margin of the
-  page setup in units of @arg{unit}. The @sym{(setf gtk:page-setup-left-margin)}
+  The @fun{gtk:page-setup-left-margin} function gets the left margin of the
+  page setup in units of @arg{unit}. The @setf{gtk:page-setup-left-margin}
   function sets the left margin.
   @see-class{gtk:page-setup}
   @see-symbol{gtk:unit}"
@@ -336,7 +337,7 @@
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_page_setup_get_right_margin ()
-;;; gtk_page_setup_set_right_margin () -> page-setup-right-margin
+;;; gtk_page_setup_set_right_margin ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf page-setup-right-margin) (margin setup unit)
@@ -359,9 +360,9 @@
   @begin{short}
     Accessor of the right margin of the page setup in units of @arg{unit}.
   @end{short}
-  The @sym{gtk:page-setup-right-margin} function gets the right margin of the
+  The @fun{gtk:page-setup-right-margin} function gets the right margin of the
   page setup in units of @arg{unit}. The
-  @sym{(setf gtk:page-setup-right-margin)} function sets the right margin.
+  @setf{gtk:page-setup-right-margin} function sets the right margin.
   @see-class{gtk:page-setup}
   @see-symbol{gtk:unit}"
   (setup (g:object page-setup))

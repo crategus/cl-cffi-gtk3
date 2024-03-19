@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -92,17 +92,17 @@
 (setf (documentation 'menu-tool-button 'type)
  "@version{#2023-2-27}
   @begin{short}
-    A @sym{gtk:menu-tool-button} widget is a @class{gtk:tool-item} that
+    A @class{gtk:menu-tool-button} widget is a @class{gtk:tool-item} that
     contains a button and a small additional button with an arrow.
   @end{short}
   When clicked, the arrow button pops up a dropdown menu.
 
   Use the @fun{gtk:menu-tool-button-new} function to create a new
-  @sym{gtk:menu-tool-button} widget. Use the
+  @class{gtk:menu-tool-button} widget. Use the
   @fun{gtk:menu-tool-button-new-from-stock} function to create a new
-  @sym{gtk:menu-tool-button} widget containing a stock item.
+  @class{gtk:menu-tool-button} widget containing a stock item.
   @begin[GtkMenuToolButton as GtkBuildable]{dictionary}
-    The @sym{gtk:menu-tool-button} implementation of the @class{gtk:buildable}
+    The @class{gtk:menu-tool-button} implementation of the @class{gtk:buildable}
     interface supports adding a menu by specifying \"menu\" as the \"type\"
     attribute of a @code{<child>} element.
 
@@ -123,10 +123,10 @@ lambda (button)    :run-first
       The signal is emitted before the menu is shown. It can be used to populate
       the menu on demand, using the @fun{gtk:menu-tool-button-menu} function.
       Note that even if you populate the menu dynamically in this way, you must
-      set an empty menu on the @sym{gtk:menu-tool-button} widget beforehand,
+      set an empty menu on the @class{gtk:menu-tool-button} widget beforehand,
       since the arrow is made insensitive if the menu is not set.
       @begin[code]{table}
-        @entry[button]{The @sym{gtk:menu-tool-button} widget on which the
+        @entry[button]{The @class{gtk:menu-tool-button} widget on which the
           signal is emitted.}
       @end{table}
   @end{dictionary}
@@ -160,10 +160,10 @@ lambda (button)    :run-first
     Accessor of the @slot[gtk:menu-tool-button]{menu} slot of the
     @class{gtk:menu-tool-button} class.
   @end{short}
-  The @sym{gtk:menu-tool-button-menu} function gets the menu associated with
-  @arg{button}. The @sym{(setf gtk:menu-tool-button-menu)} function sets the
-  menu that is popped up when the user clicks on the arrow. If @arg{menu} is
-  @code{nil}, the arrow button becomes insensitive.
+  The @fun{gtk:menu-tool-button-menu} function gets the menu associated with
+  @arg{button}. The @setf{gtk:menu-tool-button-menu} function sets the menu that
+  is popped up when the user clicks on the arrow. If @arg{menu} is @code{nil},
+  the arrow button becomes insensitive.
   @see-class{gtk:menu-tool-button}
   @see-class{gtk:menu}")
 
@@ -210,7 +210,7 @@ lambda (button)    :run-first
   The new menu tool button will contain an icon and label from the stock item
   indicated by @arg{stock-id}.
   @begin[Warning]{dictionary}
-    The @sym{gtk:menu-tool-button-new-from-stock} function has been deprecated
+    The @fun{gtk:menu-tool-button-new-from-stock} function has been deprecated
     since version 3.10 and should not be used in newly written code. Use the
     @fun{gtk:menu-tool-button-new} function instead.
   @end{dictionary}

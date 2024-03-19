@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -88,26 +88,26 @@
 (setf (documentation 'viewport 'type)
  "@version{#2023-3-29}
   @begin{short}
-    The @sym{gtk:viewport} widget acts as an adaptor class, implementing
+    The @class{gtk:viewport} widget acts as an adaptor class, implementing
     scrollability for child widgets that lack their own scrolling capabilities.
   @end{short}
-  Use the @sym{gtk:viewport} widget to scroll child widgets such as the widgets
-  @class{gtk:grid}, @class{gtk:box}, and so on.
+  Use the @class{gtk:viewport} widget to scroll child widgets such as the
+  widgets @class{gtk:grid}, @class{gtk:box}, and so on.
 
   If a widget has native scrolling abilities, such as the @class{gtk:text-view},
   @class{gtk:tree-view} or @class{gtk:icon-view} widgets, it can be added to a
   @class{gtk:scrolled-window} widget with the @fun{gtk:container-add} function.
-  If a widget does not, you must first add the widget to a @sym{gtk:viewport}
+  If a widget does not, you must first add the widget to a @class{gtk:viewport}
   widget, then add the viewport to the scrolled window. The
   @fun{gtk:container-add} function does this automatically if a child that does
   not implement the @class{gtk:scrollable} interface is added to a
   @class{gtk:scrolled-window} widget, so you can ignore the presence of the
   viewport.
 
-  The @sym{gtk:viewport} widget will start scrolling content only if allocated
+  The @class{gtk:viewport} widget will start scrolling content only if allocated
   less than the child widget's minimum size in a given orientation.
   @begin[CSS nodes]{dictionary}
-    The @sym{gtk:viewport} widget has a single CSS node with name
+    The @class{gtk:viewport} widget has a single CSS node with name
     @code{viewport}.
   @end{dictionary}
   @see-constructor{gtk:viewport-new}
@@ -119,7 +119,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- viewport-shadow-type ---------------------------------------------------
+;;; --- gtk:viewport-shadow-type -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "shadow-type" 'viewport) t)
@@ -141,9 +141,8 @@
     Accessor of the @slot[gtk:viewport]{shadow-type} slot of the
     @class{gtk:viewport} class.
   @end{short}
-  The @sym{gtk:viewport-shadow-type} function gets the shadow type of the
-  viewport. The @sym{(setf gtk:viewport-shadow-type)} function sets the shadow
-  type.
+  The @fun{gtk:viewport-shadow-type} function gets the shadow type of the
+  viewport. The @setf{gtk:viewport-shadow-type} function sets the shadow type.
   @see-class{gtk:viewport}
   @see-symbol{gtk:shadow-type}")
 

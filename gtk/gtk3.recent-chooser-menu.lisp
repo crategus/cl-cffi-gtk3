@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -84,27 +84,28 @@
 (setf (documentation 'recent-chooser-menu 'type)
  "@version{#2023-3-24}
   @begin{short}
-    The @sym{gtk:recent-chooser-menu} widget is a widget suitable for displaying
-    recently used files inside a menu.
+    The @class{gtk:recent-chooser-menu} widget is a widget suitable for
+    displaying recently used files inside a menu.
   @end{short}
   It can be used to set a sub-menu of a @class{gtk:menu-item} widget using the
   @fun{gtk:menu-item-submenu} function, or as the menu of a
   @class{gtk:menu-tool-button} widget.
 
-  Note that the @sym{gtk:recent-chooser-menu} widget does not have any methods
+  Note that the @class{gtk:recent-chooser-menu} widget does not have any methods
   of its own. Instead, you should use the functions that work on a
   @class{gtk:recent-chooser} widget.
 
-  Note also that the @sym{gtk:recent-chooser-menu} widget does not support
+  Note also that the @class{gtk:recent-chooser-menu} widget does not support
   multiple filters, as it has no way to let the user choose between them as the
   @class{gtk:recent-chooser-widget} and @class{gtk:recent-chooser-dialog}
   widgets do. Thus using the @fun{gtk:recent-chooser-add-filter} function on a
-  @sym{gtk:recent-chooser-menu} widget will yield the same effects as using the
-  @fun{gtk:recent-chooser-filter} function, replacing any currently set filter
-  with the supplied filter. The @fun{gtk:recent-chooser-remove-filter} function
-  will remove any currently set @class{gtk:recent-filter} object and will unset
-  the current filter. The @fun{gtk:recent-chooser-list-filters} function will
-  return a list containing a single @class{gtk:recent-filter} object.
+  @class{gtk:recent-chooser-menu} widget will yield the same effects as using
+  the @fun{gtk:recent-chooser-filter} function, replacing any currently set
+  filter with the supplied filter. The @fun{gtk:recent-chooser-remove-filter}
+  function will remove any currently set @class{gtk:recent-filter} object and
+  will unset the current filter. The @fun{gtk:recent-chooser-list-filters}
+  function will return a list containing a single @class{gtk:recent-filter}
+  object.
   @see-constructor{gtk:recent-chooser-menu-new}
   @see-constructor{gtk:recent-chooser-menu-for-manager}
   @see-class{gtk:recent-chooser}")
@@ -113,7 +114,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- recent-chooser-menu-show-numbers ---------------------------------------
+;;; --- gtk:recent-chooser-menu-show-numbers -----------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "show-numbers"
@@ -136,10 +137,10 @@
     Accessor of the @slot[gtk:recent-chooser-menu-show-numbers]{show-numbers}
     slot of the @class{gtk:recent-chooser-menu} class.
   @end{short}
-  The @sym{gtk:recent-chooser-menu-show-numbers} function returns whether a
+  The @fun{gtk:recent-chooser-menu-show-numbers} function returns whether a
   number should be added to the items of menu. The
-  @sym{(setf gtk:recent-chooser-menu-show-numbers)} function sets whether a
-  number should be added to the items of menu.
+  @setf{gtk:recent-chooser-menu-show-numbers} function sets whether a number
+  should be added to the items of menu.
 
   The numbers are shown to provide a unique character for a mnemonic to be used
   inside ten menu label of the item. Only the first the items get a number to

@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -130,12 +130,12 @@
 (setf (documentation 'menu-bar 'type)
  "@version{#2023-3-21}
   @begin{short}
-    The @sym{gtk:menu-bar} class is a subclass of the @class{gtk:menu-shell}
+    The @class{gtk:menu-bar} class is a subclass of the @class{gtk:menu-shell}
     class which contains one or more @class{gtk:menu-item} widgets.
   @end{short}
   The result is a standard menu bar which can hold many menu items.
   @begin[CSS nodes]{dictionary}
-    The @sym{gtk:menu-bar} implementation has a single CSS node with name
+    The @class{gtk:menu-bar} implementation has a single CSS node with name
     @code{menubar}.
   @end{dictionary}
   @begin[Style Property Details]{dictionary}
@@ -176,7 +176,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- menu-bar-child-pack-direction ------------------------------------------
+;;; --- gtk:menu-bar-child-pack-direction --------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "child-pack-direction"
@@ -200,14 +200,14 @@
     Accessor of the @slot[gtk:menu-bar]{child-pack-direction} slot of the
     @class{gtk:menu-bar} class.
   @end{short}
-  The @sym{gtk:menu-bar-child-pack-direction} function retrieves the current
+  The @fun{gtk:menu-bar-child-pack-direction} function retrieves the current
   child pack direction of the menu bar. The
-  @sym{(setf gtk:menu-bar-child-pack-direction)} function sets how widgets
-  should be packed inside the children of a menu bar.
+  @setf{gtk:menu-bar-child-pack-direction} function sets how widgets should be
+  packed inside the children of a menu bar.
   @see-class{gtk:menu-bar}
   @see-symbol{gtk:pack-direction}")
 
-;;; --- menu-bar-pack-direction ------------------------------------------------
+;;; --- gtk:menu-bar-pack-direction --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "pack-direction" 'menu-bar) t)
@@ -230,10 +230,9 @@
     Accessor of the @slot[gtk:menu-bar]{pack-direction} slot of the
     @class{gtk:menu-bar} class.
   @end{short}
-  The @sym{gtk:menu-bar-child-pack-direction} function retrieves the current
-  pack direction of the menu bar. The
-  @sym{(setf gtk:menu-bar-child-pack-direction)} function sets how items should
-  be packed inside a menu bar.
+  The @fun{gtk:menu-bar-child-pack-direction} function retrieves the current
+  pack direction of the menu bar. The @setf{gtk:menu-bar-child-pack-direction}
+  function sets how items should be packed inside a menu bar.
   @see-class{gtk:menu-bar}
   @see-symbol{gtk:pack-direction}")
 

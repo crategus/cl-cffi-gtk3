@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -138,34 +138,32 @@
     style-context-deprecated
     "context" "GtkStyleContext" t t)))
 
-;;; --- style ------------------------------------------------------------------
-
 #+liber-documentation
 (setf (documentation 'style 'type)
  "@version{#2013-5-6}
   @subheading{Warning}
-    In GTK 3.0, @sym{gtk:style} has been deprecated and replaced by
-    @class{gtk:style-context}.
+    In GTK 3.0, the @class{gtk:style} object has been deprecated and replaced by
+    the @class{gtk:style-context} object.
 
   @begin{short}
-    A @sym{gtk:style} object encapsulates the information that provides the look
-    and feel for a widget.
+    The @class{gtk:style} object encapsulates the information that provides the
+    look and feel for a widget.
   @end{short}
 
-  Each @class{gtk:widget} object has an associated @sym{gtk:style} object that
-  is used when rendering that widget. Also, a @sym{gtk:style} object holds
+  Each @class{gtk:widget} object has an associated @class{gtk:style} object that
+  is used when rendering that widget. Also, a @class{gtk:style} object holds
   information for the five possible widget states though not every widget
   supports all five states. See the @symbol{gtk:state-type} enumeration.
 
-  Usually the @sym{gtk:style} for a widget is the same as the default style that
-  is set by GTK and modified the theme engine.
+  Usually the @class{gtk:style} object for a widget is the same as the default
+  style that is set by GTK and modified the theme engine.
 
-  Usually applications should not need to use or modify the @sym{gtk:style} of
-  their widgets.
+  Usually applications should not need to use or modify the @class{gtk:style}
+  object of their widgets.
   @begin[Signal Details]{dictionary}
     @subheading{The \"realize\" signal}
       @begin{pre}
- lambda (style)   : Run First
+lambda (style)    : Run First
       @end{pre}
       Emitted when the @arg{style} has been initialized for a particular
       colormap and depth. Connecting to this signal is probably seldom useful
@@ -176,15 +174,15 @@
     @end{table}
     @subheading{The \"unrealize\" signal}
       @begin{pre}
- lambda (style)   :run-first
+lambda (style)    :run-first
       @end{pre}
       Emitted when the aspects of @arg{style} specific to a particular colormap
       and depth are being cleaned up. A connection to the signal can be useful
       if a widget wants to cache objects like a @code{GdkGC} as object data on
-      the @sym{gtk:style} object. The signal provides a convenient place to free
-      such cached objects.
+      the @class{gtk:style} object. The signal provides a convenient place to
+      free such cached objects.
     @begin[code]{table}
-      @entry[style]{The @sym{gtk:style} object which received the signal.}
+      @entry[style]{The @class{gtk:style} object which received the signal.}
     @end{table}
   @end{dictionary}
   @see-slot{gtk:style-context}")
@@ -393,7 +391,7 @@
     @code{nil}.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:style-lookup-icon-set} function has been deprecated since
+    The @fun{gtk:style-lookup-icon-set} function has been deprecated since
     version 3.0 and should not be used in newly written code. Use the
     @fun{gtk:style-context-lookup-icon-set} function instead.
   @end{short}

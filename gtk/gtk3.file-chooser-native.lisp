@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -85,18 +85,18 @@
 (setf (documentation 'file-chooser-native 'type)
  "@version{#2023-6-12}
   @begin{short}
-    The @sym{gtk:file-chooser-native} widget is an abstraction of a dialog box
+    The @class{gtk:file-chooser-native} widget is an abstraction of a dialog box
     suitable for use with \"File/Open\" or \"File/Save as\" commands.
   @end{short}
   By default, this just uses a @class{gtk:file-chooser-dialog} widget to
   implement the actual dialog. However, on certain platforms, such as Windows
   and macOS, the native platform file chooser is used instead. When the
   application is running in a sandboxed environment without direct filesystem
-  access (such as Flatpak), the @sym{gtk:file-chooser-native} widget may call
+  access (such as Flatpak), the @class{gtk:file-chooser-native} widget may call
   the proper APIs (portals) to let the user choose a file and make it available
   to the application.
 
-  While the API of @sym{gtk:file-chooser-native} widget closely mirrors
+  While the API of @class{gtk:file-chooser-native} widget closely mirrors
   the @class{gtk:file-chooser-dialog} widget, the main difference is that there
   is no access to any @class{gtk:window} or @class{gtk:widget} widget for the
   dialog. This is required, as there may not be one in the case of a platform
@@ -168,14 +168,14 @@ g_object_unref (native);
   @class{gtk:file-chooser-dialog} documentation.
 
   @subheading{Response Codes}
-  The @sym{gtk:file-chooser-native} widget inherits from the
+  The @class{gtk:file-chooser-native} widget inherits from the
   @class{gtk:native-dialog} class, which means it will return @code{:accept}
   if the user accepted, and @code{:cancel} if he pressed Cancel. It can also
   return @code{:delete-event} if the window was unexpectedly closed.
 
   @subheading{Differences from GtkFileChooserDialog}
   There are a few things in the @class{gtk:file-chooser} API that are not
-  possible to use with the @sym{gtk:file-chooser-native} widget, as such use
+  possible to use with the @class{gtk:file-chooser-native} widget, as such use
   would prohibit the use of a native dialog.
 
   There is no support for the signals that are emitted when the user navigates
@@ -252,7 +252,7 @@ g_object_unref (native);
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- file-chooser-native-accept-label ---------------------------------------
+;;; --- gtk:file-chooser-native-accept-label -----------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "accept-label"
@@ -274,10 +274,10 @@ g_object_unref (native);
     Accessor of the @slot[gtk:file-chooser-native]{accept-label} slot of the
     @class{gtk:file-chooser-native} class.
   @end{short}
-  The @sym{gtk:file-chooser-native-accept-label} function retrieves the custom
+  The @fun{gtk:file-chooser-native-accept-label} function retrieves the custom
   label text for the accept button. The
-  @sym{(setf gtk:file-chooser-native-accept-label)} function sets the custom
-  label text.
+  @setf{gtk:file-chooser-native-accept-label} function sets the custom label
+  text.
 
   If characters in label are preceded by an underscore, they are underlined. If
   you need a literal underscore character in a label, use \"__\" (two
@@ -285,7 +285,7 @@ g_object_unref (native);
   called a mnemonic. Pressing @kbd{Alt} and that key activates the button.
   @see-class{gtk:file-chooser-native}")
 
-;;; --- file-chooser-native-cancel-label ---------------------------------------
+;;; --- gtk:file-chooser-native-cancel-label -----------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "cancel-label"
@@ -307,10 +307,10 @@ g_object_unref (native);
     Accessor of the @slot[gtk:file-chooser-native]{cancel-label} slot of the
     @class{gtk:file-chooser-native} class.
   @end{short}
-  The @sym{gtk:file-chooser-native-cancel-label} function retrieves the custom
+  The @fun{gtk:file-chooser-native-cancel-label} function retrieves the custom
   label text for the cancel button. The
-  @sym{(setf gtk:file-chooser-native-cancel-label)} function sets the custom
-  label text.
+  @setf{gtk:file-chooser-native-cancel-label} function sets the custom label
+  text.
 
   If characters in label are preceded by an underscore, they are underlined. If
   you need a literal underscore character in a label, use \"__\" (two

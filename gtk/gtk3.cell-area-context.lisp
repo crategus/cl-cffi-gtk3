@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2012 - 2023 Dieter Kaiser
+;;; Copyright (C) 2012 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -93,15 +93,15 @@
 (setf (documentation 'cell-area-context 'type)
  "@version{#2023-1-21}
   @begin{short}
-    The @sym{gtk:cell-area-context} object is created by a given
+    The @class{gtk:cell-area-context} object is created by a given
     @class{gtk:cell-area} implementation via its @code{create_context()} virtual
     method and is used to store cell sizes and alignments for a series of
     @class{gtk:tree-model} rows that are requested and rendered in the same
     context.
   @end{short}
 
-  @class{gtk:cell-layout} widgets can create any number of contexts in which to
-  request and render groups of data rows. However its important that the same
+  The @class{gtk:cell-layout} widget can create any number of contexts in which
+  to request and render groups of data rows. However its important that the same
   context which was used to request sizes for a given @class{gtk:tree-model} row
   also be used for the same row when calling other @class{gtk:cell-area} APIs
   such as the @fun{gtk:cell-area-render} and @fun{gtk:cell-area-event}
@@ -120,7 +120,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- cell-area-context-area -------------------------------------------------
+;;; --- gtk:cell-area-context-area ---------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "area" 'cell-area-context) t)
@@ -140,7 +140,7 @@
     Accessor of the @slot[gtk:cell-area-context]{area} slot of the
     @class{gtk:cell-area-context} class.
   @end{short}
-  The @sym{gtk:cell-area-context-area} function fetches the
+  The @fun{gtk:cell-area-context-area} function fetches the
   @class{gtk:cell-area} object the context was created by.
 
   This is generally unneeded by layouting widgets. However it is important for
@@ -152,7 +152,7 @@
   @see-class{gtk:cell-area-context}
   @see-class{gtk:cell-area}")
 
-;;; --- cell-area-context-minimum-height ---------------------------------------
+;;; --- gtk:cell-area-context-minimum-height -----------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "minimum-height"
@@ -185,7 +185,7 @@
   @see-class{gtk:tree-model}
   @see-function{gtk:cell-area-preferred-height}")
 
-;;; --- cell-area-context-minimum-width ----------------------------------------
+;;; --- gtk:cell-area-context-minimum-width ------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "minimum-width"
@@ -218,7 +218,7 @@
   @see-class{gtk:tree-model}
   @see-function{gtk:cell-area-preferred-width}")
 
-;;; --- cell-area-context-natural-height ---------------------------------------
+;;; --- gtk:cell-area-context-natural-height -----------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "natural-height"
@@ -251,7 +251,7 @@
   @see-class{gtk:tree-model}
   @see-function{gtk:cell-area-preferred-height}")
 
-;;; --- cell-area-context-natural-width ----------------------------------------
+;;; --- gtk:cell-area-context-natural-width ------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "natural-width"
@@ -507,7 +507,7 @@
 (export 'cell-area-context-preferred-width-for-height)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_cell_area_context_get_allocation () -> cell-area-context-allocation
+;;; gtk_cell_area_context_get_allocation ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_cell_area_context_get_allocation"

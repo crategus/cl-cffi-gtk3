@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2013 - 2023 Dieter Kaiser
+;;; Copyright (C) 2013 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -74,9 +74,9 @@
       (documentation 'app-chooser 'type)
  "@version{#2023-2-14}
   @begin{short}
-    The @sym{gtk:app-chooser} interface is an interface that can be implemented
-    by widgets which allow the user to choose an application, typically for the
-    purpose of opening a file.
+    The @class{gtk:app-chooser} interface is an interface that can be
+    implemented by widgets which allow the user to choose an application,
+    typically for the purpose of opening a file.
   @end{short}
   The main objects that implement this interface are the
   @class{gtk:app-chooser-widget}, @class{gtk:app-chooser-dialog} and
@@ -91,7 +91,7 @@
   detailed control over whether the shown list of applications should include
   default, recommended or fallback applications.
 
-  To obtain the application that has been selected in a @sym{gtk:app-chooser}
+  To obtain the application that has been selected in a @class{gtk:app-chooser}
   widget, use the @fun{gtk:app-chooser-app-info} function.
   @see-slot{gtk:app-chooser-content-type}
   @see-class{g:app-info}
@@ -108,7 +108,7 @@
 (setf (documentation (liber:slot-documentation "content-type" 'app-chooser) t)
  "The @code{content-type} property of type @code{:string}
   (Read / Write / Construct) @br{}
-  The content type of the @sym{gtk:app-chooser} object.
+  The content type of the @class{gtk:app-chooser} object.
   See @code{GContentType} for more information about content types. @br{}
   Default value: @code{nil}")
 
@@ -124,12 +124,12 @@
     Accessor of the @slot[gtk:app-chooser]{content-type} slot of the
     @class{gtk:app-chooser} interface.
   @end{short}
-  The @sym{gtk:app-chooser-content-type} function returns the current value of
+  The @fun{gtk:app-chooser-content-type} function returns the current value of
   the content type.
   @see-class{gtk:app-chooser}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_app_chooser_get_app_info () -> app-chooser-app-info
+;;; gtk_app_chooser_get_app_info ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_app_chooser_get_app_info" app-chooser-app-info)

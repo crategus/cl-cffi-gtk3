@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -131,7 +131,7 @@
 (setf (documentation 'expander 'type)
  "@version{#2023-3-17}
   @begin{short}
-    A @sym{gtk:expander} widget allows the user to hide or show its child by
+    A @class{gtk:expander} widget allows the user to hide or show its child by
     clicking on an expander triangle similar to the triangles used in a
     @class{gtk:tree-view} widget.
   @end{short}
@@ -144,7 +144,7 @@
   @subheading{Special Usage}
   There are situations in which you may prefer to show and hide the expanded
   widget yourself, such as when you want to actually create the widget at
-  expansion time. In this case, create a @sym{gtk:expander} widget but do not
+  expansion time. In this case, create a @class{gtk:expander} widget but do not
   add a child widget to it. The expander widget has an
   @slot[gtk:expander]{expanded} property which can be used to monitor its
   expansion state. You should watch this property with a signal connection as
@@ -161,13 +161,13 @@
   ... )
   @end{pre}
   @begin[GtkExpander as GtkBuildable]{dictionary}
-    The @sym{gtk:expander} implementation of the @class{gtk:buildable}
+    The @class{gtk:expander} implementation of the @class{gtk:buildable}
     interface supports placing a child in the label position by specifying
     @code{\"label\"} as the @code{\"type\"} attribute of a @code{<child>}
     element. A normal content child can be specified without specifying a
     @code{<child>} type attribute.
 
-    @b{Example:} A UI definition fragment with a @sym{gtk:expander} widget.
+    @b{Example:} A UI definition fragment with a @class{gtk:expander} widget.
     @begin{pre}
 <object class=\"GtkExpander\">
   <child type=\"label\">
@@ -187,7 +187,7 @@ expander
 │   ╰── <label widget>
 ╰── <child>
     @end{pre}
-    The @sym{gtk:expander} implementation has three CSS nodes, the main node
+    The @class{gtk:expander} implementation has three CSS nodes, the main node
     with the name @code{expander}, a subnode with name @code{title} and node
     below it with name @code{arrow}. The arrow of an expander that is showing
     its child gets the @code{:checked} pseudoclass added to it.
@@ -242,7 +242,7 @@ lambda (expander)   :action
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- expander-expanded ------------------------------------------------------
+;;; --- gtk:expander-expanded --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "expanded" 'expander) t)
@@ -264,12 +264,12 @@ lambda (expander)   :action
     Accessor of the @slot[gtk:expander]{expanded} slot of the
     @class{gtk:expander} class.
   @end{short}
-  The @sym{gtk:expander-expanded} function queries a @class{gtk:expander} widget
+  The @fun{gtk:expander-expanded} function queries a @class{gtk:expander} widget
   and returns its current state. Set to @em{true}, if you want the child widget
   to be revealed, and @em{false} if you want the child widget to be hidden.
   @see-class{gtk:expander}")
 
-;;; --- expander-label ---------------------------------------------------------
+;;; --- gtk:expander-label -----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "label" 'expander) t)
@@ -291,9 +291,9 @@ lambda (expander)   :action
     Accessor of the @slot[gtk:expander]{label} slot of the @class{gtk:expander}
     class.
   @end{short}
-  The @sym{gtk:expander-label} function fetches the text from a label widget
+  The @fun{gtk:expander-label} function fetches the text from a label widget
   including any embedded underlines indicating mnemonics and Pango markup, as
-  set by the @sym{(setf gtk:expander-label)} function.
+  set by the @setf{gtk:expander-label} function.
 
   If the label text has not been set the return value will be @code{nil}. This
   will be the case if you create an empty button with the @fun{gtk:button-new}
@@ -301,7 +301,7 @@ lambda (expander)   :action
   @see-class{gtk:expander}
   @see-function{gtk:button-new}")
 
-;;; --- expander-label-fill ----------------------------------------------------
+;;; --- gtk:expander-label-fill ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "label-fill" 'expander) t)
@@ -324,13 +324,13 @@ lambda (expander)   :action
     Accessor of the @slot[gtk:expander]{label-fill} slot of the
     @class{gtk:expander} class.
   @end{short}
-  The @sym{gtk:expander-label-fill} function returns whether the label widget
+  The @fun{gtk:expander-label-fill} function returns whether the label widget
   will fill all available horizontal space allocated to expander. The
-  @sym{(setf gtk:expander-label-fill)} function sets whether the label widget
-  should fill all available horizontal space allocated to expander.
+  @setf{gtk:expander-label-fill} function sets whether the label widget should
+  fill all available horizontal space allocated to expander.
   @see-class{gtk:expander}")
 
-;;; --- expander-label-widget --------------------------------------------------
+;;; --- gtk:expander-label-widget ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "label-widget" 'expander) t)
@@ -351,15 +351,15 @@ lambda (expander)   :action
     Accessor of the @slot[gtk:expander]{label-widget} slot of the
     @class{gtk:expander} class.
   @end{short}
-  The @sym{gtk:expander-label-widget} function retrieves the label widget for
-  the frame. The @sym{(setf gtk:expander-label-widget)} function sets the label
-  widget for the expander.
+  The @fun{gtk:expander-label-widget} function retrieves the label widget for
+  the frame. The @setf{gtk:expander-label-widget} function sets the label widget
+  for the expander.
 
   This is the widget that will appear embedded alongside the expander arrow.
   @see-class{gtk:expander}
   @see-class{gtk:widget}")
 
-;;; --- expander-resize-toplevel -----------------------------------------------
+;;; --- gtk:expander-resize-toplevel -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "resize-toplevel" 'expander) t)
@@ -382,14 +382,14 @@ lambda (expander)   :action
     Accessor of the @slot[gtk:expander]{resize-toplevel} slot of the
     @class{gtk:expander} class.
   @end{short}
-  The @sym{gtk:expander-resize-toplevel} function returns whether the expander
+  The @fun{gtk:expander-resize-toplevel} function returns whether the expander
   will resize the toplevel widget containing the expander upon resizing and
-  collpasing. The @sym{(setf gtk:expander-resize-toplevel)} function sets
-  whether the expander will resize the toplevel widget containing the expander
-  upon resizing and collpasing.
+  collpasing. The @setf{gtk:expander-resize-toplevel} function sets whether the
+  expander will resize the toplevel widget containing the expander upon resizing
+  and collpasing.
   @see-class{gtk:expander}")
 
-;;; --- expander-spacing -------------------------------------------------------
+;;; --- gtk:expander-spacing ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "spacing" 'expander) t)
@@ -415,17 +415,17 @@ lambda (expander)   :action
     Accessor of the @slot[gtk:expander]{spacing} slot of the
     @class{gtk:expander} class.
   @end{short}
-  The @sym{gtk:expander-spacing} function returns the spacing between the
-  expander and child widget. The @sym{(setf gtk:expander-spacing)} function
-  sets the spacing field of the expander.
+  The @fun{gtk:expander-spacing} function returns the spacing between the
+  expander and child widget. The @setf{gtk:expander-spacing} function sets the
+  spacing field of the expander.
   @begin[Warning]{dictionary}
-    The @sym{gtk:expander-spacing} function has been deprecated since version
+    The @fun{gtk:expander-spacing} function has been deprecated since version
     3.20 and should not be used in newly written code. Use margins on the child
     instead.
   @end{dictionary}
   @see-class{gtk:expander}")
 
-;;; --- expander-use-markup ----------------------------------------------------
+;;; --- gtk:expander-use-markup ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "use-markup" 'expander) t)
@@ -448,14 +448,14 @@ lambda (expander)   :action
     Accessor of the @slot[gtk:expander]{use-markup} slot of the
     @class{gtk:expander} class.
   @end{short}
-  The @sym{gtk:expander-use-markup} function returns whether the text of the
+  The @fun{gtk:expander-use-markup} function returns whether the text of the
   label is interpreted as marked up with the Pango text markup language. The
-  @sym{(setf gtk:expander-use-markup)} function sets whether the text of the
-  label contains markup.
+  @setf{gtk:expander-use-markup} function sets whether the text of the label
+  contains markup.
   @see-class{gtk:expander}
   @see-function{gtk:label-set-markup}")
 
-;;; --- expander-use-underline -------------------------------------------------
+;;; --- gtk:expander-use-underline ---------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "use-underline" 'expander) t)
@@ -479,7 +479,7 @@ lambda (expander)   :action
     Accessor of the @slot[gtk:expander]{use-underline} slot of the
     @class{gtk:expander} class.
   @end{short}
-  The @sym{gtk:expander-use-underline} function returns whether an embedded
+  The @fun{gtk:expander-use-underline} function returns whether an embedded
   underline in the expander label indicates a mnemonic.
 
   If @em{true}, an underline in the text of the expander label indicates the

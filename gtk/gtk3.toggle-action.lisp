@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -87,13 +87,13 @@
 (setf (documentation 'toggle-action 'type)
  "@version{#2023-3-28}
   @begin{short}
-    A @sym{gtk:toggle-action} object corresponds roughly to a
+    The @class{gtk:toggle-action} object corresponds roughly to a
     @class{gtk:check-menu-item} widget.
   @end{short}
   It has an \"active\" state specifying whether the action has been checked or
   not.
   @begin[Warning]{dictionary}
-    The @sym{gtk:toggle-action} class has been deprecated since version 3.10
+    The @class{gtk:toggle-action} class has been deprecated since version 3.10
     and should not be used in newly written code.
   @end{dictionary}
   @begin[Signal Details]{dictionary}
@@ -104,7 +104,7 @@ lambda (action)    :run-first
       Should be connected if you wish to perform an action whenever the toggle
       action state is changed.
       @begin[code]{table}
-        @entry[action]{The @sym{gtk:toggle-action} object which received the
+        @entry[action]{The @class{gtk:toggle-action} object which received the
           signal.}
       @end{table}
   @end{dictionary}
@@ -118,7 +118,7 @@ lambda (action)    :run-first
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- toggle-action-active ---------------------------------------------------
+;;; --- gtk:toggle-action-active -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "active" 'toggle-action) t)
@@ -139,16 +139,16 @@ lambda (action)    :run-first
     Accessor of the @slot[gtk:toggle-action]{active} slot of the
     @class{gtk:toggle-action} class.
   @end{short}
-  The @sym{gtk:toggle-action-active} function returns the checked state of the
-  toggle action. The @sym{(setf gtk:toggle-action-action)} functoin sets the
+  The @fun{gtk:toggle-action-active} function returns the checked state of the
+  toggle action. The @setf{(setf gtk:toggle-action-action)} functoin sets the
   checked state.
   @begin[Warning]{dictionary}
-    The @sym{gtk:toggle-action-active} function has been deprecated since
+    The @fun{gtk:toggle-action-active} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:toggle-action}")
 
-;;; --- toggle-action-draw-as-radio --------------------------------------------
+;;; --- gtk:toggle-action-draw-as-radio ----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "draw-as-radio"
@@ -171,12 +171,12 @@ lambda (action)    :run-first
     Accessor of the @slot[gtk:toggle-action]{draw-as-radio} slot of the
     @class{gtk:toggle-action} class.
   @end{short}
-  The @sym{gtk:toggle-action-draw-as-radio} function returns whether the action
+  The @fun{gtk:toggle-action-draw-as-radio} function returns whether the action
   should have proxies like a radio action. The
-  @sym{(setf gtk:toggle-action-draw-as-radio)} function sets whether the action
-  should have proxies.
+  @setf{gtk:toggle-action-draw-as-radio} function sets whether the action should
+  have proxies.
   @begin[Warning]{dictionary}
-    The @sym{gtk:toggle-action-draw-as-radio} function has been deprecated
+    The @fun{gtk:toggle-action-draw-as-radio} function has been deprecated
     since version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:toggle-action}")
@@ -201,7 +201,7 @@ lambda (action)    :run-first
   To add the action to a @class{gtk:action-group} object and set the accelerator
   for the action, call the @fun{gtk:action-group-add-action} function.
   @begin[Warning]{dictionary}
-    The @sym{gtk:toggle-action-new} function has been deprecated since version
+    The @fun{gtk:toggle-action-new} function has been deprecated since version
     3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:toggle-action}
@@ -225,7 +225,7 @@ lambda (action)    :run-first
     Emits the \"toggled\" signal on the toggle action.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:toggle-action-toggled} function has been deprecated since
+    The @fun{gtk:toggle-action-toggled} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:toggle-action}"

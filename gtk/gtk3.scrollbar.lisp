@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -83,7 +83,7 @@
 (setf (documentation 'scrollbar 'type)
  "@version{#2023-3-24}
   @begin{short}
-    The @sym{gtk:scrollbar} widget is a horizontal or vertical scrollbar,
+    The @class{gtk:scrollbar} widget is a horizontal or vertical scrollbar,
     depending on the value of the @slot[gtk:orientable]{orientation} property.
   @end{short}
 
@@ -91,7 +91,7 @@
 
   The position of the thumb in a scrollbar is controlled by the scroll
   adjustments. See the @class{gtk:adjustment} object for the properties in an
-  adjustment - for the @sym{gtk:scrollbar} widget, the
+  adjustment - for the @class{gtk:scrollbar} widget, the
   @slot[gtk:adjustment]{value} property represents the position of the
   scrollbar, which must be between the @slot[gtk:adjustment]{lower} value and
   the @code{(@slot[gtk:adjustment]{upper} - @slot[gtk:adjustment]{page-size})}
@@ -111,7 +111,7 @@
      ├── [button.up]
      ╰── [button.down]
     @end{pre}
-    The @sym{gtk:scrollbar} implementation has a main CSS node with name
+    The @class{gtk:scrollbar} implementation has a main CSS node with name
     @code{scrollbar} and a subnode for its contents, with subnodes named
     @code{trough} and @code{slider}.
 

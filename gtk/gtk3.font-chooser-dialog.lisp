@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2012 - 2023 Dieter Kaiser
+;;; Copyright (C) 2012 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -75,13 +75,13 @@
 (setf (documentation 'font-chooser-dialog 'type)
  "@version{2023-6-16}
   @begin{short}
-    The @sym{gtk:font-chooser-dialog} widget is a dialog for selecting a font.
+    The @class{gtk:font-chooser-dialog} widget is a dialog for selecting a font.
   @end{short}
   It implements the @class{gtk:font-chooser} interface.
 
   @image[font-chooser-dialog]{}
   @begin[GtkFontChooserDialog as GtkBuildable]{dictionary}
-    The @sym{gtk:font-chooser-dialog} implementation of the
+    The @class{gtk:font-chooser-dialog} implementation of the
     @class{gtk:buildable} interface exposes the buttons with the names
     @code{select_button} and @code{cancel_button}.
   @end{dictionary}

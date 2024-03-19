@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -74,7 +74,8 @@
 (setf (documentation 'im-context 'type)
  "@version{#2023-2-28}
   @begin{short}
-    The @sym{gtk:im-context} object defines the interface for GTK input methods.
+    The @class{gtk:im-context} object defines the interface for GTK input
+    methods.
   @end{short}
   An input method is used by GTK text input widgets like the @class{gtk:entry}
   widget to map from key events to Unicode character strings.
@@ -103,13 +104,13 @@
 
   Additional input methods can be made available for use by GTK widgets as
   loadable modules. An input method module is a small shared library which
-  implements a subclass of the @sym{gtk:im-context} class or
+  implements a subclass of the @class{gtk:im-context} class or
   @class{gtk:im-context-simple} class and exports these four functions:
   @begin{pre}
 void im_module_init(<GTKDOCLINK HREF=\"GTypeModule\">
                       GTypeModule</GTKDOCLINK> *module);
   @end{pre}
-  This function should register the @class{g:type} of the @sym{gtk:im-context}
+  This function should register the @class{g:type} of the @class{gtk:im-context}
   subclass which implements the input method by means of the
   @code{g_type_module_register_type()} function. Note that the
   @code{g_type_register_static()} function cannot be used as the type needs to
@@ -139,8 +140,8 @@ void im_module_list(const <a class=\"link\"
                                     gchar</GTKDOCLINK> *context_id);
   @end{pre}
   This function should return a pointer to a newly created instance of the
-  @sym{gtk:im-context} subclass identified by @code{context-id}. The context ID
-  is the same as specified in the @symbol{gtk:im-context-info} array returned
+  @class{gtk:im-context} subclass identified by @code{context-id}. The context
+  ID is the same as specified in the @symbol{gtk:im-context-info} array returned
   by the @code{im_module_list()} function.
 
   After a new loadable input method module has been installed on the system,
@@ -156,7 +157,7 @@ lambda (context str)    :run-last
       the user. This can be a single character immediately after a key press or
       the final result of preediting.
       @begin[code]{table}
-        @entry[context]{The @sym{gtk:im-context} object on which the signal is
+        @entry[context]{The @class{gtk:im-context} object on which the signal is
           emitted.}
         @entry[str]{A string with the completed character(s) entered by the
           user.}
@@ -168,7 +169,7 @@ lambda (context offset n-chars)    :run-last
       The signal is emitted when the input method needs to delete all or part
       of the context surrounding the cursor.
       @begin[code]{table}
-        @entry[context]{The @sym{gtk:im-context} object on which the signal is
+        @entry[context]{The @class{gtk:im-context} object on which the signal is
           emitted.}
         @entry[offset]{An integer with the character offset from the cursor
           position of the text to be deleted. A negative value indicates a
@@ -185,7 +186,7 @@ lambda (context)    :run-last
       in which case the @fun{gtk:im-context-preedit-string} function returns
       the empty string.
       @begin[code]{table}
-        @entry[context]{The @sym{gtk:im-context} object on which the signal is
+        @entry[context]{The @class{gtk:im-context} object on which the signal is
           emitted.}
       @end{table}
     @subheading{The \"preedit-end\" signal}
@@ -195,7 +196,7 @@ lambda (context)    :run-last
       The signal is emitted when a preediting sequence has been completed or
       canceled.
       @begin[code]{table}
-        @entry[context]{The @sym{gtk:im-context} object on which the signal is
+        @entry[context]{The @class{gtk:im-context} object on which the signal is
           emitted.}
       @end{table}
     @subheading{The \"preedit-start\" signal}
@@ -204,7 +205,7 @@ lambda (context)    :run-last
       @end{pre}
       The signal is emitted when a new preediting sequence starts.
       @begin[code]{table}
-        @entry[context]{The @sym{gtk:im-context} object on which the signal is
+        @entry[context]{The @class{gtk:im-context} object on which the signal is
           emitted.}
       @end{table}
     @subheading{The \"retrieve-surrounding\" signal}
@@ -230,7 +231,7 @@ lambda (context)    :run-last
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- im-context-input-hints -------------------------------------------------
+;;; --- gtk:im-context-input-hints ---------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "input-hints" 'im-context) t)
@@ -255,7 +256,7 @@ lambda (context)    :run-last
   @see-class{gtk:im-context}
   @see-symbol{gtk:input-hints}")
 
-;;; --- im-context-input-purpose -----------------------------------------------
+;;; --- gtk:im-context-input-purpose -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "input-purpose" 'im-context) t)

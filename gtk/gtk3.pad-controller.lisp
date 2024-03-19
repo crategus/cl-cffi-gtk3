@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2023 Dieter Kaiser
+;;; Copyright (C) 2019 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -155,7 +155,7 @@
 (setf (documentation 'pad-controller 'type)
  "@version{2023-3-11}
   @begin{short}
-    The @sym{gtk:pad-controller} object is an event controller for the pads
+    The @class{gtk:pad-controller} object is an event controller for the pads
     found in drawing tablets.
   @end{short}
   Pads are the collection of buttons and tactile sensors often found around the
@@ -180,7 +180,7 @@
   @class{g:action-group} object and activated whenever the specified input
   element and mode are triggered.
 
-  A simple example of the @sym{gtk:pad-controller} object usage, assigning
+  A simple example of the @class{gtk:pad-controller} object usage, assigning
   button 1 in all modes and pad devices to an \"invert-selection\" action:
   @begin{pre}
 GtkPadActionEntry *pad_actions = {
@@ -210,7 +210,7 @@ pad_controller = gtk_pad_controller_new (window, action_group, NULL);
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- pad-controller-action-group --------------------------------------------
+;;; --- gtk:pad-controller-action-group ----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "action-group"
@@ -235,7 +235,7 @@ pad_controller = gtk_pad_controller_new (window, action_group, NULL);
   @see-class{gtk:pad-controller}
   @see-class{g:action-group}")
 
-;;; --- pad-controller-pad -----------------------------------------------------
+;;; --- gtk:pad-controller-pad -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "pad" 'pad-controller) t)

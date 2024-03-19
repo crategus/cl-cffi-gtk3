@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -92,23 +92,23 @@
 (setf (documentation 'plug 'type)
  "@version{#2023-2-28}
   @begin{short}
-    Together with the @class{gtk:socket} widget, the @sym{gtk:plug} widget
+    Together with the @class{gtk:socket} widget, the @class{gtk:plug} widget
     provides the ability to embed widgets from one process into another process
     in a fashion that is transparent to the user.
   @end{short}
   One process creates a @class{gtk:socket} widget and passes the ID of that
-  widget's window to the other process, which then creates a @sym{gtk:plug}
-  widget with that window ID. Any widgets contained in the @sym{gtk:plug}
+  widget's window to the other process, which then creates a @class{gtk:plug}
+  widget with that window ID. Any widgets contained in the @class{gtk:plug}
   widget then will appear inside the first application's window.
 
-  The communication between a @class{gtk:socket} and a @sym{gtk:plug} widget
+  The communication between a @class{gtk:socket} and a @class{gtk:plug} widget
   follows the XEmbed protocol. This protocol has also been implemented in
   other toolkits, e.g. Qt, allowing the same level of integration when embedding
   a Qt widget in GTK or vice versa.
 
-  The @sym{gtk:plug} and @class{gtk:socket} widgets are only available when GTK
-  is compiled for the X11 platform and @code{GDK_WINDOWING_X11} is defined. They
-  can only be used on a @code{GdkX11Display} object.
+  The @class{gtk:plug} and @class{gtk:socket} widgets are only available when
+  GTK is compiled for the X11 platform and @code{GDK_WINDOWING_X11} is defined.
+  They can only be used on a @code{GdkX11Display} object.
   @begin[Signal Details]{dictionary}
     @subheading{The \"embedded\" signal}
       @begin{pre}
@@ -116,7 +116,8 @@ lambda (plug)    :run-last
       @end{pre}
       Gets emitted when the plug becomes embedded in a socket.
       @begin[code]{table}
-        @entry[plug]{The @sym{gtk:plug} widget on which the signal was emitted.}
+        @entry[plug]{The @class{gtk:plug} widget on which the signal was
+          emitted.}
       @end{table}
   @end{dictionary}
   @see-slot{gtk:plug-embedded}
@@ -127,7 +128,7 @@ lambda (plug)    :run-last
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- plug-embedded ----------------------------------------------------------
+;;; --- gtk:plug-embedded ------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "embedded" 'plug) t)
@@ -150,7 +151,7 @@ lambda (plug)    :run-last
   Determines whether the plug is embedded in a socket.
   @see-class{gtk:plug}")
 
-;;; --- plug-socket-window -----------------------------------------------------
+;;; --- gtk:plug-socket-window -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "socket-window" 'plug) t)

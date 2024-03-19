@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -186,7 +186,7 @@
 (setf (documentation 'print-unix-dialog 'type)
  "@version{#2023-2-8}
   @begin{short}
-    The @sym{gtk:print-unix-dialog} widget implements a print dialog for
+    The @class{gtk:print-unix-dialog} widget implements a print dialog for
     platforms which do not provide a native print dialog, like Unix.
   @end{short}
   It can be used very much like any other GTK dialog, at the cost of the
@@ -194,22 +194,22 @@
 
   @image[printdialog]{Figure: GtkPrintUnixDialog}
 
-  In order to print something with the @sym{gtk:print-unix-dialog} widget, you
-  need to use the @fun{gtk:print-unix-dialog-selected-printer} function to
+  In order to print something with the @class{gtk:print-unix-dialog} widget,
+  you need to use the @fun{gtk:print-unix-dialog-selected-printer} function to
   obtain a @class{gtk:printer} object and use it to construct a
   @class{gtk:print-job} object using the @fun{gtk:print-job-new} function.
 
-  The @sym{gtk:print-unix-dialog} widget uses the following response values:
+  The @class{gtk:print-unix-dialog} widget uses the following response values:
   @begin[code]{table}
     @entry[:ok]{For the \"Print\" button.}
     @entry[:apply]{For the \"Preview\" button.}
     @entry[:cancel]{For the \"Cancel\" button.}
   @end{table}
   @begin[GtkPrintUnixDialog as GtkBuildable]{dictionary}
-    The @sym{gtk:print-unix-dialog} implementation of the @class{gtk:buildable}
+    The @class{gtk:print-unix-dialog} implementation of the @class{gtk:buildable}
     interface exposes its notebook internal children with the name \"notebook\".
 
-    @b{Example:} A @sym{gtk:print-unix-dialog} UI definition fragment.
+    @b{Example:} A @class{gtk:print-unix-dialog} UI definition fragment.
     @begin{pre}
    <object class=\"GtkPrintUnixDialog\" id=\"dialog1\">
      <child internal-child=\"notebook\">
@@ -249,7 +249,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- print-unix-dialog-current-page -----------------------------------------
+;;; --- gtk:print-unix-dialog-current-page -------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "current-page"
@@ -272,13 +272,13 @@
     Accessor of the @slot[gtk:print-unix-dialog]{current-page} slot of the
     @class{gtk:print-unix-dialog} class.
   @end{short}
-  The @sym{gtk:print-unix-dialog-current-page} function gets the current page
-  of the print dialog. The @sym{(setf gtk:print-unix-dialog-current-page)}
-  function sets the current page number. If @arg{page} is not -1, this enables
-  the current page choice for the range of pages to print.
+  The @fun{gtk:print-unix-dialog-current-page} function gets the current page
+  of the print dialog. The @setf{gtk:print-unix-dialog-current-page} function
+  sets the current page number. If @arg{page} is not -1, this enables the
+  current page choice for the range of pages to print.
   @see-class{gtk:print-unix-dialog}")
 
-;;; --- print-unix-dialog-embed-page-setup -------------------------------------
+;;; --- gtk:print-unix-dialog-embed-page-setup ---------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "embed-page-setup"
@@ -305,7 +305,7 @@
   page.
   @see-class{gtk:print-unix-dialog}")
 
-;;; --- print-unix-dialog-has-selection ----------------------------------------
+;;; --- gtk:print-unix-dialog-has-selection ------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "has-selection"
@@ -330,7 +330,7 @@
   Whether the application has a selection.
   @see-class{gtk:print-unix-dialog}")
 
-;;; print-unix-dialog-manual-capabilities --------------------------------------
+;;; --- gtk:print-unix-dialog-manual-capabilities ------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "manual-capabilities"
@@ -360,7 +360,7 @@
   @see-class{gtk:print-unix-dialog}
   @see-symbol{gtk:print-capabilities}")
 
-;;; --- print-unix-dialog-page-setup -------------------------------------------
+;;; --- gtk:print-unix-dialog-page-setup ---------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "page-setup"
@@ -382,13 +382,13 @@
     Accessor of the @slot[gtk:print-unix-dialog]{page-setup} slot of the
     @class{gtk:print-unix-dialog} class.
   @end{short}
-  The @sym{gtk:print-unix-dialog-page-setup} function gets the page setup that
-  is used by the print dialog. The @sym{(setf gtk:print-unix-dialog-page-setup)}
+  The @fun{gtk:print-unix-dialog-page-setup} function gets the page setup that
+  is used by the print dialog. The @setf{gtk:print-unix-dialog-page-setup}
   function sets the page setup.
   @see-class{gtk:print-unix-dialog}
   @see-class{gtk:page-setup}")
 
-;;; --- print-unix-dialog-print-settings ---------------------------------------
+;;; --- gtk:print-unix-dialog-print-settings -----------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "print-settings"
@@ -410,17 +410,16 @@
     Accessor of the @slot[gtk:print-unix-dialog]{print-settings} slot of the
     @class{gtk:print-unix-dialog} class.
   @end{short}
-  The @sym{gtk:print-unix-dialog-print-settings} function gets the print
+  The @fun{gtk:print-unix-dialog-print-settings} function gets the print
   settings that represents the current values in the print dialog. The
-  @sym{(setf gtk:print-unix-dialog-print-settings)} function sets the print
-  settings.
+  @setf{gtk:print-unix-dialog-print-settings} function sets the print settings.
 
   Typically, this is used to restore saved print settings from a previous print
   operation before the print dialog is shown.
   @see-class{gtk:print-unix-dialog}
   @see-class{gtk:print-settings}")
 
-;;; --- print-unix-dialog-selected-printer -------------------------------------
+;;; --- gtk:print-unix-dialog-selected-printer ---------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "selected-printer"
@@ -440,11 +439,11 @@
     Accessor of the @slot[gtk:print-unix-dialog]{selected-printer} slot of the
     @class{gtk:print-unix-dialog} class.
   @end{short}
-  The @sym{gtk:print-unix-dialog} function gets the currently selected printer.
+  The @fun{gtk:print-unix-dialog} function gets the currently selected printer.
   @see-class{gtk:print-unix-dialog}
   @see-class{gtk:printer}")
 
-;;; --- print-unix-dialog-support-selection ------------------------------------
+;;; --- gtk:print-unix-dialog-support-selection --------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "support-selection"
@@ -511,9 +510,9 @@
   @begin{short}
     Accessor of the print settings of the print unix dialog.
   @end{short}
-  The @sym{gtk:print-unix-dialog-settings} function gets the print settings
+  The @fun{gtk:print-unix-dialog-settings} function gets the print settings
   that represents the current values in the print dialog. The
-  @sym{(setf gtk:print-unix-dialog-settings)} function sets the print settings.
+  @setf{gtk:print-unix-dialog-settings} function sets the print settings.
 
   Typically, this is used to restore saved print settings from a previous print
   operation before the print dialog is shown.

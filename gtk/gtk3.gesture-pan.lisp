@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2023 Dieter Kaiser
+;;; Copyright (C) 2019 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -116,15 +116,15 @@
 (setf (documentation 'gesture-pan 'type)
  "@version{#2023-1-21}
   @begin{short}
-    The @sym{gtk:gesture-pan} object is a @class{gtk:gesture} implementation
+    The @class{gtk:gesture-pan} object is a @class{gtk:gesture} implementation
     able to recognize pan gestures, those are drags that are locked to happen
     along one axis.
   @end{short}
-  The axis that a @sym{gtk:gesture-pan} object handles is defined at construct
+  The axis that a @class{gtk:gesture-pan} object handles is defined at construct
   time, and can be changed through the @fun{gtk:gesture-pan-orientation}
   function.
 
-  When the gesture starts to be recognized, The @sym{gtk:gesture-pan} object
+  When the gesture starts to be recognized, The @class{gtk:gesture-pan} object
   will attempt to determine as early as possible whether the sequence is moving
   in the expected direction, and denying the sequence if this does not happen.
 
@@ -139,7 +139,7 @@ lambda (gesture n-press x y)    :run-last
     The signal is emitted once a panning gesture along the expected axis is
     detected.
     @begin[code]{table}
-      @entry[gesture]{The @sym{gtk:gesture-pan} object which received the
+      @entry[gesture]{The @class{gtk:gesture-pan} object which received the
         signal.}
       @entry[direction]{Current @symbol{gtk:pan-direction} value of the pan
         gesture.}
@@ -151,7 +151,7 @@ lambda (gesture n-press x y)    :run-last
   @see-class{gtk:gesture}
   @see-symbol{gtk:pan-direction}")
 
-;;; --- gesture-pan-orientation ------------------------------------------------
+;;; --- gtk:gesture-pan-orientation --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "orientation" 'gesture-pan) t)
@@ -173,10 +173,9 @@ lambda (gesture n-press x y)    :run-last
     Accessor of the @slot[gtk:gesture-pan]{orientation} slot of the
     @class{gtk:gesture-pan} class.
   @end{short}
-  The @sym{gtk:gesture-pan-orientation} function returns the orientation of the
-  pan gestures that this gesture expects. The
-  @sym{(setf gtk:gesture-pan-orientation)} function sets the orientation to be
-  expected on pan gestures.
+  The @fun{gtk:gesture-pan-orientation} function returns the orientation of the
+  pan gestures that this gesture expects. The @setf{gtk:gesture-pan-orientation}
+  function sets the orientation to be expected on pan gestures.
   @see-class{gtk:gesture-pan}")
 
 ;;; ----------------------------------------------------------------------------

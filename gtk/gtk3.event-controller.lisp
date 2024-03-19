@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2023 Dieter Kaiser
+;;; Copyright (C) 2019 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -132,7 +132,7 @@
 (setf (documentation 'event-controller 'type)
  "@version{#2023-1-21}
   @begin{short}
-    The @sym{gtk:event-controller} object is a base, low-level implementation
+    The @class{gtk:event-controller} object is a base, low-level implementation
     for event controllers.
   @end{short}
   Those react to a series of @class{gdk:event} objects, and possibly trigger
@@ -147,7 +147,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- event-controller-propagation-phase -------------------------------------
+;;; --- gtk:event-controller-propagation-phase ---------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "propagation-phase"
@@ -170,10 +170,10 @@
     Accessor of the @slot[gtk:event-controller]{propagation-phase} slot of the
     @class{gtk:event-controller} class.
   @end{short}
-  The @sym{gtk:event-controller-propagation-phase} function gets the propagation
+  The @fun{gtk:event-controller-propagation-phase} function gets the propagation
   phase at which controller handles events. The
-  @sym{(setf gtk:event-controller-propagation-phase)} function sets the
-  propagation phase at which a controller handles events.
+  @setf{gtk:event-controller-propagation-phase} function sets the propagation
+  phase at which a controller handles events.
 
   If @arg{phase} is @code{:phase-none}, no automatic event handling will be
   performed, but other additional gesture maintenance will. In that phase, the
@@ -183,7 +183,7 @@
   @see-symbol{gtk:propagation-phase}
   @see-function{gtk:event-controller-handle-event}")
 
-;;; --- event-controller-widget ------------------------------------------------
+;;; --- gtk:event-controller-widget --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "widget" 'event-controller) t)
@@ -203,7 +203,7 @@
     Accessor of the @slot[gtk:event-controller]{widget} slot of the
     @class{gtk:event-controller} class.
   @end{short}
-  The @sym{gtk:event-controller-widget} function returns the @class{gtk:widget}
+  The @fun{gtk:event-controller-widget} function returns the @class{gtk:widget}
   object this controller relates to.
   @see-class{gtk:event-controller}
   @see-class{gtk:widget}")

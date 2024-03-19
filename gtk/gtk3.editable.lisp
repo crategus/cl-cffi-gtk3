@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -84,14 +84,14 @@
       (documentation 'editable 'type)
  "@version{2023-2-13}
   @begin{short}
-    The @sym{gtk:editable} interface is an interface which should be
+    The @class{gtk:editable} interface is an interface which should be
     implemented by text editing widgets, such as the @class{gtk:entry} widget
     and the @class{gtk:spin-button} widget.
   @end{short}
   It contains functions for generically manipulating an editable widget, a large
   number of action signals used for key bindings, and several signals that an
   application can connect to to modify the behavior of a widget.
-  @begin[Example]{dictionary}
+  @begin{examples}
     As an example of the latter usage, by connecting the following handler to
     \"insert-text\", an application can convert all entry into a widget into
     uppercase.
@@ -107,20 +107,20 @@
             (g:signal-stop-emission-by-name editable \"insert-text\")
             (g:signal-handler-unblock editable handlerid))))
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @begin[Signal Details]{dictionary}
     @subheading{The \"changed\" signal}
       @begin{pre}
 lambda (editable)    :run-last
       @end{pre}
       The signal is emitted at the end of a single user visible operation on the
-      contents of the @sym{gtk:editable} widget. E.g., a paste operation that
+      contents of the @class{gtk:editable} widget. E.g., a paste operation that
       replaces the contents of the selection will cause only one signal
       emission, even though it is implemented by first deleting the selection,
       then inserting the new content, and may cause multiple \"notify::text\"
       signals to be emitted.
       @begin[code]{table}
-        @entry[editable]{The @sym{gtk:editable} widget which received the
+        @entry[editable]{The @class{gtk:editable} widget which received the
           signal.}
       @end{table}
     @subheading{The \"delete-text\" signal}
@@ -135,7 +135,7 @@ lambda (editable start end)    :run-last
       entirely. The @arg{start} and @arg{end} parameters are interpreted as for
       the @fun{gtk:editable-delete-text} function.
       @begin[code]{table}
-        @entry[editable]{The @sym{gtk:editable} widget which received the
+        @entry[editable]{The @class{gtk:editable} widget which received the
           signal.}
         @entry[start]{An integer with the starting position.}
         @entry[end]{An integer with the end position.}
@@ -150,7 +150,7 @@ lambda (editable text length position)    :run-last
       signal with the @fun{g:signal-stop-emission} function, it is possible to
       modify the inserted text, or prevent it from being inserted entirely.
       @begin[code]{table}
-        @entry[editable]{The @sym{gtk:editable} widget which received the
+        @entry[editable]{The @class{gtk:editable} widget which received the
           signal.}
         @entry[text]{A string with the new text to insert.}
         @entry[length]{An integer with the length of the new text, in bytes, or
@@ -193,7 +193,7 @@ lambda (editable text length position)    :run-last
 (export 'editable-select-region)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_editable_get_selection_bounds () -> editable-selection-bounds
+;;; gtk_editable_get_selection_bounds ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_editable_get_selection_bounds" %editable-selection-bounds)
@@ -285,7 +285,7 @@ lambda (editable text length position)    :run-last
 (export 'editable-delete-text)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_editable_get_chars () -> editable-chars
+;;; gtk_editable_get_chars ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_editable_get_chars" %editable-get-chars) :string
@@ -384,7 +384,7 @@ lambda (editable text length position)    :run-last
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_editable_set_position ()
-;;; gtk_editable_get_position () -> editable-position
+;;; gtk_editable_get_position ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf editable-position) (position editable)
@@ -404,10 +404,10 @@ lambda (editable text length position)    :run-last
   @begin{short}
     Accessor of the cursor position in the editable.
   @end{short}
-  The @sym{gtk:editable-position} function retrieves the current position of
+  The @fun{gtk:editable-position} function retrieves the current position of
   the cursor relative to the start of the content of the editable. The
-  @sym{(setf gtk:editable-position)} function sets the cursor position in
-  the editable to the given value.
+  @setf{gtk:editable-position} function sets the cursor position in the
+  editable to the given value.
 
   The cursor is displayed before the character with the given (base 0) index
   in the contents of the editable. The value must be less than or equal to the
@@ -421,7 +421,7 @@ lambda (editable text length position)    :run-last
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_editable_set_editable ()
-;;; gtk_editable_get_editable () -> editable-editable
+;;; gtk_editable_get_editable ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf editable-editable) (setting editable)
@@ -442,9 +442,9 @@ lambda (editable text length position)    :run-last
   @begin{short}
     Accessor of the editable property of the editable.
   @end{short}
-  The @sym{gtk:editable-editable} function retrieves whether the editable is
-  editable. The @sym{(setf gtk:editable-editable)} function determines if the
-  user can edit the text in the editable widget or not.
+  The @fun{gtk:editable-editable} function retrieves whether the editable is
+  editable. The @setf{gtk:editable-editable} function determines if the user
+  can edit the text in the editable widget or not.
   @see-class{gtk:editable}"
   (editable (g:object editable)))
 

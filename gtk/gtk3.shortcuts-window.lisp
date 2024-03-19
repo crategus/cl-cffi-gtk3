@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2023 Dieter Kaiser
+;;; Copyright (C) 2019 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -83,7 +83,7 @@
 (setf (documentation 'shortcuts-window 'type)
  "@version{#2023-2-28}
   @begin{short}
-    A @sym{gtk:shortcuts-window} widget shows brief information about the
+    The @class{gtk:shortcuts-window} widget shows brief information about the
     keyboard shortcuts and gestures of an application.
   @end{short}
   The shortcuts can be grouped, and you can have multiple sections in this
@@ -92,12 +92,12 @@
   Additionally, the shortcuts can be filtered by the current view, to avoid
   showing information that is not relevant in the current application context.
 
-  The recommended way to construct a @sym{gtkshortcuts-window} widget is with
-  the @class{gtk:builder} object, by populating a @sym{gtk:shortcuts-window}
+  The recommended way to construct a @class{gtkshortcuts-window} widget is with
+  the @class{gtk:builder} object, by populating a @class{gtk:shortcuts-window}
   widget with one or more @class{gtk:shortcuts-section} widgets, which contain
   @class{gtk:shortcuts-groups} widgets that in turn contain
   @class{gtk:shortcuts-shortcut} widgets.
-  @begin[Example]{dictionary}
+  @begin{examples}
     A simple example:
     This example has as single section. As you can see, the shortcut groups are
     arranged in columns, and spread across several pages if there are too many
@@ -107,7 +107,7 @@
     @image[gedit-shortcuts]{}
 
     An example with multiple views:
-    This example shows a @sym{gtk:shortcuts-window} widget that has been
+    This example shows a @class{gtk:shortcuts-window} widget that has been
     configured to show only the shortcuts relevant to the \"stopwatch\" view.
     The @file{.ui} file for this example can be found
     @url[https://gitlab.gnome.org/GNOME/gtk/-/blob/master/demos/gtk-demo/shortcuts-clocks.ui]{here}.
@@ -115,13 +115,13 @@
     @image[clocks-shortcuts]{}
 
     An example with multiple sections:
-    This example shows a @sym{gtk:shortcuts-window} widget with two sections,
+    This example shows a @class{gtk:shortcuts-window} widget with two sections,
     \"Editor Shortcuts\" and \"Terminal Shortcuts\". The @file{.ui} file for
     this example can be found
     @url[https://gitlab.gnome.org/GNOME/gtk/-/blob/master/demos/gtk-demo/shortcuts-builder.ui]{here}.
 
     @image[builder-shortcuts]{}
-  @end{dictionary}
+  @end{examples}
   @begin[Signal Details]{dictionary}
     @subheading{The \"close\" signal}
       @begin{pre}
@@ -131,7 +131,7 @@ lambda (shortcutswindow)    :action
       keybinding to close the window. The default binding for this signal is the
       @kbd{Escape} key.
       @begin[code]{table}
-        @entry[shortcutswindow]{The @sym{gtk:shortcuts-window} widget.}
+        @entry[shortcutswindow]{The @class{gtk:shortcuts-window} widget.}
       @end{table}
     @subheading{The \"search\" signal}
       @begin{pre}
@@ -141,7 +141,7 @@ lambda (shortcutswindow)    :action
       keybinding to start a search. The default binding for this signal is
       @kbd{Control-F}.
       @begin[code]{table}
-        @entry[shortcutswindow]{The @sym{gtk:shortcuts-window} widget.}
+        @entry[shortcutswindow]{The @class{gtk:shortcuts-window} widget.}
       @end{table}
   @end{dictionary}
   @see-slot{gtk:shortcuts-window-section-name}
@@ -151,7 +151,7 @@ lambda (shortcutswindow)    :action
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- shortcuts-window-section-name ------------------------------------------
+;;; --- gtk:shortcuts-window-section-name --------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "section-name"
@@ -179,7 +179,7 @@ lambda (shortcutswindow)    :action
   @see-class{gtk:shortcuts-window}
   @see-class{gtk:shortcuts-section}")
 
-;;; --- shortcuts-window-view-name ---------------------------------------------
+;;; --- gtk:shortcuts-window-view-name -----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "view-name"

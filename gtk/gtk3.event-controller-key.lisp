@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2023 Dieter Kaiser
+;;; Copyright (C) 2019 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -72,7 +72,7 @@
 (setf (documentation 'event-controller-key 'type)
  "@version{#2023-3-1}
   @begin{short}
-    The @sym{gtk:event-controller-key} object is an event controller meant for
+    The @class{gtk:event-controller-key} object is an event controller meant for
     situations where you need access to key events.
   @end{short}
   @begin[Signal Details]{dictionary}
@@ -81,7 +81,7 @@
 lambda (controller)    :run-last
       @end{pre}
       @begin[code]{table}
-        @entry[controller]{The @sym{gtk:event-controller-key} object on which
+        @entry[controller]{The @class{gtk:event-controller-key} object on which
           the signal is emitted.}
       @end{table}
     @subheading{The \"focus-out\" signal}
@@ -89,7 +89,7 @@ lambda (controller)    :run-last
 lambda (controller)    :run-last
       @end{pre}
       @begin[code]{table}
-        @entry[controller]{The @sym{gtk:event-controller-key} object on
+        @entry[controller]{The @class{gtk:event-controller-key} object on
           which the signal is emitted.}
       @end{table}
     @subheading{The \"im-update\" signal}
@@ -97,7 +97,7 @@ lambda (controller)    :run-last
 lambda (controller)    :run-last
       @end{pre}
       @begin[code]{table}
-        @entry[controller]{The @sym{gtk:event-controller-key} object on
+        @entry[controller]{The @class{gtk:event-controller-key} object on
           which the signal is emitted.}
       @end{table}
     @subheading{The \"key-pressed\" signal}
@@ -106,7 +106,7 @@ lambda (controller keyval keycode state)    :run-last
       @end{pre}
       The signal is emitted whenever a key is pressed.
       @begin[code]{table}
-        @entry[controller]{The @sym{gtk:event-controller-key} object on
+        @entry[controller]{The @class{gtk:event-controller-key} object on
           which received the signal.}
         @entry[keyval]{An unsigned integer with the pressed key.}
         @entry[keycode]{An unsigned integer with the raw code of the pressed
@@ -122,7 +122,7 @@ lambda (controller keyval keycode state)    :run-last
       @end{pre}
       The signal is emitted whenever a key is released.
       @begin[code]{table}
-        @entry[controller]{The @sym{gtk:event-controller-key} object on
+        @entry[controller]{The @class{gtk:event-controller-key} object on
           which received the signal.}
         @entry[keyval]{An unsigned integer with the released key.}
         @entry[keycode]{An unsigned integer with the raw code of the released
@@ -135,7 +135,7 @@ lambda (controller keyval keycode state)    :run-last
 lambda (controller state)    :run-last
       @end{pre}
       @begin[code]{table}
-        @entry[controller]{The @sym{gtk:event-controller-key} object on
+        @entry[controller]{The @class{gtk:event-controller-key} object on
           which received the signal.}
         @entry[state]{The @symbol{gdk:modifier-type} bitmask, representing the
           state of modifier keys and pointer buttons.}

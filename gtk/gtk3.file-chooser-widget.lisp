@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -103,12 +103,12 @@
 (setf (documentation 'file-chooser-widget 'type)
  "@version{#2023-3-17}
   @begin{short}
-    The @sym{gtk:file-chooser-widget} widget is a widget for choosing files.
+    The @class{gtk:file-chooser-widget} widget is a widget for choosing files.
   @end{short}
   It exposes the @class{gtk:file-chooser} interface, and you should use the
   methods of this interface to interact with the widget.
   @begin[CSS nodes]{dictionary}
-    The @sym{gtk:file-chooser-widget} widget has a single CSS node with name
+    The @class{gtk:file-chooser-widget} widget has a single CSS node with name
     @code{filechooser}.
   @end{dictionary}
   @begin[Signal Details]{dictionary}
@@ -120,7 +120,7 @@ lambda (widget)    :action
       used to make the file chooser show the user's Desktop folder in the file
       list. The default binding for this signal is Alt + D.
       @begin[code]{table}
-        @entry[widget]{The @sym{gtk:file-chooser-widget} object which received
+        @entry[widget]{The @class{gtk:file-chooser-widget} object which received
           the signal.}
       @end{table}
     @subheading{The \"down-folder\" signal}
@@ -135,7 +135,7 @@ lambda (widget)    :action
       file chooser to switch to the \"baz\" subfolder. The default binding for
       this signal is Alt + Down.
       @begin[code]{table}
-        @entry[widget]{The @sym{gtk:file-chooser-widget} object which received
+        @entry[widget]{The @class{gtk:file-chooser-widget} object which received
           the signal.}
       @end{table}
     @subheading{The \"home-folder\" signal}
@@ -146,7 +146,7 @@ lambda (widget)    :action
       used to make the file chooser show the user's home folder in the file
       list. The default binding for this signal is the @kbd{Alt+Home} key.
       @begin[code]{table}
-        @entry[widget]{The @sym{gtk:file-chooser-widget} object which received
+        @entry[widget]{The @class{gtk:file-chooser-widget} object which received
           the signal.}
       @end{table}
     @subheading{The \"location-popup\" signal}
@@ -162,7 +162,7 @@ lambda (widget path)    :action
       On Unix systems, this is bound to ~ (tilde) with a path string of \"~\"
       itself for access to home directories.
       @begin[code]{table}
-        @entry[widget]{The @sym{gtk:file-chooser-widget} object which received
+        @entry[widget]{The @class{gtk:file-chooser-widget} object which received
           the signal.}
         @entry[path]{A string that gets put in the text entry for the file
           name.}
@@ -173,10 +173,10 @@ lambda (widget)    :action
       @end{pre}
       A keybinding signal which gets emitted when the user asks for it. This is
       used to make the file chooser show a \"Location\" prompt when the user
-      pastes into a @sym{gtk:file-chooser-widget} widget. The default binding
+      pastes into a @class{gtk:file-chooser-widget} widget. The default binding
       for this signal is Control + V.
       @begin[code]{table}
-        @entry[widget]{The @sym{gtk:file-chooser-widget} object which received
+        @entry[widget]{The @class{gtk:file-chooser-widget} object which received
           the signal.}
       @end{table}
     @subheading{The \"location-toggle-popup\" signal}
@@ -188,7 +188,7 @@ lambda (widget)    :action
       use to manually type the name of the file he wishes to select. The default
       binding for this signal is Control + L.
       @begin[code]{table}
-        @entry[widget]{The @sym{gtk:file-chooser-widget} object which received
+        @entry[widget]{The @class{gtk:file-chooser-widget} object which received
           the signal.}
       @end{table}
     @subheading{The \"places-shortcut\" signal}
@@ -199,7 +199,7 @@ lambda (widget)    :action
       is used to move the focus to the places sidebar. The default binding for
       this signal is Alt + P.
       @begin[code]{table}
-        @entry[widget]{The @sym{gtk:file-chooser-widget} object which received
+        @entry[widget]{The @class{gtk:file-chooser-widget} object which received
           the signal.}
       @end{table}
     @subheading{The \"quick-bookmark\" signal}
@@ -215,7 +215,7 @@ lambda (widget bookmark-index)    :action
       defined to switch to the bookmark at index 0, and so on successively;
       Alt + 0 is defined to switch to the bookmark at index 10.
       @begin[code]{table}
-        @entry[widget]{The @sym{gtk:file-chooser-widget} object which received
+        @entry[widget]{The @class{gtk:file-chooser-widget} object which received
           the signal.}
         @entry[bookmark-index]{An integer with the number of the bookmark to
           switch to.}
@@ -228,7 +228,7 @@ lambda (widget)    :action
       used to make the file chooser show the Recent location. The default
       binding for this signal is Alt + R.
       @begin[code]{table}
-        @entry[widget]{The @sym{gtk:file-chooser-widget} object which received
+        @entry[widget]{The @class{gtk:file-chooser-widget} object which received
           the signal.}
       @end{table}
     @subheading{The \"search-shortcut\" signal}
@@ -239,7 +239,7 @@ lambda (widget)    :action
       used to make the file chooser show the search entry. The default binding
       for this signal is Alt + S.
       @begin[code]{table}
-        @entry[widget]{The @sym{gtk:file-chooser-widget} object which received
+        @entry[widget]{The @class{gtk:file-chooser-widget} object which received
           the signal.}
       @end{table}
     @subheading{The \"show-hidden\" signal}
@@ -250,7 +250,7 @@ lambda (widget)    :action
       used to make the file chooser display hidden files. The default binding
       for this signal is Control + H.
       @begin[code]{table}
-        @entry[widget]{The @sym{gtk:file-chooser-widget} object which received
+        @entry[widget]{The @class{gtk:file-chooser-widget} object which received
           the signal.}
       @end{table}
     @subheading{The \"up-folder\" signal}
@@ -261,7 +261,7 @@ lambda (widget)    :action
       used to make the file chooser go to the parent of the current folder in
       the file hierarchy. The default binding for this signal is Alt + Up.
       @begin[code]{table}
-        @entry[widget]{The @sym{gtk:file-chooser-widget} object which received
+        @entry[widget]{The @class{gtk:file-chooser-widget} object which received
           the signal.}
       @end{table}
   @end{dictionary}
@@ -273,7 +273,7 @@ lambda (widget)    :action
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- file-chooser-widget-search-mode ----------------------------------------
+;;; --- gtk:file-chooser-widget-search-mode ------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "search-mode"
@@ -297,7 +297,7 @@ lambda (widget)    :action
   @end{short}
   @see-class{gtk:file-chooser-widget}")
 
-;;; --- file-chooser-widget-subtitle -------------------------------------------
+;;; --- gtk:file-chooser-widget-subtitle ---------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "subtitle"

@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2023 Dieter Kaiser
+;;; Copyright (C) 2019 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -65,7 +65,7 @@
 (setf (documentation 'gesture-zoom 'type)
  "@version{#2023-3-6}
   @begin{short}
-    The @sym{gtk:gesture-zoom} object is a @class{gtk:gesture} implementation
+    The @class{gtk:gesture-zoom} object is a @class{gtk:gesture} implementation
     able to recognize pinch/zoom gestures, whenever the distance between both
     tracked sequences changes, the \"scale-changed\" signal is emitted to
     report the scale factor.
@@ -78,7 +78,7 @@ lambda (gesture scale)    :run-first
     The signal is emitted whenever the distance between both tracked sequences
     changes.
     @begin[code]{table}
-      @entry[gesture]{The @sym{gtk:gesture-zoom} object on which the signal
+      @entry[gesture]{The @class{gtk:gesture-zoom} object on which the signal
         is emitted.}
       @entry[scale]{A double float with the scale delta, taking the initial
         state as 1:1.}
@@ -110,7 +110,7 @@ lambda (gesture scale)    :run-first
 (export 'gesture-zoom-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_gesture_zoom_get_scale_delta () -> gesture-zoom-scale-delta
+;;; gtk_gesture_zoom_get_scale_delta ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_gesture_zoom_get_scale_delta" gesture-zoom-scale-delta)

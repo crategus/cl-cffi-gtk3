@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2023 Dieter Kaiser
+;;; Copyright (C) 2019 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -125,16 +125,16 @@
 (setf (documentation 'event-controller-scroll 'type)
  "@version{#2023-3-1}
   @begin{short}
-    The @sym{gtk:event-controller-scroll} object is an event controller meant
+    The @class{gtk:event-controller-scroll} object is an event controller meant
     to handle scroll events from mice and touchpads.
   @end{short}
   It is capable of handling both discrete and continuous scroll events,
   abstracting them both on the \"scroll\" signal. Deltas in the discrete case
   are multiples of 1.
 
-  In the case of continuous scroll events, the @sym{gtk:event-controller-scroll}
-  object encloses all \"scroll\" events between two \"scroll-begin\" and
-  \"scroll-end\" signals.
+  In the case of continuous scroll events, the
+  @class{gtk:event-controller-scroll} object encloses all @code{\"scroll\"}
+  events between two @code{\"scroll-begin\"} and @code{\"scroll-end\"} signals.
 
   The behavior of the event controller can be modified by the flags given at
   creation time, or modified at a later point through the
@@ -166,7 +166,7 @@ lambda (controller xvel yvel)    :run-first
       imprinted by the scroll events. @code{xvel} and @code{yvel} are
       expressed in pixels/ms.
       @begin[code]{table}
-        @entry[controller]{The @sym{gtk:event-controller-scroll} object that
+        @entry[controller]{The @class{gtk:event-controller-scroll} object that
           received the signal.}
         @entry[xvel]{a double float with the x velocity}
         @entry[yvel]{a double float with the y velocity}
@@ -178,7 +178,7 @@ lambda (controller dx dy)    :run-first
       Signals that the widget should scroll by the amount specified by
       @code{dx} and @code{dy}.
       @begin[code]{table}
-        @entry[controller]{The @sym{gtk:event-controller-scroll} object that
+        @entry[controller]{The @class{gtk:event-controller-scroll} object that
           received the signal.}
         @entry[dx]{a double float with the x delta}
         @entry[dy]{a double float with the y delta}
@@ -190,7 +190,7 @@ lambda (controller)    :run-first
       Signals that a new scrolling operation has begun. It will only be emitted
       on devices capable of it.
       @begin[code]{table}
-        @entry[controller]{The @sym{gtk:event-controller-scroll} object that
+        @entry[controller]{The @class{gtk:event-controller-scroll} object that
           received the signal.}
       @end{table}
     @subheading{The \"scroll-end\" signal}
@@ -200,7 +200,7 @@ lambda (controller)    :run-first
       Signals that a new scrolling operation has finished. It will only be
       emitted on devices capable of it.
       @begin[code]{table}
-        @entry[controller]{The @sym{gtk:event-controller-scroll} object that
+        @entry[controller]{The @class{gtk:event-controller-scroll} object that
           received the signal.}
       @end{table}
   @end{dictionary}
@@ -212,7 +212,7 @@ lambda (controller)    :run-first
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- event-controller-scroll-flags ------------------------------------------
+;;; --- gtk:event-controller-scroll-flags --------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "flags"
@@ -235,10 +235,10 @@ lambda (controller)    :run-first
     Accessor of the @slot[gtk:event-controller-scroll]{flags} slot of the
     @class{gtk:event-controller-scroll} class.
   @end{short}
-  The @sym{gtk:event-controller-scroll-flags} function gets the flags
+  The @fun{gtk:event-controller-scroll-flags} function gets the flags
   conditioning the scroll controller behavior. The
-  @sym{(setf gtk:event-controller-scroll-flags)} function sets the flags
-  conditioning scroll controller behavior.
+  @setf{gtk:event-controller-scroll-flags} function sets the flags conditioning
+  scroll controller behavior.
   @see-class{gtk:event-controller-scroll}
   @see-symbol{gtk:event-controller-scroll-flags}")
 

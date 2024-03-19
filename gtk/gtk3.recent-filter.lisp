@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -129,8 +129,8 @@
       (liber:symbol-documentation 'recent-filter-info)
  "@version{#2023-3-24}
   @begin{short}
-    A @sym{gtk:recent-filter-info} structure is used to pass information about
-    the tested file to the @fun{gtk:recent-filter-filter} function.
+    The @class{gtk:recent-filter-info} structure is used to pass information
+    about the tested file to the @fun{gtk:recent-filter-filter} function.
   @end{short}
   @begin{pre}
 (cffi:defcstruct gtk:recent-filter-info
@@ -161,7 +161,7 @@
 (setf (documentation 'recent-filter 'type)
  "@version{#2023-3-24}
   @begin{short}
-    A @sym{gtk:recent-filter} object can be used to restrict the files being
+    The @class{gtk:recent-filter} object can be used to restrict the files being
     shown in a @class{gtk:recent-chooser} widget.
   @end{short}
   Files can be filtered based on their name with the
@@ -174,7 +174,7 @@
   Filtering by MIME type handles aliasing and subclassing of mime types. E.g.
   a filter for text/plain also matches a file with MIME type application/rtf,
   since application/rtf is a subclass of text/plain. Note that the
-  @sym{gtk:recent-filter} object allows wildcards for the subtype of a MIME
+  @class{gtk:recent-filter} object allows wildcards for the subtype of a MIME
   type, so you can e.g. filter for image/*.
 
   Normally, filters are used by adding them to a @class{gtk:recent-chooser}
@@ -183,7 +183,7 @@
   @fun{gtk:recent-filter-filter} function.
 
   @begin[GtkRecentFilter as GtkBuildable]{dictionary}
-  The @sym{gtk:recent-filter} implementation of the @class{gtk:buildable}
+  The @class{gtk:recent-filter} implementation of the @class{gtk:buildable}
   interface supports adding rules using the @code{<mime-types>},
   @code{<patterns>} and @code{<applications>} elements and listing the rules
   within. Specifying a @code{<mime-type>}, @code{<pattern>} or
@@ -191,7 +191,7 @@
   @fun{gtk:recent-filter-add-mime-type}, @fun{gtk:recent-filter-add-pattern}
   or @fun{gtk:recent-filter-add-application} functions.
 
-  @b{Example:} A UI definition fragment specifying @sym{gtk:recent-filter}
+  @b{Example:} A UI definition fragment specifying @class{gtk:recent-filter}
   rules
   @begin{pre}
 <object class=\"GtkRecentFilter\">
@@ -250,7 +250,7 @@
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_recent_filter_get_name ()
-;;; gtk_recent_filter_set_name () -> recent-filter name
+;;; gtk_recent_filter_set_name ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf recent-filter-name) (name filter)
@@ -268,11 +268,11 @@
   @argument[filter]{a @class{gtk:recent-filter} object}
   @argument[name]{a string with the human readable name of @arg{filter}}
   @begin{short}
-    The @sym{gtk:recent-filter-name} function gets the human readable name for
+    The @fun{gtk:recent-filter-name} function gets the human readable name for
     the filter.
   @end{short}
-  The @sym{(setf gtk:recent-filter-name)} function sets the human readable name
-  of the filter. This is the string that will be displayed in the recently used
+  The @setf{gtk:recent-filter-name} function sets the human readable name of
+  the filter. This is the string that will be displayed in the recently used
   resources selector user interface if there is a selectable list of filters.
   @see-class{gtk:recent-filter}"
   (filter (g:object recent-filter)))

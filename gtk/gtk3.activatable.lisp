@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -98,7 +98,7 @@
   An activatable widget can also provide feedback through its action, as they
   are responsible for activating their related actions.
   @begin[Warning]{dictionary}
-    The @sym{gtk:activatable} interface has been deprecated since version 3.10
+    The @class{gtk:activatable} interface has been deprecated since version 3.10
     and should not be used in newly written code.
   @end{dictionary}
   @see-slot{gtk:activatable-related-action}
@@ -109,7 +109,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- activatable-related-action ---------------------------------------------
+;;; --- gtk:activatable-related-action -----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "related-action" 'activatable) t)
@@ -131,16 +131,16 @@
     Accessor of the @slot[gtk:activatable]{related-action} slot of the
     @class{gtk:activatable} class.
   @end{short}
-  The @sym{gtk:activatable-related-action} function gets the related action.
-  The @sym{(setf gtk:activatable-related-action)} sets the related action.
+  The @fun{gtk:activatable-related-action} function gets the related action.
+  The @setf{gtk:activatable-related-action} sets the related action.
   @begin[Warning]{dictionary}
-    The @sym{gtk:activatable-related-action} function has been deprecated since
+    The @fun{gtk:activatable-related-action} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:activatable}
   @see-class{gtk:action}")
 
-;;; --- activatable-use-action-appearance --------------------------------------
+;;; --- gtk:activatable-use-action-appearance ----------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "use-action-appearance"
@@ -164,13 +164,13 @@
     Accessor of the @slot[gtk:activatable]{use-action-appearance} slot of the
     @class{gtk:activatable} class.
   @end{short}
-  The @sym{gtk:activatable-use-action-appearance} function gets whether the
+  The @fun{gtk:activatable-use-action-appearance} function gets whether the
   activatable should reset its layout and appearance when setting the related
   action or when the action changes appearance. The
-  @sym{(setf gtk:activatable-use-action-appearance)} function sets whether this
+  @setf{gtk:activatable-use-action-appearance} function sets whether this
   activatable should reset its layout and appearance.
   @begin[Warning]{dictionary}
-    The @sym{gtk:activatable-use-action-appearance} function has been deprecated
+    The @fun{gtk:activatable-use-action-appearance} function has been deprecated
     since version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:activatable}")
@@ -197,13 +197,13 @@
   it also makes sure the @code{GtkActivatable->update()} method is called when
   the related @class{gtk:action} object properties change and registers to the
   action's proxy list.
-  @begin[Note]{dictionary}
+  @begin{notes}
     Be careful to call this before setting the local copy of the
     @class{gtk:action} object property, since this function uses
     @fun{gtk:activatable-get-related-action} to retrieve the previous action.
-  @end{dictionary}
+  @end{notes}
   @begin[Warning]{dictionary}
-    The @sym{gtk:activatable-do-set-related-action} function has been deprecated
+    The @fun{gtk:activatable-do-set-related-action} function has been deprecated
     since version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:activatable}
@@ -229,7 +229,7 @@
     @slot[gtk:activatable]{use-action-appearance} changes.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:activatable-sync-action-properties} function has been
+    The @fun{gtk:activatable-sync-action-properties} function has been
     deprecated since version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:activatable}

@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2014 - 2023 Dieter Kaiser
+;;; Copyright (C) 2014 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -184,7 +184,7 @@
 (setf (documentation 'level-bar 'type)
  "@version{#2023-3-20}
   @begin{short}
-    The @sym{gtk:level-bar} widget is a bar widget that can be used as a
+    The @class{gtk:level-bar} widget is a bar widget that can be used as a
     level indicator.
   @end{short}
   Typical use cases are displaying the strength of a password, or showing the
@@ -216,7 +216,7 @@
   set the minimum value to 0 and the maximum value to 5 after changing the
   indicator mode to discrete.
   @begin[GtkLevelBar as GtkBuildable]{dictionary}
-    The @sym{gtk:level-bar} implementation of the @class{gtk:buildable}
+    The @class{gtk:level-bar} implementation of the @class{gtk:buildable}
     interface supports a custom @code{<offsets>} element, which can contain any
     number of @code{<offset>} elements, each of which must have name and value
     attributes.
@@ -230,7 +230,7 @@ levelbar[.discrete]
     ├── block.empty
     ┊
     @end{pre}
-    The @sym{gtk:level-bar} implementation has a main CSS node with name
+    The @class{gtk:level-bar} implementation has a main CSS node with name
     @code{levelbar} and one of the @code{.discrete} or @code{.continuous} style
     classes and a subnode with name @code{trough}. Below the @code{trough} node
     are a number of nodes with name @code{block} and @code{.filled} or
@@ -243,7 +243,7 @@ levelbar[.discrete]
     In horizontal orientation, the nodes are always arranged from left to right,
     regardless of text direction.
   @end{dictionary}
-  @begin[Example]{dictionary}
+  @begin{examples}
     Adding a custom offset on the bar.
     @begin{pre}
 (defun create-level-bar (orientation)
@@ -264,14 +264,14 @@ levelbar[.discrete]
     ;; Return the new level bar
     levelbar))
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @begin[Style Property Details]{dictionary}
     @begin[code]{table}
       @begin[min-block-height]{entry}
         The @code{min-block-height} style property of type @code{:int}
         (Read / Write) @br{}
         The style property determines the minimum height for blocks filling the
-        @sym{gtk:level-bar} widget. @br{}
+        @class{gtk:level-bar} widget. @br{}
         @em{Warning:} The @code{min-block-height} style property has been
         deprecated since version 3.20 and should not be used in newly written
         code. Use the standard min-width/min-height CSS properties on the block
@@ -283,7 +283,7 @@ levelbar[.discrete]
         The @code{min-block-width} style property of type @code{:int}
         (Read / Write) @br{}
         The style property determines the minimum width for blocks filling the
-        @sym{gtk:level-bar} widget. @br{}
+        @class{gtk:level-bar} widget. @br{}
         @em{Warning:} The @code{min-block-height} style property has been
         deprecated since version 3.20 and should not be used in newly written
         code. Use the standard min-width/min-height CSS properties on the block
@@ -304,7 +304,7 @@ lambda (levelbar name)    :detailed
       detailed signal in order to only receive callbacks when the value of
       \"x\" offset changes.
       @begin[code]{table}
-        @entry[levelbar]{The @sym{gtk:level-bar} widget which received the
+        @entry[levelbar]{The @class{gtk:level-bar} widget which received the
           signal.}
         @entry[name]{A string with the name of the offset that changed value.}
       @end{table}
@@ -322,7 +322,7 @@ lambda (levelbar name)    :detailed
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- level-bar-inverted -----------------------------------------------------
+;;; --- gtk:level-bar-inverted -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "inverted" 'level-bar) t)
@@ -344,12 +344,12 @@ lambda (levelbar name)    :detailed
     Accessor of the @slot[gtk:level-bar]{inverted} slot of the
     @class{gtk:level-bar} class.
   @end{short}
-  The @sym{gtk:level-bar-inverted} function returns @em{true} if the level bar
-  is inverted. The @sym{(setf gtk:level-bar-inverted)} function sets the value
-  of the property.
+  The @fun{gtk:level-bar-inverted} function returns @em{true} if the level bar
+  is inverted. The @setf{gtk:level-bar-inverted} function sets the value of the
+  property.
   @see-class{gtk:level-bar}")
 
-;;; --- level-bar-max-value ----------------------------------------------------
+;;; --- gtk:level-bar-max-value ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "max-value" 'level-bar) t)
@@ -372,13 +372,13 @@ lambda (levelbar name)    :detailed
     Accessor of the @slot[gtk:level-bar]{max-value} slot of the
     @class{gtk:level-bar} class.
   @end{short}
-  The @sym{gtk:level-bar-max-value} function returns the value of the
-  @slot[gtk:level-bar]{max-value} property. The
-  @sym{(setf gtk:level-bar-max-value)} function sets the value.
+  The @fun{gtk:level-bar-max-value} function returns the value of the
+  @slot[gtk:level-bar]{max-value} property. The @setf{gtk:level-bar-max-value}
+  function sets the value.
   @see-class{gtk:level-bar}
   @see-function{gtk:level-bar-min-value}")
 
-;;; --- level-bar-min-value ----------------------------------------------------
+;;; --- gtk:level-bar-min-value ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "min-value" 'level-bar) t)
@@ -401,21 +401,21 @@ lambda (levelbar name)    :detailed
     Accessor of the @slot[gtk:level-bar]{min-value} slot of the
     @class{gtk:level-bar} class.
   @end{short}
-  The @sym{gtk:level-bar-min-value} function returns the value of the
-  @slot[gtk:level-bar]{min-value} property. The
-  @sym{(setf gtk:level-bar-min-value)} function sets the value.
+  The @fun{gtk:level-bar-min-value} function returns the value of the
+  @slot[gtk:level-bar]{min-value} property. The @setf{gtk:level-bar-min-value}
+  function sets the value.
   @see-class{gtk:level-bar}
   @see-function{gtk:level-bar-max-value}")
 
-;;; --- level-bar-mode ---------------------------------------------------------
+;;; --- gtk:level-bar-mode -----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "mode" 'level-bar) t)
  "The @code{mode} property of type @symbol{gtk:level-bar-mode} (Read / Write)
   @br{}
-  The property determines the way a @sym{gtk:level-bar} widget interprets the
+  The property determines the way a @class{gtk:level-bar} widget interprets the
   value properties to draw the level fill area. Specifically, when the value is
-  @code{:continuous}, the @sym{gtk:level-bar} widget will draw a single block
+  @code{:continuous}, the @class{gtk:level-bar} widget will draw a single block
   representing the current value in that area. When the value is
   @code{:discrete}, the widget will draw a succession of separate blocks filling
   the draw area, with the number of blocks being equal to the units separating
@@ -435,13 +435,13 @@ lambda (levelbar name)    :detailed
     Accessor of the @slot[gtk:level-bar]{mode} slot of the
     @class{gtk:level-bar} class.
   @end{short}
-  The @sym{gtk:level-bar-mode} function returns the value of the
-  @slot[gtk:level-bar]{mode} property. The @sym{(setf gtk:level-bar-mode)}
-  function sets the value.
+  The @fun{gtk:level-bar-mode} function returns the value of the
+  @slot[gtk:level-bar]{mode} property. The @setf{gtk:level-bar-mode} function
+  sets the value.
   @see-class{gtk:level-bar}
   @see-symbol{gtk:level-bar-mode}")
 
-;;; --- level-bar-value --------------------------------------------------------
+;;; --- gtk:level-bar-value ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "value" 'level-bar) t)
@@ -464,9 +464,9 @@ lambda (levelbar name)    :detailed
     Accessor of the @slot[gtk:level-bar]{value} slot of the
     @class{gtk:level-bar} class.
   @end{short}
-  The @sym{gtk:level-bar-value} function gets the value of the level bar in the
+  The @fun{gtk:level-bar-value} function gets the value of the level bar in the
   interval between the @slot[gtk:level-bar]{min-value} and
-  @slot[gtk:level-bar]{max-value} values. The @sym{(setf gtk:level-bar-value)}
+  @slot[gtk:level-bar]{max-value} values. The @setf{gtk:level-bar-value}
   funtion sets the value.
   @see-class{gtk:level-bar}")
 
@@ -565,7 +565,7 @@ lambda (levelbar name)    :detailed
 (export 'level-bar-remove-offset-value)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_level_bar_get_offset_value () -> level-bar-offset-value
+;;; gtk_level_bar_get_offset_value ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_level_bar_get_offset_value" %level-bar-offset-value)

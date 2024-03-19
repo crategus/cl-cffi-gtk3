@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2012 - 2023 Dieter Kaiser
+;;; Copyright (C) 2012 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -73,7 +73,7 @@
 (setf (documentation 'spinner 'type)
  "@version{#2023-3-26}
   @begin{short}
-    A @sym{gtk:spinner} widget displays an icon size spinning animation.
+    The @class{gtk:spinner} widget displays an icon size spinning animation.
   @end{short}
   It is often used as an alternative to a @class{gtk:progress-bar} widget for
   displaying indefinite activity, instead of actual progress.
@@ -81,7 +81,7 @@
   To start the animation, use the @fun{gtk:spinner-start} function, to stop it
   use the @fun{gtk:spinner-stop} function.
   @begin[CSS nodes]{dictionary}
-    The @sym{gtk:spinner} implementation has a single CSS node with the name
+    The @class{gtk:spinner} implementation has a single CSS node with the name
     @code{spinner}. When the animation is active, the @code{:checked}
     pseudoclass is added to this node.
   @end{dictionary}

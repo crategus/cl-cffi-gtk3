@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -77,17 +77,18 @@
 (setf (documentation 'recent-action 'type)
  "@version{#2023-3-24}
   @begin{short}
-    A @sym{gtk:recent-action} object represents a list of recently used files,
-    which can be shown by widgets such as a @class{gtk:recent-chooser-dialog}
-    widget or a @class{gtk:recent-chooser-menu} widget.
+    The @class{gtk:recent-action} object represents a list of recently used
+    files, which can be shown by widgets such as a
+    @class{gtk:recent-chooser-dialog} widget or a
+    @class{gtk:recent-chooser-menu} widget.
   @end{short}
 
   To construct a submenu showing recently used files, use a
-  @sym{gtk:recent-action} object as the action for a menu item. To construct a
-  menu toolbutton showing the recently used files in the popup menu, use a
-  @sym{gtk:recent-action} object as the action for a tool item.
+  @class{gtk:recent-action} object as the action for a menu item. To construct
+  a menu toolbutton showing the recently used files in the popup menu, use a
+  @class{gtk:recent-action} object as the action for a tool item.
   @begin[Warning]{dictionary}
-    The @sym{gtk:recent-action} class has been deprecated since version 3.10
+    The @class{gtk:recent-action} class has been deprecated since version 3.10
     and should not be used in newly written code.
   @end{dictionary}
   @see-constructor{gtk:recent-acton-new}
@@ -120,13 +121,13 @@
     Accessor of the @slot[gtk:recent-action]{show-numbers} slot of the
     @class{gtk:recent-action} class.
   @end{short}
-  The @sym{gtk:recent-action-show-numbers} function sets whether a number
+  The @fun{gtk:recent-action-show-numbers} function sets whether a number
   should be added to the items shown by the widgets representing the action.
   The numbers are shown to provide a unique character for a mnemonic to be used
   inside the menu label of the item. Only the first ten items get a number to
   avoid clashes.
   @begin[Warning]{dictionary}
-    The @sym{gtk:recent-action-show-numbers} function has been deprecated since
+    The @fun{gtk:recent-action-show-numbers} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:recent-action}")
@@ -150,7 +151,7 @@
   To add the action to a @class{gtk:action-group} object and set the accelerator
   for the action, call the @fun{gtk:action-group-add-action} function.
   @begin[Warning]{dictionary}
-    The @sym{gtk:recent-action-new} function has been deprecated since version
+    The @fun{gtk:recent-action-new} function has been deprecated since version
     3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:recent-action}
@@ -185,7 +186,7 @@
   To add the action to a @class{gtk:action-group} object and set the accelerator
   for the action, call the @fun{gtk:action-group-add-action} function.
   @begin[Warning]{dictionary}
-    The @sym{gtk:recent-action-new-manager} function has been deprecated since
+    The @fun{gtk:recent-action-new-manager} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:recent-action}

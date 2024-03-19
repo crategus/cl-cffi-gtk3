@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -102,8 +102,8 @@
 (setf (documentation 'image-menu-item 'type)
  "@version{#2023-3-12}
   @begin{short}
-    A @sym{gtk:image-menu-item} widget is a menu item which has an icon next to
-    the text label.
+    A @class{gtk:image-menu-item} widget is a menu item which has an icon next
+    to the text label.
   @end{short}
   This is functionally equivalent to:
   @begin{pre}
@@ -160,8 +160,8 @@
     menu-item))
   @end{pre}
   @begin[Warning]{dictionary}
-    The @sym{gtk:image-menu-item} class has been deprecated since GTK 3.10. If
-    you want to display an icon in a menu item, you should use the
+    The @class{gtk:image-menu-item} class has been deprecated since GTK 3.10.
+    If you want to display an icon in a menu item, you should use the
     @class{gtk:menu-item} widget and pack a @class{gtk:box} widget with a
     @class{gtk:image} widget and a @class{gtk:label} widget instead. You should
     also consider using the @class{gtk:builder} object and the XML
@@ -185,7 +185,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- image-menu-item-accel-group --------------------------------------------
+;;; --- gtk:image-menu-item-accel-group ----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "accel-group"
@@ -213,7 +213,7 @@
   If you want this menu item to have changeable accelerators then you should
   not need this. See the @fun{gtk:image-menu-item-new-from-stock} function.
   @begin[Warning]{dictionary}
-    The @sym{gtk:image-menu-item-accel-group} function has been deprecated
+    The @fun{gtk:image-menu-item-accel-group} function has been deprecated
     since version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:image-menu-item}
@@ -222,7 +222,7 @@
   @see-function{gtk:menu-item-label}
   @see-function{gtk:image-menu-item-new-from-stock}")
 
-;;; --- image-menu-item-always-show-image --------------------------------------
+;;; --- gtk:image-menu-item-always-show-image ----------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "always-show-image"
@@ -253,13 +253,13 @@
   available. Use this property if the menu item would be useless or hard to use
   without the image.
   @begin[Warning]{dictionary}
-    The @sym{gtk:image-menu-item-always-show-image} function has been deprecated
+    The @fun{gtk:image-menu-item-always-show-image} function has been deprecated
     since version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:image-menu-item}
   @see-function{gtk:settings-gtk-menu-images}")
 
-;;; --- image-menu-item-image --------------------------------------------------
+;;; --- gtk:image-menu-item-image ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "image" 'image-menu-item) t)
@@ -280,20 +280,20 @@
     Accessor of the @slot[gtk:image-menu-item]{image} slot of the
     @class{gtk:image-menu-item} class.
   @end{short}
-  The @sym{gtk:image-menu-item-image} function gets the widget that is currently
-  set as the image of the menu item. The @sym{(setf gtk:image-menu-item-image)}
+  The @fun{gtk:image-menu-item-image} function gets the widget that is currently
+  set as the image of the menu item. The @setf{gtk:image-menu-item-image}
   function sets the image. Note that it depends on the
   @slot[gtk:settings]{gtk-menu-images} setting whether the image will be
   displayed or not.
   @begin[Warning]{dictionary}
-    The @sym{gtk:image-menu-item-image} function has been deprecated
+    The @fun{gtk:image-menu-item-image} function has been deprecated
     since version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:image-menu-item}
   @see-class{gtk:widget}
   @see-function{gtk:settings-gtk-menu-images}")
 
-;;; --- image-menu-item-use-stock ----------------------------------------------
+;;; --- gtk:image-menu-item-use-stock ------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "use-stock" 'image-menu-item) t)
@@ -319,7 +319,7 @@
   If @em{true}, the label set in the menu item is used as a stock ID to select
   the stock item for the item.
   @begin[Warning]{dictionary}
-    The @sym{gtk:image-menu-item-use-stock} function has been deprecated
+    The @fun{gtk:image-menu-item-use-stock} function has been deprecated
     since version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:image-menu-item}")
@@ -337,7 +337,7 @@
     Creates a new image menu item with an empty label.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:image-menu-item-new} function has been deprecated since
+    The @fun{gtk:image-menu-item-new} function has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:image-menu-item}"
@@ -367,7 +367,7 @@
   the stock item, and if one is found, call the @fun{gtk:accel-map-add-entry}
   function to register it.
   @begin[Warning]{dictionary}
-    The @sym{gtk:image-menu-item-new-from-stock} function has been deprecated
+    The @fun{gtk:image-menu-item-new-from-stock} function has been deprecated
     since version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:image-menu-item}
@@ -392,7 +392,7 @@
     Creates a new image menu item containing a label.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:image-menu-item-new-with-label} function has been deprecated
+    The @fun{gtk:image-menu-item-new-with-label} function has been deprecated
     since version 3.10 and should not be used in newly written code. Use the
     @fun{gtk:menu-item-new-with-label} function instead.
   @end{dictionary}
@@ -418,7 +418,7 @@
   The label will be created using the @fun{gtk:label-new-with-mnemonic}
   function, so underscores in label indicate the mnemonic for the menu item.
   @begin[Warning]{dictionary}
-    The @sym{gtk:image-menu-item-new-with-mnemonic} function has been deprecated
+    The @fun{gtk:image-menu-item-new-with-mnemonic} function has been deprecated
     since version 3.10 and should not be used in newly written code. Use the
     @fun{gtk:menu-item-new-with-mnemonic} function instead.
   @end{dictionary}

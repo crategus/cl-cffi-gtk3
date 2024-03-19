@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2023 Dieter Kaiser
+;;; Copyright (C) 2019 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -89,8 +89,8 @@
       (liber:symbol-documentation 'shortcut-type)
  "@version{#2023-2-28}
   @begin{short}
-    The @sym{gtk:shortcut-type} enumeration specifies the kind of shortcut that
-    is being described.
+    The @symbol{gtk:shortcut-type} enumeration specifies the kind of shortcut
+    that is being described.
   @end{short}
   More values may be added to this enumeration over time.
   @begin{pre}
@@ -175,8 +175,8 @@
 (setf (documentation 'shortcuts-shortcut 'type)
  "@version{#2023-3-13}
   @begin{short}
-    A @sym{gtk:shortcuts-shortcut} widget represents a single keyboard shortcut
-    or gesture with a short text.
+    The @class{gtk:shortcuts-shortcut} widget represents a single keyboard
+    shortcut or gesture with a short text.
   @end{short}
   This widget is only meant to be used with the @class{gtk:shortcuts-window}
   widget.
@@ -197,7 +197,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- shortcuts-shortcut-accel-size-group ------------------------------------
+;;; --- gtk:shortcuts-shortcut-accel-size-group --------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "accel-size-group"
@@ -225,7 +225,7 @@
   @see-class{gtk:shortcuts-shortcut}
   @see-class{gtk:size-group}")
 
-;;; --- shortcuts-shortcut-accelerator -----------------------------------------
+;;; --- gtk:shortcuts-shortcut-accelerator -------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "accelerator"
@@ -286,7 +286,7 @@
   @see-class{gtk:shortcuts-shortcut}
   @see-function{gtk:accelerator-parse}")
 
-;;; --- shortcuts-shortcut-action-name -----------------------------------------
+;;; --- gtk:shortcuts-shortcut-action-name -------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "action-name"
@@ -318,7 +318,7 @@
   @see-class{gtk:shortcuts-shortcut}
   @see-function{gtk:application-accels-for-action}")
 
-;;; --- shortcuts-shortcut-direction -------------------------------------------
+;;; --- gtk:shortcuts-shortcut-direction ---------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "direction"
@@ -347,7 +347,7 @@
   @see-class{gtk:shortcuts-shortcut}
   @see-symbol{gtk:text-direction}")
 
-;;; --- shortcuts-shortcut-icon ------------------------------------------------
+;;; --- gtk:shortcuts-shortcut-icon --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "icon"
@@ -376,7 +376,7 @@
   @see-class{gtk:shortcuts-shortcut}
   @see-class{g:icon}")
 
-;;; --- shortcuts-shortcut-icon-set --------------------------------------------
+;;; --- gtk:shortcuts-shortcut-icon-set ----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "icon-set"
@@ -401,7 +401,7 @@
   @em{True} if an icon has been set.
   @see-class{gtk:shortcuts-shortcut}")
 
-;;; --- shortcuts-shortcut-shortcut-type ---------------------------------------
+;;; --- gtk:shortcuts-shortcut-shortcut-type -----------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "shortcut-type"
@@ -429,7 +429,7 @@
   @see-class{gtk:shortcuts-shortcut}
   @see-symbol{gtk:shortcut-type}")
 
-;;; --- shortcuts-shortcut-subtitle --------------------------------------------
+;;; --- gtk:shortcuts-shortcut-subtitle ----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "subtitle"
@@ -458,7 +458,7 @@
   the predefined gesture types, GTK provides a subtitle on its own.
   @see-class{gtk:shortcuts-shortcut}")
 
-;;; --- shortcuts-shortcut-subtitle-set ----------------------------------------
+;;; --- gtk:shortcuts-shortcut-subtitle-set ------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "subtitle-set"
@@ -483,7 +483,7 @@
   @em{True} if a subtitle has been set.
   @see-class{gtk:shortcuts-shortcut}")
 
-;;; --- shortcuts-shortcut-title -----------------------------------------------
+;;; --- gtk:shortcuts-shortcut-title -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "title"
@@ -510,7 +510,7 @@
   object. This should be a short string that can fit in a single line.
   @see-class{gtk:shortcuts-shortcut}")
 
-;;; --- shortcuts-shortcut-title-size-group ------------------------------------
+;;; --- gtk:shortcuts-shortcut-title-size-group --------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "title-size-group"

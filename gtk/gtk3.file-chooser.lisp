@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -244,7 +244,7 @@
  "@version{#2023-3-14}
   @begin{short}
     These identify the various errors that can occur while calling
-    @sym{gtk:file-chooser} interface functions.
+    @class{gtk:file-chooser} interface functions.
   @end{short}
   @begin{pre}
 (gobject:define-g-enum \"GtkFileChooserError\" file-chooser-error
@@ -312,16 +312,16 @@
       (documentation 'file-chooser 'type)
  "@version{2023-5-16}
   @begin{short}
-    The @sym{gtk:file-chooser} interface is an interface that can be
+    The @class{gtk:file-chooser} interface is an interface that can be
     implemented by file selection widgets.
   @end{short}
   The main widgets that implement this interface are the
   @class{gtk:file-chooser-widget}, @class{gtk:file-chooser-dialog}, and
   @class{gtk:file-chooser-button} widgets. You do not need to write a widget
-  that implements the @sym{gtk:file-chooser} interface unless you are trying to
+  that implements the @class{gtk:file-chooser} interface unless you are trying to
   adapt an existing file selector to expose a standard programming interface.
 
-  The @sym{gtk:file-chooser} interface allows for shortcuts to various places
+  The @class{gtk:file-chooser} interface allows for shortcuts to various places
   in the filesystem. In the default implementation these are displayed in the
   left pane. It may be a bit confusing at first that these shortcuts come from
   various sources and in various flavours, so lets explain the terminology here:
@@ -342,7 +342,7 @@
     @end{entry}
   @end{table}
   @subheading{File Names and Encodings}
-    When the user is finished selecting files in a @sym{gtk:file-chooser}
+    When the user is finished selecting files in a @class{gtk:file-chooser}
     widget, the program can get the selected names either as filenames or as
     URIs. For URIs, the normal escaping rules are applied if the URI contains
     non-ASCII characters. However, filenames are always returned in the
@@ -511,7 +511,7 @@ lambda (chooser)    :run-last
     ... )
       @end{pre}
       @begin[code]{table}
-        @entry[chooser]{The @sym{gtk:file-chooser} widget which received the
+        @entry[chooser]{The @class{gtk:file-chooser} widget which received the
           signal.}
         @entry[Returns]{A @symbol{gtk:file-chooser-confirmation} value that
           indicates which action to take after emitting the signal.}
@@ -528,7 +528,7 @@ lambda (chooser)    :run-last
       connect to this signal, unless you need to keep track of which folder a
       file chooser is showing.
       @begin[code]{table}
-        @entry[chooser]{The @sym{gtk:file-chooser} widget which received the
+        @entry[chooser]{The @class{gtk:file-chooser} widget which received the
           signal.}
       @end{table}
     @subheading{The \"file-activated\" signal}
@@ -541,7 +541,7 @@ lambda (chooser)    :run-last
       the signal. It is used internally by the @class{gtk:file-chooser-dialog}
       class to know when to activate the default button in the dialog.
       @begin[code]{table}
-        @entry[chooser]{The @sym{gtk:file-chooser} widget which received the
+        @entry[chooser]{The @class{gtk:file-chooser} widget which received the
           signal.}
       @end{table}
     @subheading{The \"selection-changed\" signal}
@@ -554,7 +554,7 @@ lambda (chooser)    :run-last
       change the selection. Normally you do not need to connect to the signal,
       as it is easier to wait for the file chooser to finish running.
       @begin[code]{table}
-        @entry[chooser]{The @sym{gtk:file-chooser} widget which received the
+        @entry[chooser]{The @class{gtk:file-chooser} widget which received the
           signal.}
       @end{table}
     @subheading{The \"update-preview\" signal}
@@ -574,7 +574,7 @@ lambda (chooser)    :run-last
       @fun{gtk:file-chooser-preview-widget-active} function to inform the file
       chooser about whether the preview was generated successfully or not.
       @begin[code]{table}
-        @entry[chooser]{The @sym{gtk:file-chooser} widget which received the
+        @entry[chooser]{The @class{gtk:file-chooser} widget which received the
           signal.}
       @end{table}
   @end{dictionary}
@@ -597,7 +597,7 @@ lambda (chooser)    :run-last
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;: --- file-chooser-action ----------------------------------------------------
+;;: --- gtk:file-chooser-action ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "action" 'file-chooser) t)
@@ -619,15 +619,15 @@ lambda (chooser)    :run-last
     Accessor of the @slot[gtk:file-chooser]{action} slot of the
     @class{gtk:file-chooser} interface.
   @end{short}
-  The @sym{gtk:file-chooser-action} function gets the type of operation that the
-  file chooser is performing. The @sym{(setf gtk:file-chooser-action)} function
-  sets the type of operation. The user interface is adapted to suit the selected
+  The @fun{gtk:file-chooser-action} function gets the type of operation that the
+  file chooser is performing. The @setf{gtk:file-chooser-action} function sets
+  the type of operation. The user interface is adapted to suit the selected
   action. For example, an option to create a new folder might be shown if the
   action is @code{:save} but not if the action is @code{:open}.
   @see-class{gtk:file-chooser}
   @see-symbol{gtk:file-chooser-action}")
 
-;;; --- file-chooser-create-folders --------------------------------------------
+;;; --- gtk:file-chooser-create-folders ----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "create-folders"
@@ -652,16 +652,16 @@ lambda (chooser)    :run-last
     Accessor of the @slot[gtk:file-chooser]{create-folders} slot of the
     @class{gtk:file-chooser} interface.
   @end{short}
-  The @sym{gtk:file-chooser-create-folders} function gets whether the file
+  The @fun{gtk:file-chooser-create-folders} function gets whether the file
   chooser will offer to create new folders. The
-  @sym{(setf gtk:file-chooser-create-folders)} function sets the property.
+  @setf{gtk:file-chooser-create-folders} function sets the property.
 
   This is only relevant if the action of the file chooser is not set to be
   @code{:open}.
   @see-class{gtk:file-chooser}
   @see-symbol{gtk:file-chooser-action}")
 
-;;; --- file-chooser-do-overwrite-confirmation ---------------------------------
+;;; --- gtk:file-chooser-do-overwrite-confirmation -----------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "do-overwrite-confirmation"
@@ -686,15 +686,15 @@ lambda (chooser)    :run-last
     Accessor of the @slot[gtk:file-chooser]{do-overwrite-confirmation} slot of
     the @class{gtk:file-chooser} interface.
   @end{short}
-  The @sym{gtk:file-chooser-do-overwrite-confirmation} function queries whether
+  The @fun{gtk:file-chooser-do-overwrite-confirmation} function queries whether
   the file chooser in @code{:save} mode is set to confirm for overwriting when
   the user types a file name that already exists. The
-  @sym{(setf gtk:file-chooser-do-overwrite-confirmation)} function sets whether
-  the file chooser will present a confirmation dialog. This is @em{false} by
+  @setf{gtk:file-chooser-do-overwrite-confirmation} function sets whether the
+  file chooser will present a confirmation dialog. This is @em{false} by
   default.
 
-  Regardless of this setting, the chooser will emit the \"confirm-overwrite\"
-  signal when appropriate.
+  Regardless of this setting, the chooser will emit the
+  @code{\"confirm-overwrite\"} signal when appropriate.
 
   If all you need is the stock confirmation dialog, set this property to
   @em{true}. You can override the way confirmation is done by actually handling
@@ -703,7 +703,7 @@ lambda (chooser)    :run-last
   @see-class{gtk:file-chooser}
   @see-symbol{gtk:file-chooser-action}")
 
-;;; --- file-chooser-extra-widget ----------------------------------------------
+;;; --- gtk:file-chooser-extra-widget ------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "extra-widget" 'file-chooser) t)
@@ -724,13 +724,13 @@ lambda (chooser)    :run-last
     Accessor of the @slot[gtk:file-chooser]{extra-widget} slot of the
     @class{gtk:file-chooser} interface.
   @end{short}
-  The @sym{gtk:file-chooser-extra-widget} function gets the application
+  The @fun{gtk:file-chooser-extra-widget} function gets the application
   supplied widget to provide extra options to the user. The
-  @sym{(setf gtk:file-chooser-extra-widget)} function sets the widget.
+  @setf{gtk:file-chooser-extra-widget} function sets the widget.
   @see-class{gtk:file-chooser}
   @see-class{gtk:widget}")
 
-;;; --- file-chooser-filter ----------------------------------------------------
+;;; --- gtk:file-chooser-filter ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "filter" 'file-chooser) t)
@@ -751,9 +751,9 @@ lambda (chooser)    :run-last
     Accessor of the @slot[gtk:file-chooser]{filter} slot of the
     @class{gtk:file-chooser} interface.
   @end{short}
-  The @sym{gtk:file-chooser-filter} function gets the current filter. The
-  @sym{(setf gtk:file-chooser-filter)} function sets the current filter. Only
-  the files that pass the filter will be displayed.
+  The @fun{gtk:file-chooser-filter} function gets the current filter. The
+  @setf{gtk:file-chooser-filter} function sets the current filter. Only the
+  files that pass the filter will be displayed.
 
   If the user-selectable list of filters is non-empty, then the filter should be
   one of the filters in that list. Setting the current filter when the list of
@@ -762,7 +762,7 @@ lambda (chooser)    :run-last
   @see-class{gtk:file-chooser}
   @see-class{gtk:file-filter}")
 
-;;; --- file-chooser-local-only ------------------------------------------------
+;;; --- gtk:file-chooser-local-only --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "local-only" 'file-chooser) t)
@@ -783,10 +783,9 @@ lambda (chooser)    :run-last
     Accessor of the @slot[gtk:file-chooser]{local-only} slot of the
     @class{gtk:file-chooser} interface.
   @end{short}
-  The @sym{gtk:file-chooser-local-only} function gets whether only local files
-  can be selected in the file selector. The
-  @sym{(setf gtk:file-chooser-local-only)} function sets whether only local
-  files can be selected.
+  The @fun{gtk:file-chooser-local-only} function gets whether only local files
+  can be selected in the file selector. The @setf{gtk:file-chooser-local-only}
+  function sets whether only local files can be selected.
 
   If @arg{local-only} is @em{true}, the default, then the selected files are
   guaranteed to be accessible through the operating systems native file
@@ -798,7 +797,7 @@ lambda (chooser)    :run-last
   @see-function{gtk:file-chooser-filename}
   @see-function{gtk:file-chooser-uri}")
 
-;;; --- file-chooser-preview-widget --------------------------------------------
+;;; --- gtk:file-chooser-preview-widget ----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "preview-widget"
@@ -820,13 +819,13 @@ lambda (chooser)    :run-last
     Accessor of the @slot[gtk:file-chooser]{preview-widget} slot of the
     @class{gtk:file-chooser} interface.
   @end{short}
-  The @sym{gtk:file-chooser-preview-widget} function gets the current preview
-  widget. The @sym{(setf gtk:file-chooser-preview-widget)} function sets an
+  The @fun{gtk:file-chooser-preview-widget} function gets the current preview
+  widget. The @setf{gtk:file-chooser-preview-widget} function sets an
   application supplied widget to use to display a custom preview of the
   currently selected file.
 
   To implement a preview, after setting the preview widget, you connect to the
-  \"update-preview\" signal, and call the
+  @code{\"update-preview\"} signal, and call the
   @fun{gtk:file-chooser-preview-filename} or @fun{gtk:file-chooser-preview-uri}
   functions on each change. If you can display a preview of the new file, update
   your widget and set the preview active using the
@@ -842,7 +841,7 @@ lambda (chooser)    :run-last
   @see-function{gtk:file-chooser-preview-uri}
   @see-function{gtk:file-chooser-preview-widget-active}")
 
-;;; --- file-chooser-preview-widget-active -------------------------------------
+;;; --- gtk:file-chooser-preview-widget-active ---------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "preview-widget-active"
@@ -867,9 +866,9 @@ lambda (chooser)    :run-last
     Accessor of the @slot[gtk:file-chooser]{preview-widget-active} slot of the
     @class{gtk:file-chooser} interface.
   @end{short}
-  The @sym{gtk:file-chooser-preview-widget-active} function gets whether the
+  The @fun{gtk:file-chooser-preview-widget-active} function gets whether the
   preview widget should be shown for the current filename. The
-  @sym{(setf gtk:file-chooser-preview-widget-active)} function sets whether the
+  @setf{gtk:file-chooser-preview-widget-active} function sets whether the
   preview widget should be shown.
 
   When @arg{active} is set to @em{false}, the file chooser may display an
@@ -879,7 +878,7 @@ lambda (chooser)    :run-last
   @see-class{gtk:file-chooser}
   @see-function{gtk:file-chooser-preview-widget}")
 
-;;; --- file-chooser-select-multiple -------------------------------------------
+;;; --- gtk:file-chooser-select-multiple ---------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "select-multiple"
@@ -902,17 +901,17 @@ lambda (chooser)    :run-last
     Accessor of the @slot[gtk:file-chooser]{select-multiple} slot of the
     @class{gtk:file-chooser} interface.
   @end{short}
-  The @sym{gtk:file-chooser-select-multiple} function gets whether multiple
+  The @fun{gtk:file-chooser-select-multiple} function gets whether multiple
   files can be selected in the file selector. The
-  @sym{(setf gtk:file-chooser-select-multiple)} function sets whether multiple
-  files can be selected.
+  @setf{gtk:file-chooser-select-multiple} function sets whether multiple files
+  can be selected.
 
   This is only relevant if the action of the file chooser is set to be
   @code{:open} or @code{:select-folder}.
   @see-class{gtk:file-chooser}
   @see-symbol{gtk:file-chooser-action}")
 
-;;; --- file-chooser-show-hidden -----------------------------------------------
+;;; --- gtk:file-chooser-show-hidden -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "show-hidden"
@@ -934,12 +933,12 @@ lambda (chooser)    :run-last
     Accessor of the @slot[gtk:file-chooser]{show-hidden} slot of the
     @class{gtk:file-chooser} interface.
   @end{short}
-  The @sym{gtk:file-chooser-show-hidden} function gets whether hidden files and
+  The @fun{gtk:file-chooser-show-hidden} function gets whether hidden files and
   folders are displayed in the file selector. The
-  @sym{(setf gtk:file-chooser-show-hidden)} function sets the property.
+  @setf{gtk:file-chooser-show-hidden} function sets the property.
   @see-class{gtk:file-chooser}")
 
-;;; --- file-chooser-use-preview-label -----------------------------------------
+;;; --- gtk:file-chooser-use-preview-label -------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "use-preview-label"
@@ -963,10 +962,10 @@ lambda (chooser)    :run-last
     Accessor of the @slot[gtk:file-chooser]{use-preview-label} slot of the
     @class{gtk:file-chooser} interface.
   @end{short}
-  The @sym{gtk:file-chooser-use-preview-label} function gets whether a stock
+  The @fun{gtk:file-chooser-use-preview-label} function gets whether a stock
   label should be drawn with the name of the previewed file. The
-  @sym{(setf gtk:file-chooser-use-preview-label)} function sets whether the
-  file chooser should display a stock label. The default is @em{true}.
+  @setf{gtk:file-chooser-use-preview-label} function sets whether the file
+  chooser should display a stock label. The default is @em{true}.
 
   Applications that want to draw the whole preview area themselves should set
   this to @em{false} and display the name themselves in their preview widget.
@@ -976,7 +975,7 @@ lambda (chooser)    :run-last
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_file_chooser_get_current_name ()
-;;; gtk_file_chooser_set_current_name () -> file-chooser-current-name
+;;; gtk_file_chooser_set_current_name ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf file-chooser-current-name) (name chooser)
@@ -997,9 +996,9 @@ lambda (chooser)    :run-last
   @begin{short}
     Accessor of the current name of a file chooser widget.
   @end{short}
-  The @sym{gtk:file-chooser-current-name} function gets the current name in the
+  The @fun{gtk:file-chooser-current-name} function gets the current name in the
   file selector, as entered by the user in the text entry for \"Name\". The
-  @sym{(gtk:file-chooser-current-name)} function sets the current name.
+  @setf{gtk:file-chooser-current-name} function sets the current name.
 
   This is meant to be used in save dialogs, to get the currently typed filename
   when the file itself does not exist yet. For example, an application that adds
@@ -1015,7 +1014,7 @@ lambda (chooser)    :run-last
   If you want to preselect a particular existing file, you should use the
   @fun{gtk:file-chooser-filename} or @fun{gtk:file-chooser-uri} functions
   instead. Please see the documentation for those functions for an
-  example of using the @sym{gtk:file-chooser-current-name} function as well.
+  example of using the @fun{gtk:file-chooser-current-name} function as well.
   @see-class{gtk:file-chooser}
   @see-function{gtk:file-chooser-filename}
   @see-function{gtk:file-chooser-uri}"
@@ -1025,7 +1024,7 @@ lambda (chooser)    :run-last
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_file_chooser_get_filename ()
-;;; gtk_file_chooser_set_filename () -> file-chooser-filename
+;;; gtk_file_chooser_set_filename ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf file-chooser-filename) (filename chooser)
@@ -1046,12 +1045,12 @@ lambda (chooser)    :run-last
   @begin{short}
     Accessor of the filename of a file chooser widget.
   @end{short}
-  The @sym{gtk:file-chooser-filename} function gets the filename for the
+  The @fun{gtk:file-chooser-filename} function gets the filename for the
   currently selected file in the file selector. If multiple files are selected,
   one of the filenames will be returned at random. If the file chooser is in
   folder mode, this function returns the selected folder.
 
-  The @sym{(gtk:file-chooser-filename)} function sets @arg{filename} as the
+  The @setf{gtk:file-chooser-filename} function sets @arg{filename} as the
   current filename for the file chooser, by changing to the file's parent
   folder and actually selecting the file in the list. All other files will be
   unselected. If the chooser is in @code{:save} mode, the file's base name will
@@ -1162,7 +1161,7 @@ lambda (chooser)    :run-last
 (export 'file-chooser-unselect-all)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_get_filenames () -> file-chooser-filenames
+;;; gtk_file_chooser_get_filenames ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_file_chooser_get_filenames" file-chooser-filenames)
@@ -1189,7 +1188,7 @@ lambda (chooser)    :run-last
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_file_chooser_get_current_folder ()
-;;; gtk_file_chooser_set_current_folder () -> file-chooser-current-folder
+;;; gtk_file_chooser_set_current_folder ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf file-chooser-current-folder) (filename chooser)
@@ -1210,9 +1209,9 @@ lambda (chooser)    :run-last
   @begin{short}
     Accessor of the current folder of the file chooser.
   @end{short}
-  The @sym{gtk:file-chooser-current-folder} function gets the current folder
+  The @fun{gtk:file-chooser-current-folder} function gets the current folder
   of the file chooser as a local filename. The
-  @sym{(setf gtk:file-chooser-current-folder)} function sets the current folder.
+  @setf{gtk:file-chooser-current-folder} function sets the current folder.
 
   The user will be shown the full contents of the current folder, plus user
   interface elements for navigating to other folders.
@@ -1234,7 +1233,7 @@ lambda (chooser)    :run-last
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_file_chooser_get_uri ()
-;;; gtk_file_chooser_set_uri () -> file-chooser-uri
+;;; gtk_file_chooser_set_uri ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf file-chooser-uri) (uri chooser)
@@ -1254,12 +1253,12 @@ lambda (chooser)    :run-last
   @begin{short}
     Accessor of the currently selected URI.
   @end{short}
-  The @sym{gtk:file-chooser-uri} function gets the URI for the currently
+  The @fun{gtk:file-chooser-uri} function gets the URI for the currently
   selected file in the file selector. If multiple files are selected, one of
   the filenames will be returned at random. If the file chooser is in folder
   mode, this function returns the selected folder.
 
-  The @sym{(setf gtk:file-chooser-uri)} function sets the file referred to by
+  The @setf{gtk:file-chooser-uri} function sets the file referred to by
   @arg{uri} as the current file for the file chooser, by changing to the URI's
   parent folder and actually selecting the URI in the list. If the chooser is
   in @code{:save} mode, the URI's base name will also appear in the dialog's
@@ -1335,7 +1334,7 @@ lambda (chooser)    :run-last
 (export 'file-chooser-unselect-uri)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_get_uris () -> file-chooser-uris
+;;; gtk_file_chooser_get_uris ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_file_chooser_get_uris" file-chooser-uris)
@@ -1361,7 +1360,6 @@ lambda (chooser)    :run-last
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_file_chooser_set_current_folder_uri ()
 ;;; gtk_file_chooser_get_current_folder_uri ()
-;;;     -> file-chooser-current-folder-uri
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf file-chooser-current-folder-uri) (uri chooser)
@@ -1382,7 +1380,7 @@ lambda (chooser)    :run-last
   @begin{short}
     Accessor of the URI for the current folder of the file chooser.
   @end{short}
-  The @sym{gtk:file-chooser-current-folder-uri} function gets the current
+  The @fun{gtk:file-chooser-current-folder-uri} function gets the current
   folder of the file chooser as an URI. This function will also return
   @code{nil} if the file chooser was unable to load the last folder that was
   requested from it. For example, as would be for calling this function on a
@@ -1395,10 +1393,10 @@ lambda (chooser)    :run-last
   currently selected folder in that mode, use the @fun{gtk:file-chooser-uri}
   function as the usual way to get the selection.
 
-  The @sym{(setf gtk:file-chooser-current-folder-uri)} function sets the
-  current folder for the file chooser from an URI. The user will be shown the
-  full contents of the current folder, plus user interface elements for
-  navigating to other folders.
+  The @setf{gtk:file-chooser-current-folder-uri} function sets the current
+  folder for the file chooser from an URI. The user will be shown the full
+  contents of the current folder, plus user interface elements for navigating
+  to other folders.
 
   In general, you should not use this function. See the section on setting up
   a file chooser dialog for the rationale behind this.
@@ -1410,7 +1408,6 @@ lambda (chooser)    :run-last
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_file_chooser_get_preview_filename ()
-;;;     -> file-chooser-preview-filename
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_file_chooser_get_preview_filename"
@@ -1433,7 +1430,7 @@ lambda (chooser)    :run-last
 (export 'file-chooser-preview-filename)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_get_preview_uri () -> file-chooser-preview-uri
+;;; gtk_file_chooser_get_preview_uri ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_file_chooser_get_preview_uri" file-chooser-preview-uri)
@@ -1695,7 +1692,6 @@ lambda (chooser)    :run-last
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_file_chooser_get_current_folder_file ()
 ;;; gtk_file_chooser_set_current_folder_file ()
-;;;   -> file-chooser-current-folder-file
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf file-chooser-current-folder-file) (file chooser)
@@ -1718,10 +1714,10 @@ lambda (chooser)    :run-last
   @begin{short}
     Accessor of the current folder file of the file chooser.
   @end{short}
-  The @sym{gtk:file-chooser-current-folder-file} function gets the current
+  The @fun{gtk:file-chooser-current-folder-file} function gets the current
   folder of the file chooser as a @class{g:file} object. The
-  @sym{(setf gtk:file-chooser-current-folder-file)} function sets the current
-  folder. This function returns @code{nil}, if the folder could not be changed
+  @setf{gtk:file-chooser-current-folder-file} function sets the current folder.
+  This function returns @code{nil}, if the folder could not be changed
   successfully.
 
   Internal function, see the @fun{gtk:file-chooser-current-folder-uri} function.
@@ -1734,7 +1730,7 @@ lambda (chooser)    :run-last
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_file_chooser_get_file ()
-;;; gtk_file_chooser_set_file () -> file-chooser-file
+;;; gtk_file_chooser_set_file ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf file-chooser-file) (file chooser)
@@ -1756,12 +1752,12 @@ lambda (chooser)    :run-last
   @begin{short}
     Accessor of the file of the file chooser.
   @end{short}
-  The @sym{gtk:file-choose-file} function gets the @class{g:file} object for
+  The @fun{gtk:file-choose-file} function gets the @class{g:file} object for
   the currently selected file in the file selector. If multiple files are
   selected, one of the files will be returned at random. If the file chooser
   is in folder mode, this function returns the selected folder.
 
-  The @sym{gtk:file-chooser-file} function sets @arg{file} as the current
+  The @setf{gtk:file-chooser-file} function sets @arg{file} as the current
   filename for the file chooser, by changing to the file's parent folder and
   actually selecting the file in list. If the chooser is in @code{:save} mode,
   the file's base name will also appear in the dialog's file name entry.
@@ -1802,7 +1798,7 @@ lambda (chooser)    :run-last
 (export 'file-chooser-file)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_get_files () -> file-chooser-files
+;;; gtk_file_chooser_get_files ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_file_chooser_get_files" file-chooser-files)
@@ -1827,7 +1823,7 @@ lambda (chooser)    :run-last
 (export 'file-chooser-files)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_get_preview_file () -> file-chooser-preview-file
+;;; gtk_file_chooser_get_preview_file ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_file_chooser_get_preview_file" file-chooser-preview-file)

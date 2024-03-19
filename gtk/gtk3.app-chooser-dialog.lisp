@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2013 - 2023 Dieter Kaiser
+;;; Copyright (C) 2013 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -89,10 +89,10 @@
 (setf (documentation 'app-chooser-dialog 'type)
  "@version{2023-2-18}
   @begin{short}
-    The @sym{gtk:app-chooser-dialog} widget shows a
+    The @class{gtk:app-chooser-dialog} widget shows a
     @class{gtk:app-chooser-widget} widget inside a @class{gtk:dialog} widget.
   @end{short}
-  Note that the @sym{gtk:app-chooser-dialog} widget does not have any
+  Note that the @class{gtk:app-chooser-dialog} widget does not have any
   interesting methods of its own. Instead, you should get the embedded
   @class{gtk:app-chooser-widget} widget using the
   @fun{gtk:app-chooser-dialog-widget} function and call its methods if the
@@ -113,13 +113,13 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- app-chooser-dialog-gfile -----------------------------------------------
+;;; --- gtk:app-chooser-dialog-gfile -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gfile" 'app-chooser-dialog) t)
  "The @code{gfile} property of type @class{g:file}
   (Read / Write / Construct Only) @br{}
-  The @class{g:file} object used by the @sym{gtk:app-chooser-dialog} widget.
+  The @class{g:file} object used by the @class{gtk:app-chooser-dialog} widget.
   The dialog's content type will be guessed from the file, if present.")
 
 #+liber-documentation
@@ -133,7 +133,7 @@
   @end{short}
   @see-class{gtk:app-chooser-dialog}")
 
-;;; --- app-chooser-dialog-heading ---------------------------------------------
+;;; --- gtk:app-chooser-dialog-heading -----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "heading" 'app-chooser-dialog) t)
@@ -155,10 +155,10 @@
     Accessor of the @slot[gtk:app-chooser-dialog]{heading} slot of the
     @class{gtk:app-chooser-dialog} class.
   @end{short}
-  The @sym{gtk:app-chooser-dialog-heading} function returns the text to display
-  at the top of the dialog. The @sym{(setf gtk:app-chooser-dialog-heading)}
-  function sets the text to display at the top of the dialog. If the heading is
-  not set, the dialog displays a default text.
+  The @fun{gtk:app-chooser-dialog-heading} function returns the text to display
+  at the top of the dialog. The @setf{gtk:app-chooser-dialog-heading} function
+  sets the text to display at the top of the dialog. If the heading is not set,
+  the dialog displays a default text.
   @see-class{gtk:app-chooser-dialog}")
 
 ;;; ----------------------------------------------------------------------------
@@ -213,7 +213,7 @@
 (export 'app-chooser-dialog-new-for-content-type)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_app_chooser_dialog_get_widget () -> app-chooser-dialog-widget
+;;; gtk_app_chooser_dialog_get_widget ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_app_chooser_dialog_get_widget" app-chooser-dialog-widget)

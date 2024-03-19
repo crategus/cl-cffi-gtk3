@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -125,7 +125,7 @@
 (setf (documentation 'cell-view 'type)
  "@version{#2023-3-16}
   @begin{short}
-    A @sym{gtk:cell-view} widget displays a single row of a
+    A @class{gtk:cell-view} widget displays a single row of a
     @class{gtk:tree-model} object using a @class{gtk:cell-area} object and
     @class{gtk:cell-area-context} object.
   @end{short}
@@ -135,7 +135,7 @@
   displayed will be properly aligned with each other like the aligned cells in
   the menus of a @class{gtk:combo-box} widget.
 
-  The @sym{gtk:cell-view} widget is a @class{gtk:orientable} widget in order to
+  The @class{gtk:cell-view} widget is a @class{gtk:orientable} widget in order to
   decide in which orientation the underlying @class{gtk:cell-area-context}
   object should be allocated. Taking the @class{gtk:combo-box} menu as an
   example, cell views should be oriented horizontally if the menus are listed
@@ -143,7 +143,7 @@
   individual heights (left-to-right menus should be allocated vertically since
   they all share the same height but may have variable widths).
   @begin[CSS nodes]{dictionary}
-    The @sym{gtk:cell-view} implementation has a single CSS node with name
+    The @class{gtk:cell-view} implementation has a single CSS node with name
     @code{cellview}.
   @end{dictionary}
   @see-constructor{gtk:cell-view-new}
@@ -168,7 +168,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- cell-view-background ---------------------------------------------------
+;;; --- gtk:cell-view-background -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "background" 'cell-view) t)
@@ -191,7 +191,7 @@
   @end{short}
   @see-class{gtk:cell-view}")
 
-;;; --- cell-view-background-gdk -----------------------------------------------
+;;; --- gtk:cell-view-background-gdk -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "background-gdk" 'cell-view) t)
@@ -224,7 +224,7 @@
   @see-class{gdk:color}
   @see-function{gtk:cell-view-background-rgba}")
 
-;;; --- cell-view-background-rgba ------------------------------------------
+;;; --- gtk:cell-view-background-rgba ------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "background-rgba" 'cell-view) t)
@@ -245,13 +245,13 @@
     Accessor of the @slot[gtk:cell-view]{background-rgba} slot of the
     @class{gtk:cell-view} class.
   @end{short}
-  The @sym{gtk:cell-view-background-rgba} function gets the background color of
-  the cell view. The @sym{(setf gtk:cell-view-background-rgba)} function sets
-  the background color.
+  The @fun{gtk:cell-view-background-rgba} function gets the background color of
+  the cell view. The @setf{gtk:cell-view-background-rgba} function sets the
+  background color.
   @see-class{gtk:cell-view}
   @see-class{gdk:rgba}")
 
-;;; --- cell-view-background-set -----------------------------------------------
+;;; --- gtk:cell-view-background-set -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "background-set" 'cell-view) t)
@@ -275,7 +275,7 @@
   @end{short}
   @see-class{gtk:cell-view}")
 
-;;; --- cell-view-cell-area ----------------------------------------------------
+;;; --- gtk:cell-view-cell-area ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "cell-area" 'cell-view) t)
@@ -306,7 +306,7 @@
   @see-class{gtk:cell-area-box}
   @see-function{gtk:cell-view-new-with-context}")
 
-;;; --- cell-view-cell-area-context --------------------------------------------
+;;; --- gtk:cell-view-cell-area-context ----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "cell-area-context"
@@ -345,7 +345,7 @@
   @see-class{gtk:combo-box}
   @see-class{gtk:cell-area-context}")
 
-;;; --- cell-view-draw-sensitive -----------------------------------------------
+;;; --- gtk:cell-view-draw-sensitive -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "draw-sensitive" 'cell-view) t)
@@ -370,10 +370,10 @@
     Accessor of the @slot[gtk:tree-view]{draw-sensitive} slot of the
     @class{gtk:cell-view} class.
   @end{short}
-  The @sym{gtk:cell-view-draw-sensitive} function gets whether the cell view is
+  The @fun{gtk:cell-view-draw-sensitive} function gets whether the cell view is
   configured to draw all of its cells in a sensitive state. The
-  @sym{(setf gtk:cell-view-draw-sensitive)} function sets whether cell view
-  should draw all of its cells in a sensitive state.
+  @setf{gtk:cell-view-draw-sensitive} function sets whether cell view should
+  draw all of its cells in a sensitive state.
 
   This is used by @class{gtk:combo-box} menus to ensure that rows with
   insensitive cells that contain children appear sensitive in the parent menu
@@ -381,7 +381,7 @@
   @see-class{gtk:cell-view}
   @see-class{gtk:combo-box}")
 
-;;; --- cell-view-fit-model ----------------------------------------------------
+;;; --- gtk:cell-view-fit-model ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "fit-model" 'cell-view) t)
@@ -405,9 +405,9 @@
     Accessor of the @slot[gtk:cell-view]{fit-model}  slot of the
     @class{gtk:cell-view} class.
   @end{short}
-  The @sym{gtk:cell-view-fit-model} function gets whether the cell view is
+  The @fun{gtk:cell-view-fit-model} function gets whether the cell view is
   configured to request space to fit the entire @class{gtk:tree-model} object.
-  The @sym{(setf gtk:cell-view-fit-model)} function sets the property.
+  The @setf{gtk:cell-view-fit-model} function sets the property.
 
   This is used by @class{gtk:combo-box} widgets to ensure that the cell view
   displayed on the combo box's button always gets enough space and does not
@@ -415,7 +415,7 @@
   @see-class{gtk:cell-view}
   @see-class{gtk:combo-box}")
 
-;;; --- cell-view-model --------------------------------------------------------
+;;; --- gtk:cell-view-model ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "model" 'cell-view) t)
@@ -435,8 +435,8 @@
     Accessor of the @slot[gtk:cell-view]{model} slot of the
     @class{gtk:cell-view} class.
   @end{short}
-  The @sym{gtk:cell-view-model} function returns the model for the cell view. If
-  no model is used @code{nil} is returned. The @sym{(setf gtk:cell-view-model)}
+  The @fun{gtk:cell-view-model} function returns the model for the cell view. If
+  no model is used @code{nil} is returned. The @setf{gtk:cell-view-model}
   function sets the model. If the cell view already has a model set, it will
   remove it before setting the new model. If @arg{model} is @code{nil}, then it
   will unset the old model.
@@ -555,7 +555,7 @@
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_cell_view_set_displayed_row ()
-;;  gtk_cell_view_get_displayed_row () > cell-view-displayed-row
+;;  gtk_cell_view_get_displayed_row ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf cell-view-displayed-row) (path cellview)
@@ -574,13 +574,13 @@
   @argument[cellview]{a @class{gtk:cell-view} widget}
   @argument[path]{a @class{gtk:tree-path} instance or @code{nil} to unset}
   @begin{short}
-    The @sym{gtk:cell-view-display-row} function returns a @class{gtk:tree-path}
+    The @fun{gtk:cell-view-display-row} function returns a @class{gtk:tree-path}
     instance referring to the currently displayed row.
   @end{short}
   If no row is currently displayed, @code{nil} is returned.
 
-  The @sym{(setf gtk:cell-view-display-row)} function sets the row of the model
-  that is currently displayed by the cell view. If the path is unset, then the
+  The @setf{gtk:cell-view-display-row} function sets the row of the model that
+  is currently displayed by the cell view. If the path is unset, then the
   contents of the cell view \"stick\" at their last value. This is not normally
   a desired result, but may be a needed intermediate state if say, the model
   for the cell view becomes temporarily empty.
@@ -591,7 +591,7 @@
 (export 'cell-view-displayed-row)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_cell_view_get_size_of_row () -> cell-view-size-of-row
+;;; gtk_cell_view_get_size_of_row ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_cell_view_get_size_of_row" %cell-view-size-of-row) :boolean
@@ -609,7 +609,7 @@
     to by @arg{path}.
   @end{short}
   @begin[Warning]{dictionary}
-    The @sym{gtk:cell-view-size-of-row} function has been deprecated since
+    The @fun{gtk:cell-view-size-of-row} function has been deprecated since
     version 3.0 and should not be used in newly written code. The combo box
     formerly used this to calculate the sizes for cell views, now you can
     achieve this by either using the @slot[gtk:cell-view]{fit-model} property or

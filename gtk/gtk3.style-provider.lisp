@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2013 - 2023 Dieter Kaiser
+;;; Copyright (C) 2013 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -175,7 +175,7 @@
       (documentation 'style-provider 'type)
  "@version{2023-3-27}
   @begin{short}
-    The @sym{gtk:style-provider} interface is an interface used to provide
+    The @class{gtk:style-provider} interface is an interface used to provide
     style information to a @class{gtk:style-context} object.
   @end{short}
   See the @fun{gtk:style-context-add-provider} and
