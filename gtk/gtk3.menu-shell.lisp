@@ -140,14 +140,14 @@
 (setf (documentation 'menu-shell 'type)
  "@version{#2023-3-21}
   @begin{short}
-    The @sym{gtk:menu-shell} class is the abstract base class used to derive
+    The @class{gtk:menu-shell} class is the abstract base class used to derive
     the @class{gtk:menu} and @class{gtk:menu-bar} subclasses.
   @end{short}
 
-  A @sym{gtk:menu-shell} widget is a container of @class{gtk:menu-item} widgets
-  arranged in a list which can be navigated, selected, and activated by the user
-  to perform application functions. A @class{gtk:menu-item} widget can have a
-  submenu associated with it, allowing for nested hierarchical menus.
+  The @class{gtk:menu-shell} widget is a container of @class{gtk:menu-item}
+  widgets arranged in a list which can be navigated, selected, and activated by
+  the user to perform application functions. A @class{gtk:menu-item} widget can
+  have a submenu associated with it, allowing for nested hierarchical menus.
 
   @subheading{Terminology}
   A menu item can be \"selected\", this means that it is displayed in the
@@ -172,7 +172,7 @@ lambda (menushell force-hide)    :action
       An action signal that activates the current menu item within the menu
       shell.
       @begin[code]{table}
-        @entry[menushell]{The @sym{gtk:menu-shell} widget which received the
+        @entry[menushell]{The @class{gtk:menu-shell} widget which received the
           signal.}
         @entry[force-hide]{If @em{true}, hide the menu after activating the
           menu item.}
@@ -184,7 +184,7 @@ lambda (menushell)    :action
       An action signal which cancels the selection within the menu shell.
       Causes the \"selection-done\" signal to be emitted.
       @begin[code]{table}
-        @entry[menushell]{The @sym{gtk:menu-shell} widget which received the
+        @entry[menushell]{The @class{gtk:menu-shell} widget which received the
           signal.}
       @end{table}
     @subheading{The \"cycle-focus\" signal}
@@ -193,7 +193,7 @@ lambda (menushell direction)    :action
       @end{pre}
       A keybinding signal which moves the focus in the given direction.
       @begin[code]{table}
-        @entry[menushell]{The @sym{gtk:menu-shell} widget which received the
+        @entry[menushell]{The @class{gtk:menu-shell} widget which received the
           signal.}
         @entry[direction]{The value of the @symbol{gtk:direction-type}
           enumeration to cycle in.}
@@ -204,7 +204,7 @@ lambda (menushell)    :run-first
       @end{pre}
       The signal is emitted when a menu shell is deactivated.
       @begin[code]{table}
-        @entry[menushell]{The @sym{gtk:menu-shell} widget which received the
+        @entry[menushell]{The @class{gtk:menu-shell} widget which received the
           signal.}
       @end{table}
     @subheading{The \"insert\" signal}
@@ -212,12 +212,12 @@ lambda (menushell)    :run-first
 lambda (menushell child position)    :run-first
       @end{pre}
       The signal is emitted when a new menu item is added to a
-      @sym{gtk:menu-shell} widget. A separate signal is used instead of the
+      @class{gtk:menu-shell} widget. A separate signal is used instead of the
       \"GtkContainer::add\" signal because of the need for an additional
       position parameter. The inverse of this signal is the
       \"GtkContainer::removed\" signal.
       @begin[code]{table}
-        @entry[menushell]{The @sym{gtk:menu-shell} widget on which the signal
+        @entry[menushell]{The @class{gtk:menu-shell} widget on which the signal
           is emitted.}
         @entry[child]{The @class{gtk:menu-item} widget that is being inserted.}
         @entry[position]{An integer with the position at which the insert
@@ -230,7 +230,7 @@ lambda (menushell direction)    :action
       An keybinding signal which moves the current menu item in the direction
       specified by @arg{direction}.
       @begin[code]{table}
-        @entry[menushell]{The @sym{gtk:menu-shell} widget which received the
+        @entry[menushell]{The @class{gtk:menu-shell} widget which received the
           signal.}
         @entry[direction]{The value of the @symbol{gtk:direction-type}
           enumeration to move.}
@@ -241,7 +241,7 @@ lambda (menushell distance)    :run-last
       @end{pre}
       The signal is emitted to move the selection to another item.
       @begin[code]{table}
-        @entry[menushell]{The @sym{gtk:menu-shell} widget on which the signal
+        @entry[menushell]{The @class{gtk:menu-shell} widget on which the signal
           is emitted.}
         @entry[distance]{+1 to move to the next item, -1 to move to the
           previous.}
@@ -255,7 +255,7 @@ lambda (menushell)    :run-first
       The signal is emitted when a selection has been completed within a menu
       shell.
       @begin[code]{table}
-        @entry[menushell]{The @sym{gtk:menu-shell} widget which received the
+        @entry[menushell]{The @class{gtk:menu-shell} widget which received the
           signal.}
       @end{table}
   @end{dictionary}
@@ -267,7 +267,7 @@ lambda (menushell)    :run-first
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- menu-shell-take-focus --------------------------------------------------
+;;; --- gtk:menu-shell-take-focus ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "take-focus" 'menu-shell) t)
@@ -488,7 +488,7 @@ lambda (menushell)    :run-first
 (export 'menu-shell-cancel)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_menu_shell_get_selected_item () -> menu-shell-selected-item
+;;; gtk_menu_shell_get_selected_item ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_menu_shell_get_selected_item" menu-shell-selected-item)
@@ -507,7 +507,7 @@ lambda (menushell)    :run-first
 (export 'menu-shell-selected-item)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_menu_shell_get_parent_shell () -> menu-shell-parent-shell
+;;; gtk_menu_shell_get_parent_shell ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_menu_shell_get_parent_shell" menu-shell-parent-shell)

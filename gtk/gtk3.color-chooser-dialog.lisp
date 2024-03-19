@@ -87,7 +87,7 @@
   It implements the @class{gtk:color-chooser} interface.
 
   @image[colorchooser]{GtkColorChooser}
-  @begin[Example]{dictionary}
+  @begin{examples}
     Clicking on the drawing area opens a color chooser dialog to select a
     background color for the drawing area. The default palettes are replaced
     for this color chooser dialog.
@@ -172,7 +172,7 @@
         (gtk:container-add window area)
         (gtk:widget-show-all window)))))
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-constructor{gtk:color-chooser-dialog-new}
   @see-slot{gtk:color-chooser-dialog-show-editor}
   @see-class{gtk:color-chooser}

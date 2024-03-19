@@ -91,8 +91,8 @@
 (setf (documentation 'shortcuts-group 'type)
  "@version{#2023-2-14}
   @begin{short}
-    The @sym{gtk:shortcuts-group} widget represents a group of related keyboard
-    shortcuts or gestures.
+    The @class{gtk:shortcuts-group} widget represents a group of related
+    keyboard shortcuts or gestures.
   @end{short}
   The group has a title. It may optionally be associated with a view of the
   application, which can be used to show only relevant shortcuts depending on
@@ -105,7 +105,7 @@
   @see-slot{gtk:shortcuts-group-view}
   @see-class{gtk:shortcuts-window}")
 
-;;; --- shortcuts-group-accel-size-group ---------------------------------------
+;;; --- gtk:shortcuts-group-accel-size-group -----------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "accel-size-group"
@@ -133,7 +133,7 @@
   @see-class{gtk:shortcuts-group}
   @see-class{gtk:size-group}")
 
-;;; --- shortcuts-group-height -------------------------------------------------
+;;; --- gtk:shortcuts-group-height ---------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "height" 'shortcuts-group) t)
@@ -160,7 +160,7 @@
   internally by GTK, and is not useful for applications.
   @see-class{gtk:shortcuts-group}")
 
-;;; --- shortcuts-group-title --------------------------------------------------
+;;; --- gtk:shortcuts-group-title ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "title" 'shortcuts-group) t)
@@ -184,7 +184,7 @@
   The title for this group of shortcuts.
   @see-class{gtk:shortcuts-group}")
 
-;;; --- shortcuts-group-title-size-group ---------------------------------------
+;;; --- gtk:shortcuts-group-title-size-group -----------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "title-size-group"
@@ -212,7 +212,7 @@
   @see-class{gtk:shortcuts-group}
   @see-class{gtk:size-group}")
 
-;;; --- shortcuts-group-view ---------------------------------------------------
+;;; --- gtk:shortcuts-group-view -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "view" 'shortcuts-group) t)

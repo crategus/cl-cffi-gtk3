@@ -137,28 +137,28 @@
 
 (declaim (inline tree-store-new))
 
-(defun tree-store-new (&rest column-types)
+(defun tree-store-new (&rest types)
  #+liber-documentation
- "@version{#2023-3-28}
-  @argument[column-types]{all @class{g:type-t} types for the columns, from
-    first to last}
+ "@version{2024-3-12}
+  @argument[types]{all @class{g:type-t} types for the columns, from first to
+    last}
   @return{The new @class{gtk:tree-store} object.}
   @begin{short}
     Creates a new tree store as with columns of the types passed in.
   @end{short}
   Note that only types derived from standard GType fundamental types are
   supported.
-  @begin[Example]{dictionary}
-    The following example creates a new @class{gtk:tree-store} object with
-    three columns, of type \"gint\", \"gchararray\", and \"GdkPixbuf\"
-    respectively.
+  @begin{examples}
+    Create a new @class{gtk:tree-store} object with three columns, of type
+    @code{\"gint\"}, @code{\"gchararray\"}, and @code{\"GdkPixbuf\"}.
     @begin{pre}
 (gtk:tree-store-new \"gint\" \"gchararray\" \"GdkPixbuf\")
     @end{pre}
-  @end{dictionary}
-  @see-class{gtk:tree-store}"
+  @end{examples}
+  @see-class{gtk:tree-store}
+  @see-class{g:type-t}"
   (make-instance 'tree-store
-                 :column-types column-types))
+                 :column-types types))
 
 (export 'tree-store-new)
 
@@ -219,7 +219,7 @@
 
 (defun tree-store-set (store iter &rest values)
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{2024-3-12}
   @argument[store]{a @class{gtk:tree-store} object}
   @argument[iter]{a valid @class{gtk:tree-iter} iterator for the row being
     modified}
@@ -229,7 +229,7 @@
     Sets the values of one or more cells in the row referenced by @arg{iter}.
   @end{short}
   The variable argument list should contain the values to be set.
-  @begin[Example]{dictionary}
+  @begin{examples}
     @begin{pre}
 (let ((model (gtk:tree-store-new \"gchararray\" \"gchararray\" \"guint\")))
   ;; First Book
@@ -248,13 +248,13 @@
                         1997)
   ... ))
     @end{pre}
-  @end{dictionary}
-  @begin[Note]{dictionary}
+  @end{examples}
+  @begin{notes}
     The Lisp implementation does not support pairs of a column index and a
     value, but a list of values. Therefore, it is not possible to set individual
     columns. See the @fun{gtk:tree-store-set-value} function for setting the
     value of single columns.
-  @end{dictionary}
+  @end{notes}
   @see-class{gtk:tree-store}
   @see-class{gtk:tree-iter}
   @see-function{gtk:tree-store-set-value}"
@@ -637,18 +637,18 @@
 
 (defun tree-store-append (store parent)
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{2024-3-12}
   @argument[store]{a @class{gtk:tree-store} object}
   @argument[parent]{a valid @class{gtk:tree-iter} iterator, or @code{nil}}
   @return{The @class{gtk:tree-iter} iterator of the appended row.}
   @begin{short}
     Appends a new row to the tree store.
   @end{short}
-  If @arg{parent} is non-@code{nil}, then it will append the new row after the
-  last child of @arg{parent}, otherwise it will append a row to the toplevel.
-  The row will be empty after this function is called. To fill in values, you
-  need to call the @fun{gtk:tree-store-set} or @fun{gtk:tree-store-set-value}
-  functions.
+  If the @arg{parent} argument is non-@code{nil}, then it will append the new
+  row after the last child of @arg{parent}, otherwise it will append a row to
+  the toplevel. The row will be empty after this function is called. To fill in
+  values, you need to call the @fun{gtk:tree-store-set} or
+  @fun{gtk:tree-store-set-value} functions.
   @see-class{gtk:tree-store}
   @see-class{gtk:tree-iter}
   @see-function{gtk:tree-store-set}

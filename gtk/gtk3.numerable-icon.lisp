@@ -107,11 +107,11 @@
   The number can be overlayed on top of another emblem, if desired. It supports
   theming by taking font and color information from a provided
   @class{gtk:style-context} object.
-  @begin[Example]{dictionary}
+  @begin{examples}
     Typical numerable icons:
 
     @image[numerableicon]{} @image[numerableicon2]{}
-  @end{dictionary}
+  @end{examples}
   @begin[Warning]{dictionary}
     The @class{gtk:numerable-icon} class has been deprecated since version 3.14
     and should not be used in newly written code.

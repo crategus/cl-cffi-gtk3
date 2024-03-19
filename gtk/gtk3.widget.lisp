@@ -653,13 +653,13 @@
   @begin{short}
     Accessor of the @arg{height} slot of the @class{gtk:requisition} structure.
   @end{short}
-  @begin[Example]{dictionary}
+  @begin{examples}
     @begin{pre}
 (defvar requisition (gtk:requisition-new)) => REQUISITION
 (setf (gtk:requisition-height requisition) 100) => 100
 (gtk:requisition-height requisition) => 100
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:requisition}
   @see-function{gtk:requisition-width}")
 
@@ -677,13 +677,13 @@
   @begin{short}
     Accessor of the @arg{width} slot of the @class{gtk:requisition} structure.
   @end{short}
-  @begin[Example]{dictionary}
+  @begin{examples}
     @begin{pre}
 (defvar requisition (gtk:requisition-new)) => REQUISITION
 (setf (gtk:requisition-width requisition) 100) => 100
 (gtk:requisition-width requisition) => 100
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:requisition}
   @see-function{gtk:requisition-height}")
 
@@ -2477,12 +2477,12 @@ lambda (widget event)    :run-last
   cannot be used with widgets that have no window. To get events on those
   widgets, place them inside a @class{gtk:event-box} widget and receive events
   on the event box.
-  @begin[Note]{dictionary}
+  @begin{notes}
     Internally, the widget event mask will be the logical @code{OR} of the
     event mask set through the @setf{gtk:widget-events} or
     @fun{gtk:widget-add-events} functions , and the event mask necessary to
     cater for every @class{gtk:event-controller} object created for the widget.
-  @end{dictionary}
+  @end{notes}
   @see-class{gtk:widget}
   @see-class{gtk:event-box}
   @see-class{gtk:event-controller}
@@ -3613,13 +3613,13 @@ lambda (widget event)    :run-last
     go.
   @end{short}
   This function is equivalent to the @fun{g:object-new} function.
-  @begin[Example]{dictionary}
+  @begin{examples}
     Create a left-aligned label.
     @begin{pre}
 (gtk:widget-new \"GtkLabel\" :label \"Hello World\" :xalign 0.0)
 => #<GTK:LABEL {1003142FD3@}>
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:widget}
   @see-function{g:object-new}"
   (let ((lisp-type (glib:symbol-for-gtype gtype)))
@@ -3913,11 +3913,11 @@ lambda (widget event)    :run-last
   clip region with the @fun{cairo:clip} function prior to calling this function.
   Also, it is fine to modify the Cairo context with the @fun{cairo:save} and
   @fun{cairo:push-group} functions  prior to calling this function.
-  @begin[Note]{dictionary}
+  @begin{notes}
     Special purpose widgets may contain special code for rendering to the
     screen and might appear differently on screen and when rendered using the
     @fun{gtk:widget-draw} function.
-  @end{dictionary}
+  @end{notes}
   @see-class{gtk:widget}
   @see-symbol{cairo:context-t}
   @see-function{gtk:widget-is-drawable}
@@ -3968,12 +3968,12 @@ lambda (widget event)    :run-last
   queues a resize to ensure there is enough space for the new text.
 
   This function is only for use in widget implementations.
-  @begin[Note]{dictionary}
+  @begin{notes}
     You cannot call the @fun{gtk:widget-queue-resize} function on a widget from
     inside its implementation of the @code{size_allocate} virtual method. Calls
     to the @fun{gtk:widget-queue-resize} function from inside the
     @code{size_allocate} virtual method will be silently ignored.
-  @end{dictionary}
+  @end{notes}
   @see-class{gtk:widget}"
   (widget (g:object widget)))
 
@@ -4685,10 +4685,10 @@ lambda (widget clock)
 
   For @class{gtk:window} classes, setting a parent window effects whether
   the window is a toplevel window or can be embedded into other widgets.
-  @begin[Note]{dictionary}
+  @begin{notes}
     For @class{gtk:window} classes, this needs to be called before the window
     is realized.
-  @end{dictionary}
+  @end{notes}
   @see-class{gtk:widget}
   @see-class{gdk:window}"
   (widget (g:object window)))
@@ -5446,7 +5446,7 @@ lambda (widget clock)
     Sets the color to use for a widget.
   @end{short}
   All other style values are left untouched.
-  @begin[Note]{dictionary}
+  @begin{notes}
     @begin{itemize}
       @begin{item}
         This API is mostly meant as a quick way for applications to change a
@@ -5467,7 +5467,7 @@ lambda (widget clock)
         with the @var{+gtk-priority-application+} priority.
       @end{item}
     @end{itemize}
-  @end{dictionary}
+  @end{notes}
   @begin[Warning]{dictionary}
     The @fun{gtk:widget-override-color} function has been deprecated since
     version 3.16 and should not be used in newly written code. Use a custom
@@ -6342,7 +6342,7 @@ lambda (widget clock)
     @code{null-pointer} if @arg{class} has no style property with that property
     name.}
   @short{Finds a style property of a widget class by property name.}
-  @begin[Example]{dictionary}
+  @begin{examples}
     @begin{pre}
 (gtk:widget-class-find-style-property \"GtkNotebook\" \"arrow-spacing\")
 => #.(SB-SYS:INT-SAP #X00E8BAE0)
@@ -6353,7 +6353,7 @@ lambda (widget clock)
 (gtk:widget-class-find-style-property \"GtkNotebook\" \"unknown\")
 => #.(SB-SYS:INT-SAP #X00000000)
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:widget}
   @see-symbol{g:type-t}
   @see-symbol{g:param-spec}
@@ -6384,13 +6384,13 @@ lambda (widget clock)
   @begin{short}
     Returns all style properties of a widget class.
   @end{short}
-  @begin[Example]{dictionary}
+  @begin{examples}
     @begin{pre}
 (mapcar #'g:param-spec-name
         (gtk:widget-class-list-style-properties \"GtkButton\"))
 => (\"cursor-aspect-ratio\" \"cursor-color\" ... )
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:widget}
   @see-symbol{g:param-spec}
   @see-function{gtk:widget-class-find-style-property}"
@@ -6549,7 +6549,7 @@ lambda (widget clock)
   @end{short}
   If the style property does not exist on the widget class @code{nil} is
   returned.
-  @begin[Example]{dictionary}
+  @begin{examples}
     Get the default value for the @code{arrow-spacing} style property of a
     notebook container.
     @begin{pre}
@@ -6558,7 +6558,7 @@ lambda (widget clock)
 (gtk:widget-style-property notebook \"arrow-spacing\")
 => 0
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:widget}
   @see-function{gtk:widget-class-find-style-property}"
   (let* ((pspec (widget-class-find-style-property
@@ -7112,14 +7112,14 @@ lambda (widget clock)
   @end{short}
   See for example the @fun{gtk:label-mnemonic-widget} function for more
   information about mnemonic labels.
-  @begin[Example]{dictionary}
+  @begin{examples}
     @begin{pre}
 (setq button (gtk:button-new-with-mnemonic \"_Hello\"))
 => #<GTK:BUTTON {C2794C9@}>
 (gtk:widget-list-mnemonic-labels button)
 => (#<gtk:LABEL {C292FE1@}>)
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:widget}
   @see-function{gtk:widget-add-mnemonic-label}
   @see-function{gtk:label-mnemonic-widget}"
@@ -7470,12 +7470,12 @@ lambda (widget clock)
   @end{short}
   This function is intended to be used when implementing handlers for the
   \"draw\" function.
-  @begin[Note]{dictionary}
+  @begin{notes}
     The @fun{gtk:widget-allocated-width} function is equivalent to the call
     @begin{pre}
 (gdk:rectangle-width (gtk:widget-allocation widget))
     @end{pre}
-  @end{dictionary}
+  @end{notes}
   @see-class{gtk:widget}
   @see-function{gtk:widget-allocated-height}
   @see-function{gtk:widget-allocation}"
@@ -7497,12 +7497,12 @@ lambda (widget clock)
   @end{short}
   This function is intended to be used when implementing handlers for the
   \"draw\" function.
-  @begin[Note]{dictionary}
+  @begin{notes}
     The @fun{gtk:widget-allocated-height} function is equivalent to the call
     @begin{pre}
 (gdk:rectangle-height (gtk:widget-allocation widget))
     @end{pre}
-  @end{dictionary}
+  @end{notes}
   @see-class{gtk:widget}
   @see-function{gtk:widget-allocated-width}
   @see-function{gtk:widget-allocation}"
@@ -7567,7 +7567,7 @@ lambda (widget clock)
   @code{GtkWidgetClass::adjust_size_allocation} virtual method adjusts the
   allocation inside the @fun{gtk:widget-size-allocate} function to create an
   adjusted allocation.
-  @begin[Note]{dictionary}
+  @begin{notes}
     In the Lisp binding to GTK this function does not return an allocation
     of type @code{GtkAllocation}, but the type is @class{gdk:rectangle}. In the
     C implementation the type @code{GtkAllocation} is a synonym for the
@@ -7576,7 +7576,7 @@ lambda (widget clock)
     In most cases, it is more convenient to use the
     @fun{gtk:widget-allocated-width} and @fun{gtk:widget-allocated-height}
     functions to retrieve the allocated width and height of the widget.
-  @end{dictionary}
+  @end{notes}
   @see-class{gtk:widget}
   @see-class{gtk:container}
   @see-class{gdk:rectangle}
@@ -8342,7 +8342,7 @@ lambda (widget clock)
   @class{gtk:size-group} objects that have been applied. That is, the returned
   request is the one that should be used for layout, not necessarily the one
   returned by the widget itself.
-  @begin[Example]{dictionary}
+  @begin{examples}
     @begin{pre}
 (setq widget (make-instance 'gtk:button :label \"Hello\"))
 => #<GTK:BUTTON {B1D0079@}>
@@ -8355,7 +8355,7 @@ lambda (widget clock)
 => 123
 => 123
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:widget}
   @see-class{gtk:size-group}
   @see-function{gtk:widget-preferred-height}
@@ -8529,11 +8529,11 @@ lambda (widget clock)
     Gets whether the widget prefers a height-for-width layout or a
     width-for-height layout.
   @end{short}
-  @begin[Note]{dictionary}
+  @begin{notes}
     The @class{gtk:bin} widget generally propagate the preference of its child,
     container widgets need to request something either in context of their
     children or in context of their allocation capabilities.
-  @end{dictionary}
+  @end{notes}
   @see-class{gtk:widget}
   @see-class{gtk:bin}
   @see-symbol{gtk:size-request-mode}"
@@ -8569,12 +8569,12 @@ lambda (widget clock)
   impose any restrictions on the child placement. It can be used to deduce
   toplevel window and menu sizes as well as child widgets in free-form
   containers such as @class{gtk:layout} widget.
-  @begin[Note]{dictionary}
+  @begin{notes}
     Handle with care. Note that the natural height of a height-for-width widget
     will generally be a smaller size than the minimum height, since the required
     height for the natural width is generally smaller than the required height
     for the minimum width.
-  @end{dictionary}
+  @end{notes}
   @see-class{gtk:widget}
   @see-class{gtk:requisition}"
  (let ((minimum-size (make-requisition))

@@ -35,22 +35,25 @@
 ;;;
 ;;;     GtkToolButton
 ;;;
+;;; Accessors
+;;;
+;;;     gtk_tool_button_set_icon_name
+;;;     gtk_tool_button_get_icon_name
+;;;     gtk_tool_button_set_icon_widget
+;;;     gtk_tool_button_get_icon_widget
+;;;     gtk_tool_button_set_label
+;;;     gtk_tool_button_get_label
+;;;     gtk_tool_button_set_label_widget
+;;;     gtk_tool_button_get_label_widget
+;;;     gtk_tool_button_set_stock_id
+;;;     gtk_tool_button_get_stock_id
+;;;     gtk_tool_button_set_use_underline
+;;;     gtk_tool_button_get_use_underline
+;;;
 ;;; Functions
 ;;;
 ;;;     gtk_tool_button_new
 ;;;     gtk_tool_button_new_from_stock
-;;;     gtk_tool_button_set_label                          Accessor
-;;;     gtk_tool_button_get_label                          Accessor
-;;;     gtk_tool_button_set_use_underline                  Accessor
-;;;     gtk_tool_button_get_use_underline                  Accessor
-;;;     gtk_tool_button_set_stock_id                       Accessor
-;;;     gtk_tool_button_get_stock_id                       Accessor
-;;;     gtk_tool_button_set_icon_name                      Accessor
-;;;     gtk_tool_button_get_icon_name                      Accessor
-;;;     gtk_tool_button_set_icon_widget                    Accessor
-;;;     gtk_tool_button_get_icon_widget                    Accessor
-;;;     gtk_tool_button_set_label_widget                   Accessor
-;;;     gtk_tool_button_get_label_widget                   Accessor
 ;;;
 ;;; Properties
 ;;;
@@ -121,7 +124,7 @@
 
 #+liber-documentation
 (setf (documentation 'tool-button 'type)
- "@version{2024-1-2}
+ "@version{2024-3-15}
   @begin{short}
     The @class{gtk:tool-button} widgets are @class{gtk:tool-item} widgets
     containing buttons.
@@ -130,19 +133,23 @@
   @class{gtk:tool-button} widget.
 
   The label of a @class{gtk:tool-button} widget is determined by the
-  @code{label-widget}, @code{label}, @code{icon-name}, and @code{stock-id}
-  properties. If the @code{label-widget} property is non-@code{nil}, then that
-  widget is used as the label. Otherwise, if the @code{label} property is
-  non-@code{nil}, that string is used as the label. Otherwise, if the
-  @code{stock-id} property is non-@code{nil}, the label is determined by the
-  stock item. Otherwise, the button does not have a label.
+  @slot[gtk:tool-button]{label-widget}, @slot[gtk:tool-button]{label},
+  @slot[gtk:tool-button]{icon-name}, and @slot[gtk:tool-button]{stock-id}
+  properties. If the @slot[gtk:tool-button]{label-widget} property is
+  non-@code{nil}, then that widget is used as the label. Otherwise, if the
+  @slot[gtk:tool-button]{label} property is non-@code{nil}, that string is used
+  as the label. Otherwise, if the @slot[gtk:tool-button]{stock-id} property is
+  non-@code{nil}, the label is determined by the stock item. Otherwise, the
+  button does not have a label.
 
   The icon of a @class{gtk:tool-button} widget is determined by the
-  @code{icon-widget}, @code{icon-name}, and @code{stock-id} properties. If the
-  @code{icon-widget} property is non-@code{nil}, then that widget is used as the
-  icon. Otherwise, if the @code{icon-name} or @code{stock-id} properties are
-  non-@code{nil}, the icons are determined by the icon name or the stock item.
-  Otherwise, the button does not have a icon.
+  @slot[gtk:tool-button]{icon-widget}, @slot[gtk:tool-button]{icon-name}, and
+  @slot[gtk:tool-button]{stock-id} properties. If the
+  @slot[gtk:tool-button]{icon-widget} property is non-@code{nil}, then that
+  widget is used as the icon. Otherwise, if the
+  @slot[gtk:tool-button]{icon-name} or @slot[gtk:tool-button]{stock-id}
+  properties are non-@code{nil}, the icons are determined by the icon name or
+  the stock item. Otherwise, the button does not have a icon.
   @begin[CSS nodes]{dictionary}
     The @class{gtk:tool-button} implementation has a single CSS node with name
     @code{toolbutton}.
@@ -204,8 +211,8 @@ lambda (button)    :action
       "Accessor"
       (documentation 'tool-button-icon-name 'function)
  "@version{#2023-2-27}
-  @syntax[]{(gtk:tool-button-icon-name object) => icon-name}
-  @syntax[]{(setf (gtk:tool-button-icon-name object) icon-name)}
+  @syntax{(gtk:tool-button-icon-name object) => icon-name}
+  @syntax{(setf (gtk:tool-button-icon-name object) icon-name)}
   @argument[object]{a @class{gtk:tool-button} widget}
   @argument[icon-name]{a string with the name of the themed icon}
   @begin{short}
@@ -240,8 +247,8 @@ lambda (button)    :action
       "Accessor"
       (documentation 'tool-button-icon-widget 'function)
  "@version{#2023-2-27}
-  @syntax[]{(gtk:tool-button-icon-widget object) => icon-widget}
-  @syntax[]{(setf (gtk:tool-button-icon-widget object) icon-widget)}
+  @syntax{(gtk:tool-button-icon-widget object) => icon-widget}
+  @syntax{(setf (gtk:tool-button-icon-widget object) icon-widget)}
   @argument[button]{a @class{gtk:tool-button} widget}
   @argument[icon-widget]{a @class{gtk:widget} object used as icon, or
     @code{nil}}
@@ -274,8 +281,8 @@ lambda (button)    :action
       "Accessor"
       (documentation 'tool-button-label 'function)
  "@version{2024-1-2}
-  @syntax[]{(gtk:tool-button-label object) => label}
-  @syntax[]{(setf (gtk:tool-button-label object) label)}
+  @syntax{(gtk:tool-button-label object) => label}
+  @syntax{(setf (gtk:tool-button-label object) label)}
   @argument[button]{a @class{gtk:tool-button} widget}
   @argument[label]{a string that will be used as label, or @code{nil}}
   @begin{short}
@@ -310,8 +317,8 @@ lambda (button)    :action
       "Accessor"
       (documentation 'tool-button-label-widget 'function)
  "@version{#2023-2-27}
-  @syntax[]{(gtk:tool-button-label-widget object) => label-widget}
-  @syntax[]{(setf (gtk:tool-button-label-widget object) label-widget)}
+  @syntax{(gtk:tool-button-label-widget object) => label-widget}
+  @syntax{(setf (gtk:tool-button-label-widget object) label-widget)}
   @argument[button]{a @class{gtk:tool-button} widget}
   @argument[label-widget]{a @class{gtk:widget} object used as label, or
     @code{nil}}
@@ -351,8 +358,8 @@ lambda (button)    :action
       "Accessor"
       (documentation 'tool-button-stock-id 'function)
  "@version{#2023-2-27}
-  @syntax[]{(gtk:tool-button-stock-id object) => stock-id}
-  @syntax[]{(setf (gtk:tool-button-stock-id object) stock-id)}
+  @syntax{(gtk:tool-button-stock-id object) => stock-id}
+  @syntax{(setf (gtk:tool-button-stock-id object) stock-id)}
   @argument[object]{a @class{gtk:tool-button} widget}
   @argument[stock-id]{a string with the name of a stock item, or @code{nil}}
   @begin{short}
@@ -390,8 +397,8 @@ lambda (button)    :action
       "Accessor"
       (documentation 'tool-button-use-underline 'function)
  "@version{#2023-2-27}
-  @syntax[]{(gtk:tool-button-use-underline object) => use-underline}
-  @syntax[]{(setf (gtk:tool-button-use-underline) use-underline)}
+  @syntax{(gtk:tool-button-use-underline object) => use-underline}
+  @syntax{(setf (gtk:tool-button-use-underline) use-underline)}
   @argument[button]{a @class{gtk:tool-button} widget}
   @argument[use-underline]{a boolean whether the button label has the form
     \"_Open\"}

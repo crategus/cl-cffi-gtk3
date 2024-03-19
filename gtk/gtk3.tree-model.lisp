@@ -160,7 +160,7 @@
       (documentation 'tree-iter 'type)
  "@version{#2021-3-3}
   @begin{short}
-    The @sym{gtk:tree-iter} structure is the primary structure for accessing a
+    The @class{gtk:tree-iter} structure is the primary structure for accessing a
     @class{gtk:tree-model} object. Models are expected to put a unique integer
     in the @arg{stamp} member, and put model specific data in the three
     @arg{user-data} members.
@@ -231,7 +231,8 @@
       (documentation 'tree-path 'type)
  "@version{2023-2-5}
   @begin{short}
-    The @sym{gtk:tree-path} structure is opaque, and has no user visible fields.
+    The @class{gtk:tree-path} structure is opaque, and has no user visible
+    fields.
   @end{short}
   @see-constructor{gtk:tree-path-new}
   @see-class{gtk:tree-model}
@@ -660,12 +661,12 @@
       (documentation 'tree-row-reference 'type)
  "@version{2023-2-5}
   @begin{short}
-    A @sym{gtk:tree-row-reference} instance tracks model changes so that it
+    The @class{gtk:tree-row-reference} instance tracks model changes so that it
     always refers to the same row, a @class{gtk:tree-path} instance refers to a
     position, not a fixed row.
   @end{short}
-  The @sym{gtk:tree-row-reference} structure is opaque, and has no user visible
-  fields. Create a new @sym{gtk:tree-row-reference} instance with the
+  The @class{gtk:tree-row-reference} structure is opaque, and has no user
+  visible fields. Create a new @class{gtk:tree-row-reference} instance with the
   @fun{gtk:tree-row-reference-new} function.
   @see-constructor{gtk:tree-row-reference-new}
   @see-class{gtk:tree-path}
@@ -699,9 +700,10 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_tree_row_reference_new_proxy ()
 ;;;
-;;; GtkTreeRowReference * gtk_tree_row_reference_new_proxy (GObject *proxy,
-;;;                                                         GtkTreeModel *model,
-;;;                                                         GtkTreePath *path);
+;;; GtkTreeRowReference *
+;;; gtk_tree_row_reference_new_proxy (GObject *proxy,
+;;;                                   GtkTreeModel *model,
+;;;                                   GtkTreePath *path)
 ;;;
 ;;; You do not need to use this function.
 ;;;
@@ -957,8 +959,8 @@
       (documentation 'tree-model 'type)
  "@version{#2023-3-28}
   @begin{short}
-    The @sym{gtk:tree-model} interface defines a generic tree interface for use
-    by the @class{gtk:tree-view} widget.
+    The @class{gtk:tree-model} interface defines a generic tree interface for
+    use by the @class{gtk:tree-view} widget.
   @end{short}
   It is an abstract interface, and is designed to be usable with any appropriate
   data structure. The programmer just has to implement this interface on their
@@ -1104,11 +1106,11 @@ lambda (model path iter)    :run-last
       @end{pre}
       The signal is emitted when a row in the model has changed.
       @begin[code]{table}
-        @entry[model]{The @sym{gtk:tree-model} object on which the signal
+        @entry[model]{The @class{gtk:tree-model} object on which the signal
           is emitted.}
-        @entry[path]{A @class{gtk:tree-path} instance identifying the changed
+        @entry[path]{The @class{gtk:tree-path} instance identifying the changed
           row.}
-        @entry[iter]{A valid @class{gtk:tree-iter} iterator pointing to the
+        @entry[iter]{The valid @class{gtk:tree-iter} iterator pointing to the
           changed row.}
       @end{table}
     @subheading{The \"row-deleted\" signal}
@@ -1121,9 +1123,9 @@ lambda (model path)    :run-first
       pointed to by path should be the location that the row previously was at.
       It may not be a valid location anymore.
       @begin[code]{table}
-        @entry[model]{The @sym{gtk:tree-model} object on which the signal
+        @entry[model]{The @class{gtk:tree-model} object on which the signal
           is emitted.}
-        @entry[path]{A @class{gtk:tree-path} instance identifying the row.}
+        @entry[path]{The @class{gtk:tree-path} instance identifying the row.}
       @end{table}
     @subheading{The \"row-has-child-toggled\" signal}
       @begin{pre}
@@ -1132,10 +1134,10 @@ lambda (model path iter)    :run-last
       The signal is emitted when a row has gotten the first child row or lost
       its last child row.
       @begin[code]{table}
-        @entry[model]{The @sym{gtk:tree-model} object on which the signal
+        @entry[model]{The @class{gtk:tree-model} object on which the signal
           is emitted.}
-        @entry[path]{A @class{gtk:tree-path} instance identifying the row.}
-        @entry[iter]{A valid @class{gtk:tree-iter} iterator pointing to the
+        @entry[path]{The @class{gtk:tree-path} instance identifying the row.}
+        @entry[iter]{The valid @class{gtk:tree-iter} iterator pointing to the
           row.}
       @end{table}
     @subheading{The \"row-inserted\" signal}
@@ -1147,11 +1149,12 @@ lambda (model path iter)    :run-first
       pattern to first insert an empty row, and then fill it with the desired
       values.
       @begin[code]{table}
-        @entry[model]{The @sym{gtk:tree-model} object on which the signal is
+        @entry[model]{The @class{gtk:tree-model} object on which the signal is
           emitted.}
-        @entry[path]{A @class{gtk:tree-path} instance identifying the new row.}
-        @entry[iter]{A valid @class{gtk:tree-iter} iterator pointing to the new
+        @entry[path]{The @class{gtk:tree-path} instance identifying the new
           row.}
+        @entry[iter]{The valid @class{gtk:tree-iter} iterator pointing to the
+          new row.}
       @end{table}
     @subheading{The \"rows-reordered\" signal}
       @begin{pre}
@@ -1162,13 +1165,13 @@ lambda (model path iter new-order)    :run-first
       is not emitted when rows are reordered by DND, since this is implemented
       by removing and then reinserting the row.
       @begin[code]{table}
-        @entry[model]{The @sym{gtk:tree-model} object on which the signal
+        @entry[model]{The @class{gtk:tree-model} object on which the signal
           is emitted.}
-        @entry[path]{A @class{gtk:tree-path} instance identifying the tree node
-          whose children have been reordered.}
-        @entry[iter]{A valid @class{gtk:tree-iter} iterator pointing to the
+        @entry[path]{The @class{gtk:tree-path} instance identifying the tree
+          node whose children have been reordered.}
+        @entry[iter]{The valid @class{gtk:tree-iter} iterator pointing to the
          node whose children have been reordered.}
-        @entry[new-order]{An array of integers mapping the current position of
+        @entry[new-order]{The array of integers mapping the current position of
           each child to its old position before the re-ordering, i.e.
           @code{@arg{new-order}[newpos] = oldpos}.}
       @end{table}
@@ -1179,7 +1182,7 @@ lambda (model path iter new-order)    :run-first
   @see-class{gtk:tree-sortable}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_model_get_flags () -> tree-model-flags
+;;; gtk_tree_model_get_flags ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_model_get_flags" tree-model-flags) tree-model-flags
@@ -1199,7 +1202,7 @@ lambda (model path iter new-order)    :run-first
 (export 'tree-model-flags)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_model_get_n_columns () -> tree-model-n-columns
+;;; gtk_tree_model_get_n_columns ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_model_get_n_columns" tree-model-n-columns) :int
@@ -1217,7 +1220,7 @@ lambda (model path iter new-order)    :run-first
 (export 'tree-model-n-columns)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_model_get_column_type () -> tree-model-column-type
+;;; gtk_tree_model_get_column_type ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_model_get_column_type" tree-model-column-type) g:type-t
@@ -1573,7 +1576,7 @@ lambda (model path iter new-order)    :run-first
 (export 'tree-model-iter-parent)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_model_get_string_from_iter () -> tree-model-string-from-iter
+;;; gtk_tree_model_get_string_from_iter ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_model_get_string_from_iter"
@@ -1764,7 +1767,7 @@ lambda (model path iter)
     Calls @arg{func} on each node in @arg{model} in a depth-first fashion.
   @end{short}
   If @arg{func} returns @em{true}, then the tree ceases to be walked, and the
-  @sym{gtk:tree-model-foreach} function returns.
+  @fun{gtk:tree-model-foreach} function returns.
   @see-class{gtk:tree-model}
   @see-symbol{gtk:tree-model-foreach-func}"
   (glib:with-stable-pointer (ptr func)

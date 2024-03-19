@@ -248,7 +248,7 @@
 (setf (documentation 'icon-theme 'type)
  "@version{#2023-3-20}
   @begin{short}
-    The @sym{gtk:icon-theme} class provides a facility for looking up icons by
+    The @class{gtk:icon-theme} class provides a facility for looking up icons by
     name and size.
   @end{short}
   The main reason for using a name rather than simply providing a filename is
@@ -314,7 +314,7 @@ lambda (theme)    :run-last
       Emitted when the current icon theme is switched or GTK detects that a
       change has occurred in the contents of the current icon theme.
       @begin[code]{table}
-        @entry[theme]{The @sym{gtk:icon-theme} object.}
+        @entry[theme]{The @class{gtk:icon-theme} object.}
       @end{table}
   @end{dictionary}
   @see-constructor{gtk:icon-theme-new}
@@ -420,7 +420,7 @@ lambda (theme)    :run-last
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_icon_theme_get_search_path ()
-;;; gtk_icon_theme_set_search_path () -> icon-theme-search-path
+;;; gtk_icon_theme_set_search_path ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf icon-theme-search-path) (path theme)
@@ -447,9 +447,9 @@ lambda (theme)    :run-last
   @begin{short}
     Accessor of the icon theme path directories.
   @end{short}
-  The @sym{gtk:icon-theme-search-path} function gets the current list of
+  The @fun{gtk:icon-theme-search-path} function gets the current list of
   strings with the search path that are searched for icon themes. The
-  @sym{(setf gtk:icon-theme-search-path)} function sets the search path.
+  @setf{gtk:icon-theme-search-path} function sets the search path.
 
   When looking for an icon theme, GTK will search for a subdirectory of one or
   more of the directories in @arg{path} with the same name as the icon theme.
@@ -1030,7 +1030,7 @@ lambda (theme)    :run-last
 (export 'icon-theme-list-icons)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_theme_get_icon_sizes () -> icon-theme-icon-sizes
+;;; gtk_icon_theme_get_icon_sizes ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_theme_get_icon_sizes" %icon-theme-icon-sizes) :pointer
@@ -1056,7 +1056,7 @@ lambda (theme)    :run-last
 (export 'icon-theme-icon-sizes)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_theme_get_example_icon_name () -> icon-theme-example-icon-name
+;;; gtk_icon_theme_get_example_icon_name ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_theme_get_example_icon_name"
@@ -1116,11 +1116,11 @@ lambda (theme)    :run-last
   For instance, the default images for all stock icons of GTK are registered
   as built-in icons.
 
-  In general, if you use the @sym{gtk:icon-theme-add-builtin-icon} function you
+  In general, if you use the @fun{gtk:icon-theme-add-builtin-icon} function you
   should also install the icon in the icon theme, so that the icon is generally
   available.
   @begin[Warning]{dictionary}
-    The @sym{gtk:icon-theme-add-builtin-icon} function has been deprecated
+    The @fun{gtk:icon-theme-add-builtin-icon} function has been deprecated
     since version 3.14 and should not be used in newly written code. Use the
     @fun{gtk:icon-theme-add-resource-path} function to add application specific
     icons to the icon theme.
@@ -1201,7 +1201,7 @@ lambda (theme)    :run-last
 (export 'icon-info-new-for-pixbuf)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_info_get_base_size () -> icon-info-base-size
+;;; gtk_icon_info_get_base_size ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_info_get_base_size" icon-info-base-size) :int
@@ -1233,7 +1233,7 @@ lambda (theme)    :run-last
 (export 'icon-info-base-size)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_info_get_base_scale () -> icon-info-base-scale
+;;; gtk_icon_info_get_base_scale ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_info_get_base_scale" icon-info-base-scale) :int
@@ -1262,7 +1262,7 @@ lambda (theme)    :run-last
 (export 'icon-info-base-scale)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_info_get_filename () -> icon-info-filename
+;;; gtk_icon_info_get_filename ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_info_get_filename" icon-info-filename) :string
@@ -1295,7 +1295,7 @@ lambda (theme)    :run-last
 (export 'icon-info-filename)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_info_get_builtin_pixbuf () -> icon-info-builtin-pixbuf
+;;; gtk_icon_info_get_builtin_pixbuf ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_info_get_builtin_pixbuf" icon-info-builtin-pixbuf)
@@ -1311,7 +1311,7 @@ lambda (theme)    :run-last
   To allow GTK to use built-in icon images, you must pass the
   @code{:use-builtin} flag to the @fun{gtk:icon-theme-lookup-icon} function.
   @begin[Warning]{dictionary}
-    The @sym{gtk:icon-info-builtin-pixbuf} function has been deprecated
+    The @fun{gtk:icon-info-builtin-pixbuf} function has been deprecated
     since version 3.14 and should not be used in newly written code. Use the
     @fun{gtk:icon-theme-add-resource-path} function instead of built-in icons.
   @end{dictionary}

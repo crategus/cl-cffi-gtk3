@@ -85,7 +85,7 @@
       @about-function{application-actions-for-accel}
     @end{subsection}
     @begin[GtkApplicationWindow]{subsection}
-      A @class{gtk:window} subclass with @class{gtk:application} support.
+      A @class{gtk:window} subclass with application support.
       @about-class{application-window}
       @about-generic{application-window-show-menubar}
       @about-function{application-window-new}
@@ -2238,8 +2238,8 @@ setup_tree (void)
     @end{subsection}
     @begin[GtkTreeSortable]{subsection}
       The interface for sortable models used by @class{gtk:tree-view} widgets.
-      @about-variable{+gtk-tree-sortable-default-sort-column-id+}
-      @about-variable{+gtk-tree-sortable-unsorted-sort-column-id+}
+      @about-variable{+default-sort-column-id+}
+      @about-variable{+unsorted-sort-column-id+}
       @about-class{tree-sortable}
       @about-function{tree-sortable-sort-column-changed}
       @about-function{tree-sortable-sort-column-id}

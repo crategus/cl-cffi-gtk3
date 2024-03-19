@@ -548,14 +548,14 @@ lambda (label menu)    :run-last
   @begin{pre}
 (pango:layout-attributes (gtk:label-layout label))
   @end{pre}
-  @begin[Note]{dictionary}
+  @begin{notes}
     The attributes set with this function will be applied and merged with any
     other attributes previously effected by way of the
     @slot[gtk:label]{use-underline} or @slot[gtk:label]{use-markup} properties.
     While it is not recommended to mix markup strings with manually set
     attributes, if you must, know that the attributes will be applied to the
     label after the markup string is parsed.
-  @end{dictionary}
+  @end{notes}
   @see-class{gtk:label}
   @see-class{pango:attr-list}
   @see-function{gtk:label-set-markup}
@@ -783,13 +783,13 @@ lambda (label menu)    :run-last
   @fun{gtk:label-mnemonic-keyval} function returns the keyval used for the
   mnemonic accelerator. If there is no mnemonic set up it returns
   @code{#xffffff}.
-  @begin[Example]{dictionary}
+  @begin{examples}
     @begin{pre}
 (setq label (gtk:label-new-with-mnemonic \"_Print\"))
 => #<gtk:label {1001A051E3@}>
 (gtk:label-mnemonic-keyval label) => 112
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:label}")
 
 ;;; --- gtk:label-mnemonic-widget ----------------------------------------------
@@ -1393,7 +1393,7 @@ lambda (label menu)    :run-last
   when using the @class{pango:layout} functions you need to convert to and from
   pixels using the @fun{pango:pixels} function or the @var{pango:+scale+}
   constant.
-  @begin[Example]{dictionary}
+  @begin{examples}
     @begin{pre}
 (gtk:label-layout-offsets (make-instance 'gtk:label))
 => 0
@@ -1402,7 +1402,7 @@ lambda (label menu)    :run-last
 => -14
 => -9
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:label}
   @see-class{gtk:event-box}
   @see-class{pango:layout}

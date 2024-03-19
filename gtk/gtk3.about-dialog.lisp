@@ -391,7 +391,7 @@ lambda (dialog uri)    :run-last
   The @fun{gtk:about-dialog-authors} function returns the strings which are
   displayed in the authors tab of the secondary credits dialog. The
   @setf{gtk:about-dialog-authors} function sets the strings.
-  @begin[Examples]{dictionary}
+  @begin{examples}
     @begin{pre}
 (setq about (make-instance 'gtk:about-dialog))
 => ABOUT
@@ -401,7 +401,7 @@ lambda (dialog uri)    :run-last
 (gtk:about-dialog-artists about)
 => (\"first author\" \"second author\")
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:about-dialog}")
 
 ;;; --- gtk:about-dialog-comments ----------------------------------------------

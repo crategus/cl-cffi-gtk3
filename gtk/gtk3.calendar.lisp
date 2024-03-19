@@ -816,27 +816,23 @@ lambda (calendar)    :run-first
 (setf (liber:alias-for-symbol 'calendar-detail-func)
       "Callback"
       (liber:symbol-documentation 'calendar-detail-func)
- "@version{2023-12-30}
+ "@version{2024-3-18}
+  @syntax{lambda (calendar year month day) => result}
+  @argument[calendar]{a @class{gtk:calendar} widget}
+  @argument[year]{an unsigned integer with the year for which details are
+    needed}
+  @argument[month]{an unsigned integer with the month for which details are
+    needed}
+  @argument[day]{an unsigned integer with the day of month for which details
+    are needed}
+  @argument[result]{a string with Pango markup with details for the specified
+    day, or @code{nil}}
   @begin{short}
     This kind of functions provide Pango markup with detail information for the
     specified day.
   @end{short}
   Examples for such details are holidays or appointments. The function returns
   @code{nil} when no information is available.
-  @begin{pre}
-lambda (calendar year month day)
-  @end{pre}
-  @begin[code]{table}
-    @entry[calendar]{A @class{gtk:calendar} widget.}
-    @entry[year]{An unsigned integer with the year for which details are
-      needed.}
-    @entry[month]{An unsigned integer with the month for which details are
-      needed.}
-    @entry[day]{An unsigned integer with the day of month for which details are
-      needed.}
-    @entry[Return]{A string with Pango markup with details for the specified
-      day, or @code{nil}.}
-  @end{table}
   @see-class{gtk:calendar}
   @see-function{gtk:calendar-set-detail-func}")
 

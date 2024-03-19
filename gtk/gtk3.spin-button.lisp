@@ -269,7 +269,7 @@
   classes. The @class{gtk:entry} subnodes, if present, are put below the
   entry node. The orientation of the spin button is reflected in the
   @code{.vertical} or @code{.horizontal} style class on the main node.
-  @begin[Example]{dictionary}
+  @begin{examples}
     Code fragment for creating a spin button. The value from the spin button is
     retrieved with the @fun{gtk:spin-button-value} function in a signal handler
     as a floating point number. Use the @fun{gtk:spin-button-value-as-int}
@@ -294,7 +294,7 @@
                       (let ((value (gtk:spin-button-value widget)))))
                         ... ))
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @begin[Style Property Details]{dictionary}
     @begin[code]{table}
       @begin[shadow-type]{entry}
@@ -740,11 +740,11 @@ lambda (spinbutton)    :run-last
   The way in which the precision is derived works best if @arg{step} is a power
   of ten. If the resulting precision is not suitable for your needs, use the
   @fun{gtk:spin-button-digits} function to correct it.
-  @begin[Note]{dictionary}
+  @begin{notes}
     In the Lisp implementation the arguments @arg{min}, @arg{max}, and
     @arg{step} are coerced to a double float number.
-  @end{dictionary}
-  @begin[Example]{dictionary}
+  @end{notes}
+  @begin{examples}
     In this example the arguments of the function are given as integer numbers.
     @begin{pre}
 (defvar spinbutton (gtk:spin-button-new-with-range 5 15 5)) => SPINBUTTON
@@ -758,7 +758,7 @@ lambda (spinbutton)    :run-last
 (gtk:adjustment-upper adjustment) => 15.0d0
 (gtk:adjustment-value adjustment) =>5.0d0
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-function{gtk:spin-button}
   @see-function{gtk:spin-button-digits}"
   (%spin-button-new-with-range (coerce min 'double-float)
@@ -803,12 +803,12 @@ lambda (spinbutton)    :run-last
 
   This affects how quickly the value changes when the spin button's arrows are
   activated.
-  @begin[Note]{dictionary}
+  @begin{notes}
     The values for the page and step increments are stored in the
     @slot[gtk:adjustment]{page-increment} and
     @slot[gtk:adjustment]{step-increment} slots of the adjustment associated
     with the spin button.
-  @end{dictionary}
+  @end{notes}
   @see-class{gtk:spin-button}
   @see-function{gtk:adjustment-page-increment}
   @see-function{gtk:adjustment-step-increment}"

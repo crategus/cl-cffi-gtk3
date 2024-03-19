@@ -117,7 +117,7 @@
   value of the @symbol{gtk:accel-flags} flags set. A accel label can display
   multiple accelerators and even signal names, though it is almost always used
   to display just one accelerator key.
-  @begin[Example]{dictionary}
+  @begin{examples}
     Creating a menu item with an accelerator key.
     @begin{pre}
 (let (...
@@ -135,7 +135,7 @@
     ...)
 ...)
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-constructor{gtk:accel-label-new}
   @see-slot{gtk:accel-label-accel-closure}
   @see-slot{gtk:accel-label-accel-widget}

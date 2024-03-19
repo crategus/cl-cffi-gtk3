@@ -379,10 +379,10 @@
   The @fun{gtk:button-box-layout} function retrieves the method being used to
   arrange the buttons in a button box. The @setf{gtk:button-box-layout} function
   changes the way buttons are arranged.
-  @begin[Note]{dictionary}
+  @begin{notes}
     The @fun{gtk:button-box-layout} function is an abbreviation for the
     @fun{gtk:button-box-layout-style} function.
-  @end{dictionary}
+  @end{notes}
   @see-class{gtk:button-box}
   @see-symbol{gtk:button-box-style}
   @see-function{gtk:button-box-layout-style}"

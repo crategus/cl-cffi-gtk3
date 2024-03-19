@@ -229,7 +229,7 @@
   Applications can display a @class{gtk:menu} widget as a popup menu by calling
   the @fun{gtk:menu-popup-at-pointer} function. The example below shows how an
   application can pop up a menu when a mouse button is pressed.
-  @begin[Example]{dictionary}
+  @begin{examples}
     Example with a signal handler which displays a popup menu.
     @begin{pre}
 (defun example-menu-popup (&optional application)
@@ -261,7 +261,7 @@
       (gtk:container-add window button)
       (gtk:widget-show-all window))))
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @begin[CSS nodes]{dictionary}
     @begin{pre}
 menu

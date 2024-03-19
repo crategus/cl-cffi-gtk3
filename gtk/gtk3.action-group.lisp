@@ -553,7 +553,7 @@ lambda (group action)
   The @code{\"activate\"} signals of the actions are connected to the callback
   functions and their accel paths are set to
   @code{<Actions>/group-name/action-name}.
-  @begin[Example]{dictionary}
+  @begin{examples}
     @begin{pre}
 (let ((group (gtk:action-group-new \"AppWindowActions\"))
       (actions '((\"Open\"            ; name
@@ -566,7 +566,7 @@ lambda (group action)
   (gtk:action-group-add-actions group actions)
   ... )
     @end{pre}
-  @end{dictionary}
+  @end{example}
   @begin[Warning]{dictionary}
     The @fun{gtk:action-group-add-actions} function has been deprecated since
     version 3.10 and should not be used in newly written code.
@@ -794,7 +794,7 @@ lambda (group action)
   The @code{\"changed\"} signal of the first radio action is connected to the
   @arg{on-change} callback function and the accel paths of the actions are set
   to @code{<Actions>/group-name/action-name}.
-  @begin[Example]{dictionary}
+  @begin{examples}
     @begin{pre}
 (let ((group (gtk:action-group-new \"AppWindowActions\"))
       (actions (list
@@ -810,7 +810,7 @@ lambda (group action)
     (gtk:action-group-add-radio-actions group actions 0 nil)
     ... )
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @begin[Warning]{dictionary}
     The @fun{gtk:action-group-add-radio-actions} function has been deprecated
     since version 3.10 and should not be used in newly written code.
@@ -902,17 +902,14 @@ lambda (group action)
 (setf (liber:alias-for-symbol 'translate-func)
       "Callback"
       (liber:symbol-documentation 'translate-func)
- "@version{#2023-3-15}
+ "@version{#2024-3-18}
+  @syntax{lambda (path) => result}
+  @argument[path]{a string with the ID of the message}
+  @argument[result]{a string with the translated message}
+  @end{table}
   @begin{short}
     A callback function used to translate messages.
   @end{short}
-  @begin{pre}
- lambda (path)
-  @end{pre}
-  @begin[code]{table}
-    @entry[path]{A string with the ID of the message.}
-    @entry[Returns]{A string with the translated message.}
-  @end{table}
   @see-function{gtk:action-group-set-translate-func}")
 
 ;;; ----------------------------------------------------------------------------

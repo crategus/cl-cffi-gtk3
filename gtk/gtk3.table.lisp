@@ -824,7 +824,7 @@
   The @code{x-options} and @code{y-options} keyword arguments have the default
   value @code{'(:expand :fill)}. The @code{x-padding} and @code{y-padding}
   keyword arguments have the default value 0.
-  @begin[Example]{dictionary}
+  @begin{examples}
     To make a button occupy the lower right cell of a 2 x 2 table, use
     @begin{pre}
 (gtk:table-attach table button 1 2 1 2)
@@ -833,7 +833,7 @@
     @begin{pre}
 (gtk:table-attach table button 0 2 1 2)
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @begin[Lisp implementation]{dictionary}
     The C library has the @code{gtk_table_attach_default ()} function. This
     function is included in the Lisp library via keyword arguments with default

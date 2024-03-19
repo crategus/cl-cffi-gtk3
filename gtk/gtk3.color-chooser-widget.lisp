@@ -99,7 +99,7 @@
     The @class{gtk:color-chooser-widget} class has a single CSS node with name
     @code{colorchooser}.
   @end{dictionary}
-  @begin[Example]{dictionary}
+  @begin{examples}
     This example shows a color chooser widget in a window. The selected color
     is output to the console.
     @begin{pre}
@@ -121,7 +121,7 @@
         (gtk:container-add window color-chooser)
         (gtk:widget-show-all window))))
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-constructor{gtk:color-chooser-widget-new}
   @see-slot{gtk:color-chooser-widget-show-editor}
   @see-class{gtk:color-chooser}

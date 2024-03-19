@@ -214,7 +214,7 @@
     Provides informations about the installation and the versions of the
     loaded libraries.
   @end{short}
-  @begin[Example]{dictionary}
+  @begin{examples}
     @begin{pre}
 * (gtk:cl-cffi-gtk-build-info)
 cl-cffi-gtk3 version: 0.1.0
@@ -232,7 +232,7 @@ Lisp implementation type: SBCL
 Lisp implementation version: 2.2.9.debian
 NIL
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-function{gtk:major-version}
   @see-function{gtk:minor-version}
   @see-function{gtk:micro-version}

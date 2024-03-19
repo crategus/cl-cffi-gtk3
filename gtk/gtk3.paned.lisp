@@ -171,7 +171,7 @@ paned
     arranged from left to right. So @code{:first-child} will always select the
     leftmost child widget, regardless of text direction.
   @end{dictionary}
-  @begin[Example]{dictionary}
+  @begin{examples}
     Creating a paned widget with minimum sizes.
     @begin{pre}
 (let ((paned (make-instance 'paned
@@ -186,7 +186,7 @@ paned
     (gtk:paned-pack2 paned frame2 :resize nil :shrink nil)
     ... )
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @begin[Child Property Details]{dictionary}
     @begin[code]{table}
       @begin[resize]{entry}

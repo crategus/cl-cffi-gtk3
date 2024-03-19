@@ -607,7 +607,7 @@ lambda (widget)
   @end{short}
   See the @fun{gtk:container-forall} function for details on what constitutes
   an \"internal\" child.
-  @begin[Example]{dictionary}
+  @begin{examples}
     @begin{pre}
 (setq box (make-instance 'gtk:box :orientation :vertical))
 => #<GTK:BOX {1001E2A183@}>
@@ -616,7 +616,7 @@ lambda (widget)
 (gtk:container-children box)
 => (#<GTK:BUTTON {1001E2B0A3@}> #<GTK:LABEL {1001E2BFD3@}>)
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:container}
   @see-function{gtk:container-forall}"
   (container (g:object container)))
@@ -1225,7 +1225,7 @@ lambda (widget)
   @begin{short}
     Finds a child property of a container type by name.
   @end{short}
-  @begin[Example]{dictionary}
+  @begin{examples}
     @begin{pre}
 (gtk:container-class-find-child-property \"GtkBox\" \"expand\")
 => #.(SB-SYS:INT-SAP #X00A7DA60)
@@ -1236,7 +1236,7 @@ lambda (widget)
 (gtk:container-class-find-child-property \"GtkBox\" \"unknown\")
 => #.(SB-SYS:INT-SAP #X00000000)
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:container}
   @see-symbol{g:type-t}
   @see-symbol{g:param-spec}"
@@ -1308,11 +1308,11 @@ lambda (widget)
   @argument[gtype]{a @class{g:type-t} type ID}
   @return{The list of @symbol{g:param-spec} instances.}
   @short{Returns the child properties of a container type.}
-  @begin[Note]{dictionary}
+  @begin{notes}
     In the Lisp binding we pass the type of a container class and not
     a pointer to the container class as argument to the function.
-  @end{dictionary}
-  @begin[Example]{dictionary}
+  @end{notes}
+  @begin{examples}
     Get the child properties of GtkBox.
     @begin{pre}
 (gtk:container-class-list-child-properties \"GtkBox\")
@@ -1322,7 +1322,7 @@ lambda (widget)
 (mapcar #'g:param-spec-name *)
 => (\"expand\" \"fill\" \"padding\" \"pack-type\" \"position\")
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:container}
   @see-class{g:type-t}
   @see-class{g:param-spec}"

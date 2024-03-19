@@ -933,7 +933,7 @@
 (setf (liber:alias-for-symbol 'builder-connect-func)
       "Callback"
       (liber:symbol-documentation 'builder-connect-func)
- "@version{#2024-3-16}
+ "@version{#2024-3-18}
   @syntax{lambda (builder object signal handler connect flags)}
   @argument[builder]{a @class{gtk:builder} object}
   @argument[object]{a @class{g:object} instance to connect a signal to}

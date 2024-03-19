@@ -347,7 +347,7 @@
     Creates a new @class{gtk:target-list} instance from a list of target
     entries.
   @end{short}
-  @begin[Examples]{dictionary}
+  @begin{examples}
     @begin{pre}
 (let ((tlist (gtk:target-list-new '((\"text/html\" :none 0)
                                     (\"STRING\" :none 1)
@@ -356,7 +356,7 @@
                                     (\"text/uri-list\" :none 4)))))
   ... )
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:target-list}"
   (let ((n-targets (length targets)))
     (cffi:with-foreign-object (targets-ptr '(:struct %target-entry) n-targets)

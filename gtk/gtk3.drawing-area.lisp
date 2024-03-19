@@ -105,7 +105,7 @@
   drawing area is focused. Use the @fun{gtk:widget-has-focus} function in your
   expose event handler to decide whether to draw the focus indicator. See the
   @fun{gtk:render-focus} function for one way to draw focus.
-  @begin[Example]{dictionary}
+  @begin{examples}
     The following example demonstrates using a drawing area to display a
     circle in the normal widget foreground color.
 
@@ -152,7 +152,7 @@
       (gtk:container-add window area)
       (gtk:widget-show-all window))))
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-function{gtk:widget-add-events}
   @see-function{gtk:widget-queue-draw-area}
   @see-function{gdk:window-invalidate-rect}

@@ -392,9 +392,9 @@ lambda (adjustment)    :no-recurse
   @argument[page-size]{a number with the page size}
   @return{The new @class{gtk:adjustment} object.}
   @short{Creates a new adjustment.}
-  @begin[Note]{dictionary}
+  @begin{notes}
     The numbers to the arguments are coerced to double float values.
-  @end{dictionary}
+  @end{notes}
   @see-class{gtk:adjustment}"
   (let ((adjustment (make-instance 'adjustment
                                    :lower lower
@@ -430,9 +430,9 @@ lambda (adjustment)    :no-recurse
   If the range is larger than the page size, then only the start of it will be
   in the current page. A @code{\"changed\"} signal will be emitted if the value
   is changed.
-  @begin[Note]{dictionary}
+  @begin{notes}
     The numbers to the arguments are coerced to double float values.
-  @end{dictionary}
+  @end{notes}
   @see-class{gtk:adjustment}"
   (%adjustment-clamp-page adjustment
                           (coerce lower 'double-float)
@@ -521,9 +521,9 @@ lambda (adjustment)    :no-recurse
   Use this function to avoid multiple emissions of the @code{\"changed\"}
   signal. See the @fun{gtk:adjustment-lower} function for an alternative way of
   compressing multiple emissions of @code{\"changed\"} signals into one.
-  @begin[Note]{dictionary}
+  @begin{notes}
     The numbers to the arguments are coerced to double float values.
-  @end{dictionary}
+  @end{notes}
   @see-class{gtk:adjustment}
   @see-function{gtk:adjustment-lower}"
   (%adjustment-configure adjustment

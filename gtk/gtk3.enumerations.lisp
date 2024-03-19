@@ -82,8 +82,8 @@
   @end{short}
   If the amount of vertical space in the row is taller than the total requested
   height of the baseline-aligned children then it can use a
-  @sym{gtk:baseline-position} value to select where to put the baseline inside
-  the extra available space.
+  @symbol{gtk:baseline-position} value to select where to put the baseline
+  inside the extra available space.
   @begin{pre}
 (gobject:define-g-enum \"GtkBaselinePosition\" baseline-position
   (:export t
@@ -866,14 +866,14 @@
   @begin{short}
     This type indicates the current state of a widget.
   @end{short}
-  The state determines how the widget is drawn. The @sym{gtk:state-type}
+  The state determines how the widget is drawn. The @symbol{gtk:state-type}
   enumeration is also used to identify different colors in a deprecated
   @code{GtkStyle} object for drawing, so states can be used for subparts of a
   widget as well as entire widgets.
   @begin[Warning]{dictionary}
-    The @sym{gtk:state-type} enumeration has been deprecated since version 3.14
-    and should not be used in newly written code. All APIs that are using this
-    enumeration have been deprecated in favor of alternatives using the
+    The @symbol{gtk:state-type} enumeration has been deprecated since version
+    3.14 and should not be used in newly written code. All APIs that are using
+    this enumeration have been deprecated in favor of alternatives using the
     @symbol{gtk:state-flags} flags.
   @end{dictionary}
   @begin{pre}

@@ -255,7 +255,7 @@
   on the image, such as button clicks, place the image inside a
   @class{gtk:event-box} widget, then connect to the event signals on the event
   box.
-  @begin[Example]{dictionary}
+  @begin{examples}
     Handling button press events on a @class{gtk:image} widget.
     @begin{pre}
 (defun create-image ()
@@ -282,7 +282,7 @@
     way to solve this is to set the alignment to 0.0 (left/top), and set the
     padding to zero. Then the origin of the image will be the same as the
     origin of the event box.
-  @end{dictionary}
+  @end{examples}
   @begin[CSS nodes]{dictionary}
     The @class{gtk:image} implementation has a single CSS node with the name
     @code{image}. The @code{.icon-dropshadow} and @code{.lowres-icon} style
@@ -438,11 +438,11 @@
     class.
   @end{short}
   Symbolic size to use for a stock icon, icon set or named icon.
-  @begin[Note]{dictionary}
+  @begin{notes}
     In C the @code{icon-size} property is implemented as an integer type.
     Therefore the @fun{gtk:image-icon-size} accessor returns an integer value
     and not a keyword value of the @symbol{gtk:icon-size} enumeration.
-  @end{dictionary}
+  @end{notes}
   @see-class{gtk:image}")
 
 ;;; --- gtk:image-pixbuf -------------------------------------------------------

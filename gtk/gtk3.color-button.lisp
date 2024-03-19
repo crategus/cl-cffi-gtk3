@@ -133,7 +133,7 @@
     @arg{button}. To differentiate it from a plain @class{gtk:button} widget,
     it gets the @code{.color} style class.
   @end{dictionary}
-  @begin[Example]{dictionary}
+  @begin{examples}
     The example shows a color button. The button is initialized with the color
     \"Blue\". The handler for the @code{\"color-set\"} signal prints the
     selected color on the console.
@@ -158,7 +158,7 @@
       (gtk:container-add window button)
       (gtk:widget-show-all window))))
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @begin[Signal Details]{dictionary}
     @subheading{The \"color-set\" signal}
       @begin{pre}

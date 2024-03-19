@@ -700,12 +700,12 @@ lambda (context)    :run-first
   @end{short}
   This style context will not be attached to any widget, so you may want to
   call the @fun{gtk:style-context-path} function yourself.
-  @begin[Note]{dictionary}
+  @begin{notes}
     This function is only useful when using the theming layer separated from
     GTK, if you are using a style context to theme widgets, use the
     @fun{gtk:widget-style-context} function in order to get a style context
     ready to theme the widget.
-  @end{dictionary}
+  @end{notes}
   @see-class{gtk:style-context}
   @see-function{gtk:style-context-path}
   @see-function{gtk:widget-style-context}"
@@ -733,11 +733,11 @@ lambda (context)    :run-first
   in the style construction. Typically this will be in the range between the
   @var{gtk:+gtk-priority-fallback+} and @var{gtk:+gtk-priority-user+}
   priorities.
-  @begin[Note]{dictionary}
+  @begin{notes}
     If both priorities are the same, a style provider object added through this
     function takes precedence over another added through the
     @fun{gtk:style-context-add-provider-for-screen} function.
-  @end{dictionary}
+  @end{notes}
   @see-class{gtk:style-context}
   @see-class{gtk:style-provider}
   @see-function{gtk:style-context-add-provider-for-screen}"
@@ -769,11 +769,11 @@ lambda (context)    :run-first
 
   GTK uses this to make styling information from the @class{gtk:settings}
   object available.
-  @begin[Note]{dictionary}
+  @begin{notes}
     If both priorities are the same, a style provider object added through the
     @fun{gtk:style-context-add-provider} function takes precedence over another
     added through this function.
-  @end{dictionary}
+  @end{notes}
   @see-class{gdk:screen}
   @see-class{gtk:style-context}
   @see-class{gtk:style-provider}
@@ -849,7 +849,7 @@ lambda (context)    :run-first
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_style_context_get_path ()
-;;; gtk_style_context_set_path () -> style-context-path
+;;; gtk_style_context_set_path ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf style-context-path) (path context)
@@ -886,7 +886,7 @@ lambda (context)    :run-first
 (export 'style-context-path)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_style_context_get_property () -> style-context-property
+;;; gtk_style_context_get_property ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_style_context_get_property" %style-context-property) :void
@@ -906,7 +906,7 @@ lambda (context)    :run-first
   @begin{short}
     Gets a style property from the style context for the given state.
   @end{short}
-  @begin[Example]{dictionary}
+  @begin{examples}
     @begin{pre}
 (setq context (gtk:style-context-new))
 => #<GTK-STYLE-CONTEXT {100687D223@}>
@@ -919,7 +919,7 @@ lambda (context)    :run-first
 (pango:font-description-to-string *)
 => \"Ubuntu 11\"
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:style-context}
   @see-symbol{gtk:state-flags}"
   (cffi:with-foreign-object (value '(:struct g:value))
@@ -935,7 +935,7 @@ lambda (context)    :run-first
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_style_context_get_frame_clock ()
-;;; gtk_style_context_set_frame_clock () -> style-context-frame-clock
+;;; gtk_style_context_set_frame_clock ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf style-context-frame-clock) (frame-clock context)
@@ -964,10 +964,10 @@ lambda (context)    :run-first
   The frame clock is used for the timing of animations. If you are using a
   style context returned from the @fun{gtk:widget-style-context} function, you
   do not need to call this yourself.
-  @begin[Note]{dictionary}
+  @begin{notes}
     This function is equivalent to the @fun{gtk:style-context-paint-clock}
     function.
-  @end{dictionary}
+  @end{notes}
   @see-class{gtk:style-context}
   @see-class{gdk:frame-clock}
   @see-function{gtk:widget-style-context}
@@ -978,7 +978,7 @@ lambda (context)    :run-first
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_style_context_get_state ()
-;;; gtk_style_context_set_state () -> style-context-state
+;;; gtk_style_context_set_state ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf style-context-state) (state context)
@@ -999,7 +999,7 @@ lambda (context)    :run-first
     Accessor of the state used when rendering.
   @end{short}
   The @fun{gtk:style-context-state} function returns the state to be used when
-  rendering with any of the @sym{gtk:render-*} functions. The
+  rendering with any of the @code{gtk:render-*} functions. The
   @setf{gtk:style-context-state} function sets the state.
   @see-class{gtk:style-context}
   @see-symbol{gtk:state-flags}"
@@ -1052,7 +1052,7 @@ lambda (context)    :run-first
   @begin{short}
     Gets the value for a widget style property.
   @end{short}
-  @begin[Example]{dictionary}
+  @begin{examples}
     @begin{pre}
 (setq message (make-instance 'gtk:message-dialog))
 => #<GTK-MESSAGE-DIALOG {100577F4A3@}>
@@ -1061,7 +1061,7 @@ lambda (context)    :run-first
 (gtk:style-context-style-property context message \"message-border\")
 => 12
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:style-context}
   @see-class{gtk:widget}"
   (let ((gtype (g:param-spec-value-type
@@ -1117,7 +1117,7 @@ lambda (context)    :run-first
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_style_context_get_section () -> style-context-section
+;;; gtk_style_context_get_section ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_style_context_get_section" style-context-section)
@@ -1151,7 +1151,7 @@ lambda (context)    :run-first
 (export 'style-context-section)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_style_context_get_color () -> style-context-color
+;;; gtk_style_context_get_color ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_style_context_get_color" %style-context-color) :void
@@ -1170,14 +1170,14 @@ lambda (context)    :run-first
     Gets the foreground color for a given state.
   @end{short}
   See the @fun{gtk:style-context-property} function for details.
-  @begin[Example]{dictionary}
+  @begin{examples}
     @begin{pre}
 (setq context (gtk:style-context-new))
 => #<GTK-STYLE-CONTEXT {10058ED093@}>
 (gtk:style-context-color context :normal)
 => #S(GDK-RGBA :RED 1.0d0 :GREEN 1.0d0 :BLUE 1.0d0 :ALPHA 1.0d0)
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:style-context}
   @see-symbol{gtk:state-flags}
   @see-class{gdk:rgba}
@@ -1190,7 +1190,6 @@ lambda (context)    :run-first
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_style_context_get_background_color ()
-;;; -> style-context-background-color
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_style_context_get_background_color"
@@ -1233,7 +1232,7 @@ lambda (context)    :run-first
 (export 'style-context-background-color)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_style_context_get_border_color () -> style-context-border-color
+;;; gtk_style_context_get_border_color ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_style_context_get_border_color" %style-context-border-color)
@@ -1268,7 +1267,7 @@ lambda (context)    :run-first
 (export 'style-context-border-color)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_style_context_get_border () -> style-context-border
+;;; gtk_style_context_get_border ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_style_context_get_border" %style-context-border) :void
@@ -1296,7 +1295,7 @@ lambda (context)    :run-first
 (export 'style-context-border)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_style_context_get_padding () -> style-context-padding
+;;; gtk_style_context_get_padding ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_style_context_get_padding" %style-context-padding) :void
@@ -1324,7 +1323,7 @@ lambda (context)    :run-first
 (export 'style-context-padding)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_style_context_get_margin () -> style-context-margin
+;;; gtk_style_context_get_margin ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_style_context_get_margin" %style-context-margin) :void
@@ -1352,7 +1351,7 @@ lambda (context)    :run-first
 (export 'style-context-margin)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_style_context_get_font () -> style-context-font
+;;; gtk_style_context_get_font ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_style_context_get_font" style-context-font)
@@ -1525,7 +1524,7 @@ lambda (context)    :run-first
 
   The @arg{window} parameter is used in order to invalidate the rendered area
   as the animation runs, so make sure it is the same window that is being
-  rendered on by the @sym{gtk:render-*} functions.
+  rendered on by the @code{gtk:render-*} functions.
 
   If @arg{region-id} is @code{NULL}, all rendered elements using the style
   context will be affected by this state transition.
@@ -1575,9 +1574,10 @@ lambda (context)    :run-first
   @argument[region-id]{a pointer which is an unique identifier for the
     animatable region}
   @begin{short}
-    Pushes an animatable region, so all further @sym{gtk:render-*} calls between
-    this call and the following a @fun{gtk:style-context-pop-animatable-region}
-    call will potentially show transition animations for this region.
+    Pushes an animatable region, so all further @code{gtk:render-*} calls
+    between this call and the following a
+    @fun{gtk:style-context-pop-animatable-region} function call will
+    potentially show transition animations for this region.
   @end{short}
   If the @fun{gtk:style-context-notify-state-change} function is called for a
   given state, and the current theme/style defines transition animations for
@@ -1811,10 +1811,10 @@ lambda (context)    :run-first
   @argument[classname]{a string with a class name to use in styling}
   @begin{short}
     Adds a style class to the context, so posterior calls to the
-    @fun{gtk:style-context-property} function or any of the @sym{gtk:render-*}
+    @fun{gtk:style-context-property} function or any of the @code{gtk:render-*}
     functions will make use of this new class for styling.
   @end{short}
-  @begin[Example]{dictionary}
+  @begin{examples}
     In the CSS file format, a GtkEntry defining an \"entry\" class, would be
     matched by:
     @begin{pre}
@@ -1824,7 +1824,7 @@ GtkEntry.entry { ... @}
   @begin{pre}
 .entry { ... @}
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:style-context}
   @see-function{gtk:style-context-property}"
   (context (g:object style-context))
@@ -1902,10 +1902,10 @@ GtkEntry.entry { ... @}
     the region}
   @begin{short}
     Adds a region to the style context, so posterior calls to the
-    @fun{gtk:style-context-property} function or any of the @sym{gtk:render-*}
+    @fun{gtk:style-context-property} function or any of the @code{gtk:render-*}
     functions will make use of this new region for styling.
   @end{short}
-  @begin[Example]{dictionary}
+  @begin{examples}
     In the CSS file format, a GtkTreeView defining a \"row\" region, would be
     matched by:
     @begin{pre}
@@ -1917,11 +1917,11 @@ GtkEntry.entry { ... @}
  GtkTreeView row:nth-child(even) { ... @}
  GtkTreeView row:nth-child(odd) { ... @}
     @end{pre}
-  @end{dictionary}
-  @begin[Note]{dictionary}
+  @end{examples}
+  @begin{notes}
     Region names must only contain lowercase letters and '-', starting always
     with a lowercase letter.
-  @end{dictionary}
+  @end{notes}
   @begin[Warning]{dictionary}
     The @fun{gtk:style-context-add-region} function has been deprecated since
     version 3.14 and should not be used in newly written code.
@@ -2013,7 +2013,7 @@ GtkEntry.entry { ... @}
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_style_context_get_scale ()
-;;; gtk_style_context_set_scale () -> style-context-scale
+;;; gtk_style_context_set_scale ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf style-context-scale) (scale context)
@@ -2062,7 +2062,7 @@ GtkEntry.entry { ... @}
   This function is intended for testing and debugging of the CSS implementation
   in GTK. There are no guarantees about the format of the returned string, it
   may change.
-  @begin[Example]{dictionary}
+  @begin{examples}
     @begin{pre}
 (setq context
       (gtk:widget-style-context (make-instance 'gtk:message-dialog)))
@@ -2083,7 +2083,7 @@ GtkEntry.entry { ... @}
     [label.title:dir(ltr)@]
 \"
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:style-context}
   @see-symbol{gtk:style-context-print-flags}"
   (context (g:object style-context))

@@ -1138,11 +1138,11 @@ lambda (window scroll horizontal)    :action
   @code{:bottom-left}, and @code{:bottom-right}.
 
   See also the @fun{gtk:scrolled-window-unset-placement} function.
-  @begin[Note]{dictionary}
+  @begin{notes}
     In contrast to the @fun{gtk:scrolled-window-window-placement} function the
     @fun{gtk:scrolled-window-placement} function updates the scrolled window
     after setting the new value for the window placement.
-  @end{dictionary}
+  @end{notes}
   @see-class{gtk:scrolled-window}
   @see-function{gtk:scrolled-window-unset-placement}
   @see-function{gtk:scrolled-window-window-placement}"

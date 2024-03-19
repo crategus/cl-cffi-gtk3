@@ -106,7 +106,7 @@
 
   Most programs should not need to call this function.
   @begin[Lisp Implemention]{dictionary}
-    In the Lisp implementationt the @sym{gtk:%init} function is called
+    In the Lisp implementation the @code{gtk:%init} function is called
     automatically when loading the library @code{cl-cffi-gtk3}. Therefore
     @fun{gtk:disable-setlocale} does not have any effect.
   @end{dictionary}
@@ -130,14 +130,14 @@
   GTK uses the right-to-left or left-to-right text direction.
 
   This function is equivalent to the @fun{pango:language-default} function.
-  @begin[Example]{dictionary}
+  @begin{examples}
     @begin{pre}
 (setq lang (gtk:default-language))
 => #<PANGO-LANGUAGE {C7B3C51@}>
 (pango:language-to-string lang)
 => \"de-de\"
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{pango:language}
   @see-function{pango:language-default}")
 
@@ -167,14 +167,14 @@
 
   This function is only needed rare cases when the locale is changed after GTK
   has already been initialized.
-  @begin[Example]{dictionary}
+  @begin{examples}
     You can use the @fun{gtk:locale-direction} function to update the default
     text direction as follows:
     @begin{pre}
 (setf (gtk:widget-default-direction) (gtk:locale-direction))
 => :LTR
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-symbol{gtk:text-direction}
   @see-function{gtk:widget-default-direction}")
 
@@ -240,7 +240,7 @@
   @code{gtk_init_with_args()} or @code{g_option_context_parse()} with the
   option group returned by the @fun{gtk:option-group} function, you do not have
   to call the @code{gtk_init()} function.
-  @begin[Notes]{dictionary}
+  @begin{notes}
     This function will terminate your program if it was unable to initialize the
     windowing system for some reason. If you want your program to fall back to a
     textual interface you want to call @fun{%gtk-init-check} instead.
@@ -251,7 +251,7 @@
     @code{SIGPIPE} for some reason, reset the handler after @code{gtk_init()},
     butt notice that other libraries (e.g. @code{libdbus} or @code{gvfs}) might
     do similar things.
-  @end{dictionary}
+  @end{notes}
   @begin[Lisp Implemention]{dictionary}
     In the Lisp implementation @code{%gtk-init} calls the
     @code{gtk_init_check()} C function which is implemented through the
@@ -304,7 +304,7 @@
   This way the application can fall back to some other means of communication
   with the user - for example a curses or command line interface.
   @begin[Lisp Implemention]{dictionary}
-    In the Lisp implementation @sym{%gtk-init-check} is called from the
+    In the Lisp implementation @code{%gtk-init-check} is called from the
     @code{%gtk-init} function. Both functions are never called directly. The
     @code{%gtk-init} function is called automatically when loading the
     @code{cl-cffi-gtk3} library.
@@ -399,15 +399,15 @@
   @end{short}
   This can be used to update the UI and invoke timeouts etc. while doing some
   time intensive computation.
-  @begin[Example]{dictionary}
+  @begin{examples}
     Updating the UI during a long computation.
     @begin{pre}
 ;; computation going on ...
 (loop while (gtk:events-pending)
       do (gtk:main-iteration))
 ;; ... computation continued
-  @end{pre}
-  @end{dictionary}
+    @end{pre}
+  @end{examples}
   @see-function{gtk:main-iteration}
   @see-function{gtk:main-iteration-do}")
 
@@ -434,7 +434,7 @@
     @fun{gtk:within-main-loop} macro does some additional bookkeeping, to run
     the Lisp program in a separate thread.
   @end{dictionary}
-  @begin[Example]{dictionary}
+  @begin{examples}
     In this example an idle source is excecuted from the main loop. The
     @fun{gtk:main-quit} function is called in the idle callback to quit the
     main loop.
@@ -453,7 +453,7 @@
   ;; We return when gtk:main-quit is called in the idle callback.
   (gtk:main))
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-function{gtk:within-main-loop}
   @see-function{gtk:main-quit}"
   (gdk:with-gdk-threads-lock
@@ -890,7 +890,7 @@
   For example, if you are handling a @code{\"clicked\"} signal, the current
   event will be the @class{gdk:event-button} event that triggered the
   @code{\"clicked\"} signal.
-  @begin[Example]{dictionary}
+  @begin{examples}
     In this example the @fun{gtk:current-event} function is used in a signal
     handler to check for a button press event. This code is part of the GTK
     demo for popovers.
@@ -916,7 +916,7 @@
                 (setf (gtk:popover-pointing-to popover) rect)
                 (gtk:widget-show popover))))))))
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gdk:event}
   @see-function{gtk:current-event-time}
   @see-function{gtk:current-event-state}

@@ -1473,10 +1473,10 @@ lambda (view)    :action
   arguments, the text scrolls the minimal distance to get the mark onscreen,
   possibly not scrolling at all. The effective screen for purposes of this
   function is reduced by a margin of size @arg{margin}.
-  @begin[Note]{dictionary}
+  @begin{notes}
     The double float arguments take any numbers, which are coerced to a double
     float.
-  @end{dictionary}
+  @end{notes}
   @see-class{gtk:text-view}
   @see-class{gtk:text-mark}"
   (%text-view-scroll-to-mark view
@@ -1530,10 +1530,10 @@ lambda (view)    :action
   computations. To avoid oddness, consider using the
   @fun{gtk:text-view-scroll-to-mark} function which saves a point to be scrolled
   to after line validation.
-  @begin[Note]{dictionary}
+  @begin{notes}
     The double float arguments take any numbers, which are coerced to a double
     float.
-  @end{dictionary}
+  @end{notes}
   @see-class{gtk:text-view}
   @see-class{gtk:text-iter}
   @see-function{gtk:text-view-scroll-to-mark}"
@@ -2088,13 +2088,13 @@ lambda (view)    :action
   paragraphs will be the same. Display lines are divided differently for each
   view, since they depend on the width of the text view. Paragraphs are the
   same in all text views, since they depend on the contents of the text buffer.
-  @begin[Note]{dictionary}
+  @begin{notes}
     This function combines the @code{gtk_text_view_forward_display_line ()},
     @code{gtk_text_view_forward_display_line_end()},
     @code{gtk_text_view_backward_display_line()}, and
     @code{gtk_text_view_backward_display_line_start()} functions into one
     Lisp function.
-  @end{dictionary}
+  @end{notes}
   @see-class{gtk:text-view}
   @see-class{gtk:text-iter}"
   (assert (typep direction '(member :forward :backward)))

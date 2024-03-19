@@ -2545,13 +2545,13 @@ lambda (tag object event iter)    :run-last
   @begin{short}
     Creates a new tag.
   @end{short}
-  @begin[Example]{dictionary}
+  @begin{examples}
     Create a tag with name \"font-italic\":
     @begin{pre}
 (gtk:text-tag-new \"font-italic\" :font \"fixed\" :style :italic)
 => #<gtk:text-tag {1006C86E63@}>
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:text-tag}"
   (apply #'make-instance 'text-tag :name name args))
 

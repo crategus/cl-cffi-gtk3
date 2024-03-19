@@ -137,7 +137,7 @@
     object will cause the @symbol{gtk:tree-model-filter-visible-func} callback
     function to be visited with an empty row first. The function must be
     prepared for that.
-  @begin[Example]{dictionary}
+  @begin{examples}
     Creating a simple list store.
     @begin{pre}
 (defun create-and-fill-model ()
@@ -164,7 +164,7 @@
     ;; Return the new list store
     list-store))
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @begin[GtkListStore as GtkBuildable]{dictionary}
     The @class{gtk:list-store} implementation of the @class{gtk:buildable}
     interface allows to specify the model columns with a @code{<columns>}
@@ -236,20 +236,20 @@
 
 (declaim (inline list-store-new))
 
-(defun list-store-new (&rest column-types)
+(defun list-store-new (&rest types)
  #+liber-documentation
- "@version{#2023-3-20}
-  @argument[column-types]{all @class{g:type-t} types for the columns, from
-    first to last}
+ "@version{2024-3-12}
+  @argument[types]{all @class{g:type-t} types for the columns, from first to
+    last}
   @return{The new @class{gtk:list-store} object.}
   @begin{short}
     Creates a new list store as with each of the types passed in.
   @end{short}
   Note that only types derived from standard GType fundamental types are
   supported.
-  @begin[Example]{dictionary}
-    The following example creates a new @class{gtk:list-store} object with
-    three columnes, of type \"gint\", \"gchararray\" and \"GdkPixbuf\".
+  @begin{examples}
+    Create a new @class{gtk:list-store} object with three columnes, of type
+    @code{\"gint\"}, @code{\"gchararray\"} and @code{\"GdkPixbuf\"}.
     @begin{pre}
 (gtk:list-store-new \"gint\" \"gchararray\" \"GdkPixbuf\")
     @end{pre}
@@ -258,11 +258,11 @@
 (make-instance 'gtk:list-store
                :column-types '(\"gint\" \"gchararray\" \"GdkPixbuf\"))
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:list-store}
   @see-class{g:type-t}"
   (make-instance 'list-store
-                 :column-types column-types))
+                 :column-types types))
 
 (export 'list-store-new)
 
@@ -307,7 +307,7 @@
   @end{short}
   It will not function after a row has been added, or a method on a
   @class{gtk:tree-model} object is called.
-  @begin[Example]{dictionary}
+  @begin{examples}
     Create a list store and set the column types:
     @begin{pre}
 (let ((store (gtk:list-store-new)))
@@ -319,7 +319,7 @@
 (let ((store (gtk:list-store-new \"gint\" \"gchararray\" \"GdkPixbuf\")))
    ... )
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gtk:list-store}
   @see-class{g:type-t}
   @see-class{gtk:tree-model}
@@ -342,16 +342,16 @@
 
 (defun list-store-set (store iter &rest values)
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{2024-3-14}
   @argument[store]{a @class{gtk:list-store} object}
   @argument[iter]{a @class{gtk:tree-iter} row iterator}
-  @argument[values]{the values to set}
+  @argument[values]{a list of values to be set}
   @return{The @class{gtk:tree-iter} iterator for the row being modified.}
   @begin{short}
     Sets the values of one or more cells in the row referenced by @arg{iter}.
   @end{short}
   The variable argument list should contain the values to be set.
-  @begin[Example]{dictionary}
+  @begin{examples}
     @begin{pre}
 (let ((model (gtk:list-store-new \"gchararray\" \"gchararray\" \"guint\")))
   ;; Append a row and fill in some data
@@ -360,31 +360,31 @@
                       \"Hans\" \"Müller\" 1961)
    ... )
     @end{pre}
-  @end{dictionary}
-  @begin[Note]{dictionary}
+  @end{examples}
+  @begin{notes}
     The Lisp implementation does not support pairs of a column index and a
     value, but a list of values. Therefore, it is not possible to set the values
     of individual columns. See the @fun{gtk:list-store-set-value} function for
     setting the value of single columns.
-  @end{dictionary}
+  @end{notes}
   @see-class{gtk:list-store}
   @see-class{gtk:tree-iter}
   @see-function{gtk:list-store-set-value}"
   (let ((n (length values)))
     (cffi:with-foreign-objects ((value-ar '(:struct g:value) n)
                                 (columns-ar :int n))
-      (loop for i from 0 below n
-            for value in values
-            for gtype = (tree-model-column-type store i)
-            do (setf (cffi:mem-aref columns-ar :int i) i)
-               (gobject:set-g-value (cffi:mem-aptr value-ar
-                                                   '(:struct g:value) i)
-                                    value
-                                    gtype
-                                    :zero-gvalue t))
+      (iter (for i from 0 below n)
+            (for value in values)
+            (for gtype = (tree-model-column-type store i))
+            (setf (cffi:mem-aref columns-ar :int i) i)
+            (gobject:set-g-value (cffi:mem-aptr value-ar
+                                                '(:struct g:value) i)
+                                 value
+                                 gtype
+                                 :zero-gvalue t))
       (%list-store-set-valuesv store iter columns-ar value-ar n)
-      (loop for i from 0 below n
-            do (g:value-unset (cffi:mem-aptr value-ar '(:struct g:value) i)))
+      (iter (for i from 0 below n)
+            (g:value-unset (cffi:mem-aptr value-ar '(:struct g:value) i)))
       iter)))
 
 (export 'list-store-set)
@@ -418,30 +418,31 @@
 (cffi:defcfun ("gtk_list_store_set_value" %list-store-set-value) :void
   (store (g:object list-store))
   (iter (g:boxed tree-iter))
-  (column :int)
+  (colnum :int)
   (value :pointer))
 
-(defun list-store-set-value (store iter column value)
+(defun list-store-set-value (store iter colnum value)
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{2024-3-14}
   @argument[store]{a @class{gtk:list-store} object}
   @argument[iter]{a valid @class{gtk:tree-iter} iterator for the row being
     modified}
-  @argument[column]{an integer with the column number to modify}
-  @argument[value]{new value for the cell}
+  @argument[colnum]{an integer with the column number to modify}
+  @argument[value]{a new value for the cell}
   @begin{short}
-    Sets the data in the cell specified by @arg{iter} and @arg{column}.
+    Sets the data in the cell specified by @arg{iter} and @arg{colnum}.
   @end{short}
-  The type of @arg{value} must be convertible to the type of the @arg{column}.
+  The type of @arg{value} must be convertible to the type of the specified
+  column.
   @see-class{gtk:list-store}
   @see-class{gtk:tree-iter}
   @see-function{gtk:list-store-set}"
   (cffi:with-foreign-object (gvalue '(:struct g:value))
     (gobject:set-g-value gvalue
                          value
-                         (tree-model-column-type store column)
+                         (tree-model-column-type store colnum)
                          :zero-gvalue t)
-    (%list-store-set-value store iter column gvalue)
+    (%list-store-set-value store iter colnum gvalue)
     (g:value-unset gvalue)
     (values)))
 
@@ -494,7 +495,7 @@
 
 (cffi:defcfun ("gtk_list_store_remove" list-store-remove) :boolean
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{2024-3-14}
   @argument[store]{a @class{gtk:list-store} object}
   @argument[iter]{a valid @class{gtk:tree-iter} iterator}
   @return{@em{True} if @arg{iter} is valid, @code{nil} if not.}
@@ -755,7 +756,7 @@
 
 (defun list-store-append (store)
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{2024-3-12}
   @argument[store]{a @class{gtk:list-store} object}
   @return{The @class{gtk:tree-iter} iterator to the appended row.}
   @begin{short}
@@ -780,7 +781,7 @@
 
 (cffi:defcfun ("gtk_list_store_clear" list-store-clear) :void
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{2024-3-14}
   @argument[store]{a @class{gtk:list-store} object}
   @short{Removes all rows from the list store.}
   @see-class{gtk:list-store}"
