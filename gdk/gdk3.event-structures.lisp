@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -544,12 +544,9 @@
 (setf (liber:alias-for-symbol 'event-type)
       "GEnum"
       (liber:symbol-documentation 'event-type)
- "@version{#2023-3-13}
-  @short{Specifies the type of a @class{gdk:event} instance.}
-  Do not confuse these events with the signals that GTK widgets emit.
-  Although many of these events result in corresponding signals being emitted,
-  the events are often transformed or filtered along the way.
-  @begin{pre}
+ "@version{2024-3-14}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GdkEventType\" event-type
   (:export t
    :type-initializer \"gdk_event_type_get_type\")
@@ -605,7 +602,9 @@
   (:pad-strip 46)
   (:pad-group-mode 47)
   (:event-last 48))
-  @end{pre}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
   @begin[code]{table}
     @entry[:nothing]{A special code to indicate a null event.}
     @entry[:delete]{The window manager has requested that the toplevel window
@@ -681,6 +680,13 @@
     @entry[:event-last]{Marks the end of the @symbol{gdk:event-type}
       enumeration.}
   @end{table}
+  @end{values}
+  @begin{short}
+    Specifies the type of a @class{gdk:event} instance.
+  @end{short}
+  Do not confuse these events with the signals that GTK widgets emit. Although
+  many of these events result in corresponding signals being emitted, the
+  events are often transformed or filtered along the way.
   @see-struct{gdk:event}
   @see-symbol{gdk:window-type}
   @see-symbol{gdk:window-state}")
@@ -1449,13 +1455,13 @@
 ;;; struct GdkEventAny
 ;;; ----------------------------------------------------------------------------
 
-;;; --- event-type ---------------------------------------------------------
+;;; --- gdk:event-type ---------------------------------------------------------
 
 #+liber-documentation
 (setf (liber:alias-for-function 'event-type)
       "Accessor"
       (documentation 'event-type 'function)
- "@version{#2021-12-13}
+ "@version{2024-3-14}
   @syntax[]{(gdk:event-type instance) => type}
   @syntax[]{(setf (gdk:event-type instance) type)}
   @argument[instance]{a @class{gdk:event} instance}
@@ -1463,9 +1469,8 @@
   @begin{short}
     Accessor of the @code{type} slot of the @class{gdk:event} structure.
   @end{short}
-
   The type of the event as a value of the @symbol{gdk:event-type} enumeration.
-  @begin[Example]{dictionary}
+  @begin{examples}
     Check for a button press event in a handler for the @code{\"event\"} signal
     on a drawing area.
     @begin{pre}
@@ -1475,7 +1480,7 @@
   (when (eq (gdk:event-type event) :button-press)
     ... ))
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-struct{gdk:event}
   @see-symbol{gdk:event-type}")
 

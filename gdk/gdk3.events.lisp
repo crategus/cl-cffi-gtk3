@@ -454,7 +454,7 @@
 (export 'event-axis)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_event_get_button () -> event-button
+;;; gdk_event_get_button ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_event_get_button" %event-button) :boolean
@@ -463,10 +463,10 @@
 
 (defun event-button (event)
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2024-3-14}
   @argument[event]{a @class{gdk:event} instance}
-  @return{Mouse button number, or @code{nil} if the event does not deliver a
-    button number.}
+  @return{The unsigned integer with the mouse button number, or @code{nil}
+    if the event does not deliver a button number.}
   @short{Extract the button number from an event.}
   @see-class{gdk:event}
   @see-class{gdk:event-button}
