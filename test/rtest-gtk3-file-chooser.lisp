@@ -126,18 +126,6 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-;;;     action
-;;;     create-folders
-;;;     do-overwrite-confirmation
-;;;     extra-widget
-;;;     filter
-;;;     local-only
-;;;     preview-widget
-;;;     preview-widget-active
-;;;     select-multiple
-;;;     show-hidden
-;;;     use-preview-label
-
 (test gtk-file-chooser-properties
   (let ((chooser (make-instance 'gtk:file-chooser-widget)))
     (is (eq :open (gtk:file-chooser-action chooser)))
@@ -326,4 +314,4 @@
 ;;;     gtk_file_chooser_set_file
 ;;;     gtk_file_chooser_unselect_file
 
-;;; --- 2023-6-11 --------------------------------------------------------------
+;;; 2024-3-14

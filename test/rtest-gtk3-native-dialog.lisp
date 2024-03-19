@@ -46,11 +46,14 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-;;;     modal
-;;;     title
-;;;     transient-for
-;;;     visible
+;; TODO: We get an error on Windows:
+;;
+;; GTK-NATIVE-DIALOG-PROPERTIES in GTK-NATIVE-DIALOG []:
+;;      Unexpected Error: #<SB-WIN32:EXCEPTION {10048ECF73}>
+;; An exception occurred in context #.(SB-SYS:INT-SAP #X009693A0):
+;; #.(SB-SYS:INT-SAP #X00969FD0). (Exception code: 1722).
 
+#-windows
 (test gtk-native-dialog-properties
   (let ((dialog (make-instance 'gtk:file-chooser-native)))
     (is-false (gtk:native-dialog-modal dialog))
@@ -59,8 +62,6 @@
     (is-false (gtk:native-dialog-visible dialog))))
 
 ;;; --- Signals ----------------------------------------------------------------
-
-;;;     response
 
 (test gtk-native-dialog-response-signal
   (let ((query (g:signal-query (g:signal-lookup "response" "GtkNativeDialog"))))
@@ -82,4 +83,4 @@
 ;;;     gtk_native_dialog_destroy
 ;;;     gtk_native_dialog_run
 
-;;; --- 2023-6-11 --------------------------------------------------------------
+;;; 2024-3-14

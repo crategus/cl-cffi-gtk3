@@ -78,12 +78,13 @@
   ;; Check the parent
   (is (eq (g:gtype "GInitiallyUnowned") (g:type-parent "GtkWidget")))
   ;; Check the children
-  (is (or (equal '("GtkCalendar" "GtkCellView" "GtkContainer" "GtkDrawingArea"
+  (if *first-run-gtk-test*
+      (is (equal '("GtkCalendar" "GtkCellView" "GtkContainer" "GtkDrawingArea"
                    "GtkEntry" "GtkHSV" "GtkInvisible" "GtkLevelBar" "GtkMisc"
                    "GtkProgressBar" "GtkRange" "GtkSeparator" "GtkSpinner"
                    "GtkSwitch")
-                 (list-children "GtkWidget"))
-          (equal '("GtkCalendar" "GtkCellView" "GtkColorSwatch" "GtkContainer"
+                 (list-children "GtkWidget")))
+      (is (equal '("GtkCalendar" "GtkCellView" "GtkColorSwatch" "GtkContainer"
                    "GtkDrawingArea" "GtkEntry" "GtkHSV" "GtkIcon" "GtkInvisible"
                    "GtkLevelBar" "GtkMisc" "GtkProgressBar" "GtkRange"
                    "GtkSeparator" "GtkSpinner" "GtkSwitch")

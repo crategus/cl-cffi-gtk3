@@ -9,10 +9,17 @@
 ;;;     gtk_get_minor_version
 ;;;     gtk_get_micro_version
 
+#-windows
 (test gtk-major-version
   (is (=  3 (gtk:major-version)))
   (is (= 24 (gtk:minor-version)))
   (is (= 38 (gtk:micro-version))))
+
+#+windows
+(test gtk-major-version
+  (is (=  3 (gtk:major-version)))
+  (is (= 24 (gtk:minor-version)))
+  (is (= 39 (gtk:micro-version))))
 
 ;;;     gtk_get_binary_age
 ;;;     gtk_get_interface_age
