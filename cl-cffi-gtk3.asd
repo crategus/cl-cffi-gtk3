@@ -445,12 +445,14 @@
 ;    (:file "gtk.expander")
      (:file "rtest-gtk3-aspect-frame")
      (:file "rtest-gtk3-fixed")
+
      ;; Ornaments
      (:file "rtest-gtk3-separator")
      (:file "rtest-gtk3-frame")
      ;; Scrolling
      (:file "rtest-gtk3-scrollbar")
      (:file "rtest-gtk3-scrolled-window")
+
      ;; Windows
      (:file "rtest-gtk3-window")
      (:file "rtest-gtk3-dialog")
@@ -460,6 +462,7 @@
      (:file "rtest-gtk3-about-dialog")
      (:file "rtest-gtk3-assistant")
      (:file "rtest-gtk3-offscreen-window")
+
      ;; Display Widgets
      (:file "rtest-gtk3-label")
      (:file "rtest-gtk3-accel-label")
@@ -495,7 +498,7 @@
      ;; Tree, List and Icon Grid Widgets
      (:file "rtest-gtk3-tree-model")
      (:file "rtest-gtk3-cell-layout")
-;    (:file "gtk.tree-sortable")
+     (:file "rtest-gtk3-tree-sortable")
      (:file "rtest-gtk3-tree-view-drag-and-drop")
 ;    (:file "gtk.tree-model-sort")
 ;    (:file "gtk.tree-model-filter")
@@ -503,16 +506,18 @@
      (:file "rtest-gtk3-tree-view-column")
 ;    (:file "gtk.tree-store")
      (:file "rtest-gtk3-tree-selection")
-;    (:file "gtk.cell-editable")
+
+     (:file "rtest-gtk3-cell-editable")
      (:file "rtest-gtk3-cell-renderer")
      (:file "rtest-gtk3-cell-renderer-text")
-;    (:file "gtk.cell-renderer-pixbuf")
+     (:file "rtest-gtk3-cell-renderer-pixbuf")
      (:file "rtest-gtk3-cell-renderer-progress")
      (:file "rtest-gtk3-cell-renderer-accel")
-;    (:file "gtk.cell-renderer-combo")
+     (:file "rtest-gtk3-cell-renderer-combo")
      (:file "rtest-gtk3-cell-renderer-spin")
      (:file "rtest-gtk3-cell-renderer-toggle")
      (:file "rtest-gtk3-cell-renderer-spinner")
+
      (:file "rtest-gtk3-cell-area")
      (:file "rtest-gtk3-cell-area-box")
 ;    (:file "gtk.cell-area-context")
@@ -564,11 +569,11 @@
      (:file "rtest-gtk3-hsv")
 
      (:file "rtest-gtk3-file-filter")
-     (:file "rtest-gtk3-file-chooser")
-     (:file "rtest-gtk3-file-chooser-button")
-     (:file "rtest-gtk3-file-chooser-native")
-     (:file "rtest-gtk3-file-chooser-dialog")
-     (:file "rtest-gtk3-file-chooser-widget")
+     (:file "rtest-gtk3-file-chooser"             :if-feature (:not :windows))
+     (:file "rtest-gtk3-file-chooser-button"      :if-feature (:not :windows))
+     (:file "rtest-gtk3-file-chooser-native"      :if-feature (:not :windows))
+     (:file "rtest-gtk3-file-chooser-dialog"      :if-feature (:not :windows))
+     (:file "rtest-gtk3-file-chooser-widget"      :if-feature (:not :windows))
 
      (:file "rtest-gtk3-font-chooser")
      (:file "rtest-gtk3-font-button")
@@ -692,10 +697,13 @@
      (:file "rtest-gdk3-app-launch-context")
      (:file "rtest-gdk3-pango")
      (:file "rtest-gdk3-cairo")
+
+     (:file "rtest-gtk3-finish")
 ))))
 
 ;;; Examples for the Gtk3 library
 
+#+nil
 (asdf:defsystem :cl-cffi-gtk3/example
   :author "Dieter Kaiser"
   :license "MIT"
@@ -738,6 +746,7 @@
      (:file "custom-drawing")
      (:file "custom-window")
      (:file "dialog")                        ; Dialog Windows
+     (:file "dialog-more")
      (:file "drag-and-drop")
      (:file "drag-and-drop-action")
      (:file "drag-and-drop-simple")
