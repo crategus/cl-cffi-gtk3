@@ -102,24 +102,28 @@
 (setf (liber:alias-for-symbol 'popover-constraint)
       "GEnum"
       (liber:symbol-documentation 'popover-constraint)
- "@version{#2023-3-13}
-  @begin{short}
-    Describes constraints to positioning of popovers.
-  @end{short}
-  More values may be added to this enumeration in the future.
-  @begin{pre}
+ "@version{#2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkPopoverConstraint\" gtk:popover-constraint
   (:export t
    :type-initializer \"gtk_popover_constraint_get_type\")
   :none
   :window)
-  @end{pre}
-  @begin[code]{table}
-    @entry[:none]{Do not constrain the popover position beyond what is imposed
-      by the implementation.}
-    @entry[:window]{Constrain the popover to the boundaries of the window that
-      it is attached to.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:none]{Do not constrain the popover position beyond what is imposed
+        by the implementation.}
+      @entry[:window]{Constrain the popover to the boundaries of the window that
+        it is attached to.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Describes constraints to positioning of popovers.
+  @end{short}
+  More values may be added to this enumeration in the future.
   @see-class{gtk:popover}")
 
 ;;; ----------------------------------------------------------------------------

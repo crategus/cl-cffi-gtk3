@@ -127,24 +127,28 @@
 (setf (liber:alias-for-symbol 'sensitivity-type)
       "GEnum"
       (liber:symbol-documentation 'sensitivity-type)
- "@version{#2023-3-22}
-  @begin{short}
-    Determines how GTK handles the sensitivity of stepper arrows at the end of
-    range widgets.
-  @end{short}
-  @begin{pre}
+ "@version{#2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkSensitivityType\" sensitivity-type
   (:export t
    :type-initializer \"gtk_sensitivity_type_get_type\")
   (:auto 0)
   (:on 1)
   (:off 2))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:auto]{The arrow is made insensitive if the thumb is at the end.}
-    @entry[:on]{The arrow is always sensitive.}
-    @entry[:off]{The arrow is always insensitive.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:auto]{The arrow is made insensitive if the thumb is at the end.}
+      @entry[:on]{The arrow is always sensitive.}
+      @entry[:off]{The arrow is always insensitive.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Determines how GTK handles the sensitivity of stepper arrows at the end of
+    range widgets.
+  @end{short}
   @see-class{gtk:range}")
 
 ;;; ----------------------------------------------------------------------------
@@ -301,10 +305,10 @@ lambda (range scroll value)    :run-last
       and return @em{true} to prevent further processing. Or, by returning
       @em{false}, it can pass the event to other handlers until the default GTK
       handler is reached. The value parameter is unrounded. An application that
-      overrides the \"change-value\" signal is responsible for clamping the
-      value to the desired number of decimal digits. The default GTK handler
+      overrides the @code{\"change-value\"} signal is responsible for clamping
+      the value to the desired number of decimal digits. The default GTK handler
       clamps the value based on \"round-digits\". It is not possible to use
-      delayed update policies in an overridden \"change-value\" handler.
+      delayed update policies in an overridden @code{\"change-value\"} handler.
       @begin[code]{table}
         @entry[range]{The @class{gtk:range} widget that received the signal.}
         @entry[scroll]{The @symbol{gtk:scroll-type} value of scroll action that
@@ -522,7 +526,7 @@ lambda (range)    :run-last
 (setf (documentation (liber:slot-documentation "round-digits" 'range) t)
  "The @code{round-digits} property of type @code{:int} (Read / Write) @br{}
   The number of digits to round the value to when it changes, or -1. See the
-  \"change-value\" signal. @br{}
+  @code{\"change-value\"} signal. @br{}
   Allowed values: >= -1 @br{}
   Default value: -1")
 
@@ -542,7 +546,7 @@ lambda (range)    :run-last
   The @fun{gtk:range-round-digits} function gets the number of digits to round
   the value to when it changes. The @setf{gtk:range-round-digits} function sets
   the number of digits to round the value to when it changes. See the
-  \"change-value\" signal.
+  @code{\"change-value\"} signal.
   @see-class{gtk:range}")
 
 ;;; --- gtk:range-show-fill-level ----------------------------------------------
@@ -631,8 +635,8 @@ lambda (range)    :run-last
   @setf{gtk:range-value} function sets the current value of the range.
 
   If the value is outside the minimum or maximum range values, it will be
-  clamped to fit inside them. The range emits the \"value-changed\" signal if
-  the value changes.
+  clamped to fit inside them. The range emits the @code{\"value-changed\"}
+  signal if the value changes.
   @see-class{gtk:range}"
   (adjustment-value (range-adjustment range)))
 

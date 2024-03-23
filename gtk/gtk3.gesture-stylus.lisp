@@ -160,8 +160,8 @@ lambda (gesture arg1 arg2)    :run-last
   @begin{short}
     Returns the current value for the requested axis.
   @end{short}
-  This function must be called from either the \"down\", \"motion\", \"up\" or
-  \"proximity\" signals.
+  This function must be called from either the @code{\"down\"},
+  @code{\"motion\"}, @code{\"up\"} or @code{\"proximity\"} signals.
   @see-class{gtk:gesture-stylus}"
   (cffi:with-foreign-object (value :double)
     (when (%gesture-stylus-axis gesture axis value)
@@ -208,8 +208,8 @@ lambda (gesture arg1 arg2)    :run-last
   @begin{short}
     Returns the device tool currently driving input through this gesture.
   @end{short}
-  This function must be called from either the \"down\", \"motion\", \"up\" or
-  \"proximity\" signal handlers.
+  This function must be called from either the @code{\"down\"},
+  @code{\"motion\"}, @code{\"up\"} or @code{\"proximity\"} signal handlers.
   @see-class{gtk:gesture-stylus}"
   (gesture (g:object gesture-stylus)))
 

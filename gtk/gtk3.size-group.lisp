@@ -80,12 +80,9 @@
 (setf (liber:alias-for-symbol 'size-group-mode)
       "GEnum"
       (liber:symbol-documentation 'size-group-mode)
- "@version{#2023-2-23}
-  @begin{short}
-    The mode of the size group determines the directions in which the size
-    group affects the requested sizes of its component widgets.
-  @end{short}
-  @begin{pre}
+ "@version{#2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkSizeGroupMode\" size-group-mode
   (:export t
    :type-initializer \"gtk_size_group_mode_get_type\")
@@ -93,13 +90,20 @@
   (:horizontal 1)
   (:vertical 2)
   (:both 3))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:none]{Group has no effect.}
-    @entry[:horizontal]{Group affects horizontal requisition.}
-    @entry[:vertical]{Group affects vertical requisition.}
-    @entry[:both]{Group affects both horizontal and vertical requisition.}
-  @end{table}
+    @end{pre}
+ @end{declaration}
+ @begin{values}
+    @begin[code]{table}
+      @entry[:none]{Group has no effect.}
+      @entry[:horizontal]{Group affects horizontal requisition.}
+      @entry[:vertical]{Group affects vertical requisition.}
+      @entry[:both]{Group affects both horizontal and vertical requisition.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    The mode of the size group determines the directions in which the size
+    group affects the requested sizes of its component widgets.
+  @end{short}
   @see-class{gtk:size-group}")
 
 ;;; ----------------------------------------------------------------------------

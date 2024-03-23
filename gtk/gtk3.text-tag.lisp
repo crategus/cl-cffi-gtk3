@@ -152,9 +152,9 @@
 (setf (liber:alias-for-symbol 'wrap-mode)
       "GEnum"
       (liber:symbol-documentation 'wrap-mode)
- "@version{2023-3-15}
-  @short{Describes a type of line wrapping.}
-  @begin{pre}
+ "@version{2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkWrapMode\" wrap-mode
   (:export tgtk.text-attribut
    :type-initializer \"gtk_wrap_mode_get_type\")
@@ -162,16 +162,20 @@
   (:char 1)
   (:word 2)
   (:word-char 3))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:none]{Do not wrap lines, just make the text area wider.}
-    @entry[:char]{Wrap text, breaking lines anywhere the cursor can appear
-      between characters, usually. If you want to be technical, between
-      graphemes, see the @fun{pango:log-attrs} function.}
-    @entry[:word]{Wrap text, breaking lines in between words.}
-    @entry[:word-char]{Wrap text, breaking lines in between words, or if that
-      is not enough, also between graphemes.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:none]{Do not wrap lines, just make the text area wider.}
+      @entry[:char]{Wrap text, breaking lines anywhere the cursor can appear
+        between characters, usually. If you want to be technical, between
+        graphemes, see the @fun{pango:log-attrs} function.}
+      @entry[:word]{Wrap text, breaking lines in between words.}
+      @entry[:word-char]{Wrap text, breaking lines in between words, or if that
+        is not enough, also between graphemes.}
+    @end{table}
+  @end{values}
+  @short{Describes a type of line wrapping.}
   @see-class{gtk:text-tag}
   @see-class{gtk:text-view}
   @see-function{pango:log-attrs}")

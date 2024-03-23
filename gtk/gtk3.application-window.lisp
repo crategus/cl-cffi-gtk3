@@ -87,7 +87,7 @@
 
 #+liber-documentation
 (setf (documentation 'application-window 'type)
- "@version{2023-12-24}
+ "@version{2024-3-20}
   @begin{short}
     The @class{gtk:application-window} class is a @class{gtk:window} subclass
     that offers some extra functionality for better integration with
@@ -127,28 +127,6 @@
   @slot[gtk:application-window]{show-menubar} property. If the desktop
   environment does not display the application menu, then it will automatically
   be included in the menubar.
-
-  @b{Example:} An application window with a menubar
-  @begin{pre}
-;; Intitialize the menubar
-(let ((builder (make-instance 'gtk:builder)))
-  ;; Read the menus from a string
-  (gtk:builder-add-from-string
-      builder
-      (format nil
-              \"<interface> ~
-                  <menu id='menubar'> ~
-                    <submenu label='_Edit'> ~
-                      <item label='_Copy' action='win.copy'/> ~
-                      <item label='_Paste' action='win.paste'/> ~
-                    </submenu> ~
-                  </menu> ~
-                </interface>\"))
-  ;; Set the menubar
-  (setf (gtk:application-menubar application)
-        (gtk:builder-object builder \"menubar\"))
-  ... )
-  @end{pre}
 
   @subheading{Handling fallback yourself}
   The XML format understood by the @class{gtk:builder} class for a
@@ -195,6 +173,29 @@
     @item{@code{label}: a user visible string to display}
     @item{@code{icon}: icon name to display}
   @end{itemize}
+  @begin{examples}
+    An application window with a menubar.
+    @begin{pre}
+;; Intitialize the menubar
+(let ((builder (make-instance 'gtk:builder)))
+  ;; Read the menus from a string
+  (gtk:builder-add-from-string
+      builder
+      (format nil
+              \"<interface> ~
+                  <menu id='menubar'> ~
+                    <submenu label='_Edit'> ~
+                      <item label='_Copy' action='win.copy'/> ~
+                      <item label='_Paste' action='win.paste'/> ~
+                    </submenu> ~
+                  </menu> ~
+                </interface>\"))
+  ;; Set the menubar
+  (setf (gtk:application-menubar application)
+        (gtk:builder-object builder \"menubar\"))
+  ... )
+    @end{pre}
+  @end{examples}
   @see-constructor{gtk:application-window-new}
   @see-slot{gtk:application-window-show-menubar}
   @see-class{gtk:window}
@@ -297,18 +298,18 @@
 (cffi:defcfun ("gtk_application_window_get_help_overlay"
                application-window-help-overlay) (g:object shortcuts-window)
  #+liber-documentation
- "@version{2024-3-15}
+ "@version{2024-3-20}
   @syntax{(gtk:application-window-help-overlay window) => overlay}
   @syntax{(setf (gtk:application-window-help-overlay window) overlay)}
   @argument[window]{a @class{gtk:application-window} widget}
   @argument[overlay]{a @class{gtk:shortcuts-window} widget}
   @begin{short}
-    Accessor of the shortcuts window associated with the application window.
+    The @fun{gtk:application-window-help-overlay} function gets the shortcuts
+    window associated with the application window.
   @end{short}
-  The @fun{gtk:application-window-help-overlay} function gets the shortcuts
-  window. The @setf{gtk:applicaton-window-help-overlay} function associates a
-  shortcuts window with the application window, and sets up an action with the
-  name @code{\"win.show-help-overlay\"} to present it.
+  The @setf{gtk:applicaton-window-help-overlay} function associates a shortcuts
+  window with the application window, and sets up an action with the name
+  @code{\"win.show-help-overlay\"} to present it.
   @see-class{gtk:application-window}
   @see-class{gtk:shortcuts-window}"
   (window (g:object application-window)))

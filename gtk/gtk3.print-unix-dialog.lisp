@@ -108,14 +108,10 @@
 (setf (liber:alias-for-symbol 'print-capabilities)
       "GFlags"
       (liber:symbol-documentation 'print-capabilities)
- "@version{#2023-2-8}
-  @begin{short}
-    An enumeration for specifying which features the print dialog should offer.
-  @end{short}
-  If neither @code{:generate-pdf} nor @code{:generate-ps} is specified, GTK
-  assumes that all formats are supported.
-  @begin{pre}
-(gobject:define-g-enum \"GtkPrintCapabilities\" print-capabilities
+ "@version{#2024-3-21}
+  @begin{declaration}
+    @begin{pre}
+(gobject:define-g-flags \"GtkPrintCapabilities\" print-capabilities
   (:export t
    :type-initializer \"gtk_print_capabilities_get_type\")
   (:page-set         #.(ash 1 0))
@@ -128,23 +124,31 @@
   (:preview          #.(ash 1 7))
   (:number-up        #.(ash 1 8))
   (:number-up-layout #.(ash 1 9)))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:page-set]{Print dialog will offer printing even/odd pages.}
-    @entry[:copies]{Print dialog will allow to print multiple copies.}
-    @entry[:collate]{Print dialog will allow to collate multiple copies.}
-    @entry[:reverse]{Print dialog will allow to print pages in reverse order.}
-    @entry[:scale]{Print dialog will allow to scale the output.}
-    @entry[:generate-pdf]{The program will send the document to the printer in
-      PDF format.}
-    @entry[:generate-ps]{The program will send the document to the printer in
-      Postscript format.}
-    @entry[:preview]{Print dialog will offer a preview.}
-    @entry[:number-up]{Print dialog will offer printing multiple pages per
-      sheet.}
-    @entry[:up-layout]{Print dialog will allow to rearrange pages when printing
-      multiple pages per sheet.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:page-set]{Print dialog will offer printing even/odd pages.}
+      @entry[:copies]{Print dialog will allow to print multiple copies.}
+      @entry[:collate]{Print dialog will allow to collate multiple copies.}
+      @entry[:reverse]{Print dialog will allow to print pages in reverse order.}
+      @entry[:scale]{Print dialog will allow to scale the output.}
+      @entry[:generate-pdf]{The program will send the document to the printer
+        in PDF format.}
+      @entry[:generate-ps]{The program will send the document to the printer in
+        Postscript format.}
+      @entry[:preview]{Print dialog will offer a preview.}
+      @entry[:number-up]{Print dialog will offer printing multiple pages per
+        sheet.}
+      @entry[:up-layout]{Print dialog will allow to rearrange pages when
+        printing multiple pages per sheet.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    An enumeration for specifying which features the print dialog should offer.
+  @end{short}
+  If neither @code{:generate-pdf} nor @code{:generate-ps} is specified, GTK
+  assumes that all formats are supported.
   @see-class{gtk:print-unix-dialog}")
 
 ;;; ----------------------------------------------------------------------------

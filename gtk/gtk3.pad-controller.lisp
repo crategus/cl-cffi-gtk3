@@ -72,23 +72,27 @@
 (setf (liber:alias-for-symbol 'pad-action-type)
       "GEnum"
       (liber:symbol-documentation 'pad-action-type)
- "@version{2023-3-11}
-  @begin{short}
-    The type of a pad action.
-  @end{short}
-  @begin{pre}
+ "@version{2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkPadActionType\" pad-action-type
   (:export t
    :type-initializer \"gtk_pad_action_type_get_type\")
   :button
   :ring
   :strip)
-  @end{pre}
-  @begin[code]{table}
-    @entry[:button]{Action is triggered by a pad button.}
-    @entry[:ring]{Action is triggered by a pad ring.}
-    @entry[:strip]{Action is triggered by a pad strip.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:button]{Action is triggered by a pad button.}
+      @entry[:ring]{Action is triggered by a pad ring.}
+      @entry[:strip]{Action is triggered by a pad strip.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    The type of a pad action.
+  @end{short}
   @see-class{gtk:pad-controller}")
 
 ;;; ----------------------------------------------------------------------------

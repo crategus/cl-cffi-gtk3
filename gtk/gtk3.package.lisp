@@ -1990,12 +1990,12 @@ setup_tree (void)
       @about-class{tree-selection}
       @about-generic{tree-selection-mode}
       @about-symbol{tree-selection-func}
-      @about-symbol{tree-selection-foreach-func}
       @about-function{tree-selection-set-select-function}
       @about-function{tree-selection-get-select-function}
       @about-function{tree-selection-user-data}
       @about-function{tree-selection-tree-view}
       @about-function{tree-selection-selected}
+      @about-symbol{tree-selection-foreach-func}
       @about-function{tree-selection-selected-foreach}
       @about-function{tree-selection-selected-rows}
       @about-function{tree-selection-count-selected-rows}

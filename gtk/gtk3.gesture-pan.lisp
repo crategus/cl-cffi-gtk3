@@ -78,11 +78,9 @@
 (setf (liber:alias-for-symbol 'pan-direction)
       "GEnum"
       (liber:symbol-documentation 'pan-direction)
- "@version{#2023-1-21}
-  @begin{short}
-    Describes the panning direction of a @class{gtk:gesture-pan} object.
-  @end{short}
-  @begin{pre}
+ "@version{#2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkPanDirection\" pan-direction
   (:export t
    :type-initializer \"gtk_pan_direction_get_type\")
@@ -90,13 +88,19 @@
   :right
   :up
   :down)
-  @end{pre}
-  @begin[code]{table}
-    @entry[:left]{Panned towards the left.}
-    @entry[:right]{Panned towards the right.}
-    @entry[:up]{Panned upwards.}
-    @entry[:down]{Panned downwards.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:left]{Panned towards the left.}
+      @entry[:right]{Panned towards the right.}
+      @entry[:up]{Panned upwards.}
+      @entry[:down]{Panned downwards.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Describes the panning direction of a @class{gtk:gesture-pan} object.
+  @end{short}
   @see-class{gtk:gesture-pan}")
 
 ;;; ----------------------------------------------------------------------------
@@ -128,9 +132,9 @@
   will attempt to determine as early as possible whether the sequence is moving
   in the expected direction, and denying the sequence if this does not happen.
 
-  Once a panning gesture along the expected axis is recognized, the \"pan\"
-  signal will be emitted as input events are received, containing the offset in
-  the given axis.
+  Once a panning gesture along the expected axis is recognized, the
+  @code{\"pan\"} signal will be emitted as input events are received, containing
+  the offset in the given axis.
   @begin[Signal Details]{dictionary}
     @subheading{The \"pan\" signal}
     @begin{pre}

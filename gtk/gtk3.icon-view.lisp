@@ -176,9 +176,9 @@
 (setf (liber:alias-for-symbol 'icon-view-drop-position)
       "GEnum"
       (liber:symbol-documentation 'icon-view-drop-position)
- "@version{#2023-3-10}
-  @short{An enumeration for determining where a dropped item goes.}
-  @begin{pre}
+ "@version{#2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkIconViewDropPosition\" icon-view-drop-position
   (:export t
    :type-initializer \"gtk_icon_view_drop_position_get_type\")
@@ -188,15 +188,19 @@
   (:drop-right 3)
   (:drop-above 4)
   (:drop-below 5))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:no-drop]{No drop possible.}
-    @entry[:drop-into]{Dropped item replaces the item.}
-    @entry[:drop-left]{Droppped item is inserted to the left.}
-    @entry[:drop-right]{Dropped item is inserted to the right.}
-    @entry[:drop-above]{Dropped item is inserted above.}
-    @entry[:drop-below]{Dropped item is inserted below.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:no-drop]{No drop possible.}
+      @entry[:drop-into]{Dropped item replaces the item.}
+      @entry[:drop-left]{Droppped item is inserted to the left.}
+      @entry[:drop-right]{Dropped item is inserted to the right.}
+      @entry[:drop-above]{Dropped item is inserted above.}
+      @entry[:drop-below]{Dropped item is inserted below.}
+    @end{table}
+  @end{values}
+  @short{An enumeration for determining where a dropped item goes.}
   @see-class{gtk:icon-view}")
 
 ;;; ----------------------------------------------------------------------------
@@ -451,8 +455,8 @@ lambda (view)    :action
                                                'icon-view) t)
  "The @code{activate-on-single-click} property of type @code{:boolean}
   (Read / Write / Construct) @br{}
-  Specifies whether the \"item-activated\" signal will be emitted after a
-  single click. @br{}
+  Specifies whether the @code{\"item-activated\"} signal will be emitted after
+  a single click. @br{}
   Default value: @em{false}")
 
 #+liber-documentation
@@ -463,14 +467,14 @@ lambda (view)    :action
   @syntax{(gtk:icon-view-activate-on-single-click object) => setting}
   @syntax{(setf (gtk:icon-view-activate-on-single-click object) setting)}
   @argument[object]{a @class{gtk:icon-view} widget}
-  @argument[setting]{a boolean that is @em{true} to emit the \"item-activated\"
-    signal on a single click}
+  @argument[setting]{a boolean that is @em{true} to emit the
+    @code{\"item-activated\"} signal on a single click}
   @begin{short}
     Accessor of the @slot[gtk:icon-view]{activate-on-single-click} slot of the
     @class{gtk:icon-view} class.
   @end{short}
-  Causes the \"item-activated\" signal to be emitted on a single click instead
-  of a double click.
+  Causes the @code{\"item-activated\"} signal to be emitted on a single click
+  instead of a double click.
   @see-class{gtk:icon-view}")
 
 ;;; --- gtk:icon-view-cell-area ------------------------------------------------
@@ -793,10 +797,10 @@ lambda (view)    :action
   Both @class{gtk:tree-store} and @class{gtk:list-store} objects support these.
   If @arg{reorderable} is @em{true}, then the user can reorder the model by
   dragging and dropping rows. The developer can listen to these changes by
-  connecting to the model's \"row-inserted\" and \"row-deleted\" signals. The
-  reordering is implemented by setting up the icon view as a drag source and
-  destination. Therefore, drag and drop can not be used in a reorderable view
-  for any other purpose.
+  connecting to the model's @code{\"row-inserted\"} and @code{\"row-deleted\"}
+  signals. The reordering is implemented by setting up the icon view as a drag
+  source and destination. Therefore, drag and drop can not be used in a
+  reorderable view for any other purpose.
 
   This function does not give you any degree of control over the order - any
   reordering is allowed. If more control is needed, you should probably handle
@@ -954,8 +958,8 @@ lambda (view)    :action
   feature.
 
   When enabled, the @slot[gtk:widget]{has-tooltip} property will be set to
-  @em{true} and the icon view will connect a \"query-tooltip\" signal handler.
-  Note that the signal handler sets the text with the
+  @em{true} and the icon view will connect a @code{\"query-tooltip\"} signal
+  handler. Note that the signal handler sets the text with the
   @fun{gtk:tooltip-set-markup} function, so &, <, etc have to be escaped in the
   text.
   @see-class{gtk:icon-view}
@@ -1607,8 +1611,8 @@ lambda (view path)
     @arg{iter} -- a @class{gtk:tree-iter} iterator or @code{nil}
   @end{return}
   @begin{short}
-    This function is supposed to be used in a \"query-tooltip\" signal handler
-    for a @class{gtk:icon-view} widget.
+    This function is supposed to be used in a @code{\"query-tooltip\"} signal
+    handler for a @class{gtk:icon-view} widget.
   @end{short}
   The @arg{x}, @arg{y} and @arg{tip} values which are received in the signal
   handler, should be passed to this function without modification.

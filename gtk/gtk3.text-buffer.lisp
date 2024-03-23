@@ -162,7 +162,24 @@
 (setf (liber:alias-for-symbol 'text-buffer-target-info)
       "GEnum"
       (liber:symbol-documentation 'text-buffer-target-info)
- "@version{#2023-3-7}
+ "@version{#2024-3-22}
+  @begin{declaration}
+    @begin{pre}
+(gobject:define-g-enum \"GtkTextBufferTargetInfo\" gtk:text-buffer-target-info
+  (:export t
+   :type-initializer \"gtk_text_buffer_target_info_get_type\")
+  (:buffer-contents -1)
+  (:rich-text -2)
+  (:text -3))
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:buffer-contents]{Buffer contents.}
+      @entry[:rich-text]{Rich text.}
+      @entry[:text]{Text.}
+    @end{table}
+  @end{values}
   @begin{short}
     These values are used as \"info\" for the targets contained in the lists
     returned by the @fun{gtk:text-buffer-copy-target-list} and
@@ -171,19 +188,6 @@
 
   The values counts down from -1 to avoid clashes with application added drag
   destinations which usually start at 0.
-  @begin{pre}
-(gobject:define-g-enum \"GtkTextBufferTargetInfo\" gtk:text-buffer-target-info
-  (:export t
-   :type-initializer \"gtk_text_buffer_target_info_get_type\")
-  (:buffer-contents -1)
-  (:rich-text -2)
-  (:text -3))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:buffer-contents]{Buffer contents.}
-    @entry[:rich-text]{Rich text.}
-    @entry[:text]{Text.}
-  @end{table}
   @see-class{gtk:text-buffer}
   @see-function{gtk:text-buffer-copy-target-list}
   @see-function{gtk:text-buffer-paste-target-list}")

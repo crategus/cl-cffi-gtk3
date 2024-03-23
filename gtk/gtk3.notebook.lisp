@@ -157,22 +157,26 @@
 (setf (liber:alias-for-symbol 'notebook-tab)
       "GEnum"
       (liber:symbol-documentation 'notebook-tab)
- "@version{#2023-3-21}
-  @begin{short}
-    The values of this enumeration are used as arguments of the \"focus-tab\"
-    signal.
-  @end{short}
-  @begin{pre}
+ "@version{#2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkNotebookTab\" notebook-tab
   (:export t
    :type-initializer \"gtk_notebook_tab_get_type\")
   (:tab-first 0)
   (:tab-last 1))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:tab-first]{}
-    @entry[:tab-last]{}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:tab-first]{}
+      @entry[:tab-last]{}
+    @end{table}
+  @end{values}
+  @begin{short}
+    The values of this enumeration are used as arguments of the
+    @code{\"focus-tab\"} signal.
+  @end{short}
   @see-class{gtk:notebook}")
 
 ;;; ----------------------------------------------------------------------------

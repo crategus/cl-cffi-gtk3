@@ -87,12 +87,9 @@
 (setf (liber:alias-for-symbol 'pack-direction)
       "GEnum"
       (liber:symbol-documentation 'pack-direction)
- "@version{#2023-3-21}
-  @begin{short}
-    Determines how widgets should be packed insided menubars and menuitems
-    contained in menubars.
-  @end{short}
-  @begin{pre}
+ "@version{#2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkPackDirection\" pack-direction
   (:export t
    :type-initializer \"gtk_pack_direction_get_type\")
@@ -100,13 +97,20 @@
   (:rtl 1)
   (:ttb 2)
   (:btt 3))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:ltr]{Widgets are packed left-to-right.}
-    @entry[:rtl]{Widgets are packed right-to-left.}
-    @entry[:ttb]{Widgets are packed top-to-bottom.}
-    @entry[:btt]{Widgets are packed bottom-to-top.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:ltr]{Widgets are packed left-to-right.}
+      @entry[:rtl]{Widgets are packed right-to-left.}
+      @entry[:ttb]{Widgets are packed top-to-bottom.}
+      @entry[:btt]{Widgets are packed bottom-to-top.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Determines how widgets should be packed insided menubars and menuitems
+    contained in menubars.
+  @end{short}
   @see-class{gtk:menu-bar}")
 
 ;;; ----------------------------------------------------------------------------

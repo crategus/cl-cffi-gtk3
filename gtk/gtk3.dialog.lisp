@@ -600,7 +600,7 @@ lambda (dialog response)    :run-last
   @code{:delete-event} response ID. Also, during the execution of the
   @fun{gtk:dialog-run} function the dialog will be modal. You can force the
   @fun{gtk:dialog-run} function to return at any time by calling the
-  @fun{gtk:dialog-response} function to emit the \"response\" signal.
+  @fun{gtk:dialog-response} function to emit the @code{\"response\"} signal.
   Destroying the dialog during the execution of the @fun{gtk:dialog-run}
   function is a very bad idea, because your post-run code will not know whether
   the dialog was destroyed or not.

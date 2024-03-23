@@ -105,26 +105,30 @@
 (setf (liber:alias-for-symbol 'spin-button-update-policy)
       "GEnum"
       (liber:symbol-documentation 'spin-button-update-policy)
- "@version{#2023-3-12}
-  @begin{short}
-    The spin button update policy determines whether the spin button displays
-    values even if they are outside the bounds of its adjustment. See the
-    @fun{gtk:spin-button-update-policy} function.
-  @end{short}
-  @begin{pre}
+ "@version{#2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkSpinButtonUpdatePolicy\" spin-button-update-policy
   (:export t
    :type-initializer \"gtk_spin_button_update_policy_get_type\")
   (:always 0)
   (:if-valid 1))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:always]{When refreshing the spin button, the value is always
-      displayed}
-    @entry[:if-valid]{When refreshing the spin button, the value is only
-      displayed if it is valid within the bounds of the spin button's
-      adjustment.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:always]{When refreshing the spin button, the value is always
+        displayed}
+      @entry[:if-valid]{When refreshing the spin button, the value is only
+        displayed if it is valid within the bounds of the spin button's
+        adjustment.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    The spin button update policy determines whether the spin button displays
+    values even if they are outside the bounds of its adjustment. See the
+    @fun{gtk:spin-button-update-policy} function.
+  @end{short}
   @see-class{gtk:spin-button}
   @see-function{gtk:spin-button-update-policy}")
 
@@ -147,12 +151,9 @@
 (setf (liber:alias-for-symbol 'spin-type)
       "GEnum"
       (liber:symbol-documentation 'spin-type)
- "@version{#2023-3-12}
-  @begin{short}
-    The values of the @symbol{gtk:spin-type} enumeration are used to specify
-    the change to make in the @fun{gtk:spin-button-spin} function.
-  @end{short}
-  @begin{pre}
+ "@version{#2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkSpinType\" spin-type
   (:export t
    :type-initializer \"gtk_spin_type_get_type\")
@@ -163,16 +164,23 @@
   (:home 4)
   (:end 5)
   (:user-defined 6))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:step-forward]{Increment by the adjustments step increment.}
-    @entry[:step-backward]{Decrement by the adjustments step increment.}
-    @entry[:page-forward]{Increment by the adjustments page increment.}
-    @entry[:page-backward]{Decrement by the adjustments page increment.}
-    @entry[:home]{Go to the adjustments lower bound.}
-    @entry[:end]{Go to the adjustments upper bound.}
-    @entry[:user-defined]{Change by a specified amount.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:step-forward]{Increment by the adjustments step increment.}
+      @entry[:step-backward]{Decrement by the adjustments step increment.}
+      @entry[:page-forward]{Increment by the adjustments page increment.}
+      @entry[:page-backward]{Decrement by the adjustments page increment.}
+      @entry[:home]{Go to the adjustments lower bound.}
+      @entry[:end]{Go to the adjustments upper bound.}
+      @entry[:user-defined]{Change by a specified amount.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    The values of the @symbol{gtk:spin-type} enumeration are used to specify
+    the change to make in the @fun{gtk:spin-button-spin} function.
+  @end{short}
   @see-class{gtk:spin-button}
   @see-function{gtk:spin-button-spin}")
 

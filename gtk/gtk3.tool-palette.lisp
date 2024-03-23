@@ -104,21 +104,25 @@
 (setf (liber:alias-for-symbol 'tool-palette-drag-targets)
       "GFlags"
       (liber:symbol-documentation 'tool-palette-drag-targets)
- "@version{#2021-3-14}
-  @begin{short}
-    Flags used to specify the supported drag targets.
-  @end{short}
-  @begin{pre}
+ "@version{#2024-3-21}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-flags \"GtkToolPaletteDragTargets\" tool-palette-drag-targets
   (:export t
    :type-initializer \"gtk_tool_palette_drag_targets_get_type\")
   (:items 1)
   (:groups 2))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:items]{Support drag of items.}
-    @entry[:groups]{Support drag of groups.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:items]{Support drag of items.}
+      @entry[:groups]{Support drag of groups.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Flags used to specify the supported drag targets.
+  @end{short}
   @see-class{gtk:tool-palette}")
 
 ;;; ----------------------------------------------------------------------------
@@ -176,7 +180,7 @@
   is to call the @fun{gtk:tool-palette-add-drag-dest} function with the desired
   drag source palette and the desired drag target widget. Then the
   @fun{gtk:tool-palette-drag-item} function can be used to get the dragged item
-  in the \"drag-data-received\" signal handler of the drag target.
+  in the @code{\"drag-data-received\"} signal handler of the drag target.
   @begin{pre}
 static void
 passive_canvas_drag_data_received (GtkWidget        *widget,

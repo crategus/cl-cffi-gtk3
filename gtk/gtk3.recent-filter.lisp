@@ -83,12 +83,9 @@
 (setf (liber:alias-for-symbol 'recent-filter-flags)
       "GFlags"
       (liber:symbol-documentation 'recent-filter-flags)
- "@version{#2023-3-24}
-  @begin{short}
-    These flags indicate what parts of a @symbol{gtk:recent-filter-info}
-    structure are filled or need to be filled.
-  @end{short}
-  @begin{pre}
+ "@version{#2024-3-21}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-flags \"GtkRecentFilterFlags\" recent-filter-flags
   (:export t
    :type-initializer \"gtk_recent_filter_flags_get_type\")
@@ -98,17 +95,25 @@
   (:application 8)
   (:group 16)
   (:age 32))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:uri]{The URI of the file being tested.}
-    @entry[:display-name]{The string that will be used to display the file in
-      the recent chooser.}
-    @entry[:mime-type]{The MIME type of the file.}
-    @entry[:application]{The list of applications that have registered the
-      file.}
-    @entry[:group]{The groups to which the file belongs to.}
-    @entry[:age]{The number of days elapsed since the file has been registered,}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:uri]{The URI of the file being tested.}
+      @entry[:display-name]{The string that will be used to display the file in
+        the recent chooser.}
+      @entry[:mime-type]{The MIME type of the file.}
+      @entry[:application]{The list of applications that have registered the
+        file.}
+      @entry[:group]{The groups to which the file belongs to.}
+      @entry[:age]{The number of days elapsed since the file has been
+        registered,}
+    @end{table}
+  @end{values}
+  @begin{short}
+    These flags indicate what parts of a @symbol{gtk:recent-filter-info}
+    structure are filled or need to be filled.
+  @end{short}
   @see-symbol{gtk:recent-filter-info}")
 
 ;;; ----------------------------------------------------------------------------

@@ -132,7 +132,7 @@
   more information about these groups of applications.
 
   To keep track of the selected application, use the \"application-selected\"
-  and \"application-activated\" signals.
+  and @code{\"application-activated\"} signals.
   @begin[CSS nodes]{dictionary}
     The @class{gtk:app-chooser-widget} implementation has a single CSS node with
     name @code{appchooser}.

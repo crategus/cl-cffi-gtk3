@@ -97,12 +97,9 @@
 (setf (liber:alias-for-symbol 'dest-defaults)
       "GFlags"
       (liber:symbol-documentation 'dest-defaults)
- "@version{#2023-3-17}
-  @begin{short}
-    The @symbol{gtk:dest-defaults} flags specifies the various types of action
-    that will be taken on behalf of the user for a drag destination site.
-  @end{short}
-  @begin{pre}
+ "@version{#2024-3-21}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-flags \"GtkDestDefaults\" dest-defaults
   (:export t
    :type-initializer \"gtk_dest_defaults_get_type\")
@@ -110,24 +107,31 @@
   (:highlight 2)
   (:drop 4)
   (:all 7))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:motion]{If set for a widget, GTK, during a drag over this widget
-      will check if the drag matches the list of possible targets and actions
-      of the widget. GTK will then call the @fun{gdk:drag-status} function as
-      appropriate.}
-    @entry[:highlight]{If set for a widget, GTK will draw a highlight on the
-      widget as long as a drag is over this widget and the widget drag format
-      and action are acceptable.}
-    @entry[:drop]{If set for a widget, when a drop occurs, GTK will will check
-      if the drag matches the list of possible targets and actions of the
-      widget. If so, GTK will call the @fun{gtk:drag-data} function on behalf
-      of the widget. Whether or not the drop is successful, GTK will call the
-      @fun{gtk:drag-finish} function. If the action was a move, then if the
-      drag was successful @em{true} will be passed for the delete parameter to
-      the @fun{gtk:drag-finish} function.}
-    @entry[:all]{If set, specifies that all default actions should be taken.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:motion]{If set for a widget, GTK, during a drag over this widget
+        will check if the drag matches the list of possible targets and actions
+        of the widget. GTK will then call the @fun{gdk:drag-status} function as
+        appropriate.}
+      @entry[:highlight]{If set for a widget, GTK will draw a highlight on the
+        widget as long as a drag is over this widget and the widget drag format
+        and action are acceptable.}
+      @entry[:drop]{If set for a widget, when a drop occurs, GTK will will check
+        if the drag matches the list of possible targets and actions of the
+        widget. If so, GTK will call the @fun{gtk:drag-data} function on behalf
+        of the widget. Whether or not the drop is successful, GTK will call the
+        @fun{gtk:drag-finish} function. If the action was a move, then if the
+        drag was successful @em{true} will be passed for the delete parameter to
+        the @fun{gtk:drag-finish} function.}
+      @entry[:all]{If set, specifies that all default actions should be taken.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    The @symbol{gtk:dest-defaults} flags specifies the various types of action
+    that will be taken on behalf of the user for a drag destination site.
+  @end{short}
   @see-function{gdk:drag-status}
   @see-function{gtk:drag-data}
   @see-function{gtk:drag-finish}")
@@ -150,13 +154,9 @@
 (setf (liber:alias-for-symbol 'drag-result)
       "GEnum"
       (liber:symbol-documentation 'drag-result)
- "@version{#2023-3-17}
-  @begin{short}
-    Gives an indication why a drag operation failed.
-  @end{short}
-  The value can by obtained by connecting to the \"drag-failed\" signal of a
-  @class{gtk:widget} object.
-  @begin{pre}
+ "@version{#2024-3-21}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkDragResult\" drag-result
   (:export t
    :type-initializer \"gtk_drag_result_get_type\")
@@ -166,16 +166,24 @@
   (:timeout-expired 3)
   (:grab-broken 4)
   (:error 5))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:success]{The drag operation was successful.}
-    @entry[:no-target]{No suitable drag target.}
-    @entry[:user-cancelled]{The user cancelled the drag operation.}
-    @entry[:timeout-expired]{The drag operation timed out.}
-    @entry[:grab-broken]{The pointer or keyboard grab used for the drag
-      operation was broken.}
-    @entry[:error]{The drag operation failed due to some unspecified error.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:success]{The drag operation was successful.}
+      @entry[:no-target]{No suitable drag target.}
+      @entry[:user-cancelled]{The user cancelled the drag operation.}
+      @entry[:timeout-expired]{The drag operation timed out.}
+      @entry[:grab-broken]{The pointer or keyboard grab used for the drag
+        operation was broken.}
+      @entry[:error]{The drag operation failed due to some unspecified error.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Gives an indication why a drag operation failed.
+  @end{short}
+  The value can by obtained by connecting to the @code{\"drag-failed\"} signal
+  of a @class{gtk:widget} object.
   @see-class{gtk:widget}")
 
 ;;; ----------------------------------------------------------------------------
@@ -209,23 +217,23 @@
   similar to installing default handlers \"drag-motion\", \"drag-drop\", ...
   for the drag and drop signals of the widget. They all exist for
   convenience. When passing the @code{:all} value for instance it is sufficient
-  to connect to the \"drag-data-received\" signal of the widget to get
+  to connect to the @code{\"drag-data-received\"} signal of the widget to get
   primitive, but consistent drag and drop support.
 
   Things become more complicated when you try to preview the dragged data, as
-  described in the documentation for the \"drag-motion\" signal. The default
-  behaviors described by the @arg{flags} argument make some assumptions, that
-  can conflict with your own signal handlers. For instance the @code{:drop}
+  described in the documentation for the @code{\"drag-motion\"} signal. The
+  default behaviors described by the @arg{flags} argument make some assumptions,
+  that can conflict with your own signal handlers. For instance the @code{:drop}
   value causes invokations of the @fun{gdk:drag-status} function in the drag
-  context of the \"drag-motion\" signal, and invokations of the
-  @fun{gtk:drag-finish} function in the \"drag-data-received\" handler.
-  Especially the later is dramatic, when your own \"drag-motion\" handler calls
-  the @fun{gtk:drag-data} function to inspect the dragged data.
+  context of the @code{\"drag-motion\"} signal, and invokations of the
+  @fun{gtk:drag-finish} function in the @code{\"drag-data-received\"} handler.
+  Especially the later is dramatic, when your own @code{\"drag-motion\"} handler
+  calls the @fun{gtk:drag-data} function to inspect the dragged data.
 
   There is no way to set a default action here, you can use the the
-  \"drag-motion\" callback function for that. Here is an example which selects
-  the action to use depending on whether the @kbd{Control} key is pressed or
-  not:
+  @code{\"drag-motion\"} callback function for that. Here is an example which
+  selects the action to use depending on whether the @kbd{Control} key is
+  pressed or not:
   @begin{pre}
 (defun drag-motion (widget context x y time)
   (declare (ignore x y))
@@ -343,8 +351,8 @@
   The target list should usually be the return value from the
   @fun{gtk:drag-dest-target-list} function, but some widgets may have different
   valid targets for different parts of the widget. In that case, they will have
-  to implement a \"drag-motion\" handler that passes the correct target list to
-  this function.
+  to implement a @code{\"drag-motion\"} handler that passes the correct target
+  list to this function.
   @see-class{gtk:widget}
   @see-class{gdk:drag-context}
   @see-class{gtk:target-list}
@@ -476,7 +484,7 @@
   @argument[motion]{a boolean whether to accept all targets}
   @begin{short}
     The @fun{gtk:drag-dest-track-motion} function returns whether the widget
-    has been configured to always emit \"drag-motion\" signals.
+    has been configured to always emit @code{\"drag-motion\"} signals.
   @end{short}
   The @setf{gtk:drag-dest-track-motion} function tells the widget to emit
   @code{\"drag-motion\"} and @code{\"drag-leave\"} events regardless of the
@@ -500,8 +508,8 @@
   @argument[success]{a boolean indicating whether the drop was successful}
   @argument[delete]{a boolean indicating whether the source should delete the
     original data, this should be @em{true} for a move}
-  @argument[time]{an unsigned integer with the timestamp from the \"drag-drop\"
-    signal}
+  @argument[time]{an unsigned integer with the timestamp from the
+    @code{\"drag-drop\"} signal}
   @begin{short}
     Informs the drag source that the drop is finished, and that the data of the
     drag will no longer be required.
@@ -522,22 +530,22 @@
  #+liber-documentation
  "@version{#2023-3-17}
   @argument[widget]{a @class{gtk:widget} object that will receive the
-   \"drag-data-received\" signal}
+   @code{\"drag-data-received\"} signal}
   @argument[context]{a @class{gdk:drag-context} object}
   @argument[target]{an atom as a string with the target, form of the data, to
     retrieve}
   @argument[time]{an unsigned integer with the timestamp for retrieving the
-    data, this will generally be the time received in a \"drag-motion\" or
-    \"drag-drop\" signal}
+    data, this will generally be the time received in a @code{\"drag-motion\"}
+    or @code{\"drag-drop\"} signal}
   @begin{short}
     Gets the data associated with a drag.
   @end{short}
   When the data is received or the retrieval fails, GTK will emit a
-  \"drag-data-received\" signal. Failure of the retrieval is indicated by the
-  length field of the @arg{selection} signal parameter being negative. However,
-  when the @fun{gtk:drag-data} function is called implicitely because the
-  @code{:drop} flag was set, then the widget will not receive notification of
-  failed drops.
+  @code{\"drag-data-received\"} signal. Failure of the retrieval is indicated
+  by the length field of the @arg{selection} signal parameter being negative.
+  However, when the @fun{gtk:drag-data} function is called implicitely because
+  the @code{:drop} flag was set, then the widget will not receive notification
+  of failed drops.
   @see-class{gtk:widget}
   @see-class{gdk:drag-context}
   @see-symbol{gdk:atom}"
@@ -579,9 +587,9 @@
   @begin{short}
     Draws a highlight around a widget.
   @end{short}
-  This will attach handlers to the \"draw\" handler, so the highlight will
-  continue to be displayed until the @fun{gtk:drag-unhighlight} function is
-  called.
+  This will attach handlers to the @code{\"draw\"} handler, so the highlight
+  will continue to be displayed until the @fun{gtk:drag-unhighlight} function
+  is called.
   @see-class{gtk:widget}
   @see-function{gtk:drag-unhighlight}"
   (widget (g:object widget)))
@@ -640,14 +648,15 @@
   calling this function:
   @begin{enumerate}
     @begin{item}
-      During a \"button-press-event\" handler, if you want to start a drag
-      immediately when the user presses the mouse button. Pass the event that
-      you have in your \"button-press-event\" handler.
+      During a @code{\"button-press-event\"} handler, if you want to start a
+      drag immediately when the user presses the mouse button. Pass the event
+      that you have in your @code{\"button-press-event\"} handler.
     @end{item}
     @begin{item}
-      During a \"motion-notify-event\" handler, if you want to start a drag when
-      the mouse moves past a certain threshold distance after a button press.
-      Pass the event that you have in your \"motion-notify-event\" handler.
+      During a @code{\"motion-notify-event\"} handler, if you want to start a
+      drag when the mouse moves past a certain threshold distance after a button
+      press. Pass the event that you have in your @code{\"motion-notify-event\"}
+      handler.
     @end{item}
     @begin{item}
       During a timeout handler, if you want to start a drag after the mouse
@@ -718,14 +727,14 @@
   calling this function:
   @begin{enumerate}
     @begin{item}
-      During a \"button-press-event\" handler, if you want to start a drag
-      immediately when the user presses the mouse button. Pass the event that
-      you have in your \"button-press-event\" handler.
+      During a @code{\"button-press-event\"} handler, if you want to start a
+      drag immediately when the user presses the mouse button. Pass the event
+      that you have in your @code{\"button-press-event\"} handler.
     @end{item}
     @begin{item}
-      During a \"motion-notify-event\" handler, if you want to start a drag
-      when the mouse moves past a certain threshold distance after a button
-      press. Pass the event that you have in your \"motion-notify-event\"
+      During a @code{\"motion-notify-event\"} handler, if you want to start a
+      drag when the mouse moves past a certain threshold distance after a button
+      press. Pass the event that you have in your @code{\"motion-notify-event\"}
       handler.
     @end{item}
     @begin{item}
@@ -767,7 +776,7 @@
   If you want to be able to cancel a drag operation in this way, you need to
   keep a pointer to the drag context, either from an explicit call to the
   @fun{gtk:drag-begin-with-coordinates} function, or by connecting to the
-  \"drag-begin\" signal.
+  @code{\"drag-begin\"} signal.
 
   If the @arg{context} argument does not refer to an ongoing drag operation,
   this function does nothing.
@@ -796,7 +805,7 @@
     Changes the icon for a widget to a given widget.
   @end{short}
   GTK will not destroy the icon, so if you do not want it to persist, you
-  should connect to the \"drag-end\" signal and destroy it yourself.
+  should connect to the @code{\"drag-end\"} signal and destroy it yourself.
   @see-class{gdk:drag-context}
   @see-class{gtk:widget}"
   (context (g:object gdk:drag-context))

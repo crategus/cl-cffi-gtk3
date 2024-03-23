@@ -222,7 +222,7 @@ lambda (action)    :run-first
  "@version{#2023-3-28}
   @argument[action]{a @class{gtk:toggle-action} object}
   @begin{short}
-    Emits the \"toggled\" signal on the toggle action.
+    Emits the @code{\"toggled\"} signal on the toggle action.
   @end{short}
   @begin[Warning]{dictionary}
     The @fun{gtk:toggle-action-toggled} function has been deprecated since

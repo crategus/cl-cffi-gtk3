@@ -106,25 +106,29 @@
 (setf (liber:alias-for-symbol 'attach-options)
       "GFlags"
       (liber:symbol-documentation 'attach-options)
- "@version{2023-12-28}
-  @begin{short}
-    Denotes the expansion properties that a widget will have in a
-    @class{gtk:table} widget when it or its parent is resized.
-  @end{short}
-  @begin{pre}
+ "@version{2024-3-21}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-flags \"GtkAttachOptions\" attach-options
   (:export t
    :type-initializer \"gtk_attach_options_get_type\")
   (:expand #.(ash 1 0))
   (:shrink #.(ash 1 1))
   (:fill #.(ash 1 2)))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:expand]{The widget should expand to take up any extra space in its
-      container that has been allocated.}
-    @entry[:shrink]{The widget should shrink as and when possible.}
-    @entry[:fill]{The widget should fill the space allocated to it.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:expand]{The widget should expand to take up any extra space in
+        its container that has been allocated.}
+      @entry[:shrink]{The widget should shrink as and when possible.}
+      @entry[:fill]{The widget should fill the space allocated to it.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Denotes the expansion properties that a widget will have in a
+    @class{gtk:table} widget when it or its parent is resized.
+  @end{short}
   @see-class{gtk:table}")
 
 ;;; ----------------------------------------------------------------------------

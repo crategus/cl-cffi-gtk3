@@ -75,7 +75,24 @@
 (setf (liber:alias-for-symbol 'baseline-position)
       "GEnum"
       (liber:symbol-documentation 'baseline-position)
- "@version{2023-2-15}
+ "@version{2024-3-21}
+  @begin{declaration}
+    @begin{pre}
+(gobject:define-g-enum \"GtkBaselinePosition\" baseline-position
+  (:export t
+   :type-initializer \"gtk_baseline_position_get_type\")
+  (:top 0)
+  (:center 1)
+  (:bottom 2))
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:top]{Align the baseline at the top.}
+      @entry[:center]{Center the baseline.}
+      @entry[:bottom]{Align the baseline at the bottom.}
+    @end{table}
+  @end{values}
   @begin{short}
     Whenever a container has some form of natural row it may align children in
     that row along a common typographical baseline.
@@ -84,19 +101,6 @@
   height of the baseline-aligned children then it can use a
   @symbol{gtk:baseline-position} value to select where to put the baseline
   inside the extra available space.
-  @begin{pre}
-(gobject:define-g-enum \"GtkBaselinePosition\" baseline-position
-  (:export t
-   :type-initializer \"gtk_baseline_position_get_type\")
-  (:top 0)
-  (:center 1)
-  (:bottom 2))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:top]{Align the baseline at the top.}
-    @entry[:center]{Center the baseline.}
-    @entry[:bottom]{Align the baseline at the bottom.}
-  @end{table}
   @see-class{gtk:box}")
 
 ;;; ----------------------------------------------------------------------------
@@ -120,12 +124,8 @@
       "GEnum"
       (liber:symbol-documentation 'delete-type)
  "@version{2023-2-15}
-  @begin{short}
-    The values of this enumeration are passed as an argument to the
-    \"delete-from-cursor\" signal handler of the @class{gtk:entry} and
-    @class{gtk:text-view} widgets.
-  @end{short}
-  @begin{pre}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkDeleteType\" delete-type
   (:export t
    :type-initializer \"gtk_delete_type_get_type\")
@@ -137,22 +137,30 @@
   (:paragraph-ends 5)
   (:paragraphs 6)
   (:whitespace 7))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:chars]{Delete characters.}
-    @entry[:word-ends]{Delete only the portion of the word to the left/right
-      of cursor if we are in the middle of a word.}
-    @entry[:words]{Delete words.}
-    @entry[:display-lines]{Delete display-lines. Display-lines refers to the
-      visible lines, with respect to to the current line breaks. As opposed to
-      paragraphs, which are defined by line breaks in the input.}
-    @entry[:display-line-ends]{Delete only the portion of the display-line to
-      the left/right of cursor.}
-    @entry[:paragraph-ends]{Delete to the end of the paragraph. Like @kbd{C-k}
-      in Emacs (or its reverse).}
-    @entry[:paragraphs]{Delete entire line. Like @kbd{C-k} in pico.}
-    @entry[:whitespace]{Delete only whitespace. Like @kbd{M-} in Emacs.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:chars]{Delete characters.}
+      @entry[:word-ends]{Delete only the portion of the word to the left/right
+        of cursor if we are in the middle of a word.}
+      @entry[:words]{Delete words.}
+      @entry[:display-lines]{Delete display-lines. Display-lines refers to the
+        visible lines, with respect to to the current line breaks. As opposed
+        to paragraphs, which are defined by line breaks in the input.}
+      @entry[:display-line-ends]{Delete only the portion of the display-line to
+        the left/right of cursor.}
+      @entry[:paragraph-ends]{Delete to the end of the paragraph. Like @kbd{C-k}
+        in Emacs (or its reverse).}
+      @entry[:paragraphs]{Delete entire line. Like @kbd{C-k} in pico.}
+      @entry[:whitespace]{Delete only whitespace. Like @kbd{M-} in Emacs.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    The values of this enumeration are passed as an argument to the
+    @code{\"delete-from-cursor\"} signal handler of the @class{gtk:entry} and
+    @class{gtk:text-view} widgets.
+  @end{short}
   @see-class{gtk:entry}
   @see-class{gtk:text-view}")
 
@@ -175,8 +183,8 @@
       "GEnum"
       (liber:symbol-documentation 'direction-type)
  "@version{2023-2-15}
-  @short{Focus movement types.}
-  @begin{pre}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkDirectionType\" direction-type
   (:export t
    :type-initializer \"gtk_direction_type_get_type\")
@@ -186,15 +194,19 @@
   (:down 3)
   (:left 4)
   (:right 5))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:tab-forward]{Move forward.}
-    @entry[:tab-backward]{Move backward.}
-    @entry[:up]{Move up.}
-    @entry[:down]{Move down.}
-    @entry[:left]{Move left.}
-    @entry[:right]{Move right.}
-  @end{table}")
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:tab-forward]{Move forward.}
+      @entry[:tab-backward]{Move backward.}
+      @entry[:up]{Move up.}
+      @entry[:down]{Move down.}
+      @entry[:left]{Move left.}
+      @entry[:right]{Move right.}
+    @end{table}
+  @end{values}
+  @short{Focus movement types.}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; enum GtkJustification
@@ -212,11 +224,9 @@
 (setf (liber:alias-for-symbol 'justification)
       "GEnum"
       (liber:symbol-documentation 'justification)
- "@version{2023-2-15}
-  @begin{short}
-    Used for justifying the text inside a @class{gtk:label} widget.
-  @end{short}
-  @begin{pre}
+ "@version{2024-3-21}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkJustification\" justification
   (:export t
    :type-initializer \"gtk_justification_get_type\")
@@ -224,13 +234,19 @@
   (:right 1)
   (:center 2)
   (:fill 3))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:left]{The text is placed at the left edge of the label.}
-    @entry[:right]{The text is placed at the right edge of the label.}
-    @entry[:center]{The text is placed in the center of the label.}
-    @entry[:fill]{The text is placed is distributed across the label.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:left]{The text is placed at the left edge of the label.}
+      @entry[:right]{The text is placed at the right edge of the label.}
+      @entry[:center]{The text is placed in the center of the label.}
+      @entry[:fill]{The text is placed is distributed across the label.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Used for justifying the text inside a @class{gtk:label} widget.
+  @end{short}
   @see-class{gtk:label}")
 
 ;;; ----------------------------------------------------------------------------
@@ -255,12 +271,9 @@
 (setf (liber:alias-for-symbol 'movement-step)
       "GEnum"
       (liber:symbol-documentation 'movement-step)
- "@version{2023-3-6}
-  @begin{short}
-    The values of this enumeration are passed as an argument to the
-    \"move-cursor\" signal handler.
-  @end{short}
-  @begin{pre}
+ "@version{2024-3-21}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkMovementStep\" movement-step
   (:export t
    :type-initializer \"gtk_movement_step_get_type\")
@@ -274,19 +287,26 @@
   (:pages 7)
   (:buffer-ends 8)
   (:horizontal-pages 9))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:logical-positions]{Move forward or back by graphemes.}
-    @entry[:visual-positions]{Move left or right by graphemes.}
-    @entry[:words]{Move forward or back by words.}
-    @entry[:display-lines]{Move up or down lines (wrapped lines).}
-    @entry[:display-line-ends]{Move to either end of a line.}
-    @entry[:paragraphs]{Move up or down paragraphs (newline-ended lines).}
-    @entry[:paragraph-ends]{Move to either end of a paragraph.}
-    @entry[:pages]{Move by pages.}
-    @entry[:buffer-ends]{Move to ends of the buffer.}
-    @entry[:horizontal-pages]{Move horizontally by pages.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:logical-positions]{Move forward or back by graphemes.}
+      @entry[:visual-positions]{Move left or right by graphemes.}
+      @entry[:words]{Move forward or back by words.}
+      @entry[:display-lines]{Move up or down lines (wrapped lines).}
+      @entry[:display-line-ends]{Move to either end of a line.}
+      @entry[:paragraphs]{Move up or down paragraphs (newline-ended lines).}
+      @entry[:paragraph-ends]{Move to either end of a paragraph.}
+      @entry[:pages]{Move by pages.}
+      @entry[:buffer-ends]{Move to ends of the buffer.}
+      @entry[:horizontal-pages]{Move horizontally by pages.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    The values of this enumeration are passed as an argument to the
+    @code{\"move-cursor\"} signal handler.
+  @end{short}
   @see-class{gtk:entry}
   @see-class{gtk:tree-view}
   @see-class{gtk:list-box}
@@ -344,21 +364,25 @@
       "GEnum"
       (liber:symbol-documentation 'pack-type)
  "@version{2023-3-6}
-  @begin{short}
-    Represents the packing location of a @class{gtk:box} child widget.
-  @end{short}
-  See also the @class{gtk:button-box} widget.
-  @begin{pre}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkPackType\" pack-type
   (:export t
    :type-initializer \"gtk_pack_type_get_type\")
   (:start 0)
   (:end 1))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:start]{The child is packed into the start of the box.}
-    @entry[:end]{The child is packed into the end of the box.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:start]{The child is packed into the start of the box.}
+      @entry[:end]{The child is packed into the end of the box.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Represents the packing location of a @class{gtk:box} child widget.
+  @end{short}
+  See also the @class{gtk:button-box} widget.
   @see-class{gtk:box}
   @see-class{gtk:button-box}")
 
@@ -378,13 +402,9 @@
 (setf (liber:alias-for-symbol 'position-type)
       "GEnum"
       (liber:symbol-documentation 'position-type)
- "@version{2023-3-6}
-  @begin{short}
-    Describes which edge of a widget a certain feature is positioned at, e.g.
-    the tabs of a @class{gtk:notebook} widget or the label of a
-    @class{gtk:scale} widget.
-  @end{short}
-  @begin{pre}
+ "@version{2024-3-21}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkPositionType\" position-type
   (:export t
    :type-initializer \"gtk_position_type_get_type\")
@@ -392,13 +412,21 @@
   (:right 1)
   (:top 2)
   (:bottom 3))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:left]{The feature is at the left edge.}
-    @entry[:right]{The feature is at the right edge.}
-    @entry[:top]{The feature is at the top edge.}
-    @entry[:bottom]{The feature is at the bottom edge.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:left]{The feature is at the left edge.}
+      @entry[:right]{The feature is at the right edge.}
+      @entry[:top]{The feature is at the top edge.}
+      @entry[:bottom]{The feature is at the bottom edge.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Describes which edge of a widget a certain feature is positioned at, e.g.
+    the tabs of a @class{gtk:notebook} widget or the label of a
+    @class{gtk:scale} widget.
+  @end{short}
   @see-class{gtk:notebook}
   @see-class{gtk:scale}")
 
@@ -417,22 +445,26 @@
 (setf (liber:alias-for-symbol 'relief-style)
       "GEnum"
       (liber:symbol-documentation 'relief-style)
- "@version{2023-2-15}
-  @short{Indicated the relief to be drawn around a @class{gtk:button} widget.}
-  @begin{pre}
+ "@version{2024-3-21}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkReliefStyle\" relief-style
   (:export t
    :type-initializer \"gtk_relief_style_get_type\")
   (:normal 0)
   (:half 1)
   (:none 2))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:normal]{Draw a normal relief.}
-    @entry[:half]{Draw a half relief. Deprecated in 3.14, does the same as
-      @code{:normal}.}
-    @entry[:none]{Draw no relief.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:normal]{Draw a normal relief.}
+      @entry[:half]{Draw a half relief. Deprecated in 3.14, does the same as
+        @code{:normal}.}
+      @entry[:none]{Draw no relief.}
+    @end{table}
+  @end{values}
+  @short{Indicated the relief to be drawn around a @class{gtk:button} widget.}
   @see-class{gtk:button}")
 
 ;;; ----------------------------------------------------------------------------
@@ -456,9 +488,9 @@
 (setf (liber:alias-for-symbol 'scroll-step)
       "GEnum"
       (liber:symbol-documentation 'scroll-step)
- "@version{#2023-3-6}
-  @short{}
-  @begin{pre}
+ "@version{#2024-3-21}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkScrollStep\" scroll-step
   (:export t
    :type-initializer \"gtk_scroll_step_get_type\")
@@ -468,7 +500,9 @@
   (:horizontal-steps 3)
   (:horizontal-pages 4)
   (:horizontal-ends 5))
-  @end{pre}")
+    @end{pre}
+  @end{declaration}
+  @short{}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; enum GtkScrollType
@@ -498,13 +532,9 @@
 (setf (liber:alias-for-symbol 'scroll-type)
       "GEnum"
       (liber:symbol-documentation 'scroll-type)
- "@version{2023-3-6}
-  @begin{short}
-    The scrolling types of this enumeration are a parameter for signal
-    handlers in various widgets such as @class{gtk:spin-button},
-    @class{gtk:scrolled-window}, or @class{gtk:combo-box} widgets.
-  @end{short}
-  @begin{pre}
+ "@version{2024-3-21}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkScrollType\" scroll-type
   (:export t
    :type-initializer \"gtk_scroll_type_get_type\")
@@ -524,7 +554,33 @@
   (:page-right 13)
   (:start 14)
   (:end 15))
-  @end{pre}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:none]{No scrolling.}
+      @entry[:jump]{Jump to new location.}
+      @entry[:step-backward}{Step backward.}
+      @entry[:step-forward]{Step forward.}
+      @entry[:page-backward]{Page backward.}
+      @entry[:page-forward]{Page forward.}
+      @entry[:step-up]{Step up.}
+      @entry[:step-down]{Step down.}
+      @entry[:page-up]{Page up.}
+      @entry[:page-down]{Page down.}
+      @entry[:step-left]{Step to the left.}
+      @entry[:step-right]{Steop to the right.}
+      @entry[:page-left]{Page to the left.}
+      @entry[:page-right]{Page to the right.}
+      @entry[:start]{Scroll to start.}
+      @entry[:end]{Scroll to end.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    The scrolling types of this enumeration are a parameter for signal
+    handlers in various widgets such as @class{gtk:spin-button},
+    @class{gtk:scrolled-window}, or @class{gtk:combo-box} widgets.
+  @end{short}
   @see-class{gtk:spin-button}
   @see-class{gtk:scrolled-window}
   @see-class{gtk:combo-box}")
@@ -595,15 +651,9 @@
 (setf (liber:alias-for-symbol 'shadow-type)
       "GEnum"
       (liber:symbol-documentation 'shadow-type)
- "@version{2023-3-6}
-  @begin{short}
-    Used to change the appearance of an outline typically provided by a
-    @class{gtk:frame} widget.
-  @end{short}
-  Note that many themes do not differentiate the appearance of the various
-  shadow types: Either their is no visible shadow :none, or there is any other
-  value.
-  @begin{pre}
+ "@version{2024-3-21}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkShadowType\" shadow-type
   (:export t
    :type-initializer \"gtk_shadow_type_get_type\")
@@ -612,14 +662,24 @@
   (:out 2)
   (:etched-in 3)
   (:etched-out 4))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:none]{No outline.}
-    @entry[:in]{The outline is bevelled inwards.}
-    @entry[:out]{The outline is bevelled outwards like a button.}
-    @entry[:etched-in]{The outline has a sunken 3d appearance.}
-    @entry[:etched-out]{The outline has a raised 3d appearance.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:none]{No outline.}
+      @entry[:in]{The outline is bevelled inwards.}
+      @entry[:out]{The outline is bevelled outwards like a button.}
+      @entry[:etched-in]{The outline has a sunken 3d appearance.}
+      @entry[:etched-out]{The outline has a raised 3d appearance.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Used to change the appearance of an outline typically provided by a
+    @class{gtk:frame} widget.
+  @end{short}
+  Note that many themes do not differentiate the appearance of the various
+  shadow types: Either their is no visible shadow :none, or there is any other
+  value.
   @see-class{gtk:frame}")
 
 ;;; ----------------------------------------------------------------------------
@@ -648,11 +708,9 @@
 (setf (liber:alias-for-symbol 'state-flags)
       "GFlags"
       (liber:symbol-documentation 'state-flags)
- "@version{2023-3-13}
-  @short{Describes a widget state.}
-  Widget states are used to match the widget against CSS pseudo-classes. Note
-  that GTK extends the regular CSS classes and sometimes uses different names.
-  @begin{pre}
+ "@version{2024-3-21}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-flags \"GtkStateFlags\" state-flags
   (:export t
    :type-initializer \"gtk_state_flags_get_type\")
@@ -670,24 +728,30 @@
   (:visited      #.(ash 1 10))
   (:checked      #.(ash 1 11))
   (:drop-active  #.(ash 1 12)))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:normal]{State during normal operation.}
-    @entry[:active]{Widget is active.}
-    @entry[:prelight]{Widget has a mouse pointer over it.}
-    @entry[:selected]{Widget is selected.}
-    @entry[:insensitive]{Widget is insensitive.}
-    @entry[:inconsistent]{Widget is inconsistent.}
-    @entry[:focused]{Widget has the keyboard focus.}
-    @entry[:backdrop]{Widget is in a background toplevel window.}
-    @entry[:dir-ltr]{Widget is in left-to-right text direction.}
-    @entry[:dir-rtl]{Widget is in right-to-left text direction.}
-    @entry[:link]{Widget is a link.}
-    @entry[:visited]{The location the widget points to has already been
-      visited.}
-    @entry[:checked]{Widget is checked.}
-    @entry[:drop-active]{Widget is highlighted as a drop target for DND.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:normal]{State during normal operation.}
+      @entry[:active]{Widget is active.}
+      @entry[:prelight]{Widget has a mouse pointer over it.}
+      @entry[:selected]{Widget is selected.}
+      @entry[:insensitive]{Widget is insensitive.}
+      @entry[:inconsistent]{Widget is inconsistent.}
+      @entry[:focused]{Widget has the keyboard focus.}
+      @entry[:backdrop]{Widget is in a background toplevel window.}
+      @entry[:dir-ltr]{Widget is in left-to-right text direction.}
+      @entry[:dir-rtl]{Widget is in right-to-left text direction.}
+      @entry[:link]{Widget is a link.}
+      @entry[:visited]{The location the widget points to has already been
+        visited.}
+      @entry[:checked]{Widget is checked.}
+      @entry[:drop-active]{Widget is highlighted as a drop target for DND.}
+    @end{table}
+  @end{values}
+  @short{Describes a widget state.}
+  Widget states are used to match the widget against CSS pseudo-classes. Note
+  that GTK extends the regular CSS classes and sometimes uses different names.
   @see-class{gtk:widget}
   @see-class{gtk:style-context}")
 
@@ -707,14 +771,9 @@
 (setf (liber:alias-for-symbol 'toolbar-style)
       "GEnum"
       (liber:symbol-documentation 'toolbar-style)
- "@version{2023-3-6}
-  @begin{short}
-    Used to customize the appearance of a @class{gtk:toolbar} widget.
-  @end{short}
-  Note that setting the toolbar style overrides the preferences of the user for
-  the default toolbar style. Note that if the button has only a label set and
-  @code{:icons} is used, the label will be visible, and vice versa.
-  @begin{pre}
+ "@version{2024-3-21}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkToolbarStyle\" toolbar-style
   (:export t
    :type-initializer \"gtk_toolbar_style_get_type\")
@@ -722,14 +781,23 @@
   (:text 1)
   (:both 2)
   (:both-horiz 3))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:icons]{Buttons display only icons in the toolbar.}
-    @entry[:text]{Buttons display only text labels in the toolbar.}
-    @entry[:both]{Buttons display text and icons in the toolbar.}
-    @entry[:both-horiz]{Buttons display icons and text alongside each other,
-      rather than vertically stacked}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:icons]{Buttons display only icons in the toolbar.}
+      @entry[:text]{Buttons display only text labels in the toolbar.}
+      @entry[:both]{Buttons display text and icons in the toolbar.}
+      @entry[:both-horiz]{Buttons display icons and text alongside each other,
+        rather than vertically stacked}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Used to customize the appearance of a @class{gtk:toolbar} widget.
+  @end{short}
+  Note that setting the toolbar style overrides the preferences of the user for
+  the default toolbar style. Note that if the button has only a label set and
+  @code{:icons} is used, the label will be visible, and vice versa.
   @see-class{gtk:toolbar}")
 
 ;;; ----------------------------------------------------------------------------
@@ -746,19 +814,23 @@
 (setf (liber:alias-for-symbol 'sort-type)
       "GEnum"
       (liber:symbol-documentation 'sort-type)
- "@version{2023-3-6}
-  @short{Determines the direction of a sort.}
-  @begin{pre}
+ "@version{2024-3-21}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkSortType\" sort-type
   (:export t
    :type-initializer \"gtk_sort_type_get_type\")
   (:ascending 0)
   (:descending 1))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:ascending]{Sorting is in ascending order.}
-    @entry[:descending]{Sorting is in descending order.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:ascending]{Sorting is in ascending order.}
+      @entry[:descending]{Sorting is in descending order.}
+    @end{table}
+  @end{values}
+  @short{Determines the direction of a sort.}
   @see-class{gtk:tree-sortable}
   @see-class{gtk:tree-view-column}")
 
@@ -777,7 +849,24 @@
 (setf (liber:alias-for-symbol 'text-direction)
       "GEnum"
       (liber:symbol-documentation 'text-direction)
- "@version{2023-3-6}
+ "@version{2024-3-22}
+  @begin{declaration}
+    @begin{pre}
+(gobject:define-g-enum \"GtkTextDirection\" text-direction
+  (:export t
+   :type-initializer \"gtk_text_direction_get_type\")
+  (:none 0)
+  (:ltr 1)
+  (:rtl 2))
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:none]{No direction.}
+      @entry[:ltr]{Left to right text direction.}
+      @entry[:rtl]{Right to left text direction.}
+    @end{table}
+  @end{values}
   @begin{short}
     The text direction controls the primary direction for widgets containing
     text, and also the direction in which the children of a container are
@@ -789,19 +878,6 @@
   except for containers where the containers are arranged in an order that is
   explicitely visual rather than logical, such as buttons for text
   justification.
-  @begin{pre}
-(gobject:define-g-enum \"GtkTextDirection\" text-direction
-  (:export t
-   :type-initializer \"gtk_text_direction_get_type\")
-  (:none 0)
-  (:ltr 1)
-  (:rtl 2))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:none]{No direction.}
-    @entry[:ltr]{Left to right text direction.}
-    @entry[:rtl]{Right to left text direction.}
-  @end{table}
   @see-function{gtk:widget-direction}
   @see-function{gtk:widget-default-direction}")
 
@@ -821,12 +897,9 @@
 (setf (liber:alias-for-symbol 'expander-style)
       "GEnum"
       (liber:symbol-documentation 'expander-style)
- "@version{2023-3-6}
-  @begin{short}
-    Used to specify the style of the expanders drawn by a @class{gtk:tree-view}
-    widget.
-  @end{short}
-  @begin{pre}
+ "@version{2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkExpanderStyle\" expander-style
   (:export t
    :type-initializer \"gtk_expander_style_get_type\")
@@ -834,13 +907,20 @@
   (:semi-collapsed 1)
   (:semi-expanded 2)
   (:expanded 3))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:collapsed]{The style used for a collapsed subtree.}
-    @entry[:semi-collapsed]{Intermediate style used during animation.}
-    @entry[:semi-expanded]{Intermediate style used during animation.}
-    @entry[:expanded]{The style used for an expanded subtree.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:collapsed]{The style used for a collapsed subtree.}
+      @entry[:semi-collapsed]{Intermediate style used during animation.}
+      @entry[:semi-expanded]{Intermediate style used during animation.}
+      @entry[:expanded]{The style used for an expanded subtree.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Used to specify the style of the expanders drawn by a @class{gtk:tree-view}
+    widget.
+  @end{short}
   @see-class{gtk:tree-view}")
 
 ;;; ----------------------------------------------------------------------------
@@ -862,7 +942,38 @@
 (setf (liber:alias-for-symbol 'state-type)
       "GEnum"
       (liber:symbol-documentation 'state-type)
- "@version{2023-3-6}
+ "@version{2024-3-21}
+  @begin{declaration}
+    @begin{pre}
+(gobject:define-g-enum \"GtkStateType\" state-type
+  (:export t
+   :type-initializer \"gtk_state_type_get_type\")
+  (:normal 0)
+  (:active 1)
+  (:prelight 2)
+  (:selected 3)
+  (:insensitive 4)
+  (:inconsistent 5)
+  (:focused 6))
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:normal]{State during normal operation.}
+      @entry[:active]{State of a currently active widget, such as a depressed
+        button.}
+      @entry[:prelight]{State indicating that the mouse pointer is over the
+        widget and the widget will respond to mouse clicks.}
+      @entry[:selected]{State of a selected item, such the selected row in a
+        list.}
+      @entry[:insensitive]{State indicating that the widget is unresponsive to
+        user actions.}
+      @entry[:inconsistent]{The widget is inconsistent, such as checkbuttons or
+        radiobuttons that aren't either set to @em{true} nor @code{nil}, or
+        buttons requiring the user attention.}
+      @entry[:focused]{The widget has the keyboard focus.}
+    @end{table}
+  @end{values}
   @begin{short}
     This type indicates the current state of a widget.
   @end{short}
@@ -876,33 +987,6 @@
     this enumeration have been deprecated in favor of alternatives using the
     @symbol{gtk:state-flags} flags.
   @end{dictionary}
-  @begin{pre}
-(gobject:define-g-enum \"GtkStateType\" state-type
-  (:export t
-   :type-initializer \"gtk_state_type_get_type\")
-  (:normal 0)
-  (:active 1)
-  (:prelight 2)
-  (:selected 3)
-  (:insensitive 4)
-  (:inconsistent 5)
-  (:focused 6))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:normal]{State during normal operation.}
-    @entry[:active]{State of a currently active widget, such as a depressed
-      button.}
-    @entry[:prelight]{State indicating that the mouse pointer is over the
-      widget and the widget will respond to mouse clicks.}
-    @entry[:selected]{State of a selected item, such the selected row in a
-      list.}
-    @entry[:insensitive]{State indicating that the widget is unresponsive to
-      user actions.}
-    @entry[:inconsistent]{The widget is inconsistent, such as checkbuttons or
-      radiobuttons that aren't either set to @em{true} nor @code{nil}, or
-      buttons requiring the user attention.}
-    @entry[:focused]{The widget has the keyboard focus.}
-  @end{table}
   @see-symbol{gtk:state-flags}")
 
 ;;; --- End of file gtk3.enumerations.lisp -------------------------------------

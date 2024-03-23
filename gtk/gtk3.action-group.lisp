@@ -902,11 +902,10 @@ lambda (group action)
 (setf (liber:alias-for-symbol 'translate-func)
       "Callback"
       (liber:symbol-documentation 'translate-func)
- "@version{#2024-3-18}
+ "@version{#2024-3-20}
   @syntax{lambda (path) => result}
   @argument[path]{a string with the ID of the message}
   @argument[result]{a string with the translated message}
-  @end{table}
   @begin{short}
     A callback function used to translate messages.
   @end{short}
@@ -921,11 +920,11 @@ lambda (group action)
   (group (g:object action-group))
   (func :pointer)
   (data :pointer)
-  (destroy-notify :pointer))
+  (destroy :pointer))
 
 (defun action-group-set-translate-func (group func)
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{#2024-3-20}
   @argument[group]{a @class{gtk:action-group} object}
   @argument[func]{a @symbol{gtk:translate-func} callback function}
   @begin{short}
@@ -943,10 +942,10 @@ lambda (group action)
   @see-function{gtk:action-group-add-actions}
   @see-function{gtk:action-group-set-translation-domain}"
   (%action-group-set-translate-func
-                            group
-                            (cffi:callback translate-func)
-                            (glib:allocate-stable-pointer func)
-                            (cffi:callback glib:stable-pointer-destroy-notify)))
+          group
+          (cffi:callback translate-func)
+          (glib:allocate-stable-pointer func)
+          (cffi:callback glib:stable-pointer-destroy-notify)))
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_action_group_set_translation_domain                not exported

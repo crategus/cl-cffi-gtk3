@@ -141,7 +141,7 @@ lambda (widget)    :action
       @end{pre}
       The signal on the switch is an action signal and emitting it causes the
       switch to animate. Applications should never connect to this signal, but
-      use the \"notify::active\" signal.
+      use the @code{\"notify::active\"} signal.
       @begin[code]{table}
         @entry[widget]{The @class{gtk:switch} widget which received the signal.}
       @end{table}
@@ -207,8 +207,8 @@ lambda (widget state)    :run-last
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "state" 'switch) t)
  "The @code{state} property of type @code{:boolean} (Read / Write) @br{}
-  The backend state that is controlled by the switch. See the \"state-set\"
-  signal for details. @br{}
+  The backend state that is controlled by the switch. See the
+  @code{\"state-set\"} signal for details. @br{}
   Default value: @em{false}")
 
 #+liber-documentation
@@ -229,8 +229,8 @@ lambda (widget state)    :run-last
 
   Normally, this is the same as the @slot[gtk:switch]{active} property, unless
   the switch is set up for delayed state changes. This function is typically
-  called from a \"state-set\" signal handler. See the \"state-set\" signal for
-  details.
+  called from a @code{\"state-set\"} signal handler. See the
+  @code{\"state-set\"} signal for details.
   @see-class{gtk:switch}
   @see-function{gtk:switch-active}")
 

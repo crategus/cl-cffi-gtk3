@@ -543,8 +543,8 @@ lambda (item)    :run-last
     Returns the toolbar style used for the tool item.
   @end{short}
   Custom subclasses of the @class{gtk:tool-item} class should call this
-  function in the handler of the \"toolbar-reconfigured\" signal to find out in
-  what style the toolbar is displayed and change themselves accordingly.
+  function in the handler of the @code{\"toolbar-reconfigured\"} signal to find
+  out in what style the toolbar is displayed and change themselves accordingly.
 
   Possibilities are:
   @begin{itemize}
@@ -580,8 +580,9 @@ lambda (item)    :run-last
     Returns the relief style of the tool item.
   @end{short}
   Custom subclasses of the @class{gtk:tool-item} class should call this
-  function in the handler of the \"toolbar-reconfigured\" signal to find out
-  the relief style of buttons. See the @fun{gtk:button-relief-style} function.
+  function in the handler of the @code{\"toolbar-reconfigured\"} signal to find
+  out the relief style of buttons. See the @fun{gtk:button-relief-style}
+  function.
   @see-class{gtk:tool-item}
   @see-function{gtk:button-relief-style}"
   (item (g:object tool-item)))
@@ -715,7 +716,7 @@ lambda (item)    :run-last
   be rebuilt.
 
   The function must be called when the tool item changes what it will do in
-  response to the \"create-menu-proxy\" signal.
+  response to the @code{\"create-menu-proxy\"} signal.
   @see-class{gtk:tool-item}"
   (item (g:object tool-item)))
 

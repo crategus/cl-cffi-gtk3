@@ -142,23 +142,27 @@
 (setf (liber:alias-for-symbol 'arrow-placement)
       "GEnum"
       (liber:symbol-documentation 'arrow-placement)
- "@version{#2023-3-21}
-  @begin{short}
-    Used to specify the placement of scroll arrows in scrolling menus.
-  @end{short}
-  @begin{pre}
+ "@version{#2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkArrowPlacement\" arrow-placement
   (:export t
    :type-initializer \"gtk_arrow_placement_get_type\")
   (:both 0)
   (:start 1)
   (:end 2))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:both]{Place one arrow on each end of the menu.}
-    @entry[:start]{Place both arrows at the top of the menu.}
-    @entry[:end]{Place both arrows at the bottom of the menu.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:both]{Place one arrow on each end of the menu.}
+      @entry[:start]{Place both arrows at the top of the menu.}
+      @entry[:end]{Place both arrows at the bottom of the menu.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Used to specify the placement of scroll arrows in scrolling menus.
+  @end{short}
   @see-class{gtk:menu}")
 
 ;;; ----------------------------------------------------------------------------

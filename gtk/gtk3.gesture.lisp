@@ -98,24 +98,28 @@
 (setf (liber:alias-for-symbol 'event-sequence-state)
       "GEnum"
       (liber:symbol-documentation 'event-sequence-state)
- "@version{2023-3-5}
-  @begin{short}
-    Describes the state of a @class{gdk:event-sequence} instance in a
-    @class{gtk:gesture} object.
-  @end{short}
-  @begin{pre}
+ "@version{2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkEventSequenceState\" event-sequence-state
   (:export t
    :type-initializer \"gtk_event_sequence_state_get_type\")
   (:none 0)
   (:claimed 1)
   (:denied 2))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:none]{The sequence is handled, but not grabbed.}
-    @entry[:claimed]{The sequence is handled and grabbed.}
-    @entry[:denied]{The sequence is denied.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:none]{The sequence is handled, but not grabbed.}
+      @entry[:claimed]{The sequence is handled and grabbed.}
+      @entry[:denied]{The sequence is denied.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Describes the state of a @class{gdk:event-sequence} instance in a
+    @class{gtk:gesture} object.
+  @end{short}
   @see-class{gtk:gesture}
   @see-class{gdk:event-sequence}")
 
@@ -152,16 +156,17 @@
   gesture is recognized.
 
   As soon as the gesture has the expected number of touches, the gesture will
-  run the \"check\" signal regularly on input events until the gesture is
+  run the @code{\"check\"} signal regularly on input events until the gesture is
   recognized, the criteria to consider a gesture as \"recognized\" is left to
   @class{gtk:gesture} subclasses.
 
   A recognized gesture will then emit the following signals:
 
   @begin{itemize}
-    @item{The \"begin\" signal when the gesture is recognized.}
-    @item{A number of \"update\" signals, whenever an input event is processed.}
-    @item{The \"end\" signal when the gesture is no longer recognized.}
+    @item{The @code{\"begin\"} signal when the gesture is recognized.}
+    @item{A number of @code{\"update\"} signals, whenever an input event is
+      processed.}
+    @item{The @code{\"end\"} signal when the gesture is no longer recognized.}
   @end{itemize}
 
   @subheading{Event propagation}
@@ -173,9 +178,10 @@
   target widget, and gestures that are attached to containers above the widget
   get a chance to interact with the event before it reaches the target.
 
-  After the capture phase, GTK emits the traditional \"button-press-event\",
-  \"button-release-event\", \"touch-event\", etc signals. Gestures with the
-  @code{:phase-target} phase are fed events from the default \"event\" handlers.
+  After the capture phase, GTK emits the traditional
+  @code{\"button-press-event\"}, @code{\"button-release-event\"},
+  @code{\"touch-event\"}, etc signals. Gestures with the @code{:phase-target}
+  phase are fed events from the default @code{\"event\"} handlers.
 
   In the bubble phase, events are propagated up from the target widget to the
   toplevel, and gestures that are attached to containers above the widget get a
@@ -272,12 +278,12 @@ lambda (gesture sequence)    :run-last
 lambda (gesture sequence)    :run-last
       @end{pre}
       The signal is emitted when gesture either stopped recognizing the event
-      sequences as something to be handled, the \"check\" handler returned
-      @em{false}, or the number of touch sequences became higher or lower than
-      @code{n-points}. Note: The @arg{sequence} argument might not pertain to
-      the group of sequences that were previously triggering recognition on
-      gesture, i.e. a just pressed touch sequence that exceeds @code{n-points}.
-      This situation may be detected by checking through the
+      sequences as something to be handled, the @code{\"check\"} handler
+      returned @em{false}, or the number of touch sequences became higher or
+      lower than @code{n-points}. Note: The @arg{sequence} argument might not
+      pertain to the group of sequences that were previously triggering
+      recognition on gesture, i.e. a just pressed touch sequence that exceeds
+      @code{n-points}. This situation may be detected by checking through the
       @fun{gtk:gesture-handles-sequence} function.
       @begin[code]{table}
         @entry[gesture]{The @class{gtk:gesture} object which received the
@@ -470,9 +476,9 @@ lambda (gesture sequence)    :run-last
     @item{None → Claimed → Denied}
   @end{itemize}
   Note: Due to event handling ordering, it may be unsafe to set the state on
-  another gesture within a \"begin\" signal handler, as the callback might be
-  executed before the other gesture knows about the sequence. A safe way to
-  perform this could be:
+  another gesture within a @code{\"begin\"} signal handler, as the callback
+  might be executed before the other gesture knows about the sequence. A safe
+  way to perform this could be:
   @begin{pre}
 static void
 first_gesture_begin_cb (GtkGesture       *first_gesture,

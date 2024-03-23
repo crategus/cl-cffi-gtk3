@@ -284,8 +284,8 @@ lambda (button value)    :run-last
   button. The @setf{gtk:scale-button-value} function sets the current value.
 
   If the value is outside the minimum or maximum range values, it will be
-  clamped to fit inside them. The scale button emits the \"value-changed\"
-  signal if the value changes.
+  clamped to fit inside them. The scale button emits the
+  @code{\"value-changed\"} signal if the value changes.
   @see-class{gtk:scale-button}")
 
 ;;; ----------------------------------------------------------------------------

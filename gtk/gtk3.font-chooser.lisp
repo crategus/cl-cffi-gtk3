@@ -110,12 +110,9 @@
 (setf (liber:alias-for-symbol 'font-chooser-level)
       "GFlags"
       (liber:symbol-documentation 'font-chooser-level)
- "@version{2023-6-16}
-  @begin{short}
-    The @symbol{gtk:font-chooser-level} flags specifies the granularity of font
-    selection that is desired in a font chooser.
-  @end{short}
-  @begin{pre}
+ "@version{2024-3-21}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-flags \"GtkFontChooserLevel\" font-chooser-level
   (:export t
    :type-initializer \"gtk_font_chooser_level_get_type\")
@@ -124,14 +121,21 @@
   (:size       #.(ash 1 1))
   (:variations #.(ash 1 2))
   (:features   #.(ash 1 3)))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:family]{Allow selecting a font family.}
-    @entry[:style]{Allow selecting a specific font face.}
-    @entry[:size]{Allow selecting a specific font size.}
-    @entry[:variations]{Allow changing OpenType font variation axes.}
-    @entry[:features]{Allow selecting specific OpenType font features.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:family]{Allow selecting a font family.}
+      @entry[:style]{Allow selecting a specific font face.}
+      @entry[:size]{Allow selecting a specific font size.}
+      @entry[:variations]{Allow changing OpenType font variation axes.}
+      @entry[:features]{Allow selecting specific OpenType font features.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    The @symbol{gtk:font-chooser-level} flags specifies the granularity of font
+    selection that is desired in a font chooser.
+  @end{short}
   @see-class{gtk:font-chooser}")
 
 ;;; ----------------------------------------------------------------------------

@@ -646,8 +646,8 @@ lambda (printer success)    :run-last
   @begin{short}
     Requests the printer details.
   @end{short}
-  When the details are available, the \"details-acquired\" signal will be
-  emitted on the printer.
+  When the details are available, the @code{\"details-acquired\"} signal will
+  be emitted on the printer.
   @see-class{gtk:printer}
   @see-function{gtk:printer-has-details}"
   (printer (g:object printer)))

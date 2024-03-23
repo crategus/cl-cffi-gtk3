@@ -139,12 +139,9 @@
 (setf (liber:alias-for-symbol 'policy-type)
       "GEnum"
       (liber:symbol-documentation 'policy-type)
- "@version{2024-1-1}
-  @begin{short}
-    Determines how the size should be computed to achieve one of the visibility
-    mode for the scrollbars.
-  @end{short}
-  @begin{pre}
+ "@version{2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkPolicyType\" policy-type
   (:export t
    :type-initializer \"gtk_policy_type_get_type\")
@@ -152,18 +149,25 @@
   (:automatic 1)
   (:never 2)
   (:external 3))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:always]{The scrollbar is always visible. The view size is
-      independent of the content.}
-    @entry[:automatic]{The scrollbar will appear and disappear as necessary.
-      For example, when all of a @class{gtk:tree-view} widget cannot be seen.}
-    @entry[:never]{The scrollbar should never appear. In this mode the content
-      determines the size.}
-    @entry[:external]{Do not show a scrollbar, but do not force the size to
-      follow the content. This can be used e.g. to make multiple scrolled
-      windows share a scrollbar.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:always]{The scrollbar is always visible. The view size is
+        independent of the content.}
+      @entry[:automatic]{The scrollbar will appear and disappear as necessary.
+        For example, when all of a @class{gtk:tree-view} widget cannot be seen.}
+      @entry[:never]{The scrollbar should never appear. In this mode the content
+        determines the size.}
+      @entry[:external]{Do not show a scrollbar, but do not force the size to
+        follow the content. This can be used e.g. to make multiple scrolled
+        windows share a scrollbar.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Determines how the size should be computed to achieve one of the visibility
+    mode for the scrollbars.
+  @end{short}
   @see-class{gtk:scrolled-window}")
 
 ;;; ----------------------------------------------------------------------------
@@ -182,13 +186,9 @@
 (setf (liber:alias-for-symbol 'corner-type)
       "GEnum"
       (liber:symbol-documentation 'corner-type)
- "@version{2024-1-1}
-  @begin{short}
-    Specifies which corner a child widget should be placed in when packed into
-    a @class{gtk:scrolled-window} widget.
-  @end{short}
-  This is effectively the opposite of where the scroll bars are placed.
-  @begin{pre}
+ "@version{2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkCornerType\" corner-type
   (:export t
    :type-initializer \"gtk_corner_type_get_type\")
@@ -196,17 +196,25 @@
   (:bottom-left 1)
   (:top-right 2)
   (:bottom-right 3))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:top-left]{Place the scrollbars on the right and bottom of the
-      widget (default behaviour).}
-    @entry[:bottom-left]{Place the scrollbars on the top and right of the
-      widget.}
-    @entry[:top-right]{Place the scrollbars on the left and bottom of the
-      widget.}
-    @entry[:bottom-right]{Place the scrollbars on the top and left of the
-      widget.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:top-left]{Place the scrollbars on the right and bottom of the
+        widget (default behaviour).}
+      @entry[:bottom-left]{Place the scrollbars on the top and right of the
+        widget.}
+      @entry[:top-right]{Place the scrollbars on the left and bottom of the
+        widget.}
+      @entry[:bottom-right]{Place the scrollbars on the top and left of the
+        widget.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Specifies which corner a child widget should be placed in when packed into
+    a @class{gtk:scrolled-window} widget.
+  @end{short}
+  This is effectively the opposite of where the scroll bars are placed.
   @see-class{gtk:scrolled-window}")
 
 ;;; ----------------------------------------------------------------------------
@@ -382,8 +390,8 @@ lambda (window pos)    :run-last
       Note: The @arg{pos} argument is LTR/RTL aware, so callers should be aware
       too if intending to provide behavior on horizontal edges.
       @begin[code]{table}
-        @entry[window]{The @class{gtk:scrolled-window} widget which received the
-          signal.}
+        @entry[window]{The @class{gtk:scrolled-window} widget which received
+          the signal.}
         @entry[pos]{Edge side as a value of the @symbol{gtk:position-type}
           enumeration that was hit.}
       @end{table}
@@ -398,8 +406,8 @@ lambda (window pos)    :run-last
       Note: The @arg{pos} argument is LTR/RTL aware, so callers should be aware
       too if intending to provide behavior on horizontal edges.
       @begin[code]{table}
-        @entry[window]{The @class{gtk:scrolled-window} widget which received the
-          signal.}
+        @entry[window]{The @class{gtk:scrolled-window} widget which received
+          the signal.}
         @entry[pos]{Edge side as a value of the @symbol{gtk:position-type}
           enumeration that was hit.}
       @end{table}

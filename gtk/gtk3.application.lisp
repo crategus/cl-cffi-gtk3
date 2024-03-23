@@ -987,7 +987,7 @@ lambda (application window)    :run-first
 (cffi:defcfun ("gtk_application_get_accels_for_action"
                 application-accels-for-action) g:strv-t
  #+liber-documentation
- "@version{2024-3-15}
+ "@version{2024-3-20}
   @syntax{(gtk:application-accels-for-action application name) => accels}
   @syntax{(setf (gtk:application-accels-for-action application name) accels)}
   @argument[application]{a @class{gtk:application} instance}
@@ -996,12 +996,11 @@ lambda (application window)    :run-first
   @argument[accels]{a string or a list of strings of accelerators in the format
     understood by the @fun{gtk:accelerator-parse} function}
   @begin{short}
-    Accessor of the accelerators that are associated with the given action.
+    The @fun{gtk:application-accels-for-action} function gets the keyboard
+    accelerators that will trigger the given action.
   @end{short}
-  The @fun{gtk:application-accels-for-action} function gets the keyboard
-  accelerators that will trigger the given action. The
-  @setf{gtk:application-accels-for-action} function sets zero or more keyboard
-  accelerators.
+  The @setf{gtk:application-accels-for-action} function sets zero or more
+  keyboard accelerators.
 
   The first item in the list of accelerators will be the primary accelerator,
   which may be displayed in the UI. To remove all accelerators for an action,

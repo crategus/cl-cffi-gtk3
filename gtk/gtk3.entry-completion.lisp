@@ -174,7 +174,7 @@
   entry when they are selected, the @class{gtk:entry-completion} object also
   allows to display \"actions\" in the popup window. Their appearance is similar
   to menu items, to differentiate them clearly from completion strings. When an
-  action is selected, the \"action-activated\" signal is emitted.
+  action is selected, the @code{\"action-activated\"} signal is emitted.
 
   The @class{gtk:entry-completion} object uses a @class{gtk:tree-model-filter}
   model to represent the subset of the entire model that is currently matching.

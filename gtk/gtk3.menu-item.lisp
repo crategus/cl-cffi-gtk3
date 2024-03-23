@@ -250,7 +250,8 @@ lambda (item)    :action
 lambda (item)    :run-first
       @end{pre}
       Emitted when the menu item is activated, but also if the menu item has a
-      submenu. For normal applications, the relevant signal is \"activate\".
+      submenu. For normal applications, the relevant signal is the
+      @code{\"activate\"} signal.
       @begin[code]{table}
         @entry[item]{The @class{gtk:menu-item} widget which received the
           signal.}
@@ -544,7 +545,7 @@ lambda (item arg)    :run-first
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[item]{a @class{gtk:menu-item} widget}
-  @short{Emits the \"select\" signal on the given menu item.}
+  @short{Emits the @code{\"select\"} signal on the given menu item.}
   @see-class{gtk:menu-item}
   @see-function{gtk:menu-item-deselect}"
   (item (g:object menu-item)))
@@ -560,7 +561,7 @@ lambda (item arg)    :run-first
  "@version{#2023-3-21}
   @argument[item]{a @class{gtk:menu-item} widget}
   @begin{short}
-    Emits the \"deselect\" signal on the given menu item.
+    Emits the @code{\"deselect\"} signal on the given menu item.
   @end{short}
   @see-class{gtk:menu-item}
   @see-function{gtk:menu-item-select}"
@@ -577,7 +578,7 @@ lambda (item arg)    :run-first
  "@version{#2023-3-21}
   @argument[item]{a @class{gtk:menu-item} widget}
   @begin{short}
-    Emits the \"activate\" signal on the given menu item.
+    Emits the @code{\"activate\"} signal on the given menu item.
   @end{short}
   @see-class{gtk:menu-item}"
   (item (g:object menu-item)))
@@ -595,7 +596,7 @@ lambda (item arg)    :run-first
   @argument[item]{a @class{gtk:menu-item} widget}
   @argument[requisition]{an integer with the requisition to use as signal data}
   @begin{short}
-    Emits the \"toggle-size-request\" signal on the given menu item.
+    Emits the @code{\"toggle-size-request\"} signal on the given menu item.
   @end{short}
   @see-class{gtk:menu-item}
   @see-function{gtk:menu-item-toggle-size-allocate}"
@@ -615,7 +616,7 @@ lambda (item arg)    :run-first
   @argument[item]{a @class{gtk:menu-item} widget}
   @argument[allocation]{an integer with the allocation to use as signal data}
   @begin{short}
-    Emits the \"toggle-size-allocate\" signal on the given item.
+    Emits the @code{\"toggle-size-allocate\"} signal on the given item.
   @end{short}
   @see-class{gtk:menu-item}
   @see-function{gtk:menu-item-toggle-size-request}"

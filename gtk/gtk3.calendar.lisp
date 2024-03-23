@@ -121,12 +121,9 @@
 (setf (liber:alias-for-symbol 'calendar-display-options)
       "GFlags"
       (liber:symbol-documentation 'calendar-display-options)
- "@version{2023-12-30}
-  @begin{short}
-    These options can be used to influence the display and behaviour of a
-    @class{gtk:calendar} widget.
-  @end{short}
-  @begin{pre}
+ "@version{2024-3-21}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-flags \"GtkCalendarDisplayOptions\" calendar-display-options
   (:export t
    :type-initializer \"gtk_calendar_display_options_get_type\")
@@ -135,20 +132,27 @@
   (:no-month-change 4)
   (:show-week-numbers 8)
   (:show-details 32))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:show-heading]{Specifies that the month and year should be
-      displayed.}
-    @entry[:show-day-name]{Specifies that three letter day descriptions should
-      be present.}
-    @entry[:no-month-chage]{Prevents the user from switching months with the
-      calendar.}
-    @entry[:show-week-numbers]{Displays each week numbers of the current year,
-      down the left side of the calendar.}
-    @entry[:show-details]{Just show an indicator, not the full details text
-      when details are provided. See the @fun{gtk:calendar-set-detail-func}
-      function.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:show-heading]{Specifies that the month and year should be
+        displayed.}
+      @entry[:show-day-name]{Specifies that three letter day descriptions should
+        be present.}
+      @entry[:no-month-chage]{Prevents the user from switching months with the
+        calendar.}
+      @entry[:show-week-numbers]{Displays each week numbers of the current year,
+        down the left side of the calendar.}
+      @entry[:show-details]{Just show an indicator, not the full details text
+        when details are provided. See the @fun{gtk:calendar-set-detail-func}
+        function.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    These options can be used to influence the display and behaviour of a
+    @class{gtk:calendar} widget.
+  @end{short}
   @see-class{gtk:calendar}
   @see-function{gtk:calendar-set-detail-func}")
 
@@ -807,10 +811,11 @@ lambda (calendar)    :run-first
      (month :uint)
      (day :uint)
      (data :pointer))
-  (restart-case
-    (or (funcall (glib:get-stable-pointer-value data) calendar year month day)
-        (cffi:null-pointer))
-    (return-null () (cffi:null-pointer))))
+  (let ((fn (glib:get-stable-pointer-value data)))
+    (restart-case
+      (or (funcall fn calendar year month day)
+          (cffi:null-pointer))
+      (return-null () (cffi:null-pointer)))))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'calendar-detail-func)
@@ -850,7 +855,7 @@ lambda (calendar)    :run-first
 
 (defun calendar-set-detail-func (calendar func)
  #+liber-documentation
- "@version{2023-12-30}
+ "@version{2024-3-20}
   @argument[calendar]{a @class{gtk:calendar} widget}
   @argument[func]{a @symbol{gtk:calendar-detail-func} callback function
     providing details for each day}

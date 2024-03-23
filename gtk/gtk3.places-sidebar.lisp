@@ -125,7 +125,33 @@
 (setf (liber:alias-for-symbol 'places-open-flags)
       "GFlags"
       (liber:symbol-documentation 'places-open-flags)
- "@version{#2023-3-6}
+ "@version{#2024-3-21}
+  @begin{declaration}
+    @begin{pre}
+(gobject:define-g-flags \"GtkPlacesOpenFlags\" gtk:places-open-flags
+  (:export t
+   :type-initializer \"gtk_places_open_flags_get_type\")
+  (:normal     #.(ash 1 0))
+  (:new-tab    #.(ash 1 1))
+  (:new-window #.(ash 1 2)))
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:normal]{This is the default mode that the
+        @class{gtk:places-sidebar} widget uses if no other flags are specified.
+        It indicates that the calling application should open the selected
+        location in the normal way, for example, in the folder view beside the
+        sidebar.}
+      @entry[:new-tab]{When passed to the @fun{gtk:places-sidebar-open-flags}
+        function, this indicates that the application can open folders selected
+        from the sidebar in new tabs. This value will be passed to the
+        @code{\"open-location\"} signal when the user selects that a location
+        be opened in a new tab instead of in the standard fashion.}
+      @entry[:new-window]{Similar to @code{:new-tab}, but indicates that the
+        application can open folders in new windows.}
+    @end{table}
+  @end{values}
   @begin{short}
     These flags serve two purposes.
   @end{short}
@@ -135,7 +161,7 @@
   for example, in new tabs or in new windows in addition to the normal mode.
 
   Second, when one of these values gets passed back to the application in the
-  \"open-location\" signal, it means that the application should open the
+  @code{\"open-location\"} signal, it means that the application should open the
   selected location in the normal way, in a new tab, or in a new window. The
   sidebar takes care of determining the desired way to open the location, based
   on the modifier keys that the user is pressing at the time the selection is
@@ -143,28 +169,7 @@
 
   If the application never calls the @fun{gtk:places-sidebar-open-flags}
   function, then the sidebar will only use @code{:normal} in the
-  \"open-location\" signal. This is the default mode of operation.
-  @begin{pre}
-(gobject:define-g-flags \"GtkPlacesOpenFlags\" gtk:places-open-flags
-  (:export t
-   :type-initializer \"gtk_places_open_flags_get_type\")
-  (:normal     #.(ash 1 0))
-  (:new-tab    #.(ash 1 1))
-  (:new-window #.(ash 1 2)))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:normal]{This is the default mode that the @class{gtk:places-sidebar}
-      widget uses if no other flags are specified. It indicates that the calling
-      application should open the selected location in the normal way, for
-      example, in the folder view beside the sidebar.}
-    @entry[:new-tab]{When passed to the @fun{gtk:places-sidebar-open-flags}
-      function, this indicates that the application can open folders selected
-      from the sidebar in new tabs. This value will be passed to the
-      \"open-location\" signal when the user selects that a location be opened
-      in a new tab instead of in the standard fashion.}
-    @entry[:new-window]{Similar to @code{:new-tab}, but indicates that the
-      application can open folders in new windows.}
-  @end{table}
+  @code{\"open-location\"} signal. This is the default mode of operation.
   @see-class{gtk:places-sidebar}
   @see-function{gtk:places-sidebar-open-flags}")
 
@@ -237,8 +242,8 @@
   @fun{gtk:places-sidebar-add-shortcut} function.
 
   To make use of the places sidebar, an application at least needs to connect
-  to the \"open-location\" signal. This is emitted when the user selects in the
-  sidebar a location to open. The application should also call the
+  to the @code{\"open-location\"} signal. This is emitted when the user selects
+  in the sidebar a location to open. The application should also call the
   @fun{gtk:places-sidebar-location} function when it changes the currently
   viewed location.
   @begin[CSS nodes]{dictionary}
@@ -389,9 +394,10 @@ lambda (sidebar)    :run-first
       corresponding mount by using, for example,
       @code{g_file_mount_enclosing_volume()}.
 
-      @em{Warning:} The \"show-connect-to-server\" signal has been deprecated
-      since version 3.18 and should not be used in newly written code. Use the
-      \"show-other-locations\" signal to connect to network servers.
+      @em{Warning:} The @code{\"show-connect-to-server\"} signal has been
+      deprecated since version 3.18 and should not be used in newly written
+      code. Use the @code{\"show-other-locations\"} signal to connect to
+      network servers.
       @begin[code]{table}
         @entry[sidebar]{The @class{gtk:places-sidebar} widget which received
           the signal.}
@@ -433,11 +439,12 @@ lambda (sidebar)    :run-first
       points. For example, the application may bring up a page showing
       persistent volumes and discovered network addresses.
 
-      @em{Warning:} The \"show-other-locations\" signal has been deprecated
-      since version 3.20 and should not be used in newly written code. Use the
-      \"show-other-locations-with-flags\" signal which includes the open flags
-      in order to allow the user to specify to open in a new tab or window, in
-      a similar way than the \"open-location\" signal.
+      @em{Warning:} The @code{\"show-other-locations\"} signal has been
+      deprecated since version 3.20 and should not be used in newly written
+      code. Use the @code{\"show-other-locations-with-flags\"} signal which
+      includes the open flags in order to allow the user to specify to open in
+      a new tab or window, in a similar way than the @code{\"open-location\"}
+      signal.
       @begin[code]{table}
         @entry[sidebar]{The @class{gtk:places-sidebar} widget which received
           the signal.}
@@ -554,8 +561,9 @@ lambda (sidebar mount)    :run-first
   with a location that is not among the sidebar’s list of places to show.
 
   You can use this function to get the selection in the sidebar. Also, if you
-  connect to the \"populate-popup\" signal, you can use this function to get the
-  location that is being referred to during the callbacks for your menu items.
+  connect to the @code{\"populate-popup\"} signal, you can use this function to
+  get the location that is being referred to during the callbacks for your menu
+  items.
 
   The @setf{gtk:places-sidebar-location} function sets the location that is
   being shown in the widgets surrounding the sidebar, for example, in a folder
@@ -599,12 +607,12 @@ lambda (sidebar mount)    :run-first
   application can open new locations, so that the sidebar can display (or not)
   the \"Open in new tab\" and \"Open in new window\" menu items as appropriate.
 
-  When the \"open-location\" signal is emitted, its flags argument will be set
-  to one of the flags that was passed in the @fun{gtk:places-sidebar-open-flags}
-  function.
+  When the @code{\"open-location\"} signal is emitted, its flags argument will
+  be set to one of the flags that was passed in the
+  @fun{gtk:places-sidebar-open-flags} function.
 
   Passing 0 for flags will cause @code{:normal} to always be sent to callbacks
-  for the \"open-location\" signal.
+  for the @code{\"open-location\"} signal.
   @see-class{gtk:places-sidebar}")
 
 ;;; --- gtk:places-sidebar-populate-all ----------------------------------------
@@ -613,8 +621,8 @@ lambda (sidebar mount)    :run-first
 (setf (documentation (liber:slot-documentation "populate-all"
                                                'places-sidebar) t)
  "The @code{populate-all} property of type @code{:boolean} (Read / Write) @br{}
-  If @code{populate-all} is @em{true}, the \"populate-popup\" signal is also
-  emitted for popovers. @br{}
+  If @code{populate-all} is @em{true}, the @code{\"populate-popup\"} signal is
+  also emitted for popovers. @br{}
   Default value: @em{false}")
 
 #+ liber-documentation
@@ -625,14 +633,14 @@ lambda (sidebar mount)    :run-first
   @syntax{(gtk:places-sidebar-populate-all object) => populate-all}
   @syntax{(setf (gtk:places-sidebar-populate-all object) populate-all)}
   @argument[object]{a @class{gtk:places-sidebar} widget}
-  @argument[populate-all]{a boolean whether the \"populate-all\" signal is also
-    emitted for popovers}
+  @argument[populate-all]{a boolean whether the @code{\"populate-all\"} signal
+    is also emitted for popovers}
   @begin{short}
     Accessor of the @slot[gtk:places-sidebar]{populate-all} slot of the
     @class{gtk:places-sidebar} class.
   @end{short}
-  If @code{populate-all} is @em{true}, the \"populate-popup\" signal is also
-  emitted for popovers.
+  If @code{populate-all} is @em{true}, the @code{\"populate-popup\"} signal is
+  also emitted for popovers.
   @see-class{gtk:places-sidebar}")
 
 ;;; --- gtk:places-sidebar-show-connect-to-server ------------------------------
@@ -664,8 +672,8 @@ lambda (sidebar mount)    :run-first
   server. This is off by default. An application may want to turn this on if
   it implements a way for the user to connect to network servers directly.
 
-  If you enable this, you should connect to the \"show-connect-to-server\"
-  signal.
+  If you enable this, you should connect to the
+  @code{\"show-connect-to-server\"} signal.
   @begin[Warning]{dictionary}
     The @fun{gtk:places-sidebar-show-connect-to-server} function has been
     deprecated since version 3.18 and should not be used in newly written code.
@@ -731,7 +739,8 @@ lambda (sidebar mount)    :run-first
   is off by default. An application may want to turn this on if manually
   entering URLs is an expected user action.
 
-  If you enable this, you should connect to the \"show-enter-location\" signal.
+  If you enable this, you should connect to the @code{\"show-enter-location\"}
+  signal.
   @see-class{gtk:places-sidebar}")
 
 ;;; --- gtk:places-sidebar-show-other-locations --------------------------------
@@ -764,7 +773,8 @@ lambda (sidebar mount)    :run-first
   the sidebar. An application may want to turn this on if it implements a way
   for the user to see and interact with drives and network servers directly.
 
-  If you enable this, you should connect to the \"show-other-locations\" signal.
+  If you enable this, you should connect to the @code{\"show-other-locations\"}
+  signal.
   @see-class{gtk:places-sidebar}")
 
 ;;; --- gtk:places-sidebar-show-recent -----------------------------------------
@@ -858,8 +868,8 @@ lambda (sidebar mount)    :run-first
   @begin{short}
     Creates a new @class{gtk:places-sidebar} widget.
   @end{short}
-  The application should connect to at least the \"open-location\" signal to be
-  notified when the user makes a selection in the sidebar.
+  The application should connect to at least the @code{\"open-location\"} signal
+  to be notified when the user makes a selection in the sidebar.
   @see-class{gtk:places-sidebar}"
   (make-instance 'places-sidebar))
 

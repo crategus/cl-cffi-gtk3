@@ -145,11 +145,9 @@
 (setf (liber:alias-for-symbol 'icon-lookup-flags)
       "GFlags"
       (liber:symbol-documentation 'icon-lookup-flags)
- "@version{#2023-3-20}
-  @begin{short}
-    Used to specify options for the @fun{gtk:icon-theme-lookup-icon} function.
-  @end{short}
-  @begin{pre}
+ "@version{#2024-3-21}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-flags \"GtkIconLookupFlags\" icon-lookup-flags
   (:export t
    :type-initializer \"gtk_icon_lookup_flags_get_type\")
@@ -162,31 +160,37 @@
   (:force-symbolic   #.(ash 1 6))
   (:dir-ltr          #.(ash 1 7))
   (:dir-rtl          #.(ash 1 8)))
-   @end{pre}
-  @begin[code]{table}
-    @entry[:no-svg]{Never get SVG icons, even if the @class{gdk-pixbuf:pixbuf}
-      object supports them. Cannot be used together with @code{:force-svg}.}
-    @entry[:force-svg]{Get SVG icons, even if the @class{gdk-pixbuf:pixbuf}
-      object does not support them. Cannot be used together with
-      @code{:no-svg}.}
-    @entry[:use-builtin]{When passed to the @fun{gtk:icon-theme-lookup-icon}
-      function includes built-in icons as well as files. For a built-in icon,
-      the @fun{gtk:icon-info-filename} function returns @code{nil} and you need
-      to call the @fun{gtk:icon-info-builtin-pixbuf} function.}
-    @entry[:generic-fallback]{Try to shorten icon name at '-' characters before
-      looking at inherited themes. This flag is only supported in functions
-      that take a single icon name. For more general fallback, see the
-      @fun{gtk:icon-theme-choose-icon} function.}
-    @entry[:force-size]{Always get the icon scaled to the requested size.}
-    @entry[:force-regular]{Try to always load regular icons, even when symbolic
-      icon names are given.}
-    @entry[:force-symbolic]{Try to always load symbolic icons, even when regular
-      icon names are given.}
-    @entry[:dir-ltr]{Try to load a variant of the icon for left-to-right
-      text direction.}
-    @entry[:dir-rtl]{Try to load a variant of the icon for right-to-left text
-      direction.}
-  @end{table}
+     @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:no-svg]{Never get SVG icons, even if the @class{gdk-pixbuf:pixbuf}
+        object supports them. Cannot be used together with @code{:force-svg}.}
+      @entry[:force-svg]{Get SVG icons, even if the @class{gdk-pixbuf:pixbuf}
+        object does not support them. Cannot be used together with
+        @code{:no-svg}.}
+      @entry[:use-builtin]{When passed to the @fun{gtk:icon-theme-lookup-icon}
+        function includes built-in icons as well as files. For a built-in icon,
+        the @fun{gtk:icon-info-filename} function returns @code{nil} and you
+        need to call the @fun{gtk:icon-info-builtin-pixbuf} function.}
+      @entry[:generic-fallback]{Try to shorten icon name at '-' characters
+        before looking at inherited themes. This flag is only supported in
+        functions that take a single icon name. For more general fallback, see
+        the @fun{gtk:icon-theme-choose-icon} function.}
+      @entry[:force-size]{Always get the icon scaled to the requested size.}
+      @entry[:force-regular]{Try to always load regular icons, even when
+        symbolic icon names are given.}
+      @entry[:force-symbolic]{Try to always load symbolic icons, even when
+        regular icon names are given.}
+      @entry[:dir-ltr]{Try to load a variant of the icon for left-to-right
+        text direction.}
+      @entry[:dir-rtl]{Try to load a variant of the icon for right-to-left text
+        direction.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Used to specify options for the @fun{gtk:icon-theme-lookup-icon} function.
+  @end{short}
   @see-class{gtk:icon-theme}
   @see-class{gdk-pixbuf:pixbuf}
   @see-function{gtk:icon-theme-lookup-icon}
@@ -216,21 +220,25 @@
 (setf (liber:alias-for-symbol 'icon-theme-error)
       "GEnum"
       (liber:symbol-documentation 'icon-theme-error)
- "@version{#2020-12-4}
-  @begin{short}
-    Error codes for @class{gtk:icon-theme} operations.
-  @end{short}
-  @begin{pre}
+ "@version{#2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkIconThemeError\" icon-theme-error
   (:export t
    :type-initializer \"gtk_icon_theme_error_get_type\")
   (:not-found 0)
   (:failed 1))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:not-found]{The icon specified does not exist in the theme.}
-    @entry[:failed]{An unspecified error occurred.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:not-found]{The icon specified does not exist in the theme.}
+      @entry[:failed]{An unspecified error occurred.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Error codes for @class{gtk:icon-theme} operations.
+  @end{short}
   @see-class{gtk:icon-theme}")
 
 ;;; ----------------------------------------------------------------------------
@@ -908,11 +916,12 @@ lambda (theme)    :run-last
   @fun{gtk:icon-info-load-icon} function.
 
   Note that you probably want to listen for icon theme changes and update the
-  icon. This is usually done by connecting to the \"style-updated\" signal.
-  If for some reason you do not want to update the icon when the icon theme
-  changes, you should consider using the @fun{gdk-pixbuf:pixbuf-copy} function
-  to make a private copy of the pixbuf returned by this function. Otherwise GTK
-  may need to keep the old icon theme loaded, which would be a waste of memory.
+  icon. This is usually done by connecting to the @code{\"style-updated\"}
+  signal. If for some reason you do not want to update the icon when the icon
+  theme changes, you should consider using the @fun{gdk-pixbuf:pixbuf-copy}
+  function to make a private copy of the pixbuf returned by this function.
+  Otherwise GTK may need to keep the old icon theme loaded, which would be a
+  waste of memory.
   @see-class{gtk:icon-theme}
   @see-class{gdk-pixbuf:pixbuf}
   @see-symbol{gtk:icon-lookup-flags}
@@ -959,7 +968,8 @@ lambda (theme)    :run-last
   @fun{gtk:icon-info-load-surface} function.
 
   Note that you probably want to listen for icon theme changes and update the
-  icon. This is usually done by connecting to the \"style-updated\" signal.
+  icon. This is usually done by connecting to the @code{\"style-updated\"}
+  signal.
   @see-class{gtk:icon-theme}
   @see-symbol{cairo:surface-t}
   @see-symbol{gtk:icon-lookup-flags}

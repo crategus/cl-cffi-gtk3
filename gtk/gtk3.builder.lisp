@@ -107,12 +107,9 @@
 (setf (liber:alias-for-symbol 'builder-error)
       "GEnum"
       (liber:symbol-documentation 'builder-error)
- "@version{#2023-3-16}
-  @begin{short}
-    Error codes that identify various errors that can occur while parsing the
-    @class{gtk:builder} UI definition.
-  @end{short}
-  @begin{pre}
+ "@version{#2024-3-21}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkBuilderError\" builder-error
   (:export t
    :type-initializer \"gtk_builder_error_get_type\")
@@ -130,33 +127,41 @@
   (:invalid-property 11)
   (:invalid-signal 12)
   (:invalid-id 13))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:invalid-type-function]{A @code{type-func} attribute did not name a
-      function that returns a @class{g:type-t} type ID.}
-    @entry[:unhandled-tag]{The input contained a tag that a @class{gtk:builder}
-      object cannot handle.}
-    @entry[:missing-attribute]{An attribute that is required by a
-      @class{gtk:builder} object was missing.}
-    @entry[:invalid-attribute]{A @class{gtk:builder} object found an attribute
-      that it does not understand.}
-    @entry[:invalid-tag]{A @class{gtk:builder} object found a tag that it does
-      not understand.}
-    @entry[:missing-property-value]{A required property value was missing.}
-    @entry[:invalid-value]{A @class{gtk:builder} object could not parse some
-      attribute value.}
-    @entry[:version-mismatch]{The input file requires a newer version of GTK.}
-    @entry[:duplicate-id]{An object ID occurred twice.}
-    @entry[:type-refused]{A specified object type is of the same type or derived
-      from the type of the composite class being extended with builder XML.}
-    @entry[:template-mismatch]{The wrong type was specified in a composite
-      class’s template XML.}
-    @entry[:invalid-property]{The specified property is unknown for the object
-      class.}
-    @entry[:invalid-signal]{The specified signal is unknown for the object
-      class.}
-    @entry[:invalid-id]{An object ID is unknown.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:invalid-type-function]{A @code{type-func} attribute did not name
+        a function that returns a @class{g:type-t} type ID.}
+      @entry[:unhandled-tag]{The input contained a tag that a
+        @class{gtk:builder} object cannot handle.}
+      @entry[:missing-attribute]{An attribute that is required by a
+        @class{gtk:builder} object was missing.}
+      @entry[:invalid-attribute]{A @class{gtk:builder} object found an attribute
+        that it does not understand.}
+      @entry[:invalid-tag]{A @class{gtk:builder} object found a tag that it does
+        not understand.}
+      @entry[:missing-property-value]{A required property value was missing.}
+      @entry[:invalid-value]{A @class{gtk:builder} object could not parse some
+        attribute value.}
+      @entry[:version-mismatch]{The input file requires a newer version of GTK.}
+      @entry[:duplicate-id]{An object ID occurred twice.}
+      @entry[:type-refused]{A specified object type is of the same type or
+        derived from the type of the composite class being extended with builder
+        XML.}
+      @entry[:template-mismatch]{The wrong type was specified in a composite
+        class’s template XML.}
+      @entry[:invalid-property]{The specified property is unknown for the object
+        class.}
+      @entry[:invalid-signal]{The specified signal is unknown for the object
+        class.}
+      @entry[:invalid-id]{An object ID is unknown.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Error codes that identify various errors that can occur while parsing the
+    @class{gtk:builder} UI definition.
+  @end{short}
   @see-class{gtk:builder}")
 
 ;;; ----------------------------------------------------------------------------
@@ -182,7 +187,7 @@
 
 #+liber-documentation
 (setf (documentation 'builder 'type)
- "@version{2024-3-16}
+ "@version{2024-3-20}
   @begin{short}
     The @class{gtk:builder} object is an auxiliary object that reads textual
     descriptions of a user interface and instantiates the described objects.
@@ -214,8 +219,8 @@
   to worry about their life cycle, or without a parent, in which case they have
   to be added to some container to make use of them.
 
-  The @fun{gtk:builder-connect-signals} function and variants thereof can be
-  used to connect handlers to the named signals in the UI description.
+  The @fun{gtk:builder-connect-signals} function can be used to connect
+  handlers to the named signals in the UI description.
   @begin[GtkBuilder UI Definitions]{dictionary}
     The @class{gtk:builder} implementation parses textual descriptions of user
     interfaces which are specified in an XML format which can be roughly
@@ -273,17 +278,16 @@
 
     The @class{gtk:builder} implementation can parse textual representations
     for the most common property types: characters, strings, integers, floating
-    point numbers, booleans, strings like \"TRUE\", \"t\", \"yes\", \"y\", \"1\"
-    are interpreted as @em{true}, strings like \"FALSE\", \"f\", \"no\", \"n\",
-    \"0\" are interpreted as @em{false}), enumerations, can be specified by
-    their name, nick or integer value, flags, can be specified by their name,
-    nick, integer value, optionally combined with \"|\", e.g. \"GTK_VISIBLE |
-    GTK_REALIZED\", and colors, in a format understood by the
-    @fun{gdk:rgba-parse} function.
-
-    A @type{g:variant} instance can be specified in the format understood by
-    the @fun{g:variant-parse} function, and pixbufs can be specified as a
-    filename of an image file to load.
+    point numbers, booleans, strings like @code{\"TRUE\"}, @code{\"t\"},
+    @code{\"yes\"}, @code{\"y\"}, @code{\"1\"} are interpreted as @em{true},
+    strings like @code{\"FALSE\"}, @code{\"f\"}, @code{\"no\"}, @code{\"n\"},
+    @code{\"0\"} are interpreted as @em{false}, enumerations, can be specified
+    by their name, nick or integer value, flags, can be specified by their name,
+    nick, integer value, optionally combined with @code{\"|\"}, e.g.
+    @code{\"GTK_VISIBLE | GTK_REALIZED\"}, and colors, in a format understood
+    by the @fun{gdk:rgba-parse} function. A @type{g:variant} instance can be
+    specified in the format understood by the @fun{g:variant-parse} function,
+    and pixbufs can be specified as a filename of an image file to load.
 
     Objects can be referred to by their name and by default refer to objects
     declared in the local XML fragment and objects exposed via the
@@ -586,10 +590,11 @@
 
 (defun builder-add-from-file (builder path)
  #+liber-documentation
- "@version{2024-3-16}
+ "@version{2024-3-20}
   @argument[builder]{a @class{gtk:builder} object}
   @argument[path]{a path or namestring with the name of the file to parse}
-  @return{The positive value on success, 0 if an error occurred.}
+  @return{The unsigned integer with a positive value on success, 0 if an
+    error occurred.}
   @begin{short}
     Parses a file containing a @class{gtk:builder} UI definition and merges it
     with the current contents of the builder.
@@ -613,10 +618,11 @@
 
 (defun builder-add-from-resource (builder path)
  #+liber-documentation
- "@version{2023-3-2}
+ "@version{2023-3-20}
   @argument[builder]{a @class{gtk:builder} object}
   @argument[path]{a string with the path of the resouce file to parse}
-  @return{The positive value on success, 0 if an error occured.}
+  @return{The unsigned integer with a positive value on success, 0 if an error
+    occured.}
   @begin{short}
     Parses a resource file containing a @class{gtk:builder} UI definition and
     merges it with the current contents of the builder.
@@ -645,7 +651,8 @@
  "@version{2023-3-2}
   @argument[builder]{a @class{gtk:builder} object}
   @argument[string]{a string to parse}
-  @return{The positive value on success, 0 if an error occurred.}
+  @return{The unsigned integer with a positive value on success, 0 if an error
+    occurred.}
   @begin{short}
     Parses a string containing a @class{gtk:builder} UI definition and merges
     it with the current contents of the builder.
@@ -669,16 +676,18 @@
   (object-ids :pointer)
   (err :pointer))
 
-(defun builder-add-objects-from-file (builder path ids)
+(defun builder-add-objects-from-file (builder path &rest ids)
  #+liber-documentation
- "@version{2024-3-16}
+ "@version{2024-3-20}
   @argument[builder]{a @class{gtk:builder} object}
   @argument[path]{a path or namestring with the name of the file to parse}
-  @argument[ids]{a list of strings with the object IDs to build}
-  @return{The positive value on success, 0 if an error occurred.}
+  @argument[ids]{strings with the object IDs to build}
+  @return{The unsigned integer with a positive value on success, 0 if an error
+    occurred.}
   @begin{short}
     Parses a file containing a @class{gtk:builder} UI definition building only
-    the requested objects and merges them with the current contents of builder.
+    the requested objects and merges them with the current contents of
+    @arg{builder}.
   @end{short}
   Upon errors 0 will be returned.
   @begin{notes}
@@ -720,13 +729,14 @@
   (ids :pointer)
   (err :pointer))
 
-(defun builder-add-objects-from-string (builder string ids)
+(defun builder-add-objects-from-string (builder string &rest ids)
  #+liber-documentation
- "@version{2024-3-16}
+ "@version{2024-3-20}
   @argument[builder]{a @class{gtk:builder} object}
   @argument[string]{a string to parse}
-  @argument[ids]{a list of strings with the object IDs to build}
-  @return{The positive value on success, 0 if an error occurred.}
+  @argument[ids]{strings with the object IDs to build}
+  @return{The unsigned integer with a positive value on success, 0 if an error
+    occurred.}
   @begin{short}
     Parses a string containing a @class{gtk:builder} UI definition building only
     the requested objects and merges them with the current contents of builder.
@@ -769,13 +779,14 @@
   (ids :pointer)
   (err :pointer))
 
-(defun builder-add-objects-from-resource (builder path ids)
+(defun builder-add-objects-from-resource (builder path &rest ids)
  #+liber-documentation
- "@version{#2024-3-16}
+ "@version{#2024-3-20}
   @argument[builder]{a @class{gtk:builder} object}
   @argument[path]{a string with the path of the resource file to parse}
-  @argument[ids]{a list of strings with the object IDs to build}
-  @return{The positive value on success, 0 if an error occurred.}
+  @argument[ids]{strings with the object IDs to build}
+  @return{The unsigned integer with a positive value on success, 0 if an error
+    occurred.}
   @begin{short}
     Parses a resource file containing a @class{gtk:builder} UI definition
     building only the requested objects and merges them with the current
@@ -924,16 +935,16 @@
      (connect g:object)
      (flags g:connect-flags)
      (data :pointer))
-  (restart-case
-    (let ((ptr (glib:get-stable-pointer-value data)))
-      (funcall ptr builder object signal handler connect flags))
-    (return () nil)))
+  (let ((ptr (glib:get-stable-pointer-value data)))
+    (restart-case
+      (funcall ptr builder object signal handler connect flags)
+    (return-from-builder-connect-func () nil))))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'builder-connect-func)
       "Callback"
       (liber:symbol-documentation 'builder-connect-func)
- "@version{#2024-3-18}
+ "@version{#2024-3-20}
   @syntax{lambda (builder object signal handler connect flags)}
   @argument[builder]{a @class{gtk:builder} object}
   @argument[object]{a @class{g:object} instance to connect a signal to}

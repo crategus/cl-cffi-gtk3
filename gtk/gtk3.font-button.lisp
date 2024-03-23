@@ -141,7 +141,7 @@ lambda (widget)    :run-first
       signal, use the @fun{gtk:font-chooser-font} function to find out which
       font was just selected. Note that this signal is only emitted when the
       user changes the font. If you need to react to programmatic font changes
-      as well, use the \"notify::font-name\" signal.
+      as well, use the @code{\"notify::font-name\"} signal.
       @begin[code]{table}
         @entry[widget]{The @class{gtk:font-button} widget which received the
           signal.}

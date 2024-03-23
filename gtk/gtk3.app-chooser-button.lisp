@@ -121,9 +121,11 @@
 
   It is possible to add custom items to the list, using the
   @fun{gtk:app-chooser-button-append-custom-item} function. These items cause
-  the \"custom-item-activated\" signal to be emitted when they are selected.
+  the @code{\"custom-item-activated\"} signal to be emitted when they are
+  selected.
 
-  To track changes in the selected application, use the \"changed\" signal.
+  To track changes in the selected application, use the @code{\"changed\"}
+  signal.
   @begin[Signal Details]{dictionary}
     @subheading{The \"custom-item-activated\" signal}
       @begin{pre}
@@ -281,8 +283,8 @@ lambda (widget name)    :has-details
     popup.
   @end{short}
   The item name must be unique per-widget. Clients can use the provided name as
-  a detail for the \"custom-item-activated\" signal, to add a callback for the
-  activation of a particular custom item in the list. See also the
+  a detail for the @code{\"custom-item-activated\"} signal, to add a callback
+  for the activation of a particular custom item in the list. See also the
   @fun{gtk:app-chooser-button-append-separator} function.
   @see-class{gtk:app-chooser-button}
   @see-function{gtk:app-chooser-button-append-separator}"

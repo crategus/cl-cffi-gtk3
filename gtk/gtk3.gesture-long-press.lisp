@@ -81,14 +81,15 @@
     after the timeout is exceeded.
   @end{short}
   If the touchpoint is lifted before the timeout passes, or if it drifts too
-  far of the initial press point, the \"cancelled\" signal will be emitted.
+  far of the initial press point, the @code{\"cancelled\"} signal will be
+  emitted.
   @begin[Signal Details]{dictionary}
     @subheading{The \"cancelled\" signal}
       @begin{pre}
 lambda (gesture)    :run-last
       @end{pre}
       The signal is emitted whenever a press moved too far, or was released
-      before the \"pressed\" signal happened.
+      before the @code{\"pressed\"} signal happened.
       @begin[code]{table}
         @entry[gesture]{The @class{gtk:gesture-long-press} object which received
           the signal.}

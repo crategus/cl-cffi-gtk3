@@ -128,13 +128,9 @@
 (setf (liber:alias-for-symbol 'stack-transition-type)
       "GEnum"
       (liber:symbol-documentation 'stack-transition-type)
- "@version{#2023-3-27}
-  @begin{short}
-    These enumeration values describe the possible transitions between pages in
-    a @class{gtk:stack} widget.
-  @end{short}
-  New values may be added to this enumeration over time.
-  @begin{pre}
+ "@version{#2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkStackTransitionType\" stack-transition-type
   (:export t
    :type-initializer \"gtk_stack_transition_type_get_type\")
@@ -158,35 +154,43 @@
   (:over-down-up 17)
   (:over-left-right 18)
   (:over-right-left 19))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:none]{No transition}
-    @entry[:crossfade]{A cross fade.}
-    @entry[:slide-right]{Slide from left to right.}
-    @entry[:slide-left]{Slide from right to left.}
-    @entry[:slide-up]{Slide from bottom up.}
-    @entry[:slide-down]{Slide from top down.}
-    @entry[:slide-left-right]{Slide from left or right according to the
-      children order.}
-    @entry[:slide-up-down]{Slide from top down or bottom up according to the
-      order.}
-    @entry[:over-up]{Cover the old page by sliding up.}
-    @entry[:over-down]{Cover the old page by sliding down.}
-    @entry[:over-left]{Cover the old page by sliding to the left.}
-    @entry[:over-right]{Cover the old page by sliding to the right.}
-    @entry[:under-up]{Uncover the new page by sliding up.}
-    @entry[:under-down]{Uncover the new page by sliding down.}
-    @entry[:under-left]{Uncover the new page by sliding to the left.}
-    @entry[:under-right]{Uncover the new page by sliding to the right.}
-    @entry[:over-up-down]{Cover the old page sliding up or uncover the new page
-      sliding down, according to order.}
-    @entry[:over-down-up]{Cover the old page sliding down or uncover the new
-      page sliding up, according to order.}
-    @entry[:over-left-right]{Cover the old page sliding left or uncover the new
-      page sliding right, according to order.}
-    @entry[:over-right-left]{Cover the old page sliding right or uncover the
-      new page sliding left, according to order.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:none]{No transition}
+      @entry[:crossfade]{A cross fade.}
+      @entry[:slide-right]{Slide from left to right.}
+      @entry[:slide-left]{Slide from right to left.}
+      @entry[:slide-up]{Slide from bottom up.}
+      @entry[:slide-down]{Slide from top down.}
+      @entry[:slide-left-right]{Slide from left or right according to the
+        children order.}
+      @entry[:slide-up-down]{Slide from top down or bottom up according to the
+        order.}
+      @entry[:over-up]{Cover the old page by sliding up.}
+      @entry[:over-down]{Cover the old page by sliding down.}
+      @entry[:over-left]{Cover the old page by sliding to the left.}
+      @entry[:over-right]{Cover the old page by sliding to the right.}
+      @entry[:under-up]{Uncover the new page by sliding up.}
+      @entry[:under-down]{Uncover the new page by sliding down.}
+      @entry[:under-left]{Uncover the new page by sliding to the left.}
+      @entry[:under-right]{Uncover the new page by sliding to the right.}
+      @entry[:over-up-down]{Cover the old page sliding up or uncover the new
+        page sliding down, according to order.}
+      @entry[:over-down-up]{Cover the old page sliding down or uncover the new
+        page sliding up, according to order.}
+      @entry[:over-left-right]{Cover the old page sliding left or uncover the
+        new page sliding right, according to order.}
+      @entry[:over-right-left]{Cover the old page sliding right or uncover the
+        new page sliding left, according to order.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    These enumeration values describe the possible transitions between pages in
+    a @class{gtk:stack} widget.
+  @end{short}
+  New values may be added to this enumeration over time.
   @see-class{gtk:stack}")
 
 ;;; ----------------------------------------------------------------------------

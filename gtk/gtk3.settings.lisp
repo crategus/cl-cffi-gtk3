@@ -186,17 +186,19 @@
 (setf (liber:alias-for-symbol 'im-preedit-style)
       "GEnum"
       (liber:symbol-documentation 'im-preedit-style)
- "@version{2023-3-7}
-  @short{Style for input method preedit.}
-  See also the @slot[gtk:settings]{gtk-im-preedit-style} property.
-  @begin{pre}
+ "@version{2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkIMPreeditStyle\" im-preedit-style
   (:export t
    :type-initializer \"gtk_im_preedit_style_get_type\")
   (:nothing 0)
   (:callback 1)
   (:none 2))
-  @end{pre}
+    @end{pre}
+  @end{declaration}
+  @short{Style for input method preedit.}
+  See also the @slot[gtk:settings]{gtk-im-preedit-style} property.
   @begin[Warning]{dictionary}
     The @symbol{gtk:im-preedit-style} enumeration has been deprecated since
     version 3.10 and should not be used in newly written code.
@@ -219,17 +221,19 @@
 (setf (liber:alias-for-symbol 'im-status-style)
       "GEnum"
       (liber:symbol-documentation 'im-status-style)
- "@version{2023-3-7}
-  @short{Style for input method status.}
-  See also the @slot[gtk:settings]{gtk-im-status-style} property.
-  @begin{pre}
+ "@version{2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkIMStatusStyle\" gtk-im-status-style
   (:export t
    :type-initializer \"gtk_im_status_style_get_type\")
   (:nothing 0)
   (:callback 1)
   (:none 2))
-  @end{pre}
+    @end{pre}
+  @end{declaration}
+  @short{Style for input method status.}
+  See also the @slot[gtk:settings]{gtk-im-status-style} property.
   @begin[Warning]{dictionary}
     The @symbol{gtk:im-status-style} enumeration has been deprecated since
     version 3.10 and should not be used in newly written code.
@@ -1095,7 +1099,7 @@
   Size to use for cursors, or 0 to use the default size.
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-decoration-layout -----------------------------------------
+;;; --- gtk:settings-gtk-decoration-layout -------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-decoration-layout"
@@ -1106,22 +1110,23 @@
   client-side decorated windows, and whether they should be placed at the left
   or right. The format of the string is button names, separated by commas. A
   colon separates the buttons that should appear on the left from those on the
-  right. Recognized button names are minimize, maximize, close, icon (the
-  window icon) and menu (a menu button for the fallback app menu). For example,
-  \"menu:minimize,maximize,close\" specifies a menu on the left, and Minimize,
-   Maximize and Close buttons on the right. Note that buttons will only be shown
-  when they are meaningful. E.g. a menu button only appears when the desktop
-  shell does not show the application menu, and a Close button only appears on
-  a window that can be closed. Also note that the setting can be overridden
-  with the @slot[gtk-header-bar]{decoration-layout} property of the header bar.
-  @br{}
-  Default value: \"menu:minimize,maximize,close\"")
+  right. Recognized button names are @code{minimize}, @code{maximize},
+  @code{close}, @code{icon} (the window icon) and @code{menu} (a Menu button for
+  the fallback application menu). For example,
+  @code{\"menu:minimize,maximize,close\"} specifies a Menu button on the left,
+  and Minimize, Maximize and Close buttons on the right. Note that buttons will
+  only be shown when they are meaningful. E.g. a Menu button only appears when
+  the desktop shell does not show the application menu, and a Close button only
+  appears on a window that can be closed. Also note that the setting can be
+  overridden with the @slot[gtk:header-bar]{decoration-layout} property of the
+  header bar. @br{}
+  Default value: @code{\"menu:minimize,maximize,close\"}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'settings-gtk-decoration-layout)
       "Accessor"
       (documentation 'settings-gtk-decoration-layout 'function)
- "@version{2023-3-7}
+ "@version{2024-3-20}
   @syntax{(gtk:settings-gtk-decoration-layout object) => setting}
   @syntax{(setf gtk:settings-gtk-decoration-layout object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -1136,21 +1141,25 @@
 
   The format of the string is button names, separated by commas. A colon
   separates the buttons that should appear on the left from those on the right.
-  Recognized button names are minimize, maximize, close, icon (the window icon)
-  and menu (a menu button for the fallback app menu).
+  Recognized button names are @code{minimize}, @code{maximize}, @code{close},
+  @code{icon} (the window icon) and @code{menu} (a Menu button for the fallback
+  application menu).
 
-  For example, \"menu:minimize,maximize,close\" specifies a menu on the left,
-  and Minimize, Maximize and Close buttons on the right.
+  For example, @code{\"menu:minimize,maximize,close\"} specifies a Menu button
+  on the left, and Minimize, Maximize and Close buttons on the right.
 
-  Note that buttons will only be shown when they are meaningful. E.g. a menu
-  button only appears when the desktop shell does not show the app menu, and a
-  Close button only appears on a window that can be closed.
+  Note that buttons will only be shown when they are meaningful. E.g. a Menu
+  button only appears when the desktop shell does not show the application menu,
+  and a Close button only appears on a window that can be closed.
 
   Also note that the setting can be overridden with the
-  @slot[gtk-header-bar]{decoration-layout} property of the header bar.
+  @slot[gtk:header-bar]{decoration-layout} property of the header bar. See also
+  the @slot[gtk:window]{decorated} property and the @fun{gtk:window-decorated}
+  function.
   @see-class{gtk:settings}
   @see-class{gtk:header-bar}
-  @see-function{gtk:header-bar-decoration-layout}")
+  @see-function{gtk:header-bar-decoration-layout}
+  @see-function{gtk:window-decorated}")
 
 ;;; --- settings-gtk-dialogs-use-header ----------------------------------------
 

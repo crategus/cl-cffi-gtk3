@@ -258,8 +258,9 @@ lambda (job)    :run-last
                                                'print-job) t)
  "The @code{track-print-status} property of type @code{:boolean}
   (Read / Write) @br{}
-  @em{True} if the print job will continue to emit \"status-changed\" signals
-  after the print data has been sent to the printer or print server. @br{}
+  @em{True} if the print job will continue to emit @code{\"status-changed\"}
+  signals after the print data has been sent to the printer or print server.
+  @br{}
   Default value: @em{false}")
 
 #+liber-documentation

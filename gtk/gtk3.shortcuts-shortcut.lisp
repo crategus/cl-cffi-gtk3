@@ -87,13 +87,9 @@
 (setf (liber:alias-for-symbol 'shortcut-type)
       "GEnum"
       (liber:symbol-documentation 'shortcut-type)
- "@version{#2023-2-28}
-  @begin{short}
-    The @symbol{gtk:shortcut-type} enumeration specifies the kind of shortcut
-    that is being described.
-  @end{short}
-  More values may be added to this enumeration over time.
-  @begin{pre}
+ "@version{#2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkShortcutType\" shortcut-type
   (:export t
    :type-initializer \"gtk_shortcut_type_get_type\")
@@ -105,25 +101,33 @@
   :gesture-two-finger-swipe-left
   :gesture-two-finger-swipe-right
   :gesture)
-  @end{pre}
-  @begin[code]{table}
-    @entry[:accelerator]{The shortcut is a keyboard accelerator. The
-      @code{accelerator} property will be used.}
-    @entry[:gesture-pinch]{The shortcut is a pinch gesture. GTK provides an
-      icon and subtitle.}
-    @entry[:gesture-stretch]{The shortcut is a stretch gesture. GTK provides an
-      icon and subtitle.}
-    @entry[:gesture-rotate-clockwise]{The shortcut is a clockwise rotation
-      gesture. GTK provides an icon and subtitle.}
-    @entry[:gesture-rotate-counter-clockwise]{The shortcut is a counterclockwise
-      rotation gesture. GTK provides an icon and subtitle.}
-    @entry[:gesture-two-finger-swipe-left]{The shortcut is a two-finger swipe
-      gesture. GTK provides an icon and subtitle.}
-    @entry[:gesture-two-finger-swipe-right]{The shortcut is a two-finger swipe
-      gesture. GTK provides an icon and subtitle.}
-    @entry[:gesture]{The shortcut is a gesture. The @code{icon} property will
-      be used.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:accelerator]{The shortcut is a keyboard accelerator. The
+        @code{accelerator} property will be used.}
+      @entry[:gesture-pinch]{The shortcut is a pinch gesture. GTK provides an
+        icon and subtitle.}
+      @entry[:gesture-stretch]{The shortcut is a stretch gesture. GTK provides
+        an icon and subtitle.}
+      @entry[:gesture-rotate-clockwise]{The shortcut is a clockwise rotation
+        gesture. GTK provides an icon and subtitle.}
+      @entry[:gesture-rotate-counter-clockwise]{The shortcut is a
+        counterclockwise rotation gesture. GTK provides an icon and subtitle.}
+      @entry[:gesture-two-finger-swipe-left]{The shortcut is a two-finger swipe
+        gesture. GTK provides an icon and subtitle.}
+      @entry[:gesture-two-finger-swipe-right]{The shortcut is a two-finger swipe
+        gesture. GTK provides an icon and subtitle.}
+      @entry[:gesture]{The shortcut is a gesture. The @code{icon} property will
+        be used.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    The @symbol{gtk:shortcut-type} enumeration specifies the kind of shortcut
+    that is being described.
+  @end{short}
+  More values may be added to this enumeration over time.
   @see-class{gtk:shortcuts-shortcut}")
 
 ;;; ----------------------------------------------------------------------------

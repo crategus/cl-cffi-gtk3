@@ -103,8 +103,8 @@
   The @class{gtk:dialog} functions cannot be used on such objects, but we need
   a similar API in order to drive them. The @class{gtk:native-dialog} object is
   an API that allows you to do this. It allows you to set various common
-  properties on the dialog, as well as show and hide it and get a \"response\"
-  signal when the user finished with the dialog.
+  properties on the dialog, as well as show and hide it and get a
+  @code{\"response\"} signal when the user finished with the dialog.
 
   There is also a @fun{gtk:native-dialog-run} helper function that makes it
   easy to run any native dialog in a modal way with a recursive main loop,
@@ -262,7 +262,7 @@ lambda (dialog id)    :run-last
     it.
   @end{short}
   When the user accepts the state of the dialog window the dialog window will
-  be automatically hidden and the \"response\" signal will be emitted.
+  be automatically hidden and the @code{\"response\"} signal will be emitted.
 
   Multiple calls while the dialog window is visible will be ignored.
   @see-class{gtk:native-dialog}"
@@ -281,8 +281,8 @@ lambda (dialog id)    :run-last
   @begin{short}
     Hides the dialog window if it is visible, aborting any interaction.
   @end{short}
-  Once this is called the \"response\" signal will not be emitted until after
-  the next call to the @fun{gtk:native-dialog-show} function.
+  Once this is called the @code{\"response\"} signal will not be emitted until
+  after the next call to the @fun{gtk:native-dialog-show} function.
 
   If the dialog window is not visible this does nothing.
   @see-class{gtk:native-dialog}
@@ -325,9 +325,10 @@ lambda (dialog id)    :run-last
   @argument[dialog]{a @class{gtk:native-dialog} widget}
   @return{an integer with the response ID}
   @begin{short}
-    Blocks in a recursive main loop until self emits the \"response\" signal.
+    Blocks in a recursive main loop until self emits the @code{\"response\"}
+    signal.
   @end{short}
-  It then returns the response ID from the \"response\" signal emission.
+  It then returns the response ID from the @code{\"response\"} signal emission.
 
   Before entering the recursive main loop, the @fun{gtk:native-dialog-run}
   function calls the @fun{gtk:native-dialog-show} function on the dialog for

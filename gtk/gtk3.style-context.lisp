@@ -174,11 +174,9 @@
 (setf (liber:alias-for-symbol 'junction-sides)
       "GFlags"
       (liber:symbol-documentation 'junction-sides)
- "@version{#2023-3-27}
-  @begin{short}
-    Describes how a rendered element connects to adjacent elements.
-  @end{short}
-  @begin{pre}
+ "@version{#2024-3-21}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-flags \"GtkJunctionSides\" junction-sides
   (:export t
    :type-initializer \"gtk_junction_sides_get_type\")
@@ -191,18 +189,24 @@
   (:left 5)
   (:bottom 6)
   (:right 10))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:none]{No junctions.}
-    @entry[:corner-topleft]{Element connects on the top-left corner.}
-    @entry[:corner-topright]{Element connects on the top-right corner.}
-    @entry[:corner-bottomleft]{Element connects on the bottom-left corner.}
-    @entry[:corner-bottomright]{Element connects on the bottom-right corner.}
-    @entry[:top]{Element connects on the top side.}
-    @entry[:bottom]{Element connects on the bottom side.}
-    @entry[:left]{Element connects on the left side.}
-    @entry[:right]{Element connects on the right side.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:none]{No junctions.}
+      @entry[:corner-topleft]{Element connects on the top-left corner.}
+      @entry[:corner-topright]{Element connects on the top-right corner.}
+      @entry[:corner-bottomleft]{Element connects on the bottom-left corner.}
+      @entry[:corner-bottomright]{Element connects on the bottom-right corner.}
+      @entry[:top]{Element connects on the top side.}
+      @entry[:bottom]{Element connects on the bottom side.}
+      @entry[:left]{Element connects on the left side.}
+      @entry[:right]{Element connects on the right side.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Describes how a rendered element connects to adjacent elements.
+  @end{short}
   @see-class{gtk:style-context}")
 
 ;;; ----------------------------------------------------------------------------
@@ -220,26 +224,30 @@
 (setf (liber:alias-for-symbol 'style-context-print-flags)
       "GFlags"
       (liber:symbol-documentation 'style-context-print-flags)
- "@version{#2023-3-27}
-  @begin{short}
-    Flags that modify the behavior of the @fun{gtk:style-context-to-string}
-    function.
-  @end{short}
-  New values may be added to this enumeration.
-  @begin{pre}
+ "@version{#2024-3-21}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-flags \"GtkStyleContextPrintFlags\" style-context-print-flags
   (:export t
    :type-initializer \"gtk_style_context_print_flags_get_type\")
   (:none 0)
   (:recurse #.(ash 1 0))
   (:show-style #.(ash 1 1)))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:none]{}
-    @entry[:recurse]{Print the entire tree of CSS nodes starting at the node
-    of the style context.}
-    @entry[:show-style]{Show the values of the CSS properties for each node.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:none]{}
+      @entry[:recurse]{Print the entire tree of CSS nodes starting at the node
+        of the style context.}
+      @entry[:show-style]{Show the values of the CSS properties for each node.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Flags that modify the behavior of the @fun{gtk:style-context-to-string}
+    function.
+  @end{short}
+  New values may be added to this enumeration.
   @see-class{gtk:style-context}
   @see-function{gtk:style-context-to-string}")
 
@@ -265,11 +273,9 @@
 (setf (liber:alias-for-symbol 'border-style)
       "GEnum"
       (liber:symbol-documentation 'border-style)
- "@version{#2023-3-27}
-  @begin{short}
-    Describes how the border of a UI element should be rendered.
-  @end{short}
-  @begin{pre}
+ "@version{#2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkBorderStyle\" border-style
   (:export t
    :type-initializer \"gtk_border_style_get_type\")
@@ -283,19 +289,25 @@
   :double
   :groove
   :ridge)
-  @end{pre}
-  @begin[code]{table}
-    @entry[:none]{No visible border.}
-    @entry[:solid]{A single line segment.}
-    @entry[:inset]{Looks as if the content is sunken into the canvas.}
-    @entry[:outset]{Looks as if the content is coming out of the canvas.}
-    @entry[:hidden]{Same as the @code{:none} value.}
-    @entry[:dotted]{A series of round dots.}
-    @entry[:dashed]{A series of square-ended dashes.}
-    @entry[:double]{Two parrallel lines with some space between them.}
-    @entry[:groove]{Looks as if it were carved in the canvas.}
-    @entry[:ridge]{Looks as if it were coming out of the canvas.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:none]{No visible border.}
+      @entry[:solid]{A single line segment.}
+      @entry[:inset]{Looks as if the content is sunken into the canvas.}
+      @entry[:outset]{Looks as if the content is coming out of the canvas.}
+      @entry[:hidden]{Same as the @code{:none} value.}
+      @entry[:dotted]{A series of round dots.}
+      @entry[:dashed]{A series of square-ended dashes.}
+      @entry[:double]{Two parrallel lines with some space between them.}
+      @entry[:groove]{Looks as if it were carved in the canvas.}
+      @entry[:ridge]{Looks as if it were coming out of the canvas.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Describes how the border of a UI element should be rendered.
+  @end{short}
   @see-class{gtk:style-context}")
 
 ;;; ----------------------------------------------------------------------------

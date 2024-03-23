@@ -75,7 +75,7 @@
   @begin{short}
     The @class{gtk:gesture-multi-press} object is a @class{gtk:gesture}
     implementation able to recognize multiple clicks on a nearby zone, which can
-    be listened for through the \"pressed\" signal.
+    be listened for through the @code{\"pressed\"} signal.
   @end{short}
   Whenever time or distance between clicks exceed the GTK defaults, \"stopped\"
   is emitted, and the click counter is reset.
@@ -106,9 +106,9 @@ lambda (gesture n-press x y)    :run-last
       @end{pre}
       The signal is emitted when a button or touch is released. The
       @arg{n-press} argument will report the number of press that is paired to
-      this event, note that the \"stopped\" signal may have been emitted between
-      the press and its release, the @arg{n-press} argument will only start over
-      at the next press.
+      this event, note that the @code{\"stopped\"} signal may have been emitted
+      between the press and its release, the @arg{n-press} argument will only
+      start over at the next press.
       @begin[code]{table}
         @entry[gesture]{The @class{gtk:gesture-multi-press} object which
           received the signal.}

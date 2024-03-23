@@ -106,8 +106,8 @@
 lambda (action current)    :no-recurse
       @end{pre}
       The signal is emitted on every member of a radio group when the active
-      member is changed. The signal gets emitted after the \"activate\" signals
-      for the previous and current active members.
+      member is changed. The signal gets emitted after the @code{\"activate\"}
+      signals for the previous and current active members.
       @begin[code]{table}
         @entry[action]{The @class{gtk:radio-action} object on which the signal
           is emitted.}
@@ -209,8 +209,8 @@ while (/* more actions to add */)
 (setf (documentation (liber:slot-documentation "value" 'radio-action) t)
  "The @code{value} property of type @code{:int} (Read / Write) @br{}
   The value is an integer which can be used as a convenient way to determine
-  which action in the group is currently active in an \"activate\" or
-  \"changed\" signal handler. @br{}
+  which action in the group is currently active in an @code{\"activate\"} or
+  @code{\"changed\"} signal handler. @br{}
   Default value: 0")
 
 #+liber-documentation
@@ -228,8 +228,8 @@ while (/* more actions to add */)
     @class{gtk:radio-action} class.
   @end{short}
   The value is an integer which can be used as a convenient way to determine
-  which action in the group is currently active in an \"activate\" or
-  \"changed\" signal handler.
+  which action in the group is currently active in an @code{\"activate\"} or
+  @code{\"changed\"} signal handler.
   @begin[Warning]{dictionary}
     The @fun{gtk:radio-action-value} function has been deprecated since version
     3.10 and should not be used in newly written code.

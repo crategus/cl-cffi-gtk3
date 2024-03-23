@@ -80,9 +80,9 @@
   @class{pango:context} objects that match the font metrics of the Cairo
   surface.
 
-  The @class{gtk:print-context} object gets passed to the \"begin-print\",
-  \"end-print\", \"request-page-setup\" and \"draw-page\" signals on the print
-  operation.
+  The @class{gtk:print-context} object gets passed to the
+  @code{\"begin-print\"}, @code{\"end-print\"}, @code{\"request-page-setup\"}
+  and @code{\"draw-page\"} signals on the print operation.
   @begin{examples}
     Using the @class{gtk:print-context} object in a \"draw-page\" callback.
     @begin{pre}

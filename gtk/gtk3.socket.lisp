@@ -116,7 +116,7 @@ g_print (\"The ID of the sockets window is
   will destroy the socket as well. You should always, therefore, be prepared
   for your sockets to be destroyed at any time when the main event loop is
   running. To prevent this from happening, you can connect to the
-  \"plug-removed\" signal.
+  @code{\"plug-removed\"} signal.
 
   The communication between a @class{gtk:socket} and a @class{gtk:plug} widget
   follows the XEmbed protocol. This protocol has also been implemented in other

@@ -382,7 +382,7 @@ lambda (infobar response)    :run-last
   Button text/response ID pairs should be listed. Button text can be some
   arbitrary text. A response ID can be any positive number, or one of the values
   in the @symbol{gtk:response-type} enumeration. If the user clicks one of these
-  dialog buttons, the info bar will emit the \"response\" signal with the
+  dialog buttons, the info bar will emit the @code{\"response\"} signal with the
   corresponding response ID.
   @see-class{gtk:info-bar}
   @see-symbol{gtk:response-type}"
@@ -405,8 +405,8 @@ lambda (infobar response)    :run-last
   @argument[response]{an integer with the response ID for @arg{child}}
   @begin{short}
     Add an activatable widget to the action area of an info bar, connecting a
-    signal handler that will emit the \"response\" signal on the message area
-    when the widget is activated.
+    signal handler that will emit the @code{\"response\"} signal on the message
+    area when the widget is activated.
   @end{short}
   The widget is appended to the end of the message areas action area.
   @see-class{gtk:info-bar}"
@@ -429,7 +429,7 @@ lambda (infobar response)    :run-last
   @return{The @class{gtk:button} widget that was added.}
   @begin{short}
     Adds a button with the given text, and sets things up so that clicking the
-    button will emit the \"response\" signal with the given response ID.
+    button will emit the @code{\"response\"} signal with the given response ID.
   @end{short}
   The button is appended to the end of the action area of the info bar. The
   button widget is returned, but usually you do not need it.
@@ -521,7 +521,7 @@ lambda (infobar response)    :run-last
  "@version{#2023-3-20}
   @argument[infobar]{a @class{gtk:info-bar} widget}
   @argument[response]{an integer with a response ID}
-  @short{Emits the \"response\" signal with the given response ID.}
+  @short{Emits the @code{\"response\"} signal with the given response ID.}
   @see-class{gtk:info-bar}"
   (infobar (g:object info-bar))
   (response :int))

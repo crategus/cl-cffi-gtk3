@@ -134,23 +134,27 @@
 (setf (liber:alias-for-symbol 'level-bar-mode)
       "GEnum"
       (liber:symbol-documentation 'level-bar-mode)
- "@version{#2023-3-20}
-  @begin{short}
-    Describes how the @class{gtk:level-bar} widget contents should be rendered.
-  @end{short}
-  Note that this enumeration could be extended with additional modes in the
-  future.
-  @begin{pre}
+ "@version{#2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkLevelBarMode\" level-bar-mode
   (:export t
    :type-initializer \"gtk_level_bar_mode_get_type\")
   (:continuous 0)
   (:discrete 1))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:continuous]{The level bar has a continuous mode.}
-    @entry[:discrete]{The level bar has a discrete mode.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:continuous]{The level bar has a continuous mode.}
+      @entry[:discrete]{The level bar has a discrete mode.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Describes how the @class{gtk:level-bar} widget contents should be rendered.
+  @end{short}
+  Note that this enumeration could be extended with additional modes in the
+  future.
   @see-class{gtk:level-bar}")
 
 ;;; ----------------------------------------------------------------------------

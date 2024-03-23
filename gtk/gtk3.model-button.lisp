@@ -85,24 +85,28 @@
 (setf (liber:alias-for-symbol 'button-role)
       "GEnum"
       (liber:symbol-documentation 'button-role)
- "@version{#2023-3-21}
-  @begin{short}
-    The role specifies the desired appearance of a @class{gtk:model-button}
-    widget.
-  @end{short}
-  @begin{pre}
+ "@version{#2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkButtonRole\" button-role
   (:export t
    :type-initializer \"gtk_button_role_get_type\")
   :normal
   :check
   :radio)
-  @end{pre}
-  @begin[code]{table}
-    @entry[:normal]{A plain button.}
-    @entry[:check]{A check button.}
-    @entry[:radio]{A radio button.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:normal]{A plain button.}
+      @entry[:check]{A check button.}
+      @entry[:radio]{A radio button.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    The role specifies the desired appearance of a @class{gtk:model-button}
+    widget.
+  @end{short}
   @see-class{gtk:model-button}")
 
 ;;; ----------------------------------------------------------------------------

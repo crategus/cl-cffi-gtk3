@@ -155,27 +155,31 @@
 (setf (liber:alias-for-symbol 'text-search-flags)
       "GFlags"
       (liber:symbol-documentation 'text-search-flags)
- "@version{2023-2-2}
-  @short{Flags affecting how a search is done.}
-  If neither @code{:visible-only} nor @code{:text-only} are enabled, the match
-  must be exact. The special @code{0xFFFC} character will match embedded pixbufs
-  or child widgets.
-  @begin{pre}
+ "@version{2024-3-21}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-flags \"GtkTextSearchFlags\" text-search-flags
   (:export t
    :type-initializer \"gtk_text_search_flags_get_type\")
   (:visible-only 1)
   (:text-only 2)
   (:case-insensitive 4))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:visible-only]{Search only visible data. A search match may have
-      invisible text interspersed.}
-    @entry[:text-only]{Search only text. A match may have pixbufs or child
-      widgets mixed inside the matched range.}
-    @entry[:case-insensitive]{The text will be matched regardless of what case
-      it is in.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:visible-only]{Search only visible data. A search match may have
+        invisible text interspersed.}
+      @entry[:text-only]{Search only text. A match may have pixbufs or child
+        widgets mixed inside the matched range.}
+      @entry[:case-insensitive]{The text will be matched regardless of what case
+        it is in.}
+    @end{table}
+  @end{values}
+  @short{Flags affecting how a search is done.}
+  If neither @code{:visible-only} nor @code{:text-only} are enabled, the match
+  must be exact. The special @code{0xFFFC} character will match embedded pixbufs
+  or child widgets.
   @see-class{gtk:text-iter}
   @see-function{gtk:text-iter-search}")
 

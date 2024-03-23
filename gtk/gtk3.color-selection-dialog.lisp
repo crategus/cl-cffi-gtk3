@@ -100,8 +100,9 @@
   Use the @fun{gtk:color-selection-dialog-color-selection} function to get the
   @class{gtk:color-selection} widget contained within the dialog. Use this
   widget and its @fun{gtk:color-selection-current-color} function to gain
-  access to the selected color. Connect a handler for the \"color-changed\"
-  signal of the widget to be notified when the color changes.
+  access to the selected color. Connect a handler for the
+  @code{\"color-changed\"} signal of the widget to be notified when the color
+  changes.
   @begin[GtkColorSelectionDialog as GtkBuildable]{dictionary}
     The @class{gtk:color-selection-dialog} implementation of the
     @class{gtk:buildable} interface exposes the embedded

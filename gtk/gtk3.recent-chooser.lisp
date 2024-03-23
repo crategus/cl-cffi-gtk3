@@ -124,22 +124,26 @@
 (setf (liber:alias-for-symbol 'recent-chooser-error)
       "GEnum"
       (liber:symbol-documentation 'recent-chooser-error)
- "@version{#2023-3-24}
-  @begin{short}
-    These identify the various errors that can occur while calling
-    @class{gtk:recent-chooser} functions.
-  @end{short}
-  @begin{pre}
+ "@version{#2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkRecentChooserError\" recent-chooser-error
   (:export t
    :type-initializer \"gtk_recent_chooser_error_get_type\")
   (:not-found 0)
   (:invalid-uri 1))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:not-found]{Indicates that a file does not exist.}
-    @entry[:invalid-uri]{Indicates a malformed URI.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:not-found]{Indicates that a file does not exist.}
+      @entry[:invalid-uri]{Indicates a malformed URI.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    These identify the various errors that can occur while calling
+    @class{gtk:recent-chooser} functions.
+  @end{short}
   @see-class{gtk:recent-chooser}")
 
 ;;; ----------------------------------------------------------------------------
@@ -158,12 +162,9 @@
 (setf (liber:alias-for-symbol 'recent-sort-type)
       "GEnum"
       (liber:symbol-documentation 'recent-sort-type)
- "@version{#2023-3-24}
-  @begin{short}
-    Used to specify the sorting method to be applyed to the recently used
-    resource list.
-  @end{short}
-  @begin{pre}
+ "@version{#2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkRecentSortType\" recent-sort-type
   (:export t
    :type-initializer \"gtk_recent_sort_type_get_type\")
@@ -171,16 +172,23 @@
   (:mru 1)
   (:lru 2)
   (:custom 3))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:none]{Do not sort the returned list of recently used resources.}
-    @entry[:mru]{Sort the returned list with the most recently used items
-      first.}
-    @entry[:lru]{Sort the returned list with the least recently used items
-      first.}
-    @entry[:custom]{Sort the returned list using a custom sorting function
-      passed using the @fun{gtk:recent-chooser-set-sort-func} function.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:none]{Do not sort the returned list of recently used resources.}
+      @entry[:mru]{Sort the returned list with the most recently used items
+        first.}
+      @entry[:lru]{Sort the returned list with the least recently used items
+        first.}
+      @entry[:custom]{Sort the returned list using a custom sorting function
+        passed using the @fun{gtk:recent-chooser-set-sort-func} function.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Used to specify the sorting method to be applyed to the recently used
+    resource list.
+  @end{short}
   @see-class{gtk:recent-chooser}
   @see-function{gtk:recent-chooser-set-sort-func}")
 

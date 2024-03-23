@@ -206,7 +206,7 @@ g_object_unref (native);
   @begin{itemize}
     @item{Extra widgets added with the @fun{gtk:file-chooser-extra-widget}
       function.}
-    @item{Use of custom previews by connecting to the \"update-preview\"
+    @item{Use of custom previews by connecting to the @code{\"update-preview\"}
       signal.}
     @item{Any @class{gtk:file-filter} object added using a mimetype or custom
       filter.}
@@ -223,7 +223,7 @@ g_object_unref (native);
   @begin{itemize}
     @item{Extra widgets added with the @fun{gtk:file-chooser-extra-widget}
       function.}
-    @item{Use of custom previews by connecting to the \"update-preview\"
+    @item{Use of custom previews by connecting to the @code{\"update-preview\"}
       signal.}
     @item{Any @class{gtk:file-filter} object added with a custom filter.}
   @end{itemize}
@@ -236,7 +236,7 @@ g_object_unref (native);
       function, unless the widget is an instance of the @class{gtk:label}
       widget, in which case the label text will be used to set the
       @code{NSSavePanel} message instance property.}
-    @item{Use of custom previews by connecting to the \"update-preview\"
+    @item{Use of custom previews by connecting to the @code{\"update-preview\"}
       signal.}
     @item{Any @class{gtk:file-filter} object added with a custom filter.}
     @item{Shortcut folders.}

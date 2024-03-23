@@ -168,7 +168,24 @@
 (setf (liber:alias-for-symbol 'resize-mode)
       "GEnum"
       (liber:symbol-documentation 'resize-mode)
- "@version{2023-3-3}
+ "@version{2024-3-21}
+  @begin{declaration}
+    @begin{pre}
+(gobject:define-g-enum \"GtkResizeMode\" resize-mode
+  (:export t
+   :type-initializer \"gtk_resize_mode_get_type\")
+  (:parent 0)
+  (:queue 1)
+  (:immediate 2))
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:parent]{Pass resize request to the parent.}
+      @entry[:queue]{Queue resizes on this widget.}
+      @entry[:immediate]{Resize immediately.}
+    @end{table}
+  @end{values}
   @begin{short}
     An enumeration representing the values of the
     @slot[gtk:container]{resize-mode} property.
@@ -178,19 +195,6 @@
     newly written code. They are not necessary anymore since frame clocks and
     might introduce obscure bugs if used.
   @end{dictionary}
-  @begin{pre}
-(gobject:define-g-enum \"GtkResizeMode\" resize-mode
-  (:export t
-   :type-initializer \"gtk_resize_mode_get_type\")
-  (:parent 0)
-  (:queue 1)
-  (:immediate 2))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:parent]{Pass resize request to the parent.}
-    @entry[:queue]{Queue resizes on this widget.}
-    @entry[:immediate]{Resize immediately.}
-  @end{table}
   @see-class{gtk:container}
   @see-function{gtk:container-resize-mode}")
 

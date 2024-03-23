@@ -101,11 +101,9 @@
 (setf (liber:alias-for-symbol 'menu-direction-type)
       "GEnum"
       (liber:symbol-documentation 'menu-direction-type)
- "@version{#2023-3-21}
-  @begin{short}
-    An enumeration representing directional movements within a menu.
-  @end{short}
-  @begin{pre}
+ "@version{#2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkMenuDirectionType\" menu-direction-type
   (:export t
    :type-initializer \"gtk_menu_direction_type_get_type\")
@@ -113,13 +111,19 @@
   (:child 1)
   (:next 2)
   (:prev 3))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:parent]{Movement to the parent menu shell.}
-    @entry[:child]{Movement to the submenu, if any, associated with the item.}
-    @entry[:next]{Movement to the next menu item.}
-    @entry[:prev]{Movement to the previous menu item.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:parent]{Movement to the parent menu shell.}
+      @entry[:child]{Movement to the submenu, if any, associated with the item.}
+      @entry[:next]{Movement to the next menu item.}
+      @entry[:prev]{Movement to the previous menu item.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    An enumeration representing directional movements within a menu.
+  @end{short}
   @see-class{gtk:menu-shell}")
 
 ;;; ----------------------------------------------------------------------------
@@ -182,7 +186,7 @@ lambda (menushell force-hide)    :action
 lambda (menushell)    :action
       @end{pre}
       An action signal which cancels the selection within the menu shell.
-      Causes the \"selection-done\" signal to be emitted.
+      Causes the @code{\"selection-done\"} signal to be emitted.
       @begin[code]{table}
         @entry[menushell]{The @class{gtk:menu-shell} widget which received the
           signal.}
@@ -213,9 +217,9 @@ lambda (menushell child position)    :run-first
       @end{pre}
       The signal is emitted when a new menu item is added to a
       @class{gtk:menu-shell} widget. A separate signal is used instead of the
-      \"GtkContainer::add\" signal because of the need for an additional
+      @code{\"GtkContainer::add\"} signal because of the need for an additional
       position parameter. The inverse of this signal is the
-      \"GtkContainer::removed\" signal.
+      @code{\"GtkContainer::removed\"} signal.
       @begin[code]{table}
         @entry[menushell]{The @class{gtk:menu-shell} widget on which the signal
           is emitted.}

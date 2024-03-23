@@ -77,9 +77,9 @@
     The @class{gtk:gesture-drag} object is a @class{gtk:gesture} implementation
     that recognizes drag operations.
   @end{short}
-  The drag operation itself can be tracked throught the \"drag-begin\",
-  \"drag-update\" and \"drag-end\" signals, or the relevant coordinates be
-  extracted through the @fun{gtk:gesture-drag-offset} and
+  The drag operation itself can be tracked throught the @code{\"drag-begin\"},
+  @code{\"drag-update\"} and @code{\"drag-end\"} signals, or the relevant
+  coordinates be extracted through the @fun{gtk:gesture-drag-offset} and
   @fun{gtk:gesture-drag-start-point} functions.
   @begin[Signal Details]{dictionary}
     @subheading{The \"drag-begin\" signal}

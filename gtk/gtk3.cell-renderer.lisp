@@ -304,8 +304,8 @@ lambda (renderer)    :run-first
       editing when the user presses the @kbd{Escape} key. See also the
       @fun{gtk:cell-renderer-stop-editing} function.
       @begin[code]{table}
-        @entry[renderer]{The @class{gtk:cell-renderer} object which received the
-          signal.}
+        @entry[renderer]{The @class{gtk:cell-renderer} object which received
+        the signal.}
       @end{table}
     @subheading{The \"editing-started\" signal}
       @begin{pre}
@@ -319,8 +319,8 @@ lambda (renderer editable path)    :run-first
       future releases, therefore you should check the type of the @arg{editable}
       argument before doing any specific setup.
       @begin[code]{table}
-        @entry[renderer]{The @class{gtk:cell-renderer} object which received the
-          signal.}
+        @entry[renderer]{The @class{gtk:cell-renderer} object which received
+          the signal.}
         @entry[editable]{The @class{gtk:cell-editable} widget.}
         @entry[path]{The string with the path identifying the edited cell.}
       @end{table}

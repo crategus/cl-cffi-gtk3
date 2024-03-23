@@ -226,23 +226,27 @@
 (setf (liber:alias-for-symbol 'entry-icon-position)
       "GEnum"
       (liber:symbol-documentation 'entry-icon-position)
- "@version{2023-3-4}
-  @begin{short}
-    Specifies the side of the entry at which an icon is placed.
-  @end{short}
-  @begin{pre}
+ "@version{2024-3-21}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkEntryIconPosition\" entry-icon-position
   (:export t
    :type-initializer \"gtk_entry_icon_position_get_type\")
   (:primary 0)
   (:secondary 1))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:primary]{At the beginning of the entry, depending on the text
-      direction.}
-    @entry[:secondary]{At the end of the entry, depending on the text
-      direction.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:primary]{At the beginning of the entry, depending on the text
+        direction.}
+      @entry[:secondary]{At the end of the entry, depending on the text
+        direction.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Specifies the side of the entry at which an icon is placed.
+  @end{short}
   @see-class{gtk:entry}")
 
 ;;; ----------------------------------------------------------------------------
@@ -267,7 +271,38 @@
 (setf (liber:alias-for-symbol 'input-purpose)
       "GEnum"
       (liber:symbol-documentation 'input-purpose)
- "@version{2023-3-4}
+ "@version{2024-3-21}
+  @begin{declaration}
+    @begin{pre}
+(gobject:define-g-enum \"GtkInputPurpose\" input-purpose
+  (:export t
+   :type-initializer \"gtk_input_purpose_get_type\")
+  (:free-form 0)
+  (:alpha 1)
+  (:digits 2)
+  (:number 3)
+  (:phone 4)
+  (:url 5)
+  (:email 6)
+  (:name 7)
+  (:password 8)
+  (:pin 9))
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:free-form]{Allow any character.}
+      @entry[:alpha]{Allow only alphabetic characters.}
+      @entry[:digits]{Allow only digits.}
+      @entry[:number]{Edited field expects numbers.}
+      @entry[:phone]{Edited field expects phone number.}
+      @entry[:url]{Edited field expects URL.}
+      @entry[:email]{Edited field expects email address.}
+      @entry[:name]{Edited field expects the name of a person.}
+      @entry[:password]{Like @code{:free-form}, but characters are hidden.}
+      @entry[:pin]{Like @code{:digits}, but characters are hidden.}
+    @end{table}
+  @end{values}
   @begin{short}
     Describes primary purpose of the input widget.
   @end{short}
@@ -286,33 +321,6 @@
 
   This enumeration may be extended in the future. Input methods should
   interpret unknown values as 'free form'.
-  @begin{pre}
-(gobject:define-g-enum \"GtkInputPurpose\" input-purpose
-  (:export t
-   :type-initializer \"gtk_input_purpose_get_type\")
-  (:free-form 0)
-  (:alpha 1)
-  (:digits 2)
-  (:number 3)
-  (:phone 4)
-  (:url 5)
-  (:email 6)
-  (:name 7)
-  (:password 8)
-  (:pin 9))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:free-form]{Allow any character.}
-    @entry[:alpha]{Allow only alphabetic characters.}
-    @entry[:digits]{Allow only digits.}
-    @entry[:number]{Edited field expects numbers.}
-    @entry[:phone]{Edited field expects phone number.}
-    @entry[:url]{Edited field expects URL.}
-    @entry[:email]{Edited field expects email address.}
-    @entry[:name]{Edited field expects the name of a person.}
-    @entry[:password]{Like @code{:free-form}, but characters are hidden.}
-    @entry[:pin]{Like @code{:digits}, but characters are hidden.}
-  @end{table}
   @see-class{gtk:entry}
   @see-symbol{gtk:input-hints}")
 
@@ -340,20 +348,9 @@
 (setf (liber:alias-for-symbol 'input-hints)
       "GFlags"
       (liber:symbol-documentation 'input-hints)
- "@version{2023-3-13}
-  @begin{short}
-    Describes hints that might be taken into account by input methods or
-    applications.
-  @end{short}
-  Note that input methods may already tailor their behaviour according to the
-  @symbol{gtk:input-purpose} value of the entry.
-
-  Some common sense is expected when using these flags - mixing
-  @code{:lowercase} with any of the uppercase hints makes no sense.
-
-  This flags may be extended in the future. Input methods should ignore
-  unknown values.
-  @begin{pre}
+ "@version{2024-3-21}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-flags \"GtkInputHints\" input-hints
   (:export t
    :type-initializer \"gtk_input_hints_get_type\")
@@ -369,24 +366,39 @@
   (:vertical-writing    #.(ash 1 8))
   (:emoji               #.(ash 1 9))
   (:no-emoji            #.(ash 1 10)))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:none]{No special behaviour suggested.}
-    @entry[:spellcheck]{Suggest checking for typos.}
-    @entry[:no-spellcheck]{Suggest not checking for typos.}
-    @entry[:word-completion]{Suggest word completion.}
-    @entry[:lowercase]{Suggest to convert all text to lowercase.}
-    @entry[:uppercase-chars]{Suggest to capitalize all text.}
-    @entry[:uppercase-words]{Suggest to capitalize the first character of each
-      word.}
-    @entry[:uppercase-sentences]{Suggest to capitalize the first word of each
-      sentence.}
-    @entry[:inhibit-osk]{Suggest to not show an onscreen keyboard, e.g. for a
-      calculator that already has all the keys.}
-    @entry[:vertical-writing]{The text is vertical.}
-    @entry[:emoji]{Suggest offering Emoji support.}
-    @entry[:no-emoji]{Suggest not offering Emoji support.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:none]{No special behaviour suggested.}
+      @entry[:spellcheck]{Suggest checking for typos.}
+      @entry[:no-spellcheck]{Suggest not checking for typos.}
+      @entry[:word-completion]{Suggest word completion.}
+      @entry[:lowercase]{Suggest to convert all text to lowercase.}
+      @entry[:uppercase-chars]{Suggest to capitalize all text.}
+      @entry[:uppercase-words]{Suggest to capitalize the first character of each
+        word.}
+      @entry[:uppercase-sentences]{Suggest to capitalize the first word of each
+        sentence.}
+      @entry[:inhibit-osk]{Suggest to not show an onscreen keyboard, e.g. for a
+        calculator that already has all the keys.}
+      @entry[:vertical-writing]{The text is vertical.}
+      @entry[:emoji]{Suggest offering Emoji support.}
+      @entry[:no-emoji]{Suggest not offering Emoji support.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Describes hints that might be taken into account by input methods or
+    applications.
+  @end{short}
+  Note that input methods may already tailor their behaviour according to the
+  @symbol{gtk:input-purpose} value of the entry.
+
+  Some common sense is expected when using these flags - mixing
+  @code{:lowercase} with any of the uppercase hints makes no sense.
+
+  This flags may be extended in the future. Input methods should ignore
+  unknown values.
   @see-class{gtk:entry}
   @see-symbol{gtk:input-purpose}")
 

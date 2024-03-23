@@ -123,12 +123,9 @@
 (setf (liber:alias-for-symbol 'target-flags)
       "GFlags"
       (liber:symbol-documentation 'target-flags)
- "@version{#2023-3-24}
-  @begin{short}
-    The @symbol{gtk:target-flags} flags is used to specify constraints on
-    a target entry.
-  @end{short}
-  @begin{pre}
+ "@version{#2024-3-21}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-flags \"GtkTargetFlags\" target-flags
   (:export t
    :type-initializer \"gtk_target_flags_get_type\")
@@ -136,17 +133,24 @@
   (:same-widget 2)
   (:other-app 4)
   (:other-widget 8))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:same-app]{If this is set, the target will only be selected for
-      drags within a single application.}
-    @entry[:same-widget]{If this is set, the target will only be selected for
-      drags within a single widget.}
-    @entry[:other-app]{If this is set, the target will not be selected for
-      drags within a single application.}
-    @entry[:other-widget]{If this is set, the target will not be selected for
-      drags within a single widget.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:same-app]{If this is set, the target will only be selected for
+        drags within a single application.}
+      @entry[:same-widget]{If this is set, the target will only be selected for
+        drags within a single widget.}
+      @entry[:other-app]{If this is set, the target will not be selected for
+        drags within a single application.}
+      @entry[:other-widget]{If this is set, the target will not be selected for
+        drags within a single widget.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    The @symbol{gtk:target-flags} flags is used to specify constraints on
+    a target entry.
+  @end{short}
   @see-class{gtk:target-list}")
 
 ;;; ----------------------------------------------------------------------------

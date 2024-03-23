@@ -100,11 +100,8 @@
       "GEnum"
       (liber:symbol-documentation 'button-box-style)
  "@version{2023-12-30}
-  @begin{short}
-    Used to dictate the style that a @class{gtk:button-box} widget uses to
-    layout the buttons it contains.
-  @end{short}
-  @begin{pre}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkButtonBoxStyle\" button-box-style
   (:export t
    :type-initializer \"gtk_button_box_style_get_type\")
@@ -114,20 +111,27 @@
   (:end 4)
   (:center 5)
   (:expand 6))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:spread]{Buttons are evenly spread across the box.}
-    @entry[:edge]{Buttons are placed at the edges of the box.}
-    @entry[:start]{Buttons are grouped towards the start of the box, on the
-      left for a horizontal box, or the top for a vertical box.}
-    @entry[:end]{Buttons are grouped towards the end of the box, on the right
-      for a horizontal box, or the bottom for a vertical box.}
-    @entry[:center]{Buttons are centered in the box.}
-    @entry[:expand]{Buttons expand to fill the box. This entails giving buttons
-      a \"linked\" appearance, making button sizes homogeneous, and setting
-      spacing to 0, same as calling the @fun{gtk:box-homogeneous} and
-      @fun{gtk:box-spacing} functions manually.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:spread]{Buttons are evenly spread across the box.}
+      @entry[:edge]{Buttons are placed at the edges of the box.}
+      @entry[:start]{Buttons are grouped towards the start of the box, on the
+        left for a horizontal box, or the top for a vertical box.}
+      @entry[:end]{Buttons are grouped towards the end of the box, on the right
+        for a horizontal box, or the bottom for a vertical box.}
+      @entry[:center]{Buttons are centered in the box.}
+      @entry[:expand]{Buttons expand to fill the box. This entails giving
+        buttons a \"linked\" appearance, making button sizes homogeneous, and
+        setting spacing to 0, same as calling the @fun{gtk:box-homogeneous} and
+        @fun{gtk:box-spacing} functions manually.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Used to dictate the style that a @class{gtk:button-box} widget uses to
+    layout the buttons it contains.
+  @end{short}
   @see-class{gtk:button-box}
   @see-function{gtk:box-homogeneous}
   @see-function{gtk:box-spacing}")

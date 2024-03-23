@@ -80,12 +80,9 @@
 (setf (liber:alias-for-symbol 'file-filter-flags)
       "GFlags"
       (liber:symbol-documentation 'file-filter-flags)
- "@version{2023-6-11}
-  @begin{short}
-    These flags indicate what parts of a @symbol{gtk:file-filter-info}
-    instance are filled or need to be filled.
-  @end{short}
-  @begin{pre}
+ "@version{2024-3-21}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-flags \"GtkFileFilterFlags\" file-filter-flags
   (:export t
    :type-initializer \"gtk_file_filter_flags_get_type\")
@@ -93,14 +90,21 @@
   (:uri 2)
   (:display-name 4)
   (:mime-type 8))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:filename]{The filename of the file being tested.}
-    @entry[:uri]{The URI for the file being tested.}
-    @entry[:display-name]{The string that will be used to display the file in
-      the file chooser.}
-    @entry[:mime-type]{The MIME type of the file.}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:filename]{The filename of the file being tested.}
+      @entry[:uri]{The URI for the file being tested.}
+      @entry[:display-name]{The string that will be used to display the file in
+        the file chooser.}
+      @entry[:mime-type]{The MIME type of the file.}
   @end{table}
+  @end{values}
+  @begin{short}
+    These flags indicate what parts of a @symbol{gtk:file-filter-info}
+    instance are filled or need to be filled.
+  @end{short}
   @see-class{gtk:file-filter}
   @see-symbol{gtk:file-filter-info}")
 

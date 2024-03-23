@@ -860,19 +860,15 @@ lambda (listbox row)
 (setf (liber:alias-for-symbol 'list-box-filter-func)
       "Callback"
       (liber:symbol-documentation 'list-box-filter-func)
- "@version{2024-1-1}
+ "@version{2024-3-20}
+  @syntax{lambda (row) => result}
+  @argument[row]{a @class{gtk:list-box-row} widget that may be filtered}
+  @argument[result]{@em{true} if the row should be visible, @em{false}
+    otherwise}
   @begin{short}
     Will be called whenever the row changes or is added and lets you control
     if the row should be visible or not.
   @end{short}
-  @begin{pre}
-lambda (row)
-  @end{pre}
-  @begin[code]{table}
-    @entry[row]{A @class{gtk:list-box-row} widget that may be filtered.}
-    @entry[Returns]{@em{True} if the row should be visible, @em{false}
-      otherwise.}
-  @end{table}
   @see-class{gtk:list-box-row}
   @see-function{gtk:list-box-set-filter-func}")
 
@@ -886,11 +882,11 @@ lambda (row)
   (listbox (g:object list-box))
   (func :pointer)
   (data :pointer)
-  (destroy :pointer))
+  (notify :pointer))
 
 (defun list-box-set-filter-func (listbox func)
  #+liber-documentation
- "@version{2024-1-1}
+ "@version{2024-3-20}
   @argument[listbox]{a @class{gtk:list-box} widget}
   @argument[func]{a @symbol{gtk:list-box-filter-func} callback function that
     lets you filter which rows to show}
@@ -935,21 +931,17 @@ lambda (row)
 (setf (liber:alias-for-symbol 'list-box-update-header-func)
       "Callback"
       (liber:symbol-documentation 'list-box-update-header-func)
- "@version{#2023-3-20}
+ "@version{#2024-3-20}
+  @syntax{lambda (row before)}
+  @argument[row]{a @class{gtk:list-box-row} widget with the row to update}
+  @argument[before]{a @class{gtk:list-box-row} widget before @arg{row}, or
+    @code{nil} if it is the first row}
   @begin{short}
     Whenever @arg{row} changes or which row is before @arg{row} changes this is
     called, which lets you update the header on @arg{row}.
   @end{short}
   You may remove or set a new one via the @fun{gtk:list-box-row-set-header-func}
   function or just change the state of the current header widget.
-  @begin{pre}
-lambda (row before)
-  @end{pre}
-  @begin[code]{table}
-    @entry[row]{A @class{gtk:list-box-row} widget with the row to update.}
-    @entry[before]{A @class{gtk:list-box-row} widget before @arg{row}, or
-      @code{nil} if it is the first row.}
-  @end{table}
   @see-class{gtk:list-box-row}
   @see-function{gtk:list-box-set-header-func}")
 

@@ -95,7 +95,7 @@
   The combo cell renderer takes care of adding a text cell renderer to the
   combo box and sets it to display the column specified by its
   @code{text-column} property. Further properties of the combo box can be
-  set in a handler for the \"editing-started\" signal.
+  set in a handler for the @code{\"editing-started\"} signal.
   @begin[Signal Details]{dictionary}
     @subheading{The \"changed\" signal}
       @begin{pre}

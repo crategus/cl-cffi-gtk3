@@ -81,11 +81,9 @@
 (setf (liber:alias-for-symbol 'event-controller-scroll-flags)
       "GFlags"
       (liber:symbol-documentation 'event-controller-scroll-flags)
- "@version{#2023-3-1}
-  @begin{short}
-    Describes the behavior of a @class{gtk:event-controller-scroll} object.
-  @end{short}
-  @begin{pre}
+ "@version{#2024-3-21}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-flags \"GtkEventControllerScrollFlags\"
                 event-controller-scroll-flags
   (:export t
@@ -96,15 +94,21 @@
   (:discrete 4)
   (:kinetic 8)
   (:both-axes 16))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:none]{Do not emit scroll.}
-    @entry[:vertical]{Emit scroll with vertical deltas.}
-    @entry[:horizontal]{Emit scroll with horizontal deltas.}
-    @entry{:discrete]{Only emit deltas that are multiples of 1.}
-    @entry[:kinetic]{Emit \"decelerate\" after continuous scroll finishes.}
-    @entry[:both-axes]{Emit scroll on both axes.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:none]{Do not emit scroll.}
+      @entry[:vertical]{Emit scroll with vertical deltas.}
+      @entry[:horizontal]{Emit scroll with horizontal deltas.}
+      @entry{:discrete]{Only emit deltas that are multiples of 1.}
+      @entry[:kinetic]{Emit \"decelerate\" after continuous scroll finishes.}
+      @entry[:both-axes]{Emit scroll on both axes.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Describes the behavior of a @class{gtk:event-controller-scroll} object.
+  @end{short}
   @see-class{gtk:event-controller-scroll}")
 
 ;;; ----------------------------------------------------------------------------
@@ -129,8 +133,8 @@
     to handle scroll events from mice and touchpads.
   @end{short}
   It is capable of handling both discrete and continuous scroll events,
-  abstracting them both on the \"scroll\" signal. Deltas in the discrete case
-  are multiples of 1.
+  abstracting them both on the @code{\"scroll\"} signal. Deltas in the discrete
+  case are multiples of 1.
 
   In the case of continuous scroll events, the
   @class{gtk:event-controller-scroll} object encloses all @code{\"scroll\"}
@@ -151,9 +155,9 @@
   through @code{:discrete}. This can be used to implement discrete actions
   triggered through scroll events, e.g. switching across combobox options.
 
-  The @code{:kinetic} flag toggles the emission of the \"decelerate\" signal,
-  emitted at the end of scrolling with two X/Y velocity arguments that are
-  consistent with the motion that was received.
+  The @code{:kinetic} flag toggles the emission of the @code{\"decelerate\"}
+  signal, emitted at the end of scrolling with two X/Y velocity arguments that
+  are consistent with the motion that was received.
 
   This object was added in 3.24.
   @begin[Signal Details]{dictionary}

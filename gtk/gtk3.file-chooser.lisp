@@ -148,12 +148,9 @@
 (setf (liber:alias-for-symbol 'file-chooser-action)
       "GEnum"
       (liber:symbol-documentation 'file-chooser-action)
- "@version{2023-5-16}
-  @begin{short}
-    Describes whether a @class{gtk:file-chooser} widget is being used to
-    open existing files or to save to a possibly new file.
-  @end{short}
-  @begin{pre}
+ "@version{2024-3-21}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkFileChooserAction\" file-chooser-action
   (:export t
    :type-initializer \"gtk_file_chooser_action_get_type\")
@@ -161,17 +158,24 @@
   (:save 1)
   (:select-folder 2)
   (:create-folder 3))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:open]{Indicates Open mode. The file chooser will only let the user
-      pick an existing file.}
-    @entry[:save]{Indicates Save mode. The file chooser will let the user pick
-      an existing file, or type in a new filename.}
-    @entry[:select-folder]{Indicates an Open mode for selecting folders. The
-      file chooser will let the user pick an existing folder.}
-    @entry[:create-folder]{Indicates a mode for creating a new folder. The
-      file chooser will let the user name an existing or new folder.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:open]{Indicates Open mode. The file chooser will only let the
+        user pick an existing file.}
+      @entry[:save]{Indicates Save mode. The file chooser will let the user
+        pick an existing file, or type in a new filename.}
+      @entry[:select-folder]{Indicates an Open mode for selecting folders. The
+        file chooser will let the user pick an existing folder.}
+      @entry[:create-folder]{Indicates a mode for creating a new folder. The
+        file chooser will let the user name an existing or new folder.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Describes whether a @class{gtk:file-chooser} widget is being used to
+    open existing files or to save to a possibly new file.
+  @end{short}
   @see-class{gtk:file-chooser}")
 
 ;;; ----------------------------------------------------------------------------
@@ -189,30 +193,34 @@
 (setf (liber:alias-for-symbol 'file-chooser-confirmation)
       "GEnum"
       (liber:symbol-documentation 'file-chooser-confirmation)
- "@version{2023-5-16}
-  @begin{short}
-    Used as a return value of handlers for the \"confirm-overwrite\" signal of
-    a @class{gtk:file-chooser} widget.
-  @end{short}
-  This value determines whether the file chooser will present the stock
-  confirmation dialog, accept the user's choice of a filename, or let the user
-  choose another filename.
-  @begin{pre}
+ "@version{2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkFileChooserConfirmation\" gtk:file-chooser-confirmation
   (:export t
    :type-initializer \"gtk_file_chooser_confirmation_get_type\")
   (:confirm 0)
   (:accept-filename 1)
   (:select-again 2))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:confirm]{The file chooser will present its stock dialog to confirm
-      about overwriting an existing file.}
-    @entry[:accept-filename]{The file chooser will terminate and accept the
-      user's choice of a file name.}
-    @entry[:select-again]{The file chooser will continue running, so as to let
-      the user select another file name.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:confirm]{The file chooser will present its stock dialog to confirm
+        about overwriting an existing file.}
+      @entry[:accept-filename]{The file chooser will terminate and accept the
+        user's choice of a file name.}
+      @entry[:select-again]{The file chooser will continue running, so as to let
+        the user select another file name.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Used as a return value of handlers for the @code{\"confirm-overwrite\"}
+    signal of a @class{gtk:file-chooser} widget.
+  @end{short}
+  This value determines whether the file chooser will present the stock
+  confirmation dialog, accept the user's choice of a filename, or let the user
+  choose another filename.
   @class{gtk:file-chooser}")
 
 ;;; ----------------------------------------------------------------------------
@@ -241,12 +249,9 @@
 (setf (liber:alias-for-symbol 'file-chooser-error)
       "GEnum"
       (liber:symbol-documentation 'file-chooser-error)
- "@version{#2023-3-14}
-  @begin{short}
-    These identify the various errors that can occur while calling
-    @class{gtk:file-chooser} interface functions.
-  @end{short}
-  @begin{pre}
+ "@version{#2024-3-21}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkFileChooserError\" file-chooser-error
   (:export t
    :type-initializer \"gtk_file_chooser_error_get_type\")
@@ -254,15 +259,22 @@
   (:bad-filename 1)
   (:already-exists 2)
   (:incomplete-hostname 3))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:nonexistent]{Indicates that a file does not exist.}
-    @entry[:bad-filename]{Indicates a malformed filename.}
-    @entry[:already-exists]{Indicates a duplicate path, e.g. when adding a
-      bookmark.}
-    @entry[:incomplete-hostname]{Indicates an incomplete hostname, e.g.
-      \"http://foo\" without a slash after that.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:nonexistent]{Indicates that a file does not exist.}
+      @entry[:bad-filename]{Indicates a malformed filename.}
+      @entry[:already-exists]{Indicates a duplicate path, e.g. when adding a
+        bookmark.}
+      @entry[:incomplete-hostname]{Indicates an incomplete hostname, e.g.
+        \"http://foo\" without a slash after that.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    These identify the various errors that can occur while calling
+    @class{gtk:file-chooser} interface functions.
+  @end{short}
   @class{gtk:file-chooser}")
 
 ;;; ----------------------------------------------------------------------------
@@ -362,7 +374,7 @@
     You can add a custom preview widget to a file chooser and then get
     notification about when the preview needs to be updated. To install a
     preview widget, use the @fun{gtk:file-chooser-preview-widget} function.
-    Then, connect to the \"update-preview\" signal to get notified
+    Then, connect to the @code{\"update-preview\"} signal to get notified
     when you need to update the contents of the preview.
 
     Your callback should use the @fun{gtk:file-chooser-preview-filename}
@@ -479,7 +491,7 @@ lambda (chooser)    :run-last
       @code{do-overwrite-confirmation} property, and they will automatically
       get a stock confirmation dialog. Applications which need to customize
       this behavior should do that, and also connect to the
-      \"confirm-overwrite\" signal.
+      @code{\"confirm-overwrite\"} signal.
 
       A signal handler for this signal must return a value of the
       @symbol{gtk:file-chooser-confirmation} enumeration, which indicates the
@@ -698,8 +710,8 @@ lambda (chooser)    :run-last
 
   If all you need is the stock confirmation dialog, set this property to
   @em{true}. You can override the way confirmation is done by actually handling
-  the \"confirm-overwrite\" signal. Please refer to its documentation for the
-  details.
+  the @code{\"confirm-overwrite\"} signal. Please refer to its documentation for
+  the details.
   @see-class{gtk:file-chooser}
   @see-symbol{gtk:file-chooser-action}")
 

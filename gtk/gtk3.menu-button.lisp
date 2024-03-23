@@ -97,12 +97,9 @@
 (setf (liber:alias-for-symbol 'arrow-type)
       "GEnum"
       (liber:symbol-documentation 'arrow-type)
- "@version{#2023-3-21}
-  @begin{short}
-    Used to indicate the direction in which an arrow should point in a
-    @class{gtk:menu-button} widget.
-  @end{short}
-  @begin{pre}
+ "@version{#2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkArrowType\" arrow-type
   (:export t
    :type-initializer \"gtk_arrow_type_get_type\")
@@ -111,14 +108,21 @@
   (:left 2)
   (:right 3)
   (:none 4))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:up]{Represents an upward pointing arrow.}
-    @entry[:down]{Represents a downward pointing arrow.}
-    @entry[:left]{Represents a left pointing arrow.}
-    @entry[:right]{Represents a right pointing arrow.}
-    @entry[:none]{No arrow.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:up]{Represents an upward pointing arrow.}
+      @entry[:down]{Represents a downward pointing arrow.}
+      @entry[:left]{Represents a left pointing arrow.}
+      @entry[:right]{Represents a right pointing arrow.}
+      @entry[:none]{No arrow.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Used to indicate the direction in which an arrow should point in a
+    @class{gtk:menu-button} widget.
+  @end{short}
   @see-class{gtk:menu-button}")
 
 ;;; ----------------------------------------------------------------------------

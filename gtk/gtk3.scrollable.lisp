@@ -80,21 +80,25 @@
       "GEnum"
       (liber:symbol-documentation 'scrollable-policy)
  "@version{#2023-3-24}
-  @begin{short}
-    Defines the policy to be used in a scrollable widget when updating the
-    scrolled window adjustments in a given orientation.
-  @end{short}
-  @begin{pre}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkScrollablePolicy\" scrollable-policy
   (:export t
    :type-initializer \"gtk_scrollable_policy_get_type\")
   (:minimum 0)
   (:natural 1))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:minimum]{Scrollable adjustments are based on the minimum size.}
-    @entry[:natural]{Scrollable adjustments are based on the natural size.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:minimum]{Scrollable adjustments are based on the minimum size.}
+      @entry[:natural]{Scrollable adjustments are based on the natural size.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Defines the policy to be used in a scrollable widget when updating the
+    scrolled window adjustments in a given orientation.
+  @end{short}
   @see-class{gtk:scrollable}")
 
 ;;; ----------------------------------------------------------------------------
@@ -138,7 +142,7 @@
       the widget should populate the adjustments’ @slot[gtk:adjustment]{lower},
       @slot[gtk:adjustment]{upper}, @slot[gtk:adjustment]{step-increment},
       @slot[gtk:adjustment]{page-increment} and @slot[gtk:adjustment]{page-size}
-      properties and connect to the \"value-changed\" signal.
+      properties and connect to the @code{\"value-changed\"} signal.
     @end{item}
     @begin{item}
       Because its preferred size is the size for a fully expanded widget, the
@@ -151,8 +155,8 @@
       widget should update the adjustments’ properties with new values.
     @end{item}
     @begin{item}
-      When any of the adjustments emits the \"value-changed\" signal, the
-      scrollable widget should scroll its contents.
+      When any of the adjustments emits the @code{\"value-changed\"} signal,
+      the scrollable widget should scroll its contents.
     @end{item}
   @end{itemize}
   @see-slot{gtk:scrollable-hadjustment}

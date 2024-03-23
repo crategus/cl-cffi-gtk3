@@ -117,8 +117,8 @@ lambda (editable)    :run-last
       contents of the @class{gtk:editable} widget. E.g., a paste operation that
       replaces the contents of the selection will cause only one signal
       emission, even though it is implemented by first deleting the selection,
-      then inserting the new content, and may cause multiple \"notify::text\"
-      signals to be emitted.
+      then inserting the new content, and may cause multiple
+      @code{\"notify::text\"} signals to be emitted.
       @begin[code]{table}
         @entry[editable]{The @class{gtk:editable} widget which received the
           signal.}

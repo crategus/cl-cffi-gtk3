@@ -78,12 +78,9 @@
 (setf (liber:alias-for-symbol 'propagation-phase)
       "GEnum"
       (liber:symbol-documentation 'propagation-phase)
- "@version{#2023-1-21}
-  @begin{short}
-    Describes the stage at which events are fed into a
-    @class{gtk:event-controller} object.
-  @end{short}
-  @begin{pre}
+ "@version{#2024-3-21}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkPropagationPhase\" propagation-phase
   (:export t
    :type-initializer \"gtk_propagation_phase_get_type\")
@@ -91,24 +88,31 @@
   (:phase-capture 1)
   (:phase-bubble 2)
   (:phase-target 3))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:phase-none]{Events are not delivered automatically. Those can be
-      manually fed through the @fun{gtk:event-controller-handle-event} function.
-      This should only be used when full control about when, or whether the
-      controller handles the event is needed.}
-    @entry[:phase-capture]{Events are delivered in the capture phase. The
-      capture phase happens before the bubble phase, runs from the toplevel down
-      to the event widget. This option should only be used on containers that
-      might possibly handle events before their children do.}
-    @entry[:phase-bubble]{Events are delivered in the bubble phase. The bubble
-      phase happens after the capture phase, and before the default handlers are
-      run. This phase runs from the event widget, up to the toplevel.}
-    @entry[:phase-target]{Events are delivered in the default widget event
-      handlers, note that widget implementations must chain up on button,
-      motion, touch and grab broken handlers for controllers in this phase to
-      be run.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:phase-none]{Events are not delivered automatically. Those can be
+        manually fed through the @fun{gtk:event-controller-handle-event}
+        function. This should only be used when full control about when, or
+        whether the controller handles the event is needed.}
+      @entry[:phase-capture]{Events are delivered in the capture phase. The
+        capture phase happens before the bubble phase, runs from the toplevel
+        down to the event widget. This option should only be used on containers
+        that might possibly handle events before their children do.}
+      @entry[:phase-bubble]{Events are delivered in the bubble phase. The bubble
+        phase happens after the capture phase, and before the default handlers
+        are run. This phase runs from the event widget, up to the toplevel.}
+      @entry[:phase-target]{Events are delivered in the default widget event
+        handlers, note that widget implementations must chain up on button,
+        motion, touch and grab broken handlers for controllers in this phase to
+        be run.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Describes the stage at which events are fed into a
+    @class{gtk:event-controller} object.
+  @end{short}
   @see-class{gtk:event-controller}
   @see-function{gtk:event-controller-handle-event}")
 

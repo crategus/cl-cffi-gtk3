@@ -122,17 +122,9 @@
 (setf (liber:alias-for-symbol 'image-type)
       "GEnum"
       (liber:symbol-documentation 'image-type)
- "@version{#2023-3-12}
-  @begin{short}
-    Describes the image data representation used by a @class{gtk:image} widget.
-  @end{short}
-  If you want to get the image from the widget, you can only get the
-  currently stored representation. e.g. if the @fun{gtk:image-storage-type}
-  function returns the @code{:pixbuf} value, then you can call the
-  @fun{gtk:image-pixbuf} function but not the @fun{gtk:image-stock} function.
-  For empty images, you can request any storage type, but they will all return
-  @code{nil} values.
-  @begin{pre}
+ "@version{#2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkImageType\" image-type
   (:export t
    :type-initializer \"gtk_image_type_get_type\")
@@ -144,18 +136,30 @@
   (:icon-name 5)
   (:gicon 6)
   (:surface 7))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:empty]{There is no image displayed by the widget.}
-    @entry[:pixbuf]{The widget contains a @class{gdk-pixbuf:pixbuf} object.}
-    @entry[:stock]{The widget contains a stock icon name.}
-    @entry[:icon-set]{The widget contains a @class{gtk:icon-set} structure.}
-    @entry[:animation]{The widget contains a @class{gdk-pixbuf:pixbuf-animation}
-      object.}
-    @entry[:icon-name]{The widget contains a named icon.}
-    @entry[:gicon]{The widget contains a @class{g:icon} object.}
-    @entry[:surface]{The widget contains a @symbol{cairo:surface-t} instance.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:empty]{There is no image displayed by the widget.}
+      @entry[:pixbuf]{The widget contains a @class{gdk-pixbuf:pixbuf} object.}
+      @entry[:stock]{The widget contains a stock icon name.}
+      @entry[:icon-set]{The widget contains a @class{gtk:icon-set} structure.}
+      @entry[:animation]{The widget contains a
+        @class{gdk-pixbuf:pixbuf-animation} object.}
+      @entry[:icon-name]{The widget contains a named icon.}
+      @entry[:gicon]{The widget contains a @class{g:icon} object.}
+      @entry[:surface]{The widget contains a @symbol{cairo:surface-t} instance.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Describes the image data representation used by a @class{gtk:image} widget.
+  @end{short}
+  If you want to get the image from the widget, you can only get the
+  currently stored representation. e.g. if the @fun{gtk:image-storage-type}
+  function returns the @code{:pixbuf} value, then you can call the
+  @fun{gtk:image-pixbuf} function but not the @fun{gtk:image-stock} function.
+  For empty images, you can request any storage type, but they will all return
+  @code{nil} values.
   @see-class{gtk:image}
   @see-class{gdk-pixbuf:pixbuf}
   @see-class{gdk-pixbuf:pixbuf-animation}

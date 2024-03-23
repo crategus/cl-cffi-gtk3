@@ -413,16 +413,9 @@ lambda (provider section error)    :run-last
 (setf (liber:alias-for-symbol 'css-section-type)
       "GEnum"
       (liber:symbol-documentation 'css-section-type)
- "@version{2024-1-2}
-  @begin{short}
-    The different types of sections indicate parts of a CSS document as parsed
-    by the CSS parser of GTK.
-  @end{short}
-  They are oriented towards the CSS grammar, but may contain extensions.
-
-  More types might be added in the future as the parser incorporates more
-  features.
-  @begin{pre}
+ "@version{2024-3-21}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkCssSectionType\" css-section-type
   (:export t
    :type-initializer \"gtk_css_section_type_get_type\")
@@ -435,23 +428,35 @@ lambda (provider section error)    :run-last
   (:declaration 6)
   (:value 7)
   (:keyframes 8))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:document]{The section describes a complete document. This section
-      is the only one where the @fun{gtk:css-section-parent} function might
-      return @code{nil}.}
-    @entry[:import]{The section defines an import rule.}
-    @entry[:color-definition]{The section defines a color. This is a GTK
-      extension to CSS.}
-    @entry[:binding-set]{The section defines a binding set. This is a GTK
-      extension to CSS.}
-    @entry[:ruleset]{The section defines a CSS ruleset.}
-    @entry[:selector]{The section defines a CSS selector.}
-    @entry[:declaration]{The section defines the declaration of a CSS variable.}
-    @entry[:value]{The section defines the value of a CSS declaration.}
-    @entry[:keyframes]{The section defines keyframes. See CSS animations for
-      details.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:document]{The section describes a complete document. This section
+        is the only one where the @fun{gtk:css-section-parent} function might
+        return @code{nil}.}
+      @entry[:import]{The section defines an import rule.}
+      @entry[:color-definition]{The section defines a color. This is a GTK
+        extension to CSS.}
+      @entry[:binding-set]{The section defines a binding set. This is a GTK
+        extension to CSS.}
+      @entry[:ruleset]{The section defines a CSS ruleset.}
+      @entry[:selector]{The section defines a CSS selector.}
+      @entry[:declaration]{The section defines the declaration of a CSS
+        variable.}
+      @entry[:value]{The section defines the value of a CSS declaration.}
+      @entry[:keyframes]{The section defines keyframes. See CSS animations for
+        details.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    The different types of sections indicate parts of a CSS document as parsed
+    by the CSS parser of GTK.
+  @end{short}
+  They are oriented towards the CSS grammar, but may contain extensions.
+
+  More types might be added in the future as the parser incorporates more
+  features.
   @see-class{gtk:css-provider}")
 
 ;;; ----------------------------------------------------------------------------

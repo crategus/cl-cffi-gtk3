@@ -182,7 +182,7 @@ lambda (clipboard event)    :run-first
   @syntax{lambda (clipboard selection)}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[selection]{a @class{gtk:selection-data} instance containing the data
-    that was received. If retrieving the data failed, then the @arg{length}
+    that was received, if retrieving the data failed, then the @arg{length}
     field of the selection data will be negative}
   @begin{short}
     A callback function to be called when the results of the

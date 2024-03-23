@@ -123,9 +123,9 @@
 (setf (liber:alias-for-symbol 'icon-size)
       "GEnum"
       (liber:symbol-documentation 'icon-size)
- "@version{2023-12-26}
-  @short{Built-in stock icon sizes.}
-  @begin{pre}
+ "@version{2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkIconSize\" icon-size
   (:export t
    :type-initializer \"gtk_icon_size_get_type\")
@@ -136,16 +136,20 @@
   (:button 4)
   (:dnd 5)
   (:dialog 6))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:invalid]{Invalid size.}
-    @entry[:menu]{Size appropriate for menus (16 px).}
-    @entry[:small-toolbar]{Size appropriate for small toolbars (16 px).}
-    @entry[:large-toolbar]{Size appropriate for large toolbars (24 px).}
-    @entry[:button]{Size appropriate for buttons (16 px).}
-    @entry[:dnd]{Size appropriate for drag and drop (32 px).}
-    @entry[:dialog]{Size appropriate for dialogs (48 px).}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:invalid]{Invalid size.}
+      @entry[:menu]{Size appropriate for menus (16 px).}
+      @entry[:small-toolbar]{Size appropriate for small toolbars (16 px).}
+      @entry[:large-toolbar]{Size appropriate for large toolbars (24 px).}
+      @entry[:button]{Size appropriate for buttons (16 px).}
+      @entry[:dnd]{Size appropriate for drag and drop (32 px).}
+      @entry[:dialog]{Size appropriate for dialogs (48 px).}
+    @end{table}
+  @end{values}
+  @short{Built-in stock icon sizes.}
   @see-class{gtk:icon-theme}")
 
 ;;; ----------------------------------------------------------------------------

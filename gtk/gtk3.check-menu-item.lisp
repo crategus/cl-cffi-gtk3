@@ -325,7 +325,7 @@ lambda (item)    :run-first
  "@version{#2023-2-27}
   @argument[item]{a @class{gtk:check-menu-item} widget}
   @begin{short}
-    Emits the \"toggled\" signal.
+    Emits the @code{\"toggled\"} signal.
   @end{short}
   @see-class{gtk:check-menu-item}"
   (item (g:object check-menu-item)))

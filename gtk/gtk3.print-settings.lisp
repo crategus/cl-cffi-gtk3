@@ -233,9 +233,9 @@
 (setf (liber:alias-for-symbol 'page-orientation)
       "GEnum"
       (liber:symbol-documentation 'page-orientation)
- "@version{2023-2-11}
-  @short{See the @fun{gtk:print-settings-orientation} function.}
-  @begin{pre}
+ "@version{2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkPageOrienation\" page-orientation
   (:export t
    :type-initializer \"gtk_page_orientation_get_type\")
@@ -243,13 +243,17 @@
   :landscape
   :reverse-portrait
   :reverse-landscape)
-  @end{pre}
-  @begin[code]{table}
-    @entry[:portrait]{Portrait mode.}
-    @entry[:landscape]{Landscape mode.}
-    @entry[:reverse-portrait]{Reverse portrait mode.}
-    @entry[:reverse-landscape]{Reverse landscape mode.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:portrait]{Portrait mode.}
+      @entry[:landscape]{Landscape mode.}
+      @entry[:reverse-portrait]{Reverse portrait mode.}
+      @entry[:reverse-landscape]{Reverse landscape mode.}
+    @end{table}
+  @end{values}
+  @short{See the @fun{gtk:print-settings-orientation} function.}
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-orientation}")
 
@@ -268,21 +272,25 @@
 (setf (liber:alias-for-symbol 'print-duplex)
       "GEnum"
       (liber:symbol-documentation 'print-duplex)
- "@version{2023-2-11}
-  @short{See the @fun{gtk:print-settings-duplex} function.}
-  @begin{pre}
+ "@version{2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkPrintDuplex\" gtk:print-duplex
   (:export t
    :type-initializer \"gtk_print_duplex_get_type\")
   :simplex
   :horizontal
   :vertical)
-  @end{pre}
-  @begin[code]{table}
-    @entry[:simplex]{No duplex.}
-    @entry[:horizontal]{Horizontal duplex.}
-    @entry[:vertical]{Vertical duplex.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:simplex]{No duplex.}
+      @entry[:horizontal]{Horizontal duplex.}
+      @entry[:vertical]{Vertical duplex.}
+    @end{table}
+  @end{values}
+  @short{See the @fun{gtk:print-settings-duplex} function.}
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-duplex}")
 
@@ -302,9 +310,9 @@
 (setf (liber:alias-for-symbol 'print-quality)
       "GEnum"
       (liber:symbol-documentation 'print-quality)
- "@version{2023-2-11}
-  @short{See the @fun{gtk:print-settings-quality} function.}
-  @begin{pre}
+ "@version{2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkPrintQuality\" gtk:print-quality
   (:export t
    :type-initializer \"gtk_print_quality_get_type\")
@@ -312,13 +320,17 @@
   :normal
   :high
   :draft)
-  @end{pre}
-  @begin[code]{table}
-    @entry[:low]{Low quality.}
-    @entry[:normal]{Normal quality.}
-    @entry[:high]{High quality.}
-    @entry[:draft]{Draft quality.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:low]{Low quality.}
+      @entry[:normal]{Normal quality.}
+      @entry[:high]{High quality.}
+      @entry[:draft]{Draft quality.}
+    @end{table}
+  @end{values}
+  @short{See the @fun{gtk:print-settings-quality} function.}
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-quality}")
 
@@ -344,12 +356,9 @@
 (setf (liber:alias-for-symbol 'number-up-layout)
       "GEnum"
       (liber:symbol-documentation 'number-up-layout)
- "@version{2023-2-11}
-  @begin{short}
-    Used to determine the layout of pages on a sheet when printing multiple
-    pages per sheet.
-  @end{short}
-  @begin{pre}
+ "@version{2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkNubmerUpLayout\" number-up-layout
   (:export t
    :type-initializer \"gtk_number_up_layout_get_type\")
@@ -361,17 +370,24 @@
   (:top-to-bottom-right-to-left 5)
   (:bottom-to-top-left-to-right 6)
   (:bottom-to-top-right-to-left 7))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:left-to-right-top-to-bottom]{@image[layout-lrtb]{}}
-    @entry[:left-to-right-bottom-to-top]{@image[layout-lrbt]{}}
-    @entry[:right-to-left-bottom-to-top]{@image[layout-rlbt]{}}
-    @entry[:right-to-left-top-to-bottom]{@image[layout-rltb]{}}
-    @entry[:top-to-bottom-left-to-right]{@image[layout-tblr]{}}
-    @entry[:top-to-bottom-right-to-left]{@image[layout-tbrl]{}}
-    @entry[:bottom-to-top-left-to-right]{@image[layout-btlr]{}}
-    @entry[:bottom-to-top-right-to-left]{@image[layout-btrl]{}}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:left-to-right-top-to-bottom]{@image[layout-lrtb]{}}
+      @entry[:left-to-right-bottom-to-top]{@image[layout-lrbt]{}}
+      @entry[:right-to-left-bottom-to-top]{@image[layout-rlbt]{}}
+      @entry[:right-to-left-top-to-bottom]{@image[layout-rltb]{}}
+      @entry[:top-to-bottom-left-to-right]{@image[layout-tblr]{}}
+      @entry[:top-to-bottom-right-to-left]{@image[layout-tbrl]{}}
+      @entry[:bottom-to-top-left-to-right]{@image[layout-btlr]{}}
+      @entry[:bottom-to-top-right-to-left]{@image[layout-btrl]{}}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Used to determine the layout of pages on a sheet when printing multiple
+    pages per sheet.
+  @end{short}
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-number-up-layout}")
 
@@ -391,12 +407,9 @@
 (setf (liber:alias-for-symbol 'print-pages)
       "GEnum"
       (liber:symbol-documentation 'print-pages)
- "@version{2023-2-11}
-  @begin{short}
-    See the @fun{gtk:print-job-pages} and @fun{gtk:print-settings-print-pages}
-    functions.
-  @end{short}
-  @begin{pre}
+ "@version{2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkPrintPages\" gtk:print-pages
   (:export t
    :type-initializer \"gtk_print_pages_get_type\")
@@ -404,13 +417,20 @@
   (:current 1)
   (:ranges 2)
   (:selection 3))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:all]{All pages.}
-    @entry[:current]{Current page.}
-    @entry[:ranges]{Range of pages.}
-    @entry[:selection]{Selected pages.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:all]{All pages.}
+      @entry[:current]{Current page.}
+      @entry[:ranges]{Range of pages.}
+      @entry[:selection]{Selected pages.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    See the @fun{gtk:print-job-pages} and @fun{gtk:print-settings-print-pages}
+    functions.
+  @end{short}
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-print-pages}
   @see-function{gtk:print-job-pages}")
@@ -451,21 +471,25 @@
 (setf (liber:alias-for-symbol 'page-set)
       "GEnum"
       (liber:symbol-documentation 'page-set)
- "@version{2023-2-11}
-  @short{See the @fun{gtk:print-job-page-set} function.}
-  @begin{pre}
+ "@version{2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkPageSet\" page-set
   (:export t
    :type-initializer \"gtk_page_set_get_type\")
   (:all 0)
   (:even 1)
   (:odd 2))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:all]{All pages.}
-    @entry[:even]{Even pages.}
-    @entry[:odd]{Odd pages.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:all]{All pages.}
+      @entry[:even]{Even pages.}
+      @entry[:odd]{Odd pages.}
+    @end{table}
+  @end{values}
+  @short{See the @fun{gtk:print-job-page-set} function.}
   @see-class{gtk:print-settings}
   @see-function{gtk:print-job-page-set}")
 

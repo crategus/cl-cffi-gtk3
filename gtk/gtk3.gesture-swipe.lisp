@@ -72,13 +72,13 @@
   @begin{short}
     The @class{gtk:gesture-swipe} object is a @class{gtk:gesture} implementation
     able to recognize swipes, after a press/move/.../move/release sequence
-    happens, the \"swipe\" signal will be emitted, providing the velocity and
-    directionality of the sequence at the time it was lifted.
+    happens, the @code{\"swipe\"} signal will be emitted, providing the velocity
+    and directionality of the sequence at the time it was lifted.
   @end{short}
 
   If the velocity is desired in intermediate points, the
-  @fun{gtk:gesture-swipe-velocity} function can be called on e.g. a \"update\"
-  handler.
+  @fun{gtk:gesture-swipe-velocity} function can be called on e.g. a
+  @code{\"update\"} handler.
 
   All velocities are reported in pixels/sec units.
   @begin[Signal Details]{dictionary}

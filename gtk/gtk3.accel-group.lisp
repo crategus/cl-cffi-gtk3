@@ -101,23 +101,27 @@
 (setf (liber:alias-for-symbol 'accel-flags)
       "GFlags"
       (liber:symbol-documentation 'accel-flags)
- "@version{2023-3-1}
-  @begin{short}
-    Accelerator flags.
-  @end{short}
-  @begin{pre}
+ "@version{2024-3-21}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-flags \"GtkAccelFlags\" accel-flags
   (:export t
    :type-initializer \"gtk_accel_flags_get_type\")
   (:visible 1)
   (:locked 2)
   (:mask 7))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:visible]{Accelerator is visible.}
-    @entry[:locked]{Accelerator not removable.}
-    @entry[:mask]{Mask.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:visible]{Accelerator is visible.}
+      @entry[:locked]{Accelerator not removable.}
+      @entry[:mask]{Mask.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Accelerator flags.
+  @end{short}
   @see-class{gtk:accel-group}")
 
 ;;; ----------------------------------------------------------------------------

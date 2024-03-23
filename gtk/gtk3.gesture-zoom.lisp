@@ -67,8 +67,8 @@
   @begin{short}
     The @class{gtk:gesture-zoom} object is a @class{gtk:gesture} implementation
     able to recognize pinch/zoom gestures, whenever the distance between both
-    tracked sequences changes, the \"scale-changed\" signal is emitted to
-    report the scale factor.
+    tracked sequences changes, the @code{\"scale-changed\"} signal is emitted
+    to report the scale factor.
   @end{short}
   @begin[Signal Details]{dictionary}
     @subheading{The \"scale-changed\" signal}

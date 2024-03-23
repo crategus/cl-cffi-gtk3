@@ -104,9 +104,9 @@
 (setf (liber:alias-for-symbol 'unit)
       "GEnum"
       (liber:symbol-documentation 'unit)
- "@version{2023-1-31}
-  @short{Enumeration for dimenstions of paper sizes.}
-  @begin{pre}
+ "@version{2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkUnit\" unit
   (:export t
    :type-initializer \"gtk_unit_get_type\")
@@ -114,13 +114,17 @@
   (:points 1)
   (:inch 2)
   (:mm 3))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:none]{No units.}
-    @entry[:points]{Dimensions in points.}
-    @entry[:inch]{Dimensions in inches.}
-    @entry[:mm]{Dimensions in millimeters.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:none]{No units.}
+      @entry[:points]{Dimensions in points.}
+      @entry[:inch]{Dimensions in inches.}
+      @entry[:mm]{Dimensions in millimeters.}
+    @end{table}
+  @end{values}
+  @short{Enumeration for dimenstions of paper sizes.}
   @see-class{gtk:paper-size}")
 
 ;;; ----------------------------------------------------------------------------

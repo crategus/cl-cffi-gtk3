@@ -1951,8 +1951,8 @@ lambda (area renderer editable)    :run-first
     Explicitly stops the editing of the currently edited cell.
   @end{short}
   If the @arg{canceled} argument is @em{true}, the currently edited cell
-  renderer will emit the \"editing-canceled\" signal, otherwise the
-  \"editing-done\" signal will be emitted on the current edit widget.
+  renderer will emit the @code{\"editing-canceled\"} signal, otherwise the
+  @code{\"editing-done\"} signal will be emitted on the current edit widget.
 
   See the @fun{gtk:cell-area-edited-cell} and @fun{gtk:cell-area-edit-widget}
   functions.

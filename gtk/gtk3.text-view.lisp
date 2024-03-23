@@ -214,12 +214,9 @@
 (setf (liber:alias-for-symbol 'text-view-layer)
       "GEnum"
       (liber:symbol-documentation 'text-view-layer)
- "@version{#2023-3-13}
-  @begin{short}
-    Used to reference the layers of the @class{gtk:text-view} widget for the
-    purpose of customized drawing with the @code{draw_layer} virtual function.
-  @end{short}
-  @begin{pre}
+ "@version{#2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkTextViewLayer\" text-view-layer
   (:export t
    :type-initializer \"gtk_text_view_layer_get_type\")
@@ -227,14 +224,21 @@
   (:above 1)
   (:below-text 2)
   (:above-text 3))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:below]{Old deprecated layer, use @code{:below-text} instead.}
-    @entry[:above]{Old deprecated layer, use @code{:above-text} instead.}
-    @entry[:below-text]{The layer rendered below the text, but above the
-      background.}
-    @entry[:above-text]{The layer rendered above the text.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:below]{Old deprecated layer, use @code{:below-text} instead.}
+      @entry[:above]{Old deprecated layer, use @code{:above-text} instead.}
+      @entry[:below-text]{The layer rendered below the text, but above the
+        background.}
+      @entry[:above-text]{The layer rendered above the text.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Used to reference the layers of the @class{gtk:text-view} widget for the
+    purpose of customized drawing with the @code{draw_layer} virtual function.
+  @end{short}
   @see-class{gtk:text-view}")
 
 ;;; ----------------------------------------------------------------------------
@@ -256,11 +260,9 @@
 (setf (liber:alias-for-symbol 'text-window-type)
       "GEnum"
       (liber:symbol-documentation 'text-window-type)
- "@version{#2023-3-8}
-  @begin{short}
-    Used to reference the parts of the @class{gtk:text-view} widget.
-  @end{short}
-  @begin{pre}
+ "@version{#2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkTextWindowType\" gtk:text-window-type
   (:export t
    :type-initializer \"gtk_text_window_type_get_type\")
@@ -271,16 +273,22 @@
   (:right 4)
   (:top 5)
   (:bottom 6))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:private]{Invalid value, used as a marker.}
-    @entry[:widget]{Window that floats over scrolling areas.}
-    @entry[:text]{Scrollable text window.}
-    @entry[:left]{Left side border window.}
-    @entry[:right]{Right side border window.}
-    @entry[:top]{Top border window.}
-    @entry[:bottom]{Bottom border window.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:private]{Invalid value, used as a marker.}
+      @entry[:widget]{Window that floats over scrolling areas.}
+      @entry[:text]{Scrollable text window.}
+      @entry[:left]{Left side border window.}
+      @entry[:right]{Right side border window.}
+      @entry[:top]{Top border window.}
+      @entry[:bottom]{Bottom border window.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Used to reference the parts of the @class{gtk:text-view} widget.
+  @end{short}
   @see-class{gtk:text-view}")
 
 ;;; ----------------------------------------------------------------------------
@@ -297,24 +305,28 @@
 (setf (liber:alias-for-symbol 'text-extend-selection)
       "GEnum"
       (liber:symbol-documentation 'text-extend-selection)
- "@version{#2023-3-8}
-  @begin{short}
-    Granularity types that extend the text selection.
-  @end{short}
-  Use the @code{\"extend-selection\"} signal to customize the selection.
-  @begin{pre}
+ "@version{#2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkTextExtendSelection\" text-extend-selection
   (:export t
    :type-initializer \"gtk_text_extend_selection_get_type\")
   (:word 0)
   (:line 1))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:word]{Selects the current word. It is triggered by a double click
-      for example.}
-    @entry[:line]{Selects the current line. It is triggered by a triple click
-      for example.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:word]{Selects the current word. It is triggered by a double click
+        for example.}
+      @entry[:line]{Selects the current line. It is triggered by a triple click
+        for example.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Granularity types that extend the text selection.
+  @end{short}
+  Use the @code{\"extend-selection\"} signal to customize the selection.
   @see-class{gtk:text-view}")
 
 ;;; ----------------------------------------------------------------------------

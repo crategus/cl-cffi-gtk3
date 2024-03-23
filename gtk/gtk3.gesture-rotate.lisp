@@ -71,7 +71,7 @@
   @begin{short}
     The @class{gtk:gesture-rotate} object is a @class{gtk:gesture} implementation
     able to recognize 2-finger rotations, whenever the angle between both
-    handled sequences changes, the \"angle-changed\" signal is emitted.
+    handled sequences changes, the @code{\"angle-changed\"} signal is emitted.
   @end{short}
   @begin[Signal Details]{dictionary}
     @subheading{The \"angle-changed\" signal}

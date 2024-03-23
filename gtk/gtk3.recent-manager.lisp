@@ -197,9 +197,9 @@
 (setf (liber:alias-for-symbol 'recent-manager-error)
       "GEnum"
       (liber:symbol-documentation 'recent-manager-error)
- "@version{#2021-12-27}
-  @short{Error codes for @class{gtk:recent-manager} operations.}
-  @begin{pre}
+ "@version{#2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkRecentManagerError\" recent-manager-error
   (:export t
    :type-initializer \"gtk_recent_manager_error_get_type\")
@@ -210,17 +210,21 @@
   (:read 4)
   (:write 5)
   (:unknown 6))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:not-found]{The URI specified does not exists in the recently used
-      resources list.}
-    @entry[:invalid-uri]{The URI specified is not valid.}
-    @entry[:invalid-encoding]{The supplied string is not UTF-8 encoded.}
-    @entry[:not-registered]{No application has registered the specified item.}
-    @entry[:read]{Failure while reading the recently used resources file.}
-    @entry[:write]{Failure while writing the recently used resources file.}
-    @entry[:unknown]{Unspecified error.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:not-found]{The URI specified does not exists in the recently used
+        resources list.}
+      @entry[:invalid-uri]{The URI specified is not valid.}
+      @entry[:invalid-encoding]{The supplied string is not UTF-8 encoded.}
+      @entry[:not-registered]{No application has registered the specified item.}
+      @entry[:read]{Failure while reading the recently used resources file.}
+      @entry[:write]{Failure while writing the recently used resources file.}
+      @entry[:unknown]{Unspecified error.}
+    @end{table}
+  @end{values}
+  @short{Error codes for @class{gtk:recent-manager} operations.}
   @see-class{gtk:recent-manager}")
 
 ;;; ----------------------------------------------------------------------------
@@ -371,7 +375,8 @@ lambda (manager)    :run-first
   @end{short}
   Recent manager objects are used to handle the list of recently used resources.
   A @class{gtk:recent-manager} object monitors the recently used resources list,
-  and emits the \"changed\" signal each time something inside the list changes.
+  and emits the @code{\"changed\"} signal each time something inside the list
+  changes.
 
   The @class{gtk:recent-manager} object is expensive: be sure to create them
   only when needed. You should use the @fun{gtk:recent-manager-default} function
