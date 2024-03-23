@@ -271,12 +271,9 @@
 (setf (liber:alias-for-symbol 'ui-manager-item-type)
       "GFlags"
       (liber:symbol-documentation 'ui-manager-item-type)
- "@version{#2023-3-29}
-  @begin{short}
-    These values are used by the @fun{gtk:ui-manager-add-ui} function to
-    determine what UI element to create.
-  @end{short}
-  @begin{pre}
+ "@version{#2024-3-21}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-flags \"GtkUIManagerItemType\" ui-manager-item-type
   (:export t
    :type-initializer \"gtk_ui_manager_item_type_get_type\"))
@@ -291,21 +288,28 @@
   (:separator 128)
   (:accelerator 256)
   (:popup-with-accels 512))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:auto]{Pick the type of the UI element according to context.}
-    @entry[:menubar]{Create a menubar.}
-    @entry[:menu]{Create a menu.}
-    @entry[:toolbar]{Create a toolbar.}
-    @entry[:placeholder]{Insert a placeholder.}
-    @entry[:popup]{Create a popup menu.}
-    @entry[:menuitem]{Create a menuitem.}
-    @entry[:toolitem]{Create a toolitem.}
-    @entry[:separator]{Create a separator.}
-    @entry[:accelerator]{Install an accelerator.}
-    @entry[:popup-with-accels]{Same as @code{:popup}, but the accelerators of
-      the actions are shown.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:auto]{Pick the type of the UI element according to context.}
+      @entry[:menubar]{Create a menubar.}
+      @entry[:menu]{Create a menu.}
+      @entry[:toolbar]{Create a toolbar.}
+      @entry[:placeholder]{Insert a placeholder.}
+      @entry[:popup]{Create a popup menu.}
+      @entry[:menuitem]{Create a menuitem.}
+      @entry[:toolitem]{Create a toolitem.}
+      @entry[:separator]{Create a separator.}
+      @entry[:accelerator]{Install an accelerator.}
+      @entry[:popup-with-accels]{Same as @code{:popup}, but the accelerators of
+        the actions are shown.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    These values are used by the @fun{gtk:ui-manager-add-ui} function to
+    determine what UI element to create.
+  @end{short}
   @begin[Warning]{dictionary}
     The @symbol{gtk:ui-manager-item-type} flags has been deprecated since
     version 3.10 and should not be used in newly written code.

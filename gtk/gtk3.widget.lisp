@@ -446,18 +446,20 @@
 (setf (liber:alias-for-symbol 'widget-help-type)
       "GEnum"
       (liber:symbol-documentation 'widget-help-type)
- "@version{#2023-3-8}
-  @begin{short}
-    Kinds of widget-specific help used in the @code{\"show-help\"} signal
-    handler.
-  @end{short}
-  @begin{pre}
+ "@version{#2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkWidgetHelpType\" widget-help-type
   (:export t
    :type-initializer \"gtk_widget_help_type_get_type\")
   (:tooltip 0)
   (:whats-this 1))
-  @end{pre}
+    @end{pre}
+  @end{declaration}
+  @begin{short}
+    Kinds of widget-specific help used in the @code{\"show-help\"} signal
+    handler.
+  @end{short}
   @class{gtk:widget}")
 
 ;;; ----------------------------------------------------------------------------
@@ -481,25 +483,29 @@
 (setf (liber:alias-for-symbol 'size-request-mode)
       "GEnum"
       (liber:symbol-documentation 'size-request-mode)
- "@version{#2023-3-8}
-  @begin{short}
-    Specifies a preference for height-for-width or width-for-height geometry
-    management.
-  @end{short}
-  @begin{pre}
+ "@version{#2024-3-22}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-enum \"GtkSizeRequestMode\" size-request-mode
   (:export t
    :type-initializer \"gtk_size_request_mode_get_type\")
   (:height-for-width 0)
   (:width-for-height 1)
   (:constant-size 2))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:height-for-width]{Prefer height-for-width geometry management.}
-    @entry[:width-for-height]{Prefer width-for-height geometry management.}
-    @entry[:constant-size]{Do not trade height-for-width or width-for-height
-      geometry management.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:height-for-width]{Prefer height-for-width geometry management.}
+      @entry[:width-for-height]{Prefer width-for-height geometry management.}
+      @entry[:constant-size]{Do not trade height-for-width or width-for-height
+        geometry management.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Specifies a preference for height-for-width or width-for-height geometry
+    management.
+  @end{short}
   @see-class{gtk:widget}
   @see-function{gtk:widget-request-mode}")
 
@@ -558,7 +564,30 @@
 (setf (liber:alias-for-symbol 'align)
       "GEnum"
       (liber:symbol-documentation 'align)
- "@version{2024-1-1}
+ "@version{2024-3-22}
+  @begin{declaration}
+    @begin{pre}
+(gobject:define-g-enum \"GtkAlign\" align
+  (:export t
+   :type-initializer \"gtk_align_get_type\")
+  (:fill 0)
+  (:start 1)
+  (:end 2)
+  (:center 3)
+  (:baseline 4))
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:fill]{Stretch to fill all space if possible, center if no
+        meaningful way to stretch.}
+      @entry[:start]{Snap to left or top side, leaving space on right or
+        bottom.}
+      @entry[:end]{Snap to right or bottom side, leaving space on left or top.}
+      @entry[:center]{Center natural width of widget inside the allocation.}
+      @entry[:baseline]{Align the widget according to the baseline.}
+    @end{table}
+  @end{values}
   @begin{short}
     Controls how a widget deals with extra space in a single x or y dimension.
   @end{short}
@@ -575,24 +604,6 @@
   The @code{:baseline} support is optional for containers and widgets, and it
   is only supported for vertical alignment. When it is not supported by a child
   widget or a container it is treated as the @code{:fill} value.
-  @begin{pre}
-(gobject:define-g-enum \"GtkAlign\" align
-  (:export t
-   :type-initializer \"gtk_align_get_type\")
-  (:fill 0)
-  (:start 1)
-  (:end 2)
-  (:center 3)
-  (:baseline 4))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:fill]{Stretch to fill all space if possible, center if no meaningful
-      way to stretch.}
-    @entry[:start]{Snap to left or top side, leaving space on right or bottom.}
-    @entry[:end]{Snap to right or bottom side, leaving space on left or top.}
-    @entry[:center]{Center natural width of widget inside the allocation.}
-    @entry[:baseline]{Align the widget according to the baseline.}
-  @end{table}
   @see-class{gtk:widget}
   @see-function{gtk:widget-halign}
   @see-function{gtk:widget-valign}")
@@ -2303,7 +2314,7 @@ lambda (widget event)    :run-last
     @class{gtk:widget} class.
   @end{short}
   The @fun{gtk:widget-app-paintable} function returns @em{true} if the widget
-  will paint on the widget in a \"draw\" handler. The
+  will paint on the widget in a @code{\"draw\"} handler. The
   @setf{gtk:widget-app-paintable} function sets whether the application intends
   to draw on the widget.
 
@@ -6727,9 +6738,9 @@ lambda (widget clock)
   @code{\"focus\"} signal. Widgets override the default handler for this signal
   in order to implement appropriate focus behavior.
 
-  The default \"focus\" handler for a widget should return @em{true} if moving
-  in direction left the focus on a focusable location inside that widget, and
-  @em{false} if moving in direction moved the focus outside the widget. If
+  The default @code{\"focus\"} handler for a widget should return @em{true} if
+  moving in direction left the focus on a focusable location inside that widget,
+  and @em{false} if moving in direction moved the focus outside the widget. If
   returning @em{true}, widgets normally call the @fun{gtk:widget-grab-focus}
   function to place the focus accordingly. If returning @em{false}, they do not
   modify the current focus location.
@@ -7257,7 +7268,7 @@ lambda (widget clock)
       navigation outside the widget, e.g. by calling the
       @fun{gtk:widget-child-focus} function on the toplevel of the widget.}
   @end{itemize}
-  The default \"keynav-failed\" handler returns @em{true} for
+  The default @code{\"keynav-failed\"} handler returns @em{true} for
   @code{:tab-forward} and @code{:tab-backward}. For the other
   @symbol{gtk:direction-type} values, it looks at the
   @slot[gtk:settings]{gtk-keynav-cursor-only} setting and returns @em{false}
@@ -7823,10 +7834,10 @@ lambda (widget clock)
     Determines if the widget should show a visible indication that it has the
     global input focus.
   @end{short}
-  This is a convenience function for use in \"draw\" handlers that takes into
-  account whether focus indication should currently be shown in the toplevel
-  window of the widget. See the @fun{gtk:window-focus-visible} function for
-  more information about focus indication.
+  This is a convenience function for use in @code{\"draw\"} handlers that takes
+  into account whether focus indication should currently be shown in the
+  toplevel window of the widget. See the @fun{gtk:window-focus-visible} function
+  for more information about focus indication.
 
   To find out if the widget has the global input focus, use the
   @fun{gtk:widget-has-focus} function.

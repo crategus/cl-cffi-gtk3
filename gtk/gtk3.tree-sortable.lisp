@@ -264,7 +264,7 @@ lambda (sortable)    : Run Last
  "@version{#2023-3-28}
   @argument[sortable]{a @class{gtk:tree-sortable} object}
   @begin{short}
-    Emits a \"sort-column-changed\" signal on @arg{sortable}.
+    Emits a @code{\"sort-column-changed\"} signal on @arg{sortable}.
   @end{short}
   @see-class{gtk:tree-sortable}"
   (sortable (g:object tree-sortable)))

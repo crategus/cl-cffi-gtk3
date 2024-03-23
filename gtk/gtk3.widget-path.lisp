@@ -98,11 +98,9 @@
 (setf (liber:alias-for-symbol 'region-flags)
       "GFlags"
       (liber:symbol-documentation 'region-flags)
- "@version{#2023-3-30}
-  @begin{short}
-    Describes a region within a widget.
-  @end{short}
-  @begin{pre}
+ "@version{#2024-3-21}
+  @begin{declaration}
+    @begin{pre}
 (gobject:define-g-flags \"GtkRegionFlags\" region-flags
   (:export t
    :type-initializer \"gtk_region_flags_get_type\")
@@ -112,15 +110,21 @@
   (:last #.(ash 1 3))
   (:only #.(ash 1 4))
   (:sorted #.(ash 1 5)))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:even]{Region has an even number within a set.}
-    @entry[:odd]{Region has an odd number within a set.}
-    @entry[:first]{Region is the first one within a set.}
-    @entry[:last]{Region is the last one within a set.}
-    @entry[:only]{Region is the only one within a set.}
-    @entry[:sorted]{Region is part of a sorted area.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:even]{Region has an even number within a set.}
+      @entry[:odd]{Region has an odd number within a set.}
+      @entry[:first]{Region is the first one within a set.}
+      @entry[:last]{Region is the last one within a set.}
+      @entry[:only]{Region is the only one within a set.}
+      @entry[:sorted]{Region is part of a sorted area.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Describes a region within a widget.
+  @end{short}
   @see-class{gtk:style-context}")
 
 ;;; ----------------------------------------------------------------------------

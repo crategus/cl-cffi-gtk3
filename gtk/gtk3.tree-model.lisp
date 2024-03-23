@@ -923,24 +923,28 @@
 (setf (liber:alias-for-symbol 'tree-model-flags)
       "Flags"
       (liber:symbol-documentation 'tree-model-flags)
- "@version{#2023-2-16}
+ "@version{#2024-3-21}
+  @begin{declaration}
+    @begin{pre}
+(gobject:define-g-flags \"GtkTreeModelFlags\" tree-model-flags
+  (:export t
+   :type-initializer \"gtk_tree_model_flags_get_type\")
+  (:iters-persist 1)
+  (:list-only 2))
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:iters-persist]{Iterators survive all signals emitted by the tree.}
+      @entry[:list-only]{The model is a list only, and never has children.}
+    @end{table}
+  @end{values}
   @begin{short}
     These flags indicate various properties of a @class{gtk:tree-model} object.
   @end{short}
   They are returned by the @fun{gtk:tree-model-flags} function, and must be
   static for the lifetime of the object. A more complete description of
   @code{:iters-persist} can be found in the overview of this section.
-  @begin{pre}
-(gobject:define-g-flags \"GtkTreeModelFlags\" tree-model-flags
-  (:export t
-   :type-initializer \"gtk_tree_model_flags_get_type\")
-  (:iters-persist 1)
-  (:list-only 2))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:iters-persist]{Iterators survive all signals emitted by the tree.}
-    @entry[:list-only]{The model is a list only, and never has children.}
-  @end{table}
   @see-class{gtk:tree-model}
   @see-function{gtk:tree-model-flags}")
 
@@ -1789,7 +1793,7 @@ lambda (model path iter)
   @argument[iter]{a valid @class{gtk:tree-iter} iterator pointing to the
     changed row}
   @begin{short}
-    Emits the \"row-changed\" signal on @arg{model}.
+    Emits the @code{\"row-changed\"} signal on @arg{model}.
   @end{short}
   @see-class{gtk:tree-model}
   @see-class{gtk:tree-path}
@@ -1812,7 +1816,7 @@ lambda (model path iter)
   @argument[iter]{a valid @class{gtk:tree-iter} iterator pointing to the
     inserted row}
   @begin{short}
-    Emits the \"row-inserted\" signal on @arg{model}.
+    Emits the @code{\"row-inserted\"} signal on @arg{model}.
   @end{short}
   @see-class{gtk:tree-model}
   @see-class{gtk:tree-path}
@@ -1836,7 +1840,7 @@ lambda (model path iter)
   @argument[iter]{a valid @class{gtk:tree-iter} iterator pointing to the
     changed row}
   @begin{short}
-    Emits the \"row-has-child-toggled\" signal on @arg{model}.
+    Emits the @code{\"row-has-child-toggled\"} signal on @arg{model}.
   @end{short}
   This should be called by models after the child state of a node changes.
   @see-class{gtk:tree-model}
@@ -1859,7 +1863,7 @@ lambda (model path iter)
   @argument[path]{a @class{gtk:tree-path} instance pointing to the previous
     location of the deleted row}
   @begin{short}
-    Emits the \"row-deleted\" signal on @arg{model}.
+    Emits the @code{\"row-deleted\"} signal on @arg{model}.
   @end{short}
   This should be called by models after a row has been removed. The location
   pointed to by path should be the location that the row previously was at. It
@@ -1897,7 +1901,7 @@ lambda (model path iter)
   @argument[order]{a list of integers mapping the current position of each
     child to its old position before the re-ordering}
   @begin{short}
-    Emits the \"rows-reordered\" signal on @arg{model}.
+    Emits the @code{\"rows-reordered\"} signal on @arg{model}.
   @end{short}
   This should be called by models when their rows have been reordered.
   @see-class{gtk:tree-model}

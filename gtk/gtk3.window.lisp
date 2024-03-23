@@ -99,7 +99,7 @@
 ;;;     gtk_window_activate_focus
 ;;;     gtk_window_activate_default
 ;;;     gtk_window_set_default_size
-;;;     gtk_window_set_default_geometry
+;;;     gtk_window_set_default_geometry                     Deprecated 3.20
 ;;;     gtk_window_set_geometry_hints
 ;;;     gtk_window_set_position
 ;;;     gtk_window_has_toplevel_focus
@@ -141,10 +141,10 @@
 ;;;     gtk_window_has_group
 ;;;     gtk_window_get_window_type
 ;;;     gtk_window_move
-;;;     gtk_window_parse_geometry
+;;;     gtk_window_parse_geometry                           Deprecated 3.20
 ;;;     gtk_window_reshow_with_initial_size                 not exported
 ;;;     gtk_window_resize
-;;;     gtk_window_resize_to_geometry
+;;;     gtk_window_resize_to_geometry                       Deprecated 3.20
 ;;;     gtk_window_set_default_icon_list
 ;;;     gtk_window_set_default_icon
 ;;;     gtk_window_set_default_icon_from_file
@@ -174,7 +174,7 @@
 ;;;     focus-on-map
 ;;;     focus-visible
 ;;;     gravity
-;;;     has-resize-grip
+;;;     has-resize-grip                                     Deprecated 3.14
 ;;;     has-toplevel-focus
 ;;;     hide-titlebar-when-maximized
 ;;;     icon
@@ -184,7 +184,7 @@
 ;;;     mnemonics-visible
 ;;;     modal
 ;;;     resizable
-;;;     resize-grip-visible
+;;;     resize-grip-visible                                 Deprecated 3.14
 ;;;     role
 ;;;     screen
 ;;;     skip-pager-hint
@@ -558,8 +558,8 @@ lambda (window toggle)    :action
       @begin[code]{table}
         @entry[window]{The @class{gtk:window} widget on which the signal is
           emitted.}
-        @entry[toggle]{A boolean which toggles the debugger.}
-        @entry[Returns]{A boolean which is @em{true} if the key binding was
+        @entry[toggle]{The boolean which toggles the debugger.}
+        @entry[Returns]{The boolean which is @em{true} if the key binding was
           handled.}
       @end{table}
     @subheading{The \"keys-changed\" signal}
@@ -740,7 +740,7 @@ lambda (window widget)    :run-last
 (setf (liber:alias-for-function 'window-decorated)
       "Accessor"
       (documentation 'window-decorated 'function)
- "@version{2024-3-16}
+ "@version{2024-3-20}
   @syntax{(gtk:window-decorated object) => setting}
   @syntax{(setf (gtk:window-decorated object) setting)}
   @argument[object]{a @class{gtk:window} widget}
@@ -752,7 +752,8 @@ lambda (window widget)    :run-last
   The @fun{gtk:window-decorated} function returns whether the window has been
   set to have decorations such as a title bar.
 
-  By default, windows are decorated with a title bar, resize controls, etc.
+  By default, windows are decorated with a title bar, resize controls, etc. See
+  the @slot[gtk:settings]{gtk-decoration-layout} setting for more information.
   Some window managers allow GTK to disable these decorations, creating a
   borderless window. If you set the @slot[gtk:window]{decorated} property to
   @em{false} using this function, GTK will do its best to convince the window
@@ -763,7 +764,8 @@ lambda (window widget)    :run-last
   On Windows, this function always works, since there is no window manager
   policy involved.
   @see-class{gtk:window}
-  @see-function{gtk:widget-show}")
+  @see-function{gtk:widget-show}
+  @see-function{gtk:settings-gtk-decoration-layout}")
 
 ;;; --- gtk:window-default-height ----------------------------------------------
 
@@ -931,12 +933,12 @@ lambda (window widget)    :run-last
 (setf (liber:alias-for-function 'window-focus-visible)
       "Accessor"
       (documentation 'window-focus-visible 'function)
- "@version{2024-3-16}
+ "@version{2024-3-20}
   @syntax{(gtk:window-focus-visible object) => setting}
   @syntax{(setf (gtk:window-focus-visible object) setting)}
   @argument[object]{a @class{gtk:window} widget}
-  @argument[setting]{a boolean whether \"focus-rectangles\" are currently
-    visible in the window}
+  @argument[setting]{a boolean whether focus rectangles are currently visible
+    in the window}
   @begin{short}
     Accessor of the @slot[gtk:window]{focus-visible} slot of the
     @class{gtk:window} class.
@@ -960,11 +962,11 @@ lambda (window widget)    :run-last
 (setf (liber:alias-for-function 'window-gravity)
       "Accessor"
       (documentation 'window-gravity 'function)
- "@version{2024-3-16}
+ "@version{2024-3-20}
   @syntax{(gtk:window-gravity object) => gravity}
   @syntax{(setf (gtk:window-gravity object) gravity)}
   @argument[object]{a @class{gtk:window} widget}
-  @argument[gravity]{a window gravity of the @symbol{gdk:gravity} enumeration}
+  @argument[gravity]{a @symbol{gdk:gravity} value with the window gravity}
   @begin{short}
     Accessor of the @slot[gtk:window]{gravity} slot of the @class{gtk:window}
     class.
@@ -987,15 +989,14 @@ lambda (window widget)    :run-last
   @br{}
   Whether the window has a corner resize grip. @br{}
   @em{Warning:} The @code{has-resize-grip} property has been deprecated since
-  version 3.14 and should not be used in newly written code. Resize grips have
-  been removed. @br{}
+  version 3.14. Resize grips have been removed. @br{}
   Default value: @em{false}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'window-has-resize-grip)
       "Accessor"
       (documentation 'window-has-resize-grip 'function)
- "@version{2024-3-16}
+ "@version{2024-3-20}
   @syntax{(gtk:window-has-resize-grip object) => setting}
   @syntax{(setf (gtk:window-has-resize-grip object) setting)}
   @argument[object]{a @class{gtk:window} widget}
@@ -1006,8 +1007,7 @@ lambda (window widget)    :run-last
   @end{short}
   @begin[Warning]{dictionary}
     The @fun{gtk:window-has-resize-grip} function has been deprecated since
-    version 3.14 and should not be used in newly written code. Resize grips
-    have been removed.
+    version 3.14. Resize grips have been removed.
   @end{dictionary}
   @see-class{gtk:window}")
 
@@ -1283,14 +1283,14 @@ lambda (window widget)    :run-last
 (setf (documentation (liber:slot-documentation "opacity" 'window) t)
  "The @code{opacity} property of type @code{:double} (Read / Write) @br{}
   The requested opacity of the window. @br{}
-  Allowed values: [0.0,1.0] @br{}
+  Allowed values: [0.0, 1.0] @br{}
   Default value: 1.0")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'window-opacity)
       "Accessor"
       (documentation 'window-opacity 'function)
- "@version{2024-3-16}
+ "@version{2024-3-20}
   @syntax{(gtk:window-opacity object) => opacity}
   @syntax{(setf (gtk:window-opacity object) opacity)}
   @argument[object]{a @class{gtk:window} widget}
@@ -1301,9 +1301,8 @@ lambda (window widget)    :run-last
     class.
   @end{short}
   @begin[Warning]{dictionary}
-    The @fun{gtk:window-opacity} function has been deprecated since version 3.8
-    and should not be used in newly written code. Use the
-    @fun{gtk:widget-opacity} function instead.
+    The @fun{gtk:window-opacity} function has been deprecated since version 3.8.
+    Use the @fun{gtk:widget-opacity} function instead.
   @end{dictionary}
   @see-class{gtk:window}
   @see-function{gtk:widget-opacity}")
@@ -1340,15 +1339,14 @@ lambda (window widget)    :run-last
  "The @code{resize-grip-visible} property of type @code{:boolean} (Read) @br{}
   Whether a corner resize grip is currently shown. @br{}
   @em{Warning:} The @code{resize-grip-visible} property has been deprecated
-  since version 3.14 and should not be used in newly written code. Resize grips
-  have been removed. @br{}
+  since version 3.14. Resize grips have been removed. @br{}
   Default value: @em{false}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'window-resize-grip-visible)
       "Accessor"
       (documentation 'window-resize-grip-visible 'function)
- "@version{2024-3-16}
+ "@version{2024-3-20}
   @syntax{(gtk:window-resize-grip-visible object) => setting}
   @syntax{(setf (gtk:window-resize-grip-visible object) setting)}
   @argument[object]{a @class{gtk:window} widget}
@@ -1359,8 +1357,7 @@ lambda (window widget)    :run-last
   @end{short}
   @begin[Warning]{dictionary}
     The @fun{gtk:window-resize-grip-visible} function has been deprecated
-    since version 3.14 and should not be used in newly written code.
-    Resize grips have been removed.
+    since version 3.14. Resize grips have been removed.
   @end{dictionary}
   @see-class{gtk:window}")
 
@@ -1506,7 +1503,7 @@ lambda (window widget)    :run-last
     Accessor of the @slot[gtk:window]{startup-id} slot of the @class{gtk:window}
     class.
   @end{short}
-  The @setf{gtk:window-startup-id} function sets a string with startup
+  The @setf{gtk:window-startup-id} function sets a string with the startup
   notification identifier.
 
   Startup notification identifiers are used by the desktop environment to track
@@ -1866,20 +1863,20 @@ lambda (window widget)    :run-last
 
 (defun window-default-size (window)
  #+liber-documentation
- "@version{2024-3-16}
+ "@version{2024-3-20}
   @syntax{(gtk:window-default-size window) => width, height}
   @syntax{(setf (gtk:window-default-size window) (list width height))}
   @argument[window]{a @class{gtk:window} widget}
   @argument[width]{an integer with the default width of the window}
   @argument[height]{an integer with the default height of the window}
   @begin{short}
-    Accessor of the default size of a @class{gtk:window} widget.
+    The @fun{gtk:window-default-size} function gets the default size of the
+    window.
   @end{short}
-  The @fun{gtk:window-default-size} function gets the default size of the
-  window. The @setf{gtk:window-default-size} function sets the default size.
-  A value of -1 for the width or height indicates that a default size has not
-  been explicitly set for that dimension, so the \"natural\" size of the window
-  will be used.
+  The @setf{gtk:window-default-size} function sets the default size. A value of
+  -1 for the width or height indicates that a default size has not been
+  explicitly set for that dimension, so the \"natural\" size of the window will
+  be used.
 
   If the \"natural\" size of the window, its size request, is larger than the
   default, the default will be ignored. More generally, if the default size
@@ -1937,13 +1934,12 @@ lambda (window widget)    :run-last
 (cffi:defcfun ("gtk_window_set_default_geometry" window-set-default-geometry)
     :void
  #+liber-documentation
- "@version{2024-3-16}
+ "@version{2024-3-20}
   @short{This function does nothing and is deprectated since 3.20.}
   @begin[Warning]{dictionary}
     The @fun{gtk:window-set-default-geometry} function has been deprecated
-    since version 3.20 and should not be used in newly written code. This
-    function does nothing. If you want to set a default size, use the
-    @fun{gtk:window-default-size} function instead.
+    since version 3.20. This function does nothing. If you want to set a
+    default size, use the @fun{gtk:window-default-size} function instead.
   @end{dictionary}
   @see-class{gtk:window}
   @see-function{gtk:window-default-size}"
@@ -2141,19 +2137,19 @@ lambda (window widget)    :run-last
 
 (cffi:defcfun ("gtk_window_get_focus" window-focus) (g:object widget)
  #+liber-documentation
- "@version{#2024-3-16}
+ "@version{#2024-3-20}
   @syntax{(gtk:window-focus window) => focus}
   @syntax{(setf (gtk:window-focus window) focus)}
   @argument[window]{a @class{gtk:window} widget}
   @argument[focus]{a @class{gtk:widget} object to be the focus widget, or
     @code{nil} to unset any focus widget for the toplevel window}
   @begin{short}
-    Accessor of the focus widget of the window.
+    The @fun{gtk:window-focus} function retrieves the current focused widget
+    within the window.
   @end{short}
-  The @fun{gtk:window-focus} function retrieves the current focused widget
-  within the window. If the @arg{focus} argument is not the current focus
-  widget, and is focusable, the @setf{gtk:window-focus} function sets it as the
-  focus widget for the window.
+  If the @arg{focus} argument is not the current focus widget, and is focusable,
+  the @setf{gtk:window-focus} function sets it as the focus widget for the
+  window.
 
   If the @arg{focus} argument is @code{nil}, unsets the focus widget for the
   window. To set the focus to a particular widget in the toplevel, it is usually
@@ -2186,18 +2182,18 @@ lambda (window widget)    :run-last
 (cffi:defcfun ("gtk_window_get_default_widget" window-default-widget)
     (g:object widget)
  #+liber-documentation
- "@version{#2024-3-16}
+ "@version{#2024-3-20}
   @syntax{(gtk:window-default-widget window) => widget}
   @syntax{(setf (gtk:window-default-widget window) widget)}
   @argument[window]{a @class{gtk:window} widget}
   @argument[widget]{a @class{gtk:widget} object to be the default, or
     @code{nil} to unset the default widget for the toplevel}
   @begin{short}
-    Accessor of the default widget of the window.
+    The @fun{gtk:window-default-widget} function returns the default widget for
+    the window.
   @end{short}
-  The @fun{gtk:window-default-widget} function returns the default widget for
-  the window. The @setf{gtk:window-default-widget} function sets or unsets the
-  default widget.
+  The @setf{gtk:window-default-widget} function sets or unsets the default
+  widget.
 
   The default widget is the widget that is activated when the user presses the
   @kbd{Enter} key in a dialog for example. When setting, rather than unsetting,
@@ -2744,17 +2740,17 @@ lambda (window widget)    :run-last
 (cffi:defcfun ("gtk_window_get_default_icon_name" window-default-icon-name)
     (:string :free-from-foreign nil)
  #+liber-documentation
- "@version{#2024-3-16}
+ "@version{#2024-3-20}
   @syntax{(gtk:window-default-icon-name) => name}
   @syntax{(setf (gtk:window-default-icon-name) name)}
   @argument[name]{a string with the name of the themed icon}
   @begin{short}
-    Accessor of the default icon name of the window.
+    The @fun{gtk:window-default-icon-name} function returns the fallback icon
+    name for windows.
   @end{short}
-  The @fun{gtk:window-default-icon-name} function returns the fallback icon name
-  for windows. The @setf{gtk:window-default-icon-name} function sets an icon to
-  be used as fallback for windows that have not had the
-  @fun{gtk:window-icon-list} function called on them from a named themed icon.
+  The @setf{gtk:window-default-icon-name} function sets an icon to be used as
+  fallback for windows that have not had the @fun{gtk:window-icon-list} function
+  called on them from a named themed icon.
   @see-class{gtk:window}
   @see-function{gtk:window-icon-list}")
 
@@ -3096,8 +3092,7 @@ lambda (window widget)    :run-last
   @fun{gtk:window-set-geometry-hints} function on the window.
   @begin[Warning]{dictionary}
     The @fun{gtk:window-parse-geometry} function has been deprecated since
-    version 3.20 and should not be used in newly written code. Geometry handling
-    in GTK is deprecated.
+    version 3.20. Geometry handling in GTK is deprecated.
   @end{dictionary}
   @see-class{gtk:window}
   @see-symbol{gdk:window-hints}
@@ -3189,9 +3184,8 @@ lambda (window widget)    :run-last
   @end{short}
   @begin[Warning]{dictionary}
     The @fun{gtk:window-resize-to-geometry} function has been deprecated since
-    version 3.20 and should not be used in newly written code. This function
-    does nothing. Use the @fun{gtk:window-resize} function and compute the
-    geometry yourself.
+    version 3.20. This function does nothing. Use the @fun{gtk:window-resize}
+    function and compute the geometry yourself.
   @end{dictionary}
   @see-class{gtk:window}
   @see-function{gtk:window-resize}
@@ -3387,16 +3381,16 @@ lambda (window widget)    :run-last
 
 (cffi:defcfun ("gtk_window_get_titlebar" window-titlebar) (g:object widget)
  #+liber-documentation
- "@version{#2024-3-16}
+ "@version{#2024-3-20}
   @syntax{(gtk:window-titlebar window) => widget}
   @syntax{(setf (gtk:window-titlebar window) widget)}
   @argument[window]{a @class{gtk:window} widget}
   @argument[widget]{a @class{gtk:widget} object to use as titlebar}
   @begin{short}
-    Accessor of the custom titlebar widget of the window.
+    The @fun{gtk:window-titlebar} function returns the custom titlebar for the
+    window.
   @end{short}
-  The @fun{gtk:window-titlebar} function returns the custom titlebar for the
-  window. The @setf{gtk:window-titlebar} function sets a custom titlebar.
+  The @setf{gtk:window-titlebar} function sets a custom titlebar.
 
   If you set a custom titlebar, GTK will do its best to convince the window
   manager not to put its own titlebar on the window. Depending on the system,

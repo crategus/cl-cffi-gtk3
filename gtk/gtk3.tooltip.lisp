@@ -84,8 +84,8 @@
       needed to determine when and where to show a tooltip.
     @end{item}
     @begin{item}
-      Connect to the \"query-tooltip\" signal. The signal will be emitted when
-      a tooltip is supposed to be shown. One of the arguments passed to the
+      Connect to the @code{\"query-tooltip\"} signal. The signal will be emitted
+      when a tooltip is supposed to be shown. One of the arguments passed to the
       signal handler is a @class{gtk:tooltip} object. This is the object that we
       are about to display as a tooltip, and can be manipulated in your callback
       function using functions like the @fun{gtk:tooltip-set-icon} function.
@@ -103,7 +103,7 @@
   @begin{itemize}
     @begin{item}
       Set the @slot[gtk:widget]{has-tooltip} property and connect to the
-      \"query-tooltip\" signal as before.
+      @code{\"query-tooltip\"} signal as before.
     @end{item}
     @begin{item}
       Use the @fun{gtk:widget-tooltip-window} function to set a
