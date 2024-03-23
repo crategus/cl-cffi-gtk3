@@ -253,30 +253,26 @@
     ((model (g:object tree-model))
      (iter (g:boxed tree-iter))
      (data :pointer))
-  (let ((fn (glib:get-stable-pointer-value data)))
+  (let ((func (glib:get-stable-pointer-value data)))
     (restart-case
-      (funcall fn model iter)
-      (return-true () t)
-      (return-false () nil))))
+      (funcall func model iter)
+      (return-true () :report "Return T" t)
+      (return-false () :report "Return NIL" nil))))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'tree-model-filter-visible-func)
       "Callback"
       (liber:symbol-documentation 'tree-model-filter-visible-func)
- "@version{#2023-1-21}
+ "@version{#2024-3-23}
+  @syntax{lambda (model iter) => result}
+  @argument[model]{a child model of the @class{gtk:tree-model-filter} object}
+  @argument[iter]{a @class{gtk:tree-iter} iterator pointing to the row in model
+    whose visibility is determined}
+  @argument[result]{whether the row indicated by @arg{iter} is visible}
   @begin{short}
     A callback function which decides whether the row indicated by the
     @arg{iter} argument is visible.
   @end{short}
-  @begin{pre}
-lambda (model iter)
-  @end{pre}
-  @begin[code]{table}
-    @entry[model]{The child model of the @class{gtk:tree-model-filter} object.}
-    @entry[iter]{A @class{gtk:tree-iter} iterator pointing to the row in model
-      whose visibility is determined.}
-    @entry[Returns]{Whether the row indicated by @arg{iter} is visible.}
-  @end{table}
   @see-class{gtk:tree-model-filter}
   @see-class{gtk:tree-iter}
   @see-symbol{gtk:tree-model-filter-set-visible-func}")
@@ -335,14 +331,24 @@ lambda (model iter)
      (value (:pointer (:struct g:value)))
      (column :int)
      (data :pointer))
-  (let ((fn (glib:get-stable-pointer-value data)))
-    (funcall fn model iter value column)))
+  (let ((func (glib:get-stable-pointer-value data)))
+    (restart-case
+      (funcall func model iter value column)
+      (return () :report "Return NIL" nil))))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'tree-model-filter-modify-func)
       "Callback"
       (liber:symbol-documentation 'tree-model-filter-modify-func)
- "@version{#2023-1-21}
+ "@version{#2024-3-23}
+  @syntax{lambda (model iter value column)}
+  @argument[model]{a @class{gtk:tree-model-filter} object}
+  @argument[iter]{a @class{gtk:tree-iter} iterator pointing to the row whose
+    display values are determined}
+  @argument[value]{a @symbol{g:value} instance which is already initialized for
+    with the correct type for the column @arg{column}}
+  @argument[column]{an integer with the column whose display value is
+    determined}
   @begin{short}
     A callback function which calculates display values from raw values in the
     model.
@@ -350,18 +356,6 @@ lambda (model iter)
   It must fill @arg{value} with the display value for the column @arg{column}
   in the row indicated by @arg{iter}. Since this function is called for each
   data access, it is not a particularly efficient operation.
-  @begin{pre}
-lambda (model iter value column)
-  @end{pre}
-  @begin[code]{table}
-    @entry[model]{The @class{gtk:tree-model-filter} object.}
-    @entry[iter]{A @class{gtk:tree-iter} iterator pointing to the row whose
-      display values are determined.}
-    @entry[value]{A @symbol{g:value} instance which is already initialized for
-      with the correct type for the column @arg{column}.}
-    @entry[column]{An integer with the column whose display value is
-      determined.}
-  @end{table}
   @see-class{gtk:tree-model-filter}
   @see-class{gtk:tree-iter}
   @see-symbol{g:value}

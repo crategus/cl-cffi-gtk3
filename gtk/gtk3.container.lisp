@@ -540,25 +540,22 @@ lambda (container widget)    :run-first
 (cffi:defcallback gtk-callback :void
     ((widget (g:object widget))
      (data :pointer))
-  (restart-case
-    (funcall (glib:get-stable-pointer-value data) widget)
-    (return () :report "Error in GtkCallback function." nil)))
+  (let ((func (glib:get-stable-pointer-value data)))
+    (restart-case
+      (funcall func widget)
+      (return () :report "Return NIL" nil))))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'gtk-callback)
       "Callback"
       (liber:symbol-documentation 'gtk-callback)
- "@version{2023-6-17}
+ "@version{2024-3-23}
+  @syntax{lambda (widget)}
+  @argument[widget]{a @class{gtk:widget} widget to operate on}
   @begin{short}
     The type of the callback functions used for e.g. iterating over the
     children of a container, see the @fun{gtk:container-foreach} function.
   @end{short}
-  @begin{pre}
-lambda (widget)
-  @end{pre}
-  @begin[code]{table}
-    @entry[widget]{A @class{gtk:widget} widget to operate on.}
-  @end{table}
   @see-class{gtk:container}
   @see-function{gtk:container-foreach}
   @see-function{gtk:container-forall}")
@@ -597,7 +594,7 @@ lambda (widget)
 (export 'container-foreach)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_container_get_children () -> container-children
+;;; gtk_container_get_children ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_container_get_children" container-children)
@@ -628,7 +625,7 @@ lambda (widget)
 (export 'container-children)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_container_get_path_for_child () -> container-path-for-child
+;;; gtk_container_get_path_for_child ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_container_get_path_for_child" container-path-for-child)
@@ -678,7 +675,7 @@ lambda (widget)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_container_get_focus_child ()
-;;; gtk_container_set_focus_child () -> container-focus-child
+;;; gtk_container_set_focus_child ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf container-focus-child) (child container)
@@ -723,7 +720,7 @@ lambda (widget)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_container_get_focus_vadjustment ()
-;;; gtk_container_set_focus_vadjustment () -> container-focus-vadjustment
+;;; gtk_container_set_focus_vadjustment ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf container-focus-vadjustment) (adjustment container)
@@ -763,7 +760,7 @@ lambda (widget)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_container_get_focus_hadjustment ()
-;;; gtk_container_set_focus_hadjustment () -> container-focus-hadjustment
+;;; gtk_container_set_focus_hadjustment ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf container-focus-hadjustment) (adjustment container)
@@ -890,7 +887,7 @@ lambda (widget)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_container_child_get_property ()
-;;; gtk_container_child_set_property () -> container-child-property
+;;; gtk_container_child_set_property ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_container_child_set_property" %container-child-set-property)
@@ -1128,7 +1125,7 @@ lambda (widget)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_container_get_focus_chain ()                       deprecated
-;;; gtk_container_set_focus_chain () -> container-focus-chain
+;;; gtk_container_set_focus_chain ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_container_set_focus_chain" %container-set-focus-chain) :void

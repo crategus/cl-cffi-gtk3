@@ -4380,29 +4380,29 @@ setup_tree (void)
     @begin[GtkClipboard]{subsection}
       Storing data on clipboards.
       @about-class{clipboard}
-      @about-symbol{clipboard-received-func}
-      @about-symbol{clipboard-text-received-func}
-      @about-symbol{clipboard-image-received-func}
-      @about-symbol{clipboard-targets-received-func}
-      @about-symbol{clipboard-rich-text-received-func}
-      @about-symbol{clipboard-uri-received-func}
-      @about-symbol{clipboard-get-func}
-      @about-symbol{clipboard-clear-func}
       @about-function{clipboard-get}
       @about-function{clipboard-for-display}
       @about-function{clipboard-display}
       @about-function{clipboard-default}
+      @about-symbol{clipboard-clear-func}
+      @about-symbol{clipboard-get-func}
       @about-function{clipboard-set-with-data}
       @about-function{clipboard-set-with-owner}
       @about-function{clipboard-owner}
       @about-function{clipboard-clear}
       @about-function{clipboard-set-text}
       @about-function{clipboard-set-image}
+      @about-symbol{clipboard-received-func}
       @about-function{clipboard-request-contents}
+      @about-symbol{clipboard-text-received-func}
       @about-function{clipboard-request-text}
+      @about-symbol{clipboard-image-received-func}
       @about-function{clipboard-request-image}
+      @about-symbol{clipboard-targets-received-func}
       @about-function{clipboard-request-targets}
+      @about-symbol{clipboard-rich-text-received-func}
       @about-function{clipboard-request-rich-text}
+      @about-symbol{clipboard-uri-received-func}
       @about-function{clipboard-request-uris}
       @about-function{clipboard-wait-for-contents}
       @about-function{clipboard-wait-for-text}

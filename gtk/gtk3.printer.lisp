@@ -753,23 +753,23 @@ lambda (printer success)    :run-last
 (cffi:defcallback printer-func :boolean
     ((printer (g:object printer))
      (data :pointer))
-  (funcall (glib:get-stable-pointer-value data) printer))
+  (let ((func (glib:get-stable-pointer-value data)))
+    (restart-case
+      (funcall func printer)
+      (return-true () :report "Return T" t)
+      (return-false () :report "Return NIL" nil))))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'printer-func)
       "Callback"
       (liber:symbol-documentation 'printer-func)
- "@version{#2023-3-21}
+ "@version{#2024-3-23}
+  @syntax{lambda (printer) => result}
+  @argument[widget]{a @class{gtk:printer} object}
+  @argument[result]{@em{true} to stop the enumeration, @em{false} to continue}
   @begin{short}
     The type of function passed to the @fun{gtk:enumerate-printers} function.
   @end{short}
-  @begin{pre}
-lambda (printer)
-  @end{pre}
-  @begin[code]{table}
-    @entry[widget]{A @class{gtk:printer} object.}
-    @entry[Returns]{@em{True} to stop the enumeration, @em{false} to continue.}
-  @end{table}
   @see-class{gtk:printer}
   @see-function{gtk:enumerate-printers}")
 

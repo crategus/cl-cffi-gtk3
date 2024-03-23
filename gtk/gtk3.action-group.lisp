@@ -893,10 +893,10 @@ lambda (group action)
                                           :free-from-foreign nil)
     ((path (:string :free-from-foreign nil))
      (data :pointer))
-  (restart-case
-    (let ((func (glib:get-stable-pointer-value data)))
-      (funcall func path))
-    (return-untranslated () path)))
+  (let ((func (glib:get-stable-pointer-value data)))
+    (restart-case
+      (funcall func path)
+      (return-untranslated () :report "Untranslated" path))))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'translate-func)

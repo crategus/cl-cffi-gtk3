@@ -4084,30 +4084,27 @@ lambda (widget event)    :run-last
     ((widget (g:object widget))
      (clock (g:object gdk:frame-clock))
      (data :pointer))
-  (restart-case
-    (let ((func (glib:get-stable-pointer-value data)))
-      (funcall func widget clock))
-    (return () :report "Error in GtkTickCallback function." nil)))
+  (let ((func (glib:get-stable-pointer-value data)))
+    (restart-case
+      (funcall func widget clock)
+      (return-true () :report "Return T" t)
+      (return-false () :report "Return NIL" nil))))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'tick-callback)
       "Callback"
       (liber:symbol-documentation 'tick-callback)
- "@version{#2023-3-8}
+ "@version{#2024-3-23}
+  @syntax{lambda (widget clock) => result}
+  @argument[widget]{a @class{gtk:widget} object}
+  @argument[clock]{a @class{gdk:frame-clock} object for the widget, same as
+    calling the @fun{gtk:widget-frame-clock} function}
+  @argument[result]{@em{true} if the tick callback function should continue to
+    be called, @em{false} if the tick callback function should be removed}
   @begin{short}
     Callback type for adding a function to update animations.
   @end{short}
   See the @fun{gtk:widget-add-tick-callback} function.
-  @begin{pre}
-lambda (widget clock)
-  @end{pre}
-  @begin[code]{table}
-    @entry[widget]{A @class{gtk:widget} object.}
-    @entry[clock]{The @class{gdk:frame-clock} object for the widget. Same as
-      calling the @fun{gtk:widget-frame-clock} function.}
-    @entry[Returns]{@em{True} if the tick callback function should continue to
-      be called, @em{false} if the tick callback function should be removed.}
-  @end{table}
   @see-class{gtk:widget}
   @see-class{gdk:frame-clock}
   @see-function{gtk:widget-add-tick-callback}

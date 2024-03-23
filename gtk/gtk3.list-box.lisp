@@ -611,28 +611,24 @@ lambda (listbox)    :action
     ((listbox (g:object list-box))
      (row (g:object list-box-row))
      (data :pointer))
-  (restart-case
-    (let ((func (glib:get-stable-pointer-value data)))
-      (funcall func listbox row))
-    (return () :report "Error in GtkListBoxForeachFunc callback." nil)))
+  (let ((func (glib:get-stable-pointer-value data)))
+    (restart-case
+      (funcall func listbox row)
+      (return () :report "Return NIL" nil))))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'list-box-foreach-func)
       "Callback"
       (liber:symbol-documentation 'list-box-foreach-func)
- "@version{2024-1-1}
+ "@version{2024-3-23}
+  @syntax{lambda (listbox row)}
+  @argument[listbox]{a @class{gtk:list-box} widget}
+  @argument[row]{a @class{gtk:list-box-row} widget}
   @begin{short}
     A callback function used by the @fun{gtk:list-box-selected-foreach}
     function.
   @end{short}
   It will be called on every selected child widget of the list box.
-  @begin{pre}
-lambda (listbox row)
-  @end{pre}
-  @begin[code]{table}
-    @entry[listbox]{A @class{gtk:list-box} widget.}
-    @entry[row]{A @class{gtk:list-box-row} widget.}
-  @end{table}
   @see-class{gtk:list-box}
   @see-class{gtk:list-box-row}
   @see-function{gtk:list-box-selected-foreach}")
@@ -853,8 +849,11 @@ lambda (listbox row)
 (cffi:defcallback list-box-filter-func :boolean
     ((row (g:object list-box-row))
      (data :pointer))
-  (let ((ptr (glib:get-stable-pointer-value data)))
-    (funcall ptr row)))
+  (let ((func (glib:get-stable-pointer-value data)))
+    (restart-case
+      (funcall func row)
+      (return-true () :report "Return T" t)
+      (return-false () :report "Return NIL" nil))))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'list-box-filter-func)
@@ -924,8 +923,10 @@ lambda (listbox row)
     ((row (g:object list-box-row))
      (before (g:object list-box-row))
      (data :pointer))
-  (let ((ptr (glib:get-stable-pointer-value data)))
-    (funcall ptr row before)))
+  (let ((func (glib:get-stable-pointer-value data)))
+    (restart-case
+      (funcall func row before)
+      (return () :report "Return NIL" nil))))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'list-box-update-header-func)
@@ -1008,27 +1009,27 @@ lambda (listbox row)
     ((row1 (g:object list-box-row))
      (row2 (g:object list-box-row))
      (data :pointer))
-  (let ((ptr (glib:get-stable-pointer-value data)))
-    (funcall ptr row1 row2)))
+  (let ((func (glib:get-stable-pointer-value data)))
+    (restart-case
+      (funcall func row1 row2)
+      (return<0 () :report "Return -1" -1)
+      (return=0 () :report "Return  0" 0)
+      (return>0 () :report "Return  1" 1))))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'list-box-sort-func)
       "Callback"
       (liber:symbol-documentation 'list-box-sort-func)
- "@version{2024-1-1}
+ "@version{2024-3-23}
+  @syntax{lambda (row1 row2) => result}
+  @argument[row1]{a @class{gtk:list-box-row} widget with the first row}
+  @argument[row2]{a @class{gtk:list-box-row} widget with the second row}
+  @argument[result]{an integer which is < 0 if @arg{row1} should be before
+    @arg{row2}, 0 if they are equal and > 0 otherwise}
   @begin{short}
     The type of the callback function that compares two rows to determine which
     should be first.
   @end{short}
-  @begin{pre}
-lambda (row1 row2)
-  @end{pre}
-  @begin[code]{table}
-    @entry[row1]{A @class{gtk:list-box-row} widget with the first row.}
-    @entry[row2]{A @class{gtk:list-box-row} widget with the second row.}
-    @entry[Return]{An integer which is < 0 if @arg{row1} should be before
-      @arg{row2}, 0 if they are equal and > 0 otherwise.}
-  @end{table}
   @see-class{gtk:list-box-row}
   @see-function{gtk:list-box-set-sort-func}")
 
@@ -1126,14 +1127,20 @@ lambda (row1 row2)
 (cffi:defcallback list-box-create-widget-func (g:object widget)
     ((item :pointer)
      (data :pointer))
-  (let ((ptr (glib:get-stable-pointer-value data)))
-    (funcall ptr item)))
+  (let ((func (glib:get-stable-pointer-value data)))
+    (restart-case
+      (funcall func item)
+      (return () :report "Return NIL" nil))))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'list-box-create-widget-func)
       "Callback"
       (liber:symbol-documentation 'list-box-create-widget-func)
- "@version{#2023-3-20}
+ "@version{#2024-3-23}
+  @syntax{lambda (item) => result}
+  @argument[item]{a pointer to the item from the model for which to create a
+    widget for}
+  @argument[result]{a @class{gtk:widget} object that represents @arg{item}}
   @begin{short}
     Called for list boxes that are bound to a @class{g:list-model} object with
     the @fun{gtk:list-box-bind-model} function for each item that gets added to
@@ -1145,14 +1152,6 @@ lambda (row1 row2)
   function, but this forced all widgets inside the row to be shown, and is no
   longer the case. Applications should be updated to show the desired row
   widgets.
-  @begin{pre}
-lambda (item)
-  @end{pre}
-  @begin[code]{table}
-    @entry[item]{A pointer to the item from the model for which to create a
-       widget for.}
-    @entry[Returns]{A @class{gtk:widget} object that represents @arg{item}.}
-  @end{table}
   @see-class{gtk:list-box}
   @see-class{g:list-model}
   @see-function{gtk:list-box-bind-model}

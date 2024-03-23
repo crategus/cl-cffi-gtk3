@@ -425,24 +425,26 @@ lambda (job)    :run-last
     ((job (g:object print-job))
      (data :pointer)
      (err :pointer))
-  (funcall (glib:get-stable-pointer-value data) job err))
+  (glib:with-catching-to-g-error (err)
+    (let ((func (glib:get-stable-pointer-value data)))
+      (restart-case
+        (progn
+          (funcall func job)
+          t)
+        (return () "Return NIL" nil)))))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'print-job-complete-func)
       "Callback"
       (liber:symbol-documentation 'print-job-complete-func)
- "@version{#2023-3-21}
+ "@version{#2024-3-23}
+  @syntax{lambda (job)}
+  @argument[job]{a @class{gtk:print-job} object}
   @begin{short}
     The type of callback that is passed to the @fun{gtk:print-job-send}
     function.
   @end{short}
   It is called when the print job has been completely sent.
-  @begin{pre}
-lambda (job)
-  @end{pre}
-  @begin[code]{table}
-    @entry[job]{A @class{gtk:print-job} object.}
-  @end{table}
   @see-class{gtk:print-job}
   @see-function{gtk:print-job-send}")
 

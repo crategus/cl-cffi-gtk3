@@ -162,295 +162,6 @@ lambda (clipboard event)    :run-first
   @see-class{gdk:event-owner-change}")
 
 ;;; ----------------------------------------------------------------------------
-;;; GtkClipboardReceivedFunc ()
-;;; ----------------------------------------------------------------------------
-
-(cffi:defcallback clipboard-received-func :void
-    ((clipboard (g:object clipboard))
-     (selection (g:boxed selection-data))
-     (data :pointer))
-  (let ((fn (glib:get-stable-pointer-value data)))
-    (restart-case
-      (funcall fn clipboard selection)
-      (return-from-clipboard-received-func () nil))))
-
-#+liber-documentation
-(setf (liber:alias-for-symbol 'clipboard-received-func)
-      "Callback"
-      (liber:symbol-documentation 'clipboard-received-func)
- "@version{#2024-3-18}
-  @syntax{lambda (clipboard selection)}
-  @argument[clipboard]{a @class{gtk:clipboard} object}
-  @argument[selection]{a @class{gtk:selection-data} instance containing the data
-    that was received, if retrieving the data failed, then the @arg{length}
-    field of the selection data will be negative}
-  @begin{short}
-    A callback function to be called when the results of the
-    @fun{gtk:clipboard-request-contents} function are received, or when the
-    request fails.
-  @end{short}
-  @see-class{gtk:clipboard}
-  @see-class{gtk:selection-data}
-  @see-function{gtk:selection-data-length}
-  @see-function{gtk:clipboard-request-contents}")
-
-(export 'clipboard-received-func)
-
-;;; ----------------------------------------------------------------------------
-;;; GtkClipboardTextReceivedFunc ()
-;;; ----------------------------------------------------------------------------
-
-(cffi:defcallback clipboard-text-received-func :void
-    ((clipboard (g:object clipboard))
-     (text :string)
-     (data :pointer))
-  (let ((fn (glib:get-stable-pointer-value data)))
-    (restart-case
-      (funcall fn clipboard text)
-      (return-from-clipboard-text-received-func () nil))))
-
-#+liber-documentation
-(setf (liber:alias-for-symbol 'clipboard-text-received-func)
-      "Callback"
-      (liber:symbol-documentation 'clipboard-text-received-func)
- "@version{#2024-3-18}
-  @syntax{lambda (clipboard text)}
-  @argument[clipboard]{a @class{gtk:clipboard} object}
-  @argument[text]{a text received, as a UTF-8 encoded string, or @code{nil} if
-    retrieving the data failed}
-  @begin{short}
-    A callback function to be called when the results of the
-    @fun{gtk:clipboard-request-text} function are received, or when the request
-    fails.
-  @end{short}
-  @see-class{gtk:clipboard}
-  @see-function{gtk:clipboard-request-text}")
-
-(export 'clipboard-text-received-func)
-
-;;; ----------------------------------------------------------------------------
-;;; GtkClipboardImageReceivedFunc ()
-;;; ----------------------------------------------------------------------------
-
-(cffi:defcallback clipboard-image-received-func :void
-    ((clipboard (g:object clipboard))
-     (pixbuf (g:object gdk-pixbuf:pixbuf))
-     (data :pointer))
-  (let ((fn (glib:get-stable-pointer-value data)))
-    (restart-case
-      (funcall fn clipboard pixbuf)
-      (return-from-clipboard-image-received-func () nil))))
-
-#+liber-documentation
-(setf (liber:alias-for-symbol 'clipboard-image-received-func)
-      "Callback"
-      (liber:symbol-documentation 'clipboard-image-received-func)
- "@version{#2024-3-18}
-  @syntax{lambda (clipboard pixbuf)}
-  @argument[clipboard]{a @class{gtk:clipboard} object}
-  @argument[pixbuf]{a received @class{gdk-pixbuf:pixbuf} object}
-  @begin{short}
-    A callback function to be called when the results of the
-    @fun{gtk:clipboard-request-image} function are received, or when the
-    request fails.
-  @end{short}
-  @see-class{gtk:clipboard}
-  @see-class{gdk-pixbuf:pixbuf}
-  @see-function{gtk:clipboard-request-image}")
-
-(export 'clipboard-image-received-func)
-
-;;; ----------------------------------------------------------------------------
-;;; GtkClipboardTargetsReceivedFunc ()
-;;; ----------------------------------------------------------------------------
-
-(cffi:defcallback clipboard-targets-received-func :void
-    ((clipboard (g:object clipboard))
-     (atoms :pointer)
-     (n-atoms :int)
-     (data :pointer))
-  (let ((fn (glib:get-stable-pointer-value data)))
-    (restart-case
-      (funcall fn clipboard atoms n-atoms)
-      (return-from-clipboard-targets-received-func () nil))))
-
-#+liber-documentation
-(setf (liber:alias-for-symbol 'clipboard-targets-received-func)
-      "Callback"
-      (liber:symbol-documentation 'clipboard-targets-received-func)
- "@version{#2024-3-18}
-  @syntax{lambda (clipboard atoms n-atoms)}
-  @argument[clipboard]{a @class{gtk:clipboard} object}
-  @argument[atoms]{a pointer to a foreign C array of @symbol{gdk:atom-as-string}
-    atoms}
-  @argument[n-atoms]{an integer with the length of the atoms array}
-  @begin{short}
-    A callback function to be called when the results of the
-    @fun{gtk:clipboard-request-targets} function are received, or when the
-    request fails.
-  @end{short}
-  @see-class{gtk:clipboard}
-  @see-class{gdk:atom-as-string}
-  @see-function{gtk:clipboard-request-targets}")
-
-(export 'clipboard-targets-received-func)
-
-;;; ----------------------------------------------------------------------------
-;;; GtkClipboardRichTextReceivedFunc ()
-;;; ----------------------------------------------------------------------------
-
-(cffi:defcallback clipboard-rich-text-received-func :void
-    ((clipboard (g:object clipboard))
-     (format :pointer) ; for GdkAtom
-     (text :uint8)
-     (length :size)
-     (data :pointer))
-  (let ((fn (glib:get-stable-pointer-value data)))
-    (restart-case
-      (funcall fn clipboard format text length)
-      (return-from-clipboard-rich-text-received-func () nil))))
-
-#+liber-documentation
-(setf (liber:alias-for-symbol 'clipboard-rich-text-received-func)
-      "Callback"
-      (liber:symbol-documentation 'clipboard-rich-text-received-func)
- "@version{#2023-3-16}
-  @begin{short}
-    A callback function to be called when the results of the
-    @fun{gtk:clipboard-request-rich-text} function are received, or when the
-    request fails.
-  @end{short}
-  @begin{pre}
- lambda (clipboard format text length)
-  @end{pre}
-  @begin[code]{table}
-    @entry[clipboard]{A @class{gtk:clipboard} object.}
-    @entry[format]{The @symbol{gdk:atom-as-string} for the format of the rich
-      text.}
-    @entry[text]{The richt text received, as a UTF-8 encoded string, or
-      @code{null-pointer} if retrieving the data failed.}
-    @entry[length]{An integer with the length of the text.}
-  @end{table}
-  @see-class{gtk:clipboard}
-  @see-class{gdk:atom-as-string}
-  @see-function{gtk:clipboard-request-rich-text}")
-
-(export 'clipboard-rich-text-received-func)
-
-;;; ----------------------------------------------------------------------------
-;;; GtkClipboardURIReceivedFunc ()
-;;; ----------------------------------------------------------------------------
-
-(cffi:defcallback clipboard-uri-received-func :void
-    ((clipboard (g:object clipboard))
-     (uris :pointer)
-     (data :pointer))
-  (let ((fn (glib:get-stable-pointer-value data)))
-    (restart-case
-      (funcall fn clipboard uris)
-      (return-from-clipboard-uri-received-func () nil))))
-
-#+liber-documentation
-(setf (liber:alias-for-symbol 'clipboard-uri-received-func)
-      "Callback"
-      (liber:symbol-documentation 'clipboard-uri-received-func)
- "@version{#2023-3-16}
-  @begin{short}
-    A callback function to be called when the results of the
-    @fun{gtk:clipboard-request-uris} function are received, or when the request
-    fails.
-  @end{short}
-  @begin{pre}
-lambda (clipboard uris)
-  @end{pre}
-  @begin[code]{table}
-    @entry[clipboard]{A @class{gtk:clipboard} object.}
-    @entry[uris]{A pointer to the foreign zero-terminated C array of received
-      URIs.}
-  @end{table}
-  @see-class{gtk:clipboard}
-  @see-function{gtk:clipboard-request-uris}")
-
-(export 'clipboard-uri-received-func)
-
-;;; ----------------------------------------------------------------------------
-;;; GtkClipboardGetFunc ()
-;;; ----------------------------------------------------------------------------
-
-(cffi:defcallback clipboard-get-func :void
-    ((clipboard (g:object clipboard))
-     (selection (g:boxed selection-data))
-     (info :uint)
-     (data :pointer))
-  (let ((fn (glib:get-stable-pointer-value data)))
-    (restart-case
-      (funcall fn clipboard selection info)
-      (return-from-clipboard-get-func () nil))))
-
-#+liber-documentation
-(setf (liber:alias-for-symbol 'clipboard-get-func)
-      "Callback"
-      (liber:symbol-documentation 'clipboard-get-func)
- "@version{#2023-3-16}
-  @begin{short}
-    A callback function that will be called to provide the contents of the
-    selection.
-  @end{short}
-  If multiple types of data were advertised, the requested type can be
-  determined from the @arg{info} parameter or by checking the @arg{target} field
-  of the @arg{selection} argument. If the data could successfully be converted
-  into then it should be stored into the @arg{selection} argument by calling the
-  @fun{gtk:selection-data-set} function, or related functions such as the
-  @fun{gtk:selection-data-set-text} function. If no data is set, the requestor
-  will be informed that the attempt to get the data failed.
-  @begin{pre}
-lambda (clipboard selection info)
-  @end{pre}
-  @begin[code]{table}
-    @entry[clipboard]{A @class{gtk:clipboard} object.}
-    @entry[selection]{A @class{gtk:selection-data} instance in which the
-      requested data should be stored.}
-    @entry[info]{The info field corresponding to the requested target from the
-      target entries passed to the @fun{gtk:clipboard-set-with-data} function.}
-  @end{table}
-  @see-class{gtk:clipboard}
-  @see-class{gtk:selection-data}
-  @see-function{gtk:selection-data-set}
-  @see-function{gtk:selection-data-set-text}
-  @see-function{gtk:clipboard-set-with-data}")
-
-(export 'clipboard-get-func)
-
-;;; ----------------------------------------------------------------------------
-;;; GtkClipboardClearFunc ()                               not exported
-;;; ----------------------------------------------------------------------------
-
-;; Implemented for internal use in the clipboard-SET-WITH-DATA function.
-
-(cffi:defcallback %clipboard-clear-func :void
-    ((clipboard (g:object clipboard))
-     (data :pointer))
-  (declare (ignore clipboard))
-  (glib:free-stable-pointer data))
-
-#+liber-documentation
-(setf (liber:alias-for-symbol 'clipboard-clear-func)
-      "Callback"
-      (liber:symbol-documentation 'clipboard-clear-func)
- "@version{#2023-3-16}
-  @begin{short}
-    A callback function that will be called when the contents of the clipboard
-    are changed or cleared.
-  @end{short}
-  @begin{pre}
- lambda (clipboard)
-  @end{pre}
-  @begin[code]{table}
-    @entry[clipboard]{A @class{gtk:clipboard} object.}
-  @end{table}
-  @see-class{gtk:clipboard}")
-
-;;; ----------------------------------------------------------------------------
 ;;; gtk_clipboard_get ()
 ;;; ----------------------------------------------------------------------------
 
@@ -477,7 +188,7 @@ lambda (clipboard selection info)
 (export 'clipboard-get)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_clipboard_get_for_display () -> clipboard-for-display
+;;; gtk_clipboard_get_for_display ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_clipboard_get_for_display" clipboard-for-display)
@@ -520,7 +231,7 @@ lambda (clipboard selection info)
 (export 'clipboard-for-display)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_clipboard_get_display () -> clipboard-display
+;;; gtk_clipboard_get_display ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_clipboard_get_display" clipboard-display)
@@ -539,7 +250,7 @@ lambda (clipboard selection info)
 (export 'clipboard-display)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_clipboard_get_default () -> clipboard-default
+;;; gtk_clipboard_get_default ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_clipboard_get_default" clipboard-default)
@@ -558,6 +269,76 @@ lambda (clipboard selection info)
   (display (g:object gdk:display)))
 
 (export 'clipboard-default)
+
+;;; ----------------------------------------------------------------------------
+;;; GtkClipboardClearFunc ()                               not exported
+;;; ----------------------------------------------------------------------------
+
+;; Implemented for internal use in the clipboard-SET-WITH-DATA function.
+
+(cffi:defcallback %clipboard-clear-func :void
+    ((clipboard (g:object clipboard))
+     (data :pointer))
+  (declare (ignore clipboard))
+  (glib:free-stable-pointer data))
+
+#+liber-documentation
+(setf (liber:alias-for-symbol 'clipboard-clear-func)
+      "Callback"
+      (liber:symbol-documentation 'clipboard-clear-func)
+ "@version{#2024-3-23}
+  @syntax{lambda (clipboard)}
+  @argument[clipboard]{a @class{gtk:clipboard} object}
+  @begin{short}
+    A callback function that will be called when the contents of the clipboard
+    are changed or cleared.
+  @end{short}
+  @see-class{gtk:clipboard}")
+
+;;; ----------------------------------------------------------------------------
+;;; GtkClipboardGetFunc ()
+;;; ----------------------------------------------------------------------------
+
+(cffi:defcallback clipboard-get-func :void
+    ((clipboard (g:object clipboard))
+     (selection (g:boxed selection-data))
+     (info :uint)
+     (data :pointer))
+  (let ((fn (glib:get-stable-pointer-value data)))
+    (restart-case
+      (funcall fn clipboard selection info)
+      (return-from-clipboard-get-func () nil))))
+
+#+liber-documentation
+(setf (liber:alias-for-symbol 'clipboard-get-func)
+      "Callback"
+      (liber:symbol-documentation 'clipboard-get-func)
+ "@version{#2024-3-23}
+  @syntax{lambda (clipboard selection info)}
+  @argument[clipboard]{a @class{gtk:clipboard} object}
+  @argument[selection]{a @class{gtk:selection-data} instance in which the
+    requested data should be stored}
+  @argument[info]{an unsigned integer with the info field corresponding to the
+    requested target from the target entries passed to the
+    @fun{gtk:clipboard-set-with-data} function}
+  @begin{short}
+    A callback function that will be called to provide the contents of the
+    selection.
+  @end{short}
+  If multiple types of data were advertised, the requested type can be
+  determined from the @arg{info} parameter or by checking the @arg{target} field
+  of the @arg{selection} argument. If the data could successfully be converted
+  into then it should be stored into the @arg{selection} argument by calling the
+  @fun{gtk:selection-data-set} function, or related functions such as the
+  @fun{gtk:selection-data-set-text} function. If no data is set, the requestor
+  will be informed that the attempt to get the data failed.
+  @see-class{gtk:clipboard}
+  @see-class{gtk:selection-data}
+  @see-function{gtk:selection-data-set}
+  @see-function{gtk:selection-data-set-text}
+  @see-function{gtk:clipboard-set-with-data}")
+
+(export 'clipboard-get-func)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_clipboard_set_with_data ()
@@ -739,6 +520,41 @@ lambda (clipboard selection info)
 (export 'clipboard-set-image)
 
 ;;; ----------------------------------------------------------------------------
+;;; GtkClipboardReceivedFunc ()
+;;; ----------------------------------------------------------------------------
+
+(cffi:defcallback clipboard-received-func :void
+    ((clipboard (g:object clipboard))
+     (selection (g:boxed selection-data))
+     (data :pointer))
+  (let ((func (glib:get-stable-pointer-value data)))
+    (restart-case
+      (funcall func clipboard selection)
+      (return () "Return NIL" nil))))
+
+#+liber-documentation
+(setf (liber:alias-for-symbol 'clipboard-received-func)
+      "Callback"
+      (liber:symbol-documentation 'clipboard-received-func)
+ "@version{#2024-3-18}
+  @syntax{lambda (clipboard selection)}
+  @argument[clipboard]{a @class{gtk:clipboard} object}
+  @argument[selection]{a @class{gtk:selection-data} instance containing the data
+    that was received, if retrieving the data failed, then the @arg{length}
+    field of the selection data will be negative}
+  @begin{short}
+    A callback function to be called when the results of the
+    @fun{gtk:clipboard-request-contents} function are received, or when the
+    request fails.
+  @end{short}
+  @see-class{gtk:clipboard}
+  @see-class{gtk:selection-data}
+  @see-function{gtk:selection-data-length}
+  @see-function{gtk:clipboard-request-contents}")
+
+(export 'clipboard-received-func)
+
+;;; ----------------------------------------------------------------------------
 ;;; gtk_clipboard_request_contents ()
 ;;; ----------------------------------------------------------------------------
 
@@ -775,6 +591,38 @@ lambda (clipboard selection info)
 (export 'clipboard-request-contents)
 
 ;;; ----------------------------------------------------------------------------
+;;; GtkClipboardTextReceivedFunc ()
+;;; ----------------------------------------------------------------------------
+
+(cffi:defcallback clipboard-text-received-func :void
+    ((clipboard (g:object clipboard))
+     (text :string)
+     (data :pointer))
+  (let ((func (glib:get-stable-pointer-value data)))
+    (restart-case
+      (funcall func clipboard text)
+      (return () "Return NIL" nil))))
+
+#+liber-documentation
+(setf (liber:alias-for-symbol 'clipboard-text-received-func)
+      "Callback"
+      (liber:symbol-documentation 'clipboard-text-received-func)
+ "@version{#2024-3-18}
+  @syntax{lambda (clipboard text)}
+  @argument[clipboard]{a @class{gtk:clipboard} object}
+  @argument[text]{a text received, as a UTF-8 encoded string, or @code{nil} if
+    retrieving the data failed}
+  @begin{short}
+    A callback function to be called when the results of the
+    @fun{gtk:clipboard-request-text} function are received, or when the request
+    fails.
+  @end{short}
+  @see-class{gtk:clipboard}
+  @see-function{gtk:clipboard-request-text}")
+
+(export 'clipboard-text-received-func)
+
+;;; ----------------------------------------------------------------------------
 ;;; gtk_clipboard_request_text ()
 ;;; ----------------------------------------------------------------------------
 
@@ -807,6 +655,38 @@ lambda (clipboard selection info)
                            (glib:allocate-stable-pointer func)))
 
 (export 'clipboard-request-text)
+
+;;; ----------------------------------------------------------------------------
+;;; GtkClipboardImageReceivedFunc ()
+;;; ----------------------------------------------------------------------------
+
+(cffi:defcallback clipboard-image-received-func :void
+    ((clipboard (g:object clipboard))
+     (pixbuf (g:object gdk-pixbuf:pixbuf))
+     (data :pointer))
+  (let ((func (glib:get-stable-pointer-value data)))
+    (restart-case
+      (funcall func clipboard pixbuf)
+      (return () :report "Return NIL" nil))))
+
+#+liber-documentation
+(setf (liber:alias-for-symbol 'clipboard-image-received-func)
+      "Callback"
+      (liber:symbol-documentation 'clipboard-image-received-func)
+ "@version{#2024-3-18}
+  @syntax{lambda (clipboard pixbuf)}
+  @argument[clipboard]{a @class{gtk:clipboard} object}
+  @argument[pixbuf]{a received @class{gdk-pixbuf:pixbuf} object}
+  @begin{short}
+    A callback function to be called when the results of the
+    @fun{gtk:clipboard-request-image} function are received, or when the
+    request fails.
+  @end{short}
+  @see-class{gtk:clipboard}
+  @see-class{gdk-pixbuf:pixbuf}
+  @see-function{gtk:clipboard-request-image}")
+
+(export 'clipboard-image-received-func)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_clipboard_request_image ()
@@ -844,6 +724,41 @@ lambda (clipboard selection info)
 (export 'clipboard-request-image)
 
 ;;; ----------------------------------------------------------------------------
+;;; GtkClipboardTargetsReceivedFunc ()
+;;; ----------------------------------------------------------------------------
+
+(cffi:defcallback clipboard-targets-received-func :void
+    ((clipboard (g:object clipboard))
+     (atoms :pointer)
+     (n-atoms :int)
+     (data :pointer))
+  (let ((func (glib:get-stable-pointer-value data)))
+    (restart-case
+      (funcall func clipboard atoms n-atoms)
+      (return () :report "Return NIL" nil))))
+
+#+liber-documentation
+(setf (liber:alias-for-symbol 'clipboard-targets-received-func)
+      "Callback"
+      (liber:symbol-documentation 'clipboard-targets-received-func)
+ "@version{#2024-3-18}
+  @syntax{lambda (clipboard atoms n-atoms)}
+  @argument[clipboard]{a @class{gtk:clipboard} object}
+  @argument[atoms]{a pointer to a foreign C array of @symbol{gdk:atom-as-string}
+    atoms}
+  @argument[n-atoms]{an integer with the length of the atoms array}
+  @begin{short}
+    A callback function to be called when the results of the
+    @fun{gtk:clipboard-request-targets} function are received, or when the
+    request fails.
+  @end{short}
+  @see-class{gtk:clipboard}
+  @see-class{gdk:atom-as-string}
+  @see-function{gtk:clipboard-request-targets}")
+
+(export 'clipboard-targets-received-func)
+
+;;; ----------------------------------------------------------------------------
 ;;; gtk_clipboard_request_targets ()
 ;;; ----------------------------------------------------------------------------
 
@@ -872,6 +787,42 @@ lambda (clipboard selection info)
                               (glib:allocate-stable-pointer func)))
 
 (export 'clipboard-request-targets)
+
+;;; ----------------------------------------------------------------------------
+;;; GtkClipboardRichTextReceivedFunc ()
+;;; ----------------------------------------------------------------------------
+
+(cffi:defcallback clipboard-rich-text-received-func :void
+    ((clipboard (g:object clipboard))
+     (format gdk:atom-as-string)
+     (text :uint8)
+     (length :size)
+     (data :pointer))
+  (let ((func (glib:get-stable-pointer-value data)))
+    (restart-case
+      (funcall func clipboard format text length)
+      (return () :report "Return NIL" nil))))
+
+#+liber-documentation
+(setf (liber:alias-for-symbol 'clipboard-rich-text-received-func)
+      "Callback"
+      (liber:symbol-documentation 'clipboard-rich-text-received-func)
+ "@version{#2024-3-23}
+  @syntax{lambda (clipboard format text length)}
+  @argument[clipboard]{a @class{gtk:clipboard} object}
+  @argument[format]{a string for the format of the rich text}
+  @argument[text]{a string with the rich text received, as a UTF-8 encoded
+    string, or @code{nil} if retrieving the data failed}
+  @argument[length]{an integer with the length of the text}
+  @begin{short}
+    A callback function to be called when the results of the
+    @fun{gtk:clipboard-request-rich-text} function are received, or when the
+    request fails.
+  @end{short}
+  @see-class{gtk:clipboard}
+  @see-function{gtk:clipboard-request-rich-text}")
+
+(export 'clipboard-rich-text-received-func)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_clipboard_request_rich_text ()
@@ -911,6 +862,38 @@ lambda (clipboard selection info)
           (glib:allocate-stable-pointer func)))
 
 (export 'clipboard-request-rich-text)
+
+;;; ----------------------------------------------------------------------------
+;;; GtkClipboardURIReceivedFunc ()
+;;; ----------------------------------------------------------------------------
+
+(cffi:defcallback clipboard-uri-received-func :void
+    ((clipboard (g:object clipboard))
+     (uris :pointer)
+     (data :pointer))
+  (let ((func (glib:get-stable-pointer-value data)))
+    (restart-case
+      (funcall func clipboard uris)
+      (return () :report "Return NIL" nil))))
+
+#+liber-documentation
+(setf (liber:alias-for-symbol 'clipboard-uri-received-func)
+      "Callback"
+      (liber:symbol-documentation 'clipboard-uri-received-func)
+ "@version{#2024-3-23}
+  @syntax{lambda (clipboard uris)}
+  @argument[clipboard]{a @class{gtk:clipboard} object}
+  @argument[uris]{a pointer to the foreign zero-terminated C array of received
+      URIs}
+  @begin{short}
+    A callback function to be called when the results of the
+    @fun{gtk:clipboard-request-uris} function are received, or when the request
+    fails.
+  @end{short}
+  @see-class{gtk:clipboard}
+  @see-function{gtk:clipboard-request-uris}")
+
+(export 'clipboard-uri-received-func)
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_clipboard_request_uris ()

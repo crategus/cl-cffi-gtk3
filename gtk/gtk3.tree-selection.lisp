@@ -179,9 +179,9 @@ lambda (selection)    :run-first
      (path (g:boxed tree-path))
      (selected :boolean)
      (data :pointer))
-  (let ((fn (glib:get-stable-pointer-value data)))
+  (let ((func (glib:get-stable-pointer-value data)))
     (restart-case
-      (funcall fn selection model path selected)
+      (funcall func selection model path selected)
       (return-true () :report "Return T" t)
       (return-false () :report "Return NIL" nil))))
 
@@ -360,8 +360,10 @@ lambda (selection)    :run-first
      (path (g:boxed tree-path))
      (iter (g:boxed tree-iter))
      (data :pointer))
-  (let ((fn (glib:get-stable-pointer-value data)))
-    (funcall fn model path iter)))
+  (let ((func (glib:get-stable-pointer-value data)))
+    (restart-case
+      (funcall func model path iter)
+      (return () :report "Return NIL" nil))))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'tree-selection-foreach-func)

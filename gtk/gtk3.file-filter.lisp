@@ -125,28 +125,32 @@
 (setf (liber:alias-for-symbol 'file-filter-info)
       "CStruct"
       (liber:symbol-documentation 'file-filter-info)
- "@version{#2023-3-14}
-  @begin{short}
-    The @class{gtk:file-filter-info} structure is used to pass information
-    about the tested file to the @fun{gtk:file-filter-filter} function.
-  @end{short}
-  @begin{pre}
+ "@version{#2024-3-23}
+  @begin{declaration}
+    @begin{pre}
 (cffi:defcstruct gtk:file-filter
   (contains gtk:file-filter-flags)
   (filename :string)
   (uri :string)
   (display-name :string)
   (mime-type :string))
-  @end{pre}
-  @begin[code]{table}
-    @entry[contains]{Flags indicating which of the following fields need are
-      filled.}
-    @entry[filename]{The filename of the file being tested.}
-    @entry[uri]{The URI for the file being tested.}
-    @entry[display-name]{The string that will be used to display the file in
-      the file chooser.}
-    @entry[mime-type]{The MIME type of the file.}
-  @end{table}
+    @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[contains]{Flags indicating which of the following fields need are
+        filled.}
+      @entry[filename]{The filename of the file being tested.}
+      @entry[uri]{The URI for the file being tested.}
+      @entry[display-name]{The string that will be used to display the file in
+        the file chooser.}
+      @entry[mime-type]{The MIME type of the file.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    The @class{gtk:file-filter-info} structure is used to pass information
+    about the tested file to the @fun{gtk:file-filter-filter} function.
+  @end{short}
   @see-class{gtk:file-filter}
   @see-function{gtk:file-filter-filter}")
 
@@ -426,25 +430,25 @@
 (cffi:defcallback file-filter-func :boolean
     ((info (:pointer (:struct file-filter-info)))
      (data :pointer))
-  (funcall (glib:get-stable-pointer-value data) info))
+  (let ((func (glib:get-stable-pointer-value data)))
+    (restart-case
+      (funcall func info)
+      (return-true () :report "Return T" t)
+      (return-false () :report "Return NIL" nil))))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'file-filter-func)
       "Callback"
       (liber:symbol-documentation 'file-filter-func)
- "@version{#2023-3-14}
+ "@version{#2024-3-23}
+  @syntax{lambda (info) => result}
+  @argument[info]{a @symbol{gtk:file-filter-info} instance that is filled
+    according to the needed flags passed to the @fun{gtk:file-filter-add-custom}
+    function}
+  @argument[result]{@em{true} if the file should be displayed}
   @begin{short}
     The type of the callback function that is used with custom filters.
   @end{short}
-  @begin{pre}
-lambda (info)
-  @end{pre}
-  @begin[code]{table}
-    @entry[info]{A @symbol{gtk:file-filter-info} instance that is filled
-      according to the needed flags passed to the
-      @fun{gtk:file-filter-add-custom} function.}
-    @entry[Return]{@em{True} if the file should be displayed.}
-  @end{table}
   @see-class{gtk:file-filter}
   @see-symbol{gtk:file-filter-info}
   @see-function{gtk:file-filter-add-custom}")
@@ -464,12 +468,12 @@ lambda (info)
 
 (defun file-filter-add-custom (filter needed func)
  #+liber-documentation
- "@version{#2023-6-11}
+ "@version{#2024-3-23}
   @argument[filter]{a @class{gtk:file-filter} object}
   @argument[needed]{a @symbol{gtk:file-filter-flags} value with the flags
     indicating the information that the custom filter function needs}
-  @argument[func]{callback function, if the function returns @em{true}, then
-    the file will be displayed}
+  @argument[func]{a @symbol{gtk:file-filter-func} callback function, if the
+    function returns @em{true}, then the file will be displayed}
   @begin{short}
     Adds rule to a filter that allows files based on a custom callback function.
   @end{short}

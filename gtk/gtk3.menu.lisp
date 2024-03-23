@@ -1262,25 +1262,44 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 
 (cffi:defcallback menu-position-func :void
     ((menu (g:object menu))
-     (x :pointer)
-     (y :pointer)
-     (push-in :pointer)
+     (x (:pointer :int))
+     (y (:pointer :int))
+     (push-in (:pointer :boolean))
      (data :pointer))
-  (restart-case
-    (multiple-value-bind (rx ry rpush-in)
-        (funcall (glib:get-stable-pointer-value data) menu)
-      (setf (cffi:mem-ref x :int) rx
-            (cffi:mem-ref y :int) ry
-            (cffi:mem-ref push-in :boolean) rpush-in))
-    (return-zero () (setf (cffi:mem-ref x :int) 0
-                          (cffi:mem-ref y :int) 0
-                          (cffi:mem-ref push-in :boolean) nil))))
+  (let ((func (glib:get-stable-pointer-value data)))
+    (restart-case
+      (multiple-value-bind (rx ry rpush-in)
+          (funcall func menu)
+        (setf (cffi:mem-ref x :int) rx
+              (cffi:mem-ref y :int) ry
+              (cffi:mem-ref push-in :boolean) rpush-in))
+      (return-zero ()
+                   :report "Return zero position"
+                   (setf (cffi:mem-ref x :int) 0
+                         (cffi:mem-ref y :int) 0
+                         (cffi:mem-ref push-in :boolean) nil)))))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'menu-position-func)
       "Callback"
       (liber:symbol-documentation 'menu-position-func)
- "@version{#2023-3-21}
+ "@version{#2024-3-23}
+  @syntax{lambda (menu) => x, y, push}
+  @argument[menu]{a @class{gtk:menu} widget}
+  @argument[x]{an integer representing the horizontal position where the menu
+    shall be drawn}
+  @argument[y]{an integer representing the vertical position where the menu
+    shall be drawn}
+  @argument[push]{a boolean parameter that controls how menus placed outside
+    the monitor are handled. If this is set to @em{true} and part of the menu
+    is outside the monitor then GTK pushes the window into the visible area,
+    effectively modifying the popup position. Note that moving and possibly
+    resizing the menu around will alter the scroll position to keep the menu
+    items \"in place\", i.e. at the same monitor position they would have been
+    without resizing. In practice, this behavior is only useful for combobox
+    popups or option menus and cannot be used to simply confine a menu to
+    monitor boundaries. In that case, changing the scroll offset is not
+    desirable}
   @begin{short}
     A user function supplied when calling the @fun{gtk:menu-popup} function
     which controls the positioning of the menu when it is displayed.
@@ -1288,25 +1307,6 @@ lambda (menu flipped final xflipped yflipped)    :run-first
   The function sets the @arg{x} and @arg{y} parameters to the coordinates where
   the menu is to be drawn. To make the menu appear on a different monitor than
   the mouse pointer, the @fun{gtk:menu-monitor} function must be called.
-  @begin{pre}
-lambda (menu x y push)
-  @end{pre}
-  @begin[code]{table}
-    @entry[menu]{A @class{gtk:menu} widget.}
-    @entry[x]{A pointer to the integer representing the horizontal position
-      where the menu shall be drawn.}
-    @entry[y]{A pointer to the integer representing the vertical position where
-      the menu shall be drawn.}
-    @entry[push]{This parameter controls how menus placed outside the monitor
-      are handled. If this is set to @em{true} and part of the menu is outside
-      the monitor then GTK pushes the window into the visible area, effectively
-      modifying the popup position. Note that moving and possibly resizing the
-      menu around will alter the scroll position to keep the menu items \"in
-      place\", i.e. at the same monitor position they would have been without
-      resizing. In practice, this behavior is only useful for combobox popups
-      or option menus and cannot be used to simply confine a menu to monitor
-      boundaries. In that case, changing the scroll offset is not desirable.}
-  @end{table}
   @see-class{gtk:menu}
   @see-function{gtk:menu-popup}
   @see-function{gtk:menu-monitor}")

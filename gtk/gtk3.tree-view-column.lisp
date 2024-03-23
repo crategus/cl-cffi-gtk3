@@ -1108,7 +1108,7 @@ lambda (column)    :run-last
   (let ((func (glib:get-stable-pointer-value data)))
     (restart-case
       (funcall func column renderer model iter)
-      (return-from-tree-cell-data-func () nil))))
+      (return () :report "Return NIL" nil))))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'tree-cell-data-func)
@@ -1131,7 +1131,11 @@ lambda (column)    :run-last
   it to its written equivalent. This is set by calling the
   @fun{gtk:tree-view-column-set-cell-data-func} function.
   @see-class{gtk:tree-view-column}
-  @see-function{gtk:tree-view-column-set-cell-data-func}")
+  @see-class{gtk:cell-renderer}
+  @see-class{gtk:tree-model}
+  @see-class{gtk:tree-iter}
+  @see-function{gtk:tree-view-column-set-cell-data-func}
+  @see-function{gtk:cell-renderer-text-text}")
 
 (export 'tree-cell-data-func)
 

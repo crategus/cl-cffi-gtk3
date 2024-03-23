@@ -504,26 +504,26 @@ lambda (fontchooser fontname)    :run-first
     ((family (g:object pango:font-family))
      (face (g:object pango:font-face))
      (data :pointer))
-  (funcall (glib:get-stable-pointer-value data) family face))
+  (let ((func (glib:get-stable-pointer-value data)))
+    (restart-case
+      (funcall func family face)
+      (return-true () :report "Return T" t)
+      (return-false () :report "Return NIL" nil))))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'font-filter-func)
       "Callback"
       (liber:symbol-documentation 'font-filter-func)
- "@version{#2023-3-5}
+ "@version{#2024-3-23}
+  @syntax{lambda (family face) => result}
+  @argument[family]{a @class{pango:font-family} object}
+  @argument[face]{a @class{pango:font-face} object belonging to @arg{family}}
+  @argument[result]{@em{true} if the font should be displayed}
   @begin{short}
     The callback function that is used for deciding what fonts get shown in a
     @class{gtk:font-chooser} widget.
   @end{short}
   See the @fun{gtk:font-chooser-set-filter-func} function.
-  @begin{pre}
-lambda (family face)
-  @end{pre}
-  @begin[code]{table}
-    @entry[family]{A @class{pango:font-family} object.}
-    @entry[face]{A @class{pango:font-face} object belonging to @arg{family}.}
-    @entry[Return]{@em{True} if the font should be displayed.}
-  @end{table}
   @see-class{gtk:font-chooser}
   @see-class{pango:font-family}
   @see-class{pango:font-face}

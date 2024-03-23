@@ -1721,30 +1721,26 @@ lambda (model path iter new-order)    :run-first
      (path (g:boxed tree-path))
      (iter (g:boxed tree-iter))
      (data :pointer))
-  (let ((fn (glib:get-stable-pointer-value data)))
+  (let ((func (glib:get-stable-pointer-value data)))
     (restart-case
-      (funcall fn model path iter)
-      (stop-tree-model-iteration () t)
-      (skip-tree-model-current () nil))))
+      (funcall func model path iter)
+      (return-true () :report "Return T" t)
+      (return-false () :report "Return NIL" nil))))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'tree-model-foreach-func)
       "Callback"
       (liber:symbol-documentation 'tree-model-foreach-func)
- "@version{#2023-3-28}
+ "@version{#2024-3-23}
+  @syntax{lambda (model path iter) => result}
+  @argument[model]{a @class{gtk:tree-model} object being iterated}
+  @argument[path]{a current @class{gtk:tree-path} instance}
+  @argument[iter]{a current @class{gtk:tree-iter} iterator}
+  @argument[result]{@em{true} to stop iterating, @em{false} to continue}
   @begin{short}
     Type of the callback function passed to the @fun{gtk:tree-model-foreach}
     function to iterate over the rows in a tree model.
   @end{short}
-  @begin{pre}
-lambda (model path iter)
-  @end{pre}
-  @begin[code]{table}
-    @entry[model]{The @class{gtk:tree-model} object being iterated.}
-    @entry[path]{The current @class{gtk:tree-path} instance.}
-    @entry[iter]{The current @class{gtk:tree-iter} iterator.}
-    @entry[Returns]{@em{True} to stop iterating, @em{false} to continue.}
-  @end{table}
   @see-class{gtk:tree-model}
   @see-class{gtk:tree-path}
   @see-class{gtk:tree-iter}

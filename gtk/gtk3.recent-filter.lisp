@@ -406,26 +406,26 @@
 (cffi:defcallback recent-filter-func :boolean
     ((info (:pointer (:struct recent-filter-info)))
      (data :pointer))
-  (funcall (glib:get-stable-pointer-value data) info))
+  (let ((func (glib:get-stable-pointer-value data)))
+    (restart-case
+      (funcall func info)
+      (return-true () :report "Return T" t)
+      (return-false () :report "Return NIL" nil))))
 
-  #+liber-documentation
+#+liber-documentation
 (setf (liber:alias-for-symbol 'recent-filter-func)
       "Callback"
       (liber:symbol-documentation 'recent-filter-func)
- "@version{#2023-3-24}
+ "@version{#2024-3-23}
+  @syntax{lambda (info) => result}
+  @argument[info]{a @symbol{gtk:recent-filter-info} instance that is filled
+    according to the needed flags passed to the
+    @fun{gtk:recent-filter-add-custom} function}
+  @argument[result]{@em{true} if the file should be displayed}
   @begin{short}
     The type of function that is used with custom filters, see the
     @fun{gtk:recent-filter-add-custom} function.
   @end{short}
-  @begin{pre}
-lambda (info)
-  @end{pre}
-  @begin[code]{table}
-    @entry[info]{A @symbol{gtk:recent-filter-info} instance that is filled
-      according to the needed flags passed to the
-      @fun{gtk:recent-filter-add-custom} function.}
-    @entry[Returns]{@em{True} if the file should be displayed.}
-  @end{table}
   @see-class{gtk:recent-filter}
   @see-function{gtk:recent-filter-add-custom}")
 

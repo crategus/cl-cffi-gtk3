@@ -590,27 +590,28 @@ lambda (chooser)    :run-last
     ((a (g:boxed recent-info))
      (b (g:boxed recent-info))
      (data :pointer))
-  (funcall (glib:get-stable-pointer-value data) a b))
+  (let ((func (glib:get-stable-pointer-value data)))
+    (restart-case
+      (funcall func a b)
+      (return<0 () :report "Return -1" -1)
+      (return=0 () :report "Return  0" 0)
+      (return>0 () :report "Return  1" 1))))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'recent-sort-func)
       "Callback"
       (liber:symbol-documentation 'recent-sort-func)
- "@version{#2023-3-24}
+ "@version{#2024-3-23}
+  @syntax{lambda (item1 item2) => result}
+  @argument[item1]{a @class{gtk:recent-info} instance}
+  @argument[item2]{a second @class{gtk:recent-info} instance}
+  @argument[result]{a positive integer if the first item comes before the
+    second, zero if the two items are equal and a negative integer if the
+    first item comes after the second}
   @begin{short}
     The callback function to set with the @fun{gtk:recent-chooser-set-sort-func}
     function.
   @end{short}
-  @begin{pre}
-lambda (item1 item2)
-  @end{pre}
-  @begin[code]{table}
-    @entry[item1]{A @class{gtk:recent-info} instance.}
-    @entry[item2]{A second @class{gtk:recent-info} instance.}
-    @entry[Returns]{A positive integer if the first item comes before the
-      second, zero if the two items are equal and a negative integer if the
-      first item comes after the second.}
-  @end{table}
   @see-class{gtk:recent-chooser}
   @see-function{gtk:recent-chooser-set-sort-func}")
 

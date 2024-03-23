@@ -335,10 +335,10 @@
    (model (g:object tree-model))
    (iter (g:boxed tree-iter))
    (data :pointer))
-  (let ((fn (glib:get-stable-pointer-value data)))
+  (let ((func (glib:get-stable-pointer-value data)))
     (restart-case
-      (funcall fn layout cell model iter)
-      (return-from-cell-layout-data-func () nil))))
+      (funcall func layout cell model iter)
+      (return () :report "Return NIL" nil))))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'cell-layout-data-func)

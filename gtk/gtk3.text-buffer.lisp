@@ -2421,6 +2421,8 @@ lambda (buffer tag start end)    :run-last
 ;;; GtkTextBufferDeserializeFunc ()
 ;;; ----------------------------------------------------------------------------
 
+;; TODO: Check this implementation
+
 (cffi:defcallback text-buffer-deserialize-func :boolean
     ((buffer (g:object text-buffer))
      (content (g:object text-buffer))
@@ -2431,7 +2433,7 @@ lambda (buffer tag start end)    :run-last
      (user :pointer)
      (err :pointer))
   (glib:with-catching-to-g-error (err)
-    (let ((fn (glib:get-stable-pointer-value user)))
+    (let ((func (glib:get-stable-pointer-value user)))
       (restart-case
         (let ((bytes (iter (with bytes = (make-array len
                                                      :element-type
@@ -2440,10 +2442,9 @@ lambda (buffer tag start end)    :run-last
                            (setf (aref bytes i) (cffi:mem-ref data :uint8 i))
                            (finally (return bytes)))))
           (progn
-            (funcall fn buffer content iter bytes create)
+            (funcall func buffer content iter bytes create)
             t))
-        (return-from-text-buffer-deserialize-func
-            ()
+        (return ()
             (error 'g-error-condition
                    :domain "cl-cffi-gtk"
                    :code 0
@@ -2454,26 +2455,21 @@ lambda (buffer tag start end)    :run-last
 (setf (liber:alias-for-symbol 'text-buffer-deserialize-func)
       "Callback"
       (liber:symbol-documentation 'text-buffer-deserialize-func)
- "@version{#2023-3-7}
+ "@version{#2024-3-23}
+  @syntax{lambda (buffer content iter data create) => result}
+  @argument[buffer]{a @class{gtk:text-buffer} object the format is registered
+    with}
+  @argument[content]{a @class{gtk:text-buffer} object to deserialize into}
+  @argument[iter]{a @class{gtk:text-iter} insertion point for the deserialized
+    text}
+  @argument[data]{a pointer to the data to deserialize}
+  @argument[create]{@em{true} if deserializing may create tags}
+  @argument[result]{@em{true} on success, @em{false} otherwise}
   @begin{short}
     A function that is called to deserialize rich text that has been serialized
     with the @fun{gtk:text-buffer-serialize} function, and insert it at
     @arg{iter}.
   @end{short}
-  @begin{pre}
-lambda (buffer content iter data len create)
-  @end{pre}
-  @begin[code]{table}
-    @entry[buffer]{The @class{gtk:text-buffer} object the format is registered
-      with.}
-    @entry[content]{The @class{gtk:text-buffer} object to deserialize into.}
-    @entry[iter]{The @class{gtk:text-iter} insertion point for the deserialized
-      text.}
-    @entry[data]{The pointer to the data to deserialize.}
-    @entry[len]{The length of @arg{data}.}
-    @entry[create]{@em{True} if deserializing may create tags.}
-    @entry[Return]{@em{True} on success, @em{false} otherwise.}
-  @end{table}
   @see-class{gtk:text-buffer}
   @see-class{gtk:text-iter}
   @see-function{gtk:text-buffer-serialize}")
@@ -2804,39 +2800,35 @@ lambda (buffer content iter data len create)
      (end (g:boxed text-iter))
      (length (:pointer :size))
      (user-data :pointer))
-  (let ((fn (glib:get-stable-pointer-value user-data)))
+  (let ((func (glib:get-stable-pointer-value user-data)))
     (restart-case
-      (let* ((bytes (funcall fn buffer content start end))
+      (let* ((bytes (funcall func buffer content start end))
              (bytes-ptr (g:malloc (length bytes))))
         (setf (cffi:mem-ref length :size) (length bytes))
         (iter (for i from 0 below (length bytes))
               (setf (cffi:mem-aref bytes-ptr :uint8 i) (aref bytes i)))
         bytes-ptr)
-      (return-from-text-buffer-serialize-func () nil))))
+      (return () :report "Return NIL" nil))))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'text-buffer-serialize-func)
       "Callback"
       (liber:symbol-documentation 'text-buffer-serialize-func)
- "@version{#2023-3-7}
+ "@version{#2024-3-23}
+  @syntax{lambda (buffer content start end) => result}
+  @argument[buffer]{a @class{gtk:text-buffer} object for which the format is
+    registered}
+  @argument[content]{a @class{gtk:text-buffer} object to serialize}
+  @argument[start]{a @class{gtk:text-iter} start iterator of the block of text
+    to serialize}
+  @argument[end]{a @class{gtk:text-iter} end iterator of the block of text
+    to serialize}
+  @argument[result]{a newly allocated array of @code{guint8} which contains the
+    serialized data, or @code{nil} if an error occured}
   @begin{short}
     A function that is called to serialize the content of a text buffer. It
     must return the serialized form of the content.
   @end{short}
-  @begin{pre}
-lambda (buffer content start end)
-  @end{pre}
-  @begin[code]{table}
-    @entry[buffer]{The @class{gtk:text-buffer} object for which the format
-      is registered.}
-    @entry[content]{The @class{gtk:text-buffer} object to serialize.}
-    @entry[start]{A @class{gtk:text-iter} start iterator of the block of text
-      to serialize.}
-    @entry[end]{A @class{gtk:text-iter} end iterator of the block of text
-      to serialize.}
-    @entry[Return]{A newly allocated array of @code{guint8} which contains the
-      serialized data, or @code{NULL} if an error occured.}
-  @end{table}
   @see-class{gtk:text-buffer}
   @see-function{gtk:text-buffer-register-serialize-format}
   @see-function{gtk:text-buffer-serialize}")

@@ -1702,10 +1702,11 @@ lambda (view)    :action
      (prev (g:object tree-view-column))
      (next (g:object tree-view-column))
      (data :pointer))
-  (let ((fn (glib:get-stable-pointer-value data)))
+  (let ((func (glib:get-stable-pointer-value data)))
     (restart-case
-      (funcall fn view column prev next)
-      (return () nil))))
+      (funcall func view column prev next)
+      (return-true () :report "Return T" t)
+      (return-false () :report "Return NIL" nil))))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'tree-view-column-drop-func)
@@ -2113,8 +2114,10 @@ lambda (view)    :action
     ((view (g:object gkt-tree-view))
      (path (g:boxed tree-path))
      (data :pointer))
-  (let ((fn (glib:get-stable-pointer-value data)))
-    (funcall fn view path)))
+  (let ((func (glib:get-stable-pointer-value data)))
+    (restart-case
+      (funcall func view path)
+      (return () :report "Return NIL" nil))))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'tree-view-mapping-func)
@@ -3014,10 +3017,11 @@ lambda (view)    :action
    (key (:string :free-from-foreign nil))
    (iter (g:boxed tree-iter))
    (data :pointer))
-  (restart-case
-    (funcall (glib:get-stable-pointer-value data) model column key iter)
-    (return-true () t)
-    (return-false () t)))
+  (let ((func (glib:get-stable-pointer-value data)))
+    (restart-case
+      (funcall func model column key iter)
+      (return-true () :report "Return T" t)
+      (return-false () :report "Return NIL" nil))))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'tree-view-search-equal-func)
@@ -3123,9 +3127,10 @@ lambda (view)    :action
     ((view (g:object tree-view))
      (dialog (g:object widget))
      (data :pointer))
-  (restart-case
-    (funcall (glib:get-stable-pointer-value data) view dialog)
-    (return () nil)))
+  (let ((func (glib:get-stable-pointer-value data)))
+    (restart-case
+      (funcall func view dialog)
+      (return () :report "Return NIL" nil))))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'tree-view-search-position-func)
@@ -3201,10 +3206,11 @@ lambda (view)    :action
     ((model (g:object tree-model))
      (iter (g:boxed tree-iter))
      (data :pointer))
-  (restart-case
-    (funcall (glib:get-stable-pointer-value data) model iter)
-    (return-true () t)
-    (return-false () nil)))
+  (let ((func (glib:get-stable-pointer-value data)))
+    (restart-case
+      (funcall func model iter)
+      (return-true () :report "Return T" t)
+      (return-false () :report "Return NIL" nil))))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'tree-view-row-separator-func)

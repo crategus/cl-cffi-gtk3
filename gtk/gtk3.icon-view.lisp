@@ -1216,28 +1216,24 @@ lambda (view)    :action
     ((view (g:object icon-view))
      (path (g:boxed tree-path))
      (data :pointer))
-  (let ((fn (glib:get-stable-pointer-value data)))
+  (let ((func (glib:get-stable-pointer-value data)))
     (restart-case
-      (funcall fn view path)
-      (return () nil))))
+      (funcall func view path)
+      (return () :report "Return NIL" nil))))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'icon-view-foreach-func)
       "Callback"
       (liber:symbol-documentation 'icon-view-foreach-func)
- "@version{#2023-3-10}
+ "@version{#2024-3-23}
+  @syntax{lambda (view path)}
+  @argument[view]{a @class{gtk:icon-view} widget}
+  @argument[path]{a @class{gtk:tree-path} instance of a selected row}
   @begin{short}
     A callback function used by the @fun{gtk:icon-view-selected-foreach}
     function to map all selected rows.
   @end{short}
   It will be called on every selected row in the view.
-  @begin{pre}
-lambda (view path)
-  @end{pre}
-  @begin[code]{table}
-    @entry[view]{A @class{gtk:icon-view} widget.}
-    @entry[path]{The @class{gtk:tree-path} instance of a selected row.}
-  @end{table}
   @see-class{gtk:icon-view}
   @see-class{gtk:tree-path}
   @see-function{gtk:icon-view-selected-foreach}")

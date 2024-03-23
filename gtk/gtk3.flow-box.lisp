@@ -709,28 +709,24 @@ lambda (flowbox)    :action
     ((flowbox (g:object flow-box))
      (child (g:object flow-box-child))
      (data :pointer))
-  (restart-case
-    (let ((ptr (glib:get-stable-pointer-value data)))
-      (funcall ptr flowbox child))
-    (return () :report "Error in the GtkFlowBoxForeachFunc callback." nil)))
+  (let ((func (glib:get-stable-pointer-value data)))
+    (restart-case
+      (funcall func flowbox child)
+      (return () :report "Return NIL" nil))))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'flow-box-foreach-func)
       "Callback"
       (liber:symbol-documentation 'flow-box-foreach-func)
- "@version{#2023-3-5}
+ "@version{#2024-3-23}
+  @syntax{lambda (flowbox child)}
+  @argument[flowbox]{a @class{gtk:flow-box} widget}
+  @argument[child]{a @class{gtk:flow-box-child} child wiget}
   @begin{short}
     A callback function used by the @fun{gtk:flow-box-selected-foreach}
     function.
   @end{short}
   It will be called on every selected child widget of the flow box.
-  @begin{pre}
-lambda (flowbox child)
-  @end{pre}
-  @begin[code]{table}
-    @entry[flowbox]{a @class{gtk:flow-box} widget}
-    @entry[child]{a @class{gtk:flow-box-child} child wiget}
-  @end{table}
   @see-class{gtk:flow-box}
   @see-class{gtk:flow-box-child}
   @see-function{gtk:flow-box-selected-foreach}")
@@ -863,24 +859,25 @@ lambda (flowbox child)
 (cffi:defcallback flow-box-filter-func :boolean
     ((child (g:object flow-box-child))
      (data :pointer))
-  (let ((ptr (glib:get-stable-pointer-value data)))
-    (funcall ptr child)))
+  (let ((func (glib:get-stable-pointer-value data)))
+    (restart-case
+      (funcall func child)
+      (return-true () :report "Return T" t)
+      (return-false () :report "Return NIL" nil))))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'flow-box-filter-func)
       "Callback"
       (liber:symbol-documentation 'flow-box-filter-func)
- "@version{2024-1-2}
+ "@version{2024-3-23}
+  @syntax{lambda (child) => result}
+  @argument[child]{a @class{gtk:flow-box-child} widget that may be filtered}
+  @argument[result]{@em{true} if the row should be visible,
+    @em{false} otherwise}
   @begin{short}
     A function that will be called whenever a child widget changes or is added.
   @end{short}
   It lets you control if the child widget should be visible or not.
-  @begin{pre}
-lambda (child)
-  @end{pre}
-  @begin[code]{table}
-    @entry[child]{A @class{gtk:flow-box-child} widget that may be filtered.}
-  @end{table}
   @see-class{gtk:flow-box}
   @see-class{gtk:flow-box-child}
   @see-function{gtk:flow-box-set-filter-func}")
@@ -959,26 +956,26 @@ lambda (child)
     ((child1 (g:object flow-box-child))
      (child2 (g:object flow-box-child))
      (data :pointer))
-  (let ((ptr (glib:get-stable-pointer-value data)))
-    (funcall ptr child1 child2)))
+  (let ((func (glib:get-stable-pointer-value data)))
+    (restart-case
+      (funcall func child1 child2)
+      (return<0 () :report "Return -1" -1)
+      (return=0 () :report "Return  0" 0)
+      (return>0 () :report "Return  1" 1))))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'flow-box-sort-func)
       "Callback"
       (liber:symbol-documentation 'flow-box-sort-func)
- "@version{2024-1-2}
+ "@version{2024-3-23}
+  @syntax{lambda (child1 child2) => result}
+  @argument[child1]{a first @class{gtk:flow-box-child} widget}
+  @argument[child2]{a second @class{gtk:flow-box-child} widget}
+  @argument[result]{< 0 if @arg{child1} should be before @arg{child2}, 0 if the
+    are equal, and > 0 otherwise}
   @begin{short}
     A function to compare two children to determine which should come first.
   @end{short}
-  @begin{pre}
-lambda (child1 child2)
-  @end{pre}
-  @begin[code]{table}
-    @entry[child1]{The first @class{gtk:flow-box-child} widget.}
-    @entry[child2]{The second @class{gtk:flow-box-child} widget.}
-    @entry[Returns]{< 0 if @arg{child1} should be before @arg{child2}, 0 if the
-      are equal, and > 0 otherwise.}
-  @end{table}
   @see-class{gtk:flow-box}
   @see-class{gtk:flow-box-child}
   @see-function{gtk:flow-box-set-sort-func}")
@@ -1050,27 +1047,25 @@ lambda (child1 child2)
 (cffi:defcallback flow-box-create-widget-func (g:object widget)
     ((item :pointer)
      (data :pointer))
-  (let ((ptr (glib:get-stable-pointer-value data)))
-    (funcall ptr item)))
+  (let ((func (glib:get-stable-pointer-value data)))
+    (restart-case
+      (funcall func item)
+      (return () :report "Return NIL" nil))))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'flow-box-create-widget-func)
       "Callback"
       (liber:symbol-documentation 'flow-box-create-widget-func)
- "@version{#2023-3-13}
+ "@version{#2024-3-23}
+  @syntax{lambda (item) => result}
+  @argument[item]{a pointer to the item from the model for which to create a
+    widget for}
+  @argument[result]{a @class{gtk:widget} object that represents @arg{item}}
   @begin{short}
     Called for flow boxes that are bound to a @class{g:list-model} object with
     the @fun{gtk:flow-box-bind-model} function for each item that gets added to
     the model.
   @end{short}
-  @begin{pre}
-lambda (item)
-  @end{pre}
-  @begin[code]{table}
-    @entry[item]{A pointer to the item from the model for which to create a
-       widget for.}
-    @entry[Returns]{A @class{gtk:widget} object that represents @arg{item}.}
-  @end{table}
   @see-class{gtk:flow-box}
   @see-class{g:list-model}
   @see-class{gtk:widget}

@@ -692,10 +692,11 @@ lambda (area renderer editable)    :run-first
 (cffi:defcallback cell-callback :boolean
     ((renderer (g:object cell-renderer))
      (data :pointer))
-  (let ((fn (glib:get-stable-pointer-value data)))
+  (let ((func (glib:get-stable-pointer-value data)))
     (restart-case
-      (funcall fn renderer)
-      (return-from-cell-callback () nil))))
+      (funcall func renderer)
+      (return-true () :report "Return T" t)
+      (return-false () :report "Return NIL" nil))))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'cell-callback)
@@ -749,10 +750,11 @@ lambda (area renderer editable)    :run-first
      (cell (g:boxed gdk:rectangle))
      (background (g:boxed gdk:rectangle))
      (data :pointer))
-  (let ((fn (glib:get-stable-pointer-value data)))
+  (let ((func (glib:get-stable-pointer-value data)))
     (restart-case
-      (funcall fn renderer cell background)
-      (return-from-cell-alloc-callback () nil))))
+      (funcall func renderer cell background)
+      (return-true () :report "Return T" t)
+      (return-false () :report "Return NIL" nil))))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'cell-alloc-callback)
@@ -764,10 +766,10 @@ lambda (area renderer editable)    :run-first
   @argument[cell]{a @class{gdk:rectangle} area allocated to @arg{renderer}
     inside the rectangle provided to the @fun{gtk:cell-area-foreach-alloc}
     function}
-  @entry[background]{a @class{gdk:rectangle} background area for @arg{renderer}
-    inside the background area provided to the @fun{gtk:cell-area-foreach-alloc}
-    function}
-  @entry[result]{@em{true} to stop iterating over cells}
+  @argument[background]{a @class{gdk:rectangle} background area for
+    @arg{renderer} inside the background area provided to the
+    @fun{gtk:cell-area-foreach-alloc} function}
+  @argument[result]{@em{true} to stop iterating over cells}
   @begin{short}
     The type of the callback function used for iterating over the cell
     renderers of a @class{gtk:cell-area} object, see the

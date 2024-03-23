@@ -935,10 +935,10 @@
      (connect g:object)
      (flags g:connect-flags)
      (data :pointer))
-  (let ((ptr (glib:get-stable-pointer-value data)))
+  (let ((func (glib:get-stable-pointer-value data)))
     (restart-case
-      (funcall ptr builder object signal handler connect flags)
-    (return-from-builder-connect-func () nil))))
+      (funcall func builder object signal handler connect flags)
+      (return () :report "Return NIL" nil))))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'builder-connect-func)
