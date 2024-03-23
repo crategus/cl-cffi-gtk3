@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -129,9 +129,9 @@
 (setf (liber:alias-for-class 'atom-as-string)
       "Type"
       (documentation 'atom-as-string 'type)
- "@version{2023-7-13}
+ "@version{2024-3-23}
   @begin{short}
-    The @class{g:atom-as-string} type represents the C @code{GAtom} type which
+    The @class{gdk:atom-as-string} type represents the C @code{GAtom} type which
     represents a string as an index into a table of strings on the X server.
   @end{short}
   They are used to transfer strings efficiently between clients without having
