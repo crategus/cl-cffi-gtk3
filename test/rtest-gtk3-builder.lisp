@@ -187,19 +187,31 @@
 
 ;;;     gtk_builder_add_objects_from_file
 
-(test gtk-builder-add-objects-from-file
+(test gtk-builder-add-objects-from-file.1
   (let ((builder (gtk:builder-new))
         (path (sys-path "resource/rtest-dialog.ui")))
-    (is-true (gtk:builder-add-objects-from-file builder path '("dialog1")))
+    (is-true (gtk:builder-add-objects-from-file builder path "dialog1"))
     (is (typep (gtk:builder-object builder "dialog1") 'gtk:dialog))
     (is (equal '(GTK:DIALOG GTK:BOX GTK:BUTTON-BOX GTK:BUTTON)
+               (mapcar 'type-of (gtk:builder-objects builder))))))
+
+(test gtk-builder-add-objects-from-file.2
+  (let ((builder (gtk:builder-new))
+        (path (sys-path "resource/rtest-dialog2.ui")))
+    (is-true (gtk:builder-add-objects-from-file builder path
+                                                        "button_cancel"
+                                                        "button_ok"))
+    (is (typep (gtk:builder-object builder "button_cancel") 'gtk:button))
+    (is (typep (gtk:builder-object builder "button_ok") 'gtk:button))
+
+    (is (equal '(GTK:BUTTON GTK:BUTTON)
                (mapcar 'type-of (gtk:builder-objects builder))))))
 
 ;;;     gtk_builder_add_objects_from_string
 
 (test gtk-builder-add-objects-from-string
   (let ((builder (gtk:builder-new)))
-    (is-true (gtk:builder-add-objects-from-string builder *dialog* '("dialog1")))
+    (is-true (gtk:builder-add-objects-from-string builder *dialog* "dialog1"))
     (is (typep (gtk:builder-object builder "dialog1") 'gtk:dialog))
     (is (equal '(GTK:DIALOG GTK:BOX GTK:BUTTON-BOX GTK:BUTTON)
                (mapcar 'type-of (gtk:builder-objects builder))))))
@@ -243,4 +255,4 @@
 ;;;     gtk_builder_value_from_string
 ;;;     gtk_builder_value_from_string_type
 
-;;; 2024-3-16
+;;; 2024-3-20
