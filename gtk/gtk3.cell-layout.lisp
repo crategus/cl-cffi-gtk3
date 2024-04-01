@@ -45,10 +45,10 @@
 ;;;     gtk_cell_layout_get_cells
 ;;;     gtk_cell_layout_reorder
 ;;;     gtk_cell_layout_clear
-;;;     gtk_cell_layout_set_attributes
 ;;;     gtk_cell_layout_add_attribute
-;;;     gtk_cell_layout_set_cell_data_func
+;;;     gtk_cell_layout_set_attributes
 ;;;     gtk_cell_layout_clear_attributes
+;;;     gtk_cell_layout_set_cell_data_func
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -71,7 +71,7 @@
 (setf (liber:alias-for-class 'cell-layout)
       "Interface"
       (documentation 'cell-layout 'type)
- "@version{#2023-3-16}
+ "@version{2024-3-24}
   @begin{short}
     The @class{gtk:cell-layout} interface is an interface to be implemented by
     all objects which want to provide a @class{gtk:tree-view-column} object
@@ -140,7 +140,7 @@
 
 (defun cell-layout-pack-start (layout cell &key (expand t))
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{2024-3-24}
   @argument[layout]{a @class{gtk:cell-layout} object}
   @argument[cell]{a @class{gtk:cell-renderer} object}
   @argument[expand]{@em{true} if @arg{cell} is to be given extra space
@@ -148,10 +148,10 @@
   @begin{short}
     Packs @arg{cell} into the beginning of @arg{layout}.
   @end{short}
-  If the keyword argument @arg{expand} is @em{false}, then @arg{cell} is
+  If the @arg{expand} keyword argument is @em{false}, then @arg{cell} is
   allocated no more space than it needs. Any unused space is divided evenly
   between cells for which @arg{expand} is @em{true}. The default value of the
-  keyword argument @arg{expand} is @em{true}.
+  @arg{expand} keyword argument is @em{true}.
 
   Note that reusing the same cell renderer is not supported.
   @see-class{gtk:cell-layout}
@@ -172,7 +172,7 @@
 
 (defun cell-layout-pack-end (layout cell &key (expand t))
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{2024-3-24}
   @argument[layout]{a @class{gtk:cell-layout} object}
   @argument[cell]{a @class{gtk:cell-renderer} object}
   @argument[expand]{@em{true} if @arg{cell} is to be given extra space
@@ -180,10 +180,10 @@
   @begin{short}
     Adds @arg{cell} to the end of @arg{layout}.
   @end{short}
-  If the keyword argument @arg{expand} is @em{false}, then @arg{cell} is
+  If the @arg{expand} keyword argument is @em{false}, then @arg{cell} is
   allocated no more space than it needs. Any unused space is divided evenly
   between cells for which @arg{expand} is @em{true}. The default value of the
-  keyword argument @arg{expand} is @em{true}.
+  @arg{expand} keyword argument is @em{true}.
 
   Note that reusing the same cell renderer is not supported.
   @see-class{gtk:cell-layout}
@@ -194,11 +194,11 @@
 (export 'cell-layout-pack-end)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_cell_layout_get_area () -> cell-layout-area
+;;; gtk_cell_layout_get_area ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_cell_layout_get_area" cell-layout-area) (g:object cell-area)
- "@version{#2023-3-16}
+ "@version{2024-3-24}
   @argument[layout]{a @class{gtk:cell-layout} object}
   @return{The @class{gtk:cell-area} object used by @arg{layout}.}
   @begin{short}
@@ -213,13 +213,13 @@
 (export 'cell-layout-area)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_cell_layout_get_cells () -> cell-layout-cells
+;;; gtk_cell_layout_get_cells ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_cell_layout_get_cells" cell-layout-cells)
     (g:list-t g:object :free-from-foreign t)
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{2024-3-24}
   @argument[layout]{a @class{gtk:cell-layout} object}
   @return{A list of @class{gtk:cell-renderer} objects.}
   @begin{short}
@@ -237,7 +237,7 @@
 
 (cffi:defcfun ("gtk_cell_layout_reorder" cell-layout-reorder) :void
  #+liber-documentation
- "@version{#2021-3-16}
+ "@version{2024-3-24}
   @argument[layout]{a @class{gtk:cell-layout} object}
   @argument[cell]{a @class{gtk:cell-renderer} object to reorder}
   @argument[position]{an integer with the new position to insert @arg{cell} at}
@@ -260,7 +260,7 @@
 
 (cffi:defcfun ("gtk_cell_layout_clear" cell-layout-clear) :void
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{2024-3-24}
   @argument[layout]{a @class{gtk:cell-layout} object}
   @begin{short}
     Unsets all the mappings on all renderers on @arg{layout} and removes
@@ -272,58 +272,82 @@
 (export 'cell-layout-clear)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_cell_layout_set_attributes ()
-;;; ----------------------------------------------------------------------------
-
-(defun cell-layout-set-attributes (layout cell &rest attributes)
- #+liber-documentation
- "@version{#2023-3-16}
-  @argument[layout]{a @class{gtk:cell-layout} object}
-  @argument[cell]{a @class{gtk:cell-renderer} object}
-  @argument[attributes]{a list of attributes}
-  @begin{short}
-    Sets the attributes in the list as the attributes of @arg{layout}.
-  @end{short}
-  The attributes should be in attribute/column order, as in the
-  @fun{gtk:cell-layout-add-attribute} function. All existing attributes are
-  removed, and replaced with the new attributes.
-  @see-class{gtk:layout}
-  @see-class{gtk:cell-renderer}
-  @see-function{gtk:cell-layout-add-attribute}"
-  (loop for (attribute column) on attributes by #'cddr
-        do (cell-layout-add-attribute layout cell attribute column)))
-
-(export 'cell-layout-set-attributes)
-
-;;; ----------------------------------------------------------------------------
 ;;; gtk_cell_layout_add_attribute ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_cell_layout_add_attribute" cell-layout-add-attribute) :void
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{2024-3-24}
   @argument[layout]{a @class{gtk:cell-layout} object}
   @argument[cell]{a @class{gtk:cell-renderer} object}
   @argument[attribute]{a string with an attribute on the renderer}
-  @argument[column]{an integer with the column position on the model to get the
+  @argument[colnum]{an integer with the column position on the model to get the
     attribute from}
   @begin{short}
     Adds an attribute mapping to the list in @arg{layout}.
   @end{short}
-  The @arg{column} argument is the column of the model to get a value from, and
+  The @arg{colnum} argument is the column of the model to get a value from, and
   @arg{attribute} is the parameter on @arg{cell} to be set from the value. So
   for example if column 2 of the model contains strings, you could have the
-  \"text\" attribute of a @class{gtk:cell-renderer-text} object get its values
-  from column 2.
+  @slot[gtk:cell-renderer-text]{text} property of a
+  @class{gtk:cell-renderer-text} object get its values from column 2.
   @see-class{gtk:cell-layout}
   @see-class{gtk:cell-renderer}
-  @see-class{gtk:cell-renderer-text}"
+  @see-class{gtk:cell-renderer-text}
+  @see-function{gtk:cell-renderer-text-text}"
   (layout (g:object cell-layout))
   (cell (g:object cell-renderer))
   (attribute (:string :free-to-foreign t))
   (column :int))
 
 (export 'cell-layout-add-attribute)
+
+;;; ----------------------------------------------------------------------------
+;;; gtk_cell_layout_set_attributes ()
+;;; ----------------------------------------------------------------------------
+
+(defun cell-layout-set-attributes (layout cell &rest attributes)
+ #+liber-documentation
+ "@version{2024-3-24}
+  @argument[layout]{a @class{gtk:cell-layout} object}
+  @argument[cell]{a @class{gtk:cell-renderer} object}
+  @argument[attributes]{pairs of attribute and column number}
+  @begin{short}
+    Sets the attributes in the list as the attributes of @arg{layout}.
+  @end{short}
+  The attributes should be in attribute/colnum order, as in the
+  @fun{gtk:cell-layout-add-attribute} function. All existing attributes are
+  removed, and replaced with the new attributes.
+  @see-class{gtk:layout}
+  @see-class{gtk:cell-renderer}
+  @see-function{gtk:cell-layout-add-attribute}"
+  (iter (for (attribute colnum) on attributes by #'cddr)
+        (cell-layout-add-attribute layout cell attribute colnum)))
+
+(export 'cell-layout-set-attributes)
+
+;;; ----------------------------------------------------------------------------
+;;; gtk_cell_layout_clear_attributes ()
+;;; ----------------------------------------------------------------------------
+
+(cffi:defcfun ("gtk_cell_layout_clear_attributes"
+               cell-layout-clear-attributes) :void
+ #+liber-documentation
+ "@version{2024-3-24}
+  @argument[layout]{a @class{gtk:cell-layout} object}
+  @argument[cell]{a @class{gtk:cell-renderer} object to clear the attribute
+    mapping on}
+  @begin{short}
+    Clears all existing attributes previously set with the
+    @fun{gtk:cell-layout-add-attribute} function.
+  @end{short}
+  @see-class{gtk:cell-layout}
+  @see-class{gtk:cell-renderer}
+  @see-function{gtk:cell-layout-add-attribute}"
+  (layout (g:object cell-layout))
+  (cell (g:object cell-renderer)))
+
+(export 'cell-layout-clear-attributes)
 
 ;;; ----------------------------------------------------------------------------
 ;;; GtkCellLayoutDataFunc ()
@@ -344,7 +368,7 @@
 (setf (liber:alias-for-symbol 'cell-layout-data-func)
       "Callback"
       (liber:symbol-documentation 'cell-layout-data-func)
- "@version{#2024-3-20}
+ "@version{2024-3-24}
   @syntax{lambda (layout cell model iter)}
   @argument[layout]{a @class{gtk:cell-layout} object}
   @argument[cell]{a @class{gtk:cell-renderer} object whose value is to be set}
@@ -352,10 +376,13 @@
   @argument[iter]{a @class{gtk:tree-iter} iterator indicating the row to set
     the value for}
   @begin{short}
-    A callback function which should set the value of @arg{layout}'s cell
-   renderer(s) as appropriate.
+    A callback function which should set the value of the cell renderer(s) of
+    @arg{layout} as appropriate.
   @end{short}
-  @see-class{gtk:tree-view-column}
+  @see-class{gtk:cell-layout}
+  @see-class{gtk:cell-renderer}
+  @see-class{gtk:tree-model}
+  @see-class{gtk:tree-iter}
   @see-function{gtk:tree-view-column-set-cell-data-func}")
 
 (export 'cell-layout-data-func)
@@ -374,7 +401,7 @@
 
 (defun cell-layout-set-cell-data-func (layout cell func)
  #+liber-documentation
- "@version{#2024-3-20}
+ "@version{2024-3-24}
   @argument[layout]{a @class{gtk:cell-layout} object}
   @argument[cell]{a @class{gtk:cell-renderer} object}
   @argument[func]{a @symbol{gtk:cell-layout-data-func} callback function to use,
@@ -383,14 +410,14 @@
     Sets the callback function to use for @arg{layout}.
   @end{short}
   This function is used instead of the standard attributes mapping for setting
-  the column value, and should set the value of @arg{layout}'s cell renderer(s)
-  as appropriate.
+  the column value, and should set the value of the cell renderer(s) of
+  @arg{layout} as appropriate.
 
   The @arg{func} callback function may be @code{nil} to remove a previously set
   function.
   @see-class{gtk:cell-layout}
   @see-class{gtk:cell-renderer}
-  @see-symbol{gtk:cell-layout-cell-data-func}"
+  @see-symbol{gtk:cell-layout-data-func}"
   (if func
       (%cell-layout-set-cell-data-func
               layout cell
@@ -405,28 +432,5 @@
               (cffi:null-pointer))))
 
 (export 'cell-layout-set-cell-data-func)
-
-;;; ----------------------------------------------------------------------------
-;;; gtk_cell_layout_clear_attributes ()
-;;; ----------------------------------------------------------------------------
-
-(cffi:defcfun ("gtk_cell_layout_clear_attributes"
-               cell-layout-clear-attributes) :void
- #+liber-documentation
- "@version{#2023-3-16}
-  @argument[layout]{a @class{gtk:cell-layout} object}
-  @argument[cell]{a @class{gtk:cell-renderer} object to clear the attribute
-    mapping on}
-  @begin{short}
-    Clears all existing attributes previously set with the
-    @fun{gtk:cell-layout-add-attribute} function.
-  @end{short}
-  @see-class{gtk:cell-layout}
-  @see-class{gtk:cell-renderer}
-  @see-function{gtk:cell-layout-add-attribute}"
-  (layout (g:object cell-layout))
-  (cell (g:object cell-renderer)))
-
-(export 'cell-layout-clear-attributes)
 
 ;;; --- End of file gtk3.cell-layout.lisp --------------------------------------

@@ -38,7 +38,43 @@
              (gobject:get-g-type-definition "GtkDestDefaults"))))
 
 ;;;     GtkTargetFlags  --> gtk.selection.lisp
+
 ;;;     GtkDragResult
+
+(test gtk-drag-result
+  ;; Check the type
+  (is (g:type-is-enum "GtkDragResult"))
+  ;; Check the type initializer
+  (is (eq (g:gtype "GtkDragResult")
+          (g:gtype (cffi:foreign-funcall "gtk_drag_result_get_type" :size))))
+  ;; Check the registered name
+  (is (eq 'gtk:drag-result
+          (glib:symbol-for-gtype "GtkDragResult")))
+  ;; Check the names
+  (is (equal '("GTK_DRAG_RESULT_SUCCESS" "GTK_DRAG_RESULT_NO_TARGET"
+               "GTK_DRAG_RESULT_USER_CANCELLED"
+               "GTK_DRAG_RESULT_TIMEOUT_EXPIRED"
+               "GTK_DRAG_RESULT_GRAB_BROKEN" "GTK_DRAG_RESULT_ERROR")
+             (list-enum-item-name "GtkDragResult")))
+  ;; Check the values
+  (is (equal '(0 1 2 3 4 5)
+             (list-enum-item-value "GtkDragResult")))
+  ;; Check the nick names
+  (is (equal '("success" "no-target" "user-cancelled" "timeout-expired"
+               "grab-broken" "error")
+             (list-enum-item-nick "GtkDragResult")))
+  ;; Check the enum definition
+  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkDragResult" GTK-DRAG-RESULT
+                                     (:EXPORT T
+                                      :TYPE-INITIALIZER
+                                      "gtk_drag_result_get_type")
+                                     (:SUCCESS 0)
+                                     (:NO-TARGET 1)
+                                     (:USER-CANCELLED 2)
+                                     (:TIMEOUT-EXPIRED 3)
+                                     (:GRAB-BROKEN 4)
+                                     (:ERROR 5))
+             (gobject:get-g-type-definition "GtkDragResult"))))
 
 ;;; --- Functions --------------------------------------------------------------
 
@@ -257,4 +293,4 @@
                (gtk:target-table-new-from-list
                    (gtk:drag-source-target-list source))))))
 
-;;; --- 2023-11-4 --------------------------------------------------------------
+;;; 2024-3-24

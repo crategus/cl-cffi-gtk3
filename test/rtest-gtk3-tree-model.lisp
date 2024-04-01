@@ -29,48 +29,70 @@
 
 ;;; --- Types and Values -------------------------------------------------------
 
-;;;     GtkTreeModel
 ;;;     GtkTreeIter
+
+(test gtk-tree-iter-boxed
+  ;; Type check
+  (is (g:type-is-a (g:gtype "GtkTreeIter") g:+g-type-boxed+))
+  ;; Check the type initializer
+  (is (eq (g:gtype "GtkTreeIter")
+          (g:gtype (cffi:foreign-funcall "gtk_tree_iter_get_type" :size))))
+  ;; Check the registered name
+  (is (eq 'gtk:tree-iter
+          (glib:symbol-for-gtype "GtkTreeIter"))))
+
+;;;     gtk_tree_iter_copy
+
+(test gtk-tree-iter-copy
+  (let ((iter (make-instance 'gtk:tree-iter)))
+    (is (typep (gtk:tree-iter-copy iter) 'gtk:tree-iter))))
+
+;;; ----------------------------------------------------------------------------
+
 ;;;     GtkTreePath
-;;;     GtkTreeRowReference
-;;;     GtkTreeModelIface
-;;;     GtkTreeModelFlags
 
-;;; --- Functions --------------------------------------------------------------
-
-;;;     GtkTreeModelForeachFunc
+(test gtk-tree-path-boxed
+  ;; Type check
+  (is (g:type-is-a (g:gtype "GtkTreePath") g:+g-type-boxed+))
+  ;; Check the type initializer
+  (is (eq (g:gtype "GtkTreePath")
+          (g:gtype (cffi:foreign-funcall "gtk_tree_path_get_type" :size))))
+  ;; Check the registered name
+  (is (eq 'gtk:tree-path
+          (glib:symbol-for-gtype "GtkTreePath"))))
 
 ;;;     gtk_tree_path_new
 
-(test tree-path-new
-  (is (eq 'gtk:tree-path (type-of (gtk:tree-path-new)))))
+(test gtk-tree-path-new
+  (is (typep (gtk:tree-path-new) 'gtk:tree-path)))
+
+;;;     gtk_tree_path_new_first
+
+(test gtk-tree-path-new-first
+  (is (typep (gtk:tree-path-new-first) 'gtk:tree-path))
+  (is (string= "0" (gtk:tree-path-to-string (gtk:tree-path-new-first)))))
+
+;;;     gtk_tree_path_new_from_string
+
+(test gtk-tree-path-new-from-string
+  (is (typep (gtk:tree-path-new-from-string "10:4:0") 'gtk:tree-path))
+  (is-false (gtk:tree-path-new-from-string "abc")))
+
+;;;     gtk_tree_path_new_from_indices
+
+(test gtk-tree-path-new-from-indices
+  (is (typep (gtk:tree-path-new-from-indices 10 4 0) 'gtk:tree-path)))
 
 ;;;     gtk_tree_path_copy
 
-(test tree-path-copy
+(test gtk-tree-path-copy
   (let ((path (gtk:tree-path-new-from-string "10:4:0")))
     (is (string= "10:4:0"
                  (gtk:tree-path-to-string (gtk:tree-path-copy path))))))
 
-;;;     gtk_tree_path_new_from_string
-
-(test tree-path-new-from-string
-  (is (eq 'gtk:tree-path (type-of (gtk:tree-path-new-from-string "10:4:0")))))
-
-;;;     gtk_tree_path_new_from_indices
-
-(test tree-path-new-from-indices
-  (is (eq 'gtk:tree-path (type-of (gtk:tree-path-new-from-indices 10 4 0)))))
-
-;;;     gtk_tree_path_new_first
-
-(test tree-path-new-first
-  (is (eq 'gtk:tree-path (type-of (gtk:tree-path-new-first))))
-  (is (string= "0" (gtk:tree-path-to-string (gtk:tree-path-new-first)))))
-
 ;;;     gtk_tree_path_to_string
 
-(test tree-path-to-string
+(test gtk-tree-path-to-string
   (let ((path1 (gtk:tree-path-new-from-string "10:4:0"))
         (path2 (gtk:tree-path-new-from-indices 10 4 0)))
     (is (string= "10:4:0" (gtk:tree-path-to-string path1)))
@@ -78,51 +100,51 @@
 
 ;;;     gtk_tree_path_append_index
 
-(test tree-path-append-index
+(test gtk-tree-path-append-index
   (let ((path (gtk:tree-path-new-from-string "10")))
-    (is (eq 'gtk:tree-path (type-of (gtk:tree-path-append-index path 4))))
-    (is (eq 'gtk:tree-path (type-of (setf path (gtk:tree-path-append-index path 4)))))
+    (is (typep (gtk:tree-path-append-index path 4) 'gtk:tree-path))
+    (is (typep (setf path (gtk:tree-path-append-index path 4)) 'gtk:tree-path))
     (is (string= "10:4" (gtk:tree-path-to-string path)))
-    (is (eq 'gtk:tree-path (type-of (gtk:tree-path-append-index path 3))))
-    (is (eq 'gtk:tree-path (type-of (setf path (gtk:tree-path-append-index path 3)))))
+    (is (typep (gtk:tree-path-append-index path 3) 'gtk:tree-path))
+    (is (typep (setf path (gtk:tree-path-append-index path 3)) 'gtk:tree-path))
     (is (string= "10:4:3" (gtk:tree-path-to-string path)))))
 
 ;;;     gtk_tree_path_prepend_index
 
-(test tree-path-prepend-index
+(test gtk-tree-path-prepend-index
   (let ((path (gtk:tree-path-new-from-string "10")))
-    (is (eq 'gtk:tree-path (type-of (gtk:tree-path-prepend-index path 4))))
-    (is (eq 'gtk:tree-path (type-of (setf path (gtk:tree-path-prepend-index path 4)))))
+    (is (typep (gtk:tree-path-prepend-index path 4) 'gtk:tree-path))
+    (is (typep (setf path (gtk:tree-path-prepend-index path 4)) 'gtk:tree-path))
     (is (string= "4:10" (gtk:tree-path-to-string path)))
-    (is (eq 'gtk:tree-path (type-of (gtk:tree-path-prepend-index path 3))))
-    (is (eq 'gtk:tree-path (type-of (setf path (gtk:tree-path-prepend-index path 3)))))
+    (is (typep (gtk:tree-path-prepend-index path 3) 'gtk:tree-path))
+    (is (typep (setf path (gtk:tree-path-prepend-index path 3)) 'gtk:tree-path))
     (is (string= "3:4:10" (gtk:tree-path-to-string path)))))
 
 ;;;     gtk_tree_path_get_depth
 
-(test tree-path-depth
+(test gtk-tree-path-depth
   (let ((path (gtk:tree-path-new-from-string "10:4:0")))
     (is (= 3 (gtk:tree-path-depth path)))))
 
 ;;;     gtk_tree_path_get_indices
 
-(test tree-path-indices
+(test gtk-tree-path-indices
   (let ((path (gtk:tree-path-new-from-string "10:4:0")))
     (is (equal '(10 4 0) (gtk:tree-path-indices path)))))
 
 ;;;     gtk_tree_path_compare
 
-(test tree-path-compare
-  (let ((path-1 (gtk:tree-path-new-from-string "10:4:0"))
-       (path-2 (gtk:tree-path-new-from-string "10:4:1")))
-  (is (= 0 (gtk:tree-path-compare path-1 path-1)))
-  (is (= 0 (gtk:tree-path-compare path-2 path-2)))
-  (is (= -1 (gtk:tree-path-compare path-1 path-2)))
-  (is (=  1 (gtk:tree-path-compare path-2 path-1)))))
+(test gtk-tree-path-compare
+  (let ((path1 (gtk:tree-path-new-from-string "10:4:0"))
+       (path2 (gtk:tree-path-new-from-string "10:4:1")))
+  (is (=  0 (gtk:tree-path-compare path1 path1)))
+  (is (=  0 (gtk:tree-path-compare path2 path2)))
+  (is (= -1 (gtk:tree-path-compare path1 path2)))
+  (is (=  1 (gtk:tree-path-compare path2 path1)))))
 
 ;;;     gtk_tree_path_next
 
-(test tree-path-next
+(test gtk-tree-path-next
   (let ((path (gtk:tree-path-new-from-string "10:4:0")))
     (is (string= "10:4:1" (gtk:tree-path-to-string (gtk:tree-path-next path))))
     (is (string= "10:4:1" (gtk:tree-path-to-string path)))
@@ -134,7 +156,7 @@
 
 ;;;     gtk_tree_path_prev
 
-(test tree-path-prev
+(test gtk-tree-path-prev
   (let ((path (gtk:tree-path-new-from-string "10:4:2")))
     (is (string= "10:4:1" (gtk:tree-path-to-string (gtk:tree-path-prev path))))
     (is (string= "10:4:1" (gtk:tree-path-to-string path)))
@@ -143,7 +165,7 @@
 
 ;;;     gtk_tree_path_up
 
-(test tree-path-up
+(test gtk-tree-path-up
   (let ((path (gtk:tree-path-new-from-string "10:4:2")))
     (is (string= "10:4" (gtk:tree-path-to-string (gtk:tree-path-up path))))
     (is (string= "10:4" (gtk:tree-path-to-string path)))
@@ -152,7 +174,7 @@
 
 ;;;     gtk_tree_path_down
 
-(test tree-path-down
+(test gtk-tree-path-down
   (let ((path (gtk:tree-path-new-from-string "10:4:2")))
     (is (string= "10:4:2:0"
                  (gtk:tree-path-to-string (gtk:tree-path-down path))))
@@ -161,26 +183,39 @@
 
 ;;;     gtk_tree_path_is_ancestor
 
-(test tree-path-is-ancestor
-  (let ((path-1 (gtk:tree-path-new-from-string "10:4:3"))
-        (path-2 (gtk:tree-path-new-from-string "10:4:3:2")))
-    (is-true (gtk:tree-path-is-ancestor path-1 path-2))
-    (is-false (gtk:tree-path-is-ancestor path-2 path-1))))
+(test gtk-tree-path-is-ancestor
+  (let ((path1 (gtk:tree-path-new-from-string "10:4:3"))
+        (path2 (gtk:tree-path-new-from-string "10:4:3:2")))
+    (is-true (gtk:tree-path-is-ancestor path1 path2))
+    (is-false (gtk:tree-path-is-ancestor path2 path1))))
 
 ;;;     gtk_tree_path_is_descendant
 
-(test tree-path-is-descendant
-  (let ((path-1 (gtk:tree-path-new-from-string "10:4:3"))
-        (path-2 (gtk:tree-path-new-from-string "10:4:3:2")))
-    (is-false (gtk:tree-path-is-descendant path-1 path-2))
-    (is-true (gtk:tree-path-is-descendant path-2 path-1))))
+(test gtk-tree-path-is-descendant
+  (let ((path1 (gtk:tree-path-new-from-string "10:4:3"))
+        (path2 (gtk:tree-path-new-from-string "10:4:3:2")))
+    (is-false (gtk:tree-path-is-descendant path1 path2))
+    (is-true (gtk:tree-path-is-descendant path2 path1))))
+
+;;;     GtkTreeRowReference
+
+(test gtk-tree-row-reference-boxed
+  ;; Type check
+  (is (g:type-is-a (g:gtype "GtkTreeRowReference") g:+g-type-boxed+))
+  ;; Check the type initializer
+  (is (eq (g:gtype "GtkTreeRowReference")
+          (g:gtype (cffi:foreign-funcall "gtk_tree_row_reference_get_type"
+                                         :size))))
+  ;; Check the registered name
+  (is (eq 'gtk:tree-row-reference
+          (glib:symbol-for-gtype "GtkTreeRowReference"))))
 
 ;;;     gtk_tree_row_reference_new
 ;;;     gtk_tree_row_reference_get_model
 ;;;     gtk_tree_row_reference_get_path
 ;;;     gtk_tree_row_reference_valid
 
-(test tree-row-reference-new
+(test gtk-tree-row-reference-new
   (let ((model (create-and-fill-list-store))
         (path (gtk:tree-path-new-from-string "2"))
         (row nil))
@@ -195,7 +230,7 @@
 
 ;;;     gtk_tree_row_reference_copy
 
-(test tree-row-reference-copy
+(test gtk-tree-row-reference-copy
   (let ((model (create-and-fill-list-store))
         (path (gtk:tree-path-new-from-string "2"))
         (row1 nil) (row2 nil))
@@ -213,8 +248,16 @@
 ;;;     gtk_tree_row_reference_deleted
 ;;;     gtk_tree_row_reference_reordered
 
-;;;     gtk_tree_iter_copy
-;;;     gtk_tree_iter_free
+
+
+;;;     GtkTreeModelIface
+;;;     GtkTreeModelFlags
+
+;;;     GtkTreeModel
+
+;;; --- Functions --------------------------------------------------------------
+
+;;;     GtkTreeModelForeachFunc
 
 ;;;     gtk_tree_model_get_flags
 
@@ -300,4 +343,4 @@
 ;;;     gtk_tree_model_rows_reordered
 ;;;     gtk_tree_model_rows_reordered_with_length
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-3-28

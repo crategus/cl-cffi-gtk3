@@ -97,7 +97,7 @@
 (setf (liber:alias-for-symbol 'dest-defaults)
       "GFlags"
       (liber:symbol-documentation 'dest-defaults)
- "@version{#2024-3-21}
+ "@version{2024-3-24}
   @begin{declaration}
     @begin{pre}
 (gobject:define-g-flags \"GtkDestDefaults\" dest-defaults
@@ -123,8 +123,8 @@
         widget. If so, GTK will call the @fun{gtk:drag-data} function on behalf
         of the widget. Whether or not the drop is successful, GTK will call the
         @fun{gtk:drag-finish} function. If the action was a move, then if the
-        drag was successful @em{true} will be passed for the delete parameter to
-        the @fun{gtk:drag-finish} function.}
+        drag was successful @em{true} will be passed for the delete parameter
+        to the @fun{gtk:drag-finish} function.}
       @entry[:all]{If set, specifies that all default actions should be taken.}
     @end{table}
   @end{values}
@@ -154,7 +154,7 @@
 (setf (liber:alias-for-symbol 'drag-result)
       "GEnum"
       (liber:symbol-documentation 'drag-result)
- "@version{#2024-3-21}
+ "@version{2024-3-24}
   @begin{declaration}
     @begin{pre}
 (gobject:define-g-enum \"GtkDragResult\" drag-result
@@ -199,7 +199,7 @@
 
 (defun drag-dest-set (widget flags targets actions)
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2024-3-24}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[flags]{a @symbol{gtk:dest-defaults} bitmask with the default drag
     behavior to use}
@@ -212,13 +212,12 @@
   @begin{short}
     Sets a widget as a potential drop destination, and adds default behaviors.
   @end{short}
-
   The default behaviors listed in the @arg{flags} argument have an effect
-  similar to installing default handlers \"drag-motion\", \"drag-drop\", ...
-  for the drag and drop signals of the widget. They all exist for
-  convenience. When passing the @code{:all} value for instance it is sufficient
-  to connect to the @code{\"drag-data-received\"} signal of the widget to get
-  primitive, but consistent drag and drop support.
+  similar to installing @code{\"drag-motion\"}, @code{\"drag-drop\"}, ...
+  default handlers for the drag and drop signals of the widget. They all exist
+  for convenience. When passing the @code{:all} value for instance it is
+  sufficient to connect to the @code{\"drag-data-received\"} signal of the
+  widget to get primitive, but consistent drag and drop support.
 
   Things become more complicated when you try to preview the dragged data, as
   described in the documentation for the @code{\"drag-motion\"} signal. The
@@ -255,16 +254,16 @@
   @see-function{gtk:drag-data}"
   (let ((n-targets (length targets)))
     (cffi:with-foreign-object (targets-ptr '(:struct %target-entry) n-targets)
-      (loop for i from 0 below n-targets
-            for target-ptr = (cffi:mem-aptr targets-ptr
-                                            '(:struct %target-entry) i)
-            for entry in targets
-            do (cffi:with-foreign-slots ((target flags info)
-                                         target-ptr
-                                         (:struct %target-entry))
-                 (setf target (first entry))
-                 (setf flags (second entry))
-                 (setf info (third entry))))
+      (iter (for i from 0 below n-targets)
+            (for target-ptr = (cffi:mem-aptr targets-ptr
+                                             '(:struct %target-entry) i))
+            (for entry in targets)
+            (cffi:with-foreign-slots ((target flags info)
+                                       target-ptr
+                                       (:struct %target-entry))
+              (setf target (first entry)
+                    flags (second entry)
+                    info (third entry))))
       (%drag-dest-set widget flags targets-ptr n-targets actions))))
 
 (export 'drag-dest-set)
@@ -275,7 +274,7 @@
 
 (cffi:defcfun ("gtk_drag_dest_set_proxy" drag-dest-set-proxy) :void
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2024-3-24}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[window]{a @class{gdk:window} object to which to forward drag
     events}
@@ -289,7 +288,7 @@
   @end{short}
   @begin[Warning]{dictionary}
     The @fun{gtk:drag-dest-set-proxy} function has been deprecated since version
-    3.22 and should not be used in newly written code.
+    3.22.
   @end{dictionary}
   @see-class{gtk:widget}
   @see-class{gdk:window}
@@ -308,7 +307,7 @@
 
 (cffi:defcfun ("gtk_drag_dest_unset" drag-dest-unset) :void
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2024-3-24}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Clears information about a drop destination set with the
@@ -333,7 +332,7 @@
 
 (defun drag-dest-find-target (widget context &optional (tlist nil))
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2024-3-24}
   @argument[widget]{a @class{gtk:widget} drag destination widget}
   @argument[context]{a @class{gdk:drag-context} object}
   @argument[tlist]{a @class{gtk:target-list} instance with the droppable
@@ -363,7 +362,7 @@
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_drag_dest_get_target_list ()
-;;; gtk_drag_dest_set_target_list () -> drag-target-list
+;;; gtk_drag_dest_set_target_list ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf drag-dest-target-list) (tlist widget)
@@ -376,7 +375,7 @@
 (cffi:defcfun ("gtk_drag_dest_get_target_list" drag-dest-target-list)
     (g:boxed target-list)
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{2024-3-24}
   @syntax{(gtk:dag-dest-target-list widget) => tlist}
   @syntax{(setf (gtk:drag-dest-target-list widget) tlist)}
   @argument[widget]{a @class{gtk:widget} object that is a drag destination}
@@ -465,7 +464,7 @@
 (export 'drag-dest-add-uri-targets)
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_drag_dest_get_track_motion ()
-;;; gtk_drag_dest_set_track_motion () -> drag-dest-track-motion
+;;; gtk_drag_dest_set_track_motion ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf drag-dest-track-motion) (motion widget)
@@ -523,7 +522,7 @@
 (export 'drag-finish)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_drag_get_data () -> drag-data
+;;; gtk_drag_get_data ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_drag_get_data" drag-data) :void
@@ -547,8 +546,7 @@
   the @code{:drop} flag was set, then the widget will not receive notification
   of failed drops.
   @see-class{gtk:widget}
-  @see-class{gdk:drag-context}
-  @see-symbol{gdk:atom}"
+  @see-class{gdk:drag-context}"
   (widget (g:object widget))
   (context (g:object gdk:drag-context))
   (target gdk:atom-as-string)
@@ -557,7 +555,7 @@
 (export 'drag-data)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_drag_get_source_widget () -> drag-source-widget
+;;; gtk_drag_get_source_widget ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_drag_get_source_widget" drag-source-widget)
@@ -1008,7 +1006,7 @@
 
 (defun drag-source-set (widget mask targets actions)
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{2024-3-24}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[mask]{a @symbol{gdk:modifier-type} bitmask of buttons that can
     start the drag}
@@ -1026,16 +1024,16 @@
   @see-symbol{gdk:drag-action}"
   (let ((n-targets (length targets)))
     (cffi:with-foreign-object (targets-ptr '(:struct %target-entry) n-targets)
-      (loop for i from 0 below n-targets
-            for target-ptr = (cffi:mem-aptr targets-ptr
-                                            '(:struct %target-entry) i)
-            for entry in targets
-            do (cffi:with-foreign-slots ((target flags info)
-                                         target-ptr
-                                         (:struct %target-entry))
-                 (setf target (first entry))
-                 (setf flags (second entry))
-                 (setf info (third entry))))
+      (iter (for i from 0 below n-targets)
+            (for target-ptr = (cffi:mem-aptr targets-ptr
+                                             '(:struct %target-entry) i))
+            (for entry in targets)
+            (cffi:with-foreign-slots ((target flags info)
+                                       target-ptr
+                                       (:struct %target-entry))
+              (setf target (first entry)
+                    flags (second entry)
+                    info (third entry))))
       (%drag-source-set widget mask targets-ptr n-targets actions))))
 
 (export 'drag-source-set)
@@ -1193,7 +1191,7 @@
 (cffi:defcfun ("gtk_drag_source_add_text_targets" drag-source-add-text-targets)
     :void
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{2024-3-24}
   @argument[widget]{a @class{gtk:widget} object that is a drag source}
   @begin{short}
     Add the text targets supported by the selection to the target list of the
@@ -1217,7 +1215,7 @@
 (cffi:defcfun ("gtk_drag_source_add_image_targets"
                drag-source-add-image-targets) :void
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{2024-3-20}
   @argument[widget]{a @class{gtk:widget} object that is a drag source}
   @begin{short}
     Add the writable image targets supported by the selection to the target
@@ -1240,7 +1238,7 @@
 (cffi:defcfun ("gtk_drag_source_add_uri_targets" drag-source-add-uri-targets)
     :void
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{2024-3-24}
   @argument[widget]{a @class{gtk:widget} object that is a drag source}
   @begin{short}
     Add the URI targets supported by the selection to the target list of the

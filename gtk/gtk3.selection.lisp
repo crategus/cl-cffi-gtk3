@@ -123,7 +123,7 @@
 (setf (liber:alias-for-symbol 'target-flags)
       "GFlags"
       (liber:symbol-documentation 'target-flags)
- "@version{#2024-3-21}
+ "@version{2024-3-24}
   @begin{declaration}
     @begin{pre}
 (gobject:define-g-flags \"GtkTargetFlags\" target-flags

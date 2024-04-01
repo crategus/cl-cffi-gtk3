@@ -1921,12 +1921,17 @@ setup_tree (void)
       @end{pre}
     @begin[GtkTreeModel]{subsection}
       The tree interface used by the @class{gtk:tree-view} widget.
+      @about-struct{tree-iter}
+      @about-function{tree-iter-stamp}
+      @about-function{tree-iter-user-data}
+      @about-function{tree-iter-copy}
+      @about-function{tree-iter-free}
       @about-class{tree-path}
       @about-function{tree-path-new}
-      @about-function{tree-path-copy}
+      @about-function{tree-path-new-first}
       @about-function{tree-path-new-from-string}
       @about-function{tree-path-new-from-indices}
-      @about-function{tree-path-new-first}
+      @about-function{tree-path-copy}
       @about-function{tree-path-to-string}
       @about-function{tree-path-append-index}
       @about-function{tree-path-prepend-index}
@@ -1950,11 +1955,6 @@ setup_tree (void)
       @about-function{tree-row-reference-inserted}
       @about-function{tree-row-reference-deleted}
       @about-function{tree-row-reference-reordered}
-      @about-struct{tree-iter}
-      @about-function{tree-iter-stamp}
-      @about-function{tree-iter-user-data}
-      @about-function{tree-iter-copy}
-      @about-function{tree-iter-free}
       @about-symbol{tree-model-flags}
       @about-class{tree-model}
       @about-function{tree-model-flags}
@@ -2291,11 +2291,11 @@ setup_tree (void)
       @about-function{cell-layout-cells}
       @about-function{cell-layout-reorder}
       @about-function{cell-layout-clear}
-      @about-function{cell-layout-set-attributes}
       @about-function{cell-layout-add-attribute}
+      @about-function{cell-layout-set-attributes}
+      @about-function{cell-layout-clear-attributes}
       @about-symbol{cell-layout-data-func}
       @about-function{cell-layout-set-cell-data-func}
-      @about-function{cell-layout-clear-attributes}
     @end{subsection}
     @begin[GtkCellArea]{subsection}
       An abstract class for laying out @class{gtk:cell-renderer} objects.
