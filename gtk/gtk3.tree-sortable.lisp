@@ -390,13 +390,13 @@ lambda (sortable)    : Run Last
     @arg{func}.
   @end{short}
   If the current sort column ID of @arg{sortable} is
-  @var{+gtk-tree-sortable-default-sort-column-id+}, then the model will sort
+  @var{gtk:+tree-sortable-default-sort-column-id+}, then the model will sort
   using this function.
 
   If @arg{func} is @code{nil}, then there will be no default comparison
   function. This means that once the model has been sorted, it cannot go back
   to the default state. In this case, when the current sort column ID of
-  @arg{sortable} is @var{+gtk-tree-sortable-default-sort-column-id},
+  @arg{sortable} is @var{gtk:+tree-sortable-default-sort-column-id},
   the model will be unsorted.
   @see-class{gtk:tree-sortable}
   @see-symbol{gtk:tree-iter-compare-func}"

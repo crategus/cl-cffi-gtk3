@@ -32,12 +32,12 @@
 ;;;     GtkTreeIter
 
 (test gtk-tree-iter-boxed
-  ;; Type check
-  (is (g:type-is-a (g:gtype "GtkTreeIter") g:+g-type-boxed+))
-  ;; Check the type initializer
+  ;; Check type
+  (is (g:type-is-boxed "GtkTreeIter"))
+  ;; Check type initializer
   (is (eq (g:gtype "GtkTreeIter")
           (g:gtype (cffi:foreign-funcall "gtk_tree_iter_get_type" :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:tree-iter
           (glib:symbol-for-gtype "GtkTreeIter"))))
 
@@ -52,12 +52,12 @@
 ;;;     GtkTreePath
 
 (test gtk-tree-path-boxed
-  ;; Type check
-  (is (g:type-is-a (g:gtype "GtkTreePath") g:+g-type-boxed+))
-  ;; Check the type initializer
+  ;; Check type
+  (is (g:type-is-boxed "GtkTreePath"))
+  ;; Check type initializer
   (is (eq (g:gtype "GtkTreePath")
           (g:gtype (cffi:foreign-funcall "gtk_tree_path_get_type" :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:tree-path
           (glib:symbol-for-gtype "GtkTreePath"))))
 
@@ -200,13 +200,13 @@
 ;;;     GtkTreeRowReference
 
 (test gtk-tree-row-reference-boxed
-  ;; Type check
-  (is (g:type-is-a (g:gtype "GtkTreeRowReference") g:+g-type-boxed+))
-  ;; Check the type initializer
+  ;; Check type
+  (is (g:type-is-boxed "GtkTreeRowReference"))
+  ;; Check type initializer
   (is (eq (g:gtype "GtkTreeRowReference")
           (g:gtype (cffi:foreign-funcall "gtk_tree_row_reference_get_type"
                                          :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:tree-row-reference
           (glib:symbol-for-gtype "GtkTreeRowReference"))))
 

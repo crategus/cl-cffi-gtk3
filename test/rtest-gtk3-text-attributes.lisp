@@ -9,10 +9,10 @@
 #+nil
 (test gtk-text-attributes-struct
   ;; Type check
-  (is (g:type-is-a (g:gtype "GtkTextAttributes") g:+g-type-boxed+))
-  ;; Check the type initializer
+  (is (g:type-is-boxed "GtkTextAttributes"))
+  ;; Check type initializer
   (is (eq (g:gtype "GtkTextAttributes")
-          (g:gtype (cffi:foreign-funcall "gtk_text_attributes_get_type" 
+          (g:gtype (cffi:foreign-funcall "gtk_text_attributes_get_type"
                                          :size)))))
 
 #+nil

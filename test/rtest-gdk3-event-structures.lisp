@@ -10,7 +10,7 @@
   (is-true (g:type-is-enum "GdkScrollDirection"))
   ;; Check the type initializer
   (is (eq (g:gtype "GdkScrollDirection")
-          (g:gtype (cffi:foreign-funcall "gdk_scroll_direction_get_type" 
+          (g:gtype (cffi:foreign-funcall "gdk_scroll_direction_get_type"
                                          :size))))
   ;; Check the registered name
   (is (eq 'gdk:scroll-direction
@@ -573,13 +573,15 @@
 (eval-when (:compile-toplevel :load-toplevel :execute)
   (cffi:foreign-funcall "gdk_event_sequence_get_type" :size))
 
-(test gdk-event-sequence
-  ;; Type check
-  (is-true (g:type-is-a (g:gtype "GdkEventSequence") g:+g-type-boxed+))
-  ;; Check the type initializer
+(test gdk-event-sequence-boxed
+  ;; Check type
+  (is (g:type-is-boxed "GdkEventSequence"))
+  ;; Check type initializer
   (is (eq (g:gtype "GdkEventSequence")
-          (g:gtype (cffi:foreign-funcall "gdk_event_sequence_get_type" 
-                                         :size)))))
+          (g:gtype (cffi:foreign-funcall "gdk_event_sequence_get_type" :size))))
+  ;; Check registered name
+  (is (eq 'gdk:event-sequence
+          (glib:symbol-for-gtype "GdkEventSequence"))))
 
 ;;;     GdkEvent
 ;;;     GdkEventAny

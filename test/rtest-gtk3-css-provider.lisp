@@ -79,12 +79,15 @@
 
 ;;;     GtkCssSection
 
-(test gtk-css-section-structure
-  ;; Type check
-  (is (g:type-is-a (g:gtype "GtkCssSection") g:+g-type-boxed+))
-  ;; Check the type initializer
+(test gtk-css-section-boxed
+  ;; Check type
+  (is (g:type-is-boxed "GtkCssSection"))
+  ;; Check type initializer
   (is (eq (g:gtype "GtkCssSection")
-          (g:gtype (cffi:foreign-funcall "gtk_css_section_get_type" :size)))))
+          (g:gtype (cffi:foreign-funcall "gtk_css_section_get_type" :size))))
+  ;; Check registered name
+  (is (eq 'gtk:css-section
+          (glib:symbol-for-gtype "GtkCssSection"))))
 
 ;;; --- Functions --------------------------------------------------------------
 

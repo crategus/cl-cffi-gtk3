@@ -320,7 +320,7 @@ populate_flowbox (GtkWidget *flowbox)
                                      (sys-path "gtk3-widget-factory.css"))
     (gtk:style-context-add-provider-for-screen (gdk:screen-default)
                                                provider
-                                               gtk:+gtk-priority-application+)
+                                               gtk:+priority-application+)
 
     (setf *application-window*
           (gtk:builder-object builder "window"))

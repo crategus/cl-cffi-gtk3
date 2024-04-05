@@ -205,10 +205,10 @@
                                               (homogeneous 'default))
   (toolbar-insert b child -1)
   (unless (eq expand 'default)
-    (setf (container-child-property b child "expand" g:+g-type-boolean+)
+    (setf (container-child-property b child "expand" g:+type-boolean+)
           expand))
   (unless (eq homogeneous 'default)
-    (setf (container-child-property b child "homogeneous" g:+g-type-boolean+)
+    (setf (container-child-property b child "homogeneous" g:+type-boolean+)
           homogeneous)))
 
 (defun set-ui-expansion-1 (d)

@@ -43,7 +43,7 @@
       ;; Setup the CSS provider for window
       (gtk:style-context-add-provider-for-screen (gdk:screen-default)
                                                  provider
-                                                 gtk:+gtk-priority-application+)
+                                                 gtk:+priority-application+)
       ;; Signal handler for listbox
       (g:signal-connect listbox "row-activated"
           (lambda (listbox row)

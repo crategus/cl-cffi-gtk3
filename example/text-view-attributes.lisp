@@ -31,7 +31,7 @@
                                           font : 20px Purisa; }")
       (gtk:style-context-add-provider (gtk:widget-style-context textview)
                                       provider
-                                      gtk:+gtk-priority-application+)
+                                      gtk:+priority-application+)
       ;; Use a tag to change the color for just one part of the widget
       (let ((tag (gtk:text-buffer-create-tag buffer
                                              "blue_foreground"

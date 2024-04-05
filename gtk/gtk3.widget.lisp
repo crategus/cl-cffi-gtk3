@@ -5464,7 +5464,7 @@ lambda (widget event)    :run-last
         the @fun{gtk:style-context-add-class} and
         @fun{gtk:style-context-add-region} functions. This way, your widget
         library can install a @class{gtk:css-provider} object with the
-        @var{+gtk-priority-fallback+} priority in order to provide a default
+        @var{gtk:+priority-fallback+} priority in order to provide a default
         styling for those widgets that need so, and this theming may fully
         overridden by the theme of the user.
       @end{item}
@@ -5472,7 +5472,7 @@ lambda (widget event)    :run-last
         Note that for complex widgets this may bring in undesired results, such
         as uniform background color everywhere, in these cases it is better to
         fully style such widgets through a @class{gtk:css-provider} object
-        with the @var{+gtk-priority-application+} priority.
+        with the @var{gtk:+priority-application+} priority.
       @end{item}
     @end{itemize}
   @end{notes}

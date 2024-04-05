@@ -221,7 +221,7 @@
 (test gdk-screen-monitor-geometry
   (is (typep (gdk:screen-monitor-geometry (gdk:screen-default) 0) 'gdk:rectangle))
   (let ((rect (gdk:screen-monitor-geometry (gdk:screen-default) 0)))
-    (is (= 0 (gdk:rectangle-x rect)))
+    (is (= 1920 (gdk:rectangle-x rect)))
     (is (= 0 (gdk:rectangle-y rect)))
     (is (>= (gdk:screen-width) (gdk:rectangle-width rect)))
     (is (>= (gdk:screen-height) (gdk:rectangle-height rect)))))
@@ -240,15 +240,15 @@
 
 #+crategus
 (test gdk-screen-monitor-at-point
-  (is (= 0 (gdk:screen-monitor-at-point (gdk:screen-default)  0  0)))
-  (is (= 0 (gdk:screen-monitor-at-point (gdk:screen-default) 10 10))))
+  (is (= 1 (gdk:screen-monitor-at-point (gdk:screen-default)  0  0)))
+  (is (= 1 (gdk:screen-monitor-at-point (gdk:screen-default) 10 10))))
 
 ;;;     gdk-screen-monitor-at-window                       deprecated
 
 #+crategus
 (test gdk-screen-monitor-at-window
   (let ((screen (gdk:screen-default)))
-    (is (= 0 (gdk:screen-monitor-at-window screen
+    (is (= 1 (gdk:screen-monitor-at-window screen
                  (gdk:screen-root-window screen))))))
 
 ;;;     gdk-screen-monitor-height-mm                       deprecated

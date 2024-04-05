@@ -826,12 +826,12 @@ lambda (container widget)    :run-first
     Returns the type of the children supported by the container.
   @end{short}
 
-  Note that this may return @var{+g-type-none+} to indicate that no more
+  Note that this may return @var{g:+type-none+} to indicate that no more
   children can be added, e.g. for a @class{gtk:paned} widget which already
   has two children.
   @see-class{gtk:container}
   @see-class{g:type-t}
-  @see-variable{+g-type-none+}"
+  @see-variable{g:+type-none+}"
   (container (g:object container)))
 
 (export 'container-child-type)

@@ -12,11 +12,11 @@
 ;;;     GTK_STYLE_PROVIDER_PRIORITY_USER
 
 (test gtk-priority-values
-  (is (=   1 gtk:+gtk-priority-fallback+))
-  (is (= 200 gtk:+gtk-priority-theme+))
-  (is (= 400 gtk:+gtk-priority-settings+))
-  (is (= 600 gtk:+gtk-priority-application+))
-  (is (= 800 gtk:+gtk-priority-user+)))
+  (is (=   1 gtk:+priority-fallback+))
+  (is (= 200 gtk:+priority-theme+))
+  (is (= 400 gtk:+priority-settings+))
+  (is (= 600 gtk:+priority-application+))
+  (is (= 800 gtk:+priority-user+)))
 
 ;;;     GtkStyleProvider
 

@@ -41,21 +41,27 @@
 
 ;;;   GtkTargetList
 
-(test gtk-target-list-structure
-  ;; Type check
-  (is (g:type-is-a (g:gtype "GtkTargetList") g:+g-type-boxed+))
-  ;; Check the type initializer
+(test gtk-target-list-boxed
+  ;; Check type
+  (is (g:type-is-boxed "GtkTargetList"))
+  ;; Check type initializer
   (is (eq (g:gtype "GtkTargetList")
-          (g:gtype (cffi:foreign-funcall "gtk_target_list_get_type" :size)))))
+          (g:gtype (cffi:foreign-funcall "gtk_target_list_get_type" :size))))
+  ;; Check registered name
+  (is (eq 'gtk:target-list
+          (glib:symbol-for-gtype "GtkTargetList"))))
 
 ;;;     GtkSelectionData
 
-(test selection-data-structure
-  ;; Type check
-  (is (g:type-is-a (g:gtype "GtkSelectionData") g:+g-type-boxed+))
-  ;; Check the type initializer
+(test selection-data-boxed
+  ;; Check type
+  (is (g:type-is-boxed "GtkSelectionData"))
+  ;; Check type initializer
   (is (eq (g:gtype "GtkSelectionData")
-          (g:gtype (cffi:foreign-funcall "gtk_selection_data_get_type" :size)))))
+          (g:gtype (cffi:foreign-funcall "gtk_selection_data_get_type" :size))))
+  ;; Check registered name
+  (is (eq 'gtk:selection-data
+          (glib:symbol-for-gtype "GtkSelectionData"))))
 
 ;;;   gtk_target_entry_new
 ;;;   gtk_target_entry_copy

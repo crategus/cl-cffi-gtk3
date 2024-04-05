@@ -95,7 +95,7 @@
       (gtk:css-provider-load-from-data provider css)
       (gtk:style-context-add-provider context
                                       provider
-                                      gtk:+gtk-priority-application+)
+                                      gtk:+priority-application+)
       ;; Signal handlers for the assistant
       (g:signal-connect assistant "destroy"
                         (lambda (widget)

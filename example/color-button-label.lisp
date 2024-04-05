@@ -41,7 +41,7 @@
              (gtk:css-provider-load-from-data provider css-label)
              (gtk:style-context-add-provider context
                                              provider
-                                             gtk:+gtk-priority-user+))))
+                                             gtk:+priority-user+))))
       ;; Pack and show the widgets
       (gtk:box-pack-start box button)
       (gtk:box-pack-start box label)

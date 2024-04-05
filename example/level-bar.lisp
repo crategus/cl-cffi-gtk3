@@ -29,7 +29,7 @@
                                         background-color: green; }")
     (gtk:style-context-add-provider (gtk:widget-style-context levelbar)
                                     provider
-                                    gtk:+gtk-priority-application+)
+                                    gtk:+priority-application+)
     ;; Return the new level bar
     levelbar))
 

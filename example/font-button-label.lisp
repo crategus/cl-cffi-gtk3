@@ -61,7 +61,7 @@
              (gtk:css-provider-load-from-data provider css-label)
              (gtk:style-context-add-provider context
                                              provider
-                                             gtk:+gtk-priority-user+))))
+                                             gtk:+priority-user+))))
       ;; Set a filter function to select fonts for the font chooser
       (gtk:font-chooser-set-filter-func button #'font-button-filter)
       ;; Pack the widgets

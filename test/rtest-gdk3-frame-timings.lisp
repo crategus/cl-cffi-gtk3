@@ -7,12 +7,15 @@
 
 ;;;     GdkFrameTimings
 
-(test gdk-frame-timings-structure
-  ;; Type check
-  (is (g:type-is-a (g:gtype "GdkFrameTimings") g:+g-type-boxed+))
-  ;; Check the type initializer
+(test gdk-frame-timings-boxed
+  ;; Check type
+  (is (g:type-is-boxed "GdkFrameTimings"))
+  ;; Check type initializer
   (is (eq (g:gtype "GdkFrameTimings")
-          (g:gtype (cffi:foreign-funcall "gdk_frame_timings_get_type" :size)))))
+          (g:gtype (cffi:foreign-funcall "gdk_frame_timings_get_type" :size))))
+  ;; Check registered name
+  (is (eq 'gdk:frame-timings
+          (glib:symbol-for-gtype "GdkFrameTimings"))))
 
 ;;; --- Functions --------------------------------------------------------------
 

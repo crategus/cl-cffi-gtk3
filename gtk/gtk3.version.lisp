@@ -236,9 +236,9 @@ NIL
   @see-function{gtk:major-version}
   @see-function{gtk:minor-version}
   @see-function{gtk:micro-version}
-  @see-symbol{+glib-major-version+}
-  @see-symbol{+glib-minor-version+}
-  @see-symbol{+glib-micro-version+}
+  @see-symbol{glib:+major-version+}
+  @see-symbol{glib:+minor-version+}
+  @see-symbol{glib:+micro-version+}
   @see-symbol{gdk-pixbuf:+version+}
   @see-function{pango:version-string}
   @see-function{cairo:version-string}"
@@ -254,9 +254,9 @@ NIL
           (minor-version)
           (micro-version))
   (format t "GLIB version: ~a.~a.~a~%"
-          glib:+glib-major-version+
-          glib:+glib-minor-version+
-          glib:+glib-micro-version+)
+          glib:+major-version+
+          glib:+minor-version+
+          glib:+micro-version+)
   (format t "GDK-Pixbuf version: ~a~%" gdk-pixbuf:+version+)
   (format t "Pango version: ~a~%" (pango:version-string))
   (format t "Cairo version: ~a~%" (cairo:version-string))

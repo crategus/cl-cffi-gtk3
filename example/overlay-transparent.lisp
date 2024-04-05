@@ -133,7 +133,7 @@
       (gtk:css-provider-load-from-data provider css)
       (gtk:style-context-add-provider (gtk:widget-style-context entry)
                                       provider
-                                      gtk:+gtk-priority-application+)
+                                      gtk:+priority-application+)
       (gtk:overlay-add-overlay overlay entry)
       (gtk:container-add scrolled view)
       (gtk:container-add overlay scrolled)

@@ -7,12 +7,15 @@
 
 ;;;     GdkRectangle
 
-(test gdk-rectangle-struct
-  ;; Type check
-  (is-true (g:type-is-a (g:gtype "GdkRectangle") g:+g-type-boxed+))
-  ;; Check the type initializer
+(test gdk-rectangle-boxed
+  ;; Check type
+  (is (g:type-is-boxed "GdkRectangle"))
+  ;; Check type initializer
   (is (eq (g:gtype "GdkRectangle")
-          (g:gtype (cffi:foreign-funcall "gdk_rectangle_get_type" :size)))))
+          (g:gtype (cffi:foreign-funcall "gdk_rectangle_get_type" :size))))
+  ;; Check registered name
+  (is (eq 'gdk:rectangle
+          (glib:symbol-for-gtype "GdkRectangle"))))
 
 (test gdk-rectangle-properties
   (let ((rect (gdk:rectangle-new)))

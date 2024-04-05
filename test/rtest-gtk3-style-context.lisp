@@ -214,7 +214,7 @@
     (is-false (gtk:style-context-add-provider
                                             context
                                             provider
-                                            gtk:+gtk-priority-user+))
+                                            gtk:+priority-user+))
     (is-false (gtk:style-context-remove-provider context provider))))
 
 ;;;     gtk_style_context_add_provider_for_screen
@@ -226,7 +226,7 @@
     (is-false (gtk:style-context-add-provider-for-screen
                                             screen
                                             provider
-                                            gtk:+gtk-priority-user+))
+                                            gtk:+priority-user+))
     (is-false (gtk:style-context-remove-provider-for-screen screen provider))))
 
 ;;;     gtk_style_context_get
@@ -341,7 +341,7 @@
     (is-true (gtk:css-provider-load-from-path provider pathname))
     (is-false (gtk:style-context-add-provider context
                                               provider
-                                              gtk:+gtk-priority-user+))
+                                              gtk:+priority-user+))
     (is (stringp (gtk:css-provider-to-string provider)))
     (is-true (setf (gtk:style-context-state context) '(:active :dir-ltr)))
     (is (equal '(:active :dir-ltr) (gtk:style-context-state context)))
@@ -531,12 +531,15 @@
 
 ;;;     GtkBorder
 
-(test gtk-border
-  ;; Type check
-  (is (g:type-is-a (g:gtype "GtkBorder") g:+g-type-boxed+))
-  ;; Check the type initializer
+(test gtk-border-boxed
+  ;; Check type
+  (is (g:type-is-boxed "GtkBorder"))
+  ;; Check type initializer
   (is (eq (g:gtype "GtkBorder")
-          (g:gtype (cffi:foreign-funcall "gtk_border_get_type" :size)))))
+          (g:gtype (cffi:foreign-funcall "gtk_border_get_type" :size))))
+  ;; Check registered name
+  (is (eq 'gtk:border
+          (glib:symbol-for-gtype "GtkBorder"))))
 
 ;;;     gtk_border_new
 ;;;     gtk_border_copy

@@ -1280,7 +1280,7 @@
                                           font : 20px Purisa; @}\")
       (gtk:style-context-add-provider (gtk:widget-style-context view)
                                       provider
-                                      +gtk-priority-application+)
+                                      gtk:+priority-application+)
       ;; Change left margin throughout the widget
       (setf (gtk:text-view-left-margin view) 30)
       ;; Use a tag to change the color for just one part of the widget
@@ -4778,11 +4778,11 @@ setup_tree (void)
     @begin[GtkStyleProvider]{subsection}
       Interface to provide style information to a @class{gtk:style-context}
       object.
-      @about-variable{+gtk-priority-fallback+}
-      @about-variable{+gtk-priority-theme+}
-      @about-variable{+gtk-priority-settings+}
-      @about-variable{+gtk-priority-application+}
-      @about-variable{+gtk-priority-user+}
+      @about-variable{+priority-fallback+}
+      @about-variable{+priority-theme+}
+      @about-variable{+priority-settings+}
+      @about-variable{+priority-application+}
+      @about-variable{+priority-user+}
       @about-class{style-provider}
       @about-function{style-provider-style-property}
     @end{subsection}

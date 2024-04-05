@@ -5,12 +5,15 @@
 
 ;;;     GdkColor
 
-(test gdk-color-structure
-  ;; Type check
-  (is (g:type-is-a (g:gtype "GdkColor") g:+g-type-boxed+))
-  ;; Check the type initializer
+(test gdk-color-boxed
+  ;; Check type
+  (is (g:type-is-boxed "GdkColor"))
+  ;; Check type initializer
   (is (eq (g:gtype "GdkColor")
-          (g:gtype (cffi:foreign-funcall "gdk_color_get_type" :size)))))
+          (g:gtype (cffi:foreign-funcall "gdk_color_get_type" :size))))
+  ;; Check registered name
+  (is (eq 'gdk:color
+          (glib:symbol-for-gtype "GdkColor"))))
 
 ;;;     gdk-color-new
 

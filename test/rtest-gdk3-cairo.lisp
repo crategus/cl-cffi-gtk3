@@ -7,9 +7,9 @@
 
 ;;;     CairoSurface
 
-(test gdk-cairo-surface
-  ;; Type check
-  (is (g:type-is-a (g:gtype "CairoSurface") g:+g-type-boxed+))
+(test gdk-cairo-surface-boxed
+  ;; Check type
+  (is (g:type-is-boxed "CairoSurface"))
 ;  TODO: Check this: We have no type initializer!?
 ;  (is (eq (g:gtype "CairoSurface")
 ;          (g:gtype (cffi:foreign-funcall "cairo_surface_get_type" :size))))
@@ -27,9 +27,9 @@
 
 ;;;     CairoContext
 
-(test gdk-cairo-context
-  ;; Type check
-  (is (g:type-is-a (g:gtype "CairoContext") g:+g-type-boxed+))
+(test gdk-cairo-context-boxed
+  ;; Check type
+  (is (g:type-is-boxed "CairoContext"))
 ;  TODO: Check this: We have no type initializer!?
 ;  (is (eq (g:gtype "CairoContext")
 ;          (g:gtype (cffi:foreign-funcall "cairo_context_get_type" :size))))

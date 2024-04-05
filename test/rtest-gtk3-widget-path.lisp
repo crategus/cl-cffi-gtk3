@@ -11,12 +11,15 @@
 
 ;;;     GtkWidgetPath
 
-(test gtk-widget-path
-  ;; Type check
-  (is (g:type-is-a (g:gtype "GtkWidgetPath") g:+g-type-boxed+))
-  ;; Check the type initializer
+(test gtk-widget-path-boxed
+  ;; Check type
+  (is (g:type-is-boxed "GtkWidgetPath"))
+  ;; Check type initializer
   (is (eq (g:gtype "GtkWidgetPath")
-          (g:gtype (cffi:foreign-funcall "gtk_widget_path_get_type" :size)))))
+          (g:gtype (cffi:foreign-funcall "gtk_widget_path_get_type" :size))))
+  ;; Check registered name
+  (is (eq 'gtk:widget-path
+          (glib:symbol-for-gtype "GtkWidgetPath"))))
 
 ;;; --- Functions --------------------------------------------------------------
 

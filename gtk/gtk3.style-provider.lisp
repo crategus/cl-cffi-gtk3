@@ -59,12 +59,12 @@
 ;;; GTK_STYLE_PROVIDER_PRIORITY_FALLBACK
 ;;; ----------------------------------------------------------------------------
 
-(defconstant +gtk-priority-fallback+ 1)
+(defconstant +priority-fallback+ 1)
 
 #+liber-documentation
-(setf (liber:alias-for-variable '+gtk-priority-fallback+)
+(setf (liber:alias-for-variable '+priority-fallback+)
       "Constant"
-      (documentation '+gtk-priority-fallback+ 'variable)
+      (documentation '+priority-fallback+ 'variable)
  "@version{2023-3-27}
   @variable-value{1}
   @begin{short}
@@ -73,18 +73,18 @@
   @end{short}
   @see-class{gtk:style-provider}")
 
-(export '+gtk-priority-fallback+)
+(export '+priority-fallback+)
 
 ;;; ----------------------------------------------------------------------------
 ;;; GTK_STYLE_PROVIDER_PRIORITY_THEME
 ;;; ----------------------------------------------------------------------------
 
-(defconstant +gtk-priority-theme+ 200)
+(defconstant +priority-theme+ 200)
 
 #+liber-documentation
-(setf (liber:alias-for-variable '+gtk-priority-theme+)
+(setf (liber:alias-for-variable '+priority-theme+)
       "Constant"
-      (documentation '+gtk-priority-theme+ 'variable)
+      (documentation '+priority-theme+ 'variable)
  "@version{2023-3-27}
   @variable-value{200}
   @begin{short}
@@ -92,42 +92,42 @@
   @end{short}
   @see-class{gtk:style-provider}")
 
-(export '+gtk-priority-theme+)
+(export '+priority-theme+)
 
 ;;; ----------------------------------------------------------------------------
 ;;; GTK_STYLE_PROVIDER_PRIORITY_SETTINGS
 ;;; ----------------------------------------------------------------------------
 
-(defconstant +gtk-priority-settings+ 400)
+(defconstant +priority-settings+ 400)
 
 #+liber-documentation
-(setf (liber:alias-for-variable '+gtk-priority-settings+)
+(setf (liber:alias-for-variable '+priority-settings+)
       "Constant"
-      (documentation '+gtk-priority-settings+ 'variable)
+      (documentation '+priority-settings+ 'variable)
  "@version{2023-3-27}
   @variable-value{400}
   @begin{short}
     The priority used for style information provided via a @class{gtk:settings}
     object.
   @end{short}
-  This priority is higher than the @var{+gtk-priority-theme+} value to let
+  This priority is higher than the @var{gtk:+priority-theme+} value to let
   settings override themes.
   @see-class{gtk:style-provider}
   @see-class{gtk:settings}
-  @see-variable{+gtk-priority-theme+}")
+  @see-variable{gtk:+priority-theme+}")
 
-(export '+gtk-priority-settings+)
+(export '+priority-settings+)
 
 ;;; ----------------------------------------------------------------------------
 ;;; GTK_STYLE_PROVIDER_PRIORITY_APPLICATION
 ;;; ----------------------------------------------------------------------------
 
-(defconstant +gtk-priority-application+ 600)
+(defconstant +priority-application+ 600)
 
 #+liber-documentation
-(setf (liber:alias-for-variable '+gtk-priority-application+)
+(setf (liber:alias-for-variable '+priority-application+)
       "Constant"
-      (documentation '+gtk-priority-application+ 'variable)
+      (documentation '+priority-application+ 'variable)
  "@version{2023-3-27}
   @variable-value{600}
   @begin{short}
@@ -136,18 +136,18 @@
   @end{short}
   @see-class{gtk:style-provider}")
 
-(export '+gtk-priority-application+)
+(export '+priority-application+)
 
 ;;; ----------------------------------------------------------------------------
 ;;; GTK_STYLE_PROVIDER_PRIORITY_USER
 ;;; ----------------------------------------------------------------------------
 
-(defconstant +gtk-priority-user+ 800)
+(defconstant +priority-user+ 800)
 
 #+liber-documentation
-(setf (liber:alias-for-variable '+gtk-priority-user+)
+(setf (liber:alias-for-variable '+priority-user+)
       "Constant"
-      (documentation '+gtk-priority-user+ 'variable)
+      (documentation '+priority-user+ 'variable)
  "@version{2023-3-27}
   @variable-value{800}
   @begin{short}
@@ -158,7 +158,7 @@
   word.
   @see-class{gtk:style-provider}")
 
-(export '+gtk-priority-user+)
+(export '+priority-user+)
 
 ;;; ----------------------------------------------------------------------------
 ;;; GtkStyleProvider

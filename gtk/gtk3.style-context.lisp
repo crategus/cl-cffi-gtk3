@@ -530,7 +530,7 @@
   @subheading{Custom styling in UI libraries and applications}
   If you are developing a library with custom widgets that render differently
   than standard components, you may need to add a @class{gtk:style-provider}
-  object yourself with the @var{+gtk-priority-fallback+} priority, either a
+  object yourself with the @var{gtk:+priority-fallback+} priority, either a
   @class{gtk:css-provider} object or a custom object implementing the
   @class{gtk:style-provider} interface. This way themes may still attempt to
   style your UI elements in a different way if needed so.
@@ -538,9 +538,9 @@
   If you are using custom styling on an application, you probably want then to
   make your style information prevail to the style information of the theme, so
   you must use a @class{gtk:style-provider} object with the
-  @var{+gtk-priority-application+} priority. Keep in mind that the user settings
+  @var{gtk:+priority-application+} priority. Keep in mind that the user settings
   in @file{XDG_CONFIG_HOME/gtk-3.0/gtk.css} will still take precedence over your
-  changes, as it uses the @var{+gtk-priority-user+} priority.
+  changes, as it uses the @var{gtk:+priority-user+} priority.
   @begin[Signal Details]{dictionary}
     @subheading{The \"changed\" signal}
       @begin{pre}
@@ -743,8 +743,7 @@ lambda (context)    :run-first
   @end{short}
   The lower the priority of the style provider is, the earlier it will be used
   in the style construction. Typically this will be in the range between the
-  @var{gtk:+gtk-priority-fallback+} and @var{gtk:+gtk-priority-user+}
-  priorities.
+  @var{gtk:+priority-fallback+} and @var{gtk:+priority-user+} priorities.
   @begin{notes}
     If both priorities are the same, a style provider object added through this
     function takes precedence over another added through the
@@ -777,7 +776,7 @@ lambda (context)    :run-first
   @end{short}
   The lower the priority of the style provider is, the earlier it will be used
   in the style construction. Typically this will be in the range between the
-  @var{+gtk-priority-fallback+} and @var{+gtk-priority-user+} priorities.
+  @var{gtk:+priority-fallback+} and @var{gtk:+priority-user+} priorities.
 
   GTK uses this to make styling information from the @class{gtk:settings}
   object available.

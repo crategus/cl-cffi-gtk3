@@ -44,7 +44,7 @@
          (gtk:css-provider-load-from-data provider css-data)
          (gtk:style-context-add-provider context
                                          provider
-                                         gtk:+gtk-priority-application+))
+                                         gtk:+priority-application+))
       (setf (pbar-timer pdata)
             (g:timeout-add 100
                            (lambda ()

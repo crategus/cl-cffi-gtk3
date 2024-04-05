@@ -7,12 +7,15 @@
 
 ;;;     GtkIconSource
 
-(test gtk-icon-source
-  ;; Type check
-  (is (g:type-is-a (g:gtype "GtkIconSource") g:+g-type-boxed+))
-  ;; Check the type initializer
+(test gtk-icon-source-boxed
+  ;; Check type
+  (is (g:type-is-boxed "GtkIconSource"))
+  ;; Check type initializer
   (is (eq (g:gtype "GtkIconSource")
-          (g:gtype (cffi:foreign-funcall "gtk_icon_source_get_type" :size)))))
+          (g:gtype (cffi:foreign-funcall "gtk_icon_source_get_type" :size))))
+  ;; Check registered name
+  (is (eq 'gtk:icon-source
+          (glib:symbol-for-gtype "GtkIconSource"))))
 
 ;;;     GtkIconFactory
 
@@ -50,12 +53,15 @@
 
 ;;;     GtkIconSet
 
-(test gtk-icon-set
-  ;; Type check
-  (is (g:type-is-a (g:gtype "GtkIconSet") g:+g-type-boxed+))
-  ;; Check the type initializer
+(test gtk-icon-set-boxed
+  ;; Check type
+  (is (g:type-is-boxed "GtkIconSet"))
+  ;; Check type initializer
   (is (eq (g:gtype "GtkIconSet")
-          (g:gtype (cffi:foreign-funcall "gtk_icon_set_get_type" :size)))))
+          (g:gtype (cffi:foreign-funcall "gtk_icon_set_get_type" :size))))
+  ;; Check registered name
+  (is (eq 'gtk:icon-set
+          (glib:symbol-for-gtype "GtkIconSet"))))
 
 ;;;     GtkIconSize
 
@@ -71,7 +77,7 @@
   ;; Check the names
   (is (equal '("GTK_ICON_SIZE_INVALID" "GTK_ICON_SIZE_MENU"
                "GTK_ICON_SIZE_SMALL_TOOLBAR" "GTK_ICON_SIZE_LARGE_TOOLBAR"
-               "GTK_ICON_SIZE_BUTTON" "GTK_ICON_SIZE_DND" 
+               "GTK_ICON_SIZE_BUTTON" "GTK_ICON_SIZE_DND"
                "GTK_ICON_SIZE_DIALOG")
              (list-enum-item-name "GtkIconSize")))
   ;; Check the values
