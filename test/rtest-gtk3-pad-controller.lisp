@@ -7,7 +7,7 @@
 
 ;;;     GtkPadActionType
 
-(test pad-action-type
+(test gtk-pad-action-type
   ;; Check the type
   (is (g:type-is-enum "GtkPadActionType"))
   ;; Check the type initializer
@@ -38,7 +38,7 @@
 
 ;;;     GtkPadController
 
-(test pad-controller-class
+(test gtk-pad-controller-class
   ;; Type check
   (is (g:type-is-object "GtkPadController"))
   ;; Check the registered name
@@ -73,7 +73,7 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-(test pad-controller-properties
+(test gtk-pad-controller-properties
   (let* ((window (make-instance 'gtk:window
                                 :type :toplevel))
          (group (make-instance 'g:simple-action-group))
@@ -86,7 +86,7 @@
 
 ;;;     gtk_pad_controller_new
 
-(test pad-controller-new
+(test gtk-pad-controller-new
   (let ((window (make-instance 'gtk:window
                                :type :toplevel))
         (group (make-instance 'g:simple-action-group)))
@@ -94,7 +94,7 @@
 
 ;;;     gtk_pad_controller_set_action_entries
 
-(test pad-controller-set-action-entries
+(test gtk-pad-controller-set-action-entries
   (let* ((window (make-instance 'gtk:window
                                 :type :toplevel))
          (group (make-instance 'g:simple-action-group))
@@ -102,17 +102,15 @@
          (entries '((:button 1 -1 "Action 1" "action1")
                     (:ring 1 -1 "Action 2" "action2")
                     (:strip 1 -1 "Action 3" "action3"))))
-
     (is-false (gtk:pad-controller-set-action-entries controller entries))
     ;; TODO: Does not return a GAction object. Why?
     (is-false (g:action-map-lookup-action group "action1"))
     (is-false (g:action-map-lookup-action group "action2"))
-    (is-false (g:action-map-lookup-action group "action3"))
-))
+    (is-false (g:action-map-lookup-action group "action3"))))
 
 ;;;     gtk_pad_controller_set_action
 
-(test pad-controller-set-action
+(test gtk-pad-controller-set-action
   (let* ((window (make-instance 'gtk:window
                                 :type :toplevel))
          (group (make-instance 'g:simple-action-group))
@@ -124,7 +122,6 @@
                                              "Action"
                                              "action"))
     ;; TODO: Does not return a GAction object. Why?
-    (is-false (g:action-map-lookup-action group "action"))
-))
+    (is-false (g:action-map-lookup-action group "action"))))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-4-5
