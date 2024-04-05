@@ -16,7 +16,7 @@
                     0.01)))
         (when (> val 1.0) (setq val 0.0))
         (setf (gtk:progress-bar-fraction (pbar-widget pdata)) val)))
-  glib:+g-source-continue+)
+  glib:+source-continue+)
 
 (defun example-progress-bar (&optional application)
   (gtk:within-main-loop

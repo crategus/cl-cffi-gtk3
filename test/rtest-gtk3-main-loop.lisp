@@ -55,13 +55,13 @@
                                             (gdk:display-default-seat
                                                 (gdk:display-default)))
                                         :button 1
-                                        :time gdk:+gdk-current-time+))
+                                        :time gdk:+current-time+))
   (gdk-event-put (gdk-event-new :key-press))
   (loop while (not (gtk:events-pending))
         do (when *verbose-gtk-main-loop*
              (format t "No Events are pending.~%")))
   (gtk:main-quit)
-  g:+g-source-remove+)
+  g:+source-remove+)
 
 ;; TODO:  Find examples to show the functionality of the functions for events.
 
@@ -83,7 +83,7 @@
   ;; Quit the main loop.
   (gtk:main-quit)
   ;; Remove the idle source
-  g:+g-source-remove+)
+  g:+source-remove+)
 
 (test main.1
   ;; Add a idle source to the main loop.
@@ -104,9 +104,9 @@
           ;; Stop the main loop from running
           (gtk:main-quit)
           ;; Stop the source
-          g:+g-source-remove+)
+          g:+source-remove+)
         ;; Continue the source
-        g:+g-source-continue+)))
+        g:+source-continue+)))
 
 (test main.2
   (let ()

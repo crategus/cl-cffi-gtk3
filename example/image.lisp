@@ -25,7 +25,7 @@
                 (setf image-stream nil)
                 (gdk:pixbuf-loader-close pixbuf-loader)
                 (setf pixbuf-loader nil)
-                (return-from progressive-timeout glib:+g-source-remove+))
+                (return-from progressive-timeout glib:+source-remove+))
               ;; Load the buffer into GdkPixbufLoader
               (gdk:pixbuf-loader-write pixbuf-loader buffer 128)))
         (progn
@@ -53,7 +53,7 @@
                (let ((pixbuf (gtk:image-pixbuf image)))
                  (gtk:image-set-from-pixbuf image pixbuf))))))
     ;; Continue the GSource
-    glib:+g-source-continue+)
+    glib:+source-continue+)
 
   (defun example-image (&optional application)
     (gtk:within-main-loop

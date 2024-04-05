@@ -125,10 +125,10 @@
                                      (gtk:progress-bar-fraction pbar))))
                     (cond ((< fraction 1.0d0)
                            (setf (gtk:progress-bar-fraction pbar) fraction)
-                           glib:+g-source-continue+)
+                           glib:+source-continue+)
                           (t
                            (gtk:widget-destroy assistant)
-                           glib:+g-source-remove+)))))))
+                           glib:+source-remove+)))))))
       ;; Create the pages for the assistant
       (create-page1 assistant)
       (create-page2 assistant)

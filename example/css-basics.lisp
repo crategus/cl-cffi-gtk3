@@ -45,7 +45,7 @@
                            (gtk:css-section-end-line section)
                            (gtk:css-section-end-position section))))
               (gtk:text-buffer-apply-tag text "error" start end)
-              gdk:+gdk-event-stop+)))
+              gdk:+event-stop+)))
       (gtk:text-tag-table-add (gtk:text-buffer-tag-table text)
                               (make-instance 'gtk:text-tag
                                              :name "error"

@@ -28,7 +28,7 @@
                 (gdk:window-device-position-double window device)
               (declare (ignore win mask))
               (format t "Device Position double : ~6,2f, ~6,2f~%" x y)))
-          gdk:+gdk-event-stop+))
+          gdk:+event-stop+))
     ;; Add the image to the event box
     (gtk:container-add event-box image)
     ;; Return the event box with the image

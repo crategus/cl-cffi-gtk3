@@ -179,8 +179,8 @@ lambda (entry)    :action
  "@version{#2023-12-19}
   @argument[entry]{a @class{gtk:entry-search} widget}
   @argument[event]{a @class{gdk:event} instance with key event}
-  @return{The @var{gdk:+gdk-event-stop+} value if the key press event resulted
-    in a search beginning or continuing, the @var{gdk:+gdk-event-propagate+}
+  @return{The @var{gdk:+event-stop+} value if the key press event resulted
+    in a search beginning or continuing, the @var{gdk:+event-propagate+}
     value otherwise.}
   @begin{short}
     This function should be called when the toplevel window which contains the
@@ -191,7 +191,7 @@ lambda (entry)    :action
   entry in addition to passing the event to this function.
 
   If the key event is handled by the search entry and starts or continues a
-  search, the @var{gdk:+gdk-event-stop+} value will be returned. The caller
+  search, the @var{gdk:+event-stop+} value will be returned. The caller
   should ensure that the entry is shown in this case, and not propagate the
   event further.
   @see-class{gtk:search-entry}"

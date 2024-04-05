@@ -803,7 +803,7 @@
     information desired}
   @argument[time]{an unsigned integer with the time of request, usually of
     triggering event, in emergency, you could use the
-    @var{gdk:+gdk-current-time+} value}
+    @var{gdk:+current-time+} value}
   @begin{return}
     @em{True} if requested succeeded, @em{false} if we could not process
     request, e.g., there was already a request in process for this widget.
@@ -814,7 +814,7 @@
   When received, a @code{\"selection-received\"} signal will be generated.
   @see-class{gtk:widget}
   @see-symbol{gdk:atom-as-string}
-  @see-variable{gdk:+gdk-current-time+}"
+  @see-variable{gdk:+current-time+}"
   (widget (g:object widget))
   (selection gdk:atom-as-string)
   (target gdk:atom-as-string)

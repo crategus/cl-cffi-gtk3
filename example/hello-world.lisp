@@ -29,7 +29,7 @@
                         (lambda (widget event)
                           (declare (ignore widget event))
                           (format t "Delete Event Occured.~%")
-                          gdk:+gdk-event-stop+))
+                          gdk:+event-stop+))
       ;; Put the button into the window.
       (gtk:container-add window button)
       ;; Show the window and the button.

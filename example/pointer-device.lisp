@@ -41,7 +41,7 @@
                                             (gtk:widget-window event-box)
                                             0 100))
           ))
-                gdk:+gdk-event-stop+))
+                gdk:+event-stop+))
     ;; Add the image to the event box
     (gtk:container-add event-box image)
     ;; Return the event box with the image

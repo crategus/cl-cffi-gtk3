@@ -158,7 +158,7 @@ populate_flowbox (GtkWidget *flowbox)
                               (lambda ()
                                 (g:source-remove pulse-id)))
     ;; Remove the source
-    glib:+g-source-remove+))
+    glib:+source-remove+))
 
   (defun pulse-update (adjustment widget)
     (let ((value (gtk:adjustment-value adjustment))
@@ -220,7 +220,7 @@ populate_flowbox (GtkWidget *flowbox)
                      (setf (gtk:widget-sensitive *application-window*) t)
                      (setf (gdk:window-cursor window) nil)
                      (g:application-unmark-busy *application*)
-                     glib:+g-source-remove+)))
+                     glib:+source-remove+)))
     (setf (gtk:widget-sensitive *application-window*) nil))
 
 (defun activate-search (action parameter)
@@ -535,7 +535,7 @@ populate_flowbox (GtkWidget *flowbox)
                                (setf (gtk:stack-child-needs-attention stack
                                                                       page)
                                      t)
-                               glib:+g-source-remove+)))
+                               glib:+source-remove+)))
                 )))
 
 #|
@@ -771,7 +771,7 @@ populate_flowbox (GtkWidget *flowbox)
           (let* ((osd (g:object-data widget "osd"))
                  (visible (gtk:widget-visible osd)))
             (setf (gtk:widget-visible osd) (not visible))
-            gdk:+gdk-event-stop+)))
+            gdk:+event-stop+)))
 
     ;; Set values on the property list for page combo on page3
     (let ((combo (gtk:builder-object builder "page_combo"))
@@ -799,7 +799,7 @@ populate_flowbox (GtkWidget *flowbox)
             (g:timeout-add 2500
                            (lambda ()
                              (gtk:widget-show page)
-                             glib:+g-source-remove+)))))
+                             glib:+source-remove+)))))
 
     (let ((page (gtk:builder-object builder "closable_page_2")))
       (g:signal-connect (gtk:builder-object builder "closable_page_button_2")
@@ -810,7 +810,7 @@ populate_flowbox (GtkWidget *flowbox)
             (g:timeout-add 2500
                            (lambda ()
                              (gtk:widget-show page)
-                             glib:+g-source-remove+)))))
+                             glib:+source-remove+)))))
 
     (let ((popover (gtk:builder-object builder "open_popover"))
           (entry (gtk:builder-object builder "open_popover_entry"))

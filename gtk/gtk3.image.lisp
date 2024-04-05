@@ -274,7 +274,7 @@
                         (format t \"Event box clicked at : ~6,2f, ~6,2f~%\"
                                   (gdk:event-button-x event)
                                   (gdk:event-button-y event))
-                        gdk:+gdk-event-stop+))
+                        gdk:+event-stop+))
     ;; Add the image to the event box
     (gtk:container-add event-box image)
     ;; Return the event box with the image
@@ -949,12 +949,12 @@
     Creates a image displaying the given animation.
   @end{short}
   Note that the animation frames are shown using a timeout with the
-  @var{glib:+g-priority-default+} value. When using animations to indicate
+  @var{glib:+priority-default+} value. When using animations to indicate
   busyness, keep in mind that the animation will only be shown if the main loop
   is not busy with something that has a higher priority.
   @see-class{gtk:image}
   @see-class{gdk-pixbuf:pixbuf-animation}
-  @see-variable{glib:+g-priority-default+}"
+  @see-variable{glib:+priority-default+}"
   (animation (g:object gdk-pixbuf:pixbuf-animation)))
 
 (export 'image-new-from-animation)

@@ -180,7 +180,7 @@
 ;;; ----------------------------------------------------------------------------
 
 #+nil
-(defparameter +gdk-none+ "NONE" ; in sbcl defconstant does not work for a string
+(defparameter +none+ "NONE" ; in sbcl defconstant does not work for a string
  #+liber-documentation
  "@version{#2013-6-28}
   @variable-value{\"NONE\"}
@@ -188,7 +188,7 @@
   Xlib API.")
 
 #+nil
-(setf (liber:alias-for-variable '+gdk-none+) "Constant")
+(setf (liber:alias-for-variable '+none+) "Constant")
 
 ;;; ----------------------------------------------------------------------------
 ;;; gdk_text_property_to_utf8_list_for_display ()

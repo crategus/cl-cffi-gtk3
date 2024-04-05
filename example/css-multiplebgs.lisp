@@ -102,7 +102,7 @@
                   (height (gtk:widget-allocated-height widget)))
               (gtk:render-background context cr 0 0 width height)
               (gtk:render-frame context cr 0 0 width height)
-              gdk:+gdk-event-propagate+)))
+              gdk:+event-propagate+)))
       (g:signal-connect text "changed"
           (lambda (buffer)
             (let ((start (gtk:text-buffer-start-iter buffer))
@@ -125,7 +125,7 @@
                            (gtk:css-section-end-line section)
                            (gtk:css-section-end-position section))))
               (gtk:text-buffer-apply-tag text "error" start end)
-              gdk:+gdk-event-stop+)))
+              gdk:+event-stop+)))
       (gtk:text-tag-table-add (gtk:text-buffer-tag-table text)
                               (make-instance 'gtk:text-tag
                                              :name "error"

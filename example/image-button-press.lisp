@@ -19,7 +19,7 @@
                         (format t "Event box clicked at : ~6,2f, ~6,2f~%"
                                   (gdk:event-button-x event)
                                   (gdk:event-button-y event))
-                        gdk:+gdk-event-stop+))
+                        gdk:+event-stop+))
     ;; Add the image to the event box
     (gtk:container-add event-box image)
     ;; Return the event box with the image

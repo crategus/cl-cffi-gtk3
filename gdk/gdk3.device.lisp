@@ -1457,7 +1457,7 @@ get_device_settings (GdkDevice *device)
     is used elsewhere.}
   @argument[time]{an unsigned integer with the timestamp of the event which led
     to this pointer grab. This usually comes from the @class{gdk:event} event,
-    though @var{gdk:+gdk-current-time+} can be used if the time is not known.}
+    though @var{gdk:+current-time+} can be used if the time is not known.}
   @return{The @code{:sucess} value if the grab was successful.}
   @begin{short}
     Grabs the device so that all events coming from this device are passed to
@@ -1490,7 +1490,7 @@ get_device_settings (GdkDevice *device)
   @see-function{gdk:event-device}
   @see-function{gtk:current-event-device}
   @see-function{gdk:device-manager-client-pointer}
-  @see-variable{gdk:+gdk-current-time+}"
+  @see-variable{gdk:+current-time+}"
   (device (g:object device))
   (window (g:object window))
   (grab-ownership grab-ownership)
@@ -1510,11 +1510,11 @@ get_device_settings (GdkDevice *device)
  "@version{#2023-3-9}
   @argument[device]{a @class{gdk:device} object}
   @argument[time]{an unsigned integer with the timestamp, e.g.
-    @var{gdk:+gdk-current-time+}}
+    @var{gdk:+current-time+}}
   @short{Release any grab on the device.}
   @see-class{gdk:device}
   @see-function{gdk:device-grab}
-  @see-variable{gdk:+gdk-current-time+}"
+  @see-variable{gdk:+current-time+}"
   (device (g:object device))
   (time :uint32))
 

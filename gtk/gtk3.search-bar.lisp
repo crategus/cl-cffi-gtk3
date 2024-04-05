@@ -301,15 +301,15 @@ main (gint argc,
  "@version{#2023-12-19}
   @argument[searchbar]{a @class{gtk:search-bar} widget}
   @argument[event]{a @class{gdk:event} instance containing key press events}
-  @return{The @var{gdk:+gdk-event-stop+} value if the key press event resulted
+  @return{The @var{gdk:+event-stop+} value if the key press event resulted
     in text being entered in the search entry, and revealing the search bar if
-    necessary, @var{gdk:+gdk-event-propagate+} otherwise.}
+    necessary, @var{gdk:+event-propagate+} otherwise.}
   @begin{short}
     This function should be called when the toplevel window which contains the
     search bar received a key event.
   @end{short}
   If the key event is handled by the search bar, the bar will be shown, the
-  entry populated with the entered text and the @var{gdk:+gdk-event-stop+} value
+  entry populated with the entered text and the @var{gdk:+event-stop+} value
   will be returned. The caller should ensure that events are not propagated
   further.
 

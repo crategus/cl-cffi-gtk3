@@ -21,14 +21,14 @@
       ;; Set the owner
       (is-true (gdk-selection-owner-set window
                                         "PRIMARY"
-                                        gdk:+gdk-current-time+
+                                        gdk:+current-time+
                                         nil))
       ;; Check the owner
       (is (eq window (gdk-selection-owner-get "PRIMARY")))
       ;; Unset the owner
       (is-true (gdk-selection-owner-set nil
                                         "PRIMARY"
-                                        gdk:+gdk-current-time+ nil))
+                                        gdk:+current-time+ nil))
       ;; No owner
       (is-false (gdk-selection-owner-get "PRIMARY")))))
 
@@ -43,12 +43,12 @@
       (is-false (gdk-selection-owner-get "SECONDARY"))
       (is-true (gdk-selection-owner-set window
                                         "SECONDARY"
-                                        gdk:+gdk-current-time+
+                                        gdk:+current-time+
                                         nil))
       (is (eq window (gdk-selection-owner-get "SECONDARY")))
       (is-true (gdk-selection-owner-set nil
                                         "SECONDARY"
-                                        gdk:+gdk-current-time+ nil))
+                                        gdk:+current-time+ nil))
       (is-false (gdk-selection-owner-get "SECONDARY")))))
 
 ;; TODO: Check this again. In a second run the owner is not unset.
@@ -62,12 +62,12 @@
       (is-false (gdk-selection-owner-get "CLIPBOARD"))
       (is-true (gdk-selection-owner-set window
                                         "CLIPBOARD"
-                                        gdk:+gdk-current-time+
+                                        gdk:+current-time+
                                         nil))
       (is (eq window (gdk-selection-owner-get "CLIPBOARD")))
       (is-true (gdk-selection-owner-set nil
                                         "CLIPBOARD"
-                                        gdk:+gdk-current-time+ nil))
+                                        gdk:+current-time+ nil))
       (is-false (gdk-selection-owner-get "CLIPBOARD")))))
 
 ;;;     gdk_selection_owner_set_for_display
@@ -88,7 +88,7 @@
       (is-true (gdk-selection-owner-set-for-display display
                                                     window
                                                     "PRIMARY"
-                                                    gdk:+gdk-current-time+
+                                                    gdk:+current-time+
                                                     nil))
       (is (eq window
               (gdk-selection-owner-get-for-display display "PRIMARY")))
@@ -96,7 +96,7 @@
       (is-true (gdk-selection-owner-set-for-display display
                                                     nil
                                                     "PRIMARY"
-                                                    gdk:+gdk-current-time+ nil))
+                                                    gdk:+current-time+ nil))
       ;; No owner
       (is-false (gdk-selection-owner-get-for-display display "PRIMARY")))))
 
@@ -110,13 +110,13 @@
     ;; Realize the toplevel widget to create a gdk:window
     (gtk:widget-realize widget)
     (let ((window (gtk:widget-window widget)))
-      (gdk:selection-owner-set window "CLIPBOARD" gdk:+gdk-current-time+ nil)
+      (gdk:selection-owner-set window "CLIPBOARD" gdk:+current-time+ nil)
       (is (eq window (gdk:selection-owner-get "CLIPBOARD")))
       ;; Put some text in  the default clipboard
       (gtk:clipboard-set-text clipboard "This is the text.")
       ;; FIXME: Works not as expeceted. We do not get data from the clipboard.
       ;; What is the correct usage of the GDK:SELECTION-CONVERT function.
-      (gdk:selection-convert window "CLIPBOARD" "STRING" gdk:+gdk-current-time+)
+      (gdk:selection-convert window "CLIPBOARD" "STRING" gdk:+current-time+)
       (multiple-value-bind (length data type format)
           (gdk:selection-property-get window)
         (when *verbose-gdk-selection*
@@ -126,7 +126,7 @@
           (format t "        : ~a~%" (cffi:convert-from-foreign data :string))
           (format t "   type : ~a~%" type)
           (format t " format : ~a~%" format)))
-      (gdk:selection-owner-set nil "CLIPBOARD" gdk:+gdk-current-time+ nil))))
+      (gdk:selection-owner-set nil "CLIPBOARD" gdk:+current-time+ nil))))
 
 ;;;     gdk_selection_send_notify
 ;;;     gdk_selection_send_notify_for_display

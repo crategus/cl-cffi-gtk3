@@ -637,7 +637,7 @@
 
   The @arg{event} argument is used to retrieve the timestamp that will be used
   internally to grab the pointer. If the @arg{event} argument is @code{nil},
-  then the @var{gdk:+gdk-current-time+} value will be used. However, you should
+  then the @var{gdk:+current-time+} value will be used. However, you should
   try to pass a real event in all cases, since that can be used by GTK to get
   information about the start position of the drag, for example if the event is
   a @code{:motion-notify} event.
@@ -676,7 +676,7 @@
   @see-function{gtk:drag-source-set}
   @see-function{gdk:event-copy}
   @see-function{gdk:event-free}
-  @see-variable{gdk:+gdk-current-time+}"
+  @see-variable{gdk:+current-time+}"
   (widget (g:object widget))
   (targets (g:boxed target-list))
   (actions gdk:drag-action)
@@ -717,7 +717,7 @@
 
   The @arg{event} argument is used to retrieve the timestamp that will be used
   internally to grab the pointer. If the @arg{event} argument is @code{nil},
-  then the @var{gdk:+gdk-current-time+} value will be used. However, you should
+  then the @var{gdk:+current-time+} value will be used. However, you should
   try to pass a real event in all cases, since that can be used to get
   information about the drag.
 

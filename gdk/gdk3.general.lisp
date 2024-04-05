@@ -432,7 +432,7 @@
  #+liber-documentation
  "@version{#2013-4-3}
   @argument[time]{a timestamp of type @code{:uint32} from a @class{gdk:event},
-    or @var{gdk:+gdk-current-time+} if no timestamp is available}
+    or @var{gdk:+current-time+} if no timestamp is available}
   @begin{short}
     Ungrabs the pointer on the default display, if it is grabbed by this
     application.
@@ -506,7 +506,7 @@
     and key release events are always reported, independant of the event mask
     set by the application.}
   @argument[time]{a timestamp of type @code{:uint32} from a @class{gdk:event},
-    or @var{gdk:+gdk-current-time+} if no timestamp is available.}
+    or @var{gdk:+current-time+} if no timestamp is available.}
   @return{The value @code{:success} of the @symbol{gdk:grab-status} enumeration
    if the grab was successful.}
   @begin{short}
@@ -537,7 +537,7 @@
  #+liber-documentation
  "@version{#2013-4-3}
   @argument[time]{a timestamp of type @code{:uint32} from a @class{gdk:event},
-    or @var{gdk:+gdk-current-time+} if no timestamp is available}
+    or @var{gdk:+current-time+} if no timestamp is available}
   @begin{short}
     Ungrabs the keyboard on the default display, if it is grabbed by this
     application.

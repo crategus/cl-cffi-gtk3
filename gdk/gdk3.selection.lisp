@@ -71,49 +71,49 @@
 ;;; ----------------------------------------------------------------------------
 
 #+nil
-(defparameter +gdk-selection-primary+ "PRIMARY"
+(defparameter +selection-primary+ "PRIMARY"
  #+liber-documentation
  "@version{#2013-11-10}
   @variable-value{\"PRIMARY\"}
   A @symbol{gdk:atom} representing the @code{\"PRIMARY\"} selection.
   @see-symbol{gdk:atom}
-  @see-variable{+gdk-selection-secondary+}
-  @see-variable{+gdk-selection-clipboard+}")
+  @see-variable{gdk:+selection-secondary+}
+  @see-variable{gdk:+selection-clipboard+}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; GDK_SELECTION_SECONDARY                                not implemented
 ;;; ----------------------------------------------------------------------------
 
 #+nil
-(defparameter +gdk-selection-secondary+ "SECONDARY"
+(defparameter +selection-secondary+ "SECONDARY"
  #+liber-documentation
  "@version{#2013-11-10}
   @variable-value{\"SECONDARY\"}
   A @symbol{gdk:atom} representing the @code{\"SECONDARY\"} selection.
   @see-symbol{gdk:atom}
-  @see-variable{+gdk-selection-primary+}
-  @see-variable{+gdk-selection-clipboard+}")
+  @see-variable{gdk:+selection-primary+}
+  @see-variable{gdk:+selection-clipboard+}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; GDK_SELECTION_CLIPBOARD                                not implemented
 ;;; ----------------------------------------------------------------------------
 
 #+nil
-(defparameter +gdk-selection-clipboard+ "CLIPBOARD"
+(defparameter +selection-clipboard+ "CLIPBOARD"
  #+liber-documentation
  "@version{#2013-11-10}
   @variable-value{\"CLIPBOARD\"}
   A @symbol{gdk:atom} representing the @code{\"CLIPBOARD\"} selection.
   @see-symbol{gdk:atom}
-  @see-variable{+gdk-selection-primary+}
-  @see-variable{+gdk-selection-secondary+}")
+  @see-variable{gdk:+selection-primary+}
+  @see-variable{gdk:+selection-secondary+}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; GDK_TARGET_BITMAP                                      not implemented
 ;;; ----------------------------------------------------------------------------
 
 #+nil
-(defparameter +gdk-target-bitmap+ "BITMAP"
+(defparameter +target-bitmap+ "BITMAP"
  #+liber-documentation
  "@version{#2013-11-10}
   @variable-value{\"BITMAP\"}
@@ -125,7 +125,7 @@
 ;;; ----------------------------------------------------------------------------
 
 #+nil
-(defparameter +gdk-target-colormap+ "COLORMAP"
+(defparameter +target-colormap+ "COLORMAP"
  #+liber-documentation
  "@version{#2013-11-10}
   @variable-value{\"COLORMAP\"}
@@ -137,7 +137,7 @@
 ;;; ----------------------------------------------------------------------------
 
 #+nil
-(defparameter +gdk-target-drawable+ "DRAWABLE"
+(defparameter +target-drawable+ "DRAWABLE"
  #+liber-documentation
  "@version{#2013-11-10}
   @variable-value{\"DRAWABLE\"}
@@ -149,7 +149,7 @@
 ;;; ----------------------------------------------------------------------------
 
 #+nil
-(defparameter +gdk-target-pixmap+ "PIXMAP"
+(defparameter +target-pixmap+ "PIXMAP"
  #+liber-documentation
  "@version{#2013-11-10}
   @variable-value{\"PIXMAP\"}
@@ -161,7 +161,7 @@
 ;;; ----------------------------------------------------------------------------
 
 #+nil
-(defparameter +gdk-target-string+ "STRING"
+(defparameter +target-string+ "STRING"
  #+liber-documentation
  "@version{#2013-11-10}
   @variable-value{\"STRING\"}
@@ -173,7 +173,7 @@
 ;;; ----------------------------------------------------------------------------
 
 #+nil
-(defparameter +gdk-selection-type-atom+ "ATOM"
+(defparameter +selection-type-atom+ "ATOM"
  #+liber-documentation
  "@version{#2013-11-10}
   @variable-value{\"ATOM\"}
@@ -185,7 +185,7 @@
 ;;; ----------------------------------------------------------------------------
 
 #+nil
-(defparameter +gdk-selection-type-bitmap+ "BITMAP"
+(defparameter +selection-type-bitmap+ "BITMAP"
  #+liber-documentation
  "@version{#2013-11-10}
   @variable-value{\"BITMAP\"}
@@ -197,7 +197,7 @@
 ;;; ----------------------------------------------------------------------------
 
 #+nil
-(defparameter +gdk-selection-type-colormap+ "COLORMAP"
+(defparameter +selection-type-colormap+ "COLORMAP"
  #+liber-documentation
  "@version{#2013-11-10}
   @variable-value{\"COLORMAP\"}
@@ -209,7 +209,7 @@
 ;;; ----------------------------------------------------------------------------
 
 #+nil
-(defparameter +gdk-selection-type-drawable+ "DRAWABLE"
+(defparameter +selection-type-drawable+ "DRAWABLE"
  #+liber-documentation
  "@version{#2013-11-10}
   @variable-value{\"DRAWABLE\"}
@@ -221,7 +221,7 @@
 ;;; ----------------------------------------------------------------------------
 
 #+nil
-(defparameter +gdk-selection-type-integer+ "INTEGER"
+(defparameter +selection-type-integer+ "INTEGER"
  #+liber-documentation
  "@version{#2013-11-10}
   @variable-value{\"INTEGER\"}
@@ -233,7 +233,7 @@
 ;;; ----------------------------------------------------------------------------
 
 #+nil
-(defparameter +gdk-selection-type-pixmap+ "PIXMAP"
+(defparameter +selection-type-pixmap+ "PIXMAP"
  #+liber-documentation
  "@version{#2013-11-10}
   @variable-value{\"PIXMAP\"}
@@ -245,7 +245,7 @@
 ;;; ----------------------------------------------------------------------------
 
 #+nil
-(defparameter +gdk-selection-type-window+ "WINDOW"
+(defparameter +selection-type-window+ "WINDOW"
  #+liber-documentation
  "@version{#2013-11-10}
   @variable-value{\"WINDOW\"}
@@ -257,7 +257,7 @@
 ;;; ----------------------------------------------------------------------------
 
 #+nil
-(defparameter +gdk-selection-type-string+ "STRING"
+(defparameter +selection-type-string+ "STRING"
  #+liber-documentation
  "@version{#2013-11-10}
   @variable-value{\"STRING\"}

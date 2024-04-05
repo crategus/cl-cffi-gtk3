@@ -444,7 +444,7 @@
   ;; Quit the main loop.
   (gtk:main-quit)
   ;; Remove the idle source.
-  glib:+g-source-remove+)
+  glib:+source-remove+)
 
 (defun main ()
   ;; Add an idle source to the main loop.
@@ -932,13 +932,13 @@
  #+liber-documentation
  "@version{#2023-3-5}
   @return{The unsigned integer with the timestamp from the current event, or the
-    @var{gdk:+gdk-current-time+} value.}
+    @var{gdk:+current-time+} value.}
   @begin{short}
     If there is a current event and it has a timestamp, return that timestamp.
   @end{short}
-  Otherwise return the @var{gdk:+gdk-current-time+} value.
+  Otherwise return the @var{gdk:+current-time+} value.
   @see-function{gtk:current-event}
-  @see-variable{gdk:+gdk-current-time+}")
+  @see-variable{gdk:+current-time+}")
 
 (export 'current-event-time)
 

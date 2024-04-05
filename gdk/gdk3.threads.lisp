@@ -266,13 +266,13 @@
 ;;; gdk_threads_add_idle ()
 ;;; ----------------------------------------------------------------------------
 
-(defun threads-add-idle (func &key (priority glib:+g-priority-default-idle+))
+(defun threads-add-idle (func &key (priority glib:+priority-default-idle+))
  #+liber-documentation
  "@version{#2021-12-13}
   @argument[func]{a @symbol{g:source-func} callback function to call}
   @argument[priority]{an integer with the priority of the idle source,
     typically this will be in the range between
-    @var{glib:+g-priority-default-idle+} and @var{glib:+g-priority-high-idle+}}
+    @var{glib:+priority-default-idle+} and @var{glib:+priority-high-idle+}}
   @return{The unsigned integer ID, greater than 0, of the event source.}
   @begin{short}
     Adds a function to be called whenever there are no higher priority events
@@ -280,7 +280,7 @@
   @end{short}
   If the function returns @em{false} it is automatically removed from the list
   of event sources and will not be called again. The default for @arg{priority}
-  is @var{glib:+g-priority-default-idle+}.
+  is @var{glib:+priority-default-idle+}.
 
   This variant of the @fun{g:idle-add} function calls the function with
   the GDK lock held. It can be thought of a MT-safe version for GTK widgets.
@@ -309,7 +309,7 @@
  "@version{#2021-4-3}
   @argument[priority]{an integer with the priority of the idle source,
     typically this will be in the range between
-    @var{glib:+g-priority-default-idle+} and @var{glib:+g-priority-high-idle+}}
+    @var{glib:+priority-default-idle+} and @var{glib:+priority-high-idle+}}
   @argument[func]{a @symbol{g:source-func} callback function to call}
   @return{An unsigned integer with the ID, greater than 0, of the event source.}
   @begin{short}
@@ -369,7 +369,7 @@ some_widget_finalize (GObject *object)
 ;;; ----------------------------------------------------------------------------
 
 (defun threads-add-timeout (interval func
-                            &key (priority glib:+g-priority-default+))
+                            &key (priority glib:+priority-default+))
  #+liber-documentation
  "@version{#2021-12-13}
   @argument[interval]{an unsigned integer with the time between calls to the
@@ -377,13 +377,13 @@ some_widget_finalize (GObject *object)
   @argument[func]{a @symbol{g:source-func} callback function to call}
   @argument[priority]{an integer with the priority of the timeout source,
     typically this will be in the range between
-    @var{glib:+g-priority-default-idle+} and @var{glib:+g-priority-high-idle+}}
+    @var{glib:+priority-default-idle+} and @var{glib:+priority-high-idle+}}
   @return{The unsigned integer ID, greater than 0, of the event source.}
   @begin{short}
     Sets a function to be called at regular intervals holding the GDK lock,
     with the given priority.
   @end{short}
-  The default priority is @var{glib:+g-priority-default+}. The function is
+  The default priority is @var{glib:+priority-default+}. The function is
   called repeatedly until it returns @em{false}, at which point the timeout is
   automatically destroyed and the function will not be called again.
 
@@ -422,7 +422,7 @@ some_widget_finalize (GObject *object)
  "@version{#2021-4-3}
   @argument[priority]{an integer with the priority of the timeout source,
     typically this will be in the range between
-    @var{glib:+g-priority-default-idle+} and @var{glib:+g-priority-high-idle+}}
+    @var{glib:+priority-default-idle+} and @var{glib:+priority-high-idle+}}
   @argument[interval]{an unsigned integer with the time between calls to the
     function, in milliseconds (1/1000ths of a second)}
   @argument[func]{a @symbol{g:source-func} callback function to call}
@@ -485,7 +485,7 @@ static void some_widget_finalize (GObject *object)
 ;;; ----------------------------------------------------------------------------
 
 (defun threads-add-timeout-seconds (interval func
-                                    &key (priority glib:+g-priority-default+))
+                                    &key (priority glib:+priority-default+))
  #+liber-documentation
  "@version{#2021-12-13}
   @argument[interval]{an unsigned integer with the time between calls to the
@@ -493,13 +493,13 @@ static void some_widget_finalize (GObject *object)
   @argument[func]{a @symbol{g:source-func} callback function to call}
   @argument[priority]{an integer with the priority of the timeout source,
     typically this will be in the range between
-    @var{glib:+g-priority-default-idle+} and @var{glib:+g-priority-high-idle+}}
+    @var{glib:+priority-default-idle+} and @var{glib:+priority-high-idle+}}
   @return{The unsigned integer ID, greater than 0, of the event source.}
   @begin{short}
     A variant of the @fun{gdk:threads-add-timeout} function with second
     granularity.
   @end{short}
-  The default priority is @var{glib:+g-priority-default+}. See the
+  The default priority is @var{glib:+priority-default+}. See the
   @fun{g:timeout-add-seconds} function for a discussion of why it is a good
   idea to use this function if you do not need finer granularity.
   @see-symbol{g:source-func}
@@ -532,7 +532,7 @@ static void some_widget_finalize (GObject *object)
  "@version{#2021-12-13}
   @argument[priority]{an integer with the priority of the timeout source,
     typically this will be in the range between
-    @var{glib:+g-priority-default-idle+} and @var{glib:+g-priority-high-idle+}}
+    @var{glib:+priority-default-idle+} and @var{glib:+priority-high-idle+}}
   @argument[interval]{an unsigned integer with the time between calls to the
     function, in seconds}
   @argument[func]{a @symbol{g:source-func} callback function to call}

@@ -26,7 +26,7 @@
              (cairo:set-source-surface cr surface 0.0 0.0)
              (cairo:paint cr)
              (cairo:destroy cr)
-             gdk:+gdk-event-propagate+)))
+             gdk:+event-propagate+)))
       (g:signal-connect area "configure-event"
          (lambda (widget event)
            (declare (ignore event))
@@ -44,7 +44,7 @@
              (cairo:paint cr)
              (cairo:destroy cr))
            (format t "leave event 'configure-event'~%")
-           gdk:+gdk-event-stop+))
+           gdk:+event-stop+))
       ;; Event signals
       (g:signal-connect area "motion-notify-event"
          (lambda (widget event)
@@ -62,7 +62,7 @@
                                            6
                                            6)))
            ;; We have handled the event, stop processing
-           gdk:+gdk-event-stop+))
+           gdk:+event-stop+))
       (g:signal-connect area "button-press-event"
          (lambda (widget event)
            (format t "BUTTON-PRESS-EVENT ~A~%" event)

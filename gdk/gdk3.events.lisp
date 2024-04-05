@@ -98,17 +98,17 @@
 ;;; GDK_CURRENT_TIME
 ;;; ----------------------------------------------------------------------------
 
-(defconstant +gdk-current-time+ 0
+(defconstant +current-time+ 0
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2024-4-2}
   @begin{short}
     Represents the current time, and can be used anywhere a time is expected.
   @end{short}")
 
 #+liber-documentation
-(setf (liber:alias-for-variable '+gdk-current-time+) "Constant")
+(setf (liber:alias-for-variable '+current-time+) "Constant")
 
-(export '+gdk-current-time+)
+(export '+current-time+)
 
 ;;; ----------------------------------------------------------------------------
 ;;; GDK_PRIORITY_EVENTS
@@ -123,45 +123,45 @@
 ;;; GDK_PRIORITY_REDRAW
 ;;; ----------------------------------------------------------------------------
 
-(defconstant +gdk-priority-redraw+ (+ glib:+g-priority-high-idle+ 20)
+(defconstant +priority-redraw+ (+ glib:+priority-high-idle+ 20)
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2024-4-2}
   @begin{short}
     This is the priority that the idle handler processing window updates is
     given in the GLib Main Loop.
   @end{short}")
 
 #+liber-documentation
-(setf (liber:alias-for-variable 'gdk-priority-redraw) "Constant")
+(setf (liber:alias-for-variable '+priority-redraw+) "Constant")
 
-(export '+gdk-priority-redraw+)
+(export '+priority-redraw+)
 
 ;;; ----------------------------------------------------------------------------
 ;;; GDK_EVENT_PROPAGATE
 ;;; ----------------------------------------------------------------------------
 
-(defconstant +gdk-event-propagate+ nil
+(defconstant +event-propagate+ nil
  #+liber-documentation
- "@version{2023-12-19}
+ "@version{2024-4-2}
   @variable-value{@em{false}}
   @begin{short}
     Use this value as the return value for continuing the propagation of an
     event handler.
   @end{short}
-  @see-variable{gdk:+gdk-event-stop+}")
+  @see-variable{gdk:+event-stop+}")
 
 #+liber-documentation
-(setf (liber:alias-for-variable '+gdk-event-propagate+) "Constant")
+(setf (liber:alias-for-variable '+event-propagate+) "Constant")
 
-(export '+gdk-event-propagate+)
+(export '+event-propagate+)
 
 ;;; ----------------------------------------------------------------------------
 ;;; GDK_EVENT_STOP
 ;;; ----------------------------------------------------------------------------
 
-(defconstant +gdk-event-stop+ t
+(defconstant +event-stop+ t
  #+liber-documentation
- "@version{2023-12-19}
+ "@version{2024-4-2}
   @variable-value{@em{true}}
   @begin{short}
     Use this value as the return value for stopping the propagation of an event
@@ -174,15 +174,15 @@
 (g:signal-connect window \"delete-event\"
                   (lambda (widget event)
                     (declare (ignore widget event))
-                    gdk:+gdk-event-stop+))
+                    gdk:+event-stop+))
     @end{pre}
   @end{dictionary}
-  @see-variable{gdk:+gdk-event-propagate+}")
+  @see-variable{gdk:+event-propagate+}")
 
 #+liber-documentation
-(setf (liber:alias-for-variable '+gdk-event-stop+) "Constant")
+(setf (liber:alias-for-variable '+event-stop+) "Constant")
 
-(export '+gdk-event-stop+)
+(export '+event-stop+)
 
 ;;; ----------------------------------------------------------------------------
 ;;; GDK_BUTTON_PRIMARY
@@ -729,7 +729,7 @@
     Returns the current time of the event.
   @end{short}
   If @arg{event} is @code{nil}, returns the value of the
-  @var{gdk:+gdk-current-time+} constant.
+  @var{gdk:+current-time+} constant.
   @see-class{gdk:event}"
   (event (g:boxed event)))
 

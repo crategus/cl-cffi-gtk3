@@ -244,7 +244,7 @@
 
   Ideally the @arg{timestamp} is taken from the event triggering the
   @fun{gtk:show-uri} function call. If @arg{timestamp} is not known you can
-  take @var{gdk:+gdk-current-time+}.
+  take @var{gdk:+current-time+}.
 
   This function can be used as a replacement for the @code{gnome_vfs_url_show()}
   and @code{gnome_url_show()} functions.

@@ -268,7 +268,7 @@
       (is (eq 'gdk:window (type-of window)))
       (is (typep (gtk:selection-owner-set widget
                                           "PRIMARY"
-                                          gdk:+gdk-current-time+) 'boolean)))))
+                                          gdk:+current-time+) 'boolean)))))
 
 (test gtk-selection-owner-set.2
   (let ((widget (make-instance 'gtk:window :type :toplevel)))
@@ -279,7 +279,7 @@
       (is (eq 'gdk:window (type-of window)))
       (is (typep (gtk:selection-owner-set widget
                                           "SECONDARY"
-                                          gdk:+gdk-current-time+) 'boolean)))))
+                                          gdk:+current-time+) 'boolean)))))
 
 (test gtk-selection-owner-set.3
   (let ((widget (make-instance 'gtk:window :type :toplevel)))
@@ -290,7 +290,7 @@
       (is (eq 'gdk:window (type-of window)))
       (is-true (gtk:selection-owner-set widget
                                         "CLIPBOARD"
-                                        gdk:+gdk-current-time+)))))
+                                        gdk:+current-time+)))))
 
 ;;;   gtk_selection_owner_set_for_display
 
@@ -313,14 +313,14 @@
       (is-true (gtk:selection-owner-set-for-display display
                                                     widget
                                                     "PRIMARY"
-                                                    gdk:+gdk-current-time+))
+                                                    gdk:+current-time+))
       ;; Get the owner and check it is eql to window
       (is (eql window (gdk:selection-owner-get "PRIMARY")))
       ;; This call emits the "selection-clear-event"
       (is-true (gtk:selection-owner-set-for-display display
                                                     nil
                                                     "PRIMARY"
-                                                    gdk:+gdk-current-time+)))))
+                                                    gdk:+current-time+)))))
 
 ;;;   gtk_selection_add_target
 
@@ -359,9 +359,9 @@
 ;         (format t "targets = ~A~%" (gtk:selection-data-targets selection-data))
     ))
     (gtk:widget-realize widget)
-    (gtk:selection-owner-set widget "CLIPBOARD" gdk:+gdk-current-time+)
+    (gtk:selection-owner-set widget "CLIPBOARD" gdk:+current-time+)
     (gtk:selection-clear-targets widget "CLIPBOARD")
-    (gtk:selection-convert widget "CLIPBOARD" "TARGETS" gdk:+gdk-current-time+)))
+    (gtk:selection-convert widget "CLIPBOARD" "TARGETS" gdk:+current-time+)))
 
 ;;;   gtk_selection_convert
 
@@ -379,7 +379,7 @@
 ;                   (gtk:selection-data-targets selection-data))
     ))
     (gtk:selection-add-target window "CLIPBOARD" "STRING" 0)
-    (gtk:selection-convert window "CLIPBOARD" "TARGETS" gdk:+gdk-current-time+)))
+    (gtk:selection-convert window "CLIPBOARD" "TARGETS" gdk:+current-time+)))
 
 ;;;   gtk_selection_data_set
 
@@ -410,7 +410,7 @@
              (gtk:selection-data-get-data-with-length selection-data)
            (is (= 9 length))
            (is (cffi:pointerp data)))))
-    (gtk:selection-convert window "CLIPBOARD" "TEXT" gdk:+gdk-current-time+)))
+    (gtk:selection-convert window "CLIPBOARD" "TEXT" gdk:+current-time+)))
 
 ;;;   gtk_selection_data_get_text
 
@@ -439,7 +439,7 @@
        (lambda (widget selection-data time)
          (declare (ignore widget time))
            (is-true (gtk:selection-data-targets-include-image selection-data nil))))
-    (gtk:selection-convert window "CLIPBOARD" "BITMAP" gdk:+gdk-current-time+)))
+    (gtk:selection-convert window "CLIPBOARD" "BITMAP" gdk:+current-time+)))
 
 ;;;   gtk_selection_data_targets_include_text
 
@@ -451,7 +451,7 @@
        (lambda (widget selection-data time)
          (declare (ignore widget time))
            (is-true (gtk:selection-data-targets-include-text selection-data))))
-    (gtk:selection-convert window "CLIPBOARD" "TEXT" gdk:+gdk-current-time+)))
+    (gtk:selection-convert window "CLIPBOARD" "TEXT" gdk:+current-time+)))
 
 ;;;   gtk_selection_data_targets_include_uri
 ;;;   gtk_selection_data_targets_include_rich_text
@@ -486,7 +486,7 @@
              (gtk:selection-data-get-data-with-length selection-data)
            (is (= 12 length))
            (is (cffi:pointerp data)))))
-    (gtk:selection-convert window "CLIPBOARD" "TARGETS" gdk:+gdk-current-time+)))
+    (gtk:selection-convert window "CLIPBOARD" "TARGETS" gdk:+current-time+)))
 
 ;;;     gtk_targets_include_image
 

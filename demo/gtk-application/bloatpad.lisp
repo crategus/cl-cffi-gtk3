@@ -417,7 +417,7 @@
       (get-decoded-time)
     (let ((time (format nil "~2,'0d:~2,'0d:~2,'0d" hour minute second)))
       (g:menu-append (bloatpad-time application) time nil)))
-  g:+g-source-continue+)
+  g:+source-continue+)
 
 (defun action-time-active (application action state)
   (format t "in action TIME-ACTIVE~%")

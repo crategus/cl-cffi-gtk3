@@ -688,14 +688,14 @@
     the events are handled automatically in the @fun{gtk:main-do-event} function
     and passed on to the appropriate widgets, so these functions are rarely
     needed. Though some of the fields in the event structures are useful.
-    @about-variable{+gdk-current-time+}
-    @about-variable{+gdk-priority-events+}
-    @about-variable{+gdk-priority-redraw+}
-    @about-variable{+gdk-event-propagate+}
-    @about-variable{+gdk-event-stop+}
-    @about-variable{+gdk-button-primary+}
-    @about-variable{+gdk-button-middle+}
-    @about-variable{+gdk-button-secondary+}
+    @about-variable{+current-time+}
+    @about-variable{+priority-events+}
+    @about-variable{+priority-redraw+}
+    @about-variable{+event-propagate+}
+    @about-variable{+event-stop+}
+    @about-variable{+button-primary+}
+    @about-variable{+button-middle+}
+    @about-variable{+button-secondary+}
     @about-symbol{event-type}
     @about-symbol{event-mask}
     @about-symbol{touchpad-gesture-phase}

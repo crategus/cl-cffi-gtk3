@@ -4119,12 +4119,14 @@ lambda (window)
 
 ;; We do not export this constant
 
-(defconstant +gdk-parent-relative+ 1
+(defconstant +parent-relative+ 1
  #+liber-documentation
- "@version{#2013-9-1}
+ "@version{#2024-4-2}
   @variable-value{1}
-  A special value, indicating that the background for a window should be
-  inherited from the parent window.
+  @begin{short}
+    A special value, indicating that the background for a window should be
+    inherited from the parent window.
+  @end{short}
   @see-class{gdk:window}")
 
 ;;; ----------------------------------------------------------------------------
