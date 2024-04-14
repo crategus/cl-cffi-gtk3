@@ -7,7 +7,7 @@
 
 ;;;     GtkNotebook
 
-(test notebook-class
+(test gtk-notebook-class
   ;; Type check
   (is (g:type-is-object "GtkNotebook"))
   ;; Check the registered name
@@ -64,7 +64,7 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-(test notebook-properties
+(test gtk-notebook-properties
   (let ((notebook (make-instance 'gtk:notebook)))
     (is-false (gtk:notebook-enable-popup notebook))
     (is-false (gtk:notebook-group-name notebook))
@@ -76,7 +76,7 @@
 
 ;;; --- Child Properties -------------------------------------------------------
 
-(test notebook-child-properties
+(test gtk-notebook-child-properties
   (let ((notebook (make-instance 'gtk:notebook))
         (child (make-instance 'gtk:frame))
         (label (make-instance 'gtk:label :label "label")))
@@ -93,7 +93,7 @@
 
 ;;; --- Style Properties -------------------------------------------------------
 
-(test notebook-style-properties
+(test gtk-notebook-style-properties
   (let ((notebook (make-instance 'gtk:notebook)))
     (is (= 0 (gtk:widget-style-property notebook "arrow-spacing")))
     (is-true (gtk:widget-style-property notebook "has-backward-stepper"))
@@ -109,8 +109,8 @@
 
 ;;;     gtk_notebook_new
 
-(test notebook-new
-  (is (eq 'gtk:notebook (type-of (gtk:notebook-new)))))
+(test gtk-notebook-new
+  (is (typep (gtk:notebook-new) 'gtk:notebook)))
 
 ;;;     gtk_notebook_append_page
 ;;;     gtk_notebook_append_page_menu
@@ -120,7 +120,7 @@
 ;;;     gtk_notebook_insert_page_menu
 ;;;     gtk_notebook_remove_page
 
-(test notebook-add-page.1
+(test gtk-notebook-add-page.1
   (let ((notebook (make-instance 'gtk:notebook))
         (page1 (make-instance 'gtk:frame))
         (page2 (make-instance 'gtk:frame))
@@ -148,7 +148,7 @@
     (is (= 4 (length (gtk:container-children notebook))))
 ))
 
-(test notebook-add-page.2
+(test gtk-notebook-add-page.2
   (let ((notebook (make-instance 'gtk:notebook))
         (page1 (make-instance 'gtk:frame))
         (page2 (make-instance 'gtk:frame))
@@ -165,7 +165,7 @@
     (is (= 1 (gtk:notebook-insert-page-menu notebook page3 label3 menu-label3 1)))
 ))
 
-(test notebook-add-page.3
+(test gtk-notebook-add-page.3
   (let ((notebook (make-instance 'gtk:notebook))
         (page1 (make-instance 'gtk:frame))
         (page2 (make-instance 'gtk:frame))
@@ -225,4 +225,4 @@
 ;;;     gtk_notebook_set_action_widget
 ;;;     gtk_notebook_get_action_widget
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-4-10

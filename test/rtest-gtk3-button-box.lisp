@@ -7,26 +7,26 @@
 
 ;;;     GtkButtonBoxStyle
 
-(test button-box-style
-  ;; Check the type
+(test gtk-button-box-style
+  ;; Check type
   (is (g:type-is-enum "GtkButtonBoxStyle"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkButtonBoxStyle")
           (g:gtype (cffi:foreign-funcall "gtk_button_box_style_get_type" :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:button-box-style
           (glib:symbol-for-gtype "GtkButtonBoxStyle")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_BUTTONBOX_SPREAD" "GTK_BUTTONBOX_EDGE" "GTK_BUTTONBOX_START"
                "GTK_BUTTONBOX_END" "GTK_BUTTONBOX_CENTER" "GTK_BUTTONBOX_EXPAND")
              (list-enum-item-name "GtkButtonBoxStyle")))
-  ;; Check the values
+  ;; Check values
   (is (equal '(1 2 3 4 5 6)
              (list-enum-item-value "GtkButtonBoxStyle")))
-  ;; Check the nick names
+  ;; Check nick names
   (is (equal '("spread" "edge" "start" "end" "center" "expand")
              (list-enum-item-nick "GtkButtonBoxStyle")))
-  ;; Check the enum definition
+  ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkButtonBoxStyle"
                              GTK-BUTTON-BOX-STYLE
                              (:EXPORT T
@@ -44,7 +44,7 @@
 (cffi:foreign-funcall "gtk_hbutton_box_get_type" :size)
 (cffi:foreign-funcall "gtk_vbutton_box_get_type" :size)
 
-(test button-box-class
+(test gtk-button-box-class
   ;; Type check
   (is (g:type-is-object "GtkButtonBox"))
   ;; Check the registered name
@@ -91,16 +91,11 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-;;;     layout-style
-
 (test gtk-button-box-properties
   (let ((box (make-instance 'gtk:button-box)))
     (is (eq :edge (gtk:button-box-layout-style box)))))
 
 ;;; --- Child Properties -------------------------------------------------------
-
-;;;     non-homogeneous
-;;;     secondary
 
 (test gtk-button-box-child-properties
   (let ((box (make-instance 'gtk:button-box))
@@ -110,11 +105,6 @@
     (is-false (gtk:button-box-child-secondary box button))))
 
 ;;; --- Style Properties -------------------------------------------------------
-
-;;;     child-internal-pad-x
-;;;     child-internal-pad-y
-;;;     child-min-height
-;;;     child-min-width
 
 (test gtk-button-box-style-properties
   (let ((box (make-instance 'gtk:button-box)))
@@ -139,4 +129,4 @@
     (is (eq :start (setf (gtk:button-box-layout box) :start)))
     (is (eq :start (gtk:button-box-layout box)))))
 
-;;; 2023-12-30
+;;; 2024-4-10

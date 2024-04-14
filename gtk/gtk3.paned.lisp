@@ -35,6 +35,13 @@
 ;;;
 ;;;     GtkPaned
 ;;;
+;;; Accessors
+;;;
+;;;     gtk_paned_set_position
+;;;     gtk_paned_get_position
+;;;     gtk_paned_set_wide_handle
+;;;     gtk_paned_get_wide_handle
+;;;
 ;;; Functions
 ;;;
 ;;;     gtk_paned_new
@@ -44,11 +51,7 @@
 ;;;     gtk_paned_pack2
 ;;;     gtk_paned_get_child1
 ;;;     gtk_paned_get_child2
-;;;     gtk_paned_set_position                             Accessor
-;;;     gtk_paned_get_position                             Accessor
 ;;;     gtk_paned_get_handle_window
-;;;     gtk_paned_set_wide_handle                          Accessor
-;;;     gtk_paned_get_wide_handle                          Accessor
 ;;;
 ;;; Properties
 ;;;
@@ -88,7 +91,7 @@
 ;;;
 ;;; Implemented Interfaces
 ;;;
-;;;     GtkPaned implements AtkImplementorIface, GtkBuildable and GtkOrientable.
+;;;     GtkPaned implements AtkImplementorIface, GtkBuildable and GtkOrientable
 ;;; ----------------------------------------------------------------------------
 
 (in-package :gtk)
@@ -508,10 +511,10 @@ lambda (widget)    :action
 
 (defun paned-new (orientation)
  #+liber-documentation
- "@version{2023-3-5}
+ "@version{2024-4-10}
   @argument[orientation]{a @symbol{gtk:orientation} value for the orientation
     of the paned widget}
-  @return{A new @class{gtk:paned} widget.}
+  @return{The new @class{gtk:paned} widget.}
   @short{Creates a new paned widget.}
   @see-class{gtk:paned}
   @see-symbol{gtk:orientation}"
@@ -638,9 +641,9 @@ lambda (widget)    :action
 
 (cffi:defcfun ("gtk_paned_get_child1" paned-child1) (g:object widget)
  #+liber-documentation
- "@version{2023-3-5}
+ "@version{2024-4-10}
   @argument[paned]{a @class{gtk:paned} widget}
-  @return{First @class{gtk:widget} child widget, or @code{nil} if it is not
+  @return{The first @class{gtk:widget} child widget, or @code{nil} if it is not
     set.}
   @short{Obtains the first child widget of the paned widget.}
   @see-class{gtk:paned}
@@ -656,10 +659,10 @@ lambda (widget)    :action
 
 (cffi:defcfun ("gtk_paned_get_child2" paned-child2) (g:object widget)
  #+liber-documentation
- "@version{2023-3-5}
+ "@version{2024-4-10}
   @argument[paned]{a @class{gtk:paned} widget}
-  @return{Second @class{gtk:widget} child widget, or @code{nil} if it is not
-    set.}
+  @return{The second @class{gtk:widget} child widget, or @code{nil} if it is
+    not set.}
   @short{Obtains the second child widget of the paned widget.}
   @see-class{gtk:paned}
   @see-class{gtk:widget}

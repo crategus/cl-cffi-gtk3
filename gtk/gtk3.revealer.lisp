@@ -269,7 +269,7 @@
 (setf (liber:alias-for-function 'revealer-transition-type)
       "Accessor"
       (documentation 'revealer-transition-type 'function)
- "@version{2024-1-1}
+ "@version{2024-4-9}
   @syntax{(gtk:revealer-transition-type object) => setting}
   @syntax{(setf (gtk:revealer-transition-type object) setting)}
   @argument[object]{a @class{gtk:revealer} widget}
@@ -281,7 +281,7 @@
   @end{short}
   The @fun{gtk:revealer-transition-type} function gets the type of animation
   that will be used for transitions in the revealer. The
-  @setf{gtk:revealer-transition-duration} function sets the type of animation.
+  @setf{gtk:revealer-transition-type} function sets the type of animation.
   Available types include various kinds of fades and slides.
   @see-class{gtk:revealer}
   @see-symbol{gtk:revealer-transition-type}")

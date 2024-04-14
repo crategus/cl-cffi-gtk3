@@ -7,34 +7,34 @@
 
 ;;;     GtkLayout
 
-(test layout-class
-  ;; Type check
+(test gtk-layout-class
+  ;; Check type
   (is (g:type-is-object "GtkLayout"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:layout
           (glib:symbol-for-gtype "GtkLayout")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkLayout")
           (g:gtype (cffi:foreign-funcall "gtk_layout_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkContainer") (g:type-parent "GtkLayout")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
              (list-children "GtkLayout")))
-  ;; Check the interfaces
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable" "GtkScrollable")
              (list-interfaces "GtkLayout")))
-  ;; Check the class properties
+  ;; Check class properties
   (is (equal '("hadjustment" "height" "hscroll-policy" "vadjustment"
                "vscroll-policy" "width")
              (list-properties "GtkLayout")))
-  ;; Get the names of the style properties.
+  ;; Check style properties.
   (is (equal '()
              (list-style-properties "GtkLayout")))
-  ;; Get the names of the child properties
+  ;; Check child properties
   (is (equal '("x" "y")
              (list-child-properties "GtkLayout")))
-  ;; Check the class definition
+  ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkLayout" GTK-LAYOUT
                        (:SUPERCLASS GTK-CONTAINER :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable" "GtkScrollable")
@@ -45,7 +45,7 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-(test layout-properties
+(test gtk-layout-properties
   (let ((layout (make-instance 'gtk:layout)))
     ;; height
     (is (= 100 (gtk:layout-height layout)))
@@ -58,7 +58,7 @@
 
 ;;; --- Child Properties -------------------------------------------------------
 
-(test layout-child-properties
+(test gtk-layout-child-properties
   (let ((layout (make-instance 'gtk:layout))
         (child (make-instance 'gtk:frame)))
     (is-false (gtk:container-add layout child))
@@ -75,7 +75,7 @@
 
 ;;;     gtk_layout_new
 
-(test layout-new
+(test gtk-layout-new
   (let ((layout (make-instance 'gtk:layout)))
     (is (eq 'gtk:layout (type-of (gtk:layout-new))))
     (is (eq 'gtk:adjustment (type-of (gtk:scrollable-hadjustment layout))))
@@ -96,7 +96,7 @@
 
 ;;;     gtk_layout_put
 
-(test layout-put
+(test gtk-layout-put
   (let ((layout (make-instance 'gtk:layout))
         (button (make-instance 'gtk:button)))
     ;; Put a button in the layout
@@ -106,7 +106,7 @@
 
 ;;;     gtk_layout_move
 
-(test layout-move
+(test gtk-layout-move
   (let ((layout (make-instance 'gtk:layout))
         (button (make-instance 'gtk:button)))
     ;; Add a button to the layout
@@ -120,7 +120,7 @@
 
 ;;;     gtk_layout_size
 
-(test layout-size
+(test gtk-layout-size
   (let ((layout (make-instance 'gtk:layout)))
     (is (equal '(100 100)
                (multiple-value-list (gtk:layout-size layout))))
@@ -136,4 +136,4 @@
 
 ;;;     gtk_layout_get_bin_window
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-4-10

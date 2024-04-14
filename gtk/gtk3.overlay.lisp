@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -166,8 +166,8 @@ lambda (overlay widget allocation)    :run-last
       "Accessor"
       (documentation 'overlay-child-index 'function)
  "@version{2024-1-1}
-  @syntax{(gtk:overlay-child-index object) => index)}
-  @syntax{(setf (gtk:overlay-child-index object) index)}
+  @syntax{(gtk:overlay-child-index container child) => index)}
+  @syntax{(setf (gtk:overlay-child-index container child) index)}
   @argument[container]{a @class{gtk:overlay} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[index]{an integer with the index of the child widget in the parent}
@@ -280,6 +280,6 @@ lambda (overlay widget allocation)    :run-last
 ;;; gtk_overlay_set_overlay_pass_through ()
 ;;; ----------------------------------------------------------------------------
 
-;; Implemented as the child accessor overlay-child-pass-through
+;; Implemented as the child accessor gtk:overlay-child-pass-through
 
 ;;; --- End of file gtk3.overlay.lisp ------------------------------------------

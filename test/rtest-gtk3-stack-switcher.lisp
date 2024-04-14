@@ -7,37 +7,37 @@
 
 ;;;     GtkStackSwitcher
 
-(test stack-switcher-class
-  ;; Type check
+(test gtk-stack-switcher-class
+  ;; Check type
   (is (g:type-is-object "GtkStackSwitcher"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:stack-switcher
           (glib:symbol-for-gtype "GtkStackSwitcher")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkStackSwitcher")
           (g:gtype (cffi:foreign-funcall "gtk_stack_switcher_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkBox")
           (g:type-parent "GtkStackSwitcher")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
              (list-children "GtkStackSwitcher")))
-  ;; Check the interfaces
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
              (list-interfaces "GtkStackSwitcher")))
-  ;; Check the class properties
+  ;; Check class properties
   (is (equal '("icon-size" "stack")
              (list-properties "GtkStackSwitcher")))
-  ;; Get the names of the style properties
+  ;; Check style properties
   (is (equal '()
              (list-style-properties "GtkStackSwitcher")))
-  ;; Get the names of the child properties
+  ;; Check child properties
   (is (equal '("expand" "fill" "pack-type" "padding" "position")
              (list-child-properties "GtkStackSwitcher")))
-  ;; Check the signals
+  ;; Check signals
   (is (equal '()
              (list-signals "GtkStackSwitcher")))
-  ;; Check the class definition
+  ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkStackSwitcher" GTK-STACK-SWITCHER
                        (:SUPERCLASS GTK-BOX :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
@@ -50,13 +50,16 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-;;;     gint      icon-size  Read / Write
-;;;     GtkStack  stack      Read / Write / Construct
+(test gtk-stack-switcher-properties
+  (let ((switcher (make-instance 'gtk:stack-switcher)))
+    (is (= 1 (gtk:stack-switcher-icon-size switcher)))
+    (is-false (gtk:stack-switcher-stack switcher))))
 
 ;;; --- Functions --------------------------------------------------------------
 
 ;;;     gtk_stack_switcher_new
-;;;     gtk_stack_switcher_set_stack                       Accessor
-;;;     gtk_stack_switcher_get_stack                       Accessor
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+(test gtk-stack-switcher-new
+  (is (typep (gtk:stack-switcher-new) 'gtk:stack-switcher)))
+
+;;; 2024-4-9

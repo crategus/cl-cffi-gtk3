@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2023 Dieter Kaiser
+;;; Copyright (C) 2019 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -131,12 +131,12 @@
 (setf (liber:alias-for-function 'action-bar-child-pack-type)
       "Accessor"
       (documentation 'action-bar-child-pack-type 'function)
- "@version{2023-12-29}
-  @syntax{(gtk:action-bar-child-pack-type container child) => pack-type)}
-  @syntax{(setf (gtk:action-bar-child-pack-type container child) pack-type)}
+ "@version{2024-4-9}
+  @syntax{(gtk:action-bar-child-pack-type container child) => packtype)}
+  @syntax{(setf (gtk:action-bar-child-pack-type container child) packtype)}
   @argument[container]{a @class{gtk:action-bar} widget}
   @argument[child]{a @class{gtk:widget} child widget}
-  @argument[pack-type]{a value of the @symbol{gtk:pack-type} enumeration for
+  @argument[packtype]{a value of the @symbol{gtk:pack-type} enumeration for
     the child}
   @begin{short}
     Accessor of the @code{pack-type} child property of the
@@ -157,9 +157,9 @@
 (setf (liber:alias-for-function 'action-bar-child-position)
       "Accessor"
       (documentation 'action-bar-child-position 'function)
- "@version{2023-12-29}
-  @syntax{(gtk:action-bar-child-position object) => position)}
-  @syntax{(setf (gtk:action-bar-child-position object) position)}
+ "@version{2024-4-9}
+  @syntax{(gtk:action-bar-child-position container child) => position)}
+  @syntax{(setf (gtk:action-bar-child-position container child) position)}
   @argument[container]{a @class{gtk:action-bar} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[position]{an integer with the index of the child widget in the
@@ -232,7 +232,7 @@
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_action_bar_get_center_widget ()
-;;; gtk_action_bar_set_center_widget () -> action-bar-center-widget
+;;; gtk_action_bar_set_center_widget ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf action-bar-center-widget) (widget actionbar)
@@ -245,17 +245,17 @@
 (cffi:defcfun ("gtk_action_bar_get_center_widget" action-bar-center-widget)
     (g:object widget)
  #+liber-documentation
- "@version{2023-12-29}
+ "@version{2024-4-9}
   @syntax{(gtk:action-bar-center-widget actionbar) => widget}
   @syntax{(setf (gtk:action-bar-center-widget actionbar) widget)}
   @argument[actionbar]{a @class{gtk:action-bar} widget}
   @argument[widget]{a @class{gtk:widget} object to use for the center widget}
   @begin{short}
-    Accessor of the center widget of the action bar.
+    The @fun{gtk:action-bar-center-widget} function retrieves the center widget
+    of the action bar.
   @end{short}
-  The @fun{gtk:action-bar-center-widget} function retrieves the center widget
-  of the action bar. The @setf{gtk:action-bar-center-widget} function sets the
-  center widget for the action bar.
+  The @setf{gtk:action-bar-center-widget} function sets the center widget for
+  the action bar.
   @see-class{gtk:action-bar}
   @see-class{gtk:widget}"
   (actionbar (g:object action-bar)))

@@ -307,8 +307,8 @@ lambda (listbox step count)    :action
       @begin[code]{table}
         @entry[listbox]{The @class{gtk:list-box} widget on which the signal is
           emitted.}
-        @entry[step]{A value of the @symbol{gtk:movement-step} enumeration.}
-        @entry[count]{An integer.}
+        @entry[step]{The value of the @symbol{gtk:movement-step} enumeration.}
+        @entry[count]{The integer with the number of steps to move.}
       @end{table}
     @subheading{The \"row-activated\" signal}
       @begin{pre}
@@ -582,7 +582,7 @@ lambda (listbox)    :action
 (export 'list-box-unselect-all)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_list_box_get_selected_row () -> list-box-selected-row
+;;; gtk_list_box_get_selected_row ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_list_box_get_selected_row" list-box-selected-row)
@@ -663,7 +663,7 @@ lambda (listbox)    :action
 (export 'list-box-selected-foreach)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_list_box_get_selected_rows () -> list-box-selected-rows
+;;; gtk_list_box_get_selected_rows ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_list_box_get_selected_rows" list-box-selected-rows)
@@ -682,7 +682,7 @@ lambda (listbox)    :action
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_list_box_get_adjustment ()
-;;; gtk_list_box_set_adjustment () -> list-box-adjustment
+;;; gtk_list_box_set_adjustment ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf list-box-adjustment) (adjustment listbox)
@@ -695,17 +695,16 @@ lambda (listbox)    :action
 (cffi:defcfun ("gtk_list_box_get_adjustment" list-box-adjustment)
     (g:object adjustment)
  #+liber-documentation
- "@version{2024-1-1}
+ "@version{2024-4-9}
   @syntax{(gtk:list-box-adjustment listbox) => adjustment}
   @syntax{(setf (gtk:list-box-adjustment listbox) adjustment)}
   @argument[listbox]{a @class{gtk:list-box} widget}
   @argument[adjustment]{a @class{gtk:adjustment} object}
   @begin{short}
-    Accessor of the adjustment the list box uses for vertical scrolling.
+    The @fun{gtk:list-box-adjustment} function gets the adjustment (if any)
+    that the list box uses for vertical scrolling.
   @end{short}
-  The @fun{gtk:list-box-adjustment} function gets the adjustment (if any) that
-  the list box uses for vertical scrolling. The @setf{gtk:list-box-adjustment}
-  function sets the adjustment.
+   The @setf{gtk:list-box-adjustment} function sets the adjustment.
 
   For instance, this is used to get the page size for @kbd{PageUp/Down} key
   handling. In the normal case when the list box is packed inside a
@@ -739,7 +738,7 @@ lambda (listbox)    :action
 (export 'list-box-set-placeholder)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_list_box_get_row_at_index () -> list-box-row-at-index
+;;; gtk_list_box_get_row_at_index ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_list_box_get_row_at_index" list-box-row-at-index)
@@ -762,7 +761,7 @@ lambda (listbox)    :action
 (export 'list-box-row-at-index)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_list_box_get_row_at_y () -> list-box-row-at-y
+;;; gtk_list_box_get_row_at_y ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_list_box_get_row_at_y" list-box-row-at-y)
@@ -1281,7 +1280,7 @@ lambda (listbox)    :action
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_list_box_row_get_header ()
-;;; gtk_list_box_row_set_header () -> list-box-row-header
+;;; gtk_list_box_row_set_header ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf list-box-row-header) (header row)
@@ -1294,18 +1293,18 @@ lambda (listbox)    :action
 (cffi:defcfun ("gtk_list_box_row_get_header" list-box-row-header)
     (g:object widget)
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2024-4-9}
   @syntax{(gtk:list-box-row-header row) => header}
   @syntax{(setf (gtk:list-box-row-header row) header)}
   @argument[row]{a @class{gtk:list-box-row} widget}
   @argument[header]{a @class{gtk:widget} object}
   @begin{short}
-    Accessor of the header widget of a list box row.
+    The @fun{gtk:list-box-row-header} function returns the current header of
+    the list box row.
   @end{short}
-  The @fun{gtk:list-box-row-header} function returns the current header of the
-  list box row. This can be used in a @symbol{gtk:list-box-update-header-func}
-  callback function to see if there is a header set already, and if so to update
-  the state of it.
+  This can be used in a @symbol{gtk:list-box-update-header-func} callback
+  function to see if there is a header set already, and if so to update the
+  state of it.
 
   The @setf{gtk:list-box-row-header} function sets the current header of the
   list box row. This is only allowed to be called from a
@@ -1321,7 +1320,7 @@ lambda (listbox)    :action
 (export 'list-box-row-header)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_list_box_row_get_index () -> list-box-row-index
+;;; gtk_list_box_row_get_index ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_list_box_row_get_index" list-box-row-index) :int

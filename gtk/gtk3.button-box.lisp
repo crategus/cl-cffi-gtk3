@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -155,7 +155,7 @@
 (setf (documentation 'button-box 'type)
  "@version{2023-12-30}
   @begin{short}
-    A @class{gtk:button-box} widget should be used to provide a consistent
+    The @class{gtk:button-box} widget should be used to provide a consistent
     layout of buttons throughout your application.
   @end{short}
   The layout/spacing can be altered by the programmer, or if desired, by the
@@ -364,7 +364,7 @@
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_button_box_get_layout ()
-;;; gtk_button_box_set_layout () -> button-box-layout
+;;; gtk_button_box_set_layout ()
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf button-box-layout) (style buttonbox)
@@ -373,16 +373,16 @@
 (defun button-box-layout (buttonbox)
  #+liber-documentation
  "@version{2023-12-30}
-  @syntax{(gtk:button-box-layout button-box) => style}
-  @syntax{(setf (gtk:button-box-layout button-box) style)}
+  @syntax{(gtk:button-box-layout buttonbox) => style}
+  @syntax{(setf (gtk:button-box-layout buttonbox) style)}
   @argument[buttonbox]{a @class{gtk:button-box} widget}
   @argument[style]{a value of the @symbol{gtk:button-box-style} enumeration}
   @begin{short}
-    Accessor of the layout style of the button box.
+    The @fun{gtk:button-box-layout} function retrieves the method being used to
+    arrange the buttons in a button box.
   @end{short}
-  The @fun{gtk:button-box-layout} function retrieves the method being used to
-  arrange the buttons in a button box. The @setf{gtk:button-box-layout} function
-  changes the way buttons are arranged.
+  The @setf{gtk:button-box-layout} function changes the way buttons are
+  arranged.
   @begin{notes}
     The @fun{gtk:button-box-layout} function is an abbreviation for the
     @fun{gtk:button-box-layout-style} function.

@@ -50,9 +50,6 @@
 
 ;;; --- Child Properties -------------------------------------------------------
 
-;;;     index
-;;;     pass-through
-
 (test gtk-overlay-child-properties
   (let ((overlay (make-instance 'gtk:overlay))
         (button (make-instance 'gtk:button)))
@@ -99,4 +96,4 @@
     (is (= 1 (gtk:overlay-child-index overlay button1)))
     (is (= 0 (gtk:overlay-child-index overlay button2)))))
 
-;;; 2024-1-1
+;;; 2024-4-10

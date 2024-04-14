@@ -35,11 +35,14 @@
 ;;;
 ;;;     GtkStackSwitcher
 ;;;
+;;; Accessors
+;;;
+;;;     gtk_stack_switcher_set_stack
+;;;     gtk_stack_switcher_get_stack
+;;;
 ;;; Functions
 ;;;
 ;;;     gtk_stack_switcher_new
-;;;     gtk_stack_switcher_set_stack                       Accessor
-;;;     gtk_stack_switcher_get_stack                       Accessor
 ;;;
 ;;; Properties
 ;;;
@@ -83,7 +86,7 @@
 
 #+liber-documentation
 (setf (documentation 'stack-switcher 'type)
- "@version{#2023-3-27}
+ "@version{2024-4-9}
   @begin{short}
     The @class{gtk:stack-switcher} widget acts as a controller for a
     @class{gtk:stack} widget.
@@ -107,7 +110,7 @@
     @code{.needs-attention} style class to the widgets representing the stack
     pages.
   @end{dictionary}
-  @see-constructor{gtk:stack-switch-new}
+  @see-constructor{gtk:stack-switcher-new}
   @see-slot{gtk:stack-switcher-icon-size}
   @see-slot{gtk:stack-switcher-stack}
   @see-class{gtk:stack}")
@@ -130,7 +133,7 @@
 (setf (liber:alias-for-function 'stack-switcher-icon-size)
       "Accessor"
       (documentation 'stack-switcher-icon-size 'function)
- "@version{#2023-3-27}
+ "@version{2024-4-9}
   @syntax{(gtk:stack-switcher-icon-size object) => size}
   @syntax{(setf (gtk:stack-switcher-icon-size object) size)}
   @argument[object]{a @class{gtk:stack-switcher} widget}
@@ -154,7 +157,7 @@
 (setf (liber:alias-for-function 'stack-switcher-stack)
       "Accessor"
       (documentation 'stack-switcher-stack 'function)
- "@version{#2023-3-27}
+ "@version{2024-4-9}
   @syntax{(gtk:stack-switcher-stack object) => stack}
   @syntax{(setf (gtk:stack-switcher-stack object) stack)}
   @argument[object]{a @class{gtk:stack-switcher} widget}
@@ -176,7 +179,7 @@
 
 (defun stack-switcher-new ()
  #+liber-documentation
- "@version{#2023-3-27}
+ "@version{2024-4-9}
   @return{The new @class{gtk:stack-switcher} widget.}
   @short{Creates a new stack switcher.}
   @see-class{gtk:stack-switcher}"

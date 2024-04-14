@@ -35,39 +35,42 @@
 ;;;
 ;;;     GtkHeaderBar
 ;;;
+;;; Accessors
+;;;
+;;;     gtk_header_bar_set_custom_title
+;;;     gtk_header_bar_get_custom_title
+;;;     gtk_header_bar_set_decoration_layout
+;;;     gtk_header_bar_get_decoration_layout
+;;;     gtk_header_bar_set_has_subtitle
+;;;     gtk_header_bar_get_has_subtitle
+;;;     gtk_header_bar_set_show_close_button
+;;;     gtk_header_bar_get_show_close_button
+;;;     gtk_header_bar_set_subtitle
+;;;     gtk_header_bar_get_subtitle
+;;;     gtk_header_bar_set_title
+;;;     gtk_header_bar_get_title
+;;;
 ;;; Functions
 ;;;
 ;;;     gtk_header_bar_new
-;;;     gtk_header_bar_set_title                           Accessor
-;;;     gtk_header_bar_get_title                           Accessor
-;;;     gtk_header_bar_set_subtitle                        Accessor
-;;;     gtk_header_bar_get_subtitle                        Accessor
-;;;     gtk_header_bar_set_has_subtitle                    Accessor
-;;;     gtk_header_bar_get_has_subtitle                    Accessor
-;;;     gtk_header_bar_set_custom_title                    Accessor
-;;;     gtk_header_bar_get_custom_title                    Accessor
 ;;;     gtk_header_bar_pack_start
 ;;;     gtk_header_bar_pack_end
-;;;     gtk_header_bar_set_show_close_button               Accessor
-;;;     gtk_header_bar_get_show_close_button               Accessor
-;;;     gtk_header_bar_set_decoration_layout               Accessor
-;;;     gtk_header_bar_get_decoration_layout               Accessor
 ;;;
 ;;; Properties
 ;;;
-;;;       GtkWidget*   custom-title             Read / Write
-;;;           gchar*   decoration-layout        Read / Write
-;;;        gboolean    decoration-layout-set    Read / Write
-;;;        gboolean    has-subtitle             Read / Write
-;;;        gboolean    show-close-button        Read / Write
-;;;            gint    spacing                  Read / Write
-;;;           gchar*   subtitle                 Read / Write
-;;;           gchar*   title                    Read / Write
+;;;     custom-title
+;;;     decoration-layout
+;;;     decoration-layout-set
+;;;     has-subtitle
+;;;     show-close-button
+;;;     spacing
+;;;     subtitle
+;;;     title
 ;;;
 ;;; Child Properties
 ;;;
-;;;     GtkPackType    pack-type                Read / Write
-;;;            gint    position                 Read / Write
+;;;     pack-type
+;;;     position
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -121,7 +124,7 @@
 
 #+liber-documentation
 (setf (documentation 'header-bar 'type)
- "@version{#2023-3-20}
+ "@version{2024-4-9}
   @begin{short}
     The @class{gtk:header-bar} widget is similar to a horizontal @class{gtk:box}
     widget. It allows children to be placed at the start or the end. In
@@ -183,7 +186,7 @@
 (setf (liber:alias-for-function'header-bar-custom-title)
       "Accessor"
       (documentation 'header-bar-custom-title 'function)
- "@version{#2023-3-20}
+ "@version{2024-4-9}
   @syntax{(gtk:header-bar-custom-title object) => widget}
   @syntax{(setf (gtk:header-bar-custom-title object) widget)}
   @argument[object]{a @class{gtk:header-bar} widget}
@@ -225,7 +228,7 @@
 (setf (liber:alias-for-function 'header-bar-decoration-layout)
       "Accessor"
       (documentation 'header-bar-decoration-layout 'function)
- "@version{#2023-3-20}
+ "@version{2024-4-9}
   @syntax{(gtk:header-bar-decoration-layout object) => layout}
   @syntax{(setf (gtk:header-bar-decoration-layout object) layout)}
   @argument[object]{a @class{gtk:header-bar} widget}
@@ -247,12 +250,12 @@
 
   The format of the string is button names, separated by commas. A colon
   separates the buttons that should appear on the left from those on the right.
-  Recognized button names are \"minimize\", \"maximize\", \"close\", \"icon\"
-  for the window icon and \"menu\" for a menu button for the fallback
-  application menu.
+  Recognized button names are @code{\"minimize\"}, @code{\"maximize\"},
+  @code{\"close\"}, @code{\"icon\"} for the window icon and @code{\"menu\"} for
+  a menu button for the fallback application menu.
 
-  For example, \"menu:minimize,maximize,close\" specifies a Menu on the left,
-  and Minimize, Maximize and Close buttons on the right.
+  For example, @code{\"menu:minimize,maximize,close\"} specifies a Menu on the
+  left, and Minimize, Maximize and Close buttons on the right.
   @see-class{gtk:header-bar}
   @see-function{gtk:settings-gtk-decoration-layout}")
 
@@ -263,14 +266,15 @@
                                                'header-bar) t)
  "The @code{decoration-layout-set} property of type @code{:boolean}
   (Read / Write) @br{}
-  Set to @em{true} if the @code{decoration-layout} property is set. @br{}
+  Set to @em{true} if the @slot[gtk:header-bar]{decoration-layout} property is
+  set. @br{}
   Default value: @em{false}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'header-bar-decoration-layout-set)
       "Accessor"
       (documentation 'header-bar-decoration-layout-set 'function)
- "@version{#2023-3-20}
+ "@version{2024-4-9}
   @syntax{(gtk:header-bar-decoration-layout-set object) => setting}
   @syntax{(setf (gtk:header-bar-decoration-layout-set object) setting)}
   @argument[object]{a @class{gtk:header-bar} widget}
@@ -297,7 +301,7 @@
 (setf (liber:alias-for-function 'header-bar-has-subtitle)
       "Accessor"
       (documentation 'header-bar-has-subtitle 'function)
- "@version{#2023-3-20}
+ "@version{2024-4-9}
   @syntax{(gtk:header-bar-has-subtitle object) => setting}
   @syntax{(setf gtk:header-bar-has-subtitle object) setting)}
   @argument[object]{a @class{gtk:header-bar} widget}
@@ -320,16 +324,16 @@
  "The @code{show-close-button} property of type @code{:boolean} (Read / Write)
   @br{}
   Whether to show window decorations. Which buttons are actually shown and
-  where is determined by the @code{decoration-layout} property, and by the
-  state of the window, e.g. a Close button will not be shown if the window
-  can not be closed. @br{}
+  where is determined by the @slot[gtk:header-bar]{decoration-layout} property,
+  and by the state of the window, e.g. a Close button will not be shown if the
+  window can not be closed. @br{}
   Default value: @em{false}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'header-bar-show-close-button)
       "Accessor"
       (documentation 'header-bar-show-close-button 'function)
- "@version{#2023-3-20}
+ "@version{2024-4-9}
   @syntax{(gtk:header-bar-show-close-button object) => setting}
   @syntax{(setf gtk:header-bar-show-close-button object) setting)}
   @argument[object]{a @class{gtk:header-bar} widget}
@@ -357,7 +361,7 @@
 (setf (liber:alias-for-function 'header-bar-spacing)
       "Accessor"
       (documentation 'header-bar-spacing 'function)
- "@version{#2023-3-20}
+ "@version{2024-4-9}
   @syntax{(gtk:header-bar-spacing object) => spacing}
   @syntax{(setf gtk:header-bar-spacing object) spacing)}
   @argument[object]{a @class{gtk:header-bar} widget}
@@ -381,7 +385,7 @@
 (setf (liber:alias-for-function 'header-bar-subtitle)
       "Accessor"
       (documentation 'header-bar-subtitle 'function)
- "@version{#2023-3-20}
+ "@version{2024-4-9}
   @syntax{(gtk:header-bar-subtitle object) => subtitle}
   @syntax{(setf (gtk:header-bar-subtitle object) subtitle)}
   @argument[object]{a @class{gtk:header-bar} widget}
@@ -413,7 +417,7 @@
 (setf (liber:alias-for-function 'header-bar-title)
       "Accessor"
       (documentation 'header-bar-title 'function)
- "@version{#2023-3-20}
+ "@version{2024-4-9}
   @syntax{(gtk:header-bar-title object) => title}
   @syntax{(setf (gtk:header-bar-title object) title)}
   @argument[object]{a @class{gtk:header-bar} widget}
@@ -443,12 +447,12 @@
 (setf (liber:alias-for-function 'header-bar-child-pack-type)
       "Accessor"
       (documentation 'header-bar-child-pack-type 'function)
- "@version{#2023-3-20}
-  @syntax{(gtk:header-bar-child-pack-type object) => pack-type)}
-  @syntax{(setf (gtk:header-bar-child-pack-type object) pack-type)}
+ "@version{2024-4-9}
+  @syntax{(gtk:header-bar-child-pack-type container child) => packtype)}
+  @syntax{(setf (gtk:header-bar-child-pack-type object) packtype)}
   @argument[container]{a @class{gtk:header-bar} widget}
   @argument[child]{a @class{gtk:widget} child widget}
-  @argument[pack-type]{a value of the @symbol{gtk:pack-type} enumeration for
+  @argument[packtype]{a value of the @symbol{gtk:pack-type} enumeration for
     the child widget}
   @begin{short}
     Accessor of the @code{pack-type} child property of the
@@ -469,9 +473,9 @@
 (setf (liber:alias-for-function 'header-bar-child-position)
       "Accessor"
       (documentation 'header-bar-child-position 'function)
- "@version{#2023-3-20}
-  @syntax{(gtk:header-bar-child-position object) => position)}
-  @syntax{(setf (gtk:header-bar-child-position object) position)}
+ "@version{2024-4-9}
+  @syntax{(gtk:header-bar-child-position container child) => position)}
+  @syntax{(setf (gtk:header-bar-child-position container child) position)}
   @argument[container]{a @class{gtk:header-bar} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[position]{an integer with the index of the child widget in the
@@ -492,11 +496,9 @@
 
 (defun header-bar-new ()
  #+liber-documentation
- "@version{#2023-3-20}
-  @return{A new @class{gtk:header-bar} widget.}
-  @begin{short}
-    Creates a new header bar.
-  @end{short}
+ "@version{2024-4-9}
+  @return{The new @class{gtk:header-bar} widget.}
+  @short{Creates a new header bar.}
   @see-class{gtk:header-bar}"
   (make-instance 'header-bar))
 
@@ -508,7 +510,7 @@
 
 (cffi:defcfun ("gtk_header_bar_pack_start" header-bar-pack-start) :void
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{2024-4-9}
   @argument[header]{a @class{gtk:header-bar} widget}
   @argument[child]{a @class{gtk:widget} child widget to be added to the
     header bar}
@@ -530,7 +532,7 @@
 
 (cffi:defcfun ("gtk_header_bar_pack_end" header-bar-pack-end) :void
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{2024-4-9}
   @argument[header]{a @class{gtk:header-bar} widget}
   @argument[child]{a @class{gtk:widget} child widget to be added to the
     header bar}

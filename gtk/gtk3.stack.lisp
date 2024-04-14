@@ -36,30 +36,33 @@
 ;;;     GtkStack
 ;;;     GtkStackTransitionType
 ;;;
+;;; Accessors
+;;;
+;;;     gtk_stack_set_hhomogeneous
+;;;     gtk_stack_get_hhomogeneous
+;;;     gtk_stack_set_homogeneous
+;;;     gtk_stack_get_homogeneous
+;;;     gtk_stack_get_interpolate_size
+;;;     gtk_stack_set_interpolate_size
+;;;     gtk_stack_set_transition_duration
+;;;     gtk_stack_get_transition_duration
+;;;     gtk_stack_get_transition_running
+;;;     gtk_stack_set_transition_type
+;;;     gtk_stack_get_transition_type
+;;;     gtk_stack_set_vhomogeneous
+;;;     gtk_stack_get_vhomogeneous
+;;;     gtk_stack_set_visible_child
+;;;     gtk_stack_get_visible_child
+;;;     gtk_stack_set_visible_child_name
+;;;     gtk_stack_get_visible_child_name
+;;;
 ;;; Functions
 ;;;
 ;;;     gtk_stack_new
 ;;;     gtk_stack_add_named
 ;;;     gtk_stack_add_titled
 ;;;     gtk_stack_get_child_by_name
-;;;     gtk_stack_set_visible_child                        Accessor
-;;;     gtk_stack_get_visible_child                        Accessor
-;;;     gtk_stack_set_visible_child_name                   Accessor
-;;;     gtk_stack_get_visible_child_name                   Accessor
 ;;;     gtk_stack_set_visible_child_full
-;;;     gtk_stack_set_homogeneous                          Accessor
-;;;     gtk_stack_get_homogeneous                          Accessor
-;;;     gtk_stack_set_hhomogeneous                         Accessor
-;;;     gtk_stack_get_hhomogeneous                         Accessor
-;;;     gtk_stack_set_vhomogeneous                         Accessor
-;;;     gtk_stack_get_vhomogeneous                         Accessor
-;;;     gtk_stack_set_transition_duration                  Accessor
-;;;     gtk_stack_get_transition_duration                  Accessor
-;;;     gtk_stack_set_transition_type                      Accessor
-;;;     gtk_stack_get_transition_type                      Accessor
-;;;     gtk_stack_get_transition_running                   Accessor
-;;;     gtk_stack_get_interpolate_size                     Accessor
-;;;     gtk_stack_set_interpolate_size                     Accessor
 ;;;
 ;;; Properties
 ;;;
@@ -128,7 +131,7 @@
 (setf (liber:alias-for-symbol 'stack-transition-type)
       "GEnum"
       (liber:symbol-documentation 'stack-transition-type)
- "@version{#2024-3-22}
+ "@version{2024-4-9}
   @begin{declaration}
     @begin{pre}
 (gobject:define-g-enum \"GtkStackTransitionType\" stack-transition-type
@@ -233,7 +236,7 @@
 
 #+liber-documentation
 (setf (documentation 'stack 'type)
- "@version{#2023-3-27}
+ "@version{2024-4-9}
   @begin{short}
     The @class{gtk:stack} widget is a container which only shows one of its
     children at a time.
@@ -319,7 +322,7 @@
 (setf (liber:alias-for-function 'stack-hhomogeneous)
       "Accessor"
       (documentation 'stack-hhomogeneous 'function)
- "@version{#2023-3-27}
+ "@version{2024-4-9}
   @syntax{(gtk:stack-hhomogeneous object) => homogeneous}
   @syntax{(setf (gtk:stack-hhomogeneous object) homogeneous)}
   @argument[object]{a @class{gtk:stack} widget}
@@ -351,7 +354,7 @@
 (setf (liber:alias-for-function 'stack-homogeneous)
       "Accessor"
       (documentation 'stack-homogeneous 'function)
- "@version{#2023-3-27}
+ "@version{2024-4-9}
   @syntax{(gtk:stack-homogeneous object) => homogeneous}
   @syntax{(setf (gtk:stack-homogeneous object) homogeneous)}
   @argument[object]{a @class{gtk:stack} widget}
@@ -387,7 +390,7 @@
 (setf (liber:alias-for-function 'stack-interpolate-size)
       "Accessor"
       (documentation 'stack-interpolate-size 'function)
- "@version{#2023-3-27}
+ "@version{2024-4-9}
   @syntax{(gtk:stack-interpolate-size object) => interpolate}
   @syntax{(setf (gtk:stack-interpolate-size object) interpolate)}
   @argument[object]{a @class{gtk:stack} widget}
@@ -420,7 +423,7 @@
 (setf (liber:alias-for-function 'stack-transition-duration)
       "Accessor"
       (documentation 'stack-transition-duration 'function)
- "@version{#2023-3-27}
+ "@version{2024-4-9}
   @syntax{(gtk:stack-transition-duration object) => duration}
   @syntax{(setf (gtk:stack-transition-duration object) duration)}
   @argument[object]{a @class{gtk:stack} widget}
@@ -446,7 +449,7 @@
 (setf (liber:alias-for-function 'stack-transition-running)
       "Accessor"
       (documentation 'stack-transition-running 'function)
- "@version{#2023-3-27}
+ "@version{2024-4-9}
   @syntax{(gtk:stack-transition-running object) => running}
   @argument[object]{a @class{gtk:stack} widget}
   @begin{short}
@@ -470,7 +473,7 @@
 (setf (liber:alias-for-function 'stack-transition-type)
       "Accessor"
       (documentation 'stack-transition-type 'function)
- "@version{#2023-3-27}
+ "@version{2024-4-9}
   @syntax{(gtk:stack-transition-type object) => setting}
   @syntax{(setf (gtk:stack-transition-type object) setting)}
   @argument[object]{a @class{gtk:stack} widget}
@@ -504,7 +507,7 @@
 (setf (liber:alias-for-function 'stack-vhomogeneous)
       "Accessor"
       (documentation 'stack-vhomogeneous 'function)
- "@version{#2023-3-27}
+ "@version{2024-4-9}
   @syntax{(gtk:stack-vhomogeneous object) => homogeneous}
   @syntax{(setf (gtk:stack-vhomogeneous object) homogeneous)}
   @argument[object]{a @class{gtk:stack} widget}
@@ -536,7 +539,7 @@
 (setf (liber:alias-for-function 'stack-visible-child)
       "Accessor"
       (documentation 'stack-visible-child 'function)
- "@version{#2023-3-27}
+ "@version{2024-4-9}
   @syntax{(gtk:stack-visible-child object) => child}
   @syntax{(setf (gtk:stack-visible-child object) child)}
   @argument[object]{a @class{gtk:stack} widget}
@@ -574,7 +577,7 @@
 (setf (liber:alias-for-function 'stack-visible-child-name)
       "Accessor"
       (documentation 'stack-visible-child-name 'function)
- "@version{#2023-3-27}
+ "@version{2024-4-9}
   @syntax{(gtk:stack-visible-child-name object) => name}
   @syntax{(setf (gtk:stack-visible-child-name object) name)}
   @argument[object]{a @class{gtk:stack} widget}
@@ -611,9 +614,9 @@
 (setf (liber:alias-for-function 'stack-child-icon-name)
       "Accessor"
       (documentation 'stack-child-icon-name 'function)
- "@version{#2023-3-27}
-  @syntax{(gtk:stack-child-icon-name object) => name)}
-  @syntax{(setf (gtk:stack-child-icon-name object) name)}
+ "@version{2024-4-9}
+  @syntax{(gtk:stack-child-icon-name container child) => name)}
+  @syntax{(setf (gtk:stack-child-icon-name container child) name)}
   @argument[container]{a @class{gtk:stack} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[name]{a string with the icon name of the child page}
@@ -634,9 +637,9 @@
 (setf (liber:alias-for-function 'stack-child-name)
       "Accessor"
       (documentation 'stack-child-name 'function)
- "@version{#2023-3-27}
-  @syntax{(gtk:stack-child-name object) => name)}
-  @syntax{(setf (gtk:stack-child-name object) name)}
+ "@version{2024-4-9}
+  @syntax{(gtk:stack-child-name container child) => name)}
+  @syntax{(setf (gtk:stack-child-name container child) name)}
   @argument[container]{a @class{gtk:stack} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[name]{a string with the name of the child page}
@@ -656,7 +659,7 @@
 (setf (liber:alias-for-function 'stack-child-needs-attention)
       "Accessor"
       (documentation 'stack-child-needs-attention 'function)
- "@version{#2023-3-27}
+ "@version{2024-4-9}
   @syntax{(gtk:stack-child-needs-attention container child) => attention)}
   @syntax{(setf (gtk:stack-child-needs-attention container child) attention)}
   @argument[container]{a @class{gtk:stack} widget}
@@ -683,7 +686,7 @@
 (setf (liber:alias-for-function 'stack-child-position)
       "Accessor"
       (documentation 'stack-child-position 'function)
- "@version{#2023-3-27}
+ "@version{2024-4-9}
   @syntax{(gtk:stack-child-position container child) => position)}
   @syntax{(setf (gtk:stack-child-position container child) position)}
   @argument[container]{a @class{gtk:stack} widget}
@@ -706,7 +709,7 @@
 (setf (liber:alias-for-function 'stack-child-title)
       "Accessor"
       (documentation 'stack-child-title 'function)
- "@version{#2023-3-27}
+ "@version{2024-4-9}
   @syntax{(gtk:stack-child-title container child) => title)}
   @syntax{(setf (gtk:stack-child-title container child) title)}
   @argument[container]{a @class{gtk:stack} widget}
@@ -727,7 +730,7 @@
 
 (defun stack-new ()
  #+liber-documentation
- "@version{#2023-3-27}
+ "@version{2024-4-9}
   @return{The new @class{gtk:stack} widget.}
   @short{Creates a new stack.}
   @see-class{gtk:stack}"

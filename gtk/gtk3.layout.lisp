@@ -93,7 +93,7 @@
 
 #+liber-documentation
 (setf (documentation 'layout 'type)
- "@version{#2023-3-20}
+ "@version{2024-4-10}
   @begin{short}
     The @class{gtk:layout} widget is similar to the @class{gtk:drawing-area}
     widget in that it is a \"blank slate\" and does not do anything but paint
@@ -147,7 +147,7 @@
 (setf (liber:alias-for-function 'layout-height)
       "Accessor"
       (documentation 'layout-height 'function)
- "@version{#2023-3-20}
+ "@version{2024-4-10}
   @syntax{(gtk:layout-height object) => height}
   @syntax{(setf (gtk:layout-height object) height)}
   @argument[object]{a @class{gtk:layout} widget}
@@ -174,7 +174,7 @@
 (setf (liber:alias-for-function 'layout-width)
       "Accessor"
       (documentation 'layout-width 'function)
- "@version{#2023-3-20}
+ "@version{2024-4-10}
   @syntax{(gtk:layout-width object) => width}
   @syntax{(setf (gtk:layout-width object) width)}
   @argument[object]{a @class{gtk:layout} widget}
@@ -199,8 +199,8 @@
 (setf (liber:alias-for-function 'layout-child-x)
       "Accessor"
       (documentation 'layout-child-x 'function)
- "@version{#2023-3-20}
-  @syntax{(gtk:layout-child-x container cild) => x}
+ "@version{2024-4-10}
+  @syntax{(gtk:layout-child-x container child) => x}
   @syntax{(setf (gtk:layout-child-x container child) x)}
   @argument[container]{a @class{gtk:layout} widget}
   @argument[child]{a @class{gtk:widget} child widget}
@@ -220,8 +220,8 @@
 (setf (liber:alias-for-function 'layout-child-y)
       "Accessor"
       (documentation 'layout-child-y 'function)
- "@version{#2023-3-20}
-  @syntax{(gtk:layout-child-y container cild) => y}
+ "@version{2024-4-10}
+  @syntax{(gtk:layout-child-y container child) => y}
   @syntax{(setf (gtk:layout-child-y container child) y)}
   @argument[container]{a @class{gtk:layout} widget}
   @argument[child]{a @class{gtk:widget} child widget}
@@ -241,10 +241,10 @@
 
 (defun layout-new (&optional (hadjustment nil) (vadjustment nil))
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{2024-4-10}
   @argument[hadjustment]{a horizontal scroll @class{gtk:adjustment} object}
   @argument[vadjustment]{a vertical scroll @class{gtk:adjustment} object}
-  @return{A new @class{gtk:layout} widget.}
+  @return{The new @class{gtk:layout} widget.}
   @begin{short}
     Creates a new layout.
   @end{short}
@@ -269,7 +269,7 @@
 
 (cffi:defcfun ("gtk_layout_put" layout-put) :void
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{2024-4-10}
   @argument[layout]{a @class{gtk:layout} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[x]{an integer with the x position of the child widget}
@@ -294,7 +294,7 @@
 
 (cffi:defcfun ("gtk_layout_move" layout-move) :void
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{2024-4-10}
   @argument[layout]{a @class{gtk:layout} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[x]{an integer with the x position to move to}
@@ -328,7 +328,7 @@
 
 (defun layout-size (layout)
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{2024-4-10}
   @syntax{(gtk:layout-size layout) => width, height}
   @syntax{(setf (gtk:layout-size layout) '(width height))}
   @argument[layout]{a @class{gtk:layout} widget}
@@ -355,107 +355,45 @@
 (export 'layout-size)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_layout_get_hadjustment ()
-;;;
-;;; GtkAdjustment * gtk_layout_get_hadjustment (GtkLayout *layout);
-;;;
-;;; Warning
-;;;
-;;; gtk_layout_get_hadjustment has been deprecated since version 3.0 and should
-;;; not be used in newly written code. Use gtk_scrollable_get_hadjustment()
+;;; gtk_layout_get_hadjustment ()                           Deprecated 3.0
 ;;;
 ;;; This function should only be called after the layout has been placed in a
 ;;; GtkScrolledWindow or otherwise configured for scrolling. It returns the
 ;;; GtkAdjustment used for communication between the horizontal scrollbar and
 ;;; layout.
-;;;
-;;; See GtkScrolledWindow, GtkScrollbar, GtkAdjustment for details.
-;;;
-;;; layout :
-;;;     a GtkLayout
-;;;
-;;; Returns :
-;;;     horizontal scroll adjustment
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_layout_get_vadjustment ()
-;;;
-;;; GtkAdjustment * gtk_layout_get_vadjustment (GtkLayout *layout);
-;;;
-;;; Warning
-;;;
-;;; gtk_layout_get_vadjustment has been deprecated since version 3.0 and should
-;;; not be used in newly written code. Use gtk_scrollable_get_vadjustment()
+;;; gtk_layout_get_vadjustment ()                           Deprecated 3.0
 ;;;
 ;;; This function should only be called after the layout has been placed in a
 ;;; GtkScrolledWindow or otherwise configured for scrolling. It returns the
 ;;; GtkAdjustment used for communication between the vertical scrollbar and
 ;;; layout.
-;;;
-;;; See GtkScrolledWindow, GtkScrollbar, GtkAdjustment for details.
-;;;
-;;; layout :
-;;;     a GtkLayout
-;;;
-;;; Returns :
-;;;     vertical scroll adjustment
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_layout_set_hadjustment ()
-;;;
-;;; void gtk_layout_set_hadjustment (GtkLayout *layout,
-;;;                                  GtkAdjustment *adjustment);
-;;;
-;;; Warning
-;;;
-;;; gtk_layout_set_hadjustment has been deprecated since version 3.0 and should
-;;; not be used in newly written code. Use gtk_scrollable_set_hadjustment()
+;;; gtk_layout_set_hadjustment ()                           Deprecated 3.0
 ;;;
 ;;; Sets the horizontal scroll adjustment for the layout.
-;;;
-;;; See GtkScrolledWindow, GtkScrollbar, GtkAdjustment for details.
-;;;
-;;; layout :
-;;;     a GtkLayout
-;;;
-;;; adjustment :
-;;;     new scroll adjustment
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_layout_set_vadjustment ()
-;;;
-;;; void gtk_layout_set_vadjustment (GtkLayout *layout,
-;;;                                  GtkAdjustment *adjustment);
-;;;
-;;; Warning
-;;;
-;;; gtk_layout_set_vadjustment has been deprecated since version 3.0 and should
-;;; not be used in newly written code. Use gtk_scrollable_set_vadjustment()
+;;; gtk_layout_set_vadjustment ()                           Deprecated 3.0
 ;;;
 ;;; Sets the vertical scroll adjustment for the layout.
-;;;
-;;; See GtkScrolledWindow, GtkScrollbar, GtkAdjustment for details.
-;;;
-;;; layout :
-;;;     a GtkLayout
-;;;
-;;; adjustment :
-;;;     new scroll adjustment
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_layout_get_bin_window () -> layout-bin-window
+;;; gtk_layout_get_bin_window ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_layout_get_bin_window" layout-bin-window)
     (g:object gdk:window)
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2024-4-10}
   @argument[layout]{a @class{gtk:layout} widget}
-  @return{A @class{gdk:window} object.}
+  @return{The @class{gdk:window} object.}
   @begin{short}
     Retrieve the GDK window of the layout used for drawing operations.
   @end{short}

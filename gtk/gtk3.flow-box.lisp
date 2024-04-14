@@ -36,6 +36,23 @@
 ;;;     GtkFlowBox
 ;;;     GtkFlowBoxChild
 ;;;
+;;; Accessors
+;;;
+;;;     gtk_flow_box_set_activate_on_single_click
+;;;     gtk_flow_box_get_activate_on_single_click
+;;;     gtk_flow_box_set_column_spacing
+;;;     gtk_flow_box_get_column_spacing
+;;;     gtk_flow_box_set_homogeneous
+;;;     gtk_flow_box_get_homogeneous
+;;;     gtk_flow_box_set_max_children_per_line
+;;;     gtk_flow_box_get_max_children_per_line
+;;;     gtk_flow_box_set_min_children_per_line
+;;;     gtk_flow_box_get_min_children_per_line
+;;;     gtk_flow_box_set_row_spacing
+;;;     gtk_flow_box_get_row_spacing
+;;;     gtk_flow_box_set_selection_mode
+;;;     gtk_flow_box_get_selection_mode
+;;;
 ;;; Functions
 ;;;
 ;;;     gtk_flow_box_new
@@ -44,18 +61,6 @@
 ;;;     gtk_flow_box_get_child_at_pos
 ;;;     gtk_flow_box_set_hadjustment
 ;;;     gtk_flow_box_set_vadjustment
-;;;     gtk_flow_box_set_homogeneous                       Accessor
-;;;     gtk_flow_box_get_homogeneous                       Accessor
-;;;     gtk_flow_box_set_row_spacing                       Accessor
-;;;     gtk_flow_box_get_row_spacing                       Accessor
-;;;     gtk_flow_box_set_column_spacing                    Accessor
-;;;     gtk_flow_box_get_column_spacing                    Accessor
-;;;     gtk_flow_box_set_min_children_per_line             Accessor
-;;;     gtk_flow_box_get_min_children_per_line             Accessor
-;;;     gtk_flow_box_set_max_children_per_line             Accessor
-;;;     gtk_flow_box_get_max_children_per_line             Accessor
-;;;     gtk_flow_box_set_activate_on_single_click          Accessor
-;;;     gtk_flow_box_get_activate_on_single_click          Accessor
 ;;;     GtkFlowBoxForeachFunc
 ;;;     gtk_flow_box_selected_foreach
 ;;;     gtk_flow_box_get_selected_children
@@ -63,8 +68,6 @@
 ;;;     gtk_flow_box_unselect_child
 ;;;     gtk_flow_box_select_all
 ;;;     gtk_flow_box_unselect_all
-;;;     gtk_flow_box_set_selection_mode
-;;;     gtk_flow_box_get_selection_mode
 ;;;     GtkFlowBoxFilterFunc
 ;;;     gtk_flow_box_set_filter_func
 ;;;     gtk_flow_box_invalidate_filter
@@ -191,8 +194,8 @@ lambda (child)    :action
 (setf (documentation 'flow-box 'type)
  "@version{2023-3-5}
   @begin{short}
-    A @class{gtk:flow-box} widget positions child widgets in sequence according
-    to its orientation.
+    The @class{gtk:flow-box} widget positions child widgets in sequence
+    according to its orientation.
   @end{short}
 
   @image[flow-box]{Figure: GtkFlowBox}
@@ -276,7 +279,7 @@ lambda (flowbox step count)    :action
           emitted.}
         @entry[step]{The granularity to the move, as a value of the
           @symbol{gtk:movement-step} enumeration.}
-        @entry[count]{An integer with the number of step units to move.}
+        @entry[count]{The integer with the number of step units to move.}
         @entry[Returns]{@em{True} to stop other handlers from being invoked for
           the event. @em{False} to propagate the event further.}
       @end{table}
@@ -503,10 +506,10 @@ lambda (flowbox)    :action
   Default value: 0")
 
 #+liber-documentation
-(setf (liber:alias-for-function 'flow-row-spacing)
+(setf (liber:alias-for-function 'flow-box-row-spacing)
       "Accessor"
       (documentation 'flow-box-row-spacing 'function)
- "@version{2023-3-5}
+ "@version{2024-4-9}
   @syntax{(gtk:flow-box-row-spacing object) => spacing}
   @syntax{(setf (gtk:flow-box-row-spacing object) spacing)}
   @argument[object]{a @class{gtk:flow-box} widget}
@@ -531,10 +534,10 @@ lambda (flowbox)    :action
   Default value: @code{:single}")
 
 #+liber-documentation
-(setf (liber:alias-for-function 'flow-selection-mode)
+(setf (liber:alias-for-function 'flow-box-selection-mode)
       "Accessor"
       (documentation 'flow-box-selection-mode 'function)
- "@version{2023-3-5}
+ "@version{2024-4-9}
   @syntax{(gtk:flow-box-selection-mode object) => mode}
   @syntax{(setf (gtk:flow-box-selection-mode object) mode)}
   @argument[object]{a @class{gtk:flow-box} widget}
@@ -597,7 +600,7 @@ lambda (flowbox)    :action
 (export 'flow-box-insert)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_flow_box_get_child_at_index () -> flow-box-child-at-index
+;;; gtk_flow_box_get_child_at_index ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_flow_box_get_child_at_index" flow-box-child-at-index)
@@ -619,7 +622,7 @@ lambda (flowbox)    :action
 (export 'flow-box-child-at-index)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_flow_box_get_child_at_pos () -> flow-box-child-at-pos
+;;; gtk_flow_box_get_child_at_pos ()
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_flow_box_get_child_at_pos" flow-box-child-at-pos)
@@ -649,7 +652,7 @@ lambda (flowbox)    :action
 
 (cffi:defcfun ("gtk_flow_box_set_hadjustment" flow-box-set-hadjustment) :void
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2024-4-9}
   @argument[flowbox]{a @class{gtk:flow-box} widget}
   @argument[adjustment]{a @class{gtk:adjustment} object which should be adjusted
     when the focus is moved among the descendents of @arg{flowbox}}
@@ -658,8 +661,8 @@ lambda (flowbox)    :action
   @end{short}
   The adjustment is also used for autoscrolling during rubberband selection.
   See the @fun{gtk:scrolled-window-hadjustment} function for a typical way of
-  obtaining the adjustment, and the @fun{gtk:flow-box-vadjustment} function for
-  setting the vertical adjustment.
+  obtaining the adjustment, and the @fun{gtk:flow-box-set-vadjustment} function
+  for setting the vertical adjustment.
 
   The adjustments have to be in pixel units and in the same coordinate system
   as the allocation for immediate children of the flow box.
@@ -678,7 +681,7 @@ lambda (flowbox)    :action
 
 (cffi:defcfun ("gtk_flow_box_set_vadjustment" flow-box-set-vadjustment) :void
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2024-4-9}
   @argument[flowbox]{a @class{gtk:flow-box} widget}
   @argument[adjustment]{a @class{gtk:adjustment} object which should be adjusted
     when the focus is moved among the descendents of @arg{flowbox}}
@@ -687,8 +690,8 @@ lambda (flowbox)    :action
   @end{short}
   The adjustment is also used for autoscrolling during rubberband selection.
   See the @fun{gtk:scrolled-window-vadjustment} function for a typical way of
-  obtaining the adjustment, and the @fun{gtk:flow-box-hadjustment} function for
-  setting the vertical adjustment.
+  obtaining the adjustment, and the @fun{gtk:flow-box-set-hadjustment} function
+  for setting the vertical adjustment.
 
   The adjustments have to be in pixel units and in the same coordinate system
   as the allocation for immediate children of the box.
