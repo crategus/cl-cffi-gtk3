@@ -8,27 +8,27 @@
 ;;;     GtkAssistantPageType
 
 (test gtk-assistant-page-type
-  ;; Check the type
+  ;; Check type
   (is (g:type-is-enum "GtkAssistantPageType"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkAssistantPageType")
           (g:gtype (cffi:foreign-funcall "gtk_assistant_page_type_get_type"
                                          :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:assistant-page-type
           (glib:symbol-for-gtype "GtkAssistantPageType")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_ASSISTANT_PAGE_CONTENT" "GTK_ASSISTANT_PAGE_INTRO"
                "GTK_ASSISTANT_PAGE_CONFIRM" "GTK_ASSISTANT_PAGE_SUMMARY"
                "GTK_ASSISTANT_PAGE_PROGRESS" "GTK_ASSISTANT_PAGE_CUSTOM")
              (list-enum-item-name "GtkAssistantPageType")))
-  ;; Check the values
+  ;; Check values
   (is (equal '(0 1 2 3 4 5)
              (list-enum-item-value "GtkAssistantPageType")))
-  ;; Check the nick names
+  ;; Check nick names
   (is (equal '("content" "intro" "confirm" "summary" "progress" "custom")
              (list-enum-item-nick "GtkAssistantPageType")))
-  ;; Check the enum definition
+  ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkAssistantPageType"
                                      GTK-ASSISTANT-PAGE-TYPE
                                      (:EXPORT T
@@ -45,37 +45,37 @@
 ;;;     GtkAssistant
 
 (test gtk-assistant-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkAssistant"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:assistant
           (glib:symbol-for-gtype "GtkAssistant")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkAssistant")
           (g:gtype (cffi:foreign-funcall "gtk_assistant_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkWindow")
           (g:type-parent "GtkAssistant")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
              (list-children "GtkAssistant")))
-  ;; Check the interfaces
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
              (list-interfaces "GtkAssistant")))
-  ;; Check the class properties
+  ;; Check class properties
   (is (equal '("use-header-bar")
              (list-properties "GtkAssistant")))
-  ;; Get the names of the style properties
+  ;; Check style properties
   (is (equal '("content-padding" "header-padding")
              (list-style-properties "GtkAssistant")))
-  ;; Get the names of the child properties
+  ;; Check child properties
   (is (equal '("complete" "has-padding" "header-image" "page-type"
                "sidebar-image" "title")
              (list-child-properties "GtkAssistant")))
-  ;; Check the signals
+  ;; Check signals
   (is (equal '("apply" "cancel" "close" "escape" "prepare")
              (list-signals "GtkAssistant")))
-  ;; Check the class definition
+  ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkAssistant" GTK-ASSISTANT
                        (:SUPERCLASS GTK-WINDOW :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable")
@@ -145,10 +145,10 @@
 ;;;     gtk_assistant_get_page_type
 ;;;     gtk_assistant_set_page_title
 ;;;     gtk_assistant_get_page_title
-;;;     gtk_assistant_set_page_header_image                * deprecated
-;;;     gtk_assistant_get_page_header_image                * deprecated
-;;;     gtk_assistant_set_page_side_image                  * deprecated
-;;;     gtk_assistant_get_page_side_image                  * deprecated
+;;;     gtk_assistant_set_page_header_image                 Deprecated 3.2
+;;;     gtk_assistant_get_page_header_image                 Deprecated 3.2
+;;;     gtk_assistant_set_page_side_image                   Deprecated 3.2
+;;;     gtk_assistant_get_page_side_image                   Deprecated 3.2
 ;;;     gtk_assistant_set_page_complete
 ;;;     gtk_assistant_get_page_complete
 ;;;     gtk_assistant_set_page_has_padding
@@ -160,4 +160,4 @@
 ;;;     gtk_assistant_next_page
 ;;;     gtk_assistant_previous_page
 
-;;; 2024-3-16
+;;; 2024-4-9

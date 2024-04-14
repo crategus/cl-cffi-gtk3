@@ -227,7 +227,7 @@
 
 #+liber-documentation
 (setf (documentation 'dialog 'type)
- "@version{2024-3-16}
+ "@version{2024-4-8}
   @begin{short}
     Dialogs are a convenient way to prompt the user for a small amount of input,
     e.g. to display a message, ask a question, or anything else that does not
@@ -436,7 +436,7 @@ lambda (dialog response)    :run-last
       @begin[code]{table}
         @entry[dialog]{The @class{gtk:dialog} widget on which the signal is
           emitted.}
-        @entry[response]{An integer with the response ID.}
+        @entry[response]{The integer with the response ID.}
       @end{table}
   @end{dictionary}
   @see-constructor{gtk:dialog-new}

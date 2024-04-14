@@ -65,9 +65,9 @@
 
 #+liber-documentation
 (setf (documentation 'window-group 'type)
- "@version{2024-3-17}
+ "@version{2024-4-9}
   @begin{short}
-    A @class{gtk:window-group} object restricts the effect of grabs to windows
+    The @class{gtk:window-group} object restricts the effect of grabs to windows
     in the same group, thereby making window groups almost behave like separate
     applications.
   @end{short}

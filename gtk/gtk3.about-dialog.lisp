@@ -264,7 +264,7 @@
 
 #+liber-documentation
 (setf (documentation 'about-dialog 'type)
- "@version{2024-3-16}
+ "@version{2024-4-8}
   @begin{short}
     The @class{gtk:about-dialog} widget offers a simple way to display
     information about a program like its logo, name, copyright, website and
@@ -312,7 +312,7 @@ lambda (dialog uri)    :run-last
       @begin[code]{table}
         @entry[dialog]{The @class{gtk:about-dialog} widget on which the signal
           was emitted.}
-        @entry[uri]{A string with the URI that is activated.}
+        @entry[uri]{The string with the URI that is activated.}
         @entry[Returns]{@em{True} if the link has been activated.}
       @end{table}
   @end{dictionary}
@@ -662,7 +662,7 @@ lambda (dialog uri)    :run-last
 (setf (liber:alias-for-function 'about-dialog-translator-credits)
       "Accessor"
       (documentation 'about-dialog-translator-credits 'function)
- "@version{2024-3-16}
+ "@version{2024-4-8}
   @syntax{(gtk:about-dialog-translator-credits object) => credits}
   @syntax{(setf (gtk:about-dialog-translator-credits object) credits)}
   @argument[object]{a @class{gtk:about-dialog} widget}
@@ -682,10 +682,11 @@ lambda (dialog uri)    :run-last
   @begin{pre}
 gtk_about_dialog_set_translator_credits (about, _(\"translator-credits\"));
   @end{pre}
-  It is a good idea to use the customary \"translator-credits\" msgid for this
-  purpose, since translators will already know the purpose of that msgid, and
-  since the @class{gtk:about-dialog} widget will detect if the
-  \"translator-credits\" property is untranslated and hide the tab.
+  It is a good idea to use the customary @code{\"translator-credits\"} msgid
+  for this purpose, since translators will already know the purpose of that
+  msgid, and since the @class{gtk:about-dialog} widget will detect if the
+  @slot[gtk:about-dialog]{translator-credits} property is untranslated and hide
+  the tab.
   @see-class{gtk:about-dialog}")
 
 ;;; --- gtk:about-dialog-version -----------------------------------------------
@@ -727,7 +728,7 @@ gtk_about_dialog_set_translator_credits (about, _(\"translator-credits\"));
 (setf (liber:alias-for-function 'about-dialog-website)
       "Accessor"
       (documentation 'about-dialog-website 'function)
- "@version{2024-3-16}
+ "@version{2024-4-8}
   @syntax{(gtk:about-dialog-website object) => website}
   @syntax{(setf (gtk:about-dialog-website object) website)}
   @argument[object]{a @class{gtk:about-dialog} widget}
@@ -739,7 +740,7 @@ gtk_about_dialog_set_translator_credits (about, _(\"translator-credits\"));
   @end{short}
   The @fun{gtk:about-dialog-website} function returns the website URL. The
   @setf{gtk:about-dialog-website} function sets the URL string starting with
-  \"http://\" to use for the website link.
+  @file{\"http://\"} to use for the website link.
   @see-class{gtk:about-dialog}")
 
 ;;; --- gtk:about-dialog-website-label -----------------------------------------
@@ -804,8 +805,8 @@ gtk_about_dialog_set_translator_credits (about, _(\"translator-credits\"));
 
 (defun about-dialog-new ()
  #+liber-documentation
- "@version{2024-3-16}
-  @return{A newly created @class{gtk:about-dialog} widget.}
+ "@version{2024-4-8}
+  @return{The newly created @class{gtk:about-dialog} widget.}
   @short{Creates a new about dialog.}
   @see-class{gtk:about-dialog}"
   (make-instance 'about-dialog))

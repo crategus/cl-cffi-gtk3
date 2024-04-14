@@ -193,9 +193,9 @@
 
 #+liber-documentation
 (setf (documentation 'assistant 'type)
- "@version{2024-3-16}
+ "@version{2024-4-9}
   @begin{short}
-    A @class{gtk:assistant} widget is used to represent a generally complex
+    The @class{gtk:assistant} widget is used to represent a generally complex
     operation splitted in several steps, guiding the user through its pages and
     controlling the page flow to collect the necessary data.
   @end{short}
@@ -584,7 +584,7 @@ lambda (assistant page)    :run-last
 
 (cffi:defcfun ("gtk_assistant_get_current_page" assistant-current-page) :int
  #+liber-documentation
- "@version{2024-3-16}
+ "@version{2024-4-9}
   @syntax{(gtk:assistant-current-page assistant) => index}
   @syntax{(setf (gtk:assistant-current-page assistant) index)}
   @argument[assistant]{a @class{gtk:assistant} widget}
@@ -592,11 +592,11 @@ lambda (assistant page)    :run-last
     from 0, if negative, the last page will be used, if greater than the number
     of pages in the assistant, nothing will be done}
   @begin{short}
-    Accessor of the current page of the assistant.
+    The @fun{gtk:assistant-current-page} function returns the page number of
+    the current page in the assistant.
   @end{short}
-  The @fun{gtk:assistant-current-page} function returns the page number of the
-  current page in the assistant. The @setf{gtk:assistant-current-page} function
-  switches the page in the assistant to @arg{index}.
+  The @setf{gtk:assistant-current-page} function switches the page in the
+  assistant to @arg{index}.
 
   Note that this will only be necessary in custom buttons, as the assistant
   flow can be set with the @fun{gtk:assistant-set-forward-page-func} function.
@@ -743,6 +743,9 @@ lambda (assistant page)    :run-last
 ;;; GtkAssistantPageFunc ()
 ;;; ----------------------------------------------------------------------------
 
+;; TODO: Check the implementation of the macro and compare the result with
+;; similar code.
+
 (gobject:define-cb-methods assistant-page-func :int ((current-page :int)))
 
 #+liber-documentation
@@ -814,16 +817,15 @@ lambda (assistant page)    :run-last
 
 (defun assistant-page-type (assistant page)
  #+liber-documentation
- "@version{2024-3-16}
+ "@version{2024-4-9}
   @syntax{(gtk:assistant-page-type assistant page) => ptype}
   @syntax{(setf (gtk:assistant-page-type assistant page) ptype)}
   @argument[assistant]{a @class{gtk:assistant} widget}
   @argument[page]{a @class{gtk:widget} page of @arg{assistant}}
   @argument[ptype]{a value of the @symbol{gtk:assistant-page-type} enumeration}
   @begin{short}
-    Accessor of the page type of a page in the assistant.
+    The page type determines the page behavior in the assistant.
   @end{short}
-  The page type determines the page behavior in the assistant.
   @see-class{gtk:assistant}
   @see-class{gtk:widget}
   @see-symbol{gtk:assistant-page-type}"
@@ -841,19 +843,19 @@ lambda (assistant page)    :run-last
 
 (defun assistant-page-title (assistant page)
  #+liber-documentation
- "@version{2024-3-16}
+ "@version{2024-4-9}
   @syntax{(gtk:assistant-page-title assistant page) => title}
   @syntax{(setf (gtk:assistant-page-title assistant page) title)}
   @argument[assistant]{a @class{gtk:assistant} widget}
   @argument[page]{a @class{gtk:widget} page of @arg{assistant}}
   @argument[title]{a string with the new title for @arg{page}}
   @begin{short}
-    Accessor of the title for the page in the assistant.
+    The @fun{gtk:assistant-page-title} function gets the title for the page in
+    the assistant.
   @end{short}
-  The @fun{gtk:assistant-page-title} function gets the title for the page in
-  the assistant. The @setf{gtk:assistant-page-title} function sets a title. The
-  title is displayed in the header area of the assistant when the page is the
-  current page.
+  The @setf{gtk:assistant-page-title} function sets a title. The title is
+  displayed in the header area of the assistant when the page is the current
+  page.
   @see-class{gtk:assistant}
   @see-class{gtk:widget}"
   (assistant-child-title assistant page))
@@ -861,109 +863,30 @@ lambda (assistant page)    :run-last
 (export 'assistant-page-title)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_assistant_set_page_header_image ()
-;;;
-;;; void
-;;; gtk_assistant_set_page_header_image (GtkAssistant *assistant,
-;;;                                      GtkWidget *page,
-;;;                                      GdkPixbuf *pixbuf)
-;;;
-;;; Warning
-;;;
-;;; gtk_assistant_set_page_header_image has been deprecated since version 3.2
-;;; and should not be used in newly written code. Since GTK 3.2, a header is no
-;;; longer shown; add your header decoration to the page content instead.
+;;; gtk_assistant_set_page_header_image ()                  Deprecated 3.2
 ;;;
 ;;; Sets a header image for page.
-;;;
-;;; assistant :
-;;;     a GtkAssistant
-;;;
-;;; page :
-;;;     a page of assistant
-;;;
-;;; pixbuf :
-;;;     the new header image page
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_assistant_get_page_header_image ()
-;;;
-;;; GdkPixbuf *
-;;; gtk_assistant_get_page_header_image (GtkAssistant *assistant,
-;;;                                      GtkWidget *page)
-;;;
-;;; Warning
-;;;
-;;; gtk_assistant_get_page_header_image has been deprecated since version 3.2
-;;; and should not be used in newly written code. Since GTK 3.2, a header is no
-;;; longer shown; add your header decoration to the page content instead.
+;;; gtk_assistant_get_page_header_image ()                  Deprecated 3.2
 ;;;
 ;;; Gets the header image for page.
-;;;
-;;; assistant :
-;;;     a GtkAssistant
-;;;
-;;; page :
-;;;     a page of assistant
-;;;
-;;; Returns :
-;;;     the header image for page, or NULL if there's no header image for the
-;;;     page
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_assistant_set_page_side_image ()
-;;;
-;;; void
-;;; gtk_assistant_set_page_side_image (GtkAssistant *assistant,
-;;;                                    GtkWidget *page,
-;;;                                    GdkPixbuf *pixbuf)
-;;;
-;;; Warning
-;;;
-;;; gtk_assistant_set_page_side_image has been deprecated since version 3.2 and
-;;; should not be used in newly written code. Since GTK 3.2, sidebar images are
-;;; not shown anymore.
+;;; gtk_assistant_set_page_side_image ()                    Deprecated 3.2
 ;;;
 ;;; Sets a side image for page.
 ;;;
 ;;; This image used to be displayed in the side area of the assistant when page
 ;;; is the current page.
-;;;
-;;; assistant :
-;;;     a GtkAssistant
-;;;
-;;; page :
-;;;     a page of assistant
-;;;
-;;; pixbuf :
-;;;     the new side image page
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_assistant_get_page_side_image ()
-;;;
-;;; GdkPixbuf *
-;;; gtk_assistant_get_page_side_image (GtkAssistant *assistant,
-;;;                                    GtkWidget *page)
-;;;
-;;; Warning
-;;;
-;;; gtk_assistant_get_page_side_image has been deprecated since version 3.2 and
-;;; should not be used in newly written code. Since GTK 3.2, sidebar images are
-;;; not shown anymore.
+;;; gtk_assistant_get_page_side_image ()                    Deprecated 3.2
 ;;;
 ;;; Gets the side image for page.
-;;;
-;;; assistant :
-;;;     a GtkAssistant
-;;;
-;;; page :
-;;;     a page of assistant
-;;;
-;;; Returns :
-;;;     the side image for page, or NULL if there's no side image for the page
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
@@ -976,19 +899,19 @@ lambda (assistant page)    :run-last
 
 (defun assistant-page-complete (assistant page)
  #+liber-documentation
- "@version{2024-3-16}
+ "@version{2024-4-9}
   @syntax{(gtk:assistant-page-complete assistant page) => complete}
   @syntax{(setf (gtk:assistant-page-complete assistant page) complete)}
   @argument[assistant]{a @class{gtk:assistant} widget}
   @argument[page]{a @class{gtk:widget} page of @arg{assistant}}
   @argument[complete]{a boolean with the completeness status of the page}
   @begin{short}
-    Accessor of the completeness status of the page in the assistant.
+    The @fun{gtk:assistant-page-complete} function gets whether the page is
+    complete.
   @end{short}
-  The @fun{gtk:assistant-page-complete} function gets whether the page is
-  complete. The @setf{gtk:assistant-page-complete} function sets whether the
-  page contents are complete. This will make the assistant update the buttons
-  state to be able to continue the task.
+  The @setf{gtk:assistant-page-complete} function sets whether the page contents
+  are complete. This will make the assistant update the buttons state to be able
+  to continue the task.
   @see-class{gtk:assistant}
   @see-class{gtk:widget}"
   (assistant-child-complete assistant page))
@@ -1004,18 +927,18 @@ lambda (assistant page)    :run-last
   (setf (assistant-child-has-padding assistant page) setting))
 
 (defun assistant-page-has-padding (assistant page)
- "@version{#2024-3-16}
+ "@version{#2024-4-9}
   @syntax{(gtk:assistant-page-has-padding assistant page) => setting}
   @syntax{(setf (gtk:assistant-page-has-padding assistant page) setting)}
   @argument[assistant]{a @class{gtk:assistant} widget}
   @argument[page]{a @class{gtk:widget} page of @arg{assistant}}
   @argument[setting]{a boolean whether the page has padding}
   @begin{short}
-    Accessor of the has padding status of the page in the assistant.
+    The @fun{gtk:assistant-page-has-padding} function gets whether the page has
+    padding.
   @end{short}
-  The @fun{gtk:assistant-page-has-padding} function gets whether the page has
-  padding. The @setf{gtk:assistant-page-has-padding} function sets whether the
-  assistant is adding padding around the page.
+  The @setf{gtk:assistant-page-has-padding} function sets whether the assistant
+  is adding padding around the page.
   @see-class{gtk:assistant}
   @see-class{gtk:widget}"
   (assistant-child-has-padding assistant page))

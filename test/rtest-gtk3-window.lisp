@@ -8,24 +8,24 @@
 ;;;     GtkWindowType
 
 (test gtk-window-type
-  ;; Check the type
+  ;; Check type
   (is (g:type-is-enum "GtkWindowType"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkWindowType")
           (g:gtype (cffi:foreign-funcall "gtk_window_type_get_type" :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:window-type
           (glib:symbol-for-gtype "GtkWindowType")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_WINDOW_TOPLEVEL" "GTK_WINDOW_POPUP")
              (list-enum-item-name "GtkWindowType")))
-  ;; Check the values
+  ;; Check values
   (is (equal '(0 1)
              (list-enum-item-value "GtkWindowType")))
-  ;; Check the nick names
+  ;; Check nick names
   (is (equal '("toplevel" "popup")
              (list-enum-item-nick "GtkWindowType")))
-  ;; Check the enum definition
+  ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkWindowType"
                              GTK-WINDOW-TYPE
                              (:EXPORT T
@@ -37,25 +37,25 @@
 ;;;     GtkWindowPosition
 
 (test gtk-window-position
-  ;; Check the type
+  ;; Check type
   (is (g:type-is-enum "GtkWindowPosition"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkWindowPosition")
           (g:gtype (cffi:foreign-funcall "gtk_window_position_get_type" :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:window-position
           (glib:symbol-for-gtype "GtkWindowPosition")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_WIN_POS_NONE" "GTK_WIN_POS_CENTER" "GTK_WIN_POS_MOUSE"
                "GTK_WIN_POS_CENTER_ALWAYS" "GTK_WIN_POS_CENTER_ON_PARENT")
              (list-enum-item-name "GtkWindowPosition")))
-  ;; Check the values
+  ;; Check values
   (is (equal '(0 1 2 3 4)
              (list-enum-item-value "GtkWindowPosition")))
-  ;; Check the nick names
+  ;; Check nick names
   (is (equal '("none" "center" "mouse" "center-always" "center-on-parent")
              (list-enum-item-nick "GtkWindowPosition")))
-  ;; Check the enum definition
+  ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkWindowPosition"
                              GTK-WINDOW-POSITION
                              (:EXPORT T
@@ -70,18 +70,18 @@
 ;;;     GtkWindow
 
 (test gtk-window-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkWindow"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:window
           (glib:symbol-for-gtype "GtkWindow")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkWindow")
           (g:gtype (cffi:foreign-funcall "gtk_window_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkBin")
           (g:type-parent "GtkWindow")))
-  ;; Check the children
+  ;; Check children
   #-windows
   (is (equal '("GtkApplicationWindow" "GtkAssistant" "GtkDialog"
                "GtkOffscreenWindow" "GtkPlug" "GtkShortcutsWindow")
@@ -90,10 +90,10 @@
   (is (equal '("GtkApplicationWindow" "GtkAssistant" "GtkDialog"
                "GtkOffscreenWindow" "GtkShortcutsWindow")
              (list-children "GtkWindow")))
-  ;; Check the interfaces
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
              (list-interfaces "GtkWindow")))
-  ;; Check the class properties
+  ;; Check class properties
   (is (equal '("accept-focus" "application" "attached-to" "decorated"
                "default-height" "default-width" "deletable"
                "destroy-with-parent" "focus-on-map" "focus-visible" "gravity"
@@ -104,20 +104,20 @@
                "skip-taskbar-hint" "startup-id" "title" "transient-for"
                "type" "type-hint" "urgency-hint" "window-position")
              (list-properties "GtkWindow")))
-  ;; Get the names of the style properties
+  ;; Check style properties
   (is (equal '("decoration-button-layout" "decoration-resize-handle")
              (list-style-properties "GtkWindow")))
-  ;; Get the names of the child properties
+  ;; Check child properties
   (is (equal '()
              (list-child-properties "GtkWindow")))
-  ;; Check the signals
+  ;; Check signals
   (is (equal '("activate-default" "activate-focus" "enable-debugging"
                "keys-changed" "set-focus")
              (list-signals "GtkWindow")))
   ;; CSS information
   (is (string= "window"
                (gtk:widget-class-css-name "GtkWindow")))
-  ;; Check the class definition
+  ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkWindow" GTK-WINDOW
                        (:SUPERCLASS GTK-BIN :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable")
@@ -219,6 +219,8 @@
     (is-false (gtk:window-title window))
     (is-false (gtk:window-transient-for window))
     (is (eq :toplevel (gtk:window-type window)))
+    ;; type cannot be set after construction, this test gives  warning
+;   (is (eq :popup (setf (gtk:window-type window) :popup)))
     (is (eq :normal (gtk:window-type-hint window)))
     (is-false (gtk:window-urgency-hint window))
     (is (eq :none (gtk:window-window-position window)))))
@@ -312,6 +314,19 @@
 ;;;     gtk_window_activate_focus
 ;;;     gtk_window_activate_default
 
+;;;     gtk_window_default_size
+
+(test gtk-window-default-size
+  (let ((window (make-instance 'gtk:window)))
+    (is (equal '(-1 -1)
+               (multiple-value-list (gtk:window-default-size window))))
+    (is (equal '(100 200)
+               (multiple-value-list (setf (gtk:window-default-size window)
+                                          '(100 200)))))
+    (is (equal '(100 200)
+               (multiple-value-list (gtk:window-default-size window))))))
+
+
 ;;;     gtk_window_set_default_geometry
 
 ;; This function is deprecated and does nothing.
@@ -371,18 +386,6 @@
 ;;;     gtk_window_get_default_icon_list
 ;;;     gtk_window_get_default_icon_name
 
-;;;     gtk_window_default_size
-
-(test gtk-window-default-size
-  (let ((window (make-instance 'gtk:window)))
-    (is (equal '(-1 -1)
-               (multiple-value-list (gtk:window-default-size window))))
-    (is (equal '(100 200)
-               (multiple-value-list (setf (gtk:window-default-size window)
-                                          '(100 200)))))
-    (is (equal '(100 200)
-               (multiple-value-list (gtk:window-default-size window))))))
-
 ;;;     gtk_window_get_icon_list
 ;;;     gtk_window_get_mnemonic_modifier
 ;;;     gtk_window_get_position
@@ -411,4 +414,4 @@
 ;;;     gtk_window_get_titlebar
 ;;;     gtk_window_set_interactive_debugging
 
-;;; 2023-12-29
+;;; 2024-4-9

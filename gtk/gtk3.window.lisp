@@ -1088,7 +1088,7 @@ lambda (window widget)    :run-last
 (setf (liber:alias-for-function 'window-icon)
       "Accessor"
       (documentation 'window-icon 'function)
- "@version{#2023-3-30}
+ "@version{2024-4-8}
   @syntax{(gtk:window-icon object) => icon}
   @syntax{(setf (gtk:window-icon object) icon)}
   @argument[object]{a @class{gtk:window} widget}
@@ -1111,8 +1111,8 @@ lambda (window widget)    :run-last
 
   If you have your icon hand drawn in multiple sizes, use the
   @fun{gtk:window-icon-list} function. Then the best size will be used. This
-  function is equivalent to calling the @fun{gtk:window-icon-list} function with
-  a 1-element list.
+  function is equivalent to calling the @fun{gtk:window-icon-list} function
+  with a 1-element list.
 
   See also the @fun{gtk:window-default-icon-list} function to set the icon
   for all windows in your application in one go.
@@ -1597,7 +1597,7 @@ lambda (window widget)    :run-last
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "type" 'window) t)
  "The @code{type} property of type @symbol{gtk:window-type}
-  (Read / Write / Construct) @br{}
+ (Read / Construct only) @br{}
   The type of the window. @br{}
   Default value: @code{:toplevel}")
 
@@ -1605,16 +1605,15 @@ lambda (window widget)    :run-last
 (setf (liber:alias-for-function 'window-type)
       "Accessor"
       (documentation 'window-type 'function)
- "@version{2024-3-16}
+ "@version{2024-4-8}
   @syntax{(gtk:window-type object) => type}
-  @syntax{(setf (gtk:window-type object) type)}
   @argument[object]{a @class{gtk:window} widget}
   @argument[type]{a value of the @symbol{gtk:window-type} enumeration}
   @begin{short}
     Accessor of the @slot[gtk:window]{type} slot of the @class{gtk:window}
     class.
   @end{short}
-  The type of the window.
+  The type of the window cannot be set after construction.
   @see-class{gtk:window}
   @see-symbol{gtk:window-type}")
 
@@ -1717,7 +1716,7 @@ lambda (window widget)    :run-last
 
 (defun window-new (wtype)
  #+liber-documentation
- "@version{2024-3-16}
+ "@version{2024-4-8}
   @argument[wtype]{a value of the @symbol{gtk:window-type} enumeration}
   @return{The new @class{gtk:window} widget.}
   @begin{short}
@@ -1728,8 +1727,8 @@ lambda (window widget)    :run-last
   implementing something like a popup menu from scratch, which is a bad idea,
   just use the @class{gtk:menu} widget, you might use the @code{:popup} type.
   The @code{:popup} type is not for dialogs, though in some other toolkits
-  dialogs are called \"popups\". In GTK, the @code{:popup} type means a pop-up
-  menu or pop-up tooltip. On X11, popup windows are not controlled by the window
+  dialogs are called \"popups\". In GTK, the @code{:popup} type means a popup
+  menu or popup tooltip. On X11, popup windows are not controlled by the window
   manager.
 
   If you simply want an undecorated window with no window borders, use the
@@ -1742,32 +1741,7 @@ lambda (window widget)    :run-last
 (export 'window-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_set_wmclass ()
-;;;
-;;; void
-;;; gtk_window_set_wmclass (GtkWindow *window,
-;;;                         const gchar *wmclass_name,
-;;;                         const gchar *wmclass_class)
-;;;
-;;; Don't use this function. It sets the X Window System "class" and "name"
-;;; hints for a window. According to the ICCCM, you should always set these to
-;;; the same value for all windows in an application, and GTK sets them to that
-;;; value by default, so calling this function is sort of pointless. However,
-;;; you may want to call gtk_window_set_role() on each window in your
-;;; application, for the benefit of the session manager. Setting the role allows
-;;; the window manager to restore window positions when loading a saved session.
-;;;
-;;; gtk_window_set_wmclass has been deprecated since version 3.22 and should not
-;;; be used in newly written code.
-;;;
-;;; window :
-;;;     a GtkWindow
-;;;
-;;; wmclass_name :
-;;;     window name hint
-;;;
-;;; wmclass_class :
-;;;     window class hint
+;;; gtk_window_set_wmclass ()                               Deprecated 3.22
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
@@ -1863,7 +1837,7 @@ lambda (window widget)    :run-last
 
 (defun window-default-size (window)
  #+liber-documentation
- "@version{2024-3-20}
+ "@version{2024-4-8}
   @syntax{(gtk:window-default-size window) => width, height}
   @syntax{(setf (gtk:window-default-size window) (list width height))}
   @argument[window]{a @class{gtk:window} widget}
@@ -1912,6 +1886,14 @@ lambda (window widget)    :run-last
   (setf (gtk:window-default-size window) '(300 200))
   (gtk:window-default-size window))
 => 300, 200
+    @end{pre}
+    In the Lisp implementation, it is more convenient to set the default size
+    when constructing the window
+    @begin{pre}
+(let ((window (make-instance 'gtk:window
+                             :default-width 300
+                             :default-height 200)))
+  ... )
     @end{pre}
   @end{examples}
   @see-class{gtk:window}
@@ -2825,13 +2807,13 @@ lambda (window widget)    :run-last
 
 (defun window-position (window)
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2024-4-8}
   @argument[window]{a @class{gtk:window} widget}
   @begin{return}
     @arg{x} -- an integer with the x coordinate of gravity determined
-      reference point or @code{nil} @br{}
+      reference point @br{}
     @arg{y} -- an integer with the y coordinate of gravity determined
-      reference point, or @code{nil}
+      reference point
   @end{return}
   @begin{short}
     This function returns the position you need to pass to the
@@ -2892,11 +2874,11 @@ lambda (window widget)    :run-last
 
 (defun window-size (window)
  #+liber-documentation
- "@version{#2024-3-16}
+ "@version{#2024-4-8}
   @argument[window]{a @class{gtk:window} widget}
   @begin{return}
-    @arg{width} -- an integer with the width, or @code{nil} @br{}
-    @arg{height} -- an integer with the height, or @code{nil}
+    @arg{width} -- an integer with the width @br{}
+    @arg{height} -- an integer with the height
   @end{return}
   @begin{short}
     Obtains the current size of the window.
@@ -3226,8 +3208,8 @@ lambda (window widget)    :run-last
 
 (defun window-set-default-icon-from-file (path)
  #+liber-documentation
- "@version{#2024-3-16}
-  @argument[path]{a path or namestring with the location of the icon file}
+ "@version{#2024-4-8}
+  @argument[path]{a pathname or namestring with the location of the icon file}
   @return{@em{True} if setting the icon succeeded.}
   @begin{short}
     Sets an icon to be used as fallback for windows that have not had the
@@ -3252,9 +3234,9 @@ lambda (window widget)    :run-last
 
 (defun window-set-icon-from-file (window path)
  #+liber-documentation
- "@version{#2024-3-16}
+ "@version{#2024-4-8}
   @argument[window]{a @class{gtk:window} widget}
-  @argument[path]{a path or namestring with the location of the icon file}
+  @argument[path]{a pathname or namestring with the location of the icon file}
   @return{@em{True} if setting the icon succeeded.}
   @begin{short}
     Sets the icon for the window.
@@ -3337,8 +3319,8 @@ lambda (window widget)    :run-last
   @end{short}
   @begin[Warning]{dictionary}
     The @fun{gtk:window-resize-grip-area} function has been deprecated since
-    version 3.14 and should not be used in newly written code. Resize grips have
-    been removed.
+    version 3.14 and should not be used in newly written code. Resize grips
+    have been removed.
   @end{dictionary}
   @see-class{gtk:window}
   @see-class{gdk:rectangle}"

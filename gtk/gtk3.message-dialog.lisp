@@ -532,7 +532,7 @@
 
 (defun message-dialog-new (parent flags type buttons message &rest args)
  #+liber-documentation
- "@version{2024-3-16}
+ "@version{2024-4-8}
   @argument[parent]{a @class{gtk:window} transient parent, or @code{nil} for
     none}
   @argument[flags]{a value of the @symbol{gtk:dialog-flags} flags}
@@ -542,7 +542,7 @@
     for the buttons to use}
   @argument[message]{a format string, or @code{nil}}
   @argument[args]{arguments for @arg{message}}
-  @return{A new @class{gtk:message-dialog} widget.}
+  @return{The new @class{gtk:message-dialog} widget.}
   @begin{short}
     Creates a new message dialog, which is a simple dialog with some text the
     user may want to see.
@@ -580,7 +580,7 @@
 (defun message-dialog-new-with-markup (parent
                                        flags type buttons message &rest args)
  #+liber-documentation
- "@version{2024-3-16}
+ "@version{2024-4-8}
   @argument[parent]{a @class{gtk:window} transient parent, or @code{nil} for
     none}
   @argument[flags]{a value of the @symbol{gtk:dialog-flags} flags}
@@ -589,7 +589,7 @@
     for the buttons to use}
   @argument[message]{a format string, or @code{nil}}
   @argument[args]{arguments for @arg{message}}
-  @return{A new @class{gtk:message-dialog} widget.}
+  @return{The new @class{gtk:message-dialog} widget.}
   @begin{short}
     Creates a new message dialog, which is a simple dialog with some text which
     is marked up with the Pango text markup language.
