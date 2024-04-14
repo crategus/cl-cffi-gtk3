@@ -1153,12 +1153,14 @@
           (let ((action (g:action-map-lookup-action application "quit")))
             (g:action-activate action))))
 
-    ;; Set an icon for the application
+    ;; Set an icon for the application window
     ;; FIXME: The icon is not visible. What is wrong?
     (let* ((path (sys-path "gtk-logo.png"))
            (pixbuf (gdk:pixbuf-new-from-file path)))
-      (setq pixbuf (gdk:pixbuf-add-alpha pixbuf t 255 255 255))
-      (setf (gtk:window-default-icon-list) (list pixbuf)))
+;      (setq pixbuf (gdk:pixbuf-add-alpha pixbuf t 255 255 255))
+;      (setf (gtk:window-default-icon-list) (list pixbuf))
+      (setf (gtk:window-icon window) pixbuf))
+
     ;; Add the widgets to the content of the window
     (gtk:container-add scroller view)
     (gtk:paned-add1 content scroller)

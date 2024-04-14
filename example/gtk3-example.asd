@@ -40,6 +40,7 @@
                (:file "custom-window")
                (:file "dialog")                        ; Dialog Windows
                (:file "dialog-more")
+               (:file "dialog-toplevel")
                (:file "drag-and-drop")
                (:file "drag-and-drop-action")
                (:file "drag-and-drop-simple")

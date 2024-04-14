@@ -39,6 +39,7 @@
            #:example-dialog-new
            #:example-dialog-new-with-buttons
            #:example-dialog-ui
+           #:example-dialog-toplevel
            #:example-drag-and-drop
            #:example-drag-and-drop-action
            #:example-drag-and-drop-simple
