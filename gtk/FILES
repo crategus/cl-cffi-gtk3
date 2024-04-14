@@ -4,6 +4,7 @@ Content from the GTK 3.24 Reference Manual
     +   - needs work
     %   - not fully implemented
     &   - objects and structures are implemented, some functions are missing
+    .   - proofreading documentation
 
 GTK Widgets and Objects
 
@@ -32,17 +33,17 @@ GTK Widgets and Objects
     gtk.box.lisp                     - GtkBox                       - GTK 3.24
     gtk.grid.lisp                    - GtkGrid                      - GTK 3.24
     gtk.revealer.lisp                - GtkRevealer                  - GTK 3.24
-    gtk.list-box.lisp                - GtkListBox                   - GTK 3.24 +
-    gtk.flow-box.lisp                - GtkFlowBox                   - GTK 3.24 +
-    gtk.stack.lisp                   - GtkStack                     - GTK 3.24 +
-    gtk.stack-switcher.lisp          - GtkStackSwitcher             - GTK 3.24 +
-    gtk.stack-sidebar.lisp           - GtkStackSidebar              - GTK 3.24 +
-    gtk.action-bar.lisp              - GtkActionBar                 - GTK 3.24 +
-    gtk.header-bar.lisp              . GtkHeaderBar                 - GTK 3.24 +
-    gtk.overlay.lisp                 - GtkOverlay                   - GTK 3.24 +
-    gtk.button-box.lisp              - GtkButtonBox                 - GTK 3.24 +
-    gtk.paned.lisp                   - GtkPaned                     - GTK 3.24 +
-    gtk.layout.lisp                  - GtkLayout                    - GTK 3.24 +
+    gtk.list-box.lisp                - GtkListBox                   - GTK 3.24
+    gtk.flow-box.lisp                - GtkFlowBox                   - GTK 3.24
+    gtk.stack.lisp                   - GtkStack                     - GTK 3.24 .
+    gtk.stack-switcher.lisp          - GtkStackSwitcher             - GTK 3.24 .
+    gtk.stack-sidebar.lisp           - GtkStackSidebar              - GTK 3.24 .
+    gtk.action-bar.lisp              - GtkActionBar                 - GTK 3.24 .
+    gtk.header-bar.lisp              . GtkHeaderBar                 - GTK 3.24 .
+    gtk.overlay.lisp                 - GtkOverlay                   - GTK 3.24 .
+    gtk.button-box.lisp              - GtkButtonBox                 - GTK 3.24 .
+    gtk.paned.lisp                   - GtkPaned                     - GTK 3.24 .
+    gtk.layout.lisp                  - GtkLayout                    - GTK 3.24 .
     gtk.notebook.lisp                - GtkNotebook                  - GTK 3.24 +
     gtk.expander.lisp                - GtkExpander                  - GTK 3.24 +
     gtk.aspect-frame.lisp            - GtkAspectFrame               - GTK 3.24 +
@@ -78,7 +79,7 @@ GTK Widgets and Objects
     gtk.editable.lisp                - GtkEditable                  - GTK 3.24 +
     gtk.entry.lisp                   - GtkEntry                     - GTK 3.24 +
     gtk.entry-buffer.lisp            - GtkEntryBuffer               - GTK 3.24 +
-    gtk.entry-completion.lisp        - GtkEntryCompletion           - GTK 3.24
+    gtk.entry-completion.lisp        - GtkEntryCompletion           - GTK 3.24 .
     gtk.scale.lisp                   - GtkScale, ...                - GTK 3.24 +
     gtk.spin-button.lisp             - GtkSpinButton                - GTK 3.24 +
     gtk.search-entry.lisp            - GtkSearchEntry               - GTK 3.24 +
@@ -98,28 +99,28 @@ GTK Widgets and Objects
 
     gtk.tree-model.lisp              - GtkTreeModel                 - GTK 3.24 +
     gtk.tree-selection.lisp          - GtkTreeSelection             - GTK 3.24 +
-    gtk.tree-view-column.lisp        - GtkTreeViewColumn            - GTK 3.24
-    gtk.tree-view.lisp               - GtkTreeView                  - GTK 3.24
+    gtk.tree-view-column.lisp        - GtkTreeViewColumn            - GTK 3.24 .
+    gtk.tree-view.lisp               - GtkTreeView                  - GTK 3.24 .
     gtk.tree-view-drag-and-drop.lisp - GtkTreeView drag and drop    - GTK 3.24 +
     gtk.cell-view.lisp               - GtkCellView                  - GTK 3.24 +
-    gtk.icon-view.lisp               - GtkIconView                  - GTK 3.24
+    gtk.icon-view.lisp               - GtkIconView                  - GTK 3.24 .
     gtk.tree-sortable.lisp           - GtkTreeSortable              - GTK 3.24 +
     gtk.tree-model-sort.lisp         - GtkTreeModelSort             - GTK 3.24 +
     gtk.tree-model-filter.lisp       - GtkTreeModelFilter           - GTK 3.24 +
-    gtk.cell-layout.lisp             - GtkCellLayout                - GTK 3.24
+    gtk.cell-layout.lisp             - GtkCellLayout                - GTK 3.24 .
     gtk.cell-area.lisp               - GtkCellArea                  - GTK 3.24 +
     gtk.cell-area-box.lisp           - GtkCellAreaBox               - GTK 3.24 +
     gtk.cell-area-context.lisp       - GtkCellAreaContext           - GTK 3.24 +
-    gtk.cell-renderer.lisp           - GtkCellRenderer              - GTK 3.24
-    gtk.cell-editable.lisp           - GtkCellEditable              - GTK 3.24
-    gtk.cell-renderer-accel.lisp     - GtkCellRendererAccel         - GTK 3.24
-    gtk.cell-renderer-combo.lisp     - GtkCellRendererCombo         - GTK 3.24
-    gtk.cell-renderer-pixbuf.lisp    - GtkCellRendererPixbuf        - GTK 3.24
-    gtk.cell-renderer-progress-lisp  - GtkCellRendererProgress      - GTK 3.24
-    gtk.cell-renderer-spin.lisp      - GtkCellRendererSpin          - GTK 3.24
-    gtk.cell-renderer-text.lisp      - GtkCellRendererText          - GTK 3.24
-    gtk.cell-renderer-toggle.lisp    - GtkCellRendererToggle        - GTK 3.24
-    gtk.cell-renderer-spinner.lisp   - GtkCellRendererSpinner       - GTK 3.24
+    gtk.cell-renderer.lisp           - GtkCellRenderer              - GTK 3.24 .
+    gtk.cell-editable.lisp           - GtkCellEditable              - GTK 3.24 .
+    gtk.cell-renderer-accel.lisp     - GtkCellRendererAccel         - GTK 3.24 .
+    gtk.cell-renderer-combo.lisp     - GtkCellRendererCombo         - GTK 3.24 .
+    gtk.cell-renderer-pixbuf.lisp    - GtkCellRendererPixbuf        - GTK 3.24 .
+    gtk.cell-renderer-progress-lisp  - GtkCellRendererProgress      - GTK 3.24 .
+    gtk.cell-renderer-spin.lisp      - GtkCellRendererSpin          - GTK 3.24 .
+    gtk.cell-renderer-text.lisp      - GtkCellRendererText          - GTK 3.24 .
+    gtk.cell-renderer-toggle.lisp    - GtkCellRendererToggle        - GTK 3.24 .
+    gtk.cell-renderer-spinner.lisp   - GtkCellRendererSpinner       - GTK 3.24 .
 
     gtk.list-store.lisp              - GtkListStore                 - GTK 3.24 +
     gtk.tree-store.lisp              - GtkTreeStore                 - GTK 3.24 +
