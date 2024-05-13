@@ -1024,23 +1024,18 @@
 
 ;;; ----------------------------------------------------------------------------
 
-(defun mklist (obj)
-  (if (listp obj)
-      obj
-      (list obj)))
-
 (defun create-and-fill-tree-store (data &optional (model nil) (iter nil))
   (unless model
-    (setf model (apply #'gtk:tree-store-new (mklist (first data))))
+    (setf model (apply #'gtk:tree-store-new (glib-sys:mklist (first data))))
     (setf data (rest data)))
   (let ((parent iter))
-    (dolist (entry (mklist data))
+    (dolist (entry (glib-sys:mklist data))
       (cond ((or (atom entry) (every #'atom entry)) ; entry is never an atom?
              (setf parent
                    (apply #'gtk:tree-store-set model
                                                (gtk:tree-store-append model
                                                                       iter)
-                                               (mklist entry))))
+                                               (glib-sys:mklist entry))))
             ((some #'listp entry)
              (create-and-fill-tree-store entry
                                          model
