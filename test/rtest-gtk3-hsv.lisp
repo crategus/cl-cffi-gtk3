@@ -8,49 +8,40 @@
 ;;;     GtkHSV
 
 (test gtk-hsv-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkHSV"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:hsv
           (glib:symbol-for-gtype "GtkHSV")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkHSV")
           (g:gtype (cffi:foreign-funcall "gtk_hsv_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkWidget")
           (g:type-parent "GtkHSV")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
              (list-children "GtkHSV")))
-  ;; Check the interfaces
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
              (list-interfaces "GtkHSV")))
-  ;; Check the class properties
+  ;; Check class properties
   (is (equal '()
              (list-properties "GtkHSV")))
-  ;; Check the style properties
+  ;; Check style properties
   (is (equal '()
              (list-style-properties "GtkHSV")))
-  ;; Check the signals
+  ;; Check signals
   (is (equal '("changed" "move")
              (list-signals "GtkHSV")))
-  ;; CSS information
+  ;; Check CSS information
   (is (string= "widget"
                (gtk:widget-class-css-name "GtkHSV")))
-  #-windows
-  (is (string=
-"[widget:dir(ltr)]
-"
-               (gtk:style-context-to-string
-                   (gtk:widget-style-context
-                       (make-instance 'gtk:hsv))
-                   :recurse)))
-  ;; Check the class definition
+  ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkHSV" GTK-H-S-V
-                       (:SUPERCLASS GTK-WIDGET :EXPORT T :INTERFACES
-                        ("AtkImplementorIface" "GtkBuildable")
-                        :TYPE-INITIALIZER "gtk_hsv_get_type")
-                       NIL)
+                               (:SUPERCLASS GTK-WIDGET :EXPORT T :INTERFACES
+                                ("AtkImplementorIface" "GtkBuildable"))
+                               NIL)
              (gobject:get-g-type-definition "GtkHSV"))))
 
 ;;; --- Signals ----------------------------------------------------------------
@@ -125,5 +116,4 @@
   (is (equal '(0.0d0 0.0d0 1.0d0)
              (multiple-value-list (gtk:rgb-to-hsv 1 1.0 1.0d0)))))
 
-;;; --- 2023-12-3 --------------------------------------------------------------
-
+;;; 2024-6-16

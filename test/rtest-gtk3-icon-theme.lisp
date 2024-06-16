@@ -149,10 +149,10 @@
 (test gtk-icon-theme-list-contexts
   (let ((theme (gtk:icon-theme-default)))
     #-windows
-    (is (equal '("Actions" "Animations" "Applications" "Camera" "Categories"
-                 "Devices" "Emblems" "Emotes" "Generic-Symbols" "Legacy"
-                 "MimeTypes" "Multimedia" "Phosh" "Places" "Status" "Stock"
-                 "Time" "UI")
+    (is (equal '("Actions" "Animations" "Applications" "Camera" "Categories" "Devices"
+ "Emblems" "Emotes" "Generic-Symbols" "Legacy" "MimeTypes" "Multimedia"
+ "Org.Gnome.Nautilus" "Org.Gnome.Settings" "Phosh" "Places" "Status" "Stock"
+ "Time" "UI")
                (sort (gtk:icon-theme-list-contexts theme) #'string<)))
     #+windows
     (is (equal '("UI" "Emblems" "Actions" "Places" "Categories" "Legacy"
@@ -291,4 +291,4 @@
          (icon-info (gtk:icon-theme-lookup-icon theme "battery" 0 :force-symbolic)))
     (is-true (gtk:icon-info-is-symbolic icon-info))))
 
-;;; --- 2023-6-15 --------------------------------------------------------------
+;;; 2024-6-16
