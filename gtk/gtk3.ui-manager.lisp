@@ -205,10 +205,13 @@
                                               (homogeneous 'default))
   (toolbar-insert b child -1)
   (unless (eq expand 'default)
-    (setf (container-child-property b child "expand" g:+type-boolean+)
+    (setf (container-child-property b child "expand" (glib:gtype "gboolean"))
           expand))
   (unless (eq homogeneous 'default)
-    (setf (container-child-property b child "homogeneous" g:+type-boolean+)
+    (setf (container-child-property b
+                                    child
+                                    "homogeneous"
+                                    (glib:gtype "gboolean"))
           homogeneous)))
 
 (defun set-ui-expansion-1 (d)
