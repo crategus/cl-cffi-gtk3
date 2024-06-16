@@ -174,8 +174,8 @@
       '(:gtk
         :gdk
         :gdk-pixbuf
-        :gobject
         :glib
+        :gobject
         :gio
         :pango
         :cairo)
@@ -200,8 +200,8 @@
       '(:gtk
         :gdk
         :gdk-pixbuf
-        :gobject
         :glib
+        :gobject
         :gio
         :pango
         :cairo)
