@@ -18,7 +18,7 @@
            (let ((gtype (g:type-from-name name)))
              (gtk:widget-path-append-type path gtype)))
           (t
-           (gtk:widget-path-append-type path g:+type-none+)
+           (gtk:widget-path-append-type path nil)
            (setf (gtk:widget-path-iter-object-name path -1) name)))
     (do* ((mark (if next (elt selector next)) (if next (elt selector next)))
           (selector (if next (subseq selector (1+ next)))
