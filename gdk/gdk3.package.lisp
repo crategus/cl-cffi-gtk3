@@ -539,6 +539,8 @@
     @about-function{window-scale-factor}
     @about-function{window-set-opaque-region}
     @about-function{window-create-gl-context}
+    @about-function{window-create-similar-surface}
+    @about-function{window-create-similar-image-surface}
     @about-function{window-mark-paint-from-clip}
     @about-function{window-clip-region}
     @about-function{window-begin-paint-rect}
@@ -653,7 +655,6 @@
     @about-function{frame-timings-predicted-presentation-time}
   @end{section}
   @begin[GdkDrawingContext]{section}
-    Drawing context for GDK windows.
     @about-class{drawing-context}
     @about-generic{drawing-context-clip}
     @about-generic{drawing-context-window}
@@ -661,26 +662,20 @@
     @about-function{drawing-context-is-valid}
   @end{section}
   @begin[OpenGL context]{section}
-    The @class{gdk:gl-context} object is representing the platform-specific
-    OpenGL drawing context.
     @about-symbol{gl-error}
     @about-class{gl-context}
     @about-generic{gl-context-display}
     @about-generic{gl-context-shared-context}
     @about-generic{gl-context-window}
-    @about-function{gl-context-get-version}
-    @about-function{gl-context-set-required-version}
-    @about-function{gl-context-get-required-version}
-    @about-function{gl-context-set-debug-enabled}
-    @about-function{gl-context-get-debug-enabled}
-    @about-function{gl-context-set-forward-compatible}
-    @about-function{gl-context-get-forward-compatible}
-    @about-function{gl-context-set-use-es}
-    @about-function{gl-context-get-use-es}
+    @about-function{gl-context-version}
+    @about-function{gl-context-required-version}
+    @about-function{gl-context-debug-enabled}
+    @about-function{gl-context-forward-compatible}
+    @about-function{gl-context-use-es}
     @about-function{gl-context-is-legacy}
     @about-function{gl-context-realize}
     @about-function{gl-context-make-current}
-    @about-function{gl-context-get-current}
+    @about-function{gl-context-current}
     @about-function{gl-context-clear-current}
   @end{section}
   @begin[Events]{section}

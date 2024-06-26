@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -112,7 +112,11 @@
 ;;;     gdk_window_beep
 ;;;     gdk_window_get_scale_factor
 ;;;     gdk_window_set_opaque_region
+;;;
 ;;;     gdk_window_create_gl_context
+;;;     gdk_window_create_similar_surface
+;;;     gdk_window_create_similar_image_surface
+;;;
 ;;;     gdk_window_mark_paint_from_clip
 ;;;     gdk_window_get_clip_region
 ;;;     gdk_window_begin_paint_rect                        deprecated
@@ -2863,6 +2867,107 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 ;;;     the newly created GdkGLContext, or NULL on error.
 ;;;
 ;;; Since 3.16
+;;; ----------------------------------------------------------------------------
+
+;;; ----------------------------------------------------------------------------
+;;; gdk_window_create_similar_surface
+;;;
+;;; cairo_surface_t*
+;;; gdk_window_create_similar_surface (GdkWindow* window,
+;;;                                    cairo_content_t content,
+;;;                                    int width,
+;;;                                    int height)
+;;;
+;;; Create a new surface that is as compatible as possible with the given
+;;; window. For example the new surface will have the same fallback resolution
+;;; and font options as window. Generally, the new surface will also use the
+;;; same backend as window, unless that is not possible for some reason. The
+;;; type of the returned surface may be examined with cairo_surface_get_type().
+;;;
+;;; Initially the surface contents are all 0 (transparent if contents have
+;;; transparency, black otherwise.).
+;;;
+;;; content
+;;;     The content for the new surface.
+;;;
+;;; width
+;;;     Width of the new surface.
+;;;
+;;; height
+;;;     Height of the new surface.
+;;;
+;;; Return value
+;;;     A pointer to the newly allocated surface. The caller owns the surface
+;;;     and should call cairo_surface_destroy() when done with it.
+;;;     This function always returns a valid pointer, but it will return a
+;;;     pointer to a “nil” surface if other is already in an error state or any
+;;;     other error occurs.
+;;;
+;;;     The caller of the method takes ownership of the returned data, and is
+;;;     responsible for freeing it.
+;;; ----------------------------------------------------------------------------
+
+;;; ----------------------------------------------------------------------------
+;;; gdk_window_create_similar_image_surface
+;;;
+;;; cairo_surface_t*
+;;; gdk_window_create_similar_image_surface (GdkWindow* window,
+;;;                                          cairo_format_t format,
+;;;                                          int width,
+;;;                                          int height,
+;;;                                          int scale)
+;;;
+;;; Create a new image surface that is efficient to draw on the given window.
+;;;
+;;; Initially the surface contents are all 0 (transparent if contents have
+;;; transparency, black otherwise.)
+;;;
+;;; The width and height of the new surface are not affected by the scaling
+;;; factor of the window, or by the scale argument; they are the size of the
+;;; surface in device pixels. If you wish to create an image surface capable of
+;;; holding the contents of window you can use:
+;;;
+;;;   int scale = gdk_window_get_scale_factor (window);
+;;;   int width = gdk_window_get_width (window) * scale;
+;;;   int height = gdk_window_get_height (window) * scale;
+;;;
+;;;   // format is set elsewhere
+;;;   cairo_surface_t *surface =
+;;;     gdk_window_create_similar_image_surface (window,
+;;;                                              format,
+;;;                                              width, height,
+;;;                                              scale);
+;;;
+;;; Note that unlike cairo_surface_create_similar_image(), the new surface’s
+;;; device scale is set to scale, or to the scale factor of window if scale is
+;;; 0.
+;;;
+;;; window
+;;;     Window to make new surface similar to, or NULL if none.
+;;;     The argument can be NULL.
+;;;
+;;; format
+;;;     The format for the new surface.
+;;;
+;;; width
+;;;     Width of the new surface.
+;;;
+;;; height
+;;;     Height of the new surface.
+;;;
+;;; scale
+;;;     The scale of the new surface, or 0 to use same as window.
+;;;
+;;; Return value
+;;;     A pointer to the newly allocated surface. The caller owns the surface
+;;;     and should call cairo_surface_destroy() when done with it.
+;;;
+;;;     This function always returns a valid pointer, but it will return a
+;;;     pointer to a “nil” surface if other is already in an error state or any
+;;;     other error occurs.
+;;;
+;;;     The caller of the method takes ownership of the returned data, and is
+;;;     responsible for freeing it.
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
