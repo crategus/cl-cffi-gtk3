@@ -13,27 +13,27 @@
 ;;;     GtkIconTheme
 
 (test gtk-icon-theme-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkIconTheme"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:icon-theme
           (glib:symbol-for-gtype "GtkIconTheme")))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GObject")
           (g:type-parent "GtkIconTheme")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkIconTheme")))
-  ;; Check the interfaces
+             (gtk-test:list-children "GtkIconTheme")))
+  ;; Check interfaces
   (is (equal '()
-             (list-interfaces "GtkIconTheme")))
-  ;; Check the class properties
+             (gtk-test:list-interfaces "GtkIconTheme")))
+  ;; Check class properties
   (is (equal '()
-             (list-properties "GtkIconTheme")))
-  ;; Check the signals
+             (gtk-test:list-properties "GtkIconTheme")))
+  ;; Check signals
   (is (equal '("changed")
-             (list-signals "GtkIconTheme")))
-  ;; Check the class definition
+             (gtk-test:list-signals "GtkIconTheme")))
+  ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkIconTheme" GTK-ICON-THEME
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
                         :TYPE-INITIALIZER "gtk_icon_theme_get_type")
@@ -146,18 +146,21 @@
 
 ;;;     gtk_icon_theme_list_contexts
 
+#-windows
 (test gtk-icon-theme-list-contexts
   (let ((theme (gtk:icon-theme-default)))
-    #-windows
     (is (equal '("Actions" "Animations" "Applications" "Camera" "Categories" "Devices"
  "Emblems" "Emotes" "Generic-Symbols" "Legacy" "MimeTypes" "Multimedia"
  "Org.Gnome.Nautilus" "Org.Gnome.Settings" "Phosh" "Places" "Status" "Stock"
  "Time" "UI")
-               (sort (gtk:icon-theme-list-contexts theme) #'string<)))
-    #+windows
-    (is (equal '("UI" "Emblems" "Actions" "Places" "Categories" "Legacy"
-                 "Devices" "Emotes" "Status" "Applications" "MimeTypes")
-               (gtk:icon-theme-list-contexts theme)))))
+               (sort (gtk:icon-theme-list-contexts theme) #'string<)))))
+
+#+windows
+(test gtk-icon-theme-list-contexts
+  (let ((theme (gtk:icon-theme-default)))
+    (is (equal '("Actions" "Applications" "Categories" "Devices" "Emblems"
+                 "Emotes" "Legacy" "MimeTypes" "Places" "Status" "UI")
+               (sort (gtk:icon-theme-list-contexts theme) #'string<)))))
 
 ;;;     gtk_icon_theme_list_icons
 
@@ -291,4 +294,4 @@
          (icon-info (gtk:icon-theme-lookup-icon theme "battery" 0 :force-symbolic)))
     (is-true (gtk:icon-info-is-symbolic icon-info))))
 
-;;; 2024-6-16
+;;; 2024-6-24

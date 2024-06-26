@@ -8,25 +8,25 @@
 ;;;     GtkDestDefaults
 
 (test gtk-dest-defaults
-  ;; Check the type
+  ;; Check type
   (is (g:type-is-flags "GtkDestDefaults"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:dest-defaults
           (glib:symbol-for-gtype "GtkDestDefaults")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkDestDefaults")
           (g:gtype (cffi:foreign-funcall "gtk_dest_defaults_get_type" :size))))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_DEST_DEFAULT_MOTION" "GTK_DEST_DEFAULT_HIGHLIGHT"
                "GTK_DEST_DEFAULT_DROP" "GTK_DEST_DEFAULT_ALL")
-             (list-flags-item-name "GtkDestDefaults")))
-  ;; Check the values
+             (gtk-test:list-flags-item-name "GtkDestDefaults")))
+  ;; Check values
   (is (equal '(1 2 4 7)
-             (list-flags-item-value "GtkDestDefaults")))
-  ;; Check the nick names
+             (gtk-test:list-flags-item-value "GtkDestDefaults")))
+  ;; Check nick names
   (is (equal '("motion" "highlight" "drop" "all")
-             (list-flags-item-nick "GtkDestDefaults")))
-  ;; Check the flags definition
+             (gtk-test:list-flags-item-nick "GtkDestDefaults")))
+  ;; Check flags definition
   (is (equal '(GOBJECT:DEFINE-G-FLAGS "GtkDestDefaults"
                               GTK-DEST-DEFAULTS
                               (:EXPORT T
@@ -42,27 +42,27 @@
 ;;;     GtkDragResult
 
 (test gtk-drag-result
-  ;; Check the type
+  ;; Check type
   (is (g:type-is-enum "GtkDragResult"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkDragResult")
           (g:gtype (cffi:foreign-funcall "gtk_drag_result_get_type" :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:drag-result
           (glib:symbol-for-gtype "GtkDragResult")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_DRAG_RESULT_SUCCESS" "GTK_DRAG_RESULT_NO_TARGET"
                "GTK_DRAG_RESULT_USER_CANCELLED"
                "GTK_DRAG_RESULT_TIMEOUT_EXPIRED"
                "GTK_DRAG_RESULT_GRAB_BROKEN" "GTK_DRAG_RESULT_ERROR")
-             (list-enum-item-name "GtkDragResult")))
-  ;; Check the values
+             (gtk-test:list-enum-item-name "GtkDragResult")))
+  ;; Check values
   (is (equal '(0 1 2 3 4 5)
-             (list-enum-item-value "GtkDragResult")))
-  ;; Check the nick names
+             (gtk-test:list-enum-item-value "GtkDragResult")))
+  ;; Check nick names
   (is (equal '("success" "no-target" "user-cancelled" "timeout-expired"
                "grab-broken" "error")
-             (list-enum-item-nick "GtkDragResult")))
+             (gtk-test:list-enum-item-nick "GtkDragResult")))
   ;; Check the enum definition
   (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkDragResult" GTK-DRAG-RESULT
                                      (:EXPORT T
@@ -270,7 +270,8 @@
                  ("image/icon" NIL 0)
                  ("text/ico" NIL 0)
                  ("image/jpeg" NIL 0)
-                 ("image/tiff" NIL 0))
+                 ("image/jxl" NIL 0)
+                  ("image/tiff" NIL 0))
                (gtk:target-table-new-from-list
                    (gtk:drag-source-target-list source))))))
 
@@ -287,4 +288,4 @@
                (gtk:target-table-new-from-list
                    (gtk:drag-source-target-list source))))))
 
-;;; 2024-6-16
+;;; 2024-6-24

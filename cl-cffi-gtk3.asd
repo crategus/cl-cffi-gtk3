@@ -377,7 +377,7 @@
   :version "0.6.0"
   :author "Dieter Kaiser"
   :license "MIT"
-  :depends-on (:cl-cffi-gtk3 :fiveam)
+  :depends-on (:cl-cffi-gtk3 :cl-cffi-glib/test :fiveam)
   :perform (test-op (o c)
              (uiop:symbol-call :fiveam :run!
                                (uiop:find-symbol* :gtk-test :gtk-test)))

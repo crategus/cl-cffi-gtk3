@@ -8,31 +8,31 @@
 ;;;     GtkCellArea
 
 (test gtk-cell-area-class
-  ;; Type check
+  ;; Check Type
   (is (g:type-is-object "GtkCellArea"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:cell-area
           (glib:symbol-for-gtype "GtkCellArea")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkCellArea")
           (g:gtype (cffi:foreign-funcall "gtk_cell_area_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GInitiallyUnowned")
           (g:type-parent "GtkCellArea")))
-  ;; Check the children
+  ;; Check children
   (is (equal '("GtkCellAreaBox")
-             (list-children "GtkCellArea")))
-  ;; Check the interfaces
+             (gtk-test:list-children "GtkCellArea")))
+  ;; Check interfaces
   (is (equal '("GtkCellLayout" "GtkBuildable")
-             (list-interfaces "GtkCellArea")))
-  ;; Check the class properties
+             (gtk-test:list-interfaces "GtkCellArea")))
+  ;; Check class properties
   (is (equal '("edit-widget" "edited-cell" "focus-cell")
-             (list-properties "GtkCellArea")))
-  ;; Check the signals
+             (gtk-test:list-properties "GtkCellArea")))
+  ;; Check signals
   (is (equal '("add-editable" "apply-attributes" "focus-changed"
                "remove-editable")
-             (list-signals "GtkCellArea")))
-  ;; Check the class definition
+             (gtk-test:list-signals "GtkCellArea")))
+  ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkCellArea" GTK-CELL-AREA
                        (:SUPERCLASS G-INITIALLY-UNOWNED :EXPORT T :INTERFACES
                         ("GtkBuildable" "GtkCellLayout") :TYPE-INITIALIZER
@@ -132,11 +132,50 @@
                     message)
               nil))
     ;; Check the result
-    (is (equal '((GTK:CELL-RENDERER-TEXT (0 35) (0 35))
-                 (GTK:CELL-RENDERER-TOGGLE (35 51) (35 51))
-                 (GTK:CELL-RENDERER-PIXBUF (86 31) (86 31))
-                 (GTK:CELL-RENDERER-PROGRESS (117 68) (117 68))
-                 (GTK:CELL-RENDERER-SPINNER (185 47) (185 47)))
+    (is (equal '((GTK:CELL-RENDERER-TEXT (0 39) (0 39))
+                 (GTK:CELL-RENDERER-TOGGLE (39 55) (39 55))
+                 (GTK:CELL-RENDERER-PIXBUF (94 35) (94 35))
+                 (GTK:CELL-RENDERER-PROGRESS (129 71) (129 71))
+                 (GTK:CELL-RENDERER-SPINNER (200 50) (200 50)))
+               (reverse message)))))
+
+#+windows
+(test gtk-cell-area-foreach-alloc
+  (let ((area (gtk:cell-area-box-new))
+        (widget (make-instance 'gtk:window
+                               :type :toplevel
+                               :width-request 120
+                               :height-request 60))
+        (message nil))
+    ;; Realize the window
+    (gtk:widget-realize widget)
+    ;; Add five cell renderers to the area box
+    (gtk:cell-area-box-pack-start area (gtk:cell-renderer-text-new))
+    (gtk:cell-area-box-pack-start area (gtk:cell-renderer-toggle-new))
+    (gtk:cell-area-box-pack-start area (gtk:cell-renderer-pixbuf-new))
+    (gtk:cell-area-box-pack-start area (gtk:cell-renderer-progress-new))
+    (gtk:cell-area-box-pack-start area (gtk:cell-renderer-spinner-new))
+    ;; Collect for each renderer information about the layout
+    (gtk:cell-area-foreach-alloc
+            area
+            (gtk:cell-area-create-context area)
+            widget
+            (gtk:widget-allocation widget)
+            (gtk:widget-allocation widget)
+            (lambda (renderer cell background)
+              (push (list (type-of renderer)
+                          (list (gdk:rectangle-x cell)
+                                (gdk:rectangle-width cell))
+                          (list (gdk:rectangle-x background)
+                                (gdk:rectangle-width background)))
+                    message)
+              nil))
+    ;; Check the result
+    (is (equal '((GTK:CELL-RENDERER-TEXT (0 14) (0 14))
+                 (GTK:CELL-RENDERER-TOGGLE (14 30) (14 30))
+                 (GTK:CELL-RENDERER-PIXBUF (44 10) (44 10))
+                 (GTK:CELL-RENDERER-PROGRESS (54 40) (54 40))
+                 (GTK:CELL-RENDERER-SPINNER (94 26) (94 26)))
                (reverse message)))))
 
 ;;;     gtk_cell_area_event
@@ -232,4 +271,4 @@
 ;;;     gtk_cell_area_inner_cell_area
 ;;;     gtk_cell_area_request_renderer
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-6-22

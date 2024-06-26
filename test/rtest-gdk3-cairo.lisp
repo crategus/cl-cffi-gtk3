@@ -10,7 +10,7 @@
 (test gdk-cairo-surface-boxed
   ;; Check type
   (is (g:type-is-boxed "CairoSurface"))
-;  TODO: Check this: We have no type initializer!?
+;  TODO: Check this: What is the correct type initializer?!
 ;  (is (eq (g:gtype "CairoSurface")
 ;          (g:gtype (cffi:foreign-funcall "cairo_surface_get_type" :size))))
   (cairo:with-image-surface (surface :rgb24 100 150)
@@ -30,7 +30,7 @@
 (test gdk-cairo-context-boxed
   ;; Check type
   (is (g:type-is-boxed "CairoContext"))
-;  TODO: Check this: We have no type initializer!?
+;  TODO: Check this: What is the correct type initializer
 ;  (is (eq (g:gtype "CairoContext")
 ;          (g:gtype (cffi:foreign-funcall "cairo_context_get_type" :size))))
   (cairo:with-context-for-image-surface (context :rgb24 100 150)
@@ -183,4 +183,4 @@
 ;;;     gdk_cairo_surface_create_from_pixbuf
 ;;;     gdk_cairo_draw_from_gl
 
-;;; --- 2023-7-19 --------------------------------------------------------------
+;;; 2024-6-22

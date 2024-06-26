@@ -8,25 +8,25 @@
 ;;;   GtkTargetFlags  <-- gtk.drag-and-drop.lisp
 
 (test gtk-target-flags
-  ;; Check the type
+  ;; Check type
   (is (g:type-is-flags "GtkTargetFlags"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:target-flags
           (glib:symbol-for-gtype "GtkTargetFlags")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkTargetFlags")
           (g:gtype (cffi:foreign-funcall "gtk_target_flags_get_type" :size))))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_TARGET_SAME_APP" "GTK_TARGET_SAME_WIDGET"
                "GTK_TARGET_OTHER_APP" "GTK_TARGET_OTHER_WIDGET")
-             (list-flags-item-name "GtkTargetFlags")))
-  ;; Check the values
+             (gtk-test:list-flags-item-name "GtkTargetFlags")))
+  ;; Check values
   (is (equal '(1 2 4 8)
-             (list-flags-item-value "GtkTargetFlags")))
-  ;; Check the nick names
+             (gtk-test:list-flags-item-value "GtkTargetFlags")))
+  ;; Check nick names
   (is (equal '("same-app" "same-widget" "other-app" "other-widget")
-             (list-flags-item-nick "GtkTargetFlags")))
-  ;; Check the flags definition
+             (gtk-test:list-flags-item-nick "GtkTargetFlags")))
+  ;; Check flags definition
   (is (equal '(GOBJECT:DEFINE-G-FLAGS "GtkTargetFlags"
                               GTK-TARGET-FLAGS
                               (:EXPORT T
@@ -53,7 +53,7 @@
 
 ;;;     GtkSelectionData
 
-(test selection-data-boxed
+(test gtk-selection-data-boxed
   ;; Check type
   (is (g:type-is-boxed "GtkSelectionData"))
   ;; Check type initializer
@@ -152,12 +152,11 @@
                (sort (mapcar #'first
                              (gtk:target-table-new-from-list tlist))
                      #'string-lessp)))))
-
+#-windows
 (test gtk-target-list-add-image-targets.2
   (let ((tlist (gtk:target-list-new)))
     (gtk:target-list-add-image-targets tlist 0 nil)
-    (is (equal #-windows
-               '("application/ico" "application/x-navi-animation" "audio/x-riff"
+    (is (equal '("application/ico" "application/x-navi-animation" "audio/x-riff"
                  "image/avif" "image/avif" "image/bmp" "image/gif" "image/heic"
                  "image/heif" "image/ico" "image/icon" "image/jpeg" "image/png"
                  "image/qtif" "image/svg" "image/svg+xml"
@@ -169,11 +168,18 @@
                  "image/x-portable-pixmap" "image/x-quicktime" "image/x-tga"
                  "image/x-win-bitmap" "image/x-wmf" "image/x-xbitmap"
                  "image/x-xpixmap" "text/ico" "text/xml-svg")
-               #+windows
-               '("application/emf" "application/ico" "application/x-emf"
+               (sort (mapcar #'first
+                             (gtk:target-table-new-from-list tlist))
+                     #'string-lessp)))))
+
+#+windows
+(test gtk-target-list-add-image-targets.2
+  (let ((tlist (gtk:target-list-new)))
+    (gtk:target-list-add-image-targets tlist 0 nil)
+    (is (equal '("application/emf" "application/ico" "application/x-emf"
                  "application/x-navi-animation" "image/bmp" "image/emf"
-                 "image/gif" "image/ico" "image/icon" "image/jpeg" "image/png"
-                 "image/qtif" "image/svg" "image/svg+xml"
+                 "image/gif" "image/ico" "image/icon" "image/jpeg" "image/jxl"
+                 "image/png" "image/qtif" "image/svg" "image/svg+xml"
                  "image/svg+xml-compressed" "image/svg-xml" "image/tiff"
                  "image/vnd.adobe.svg+xml" "image/vnd.microsoft.icon"
                  "image/wmf" "image/x-bmp" "image/x-emf" "image/x-icns"
@@ -514,4 +520,4 @@
 ;;;     gtk_selection_data_copy
 ;;;     gtk_selection_data_free
 
-;;; 2024-6-16
+;;; 2024-6-24

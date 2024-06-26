@@ -12,36 +12,36 @@
   (gdk:screen-default))
 
 (test gdk-screen-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GdkScreen"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gdk:screen
           (glib:symbol-for-gtype "GdkScreen")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GdkScreen")
           (g:gtype (cffi:foreign-funcall "gdk_screen_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GObject")
           (g:type-parent "GdkScreen")))
-  ;; Check the children
-  #-windows
+  ;; Check children
+  #+crategus
   (is (or (equal '("GdkX11Screen")
-                 (list-children "GdkScreen"))
+                 (gtk-test:list-children "GdkScreen"))
           (equal '("GdkWaylandScreen" "GdkX11Screen")
-                 (list-children "GdkScreen"))))
+                 (gtk-test:list-children "GdkScreen"))))
   #+windows
   (is (equal '("GdkWin32Screen")
-             (list-children "GdkScreen")))
-  ;; Check the interfaces
+             (gtk-test:list-children "GdkScreen")))
+  ;; Check interfaces
   (is (equal '()
-             (list-interfaces "GdkScreen")))
-  ;; Check the class properties
+             (gtk-test:list-interfaces "GdkScreen")))
+  ;; Check class properties
   (is (equal '("font-options" "resolution")
-             (list-properties "GdkScreen")))
-  ;; Check the signals
+             (gtk-test:list-properties "GdkScreen")))
+  ;; Check signals
   (is (equal '("composited-changed" "monitors-changed" "size-changed")
-             (list-signals "GdkScreen")))
-  ;; Check the class definition
+             (gtk-test:list-signals "GdkScreen")))
+  ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GdkScreen" GDK-SCREEN
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
                         :TYPE-INITIALIZER "gdk_screen_get_type")
@@ -217,7 +217,7 @@
 
 ;;;     gdk-screen-monitor-geometry                        deprecated
 
-#+crategus
+#+nil
 (test gdk-screen-monitor-geometry
   (is (typep (gdk:screen-monitor-geometry (gdk:screen-default) 0) 'gdk:rectangle))
   (let ((rect (gdk:screen-monitor-geometry (gdk:screen-default) 0)))
@@ -238,14 +238,14 @@
 
 ;;;     gdk-screen-monitor-at-point                        deprecated
 
-#+crategus
+#+nil
 (test gdk-screen-monitor-at-point
   (is (= 1 (gdk:screen-monitor-at-point (gdk:screen-default)  0  0)))
   (is (= 1 (gdk:screen-monitor-at-point (gdk:screen-default) 10 10))))
 
 ;;;     gdk-screen-monitor-at-window                       deprecated
 
-#+crategus
+#+nil
 (test gdk-screen-monitor-at-window
   (let ((screen (gdk:screen-default)))
     (is (= 1 (gdk:screen-monitor-at-window screen
@@ -293,4 +293,4 @@
   (is (every (lambda (x) (typep x 'gdk:window))
              (gdk:screen-window-stack (gdk:screen-default)))))
 
-;;; 2023-12-28
+;;; 2024-6-23

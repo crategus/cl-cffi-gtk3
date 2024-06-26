@@ -8,15 +8,15 @@
 ;;;     GtkLicense
 
 (test gtk-license
-  ;; Check the type
+  ;; Check type
   (is (g:type-is-enum "GtkLicense"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkLicense")
           (g:gtype (cffi:foreign-funcall "gtk_license_get_type" :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:license
           (glib:symbol-for-gtype "GtkLicense")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_LICENSE_UNKNOWN" "GTK_LICENSE_CUSTOM" "GTK_LICENSE_GPL_2_0"
                "GTK_LICENSE_GPL_3_0" "GTK_LICENSE_LGPL_2_1"
                "GTK_LICENSE_LGPL_3_0" "GTK_LICENSE_BSD" "GTK_LICENSE_MIT_X11"
@@ -25,17 +25,17 @@
                "GTK_LICENSE_LGPL_3_0_ONLY" "GTK_LICENSE_AGPL_3_0"
                "GTK_LICENSE_AGPL_3_0_ONLY" "GTK_LICENSE_BSD_3"
                "GTK_LICENSE_APACHE_2_0" "GTK_LICENSE_MPL_2_0")
-             (list-enum-item-name "GtkLicense")))
-  ;; Check the values
+             (gtk-test:list-enum-item-name "GtkLicense")))
+  ;; Check values
   (is (equal '(0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17)
-             (list-enum-item-value "GtkLicense")))
-  ;; Check the nick names
+             (gtk-test:list-enum-item-value "GtkLicense")))
+  ;; Check nick names
   (is (equal '("unknown" "custom" "gpl-2-0" "gpl-3-0" "lgpl-2-1" "lgpl-3-0"
                "bsd" "mit-x11" "artistic" "gpl-2-0-only" "gpl-3-0-only"
                "lgpl-2-1-only" "lgpl-3-0-only" "agpl-3-0" "agpl-3-0-only"
                "bsd-3" "apache-2-0" "mpl-2-0")
-             (list-enum-item-nick "GtkLicense")))
-  ;; Check the enum definition
+             (gtk-test:list-enum-item-nick "GtkLicense")))
+  ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkLicense" GTK-LICENSE
                                      (:EXPORT T
                                       :TYPE-INITIALIZER "gtk_license_get_type")
@@ -62,39 +62,42 @@
 ;;;     GtkAboutDialog
 
 (test gtk-about-dialog-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkAboutDialog"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:about-dialog
           (glib:symbol-for-gtype "GtkAboutDialog")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkAboutDialog")
           (g:gtype (cffi:foreign-funcall "gtk_about_dialog_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkDialog")
           (g:type-parent "GtkAboutDialog")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkAboutDialog")))
-  ;; Check the interfaces
+             (gtk-test:list-children "GtkAboutDialog")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
-             (list-interfaces "GtkAboutDialog")))
-  ;; Check the class properties
+             (gtk-test:list-interfaces "GtkAboutDialog")))
+  ;; Check class properties
   (is (equal '("artists" "authors" "comments" "copyright" "documenters"
                "license" "license-type" "logo" "logo-icon-name" "program-name"
                "translator-credits" "version" "website" "website-label"
                "wrap-license")
-             (list-properties "GtkAboutDialog")))
-  ;; Get the names of the style properties
+             (gtk-test:list-properties "GtkAboutDialog")))
+  ;; Check style properties
   (is (equal '()
-             (list-style-properties "GtkAboutDialog")))
-  ;; Get the names of the child properties
+             (gtk-test:list-style-properties "GtkAboutDialog")))
+  ;; Check child properties
   (is (equal '()
-             (list-child-properties "GtkAboutDialog")))
-  ;; Check the signals
+             (gtk-test:list-child-properties "GtkAboutDialog")))
+  ;; Check signals
   (is (equal '("activate-link")
-             (list-signals "GtkAboutDialog")))
-  ;; Check the class definition
+             (gtk-test:list-signals "GtkAboutDialog")))
+  ;; Check CSS information
+  (is (string= "dialog"
+               (gtk:widget-class-css-name "GtkAboutDialog")))
+  ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkAboutDialog" GTK-ABOUT-DIALOG
                        (:SUPERCLASS GTK-DIALOG :EXPORT T :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable")
@@ -143,7 +146,7 @@
     (is (eq :unknown (gtk:about-dialog-license-type dialog)))
     (is-false (gtk:about-dialog-logo dialog))
     (is (string= "image-missing" (gtk:about-dialog-logo-icon-name dialog)))
-    (is (string= "sbcl" (gtk:about-dialog-program-name dialog)))
+    (is (string= "glib-test" (gtk:about-dialog-program-name dialog)))
     (is-false (gtk:about-dialog-translator-credits dialog))
     (is-false (gtk:about-dialog-version dialog))
     (is-false (gtk:about-dialog-website dialog))
@@ -164,4 +167,4 @@
 ;;;     gtk_about_dialog_add_credit_section
 ;;;     gtk_show_about_dialog
 
-;;; 2024-3-16
+;;; 2024-6-23
