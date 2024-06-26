@@ -1144,85 +1144,84 @@
     @end{subsection}
   @end{section}
   @begin[Multiline Text Editor]{section}
-    @subheading{Conceptual Overview}
-    GTK has a powerful framework for multiline text editing. The primary
-    objects involved in the process are the @class{gtk:text-buffer} object,
-    which represents the text being edited, and the @class{gtk:text-view}
-    widget, a widget which can display a @class{gtk:text-buffer} object. Each
-    text buffer can be displayed by any number of views.
+    @begin[Conceptual Overview]{subsection}
+      GTK has a powerful framework for multiline text editing. The primary
+      objects involved in the process are the @class{gtk:text-buffer} object,
+      which represents the text being edited, and the @class{gtk:text-view}
+      widget, a widget which can display a @class{gtk:text-buffer} object. Each
+      text buffer can be displayed by any number of views.
 
-    One of the important things to remember about text in GTK is that it is
-    in the UTF-8 encoding. This means that one character can be encoded as
-    multiple bytes. Character counts are usually referred to as offsets, while
-    byte counts are called indexes. If you confuse these two, things will work
-    fine with ASCII, but as soon as your text buffer contains multibyte
-    characters, bad things will happen.
+      One of the important things to remember about text in GTK is that it is
+      in the UTF-8 encoding. This means that one character can be encoded as
+      multiple bytes. Character counts are usually referred to as offsets, while
+      byte counts are called indexes. If you confuse these two, things will work
+      fine with ASCII, but as soon as your text buffer contains multibyte
+      characters, bad things will happen.
 
-    Text in a text buffer can be marked with tags. A tag is an attribute that
-    can be applied to some range of text. For example, a tag might be called
-    \"bold\" and make the text inside the tag bold. However, the tag concept
-    is more general than that. Tags do not have to affect appearance. They can
-    instead affect the behavior of mouse and key presses, \"lock\" a range of
-    text so the user cannot edit it, or countless other things. A tag is
-    represented by a @class{gtk:text-tag} object. One @class{gtk:text-tag}
-    object can be applied to any number of text ranges in any number of
-    text buffers.
+      Text in a text buffer can be marked with tags. A tag is an attribute that
+      can be applied to some range of text. For example, a tag might be called
+      \"bold\" and make the text inside the tag bold. However, the tag concept
+      is more general than that. Tags do not have to affect appearance. They can
+      instead affect the behavior of mouse and key presses, \"lock\" a range of
+      text so the user cannot edit it, or countless other things. A tag is
+      represented by a @class{gtk:text-tag} object. One @class{gtk:text-tag}
+      object can be applied to any number of text ranges in any number of
+      text buffers.
 
-    Each tag is stored in a @class{gtk:text-tag-table} object. A tag table
-    defines a set of tags that can be used together. Each text buffer has one
-    tag table associated with it. Only tags from that tag table can be used
-    with the text buffer. A single tag table can be shared between multiple
-    text buffers, however.
+      Each tag is stored in a @class{gtk:text-tag-table} object. A tag table
+      defines a set of tags that can be used together. Each text buffer has one
+      tag table associated with it. Only tags from that tag table can be used
+      with the text buffer. A single tag table can be shared between multiple
+      text buffers, however. Tags can have names, which is convenient sometimes.
+      For example, you can name your tag that makes things bold @code{\"bold\"},
+      but they can also be anonymous, which is convenient if you are creating
+      tags on-the-fly.
 
-    Tags can have names, which is convenient sometimes. For example, you can
-    name your tag that makes things bold \"bold\"), but they can also be
-    anonymous, which is convenient if you are creating tags on-the-fly.
+      Most text manipulation is accomplished with iterators, represented by a
+      @class{gtk:text-iter} instance. An iterator represents a position between
+      two characters in the text buffer. The @class{gtk:text-iter} structure is
+      a structure designed to be allocated on the stack. It is guaranteed to be
+      copiable by value and never contain any heap-allocated data. Iterators are
+      not valid indefinitely. Whenever the text buffer is modified in a way that
+      affects the number of characters in the text buffer, all outstanding
+      iterators become invalid. Note that deleting 5 characters and then
+      reinserting 5 still invalidates iterators, though you end up with the same
+      number of characters you pass through a state with a different number.
 
-    Most text manipulation is accomplished with iterators, represented by a
-    @class{gtk:text-iter} instance. An iterator represents a position between
-    two characters in the text buffer. The @class{gtk:text-iter} structure is
-    a structure designed to be allocated on the stack. It is guaranteed to be
-    copiable by value and never contain any heap-allocated data. Iterators are
-    not valid indefinitely. Whenever the text buffer is modified in a way that
-    affects the number of characters in the text buffer, all outstanding
-    iterators become invalid. Note that deleting 5 characters and then
-    reinserting 5 still invalidates iterators, though you end up with the same
-    number of characters you pass through a state with a different number.
+      Because of this, iterators cannot be used to preserve positions across
+      buffer modifications. To preserve a position, the @class{gtk:text-mark}
+      object is ideal. You can think of a mark as an invisible cursor or
+      insertion point. It floats in the text buffer, saving a position. If the
+      text surrounding the mark is deleted, the mark remains in the position
+      the text once occupied. If text is inserted at the mark, the mark ends up
+      either to the left or to the right of the new text, depending on its
+      gravity. The standard text cursor in left-to-right languages is a mark
+      with right gravity, because it stays to the right of inserted text.
 
-    Because of this, iterators cannot be used to preserve positions across
-    buffer modifications. To preserve a position, the @class{gtk:text-mark}
-    object is ideal. You can think of a mark as an invisible cursor or
-    insertion point. It floats in the text buffer, saving a position. If the
-    text surrounding the mark is deleted, the mark remains in the position the
-    text once occupied. If text is inserted at the mark, the mark ends up
-    either to the left or to the right of the new text, depending on its
-    gravity. The standard text cursor in left-to-right languages is a mark
-    with right gravity, because it stays to the right of inserted text.
+      Like tags, marks can be either named or anonymous. There are two marks
+      built-in to the @class{gtk:text-buffer} class. These are named
+      @code{\"insert\"} and @code{\"selection_bound\"} and refer to the
+      insertion point and the boundary of the selection which is not the
+      insertion point, respectively. If no text is selected, these two marks
+      will be in the same position. You can manipulate what is selected and
+      where the cursor appears by moving these marks around. If you want to
+      place the cursor in response to a user action, be sure to use the
+      @fun{gtk:text-buffer-place-cursor} function, which moves both at once
+      without causing a temporary selection. Moving one then the other
+      temporarily selects the range in between the old and new positions.
 
-    Like tags, marks can be either named or anonymous. There are two marks
-    built-in to the @class{gtk:text-buffer} class. These are named \"insert\"
-    and \"selection_bound\" and refer to the insertion point and the boundary
-    of the selection which is not the insertion point, respectively. If no
-    text is selected, these two marks will be in the same position. You can
-    manipulate what is selected and where the cursor appears by moving these
-    marks around. If you want to place the cursor in response to a user
-    action, be sure to use the @fun{gtk:text-buffer-place-cursor} function,
-    which moves both at once without causing a temporary selection. Moving one
-    then the other temporarily selects the range in between the old and new
-    positions.
+      Text buffers always contain at least one line, but may be empty, that is,
+      buffers can contain zero characters. The last line in the text buffer
+      never ends in a line separator (such as newline). The other lines in the
+      text buffer always end in a line separator. Line separators count as
+      characters when computing character counts and character offsets. Note
+      that some Unicode line separators are represented with multiple bytes in
+      UTF-8, and the two-character sequence @code{\"\\r\\n\"} is also
+      considered a line separator.
 
-    Text buffers always contain at least one line, but may be empty, that is,
-    buffers can contain zero characters. The last line in the text buffer
-    never ends in a line separator (such as newline). The other lines in the
-    text buffer always end in a line separator. Line separators count as
-    characters when computing character counts and character offsets. Note
-    that some Unicode line separators are represented with multiple bytes in
-    UTF-8, and the two-character sequence \"\r\n\" is also considered a line
-    separator.
-
-    @subheading{Simple Example}
-    A simple usage of the @class{gtk:text-view} widget might look like this:
-    @begin{pre}
+      @subheading{Simple Example}
+      A simple usage of the @class{gtk:text-view} widget might look like this:
+      @begin{pre}
 (defun example-text-view-simple ()
   (gtk:within-main-loop
     (let* ((window (make-instance 'gtk:window
@@ -1246,19 +1245,19 @@
       (setf (gtk:text-buffer-text buffer) \"Some text for the text view.\")
       (gtk:container-add window view)
       (gtk:widget-show-all window))))
-    @end{pre}
-    In many cases it is also convenient to first create the buffer with the
-    @fun{gtk:text-buffer-new} function, then create a widget for that text
-    buffer with the @fun{gtk:text-view-new-with-buffer} function. Or you can
-    change the buffer the widget displays after the widget is created with
-    the @fun{gtk:text-view-buffer} function.
+      @end{pre}
+      In many cases it is also convenient to first create the text buffer with
+      the @fun{gtk:text-buffer-new} function, then create a text view for that
+      text buffer with the @fun{gtk:text-view-new-with-buffer} function. Or you
+      can change the text buffer the text view displays after the text view is
+      created with the @fun{gtk:text-view-buffer} function.
 
-    @subheading{Example of Changing Text Attributes}
-    The way to affect text attributes in the @class{gtk:text-view} widget is
-    to apply tags that change the attributes for a region of text. For text
-    features that come from the theme - such as font and foreground color -
-    use CSS to override their default values.
-    @begin{pre}
+      @subheading{Example of Changing Text Attributes}
+      The way to affect text attributes in the @class{gtk:text-view} widget is
+      to apply tags that change the attributes for a region of text. For text
+      features that come from the theme - such as font and foreground color -
+      use CSS to override their default values.
+      @begin{pre}
 (defun example-text-view-attributes ()
   (gtk:within-main-loop
     (let* ((window (make-instance 'gtk:window
@@ -1273,7 +1272,7 @@
                           (declare (ignore widget))
                           (gtk:leave-gtk-main)))
       (setf (gtk:text-buffer-text buffer) \"Hello, this is some text.\")
-      ;; Change default font and color throughout the widget
+      ;; Change default font and color throughout the text view
       (gtk:css-provider-load-from-data provider
                                        \"textview, text {
                                           color : Green;
@@ -1281,25 +1280,24 @@
       (gtk:style-context-add-provider (gtk:widget-style-context view)
                                       provider
                                       gtk:+priority-application+)
-      ;; Change left margin throughout the widget
+      ;; Change left margin throughout the text view
       (setf (gtk:text-view-left-margin view) 30)
-      ;; Use a tag to change the color for just one part of the widget
+      ;; Use a tag to change the color for just one part of the text view
       (let ((tag (gtk:text-buffer-create-tag buffer
                                              \"blue_foreground\"
                                              :foreground \"blue\"))
             (start (gtk:text-buffer-iter-at-offset buffer 7))
             (end (gtk:text-buffer-iter-at-offset buffer 12)))
-        ;; Apply the tag to a region of the text in the buffer
+        ;; Apply the tag to a region of the text in the text buffer
         (gtk:text-buffer-apply-tag buffer tag start end))
-      ;; Add the view to the window and show all
+      ;; Add the text view to the window and show all
       (gtk:container-add window view)
       (gtk:widget-show-all window))))
-    @end{pre}
-    The gtk3-demo application that comes with GTK contains more example code
-    for the @class{gtk:text-view} widget.
-
+      @end{pre}
+      The GTK3 demo that comes with GTK contains more example code for the
+      @class{gtk:text-view} widget.
+    @end{subsection}
     @begin[GtkTextIter]{subsection}
-      Text buffer iterator.
       @about-symbol{text-search-flags}
       @about-class{text-iter}
       @about-function{text-iter-buffer}

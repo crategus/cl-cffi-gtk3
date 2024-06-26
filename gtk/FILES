@@ -88,7 +88,7 @@ GTK Widgets and Objects
   Multiline Text Editor
 
     gtk-text-attributes.lisp         - GtkTextAttributes            - Gtk 3.24 +
-    gtk.text-iter.lisp               - GtkTextIter                  - GTK 3.24 +
+    gtk.text-iter.lisp               - GtkTextIter                  - GTK 3.24 .
     gtk.text-mark.lisp               - GtkTextMark                  - GTK 3.24 +
     gtk.text-buffer.lisp             - GtkTextBuffer                - GTK 3.24 +
     gtk.text-tag.lisp                - GtkTextTag                   - GTK 3.24 +
