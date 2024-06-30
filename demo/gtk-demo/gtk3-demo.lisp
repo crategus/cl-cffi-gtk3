@@ -1,7 +1,7 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3-demo.lisp
 ;;;
-;;; Copyright (C) 2013 - 2023 Dieter Kaiser
+;;; Copyright (C) 2013 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -687,11 +687,6 @@
        "cairo-draw-fill"
        "cairo-example"
        "draw-fill.lisp")
-      ("Cairo Text"
-       ":drawfunc"
-       "cairo-draw-text"
-       "cairo-example"
-       "draw-text.lisp")
       ("Cairo Paint"
        ":drawfunc"
        "cairo-draw-paint"
@@ -715,11 +710,6 @@
       ("Cairo Path"
        ":drawfunc"
        "cairo-draw-path"
-       "cairo-example"
-       "draw-path.lisp")
-      ("Cairo Dash"
-       ":drawfunc"
-       "cairo-draw-dash"
        "cairo-example"
        "draw-path.lisp")
       ("Cairo Dashes"

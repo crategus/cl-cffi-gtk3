@@ -2,7 +2,7 @@
 
 (in-package :gtk3-example)
 
-(defun create-dialog ()
+(defun create-dialog1 ()
   (let ((dialog (make-instance 'gtk:dialog
                                :title "Dialog Window"
                                :has-separator t)))
@@ -64,7 +64,7 @@
            (lambda (widget)
              (declare (ignore widget))
              ;; Create and show the dialog
-             (create-dialog))))
+             (create-dialog1))))
       (gtk:box-pack-start vbox
                           (make-instance 'gtk:separator
                                          :orientation :horizontal))
@@ -126,9 +126,11 @@
     (format t "Back from message dialog with response-id : ~A~%" response)))
 
 (defun cancel-button-clicked (button)
+  (declare (ignore button))
   (format t " in CANCEL-BUTTON-CLICKED~%"))
 
 (defun ok-button-clicked (button)
+  (declare (ignore button))
   (format t " in OK-BUTTON-CLICKED~%"))
 
 (defun example-dialog-ui ()

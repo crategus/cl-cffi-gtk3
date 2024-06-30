@@ -22,7 +22,7 @@
 
 (defun closing-tag-p (iter)
   (let ((slash (gtk:text-iter-copy iter)))
-    (gtk:text-iter-forward-char slash)
+    (gtk:text-iter-move slash)
     (eql (gtk:text-iter-char slash) #\/)))
 
 (defun example-text-view-insert (&optional application)
