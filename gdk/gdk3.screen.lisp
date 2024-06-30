@@ -35,6 +35,13 @@
 ;;;
 ;;;     GdkScreen
 ;;;
+;;; Accessors
+;;;
+;;;     gdk_screen_get_font_options
+;;;     gdk_screen_set_font_options
+;;;     gdk_screen_get_resolution
+;;;     gdk_screen_set_resolution
+;;;
 ;;; Functions
 ;;;
 ;;;     gdk_screen_get_default
@@ -43,30 +50,26 @@
 ;;;     gdk_screen_is_composited
 ;;;     gdk_screen_get_root_window
 ;;;     gdk_screen_get_display
-;;;     gdk_screen_get_number                              deprecated
-;;;     gdk_screen_get_width                               deprecated
-;;;     gdk_screen_get_height                              deprecated
-;;;     gdk_screen_get_width_mm                            deprecated
-;;;     gdk_screen_get_height_mm                           deprecated
+;;;     gdk_screen_get_number                              Deprecated 3.22
+;;;     gdk_screen_get_width                               Deprecated 3.22
+;;;     gdk_screen_get_height                              Deprecated 3.22
+;;;     gdk_screen_get_width_mm                            Deprecated 3.22
+;;;     gdk_screen_get_height_mm                           Deprecated 3.22
 ;;;     gdk_screen_list_visuals
 ;;;     gdk_screen_get_toplevel_windows
-;;;     gdk_screen_make_display_name                       deprecated
-;;;     gdk_screen_get_n_monitors                          deprecated
-;;;     gdk_screen_get_primary_monitor                     deprecated
-;;;     gdk_screen_get_monitor_geometry                    deprecated
-;;;     gdk_screen_get_monitor_workarea                    deprecated
-;;;     gdk_screen_get_monitor_at_point                    deprecated
-;;;     gdk_screen_get_monitor_at_window                   deprecated
-;;;     gdk_screen_get_monitor_height_mm                   deprecated
-;;;     gdk_screen_get_monitor_width_mm                    deprecated
-;;;     gdk_screen_get_monitor_plug_name                   deprecated
-;;;     gdk_screen_get_monitor_scale_factor                deprecated
+;;;     gdk_screen_make_display_name                       Deprecated 3.22
+;;;     gdk_screen_get_n_monitors                          Deprecated 3.22
+;;;     gdk_screen_get_primary_monitor                     Deprecated 3.22
+;;;     gdk_screen_get_monitor_geometry                    Deprecated 3.22
+;;;     gdk_screen_get_monitor_workarea                    Deprecated 3.22
+;;;     gdk_screen_get_monitor_at_point                    Deprecated 3.22
+;;;     gdk_screen_get_monitor_at_window                   Deprecated 3.22
+;;;     gdk_screen_get_monitor_height_mm                   Deprecated 3.22
+;;;     gdk_screen_get_monitor_width_mm                    Deprecated 3.22
+;;;     gdk_screen_get_monitor_plug_name                   Deprecated 3.22
+;;;     gdk_screen_get_monitor_scale_factor                Deprecated 3.22
 ;;;     gdk_screen_get_setting
-;;;     gdk_screen_get_font_options                        Accessor
-;;;     gdk_screen_set_font_options                        Accessor
-;;;     gdk_screen_get_resolution                          Accessor
-;;;     gdk_screen_set_resolution                          Accessor
-;;;     gdk_screen_get_active_window                       deprecated
+;;;     gdk_screen_get_active_window                       Deprecated 3.22
 ;;;     gdk_screen_get_window_stack
 ;;;
 ;;; Properties
@@ -106,20 +109,20 @@
 
 #+liber-documentation
 (setf (documentation 'screen 'type)
- "@version{#2021-12-13}
+ "@version{2024-6-27}
   @begin{short}
     The @class{gdk:screen} object is the GDK representation of the screen on
     which windows can be displayed and on which the pointer moves.
   @end{short}
   X11 originally identified screens with physical screens, but nowadays it is
   more common to have a single @class{gdk:screen} object which combines several
-  physical monitors. See the @fun{gdk:screen-n-monitors} function.
+  physical monitors. See the @fun{gdk:display-n-monitors} function.
 
   The @class{gdk:screen} object is used throughout GDK and GTK to specify which
   screen the toplevel windows are to be displayed on. It is also used to query
   the screen specification and default settings such as the default visual with
   the @fun{gdk:screen-system-visual} function or the dimensions of the physical
-  monitors with the @fun{gdk:screen-monitor-geometry} function.
+  monitors with the @fun{gdk:monitor-geometry} function.
   @begin[Signal Details]{dictionary}
     @subheading{The \"composited-changed\" signal}
       @begin{pre}
@@ -154,15 +157,15 @@ lambda (screen)    :run-last
   @end{dictionary}
   @see-slot{gdk:screen-font-options}
   @see-slot{gdk:screen-resolution}
-  @see-function{gdk:screen-n-monitors}
+  @see-function{gdk:display-n-monitors}
   @see-function{gdk:screen-system-visual}
-  @see-function{gdk:screen-monitor-geometry}")
+  @see-function{gdk:monitor-geometry}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- screen-font-options ------------------------------------------------
+;;; --- gdk:screen-font-options ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "font-options" 'screen) t)
@@ -174,19 +177,19 @@ lambda (screen)    :run-last
 (setf (liber:alias-for-function 'screen-font-options)
       "Accessor"
       (documentation 'screen-font-options 'function)
- "@version{#2021-12-13}
-  @syntax[]{(gdk:screen-font-options object) => options}
-  @syntax[]{(setf (gdk:screen-font-options object) options)}
+ "@version{2024-6-27}
+  @syntax{(gdk:screen-font-options object) => options}
+  @syntax{(setf (gdk:screen-font-options object) options)}
   @argument[object]{a @class{gdk:screen} object}
   @argument[options]{a @symbol{cairo:font-options-t} instance, or
-    @code{null-pointer} to unset any previously set default font options}
+    @code{cffi:null-pointer} to unset any previously set default font options}
   @begin{short}
     Accessor of the @slot[gdk:screen]{font-options} slot of the
     @class{gdk:screen} class.
   @end{short}
   The @fun{gdk:screen-font-options} function returns the current font options
-  for the screen, or @code{null-pointer} if no default font options have been
-  set. The @setf{gdk:screen-font-options} function sets the default font
+  for the screen, or @code{cffi:null-pointer} if no default font options have
+  been set. The @setf{gdk:screen-font-options} function sets the default font
   options.
 
   These font options will be set on any Pango context newly created with the
@@ -196,7 +199,7 @@ lambda (screen)    :run-last
   @see-symbol{cairo:font-options-t}
   @see-function{gdk:pango-context-for-screen}")
 
-;;; --- screen-resolution --------------------------------------------------
+;;; --- gdk:screen-resolution --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "resolution" 'screen) t)
@@ -208,9 +211,9 @@ lambda (screen)    :run-last
 (setf (liber:alias-for-function 'screen-resolution)
       "Accessor"
       (documentation 'screen-resolution 'function)
- "@version{#2021-12-13}
-  @syntax[]{(gdk:screen-resolution object) => dpi}
-  @syntax[]{(setf (gdk:screen-resolution object) dpi)}
+ "@version{2024-6-27}
+  @syntax{(gdk:screen-resolution object) => dpi}
+  @syntax{(setf (gdk:screen-resolution object) dpi)}
   @argument[object]{a @class{gdk:screen} object}
   @argument[dpi]{a double float with the resolution in \"dots per inch\"}
   @begin{short}
@@ -223,21 +226,21 @@ lambda (screen)    :run-last
   on the screen.
 
   This is a scale factor between points specified in a
-  @class{pango:font-description} structure and Cairo units. The default value
+  @class{pango:font-description} instance and Cairo units. The default value
   is 96, meaning that a 10 point font will be 13 units high
   (10 * 96 / 72 = 13.3).
   @see-class{gdk:screen}
   @see-class{pango:font-description}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_screen_get_default () -> screen-default
+;;; gdk_screen_get_default
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_screen_get_default" screen-default) (g:object screen)
  #+liber-documentation
- "@version{2024-1-2}
+ "@version{2024-6-27}
   @begin{return}
-    A @class{gdk:screen} object, or @code{nil} if there is no default display.
+    The @class{gdk:screen} object, or @code{nil} if there is no default display.
   @end{return}
   @begin{short}
     Gets the default screen for the default display.
@@ -249,13 +252,13 @@ lambda (screen)    :run-last
 (export 'screen-default)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_screen_get_system_visual () -> screen-system-visual
+;;; gdk_screen_get_system_visual
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_screen_get_system_visual" screen-system-visual)
     (g:object visual)
  #+liber-documentation
- "@version{#2021-12-13}
+ "@version{2024-6-27}
   @argument[screen]{a @class{gdk:screen} object}
   @return{The system @class{gdk:visual} object.}
   @begin{short}
@@ -269,16 +272,16 @@ lambda (screen)    :run-last
 (export 'screen-system-visual)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_screen_get_rgba_visual () -> screen-rgba-visual
+;;; gdk_screen_get_rgba_visual
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_screen_get_rgba_visual" screen-rgba-visual)
     (g:object visual)
  #+liber-documentation
- "@version{#2021-12-13}
+ "@version{2024-6-27}
   @argument[screen]{a @class{gdk:screen} object}
   @begin{return}
-    A @class{gdk:visual} object to use for windows with an alpha channel or
+    The @class{gdk:visual} object to use for windows with an alpha channel or
     @code{nil} if the capability is not available.
   @end{return}
   @begin{short}
@@ -303,15 +306,15 @@ lambda (screen)    :run-last
 (export 'screen-rgba-visual)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_screen_is_composited ()
+;;; gdk_screen_is_composited
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_screen_is_composited" screen-is-composited) :boolean
  #+liber-documentation
- "@version{#2021-12-13}
+ "@version{2024-6-27}
   @argument[screen]{a @class{gdk:screen} object}
   @begin{return}
-    A boolean whether windows with RGBA visuals can reasonably be expected to
+    The boolean whether windows with RGBA visuals can reasonably be expected to
     have their alpha channels drawn correctly on @arg{screen}.
   @end{return}
   @begin{short}
@@ -327,13 +330,13 @@ lambda (screen)    :run-last
 (export 'screen-is-composited)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_screen_get_root_window () -> screen-root-window
+;;; gdk_screen_get_root_window
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_screen_get_root_window" screen-root-window)
     (g:object window)
  #+liber-documentation
- "@version{#2021-12-13}
+ "@version{2024-6-27}
   @argument[screen]{a @class{gdk:screen} object}
   @return{The root @class{gdk:window} object.}
   @short{Gets the root window of the screen.}
@@ -344,13 +347,12 @@ lambda (screen)    :run-last
 (export 'screen-root-window)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_screen_get_display () -> screen-display
+;;; gdk_screen_get_display
 ;;; ----------------------------------------------------------------------------
 
-(cffi:defcfun ("gdk_screen_get_display" screen-display)
-    (g:object display)
+(cffi:defcfun ("gdk_screen_get_display" screen-display) (g:object display)
  #+liber-documentation
- "@version{#2021-12-13}
+ "@version{2024-6-27}
   @argument[screen]{a @class{gdk:screen} object}
   @return{The @class{gdk:display} object to which @arg{screen} belongs.}
   @short{Gets the display to which the screen belongs.}
@@ -361,7 +363,7 @@ lambda (screen)    :run-last
 (export 'screen-display)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_screen_get_number () -> screen-number
+;;; gdk_screen_get_number                                   deprecated
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_screen_get_number" screen-number) :int
@@ -382,10 +384,8 @@ lambda (screen)    :run-last
   @see-function{gdk:screen-display}"
   (screen (g:object screen)))
 
-(export 'screen-number)
-
 ;;; ----------------------------------------------------------------------------
-;;; gdk_screen_get_width () -> screen-width
+;;; gdk_screen_get_width                                    deprecated
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_screen_get_width" %screen-width) :int
@@ -405,10 +405,8 @@ lambda (screen)    :run-last
   @see-class{gdk:screen}"
   (%screen-width screen))
 
-(export 'screen-width)
-
 ;;; ----------------------------------------------------------------------------
-;;; gdk_screen_get_height () -> screen-height
+;;; gdk_screen_get_height                                   deprecated
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_screen_get_height" %screen-height) :int
@@ -428,10 +426,8 @@ lambda (screen)    :run-last
   @see-class{gdk:screen}"
   (%screen-height screen))
 
-(export 'screen-height)
-
 ;;; ----------------------------------------------------------------------------
-;;; gdk_screen_get_width_mm () -> screen-width-mm
+;;; gdk_screen_get_width_mm                                 deprecated
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_screen_get_width_mm" %screen-width-mm) :int
@@ -454,10 +450,8 @@ lambda (screen)    :run-last
   @see-class{gdk:screen}"
   (%screen-width-mm screen))
 
-(export 'screen-width-mm)
-
 ;;; ----------------------------------------------------------------------------
-;;; gdk_screen_get_height_mm ()
+;;; gdk_screen_get_height_mm                                deprecated
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_screen_get_height_mm" %screen-height-mm) :int
@@ -480,16 +474,14 @@ lambda (screen)    :run-last
   @see-class{gdk:screen}"
   (%screen-height-mm screen))
 
-(export 'screen-height-mm)
-
 ;;; ----------------------------------------------------------------------------
-;;; gdk_screen_list_visuals ()
+;;; gdk_screen_list_visuals
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_screen_list_visuals" screen-list-visuals)
     (g:list-t (g:object visual) :free-from-foreign t)
  #+liber-documentation
- "@version{#2021-12-13}
+ "@version{2024-6-27}
   @argument[screen]{a relevant @class{gdk:screen} object}
   @return{The list of @class{gdk:visual} objects for @arg{screen}.}
   @begin{short}
@@ -505,13 +497,13 @@ lambda (screen)    :run-last
 (export 'screen-list-visuals)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_screen_get_toplevel_windows () -> screen-toplevel-windows
+;;; gdk_screen_get_toplevel_windows
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_screen_get_toplevel_windows" screen-toplevel-windows)
     (g:list-t (g:object window :free-from-foreign nil) :free-from-foreign t)
  #+liber-documentation
- "@version{#2021-12-13}
+ "@version{2024-6-27}
   @argument[screen]{a @class{gdk:screen} object where the toplevels are located}
   @return{List of toplevel @class{gdk:window} objects for @arg{screen}.}
   @begin{short}
@@ -527,7 +519,7 @@ lambda (screen)    :run-last
 (export 'screen-toplevel-windows)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_screen_make_display_name ()
+;;; gdk_screen_make_display_name                            deprecated
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_screen_make_display_name" screen-make-display-name)
@@ -549,10 +541,8 @@ lambda (screen)    :run-last
   @see-function{gdk:display-open}"
   (screen (g:object screen)))
 
-(export 'screen-make-display-name)
-
 ;;; ----------------------------------------------------------------------------
-;;; gdk_screen_get_n_monitors () -> screen-n-monitors
+;;; gdk_screen_get_n_monitors                               deprecated
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_screen_get_n_monitors" screen-n-monitors) :int
@@ -571,10 +561,8 @@ lambda (screen)    :run-last
   @see-function{gdk:display-n-monitors}"
   (screen (g:object screen)))
 
-(export 'screen-n-monitors)
-
 ;;; ----------------------------------------------------------------------------
-;;; gdk_screen_get_primary_monitor () -> screen-primary-monitor
+;;; gdk_screen_get_primary_monitor                          deprecated
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_screen_get_primary_monitor" screen-primary-monitor) :int
@@ -602,10 +590,8 @@ lambda (screen)    :run-last
   @see-function{gdk:display-primary-monitor}"
   (screen (g:object screen)))
 
-(export 'screen-primary-monitor)
-
 ;;; ----------------------------------------------------------------------------
-;;; gdk_screen_get_monitor_geometry () -> screen-monitor-geometry
+;;; gdk_screen_get_monitor_geometry                         deprecated
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_screen_get_monitor_geometry" %screen-monitor-geometry) :void
@@ -643,10 +629,8 @@ lambda (screen)    :run-last
     (%screen-monitor-geometry screen num dest)
     dest))
 
-(export 'screen-monitor-geometry)
-
 ;;; ----------------------------------------------------------------------------
-;;; gdk_screen_get_monitor_workarea () -> screen-monitor-workarea
+;;; gdk_screen_get_monitor_workarea                         deprecated
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_screen_get_monitor_workarea" %screen-monitor-workarea) :void
@@ -684,10 +668,8 @@ lambda (screen)    :run-last
     (%screen-monitor-workarea screen num dest)
     dest))
 
-(export 'screen-monitor-workarea)
-
 ;;; ----------------------------------------------------------------------------
-;;; gdk_screen_get_monitor_at_point () -> screen-monitor-at-point
+;;; gdk_screen_get_monitor_at_point                         deprecated
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_screen_get_monitor_at_point" screen-monitor-at-point) :int
@@ -714,10 +696,8 @@ lambda (screen)    :run-last
   (x :int)
   (y :int))
 
-(export 'screen-monitor-at-point)
-
 ;;; ----------------------------------------------------------------------------
-;;; gdk_screen_get_monitor_at_window () -> screen-monitor-at-window
+;;; gdk_screen_get_monitor_at_window                        deprecated
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_screen_get_monitor_at_window" screen-monitor-at-window) :int
@@ -745,10 +725,8 @@ lambda (screen)    :run-last
   (screen (g:object screen))
   (window (g:object window)))
 
-(export 'screen-monitor-at-window)
-
 ;;; ----------------------------------------------------------------------------
-;;; gdk_screen_get_monitor_height_mm () -> screen-monitor-height-mm
+;;; gdk_screen_get_monitor_height_mm                        deprecated
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_screen_get_monitor_height_mm" screen-monitor-height-mm) :int
@@ -771,10 +749,8 @@ lambda (screen)    :run-last
   (screen (g:object screen))
   (num :int))
 
-(export 'screen-monitor-height-mm)
-
 ;;; ----------------------------------------------------------------------------
-;;; gdk_screen_get_monitor_width_mm () -> screen-monitor-width-mm
+;;; gdk_screen_get_monitor_width_mm                         deprecated
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_screen_get_monitor_width_mm" screen-monitor-width-mm) :int
@@ -797,10 +773,8 @@ lambda (screen)    :run-last
   (screen (g:object screen))
   (monitor-num :int))
 
-(export 'screen-monitor-width-mm)
-
 ;;; ----------------------------------------------------------------------------
-;;; gdk_screen_get_monitor_plug_name () -> screen-monitor-plug-name
+;;; gdk_screen_get_monitor_plug_name                        deprecated
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_screen_get_monitor_plug_name" screen-monitor-plug-name)
@@ -828,10 +802,8 @@ lambda (screen)    :run-last
   (screen (g:object screen))
   (monitor-num :int))
 
-(export 'screen-monitor-plug-name)
-
 ;;; ----------------------------------------------------------------------------
-;;; gdk_screen_get_monitor_scale_factor () -> screen-monitor-scale-factor
+;;; gdk_screen_get_monitor_scale_factor                     deprecated
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_screen_get_monitor_scale_factor" screen-monitor-scale-factor)
@@ -862,10 +834,8 @@ lambda (screen)    :run-last
   (screen (g:object screen))
   (num :int))
 
-(export 'screen-monitor-scale-factor)
-
 ;;; ----------------------------------------------------------------------------
-;;; gdk_screen_get_setting () -> screen-setting
+;;; gdk_screen_get_setting
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_screen_get_setting" %screen-setting) :boolean
@@ -875,28 +845,27 @@ lambda (screen)    :run-last
 
 (defun screen-setting (screen name gtype)
  #+liber-documentation
- "@version{#2021-12-13}
+ "@version{2024-6-27}
   @argument[screen]{a @class{gdk:screen} object where the setting is located}
   @argument[name]{a string with the name of the setting}
-  @argument[gtype]{a string with the @class{g:type-t} type of the setting}
+  @argument[gtype]{a string with the @class{g:type-t} type ID of the setting}
   @begin{return}
     The value of the setting, or @code{nil} if the setting does not exist.
   @end{return}
   @begin{short}
     Retrieves a desktop wide setting such as double-click time for the screen.
   @end{short}
-
   See the @class{gtk:settings} class for the available settings.
-  @begin[Example]{dictionary}
+  @begin{examples}
     @begin{pre}
 (let ((screen (gdk:display-default-screen (gdk:display-default))))
   (gdk:screen-setting screen \"gtk-double-click-time\" \"gint\"))
 => 400
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gdk:screen}
   @see-class{gtk:settings}
-  @see-class{g-type-t}"
+  @see-class{g:type-t}"
   (cffi:with-foreign-object (value '(:struct g:value))
     (g:value-init value gtype)
     (when (%screen-setting screen name value)
@@ -907,7 +876,7 @@ lambda (screen)    :run-last
 (export 'screen-setting)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_screen_get_active_window () -> screen-active-window
+;;; gdk_screen_get_active_window                            deprecated
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_screen_get_active_window" screen-active-window)
@@ -935,19 +904,17 @@ lambda (screen)    :run-last
   @see-class{gdk:window}"
   (screen (g:object screen)))
 
-(export 'screen-active-window)
-
 ;;; ----------------------------------------------------------------------------
-;;; gdk_screen_get_window_stack () -> screen-window-stack
+;;; gdk_screen_get_window_stack
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_screen_get_window_stack" screen-window-stack)
     (g:list-t (g:object window :free-from-foreign t) :free-from-foreign t)
  #+liber-documentation
- "@version{#2021-12-13}
+ "@version{2024-6-27}
   @argument[screen]{a @class{gdk:screen} object}
   @begin{return}
-    A list of @class{gdk:window} objects for the current window stack, or
+    The list of @class{gdk:window} objects for the current window stack, or
     @code{nil}.
   @end{return}
   @begin{short}

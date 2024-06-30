@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -31,27 +31,6 @@
 ;;;
 ;;;     Functions for transfering data via the X selection mechanism
 ;;;
-;;; Types and Values
-;;;
-;;;     GDK_SELECTION_PRIMARY
-;;;     GDK_SELECTION_SECONDARY
-;;;     GDK_SELECTION_CLIPBOARD
-;;;
-;;;     GDK_TARGET_BITMAP
-;;;     GDK_TARGET_COLORMAP
-;;;     GDK_TARGET_DRAWABLE
-;;;     GDK_TARGET_PIXMAP
-;;;     GDK_TARGET_STRING
-;;;
-;;;     GDK_SELECTION_TYPE_ATOM
-;;;     GDK_SELECTION_TYPE_BITMAP
-;;;     GDK_SELECTION_TYPE_COLORMAP
-;;;     GDK_SELECTION_TYPE_DRAWABLE
-;;;     GDK_SELECTION_TYPE_INTEGER
-;;;     GDK_SELECTION_TYPE_PIXMAP
-;;;     GDK_SELECTION_TYPE_WINDOW
-;;;     GDK_SELECTION_TYPE_STRING
-;;;
 ;;; Functions
 ;;;
 ;;;     gdk_selection_owner_set
@@ -67,213 +46,15 @@
 (in-package :gdk)
 
 ;;; ----------------------------------------------------------------------------
-;;; GDK_SELECTION_PRIMARY                                  not implemented
-;;; ----------------------------------------------------------------------------
-
-#+nil
-(defparameter +selection-primary+ "PRIMARY"
- #+liber-documentation
- "@version{#2013-11-10}
-  @variable-value{\"PRIMARY\"}
-  A @symbol{gdk:atom} representing the @code{\"PRIMARY\"} selection.
-  @see-symbol{gdk:atom}
-  @see-variable{gdk:+selection-secondary+}
-  @see-variable{gdk:+selection-clipboard+}")
-
-;;; ----------------------------------------------------------------------------
-;;; GDK_SELECTION_SECONDARY                                not implemented
-;;; ----------------------------------------------------------------------------
-
-#+nil
-(defparameter +selection-secondary+ "SECONDARY"
- #+liber-documentation
- "@version{#2013-11-10}
-  @variable-value{\"SECONDARY\"}
-  A @symbol{gdk:atom} representing the @code{\"SECONDARY\"} selection.
-  @see-symbol{gdk:atom}
-  @see-variable{gdk:+selection-primary+}
-  @see-variable{gdk:+selection-clipboard+}")
-
-;;; ----------------------------------------------------------------------------
-;;; GDK_SELECTION_CLIPBOARD                                not implemented
-;;; ----------------------------------------------------------------------------
-
-#+nil
-(defparameter +selection-clipboard+ "CLIPBOARD"
- #+liber-documentation
- "@version{#2013-11-10}
-  @variable-value{\"CLIPBOARD\"}
-  A @symbol{gdk:atom} representing the @code{\"CLIPBOARD\"} selection.
-  @see-symbol{gdk:atom}
-  @see-variable{gdk:+selection-primary+}
-  @see-variable{gdk:+selection-secondary+}")
-
-;;; ----------------------------------------------------------------------------
-;;; GDK_TARGET_BITMAP                                      not implemented
-;;; ----------------------------------------------------------------------------
-
-#+nil
-(defparameter +target-bitmap+ "BITMAP"
- #+liber-documentation
- "@version{#2013-11-10}
-  @variable-value{\"BITMAP\"}
-  A @symbol{gdk:atom} representing the @code{\"BITMAP\"} selection target.
-  @see-symbol{gdk:atom}")
-
-;;; ----------------------------------------------------------------------------
-;;; GDK_TARGET_COLORMAP                                    not implemented
-;;; ----------------------------------------------------------------------------
-
-#+nil
-(defparameter +target-colormap+ "COLORMAP"
- #+liber-documentation
- "@version{#2013-11-10}
-  @variable-value{\"COLORMAP\"}
-  A @symbol{gdk:atom} representing the @code{\"COLORMAP\"} selection target.
-  @see-symbol{gdk:atom}")
-
-;;; ----------------------------------------------------------------------------
-;;; GDK_TARGET_DRAWABLE                                    not implemented
-;;; ----------------------------------------------------------------------------
-
-#+nil
-(defparameter +target-drawable+ "DRAWABLE"
- #+liber-documentation
- "@version{#2013-11-10}
-  @variable-value{\"DRAWABLE\"}
-  A @symbol{gdk:atom} representing the @code{\"DRAWABLE\"} selection target.
-  @see-symbol{gdk:atom}")
-
-;;; ----------------------------------------------------------------------------
-;;; GDK_TARGET_PIXMAP                                      not implemented
-;;; ----------------------------------------------------------------------------
-
-#+nil
-(defparameter +target-pixmap+ "PIXMAP"
- #+liber-documentation
- "@version{#2013-11-10}
-  @variable-value{\"PIXMAP\"}
-  A @symbol{gdk:atom} representing the @code{\"PIXMAP\"} selection target.
-  @see-symbol{gdk:atom}")
-
-;;; ----------------------------------------------------------------------------
-;;; GDK_TARGET_STRING                                      not implemented
-;;; ----------------------------------------------------------------------------
-
-#+nil
-(defparameter +target-string+ "STRING"
- #+liber-documentation
- "@version{#2013-11-10}
-  @variable-value{\"STRING\"}
-  A @symbol{gdk:atom} representing the @code{\"STRING\"} selection target.
-  @see-symbol{gdk:atom}")
-
-;;; ----------------------------------------------------------------------------
-;;; GDK_SELECTION_TYPE_ATOM                                not implemented
-;;; ----------------------------------------------------------------------------
-
-#+nil
-(defparameter +selection-type-atom+ "ATOM"
- #+liber-documentation
- "@version{#2013-11-10}
-  @variable-value{\"ATOM\"}
-  A @symbol{gdk:atom} representing the @code{\"ATOM\"} selection type.
-  @see-symbol{gdk:atom}")
-
-;;; ----------------------------------------------------------------------------
-;;; GDK_SELECTION_TYPE_BITMAP                              not implemented
-;;; ----------------------------------------------------------------------------
-
-#+nil
-(defparameter +selection-type-bitmap+ "BITMAP"
- #+liber-documentation
- "@version{#2013-11-10}
-  @variable-value{\"BITMAP\"}
-  A @symbol{gdk:atom} representing the @code{\"BITMAP\"} selection type.
-  @see-symbol{gdk:atom}")
-
-;;; ----------------------------------------------------------------------------
-;;; GDK_SELECTION_TYPE_COLORMAP                            not implemented
-;;; ----------------------------------------------------------------------------
-
-#+nil
-(defparameter +selection-type-colormap+ "COLORMAP"
- #+liber-documentation
- "@version{#2013-11-10}
-  @variable-value{\"COLORMAP\"}
-  A @symbol{gdk:atom} representing the @code{\"COLORMAP\"} selection type.
-  @see-symbol{gdk:atom}")
-
-;;; ----------------------------------------------------------------------------
-;;; GDK_SELECTION_TYPE_DRAWABLE                            not implemented
-;;; ----------------------------------------------------------------------------
-
-#+nil
-(defparameter +selection-type-drawable+ "DRAWABLE"
- #+liber-documentation
- "@version{#2013-11-10}
-  @variable-value{\"DRAWABLE\"}
-  A @symbol{gdk:atom} representing the @code{\"DRAWABLE\"} selection type.
-  @see-symbol{gdk:atom}")
-
-;;; ----------------------------------------------------------------------------
-;;; GDK_SELECTION_TYPE_INTEGER                             not implemented
-;;; ----------------------------------------------------------------------------
-
-#+nil
-(defparameter +selection-type-integer+ "INTEGER"
- #+liber-documentation
- "@version{#2013-11-10}
-  @variable-value{\"INTEGER\"}
-  A @symbol{gdk:atom} representing the @code{\"INTEGER\"} selection type.
-  @see-symbol{gdk:atom}")
-
-;;; ----------------------------------------------------------------------------
-;;; GDK_SELECTION_TYPE_PIXMAP                              not implemented
-;;; ----------------------------------------------------------------------------
-
-#+nil
-(defparameter +selection-type-pixmap+ "PIXMAP"
- #+liber-documentation
- "@version{#2013-11-10}
-  @variable-value{\"PIXMAP\"}
-  A @symbol{gdk:atom} representing the @code{\"PIXMAP\"} selection type.
-  @see-symbol{gdk:atom}")
-
-;;; ----------------------------------------------------------------------------
-;;; GDK_SELECTION_TYPE_WINDOW                              not implemented
-;;; ----------------------------------------------------------------------------
-
-#+nil
-(defparameter +selection-type-window+ "WINDOW"
- #+liber-documentation
- "@version{#2013-11-10}
-  @variable-value{\"WINDOW\"}
-  A @symbol{gdk:atom} representing the @code{\"WINDOW\"} selection type.
-  @see-symbol{gdk:atom}")
-
-;;; ----------------------------------------------------------------------------
-;;; GDK_SELECTION_TYPE_STRING                              not implemented
-;;; ----------------------------------------------------------------------------
-
-#+nil
-(defparameter +selection-type-string+ "STRING"
- #+liber-documentation
- "@version{#2013-11-10}
-  @variable-value{\"STRING\"}
-  A @symbol{gdk:atom} representing the @code{\"STRING\"} selection type.
-  @see-symbol{gdk:atom}")
-
-;;; ----------------------------------------------------------------------------
-;;; gdk_selection_owner_set ()
+;;; gdk_selection_owner_set
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_selection_owner_set" selection-owner-set) :boolean
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2024-6-28}
   @argument[owner]{a @class{gdk:window} object or @code{nil} to indicate that
     the owner for the given selection should be unset}
-  @argument[selection]{a @symbol{gdk:atom} as a string identifying a selection}
+  @argument[selection]{a string identifying a selection}
   @argument[time]{an unsigned integer with the timestamp to use when setting
     the selection}
   @argument[send]{if @em{true}, and the new owner is different from the current
@@ -287,8 +68,7 @@
   owner was set for the given selection, the request will be ignored.
   @see-class{gdk:window}
   @see-class{gdk:event-selection}
-  @see-symbol{gdk:event-type}
-  @see-symbol{gdk:atom}"
+  @see-symbol{gdk:event-type}"
   (owner (g:object window))
   (selection atom-as-string)
   (time :uint32)
@@ -297,17 +77,17 @@
 (export 'selection-owner-set)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_selection_owner_set_for_display ()
+;;; gdk_selection_owner_set_for_display
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_selection_owner_set_for_display"
            selection-owner-set-for-display) :boolean
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2024-6-28}
   @argument[display]{a @class{gdk:display} object}
   @argument[owner]{a @class{gdk:window} object or @code{nil} to indicate that
     the owner for the given selection should be unset}
-  @argument[selection]{a @symbol{gdk:atom} as string identifying a selection}
+  @argument[selection]{a string identifying a selection}
   @argument[time]{an unsigned integer with the timestamp to use when setting
     the selection}
   @argument[send]{if @em{true}, and the new owner is different from the current
@@ -322,8 +102,7 @@
   @see-class{gdk:display}
   @see-class{gdk:window}
   @see-class{gdk:event-selection}
-  @see-symbol{gdk:event-type}
-  @see-symbol{gdk:atom}"
+  @see-symbol{gdk:event-type}"
   (display (g:object display))
   (owner (g:object window))
   (selection atom-as-string)
@@ -333,13 +112,13 @@
 (export 'selection-owner-set-for-display)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_selection_owner_get ()
+;;; gdk_selection_owner_get
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_selection_owner_get" selection-owner-get) (g:object window)
  #+liber-documentation
- "@version{#2021-10-3}
-  @argument[selection]{a @symbol{gdk:atom} as a string indentifying a selection}
+ "@version{#2024-6-28}
+  @argument[selection]{a string indentifying a selection}
   @begin{return}
     If there is a selection owner for this window, and it is a window
     known to the current process, the @class{gdk:window} object that owns the
@@ -351,22 +130,21 @@
   Note that the return value may be owned by a different process if a foreign
   window was previously created for that window, but a new foreign window will
   never be created by this call.
-  @see-class{gdk:window}
-  @see-symbol{gdk:atom}"
+  @see-class{gdk:window}"
   (selection atom-as-string))
 
 (export 'selection-owner-get)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_selection_owner_get_for_display ()
+;;; gdk_selection_owner_get_for_display
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_selection_owner_get_for_display"
            selection-owner-get-for-display) (g:object window)
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2024-6-28}
   @argument[display]{a @class{gdk:display} object}
-  @argument[selection]{a @symbol{gdk:atom} as a string indentifying a selection}
+  @argument[selection]{a string indentifying a selection}
   @return{If there is a selection owner for this window, and it is a window
     known to the current process, the @class{gdk:window} object that owns the
     selection, otherwise @code{nil}.}
@@ -377,25 +155,23 @@
   window was previously created for that window, but a new foreign window will
   never be created by this call.
   @see-class{gdk:display}
-  @see-class{gdk:window}
-  @see-symbol{gdk:atom}"
+  @see-class{gdk:window}"
   (display (g:object display))
   (selection atom-as-string))
 
 (export 'selection-owner-get-for-display)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_selection_convert ()
+;;; gdk_selection_convert
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_selection_convert" selection-convert) :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2024-6-28}
   @argument[requestor]{a @class{gdk:window} object}
-  @argument[selection]{a @symbol{gdk:atom} as a string identifying the selection
-    to get the contents of}
-  @argument[target]{a @symbol{gdk:atom} as a string with the form in which to
-    retrieve the selection}
+  @argument[selection]{a string identifying the selection to get the contents
+    of}
+  @argument[target]{a string with the form in which to retrieve the selection}
   @argument[time]{an unsigned integer with the timestamp to use when retrieving
     the selection}
   @begin{short}
@@ -403,8 +179,7 @@
   @end{short}
   The selection owner may refuse the request if it did not own the selection at
   the time indicated by the timestamp.
-  @see-class{gdk:window}
-  @see-symbol{gdk:atom}"
+  @see-class{gdk:window}"
   (requestor (g:object window))
   (selection atom-as-string)
   (target atom-as-string)
@@ -413,7 +188,7 @@
 (export 'selection-convert)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_selection_property_get ()
+;;; gdk_selection_property_get
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_selection_property_get" %selection-property-get) :int
@@ -424,13 +199,12 @@
 
 (defun selection-property-get (requestor)
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2024-6-28}
   @argument[requestor]{a @class{gdk:window} object on which the data is stored}
   @begin{return}
     @code{length} -- an integer with the length of the retrieved data @br{}
     @code{data} -- a foreign pointer to the retrieved data @br{}
-    @code{type} -- a @symbol{gdk:atom} as as string with the type of the
-    property @br{}
+    @code{type} -- a string with the type of the property @br{}
     @code{format} -- an integer with the format of the property
   @end{return}
   @begin{short}
@@ -447,7 +221,6 @@
   always be zero, to ensure nul-termination of strings.
   @see-class{gdk:window}
   @see-class{gtk:clipboard}
-  @see-symbol{gdk:atom}
   @see-function{gdk:selection-convert}"
   (cffi:with-foreign-objects ((data :pointer)
                               (ptype :pointer)
@@ -461,26 +234,23 @@
 (export 'selection-property-get)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_selection_send_notify ()
+;;; gdk_selection_send_notify
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_selection_send_notify" selection-send-notify) :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2024-6-28}
   @argument[requestor]{a @class{gdk:window} object to which to deliver response}
-  @argument[selection]{a @symbol{gdk:atom} as a string with the selection that
-    was requested}
-  @argument[target]{a @symbol{gdk:atom} as a string with the target that was
-    selected}
-  @argument[property]{a @symbol{gdk:atom} as a string with the property in
-    which the selection owner stored the data, or \"NONE\" to indicate that
-    the request was rejected}
+  @argument[selection]{a string with the selection that was requested}
+  @argument[target]{a string with the target that was selected}
+  @argument[property]{a string with the property in which the selection owner
+    stored the data, or @code{\"NONE\"} to indicate that the request was
+    rejected}
   @argument[time]{an unsigned integer with the timestamp}
   @begin{short}
     Sends a response to the @code{:selection-request} event.
   @end{short}
   @see-class{gdk:window}
-  @see-symbol{gdk:atom}
   @see-class{gdk:event-selection}
   @see-symbol{gdk:event-type}"
   (requestor (g:object window))
@@ -492,23 +262,21 @@
 (export 'selection-send-notify)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_selection_send_notify_for_display ()
+;;; gdk_selection_send_notify_for_display
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_selection_send_notify_for_display"
           selection-send-notify-for-display) :void
  #+liber-documentation
- "@version{#2021-10-3}
+ "@version{#2024-6-28}
   @argument[display]{a @class{gdk:display} object where @arg{requestor} is
     realized}
   @argument[requestor]{a @class{gdk:window} object to which to deliver response}
-  @argument[selection]{a @symbol{gdk:atom} as a string with the selection that
-    was requested}
-  @argument[target]{a @symbol{gdk:atom} as a string with the target that was
-    selected}
-  @argument[property]{a @symbol{gdk:atom} as a string with the property in
-    which the selection owner stored the data, or \"NONE\" to indicate that the
-    request was rejected}
+  @argument[selection]{a string with the selection that was requested}
+  @argument[target]{a string with the target that was selected}
+  @argument[property]{a string with the property in which the selection owner
+    stored the data, or @code{\"NONE\"} to indicate that the request was
+    rejected}
   @argument[time]{an unsigned integer with the timestamp}
   @begin{short}
     Send a response to the @code{:selection-request} event.

@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -168,30 +168,13 @@
  "GDK is an intermediate layer which isolates GTK from the details of the
   windowing system. This is the API documentation of a Lisp binding to GDK.
   @begin[General]{section}
-    This section describes the GDK initialization functions and miscellaneous
-    utility functions, as well as deprecation facilities.
-    @about-function{init}
-    @about-function{init-check}
-    @about-function{parse-args}
     @about-function{get-display-arg-name}
     @about-function{notify-startup-complete}
     @about-function{notify-startup-complete-with-id}
     @about-function{set-allowed-backends}
     @about-function{program-class}
-    @about-function{flush}
-    @about-function{pointer-grab}
-    @about-function{pointer-ungrab}
-    @about-function{pointer-is-grabbed}
-    @about-function{set-double-click-time}
-    @about-function{keyboard-grab}
-    @about-function{keyboard-ungrab}
-    @about-function{beep}
-    @about-function{error-trap-push}
-    @about-function{error-trap-pop}
-    @about-function{error-trap-pop-ignored}
   @end{section}
   @begin[GdkDisplayManager]{section}
-    Maintains a list of all open GdkDisplays.
     @about-class{display-manager}
     @about-generic{display-manager-default-display}
     @about-function{display-manager-get}
@@ -199,7 +182,6 @@
     @about-function{display-manager-open-display}
   @end{section}
   @begin[GdkDisplay]{section}
-    Controls a set of GdkScreens and their associated input devices.
     @about-class{display}
     @about-function{display-open}
     @about-function{display-default}
@@ -250,7 +232,6 @@
     @about-function{display-monitor-at-window}
   @end{section}
   @begin[GdkScreen]{section}
-    Object representing a physical screen.
     @about-class{screen}
     @about-generic{screen-font-options}
     @about-generic{screen-resolution}
@@ -260,30 +241,12 @@
     @about-function{screen-is-composited}
     @about-function{screen-root-window}
     @about-function{screen-display}
-    @about-function{screen-number}
-    @about-function{screen-width}
-    @about-function{screen-height}
-    @about-function{screen-width-mm}
-    @about-function{screen-height-mm}
     @about-function{screen-list-visuals}
     @about-function{screen-toplevel-windows}
-    @about-function{screen-make-display-name}
-    @about-function{screen-n-monitors}
-    @about-function{screen-primary-monitor}
-    @about-function{screen-monitor-geometry}
-    @about-function{screen-monitor-workarea}
-    @about-function{screen-monitor-at-point}
-    @about-function{screen-monitor-at-window}
-    @about-function{screen-monitor-height-mm}
-    @about-function{screen-monitor-width-mm}
-    @about-function{screen-monitor-plug-name}
-    @about-function{screen-monitor-scale-factor}
     @about-function{screen-setting}
-    @about-function{screen-active-window}
     @about-function{screen-window-stack}
   @end{section}
   @begin[GdkSeat]{section}
-    Object representing an user seat.
     @about-symbol{seat-capabilities}
     @about-class{seat}
     @about-generic{seat-display}
@@ -296,7 +259,6 @@
     @about-function{seat-slaves}
   @end{section}
   @begin[GdkMonitor]{section}
-    Object representing an output.
     @about-symbol{subpixel-layout}
     @about-class{monitor}
     @about-generic{monitor-display}
@@ -312,7 +274,6 @@
     @about-function{monitor-is-primary}
   @end{section}
   @begin[GdkDevice]{section}
-    Object representing an input device.
     @about-symbol{input-source}
     @about-symbol{input-mode}
     @about-symbol{axis-use}
@@ -366,7 +327,6 @@
     @about-function{device-tool-get-hardware-id}
   @end{section}
   @begin[GdkDevicePad]{section}
-    Pad device interface.
     @about-symbol{device-pad-feature}
     @about-class{device-pad}
     @about-function{device-pad-n-groups}
@@ -425,7 +385,6 @@
     @about-function{rgba-to-string}
   @end{section}
   @begin[Visuals]{section}
-    Low-level display hardware information
     @about-symbol{visual-type}
     @about-symbol{byte-order}
     @about-class{visual}
@@ -450,7 +409,6 @@
     @about-function{visual-screen}
   @end{section}
   @begin[Cursors]{section}
-    Standard and pixmap cursors.
     @about-symbol{cursor-type}
     @about-class{cursor}
     @about-generic{cursor-cursor-type}
@@ -464,7 +422,6 @@
     @about-function{cursor-surface}
   @end{section}
   @begin[Windows]{section}
-    Onscreen display areas in the target window system.
     @about-symbol{window-type}
     @about-symbol{window-window-class}
     @about-symbol{window-hints}
@@ -735,11 +692,6 @@
     @about-function{setting-get}
   @end{section}
   @begin[Event Structures]{section}
-    The event structures contain data specific to each type of event in GDK.
-
-    @subheading{Note}
-    A common mistake is to forget to set the event mask of a widget so that
-    the required events are received. See the @fun{gtk-widget-events} function.
     @about-symbol{scroll-direction}
     @about-symbol{visibility-state}
     @about-symbol{crossing-mode}
@@ -1050,66 +1002,59 @@
     @about-function{unicode-to-keyval}
   @end{section}
   @begin[Selections]{section}
-    Functions for transfering data via the X selection mechanism.
+    @begin[Introduction to selections]{subsection}
+      The X selection mechanism provides a way to transfer arbitrary chunks of
+      data between programs. A selection is essentially a named clipboard,
+      identified by a string interned as an atom. By claiming ownership of a
+      selection, an application indicates that it will be responsible for
+      supplying its contents. The most common selections are @code{\"PRIMARY\"}
+      and @code{\"CLIPBOARD\"}.
 
-    The X selection mechanism provides a way to transfer arbitrary chunks of
-    data between programs. A selection is essentially a named clipboard,
-    identified by a string interned as an atom of type @symbol{gdk:atom}. By
-    claiming ownership of a selection, an application indicates that it will
-    be responsible for supplying its contents. The most common selections are
-    \"PRIMARY\" and \"CLIPBOARD\".
+      The contents of a selection can be represented in a number of formats,
+      called targets. Each target is identified by an atom. A list of all
+      possible targets supported by the selection owner can be retrieved by
+      requesting the special target @code{\"TARGETS\"}. When a selection is
+      retrieved, the data is accompanied by a type, an atom, and a format,
+      an integer, representing the number of bits per item.
 
-    The contents of a selection can be represented in a number of formats,
-    called targets. Each target is identified by an atom. A list of all possible
-    targets supported by the selection owner can be retrieved by requesting the
-    special target \"TARGETS\". When a selection is retrieved, the data is
-    accompanied by a type (an atom), and a format (an integer), representing
-    the number of bits per item.
+      The functions in this section only contain the lowlevel parts of the
+      selection protocol. A considerably more complicated implementation is
+      needed on top of this. GTK contains such an implementation and programmers
+      should use those functions instead of the ones presented here. If you plan
+      to implement selection handling directly on top of the functions here, you
+      should refer to the X Inter-Client Communication Conventions Manual
+      (ICCCM).
 
-    The functions in this section only contain the lowlevel parts of the
-    selection protocol. A considerably more complicated implementation is needed
-    on top of this. GTK contains such an implementation and programmers should
-    use those functions instead of the ones presented here. If you plan to
-    implement selection handling directly on top of the functions here, you
-    should refer to the X Inter-Client Communication Conventions Manual (ICCCM).
+      The following strings are availabe for selections, targets and selections
+      types.
 
-    The C library has the following constants to refer to selections, targets,
-    and selection types. In the Lisp library the corresponding strings are used.
-    These strings are automatically converted to the corresponding
-    @symbol{gdk:atom} type.
-    @begin[code]{table}
-      @entry[GDK_SELECTION_PRIMARY]{\"PRIMARY\"}
-      @entry[GDK_SELECTION_SECONDARY]{\"SECONDARY\"}
-      @entry[GDK_SELECTION_CLIPBOARD]{\"CLIPBOARD\"}
-    @end{table}
-    @begin[code]{table}
-      @entry[GDK_TARGET_BITMAP]{\"BITMAP\"}
-      @entry[GDK_TARGET_COLORMAP]{\COLORMAP\"}
-      @entry[GDK_TARGET_DRAWABLE]{\"DRAWABLE\"}
-      @entry[GDK_TARGET_PIXMAP]{\"PIXMAP\"}
-      @entry[GDK_TARGET_STRING]{\"STRING\"}
-    @end{table}
-    @begin[code]{table}
-      @entry[GDK_SELECTION_TYPE_ATOM]{\"ATOM\"}
-      @entry[GDK_SELECTION_TYPE_BITMAP]{\"BITMAP\"}
-      @entry[GDK_SELECTION_TYPE_COLORMAP]{\"COLORMAP\"}
-      @entry[GDK_SELECTION_TYPE_DRAWABLE]{\"DRAWABLE\"}
-      @entry[GDK_SELECTION_TYPE_INTEGER]{\"INTEGER\"}
-      @entry[GDK_SELECTION_TYPE_PIXMAP]{\"PIXMAP\"}
-      @entry[GDK_SELECTION_TYPE_WINDOW]{\"WINDOW\"}
-      @entry[GDK_SELECTION_TYPE_STRING]{\"STRING\"}
-    @end{table}
-    @about-function{selection-owner-set}
-    @about-function{selection-owner-set-for-display}
-    @about-function{selection-owner-get}
-    @about-function{selection-owner-get-for-display}
-    @about-function{selection-convert}
-    @about-function{selection-property-get}
-    @about-function{selection-send-notify}
-    @about-function{selection-send-notify-for-display}
+      Available selections:
+      @begin{pre}
+\"PRIMARY\"   \"SECONDARY\"   \"CLIPBOARD\"
+      @end{pre}
+      Available targets:
+      @begin{pre}
+\"BITMAP\"    \COLORMAP\"     \"DRAWABLE\"      \"PIXMAP\"
+\"STRING\"
+      @end{pre}
+      Availabel selection types:
+      @begin{pre}
+\"ATOM\"      \"BITMAP\"      \"COLORMAP\"      \"DRAWABLE\"
+\"INTEGER\"   \"PIXMAP\"      \"WINDOW\"        \"STRING\"
+      @end{pre}
+    @end{subsection}
+    @begin[Functions for selections]{subsection}
+      @about-function{selection-owner-set}
+      @about-function{selection-owner-set-for-display}
+      @about-function{selection-owner-get}
+      @about-function{selection-owner-get-for-display}
+      @about-function{selection-convert}
+      @about-function{selection-property-get}
+      @about-function{selection-send-notify}
+      @about-function{selection-send-notify-for-display}
+    @end{subsection}
   @end{section}
   @begin[Drag and Drop]{section}
-    Functions for controlling drag and drop handling.
     @about-symbol{drag-cancel-reason}
     @about-symbol{drag-protocol}
     @about-symbol{drag-action}
@@ -1147,26 +1092,26 @@
     @about-type{atom-as-string}
   @end{section}
   @begin[Threads]{section}
-    Functions for using GDK in multi-threaded programs.
+    @begin[Indroduction to threads]{subsection}
+      For thread safety, GDK relies on the thread primitives in GLib, and on
+      the thread-safe GLib main loop.
 
-    For thread safety, GDK relies on the thread primitives in GLib, and on the
-    thread-safe GLib main loop.
+      GLib is completely thread safe, all global data is automatically locked,
+      but individual data structure instances are not automatically locked for
+      performance reasons. So for example, you must coordinate accesses to the
+      same @code{GHashTable} from multiple threads.
 
-    GLib is completely thread safe (all global data is automatically locked),
-    but individual data structure instances are not automatically locked for
-    performance reasons. So e.g. you must coordinate accesses to the same
-    @code{GHashTable} from multiple threads.
+      GTK, however, is not thread safe. You should only use GTK and GDK from
+      the thread @code{gtk_init()} and @code{gtk_main()} were called on. This
+      is usually referred to as the \"main thread\".
 
-    GTK, however, is not thread safe. You should only use GTK and GDK from
-    the thread @code{gtk_init()} and @code{gtk_main()} were called on. This is
-    usually referred to as the \"main thread\".
+      Signals on GTK and GDK types, as well as non-signal callbacks, are
+      emitted in the main thread.
 
-    Signals on GTK and GDK types, as well as non-signal callbacks, are emitted
-    in the main thread.
-
-    You can schedule work in the main thread safely from other threads by using
-    the @fun{gdk:threads-add-idle} and @fun{gdk:threads-add-timeout} functions.
-    @begin{pre}
+      You can schedule work in the main thread safely from other threads by
+      using the @fun{gdk:threads-add-idle} and @fun{gdk:threads-add-timeout}
+      functions.
+      @begin{pre}
 static void
 worker_thread (void)
 {
@@ -1186,55 +1131,58 @@ got_value (gpointer user_data)
 
   return G_SOURCE_REMOVE;
 @}
-    @end{pre}
-    You should use the @fun{gdk:threads-add-idle} and
-    @fun{gdk:threads-add-timeout} functions instead of the @fun{g:idle-add} and
-    @fun{g:timeout-add} functions since libraries not under your control might
-    be using the deprecated GDK locking mechanism. If you are sure that none of
-    the code in your application and libraries use the deprecated
-    @code{gdk_threads_enter()} or @code{gdk_threads_leave()} methods, then you
-    can safely use the @fun{g:idle-add} and @fun{g:timeout-add} functions.
+      @end{pre}
+      You should use the @fun{gdk:threads-add-idle} and
+      @fun{gdk:threads-add-timeout} functions instead of the @fun{g:idle-add}
+      and @fun{g:timeout-add} functions since libraries not under your control
+      might be using the deprecated GDK locking mechanism. If you are sure that
+      none of the code in your application and libraries use the deprecated
+      @code{gdk_threads_enter()} or @code{gdk_threads_leave()} methods, then
+      you can safely use the @fun{g:idle-add} and @fun{g:timeout-add} functions.
 
-    For more information on this \"worker thread\" pattern, you should also
-    look at @code{GTask}, which gives you high-level tools to perform expensive
-    tasks from worker threads, and will handle thread management for you.
-    @about-function{threads-init}
-    @about-function{threads-enter}
-    @about-function{threads-leave}
-    @about-function{threads-set-lock-functions}
-    @about-function{threads-add-idle}
-    @about-function{threads-add-idle-full}
-    @about-function{threads-add-timeout}
-    @about-function{threads-add-timeout-full}
-    @about-function{threads-add-timeout-seconds}
-    @about-function{threads-add-timeout-seconds-full}
+      For more information on this \"worker thread\" pattern, you should also
+      look at the @class{g:task} API, which gives you high-level tools to
+      perform expensive tasks from worker threads, and will handle thread
+      management for you.
+    @end{subsection}
+    @begin[Functions for threads]{subsection}
+      @about-macro{with-threads-lock}
+      @about-function{threads-init}
+      @about-function{threads-enter}
+      @about-function{threads-leave}
+      @about-function{threads-add-idle}
+      @about-function{threads-add-timeout}
+      @about-function{threads-add-timeout-seconds}
+    @end{subsection}
   @end{section}
   @begin[Pango Interaction]{section}
-    Pango is the text layout system used by GDK and GTK. The functions and
-    types in this section are used to obtain clip regions for
-    @class{pango:layout} objects, and to get @class{pango:context} objects that
-    can be used with GDK.
+    @begin[Introduction to Pango interaction]{subsection}
+      Pango is the text layout system used by GDK and GTK. The functions and
+      types in this section are used to obtain clip regions for
+      @class{pango:layout} objects, and to get @class{pango:context} objects
+      that can be used with GDK.
 
-    Creating a @class{pango:layout} object is the first step in rendering text,
-    and requires getting a handle to a @class{pango:context}. For GTK programs,
-    you will usually want to use the @fun{gtk:widget-pango-context},
-    or @fun{gtk:widget-create-pango-layout} functions, rather than using the
-    lowlevel @fun{gdk:pango-context-for-screen} function. Once you have a
-    @class{pango:layout} object, you can set the text and attributes of it with
-    Pango functions like the @fun{pango:layout-text} function and get its size
-    with the @fun{pango:layout-size} function. Note that Pango uses a fixed
-    point system internally, so converting between Pango units and pixels using
-    the @var{pango:+scale+} constant or the @fun{pango:pixels} function.
+      Creating a @class{pango:layout} object is the first step in rendering
+      text, and requires getting a handle to a @class{pango:context}. For GTK
+      programs, you will usually want to use the @fun{gtk:widget-pango-context},
+      or @fun{gtk:widget-create-pango-layout} functions, rather than using the
+      lowlevel @fun{gdk:pango-context-for-screen} function. Once you have a
+      @class{pango:layout} object, you can set the text and attributes of it
+      with Pango functions like the @fun{pango:layout-text} function and get its
+      size with the @fun{pango:layout-size} function. Note that Pango uses a
+      fixed point system internally, so converting between Pango units and
+      pixels using the @var{pango:+scale+} constant or the @fun{pango:pixels}
+      function.
 
-    Rendering a Pango layout is done most simply with the
-    @fun{pango:cairo-show-layout} function. You can also draw pieces of the
-    layout with the @fun{pango:cairo-show-layout-line} function.
+      Rendering a Pango layout is done most simply with the
+      @fun{pango:cairo-show-layout} function. You can also draw pieces of the
+      layout with the @fun{pango:cairo-show-layout-line} function.
 
-    @b{Example:} Draw transformed text with Pango and Cairo
+      @b{Example:} Draw transformed text with Pango and Cairo
 
-    @image[pango-cairo]{Figure: Drawing using Pango with Cairo}
+      @image[pango-cairo]{Figure: Drawing using Pango with Cairo}
 
-    @begin{pre}
+      @begin{pre}
 (defun example-pango-drawing (&optional (application nil))
   (within-main-loop
     (let ((area (make-instance 'gtk:drawing-area))
@@ -1298,12 +1246,15 @@ got_value (gpointer user_data)
            t)))
       (gtk:container-add window area)
       (gtk:widget-show-all window))))
-    @end{pre}
-    @about-function{pango-layout-clip-region}
-    @about-function{pango-layout-line-clip-region}
-    @about-function{pango-context-get}
-    @about-function{pango-context-for-screen}
-    @about-function{pango-context-for-display}
+      @end{pre}
+    @end{subsection}
+    @begin[Functions for Pango interaction]{subsection}
+      @about-function{pango-layout-clip-region}
+      @about-function{pango-layout-line-clip-region}
+      @about-function{pango-context-get}
+      @about-function{pango-context-for-screen}
+      @about-function{pango-context-for-display}
+    @end{subsection}
   @end{section}
   @begin[Cairo Interaction]{section}
     Types and functions to support using Cairo.

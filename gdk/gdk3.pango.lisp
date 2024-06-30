@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -43,40 +43,41 @@
 (in-package :gdk)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_pango_layout_get_clip_region () -> pango-layout-clip-region
+;;; gdk_pango_layout_get_clip_region
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_pango_layout_get_clip_region" %pango-layout-clip-region)
     (:pointer (:struct cairo:region-t))
   (layout (g:object pango-layout))
-  (x-origin :int)
-  (y-origin :int)
+  (xorigin :int)
+  (yorigin :int)
   (ranges (:pointer :int))
   (n-ranges :int))
 
-(defun pango-layout-clip-region (layout x-origin y-origin ranges)
+(defun pango-layout-clip-region (layout xorigin yorigin ranges)
  #+liber-documentation
- "@version{#2021-4-5}
+ "@version{#2024-6-28}
   @argument[layout]{a @class{pango:layout} object}
-  @argument[x-origin]{an integer with the x pixel where you intend to draw the
-    layout with this clip}
-  @argument[y-origin]{an integer with the y pixel where you intend to draw the
-    layout with this clip}
-  @argument[ranges]{a list of byte indexes into the layout, where even members
-    of the list are start indexes and odd elements are end indexes}
-  @return{A @symbol{cairo:region-t} clip region containing the given ranges.}
+  @argument[xorigin]{an integer with the x pixel where you intend to draw the
+    Pango layout with this clip}
+  @argument[yorigin]{an integer with the y pixel where you intend to draw the
+    Pango layout with this clip}
+  @argument[ranges]{a list of byte indexes into the Pango layout, where even
+    members of the list are start indexes and odd elements are end indexes}
+  @return{The @symbol{cairo:region-t} instance with the clip region containing
+    the given ranges.}
   @begin{short}
     Obtains a clip region which contains the areas where the given ranges of
     text would be drawn.
   @end{short}
-  The argumentes @arg{x-origin} and @arg{y-origin} are the top left point to
-  center the layout. The @arg{ranges} list should contain ranges of bytes in
-  the layout's text.
+  The @arg{xorigin} and @arg{yorigin} argumentes are the top left point to
+  center the layout. The @arg{ranges} argument list should contain ranges of
+  bytes in the text of the Pango layout.
 
   Note that the regions returned correspond to logical extents of the text
-  ranges, not ink extents. So the drawn layout may in fact touch areas out of
-  the clip region. The clip region is mainly useful for highlightling parts of
-  text, such as when text is selected.
+  ranges, not ink extents. So the drawn Pango layout may in fact touch areas out
+  of the clip region. The clip region is mainly useful for highlightling parts
+  of text, such as when text is selected.
   @see-class{pango:layout}
   @see-symbol{cairo:region-t}"
   (let ((n (length ranges)))
@@ -90,48 +91,49 @@
                  (incf i))
                ranges))
         (%pango-layout-clip-region layout
-                                   x-origin
-                                   y-origin
+                                   xorigin
+                                   yorigin
                                    ranges-ar
                                    n-ranges)))))
 
 (export 'pango-layout-clip-region)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_pango_layout_line_get_clip_region () -> pango-layout-line-clip-region
+;;; gdk_pango_layout_line_get_clip_region
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_pango_layout_line_get_clip_region"
           %pango-layout-line-clip-region)
     (:pointer (:struct cairo:region-t))
   (layout-line (g:boxed pango:layout-line))
-  (x-origin :int)
-  (y-origin :int)
+  (xorigin :int)
+  (yorigin :int)
   (ranges (:pointer :int))
   (n-ranges :int))
 
-(defun pango-layout-line-clip-region (line x-origin y-origin ranges)
+(defun pango-layout-line-clip-region (line xorigin yorigin ranges)
  #+liber-documentation
- "@version{#2021-4-5}
+ "@version{#2024-6-28}
   @argument[line]{a @class{pango:layout-line} instance}
-  @argument[x-origin]{an integer with the x pixel where you intend to draw the
-    layout line with this clip}
-  @argument[y-origin]{an integer with the baseline pixel where you intend to
-    draw the layout line with this clip}
-  @argument[ranges]{list of byte indexes into the layout, where even members of
-    list are start indexes and odd elements are end indexes}
-  @return{A @symbol{cairo:region-t} clip region containing the given ranges.}
+  @argument[xorigin]{an integer with the x pixel where you intend to draw the
+    Pango layout line with this clip}
+  @argument[yorigin]{an integer with the baseline pixel where you intend to
+    draw the Pango layout line with this clip}
+  @argument[ranges]{list of byte indexes into the Pango layout, where even
+    members of list are start indexes and odd elements are end indexes}
+  @return{The @symbol{cairo:region-t} instance with the clip region containing
+    the given ranges.}
   @begin{short}
     Obtains a clip region which contains the areas where the given ranges of
     text would be drawn.
   @end{short}
-  The arguments @arg{x-origin} and @arg{y-origin} are the top left position of
-  the layout. The @arg{ranges} list should contain ranges of bytes in the
-  layout's text. The clip region will include space to the left or right of the
-  line, to the layout bounding box, if you have indexes above or below the
-  indexes contained inside the line. This is to draw the selection all the way
-  to the side of the layout. However, the clip region is in line coordinates,
-  not layout coordinates.
+  The @arg{xorigin} and @arg{yorigin} arguments are the top left position of
+  the Pango layout. The @arg{ranges} list should contain ranges of bytes in the
+  text of the Pango layout. The clip region will include space to the left or
+  right of the line, to the layout bounding box, if you have indexes above or
+  below the indexes contained inside the line. This is to draw the selection all
+  the way to the side of the Pango layout. However, the clip region is in line
+  coordinates, not Pango layout coordinates.
 
   Note that the regions returned correspond to logical extents of the text
   ranges, not ink extents. So the drawn line may in fact touch areas out of
@@ -150,26 +152,25 @@
                  (incf i))
                ranges))
         (%pango-layout-line-clip-region line
-                                        x-origin
-                                        y-origin
+                                        xorigin
+                                        yorigin
                                         ranges-ar
                                         n-ranges)))))
 
 (export 'pango-layout-line-clip-region)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_pango_context_get ()
+;;; gdk_pango_context_get
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_pango_context_get" pango-context-get)
     (g:object pango:context :already-referenced)
  #+liber-documentation
- "@version{#2021-10-28}
-  @return{A new @class{pango-context} instance for the default GDK screen.}
+ "@version{2024-6-28}
+  @return{The new @class{pango-context} instance for the default GDK screen.}
   @begin{short}
     Creates a @class{pango-context} instance for the default GDK screen.
   @end{short}
-
   When using GTK, normally you should use the @fun{gtk:widget-pango-context}
   function instead of this function, to get the appropriate Pango context for
   the widget you intend to render text onto.
@@ -186,7 +187,7 @@
 (export 'pango-context-get)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_pango_context_get_for_screen () -> pango-context-for-screen
+;;; gdk_pango_context_get_for_screen
 ;;; ----------------------------------------------------------------------------
 
 ;; TODO: Is this the correct usage of the :already-referenced keyword
@@ -196,7 +197,7 @@
 (cffi:defcfun ("gdk_pango_context_get_for_screen" pango-context-for-screen)
     (g:object pango-context :already-referenced)
  #+liber-documentation
- "@version{2023-12-26}
+ "@version{2024-6-28}
   @argument[screen]{a @class{gdk:screen} object for which the Pango context
     is to be created}
   @return{The new @class{pango-context} instance for @arg{screen}.}
@@ -207,8 +208,8 @@
   function instead of this function, to get the appropriate Pango context for
   the widget you intend to render text onto.
 
-  The newly created Pango context will have the default font options, see the
-  @symbol{cairo:font-options-t} API, for the screen. If these options change
+  The newly created Pango context will have the default font options for the
+  screen. See the @symbol{cairo:font-options-t} API. If these options change
   it will not be updated. Using the @fun{gtk:widget-pango-context} function is
   more convenient if you want to keep a Pango context around and track changes
   to the screens font rendering settings.
@@ -221,16 +222,16 @@
 (export 'pango-context-for-screen)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_pango_context_get_for_display () -> pango-context-for-display
+;;; gdk_pango_context_get_for_display
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_pango_context_get_for_display" pango-context-for-display)
     (g:object pango-context :already-referenced)
  #+liber-documentation
- "@version{#2023-3-13}
+ "@version{2024-6-28}
   @argument[display]{a @class{gdk:display} object for which the Pango context
     is to be created}
-  @return{A new @class{pango:context} instance for @arg{display}.}
+  @return{The new @class{pango:context} instance for @arg{display}.}
   @begin{short}
     Creates a Pango context for the display.
   @end{short}
@@ -238,8 +239,8 @@
   function instead of this function, to get the appropriate Pango context for
   the widget you intend to render text onto.
 
-  The newly created Pango context will have the default font options, see the
-  @symbol{cairo:font-options-t} API, for the display. If these options change
+  The newly created Pango context will have the default font options for the
+  display. See the @symbol{cairo:font-options-t} API. If these options change
   it will not be updated. Using the @fun{gtk:widget-pango-context} function is
   more convenient if you want to keep a Pango context around and track changes
   to the font rendering settings.

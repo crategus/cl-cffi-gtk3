@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -68,7 +68,7 @@
 (in-package :gdk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GdkVisualType
+;;; GdkVisualType
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GdkVisualType" visual-type
@@ -85,12 +85,8 @@
 (setf (liber:alias-for-symbol 'visual-type)
       "GEnum"
       (liber:symbol-documentation 'visual-type)
- "@version{#2021-12-14}
-  @begin{short}
-    A set of values that describe the manner in which the pixel values for a
-    visual are converted into RGB values for display.
-  @end{short}
-  @begin{pre}
+ "@version{2024-6-28}
+  @begin{declaration}
 (gobject:define-g-enum \"GdkVisualType\" visual-type
   (:export t
    :type-initializer \"gdk_visual_type_get_type\")
@@ -100,33 +96,39 @@
   (:pseudo-color 3)
   (:true-color 4)
   (:direct-color 5))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:static-gray]{Each pixel value indexes a grayscale value directly.}
-    @entry[:grayscale]{Each pixel is an index into a color map that maps pixel
-      values into grayscale values. The color map can be changed by an
-      application.}
-    @entry[:static-color]{Each pixel value is an index into a predefined,
-      unmodifiable color map that maps pixel values into RGB values.}
-    @entry[:pseudo-color]{Each pixel is an index into a color map that maps
-      pixel values into RGB values. The color map can be changed by an
-      application.}
-    @entry[:true-color]{Each pixel value directly contains red, green, and blue
-      components. Use the @fun{gdk:visual-red-pixel-details} function, etc, to
-      obtain information about how the components are assembled into a pixel
-      value.}
-    @entry[:direct-color]{Each pixel value contains red, green, and blue
-      components as for @code{:true-color}, but the components are mapped via a
-      color table into the final output table instead of being converted
-      directly.}
-  @end{table}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:static-gray]{Each pixel value indexes a grayscale value directly.}
+      @entry[:grayscale]{Each pixel is an index into a color map that maps pixel
+        values into grayscale values. The color map can be changed by an
+        application.}
+      @entry[:static-color]{Each pixel value is an index into a predefined,
+        unmodifiable color map that maps pixel values into RGB values.}
+      @entry[:pseudo-color]{Each pixel is an index into a color map that maps
+        pixel values into RGB values. The color map can be changed by an
+        application.}
+      @entry[:true-color]{Each pixel value directly contains red, green, and
+        blue components. Use the @fun{gdk:visual-red-pixel-details} function,
+        etc, to obtain information about how the components are assembled into
+        a pixel value.}
+      @entry[:direct-color]{Each pixel value contains red, green, and blue
+        components as for @code{:true-color}, but the components are mapped via
+        a color table into the final output table instead of being converted
+        directly.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    A set of values that describe the manner in which the pixel values for a
+    visual are converted into RGB values for display.
+  @end{short}
   @see-class{gdk:visual}
   @see-function{gdk:visual-red-pixel-details}
   @see-function{gdk:visual-blue-pixel-details}
   @see-function{gdk:visual-green-pixel-details}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GdkByteOrder
+;;; GdkByteOrder
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GdkByteOrder" byte-order
@@ -139,26 +141,28 @@
 (setf (liber:alias-for-symbol 'byte-order)
       "GEnum"
       (liber:symbol-documentation 'byte-order)
- "@version{#2021-12-14}
-  @begin{short}
-    A set of values describing the possible byte-orders for storing pixel
-    values in memory.
-  @end{short}
-  @begin{pre}
+ "@version{2024-6-28}
+  @begin{declaration}
 (gobject:define-g-enum \"GdkByteOrder\" byte-order
   (:export t
    :type-initializer \"gdk_byte_order_get_type\")
   (:lsb-first 0)
   (:msb-first 1))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:lsb-first]{The values are stored with the least-significant byte
-      first. For instance, the 32-bit value 0xffeecc would be stored in memory
-      as 0xcc, 0xee, 0xff, 0x00.}
-    @entry[:msb-first]{The values are stored with the most-significant byte
-      first. For instance, the 32-bit value 0xffeecc would be stored in memory
-      as 0x00, 0xcc, 0xee, 0xff.}
-  @end{table}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:lsb-first]{The values are stored with the least-significant byte
+        first. For instance, the 32-bit value @code{0xffeecc} would be stored in
+        memory as @code{0xcc}, @code{0xee}, @code{0xff}, @code{0x00}.}
+      @entry[:msb-first]{The values are stored with the most-significant byte
+        first. For instance, the 32-bit value @code{0xffeecc} would be stored
+        in memory as @code{0x00}, @code{0xcc}, @code{0xee}, @code{0xff}.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    A set of values describing the possible byte-orders for storing pixel
+    values in memory.
+  @end{short}
   @see-class{gdk:visual}
   @see-function{gdk:visual-byte-order}")
 
@@ -174,16 +178,16 @@
   nil)
 
 (setf (documentation 'visual 'type)
- "@version{#2021-12-14}
+ "@version{2024-6-28}
   @begin{short}
-    A @class{gdk:visual} object describes a particular video hardware display
+    The @class{gdk:visual} object describes a particular video hardware display
     format.
   @end{short}
   It includes information about the number of bits used for each color, the way
   the bits are translated into an RGB value for display, and the way the bits
   are stored in memory. For example, a piece of display hardware might support
-  24-bit color, 16-bit color, or 8-bit color; meaning 24/16/8-bit pixel sizes.
-  For a given pixel size, pixels can be in different formats; for example the
+  24-bit color, 16-bit color, or 8-bit color, meaning 24/16/8-bit pixel sizes.
+  For a given pixel size, pixels can be in different formats, for example the
   \"red\" element of an RGB pixel may be in the top 8 bits of the pixel, or
   may be in the lower 4 bits.
 
@@ -208,7 +212,7 @@
                    (visual-depth visual))))
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_query_depths ()
+;;; gdk_query_depths
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_query_depths" %query-depths) :void
@@ -217,8 +221,8 @@
 
 (defun query-depths ()
  #+liber-documentation
- "@version{#2021-12-14}
-  @return{A list of integers of the available depths.}
+ "@version{2024-6-28}
+  @return{The list of integers of the available depths.}
   @begin{short}
     This function returns the available bit depths for the default screen.
   @end{short}
@@ -251,7 +255,7 @@
 (export 'query-depths)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_query_visual_types ()
+;;; gdk_query_visual_types
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_query_visual_types" %query-visual-types) :void
@@ -260,7 +264,7 @@
 
 (defun query-visual-types ()
  #+liber-documentation
- "@version{#2021-12-14}
+ "@version{2024-6-28}
   @return{A list of the available visual types of type
     @symbol{gdk:visual-type}.}
   @begin{short}
@@ -290,14 +294,14 @@
 (export 'query-visual-types)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_list_visuals ()
+;;; gdk_list_visuals
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_list_visuals" list-visuals)
     (g:list-t (g:object visual) :free-from-foreign t)
  #+liber-documentation
- "@version{#2021-12-14}
-  @return{A list of @class{gdk:visual} objects.}
+ "@version{2024-6-28}
+  @return{The list of @class{gdk:visual} objects.}
   @begin{short}
     Lists the available visuals for the default screen.
   @end{short}
@@ -317,14 +321,14 @@
 (export 'list-visuals)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_visual_get_bits_per_rgb () -> visual-bits-per-rgb
+;;; gdk_visual_get_bits_per_rgb
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_visual_get_bits_per_rgb" visual-bits-per-rgb) :int
  #+liber-documentation
- "@version{#2021-12-14}
+ "@version{2024-6-28}
   @argument[visual]{a @class{gdk:visual} object}
-  @return{An integer with the number of significant bits per color value for
+  @return{The integer with the number of significant bits per color value for
     visual.}
   @begin{short}
     Returns the number of significant bits per red, green and blue value.
@@ -344,7 +348,7 @@
 (export 'visual-bits-per-rgb)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_visual_get_blue_pixel_details () -> visual-blue-pixel-details
+;;; gdk_visual_get_blue_pixel_details
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_visual_get_blue_pixel_details" %visual-blue-pixel-details)
@@ -356,7 +360,7 @@
 
 (defun visual-blue-pixel-details (visual)
  #+liber-documentation
- "@version{#2021-12-14}
+ "@version{2024-6-28}
   @argument[visual]{a @class{gdk:visual} object}
   @begin{return}
     @arg{mask} -- an unsigned integer, or @code{nil} @br{}
@@ -383,14 +387,14 @@
 (export 'visual-blue-pixel-details)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_visual_get_byte_order () -> visual-byte-order
+;;; gdk_visual_get_byte_order
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_visual_get_byte_order" visual-byte-order) byte-order
  #+liber-documentation
- "@version{#2021-12-14}
+ "@version{2024-6-28}
   @argument[visual]{a @class{gdk:visual} object}
-  @return{A @symbol{gdk:byte-order} value stating the byte order of
+  @return{The @symbol{gdk:byte-order} value stating the byte order of
     @arg{visual}.}
   @begin{short}
     Returns the byte order of the visual.
@@ -407,14 +411,14 @@
 (export 'visual-byte-order)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_visual_get_colormap_size () -> visual-colormap-size
+;;; gdk_visual_get_colormap_size
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_visual_get_colormap_size" visual-colormap-size) :int
  #+liber-documentation
- "@version{#2021-12-14}
+ "@version{2024-6-28}
   @argument[visual]{a @class{gdk:visual} object}
-  @return{An integer with the size of a colormap that is suitable for
+  @return{The integer with the size of a colormap that is suitable for
     @arg{visual}.}
   @begin{short}
     Returns the size of a colormap for the visual.
@@ -430,14 +434,14 @@
 (export 'visual-colormap-size)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_visual_get_depth () -> visual-depth
+;;; gdk_visual_get_depth
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_visual_get_depth" visual-depth) :int
  #+liber-documentation
- "@version{#2021-12-14}
+ "@version{2024-6-28}
   @argument[visual]{a @class{gdk:visual} object}
-  @return{An integer with the bit depth of @arg{visual}.}
+  @return{The integer with the bit depth of @arg{visual}.}
   @short{Returns the bit depth of the visual.}
   @see-class{gdk:visual}"
   (visual (g:object visual)))
@@ -445,7 +449,7 @@
 (export 'visual-depth)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_visual_get_green_pixel_details ()
+;;; gdk_visual_get_green_pixel_details
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_visual_get_green_pixel_details" %visual-green-pixel-details)
@@ -456,7 +460,7 @@
   (precision (:pointer :int)))
 
 (defun visual-green-pixel-details (visual)
- "@version{#2021-12-14}
+ "@version{2024-6-28}
   @argument[visual]{a @class{gdk:visual} object}
   @begin{return}
     @arg{mask} -- an unsigned integer, or @code{nil} @br{}
@@ -483,7 +487,7 @@
 (export 'visual-green-pixel-details)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_visual_get_red_pixel_details () -> visual-red-pixel-details
+;;; gdk_visual_get_red_pixel_details
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_visual_get_red_pixel_details" %visual-red-pixel-details)
@@ -494,7 +498,7 @@
   (precision (:pointer :int)))
 
 (defun visual-red-pixel-details (visual)
- "@version{#2021-12-14}
+ "@version{2024-6-28}
   @argument[visual]{a @class{gdk:visual} object}
   @begin{return}
     @arg{mask} -- an unsigned integer, or @code{nil} @br{}
@@ -521,14 +525,14 @@
 (export 'visual-red-pixel-details)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_visual_get_visual_type () -> visual-visual-type
+;;; gdk_visual_get_visual_type
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_visual_get_visual_type" visual-visual-type) visual-type
  #+liber-documentation
- "@version{#2021-12-14}
+ "@version{2024-6-28}
   @argument[visual]{a @class{gdk:visual} object}
-  @return{A @symbol{gdk:visual-type} value stating the type of @arg{visual}.}
+  @return{The @symbol{gdk:visual-type} value stating the type of @arg{visual}.}
   @begin{short}
     Returns the type of visual this is (PseudoColor, TrueColor, etc).
   @end{short}
@@ -539,18 +543,18 @@
 (export 'visual-visual-type)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_visual_get_best_depth () -> visual-best-depth
+;;; gdk_visual_get_best_depth
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_visual_get_best_depth" visual-best-depth) :int
  #+liber-documentation
- "@version{#2021-12-14}
-  @return{An integer with the best available depth.}
+ "@version{2024-6-28}
+  @return{The integer with the best available depth.}
   @begin{short}
     Get the best available depth for the default GDK screen.
   @end{short}
-  \"Best\" means \"largest\", i.e. 32 preferred over 24 preferred over 8 bits
-  per pixel.
+  \"Best\" means \"largest\", that is 32 preferred over 24 preferred over
+  8 bits per pixel.
   @begin[Warning]{dictionary}
     The @fun{gdk:visual-best-depth} function has been deprecated since version
     3.22 and should not be used in newly written code. Visual selection should
@@ -565,13 +569,13 @@
 (export 'visual-best-depth)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_visual_get_best_type () -> visual-best-type
+;;; gdk_visual_get_best_type
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_visual_get_best_type" visual-best-type) visual-type
  #+liber-documentation
- "@version{#2021-12-14}
-  @return{Best visual type of type @symbol{gdk:visual-type}.}
+ "@version{2024-6-28}
+  @return{The @symbol{gdk:visual-type} value with the best visual type.}
   @begin{short}
     Return the best available visual type for the default GDK screen.
   @end{short}
@@ -589,12 +593,12 @@
 (export 'visual-best-type)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_visual_get_system () -> visual-system
+;;; gdk_visual_get_system
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_visual_get_system" visual-system) (g:object visual)
  #+liber-documentation
- "@version{#2021-12-14}
+ "@version{2024-6-28}
   @return{The system @class{gdk:visual} object.}
   @begin{short}
     Get the default visual of the system for the default GDK screen.
@@ -613,12 +617,12 @@
 (export 'visual-system)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_visual_get_best () -> visual-best
+;;; gdk_visual_get_best
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_visual_get_best" visual-best) (g:object visual)
  #+liber-documentation
- "@version{#2021-12-14}
+ "@version{2024-6-28}
   @return{The best @class{gdk:visual} object.}
   @begin{short}
     Get the visual with the most available colors for the default GDK screen.
@@ -640,13 +644,13 @@
 (export 'visual-best)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_visual_get_best_with_depth () -> visual-best-with-depth
+;;; gdk_visual_get_best_with_depth
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_visual_get_best_with_depth" visual-best-with-depth)
     (g:object visual)
  #+liber-documentation
- "@version{#2021-12-14}
+ "@version{2024-6-28}
   @argument[depth]{an integer with the bit depth}
   @return{The best @class{gdk:visual} object for the given @arg{depth}.}
   @begin{short}
@@ -673,13 +677,13 @@
 (export 'visual-best-with-depth)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_visual_get_best_with_type () -> visual-best-with-type
+;;; gdk_visual_get_best_with_type
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_visual_get_best_with_type" visual-best-with-type)
     (g:object visual)
  #+liber-documentation
- "@version{#2021-12-14}
+ "@version{2024-6-28}
   @argument[visual-type]{a value of the @symbol{gdk:visual-type} enumeration}
   @return{The best @class{gdk:visual} object of the given @arg{visual-type}.}
   @begin{short}
@@ -705,13 +709,13 @@
 (export 'visual-best-with-type)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_visual_get_best_with_both () -> visual-best-with-both
+;;; gdk_visual_get_best_with_both
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_visual_get_best_with_both" visual-best-with-both)
     (g:object visual)
  #+liber-documentation
- "@version{#2021-12-14}
+ "@version{2024-6-28}
   @argument[depth]{an integer with the bit depth}
   @argument[visual-type]{a value of the @symbol{gdk:visual-type} enumeration}
   @return{The best @class{gdk:visual} object with both @arg{depth} and
@@ -738,12 +742,12 @@
 (export 'visual-best-with-both)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_visual_get_screen () -> visual-screen
+;;; gdk_visual_get_screen
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_visual_get_screen" visual-screen) (g:object screen)
  #+liber-documentation
- "@version{#2021-12-14}
+ "@version{2024-6-28}
   @argument[visual]{a @class{gdk:visual} object}
   @return{The @class{gdk:screen} object to which @arg{visual} belongs.}
   @short{Gets the screen to which the visual belongs.}

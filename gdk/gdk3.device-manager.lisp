@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2012 - 2023 Dieter Kaiser
+;;; Copyright (C) 2012 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -35,10 +35,13 @@
 ;;;
 ;;;     GdkDeviceManager
 ;;;
+;;; Accessors
+;;;
+;;;     gdk_device_manager_get_display
+;;;
 ;;; Functions
 ;;;
 ;;;     gdk_disable_multidevice
-;;;     gdk_device_manager_get_display                     Accessor
 ;;;     gdk_device_manager_list_devices
 ;;;     gdk_device_manager_get_client_pointer
 ;;;
@@ -75,7 +78,7 @@
 
 #+liber-documentation
 (setf (documentation 'device-manager 'type)
- "@version{#2021-12-11}
+ "@version{2024-6-29}
   @begin{short}
     In addition to a single pointer and keyboard for user interface input, GDK
     contains support for a variety of input devices, including graphics tablets,
@@ -130,21 +133,21 @@
   @b{Example:} Master and slave devices
   @begin{pre}
  carlossacarino:~$ xinput list
- ⎡ Virtual core pointer                         id=2    [master pointer  (3)]
- ⎜   ↳ Virtual core XTEST pointer               id=4    [slave  pointer  (2)]
- ⎜   ↳ Wacom ISDv4 E6 Pen stylus                id=10   [slave  pointer  (2)]
- ⎜   ↳ Wacom ISDv4 E6 Finger touch              id=11   [slave  pointer  (2)]
- ⎜   ↳ SynPS/2 Synaptics TouchPad               id=13   [slave  pointer  (2)]
- ⎜   ↳ TPPS/2 IBM TrackPoint                    id=14   [slave  pointer  (2)]
- ⎜   ↳ Wacom ISDv4 E6 Pen eraser                id=16   [slave  pointer  (2)]
- ⎣ Virtual core keyboard                        id=3    [master keyboard (2)]
-     ↳ Virtual core XTEST keyboard              id=5    [slave  keyboard (3)]
-     ↳ Power Button                             id=6    [slave  keyboard (3)]
-     ↳ Video Bus                                id=7    [slave  keyboard (3)]
-     ↳ Sleep Button                             id=8    [slave  keyboard (3)]
-     ↳ Integrated Camera                        id=9    [slave  keyboard (3)]
-     ↳ AT Translated Set 2 keyboard             id=12   [slave  keyboard (3)]
-     ↳ ThinkPad Extra Buttons                   id=15   [slave  keyboard (3)]
+ ⎡ Virtual core pointer               id=2    [master pointer  (3)]
+ ⎜   ↳ Virtual core XTEST pointer     id=4    [slave  pointer  (2)]
+ ⎜   ↳ Wacom ISDv4 E6 Pen stylus      id=10   [slave  pointer  (2)]
+ ⎜   ↳ Wacom ISDv4 E6 Finger touch    id=11   [slave  pointer  (2)]
+ ⎜   ↳ SynPS/2 Synaptics TouchPad     id=13   [slave  pointer  (2)]
+ ⎜   ↳ TPPS/2 IBM TrackPoint          id=14   [slave  pointer  (2)]
+ ⎜   ↳ Wacom ISDv4 E6 Pen eraser      id=16   [slave  pointer  (2)]
+ ⎣ Virtual core keyboard              id=3    [master keyboard (2)]
+     ↳ Virtual core XTEST keyboard    id=5    [slave  keyboard (3)]
+     ↳ Power Button                   id=6    [slave  keyboard (3)]
+     ↳ Video Bus                      id=7    [slave  keyboard (3)]
+     ↳ Sleep Button                   id=8    [slave  keyboard (3)]
+     ↳ Integrated Camera              id=9    [slave  keyboard (3)]
+     ↳ AT Translated Set 2 keyboard   id=12   [slave  keyboard (3)]
+     ↳ ThinkPad Extra Buttons         id=15   [slave  keyboard (3)]
   @end{pre}
   By default, GDK will automatically listen for events coming from all master
   devices, setting the @class{gdk:device} object for all events coming from
@@ -236,7 +239,7 @@
 (setf (liber:alias-for-function 'device-manager-display)
       "Accessor"
       (documentation 'device-manager-display 'function)
- "@version{#2021-12-11}
+ "@version{2024-6-29}
   @syntax[]{(gdk:device-manager-display object) => display}
   @argument[object]{a @class{gdk:device-manager} object}
   @argument[display]{a @class{gdk:display} object}
@@ -244,7 +247,6 @@
     Accessor of the @slot[gdk:device-manager]{display} slot of the
     @class{gdk:device-manager} class.
   @end{short}
-
   The @fun{gdk:device-manager-display} function returns the display to which
   the device manager is associated to.
   @see-class{gdk:device-manager}
@@ -269,12 +271,12 @@
   nil)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_disable_multidevice ()
+;;; gdk_disable_multidevice
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_disable_multidevice" disable-multidevice) :void
  #+liber-documentation
- "@version{#2021-12-11}
+ "@version{2024-6-29}
   @begin{short}
     Disables multidevice support in GDK.
   @end{short}
@@ -292,16 +294,16 @@
 (export 'disable-multidevice)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_device_manager_list_devices ()
+;;; gdk_device_manager_list_devices
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_device_manager_list_devices" device-manager-list-devices)
     (g:list-t (g:object device) :free-from-foreign t)
  #+liber-documentation
- "@version{#2021-12-11}
+ "@version{2024-6-29}
   @argument[manager]{a @class{gdk:device-manager} object}
   @argument[type]{a @symbol{gdk:device-type} device type to get}
-  @return{A list of @class{gdk:device} objects.}
+  @return{The list of @class{gdk:device} objects.}
   @begin{short}
     Returns the list of devices currently attached to the device manager.
   @end{short}
@@ -323,13 +325,13 @@
 (export 'device-manager-list-devices)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_device_manager_get_client_pointer () -> device-manager-client-pointer
+;;; gdk_device_manager_get_client_pointer
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_device_manager_get_client_pointer"
                device-manager-client-pointer) (g:object device)
  #+liber-documentation
- "@version{#2021-12-11}
+ "@version{2024-6-29}
   @argument[manager]{a @class{gdk:device-manager} object}
   @return{The @class{gdk:device} client pointer.}
   @begin{short}
@@ -349,6 +351,7 @@
   @end{dictionary}
   @see-class{gdk:device-manager}
   @see-class{gdk:device}
+  @see-class{gdk:event}
   @see-function{gdk:seat-pointer}"
   (manager (g:object device-manager)))
 

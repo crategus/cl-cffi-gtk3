@@ -7,7 +7,7 @@
 
 ;;;     GdkDevicePadFeature
 
-(test device-pad-feature
+(test gdk-device-pad-feature
   ;; Check the type
   (is (g:type-is-enum "GdkDevicePadFeature"))
   ;; Check the type initializer
@@ -64,4 +64,4 @@
 ;;;     gdk_device_pad_get_n_features
 ;;;     gdk_device_pad_get_feature_group
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-6-29

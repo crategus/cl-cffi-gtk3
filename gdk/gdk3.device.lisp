@@ -47,11 +47,21 @@
 ;;;
 ;;;     GdkGrabStatus                                      <- gdk.general.lisp
 ;;;
+;;; Accessors
+;;;
+;;;     gdk_device_get_name
+;;;     gdk_device_get_vendor_id
+;;;     gdk_device_get_product_id
+;;;     gdk_device_get_associated_device
+;;;     gdk_device_get_device_type
+;;;     gdk_device_get_display
+;;;     gdk_device_get_has_cursor
+;;;     gdk_device_get_n_axes
+;;;     gdk_device_get_axes
+;;;     gdk_device_get_seat
+;;;
 ;;; Functions
 ;;;
-;;;     gdk_device_get_name                                Accessor
-;;;     gdk_device_get_vendor_id                           Accessor
-;;;     gdk_device_get_product_id                          Accessor
 ;;;     gdk_device_get_source
 ;;;     gdk_device_set_mode
 ;;;     gdk_device_get_mode
@@ -59,16 +69,9 @@
 ;;;     gdk_device_get_key
 ;;;     gdk_device_set_axis_use
 ;;;     gdk_device_get_axis_use
-;;;     gdk_device_get_associated_device                   Accessor
 ;;;     gdk_device_list_slave_devices
-;;;     gdk_device_get_device_type                         Accessor
-;;;     gdk_device_get_display                             Accessor
-;;;     gdk_device_get_has_cursor                          Accessor
-;;;     gdk_device_get_n_axes                              Accessor
 ;;;     gdk_device_get_n_keys
-;;;     gdk_device_get_axes                                Accessor
 ;;;     gdk_device_warp
-;;;     gdk_device_get_seat                                Accessor
 ;;;     gdk_device_grab
 ;;;     gdk_device_ungrab
 ;;;     gdk_device_get_state
@@ -86,7 +89,14 @@
 ;;;     gdk_device_tool_get_tool_type
 ;;;     gdk_device_tool_get_hardware_id
 ;;;
-;;; Properties
+;;; Properties for GdkDeviceTool
+;;;
+;;;     axes
+;;;     hardware-id
+;;;     serial
+;;;     tool-type
+;;;
+;;; Properties for GdkDevice
 ;;;
 ;;;     associated-device
 ;;;     axes
@@ -122,7 +132,7 @@
 (in-package :gdk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GdkInputSource
+;;; GdkInputSource
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GdkInputSource" input-source
@@ -142,11 +152,8 @@
 (setf (liber:alias-for-symbol 'input-source)
       "GEnum"
       (liber:symbol-documentation 'input-source)
- "@version{2023-3-9}
-  @begin{short}
-    An enumeration describing the type of an input device in general terms.
-  @end{short}
-  @begin{pre}
+ "@version{2024-6-27}
+  @begin{declaration}
 (gobject:define-g-enum \"GdkInputSource\" input-source
   (:export t
    :type-initializer \"gdk_input_source_get_type\")
@@ -159,29 +166,36 @@
   :touchpad
   :trackpoint
   :tablet-pad)
-  @end{pre}
-  @begin[code]{table}
-    @entry[:mouse]{The device is a mouse. This will be reported for the core
-      pointer, even if it is something else, such as a trackball.}
-    @entry[:pen]{The device is a stylus of a graphics tablet or similar device.}
-    @entry[:eraser]{The device is an eraser. Typically, this would be the other
-      end of a stylus on a graphics tablet.}
-    @entry[:cursor]{The device is a graphics tablet \"puck\" or similar device.}
-    @entry[:keyboard]{The device is a keyboard.}
-    @entry[:touchscreen]{The device is a direct-input touch device, such as a
-      touchscreen or tablet. This device type has been added in 3.4.}
-    @entry[:touchpad]{The device is an indirect touch device, such as a
-      touchpad. This device type has been added in 3.4.}
-    @entry[:trackpoint]{The device is a trackpoint. This device type has been
-      added in 3.22.}
-    @entry[:tablet-pad]{The device is a \"pad\", a collection of buttons, rings
-      and strips found in drawing tablets. This device type has been added in
-      3.22.}
-  @end{table}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:mouse]{The device is a mouse. This will be reported for the core
+        pointer, even if it is something else, such as a trackball.}
+      @entry[:pen]{The device is a stylus of a graphics tablet or similar
+        device.}
+      @entry[:eraser]{The device is an eraser. Typically, this would be the
+        other end of a stylus on a graphics tablet.}
+      @entry[:cursor]{The device is a graphics tablet \"puck\" or similar
+        device.}
+      @entry[:keyboard]{The device is a keyboard.}
+      @entry[:touchscreen]{The device is a direct-input touch device, such as a
+        touchscreen or tablet. This device type has been added in 3.4.}
+      @entry[:touchpad]{The device is an indirect touch device, such as a
+        touchpad. This device type has been added in 3.4.}
+      @entry[:trackpoint]{The device is a trackpoint. This device type has been
+        added in 3.22.}
+      @entry[:tablet-pad]{The device is a \"pad\", a collection of buttons,
+        rings and strips found in drawing tablets. This device type has been
+        added in 3.22.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    An enumeration describing the type of an input device in general terms.
+  @end{short}
   @see-class{gdk:device}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GdkInputMode
+;;; GdkInputMode
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GdkInputMode" input-mode
@@ -195,31 +209,33 @@
 (setf (liber:alias-for-symbol 'input-mode)
       "GEnum"
       (liber:symbol-documentation 'input-mode)
- "@version{2023-3-9}
-  @begin{short}
-    An enumeration that describes the mode of an input device.
-  @end{short}
-  @begin{pre}
+ "@version{2024-6-27}
+  @begin{declaration}
 (gobject:define-g-enum \"GdkInputMode\" input-mode
   (:export t
    :type-initializer \"gdk_input_mode_get_type\")
   (:disabled 0)
   (:screen 1)
   (:window 2))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:disabled]{The device is disabled and will not report any events.}
-    @entry[:screen]{The device is enabled. The device's coordinate space maps
-      to the entire screen.}
-    @entry[:window]{The device is enabled. The device's coordinate space is
-      mapped to a single window. The manner in which this window is chosen is
-      undefined, but it will typically be the same way in which the focus
-      window for key events is determined.}
-  @end{table}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:disabled]{The device is disabled and will not report any events.}
+      @entry[:screen]{The device is enabled. The device's coordinate space maps
+        to the entire screen.}
+      @entry[:window]{The device is enabled. The device's coordinate space is
+        mapped to a single window. The manner in which this window is chosen is
+        undefined, but it will typically be the same way in which the focus
+        window for key events is determined.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    An enumeration that describes the mode of an input device.
+  @end{short}
   @see-class{gdk:device}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GdkAxisUse
+;;; GdkAxisUse
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GdkAxisUse" axis-use
@@ -241,12 +257,8 @@
 (setf (liber:alias-for-symbol 'axis-use)
       "GEnum"
       (liber:symbol-documentation 'axis-use)
- "@version{2023-3-9}
-  @begin{short}
-    An enumeration describing the way in which a device axis (valuator) maps
-    onto the predefined valuator types that GTK understands.
-  @end{short}
-  @begin{pre}
+ "@version{2024-6-27}
+  @begin{declaration}
 (gobject:define-g-enum \"GdkAxisUse\" axis-use
   (:export t
    :type-initializer \"gdk_axis_use_get_type\")
@@ -261,25 +273,32 @@
   :rotation
   :slider
   :last)
-  @end{pre}
-  @begin[code]{table}
-    @entry[:ignore]{The axis is ignored.}
-    @entry[:x]{The axis is used as the x axis.}
-    @entry[:y]{The axis is used as the y axis.}
-    @entry[:pressure]{The axis is used for pressure information.}
-    @entry[:xtilt]{The axis is used for x tilt information.}
-    @entry[:ytilt]{The axis is used for y tilt information.}
-    @entry[:wheel]{The axis is used for wheel information.}
-    @entry[:distance]{The axis is used for pen/tablet distance information.
-      Since 3.22}
-    @entry[:rotation]{The axis is used for pen rotation information. Since 3.22}
-    @entry[:slider]{The axis is used for pen slider information. Since 3.22}
-    @entry[:last]{A constant equal to the numerically highest axis value.}
-  @end{table}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:ignore]{The axis is ignored.}
+      @entry[:x]{The axis is used as the x axis.}
+      @entry[:y]{The axis is used as the y axis.}
+      @entry[:pressure]{The axis is used for pressure information.}
+      @entry[:xtilt]{The axis is used for x tilt information.}
+      @entry[:ytilt]{The axis is used for y tilt information.}
+      @entry[:wheel]{The axis is used for wheel information.}
+      @entry[:distance]{The axis is used for pen/tablet distance information.
+        Since 3.22}
+      @entry[:rotation]{The axis is used for pen rotation information.
+        Since 3.22}
+      @entry[:slider]{The axis is used for pen slider information. Since 3.22}
+      @entry[:last]{A constant equal to the numerically highest axis value.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    An enumeration describing the way in which a device axis (valuator) maps
+    onto the predefined valuator types that GTK understands.
+  @end{short}
   @see-class{gdk:device}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GdkAxisFlags
+;;; GdkAxisFlags
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-flags "GdkAxisFlags" axis-flags
@@ -299,11 +318,8 @@
 (setf (liber:alias-for-symbol 'axis-flags)
       "GFlags"
       (liber:symbol-documentation 'axis-flags)
- "@version{2023-3-13}
-  @begin{short}
-    Flags describing the current capabilities of a device/tool.
-  @end{short}
-  @begin{pre}
+ "@version{2024-6-27}
+  @begin{declaration}
 (gobject:define-g-flags \"GdkAxisFlags\" axis-flags
   (:export t
    :type-initializer \"gdk_axis_flags_get_type\")
@@ -316,22 +332,27 @@
   (:distance #.(ash 1 7))
   (:rotation #.(ash 1 8))
   (:slider   #.(ash 1 9)))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:x]{x axis is present.}
-    @entry[:y]{y axis is present.}
-    @entry[:pressure]{Pressure axis is present.}
-    @entry[:xtilt]{x tilt axis is present.}
-    @entry[:ytilt]{y tilt axis is present.}
-    @entry[:wheel]{Wheel axis is present.}
-    @entry[:distance]{Distance axis is present.}
-    @entry[:rotation]{z-axis rotation is present.}
-    @entry[:slider]{Slider axis is present.}
-  @end{table}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:x]{x axis is present.}
+      @entry[:y]{y axis is present.}
+      @entry[:pressure]{Pressure axis is present.}
+      @entry[:xtilt]{x tilt axis is present.}
+      @entry[:ytilt]{y tilt axis is present.}
+      @entry[:wheel]{Wheel axis is present.}
+      @entry[:distance]{Distance axis is present.}
+      @entry[:rotation]{z-axis rotation is present.}
+      @entry[:slider]{Slider axis is present.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Flags describing the current capabilities of a device/tool.
+  @end{short}
   @see-class{gdk:device}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GdkDeviceToolType
+;;; GdkDeviceToolType
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GdkDeviceToolType" device-tool-type
@@ -350,12 +371,8 @@
 (setf (liber:alias-for-symbol 'device-tool-type)
       "GEnum"
       (liber:symbol-documentation 'device-tool-type)
- "@version{2023-3-13}
-  @begin{short}
-    Indicates the specific type of tool being used being a tablet. Such as an
-    airbrush, pencil, etc.
-  @end{short}
-  @begin{pre}
+ "@version{2024-6-27}
+  @begin{declaration}
 (gobject:define-g-enum \"GdkDeviceToolType\" device-tool-type
   (:export t
    :type-initializer \"gdk_device_tool_type_get_type\")
@@ -367,21 +384,27 @@
   :airbrush
   :mouse
   :lens)
-  @end{pre}
-  @begin[code]{table}
-    @entry[:unkown]{Tool is of an unknown type.}
-    @entry[:pen]{Tool is a standard tablet stylus.}
-    @entry[:eraser]{Tool is standard tablet eraser.}
-    @entry[:brush]{Tool is a brush stylus.}
-    @entry[:pencil]{Tool is a pencil stylus.}
-    @entry[:airbrush]{Tool is an airbrush stylus.}
-    @entry[:mouse]{Tool is a mouse.}
-    @entry[:lens]{Tool is a lens cursor.}
-  @end{table}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:unkown]{Tool is of an unknown type.}
+      @entry[:pen]{Tool is a standard tablet stylus.}
+      @entry[:eraser]{Tool is standard tablet eraser.}
+      @entry[:brush]{Tool is a brush stylus.}
+      @entry[:pencil]{Tool is a pencil stylus.}
+      @entry[:airbrush]{Tool is an airbrush stylus.}
+      @entry[:mouse]{Tool is a mouse.}
+      @entry[:lens]{Tool is a lens cursor.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Indicates the specific type of tool being used being a tablet. Such as an
+    airbrush, pencil, etc.
+  @end{short}
   @see-class{gdk:device}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GdkDeviceType
+;;; GdkDeviceType
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GdkDeviceType" device-type
@@ -395,30 +418,32 @@
 (setf (liber:alias-for-symbol 'device-type)
       "GEnum"
       (liber:symbol-documentation 'device-type)
- "@version{2023-3-9}
-  @begin{short}
-    Indicates the device type. See above for more information about the meaning
-    of these device types.
-  @end{short}
-  @begin{pre}
+ "@version{2024-6-27}
+  @begin{declaration}
 (gobject:define-g-enum \"GdkDeviceType\" device-type
   (:export t
    :type-initializer \"gdk_device_type_get_type\")
   (:master 0)
   (:slave 1)
   (:floating 2))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:master]{Device is a master (or virtual) device. There will be an
-      associated focus indicator on the screen.}
-    @entry[:slave]{Device is a slave (or physical) device.}
-    @entry[:floating]{Device is a physical device, currently not attached to
-      any virtual device.}
-  @end{table}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:master]{Device is a master (or virtual) device. There will be an
+        associated focus indicator on the screen.}
+      @entry[:slave]{Device is a slave (or physical) device.}
+      @entry[:floating]{Device is a physical device, currently not attached to
+        any virtual device.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Indicates the device type. See above for more information about the meaning
+    of these device types.
+  @end{short}
   @see-class{gdk:device}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GdkGrabOwnership
+;;; GdkGrabOwnership
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GdkGrabOwnership" grab-ownership
@@ -432,28 +457,31 @@
 (setf (liber:alias-for-symbol 'grab-ownership)
       "GEnum"
       (liber:symbol-documentation 'grab-ownership)
- "@version{2023-3-9}
-  @begin{short}
-    Defines how device grabs interact with other devices.
-  @end{short}
-  @begin{pre}
+ "@version{2024-6-27}
+  @begin{declaration}
 (gobject:define-g-enum \"GdkGrabOwnership\" grab-ownership
   (:export t
    :type-initializer \"gdk_grab_ownership_get_type\")
   (:none 0)
   (:window 1)
   (:application 2))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:none]{All other events of the device are allowed.}
-    @entry[:window]{Other events of the device are blocked for the grab window.}
-    @entry[:application]{Other events of the device are blocked for the whole
-      application.}
-  @end{table}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:none]{All other events of the device are allowed.}
+      @entry[:window]{Other events of the device are blocked for the grab
+        window.}
+      @entry[:application]{Other events of the device are blocked for the whole
+        application.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Defines how device grabs interact with other devices.
+  @end{short}
   @see-class{gdk:device}")
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GdkTimeCoord
+;;; GdkTimeCoord
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcstruct time-coord
@@ -464,27 +492,29 @@
 (setf (liber:alias-for-symbol 'time-coord)
       "CStruct"
       (liber:symbol-documentation 'time-coord)
- "@version{#2023-3-9}
+ "@version{2024-6-27}
+  @begin{declaration}
+(cffi:defcstruct gdk:time-coord
+  (time :uint32)
+  (axes :double :count 128))
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[time]{The timestamp for this event.}
+      @entry[axes]{The values of the axes of the device.}
+    @end{table}
+  @end{values}
   @begin{short}
     The @symbol{gdk:time-coord} structure stores a single event in a motion
     history.
   @end{short}
-  @begin{pre}
-(cffi:defcstruct gdk:time-coord
-  (time :uint32)
-  (axes :double :count 128))
-  @end{pre}
-  @begin[code]{table}
-    @entry[time]{The timestamp for this event.}
-    @entry[axes]{The values of the axes of the device.}
-  @end{table}
   @see-class{gdk:device}
   @see-function{gdk:device-history}")
 
 (export 'time-coord)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GdkGrabStatus
+;;; GdkGrabStatus
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GdkGrabStatus" grab-status
@@ -501,12 +531,8 @@
 (setf (liber:alias-for-symbol 'grab-status)
       "GEnum"
       (liber:symbol-documentation 'grab-status)
- "@version{2023-3-9}
-  @begin{short}
-    Returned by the @fun{gdk:seat-grab} function to indicate success or the
-    reason for the failure of the grab attempt.
-  @end{short}
-  @begin{pre}
+ "@version{2024-6-27}
+  @begin{declaration}
 (gobject:define-g-enum \"GdkGrabStatus\" grab-status
   (:export t
    :type-initializer \"gdk_grab_status_get_type\")
@@ -515,18 +541,25 @@
   :invalid-time
   :not-viewable
   :frozen)
-  @end{pre}
-  @begin[code]{table}
-    @entry[:success]{The resource was successfully grabbed.}
-    @entry[:already-grabbed]{The resource is actively grabbed by another
-      client.}
-    @entry[:invalid-time]{The resource was grabbed more recently than the
-      specified time.}
-    @entry[:not-viewable]{The grab window or the @arg{confine-to} window are
-      not viewable.}
-    @entry[:frozen]{The resource is frozen by an active grab of another client.}
-    @entry[:failed]{The grab failed for some other reason.}
-  @end{table}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:success]{The resource was successfully grabbed.}
+      @entry[:already-grabbed]{The resource is actively grabbed by another
+        client.}
+      @entry[:invalid-time]{The resource was grabbed more recently than the
+        specified time.}
+      @entry[:not-viewable]{The grab window or the @arg{confine-to} window are
+        not viewable.}
+      @entry[:frozen]{The resource is frozen by an active grab of another
+        client.}
+      @entry[:failed]{The grab failed for some other reason.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Returned by the @fun{gdk:seat-grab} function to indicate success or the
+    reason for the failure of the grab attempt.
+  @end{short}
   @see-class{gdk:device}
   @see-function{gdk:seat-grab}")
 
@@ -554,8 +587,8 @@
 
 #+liber-documentation
 (setf (documentation 'device-tool 'type)
- "@version{2023-3-16}
-  @short{A physical tool associated to a @class{gdk:device} object.}
+ "@version{2024-6-27}
+  @short{The physical tool associated to a @class{gdk:device} object.}
   @see-slot{gdk:device-tool-axes}
   @see-slot{gdk:device-tool-hardware-id}
   @see-slot{gdk:device-tool-serial}
@@ -566,7 +599,7 @@
 ;;; Property and Accessor Details
 ;;;-----------------------------------------------------------------------------
 
-;;; --- device-tool-axes -------------------------------------------------------
+;;; --- gdk:device-tool-axes ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "axes" 'device-tool) t)
@@ -578,8 +611,8 @@
 (setf (liber:alias-for-function 'device-tool-axes)
       "Accessor"
       (documentation 'device-tool-axes 'function)
- "@version{#2023-3-13}
-  @syntax[]{(gdk:device-tool-axes object) => axes}
+ "@version{2024-6-27}
+  @syntax{(gdk:device-tool-axes object) => axes}
   @argument[object]{a @class{gdk:device-tool} object}
   @argument[axes]{a value of the @symbol{gdk:axis-flags} flags}
   @begin{short}
@@ -590,7 +623,7 @@
   @see-class{gdk:device-tool}
   @see-symbol{gdk:axis-flags}")
 
-;;; --- device-tool-hardware-id ------------------------------------------------
+;;; --- gdk:device-tool-hardware-id --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "hardware-id" 'device-tool) t)
@@ -602,8 +635,8 @@
 (setf (liber:alias-for-function 'device-tool-hardware-id)
       "Accessor"
       (documentation 'device-tool-hardware-id 'function)
- "@version{#2023-3-13}
-  @syntax[]{(gdk:device-tool-hardware-id object) => hardware}
+ "@version{2024-6-27}
+  @syntax{(gdk:device-tool-hardware-id object) => hardware}
   @argument[object]{a @class{gdk:device-tool} object}
   @argument[hardware]{an unsigned integer with the hardware ID of the device
     tool}
@@ -626,7 +659,7 @@
   @see-function{gdk:device-tool-serial}
   @see-function{gdk:device-tool-tool-type}")
 
-;;; --- device-tool-serial -----------------------------------------------------
+;;; --- gdk:device-tool-serial -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "serial" 'device-tool) t)
@@ -638,8 +671,8 @@
 (setf (liber:alias-for-function 'device-tool-serial)
       "Accessor"
       (documentation 'device-tool-serial 'function)
- "@version{#2023-3-13}
-  @syntax[]{(gdk:device-tool-serial object) => serial}
+ "@version{2024-6-27}
+  @syntax{(gdk:device-tool-serial object) => serial}
   @argument[object]{a @class{gdk:device-tool} object}
   @argument[serial]{an unsigned integer with the serial number of the device
     tool}
@@ -652,7 +685,7 @@
   across program executions.
   @see-class{gdk:device-tool}")
 
-;;; --- device-tool-tool-type --------------------------------------------------
+;;; --- gdk:device-tool-tool-type ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "tool-type" 'device-tool) t)
@@ -664,8 +697,8 @@
 (setf (liber:alias-for-function 'device-tool-tool-type)
       "Accessor"
       (documentation 'device-tool-tool-type 'function)
- "@version{#2023-3-13}
-  @syntax[]{(gdk:device-tool-tool-type object) => tool-type}
+ "@version{2024-6-27}
+  @syntax{(gdk:device-tool-tool-type object) => tool-type}
   @argument[object]{a @class{gdk:device-tool} object}
   @argument[tool-type]{a value of the @symbol{gdk:device-tool-type}
     enumeration}
@@ -736,9 +769,9 @@
 
 #+liber-documentation
 (setf (documentation 'device 'type)
- "@version{2023-3-9}
+ "@version{2024-6-27}
   @begin{short}
-    The @lass{gdk:device} object represents a single input device, such as a
+    The @class{gdk:device} object represents a single input device, such as a
     keyboard, a mouse, a touchpad, etc.
   @end{short}
 
@@ -793,7 +826,7 @@ lambda (device tool)    :run-last
 ;;; Property and Accessor Details
 ;;;-----------------------------------------------------------------------------
 
-;;; --- device-associated-device -----------------------------------------------
+;;; --- gdk:device-associated-device -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "associated-device" 'device) t)
@@ -806,8 +839,8 @@ lambda (device tool)    :run-last
 (setf (liber:alias-for-function 'device-associated-device)
       "Accessor"
       (documentation 'device-associated-device 'function)
- "@version{2023-3-9}
-  @syntax[]{(gdk:device-associated-device object) => device}
+ "@version{2024-6-27}
+  @syntax{(gdk:device-associated-device object) => device}
   @argument[object]{a @class{gdk:device} object}
   @argument[device]{an associated @class{gdk:device} object}
   @begin{short}
@@ -822,7 +855,7 @@ lambda (device tool)    :run-last
   associated device.
   @see-class{gdk:device}")
 
-;;; --- device-axes ------------------------------------------------------------
+;;; --- gdk:device-axes --------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "axes" 'device) t)
@@ -833,8 +866,8 @@ lambda (device tool)    :run-last
 (setf (liber:alias-for-function 'device-axes)
       "Accessor"
       (documentation 'device-axes 'function)
- "@version{2023-3-13}
-  @syntax[]{(gdk:device-axes object) => axes}
+ "@version{2024-6-27}
+  @syntax{(gdk:device-axes object) => axes}
   @argument[object]{a @class{gdk:device} object}
   @argument[axes]{a value of the @symbol{gdk:axis-flags} flags}
   @begin{short}
@@ -846,7 +879,7 @@ lambda (device tool)    :run-last
   @see-class{gdk:device}
   @see-symbol{gdk:axis-flags}")
 
-;;; --- device-device-manager --------------------------------------------------
+;;; --- gdk:device-device-manager ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "device-manager" 'device) t)
@@ -858,9 +891,9 @@ lambda (device tool)    :run-last
 (setf (liber:alias-for-function 'device-device-manager)
       "Accessor"
       (documentation 'device-device-manager 'function)
- "@version{2023-3-9}
-  @syntax[]{(gdk:device-device-manager object) => manager}
-  @syntax[]{(setf (gdk:device-device-manager object) manager)}
+ "@version{2024-6-27}
+  @syntax{(gdk:device-device-manager object) => manager}
+  @syntax{(setf (gdk:device-device-manager object) manager)}
   @argument[object]{a @class{gdk:device} object}
   @argument[manager]{a @class{gdk:device-manager} object}
   @begin{short}
@@ -870,7 +903,7 @@ lambda (device tool)    :run-last
   @see-class{gdk:device}
   @see-class{gdk:device-manager}")
 
-;;; --- device-display ---------------------------------------------------------
+;;; --- gdk:device-display -----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "display" 'device) t)
@@ -882,9 +915,9 @@ lambda (device tool)    :run-last
 (setf (liber:alias-for-function 'device-display)
       "Accessor"
       (documentation 'device-display 'function)
- "@version{2023-3-9}
-  @syntax[]{(gdk:device-display object) => display}
-  @syntax[]{(setf (gdk:device-display object) display)}
+ "@version{2024-6-27}
+  @syntax{(gdk:device-display object) => display}
+  @syntax{(setf (gdk:device-display object) display)}
   @argument[object]{a @class{gdk:device} object}
   @argument[display]{a @class{gdk:display} object}
   @begin{short}
@@ -896,7 +929,7 @@ lambda (device tool)    :run-last
   @see-class{gdk:device}
   @see-class{gdk:display}")
 
-;;; --- device-has-cursor ------------------------------------------------------
+;;; --- gdk:device-has-cursor --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "has-cursor" 'device) t)
@@ -910,9 +943,9 @@ lambda (device tool)    :run-last
 (setf (liber:alias-for-function 'device-has-cursor)
       "Accessor"
       (documentation 'device-has-cursor 'function)
- "@version{2023-3-9}
-  @syntax[]{(gdk:device-has-cursor object) => has-cursor}
-  @syntax[]{(setf (gdk:device-has-cursor object) has-cursor)}
+ "@version{2024-6-27}
+  @syntax{(gdk:device-has-cursor object) => has-cursor}
+  @syntax{(setf (gdk:device-has-cursor object) has-cursor)}
   @argument[object]{a @class{gdk:device} object}
   @argument[has-cursor]{a boolean whether the device is represented by a cursor
     on the screen}
@@ -924,7 +957,7 @@ lambda (device tool)    :run-last
   follows device motion.
   @see-class{gdk:device}")
 
-;;; --- device-input-mode ------------------------------------------------------
+;;; --- gdk:device-input-mode --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "input-mode" 'device) t)
@@ -937,9 +970,9 @@ lambda (device tool)    :run-last
 (setf (liber:alias-for-function 'device-input-mode)
       "Accessor"
       (documentation 'device-input-mode 'function)
- "@version{2023-3-9}
-  @syntax[]{(gdk:device-input-mode object) => mode}
-  @syntax[]{(setf (gdk:device-input-mode object) mode)}
+ "@version{2024-6-27}
+  @syntax{(gdk:device-input-mode object) => mode}
+  @syntax{(setf (gdk:device-input-mode object) mode)}
   @argument[object]{a @class{gdk:device} object}
   @argument[mode]{a value of the @symbol{gdk:input-mode} enumeration}
   @begin{short}
@@ -947,14 +980,14 @@ lambda (device tool)    :run-last
     @class{gdk:device} class.
   @end{short}
   The @fun{gdk:device-input-mode} function returns the mode of the device. The
-  @setf{gdk:device-input-mode object} function sets he mode of an input device.
+  @setf{gdk:device-input-mode} function sets the mode of an input device.
 
   The mode controls if the device is active and whether the range of the device
   is mapped to the entire screen or to a single window.
   @see-class{gdk:device}
   @see-symbol{gdk:input-mode}")
 
-;;; --- device-input-source ----------------------------------------------------
+;;; --- gdk:device-input-source ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "input-source" 'device) t)
@@ -967,9 +1000,9 @@ lambda (device tool)    :run-last
 (setf (liber:alias-for-function 'device-input-source)
       "Accessor"
       (documentation 'device-input-source 'function)
- "@version{2023-3-9}
-  @syntax[]{(gdk:device-input-source object) => source}
-  @syntax[]{(setf (gdk:device-input-source object) source)}
+ "@version{2024-6-27}
+  @syntax{(gdk:device-input-source object) => source}
+  @syntax{(setf (gdk:device-input-source object) source)}
   @argument[object]{a @class{gdk:device} object}
   @argument[source]{a value of the @symbol{gdk:input-source} enumeration}
   @begin{short}
@@ -981,7 +1014,7 @@ lambda (device tool)    :run-last
   @see-class{gdk:device}
   @see-symbol{gdk:input-source}")
 
-;;; --- device-n-axes ----------------------------------------------------------
+;;; --- gdk:device-n-axes ------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "n-axes" 'device) t)
@@ -993,19 +1026,19 @@ lambda (device tool)    :run-last
 (setf (liber:alias-for-function 'device-n-axes)
       "Accessor"
       (documentation 'device-n-axes 'function)
- "@version{2023-3-9}
-  @syntax[]{(gdk:device-n-axis object) => n-axis}
+ "@version{2024-6-27}
+  @syntax{(gdk:device-n-axis object) => n-axis}
   @argument[object]{a @class{gdk:device} object}
   @argument[n-axis]{an unsigned integer with the number of axes in the device}
   @begin{short}
     Accessor of the @slot[gdk:device]{n-axes} slot of the @class{gdk:device}
     class.
   @end{short}
-  The @fun{gdk:device-n-axis} function returns the number of axes the device
+  The @fun{gdk:device-n-axes} function returns the number of axes the device
   currently has.
   @see-class{gdk:device}")
 
-;;; --- device-name ------------------------------------------------------------
+;;; --- gdk:device-name --------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "name" 'device) t)
@@ -1018,9 +1051,9 @@ lambda (device tool)    :run-last
 (setf (liber:alias-for-function 'device-name)
       "Accessor"
       (documentation 'device-name 'function)
- "@version{2023-3-9}
-  @syntax[]{(gdk:device-name object) => name}
-  @syntax[]{(setf (gdk:device-name object) name)}
+ "@version{2024-6-27}
+  @syntax{(gdk:device-name object) => name}
+  @syntax{(setf (gdk:device-name object) name)}
   @argument[object]{a @class{gdk:device} object}
   @argument[name]{a string with the device name}
   @begin{short}
@@ -1030,7 +1063,7 @@ lambda (device tool)    :run-last
   The @fun{gdk:device-name} function returns the name of the device.
   @see-class{gdk:device}")
 
-;;; --- device-num-touches -----------------------------------------------------
+;;; --- gdk:device-num-touches -------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "num-touches" 'device) t)
@@ -1044,8 +1077,8 @@ lambda (device tool)    :run-last
 (setf (liber:alias-for-function 'device-num-touches)
       "Accessor"
       (documentation 'device-num-touches 'function)
- "@version{2023-3-13}
-  @syntax[]{(gdk:device-num-touches object) => num-touches}
+ "@version{2024-6-27}
+  @syntax{(gdk:device-num-touches object) => num-touches}
   @argument[object]{a @class{gdk:device} object}
   @argument[num-touches]{an unsigned integer with the number of touches}
   @begin{short}
@@ -1056,7 +1089,7 @@ lambda (device tool)    :run-last
   device is not a touch device or if the number of touches is unknown.
   @see-class{gdk:device}")
 
-;;; --- device-product-id ------------------------------------------------------
+;;; --- gdk:device-product-id --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "product-id" 'device) t)
@@ -1069,8 +1102,8 @@ lambda (device tool)    :run-last
 (setf (liber:alias-for-function 'device-product-id)
       "Accessor"
       (documentation 'device-product-id 'function)
- "@version{2023-3-9}
-  @syntax[]{(gdk:device-product-id object) => product-id}
+ "@version{2024-6-27}
+  @syntax{(gdk:device-product-id object) => product-id}
   @argument[object]{a @class{gdk:device} object}
   @argument[product-id]{a string with the product ID}
   @begin{short}
@@ -1084,7 +1117,7 @@ lambda (device tool)    :run-last
   @see-class{gdk:device}
   @see-function{gdk:device-vendor-id}")
 
-;;; --- device-seat ------------------------------------------------------------
+;;; --- gdk:device-seat --------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "seat" 'device) t)
@@ -1095,8 +1128,8 @@ lambda (device tool)    :run-last
 (setf (liber:alias-for-function 'device-seat)
       "Accessor"
       (documentation 'device-seat 'function)
- "@version{2023-3-13}
-  @syntax[]{(gdk:device-seat object) => seat}
+ "@version{2024-6-27}
+  @syntax{(gdk:device-seat object) => seat}
   @argument[object]{a @class{gdk:device} object}
   @argument[seat]{a @class{gdk:seat} object}
   @begin{short}
@@ -1107,7 +1140,7 @@ lambda (device tool)    :run-last
   @see-class{gdk:device}
   @see-class{gdk:seat}")
 
-;;; --- device-tool ------------------------------------------------------------
+;;; --- gdk:device-tool --------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "tool" 'device) t)
@@ -1118,8 +1151,8 @@ lambda (device tool)    :run-last
 (setf (liber:alias-for-function 'device-tool)
       "Accessor"
       (documentation 'device-tool 'function)
- "@version{2023-3-13}
-  @syntax[]{(gdk:device-tool object) => tool}
+ "@version{2024-6-27}
+  @syntax{(gdk:device-tool object) => tool}
   @argument[object]{a @class{gdk:device} object}
   @argument[tool]{a @class{gdk:device-tool} object}
   @begin{short}
@@ -1130,7 +1163,7 @@ lambda (device tool)    :run-last
   @see-class{gdk:device}
   @see-class{gdk:device-tool}")
 
-;;; --- device-type ------------------------------------------------------------
+;;; --- gdk:device-type --------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "type" 'device) t)
@@ -1143,8 +1176,8 @@ lambda (device tool)    :run-last
 (setf (liber:alias-for-function 'device-type)
       "Accessor"
       (documentation 'device-type 'function)
- "@version{2023-3-9}
-  @syntax[]{(gdk:device-type object) => type}
+ "@version{2024-6-27}
+  @syntax{(gdk:device-type object) => type}
   @argument[object]{a @class{gdk:device} object}
   @argument[type]{a @symbol{gdk:device-type} value}
   @begin{short}
@@ -1155,9 +1188,9 @@ lambda (device tool)    :run-last
   @see-class{gdk:device}
   @see-symbol{gdk:device-type}")
 
-;;; --- device-vendor-id -------------------------------------------------------
+;;; --- gdk:device-vendor-id ---------------------------------------------------
 
-;; TODO: Rewrite the example in Lisp or remove it.
+;; TODO: Rewrite the example in Lisp or remove it
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "vendor-id" 'device) t)
@@ -1170,8 +1203,8 @@ lambda (device tool)    :run-last
 (setf (liber:alias-for-function 'device-vendor-id)
       "Accessor"
       (documentation 'device-vendor-id 'function)
- "@version{2023-3-9}
-  @syntax[]{(gdk:device-vendor-id object) => vendor-id}
+ "@version{2024-6-27}
+  @syntax{(gdk:device-vendor-id object) => vendor-id}
   @argument[object]{a @class{gdk:device} object}
   @argument[vendor-id]{a string with the vendor ID}
   @begin{short}
@@ -1185,7 +1218,7 @@ lambda (device tool)    :run-last
   This function, together with the @fun{gdk:device-product-id} function, can be
   used to e.g. compose @code{GSettings} paths to store settings for this
   device.
-  @begin[Example]{dictionary}
+  @begin{examples}
     @begin{pre}
 static GSettings *
 get_device_settings (GdkDevice *device)
@@ -1205,7 +1238,7 @@ get_device_settings (GdkDevice *device)
   return settings;
 @}
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gdk:device}
   @see-function{gdk:device-product-id}")
 
@@ -1222,68 +1255,8 @@ get_device_settings (GdkDevice *device)
     "device-id" "gint" t nil)))
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_device_get_source ()                               not exported
-;;; ----------------------------------------------------------------------------
-
-;; This is equivalent to the gdk:device-input-source function.
-
-(defun device-get-source (device)
- #+liber-documentation
- "@version{#2016-1-1}
-  @argument[device]{a @class{gdk:device} object}
-  @return{A @symbol{gdk:input-source}.}
-  @short{Determines the type of the device.}
-  The @fun{gdk:device-get-source} function is a synonym for the
-  @fun{gdk:device-input-source} function.
-  @see-class{gdk:device}
-  @see-function{gdk:device-input-source}"
-  (device-input-source device))
-
-;;; ----------------------------------------------------------------------------
-;;; gdk_device_set_mode ()                                 not exported
-;;; ----------------------------------------------------------------------------
-
-;; This is equivalent to the (setf device-input-mode) function.
-
-(defun device-set-mode (device mode)
- #+liber-documentation
- "@version{#2016-1-1}
-  @argument[device]{a @class{gdk:device} object}
-  @argument[mode]{the input mode}
-  @return{@em{True} if the mode was successfully changed.}
-  @begin{short}
-    Sets a the mode of an input device.
-  @end{short}
-  The mode controls if the device is active and whether the device's range is
-  mapped to the entire screen or to a single window.
-
-  The @fun{gdk:device-set-mode} function is a synonym for the
-  @fun{gdk:device-input-mode} function.
-  @see-class{gdk:device}
-  @see-function{gdk:device-input-mode}"
-  (setf (device-input-mode device) mode))
-
-;;; ----------------------------------------------------------------------------
-;;; gdk_device_get_mode ()                                 not exported
-;;; ----------------------------------------------------------------------------
-
-;; This is equivalent to the device-input-mode function.
-
-(defun device-get-mode (device)
- #+liber-documentation
- "@version{#2016-1-1}
-  @argument[device]{a @class{gdk:device} object}
-  @return{A @symbol{gdk:input-source}.}
-  @short{Determines the mode of the device.}
-  The @fun{gdk:device-set-mode} function is a synonym for the
-  @fun{gdk:device-input-mode} function.
-  @see-class{gdk:device}
-  @see-function{gdk:device-input-mode}"
-  (device-input-mode device))
-
-;;; ----------------------------------------------------------------------------
-;;; gdk_device_get_key ()
-;;; gdk_device_set_key () -> device-key
+;;; gdk_device_get_key
+;;; gdk_device_set_key
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf device-key) (value device index)
@@ -1304,21 +1277,21 @@ get_device_settings (GdkDevice *device)
 
 (defun device-key (device index)
  #+liber-documentation
- "@version{#2023-3-9}
-  @syntax[]{(gdk:device-key device index) => keyval, modifiers}
-  @syntax[]{(setf (gdk:device-key device index) (list keyval modifiers))}
+ "@version{#2024-6-27}
+  @syntax{(gdk:device-key device index) => keyval, modifiers}
+  @syntax{(setf (gdk:device-key device index) (list keyval modifiers))}
   @argument[device]{a @class{gdk:device} object}
   @argument[index]{an unsigned integer with the index of the macro button
     to get}
   @argument[keyval]{an unsigned integer with the keyval to generate}
   @argument[modifiers]{a value of the @symbol{gdk:modifier-type} flags}
   @begin{short}
-    Accessor of the keyval and modifiers of a device.
+    If the @arg{index} argument has a valid keyval, the @fun{gdk:device-key}
+    function will return @arg{keyval} and @arg{modifiers} with the keyval
+    settings.
   @end{short}
-  If the @arg{index} argument has a valid keyval, the @fun{gdk:device-key}
-  function will return @arg{keyval} and @arg{modifiers} with the keyval
-  settings. The @setf{gdk:device-key} function specifies the X key event to
-  generate when a macro button of a device is pressed.
+  The @setf{gdk:device-key} function specifies the X key event to generate when
+  a macro button of a device is pressed.
   @see-class{gdk:device}
   @see-symbol{gdk:modifier-type}"
   (cffi:with-foreign-objects ((keyval :uint)
@@ -1330,8 +1303,8 @@ get_device_settings (GdkDevice *device)
 (export 'device-key)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_device_get_axis_use ()
-;;; gdk_device_set_axis_use () -> device-axis-use
+;;; gdk_device_get_axis_use
+;;; gdk_device_set_axis_use
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf device-axis-use) (use device index)
@@ -1344,9 +1317,9 @@ get_device_settings (GdkDevice *device)
 
 (cffi:defcfun ("gdk_device_get_axis_use" device-axis-use) axis-use
  #+liber-documentation
- "@version{2023-3-9}
-  @syntax[]{(gdk:device-axis-use device index) => use}
-  @syntax[]{(setf (gdk:device-axis-use device index) use)}
+ "@version{2024-6-27}
+  @syntax{(gdk:device-axis-use device index) => use}
+  @syntax{(setf (gdk:device-axis-use device index) use)}
   @argument[device]{a @class{gdk:device} pointer device}
   @argument[index]{an unsigned integer with the index of the axis}
   @argument[use]{a @symbol{gdk:axis-use} value specifying how the axis is used}
@@ -1363,13 +1336,13 @@ get_device_settings (GdkDevice *device)
 (export 'device-axis-use)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_device_list_slave_devices ()
+;;; gdk_device_list_slave_devices
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_device_list_slave_devices" device-list-slave-devices)
     (g:list-t (g:object device))
  #+liber-documentation
- "@version{2023-3-9}
+ "@version{2024-6-27}
   @argument[device]{a @class{gdk:device} object}
   @return{The list of slave @class{gdk:device} objects, or @code{nil}.}
   @begin{short}
@@ -1382,14 +1355,14 @@ get_device_settings (GdkDevice *device)
 (export 'device-list-slave-devices)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_device_get_n_keys () -> device-n-keys
+;;; gdk_device_get_n_keys
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_device_get_n_keys" device-n-keys) :int
  #+liber-documentation
- "@version{2023-3-9}
+ "@version{2024-6-27}
   @argument[device]{a @class{gdk:device} object}
-  @return{An integer with the number of keys.}
+  @return{The integer with the number of keys.}
   @short{Returns the number of keys the device currently has.}
   @see-class{gdk:device}"
   (device (g:object device)))
@@ -1397,12 +1370,12 @@ get_device_settings (GdkDevice *device)
 (export 'device-n-keys)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_device_warp ()
+;;; gdk_device_warp
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_device_warp" device-warp) :void
  #+liber-documentation
- "@version{#2023-3-9}
+ "@version{#2024-6-27}
   @argument[device]{a @class{gdk:device} object to warp}
   @argument[screen]{a @class{gdk:screen} object to warp @arg{device} to}
   @argument[x]{an integer with the x coordinate of the destination}
@@ -1426,35 +1399,33 @@ get_device_settings (GdkDevice *device)
 (export 'device-warp)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_device_grab ()
+;;; gdk_device_grab
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_device_grab" device-grab) grab-status
  #+liber-documentation
- "@version{#2023-3-9}
-  @argument[device]{a @class{gdk:device} object. To get the device you can use
+ "@version{#2024-6-27}
+  @argument[device]{a @class{gdk:device} object, to get the device you can use
     the @fun{gtk:current-event-device} or @fun{gdk:event-device} functions
-    if the grab is in reaction to an event. Also, you can use the
+    if the grab is in reaction to an event, also, you can use the
     @fun{gdk:device-manager-client-pointer} function but only in code that is
     not triggered by a @class{gdk:event} event and there are not other means to
-    get a meaningful @class{gdk:device} object to operate on.}
-  @argument[window]{a @class{gdk:window} object which will own the grab, the
-    grab window}
+    get a meaningful @class{gdk:device} object to operate on}
+  @argument[window]{a @class{gdk:window} object which will own the grab}
   @argument[grab-ownership]{a @symbol{gdk:grab-ownership} value which specifies
     the grab ownership}
   @argument[owner-events]{if @em{false} then all device events are reported
     with respect to @arg{window} and are only reported if selected by
-    @arg{event-mask}. If @em{true} then pointer events for this application are
+    @arg{event-mask}, if @em{true} then pointer events for this application are
     reported as normal, but pointer events outside this application are
     reported with respect to @arg{window} and only if selected by
-    @arg{event-mask}. In either mode, unreported events are discarded.}
-  @argument[event-mask]{specifies the event mask of type
-    @symbol{gdk:event-mask}, which is used in accordance with
-    @arg{owner-events}.}
+    @arg{event-mask}, in either mode, unreported events are discarded}
+  @argument[event-mask]{specifies the @symbol{gdk:event-mask} value which is
+    used in accordance with @arg{owner-events}}
   @argument[cursor]{a @class{gdk:cursor} object to display while the grab is
-    active if the device is a pointer. If this is @code{nil} then the normal
+    active if the device is a pointer, if this is @code{nil} then the normal
     cursors are used for window and its descendants, and the cursor for window
-    is used elsewhere.}
+    is used elsewhere}
   @argument[time]{an unsigned integer with the timestamp of the event which led
     to this pointer grab. This usually comes from the @class{gdk:event} event,
     though @var{gdk:+current-time+} can be used if the time is not known.}
@@ -1502,14 +1473,14 @@ get_device_settings (GdkDevice *device)
 (export 'device-grab)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_device_ungrab ()
+;;; gdk_device_ungrab
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_device_ungrab" device-ungrab) :void
  #+liber-documentation
- "@version{#2023-3-9}
+ "@version{#2024-6-27}
   @argument[device]{a @class{gdk:device} object}
-  @argument[time]{an unsigned integer with the timestamp, e.g.
+  @argument[time]{an unsigned integer with the timestamp, for example,
     @var{gdk:+current-time+}}
   @short{Release any grab on the device.}
   @see-class{gdk:device}
@@ -1521,7 +1492,7 @@ get_device_settings (GdkDevice *device)
 (export 'device-ungrab)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_device_get_state () -> device-state
+;;; gdk_device_get_state
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_device_get_state" %device-state) :void
@@ -1532,7 +1503,7 @@ get_device_settings (GdkDevice *device)
 
 (defun device-state (device window)
  #+liber-documentation
- "@version{#2023-3-9}
+ "@version{#2024-6-27}
   @argument[device]{a @class{gdk:device} object}
   @argument[window]{a @class{gdk:window} object}
   @begin{return}
@@ -1559,7 +1530,7 @@ get_device_settings (GdkDevice *device)
 (export 'device-state)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_device_get_position () -> device-position
+;;; gdk_device_get_position
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_device_get_position" %device-position) :void
@@ -1570,7 +1541,7 @@ get_device_settings (GdkDevice *device)
 
 (defun device-position (device)
  #+liber-documentation
- "@version{#2023-3-9}
+ "@version{#2024-6-27}
   @argument[device]{a @class{gdk:device} pointer device to query status about}
   @begin{return}
     @arg{screen} -- a @class{gdk:screen} object the device is on,
@@ -1598,7 +1569,7 @@ get_device_settings (GdkDevice *device)
 (export 'device-position)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_device_get_position_double () -> device-position-double
+;;; gdk_device_get_position_double
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_device_get_position_double" %device-position-double) :void
@@ -1609,7 +1580,7 @@ get_device_settings (GdkDevice *device)
 
 (defun device-position-double (device)
  #+liber-documentation
- "@version{#2023-3-9}
+ "@version{#2024-6-27}
   @argument[device]{a @class{gdk:device} pointer device to query status about}
   @begin{return}
     @arg{screen} -- a @class{gdk:screen} object the device is on, or @code{nil}
@@ -1637,7 +1608,7 @@ get_device_settings (GdkDevice *device)
 (export 'device-position-double)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_device_get_window_at_position () -> device-window-at-position
+;;; gdk_device_get_window_at_position
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_device_get_window_at_position" %device-window-at-position)
@@ -1648,7 +1619,7 @@ get_device_settings (GdkDevice *device)
 
 (defun device-window-at-position (device)
  #+liber-documentation
- "@version{#2023-3-9}
+ "@version{#2024-6-27}
   @argument[device]{a @class{gdk:device} pointer device to query info to}
   @begin{return}
     @arg{window} -- a @class{gdk:window} object @br{}
@@ -1679,8 +1650,7 @@ get_device_settings (GdkDevice *device)
 (export 'device-window-at-position)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_device_get_window_at_position_double ()
-;;; -> device-window-at-position-double
+;;; gdk_device_get_window_at_position_double
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_device_get_window_at_position_double"
@@ -1691,7 +1661,7 @@ get_device_settings (GdkDevice *device)
 
 (defun device-window-at-position-double (device)
  #+liber-documentation
- "@version{#2023-3-9}
+ "@version{#2024-6-27}
   @argument[device]{a @class{gdk:device} pointer device to query info to}
   @begin{return}
     @arg{window} -- a @class{gdk:window} object under the device position,
@@ -1705,8 +1675,8 @@ get_device_settings (GdkDevice *device)
     Obtains the window underneath the device, returning the location of the
     device in double precision.
   @end{short}
-  Returns @code{nil} if the window tree under the device is not known to GDK
-  (for example, belongs to another application).
+  Returns @code{nil} if the window tree under the device is not known to GDK,
+  for example, belongs to another application.
 
   As a slave device coordinates are those of its master pointer. This function
   may not be called on devices of type @code{:slave}, unless there is an
@@ -1723,7 +1693,7 @@ get_device_settings (GdkDevice *device)
 (export 'device-window-at-position-double)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_device_get_history () -> device-history
+;;; gdk_device_get_history
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_device_get_history" %device-history) :boolean
@@ -1736,7 +1706,7 @@ get_device_settings (GdkDevice *device)
 
 (defun device-history (device window start stop)
  #+liber-documentation
- "@version{#2023-3-9}
+ "@version{#2024-6-27}
   @argument[device]{a @class{gdk:device} object}
   @argument[window]{a @class{gdk:window} object with respect to which which
     the event coordinates will be reported}
@@ -1745,8 +1715,8 @@ get_device_settings (GdkDevice *device)
   @argument[stop]{an unsigned integer with the ending timestamp for the range
     of events to return}
   @begin{return}
-    A list of @class{gdk:time-coord} instances if the windowing system supports
-    motion history and at least one event was found, or @code{nil}.
+    The list of @class{gdk:time-coord} instances if the windowing system
+    supports motion history and at least one event was found, or @code{nil}.
   @end{return}
   @begin{short}
     Obtains the motion history for a pointer device.
@@ -1775,16 +1745,16 @@ get_device_settings (GdkDevice *device)
 (export 'device-history)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_device_free_history ()                             not exported
+;;; gdk_device_free_history                                 not exported
 ;;; ----------------------------------------------------------------------------
 
 ;; For internal use in device-history and not exported.
 
 (cffi:defcfun ("gdk_device_free_history" %device-free-history) :void
  #+liber-documentation
- "@version{#2021-12-13}
+ "@version{#2024-6-27}
   @argument[events]{an array of @class{gdk:time-coord} instances}
-  @argument[n-events]{the length of the array}
+  @argument[n-events]{an integer with the length of the array}
   @begin{short}
     Frees an array of @class{gdk:time-coord} instances that was returned by the
     @fun{gdk:device-history} function.
@@ -1795,7 +1765,7 @@ get_device_settings (GdkDevice *device)
   (n-events :int))
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_device_get_axis () -> device-axis
+;;; gdk_device_get_axis
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_device_get_axis" %device-axis) :boolean
@@ -1806,7 +1776,7 @@ get_device_settings (GdkDevice *device)
 
 (defun device-axis (device axes axis-use)
  #+liber-documentation
- "@version{#2023-3-9}
+ "@version{#2024-6-27}
   @argument[device]{a @class{gdk:device} object}
   @argument[axes]{a list of double float values of axes}
   @argument[use]{a @symbol{gdk:axis-use} value use to look for}
@@ -1832,17 +1802,17 @@ get_device_settings (GdkDevice *device)
 (export 'device-axis)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_device_list_axes ()
+;;; gdk_device_list_axes
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_device_list_axes" device-list-axes) (g:list-t atom-as-string)
  #+liber-documentation
- "@version{#2023-3-9}
+ "@version{#2024-6-27}
   @argument[device]{a @class{gdk:device} object}
-  @return{A list of atoms as a string.}
+  @return{The list of strings containing the labels.}
   @begin{short}
-    Returns a list of atoms as string, containing the labels for the axes that
-    the device currently has.
+    Returns a list of strings containing the labels for the axes that the
+    device currently has.
   @end{short}
   @see-class{gdk:device}"
   (device (g:object device)))
@@ -1850,22 +1820,22 @@ get_device_settings (GdkDevice *device)
 (export 'device-list-axes)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_device_get_axis_value () -> device-axis-value
+;;; gdk_device_get_axis_value
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_device_get_axis_value" %device-axis-value) :boolean
   (device (g:object device))
   (axes (:pointer :double))
-  (axis-label atom-as-string)
+  (label atom-as-string)
   (value (:pointer :double)))
 
 (defun device-axis-value (device axes axis-label)
  #+liber-documentation
- "@version{#2023-3-9}
+ "@version{#2024-6-27}
   @argument[device]{a @class{gdk:device} object for a pointer device}
-  @argument[axes]{a list of double float of axes}
-  @argument[axis-label]{an atom as a string with the axis label}
-  @return{A double float with the found value, or @code{nil}.}
+  @argument[axes]{a list of double float for the axes}
+  @argument[label]{a string with the axis label}
+  @return{The double float with the found value, or @code{nil}.}
   @begin{short}
     Interprets a list of double floats as axis values for a given device, and
     locates the value in the array for a given axis label, as returned by the
@@ -1888,13 +1858,13 @@ get_device_settings (GdkDevice *device)
 (export 'device-axis-value)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_device_get_last_event_window ()
+;;; gdk_device_get_last_event_window
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_device_get_last_event_window" device-last-event-window)
     (g:object window)
  #+liber-documentation
- "@version{#2021-12-13}
+ "@version{#2024-6-27}
   @argument[device]{a @class{gdk:device} object with a source other than
     @code{:keyboard}}
   @return{The last @class{gdk:window} object the device is in.}

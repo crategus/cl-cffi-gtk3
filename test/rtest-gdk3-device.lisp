@@ -7,29 +7,29 @@
 
 ;;;     GdkInputSource
 
-(test input-source
-  ;; Check the type
+(test gdk-input-source
+  ;; Check type
   (is (g:type-is-enum "GdkInputSource"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GdkInputSource")
           (g:gtype (cffi:foreign-funcall "gdk_input_source_get_type" :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gdk:input-source
           (glib:symbol-for-gtype "GdkInputSource")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GDK_SOURCE_MOUSE" "GDK_SOURCE_PEN" "GDK_SOURCE_ERASER"
                "GDK_SOURCE_CURSOR" "GDK_SOURCE_KEYBOARD"
                "GDK_SOURCE_TOUCHSCREEN" "GDK_SOURCE_TOUCHPAD"
                "GDK_SOURCE_TRACKPOINT" "GDK_SOURCE_TABLET_PAD")
-             (list-enum-item-name "GdkInputSource")))
-  ;; Check the values
+             (gtk-test:list-enum-item-name "GdkInputSource")))
+  ;; Check values
   (is (equal '(0 1 2 3 4 5 6 7 8)
-             (list-enum-item-value "GdkInputSource")))
-  ;; Check the nick names
+             (gtk-test:list-enum-item-value "GdkInputSource")))
+  ;; Check nick names
   (is (equal '("mouse" "pen" "eraser" "cursor" "keyboard" "touchscreen"
                "touchpad" "trackpoint" "tablet-pad")
-             (list-enum-item-nick "GdkInputSource")))
-  ;; Check the enum definition
+             (gtk-test:list-enum-item-nick "GdkInputSource")))
+  ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkInputSource"
                              GDK-INPUT-SOURCE
                              (:EXPORT T
@@ -47,25 +47,25 @@
 
 ;;;     GdkInputMode
 
-(test input-mode
-  ;; Check the type
+(test gdk-input-mode
+  ;; Check type
   (is (g:type-is-enum "GdkInputMode"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GdkInputMode")
           (g:gtype (cffi:foreign-funcall "gdk_input_mode_get_type" :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gdk:input-mode
           (glib:symbol-for-gtype "GdkInputMode")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GDK_MODE_DISABLED" "GDK_MODE_SCREEN" "GDK_MODE_WINDOW")
-             (list-enum-item-name "GdkInputMode")))
-  ;; Check the values
+             (gtk-test:list-enum-item-name "GdkInputMode")))
+  ;; Check values
   (is (equal '(0 1 2)
-             (list-enum-item-value "GdkInputMode")))
-  ;; Check the nick names
+             (gtk-test:list-enum-item-value "GdkInputMode")))
+  ;; Check nick names
   (is (equal '("disabled" "screen" "window")
-             (list-enum-item-nick "GdkInputMode")))
-  ;; Check the enum definition
+             (gtk-test:list-enum-item-nick "GdkInputMode")))
+  ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkInputMode"
                              GDK-INPUT-MODE
                              (:EXPORT T
@@ -77,29 +77,29 @@
 
 ;;;     GdkAxisUse
 
-(test axis-use
-  ;; Check the type
+(test gdk-axis-use
+  ;; Check type
   (is-true (g:type-is-enum "GdkAxisUse"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GdkAxisUse")
           (g:gtype (cffi:foreign-funcall "gdk_axis_use_get_type" :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gdk:axis-use
           (glib:symbol-for-gtype "GdkAxisUse")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GDK_AXIS_IGNORE" "GDK_AXIS_X" "GDK_AXIS_Y" "GDK_AXIS_PRESSURE"
                "GDK_AXIS_XTILT" "GDK_AXIS_YTILT" "GDK_AXIS_WHEEL"
                "GDK_AXIS_DISTANCE" "GDK_AXIS_ROTATION" "GDK_AXIS_SLIDER"
                "GDK_AXIS_LAST")
              (list-enum-item-name "GdkAxisUse")))
-  ;; Check the values
+  ;; Check values
   (is (equal '(0 1 2 3 4 5 6 7 8 9 10)
-             (list-enum-item-value "GdkAxisUse")))
-  ;; Check the nick names
+             (gtk-test:list-enum-item-value "GdkAxisUse")))
+  ;; Check nick names
   (is (equal '("ignore" "x" "y" "pressure" "xtilt" "ytilt" "wheel" "distance"
                "rotation" "slider" "last")
-             (list-enum-item-nick "GdkAxisUse")))
-  ;; Check the enum definition
+             (gtk-test:list-enum-item-nick "GdkAxisUse")))
+  ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkAxisUse"
                              GDK-AXIS-USE
                              (:EXPORT T
@@ -119,29 +119,29 @@
 
 ;;;     GdkAxisFlags                                       Since 3.22
 
-(test axis-flags
-  ;; Check the type
+(test gdk-axis-flags
+  ;; Check type
   (is (g:type-is-flags "GdkAxisFlags"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gdk:axis-flags
           (glib:symbol-for-gtype "GdkAxisFlags")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GdkAxisFlags")
           (g:gtype (cffi:foreign-funcall "gdk_axis_flags_get_type" :size))))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GDK_AXIS_FLAG_X" "GDK_AXIS_FLAG_Y" "GDK_AXIS_FLAG_PRESSURE"
                "GDK_AXIS_FLAG_XTILT" "GDK_AXIS_FLAG_YTILT" "GDK_AXIS_FLAG_WHEEL"
                "GDK_AXIS_FLAG_DISTANCE" "GDK_AXIS_FLAG_ROTATION"
                "GDK_AXIS_FLAG_SLIDER")
-             (list-flags-item-name "GdkAxisFlags")))
-  ;; Check the values
+             (gtk-test:list-flags-item-name "GdkAxisFlags")))
+  ;; Check values
   (is (equal '(2 4 8 16 32 64 128 256 512)
-             (list-flags-item-value "GdkAxisFlags")))
-  ;; Check the nick names
+             (gtk-test:list-flags-item-value "GdkAxisFlags")))
+  ;; Check nick names
   (is (equal '("x" "y" "pressure" "xtilt" "ytilt" "wheel" "distance" "rotation"
                "slider")
-             (list-flags-item-nick "GdkAxisFlags")))
-  ;; Check the flags definition
+             (gtk-test:list-flags-item-nick "GdkAxisFlags")))
+  ;; Check flags definition
   (is (equal '(GOBJECT:DEFINE-G-FLAGS "GdkAxisFlags"
                               GDK-AXIS-FLAGS
                               (:EXPORT T
@@ -159,29 +159,29 @@
 
 ;;;     GdkDeviceToolType                                  Since 3.22
 
-(test device-tool-type
-  ;; Check the type
+(test gdk-device-tool-type
+  ;; Check type
   (is (g:type-is-enum "GdkDeviceToolType"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GdkDeviceToolType")
           (g:gtype (cffi:foreign-funcall "gdk_device_tool_type_get_type" :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gdk:device-tool-type
           (glib:symbol-for-gtype "GdkDeviceToolType")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GDK_DEVICE_TOOL_TYPE_UNKNOWN" "GDK_DEVICE_TOOL_TYPE_PEN"
                "GDK_DEVICE_TOOL_TYPE_ERASER" "GDK_DEVICE_TOOL_TYPE_BRUSH"
                "GDK_DEVICE_TOOL_TYPE_PENCIL" "GDK_DEVICE_TOOL_TYPE_AIRBRUSH"
                "GDK_DEVICE_TOOL_TYPE_MOUSE" "GDK_DEVICE_TOOL_TYPE_LENS")
-             (list-enum-item-name "GdkDeviceToolType")))
-  ;; Check the values
+             (gtk-test:list-enum-item-name "GdkDeviceToolType")))
+  ;; Check values
   (is (equal '(0 1 2 3 4 5 6 7)
-             (list-enum-item-value "GdkDeviceToolType")))
-  ;; Check the nick names
+             (gtk-test:list-enum-item-value "GdkDeviceToolType")))
+  ;; Check nick names
   (is (equal '("unknown" "pen" "eraser" "brush" "pencil" "airbrush" "mouse"
                "lens")
-             (list-enum-item-nick "GdkDeviceToolType")))
-  ;; Check the enum definition
+             (gtk-test:list-enum-item-nick "GdkDeviceToolType")))
+  ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkDeviceToolType"
                              GDK-DEVICE-TOOL-TYPE
                              (:EXPORT T
@@ -198,26 +198,26 @@
 
 ;;;     GdkDeviceType
 
-(test device-type
-  ;; Check the type
+(test gdk-device-type
+  ;; Check type
   (is (g:type-is-enum "GdkDeviceType"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GdkDeviceType")
           (g:gtype (cffi:foreign-funcall "gdk_device_type_get_type" :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gdk:device-type
           (glib:symbol-for-gtype "GdkDeviceType")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GDK_DEVICE_TYPE_MASTER" "GDK_DEVICE_TYPE_SLAVE"
                "GDK_DEVICE_TYPE_FLOATING")
-             (list-enum-item-name "GdkDeviceType")))
-  ;; Check the values
+             (gtk-test:list-enum-item-name "GdkDeviceType")))
+  ;; Check values
   (is (equal '(0 1 2)
-             (list-enum-item-value "GdkDeviceType")))
-  ;; Check the nick names
+             (gtk-test:list-enum-item-value "GdkDeviceType")))
+  ;; Check nick names
   (is (equal '("master" "slave" "floating")
-             (list-enum-item-nick "GdkDeviceType")))
-  ;; Check the enum definition
+             (gtk-test:list-enum-item-nick "GdkDeviceType")))
+  ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkDeviceType"
                              GDK-DEVICE-TYPE
                              (:EXPORT T
@@ -229,26 +229,26 @@
 
 ;;;     GdkGrabOwnership
 
-(test grab-ownership
-  ;; Check the type
+(test gdk-grab-ownership
+  ;; Check type
   (is (g:type-is-enum "GdkGrabOwnership"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GdkGrabOwnership")
           (g:gtype (cffi:foreign-funcall "gdk_grab_ownership_get_type" :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gdk:grab-ownership
           (glib:symbol-for-gtype "GdkGrabOwnership")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GDK_OWNERSHIP_NONE" "GDK_OWNERSHIP_WINDOW"
                "GDK_OWNERSHIP_APPLICATION")
-             (list-enum-item-name "GdkGrabOwnership")))
-  ;; Check the values
+             (gtk-test:list-enum-item-name "GdkGrabOwnership")))
+  ;; Check values
   (is (equal '(0 1 2)
-             (list-enum-item-value "GdkGrabOwnership")))
-  ;; Check the nick names
+             (gtk-test:list-enum-item-value "GdkGrabOwnership")))
+  ;; Check nick names
   (is (equal '("none" "window" "application")
-             (list-enum-item-nick "GdkGrabOwnership")))
-  ;; Check the enum definition
+             (gtk-test:list-enum-item-nick "GdkGrabOwnership")))
+  ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkGrabOwnership"
                              GDK-GRAB-OWNERSHIP
                              (:EXPORT T
@@ -262,28 +262,28 @@
 
 ;;;     GdkGrabStatus
 
-(test grab-status
-  ;; Check the type
+(test gdk-grab-status
+  ;; Check type
   (is (g:type-is-enum "GdkGrabStatus"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GdkGrabStatus")
           (g:gtype (cffi:foreign-funcall "gdk_grab_status_get_type" :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gdk:grab-status
           (glib:symbol-for-gtype "GdkGrabStatus")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GDK_GRAB_SUCCESS" "GDK_GRAB_ALREADY_GRABBED"
                "GDK_GRAB_INVALID_TIME" "GDK_GRAB_NOT_VIEWABLE"
                "GDK_GRAB_FROZEN" "GDK_GRAB_FAILED")
-             (list-enum-item-name "GdkGrabStatus")))
-  ;; Check the values
+             (gtk-test:list-enum-item-name "GdkGrabStatus")))
+  ;; Check values
   (is (equal '(0 1 2 3 4 5)
-             (list-enum-item-value "GdkGrabStatus")))
-  ;; Check the nick names
+             (gtk-test:list-enum-item-value "GdkGrabStatus")))
+  ;; Check nick names
   (is (equal '("success" "already-grabbed" "invalid-time" "not-viewable"
                "frozen" "failed")
-             (list-enum-item-nick "GdkGrabStatus")))
-  ;; Check the enum definition
+             (gtk-test:list-enum-item-nick "GdkGrabStatus")))
+  ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkGrabStatus"
                              GDK-GRAB-STATUS
                              (:EXPORT T
@@ -298,30 +298,28 @@
 
 ;;;     GdkDeviceTool                                      Since 3.22
 
-(test device-tool-class
-  ;; Type check
+(test gdk-device-tool-class
+  ;; Check type
   (is (g:type-is-object "GdkDeviceTool"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gdk:device-tool
           (glib:symbol-for-gtype "GdkDeviceTool")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GdkDeviceTool")
           (g:gtype (cffi:foreign-funcall "gdk_device_tool_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GObject")
       (g:type-parent "GdkDeviceTool")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (mapcar #'g:type-name (g:type-children "GdkDeviceTool"))))
-  ;; Check the interfaces
+             (gtk-test:list-children "GdkDeviceTool")))
+  ;; Check interfaces
   (is (equal '()
-             (mapcar #'g:type-name (g:type-interfaces "GdkDeviceTool"))))
-  ;; Check the class properties
+             (gtk-test:list-interfaces "GdkDeviceTool")))
+  ;; Check class properties
   (is (equal '("axes" "hardware-id" "serial" "tool-type")
-             (sort (mapcar #'g:param-spec-name
-                           (g:object-class-list-properties "GdkDeviceTool"))
-                   #'string-lessp)))
-  ;; Check the class definition
+             (gtk-test:list-properties "GdkDeviceTool")))
+  ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GdkDeviceTool" GDK-DEVICE-TOOL
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
                         :TYPE-INITIALIZER "gdk_device_tool_get_type")
@@ -334,38 +332,47 @@
                          "GdkDeviceToolType" T NIL)))
              (gobject:get-g-type-definition "GdkDeviceTool"))))
 
+;;; --- Properties for GdkDeviceTool -------------------------------------------
+
+(test gdk-device-tool-properties
+  (let ((tool (make-instance 'gdk:device-tool)))
+    (is-false (gdk:device-tool-axes tool))
+    (is (= 0 (gdk:device-tool-hardware-id tool)))
+    (is (= 0 (gdk:device-tool-serial tool)))
+    (is (eq :unknown (gdk:device-tool-tool-type tool)))))
+
 ;;;     GdkDevice
 
-(test device-class
-  ;; Type check
+(test gdk-device-class
+  ;; Check type
   (is (g:type-is-object "GdkDevice"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gdk:device
           (glib:symbol-for-gtype "GdkDevice")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GdkDevice")
           (g:gtype (cffi:foreign-funcall "gdk_device_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GObject")
           (g:type-parent "GdkDevice")))
-  ;; Check the children
+  ;; Check children
   #-windows
   (is (or (equal '("GdkWaylandDevice" "GdkX11DeviceXI2")
-                 (list-children "GdkDevice"))
+                 (gtk-test:list-children "GdkDevice"))
           (equal '("GdkX11DeviceCore" "GdkX11DeviceXI2")
-                 (list-children "GdkDevice"))))
+                 (gtk-test:list-children "GdkDevice"))))
   #+windows
   (is (equal '("GdkDeviceVirtual" "GdkDeviceWin32")
-             (list-children "GdkDevice")))
-  ;; Check the interfaces
+             (gtk-test:list-children "GdkDevice")))
+  ;; Check interfaces
   (is (equal '()
-             (list-interfaces "GdkDevice")))
-  ;; Check the class properties
+             (gtk-test:list-interfaces "GdkDevice")))
+  ;; Check class properties
   (is (equal '("associated-device" "axes" "device-manager" "display"
                "has-cursor" "input-mode" "input-source" "n-axes" "name"
                "num-touches" "product-id" "seat" "tool" "type" "vendor-id")
-             (list-properties "GdkDevice")))
-  ;; Check the class definition
+             (gtk-test:list-properties "GdkDevice")))
+  ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GdkDevice" GDK-DEVICE
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
                         :TYPE-INITIALIZER "gdk_device_get_type")
@@ -395,9 +402,9 @@
                          "gchararray" T NIL)))
              (gobject:get-g-type-definition "GdkDevice"))))
 
-;;; --- Properties -------------------------------------------------------------
+;;; --- Properties for GdkDevice -----------------------------------------------
 
-(test device-properties.1
+(test gdk-device-properties.1
   (let* ((seat (gdk:display-default-seat (gdk:display-default)))
          (device (gdk:seat-keyboard seat)))
     (is (typep (gdk:device-associated-device device) 'gdk:device))
@@ -420,7 +427,7 @@
     (is (eq :master (gdk:device-type device)))
     (is-false (gdk:device-vendor-id device))))
 
-(test device-properties.2
+(test gdk-device-properties.2
   (let* ((seat (gdk:display-default-seat (gdk:display-default)))
          (device (gdk:seat-pointer seat)))
     (is (typep (gdk:device-associated-device device) 'gdk:device))
@@ -455,66 +462,58 @@
 
 ;;;     changed
 
-#+nil
-(test gtk-device-changed-signal
-  (let* ((message nil)
-         (seat (gdk:display-default-seat (gdk:display-default)))
-         (device (gdk:seat-pointer seat))
-         (handler-id (g-signal-connect device "changed"
-                       (lambda (device)
-                         (setf message "Signal changed")
-                         (is (typep device 'gdk:device))
-                         t))))
-    ;; Emit the signal
-    (is-false (g-signal-emit device "changed"))
-    (is (string= "Signal changed" message))
-    (is-false (g-signal-handler-disconnect device handler-id))))
+(test gdk-device-changed-signal
+  (let* ((name "changed")
+         (gtype (g:gtype "GdkDevice"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
+    (is (equal '(:RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    ;; Check return type
+    (is (string= "void" (g:type-name (g:signal-query-return-type query))))
+    ;; Check parameter types
+    (is (equal '()
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
 
 ;;;     tool-changed
 
-#+nil
-(test gtk-device-tool-changed-signal
-  (let* ((message nil)
-         (seat (gdk:display-default-seat (gdk:display-default)))
-         (device (gdk:seat-pointer seat))
-         (handler-id (g-signal-connect device "tool-changed"
-                       (lambda (device tool)
-                         (setf message "Signal tool-changed")
-                         (is (typep device 'gdk:device))
-                         (is (typep tool 'gdk:device-tool))
-                         t))))
-    ;; Emit the signal
-    (is-false (g-signal-emit device "tool-changed"
-                             (make-instance 'gdk:device-tool)))
-    (is (string= "Signal tool-changed" message))
-    (is-false (g-signal-handler-disconnect device handler-id))))
+(test gdk-device-tool-changed-signal
+  (let* ((name "tool-changed")
+         (gtype (g:gtype "GdkDevice"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
+    (is (equal '(:RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    ;; Check return type
+    (is (string= "void" (g:type-name (g:signal-query-return-type query))))
+    ;; Check parameter types
+    (is (equal '("GdkDeviceTool")
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
 
 ;;; --- Functions --------------------------------------------------------------
 
 ;;;     gdk-device-key
 
-;; TODO: Error on Windows, check this again
+;; TODO: We need a working example.
 ;; Gdk-CRITICAL **: 13:18:50.059: gdk_device_get_key: assertion
 ;; 'index_ < device->num_keys' failed
 
 #+nil
-(test device-key
+(test gdk-device-key
   (let* ((seat (gdk:display-default-seat (gdk:display-default)))
          (device (gdk:seat-keyboard seat)))
-    (is (equal '(97 :control-mask)
-               (multiple-value-list (setf (gdk:device-key device 0)
-                                          '(97 :control-mask)))))
-    (is (equal '(97 (:control-mask))
-               (multiple-value-list (gdk:device-key device 0))))
-    (is (equal '(65 (:shift-mask :control-mask))
-               (multiple-value-list (setf (gdk:device-key device 0)
-                                          '(65 (:shift-mask :control-mask))))))
-    (is (equal '(65 (:SHIFT-MASK :CONTROL-MASK))
-               (multiple-value-list (gdk:device-key device 0))))))
+    (is (equal '()
+               (multiple-value-list (gdk:device-key device 1))))))
 
 ;;;     gdk-device-axis-use
 
-(test device-axis-use
+(test gdk-device-axis-use
   (let* ((seat (gdk:display-default-seat (gdk:display-default)))
          (device (gdk:seat-pointer seat)))
     (is (eq :x (setf (gdk:device-axis-use device 0) :x)))
@@ -524,7 +523,7 @@
 
 ;;;     gdk-device-list-slave-devices
 
-(test device-list-slave-devices
+(test gdk-device-list-slave-devices
   (let* ((seat (gdk:display-default-seat (gdk:display-default)))
          (device (gdk:seat-pointer seat)))
     (is (every #'stringp
@@ -533,9 +532,11 @@
 
 ;;;     gdk-device-n-keys
 
-(test device-n-keys
+;; TODO: Why do we get zero keys?!
+
+(test gdk-device-n-keys
   (let* ((seat (gdk:display-default-seat (gdk:display-default)))
-         (device (gdk:seat-pointer seat)))
+         (device (gdk:seat-keyboard seat)))
     (is (= 0 (gdk:device-n-keys device)))))
 
 ;;;     gdk_device_warp
@@ -545,7 +546,7 @@
 ;;;     gdk-device-state
 
 #+nil
-(test device-state
+(test gdk-device-state
   (let* ((seat (gdk:display-default-seat (gdk:display-default)))
          (device (gdk:seat-pointer seat))
          (window (gdk:default-root-window)))
@@ -568,7 +569,7 @@
 
 ;; TODO: We need an example to test the functions.
 
-(test device-history
+(test gdk-device-history
   (let* ((seat (gdk:display-default-seat (gdk:display-default)))
          (device (gdk:seat-pointer seat))
          (window (gdk:default-root-window)))
@@ -579,7 +580,7 @@
 ;; TODO: Find an example with a result different from nil.
 
 #+nil
-(test device-axis
+(test gdk-device-axis
   (let* ((seat (gdk:display-default-seat (gdk:display-default)))
          (device (gdk:seat-pointer seat))
          (window (gdk:default-root-window))
@@ -602,7 +603,7 @@
 ;;;     gdk-device-list-axes
 
 #+nil
-(test device-list-axes
+(test gdk-device-list-axes
   (let* ((seat (gdk:display-default-seat (gdk:display-default)))
          (device (gdk:seat-pointer seat)))
     #-windows
@@ -617,7 +618,7 @@
 ;; On Windows we get "NONE" for the device axes
 
 #+nil
-(test device-axis-value
+(test gkd-device-axis-value
   (let* ((seat (gdk:display-default-seat (gdk:display-default)))
          (device (gdk:seat-pointer seat))
          (window (gdk:default-root-window))
@@ -634,4 +635,4 @@
 ;;;     gdk_device_tool_get_serial
 ;;;     gdk_device_tool_get_tool_type
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-6-27

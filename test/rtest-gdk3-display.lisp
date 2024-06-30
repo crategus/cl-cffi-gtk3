@@ -7,7 +7,7 @@
 
 ;;;     GdkDisplay
 
-(test display-class
+(test gdk-display-class
   ;; Type check
   (is (g:type-is-object "GdkDisplay"))
   ;; Check the registered name
@@ -157,18 +157,18 @@
 
 ;;;     gdk-display-open
 
-(test display-open
+(test gdk-display-open
   (let ((name (gdk:display-name (gdk:display-default))))
     (is-true (gdk:display-open name))))
 
 ;;;     gdk-display-default
 
-(test display-default
+(test gdk-display-default
   (is (typep (gdk:display-default) 'gdk:display)))
 
 ;;;     gdk-display-name
 
-(test display-name
+(test gdk-display-name
   #-windows
   (is (or (string= ":1"
                    (gdk:display-name (gdk:display-default)))
@@ -183,7 +183,7 @@
 
 ;;;     gdk-display-default-screen
 
-(test display-default-screen
+(test gdk-display-default-screen
   (let ((display (gdk:display-default)))
     (is (typep (gdk:display-default-screen display) 'gdk:screen))))
 
@@ -211,17 +211,17 @@
 
 ;;;     gdk-display-beep
 
-(test display-beep
+(test gdk-display-beep
   (is-false (gdk:display-beep (gdk:display-default))))
 
 ;;;     gdk-display-sync
 
-(test display-sync
+(test gdk-display-sync
   (is-false (gdk:display-sync (gdk:display-default))))
 
 ;;;     gdk-display-flush
 
-(test display-flush
+(test gdk-display-flush
   (is-false (gdk:display-flush (gdk:display-default))))
 
 ;;;     gdk-display-close
@@ -249,7 +249,7 @@
 ;;;     gdk-display-set-double-click-time
 ;;;     gdk-display-set-double-click-distance
 
-(test display-double-click
+(test gdk-display-double-click
   (let ((display (gdk:display-default)))
     (is-false (gdk:display-set-double-click-time display 500))
     (is-false (gdk:display-set-double-click-distance display 10))))
@@ -262,7 +262,7 @@
 ;;;     gdk-display-supports-cursor-color
 ;;;     gdk-display-supports-cursor-alpha
 
-(test display-supports-cursor
+(test gdk-display-supports-cursor
   (let ((display (gdk:display-default)))
     (is-true (gdk:display-supports-cursor-color display))
     (is-true (gdk:display-supports-cursor-alpha display))))
@@ -270,7 +270,7 @@
 ;;;     gdk-display-default-cursor-size
 ;;;     gdk-display-maximal-cursor-size
 
-(test display-cursor-size
+(test gdk-display-cursor-size
   (let ((display (gdk:display-default)))
     #-windows
     (is (or (= 24 (gdk:display-default-cursor-size display))
@@ -299,7 +299,7 @@
 ;;;     gdk-display-supports-selection-notification
 ;;;     gdk-display-request-selection-notification
 
-(test display-selection-notification
+(test gdk-display-selection-notification
   (let ((display (gdk:display-default)))
     (is (typep (gdk:display-supports-selection-notification display) 'boolean))
     (is (typep (gdk:display-request-selection-notification display "CLIPBOARD")
@@ -309,7 +309,7 @@
 ;;;     gdk-display-store-clipboard
 
 #-windows ; gdk_display_get_default_group not implemented on Windows
-(test display-clipboard
+(test gdk-display-clipboard
   (let* ((display (gdk:display-default))
          (window (gdk:display-default-group display)))
     (is-false (gdk:display-supports-clipboard-persistence display))
@@ -318,7 +318,7 @@
 ;;;     gdk-display-supports-shapes
 ;;;     gdk-display-supports-input_shapes
 
-(test display-shapes
+(test gdk-display-shapes
   (let ((display (gdk:display-default)))
     (is (typep (gdk:display-supports-shapes display) 'boolean))
     (is-true (gdk:display-supports-input-shapes display))))
@@ -327,26 +327,26 @@
 
 ;;;     gdk-display-app-launch-context
 
-(test display-app-launch-context
+(test gdk-display-app-launch-context
   (let ((display (gdk:display-default)))
     (is (typep (gdk:display-app-launch-context display)
                'gdk:app-launch-context))))
 
 ;;;     gdk-display-notify-startup-complete
 
-(test display-notify-startup-complete
+(test gdk-display-notify-startup-complete
   (let ((display (gdk:display-default)))
     (is-false (gdk:display-notify-startup-complete display "crategus.com"))))
 
 ;;;     gdk-display-default-seat
 
-(test display-default-seat
+(test gdk-display-default-seat
   (let ((display (gdk:display-default)))
     (is (typep (gdk:display-default-seat display) 'gdk:seat))))
 
 ;;;     gdk-display-list-seats
 
-(test display-list-seats
+(test gdk-display-list-seats
   (let ((display (gdk:display-default)))
     (is (listp (gdk:display-list-seats display)))
     (is (every (lambda (x) (typep x 'gdk:seat))
@@ -354,13 +354,13 @@
 
 ;;;     gdk-display-n-monitors
 
-(test display-n-monitors
+(test gdk-display-n-monitors
   (let ((display (gdk:display-default)))
     (is (<= 1 (gdk:display-n-monitors display)))))
 
 ;;;     gdk-display-monitor
 
-(test display-monitor
+(test gdk-display-monitor
   (let ((display (gdk:display-default)))
     (is (typep (gdk:display-monitor display 0) 'gdk:monitor))))
 
@@ -386,4 +386,4 @@
          (window (gdk-display-default-group display)))
     (is (typep (gdk-display-monitor-at-window display window) 'gdk-monitor))))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-6-29

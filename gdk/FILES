@@ -1,49 +1,50 @@
 List of files for the GDK Library
 
     *   - needs update
+    +   - needs work
+    .   - needs profreading
     %   - not fully implemented
     &   - objects and structures are implemented, some functions are missing
 
  I. API Reference
 
-  gdk3.general.lisp            - Library initialization - GDK 3.24
-  gdk3.display-manager.lisp    - GdkDisplayManager      - GDK 3.24
-  gdk3.display.lisp            - GdkDisplay             - GDK 3.24
-  gdk3.screen.lisp             - GdkScreen              - GDK 3.24
-  gdk3.seat.lisp               - GdkSeat                - GDK 3.24
-  gdk3.monitor.lisp            - GdkMonitor             - GDK 3.24
-  gdk3.device.lisp             - GdkDevice              - GDK 3.24
-  gdk3.device-pad.lisp         - GtkDevicePad           - GDK 3.24
-  gdk3.rectangle.lisp          - Points and Rectangles  - GDK 3.24
-  gdk3.pixbuf.lisp             - Pixbufs                - GDK 3.24
-  gdk3.rgba.lisp               - RGBA Colors            - GDK 3.24
-  gdk3.visual.lisp             - Visuals                - GDK 3.24
-  gdk3.cursor.lisp             - Cursors                - GDK 3.24
+  gdk3.general.lisp            - Library initialization - GDK 3.24%.
+  gdk3.display-manager.lisp    - GdkDisplayManager      - GDK 3.24 .
+  gdk3.display.lisp            - GdkDisplay             - GDK 3.24 +
+  gdk3.screen.lisp             - GdkScreen              - GDK 3.24 .
+  gdk3.seat.lisp               - GdkSeat                - GDK 3.24 +
+  gdk3.monitor.lisp            - GdkMonitor             - GDK 3.24 +
+  gdk3.device.lisp             - GdkDevice              - GDK 3.24 .
+  gdk3.device-pad.lisp         - GtkDevicePad           - GDK 3.24 +
+  gdk3.rectangle.lisp          - Points and Rectangles  - GDK 3.24 +
+  gdk3.pixbuf.lisp             - Pixbufs                - GDK 3.24 +
+  gdk3.rgba.lisp               - RGBA Colors            - GDK 3.24 +
+  gdk3.visual.lisp             - Visuals                - GDK 3.24 .
+  gdk3.cursor.lisp             - Cursors                - GDK 3.24 .
 
-  gdk3.window.lisp             - Windows                - GDK 3.24 &
+  gdk3.window.lisp             - Windows                - GDK 3.24&+
 
-  gdk3.frame-clock.lisp        - Frame clock            - GDK 3.24
-  gdk3.frame-timings.lisp      - Frame timings          - GDK 3.24
-  gdk3.drawing-context.lisp    - GdkDrawingContext      - Gdk 3.24
+  gdk3.frame-clock.lisp        - Frame clock            - GDK 3.24 +
+  gdk3.frame-timings.lisp      - Frame timings          - GDK 3.24 +
+  gdk3.drawing-context.lisp    - GdkDrawingContext      - Gdk 3.24 +
 
   gdk3.gl-context.lisp         - OpenGL context         - GDK 3.24 .
-  gdk3.events.lisp             - Events                 - GDK 3.24 &
-  gdk3.event-structures.lisp   - Event Structures       - GDK 3.24
-  gdk3.key-values.lisp         - Key Values             - GDK 3.24
-  gdk3.selection.lisp          - Selections             - GDK 3.24
-  gdk3.drag-and-drop-lisp      - Drag And Drop          - GDK 3.24
-  gdk3.properties.lisp         - Properties and Atoms   - GDK 3.24 &
-  gdk3.threads.lisp            - Threads                - GDK 3.24
-  gdk3.pango.lisp              - Pango Interaction      - GDK 3.24
-  gdk3.cairo.lisp              - Cairo Interaction      - GDK 3.24 &
+  gdk3.events.lisp             - Events                 - GDK 3.24&+
+  gdk3.event-structures.lisp   - Event Structures       - GDK 3.24 .
+  gdk3.key-values.lisp         - Key Values             - GDK 3.24 +
+  gdk3.selection.lisp          - Selections             - GDK 3.24 .
+  gdk3.drag-and-drop-lisp      - Drag And Drop          - GDK 3.24 +
+  gdk3.properties.lisp         - Properties and Atoms   - GDK 3.24&+
+  gdk3.threads.lisp            - Threads                - GDK 3.24 .
+  gdk3.pango.lisp              - Pango Interaction      - GDK 3.24 .
+  gdk3.cairo.lisp              - Cairo Interaction      - GDK 3.24&+
 
   not implemented              - X Window System Interaction
   not implemented              - Wayland Interaction
 
-  gdk3.app-launch-context.lisp - Application launching  - GDK 3.24
+  gdk3.app-launch-context.lisp - Application launching  - GDK 3.24 +
 
  II. Deprecated
 
-  gdk3.color.lisp              - Colors                 - GDK 3.24
-  gdk3.device-manager.lisp     - GdkDeviceManger        - GDK 3.24
-
+  gdk3.color.lisp              - Colors                 - GDK 3.24 +
+  gdk3.device-manager.lisp     - GdkDeviceManger        - GDK 3.24 +

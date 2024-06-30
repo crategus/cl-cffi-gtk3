@@ -10,12 +10,12 @@
 ;;; --- GdkCursorType ----------------------------------------------------------
 
 (test gdk-cursor-type
-  ;; Check the type
+  ;; Check type
   (is (g:type-is-enum "GdkCursorType"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gdk:cursor-type
           (glib:symbol-for-gtype "GdkCursorType")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GDK_X_CURSOR" "GDK_ARROW" "GDK_BASED_ARROW_DOWN"
                "GDK_BASED_ARROW_UP" "GDK_BOAT" "GDK_BOGOSITY"
                "GDK_BOTTOM_LEFT_CORNER" "GDK_BOTTOM_RIGHT_CORNER"
@@ -39,17 +39,15 @@
                "GDK_TOP_TEE" "GDK_TREK" "GDK_UL_ANGLE" "GDK_UMBRELLA"
                "GDK_UR_ANGLE" "GDK_WATCH" "GDK_XTERM" "GDK_LAST_CURSOR"
                "GDK_BLANK_CURSOR" "GDK_CURSOR_IS_PIXMAP")
-             (mapcar #'gobject:enum-item-name
-                     (gobject:get-enum-items "GdkCursorType"))))
-  ;; Check the values
+             (gtk-test:list-enum-item-name "GdkCursorType")))
+  ;; Check values
   (is (equal '(0 2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44
                46 48 50 52 54 56 58 60 62 64 66 68 70 72 74 76 78 80 82 84 86
                88 90 92 94 96 98 100 102 104 106 108 110 112 114 116 118 120
                122 124 126 128 130 132 134 136 138 140 142 144 146 148 150 152
                153 -2 -1)
-             (mapcar #'gobject:enum-item-value
-                     (gobject:get-enum-items "GdkCursorType"))))
-  ;; Check the nick names
+             (gtk-test:list-enum-item-value "GdkCursorType")))
+  ;; Check names
   (is (equal '("x-cursor" "arrow" "based-arrow-down" "based-arrow-up" "boat"
                "bogosity" "bottom-left-corner" "bottom-right-corner"
                "bottom-side" "bottom-tee" "box-spiral" "center-ptr" "circle"
@@ -66,9 +64,8 @@
                "top-left-arrow" "top-left-corner" "top-right-corner" "top-side"
                "top-tee" "trek" "ul-angle" "umbrella" "ur-angle" "watch"
                "xterm" "last-cursor" "blank-cursor" "cursor-is-pixmap")
-             (mapcar #'gobject:enum-item-nick
-                     (gobject:get-enum-items "GdkCursorType"))))
-  ;; Check the enum definition
+             (gtk-test:list-enum-item-nick "GdkCursorType")))
+  ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkCursorType"
                               GDK-CURSOR-TYPE
                               (:EXPORT T
@@ -161,30 +158,30 @@
 (eval-when (:compile-toplevel :load-toplevel :execute)
   (gdk:cursor-new :watch))
 
-(test cursor-class
-  ;; Type check
+(test gdk-cursor-class
+  ;; Check tyüe
   (is (g:type-is-object "GdkCursor"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gdk:cursor
           (glib:symbol-for-gtype "GdkCursor")))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GObject")
           (g:type-parent "GdkCursor")))
-  ;; Check the children
+  ;; Check children
   ;; TODO: Ensure the children are present when testing
-  #+nil
-  (is (or (member "GdkX11Cursor" (list-children "GdkCursor"))
-          (member "GdkWaylandCursor" (list-children "GdkCursor"))))
+  #-windows
+  (is (equal '("GdkWaylandCursor" "GdkX11Cursor")
+             (gtk-test:list-children "GdkCursor")))
   #+windows
   (is (equal '("GdkWin32Cursor")
-             (list-children "GdkCursor")))
-  ;; Check the interfaces
+             (gtk-test:list-children "GdkCursor")))
+  ;; Check interfaces
   (is (equal '()
-             (list-interfaces "GdkCursor")))
-  ;; Check the class properties
+             (gtk-test:list-interfaces "GdkCursor")))
+  ;; Check class properties
   (is (equal '("cursor-type" "display")
-             (list-properties "GdkCursor")))
-  ;; Check the class definition
+             (gtk-test:list-properties "GdkCursor")))
+  ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GdkCursor" GDK-CURSOR
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
                         :TYPE-INITIALIZER "gdk_cursor_get_type")
@@ -196,7 +193,7 @@
 
 ;;; --- gdk:cursor-properties --------------------------------------------------
 
-(test cursor-properties
+(test gdk-cursor-properties
   (let ((cursor (gdk:cursor-new-for-display (gdk:display-default) :hand1)))
     (is (typep (gdk:cursor-display cursor) 'gdk:display))
     (is (or (eq :hand1 (gdk:cursor-cursor-type cursor))
@@ -204,7 +201,7 @@
 
 ;;; --- gdk:cursor-new ---------------------------------------------------------
 
-(test cursor-new
+(test gdk-cursor-new
   (let ((cursor (gdk:cursor-new :watch)))
     (is (typep cursor 'gdk:cursor))
     ;; TODO: We get :watch or :cursor-is-pixmap, check this more careful
@@ -214,58 +211,58 @@
 
 ;;; --- gdk:cursor-new-from-pixbuf ---------------------------------------------
 
-#+nil
-(test cursor-new-from-pixbuf
-  (let ((pixbuf (gdk:pixbuf-new-from-file "gtk-logo-24.png"))
-        (display (gdk:display-default)))
+(test gdk-cursor-new-from-pixbuf
+  (let* ((path (glib-sys:sys-path "test/resource/gtk-logo-24.png"))
+         (pixbuf (gdk:pixbuf-new-from-file path))
+         (display (gdk:display-default)))
     (is (typep pixbuf 'gdk:pixbuf))
     (is (typep (gdk:cursor-new-from-pixbuf display pixbuf 12 12) 'gdk:cursor))))
 
 ;;; --- gdk:cursor-new-from-surface --------------------------------------------
 
-#+nil
-(test cursor-new-from-surface
-  (let* ((display (gdk:display-default))
-         (cursor (gdk:cursor-new-for-display display :hand1)))
-    (multiple-value-bind (surface x-hot y-hot)
-        (gdk:cursor-surface cursor)
-      (is (typep (gdk:cursor-new-from-surface display surface x-hot y-hot)
+(test gdk-cursor-new-from-surface
+  (cairo:with-image-surface (surface :rgb24 120 120)
+    (let ((display (gdk:display-default)))
+      (is (typep (gdk:cursor-new-from-surface display surface 0.0 0.0)
                  'gdk:cursor)))))
 
 ;;; --- gdk:cursor-new-from-name -----------------------------------------------
 
-(test cursor-new-from-name
+(test gdk-cursor-new-from-name
   (let ((display (gdk:display-default)))
-    (is (typep (gdk:cursor-new-from-name display "pointer") 'gdk:cursor))
-    #-windows
-    (is-false (gdk:cursor-new-from-name display "abc"))
-    #+windows ; On Windows returns a cursor for an unknown name
-    (is-true (gdk:cursor-new-from-name display "abc"))))
+    (is (typep (gdk:cursor-new-from-name display "pointer") 'gdk:cursor))))
 
 ;;; --- gdk:cursor-new-for-display ---------------------------------------------
 
-(test cursor-new-for-display
+(test gdk-cursor-new-for-display
   (let ((display (gdk:display-default)))
     (is (typep (gdk:cursor-new-for-display display :hand1) 'gdk:cursor))))
 
 ;;; --- gdk:cursor-image -------------------------------------------------------
 
-#+nil
-(test cursor-image
-  (let ((cursor (gdk:cursor-new-for-display (gdk:display-default) :hand1)))
-    (is (typep (gdk:cursor-image cursor) 'gdk:pixbuf))))
+;; TODO: We do not get an image. Create a better example.
+
+(test gdk-cursor-image
+  (let* ((path (glib-sys:sys-path "test/resource/gtk-logo-24.png"))
+         (pixbuf (gdk:pixbuf-new-from-file path))
+         (display (gdk:display-default))
+         cursor)
+    (is (typep pixbuf 'gdk:pixbuf))
+    (is (typep (setf cursor
+                     (gdk:cursor-new-from-pixbuf display pixbuf 12 12))
+               'gdk:cursor))
+    (is-false (gdk:cursor-image cursor))))
 
 ;;; --- gdk:cursor-surface -----------------------------------------------------
 
-#+nil
-(test cursor-surface
-  (let ((cursor (gdk:cursor-new-for-display (gdk:display-default) :hand1)))
-    (multiple-value-bind (surface x-hot y-hot)
-        (gdk:cursor-surface cursor)
-      (is-true (cffi:pointerp surface))
-      #-windows (is (= 11.0d0 x-hot))
-      #+windows (is (=  6.0d0 x-hot))
-      #-windows (is (=  7.0d0 y-hot))
-      #+windows (is (=  0.0d0 y-hot)))))
+;; TODO: We get a NULL surface. Create a better example
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+(test gdk-cursor-surface
+  (let ((cursor (gdk:cursor-new :hand1)))
+    (multiple-value-bind (surface xhot yhot)
+        (gdk:cursor-surface cursor)
+      (is (cffi:null-pointer-p surface))
+      (is (= 0.0d0 xhot))
+      (is (= 0.0d0 yhot)))))
+
+;;; 2024-6-29

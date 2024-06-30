@@ -7,7 +7,7 @@
 
 ;;;     GdkDragCancelReason
 
-(test drag-cancel-reason
+(test gdk-drag-cancel-reason
   ;; Check the type
   (is (g:type-is-enum "GdkDragCancelReason"))
   ;; Check the type initializer
@@ -40,7 +40,7 @@
 
 ;;;     GdkDragProtocol
 
-(test drag-protocol
+(test gdk-drag-protocol
   ;; Check the type
   (is (g:type-is-enum "GdkDragProtocol"))
   ;; Check the type initializer
@@ -79,7 +79,7 @@
 
 ;;;     GdkDragAction
 
-(test drag-action
+(test gdk-drag-action
   ;; Check the type
   (is (g:type-is-flags "GdkDragAction"))
   ;; Check the registered name
@@ -121,7 +121,7 @@
 (eval-when (:compile-toplevel :load-toplevel :execute)
   (cffi:foreign-funcall "gdk_win32_drag_context_get_type" :size))
 
-(test drag-context
+(test gdk-drag-context
   ;; Type check
   (is (g:type-is-object "GdkDragContext"))
   ;; Check the registered name
@@ -165,7 +165,7 @@
 ;;;     void    drop-performed    Run Last
 
 #+nil
-(test drag-context-signals
+(test gdk-drag-context-signals
   ;; Check the list of signals
   (is (equal '("action-changed" "cancel" "dnd-finished" "drop-performed")
              (sort (mapcar #'g-signal-name
@@ -235,7 +235,7 @@
 
 ;;;     gdk_drag_begin
 
-(test drag-begin
+(test gdk-drag-begin
   (let ((widget (make-instance 'gtk:window :type :toplevel)))
     (gtk:widget-realize widget)
     (let ((window (gtk:widget-window widget)))
@@ -256,7 +256,7 @@
 
 ;;;     gdk_drag_context_list_targets
 
-(test drag-context-list-targets
+(test gdk-drag-context-list-targets
   (let ((widget (make-instance 'gtk:window :type :toplevel)))
     (gtk:widget-realize widget)
     (let* ((window (gtk:widget-window widget))
@@ -273,4 +273,4 @@
 ;;;     gdk_drag_context_set_hotspot
 ;;;     gdk_drag_context_manage_dnd
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-6-29

@@ -7,29 +7,29 @@
 
 ;;;     GdkDisplayManager
 
-(test display-manager-class
-  ;; Type check
+(test gdk-display-manager-class
+  ;; Check type
   (is (g:type-is-object "GdkDisplayManager"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gdk:display-manager
           (glib:symbol-for-gtype "GdkDisplayManager")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GdkDisplayManager")
           (g:gtype (cffi:foreign-funcall "gdk_display_manager_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GObject")
           (g:type-parent "GdkDisplayManager")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GdkDisplayManager")))
-  ;; Check the interfaces
+             (gtk-test:list-children "GdkDisplayManager")))
+  ;; Check interfaces
   (is (equal '()
-             (list-interfaces "GdkDisplayManager")))
-  ;; Check the class properties
+             (gtk-test:list-interfaces "GdkDisplayManager")))
+  ;; Check class properties
   (is (equal '("default-display")
-             (list-properties "GdkDisplayManager")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GdkDisplayManager" 
+             (gtk-test:list-properties "GdkDisplayManager")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GdkDisplayManager"
                                              GDK-DISPLAY-MANAGER
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
                         :TYPE-INITIALIZER "gdk_display_manager_get_type")
@@ -41,11 +41,11 @@
 
 ;;;   gdk-display-manager-default-display
 
-(test display-manager-default-display.1
+(test gdk-display-manager-default-display.1
   (let ((manager (gdk:display-manager-get)))
     (is (typep (gdk:display-manager-default-display manager) 'gdk:display))))
 
-(test display-manager-default-display.2
+(test gdk-display-manager-default-display.2
   (let* ((manager (gdk:display-manager-get))
          (display (gdk:display-manager-default-display manager)))
     (setf (gdk:display-manager-default-display manager) display)
@@ -54,34 +54,32 @@
 
 ;;; --- Signals ----------------------------------------------------------------
 
-;;;     display-opened
-
-#+nil
-(test display-manager-display-opened-signal
-  (let* ((message nil)
-         (manager (gdk:display-manager-get))
-         (display (gdk:display-manager-default-display manager))
-         (handler-id (g-signal-connect manager "display-opened"
-                       (lambda (manager display)
-                         (setf message "Signal display-opened")
-                         (is (typep manager 'gdk:display-manager))
-                         (is (typep display 'gdk:display))
-                         t))))
-    ;; Emit the signal
-    (is-false (g-signal-emit manager "display-opened" display))
-    (is (string= "Signal display-opened" message))
-    (is-false (g-signal-handler-disconnect manager handler-id))))
+(test gdk-display-manager-display-opened-signal
+  (let* ((name "display-opened")
+         (gtype (g:gtype "GdkDisplayManager"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
+    (is (equal '(:RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    ;; Check return type
+    (is (string= "void" (g:type-name (g:signal-query-return-type query))))
+    ;; Check parameter types
+    (is (equal '("GdkDisplay")
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
 
 ;;; --- Functions --------------------------------------------------------------
 
 ;;;     gdk-display-manager-get
 
-(test display-manager-get
+(test gdk-display-manager-get
   (is (typep (gdk:display-manager-get) 'gdk:display-manager)))
 
 ;;;     gdk-display-manager-list-displays
 
-(test display-manager-list-displays
+(test gdk-display-manager-list-displays
   (let ((manager (gdk:display-manager-get)))
     (is (listp (gdk:display-manager-list-displays manager)))
     (is (every (lambda (x) (typep x 'gdk:display))
@@ -89,9 +87,9 @@
 
 ;;;     gdk-display-manager-open-display
 
-(test display-manager-open-display
+(test gdk-display-manager-open-display
   (let* ((manager (gdk:display-manager-get))
          (name (gdk:display-name (gdk:display-manager-default-display manager))))
     (is-true (gdk:display-manager-open-display manager name))))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-6-29

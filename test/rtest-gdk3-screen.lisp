@@ -58,6 +58,9 @@
     (is (cffi:pointerp  (gdk:screen-font-options screen)))
     (is (typep (gdk:screen-resolution screen) 'double-float))))
 
+;; TODO: We cannot pass NIL for a NULL-POINTER for an instance like
+;; CAIRO:FONT-OPTIONS-T. Can we improve this?!
+
 (test gdk-screen-font-options
   (let ((screen (gdk:screen-default))
         (options (cairo:font-options-create)))
@@ -76,53 +79,59 @@
 
 ;;; --- Signals ----------------------------------------------------------------
 
-;;;         composited-changed
+;;;     composited-changed
 
-#+nil
 (test gdk-screen-composited-changed-signal
-  (let* ((message nil)
-         (screen (gdk:screen-default))
-         (handler-id (g-signal-connect screen "composited-changed"
-                       (lambda (screen)
-                         (setf message "Signal composited-changed")
-                         (is (typep screen 'gdk:screen))
-                         t))))
-    ;; Emit the signal
-    (is-false (g-signal-emit screen "composited-changed"))
-    (is (string= "Signal composited-changed" message))
-    (is-false (g-signal-handler-disconnect screen handler-id))))
+  (let* ((name "composited-changed")
+         (gtype (g:gtype "GdkScreen"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
+    (is (equal '(:RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    ;; Check return type
+    (is (string= "void" (g:type-name (g:signal-query-return-type query))))
+    ;; Check parameter types
+    (is (equal '()
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
 
-;;;         monitors-changed
+;;;     monitors-changed
 
-#+nil
 (test gdk-screen-monitors-changed-signal
-  (let* ((message nil)
-         (screen (gdk:screen-default))
-         (handler-id (g-signal-connect screen "monitors-changed"
-                       (lambda (screen)
-                         (setf message "Signal monitors-changed")
-                         (is (typep screen 'gdk:screen))
-                         t))))
-    ;; Emit the signal
-    (is-false (g-signal-emit screen "monitors-changed"))
-    (is (string= "Signal monitors-changed" message))
-    (is-false (g-signal-handler-disconnect screen handler-id))))
+  (let* ((name "monitors-changed")
+         (gtype (g:gtype "GdkScreen"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
+    (is (equal '(:RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    ;; Check return type
+    (is (string= "void" (g:type-name (g:signal-query-return-type query))))
+    ;; Check parameter types
+    (is (equal '()
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
 
-;;;         size-changed
+;;;     size-changed
 
-#+nil
 (test gdk-screen-size-changed-signal
-  (let* ((message nil)
-         (screen (gdk:screen-default))
-         (handler-id (g-signal-connect screen "size-changed"
-                       (lambda (screen)
-                         (setf message "Signal size-changed")
-                         (is (typep screen 'gdk:screen))
-                         t))))
-    ;; Emit the signal
-    (is-false (g-signal-emit screen "size-changed"))
-    (is (string= "Signal size-changed" message))
-    (is-false (g-signal-handler-disconnect screen handler-id))))
+  (let* ((name "size-changed")
+         (gtype (g:gtype "GdkScreen"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
+    (is (equal '(:RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    ;; Check return type
+    (is (string= "void" (g:type-name (g:signal-query-return-type query))))
+    ;; Check parameter types
+    (is (equal '()
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
 
 ;;; --- Functions --------------------------------------------------------------
 
@@ -156,34 +165,11 @@
 (test gdk-screen-display
   (is (typep (gdk:screen-display (gdk:screen-default)) 'gdk:display)))
 
-;;;     gdk-screen-number                                  deprecated
-
-(test gdk-screen-number
-  (is (integerp (gdk:screen-number (gdk:screen-default)))))
-
-;;;     gdk-screen-width                                   deprecated
-
-(test gdk-screen-width
-  (is (integerp (gdk:screen-width)))
-  (is (= (gdk:screen-width) (gdk:screen-width (gdk:screen-default)))))
-
-;;;     gdk-screen-height                                  deprecated
-
-(test gdk-screen-height
-  (is (integerp (gdk:screen-height)))
-  (is (= (gdk:screen-height) (gdk:screen-height (gdk:screen-default)))))
-
-;;;     gdk-screen-width-mm                                deprecated
-
-(test gdk-screen-width-mm
-  (is (integerp (gdk:screen-width-mm)))
-  (is (>= (gdk:screen-width-mm) (gdk:screen-width-mm (gdk:screen-default)))))
-
-;;;     gdk-screen-height-mm                               deprecated
-
-(test gdk-screen-height-mm
-  (is (integerp (gdk:screen-height-mm)))
-  (is (>= (gdk:screen-height-mm) (gdk:screen-height-mm (gdk:screen-default)))))
+;;;     gdk-screen-number                                   deprecated
+;;;     gdk-screen-width                                    deprecated
+;;;     gdk-screen-height                                   deprecated
+;;;     gdk-screen-width-mm                                 deprecated
+;;;     gdk-screen-height-mm                                deprecated
 
 ;;;     gdk-screen-list-visuals
 
@@ -200,79 +186,17 @@
   (is (every (lambda (x) (typep x 'gdk:window))
              (gdk:screen-toplevel-windows (gdk:screen-default)))))
 
-;;;     gdk-screen-make-display-name                       deprecated
-
-(test gdk-screen-make-display-name
-  (is (stringp (gdk:screen-make-display-name (gdk:screen-default)))))
-
-;;;     gdk-screen-n-monitors                              deprecated
-
-(test gdk-screen-n-monitors
-  (is (<= 1 (gdk:screen-n-monitors (gdk:screen-default)))))
-
-;;;     gdk_screen_get_primary_monitor                     deprecated
-
-(test gdk-screen-primary-monitor
-  (is (= 0 (gdk:screen-primary-monitor (gdk:screen-default)))))
-
-;;;     gdk-screen-monitor-geometry                        deprecated
-
-#+nil
-(test gdk-screen-monitor-geometry
-  (is (typep (gdk:screen-monitor-geometry (gdk:screen-default) 0) 'gdk:rectangle))
-  (let ((rect (gdk:screen-monitor-geometry (gdk:screen-default) 0)))
-    (is (= 1920 (gdk:rectangle-x rect)))
-    (is (= 0 (gdk:rectangle-y rect)))
-    (is (>= (gdk:screen-width) (gdk:rectangle-width rect)))
-    (is (>= (gdk:screen-height) (gdk:rectangle-height rect)))))
-
-;;;     gdk-screen-monitor-workarea                        deprecated
-
-(test gdk-screen-monitor-workarea
-  (is (typep (gdk:screen-monitor-workarea (gdk:screen-default) 0) 'gdk:rectangle))
-  (let ((rect (gdk:screen-monitor-workarea (gdk:screen-default) 0)))
-    (is (<= 0 (gdk:rectangle-x rect)))
-    (is (<= 0 (gdk:rectangle-y rect)))
-    (is (>= (gdk:screen-width) (gdk:rectangle-width rect)))
-    (is (>= (gdk:screen-height) (gdk:rectangle-height rect)))))
-
-;;;     gdk-screen-monitor-at-point                        deprecated
-
-#+nil
-(test gdk-screen-monitor-at-point
-  (is (= 1 (gdk:screen-monitor-at-point (gdk:screen-default)  0  0)))
-  (is (= 1 (gdk:screen-monitor-at-point (gdk:screen-default) 10 10))))
-
-;;;     gdk-screen-monitor-at-window                       deprecated
-
-#+nil
-(test gdk-screen-monitor-at-window
-  (let ((screen (gdk:screen-default)))
-    (is (= 1 (gdk:screen-monitor-at-window screen
-                 (gdk:screen-root-window screen))))))
-
-;;;     gdk-screen-monitor-height-mm                       deprecated
-
-#+crategus
-(test gdk-screen-monitor-height-mm
-  (is (<= (gdk:screen-monitor-height-mm (gdk:screen-default) 0) 340)))
-
-;;;     gdk-screen-monitor-width-mm                        deprecated
-
-#+crategus
-(test gdk-screen-monitor-width-mm
-  (is (<= (gdk:screen-monitor-width-mm (gdk:screen-default) 0) 600)))
-
-;;;     gdk-screen-monitor-plug-name                       deprecated
-
-#-windows
-(test gdk-screen-monitor-plug-name
-  (is (stringp (gdk:screen-monitor-plug-name (gdk:screen-default) 0))))
-
-;;;     gdk-screen-monitor-scale-factor                    deprecated
-
-(test gdk-screen-monitor-scale-factor
-  (is (= 1 (gdk:screen-monitor-scale-factor (gdk:screen-default) 0))))
+;;;     gdk-screen-make-display-name                        deprecated
+;;;     gdk-screen-n-monitors                               deprecated
+;;;     gdk_screen_get_primary_monitor                      deprecated
+;;;     gdk-screen-monitor-geometry                         deprecated
+;;;     gdk-screen-monitor-workarea                         deprecated
+;;;     gdk-screen-monitor-at-point                         deprecated
+;;;     gdk-screen-monitor-at-window                        deprecated
+;;;     gdk-screen-monitor-height-mm                        deprecated
+;;;     gdk-screen-monitor-width-mm                         deprecated
+;;;     gdk-screen-monitor-plug-name                        deprecated
+;;;     gdk-screen-monitor-scale-factor                     deprecated
 
 ;;;     gdk-screen-setting
 
@@ -280,11 +204,7 @@
   (let ((screen (gdk:display-default-screen (gdk:display-default))))
     (is (integerp (gdk:screen-setting screen "gtk-double-click-time" "gint")))))
 
-;;;     gdk-screen-active-window                           deprecated
-
-#+nil
-(test gdk-screen-active-window
-  (is (typep (gdk:screen-active-window (gdk:screen-default)) 'gdk:window)))
+;;;     gdk-screen-active-window                            deprecated
 
 ;;;     gdk-screen-window-stack
 
@@ -293,4 +213,4 @@
   (is (every (lambda (x) (typep x 'gdk:window))
              (gdk:screen-window-stack (gdk:screen-default)))))
 
-;;; 2024-6-23
+;;; 2024-6-27

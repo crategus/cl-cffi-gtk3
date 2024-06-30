@@ -586,19 +586,6 @@
 ;;;     GdkEvent
 ;;;     GdkEventAny
 
-;;  (type gdk:event-type)
-;;  (window (g-object gdk:window))
-;;  (send-event (:boolean :int8))
-
-;;  (:nothing -1)
-;;  (:delete 0)
-;;  (:destroy 1)
-;;  (:map 14)
-;;  (:unmap 15)
-;;  (:client-event 28)
-;;  (:not-used 30)          ; not used
-;;  (:damage 36)
-
 (test gdk-event-any
   (let ((event (gdk:event-new :nothing)))
     (is (typep event 'gdk:event))
@@ -607,70 +594,43 @@
     (is-false (gdk:event-window event))
     (is-false (gdk:event-send-event event))))
 
-;;    ;; GdkEventExpose
-;;    ((:expose) event-expose
-;;     (area rectangle :inline t :initform (gdk:rectangle-new))
-;;     (region (:pointer (:struct cairo-region-t)) :initform (cffi:null-pointer))
-;;     (count :int :initform 0))
+;;;     GdkEventKey
 
-(test gdk-event-expose
-  (let ((event (gdk:event-new :expose)))
-    (is (typep event 'gdk:event-expose))
+(test gdk-event-key.1
+  (let ((event (gdk:event-new :key-press)))
+    (is (typep event 'gdk:event-key))
     ;; Common slots
-    (is (eq :expose (gdk:event-type event)))
+    (is (eq :key-press (gdk:event-type event)))
     (is-false (gdk:event-window event))
     (is-false (gdk:event-send-event event))
-    ;; Slots for gdk:event-expose
-    (is (typep (gdk:event-expose-area event) 'gdk:rectangle))
-    (is-true (cffi:null-pointer-p (gdk:event-expose-region event)))
-    (is (= 0 (gdk:event-expose-count event)))))
+    ;; Slots for gdk:event-key
+    (is (= 0 (gdk:event-key-time event)))
+    (is (= 0 (gdk:event-key-state event)))
+    (is (= 0 (gdk:event-key-keyval event)))
+    (is (= 0 (gdk:event-key-length event)))
+    (is (string= "" (gdk:event-key-string event)))
+    (is (= 0 (gdk:event-key-hardware-keycode event)))
+    (is (= 0 (gdk:event-key-group event)))
+    (is (= 0 (gdk:event-key-is-modifier event)))))
 
-;;    ;; GdkEventMotion
-;;    ((:motion-notify) gdk-event-motion
-;;     (time :uint32 :initform 0)
-;;     (x :double :initform 0.0d0)
-;;     (y :double :initform 0.0d0)
-;;     (axes (fixed-array :double 2) :initform '(0.0d0 0.0d0))
-;;     (state gdk-modifier-type :initform 0)
-;;     (is-hint :int16 :initform 0)
-;;     (device (g-object gdk-device) :initform (cffi:null-pointer))
-;;     (x-root :double :initform 0.0d0)
-;;     (y-root :double :initform 0.0d0))
-
-(test gdk-event-motion
-  (let ((event (gdk:event-new :motion-notify)))
-    (is (typep event 'gdk:event-motion))
+(test gdk-event-key.2
+  (let ((event (gdk:event-new :key-release)))
+    (is (typep event 'gdk:event-key))
     ;; Common slots
-    (is (eq :motion-notify (gdk:event-type event)))
+    (is (eq :key-release (gdk:event-type event)))
     (is-false (gdk:event-window event))
     (is-false (gdk:event-send-event event))
-    ;; Slots for gdk:event-motion
-    (is (= 0 (gdk:event-motion-time event)))
-    (is (= 0.0d0 (gdk:event-motion-x event)))
-    (is (= 0.0d0 (gdk:event-motion-y event)))
-    (is (equal '(0.0d0 0.0d0) (gdk:event-motion-axes event)))
-    (is (= 0 (gdk:event-motion-state event)))
-    (is (= 0 (gdk:event-motion-is-hint event)))
-    (is (cffi:null-pointer-p (gdk:event-motion-device event)))
-    (is (= 0.0d0 (gdk:event-motion-x-root event)))
-    (is (= 0.0d0 (gdk:event-motion-y-root event)))))
+    ;; Slots for gdk:event-key
+    (is (= 0 (gdk:event-key-time event)))
+    (is (= 0 (gdk:event-key-state event)))
+    (is (= 0 (gdk:event-key-keyval event)))
+    (is (= 0 (gdk:event-key-length event)))
+    (is (string= "" (gdk:event-key-string event)))
+    (is (= 0 (gdk:event-key-hardware-keycode event)))
+    (is (= 0 (gdk:event-key-group event)))
+    (is (= 0 (gdk:event-key-is-modifier event)))))
 
-;;    ;; GdkEventButton
-;;    ((:button-press
-;;      :2button-press
-;;      :double-button-press
-;;      :3button-press
-;;      :triple-button-press
-;;      :button-release) gdk-event-button
-;;     (time :uint32 :initform 0)
-;;     (x :double :initform 0.0d0)
-;;     (y :double :initform 0.0d0)
-;;     (axes (fixed-array :double 2) :initform '(0.0d0 0.0d0))
-;;     (state gdk-modifier-type :initform 0)
-;;     (button :uint :initform 0)
-;;     (device (g-object gdk-device) :initform (cffi:null-pointer))
-;;     (x-root :double :initform 0.0d0)
-;;     (y-root :double :initform 0.0d0))
+;;;     GdkEventButton
 
 (test gdk-event-button.1
   (let ((event (gdk:event-new :button-press)))
@@ -744,337 +704,7 @@
     (is (= 0.0d0 (gdk:event-button-x-root event)))
     (is (= 0.0d0 (gdk:event-button-y-root event)))))
 
-;;    ;; GdkEventKey
-;;    ((:key-press :key-release) gdk-event-key
-;;     (time :uint32 :initform 0)
-;;     (state gdk-modifier-type :initform 0)
-;;     (keyval :uint :initform 0)
-;;     (length :int :initform 0)
-;;     (string (:string :free-from-foreign nil
-;;                      :free-to-foreign nil)
-;;             :initform "")
-;;     (hardware-keycode :uint16 :initform 0)
-;;     (group :uint8 :initform 0)
-;;     (is-modifier :uint :initform 0))
-
-(test gdk-event-key.1
-  (let ((event (gdk:event-new :key-press)))
-    (is (typep event 'gdk:event-key))
-    ;; Common slots
-    (is (eq :key-press (gdk:event-type event)))
-    (is-false (gdk:event-window event))
-    (is-false (gdk:event-send-event event))
-    ;; Slots for gdk:event-key
-    (is (= 0 (gdk:event-key-time event)))
-    (is (= 0 (gdk:event-key-state event)))
-    (is (= 0 (gdk:event-key-keyval event)))
-    (is (= 0 (gdk:event-key-length event)))
-    (is (string= "" (gdk:event-key-string event)))
-    (is (= 0 (gdk:event-key-hardware-keycode event)))
-    (is (= 0 (gdk:event-key-group event)))
-    (is (= 0 (gdk:event-key-is-modifier event)))))
-
-(test gdk-event-key.2
-  (let ((event (gdk:event-new :key-release)))
-    (is (typep event 'gdk:event-key))
-    ;; Common slots
-    (is (eq :key-release (gdk:event-type event)))
-    (is-false (gdk:event-window event))
-    (is-false (gdk:event-send-event event))
-    ;; Slots for gdk:event-key
-    (is (= 0 (gdk:event-key-time event)))
-    (is (= 0 (gdk:event-key-state event)))
-    (is (= 0 (gdk:event-key-keyval event)))
-    (is (= 0 (gdk:event-key-length event)))
-    (is (string= "" (gdk:event-key-string event)))
-    (is (= 0 (gdk:event-key-hardware-keycode event)))
-    (is (= 0 (gdk:event-key-group event)))
-    (is (= 0 (gdk:event-key-is-modifier event)))))
-
-;;            ;; GdkEventCrossing
-;;            ((:enter-notify :leave-notify) gdk-event-crossing
-;;             (subwindow (g-object gdk-window))
-;;             (time :uint32)
-;;             (x :double)
-;;             (y :double)
-;;             (x-root :double)
-;;             (y-root :double)
-;;             (mode gdk-crossing-mode)
-;;             (detail gdk-notify-type)
-;;             (focus :boolean)
-;;             (state :uint))
-
-(test gdk-event-crossing
-  (let ((event (gdk:event-new :enter-notify)))
-    (is (typep event 'gdk:event-crossing))
-    ;; Common slots
-    (is (eq :enter-notify (gdk:event-type event)))
-    (is-false (gdk:event-window event))
-    (is-false (gdk:event-send-event event))
-    ;; Slots for gdk:event-crossing
-    (is (cffi:null-pointer-p (gdk:event-crossing-subwindow event)))
-    (is (= 0 (gdk:event-crossing-time event)))
-    (is (= 0.0d0 (gdk:event-crossing-x event)))
-    (is (= 0.0d0 (gdk:event-crossing-y event)))
-    (is (= 0.0d0 (gdk:event-crossing-x-root event)))
-    (is (= 0.0d0 (gdk:event-crossing-y-root event)))
-    (is (eq :normal (gdk:event-crossing-mode event)))
-    (is (eq :ancestor (gdk:event-crossing-detail event)))
-    (is-false (gdk:event-crossing-focus event))
-    (is (= 0 (gdk:event-crossing-state event)))))
-
-;;    ;; GdkEventFocus
-;;    ((:focus-change) gdk-event-focus
-;;     (in :int16 :initform 0))
-
-(test gdk-event-focus
-  (let ((event (gdk:event-new :focus-change)))
-    (is (typep event 'gdk:event-focus))
-    ;; Common slots
-    (is (eq :focus-change (gdk:event-type event)))
-    (is-false (gdk:event-window event))
-    (is-false (gdk:event-send-event event))
-    ;; Slots for gdk:event-focus
-    (is (= 0 (gdk:event-focus-in event)))))
-
-;;    ;; GdkEventConfigure
-;;    ((:configure) gdk-event-configure
-;;     (x :int :initform 0)
-;;     (y :int :initform 0)
-;;     (width :int :initform 0)
-;;     (height :int :initform 0))
-
-(test gdk-event-configure
-  (let ((event (gdk:event-new :configure)))
-    (is (typep event 'gdk:event-configure))
-    ;; Common slots
-    (is (eq :configure (gdk:event-type event)))
-    (is-false (gdk:event-window event))
-    (is-false (gdk:event-send-event event))
-    ;; Slots for gdk:event-configure
-    (is (= 0 (gdk:event-configure-x event)))
-    (is (= 0 (gdk:event-configure-y event)))
-    (is (= 0 (gdk:event-configure-width event)))
-    (is (= 0 (gdk:event-configure-height event)))))
-
-;;    ;; GdkEventProperty
-;;    ((:property-notify) gdk-event-property
-;;     (atom gdk-atom :init-form (cffi:null-pointer))
-;;     (time :uint32 :initform 0)
-;;     (state gdk-property-state :init-from :new-value))
-
-(test gdk-event-property
-  (let ((event (gdk:event-new :property-notify)))
-    (is (typep event 'gdk:event-property))
-    ;; Common slots
-    (is (eq :property-notify (gdk:event-type event)))
-    (is-false (gdk:event-window event))
-    (is-false (gdk:event-send-event event))
-    ;; Slots for gdk:event-property
-    (is (cffi:null-pointer-p (gdk:event-property-atom event)))
-    (is (= 0 (gdk:event-property-time event)))
-    (is (eq :new-value (gdk:event-property-state event)))))
-
-;;    ;; GdkEventSelection
-;;    ((:selection-clear
-;;      :selection-notify
-;;      :selection-request) gdk-event-selection
-;;     (selection gdk-atom :initform (cffi:null-pointer))
-;;     (target gdk-atom :initform (null-poiner))
-;;     (property gdk-atom :initform (cffi:null-pointer))
-;;     (time :uint32 :initform 0)
-;;     (requestor (g-object gdk-window)))
-
-(test gdk-event-selection
-  (let ((event (gdk:event-new :selection-clear)))
-    (is (typep event 'gdk:event-selection))
-    ;; Common slots
-    (is (eq :selection-clear (gdk:event-type event)))
-    (is-false (gdk:event-window event))
-    (is-false (gdk:event-send-event event))
-    ;; Slots for gdk:event-selection
-    (is (cffi:null-pointer-p (gdk:event-selection-selection event)))
-    (is (cffi:null-pointer-p (gdk:event-selection-target event)))
-    (is (cffi:null-pointer-p (gdk:event-selection-property event)))
-    (is (= 0 (gdk:event-selection-time event)))
-    (is-false (gdk:event-selection-requestor event))))
-
-;;    ;; GdkEventProximity
-;;    ((:proximity-in
-;;      :proximity-out) gdk-event-proximity
-;;     (time :uint32 :initform 0)
-;;     (device (g-object gdk-device)))
-
-(test gdk-event-proximity
-  (let ((event (gdk:event-new :proximity-in)))
-    (is (typep event 'gdk:event-proximity))
-    ;; Common slots
-    (is (eq :proximity-in (gdk:event-type event)))
-    (is-false (gdk:event-window event))
-    (is-false (gdk:event-send-event event))
-    ;; Slots for gdk:event-proximity
-    (is (= 0 (gdk:event-proximity-time event)))
-    (is-false (gdk:event-proximity-device event))))
-
-;;    ;; GdkEventDND
-;;    ((:drag-enter
-;;      :drag-leave
-;;      :drag-motion
-;;      :drag-status
-;;      :drop-start
-;;      :drop-finished) gdk-event-dnd
-;;     (context (g-object gdk-drag-context))
-;;     (time :uint32 :initform 0)
-;;     (x-root :short :initform 0)
-;;     (y-root :short :initform 0))
-
-(test gdk-event-dnd
-  (let ((event (gdk:event-new :drag-enter)))
-    (is (typep event 'gdk:event-dnd))
-    ;; Common slots
-    (is (eq :drag-enter (gdk:event-type event)))
-    (is-false (gdk:event-window event))
-    (is-false (gdk:event-send-event event))
-    ;; Slots for gdk:event-dnd
-    (is-false (gdk:event-dnd-context event))
-    (is (= 0 (gdk:event-dnd-time event)))
-    (is (= 0 (gdk:event-dnd-x-root event)))
-    (is (= 0 (gdk:event-dnd-y-root event)))))
-
-;;    ;; GdkEventVisibility
-;;    ((:visibility-notify) gdk-event-visibility
-;;     (state gdk-visibility-state :initform :unobscured))
-
-(test gdk-event-visibility
-  (let ((event (gdk:event-new :visibility-notify)))
-    (is (typep event 'gdk:event-visibility))
-    ;; Common slots
-    (is (eq :visibility-notify (gdk:event-type event)))
-    (is-false (gdk:event-window event))
-    (is-false (gdk:event-send-event event))
-    ;; Slots for gdk:event-visibility
-    (is (eq :unobscured (gdk:event-visibility-state event)))))
-
-;;    ;; GdkEventScroll
-;;    ((:scroll) gdk-event-scroll
-;;     (time :uint32 :initform 0)
-;;     (x :double :initform 0.0d0)
-;;     (y :double :initform 0.0d0)
-;;     (state gdk-modifier-type)
-;;     (direction gdk-scroll-direction :initform :up)
-;;     (device (g-object gdk-device))
-;;     (x-root :double :initform 0.0d0)
-;;     (y-root :double :initform 0.0d0)
-;;     (delta-x :double :initform 0.0d0)
-;;     (delta-y :double :initform 0.0d0))
-
-(test gdk-event-scroll
-  (let ((event (gdk:event-new :scroll)))
-    (is (typep event 'gdk:event-scroll))
-    ;; Common slots
-    (is (eq :scroll (gdk:event-type event)))
-    (is-false (gdk:event-window event))
-    (is-false (gdk:event-send-event event))
-    ;; Slots for gdk:event-scroll
-    (is (= 0 (gdk:event-scroll-time event)))
-    (is (= 0 (gdk:event-scroll-x event)))
-    (is (= 0 (gdk:event-scroll-y event)))
-    (is-false (gdk:event-scroll-state event))
-    (is (eq :up (gdk:event-scroll-direction event)))
-    (is-false (gdk:event-scroll-device event))
-    (is (= 0 (gdk:event-scroll-x-root event)))
-    (is (= 0 (gdk:event-scroll-y-root event)))
-    (is (= 0 (gdk:event-scroll-delta-x event)))
-    (is (= 0 (gdk:event-scroll-delta-y event)))))
-
-;;    ;; GdkEventWindowState
-;;    ((:window-state) gdk-event-window-state
-;;     (changed-mask gdk-window-state)
-;;     (new-window-state gdk-window-state))
-
-(test gdk-event-window-state
-  (let ((event (gdk:event-new :window-state)))
-    (is (typep event 'gdk:event-window-state ))
-    ;; Common slots
-    (is (eq :window-state (gdk:event-type event)))
-    (is-false (gdk:event-window event))
-    (is-false (gdk:event-send-event event))
-    ;; Slots for gdk:event-window-state
-    (is-false (gdk:event-window-state-changed-mask event))
-    (is-false (gdk:event-window-state-new-window-state event))))
-
-;;    ;; GdkEventSetting
-;;    ((:setting) gdk-event-setting
-;;     (action gdk-setting-action :initform :new)
-;;     (name (:string :free-from-foreign nil :free-to-foreign nil)))
-
-(test gdk-event-setting
-  (let ((event (gdk:event-new :setting)))
-    (is (typep event 'gdk:event-setting))
-    ;; Common slots
-    (is (eq :setting (gdk:event-type event)))
-    (is-false (gdk:event-window event))
-    (is-false (gdk:event-send-event event))
-    ;; Slots for gdk:event-setting
-    (is (eq :new (gdk:event-setting-action event)))
-    (is-false (gdk:event-setting-name event))))
-
-;;    ;; GdkEventOwnerChange
-;;    ((:owner-change) gdk-event-owner-change
-;;     (owner (g-object gdk-window))
-;;     (reason gdk-owner-change :initform :new-owner)
-;;     (selection gdk-atom :initform (cffi:null-pointer))
-;;     (time :uint32 :initform 0)
-;;     (selection-time :uint32 :initform 0))
-
-(test gdk-event-owner-change
-  (let ((event (gdk:event-new :owner-change)))
-    (is (typep event 'gdk:event-owner-change))
-    ;; Common slots
-    (is (eq :owner-change (gdk:event-type event)))
-    (is-false (gdk:event-window event))
-    (is-false (gdk:event-send-event event))
-    ;; Slots for gdk:event-owner-change
-    (is-false (gdk:event-owner-change-owner event))
-    (is (eq :new-owner (gdk:event-owner-change-reason event)))
-    (is (cffi:null-pointer-p (gdk:event-owner-change-selection event)))
-    (is (= 0 (gdk:event-owner-change-time event)))
-    (is (= 0 (gdk:event-owner-change-selection-time event)))))
-
-;;    ;; GdkEventGrabBroken
-;;    ((:grab-broken) gdk-event-grab-broken
-;;     (keyboard :boolean)
-;;     (implicit :boolean)
-;;     (grab-window (g-object gdk-window)))
-
-(test gdk-event-grab-broken
-  (let ((event (gdk:event-new :grab-broken)))
-    (is (typep event 'gdk:event-grab-broken))
-    ;; Common slots
-    (is (eq :grab-broken (gdk:event-type event)))
-    (is-false (gdk:event-window event))
-    (is-false (gdk:event-send-event event))
-    ;; Slots for gdk:event-grab-broken
-    (is-false (gdk:event-grab-broken-keyboard event))
-    (is-false (gdk:event-grab-broken-implicit event))
-    (is-false (gdk:event-grab-broken-grab-window event))))
-
-;;    ;; GdkEventTouch
-;;    ((:touch-begin
-;;      :touch-update
-;;      :touch-end
-;;      :touch-cancel) gdk-event-touch
-;;     (time :uint32 :initform 0)
-;;     (x :double :initform 0.0d0)
-;;     (y :double :initform 0.0d0)
-;;     (axes (fixed-array :double 2) :initform '(0.0d0 0.0d0))
-;;     (state gdk-modifier-type)
-;;     ;; FIXME: We can not initialize sequence from the Lisp side.
-;;     (sequence (g:boxed gdk:event-sequence))
-;;     (emulating-pointer :boolean)
-;;     (device (g-object gdk-device))
-;;     (x-root :double :initform 0.0d0)
-;;     (y-root :double :initform 0.0d0))
+;;;     GdkEventTouch
 
 (test gdk-event-touch
   (let ((event (gdk:event-new :touch-begin)))
@@ -1096,18 +726,236 @@
     (is (= 0 (gdk:event-touch-x-root event)))
     (is (= 0 (gdk:event-touch-y-root event)))))
 
-;;    ;; GdkEventTouchpadSwipe
-;;    ((:touchpad-swipe) gdk-event-touchpad-swipe
-;;     (phase :int8)
-;;     (n-fingers :int8 :initform 0)
-;;     (time :uint32 :initform 0)
-;;     (x :double :initform 0.0d0)
-;;     (y :double :initform 0.0d0)
-;;     (dx :double :initform 0.0d0)
-;;     (dy :double :initform 0.0d0)
-;;     (x-root :double :initform 0.0d0)
-;;     (y-root :double :initform 0.0d0)
-;;     (state gdk-modifier-type))
+;;;     GdkEventScroll
+
+(test gdk-event-scroll
+  (let ((event (gdk:event-new :scroll)))
+    (is (typep event 'gdk:event-scroll))
+    ;; Common slots
+    (is (eq :scroll (gdk:event-type event)))
+    (is-false (gdk:event-window event))
+    (is-false (gdk:event-send-event event))
+    ;; Slots for gdk:event-scroll
+    (is (= 0 (gdk:event-scroll-time event)))
+    (is (= 0 (gdk:event-scroll-x event)))
+    (is (= 0 (gdk:event-scroll-y event)))
+    (is-false (gdk:event-scroll-state event))
+    (is (eq :up (gdk:event-scroll-direction event)))
+    (is-false (gdk:event-scroll-device event))
+    (is (= 0 (gdk:event-scroll-x-root event)))
+    (is (= 0 (gdk:event-scroll-y-root event)))
+    (is (= 0 (gdk:event-scroll-delta-x event)))
+    (is (= 0 (gdk:event-scroll-delta-y event)))))
+
+;;;     GdkEventMotion
+
+(test gdk-event-motion
+  (let ((event (gdk:event-new :motion-notify)))
+    (is (typep event 'gdk:event-motion))
+    ;; Common slots
+    (is (eq :motion-notify (gdk:event-type event)))
+    (is-false (gdk:event-window event))
+    (is-false (gdk:event-send-event event))
+    ;; Slots for gdk:event-motion
+    (is (= 0 (gdk:event-motion-time event)))
+    (is (= 0.0d0 (gdk:event-motion-x event)))
+    (is (= 0.0d0 (gdk:event-motion-y event)))
+    (is (equal '(0.0d0 0.0d0) (gdk:event-motion-axes event)))
+    (is (= 0 (gdk:event-motion-state event)))
+    (is (= 0 (gdk:event-motion-is-hint event)))
+    (is (cffi:null-pointer-p (gdk:event-motion-device event)))
+    (is (= 0.0d0 (gdk:event-motion-x-root event)))
+    (is (= 0.0d0 (gdk:event-motion-y-root event)))))
+
+;;;     GdkEventExpose
+
+(test gdk-event-expose
+  (let ((event (gdk:event-new :expose)))
+    (is (typep event 'gdk:event-expose))
+    ;; Common slots
+    (is (eq :expose (gdk:event-type event)))
+    (is-false (gdk:event-window event))
+    (is-false (gdk:event-send-event event))
+    ;; Slots for gdk:event-expose
+    (is (typep (gdk:event-expose-area event) 'gdk:rectangle))
+    (is-true (cffi:null-pointer-p (gdk:event-expose-region event)))
+    (is (= 0 (gdk:event-expose-count event)))))
+
+;;;     GdkEventVisibility
+
+(test gdk-event-visibility
+  (let ((event (gdk:event-new :visibility-notify)))
+    (is (typep event 'gdk:event-visibility))
+    ;; Common slots
+    (is (eq :visibility-notify (gdk:event-type event)))
+    (is-false (gdk:event-window event))
+    (is-false (gdk:event-send-event event))
+    ;; Slots for gdk:event-visibility
+    (is (eq :unobscured (gdk:event-visibility-state event)))))
+
+;;;     GdkEventCrossing
+
+(test gdk-event-crossing
+  (let ((event (gdk:event-new :enter-notify)))
+    (is (typep event 'gdk:event-crossing))
+    ;; Common slots
+    (is (eq :enter-notify (gdk:event-type event)))
+    (is-false (gdk:event-window event))
+    (is-false (gdk:event-send-event event))
+    ;; Slots for gdk:event-crossing
+    (is (cffi:null-pointer-p (gdk:event-crossing-subwindow event)))
+    (is (= 0 (gdk:event-crossing-time event)))
+    (is (= 0.0d0 (gdk:event-crossing-x event)))
+    (is (= 0.0d0 (gdk:event-crossing-y event)))
+    (is (= 0.0d0 (gdk:event-crossing-x-root event)))
+    (is (= 0.0d0 (gdk:event-crossing-y-root event)))
+    (is (eq :normal (gdk:event-crossing-mode event)))
+    (is (eq :ancestor (gdk:event-crossing-detail event)))
+    (is-false (gdk:event-crossing-focus event))
+    (is (= 0 (gdk:event-crossing-state event)))))
+
+;;;     GdkEventFocus
+
+(test gdk-event-focus
+  (let ((event (gdk:event-new :focus-change)))
+    (is (typep event 'gdk:event-focus))
+    ;; Common slots
+    (is (eq :focus-change (gdk:event-type event)))
+    (is-false (gdk:event-window event))
+    (is-false (gdk:event-send-event event))
+    ;; Slots for gdk:event-focus
+    (is (= 0 (gdk:event-focus-in event)))))
+
+;;;     GdkEventConfigure
+
+(test gdk-event-configure
+  (let ((event (gdk:event-new :configure)))
+    (is (typep event 'gdk:event-configure))
+    ;; Common slots
+    (is (eq :configure (gdk:event-type event)))
+    (is-false (gdk:event-window event))
+    (is-false (gdk:event-send-event event))
+    ;; Slots for gdk:event-configure
+    (is (= 0 (gdk:event-configure-x event)))
+    (is (= 0 (gdk:event-configure-y event)))
+    (is (= 0 (gdk:event-configure-width event)))
+    (is (= 0 (gdk:event-configure-height event)))))
+
+;;;     GdkEventProperty
+
+(test gdk-event-property
+  (let ((event (gdk:event-new :property-notify)))
+    (is (typep event 'gdk:event-property))
+    ;; Common slots
+    (is (eq :property-notify (gdk:event-type event)))
+    (is-false (gdk:event-window event))
+    (is-false (gdk:event-send-event event))
+    ;; Slots for gdk:event-property
+    (is (cffi:null-pointer-p (gdk:event-property-atom event)))
+    (is (= 0 (gdk:event-property-time event)))
+    (is (eq :new-value (gdk:event-property-state event)))))
+
+;;;     GdkEventSelection
+
+(test gdk-event-selection
+  (let ((event (gdk:event-new :selection-clear)))
+    (is (typep event 'gdk:event-selection))
+    ;; Common slots
+    (is (eq :selection-clear (gdk:event-type event)))
+    (is-false (gdk:event-window event))
+    (is-false (gdk:event-send-event event))
+    ;; Slots for gdk:event-selection
+    (is (cffi:null-pointer-p (gdk:event-selection-selection event)))
+    (is (cffi:null-pointer-p (gdk:event-selection-target event)))
+    (is (cffi:null-pointer-p (gdk:event-selection-property event)))
+    (is (= 0 (gdk:event-selection-time event)))
+    (is-false (gdk:event-selection-requestor event))))
+
+;;;     GdkEventDND
+
+(test gdk-event-dnd
+  (let ((event (gdk:event-new :drag-enter)))
+    (is (typep event 'gdk:event-dnd))
+    ;; Common slots
+    (is (eq :drag-enter (gdk:event-type event)))
+    (is-false (gdk:event-window event))
+    (is-false (gdk:event-send-event event))
+    ;; Slots for gdk:event-dnd
+    (is-false (gdk:event-dnd-context event))
+    (is (= 0 (gdk:event-dnd-time event)))
+    (is (= 0 (gdk:event-dnd-x-root event)))
+    (is (= 0 (gdk:event-dnd-y-root event)))))
+
+;;;     GdkEventProximity
+
+(test gdk-event-proximity
+  (let ((event (gdk:event-new :proximity-in)))
+    (is (typep event 'gdk:event-proximity))
+    ;; Common slots
+    (is (eq :proximity-in (gdk:event-type event)))
+    (is-false (gdk:event-window event))
+    (is-false (gdk:event-send-event event))
+    ;; Slots for gdk:event-proximity
+    (is (= 0 (gdk:event-proximity-time event)))
+    (is-false (gdk:event-proximity-device event))))
+
+;;;     GdkEventWindowState
+
+(test gdk-event-window-state
+  (let ((event (gdk:event-new :window-state)))
+    (is (typep event 'gdk:event-window-state ))
+    ;; Common slots
+    (is (eq :window-state (gdk:event-type event)))
+    (is-false (gdk:event-window event))
+    (is-false (gdk:event-send-event event))
+    ;; Slots for gdk:event-window-state
+    (is-false (gdk:event-window-state-changed-mask event))
+    (is-false (gdk:event-window-state-new-window-state event))))
+
+;;;     GdkEventSetting
+
+(test gdk-event-setting
+  (let ((event (gdk:event-new :setting)))
+    (is (typep event 'gdk:event-setting))
+    ;; Common slots
+    (is (eq :setting (gdk:event-type event)))
+    (is-false (gdk:event-window event))
+    (is-false (gdk:event-send-event event))
+    ;; Slots for gdk:event-setting
+    (is (eq :new (gdk:event-setting-action event)))
+    (is-false (gdk:event-setting-name event))))
+
+;;;     GdkEventOwnerChange
+
+(test gdk-event-owner-change
+  (let ((event (gdk:event-new :owner-change)))
+    (is (typep event 'gdk:event-owner-change))
+    ;; Common slots
+    (is (eq :owner-change (gdk:event-type event)))
+    (is-false (gdk:event-window event))
+    (is-false (gdk:event-send-event event))
+    ;; Slots for gdk:event-owner-change
+    (is-false (gdk:event-owner-change-owner event))
+    (is (eq :new-owner (gdk:event-owner-change-reason event)))
+    (is (cffi:null-pointer-p (gdk:event-owner-change-selection event)))
+    (is (= 0 (gdk:event-owner-change-time event)))
+    (is (= 0 (gdk:event-owner-change-selection-time event)))))
+
+;;;     GdkEventGrabBroken
+
+(test gdk-event-grab-broken
+  (let ((event (gdk:event-new :grab-broken)))
+    (is (typep event 'gdk:event-grab-broken))
+    ;; Common slots
+    (is (eq :grab-broken (gdk:event-type event)))
+    (is-false (gdk:event-window event))
+    (is-false (gdk:event-send-event event))
+    ;; Slots for gdk:event-grab-broken
+    (is-false (gdk:event-grab-broken-keyboard event))
+    (is-false (gdk:event-grab-broken-implicit event))
+    (is-false (gdk:event-grab-broken-grab-window event))))
+
+;;;     GdkEventTouchpadSwipe
 
 (test gdk-event-touchpad-swipe
   (let ((event (gdk:event-new :touchpad-swipe)))
@@ -1128,20 +976,7 @@
     (is (= 0 (gdk:event-touchpad-swipe-y-root event)))
     (is-false (gdk:event-touchpad-swipe-state event))))
 
-;;    ;; GdkEventTouchpadPinch
-;;    ((:touchpad-pinch) gdk-event-touchpad-pinch
-;;     (phase :int8 :initform 0)
-;;     (n-fingers :int8 :initform 0)
-;;     (time :uint32 :initform 0)
-;;     (x :double :initform 0.0d0)
-;;     (y :double :initform 0.0d0)
-;;     (dx :double :initform 0.0d0)
-;;     (dy :double :initform 0.0d0)
-;;     (angle-delta :double :initform 0.0d0)
-;;     (scale :double :initform 0.0d0)
-;;     (x-root :double :initform 0.0d0)
-;;     (y-root :double :initform 0.0d0)
-;;     (state gdk-modifier-type))
+;;;     GdkEventTouchpadPinch
 
 (test gdk-event-touchpad-pinch
   (let ((event (gdk:event-new :touchpad-pinch)))
@@ -1164,12 +999,7 @@
     (is (= 0 (gdk:event-touchpad-pinch-y-root event)))
     (is-false (gdk:event-touchpad-pinch-state event))))
 
-;;    ;; GdkEventPadButton
-;;    ((:pad-button-press :pad-button-release) gdk-event-pad-button
-;;     (time :uint32 :initform 0)
-;;     (group :uint :initform 0)
-;;     (button :uint :initform 0)
-;;     (mode :uint :initform 0)) ; TODO: Check the type of mode
+;;;     GdkEventPadButton
 
 (test gdk-event-pad-button
   (let ((event (gdk:event-new :pad-button-press)))
@@ -1184,13 +1014,7 @@
     (is (= 0 (gdk:event-pad-button-button event)))
     (is (= 0 (gdk:event-pad-button-mode event)))))
 
-;;    ;; GdkEventPadAxis
-;;    ((:pad-ring :pad-strip) gdk-event-pad-axis
-;;     (time :uint32 :initform 0)
-;;     (group :uint :initform 0)
-;;     (index :uint :initform 0)
-;;     (mode :uint :initform 0)
-;;     (value :double :initform 0.0d0))
+;;;     GdkEventPadAxis
 
 (test gdk-event-pad-axis
   (let ((event (gdk:event-new :pad-ring)))
@@ -1206,11 +1030,7 @@
     (is (= 0 (gdk:event-pad-axis-mode event)))
     (is (= 0 (gdk:event-pad-axis-value event)))))
 
-;;    ;; GdkEventPadGroupMode
-;;    ((:pad-group-mode) gdk-event-pad-group-mode
-;;     (time :uint32 :initform 0)
-;;     (group :uint :initform 0)
-;;     (mode :uint :initform 0))
+;;;     GdkEventPadGroupMode
 
 (test gdk-event-pad-group-mode
   (let ((event (gdk:event-new :pad-group-mode)))
@@ -1224,4 +1044,4 @@
     (is (= 0 (gdk:event-pad-group-mode-group event)))
     (is (= 0 (gdk:event-pad-group-mode-mode event)))))
 
-;;; --- 2023-7-19 --------------------------------------------------------------
+;;; 2024.6-28

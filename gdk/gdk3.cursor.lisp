@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -36,19 +36,23 @@
 ;;;     GdkCursor
 ;;;     GdkCursorType
 ;;;
+;;; Accessors
+;;;
+;;;     gdk_cursor_get_display                              Accessor
+;;;     gdk_cursor_get_cursor_type                          Accessor
+;;;
 ;;; Functions
 ;;;
-;;;     gdk_cursor_new                                     deprecated
+;;;     gdk_cursor_new                                      Deprecated 3.16
 ;;;     gdk_cursor_new_from_pixbuf
 ;;;     gdk_cursor_new_from_surface
 ;;;     gdk_cursor_new_from_name
 ;;;     gdk_cursor_new_for_display
-;;;     gdk_cursor_get_display                             Accessor
 ;;;     gdk_cursor_get_image
 ;;;     gdk_cursor_get_surface
-;;;     gdk_cursor_get_cursor_type                         Accessor
-;;;     gdk_cursor_ref                                     not exported
-;;;     gdk_cursor_unref                                   not exported
+;;;
+;;;     gdk_cursor_ref                                      not implemented
+;;;     gdk_cursor_unref                                    not implemented
 ;;;
 ;;; Properties
 ;;;
@@ -64,7 +68,7 @@
 (in-package :gdk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GdkCursorType
+;;; GdkCursorType
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GdkCursorType" cursor-type
@@ -155,16 +159,8 @@
 (setf (liber:alias-for-symbol 'cursor-type)
       "GEnum"
       (liber:symbol-documentation 'cursor-type)
- "@version{#2021-12-11}
-  @begin{short}
-    The standard cursors available.
-  @end{short}
-
-  Note that these IDs are directly taken from the X cursor font, and many of
-  these cursors are either not useful, or are not available on other platforms.
-  The recommended way to create cursors is to use the
-  @fun{gdk:cursor-new-from-name} function.
-  @begin{pre}
+ "@version{2024-6-29}
+  @begin{declaration}
 (gobject:define-g-enum \"GdkCursorType\" cursor-type
   (:export t
    :type-initializer \"gdk_cursor_type_get_type\")
@@ -248,95 +244,101 @@
   (:last-cursor 153)
   (:blank-cursor -2)
   (:cursor-is-pixmap -1))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:x-cursor]{@image[cursor-x-cursor]{}}
-    @entry[:arrow]{@image[cursor-arrow]{}}
-    @entry[:based-arrow-down]{@image[cursor-based-arrow-down]{}}
-    @entry[:based-arrow-up]{@image[cursor-based-arrow-up]{}}
-    @entry[:boat]{@image[cursor-boat]{}}
-    @entry[:bogosity]{@image[cursor-bogosity]{}}
-    @entry[:bottom-left-corner]{@image[cursor-bottom-left-corner]{}}
-    @entry[:bottom-right-corner]{@image[cursor-bottom-right-corner]{}}
-    @entry[:bottom-side]{@image[cursor-bottom-side]{}}
-    @entry[:bottom-tee]{@image[cursor-bottom-tee]{}}
-    @entry[:box-spiral]{@image[cursor-box-spiral]{}}
-    @entry[:center-ptr]{@image[cursor-center-ptr]{}}
-    @entry[:circle]{@image[cursor-circle]{}}
-    @entry[:clock]{@image[cursor-clock]{}}
-    @entry[:coffee-mug]{@image[cursor-coffee-mug]{}}
-    @entry[:cross]{@image[cursor-cross]{}}
-    @entry[:cross-reverse]{@image[cursor-cross-reverse]{}}
-    @entry[:crosshair]{@image[cursor-crosshair-stock]{}}
-    @entry[:diamond-cross]{@image[cursor-diamond-cross]{}}
-    @entry[:dot]{@image[cursor-dot]{}}
-    @entry[:dotbox]{@image[cursor-dotbox]{}}
-    @entry[:double-arrow]{@image[cursor-double-arrow]{}}
-    @entry[:draft-large]{@image[cursor-draft-large]{}}
-    @entry[:draft-small]{@image[cursor-draft-small]{}}
-    @entry[:draped-box]{@image[cursor-draped-box]{}}
-    @entry[:exchange]{@image[cursor-exchange]{}}
-    @entry[:fleur]{@image[cursor-fleur]{}}
-    @entry[:gobbler]{@image[cursor-gobbler]{}}
-    @entry[:gumby]{@image[cursor-gumby]{}}
-    @entry[:hand1]{@image[cursor-hand1]{}}
-    @entry[:hand2]{@image[cursor-hand2]{}}
-    @entry[:heart]{@image[cursor-heart]{}}
-    @entry[:icon]{@image[cursor-icon]{}}
-    @entry[:iron-cross]{@image[cursor-iron-cross]{}}
-    @entry[:left-ptr]{@image[cursor-left-ptr]{}}
-    @entry[:left-side]{@image[cursor-left-side]{}}
-    @entry[:left-tee]{@image[cursor-left-tee]{}}
-    @entry[:leftbutton]{@image[cursor-leftbutton]{}}
-    @entry[:ll-angle]{@image[cursor-ll-angle]{}}
-    @entry[:lr-angle]{@image[cursor-lr-angle]{}}
-    @entry[:man]{@image[cursor-man]{}}
-    @entry[:middlebutton]{@image[cursor-middlebutton]{}}
-    @entry[:mouse]{@image[cursor-mouse]{}}
-    @entry[:pencil]{@image[cursor-pencil]{}}
-    @entry[pirate:]{@image[cursor-pirate]{}}
-    @entry[:plus]{@image[cursor-plus]{}}
-    @entry[:question-arrow]{@image[cursor-question-arrow]{}}
-    @entry[:right-ptr]{@image[cursor-right-ptr]{}}
-    @entry[:right-side]{@image[cursor-right-side]{}}
-    @entry[:right-tee]{@image[cursor-right-tee]{}}
-    @entry[:rightbutton]{@image[cursor-rightbutton]{}}
-    @entry[:rtl-logo]{@image[cursor-rtl-logo]{}}
-    @entry[:sailboat]{@image[cursor-sailboat]{}}
-    @entry[:sb-down-arrow]{@image[cursor-sb-down-arrow]{}}
-    @entry[:sb-h-double-arrow]{@image[cursor-sb-h-double-arrow]{}}
-    @entry[:sb-left-arrow]{@image[cursor-sb-left-arrow]{}}
-    @entry[:sb-right-arrow]{@image[cursor-sb-right-arrow]{}}
-    @entry[:sb-up-arrow]{@image[cursor-sb-up-arrow]{}}
-    @entry[:sb-v-double-arrow]{@image[cursor-sb-v-double-arrow]{}}
-    @entry[:shuttle]{@image[cursor-shuttle]{}}
-    @entry[:sizing]{@image[cursor-sizing]{}}
-    @entry[:spider]{@image[cursor-spider]{}}
-    @entry[:spraycan]{@image[cursor-spraycan]{}}
-    @entry[:star]{@image[cursor-star]{}}
-    @entry[:target]{@image[cursor-target]{}}
-    @entry[:tcross]{@image[cursor-tcross]{}}
-    @entry[:top-left-arrow]{@image[cursor-top-left-arrow]{}}
-    @entry[:top-left-corner]{@image[cursor-top-left-corner]{}}
-    @entry[:top-right-corner]{@image[cursor-top-right-corner]{}}
-    @entry[:top-side]{@image[cursor-top-side]{}}
-    @entry[:top-tee]{@image[cursor-top-tee]{}}
-    @entry[:trek]{@image[cursor-trek]{}}
-    @entry[:ul-angle]{@image[cursor-ul-angle]{}}
-    @entry[:umbrella]{@image[cursor-umbrella]{}}
-    @entry[:ur-angle]{@image[cursor-ur-angle]{}}
-    @entry[:watch]{@image[cursor-watch]{}}
-    @entry[:xterm]{@image[cursor-xterm]{}}
-    @entry[:last-cursor]{Last cursor type.}
-    @entry[:blank-cursor]{Blank cursor.}
-    @entry[:cursor-is-pixmap]{Type of cursors constructed with the
-      @fun{gdk:cursor-new-from-pixbuf} function.}
-  @end{table}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:x-cursor]{@image[cursor-x-cursor]{}}
+      @entry[:arrow]{@image[cursor-arrow]{}}
+      @entry[:based-arrow-down]{@image[cursor-based-arrow-down]{}}
+      @entry[:based-arrow-up]{@image[cursor-based-arrow-up]{}}
+      @entry[:boat]{@image[cursor-boat]{}}
+      @entry[:bogosity]{@image[cursor-bogosity]{}}
+      @entry[:bottom-left-corner]{@image[cursor-bottom-left-corner]{}}
+      @entry[:bottom-right-corner]{@image[cursor-bottom-right-corner]{}}
+      @entry[:bottom-side]{@image[cursor-bottom-side]{}}
+      @entry[:bottom-tee]{@image[cursor-bottom-tee]{}}
+      @entry[:box-spiral]{@image[cursor-box-spiral]{}}
+      @entry[:center-ptr]{@image[cursor-center-ptr]{}}
+      @entry[:circle]{@image[cursor-circle]{}}
+      @entry[:clock]{@image[cursor-clock]{}}
+      @entry[:coffee-mug]{@image[cursor-coffee-mug]{}}
+      @entry[:cross]{@image[cursor-cross]{}}
+      @entry[:cross-reverse]{@image[cursor-cross-reverse]{}}
+      @entry[:crosshair]{@image[cursor-crosshair-stock]{}}
+      @entry[:diamond-cross]{@image[cursor-diamond-cross]{}}
+      @entry[:dot]{@image[cursor-dot]{}}
+      @entry[:dotbox]{@image[cursor-dotbox]{}}
+      @entry[:double-arrow]{@image[cursor-double-arrow]{}}
+      @entry[:draft-large]{@image[cursor-draft-large]{}}
+      @entry[:draft-small]{@image[cursor-draft-small]{}}
+      @entry[:draped-box]{@image[cursor-draped-box]{}}
+      @entry[:exchange]{@image[cursor-exchange]{}}
+      @entry[:fleur]{@image[cursor-fleur]{}}
+      @entry[:gobbler]{@image[cursor-gobbler]{}}
+      @entry[:gumby]{@image[cursor-gumby]{}}
+      @entry[:hand1]{@image[cursor-hand1]{}}
+      @entry[:hand2]{@image[cursor-hand2]{}}
+      @entry[:heart]{@image[cursor-heart]{}}
+      @entry[:icon]{@image[cursor-icon]{}}
+      @entry[:iron-cross]{@image[cursor-iron-cross]{}}
+      @entry[:left-ptr]{@image[cursor-left-ptr]{}}
+      @entry[:left-side]{@image[cursor-left-side]{}}
+      @entry[:left-tee]{@image[cursor-left-tee]{}}
+      @entry[:leftbutton]{@image[cursor-leftbutton]{}}
+      @entry[:ll-angle]{@image[cursor-ll-angle]{}}
+      @entry[:lr-angle]{@image[cursor-lr-angle]{}}
+      @entry[:man]{@image[cursor-man]{}}
+      @entry[:middlebutton]{@image[cursor-middlebutton]{}}
+      @entry[:mouse]{@image[cursor-mouse]{}}
+      @entry[:pencil]{@image[cursor-pencil]{}}
+      @entry[pirate:]{@image[cursor-pirate]{}}
+      @entry[:plus]{@image[cursor-plus]{}}
+      @entry[:question-arrow]{@image[cursor-question-arrow]{}}
+      @entry[:right-ptr]{@image[cursor-right-ptr]{}}
+      @entry[:right-side]{@image[cursor-right-side]{}}
+      @entry[:right-tee]{@image[cursor-right-tee]{}}
+      @entry[:rightbutton]{@image[cursor-rightbutton]{}}
+      @entry[:rtl-logo]{@image[cursor-rtl-logo]{}}
+      @entry[:sailboat]{@image[cursor-sailboat]{}}
+      @entry[:sb-down-arrow]{@image[cursor-sb-down-arrow]{}}
+      @entry[:sb-h-double-arrow]{@image[cursor-sb-h-double-arrow]{}}
+      @entry[:sb-left-arrow]{@image[cursor-sb-left-arrow]{}}
+      @entry[:sb-right-arrow]{@image[cursor-sb-right-arrow]{}}
+      @entry[:sb-up-arrow]{@image[cursor-sb-up-arrow]{}}
+      @entry[:sb-v-double-arrow]{@image[cursor-sb-v-double-arrow]{}}
+      @entry[:shuttle]{@image[cursor-shuttle]{}}
+      @entry[:sizing]{@image[cursor-sizing]{}}
+      @entry[:spider]{@image[cursor-spider]{}}
+      @entry[:spraycan]{@image[cursor-spraycan]{}}
+      @entry[:star]{@image[cursor-star]{}}
+      @entry[:target]{@image[cursor-target]{}}
+      @entry[:tcross]{@image[cursor-tcross]{}}
+      @entry[:top-left-arrow]{@image[cursor-top-left-arrow]{}}
+      @entry[:top-left-corner]{@image[cursor-top-left-corner]{}}
+      @entry[:top-right-corner]{@image[cursor-top-right-corner]{}}
+      @entry[:top-side]{@image[cursor-top-side]{}}
+      @entry[:top-tee]{@image[cursor-top-tee]{}}
+      @entry[:trek]{@image[cursor-trek]{}}
+      @entry[:ul-angle]{@image[cursor-ul-angle]{}}
+      @entry[:umbrella]{@image[cursor-umbrella]{}}
+      @entry[:ur-angle]{@image[cursor-ur-angle]{}}
+      @entry[:watch]{@image[cursor-watch]{}}
+      @entry[:xterm]{@image[cursor-xterm]{}}
+      @entry[:last-cursor]{Last cursor type.}
+      @entry[:blank-cursor]{Blank cursor.}
+      @entry[:cursor-is-pixmap]{Type of cursors constructed with the
+        @fun{gdk:cursor-new-from-pixbuf} function.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    The standard cursors available.
+  @end{short}
+  Note that these IDs are directly taken from the X cursor font, and many of
+  these cursors are either not useful, or are not available on other platforms.
+  The recommended way to create cursors is to use the
+  @fun{gdk:cursor-new-from-name} function.
   @see-class{gdk:cursor}
-  @see-function{gdk:cursor-cursor-type}
-  @see-function{gdk:cursor-new-for-display}
-  @see-function{gdk:cursor-new-from-name}
-  @see-function{gdk:cursor-new-from-pixbuf}")
+  @see-function{gdk:cursor-new-from-name}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; GdkCursor
@@ -364,7 +366,7 @@
 
 #+liber-documentation
 (setf (documentation 'cursor 'type)
- "@version{#2023-3-12}
+ "@version{2024-6-29}
   @begin{short}
     The @class{gdk:cursor} object represents a cursor.
   @end{short}
@@ -386,11 +388,7 @@
   @see-class{gdk:display}
   @see-symbol{gdk:window-attr}
   @see-function{gdk:window-new}
-  @see-function{gdk:window-cursor}
-  @see-function{gdk:display-supports-cursor-alpha}
-  @see-function{gdk:display-supports-cursor-color}
-  @see-function{gdk:display-default-cursor-size}
-  @see-function{gdk:display-maximal-cursor-size}")
+  @see-function{gdk:window-cursor}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; Property and Accessor Details
@@ -409,7 +407,7 @@
 (setf (liber:alias-for-function 'cursor-cursor-type)
       "Accessor"
       (documentation 'cursor-cursor-type 'function)
- "@version{#2021-12-11}
+ "@version{2024-6-29}
   @syntax[]{(gdk:cursor-cursor-type object) => type}
   @argument[object]{a @class{gdk:cursor} object}
   @argument[type]{a value of the @symbol{gdk:cursor-type} enumeration}
@@ -434,7 +432,7 @@
 (setf (liber:alias-for-function 'cursor-display)
       "Accessor"
       (documentation 'cursor-display 'function)
- "@version{#2021-12-11}
+ "@version{2024-6-29}
   @syntax[]{(gdk:cursor-display object) => display}
   @argument[object]{a @class{gdk:cursor} object}
   @argument[display]{a @class{gdk:display} object}
@@ -448,20 +446,19 @@
   @see-class{gdk:display}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_cursor_new ()
+;;; gdk_cursor_new
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_cursor_new" cursor-new) (g:object cursor)
  #+liber-documentation
- "@version{#2021-12-11}
+ "@version{2024-6-29}
   @argument[type]{a value of the @symbol{gdk:cursor-type} enumeration
     with the cursor to create}
-  @return{A new @class{gdk:cursor} object.}
+  @return{The new @class{gdk:cursor} object.}
   @begin{short}
     Creates a new cursor from the set of builtin cursors for the default
     display. See the @fun{gdk:cursor-new-for-display} function.
   @end{short}
-
   To make the cursor invisible, use the @code{:blank-cursor} value of the
   @symbol{gdk:cursor-type} enumeration.
   @begin[Warning]{dictionary}
@@ -477,13 +474,13 @@
 (export 'cursor-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_cursor_new_from_pixbuf ()
+;;; gdk_cursor_new_from_pixbuf
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_cursor_new_from_pixbuf" cursor-new-from-pixbuf)
     (g:object cursor)
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{2024-6-29}
   @argument[display]{a @class{gdk:display} object for which the cursor will
     be created}
   @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object containing the cursor
@@ -492,7 +489,7 @@
     cursor}
   @argument[y]{an integer with the vertical offset of the 'hotspot' of the
     cursor}
-  @return{A new @class{gdk:cursor} object.}
+  @return{The new @class{gdk:cursor} object.}
   @begin{short}
     Creates a new cursor from a pixbuf.
   @end{short}
@@ -505,8 +502,8 @@
   cursor sizes.
 
   If the @arg{x} or @arg{y} arguments are -1, the pixbuf must have options named
-  \"x_hot\" and \"y_hot\", resp., containing integer values between 0 and the
-  width resp. height of the pixbuf.
+  @code{\"x_hot\"} and @code{\"y_hot\"} containing integer values between 0 and
+  the width and height of the pixbuf.
 
   On the X backend, support for RGBA cursors requires a sufficently new version
   of the X Render extension.
@@ -524,26 +521,31 @@
 (export 'cursor-new-from-pixbuf)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_cursor_new_from_surface ()
+;;; gdk_cursor_new_from_surface
 ;;; ----------------------------------------------------------------------------
 
-(cffi:defcfun ("gdk_cursor_new_from_surface" cursor-new-from-surface)
+(cffi:defcfun ("gdk_cursor_new_from_surface" %cursor-new-from-surface)
     (g:object cursor)
+  (display (g:object display))
+  (surface (:pointer (:struct cairo:surface-t)))
+  (x :double)
+  (y :double))
+
+(defun cursor-new-from-surface (display surface x y)
  #+liber-documentation
- "@version{#2021-12-11}
+ "@version{2024-6-29}
   @argument[display]{a @class{gdk:display} object for which the cursor will
     be created}
   @argument[surface]{a @symbol{cairo:surface-t} instance containing the
     cursor pixel data}
-  @argument[x]{a double float with the horizontal offset of the 'hotspot' of
-    the cursor}
-  @argument[y]{a double float with the vertical offset of the 'hotspot' of
-    the cursor}
-  @return{A new @class{gdk:cursor} object.}
+  @argument[x]{a number coerced to a double float with the horizontal offset of
+    the 'hotspot' of the cursor}
+  @argument[y]{a number coerced to a double float with the vertical offset of
+    the 'hotspot' of the cursor}
+  @return{The new @class{gdk:cursor} object.}
   @begin{short}
     Creates a new cursor from a cairo image surface.
   @end{short}
-
   Not all GDK backends support RGBA cursors. If they are not supported, a
   monochrome approximation will be displayed. The
   @fun{gdk:display-supports-cursor-alpha} and
@@ -560,25 +562,25 @@
   @see-function{gdk:display-supports-cursor-color}
   @see-function{gdk:display-default-cursor-size}
   @see-function{gdk:display-maximal-cursor-size}"
-  (display (g:object display))
-  (surface (:pointer (:struct cairo:surface-t)))
-  (x :double)
-  (y :double))
+  (%cursor-new-from-surface display
+                            surface
+                            (coerce x 'double-float)
+                            (coerce y 'double-float)))
 
 (export 'cursor-new-from-surface)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_cursor_new_from_name ()
+;;; gdk_cursor_new_from_name
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_cursor_new_from_name" cursor-new-from-name)
     (g:object cursor)
  #+liber-documentation
- "@version{#2021-12-11}
+ "@version{2024-6-29}
   @argument[display]{a @class{gdk:display} object for which the cursor will be
     created}
   @argument[name]{a string with the name of the cursor}
-  @return{A new @class{gdk:cursor} object, or @code{nil} if there is no cursor
+  @return{The new @class{gdk:cursor} object, or @code{nil} if there is no cursor
     with the given @arg{name}.}
   @begin{short}
     Creates a new cursor by looking up @arg{name} in the current cursor theme.
@@ -622,14 +624,14 @@
     @entry[\"zoom-in\"]{@image[cursor-zoom-in]{}}
     @entry[\"zoom-out\"]{@image[cursor-zoom-out]{}}
   @end{table}
-  @begin[Examples]{dictionary}
+  @begin{examples}
     @begin{pre}
 (gdk:cursor-new-from-name (gdk:display-default) \"wait\")
 => #<GDK-X11-CURSOR {1001AFE123@}>
 (gdk:cursor-new-from-name (gdk:display-default) \"unknown\")
 => NIL
     @end{pre}
-  @end{dictionary}
+  @end{examples}
   @see-class{gdk:cursor}
   @see-class{gdk:display}"
   (display (g:object display))
@@ -638,18 +640,18 @@
 (export 'cursor-new-from-name)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_cursor_new_for_display ()
+;;; gdk_cursor_new_for_display
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_cursor_new_for_display" cursor-new-for-display)
     (g:object cursor)
  #+liber-documentation
- "@version{#2021-12-11}
+ "@version{2024-6-29}
   @argument[display]{a @class{gdk:display} object for which the cursor will
     be created}
   @argument[type]{a value of the @symbol{gdk:cursor-type} enumeration to create
   the cursor from }
-  @return{A new @class{gdk:cursor} object.}
+  @return{The new @class{gdk:cursor} object.}
   @begin{short}
     Creates a new cursor from the set of builtin cursors.
   @end{short}
@@ -662,14 +664,14 @@
 (export 'cursor-new-for-display)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_cursor_get_image () -> cursor-image
+;;; gdk_cursor_get_image
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_cursor_get_image" cursor-image) (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{2024-6-29}
   @argument[cursor]{a @class{gdk:cursor} object}
-  @return{A @class{gdk-pixbuf:pixbuf} object representing @arg{cursor}, or
+  @return{The @class{gdk-pixbuf:pixbuf} object representing @arg{cursor}, or
     @code{nil}.}
   @begin{short}
     Returns a @class{gdk-pixbuf:pixbuf} object with the image used to display
@@ -685,84 +687,39 @@
 (export 'cursor-image)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_cursor_get_surface () -> cursor-surface
+;;; gdk_cursor_get_surface
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_cursor_get_surface" %cursor-surface)
     (:pointer (:struct cairo:surface-t))
   (cursor (g:object cursor))
-  (x-hot (:pointer :double))
-  (y-hot (:pointer :double)))
+  (xhot (:pointer :double))
+  (yhot (:pointer :double)))
 
 (defun cursor-surface (cursor)
  #+liber-documentation
- "@version{#2021-12-11}
+ "@version{2024-6-29}
   @argument[cursor]{a @class{gdk:cursor} object}
   @begin{return}
     @arg{surface} -- a @symbol{cairo:surface-t} instance representing a cursor
     @br{}
-    @arg{x-hot} -- a double float with the hotspot x position @br{}
-    @arg{y-hot} -- a double float with the hotspot y position
+    @arg{xhot} -- a double float with the hotspot x position @br{}
+    @arg{yhot} -- a double float with the hotspot y position
   @end{return}
   @begin{short}
     Returns a Cairo image surface with the image used to display the cursor.
   @end{short}
-
   Note that depending on the capabilities of the windowing system and on the
   cursor, GDK may not be able to obtain the image data. In this case, @code{nil}
   is returned.
   @see-class{gdk:cursor}
   @see-symbol{cairo:surface-t}"
-  (cffi:with-foreign-objects ((x-hot :double) (y-hot :double))
-    (let ((surface (%cursor-surface cursor x-hot y-hot)))
+  (cffi:with-foreign-objects ((xhot :double) (yhot :double))
+    (let ((surface (%cursor-surface cursor xhot yhot)))
       (when surface
-        (values surface (cffi:mem-ref x-hot :double)
-                        (cffi:mem-ref y-hot :double))))))
+        (values surface (cffi:mem-ref xhot :double)
+                        (cffi:mem-ref yhot :double))))))
 
 (export 'cursor-surface)
-
-;;; ----------------------------------------------------------------------------
-;;; gdk_cursor_ref ()
-;;; ----------------------------------------------------------------------------
-
-;; This function is deprecated and not exported.
-
-#+nil
-(defun cursor-ref (cursor)
- #+liber-documentation
- "@version{#2013-7-29}
-  @argument[cursor]{a @class{gdk:cursor} object}
-  @return{Same @arg{cursor} that was passed in.}
-  @short{Adds a reference to @arg{cursor}.}
-  @begin[Warning]{dictionary}
-    The @fun{gdk:cursor-ref} function has been deprecated since version 3.0 and
-    should not be used in newly written code. Use the @fun{g:object-ref}
-    function instead.
-  @end{dictionary}
-  @see-class{gdk:cursor}"
-  (g:object-ref cursor))
-
-;;; ----------------------------------------------------------------------------
-;;; gdk_cursor_unref ()
-;;; ----------------------------------------------------------------------------
-
-;; This function is deprecated and not exported.
-
-#+nil
-(defun cursor-unref (cursor)
- #+liber-documentation
- "@version{#2013-7-29}
-  @argument[cursor]{a @class{gdk:cursor} object}
-  @begin{short}
-    Removes a reference from @arg{cursor}, deallocating the @arg{cursor} if no
-    references remain.
-  @end{short}
-  @begin[Warning]{dictionary}
-    The @fun{gdk:cursor-unref} function has been deprecated since version 3.0
-    and should not be used in newly written code. Use the @fun{g:object-unref}
-    function instead.
-  @end{dictionary}
-  @see-class{gdk:cursor}"
-  (g:object-unref cursor))
 
 ;;; --- End of file gdk3.cursor.lisp -------------------------------------------
