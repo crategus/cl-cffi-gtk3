@@ -82,7 +82,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkBuilderError                                   not exported
+;;; GtkBuilderError                                         not exported
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkBuilderError" builder-error
@@ -109,7 +109,6 @@
       (liber:symbol-documentation 'builder-error)
  "@version{#2024-3-21}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkBuilderError\" builder-error
   (:export t
    :type-initializer \"gtk_builder_error_get_type\")
@@ -127,7 +126,6 @@
   (:invalid-property 11)
   (:invalid-signal 12)
   (:invalid-id 13))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -165,7 +163,7 @@
   @see-class{gtk:builder}")
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkBuilder
+;;; GtkBuilder
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-object-class "GtkBuilder" builder
@@ -187,7 +185,7 @@
 
 #+liber-documentation
 (setf (documentation 'builder 'type)
- "@version{2024-3-20}
+ "@version{2024-6-27}
   @begin{short}
     The @class{gtk:builder} object is an auxiliary object that reads textual
     descriptions of a user interface and instantiates the described objects.
@@ -239,12 +237,12 @@
     Objects are described by @code{<object>} elements, which can contain
     @code{<property>} elements to set properties, @code{<signal>} elements which
     connect signals to handlers, and @code{<child>} elements, which describe
-    child objects, most often widgets inside a container, but also e.g. actions
-    in an action group, or columns in a tree model. A @code{<child>} element
-    contains an @code{<object>} element which describes the child object. The
-    target toolkit version(s) are described by @code{<requires>} elements, the
-    @code{\"lib\"} attribute specifies the widget library in question,
-    (currently the only supported value is @code{\"gtk+\"} and the
+    child objects, most often widgets inside a container, but also, for example,
+    actions in an action group, or columns in a tree model. A @code{<child>}
+    element contains an @code{<object>} element which describes the child
+    object. The target toolkit version(s) are described by @code{<requires>}
+    elements, the @code{\"lib\"} attribute specifies the widget library in
+    question, (currently the only supported value is @code{\"gtk+\"} and the
     @code{\"version\"} attribute specifies the target version in the form
     @code{\"<major>.<minor>\"}. The builder will error out if the version
     requirements are not met.
@@ -283,7 +281,7 @@
     strings like @code{\"FALSE\"}, @code{\"f\"}, @code{\"no\"}, @code{\"n\"},
     @code{\"0\"} are interpreted as @em{false}, enumerations, can be specified
     by their name, nick or integer value, flags, can be specified by their name,
-    nick, integer value, optionally combined with @code{\"|\"}, e.g.
+    nick, integer value, optionally combined with @code{\"|\"}, for example,
     @code{\"GTK_VISIBLE | GTK_REALIZED\"}, and colors, in a format understood
     by the @fun{gdk:rgba-parse} function. A @type{g:variant} instance can be
     specified in the format understood by the @fun{g:variant-parse} function,
@@ -317,17 +315,19 @@
 
     Sometimes it is necessary to refer to widgets which have implicitly been
     constructed by GTK as part of a composite widget, to set properties on them
-    or to add further children, e.g. the @code{vbox} of a @class{gtk:dialog}
-    widget. This can be achieved by setting the @code{\"internal-child\"}
-    propery of the @code{<child>} element to a @em{true} value. Note that a
-    @class{gtk:builder} object still requires an @code{<object>} element for
-    the internal child, even if it has already been constructed.
+    or to add further children, for example, the @code{vbox} of a
+    @class{gtk:dialog} widget. This can be achieved by setting the
+    @code{\"internal-child\"} propery of the @code{<child>} element to a
+    @em{true} value. Note that a @class{gtk:builder} object still requires an
+    @code{<object>} element for the internal child, even if it has already been
+    constructed.
 
-    A number of widgets have different places where a child can be added, e.g.
-    tabs versus page content in notebooks. This can be reflected in a UI
-    definition by specifying the @code{\"type\"} attribute on a @code{<child>}.
-    The possible values for the @code{\"type\"} attribute are described in the
-    sections describing the widget specific portions of UI definitions.
+    A number of widgets have different places where a child can be added, for
+    example, tabs versus page content in notebooks. This can be reflected in a
+    UI definition by specifying the @code{\"type\"} attribute on a
+    @code{<child>}. The possible values for the @code{\"type\"} attribute are
+    described in the sections describing the widget specific portions of UI
+    definitions.
 
     Beyond this general structure, several object classes define their own XML
     DTD fragments for filling in the ANY placeholders in the DTD above. Note
@@ -407,7 +407,7 @@
   @see-class{gtk:builder}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_builder_new ()
+;;; gtk_builder_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline builder-new))
@@ -426,7 +426,7 @@
 (export 'builder-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_builder_new_from_file ()
+;;; gtk_builder_new_from_file
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_builder_new_from_file" %builder-new-from-file)
@@ -451,7 +451,7 @@
 (export 'builder-new-from-file)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_builder_new_from_resource ()
+;;; gtk_builder_new_from_resource
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_builder_new_from_resource" builder-new-from-resource)
@@ -475,7 +475,7 @@
 (export 'builder-new-from-resource)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_builder_new_from_string ()
+;;; gtk_builder_new_from_string
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_builder_new_from_string" %builder-new-from-string)
@@ -580,7 +580,7 @@
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_builder_add_from_file ()
+;;; gtk_builder_add_from_file
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_builder_add_from_file" %builder-add-from-file) :uint
@@ -608,7 +608,7 @@
 (export 'builder-add-from-file)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_builder_add_from_resource ()
+;;; gtk_builder_add_from_resource
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_builder_add_from_resource" %builder-add-from-resource) :uint
@@ -637,7 +637,7 @@
 (export 'builder-add-from-resource)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_builder_add_from_string ()
+;;; gtk_builder_add_from_string
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_builder_add_from_string" %builder-add-from-string) :uint
@@ -666,7 +666,7 @@
 (export 'builder-add-from-string)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_builder_add_objects_from_file ()
+;;; gtk_builder_add_objects_from_file
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_builder_add_objects_from_file"
@@ -718,7 +718,7 @@
 (export 'builder-add-objects-from-file)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_builder_add_objects_from_string ()
+;;; gtk_builder_add_objects_from_string
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_builder_add_objects_from_string"
@@ -769,7 +769,7 @@
 (export 'builder-add-objects-from-string)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_builder_add_objects_from_resource ()
+;;; gtk_builder_add_objects_from_resource
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_builder_add_objects_from_resource"
@@ -858,7 +858,7 @@
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_builder_get_object ()
+;;; gtk_builder_get_object
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_builder_get_object" builder-object) g:object
@@ -880,15 +880,15 @@
 (export 'builder-object)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_builder_get_objects ()
+;;; gtk_builder_get_objects
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_builder_get_objects" builder-objects) (g:slist-t g:object)
  #+liber-documentation
- "@version{2023-3-2}
+ "@version{2024-6-27}
   @argument[builder]{a @class{gtk:builder} object}
   @begin{return}
-    A list containing all the @class{g:object} instances constructed by the
+    The list containing all the @class{g:object} instances constructed by the
     @class{gtk:builder} object.
   @end{return}
   @begin{short}
@@ -902,7 +902,7 @@
 (export 'builder-objects)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_builder_expose_object ()
+;;; gtk_builder_expose_object
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_builder_expose_object" builder-expose-object) :void
@@ -924,7 +924,7 @@
 (export 'builder-expose-object)
 
 ;;; ----------------------------------------------------------------------------
-;;; GtkBuilderConnectFunc ()                                not exported
+;;; GtkBuilderConnectFunc                                   not exported
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcallback builder-connect-func :void
@@ -966,7 +966,7 @@
   @see-function{gtk:builder-connect-signals-full}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_builder_connect_signals_full ()                     not exported
+;;; gtk_builder_connect_signals_full                        not exported
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_builder_connect_signals_full" %builder-connect-signals-full)
@@ -994,7 +994,7 @@
                                    ptr)))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_builder_connect_signals ()
+;;; gtk_builder_connect_signals
 ;;; ----------------------------------------------------------------------------
 
 (defun builder-connect-signals (builder &rest handlers)
@@ -1037,8 +1037,8 @@
 (export 'builder-connect-signals)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_builder_get_application ()
-;;; gtk_builder_set_application ()
+;;; gtk_builder_get_application
+;;; gtk_builder_set_application
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf builder-application) (application builder)
@@ -1080,7 +1080,7 @@
 (export 'builder-application)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_builder_get_type_from_name ()
+;;; gtk_builder_get_type_from_name
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_builder_get_type_from_name" builder-type-from-name) g:type-t

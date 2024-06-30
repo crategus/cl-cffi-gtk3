@@ -448,13 +448,11 @@
       (liber:symbol-documentation 'widget-help-type)
  "@version{#2024-3-22}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkWidgetHelpType\" widget-help-type
   (:export t
    :type-initializer \"gtk_widget_help_type_get_type\")
   (:tooltip 0)
   (:whats-this 1))
-    @end{pre}
   @end{declaration}
   @begin{short}
     Kinds of widget-specific help used in the @code{\"show-help\"} signal
@@ -485,14 +483,12 @@
       (liber:symbol-documentation 'size-request-mode)
  "@version{#2024-3-22}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkSizeRequestMode\" size-request-mode
   (:export t
    :type-initializer \"gtk_size_request_mode_get_type\")
   (:height-for-width 0)
   (:width-for-height 1)
   (:constant-size 2))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -566,7 +562,6 @@
       (liber:symbol-documentation 'align)
  "@version{2024-3-22}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkAlign\" align
   (:export t
    :type-initializer \"gtk_align_get_type\")
@@ -575,7 +570,6 @@
   (:end 2)
   (:center 3)
   (:baseline 4))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

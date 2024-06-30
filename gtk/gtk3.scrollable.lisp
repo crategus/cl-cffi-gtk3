@@ -81,13 +81,11 @@
       (liber:symbol-documentation 'scrollable-policy)
  "@version{#2023-3-24}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkScrollablePolicy\" scrollable-policy
   (:export t
    :type-initializer \"gtk_scrollable_policy_get_type\")
   (:minimum 0)
   (:natural 1))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

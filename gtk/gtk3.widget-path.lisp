@@ -100,7 +100,6 @@
       (liber:symbol-documentation 'region-flags)
  "@version{#2024-3-21}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-flags \"GtkRegionFlags\" region-flags
   (:export t
    :type-initializer \"gtk_region_flags_get_type\")
@@ -110,7 +109,6 @@
   (:last #.(ash 1 3))
   (:only #.(ash 1 4))
   (:sorted #.(ash 1 5)))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

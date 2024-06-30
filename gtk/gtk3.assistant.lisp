@@ -133,7 +133,6 @@
       (liber:symbol-documentation 'assistant-page-type)
  "@version{2024-3-16}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkAssistantPageType\" gtk:assistant-page-type
   (:export t
    :type-initializer \"gtk_assistant_page_type_get_type\")
@@ -143,7 +142,6 @@
   (:summary  3)
   (:progress 4)
   (:custom   5))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

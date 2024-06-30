@@ -80,7 +80,6 @@
       (liber:symbol-documentation 'propagation-phase)
  "@version{#2024-3-21}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkPropagationPhase\" propagation-phase
   (:export t
    :type-initializer \"gtk_propagation_phase_get_type\")
@@ -88,7 +87,6 @@
   (:phase-capture 1)
   (:phase-bubble 2)
   (:phase-target 3))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

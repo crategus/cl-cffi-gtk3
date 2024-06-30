@@ -103,7 +103,6 @@
       (liber:symbol-documentation 'menu-direction-type)
  "@version{#2024-3-22}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkMenuDirectionType\" menu-direction-type
   (:export t
    :type-initializer \"gtk_menu_direction_type_get_type\")
@@ -111,7 +110,6 @@
   (:child 1)
   (:next 2)
   (:prev 3))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

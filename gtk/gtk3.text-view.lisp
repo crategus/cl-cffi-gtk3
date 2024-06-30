@@ -216,7 +216,6 @@
       (liber:symbol-documentation 'text-view-layer)
  "@version{#2024-3-22}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkTextViewLayer\" text-view-layer
   (:export t
    :type-initializer \"gtk_text_view_layer_get_type\")
@@ -224,7 +223,6 @@
   (:above 1)
   (:below-text 2)
   (:above-text 3))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -262,7 +260,6 @@
       (liber:symbol-documentation 'text-window-type)
  "@version{#2024-3-22}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkTextWindowType\" gtk:text-window-type
   (:export t
    :type-initializer \"gtk_text_window_type_get_type\")
@@ -273,7 +270,6 @@
   (:right 4)
   (:top 5)
   (:bottom 6))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -307,13 +303,11 @@
       (liber:symbol-documentation 'text-extend-selection)
  "@version{#2024-3-22}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkTextExtendSelection\" text-extend-selection
   (:export t
    :type-initializer \"gtk_text_extend_selection_get_type\")
   (:word 0)
   (:line 1))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

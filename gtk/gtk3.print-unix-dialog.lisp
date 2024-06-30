@@ -110,7 +110,6 @@
       (liber:symbol-documentation 'print-capabilities)
  "@version{#2024-3-21}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-flags \"GtkPrintCapabilities\" print-capabilities
   (:export t
    :type-initializer \"gtk_print_capabilities_get_type\")
@@ -124,7 +123,6 @@
   (:preview          #.(ash 1 7))
   (:number-up        #.(ash 1 8))
   (:number-up-layout #.(ash 1 9)))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

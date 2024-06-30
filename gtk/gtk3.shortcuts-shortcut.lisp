@@ -89,7 +89,6 @@
       (liber:symbol-documentation 'shortcut-type)
  "@version{#2024-3-22}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkShortcutType\" shortcut-type
   (:export t
    :type-initializer \"gtk_shortcut_type_get_type\")
@@ -101,7 +100,6 @@
   :gesture-two-finger-swipe-left
   :gesture-two-finger-swipe-right
   :gesture)
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

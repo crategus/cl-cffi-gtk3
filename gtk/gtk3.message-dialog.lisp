@@ -103,7 +103,6 @@
       (liber:symbol-documentation 'message-type)
  "@version{2024-3-16}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkMessageType\" message-type
   (:export t
    :type-initializer \"gtk_message_type_get_type\")
@@ -112,7 +111,6 @@
   (:question 2)
   (:error 3)
   (:other 4))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -148,7 +146,6 @@
       (liber:symbol-documentation 'buttons-type)
  "@version{2024-3-16}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkButtonsType\" buttons-type
   (:export t
    :type-initializer \"gtk_buttons_type_get_type\")
@@ -158,7 +155,6 @@
   (:cancel 3)
   (:yes-no 4)
   (:ok-cancel 5))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

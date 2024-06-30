@@ -77,14 +77,12 @@
       (liber:symbol-documentation 'baseline-position)
  "@version{2024-3-21}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkBaselinePosition\" baseline-position
   (:export t
    :type-initializer \"gtk_baseline_position_get_type\")
   (:top 0)
   (:center 1)
   (:bottom 2))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -125,7 +123,6 @@
       (liber:symbol-documentation 'delete-type)
  "@version{2023-2-15}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkDeleteType\" delete-type
   (:export t
    :type-initializer \"gtk_delete_type_get_type\")
@@ -137,7 +134,6 @@
   (:paragraph-ends 5)
   (:paragraphs 6)
   (:whitespace 7))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -184,7 +180,6 @@
       (liber:symbol-documentation 'direction-type)
  "@version{2023-2-15}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkDirectionType\" direction-type
   (:export t
    :type-initializer \"gtk_direction_type_get_type\")
@@ -194,7 +189,6 @@
   (:down 3)
   (:left 4)
   (:right 5))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -226,7 +220,6 @@
       (liber:symbol-documentation 'justification)
  "@version{2024-3-21}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkJustification\" justification
   (:export t
    :type-initializer \"gtk_justification_get_type\")
@@ -234,7 +227,6 @@
   (:right 1)
   (:center 2)
   (:fill 3))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -273,7 +265,6 @@
       (liber:symbol-documentation 'movement-step)
  "@version{2024-3-21}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkMovementStep\" movement-step
   (:export t
    :type-initializer \"gtk_movement_step_get_type\")
@@ -287,7 +278,6 @@
   (:pages 7)
   (:buffer-ends 8)
   (:horizontal-pages 9))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -328,13 +318,11 @@
       (liber:symbol-documentation 'orientation)
  "@version{2024-3-14}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkOrientation\" orientation
   (:export t
    :type-initializer \"gtk_orientation_get_type\")
   (:horizontal 0)
   (:vertical 1))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -365,13 +353,11 @@
       (liber:symbol-documentation 'pack-type)
  "@version{2023-3-6}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkPackType\" pack-type
   (:export t
    :type-initializer \"gtk_pack_type_get_type\")
   (:start 0)
   (:end 1))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -404,7 +390,6 @@
       (liber:symbol-documentation 'position-type)
  "@version{2024-3-21}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkPositionType\" position-type
   (:export t
    :type-initializer \"gtk_position_type_get_type\")
@@ -412,7 +397,6 @@
   (:right 1)
   (:top 2)
   (:bottom 3))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -447,14 +431,12 @@
       (liber:symbol-documentation 'relief-style)
  "@version{2024-3-21}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkReliefStyle\" relief-style
   (:export t
    :type-initializer \"gtk_relief_style_get_type\")
   (:normal 0)
   (:half 1)
   (:none 2))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -490,7 +472,6 @@
       (liber:symbol-documentation 'scroll-step)
  "@version{#2024-3-21}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkScrollStep\" scroll-step
   (:export t
    :type-initializer \"gtk_scroll_step_get_type\")
@@ -500,7 +481,6 @@
   (:horizontal-steps 3)
   (:horizontal-pages 4)
   (:horizontal-ends 5))
-    @end{pre}
   @end{declaration}
   @short{}")
 
@@ -534,7 +514,6 @@
       (liber:symbol-documentation 'scroll-type)
  "@version{2024-3-21}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkScrollType\" scroll-type
   (:export t
    :type-initializer \"gtk_scroll_type_get_type\")
@@ -554,7 +533,6 @@
   (:page-right 13)
   (:start 14)
   (:end 15))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -603,7 +581,6 @@
       (liber:symbol-documentation 'selection-mode)
  "@version{2024-3-14}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkSelectionMode\" selection-mode
   (:export t
    :type-initializer \"gtk_selection_mode_get_type\")
@@ -611,7 +588,6 @@
   (:single 1)
   (:browse 2)
   (:multiple 3))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -653,7 +629,6 @@
       (liber:symbol-documentation 'shadow-type)
  "@version{2024-3-21}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkShadowType\" shadow-type
   (:export t
    :type-initializer \"gtk_shadow_type_get_type\")
@@ -662,7 +637,6 @@
   (:out 2)
   (:etched-in 3)
   (:etched-out 4))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -710,7 +684,6 @@
       (liber:symbol-documentation 'state-flags)
  "@version{2024-3-21}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-flags \"GtkStateFlags\" state-flags
   (:export t
    :type-initializer \"gtk_state_flags_get_type\")
@@ -728,7 +701,6 @@
   (:visited      #.(ash 1 10))
   (:checked      #.(ash 1 11))
   (:drop-active  #.(ash 1 12)))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -773,7 +745,6 @@
       (liber:symbol-documentation 'toolbar-style)
  "@version{2024-3-21}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkToolbarStyle\" toolbar-style
   (:export t
    :type-initializer \"gtk_toolbar_style_get_type\")
@@ -781,7 +752,6 @@
   (:text 1)
   (:both 2)
   (:both-horiz 3))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -816,13 +786,11 @@
       (liber:symbol-documentation 'sort-type)
  "@version{2024-3-21}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkSortType\" sort-type
   (:export t
    :type-initializer \"gtk_sort_type_get_type\")
   (:ascending 0)
   (:descending 1))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -851,14 +819,12 @@
       (liber:symbol-documentation 'text-direction)
  "@version{2024-3-22}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkTextDirection\" text-direction
   (:export t
    :type-initializer \"gtk_text_direction_get_type\")
   (:none 0)
   (:ltr 1)
   (:rtl 2))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -899,7 +865,6 @@
       (liber:symbol-documentation 'expander-style)
  "@version{2024-3-22}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkExpanderStyle\" expander-style
   (:export t
    :type-initializer \"gtk_expander_style_get_type\")
@@ -907,7 +872,6 @@
   (:semi-collapsed 1)
   (:semi-expanded 2)
   (:expanded 3))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -944,7 +908,6 @@
       (liber:symbol-documentation 'state-type)
  "@version{2024-3-21}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkStateType\" state-type
   (:export t
    :type-initializer \"gtk_state_type_get_type\")
@@ -955,7 +918,6 @@
   (:insensitive 4)
   (:inconsistent 5)
   (:focused 6))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

@@ -101,7 +101,6 @@
       (liber:symbol-documentation 'button-box-style)
  "@version{2023-12-30}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkButtonBoxStyle\" button-box-style
   (:export t
    :type-initializer \"gtk_button_box_style_get_type\")
@@ -111,7 +110,6 @@
   (:end 4)
   (:center 5)
   (:expand 6))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

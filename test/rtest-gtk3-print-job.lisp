@@ -7,27 +7,27 @@
 
 ;;;     GtkPrintJob
 
-(test print-job-class
-  ;; Type check
+(test gtk-print-job-class
+  ;; Check type
   (is (g:type-is-object "GtkPrintJob"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:print-job
           (glib:symbol-for-gtype "GtkPrintJob")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkPrintJob")
           (g:gtype (cffi:foreign-funcall "gtk_print_job_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GObject") (g:type-parent "GtkPrintJob")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkPrintJob")))
-  ;; Check the interfaces
+             (gtk-test:list-children "GtkPrintJob")))
+  ;; Check interfaces
   (is (equal '()
-             (list-interfaces "GtkPrintJob")))
-  ;; Check the class properties
+             (gtk-test:list-interfaces "GtkPrintJob")))
+  ;; Check class properties
   (is (equal '("page-setup" "printer" "settings" "title" "track-print-status")
-             (list-properties "GtkPrintJob")))
-  ;; Check the class definition
+             (gtk-test:list-properties "GtkPrintJob")))
+  ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkPrintJob" GTK-PRINT-JOB
                        (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
                         :TYPE-INITIALIZER "gtk_print_job_get_type")
@@ -69,6 +69,19 @@
 ;;; --- Functions --------------------------------------------------------------
 
 ;;;     gtk_print_job_new
+
+;; TODO: Does not work. Find a working example.
+
+#+nil
+(test gtk-print-job-new
+  (let ((printer (gtk:printer-new "printer" nil nil))
+        (settings (gtk:print-settings-new))
+        (setup (gtk:page-setup-new)))
+
+    (is-false (gtk:print-job-new "job" printer settings setup))
+
+))
+
 ;;;     gtk_print_job_get_settings
 ;;;     gtk_print_job_get_printer
 ;;;     gtk_print_job_get_title
@@ -100,4 +113,4 @@
 ;;;     gtk_print_job_get_reverse
 ;;;     gtk_print_job_set_reverse
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-6-28

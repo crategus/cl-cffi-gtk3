@@ -60,15 +60,15 @@
                                 ;; gdk:thread-leave
                                 (unless (find :win32 *features*)
                                   ;; Calling on win32 will deadlock
-                                  (gdk::threads-init)
-                                  (gdk::threads-enter))
+                                  (gdk:threads-init)
+                                  (gdk:threads-enter))
                                 (unwind-protect
                                   (progn
 ;                                   (%gtk-init)
                                     (%main))
                                   (unless (find :win32 *features*)
                                     ;; Calling on win32 will deadlock
-                                    (gdk::threads-leave))
+                                    (gdk:threads-leave))
                                   ))
                               :name "cl-cffi-gtk main thread")
               *main-thread-level* 0))

@@ -170,14 +170,12 @@
       (liber:symbol-documentation 'resize-mode)
  "@version{2024-3-21}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkResizeMode\" resize-mode
   (:export t
    :type-initializer \"gtk_resize_mode_get_type\")
   (:parent 0)
   (:queue 1)
   (:immediate 2))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

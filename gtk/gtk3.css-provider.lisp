@@ -415,7 +415,6 @@ lambda (provider section error)    :run-last
       (liber:symbol-documentation 'css-section-type)
  "@version{2024-3-21}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkCssSectionType\" css-section-type
   (:export t
    :type-initializer \"gtk_css_section_type_get_type\")
@@ -428,7 +427,6 @@ lambda (provider section error)    :run-last
   (:declaration 6)
   (:value 7)
   (:keyframes 8))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

@@ -176,7 +176,6 @@
       (liber:symbol-documentation 'junction-sides)
  "@version{#2024-3-21}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-flags \"GtkJunctionSides\" junction-sides
   (:export t
    :type-initializer \"gtk_junction_sides_get_type\")
@@ -189,7 +188,6 @@
   (:left 5)
   (:bottom 6)
   (:right 10))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -226,14 +224,12 @@
       (liber:symbol-documentation 'style-context-print-flags)
  "@version{#2024-3-21}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-flags \"GtkStyleContextPrintFlags\" style-context-print-flags
   (:export t
    :type-initializer \"gtk_style_context_print_flags_get_type\")
   (:none 0)
   (:recurse #.(ash 1 0))
   (:show-style #.(ash 1 1)))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -275,7 +271,6 @@
       (liber:symbol-documentation 'border-style)
  "@version{#2024-3-22}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkBorderStyle\" border-style
   (:export t
    :type-initializer \"gtk_border_style_get_type\")
@@ -289,7 +284,6 @@
   :double
   :groove
   :ridge)
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

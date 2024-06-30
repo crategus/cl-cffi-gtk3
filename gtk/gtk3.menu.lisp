@@ -144,14 +144,12 @@
       (liber:symbol-documentation 'arrow-placement)
  "@version{#2024-3-22}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkArrowPlacement\" arrow-placement
   (:export t
    :type-initializer \"gtk_arrow_placement_get_type\")
   (:both 0)
   (:start 1)
   (:end 2))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

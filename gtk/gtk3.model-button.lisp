@@ -87,14 +87,12 @@
       (liber:symbol-documentation 'button-role)
  "@version{#2024-3-22}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkButtonRole\" button-role
   (:export t
    :type-initializer \"gtk_button_role_get_type\")
   :normal
   :check
   :radio)
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

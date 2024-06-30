@@ -129,14 +129,12 @@
       (liber:symbol-documentation 'sensitivity-type)
  "@version{#2024-3-22}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkSensitivityType\" sensitivity-type
   (:export t
    :type-initializer \"gtk_sensitivity_type_get_type\")
   (:auto 0)
   (:on 1)
   (:off 2))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

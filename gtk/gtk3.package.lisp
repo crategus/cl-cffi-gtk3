@@ -62,7 +62,6 @@
   Free Pascal, and Eiffel.
   @begin[Application support]{section}
     @begin[GtkApplication]{subsection}
-      Application class.
       @about-symbol{application-inhibit-flags}
       @about-class{application}
       @about-generic{application-active-window}
@@ -85,7 +84,6 @@
       @about-function{application-actions-for-accel}
     @end{subsection}
     @begin[GtkApplicationWindow]{subsection}
-      A @class{gtk:window} subclass with application support.
       @about-class{application-window}
       @about-generic{application-window-show-menubar}
       @about-function{application-window-new}
@@ -95,7 +93,6 @@
   @end{section}
   @begin[Interface builder]{section}
     @begin[GtkBuilder]{subsection}
-      Build an interface from an XML UI definition.
       @about-symbol{builder-error}
       @about-class{builder}
       @about-generic{builder-translation-domain}
@@ -127,7 +124,6 @@
   @end{section}
   @begin[Windows]{section}
     @begin[GtkWindow]{subsection}
-      Toplevel which can contain other widgets.
       @about-symbol{window-type}
       @about-symbol{window-position}
       @about-class{window}
@@ -223,7 +219,6 @@
       @about-function{window-interactive-debugging}
     @end{subsection}
     @begin[GtkDialog]{subsection}
-      Create popup windows.
       @about-symbol{dialog-flags}
       @about-symbol{response-type}
       @about-class{dialog}
@@ -244,7 +239,6 @@
       @about-function{dialog-header-bar}
     @end{subsection}
     @begin[GtkMessageDialog]{subsection}
-      A convenient message window.
       @about-symbol{message-type}
       @about-symbol{buttons-type}
       @about-class{message-dialog}
@@ -263,7 +257,6 @@
       @about-function{message-dialog-format-secondary-markup}
     @end{subsection}
     @begin[GtkAboutDialog]{subsection}
-      Display information about an application.
       @about-symbol{license}
       @about-class{about-dialog}
       @about-generic{about-dialog-artists}
@@ -286,7 +279,6 @@
       @about-function{show-about-dialog}
     @end{subsection}
     @begin[GtkAssistant]{subsection}
-      A widget used to guide users through multi-step operations.
       @about-symbol{assistant-page-type}
       @about-class{assistant}
       @about-generic{assistant-use-header-bar}
@@ -320,21 +312,18 @@
       @about-function{assistant-previous-page}
     @end{subsection}
     @begin[GtkInvisible]{subsection}
-      A widget which is not displayed.
       @about-class{invisible}
       @about-generic{invisible-screen}
       @about-function{invisible-new}
       @about-function{invisible-new-for-screen}
     @end{subsection}
     @begin[GtkOffscreenWindow]{subsection}
-      A toplevel widget to manage offscreen rendering of child widgets.
       @about-class{offscreen-window}
       @about-function{offscreen-window-new}
       @about-function{offscreen-window-surface}
       @about-function{offscreen-window-pixbuf}
     @end{subsection}
     @begin[GtkWindowGroup]{subsection}
-      Limit the effect of grabs.
       @about-class{window-group}
       @about-function{window-group-new}
       @about-function{window-group-add-window}
@@ -346,7 +335,6 @@
   @end{section}
   @begin[Layout Containers]{section}
     @begin[GtkBox]{subsection}
-      A container box.
       @about-class{box}
       @about-generic{box-baseline-position}
       @about-generic{box-homogeneous}
@@ -365,7 +353,6 @@
       @about-function{box-center-widget}
     @end{subsection}
     @begin[GtkGrid]{subsection}
-      Pack widgets in a rows and columns.
       @about-class{grid}
       @about-generic{grid-baseline-row}
       @about-generic{grid-column-homogeneous}
@@ -388,7 +375,6 @@
       @about-function{grid-row-baseline-position}
     @end{subsection}
     @begin[GtkRevealer]{subsection}
-      Hide and show with animation.
       @about-symbol{revealer-transition-type}
       @about-class{revealer}
       @about-generic{revealer-child-revealed}
@@ -398,7 +384,6 @@
       @about-function{revealer-new}
     @end{subsection}
     @begin[GtkListBox]{subsection}
-      A list container.
       @about-class{list-box}
       @about-generic{list-box-activate-on-single-click}
       @about-generic{list-box-selection-mode}
@@ -440,7 +425,6 @@
       @about-function{list-box-row-index}
     @end{subsection}
     @begin[GtkFlowBox]{subsection}
-      A container that allows reflowing its children.
       @about-class{flow-box}
       @about-generic{flow-box-activate-on-single-click}
       @about-generic{flow-box-column-spacing}
@@ -477,7 +461,6 @@
       @about-function{flow-box-child-changed}
     @end{subsection}
     @begin[GtkStack]{subsection}
-      A stacking container.
       @about-symbol{stack-transition-type}
       @about-class{stack}
       @about-generic{stack-homogeneous}
@@ -501,20 +484,17 @@
       @about-function{stack-set-visible-child-full}
     @end{subsection}
     @begin[GtkStackSwitcher]{subsection}
-      A controller for the @class{gtk:stack} widget.
       @about-class{stack-switcher}
       @about-generic{stack-switcher-icon-size}
       @about-generic{stack-switcher-stack}
       @about-function{stack-switcher-new}
     @end{subsection}
     @begin[GtkStackSidebar]{subsection}
-      An automatic sidebar widget.
       @about-class{stack-sidebar}
       @about-generic{stack-sidebar-stack}
       @about-function{stack-sidebar-new}
     @end{subsection}
     @begin[GtkActionBar]{subsection}
-      A full width bar for presenting contextual actions
       @about-class{action-bar}
       @about-function{action-bar-child-pack-type}
       @about-function{action-bar-child-position}
@@ -524,7 +504,6 @@
       @about-function{action-bar-center-widget}
     @end{subsection}
     @begin[GtkHeaderBar]{subsection}
-      A box with a centered child.
       @about-class{header-bar}
       @about-generic{header-bar-custom-title}
       @about-generic{header-bar-decoration-layout}
@@ -541,7 +520,6 @@
       @about-function{header-bar-pack-end}
     @end{subsection}
     @begin[GtkOverlay]{subsection}
-      A container which overlays widgets on top of each other.
       @about-class{overlay}
       @about-function{overlay-child-index}
       @about-function{overlay-child-pass-through}
@@ -550,7 +528,6 @@
       @about-function{overlay-reorder-overlay}
     @end{subsection}
     @begin[GtkButtonBox]{subsection}
-      A container for arranging buttons
       @about-symbol{button-box-style}
       @about-class{button-box}
       @about-generic{button-box-layout-style}
@@ -560,7 +537,6 @@
       @about-function{button-box-layout}
     @end{subsection}
     @begin[GtkPaned]{subsection}
-      A widget with two adjustable panes.
       @about-class{paned}
       @about-generic{paned-max-position}
       @about-generic{paned-min-position}
@@ -579,7 +555,6 @@
       @about-function{paned-handle-window}
     @end{subsection}
     @begin[GtkLayout]{subsection}
-      Infinite scrollable area containing child widgets and/or custom drawing.
       @about-class{layout}
       @about-generic{layout-height}
       @about-generic{layout-width}
@@ -592,7 +567,6 @@
       @about-function{layout-bin-window}
     @end{subsection}
     @begin[GtkNotebook]{subsection}
-      A tabbed notebook container.
       @about-symbol{notebook-tab}
       @about-class{notebook}
       @about-generic{notebook-enable-popup}
@@ -637,7 +611,6 @@
       @about-function{notebook-action-widget}
     @end{subsection}
     @begin[GtkExpander]{subsection}
-      A container which can hide its child.
       @about-class{expander}
       @about-generic{expander-expanded}
       @about-generic{expander-label}
@@ -651,7 +624,6 @@
       @about-function{expander-new-with-mnemonic}
     @end{subsection}
     @begin[GtkAspectFrame]{subsection}
-      A frame that constrains its child to a particular aspect ratio.
       @about-class{aspect-frame}
       @about-generic{aspect-frame-obey-child}
       @about-generic{aspect-frame-ratio}
@@ -661,7 +633,6 @@
       @about-function{aspect-frame-set}
     @end{subsection}
     @begin[GtkFixed]{subsection}
-      A container which allows you to position widgets at fixed coordinates.
       @about-class{fixed}
       @about-function{fixed-child-x}
       @about-function{fixed-child-y}
@@ -672,7 +643,6 @@
   @end{section}
   @begin[Display Widgets]{section}
     @begin[GtkLabel]{subsection}
-      A widget that displays a small to medium amount of text.
       @about-class{label}
       @about-generic{label-angle}
       @about-generic{label-attributes}
@@ -711,7 +681,6 @@
       @about-function{label-current-uri}
     @end{subsection}
     @begin[GtkImage]{subsection}
-      A widget displaying an image.
       @about-symbol{image-type}
       @about-class{image}
       @about-generic{image-file}
@@ -748,7 +717,6 @@
       @about-function{image-new}
     @end{subsection}
     @begin[GtkSpinner]{subsection}
-      Show a spinner animation.
       @about-class{spinner}
       @about-generic{spinner-active}
       @about-function{spinner-new}
@@ -756,7 +724,6 @@
       @about-function{spinner-stop}
     @end{subsection}
     @begin[GtkInfoBar]{subsection}
-      Report important messages to the user.
       @about-class{info-bar}
       @about-generic{info-bar-message-type}
       @about-generic{info-bar-revealed}
@@ -773,7 +740,6 @@
       @about-function{info-bar-content-area}
     @end{subsection}
     @begin[GtkProgressBar]{subsection}
-      A widget which indicates progress visually.
       @about-class{progress-bar}
       @about-generic{progress-bar-ellipsize}
       @about-generic{progress-bar-fraction}
@@ -785,7 +751,6 @@
       @about-function{progress-bar-pulse}
     @end{subsection}
     @begin[GtkLevelBar]{subsection}
-      A bar that can be used as a level indicator.
       @about-symbol{level-bar-mode}
       @about-class{level-bar}
       @about-generic{level-bar-inverted}
@@ -800,7 +765,6 @@
       @about-function{level-bar-offset-value}
     @end{subsection}
     @begin[GtkStatusbar]{subsection}
-      Report messages of minor importance to the user.
       @about-class{statusbar}
       @about-function{statusbar-new}
       @about-function{statusbar-context-id}
@@ -811,7 +775,6 @@
       @about-function{statusbar-message-area}
     @end{subsection}
     @begin[GtkAccelLabel]{subsection}
-      A label which displays an accelerator key on the right of the text.
       @about-class{accel-label}
       @about-generic{accel-label-accel-closure}
       @about-generic{accel-label-accel-widget}
@@ -824,7 +787,6 @@
   @end{section}
   @begin[Buttons and Toggles]{section}
     @begin[GtkButton]{subsection}
-      A widget that emits a signal when clicked on.
       @about-class{button}
       @about-generic{button-always-show-image}
       @about-generic{button-focus-on-click}
@@ -844,14 +806,12 @@
       @about-function{button-event-window}
     @end{subsection}
     @begin[GtkCheckButton]{subsection}
-      Create widgets with a discrete toggle button.
       @about-class{check-button}
       @about-function{check-button-new}
       @about-function{check-button-new-with-label}
       @about-function{check-button-new-with-mnemonic}
     @end{subsection}
     @begin[GtkRadioButton]{subsection}
-      A choice from multiple check buttons.
       @about-class{radio-button}
       @about-generic{radio-button-group}
       @about-function{radio-button-new}
@@ -865,7 +825,6 @@
       @about-function{radio-button-join-group}
     @end{subsection}
     @begin[GtkToggleButton]{subsection}
-      Create buttons which retain their state.
       @about-class{toggle-button}
       @about-generic{toggle-button-active}
       @about-generic{toggle-button-draw-indicator}
@@ -877,7 +836,6 @@
       @about-function{toggle-button-toggled}
     @end{subsection}
     @begin[GtkLinkButton]{subsection}
-      Create buttons bound to a URL.
       @about-class{link-button}
       @about-generic{link-button-uri}
       @about-generic{link-button-visited}
@@ -885,7 +843,6 @@
       @about-function{link-button-new-with-label}
     @end{subsection}
     @begin[GtkMenuButton]{subsection}
-      A widget that shows a popup when clicked on.
       @about-symbol{arrow-type}
       @about-class{menu-button}
       @about-generic{menu-button-align-widget}
@@ -897,14 +854,12 @@
       @about-function{menu-button-new}
     @end{subsection}
     @begin[GtkSwitch]{subsection}
-      A \"light switch\" style toggle.
       @about-class{switch}
       @about-generic{switch-active}
       @about-generic{switch-state}
       @about-function{switch-new}
     @end{subsection}
     @begin[GtkScaleButton]{subsection}
-      A button which pops up a scale.
       @about-class{scale-button}
       @about-generic{scale-button-adjustment}
       @about-generic{scale-button-icons}
@@ -916,13 +871,11 @@
       @about-function{scale-button-minus-button}
     @end{subsection}
     @begin[GtkVolumeButton]{subsection}
-      A button which pops up a volume control.
       @about-class{volume-button}
       @about-generic{volume-button-use-symbolic}
       @about-function{volume-button-new}
     @end{subsection}
     @begin[GtkLockButton]{subsection}
-      A widget to unlock or lock privileged operations.
       @about-class{lock-button}
       @about-generic{lock-button-permission}
       @about-generic{lock-button-text-lock}
@@ -933,7 +886,6 @@
       @about-function{lock-button-new}
     @end{subsection}
     @begin[GtkModelButton]{subsection}
-      A button that uses a GAction as model.
       @about-symbol{button-role}
       @about-class{model-button}
       @about-generic{model-button-active}
@@ -950,7 +902,6 @@
   @end{section}
   @begin[Numeric and Text Data Entry]{section}
     @begin[GtkEditable]{subsection}
-      Interface for text editing widgets.
       @about-class{editable}
       @about-function{editable-select-region}
       @about-function{editable-selection-bounds}
@@ -965,7 +916,6 @@
       @about-function{editable-editable}
     @end{subsection}
     @begin[GtkEntry]{subsection}
-      A single line text entry field.
       @about-symbol{entry-icon-position}
       @about-symbol{input-purpose}
       @about-symbol{input-hints}
@@ -1054,7 +1004,6 @@
       @about-function{entry-grab-focus-without-selecting}
     @end{subsection}
     @begin[GtkEntryBuffer]{subsection}
-      Text buffer for the @class{gtk:entry} widget.
       @about-class{entry-buffer}
       @about-generic{entry-buffer-length}
       @about-generic{entry-buffer-max-length}
@@ -1067,7 +1016,6 @@
       @about-function{entry-buffer-emit-inserted-text}
     @end{subsection}
     @begin[GtkEntryCompletion]{subsection}
-      Completion functionality for the @class{gtk:entry} widget.
       @about-class{entry-completion}
       @about-generic{entry-completion-cell-area}
       @about-generic{entry-completion-inline-completion}
@@ -1092,7 +1040,6 @@
       @about-function{entry-completion-delete-action}
     @end{subsection}
     @begin[GtkScale]{subsection}
-      A slider widget for selecting a value from a range.
       @about-class{scale}
       @about-generic{scale-digits}
       @about-generic{scale-draw-value}
@@ -1106,7 +1053,6 @@
       @about-function{scale-clear-marks}
     @end{subsection}
     @begin[GtkSpinButton]{subsection}
-      Retrieve an integer or floating point number from the user.
       @about-symbol{spin-button-update-policy}
       @about-symbol{spin-type}
       @about-class{spin-button}
@@ -1128,13 +1074,11 @@
       @about-function{spin-button-update}
     @end{subsection}
     @begin[GtkSearchEntry]{subsection}
-      An entry which shows a search icon.
       @about-class{search-entry}
       @about-function{search-entry-new}
       @about-function{search-entry-handle-event}
     @end{subsection}
     @begin[GtkSearchBar]{subsection}
-      A toolbar to integrate a search entry with.
       @about-class{search-bar}
       @about-generic{search-bar-search-mode-enabled}
       @about-generic{search-bar-show-close-button}
@@ -1343,56 +1287,19 @@
       @about-function{text-iter-is-end}
       @about-function{text-iter-is-start}
       @about-function{text-iter-move}
-      @about-function{text-iter-forward-char}
-      @about-function{text-iter-forward-chars}
-      @about-function{text-iter-backward-char}
-      @about-function{text-iter-backward-chars}
-      @about-function{text-iter-forward-line}
-      @about-function{text-iter-forward-lines}
-      @about-function{text-iter-backward-line}
-      @about-function{text-iter-backward-lines}
-      @about-function{text-iter-forward-word-end}
-      @about-function{text-iter-forward-word-ends}
-      @about-function{text-iter-backward-word-start}
-      @about-function{text-iter-backward-word-starts}
-      @about-function{text-iter-forward-cursor-position}
-      @about-function{text-iter-forward-cursor-positions}
-      @about-function{text-iter-backward-cursor-position}
-      @about-function{text-iter-backward-cursor-positions}
-      @about-function{text-iter-forward-sentence-end}
-      @about-function{text-iter-forward-sentence-ends}
-      @about-function{text-iter-backward-sentence-start}
-      @about-function{text-iter-backward-sentence-starts}
-      @about-function{text-iter-forward-visible-word-end}
-      @about-function{text-iter-forward-visible-word-ends}
-      @about-function{text-iter-backward-visible-word-start}
-      @about-function{text-iter-backward-visible-word-starts}
-      @about-function{text-iter-forward-visible-cursor-position}
-      @about-function{text-iter-forward-visible-cursor-positions}
-      @about-function{text-iter-backward-visible-cursor-position}
-      @about-function{text-iter-backward-visible-cursor-positions}
-      @about-function{text-iter-forward-visible-line}
-      @about-function{text-iter-forward-visible-lines}
-      @about-function{text-iter-backward-visible-line}
-      @about-function{text-iter-backward-visible-lines}
       @about-function{text-iter-forward-to-end}
       @about-function{text-iter-forward-to-line-end}
       @about-function{text-iter-forward-to-tag-toggle}
       @about-function{text-iter-backward-to-tag-toggle}
       @about-symbol{text-char-predicate}
       @about-function{text-iter-find-char}
-      @about-function{text-iter-forward-find-char}
-      @about-function{text-iter-backward-find-char}
       @about-function{text-iter-search}
-      @about-function{text-iter-forward-search}
-      @about-function{text-iter-backward-search}
       @about-function{text-iter-equal}
       @about-function{text-iter-compare}
       @about-function{text-iter-in-range}
       @about-function{text-iter-order}
     @end{subsection}
     @begin[GtkTextMark]{subsection}
-      A position in the buffer preserved across buffer modifications.
       @about-class{text-mark}
       @about-generic{text-mark-left-gravity}
       @about-generic{text-mark-name}
@@ -1402,7 +1309,6 @@
       @about-function{text-mark-buffer}
     @end{subsection}
     @begin[GtkTextBuffer]{subsection}
-      Stores attributed text for display in a @class{gtk:text-view} widget.
       @about-symbol{text-buffer-target-info}
       @about-class{text-buffer}
       @about-generic{text-buffer-copy-target-list}
@@ -1482,7 +1388,6 @@
       @about-function{text-buffer-unregister-serialize-format}
     @end{subsection}
     @begin[GtkTextTag]{subsection}
-      A tag that can be applied to text in a @class{gtk:text-buffer} object.
       @about-symbol{wrap-mode}
       @about-class{text-tag}
       @about-generic{text-tag-accumulative-margin}
@@ -1565,7 +1470,6 @@
       @about-function{text-tag-changed}
     @end{subsection}
     @begin[GtkTextTagTable]{subsection}
-      Collection of tags that can be used together.
       @about-class{text-tag-table}
       @about-function{text-tag-table-new}
       @about-function{text-tag-table-add}
@@ -1576,7 +1480,6 @@
       @about-function{text-tag-table-size}
     @end{subsection}
     @begin[GtkTextView]{subsection}
-      Widget that displays a @class{gtk:text-buffer} object.
       @about-symbol{GTK_TEXT_VIEW_PRIORITY_VALIDATE}
       @about-symbol{text-view-layer}
       @about-symbol{text-window-type}
@@ -1918,7 +1821,6 @@ setup_tree (void)
 @}
       @end{pre}
     @begin[GtkTreeModel]{subsection}
-      The tree interface used by the @class{gtk:tree-view} widget.
       @about-struct{tree-iter}
       @about-function{tree-iter-stamp}
       @about-function{tree-iter-user-data}
@@ -1984,7 +1886,6 @@ setup_tree (void)
       @about-function{tree-model-rows-reordered}
     @end{subsection}
     @begin[GtkTreeSelection]{subsection}
-      The selection object for the @class{gtk:tree-view} widget.
       @about-class{tree-selection}
       @about-generic{tree-selection-mode}
       @about-symbol{tree-selection-func}
@@ -2009,7 +1910,6 @@ setup_tree (void)
       @about-function{tree-selection-unselect-range}
     @end{subsection}
     @begin[GtkTreeViewColumn]{subsection}
-      A visible column in a @class{gtk:tree-view} widget.
       @about-symbol{tree-view-column-sizing}
       @about-class{tree-view-column}
       @about-generic{tree-view-column-alignment}
@@ -2053,7 +1953,6 @@ setup_tree (void)
       @about-function{tree-view-column-tree-view}
     @end{subsection}
     @begin[GtkTreeView]{subsection}
-      A widget for displaying both trees and lists.
       @about-symbol{tree-view-drop-position}
       @about-symbol{tree-view-grid-lines}
       @about-class{tree-view}
@@ -2147,7 +2046,6 @@ setup_tree (void)
       @about-function{tree-view-tooltip-context}
     @end{subsection}
     @begin[GtkTreeView drag and drop]{subsection}
-      Interfaces for drag-and-drop support in @class{gtk:tree-view} widgets.
       @about-class{tree-drag-source}
       @about-function{tree-drag-source-drag-data-delete}
       @about-function{tree-drag-source-drag-data-get}
@@ -2159,7 +2057,6 @@ setup_tree (void)
       @about-function{tree-get-row-drag-data}
     @end{subsection}
     @begin[GtkCellView]{subsection}
-      A widget displaying a single row of a @class{gtk:tree-model} object.
       @about-class{cell-view}
       @about-generic{cell-view-background}
       @about-generic{cell-view-background-gdk}
@@ -2180,7 +2077,6 @@ setup_tree (void)
       @about-function{cell-view-set-background-color}
     @end{subsection}
     @begin[GtkIconView]{subsection}
-      A widget which displays a list of icons in a grid.
       @about-symbol{icon-view-drop-position}
       @about-class{icon-view}
       @about-generic{icon-view-activate-on-single-click}
@@ -2235,7 +2131,6 @@ setup_tree (void)
       @about-function{icon-view-create-drag-icon}
     @end{subsection}
     @begin[GtkTreeSortable]{subsection}
-      The interface for sortable models used by @class{gtk:tree-view} widgets.
       @about-variable{+default-sort-column-id+}
       @about-variable{+unsorted-sort-column-id+}
       @about-class{tree-sortable}
@@ -2247,8 +2142,6 @@ setup_tree (void)
       @about-function{tree-sortable-has-default-sort-func}
     @end{subsection}
     @begin[GtkTreeModelSort]{subsection}
-      A @class{gtk:tree-model} object which makes an underlying tree model
-      sortable.
       @about-class{tree-model-sort}
       @about-generic{tree-model-sort-model}
       @about-function{tree-model-sort-new-with-model}
@@ -2261,8 +2154,6 @@ setup_tree (void)
       @about-function{tree-model-sort-iter-is-valid}
     @end{subsection}
     @begin[GtkTreeModelFilter]{subsection}
-      A @class{gtk:tree-model} object which hides parts of an underlying tree
-      model.
       @about-class{tree-model-filter}
       @about-generic{tree-model-filter-child-model}
       @about-generic{tree-model-filter-virtual-root}
@@ -2281,7 +2172,6 @@ setup_tree (void)
       @about-function{tree-model-filter-clear-cache}
     @end{subsection}
     @begin[GtkCellLayout]{subsection}
-      An interface for packing cells.
       @about-class{cell-layout}
       @about-function{cell-layout-pack-start}
       @about-function{cell-layout-pack-end}
@@ -2296,7 +2186,6 @@ setup_tree (void)
       @about-function{cell-layout-set-cell-data-func}
     @end{subsection}
     @begin[GtkCellArea]{subsection}
-      An abstract class for laying out @class{gtk:cell-renderer} objects.
       @about-class{cell-area}
       @about-generic{cell-area-edit-widget}
       @about-generic{cell-area-edited-cell}
@@ -2347,8 +2236,6 @@ setup_tree (void)
       @about-function{cell-area-request-renderer}
     @end{subsection}
     @begin[GtkCellAreaBox]{subsection}
-      A cell area that renders @class{gtk:cell-renderer} objects into a row or
-      a column.
       @about-class{cell-area-box}
       @about-generic{cell-area-box-spacing}
       @about-function{cell-area-box-child-align}
@@ -2360,8 +2247,6 @@ setup_tree (void)
       @about-function{cell-area-box-pack-end}
     @end{subsection}
     @begin[GtkcellAreaContext]{subsection}
-      Stores geometrical information for a series of rows in a
-      @class{gtk:cell-area} object.
       @about-class{cell-area-context}
       @about-generic{cell-area-context-area}
       @about-generic{cell-area-context-minimum-height}
@@ -2379,7 +2264,6 @@ setup_tree (void)
       @about-function{cell-area-context-push-preferred-height}
     @end{subsection}
     @begin[GtkCellRenderer]{subsection}
-      An object for rendering a single cell.
       @about-symbol{cell-renderer-state}
       @about-symbol{cell-renderer-mode}
       @about-class{cell-renderer}
@@ -2419,7 +2303,6 @@ setup_tree (void)
       @about-function{cell-renderer-request-mode}
     @end{subsection}
     @begin[GtkCellEditable]{subsection}
-      Interface for widgets which are used for editing cells.
       @about-class{cell-editable}
       @about-generic{cell-editable-editing-canceled}
       @about-function{cell-editable-start-editing}
@@ -2427,7 +2310,6 @@ setup_tree (void)
       @about-function{cell-editable-remove-widget}
     @end{subsection}
     @begin[GtkCellRendererAccel]{subsection}
-      Renders a keyboard accelerator in a cell.
       @about-symbol{cell-renderer-accel-mode}
       @about-class{cell-renderer-accel}
       @about-generic{cell-renderer-accel-accel-key}
@@ -2437,7 +2319,6 @@ setup_tree (void)
       @about-function{cell-renderer-accel-new}
     @end{subsection}
     @begin[GtkCellRendererCombo]{subsection}
-      Renders a combobox in a cell.
       @about-class{cell-renderer-combo}
       @about-generic{cell-renderer-combo-has-entry}
       @about-generic{cell-renderer-combo-model}
@@ -2445,7 +2326,6 @@ setup_tree (void)
       @about-function{cell-renderer-combo-new}
     @end{subsection}
     @begin[GtkCellRendererPixbuf]{subsection}
-      Renders a pixbuf in a cell.
       @about-class{cell-renderer-pixbuf}
       @about-generic{cell-renderer-pixbuf-follow-state}
       @about-generic{cell-renderer-pixbuf-gicon}
@@ -2460,7 +2340,6 @@ setup_tree (void)
       @about-function{cell-renderer-pixbuf-new}
     @end{subsection}
     @begin[GtkCellRendererProgress]{subsection}
-      Renders numbers as progress bars.
       @about-class{cell-renderer-progress}
       @about-generic{cell-renderer-progress-inverted}
       @about-generic{cell-renderer-progress-pulse}
@@ -2471,7 +2350,6 @@ setup_tree (void)
       @about-function{cell-renderer-progress-new}
     @end{subsection}
     @begin[GtkCellRendererSpin]{subsection}
-      Renders a spin button in a cell.
       @about-class{cell-renderer-spin}
       @about-generic{cell-renderer-spin-adjustment}
       @about-generic{cell-renderer-spin-climb-rate}
@@ -2479,7 +2357,6 @@ setup_tree (void)
       @about-function{cell-renderer-spin-new}
     @end{subsection}
     @begin[GtkCellRendererText]{subsection}
-      Renders text in a cell.
       @about-class{cell-renderer-text}
       @about-generic{cell-renderer-text-align-set}
       @about-generic{cell-renderer-text-alignment}
@@ -2533,7 +2410,6 @@ setup_tree (void)
       @about-function{cell-renderer-text-set-fixed-height-from-font}
     @end{subsection}
     @begin[GtkCellRendererToggle]{subsection}
-      Renders a toggle button in a cell.
       @about-class{cell-renderer-toggle}
       @about-generic{cell-renderer-toggle-activatable}
       @about-generic{cell-renderer-toggle-active}
@@ -2543,7 +2419,6 @@ setup_tree (void)
       @about-function{cell-renderer-toggle-new}
     @end{subsection}
     @begin[GtkCellRendererSpinner]{subsection}
-      Renders a spinning animation in a cell.
       @about-class{cell-renderer-spinner}
       @about-generic{cell-renderer-spinner-active}
       @about-generic{cell-renderer-spinner-pulse}
@@ -2551,9 +2426,6 @@ setup_tree (void)
       @about-function{cell-renderer-spinner-new}
     @end{subsection}
     @begin[GtkListStore]{subsection}
-      A list-like data structure that can be used with the
-      @class{gtk:tree-view} widget.
-
       @about-class{list-store}
       @about-function{list-store-new}
       @about-function{list-store-newv}
@@ -2578,8 +2450,6 @@ setup_tree (void)
       @about-function{list-store-move-after}
     @end{subsection}
     @begin[GtkTreeStore]{subsection}
-      A tree-like data structure that can be used with the
-      @class{gtk:tree-view}.
       @about-class{tree-store}
       @about-function{tree-store-new}
       @about-function{tree-store-newv}
@@ -2608,7 +2478,6 @@ setup_tree (void)
   @end{section}
   @begin[Combo Box]{section}
     @begin[GtkComboBox]{subsection}
-      A widget used to choose from a list of items.
       @about-class{combo-box}
       @about-generic{combo-box-active}
       @about-generic{combo-box-active-id}
@@ -2642,7 +2511,6 @@ setup_tree (void)
       @about-function{combo-box-set-row-separator-func}
     @end{subsection}
     @begin[GtkComboBoxText]{subsection}
-      A simple, text-only combo box.
       @about-class{combo-box-text}
       @about-function{combo-box-text-new}
       @about-function{combo-box-text-new-with-entry}
@@ -2659,7 +2527,6 @@ setup_tree (void)
   @end{section}
   @begin[Menus]{section}
     @begin[GtkMenuShell]{subsection}
-      A base class for menu objects.
       @about-symbol{menu-direction-type}
       @about-class{menu-shell}
       @about-generic{menu-shell-take-focus}
@@ -2677,7 +2544,6 @@ setup_tree (void)
       @about-function{menu-shell-bind-model}
     @end{subsection}
     @begin[GtkMenu]{subsection}
-      A menu widget
       @about-symbol{arrow-placement}
       @about-class{menu}
       @about-generic{menu-accel-group}
@@ -2715,8 +2581,6 @@ setup_tree (void)
       @about-function{menu-for-attach-widget}
     @end{subsection}
     @begin[GtkMenuBar]{subsection}
-      A subclass of the @class{gtk:menu-shell} class which holds
-      @class{gtk:menu-item} widgets.
       @about-symbol{pack-direction}
       @about-class{menu-bar}
       @about-generic{menu-bar-child-pack-direction}
@@ -2725,7 +2589,6 @@ setup_tree (void)
       @about-function{menu-bar-new-from-model}
     @end{subsection}
     @begin[GtkMenuItem]{subsection}
-      The widget used for item in menus.
       @about-class{menu-item}
       @about-generic{menu-item-accel-path}
       @about-generic{menu-item-label}
@@ -2743,7 +2606,6 @@ setup_tree (void)
       @about-function{menu-item-reserve-indicator}
     @end{subsection}
     @begin[GtkCheckMenuItem]{subsection}
-      A menu item with a check box.
       @about-class{check-menu-item}
       @about-generic{check-menu-item-active}
       @about-generic{check-menu-item-draw-as-radio}
@@ -2760,7 +2622,6 @@ setup_tree (void)
       @about-function{check-menu-item-get-draw-as-radio}
     @end{subsection}
     @begin[GtkRadioMenuItem]{subsection}
-      A choice from multiple check menu items
       @about-class{radio-menu-item}
       @about-generic{radio-menu-item-group}
       @about-function{radio-menu-item-new}
@@ -2774,14 +2635,12 @@ setup_tree (void)
       @about-function{radio-menu-item-join-group}
     @end{subsection}
     @begin[GtkSeparatorMenuItem]{subsection}
-      A separator used in menus.
       @about-class{separator-menu-item}
       @about-function{separator-menu-item-new}
     @end{subsection}
   @end{section}
   @begin[Toolbar]{section}
     @begin[GtkToolShell]{subsection}
-      Interface for containers containing GtkToolItem widgets.
       @about-class{tool-shell}
       @about-function{tool-shell-ellipsize-mode}
       @about-function{tool-shell-icon-size}
@@ -2794,7 +2653,6 @@ setup_tree (void)
       @about-function{tool-shell-text-size-group}
     @end{subsection}
     @begin[GtkToolbar]{subsection}
-      Create bars of buttons and other widgets.
       @about-symbol{toolbar-space-style}
       @about-class{toolbar}
       @about-generic{toolbar-icon-size}
@@ -2815,8 +2673,6 @@ setup_tree (void)
       @about-function{toolbar-unset-style}
     @end{subsection}
     @begin[GtkToolItem]{subsection}
-      The base class of widgets that can be added to @class{gtk:tool-shell}
-      widget.
       @about-class{tool-item}
       @about-generic{tool-item-is-important}
       @about-generic{tool-item-visible-horizontal}
@@ -2841,7 +2697,6 @@ setup_tree (void)
       @about-function{tool-item-text-size-group}
     @end{subsection}
     @begin[GtkToolPalette]{subsection}
-      A tool palette with categories.
       @about-symbol{tool-palette-drag-targets}
       @about-class{tool-palette}
       @about-generic{tool-palette-icon-size}
@@ -2862,7 +2717,6 @@ setup_tree (void)
       @about-function{tool-palette-set-drag-source}
     @end{subsection}
     @begin[GtkToolItemGroup]{subsection}
-      A sub container used in a tool palette.
       @about-class{tool-item-group}
       @about-generic{tool-item-group-collapsed}
       @about-generic{tool-item-group-ellipsize}
@@ -2881,13 +2735,11 @@ setup_tree (void)
       @about-function{tool-item-group-insert}
     @end{subsection}
     @begin[GtkSeparatorToolItem]{subsection}
-      A toolbar item that separates groups of other toolbar items.
       @about-class{separator-tool-item}
       @about-generic{separator-tool-item-draw}
       @about-function{separator-tool-item-new}
     @end{subsection}
     @begin[GtkToolButton]{subsection}
-      A @class{gtk:tool-item} subclass that displays buttons.
       @about-class{tool-button}
       @about-generic{tool-button-icon-name}
       @about-generic{tool-button-icon-widget}
@@ -2899,8 +2751,6 @@ setup_tree (void)
       @about-function{tool-button-new-from-stock}
     @end{subsection}
     @begin[GtkMenuToolButton]{subsection}
-      A @class{gtk:tool-item} widget containing a button with an additional
-      dropdown menu.
       @about-class{menu-tool-button}
       @about-generic{menu-tool-button-menu}
       @about-function{menu-tool-button-new}
@@ -2909,14 +2759,12 @@ setup_tree (void)
       @about-function{menu-tool-button-set-arrow-tooltip-markup}
     @end{subsection}
     @begin[GtkToggleToolButton]{subsection}
-      A @class{gtk:tool-item} widget containing a toggle button.
       @about-class{toggle-tool-button}
       @about-generic{toggle-tool-button-active}
       @about-function{toggle-tool-button-new}
       @about-function{toggle-tool-button-new-from-stock}
     @end{subsection}
     @begin[GtkRadioToolButton]{subsection}
-      A toolbar item that contains a radio button.
       @about-class{radio-tool-button}
       @about-generic{radio-tool-button-group}
       @about-function{radio-tool-button-new}
@@ -2929,7 +2777,6 @@ setup_tree (void)
   @end{section}
   @begin[Popover]{section}
     @begin[GtkPopover]{subsection}
-      Context dependent bubbles.
       @about-symbol{popover-constraint}
       @about-class{popover}
       @about-generic{popover-constrain-to}
@@ -2946,7 +2793,6 @@ setup_tree (void)
       @about-function{popover-default-widget}
     @end{subsection}
     @begin[GtkPopoverMenu]{subsection}
-      Popovers to use as menus.
       @about-class{popover-menu}
       @about-generic{popover-menu-visible-submenu}
       @about-function{popover-menu-child-position}
@@ -2957,14 +2803,12 @@ setup_tree (void)
   @end{section}
   @begin[Selectors (Color, File and Font)]{section}
     @begin[GtkColorChooser]{subsection}
-      Interface implemented by widgets for choosing colors.
       @about-class{color-chooser}
       @about-generic{color-chooser-rgba}
       @about-generic{color-chooser-use-alpha}
       @about-function{color-chooser-add-palette}
     @end{subsection}
     @begin[GtkColorButton]{subsection}
-      A button to launch a color selection dialog.
       @about-class{color-button}
       @about-generic{color-button-alpha}
       @about-generic{color-button-color}
@@ -2977,19 +2821,16 @@ setup_tree (void)
       @about-function{color-button-new-with-rgba}
     @end{subsection}
     @begin[GtkColorChooserWidget]{subsection}
-      A widget for choosing colors.
       @about-class{color-chooser-widget}
       @about-generic{color-chooser-widget-show-editor}
       @about-function{color-chooser-widget-new}
     @end{subsection}
     @begin[GtkColorChooserDialog]{subsection}
-      A dialog for choosing colors.
       @about-class{color-chooser-dialog}
       @about-generic{color-chooser-dialog-show-editor}
       @about-function{color-chooser-dialog-new}
     @end{subsection}
     @begin[GtkFileFilter]{subsection}
-      A filter for selecting a file subset.
       @about-symbol{file-filter-flags}
       @about-symbol{file-filter-info}
       @about-function{file-filter-info-contains}
@@ -3011,8 +2852,6 @@ setup_tree (void)
       @about-function{file-filter-to-gvariant}
     @end{subsection}
     @begin[GtkFileChooser]{subsection}
-      File chooser interface used by the @class{gtk:file-chooser-widget} and
-      @class{gtk:file-chooser-dialog} widgets.
       @about-symbol{file-chooser-action}
       @about-symbol{file-chooser-confirmation}
       @about-symbol{GTK_FILE_CHOOSER_ERROR}
@@ -3061,7 +2900,6 @@ setup_tree (void)
       @about-function{file-chooser-unselect-file}
     @end{subsection}
     @begin[GtkFileChooserButton]{subsection}
-      A button to launch a file selection dialog.
       @about-class{file-chooser-button}
       @about-generic{file-chooser-button-dialog}
       @about-generic{file-chooser-button-focus-on-click}
@@ -3071,28 +2909,22 @@ setup_tree (void)
       @about-function{file-chooser-button-new-with-dialog}
     @end{subsection}
     @begin[GtkFileChooserNative]{subsection}
-      A native file chooser dialog, suitable for \"File/Open\" or \"File/Save\"
-      commands.
       @about-class{file-chooser-native}
       @about-generic{file-chooser-native-accept-label}
       @about-generic{file-chooser-native-cancel-label}
       @about-function{file-chooser-native-new}
     @end{subsection}
     @begin[GtkFileChooserDialog]{subsection}
-      A file chooser dialog, suitable for \"File/Open\" or \"File/Save\"
-      commands.
       @about-class{file-chooser-dialog}
       @about-function{file-chooser-dialog-new}
     @end{subsection}
     @begin[GtkFileChooserWidget]{subsection}
-      File chooser widget that can be embedded in other widgets.
       @about-class{file-chooser-widget}
       @about-generic{file-chooser-widget-search-mode}
       @about-generic{file-chooser-widget-subtitle}
       @about-function{file-chooser-widget-new}
     @end{subsection}
     @begin[GtkFontChooser]{subsection}
-      Interface implemented by widgets displaying fonts.
       @about-symbol{font-chooser-level}
       @about-class{font-chooser}
       @about-generic{font-chooser-font}
@@ -3110,7 +2942,6 @@ setup_tree (void)
       @about-function{font-chooser-font-map}
     @end{subsection}
     @begin[GtkFontButton]{subsection}
-      A button to launch a font chooser dialog.
       @about-class{font-button}
       @about-generic{font-button-font-name}
       @about-generic{font-button-show-size}
@@ -3122,18 +2953,15 @@ setup_tree (void)
       @about-function{font-button-new-with-font}
     @end{subsection}
     @begin[GtkFontChooserWidget]{subsection}
-      A widget for selecting fonts.
       @about-class{font-chooser-widget}
       @about-generic{font-chooser-widget-tweak-action}
       @about-function{font-chooser-widget-new}
     @end{subsection}
     @begin[GtkFontChooserDialog]{subsection}
-      A dialog for selecting fonts.
       @about-class{font-chooser-dialog}
       @about-function{font-chooser-dialog-new}
     @end{subsection}
     @begin[GtkPlacesSidebar]{subsection}
-      Sidebar that displays frequently-used places in the file system.
       @about-symbol{places-open-flags}
       @about-class{places-sidebar}
       @about-generic{places-sidebar-local-only}
@@ -3157,7 +2985,6 @@ setup_tree (void)
   @end{section}
   @begin[Ornaments]{section}
     @begin[GtkFrame]{subsection}
-      A widget with a decorative frame and optional label.
       @about-class{frame}
       @about-generic{frame-label}
       @about-generic{frame-label-widget}
@@ -3168,19 +2995,16 @@ setup_tree (void)
       @about-function{frame-label-align}
     @end{subsection}
     @begin[GtkSeparator]{subsection}
-      A separator widget.
       @about-class{separator}
       @about-function{separator-new}
     @end{subsection}
   @end{section}
   @begin[Scrolling]{section}
     @begin[GtkScrollbar]{subsection}
-      A Scrollbar.
       @about-class{scrollbar}
       @about-function{scrollbar-new}
     @end{subsection}
     @begin[GtkScrolledWindow]{subsection}
-      Adds scrollbars to its child widget.
       @about-symbol{policy-type}
       @about-symbol{corner-type}
       @about-class{scrolled-window}
@@ -3209,7 +3033,6 @@ setup_tree (void)
       @about-function{scrolled-window-capture-button-press}
     @end{subsection}
     @begin[GtkScrollable]{subsection}
-      An interface for scrollable widgets.
       @about-symbol{scrollable-policy}
       @about-class{scrollable}
       @about-generic{scrollable-hadjustment}
@@ -3221,7 +3044,6 @@ setup_tree (void)
   @end{section}
   @begin[Printing]{section}
     @begin[GtkPrintOperation]{subsection}
-      High-level Printing API.
       @about-symbol{print-status}
       @about-symbol{print-operation-action}
       @about-symbol{print-operation-result}
@@ -3261,7 +3083,6 @@ setup_tree (void)
       @about-function{print-operation-preview-render-page}
     @end{subsection}
     @begin[GtkPrintContext]{subsection}
-      Encapsulates context for drawing pages.
       @about-class{print-context}
       @about-function{print-context-cairo-context}
       @about-function{print-context-set-cairo-context}
@@ -3276,7 +3097,6 @@ setup_tree (void)
       @about-function{print-context-hard-margins}
     @end{subsection}
     @begin[GtkPrintSettings]{subsection}
-      Stores print settings.
       @about-symbol{page-orientation}
       @about-symbol{print-duplex}
       @about-symbol{print-quality}
@@ -3335,7 +3155,6 @@ setup_tree (void)
       @about-function{print-settings-to-gvariant}
     @end{subsection}
     @begin[GtkPageSetup]{subsection}
-      Stores page setup information.
       @about-class{page-setup}
       @about-function{page-setup-new}
       @about-function{page-setup-copy}
@@ -3360,7 +3179,6 @@ setup_tree (void)
       @about-function{page-setup-to-gvariant}
     @end{subsection}
     @begin[GtkPaperSize]{subsection}
-      Support for named paper sizes.
       @about-symbol{unit}
       @about-class{paper-size}
       @about-function{paper-size-new}
@@ -3390,7 +3208,6 @@ setup_tree (void)
       @about-function{paper-size-to-gvariant}
     @end{subsection}
     @begin[GtkPrinter]{subsection}
-      Represents a printer.
       @about-class{print-backend}
       @about-class{printer}
       @about-generic{printer-accepting-jobs}
@@ -3421,7 +3238,6 @@ setup_tree (void)
       @about-function{enumerate-printers}
     @end{subsection}
     @begin[GtkPrintJob]{subsection}
-      Represents a print job.
       @about-class{print-job}
       @about-generic{print-job-page-setup}
       @about-generic{print-job-printer}
@@ -3446,7 +3262,6 @@ setup_tree (void)
       @about-function{print-job-reverse}
     @end{subsection}
     @begin[GtkPrintUnixDialog]{subsection}
-      A print dialog.
       @about-symbol{print-capabilities}
       @about-class{print-unix-dialog}
       @about-generic{print-unix-dialog-current-page}
@@ -3463,7 +3278,6 @@ setup_tree (void)
       @about-function{print-unix-dialog-page-setup-set}
     @end{subsection}
     @begin[GtkPageSetupUnixDialog]{subsection}
-      A page setup dialog.
       @about-class{page-setup-unix-dialog}
       @about-function{page-setup-unix-dialog-new}
       @about-function{page-setup-unix-dialog-page-setup}
@@ -3472,13 +3286,11 @@ setup_tree (void)
   @end{section}
   @begin[Shortcuts Overview]{section}
     @begin[GtkShortcutsWindow]{subsection}
-      Toplevel which shows help for shortcuts
       @about-class{shortcuts-window}
       @about-generic{shortcuts-window-section-name}
       @about-generic{shortcuts-window-view-name}
     @end{subsection}
     @begin[GtkShortcutsSection]{subsection}
-      Represents an application mode in a @class{gtk:shortcuts-window} widget.
       @about-class{shortcuts-section}
       @about-generic{shortcuts-section-max-height}
       @about-generic{shortcuts-section-section-name}
@@ -3486,7 +3298,6 @@ setup_tree (void)
       @about-generic{shortcuts-section-view-name}
     @end{subsection}
     @begin[GtkShortcutsGroup]{subsection}
-      Represents a group of shortcuts in a @class{gtk:shortcuts-window} widget.
       @about-class{shortcuts-group}
       @about-generic{shortcuts-group-accel-size-group}
       @about-generic{shortcuts-group-height}
@@ -3495,7 +3306,6 @@ setup_tree (void)
       @about-generic{shortcuts-group-view}
     @end{subsection}
     @begin[GtkShortcutsShortcut]{subsection}
-      Represents a keyboard shortcut in a @class{gtk:shortcuts-window} widget.
       @about-symbol{shortcut-type}
       @about-class{shortcuts-shortcut}
       @about-generic{shortcuts-shortcut-accel-size-group}
@@ -3513,7 +3323,6 @@ setup_tree (void)
   @end{section}
   @begin[Miscellaneous]{section}
     @begin[GtkAdjustment]{subsection}
-      A representation of an adjustable bounded value.
       @about-class{adjustment}
       @about-generic{adjustment-lower}
       @about-generic{adjustment-page-increment}
@@ -3529,7 +3338,6 @@ setup_tree (void)
       @about-function{adjustment-minimum-increment}
     @end{subsection}
     @begin[GtkCalendar]{subsection}
-      Displays a calendar and allows the user to select a date.
       @about-symbol{calendar-display-options}
       @about-class{calendar}
       @about-generic{calendar-day}
@@ -3555,26 +3363,21 @@ setup_tree (void)
       @about-function{calendar-set-detail-func}
     @end{subsection}
     @begin[GtkDrawingArea]{subsection}
-      A widget for custom user interface elements.
       @about-class{drawing-area}
       @about-function{drawing-area-new}
     @end{subsection}
     @begin[GtkEventBox]{subsection}
-      A widget used to catch events for widgets which do not have their own
-      window.
       @about-class{event-box}
       @about-generic{event-box-above-child}
       @about-generic{event-box-visible-window}
       @about-function{event-box-new}
     @end{subsection}
     @begin[GtkIMContexSimple]{subsection}
-      An input method context supporting table-based input methods.
       @about-class{im-context-simple}
       @about-function{im-context-simple-new}
       @about-function{im-context-simple-add-table}
     @end{subsection}
     @begin[GtkIMMulticontex]{subsection}
-      An input method context supporting multiple, loadable input methods.
       @about-class{im-multicontext}
       @about-function{im-multicontext-new}
       @about-function{im-multicontext-append-menuitems}
@@ -3582,7 +3385,6 @@ setup_tree (void)
       @about-function{im-multicontext-set-context-id}
     @end{subsection}
     @begin[GtkSizeGroup]{subsection}
-      Grouping widgets so they request the same size.
       @about-symbol{size-group-mode}
       @about-class{size-group}
       @about-generic{size-group-ignore-hidden}
@@ -3593,7 +3395,6 @@ setup_tree (void)
       @about-function{size-group-widgets}
     @end{subsection}
     @begin[GtkTooltip]{subsection}
-      Add tips to your widgets.
       @about-class{tooltip}
       @about-function{tooltip-set-markup}
       @about-function{tooltip-set-text}
@@ -3606,7 +3407,6 @@ setup_tree (void)
       @about-function{tooltip-set-tip-area}
     @end{subsection}
     @begin[GtkViewport]{subsection}
-      An adapter which makes widgets scrollable.
       @about-class{viewport}
       @about-generic{viewport-shadow-type}
       @about-function{viewport-new}
@@ -3619,7 +3419,6 @@ setup_tree (void)
   @end{section}
   @begin[Interfaces]{section}
     @begin[GtkActionable]{subsection}
-      An interface for widgets that can be associated with actions.
       @about-class{actionable}
       @about-generic{actionable-action-name}
       @about-generic{actionable-action-target}
@@ -3627,8 +3426,6 @@ setup_tree (void)
       @about-function{actionable-set-detailed-action-name}
     @end{subsection}
     @begin[GtkBuildable]{subsection}
-      Interface for objects that can be built by a @class{gtk:builder} UI
-      description.
       @about-class{buildable}
       @about-function{buildable-name}
       @about-function{buildable-add-child}
@@ -3641,14 +3438,12 @@ setup_tree (void)
       @about-function{buildable-internal-child}
     @end{subsection}
     @begin[GtkOrientable]{subsection}
-      An interface for flippable widgets.
       @about-class{orientable}
       @about-generic{orientable-orientation}
     @end{subsection}
   @end{section}
   @begin[Abstract Base Classes]{section}
     @begin[GtkWidget]{subsection}
-      Base class for all widgets.
       @about-symbol{widget-help-type}
       @about-symbol{size-request-mode}
       @about-symbol{requested-size}
@@ -3858,7 +3653,6 @@ setup_tree (void)
       @about-function{widget-class-set-connect-func}
     @end{subsection}
     @begin[GtkContainer]{subsection}
-      Base class for widgets which contain other widgets.
       @about-symbol{resize-mode}
       @about-class{container}
       @about-generic{container-border-width}
@@ -3896,12 +3690,10 @@ setup_tree (void)
       @about-function{container-class-handle-border-width}
     @end{subsection}
     @begin[GtkBin]{subsection}
-      A container with just one child.
       @about-class{bin}
       @about-function{bin-child}
     @end{subsection}
     @begin[GtkRange]{subsection}
-      Base class for widgets which visualize an adjustment
       @about-symbol{sensitivity-type}
       @about-class{range}
       @about-generic{range-adjustment}
@@ -3922,7 +3714,6 @@ setup_tree (void)
       @about-function{range-slider-size-fixed}
     @end{subsection}
     @begin[GtkIMContext]{subsection}
-      Base class for input method contexts.
       @about-class{im-context}
       @about-generic{im-context-input-hints}
       @about-generic{im-context-input-purpose}
@@ -3940,7 +3731,6 @@ setup_tree (void)
       @about-function{im-context-delete-surrounding}
     @end{subsection}
     @begin[GtkNativeDialog]{subsection}
-      Integrate with native dialogs.
       @about-class{native-dialog}
       @about-generic{native-dialog-modal}
       @about-generic{native-dialog-title}
@@ -3954,7 +3744,6 @@ setup_tree (void)
   @end{section}
   @begin[Cross-process Embedding]{section}
     @begin[GtkPlug]{subsection}
-      Toplevel for embedding into other processes.
       @about-class{plug}
       @about-generic{plug-embedded}
       @about-generic{plug-socket-window}
@@ -3965,7 +3754,6 @@ setup_tree (void)
       @about-function{plug-id}
     @end{subsection}
     @begin[GtkSocket]{subsection}
-      Container for widgets from other processes.
       @about-class{socket}
       @about-function{socket-new}
       @about-function{socket-add-id}
@@ -3975,7 +3763,6 @@ setup_tree (void)
   @end{section}
   @begin[Recently Used Documents]{section}
     @begin[GtkRecentManager]{subsection}
-      Managing recently used files.
       @about-class{recent-manager}
       @about-generic{recent-manager-filename}
       @about-generic{recent-manager-size}
@@ -4015,7 +3802,6 @@ setup_tree (void)
       @about-function{recent-info-match}
     @end{subsection}
     @begin[GtkRecentChooser]{subsection}
-      Interface implemented by widgets displaying recently used files.
       @about-symbol{GTK_RECENT_CHOOSER_ERROR}
       @about-symbol{recent-chooser-error}
       @about-symbol{recent-sort-type}
@@ -4045,25 +3831,21 @@ setup_tree (void)
       @about-function{recent-chooser-list-filters}
     @end{subsection}
     @begin[GtkRecentChooserDialog]{subsection}
-      Displays recently used files in a dialog.
       @about-class{recent-chooser-dialog}
       @about-function{recent-chooser-dialog-new}
       @about-function{recent-chooser-dialog-new-for-manager}
     @end{subsection}
     @begin[GtkRecentChooserMenu]{subsection}
-      Displays recently used files in a menu.
       @about-class{recent-chooser-menu}
       @about-function{recent-chooser-menu-new}
       @about-function{recent-chooser-menu-new-for-manager}
     @end{subsection}
     @begin[GtkRecentChooserWidget]{subsection}
-      Displays recently used files.
       @about-class{recent-chooser-widget}
       @about-function{recent-chooser-widget-new}
       @about-function{recent-chooser-widget-new-for-manager}
     @end{subsection}
     @begin[GtkRecentFilter]{subsection}
-      A filter for selecting a subset of recently used files.
       @about-symbol{recent-filter-info}
       @about-symbol{recent-filter-flags}
       @about-class{recent-filter}
@@ -4083,14 +3865,12 @@ setup_tree (void)
   @end{section}
   @begin[Choosing from installed applications]{section}
     @begin[GtkAppChooser]{subsection}
-      Interface implemented by widgets for choosing an application.
       @about-class{app-chooser}
       @about-generic{app-chooser-content-type}
       @about-function{app-chooser-app-info}
       @about-function{app-chooser-refresh}
     @end{subsection}
     @begin[GtkAppChooserButton]{subsection}
-      A button to launch an application chooser dialog.
       @about-class{app-chooser-button}
       @about-generic{app-chooser-button-heading}
       @about-generic{app-chooser-button-show-default-item}
@@ -4101,7 +3881,6 @@ setup_tree (void)
       @about-function{app-chooser-button-set-active-custom-item}
     @end{subsection}
     @begin[GtkAppChooserDialog]{subsection}
-      An application chooser dialog.
       @about-class{app-chooser-dialog}
       @about-generic{app-chooser-dialog-gfile}
       @about-generic{app-chooser-dialog-heading}
@@ -4110,7 +3889,6 @@ setup_tree (void)
       @about-function{app-chooser-dialog-widget}
     @end{subsection}
     @begin[GtkAppChooserWidget]{subsection}
-      Application chooser widget that can be embedded in other widgets.
       @about-class{app-chooser-widget}
       @about-generic{app-chooser-widget-default-text}
       @about-generic{app-chooser-widget-show-all}
@@ -4123,7 +3901,6 @@ setup_tree (void)
   @end{section}
   @begin[Gestures and event handling]{section}
     @begin[GtkEventController]{subsection}
-      Self-contained handler of series of events.
       @about-symbol{propagation-phase}
       @about-class{event-controller}
       @about-generic{event-controller-propagation-phase}
@@ -4132,24 +3909,20 @@ setup_tree (void)
       @about-function{event-controller-reset}
     @end{subsection}
     @begin[GtkEventControllerKey]{subsection}
-      Event controller for key events.
       @about-class{event-controller-key}
       @about-function{event-controller-key-new}
     @end{subsection}
     @begin[GtkEventControllerScroll]{subsection}
-      Event controller for scroll events.
       @about-symbol{event-controller-scroll-flags}
       @about-class{event-controller-scroll}
       @about-generic{event-controller-scroll-flags}
       @about-function{event-controller-scroll-new}
     @end{subsection}
     @begin[GtkEventControllerMotion]{subsection}
-      Event controller for motion events
       @about-class{event-controller-motion}
       @about-function{event-controller-motion-new}
     @end{subsection}
     @begin[GtkGesture]{subsection}
-      Base class for gestures.
       @about-symbol{event-sequence-state}
       @about-class{gesture}
       @about-generic{gesture-n-points}
@@ -4172,7 +3945,6 @@ setup_tree (void)
       @about-function{gesture-is-grouped-with}
     @end{subsection}
     @begin[GtkGestureSingle]{subsection}
-      Base class for mouse/single-touch gestures.
       @about-class{gesture-single}
       @about-generic{gesture-single-button}
       @about-generic{gesture-single-exclusive}
@@ -4181,51 +3953,43 @@ setup_tree (void)
       @about-function{gesture-single-current-sequence}
     @end{subsection}
     @begin[GtkGestureDrag]{subsection}
-      Drag gesture
       @about-class{gesture-drag}
       @about-function{gesture-drag-new}
       @about-function{gesture-drag-start-point}
       @about-function{gesture-drag-offset}
     @end{subsection}
     @begin[GtkGestureLongPress]{subsection}
-      \"Press and Hold\" gesture
       @about-class{gesture-long-press}
       @about-generic{gesture-long-press-delay-factor}
       @about-function{gesture-long-press-new}
     @end{subsection}
     @begin[GtkGestureMultiPress]{subsection}
-      Multipress gesture.
       @about-class{gesture-multi-press}
       @about-function{gesture-multi-press-new}
       @about-function{gesture-multi-press-area}
     @end{subsection}
     @begin[GtkGesturePan]{subsection}
-      Pan gesture
       @about-symbol{pan-direction}
       @about-class{gesture-pan}
       @about-generic{gesture-pan-orientation}
       @about-function{gesture-pan-new}
     @end{subsection}
     @begin[GtkGestureSwipe]{subsection}
-      Swipe gesture
       @about-class{gesture-swipe}
       @about-function{gesture-swipe-new}
       @about-function{gesture-swipe-velocity}
     @end{subsection}
     @begin[GtkGestureRotate]{subsection}
-      Rotate gesture.
       @about-class{gesture-rotate}
       @about-function{gesture-rotate-new}
       @about-function{gesture-rotate-angle-delta}
     @end{subsection}
     @begin[GtkGestureZoom]{subsection}
-      Zoom gesture.
       @about-class{gesture-zoom}
       @about-function{gesture-zoom-new}
       @about-function{gesture-zoom-scale-delta}
     @end{subsection}
     @begin[GtkGestureStylus]{subsection}
-      Gesture for stylus input
       @about-class{gesture-stylus}
       @about-function{gesture-stylus-new}
       @about-function{gesture-stylus-axis}
@@ -4233,7 +3997,6 @@ setup_tree (void)
       @about-function{gesture-stylus-device-tool}
     @end{subsection}
     @begin[GtkPadController]{subsection}
-      Controller for drawing tablet pads
       @about-symbol{pad-action-type}
       @about-symbol{pad-action-entry}
       @about-class{pad-controller}
@@ -4329,8 +4092,6 @@ setup_tree (void)
       @about-function{cl-cffi-gtk-build-info}
     @end{subsection}
     @begin[Accelerator Groups]{subsection}
-      Groups of global keyboard accelerators for an entire @class{gtk:window}
-      widget.
       @about-symbol{accel-flags}
       @about-class{accel-group}
       @about-generic{accel-group-is-locked}
@@ -4358,7 +4119,6 @@ setup_tree (void)
       @about-function{accelerator-default-mod-mask}
     @end{subsection}
     @begin[Accelerator Maps]{subsection}
-      Loadable keyboard accelerator specifications.
       @about-class{accel-map}
       @about-function{accel-map-add-entry}
       @about-function{accel-map-lookup-entry}
@@ -4376,7 +4136,6 @@ setup_tree (void)
       @about-function{accel-map-unlock-path}
     @end{subsection}
     @begin[GtkClipboard]{subsection}
-      Storing data on clipboards.
       @about-class{clipboard}
       @about-function{clipboard-get}
       @about-function{clipboard-for-display}
@@ -4466,7 +4225,6 @@ setup_tree (void)
       @about-function{drag-source-add-uri-targets}
     @end{subsection}
     @begin[GtkSettings]{subsection}
-      Sharing settings between applications.
       @about-symbol{GtkSettingsValue}
       @about-symbol{im-preedit-style}
       @about-symbol{im-status-style}
@@ -4574,7 +4332,6 @@ setup_tree (void)
       not implemented
     @end{subsection}
     @begin[Standard Enumerations]{subsection}
-      Public enumerated types used throughout GTK.
       @about-symbol{baseline-position}
       @about-symbol{delete-type}
       @about-symbol{direction-type}
@@ -4655,7 +4412,6 @@ setup_tree (void)
       @about-function{selection-remove-all}
     @end{subsection}
     @begin[Filesystem utilities]{subsection}
-      Functions for working with GIO
       @about-class{mount-operation}
       @about-function{mount-operation-new}
       @about-function{mount-operation-is-showing}
@@ -4668,7 +4424,6 @@ setup_tree (void)
   @end{section}
   @begin[Theming in GTK]{section}
     @begin[GtkStyleContext]{subsection}
-      Rendering UI elements.
       @about-symbol{junction-sides}
       @about-symbol{region-flags}
       @about-symbol{style-context-print-flags}
@@ -4752,7 +4507,6 @@ setup_tree (void)
       @about-function{render-insertion-cursor}
     @end{subsection}
     @begin[GtkCssProvider]{subsection}
-      CSS-like styling for widgets.
       @about-symbol{css-provider-error}
       @about-class{css-provider}
       @about-function{css-provider-default}
@@ -4774,8 +4528,6 @@ setup_tree (void)
       @about-function{css-section-start-position}
     @end{subsection}
     @begin[GtkStyleProvider]{subsection}
-      Interface to provide style information to a @class{gtk:style-context}
-      object.
       @about-variable{+priority-fallback+}
       @about-variable{+priority-theme+}
       @about-variable{+priority-settings+}
@@ -4785,7 +4537,6 @@ setup_tree (void)
       @about-function{style-provider-style-property}
     @end{subsection}
     @begin[GtkWidgetPath]{subsection}
-      Widget path abstraction.
       @about-class{widget-path}
       @about-function{widget-path-append-type}
       @about-function{widget-path-append-with-siblings}
@@ -4823,7 +4574,6 @@ setup_tree (void)
       @about-function{widget-path-to-string}
     @end{subsection}
     @begin[GtkIconTheme]{subsection}
-      Looking up icons by name.
       @about-symbol{icon-lookup-flags}
       @about-symbol{icon-theme-error}
       @about-class{icon-theme}
@@ -5064,7 +4814,6 @@ setup_tree (void)
 
     @begin[Deprecated since GTK 3.4]{subsection}@end{subsection}
     @begin[GtkHandleBox]{subsection}
-      A deprecated widget for detachable window portions.
       @about-class{handle-box}
       @about-generic{handle-box-child-detached}
       @about-generic{handle-box-handle-position}
@@ -5074,7 +4823,6 @@ setup_tree (void)
       @about-function{handle-box-new}
     @end{subsection}
     @begin[GtkTable]{subsection}
-      Deprecated widget which pack widgets in regular patterns.
       @about-symbol{attach-options}
       @about-class{table}
       @about-generic{table-column-spacing}
@@ -5105,7 +4853,6 @@ setup_tree (void)
       @about-function{tearoff-menu-item-new}
     @end{subsection}
     @begin[GtkColorSelection]{subsection}
-      A deprecated widget used to select a color.
       @about-class{color-selection}
       @about-generic{color-selection-current-alpha}
       @about-generic{color-selection-current-color}
@@ -5122,7 +4869,6 @@ setup_tree (void)
       @about-function{color-selection-set-change-palette-with-screen-hook}
     @end{subsection}
     @begin[GtkColorSelectionDialog]{subsection}
-      Deprecated dialog box for selecting a color.
       @about-class{color-selection-dialog}
       @about-generic{color-selection-dialog-cancel-button}
       @about-generic{color-selection-dialog-color-selection}
@@ -5131,7 +4877,6 @@ setup_tree (void)
       @about-function{color-selection-dialog-new}
     @end{subsection}
     @begin[GtkHSV]{subsection}
-      A deprecated \"color wheel\" widget.
       @about-class{hsv}
       @about-function{hsv-new}
       @about-function{hsv-set-color}
@@ -5157,8 +4902,6 @@ setup_tree (void)
     @end{subsection}
     @begin[Deprecated since GTK 3.10]{subsection}@end{subsection}
     @begin[GtkUIManager]{subsection}
-      Deprecated class for constructing menus and toolbars from an XML
-      description.
       @about-symbol{ui-manager-item-type}
       @about-class{ui-manager}
       @about-generic{ui-manager-add-tearoffs}
@@ -5180,7 +4923,6 @@ setup_tree (void)
       @about-function{ui-manager-ensure-update}
     @end{subsection}
     @begin[GtkActionGroup]{subsection}
-      A deprecated group of actions.
       @about-class{action-group}
       @about-generic{action-group-accel-group}
       @about-generic{action-group-name}
@@ -5207,7 +4949,6 @@ setup_tree (void)
       @about-function{action-group-translate-string}
     @end{subsection}
     @begin[GtkAction]{subsection}
-      A deprecated action which can be triggered by a menu or toolbar item.
       @about-class{action}
       @about-generic{action-action-group}
       @about-generic{action-always-show-image}
@@ -5243,7 +4984,6 @@ setup_tree (void)
       @about-function{action-set-accel-group}
     @end{subsection}
     @begin[GtkToggleAction]{subsection}
-      A deprecated action which can be toggled between two states.
       @about-class{toggle-action}
       @about-generic{toggle-action-active}
       @about-generic{toggle-action-draw-as-radio}
@@ -5251,7 +4991,6 @@ setup_tree (void)
       @about-function{toggle-action-toggled}
     @end{subsection}
     @begin[GtkRadioAction]{subsection}
-      A deprecated action of which only one in a group can be active.
       @about-class{radio-action}
       @about-generic{radio-action-current-value}
       @about-generic{radio-action-group}
@@ -5260,14 +4999,12 @@ setup_tree (void)
       @about-function{radio-action-join-group}
     @end{subsection}
     @begin[GtkRecentAction]{subsection}
-      A deprecated action which represents a list of recently used files.
       @about-class{recent-action}
       @about-generic{recent-action-show-numbers}
       @about-function{recent-action-new}
       @about-function{recent-action-new-for-manager}
     @end{subsection}
     @begin[GtkActivatable]{subsection}
-      A deprecated interface for activatable widgets.
       @about-class{activatable}
       @about-generic{activatable-related-action}
       @about-generic{activatable-use-action-appearance}
@@ -5275,7 +5012,6 @@ setup_tree (void)
       @about-function{activatable-sync-action-properties}
     @end{subsection}
     @begin[GtkImageMenuItem]{subsection}
-      A deprecated widget for a menu item with an icon.
       @about-class{image-menu-item}
       @about-generic{image-menu-item-accel-group}
       @about-generic{image-menu-item-always-show-image}
@@ -5288,7 +5024,6 @@ setup_tree (void)
       @about-function{image-menu-item-set-accel-group}
     @end{subsection}
     @begin[GtkMisc]{subsection}
-      A deprecated base class for widgets with alignments and padding.
       @about-class{misc}
       @about-function{misc-set-alignment}
       @about-function{misc-set-padding}
@@ -5305,7 +5040,6 @@ setup_tree (void)
       In the Lisp binding no symbols and functions are implemented.
     @end{subsection}
     @begin[Themable Stock Images]{subsection}
-      Deprecated structures and functions for manipulating stock icons.
       @about-symbol{icon-size}
       @about-function{icon-size-lookup}
       @about-function{icon-size-lookup-for-settings}
@@ -5353,7 +5087,6 @@ setup_tree (void)
     @end{subsection}
     @begin[Deprecated since GTK 3.14]{subsection}@end{subsection}
     @begin[GtkNumerableIcon]{subsection}
-      A deprecated @class{g:icon} implementation that allows numbered emblems.
       @about-class{numerable-icon}
       @about-generic{numerable-icon-background-icon}
       @about-generic{numerable-icon-background-icon-name}
@@ -5364,7 +5097,6 @@ setup_tree (void)
       @about-function{numerable-icon-new-with-style-context}
     @end{subsection}
     @begin[GtkArrow]{subsection}
-      Deprecated widget which displays an arrow.
       @about-class{arrow}
       @about-generic{arrow-arrow-type}
       @about-generic{arrow-shadow-type}
@@ -5372,7 +5104,6 @@ setup_tree (void)
       @about-function{arrow-set}
     @end{subsection}
     @begin[GtkStatusIcon]{subsection}
-      Deprecated class for displaying an icon in the system tray.
       @about-class{status-icon}
       @about-generic{status-icon-embedded}
       @about-generic{status-icon-file}
@@ -5415,7 +5146,6 @@ setup_tree (void)
       In the Lisp binding no symbols and functions are implemented.
     @end{subsection}
     @begin[GtkAlignment]{subsection}
-      A deprecated widget which controls the alignment and size of its child.
       @about-class{alignment}
       @about-generic{alignment-bottom-padding}
       @about-generic{alignment-left-padding}

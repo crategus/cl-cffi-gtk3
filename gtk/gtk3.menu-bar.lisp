@@ -89,7 +89,6 @@
       (liber:symbol-documentation 'pack-direction)
  "@version{#2024-3-22}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkPackDirection\" pack-direction
   (:export t
    :type-initializer \"gtk_pack_direction_get_type\")
@@ -97,7 +96,6 @@
   (:rtl 1)
   (:ttb 2)
   (:btt 3))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

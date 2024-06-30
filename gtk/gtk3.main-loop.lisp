@@ -414,14 +414,14 @@
 (export 'events-pending)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_main ()
+;;; gtk_main
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_main" %main) :void)
 
 (defun main ()
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{2024-6-29}
   @begin{short}
     Runs the main loop until the @fun{gtk:main-quit} function is called.
   @end{short}
@@ -439,24 +439,24 @@
     @fun{gtk:main-quit} function is called in the idle callback to quit the
     main loop.
     @begin{pre}
-(defun main-idle-cb ()
-  (format t \"~&Execute main-idle-cb in level ~A.~%\" (gtk:main-level))
-  ;; Quit the main loop.
+(defun idle-cb ()
+  (format t \"~&Execute IDLE-CB level ~a~%\" (gtk:main-level))
+  ;; Quit the main loop
   (gtk:main-quit)
-  ;; Remove the idle source.
+  ;; Remove the idle source
   glib:+source-remove+)
 
 (defun main ()
-  ;; Add an idle source to the main loop.
-  (g:idle-add #'main-idle-cb)
-  ;; Start the main loop.
-  ;; We return when gtk:main-quit is called in the idle callback.
+  ;; Add an idle source to the main loop
+  (g:idle-add #'idle-cb)
+  ;; Start the main loop
+  ;; Returns when GTK:MAIN-QUIT is called in the idle callback
   (gtk:main))
     @end{pre}
   @end{examples}
   @see-function{gtk:within-main-loop}
   @see-function{gtk:main-quit}"
-  (gdk:with-gdk-threads-lock
+  (gdk:with-threads-lock
     (%main)))
 
 (export 'main)

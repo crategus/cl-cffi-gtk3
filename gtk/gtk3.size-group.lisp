@@ -82,7 +82,6 @@
       (liber:symbol-documentation 'size-group-mode)
  "@version{#2024-3-22}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkSizeGroupMode\" size-group-mode
   (:export t
    :type-initializer \"gtk_size_group_mode_get_type\")
@@ -90,7 +89,6 @@
   (:horizontal 1)
   (:vertical 2)
   (:both 3))
-    @end{pre}
  @end{declaration}
  @begin{values}
     @begin[code]{table}

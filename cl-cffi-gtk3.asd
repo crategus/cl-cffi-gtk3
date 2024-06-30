@@ -541,7 +541,7 @@
 ;    (:file "gtk.menu-bar")
      (:file "rtest-gtk3-check-menu-item")
      (:file "rtest-gtk3-radio-menu-item")
-;    (:file "gtk.image-menu-item")
+     (:file "rtest-gtk3-image-menu-item")
 ;    (:file "gtk.separator-menu-item")
 ;    (:file "gtk.tearoff-menu-item")
 ;    (:file "gtk.combo-box")
@@ -556,7 +556,7 @@
 ;    (:file "gtk.toggle-tool-button")
      (:file "rtest-gtk3-radio-tool-button")
 ;    (:file "gtk.menu-tool-button")
-;    (:file "gtk.popover")
+     (:file "rtest-gtk3-popover")
 ;    (:file "gtk.popover-menu")
 
      ;; Selectors

@@ -147,7 +147,6 @@
       (liber:symbol-documentation 'icon-lookup-flags)
  "@version{#2024-3-21}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-flags \"GtkIconLookupFlags\" icon-lookup-flags
   (:export t
    :type-initializer \"gtk_icon_lookup_flags_get_type\")
@@ -160,7 +159,6 @@
   (:force-symbolic   #.(ash 1 6))
   (:dir-ltr          #.(ash 1 7))
   (:dir-rtl          #.(ash 1 8)))
-     @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -222,13 +220,11 @@
       (liber:symbol-documentation 'icon-theme-error)
  "@version{#2024-3-22}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkIconThemeError\" icon-theme-error
   (:export t
    :type-initializer \"gtk_icon_theme_error_get_type\")
   (:not-found 0)
   (:failed 1))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

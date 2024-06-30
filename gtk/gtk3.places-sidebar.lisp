@@ -127,14 +127,12 @@
       (liber:symbol-documentation 'places-open-flags)
  "@version{#2024-3-21}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-flags \"GtkPlacesOpenFlags\" gtk:places-open-flags
   (:export t
    :type-initializer \"gtk_places_open_flags_get_type\")
   (:normal     #.(ash 1 0))
   (:new-tab    #.(ash 1 1))
   (:new-window #.(ash 1 2)))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

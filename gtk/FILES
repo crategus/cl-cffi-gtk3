@@ -2,9 +2,9 @@ Content from the GTK 3.24 Reference Manual
 
     *   - needs update
     +   - needs work
+    .   - needs proofreading
     %   - not fully implemented
     &   - objects and structures are implemented, some functions are missing
-    .   - proofreading documentation
 
 GTK Widgets and Objects
 
@@ -19,22 +19,22 @@ GTK Widgets and Objects
 
   Windows
 
-    gtk.window.lisp                  - GtkWindow                    - GTK 3.24
-    gtk.dialog.lisp                  - GtkDialog                    - GTK 3.24
-    gtk.message-dialog.lisp          - GtkMessageDialog             - GTK 3.24
-    gtk.about-dialog.lisp            - GtkAboutDialog               - GTK 3.24
-    gtk.assistant.lisp               - GtkAssistant                 - GTK 3.24
-    gtk.invisible.lisp               - GtkInvisible                 - GTK 3.24
-    gtk.offscreen-window.lisp        - GtkOffscreenWindow           - GTK 3.24
-    gtk.window-group.lisp            - GtkWindowGroup               - GTK 3.24
+    gtk.window.lisp                  - GtkWindow                    - GTK 3.24 .
+    gtk.dialog.lisp                  - GtkDialog                    - GTK 3.24 .
+    gtk.message-dialog.lisp          - GtkMessageDialog             - GTK 3.24 .
+    gtk.about-dialog.lisp            - GtkAboutDialog               - GTK 3.24 .
+    gtk.assistant.lisp               - GtkAssistant                 - GTK 3.24 .
+    gtk.invisible.lisp               - GtkInvisible                 - GTK 3.24 .
+    gtk.offscreen-window.lisp        - GtkOffscreenWindow           - GTK 3.24 .
+    gtk.window-group.lisp            - GtkWindowGroup               - GTK 3.24 .
 
   Layout Containers
 
-    gtk.box.lisp                     - GtkBox                       - GTK 3.24
-    gtk.grid.lisp                    - GtkGrid                      - GTK 3.24
-    gtk.revealer.lisp                - GtkRevealer                  - GTK 3.24
-    gtk.list-box.lisp                - GtkListBox                   - GTK 3.24
-    gtk.flow-box.lisp                - GtkFlowBox                   - GTK 3.24
+    gtk.box.lisp                     - GtkBox                       - GTK 3.24 .
+    gtk.grid.lisp                    - GtkGrid                      - GTK 3.24 .
+    gtk.revealer.lisp                - GtkRevealer                  - GTK 3.24 .
+    gtk.list-box.lisp                - GtkListBox                   - GTK 3.24 .
+    gtk.flow-box.lisp                - GtkFlowBox                   - GTK 3.24 .
     gtk.stack.lisp                   - GtkStack                     - GTK 3.24 .
     gtk.stack-switcher.lisp          - GtkStackSwitcher             - GTK 3.24 .
     gtk.stack-sidebar.lisp           - GtkStackSidebar              - GTK 3.24 .
@@ -145,7 +145,7 @@ GTK Widgets and Objects
     gtk.menu-tool-button.lisp        - GtkMenuToolButton            - GTK 3.24 +
     gtk.toggle-tool-button.lisp      - GtkToggleToolButton          - GTK 3.24 +
     gtk.radio-tool-button.lisp       - GtkRadioToolButton           - GTK 3.24 +
-    gtk.popover.lisp                 - GtkPopover                   - GTK 3.24 +
+    gtk.popover.lisp                 - GtkPopover                   - GTK 3.24 .
     gtk.popover-menu.lisp            - GtkPopoverMenu               - GTK 3.24 +
 
   Selector Widgets and Dialogs
@@ -187,7 +187,7 @@ GTK Widgets and Objects
     gtk.page-setup.lisp              - GtkPageSetup                 - GTK 3.24 +
     gtk.paper-size.lisp              - GtkPaperSize                 - GTK 3.24 +
     gtk.printer.lisp                 - GtkPrinter                   - GTK 3.24 +
-    gtk.print-job.lisp               - GtkPrintJob                  - GTK 3.24 +
+    gtk.print-job.lisp               - GtkPrintJob                  - GTK 3.24 .
     gtk.print-unix-dialog.lisp       - GtkPrintUnixDialog           - GTK 3.24 +
     gtk.page-setup-unix-dialog.lisp  - GtkPageSetupUnixDialog       - GTK 3.24 +
 
@@ -265,7 +265,7 @@ GTK Widgets and Objects
     gtk.gesture-rotate.lisp          - GtkGestureRotate             - GTK 3.24 +
     gtk.gesture-zoom.lisp            - GtkGestureZoom               - GTK 3.24 +
     gtk.gesture-stylus.lisp          - GtkGestureStylus             - GTK 3.24 +
-    gtk.pad-controller.lisp          - GtkPadController             - GTK 3.24
+    gtk.pad-controller.lisp          - GtkPadController             - GTK 3.24 .
 
 GTK Core Reference
 
@@ -304,7 +304,7 @@ Deprecated
     Deprecated since GTK 3.4
 
     gtk.handle-box.lisp              - GtkHandleBox                 - GTK 3.24 +
-    gtk.table.lisp                   - GtkTable                     - GTK 3.24 +
+    gtk.table.lisp                   - GtkTable                     - GTK 3.24 .
     gtk.tearoff-menu-item.lisp       - GtkTearoffMenuItem           - GTK 3.24 +
 
     gtk.color-selection.lisp         - GtkColorSelection            - GTK 3.24 +
@@ -326,7 +326,7 @@ Deprecated
     gtk.recent-action.lisp           - GtkRecentAction              - GTK 3.24 +
     gtk.activatable.lisp             - GtkActivatable               - GTK 3.24 +
 
-    gtk.image-menu-item.lisp         - GtkImageMenuItem             - GTK 3.24 +
+    gtk.image-menu-item.lisp         - GtkImageMenuItem             - GTK 3.24 .
     gtk.misc.lisp                    - GtkMisc                      - GTK 3.24 +
     gtk.stock-item.lisp              - Stock Items                  - GTK 3.24 +
     gtk.stock-images.lisp            - Themeable Stock Images       - GTK 3.24 +
@@ -343,4 +343,4 @@ Deprecated
 
     not implemented                  - GtkStyleProperties
 
-;;; 2023-12-28
+;;; 2024-6-26

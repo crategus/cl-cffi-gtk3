@@ -124,7 +124,6 @@
       (liber:symbol-documentation 'image-type)
  "@version{#2024-3-22}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkImageType\" image-type
   (:export t
    :type-initializer \"gtk_image_type_get_type\")
@@ -136,7 +135,6 @@
   (:icon-name 5)
   (:gicon 6)
   (:surface 7))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

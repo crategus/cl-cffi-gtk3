@@ -80,7 +80,6 @@
       (liber:symbol-documentation 'pan-direction)
  "@version{#2024-3-22}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkPanDirection\" pan-direction
   (:export t
    :type-initializer \"gtk_pan_direction_get_type\")
@@ -88,7 +87,6 @@
   :right
   :up
   :down)
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

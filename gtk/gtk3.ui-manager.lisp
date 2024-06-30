@@ -170,7 +170,8 @@
                        left right top bottom
                        (x-options '(:expand :fill))
                        (y-options '(:expand :fill))
-                       (x-padding 0) (y-padding 0))
+                       (x-padding 0)
+                       (y-padding 0))
   (unless left
     (error "left is a mandatory child property for table packing"))
   (unless right
@@ -184,10 +185,10 @@
                 right
                 top
                 bottom
-                :x-options x-options
-                :y-options y-options
-                :x-padding x-padding
-                :y-padding y-padding))
+                :xoptions x-options
+                :yoptions y-options
+                :xpadding x-padding
+                :ypadding y-padding))
 
 (defmethod pack-child ((w tree-view) child &key)
   (tree-view-append-column w child))
@@ -276,7 +277,6 @@
       (liber:symbol-documentation 'ui-manager-item-type)
  "@version{#2024-3-21}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-flags \"GtkUIManagerItemType\" ui-manager-item-type
   (:export t
    :type-initializer \"gtk_ui_manager_item_type_get_type\"))
@@ -291,7 +291,6 @@
   (:separator 128)
   (:accelerator 256)
   (:popup-with-accels 512))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

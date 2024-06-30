@@ -228,13 +228,11 @@
       (liber:symbol-documentation 'entry-icon-position)
  "@version{2024-3-21}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkEntryIconPosition\" entry-icon-position
   (:export t
    :type-initializer \"gtk_entry_icon_position_get_type\")
   (:primary 0)
   (:secondary 1))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -273,7 +271,6 @@
       (liber:symbol-documentation 'input-purpose)
  "@version{2024-3-21}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkInputPurpose\" input-purpose
   (:export t
    :type-initializer \"gtk_input_purpose_get_type\")
@@ -287,7 +284,6 @@
   (:name 7)
   (:password 8)
   (:pin 9))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -350,7 +346,6 @@
       (liber:symbol-documentation 'input-hints)
  "@version{2024-3-21}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-flags \"GtkInputHints\" input-hints
   (:export t
    :type-initializer \"gtk_input_hints_get_type\")
@@ -366,7 +361,6 @@
   (:vertical-writing    #.(ash 1 8))
   (:emoji               #.(ash 1 9))
   (:no-emoji            #.(ash 1 10)))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

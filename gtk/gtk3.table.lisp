@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -47,7 +47,7 @@
 ;;;     gtk_table_resize
 ;;;     gtk_table_get_size
 ;;;     gtk_table_attach
-;;;     gtk_table_attach_defaults
+;;;     gtk_table_attach_defaults                           not implemented
 ;;;     gtk_table_set_row_spacing
 ;;;     gtk_table_set_col_spacing
 ;;;     gtk_table_set_row_spacings
@@ -106,16 +106,14 @@
 (setf (liber:alias-for-symbol 'attach-options)
       "GFlags"
       (liber:symbol-documentation 'attach-options)
- "@version{2024-3-21}
+ "@version{2024-6-27}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-flags \"GtkAttachOptions\" attach-options
   (:export t
    :type-initializer \"gtk_attach_options_get_type\")
   (:expand #.(ash 1 0))
   (:shrink #.(ash 1 1))
   (:fill #.(ash 1 2)))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -159,7 +157,7 @@
 
 #+liber-documentation
 (setf (documentation 'table 'type)
- "@version{2023-12-28}
+ "@version{2024-6-27}
   @begin{short}
     The @class{gtk:table} widget allows the programmer to arrange widgets in
     rows and columns, making it easy to align many widgets next to each other,
@@ -273,7 +271,7 @@
 (setf (liber:alias-for-function 'table-column-spacing)
       "Accessor"
       (documentation 'table-column-spacing 'function)
- "@version{2023-12-28}
+ "@version{2024-6-27}
   @syntax{(gtk:table-column-spacing object) => spacing}
   @syntax{(setf (gtk:table-column-spacing object) spacing)}
   @argument[table]{a @class{gtk:table} widget}
@@ -314,7 +312,7 @@
 (setf (liber:alias-for-function 'table-homogeneous)
       "Accessor"
       (documentation 'table-homogeneous 'function)
- "@version{2023-12-28}
+ "@version{2024-6-27}
   @syntax{(gtk:table-homogeneous object) => homogeneous}
   @syntax{(setf (gtk:table-homogeneous object) homogeneous)}
   @argument[object]{a @class{gtk:table} widget}
@@ -325,9 +323,8 @@
     @class{gtk:table} class.
   @end{short}
   The @fun{gtk:table-homogeneous} function returns whether the table cells are
-  all constrained to the same width and height. The
-  @setf{gtk:table-homogeneous} function changes the
-  @slot[gtk:table]{homogeneous} property.
+  all constrained to the same width and height. The @setf{gtk:table-homogeneous}
+  function changes the property.
   @begin[Warning]{dictionary}
     The @fun{gtk:table-homogeneous} function has been deprecated since version
     3.4 and should not be used in newly written code. Use the @class{gtk:grid}
@@ -352,7 +349,7 @@
 (setf (liber:alias-for-function 'table-n-columns)
       "Accessor"
       (documentation 'table-n-columns 'function)
- "@version{2023-12-28}
+ "@version{2024-6-27}
   @syntax{(gtk:table-n-columns object) => n-columns}
   @syntax{(setf (gtk:table-n-columns object) n-columns)}
   @argument[object]{a @class{gtk:table} widget}
@@ -383,7 +380,7 @@
 (setf (liber:alias-for-function 'table-n-rows)
       "Accessor"
       (documentation 'table-n-rows 'function)
- "@version{2023-12-28}
+ "@version{2024-6-27}
   @syntax{(gtk:table-n-rows object) => n-rows}
   @syntax{(setf (gtk:table-n-rows object) n-rows)}
   @argument[object]{a @class{gtk:table} widget}
@@ -414,7 +411,7 @@
 (setf (liber:alias-for-function 'table-row-spacing)
       "Accessor"
       (documentation 'table-row-spacing 'function)
- "@version{2023-12-28}
+ "@version{2024-6-27}
   @syntax{(gtk:table-row-spacing object) => spacing}
   @syntax{(setf (gtk:table-row-spacing object) spacing)}
   @argument[table]{a @class{gtk:table} widget}
@@ -454,7 +451,7 @@
 (setf (liber:alias-for-function 'table-child-bottom-attach)
       "Accessor"
       (documentation 'table-child-bottom-attach 'function)
- "@version{2023-12-28}
+ "@version{2024-6-27}
   @syntax{(gtk:table-child-bottom-attach container child) => attach}
   @syntax{(setf (gtk:table-child-bottom-attach container child) attach)}
   @argument[container]{a @class{gtk:table} widget}
@@ -483,7 +480,7 @@
 (setf (liber:alias-for-function 'table-child-left-attach)
       "Accessor"
       (documentation 'table-child-left-attach 'function)
- "@version{2023-12-28}
+ "@version{2024-6-27}
   @syntax{(gtk:table-child-left-attach container child) => attach}
   @syntax{(setf (gtk:table-child-left-attach container child) attach)}
   @argument[container]{a @class{gtk:table} widget}
@@ -512,7 +509,7 @@
 (setf (liber:alias-for-function 'table-child-right-attach)
       "Accessor"
       (documentation 'table-child-right-attach 'function)
- "@version{2023-12-28}
+ "@version{2024-6-27}
   @syntax{(gtk:table-child-right-attach container child) => attach}
   @syntax{(setf (gtk:table-child-right-attach container child) attach)}
   @argument[container]{a @class{gtk:table} widget}
@@ -541,7 +538,7 @@
 (setf (liber:alias-for-function 'table-child-top-attach)
       "Accessor"
       (documentation 'table-child-top-attach 'function)
- "@version{2023-12-28}
+ "@version{2024-6-27}
   @syntax{(gtk:table-child-top-attach container child) => attach}
   @syntax{(setf (gtk:table-child-top-attach container child) attach)}
   @argument[container]{a @class{gtk:table} widget}
@@ -571,12 +568,12 @@
 (setf (liber:alias-for-function 'table-child-x-options)
       "Accessor"
       (documentation 'table-child-x-options 'function)
- "@version{2023-12-28}
+ "@version{2024-6-27}
   @syntax{(gtk:table-child-x-options container child) => options}
   @syntax{(setf (gtk:table-child-x-options container child) options)}
   @argument[container]{a @class{gtk:table} widget}
   @argument[child]{a @class{gtk:widget} child widget}
-  @argument[options]{the @symbol{gtk:attach-options} flags}
+  @argument[options]{a @symbol{gtk:attach-options} value}
   @begin{short}
     Accessor of the @code{x-options} child property of the @class{gtk:table}
     class.
@@ -601,12 +598,12 @@
 (setf (liber:alias-for-function 'table-child-y-options)
       "Accessor"
       (documentation 'table-child-y-options 'function)
- "@version{2023-12-28}
+ "@version{2024-6-27}
   @syntax{(gtk:table-child-y-options container child) => options}
   @syntax{(setf (gtk:table-child-y-options container child) options)}
   @argument[container]{a @class{gtk:table} widget}
   @argument[child]{a @class{gtk:widget} child widget}
-  @argument[options]{the @symbol{gtk:attach-options} flags}
+  @argument[options]{a @symbol{gtk:attach-options} value}
   @begin{short}
     Accessor of the @code{y-options} child property of the @class{gtk:table}
     class.
@@ -630,7 +627,7 @@
 (setf (liber:alias-for-function 'table-child-x-padding)
       "Accessor"
       (documentation 'table-child-x-padding 'function)
- "@version{2023-12-28}
+ "@version{2024-6-27}
   @syntax{(gtk:table-child-x-padding container child) => padding}
   @syntax{(setf (gtk:table-child-x-padding container child) padding)}
   @argument[container]{a @class{gtk:table} widget}
@@ -660,7 +657,7 @@
 (setf (liber:alias-for-function 'table-child-y-padding)
       "Accessor"
       (documentation 'table-child-y-padding 'function)
- "@version{2023-12-28}
+ "@version{2024-6-27}
   @syntax{(gtk:table-child-y-padding container child) => padding}
   @syntax{(setf (gtk:table-child-y-padding container child) padding)}
   @argument[container]{a @class{gtk:table} widget}
@@ -683,20 +680,21 @@
   @see-class{gtk:grid}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_table_new ()
+;;; gtk_table_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline table-new))
 
-(defun table-new (rows columns homogeneous)
+(defun table-new (rows columns &optional homogeneous)
  #+liber-documentation
- "@version{2023-12-28}
+ "@version{2024-6-27}
   @argument[rows]{an unsigned integer with the number of rows the new table
     should have}
   @argument[columns]{an unsigned integer with the number of columns the new
     table should have}
   @argument[homogeneous]{if set to @em{true}, all table cells are resized to
-    the size of the cell containing the largest widget}
+    the size of the cell containing the largest widget, the default is
+    @em{false}}
   @return{The the newly created @class{gtk:table} widget.}
   @begin{short}
     Used to create a new table.
@@ -723,14 +721,14 @@
 (export 'table-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_table_resize ()
+;;; gtk_table_resize
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline table-resize))
 
 (defun table-resize (table rows columns)
  #+liber-documentation
- "@version{2023-12-28}
+ "@version{2024-6-27}
   @argument[table]{a @class{gtk:table} widget you wish to change the size of}
   @argument[rows]{an unsigned integer with the new number of rows}
   @argument[columns]{an unsigned integer with the new number of columns}
@@ -752,12 +750,12 @@
 (export 'table-resize)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_table_get_size () -> table-size
+;;; gtk_table_get_size
 ;;; ----------------------------------------------------------------------------
 
 (defun table-size (table)
  #+liber-documentation
- "@version{2023-12-28}
+ "@version{2024-6-27}
   @argument[table]{a @class{gtk:table} widget}
   @begin{return}
     @arg{n-rows} -- an unsigned integer with the number of rows @br{}
@@ -777,7 +775,7 @@
 (export 'table-size)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_table_attach ()
+;;; gtk_table_attach
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_table_attach" %table-attach) :void
@@ -793,14 +791,14 @@
   (y-padding :uint))
 
 (defun table-attach (table child left right top bottom
-                                 &key (x-options '(:expand :fill))
-                                      (y-options '(:expand :fill))
-                                      (x-padding 0)
-                                      (y-padding 0))
+                                 &key (xoptions '(:expand :fill))
+                                      (yoptions '(:expand :fill))
+                                      (xpadding 0)
+                                      (ypadding 0))
  #+liber-documentation
- "@version{2023-12-29}
-  @argument[table]{the @class{gtk:table} widget to add a new widget to}
-  @argument[child]{the @class{gtk:widget} child widget to add}
+ "@version{2024-6-27}
+  @argument[table]{a @class{gtk:table} widget to add a new widget to}
+  @argument[child]{a @class{gtk:widget} child widget to add}
   @argument[left]{an unsigned integer with the column number to attach the left
     side of a child widget to}
   @argument[right]{an unsigned integer with the column number to attach the
@@ -809,13 +807,13 @@
     child widget to}
   @argument[bottom]{an unsigned integer with the row number to attach the bottom
     of a child widget to}
-  @argument[x-options]{the @symbol{gtk:attach-options} flags used to specify the
+  @argument[xoptions]{a @symbol{gtk:attach-options} value used to specify the
     properties of the child widget when the table is resized}
-  @argument[y-options]{the same as @arg{x-options}, except this field
-    determines behaviour of vertical resizing}
-  @argument[x-padding]{an unsigned integer specifying the padding on the left
+  @argument[yoptions]{same as @arg{xoptions}, except this field determines
+    behaviour of vertical resizing}
+  @argument[xpadding]{an unsigned integer specifying the padding on the left
     and right of the child widget being added to the table}
-  @argument[y-padding]{an unsigned integer with the amount of padding above and
+  @argument[ypadding]{an unsigned integer with the amount of padding above and
     below the child widget}
   @begin{short}
     Adds a child widget to a table.
@@ -825,9 +823,9 @@
   represent the leftmost, rightmost, uppermost and lowest column and row
   numbers of the table. Columns and rows are indexed from zero.
 
-  The @code{x-options} and @code{y-options} keyword arguments have the default
-  value @code{'(:expand :fill)}. The @code{x-padding} and @code{y-padding}
-  keyword arguments have the default value 0.
+  The @code{xoptions} and @code{yoptions} keyword arguments have the default
+  value @code{'(:expand :fill)}. The @code{xpadding} and @code{ypadding} keyword
+  arguments have the default value 0.
   @begin{examples}
     To make a button occupy the lower right cell of a 2 x 2 table, use
     @begin{pre}
@@ -855,52 +853,22 @@
   @see-function{gtk:grid-attach}"
   (%table-attach table child
                        left right top bottom
-                       x-options y-options
-                       x-padding y-padding))
+                       xoptions yoptions
+                       xpadding ypadding))
 
 (export 'table-attach)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_table_attach_defaults ()                           not exported
+;;; gtk_table_attach_defaults                              not implemented
 ;;; ----------------------------------------------------------------------------
 
-(defun table-attach-defaults (table child left right top bottom)
- #+liber-documentation
- "@version{#2023-3-28}
-  @argument[table]{the table to add a new child widget to}
-  @argument[widget]{the child widget to add}
-  @argument[left-attach]{the column number to attach the left side of the child
-    widget to}
-  @argument[right-attach]{the column number to attach the right side of the
-    child widget to}
-  @argument[top-attach]{the row number to attach the top of the child widget
-    to}
-  @argument[bottom-attach]{the row number to attach the bottom of the child
-    widget to}
-  @begin{short}
-    As there are many options associated with the @fun{gtk:table-attach}
-    function, this convenience function provides the programmer
-    with a means to add children to a table with identical padding and
-    expansion options.
-  @end{short}
-  The values used for the @symbol{gtk:attach-options} are
-  @code{'(:expand :fill)}, and the padding is set to 0.
-  @begin[Warning]{dictionary}
-    The @fun{gtk:table-attach-defaults} function has been deprecated since
-    version 3.4 and should not be used in newly written code. Use the
-    @fun{gtk:grid-attach} function with the @class{gtk:grid} widget. Note that
-    the attach arguments differ between those two functions.
-  @end{dictionary}
-  @see-class{gtk:table}"
-  (table-attach table child left right top bottom))
-
 ;;; ----------------------------------------------------------------------------
-;;; gtk_table_set_row_spacing ()
+;;; gtk_table_set_row_spacing
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_table_set_row_spacing" table-set-row-spacing) :void
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{2024-6-27}
   @argument[table]{a @class{gtk:table} widget containing the row whose
     properties you wish to change}
   @argument[row]{an unsigned integer with the row number whose spacing will be
@@ -928,12 +896,12 @@
 (export 'table-set-row-spacing)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_table_set_col_spacing ()
+;;; gtk_table_set_col_spacing
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_table_set_col_spacing" table-set-col-spacing) :void
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{2024-6-27}
   @argument[table]{a @class{gtk:table} widget}
   @argument[column]{an unsigned integer with the column whose spacing should be
     changed}
@@ -961,12 +929,12 @@
 (export 'table-set-col-spacing)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_table_get_row_spacing ()
+;;; gtk_table_get_row_spacing
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_table_get_row_spacing" table-get-row-spacing) :uint
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{2024-6-27}
   @argument[table]{a @class{gtk:table} widget}
   @argument[row]{an unsigned integer with a row in the table, 0 indicates the
     first row}
@@ -987,12 +955,12 @@
 (export 'table-get-row-spacing)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_table_get_col_spacing ()
+;;; gtk_table_get_col_spacing
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_table_get_col_spacing" table-get-col-spacing) :uint
  #+liber-documentation
- "@version{#2021-7-20}
+ "@version{2024-6-27}
   @argument[table]{a @class{gtk:table} widget}
   @argument[column]{an unsigned integer with a column in the table, 0 indicates
     the first column}

@@ -141,7 +141,6 @@
       (liber:symbol-documentation 'policy-type)
  "@version{2024-3-22}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkPolicyType\" policy-type
   (:export t
    :type-initializer \"gtk_policy_type_get_type\")
@@ -149,7 +148,6 @@
   (:automatic 1)
   (:never 2)
   (:external 3))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -188,7 +186,6 @@
       (liber:symbol-documentation 'corner-type)
  "@version{2024-3-22}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkCornerType\" corner-type
   (:export t
    :type-initializer \"gtk_corner_type_get_type\")
@@ -196,7 +193,6 @@
   (:bottom-left 1)
   (:top-right 2)
   (:bottom-right 3))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

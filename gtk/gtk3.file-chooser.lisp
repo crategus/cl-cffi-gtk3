@@ -150,7 +150,6 @@
       (liber:symbol-documentation 'file-chooser-action)
  "@version{2024-3-21}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkFileChooserAction\" file-chooser-action
   (:export t
    :type-initializer \"gtk_file_chooser_action_get_type\")
@@ -158,7 +157,6 @@
   (:save 1)
   (:select-folder 2)
   (:create-folder 3))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -195,14 +193,12 @@
       (liber:symbol-documentation 'file-chooser-confirmation)
  "@version{2024-3-22}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkFileChooserConfirmation\" gtk:file-chooser-confirmation
   (:export t
    :type-initializer \"gtk_file_chooser_confirmation_get_type\")
   (:confirm 0)
   (:accept-filename 1)
   (:select-again 2))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -251,7 +247,6 @@
       (liber:symbol-documentation 'file-chooser-error)
  "@version{#2024-3-21}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkFileChooserError\" file-chooser-error
   (:export t
    :type-initializer \"gtk_file_chooser_error_get_type\")
@@ -259,7 +254,6 @@
   (:bad-filename 1)
   (:already-exists 2)
   (:incomplete-hostname 3))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

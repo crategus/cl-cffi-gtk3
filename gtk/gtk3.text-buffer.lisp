@@ -164,14 +164,12 @@
       (liber:symbol-documentation 'text-buffer-target-info)
  "@version{#2024-3-22}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkTextBufferTargetInfo\" gtk:text-buffer-target-info
   (:export t
    :type-initializer \"gtk_text_buffer_target_info_get_type\")
   (:buffer-contents -1)
   (:rich-text -2)
   (:text -3))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

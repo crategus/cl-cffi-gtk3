@@ -83,7 +83,6 @@
       (liber:symbol-documentation 'event-controller-scroll-flags)
  "@version{#2024-3-21}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-flags \"GtkEventControllerScrollFlags\"
                 event-controller-scroll-flags
   (:export t
@@ -94,7 +93,6 @@
   (:discrete 4)
   (:kinetic 8)
   (:both-axes 16))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

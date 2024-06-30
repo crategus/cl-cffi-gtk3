@@ -82,7 +82,6 @@
       (liber:symbol-documentation 'file-filter-flags)
  "@version{2024-3-21}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-flags \"GtkFileFilterFlags\" file-filter-flags
   (:export t
    :type-initializer \"gtk_file_filter_flags_get_type\")
@@ -90,7 +89,6 @@
   (:uri 2)
   (:display-name 4)
   (:mime-type 8))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -127,14 +125,12 @@
       (liber:symbol-documentation 'file-filter-info)
  "@version{#2024-3-23}
   @begin{declaration}
-    @begin{pre}
 (cffi:defcstruct gtk:file-filter
   (contains gtk:file-filter-flags)
   (filename :string)
   (uri :string)
   (display-name :string)
   (mime-type :string))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

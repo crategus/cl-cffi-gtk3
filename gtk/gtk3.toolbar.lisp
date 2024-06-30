@@ -115,13 +115,11 @@
       (liber:symbol-documentation 'toolbar-space-style)
  "@version{#2024-3-22}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkToolbarSpaceStyle\" toolbar-space-style
   (:export t
    :type-initializer \"gtk_toolbar_space_style_get_type\")
   (:empty 0)
   (:line 1))
-    @end{pre}
   @end{declaration}
   @short{Whether spacers are vertical lines or just blank.}
   @begin[Warning]{dictionary}

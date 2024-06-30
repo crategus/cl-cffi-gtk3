@@ -199,7 +199,6 @@
       (liber:symbol-documentation 'recent-manager-error)
  "@version{#2024-3-22}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkRecentManagerError\" recent-manager-error
   (:export t
    :type-initializer \"gtk_recent_manager_error_get_type\")
@@ -210,7 +209,6 @@
   (:read 4)
   (:write 5)
   (:unknown 6))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

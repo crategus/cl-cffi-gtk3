@@ -133,7 +133,6 @@
       (liber:symbol-documentation 'stack-transition-type)
  "@version{2024-4-9}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkStackTransitionType\" stack-transition-type
   (:export t
    :type-initializer \"gtk_stack_transition_type_get_type\")
@@ -157,7 +156,6 @@
   (:over-down-up 17)
   (:over-left-right 18)
   (:over-right-left 19))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

@@ -125,7 +125,6 @@
       (liber:symbol-documentation 'icon-size)
  "@version{2024-3-22}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkIconSize\" icon-size
   (:export t
    :type-initializer \"gtk_icon_size_get_type\")
@@ -136,7 +135,6 @@
   (:button 4)
   (:dnd 5)
   (:dialog 6))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

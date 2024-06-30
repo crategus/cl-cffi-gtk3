@@ -106,13 +106,11 @@
       (liber:symbol-documentation 'tool-palette-drag-targets)
  "@version{#2024-3-21}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-flags \"GtkToolPaletteDragTargets\" tool-palette-drag-targets
   (:export t
    :type-initializer \"gtk_tool_palette_drag_targets_get_type\")
   (:items 1)
   (:groups 2))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

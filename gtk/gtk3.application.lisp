@@ -91,7 +91,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkApplicationInhibitFlags
+;;; GtkApplicationInhibitFlags
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-flags "GtkApplicationInhibitFlags" application-inhibit-flags
@@ -108,7 +108,6 @@
       (liber:symbol-documentation 'application-inhibit-flags)
  "@version{2024-3-15}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-flags \"GtkApplicationInhibitFlags\" application-inhibit-flags
   (:export t
    :type-initializer \"gtk_application_inhibit_flags_get_type\")
@@ -116,7 +115,6 @@
   (:switch  #.(ash 1 1))
   (:suspend #.(ash 1 2))
   (:idle    #.(ash 1 3)))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -136,7 +134,7 @@
   @see-function{gtk:application-inhibit}")
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkApplication
+;;; GtkApplication
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-object-class "GtkApplication" application
@@ -482,7 +480,7 @@ lambda (application window)    :run-first
   @see-function{gtk:application-register-session}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_application_new ()
+;;; gtk_application_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline application-new))
@@ -523,7 +521,7 @@ lambda (application window)    :run-first
 (export 'application-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_application_add_window ()
+;;; gtk_application_add_window
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_application_add_window" application-add-window) :void
@@ -587,7 +585,7 @@ lambda (application window)    :run-first
 (export 'application-add-window)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_application_remove_window ()
+;;; gtk_application_remove_window
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_application_remove_window" application-remove-window) :void
@@ -612,7 +610,7 @@ lambda (application window)    :run-first
 (export 'application-remove-window)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_application_get_windows ()
+;;; gtk_application_get_windows
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_application_get_windows" application-windows)
@@ -652,7 +650,7 @@ lambda (application window)    :run-first
 (export 'application-windows)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_application_get_window_by_id ()
+;;; gtk_application_get_window_by_id
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_application_get_window_by_id" application-window-by-id)
@@ -683,7 +681,7 @@ lambda (application window)    :run-first
 (export 'application-window-by-id)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_application_inhibit ()
+;;; gtk_application_inhibit
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_application_inhibit" application-inhibit) :uint
@@ -737,7 +735,7 @@ lambda (application window)    :run-first
 (export 'application-inhibit)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_application_uninhibit ()
+;;; gtk_application_uninhibit
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_application_uninhibit" application-uninhibit) :void
@@ -760,7 +758,7 @@ lambda (application window)    :run-first
 (export 'application-uninhibit)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_application_is_inhibited ()
+;;; gtk_application_is_inhibited
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_application_is_inhibited" application-is-inhibited) :boolean
@@ -785,7 +783,7 @@ lambda (application window)    :run-first
 (export 'application-is-inhibited)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_application_prefers_app_menu ()
+;;; gtk_application_prefers_app_menu
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_application_prefers_app_menu" application-prefers-app-menu)
@@ -836,7 +834,7 @@ lambda (application window)    :run-first
 (export 'application-prefers-app-menu)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_application_get_menu_by_id ()
+;;; gtk_application_get_menu_by_id
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_application_get_menu_by_id" application-menu-by-id)
@@ -858,7 +856,7 @@ lambda (application window)    :run-first
 (export 'application-menu-by-id)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_application_add_accelerator ()                     not exported
+;;; gtk_application_add_accelerator                         not exported
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_application_add_accelerator" %application-add-accelerator)
@@ -871,7 +869,7 @@ lambda (application window)    :run-first
 (defun application-add-accelerator (application accel name
                                     &optional (parameter nil))
  #+liber-documentation
- "@version{#2024-3-15}
+ "@version{#2024-6-27}
   @argument[application]{a @class{gtk:application} instance}
   @argument[accel]{a string representing an accelerator}
   @argument[name]{a string with the name of the action to activate}
@@ -884,16 +882,16 @@ lambda (application window)    :run-first
   @end{short}
 
   The @arg{accel} argument must be a string that can be parsed by the
-  @fun{gtk:accelerator-parse} function, e.g. \"<Primary>q\" or
-  \"<Control><Alt>p\".
+  @fun{gtk:accelerator-parse} function, for example, @code{\"<Primary>q\"} or
+  @code{\"<Control><Alt>p\"}.
 
   The @arg{name} argument must be the name of an action as it would be used in
-  the application menu, i.e. actions that have been added to the application
-  are referred to with an \"app.\" prefix, and window specific actions with a
-  \"win.\" prefix.
+  the application menu, this means that actions that have been added to the
+  application are referred to with an @code{\"app.\"} prefix, and window
+  specific actions with a @code{\"win.\"} prefix.
 
-  The @class{gtk:application} instance also extracts accelerators out of 'accel'
-  attributes in the @class{g:menu-model} objects passed to the
+  The @class{gtk:application} instance also extracts accelerators out of
+  'accel' attributes in the @class{g:menu-model} objects passed to the
   @fun{gtk:application-app-menu} and @fun{gtk:application-menubar} functions,
   which is usually more convenient than calling this function for each
   accelerator.
@@ -916,7 +914,7 @@ lambda (application window)    :run-first
                                 (or parameter (cffi:null-pointer))))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_application_remove_accelerator ()                  not exported
+;;; gtk_application_remove_accelerator                      not exported
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_application_remove_accelerator"
@@ -952,7 +950,7 @@ lambda (application window)    :run-first
                                    (or parameter (cffi:null-pointer))))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_application_list_action_descriptions ()
+;;; gtk_application_list_action_descriptions
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_application_list_action_descriptions"
@@ -972,8 +970,8 @@ lambda (application window)    :run-first
 (export 'application-list-action-descriptions)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_application_get_accels_for_action ()
-;;; gtk_application_set_accels_for_action ()
+;;; gtk_application_get_accels_for_action
+;;; gtk_application_set_accels_for_action
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf application-accels-for-action) (accels application name)
@@ -1018,7 +1016,7 @@ lambda (application window)    :run-first
 (export 'application-accels-for-action)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_application_get_actions_for_accel ()
+;;; gtk_application_get_actions_for_accel
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_application_get_actions_for_accel"

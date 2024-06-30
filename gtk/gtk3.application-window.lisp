@@ -70,7 +70,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkApplicationWindow
+;;; GtkApplicationWindow
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-object-class "GtkApplicationWindow" application-window
@@ -245,7 +245,7 @@
   @see-class{gtk:application-window}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_application_window_new ()
+;;; gtk_application_window_new
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_application_window_new" application-window-new)
@@ -262,7 +262,7 @@
 (export 'application-window-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_application_window_get_id ()
+;;; gtk_application_window_get_id
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_application_window_get_id" application-window-id) :uint
@@ -284,8 +284,8 @@
 (export 'application-window-id)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_application_window_get_help_overlay ()
-;;; gtk_application_window_set_help_overlay ()
+;;; gtk_application_window_get_help_overlay
+;;; gtk_application_window_set_help_overlay
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf application-window-help-overlay) (overlay window)

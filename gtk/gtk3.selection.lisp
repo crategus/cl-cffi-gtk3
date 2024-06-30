@@ -125,7 +125,6 @@
       (liber:symbol-documentation 'target-flags)
  "@version{2024-3-24}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-flags \"GtkTargetFlags\" target-flags
   (:export t
    :type-initializer \"gtk_target_flags_get_type\")
@@ -133,7 +132,6 @@
   (:same-widget 2)
   (:other-app 4)
   (:other-widget 8))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

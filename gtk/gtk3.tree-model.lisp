@@ -163,7 +163,6 @@
       (documentation 'tree-iter 'type)
  "@version{2024-3-28}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-boxed-cstruct tree-iter \"GtkTreeIter\"
   (:export t
    :type-initializer \"gtk_tree_iter_get_type\")
@@ -171,7 +170,6 @@
   (user-data pointer-as-integer :initform 0)
   (user-data-2 pointer-as-integer :initform 0)
   (user-data-3 pointer-as-integer :initform 0))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -258,12 +256,10 @@
       (documentation 'tree-path 'type)
  "@version{2024-3-28}
   @begin{declaration}
-    @begin{pre}
 (glib:define-g-boxed-opaque tree-path \"GtkTreePath\"
   :export t
   :type-initializer \"gtk_tree_path_get_type\"
   :alloc (%tree-path-new))
-    @end{pre}
   @end{declaration}
   @begin{short}
     The @class{gtk:tree-path} structure is opaque, and has no user visible
@@ -667,12 +663,10 @@
       (documentation 'tree-row-reference 'type)
  "@version{2024-3-28}
   @begin{declaration}
-    @begin{pre}
 (glib:define-g-boxed-opaque tree-row-reference \"GtkTreeRowReference\"
   :export t
   :type-initializer \"gtk_tree_row_reference_get_type\"
   :alloc (error \"GtkTreeRowReference cannot be created from the Lisp side.\"))
-    @end{pre}
   @end{declaration}
   @begin{short}
     The @class{gtk:tree-row-reference} instance tracks model changes so that it
@@ -908,13 +902,11 @@
       (liber:symbol-documentation 'tree-model-flags)
  "@version{#2024-3-21}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-flags \"GtkTreeModelFlags\" tree-model-flags
   (:export t
    :type-initializer \"gtk_tree_model_flags_get_type\")
   (:iters-persist 1)
   (:list-only 2))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

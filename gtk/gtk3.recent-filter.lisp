@@ -85,7 +85,6 @@
       (liber:symbol-documentation 'recent-filter-flags)
  "@version{#2024-3-21}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-flags \"GtkRecentFilterFlags\" recent-filter-flags
   (:export t
    :type-initializer \"gtk_recent_filter_flags_get_type\")
@@ -95,7 +94,6 @@
   (:application 8)
   (:group 16)
   (:age 32))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

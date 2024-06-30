@@ -99,7 +99,6 @@
       (liber:symbol-documentation 'dest-defaults)
  "@version{2024-3-24}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-flags \"GtkDestDefaults\" dest-defaults
   (:export t
    :type-initializer \"gtk_dest_defaults_get_type\")
@@ -107,7 +106,6 @@
   (:highlight 2)
   (:drop 4)
   (:all 7))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -156,7 +154,6 @@
       (liber:symbol-documentation 'drag-result)
  "@version{2024-3-24}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkDragResult\" drag-result
   (:export t
    :type-initializer \"gtk_drag_result_get_type\")
@@ -166,7 +163,6 @@
   (:timeout-expired 3)
   (:grab-broken 4)
   (:error 5))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

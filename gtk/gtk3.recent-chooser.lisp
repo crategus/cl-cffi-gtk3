@@ -126,13 +126,11 @@
       (liber:symbol-documentation 'recent-chooser-error)
  "@version{#2024-3-22}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkRecentChooserError\" recent-chooser-error
   (:export t
    :type-initializer \"gtk_recent_chooser_error_get_type\")
   (:not-found 0)
   (:invalid-uri 1))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -164,7 +162,6 @@
       (liber:symbol-documentation 'recent-sort-type)
  "@version{#2024-3-22}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkRecentSortType\" recent-sort-type
   (:export t
    :type-initializer \"gtk_recent_sort_type_get_type\")
@@ -172,7 +169,6 @@
   (:mru 1)
   (:lru 2)
   (:custom 3))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

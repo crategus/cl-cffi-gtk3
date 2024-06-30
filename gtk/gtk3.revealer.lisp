@@ -94,7 +94,6 @@
       (liber:symbol-documentation 'revealer-transition-type)
  "@version{2024-3-17}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkRevealerTransitionType\" revealer-transition-type
   (:export t
    :type-initializer \"gtk_revealer_transition_type_get_type\")
@@ -104,7 +103,6 @@
   (:slide-left 3)
   (:slide-up 4)
   (:slide-down 5))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

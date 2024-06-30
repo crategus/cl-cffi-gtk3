@@ -8,24 +8,24 @@
 ;;;     GtkAttachOptions
 
 (test gtk-attach-options
-  ;; Check the type
+  ;; Check type
   (is (g:type-is-flags "GtkAttachOptions"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:attach-options
           (glib:symbol-for-gtype "GtkAttachOptions")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkAttachOptions")
           (g:gtype (cffi:foreign-funcall "gtk_attach_options_get_type" :size))))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_EXPAND" "GTK_SHRINK" "GTK_FILL")
-             (list-flags-item-name "GtkAttachOptions")))
-  ;; Check the values
+             (gtk-test:list-flags-item-name "GtkAttachOptions")))
+  ;; Check values
   (is (equal '(1 2 4)
-             (list-flags-item-value "GtkAttachOptions")))
-  ;; Check the nick names
+             (gtk-test:list-flags-item-value "GtkAttachOptions")))
+  ;; Check nick names
   (is (equal '("expand" "shrink" "fill")
-             (list-flags-item-nick "GtkAttachOptions")))
-  ;; Check the flags definition
+             (gtk-test:list-flags-item-nick "GtkAttachOptions")))
+  ;; Check flags definition
   (is (equal '(GOBJECT:DEFINE-G-FLAGS "GtkAttachOptions" GTK-ATTACH-OPTIONS
                                       (:EXPORT T
                                        :TYPE-INITIALIZER
@@ -38,38 +38,38 @@
 ;;;     GtkTable
 
 (test gtk-table-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkTable"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:table
           (glib:symbol-for-gtype "GtkTable")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkTable")
           (g:gtype (cffi:foreign-funcall "gtk_table_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkContainer")
           (g:type-parent "GtkTable")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkTable")))
-  ;; Check the interfaces
+             (gtk-test:list-children "GtkTable")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
-             (list-interfaces "GtkTable")))
-  ;; Check the class properties
+             (gtk-test:list-interfaces "GtkTable")))
+  ;; Check class properties
   (is (equal '("column-spacing" "homogeneous" "n-columns" "n-rows"
                "row-spacing")
-             (list-properties "GtkTable")))
-  ;; Check the style properties
+             (gtk-test:list-properties "GtkTable")))
+  ;; Check style properties
   (is (equal '()
-             (list-style-properties "GtkTable")))
-  ;; Check the child properties
+             (gtk-test:list-style-properties "GtkTable")))
+  ;; Check child properties
   (is (equal '("bottom-attach" "left-attach" "right-attach" "top-attach"
                "x-options" "x-padding" "y-options" "y-padding")
-             (list-child-properties "GtkTable")))
-  ;; Check the signals
+             (gtk-test:list-child-properties "GtkTable")))
+  ;; Check signals
   (is (equal '()
-             (list-signals "GtkTable")))
-  ;; CSS information
+             (gtk-test:list-signals "GtkTable")))
+  ;; Check CSS information
   (is (string= "widget"
                (gtk:widget-class-css-name "GtkTable")))
   ;; Check the class definition
@@ -90,12 +90,6 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-;;;     column-spacing
-;;;     homogeneous
-;;;     n-columns
-;;;     n-rows
-;;;     row-spacing
-
 (test gtk-table-properties
   (let ((table (make-instance 'gtk:table)))
     (is (= 0 (gtk:table-column-spacing table)))
@@ -105,15 +99,6 @@
     (is (= 0 (gtk:table-row-spacing table)))))
 
 ;;; --- Child Properties -------------------------------------------------------
-
-;;;     bottom-attach
-;;;     left-attach
-;;;     right-attach
-;;;     top-attach
-;;;     x-options
-;;;     x-padding
-;;;     y-options
-;;;     y-padding
 
 (test gtk-table-child-properties
   (let ((table (make-instance 'gtk:table))
@@ -133,6 +118,7 @@
 ;;;     gtk_table_new
 
 (test gtk-table-new
+  (is (typep (gtk:table-new 2 3) 'gtk:table))
   (is (typep (gtk:table-new 2 3 nil) 'gtk:table))
   (is (typep (gtk:table-new 2 3 t) 'gtk:table)))
 
@@ -140,20 +126,34 @@
 ;;;     gtk_table_get_size
 
 (test gtk-table-size/resize
-  (let ((table (gtk:table-new 4 5 nil)))
+  (let ((table (gtk:table-new 4 5)))
     (is (equal '(4 5) (multiple-value-list (gtk:table-size table))))
     (is-false (gtk:table-resize table 6 7))
     (is (equal '(6 7) (multiple-value-list (gtk:table-size table))))))
 
 ;;;     gtk_table_attach
-;;;     gtk_table_attach_defaults
+
+(test gtk-table-attach
+  (let ((table (gtk:table-new 2 2 t))
+        (button1 (gtk:button-new-with-label "Button 1"))
+        (button2 (gtk:button-new-with-label "Button 2"))
+        (quit (gtk:button-new-with-label "Quit")))
+    (is-false (gtk:table-attach table button1 0 1 0 1))
+    (is-false (gtk:table-attach table button2 1 2 0 1))
+    (is-false (gtk:table-attach table quit    0 2 1 2))))
+
 ;;;     gtk_table_set_row_spacing
 ;;;     gtk_table_set_col_spacing
-;;;     gtk_table_set_row_spacings
-;;;     gtk_table_set_col_spacings
-;;;     gtk_table_get_default_row_spacing
 ;;;     gtk_table_get_row_spacing
 ;;;     gtk_table_get_col_spacing
-;;;     gtk_table_get_default_col_spacing
 
-;;; 2023-12-28
+(test gtk-table-row/col-spacing
+  (let ((table (gtk:table-new 4 5)))
+    (is (= 0 (gtk:table-get-col-spacing table 2)))
+    (is-false (gtk:table-set-col-spacing table 2 12))
+    (is (= 12 (gtk:table-get-col-spacing table 2)))
+    (is (= 0 (gtk:table-get-row-spacing table 2)))
+    (is-false (gtk:table-set-row-spacing table 2 12))
+    (is (= 12 (gtk:table-get-row-spacing table 2)))))
+
+;;; 2024-6-27

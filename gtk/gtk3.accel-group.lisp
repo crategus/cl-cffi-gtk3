@@ -103,14 +103,12 @@
       (liber:symbol-documentation 'accel-flags)
  "@version{2024-3-21}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-flags \"GtkAccelFlags\" accel-flags
   (:export t
    :type-initializer \"gtk_accel_flags_get_type\")
   (:visible 1)
   (:locked 2)
   (:mask 7))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

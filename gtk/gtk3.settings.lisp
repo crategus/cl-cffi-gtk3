@@ -188,14 +188,12 @@
       (liber:symbol-documentation 'im-preedit-style)
  "@version{2024-3-22}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkIMPreeditStyle\" im-preedit-style
   (:export t
    :type-initializer \"gtk_im_preedit_style_get_type\")
   (:nothing 0)
   (:callback 1)
   (:none 2))
-    @end{pre}
   @end{declaration}
   @short{Style for input method preedit.}
   See also the @slot[gtk:settings]{gtk-im-preedit-style} property.
@@ -223,14 +221,12 @@
       (liber:symbol-documentation 'im-status-style)
  "@version{2024-3-22}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkIMStatusStyle\" gtk-im-status-style
   (:export t
    :type-initializer \"gtk_im_status_style_get_type\")
   (:nothing 0)
   (:callback 1)
   (:none 2))
-    @end{pre}
   @end{declaration}
   @short{Style for input method status.}
   See also the @slot[gtk:settings]{gtk-im-status-style} property.

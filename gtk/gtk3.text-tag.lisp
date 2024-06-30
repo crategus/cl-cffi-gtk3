@@ -154,7 +154,6 @@
       (liber:symbol-documentation 'wrap-mode)
  "@version{2024-3-22}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkWrapMode\" wrap-mode
   (:export tgtk.text-attribut
    :type-initializer \"gtk_wrap_mode_get_type\")
@@ -162,7 +161,6 @@
   (:char 1)
   (:word 2)
   (:word-char 3))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

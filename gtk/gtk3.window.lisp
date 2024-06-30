@@ -233,7 +233,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkWindowType
+;;; GtkWindowType
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkWindowType" window-type
@@ -248,13 +248,11 @@
       (liber:symbol-documentation 'window-type)
  "@version{2024-3-14}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkWindowType\" window-type
   (:export t
    :type-initializer \"gtk_window_type_get_type\")
   (:toplevel 0)
   (:popup 1))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -283,7 +281,7 @@
   @see-function{gtk:window-decorated}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkWindowPosition
+;;; GtkWindowPosition
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkWindowPosition" window-position
@@ -301,7 +299,6 @@
       (liber:symbol-documentation 'window-position)
  "@version{2024-3-16}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkWindowPosition\" window-position
   (:export t
    :type-initializer \"gtk_window_position_get_type\")
@@ -310,7 +307,6 @@
   (:mouse 2)
   (:center-always 3)
   (:center-on-parent 4))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -453,15 +449,15 @@
 (setf (documentation 'window 'type)
  "@version{2023-12-25}
   @begin{short}
-    A @class{gtk:window} widget is a toplevel window which can contain other
+    The @class{gtk:window} widget is a toplevel window which can contain other
     widgets.
   @end{short}
 
   @image[window]{Figure:GtkWindow}
 
   Windows normally have decorations that are under the control of the windowing
-  system and allow the user to manipulate the window, e.g. to resize it, move
-  it, or close it.
+  system and allow the user to manipulate the window, for example, to resize it,
+  move it, or close it.
   @begin[GtkWindow as GtkBuildable]{dictionary}
     The @class{gtk:window} implementation of the @class{gtk:buildable} interface
     supports a custom @code{<accel-groups>} element, which supports any number
@@ -1709,7 +1705,7 @@ lambda (window widget)    :run-last
   @see-symbol{gtk:window-position}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_new ()
+;;; gtk_window_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline window-new))
@@ -1741,11 +1737,11 @@ lambda (window widget)    :run-last
 (export 'window-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_set_wmclass ()                               Deprecated 3.22
+;;; gtk_window_set_wmclass                                  Deprecated 3.22
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_add_accel_group ()
+;;; gtk_window_add_accel_group
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_add_accel_group" window-add-accel-group) :void
@@ -1767,7 +1763,7 @@ lambda (window widget)    :run-last
 (export 'window-add-accel-group)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_remove_accel_group ()
+;;; gtk_window_remove_accel_group
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_remove_accel_group" window-remove-accel-group) :void
@@ -1786,7 +1782,7 @@ lambda (window widget)    :run-last
 (export 'window-remove-accel-group)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_activate_focus ()
+;;; gtk_window_activate_focus
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_activate_focus" window-activate-focus) :boolean
@@ -1804,7 +1800,7 @@ lambda (window widget)    :run-last
 (export 'window-activate-focus)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_activate_default ()
+;;; gtk_window_activate_default
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_activate_default" window-activate-default) :boolean
@@ -1826,8 +1822,8 @@ lambda (window widget)    :run-last
 (export 'window-activate-default)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_set_default_size ()
-;;; gtk_window_get_default_size ()
+;;; gtk_window_set_default_size
+;;; gtk_window_get_default_size
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf window-default-size) (size window)
@@ -1908,7 +1904,7 @@ lambda (window widget)    :run-last
 (export 'window-default-size)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_set_default_geometry ()
+;;; gtk_window_set_default_geometry
 ;;; ----------------------------------------------------------------------------
 
 ;; TODO: Consider to remove the implemenation
@@ -1932,7 +1928,7 @@ lambda (window widget)    :run-last
 (export 'window-set-default-geometry)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_set_geometry_hints ()
+;;; gtk_window_set_geometry_hints
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_set_geometry_hints" %window-set-geometry-hints) :void
@@ -1966,13 +1962,13 @@ lambda (window widget)    :run-last
 (export 'window-set-geometry-hints)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_set_position ()
+;;; gtk_window_set_position
 ;;; ----------------------------------------------------------------------------
 
 ;; Implemented as (setf window-window-position)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_list_toplevels ()
+;;; gtk_window_list_toplevels
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_list_toplevels" window-list-toplevels)
@@ -1987,7 +1983,7 @@ lambda (window widget)    :run-last
 (export 'window-list-toplevels)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_add_mnemonic ()
+;;; gtk_window_add_mnemonic
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_add_mnemonic" window-add-mnemonic) :void
@@ -2011,7 +2007,7 @@ lambda (window widget)    :run-last
 (export 'window-add-mnemonic)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_remove_mnemonic ()
+;;; gtk_window_remove_mnemonic
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_remove_mnemonic" window-remove-mnemonic) :void
@@ -2034,7 +2030,7 @@ lambda (window widget)    :run-last
 (export 'window-remove-mnemonic)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_mnemonic_activate ()
+;;; gtk_window_mnemonic_activate
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_mnemonic_activate" window-mnemonic-activate) :boolean
@@ -2057,7 +2053,7 @@ lambda (window widget)    :run-last
 (export 'window-mnemonic-activate)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_activate_key ()
+;;; gtk_window_activate_key
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_activate_key" window-activate-key) :boolean
@@ -2080,7 +2076,7 @@ lambda (window widget)    :run-last
 (export 'window-activate-key)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_propagate_key_event ()
+;;; gtk_window_propagate_key_event
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_propagate_key_event" window-propagate-key-event)
@@ -2106,8 +2102,8 @@ lambda (window widget)    :run-last
 (export 'window-propagate-key-event)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_get_focus ()
-;;; gtk_window_set_focus ()
+;;; gtk_window_get_focus
+;;; gtk_window_set_focus
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf window-focus) (focus window)
@@ -2150,8 +2146,8 @@ lambda (window widget)    :run-last
 (export 'window-focus)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_get_default_widget ()
-;;; gtk_window_set_default ()
+;;; gtk_window_get_default_widget
+;;; gtk_window_set_default
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf window-default-widget) (widget window)
@@ -2197,7 +2193,7 @@ lambda (window widget)    :run-last
 (export 'window-default-widget)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_present ()
+;;; gtk_window_present
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_present" window-present) :void
@@ -2230,7 +2226,7 @@ lambda (window widget)    :run-last
 (export 'window-present)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_present_with_time ()
+;;; gtk_window_present_with_time
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_present_with_time" window-present-with-time) :void
@@ -2253,7 +2249,7 @@ lambda (window widget)    :run-last
 (export 'window-present-with-time)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_close ()
+;;; gtk_window_close
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_close" window-close) :void
@@ -2271,21 +2267,21 @@ lambda (window widget)    :run-last
 (export 'window-close)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_iconify ()
+;;; gtk_window_iconify
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_iconify" window-iconify) :void
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2024-6-27}
   @argument[window]{a @class{gtk:window} widget}
   @begin{short}
-    Asks to iconify, i.e. minimize, the specified window.
+    Asks to iconify, for example, minimize, the specified window.
   @end{short}
   Note that you should not assume the window is definitely iconified afterward,
-  because other entities, e.g. the user or window manager, could deiconify it
-  again, or there may not be a window manager in which case iconification is
-  not possible, etc. But normally the window will end up iconified. Just do not
-  write code that crashes if not.
+  because other entities, for example, the user or window manager, could
+  deiconify it again, or there may not be a window manager in which case
+  iconification is not possible, etc. But normally the window will end up
+  iconified. Just do not write code that crashes if not.
 
   It is permitted to call this function before showing a window, in which case
   the window will be iconified before it ever appears onscreen.
@@ -2299,19 +2295,20 @@ lambda (window widget)    :run-last
 (export 'window-iconify)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_deiconify ()
+;;; gtk_window_deiconify
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_deiconify" window-deiconify) :void
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2024-6-27}
   @argument[window]{a @class{gtk:window} widget}
   @begin{short}
-    Asks to deiconify, i.e. unminimize, the specified window.
+    Asks to deiconify, for example, unminimize, the specified window.
   @end{short}
   Note that you should not assume the window is definitely deiconified
-  afterward, because other entities, e.g. the user or window manager, could
-  iconify it again before your code which assumes deiconification gets to run.
+  afterward, because other entities, for example, the user or window manager,
+  could iconify it again before your code which assumes deiconification gets to
+  run.
 
   You can track iconification via the @code{\"window-state-event\"} signal on
   the @class{gtk:widget} object.
@@ -2322,21 +2319,22 @@ lambda (window widget)    :run-last
 (export 'window-deiconify)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_stick ()
+;;; gtk_window_stick
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_stick" window-stick) :void
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2024-6-27}
   @argument[window]{a @class{gtk:window} widget}
   @begin{short}
     Asks to stick the window, which means that it will appear on all user
     desktops.
   @end{short}
   Note that you should not assume the window is definitely stuck afterward,
-  because other entities, e.g. the user or window manager, could unstick it
-  again, and some window managers do not support sticking windows. But normally
-  the window will end up stuck. Just do not write code that crashes if not.
+  because other entities, for example, the user or window manager, could unstick
+  it again, and some window managers do not support sticking windows. But
+  normally the window will end up stuck. Just do not write code that crashes if
+  not.
 
   It is permitted to call this function before showing a window.
 
@@ -2349,21 +2347,21 @@ lambda (window widget)    :run-last
 (export 'window-stick)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_unstick ()
+;;; gtk_window_unstick
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_unstick" window-unstick) :void
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2024-6-27}
   @argument[window]{a @class{gtk:window} widget}
   @begin{short}
     Asks to unstick the window, which means that it will appear on only one of
     the desktops of the user.
   @end{short}
   Note that you should not assume the window is definitely unstuck afterward,
-  because other entities, e.g. the user or window manager, could stick it
-  again. But normally the window will end up stuck. Just do not write code that
-  crashes if not.
+  because other entities, for example, the user or window manager, could stick
+  it again. But normally the window will end up stuck. Just do not write code
+  that crashes if not.
 
   You can track stickiness via the @code{\"window-state-event\"} signal on the
   @class{gtk:widget} object.
@@ -2374,20 +2372,21 @@ lambda (window widget)    :run-last
 (export 'window-unstick)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_maximize ()
+;;; gtk_window_maximize
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_maximize" window-maximize) :void
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2024-6-27}
   @argument[window]{a @class{gtk:window} widget}
   @begin{short}
     Asks to maximize the window, so that it becomes full screen.
   @end{short}
   Note that you should not assume the window is definitely maximized afterward,
-  because other entities, e.g. the user or window manager, could unmaximize it
-  again, and not all window managers support maximization. But normally the
-  window will end up maximized. Just do not write code that crashes if not.
+  because other entities, for example, the user or window manager, could
+  unmaximize it again, and not all window managers support maximization. But
+  normally the window will end up maximized. Just do not write code that
+  crashes if not.
 
   It is permitted to call this function before showing a window, in which case
   the window will be maximized when it appears onscreen initially.
@@ -2403,21 +2402,21 @@ lambda (window widget)    :run-last
 (export 'window-maximize)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_unmaximize ()
+;;; gtk_window_unmaximize
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_unmaximize" window-unmaximize) :void
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2024-6-27}
   @argument[window]{a @class{gtk:window} widget}
   @begin{short}
     Asks to unmaximize the window.
   @end{short}
   Note that you should not assume the window is definitely unmaximized
-  afterward, because other entities, e.g. the user or window manager, could
-  maximize it again, and not all window managers honor requests to unmaximize.
-  But normally the window will end up unmaximized. Just do not write code that
-  crashes if not.
+  afterward, because other entities, for example, the user or window manager,
+  could maximize it again, and not all window managers honor requests to
+  unmaximize. But normally the window will end up unmaximized. Just do not
+  write code that crashes if not.
 
   You can track maximization via the @code{\"window-state-event\"} signal on
   the @class{gtk:widget} object.
@@ -2428,19 +2427,19 @@ lambda (window widget)    :run-last
 (export 'window-unmaximize)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_fullscreen ()
+;;; gtk_window_fullscreen
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_fullscreen" window-fullscreen) :void
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2024-6-27}
   @argument[window]{a @class{gtk:window} widget}
   @begin{short}
     Asks to place the window in the fullscreen state.
   @end{short}
   Note that you should not assume the window is definitely full screen
-  afterward, because other entities, e.g. the user or window manager, could
-  unfullscreen it again, and not all window managers honor requests to
+  afterward, because other entities, for example, the user or window manager,
+  could unfullscreen it again, and not all window managers honor requests to
   fullscreen windows. But normally the window will end up fullscreen. Just do
   not write code that crashes if not.
 
@@ -2453,7 +2452,7 @@ lambda (window widget)    :run-last
 (export 'window-fullscreen)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_fullscreen_on_monitor ()
+;;; gtk_window_fullscreen_on_monitor
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_fullscreen_on_monitor" window-fullscreen-on-monitor)
@@ -2481,19 +2480,19 @@ lambda (window widget)    :run-last
 (export 'window-fullscreen-on-monitor)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_unfullscreen ()
+;;; gtk_window_unfullscreen
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_unfullscreen" window-unfullscreen) :void
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2024-6-27}
   @argument[window]{a @class{gtk:window} widget}
   @begin{short}
     Asks to toggle off the fullscreen state for the window.
   @end{short}
   Note that you should not assume the window is definitely not full screen
-  afterward, because other entities, e.g. the user or window manager, could
-  fullscreen it again, and not all window managers honor requests to
+  afterward, because other entities, for example, the user or window manager,
+  could fullscreen it again, and not all window managers honor requests to
   unfullscreen windows. But normally the window will end up restored to its
   normal state. Just do not write code that crashes if not.
 
@@ -2506,21 +2505,22 @@ lambda (window widget)    :run-last
 (export 'window-unfullscreen)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_set_keep_above ()
+;;; gtk_window_set_keep_above
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_set_keep_above" window-set-keep-above) :void
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2024-6-27}
   @argument[window]{a @class{gtk:window} widget}
   @argument[setting]{a boolean whether to keep @arg{window} above other windows}
   @begin{short}
     Asks to keep the window above, so that it stays on top.
   @end{short}
   Note that you should not assume the window is definitely above afterward,
-  because other entities, e.g. the user or window manager, could not keep it
-  above, and not all window managers support keeping windows above. But normally
-  the window will end kept above. Just do not write code that crashes if not.
+  because other entities, for example, the user or window manager, could not
+  keep it above, and not all window managers support keeping windows above. But
+  normally the window will end kept above. Just do not write code that crashes
+  if not.
 
   It is permitted to call this function before showing a window, in which case
   the window will be kept above when it appears onscreen initially.
@@ -2530,7 +2530,7 @@ lambda (window widget)    :run-last
 
   Note that, according to the Extended Window Manager Hints specification, the
   above state is mainly meant for user preferences and should not be used by
-  applications e.g. for drawing attention to their dialogs.
+  applications, for example, for drawing attention to their dialogs.
   @see-class{gtk:window}
   @see-class{gtk:widget}"
   (window (g:object window))
@@ -2539,21 +2539,22 @@ lambda (window widget)    :run-last
 (export 'window-set-keep-above)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_set_keep_below ()
+;;; gtk_window_set_keep_below
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_set_keep_below" window-set-keep-below) :void
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2024-6-27}
   @argument[window]{a @class{gtk:window} widget}
   @argument[setting]{a boolean whether to keep @arg{window} below other windows}
   @begin{short}
     Asks to keep the window below, so that it stays in bottom.
   @end{short}
   Note that you should not assume the window is definitely below afterward,
-  because other entities, e.g. the user or window manager, could not keep it
-  below, and not all window managers support putting windows below. But normally
-  the window will be kept below. Just do not write code that crashes if not.
+  because other entities, for example, the user or window manager, could not
+  keep it below, and not all window managers support putting windows below. But
+  normally the window will be kept below. Just do not write code that crashes
+  if not.
 
   It is permitted to call this function before showing a window, in which case
   the window will be kept below when it appears onscreen initially.
@@ -2563,7 +2564,7 @@ lambda (window widget)    :run-last
 
   Note that, according to the Extended Window Manager Hints specification,
   the above state is mainly meant for user preferences and should not be used
-  by applications e.g. for drawing attention to their dialogs.
+  by applications, for example, for drawing attention to their dialogs.
   @see-class{gtk:window}
   @see-class{gtk:widget}"
   (window (g:object window))
@@ -2572,7 +2573,7 @@ lambda (window widget)    :run-last
 (export 'window-set-keep-below)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_begin_resize_drag ()
+;;; gtk_window_begin_resize_drag
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_begin_resize_drag" window-begin-resize-drag) :void
@@ -2607,7 +2608,7 @@ lambda (window widget)    :run-last
 (export 'window-begin-resize-drag)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_begin_move_drag ()
+;;; gtk_window_begin_move_drag
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_begin_move_drag" window-begin-move-drag) :void
@@ -2639,8 +2640,8 @@ lambda (window widget)    :run-last
 (export 'window-begin-move-drag)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_set_mnemonic_modifier ()
-;;; gtk_window_get_mnemonic_modifier ()
+;;; gtk_window_set_mnemonic_modifier
+;;; gtk_window_get_mnemonic_modifier
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf window-mnemonic-modifier) (modifier window)
@@ -2672,8 +2673,8 @@ lambda (window widget)    :run-last
 (export 'window-mnemonic-modifier)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_get_default_icon_list ()
-;;; gtk_window_set_default_icon_list ()
+;;; gtk_window_get_default_icon_list
+;;; gtk_window_set_default_icon_list
 ;;; ----------------------------------------------------------------------------
 
 ;; TODO: Check again the memory management of the g:list-t type. The C
@@ -2709,8 +2710,8 @@ lambda (window widget)    :run-last
 (export 'window-default-icon-list)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_get_default_icon_name ()
-;;; gtk_window_set_default_icon_name ()
+;;; gtk_window_get_default_icon_name
+;;; gtk_window_set_default_icon_name
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf window-default-icon-name) (name)
@@ -2739,8 +2740,8 @@ lambda (window widget)    :run-last
 (export 'window-default-icon-name)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_get_icon_list ()
-;;; gtk_window_set_icon_list ()
+;;; gtk_window_get_icon_list
+;;; gtk_window_set_icon_list
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_set_icon_list" %window-set-icon-list) :void
@@ -2795,7 +2796,7 @@ lambda (window widget)    :run-last
 (export 'window-icon-list)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_get_position ()
+;;; gtk_window_get_position
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_get_position" %window-get-position) :void
@@ -2862,7 +2863,7 @@ lambda (window widget)    :run-last
 (export 'window-position)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_get_size ()
+;;; gtk_window_get_size
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_get_size" %window-get-size) :void
@@ -2942,7 +2943,7 @@ lambda (window widget)    :run-last
 (export 'window-size)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_get_group ()
+;;; gtk_window_get_group
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_get_group" window-group)
@@ -2964,7 +2965,7 @@ lambda (window widget)    :run-last
 (export 'window-group)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_has_group ()
+;;; gtk_window_has_group
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_has_group" window-has-group) :boolean
@@ -2980,13 +2981,13 @@ lambda (window widget)    :run-last
 (export 'window-has-group)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_get_window_type ()
+;;; gtk_window_get_window_type
 ;;; ----------------------------------------------------------------------------
 
 ;; Implemented as the slot acces function window-type
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_move ()
+;;; gtk_window_move
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_move" window-move) :void
@@ -3042,12 +3043,12 @@ lambda (window widget)    :run-last
 (export 'window-move)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_parse_geometry ()
+;;; gtk_window_parse_geometry
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_parse_geometry" window-parse-geometry) :boolean
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2024-6-27}
   @argument[window]{a @class{gtk:window} widget}
   @argument[geometry]{a geometry string}
   @return{@em{True} if the @arg{geometry} string was parsed successfully.}
@@ -3069,9 +3070,9 @@ lambda (window widget)    :run-last
   managers to honor the geometry.
 
   Note that for the @fun{gtk:window-parse-geometry} function to work as
-  expected, it has to be called when the window has its \"final\" size, i.e.
-  after calling the @fun{gtk:widget-show-all} function on the contents and the
-  @fun{gtk:window-set-geometry-hints} function on the window.
+  expected, it has to be called when the window has its \"final\" size, for
+  example, after calling the @fun{gtk:widget-show-all} function on the contents
+  and the @fun{gtk:window-set-geometry-hints} function on the window.
   @begin[Warning]{dictionary}
     The @fun{gtk:window-parse-geometry} function has been deprecated since
     version 3.20. Geometry handling in GTK is deprecated.
@@ -3088,7 +3089,7 @@ lambda (window widget)    :run-last
 (export 'window-parse-geometry)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_reshow_with_initial_size ()                 not exported
+;;; gtk_window_reshow_with_initial_size                    not exported
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_reshow_with_initial_size"
@@ -3115,7 +3116,7 @@ lambda (window widget)    :run-last
   (window (g:object window)))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_resize ()
+;;; gtk_window_resize
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_resize" window-resize) :void
@@ -3148,7 +3149,7 @@ lambda (window widget)    :run-last
 (export 'window-resize)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_resize_to_geometry ()
+;;; gtk_window_resize_to_geometry
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_resize_to_geometry" window-resize-to-geometry) :void
@@ -3179,7 +3180,7 @@ lambda (window widget)    :run-last
 (export 'window-resize-to-geometry)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_set_default_icon ()
+;;; gtk_window_set_default_icon
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_set_default_icon" window-set-default-icon) :void
@@ -3198,7 +3199,7 @@ lambda (window widget)    :run-last
 (export 'window-set-default-icon)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_set_default_icon_from_file ()
+;;; gtk_window_set_default_icon_from_file
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_set_default_icon_from_file"
@@ -3223,7 +3224,7 @@ lambda (window widget)    :run-last
 (export 'window-set-default-icon-from-file)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_set_icon_from_file ()
+;;; gtk_window_set_icon_from_file
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_set_icon_from_file" %window-set-icon-from-file)
@@ -3251,7 +3252,7 @@ lambda (window widget)    :run-last
 (export 'window-set-icon-from-file)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_set_auto_startup_notification ()
+;;; gtk_window_set_auto_startup_notification
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_set_auto_startup_notification"
@@ -3277,7 +3278,7 @@ lambda (window widget)    :run-last
 (export 'window-set-auto-startup-notification)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_resize_grip_is_visible ()                   not exported
+;;; gtk_window_resize_grip_is_visible                      not exported
 ;;; ----------------------------------------------------------------------------
 
 (defun window-resize-grip-is-visible (window)
@@ -3298,7 +3299,7 @@ lambda (window widget)    :run-last
        (window-resize-grip-visible window)))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_get_resize_grip_area ()                     not exported
+;;; gtk_window_get_resize_grip_area                        not exported
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_get_resize_grip_area" %window-get-resize-grip-area)
@@ -3350,8 +3351,8 @@ lambda (window widget)    :run-last
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_set_titlebar ()
-;;; gtk_window_get_titlebar ()
+;;; gtk_window_set_titlebar
+;;; gtk_window_get_titlebar
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf window-titlebar) (widget window)
@@ -3386,7 +3387,7 @@ lambda (window widget)    :run-last
 (export 'window-titlebar)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_window_set_interactive_debugging ()
+;;; gtk_window_set_interactive_debugging
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_window_set_interactive_debugging"

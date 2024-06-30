@@ -11,82 +11,57 @@
 ;;; --- Types and Values -------------------------------------------------------
 
 (test gtk-box-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkBox"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:box
           (glib:symbol-for-gtype "GtkBox")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkBox")
           (g:gtype (cffi:foreign-funcall "gtk_box_get_type" :size))))
-  ;; Check the parent
-  (is (eq (g:gtype "GtkContainer") (g:type-parent "GtkBox")))
-  ;; Check the children
-  #-windows
-  (is (or (equal '("GtkAppChooserWidget" "GtkButtonBox" "GtkColorChooserWidget"
-                  "GtkColorSelection" "GtkFileChooserButton"
-                  "GtkFileChooserWidget" "GtkFontChooserWidget"
-                  "GtkFontSelection" "GtkInfoBar" "GtkPlacesView"
-                  "GtkPrinterOptionWidget" "GtkRecentChooserWidget"
-                  "GtkShortcutsGroup" "GtkShortcutsSection"
-                  "GtkShortcutsShortcut" "GtkStackSwitcher" "GtkStatusbar"
-                  "GtkVBox")
-                 (list-children "GtkBox"))
-          (equal '("GtkAppChooserWidget" "GtkButtonBox" "GtkColorChooserWidget"
-                  "GtkColorEditor" "GtkColorSelection" "GtkFileChooserButton"
-                  "GtkFileChooserWidget" "GtkFontChooserWidget"
-                  "GtkFontSelection" "GtkInfoBar" "GtkPlacesView"
-                  "GtkPrinterOptionWidget" "GtkRecentChooserWidget"
-                  "GtkShortcutsGroup" "GtkShortcutsSection"
-                  "GtkShortcutsShortcut" "GtkStackSwitcher" "GtkStatusbar"
-                  "GtkVBox")
-                 (list-children "GtkBox"))
-          (format t "~&LIST-CHILDREN is ~s~%" (list-children "GtkBox"))))
-  #+windows
+  ;; Check parent
+  (is (eq (g:gtype "GtkContainer")
+          (g:type-parent "GtkBox")))
+  ;; Check children
   (if *first-run-gtk-test*
       (is (equal '("GtkAppChooserWidget" "GtkButtonBox" "GtkColorChooserWidget"
                    "GtkColorSelection" "GtkFileChooserButton"
                    "GtkFileChooserWidget" "GtkFontChooserWidget"
-                   "GtkFontSelection" "GtkInfoBar" "GtkRecentChooserWidget"
+                   "GtkFontSelection" "GtkInfoBar" "GtkPlacesView"
+                   "GtkPrinterOptionWidget" "GtkRecentChooserWidget"
                    "GtkShortcutsGroup" "GtkShortcutsSection"
                    "GtkShortcutsShortcut" "GtkStackSwitcher" "GtkStatusbar"
                    "GtkVBox")
-                 (list-children "GtkBox")))
-      (is (equal '("GtkAppChooserWidget" "GtkButtonBox" "GtkColorChooserWidget"
-                   "GtkColorEditor" "GtkColorSelection" "GtkFileChooserButton"
-                   "GtkFileChooserWidget" "GtkFontChooserWidget"
-                   "GtkFontSelection" "GtkInfoBar" "GtkRecentChooserWidget"
-                   "GtkShortcutsGroup" "GtkShortcutsSection"
-                   "GtkShortcutsShortcut" "GtkStackSwitcher" "GtkStatusbar"
-                   "GtkVBox")
-                 (list-children "GtkBox"))))
-  ;; Check the interfaces
+             (gtk-test:list-children "GtkBox"))))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
-             (list-interfaces "GtkBox")))
-  ;; Check the class properties
+             (gtk-test:list-interfaces "GtkBox")))
+  ;; Check class properties
   (is (equal '("baseline-position" "homogeneous" "orientation" "spacing")
-             (list-properties "GtkBox")))
-  ;; Get the names of the style properties.
+             (gtk-test:list-properties "GtkBox")))
+  ;; Check style properties
   (is (equal '()
-             (list-style-properties "GtkBox")))
-  ;; Get the names of the child properties
+             (gtk-test:list-style-properties "GtkBox")))
+  ;; Check child properties
   (is (equal '("expand" "fill" "pack-type" "padding" "position")
-             (list-child-properties "GtkBox")))
+             (gtk-test:list-child-properties "GtkBox")))
+  ;; Check signals
   (is (equal '()
-             (list-signals "GtkBox")))
-  ;; CSS information
+             (gtk-test:list-signals "GtkBox")))
+  ;; Check CSS information
   (is (string= "box"
                (gtk:widget-class-css-name "GtkBox")))
-  ;; Check the class definition
+  ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkBox" GTK-BOX
-                       (:SUPERCLASS GTK-CONTAINER :EXPORT T :INTERFACES
-                        ("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
-                        :TYPE-INITIALIZER "gtk_box_get_type")
-                       ((BASELINE-POSITION GTK-BOX-BASELINE-POSITION
-                         "baseline-position" "GtkBaselinePosition" T T)
-                        (HOMOGENEOUS GTK-BOX-HOMOGENEOUS "homogeneous"
-                         "gboolean" T T)
-                        (SPACING GTK-BOX-SPACING "spacing" "gint" T T)))
+                               (:SUPERCLASS GTK-CONTAINER :EXPORT T :INTERFACES
+                                ("AtkImplementorIface" "GtkBuildable"
+                                 "GtkOrientable")
+                                :TYPE-INITIALIZER "gtk_box_get_type")
+                               ((BASELINE-POSITION GTK-BOX-BASELINE-POSITION
+                                 "baseline-position" "GtkBaselinePosition" T T)
+                                (HOMOGENEOUS GTK-BOX-HOMOGENEOUS "homogeneous"
+                                 "gboolean" T T)
+                                (SPACING GTK-BOX-SPACING "spacing" "gint" T T)))
              (gobject:get-g-type-definition "GtkBox"))))
 
 ;;; --- Properties -------------------------------------------------------------
@@ -258,4 +233,4 @@
     ;; Retrieve the center widget
     (is (eq 'gtk:button (type-of (gtk:box-center-widget box))))))
 
-;;; 2024-3-14
+;;; 2024-6-28

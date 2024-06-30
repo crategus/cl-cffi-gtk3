@@ -118,14 +118,12 @@
       (liber:symbol-documentation 'dialog-flags)
  "@version{2024-3-16}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-flags \"GtkDialogFlags\" dialog-flags
   (:export t
    :type-initializer \"gtk_dialog_flags_get_type\")
   (:modal               #.(ash 1 0))
   (:destroy-with-parent #.(ash 1 1))
   (:use-header-bar      #.(ash 1 2)))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -169,7 +167,6 @@
       (liber:symbol-documentation 'response-type)
  "@version{2024-3-16}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-enum \"GtkResponseType\" response-type
   (:export t
    :type-initializer \"gtk_response_type_get_type\")
@@ -184,7 +181,6 @@
   (:no -9)
   (:apply -10)
   (:help -11))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}

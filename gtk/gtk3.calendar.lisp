@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -123,7 +123,6 @@
       (liber:symbol-documentation 'calendar-display-options)
  "@version{2024-3-21}
   @begin{declaration}
-    @begin{pre}
 (gobject:define-g-flags \"GtkCalendarDisplayOptions\" calendar-display-options
   (:export t
    :type-initializer \"gtk_calendar_display_options_get_type\")
@@ -132,7 +131,6 @@
   (:no-month-change 4)
   (:show-week-numbers 8)
   (:show-details 32))
-    @end{pre}
   @end{declaration}
   @begin{values}
     @begin[code]{table}
@@ -776,17 +774,17 @@ lambda (calendar)    :run-first
 (export 'calendar-display-options)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_calendar_get_date () -> calendar-date
+;;; gtk_calendar_get_date
 ;;; ----------------------------------------------------------------------------
 
 (defun calendar-date (calendar)
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{#2024-6-29}
   @argument[calendar]{a @class{gtk:calendar} widget}
   @begin{return}
-    @arg{year} -- the year as a decimal number, e.g. 2021 @br{}
-    @arg{month} -- the month number, between 0 and 11 @br{}
-    @arg{day} -- the day number, between 1 and 31
+    @arg{year} -- a year as a decimal number, for example 2024 @br{}
+    @arg{month} -- a month number, between 0 and 11 @br{}
+    @arg{day} -- a day number, between 1 and 31
   @end{return}
   @begin{short}
     Obtains the selected date from the calendar.

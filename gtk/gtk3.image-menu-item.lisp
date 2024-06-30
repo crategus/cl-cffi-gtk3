@@ -35,19 +35,22 @@
 ;;;
 ;;;     GtkImageMenuItem
 ;;;
+;;; Accessors
+;;;
+;;;     gtk_image_menu_item_set_image
+;;;     gtk_image_menu_item_get_image
+;;;     gtk_image_menu_item_get_use_stock
+;;;     gtk_image_menu_item_set_use_stock
+;;;     gtk_image_menu_item_get_always_show_image
+;;;     gtk_image_menu_item_set_always_show_image
+;;;     gtk_image_menu_item_set_accel_group
+;;;
 ;;; Functions
 ;;;
-;;;     gtk_image_menu_item_set_image                      Accessor
-;;;     gtk_image_menu_item_get_image                      Accessor
 ;;;     gtk_image_menu_item_new
 ;;;     gtk_image_menu_item_new_from_stock
 ;;;     gtk_image_menu_item_new_with_label
 ;;;     gtk_image_menu_item_new_with_mnemonic
-;;;     gtk_image_menu_item_get_use_stock                  Accessor
-;;;     gtk_image_menu_item_set_use_stock                  Accessor
-;;;     gtk_image_menu_item_get_always_show_image          Accessor
-;;;     gtk_image_menu_item_set_always_show_image          Accessor
-;;;     gtk_image_menu_item_set_accel_group                Accessor
 ;;;
 ;;; Properties
 ;;;
@@ -75,7 +78,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkImageMenuItem
+;;; GtkImageMenuItem
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-object-class "GtkImageMenuItem" image-menu-item
@@ -83,7 +86,8 @@
     :export t
     :interfaces ("AtkImplementorIface"
                  "GtkBuildable"
-                 "GtkActivatable")
+                 "GtkActivatable"
+                 "GtkActionable")
     :type-initializer "gtk_image_menu_item_get_type")
   ((accel-group
     image-menu-item-accel-group
@@ -100,10 +104,10 @@
 
 #+liber-documentation
 (setf (documentation 'image-menu-item 'type)
- "@version{#2023-3-12}
+ "@version{2024-6-27}
   @begin{short}
-    A @class{gtk:image-menu-item} widget is a menu item which has an icon next
-    to the text label.
+    The @class{gtk:image-menu-item} widget is a menu item which has an icon
+    next to the text label.
   @end{short}
   This is functionally equivalent to:
   @begin{pre}
@@ -116,11 +120,11 @@
                              :icon-size 1))
         (label (make-instance 'gtk:label
                               :label \"Music\"))
-        (menu-item (make-instance 'gtk:menu-item)))
+        (menuitem (make-instance 'gtk:menu-item)))
     (gtk:container-add box icon)
     (gtk:container-add box label)
-    (gtk:container-add menu-item box)
-    menu-item))
+    (gtk:container-add menuitem box)
+    menuitem))
   @end{pre}
   Note that the user may disable display of menu icons using the
   @slot[gtk:settings]{gtk-menu-images} setting, so make sure to still fill in
@@ -145,30 +149,30 @@
                               :label \"Music\"
                               :use-underline t
                               :xalign 0.0))
-        (menu-item (make-instance 'gtk:menu-item))
+        (menuitem (make-instance 'gtk:menu-item))
         (accel-group (make-instance 'gtk:accel-group)))
-    (gtk:widget-add-accelerator menu-item
+    (gtk:widget-add-accelerator menuitem
                                 \"activate\"
                                 accel-group
                                 (gdk-keyval-from-name \"M\")
                                 :control-mask
                                 :visible)
-    (setf (gtk:accel-label-accel-widget label) menu-item)
+    (setf (gtk:accel-label-accel-widget label) menuitem)
     (gtk:container-add box icon)
     (gtk:box-pack-end box label :expand t :fill t :padding 0)
-    (gtk:container-add menu-item box)
-    menu-item))
+    (gtk:container-add menuitem box)
+    menuitem))
   @end{pre}
   @begin[Warning]{dictionary}
     The @class{gtk:image-menu-item} class has been deprecated since GTK 3.10.
     If you want to display an icon in a menu item, you should use the
     @class{gtk:menu-item} widget and pack a @class{gtk:box} widget with a
     @class{gtk:image} widget and a @class{gtk:label} widget instead. You should
-    also consider using the @class{gtk:builder} object and the XML
-    @class{g:menu} description for creating menus, by following the
-    @class{g:menu} guide. You should consider using icons in menu items only
-    sparingly, and for \"objects\" or \"nouns\" elements only, like bookmarks,
-    files, and links; \"actions\" or \"verbs\" should not have icons.
+    also consider using the @class{gtk:builder} object and the @class{g:menu}
+    XML description for creating menus, by following the @class{g:menu} guide.
+    You should consider using icons in menu items only sparingly, and for
+    \"objects\" or \"nouns\" elements only, like bookmarks, files, and links,
+    \"actions\" or \"verbs\" should not have icons.
   @end{dictionary}
   @see-constructor{gtk:image-menu-item-new}
   @see-constructor{gtk:image-menu-item-new-from-stock}
@@ -197,7 +201,7 @@
 (setf (liber:alias-for-function 'image-menu-item-accel-group)
       "Accessor"
       (documentation 'image-menu-item-accel-group 'function)
- "@version{#2023-3-12}
+ "@version{2024-6-27}
   @syntax{(setf (gtk:image-menu-item-accel-group object) group)}
   @argument[object]{a @class{gtk:image-menu-item} widget}
   @argument[group]{a @class{gtk:accel-group} object}
@@ -238,7 +242,7 @@
 (setf (liber:alias-for-function 'image-menu-item-always-show-image)
       "Accessor"
       (documentation 'image-menu-item-always-show-image 'function)
- "@version{#2023-3-12}
+ "@version{2024-6-27}
   @syntax{(gtk:image-menu-item-always-show-image object) => always-show}
   @syntax{(setf (gtk:image-menu-item-always-show-image object) always-show)}
   @argument[object]{a @class{gtk:image-menu-item} widget}
@@ -270,7 +274,7 @@
 (setf (liber:alias-for-function 'image-menu-item-image)
       "Accessor"
       (documentation 'image-menu-item-image 'function)
- "@version{#2023-3-12}
+ "@version{2024-6-27}
   @syntax{(gtk:image-menu-item-image object) => image}
   @syntax{(setf (gtk:image-menu-item-image object) image)}
   @argument[object]{a @class{gtk:image-menu-item} widget}
@@ -307,7 +311,7 @@
 (setf (liber:alias-for-function 'image-menu-item-use-stock)
       "Accessor"
       (documentation 'image-menu-item-use-stock 'function)
- "@version{#2023-3-12}
+ "@version{2024-6-27}
   @syntax{(gtk:image-menu-item-use-stock object) => use-stock}
   @syntax{(setf (gtk:image-menu-item-use-stock object) use-stock)}
   @argument[object]{a @class{gtk:image-menu-item} widget}
@@ -325,14 +329,14 @@
   @see-class{gtk:image-menu-item}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_image_menu_item_new ()
+;;; gtk_image_menu_item_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline image-menu-item-new))
 
 (defun image-menu-item-new ()
- "@version{#2023-3-12}
-  @return{A new @class{gtk:image-menu-item} widget.}
+ "@version{2024-6-27}
+  @return{The new @class{gtk:image-menu-item} widget.}
   @begin{short}
     Creates a new image menu item with an empty label.
   @end{short}
@@ -346,16 +350,20 @@
 (export 'image-menu-item-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_image_menu_item_new_from_stock ()
+;;; gtk_image_menu_item_new_from_stock
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_image_menu_item_new_from_stock"
-               image-menu-item-new-from-stock) (g:object image-menu-item)
- "@version{#2021-7-21}
+               %image-menu-item-new-from-stock) (g:object image-menu-item)
+  (stock-id :string)
+  (group (g:object accel-group)))
+
+(defun image-menu-item-new-from-stock (stock-id &optional group)
+ "@version{2024-6-27}
   @argument[stock-id]{a string with the name of the stock item}
   @argument[group]{a @class{gtk:accel-group} object to add the menu items
     accelerator to, or @code{nil}}
-  @return{A new @class{gtk:image-menu-item} widget.}
+  @return{The new @class{gtk:image-menu-item} widget.}
   @begin{short}
     Creates a new image menu item containing the image and text from a stock
     item.
@@ -374,20 +382,19 @@
   @see-class{gtk:accel-group}
   @see-function{gtk:menu-item-accel-path}
   @see-function{gtk:accel-map-add-entry}"
-  (stock-id :string)
-  (group (g:object accel-group)))
+  (%image-menu-item-new-from-stock stock-id group))
 
 (export 'image-menu-item-new-from-stock)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_image_menu_item_new_with_label ()
+;;; gtk_image_menu_item_new_with_label
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_image_menu_item_new_with_label"
                image-menu-item-new-with-label) (g:object image-menu-item)
- "@version{#2023-3-12}
+ "@version{2024-6-27}
   @argument[label]{a string with the text of the menu item}
-  @return{A new @class{gtk:image-menu-item} widget.}
+  @return{The new @class{gtk:image-menu-item} widget.}
   @begin{short}
     Creates a new image menu item containing a label.
   @end{short}
@@ -403,15 +410,15 @@
 (export 'image-menu-item-new-with-label)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_image_menu_item_new_with_mnemonic ()
+;;; gtk_image_menu_item_new_with_mnemonic
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_image_menu_item_new_with_mnemonic"
                image-menu-item-new-with-mnemonic) (g:object image-menu-item)
- "@version{#2023-3-12}
+ "@version{2024-6-27}
   @argument[label]{a string with the text of the menu item, with an underscore
     in front of the mnemonic character}
-  @return{A new @class{gtk:image-menu-item} widget.}
+  @return{The new @class{gtk:image-menu-item} widget.}
   @begin{short}
     Creates a new image menu item containing a label.
   @end{short}
