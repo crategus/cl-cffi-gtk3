@@ -162,7 +162,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkIconViewDropPosition
+;;; GtkIconViewDropPosition
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkIconViewDropPosition" icon-view-drop-position

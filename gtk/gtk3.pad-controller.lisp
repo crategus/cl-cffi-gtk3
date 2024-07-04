@@ -58,7 +58,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkPadActionType
+;;; GtkPadActionType
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkPadActionType" pad-action-type

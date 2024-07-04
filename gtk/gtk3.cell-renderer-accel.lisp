@@ -64,7 +64,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkCellRendererAccelMode
+;;; GtkCellRendererAccelMode
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkCellRendererAccelMode" cell-renderer-accel-mode

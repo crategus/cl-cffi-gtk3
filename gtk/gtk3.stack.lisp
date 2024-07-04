@@ -100,7 +100,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkStackTransitionType
+;;; GtkStackTransitionType
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkStackTransitionType" stack-transition-type

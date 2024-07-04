@@ -433,7 +433,7 @@
 ;; for GdkRectangle
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkWidgetHelpType
+;;; GtkWidgetHelpType
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkWidgetHelpType" widget-help-type
@@ -467,7 +467,7 @@
 ;; --> gtk.enumerations.lisp
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkSizeRequestMode
+;;; GtkSizeRequestMode
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkSizeRequestMode" size-request-mode
@@ -544,7 +544,7 @@
   @see-function{gtk:distribute-natural-allocation}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkAlign
+;;; GtkAlign
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkAlign" align

@@ -138,7 +138,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkPrintStatus
+;;; GtkPrintStatus
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkPrintStatus" print-status
@@ -198,7 +198,7 @@
   @see-class{gtk:print-operation}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkPrintOperationAction
+;;; GtkPrintOperationAction
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkPrintOperationAction" print-operation-action
@@ -242,7 +242,7 @@
   @see-function{gtk:print-operation-export-filename}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkPrintOperationResult
+;;; GtkPrintOperationResult
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkPrintOperationResult" print-operation-result
@@ -285,7 +285,7 @@
   @see-function{gtk:print-operation-run}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkPrintError                                     not exported
+;;; GtkPrintError                                           not exported
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkPrintError" print-error

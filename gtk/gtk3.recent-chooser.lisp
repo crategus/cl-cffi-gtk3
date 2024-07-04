@@ -111,7 +111,7 @@
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkRecentChooserError
+;;; GtkRecentChooserError
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkRecentChooserError" recent-chooser-error
@@ -145,7 +145,7 @@
   @see-class{gtk:recent-chooser}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkRecentSortType
+;;; GtkRecentSortType
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkRecentSortType" recent-sort-type

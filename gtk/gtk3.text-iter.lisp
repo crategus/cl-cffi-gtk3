@@ -218,7 +218,7 @@
 (setf (liber:alias-for-class 'text-iter)
       "GBoxed"
       (documentation 'text-iter 'type)
- "@version{2024-6-24}
+ "@version{2024-7-1}
   @begin{declaration}
 (glib:define-g-boxed-opaque text-iter \"GtkTextIter\"
   :export t
@@ -230,15 +230,13 @@
     @class{gtk:text-iter} instance.
   @end{short}
   An iterator represents a position between two characters in the text buffer.
-  The @class{gtk:text-iter} structure is opaque, and has no user visible fields.
 
-  The @class{gtk:text-iter} structure is designed to be allocated on the stack.
-  It is guaranteed to be copiable by value and never contain any heap-allocated
-  data. Iterators are not valid indefinitely. Whenever the text buffer is
-  modified in a way that affects the number of characters in the text buffer,
-  all outstanding iterators become invalid. Note that deleting 5 characters and
-  then reinserting 5 still invalidates iterators, though you end up with the
-  same number of characters you pass through a state with a different number.
+  Iterators are not valid indefinitely. Whenever the text buffer is modified in 
+  a way that affects the number of characters in the text buffer, all 
+  outstanding iterators become invalid. Note that deleting 5 characters and 
+  then reinserting 5 characters still invalidates iterators, though you end up 
+  with the same number of characters you pass through a state with a different 
+  number.
   @see-constructor{gtk:text-iter-new}
   @see-constructor{gtk:text-iter-copy}
   @see-class{gtk:text-buffer}")
@@ -250,12 +248,10 @@
 (cffi:defcfun ("gtk_text_iter_get_buffer" text-iter-buffer)
     (g:object text-buffer)
  #+liber-documentation
- "@version{2024-6-24}
+ "@version{2024-7-1}
   @argument[iter]{a @class{gtk:text-iter} instance}
   @return{The @class{gtk:text-buffer} object.}
-  @begin{short}
-    Returns the text buffer this iterator is associated with.
-  @end{short}
+  @shortReturns the text buffer this iterator is associated with.}
   @see-class{gtk:text-iter}
   @see-class{gtk:text-buffer}"
   (iter (g:boxed text-iter)))
@@ -301,9 +297,7 @@
  "@version{2024-6-24}
   @argument[iter]{a @class{gtk:text-iter} instance}
   @argument[other]{another @class{gtk:text-iter} instance}
-  @begin{short}
-    Assigns the value of @arg{other} to @arg{iter}.
-  @end{short}
+  @short{Assigns the value of @arg{other} to @arg{iter}.}
   @see-class{gtk:text-iter}"
   (iter (g:boxed text-iter))
   (other (g:boxed text-iter)))

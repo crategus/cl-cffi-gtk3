@@ -61,7 +61,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkBaselinePosition
+;;; GtkBaselinePosition
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkBaselinePosition" baseline-position
@@ -102,7 +102,7 @@
   @see-class{gtk:box}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkDeleteType
+;;; GtkDeleteType
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkDeleteType" delete-type
@@ -161,7 +161,7 @@
   @see-class{gtk:text-view}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkDirectionType
+;;; GtkDirectionType
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkDirectionType" direction-type
@@ -203,7 +203,7 @@
   @short{Focus movement types.}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkJustification
+;;; GtkJustification
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkJustification" justification
@@ -242,7 +242,7 @@
   @see-class{gtk:label}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkMovementStep
+;;; GtkMovementStep
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkMovementStep" movement-step
@@ -303,7 +303,7 @@
   @see-class{gtk:flow-box}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkOrientation
+;;; GtkOrientation
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkOrientation" orientation
@@ -338,7 +338,7 @@
   @see-class{gtk:orientable}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkPackType
+;;; GtkPackType
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkPackType" pack-type
@@ -373,7 +373,7 @@
   @see-class{gtk:button-box}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkPositionType
+;;; GtkPositionType
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkPositionType" position-type
@@ -415,7 +415,7 @@
   @see-class{gtk:scale}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkReliefStyle
+;;; GtkReliefStyle
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkReliefStyle" relief-style
@@ -450,7 +450,7 @@
   @see-class{gtk:button}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkScrollStep                                     not exported
+;;; GtkScrollStep                                           not exported
 ;;; ----------------------------------------------------------------------------
 
 ;; TODO: This enumeration is not in use in the cl-cffi-gtk implementation.
@@ -485,7 +485,7 @@
   @short{}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkScrollType
+;;; GtkScrollType
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkScrollType" scroll-type
@@ -564,7 +564,7 @@
   @see-class{gtk:combo-box}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkSelectionMode
+;;; GtkSelectionMode
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkSelectionMode" selection-mode
@@ -611,7 +611,7 @@
   @see-class{gtk:tree-selection}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkShadowType
+;;; GtkShadowType
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkShadowType" shadow-type
@@ -657,7 +657,7 @@
   @see-class{gtk:frame}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkStateFlags
+;;; GtkStateFlags
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-flags "GtkStateFlags" state-flags
@@ -728,7 +728,7 @@
   @see-class{gtk:style-context}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkToolbarStyle
+;;; GtkToolbarStyle
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkToolbarStyle" toolbar-style
@@ -771,7 +771,7 @@
   @see-class{gtk:toolbar}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkSortType
+;;; GtkSortType
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkSortType" sort-type
@@ -803,7 +803,7 @@
   @see-class{gtk:tree-view-column}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkTextDirection
+;;; GtkTextDirection
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkTextDirection" text-direction
@@ -848,7 +848,7 @@
   @see-function{gtk:widget-default-direction}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkExpanderStyle
+;;; GtkExpanderStyle
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkExpanderStyle" expander-style
@@ -888,7 +888,7 @@
   @see-class{gtk:tree-view}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkStateType
+;;; GtkStateType
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkStateType" state-type

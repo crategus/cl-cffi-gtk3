@@ -143,7 +143,7 @@
   @see-function{gtk:window-destroy-with-parent}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkResponseType
+;;; GtkResponseType
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkResponseType" response-type

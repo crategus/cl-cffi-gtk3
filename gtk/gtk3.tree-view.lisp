@@ -232,7 +232,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkTreeViewDropPosition
+;;; GtkTreeViewDropPosition
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkTreeViewDropPosition" tree-view-drop-position
@@ -272,7 +272,7 @@
   @see-class{gtk:tree-view}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkTreeViewGridLines
+;;; GtkTreeViewGridLines
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkTreeViewGridLines" tree-view-grid-lines

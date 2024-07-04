@@ -154,7 +154,7 @@
   @see-class{gtk:cell-renderer}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkCellRendererMode
+;;; GtkCellRendererMode
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkCellRendererMode" cell-renderer-mode

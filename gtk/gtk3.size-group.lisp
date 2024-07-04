@@ -65,7 +65,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkSizeGroupMode
+;;; GtkSizeGroupMode
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkSizeGroupMode" size-group-mode

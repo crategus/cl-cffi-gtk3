@@ -199,7 +199,7 @@
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkTextViewLayer                                  not exported
+;;; GtkTextViewLayer                                        not exported
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkTextViewLayer" text-view-layer
@@ -240,7 +240,7 @@
   @see-class{gtk:text-view}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkTextWindowType
+;;; GtkTextWindowType
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkTextWindowType" text-window-type
@@ -288,7 +288,7 @@
   @see-class{gtk:text-view}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkTextExtendSelection
+;;; GtkTextExtendSelection
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkTextExtendSelection" text-extend-selection

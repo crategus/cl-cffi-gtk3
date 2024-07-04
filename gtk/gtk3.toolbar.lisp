@@ -100,7 +100,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkToolbarSpaceStyle
+;;; GtkToolbarSpaceStyle
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkToolbarSpaceStyle" toolbar-space-style

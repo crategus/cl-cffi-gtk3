@@ -114,7 +114,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkAssistantPageType
+;;; GtkAssistantPageType
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkAssistantPageType" assistant-page-type

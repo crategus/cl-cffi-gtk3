@@ -113,7 +113,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkSensitivityType
+;;; GtkSensitivityType
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkSensitivityType" sensitivity-type

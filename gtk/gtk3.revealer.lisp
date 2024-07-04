@@ -75,7 +75,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkRevealerTransitionType
+;;; GtkRevealerTransitionType
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkRevealerTransitionType" revealer-transition-type

@@ -66,7 +66,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkScrollablePolicy
+;;; GtkScrollablePolicy
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkScrollablePolicy" scrollable-policy

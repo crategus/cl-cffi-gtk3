@@ -71,7 +71,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkButtonRole
+;;; GtkButtonRole
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkButtonRole" button-role

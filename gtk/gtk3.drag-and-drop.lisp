@@ -135,7 +135,7 @@
   @see-function{gtk:drag-finish}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkDragResult
+;;; GtkDragResult
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkDragResult" drag-result

@@ -133,7 +133,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkFileChooserAction
+;;; GtkFileChooserAction
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkFileChooserAction" file-chooser-action
@@ -177,7 +177,7 @@
   @see-class{gtk:file-chooser}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkFileChooserConfirmation
+;;; GtkFileChooserConfirmation
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkFileChooserConfirmation" file-chooser-confirmation
@@ -228,7 +228,7 @@
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkFileChooserError
+;;; GtkFileChooserError
 ;;; ----------------------------------------------------------------------------
 
 ;; GtkFileChooserError is not exported

@@ -68,7 +68,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkShortcutType
+;;; GtkShortcutType
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkShortcutType" shortcut-type

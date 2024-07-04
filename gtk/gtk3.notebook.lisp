@@ -145,7 +145,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkNotebookTab
+;;; GtkNotebookTab
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkNotebookTab" notebook-tab

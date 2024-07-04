@@ -124,7 +124,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkPolicyType
+;;; GtkPolicyType
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkPolicyType" policy-type
@@ -169,7 +169,7 @@
   @see-class{gtk:scrolled-window}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkCornerType
+;;; GtkCornerType
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkCornerType" corner-type

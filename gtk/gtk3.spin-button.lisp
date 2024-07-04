@@ -92,7 +92,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkSpinButtonUpdatePolicy
+;;; GtkSpinButtonUpdatePolicy
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkSpinButtonUpdatePolicy" spin-button-update-policy
@@ -131,7 +131,7 @@
   @see-function{gtk:spin-button-update-policy}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkSpinType
+;;; GtkSpinType
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkSpinType" spin-type

@@ -137,7 +137,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkTreeViewColumnSizing
+;;; GtkTreeViewColumnSizing
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkTreeViewColumnSizing" tree-view-column-sizing

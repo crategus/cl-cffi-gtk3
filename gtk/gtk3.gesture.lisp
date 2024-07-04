@@ -84,7 +84,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkEventSequenceState
+;;; GtkEventSequenceState
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkEventSequenceState" event-sequence-state

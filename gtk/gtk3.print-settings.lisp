@@ -218,7 +218,7 @@
   @see-class{gtk:print-unix-dialog}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkPageOrientation
+;;; GtkPageOrientation
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkPageOrientation" page-orientation
@@ -256,7 +256,7 @@
   @see-function{gtk:print-settings-orientation}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkPrintDuplex
+;;; GtkPrintDuplex
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkPrintDuplex" print-duplex
@@ -291,7 +291,7 @@
   @see-function{gtk:print-settings-duplex}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkPrintQuality
+;;; GtkPrintQuality
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkPrintQuality" print-quality
@@ -329,7 +329,7 @@
   @see-function{gtk:print-settings-quality}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkNumberUpLayout
+;;; GtkNumberUpLayout
 ;;; ----------------------------------------------------------------------------
 
 ;; TODO: Change the nick names to the short form
@@ -384,7 +384,7 @@
   @see-function{gtk:print-settings-number-up-layout}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkPrintPages
+;;; GtkPrintPages
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkPrintPages" print-pages
@@ -447,7 +447,7 @@
 ;; The string representation of this is "pages-ranges=1, 15-20, 25"
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkPageSet
+;;; GtkPageSet
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkPageSet" page-set

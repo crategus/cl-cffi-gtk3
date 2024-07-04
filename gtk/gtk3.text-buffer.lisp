@@ -148,7 +148,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkTextBufferTargetInfo
+;;; GtkTextBufferTargetInfo
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkTextBufferTargetInfo" text-buffer-target-info

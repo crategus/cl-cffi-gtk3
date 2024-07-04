@@ -63,7 +63,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkPanDirection
+;;; GtkPanDirection
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkPanDirection" pan-direction

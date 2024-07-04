@@ -85,7 +85,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkMessageType
+;;; GtkMessageType
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkMessageType" message-type
@@ -127,7 +127,7 @@
   @see-class{gtk:message-dialog}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkButtonsType
+;;; GtkButtonsType
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkButtonsType" buttons-type

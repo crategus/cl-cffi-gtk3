@@ -172,7 +172,7 @@
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkIMPreeditStyle
+;;; GtkIMPreeditStyle
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkIMPreeditStyle" im-preedit-style
@@ -205,7 +205,7 @@
   @see-function{gtk:settings-gtk-im-preedit-style}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkIMStatusStyle
+;;; GtkIMStatusStyle
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkIMStatusStyle" im-status-style

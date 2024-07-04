@@ -72,7 +72,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkPackDirection
+;;; GtkPackDirection
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkPackDirection" pack-direction

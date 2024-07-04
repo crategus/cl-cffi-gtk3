@@ -63,7 +63,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkPropagationPhase
+;;; GtkPropagationPhase
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkPropagationPhase" propagation-phase

@@ -82,7 +82,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkButtonBoxStyle
+;;; GtkButtonBoxStyle
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkButtonBoxStyle" button-box-style

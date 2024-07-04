@@ -128,7 +128,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkArrowPlacement
+;;; GtkArrowPlacement
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkArrowPlacement" arrow-placement

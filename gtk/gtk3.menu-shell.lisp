@@ -86,7 +86,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkMenuDirectionType
+;;; GtkMenuDirectionType
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkMenuDirectionType" menu-direction-type

@@ -393,7 +393,7 @@ lambda (provider section error)    :run-last
 ;;;-----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkCssSectionType
+;;; GtkCssSectionType
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkCssSectionType" css-section-type

@@ -248,7 +248,7 @@
   @see-function{gtk:style-context-to-string}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkBorderStyle
+;;; GtkBorderStyle
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkBorderStyle" border-style

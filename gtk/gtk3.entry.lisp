@@ -213,7 +213,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkEntryIconPosition
+;;; GtkEntryIconPosition
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkEntryIconPosition" entry-icon-position
@@ -248,7 +248,7 @@
   @see-class{gtk:entry}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkInputPurpose
+;;; GtkInputPurpose
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GtkInputPurpose" input-purpose
