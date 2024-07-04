@@ -149,8 +149,8 @@ lambda (manager display)    :run-last
       "Accessor"
       (documentation 'display-manager-default-display 'function)
  "@version{#2023-3-7}
-  @syntax[]{(gdk:display-manager-default-display object) => display}
-  @syntax[]{(setf (gdk:display-manager-default-display object) display)}
+  @syntax{(gdk:display-manager-default-display object) => display}
+  @syntax{(setf (gdk:display-manager-default-display object) display)}
   @argument[object]{a @class{gdk:display-manager} object}
   @argument[display]{a default @class{gdk:display} object}
   @begin{short}

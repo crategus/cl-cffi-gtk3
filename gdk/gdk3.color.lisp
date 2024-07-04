@@ -112,8 +112,8 @@
       "Accessor"
       (documentation 'color-pixel 'function)
  "@version{2023-1-22}
-  @syntax[]{(gdk:color-pixel instance) => pixel}
-  @syntax[]{(setf (gdk:color-pixel instance) pixel)}
+  @syntax{(gdk:color-pixel instance) => pixel}
+  @syntax{(setf (gdk:color-pixel instance) pixel)}
   @begin{short}
     Accessor of the @code{pixel} slot of the @class{gdk:color} color.
   @end{short}
@@ -134,8 +134,8 @@
       "Accessor"
       (documentation 'color-red 'function)
  "@version{2023-1-22}
-  @syntax[]{(gdk:color-red instance) => red}
-  @syntax[]{(setf (gdk:color-red instance) red)}
+  @syntax{(gdk:color-red instance) => red}
+  @syntax{(setf (gdk:color-red instance) red)}
   @begin{short}
     Accessor of the @code{red} slot of the @class{gdk:color} color.
   @end{short}
@@ -158,8 +158,8 @@
       "Accessor"
       (documentation 'color-green 'function)
  "@version{2023-1-22}
-  @syntax[]{(gdk:color-green instance) => green}
-  @syntax[]{(setf (gdk:color-green instance) green)}
+  @syntax{(gdk:color-green instance) => green}
+  @syntax{(setf (gdk:color-green instance) green)}
   @begin{short}
     Accessor of the @code{green} slot of the @class{gdk:color} color.
   @end{short}
@@ -182,8 +182,8 @@
       "Accessor"
       (documentation 'color-blue 'function)
  "@version{2023-1-22}
-  @syntax[]{(gdk:color-blue instance) => blue}
-  @syntax[]{(setf (gdk:color-blue instance) blue)}
+  @syntax{(gdk:color-blue instance) => blue}
+  @syntax{(setf (gdk:color-blue instance) blue)}
   @begin{short}
     Accessor of the @code{blue} slot of the @class{gdk:color} color.
   @end{short}

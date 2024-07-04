@@ -107,7 +107,7 @@
       "Accessor"
       (documentation 'drawing-context-clip 'function)
  "@version{#2023-3-10}
-  @syntax[]{(gdk:drawing-context-clip object) => region}
+  @syntax{(gdk:drawing-context-clip object) => region}
   @argument[object]{a @class{gdk:drawing-context} object}
   @argument[region]{a @symbol{cairo:region-t} instance}
   @begin{short}
@@ -134,7 +134,7 @@
       "Accessor"
       (documentation 'drawing-context-window 'function)
  "@version{#2023-3-10}
-  @syntax[]{(gdk:drawing-context-window object) => window}
+  @syntax{(gdk:drawing-context-window object) => window}
   @argument[object]{a @class{gdk:drawing-context} object}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}

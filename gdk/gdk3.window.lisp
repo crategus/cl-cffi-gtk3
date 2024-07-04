@@ -241,7 +241,7 @@
 (in-package :gdk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GdkWindowType
+;;; GdkWindowType
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GdkWindowType" window-type
@@ -260,8 +260,7 @@
       "GEnum"
       (liber:symbol-documentation 'window-type)
  "@version{2023-2-26}
-  @short{Describes the kind of the window.}
-  @begin{pre}
+  @begin{declaration}
 (gobject:define-g-enum \"GdkWindowType\" window-type
   (:export t
    :type-initializer \"gdk_window_type_get_type\")
@@ -272,30 +271,33 @@
   (:foreign 4)
   (:offscreen 5)
   (:subsurface 6))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:root]{Root window, this window has no parent, covers the entire
-      screen, and is created by the window system.}
-    @entry[:toplevel]{Toplevel window, used to implement the @class{gtk:window}
-      class.}
-    @entry[:child]{Child window, used to implement e.g. the @class{gtk:entry}
-      class.}
-    @entry[:temp]{Override redirect temporary window, used to implement the
-      @class{gtk:menu} class.}
-    @entry[:foreign]{Foreign window.}
-    @entry[:offscreen]{Offscreen window, see the section called
-      \"Offscreen Windows\".}
-    @entry[:subsurface]{Subsurface-based window. This window is visually tied
-      to a toplevel, and is moved/stacked with it. Currently this window type
-      is only implemented in Wayland.}
-  @end{table}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:root]{Root window, this window has no parent, covers the entire
+        screen, and is created by the window system.}
+      @entry[:toplevel]{Toplevel window, used to implement the
+        @class{gtk:window} class.}
+      @entry[:child]{Child window, used to implement e.g. the @class{gtk:entry}
+        class.}
+      @entry[:temp]{Override redirect temporary window, used to implement the
+        @class{gtk:menu} class.}
+      @entry[:foreign]{Foreign window.}
+      @entry[:offscreen]{Offscreen window, see the section called
+        \"Offscreen Windows\".}
+      @entry[:subsurface]{Subsurface-based window. This window is visually tied
+        to a toplevel, and is moved/stacked with it. Currently this window type
+        is only implemented in Wayland.}
+    @end{table}
+  @end{values}
+  @short{Describes the kind of the window.}
   @see-class{gdk:window}
   @see-class{gtk:window}
   @see-class{gtk:entry}
   @see-class{gtk:menu}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GdkWindowWindowClass
+;;; GdkWindowWindowClass
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GdkWindowWindowClass" window-window-class
@@ -309,6 +311,19 @@
       "GEnum"
       (liber:symbol-documentation 'window-window-class)
  "@version{2023-2-26}
+  @begin{declaration}
+(gobject:define-g-enum \"GdkWindowWindowClass\" window-window-class
+  (:export t
+   :type-initializer \"gdk_window_window_class_get_type\")
+  (:input-output 0)
+  (:input-only 1))
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:input-output]{Window for graphics and events.}
+      @entry[:input-only]{Window for events only.}
+    @end{table}
+  @end{values}
   @begin{short}
     @code{:input-output} windows are the standard kind of window you might
     expect.
@@ -317,21 +332,10 @@
   @code{:input-only} windows are invisible. They are usually placed above other
   windows in order to trap or filter the events. You cannot draw on
   @code{:input-only} windows.
-  @begin{pre}
-(gobject:define-g-enum \"GdkWindowWindowClass\" window-window-class
-  (:export t
-   :type-initializer \"gdk_window_window_class_get_type\")
-  (:input-output 0)
-  (:input-only 1))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:input-output]{Window for graphics and events.}
-    @entry[:input-only]{Window for events only.}
-  @end{table}
   @see-class{gdk:window}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GdkWindowHints
+;;; GdkWindowHints
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-flags "GdkWindowHints" window-hints
@@ -352,19 +356,7 @@
       "GFlags"
       (liber:symbol-documentation 'window-hints)
  "@version{2023-2-26}
-  @begin{short}
-    Used to indicate which fields of a @symbol{gdk:geometry} instance should
-    be paid attention to.
-  @end{short}
-  Also, the presence/absence of the @code{:pos}, @code{:user-pos}, and
-  @code{:user-size} values is significant, though they do not directly refer to
-  @symbol{gdk:geometry} fields. The @code{:user-pos} value will be set
-  automatically by the @class{gtk:window} widget if you call the
-  @fun{gtk:window-move} function. The @code{:user-pos} and @code{:user-size}
-  values should be set if the user specified a size/position using a - geometry
-  command-line argument. The @fun{gtk:window-parse-geometry} function
-  automatically sets these flags.
-  @begin{pre}
+  @begin{declaration}
 (gobject:define-g-flags \"GdkWindowHints\" window-hints
   (:export t
    :type-initializer \"gdk_window_hints_get_type\")
@@ -377,26 +369,40 @@
   (:win-gravity 64)
   (:user-pos 128)
   (:user-size 256))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:pos]{Indicates that the program has positioned the window.}
-    @entry[:min-size]{Min size fields are set.}
-    @entry[:max-size]{Max size fields are set.}
-    @entry[:base-size]{Base size fields are set.}
-    @entry[:aspect]{Aspect ratio fields are set.}
-    @entry[:resize-inc]{Resize increment fields are set.}
-    @entry[:win-gravity]{Window gravity field is set.}
-    @entry[:user-pos]{Indicates that the window's position was explicitly set
-      by the user.}
-    @entry[:user-size]{Indicates that the window's size was explicitly set by
-      the user.}
-  @end{table}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:pos]{Indicates that the program has positioned the window.}
+      @entry[:min-size]{Min size fields are set.}
+      @entry[:max-size]{Max size fields are set.}
+      @entry[:base-size]{Base size fields are set.}
+      @entry[:aspect]{Aspect ratio fields are set.}
+      @entry[:resize-inc]{Resize increment fields are set.}
+      @entry[:win-gravity]{Window gravity field is set.}
+      @entry[:user-pos]{Indicates that the window's position was explicitly set
+        by the user.}
+      @entry[:user-size]{Indicates that the window's size was explicitly set by
+        the user.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Used to indicate which fields of a @symbol{gdk:geometry} instance should
+    be paid attention to.
+  @end{short}
+  Also, the presence/absence of the @code{:pos}, @code{:user-pos}, and
+  @code{:user-size} values is significant, though they do not directly refer to
+  @symbol{gdk:geometry} fields. The @code{:user-pos} value will be set
+  automatically by the @class{gtk:window} widget if you call the
+  @fun{gtk:window-move} function. The @code{:user-pos} and @code{:user-size}
+  values should be set if the user specified a size/position using a - geometry
+  command-line argument. The @fun{gtk:window-parse-geometry} function
+  automatically sets these flags.
   @see-symbol{gdk:geometry}
   @see-class{gtk:window}
   @see-function{gtk:window-parse-geometry}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GdkGravity
+;;; GdkGravity
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GdkGravity" gravity
@@ -418,13 +424,7 @@
       "GEnum"
       (liber:symbol-documentation 'gravity)
  "@version{2023-2-26}
-  @begin{short}
-    Defines the reference point of a window and the meaning of coordinates
-    passed to the @fun{gtk:window-move} function.
-  @end{short}
-  See the @fun{gtk:window-move} function and the \"implementation notes\"
-  section of the Extended Window Manager Hints specification for more details.
-  @begin{pre}
+  @begin{declaration}
 (gobject:define-g-enum \"GdkGravity\" gravity
   (:export t
    :type-initializer \"gdk_gravity_get_type\")
@@ -438,25 +438,33 @@
   :south
   :south-east
   :static)
-  @end{pre}
-  @begin[code]{table}
-    @entry[:north-west]{The reference point is at the top left corner.}
-    @entry[:north]{The reference point is in the middle of the top edge.}
-    @entry[:north-east]{The reference point is at the top right corner.}
-    @entry[:west]{The reference point is at the middle of the left edge.}
-    @entry[:center]{The reference point is at the center of the window.}
-    @entry[:east]{The reference point is at the middle of the right edge.}
-    @entry[:south-west]{The reference point is at the lower left corner.}
-    @entry[:south]{The reference point is at the middle of the lower edge.}
-    @entry[:south-east]{The reference point is at the lower right corner.}
-    @entry[:static]{The reference point is at the top left corner of the
-      window itself, ignoring window manager decorations.}
-  @end{table}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:north-west]{The reference point is at the top left corner.}
+      @entry[:north]{The reference point is in the middle of the top edge.}
+      @entry[:north-east]{The reference point is at the top right corner.}
+      @entry[:west]{The reference point is at the middle of the left edge.}
+      @entry[:center]{The reference point is at the center of the window.}
+      @entry[:east]{The reference point is at the middle of the right edge.}
+      @entry[:south-west]{The reference point is at the lower left corner.}
+      @entry[:south]{The reference point is at the middle of the lower edge.}
+      @entry[:south-east]{The reference point is at the lower right corner.}
+      @entry[:static]{The reference point is at the top left corner of the
+        window itself, ignoring window manager decorations.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Defines the reference point of a window and the meaning of coordinates
+    passed to the @fun{gtk:window-move} function.
+  @end{short}
+  See the @fun{gtk:window-move} function and the \"implementation notes\"
+  section of the Extended Window Manager Hints specification for more details.
   @see-class{gdk:window}
   @see-function{gtk:window-move}")
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GdkGeometry
+;;; GdkGeometry
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcstruct geometry
@@ -580,7 +588,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (export 'geometry)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GdkAnchorHints
+;;; GdkAnchorHints
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-flags "GdkAnchorHints" anchor-hints
@@ -601,6 +609,33 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
       "GFlags"
       (liber:symbol-documentation 'anchor-hints)
  "@version{2023-3-13}
+  @begin{declaration}
+(gobject:define-g-flags \"GdkAnchorHints\" anchor-hints
+  (:export t
+   :type-initializer \"gdk_anchor_hints_get_type\")
+  (:flip-x   #.(ash 1 0))
+  (:flip-y   #.(ash 1 1))
+  (:slide-x  #.(ash 1 2))
+  (:slide-y  #.(ash 1 3))
+  (:resize-x #.(ash 1 4))
+  (:resize-y #.(ash 1 5))
+  (:flip    3)  ; :flip-x   | :flip-y
+  (:slide  12)  ; :slide-x  | :slide-y
+  (:resize 48)) ; :resize-x | :resize-y
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:flip-x]{Allow flipping anchors horizontally.}
+      @entry[:fliy-y]{Allow flipping anchors vertically.}
+      @entry[:slide-x]{Allow sliding window horizontally.}
+      @entry[:slide-y]{Allow sliding window vertically.}
+      @entry[:resize-x]{Allow resizing window horizontally.}
+      @entry[:resize-y]{Allow resizing window vertically.}
+      @entry[:flip]{Allow flipping anchors on both axes.}
+      @entry[:slide]{Allow sliding window on both axes.}
+      @entry[:resize]{Allow resizing window on both axes.}
+    @end{table}
+  @end{values}
   @begin{short}
     Positioning hints for aligning a window relative to a rectangle.
   @end{short}
@@ -616,35 +651,10 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 
   In general, when multiple flags are set, flipping should take precedence
   over sliding, which should take precedence over resizing.
-  @begin{pre}
-(gobject:define-g-flags \"GdkAnchorHints\" anchor-hints
-  (:export t
-   :type-initializer \"gdk_anchor_hints_get_type\")
-  (:flip-x   #.(ash 1 0))
-  (:flip-y   #.(ash 1 1))
-  (:slide-x  #.(ash 1 2))
-  (:slide-y  #.(ash 1 3))
-  (:resize-x #.(ash 1 4))
-  (:resize-y #.(ash 1 5))
-  (:flip    3)  ; :flip-x   | :flip-y
-  (:slide  12)  ; :slide-x  | :slide-y
-  (:resize 48)) ; :resize-x | :resize-y
-  @end{pre}
-  @begin[code]{table}
-    @entry[:flip-x]{Allow flipping anchors horizontally.}
-    @entry[:fliy-y]{Allow flipping anchors vertically.}
-    @entry[:slide-x]{Allow sliding window horizontally.}
-    @entry[:slide-y]{Allow sliding window vertically.}
-    @entry[:resize-x]{Allow resizing window horizontally.}
-    @entry[:resize-y]{Allow resizing window vertically.}
-    @entry[:flip]{Allow flipping anchors on both axes.}
-    @entry[:slide]{Allow sliding window on both axes.}
-    @entry[:resize]{Allow resizing window on both axes.}
-  @end{table}
   @see-class{gdk:window}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GdkWindowEdge
+;;; GdkWindowEdge
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GdkWindowEdge" window-edge
@@ -664,10 +674,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
       "GEnum"
       (liber:symbol-documentation 'window-edge)
  "@version{2023-2-26}
-  @begin{short}
-    Determines a window edge or corner.
-  @end{short}
-  @begin{pre}
+  @begin{declaration}
 (gobject:define-g-enum \"GdkWindowEdge\" window-edge
   (:export t
    :type-initializer \"gdk_window_edge_get_type\")
@@ -679,21 +686,26 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   (:south-west 5)
   (:south 6)
   (:south-east 7))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:north-west]{The top left corner.}
-    @entry[:north]{The top edge.}
-    @entry[:north-east]{The top right corner.}
-    @entry[:west]{The left edge.}
-    @entry[:east]{The right edge.}
-    @entry[:south-west]{The lower left corner.}
-    @entry[:south]{The lower edge.}
-    @entry[:south-east]{The lower right corner.}
-  @end{table}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:north-west]{The top left corner.}
+      @entry[:north]{The top edge.}
+      @entry[:north-east]{The top right corner.}
+      @entry[:west]{The left edge.}
+      @entry[:east]{The right edge.}
+      @entry[:south-west]{The lower left corner.}
+      @entry[:south]{The lower edge.}
+      @entry[:south-east]{The lower right corner.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Determines a window edge or corner.
+  @end{short}
   @see-class{gdk:window}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GdkWindowTypeHint
+;;; GdkWindowTypeHint
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GdkWindowTypeHint" window-type-hint
@@ -719,16 +731,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
       "GEnum"
       (liber:symbol-documentation 'window-type-hint)
  "@version{2023-2-26}
-  @begin{short}
-    These are hints for the window manager that indicate what type of function
-    the window has.
-  @end{short}
-  The window manager can use this when determining decoration and behaviour of
-  the window. The hint must be set before mapping the window.
-
-  See the Extended Window Manager Hints specification for more details about
-  window types.
-  @begin{pre}
+  @begin{declaration}
 (gobject:define-g-enum \"GdkWindowTypeHint\" window-type-hint
   (:export t
    :type-initializer \"gdk_window_type_hint_get_type\")
@@ -746,28 +749,39 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   (:notification 11)
   (:combo 12)
   (:dnd 13))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:normal]{Normal toplevel window.}
-    @entry[:dialog]{Dialog window.}
-    @entry[:menu]{Window used to implement a menu. GTK uses this hint only for
-      the deprecated torn-off menus.}
-    @entry[:toolbar]{Window used to implement toolbars.}
-    @entry[:splashscreen]{Window used to display a splash screen during
-      application startup.}
-    @entry[:utility]{Utility windows which are not detached toolbars or
-      dialogs.}
-    @entry[:dock]{Used for creating dock or panel windows.}
-    @entry[:desktop]{Used for creating the desktop background window.}
-    @entry[:dropdown-menu]{A menu that belongs to a menubar.}
-    @entry[:popup-menu]{A menu that does not belong to a menubar, e.g. a
-      context menu.}
-    @entry[:tooltip]{A tooltip.}
-    @entry[:notification]{A notification - typically a \"bubble\" that belongs
-      to a status icon.}
-    @entry[:combo]{A popup from a combo box.}
-    @entry[:dnd]{A window that is used to implement a DND cursor.}
-  @end{table}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:normal]{Normal toplevel window.}
+      @entry[:dialog]{Dialog window.}
+      @entry[:menu]{Window used to implement a menu. GTK uses this hint only
+        for the deprecated torn-off menus.}
+      @entry[:toolbar]{Window used to implement toolbars.}
+      @entry[:splashscreen]{Window used to display a splash screen during
+        application startup.}
+      @entry[:utility]{Utility windows which are not detached toolbars or
+        dialogs.}
+      @entry[:dock]{Used for creating dock or panel windows.}
+      @entry[:desktop]{Used for creating the desktop background window.}
+      @entry[:dropdown-menu]{A menu that belongs to a menubar.}
+      @entry[:popup-menu]{A menu that does not belong to a menubar, e.g. a
+        context menu.}
+      @entry[:tooltip]{A tooltip.}
+      @entry[:notification]{A notification - typically a \"bubble\" that
+        belongs to a status icon.}
+      @entry[:combo]{A popup from a combo box.}
+      @entry[:dnd]{A window that is used to implement a DND cursor.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    These are hints for the window manager that indicate what type of function
+    the window has.
+  @end{short}
+  The window manager can use this when determining decoration and behaviour of
+  the window. The hint must be set before mapping the window.
+
+  See the Extended Window Manager Hints specification for more details about
+  window types.
   @see-class{gdk:window}")
 
 ;;; ----------------------------------------------------------------------------
@@ -846,7 +860,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (export 'window-attr)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GdkWindowAttributesType
+;;; GdkWindowAttributesType
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-flags "GdkWindowAttributesType" window-attributes-type
@@ -866,18 +880,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
       "GFlags"
       (liber:symbol-documentation 'window-attributes-type)
  "@version{2023-2-26}
-  @begin{short}
-    Used to indicate which fields in the @symbol{gdk:window-attr} structure
-    should be honored.
-  @end{short}
-  For example, if you filled in the @code{cursor} and @code{x} fields of the
-  @symbol{gdk:window-attr} structure, pass @code{'(:x :cursor)} to the
-  @fun{gdk:window-new} function. Fields in the @symbol{gdk:window-attr}
-  structure not covered by a bit in this enumeration are required. For example,
-  the @code{width}/@code{height}, @code{wclass}, and @code{window-type} fields
-  are required, they have no corresponding flag in the
-  @symbol{gdk:window-attributes-type} flags.
-  @begin{pre}
+  @begin{declaration}
 (gobject:define-g-flags \"GdkWindowAttributesType\" window-attributes-type
   (:export t
    :type-initializer \"gdk_window_attributes_type_get_type\")
@@ -889,23 +892,36 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   (:wmclass 64)
   (:noredir 128)
   (:type-hint 256))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:title]{Honor the @code{title} field.}
-    @entry[:x]{Honor the @code{x} coordinate field.}
-    @entry[:y]{Honor the @code{y} coordinate field.}
-    @entry[:cursor]{Honor the @code{cursor} field.}
-    @entry[:visual]{Honor the @code{visual} field.}
-    @entry[:wmclass]{Honor the @code{wmclass-class} and @code{wmclass-name}
-      fields.}
-    @entry[:noredir]{Honor the @code{override-redirect} field.}
-    @entry[:type-hint]{Honor the @code{type-hint} field.}
-  @end{table}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:title]{Honor the @code{title} field.}
+      @entry[:x]{Honor the @code{x} coordinate field.}
+      @entry[:y]{Honor the @code{y} coordinate field.}
+      @entry[:cursor]{Honor the @code{cursor} field.}
+      @entry[:visual]{Honor the @code{visual} field.}
+      @entry[:wmclass]{Honor the @code{wmclass-class} and @code{wmclass-name}
+        fields.}
+      @entry[:noredir]{Honor the @code{override-redirect} field.}
+      @entry[:type-hint]{Honor the @code{type-hint} field.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Used to indicate which fields in the @symbol{gdk:window-attr} structure
+    should be honored.
+  @end{short}
+  For example, if you filled in the @code{cursor} and @code{x} fields of the
+  @symbol{gdk:window-attr} structure, pass @code{'(:x :cursor)} to the
+  @fun{gdk:window-new} function. Fields in the @symbol{gdk:window-attr}
+  structure not covered by a bit in this enumeration are required. For example,
+  the @code{width}/@code{height}, @code{wclass}, and @code{window-type} fields
+  are required, they have no corresponding flag in the
+  @symbol{gdk:window-attributes-type} flags.
   @see-symbol{gdk:window-attr}
   @see-function{gdk:window-new}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GdkFullscreenMode
+;;; GdkFullscreenMode
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GdkFullscreenMode" fullscreen-mode
@@ -919,25 +935,27 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
       "GEnum"
       (liber:symbol-documentation 'fullscreen-mode)
  "@version{2023-2-26}
-  @begin{short}
-    Indicates which monitor (in a multi-head setup) a window should span over
-    when in fullscreen mode.
-  @end{short}
-  @begin{pre}
+  @begin{declaration}
 (gobject:define-g-enum \"GdkFullscreenMode\" fullscreen-mode
   (:export t
    :type-initializer \"gdk_fullscreen_mode_get_type\")
   (:on-current-monitor 0)
   (:on-all-monitors 1))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:current-monitor]{Fullscreen on current monitor only.}
-    @entry[:all-monitors]{Span across all monitors when fullscreen.}
-  @end{table}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:current-monitor]{Fullscreen on current monitor only.}
+      @entry[:all-monitors]{Span across all monitors when fullscreen.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Indicates which monitor (in a multi-head setup) a window should span over
+    when in fullscreen mode.
+  @end{short}
   @see-class{gdk:window}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GdkFilterReturn                                   not exported
+;;; GdkFilterReturn                                         not exported
 ;;; ----------------------------------------------------------------------------
 
 ;; TODO: The filter functionality is not implemented. Consider to remove
@@ -955,27 +973,29 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
       "GEnum"
       (liber:symbol-documentation 'filter-return)
  "@version{2023-2-26}
-  @begin{short}
-    Specifies the result of applying a @code{GdkFilterFunc} to a native event.
-  @end{short}
-  @begin{pre}
+  @begin{declaration}
 (gobject:define-g-enum \"GdkFilterReturn\" filter-return
   (:export t
    :type-initializer \"gdk_filter_return_get_type\")
   (:continue 0)
   (:translate 1)
   (:remove 2))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:continue]{Event not handled, continue processing.}
-    @entry[:translate]{Native event translated into a GDK event and stored in
-      the event structure that was passed in.}
-    @entry[:remove]{Event handled, terminate processing.}
-  @end{table}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:continue]{Event not handled, continue processing.}
+      @entry[:translate]{Native event translated into a GDK event and stored in
+        the event structure that was passed in.}
+      @entry[:remove]{Event handled, terminate processing.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Specifies the result of applying a @code{GdkFilterFunc} to a native event.
+  @end{short}
   @see-class{gdk:window}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GdkModifierIntent
+;;; GdkModifierIntent
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GdkModifierIntent" modifier-intent
@@ -994,16 +1014,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
       "GEnum"
       (liber:symbol-documentation 'modifier-intent)
  "@version{2023-2-26}
-  @begin{short}
-    This enumeration is used with the @fun{gdk:keymap-modifier-mask} function
-    in order to determine what modifiers the currently used windowing system
-    backend uses for particular purposes.
-  @end{short}
-  For example, on X11/Windows, the Control key is used for invoking menu
-  shortcuts (accelerators), whereas on Apple computers it is the Command key,
-  which correspond to the @code{:control-mask} and @code{:mod2-mask} values of
-  the @symbol{gdk:modifier-type} flags, respectively.
-  @begin{pre}
+  @begin{declaration}
 (gobject:define-g-enum \"GdkModifierIntent\" modifier-intent
   (:export t
    :type-initializer \"gdk_modifier_intent_get_type\")
@@ -1014,32 +1025,46 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   (:no-text-input 4)
   (:shift-group 5)
   (:default-mod-mask 6))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:primary-accelerator]{The primary modifier used to invoke menu
-      accelerators.}
-    @entry[:context-menu]{The modifier used to invoke context menus. Note that
-      mouse button 3 always triggers context menus. When this modifier is not
-      0, it additionally triggers context menus when used with mouse button 1.}
-    @entry[:extend-selextion]{The modifier used to extend selections using
-      <modifier>-click or <modifier>-cursor-key.}
-    @entry[:modify-selection]{The modifier used to modify selections, which in
-      most cases means toggling the clicked item into or out of the selection.}
-    @entry[:no-text-input]{When any of these modifiers is pressed, the key
-      event cannot produce a symbol directly. This is meant to be used for
-      input methods, and for use cases like typeahead search.}
-    @entry[:shift-group]{The modifier that switches between keyboard groups,
-      the @kbd{AltGr} key on X11/Windows and the @kbd{Option/Alt} key on OS X.}
-    @entry[:default-mod-mask]{The set of modifier masks accepted as modifiers
-      in accelerators. Needed because the @kbd{Command} key is mapped to
-      @code{MOD2} on OSX, which is widely used, but on X11 @code{MOD2} is the
-      @kbd{NumLock} key and using that for a mod key is problematic at best.}
-  @end{table}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:primary-accelerator]{The primary modifier used to invoke menu
+        accelerators.}
+      @entry[:context-menu]{The modifier used to invoke context menus. Note
+        that mouse button 3 always triggers context menus. When this modifier
+        is not 0, it additionally triggers context menus when used with mouse
+        button 1.}
+      @entry[:extend-selextion]{The modifier used to extend selections using
+        <modifier>-click or <modifier>-cursor-key.}
+      @entry[:modify-selection]{The modifier used to modify selections, which
+        in most cases means toggling the clicked item into or out of the
+        selection.}
+      @entry[:no-text-input]{When any of these modifiers is pressed, the key
+        event cannot produce a symbol directly. This is meant to be used for
+        input methods, and for use cases like typeahead search.}
+      @entry[:shift-group]{The modifier that switches between keyboard groups,
+        the @kbd{AltGr} key on X11/Windows and the @kbd{Option/Alt} key on
+        OS X.}
+      @entry[:default-mod-mask]{The set of modifier masks accepted as modifiers
+        in accelerators. Needed because the @kbd{Command} key is mapped to
+        @code{MOD2} on OSX, which is widely used, but on X11 @code{MOD2} is the
+        @kbd{NumLock} key and using that for a mod key is problematic at best.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    This enumeration is used with the @fun{gdk:keymap-modifier-mask} function
+    in order to determine what modifiers the currently used windowing system
+    backend uses for particular purposes.
+  @end{short}
+  For example, on X11/Windows, the Control key is used for invoking menu
+  shortcuts (accelerators), whereas on Apple computers it is the Command key,
+  which correspond to the @code{:control-mask} and @code{:mod2-mask} values of
+  the @symbol{gdk:modifier-type} flags, respectively.
   @see-symbol{gdk:modifier-type}
   @see-function{gdk:keymap-modifier-mask}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GdkWMDecoration
+;;; GdkWMDecoration
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-flags "GdkWMDecoration" wm-decoration
@@ -1058,12 +1083,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
       "GFlags"
       (liber:symbol-documentation 'wm-decoration)
  "@version{2023-2-26}
-  @begin{short}
-    These are hints originally defined by the Motif toolkit.
-  @end{short}
-  The window manager can use them when determining how to decorate the window.
-  The hint must be set before mapping the window.
-  @begin{pre}
+  @begin{declaration}
 (gobject:define-g-flags \"GdkWMDecoration\" wm-decoration
   (:export t
    :type-initializer \"gdk_wm_decoration_get_type\")
@@ -1074,20 +1094,27 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   (:menu 16)
   (:minimize 32)
   (:maximize 64))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:all]{All decorations should be applied.}
-    @entry[:border]{A frame should be drawn around the window.}
-    @entry[:resizeh]{The frame should have resize handles.}
-    @entry[:title]{A titlebar should be placed above the window.}
-    @entry[:menu]{A button for opening a menu should be included.}
-    @entry[:minimize]{A minimize button should be included.}
-    @entry[:maximize]{A maximize button should be included.}
-  @end{table}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:all]{All decorations should be applied.}
+      @entry[:border]{A frame should be drawn around the window.}
+      @entry[:resizeh]{The frame should have resize handles.}
+      @entry[:title]{A titlebar should be placed above the window.}
+      @entry[:menu]{A button for opening a menu should be included.}
+      @entry[:minimize]{A minimize button should be included.}
+      @entry[:maximize]{A maximize button should be included.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    These are hints originally defined by the Motif toolkit.
+  @end{short}
+  The window manager can use them when determining how to decorate the window.
+  The hint must be set before mapping the window.
   @see-class{gdk:window}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GdkWMFunction
+;;; GdkWMFunction
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-flags "GdkWMFunction" wm-function
@@ -1105,12 +1132,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
       "GFlags"
       (liber:symbol-documentation 'wm-function)
  "@version{2023-2-26}
-  @begin{short}
-    These are hints originally defined by the Motif toolkit.
-  @end{short}
-  The window manager can use them when determining the functions to offer for
-  the window. The hint must be set before mapping the window.
-  @begin{pre}
+  @begin{declaration}
 (gobject:define-g-flags \"GdkWMFunction\" wm-function
   (:export t
    :type-initializer \"gdk_wm_function_get_type\")
@@ -1120,15 +1142,22 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   (:minimize 8)
   (:maximize 16)
   (:close 32))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:all]{All functions should be offered.}
-    @entry[:resize]{The window should be resizable.}
-    @entry[:move]{The window should be movable.}
-    @entry[:minimize]{The window should be minimizable.}
-    @entry[:maximize]{The window should be maximizable.}
-    @entry[:close]{The window should be closable.}
-  @end{table}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:all]{All functions should be offered.}
+      @entry[:resize]{The window should be resizable.}
+      @entry[:move]{The window should be movable.}
+      @entry[:minimize]{The window should be minimizable.}
+      @entry[:maximize]{The window should be maximizable.}
+      @entry[:close]{The window should be closable.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    These are hints originally defined by the Motif toolkit.
+  @end{short}
+  The window manager can use them when determining the functions to offer for
+  the window. The hint must be set before mapping the window.
   @see-class{gdk:window}
   @see-function{gdk:window-set-functions}")
 
@@ -1295,8 +1324,8 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
       "Accessor"
       (documentation 'window-cursor 'function)
  "@version{2023-2-26}
-  @syntax[]{(gdk:window-cursor object) => cursor}
-  @syntax[]{(setf (gdk:window-cursor object) cursor)}
+  @syntax{(gdk:window-cursor object) => cursor}
+  @syntax{(setf (gdk:window-cursor object) cursor)}
   @argument[object]{a @class{gdk:window} object}
   @argument[cursor]{a @class{gdk:cursor} object}
   @begin{short}
@@ -1931,8 +1960,8 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
     fullscreen-mode
  #+liber-documentation
  "@version{#2023-2-26}
-  @syntax[]{(gdk:window-fullscreen-mode window) => mode}
-  @syntax[]{(setf (gdk:window-fullscreen-mode window) mode)}
+  @syntax{(gdk:window-fullscreen-mode window) => mode}
+  @syntax{(setf (gdk:window-fullscreen-mode window) mode)}
   @argument[window]{a toplevel @class{gdk:window} object}
   @argument[mode]{a value of the @symbol{gdk:fullscreen-mode} enumeration}
   @begin{short}
@@ -2059,8 +2088,8 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (cffi:defcfun ("gdk_window_get_composited" window-composited) :boolean
  #+liber-documentation
  "@version{#2023-2-26}
-  @syntax[]{(gdk:window-composited window) => composited}
-  @syntax[]{(setf (gdk:window-composited window) composited)}
+  @syntax{(gdk:window-composited window) => composited}
+  @syntax{(setf (gdk:window-composited window) composited)}
   @argument[window]{a @class{gdk:window} object}
   @argument[composited]{@em{true} to set @arg{window} as composited}
   @begin{short}
@@ -2115,8 +2144,8 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (cffi:defcfun ("gdk_window_get_pass_through" window-pass-through) :boolean
  #+liber-documentation
  "@version{#2023-3-13}
-  @syntax[]{(gdk:window-pass-through window) => pass-through}
-  @syntax[]{(setf (gdk:window-pass-through window) pass-through)}
+  @syntax{(gdk:window-pass-through window) => pass-through}
+  @syntax{(setf (gdk:window-pass-through window) pass-through)}
   @argument[window]{a @class{gdk:window} object}
   @argument[pass-through]{a boolean}
   @begin{short}
@@ -3684,8 +3713,8 @@ lambda (window)
 (defun window-user-data (window)
  #+liber-documentation
  "@version{#2023-2-26}
-  @syntax[]{(gdk:window-user-data window) => data}
-  @syntax[]{(setf (gdk:window-user-data window) data)}
+  @syntax{(gdk:window-user-data window) => data}
+  @syntax{(setf (gdk:window-user-data window) data)}
   @argument[window]{a @class{gdk:window} object}
   @argument[data]{a pointer with the user data}
   @begin{short}
@@ -3752,8 +3781,8 @@ lambda (window)
 (cffi:defcfun ("gdk_window_get_accept_focus" window-accept-focus) :boolean
  #+liber-documentation
  "@version{#2023-2-26}
-  @syntax[]{(gdk:window-accept-focus window) => setting}
-  @syntax[]{(setf (gdk:window-accept-focus window) setting)}
+  @syntax{(gdk:window-accept-focus window) => setting}
+  @syntax{(setf (gdk:window-accept-focus window) setting)}
   @argument[window]{a toplevel @class{gdk:window} object}
   @argument[setting]{@em{true} if @arg{window} should receive input focus}
   @begin{short}
@@ -3785,8 +3814,8 @@ lambda (window)
 (cffi:defcfun ("gdk_window_get_focus_on_map" window-focus-on-map) :boolean
  #+liber-documentation
  "@version{#2023-2-26}
-  @syntax[]{(gdk:window-focus-on-map window) => setting}
-  @syntax[]{(setf gdk:window-focus-on-map window) setting)}
+  @syntax{(gdk:window-focus-on-map window) => setting}
+  @syntax{(setf gdk:window-focus-on-map window) setting)}
   @argument[window]{a toplevel @class{gdk:window} object}
   @argument[setting]{@em{true} if the window should receive input focus when
     mapped}
@@ -4188,8 +4217,8 @@ lambda (window)
     (:pointer (:struct cairo:pattern-t))
  #+liber-documentation
  "@version{#2023-2-26}
-  @syntax[]{(gdk:window-background-pattern window) => pattern}
-  @syntax[]{(setf (gdk:window-background-pattern window) pattern)}
+  @syntax{(gdk:window-background-pattern window) => pattern}
+  @syntax{(setf (gdk:window-background-pattern window) pattern)}
   @argument[window]{a @class{gdk:window} object}
   @argument[pattern]{a @symbol{cairo:pattern-t} pattern to use, or @code{nil}}
   @begin{short}
@@ -4421,8 +4450,8 @@ lambda (window)
 (cffi:defcfun ("gdk_window_get_modal_hint" window-modal-hint) :boolean
  #+liber-documentation
  "@version{#2023-2-26}
-  @syntax[]{(gdk:window-modal-hint window) => modal}
-  @syntax[]{(setf (gdk:window-modal-hint window) modal)}
+  @syntax{(gdk:window-modal-hint window) => modal}
+  @syntax{(setf (gdk:window-modal-hint window) modal)}
   @argument[window]{a toplevel @class{gdk:window} object}
   @argument[modal]{@em{true} if the window is modal, @em{false} otherwise}
   @begin{short}
@@ -4458,8 +4487,8 @@ lambda (window)
 (cffi:defcfun ("gdk_window_get_type_hint" window-type-hint) window-type-hint
  #+liber-documentation
  "@version{#2023-2-26}
-  @syntax[]{(gdk:window-type-hint window) => hint}
-  @syntax[]{(setf (gdk:window-type-hint window) hint)}
+  @syntax{(gdk:window-type-hint window) => hint}
+  @syntax{(setf (gdk:window-type-hint window) hint)}
   @argument[window]{a @class{gdk:window} toplevel object}
   @argument[hint]{a @symbol{gdk:window-type-hint} value with the type hint this
     window will have}
@@ -5153,8 +5182,8 @@ lambda (window)
 (cffi:defcfun ("gdk_window_get_group" window-group) (g:object window)
  #+liber-documentation
  "@version{#2023-2-26}
-  @syntax[]{(gdk:window-group window) => leader}
-  @syntax[]{(setf (gdk:window-group window) leader)}
+  @syntax{(gdk:window-group window) => leader}
+  @syntax{(setf (gdk:window-group window) leader)}
   @argument[window]{a toplevel @class{gdk:window} object}
   @argument[leader]{a group leader @class{gdk:window} object, or @code{nil} to
     restore the default group leader window}
@@ -5198,8 +5227,8 @@ lambda (window)
 (defun window-decorations (window)
  #+liber-documentation
  "@version{#2023-2-26}
-  @syntax[]{(gdk:window-decorations window) => decorations}
-  @syntax[]{(setf (gdk:window-decorations window) decorations)}
+  @syntax{(gdk:window-decorations window) => decorations}
+  @syntax{(setf (gdk:window-decorations window) decorations)}
   @argument[window]{a toplevel @class{gdk:window} object}
   @argument[decorations]{a @symbol{gdk:wm-decoration} value with the decoration
     hint mask}
@@ -5291,8 +5320,8 @@ lambda (window)
     :boolean
  #+liber-documentation
  "@version{#2023-2-26}
-  @syntax[]{(gdk:window-support-multidevice window) => support-multidevice}
-  @syntax[]{(setf (gdk:window-support-multidevice window) support-multidevice)}
+  @syntax{(gdk:window-support-multidevice window) => support-multidevice}
+  @syntax{(setf (gdk:window-support-multidevice window) support-multidevice)}
   @argument[window]{a @class{gdk:window} object}
   @argument[support-multidevice]{@em{true} to enable multidevice support in
     @arg{window}}
@@ -5326,8 +5355,8 @@ lambda (window)
 (cffi:defcfun ("gdk_window_get_device_cursor" window-device-cursor) (g:object cursor)
  #+liber-documentation
  "@version{#2023-2-26}
-  @syntax[]{(gdk:window-device-cursor window device) => cursor}
-  @syntax[]{(setf (gdk:window-device-cursor window device) cursor)}
+  @syntax{(gdk:window-device-cursor window device) => cursor}
+  @syntax{(setf (gdk:window-device-cursor window device) cursor)}
   @argument[window]{a @class{gdk:window} object}
   @argument[device]{a master @class{gdk:device} object}
   @argument[cursor]{a @class{gdk:cursor} object}
@@ -5411,8 +5440,8 @@ lambda (window)
 (cffi:defcfun ("gdk_window_get_source_events" window-source-events) event-mask
  #+liber-documentation
  "@version{#2023-2-26}
-  @syntax[]{(gdk:window-source-events window source) => event-mask}
-  @syntax[]{(setf (gdk:window-source-events window source) event-mask)}
+  @syntax{(gdk:window-source-events window source) => event-mask}
+  @syntax{(setf (gdk:window-source-events window source) event-mask)}
   @argument[window]{a @class{gdk:window} object}
   @argument[source]{a @symbol{gdk:input-source} value to define the source
     class}
@@ -5450,8 +5479,8 @@ lambda (window)
 (cffi:defcfun ("gdk_window_get_event_compression" window-event-compression) :boolean
  #+liber-documentation
  "@version{#2023-2-26}
-  @syntax[]{(gdk:window-event-compression window) => event-compression}
-  @syntax[]{(setf (gdk:window-event-compression window) event-compression)}
+  @syntax{(gdk:window-event-compression window) => event-compression}
+  @syntax{(setf (gdk:window-event-compression window) event-compression)}
   @argument[window]{a @class{gdk:window} object}
   @argument[event-compression]{a @em{true} if motion events will be compressed}
   @begin{short}
@@ -5506,8 +5535,8 @@ lambda (window)
     (g:object window)
  #+liber-documentation
  "@version{#2023-2-26}
-  @syntax[]{gdk:offscreen-window-embedder window) => embedder}
-  @syntax[]{(setf gdk:offscreen-window-embedded window) embedder)}
+  @syntax{gdk:offscreen-window-embedder window) => embedder}
+  @syntax{(setf gdk:offscreen-window-embedded window) embedder)}
   @argument[window]{a @class{gdk:window} object}
   @argument[embedder]{a @class{gdk:window} object that @arg{window} gets
     embedded in}

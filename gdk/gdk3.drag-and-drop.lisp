@@ -793,8 +793,8 @@
 (cffi:defcfun ("gdk_drag_context_get_device" drag-context-device) (g:object device)
  #+liber-documentation
  "@version{#2024-6-28}
-  @syntax[]{(gdk:drag-context-device context) => device}
-  @syntax[]{(setf (gdk:drag-context-device context) device)}
+  @syntax{(gdk:drag-context-device context) => device}
+  @syntax{(setf (gdk:drag-context-device context) device)}
   @argument[context]{a @class{gdk:drag-context} object}
   @argument[device]{a @class{gdk:device} object associated to @arg{context}}
   @begin{short}

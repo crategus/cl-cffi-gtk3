@@ -98,8 +98,8 @@
       "Accessor"
       (documentation 'rectangle-x 'function)
  "@version{2023-2-3}
-  @syntax[]{(gdk:rectangle-x instance) => x}
-  @syntax[]{(setf (gdk:rectangle-x instance) x)}
+  @syntax{(gdk:rectangle-x instance) => x}
+  @syntax{(setf (gdk:rectangle-x instance) x)}
   @argument[instance]{a @class{gdk:rectangle} instance}
   @argument[x]{an integer with the x coordinate of the rectangle}
   @begin{short}
@@ -114,8 +114,8 @@
       "Accessor"
       (documentation 'rectangle-y 'function)
  "@version{2023-2-3}
-  @syntax[]{(gdk:rectangle-y instance) => y}
-  @syntax[]{(setf (gdk:rectangle-y instance) y)}
+  @syntax{(gdk:rectangle-y instance) => y}
+  @syntax{(setf (gdk:rectangle-y instance) y)}
   @argument[instance]{a @class{gdk:rectangle} instance}
   @argument[y]{an integer with the y coordinate of the rectangle}
   @begin{short}
@@ -130,8 +130,8 @@
       "Accessor"
       (documentation 'rectangle-width 'function)
  "@version{2023-2-3}
-  @syntax[]{(gdk:rectangle-width instance) => width}
-  @syntax[]{(setf (gdk:rectangle-width instance) width)}
+  @syntax{(gdk:rectangle-width instance) => width}
+  @syntax{(setf (gdk:rectangle-width instance) width)}
   @argument[instance]{a @class{gdk:rectangle} instance}
   @argument[width]{an integer with the width of the rectangle}
   @begin{short}
@@ -146,8 +146,8 @@
       "Accessor"
       (documentation 'rectangle-height 'function)
  "@version{2023-2-3}
-  @syntax[]{(gdk:rectangle-height instance) => height}
-  @syntax[]{(setf (gdk:rectangle-height instance) height)}
+  @syntax{(gdk:rectangle-height instance) => height}
+  @syntax{(setf (gdk:rectangle-height instance) height)}
   @argument[instance]{a @class{gdk:rectangle} instance}
   @argument[height]{an integer with the height of the rectangle}
   @begin{short}

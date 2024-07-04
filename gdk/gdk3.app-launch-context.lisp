@@ -111,7 +111,7 @@
       "Accessor"
       (documentation 'app-launch-context-display 'function)
  "@version{2022-12-15}
-  @syntax[]{(gdk:app-launch-context-display object) => display}
+  @syntax{(gdk:app-launch-context-display object) => display}
   @argument[object]{a @class{gdk:app-launch-context} object}
   @argument[display]{a @class{gdk:display} object}
   @begin{short}

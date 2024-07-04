@@ -240,7 +240,7 @@
       "Accessor"
       (documentation 'device-manager-display 'function)
  "@version{2024-6-29}
-  @syntax[]{(gdk:device-manager-display object) => display}
+  @syntax{(gdk:device-manager-display object) => display}
   @argument[object]{a @class{gdk:device-manager} object}
   @argument[display]{a @class{gdk:display} object}
   @begin{short}

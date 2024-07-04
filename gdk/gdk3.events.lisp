@@ -1071,8 +1071,8 @@ lambda (event)
 (cffi:defcfun ("gdk_get_show_events" show-events) :boolean
  #+liber-documentation
  "@version{#2023-2-26}
-  @syntax[]{(gdk:show-events) => show-events}
-  @syntax[]{(setf (gdk:show-events) show-events)}
+  @syntax{(gdk:show-events) => show-events}
+  @syntax{(setf (gdk:show-events) show-events)}
   @argument[show-events]{@em{True} to output event debugging information.}
   @begin{short}
     Whether event debugging output is enabled.
@@ -1102,8 +1102,8 @@ lambda (event)
 (cffi:defcfun ("gdk_event_get_screen" event-screen) (g:object screen)
  #+liber-documentation
  "@version{2023-2-26}
-  @syntax[]{(gdk:event-screen event) => screen}
-  @syntax[]{(setf (gdk:event-screen event) screen)}
+  @syntax{(gdk:event-screen event) => screen}
+  @syntax{(setf (gdk:event-screen event) screen)}
   @argument[event]{a @class{gdk:event} instance}
   @argument[screen]{a @class{gdk:screen} object}
   @begin{short}
@@ -1140,8 +1140,8 @@ lambda (event)
 (cffi:defcfun ("gdk_event_get_device" event-device) (g:object device)
  #+liber-documentation
  "@version{2023-2-26}
-  @syntax[]{(gdk:event-device event) => device}
-  @syntax[]{(setf (gdk:event-device event) device)}
+  @syntax{(gdk:event-device event) => device}
+  @syntax{(setf (gdk:event-device event) device)}
   @argument[event]{a @class{gdk:event} instance}
   @argument[device]{a @class{gdk:device} object}
   @begin{short}
@@ -1174,8 +1174,8 @@ lambda (event)
 (cffi:defcfun ("gdk_event_get_source_device" event-source-device) (g:object device)
  #+liber-documentation
  "@version{2023-2-26}
-  @syntax[]{(gdk:event-source-device event) => device}
-  @syntax[]{(setf (gdk:event-source-device event) device)}
+  @syntax{(gdk:event-source-device event) => device}
+  @syntax{(setf (gdk:event-source-device event) device)}
   @argument[event]{a @class{gdk:event} instance}
   @argument[device]{a @class{gdk:device} object}
   @begin{short}
@@ -1217,8 +1217,8 @@ lambda (event)
 
 (cffi:defcfun ("gdk_event_get_device_tool" event-device-tool) (g:object device-tool)
  "@version{#2023-3-13}
-  @syntax[]{(gdk:event-device-tool event) => tool}
-  @syntax[]{(setf (gdk:event-device-tool event) tool)}
+  @syntax{(gdk:event-device-tool event) => tool}
+  @syntax{(setf (gdk:event-device-tool event) tool)}
   @argument[event]{a @class{gdk:event} instance}
   @argument[tool]{a @class{gdk:device-tool} object}
   @begin{short}

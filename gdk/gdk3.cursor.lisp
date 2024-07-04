@@ -408,7 +408,7 @@
       "Accessor"
       (documentation 'cursor-cursor-type 'function)
  "@version{2024-6-29}
-  @syntax[]{(gdk:cursor-cursor-type object) => type}
+  @syntax{(gdk:cursor-cursor-type object) => type}
   @argument[object]{a @class{gdk:cursor} object}
   @argument[type]{a value of the @symbol{gdk:cursor-type} enumeration}
   @begin{short}
@@ -433,7 +433,7 @@
       "Accessor"
       (documentation 'cursor-display 'function)
  "@version{2024-6-29}
-  @syntax[]{(gdk:cursor-display object) => display}
+  @syntax{(gdk:cursor-display object) => display}
   @argument[object]{a @class{gdk:cursor} object}
   @argument[display]{a @class{gdk:display} object}
   @begin{short}

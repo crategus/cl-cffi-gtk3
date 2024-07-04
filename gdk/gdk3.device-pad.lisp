@@ -56,7 +56,7 @@
 (in-package :gdk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GdkDevicePadFeature
+;;; GdkDevicePadFeature
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GdkDevicePadFeature" device-pad-feature
@@ -71,22 +71,24 @@
       "GEnum"
       (liber:symbol-documentation 'device-pad-feature)
  "@version{#2023-3-7}
-  @begin{short}
-    A pad feature.
-  @end{short}
-  @begin{pre}
+  @begin{declaration}
 (gobject:define-g-enum \"GdkDevicePadFeature\" device-pad-feature
   (:export t
    :type-initializer \"gdk_device_pad_feature_get_type\")
   :button
   :ring
   :strip)
-  @end{pre}
-  @begin[code]{table}
-    @entry[:button]{A button.}
-    @entry[:ring]{A ring-shaped interactive area.}
-    @entry[:strip]{A straight interactive area.}
-  @end{table}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:button]{A button.}
+      @entry[:ring]{A ring-shaped interactive area.}
+      @entry[:strip]{A straight interactive area.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    A pad feature.
+  @end{short}
   Since 3.22
   @see-class{gdk:device-pad}")
 

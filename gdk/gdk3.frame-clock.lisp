@@ -67,7 +67,7 @@
 (in-package :gdk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GdkFrameClockPhase
+;;; GdkFrameClockPhase
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GdkFrameClockPhase" frame-clock-phase
@@ -87,13 +87,7 @@
       "GEnum"
       (liber:symbol-documentation 'frame-clock-phase)
  "@version{#2023-3-10}
-  @begin{short}
-    The @symbol{gdk:frame-clock-phase} enumeration is used to represent the
-    different paint clock phases that can be requested.
-  @end{short}
-  The elements of the enumeration correspond to the signals of the
-  @class{gdk:frame-clock} class.
-  @begin{pre}
+  @begin{declaration}
 (gobject:define-g-enum \"GdkFrameClockPhase\" frame-clock-phase
   (:export t
    :type-initializer \"gdk_frame_clock_phase_get_type\")
@@ -105,21 +99,29 @@
   (:paint 5)
   (:resume-events 6)
   (:after-paint 7))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:none]{No phase.}
-    @entry[:flush-events]{Corresponds to the signal \"flush-events\".
-      Should not be handled by applications.}
-    @entry[:before-paint]{Corresponds to the signal \"before-paint\".
-      Should not be handled by applications.}
-    @entry[:update]{Corresponds to the signal \"update\".}
-    @entry[:layout]{Corresponds to the signal \"layout\".}
-    @entry[:paint]{Corresponds to the signal \"paint\".}
-    @entry[:resume-events]{Corresponds tol the signal \"resume-events\".
-      Should not be handled by applications.}
-    @entry[:after-paint]{Corresponds to the signal \"after-paint\".
-      Should not be handled by applications.}
-  @end{table}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:none]{No phase.}
+      @entry[:flush-events]{Corresponds to the signal \"flush-events\".
+        Should not be handled by applications.}
+      @entry[:before-paint]{Corresponds to the signal \"before-paint\".
+        Should not be handled by applications.}
+      @entry[:update]{Corresponds to the signal \"update\".}
+      @entry[:layout]{Corresponds to the signal \"layout\".}
+      @entry[:paint]{Corresponds to the signal \"paint\".}
+      @entry[:resume-events]{Corresponds tol the signal \"resume-events\".
+        Should not be handled by applications.}
+      @entry[:after-paint]{Corresponds to the signal \"after-paint\".
+        Should not be handled by applications.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    The @symbol{gdk:frame-clock-phase} enumeration is used to represent the
+    different paint clock phases that can be requested.
+  @end{short}
+  The elements of the enumeration correspond to the signals of the
+  @class{gdk:frame-clock} class.
   @see-class{gdk:frame-clock}")
 
 ;;; ----------------------------------------------------------------------------

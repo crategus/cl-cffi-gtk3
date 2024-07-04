@@ -76,7 +76,7 @@
 (in-package :gdk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GdkSubpixelLayout
+;;; GdkSubpixelLayout
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-g-enum "GdkSubpixelLayout" subpixel-layout
@@ -94,11 +94,7 @@
       "GEnum"
       (liber:symbol-documentation 'subpixel-layout)
  "@version{2023-3-6}
-  @begin{short}
-    This enumeration describes how the red, green and blue components of
-    physical pixels on an output device are laid out.
-  @end{short}
-  @begin{pre}
+  @begin{declaration}
 (gobject:define-g-enum \"GdkSubPixelLayout\" sub-pixel-layout
   (:export t
    :type-initializer \"gdk_sub_pixel_layout_get_type\")
@@ -108,15 +104,21 @@
   :horizontal-bgr
   :vertical-rgb
   :vertical-bgr)
-  @end{pre}
-  @begin[code]{table}
-    @entry[:unkown]{The layout is not known.}
-    @entry[:none]{Not organized in this way.}
-    @entry[:horizontal-rgb]{The layout is horizontal, the order is RGB.}
-    @entry[:horizontal-bgr]{The layout is horizontal, the order is BGR.}
-    @entry[:vertical-rgb]{The layout is vertical, the order is RGB.}
-    @entry[:verticla-bgr]{The layout is vertical, the order is BGR.}
-  @end{table}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:unkown]{The layout is not known.}
+      @entry[:none]{Not organized in this way.}
+      @entry[:horizontal-rgb]{The layout is horizontal, the order is RGB.}
+      @entry[:horizontal-bgr]{The layout is horizontal, the order is BGR.}
+      @entry[:vertical-rgb]{The layout is vertical, the order is RGB.}
+      @entry[:verticla-bgr]{The layout is vertical, the order is BGR.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    This enumeration describes how the red, green and blue components of
+    physical pixels on an output device are laid out.
+  @end{short}
   Since 3.22
   @see-class{gdk:monitor}")
 
@@ -215,7 +217,7 @@ lambda (monitor)    :run-first
       "Accessor"
       (documentation 'monitor-display 'function)
  "@version{#2023-3-6}
-  @syntax[]{(gdk:monitor-display object) => display}
+  @syntax{(gdk:monitor-display object) => display}
   @argument[object]{a @class{gdk:monitor} object}
   @argument[display]{a @class{gdk:display} object}
   @begin{short}
@@ -241,7 +243,7 @@ lambda (monitor)    :run-first
       "Accessor"
       (documentation 'monitor-geometry 'function)
  "@version{#2023-3-6}
-  @syntax[]{(gdk:monitor-geometry object) => geometry}
+  @syntax{(gdk:monitor-geometry object) => geometry}
   @argument[object]{a @class{gdk:monitor} object}
   @argument[geometry]{a @class{gdk:rectangle} instance with the monitor
     geometry}
@@ -274,7 +276,7 @@ lambda (monitor)    :run-first
       "Accessor"
       (documentation 'monitor-height-mm 'function)
  "@version{#2023-3-6}
-  @syntax[]{(gdk:monitor-height-mm object) => height}
+  @syntax{(gdk:monitor-height-mm object) => height}
   @argument[object]{a @class{gdk:monitor} object}
   @argument[height]{an integer with the physical height of the monitor}
   @begin{short}
@@ -300,7 +302,7 @@ lambda (monitor)    :run-first
       "Accessor"
       (documentation 'monitor-manufacturer 'function)
  "@version{#2023-3-6}
-  @syntax[]{(gdk:monitor-manufacturer object) => manufacturer}
+  @syntax{(gdk:monitor-manufacturer object) => manufacturer}
   @argument[object]{a @class{gdk:monitor} object}
   @argument[manufacturer]{a string with the name of the manufacturer, or
     @code{nil}}
@@ -327,7 +329,7 @@ lambda (monitor)    :run-first
       "Accessor"
       (documentation 'monitor-model 'function)
  "@version{#2023-3-6}
-  @syntax[]{(gdk:monitor-model object) => model}
+  @syntax{(gdk:monitor-model object) => model}
   @argument[object]{a @class{gdk:monitor} object}
   @argument[model]{a string with the monitor model, or @code{nil}}
   @begin{short}
@@ -354,7 +356,7 @@ lambda (monitor)    :run-first
       "Accessor"
       (documentation 'monitor-refresh-rate 'function)
  "@version{#2023-3-6}
-  @syntax[]{(gdk:monitor-refresh-rate object) => refresh-rate}
+  @syntax{(gdk:monitor-refresh-rate object) => refresh-rate}
   @argument[object]{a @class{gdk:monitor} object}
   @argument[refresh-rate]{an integer with the refresh rate in milli-Hertz, or 0}
   @begin{short}
@@ -382,7 +384,7 @@ lambda (monitor)    :run-first
       "Accessor"
       (documentation 'monitor-scale-factor 'function)
  "@version{#2023-3-6}
-  @syntax[]{(gdk:monitor-scale-factor object) => scale-factor}
+  @syntax{(gdk:monitor-scale-factor object) => scale-factor}
   @argument[object]{a @class{gdk:monitor} object}
   @argument[scale-factor]{an integer with the scale factor}
   @begin{short}
@@ -416,7 +418,7 @@ lambda (monitor)    :run-first
       "Accessor"
       (documentation 'monitor-subpixel-layout 'function)
  "@version{#2023-3-6}
-  @syntax[]{(gdk:monitor-subpixel-layout object) => layout}
+  @syntax{(gdk:monitor-subpixel-layout object) => layout}
   @argument[object]{a @class{gdk:monitor} object}
   @argument[layout]{a @symbol{gdk:subpixel-layout} value with the subpixel
     layout}
@@ -446,7 +448,7 @@ lambda (monitor)    :run-first
       "Accessor"
       (documentation 'monitor-width-mm 'function)
  "@version{#2023-3-6}
-  @syntax[]{(gdk:monitor-width-mm object) => width}
+  @syntax{(gdk:monitor-width-mm object) => width}
   @argument[object]{a @class{gdk:monitor} object}
   @argument[width]{an integer with the physical width of the monitor}
   @begin{short}
@@ -471,7 +473,7 @@ lambda (monitor)    :run-first
       "Accessor"
       (documentation 'monitor-workarea 'function)
  "@version{#2023-3-6}
-  @syntax[]{(gdk:monitor-workarea object) => workarea}
+  @syntax{(gdk:monitor-workarea object) => workarea}
   @argument[object]{a @class{gdk:monitor} object}
   @argument[workarea]{a @class{gdk:rectangle} instance with the monitor
     workarea}

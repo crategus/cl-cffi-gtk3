@@ -87,10 +87,7 @@
       "GFlags"
       (liber:symbol-documentation 'seat-capabilities)
  "@version{#2023-3-7}
-  @begin{short}
-    Flags describing the seat capabilities.
-  @end{short}
-  @begin{pre}
+  @begin{declaration}
 (gobject:define-g-flags \"GdkSeatCapabilities\" seat-capabilities
   (:export t
    :type-initializer \"gdk_seat_capabilities_get_type\")
@@ -101,16 +98,21 @@
   (:keyboard #.(ash 1 3))
   (:all-pointing 7)
   (:all 15))
-  @end{pre}
-  @begin[code]{table}
-    @entry[:none]{No input capabilities.}
-    @entry[:pointer]{The seat has a pointer, e.g. mouse.}
-    @entry[:touch]{The seat has touchscreen(s) attached.}
-    @entry[:tablet-stylus]{The seat has drawing tablet(s) attached.}
-    @entry[:keyboard]{The seat has keyboard(s) attached.}
-    @entry[:all-pointing]{The union of all pointing capabilities.}
-    @entry[:all]{The union of all capabilities.}
-  @end{table}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[:none]{No input capabilities.}
+      @entry[:pointer]{The seat has a pointer, e.g. mouse.}
+      @entry[:touch]{The seat has touchscreen(s) attached.}
+      @entry[:tablet-stylus]{The seat has drawing tablet(s) attached.}
+      @entry[:keyboard]{The seat has keyboard(s) attached.}
+      @entry[:all-pointing]{The union of all pointing capabilities.}
+      @entry[:all]{The union of all capabilities.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    Flags describing the seat capabilities.
+  @end{short}
   @see-class{gdk:seat}")
 
 ;;; ----------------------------------------------------------------------------
@@ -201,7 +203,7 @@ lambda (seat tool)    :run-last
       "Accessor"
       (documentation 'seat-display 'function)
  "@version{#2023-3-7}
-  @syntax[]{(gdk:seat-display object) => display}
+  @syntax{(gdk:seat-display object) => display}
   @argument[object]{a @class{gdk:seat} object}
   @argument[display]{a @class{gdk:display} object}
   @begin{short}

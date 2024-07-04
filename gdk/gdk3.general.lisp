@@ -251,8 +251,8 @@
     (:string :free-from-foreign nil)
  #+liber-documentation
  "@version{2024-6-27}
-  @syntax[]{(gdk:program-class) => program-class}
-  @syntax[]{(setf (gdk:program-class) program-class)}
+  @syntax{(gdk:program-class) => program-class}
+  @syntax{(setf (gdk:program-class) program-class)}
   @argument[program-class]{a string with the program class}
   @begin{short}
     The @fun{gdk:program-class} function gets the program class.
