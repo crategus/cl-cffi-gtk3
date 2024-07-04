@@ -771,5 +771,4 @@ dann benutzen Sie es immer noch.")
     (is-false (gtk:text-iter-in-range start end center))
     (is-false (gtk:text-iter-in-range end center start))))
 
-
 ;;; 2024-6-24
