@@ -231,11 +231,11 @@
   @end{short}
   An iterator represents a position between two characters in the text buffer.
 
-  Iterators are not valid indefinitely. Whenever the text buffer is modified in 
-  a way that affects the number of characters in the text buffer, all 
-  outstanding iterators become invalid. Note that deleting 5 characters and 
-  then reinserting 5 characters still invalidates iterators, though you end up 
-  with the same number of characters you pass through a state with a different 
+  Iterators are not valid indefinitely. Whenever the text buffer is modified in
+  a way that affects the number of characters in the text buffer, all
+  outstanding iterators become invalid. Note that deleting 5 characters and
+  then reinserting 5 characters still invalidates iterators, though you end up
+  with the same number of characters you pass through a state with a different
   number.
   @see-constructor{gtk:text-iter-new}
   @see-constructor{gtk:text-iter-copy}
@@ -248,10 +248,10 @@
 (cffi:defcfun ("gtk_text_iter_get_buffer" text-iter-buffer)
     (g:object text-buffer)
  #+liber-documentation
- "@version{2024-7-1}
+ "@version{2024-7-6}
   @argument[iter]{a @class{gtk:text-iter} instance}
   @return{The @class{gtk:text-buffer} object.}
-  @shortReturns the text buffer this iterator is associated with.}
+  @short{Returns the text buffer this iterator is associated with.}
   @see-class{gtk:text-iter}
   @see-class{gtk:text-buffer}"
   (iter (g:boxed text-iter)))
