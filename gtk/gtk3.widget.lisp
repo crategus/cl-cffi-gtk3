@@ -3610,7 +3610,7 @@ lambda (widget event)    :run-last
 (defun widget-new (gtype &rest args)
  #+liber-documentation
  "@version{#2023-3-8}
-  @argument[gtype]{a @class{g:type-t} type of the widget to create}
+  @argument[gtype]{a @class{g:type-t} type ID of the widget to create}
   @argument[args]{pairs of the property keyword and value}
   @return{The new @class{gtk:widget} object of @arg{gtype} type.}
   @begin{short}
@@ -4882,7 +4882,7 @@ lambda (widget event)    :run-last
  #+liber-documentation
  "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[gtype]{an ancestor @class{g:type-t} type}
+  @argument[gtype]{an ancestor @class{g:type-t} type ID}
   @return{The @class{gtk:widget} ancestor widget, or @arg{nil} if not found.}
   @begin{short}
     Gets the first ancestor of the widget with type @arg{gtype}.

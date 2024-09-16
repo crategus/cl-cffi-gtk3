@@ -194,7 +194,7 @@
  #+liber-documentation
  "@version{#2023-3-30}
   @argument[path]{a @class{gtk:widget-path} instance}
-  @argument[gtype]{a @class{g:type-t} type of the widget to append}
+  @argument[gtype]{a @class{g:type-t} type ID of the widget to append}
   @return{An integer with the position where the element was inserted.}
   @begin{short}
     Appends a widget type to the widget hierarchy represented by @arg{path}.
@@ -334,7 +334,7 @@
  #+liber-documentation
  "@version{#2023-3-30}
   @argument[path]{a @class{gtk:widget-path} instance}
-  @return{The @class{g:type-t} type of the object.}
+  @return{The @class{g:type-t} type ID of the object.}
   @begin{short}
     Returns the topmost object type.
   @end{short}
@@ -353,7 +353,7 @@
  #+liber-documentation
  "@version{#2023-3-30}
   @argument[path]{a @class{gtk:widget-path} instance}
-  @argument[gtype]{a @class{g:type-t} type of the widget to check in parents}
+  @argument[gtype]{a @class{g:type-t} type ID of the widget to check in parents}
   @return{@em{True} if any parent is of @arg{gtype} type.}
   @begin{short}
     Returns @em{true} if any of the parents of the widget represented in
@@ -374,7 +374,7 @@
  #+liber-documentation
  "@version{#2023-3-30}
   @argument[path]{a @class{gtk:widget-path} instance}
-  @argument[gtype]{a @class{g:type-t} type of the widget to match}
+  @argument[gtype]{a @class{g:type-t} type ID of the widget to match}
   @return{@em{True} if the widget represented by @arg{path} is of @arg{gtype}
     type.}
   @begin{short}
@@ -580,12 +580,12 @@
   @syntax{(setf (gtk:widget-path-iter-object-type path pos) gtype)}
   @argument[path]{a @class{gtk:widget-path} instance}
   @argument[pos]{an integer with the position, -1 for the path head}
-  @argument[gtype]{a @class{g:type-t} type}
+  @argument[gtype]{a @class{g:type-t} type ID}
   @begin{short}
     Accessor of the object type.
   @end{short}
   The @fun{gtk:widget-path-iter-object-type} function returns the
-  @class{g:type-t} type of the object that is at position @arg{pos} in the
+  @class{g:type-t} type ID of the object that is at position @arg{pos} in the
   widget hierarchy defined in @arg{path}. The
   @setf{gtk:widget-path-iter-object-type} function sets the object type.
   @begin{examples}
@@ -1005,7 +1005,7 @@
  #+liber-documentation
  "@version{#2023-3-30}
   @argument[path]{a @class{gtk:widget-path} instance}
-  @argument[gtype]{a @class{g:type-t} type to prepend}
+  @argument[gtype]{a @class{g:type-t} type ID to prepend}
   @begin{short}
     Prepends a widget type to the widget hierachy represented by @arg{path}.
   @end{short}

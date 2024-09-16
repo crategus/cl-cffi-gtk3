@@ -380,7 +380,7 @@
  #+liber-documentation
  "@version{#2023-1-21}
   @argument[filter]{a @class{gtk:tree-model-filter} object}
-  @argument[gtypes]{a list of @class{g:type-t} types for the columns}
+  @argument[gtypes]{a list of @class{g:type-t} type IDs for the columns}
   @argument[func]{a @symbol{gtk:tree-model-filter-modify-func} callback
     function}
   @begin{short}

@@ -239,7 +239,7 @@
 (defun list-store-new (&rest types)
  #+liber-documentation
  "@version{2024-3-12}
-  @argument[types]{all @class{g:type-t} types for the columns, from first to
+  @argument[types]{all @class{g:type-t} type IDs for the columns, from first to
     last}
   @return{The new @class{gtk:list-store} object.}
   @begin{short}
@@ -299,7 +299,7 @@
  #+liber-documentation
  "@version{#2023-3-20}
   @argument[store]{a @class{gtk:list-store} object}
-  @argument[column-types]{the @class{g:type-t} types of the columns}
+  @argument[column-types]{the @class{g:type-t} type IDs of the columns}
   @begin{short}
     This function is meant primarily for GObjects that inherit from the
     @class{gtk:list-store} class, and should only be used when constructing a
