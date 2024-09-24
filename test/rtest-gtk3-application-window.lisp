@@ -6,41 +6,43 @@
 ;;; --- GtkApplicationWindow ---------------------------------------------------
 
 (test gtk-application-window-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkApplicationWindow"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:application-window
           (glib:symbol-for-gtype "GtkApplicationWindow")))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkWindow") (g:type-parent "GtkApplicationWindow")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkApplicationWindow")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkApplicationWindow")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable" "GActionGroup" "GActionMap")
-             (list-interfaces "GtkApplicationWindow")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkApplicationWindow")))
+  ;; Check class properties
   (is (equal '("show-menubar")
-             (list-properties "GtkApplicationWindow")))
-  ;; Get the names of the style properties.
+             (glib-test:list-properties "GtkApplicationWindow")))
+  ;; Check style properties.
   (is (equal '()
-             (list-style-properties "GtkApplicationWindow")))
-  ;; Get the names of the child properties
+             (gtk-test:list-style-properties "GtkApplicationWindow")))
+  ;; Check child properties
   (is (equal '()
-             (list-child-properties "GtkApplicationWindow")))
-  ;; Check the signals
+             (gtk-test:list-child-properties "GtkApplicationWindow")))
+  ;; Check signals
   (is (equal '()
-             (list-signals "GtkApplicationWindow")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkApplicationWindow"
-                                     GTK-APPLICATION-WINDOW
-                       (:SUPERCLASS GTK-WINDOW :EXPORT T :INTERFACES
+             (glib-test:list-signals "GtkApplicationWindow")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkApplicationWindow"
+                                      GTK:APPLICATION-WINDOW
+                       (:SUPERCLASS GTK:WINDOW
+                        :EXPORT T
+                        :INTERFACES
                         ("AtkImplementorIface" "GActionGroup" "GActionMap"
                          "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_application_window_get_type")
-                       ((SHOW-MENUBAR GTK-APPLICATION-WINDOW-SHOW-MENUBAR
+                       ((SHOW-MENUBAR APPLICATION-WINDOW-SHOW-MENUBAR
                          "show-menubar" "gboolean" T T)))
-             (gobject:get-g-type-definition "GtkApplicationWindow"))))
+             (gobject:get-gtype-definition "GtkApplicationWindow"))))
 
 ;;; --- Properties and Accessors -----------------------------------------------
 
@@ -87,4 +89,4 @@
     (is (typep (gtk:application-window-help-overlay window)
                'gtk:shortcuts-window))))
 
-;;; 2024-3-15
+;;; 2024-9-23

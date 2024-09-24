@@ -8,126 +8,122 @@
 ;;;     GtkIconViewDropPosition
 
 (test gtk-icon-view-drop-position
-  ;; Check the type
+  ;; Check type
   (is (g:type-is-enum "GtkIconViewDropPosition"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkIconViewDropPosition")
           (g:gtype (cffi:foreign-funcall "gtk_icon_view_drop_position_get_type"
                                          :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:icon-view-drop-position
           (glib:symbol-for-gtype "GtkIconViewDropPosition")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_ICON_VIEW_NO_DROP" "GTK_ICON_VIEW_DROP_INTO"
                "GTK_ICON_VIEW_DROP_LEFT" "GTK_ICON_VIEW_DROP_RIGHT"
                "GTK_ICON_VIEW_DROP_ABOVE" "GTK_ICON_VIEW_DROP_BELOW")
-             (list-enum-item-name "GtkIconViewDropPosition")))
-  ;; Check the values
+             (glib-test:list-enum-item-names "GtkIconViewDropPosition")))
+  ;; Check values
   (is (equal '(0 1 2 3 4 5)
-             (list-enum-item-value "GtkIconViewDropPosition")))
-  ;; Check the nick names
+             (glib-test:list-enum-item-values "GtkIconViewDropPosition")))
+  ;; Check nick names
   (is (equal '("no-drop" "drop-into" "drop-left" "drop-right" "drop-above"
                "drop-below")
-             (list-enum-item-nick "GtkIconViewDropPosition")))
-  ;; Check the enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkIconViewDropPosition"
-                                     GTK-ICON-VIEW-DROP-POSITION
-                                     (:EXPORT T
-                                      :TYPE-INITIALIZER
-                                      "gtk_icon_view_drop_position_get_type")
-                                     (:NO-DROP 0)
-                                     (:DROP-INTO 1)
-                                     (:DROP-LEFT 2)
-                                     (:DROP-RIGHT 3)
-                                     (:DROP-ABOVE 4)
-                                     (:DROP-BELOW 5))
-             (gobject:get-g-type-definition "GtkIconViewDropPosition"))))
+             (glib-test:list-enum-item-nicks "GtkIconViewDropPosition")))
+  ;; Check enum definition
+  (is (equal '(GOBJECT:DEFINE-GENUM "GtkIconViewDropPosition"
+                                    GTK:ICON-VIEW-DROP-POSITION
+                       (:EXPORT T
+                        :TYPE-INITIALIZER
+                        "gtk_icon_view_drop_position_get_type")
+                       (:NO-DROP 0)
+                       (:DROP-INTO 1)
+                       (:DROP-LEFT 2)
+                       (:DROP-RIGHT 3)
+                       (:DROP-ABOVE 4)
+                       (:DROP-BELOW 5))
+             (gobject:get-gtype-definition "GtkIconViewDropPosition"))))
 
 ;;;     GtkIconView
 
 (test gtk-icon-view-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkIconView"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:icon-view
           (glib:symbol-for-gtype "GtkIconView")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkIconView")
           (g:gtype (cffi:foreign-funcall "gtk_icon_view_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkContainer")
           (g:type-parent "GtkIconView")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkIconView")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkIconView")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable" "GtkCellLayout"
                "GtkScrollable")
-             (list-interfaces "GtkIconView")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkIconView")))
+  ;; Check class properties
   (is (equal '("activate-on-single-click" "cell-area" "column-spacing" "columns"
                "hadjustment" "hscroll-policy" "item-orientation" "item-padding"
                "item-width" "markup-column" "model" "pixbuf-column"
                "reorderable" "row-spacing" "selection-mode" "spacing"
                "text-column" "tooltip-column" "vadjustment" "vscroll-policy")
-             (list-properties "GtkIconView")))
-  ;; Check the style properties
+             (glib-test:list-properties "GtkIconView")))
+  ;; Check style properties
   (is (equal '("selection-box-alpha" "selection-box-color")
-             (list-style-properties "GtkIconView")))
-  ;; Check the child properties
+             (gtk-test:list-style-properties "GtkIconView")))
+  ;; Check child properties
   (is (equal '()
-             (list-child-properties "GtkIconView")))
-  ;; Check the signals
+             (gtk-test:list-child-properties "GtkIconView")))
+  ;; Check signals
   (is (equal '("activate-cursor-item" "item-activated" "move-cursor"
                "select-all" "select-cursor-item" "selection-changed"
                "toggle-cursor-item" "unselect-all")
-             (list-signals "GtkIconView")))
+             (glib-test:list-signals "GtkIconView")))
   ;; CSS information
   (is (string= "iconview"
                (gtk:widget-class-css-name "GtkIconView")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkIconView" GTK-ICON-VIEW
-                               (:SUPERCLASS GTK-CONTAINER :EXPORT T :INTERFACES
-                                ("AtkImplementorIface" "GtkBuildable"
-                                 "GtkCellLayout" "GtkScrollable")
-                                :TYPE-INITIALIZER "gtk_icon_view_get_type")
-                               ((ACTIVATE-ON-SINGLE-CLICK
-                                 GTK-ICON-VIEW-ACTIVATE-ON-SINGLE-CLICK
-                                 "activate-on-single-click" "gboolean" T T)
-                                (CELL-AREA GTK-ICON-VIEW-CELL-AREA "cell-area"
-                                 "GtkCellArea" T NIL)
-                                (COLUMN-SPACING GTK-ICON-VIEW-COLUMN-SPACING
-                                 "column-spacing" "gint" T T)
-                                (COLUMNS GTK-ICON-VIEW-COLUMNS "columns" "gint"
-                                 T T)
-                                (ITEM-ORIENTATION
-                                 GTK-ICON-VIEW-ITEM-ORIENTATION
-                                 "item-orientation" "GtkOrientation" T T)
-                                (ITEM-PADDING GTK-ICON-VIEW-ITEM-PADDING
-                                 "item-padding" "gint" T T)
-                                (ITEM-WIDTH GTK-ICON-VIEW-ITEM-WIDTH
-                                 "item-width" "gint" T T)
-                                (MARGIN GTK-ICON-VIEW-MARGIN "margin" "gint" T
-                                 T)
-                                (MARKUP-COLUMN GTK-ICON-VIEW-MARKUP-COLUMN
-                                 "markup-column" "gint" T T)
-                                (MODEL GTK-ICON-VIEW-MODEL "model"
-                                 "GtkTreeModel" T T)
-                                (PIXBUF-COLUMN GTK-ICON-VIEW-PIXBUF-COLUMN
-                                 "pixbuf-column" "gint" T T)
-                                (REORDERABLE GTK-ICON-VIEW-REORDERABLE
-                                 "reorderable" "gboolean" T T)
-                                (ROW-SPACING GTK-ICON-VIEW-ROW-SPACING
-                                 "row-spacing" "gint" T T)
-                                (SELECTION-MODE GTK-ICON-VIEW-SELECTION-MODE
-                                 "selection-mode" "GtkSelectionMode" T T)
-                                (SPACING GTK-ICON-VIEW-SPACING "spacing" "gint"
-                                 T T)
-                                (TEXT-COLUMN GTK-ICON-VIEW-TEXT-COLUMN
-                                 "text-column" "gint" T T)
-                                (TOOLTIP-COLUMN GTK-ICON-VIEW-TOOLTIP-COLUMN
-                                 "tooltip-column" "gint" T T)))
-             (gobject:get-g-type-definition "GtkIconView"))))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkIconView" GTK:ICON-VIEW
+                       (:SUPERCLASS GTK:CONTAINER
+                        :EXPORT T
+                        :INTERFACES
+                        ("AtkImplementorIface" "GtkBuildable" "GtkCellLayout"
+                         "GtkScrollable")
+                        :TYPE-INITIALIZER "gtk_icon_view_get_type")
+                       ((ACTIVATE-ON-SINGLE-CLICK
+                         ICON-VIEW-ACTIVATE-ON-SINGLE-CLICK
+                         "activate-on-single-click" "gboolean" T T)
+                        (CELL-AREA ICON-VIEW-CELL-AREA
+                         "cell-area" "GtkCellArea" T NIL)
+                        (COLUMN-SPACING ICON-VIEW-COLUMN-SPACING
+                         "column-spacing" "gint" T T)
+                        (COLUMNS ICON-VIEW-COLUMNS "columns" "gint" T T)
+                        (ITEM-ORIENTATION ICON-VIEW-ITEM-ORIENTATION
+                         "item-orientation" "GtkOrientation" T T)
+                        (ITEM-PADDING ICON-VIEW-ITEM-PADDING
+                         "item-padding" "gint" T T)
+                        (ITEM-WIDTH ICON-VIEW-ITEM-WIDTH "item-width" "gint" T T)
+                        (MARGIN ICON-VIEW-MARGIN "margin" "gint" T T)
+                        (MARKUP-COLUMN ICON-VIEW-MARKUP-COLUMN
+                         "markup-column" "gint" T T)
+                        (MODEL ICON-VIEW-MODEL "model" "GtkTreeModel" T T)
+                        (PIXBUF-COLUMN ICON-VIEW-PIXBUF-COLUMN
+                         "pixbuf-column" "gint" T T)
+                        (REORDERABLE ICON-VIEW-REORDERABLE
+                         "reorderable" "gboolean" T T)
+                        (ROW-SPACING ICON-VIEW-ROW-SPACING
+                         "row-spacing" "gint" T T)
+                        (SELECTION-MODE ICON-VIEW-SELECTION-MODE
+                         "selection-mode" "GtkSelectionMode" T T)
+                        (SPACING ICON-VIEW-SPACING "spacing" "gint" T T)
+                        (TEXT-COLUMN ICON-VIEW-TEXT-COLUMN
+                         "text-column" "gint" T T)
+                        (TOOLTIP-COLUMN ICON-VIEW-TOOLTIP-COLUMN
+                         "tooltip-column" "gint" T T)))
+             (gobject:get-gtype-definition "GtkIconView"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -244,4 +240,4 @@
 ;;;     gtk_icon_view_get_dest_item_at_pos
 ;;;     gtk_icon_view_create_drag_icon
 
-;;; 2024-3-24
+;;; 2024-9-24

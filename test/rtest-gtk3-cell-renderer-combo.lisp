@@ -8,33 +8,33 @@
 ;;;     GtkCellRendererCombo
 
 (test gtk-cell-renderer-combo-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkCellRendererCombo"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:cell-renderer-combo
           (glib:symbol-for-gtype "GtkCellRendererCombo")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkCellRendererCombo")
-          (g:gtype (cffi:foreign-funcall "gtk_cell_renderer_combo_get_type"
-                                         :size))))
-  ;; Check the parent
+          (g:gtype (cffi:foreign-funcall "gtk_cell_renderer_combo_get_type" :size))))
+  ;; Check parent
   (is (eq (g:gtype "GObject")
           (g:type-parent "GtkCellRendererCombo")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkCellRendererCombo")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkCellRendererCombo")))
+  ;; Check interfaces
   (is (equal '()
-             (list-interfaces "GtkCellRendererCombo")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkCellRendererCombo")))
+  ;; Check class properties
   (is (equal '()
-             (list-properties "GtkCellRendererCombo")))
-  ;; Check the signals
+             (glib-test:list-properties "GtkCellRendererCombo")))
+  ;; Check signals
   (is (equal '()
-             (list-signals "GtkCellRendererCombo")))
-  ;; Check the class definition
+             (glib-test:list-signals "GtkCellRendererCombo")))
+  ;; Check class definition
+  ;; FIXME: We have no class definition!?
   (is (equal '()
-             (gobject:get-g-type-definition "GtkCellRendererCombo"))))
+             (gobject:get-gtype-definition "GtkCellRendererCombo"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -51,4 +51,4 @@
 (test gtk_cell-renderer-combo-new
   (is (typep (gtk:cell-renderer-combo-new) 'gtk:cell-renderer-combo)))
 
-;;; 2024-3-17
+;;; 2024-9-23

@@ -8,51 +8,53 @@
 ;;;     GtkPaned
 
 (test gtk-paned-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkPaned"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:paned
           (glib:symbol-for-gtype "GtkPaned")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkPaned")
           (g:gtype (cffi:foreign-funcall "gtk_paned_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkContainer") (g:type-parent "GtkPaned")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkPaned")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkPaned")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
-             (list-interfaces "GtkPaned")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkPaned")))
+  ;; Check class properties
   (is (equal '("max-position" "min-position" "orientation" "position"
                "position-set" "wide-handle")
-             (list-properties "GtkPaned")))
-  ;; Get the names of the style properties.
+             (glib-test:list-properties "GtkPaned")))
+  ;; Check style properties
   (is (equal '("handle-size")
-             (list-style-properties "GtkPaned")))
-  ;; Get the names of the child properties
+             (gtk-test:list-style-properties "GtkPaned")))
+  ;; Check child properties
   (is (equal '("resize" "shrink")
-             (list-child-properties "GtkPaned")))
-  ;; Check the signals
+             (gtk-test:list-child-properties "GtkPaned")))
+  ;; Check signals
   (is (equal '("accept-position" "cancel-position" "cycle-child-focus"
                "cycle-handle-focus" "move-handle" "toggle-handle-focus")
-             (list-signals "GtkPaned")))
+             (glib-test:list-signals "GtkPaned")))
   ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkPaned" GTK-PANED
-                       (:SUPERCLASS GTK-CONTAINER :EXPORT T :INTERFACES
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkPaned" GTK:PANED
+                       (:SUPERCLASS GTK:CONTAINER
+                        :EXPORT T
+                        :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
                         :TYPE-INITIALIZER "gtk_paned_get_type")
-                       ((MAX-POSITION GTK-PANED-MAX-POSITION "max-position"
-                         "gint" T NIL)
-                        (MIN-POSITION GTK-PANED-MIN-POSITION "min-position"
-                         "gint" T NIL)
-                        (POSITION GTK-PANED-POSITION "position" "gint" T T)
-                        (POSITION-SET GTK-PANED-POSITION-SET "position-set"
-                         "gboolean" T T)
-                        (WIDE-HANDLE GTK-PANED-WIDE-HANDLE "wide-handle"
-                         "gboolean" T T)))
-             (gobject:get-g-type-definition "GtkPaned"))))
+                       ((MAX-POSITION PANED-MAX-POSITION
+                         "max-position" "gint" T NIL)
+                        (MIN-POSITION PANED-MIN-POSITION
+                         "min-position" "gint" T NIL)
+                        (POSITION PANED-POSITION "position" "gint" T T)
+                        (POSITION-SET PANED-POSITION-SET
+                         "position-set" "gboolean" T T)
+                        (WIDE-HANDLE PANED-WIDE-HANDLE
+                         "wide-handle" "gboolean" T T)))
+             (gobject:get-gtype-definition "GtkPaned"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -184,4 +186,4 @@
     ;; no handle because paned is not realized
     (is-false (gtk:paned-handle-window paned))))
 
-;;; 2024-1-2
+;;; 2024-9-21

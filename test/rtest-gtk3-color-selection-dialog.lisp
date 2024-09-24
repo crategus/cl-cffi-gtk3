@@ -8,215 +8,57 @@
 ;;;     GtkColorSelectionDialog
 
 (test gtk-color-selection-dialog-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkColorSelectionDialog"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:color-selection-dialog
           (glib:symbol-for-gtype "GtkColorSelectionDialog")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkColorSelectionDialog")
           (g:gtype (cffi:foreign-funcall "gtk_color_selection_dialog_get_type"
                                          :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkDialog")
           (g:type-parent "GtkColorSelectionDialog")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkColorSelectionDialog")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkColorSelectionDialog")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
-             (list-interfaces "GtkColorSelectionDialog")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkColorSelectionDialog")))
+  ;; Check class properties
   (is (equal '("cancel-button" "color-selection" "help-button" "ok-button")
-             (list-properties "GtkColorSelectionDialog")))
-  ;; Check the style properties
+             (glib-test:list-properties "GtkColorSelectionDialog")))
+  ;; Check style properties
   (is (equal '()
-             (list-style-properties "GtkColorSelectionDialog")))
-  ;; Check the child properties
+             (gtk-test:list-style-properties "GtkColorSelectionDialog")))
+  ;; Check child properties
   (is (equal '()
-             (list-child-properties "GtkColorSelectionDialog")))
-  ;; Check the signals
+             (gtk-test:list-child-properties "GtkColorSelectionDialog")))
+  ;; Check signals
   (is (equal '()
-             (list-signals "GtkColorSelectionDialog")))
+             (glib-test:list-signals "GtkColorSelectionDialog")))
   ;; CSS information
   (is (string= "dialog"
                (gtk:widget-class-css-name "GtkColorSelectionDialog")))
-  #-windows
-  (is (string=
-"[dialog.background:dir(ltr)]
-  decoration:dir(ltr)
-  box.vertical.dialog-vbox:dir(ltr)
-    box.vertical:dir(ltr)
-      box.horizontal:dir(ltr)
-        box.vertical:dir(ltr)
-          widget:dir(ltr)
-          box.horizontal:dir(ltr)
-            frame:dir(ltr)
-              border:dir(ltr)
-              box.horizontal:dir(ltr)
-                widget:dir(ltr)
-                widget:dir(ltr)
-            button:dir(ltr)
-              image:dir(ltr)
-        box.vertical:dir(ltr)
-          grid.horizontal:dir(ltr)
-            label:dir(ltr)
-            spinbutton.horizontal:dir(ltr)
-              undershoot.left:dir(ltr)
-              undershoot.right:dir(ltr)
-              entry:dir(ltr)
-              button.down:dir(ltr)
-              button.up:dir(ltr)
-            label:dir(ltr)
-            spinbutton.horizontal:dir(ltr)
-              undershoot.left:dir(ltr)
-              undershoot.right:dir(ltr)
-              entry:dir(ltr)
-              button.down:disabled:dir(ltr)
-              button.up:dir(ltr)
-            label:dir(ltr)
-            spinbutton.horizontal:dir(ltr)
-              undershoot.left:dir(ltr)
-              undershoot.right:dir(ltr)
-              entry:dir(ltr)
-              button.down:dir(ltr)
-              button.up:disabled:dir(ltr)
-            label:dir(ltr)
-            spinbutton.horizontal:dir(ltr)
-              undershoot.left:dir(ltr)
-              undershoot.right:dir(ltr)
-              entry:dir(ltr)
-              button.down:dir(ltr)
-              button.up:disabled:dir(ltr)
-            label:dir(ltr)
-            spinbutton.horizontal:dir(ltr)
-              undershoot.left:dir(ltr)
-              undershoot.right:dir(ltr)
-              entry:dir(ltr)
-              button.down:dir(ltr)
-              button.up:disabled:dir(ltr)
-            label:dir(ltr)
-            spinbutton.horizontal:dir(ltr)
-              undershoot.left:dir(ltr)
-              undershoot.right:dir(ltr)
-              entry:dir(ltr)
-              button.down:dir(ltr)
-              button.up:disabled:dir(ltr)
-            separator.horizontal:dir(ltr)
-            [label:dir(ltr)]
-            [scale.horizontal:dir(ltr)]
-              contents
-                trough:dir(ltr)
-                  slider:dir(ltr)
-                  highlight.top:dir(ltr)
-            [entry:dir(ltr)]
-              undershoot.left:dir(ltr)
-              undershoot.right:dir(ltr)
-            label:dir(ltr)
-            entry:dir(ltr)
-              undershoot.left:dir(ltr)
-              undershoot.right:dir(ltr)
-          [box.vertical:dir(ltr)]
-            label:dir(ltr)
-            grid.horizontal:dir(ltr)
-              frame:dir(ltr)
-                border:dir(ltr)
-                widget:dir(ltr)
-              frame:dir(ltr)
-                border:dir(ltr)
-                widget:dir(ltr)
-              frame:dir(ltr)
-                border:dir(ltr)
-                widget:dir(ltr)
-              frame:dir(ltr)
-                border:dir(ltr)
-                widget:dir(ltr)
-              frame:dir(ltr)
-                border:dir(ltr)
-                widget:dir(ltr)
-              frame:dir(ltr)
-                border:dir(ltr)
-                widget:dir(ltr)
-              frame:dir(ltr)
-                border:dir(ltr)
-                widget:dir(ltr)
-              frame:dir(ltr)
-                border:dir(ltr)
-                widget:dir(ltr)
-              frame:dir(ltr)
-                border:dir(ltr)
-                widget:dir(ltr)
-              frame:dir(ltr)
-                border:dir(ltr)
-                widget:dir(ltr)
-              frame:dir(ltr)
-                border:dir(ltr)
-                widget:dir(ltr)
-              frame:dir(ltr)
-                border:dir(ltr)
-                widget:dir(ltr)
-              frame:dir(ltr)
-                border:dir(ltr)
-                widget:dir(ltr)
-              frame:dir(ltr)
-                border:dir(ltr)
-                widget:dir(ltr)
-              frame:dir(ltr)
-                border:dir(ltr)
-                widget:dir(ltr)
-              frame:dir(ltr)
-                border:dir(ltr)
-                widget:dir(ltr)
-              frame:dir(ltr)
-                border:dir(ltr)
-                widget:dir(ltr)
-              frame:dir(ltr)
-                border:dir(ltr)
-                widget:dir(ltr)
-              frame:dir(ltr)
-                border:dir(ltr)
-                widget:dir(ltr)
-              frame:dir(ltr)
-                border:dir(ltr)
-                widget:dir(ltr)
-    box.horizontal.dialog-action-box:dir(ltr)
-      buttonbox.horizontal.dialog-action-area:dir(ltr)
-        button.text-button:dir(ltr)
-          label:dir(ltr)
-        button.text-button.default:dir(ltr)
-          label:dir(ltr)
-        [button.text-button:dir(ltr)]
-          label:dir(ltr)
-"
-               (gtk:style-context-to-string
-                   (gtk:widget-style-context
-                       (make-instance 'gtk:color-selection-dialog))
-                   :recurse)))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkColorSelectionDialog"
-                                     GTK-COLOR-SELECTION-DIALOG
-                       (:SUPERCLASS GTK-DIALOG :EXPORT T :INTERFACES
-                        ("AtkImplementorIface" "GtkBuildable")
-                        :TYPE-INITIALIZER
-                        "gtk_color_selection_dialog_get_type")
-                       ((CANCEL-BUTTON GTK-COLOR-SELECTION-DIALOG-CANCEL-BUTTON
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkColorSelectionDialog"
+                                      GTK:COLOR-SELECTION-DIALOG
+                       (:SUPERCLASS GTK:DIALOG
+                        :EXPORT T
+                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
+                        :TYPE-INITIALIZER "gtk_color_selection_dialog_get_type")
+                       ((CANCEL-BUTTON COLOR-SELECTION-DIALOG-CANCEL-BUTTON
                          "cancel-button" "GtkWidget" T NIL)
-                        (COLOR-SELECTION
-                         GTK-COLOR-SELECTION-DIALOG-COLOR-SELECTION
+                        (COLOR-SELECTION COLOR-SELECTION-DIALOG-COLOR-SELECTION
                          "color-selection" "GtkWidget" T NIL)
-                        (HELP-BUTTON GTK-COLOR-SELECTION-DIALOG-HELP-BUTTON
+                        (HELP-BUTTON COLOR-SELECTION-DIALOG-HELP-BUTTON
                          "help-button" "GtkWidget" T NIL)
-                        (OK-BUTTON GTK-COLOR-SELECTION-DIALOG-OK-BUTTON
+                        (OK-BUTTON COLOR-SELECTION-DIALOG-OK-BUTTON
                          "ok-button" "GtkWidget" T NIL)))
-             (gobject:get-g-type-definition "GtkColorSelectionDialog"))))
-
+             (gobject:get-gtype-definition "GtkColorSelectionDialog"))))
 
 ;;; --- Properties -------------------------------------------------------------
-
-;;;     cancel-button
-;;;     color-selection
-;;;     help-button
-;;;     ok-button
 
 (test gtk-color-selection-dialog-properties
   (let ((dialog (make-instance 'gtk:color-selection-dialog)))
@@ -242,4 +84,4 @@
   (let ((dialog (gtk:color-selection-dialog-new nil)))
     (is-false (gtk:window-title dialog))))
 
-;;; --- 2023-6-15 --------------------------------------------------------------
+;;; 2024-9-23

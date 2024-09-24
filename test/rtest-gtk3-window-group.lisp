@@ -8,35 +8,37 @@
 ;;;     GtkWindowGroup
 
 (test gtk-window-group-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkWindowGroup"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:window-group
           (glib:symbol-for-gtype "GtkWindowGroup")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkWindowGroup")
           (g:gtype (cffi:foreign-funcall "gtk_window_group_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GObject")
           (g:type-parent "GtkWindowGroup")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkWindowGroup")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkWindowGroup")))
+  ;; Check interfaces
   (is (equal '()
-             (list-interfaces "GtkWindowGroup")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkWindowGroup")))
+  ;; Check class properties
   (is (equal '()
-             (list-properties "GtkWindowGroup")))
-  ;; Check the signals
+             (glib-test:list-properties "GtkWindowGroup")))
+  ;; Check signals
   (is (equal '()
-             (list-signals "GtkWindowGroup")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkWindowGroup" GTK-WINDOW-GROUP
-                       (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
+             (glib-test:list-signals "GtkWindowGroup")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkWindowGroup" GTK:WINDOW-GROUP
+                       (:SUPERCLASS G:OBJECT
+                        :EXPORT T
+                        :INTERFACES NIL
                         :TYPE-INITIALIZER "gtk_window_group_get_type")
                        NIL)
-             (gobject:get-g-type-definition "GtkWindowGroup"))))
+             (gobject:get-gtype-definition "GtkWindowGroup"))))
 
 ;;; --- Functions --------------------------------------------------------------
 
@@ -74,4 +76,4 @@
 ;;;     gtk_window_group_get_current_grab
 ;;;     gtk_window_group_get_current_device_grab
 
-;;; 2024-3-17
+;;; 2024-9-22

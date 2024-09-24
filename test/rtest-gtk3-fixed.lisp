@@ -8,42 +8,43 @@
 ;;;     GtkFixed
 
 (test gtk-fixed-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkFixed"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:fixed
           (glib:symbol-for-gtype "GtkFixed")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkFixed")
           (g:gtype (cffi:foreign-funcall "gtk_fixed_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkContainer")
           (g:type-parent "GtkFixed")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkFixed")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkFixed")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
-             (list-interfaces "GtkFixed")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkFixed")))
+  ;; Check class properties
   (is (equal '()
-             (list-properties "GtkFixed")))
-  ;; Check the style properties
+             (glib-test:list-properties "GtkFixed")))
+  ;; Check style properties
   (is (equal '()
-             (list-style-properties "GtkFixed")))
-  ;; Check the child properties
+             (gtk-test:list-style-properties "GtkFixed")))
+  ;; Check child properties
   (is (equal '("x" "y")
-             (list-child-properties "GtkFixed")))
-  ;; Check the signals
+             (gtk-test:list-child-properties "GtkFixed")))
+  ;; Check signals
   (is (equal '()
-             (list-signals "GtkFixed")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkFixed" GTK-FIXED
-                       (:SUPERCLASS GTK-CONTAINER :EXPORT T :INTERFACES
-                        ("AtkImplementorIface" "GtkBuildable")
+             (glib-test:list-signals "GtkFixed")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkFixed" GTK:FIXED
+                       (:SUPERCLASS GTK:CONTAINER
+                        :EXPORT T
+                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_fixed_get_type")
                        NIL)
-             (gobject:get-g-type-definition "GtkFixed"))))
+             (gobject:get-gtype-definition "GtkFixed"))))
 
 ;;; --- Child Properties -------------------------------------------------------
 
@@ -97,4 +98,4 @@
     (is (= 15 (gtk:fixed-child-x fixed button)))
     (is (= 25 (gtk:fixed-child-y fixed button)))))
 
-;;; 2024-1-2
+;;; 2024-9-21

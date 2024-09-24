@@ -21,14 +21,14 @@
           (g:type-parent "GtkImageMenuItem")))
   ;; Check children
   (is (equal '()
-             (gtk-test:list-children "GtkImageMenuItem")))
+             (glib-test:list-children "GtkImageMenuItem")))
   ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable" "GtkActivatable"
                "GtkActionable")
-             (gtk-test:list-interfaces "GtkImageMenuItem")))
+             (glib-test:list-interfaces "GtkImageMenuItem")))
   ;; Check class properties
   (is (equal '("accel-group" "always-show-image" "image" "use-stock")
-             (gtk-test:list-properties "GtkImageMenuItem")))
+             (glib-test:list-properties "GtkImageMenuItem")))
   ;; Check style properties
   (is (equal '()
              (gtk-test:list-style-properties "GtkImageMenuItem")))
@@ -37,27 +37,26 @@
              (gtk-test:list-child-properties "GtkImageMenuItem")))
   ;; Check signals
   (is (equal '()
-             (gtk-test:list-signals "GtkImageMenuItem")))
+             (glib-test:list-signals "GtkImageMenuItem")))
   ;; Check CSS information
   (is (string= "menuitem"
                (gtk:widget-class-css-name "GtkImageMenuItem")))
   ;; Check class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkImageMenuItem" GTK-IMAGE-MENU-ITEM
-                               (:SUPERCLASS GTK-MENU-ITEM :EXPORT T :INTERFACES
-                                ("AtkImplementorIface" "GtkActionable"
-                                 "GtkActivatable" "GtkBuildable")
-                                :TYPE-INITIALIZER
-                                "gtk_image_menu_item_get_type")
-                               ((ACCEL-GROUP GTK-IMAGE-MENU-ITEM-ACCEL-GROUP
-                                 "accel-group" "GtkAccelGroup" NIL T)
-                                (ALWAYS-SHOW-IMAGE
-                                 GTK-IMAGE-MENU-ITEM-ALWAYS-SHOW-IMAGE
-                                 "always-show-image" "gboolean" T T)
-                                (IMAGE GTK-IMAGE-MENU-ITEM-IMAGE "image"
-                                 "GtkWidget" T T)
-                                (USE-STOCK GTK-IMAGE-MENU-ITEM-USE-STOCK
-                                 "use-stock" "gboolean" T T)))
-             (gobject:get-g-type-definition "GtkImageMenuItem"))))
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkImageMenuItem" GTK:IMAGE-MENU-ITEM
+                       (:SUPERCLASS GTK:MENU-ITEM
+                        :EXPORT T
+                        :INTERFACES
+                        ("AtkImplementorIface" "GtkActionable" "GtkActivatable"
+                         "GtkBuildable")
+                        :TYPE-INITIALIZER "gtk_image_menu_item_get_type")
+                       ((ACCEL-GROUP IMAGE-MENU-ITEM-ACCEL-GROUP
+                         "accel-group" "GtkAccelGroup" NIL T)
+                        (ALWAYS-SHOW-IMAGE IMAGE-MENU-ITEM-ALWAYS-SHOW-IMAGE
+                         "always-show-image" "gboolean" T T)
+                        (IMAGE IMAGE-MENU-ITEM-IMAGE "image" "GtkWidget" T T)
+                        (USE-STOCK IMAGE-MENU-ITEM-USE-STOCK
+                         "use-stock" "gboolean" T T)))
+             (gobject:get-gtype-definition "GtkImageMenuItem"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -98,4 +97,4 @@
   (is (typep (gtk:image-menu-item-new-with-mnemonic "_label")
              'gtk:image-menu-item)))
 
-;;; 2024-6-27
+;;; 2024-9-21

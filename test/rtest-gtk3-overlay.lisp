@@ -8,45 +8,46 @@
 ;;;     GtkOverlay
 
 (test gtk-overlay-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkOverlay"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:overlay
           (glib:symbol-for-gtype "GtkOverlay")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkOverlay")
           (g:gtype (cffi:foreign-funcall "gtk_overlay_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkBin")
           (g:type-parent "GtkOverlay")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkOverlay")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkOverlay")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
-             (list-interfaces "GtkOverlay")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkOverlay")))
+  ;; Check class properties
   (is (equal '()
-             (list-properties "GtkOverlay")))
-  ;; Check the style properties
+             (glib-test:list-properties "GtkOverlay")))
+  ;; Check style properties
   (is (equal '()
-             (list-style-properties "GtkOverlay")))
-  ;; Check the child properties
+             (gtk-test:list-style-properties "GtkOverlay")))
+  ;; Check child properties
   (is (equal '("index" "pass-through")
-             (list-child-properties "GtkOverlay")))
-  ;; Check the signals
+             (gtk-test:list-child-properties "GtkOverlay")))
+  ;; Check signals
   (is (equal '("get-child-position")
-             (list-signals "GtkOverlay")))
+             (glib-test:list-signals "GtkOverlay")))
   ;; CSS information
   (is (string= "overlay"
                (gtk:widget-class-css-name "GtkOverlay")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkOverlay" GTK-OVERLAY
-                               (:SUPERCLASS GTK-BIN :EXPORT T :INTERFACES
-                                ("AtkImplementorIface" "GtkBuildable")
-                                :TYPE-INITIALIZER "gtk_overlay_get_type")
-                               NIL)
-             (gobject:get-g-type-definition "GtkOverlay"))))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkOverlay" GTK:OVERLAY
+                       (:SUPERCLASS GTK:BIN
+                        :EXPORT T
+                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
+                        :TYPE-INITIALIZER "gtk_overlay_get_type")
+                       NIL)
+             (gobject:get-gtype-definition "GtkOverlay"))))
 
 ;;; --- Child Properties -------------------------------------------------------
 
@@ -96,4 +97,4 @@
     (is (= 1 (gtk:overlay-child-index overlay button1)))
     (is (= 0 (gtk:overlay-child-index overlay button2)))))
 
-;;; 2024-4-10
+;;; 2024-9-21

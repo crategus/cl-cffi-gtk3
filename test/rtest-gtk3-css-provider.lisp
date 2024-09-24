@@ -8,33 +8,35 @@
 ;;;     GtkCssProvider
 
 (test gtk-css-provider-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkCssProvider"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:css-provider
           (glib:symbol-for-gtype "GtkCssProvider")))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GObject")
           (g:type-parent "GtkCssProvider")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkCssProvider")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkCssProvider")))
+  ;; Check interfaces
   (is (equal '("GtkStyleProvider" "GtkStyleProviderPrivate")
-             (list-interfaces "GtkCssProvider")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkCssProvider")))
+  ;; Check class properties
   (is (equal '()
-             (list-properties "GtkCssProvider")))
-  ;; Check the signals
+             (glib-test:list-properties "GtkCssProvider")))
+  ;; Check signals
   (is (equal '("parsing-error")
-             (list-signals "GtkCssProvider")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkCssProvider" GTK-CSS-PROVIDER
-                       (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES
+             (glib-test:list-signals "GtkCssProvider")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkCssProvider" GTK:CSS-PROVIDER
+                       (:SUPERCLASS G:OBJECT
+                        :EXPORT T
+                        :INTERFACES
                         ("GtkStyleProvider" "GtkStyleProviderPrivate")
                         :TYPE-INITIALIZER "gtk_css_provider_get_type")
                        NIL)
-             (gobject:get-g-type-definition "GtkCssProvider"))))
+             (gobject:get-gtype-definition "GtkCssProvider"))))
 
 ;;;     GtkCssProviderError
 ;;;     GTK_CSS_PROVIDER_ERROR
@@ -42,40 +44,39 @@
 ;;;     GtkCssSectionType
 
 (test gtk-css-section-type
-  ;; Check the type
+  ;; Check type
   (is-true (g:type-is-enum "GtkCssSectionType"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eql 'gtk:css-section-type
            (glib:symbol-for-gtype "GtkCssSectionType")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_CSS_SECTION_DOCUMENT" "GTK_CSS_SECTION_IMPORT"
                "GTK_CSS_SECTION_COLOR_DEFINITION" "GTK_CSS_SECTION_BINDING_SET"
                "GTK_CSS_SECTION_RULESET" "GTK_CSS_SECTION_SELECTOR"
                "GTK_CSS_SECTION_DECLARATION" "GTK_CSS_SECTION_VALUE"
                "GTK_CSS_SECTION_KEYFRAMES")
-             (list-enum-item-name "GtkCssSectionType")))
-  ;; Check the values
+             (glib-test:list-enum-item-names "GtkCssSectionType")))
+  ;; Check values
   (is (equal '(0 1 2 3 4 5 6 7 8)
-             (list-enum-item-value "GtkCssSectionType")))
-  ;; Check the nick names
+             (glib-test:list-enum-item-values "GtkCssSectionType")))
+  ;; Check nick names
   (is (equal '("document" "import" "color-definition" "binding-set" "ruleset"
                "selector" "declaration" "value" "keyframes")
-             (list-enum-item-nick "GtkCssSectionType")))
-  ;; Check the enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkCssSectionType"
-                             GTK-CSS-SECTION-TYPE
-                             (:EXPORT T
-                              :TYPE-INITIALIZER "gtk_css_section_type_get_type")
-                             (:DOCUMENT 0)
-                             (:IMPORT 1)
-                             (:COLOR-DEFINITION 2)
-                             (:BINDING-SET 3)
-                             (:RULESET 4)
-                             (:SELECTOR 5)
-                             (:DECLARATION 6)
-                             (:VALUE 7)
-                             (:KEYFRAMES 8))
-             (gobject::get-g-type-definition "GtkCssSectionType"))))
+             (glib-test:list-enum-item-nicks "GtkCssSectionType")))
+  ;; Check enum definition
+  (is (equal '(GOBJECT:DEFINE-GENUM "GtkCssSectionType" GTK:CSS-SECTION-TYPE
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_css_section_type_get_type")
+                       (:DOCUMENT 0)
+                       (:IMPORT 1)
+                       (:COLOR-DEFINITION 2)
+                       (:BINDING-SET 3)
+                       (:RULESET 4)
+                       (:SELECTOR 5)
+                       (:DECLARATION 6)
+                       (:VALUE 7)
+                       (:KEYFRAMES 8))
+             (gobject:get-gtype-definition "GtkCssSectionType"))))
 
 ;;;     GtkCssSection
 
@@ -143,9 +144,9 @@ button:last-child > label {
 ;;;     gtk_css_provider_load_from_path
 
 (test gtk-css-provider-load-from-path
-  (let ((provider (gtk:css-provider-new)))
-    (is-true (gtk:css-provider-load-from-path provider
-                 (sys-path "resource/rtest-gtk-css-provider.css")))
+  (let ((path (glib-sys:sys-path "test/resource/rtest-gtk-css-provider.css"))
+        (provider (gtk:css-provider-new)))
+    (is-true (gtk:css-provider-load-from-path provider path))
     (is-true (stringp (gtk:css-provider-to-string provider)))))
 
 ;;;     gtk_css_provider_load_from_resource
@@ -174,4 +175,4 @@ button:last-child > label {
 ;;;     gtk_css_section_ref
 ;;;     gtk_css_section_unref
 
-;;; 2024-1-2
+;;; 2024-9-21

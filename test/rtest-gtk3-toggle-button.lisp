@@ -8,53 +8,53 @@
 ;;;     GtkToggleButton
 
 (test gtk-toggle-button-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkToggleButton"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:toggle-button
           (glib:symbol-for-gtype "GtkToggleButton")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkToggleButton")
           (g:gtype (cffi:foreign-funcall "gtk_toggle_button_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkButton")
           (g:type-parent "GtkToggleButton")))
-  ;; Check the children
+  ;; Check children
   (is (equal '("GtkCheckButton" "GtkMenuButton")
-             (list-children "GtkToggleButton")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkToggleButton")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable" "GtkActionable"
                "GtkActivatable")
-             (list-interfaces "GtkToggleButton")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkToggleButton")))
+  ;; Check class properties
   (is (equal '("active" "draw-indicator" "inconsistent")
-             (list-properties "GtkToggleButton")))
-  ;; Check the style properties
+             (glib-test:list-properties "GtkToggleButton")))
+  ;; Check style properties
   (is (equal '()
-             (list-style-properties "GtkToggleButton")))
-  ;; Check the child properties
+             (gtk-test:list-style-properties "GtkToggleButton")))
+  ;; Check child properties
   (is (equal '()
-             (list-child-properties "GtkToggleButton")))
-  ;; Check the signals
+             (gtk-test:list-child-properties "GtkToggleButton")))
+  ;; Check signals
   (is (equal '("toggled")
-             (list-signals "GtkToggleButton")))
+             (glib-test:list-signals "GtkToggleButton")))
   ;; CSS information
   (is (string= "button"
                (gtk:widget-class-css-name "GtkToggleButton")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkToggleButton" GTK-TOGGLE-BUTTON
-                               (:SUPERCLASS GTK-BUTTON :EXPORT T :INTERFACES
-                                ("AtkImplementorIface" "GtkActionable"
-                                 "GtkActivatable" "GtkBuildable")
-                                :TYPE-INITIALIZER "gtk_toggle_button_get_type")
-                               ((ACTIVE GTK-TOGGLE-BUTTON-ACTIVE "active"
-                                 "gboolean" T T)
-                                (DRAW-INDICATOR
-                                 GTK-TOGGLE-BUTTON-DRAW-INDICATOR
-                                 "draw-indicator" "gboolean" T T)
-                                (INCONSISTENT GTK-TOGGLE-BUTTON-INCONSISTENT
-                                 "inconsistent" "gboolean" T T)))
-             (gobject:get-g-type-definition "GtkToggleButton"))))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkToggleButton" GTK:TOGGLE-BUTTON
+                       (:SUPERCLASS GTK:BUTTON
+                        :EXPORT T
+                        :INTERFACES
+                        ("AtkImplementorIface" "GtkActionable" "GtkActivatable"
+                         "GtkBuildable")
+                        :TYPE-INITIALIZER "gtk_toggle_button_get_type")
+                       ((ACTIVE TOGGLE-BUTTON-ACTIVE "active" "gboolean" T T)
+                        (DRAW-INDICATOR TOGGLE-BUTTON-DRAW-INDICATOR
+                         "draw-indicator" "gboolean" T T)
+                        (INCONSISTENT TOGGLE-BUTTON-INCONSISTENT
+                         "inconsistent" "gboolean" T T)))
+             (gobject:get-gtype-definition "GtkToggleButton"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -107,4 +107,4 @@
 ;;;     gtk_toggle_button_get_mode
 ;;;     gtk_toggle_button_toggled
 
-;;; 2023-12-29
+;;; 2024-9-22

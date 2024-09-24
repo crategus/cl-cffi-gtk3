@@ -8,36 +8,37 @@
 ;;;     GtkTreeSelection
 
 (test gtk-tree-selection-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkTreeSelection"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:tree-selection
           (glib:symbol-for-gtype "GtkTreeSelection")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkTreeSelection")
           (g:gtype (cffi:foreign-funcall "gtk_tree_selection_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GObject") (g:type-parent "GtkTreeSelection")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkTreeSelection")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkTreeSelection")))
+  ;; Check interfaces
   (is (equal '()
-             (list-interfaces "GtkTreeSelection")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkTreeSelection")))
+  ;; Check class properties
   (is (equal '("mode")
-             (list-properties "GtkTreeSelection")))
-  ;; Check the signals
+             (glib-test:list-properties "GtkTreeSelection")))
+  ;; Check signals
   (is (equal '("changed")
-             (list-signals "GtkTreeSelection")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkTreeSelection"
-                                             GTK-TREE-SELECTION
-                       (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
+             (glib-test:list-signals "GtkTreeSelection")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkTreeSelection" GTK:TREE-SELECTION
+                       (:SUPERCLASS G:OBJECT
+                        :EXPORT T
+                        :INTERFACES NIL
                         :TYPE-INITIALIZER "gtk_tree_selection_get_type")
-                       ((MODE GTK-TREE-SELECTION-MODE "mode" "GtkSelectionMode"
-                         T T)))
-             (gobject:get-g-type-definition "GtkTreeSelection"))))
+                       ((MODE TREE-SELECTION-MODE
+                         "mode" "GtkSelectionMode" T T)))
+             (gobject:get-gtype-definition "GtkTreeSelection"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -187,4 +188,4 @@
 ;;;     gtk_tree_selection_select_range
 ;;;     gtk_tree_selection_unselect_range
 
-;;; 2024-3-19
+;;; 2024-9-22

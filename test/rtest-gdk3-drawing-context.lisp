@@ -7,40 +7,40 @@
 
 ;;;     GdkDrawingContext
 
-(test drawing-context-class
-  ;; Type check
+(test gdk-drawing-context-class
+  ;; Check type
   (is (g:type-is-object "GdkDrawingContext"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gdk:drawing-context
           (glib:symbol-for-gtype "GdkDrawingContext")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GdkDrawingContext")
           (g:gtype (cffi:foreign-funcall "gdk_drawing_context_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GObject")
           (g:type-parent "GdkDrawingContext")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GdkDrawingContext")))
-  ;; Check the interfaces
+             (glib-test:list-children "GdkDrawingContext")))
+  ;; Check interfaces
   (is (equal '()
-             (list-interfaces "GdkDrawingContext")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GdkDrawingContext")))
+  ;; Check class properties
   (is (equal '("clip" "window")
-             (list-properties "GdkDrawingContext")))
-  ;; Check the signals
+             (glib-test:list-properties "GdkDrawingContext")))
+  ;; Check signals
   (is (equal '()
-             (list-signals "GdkDrawingContext")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GdkDrawingContext" 
-                                             GDK-DRAWING-CONTEXT
-                       (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
+             (glib-test:list-signals "GdkDrawingContext")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GdkDrawingContext" GDK:DRAWING-CONTEXT
+                       (:SUPERCLASS G:OBJECT
+                        :EXPORT T
+                        :INTERFACES NIL
                         :TYPE-INITIALIZER "gdk_drawing_context_get_type")
-                       ((CLIP GDK-DRAWING-CONTEXT-CLIP "clip" "CairoRegion" T
-                         NIL)
-                        (WINDOW GDK-DRAWING-CONTEXT-WINDOW "window" "GdkWindow"
-                         T NIL)))
-             (gobject:get-g-type-definition "GdkDrawingContext"))))
+                       ((CLIP DRAWING-CONTEXT-CLIP "clip" "CairoRegion" T NIL)
+                        (WINDOW DRAWING-CONTEXT-WINDOW
+                         "window" "GdkWindow" T NIL)))
+             (gobject:get-gtype-definition "GdkDrawingContext"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -54,4 +54,4 @@
 ;;;     gdk_drawing_context_get_cairo_context
 ;;;     gdk_drawing_context_is_valid
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-9-22

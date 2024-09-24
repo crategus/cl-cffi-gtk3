@@ -8,108 +8,104 @@
 ;;;     GdkDragCancelReason
 
 (test gdk-drag-cancel-reason
-  ;; Check the type
+  ;; Check type
   (is (g:type-is-enum "GdkDragCancelReason"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GdkDragCancelReason")
           (g:gtype
               (cffi:foreign-funcall "gdk_drag_cancel_reason_get_type" :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gdk:drag-cancel-reason
           (glib:symbol-for-gtype "GdkDragCancelReason")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GDK_DRAG_CANCEL_NO_TARGET" "GDK_DRAG_CANCEL_USER_CANCELLED"
                "GDK_DRAG_CANCEL_ERROR")
-             (list-enum-item-name "GdkDragCancelReason")))
-  ;; Check the values
+             (glib-test:list-enum-item-names "GdkDragCancelReason")))
+  ;; Check values
   (is (equal '(0 1 2)
-             (list-enum-item-value "GdkDragCancelReason")))
-  ;; Check the nick names
+             (glib-test:list-enum-item-values "GdkDragCancelReason")))
+  ;; Check nick names
   (is (equal '("no-target" "user-cancelled" "error")
-             (list-enum-item-nick "GdkDragCancelReason")))
-  ;; Check the enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkDragCancelReason"
-                             GDK-DRAG-CANCEL-REASON
-                             (:EXPORT T
-                              :TYPE-INITIALIZER
-                              "gdk_drag_cancel_reason_get_type")
-                             (:NO-TARGET 0)
-                             (:USER-CANCELLED 1)
-                             (:ERROR 2))
-             (gobject:get-g-type-definition "GdkDragCancelReason"))))
+             (glib-test:list-enum-item-nicks "GdkDragCancelReason")))
+  ;; Check enum definition
+  (is (equal '(GOBJECT:DEFINE-GENUM "GdkDragCancelReason" GDK:DRAG-CANCEL-REASON
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gdk_drag_cancel_reason_get_type")
+                       (:NO-TARGET 0)
+                       (:USER-CANCELLED 1)
+                       (:ERROR 2))
+             (gobject:get-gtype-definition "GdkDragCancelReason"))))
 
 ;;;     GdkDragProtocol
 
 (test gdk-drag-protocol
-  ;; Check the type
+  ;; Check type
   (is (g:type-is-enum "GdkDragProtocol"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GdkDragProtocol")
           (g:gtype (cffi:foreign-funcall "gdk_drag_protocol_get_type" :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gdk:drag-protocol
           (glib:symbol-for-gtype "GdkDragProtocol")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GDK_DRAG_PROTO_NONE" "GDK_DRAG_PROTO_MOTIF"
                "GDK_DRAG_PROTO_XDND" "GDK_DRAG_PROTO_ROOTWIN"
                "GDK_DRAG_PROTO_WIN32_DROPFILES" "GDK_DRAG_PROTO_OLE2"
                "GDK_DRAG_PROTO_LOCAL" "GDK_DRAG_PROTO_WAYLAND")
-             (list-enum-item-name "GdkDragProtocol")))
-  ;; Check the values
+             (glib-test:list-enum-item-names "GdkDragProtocol")))
+  ;; Check values
   (is (equal '(0 1 2 3 4 5 6 7)
-             (list-enum-item-value "GdkDragProtocol")))
-  ;; Check the nick names
+             (glib-test:list-enum-item-values "GdkDragProtocol")))
+  ;; Check nick names
   (is (equal '("none" "motif" "xdnd" "rootwin" "win32-dropfiles" "ole2" "local"
                "wayland")
-             (list-enum-item-nick "GdkDragProtocol")))
-  ;; Check the enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkDragProtocol"
-                             GDK-DRAG-PROTOCOL
-                             (:EXPORT T
-                              :TYPE-INITIALIZER "gdk_drag_protocol_get_type")
-                             (:NONE 0)
-                             (:MOTIF 1)
-                             (:XDND 2)
-                             (:ROOTWIN 3)
-                             (:WIN32-DROPFILES 4)
-                             (:OLE2 5)
-                             (:LOCAL 6)
-                             (:WAYLAND 7))
-             (gobject:get-g-type-definition "GdkDragProtocol"))))
+             (glib-test:list-enum-item-nicks "GdkDragProtocol")))
+  ;; Check enum definition
+  (is (equal '(GOBJECT:DEFINE-GENUM "GdkDragProtocol" GDK:DRAG-PROTOCOL
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gdk_drag_protocol_get_type")
+                       (:NONE 0)
+                       (:MOTIF 1)
+                       (:XDND 2)
+                       (:ROOTWIN 3)
+                       (:WIN32-DROPFILES 4)
+                       (:OLE2 5)
+                       (:LOCAL 6)
+                       (:WAYLAND 7))
+             (gobject:get-gtype-definition "GdkDragProtocol"))))
 
 ;;;     GdkDragAction
 
 (test gdk-drag-action
-  ;; Check the type
+  ;; Check type
   (is (g:type-is-flags "GdkDragAction"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gdk:drag-action
           (glib:symbol-for-gtype "GdkDragAction")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GdkDragAction")
           (g:gtype (cffi:foreign-funcall "gdk_drag_action_get_type" :size))))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GDK_ACTION_DEFAULT" "GDK_ACTION_COPY" "GDK_ACTION_MOVE"
                "GDK_ACTION_LINK" "GDK_ACTION_PRIVATE" "GDK_ACTION_ASK")
-             (list-flags-item-name "GdkDragAction")))
-  ;; Check the values
+             (glib-test:list-flags-item-names "GdkDragAction")))
+  ;; Check values
   (is (equal '(1 2 4 8 16 32)
-             (list-flags-item-value "GdkDragAction")))
-  ;; Check the nick names
+             (glib-test:list-flags-item-values "GdkDragAction")))
+  ;; Check nick names
   (is (equal '("default" "copy" "move" "link" "private" "ask")
-             (list-flags-item-nick "GdkDragAction")))
-  ;; Check the flags definition
-  (is (equal '(GOBJECT:DEFINE-G-FLAGS "GdkDragAction"
-                              GDK-DRAG-ACTION
-                              (:EXPORT T
-                               :TYPE-INITIALIZER "gdk_drag_action_get_type")
-                              (:DEFAULT 1)
-                              (:COPY 2)
-                              (:MOVE 4)
-                              (:LINK 8)
-                              (:PRIVATE 16)
-                              (:ASK 32))
-             (gobject:get-g-type-definition "GdkDragAction"))))
+             (glib-test:list-flags-item-nicks "GdkDragAction")))
+  ;; Check flags definition
+  (is (equal '(GOBJECT:DEFINE-GFLAGS "GdkDragAction" GDK:DRAG-ACTION
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gdk_drag_action_get_type")
+                       (:DEFAULT 1)
+                       (:COPY 2)
+                       (:MOVE 4)
+                       (:LINK 8)
+                       (:PRIVATE 16)
+                       (:ASK 32))
+             (gobject:get-gtype-definition "GdkDragAction"))))
 
 ;;;     GdkDragContext
 
@@ -122,40 +118,40 @@
   (cffi:foreign-funcall "gdk_win32_drag_context_get_type" :size))
 
 (test gdk-drag-context
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GdkDragContext"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gdk:drag-context
           (glib:symbol-for-gtype "GdkDragContext")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GdkDragContext")
           (g:gtype (cffi:foreign-funcall "gdk_drag_context_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GObject") (g:type-parent "GdkDragContext")))
-  ;; Check the children
+  ;; Check children
   #-windows
   (is (member "GdkX11DragContext"
-              (list-children "GdkDragContext") :test #'string=))
+              (glib-test:list-children "GdkDragContext") :test #'string=))
   #+windows
   (is (equal '("GdkWin32DragContext")
-             (list-children "GdkDragContext")))
-  ;; Check the interfaces
+             (glib-test:list-children "GdkDragContext")))
+  ;; Check interfaces
   (is (equal '()
-             (list-interfaces "GdkDragContext")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GdkDragContext")))
+  ;; Check class properties
   (is (equal '()
-             (list-properties "GdkDragContext")))
-  ;; Check the signals
+             (glib-test:list-properties "GdkDragContext")))
+  ;; Check signals
   (is (equal '("action-changed" "cancel" "dnd-finished" "drop-performed")
-             (list-signals "GdkDragContext")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GdkDragContext" GDK-DRAG-CONTEXT
-                       (:SUPERCLASS G-OBJECT
+             (glib-test:list-signals "GdkDragContext")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GdkDragContext" GDK:DRAG-CONTEXT
+                       (:SUPERCLASS G:OBJECT
                         :EXPORT T
                         :INTERFACES NIL
                         :TYPE-INITIALIZER "gdk_drag_context_get_type")
                        NIL)
-             (gobject:get-g-type-definition "GdkDragContext"))))
+             (gobject:get-gtype-definition "GdkDragContext"))))
 
 ;;; --- Signals ----------------------------------------------------------------
 
@@ -273,4 +269,4 @@
 ;;;     gdk_drag_context_set_hotspot
 ;;;     gdk_drag_context_manage_dnd
 
-;;; 2024-6-29
+;;; 2024-9-22

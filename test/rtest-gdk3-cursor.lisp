@@ -39,14 +39,14 @@
                "GDK_TOP_TEE" "GDK_TREK" "GDK_UL_ANGLE" "GDK_UMBRELLA"
                "GDK_UR_ANGLE" "GDK_WATCH" "GDK_XTERM" "GDK_LAST_CURSOR"
                "GDK_BLANK_CURSOR" "GDK_CURSOR_IS_PIXMAP")
-             (gtk-test:list-enum-item-name "GdkCursorType")))
+             (glib-test:list-enum-item-names "GdkCursorType")))
   ;; Check values
   (is (equal '(0 2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44
                46 48 50 52 54 56 58 60 62 64 66 68 70 72 74 76 78 80 82 84 86
                88 90 92 94 96 98 100 102 104 106 108 110 112 114 116 118 120
                122 124 126 128 130 132 134 136 138 140 142 144 146 148 150 152
                153 -2 -1)
-             (gtk-test:list-enum-item-value "GdkCursorType")))
+             (glib-test:list-enum-item-values "GdkCursorType")))
   ;; Check names
   (is (equal '("x-cursor" "arrow" "based-arrow-down" "based-arrow-up" "boat"
                "bogosity" "bottom-left-corner" "bottom-right-corner"
@@ -64,93 +64,92 @@
                "top-left-arrow" "top-left-corner" "top-right-corner" "top-side"
                "top-tee" "trek" "ul-angle" "umbrella" "ur-angle" "watch"
                "xterm" "last-cursor" "blank-cursor" "cursor-is-pixmap")
-             (gtk-test:list-enum-item-nick "GdkCursorType")))
+             (glib-test:list-enum-item-nicks "GdkCursorType")))
   ;; Check enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkCursorType"
-                              GDK-CURSOR-TYPE
-                              (:EXPORT T
-                               :TYPE-INITIALIZER "gdk_cursor_type_get_type")
-                              (:X-CURSOR 0)
-                              (:ARROW 2)
-                              (:BASED-ARROW-DOWN 4)
-                              (:BASED-ARROW-UP 6)
-                              (:BOAT 8)
-                              (:BOGOSITY 10)
-                              (:BOTTOM-LEFT-CORNER 12)
-                              (:BOTTOM-RIGHT-CORNER 14)
-                              (:BOTTOM-SIDE 16)
-                              (:BOTTOM-TEE 18)
-                              (:BOX-SPIRAL 20)
-                              (:CENTER-PTR 22)
-                              (:CIRCLE 24)
-                              (:CLOCK 26)
-                              (:COFFEE-MUG 28)
-                              (:CROSS 30)
-                              (:CROSS-REVERSE 32)
-                              (:CROSSHAIR 34)
-                              (:DIAMOND-CROSS 36)
-                              (:DOT 38)
-                              (:DOTBOX 40)
-                              (:DOUBLE-ARROW 42)
-                              (:DRAFT-LARGE 44)
-                              (:DRAFT-SMALL 46)
-                              (:DRAPED-BOX 48)
-                              (:EXCHANGE 50)
-                              (:FLEUR 52)
-                              (:GOBBLER 54)
-                              (:GUMBY 56)
-                              (:HAND1 58)
-                              (:HAND2 60)
-                              (:HEART 62)
-                              (:ICON 64)
-                              (:IRON-CROSS 66)
-                              (:LEFT-PTR 68)
-                              (:LEFT-SIDE 70)
-                              (:LEFT-TEE 72)
-                              (:LEFTBUTTON 74)
-                              (:LL-ANGLE 76)
-                              (:LR-ANGLE 78)
-                              (:MAN 80)
-                              (:MIDDLEBUTTON 82)
-                              (:MOUSE 84)
-                              (:PENCIL 86)
-                              (:PIRATE 88)
-                              (:PLUS 90)
-                              (:QUESTION-ARROW 92)
-                              (:RIGHT-PTR 94)
-                              (:RIGHT-SIDE 96)
-                              (:RIGHT-TEE 98)
-                              (:RIGHTBUTTON 100)
-                              (:RTL-LOGO 102)
-                              (:SAILBOAT 104)
-                              (:SB-DOWN-ARROW 106)
-                              (:SB-H-DOUBLE-ARROW 108)
-                              (:SB-LEFT-ARROW 110)
-                              (:SB-RIGHT-ARROW 112)
-                              (:SB-UP-ARROW 114)
-                              (:SB-V-DOUBLE-ARROW 116)
-                              (:SHUTTLE 118)
-                              (:SIZING 120)
-                              (:SPIDER 122)
-                              (:SPRAYCAN 124)
-                              (:STAR 126)
-                              (:TARGET 128)
-                              (:TCROSS 130)
-                              (:TOP-LEFT-ARROW 132)
-                              (:TOP-LEFT-CORNER 134)
-                              (:TOP-RIGHT-CORNER 136)
-                              (:TOP-SIDE 138)
-                              (:TOP-TEE 140)
-                              (:TREK 142)
-                              (:UL-ANGLE 144)
-                              (:UMBRELLA 146)
-                              (:UR-ANGLE 148)
-                              (:WATCH 150)
-                              (:XTERM 152)
-                              (:LAST-CURSOR 153)
-                              (:BLANK-CURSOR -2)
-                              (:CURSOR-IS-PIXMAP -1))
-             (gobject:get-g-type-definition "GdkCursorType"))))
+  (is (equal '(GOBJECT:DEFINE-GENUM "GdkCursorType" GDK:CURSOR-TYPE
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gdk_cursor_type_get_type")
+                       (:X-CURSOR 0)
+                       (:ARROW 2)
+                       (:BASED-ARROW-DOWN 4)
+                       (:BASED-ARROW-UP 6)
+                       (:BOAT 8)
+                       (:BOGOSITY 10)
+                       (:BOTTOM-LEFT-CORNER 12)
+                       (:BOTTOM-RIGHT-CORNER 14)
+                       (:BOTTOM-SIDE 16)
+                       (:BOTTOM-TEE 18)
+                       (:BOX-SPIRAL 20)
+                       (:CENTER-PTR 22)
+                       (:CIRCLE 24)
+                       (:CLOCK 26)
+                       (:COFFEE-MUG 28)
+                       (:CROSS 30)
+                       (:CROSS-REVERSE 32)
+                       (:CROSSHAIR 34)
+                       (:DIAMOND-CROSS 36)
+                       (:DOT 38)
+                       (:DOTBOX 40)
+                       (:DOUBLE-ARROW 42)
+                       (:DRAFT-LARGE 44)
+                       (:DRAFT-SMALL 46)
+                       (:DRAPED-BOX 48)
+                       (:EXCHANGE 50)
+                       (:FLEUR 52)
+                       (:GOBBLER 54)
+                       (:GUMBY 56)
+                       (:HAND1 58)
+                       (:HAND2 60)
+                       (:HEART 62)
+                       (:ICON 64)
+                       (:IRON-CROSS 66)
+                       (:LEFT-PTR 68)
+                       (:LEFT-SIDE 70)
+                       (:LEFT-TEE 72)
+                       (:LEFTBUTTON 74)
+                       (:LL-ANGLE 76)
+                       (:LR-ANGLE 78)
+                       (:MAN 80)
+                       (:MIDDLEBUTTON 82)
+                       (:MOUSE 84)
+                       (:PENCIL 86)
+                       (:PIRATE 88)
+                       (:PLUS 90)
+                       (:QUESTION-ARROW 92)
+                       (:RIGHT-PTR 94)
+                       (:RIGHT-SIDE 96)
+                       (:RIGHT-TEE 98)
+                       (:RIGHTBUTTON 100)
+                       (:RTL-LOGO 102)
+                       (:SAILBOAT 104)
+                       (:SB-DOWN-ARROW 106)
+                       (:SB-H-DOUBLE-ARROW 108)
+                       (:SB-LEFT-ARROW 110)
+                       (:SB-RIGHT-ARROW 112)
+                       (:SB-UP-ARROW 114)
+                       (:SB-V-DOUBLE-ARROW 116)
+                       (:SHUTTLE 118)
+                       (:SIZING 120)
+                       (:SPIDER 122)
+                       (:SPRAYCAN 124)
+                       (:STAR 126)
+                       (:TARGET 128)
+                       (:TCROSS 130)
+                       (:TOP-LEFT-ARROW 132)
+                       (:TOP-LEFT-CORNER 134)
+                       (:TOP-RIGHT-CORNER 136)
+                       (:TOP-SIDE 138)
+                       (:TOP-TEE 140)
+                       (:TREK 142)
+                       (:UL-ANGLE 144)
+                       (:UMBRELLA 146)
+                       (:UR-ANGLE 148)
+                       (:WATCH 150)
+                       (:XTERM 152)
+                       (:LAST-CURSOR 153)
+                       (:BLANK-CURSOR -2)
+                       (:CURSOR-IS-PIXMAP -1))
+             (gobject:get-gtype-definition "GdkCursorType"))))
 
 ;;; --- GdkCursor --------------------------------------------------------------
 
@@ -171,25 +170,26 @@
   ;; TODO: Ensure the children are present when testing
   #-windows
   (is (equal '("GdkWaylandCursor" "GdkX11Cursor")
-             (gtk-test:list-children "GdkCursor")))
+             (glib-test:list-children "GdkCursor")))
   #+windows
   (is (equal '("GdkWin32Cursor")
-             (gtk-test:list-children "GdkCursor")))
+             (glib-test:list-children "GdkCursor")))
   ;; Check interfaces
   (is (equal '()
-             (gtk-test:list-interfaces "GdkCursor")))
+             (glib-test:list-interfaces "GdkCursor")))
   ;; Check class properties
   (is (equal '("cursor-type" "display")
-             (gtk-test:list-properties "GdkCursor")))
+             (glib-test:list-properties "GdkCursor")))
   ;; Check class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GdkCursor" GDK-CURSOR
-                       (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GdkCursor" GDK:CURSOR
+                       (:SUPERCLASS G:OBJECT
+                        :EXPORT T
+                        :INTERFACES NIL
                         :TYPE-INITIALIZER "gdk_cursor_get_type")
-                       ((CURSOR-TYPE GDK-CURSOR-CURSOR-TYPE "cursor-type"
-                         "GdkCursorType" T NIL)
-                        (DISPLAY GDK-CURSOR-DISPLAY "display" "GdkDisplay" T
-                         NIL)))
-             (gobject:get-g-type-definition "GdkCursor"))))
+                       ((CURSOR-TYPE CURSOR-CURSOR-TYPE
+                         "cursor-type" "GdkCursorType" T NIL)
+                        (DISPLAY CURSOR-DISPLAY "display" "GdkDisplay" T NIL)))
+             (gobject:get-gtype-definition "GdkCursor"))))
 
 ;;; --- gdk:cursor-properties --------------------------------------------------
 
@@ -240,29 +240,31 @@
 
 ;;; --- gdk:cursor-image -------------------------------------------------------
 
-;; TODO: We do not get an image. Create a better example.
-
 (test gdk-cursor-image
   (let* ((path (glib-sys:sys-path "test/resource/gtk-logo-24.png"))
          (pixbuf (gdk:pixbuf-new-from-file path))
          (display (gdk:display-default))
          cursor)
-    (is (typep pixbuf 'gdk:pixbuf))
+    (is (typep pixbuf 'gdk-pixbuf:pixbuf))
     (is (typep (setf cursor
                      (gdk:cursor-new-from-pixbuf display pixbuf 12 12))
                'gdk:cursor))
-    (is-false (gdk:cursor-image cursor))))
+    #-windows
+    (is-false (gdk:cursor-image cursor))
+    #+windows
+    (is (typep (gdk:cursor-image cursor) 'gdk-pixbuf:pixbuf))))
 
 ;;; --- gdk:cursor-surface -----------------------------------------------------
-
-;; TODO: We get a NULL surface. Create a better example
 
 (test gdk-cursor-surface
   (let ((cursor (gdk:cursor-new :hand1)))
     (multiple-value-bind (surface xhot yhot)
         (gdk:cursor-surface cursor)
-      (is (cffi:null-pointer-p surface))
-      (is (= 0.0d0 xhot))
-      (is (= 0.0d0 yhot)))))
+      (is (cffi:pointerp surface))
+      #-windows
+      (is (approx-equal 0.0d0 xhot))
+      #+windows
+      (is (approx-equal 6.0d0 xhot))
+      (is (approx-equal 0.0d0 yhot)))))
 
-;;; 2024-6-29
+;;; 2024-9-22

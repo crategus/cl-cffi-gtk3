@@ -30,34 +30,33 @@
 
 ;;;     GtkBuildable
 
-(test buildable-interface
-  ;; Type check
+(test gtk-buildable-interface
+  ;; Check type
   (is (g:type-is-interface "GtkBuildable"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:buildable
           (glib:symbol-for-gtype "GtkBuildable")))
-  ;; Get the interface properties
+  ;; Check interface properties
   (is (equal '()
-             (list-interface-properties "GtkBuildable")))
-  ;; Get the interface definition
-  (is (equal '(GOBJECT:DEFINE-G-INTERFACE "GtkBuildable"
-                                  GTK-BUILDABLE
-                                  (:EXPORT T
-                                   :TYPE-INITIALIZER "gtk_buildable_get_type"))
-             (gobject:get-g-type-definition "GtkBuildable"))))
+             (glib-test:list-interface-properties "GtkBuildable")))
+  ;; Check interface definition
+  (is (equal '(GOBJECT:DEFINE-GINTERFACE "GtkBuildable" GTK:BUILDABLE
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_buildable_get_type"))
+             (gobject:get-gtype-definition "GtkBuildable"))))
 
 ;;; --- Functions --------------------------------------------------------------
 
 ;;;     gtk_buildable_set_name
 ;;;     gtk_buildable_get_name
 
-(test buildable-name.1
+(test gtk-buildable-name.1
   (let ((button (make-instance 'gtk:button)))
     (is-false (gtk:buildable-name button))
     (setf (gtk:buildable-name button) "button")
     (is (string= "button" (gtk:buildable-name button)))))
 
-(test buildable-name.2
+(test gtk-buildable-name.2
   (let* ((builder (gtk:builder-new-from-string *dialog-gtk-buildable*))
          (dialog (gtk:builder-object builder "dialog1"))
          (vbox (gtk:builder-object builder "vbox1"))
@@ -68,7 +67,7 @@
 
 ;;;     gtk_buildable_add_child
 
-(test buildable-add-child
+(test gtk-buildable-add-child
   (let* ((builder (gtk:builder-new-from-string *dialog-gtk-buildable*))
          (button-box (gtk:builder-object builder "hbuttonbox1"))
          (button1 (make-instance 'gtk:button))
@@ -90,10 +89,10 @@
 
 ;;;     gtk_buildable_get_internal_child
 
-(test buildable-internal-child
+(test gtk-buildable-internal-child
   (let* ((builder (gtk:builder-new-from-string *dialog-gtk-buildable*))
          (dialog (gtk:builder-object builder "dialog1")))
     (is (typep (gtk:buildable-internal-child dialog builder "action_area")
                 'gtk:button-box))))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-9-21

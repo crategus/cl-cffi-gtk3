@@ -9,7 +9,7 @@
 
 ;;;     gdk_get_display_arg_name
 
-(test get-display-arg-name
+(test gdk-get-display-arg-name
   (is-false (gdk:get-display-arg-name)))
 
 ;;;     gdk_notify_startup_complete
@@ -21,7 +21,7 @@
 
 (defvar *first-run-program-class* t)
 
-(test program-class.1
+(test gdk-program-class.1
   (if *first-run-program-class*
       #+(and sbcl (not windows))
       (is (string= "Sbcl" (gdk:program-class)))
@@ -31,7 +31,7 @@
       (is (string= "Sbcl" (gdk:program-class)))
       (is (string= "Program class" (gdk:program-class)))))
 
-(test program-class.2
+(test gdk-program-class.2
   (when *first-run-program-class*
     (setf (gdk:program-class) "Program class")
     (setf *first-run-program-class* nil))
@@ -54,4 +54,4 @@
 ;;;     gdk_error_trap_pop                                 not exported
 ;;;     gdk_error_trap_pop_ignored                         not exported
 
-;;; 204-6-27
+;;; 2024-9-22

@@ -21,28 +21,29 @@
           (g:type-parent "GtkHSV")))
   ;; Check children
   (is (equal '()
-             (list-children "GtkHSV")))
+             (glib-test:list-children "GtkHSV")))
   ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
-             (list-interfaces "GtkHSV")))
+             (glib-test:list-interfaces "GtkHSV")))
   ;; Check class properties
   (is (equal '()
-             (list-properties "GtkHSV")))
+             (glib-test:list-properties "GtkHSV")))
   ;; Check style properties
   (is (equal '()
-             (list-style-properties "GtkHSV")))
+             (gtk-test:list-style-properties "GtkHSV")))
   ;; Check signals
   (is (equal '("changed" "move")
-             (list-signals "GtkHSV")))
+             (glib-test:list-signals "GtkHSV")))
   ;; Check CSS information
   (is (string= "widget"
                (gtk:widget-class-css-name "GtkHSV")))
   ;; Check class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkHSV" GTK-H-S-V
-                               (:SUPERCLASS GTK-WIDGET :EXPORT T :INTERFACES
-                                ("AtkImplementorIface" "GtkBuildable"))
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkHSV" GTK:HSV
+                               (:SUPERCLASS GTK:WIDGET
+                                :EXPORT T
+                                :INTERFACES ("AtkImplementorIface" "GtkBuildable"))
                                NIL)
-             (gobject:get-g-type-definition "GtkHSV"))))
+             (gobject:get-gtype-definition "GtkHSV"))))
 
 ;;; --- Signals ----------------------------------------------------------------
 
@@ -116,4 +117,4 @@
   (is (equal '(0.0d0 0.0d0 1.0d0)
              (multiple-value-list (gtk:rgb-to-hsv 1 1.0 1.0d0)))))
 
-;;; 2024-6-16
+;;; 2024-9-23

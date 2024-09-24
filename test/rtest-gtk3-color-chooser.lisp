@@ -8,27 +8,28 @@
 ;;;     GtkColorChooser
 
 (test gtk-color-chooser-interface
-  ;; Type check
+  ;; Check type
   (is (g:type-is-interface "GtkColorChooser"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:color-chooser
           (glib:symbol-for-gtype "GtkColorChooser")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkColorChooser")
           (g:gtype (cffi:foreign-funcall "gtk_color_chooser_get_type" :size))))
-  ;; Get the names of the interface properties.
+  ;; Check interface properties
   (is (equal '("rgba" "use-alpha")
-             (list-interface-properties "GtkColorChooser")))
-  ;; Check the signals
+             (glib-test:list-interface-properties "GtkColorChooser")))
+  ;; Check signals
   (is (equal '("color-activated")
-             (list-signals "GtkColorChooser")))
-  ;; Get the interface definition
-  (is (equal '(GOBJECT:DEFINE-G-INTERFACE "GtkColorChooser" GTK-COLOR-CHOOSER
-                    (:EXPORT T :TYPE-INITIALIZER "gtk_color_chooser_get_type")
-                    (RGBA GTK-COLOR-CHOOSER-RGBA "rgba" "GdkRGBA" T T)
-                    (USE-ALPHA GTK-COLOR-CHOOSER-USE-ALPHA "use-alpha"
-                     "gboolean" T T))
-             (gobject:get-g-type-definition "GtkColorChooser"))))
+             (glib-test:list-signals "GtkColorChooser")))
+  ;; Check interface definition
+  (is (equal '(GOBJECT:DEFINE-GINTERFACE "GtkColorChooser" GTK:COLOR-CHOOSER
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_color_chooser_get_type")
+                       (RGBA COLOR-CHOOSER-RGBA "rgba" "GdkRGBA" T T)
+                       (USE-ALPHA COLOR-CHOOSER-USE-ALPHA
+                        "use-alpha" "gboolean" T T))
+             (gobject:get-gtype-definition "GtkColorChooser"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -64,4 +65,4 @@
 
 ;;;     gtk_color_chooser_add_palette
 
-;;; --- 2023-6-12 --------------------------------------------------------------
+;;; 2024-9-21

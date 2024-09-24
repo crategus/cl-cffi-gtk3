@@ -5,58 +5,60 @@
 
 ;;;     GdkKeymap
 
-(test keymap-class
-  ;; Type check
+(test gdk-keymap-class
+  ;; Check type
   (is (g:type-is-object "GdkKeymap"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gdk:keymap
           (glib:symbol-for-gtype "GdkKeymap")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GdkKeymap")
           (g:gtype (cffi:foreign-funcall "gdk_keymap_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GObject")
           (g:type-parent "GdkKeymap")))
-  ;; Check the children
+  ;; Check children
   #-windows
   (is (or (equal '("GdkX11Keymap")
-                 (list-children "GdkKeymap"))
+                 (glib-test:list-children "GdkKeymap"))
           (equal '("GdkWaylandKeymap")
-                 (list-children "GdkKeymap"))))
+                 (glib-test:list-children "GdkKeymap"))))
   #+windows
   (is (equal '("GdkWin32Keymap")
-             (list-children "GdkKeymap")))
-  ;; Check the interfaces
+             (glib-test:list-children "GdkKeymap")))
+  ;; Check interfaces
   (is (equal '()
-             (list-interfaces "GdkKeymap")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GdkKeymap")))
+  ;; Check class properties
   (is (equal '()
-             (list-properties "GdkKeymap")))
-  ;; Check the signals
+             (glib-test:list-properties "GdkKeymap")))
+  ;; Check signals
   (is (equal '("direction-changed" "keys-changed" "state-changed")
-             (list-signals "GdkKeymap")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GdkKeymap" GDK-KEYMAP
-                       (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
+             (glib-test:list-signals "GdkKeymap")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GdkKeymap" GDK:KEYMAP
+                       (:SUPERCLASS G:OBJECT
+                        :EXPORT T
+                        :INTERFACES NIL
                         :TYPE-INITIALIZER "gdk_keymap_get_type")
                        NIL)
-             (gobject:get-g-type-definition "GdkKeymap"))))
+             (gobject:get-gtype-definition "GdkKeymap"))))
 
 ;;;   gdk_keymap_get_default
 
-(test keymap-default
+(test gdk-keymap-default
   (is (typep (gdk:keymap-default) 'gdk:keymap)))
 
 ;;;   gdk_keymap_get_for_display
 
-(test keymap-for-display
+(test gdk-keymap-for-display
   (let ((display (gdk:display-default)))
     (is (typep (gdk:keymap-for-display display) 'gdk:keymap))))
 
 ;;;   gdk_keymap_lookup_key
 
 #-windows
-(test keymap-lookup-key
+(test gdk-keymap-lookup-key
   (let ((keymap (gdk:keymap-for-display (gdk:display-default))))
     (is (=  43 (gdk:keymap-lookup-key keymap 35 0 0)))
     (is (=  42 (gdk:keymap-lookup-key keymap 35 0 1)))
@@ -66,7 +68,7 @@
 ;;;     gdk_keymap_translate_keyboard_state
 
 #-windows
-(test keymap-translate-keyboard-state
+(test gdk-keymap-translate-keyboard-state
   (let ((keymap (gdk:keymap-for-display (gdk:display-default))))
     ;; The key "+" with the name "plus"
     (is (or (equal '(43 0 0 (:SHIFT-MASK :LOCK-MASK :MOD5-MASK))
@@ -133,7 +135,7 @@
 ;;;     gdk_keymap_get_entries_for_keycode
 
 #-windows
-(test keymap-entries-for-keycode
+(test gdk-keymap-entries-for-keycode
   (let ((keymap (gdk:keymap-for-display (gdk:display-default))))
     (is (or (equal '((43 35 0 0) (42 35 0 1) (126 35 0 2) (175 35 0 3))
                    (gdk:keymap-entries-for-keycode keymap 35))
@@ -143,17 +145,17 @@
 
 ;;;     gdk_keymap_get_direction
 
-(test keymap-direction
+(test gdk-keymap-direction
   (is (eq :ltr (gdk:keymap-direction (gdk:keymap-default)))))
 
 ;;;     gdk_keymap_have_bidi_layouts
 
-(test keymap-have-bidi-layouts
+(test gdk-keymap-have-bidi-layouts
   (is-false (gdk:keymap-have-bidi-layouts (gdk:keymap-default))))
 
 ;;;     gdk_keymap_get_caps_lock_state
 
-(test keymap-caps-lock-state
+(test gdk-keymap-caps-lock-state
   (is-false (gdk:keymap-caps-lock-state (gdk:keymap-default))))
 
 ;;;     gdk_keymap_get_num_lock_state
@@ -163,12 +165,12 @@
 
 ;;;     gdk_keymap_get_scroll_lock_state
 
-(test keymap-scroll-lock-state
+(test gdk-keymap-scroll-lock-state
   (is-false (gdk:keymap-scroll-lock-state (gdk:keymap-default))))
 
 ;;;     gdk_keymap_get_modifier_state
 
-(test keymap-modifier-state
+(test gdk-keymap-modifier-state
   #-windows
   (is (or (equal '(:MOD2-MASK)
                  (gdk:keymap-modifier-state (gdk:keymap-default)))
@@ -180,7 +182,7 @@
 
 ;;;     gdk_keymap_add_virtual_modifiers
 
-(test keymap-add-virtual-modifiers
+(test gdk-keymap-add-virtual-modifiers
   (let ((keymap (gdk:keymap-for-display (gdk:display-default))))
     #-windows
     (is (equal '(:MOD4-MASK :SUPER-MASK :HYPER-MASK)
@@ -192,14 +194,14 @@
 ;;;     gdk_keymap_map_virtual_modifiers
 
 #-windows
-(test keymap-map-virtual-modifiers
+(test gdk-keymap-map-virtual-modifiers
   (let ((keymap (gdk:keymap-for-display (gdk:display-default))))
     (is (equal '(:MOD4-MASK :SUPER-MASK)
                (gdk:keymap-map-virtual-modifiers keymap '(:super-mask))))))
 
 ;;;     gdk_keymap_get_modifier_mask
 
-(test keymap-modifier-mask
+(test gdk-keymap-modifier-mask
   (let ((keymap (gdk:keymap-for-display (gdk:display-default))))
     (is (equal '(:control-mask)
                (gdk:keymap-modifier-mask keymap :primary-accelerator)))
@@ -219,51 +221,51 @@
 
 ;;;     gdk_keyval_name
 
-(test keyval-name
+(test gdk-keyval-name
   (is (string= "A" (gdk:keyval-name 65)))
   (is (string= "B" (gdk:keyval-name 66))))
 
 ;;;     gdk_keyval_from_name
 
-(test keyval-from-name
+(test gdk-keyval-from-name
   (is (= 65 (gdk:keyval-from-name "A")))
   (is (= 66 (gdk:keyval-from-name "B"))))
 
 ;;;     gdk_keyval_convert_case
 
-(test keyval-convert-case
+(test gdk-keyval-convert-case
   (is (= 97 (gdk:keyval-convert-case 65))))
 
 ;;;     gdk_keyval_to_upper
 
-(test keyval-to-upper
+(test gdk-keyval-to-upper
   (is (= 65 (gdk:keyval-to-upper 97))))
 
 ;;;     gdk_keyval_to_lower
 
-(test keyval-to-lower
+(test gdk-keyval-to-lower
   (is (= 97 (gdk:keyval-to-lower 65))))
 
 ;;;     gdk_keyval_is_upper
 
-(test keyval-is-upper
+(test gdk-keyval-is-upper
   (is-true  (gdk:keyval-is-upper (gdk:keyval-from-name "A")))
   (is-false (gdk:keyval-is-upper (gdk:keyval-from-name "a"))))
 
 ;;;     gdk_keyval_is_lower
 
-(test keyval-is-lower
+(test gdk-keyval-is-lower
   (is-true  (gdk:keyval-is-upper (gdk:keyval-from-name "A")))
   (is-false (gdk:keyval-is-upper (gdk:keyval-from-name "a"))))
 
 ;;;     gdk_keyval_to_unicode
 
-(test keyval-to-unicode
+(test gdk-keyval-to-unicode
   (is (eq #\A  (gdk:keyval-to-unicode (gdk:keyval-from-name "A")))))
 
 ;;;     gdk_unicode_to_keyval
 
-(test unicode-to-keyval
+(test gdk-unicode-to-keyval
   (is (eq 65 (gdk:unicode-to-keyval #\A))))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-9-22

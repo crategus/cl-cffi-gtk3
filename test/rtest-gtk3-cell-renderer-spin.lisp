@@ -8,43 +8,43 @@
 ;;;     GtkCellRendererSpin
 
 (test gtk-cell-renderer-spin-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkCellRendererSpin"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:cell-renderer-spin
           (glib:symbol-for-gtype "GtkCellRendererSpin")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkCellRendererSpin")
           (g:gtype (cffi:foreign-funcall "gtk_cell_renderer_spin_get_type"
                                          :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkCellRendererText")
           (g:type-parent "GtkCellRendererSpin")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkCellRendererSpin")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkCellRendererSpin")))
+  ;; Check interfaces
   (is (equal '()
-             (list-interfaces "GtkCellRendererSpin")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkCellRendererSpin")))
+  ;; Check class properties
   (is (equal '("adjustment" "climb-rate" "digits")
-             (list-properties "GtkCellRendererSpin")))
-  ;; Check the signals
+             (glib-test:list-properties "GtkCellRendererSpin")))
+  ;; Check signals
   (is (equal '()
-             (list-signals "GtkCellRendererSpin")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkCellRendererSpin"
-                                             GTK-CELL-RENDERER-SPIN
-                       (:SUPERCLASS GTK-CELL-RENDERER-TEXT :EXPORT T
-                        :INTERFACES NIL :TYPE-INITIALIZER
-                        "gtk_cell_renderer_spin_get_type")
-                       ((ADJUSTMENT GTK-CELL-RENDERER-SPIN-ADJUSTMENT
+             (glib-test:list-signals "GtkCellRendererSpin")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkCellRendererSpin"
+                                       GTK:CELL-RENDERER-SPIN
+                       (:SUPERCLASS GTK:CELL-RENDERER-TEXT
+                        :EXPORT T
+                        :INTERFACES NIL
+                        :TYPE-INITIALIZER "gtk_cell_renderer_spin_get_type")
+                       ((ADJUSTMENT CELL-RENDERER-SPIN-ADJUSTMENT
                          "adjustment" "GtkAdjustment" T T)
-                        (CLIMB-RATE GTK-CELL-RENDERER-SPIN-CLIMB-RATE
+                        (CLIMB-RATE CELL-RENDERER-SPIN-CLIMB-RATE
                          "climb-rate" "gdouble" T T)
-                        (DIGITS GTK-CELL-RENDERER-SPIN-DIGITS "digits" "guint"
-                         T T)))
-             (gobject:get-g-type-definition "GtkCellRendererSpin"))))
+                        (DIGITS CELL-RENDERER-SPIN-DIGITS "digits" "guint" T T)))
+             (gobject:get-gtype-definition "GtkCellRendererSpin"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -64,4 +64,4 @@
 (test gtk-cell-renderer-spin-new
   (is (typep (gtk:cell-renderer-spin-new) 'gtk:cell-renderer-spin)))
 
-;;; 2024-3-17
+;;; 2024-9-22

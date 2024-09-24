@@ -8,100 +8,100 @@
 ;;;     GtkResizeMode
 
 (test gtk-resize-mode
-  ;; Check the type
+  ;; Check type
   (is (g:type-is-enum "GtkResizeMode"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkResizeMode")
           (g:gtype (cffi:foreign-funcall "gtk_resize_mode_get_type" :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:resize-mode
           (glib:symbol-for-gtype "GtkResizeMode")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_RESIZE_PARENT" "GTK_RESIZE_QUEUE" "GTK_RESIZE_IMMEDIATE")
-             (list-enum-item-name "GtkResizeMode")))
-  ;; Check the values
+             (glib-test:list-enum-item-names "GtkResizeMode")))
+  ;; Check values
   (is (equal '(0 1 2)
-             (list-enum-item-value "GtkResizeMode")))
-  ;; Check the nick names
+             (glib-test:list-enum-item-values "GtkResizeMode")))
+  ;; Check nick names
   (is (equal '("parent" "queue" "immediate")
-             (list-enum-item-nick "GtkResizeMode")))
+             (glib-test:list-enum-item-nicks "GtkResizeMode")))
   ;; Check the enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkResizeMode"
-                             GTK-RESIZE-MODE
-                             (:EXPORT T
-                              :TYPE-INITIALIZER "gtk_resize_mode_get_type")
-                             (:PARENT 0)
-                             (:QUEUE 1)
-                             (:IMMEDIATE 2))
-             (gobject:get-g-type-definition "GtkResizeMode"))))
+  (is (equal '(GOBJECT:DEFINE-GENUM "GtkResizeMode" GTK:RESIZE-MODE
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_resize_mode_get_type")
+                       (:PARENT 0)
+                       (:QUEUE 1)
+                       (:IMMEDIATE 2))
+             (gobject:get-gtype-definition "GtkResizeMode"))))
 
 ;;;     GtkContainer
 
 (test gtk-container-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkContainer"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:container
           (glib:symbol-for-gtype "GtkContainer")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkContainer")
           (g:gtype (cffi:foreign-funcall "gtk_container_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkWidget") (g:type-parent "GtkContainer")))
-  ;; Check the children
+  ;; Check children
   #-windows
   (is (or (equal '("GtkBin" "GtkBox" "GtkFixed" "GtkFlowBox" "GtkGrid"
                    "GtkHeaderBar" "GtkIconView" "GtkLayout" "GtkListBox"
                    "GtkMenuShell" "GtkNotebook" "GtkPaned" "GtkSocket"
                    "GtkStack" "GtkTable" "GtkTextView" "GtkToolItemGroup"
                    "GtkToolPalette" "GtkToolbar" "GtkTreeView")
-                 (list-children "GtkContainer"))
+                 (glib-test:list-children "GtkContainer"))
           (equal '("GtkBin" "GtkBox" "GtkFixed" "GtkFlowBox" "GtkGrid"
                    "GtkHeaderBar" "GtkIconView" "GtkLayout" "GtkListBox"
                    "GtkMenuShell" "GtkNotebook" "GtkPaned" "GtkPathBar"
                    "GtkSocket" "GtkStack" "GtkTable" "GtkTextView"
                    "GtkToolItemGroup" "GtkToolPalette" "GtkToolbar"
                    "GtkTreeView")
-                 (list-children "GtkContainer"))))
+                 (glib-test:list-children "GtkContainer"))))
   #+windows
   (is (or (equal '("GtkBin" "GtkBox" "GtkFixed" "GtkFlowBox" "GtkGrid"
                    "GtkHeaderBar" "GtkIconView" "GtkLayout" "GtkListBox"
                    "GtkMenuShell" "GtkNotebook" "GtkPaned" "GtkStack" "GtkTable"
                    "GtkTextView" "GtkToolItemGroup" "GtkToolPalette"
                    "GtkToolbar" "GtkTreeView")
-                 (list-children "GtkContainer"))
+                 (glib-test:list-children "GtkContainer"))
           (equal '("GtkBin" "GtkBox" "GtkFixed" "GtkFlowBox" "GtkGrid"
                    "GtkHeaderBar" "GtkIconView" "GtkLayout" "GtkListBox"
                    "GtkMenuShell" "GtkNotebook" "GtkPaned" "GtkPathBar"
                    "GtkStack" "GtkTable" "GtkTextView" "GtkToolItemGroup"
                    "GtkToolPalette" "GtkToolbar" "GtkTreeView")
-                 (list-children "GtkContainer"))))
-  ;; Check the interfaces
+                 (glib-test:list-children "GtkContainer"))))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
-             (list-interfaces "GtkContainer")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkContainer")))
+  ;; Check class properties
   (is (equal '("border-width" "child" "resize-mode")
-             (list-properties "GtkContainer")))
-  ;; Get the names of the style properties.
+             (glib-test:list-properties "GtkContainer")))
+  ;; Check style properties
   (is (equal '()
-             (list-style-properties "GtkContainer")))
-  ;; Get the names of the child properties
+             (gtk-test:list-style-properties "GtkContainer")))
+  ;; Check child properties
   (is (equal '("expand" "fill" "pack-type" "padding" "position")
-             (list-child-properties "GtkBox")))
-  ;; Check the signals
+             (gtk-test:list-child-properties "GtkBox")))
+  ;; Check signals
   (is (equal '("add" "check-resize" "remove" "set-focus-child")
-             (list-signals "GtkContainer")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkContainer" GTK-CONTAINER
-                       (:SUPERCLASS GTK-WIDGET :EXPORT T :INTERFACES
-                        ("AtkImplementorIface" "GtkBuildable")
+             (glib-test:list-signals "GtkContainer")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkContainer" GTK:CONTAINER
+                       (:SUPERCLASS GTK:WIDGET
+                        :EXPORT T
+                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_container_get_type")
-                       ((BORDER-WIDTH GTK-CONTAINER-BORDER-WIDTH "border-width"
-                         "guint" T T)
-                        (CHILD GTK-CONTAINER-CHILD "child" "GtkWidget" NIL T)
-                        (RESIZE-MODE GTK-CONTAINER-RESIZE-MODE "resize-mode"
-                         "GtkResizeMode" T T)))
-             (gobject:get-g-type-definition "GtkContainer"))))
+                       ((BORDER-WIDTH CONTAINER-BORDER-WIDTH
+                         "border-width" "guint" T T)
+                        (CHILD CONTAINER-CHILD "child" "GtkWidget" NIL T)
+                        (RESIZE-MODE CONTAINER-RESIZE-MODE
+                         "resize-mode" "GtkResizeMode" T T)))
+             (gobject:get-gtype-definition "GtkContainer"))))
 
 ;;; ----------------------------------------------------------------------------
 ;;; Check accessor functions of GtContainer
@@ -514,4 +514,4 @@
 
 ;;;     gtk_container_class_handle_border_width
 
-;;; --- 2023-6-17 --------------------------------------------------------------
+;;; 2024-9-21

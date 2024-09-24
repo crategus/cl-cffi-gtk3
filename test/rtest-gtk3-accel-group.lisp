@@ -6,68 +6,69 @@
 ;;;     GtkAccelFlags
 
 (test gtk-accel-flags
-  ;; Check the type
+  ;; Check type
   (is (g:type-is-flags "GtkAccelFlags"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eql 'gtk:accel-flags
            (glib:symbol-for-gtype "GtkAccelFlags")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkAccelFlags")
           (g:gtype (cffi:foreign-funcall "gtk_accel_flags_get_type" :size))))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_ACCEL_VISIBLE" "GTK_ACCEL_LOCKED" "GTK_ACCEL_MASK")
-             (list-flags-item-name "GtkAccelFlags")))
-  ;; Check the values
+             (glib-test:list-flags-item-names "GtkAccelFlags")))
+  ;; Check values
   (is (equal '(1 2 7)
-             (list-flags-item-value "GtkAccelFlags")))
-  ;; Check the nick names
+             (glib-test:list-flags-item-values "GtkAccelFlags")))
+  ;; Check nick names
   (is (equal '("visible" "locked" "mask")
-             (list-flags-item-nick "GtkAccelFlags")))
-  ;; Check the flags definition
-  (is (equal '(GOBJECT:DEFINE-G-FLAGS "GtkAccelFlags"
-                              GTK-ACCEL-FLAGS
-                              (:EXPORT T
-                               :TYPE-INITIALIZER "gtk_accel_flags_get_type")
-                              (:VISIBLE 1)
-                              (:LOCKED 2)
-                              (:MASK 7))
-             (gobject:get-g-type-definition "GtkAccelFlags"))))
+             (glib-test:list-flags-item-nicks "GtkAccelFlags")))
+  ;; Check flags definition
+  (is (equal '(GOBJECT:DEFINE-GFLAGS "GtkAccelFlags" GTK:ACCEL-FLAGS
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_accel_flags_get_type")
+                       (:VISIBLE 1)
+                       (:LOCKED 2)
+                       (:MASK 7))
+             (gobject:get-gtype-definition "GtkAccelFlags"))))
 
 ;;;     GtkAccelGroup
 
 (test gtk-accel-group-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkAccelGroup"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:accel-group
           (glib:symbol-for-gtype "GtkAccelGroup")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkAccelGroup")
           (g:gtype (cffi:foreign-funcall "gtk_accel_group_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GObject")
           (g:type-parent "GtkAccelGroup")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkAccelGroup")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkAccelGroup")))
+  ;; Check interfaces
   (is (equal '()
-             (list-interfaces "GtkAccelGroup")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkAccelGroup")))
+  ;; Check class properties
   (is (equal '("is-locked" "modifier-mask")
-             (list-properties "GtkAccelGroup")))
-  ;; Check the signals
+             (glib-test:list-properties "GtkAccelGroup")))
+  ;; Check signals
   (is (equal '("accel-activate" "accel-changed")
-             (list-signals "GtkAccelGroup")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkAccelGroup" GTK-ACCEL-GROUP
-                       (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
+             (glib-test:list-signals "GtkAccelGroup")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkAccelGroup" GTK:ACCEL-GROUP
+                       (:SUPERCLASS G:OBJECT
+                        :EXPORT T
+                        :INTERFACES NIL
                         :TYPE-INITIALIZER "gtk_accel_group_get_type")
-                       ((IS-LOCKED GTK-ACCEL-GROUP-IS-LOCKED "is-locked"
-                         "gboolean" T NIL)
-                        (MODIFIER-MASK GTK-ACCEL-GROUP-MODIFIER-MASK
+                       ((IS-LOCKED ACCEL-GROUP-IS-LOCKED
+                         "is-locked" "gboolean" T NIL)
+                        (MODIFIER-MASK ACCEL-GROUP-MODIFIER-MASK
                          "modifier-mask" "GdkModifierType" T NIL)))
-             (gobject:get-g-type-definition "GtkAccelGroup"))))
+             (gobject:get-gtype-definition "GtkAccelGroup"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -263,4 +264,4 @@
                    '(:SHIFT-MASK :CONTROL-MASK :MOD1-MASK :SUPER-MASK
                      :HYPER-MASK :META-MASK)))))
 
-;;; --- 2023-7-19 --------------------------------------------------------------
+;;; 2024-9-21

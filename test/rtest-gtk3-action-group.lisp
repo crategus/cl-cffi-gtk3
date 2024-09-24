@@ -7,47 +7,46 @@
 
 ;;;   GtkActionGroup
 
-(test action-group-class
-  ;; Type check
+(test gtk-action-group-class
+  ;; Check type
   (is (g:type-is-object "GtkActionGroup"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:action-group
           (glib:symbol-for-gtype "GtkActionGroup")))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GObject") (g:type-parent "GtkActionGroup")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkActionGroup")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkActionGroup")))
+  ;; Check interfaces
   (is (equal '("GtkBuildable")
-             (list-interfaces "GtkActionGroup")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkActionGroup")))
+  ;; Check class properties
   (is (equal '("accel-group" "name" "sensitive" "visible")
-             (list-properties "GtkActionGroup")))
-  ;; Check the signals
+             (glib-test:list-properties "GtkActionGroup")))
+  ;; Check signals
   (is (equal '("connect-proxy" "disconnect-proxy" "post-activate"
                "pre-activate")
-             (list-signals "GtkActionGroup")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkActionGroup" GTK-ACTION-GROUP
-                       (:SUPERCLASS G-OBJECT
+             (glib-test:list-signals "GtkActionGroup")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkActionGroup" GTK:ACTION-GROUP
+                       (:SUPERCLASS G:OBJECT
                         :EXPORT T
                         :INTERFACES ("GtkBuildable")
                         :TYPE-INITIALIZER "gtk_action_group_get_type")
-                       ((ACCEL-GROUP GTK-ACTION-GROUP-ACCEL-GROUP "accel-group"
-                         "GtkAccelGroup" T T)
-                        (NAME GTK-ACTION-GROUP-NAME "name" "gchararray" T NIL)
-                        (SENSITIVE GTK-ACTION-GROUP-SENSITIVE "sensitive"
-                         "gboolean" T T)
-                        (VISIBLE GTK-ACTION-GROUP-VISIBLE "visible" "gboolean"
-                         T T)))
-             (gobject:get-g-type-definition "GtkActionGroup"))))
+                       ((ACCEL-GROUP ACTION-GROUP-ACCEL-GROUP
+                         "accel-group" "GtkAccelGroup" T T)
+                        (NAME ACTION-GROUP-NAME "name" "gchararray" T NIL)
+                        (SENSITIVE ACTION-GROUP-SENSITIVE
+                         "sensitive" "gboolean" T T)
+                        (VISIBLE ACTION-GROUP-VISIBLE "visible" "gboolean" T T)))
+             (gobject:get-gtype-definition "GtkActionGroup"))))
 
 ;;; --- Access the properties --------------------------------------------------
 
 ;;;   gtk-action-group-accel-group
 
-(test action-group-accel-group
+(test gtk-action-group-accel-group
   (let ((group (make-instance 'gtk:action-group :name "AppWindowActions")))
     (is-false (gtk:action-group-accel-group group))
     (setf (gtk:action-group-accel-group group) (gtk:accel-group-new))
@@ -55,13 +54,13 @@
 
 ;;;   gtk-action-group-name
 
-(test action-group-name
+(test gtk-action-group-name
   (let ((group (make-instance 'gtk:action-group :name "AppWindowActions")))
     (is (equal "AppWindowActions" (gtk:action-group-name group)))))
 
 ;;;   gtk-action-group-sensitive
 
-(test action-group-sensitive
+(test gtk-action-group-sensitive
   (let ((group (make-instance 'gtk:action-group :name "AppWindowActions")))
     (is-true (gtk:action-group-sensitive group))
     (setf (gtk:action-group-sensitive group) nil)
@@ -69,7 +68,7 @@
 
 ;;;   gtk-action-group-visible
 
-(test action-group-visible
+(test gtk-action-group-visible
   (let ((group (make-instance 'gtk:action-group :name "AppWindowActions")))
     (is-true (gtk:action-group-visible group))
     (setf (gtk:action-group-visible group) nil)
@@ -102,4 +101,4 @@
 ;;;    gtk_action_group_set_translation_domain
 ;;;    gtk_action_group_translate_string
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-9-23

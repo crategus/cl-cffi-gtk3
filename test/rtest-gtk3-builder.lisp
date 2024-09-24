@@ -86,33 +86,35 @@
 ;;;     GtkBuilder
 
 (test gtk-builder-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkBuilder"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:builder
           (glib:symbol-for-gtype "GtkBuilder")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkBuilder")
           (g:gtype (cffi:foreign-funcall "gtk_builder_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GObject")
           (g:type-parent "GtkBuilder")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkBuilder")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkBuilder")))
+  ;; Check interfaces
   (is (equal '()
-             (list-interfaces "GtkBuilder")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkBuilder")))
+  ;; Check class properties
   (is (equal '("translation-domain")
-             (list-properties "GtkBuilder")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkBuilder" GTK-BUILDER
-                       (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
+             (glib-test:list-properties "GtkBuilder")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkBuilder" GTK:BUILDER
+                       (:SUPERCLASS G:OBJECT
+                        :EXPORT T
+                        :INTERFACES NIL
                         :TYPE-INITIALIZER "gtk_builder_get_type")
-                       ((TRANSLATION-DOMAIN GTK-BUILDER-TRANSLATION-DOMAIN
+                       ((TRANSLATION-DOMAIN BUILDER-TRANSLATION-DOMAIN
                          "translation-domain" "gchararray" T T)))
-             (gobject:get-g-type-definition "GtkBuilder"))))
+             (gobject:get-gtype-definition "GtkBuilder"))))
 
 ;;; ---  Properties ------------------------------------------------------------
 
@@ -130,21 +132,22 @@
   ;; Check Lisp extension for initializing gtk:builder
   (let ((builder (make-instance 'gtk:builder :from-string *dialog*)))
     (is (typep (gtk:builder-object builder "dialog1") 'gtk:dialog)))
-  (let ((builder (make-instance 'gtk:builder
-                                :from-file
-                                (sys-path "resource/rtest-application.ui"))))
+  (let* ((path (glib-sys:sys-path "test/resource/rtest-application.ui"))
+         (builder (make-instance 'gtk:builder
+                                 :from-file (namestring path))))
     (is (typep (gtk:builder-object builder "menubar") 'g:menu))))
 
 ;;;     gtk_builder_new_from_file
 
 (test gtk-builder-new-from-file
   (is (typep (gtk:builder-new-from-file
-               (sys-path "resource/rtest-application.ui")) 'gtk:builder)))
+               (glib-sys:sys-path "test/resource/rtest-application.ui"))
+             'gtk:builder)))
 
 ;;;     gtk_builder_new_from_resource
 
 (test gtk-builder-new-from-resource
-  (let* ((path (sys-path "resource/rtest-resource.gresource"))
+  (let* ((path (glib-sys:sys-path "test/resource/rtest-resource.gresource"))
          (resource (g:resource-load path)))
     (is-false (g:resources-register resource))
     (is (typep
@@ -166,12 +169,12 @@
 (test gtk-builder-add-from-file
   (let ((builder (gtk:builder-new)))
     (is-true (gtk:builder-add-from-file builder
-                 (sys-path "resource/rtest-application.ui")))))
+                 (glib-sys:sys-path "test/resource/rtest-application.ui")))))
 
 ;;;     gtk_builder_add_from_resource
 
 (test gtk-builder-add-from-resource
-  (let* ((filename (sys-path "resource/rtest-resource.gresource"))
+  (let* ((filename (glib-sys:sys-path "test/resource/rtest-resource.gresource"))
          (resource (g:resource-load filename))
          (builder (gtk:builder-new)))
     (is-false (g:resources-register resource))
@@ -189,7 +192,7 @@
 
 (test gtk-builder-add-objects-from-file.1
   (let ((builder (gtk:builder-new))
-        (path (sys-path "resource/rtest-dialog.ui")))
+        (path (glib-sys:sys-path "test/resource/rtest-dialog.ui")))
     (is-true (gtk:builder-add-objects-from-file builder path "dialog1"))
     (is (typep (gtk:builder-object builder "dialog1") 'gtk:dialog))
     (is (equal '(GTK:DIALOG GTK:BOX GTK:BUTTON-BOX GTK:BUTTON)
@@ -197,7 +200,7 @@
 
 (test gtk-builder-add-objects-from-file.2
   (let ((builder (gtk:builder-new))
-        (path (sys-path "resource/rtest-dialog2.ui")))
+        (path (glib-sys:sys-path "test/resource/rtest-dialog2.ui")))
     (is-true (gtk:builder-add-objects-from-file builder path
                                                         "button_cancel"
                                                         "button_ok"))
@@ -255,4 +258,4 @@
 ;;;     gtk_builder_value_from_string
 ;;;     gtk_builder_value_from_string_type
 
-;;; 2024-3-20
+;;; 2024-9-21

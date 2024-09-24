@@ -60,48 +60,50 @@ dargestellt werden.")
 ;;;   GtkTextBuffer
 
 (test gtk-text-buffer-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkTextBuffer"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:text-buffer
           (glib:symbol-for-gtype "GtkTextBuffer")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkTextBuffer")
           (g:gtype (cffi:foreign-funcall "gtk_text_buffer_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GObject") (g:type-parent "GtkTextBuffer")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkTextBuffer")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkTextBuffer")))
+  ;; Check interfaces
   (is (equal '()
-             (list-interfaces "GtkTextBuffer")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkTextBuffer")))
+  ;; Check class properties
   (is (equal '("copy-target-list" "cursor-position" "has-selection"
                "paste-target-list" "tag-table" "text")
-             (list-properties "GtkTextBuffer")))
-  ;; Check the signals
+             (glib-test:list-properties "GtkTextBuffer")))
+  ;; Check signals
   (is (equal '("apply-tag" "begin-user-action" "changed" "delete-range"
                "end-user-action" "insert-child-anchor" "insert-pixbuf"
                "insert-text" "mark-deleted" "mark-set" "modified-changed"
                "paste-done" "remove-tag")
-             (list-signals "GtkTextBuffer")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkTextBuffer" GTK-TEXT-BUFFER
-                       (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
+             (glib-test:list-signals "GtkTextBuffer")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkTextBuffer" GTK:TEXT-BUFFER
+                       (:SUPERCLASS G:OBJECT
+                        :EXPORT T
+                        :INTERFACES NIL
                         :TYPE-INITIALIZER "gtk_text_buffer_get_type")
-                       ((COPY-TARGET-LIST GTK-TEXT-BUFFER-COPY-TARGET-LIST
+                       ((COPY-TARGET-LIST TEXT-BUFFER-COPY-TARGET-LIST
                          "copy-target-list" "GtkTargetList" T NIL)
-                        (CURSOR-POSITION GTK-TEXT-BUFFER-CURSOR-POSITION
+                        (CURSOR-POSITION TEXT-BUFFER-CURSOR-POSITION
                          "cursor-position" "gint" T NIL)
-                        (HAS-SELECTION GTK-TEXT-BUFFER-HAS-SELECTION
+                        (HAS-SELECTION TEXT-BUFFER-HAS-SELECTION
                          "has-selection" "gboolean" T NIL)
-                        (PASTE-TARGET-LIST GTK-TEXT-BUFFER-PASTE-TARGET-LIST
+                        (PASTE-TARGET-LIST TEXT-BUFFER-PASTE-TARGET-LIST
                          "paste-target-list" "GtkTargetList" T NIL)
-                        (TAG-TABLE GTK-TEXT-BUFFER-TAG-TABLE "tag-table"
-                         "GtkTextTagTable" T NIL)
-                        (TEXT GTK-TEXT-BUFFER-TEXT "text" "gchararray" T T)))
-             (gobject:get-g-type-definition "GtkTextBuffer"))))
+                        (TAG-TABLE TEXT-BUFFER-TAG-TABLE
+                         "tag-table" "GtkTextTagTable" T NIL)
+                        (TEXT TEXT-BUFFER-TEXT "text" "gchararray" T T)))
+             (gobject:get-gtype-definition "GtkTextBuffer"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -266,7 +268,7 @@ dargestellt werden.")
     (is (string= "text1text2text3" (gtk:text-buffer-text buffer)))
     (is (= 15 (gtk:text-buffer-cursor-position buffer)))))
 
-(test text-buffer-insert-with-tags.2
+(test gtk-text-buffer-insert-with-tags.2
   (let* ((buffer (make-instance 'gtk:text-buffer))
          (iter (gtk:text-buffer-start-iter buffer))
          (bold (make-instance 'gtk:text-tag
@@ -413,4 +415,4 @@ dargestellt werden.")
 ;;;     gtk_text_buffer_unregister_deserialize_format
 ;;;     gtk_text_buffer_unregister_serialize_format
 
-;;; --- 2023-7-19 --------------------------------------------------------------
+;;; 2024-9-22

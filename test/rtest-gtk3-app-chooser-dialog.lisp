@@ -7,51 +7,51 @@
 
 ;;;     GtkAppChooserDialog
 
-(test app-chooser-dialog-class
-  ;; Type check
+(test gtk-app-chooser-dialog-class
+  ;; Check type
   (is (g:type-is-object "GtkAppChooserDialog"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:app-chooser-dialog
           (glib:symbol-for-gtype "GtkAppChooserDialog")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkAppChooserDialog")
-          (g:gtype (cffi:foreign-funcall "gtk_app_chooser_dialog_get_type"
-                                         :size))))
-  ;; Check the parent
+          (g:gtype (cffi:foreign-funcall "gtk_app_chooser_dialog_get_type" :size))))
+  ;; Check parent
   (is (eq (g:gtype "GtkDialog") (g:type-parent "GtkAppChooserDialog")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkAppChooserDialog")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkAppChooserDialog")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable" "GtkAppChooser")
-             (list-interfaces "GtkAppChooserDialog")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkAppChooserDialog")))
+  ;; Check class properties
   (is (equal '("content-type" "gfile" "heading")
-             (list-properties "GtkAppChooserDialog")))
-  ;; Get the names of the style properties.
+             (glib-test:list-properties "GtkAppChooserDialog")))
+  ;; Check style properties
   (is (equal '()
-             (list-style-properties "GtkAppChooserDialog")))
-  ;; Get the names of the child properties
+             (gtk-test:list-style-properties "GtkAppChooserDialog")))
+  ;; Check child properties
   (is (equal '()
-             (list-child-properties "GtkAppChooserDialog")))
-  ;; Check the signals
+             (gtk-test:list-child-properties "GtkAppChooserDialog")))
+  ;; Check signals
   (is (equal '()
-             (list-signals "GtkAppChooserDialog")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkAppChooserDialog" 
-                                             GTK-APP-CHOOSER-DIALOG
-                       (:SUPERCLASS GTK-DIALOG :EXPORT T :INTERFACES
+             (glib-test:list-signals "GtkAppChooserDialog")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkAppChooserDialog"
+                                      GTK:APP-CHOOSER-DIALOG
+                       (:SUPERCLASS GTK:DIALOG
+                        :EXPORT T
+                        :INTERFACES
                         ("AtkImplementorIface" "GtkAppChooser" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_app_chooser_dialog_get_type")
-                       ((GFILE GTK-APP-CHOOSER-DIALOG-GFILE "gfile" "GFile" T
-                         NIL)
-                        (HEADING GTK-APP-CHOOSER-DIALOG-HEADING "heading"
-                         "gchararray" T T)))
-             (gobject:get-g-type-definition "GtkAppChooserDialog"))))
+                       ((GFILE APP-CHOOSER-DIALOG-GFILE "gfile" "GFile" T NIL)
+                        (HEADING APP-CHOOSER-DIALOG-HEADING
+                         "heading" "gchararray" T T)))
+             (gobject:get-gtype-definition "GtkAppChooserDialog"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
-(test app-chooser-dialog-properties
+(test gtk-app-chooser-dialog-properties
  (let ((chooser (make-instance 'gtk:app-chooser-dialog
                                :heading "<b>header</b>")))
     (is-false (gtk:app-chooser-dialog-gfile chooser))
@@ -61,8 +61,9 @@
 
 ;;;     gtk_app_chooser_dialog_new
 
-(test app-chooser-dialog-new
-  (let* ((filename (namestring (sys-path "rtest-gtk3-app-chooser-dialog.lisp")))
+(test gtk-app-chooser-dialog-new
+  (let* ((path (glib-sys:sys-path "test/rtest-gtk3-app-chooser-dialog.lisp"))
+         (filename (namestring path))
          (chooser (gtk:app-chooser-dialog-new nil
                                               '(:modal)
                                               (g:file-new-for-path filename))))
@@ -73,7 +74,7 @@
 
 ;;;     gtk_app_chooser_dialog_new_for_content_type
 
-(test app-chooser-dialog-new-for-content-type
+(test gtk-app-chooser-dialog-new-for-content-type
   (let ((chooser (gtk:app-chooser-dialog-new-for-content-type nil
                                                               '(:modal)
                                                               "plain/text")))
@@ -81,8 +82,8 @@
 
 ;;;     gtk_app_chooser_dialog_get_widget
 
-(test app-chooser-dialog-widget
+(test gtk-app-chooser-dialog-widget
   (let ((chooser (make-instance 'gtk:app-chooser-dialog)))
     (is (typep (gtk:app-chooser-dialog-widget chooser) 'gtk:widget))))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-9-21

@@ -8,46 +8,48 @@
 ;;;     GtkCellRendererToggle
 
 (test gtk-cell-renderer-toggle-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkCellRendererToggle"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:cell-renderer-toggle
           (glib:symbol-for-gtype "GtkCellRendererToggle")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkCellRendererToggle")
           (g:gtype (cffi:foreign-funcall "gtk_cell_renderer_toggle_get_type"
                                          :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkCellRenderer")
           (g:type-parent "GtkCellRendererToggle")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkCellRendererToggle")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkCellRendererToggle")))
+  ;; Check interfaces
   (is (equal '()
-             (list-interfaces "GtkCellRendererToggle")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkCellRendererToggle")))
+  ;; Check class properties
   (is (equal '("activatable" "active" "inconsistent" "indicator-size" "radio")
-             (list-properties "GtkCellRendererToggle")))
-  ;; Check the signals
+             (glib-test:list-properties "GtkCellRendererToggle")))
+  ;; Check signals
   (is (equal '("toggled")
-             (list-signals "GtkCellRendererToggle")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkCellRendererToggle"
-                                     GTK-CELL-RENDERER-TOGGLE
-                       (:SUPERCLASS GTK-CELL-RENDERER :EXPORT T :INTERFACES NIL
+             (glib-test:list-signals "GtkCellRendererToggle")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkCellRendererToggle"
+                                       GTK:CELL-RENDERER-TOGGLE
+                       (:SUPERCLASS GTK:CELL-RENDERER
+                        :EXPORT T
+                        :INTERFACES NIL
                         :TYPE-INITIALIZER "gtk_cell_renderer_toggle_get_type")
-                       ((ACTIVATABLE GTK-CELL-RENDERER-TOGGLE-ACTIVATABLE
+                       ((ACTIVATABLE CELL-RENDERER-TOGGLE-ACTIVATABLE
                          "activatable" "gboolean" T T)
-                        (ACTIVE GTK-CELL-RENDERER-TOGGLE-ACTIVE "active"
-                         "gboolean" T T)
-                        (INCONSISTENT GTK-CELL-RENDERER-TOGGLE-INCONSISTENT
+                        (ACTIVE CELL-RENDERER-TOGGLE-ACTIVE
+                         "active" "gboolean" T T)
+                        (INCONSISTENT CELL-RENDERER-TOGGLE-INCONSISTENT
                          "inconsistent" "gboolean" T T)
-                        (INDICATOR-SIZE GTK-CELL-RENDERER-TOGGLE-INDICATOR-SIZE
+                        (INDICATOR-SIZE CELL-RENDERER-TOGGLE-INDICATOR-SIZE
                          "indicator-size" "gint" T T)
-                        (RADIO GTK-CELL-RENDERER-TOGGLE-RADIO "radio"
-                         "gboolean" T T)))
-             (gobject:get-g-type-definition "GtkCellRendererToggle"))))
+                        (RADIO CELL-RENDERER-TOGGLE-RADIO
+                         "radio" "gboolean" T T)))
+             (gobject:get-gtype-definition "GtkCellRendererToggle"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -70,4 +72,4 @@
 (test gtk-cell-renderer-toggle-new
   (is (typep (gtk:cell-renderer-toggle-new) 'gtk:cell-renderer-toggle)))
 
-;;; 2024-3-17
+;;; 2024-9-22

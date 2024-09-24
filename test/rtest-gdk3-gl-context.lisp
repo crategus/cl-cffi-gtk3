@@ -23,26 +23,27 @@
           (g:type-parent "GdkGLContext")))
   ;; Check children
   (is (equal '()
-             (gtk-test:list-children "GdkGLContext")))
+             (glib-test:list-children "GdkGLContext")))
   ;; Check interfaces
   (is (equal '()
-             (gtk-test:list-interfaces "GdkGLContext")))
+             (glib-test:list-interfaces "GdkGLContext")))
   ;; Check class properties
   (is (equal '("display" "shared-context" "window")
-             (gtk-test:list-properties "GdkGLContext")))
+             (glib-test:list-properties "GdkGLContext")))
   ;; Check signals
   (is (equal '()
-             (gtk-test:list-signals "GdkGLContext")))
+             (glib-test:list-signals "GdkGLContext")))
   ;; Check class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GdkGLContext" GDK-G-L-CONTEXT
-                       (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL)
-                       ((DISPLAY GDK-G-L-CONTEXT-DISPLAY "display" "GdkDisplay"
-                         T NIL)
-                        (SHARED-CONTEXT GDK-G-L-CONTEXT-SHARED-CONTEXT
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GdkGLContext" GDK:GL-CONTEXT
+                       (:SUPERCLASS G:OBJECT
+                        :EXPORT T
+                        :INTERFACES NIL)
+                       ((DISPLAY GL-CONTEXT-DISPLAY
+                         "display" "GdkDisplay" T NIL)
+                        (SHARED-CONTEXT GL-CONTEXT-SHARED-CONTEXT
                          "shared-context" "GdkGLContext" T NIL)
-                        (WINDOW GDK-G-L-CONTEXT-WINDOW "window" "GdkWindow" T
-                         NIL)))
-             (gobject:get-g-type-definition "GdkGLContext"))))
+                        (WINDOW GL-CONTEXT-WINDOW "window" "GdkWindow" T NIL)))
+             (gobject:get-gtype-definition "GdkGLContext"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -67,4 +68,4 @@
 ;;;     gdk_gl_context_get_current
 ;;;     gdk_gl_context_clear_current
 
-;;; 2024-6-26
+;;; 2024-9-21

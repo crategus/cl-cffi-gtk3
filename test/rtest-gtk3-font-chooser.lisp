@@ -8,74 +8,74 @@
 ;;;     GtkFontChooserLevel
 
 (test gtk-font-chooser-level
-  ;; Check the type
+  ;; Check type
   (is (g:type-is-flags "GtkFontChooserLevel"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:font-chooser-level
           (glib:symbol-for-gtype "GtkFontChooserLevel")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkFontChooserLevel")
           (g:gtype (cffi:foreign-funcall "gtk_font_chooser_level_get_type"
                                          :size))))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_FONT_CHOOSER_LEVEL_FAMILY" "GTK_FONT_CHOOSER_LEVEL_STYLE"
                "GTK_FONT_CHOOSER_LEVEL_SIZE" "GTK_FONT_CHOOSER_LEVEL_VARIATIONS"
                "GTK_FONT_CHOOSER_LEVEL_FEATURES")
-             (list-flags-item-name "GtkFontChooserLevel")))
-  ;; Check the values
+             (glib-test:list-flags-item-names "GtkFontChooserLevel")))
+  ;; Check values
   (is (equal '(0 1 2 4 8)
-             (list-flags-item-value "GtkFontChooserLevel")))
-  ;; Check the nick names
+             (glib-test:list-flags-item-values "GtkFontChooserLevel")))
+  ;; Check nick names
   (is (equal '("family" "style" "size" "variations" "features")
-             (list-flags-item-nick "GtkFontChooserLevel")))
-  ;; Check the flags definition
-  (is (equal '(GOBJECT:DEFINE-G-FLAGS "GtkFontChooserLevel"
-                              GTK-FONT-CHOOSER-LEVEL
-                              (:EXPORT T
-                               :TYPE-INITIALIZER
-                               "gtk_font_chooser_level_get_type")
-                              (:FAMILY 0)
-                              (:STYLE 1)
-                              (:SIZE 2)
-                              (:VARIATIONS 4)
-                              (:FEATURES 8))
-             (gobject:get-g-type-definition "GtkFontChooserLevel"))))
+             (glib-test:list-flags-item-nicks "GtkFontChooserLevel")))
+  ;; Check flags definition
+  (is (equal '(GOBJECT:DEFINE-GFLAGS "GtkFontChooserLevel"
+                                     GTK:FONT-CHOOSER-LEVEL
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_font_chooser_level_get_type")
+                       (:FAMILY 0)
+                       (:STYLE 1)
+                       (:SIZE 2)
+                       (:VARIATIONS 4)
+                       (:FEATURES 8))
+             (gobject:get-gtype-definition "GtkFontChooserLevel"))))
 
 ;;;     GtkFontChooser
 
 (test gtk-font-chooser-interface
-  ;; Type check
+  ;; Check type
   (is (g:type-is-interface "GtkFontChooser"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:font-chooser
           (glib:symbol-for-gtype "GtkFontChooser")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkFontChooser")
           (g:gtype (cffi:foreign-funcall "gtk_font_chooser_get_type" :size))))
-  ;; Get the names of the interface properties.
+  ;; Check interface properties.
   (is (equal '("font" "font-desc" "font-features" "language" "level"
                "preview-text" "show-preview-entry")
-             (list-interface-properties "GtkFontChooser")))
-  ;; Check the signals
+             (glib-test:list-interface-properties "GtkFontChooser")))
+  ;; Check signals
   (is (equal '("font-activated")
-             (list-signals "GtkFontChooser")))
-  ;; Get the interface definition
-  (is (equal '(GOBJECT:DEFINE-G-INTERFACE "GtkFontChooser" GTK-FONT-CHOOSER
-                    (:EXPORT T :TYPE-INITIALIZER "gtk_font_chooser_get_type")
-                    (FONT GTK-FONT-CHOOSER-FONT "font" "gchararray" T T)
-                    (FONT-DESC GTK-FONT-CHOOSER-FONT-DESC "font-desc"
-                     "PangoFontDescription" T T)
-                    (FONT-FEATURES GTK-FONT-CHOOSER-FONT-FEATURES
-                     "font-features" "gchararray" T NIL)
-                    (LANGUAGE GTK-FONT-CHOOSER-LANGUAGE "language" "gchararray"
-                     T T)
-                    (LEVEL GTK-FONT-CHOOSER-LEVEL "level" "GtkFontChooserLevel"
-                     T T)
-                    (PREVIEW-TEXT GTK-FONT-CHOOSER-PREVIEW-TEXT "preview-text"
-                     "gchararray" T T)
-                    (SHOW-PREVIEW-ENTRY GTK-FONT-CHOOSER-SHOW-PREVIEW-ENTRY
-                     "show-preview-entry" "gboolean" T T))
-             (gobject:get-g-type-definition "GtkFontChooser"))))
+             (glib-test:list-signals "GtkFontChooser")))
+  ;; Check interface definition
+  (is (equal '(GOBJECT:DEFINE-GINTERFACE "GtkFontChooser" GTK:FONT-CHOOSER
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_font_chooser_get_type")
+                       (FONT FONT-CHOOSER-FONT "font" "gchararray" T T)
+                       (FONT-DESC FONT-CHOOSER-FONT-DESC
+                        "font-desc" "PangoFontDescription" T T)
+                       (FONT-FEATURES FONT-CHOOSER-FONT-FEATURES
+                        "font-features" "gchararray" T NIL)
+                       (LANGUAGE FONT-CHOOSER-LANGUAGE
+                        "language" "gchararray" T T)
+                       (LEVEL FONT-CHOOSER-LEVEL
+                        "level" "GtkFontChooserLevel" T T)
+                       (PREVIEW-TEXT FONT-CHOOSER-PREVIEW-TEXT
+                        "preview-text" "gchararray" T T)
+                       (SHOW-PREVIEW-ENTRY FONT-CHOOSER-SHOW-PREVIEW-ENTRY
+                        "show-preview-entry" "gboolean" T T))
+             (gobject:get-gtype-definition "GtkFontChooser"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -144,4 +144,4 @@
   (let ((button (gtk:font-button-new)))
     (is-false (gtk:font-chooser-font-map button))))
 
-;;; --- 2023-6-17 --------------------------------------------------------------
+;;; 2024-9-22

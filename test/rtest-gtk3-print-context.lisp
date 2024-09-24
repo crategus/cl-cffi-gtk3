@@ -5,35 +5,37 @@
 
 ;;;     GtkPrintContext
 
-(test print-context-class
-  ;; Type check
+(test gtk-print-context-class
+  ;; Check type
   (is (g:type-is-object "GtkPrintContext"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:print-context
           (glib:symbol-for-gtype "GtkPrintContext")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkPrintContext")
           (g:gtype (cffi:foreign-funcall "gtk_print_context_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GObject") (g:type-parent "GtkPrintContext")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkPrintContext")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkPrintContext")))
+  ;; Check interfaces
   (is (equal '()
-             (list-interfaces "GtkPrintContext")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkPrintContext")))
+  ;; Check class properties
   (is (equal '()
-             (list-properties "GtkPrintContext")))
-  ;; Check the signals
+             (glib-test:list-properties "GtkPrintContext")))
+  ;; Check signals
   (is (equal '()
-             (list-signals "GtkPrintContext")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkPrintContext" GTK-PRINT-CONTEXT
-                       (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
+             (glib-test:list-signals "GtkPrintContext")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkPrintContext" GTK:PRINT-CONTEXT
+                       (:SUPERCLASS G:OBJECT
+                        :EXPORT T
+                        :INTERFACES NIL
                         :TYPE-INITIALIZER "gtk_print_context_get_type")
                        NIL)
-             (gobject:get-g-type-definition "GtkPrintContext"))))
+             (gobject:get-gtype-definition "GtkPrintContext"))))
 
 ;;;     Functions
 
@@ -49,4 +51,4 @@
 ;;;     gtk_print_context_create_pango_layout
 ;;;     gtk_print_context_get_hard_margins
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-9-23

@@ -9,42 +9,43 @@
 
 ;;;     GtkTextTagTable
 
-(test text-tag-table-class
-  ;; Type check
+(test gtk-text-tag-table-class
+  ;; Check type
   (is (g:type-is-object "GtkTextTagTable"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:text-tag-table
           (glib:symbol-for-gtype "GtkTextTagTable")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype"GtkTextTagTable")
           (g:gtype (cffi:foreign-funcall "gtk_text_tag_table_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GObject") (g:type-parent "GtkTextTagTable")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkTextTagTable")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkTextTagTable")))
+  ;; Check interfaces
   (is (equal '("GtkBuildable")
-             (list-interfaces "GtkTextTagTable")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkTextTagTable")))
+  ;; Check class properties
   (is (equal '()
-             (list-properties "GtkTextTagTable")))
-  ;; Check the signals
+             (glib-test:list-properties "GtkTextTagTable")))
+  ;; Check signals
   (is (equal '("tag-added" "tag-changed" "tag-removed")
-             (list-signals "GtkTextTagTable")))
+             (glib-test:list-signals "GtkTextTagTable")))
   ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkTextTagTable" GTK-TEXT-TAG-TABLE
-                       (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES
-                        ("GtkBuildable") :TYPE-INITIALIZER
-                        "gtk_text_tag_table_get_type")
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkTextTagTable" GTK:TEXT-TAG-TABLE
+                       (:SUPERCLASS G:OBJECT
+                        :EXPORT T
+                        :INTERFACES ("GtkBuildable")
+                        :TYPE-INITIALIZER "gtk_text_tag_table_get_type")
                        NIL)
-             (gobject:get-g-type-definition "GtkTextTagTable"))))
+             (gobject:get-gtype-definition "GtkTextTagTable"))))
 
 ;;; --- Functions --------------------------------------------------------------
 
 ;;;     gtk_text_tag_table_new
 
-(test text-tag-table-new
+(test gtk-text-tag-table-new
   (is (typep (gtk:text-tag-table-new) 'gtk:text-tag-table))
   (is (= 0 (gtk:text-tag-table-size (gtk:text-tag-table-new)))))
 
@@ -53,7 +54,7 @@
 ;;;     gtk_text_tag_table_lookup
 ;;;     gtk_text_tag_table_get_size
 
-(test text-tag-table-add
+(test gtk-text-tag-table-add
   (let ((table (gtk:text-tag-table-new)))
     (is (= 0 (gtk:text-tag-table-size table)))
     (is-true (gtk:text-tag-table-add table
@@ -86,7 +87,7 @@
 
 ;;;     gtk_text_tag_table_foreach
 
-(test text-tag-table-foreach
+(test gtk-text-tag-table-foreach
   (let ((table (gtk:text-tag-table-new)))
     (is-true (gtk:text-tag-table-add table
                                      (gtk:text-tag-new "bold"
@@ -118,7 +119,7 @@
 ;;;     void   tag-removed    Run Last
 
 #+nil
-(test text-tag-table-signals
+(test gtk-text-tag-table-signals
   (let* ((result nil)
          (table (gtk:text-tag-table-new))
          (added (g-signal-connect table "tag-added"
@@ -148,4 +149,4 @@
     (setf (gtk:text-tag-font (gtk:text-tag-table-lookup table "font")) "italic")
     (is (equal '("changed" "removed" "added" "added") result))))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-9-22

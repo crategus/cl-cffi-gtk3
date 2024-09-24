@@ -23,7 +23,7 @@
 
 ;;;     gdk_frame_clock_frame_time
 
-(test frame-clock-frame-time
+(test gdk-frame-clock-frame-time
   (let ((window (make-instance 'gtk:window :type :toplevel)))
     (is-false (gtk:widget-realize window))
     (let ((frame-clock (gtk:widget-frame-clock window)))
@@ -32,7 +32,7 @@
 
 ;;;     gdk_frame_clock_request_phase
 
-(test frame-clock-request-phase
+(test gdk-frame-clock-request-phase
   (let ((window (make-instance 'gtk:window :type :toplevel)))
     (is-false (gtk:widget-realize window))
     (let ((frame-clock (gtk:widget-frame-clock window)))
@@ -44,7 +44,7 @@
 ;;;     gdk_frame_clock_begin_updating
 ;;;     gdk_frame_clock_end_updating
 
-(test frame-clock-updating
+(test gdk-frame-clock-updating
   (let ((window (make-instance 'gtk:window :type :toplevel)))
     (is-false (gtk:widget-realize window))
     (let ((frame-clock (gtk:widget-frame-clock window)))
@@ -56,7 +56,7 @@
 
 ;;;     gdk_frame_clock_frame_counter
 
-(test frame-clock-frame-counter
+(test gdk-frame-clock-frame-counter
   (let ((window (make-instance 'gtk:window :type :toplevel)))
     (is-false (gtk:widget-realize window))
     (let ((frame-clock (gtk:widget-frame-clock window)))
@@ -67,7 +67,7 @@
 
 ;;;     gdk_frame_clock_history_start
 
-(test frame-clock-frame-counter
+(test gdk-frame-clock-frame-counter
   (let ((window (make-instance 'gtk:window :type :toplevel)))
     (is-false (gtk:widget-realize window))
     (let ((frame-clock (gtk:widget-frame-clock window)))
@@ -78,7 +78,7 @@
 
 ;;;     gdk_frame_clock_timings
 
-(test frame-clock-timings
+(test gdk-frame-clock-timings
   (let ((window (make-instance 'gtk:window :type :toplevel)))
     (is-false (gtk:widget-realize window))
     (let ((frame-clock (gtk:widget-frame-clock window)))
@@ -90,7 +90,7 @@
 
 ;; TODO: Create an example with a gdk:frame-timings instance
 
-(test frame-clock-current-timings
+(test gdk-frame-clock-current-timings
   (let ((window (make-instance 'gtk:window :type :toplevel)))
     (is-false (gtk:widget-realize window))
     (let ((frame-clock (gtk:widget-frame-clock window)))
@@ -101,7 +101,7 @@
 
 ;;;     gdk_frame_clock_refresh_info
 
-(test frame-clock-refresh-info
+(test gdk-frame-clock-refresh-info
   (let ((window (make-instance 'gtk:window :type :toplevel)))
     (is-false (gtk:widget-realize window))
     (let ((frame-clock (gtk:widget-frame-clock window)))
@@ -111,4 +111,4 @@
                  (multiple-value-list
                    (gdk:frame-clock-refresh-info frame-clock 0)))))))
 
-;;; --- 2023-1-24 --------------------------------------------------------------
+;;; 2024-9-22

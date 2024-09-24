@@ -15,29 +15,26 @@
           (glib:symbol-for-gtype "GtkFileFilterFlags")))
   ;; Check type initializer
   (is (eq (g:gtype "GtkFileFilterFlags")
-          (g:gtype (cffi:foreign-funcall "gtk_file_filter_flags_get_type"
-                                         :size))))
+          (g:gtype (cffi:foreign-funcall "gtk_file_filter_flags_get_type" :size))))
   ;; Check names
   (is (equal '("GTK_FILE_FILTER_FILENAME" "GTK_FILE_FILTER_URI"
                "GTK_FILE_FILTER_DISPLAY_NAME" "GTK_FILE_FILTER_MIME_TYPE")
-             (gtk-test:list-flags-item-name "GtkFileFilterFlags")))
+             (glib-test:list-flags-item-names "GtkFileFilterFlags")))
   ;; Check values
   (is (equal '(1 2 4 8)
-             (gtk-test:list-flags-item-value "GtkFileFilterFlags")))
+             (glib-test:list-flags-item-values "GtkFileFilterFlags")))
   ;; Check nick names
   (is (equal '("filename" "uri" "display-name" "mime-type")
-             (gtk-test:list-flags-item-nick "GtkFileFilterFlags")))
+             (glib-test:list-flags-item-nicks "GtkFileFilterFlags")))
   ;; Check flags definition
-  (is (equal '(GOBJECT:DEFINE-G-FLAGS "GtkFileFilterFlags"
-                              GTK-FILE-FILTER-FLAGS
-                              (:EXPORT T
-                               :TYPE-INITIALIZER
-                               "gtk_file_filter_flags_get_type")
-                              (:FILENAME 1)
-                              (:URI 2)
-                              (:DISPLAY-NAME 4)
-                              (:MIME-TYPE 8))
-             (gobject:get-g-type-definition "GtkFileFilterFlags"))))
+  (is (equal '(GOBJECT:DEFINE-GFLAGS "GtkFileFilterFlags" GTK:FILE-FILTER-FLAGS
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_file_filter_flags_get_type")
+                       (:FILENAME 1)
+                       (:URI 2)
+                       (:DISPLAY-NAME 4)
+                       (:MIME-TYPE 8))
+             (gobject:get-gtype-definition "GtkFileFilterFlags"))))
 
 ;;;     GtkFileFilterInfo
 
@@ -57,23 +54,24 @@
           (g:type-parent "GtkFileFilter")))
   ;; Check children
   (is (equal '()
-             (gtk-test:list-children "GtkFileFilter")))
+             (glib-test:list-children "GtkFileFilter")))
   ;; Check interfaces
   (is (equal '("GtkBuildable")
-             (gtk-test:list-interfaces "GtkFileFilter")))
+             (glib-test:list-interfaces "GtkFileFilter")))
   ;; Check class properties
   (is (equal '()
-             (gtk-test:list-properties "GtkFileFilter")))
+             (glib-test:list-properties "GtkFileFilter")))
   ;; Check signals
   (is (equal '()
-             (gtk-test:list-signals "GtkFileFilter")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkFileFilter" GTK-FILE-FILTER
-                       (:SUPERCLASS G-INITIALLY-UNOWNED :EXPORT T :INTERFACES
-                        ("GtkBuildable") :TYPE-INITIALIZER
-                        "gtk_file_filter_get_type")
+             (glib-test:list-signals "GtkFileFilter")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkFileFilter" GTK:FILE-FILTER
+                       (:SUPERCLASS G:INITIALLY-UNOWNED
+                        :EXPORT T
+                        :INTERFACES ("GtkBuildable")
+                        :TYPE-INITIALIZER "gtk_file_filter_get_type")
                        NIL)
-             (gobject:get-g-type-definition "GtkFileFilter"))))
+             (gobject:get-gtype-definition "GtkFileFilter"))))
 
 ;;; --- Functions --------------------------------------------------------------
 
@@ -181,4 +179,4 @@
     (is (string= "('[Invalid UTF-8]', [(1, 'text/plain')])"
                  (g:variant-print (gtk:file-filter-to-gvariant filter))))))
 
-;;; 2024-6-24
+;;; 2024-9-21

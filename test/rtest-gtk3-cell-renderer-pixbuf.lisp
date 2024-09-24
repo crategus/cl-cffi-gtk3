@@ -8,63 +8,61 @@
 ;;;     GtkCellRendererPixbuf
 
 (test gtk-cell-renderer-pixbuf-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkCellRendererPixbuf"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:cell-renderer-pixbuf
           (glib:symbol-for-gtype "GtkCellRendererPixbuf")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkCellRendererPixbuf")
           (g:gtype (cffi:foreign-funcall "gtk_cell_renderer_pixbuf_get_type"
                                          :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkCellRenderer")
           (g:type-parent "GtkCellRendererPixbuf")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkCellRendererPixbuf")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkCellRendererPixbuf")))
+  ;; Check interfaces
   (is (equal '()
-             (list-interfaces "GtkCellRendererPixbuf")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkCellRendererPixbuf")))
+  ;; Check class properties
   (is (equal '("follow-state" "gicon" "icon-name" "pixbuf"
                "pixbuf-expander-closed" "pixbuf-expander-open" "stock-detail"
                "stock-id" "stock-size" "surface")
-             (list-properties "GtkCellRendererPixbuf")))
-  ;; Check the signals
+             (glib-test:list-properties "GtkCellRendererPixbuf")))
+  ;; Check signals
   (is (equal '()
-             (list-signals "GtkCellRendererPixbuf")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkCellRendererPixbuf"
-                                             GTK-CELL-RENDERER-PIXBUF
-                               (:SUPERCLASS GTK-CELL-RENDERER :EXPORT T
-                                :INTERFACES NIL :TYPE-INITIALIZER
-                                "gtk_cell_renderer_pixbuf_get_type")
-                               ((FOLLOW-STATE
-                                 GTK-CELL-RENDERER-PIXBUF-FOLLOW-STATE
-                                 "follow-state" "gboolean" T T)
-                                (GICON GTK-CELL-RENDERER-PIXBUF-GICON "gicon"
-                                 "GIcon" T T)
-                                (ICON-NAME GTK-CELL-RENDERER-PIXBUF-ICON-NAME
-                                 "icon-name" "gchararray" T T)
-                                (PIXBUF GTK-CELL-RENDERER-PIXBUF-PIXBUF
-                                 "pixbuf" "GdkPixbuf" T T)
-                                (PIXBUF-EXPANDER-CLOSED
-                                 GTK-CELL-RENDERER-PIXBUF-PIXBUF-EXPANDER-CLOSED
-                                 "pixbuf-expander-closed" "GdkPixbuf" T T)
-                                (PIXBUF-EXPANDER-OPEN
-                                 GTK-CELL-RENDERER-PIXBUF-PIXBUF-EXPANDER-OPEN
-                                 "pixbuf-expander-open" "GdkPixbuf" T T)
-                                (STOCK-DETAIL
-                                 GTK-CELL-RENDERER-PIXBUF-STOCK-DETAIL
-                                 "stock-detail" "gchararray" T T)
-                                (STOCK-ID GTK-CELL-RENDERER-PIXBUF-STOCK-ID
-                                 "stock-id" "gchararray" T T)
-                                (STOCK-SIZE GTK-CELL-RENDERER-PIXBUF-STOCK-SIZE
-                                 "stock-size" "guint" T T)
-                                (SURFACE GTK-CELL-RENDERER-PIXBUF-SURFACE
-                                 "surface" "CairoSurface" T T)))
-             (gobject:get-g-type-definition "GtkCellRendererPixbuf"))))
+             (glib-test:list-signals "GtkCellRendererPixbuf")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkCellRendererPixbuf"
+                                       GTK:CELL-RENDERER-PIXBUF
+                       (:SUPERCLASS GTK:CELL-RENDERER
+                        :EXPORT T
+                        :INTERFACES NIL
+                        :TYPE-INITIALIZER "gtk_cell_renderer_pixbuf_get_type")
+                       ((FOLLOW-STATE CELL-RENDERER-PIXBUF-FOLLOW-STATE
+                         "follow-state" "gboolean" T T)
+                        (GICON CELL-RENDERER-PIXBUF-GICON "gicon" "GIcon" T T)
+                        (ICON-NAME CELL-RENDERER-PIXBUF-ICON-NAME
+                         "icon-name" "gchararray" T T)
+                        (PIXBUF CELL-RENDERER-PIXBUF-PIXBUF
+                         "pixbuf" "GdkPixbuf" T T)
+                        (PIXBUF-EXPANDER-CLOSED
+                         CELL-RENDERER-PIXBUF-PIXBUF-EXPANDER-CLOSED
+                         "pixbuf-expander-closed" "GdkPixbuf" T T)
+                        (PIXBUF-EXPANDER-OPEN
+                         CELL-RENDERER-PIXBUF-PIXBUF-EXPANDER-OPEN
+                         "pixbuf-expander-open" "GdkPixbuf" T T)
+                        (STOCK-DETAIL CELL-RENDERER-PIXBUF-STOCK-DETAIL
+                         "stock-detail" "gchararray" T T)
+                        (STOCK-ID CELL-RENDERER-PIXBUF-STOCK-ID
+                         "stock-id" "gchararray" T T)
+                        (STOCK-SIZE CELL-RENDERER-PIXBUF-STOCK-SIZE
+                         "stock-size" "guint" T T)
+                        (SURFACE CELL-RENDERER-PIXBUF-SURFACE
+                         "surface" "CairoSurface" T T)))
+             (gobject:get-gtype-definition "GtkCellRendererPixbuf"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -88,4 +86,4 @@
 (test gtk-cell-renderer-pixbuf-new
   (is (typep (gtk:cell-renderer-pixbuf-new) 'gtk:cell-renderer-pixbuf)))
 
-;;; 2024-3-17
+;;; 2024-9-22

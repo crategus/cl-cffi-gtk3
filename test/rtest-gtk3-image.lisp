@@ -7,103 +7,98 @@
 
 ;;;     GtkImageType
 
-(test image-type
-  ;; Check the type
+(test gtk-image-type
+  ;; Check type
   (is (g:type-is-enum "GtkImageType"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkImageType")
           (g:gtype (cffi:foreign-funcall "gtk_image_type_get_type" :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:image-type
           (glib:symbol-for-gtype "GtkImageType")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_IMAGE_EMPTY" "GTK_IMAGE_PIXBUF" "GTK_IMAGE_STOCK"
                "GTK_IMAGE_ICON_SET" "GTK_IMAGE_ANIMATION" "GTK_IMAGE_ICON_NAME"
                "GTK_IMAGE_GICON" "GTK_IMAGE_SURFACE")
-             (list-enum-item-name "GtkImageType")))
-  ;; Check the values
+             (glib-test:list-enum-item-names "GtkImageType")))
+  ;; Check values
   (is (equal '(0 1 2 3 4 5 6 7)
-             (list-enum-item-value "GtkImageType")))
-  ;; Check the nick names
+             (glib-test:list-enum-item-values "GtkImageType")))
+  ;; Check nick names
   (is (equal '("empty" "pixbuf" "stock" "icon-set" "animation" "icon-name"
                "gicon" "surface")
-             (list-enum-item-nick "GtkImageType")))
-  ;; Check the enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkImageType"
-                             GTK-IMAGE-TYPE
-                             (:EXPORT T
-                              :TYPE-INITIALIZER "gtk_image_type_get_type")
-                             (:EMPTY 0)
-                             (:PIXBUF 1)
-                             (:STOCK 2)
-                             (:ICON-SET 3)
-                             (:ANIMATION 4)
-                             (:ICON-NAME 5)
-                             (:GICON 6)
-                             (:SURFACE 7))
-             (gobject:get-g-type-definition "GtkImageType"))))
+             (glib-test:list-enum-item-nicks "GtkImageType")))
+  ;; Check enum definition
+  (is (equal '(GOBJECT:DEFINE-GENUM "GtkImageType" GTK:IMAGE-TYPE
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_image_type_get_type")
+                       (:EMPTY 0)
+                       (:PIXBUF 1)
+                       (:STOCK 2)
+                       (:ICON-SET 3)
+                       (:ANIMATION 4)
+                       (:ICON-NAME 5)
+                       (:GICON 6)
+                       (:SURFACE 7))
+             (gobject:get-gtype-definition "GtkImageType"))))
 
 ;;;     GtkImage
 
-(test image-class
-  ;; Type check
+(test gtk-image-class
+  ;; Check type
   (is (g:type-is-object "GtkImage"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:image
           (glib:symbol-for-gtype "GtkImage")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkImage")
           (g:gtype (cffi:foreign-funcall "gtk_image_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkMisc") (g:type-parent "GtkImage")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkImage")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkImage")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
-             (list-interfaces "GtkImage")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkImage")))
+  ;; Check class properties
   (is (equal '("file" "gicon" "icon-name" "icon-set" "icon-size" "pixbuf"
                "pixbuf-animation" "pixel-size" "resource" "stock" "storage-type"
                "surface" "use-fallback")
-             (list-properties "GtkImage")))
-  ;; Check the style properties.
+             (glib-test:list-properties "GtkImage")))
+  ;; Check style properties
   (is (equal '()
-             (list-style-properties "GtkImage")))
-  ;; Check the signals
+             (gtk-test:list-style-properties "GtkImage")))
+  ;; Check signals
   (is (equal '()
-             (list-signals "GtkImage")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkImage" GTK-IMAGE
-                       (:SUPERCLASS GTK-MISC :EXPORT T :INTERFACES
-                        ("AtkImplementorIface" "GtkBuildable")
+             (glib-test:list-signals "GtkImage")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkImage" GTK:IMAGE
+                       (:SUPERCLASS GTK:MISC
+                        :EXPORT T
+                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_image_get_type")
-                       ((FILE GTK-IMAGE-FILE "file" "gchararray" T T)
-                        (GICON GTK-IMAGE-GICON "gicon" "GIcon" T T)
-                        (ICON-NAME GTK-IMAGE-ICON-NAME "icon-name" "gchararray"
-                         T T)
-                        (ICON-SET GTK-IMAGE-ICON-SET "icon-set" "GtkIconSet" T
-                         T)
-                        (ICON-SIZE GTK-IMAGE-ICON-SIZE "icon-size" "gint" T T)
-                        (PIXBUF GTK-IMAGE-PIXBUF "pixbuf" "GdkPixbuf" T T)
-                        (PIXBUF-ANIMATION GTK-IMAGE-PIXBUF-ANIMATION
+                       ((FILE IMAGE-FILE "file" "gchararray" T T)
+                        (GICON IMAGE-GICON "gicon" "GIcon" T T)
+                        (ICON-NAME IMAGE-ICON-NAME "icon-name" "gchararray" T T)
+                        (ICON-SET IMAGE-ICON-SET "icon-set" "GtkIconSet" T T)
+                        (ICON-SIZE IMAGE-ICON-SIZE "icon-size" "gint" T T)
+                        (PIXBUF IMAGE-PIXBUF "pixbuf" "GdkPixbuf" T T)
+                        (PIXBUF-ANIMATION IMAGE-PIXBUF-ANIMATION
                          "pixbuf-animation" "GdkPixbufAnimation" T T)
-                        (PIXEL-SIZE GTK-IMAGE-PIXEL-SIZE "pixel-size" "gint" T
-                         T)
-                        (RESOURCE GTK-IMAGE-RESOURCE "resource" "gchararray" T
-                         T)
-                        (STOCK GTK-IMAGE-STOCK "stock" "gchararray" T T)
-                        (STORAGE-TYPE GTK-IMAGE-STORAGE-TYPE "storage-type"
-                         "GtkImageType" T NIL)
-                        (SURFACE GTK-IMAGE-SURFACE "surface" "CairoSurface" T
-                         T)
-                        (USE-FALLBACK GTK-IMAGE-USE-FALLBACK "use-fallback"
-                         "gboolean" T T)))
-             (gobject:get-g-type-definition "GtkImage"))))
+                        (PIXEL-SIZE IMAGE-PIXEL-SIZE "pixel-size" "gint" T T)
+                        (RESOURCE IMAGE-RESOURCE "resource" "gchararray" T T)
+                        (STOCK IMAGE-STOCK "stock" "gchararray" T T)
+                        (STORAGE-TYPE IMAGE-STORAGE-TYPE
+                         "storage-type" "GtkImageType" T NIL)
+                        (SURFACE IMAGE-SURFACE "surface" "CairoSurface" T T)
+                        (USE-FALLBACK IMAGE-USE-FALLBACK
+                         "use-fallback" "gboolean" T T)))
+             (gobject:get-gtype-definition "GtkImage"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
-(test image-properties
+(test gtk-image-properties
   (let ((image (make-instance 'gtk:image)))
     (is-false (gtk:image-file image))
     (is-false (gtk:image-gicon image))
@@ -120,14 +115,14 @@
     (is-false (gtk:image-surface image))
     (is-false (gtk:image-use-fallback image))))
 
-(test image-icon-size
+(test gtk-image-icon-size
   ;; The accessor gtk:image-icon-size is implemented with an integer.
   ;; This integer can be converted to a gtk:icon-size keyword
   (let ((image (gtk:image-new)))
     (is (eq :button
             (cffi:foreign-enum-keyword 'gtk:icon-size
                                        (gtk:image-icon-size image))))
-    (is (= (foreign-enum-value 'gtk:icon-size :button)
+    (is (= (cffi:foreign-enum-value 'gtk:icon-size :button)
            (gtk:image-icon-size image)))))
 
 ;;; --- Functions --------------------------------------------------------------
@@ -137,8 +132,8 @@
 
 ;;;     gtk_image_get_animation
 
-(test image-get-animation
-  (let* ((path (sys-path "resource/floppybuddy.gif"))
+(test gtk-image-get-animation
+  (let* ((path (glib-sys:sys-path "test/resource/floppybuddy.gif"))
          (animation (gdk:pixbuf-animation-new-from-file path))
          (image (gtk:image-new-from-animation animation)))
     (is (typep image 'gtk:image))
@@ -146,7 +141,7 @@
 
 ;;;     gtk_image_get_icon_name
 
-(test image-get-icon-name
+(test gtk-image-get-icon-name
   (let ((image (gtk:image-new-from-icon-name "gtk-ok" :dialog)))
     (is (typep image 'gtk:image))
     (is (string= "gtk-ok" (gtk:image-get-icon-name image)))
@@ -157,7 +152,7 @@
 
 ;;;     gtk_image_get_gicon
 
-(test image-get-gicon
+(test gtk-image-get-gicon
   (let* ((icon (g:themed-icon-new-from-names "gtk-ok"))
          (image (gtk:image-new-from-gicon icon :dialog)))
     (is (typep image 'gtk:image))
@@ -169,8 +164,8 @@
 
 ;;;     gtk_image_new_from_file
 
-(test image-new-from-file
-  (let* ((path (sys-path "resource/gtk-logo-24.png"))
+(test gtk-image-new-from-file
+  (let* ((path (glib-sys:sys-path "test/resource/gtk-logo-24.png"))
          (image (gtk:image-new-from-file path)))
     (is (typep image 'gtk:image))
     (is (string= "gtk-logo-24" (pathname-name (gtk:image-file image))))
@@ -192,8 +187,8 @@
 
 ;;;     gtk_image_new_from_pixbuf
 
-(test image-new-from-pixbuf
-  (let* ((filename (sys-path "resource/gtk-logo-24.png"))
+(test gtk-image-new-from-pixbuf
+  (let* ((filename (glib-sys:sys-path "test/resource/gtk-logo-24.png"))
          (pixbuf (gdk:pixbuf-new-from-file filename))
          (image (gtk:image-new-from-pixbuf pixbuf)))
     (is (typep image 'gtk:image))
@@ -216,8 +211,8 @@
 
 ;;;     gtk_image_new_from_animation
 
-(test image-new-from-animation
-  (let* ((filename (sys-path "resource/floppybuddy.gif"))
+(test gtk-image-new-from-animation
+  (let* ((filename (glib-sys:sys-path "test/resource/floppybuddy.gif"))
          (animation (gdk:pixbuf-animation-new-from-file filename))
          (image (gtk:image-new-from-animation animation)))
     (is (typep image 'gtk:image))
@@ -238,7 +233,7 @@
 
 ;;;     gtk_image_new_from_icon_name
 
-(test image-new-from-icon-name
+(test gtk-image-new-from-icon-name
   (let ((image (gtk:image-new-from-icon-name "gtk-ok" :dialog)))
     (is (typep image 'gtk:image))
     (is-false (gtk:image-file image))
@@ -258,7 +253,7 @@
 
 ;;;     gtk_image_new_from_gicon
 
-(test image-new-from-gicon
+(test gtk-image-new-from-gicon
   (let* ((icon (g:themed-icon-new-from-names "gtk-ok"))
          (image (gtk:image-new-from-gicon icon :dialog)))
     (is (typep image 'gtk:image))
@@ -279,8 +274,8 @@
 
 ;;;     gtk_image_new_from_resource
 
-(test image-new-from-resource
-  (let* ((filename (sys-path "resource/rtest-resource.gresource"))
+(test gtk-image-new-from-resource
+  (let* ((filename (glib-sys:sys-path "test/resource/rtest-resource.gresource"))
          (resource (g:resource-load filename)))
     ;; Register the resources
     (is-false (g:resources-register resource))
@@ -305,7 +300,7 @@
 
 ;;;     gtk_image_new_from_surface ()
 
-(test image-new-from-surface
+(test gtk-image-new-from-surface
   (let* ((theme (gtk:icon-theme-default))
          (surface (gtk:icon-theme-load-surface theme "gtk-ok"
                                                      48 1 nil :use-builtin))
@@ -328,8 +323,8 @@
 
 ;;;     gtk_image_set_from_file
 
-(test image-set-from-file
-  (let ((filename (sys-path "resource/gtk-logo-24.png"))
+(test gtk-image-set-from-file
+  (let ((filename (glib-sys:sys-path "test/resource/gtk-logo-24.png"))
         (image (make-instance 'gtk:image)))
     ;; Set image from file
     (is-false (gtk:image-set-from-file image filename))
@@ -354,8 +349,8 @@
 
 ;;;     gtk_image_set_from_pixbuf
 
-(test image-set-from-pixbuf
-  (let* ((filename (sys-path "resource/gtk-logo-24.png"))
+(test gtk-image-set-from-pixbuf
+  (let* ((filename (glib-sys:sys-path "test/resource/gtk-logo-24.png"))
          (pixbuf (gdk:pixbuf-new-from-file filename))
          (image (make-instance 'gtk:image)))
     ;; Set image from pixbuf
@@ -381,8 +376,8 @@
 
 ;;;     gtk_image_set_from_animation
 
-(test image-set-from-animation
-  (let* ((filename (sys-path "resource/floppybuddy.gif"))
+(test gtk-image-set-from-animation
+  (let* ((filename (glib-sys:sys-path "test/resource/floppybuddy.gif"))
          (animation (gdk:pixbuf-animation-new-from-file filename))
          (image (make-instance 'gtk:image)))
     ;; Set image from animation
@@ -406,7 +401,7 @@
 
 ;;;     gtk_image_set_from_icon_name
 
-(test image-set-from-icon-name
+(test gtk-image-set-from-icon-name
   (let ((image (make-instance 'gtk:image)))
     ;; Set image from icon name
     (is-false (gtk:image-set-from-icon-name image "gtk-ok" :dialog))
@@ -429,7 +424,7 @@
 
 ;;;     gtk_image_set_from_gicon
 
-(test image-set-from-gicon
+(test gtk-image-set-from-gicon
   (let ((icon (g:themed-icon-new-from-names "gtk-ok"))
         (image (make-instance 'gtk:image)))
     ;; Set image from gicon
@@ -453,8 +448,8 @@
 
 ;;;     gtk_image_set_from_resource
 
-(test image-set-from-resource
-  (let* ((filename (sys-path "resource/rtest-resource.gresource"))
+(test gtk-image-set-from-resource
+  (let* ((filename (glib-sys:sys-path "test/resource/rtest-resource.gresource"))
          (resource (g:resource-load filename))
          (image (gtk:image-new)))
     ;; Register the resources
@@ -482,7 +477,7 @@
 
 ;;;     gtk_image_set_from_surface ()
 
-(test image-set-from-surface
+(test gtk-image-set-from-surface
   (let* ((theme (gtk:icon-theme-default))
          (surface (gtk:icon-theme-load-surface theme "gtk-ok"
                                                      48 1 nil :use-builtin))
@@ -508,7 +503,7 @@
 
 ;;;     gtk_image_clear
 
-(test image-clear
+(test gtk-image-clear
   (let ((image (gtk:image-new-from-icon-name "gtk-ok" 4)))
     ;; Create image from icon name
     (is (typep image 'gtk:image))
@@ -546,7 +541,7 @@
 
 ;;;     gtk_image_new
 
-(test image-new
+(test gtk-image-new
   (is (typep (gtk:image-new) 'gtk:image)))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-9-21

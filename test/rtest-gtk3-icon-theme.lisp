@@ -23,22 +23,24 @@
           (g:type-parent "GtkIconTheme")))
   ;; Check children
   (is (equal '()
-             (gtk-test:list-children "GtkIconTheme")))
+             (glib-test:list-children "GtkIconTheme")))
   ;; Check interfaces
   (is (equal '()
-             (gtk-test:list-interfaces "GtkIconTheme")))
+             (glib-test:list-interfaces "GtkIconTheme")))
   ;; Check class properties
   (is (equal '()
-             (gtk-test:list-properties "GtkIconTheme")))
+             (glib-test:list-properties "GtkIconTheme")))
   ;; Check signals
   (is (equal '("changed")
-             (gtk-test:list-signals "GtkIconTheme")))
+             (glib-test:list-signals "GtkIconTheme")))
   ;; Check class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkIconTheme" GTK-ICON-THEME
-                       (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkIconTheme" GTK:ICON-THEME
+                       (:SUPERCLASS G:OBJECT
+                        :EXPORT T
+                        :INTERFACES NIL
                         :TYPE-INITIALIZER "gtk_icon_theme_get_type")
                        NIL)
-             (gobject:get-g-type-definition "GtkIconTheme"))))
+             (gobject:get-gtype-definition "GtkIconTheme"))))
 
 ;;; --- Functions --------------------------------------------------------------
 
@@ -294,4 +296,4 @@
          (icon-info (gtk:icon-theme-lookup-icon theme "battery" 0 :force-symbolic)))
     (is-true (gtk:icon-info-is-symbolic icon-info))))
 
-;;; 2024-6-24
+;;; 2024-9-21

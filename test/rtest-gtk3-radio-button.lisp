@@ -7,48 +7,50 @@
 
 ;;;     GtkRadioButton
 
-(test radio-button-class
-  ;; Type check
+(test gtk-radio-button-class
+  ;; Check type
   (is (g:type-is-object "GtkRadioButton"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:radio-button
           (glib:symbol-for-gtype "GtkRadioButton")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkRadioButton")
           (g:gtype (cffi:foreign-funcall "gtk_radio_button_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkCheckButton") (g:type-parent "GtkRadioButton")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkRadioButton")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkRadioButton")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable" "GtkActionable" "GtkActivatable")
-             (list-interfaces "GtkRadioButton")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkRadioButton")))
+  ;; Check class properties
   (is (equal '("group")
-             (list-properties "GtkRadioButton")))
-  ;; Get the names of the style properties.
+             (glib-test:list-properties "GtkRadioButton")))
+  ;; Check style properties
   (is (equal '()
-             (list-style-properties "GtkRadioButton")))
-  ;; Get the names of the child properties
+             (gtk-test:list-style-properties "GtkRadioButton")))
+  ;; Check child properties
   (is (equal '()
-             (list-child-properties "GtkRadioButton")))
-  ;; Check the signals
+             (gtk-test:list-child-properties "GtkRadioButton")))
+  ;; Check signals
   (is (equal '("group-changed")
-             (list-signals "GtkRadioButton")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkRadioButton" GTK-RADIO-BUTTON
-                       (:SUPERCLASS GTK-CHECK-BUTTON :EXPORT T :INTERFACES
+             (glib-test:list-signals "GtkRadioButton")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkRadioButton" GTK:RADIO-BUTTON
+                       (:SUPERCLASS GTK:CHECK-BUTTON
+                        :EXPORT T
+                        :INTERFACES
                         ("AtkImplementorIface" "GtkActionable" "GtkActivatable"
                          "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_radio_button_get_type")
-                       ((GROUP GTK-RADIO-BUTTON-GROUP "group" "GtkRadioButton"
-                         NIL T)))
-             (gobject:get-g-type-definition "GtkRadioButton"))))
+                       ((GROUP RADIO-BUTTON-GROUP
+                         "group" "GtkRadioButton" NIL T)))
+             (gobject:get-gtype-definition "GtkRadioButton"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
-(test radio-button-properties
+(test gtk-radio-button-properties
   (let ((button (make-instance 'gtk:radio-button)))
     ;; group is not readable
     (signals (error) (gtk:radio-button-group button))
@@ -60,7 +62,7 @@
 ;;;     void    group-changed    Run First
 
 #+nil
-(test radio-button-signals
+(test gtk-radio-button-signals
   (let ((result nil)
         (newbutton nil)
         (button (gtk:radio-button-new nil)))
@@ -77,7 +79,7 @@
 
 ;;;     gtk_radio_button_new
 
-(test radio-button-new
+(test gtk-radio-button-new
   (let (button)
   ;; First radio button
   (is (eq 'gtk:radio-button
@@ -93,7 +95,7 @@
 
 ;;;     gtk_radio_button_new_from_widget
 
-(test radio-button-new-from-widget
+(test gtk-radio-button-new-from-widget
   (let (button)
   ;; First radio button
   (is (eq 'gtk:radio-button
@@ -109,7 +111,7 @@
 
 ;;;     gtk_radio_button_new_with_label
 
-(test radio-button-new-with-label
+(test gtk-radio-button-new-with-label
   (let (button)
   ;; First radio button
   (is (eq 'gtk:radio-button
@@ -128,7 +130,7 @@
 
 ;;;     gtk_radio_button_new_with_label_from_widget
 
-(test radio-button-new-with-label-from-widget
+(test gtk-radio-button-new-with-label-from-widget
   (let (button)
   ;; First radio button
   (is (eq 'gtk:radio-button
@@ -146,7 +148,7 @@
 
 ;;;     gtk_radio_button_new_with_mnemonic
 
-(test radio-button-new-with-mnemonic
+(test gtk-radio-button-new-with-mnemonic
   (let (button)
   ;; First radio button
   (is (eq 'gtk:radio-button
@@ -165,7 +167,7 @@
 
 ;;;     gtk_radio_button_new_with_mnemonic_from_widget
 
-(test radio-button-new-with-mnemonic-from-widget
+(test gtk-radio-button-new-with-mnemonic-from-widget
   (let (button)
   ;; First radio button
   (is (eq 'gtk:radio-button
@@ -185,7 +187,7 @@
 ;;;     gtk_radio_button_set_group
 ;;;     gtk_radio_button_get_group
 
-(test radio-button-group
+(test gtk-radio-button-group
   (let (button)
     ;; First radio button
     (is (eq 'gtk:radio-button (type-of (setf button (gtk:radio-button-new nil)))))
@@ -210,7 +212,7 @@
 
 ;;;     gtk_radio_button_join_group
 
-(test radio-button-join-group.1
+(test gtk-radio-button-join-group.1
   (let (button lastbutton)
     ;; Add three buttons to a group
     (dotimes (i 3)
@@ -226,7 +228,7 @@
     (is-false (gtk:radio-button-join-group (second (gtk:radio-button-get-group button)) nil))
     (is (= 2 (length (gtk:radio-button-get-group button))))))
 
-(test radio-button-join-group.2
+(test gtk-radio-button-join-group.2
   (let (button lastbutton)
     ;; Add three buttons to a group
     (dolist (label '("First Button" "Second Button" "Third Button"))
@@ -252,4 +254,4 @@
     (is (string= "First Button"
                  (gtk:label-label (gtk:bin-child (second (gtk:radio-button-get-group button))))))))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-9-22

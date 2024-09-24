@@ -8,54 +8,55 @@
 ;;;     GtkFrame
 
 (test gtk-frame-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkFrame"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:frame
           (glib:symbol-for-gtype "GtkFrame")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkFrame")
           (g:gtype (cffi:foreign-funcall "gtk_frame_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkBin")
           (g:type-parent "GtkFrame")))
-  ;; Check the children
+  ;; Check children
   (is (equal '("GtkAspectFrame")
-             (list-children "GtkFrame")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkFrame")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
-             (list-interfaces "GtkFrame")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkFrame")))
+  ;; Check class properties
   (is (equal '("label" "label-widget" "label-xalign" "label-yalign"
                "shadow-type")
-             (list-properties "GtkFrame")))
-  ;; Get the names of the style properties.
+             (glib-test:list-properties "GtkFrame")))
+  ;; Check style properties
   (is (equal '()
-             (list-style-properties "GtkFrame")))
-  ;; Get the names of the child properties
+             (gtk-test:list-style-properties "GtkFrame")))
+  ;; Check child properties
   (is (equal '()
-             (list-child-properties "GtkFrame")))
-  ;; Check the signals
+             (gtk-test:list-child-properties "GtkFrame")))
+  ;; Check signals
   (is (equal '()
-             (list-signals "GtkFrame")))
+             (glib-test:list-signals "GtkFrame")))
   ;; CSS information
   (is (string= "frame"
                (gtk:widget-class-css-name "GtkFrame")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkFrame" GTK-FRAME
-                       (:SUPERCLASS GTK-BIN :EXPORT T :INTERFACES
-                        ("AtkImplementorIface" "GtkBuildable")
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkFrame" GTK:FRAME
+                       (:SUPERCLASS GTK:BIN
+                        :EXPORT T
+                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_frame_get_type")
-                       ((LABEL GTK-FRAME-LABEL "label" "gchararray" T T)
-                        (LABEL-WIDGET GTK-FRAME-LABEL-WIDGET "label-widget"
-                         "GtkWidget" T T)
-                        (LABEL-XALIGN GTK-FRAME-LABEL-XALIGN "label-xalign"
-                         "gfloat" T T)
-                        (LABEL-YALIGN GTK-FRAME-LABEL-YALIGN "label-yalign"
-                         "gfloat" T T)
-                        (SHADOW-TYPE GTK-FRAME-SHADOW-TYPE "shadow-type"
-                         "GtkShadowType" T T)))
-             (gobject:get-g-type-definition "GtkFrame"))))
+                       ((LABEL FRAME-LABEL "label" "gchararray" T T)
+                        (LABEL-WIDGET FRAME-LABEL-WIDGET
+                         "label-widget" "GtkWidget" T T)
+                        (LABEL-XALIGN FRAME-LABEL-XALIGN
+                         "label-xalign" "gfloat" T T)
+                        (LABEL-YALIGN FRAME-LABEL-YALIGN
+                         "label-yalign" "gfloat" T T)
+                        (SHADOW-TYPE FRAME-SHADOW-TYPE
+                         "shadow-type" "GtkShadowType" T T)))
+             (gobject:get-gtype-definition "GtkFrame"))))
 
 (test gtk-frame-properties.1
   (let ((widget (make-instance 'gtk:frame)))
@@ -113,4 +114,4 @@
     (is (equal '(1.0 0.5)
                (multiple-value-list (gtk:frame-label-align frame))))))
 
-;;; 2023-12-30
+;;; 2024-9-21

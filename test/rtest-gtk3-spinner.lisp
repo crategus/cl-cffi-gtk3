@@ -7,43 +7,44 @@
 
 ;;;     GtkSpinner
 
-(test spinner-class
-  ;; Type check
+(test gtk-spinner-class
+  ;; Check type
   (is (g:type-is-object "GtkSpinner"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:spinner
           (glib:symbol-for-gtype "GtkSpinner")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkSpinner")
           (g:gtype (cffi:foreign-funcall "gtk_spinner_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkWidget") (g:type-parent "GtkSpinner")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkSpinner")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkSpinner")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
-             (list-interfaces "GtkSpinner")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkSpinner")))
+  ;; Check class properties
   (is (equal '("active")
-             (list-properties "GtkSpinner")))
-  ;; Check the style properties.
+             (glib-test:list-properties "GtkSpinner")))
+  ;; Check style properties
   (is (equal '()
-             (list-style-properties "GtkSpinner")))
-  ;; Check the signals
+             (gtk-test:list-style-properties "GtkSpinner")))
+  ;; Check signals
   (is (equal '()
-             (list-signals "GtkSpinner")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkSpinner" GTK-SPINNER
-                       (:SUPERCLASS GTK-WIDGET :EXPORT T :INTERFACES
-                        ("AtkImplementorIface" "GtkBuildable")
+             (glib-test:list-signals "GtkSpinner")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkSpinner" GTK:SPINNER
+                       (:SUPERCLASS GTK:WIDGET
+                        :EXPORT T
+                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_spinner_get_type")
-                       ((ACTIVE GTK-SPINNER-ACTIVE "active" "gboolean" T T)))
-             (gobject:get-g-type-definition "GtkSpinner"))))
+                       ((ACTIVE SPINNER-ACTIVE "active" "gboolean" T T)))
+             (gobject:get-gtype-definition "GtkSpinner"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
-(test spinner-properties
+(test gtk-spinner-properties
   (let ((spinner (make-instance 'gtk:spinner)))
     (is-false (gtk:spinner-active spinner))
     (is-true (setf (gtk:spinner-active spinner) t))
@@ -53,13 +54,13 @@
 
 ;;;     gtk_spinner_new
 
-(test spinner-new
+(test gtk-spinner-new
   (is (eq 'gtk:spinner (type-of (gtk:spinner-new)))))
 
 ;;;     gtk_spinner_start
 ;;;     gtk_spinner_end
 
-(test spinner-start
+(test gtk-spinner-start
   (let ((spinner (gtk:spinner-new)))
     (is-false (gtk:spinner-active spinner))
     (is-false (gtk:spinner-start spinner))
@@ -67,4 +68,4 @@
     (is-false (gtk:spinner-stop spinner))
     (is-false (gtk:spinner-active spinner))))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-9-22

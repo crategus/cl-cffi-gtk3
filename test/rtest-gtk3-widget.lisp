@@ -36,32 +36,30 @@
 ;;;     GtkWidgetHelpType
 
 (test gtk-widget-help-type
-  ;; Check the type-widget-help-type
+  ;; Check type
   (is-true (g:type-is-enum "GtkWidgetHelpType"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkWidgetHelpType")
-          (g:gtype (cffi:foreign-funcall "gtk_widget_help_type_get_type"
-                                         :size))))
-  ;; Check the registered name
+          (g:gtype (cffi:foreign-funcall "gtk_widget_help_type_get_type" :size))))
+  ;; Check registered name
   (is (eq 'gtk:widget-help-type
           (glib:symbol-for-gtype "GtkWidgetHelpType")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_WIDGET_HELP_TOOLTIP" "GTK_WIDGET_HELP_WHATS_THIS")
-             (list-enum-item-name "GtkWidgetHelpType")))
-  ;; Check the values
+             (glib-test:list-enum-item-names "GtkWidgetHelpType")))
+  ;; Check values
   (is (equal '(0 1)
-             (list-enum-item-value "GtkWidgetHelpType")))
-  ;; Check the nick names
+             (glib-test:list-enum-item-values "GtkWidgetHelpType")))
+  ;; Check nick names
   (is (equal '("tooltip" "whats-this")
-             (list-enum-item-nick "GtkWidgetHelpType")))
-  ;; Check the enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkWidgetHelpType"
-                             GTK-WIDGET-HELP-TYPE
-                             (:EXPORT T
-                              :TYPE-INITIALIZER "gtk_widget_help_type_get_type")
-                             (:TOOLTIP 0)
-                             (:WHATS-THIS 1))
-             (gobject::get-g-type-definition "GtkWidgetHelpType"))))
+             (glib-test:list-enum-item-nicks "GtkWidgetHelpType")))
+  ;; Check enum definition
+  (is (equal '(GOBJECT:DEFINE-GENUM "GtkWidgetHelpType" GTK:WIDGET-HELP-TYPE
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_widget_help_type_get_type")
+                       (:TOOLTIP 0)
+                       (:WHATS-THIS 1))
+             (gobject:get-gtype-definition "GtkWidgetHelpType"))))
 
 ;;;     GtkSizeRequestMode
 ;;;     GtkRequestedSize
@@ -70,32 +68,32 @@
 ;;; --- GtkWidget --------------------------------------------------------------
 
 (test gtk-widget-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkWidget"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:widget
           (glib:symbol-for-gtype "GtkWidget")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkWidget")
           (g:gtype (cffi:foreign-funcall "gtk_widget_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GInitiallyUnowned") (g:type-parent "GtkWidget")))
-  ;; Check the children
+  ;; Check children
   (if *first-run-gtk-test*
       (is (equal '("GtkCalendar" "GtkCellView" "GtkContainer" "GtkDrawingArea"
                    "GtkEntry" "GtkHSV" "GtkInvisible" "GtkLevelBar" "GtkMisc"
                    "GtkProgressBar" "GtkRange" "GtkSeparator" "GtkSpinner"
                    "GtkSwitch")
-                 (list-children "GtkWidget")))
+                 (glib-test:list-children "GtkWidget")))
       (is (equal '("GtkCalendar" "GtkCellView" "GtkColorSwatch" "GtkContainer"
                    "GtkDrawingArea" "GtkEntry" "GtkHSV" "GtkIcon" "GtkInvisible"
                    "GtkLevelBar" "GtkMisc" "GtkProgressBar" "GtkRange"
                    "GtkSeparator" "GtkSpinner" "GtkSwitch")
-                 (list-children "GtkWidget"))))
-  ;; Check the interfaces
+                 (glib-test:list-children "GtkWidget"))))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
-             (list-interfaces "GtkWidget")))
-  ;; Get the class properties
+             (glib-test:list-interfaces "GtkWidget")))
+  ;; Check class properties
   (is (equal '("app-paintable" "can-default" "can-focus" "composite-child"
                "double-buffered" "events" "expand" "focus-on-click" "halign"
                "has-default" "has-focus" "has-tooltip" "height-request"
@@ -105,16 +103,16 @@
                "receives-default" "scale-factor" "sensitive" "style"
                "tooltip-markup" "tooltip-text" "valign" "vexpand" "vexpand-set"
                "visible" "width-request" "window")
-             (list-properties "GtkWidget")))
-  ;; Get the style properties
+             (glib-test:list-properties "GtkWidget")))
+  ;; Check style properties
   (is (equal '("cursor-aspect-ratio" "cursor-color" "focus-line-pattern"
                "focus-line-width" "focus-padding" "interior-focus" "link-color"
                "scroll-arrow-hlength" "scroll-arrow-vlength"
                "secondary-cursor-color" "separator-height" "separator-width"
                "text-handle-height" "text-handle-width" "visited-link-color"
                "wide-separators" "window-dragging")
-             (list-style-properties "GtkWidget")))
-  ;; Check the signals
+             (gtk-test:list-style-properties "GtkWidget")))
+  ;; Check signals
   (is (equal '("accel-closures-changed" "button-press-event"
                "button-release-event" "can-activate-accel" "child-notify"
                "composited-changed" "configure-event" "damage-event"
@@ -135,78 +133,73 @@
                "state-changed" "state-flags-changed" "style-set" "style-updated"
                "touch-event" "unmap" "unmap-event" "unrealize"
                "visibility-notify-event" "window-state-event")
-             (list-signals "GtkWidget")))
-  ;; Get the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkWidget" GTK-WIDGET
-                       (:SUPERCLASS G-INITIALLY-UNOWNED :EXPORT T :INTERFACES
+             (glib-test:list-signals "GtkWidget")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkWidget" GTK:WIDGET
+                       (:SUPERCLASS GOBJECT:INITIALLY-UNOWNED
+                        :EXPORT T
+                        :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_widget_get_type")
-                       ((APP-PAINTABLE GTK-WIDGET-APP-PAINTABLE "app-paintable"
-                         "gboolean" T T)
-                        (CAN-DEFAULT GTK-WIDGET-CAN-DEFAULT "can-default"
-                         "gboolean" T T)
-                        (CAN-FOCUS GTK-WIDGET-CAN-FOCUS "can-focus" "gboolean"
-                         T T)
-                        (COMPOSITE-CHILD GTK-WIDGET-COMPOSITE-CHILD
+                       ((APP-PAINTABLE WIDGET-APP-PAINTABLE
+                         "app-paintable" "gboolean" T T)
+                        (CAN-DEFAULT WIDGET-CAN-DEFAULT
+                         "can-default" "gboolean" T T)
+                        (CAN-FOCUS WIDGET-CAN-FOCUS "can-focus" "gboolean" T T)
+                        (COMPOSITE-CHILD WIDGET-COMPOSITE-CHILD
                          "composite-child" "gboolean" T NIL)
-                        (DOUBLE-BUFFERED GTK-WIDGET-DOUBLE-BUFFERED
+                        (DOUBLE-BUFFERED WIDGET-DOUBLE-BUFFERED
                          "double-buffered" "gboolean" T T)
-                        (EVENTS GTK-WIDGET-EVENTS "events" "GdkEventMask" T T)
-                        (EXPAND GTK-WIDGET-EXPAND "expand" "gboolean" T T)
-                        (FOCUS-ON-CLICK GTK-WIDGET-FOCUS-ON-CLICK
+                        (EVENTS WIDGET-EVENTS "events" "GdkEventMask" T T)
+                        (EXPAND WIDGET-EXPAND "expand" "gboolean" T T)
+                        (FOCUS-ON-CLICK WIDGET-FOCUS-ON-CLICK
                          "focus-on-click" "gboolean" T T)
-                        (HALIGN GTK-WIDGET-HALIGN "halign" "GtkAlign" T T)
-                        (HAS-DEFAULT GTK-WIDGET-HAS-DEFAULT "has-default"
-                         "gboolean" T T)
-                        (HAS-FOCUS GTK-WIDGET-HAS-FOCUS "has-focus" "gboolean"
-                         T T)
-                        (HAS-TOOLTIP GTK-WIDGET-HAS-TOOLTIP "has-tooltip"
-                         "gboolean" T T)
-                        (HEIGHT-REQUEST GTK-WIDGET-HEIGHT-REQUEST
+                        (HALIGN WIDGET-HALIGN "halign" "GtkAlign" T T)
+                        (HAS-DEFAULT WIDGET-HAS-DEFAULT
+                         "has-default" "gboolean" T T)
+                        (HAS-FOCUS WIDGET-HAS-FOCUS "has-focus" "gboolean" T T)
+                        (HAS-TOOLTIP WIDGET-HAS-TOOLTIP
+                         "has-tooltip" "gboolean" T T)
+                        (HEIGHT-REQUEST WIDGET-HEIGHT-REQUEST
                          "height-request" "gint" T T)
-                        (HEXPAND GTK-WIDGET-HEXPAND "hexpand" "gboolean" T T)
-                        (HEXPAND-SET GTK-WIDGET-HEXPAND-SET "hexpand-set"
-                         "gboolean" T T)
-                        (IS-FOCUS GTK-WIDGET-IS-FOCUS "is-focus" "gboolean" T
-                         T)
-                        (MARGIN GTK-WIDGET-MARGIN "margin" "gint" T T)
-                        (MARGIN-BOTTOM GTK-WIDGET-MARGIN-BOTTOM "margin-bottom"
-                         "gint" T T)
-                        (MARGIN-END GTK-WIDGET-MARGIN-END "margin-end" "gint" T
-                         T)
-                        (MARGIN-LEFT GTK-WIDGET-MARGIN-LEFT "margin-left"
-                         "gint" T T)
-                        (MARGIN-RIGHT GTK-WIDGET-MARGIN-RIGHT "margin-right"
-                         "gint" T T)
-                        (MARGIN-START GTK-WIDGET-MARGIN-START "margin-start"
-                         "gint" T T)
-                        (MARGIN-TOP GTK-WIDGET-MARGIN-TOP "margin-top" "gint" T
-                         T)
-                        (NAME GTK-WIDGET-NAME "name" "gchararray" T T)
-                        (NO-SHOW-ALL GTK-WIDGET-NO-SHOW-ALL "no-show-all"
-                         "gboolean" T T)
-                        (OPACITY GTK-WIDGET-OPACITY "opacity" "gdouble" T T)
-                        (PARENT GTK-WIDGET-PARENT "parent" "GtkContainer" T T)
-                        (RECEIVES-DEFAULT GTK-WIDGET-RECEIVES-DEFAULT
+                        (HEXPAND WIDGET-HEXPAND "hexpand" "gboolean" T T)
+                        (HEXPAND-SET WIDGET-HEXPAND-SET
+                         "hexpand-set" "gboolean" T T)
+                        (IS-FOCUS WIDGET-IS-FOCUS "is-focus" "gboolean" T T)
+                        (MARGIN WIDGET-MARGIN "margin" "gint" T T)
+                        (MARGIN-BOTTOM WIDGET-MARGIN-BOTTOM
+                         "margin-bottom" "gint" T T)
+                        (MARGIN-END WIDGET-MARGIN-END "margin-end" "gint" T T)
+                        (MARGIN-LEFT WIDGET-MARGIN-LEFT "margin-left" "gint" T T)
+                        (MARGIN-RIGHT WIDGET-MARGIN-RIGHT
+                         "margin-right" "gint" T T)
+                        (MARGIN-START WIDGET-MARGIN-START
+                         "margin-start" "gint" T T)
+                        (MARGIN-TOP WIDGET-MARGIN-TOP "margin-top" "gint" T T)
+                        (NAME WIDGET-NAME "name" "gchararray" T T)
+                        (NO-SHOW-ALL WIDGET-NO-SHOW-ALL
+                         "no-show-all" "gboolean" T T)
+                        (OPACITY WIDGET-OPACITY "opacity" "gdouble" T T)
+                        (PARENT WIDGET-PARENT "parent" "GtkContainer" T T)
+                        (RECEIVES-DEFAULT WIDGET-RECEIVES-DEFAULT
                          "receives-default" "gboolean" T T)
-                        (SCALE-FACTOR GTK-WIDGET-SCALE-FACTOR "scale-factor"
-                         "gint" T NIL)
-                        (SENSITIVE GTK-WIDGET-SENSITIVE "sensitive" "gboolean"
-                         T T)
-                        (STYLE GTK-WIDGET-STYLE "style" "GtkStyle" T T)
-                        (TOOLTIP-MARKUP GTK-WIDGET-TOOLTIP-MARKUP
+                        (SCALE-FACTOR WIDGET-SCALE-FACTOR
+                         "scale-factor" "gint" T NIL)
+                        (SENSITIVE WIDGET-SENSITIVE "sensitive" "gboolean" T T)
+                        (STYLE WIDGET-STYLE "style" "GtkStyle" T T)
+                        (TOOLTIP-MARKUP WIDGET-TOOLTIP-MARKUP
                          "tooltip-markup" "gchararray" T T)
-                        (TOOLTIP-TEXT GTK-WIDGET-TOOLTIP-TEXT "tooltip-text"
-                         "gchararray" T T)
-                        (VALIGN GTK-WIDGET-VALIGN "valign" "GtkAlign" T T)
-                        (VEXPAND GTK-WIDGET-VEXPAND "vexpand" "gboolean" T T)
-                        (VEXPAND-SET GTK-WIDGET-VEXPAND-SET "vexpand-set"
-                         "gboolean" T T)
-                        (VISIBLE GTK-WIDGET-VISIBLE "visible" "gboolean" T T)
-                        (WIDTH-REQUEST GTK-WIDGET-WIDTH-REQUEST "width-request"
-                         "gint" T T)
-                        (WINDOW GTK-WIDGET-WINDOW "window" "GdkWindow" T NIL)))
-             (gobject:get-g-type-definition "GtkWidget"))))
+                        (TOOLTIP-TEXT WIDGET-TOOLTIP-TEXT
+                         "tooltip-text" "gchararray" T T)
+                        (VALIGN WIDGET-VALIGN "valign" "GtkAlign" T T)
+                        (VEXPAND WIDGET-VEXPAND "vexpand" "gboolean" T T)
+                        (VEXPAND-SET WIDGET-VEXPAND-SET
+                         "vexpand-set" "gboolean" T T)
+                        (VISIBLE WIDGET-VISIBLE "visible" "gboolean" T T)
+                        (WIDTH-REQUEST WIDGET-WIDTH-REQUEST
+                         "width-request" "gint" T T)
+                        (WINDOW WIDGET-WINDOW "window" "GdkWindow" T NIL)))
+             (gobject:get-gtype-definition "GtkWidget"))))
 
 ;;; ----------------------------------------------------------------------------
 ;;; Check accessor functions of GtkWidget
@@ -535,32 +528,31 @@
 ;;;     GtkTextDirection
 
 (test gtk-text-direction
-  ;; Check the type
+  ;; Check type
   (is (g:type-is-enum "GtkTextDirection"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkTextDirection")
           (g:gtype (cffi:foreign-funcall "gtk_text_direction_get_type" :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:text-direction
           (glib:symbol-for-gtype "GtkTextDirection")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_TEXT_DIR_NONE" "GTK_TEXT_DIR_LTR" "GTK_TEXT_DIR_RTL")
-             (list-enum-item-name "GtkTextDirection")))
-  ;; Check the values
+             (glib-test:list-enum-item-names "GtkTextDirection")))
+  ;; Check values
   (is (equal '(0 1 2)
-             (list-enum-item-value "GtkTextDirection")))
-  ;; Check the nick names
+             (glib-test:list-enum-item-values "GtkTextDirection")))
+  ;; Check nick names
   (is (equal '("none" "ltr" "rtl")
-             (list-enum-item-nick "GtkTextDirection")))
-  ;; Check the enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkTextDirection"
-                             GTK-TEXT-DIRECTION
-                             (:EXPORT T
-                              :TYPE-INITIALIZER "gtk_text_direction_get_type")
-                             (:NONE 0)
-                             (:LTR 1)
-                             (:RTL 2))
-             (gobject:get-g-type-definition "GtkTextDirection"))))
+             (glib-test:list-enum-item-nicks "GtkTextDirection")))
+  ;; Check enum definition
+  (is (equal '(GOBJECT:DEFINE-GENUM "GtkTextDirection" GTK:TEXT-DIRECTION
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_text_direction_get_type")
+                       (:NONE 0)
+                       (:LTR 1)
+                       (:RTL 2))
+             (gobject:get-gtype-definition "GtkTextDirection"))))
 
 ;;;     gtk_widget_direction
 ;;;     gtk_widget_default_direction
@@ -976,4 +968,4 @@
 ;;;     gtk_widget_queue_compute_expand
 ;;;     gtk_widget_compute_expand
 
-;;; --- 2023-7-19 --------------------------------------------------------------
+;;; 2024-9-21

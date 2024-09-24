@@ -8,65 +8,65 @@
 ;;;     GtkButton
 
 (test gtk-button-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkButton"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:button
           (glib:symbol-for-gtype "GtkButton")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkButton")
           (g:gtype (cffi:foreign-funcall "gtk_button_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkBin") (g:type-parent "GtkButton")))
-  ;; Check the children
+  ;; Check children
   (is (equal '("GtkColorButton" "GtkFontButton" "GtkLinkButton" "GtkLockButton"
                "GtkModelButton" "GtkScaleButton" "GtkToggleButton")
-             (list-children "GtkButton")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkButton")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable" "GtkActionable"
                "GtkActivatable")
-             (list-interfaces "GtkButton")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkButton")))
+  ;; Check class properties
   (is (equal '("action-name" "action-target" "always-show-image" "image"
                "image-position" "label" "related-action" "relief"
                "use-action-appearance" "use-stock" "use-underline" "xalign"
                "yalign")
-             (list-properties "GtkButton")))
-  ;; Get the names of the style properties
+             (glib-test:list-properties "GtkButton")))
+  ;; Check style properties
   (is (equal '("child-displacement-x" "child-displacement-y" "default-border"
                "default-outside-border" "displace-focus" "image-spacing"
                "inner-border")
-             (list-style-properties "GtkButton")))
-  ;; Get the names of the child properties
+             (gtk-test:list-style-properties "GtkButton")))
+  ;; Check child properties
   (is (equal '()
-             (list-child-properties "GtkButton")))
-  ;; Check the signals
+             (gtk-test:list-child-properties "GtkButton")))
+  ;; Check signals
   (is (equal '("activate" "clicked" "enter" "leave" "pressed" "released")
-             (list-signals "GtkButton")))
+             (glib-test:list-signals "GtkButton")))
   ;; CSS information
   (is (string= "button"
                (gtk:widget-class-css-name "GtkButton")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkButton" GTK-BUTTON
-                       (:SUPERCLASS GTK-BIN :EXPORT T :INTERFACES
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkButton" GTK:BUTTON
+                       (:SUPERCLASS GTK:BIN
+                        :EXPORT T
+                        :INTERFACES
                         ("AtkImplementorIface" "GtkActionable" "GtkActivatable"
                          "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_button_get_type")
-                       ((ALWAYS-SHOW-IMAGE GTK-BUTTON-ALWAYS-SHOW-IMAGE
+                       ((ALWAYS-SHOW-IMAGE BUTTON-ALWAYS-SHOW-IMAGE
                          "always-show-image" "gboolean" T T)
-                        (IMAGE GTK-BUTTON-IMAGE "image" "GtkWidget" T T)
-                        (IMAGE-POSITION GTK-BUTTON-IMAGE-POSITION
+                        (IMAGE BUTTON-IMAGE "image" "GtkWidget" T T)
+                        (IMAGE-POSITION BUTTON-IMAGE-POSITION
                          "image-position" "GtkPositionType" T T)
-                        (LABEL GTK-BUTTON-LABEL "label" "gchararray" T T)
-                        (RELIEF GTK-BUTTON-RELIEF "relief" "GtkReliefStyle" T
-                         T)
-                        (USE-STOCK GTK-BUTTON-USE-STOCK "use-stock" "gboolean"
-                         T T)
-                        (USE-UNDERLINE GTK-BUTTON-USE-UNDERLINE "use-underline"
-                         "gboolean" T T)
-                        (XALIGN GTK-BUTTON-XALIGN "xalign" "gfloat" T T)
-                        (YALIGN GTK-BUTTON-YALIGN "yalign" "gfloat" T T)))
-             (gobject:get-g-type-definition "GtkButton"))))
+                        (LABEL BUTTON-LABEL "label" "gchararray" T T)
+                        (RELIEF BUTTON-RELIEF "relief" "GtkReliefStyle" T T)
+                        (USE-STOCK BUTTON-USE-STOCK "use-stock" "gboolean" T T)
+                        (USE-UNDERLINE BUTTON-USE-UNDERLINE
+                         "use-underline" "gboolean" T T)
+                        (XALIGN BUTTON-XALIGN "xalign" "gfloat" T T)
+                        (YALIGN BUTTON-YALIGN "yalign" "gfloat" T T)))
+             (gobject:get-gtype-definition "GtkButton"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -190,4 +190,4 @@
     (is-false (gtk:widget-realize button))
     (is (typep (gtk:button-event-window button) 'gdk:window))))
 
-;;; 2023-12-30
+;;; 2024-9-21

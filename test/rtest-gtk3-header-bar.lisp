@@ -21,51 +21,47 @@
           (g:type-parent "GtkHeaderBar")))
   ;; Check children
   (is (equal '()
-             (list-children "GtkHeaderBar")))
+             (glib-test:list-children "GtkHeaderBar")))
   ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
-             (list-interfaces "GtkHeaderBar")))
+             (glib-test:list-interfaces "GtkHeaderBar")))
   ;; Check class properties
   (is (equal '("custom-title" "decoration-layout" "decoration-layout-set"
                "has-subtitle" "show-close-button" "spacing" "subtitle" "title")
-             (list-properties "GtkHeaderBar")))
+             (glib-test:list-properties "GtkHeaderBar")))
   ;; Check style properties
   (is (equal '()
-             (list-style-properties "GtkHeaderBar")))
+             (gtk-test:list-style-properties "GtkHeaderBar")))
   ;; Check child properties
   (is (equal '("pack-type" "position")
-             (list-child-properties "GtkHeaderBar")))
+             (gtk-test:list-child-properties "GtkHeaderBar")))
   ;; Check signals
   (is (equal '()
-             (list-signals "GtkHeaderBar")))
+             (glib-test:list-signals "GtkHeaderBar")))
   ;; CSS information
   (is (string= "headerbar"
                (gtk:widget-class-css-name "GtkHeaderBar")))
   ;; Check class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkHeaderBar" GTK-HEADER-BAR
-                               (:SUPERCLASS GTK-CONTAINER :EXPORT T :INTERFACES
-                                ("AtkImplementorIface" "GtkBuildable")
-                                :TYPE-INITIALIZER "gtk_header_bar_get_type")
-                               ((CUSTOM-TITLE GTK-HEADER-BAR-CUSTOM-TITLE
-                                 "custom-title" "GtkWidget" T T)
-                                (DECORATION-LAYOUT
-                                 GTK-HEADER-BAR-DECORATION-LAYOUT
-                                 "decoration-layout" "gchararray" T T)
-                                (DECORATION-LAYOUT-SET
-                                 GTK-HEADER-BAR-DECORATION-LAYOUT-SET
-                                 "decoration-layout-set" "gboolean" T T)
-                                (HAS-SUBTITLE GTK-HEADER-BAR-HAS-SUBTITLE
-                                 "has-subtitle" "gboolean" T T)
-                                (SHOW-CLOSE-BUTTON
-                                 GTK-HEADER-BAR-SHOW-CLOSE-BUTTON
-                                 "show-close-button" "gboolean" T T)
-                                (SPACING GTK-HEADER-BAR-SPACING "spacing"
-                                 "gint" T T)
-                                (SUBTITLE GTK-HEADER-BAR-SUBTITLE "subtitle"
-                                 "gchararray" T T)
-                                (TITLE GTK-HEADER-BAR-TITLE "title"
-                                 "gchararray" T T)))
-             (gobject:get-g-type-definition "GtkHeaderBar"))))
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkHeaderBar" GTK:HEADER-BAR
+                       (:SUPERCLASS GTK:CONTAINER
+                        :EXPORT T
+                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
+                        :TYPE-INITIALIZER "gtk_header_bar_get_type")
+                       ((CUSTOM-TITLE HEADER-BAR-CUSTOM-TITLE
+                         "custom-title" "GtkWidget" T T)
+                        (DECORATION-LAYOUT HEADER-BAR-DECORATION-LAYOUT
+                         "decoration-layout" "gchararray" T T)
+                        (DECORATION-LAYOUT-SET HEADER-BAR-DECORATION-LAYOUT-SET
+                         "decoration-layout-set" "gboolean" T T)
+                        (HAS-SUBTITLE HEADER-BAR-HAS-SUBTITLE
+                         "has-subtitle" "gboolean" T T)
+                        (SHOW-CLOSE-BUTTON HEADER-BAR-SHOW-CLOSE-BUTTON
+                         "show-close-button" "gboolean" T T)
+                        (SPACING HEADER-BAR-SPACING "spacing" "gint" T T)
+                        (SUBTITLE HEADER-BAR-SUBTITLE
+                         "subtitle" "gchararray" T T)
+                        (TITLE HEADER-BAR-TITLE "title" "gchararray" T T)))
+             (gobject:get-gtype-definition "GtkHeaderBar"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -103,4 +99,4 @@
 ;;;     gtk_header_bar_pack_start
 ;;;     gtk_header_bar_pack_end
 
-;;; 2024-4-9
+;;; 2024-9-21

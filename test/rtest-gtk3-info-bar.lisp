@@ -7,52 +7,53 @@
 
 ;;;     GtkInfoBar
 
-(test info-bar-class
-  ;; Type check
+(test gtk-info-bar-class
+  ;; Check type
   (is (g:type-is-object "GtkInfoBar"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:info-bar
           (glib:symbol-for-gtype "GtkInfoBar")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkInfoBar")
           (g:gtype (cffi:foreign-funcall "gtk_info_bar_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkBox") (g:type-parent "GtkInfoBar")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkInfoBar")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkInfoBar")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
-             (list-interfaces "GtkInfoBar")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkInfoBar")))
+  ;; Check class properties
   (is (equal '("message-type" "revealed" "show-close-button")
-             (list-properties "GtkInfoBar")))
-  ;; Get the names of the style properties.
+             (glib-test:list-properties "GtkInfoBar")))
+  ;; Check style properties
   (is (equal '("action-area-border" "button-spacing" "content-area-border"
                "content-area-spacing")
-             (list-style-properties "GtkInfoBar")))
-  ;; Get the names of the child properties
+             (gtk-test:list-style-properties "GtkInfoBar")))
+  ;; Check child properties
   (is (equal '("expand" "fill" "pack-type" "padding" "position")
-             (list-child-properties "GtkInfoBar")))
-  ;; Check the signals
+             (gtk-test:list-child-properties "GtkInfoBar")))
+  ;; Check signals
   (is (equal '("close" "response")
-             (list-signals "GtkInfoBar")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkInfoBar" GTK-INFO-BAR
-                       (:SUPERCLASS GTK-BOX :EXPORT T :INTERFACES
+             (glib-test:list-signals "GtkInfoBar")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkInfoBar" GTK:INFO-BAR
+                       (:SUPERCLASS GTK:BOX
+                        :EXPORT T
+                        :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
                         :TYPE-INITIALIZER "gtk_info_bar_get_type")
-                       ((MESSAGE-TYPE GTK-INFO-BAR-MESSAGE-TYPE "message-type"
-                         "GtkMessageType" T T)
-                        (REVEALED GTK-INFO-BAR-REVEALED "revealed" "gboolean" T
-                         T)
-                        (SHOW-CLOSE-BUTTON GTK-INFO-BAR-SHOW-CLOSE-BUTTON
+                       ((MESSAGE-TYPE INFO-BAR-MESSAGE-TYPE
+                         "message-type" "GtkMessageType" T T)
+                        (REVEALED INFO-BAR-REVEALED "revealed" "gboolean" T T)
+                        (SHOW-CLOSE-BUTTON INFO-BAR-SHOW-CLOSE-BUTTON
                          "show-close-button" "gboolean" T T)))
-             (gobject:get-g-type-definition "GtkInfoBar"))))
+             (gobject:get-gtype-definition "GtkInfoBar"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
-(test info-bar-properties
+(test gtk-info-bar-properties
   (let ((info-bar (make-instance 'gtk:info-bar)))
     ;; message-type
     (is (eq :info (gtk:info-bar-message-type info-bar)))
@@ -69,7 +70,7 @@
 
 ;;; --- Style Properties -------------------------------------------------------
 
-(test info-bar-style-properties
+(test gtk-info-bar-style-properties
   (let ((info-bar (make-instance 'gtk:info-bar)))
     (is (=  5 (gtk:widget-style-property info-bar "action-area-border")))
     (is (=  6 (gtk:widget-style-property info-bar "button-spacing")))
@@ -80,12 +81,12 @@
 
 ;;;     gtk_info_bar_new
 
-(test info-bar-new
+(test gtk-info-bar-new
   (is (eq 'gtk:info-bar (type-of (gtk:info-bar-new)))))
 
 ;;;     gtk_info_bar_new_with_buttons
 
-(test info-bar-new-with-buttons
+(test gtk-info-bar-new-with-buttons
   (let ((info-bar nil))
     (is (eq 'gtk:info-bar
             (type-of (setf info-bar
@@ -103,7 +104,7 @@
 
 ;;;     gtk_info_bar_add_action_widget
 
-(test info-bar-add-action-widget
+(test gtk-info-bar-add-action-widget
   (let ((info-bar (make-instance 'gtk:info-bar)))
     (is (= 0
            (length
@@ -120,7 +121,7 @@
 
 ;;;     gtk_info_bar_add_button
 
-(test info-bar-add-button
+(test gtk-info-bar-add-button
   (let ((info-bar (make-instance 'gtk:info-bar)))
     (is (= 0 (length (gtk:container-children (gtk:info-bar-action-area info-bar)))))
     (is (eq 'gtk:button (type-of (gtk:info-bar-add-button info-bar "gtk-ok" 1))))
@@ -130,7 +131,7 @@
 
 ;;;     gtk_info_bar_add_buttons
 
-(test info-bar-add-buttons
+(test gtk-info-bar-add-buttons
   (let ((info-bar (make-instance 'gtk:info-bar)))
     (is (= 0 (length (gtk:container-children (gtk:info-bar-action-area info-bar)))))
     (is-false (gtk:info-bar-add-buttons info-bar "gtk-ok" 1))
@@ -140,13 +141,13 @@
 
 ;;;     gtk_info_bar_set_response_sensitive
 
-(test info-bar-set-response-sensitive
+(test gtk-info-bar-set-response-sensitive
   (let ((info-bar (gtk:info-bar-new-with-buttons "gtk-ok" 1 "gtk-cancel" 2 "gtk-no" 3)))
     (is-false (gtk:info-bar-set-response-sensitive info-bar 1 nil))))
 
 ;;;     gtk_info_bar_set_default_response
 
-(test info-bar-set-default-response
+(test gtk-info-bar-set-default-response
   (let ((window (make-instance 'gtk:window))
         (info-bar (gtk:info-bar-new-with-buttons "gtk-ok" 1 "gtk-cancel" 2 "gtk-no" 3)))
     ;; The info bar must be within a GtkWindow
@@ -157,14 +158,14 @@
 
 ;;;     gtk_info_bar_get_action_area
 
-(test info-bar-action-area
+(test gtk-info-bar-action-area
   (let ((info-bar (make-instance 'gtk:info-bar)))
     (is (eq 'gtk:button-box (type-of (gtk:info-bar-action-area info-bar))))))
 
 ;;;     gtk_info_bar_get_content_area
 
-(test info-bar-content-area
+(test gtk-info-bar-content-area
   (let ((info-bar (make-instance 'gtk:info-bar)))
     (is (eq 'gtk:box (type-of (gtk:info-bar-content-area info-bar))))))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-9-22

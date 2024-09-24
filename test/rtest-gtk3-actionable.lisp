@@ -6,26 +6,26 @@
 ;;; --- GtkActionable ----------------------------------------------------------
 
 (test gtk-actionable-interface
-  ;; Type check
+  ;; Check type
   (is (g:type-is-interface "GtkActionable"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:actionable
           (glib:symbol-for-gtype "GtkActionable")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkActionable")
           (g:gtype (cffi:foreign-funcall "gtk_actionable_get_type" :size))))
-  ;; Get the names of the interface properties.
+  ;; Check interface properties
   (is (equal '("action-name" "action-target")
-             (list-interface-properties "GtkActionable")))
-  ;; Get the interface definition
-  (is (equal '(GOBJECT:DEFINE-G-INTERFACE "GtkActionable" GTK-ACTIONABLE
+             (glib-test:list-interface-properties "GtkActionable")))
+  ;; Check interface definition
+  (is (equal '(GOBJECT:DEFINE-GINTERFACE "GtkActionable" GTK:ACTIONABLE
                        (:EXPORT T
                         :TYPE-INITIALIZER "gtk_actionable_get_type")
-                       (ACTION-NAME GTK-ACTIONABLE-ACTION-NAME
+                       (ACTION-NAME ACTIONABLE-ACTION-NAME
                         "action-name" "gchararray" T T)
-                       (ACTION-TARGET GTK-ACTIONABLE-ACTION-TARGET
+                       (ACTION-TARGET ACTIONABLE-ACTION-TARGET
                         "action-target" "GVariant" T T))
-             (gobject:get-g-type-definition "GtkActionable"))))
+             (gobject:get-gtype-definition "GtkActionable"))))
 
 ;;; --- Properties and Accessors -----------------------------------------------
 
@@ -65,4 +65,4 @@
     (is (string= "left"
                  (g:variant-string (gtk:actionable-action-target button))))))
 
-;;; --- 2023-6-17 --------------------------------------------------------------
+;;; 2024-9-21

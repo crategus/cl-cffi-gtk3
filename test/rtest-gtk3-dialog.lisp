@@ -8,127 +8,126 @@
 ;;;     GtkDialogFlags
 
 (test gtk-dialog-flags
-  ;; Check the type
+  ;; Check type
   (is (g:type-is-flags "GtkDialogFlags"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:dialog-flags
           (glib:symbol-for-gtype "GtkDialogFlags")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkDialogFlags")
           (g:gtype (cffi:foreign-funcall "gtk_dialog_flags_get_type" :size))))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_DIALOG_MODAL" "GTK_DIALOG_DESTROY_WITH_PARENT"
                "GTK_DIALOG_USE_HEADER_BAR")
-             (list-flags-item-name "GtkDialogFlags")))
-  ;; Check the values
+             (glib-test:list-flags-item-names "GtkDialogFlags")))
+  ;; Check values
   (is (equal '(1 2 4)
-             (list-flags-item-value "GtkDialogFlags")))
-  ;; Check the nick names
+             (glib-test:list-flags-item-values "GtkDialogFlags")))
+  ;; Check nick names
   (is (equal '("modal" "destroy-with-parent" "use-header-bar")
-             (list-flags-item-nick "GtkDialogFlags")))
-  ;; Check the flags definition
-  (is (equal '(GOBJECT:DEFINE-G-FLAGS "GtkDialogFlags"
-                              GTK-DIALOG-FLAGS
-                              (:EXPORT T
-                               :TYPE-INITIALIZER "gtk_dialog_flags_get_type")
-                              (:MODAL 1)
-                              (:DESTROY-WITH-PARENT 2)
-                              (:USE-HEADER-BAR 4))
-             (gobject:get-g-type-definition "GtkDialogFlags"))))
+             (glib-test:list-flags-item-nicks "GtkDialogFlags")))
+  ;; Check flags definition
+  (is (equal '(GOBJECT:DEFINE-GFLAGS "GtkDialogFlags" GTK:DIALOG-FLAGS
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_dialog_flags_get_type")
+                       (:MODAL 1)
+                       (:DESTROY-WITH-PARENT 2)
+                       (:USE-HEADER-BAR 4))
+             (gobject:get-gtype-definition "GtkDialogFlags"))))
 
 ;;;     GtkResponseType
 
 (test gtk-response-type
-  ;; Check the type
+  ;; Check type
   (is (g:type-is-enum "GtkResponseType"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkResponseType")
           (g:gtype (cffi:foreign-funcall "gtk_response_type_get_type" :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:response-type
           (glib:symbol-for-gtype "GtkResponseType")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_RESPONSE_NONE" "GTK_RESPONSE_REJECT" "GTK_RESPONSE_ACCEPT"
                "GTK_RESPONSE_DELETE_EVENT" "GTK_RESPONSE_OK"
                "GTK_RESPONSE_CANCEL" "GTK_RESPONSE_CLOSE" "GTK_RESPONSE_YES"
                "GTK_RESPONSE_NO" "GTK_RESPONSE_APPLY" "GTK_RESPONSE_HELP")
-             (list-enum-item-name "GtkResponseType")))
-  ;; Check the values
+             (glib-test:list-enum-item-names "GtkResponseType")))
+  ;; Check values
   (is (equal '(-1 -2 -3 -4 -5 -6 -7 -8 -9 -10 -11)
-             (list-enum-item-value "GtkResponseType")))
-  ;; Check the nick names
+             (glib-test:list-enum-item-values "GtkResponseType")))
+  ;; Check nick names
   (is (equal '("none" "reject" "accept" "delete-event" "ok" "cancel" "close"
                "yes" "no" "apply" "help")
-             (list-enum-item-nick "GtkResponseType")))
-  ;; Check the enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkResponseType"
-                              GTK-RESPONSE-TYPE
-                              (:EXPORT T
-                               :TYPE-INITIALIZER "gtk_response_type_get_type")
-                              (:NONE -1)
-                              (:REJECT -2)
-                              (:ACCEPT -3)
-                              (:DELETE-EVENT -4)
-                              (:OK -5)
-                              (:CANCEL -6)
-                              (:CLOSE -7)
-                              (:YES -8)
-                              (:NO -9)
-                              (:APPLY -10)
-                              (:HELP -11))
-             (gobject:get-g-type-definition "GtkResponseType"))))
+             (glib-test:list-enum-item-nicks "GtkResponseType")))
+  ;; Check enum definition
+  (is (equal '(GOBJECT:DEFINE-GENUM "GtkResponseType" GTK:RESPONSE-TYPE
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_response_type_get_type")
+                       (:NONE -1)
+                       (:REJECT -2)
+                       (:ACCEPT -3)
+                       (:DELETE-EVENT -4)
+                       (:OK -5)
+                       (:CANCEL -6)
+                       (:CLOSE -7)
+                       (:YES -8)
+                       (:NO -9)
+                       (:APPLY -10)
+                       (:HELP -11))
+             (gobject:get-gtype-definition "GtkResponseType"))))
 
 ;;;     GtkDialog
 
 (test gtk-dialog-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkDialog"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:dialog
           (glib:symbol-for-gtype "GtkDialog")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkDialog")
           (g:gtype (cffi:foreign-funcall "gtk_dialog_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkWindow")
           (g:type-parent "GtkDialog")))
-  ;; Check the children
+  ;; Check children
   #-windows
   (is (equal '("GtkAboutDialog" "GtkAppChooserDialog" "GtkColorChooserDialog"
                "GtkColorSelectionDialog" "GtkFileChooserDialog"
                "GtkFontChooserDialog" "GtkFontSelectionDialog"
                "GtkMessageDialog" "GtkPageSetupUnixDialog" "GtkPrintUnixDialog"
                "GtkRecentChooserDialog")
-             (list-children "GtkDialog")))
+             (glib-test:list-children "GtkDialog")))
   #+windows
   (is (equal '("GtkAboutDialog" "GtkAppChooserDialog" "GtkColorChooserDialog"
  "GtkColorSelectionDialog" "GtkFileChooserDialog" "GtkFontChooserDialog"
  "GtkFontSelectionDialog" "GtkMessageDialog" "GtkRecentChooserDialog")
-             (list-children "GtkDialog")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkDialog")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
-             (list-interfaces "GtkDialog")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkDialog")))
+  ;; Check class properties
   (is (equal '("use-header-bar")
-             (list-properties "GtkDialog")))
-  ;; Get the names of the style properties.
+             (glib-test:list-properties "GtkDialog")))
+  ;; Check style properties
   (is (equal '("action-area-border" "button-spacing" "content-area-border"
                "content-area-spacing")
-             (list-style-properties "GtkDialog")))
-  ;; Get the names of the child properties
+             (gtk-test:list-style-properties "GtkDialog")))
+  ;; Check child properties
   (is (equal '()
-             (list-child-properties "GtkDialog")))
+             (gtk-test:list-child-properties "GtkDialog")))
   ;; Check the signals
   (is (equal '("close" "response")
-             (list-signals "GtkDialog")))
+             (glib-test:list-signals "GtkDialog")))
   ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkDialog" GTK-DIALOG
-                       (:SUPERCLASS GTK-WINDOW :EXPORT T :INTERFACES
-                        ("AtkImplementorIface" "GtkBuildable")
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkDialog" GTK:DIALOG
+                       (:SUPERCLASS GTK:WINDOW
+                        :EXPORT T
+                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_dialog_get_type")
-                       ((USE-HEADER-BAR GTK-DIALOG-USE-HEADER-BAR
+                       ((USE-HEADER-BAR DIALOG-USE-HEADER-BAR
                          "use-header-bar" "gint" T NIL)))
-             (gobject:get-g-type-definition "GtkDialog"))))
+             (gobject:get-gtype-definition "GtkDialog"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -288,4 +287,4 @@
 ;;;     gtk_dialog_set_alternative_button_order
 ;;;     gtk_dialog_set_alternative_button_order_from_array
 
-;;; 2024-3-16
+;;; 2024-9-22

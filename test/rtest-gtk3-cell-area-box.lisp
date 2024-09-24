@@ -7,38 +7,39 @@
 
 ;;;     GtkCellAreaBox
 
-(test cell-area-box-class
-  ;; Type check
+(test gtk-cell-area-box-class
+  ;; Check type
   (is (g:type-is-object "GtkCellAreaBox"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:cell-area-box
           (glib:symbol-for-gtype "GtkCellAreaBox")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkCellAreaBox")
           (g:gtype (cffi:foreign-funcall "gtk_cell_area_box_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkCellArea")
           (g:type-parent "GtkCellAreaBox")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkCellAreaBox")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkCellAreaBox")))
+  ;; Check interfaces
   (is (equal '("GtkCellLayout" "GtkBuildable" "GtkOrientable")
-             (list-interfaces "GtkCellAreaBox")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkCellAreaBox")))
+  ;; Check class properties
   (is (equal '("orientation" "spacing")
-             (list-properties "GtkCellAreaBox")))
-  ;; Check the signals
+             (glib-test:list-properties "GtkCellAreaBox")))
+  ;; Check signals
   (is (equal '()
-             (list-signals "GtkCellAreaBox")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkCellAreaBox" GTK-CELL-AREA-BOX
-                       (:SUPERCLASS GTK-CELL-AREA :EXPORT T :INTERFACES
+             (glib-test:list-signals "GtkCellAreaBox")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkCellAreaBox" GTK:CELL-AREA-BOX
+                       (:SUPERCLASS GTK:CELL-AREA
+                        :EXPORT T
+                        :INTERFACES
                         ("GtkBuildable" "GtkCellLayout" "GtkOrientable")
                         :TYPE-INITIALIZER "gtk_cell_area_box_get_type")
-                       ((SPACING GTK-CELL-AREA-BOX-SPACING "spacing" "gint" T
-                         T)))
-             (gobject:get-g-type-definition "GtkCellAreaBox"))))
+                       ((SPACING CELL-AREA-BOX-SPACING "spacing" "gint" T T)))
+             (gobject:get-gtype-definition "GtkCellAreaBox"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -59,4 +60,4 @@
 ;;;     gtk_cell_area_box_get_spacing                      Accessor
 ;;;     gtk_cell_area_box_set_spacing                      Accessor
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-9-22

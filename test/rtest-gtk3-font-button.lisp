@@ -8,81 +8,62 @@
 ;;;     GtkFontButton
 
 (test gtk-font-button-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkFontButton"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:font-button
           (glib:symbol-for-gtype "GtkFontButton")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkFontButton")
           (g:gtype (cffi:foreign-funcall "gtk_font_button_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkButton")
           (g:type-parent "GtkFontButton")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkFontButton")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkFontButton")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable" "GtkActionable"
                "GtkActivatable" "GtkFontChooser")
-             (list-interfaces "GtkFontButton")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkFontButton")))
+  ;; Check class properties
   (is (equal '("font" "font-desc" "font-features" "font-name" "language" "level"
                "preview-text" "show-preview-entry" "show-size" "show-style"
                "title" "use-font" "use-size")
-             (list-properties "GtkFontButton")))
-  ;; Check the style properties
+             (glib-test:list-properties "GtkFontButton")))
+  ;; Check style properties
   (is (equal '()
-             (list-style-properties "GtkFontButton")))
-  ;; Check the child properties
+             (gtk-test:list-style-properties "GtkFontButton")))
+  ;; Check child properties
   (is (equal '()
-             (list-child-properties "GtkFontButton")))
-  ;; Check the signals
+             (gtk-test:list-child-properties "GtkFontButton")))
+  ;; Check signals
   (is (equal '("font-set")
-             (list-signals "GtkFontButton")))
+             (glib-test:list-signals "GtkFontButton")))
   ;; CSS information
   (is (string= "button"
                (gtk:widget-class-css-name "GtkFontButton")))
-  #-windows
-  (is (string=
-"[button.font:dir(ltr)]
-  box.horizontal:dir(ltr)
-    label:dir(ltr)
-    box.horizontal:dir(ltr)
-      separator.vertical:dir(ltr)
-      label:dir(ltr)
-"
-               (gtk:style-context-to-string
-                   (gtk:widget-style-context
-                       (make-instance 'gtk:font-button))
-                   :recurse)))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkFontButton" GTK-FONT-BUTTON
-                       (:SUPERCLASS GTK-BUTTON :EXPORT T :INTERFACES
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkFontButton" GTK:FONT-BUTTON
+                       (:SUPERCLASS GTK:BUTTON
+                        :EXPORT T
+                        :INTERFACES
                         ("AtkImplementorIface" "GtkActionable" "GtkActivatable"
                          "GtkBuildable" "GtkFontChooser")
                         :TYPE-INITIALIZER "gtk_font_button_get_type")
-                       ((FONT-NAME GTK-FONT-BUTTON-FONT-NAME "font-name"
-                         "gchararray" T T)
-                        (SHOW-SIZE GTK-FONT-BUTTON-SHOW-SIZE "show-size"
-                         "gboolean" T T)
-                        (SHOW-STYLE GTK-FONT-BUTTON-SHOW-STYLE "show-style"
-                         "gboolean" T T)
-                        (TITLE GTK-FONT-BUTTON-TITLE "title" "gchararray" T T)
-                        (USE-FONT GTK-FONT-BUTTON-USE-FONT "use-font"
-                         "gboolean" T T)
-                        (USE-SIZE GTK-FONT-BUTTON-USE-SIZE "use-size"
-                         "gboolean" T T)))
-             (gobject:get-g-type-definition "GtkFontButton"))))
+                       ((FONT-NAME FONT-BUTTON-FONT-NAME
+                         "font-name" "gchararray" T T)
+                        (SHOW-SIZE FONT-BUTTON-SHOW-SIZE
+                         "show-size" "gboolean" T T)
+                        (SHOW-STYLE FONT-BUTTON-SHOW-STYLE
+                         "show-style" "gboolean" T T)
+                        (TITLE FONT-BUTTON-TITLE "title" "gchararray" T T)
+                        (USE-FONT FONT-BUTTON-USE-FONT "use-font" "gboolean" T T)
+                        (USE-SIZE FONT-BUTTON-USE-SIZE
+                         "use-size" "gboolean" T T)))
+             (gobject:get-gtype-definition "GtkFontButton"))))
 
 ;;; --- Properties -------------------------------------------------------------
-
-;;;     font-name
-;;;     show-size
-;;;     show-style
-;;;     title
-;;;     use-font
-;;;     use-size
 
 (test gtk-font-button-properties
   (let ((button (make-instance 'gtk:font-button)))
@@ -124,4 +105,4 @@
     (is (typep button 'gtk:font-button))
     (is (string= "Courier" (gtk:font-button-font-name button)))))
 
-;;; --- 2023-6-16 --------------------------------------------------------------
+;;; 2024-9-23

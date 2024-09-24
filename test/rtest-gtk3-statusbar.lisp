@@ -7,46 +7,48 @@
 
 ;;;     GtkStatusbar
 
-(test statusbar-class
-  ;; Type check
+(test gtk-statusbar-class
+  ;; Check type
   (is (g:type-is-object "GtkStatusbar"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:statusbar
           (glib:symbol-for-gtype "GtkStatusbar")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkStatusbar")
           (g:gtype (cffi:foreign-funcall "gtk_statusbar_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkBox") (g:type-parent "GtkStatusbar")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkStatusbar")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkStatusbar")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
-             (list-interfaces "GtkStatusbar")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkStatusbar")))
+  ;; Check class properties
   (is (equal '()
-             (list-properties "GtkStatusbar")))
-  ;; Get the names of the style properties.
+             (glib-test:list-properties "GtkStatusbar")))
+  ;; Check style properties
   (is (equal '("shadow-type")
-             (list-style-properties "GtkStatusbar")))
-  ;; Get the names of the child properties
+             (gtk-test:list-style-properties "GtkStatusbar")))
+  ;; Check child properties
   (is (equal '("expand" "fill" "pack-type" "padding" "position")
-             (list-child-properties "GtkStatusbar")))
-  ;; Check the signals
+             (gtk-test:list-child-properties "GtkStatusbar")))
+  ;; Check signals
   (is (equal '("text-popped" "text-pushed")
-             (list-signals "GtkStatusbar")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkStatusbar" GTK-STATUSBAR
-                       (:SUPERCLASS GTK-BOX :EXPORT T :INTERFACES
+             (glib-test:list-signals "GtkStatusbar")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkStatusbar" GTK:STATUSBAR
+                       (:SUPERCLASS GTK:BOX
+                        :EXPORT T
+                        :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
                         :TYPE-INITIALIZER "gtk_statusbar_get_type")
                        NIL)
-             (gobject:get-g-type-definition "GtkStatusbar"))))
+             (gobject:get-gtype-definition "GtkStatusbar"))))
 
 ;;; --- Style Properties -------------------------------------------------------
 
-(test statusbar-style-properties
+(test gtk-statusbar-style-properties
   (let ((statusbar (make-instance 'gtk:statusbar)))
     (is (eq :in (gtk:widget-style-property statusbar "shadow-type")))))
 
@@ -54,12 +56,12 @@
 
 ;;;     gtk_statusbar_new
 
-(test statusbar-new
+(test gtk-statusbar-new
   (is (eq 'gtk:statusbar (type-of (gtk:statusbar-new)))))
 
 ;;;     gtk_statusbar_get_context_id
 
-(test statusbar-context-id
+(test gtk-statusbar-context-id
   (let ((statusbar (gtk:statusbar-new)))
     ;; Get the context IDs
     (is (= 1 (gtk:statusbar-context-id statusbar "context1")))
@@ -75,7 +77,7 @@
 ;;;     gtk_statusbar_remove
 ;;;     gtk_statusbar_remove_all
 
-(test statusbar-push
+(test gtk-statusbar-push
   (let* ((statusbar (gtk:statusbar-new))
          (context-id-1 (gtk:statusbar-context-id statusbar "context1"))
          (context-id-2 (gtk:statusbar-context-id statusbar "context2"))
@@ -100,8 +102,8 @@
 
 ;;;     gtk_statusbar_get_message_area
 
-(test statusbar-message-area
+(test gtk-statusbar-message-area
   (let ((statusbar (gtk:statusbar-new)))
     (is (eq 'gtk:box (type-of (gtk:statusbar-message-area statusbar))))))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-9-22

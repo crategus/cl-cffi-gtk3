@@ -8,20 +8,19 @@
 ;;;     GtkCellLayout
 
 (test gtk-cell-layout-interface
-  ;; Type check
+  ;; Check type
   (is-true (g:type-is-interface "GtkCellLayout"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:cell-layout
           (glib:symbol-for-gtype "GtkCellLayout")))
-  ;; Get the names of the interface properties.
+  ;; Check interface properties
   (is (equal '()
-             (list-interface-properties "GtkCellLayout")))
-  ;; Get the interface definition
-  (is (equal '(GOBJECT:DEFINE-G-INTERFACE "GtkCellLayout"
-                                  GTK-CELL-LAYOUT
-                                  (:EXPORT T
-                                   :TYPE-INITIALIZER "gtk_cell_layout_get_type"))
-             (gobject:get-g-type-definition "GtkCellLayout"))))
+             (glib-test:list-interface-properties "GtkCellLayout")))
+  ;; Check interface definition
+  (is (equal '(GOBJECT:DEFINE-GINTERFACE "GtkCellLayout" GTK:CELL-LAYOUT
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_cell_layout_get_type"))
+             (gobject:get-gtype-definition "GtkCellLayout"))))
 
 ;;; --- Functions --------------------------------------------------------------
 
@@ -153,4 +152,4 @@
                                               "size" 2))
     (is-false (gtk:cell-layout-clear-attributes layout cell))))
 
-;;; 2024-3-24
+;;; 2024-9-22

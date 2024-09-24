@@ -7,43 +7,45 @@
 
 ;;;     GdkDeviceManager
 
-(test g-object-class
-  ;; Type check
+(test gdk-device-manager-class
+  ;; Check type
   (is (g:type-is-object "GdkDeviceManager"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gdk:device-manager
           (glib:symbol-for-gtype "GdkDeviceManager")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GdkDeviceManager")
           (g:gtype (cffi:foreign-funcall "gdk_device_manager_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GObject")
           (g:type-parent "GdkDeviceManager")))
-  ;; Check the children
+  ;; Check children
   #-windows
   (is (or (equal '("GdkX11DeviceManagerCore")
-                 (list-children "GdkDeviceManager"))
+                 (glib-test:list-children "GdkDeviceManager"))
           (equal '("GdkWaylandDeviceManager" "GdkX11DeviceManagerCore")
-                 (list-children "GdkDeviceManager"))))
+                 (glib-test:list-children "GdkDeviceManager"))))
   #+windows
   (is (equal '("GdkDeviceManagerWin32")
-             (list-children "GdkDeviceManager")))
-  ;; Check the interfaces
+             (glib-test:list-children "GdkDeviceManager")))
+  ;; Check interfaces
   (is (equal '()
-             (list-interfaces "GdkDeviceManager")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GdkDeviceManager")))
+  ;; Check class properties
   (is (equal '("display")
-             (list-properties "GdkDeviceManager")))
-  ;; Check the signals
+             (glib-test:list-properties "GdkDeviceManager")))
+  ;; Check signals
   (is (equal '("device-added" "device-changed" "device-removed")
-             (list-signals "GdkDeviceManager")))
+             (glib-test:list-signals "GdkDeviceManager")))
   ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GdkDeviceManager" GDK-DEVICE-MANAGER
-                       (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GdkDeviceManager" GDK:DEVICE-MANAGER
+                       (:SUPERCLASS G:OBJECT
+                        :EXPORT T
+                        :INTERFACES NIL
                         :TYPE-INITIALIZER "gdk_device_manager_get_type")
-                       ((DISPLAY GDK-DEVICE-MANAGER-DISPLAY "display"
-                         "GdkDisplay" T NIL)))
-             (gobject:get-g-type-definition "GdkDeviceManager"))))
+                       ((DISPLAY DEVICE-MANAGER-DISPLAY
+                         "display" "GdkDisplay" T NIL)))
+             (gobject:get-gtype-definition "GdkDeviceManager"))))
 
 ;;; Functions
 ;;;
@@ -62,4 +64,4 @@
 ;;;     device-changed
 ;;;     device-removed
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-9-22

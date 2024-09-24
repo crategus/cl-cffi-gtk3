@@ -8,41 +8,42 @@
 ;;;     GtkNativeDialog
 
 (test gtk-native-dialog-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkNativeDialog"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:native-dialog
           (glib:symbol-for-gtype "GtkNativeDialog")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkNativeDialog")
           (g:gtype (cffi:foreign-funcall "gtk_native_dialog_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GObject")
           (g:type-parent "GtkNativeDialog")))
-  ;; Check the children
+  ;; Check children
   (is (equal '("GtkFileChooserNative")
-             (list-children "GtkNativeDialog")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkNativeDialog")))
+  ;; Check interfaces
   (is (equal '()
-             (list-interfaces "GtkNativeDialog")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkNativeDialog")))
+  ;; Check class properties
   (is (equal '("modal" "title" "transient-for" "visible")
-             (list-properties "GtkNativeDialog")))
-  ;; Check the signals
+             (glib-test:list-properties "GtkNativeDialog")))
+  ;; Check signals
   (is (equal '("response")
-             (list-signals "GtkNativeDialog")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkNativeDialog" GTK-NATIVE-DIALOG
-                       (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
+             (glib-test:list-signals "GtkNativeDialog")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkNativeDialog" GTK:NATIVE-DIALOG
+                       (:SUPERCLASS G:OBJECT
+                        :EXPORT T
+                        :INTERFACES NIL
                         :TYPE-INITIALIZER "gtk_native_dialog_get_type")
-                       ((MODAL GTK-NATIVE-DIALOG-MODAL "modal" "gboolean" T T)
-                        (TITLE GTK-NATIVE-DIALOG-TITLE "title" "gchararray" T
-                         T)
-                        (TRANSIENT-FOR GTK-NATIVE-DIALOG-TRANSIENT-FOR
+                       ((MODAL NATIVE-DIALOG-MODAL "modal" "gboolean" T T)
+                        (TITLE NATIVE-DIALOG-TITLE "title" "gchararray" T T)
+                        (TRANSIENT-FOR NATIVE-DIALOG-TRANSIENT-FOR
                          "transient-for" "GtkWindow" T T)
-                        (VISIBLE GTK-NATIVE-DIALOG-VISIBLE "visible" "gboolean"
-                         T T)))
-             (gobject:get-g-type-definition "GtkNativeDialog"))))
+                        (VISIBLE NATIVE-DIALOG-VISIBLE
+                         "visible" "gboolean" T T)))
+             (gobject:get-gtype-definition "GtkNativeDialog"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -83,4 +84,4 @@
 ;;;     gtk_native_dialog_destroy
 ;;;     gtk_native_dialog_run
 
-;;; 2024-3-14
+;;; 2024-9-21

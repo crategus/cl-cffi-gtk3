@@ -261,13 +261,13 @@
 
 ;;;     gtk_tree_model_get_flags
 
-(test tree-model-flags
+(test gtk-tree-model-flags
   (let ((model (make-instance 'gtk:list-store)))
     (is (equal '(:ITERS-PERSIST :LIST-ONLY) (gtk:tree-model-flags model)))))
 
 ;;;     gtk_tree_model_get_n_columns
 
-(test tree-model-n-columns
+(test gtk-tree-model-n-columns
   (let ((model (make-instance 'gtk:list-store
                               :column-types
                               '("gint" "gchararray" "gboolean"))))
@@ -275,7 +275,7 @@
 
 ;;;     gtk_tree_model_get_column_type
 
-(test tree-model-column-type
+(test gtk-tree-model-column-type
   (let ((model (make-instance 'gtk:list-store
                               :column-types
                               '("gint" "gchararray" "gboolean"))))
@@ -285,7 +285,7 @@
 
 ;;;     gtk_tree_model_get_iter
 
-(test tree-model-iter
+(test gtk-tree-model-iter
   (let ((model (create-and-fill-list-store))
         (path (gtk:tree-path-new-from-string "2")))
 
@@ -295,7 +295,7 @@
 
 ;;;     gtk_tree_model_get_iter_from_string
 
-(test tree-model-iter-from-string
+(test gtk-tree-model-iter-from-string
   (let ((model (create-and-fill-list-store)))
 
     (is (eq 'gtk:tree-iter (type-of (gtk:tree-model-iter-from-string model "2"))))
@@ -304,7 +304,7 @@
 
 ;;;     gtk_tree_model_get_iter_first
 
-(test tree-model-iter-first
+(test gtk-tree-model-iter-first
   (let ((model (create-and-fill-list-store)))
 
     (is (eq 'gtk:tree-iter (type-of (gtk:tree-model-iter-first model))))
@@ -343,4 +343,4 @@
 ;;;     gtk_tree_model_rows_reordered
 ;;;     gtk_tree_model_rows_reordered_with_length
 
-;;; 2024-3-28
+;;; 2024-9-23

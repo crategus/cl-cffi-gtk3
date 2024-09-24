@@ -8,91 +8,91 @@
 ;;;     GtkSensitivityType
 
 (test gtk-sensitivity-type
-  ;; Check the type
+  ;; Check type
   (is (g:type-is-enum "GtkSensitivityType"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkSensitivityType")
           (g:gtype (cffi:foreign-funcall "gtk_sensitivity_type_get_type" :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:sensitivity-type
           (glib:symbol-for-gtype "GtkSensitivityType")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_SENSITIVITY_AUTO" "GTK_SENSITIVITY_ON"
                "GTK_SENSITIVITY_OFF")
-             (list-enum-item-name "GtkSensitivityType")))
-  ;; Check the values
+             (glib-test:list-enum-item-names "GtkSensitivityType")))
+  ;; Check values
   (is (equal '(0 1 2)
-             (list-enum-item-value "GtkSensitivityType")))
-  ;; Check the nick names
+             (glib-test:list-enum-item-values "GtkSensitivityType")))
+  ;; Check nick names
   (is (equal '("auto" "on" "off")
-             (list-enum-item-nick "GtkSensitivityType")))
-  ;; Check the enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkSensitivityType"
-                             GTK-SENSITIVITY-TYPE
-                             (:EXPORT T
-                              :TYPE-INITIALIZER "gtk_sensitivity_type_get_type")
-                             (:AUTO 0)
-                             (:ON 1)
-                             (:OFF 2))
-             (gobject:get-g-type-definition "GtkSensitivityType"))))
+             (glib-test:list-enum-item-nicks "GtkSensitivityType")))
+  ;; Check enum definition
+  (is (equal '(GOBJECT:DEFINE-GENUM "GtkSensitivityType" GTK:SENSITIVITY-TYPE
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_sensitivity_type_get_type")
+                       (:AUTO 0)
+                       (:ON 1)
+                       (:OFF 2))
+             (gobject:get-gtype-definition "GtkSensitivityType"))))
 
 ;;;     GtkRange
 
 (test gtk-range-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkRange"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:range
           (glib:symbol-for-gtype "GtkRange")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkRange")
           (g:gtype (cffi:foreign-funcall "gtk_range_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkWidget")
           (g:type-parent "GtkRange")))
-  ;; Check the children
+  ;; Check children
   (is (equal '("GtkScale" "GtkScrollbar")
-             (list-children "GtkRange")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkRange")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
-             (list-interfaces "GtkRange")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkRange")))
+  ;; Check class properties
   (is (equal '("adjustment" "fill-level" "inverted" "lower-stepper-sensitivity"
                "orientation" "restrict-to-fill-level" "round-digits"
                "show-fill-level" "upper-stepper-sensitivity")
-             (list-properties "GtkRange")))
-  ;; Check the style properties
+             (glib-test:list-properties "GtkRange")))
+  ;; Check style properties
   (is (equal '("arrow-displacement-x" "arrow-displacement-y" "arrow-scaling"
                "slider-width" "stepper-size" "stepper-spacing" "trough-border"
                "trough-under-steppers")
-             (list-style-properties "GtkRange")))
-  ;; Check the signals
+             (gtk-test:list-style-properties "GtkRange")))
+  ;; Check signals
   (is (equal '("adjust-bounds" "change-value" "move-slider" "value-changed")
-             (list-signals "GtkRange")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkRange" GTK-RANGE
-                       (:SUPERCLASS GTK-WIDGET :EXPORT T :INTERFACES
+             (glib-test:list-signals "GtkRange")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkRange" GTK:RANGE
+                       (:SUPERCLASS GTK:WIDGET
+                        :EXPORT T
+                        :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
                         :TYPE-INITIALIZER "gtk_range_get_type")
-                       ((ADJUSTMENT GTK-RANGE-ADJUSTMENT "adjustment"
-                         "GtkAdjustment" T T)
-                        (FILL-LEVEL GTK-RANGE-FILL-LEVEL "fill-level" "gdouble"
-                         T T)
-                        (INVERTED GTK-RANGE-INVERTED "inverted" "gboolean" T T)
+                       ((ADJUSTMENT RANGE-ADJUSTMENT
+                         "adjustment" "GtkAdjustment" T T)
+                        (FILL-LEVEL RANGE-FILL-LEVEL
+                         "fill-level" "gdouble" T T)
+                        (INVERTED RANGE-INVERTED "inverted" "gboolean" T T)
                         (LOWER-STEPPER-SENSITIVITY
-                         GTK-RANGE-LOWER-STEPPER-SENSITIVITY
+                         RANGE-LOWER-STEPPER-SENSITIVITY
                          "lower-stepper-sensitivity" "GtkSensitivityType" T T)
-                        (RESTRICT-TO-FILL-LEVEL
-                         GTK-RANGE-RESTRICT-TO-FILL-LEVEL
+                        (RESTRICT-TO-FILL-LEVEL RANGE-RESTRICT-TO-FILL-LEVEL
                          "restrict-to-fill-level" "gboolean" T T)
-                        (ROUND-DIGITS GTK-RANGE-ROUND-DIGITS "round-digits"
-                         "gint" T T)
-                        (SHOW-FILL-LEVEL GTK-RANGE-SHOW-FILL-LEVEL
+                        (ROUND-DIGITS RANGE-ROUND-DIGITS
+                         "round-digits" "gint" T T)
+                        (SHOW-FILL-LEVEL RANGE-SHOW-FILL-LEVEL
                          "show-fill-level" "gboolean" T T)
                         (UPPER-STEPPER-SENSITIVITY
-                         GTK-RANGE-UPPER-STEPPER-SENSITIVITY
+                         RANGE-UPPER-STEPPER-SENSITIVITY
                          "upper-stepper-sensitivity" "GtkSensitivityType" T T)))
-             (gobject:get-g-type-definition "GtkRange"))))
+             (gobject:get-gtype-definition "GtkRange"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -231,4 +231,4 @@
 ;;;     gtk_range_set_min_slider_size
 ;;;     gtk_range_set_slider_size_fixed
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-9-21

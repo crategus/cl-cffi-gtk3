@@ -19,25 +19,24 @@
   ;; Check names
   (is (equal '("GTK_BUTTONBOX_SPREAD" "GTK_BUTTONBOX_EDGE" "GTK_BUTTONBOX_START"
                "GTK_BUTTONBOX_END" "GTK_BUTTONBOX_CENTER" "GTK_BUTTONBOX_EXPAND")
-             (list-enum-item-name "GtkButtonBoxStyle")))
+             (glib-test:list-enum-item-names "GtkButtonBoxStyle")))
   ;; Check values
   (is (equal '(1 2 3 4 5 6)
-             (list-enum-item-value "GtkButtonBoxStyle")))
+             (glib-test:list-enum-item-values "GtkButtonBoxStyle")))
   ;; Check nick names
   (is (equal '("spread" "edge" "start" "end" "center" "expand")
-             (list-enum-item-nick "GtkButtonBoxStyle")))
+             (glib-test:list-enum-item-nicks "GtkButtonBoxStyle")))
   ;; Check enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkButtonBoxStyle"
-                             GTK-BUTTON-BOX-STYLE
-                             (:EXPORT T
-                              :TYPE-INITIALIZER "gtk_button_box_style_get_type")
-                             (:SPREAD 1)
-                             (:EDGE 2)
-                             (:START 3)
-                             (:END 4)
-                             (:CENTER 5)
-                             (:EXPAND 6))
-             (gobject:get-g-type-definition "GtkButtonBoxStyle"))))
+  (is (equal '(GOBJECT:DEFINE-GENUM "GtkButtonBoxStyle" GTK:BUTTON-BOX-STYLE
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_button_box_style_get_type")
+                       (:SPREAD 1)
+                       (:EDGE 2)
+                       (:START 3)
+                       (:END 4)
+                       (:CENTER 5)
+                       (:EXPAND 6))
+             (gobject:get-gtype-definition "GtkButtonBoxStyle"))))
 
 ;;;     GtkButtonBox
 
@@ -45,49 +44,49 @@
 (cffi:foreign-funcall "gtk_vbutton_box_get_type" :size)
 
 (test gtk-button-box-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkButtonBox"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:button-box
           (glib:symbol-for-gtype "GtkButtonBox")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkButtonBox")
           (g:gtype (cffi:foreign-funcall "gtk_button_box_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkBox") (g:type-parent "GtkButtonBox")))
-  ;; Check the children
+  ;; Check children
   (is (equal '("GtkHButtonBox" "GtkVButtonBox")
-             (list-children "GtkButtonBox")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkButtonBox")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
-             (list-interfaces "GtkButtonBox")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkButtonBox")))
+  ;; Check class properties
   (is (equal '("layout-style")
-             (list-properties "GtkButtonBox")))
-  ;; Get the names of the style properties.
+             (glib-test:list-properties "GtkButtonBox")))
+  ;; Check style properties
   (is (equal '("child-internal-pad-x" "child-internal-pad-y" "child-min-height"
                "child-min-width")
-             (list-style-properties "GtkButtonBox")))
-  ;; Get the names of the child properties
+             (gtk-test:list-style-properties "GtkButtonBox")))
+  ;; Check child properties
   (is (equal '("expand" "fill" "non-homogeneous" "pack-type" "padding"
                "position" "secondary")
-             (list-child-properties "GtkButtonBox")))
-  ;; Check the signals
+             (gtk-test:list-child-properties "GtkButtonBox")))
+  ;; Check signals
   (is (equal '()
-             (list-signals "GtkButtonBox")))
+             (glib-test:list-signals "GtkButtonBox")))
   ;; CSS information
   (is (string= "buttonbox"
                (gtk:widget-class-css-name "GtkButtonBox")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkButtonBox" GTK-BUTTON-BOX
-                       (:SUPERCLASS GTK-BOX
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkButtonBox" GTK:BUTTON-BOX
+                       (:SUPERCLASS GTK:BOX
                         :EXPORT T
                         :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
                         :TYPE-INITIALIZER "gtk_button_box_get_type")
-                       ((LAYOUT-STYLE GTK-BUTTON-BOX-LAYOUT-STYLE
+                       ((LAYOUT-STYLE BUTTON-BOX-LAYOUT-STYLE
                          "layout-style" "GtkButtonBoxStyle" T T)))
-             (gobject:get-g-type-definition "GtkButtonBox"))))
+             (gobject:get-gtype-definition "GtkButtonBox"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -129,4 +128,4 @@
     (is (eq :start (setf (gtk:button-box-layout box) :start)))
     (is (eq :start (gtk:button-box-layout box)))))
 
-;;; 2024-4-10
+;;; 2024-9-21

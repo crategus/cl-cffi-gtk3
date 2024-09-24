@@ -10,35 +10,37 @@
 ;;; --- GtkClipboard -----------------------------------------------------------
 
 (test gtk-clipboard-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkClipboard"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:clipboard
           (glib:symbol-for-gtype "GtkClipboard")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkClipboard")
           (g:gtype (cffi:foreign-funcall "gtk_clipboard_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GObject")
           (g:type-parent "GtkClipboard")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkClipboard")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkClipboard")))
+  ;; Check interfaces
   (is (equal '()
-             (list-interfaces "GtkClipboard")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkClipboard")))
+  ;; Check class properties
   (is (equal '()
-             (list-properties "GtkClipboard")))
-  ;; Check the signals
+             (glib-test:list-properties "GtkClipboard")))
+  ;; Check signals
   (is (equal '("owner-change")
-             (list-signals "GtkClipboard")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkClipboard" GTK-CLIPBOARD
-                       (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
+             (glib-test:list-signals "GtkClipboard")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkClipboard" GTK:CLIPBOARD
+                       (:SUPERCLASS G:OBJECT
+                        :EXPORT T
+                        :INTERFACES NIL
                         :TYPE-INITIALIZER "gtk_clipboard_get_type")
                        NIL)
-             (gobject:get-g-type-definition "GtkClipboard"))))
+             (gobject:get-gtype-definition "GtkClipboard"))))
 
 ;;; --- Signals ----------------------------------------------------------------
 
@@ -322,4 +324,4 @@
   (let ((clipboard (gtk:clipboard-default (gdk:display-default))))
     (is (string= "CLIPBOARD" (gtk:clipboard-selection clipboard)))))
 
-;;; --- 2023-7-19 --------------------------------------------------------------
+;;; 2024-9-21

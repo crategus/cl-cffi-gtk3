@@ -8,38 +8,40 @@
 ;;;     GdkDisplay
 
 (test gdk-display-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GdkDisplay"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gdk:display
           (glib:symbol-for-gtype "GdkDisplay")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GdkDisplay")
           (g:gtype (cffi:foreign-funcall "gdk_display_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GObject")
           (g:type-parent "GdkDisplay")))
-  ;; Check the children
+  ;; Check children
   #-windows
   (is (equal '("GdkBroadwayDisplay" "GdkWaylandDisplay" "GdkX11Display")
-             (list-children "GdkDisplay")))
+             (glib-test:list-children "GdkDisplay")))
   #+windows
   (is (or (equal '("GdkWin32Display")
-                 (list-children "GdkDisplay"))
+                 (glib-test:list-children "GdkDisplay"))
           (equal '("GdkBroadwayDisplay" "GdkWin32Display")
-                 (list-children "GdkDisplay"))))
-  ;; Check the interfaces
+                 (glib-test:list-children "GdkDisplay"))))
+  ;; Check interfaces
   (is (equal '()
-             (list-interfaces "GdkDisplay")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GdkDisplay")))
+  ;; Check class properties
   (is (equal '()
-             (list-properties "GdkDisplay")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GdkDisplay" GDK-DISPLAY
-                       (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
+             (glib-test:list-properties "GdkDisplay")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GdkDisplay" GDK:DISPLAY
+                       (:SUPERCLASS G:OBJECT
+                        :EXPORT T
+                        :INTERFACES NIL
                         :TYPE-INITIALIZER "gdk_display_get_type")
                        NIL)
-             (gobject:get-g-type-definition "GdkDisplay"))))
+             (gobject:get-gtype-definition "GdkDisplay"))))
 
 ;;; --- Signals ----------------------------------------------------------------
 
@@ -386,4 +388,4 @@
          (window (gdk-display-default-group display)))
     (is (typep (gdk-display-monitor-at-window display window) 'gdk-monitor))))
 
-;;; 2024-6-29
+;;; 2024-9-22

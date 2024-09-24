@@ -12,37 +12,39 @@
 ;;;     GtkRecentManager
 
 (test gtk-recent-manager-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkRecentManager"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:recent-manager
           (glib:symbol-for-gtype "GtkRecentManager")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkRecentManager")
           (g:gtype (cffi:foreign-funcall "gtk_recent_manager_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GObject")
           (g:type-parent "GtkRecentManager")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkRecentManager")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkRecentManager")))
+  ;; Check interfaces
   (is (equal '()
-             (list-interfaces "GtkRecentManager")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkRecentManager")))
+  ;; Check class properties
   (is (equal '("filename" "size")
-             (list-properties "GtkRecentManager")))
-  ;; Check the signals
+             (glib-test:list-properties "GtkRecentManager")))
+  ;; Check signals
   (is (equal '("changed")
-             (list-signals "GtkRecentManager")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkRecentManager" GTK-RECENT-MANAGER
-                       (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
+             (glib-test:list-signals "GtkRecentManager")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkRecentManager" GTK:RECENT-MANAGER
+                       (:SUPERCLASS G:OBJECT
+                        :EXPORT T
+                        :INTERFACES NIL
                         :TYPE-INITIALIZER "gtk_recent_manager_get_type")
-                       ((FILENAME GTK-RECENT-MANAGER-FILENAME "filename"
-                         "gchararray" T NIL)
-                        (SIZE GTK-RECENT-MANAGER-SIZE "size" "gint" T NIL)))
-             (gobject:get-g-type-definition "GtkRecentManager"))))
+                       ((FILENAME RECENT-MANAGER-FILENAME
+                         "filename" "gchararray" T NIL)
+                        (SIZE RECENT-MANAGER-SIZE "size" "gint" T NIL)))
+             (gobject:get-gtype-definition "GtkRecentManager"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -71,8 +73,8 @@
 #-windows
 (test gtk-recent-manager-add-item
   (let* ((recent (gtk:recent-manager-default))
-         (path (namestring (sys-path "rtest-gtk3-recent-manager.lisp")))
-         (uri (concatenate 'string "file://" path)))
+         (path (glib-sys:sys-path "test/rtest-gtk3-recent-manager.lisp"))
+         (uri (concatenate 'string "file://" (namestring path))))
     (is-true (gtk:recent-manager-add-item recent uri))
     (is-true (gtk:recent-manager-has-item recent uri))
     (is (string= uri
@@ -103,8 +105,8 @@
 #-windows
 (test gtk-recent-info-get
   (let* ((recent (gtk:recent-manager-default))
-         (path (namestring (sys-path "rtest-gtk3-recent-manager.lisp")))
-         (uri (concatenate 'string "file://" path))
+         (path (glib-sys:sys-path "test/rtest-gtk3-recent-manager.lisp"))
+         (uri (concatenate 'string "file://" (namestring path)))
          (info (gtk:recent-manager-lookup-item recent uri)))
     (is (typep info 'gtk:recent-info))
     (is (string= uri (gtk:recent-info-uri info)))
@@ -132,8 +134,8 @@
 #-windows
 (test gtk-recent-info-application
   (let* ((recent (gtk:recent-manager-default))
-         (path (namestring (sys-path "rtest-gtk3-recent-manager.lisp")))
-         (uri (concatenate 'string "file://" path))
+         (path (glib-sys:sys-path "test/rtest-gtk3-recent-manager.lisp"))
+         (uri (concatenate 'string "file://" (namestring path)))
          (info (gtk:recent-manager-lookup-item recent uri))
          (last (gtk:recent-info-last-application info)))
     (is (every #'stringp
@@ -159,4 +161,4 @@
 ;;;     gtk_recent_info_exists
 ;;;     gtk_recent_info_match
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-9-23

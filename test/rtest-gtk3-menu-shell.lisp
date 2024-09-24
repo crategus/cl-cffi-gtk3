@@ -7,83 +7,82 @@
 
 ;;;     GtkMenuDirectionType
 
-(test menu-direction-type
-  ;; Check the type
+(test gtk-menu-direction-type
+  ;; Check type
   (is-true (g:type-is-enum "GtkMenuDirectionType"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkMenuDirectionType")
           (g:gtype (cffi:foreign-funcall "gtk_menu_direction_type_get_type" :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:menu-direction-type
           (glib:symbol-for-gtype "GtkMenuDirectionType")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_MENU_DIR_PARENT" "GTK_MENU_DIR_CHILD" "GTK_MENU_DIR_NEXT"
                "GTK_MENU_DIR_PREV")
-             (list-enum-item-name "GtkMenuDirectionType")))
-  ;; Check the values
+             (glib-test:list-enum-item-names "GtkMenuDirectionType")))
+  ;; Check values
   (is (equal '(0 1 2 3)
-             (list-enum-item-value "GtkMenuDirectionType")))
-  ;; Check the nick names
+             (glib-test:list-enum-item-values "GtkMenuDirectionType")))
+  ;; Check nick names
   (is (equal '("parent" "child" "next" "prev")
-             (list-enum-item-nick "GtkMenuDirectionType")))
-  ;; Check the enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkMenuDirectionType"
-                             GTK-MENU-DIRECTION-TYPE
-                             (:EXPORT T
-                              :TYPE-INITIALIZER
-                              "gtk_menu_direction_type_get_type")
-                             (:PARENT 0)
-                             (:CHILD 1)
-                             (:NEXT 2)
-                             (:PREV 3))
-             (gobject::get-g-type-definition "GtkMenuDirectionType"))))
+             (glib-test:list-enum-item-nicks "GtkMenuDirectionType")))
+  ;; Check enum definition
+  (is (equal '(GOBJECT:DEFINE-GENUM "GtkMenuDirectionType" GTK:MENU-DIRECTION-TYPE
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_menu_direction_type_get_type")
+                       (:PARENT 0)
+                       (:CHILD 1)
+                       (:NEXT 2)
+                       (:PREV 3))
+             (gobject:get-gtype-definition "GtkMenuDirectionType"))))
 
 ;;;     GtkMenuShell
 
-(test menu-shell-class
-  ;; Type check
+(test gtk-menu-shell-class
+  ;; Check type
   (is (g:type-is-object "GtkMenuShell"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:menu-shell
           (glib:symbol-for-gtype "GtkMenuShell")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkMenuShell")
           (g:gtype (cffi:foreign-funcall "gtk_menu_shell_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkContainer") (g:type-parent "GtkMenuShell")))
-  ;; Check the children
+  ;; Check children
   (is (equal '("GtkMenu" "GtkMenuBar")
-             (list-children "GtkMenuShell")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkMenuShell")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
-             (list-interfaces "GtkMenuShell")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkMenuShell")))
+  ;; Check class properties
   (is (equal '("take-focus")
-             (list-properties "GtkMenuShell")))
-  ;; Get the names of the style properties.
+             (glib-test:list-properties "GtkMenuShell")))
+  ;; Check style properties
   (is (equal '()
-             (list-style-properties "GtkMenuShell")))
-  ;; Get the names of the child properties
+             (gtk-test:list-style-properties "GtkMenuShell")))
+  ;; Check child properties
   (is (equal '()
-             (list-child-properties "GtkMenuShell")))
-  ;; Check the signals
+             (gtk-test:list-child-properties "GtkMenuShell")))
+  ;; Check signals
   (is (equal '("activate-current" "cancel" "cycle-focus" "deactivate" "insert"
                "move-current" "move-selected" "selection-done")
-             (list-signals "GtkMenuShell")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkMenuShell" GTK-MENU-SHELL
-                       (:SUPERCLASS GTK-CONTAINER :EXPORT T :INTERFACES
-                        ("AtkImplementorIface" "GtkBuildable")
+             (glib-test:list-signals "GtkMenuShell")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkMenuShell" GTK:MENU-SHELL
+                       (:SUPERCLASS GTK:CONTAINER
+                        :EXPORT T
+                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_menu_shell_get_type")
-                       ((TAKE-FOCUS GTK-MENU-SHELL-TAKE-FOCUS "take-focus"
-                         "gboolean" T T)))
-             (gobject:get-g-type-definition "GtkMenuShell"))))
+                       ((TAKE-FOCUS MENU-SHELL-TAKE-FOCUS
+                         "take-focus" "gboolean" T T)))
+             (gobject:get-gtype-definition "GtkMenuShell"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
 ;;;     take-focus
 
-(test menu-shell-properties
+(test gtk-menu-shell-properties
   (let ((menu (make-instance 'gtk:menu))) ; gtk-menu implements gtk-menu-shell
     (is-true (gtk:menu-shell-take-focus menu))))
 
@@ -102,7 +101,7 @@
 
 ;;;     gtk_menu_shell_append
 
-(test menu-shell-append
+(test gtk-menu-shell-append
   (let ((menu (make-instance 'gtk:menu))
         (item1 (make-instance 'gtk:menu-item))
         (item2 (make-instance 'gtk:menu-item))
@@ -119,7 +118,7 @@
 
 ;;;     gtk_menu_shell_prepend
 
-(test menu-shell-prepend
+(test gtk-menu-shell-prepend
   (let ((menu (make-instance 'gtk:menu))
         (item1 (make-instance 'gtk:menu-item))
         (item2 (make-instance 'gtk:menu-item))
@@ -136,7 +135,7 @@
 
 ;;;     gtk_menu_shell_insert
 
-(test -menu-shell-insert
+(test gtk-menu-shell-insert
   (let ((menu (make-instance 'gtk:menu))
         (item1 (make-instance 'gtk:menu-item))
         (item2 (make-instance 'gtk:menu-item))
@@ -161,4 +160,4 @@
 ;;;     gtk_menu_shell_get_parent_shell
 ;;;     gtk_menu_shell_bind_model
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-9-21

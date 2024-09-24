@@ -12,29 +12,27 @@
   (is (g:type-is-enum "GtkPopoverConstraint"))
   ;; Check type initializer
   (is (eq (g:gtype "GtkPopoverConstraint")
-          (g:gtype (cffi:foreign-funcall "gtk_popover_constraint_get_type"
-                                         :size))))
+          (g:gtype (cffi:foreign-funcall "gtk_popover_constraint_get_type" :size))))
   ;; Check registered name
   (is (eq 'gtk:popover-constraint
           (glib:symbol-for-gtype "GtkPopoverConstraint")))
   ;; Check names
   (is (equal '("GTK_POPOVER_CONSTRAINT_NONE" "GTK_POPOVER_CONSTRAINT_WINDOW")
-             (gtk-test:list-enum-item-name "GtkPopoverConstraint")))
+             (glib-test:list-enum-item-names "GtkPopoverConstraint")))
   ;; Check values
   (is (equal '(0 1)
-             (gtk-test:list-enum-item-value "GtkPopoverConstraint")))
+             (glib-test:list-enum-item-values "GtkPopoverConstraint")))
   ;; Check nick names
   (is (equal '("none" "window")
-             (gtk-test:list-enum-item-nick "GtkPopoverConstraint")))
+             (glib-test:list-enum-item-nicks "GtkPopoverConstraint")))
   ;; Check enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkPopoverConstraint"
-                                     GTK-POPOVER-CONSTRAINT
-                                     (:EXPORT T
-                                      :TYPE-INITIALIZER
-                                      "gtk_popover_constraint_get_type")
-                                     (:NONE 0)
-                                     (:WINDOW 1))
-             (gobject:get-g-type-definition "GtkPopoverConstraint"))))
+  (is (equal '(GOBJECT:DEFINE-GENUM "GtkPopoverConstraint"
+                                     GTK:POPOVER-CONSTRAINT
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_popover_constraint_get_type")
+                       (:NONE 0)
+                       (:WINDOW 1))
+             (gobject:get-gtype-definition "GtkPopoverConstraint"))))
 
 ;;;     GtkPopover
 
@@ -52,14 +50,14 @@
           (g:type-parent "GtkPopover")))
   ;; Check children
   (is (equal '("GtkPopoverMenu")
-             (gtk-test:list-children "GtkPopover")))
+             (glib-test:list-children "GtkPopover")))
   ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
-             (gtk-test:list-interfaces "GtkPopover")))
+             (glib-test:list-interfaces "GtkPopover")))
   ;; Check class properties
   (is (equal '("constrain-to" "modal" "pointing-to" "position" "relative-to"
                "transitions-enabled")
-             (gtk-test:list-properties "GtkPopover")))
+             (glib-test:list-properties "GtkPopover")))
   ;; Check style properties
   (is (equal '()
              (gtk-test:list-style-properties "GtkPopover")))
@@ -68,29 +66,28 @@
              (gtk-test:list-child-properties "GtkPopover")))
   ;; Check signals
   (is (equal '("closed")
-             (gtk-test:list-signals "GtkPopover")))
+             (glib-test:list-signals "GtkPopover")))
   ;; CSS information
   (is (string= "popover"
                (gtk:widget-class-css-name "GtkPopover")))
   ;; Check class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkPopover" GTK-POPOVER
-                               (:SUPERCLASS GTK-BIN :EXPORT T :INTERFACES
-                                ("AtkImplementorIface" "GtkBuildable")
-                                :TYPE-INITIALIZER "gtk_popover_get_type")
-                               ((CONSTRAIN-TO GTK-POPOVER-CONSTRAIN-TO
-                                 "constrain-to" "GtkPopoverConstraint" T T)
-                                (MODAL GTK-POPOVER-MODAL "modal" "gboolean" T
-                                 T)
-                                (POINTING-TO GTK-POPOVER-POINTING-TO
-                                 "pointing-to" "GdkRectangle" T T)
-                                (POSITION GTK-POPOVER-POSITION "position"
-                                          "GtkPositionType" T T)
-                                (RELATIVE-TO GTK-POPOVER-RELATIVE-TO
-                                 "relative-to" "GtkWidget" T T)
-                                (TRANSITIONS-ENABLED
-                                 GTK-POPOVER-TRANSITIONS-ENABLED
-                                 "transitions-enabled" "gboolean" T T)))
-             (gobject:get-g-type-definition "GtkPopover"))))
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkPopover" GTK:POPOVER
+                       (:SUPERCLASS GTK:BIN
+                        :EXPORT T
+                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
+                        :TYPE-INITIALIZER "gtk_popover_get_type")
+                       ((CONSTRAIN-TO POPOVER-CONSTRAIN-TO
+                         "constrain-to" "GtkPopoverConstraint" T T)
+                        (MODAL POPOVER-MODAL "modal" "gboolean" T T)
+                        (POINTING-TO POPOVER-POINTING-TO
+                         "pointing-to" "GdkRectangle" T T)
+                        (POSITION POPOVER-POSITION
+                         "position" "GtkPositionType" T T)
+                        (RELATIVE-TO POPOVER-RELATIVE-TO
+                         "relative-to" "GtkWidget" T T)
+                        (TRANSITIONS-ENABLED POPOVER-TRANSITIONS-ENABLED
+                         "transitions-enabled" "gboolean" T T)))
+             (gobject:get-gtype-definition "GtkPopover"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -178,4 +175,4 @@
     (is (eq button (setf (gtk:popover-default-widget popover) button)))
     (is (eq button (gtk:popover-default-widget popover)))))
 
-;;; 2024-6-26
+;;; 2024-9-21

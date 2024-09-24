@@ -7,47 +7,43 @@
 
 ;;;     GtkTreeDragSource
 
-(test tree-drag-source
-  ;; Type check
+(test gtk-tree-drag-source
+  ;; Check type
   (is (g:type-is-interface "GtkTreeDragSource"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:tree-drag-source
           (glib:symbol-for-gtype "GtkTreeDragSource")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkTreeDragSource")
           (g:gtype (cffi:foreign-funcall "gtk_tree_drag_source_get_type" :size))))
-  ;; Get the names of the interface properties.
+  ;; Check interface properties
   (is (equal '()
-             (list-interface-properties "GtkTreeDragSource")))
-  ;; Get the interface definition
-  (is (equal '(GOBJECT:DEFINE-G-INTERFACE "GtkTreeDragSource"
-                                  GTK-TREE-DRAG-SOURCE
-                                  (:EXPORT T
-                                   :TYPE-INITIALIZER
-                                   "gtk_tree_drag_source_get_type"))
-             (gobject:get-g-type-definition "GtkTreeDragSource"))))
+             (glib-test:list-interface-properties "GtkTreeDragSource")))
+  ;; Check interface definition
+  (is (equal '(GOBJECT:DEFINE-GINTERFACE "GtkTreeDragSource" GTK:TREE-DRAG-SOURCE
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_tree_drag_source_get_type"))
+             (gobject:get-gtype-definition "GtkTreeDragSource"))))
 
 ;;;     GtkTreeDragDest
 
-(test tree-drag-dest
-  ;; Type check
+(test gtk-tree-drag-dest
+  ;; Check type
   (is (g:type-is-interface "GtkTreeDragDest"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:tree-drag-dest
           (glib:symbol-for-gtype "GtkTreeDragDest")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkTreeDragDest")
           (g:gtype (cffi:foreign-funcall "gtk_tree_drag_dest_get_type" :size))))
-  ;; Get the names of the interface properties.
+  ;; Check interface properties
   (is (equal '()
-             (list-interface-properties "GtkTreeDragDest")))
-  ;; Get the interface definition
-  (is (equal '(GOBJECT:DEFINE-G-INTERFACE "GtkTreeDragDest"
-                                  GTK-TREE-DRAG-DEST
-                                  (:EXPORT T
-                                   :TYPE-INITIALIZER
-                                   "gtk_tree_drag_dest_get_type"))
-             (gobject:get-g-type-definition "GtkTreeDragDest"))))
+             (glib-test:list-interface-properties "GtkTreeDragDest")))
+  ;; Check interface definition
+  (is (equal '(GOBJECT:DEFINE-GINTERFACE "GtkTreeDragDest" GTK:TREE-DRAG-DEST
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_tree_drag_dest_get_type"))
+             (gobject:get-gtype-definition "GtkTreeDragDest"))))
 
 ;;; --- Functions --------------------------------------------------------------
 
@@ -60,4 +56,4 @@
 ;;;     gtk_tree_set_row_drag_data
 ;;;     gtk_tree_get_row_drag_data
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-9-21

@@ -8,84 +8,82 @@
 ;;;     GtkLabel
 
 (test gtk-label-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkLabel"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:label
           (glib:symbol-for-gtype "GtkLabel")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkLabel")
           (g:gtype (cffi:foreign-funcall "gtk_label_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkMisc")
           (g:type-parent "GtkLabel")))
-  ;; Check the children
+  ;; Check children
   (is (equal '("GtkAccelLabel")
-             (list-children "GtkLabel")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkLabel")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
-             (list-interfaces "GtkLabel")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkLabel")))
+  ;; Check class properties
   (is (equal '("angle" "attributes" "cursor-position" "ellipsize" "justify"
                "label" "lines" "max-width-chars" "mnemonic-keyval"
                "mnemonic-widget" "pattern" "selectable" "selection-bound"
                "single-line-mode" "track-visited-links" "use-markup"
                "use-underline" "width-chars" "wrap" "wrap-mode")
-             (list-properties "GtkLabel")))
-  ;; Check the style properties.
+             (glib-test:list-properties "GtkLabel")))
+  ;; Check style properties
   (is (equal '()
-             (list-style-properties "GtkLabel")))
-  ;; Check the signal
+             (gtk-test:list-style-properties "GtkLabel")))
+  ;; Check signal
   (is (equal '("activate-current-link" "activate-link" "copy-clipboard"
                "move-cursor" "populate-popup")
-             (list-signals "GtkLabel")))
+             (glib-test:list-signals "GtkLabel")))
   ;; CSS information
   (is (string= "label"
                (gtk:widget-class-css-name "GtkLabel")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkLabel" GTK-LABEL
-                       (:SUPERCLASS GTK-MISC :EXPORT T :INTERFACES
-                        ("AtkImplementorIface" "GtkBuildable")
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkLabel" GTK:LABEL
+                       (:SUPERCLASS GTK:MISC
+                        :EXPORT T
+                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_label_get_type")
-                       ((ANGLE GTK-LABEL-ANGLE "angle" "gdouble" T T)
-                        (ATTRIBUTES GTK-LABEL-ATTRIBUTES "attributes"
-                         "PangoAttrList" T T)
-                        (CURSOR-POSITION GTK-LABEL-CURSOR-POSITION
+                       ((ANGLE LABEL-ANGLE "angle" "gdouble" T T)
+                        (ATTRIBUTES LABEL-ATTRIBUTES
+                         "attributes" "PangoAttrList" T T)
+                        (CURSOR-POSITION LABEL-CURSOR-POSITION
                          "cursor-position" "gint" T NIL)
-                        (ELLIPSIZE GTK-LABEL-ELLIPSIZE "ellipsize"
-                         "PangoEllipsizeMode" T T)
-                        (JUSTIFY GTK-LABEL-JUSTIFY "justify" "GtkJustification"
-                         T T)
-                        (LABEL GTK-LABEL-LABEL "label" "gchararray" T T)
-                        (LINES GTK-LABEL-LINES "lines" "gint" T T)
-                        (MAX-WIDTH-CHARS GTK-LABEL-MAX-WIDTH-CHARS
+                        (ELLIPSIZE LABEL-ELLIPSIZE
+                         "ellipsize" "PangoEllipsizeMode" T T)
+                        (JUSTIFY LABEL-JUSTIFY "justify" "GtkJustification" T T)
+                        (LABEL LABEL-LABEL "label" "gchararray" T T)
+                        (LINES LABEL-LINES "lines" "gint" T T)
+                        (MAX-WIDTH-CHARS LABEL-MAX-WIDTH-CHARS
                          "max-width-chars" "gint" T T)
-                        (MNEMONIC-KEYVAL GTK-LABEL-MNEMONIC-KEYVAL
+                        (MNEMONIC-KEYVAL LABEL-MNEMONIC-KEYVAL
                          "mnemonic-keyval" "guint" T NIL)
-                        (MNEMONIC-WIDGET GTK-LABEL-MNEMONIC-WIDGET
+                        (MNEMONIC-WIDGET LABEL-MNEMONIC-WIDGET
                          "mnemonic-widget" "GtkWidget" T T)
-                        (PATTERN GTK-LABEL-PATTERN "pattern" "gchararray" NIL
-                         T)
-                        (SELECTABLE GTK-LABEL-SELECTABLE "selectable"
-                         "gboolean" T T)
-                        (SELECTION-BOUND GTK-LABEL-SELECTION-BOUND
+                        (PATTERN LABEL-PATTERN "pattern" "gchararray" NIL T)
+                        (SELECTABLE LABEL-SELECTABLE
+                         "selectable" "gboolean" T T)
+                        (SELECTION-BOUND LABEL-SELECTION-BOUND
                          "selection-bound" "gint" T NIL)
-                        (SINGLE-LINE-MODE GTK-LABEL-SINGLE-LINE-MODE
+                        (SINGLE-LINE-MODE LABEL-SINGLE-LINE-MODE
                          "single-line-mode" "gboolean" T T)
-                        (TRACK-VISITED-LINKS GTK-LABEL-TRACK-VISITED-LINKS
+                        (TRACK-VISITED-LINKS LABEL-TRACK-VISITED-LINKS
                          "track-visited-links" "gboolean" T T)
-                        (USE-MARKUP GTK-LABEL-USE-MARKUP "use-markup"
-                         "gboolean" T T)
-                        (USE-UNDERLINE GTK-LABEL-USE-UNDERLINE "use-underline"
-                         "gboolean" T T)
-                        (WIDTH-CHARS GTK-LABEL-WIDTH-CHARS "width-chars" "gint"
-                         T T)
-                        (WRAP GTK-LABEL-WRAP "wrap" "gboolean" T T)
-                        (WRAP-MODE GTK-LABEL-WRAP-MODE "wrap-mode"
-                         "PangoWrapMode" T T)
-                        (XALIGN GTK-LABEL-XALIGN "xalign" "gfloat" T T)
-                        (YALIGN GTK-LABEL-YALIGN "yalign" "gfloat" T T)))
-             (gobject:get-g-type-definition "GtkLabel"))))
+                        (USE-MARKUP LABEL-USE-MARKUP "use-markup" "gboolean" T T)
+                        (USE-UNDERLINE LABEL-USE-UNDERLINE
+                         "use-underline" "gboolean" T T)
+                        (WIDTH-CHARS LABEL-WIDTH-CHARS
+                         "width-chars" "gint" T T)
+                        (WRAP LABEL-WRAP "wrap" "gboolean" T T)
+                        (WRAP-MODE LABEL-WRAP-MODE
+                         "wrap-mode" "PangoWrapMode" T T)
+                        (XALIGN LABEL-XALIGN "xalign" "gfloat" T T)
+                        (YALIGN LABEL-YALIGN "yalign" "gfloat" T T)))
+             (gobject:get-gtype-definition "GtkLabel"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -325,4 +323,4 @@
   (let ((label (make-instance 'gtk:label :label "some text")))
     (is-false (gtk:label-current-uri label))))
 
-;;; 2024-1-1
+;;; 2024-9-21

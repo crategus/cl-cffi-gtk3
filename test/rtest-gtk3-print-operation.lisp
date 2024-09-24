@@ -5,177 +5,170 @@
 
 ;;;     GtkPrintStatus
 
-(test print-status
-  ;; Check the type
+(test gtk-print-status
+  ;; Check type
   (is-true (g:type-is-enum "GtkPrintStatus"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:print-status
           (glib:symbol-for-gtype "GtkPrintStatus")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkPrintStatus")
           (g:gtype (cffi:foreign-funcall "gtk_print_status_get_type" :size))))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_PRINT_STATUS_INITIAL" "GTK_PRINT_STATUS_PREPARING"
                "GTK_PRINT_STATUS_GENERATING_DATA"
                "GTK_PRINT_STATUS_SENDING_DATA" "GTK_PRINT_STATUS_PENDING"
                "GTK_PRINT_STATUS_PENDING_ISSUE" "GTK_PRINT_STATUS_PRINTING"
                "GTK_PRINT_STATUS_FINISHED" "GTK_PRINT_STATUS_FINISHED_ABORTED")
-             (list-enum-item-name "GtkPrintStatus")))
-  ;; Check the values
+             (glib-test:list-enum-item-names "GtkPrintStatus")))
+  ;; Check values
   (is (equal '(0 1 2 3 4 5 6 7 8)
-             (list-enum-item-value "GtkPrintStatus")))
-  ;; Check the nick names
+             (glib-test:list-enum-item-values "GtkPrintStatus")))
+  ;; Check nick names
   (is (equal '("initial" "preparing" "generating-data" "sending-data" "pending"
                "pending-issue" "printing" "finished" "finished-aborted")
-             (list-enum-item-nick "GtkPrintStatus")))
-  ;; Check the enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkPrintStatus"
-                             GTK-PRINT-STATUS
-                             (:EXPORT T
-                              :TYPE-INITIALIZER "gtk_print_status_get_type")
-                             (:INITIAL 0)
-                             (:PREPARING 1)
-                             (:GENERATING-DATA 2)
-                             (:SENDING-DATA 3)
-                             (:PENDING 4)
-                             (:PENDING-ISSUE 5)
-                             (:PRINTING 6)
-                             (:FINISHED 7)
-                             (:FINISHED-ABORTED 8))
-             (gobject:get-g-type-definition "GtkPrintStatus"))))
+             (glib-test:list-enum-item-nicks "GtkPrintStatus")))
+  ;; Check enum definition
+  (is (equal '(GOBJECT:DEFINE-GENUM "GtkPrintStatus" GTK:PRINT-STATUS
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_print_status_get_type")
+                       (:INITIAL 0)
+                       (:PREPARING 1)
+                       (:GENERATING-DATA 2)
+                       (:SENDING-DATA 3)
+                       (:PENDING 4)
+                       (:PENDING-ISSUE 5)
+                       (:PRINTING 6)
+                       (:FINISHED 7)
+                       (:FINISHED-ABORTED 8))
+             (gobject:get-gtype-definition "GtkPrintStatus"))))
 
 ;;;     GtkPrintOperationAction
 
-(test print-operation-action
-  ;; Check the type
+(test gtk-print-operation-action
+  ;; Check type
   (is-true (g:type-is-enum "GtkPrintOperationAction"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:print-operation-action
           (glib:symbol-for-gtype "GtkPrintOperationAction")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkPrintOperationAction")
           (g:gtype (cffi:foreign-funcall "gtk_print_operation_action_get_type"
                                          :size))))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_PRINT_OPERATION_ACTION_PRINT_DIALOG"
                "GTK_PRINT_OPERATION_ACTION_PRINT"
                "GTK_PRINT_OPERATION_ACTION_PREVIEW"
                "GTK_PRINT_OPERATION_ACTION_EXPORT")
-             (list-enum-item-name "GtkPrintOperationAction")))
-  ;; Check the values
+             (glib-test:list-enum-item-names "GtkPrintOperationAction")))
+  ;; Check values
   (is (equal '(0 1 2 3)
-             (list-enum-item-value "GtkPrintOperationAction")))
-  ;; Check the nick names
+             (glib-test:list-enum-item-values "GtkPrintOperationAction")))
+  ;; Check nick names
   (is (equal '("print-dialog" "print" "preview" "export")
-             (list-enum-item-nick "GtkPrintOperationAction")))
-  ;; Check the enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkPrintOperationAction"
-                             GTK-PRINT-OPERATION-ACTION
-                             (:EXPORT T
-                              :TYPE-INITIALIZER
-                              "gtk_print_operation_action_get_type")
-                             (:PRINT-DIALOG 0)
-                             (:PRINT 1)
-                             (:PREVIEW 2)
-                             (:EXPORT 3))
-             (gobject:get-g-type-definition "GtkPrintOperationAction"))))
+             (glib-test:list-enum-item-nicks "GtkPrintOperationAction")))
+  ;; Check enum definition
+  (is (equal '(GOBJECT:DEFINE-GENUM "GtkPrintOperationAction"
+                                    GTK:PRINT-OPERATION-ACTION
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_print_operation_action_get_type")
+                       (:PRINT-DIALOG 0)
+                       (:PRINT 1)
+                       (:PREVIEW 2)
+                       (:EXPORT 3))
+             (gobject:get-gtype-definition "GtkPrintOperationAction"))))
 
 ;;;     GtkPrintOperationResult
 
-(test print-operation-result
-  ;; Check the type
+(test gtk-print-operation-result
+  ;; Check type
   (is-true (g:type-is-enum "GtkPrintOperationResult"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:print-operation-result
           (glib:symbol-for-gtype "GtkPrintOperationResult")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkPrintOperationResult")
           (g:gtype (cffi:foreign-funcall "gtk_print_operation_result_get_type"
                                          :size))))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_PRINT_OPERATION_RESULT_ERROR"
                "GTK_PRINT_OPERATION_RESULT_APPLY"
                "GTK_PRINT_OPERATION_RESULT_CANCEL"
                "GTK_PRINT_OPERATION_RESULT_IN_PROGRESS")
-             (list-enum-item-name "GtkPrintOperationResult")))
-  ;; Check the values
+             (glib-test:list-enum-item-names "GtkPrintOperationResult")))
+  ;; Check values
   (is (equal '(0 1 2 3)
-             (list-enum-item-value "GtkPrintOperationResult")))
-  ;; Check the nick names
+             (glib-test:list-enum-item-values "GtkPrintOperationResult")))
+  ;; Check nick names
   (is (equal '("error" "apply" "cancel" "in-progress")
-             (list-enum-item-nick "GtkPrintOperationResult")))
-  ;; Check the enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkPrintOperationResult"
-                             GTK-PRINT-OPERATION-RESULT
-                             (:EXPORT T
-                              :TYPE-INITIALIZER
-                              "gtk_print_operation_result_get_type")
-                             (:ERROR 0)
-                             (:APPLY 1)
-                             (:CANCEL 2)
-                             (:IN-PROGRESS 3))
-             (gobject:get-g-type-definition "GtkPrintOperationResult"))))
+             (glib-test:list-enum-item-nicks "GtkPrintOperationResult")))
+  ;; Check enum definition
+  (is (equal '(GOBJECT:DEFINE-GENUM "GtkPrintOperationResult"
+                                    GTK:PRINT-OPERATION-RESULT
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_print_operation_result_get_type")
+                       (:ERROR 0)
+                       (:APPLY 1)
+                       (:CANCEL 2)
+                       (:IN-PROGRESS 3))
+             (gobject:get-gtype-definition "GtkPrintOperationResult"))))
 
 ;;;     GtkPrintError                                      not exported
 
 #+nil
-(test print-error
-  ;; Check the type
+(test gtk-print-error
+  ;; Check type
   (is-true (g:type-is-enum "GtkPrintError"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:print-error
           (glib:symbol-for-gtype "GtkPrintError")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkPrintError")
           (g:gtype (cffi:foreign-funcall "gtk_print_error_get_type" :size))))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_PRINT_ERROR_GENERAL" "GTK_PRINT_ERROR_INTERNAL_ERROR"
                "GTK_PRINT_ERROR_NOMEM" "GTK_PRINT_ERROR_INVALID_FILE")
-             (mapcar #'gobject::enum-item-name
-                     (gobject::get-enum-items "GtkPrintError"))))
-  ;; Check the values
+             (glib-test:list-enum-item-names "GtkPrintError")))
+  ;; Check values
   (is (equal '(0 1 2 3)
-             (mapcar #'gobject::enum-item-value
-                     (gobject::get-enum-items "GtkPrintError"))))
-  ;; Check the nick names
+             (glib-test:list-enum-item-values "GtkPrintError")))
+  ;; Check nick names
   (is (equal '("general" "internal-error" "nomem" "invalid-file")
-             (mapcar #'gobject::enum-item-nick
-                     (gobject::get-enum-items "GtkPrintError"))))
-  ;; Check the enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkPrintError"
-                             GTK-PRINT-ERROR
-                             (:EXPORT T
-                              :TYPE-INITIALIZER "gtk_print_error_get_type")
-                             (:GENERAL 0)
-                             (:INTERNAL-ERROR 1)
-                             (:NOMEM 2)
-                             (:INVALID-FILE 3))
-             (gobject::get-g-type-definition "GtkPrintError"))))
+             (glib-test:list-enum-item-nicks "GtkPrintError")))
+  ;; Check enum definition
+  (is (equal '(GOBJECT:DEFINE-GENUM "GtkPrintError" GTK:PRINT-ERROR
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_print_error_get_type")
+                       (:GENERAL 0)
+                       (:INTERNAL-ERROR 1)
+                       (:NOMEM 2)
+                       (:INVALID-FILE 3))
+             (gobject:get-gtype-definition "GtkPrintError"))))
 
 ;;;     GtkPrintOperationPreview
 
 (test gtk-print-operation-preview-interface
-  ;; Type check
+  ;; Check type
   (is-true (g:type-is-interface "GtkPrintOperationPreview"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:print-operation-preview
           (glib:symbol-for-gtype "GtkPrintOperationPreview")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkPrintOperationPreview")
           (g:gtype (cffi:foreign-funcall "gtk_print_operation_preview_get_type"
                                          :size))))
-  ;; Get the names of the interface properties.
+  ;; Check interface properties
   (is (equal '()
-             (list-interface-properties "GtkPrintOperationPreview")))
-  ;; Check the signals
+             (glib-test:list-interface-properties "GtkPrintOperationPreview")))
+  ;; Check signals
   (is (equal '("got-page-size" "ready")
-             (list-signals "GtkPrintOperationPreview")))
-  ;; Get the interface definition
-  (is (equal '(GOBJECT:DEFINE-G-INTERFACE "GtkPrintOperationPreview"
-                            GTK-PRINT-OPERATION-PREVIEW
-                            (:EXPORT T :TYPE-INITIALIZER
-                             "gtk_print_operation_preview_get_type"))
-             (gobject:get-g-type-definition "GtkPrintOperationPreview"))))
+             (glib-test:list-signals "GtkPrintOperationPreview")))
+  ;; Check interface definition
+  (is (equal '(GOBJECT:DEFINE-GINTERFACE "GtkPrintOperationPreview"
+                                         GTK:PRINT-OPERATION-PREVIEW
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_print_operation_preview_get_type"))
+             (gobject:get-gtype-definition "GtkPrintOperationPreview"))))
 
 ;;;     Signals
 
@@ -207,85 +200,81 @@
 
 ;;;     GtkPrintOperation
 
-(test print-operation-class
-  ;; Type check
+(test gtk-print-operation-class
+  ;; Check type
   (is (g:type-is-object "GtkPrintOperation"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:print-operation
           (glib:symbol-for-gtype "GtkPrintOperation")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkPrintOperation")
-          (g:gtype (cffi:foreign-funcall "gtk_print_operation_get_type"
-                                         :size))))
-  ;; Check the parent
+          (g:gtype (cffi:foreign-funcall "gtk_print_operation_get_type" :size))))
+  ;; Check parent
   (is (eq (g:gtype "GObject")
           (g:type-parent "GtkPrintOperation")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkPrintOperation")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkPrintOperation")))
+  ;; Check interfaces
   (is (equal '("GtkPrintOperationPreview")
-             (list-interfaces "GtkPrintOperation")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkPrintOperation")))
+  ;; Check class properties
   (is (equal '("allow-async" "current-page" "custom-tab-label"
                "default-page-setup" "embed-page-setup" "export-filename"
                "has-selection" "job-name" "n-pages" "n-pages-to-print"
                "print-settings" "show-progress" "status" "status-string"
                "support-selection" "track-print-status" "unit" "use-full-page")
-             (list-properties "GtkPrintOperation")))
-  ;; Check the signals
+             (glib-test:list-properties "GtkPrintOperation")))
+  ;; Check signals
   (is (equal '("begin-print" "create-custom-widget" "custom-widget-apply" "done"
                "draw-page" "end-print" "paginate" "preview" "request-page-setup"
                "status-changed" "update-custom-widget")
-             (list-signals "GtkPrintOperation")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkPrintOperation" GTK-PRINT-OPERATION
-                       (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES
-                        ("GtkPrintOperationPreview") :TYPE-INITIALIZER
-                        "gtk_print_operation_get_type")
-                       ((ALLOW-ASYNC GTK-PRINT-OPERATION-ALLOW-ASYNC
+             (glib-test:list-signals "GtkPrintOperation")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkPrintOperation" GTK:PRINT-OPERATION
+                       (:SUPERCLASS G:OBJECT
+                        :EXPORT T
+                        :INTERFACES ("GtkPrintOperationPreview")
+                        :TYPE-INITIALIZER "gtk_print_operation_get_type")
+                       ((ALLOW-ASYNC PRINT-OPERATION-ALLOW-ASYNC
                          "allow-async" "gboolean" T T)
-                        (CURRENT-PAGE GTK-PRINT-OPERATION-CURRENT-PAGE
+                        (CURRENT-PAGE PRINT-OPERATION-CURRENT-PAGE
                          "current-page" "gint" T T)
-                        (CUSTOM-TAB-LABEL GTK-PRINT-OPERATION-CUSTOM-TAB-LABEL
+                        (CUSTOM-TAB-LABEL PRINT-OPERATION-CUSTOM-TAB-LABEL
                          "custom-tab-label" "gchararray" T T)
-                        (DEFAULT-PAGE-SETUP
-                         GTK-PRINT-OPERATION-DEFAULT-PAGE-SETUP
+                        (DEFAULT-PAGE-SETUP PRINT-OPERATION-DEFAULT-PAGE-SETUP
                          "default-page-setup" "GtkPageSetup" T T)
-                        (EMBED-PAGE-SETUP GTK-PRINT-OPERATION-EMBED-PAGE-SETUP
+                        (EMBED-PAGE-SETUP PRINT-OPERATION-EMBED-PAGE-SETUP
                          "embed-page-setup" "gboolean" T T)
-                        (EXPORT-FILENAME GTK-PRINT-OPERATION-EXPORT-FILENAME
+                        (EXPORT-FILENAME PRINT-OPERATION-EXPORT-FILENAME
                          "export-filename" "gchararray" T T)
-                        (HAS-SELECTION GTK-PRINT-OPERATION-HAS-SELECTION
+                        (HAS-SELECTION PRINT-OPERATION-HAS-SELECTION
                          "has-selection" "gboolean" T T)
-                        (JOB-NAME GTK-PRINT-OPERATION-JOB-NAME "job-name"
-                         "gchararray" T T)
-                        (N-PAGES GTK-PRINT-OPERATION-N-PAGES "n-pages" "gint" T
-                         T)
-                        (N-PAGES-TO-PRINT GTK-PRINT-OPERATION-N-PAGES-TO-PRINT
+                        (JOB-NAME PRINT-OPERATION-JOB-NAME
+                         "job-name" "gchararray" T T)
+                        (N-PAGES PRINT-OPERATION-N-PAGES "n-pages" "gint" T T)
+                        (N-PAGES-TO-PRINT PRINT-OPERATION-N-PAGES-TO-PRINT
                          "n-pages-to-print" "gint" T NIL)
-                        (PRINT-SETTINGS GTK-PRINT-OPERATION-PRINT-SETTINGS
+                        (PRINT-SETTINGS PRINT-OPERATION-PRINT-SETTINGS
                          "print-settings" "GtkPrintSettings" T T)
-                        (SHOW-PROGRESS GTK-PRINT-OPERATION-SHOW-PROGRESS
+                        (SHOW-PROGRESS PRINT-OPERATION-SHOW-PROGRESS
                          "show-progress" "gboolean" T T)
-                        (STATUS GTK-PRINT-OPERATION-STATUS "status"
-                         "GtkPrintStatus" T NIL)
-                        (STATUS-STRING GTK-PRINT-OPERATION-STATUS-STRING
+                        (STATUS PRINT-OPERATION-STATUS
+                         "status" "GtkPrintStatus" T NIL)
+                        (STATUS-STRING PRINT-OPERATION-STATUS-STRING
                          "status-string" "gchararray" T NIL)
-                        (SUPPORT-SELECTION
-                         GTK-PRINT-OPERATION-SUPPORT-SELECTION
+                        (SUPPORT-SELECTION PRINT-OPERATION-SUPPORT-SELECTION
                          "support-selection" "gboolean" T T)
-                        (TRACK-PRINT-STATUS
-                         GTK-PRINT-OPERATION-TRACK-PRINT-STATUS
+                        (TRACK-PRINT-STATUS PRINT-OPERATION-TRACK-PRINT-STATUS
                          "track-print-status" "gboolean" T T)
-                        (UNIT GTK-PRINT-OPERATION-UNIT "unit" "GtkUnit" T T)
-                        (USE-FULL-PAGE GTK-PRINT-OPERATION-USE-FULL-PAGE
+                        (UNIT PRINT-OPERATION-UNIT "unit" "GtkUnit" T T)
+                        (USE-FULL-PAGE PRINT-OPERATION-USE-FULL-PAGE
                          "use-full-page" "gboolean" T T)))
-             (gobject:get-g-type-definition "GtkPrintOperation"))))
+             (gobject:get-gtype-definition "GtkPrintOperation"))))
 
 ;;; --- Access Properties ------------------------------------------------------
 
-(test print-operation-properties
+(test gtk-print-operation-properties
   (let ((object (make-instance 'gtk:print-operation)))
     ;; allow-async
     (is-false (gtk:print-operation-allow-async object))
@@ -377,7 +366,7 @@
 
 ;;;     gtk_print_operation_new
 
-(test print-operation-new
+(test gtk-print-operation-new
   (is (eq 'gtk:print-operation (type-of (gtk:print-operation-new)))))
 
 ;;;     gtk_print_operation_get_error
@@ -400,4 +389,4 @@
 ;;;     gtk_print_operation_preview_is_selected
 ;;;     gtk_print_operation_preview_render_page
 
-;;; --- 2023-6-11 --------------------------------------------------------------
+;;; 2024-9-23

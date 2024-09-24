@@ -7,104 +7,104 @@
 
 ;;;     GtkArrowPlacement
 
-(test arrow-placement
-  ;; Check the type
+(test gtk-arrow-placement
+  ;; Check type
   (is-true (g:type-is-enum "GtkArrowPlacement"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkArrowPlacement")
           (g:gtype (cffi:foreign-funcall "gtk_arrow_placement_get_type" :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:arrow-placement
           (glib:symbol-for-gtype "GtkArrowPlacement")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_ARROWS_BOTH" "GTK_ARROWS_START" "GTK_ARROWS_END")
-             (list-enum-item-name "GtkArrowPlacement")))
-  ;; Check the values
+             (glib-test:list-enum-item-names "GtkArrowPlacement")))
+  ;; Check values
   (is (equal '(0 1 2)
-             (list-enum-item-value "GtkArrowPlacement")))
-  ;; Check the nick names
+             (glib-test:list-enum-item-values "GtkArrowPlacement")))
+  ;; Check nick names
   (is (equal '("both" "start" "end")
-             (list-enum-item-nick "GtkArrowPlacement")))
-  ;; Check the enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkArrowPlacement"
-                             GTK-ARROW-PLACEMENT
-                             (:EXPORT T
-                              :TYPE-INITIALIZER "gtk_arrow_placement_get_type")
-                             (:BOTH 0)
-                             (:START 1)
-                             (:END 2))
-             (gobject:get-g-type-definition "GtkArrowPlacement"))))
+             (glib-test:list-enum-item-nicks "GtkArrowPlacement")))
+  ;; Check enum definition
+  (is (equal '(GOBJECT:DEFINE-GENUM "GtkArrowPlacement" GTK:ARROW-PLACEMENT
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_arrow_placement_get_type")
+                       (:BOTH 0)
+                       (:START 1)
+                       (:END 2))
+             (gobject:get-gtype-definition "GtkArrowPlacement"))))
 
 ;;;     GtkMenu
 
-(test menu-class
-  ;; Type check
+(test gtk-menu-class
+  ;; Check type
   (is (g:type-is-object "GtkMenu"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:menu
           (glib:symbol-for-gtype "GtkMenu")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkMenu")
           (g:gtype (cffi:foreign-funcall "gtk_menu_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkMenuShell") (g:type-parent "GtkMenu")))
-  ;; Check the children
+  ;; Check children
   (is (or (equal '("GtkRecentChooserMenu")
-                 (list-children "GtkMenu"))
+                 (glib-test:list-children "GtkMenu"))
           (equal '("GtkRecentChooserMenu" "GtkTreeMenu")
-                 (list-children "GtkMenu"))))
-  ;; Check the interfaces
+                 (glib-test:list-children "GtkMenu"))))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
-             (list-interfaces "GtkMenu")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkMenu")))
+  ;; Check class properties
   (is (equal '("accel-group" "accel-path" "active" "anchor-hints"
                "attach-widget" "menu-type-hint" "monitor" "rect-anchor-dx"
                "rect-anchor-dy" "reserve-toggle-size" "tearoff-state"
                "tearoff-title")
-             (list-properties "GtkMenu")))
-  ;; Get the names of the style properties.
+             (glib-test:list-properties "GtkMenu")))
+  ;; Check style properties
   (is (equal '("arrow-placement" "arrow-scaling" "double-arrows"
                "horizontal-offset" "horizontal-padding" "vertical-offset"
                "vertical-padding")
-             (list-style-properties "GtkMenu")))
-  ;; Get the names of the child properties
+             (gtk-test:list-style-properties "GtkMenu")))
+  ;; Check child properties
   (is (equal '("bottom-attach" "left-attach" "right-attach" "top-attach")
-             (list-child-properties "GtkMenu")))
-  ;; Check the signals
+             (gtk-test:list-child-properties "GtkMenu")))
+  ;; Check signals
   (is (equal '("move-scroll" "popped-up")
-             (list-signals "GtkMenu")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkMenu" GTK-MENU
-                       (:SUPERCLASS GTK-MENU-SHELL :EXPORT T :INTERFACES
-                        ("AtkImplementorIface" "GtkBuildable")
+             (glib-test:list-signals "GtkMenu")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkMenu" GTK:MENU
+                       (:SUPERCLASS GTK:MENU-SHELL
+                        :EXPORT T
+                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_menu_get_type")
-                       ((ACCEL-GROUP GTK-MENU-ACCEL-GROUP "accel-group"
-                         "GtkAccelGroup" T T)
-                        (ACCEL-PATH GTK-MENU-ACCEL-PATH "accel-path"
-                         "gchararray" T T)
-                        (ACTIVE GTK-MENU-ACTIVE "active" "gint" T T)
-                        (ANCHOR-HINTS GTK-MENU-ANCHOR-HINTS "anchor-hints"
-                         "GdkAnchorHints" T T)
-                        (ATTACH-WIDGET GTK-MENU-ATTACH-WIDGET "attach-widget"
-                         "GtkWidget" T T)
-                        (MENU-TYPE-HINT GTK-MENU-MENU-TYPE-HINT
+                       ((ACCEL-GROUP MENU-ACCEL-GROUP
+                         "accel-group" "GtkAccelGroup" T T)
+                        (ACCEL-PATH MENU-ACCEL-PATH
+                         "accel-path" "gchararray" T T)
+                        (ACTIVE MENU-ACTIVE "active" "gint" T T)
+                        (ANCHOR-HINTS MENU-ANCHOR-HINTS
+                         "anchor-hints" "GdkAnchorHints" T T)
+                        (ATTACH-WIDGET MENU-ATTACH-WIDGET
+                         "attach-widget" "GtkWidget" T T)
+                        (MENU-TYPE-HINT MENU-MENU-TYPE-HINT
                          "menu-type-hint" "GdkWindowTypeHint" T T)
-                        (MONITOR GTK-MENU-MONITOR "monitor" "gint" T T)
-                        (RECT-ANCHOR-DX GTK-MENU-RECT-ANCHOR-DX
+                        (MONITOR MENU-MONITOR "monitor" "gint" T T)
+                        (RECT-ANCHOR-DX MENU-RECT-ANCHOR-DX
                          "rect-anchor-dx" "gint" T T)
-                        (RECT-ANCHOR-DY GTK-MENU-RECT-ANCHOR-DY
+                        (RECT-ANCHOR-DY MENU-RECT-ANCHOR-DY
                          "rect-anchor-dy" "gint" T T)
-                        (RESERVE-TOGGLE-SIZE GTK-MENU-RESERVE-TOGGLE-SIZE
+                        (RESERVE-TOGGLE-SIZE MENU-RESERVE-TOGGLE-SIZE
                          "reserve-toggle-size" "gboolean" T T)
-                        (TEAROFF-STATE GTK-MENU-TEAROFF-STATE "tearoff-state"
-                         "gboolean" T T)
-                        (TEAROFF-TITLE GTK-MENU-TEAROFF-TITLE "tearoff-title"
-                         "gchararray" T T)))
-             (gobject:get-g-type-definition "GtkMenu"))))
+                        (TEAROFF-STATE MENU-TEAROFF-STATE
+                         "tearoff-state" "gboolean" T T)
+                        (TEAROFF-TITLE MENU-TEAROFF-TITLE
+                         "tearoff-title" "gchararray" T T)))
+             (gobject:get-gtype-definition "GtkMenu"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
-(test menu-properties
+(test gtk-menu-properties
   (let ((menu (make-instance 'gtk:menu)))
     (is-false (gtk:menu-accel-group menu))
     (is-false (gtk:menu-accel-path menu))
@@ -122,7 +122,7 @@
 
 ;;; --- Child Properties -------------------------------------------------------
 
-(test menu-child-properties
+(test gtk-menu-child-properties
   (let ((menu (make-instance 'gtk:menu))
         (child (make-instance 'gtk:menu-item)))
     (is-false (gtk:container-add menu child))
@@ -133,7 +133,7 @@
 
 ;;; --- Style Properties -------------------------------------------------------
 
-(test menu-style-properties
+(test gtk-menu-style-properties
   (let ((menu (make-instance 'gtk:menu)))
     (is (eq :both (gtk:widget-style-property menu "arrow-placement")))
     (is (= 0.7 (gtk:widget-style-property menu "arrow-scaling")))
@@ -150,18 +150,18 @@
 
 ;;;     gtk_menu_new
 
-(test menu-new
+(test gtk-menu-new
   (is (eq 'gtk:menu (type-of (gtk:menu-new)))))
 
 ;;;     gtk_menu_new_from_model
 
-(test menu-new-from-model
+(test gtk-menu-new-from-model
   (is (eq 'gtk:menu
           (type-of (gtk:menu-new-from-model (make-instance 'g:menu))))))
 
 ;;;     gtk_menu_set_screen
 
-(test menu-set-screen
+(test gtk-menu-set-screen
   (let ((menu (make-instance 'gtk:menu)))
     (is-false (gtk:menu-set-screen menu nil))
     (is-false (gtk:menu-set-screen menu
@@ -169,7 +169,7 @@
 
 ;;;     gtk_menu_reorder_child
 
-(test menu-reorder-child
+(test gtk-menu-reorder-child
   (let ((menu (make-instance 'gtk:menu))
         (item-open (gtk:menu-item-new-with-label "Open"))
         (item-save (gtk:menu-item-new-with-label "Save"))
@@ -191,7 +191,7 @@
 
 ;;;     gtk_menu_attach
 
-(test menu-reorder-child
+(test gtk-menu-reorder-child
   (let ((menu (make-instance 'gtk:menu))
         (item-open (gtk:menu-item-new-with-label "Open"))
         (item-save (gtk:menu-item-new-with-label "Save"))
@@ -223,4 +223,4 @@
 
 ;;;     gtk_menu_get_for_attach_widget
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-9-22

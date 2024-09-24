@@ -7,101 +7,91 @@
 
 ;;;     GtkPrinter
 
-(test printer-class
-  ;; Type check
+(test gtk-printer-class
+  ;; Check type
   (is (g:type-is-object "GtkPrinter"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:printer
           (glib:symbol-for-gtype "GtkPrinter")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkPrinter")
           (g:gtype (cffi:foreign-funcall "gtk_printer_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GObject") (g:type-parent "GtkPrinter")))
-  ;; Check the children
+  ;; Check children
   (is (equal '("GtkPrinterCups")
-             (list-children "GtkPrinter")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkPrinter")))
+  ;; Check interfaces
   (is (equal '()
-             (list-interfaces "GtkPrinter")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkPrinter")))
+  ;; Check class properties
   (is (equal '("accepting-jobs" "accepts-pdf" "accepts-ps" "backend" "icon-name"
                "is-virtual" "job-count" "location" "name" "paused"
                "state-message")
-             (list-properties "GtkPrinter")))
-  ;; Check the signals
+             (glib-test:list-properties "GtkPrinter")))
+  ;; Check signals
   (is (equal '("details-acquired")
-             (list-signals "GtkPrinter")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkPrinter" GTK-PRINTER
-                       (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
+             (glib-test:list-signals "GtkPrinter")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkPrinter" GTK:PRINTER
+                       (:SUPERCLASS G:OBJECT
+                        :EXPORT T
+                        :INTERFACES NIL
                         :TYPE-INITIALIZER "gtk_printer_get_type")
-                       ((ACCEPTING-JOBS GTK-PRINTER-ACCEPTING-JOBS
+                       ((ACCEPTING-JOBS PRINTER-ACCEPTING-JOBS
                          "accepting-jobs" "gboolean" T NIL)
-                        (ACCEPTS-PDF GTK-PRINTER-ACCEPTS-PDF "accepts-pdf"
-                         "gboolean" T NIL)
-                        (ACCEPTS-PS GTK-PRINTER-ACCEPTS-PS "accepts-ps"
-                         "gboolean" T NIL)
-                        (BACKEND GTK-PRINTER-BACKEND "backend"
-                         "GtkPrintBackend" T NIL)
-                        (ICON-NAME GTK-PRINTER-ICON-NAME "icon-name"
-                         "gchararray" T NIL)
-                        (IS-VIRTUAL GTK-PRINTER-IS-VIRTUAL "is-virtual"
-                         "gboolean" T NIL)
-                        (JOB-COUNT GTK-PRINTER-JOB-COUNT "job-count" "gint" T
-                         NIL)
-                        (LOCATION GTK-PRINTER-LOCATION "location" "gchararray"
-                         T NIL)
-                        (NAME GTK-PRINTER-NAME "name" "gchararray" T NIL)
-                        (PAUSED GTK-PRINTER-PAUSED "paused" "gboolean" T NIL)
-                        (STATE-MESSAGE GTK-PRINTER-STATE-MESSAGE
+                        (ACCEPTS-PDF PRINTER-ACCEPTS-PDF
+                         "accepts-pdf" "gboolean" T NIL)
+                        (ACCEPTS-PS PRINTER-ACCEPTS-PS
+                         "accepts-ps" "gboolean" T NIL)
+                        (BACKEND PRINTER-BACKEND
+                         "backend" "GtkPrintBackend" T NIL)
+                        (ICON-NAME PRINTER-ICON-NAME
+                         "icon-name" "gchararray" T NIL)
+                        (IS-VIRTUAL PRINTER-IS-VIRTUAL
+                         "is-virtual" "gboolean" T NIL)
+                        (JOB-COUNT PRINTER-JOB-COUNT "job-count" "gint" T NIL)
+                        (LOCATION PRINTER-LOCATION "location" "gchararray" T NIL)
+                        (NAME PRINTER-NAME "name" "gchararray" T NIL)
+                        (PAUSED PRINTER-PAUSED "paused" "gboolean" T NIL)
+                        (STATE-MESSAGE PRINTER-STATE-MESSAGE
                          "state-message" "gchararray" T NIL)))
-             (gobject:get-g-type-definition "GtkPrinter"))))
+             (gobject:get-gtype-definition "GtkPrinter"))))
 
 ;;;     GtkPrintBackend
 
-(test print-backend-class
-  ;; Type check
+(test gtk-print-backend-class
+  ;; Check type
   (is (g:type-is-object "GtkPrintBackend"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:print-backend
           (glib:symbol-for-gtype "GtkPrintBackend")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkPrintBackend")
           (g:gtype (cffi:foreign-funcall "gtk_print_backend_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GObject") (g:type-parent "GtkPrintBackend")))
-  ;; Check the children
+  ;; Check children
   (is (equal '("GtkPrintBackendCups" "GtkPrintBackendFile")
-             (list-children "GtkPrintBackend")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkPrintBackend")))
+  ;; Check interfaces
   (is (equal '()
-             (list-interfaces "GtkPrintBackend")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkPrintBackend")))
+  ;; Check class properties
   (is (equal '("status")
-             (list-properties "GtkPrintBackend")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkPrintBackend" GTK-PRINT-BACKEND
-                       (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
+             (glib-test:list-properties "GtkPrintBackend")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkPrintBackend" GTK:PRINT-BACKEND
+                       (:SUPERCLASS G:OBJECT
+                        :EXPORT T
+                        :INTERFACES NIL
                         :TYPE-INITIALIZER "gtk_print_backend_get_type")
-                       ((STATUS GTK-PRINT-BACKEND-STATUS "status" "gint" T T)))
-             (gobject:get-g-type-definition "GtkPrintBackend"))))
+                       ((STATUS PRINT-BACKEND-STATUS "status" "gint" T T)))
+             (gobject:get-gtype-definition "GtkPrintBackend"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
-;;;        gboolean   accepting-jobs      Read
-;;;        gboolean   accepts-pdf         Read / Write / Construct Only
-;;;        gboolean   accepts-ps          Read / Write / Construct Only
-;;; GtkPrintBackend*  backend             Read / Write / Construct Only
-;;;           gchar*  icon-name           Read
-;;;        gboolean   is-virtual          Read / Write / Construct Only
-;;;            gint   job-count           Read
-;;;           gchar*  location            Read
-;;;           gchar*  name                Read / Write / Construct Only
-;;;        gboolean   paused              Read
-;;;           gchar*  state-message       Read
-
-(test printer-properties
+(test gtk-printer-properties
   (let* ((backend (make-instance 'gtk:print-backend))
          (printer (make-instance 'gtk:printer
                                  :name "myPrinter"
@@ -156,4 +146,4 @@
 ;;;     gtk_printer_get_hard_margins
 ;;;     gtk_enumerate_printers
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-9-23

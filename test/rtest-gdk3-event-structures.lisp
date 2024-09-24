@@ -6,194 +6,179 @@
 ;;;     GdkScrollDirection
 
 (test gdk-scroll-direction
-  ;; Check the type
+  ;; Check type
   (is-true (g:type-is-enum "GdkScrollDirection"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GdkScrollDirection")
-          (g:gtype (cffi:foreign-funcall "gdk_scroll_direction_get_type"
-                                         :size))))
-  ;; Check the registered name
+          (g:gtype (cffi:foreign-funcall "gdk_scroll_direction_get_type" :size))))
+  ;; Check registered name
   (is (eq 'gdk:scroll-direction
           (glib:symbol-for-gtype "GdkScrollDirection")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GDK_SCROLL_UP" "GDK_SCROLL_DOWN" "GDK_SCROLL_LEFT"
                "GDK_SCROLL_RIGHT" "GDK_SCROLL_SMOOTH")
-             (mapcar #'gobject:enum-item-name
-                     (gobject:get-enum-items "GdkScrollDirection"))))
-  ;; Check the values
+             (glib-test:list-enum-item-names "GdkScrollDirection")))
+  ;; Check values
   (is (equal '(0 1 2 3 4)
-             (mapcar #'gobject:enum-item-value
-                     (gobject:get-enum-items "GdkScrollDirection"))))
-  ;; Check the nick names
+             (glib-test:list-enum-item-values "GdkScrollDirection")))
+  ;; Check nick names
   (is (equal '("up" "down" "left" "right" "smooth")
-             (mapcar #'gobject:enum-item-nick
-                     (gobject:get-enum-items "GdkScrollDirection"))))
-  ;; Check the enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkScrollDirection"
-                             GDK-SCROLL-DIRECTION
-                             (:EXPORT T
-                              :TYPE-INITIALIZER "gdk_scroll_direction_get_type")
-                             (:UP 0)
-                             (:DOWN 1)
-                             (:LEFT 2)
-                             (:RIGHT 3)
-                             (:SMOOTH 4))
-             (gobject:get-g-type-definition "GdkScrollDirection"))))
+             (glib-test:list-enum-item-nicks "GdkScrollDirection")))
+  ;; Check enum definition
+  (is (equal '(GOBJECT:DEFINE-GENUM "GdkScrollDirection" GDK:SCROLL-DIRECTION
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gdk_scroll_direction_get_type")
+                       (:UP 0)
+                       (:DOWN 1)
+                       (:LEFT 2)
+                       (:RIGHT 3)
+                       (:SMOOTH 4))
+             (gobject:get-gtype-definition "GdkScrollDirection"))))
 
 ;;;     GdkVisibilityState
 
 (test gdk-visibility-state
-  ;; Check the type
+  ;; Check type
   (is-true (g:type-is-enum "GdkVisibilityState"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GdkVisibilityState")
           (g:gtype (cffi:foreign-funcall "gdk_visibility_state_get_type" :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gdk:visibility-state
           (glib:symbol-for-gtype "GdkVisibilityState")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GDK_VISIBILITY_UNOBSCURED" "GDK_VISIBILITY_PARTIAL"
                "GDK_VISIBILITY_FULLY_OBSCURED")
-             (mapcar #'gobject:enum-item-name
-                     (gobject:get-enum-items "GdkVisibilityState"))))
-  ;; Check the values
+             (glib-test:list-enum-item-names "GdkVisibilityState")))
+  ;; Check values
   (is (equal '(0 1 2)
-             (mapcar #'gobject:enum-item-value
-                     (gobject:get-enum-items "GdkVisibilityState"))))
-  ;; Check the nick names
+             (glib-test:list-enum-item-values "GdkVisibilityState")))
+  ;; Check nick names
   (is (equal '("unobscured" "partial" "fully-obscured")
-             (mapcar #'gobject:enum-item-nick
-                     (gobject:get-enum-items "GdkVisibilityState"))))
-  ;; Check the enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkVisibilityState"
-                             GDK-VISIBILITY-STATE
-                             (:EXPORT T
-                              :TYPE-INITIALIZER "gdk_visibility_state_get_type")
-                             (:UNOBSCURED 0)
-                             (:PARTIAL 1)
-                             (:FULLY-OBSCURED 2))
-             (gobject:get-g-type-definition "GdkVisibilityState"))))
+             (glib-test:list-enum-item-nicks "GdkVisibilityState")))
+  ;; Check enum definition
+  (is (equal '(GOBJECT:DEFINE-GENUM "GdkVisibilityState" GDK:VISIBILITY-STATE
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gdk_visibility_state_get_type")
+                       (:UNOBSCURED 0)
+                       (:PARTIAL 1)
+                       (:FULLY-OBSCURED 2))
+             (gobject:get-gtype-definition "GdkVisibilityState"))))
 
 ;;;     GdkCrossingMode
 
 (test gdk-crossing-mode
-  ;; Check the type
+  ;; Check type
   (is-true (g:type-is-enum "GdkCrossingMode"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GdkCrossingMode")
           (g:gtype (cffi:foreign-funcall "gdk_crossing_mode_get_type" :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gdk:crossing-mode
           (glib:symbol-for-gtype "GdkCrossingMode")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GDK_CROSSING_NORMAL" "GDK_CROSSING_GRAB" "GDK_CROSSING_UNGRAB"
                "GDK_CROSSING_GTK_GRAB" "GDK_CROSSING_GTK_UNGRAB"
                "GDK_CROSSING_STATE_CHANGED" "GDK_CROSSING_TOUCH_BEGIN"
                "GDK_CROSSING_TOUCH_END" "GDK_CROSSING_DEVICE_SWITCH")
-             (mapcar #'gobject:enum-item-name
-                     (gobject:get-enum-items "GdkCrossingMode"))))
-  ;; Check the values
+             (glib-test:list-enum-item-names "GdkCrossingMode")))
+  ;; Check values
   (is (equal '(0 1 2 3 4 5 6 7 8)
-             (mapcar #'gobject:enum-item-value
-                     (gobject:get-enum-items "GdkCrossingMode"))))
-  ;; Check the nick names
+             (glib-test:list-enum-item-values "GdkCrossingMode")))
+  ;; Check nick names
   (is (equal '("normal" "grab" "ungrab" "gtk-grab" "gtk-ungrab" "state-changed"
                "touch-begin" "touch-end" "device-switch")
-             (mapcar #'gobject:enum-item-nick
-                     (gobject:get-enum-items "GdkCrossingMode"))))
-  ;; Check the enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkCrossingMode"
-                             GDK-CROSSING-MODE
-                             (:EXPORT T
-                              :TYPE-INITIALIZER "gdk_crossing_mode_get_type")
-                             (:NORMAL 0)
-                             (:GRAB 1)
-                             (:UNGRAB 2)
-                             (:GTK-GRAB 3)
-                             (:GTK-UNGRAB 4)
-                             (:STATE-CHANGED 5)
-                             (:TOUCH-BEGIN 6)
-                             (:TOUCH-END 7)
-                             (:DEVICE-SWITCH 8))
-             (gobject:get-g-type-definition "GdkCrossingMode"))))
+             (glib-test:list-enum-item-nicks "GdkCrossingMode")))
+  ;; Check enum definition
+  (is (equal '(GOBJECT:DEFINE-GENUM "GdkCrossingMode" GDK:CROSSING-MODE
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gdk_crossing_mode_get_type")
+                       (:NORMAL 0)
+                       (:GRAB 1)
+                       (:UNGRAB 2)
+                       (:GTK-GRAB 3)
+                       (:GTK-UNGRAB 4)
+                       (:STATE-CHANGED 5)
+                       (:TOUCH-BEGIN 6)
+                       (:TOUCH-END 7)
+                       (:DEVICE-SWITCH 8))
+             (gobject:get-gtype-definition "GdkCrossingMode"))))
 
 ;;;     GdkNotifyType
 
 (test gdk-notify-type
-  ;; Check the type
+  ;; Check type
   (is-true (g:type-is-enum "GdkNotifyType"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GdkNotifyType")
           (g:gtype (cffi:foreign-funcall "gdk_notify_type_get_type" :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gdk:notify-type
           (glib:symbol-for-gtype "GdkNotifyType")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GDK_NOTIFY_ANCESTOR" "GDK_NOTIFY_VIRTUAL" "GDK_NOTIFY_INFERIOR"
                "GDK_NOTIFY_NONLINEAR" "GDK_NOTIFY_NONLINEAR_VIRTUAL"
                "GDK_NOTIFY_UNKNOWN")
-             (list-enum-item-name "GdkNotifyType")))
-  ;; Check the values
+             (glib-test:list-enum-item-names "GdkNotifyType")))
+  ;; Check values
   (is (equal '(0 1 2 3 4 5)
-             (list-enum-item-value "GdkNotifyType")))
-  ;; Check the nick names
+             (glib-test:list-enum-item-values "GdkNotifyType")))
+  ;; Check nick names
   (is (equal '("ancestor" "virtual" "inferior" "nonlinear" "nonlinear-virtual"
                "unknown")
-             (list-enum-item-nick "GdkNotifyType")))
-  ;; Check the enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkNotifyType"
-                             GDK-NOTIFY-TYPE
-                             (:EXPORT T
-                              :TYPE-INITIALIZER "gdk_notify_type_get_type")
-                             (:ANCESTOR 0)
-                             (:VIRTUAL 1)
-                             (:INFERIOR 2)
-                             (:NONLINEAR 3)
-                             (:NONLINEAR-VIRTUAL 4)
-                             (:UNKNOWN 5))
-             (gobject:get-g-type-definition "GdkNotifyType"))))
+             (glib-test:list-enum-item-nicks "GdkNotifyType")))
+  ;; Check enum definition
+  (is (equal '(GOBJECT:DEFINE-GENUM "GdkNotifyType" GDK:NOTIFY-TYPE
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gdk_notify_type_get_type")
+                       (:ANCESTOR 0)
+                       (:VIRTUAL 1)
+                       (:INFERIOR 2)
+                       (:NONLINEAR 3)
+                       (:NONLINEAR-VIRTUAL 4)
+                       (:UNKNOWN 5))
+             (gobject:get-gtype-definition "GdkNotifyType"))))
 
 ;;;     GdkPropertyState
 
 (test gdk-property-state
-  ;; Check the type
+  ;; Check type
   (is-true (g:type-is-enum "GdkPropertyState"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GdkPropertyState")
           (g:gtype (cffi:foreign-funcall "gdk_property_state_get_type" :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gdk:property-state
           (glib:symbol-for-gtype "GdkPropertyState")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GDK_PROPERTY_NEW_VALUE" "GDK_PROPERTY_DELETE")
-             (list-enum-item-name "GdkPropertyState")))
-  ;; Check the values
+             (glib-test:list-enum-item-names "GdkPropertyState")))
+  ;; Check values
   (is (equal '(0 1)
-             (list-enum-item-value "GdkPropertyState")))
-  ;; Check the nick names
+             (glib-test:list-enum-item-values "GdkPropertyState")))
+  ;; Check nick names
   (is (equal '("new-value" "delete")
-             (list-enum-item-nick "GdkPropertyState")))
-  ;; Check the enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkPropertyState"
-                             GDK-PROPERTY-STATE
-                             (:EXPORT T
-                              :TYPE-INITIALIZER "gdk_property_state_get_type")
-                             (:NEW-VALUE 0)
-                             (:DELETE 1))
-             (gobject:get-g-type-definition "GdkPropertyState"))))
+             (glib-test:list-enum-item-nicks "GdkPropertyState")))
+  ;; Check enum definition
+  (is (equal '(GOBJECT:DEFINE-GENUM "GdkPropertyState" GDK:PROPERTY-STATE
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gdk_property_state_get_type")
+                       (:NEW-VALUE 0)
+                       (:DELETE 1))
+             (gobject:get-gtype-definition "GdkPropertyState"))))
 
 ;;;     GdkWindowState
 
 (test gdk-window-state
-  ;; Check the type
+  ;; Check type
   (is (g:type-is-flags "GdkWindowState"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gdk:window-state
           (glib:symbol-for-gtype "GdkWindowState")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GdkWindowState")
           (g:gtype (cffi:foreign-funcall "gdk_window_state_get_type" :size))))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GDK_WINDOW_STATE_WITHDRAWN" "GDK_WINDOW_STATE_ICONIFIED"
                "GDK_WINDOW_STATE_MAXIMIZED" "GDK_WINDOW_STATE_STICKY"
                "GDK_WINDOW_STATE_FULLSCREEN" "GDK_WINDOW_STATE_ABOVE"
@@ -204,115 +189,112 @@
                "GDK_WINDOW_STATE_BOTTOM_TILED"
                "GDK_WINDOW_STATE_BOTTOM_RESIZABLE"
                "GDK_WINDOW_STATE_LEFT_TILED" "GDK_WINDOW_STATE_LEFT_RESIZABLE")
-             (list-flags-item-name "GdkWindowState")))
-  ;; Check the values
+             (glib-test:list-flags-item-names "GdkWindowState")))
+  ;; Check values
   (is (equal '(1 2 4 8 16 32 64 128 256 512 1024 2048 4096 8192 16384 32768
                65536)
-             (list-flags-item-value "GdkWindowState")))
-  ;; Check the nick names
+             (glib-test:list-flags-item-values "GdkWindowState")))
+  ;; Check nick names
   (is (equal '("withdrawn" "iconified" "maximized" "sticky" "fullscreen" "above"
                "below" "focused" "tiled" "top-tiled" "top-resizable"
                "right-tiled" "right-resizable" "bottom-tiled" "bottom-resizable"
                "left-tiled" "left-resizable")
-             (list-flags-item-nick "GdkWindowState")))
-  ;; Check the flags definition
-  (is (equal '(GOBJECT:DEFINE-G-FLAGS "GdkWindowState"
-                              GDK-WINDOW-STATE
-                              (:EXPORT T
-                               :TYPE-INITIALIZER "gdk_window_state_get_type")
-                              (:WITHDRAWN 1)
-                              (:ICONIFIED 2)
-                              (:MAXIMIZED 4)
-                              (:STICKY 8)
-                              (:FULLSCREEN 16)
-                              (:ABOVE 32)
-                              (:BELOW 64)
-                              (:FOCUSED 128)
-                              (:TILED 256)
-                              (:TOP-TILED 512)
-                              (:TOP-RESIZABLE 1024)
-                              (:RIGHT-TILED 2048)
-                              (:RIGHT-RESIZABLE 4096)
-                              (:BOTTOM-TILED 8192)
-                              (:BOTTOM-RESIZABLE 16384)
-                              (:LEFT-TILED 32768)
-                              (:LEFT-RESIZABLE 65536))
-             (gobject:get-g-type-definition "GdkWindowState"))))
+             (glib-test:list-flags-item-nicks "GdkWindowState")))
+  ;; Check flags definition
+  (is (equal '(GOBJECT:DEFINE-GFLAGS "GdkWindowState" GDK:WINDOW-STATE
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gdk_window_state_get_type")
+                       (:WITHDRAWN 1)
+                       (:ICONIFIED 2)
+                       (:MAXIMIZED 4)
+                       (:STICKY 8)
+                       (:FULLSCREEN 16)
+                       (:ABOVE 32)
+                       (:BELOW 64)
+                       (:FOCUSED 128)
+                       (:TILED 256)
+                       (:TOP-TILED 512)
+                       (:TOP-RESIZABLE 1024)
+                       (:RIGHT-TILED 2048)
+                       (:RIGHT-RESIZABLE 4096)
+                       (:BOTTOM-TILED 8192)
+                       (:BOTTOM-RESIZABLE 16384)
+                       (:LEFT-TILED 32768)
+                       (:LEFT-RESIZABLE 65536))
+             (gobject:get-gtype-definition "GdkWindowState"))))
 
 ;;;     GdkSettingAction
 
 (test gdk-setting-action
-  ;; Check the type
+  ;; Check type
   (is-true (g:type-is-enum "GdkSettingAction"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GdkSettingAction")
           (g:gtype (cffi:foreign-funcall "gdk_setting_action_get_type" :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gdk:setting-action
           (glib:symbol-for-gtype "GdkSettingAction")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GDK_SETTING_ACTION_NEW" "GDK_SETTING_ACTION_CHANGED"
                "GDK_SETTING_ACTION_DELETED")
-             (list-enum-item-name "GdkSettingAction")))
-  ;; Check the values
+             (glib-test:list-enum-item-names "GdkSettingAction")))
+  ;; Check values
   (is (equal '(0 1 2)
-             (list-enum-item-value "GdkSettingAction")))
-  ;; Check the nick names
+             (glib-test:list-enum-item-values "GdkSettingAction")))
+  ;; Check nick names
   (is (equal '("new" "changed" "deleted")
-             (list-enum-item-nick "GdkSettingAction")))
-  ;; Check the enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkSettingAction"
-                             GDK-SETTING-ACTION
-                             (:EXPORT T
-                              :TYPE-INITIALIZER "gdk_setting_action_get_type")
-                             (:NEW 0)
-                             (:CHANGED 1)
-                             (:DELETED 2))
-             (gobject:get-g-type-definition "GdkSettingAction"))))
+             (glib-test:list-enum-item-nicks "GdkSettingAction")))
+  ;; Check enum definition
+  (is (equal '(GOBJECT:DEFINE-GENUM "GdkSettingAction" GDK:SETTING-ACTION
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gdk_setting_action_get_type")
+                       (:NEW 0)
+                       (:CHANGED 1)
+                       (:DELETED 2))
+             (gobject:get-gtype-definition "GdkSettingAction"))))
 
 ;;;     GdkOwnerChange
 
 (test gdk-owner-change
-  ;; Check the type
+  ;; Check type
   (is-true (g:type-is-enum "GdkOwnerChange"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GdkOwnerChange")
           (g:gtype (cffi:foreign-funcall "gdk_owner_change_get_type" :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gdk:owner-change
           (glib:symbol-for-gtype "GdkOwnerChange")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GDK_OWNER_CHANGE_NEW_OWNER" "GDK_OWNER_CHANGE_DESTROY"
                "GDK_OWNER_CHANGE_CLOSE")
-             (list-enum-item-name "GdkOwnerChange")))
-  ;; Check the values
+             (glib-test:list-enum-item-names "GdkOwnerChange")))
+  ;; Check values
   (is (equal '(0 1 2)
-             (list-enum-item-value "GdkOwnerChange")))
-  ;; Check the nick names
+             (glib-test:list-enum-item-values "GdkOwnerChange")))
+  ;; Check nick names
   (is (equal '("new-owner" "destroy" "close")
-             (list-enum-item-nick "GdkOwnerChange")))
-  ;; Check the enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkOwnerChange"
-                             GDK-OWNER-CHANGE
-                             (:EXPORT T
-                              :TYPE-INITIALIZER "gdk_owner_change_get_type")
-                             (:NEW-OWNER 0)
-                             (:DESTROY 1)
-                             (:CLOSE 2))
-             (gobject:get-g-type-definition "GdkOwnerChange"))))
+             (glib-test:list-enum-item-nicks "GdkOwnerChange")))
+  ;; Check enum definition
+  (is (equal '(GOBJECT:DEFINE-GENUM "GdkOwnerChange" GDK:OWNER-CHANGE
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gdk_owner_change_get_type")
+                       (:NEW-OWNER 0)
+                       (:DESTROY 1)
+                       (:CLOSE 2))
+             (gobject:get-gtype-definition "GdkOwnerChange"))))
 
 ;;;     GdkEventType        <-- gdk.events.lisp
 
 (test gdk-event-type
-  ;; Check the type
+  ;; Check type
   (is-true (g:type-is-enum "GdkEventType"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GdkEventType")
           (g:gtype (cffi:foreign-funcall "gdk_event_type_get_type" :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gdk:event-type
           (glib:symbol-for-gtype "GdkEventType")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GDK_NOTHING" "GDK_DELETE" "GDK_DESTROY" "GDK_EXPOSE"
                "GDK_MOTION_NOTIFY" "GDK_BUTTON_PRESS" "GDK_2BUTTON_PRESS"
                "GDK_DOUBLE_BUTTON_PRESS" "GDK_3BUTTON_PRESS"
@@ -330,13 +312,13 @@
                "GDK_TOUCHPAD_SWIPE" "GDK_TOUCHPAD_PINCH" "GDK_PAD_BUTTON_PRESS"
                "GDK_PAD_BUTTON_RELEASE" "GDK_PAD_RING" "GDK_PAD_STRIP"
                "GDK_PAD_GROUP_MODE" "GDK_EVENT_LAST")
-             (list-enum-item-name "GdkEventType")))
-  ;; Check the values
+             (glib-test:list-enum-item-names "GdkEventType")))
+  ;; Check values
   (is (equal '(-1 0 1 2 3 4 5 5 6 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21
                22 23 24 25 26 27 28 29 31 32 33 34 35 36 37 38 39 40 41 42 43
                44 45 46 47 48)
-             (list-enum-item-value "GdkEventType")))
-  ;; Check the nick names
+             (glib-test:list-enum-item-values "GdkEventType")))
+  ;; Check nick names
   (is (equal '("nothing" "delete" "destroy" "expose" "motion-notify"
                "button-press" "2button-press" "double-button-press"
                "3button-press" "triple-button-press" "button-release"
@@ -350,77 +332,76 @@
                "touch-update" "touch-end" "touch-cancel" "touchpad-swipe"
                "touchpad-pinch" "pad-button-press" "pad-button-release"
                "pad-ring" "pad-strip" "pad-group-mode" "event-last")
-             (list-enum-item-nick "GdkEventType")))
-  ;; Check the enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkEventType"
-                             GDK-EVENT-TYPE
-                             (:EXPORT T
-                              :TYPE-INITIALIZER "gdk_event_type_get_type")
-                             (:NOTHING -1)
-                             (:DELETE 0)
-                             (:DESTROY 1)
-                             (:EXPOSE 2)
-                             (:MOTION-NOTIFY 3)
-                             (:BUTTON-PRESS 4)
-                             (:2BUTTON-PRESS 5)
-                             (:DOUBLE-BUTTON-PRESS 5)
-                             (:3BUTTON-PRESS 6)
-                             (:TRIPLE-BUTTON-PRESS 6)
-                             (:BUTTON-RELEASE 7)
-                             (:KEY-PRESS 8)
-                             (:KEY-RELEASE 9)
-                             (:ENTER-NOTIFY 10)
-                             (:LEAVE-NOTIFY 11)
-                             (:FOCUS-CHANGE 12)
-                             (:CONFIGURE 13)
-                             (:MAP 14)
-                             (:UNMAP 15)
-                             (:PROPERTY-NOTIFY 16)
-                             (:SELECTION-CLEAR 17)
-                             (:SELECTION-REQUEST 18)
-                             (:SELECTION-NOTIFY 19)
-                             (:PROXIMITY-IN 20)
-                             (:PROXIMITY-OUT 21)
-                             (:DRAG-ENTER 22)
-                             (:DRAG-LEAVE 23)
-                             (:DRAG-MOTION 24)
-                             (:DRAG-STATUS 25)
-                             (:DROP-START 26)
-                             (:DROP-FINISHED 27)
-                             (:CLIENT-EVENT 28)
-                             (:VISIBILITY-NOTIFY 29)
-                             (:SCROLL 31)
-                             (:WINDOW-STATE 32)
-                             (:SETTING 33)
-                             (:OWNER-CHANGE 34)
-                             (:GRAB-BROKEN 35)
-                             (:DAMAGE 36)
-                             (:TOUCH-BEGIN 37)
-                             (:TOUCH-UPDATE 38)
-                             (:TOUCH-END 39)
-                             (:TOUCH-CANCEL 40)
-                             (:TOUCHPAD-SWIPE 41)
-                             (:TOUCHPAD-PINCH 42)
-                             (:PAD-BUTTON-PRESS 43)
-                             (:PAD-BUTTON-RELEASE 44)
-                             (:PAD-RING 45)
-                             (:PAD-STRIP 46)
-                             (:PAD-GROUP-MODE 47)
-                             (:EVENT-LAST 48))
-             (gobject:get-g-type-definition "GdkEventType"))))
+             (glib-test:list-enum-item-nicks "GdkEventType")))
+  ;; Check enum definition
+  (is (equal '(GOBJECT:DEFINE-GENUM "GdkEventType" GDK:EVENT-TYPE
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gdk_event_type_get_type")
+                       (:NOTHING -1)
+                       (:DELETE 0)
+                       (:DESTROY 1)
+                       (:EXPOSE 2)
+                       (:MOTION-NOTIFY 3)
+                       (:BUTTON-PRESS 4)
+                       (:2BUTTON-PRESS 5)
+                       (:DOUBLE-BUTTON-PRESS 5)
+                       (:3BUTTON-PRESS 6)
+                       (:TRIPLE-BUTTON-PRESS 6)
+                       (:BUTTON-RELEASE 7)
+                       (:KEY-PRESS 8)
+                       (:KEY-RELEASE 9)
+                       (:ENTER-NOTIFY 10)
+                       (:LEAVE-NOTIFY 11)
+                       (:FOCUS-CHANGE 12)
+                       (:CONFIGURE 13)
+                       (:MAP 14)
+                       (:UNMAP 15)
+                       (:PROPERTY-NOTIFY 16)
+                       (:SELECTION-CLEAR 17)
+                       (:SELECTION-REQUEST 18)
+                       (:SELECTION-NOTIFY 19)
+                       (:PROXIMITY-IN 20)
+                       (:PROXIMITY-OUT 21)
+                       (:DRAG-ENTER 22)
+                       (:DRAG-LEAVE 23)
+                       (:DRAG-MOTION 24)
+                       (:DRAG-STATUS 25)
+                       (:DROP-START 26)
+                       (:DROP-FINISHED 27)
+                       (:CLIENT-EVENT 28)
+                       (:VISIBILITY-NOTIFY 29)
+                       (:SCROLL 31)
+                       (:WINDOW-STATE 32)
+                       (:SETTING 33)
+                       (:OWNER-CHANGE 34)
+                       (:GRAB-BROKEN 35)
+                       (:DAMAGE 36)
+                       (:TOUCH-BEGIN 37)
+                       (:TOUCH-UPDATE 38)
+                       (:TOUCH-END 39)
+                       (:TOUCH-CANCEL 40)
+                       (:TOUCHPAD-SWIPE 41)
+                       (:TOUCHPAD-PINCH 42)
+                       (:PAD-BUTTON-PRESS 43)
+                       (:PAD-BUTTON-RELEASE 44)
+                       (:PAD-RING 45)
+                       (:PAD-STRIP 46)
+                       (:PAD-GROUP-MODE 47)
+                       (:EVENT-LAST 48))
+             (gobject:get-gtype-definition "GdkEventType"))))
 
 ;;;     GdkModifierType     <-- gdk.window.lisp
 
 (test gdk-modifier-type
-  ;; Check the type
+  ;; Check type
   (is (g:type-is-flags "GdkModifierType"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gdk:modifier-type
           (glib:symbol-for-gtype "GdkModifierType")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GdkModifierType")
           (g:gtype (cffi:foreign-funcall "gdk_modifier_type_get_type" :size))))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GDK_SHIFT_MASK" "GDK_LOCK_MASK" "GDK_CONTROL_MASK"
                "GDK_MOD1_MASK" "GDK_MOD2_MASK" "GDK_MOD3_MASK" "GDK_MOD4_MASK"
                "GDK_MOD5_MASK" "GDK_BUTTON1_MASK" "GDK_BUTTON2_MASK"
@@ -434,14 +415,14 @@
                "GDK_MODIFIER_RESERVED_25_MASK" "GDK_SUPER_MASK" "GDK_HYPER_MASK"
                "GDK_META_MASK" "GDK_MODIFIER_RESERVED_29_MASK"
                "GDK_RELEASE_MASK" "GDK_MODIFIER_MASK")
-             (list-flags-item-name "GdkModifierType")))
-  ;; Check the values
+             (glib-test:list-flags-item-names "GdkModifierType")))
+  ;; Check values
   (is (equal '(1 2 4 8 16 32 64 128 256 512 1024 2048 4096 8192 16384 32768
                65536 131072 262144 524288 1048576 2097152 4194304 8388608
                16777216 33554432 67108864 134217728 268435456 536870912
                1073741824 1543512063)
-             (list-flags-item-value "GdkModifierType")))
-  ;; Check the nick names
+             (glib-test:list-flags-item-values "GdkModifierType")))
+  ;; Check nick names
   (is (equal '("shift-mask" "lock-mask" "control-mask" "mod1-mask" "mod2-mask"
                "mod3-mask" "mod4-mask" "mod5-mask" "button1-mask" "button2-mask"
                "button3-mask" "button4-mask" "button5-mask"
@@ -453,58 +434,57 @@
                "modifier-reserved-23-mask" "modifier-reserved-24-mask"
                "modifier-reserved-25-mask" "super-mask" "hyper-mask" "meta-mask"
                "modifier-reserved-29-mask" "release-mask" "modifier-mask")
-             (list-flags-item-nick "GdkModifierType")))
-  ;; Check the flags definition
-  (is (equal '(GOBJECT:DEFINE-G-FLAGS "GdkModifierType"
-                              GDK-MODIFIER-TYPE
-                              (:EXPORT T
-                               :TYPE-INITIALIZER "gdk_modifier_type_get_type")
-                              (:SHIFT-MASK 1)
-                              (:LOCK-MASK 2)
-                              (:CONTROL-MASK 4)
-                              (:MOD1-MASK 8)
-                              (:MOD2-MASK 16)
-                              (:MOD3-MASK 32)
-                              (:MOD4-MASK 64)
-                              (:MOD5-MASK 128)
-                              (:BUTTON1-MASK 256)
-                              (:BUTTON2-MASK 512)
-                              (:BUTTON3-MASK 1024)
-                              (:BUTTON4-MASK 2048)
-                              (:BUTTON5-MASK 4096)
-                              (:MODIFIER-RESERVED-13-MASK 8192)
-                              (:MODIFIER-RESERVED-14-MASK 16384)
-                              (:MODIFIER-RESERVED-15-MASK 32768)
-                              (:MODIFIER-RESERVED-16-MASK 65536)
-                              (:MODIFIER-RESERVED-17-MASK 131072)
-                              (:MODIFIER-RESERVED-18-MASK 262144)
-                              (:MODIFIER-RESERVED-19-MASK 524288)
-                              (:MODIFIER-RESERVED-20-MASK 1048576)
-                              (:MODIFIER-RESERVED-21-MASK 2097152)
-                              (:MODIFIER-RESERVED-22-MASK 4194304)
-                              (:MODIFIER-RESERVED-23-MASK 8388608)
-                              (:MODIFIER-RESERVED-24-MASK 16777216)
-                              (:MODIFIER-RESERVED-25-MASK 33554432)
-                              (:SUPER-MASK 67108864)
-                              (:HYPER-MASK 134217728)
-                              (:META-MASK 268435456)
-                              (:MODIFIER-RESERVED-29-MASK 536870912)
-                              (:RELEASE-MASK 1073741824)
-                              (:MODIFIER-MASK 1543512063))
-             (gobject:get-g-type-definition "GdkModifierType"))))
+             (glib-test:list-flags-item-nicks "GdkModifierType")))
+  ;; Check flags definition
+  (is (equal '(GOBJECT:DEFINE-GFLAGS "GdkModifierType" GDK:MODIFIER-TYPE
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gdk_modifier_type_get_type")
+                       (:SHIFT-MASK 1)
+                       (:LOCK-MASK 2)
+                       (:CONTROL-MASK 4)
+                       (:MOD1-MASK 8)
+                       (:MOD2-MASK 16)
+                       (:MOD3-MASK 32)
+                       (:MOD4-MASK 64)
+                       (:MOD5-MASK 128)
+                       (:BUTTON1-MASK 256)
+                       (:BUTTON2-MASK 512)
+                       (:BUTTON3-MASK 1024)
+                       (:BUTTON4-MASK 2048)
+                       (:BUTTON5-MASK 4096)
+                       (:MODIFIER-RESERVED-13-MASK 8192)
+                       (:MODIFIER-RESERVED-14-MASK 16384)
+                       (:MODIFIER-RESERVED-15-MASK 32768)
+                       (:MODIFIER-RESERVED-16-MASK 65536)
+                       (:MODIFIER-RESERVED-17-MASK 131072)
+                       (:MODIFIER-RESERVED-18-MASK 262144)
+                       (:MODIFIER-RESERVED-19-MASK 524288)
+                       (:MODIFIER-RESERVED-20-MASK 1048576)
+                       (:MODIFIER-RESERVED-21-MASK 2097152)
+                       (:MODIFIER-RESERVED-22-MASK 4194304)
+                       (:MODIFIER-RESERVED-23-MASK 8388608)
+                       (:MODIFIER-RESERVED-24-MASK 16777216)
+                       (:MODIFIER-RESERVED-25-MASK 33554432)
+                       (:SUPER-MASK 67108864)
+                       (:HYPER-MASK 134217728)
+                       (:META-MASK 268435456)
+                       (:MODIFIER-RESERVED-29-MASK 536870912)
+                       (:RELEASE-MASK 1073741824)
+                       (:MODIFIER-MASK 1543512063))
+             (gobject:get-gtype-definition "GdkModifierType"))))
 
 ;;;     GdkEventMask        <-- gdk.events.lisp
 
 (test gdk-event-mask
-  ;; Check the type
+  ;; Check type
   (is (g:type-is-flags "GdkEventMask"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gdk:event-mask
           (glib:symbol-for-gtype "GdkEventMask")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GdkEventMask")
           (g:gtype (cffi:foreign-funcall "gdk_event_mask_get_type" :size))))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GDK_EXPOSURE_MASK" "GDK_POINTER_MOTION_MASK"
                "GDK_POINTER_MOTION_HINT_MASK" "GDK_BUTTON_MOTION_MASK"
                "GDK_BUTTON1_MOTION_MASK" "GDK_BUTTON2_MOTION_MASK"
@@ -518,13 +498,13 @@
                "GDK_SCROLL_MASK" "GDK_TOUCH_MASK" "GDK_SMOOTH_SCROLL_MASK"
                "GDK_TOUCHPAD_GESTURE_MASK" "GDK_TABLET_PAD_MASK"
                "GDK_ALL_EVENTS_MASK")
-             (list-flags-item-name "GdkEventMask")))
-  ;; Check the values
+             (glib-test:list-flags-item-names "GdkEventMask")))
+  ;; Check values
   (is (equal '(2 4 8 16 32 64 128 256 512 1024 2048 4096 8192 16384 32768 65536
                131072 262144 524288 1048576 2097152 4194304 8388608 16777216
                33554432 67108862)
-             (list-flags-item-value "GdkEventMask")))
-  ;; Check the nick names
+             (glib-test:list-flags-item-values "GdkEventMask")))
+  ;; Check nick names
   (is (equal '("exposure-mask" "pointer-motion-mask" "pointer-motion-hint-mask"
                "button-motion-mask" "button1-motion-mask" "button2-motion-mask"
                "button3-motion-mask" "button-press-mask" "button-release-mask"
@@ -534,39 +514,38 @@
                "proximity-in-mask" "proximity-out-mask" "substructure-mask"
                "scroll-mask" "touch-mask" "smooth-scroll-mask"
                "touchpad-gesture-mask" "tablet-pad-mask" "all-events-mask")
-             (list-flags-item-nick "GdkEventMask")))
-  ;; Check the flags definition
-  (is (equal '(GOBJECT:DEFINE-G-FLAGS "GdkEventMask"
-                              GDK-EVENT-MASK
-                              (:EXPORT T
-                               :TYPE-INITIALIZER "gdk_event_mask_get_type")
-                              (:EXPOSURE-MASK 2)
-                              (:POINTER-MOTION-MASK 4)
-                              (:POINTER-MOTION-HINT-MASK 8)
-                              (:BUTTON-MOTION-MASK 16)
-                              (:BUTTON1-MOTION-MASK 32)
-                              (:BUTTON2-MOTION-MASK 64)
-                              (:BUTTON3-MOTION-MASK 128)
-                              (:BUTTON-PRESS-MASK 256)
-                              (:BUTTON-RELEASE-MASK 512)
-                              (:KEY-PRESS-MASK 1024)
-                              (:KEY-RELEASE-MASK 2048)
-                              (:ENTER-NOTIFY-MASK 4096)
-                              (:LEAVE-NOTIFY-MASK 8192)
-                              (:FOCUS-CHANGE-MASK 16384)
-                              (:STRUCTURE-MASK 32768)
-                              (:PROPERTY-CHANGE-MASK 65536)
-                              (:VISIBILITY-NOTIFY-MASK 131072)
-                              (:PROXIMITY-IN-MASK 262144)
-                              (:PROXIMITY-OUT-MASK 524288)
-                              (:SUBSTRUCTURE-MASK 1048576)
-                              (:SCROLL-MASK 2097152)
-                              (:TOUCH-MASK 4194304)
-                              (:SMOOTH-SCROLL-MASK 8388608)
-                              (:TOUCHPAD-GESTURE-MASK 16777216)
-                              (:TABLET-PAD-MASK 33554432)
-                              (:ALL-EVENTS-MASK 67108862))
-             (gobject:get-g-type-definition "GdkEventMask"))))
+             (glib-test:list-flags-item-nicks "GdkEventMask")))
+  ;; Check flags definition
+  (is (equal '(GOBJECT:DEFINE-GFLAGS "GdkEventMask" GDK:EVENT-MASK
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gdk_event_mask_get_type")
+                       (:EXPOSURE-MASK 2)
+                       (:POINTER-MOTION-MASK 4)
+                       (:POINTER-MOTION-HINT-MASK 8)
+                       (:BUTTON-MOTION-MASK 16)
+                       (:BUTTON1-MOTION-MASK 32)
+                       (:BUTTON2-MOTION-MASK 64)
+                       (:BUTTON3-MOTION-MASK 128)
+                       (:BUTTON-PRESS-MASK 256)
+                       (:BUTTON-RELEASE-MASK 512)
+                       (:KEY-PRESS-MASK 1024)
+                       (:KEY-RELEASE-MASK 2048)
+                       (:ENTER-NOTIFY-MASK 4096)
+                       (:LEAVE-NOTIFY-MASK 8192)
+                       (:FOCUS-CHANGE-MASK 16384)
+                       (:STRUCTURE-MASK 32768)
+                       (:PROPERTY-CHANGE-MASK 65536)
+                       (:VISIBILITY-NOTIFY-MASK 131072)
+                       (:PROXIMITY-IN-MASK 262144)
+                       (:PROXIMITY-OUT-MASK 524288)
+                       (:SUBSTRUCTURE-MASK 1048576)
+                       (:SCROLL-MASK 2097152)
+                       (:TOUCH-MASK 4194304)
+                       (:SMOOTH-SCROLL-MASK 8388608)
+                       (:TOUCHPAD-GESTURE-MASK 16777216)
+                       (:TABLET-PAD-MASK 33554432)
+                       (:ALL-EVENTS-MASK 67108862))
+             (gobject:get-gtype-definition "GdkEventMask"))))
 
 ;;;     GdkEventSequence    <-- gdk-events.lisp
 
@@ -1044,4 +1023,4 @@
     (is (= 0 (gdk:event-pad-group-mode-group event)))
     (is (= 0 (gdk:event-pad-group-mode-mode event)))))
 
-;;; 2024.6-28
+;;; 2024-9-22

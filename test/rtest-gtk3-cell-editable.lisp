@@ -8,31 +8,30 @@
 ;;;     GtkCellEditable
 
 (test gtk-cell-editable
-  ;; Type check
+  ;; Check type
   (is (g:type-is-interface "GtkCellEditable"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:cell-editable
           (glib:symbol-for-gtype "GtkCellEditable")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkCellEditable")
           (g:gtype (cffi:foreign-funcall "gtk_cell_editable_get_type" :size))))
-  ;; Check the interface prerequisites
+  ;; Check interface prerequisites
   (is (equal '("GtkWidget")
-             (list-interface-prerequisites "GtkCellEditable")))
-  ;; Check the interface properties
+             (glib-test:list-interface-prerequisites "GtkCellEditable")))
+  ;; Check interface properties
   (is (equal '("editing-canceled")
-             (list-interface-properties "GtkCellEditable")))
-  ;; Check the signals
+             (glib-test:list-interface-properties "GtkCellEditable")))
+  ;; Check signals
   (is (equal '("editing-done" "remove-widget")
-             (list-signals "GtkCellEditable")))
-  ;; Get the interface definition
-  (is (equal '(GOBJECT:DEFINE-G-INTERFACE "GtkCellEditable" GTK-CELL-EDITABLE
-                            (:EXPORT T :TYPE-INITIALIZER
-                             "gtk_cell_editable_get_type")
-                            (EDITING-CANCELED
-                             GTK-CELL-EDITABLE-EDITING-CANCELED
-                             "editing-canceled" "gboolean" T T))
-             (gobject:get-g-type-definition "GtkCellEditable"))))
+             (glib-test:list-signals "GtkCellEditable")))
+  ;; Check interface definition
+  (is (equal '(GOBJECT:DEFINE-GINTERFACE "GtkCellEditable" GTK:CELL-EDITABLE
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_cell_editable_get_type")
+                       (EDITING-CANCELED CELL-EDITABLE-EDITING-CANCELED
+                        "editing-canceled" "gboolean" T T))
+             (gobject:get-gtype-definition "GtkCellEditable"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -53,4 +52,4 @@
 ;;;     gtk_cell_editable_editing_done
 ;;;     gtk_cell_editable_remove_widget
 
-;;; 2024-3-17
+;;; 2024-9-22

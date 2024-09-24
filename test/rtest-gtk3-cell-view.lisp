@@ -7,59 +7,61 @@
 
 ;;;     GtkCellView
 
-(test cell-view-class
-  ;; Type check
+(test gtk-cell-view-class
+  ;; Check type
   (is (g:type-is-object "GtkCellView"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:cell-view
           (glib:symbol-for-gtype "GtkCellView")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkCellView")
           (g:gtype (cffi:foreign-funcall "gtk_cell_view_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkWidget") (g:type-parent "GtkCellView")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkCellView")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkCellView")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable" "GtkCellLayout"
                "GtkOrientable")
-             (list-interfaces "GtkCellView")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkCellView")))
+  ;; Check class properties
   (is (equal '("background" "background-gdk" "background-rgba" "background-set"
                "cell-area" "cell-area-context" "draw-sensitive" "fit-model"
                "model" "orientation")
-             (list-properties "GtkCellView")))
-  ;; Check the style properties
+             (glib-test:list-properties "GtkCellView")))
+  ;; Check style properties
   (is (equal '()
-             (list-style-properties "GtkCellView")))
-  ;; Check the signals
+             (gtk-test:list-style-properties "GtkCellView")))
+  ;; Check signals
   (is (equal '()
-             (list-signals "GtkCellView")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkCellView" GTK-CELL-VIEW
-                       (:SUPERCLASS GTK-WIDGET :EXPORT T :INTERFACES
+             (glib-test:list-signals "GtkCellView")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkCellView" GTK:CELL-VIEW
+                       (:SUPERCLASS GTK:WIDGET
+                        :EXPORT T
+                        :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable" "GtkCellLayout"
                          "GtkOrientable")
                         :TYPE-INITIALIZER "gtk_cell_view_get_type")
-                       ((BACKGROUND GTK-CELL-VIEW-BACKGROUND "background"
-                         "gchararray" NIL T)
-                        (BACKGROUND-GDK GTK-CELL-VIEW-BACKGROUND-GDK
+                       ((BACKGROUND CELL-VIEW-BACKGROUND
+                         "background" "gchararray" NIL T)
+                        (BACKGROUND-GDK CELL-VIEW-BACKGROUND-GDK
                          "background-gdk" "GdkColor" T T)
-                        (BACKGROUND-RGBA GTK-CELL-VIEW-BACKGROUND-RGBA
+                        (BACKGROUND-RGBA CELL-VIEW-BACKGROUND-RGBA
                          "background-rgba" "GdkRGBA" T T)
-                        (BACKGROUND-SET GTK-CELL-VIEW-BACKGROUND-SET
+                        (BACKGROUND-SET CELL-VIEW-BACKGROUND-SET
                          "background-set" "gboolean" T T)
-                        (CELL-AREA GTK-CELL-VIEW-CELL-AREA "cell-area"
-                         "GtkCellArea" T NIL)
-                        (CELL-AREA-CONTEXT GTK-CELL-VIEW-CELL-AREA-CONTEXT
+                        (CELL-AREA CELL-VIEW-CELL-AREA
+                         "cell-area" "GtkCellArea" T NIL)
+                        (CELL-AREA-CONTEXT CELL-VIEW-CELL-AREA-CONTEXT
                          "cell-area-context" "GtkCellAreaContext" T NIL)
-                        (DRAW-SENSITIVE GTK-CELL-VIEW-DRAW-SENSITIVE
+                        (DRAW-SENSITIVE CELL-VIEW-DRAW-SENSITIVE
                          "draw-sensitive" "gboolean" T T)
-                        (FIT-MODEL GTK-CELL-VIEW-FIT-MODEL "fit-model"
-                         "gboolean" T T)
-                        (MODEL GTK-CELL-VIEW-MODEL "model" "GtkTreeModel" T T)))
-             (gobject:get-g-type-definition "GtkCellView"))))
+                        (FIT-MODEL CELL-VIEW-FIT-MODEL
+                         "fit-model" "gboolean" T T)
+                        (MODEL CELL-VIEW-MODEL "model" "GtkTreeModel" T T)))
+             (gobject:get-gtype-definition "GtkCellView"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -92,4 +94,4 @@
 ;;;     gtk_cell_view_set_fit_model                        Accessor
 ;;;     gtk_cell_view_get_fit_model                        Accessor
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-9-22

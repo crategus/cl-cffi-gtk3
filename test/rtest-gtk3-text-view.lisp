@@ -16,7 +16,7 @@
 
 ;;; --- Properties -------------------------------------------------------------
 
-(test text-view-properties
+(test gtk-text-view-properties
   (let ((view (make-instance 'gtk:text-view)))
     (is-true (gtk:text-view-accepts-tab view))
     (is (= 0 (gtk:text-view-bottom-margin view)))

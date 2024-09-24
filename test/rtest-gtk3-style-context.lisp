@@ -8,175 +8,171 @@
 ;;;     GtkJunctionSides
 
 (test gtk-junction-sides
-  ;; Check the type
+  ;; Check type
   (is (g:type-is-flags "GtkJunctionSides"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:junction-sides
           (glib:symbol-for-gtype "GtkJunctionSides")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_JUNCTION_NONE" "GTK_JUNCTION_CORNER_TOPLEFT"
                "GTK_JUNCTION_CORNER_TOPRIGHT" "GTK_JUNCTION_CORNER_BOTTOMLEFT"
                "GTK_JUNCTION_CORNER_BOTTOMRIGHT" "GTK_JUNCTION_TOP"
                "GTK_JUNCTION_BOTTOM" "GTK_JUNCTION_LEFT" "GTK_JUNCTION_RIGHT")
-             (list-flags-item-name "GtkJunctionSides")))
-  ;; Check the values
+             (glib-test:list-flags-item-names "GtkJunctionSides")))
+  ;; Check values
   (is (equal '(0 1 2 4 8 3 12 5 10)
-             (list-flags-item-value "GtkJunctionSides")))
-  ;; Check the nick names
+             (glib-test:list-flags-item-values "GtkJunctionSides")))
+  ;; Check nick names
   (is (equal '("none" "corner-topleft" "corner-topright" "corner-bottomleft"
                "corner-bottomright" "top" "bottom" "left" "right")
-             (list-flags-item-nick "GtkJunctionSides")))
-  ;; Check the flags definition
-  (is (equal '(GOBJECT:DEFINE-G-FLAGS "GtkJunctionSides"
-                              GTK-JUNCTION-SIDES
-                              (:EXPORT T
-                               :TYPE-INITIALIZER "gtk_junction_sides_get_type")
-                              (:NONE 0)
-                              (:CORNER-TOPLEFT 1)
-                              (:CORNER-TOPRIGHT 2)
-                              (:CORNER-BOTTOMLEFT 4)
-                              (:CORNER-BOTTOMRIGHT 8)
-                              (:TOP 3)
-                              (:BOTTOM 12)
-                              (:LEFT 5)
-                              (:RIGHT 10))
-             (gobject:get-g-type-definition "GtkJunctionSides"))))
+             (glib-test:list-flags-item-nicks "GtkJunctionSides")))
+  ;; Check flags definition
+  (is (equal '(GOBJECT:DEFINE-GFLAGS "GtkJunctionSides" GTK:JUNCTION-SIDES
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_junction_sides_get_type")
+                       (:NONE 0)
+                       (:CORNER-TOPLEFT 1)
+                       (:CORNER-TOPRIGHT 2)
+                       (:CORNER-BOTTOMLEFT 4)
+                       (:CORNER-BOTTOMRIGHT 8)
+                       (:TOP 3)
+                       (:BOTTOM 12)
+                       (:LEFT 5)
+                       (:RIGHT 10))
+             (gobject:get-gtype-definition "GtkJunctionSides"))))
 
 ;;;     GtkRegionFlags
 
 (test gtk-region-flags
-  ;; Check the type
+  ;; Check type
   (is (g:type-is-flags "GtkRegionFlags"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:region-flags
           (glib:symbol-for-gtype "GtkRegionFlags")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_REGION_EVEN" "GTK_REGION_ODD" "GTK_REGION_FIRST"
                "GTK_REGION_LAST" "GTK_REGION_ONLY" "GTK_REGION_SORTED")
-             (list-flags-item-name "GtkRegionFlags")))
-  ;; Check the values
+             (glib-test:list-flags-item-names "GtkRegionFlags")))
+  ;; Check values
   (is (equal '(1 2 4 8 16 32)
-             (list-flags-item-value "GtkRegionFlags")))
-  ;; Check the nick names
+             (glib-test:list-flags-item-values "GtkRegionFlags")))
+  ;; Check nick names
   (is (equal '("even" "odd" "first" "last" "only" "sorted")
-             (list-flags-item-nick "GtkRegionFlags")))
-  ;; Check the flags definition
-  (is (equal '(GOBJECT:DEFINE-G-FLAGS "GtkRegionFlags"
-                              GTK-REGION-FLAGS
-                              (:EXPORT T
-                               :TYPE-INITIALIZER "gtk_region_flags_get_type")
-                              (:EVEN 1)
-                              (:ODD 2)
-                              (:FIRST 4)
-                              (:LAST 8)
-                              (:ONLY 16)
-                              (:SORTED 32))
-             (gobject:get-g-type-definition "GtkRegionFlags"))))
+             (glib-test:list-flags-item-nicks "GtkRegionFlags")))
+  ;; Check flags definition
+  (is (equal '(GOBJECT:DEFINE-GFLAGS "GtkRegionFlags" GTK:REGION-FLAGS
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_region_flags_get_type")
+                       (:EVEN 1)
+                       (:ODD 2)
+                       (:FIRST 4)
+                       (:LAST 8)
+                       (:ONLY 16)
+                       (:SORTED 32))
+             (gobject:get-gtype-definition "GtkRegionFlags"))))
 
 ;;;     GtkStyleContextPrintFlags
 
 (test gtk-style-context-print-flags
-  ;; Check the type
+  ;; Check type
   (is (g:type-is-flags "GtkStyleContextPrintFlags"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:style-context-print-flags
           (glib:symbol-for-gtype "GtkStyleContextPrintFlags")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_STYLE_CONTEXT_PRINT_NONE" "GTK_STYLE_CONTEXT_PRINT_RECURSE"
                "GTK_STYLE_CONTEXT_PRINT_SHOW_STYLE")
-             (list-flags-item-name "GtkStyleContextPrintFlags")))
-  ;; Check the values
+             (glib-test:list-flags-item-names "GtkStyleContextPrintFlags")))
+  ;; Check values
   (is (equal '(0 1 2)
-             (list-flags-item-value "GtkStyleContextPrintFlags")))
-  ;; Check the nick names
+             (glib-test:list-flags-item-values "GtkStyleContextPrintFlags")))
+  ;; Check nick names
   (is (equal '("none" "recurse" "show-style")
-             (list-flags-item-nick"GtkStyleContextPrintFlags")))
-  ;; Check the flags definition
-  (is (equal '(GOBJECT:DEFINE-G-FLAGS "GtkStyleContextPrintFlags"
-                              GTK-STYLE-CONTEXT-PRINT-FLAGS
-                              (:EXPORT T
-                               :TYPE-INITIALIZER
-                               "gtk_style_context_print_flags_get_type")
-                              (:NONE 0)
-                              (:RECURSE 1)
-                              (:SHOW-STYLE 2))
-             (gobject:get-g-type-definition "GtkStyleContextPrintFlags"))))
+             (glib-test:list-flags-item-nicks "GtkStyleContextPrintFlags")))
+  ;; Check flags definition
+  (is (equal '(GOBJECT:DEFINE-GFLAGS "GtkStyleContextPrintFlags"
+                                     GTK:STYLE-CONTEXT-PRINT-FLAGS
+                       (:EXPORT T
+                        :TYPE-INITIALIZER
+                        "gtk_style_context_print_flags_get_type")
+                       (:NONE 0)
+                       (:RECURSE 1)
+                       (:SHOW-STYLE 2))
+             (gobject:get-gtype-definition "GtkStyleContextPrintFlags"))))
 
 ;;;     GtkBorderStyle
 
 (test gtk-border-style
-  ;; Check the type
+  ;; Check type
   (is (g:type-is-enum "GtkBorderStyle"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:border-style
           (glib:symbol-for-gtype "GtkBorderStyle")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_BORDER_STYLE_NONE" "GTK_BORDER_STYLE_SOLID"
                "GTK_BORDER_STYLE_INSET" "GTK_BORDER_STYLE_OUTSET"
                "GTK_BORDER_STYLE_HIDDEN" "GTK_BORDER_STYLE_DOTTED"
                "GTK_BORDER_STYLE_DASHED" "GTK_BORDER_STYLE_DOUBLE"
                "GTK_BORDER_STYLE_GROOVE" "GTK_BORDER_STYLE_RIDGE")
-             (mapcar #'gobject:enum-item-name
-                     (gobject:get-enum-items "GtkBorderStyle"))))
-  ;; Check the values
+             (glib-test:list-enum-item-names "GtkBorderStyle")))
+
+  ;; Check values
   (is (equal '(0 1 2 3 4 5 6 7 8 9)
-             (mapcar #'gobject:enum-item-value
-                     (gobject:get-enum-items "GtkBorderStyle"))))
-  ;; Check the nick names
+             (glib-test:list-enum-item-values "GtkBorderStyle")))
+  ;; Check nick names
   (is (equal '("none" "solid" "inset" "outset" "hidden" "dotted" "dashed"
                "double" "groove" "ridge")
-             (mapcar #'gobject:enum-item-nick
-                     (gobject:get-enum-items "GtkBorderStyle"))))
-  ;; Check the enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkBorderStyle"
-                             GTK-BORDER-STYLE
-                             (:EXPORT T
-                              :TYPE-INITIALIZER "gtk_border_style_get_type")
-                             (:NONE 0)
-                             (:SOLID 1)
-                             (:INSET 2)
-                             (:OUTSET 3)
-                             (:HIDDEN 4)
-                             (:DOTTED 5)
-                             (:DASHED 6)
-                             (:DOUBLE 7)
-                             (:GROOVE 8)
-                             (:RIDGE 9))
-             (gobject:get-g-type-definition "GtkBorderStyle"))))
+             (glib-test:list-enum-item-nicks "GtkBorderStyle")))
+  ;; Check enum definition
+  (is (equal '(GOBJECT:DEFINE-GENUM "GtkBorderStyle" GTK:BORDER-STYLE
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_border_style_get_type")
+                       (:NONE 0)
+                       (:SOLID 1)
+                       (:INSET 2)
+                       (:OUTSET 3)
+                       (:HIDDEN 4)
+                       (:DOTTED 5)
+                       (:DASHED 6)
+                       (:DOUBLE 7)
+                       (:GROOVE 8)
+                       (:RIDGE 9))
+             (gobject:get-gtype-definition "GtkBorderStyle"))))
 
 ;;;     GtkStyleContext
 
 (test gtk-style-context-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkStyleContext"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:style-context
           (glib:symbol-for-gtype "GtkStyleContext")))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GObject")
           (g:type-parent "GtkStyleContext")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (mapcar #'g:type-name (g:type-children "GtkStyleContext"))))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkStyleContext")))
+  ;; Check interfaces
   (is (equal '()
-             (mapcar #'g:type-name (g:type-interfaces "GtkStyleContext"))))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkStyleContext")))
+  ;; Check class properties
   (is (equal '("direction" "paint-clock" "parent" "screen")
-             (list-properties "GtkStyleContext")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkStyleContext" GTK-STYLE-CONTEXT
-                       (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
+             (glib-test:list-properties "GtkStyleContext")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkStyleContext" GTK:STYLE-CONTEXT
+                       (:SUPERCLASS G:OBJECT
+                        :EXPORT T
+                        :INTERFACES NIL
                         :TYPE-INITIALIZER "gtk_style_context_get_type")
-                       ((DIRECTION GTK-STYLE-CONTEXT-DIRECTION "direction"
-                         "GtkTextDirection" T T)
-                        (PAINT-CLOCK GTK-STYLE-CONTEXT-PAINT-CLOCK
+                       ((DIRECTION STYLE-CONTEXT-DIRECTION
+                         "direction" "GtkTextDirection" T T)
+                        (PAINT-CLOCK STYLE-CONTEXT-PAINT-CLOCK
                          "paint-clock" "GdkFrameClock" T T)
-                        (PARENT GTK-STYLE-CONTEXT-PARENT "parent"
-                         "GtkStyleContext" T T)
-                        (SCREEN GTK-STYLE-CONTEXT-SCREEN "screen" "GdkScreen" T
-                         T)))
-             (gobject:get-g-type-definition "GtkStyleContext"))))
+                        (PARENT STYLE-CONTEXT-PARENT
+                         "parent" "GtkStyleContext" T T)
+                        (SCREEN STYLE-CONTEXT-SCREEN "screen" "GdkScreen" T T)))
+             (gobject:get-gtype-definition "GtkStyleContext"))))
 
 ;;; --- Properties and Accessors -----------------------------------------------
 
@@ -334,11 +330,11 @@
     (is-false (setf section (gtk:style-context-section context "property")))))
 
 (test gtk-style-context-section.2
-  (let* ((pathname (sys-path "resource/rtest-gtk-css-provider.css"))
+  (let* ((path (glib-sys:sys-path "test/resource/rtest-gtk-css-provider.css"))
          (provider (gtk:css-provider-new))
          (context (gtk:style-context-new))
          (section nil))
-    (is-true (gtk:css-provider-load-from-path provider pathname))
+    (is-true (gtk:css-provider-load-from-path provider path))
     (is-false (gtk:style-context-add-provider context
                                               provider
                                               gtk:+priority-user+))
@@ -565,4 +561,4 @@
 ;;;     gtk_render_icon
 ;;;     gtk_render_insertion_cursor
 
-;;; --- 2023-7-19 --------------------------------------------------------------
+;;; 2024-9-21

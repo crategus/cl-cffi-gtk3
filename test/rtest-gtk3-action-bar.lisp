@@ -21,32 +21,33 @@
           (g:type-parent "GtkActionBar")))
   ;; Check children
   (is (equal '()
-             (list-children "GtkActionBar")))
+             (glib-test:list-children "GtkActionBar")))
   ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
-             (list-interfaces "GtkActionBar")))
+             (glib-test:list-interfaces "GtkActionBar")))
   ;; Check class properties
   (is (equal '()
-             (list-properties "GtkActionBar")))
+             (glib-test:list-properties "GtkActionBar")))
   ;; Check style properties
   (is (equal '()
-             (list-style-properties "GtkActionBar")))
+             (gtk-test:list-style-properties "GtkActionBar")))
   ;; Check child properties
   (is (equal '("pack-type" "position")
-             (list-child-properties "GtkActionBar")))
+             (gtk-test:list-child-properties "GtkActionBar")))
   ;; Check signals
   (is (equal '()
-             (list-signals "GtkActionBar")))
+             (glib-test:list-signals "GtkActionBar")))
   ;; CSS information
   (is (string= "actionbar"
                (gtk:widget-class-css-name "GtkActionBar")))
   ;; Check class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkActionBar" GTK-ACTION-BAR
-                               (:SUPERCLASS GTK-BIN :EXPORT T :INTERFACES
-                                ("AtkImplementorIface" "GtkBuildable")
-                                :TYPE-INITIALIZER "gtk_action_bar_get_type")
-                               NIL)
-             (gobject:get-g-type-definition "GtkActionBar"))))
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkActionBar" GTK:ACTION-BAR
+                       (:SUPERCLASS GTK:BIN
+                        :EXPORT T
+                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
+                        :TYPE-INITIALIZER "gtk_action_bar_get_type")
+                       NIL)
+             (gobject:get-gtype-definition "GtkActionBar"))))
 
 ;;; --- Child Properties -------------------------------------------------------
 
@@ -87,4 +88,4 @@
     (is (eq button (setf (gtk:action-bar-center-widget bar) button)))
     (is (eq button (gtk:action-bar-center-widget bar)))))
 
-;;; 2024-4-9
+;;; 2024-9-21

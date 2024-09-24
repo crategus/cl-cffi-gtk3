@@ -103,7 +103,7 @@
 ;;;     gdk_selection_convert
 ;;;     gdk_selection_property_get
 
-(test selection-convert
+(test gdk-selection-convert
   (let ((clipboard (gtk:clipboard-default (gdk:display-default)))
         (widget (make-instance 'gtk:window :type :toplevel)))
     (is (string= "CLIPBOARD" (gtk:clipboard-selection clipboard)))
@@ -133,4 +133,4 @@
 
 ;; TODO: Implement a test.
 
-;;; 2022-12-12
+;;; 2024-9-22

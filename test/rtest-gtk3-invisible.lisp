@@ -8,39 +8,40 @@
 ;;;     GtkInvisible
 
 (test gtk-invisible-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkInvisible"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:invisible
           (glib:symbol-for-gtype "GtkInvisible")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkInvisible")
           (g:gtype (cffi:foreign-funcall "gtk_invisible_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkWidget")
           (g:type-parent "GtkInvisible")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkInvisible")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkInvisible")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
-             (list-interfaces "GtkInvisible")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkInvisible")))
+  ;; Check class properties
   (is (equal '("screen")
-             (list-properties "GtkInvisible")))
-  ;; Check the style properties
+             (glib-test:list-properties "GtkInvisible")))
+  ;; Check style properties
   (is (equal '()
-             (list-style-properties "GtkInvisible")))
-  ;; Check the signals
+             (gtk-test:list-style-properties "GtkInvisible")))
+  ;; Check signals
   (is (equal '()
-             (list-signals "GtkInvisible")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkInvisible" GTK-INVISIBLE
-                       (:SUPERCLASS GTK-WIDGET :EXPORT T :INTERFACES
-                        ("AtkImplementorIface" "GtkBuildable")
+             (glib-test:list-signals "GtkInvisible")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkInvisible" GTK:INVISIBLE
+                       (:SUPERCLASS GTK:WIDGET
+                        :EXPORT T
+                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_invisible_get_type")
-                       ((SCREEN GTK-INVISIBLE-SCREEN "screen" "GdkScreen" T T)))
-             (gobject:get-g-type-definition "GtkInvisible"))))
+                       ((SCREEN INVISIBLE-SCREEN "screen" "GdkScreen" T T)))
+             (gobject:get-gtype-definition "GtkInvisible"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -65,4 +66,4 @@
     (is (typep invisible 'gtk:invisible))
     (is (eq (gdk:screen-default) (gtk:invisible-screen invisible)))))
 
-;;; 2024-3-17
+;;; 2024-9-22

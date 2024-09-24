@@ -20,26 +20,25 @@
   (is (equal '("GDK_VISUAL_STATIC_GRAY" "GDK_VISUAL_GRAYSCALE"
                "GDK_VISUAL_STATIC_COLOR" "GDK_VISUAL_PSEUDO_COLOR"
                "GDK_VISUAL_TRUE_COLOR" "GDK_VISUAL_DIRECT_COLOR")
-             (gtk-test:list-enum-item-name "GdkVisualType")))
+             (glib-test:list-enum-item-names "GdkVisualType")))
   ;; Check values
   (is (equal '(0 1 2 3 4 5)
-             (gtk-test:list-enum-item-value "GdkVisualType")))
+             (glib-test:list-enum-item-values "GdkVisualType")))
   ;; Check nick names
   (is (equal '("static-gray" "grayscale" "static-color" "pseudo-color"
                "true-color" "direct-color")
-             (gtk-test:list-enum-item-nick "GdkVisualType")))
+             (glib-test:list-enum-item-nicks "GdkVisualType")))
   ;; Check enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkVisualType" GDK-VISUAL-TYPE
-                                     (:EXPORT T
-                                      :TYPE-INITIALIZER
-                                      "gdk_visual_type_get_type")
-                                     (:STATIC-GRAY 0)
-                                     (:GRAYSCALE 1)
-                                     (:STATIC-COLOR 2)
-                                     (:PSEUDO-COLOR 3)
-                                     (:TRUE-COLOR 4)
-                                     (:DIRECT-COLOR 5))
-             (gobject:get-g-type-definition "GdkVisualType"))))
+  (is (equal '(GOBJECT:DEFINE-GENUM "GdkVisualType" GDK:VISUAL-TYPE
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gdk_visual_type_get_type")
+                       (:STATIC-GRAY 0)
+                       (:GRAYSCALE 1)
+                       (:STATIC-COLOR 2)
+                       (:PSEUDO-COLOR 3)
+                       (:TRUE-COLOR 4)
+                       (:DIRECT-COLOR 5))
+             (gobject:get-gtype-definition "GdkVisualType"))))
 
 ;;;     GdkByteOrder
 
@@ -49,26 +48,25 @@
   ;; Check type initializer
   (is (eq (g:gtype"GdkByteOrder")
           (g:gtype (cffi:foreign-funcall "gdk_byte_order_get_type" :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gdk:byte-order
           (glib:symbol-for-gtype "GdkByteOrder")))
   ;; Check names
   (is (equal '("GDK_LSB_FIRST" "GDK_MSB_FIRST")
-             (gtk-test:list-enum-item-name "GdkByteOrder")))
+             (glib-test:list-enum-item-names "GdkByteOrder")))
   ;; Check values
   (is (equal '(0 1)
-             (gtk-test:list-enum-item-value "GdkByteOrder")))
+             (glib-test:list-enum-item-values "GdkByteOrder")))
   ;; Check nick names
   (is (equal '("lsb-first" "msb-first")
-             (gtk-test:list-enum-item-nick "GdkByteOrder")))
+             (glib-test:list-enum-item-nicks "GdkByteOrder")))
   ;; Check enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GdkByteOrder" GDK-BYTE-ORDER
-                                     (:EXPORT T
-                                      :TYPE-INITIALIZER
-                                      "gdk_byte_order_get_type")
-                                     (:LSB-FIRST 0)
-                                     (:MSB-FIRST 1))
-             (gobject:get-g-type-definition "GdkByteOrder"))))
+  (is (equal '(GOBJECT:DEFINE-GENUM "GdkByteOrder" GDK:BYTE-ORDER
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gdk_byte_order_get_type")
+                       (:LSB-FIRST 0)
+                       (:MSB-FIRST 1))
+             (gobject:get-gtype-definition "GdkByteOrder"))))
 
 ;;;     GdkVisual
 
@@ -87,27 +85,29 @@
   ;; Check children
   #-windows
   (is (or (equal '("GdkX11Visual")
-                 (gtk-test:list-children "GdkVisual"))
+                 (glib-test:list-children "GdkVisual"))
           (equal '("GdkWaylandVisual")
-                 (gtk-test:list-children "GdkVisual"))))
+                 (glib-test:list-children "GdkVisual"))))
   #+windows
   (is (equal '()
-             (gtk-test:list-children "GdkVisual")))
-  ;; Check the interfaces
+             (glib-test:list-children "GdkVisual")))
+  ;; Check interfaces
   (is (equal '()
-             (gtk-test:list-interfaces "GdkVisual")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GdkVisual")))
+  ;; Check class properties
   (is (equal '()
-             (gtk-test:list-properties "GdkVisual")))
-  ;; Check the signals
+             (glib-test:list-properties "GdkVisual")))
+  ;; Check signals
   (is (equal '()
-             (gtk-test:list-signals "GdkVisual")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GdkVisual" GDK-VISUAL
-                       (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
+             (glib-test:list-signals "GdkVisual")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GdkVisual" GDK:VISUAL
+                       (:SUPERCLASS G:OBJECT
+                        :EXPORT T
+                        :INTERFACES NIL
                         :TYPE-INITIALIZER "gdk_visual_get_type")
                        NIL)
-             (gobject:get-g-type-definition "GdkVisual"))))
+             (gobject:get-gtype-definition "GdkVisual"))))
 
 ;;; --- Functions --------------------------------------------------------------
 
@@ -254,4 +254,4 @@
 (test gdk-visual-screen
   (is (eq 'gdk:screen (type-of (gdk:visual-screen (gdk:visual-system))))))
 
-;;; 2024-6-28
+;;; 2024-9-21

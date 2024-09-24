@@ -20,36 +20,37 @@
 ;;;     GtkIconFactory
 
 (test gtk-icon-factory-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkIconFactory"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:icon-factory
           (glib:symbol-for-gtype "GtkIconFactory")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkIconFactory")
           (g:gtype (cffi:foreign-funcall "gtk_icon_factory_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GObject")
           (g:type-parent "GtkIconFactory")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkIconFactory")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkIconFactory")))
+  ;; Check interfaces
   (is (equal '("GtkBuildable")
-             (list-interfaces "GtkIconFactory")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkIconFactory")))
+  ;; Check class properties
   (is (equal '()
-             (list-properties "GtkIconFactory")))
-  ;; Check the signals
+             (glib-test:list-properties "GtkIconFactory")))
+  ;; Check signals
   (is (equal '()
-             (list-signals "GtkIconFactory")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkIconFactory" GTK-ICON-FACTORY
-                       (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES
-                        ("GtkBuildable") :TYPE-INITIALIZER
-                        "gtk_icon_factory_get_type")
+             (glib-test:list-signals "GtkIconFactory")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT-CLASS "GtkIconFactory" GTK:ICON-FACTORY
+                       (:SUPERCLASS G:OBJECT
+                        :EXPORT T
+                        :INTERFACES ("GtkBuildable")
+                        :TYPE-INITIALIZER "gtk_icon_factory_get_type")
                        NIL)
-             (gobject:get-g-type-definition "GtkIconFactory"))))
+             (gobject:get-gtype-definition "GtkIconFactory"))))
 
 ;;;     GtkIconSet
 
@@ -66,40 +67,39 @@
 ;;;     GtkIconSize
 
 (test gtk-icon-size
-  ;; Check the type
+  ;; Check type
   (is (g:type-is-enum "GtkIconSize"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkIconSize")
           (g:gtype (cffi:foreign-funcall "gtk_icon_size_get_type" :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:icon-size
           (glib:symbol-for-gtype "GtkIconSize")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_ICON_SIZE_INVALID" "GTK_ICON_SIZE_MENU"
                "GTK_ICON_SIZE_SMALL_TOOLBAR" "GTK_ICON_SIZE_LARGE_TOOLBAR"
                "GTK_ICON_SIZE_BUTTON" "GTK_ICON_SIZE_DND"
                "GTK_ICON_SIZE_DIALOG")
-             (list-enum-item-name "GtkIconSize")))
-  ;; Check the values
+             (glib-test:list-enum-item-names "GtkIconSize")))
+  ;; Check values
   (is (equal '(0 1 2 3 4 5 6)
-             (list-enum-item-value "GtkIconSize")))
-  ;; Check the nick names
+             (glib-test:list-enum-item-values "GtkIconSize")))
+  ;; Check nick names
   (is (equal '("invalid" "menu" "small-toolbar" "large-toolbar" "button" "dnd"
                "dialog")
-             (list-enum-item-nick "GtkIconSize")))
-  ;; Check the enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkIconSize"
-                             GTK-ICON-SIZE
-                             (:EXPORT T
-                              :TYPE-INITIALIZER "gtk_icon_size_get_type")
-                             (:INVALID 0)
-                             (:MENU 1)
-                             (:SMALL-TOOLBAR 2)
-                             (:LARGE-TOOLBAR 3)
-                             (:BUTTON 4)
-                             (:DND 5)
-                             (:DIALOG 6))
-             (gobject:get-g-type-definition "GtkIconSize"))))
+             (glib-test:list-enum-item-nicks "GtkIconSize")))
+  ;; Check enum definition
+  (is (equal '(GOBJECT:DEFINE-GENUM "GtkIconSize" GTK:ICON-SIZE
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_icon_size_get_type")
+                       (:INVALID 0)
+                       (:MENU 1)
+                       (:SMALL-TOOLBAR 2)
+                       (:LARGE-TOOLBAR 3)
+                       (:BUTTON 4)
+                       (:DND 5)
+                       (:DIALOG 6))
+             (gobject:get-gtype-definition "GtkIconSize"))))
 
 ;;; --- Functions --------------------------------------------------------------
 
@@ -152,4 +152,4 @@
 ;;;     gtk_icon_source_set_state
 ;;;     gtk_icon_source_set_state_wildcarded
 
-;;; --- 2023-7-19 --------------------------------------------------------------
+;;; 2024-9-23

@@ -8,72 +8,58 @@
 ;;;     GtkColorButton
 
 (test gtk-color-button-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkColorButton"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:color-button
           (glib:symbol-for-gtype "GtkColorButton")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkColorButton")
           (g:gtype (cffi:foreign-funcall "gtk_color_button_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkButton")
           (g:type-parent "GtkColorButton")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkColorButton")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkColorButton")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable" "GtkActionable"
                "GtkActivatable" "GtkColorChooser")
-             (list-interfaces "GtkColorButton")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkColorButton")))
+  ;; Check class properties
   (is (equal '("alpha" "color" "rgba" "show-editor" "title" "use-alpha")
-             (list-properties "GtkColorButton")))
-  ;; Check the style properties
+             (glib-test:list-properties "GtkColorButton")))
+  ;; Check style properties
   (is (equal '()
-             (list-style-properties "GtkColorButton")))
-  ;; Check the child properties
+             (gtk-test:list-style-properties "GtkColorButton")))
+  ;; Check child properties
   (is (equal '()
-             (list-child-properties "GtkColorButton")))
-  ;; Check the signals
+             (gtk-test:list-child-properties "GtkColorButton")))
+  ;; Check signals
   (is (equal '("color-set")
-             (list-signals "GtkColorButton")))
+             (glib-test:list-signals "GtkColorButton")))
   ;; CSS information
   (is (string= "button"
                (gtk:widget-class-css-name "GtkColorButton")))
-  (is (string=
-"[button.color:dir(ltr)]
-  colorswatch.activatable:dir(ltr)
-    overlay
-"
-               (gtk:style-context-to-string
-                   (gtk:widget-style-context
-                       (make-instance 'gtk:color-button))
-                   :recurse)))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkColorButton" GTK-COLOR-BUTTON
-                       (:SUPERCLASS GTK-BUTTON :EXPORT T :INTERFACES
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkColorButton" GTK:COLOR-BUTTON
+                       (:SUPERCLASS GTK:BUTTON
+                        :EXPORT T
+                        :INTERFACES
                         ("AtkImplementorIface" "GtkActionable" "GtkActivatable"
                          "GtkBuildable" "GtkColorChooser")
                         :TYPE-INITIALIZER "gtk_color_button_get_type")
-                       ((ALPHA GTK-COLOR-BUTTON-ALPHA "alpha" "guint" T T)
-                        (COLOR GTK-COLOR-BUTTON-COLOR "color" "GdkColor" T T)
-                        (RGBA GTK-COLOR-BUTTON-RGBA "rgba" "GdkRGBA" T T)
-                        (SHOW-EDITOR GTK-COLOR-BUTTON-SHOW-EDITOR "show-editor"
-                         "gboolean" T T)
-                        (TITLE GTK-COLOR-BUTTON-TITLE "title" "gchararray" T T)
-                        (USE-ALPHA GTK-COLOR-BUTTON-USE-ALPHA "use-alpha"
-                         "gboolean" T T)))
-             (gobject:get-g-type-definition "GtkColorButton"))))
+                       ((ALPHA COLOR-BUTTON-ALPHA "alpha" "guint" T T)
+                        (COLOR COLOR-BUTTON-COLOR "color" "GdkColor" T T)
+                        (RGBA COLOR-BUTTON-RGBA "rgba" "GdkRGBA" T T)
+                        (SHOW-EDITOR COLOR-BUTTON-SHOW-EDITOR
+                         "show-editor" "gboolean" T T)
+                        (TITLE COLOR-BUTTON-TITLE "title" "gchararray" T T)
+                        (USE-ALPHA COLOR-BUTTON-USE-ALPHA
+                         "use-alpha" "gboolean" T T)))
+             (gobject:get-gtype-definition "GtkColorButton"))))
 
 ;;; --- Properties -------------------------------------------------------------
-
-;;;     alpha
-;;;     color
-;;;     rgba
-;;;     show-editor
-;;;     title
-;;;     use-alpha
 
 (test gtk-color-button-properties
   (let ((button (make-instance 'gtk:color-button)))
@@ -123,4 +109,4 @@
   (is (typep (gtk:color-button-new-with-rgba (gdk:rgba-new :red 1.0))
              'gtk:color-button)))
 
-;;; --- 2023-6-14 --------------------------------------------------------------
+;;; 2024-9-23

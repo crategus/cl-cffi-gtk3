@@ -8,24 +8,24 @@
 ;;;     GtkEditable
 
 (test gtk-editable-interface
-  ;; Type check
+  ;; Check type
   (is (g:type-is-interface "GtkEditable"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:editable
           (glib:symbol-for-gtype "GtkEditable")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkEditable")
           (g:gtype (cffi:foreign-funcall "gtk_editable_get_type" :size))))
-  ;; Get the names of the interface properties.
+  ;; Check interface properties
   (is (equal '()
-             (list-interface-properties "GtkPrintOperationPreview")))
-  ;; Get the interface definition
-  (is (equal '(GOBJECT:DEFINE-G-INTERFACE "GtkPrintOperationPreview"
-                                  GTK-PRINT-OPERATION-PREVIEW
-                                  (:EXPORT T
-                                   :TYPE-INITIALIZER
-                                   "gtk_print_operation_preview_get_type"))
-             (gobject:get-g-type-definition "GtkPrintOperationPreview"))))
+             (glib-test:list-interface-properties "GtkPrintOperationPreview")))
+  ;; Check interface definition
+  (is (equal '(GOBJECT:DEFINE-GINTERFACE "GtkPrintOperationPreview"
+                                         GTK:PRINT-OPERATION-PREVIEW
+                       (:EXPORT T
+                        :TYPE-INITIALIZER
+                        "gtk_print_operation_preview_get_type"))
+             (gobject:get-gtype-definition "GtkPrintOperationPreview"))))
 
 ;;; --- Signals ----------------------------------------------------------------
 
@@ -38,7 +38,7 @@
 ;;;     gtk_editable_select_region
 ;;;     gtk_editable_get_selection_bounds
 
-(test editable-select-region/selection-bounds
+(test gtk-editable-select-region/selection-bounds
   (let* ((buffer (gtk:entry-buffer-new "This is some text."))
          (entry (gtk:entry-new-with-buffer buffer)))
     (is-false (gtk:editable-select-region entry :start 8 :end 12))
@@ -57,7 +57,7 @@
 ;;;     gtk_editable_insert_text
 ;;;     gtk_editable_delete_text
 
-(test editable-insert/delete-text
+(test gtk-editable-insert/delete-text
   (let* ((buffer (gtk:entry-buffer-new "This is some text."))
          (entry (gtk:entry-new-with-buffer buffer)))
     ;; Delete text
@@ -69,7 +69,7 @@
 
 ;;;     gtk_editable_get_chars
 
-(test editable-chars
+(test gtk-editable-chars
   (let* ((buffer (gtk:entry-buffer-new "This is some text."))
          (entry (gtk:entry-new-with-buffer buffer)))
     (is (string= "This is some text." (gtk:editable-chars entry)))
@@ -89,7 +89,7 @@
 ;; assertion 'clipboard != NULL' failed
 
 #+nil
-(test editable-cut/copy/paste-clipboard
+(test gtk-editable-cut/copy/paste-clipboard
   (let* ((buffer (gtk:entry-buffer-new "This is some text."))
          (entry (gtk:entry-new-with-buffer buffer)))
     (is-false (gtk:editable-select-region entry :start 8 :end 12))
@@ -98,7 +98,7 @@
 
 ;;;     gtk_editable_delete_selection
 
-(test editable-select-region/selection-bounds
+(test gtk-editable-select-region/selection-bounds
   (let* ((buffer (gtk:entry-buffer-new "This is some text."))
          (entry (gtk:entry-new-with-buffer buffer)))
     ;; No text selected
@@ -112,7 +112,7 @@
 ;;;     gtk_editable_set_position
 ;;;     gtk_editable_get_position
 
-(test editable-position
+(test gtk-editable-position
   (let* ((buffer (gtk:entry-buffer-new "This is some text."))
          (entry (gtk:entry-new-with-buffer buffer)))
     (is (= 0 (gtk:editable-position entry)))
@@ -122,11 +122,11 @@
 ;;;     gtk_editable_set_editable
 ;;;     gtk_editable_get_editable
 
-(test editable-editable
+(test gtk-editable-editable
   (let* ((buffer (gtk:entry-buffer-new "This is some text."))
          (entry (gtk:entry-new-with-buffer buffer)))
     (is-true (gtk:editable-editable entry))
     (is-false (setf (gtk:editable-editable entry) nil))
     (is-false (gtk:editable-editable entry))))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-9-22

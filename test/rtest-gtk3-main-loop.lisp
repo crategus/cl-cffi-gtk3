@@ -9,12 +9,12 @@
 
 ;;;   gtk_get_default_language
 
-(test default-language
+(test gtk-default-language
   (is (typep (gtk:default-language) 'pango:language)))
 
 ;;;   gtk_get_locale_direction
 
-(test locale-direction
+(test gtk-locale-direction
   (is (eq :ltr (gtk:locale-direction))))
 
 ;;;   gtk_parse_args                           * not implemented *
@@ -24,7 +24,7 @@
 
 ;;;   gtk_get_option_group
 
-(test option-group
+(test gtk-option-group
   (is-true (cffi:pointerp (gtk:option-group nil)))
   (is-true (cffi:pointerp (gtk:option-group t))))
 
@@ -66,7 +66,7 @@
 ;; TODO:  Find examples to show the functionality of the functions for events.
 
 #+nil
-(test events-pending
+(test gtk-events-pending
   (is (= 0 (gtk:main-level)))
   (gdk-event-handler-set #'my-event-handler)
   (g-timeout-add 100 #'gtk:events-pending-callback)
@@ -85,7 +85,7 @@
   ;; Remove the idle source
   g:+source-remove+)
 
-(test main.1
+(test gtk-main.1
   ;; Add a idle source to the main loop.
   (g:idle-add #'main-idle-cb)
   ;; Start the main loop.
@@ -108,7 +108,7 @@
         ;; Continue the source
         g:+source-continue+)))
 
-(test main.2
+(test gtk-main.2
   (let ()
     ;; Add a timeout source to the main loop.
     (g:timeout-add 100 #'main-timeout-callback)
@@ -140,4 +140,4 @@
 ;;;     gtk_get_event_widget
 ;;;     gtk_propagate_event
 
-;;; --- 2023-7-19 --------------------------------------------------------------
+;;; 2024-9-21

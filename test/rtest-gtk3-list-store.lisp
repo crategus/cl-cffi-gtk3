@@ -7,38 +7,40 @@
 
 ;;;   GtkListStore
 
-(test list-store-class
-  ;; Type check
+(test gtk-list-store-class
+  ;; Check type
   (is (g:type-is-object "GtkListStore"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:list-store
           (glib:symbol-for-gtype "GtkListStore")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkListStore")
           (g:gtype (cffi:foreign-funcall "gtk_list_store_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GObject") (g:type-parent "GtkListStore")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkListStore")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkListStore")))
+  ;; Check interfaces
   (is (equal '("GtkTreeModel" "GtkTreeDragSource" "GtkTreeDragDest"
                "GtkTreeSortable" "GtkBuildable")
-             (list-interfaces "GtkListStore")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkListStore")))
+  ;; Check class properties
   (is (equal '()
-             (list-properties "GtkListStore")))
-  ;; Check the signals
+             (glib-test:list-properties "GtkListStore")))
+  ;; Check signals
   (is (equal '()
-             (list-signals "GtkListStore")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkListStore" GTK-LIST-STORE
-                       (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES
+             (glib-test:list-signals "GtkListStore")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkListStore" GTK:LIST-STORE
+                       (:SUPERCLASS G:OBJECT
+                        :EXPORT T
+                        :INTERFACES
                         ("GtkBuildable" "GtkTreeDragDest" "GtkTreeDragSource"
                          "GtkTreeModel" "GtkTreeSortable")
                         :TYPE-INITIALIZER "gtk_list_store_get_type")
                        NIL)
-             (gobject:get-g-type-definition "GtkListStore"))))
+             (gobject:get-gtype-definition "GtkListStore"))))
 
 ;;; --- Functions --------------------------------------------------------------
 
@@ -47,7 +49,7 @@
 ;; FIXME: Check this again. IS GString allowed for gchararray on Linux?
 
 #-windows
-(test list-store-new.1
+(test gtk-list-store-new.1
   (let ((store (make-instance 'gtk:list-store
                               :column-types '("gint" "GString" "GdkPixbuf"))))
     (is (eq 'gtk:list-store (type-of store)))
@@ -58,7 +60,7 @@
                  (g:type-name (gtk:tree-model-column-type store 2))))))
 
 #+windows
-(test list-store-new.1
+(test gtk-list-store-new.1
   (let ((store (make-instance 'gtk:list-store
                               :column-types '("gint" "gchararray" "GdkPixbuf"))))
     (is (eq 'gtk:list-store (type-of store)))
@@ -69,7 +71,7 @@
                  (g:type-name (gtk:tree-model-column-type store 2))))))
 
 #-windows
-(test list-store-new.2
+(test gtk-list-store-new.2
   (let ((store (gtk:list-store-new "gint" "GString" "GdkPixbuf")))
     (is (eq 'gtk:list-store (type-of store)))
     (is (= 3 (gtk:tree-model-n-columns store)))
@@ -79,7 +81,7 @@
                  (g:type-name (gtk:tree-model-column-type store 2))))))
 
 #+windows
-(test list-store-new.2
+(test gtk-list-store-new.2
   (let ((store (gtk:list-store-new "gint" "gchararray" "GdkPixbuf")))
     (is (eq 'gtk:list-store (type-of store)))
     (is (= 3 (gtk:tree-model-n-columns store)))
@@ -95,7 +97,7 @@
 ;; FIXME: Check this again. IS GString allowed for gchararray on Linux?
 
 #-windows
-(test list-store-set-column-types
+(test gtk-list-store-set-column-types
   (let ((store (make-instance 'gtk:list-store)))
     (is-false (gtk:list-store-set-column-types store
                                                "gint" "GString" "GdkPixbuf"))
@@ -106,7 +108,7 @@
                  (g:type-name (gtk:tree-model-column-type store 2))))))
 
 #+windows
-(test list-store-set-column-types
+(test gtk-list-store-set-column-types
   (let ((store (make-instance 'gtk:list-store)))
     (is-false (gtk:list-store-set-column-types store
                                                "gint" "gchararray" "GdkPixbuf"))
@@ -118,7 +120,7 @@
 
 ;;;   gtk_list_store_set
 
-(test list-store-set
+(test gtk-list-store-set
   (let* ((store (gtk:list-store-new "gint" "gchararray"))
          (iter (gtk:list-store-set store (gtk:list-store-append store)
                                          99 "string")))
@@ -132,7 +134,7 @@
 
 ;;;   gtk_list_store_set_value
 
-(test list-store-set-value
+(test gtk-list-store-set-value
   (let* ((store (gtk:list-store-new "gint" "gchararray"))
          (iter (gtk:list-store-append store)))
     (is-false (gtk:list-store-set-value store iter 0 99))
@@ -144,7 +146,7 @@
 
 ;;;   gtk_list_store_remove
 
-(test list-store-remove
+(test gtk-list-store-remove
   (let* ((store (gtk:list-store-new "gint" "gchararray"))
          (iter (gtk:list-store-append store)))
     (is-true iter)
@@ -169,7 +171,7 @@
 
 ;;;     gtk_list_store_move_before
 
-(test list-store-move-after
+(test gtk-list-store-move-after
   (let* ((store (gtk:list-store-new "gint" "gchararray"))
          (iter (gtk:list-store-append store)))
     (setf iter (gtk:list-store-append store))
@@ -177,10 +179,10 @@
 
 ;;;     gtk_list_store_move_after
 
-(test list-store-move-after
+(test gtk-list-store-move-after
   (let* ((store (gtk:list-store-new "gint" "gchararray"))
          (iter (gtk:list-store-append store)))
     (setf iter (gtk:list-store-prepend store))
     (gtk:list-store-move-after store iter nil)))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-9-22

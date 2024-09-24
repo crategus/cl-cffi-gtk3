@@ -8,97 +8,100 @@
 ;;;     GtkListBox
 
 (test gtk-list-box-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkListBox"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:list-box
           (glib:symbol-for-gtype "GtkListBox")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkListBox")
           (g:gtype (cffi:foreign-funcall "gtk_list_box_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkContainer") (g:type-parent "GtkListBox")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkListBox")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkListBox")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
-             (list-interfaces "GtkListBox")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkListBox")))
+  ;; Check class properties
   (is (equal '("activate-on-single-click" "selection-mode")
-             (list-properties "GtkListBox")))
-  ;; Get the names of the style properties
+             (glib-test:list-properties "GtkListBox")))
+  ;; Check style properties
   (is (equal '()
-             (list-style-properties "GtkListBox")))
-  ;; Get the names of the child properties
+             (gtk-test:list-style-properties "GtkListBox")))
+  ;; Check child properties
   (is (equal '()
-             (list-child-properties "GtkListBox")))
-  ;; Check the signals
+             (gtk-test:list-child-properties "GtkListBox")))
+  ;; Check signals
   (is (equal '("activate-cursor-row" "move-cursor" "row-activated"
                "row-selected" "select-all" "selected-rows-changed"
                "toggle-cursor-row" "unselect-all")
-             (list-signals "GtkListBox")))
+             (glib-test:list-signals "GtkListBox")))
   ;; CSS information
   (is (string= "list"
                (gtk:widget-class-css-name "GtkListBox")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkListBox" GTK-LIST-BOX
-                       (:SUPERCLASS GTK-CONTAINER :EXPORT T :INTERFACES
-                        ("AtkImplementorIface" "GtkBuildable")
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkListBox" GTK:LIST-BOX
+                       (:SUPERCLASS GTK:CONTAINER
+                        :EXPORT T
+                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_list_box_get_type")
                        ((ACTIVATE-ON-SINGLE-CLICK
-                         GTK-LIST-BOX-ACTIVATE-ON-SINGLE-CLICK
+                         LIST-BOX-ACTIVATE-ON-SINGLE-CLICK
                          "activate-on-single-click" "gboolean" T T)
-                        (SELECTION-MODE GTK-LIST-BOX-SELECTION-MODE
+                        (SELECTION-MODE LIST-BOX-SELECTION-MODE
                          "selection-mode" "GtkSelectionMode" T T)))
-             (gobject:get-g-type-definition "GtkListBox"))))
+             (gobject:get-gtype-definition "GtkListBox"))))
 
 ;;;     GtkListBoxRow
 
 (test gtk-list-box-row-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkListBoxRow"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:list-box-row
           (glib:symbol-for-gtype "GtkListBoxRow")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkListBoxRow")
           (g:gtype (cffi:foreign-funcall "gtk_list_box_row_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkBin") (g:type-parent "GtkListBoxRow")))
-  ;; Check the children
+  ;; Check children
   (is (or (equal '()
-                 (list-children "GtkListBoxRow"))
+                 (glib-test:list-children "GtkListBoxRow"))
           (equal '("GtkPlacesViewRow" "GtkSidebarRow")
-                 (list-children "GtkListBoxRow"))))
-  ;; Check the interfaces
+                 (glib-test:list-children "GtkListBoxRow"))))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable" "GtkActionable")
-             (list-interfaces "GtkListBoxRow")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkListBoxRow")))
+  ;; Check class properties
   (is (equal '("action-name" "action-target" "activatable" "selectable")
-             (list-properties "GtkListBoxRow")))
-  ;; Get the names of the style properties.
+             (glib-test:list-properties "GtkListBoxRow")))
+  ;; Check style properties
   (is (equal '()
-             (list-style-properties "GtkListBoxRow")))
-  ;; Get the names of the child properties
+             (gtk-test:list-style-properties "GtkListBoxRow")))
+  ;; Check child properties
   (is (equal '()
-             (list-child-properties "GtkListBoxRow")))
-  ;; Check the signals
+             (gtk-test:list-child-properties "GtkListBoxRow")))
+  ;; Check signals
   (is (equal '("activate")
-             (list-signals "GtkListBoxRow")))
+             (glib-test:list-signals "GtkListBoxRow")))
   ;; CSS information
   (is (string= "row"
                (gtk:widget-class-css-name "GtkListBoxRow")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkListBoxRow" GTK-LIST-BOX-ROW
-                       (:SUPERCLASS GTK-BIN :EXPORT T :INTERFACES
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkListBoxRow" GTK:LIST-BOX-ROW
+                       (:SUPERCLASS GTK:BIN
+                        :EXPORT T
+                        :INTERFACES
                         ("AtkImplementorIface" "GtkActionable" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_list_box_row_get_type")
-                       ((ACTIVATABLE GTK-LIST-BOX-ROW-ACTIVATABLE "activatable"
-                         "gboolean" T T)
-                        (SELECTABLE GTK-LIST-BOX-ROW-SELECTABLE "selectable"
-                         "gboolean" T T)))
-             (gobject:get-g-type-definition "GtkListBoxRow"))))
+                       ((ACTIVATABLE LIST-BOX-ROW-ACTIVATABLE
+                         "activatable" "gboolean" T T)
+                        (SELECTABLE LIST-BOX-ROW-SELECTABLE
+                         "selectable" "gboolean" T T)))
+             (gobject:get-gtype-definition "GtkListBoxRow"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -321,4 +324,4 @@
 ;;;     gtk_list_box_row_set_header
 ;;;     gtk_list_box_row_get_index
 
-;;; 2024-1-1
+;;; 2024-9-21

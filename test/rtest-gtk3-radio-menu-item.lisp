@@ -7,47 +7,48 @@
 
 ;;;     GtkRadioMenuItem
 
-(test radio-menu-item-class
-  ;; Type check
+(test gtk-radio-menu-item-class
+  ;; Check type
   (is (g:type-is-object "GtkRadioMenuItem"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:radio-menu-item
           (glib:symbol-for-gtype "GtkRadioMenuItem")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkRadioMenuItem")
-          (g:gtype (cffi:foreign-funcall "gtk_radio_menu_item_get_type"
-                                         :size))))
-  ;; Check the parent
+          (g:gtype (cffi:foreign-funcall "gtk_radio_menu_item_get_type" :size))))
+  ;; Check parent
   (is (eq (g:gtype "GtkCheckMenuItem") (g:type-parent "GtkRadioMenuItem")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkRadioMenuItem")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkRadioMenuItem")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable" "GtkActivatable"
                "GtkActionable")
-             (list-interfaces "GtkRadioMenuItem")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkRadioMenuItem")))
+  ;; Check class properties
   (is (equal '("group")
-             (list-properties "GtkRadioMenuItem")))
-  ;; Get the names of the child properties
+             (glib-test:list-properties "GtkRadioMenuItem")))
+  ;; Check child properties
   (is (equal '()
-             (list-child-properties "GtkRadioMenuItem")))
-  ;; Check the signals
+             (gtk-test:list-child-properties "GtkRadioMenuItem")))
+  ;; Check signals
   (is (equal '("group-changed")
-             (list-signals "GtkRadioMenuItem")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkRadioMenuItem" GTK-RADIO-MENU-ITEM
-                       (:SUPERCLASS GTK-CHECK-MENU-ITEM :EXPORT T :INTERFACES
+             (glib-test:list-signals "GtkRadioMenuItem")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkRadioMenuItem" GTK:RADIO-MENU-ITEM
+                       (:SUPERCLASS GTK:CHECK-MENU-ITEM
+                        :EXPORT T
+                        :INTERFACES
                         ("AtkImplementorIface" "GtkActionable" "GtkActivatable"
                          "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_radio_menu_item_get_type")
-                       ((GROUP GTK-RADIO-MENU-ITEM-GROUP "group"
-                         "GtkRadioMenuItem" NIL T)))
-             (gobject:get-g-type-definition "GtkRadioMenuItem"))))
+                       ((GROUP RADIO-MENU-ITEM-GROUP
+                         "group" "GtkRadioMenuItem" NIL T)))
+             (gobject:get-gtype-definition "GtkRadioMenuItem"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
-(test radio-menu-item-properties
+(test gtk-radio-menu-item-properties
   (let ((menu-item (gtk:radio-menu-item-new nil)))
     ;; group is not readable
     (signals (error) (gtk:radio-menu-item-group menu-item))
@@ -57,7 +58,7 @@
 ;;; --- Signals ----------------------------------------------------------------
 
 #+nil
-(test radio-menu-item-signals
+(test gtk-radio-menu-item-signals
   (let ((result nil)
         (newitem nil)
         (item (gtk:radio-menu-item-new nil)))
@@ -74,7 +75,7 @@
 
 ;;;     gtk_radio_menu_item_new
 
-(test radio-menu-item-new
+(test gtk-radio-menu-item-new
   (let (item)
   ;; First radio menu item
   (is (typep (setf item (gtk:radio-menu-item-new nil)) 'gtk:radio-menu-item))
@@ -91,7 +92,7 @@
 
 ;;;     gtk_radio_menu_item_new_with_label
 
-(test radio-menu-item-new-with-label
+(test gtk-radio-menu-item-new-with-label
   (let (item)
   ;; First radio menu item
   (is (typep (setf item
@@ -112,7 +113,7 @@
 
 ;;;     gtk_radio_menu_item_new_with_mnemonic
 
-(test radio-menu-item-new-with-mnemonic
+(test gtk-radio-menu-item-new-with-mnemonic
   (let (item)
   ;; First radio menu item
   (is (typep (setf item
@@ -134,7 +135,7 @@
 
 ;;;     gtk_radio_menu_item_new_from_widget
 
-(test radio-menu-item-new-from-widget
+(test gtk-radio-menu-item-new-from-widget
   (let (item)
   ;; First radio menu item
   (is (typep (setf item
@@ -152,7 +153,7 @@
 
 ;;;     gtk_radio_menu_item_new_with_label_from_widget
 
-(test radio-menu-item-new-with-label-from-widget
+(test gtk-radio-menu-item-new-with-label-from-widget
   (let (item)
   ;; First radio menu item
   (is (typep (setf item
@@ -176,7 +177,7 @@
 
 ;;;     gtk_radio_menu_item_new_with_mnemonic_from_widget
 
-(test radio-menu-item-new-with-mnemonic-from-widget
+(test gtk-radio-menu-item-new-with-mnemonic-from-widget
   (let (item)
   ;; First radio menu item
   (is (typep (setf item
@@ -201,7 +202,7 @@
 ;;;     gtk_radio_menu_item_set_group
 ;;;     gtk_radio_menu_item_get_group
 
-(test radio-menu-item-get/set-group
+(test gtk-radio-menu-item-get/set-group
   (let (item group)
     ;; First radio menu item
     (is (typep (setf item (gtk:radio-menu-item-new nil)) 'gtk:radio-menu-item))
@@ -230,7 +231,7 @@
 
 ;;;     gtk_radio_menu_item_join_group
 
-(test radio-menu-item-join-group.1
+(test gtk-radio-menu-item-join-group.1
   (let (item lastitem)
     ;; Add three menu-items to a group
     (dotimes (i 3)
@@ -249,7 +250,7 @@
                   (second (gtk:radio-menu-item-get-group item)) nil))
     (is (= 2 (length (gtk:radio-menu-item-get-group item))))))
 
-(test radio-menu-item-join-group.2
+(test gtk-radio-menu-item-join-group.2
   (let (item lastitem)
     ;; Add three menu-items to a group
     (dolist (label '("First menu-item" "Second menu-item" "Third menu-item"))
@@ -288,4 +289,4 @@
                      (gtk:bin-child
                          (second (gtk:radio-menu-item-get-group item))))))))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-9-22

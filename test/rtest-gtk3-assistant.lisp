@@ -21,26 +21,25 @@
   (is (equal '("GTK_ASSISTANT_PAGE_CONTENT" "GTK_ASSISTANT_PAGE_INTRO"
                "GTK_ASSISTANT_PAGE_CONFIRM" "GTK_ASSISTANT_PAGE_SUMMARY"
                "GTK_ASSISTANT_PAGE_PROGRESS" "GTK_ASSISTANT_PAGE_CUSTOM")
-             (list-enum-item-name "GtkAssistantPageType")))
+             (glib-test:list-enum-item-names "GtkAssistantPageType")))
   ;; Check values
   (is (equal '(0 1 2 3 4 5)
-             (list-enum-item-value "GtkAssistantPageType")))
+             (glib-test:list-enum-item-values "GtkAssistantPageType")))
   ;; Check nick names
   (is (equal '("content" "intro" "confirm" "summary" "progress" "custom")
-             (list-enum-item-nick "GtkAssistantPageType")))
+             (glib-test:list-enum-item-nicks "GtkAssistantPageType")))
   ;; Check enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkAssistantPageType"
-                                     GTK-ASSISTANT-PAGE-TYPE
-                                     (:EXPORT T
-                                      :TYPE-INITIALIZER
-                                      "gtk_assistant_page_type_get_type")
-                                     (:CONTENT 0)
-                                     (:INTRO 1)
-                                     (:CONFIRM 2)
-                                     (:SUMMARY 3)
-                                     (:PROGRESS 4)
-                                     (:CUSTOM 5))
-             (gobject:get-g-type-definition "GtkAssistantPageType"))))
+  (is (equal '(GOBJECT:DEFINE-GENUM "GtkAssistantPageType"
+                                    GTK:ASSISTANT-PAGE-TYPE
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_assistant_page_type_get_type")
+                       (:CONTENT 0)
+                       (:INTRO 1)
+                       (:CONFIRM 2)
+                       (:SUMMARY 3)
+                       (:PROGRESS 4)
+                       (:CUSTOM 5))
+             (gobject:get-gtype-definition "GtkAssistantPageType"))))
 
 ;;;     GtkAssistant
 
@@ -58,31 +57,32 @@
           (g:type-parent "GtkAssistant")))
   ;; Check children
   (is (equal '()
-             (list-children "GtkAssistant")))
+             (glib-test:list-children "GtkAssistant")))
   ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
-             (list-interfaces "GtkAssistant")))
+             (glib-test:list-interfaces "GtkAssistant")))
   ;; Check class properties
   (is (equal '("use-header-bar")
-             (list-properties "GtkAssistant")))
+             (glib-test:list-properties "GtkAssistant")))
   ;; Check style properties
   (is (equal '("content-padding" "header-padding")
-             (list-style-properties "GtkAssistant")))
+             (gtk-test:list-style-properties "GtkAssistant")))
   ;; Check child properties
   (is (equal '("complete" "has-padding" "header-image" "page-type"
                "sidebar-image" "title")
-             (list-child-properties "GtkAssistant")))
+             (gtk-test:list-child-properties "GtkAssistant")))
   ;; Check signals
   (is (equal '("apply" "cancel" "close" "escape" "prepare")
-             (list-signals "GtkAssistant")))
+             (glib-test:list-signals "GtkAssistant")))
   ;; Check class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkAssistant" GTK-ASSISTANT
-                       (:SUPERCLASS GTK-WINDOW :EXPORT T :INTERFACES
-                        ("AtkImplementorIface" "GtkBuildable")
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkAssistant" GTK:ASSISTANT
+                       (:SUPERCLASS GTK:WINDOW
+                        :EXPORT T
+                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_assistant_get_type")
-                       ((USE-HEADER-BAR GTK-ASSISTANT-USE-HEADER-BAR
+                       ((USE-HEADER-BAR ASSISTANT-USE-HEADER-BAR
                          "use-header-bar" "gint" T NIL)))
-             (gobject:get-g-type-definition "GtkAssistant"))))
+             (gobject:get-gtype-definition "GtkAssistant"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -160,4 +160,4 @@
 ;;;     gtk_assistant_next_page
 ;;;     gtk_assistant_previous_page
 
-;;; 2024-4-9
+;;; 2024-9-22

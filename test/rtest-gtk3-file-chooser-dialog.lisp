@@ -8,50 +8,51 @@
 ;;;     GtkFileChooserDialog
 
 (test gtk-file-chooser-dialog-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkFileChooserDialog"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:file-chooser-dialog
           (glib:symbol-for-gtype "GtkFileChooserDialog")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkFileChooserDialog")
-          (g:gtype (cffi:foreign-funcall "gtk_file_chooser_dialog_get_type"
-                                         :size))))
-  ;; Check the parent
+          (g:gtype (cffi:foreign-funcall "gtk_file_chooser_dialog_get_type" :size))))
+  ;; Check parent
   (is (eq (g:gtype "GtkDialog")
           (g:type-parent "GtkFileChooserDialog")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkFileChooserDialog")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkFileChooserDialog")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable" "GtkFileChooser")
-             (list-interfaces "GtkFileChooserDialog")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkFileChooserDialog")))
+  ;; Check class properties
   (is (equal '("action" "create-folders" "do-overwrite-confirmation"
                "extra-widget" "filter" "local-only" "preview-widget"
                "preview-widget-active" "select-multiple" "show-hidden"
                "use-preview-label")
-             (list-properties "GtkFileChooserDialog")))
-  ;; Check the style properties
+             (glib-test:list-properties "GtkFileChooserDialog")))
+  ;; Check style properties
   (is (equal '()
-             (list-style-properties "GtkFileChooserDialog")))
-  ;; Check the child properties
+             (gtk-test:list-style-properties "GtkFileChooserDialog")))
+  ;; Check child properties
   (is (equal '()
-             (list-child-properties "GtkFileChooserDialog")))
-  ;; Check the signals
+             (gtk-test:list-child-properties "GtkFileChooserDialog")))
+  ;; Check signals
   (is (equal '()
-             (list-signals "GtkFileChooserDialog")))
+             (glib-test:list-signals "GtkFileChooserDialog")))
   ;; CSS information
   (is (string= "dialog"
                (gtk:widget-class-css-name "GtkFileChooserDialog")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkFileChooserDialog"
-                                     GTK-FILE-CHOOSER-DIALOG
-                       (:SUPERCLASS GTK-DIALOG :EXPORT T :INTERFACES
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkFileChooserDialog"
+                                      GTK:FILE-CHOOSER-DIALOG
+                       (:SUPERCLASS GTK:DIALOG
+                        :EXPORT T
+                        :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable" "GtkFileChooser")
                         :TYPE-INITIALIZER "gtk_file_chooser_dialog_get_type")
                        NIL)
-             (gobject:get-g-type-definition "GtkFileChooserDialog"))))
+             (gobject:get-gtype-definition "GtkFileChooserDialog"))))
 
 ;;; --- Functions --------------------------------------------------------------
 
@@ -69,4 +70,4 @@
                                                   :reject))
                'gtk:file-chooser-dialog))))
 
-;;; --- 2023-6-11 --------------------------------------------------------------
+;;; 2024-9-23

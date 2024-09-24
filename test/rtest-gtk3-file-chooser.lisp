@@ -8,121 +8,118 @@
 ;;;     GtkFileChooserAction
 
 (test gtk-file-chooser-action
-  ;; Check the type
+  ;; Check type
   (is (g:type-is-enum "GtkFileChooserAction"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkFileChooserAction")
-          (g:gtype (cffi:foreign-funcall "gtk_file_chooser_action_get_type"
-                                         :size))))
-  ;; Check the registered name
+          (g:gtype (cffi:foreign-funcall "gtk_file_chooser_action_get_type" :size))))
+  ;; Check registered name
   (is (eq 'gtk:file-chooser-action
           (glib:symbol-for-gtype "GtkFileChooserAction")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_FILE_CHOOSER_ACTION_OPEN" "GTK_FILE_CHOOSER_ACTION_SAVE"
                "GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER"
                "GTK_FILE_CHOOSER_ACTION_CREATE_FOLDER")
-             (list-enum-item-name "GtkFileChooserAction")))
-  ;; Check the values
+             (glib-test:list-enum-item-names "GtkFileChooserAction")))
+  ;; Check values
   (is (equal '(0 1 2 3)
-             (list-enum-item-value "GtkFileChooserAction")))
-  ;; Check the nick names
+             (glib-test:list-enum-item-values "GtkFileChooserAction")))
+  ;; Check nick names
   (is (equal '("open" "save" "select-folder" "create-folder")
-             (list-enum-item-nick "GtkFileChooserAction")))
-  ;; Check the enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkFileChooserAction"
-                             GTK-FILE-CHOOSER-ACTION
-                             (:EXPORT T
-                              :TYPE-INITIALIZER
-                              "gtk_file_chooser_action_get_type")
-                             (:OPEN 0)
-                             (:SAVE 1)
-                             (:SELECT-FOLDER 2)
-                             (:CREATE-FOLDER 3))
-             (gobject:get-g-type-definition "GtkFileChooserAction"))))
+             (glib-test:list-enum-item-nicks "GtkFileChooserAction")))
+  ;; Check enum definition
+  (is (equal '(GOBJECT:DEFINE-GENUM "GtkFileChooserAction"
+                                    GTK:FILE-CHOOSER-ACTION
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_file_chooser_action_get_type")
+                       (:OPEN 0)
+                       (:SAVE 1)
+                       (:SELECT-FOLDER 2)
+                       (:CREATE-FOLDER 3))
+             (gobject:get-gtype-definition "GtkFileChooserAction"))))
 
 ;;;     GtkFileChooserConfirmation
 
 (test gtk-file-chooser-confirmation
-  ;; Check the type
+  ;; Check type
   (is (g:type-is-enum "GtkFileChooserConfirmation"))
   ;; Check the type initializer
   (is (eq (g:gtype "GtkFileChooserConfirmation")
           (g:gtype (cffi:foreign-funcall "gtk_file_chooser_confirmation_get_type"
                                          :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:file-chooser-confirmation
           (glib:symbol-for-gtype "GtkFileChooserConfirmation")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_FILE_CHOOSER_CONFIRMATION_CONFIRM"
                "GTK_FILE_CHOOSER_CONFIRMATION_ACCEPT_FILENAME"
                "GTK_FILE_CHOOSER_CONFIRMATION_SELECT_AGAIN")
-             (list-enum-item-name "GtkFileChooserConfirmation")))
-  ;; Check the values
+             (glib-test:list-enum-item-names "GtkFileChooserConfirmation")))
+  ;; Check values
   (is (equal '(0 1 2)
-             (list-enum-item-value "GtkFileChooserConfirmation")))
-  ;; Check the nick names
+             (glib-test:list-enum-item-values "GtkFileChooserConfirmation")))
+  ;; Check nick names
   (is (equal '("confirm" "accept-filename" "select-again")
-             (list-enum-item-nick "GtkFileChooserConfirmation")))
-  ;; Check the enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkFileChooserConfirmation"
-                             GTK-FILE-CHOOSER-CONFIRMATION
-                             (:EXPORT T
-                              :TYPE-INITIALIZER
-                              "gtk_file_chooser_confirmation_get_type")
-                             (:CONFIRM 0)
-                             (:ACCEPT-FILENAME 1)
-                             (:SELECT-AGAIN 2))
-             (gobject:get-g-type-definition "GtkFileChooserConfirmation"))))
+             (glib-test:list-enum-item-nicks "GtkFileChooserConfirmation")))
+  ;; Check enum definition
+  (is (equal '(GOBJECT:DEFINE-GENUM "GtkFileChooserConfirmation"
+                                    GTK:FILE-CHOOSER-CONFIRMATION
+                       (:EXPORT T
+                        :TYPE-INITIALIZER
+                        "gtk_file_chooser_confirmation_get_type")
+                       (:CONFIRM 0)
+                       (:ACCEPT-FILENAME 1)
+                       (:SELECT-AGAIN 2))
+             (gobject:get-gtype-definition "GtkFileChooserConfirmation"))))
 
 ;;;     GtkFileChooser
 
 (test gtk-file-chooser-interface
-  ;; Type check
+  ;; Check type
   (is (g:type-is-interface "GtkFileChooser"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:file-chooser
           (glib:symbol-for-gtype "GtkFileChooser")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkFileChooser")
           (g:gtype (cffi:foreign-funcall "gtk_file_chooser_get_type" :size))))
-  ;; Get the names of the interface properties.
+  ;; Check interface properties
   (is (equal '("action" "create-folders" "do-overwrite-confirmation"
                "extra-widget" "filter" "local-only" "preview-widget"
                "preview-widget-active" "select-multiple" "show-hidden"
                "use-preview-label")
-             (list-interface-properties "GtkFileChooser")))
-  ;; Check the signals
+             (glib-test:list-interface-properties "GtkFileChooser")))
+  ;; Check signals
   (is (equal '("confirm-overwrite" "current-folder-changed" "file-activated"
                "selection-changed" "update-preview")
-             (list-signals "GtkFileChooser")))
-  ;; Get the interface definition
-  (is (equal '(GOBJECT:DEFINE-G-INTERFACE "GtkFileChooser" GTK-FILE-CHOOSER
-                    (:EXPORT T :TYPE-INITIALIZER "gtk_file_chooser_get_type")
-                    (ACTION GTK-FILE-CHOOSER-ACTION "action"
-                     "GtkFileChooserAction" T T)
-                    (CREATE-FOLDERS GTK-FILE-CHOOSER-CREATE-FOLDERS
-                     "create-folders" "gboolean" T T)
-                    (DO-OVERWRITE-CONFIRMATION
-                     GTK-FILE-CHOOSER-DO-OVERWRITE-CONFIRMATION
-                     "do-overwrite-confirmation" "gboolean" T T)
-                    (EXTRA-WIDGET GTK-FILE-CHOOSER-EXTRA-WIDGET "extra-widget"
-                     "GtkWidget" T T)
-                    (FILTER GTK-FILE-CHOOSER-FILTER "filter" "GtkFileFilter" T
-                     T)
-                    (LOCAL-ONLY GTK-FILE-CHOOSER-LOCAL-ONLY "local-only"
-                     "gboolean" T T)
-                    (PREVIEW-WIDGET GTK-FILE-CHOOSER-PREVIEW-WIDGET
-                     "preview-widget" "GtkWidget" T T)
-                    (PREVIEW-WIDGET-ACTIVE
-                     GTK-FILE-CHOOSER-PREVIEW-WIDGET-ACTIVE
-                     "preview-widget-active" "gboolean" T T)
-                    (SELECT-MULTIPLE GTK-FILE-CHOOSER-SELECT-MULTIPLE
-                     "select-multiple" "gboolean" T T)
-                    (SHOW-HIDDEN GTK-FILE-CHOOSER-SHOW-HIDDEN "show-hidden"
-                     "gboolean" T T)
-                    (USE-PREVIEW-LABEL GTK-FILE-CHOOSER-USE-PREVIEW-LABEL
-                     "use-preview-label" "gboolean" T T))
-             (gobject:get-g-type-definition "GtkFileChooser"))))
+             (glib-test:list-signals "GtkFileChooser")))
+  ;; Check interface definition
+  (is (equal '(GOBJECT:DEFINE-GINTERFACE "GtkFileChooser" GTK:FILE-CHOOSER
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_file_chooser_get_type")
+                       (ACTION FILE-CHOOSER-ACTION
+                        "action" "GtkFileChooserAction" T T)
+                       (CREATE-FOLDERS FILE-CHOOSER-CREATE-FOLDERS
+                        "create-folders" "gboolean" T T)
+                       (DO-OVERWRITE-CONFIRMATION
+                        FILE-CHOOSER-DO-OVERWRITE-CONFIRMATION
+                        "do-overwrite-confirmation" "gboolean" T T)
+                       (EXTRA-WIDGET FILE-CHOOSER-EXTRA-WIDGET
+                        "extra-widget" "GtkWidget" T T)
+                       (FILTER FILE-CHOOSER-FILTER "filter" "GtkFileFilter" T T)
+                       (LOCAL-ONLY FILE-CHOOSER-LOCAL-ONLY
+                        "local-only" "gboolean" T T)
+                       (PREVIEW-WIDGET FILE-CHOOSER-PREVIEW-WIDGET
+                        "preview-widget" "GtkWidget" T T)
+                       (PREVIEW-WIDGET-ACTIVE FILE-CHOOSER-PREVIEW-WIDGET-ACTIVE
+                        "preview-widget-active" "gboolean" T T)
+                       (SELECT-MULTIPLE FILE-CHOOSER-SELECT-MULTIPLE
+                        "select-multiple" "gboolean" T T)
+                       (SHOW-HIDDEN FILE-CHOOSER-SHOW-HIDDEN
+                        "show-hidden" "gboolean" T T)
+                       (USE-PREVIEW-LABEL FILE-CHOOSER-USE-PREVIEW-LABEL
+                        "use-preview-label" "gboolean" T T))
+             (gobject:get-gtype-definition "GtkFileChooser"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -314,4 +311,4 @@
 ;;;     gtk_file_chooser_set_file
 ;;;     gtk_file_chooser_unselect_file
 
-;;; 2024-3-14
+;;; 2024-9-23

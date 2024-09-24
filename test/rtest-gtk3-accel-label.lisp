@@ -8,41 +8,42 @@
 ;;;     GtkAccelLabel
 
 (test gtk-accel-label-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkAccelLabel"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:accel-label
           (glib:symbol-for-gtype "GtkAccelLabel")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkAccelLabel")
           (g:gtype (cffi:foreign-funcall "gtk_accel_label_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkLabel") (g:type-parent "GtkAccelLabel")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkAccelLabel")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkAccelLabel")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
-             (list-interfaces "GtkAccelLabel")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkAccelLabel")))
+  ;; Check class properties
   (is (equal '("accel-closure" "accel-widget")
-             (list-properties "GtkAccelLabel")))
-  ;; Check the style properties.
+             (glib-test:list-properties "GtkAccelLabel")))
+  ;; Check style properties
   (is (equal '()
-             (list-style-properties "GtkAccelLabel")))
-  ;; Check the signals
+             (gtk-test:list-style-properties "GtkAccelLabel")))
+  ;; Check signals
   (is (equal '()
-             (list-signals "GtkAccelLabel")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkAccelLabel" GTK-ACCEL-LABEL
-                       (:SUPERCLASS GTK-LABEL :EXPORT T :INTERFACES
-                        ("AtkImplementorIface" "GtkBuildable")
+             (glib-test:list-signals "GtkAccelLabel")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkAccelLabel" GTK:ACCEL-LABEL
+                       (:SUPERCLASS GTK:LABEL
+                        :EXPORT T
+                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_accel_label_get_type")
-                       ((ACCEL-CLOSURE GTK-ACCEL-LABEL-ACCEL-CLOSURE
+                       ((ACCEL-CLOSURE ACCEL-LABEL-ACCEL-CLOSURE
                          "accel-closure" "GClosure" T T)
-                        (ACCEL-WIDGET GTK-ACCEL-LABEL-ACCEL-WIDGET
+                        (ACCEL-WIDGET ACCEL-LABEL-ACCEL-WIDGET
                          "accel-widget" "GtkWidget" T T)))
-             (gobject:get-g-type-definition "GtkAccelLabel"))))
+             (gobject:get-gtype-definition "GtkAccelLabel"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -81,4 +82,4 @@
 
 ;;;     gtk_accel_label_refetch
 
-;;; --- 2023-7-19 --------------------------------------------------------------
+;;; 2024-9-22

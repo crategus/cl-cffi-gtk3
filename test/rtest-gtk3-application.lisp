@@ -8,75 +8,76 @@
 ;;; --- GtkApplicationInhibitFlags ---------------------------------------------
 
 (test gtk-application-inhibit-flags
-  ;; Check the type
+  ;; Check type
   (is (g:type-is-flags "GtkApplicationInhibitFlags"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:application-inhibit-flags
           (glib:symbol-for-gtype "GtkApplicationInhibitFlags")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_APPLICATION_INHIBIT_LOGOUT" "GTK_APPLICATION_INHIBIT_SWITCH"
                "GTK_APPLICATION_INHIBIT_SUSPEND" "GTK_APPLICATION_INHIBIT_IDLE")
-             (list-flags-item-name "GtkApplicationInhibitFlags")))
-  ;; Check the values
+             (glib-test:list-flags-item-names "GtkApplicationInhibitFlags")))
+  ;; Check values
   (is (equal '(1 2 4 8)
-             (list-flags-item-value "GtkApplicationInhibitFlags")))
-  ;; Check the nick names
+             (glib-test:list-flags-item-values "GtkApplicationInhibitFlags")))
+  ;; Check nick names
   (is (equal '("logout" "switch" "suspend" "idle")
-             (list-flags-item-nick "GtkApplicationInhibitFlags")))
-  ;; Check the flags definition
-  (is (equal '(GOBJECT:DEFINE-G-FLAGS "GtkApplicationInhibitFlags"
-                              GTK-APPLICATION-INHIBIT-FLAGS
-                              (:EXPORT T
-                               :TYPE-INITIALIZER
-                               "gtk_application_inhibit_flags_get_type")
-                              (:LOGOUT 1)
-                              (:SWITCH 2)
-                              (:SUSPEND 4)
-                              (:IDLE 8))
-             (gobject:get-g-type-definition "GtkApplicationInhibitFlags"))))
+             (glib-test:list-flags-item-nicks "GtkApplicationInhibitFlags")))
+  ;; Check flags definition
+  (is (equal '(GOBJECT:DEFINE-GFLAGS "GtkApplicationInhibitFlags"
+                                     GTK:APPLICATION-INHIBIT-FLAGS
+                       (:EXPORT T
+                        :TYPE-INITIALIZER
+                        "gtk_application_inhibit_flags_get_type")
+                       (:LOGOUT 1)
+                       (:SWITCH 2)
+                       (:SUSPEND 4)
+                       (:IDLE 8))
+             (gobject:get-gtype-definition "GtkApplicationInhibitFlags"))))
 
 ;;; --- GtkApplication ---------------------------------------------------------
 
 (test gtk-application-class
-  ;; Type check
+  ;; Check
   (is (g:type-is-object "GtkApplication"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:application
           (glib:symbol-for-gtype "GtkApplication")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkApplication")
           (g:gtype (cffi:foreign-funcall "gtk_application_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GApplication") (g:type-parent "GtkApplication")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkApplication")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkApplication")))
+  ;; Check interfaces
   (is (equal '("GActionGroup" "GActionMap")
-             (list-interfaces "GtkApplication")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkApplication")))
+  ;; Check class properties
   (is (equal '("active-window" "app-menu" "menubar" "register-session"
                "screensaver-active")
-             (list-properties "GtkApplication")))
-  ;; Check the signals
+             (glib-test:list-properties "GtkApplication")))
+  ;; Check signals
   (is (equal '("query-end" "window-added" "window-removed")
-             (list-signals "GtkApplication")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkApplication" GTK-APPLICATION
-                       (:SUPERCLASS G-APPLICATION :EXPORT T :INTERFACES
-                        ("GActionGroup" "GActionMap") :TYPE-INITIALIZER
-                        "gtk_application_get_type")
-                       ((ACTIVE-WINDOW GTK-APPLICATION-ACTIVE-WINDOW
+             (glib-test:list-signals "GtkApplication")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkApplication" GTK:APPLICATION
+                       (:SUPERCLASS G:APPLICATION
+                        :EXPORT T
+                        :INTERFACES ("GActionGroup" "GActionMap")
+                        :TYPE-INITIALIZER "gtk_application_get_type")
+                       ((ACTIVE-WINDOW APPLICATION-ACTIVE-WINDOW
                          "active-window" "GtkWindow" T NIL)
-                        (APP-MENU GTK-APPLICATION-APP-MENU "app-menu"
-                         "GMenuModel" T T)
-                        (MENUBAR GTK-APPLICATION-MENUBAR "menubar" "GMenuModel"
-                         T T)
-                        (REGISTER-SESSION GTK-APPLICATION-REGISTER-SESSION
+                        (APP-MENU APPLICATION-APP-MENU
+                         "app-menu" "GMenuModel" T T)
+                        (MENUBAR APPLICATION-MENUBAR
+                         "menubar" "GMenuModel" T T)
+                        (REGISTER-SESSION APPLICATION-REGISTER-SESSION
                          "register-session" "gboolean" T T)
-                        (SCREENSAVER-ACTIVE GTK-APPLICATION-SCREENSAVER-ACTIVE
+                        (SCREENSAVER-ACTIVE APPLICATION-SCREENSAVER-ACTIVE
                          "screensaver-active" "gboolean" T NIL)))
-             (gobject:get-g-type-definition "GtkApplication"))))
+             (gobject:get-gtype-definition "GtkApplication"))))
 
 ;;; --- Properties and Accessors -----------------------------------------------
 
@@ -315,4 +316,4 @@
     (is (equal '("win::close" "win::save")
                (gtk:application-actions-for-accel application "<Control>q")))))
 
-;;; 2024-3-15
+;;; 2024-9-22

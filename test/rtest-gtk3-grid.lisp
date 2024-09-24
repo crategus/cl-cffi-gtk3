@@ -8,54 +8,56 @@
 ;;;     GtkGrid
 
 (test gtk-grid-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkGrid"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:grid
           (glib:symbol-for-gtype "GtkGrid")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkGrid")
           (g:gtype (cffi:foreign-funcall "gtk_grid_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkContainer") (g:type-parent "GtkGrid")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkGrid")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkGrid")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
-             (list-interfaces "GtkGrid")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkGrid")))
+  ;; Check class properties
   (is (equal '("baseline-row" "column-homogeneous" "column-spacing"
                "orientation" "row-homogeneous" "row-spacing")
-             (list-properties "GtkGrid")))
-  ;; Get the names of the style properties.
+             (glib-test:list-properties "GtkGrid")))
+  ;; Check style properties
   (is (equal '()
-             (list-style-properties "GtkGrid")))
-  ;; Get the names of the child properties
+             (gtk-test:list-style-properties "GtkGrid")))
+  ;; Check child properties
   (is (equal '("height" "left-attach" "top-attach" "width")
-             (list-child-properties "GtkGrid")))
-  ;; Check the signals
+             (gtk-test:list-child-properties "GtkGrid")))
+  ;; Check signals
   (is (equal '()
-             (list-signals "GtkGrid")))
+             (glib-test:list-signals "GtkGrid")))
   ;; CSS information
   (is (string= "grid"
                (gtk:widget-class-css-name "GtkGrid")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkGrid" GTK-GRID
-                       (:SUPERCLASS GTK-CONTAINER :EXPORT T :INTERFACES
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkGrid" GTK:GRID
+                       (:SUPERCLASS GTK:CONTAINER
+                        :EXPORT T
+                        :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
                         :TYPE-INITIALIZER "gtk_grid_get_type")
-                       ((BASELINE-ROW GTK-GRID-BASELINE-ROW "baseline-row"
-                         "gint" T T)
-                        (COLUMN-HOMOGENEOUS GTK-GRID-COLUMN-HOMOGENEOUS
+                       ((BASELINE-ROW GRID-BASELINE-ROW
+                         "baseline-row" "gint" T T)
+                        (COLUMN-HOMOGENEOUS GRID-COLUMN-HOMOGENEOUS
                          "column-homogeneous" "gboolean" T T)
-                        (COLUMN-SPACING GTK-GRID-COLUMN-SPACING
+                        (COLUMN-SPACING GRID-COLUMN-SPACING
                          "column-spacing" "gint" T T)
-                        (ROW-HOMOGENEOUS GTK-GRID-ROW-HOMOGENEOUS
+                        (ROW-HOMOGENEOUS GRID-ROW-HOMOGENEOUS
                          "row-homogeneous" "gboolean" T T)
-                        (ROW-SPACING GTK-GRID-ROW-SPACING "row-spacing" "gint"
-                         T T)))
-             (gobject:get-g-type-definition "GtkGrid"))))
+                        (ROW-SPACING GRID-ROW-SPACING
+                         "row-spacing" "gint" T T)))
+             (gobject:get-gtype-definition "GtkGrid"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -282,4 +284,4 @@
     (is (eq :left (setf (gtk:grid-row-baseline-position grid 0) :left)))
     (is (eq :left (gtk:grid-row-baseline-position grid 0)))))
 
-;;; 2023-12-30
+;;; 2024-9-21

@@ -20,28 +20,30 @@
   (is (eq (g:gtype "GtkContainer") (g:type-parent "GtkLayout")))
   ;; Check children
   (is (equal '()
-             (list-children "GtkLayout")))
+             (glib-test:list-children "GtkLayout")))
   ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable" "GtkScrollable")
-             (list-interfaces "GtkLayout")))
+             (glib-test:list-interfaces "GtkLayout")))
   ;; Check class properties
   (is (equal '("hadjustment" "height" "hscroll-policy" "vadjustment"
                "vscroll-policy" "width")
-             (list-properties "GtkLayout")))
-  ;; Check style properties.
+             (glib-test:list-properties "GtkLayout")))
+  ;; Check style properties
   (is (equal '()
-             (list-style-properties "GtkLayout")))
+             (gtk-test:list-style-properties "GtkLayout")))
   ;; Check child properties
   (is (equal '("x" "y")
-             (list-child-properties "GtkLayout")))
+             (gtk-test:list-child-properties "GtkLayout")))
   ;; Check class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkLayout" GTK-LAYOUT
-                       (:SUPERCLASS GTK-CONTAINER :EXPORT T :INTERFACES
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkLayout" GTK:LAYOUT
+                       (:SUPERCLASS GTK:CONTAINER
+                        :EXPORT T
+                        :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable" "GtkScrollable")
                         :TYPE-INITIALIZER "gtk_layout_get_type")
-                       ((HEIGHT GTK-LAYOUT-HEIGHT "height" "guint" T T)
-                        (WIDTH GTK-LAYOUT-WIDTH "width" "guint" T T)))
-             (gobject:get-g-type-definition "GtkLayout"))))
+                       ((HEIGHT LAYOUT-HEIGHT "height" "guint" T T)
+                        (WIDTH LAYOUT-WIDTH "width" "guint" T T)))
+             (gobject:get-gtype-definition "GtkLayout"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -136,4 +138,4 @@
 
 ;;;     gtk_layout_get_bin_window
 
-;;; 2024-4-10
+;;; 2024-9-21

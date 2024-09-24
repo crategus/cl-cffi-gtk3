@@ -8,48 +8,49 @@
 ;;;     GtkBin
 
 (test gtk-bin-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkBin"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:bin
           (glib:symbol-for-gtype "GtkBin")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkBin")
           (g:gtype (cffi:foreign-funcall "gtk_bin_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkContainer") (g:type-parent "GtkBin")))
-  ;; Check the children
+  ;; Check children
   (is (equal '("GtkActionBar" "GtkAlignment" "GtkButton" "GtkComboBox"
                "GtkEventBox" "GtkExpander" "GtkFlowBoxChild" "GtkFrame"
                "GtkHandleBox" "GtkListBoxRow" "GtkMenuItem" "GtkOverlay"
                "GtkPopover" "GtkRevealer" "GtkScrolledWindow" "GtkSearchBar"
                "GtkStackSidebar" "GtkToolItem" "GtkViewport" "GtkWindow")
-             (list-children "GtkBin")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkBin")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
-             (list-interfaces "GtkBin")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkBin")))
+  ;; Check class properties
   (is (equal '()
-             (list-properties "GtkBin")))
-  ;; Get the names of the style properties.
+             (glib-test:list-properties "GtkBin")))
+  ;; Check style properties
   (is (equal '()
-             (list-style-properties "GtkBin")))
-  ;; Get the names of the child properties
+             (gtk-test:list-style-properties "GtkBin")))
+  ;; Check child properties
   (is (equal '()
-             (list-child-properties "GtkBin")))
-  ;; Check the signals
+             (gtk-test:list-child-properties "GtkBin")))
+  ;; Check signals
   (is (equal '()
-             (list-signals "GtkBin")))
+             (glib-test:list-signals "GtkBin")))
   ;; CSS information
   (is (string= "widget"
                (gtk:widget-class-css-name "GtkBin")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkBin" GTK-BIN
-                       (:SUPERCLASS GTK-CONTAINER :EXPORT T :INTERFACES
-                        ("AtkImplementorIface" "GtkBuildable")
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkBin" GTK:BIN
+                       (:SUPERCLASS GTK:CONTAINER
+                        :EXPORT T
+                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_bin_get_type")
                        NIL)
-             (gobject:get-g-type-definition "GtkBin"))))
+             (gobject:get-gtype-definition "GtkBin"))))
 
 ;;; --- Functions --------------------------------------------------------------
 
@@ -62,4 +63,4 @@
     (is-true (gtk:bin-child bin))
     (is (typep (gtk:bin-child bin) 'gtk:label))))
 
-;;; --- 2023-12-30 -------------------------------------------------------------
+;;; 2024-9-21

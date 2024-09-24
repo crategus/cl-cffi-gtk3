@@ -19,23 +19,22 @@
   ;; Check names
   (is (equal '("GTK_TARGET_SAME_APP" "GTK_TARGET_SAME_WIDGET"
                "GTK_TARGET_OTHER_APP" "GTK_TARGET_OTHER_WIDGET")
-             (gtk-test:list-flags-item-name "GtkTargetFlags")))
+             (glib-test:list-flags-item-names "GtkTargetFlags")))
   ;; Check values
   (is (equal '(1 2 4 8)
-             (gtk-test:list-flags-item-value "GtkTargetFlags")))
+             (glib-test:list-flags-item-values "GtkTargetFlags")))
   ;; Check nick names
   (is (equal '("same-app" "same-widget" "other-app" "other-widget")
-             (gtk-test:list-flags-item-nick "GtkTargetFlags")))
+             (glib-test:list-flags-item-nicks "GtkTargetFlags")))
   ;; Check flags definition
-  (is (equal '(GOBJECT:DEFINE-G-FLAGS "GtkTargetFlags"
-                              GTK-TARGET-FLAGS
-                              (:EXPORT T
-                               :TYPE-INITIALIZER "gtk_target_flags_get_type")
-                              (:SAME-APP 1)
-                              (:SAME-WIDGET 2)
-                              (:OTHER-APP 4)
-                              (:OTHER-WIDGET 8))
-             (gobject:get-g-type-definition "GtkTargetFlags"))))
+  (is (equal '(GOBJECT:DEFINE-GFLAGS "GtkTargetFlags" GTK:TARGET-FLAGS
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_target_flags_get_type")
+                       (:SAME-APP 1)
+                       (:SAME-WIDGET 2)
+                       (:OTHER-APP 4)
+                       (:OTHER-WIDGET 8))
+             (gobject:get-gtype-definition "GtkTargetFlags"))))
 
 ;;;   GtkTargetEntry
 
@@ -520,4 +519,4 @@
 ;;;     gtk_selection_data_copy
 ;;;     gtk_selection_data_free
 
-;;; 2024-6-24
+;;; 2024-9-21

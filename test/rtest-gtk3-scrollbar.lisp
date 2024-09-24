@@ -7,46 +7,48 @@
 
 ;;;     GtkScrollbar
 
-(test scrollbar-class
-  ;; Type check
+(test gtk-scrollbar-class
+  ;; Check type
   (is (g:type-is-object "GtkScrollbar"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:scrollbar
           (glib:symbol-for-gtype "GtkScrollbar")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkScrollbar")
           (g:gtype (cffi:foreign-funcall "gtk_scrollbar_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkRange")
           (g:type-parent "GtkScrollbar")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkScrollbar")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkScrollbar")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
-             (list-interfaces "GtkScrollbar")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkScrollbar")))
+  ;; Check class properties
   (is (equal '()
-             (list-properties "GtkScrollbar")))
-  ;; Check the style properties.
+             (glib-test:list-properties "GtkScrollbar")))
+  ;; Check style properties
   (is (equal '("fixed-slider-length" "has-backward-stepper"
                "has-forward-stepper" "has-secondary-backward-stepper"
                "has-secondary-forward-stepper" "min-slider-length")
-             (list-style-properties "GtkScrollbar")))
-  ;; Check the signals
+             (gtk-test:list-style-properties "GtkScrollbar")))
+  ;; Check signals
   (is (equal '()
-             (list-signals "GtkScrollbar")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkScrollbar" GTK-SCROLLBAR
-                       (:SUPERCLASS GTK-RANGE :EXPORT T :INTERFACES
+             (glib-test:list-signals "GtkScrollbar")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkScrollbar" GTK:SCROLLBAR
+                       (:SUPERCLASS GTK:RANGE
+                        :EXPORT T
+                        :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
                         :TYPE-INITIALIZER "gtk_scrollbar_get_type")
                        NIL)
-             (gobject:get-g-type-definition "GtkScrollbar"))))
+             (gobject:get-gtype-definition "GtkScrollbar"))))
 
 ;;; --- Style Properties -------------------------------------------------------
 
-(test scrollbar-properties
+(test gtk-scrollbar-properties
   (let ((window (make-instance 'gtk:scrollbar)))
     (is-false (gtk:widget-style-property window "fixed-slider-length"))
     (is-false (gtk:widget-style-property window "has-backward-stepper"))
@@ -59,10 +61,10 @@
 
 ;;;     gtk_scrollbar_new
 
-(test scrollbar-new
+(test gtk-scrollbar-new
   (is (eq 'gtk:scrollbar (type-of (gtk:scrollbar-new :horizontal))))
   (is (eq 'gtk:scrollbar
           (type-of (gtk:scrollbar-new :vertical
                                       (make-instance 'gtk:adjustment))))))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-9-21

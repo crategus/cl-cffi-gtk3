@@ -8,94 +8,95 @@
 ;;;     GtkRevealerTransitionType
 
 (test gtk-revealer-transition-type
-  ;; Check the type
+  ;; Check type
   (is (g:type-is-enum "GtkRevealerTransitionType"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkRevealerTransitionType")
           (g:gtype (cffi:foreign-funcall "gtk_revealer_transition_type_get_type"
                                          :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:revealer-transition-type
           (glib:symbol-for-gtype "GtkRevealerTransitionType")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_REVEALER_TRANSITION_TYPE_NONE"
                "GTK_REVEALER_TRANSITION_TYPE_CROSSFADE"
                "GTK_REVEALER_TRANSITION_TYPE_SLIDE_RIGHT"
                "GTK_REVEALER_TRANSITION_TYPE_SLIDE_LEFT"
                "GTK_REVEALER_TRANSITION_TYPE_SLIDE_UP"
                "GTK_REVEALER_TRANSITION_TYPE_SLIDE_DOWN")
-             (list-enum-item-name "GtkRevealerTransitionType")))
-  ;; Check the values
+             (glib-test:list-enum-item-names "GtkRevealerTransitionType")))
+  ;; Check values
   (is (equal '(0 1 2 3 4 5)
-             (list-enum-item-value "GtkRevealerTransitionType")))
-  ;; Check the nick names
+             (glib-test:list-enum-item-values "GtkRevealerTransitionType")))
+  ;; Check nick names
   (is (equal '("none" "crossfade" "slide-right" "slide-left" "slide-up"
                "slide-down")
-             (list-enum-item-nick "GtkRevealerTransitionType")))
-  ;; Check the enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkRevealerTransitionType"
-                                     GTK-REVEALER-TRANSITION-TYPE
-                                     (:EXPORT T
-                                      :TYPE-INITIALIZER
-                                      "gtk_revealer_transition_type_get_type")
-                                     (:NONE 0)
-                                     (:CROSSFADE 1)
-                                     (:SLIDE-RIGHT 2)
-                                     (:SLIDE-LEFT 3)
-                                     (:SLIDE-UP 4)
-                                     (:SLIDE-DOWN 5))
-             (gobject:get-g-type-definition "GtkRevealerTransitionType"))))
+             (glib-test:list-enum-item-nicks "GtkRevealerTransitionType")))
+  ;; Check enum definition
+  (is (equal '(GOBJECT:DEFINE-GENUM "GtkRevealerTransitionType"
+                                    GTK:REVEALER-TRANSITION-TYPE
+                       (:EXPORT T
+                        :TYPE-INITIALIZER
+                        "gtk_revealer_transition_type_get_type")
+                       (:NONE 0)
+                       (:CROSSFADE 1)
+                       (:SLIDE-RIGHT 2)
+                       (:SLIDE-LEFT 3)
+                       (:SLIDE-UP 4)
+                       (:SLIDE-DOWN 5))
+             (gobject:get-gtype-definition "GtkRevealerTransitionType"))))
 
 ;;;     GtkRevealer
 
 (test gtk-revealer-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkRevealer"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:revealer
           (glib:symbol-for-gtype "GtkRevealer")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkRevealer")
           (g:gtype (cffi:foreign-funcall "gtk_revealer_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkBin")
           (g:type-parent "GtkRevealer")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkRevealer")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkRevealer")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
-             (list-interfaces "GtkRevealer")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkRevealer")))
+  ;; Check class properties
   (is (equal '("child-revealed" "reveal-child" "transition-duration"
                "transition-type")
-             (list-properties "GtkRevealer")))
-  ;; Get the names of the style properties
+             (glib-test:list-properties "GtkRevealer")))
+  ;; Check style properties
   (is (equal '()
-             (list-style-properties "GtkRevealer")))
-  ;; Get the names of the child properties
+             (gtk-test:list-style-properties "GtkRevealer")))
+  ;; Check child properties
   (is (equal '()
-             (list-child-properties "GtkRevealer")))
-  ;; Check the signals
+             (gtk-test:list-child-properties "GtkRevealer")))
+  ;; Check signals
   (is (equal '()
-             (list-signals "GtkRevealer")))
+             (glib-test:list-signals "GtkRevealer")))
   ;; CSS information
   (is (string= "revealer"
                (gtk:widget-class-css-name "GtkRevealer")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkRevealer" GTK-REVEALER
-                       (:SUPERCLASS GTK-BIN :EXPORT T :INTERFACES
-                        ("AtkImplementorIface" "GtkBuildable")
+  ;; Check  class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkRevealer" GTK:REVEALER
+                       (:SUPERCLASS GTK:BIN
+                        :EXPORT T
+                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_revealer_get_type")
-                       ((CHILD-REVEALED GTK-REVEALER-CHILD-REVEALED
+                       ((CHILD-REVEALED REVEALER-CHILD-REVEALED
                          "child-revealed" "gboolean" T NIL)
-                        (REVEAL-CHILD GTK-REVEALER-REVEAL-CHILD "reveal-child"
-                         "gboolean" T T)
-                        (TRANSITION-DURATION GTK-REVEALER-TRANSITION-DURATION
+                        (REVEAL-CHILD REVEALER-REVEAL-CHILD
+                         "reveal-child" "gboolean" T T)
+                        (TRANSITION-DURATION REVEALER-TRANSITION-DURATION
                          "transition-duration" "guint" T T)
-                        (TRANSITION-TYPE GTK-REVEALER-TRANSITION-TYPE
+                        (TRANSITION-TYPE REVEALER-TRANSITION-TYPE
                          "transition-type" "GtkRevealerTransitionType" T T)))
-             (gobject:get-g-type-definition "GtkRevealer"))))
+             (gobject:get-gtype-definition "GtkRevealer"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -113,4 +114,4 @@
 (test gtk-revealer-new
   (is (typep (gtk:revealer-new) 'gtk:revealer)))
 
-;;; 2024-3-17
+;;; 2024-9-21

@@ -21,32 +21,33 @@
           (g:type-parent "GtkStackSwitcher")))
   ;; Check children
   (is (equal '()
-             (list-children "GtkStackSwitcher")))
+             (glib-test:list-children "GtkStackSwitcher")))
   ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
-             (list-interfaces "GtkStackSwitcher")))
+             (glib-test:list-interfaces "GtkStackSwitcher")))
   ;; Check class properties
   (is (equal '("icon-size" "stack")
-             (list-properties "GtkStackSwitcher")))
+             (glib-test:list-properties "GtkStackSwitcher")))
   ;; Check style properties
   (is (equal '()
-             (list-style-properties "GtkStackSwitcher")))
+             (gtk-test:list-style-properties "GtkStackSwitcher")))
   ;; Check child properties
   (is (equal '("expand" "fill" "pack-type" "padding" "position")
-             (list-child-properties "GtkStackSwitcher")))
+             (gtk-test:list-child-properties "GtkStackSwitcher")))
   ;; Check signals
   (is (equal '()
-             (list-signals "GtkStackSwitcher")))
+             (glib-test:list-signals "GtkStackSwitcher")))
   ;; Check class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkStackSwitcher" GTK-STACK-SWITCHER
-                       (:SUPERCLASS GTK-BOX :EXPORT T :INTERFACES
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkStackSwitcher" GTK:STACK-SWITCHER
+                       (:SUPERCLASS GTK:BOX
+                        :EXPORT T
+                        :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
                         :TYPE-INITIALIZER "gtk_stack_switcher_get_type")
-                       ((ICON-SIZE GTK-STACK-SWITCHER-ICON-SIZE "icon-size"
-                         "gint" T T)
-                        (STACK GTK-STACK-SWITCHER-STACK "stack" "GtkStack" T
-                         T)))
-             (gobject:get-g-type-definition "GtkStackSwitcher"))))
+                       ((ICON-SIZE STACK-SWITCHER-ICON-SIZE
+                         "icon-size" "gint" T T)
+                        (STACK STACK-SWITCHER-STACK "stack" "GtkStack" T T)))
+             (gobject:get-gtype-definition "GtkStackSwitcher"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -62,4 +63,4 @@
 (test gtk-stack-switcher-new
   (is (typep (gtk:stack-switcher-new) 'gtk:stack-switcher)))
 
-;;; 2024-4-9
+;;; 2024-9-21

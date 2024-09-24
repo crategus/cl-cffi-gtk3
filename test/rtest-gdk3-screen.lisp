@@ -25,31 +25,32 @@
           (g:type-parent "GdkScreen")))
   ;; Check children
   #+crategus
-  (is (or (equal '("GdkX11Screen")
-                 (gtk-test:list-children "GdkScreen"))
-          (equal '("GdkWaylandScreen" "GdkX11Screen")
-                 (gtk-test:list-children "GdkScreen"))))
+  (if *first-run-gtk-test*
+      (is (equal '("GdkWaylandScreen")
+                 (glib-test:list-children "GdkScreen"))))
   #+windows
   (is (equal '("GdkWin32Screen")
-             (gtk-test:list-children "GdkScreen")))
+             (glib-test:list-children "GdkScreen")))
   ;; Check interfaces
   (is (equal '()
-             (gtk-test:list-interfaces "GdkScreen")))
+             (glib-test:list-interfaces "GdkScreen")))
   ;; Check class properties
   (is (equal '("font-options" "resolution")
-             (gtk-test:list-properties "GdkScreen")))
+             (glib-test:list-properties "GdkScreen")))
   ;; Check signals
   (is (equal '("composited-changed" "monitors-changed" "size-changed")
-             (gtk-test:list-signals "GdkScreen")))
+             (glib-test:list-signals "GdkScreen")))
   ;; Check class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GdkScreen" GDK-SCREEN
-                       (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GdkScreen" GDK:SCREEN
+                       (:SUPERCLASS G:OBJECT
+                        :EXPORT T
+                        :INTERFACES NIL
                         :TYPE-INITIALIZER "gdk_screen_get_type")
-                       ((FONT-OPTIONS GDK-SCREEN-FONT-OPTIONS "font-options"
-                         "gpointer" T T)
-                        (RESOLUTION GDK-SCREEN-RESOLUTION "resolution"
-                         "gdouble" T T)))
-             (gobject:get-g-type-definition "GdkScreen"))))
+                       ((FONT-OPTIONS SCREEN-FONT-OPTIONS
+                         "font-options" "gpointer" T T)
+                        (RESOLUTION SCREEN-RESOLUTION
+                         "resolution" "gdouble" T T)))
+             (gobject:get-gtype-definition "GdkScreen"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -213,4 +214,4 @@
   (is (every (lambda (x) (typep x 'gdk:window))
              (gdk:screen-window-stack (gdk:screen-default)))))
 
-;;; 2024-6-27
+;;; 2024-9-21

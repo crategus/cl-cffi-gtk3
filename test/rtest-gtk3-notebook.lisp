@@ -8,59 +8,60 @@
 ;;;     GtkNotebook
 
 (test gtk-notebook-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkNotebook"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:notebook
           (glib:symbol-for-gtype "GtkNotebook")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkNotebook")
           (g:gtype (cffi:foreign-funcall "gtk_notebook_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkContainer") (g:type-parent "GtkNotebook")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkNotebook")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkNotebook")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
-             (list-interfaces "GtkNotebook")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkNotebook")))
+  ;; Check class properties
   (is (equal '("enable-popup" "group-name" "page" "scrollable" "show-border"
                "show-tabs" "tab-pos")
-             (list-properties "GtkNotebook")))
-  ;; Get the names of the style properties.
+             (glib-test:list-properties "GtkNotebook")))
+  ;; Check style properties
   (is (equal '("arrow-spacing" "has-backward-stepper" "has-forward-stepper"
                "has-secondary-backward-stepper" "has-secondary-forward-stepper"
                "has-tab-gap" "initial-gap" "tab-curvature" "tab-overlap")
-             (list-style-properties "GtkNotebook")))
-  ;; Get the names of the child properties
+             (gtk-test:list-style-properties "GtkNotebook")))
+  ;; Check child properties
   (is (equal '("detachable" "menu-label" "position" "reorderable" "tab-expand"
                "tab-fill" "tab-label")
-             (list-child-properties "GtkNotebook")))
-  ;; Check the signals
+             (gtk-test:list-child-properties "GtkNotebook")))
+  ;; Check signals
   (is (equal '("change-current-page" "create-window" "focus-tab"
                "move-focus-out" "page-added" "page-removed" "page-reordered"
                "reorder-tab" "select-page" "switch-page")
-             (list-signals "GtkNotebook")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkNotebook" GTK-NOTEBOOK
-                       (:SUPERCLASS GTK-CONTAINER :EXPORT T :INTERFACES
-                        ("AtkImplementorIface" "GtkBuildable")
+             (glib-test:list-signals "GtkNotebook")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkNotebook" GTK:NOTEBOOK
+                       (:SUPERCLASS GTK:CONTAINER
+                        :EXPORT T
+                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_notebook_get_type")
-                       ((ENABLE-POPUP GTK-NOTEBOOK-ENABLE-POPUP "enable-popup"
-                         "gboolean" T T)
-                        (GROUP-NAME GTK-NOTEBOOK-GROUP-NAME "group-name"
-                         "gchararray" T T)
-                        (PAGE GTK-NOTEBOOK-PAGE "page" "gint" T T)
-                        (SCROLLABLE GTK-NOTEBOOK-SCROLLABLE "scrollable"
-                         "gboolean" T T)
-                        (SHOW-BORDER GTK-NOTEBOOK-SHOW-BORDER "show-border"
-                         "gboolean" T T)
-                        (SHOW-TABS GTK-NOTEBOOK-SHOW-TABS "show-tabs"
-                         "gboolean" T T)
-                        (TAB-POS GTK-NOTEBOOK-TAB-POS "tab-pos"
-                         "GtkPositionType" T T)))
-             (gobject:get-g-type-definition "GtkNotebook"))))
+                       ((ENABLE-POPUP NOTEBOOK-ENABLE-POPUP
+                         "enable-popup" "gboolean" T T)
+                        (GROUP-NAME NOTEBOOK-GROUP-NAME
+                         "group-name" "gchararray" T T)
+                        (PAGE NOTEBOOK-PAGE "page" "gint" T T)
+                        (SCROLLABLE NOTEBOOK-SCROLLABLE
+                         "scrollable" "gboolean" T T)
+                        (SHOW-BORDER NOTEBOOK-SHOW-BORDER
+                         "show-border" "gboolean" T T)
+                        (SHOW-TABS NOTEBOOK-SHOW-TABS
+                         "show-tabs" "gboolean" T T)
+                        (TAB-POS NOTEBOOK-TAB-POS
+                         "tab-pos" "GtkPositionType" T T)))
+             (gobject:get-gtype-definition "GtkNotebook"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -225,4 +226,4 @@
 ;;;     gtk_notebook_set_action_widget
 ;;;     gtk_notebook_get_action_widget
 
-;;; 2024-4-10
+;;; 2024-9-21

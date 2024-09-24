@@ -8,50 +8,48 @@
 ;;;     GtkArrow
 
 (test gtk-arrow-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkArrow"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:arrow
           (glib:symbol-for-gtype "GtkArrow")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkArrow")
           (g:gtype (cffi:foreign-funcall "gtk_arrow_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkMisc")
           (g:type-parent "GtkArrow")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkArrow")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkArrow")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
-             (list-interfaces "GtkArrow")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkArrow")))
+  ;; Check class properties
   (is (equal '("arrow-type" "shadow-type")
-             (list-properties "GtkArrow")))
-  ;; Check the style properties
+             (glib-test:list-properties "GtkArrow")))
+  ;; Check style properties
   (is (equal '("arrow-scaling")
-             (list-style-properties "GtkArrow")))
-  ;; Check the signals
+             (gtk-test:list-style-properties "GtkArrow")))
+  ;; Check signals
   (is (equal '()
-             (list-signals "GtkArrow")))
+             (glib-test:list-signals "GtkArrow")))
   ;; CSS information
   (is (string= "widget"
                (gtk:widget-class-css-name "GtkArrow")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkArrow" GTK-ARROW
-                               (:SUPERCLASS GTK-MISC :EXPORT T :INTERFACES
-                                ("AtkImplementorIface" "GtkBuildable")
-                                :TYPE-INITIALIZER "gtk_arrow_get_type")
-                               ((ARROW-TYPE GTK-ARROW-ARROW-TYPE "arrow-type"
-                                 "GtkArrowType" T T)
-                                (SHADOW-TYPE GTK-ARROW-SHADOW-TYPE
-                                 "shadow-type" "GtkShadowType" T T)))
-             (gobject:get-g-type-definition "GtkArrow"))))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkArrow" GTK:ARROW
+                       (:SUPERCLASS GTK:MISC
+                        :EXPORT T
+                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
+                        :TYPE-INITIALIZER "gtk_arrow_get_type")
+                       ((ARROW-TYPE ARROW-ARROW-TYPE
+                         "arrow-type" "GtkArrowType" T T)
+                        (SHADOW-TYPE ARROW-SHADOW-TYPE
+                         "shadow-type" "GtkShadowType" T T)))
+             (gobject:get-gtype-definition "GtkArrow"))))
 
 ;;; --- Properties -------------------------------------------------------------
-
-;;;     arrow-type
-;;;     shadow-type
 
 (test gtk-arrow-properties
   (let ((arrow (make-instance 'gtk:arrow)))
@@ -84,4 +82,4 @@
     (is (eq :up (gtk:arrow-arrow-type arrow)))
     (is (eq :in (gtk:arrow-shadow-type arrow)))))
 
-;;; 2023-12-30
+;;; 2024-9-23

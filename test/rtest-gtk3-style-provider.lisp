@@ -20,22 +20,20 @@
 
 ;;;     GtkStyleProvider
 
-(test style-provider-interface
-  ;; Type check
+(test gtk-style-provider-interface
+  ;; Check type
   (is-true (g:type-is-interface "GtkStyleProvider"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:style-provider
           (glib:symbol-for-gtype "GtkStyleProvider")))
-  ;; Get the names of the interface properties.
+  ;; Check interface properties.
   (is (equal '()
-             (list-interface-properties "GtkStyleProvider")))
-  ;; Get the interface definition
-  (is (equal '(GOBJECT:DEFINE-G-INTERFACE "GtkStyleProvider"
-                                  GTK-STYLE-PROVIDER
-                                  (:EXPORT T
-                                   :TYPE-INITIALIZER
-                                   "gtk_style_provider_get_type"))
-             (gobject:get-g-type-definition "GtkStyleProvider"))))
+             (glib-test:list-interface-properties "GtkStyleProvider")))
+  ;; Check interface definition
+  (is (equal '(GOBJECT:DEFINE-GINTERFACE "GtkStyleProvider" GTK:STYLE-PROVIDER
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_style_provider_get_type"))
+             (gobject:get-gtype-definition "GtkStyleProvider"))))
 
 ;;; --- Functions --------------------------------------------------------------
 
@@ -44,7 +42,7 @@
 
 ;;;     gtk-style-provider-style-property
 
-(test style-provider-style-property
+(test gtk-style-provider-style-property
   (let* ((widget (make-instance 'gtk:button))
          (path (gtk:widget-path widget))
          (pspec (gtk:widget-class-find-style-property "GtkButton"
@@ -57,4 +55,4 @@
     ;; The default value of the focus-padding style property is 0.
     (is (= 0 (gtk:style-provider-style-property provider path :normal pspec)))))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-9-21

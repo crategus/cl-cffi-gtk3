@@ -7,53 +7,51 @@
 
 ;;;     GtkRadioToolButton
 
-(test radio-tool-button-class
-  ;; Type check
+(test gtk-radio-tool-button-class
+  ;; Check type
   (is (g:type-is-object "GtkRadioToolButton"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:radio-tool-button
           (glib:symbol-for-gtype "GtkRadioToolButton")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkRadioToolButton")
           (g:gtype (cffi:foreign-funcall "gtk_radio_tool_button_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkToggleToolButton") (g:type-parent "GtkRadioToolButton")))
-  ;; Check the children
+  ;; Check  children
   (is (equal '()
-             (list-children "GtkRadioToolButton")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkRadioToolButton")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable" "GtkActivatable"
                "GtkActionable")
-             (list-interfaces "GtkRadioToolButton")))
-
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkRadioToolButton")))
+  ;; Check class properties
   (is (equal '("group")
-             (list-properties "GtkRadioToolButton")))
-  ;; Check the style properties
+             (glib-test:list-properties "GtkRadioToolButton")))
+  ;; Check style properties
   (is (equal '()
-             (list-style-properties "GtkRadioToolButton")))
-  ;; Get the names of the child properties
+             (gtk-test:list-style-properties "GtkRadioToolButton")))
+  ;; Check child properties
   (is (equal '()
-             (list-child-properties "GtkRadioToolButton")))
-  ;; Check the signals
+             (gtk-test:list-child-properties "GtkRadioToolButton")))
+  ;; Check signals
   (is (equal '()
-             (list-signals "GtkRadioToolButton")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkRadioToolButton" GTK-RADIO-TOOL-BUTTON
-                       (:SUPERCLASS GTK-TOGGLE-TOOL-BUTTON :EXPORT T
+             (glib-test:list-signals "GtkRadioToolButton")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkRadioToolButton" GTK:RADIO-TOOL-BUTTON
+                       (:SUPERCLASS GTK:TOGGLE-TOOL-BUTTON
+                        :EXPORT T
                         :INTERFACES
                         ("AtkImplementorIface" "GtkActionable" "GtkActivatable"
                          "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_radio_tool_button_get_type")
-                       ((GROUP GTK-RADIO-TOOL-BUTTON-GROUP "group"
-                         "GtkRadioToolButton" NIL T)))
-             (gobject:get-g-type-definition "GtkRadioToolButton"))))
+                       ((GROUP RADIO-TOOL-BUTTON-GROUP
+                         "group" "GtkRadioToolButton" NIL T)))
+             (gobject:get-gtype-definition "GtkRadioToolButton"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
-;;;     GtkRadioToolButton*   group    Write
-
-(test radio-tool-button-properties
+(test gtk-radio-tool-button-properties
   (let ((button (make-instance 'gtk:radio-tool-button)))
     ;; group is not readable
     (signals (error) (gtk:radio-tool-button-group button))
@@ -64,7 +62,7 @@
 
 ;;;     gtk_radio_tool_button_new
 
-(test radio-tool-button-new
+(test gtk-radio-tool-button-new
   (let (button)
   ;; First radio button
   (is (typep (setf button (gtk:radio-tool-button-new nil))
@@ -85,7 +83,7 @@
 
 ;;;     gtk_radio_tool_button_new_from_widget
 
-(test radio-tool-button-new-from-widget
+(test gtk-radio-tool-button-new-from-widget
   (let (button)
   ;; First radio button
   (is (typep (setf button (gtk:radio-tool-button-new-from-widget nil))
@@ -105,7 +103,7 @@
 ;;;     gtk_radio_tool_button_get_group
 ;;;     gtk_radio_tool_button_set_group
 
-(test radio-tool-button-group
+(test gtk-radio-tool-button-group
   (let (button)
     ;; First radio button
     (is (typep (setf button (gtk:radio-tool-button-new nil))
@@ -133,4 +131,4 @@
     (is (typep (first (gtk:radio-tool-button-get-group button))
                'gtk:radio-button))))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-9-23

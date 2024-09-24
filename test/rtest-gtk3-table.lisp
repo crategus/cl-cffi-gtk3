@@ -18,22 +18,21 @@
           (g:gtype (cffi:foreign-funcall "gtk_attach_options_get_type" :size))))
   ;; Check names
   (is (equal '("GTK_EXPAND" "GTK_SHRINK" "GTK_FILL")
-             (gtk-test:list-flags-item-name "GtkAttachOptions")))
+             (glib-test:list-flags-item-names "GtkAttachOptions")))
   ;; Check values
   (is (equal '(1 2 4)
-             (gtk-test:list-flags-item-value "GtkAttachOptions")))
+             (glib-test:list-flags-item-values "GtkAttachOptions")))
   ;; Check nick names
   (is (equal '("expand" "shrink" "fill")
-             (gtk-test:list-flags-item-nick "GtkAttachOptions")))
+             (glib-test:list-flags-item-nicks "GtkAttachOptions")))
   ;; Check flags definition
-  (is (equal '(GOBJECT:DEFINE-G-FLAGS "GtkAttachOptions" GTK-ATTACH-OPTIONS
-                                      (:EXPORT T
-                                       :TYPE-INITIALIZER
-                                       "gtk_attach_options_get_type")
-                                      (:EXPAND 1)
-                                      (:SHRINK 2)
-                                      (:FILL 4))
-             (gobject:get-g-type-definition "GtkAttachOptions"))))
+  (is (equal '(GOBJECT:DEFINE-GFLAGS "GtkAttachOptions" GTK:ATTACH-OPTIONS
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_attach_options_get_type")
+                       (:EXPAND 1)
+                       (:SHRINK 2)
+                       (:FILL 4))
+             (gobject:get-gtype-definition "GtkAttachOptions"))))
 
 ;;;     GtkTable
 
@@ -51,14 +50,14 @@
           (g:type-parent "GtkTable")))
   ;; Check children
   (is (equal '()
-             (gtk-test:list-children "GtkTable")))
+             (glib-test:list-children "GtkTable")))
   ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
-             (gtk-test:list-interfaces "GtkTable")))
+             (glib-test:list-interfaces "GtkTable")))
   ;; Check class properties
   (is (equal '("column-spacing" "homogeneous" "n-columns" "n-rows"
                "row-spacing")
-             (gtk-test:list-properties "GtkTable")))
+             (glib-test:list-properties "GtkTable")))
   ;; Check style properties
   (is (equal '()
              (gtk-test:list-style-properties "GtkTable")))
@@ -68,25 +67,24 @@
              (gtk-test:list-child-properties "GtkTable")))
   ;; Check signals
   (is (equal '()
-             (gtk-test:list-signals "GtkTable")))
+             (glib-test:list-signals "GtkTable")))
   ;; Check CSS information
   (is (string= "widget"
                (gtk:widget-class-css-name "GtkTable")))
   ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkTable" GTK-TABLE
-                               (:SUPERCLASS GTK-CONTAINER :EXPORT T :INTERFACES
-                                ("AtkImplementorIface" "GtkBuildable")
-                                :TYPE-INITIALIZER "gtk_table_get_type")
-                               ((COLUMN-SPACING GTK-TABLE-COLUMN-SPACING
-                                 "column-spacing" "guint" T T)
-                                (HOMOGENEOUS GTK-TABLE-HOMOGENEOUS
-                                 "homogeneous" "gboolean" T T)
-                                (N-COLUMNS GTK-TABLE-N-COLUMNS "n-columns"
-                                 "guint" T T)
-                                (N-ROWS GTK-TABLE-N-ROWS "n-rows" "guint" T T)
-                                (ROW-SPACING GTK-TABLE-ROW-SPACING
-                                 "row-spacing" "guint" T T)))
-             (gobject:get-g-type-definition "GtkTable"))))
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkTable" GTK:TABLE
+                       (:SUPERCLASS GTK:CONTAINER
+                        :EXPORT T
+                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
+                        :TYPE-INITIALIZER "gtk_table_get_type")
+                       ((COLUMN-SPACING TABLE-COLUMN-SPACING
+                         "column-spacing" "guint" T T)
+                        (HOMOGENEOUS TABLE-HOMOGENEOUS
+                         "homogeneous" "gboolean" T T)
+                        (N-COLUMNS TABLE-N-COLUMNS "n-columns" "guint" T T)
+                        (N-ROWS TABLE-N-ROWS "n-rows" "guint" T T)
+                        (ROW-SPACING TABLE-ROW-SPACING "row-spacing" "guint" T T)))
+             (gobject:get-gtype-definition "GtkTable"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -156,4 +154,4 @@
     (is-false (gtk:table-set-row-spacing table 2 12))
     (is (= 12 (gtk:table-get-row-spacing table 2)))))
 
-;;; 2024-6-27
+;;; 2024-9-21

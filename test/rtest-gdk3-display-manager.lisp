@@ -21,21 +21,22 @@
           (g:type-parent "GdkDisplayManager")))
   ;; Check children
   (is (equal '()
-             (gtk-test:list-children "GdkDisplayManager")))
+             (glib-test:list-children "GdkDisplayManager")))
   ;; Check interfaces
   (is (equal '()
-             (gtk-test:list-interfaces "GdkDisplayManager")))
+             (glib-test:list-interfaces "GdkDisplayManager")))
   ;; Check class properties
   (is (equal '("default-display")
-             (gtk-test:list-properties "GdkDisplayManager")))
+             (glib-test:list-properties "GdkDisplayManager")))
   ;; Check class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GdkDisplayManager"
-                                             GDK-DISPLAY-MANAGER
-                       (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GdkDisplayManager" GDK:DISPLAY-MANAGER
+                       (:SUPERCLASS G:OBJECT
+                        :EXPORT T
+                        :INTERFACES NIL
                         :TYPE-INITIALIZER "gdk_display_manager_get_type")
-                       ((DEFAULT-DISPLAY GDK-DISPLAY-MANAGER-DEFAULT-DISPLAY
+                       ((DEFAULT-DISPLAY DISPLAY-MANAGER-DEFAULT-DISPLAY
                          "default-display" "GdkDisplay" T T)))
-             (gobject:get-g-type-definition "GdkDisplayManager"))))
+             (gobject:get-gtype-definition "GdkDisplayManager"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -92,4 +93,4 @@
          (name (gdk:display-name (gdk:display-manager-default-display manager))))
     (is-true (gdk:display-manager-open-display manager name))))
 
-;;; 2024-6-29
+;;; 2024-9-21

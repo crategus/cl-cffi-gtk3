@@ -50,94 +50,93 @@
 ;;;     GtkTreeViewDropPosition
 
 (test gtk-tree-view-drop-position
-  ;; Check the type
+  ;; Check type
   (is (g:type-is-enum "GtkTreeViewDropPosition"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkTreeViewDropPosition")
           (g:gtype (cffi:foreign-funcall "gtk_tree_view_drop_position_get_type"
                                          :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:tree-view-drop-position
           (glib:symbol-for-gtype "GtkTreeViewDropPosition")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_TREE_VIEW_DROP_BEFORE" "GTK_TREE_VIEW_DROP_AFTER"
                "GTK_TREE_VIEW_DROP_INTO_OR_BEFORE"
                "GTK_TREE_VIEW_DROP_INTO_OR_AFTER")
-             (list-enum-item-name "GtkTreeViewDropPosition")))
-  ;; Check the values
+             (glib-test:list-enum-item-names "GtkTreeViewDropPosition")))
+  ;; Check values
   (is (equal '(0 1 2 3)
-             (list-enum-item-value "GtkTreeViewDropPosition")))
-  ;; Check the nick names
+             (glib-test:list-enum-item-values "GtkTreeViewDropPosition")))
+  ;; Check nick names
   (is (equal '("before" "after" "into-or-before" "into-or-after")
-             (list-enum-item-nick "GtkTreeViewDropPosition")))
-  ;; Check the enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkTreeViewDropPosition"
-                             GTK-TREE-VIEW-DROP-POSITION
-                             (:EXPORT T
-                              :TYPE-INITIALIZER
-                              "gtk_tree_view_drop_position_get_type")
-                             (:BEFORE 0)
-                             (:AFTER 1)
-                             (:INTO-OR-BEFORE 2)
-                             (:INTO-OR-AFTER 3))
-             (gobject:get-g-type-definition "GtkTreeViewDropPosition"))))
+             (glib-test:list-enum-item-nicks "GtkTreeViewDropPosition")))
+  ;; Check enum definition
+  (is (equal '(GOBJECT:DEFINE-GENUM "GtkTreeViewDropPosition"
+                                    GTK:TREE-VIEW-DROP-POSITION
+                       (:EXPORT T
+                        :TYPE-INITIALIZER
+                        "gtk_tree_view_drop_position_get_type")
+                       (:BEFORE 0)
+                       (:AFTER 1)
+                       (:INTO-OR-BEFORE 2)
+                       (:INTO-OR-AFTER 3))
+             (gobject:get-gtype-definition "GtkTreeViewDropPosition"))))
 
 ;;;     GtkTreeViewGridLines
 
 (test gtk-tree-view-grid-lines
-  ;; Check the type
+  ;; Check type
   (is (g:type-is-enum "GtkTreeViewGridLines"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkTreeViewGridLines")
           (g:gtype (cffi:foreign-funcall "gtk_tree_view_grid_lines_get_type"
                                          :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:tree-view-grid-lines
           (glib:symbol-for-gtype "GtkTreeViewGridLines")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_TREE_VIEW_GRID_LINES_NONE"
                "GTK_TREE_VIEW_GRID_LINES_HORIZONTAL"
                "GTK_TREE_VIEW_GRID_LINES_VERTICAL"
                "GTK_TREE_VIEW_GRID_LINES_BOTH")
-             (list-enum-item-name "GtkTreeViewGridLines")))
-  ;; Check the values
+             (glib-test:list-enum-item-names "GtkTreeViewGridLines")))
+  ;; Check values
   (is (equal '(0 1 2 3)
-             (list-enum-item-value "GtkTreeViewGridLines")))
-  ;; Check the nick names
+             (glib-test:list-enum-item-values "GtkTreeViewGridLines")))
+  ;; Check nick names
   (is (equal '("none" "horizontal" "vertical" "both")
-             (list-enum-item-nick "GtkTreeViewGridLines")))
-  ;; Check the enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkTreeViewGridLines"
-                             GTK-TREE-VIEW-GRID-LINES
-                             (:EXPORT T
-                              :TYPE-INITIALIZER
-                              "gtk_tree_view_grid_lines_get_type")
-                             (:NONE 0)
-                             (:HORIZONTAL 1)
-                             (:VERTICAL 2)
-                             (:BOTH 3))
-             (gobject:get-g-type-definition "GtkTreeViewGridLines"))))
+             (glib-test:list-enum-item-nicks "GtkTreeViewGridLines")))
+  ;; Check enum definition
+  (is (equal '(GOBJECT:DEFINE-GENUM "GtkTreeViewGridLines"
+                                    GTK:TREE-VIEW-GRID-LINES
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_tree_view_grid_lines_get_type")
+                       (:NONE 0)
+                       (:HORIZONTAL 1)
+                       (:VERTICAL 2)
+                       (:BOTH 3))
+             (gobject:get-gtype-definition "GtkTreeViewGridLines"))))
 
 ;;;     GtkTreeView
 
 (test gtk-tree-view-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkTreeView"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:tree-view
           (glib:symbol-for-gtype "GtkTreeView")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkTreeView")
           (g:gtype (cffi:foreign-funcall "gtk_tree_view_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkContainer") (g:type-parent "GtkTreeView")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkTreeView")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkTreeView")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable" "GtkScrollable")
-             (list-interfaces "GtkTreeView")))
-  ;; Check the properties
+             (glib-test:list-interfaces "GtkTreeView")))
+  ;; Check class properties
   #-windows
   (is (equal '("activate-on-single-click" "enable-grid-lines" "enable-search"
                "enable-tree-lines" "expander-column" "fixed-height-mode"
@@ -146,7 +145,7 @@
                "level-indentation" "model" "reorderable" "rubber-banding"
                "rules-hint" "search-column" "show-expanders" "tooltip-column"
                "ubuntu-almost-fixed-height-mode" "vadjustment" "vscroll-policy")
-             (list-properties "GtkTreeView")))
+             (glib-test:list-properties "GtkTreeView")))
   #+windows
   (is (equal '("activate-on-single-click" "enable-grid-lines" "enable-search"
                "enable-tree-lines" "expander-column" "fixed-height-mode"
@@ -155,69 +154,71 @@
                "level-indentation" "model" "reorderable" "rubber-banding"
                "rules-hint" "search-column" "show-expanders" "tooltip-column"
                "vadjustment" "vscroll-policy")
-             (list-properties "GtkTreeView")))
-  ;; Check the style properties
+             (glib-test:list-properties "GtkTreeView")))
+  ;; Check style properties
   (is (equal '("allow-rules" "even-row-color" "expander-size"
                "grid-line-pattern" "grid-line-width" "horizontal-separator"
                "indent-expanders" "odd-row-color" "tree-line-pattern"
                "tree-line-width" "vertical-separator")
-             (list-style-properties "GtkTreeView")))
-  ;; Check the child properties
+             (gtk-test:list-style-properties "GtkTreeView")))
+  ;; Check child properties
   (is (equal '()
-             (list-child-properties "GtkTreeView")))
-  ;; Check the signals
+             (gtk-test:list-child-properties "GtkTreeView")))
+  ;; Check signals
   (is (equal '("columns-changed" "cursor-changed" "expand-collapse-cursor-row"
                "move-cursor" "row-activated" "row-collapsed" "row-expanded"
                "select-all" "select-cursor-parent" "select-cursor-row"
                "start-interactive-search" "test-collapse-row" "test-expand-row"
                "toggle-cursor-row" "unselect-all")
-             (list-signals "GtkTreeView")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkTreeView" GTK-TREE-VIEW
-                       (:SUPERCLASS GTK-CONTAINER :EXPORT T :INTERFACES
+             (glib-test:list-signals "GtkTreeView")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkTreeView" GTK:TREE-VIEW
+                       (:SUPERCLASS GTK:CONTAINER
+                        :EXPORT T
+                        :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable" "GtkScrollable")
                         :TYPE-INITIALIZER "gtk_tree_view_get_type")
                        ((ACTIVATE-ON-SINGLE-CLICK
-                         GTK-TREE-VIEW-ACTIVATE-ON-SINGLE-CLICK
+                         TREE-VIEW-ACTIVATE-ON-SINGLE-CLICK
                          "activate-on-single-click" "gboolean" T T)
-                        (ENABLE-GRID-LINES GTK-TREE-VIEW-ENABLE-GRID-LINES
+                        (ENABLE-GRID-LINES TREE-VIEW-ENABLE-GRID-LINES
                          "enable-grid-lines" "GtkTreeViewGridLines" T T)
-                        (ENABLE-SEARCH GTK-TREE-VIEW-ENABLE-SEARCH
+                        (ENABLE-SEARCH TREE-VIEW-ENABLE-SEARCH
                          "enable-search" "gboolean" T T)
-                        (ENABLE-TREE-LINES GTK-TREE-VIEW-ENABLE-TREE-LINES
+                        (ENABLE-TREE-LINES TREE-VIEW-ENABLE-TREE-LINES
                          "enable-tree-lines" "gboolean" T T)
-                        (EXPANDER-COLUMN GTK-TREE-VIEW-EXPANDER-COLUMN
+                        (EXPANDER-COLUMN TREE-VIEW-EXPANDER-COLUMN
                          "expander-column" "GtkTreeViewColumn" T T)
-                        (FIXED-HEIGHT-MODE GTK-TREE-VIEW-FIXED-HEIGHT-MODE
+                        (FIXED-HEIGHT-MODE TREE-VIEW-FIXED-HEIGHT-MODE
                          "fixed-height-mode" "gboolean" T T)
-                        (HEADERS-CLICKABLE GTK-TREE-VIEW-HEADERS-CLICKABLE
+                        (HEADERS-CLICKABLE TREE-VIEW-HEADERS-CLICKABLE
                          "headers-clickable" "gboolean" T T)
-                        (HEADERS-VISIBLE GTK-TREE-VIEW-HEADERS-VISIBLE
+                        (HEADERS-VISIBLE TREE-VIEW-HEADERS-VISIBLE
                          "headers-visible" "gboolean" T T)
-                        (HOVER-EXPAND GTK-TREE-VIEW-HOVER-EXPAND "hover-expand"
-                         "gboolean" T T)
-                        (HOVER-SELECTION GTK-TREE-VIEW-HOVER-SELECTION
+                        (HOVER-EXPAND TREE-VIEW-HOVER-EXPAND
+                         "hover-expand" "gboolean" T T)
+                        (HOVER-SELECTION TREE-VIEW-HOVER-SELECTION
                          "hover-selection" "gboolean" T T)
-                        (LEVEL-INDENTATION GTK-TREE-VIEW-LEVEL-INDENTATION
+                        (LEVEL-INDENTATION TREE-VIEW-LEVEL-INDENTATION
                          "level-indentation" "gint" T T)
-                        (MODEL GTK-TREE-VIEW-MODEL "model" "GtkTreeModel" T T)
-                        (REORDERABLE GTK-TREE-VIEW-REORDERABLE "reorderable"
-                         "gboolean" T T)
-                        (RUBBER-BANDING GTK-TREE-VIEW-RUBBER-BANDING
+                        (MODEL TREE-VIEW-MODEL "model" "GtkTreeModel" T T)
+                        (REORDERABLE TREE-VIEW-REORDERABLE
+                         "reorderable" "gboolean" T T)
+                        (RUBBER-BANDING TREE-VIEW-RUBBER-BANDING
                          "rubber-banding" "gboolean" T T)
-                        (RULES-HINT GTK-TREE-VIEW-RULES-HINT "rules-hint"
-                         "gboolean" T T)
-                        (SEARCH-COLUMN GTK-TREE-VIEW-SEARCH-COLUMN
+                        (RULES-HINT TREE-VIEW-RULES-HINT
+                         "rules-hint" "gboolean" T T)
+                        (SEARCH-COLUMN TREE-VIEW-SEARCH-COLUMN
                          "search-column" "gint" T T)
-                        (SHOW-EXPANDERS GTK-TREE-VIEW-SHOW-EXPANDERS
+                        (SHOW-EXPANDERS TREE-VIEW-SHOW-EXPANDERS
                          "show-expanders" "gboolean" T T)
-                        (TOOLTIP-COLUMN GTK-TREE-VIEW-TOOLTIP-COLUMN
+                        (TOOLTIP-COLUMN TREE-VIEW-TOOLTIP-COLUMN
                          "tooltip-column" "gint" T T)
                         #+linux
                         (UBUNTU-ALMOST-FIXED-HEIGHT-MODE
-                         GTK-TREE-VIEW-UBUNTU-ALMOST-FIXED-HEIGHT-MODE
+                         TREE-VIEW-UBUNTU-ALMOST-FIXED-HEIGHT-MODE
                          "ubuntu-almost-fixed-height-mode" "gboolean" NIL T)))
-             (gobject:get-g-type-definition "GtkTreeView"))))
+             (gobject:get-gtype-definition "GtkTreeView"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -578,4 +579,4 @@
 ;;;     gtk_tree_view_set_tooltip_cell
 ;;;     gtk_tree_view_get_tooltip_context
 
-;;; 2024-3-10
+;;; 2024-9-22

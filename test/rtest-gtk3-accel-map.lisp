@@ -6,35 +6,37 @@
 ;;;   GtkAccelMap
 
 (test gtk-accel-map-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkAccelMap"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:accel-map
           (glib:symbol-for-gtype "GtkAccelMap")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkAccelMap")
           (g:gtype (cffi:foreign-funcall "gtk_accel_map_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GObject")
           (g:type-parent "GtkAccelMap")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkAccelMap")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkAccelMap")))
+  ;; Check interfaces
   (is (equal '()
-             (list-interfaces "GtkAccelMap")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkAccelMap")))
+  ;; Check class properties
   (is (equal '()
-             (list-properties "GtkAccelMap")))
-  ;; Check the signals
+             (glib-test:list-properties "GtkAccelMap")))
+  ;; Check signals
   (is (equal '("changed")
-             (list-signals "GtkAccelMap")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkAccelMap" GTK-ACCEL-MAP
-                       (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
+             (glib-test:list-signals "GtkAccelMap")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkAccelMap" GTK:ACCEL-MAP
+                       (:SUPERCLASS G:OBJECT
+                        :EXPORT T
+                        :INTERFACES NIL
                         :TYPE-INITIALIZER "gtk_accel_map_get_type")
                        NIL)
-             (gobject:get-g-type-definition "GtkAccelMap"))))
+             (gobject:get-gtype-definition "GtkAccelMap"))))
 
 ;;;   gtk_accel_map_add_entry
 ;;;   gtk_accel_map_lookup_entry
@@ -76,8 +78,10 @@
       (gtk:accel-map-lookup-entry "<Test>/Edit/Save")
     (is (= (char-code #\s) key))
     (is (equal '(:control-mask) mods)))
-  (is-false (gtk:accel-map-save (sys-path "out/rtest-gtk3-accel-map.rc")))
-  (is-false (gtK:accel-map-load (sys-path "out/rtest-gtk3-accel-map.rc"))))
+  (is-false (gtk:accel-map-save
+                (glib-sys:sys-path "test/out/rtest-gtk3-accel-map.rc")))
+  (is-false (gtK:accel-map-load
+                (glib-sys:sys-path "test/out/rtest-gtk3-accel-map.rc"))))
 
 ;;;   gtk_accel_map_foreach
 ;;;   gtk_accel_map_load_fd
@@ -94,4 +98,4 @@
 ;;;   gtk_accel_map_lock_path
 ;;;   gtk_accel_map_unlock_path
 
-;;; --- 2023-7-19 --------------------------------------------------------------
+;;; 2024-9-21

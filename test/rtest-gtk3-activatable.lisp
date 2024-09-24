@@ -7,31 +7,31 @@
 
 ;;;     GtkActivatable
 
-(test activatable-interface
-  ;; Type check
+(test gtk-activatable-interface
+  ;; Check type
   (is (g:type-is-interface "GtkActivatable"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:activatable
           (glib:symbol-for-gtype "GtkActivatable")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkActivatable")
           (g:gtype (cffi:foreign-funcall "gtk_activatable_get_type" :size))))
-  ;; Get the names of the interface properties.
+  ;; Check interface properties.
   (is (equal '("related-action" "use-action-appearance")
-             (list-interface-properties "GtkActivatable")))
-  ;; Get the interface definition
-  (is (equal '(GOBJECT:DEFINE-G-INTERFACE "GtkActivatable" GTK-ACTIVATABLE
-                    (:EXPORT T :TYPE-INITIALIZER "gtk_activatable_get_type")
-                    (RELATED-ACTION GTK-ACTIVATABLE-RELATED-ACTION
-                     "related-action" "GtkAction" T T)
-                    (USE-ACTION-APPEARANCE
-                     GTK-ACTIVATABLE-USE-ACTION-APPEARANCE
-                     "use-action-appearance" "gboolean" T T))
-             (gobject:get-g-type-definition "GtkActivatable"))))
+             (glib-test:list-interface-properties "GtkActivatable")))
+  ;; Check interface definition
+  (is (equal '(GOBJECT:DEFINE-GINTERFACE "GtkActivatable" GTK:ACTIVATABLE
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_activatable_get_type")
+                       (RELATED-ACTION ACTIVATABLE-RELATED-ACTION
+                        "related-action" "GtkAction" T T)
+                       (USE-ACTION-APPEARANCE ACTIVATABLE-USE-ACTION-APPEARANCE
+                        "use-action-appearance" "gboolean" T T))
+             (gobject:get-gtype-definition "GtkActivatable"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
-(test activatable-properties
+(test gtk-activatable-properties
   (let ((button (gtk:button-new))
         (action (gtk:action-new "action" "label" "tooltip")))
     ;; related-action
@@ -48,4 +48,4 @@
 ;;;     gtk_activatable_do_set_related_action
 ;;;     gtk_activatable_sync_action_properties
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-9-21

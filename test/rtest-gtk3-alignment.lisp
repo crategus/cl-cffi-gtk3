@@ -8,72 +8,60 @@
 ;;;     GtkAlignment
 
 (test gtk-alignment-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkAlignment"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:alignment
           (glib:symbol-for-gtype "GtkAlignment")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkAlignment")
           (g:gtype (cffi:foreign-funcall "gtk_alignment_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkBin")
           (g:type-parent "GtkAlignment")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkAlignment")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkAlignment")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
-             (list-interfaces "GtkAlignment")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkAlignment")))
+  ;; Check class properties
   (is (equal '("bottom-padding" "left-padding" "right-padding" "top-padding"
                "xalign" "xscale" "yalign" "yscale")
-             (list-properties "GtkAlignment")))
-  ;; Check the style properties
+             (glib-test:list-properties "GtkAlignment")))
+  ;; Check style properties
   (is (equal '()
-             (list-style-properties "GtkAlignment")))
-  ;; Check the child properties
+             (gtk-test:list-style-properties "GtkAlignment")))
+  ;; Check child properties
   (is (equal '()
-             (list-child-properties "GtkAlignment")))
-  ;; Check the signals
+             (gtk-test:list-child-properties "GtkAlignment")))
+  ;; Check signals
   (is (equal '()
-             (list-signals "GtkAlignment")))
+             (glib-test:list-signals "GtkAlignment")))
   ;; CSS information
   (is (string= "widget"
                (gtk:widget-class-css-name "GtkAlignment")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkAlignment" GTK-ALIGNMENT
-                               (:SUPERCLASS GTK-BIN :EXPORT T :INTERFACES
-                                ("AtkImplementorIface" "GtkBuildable")
-                                :TYPE-INITIALIZER "gtk_alignment_get_type")
-                               ((BOTTOM-PADDING GTK-ALIGNMENT-BOTTOM-PADDING
-                                 "bottom-padding" "guint" T T)
-                                (LEFT-PADDING GTK-ALIGNMENT-LEFT-PADDING
-                                 "left-padding" "guint" T T)
-                                (RIGHT-PADDING GTK-ALIGNMENT-RIGHT-PADDING
-                                 "right-padding" "guint" T T)
-                                (TOP-PADDING GTK-ALIGNMENT-TOP-PADDING
-                                 "top-padding" "guint" T T)
-                                (XALIGN GTK-ALIGNMENT-XALIGN "xalign" "gfloat"
-                                 T T)
-                                (XSCALE GTK-ALIGNMENT-XSCALE "xscale" "gfloat"
-                                 T T)
-                                (YALIGN GTK-ALIGNMENT-YALIGN "yalign" "gfloat"
-                                 T T)
-                                (YSCALE GTK-ALIGNMENT-YSCALE "yscale" "gfloat"
-                                 T T)))
-             (gobject:get-g-type-definition "GtkAlignment"))))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkAlignment" GTK:ALIGNMENT
+                       (:SUPERCLASS GTK:BIN
+                        :EXPORT T
+                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
+                        :TYPE-INITIALIZER "gtk_alignment_get_type")
+                       ((BOTTOM-PADDING ALIGNMENT-BOTTOM-PADDING
+                         "bottom-padding" "guint" T T)
+                        (LEFT-PADDING ALIGNMENT-LEFT-PADDING
+                         "left-padding" "guint" T T)
+                        (RIGHT-PADDING ALIGNMENT-RIGHT-PADDING
+                         "right-padding" "guint" T T)
+                        (TOP-PADDING ALIGNMENT-TOP-PADDING
+                         "top-padding" "guint" T T)
+                        (XALIGN ALIGNMENT-XALIGN "xalign" "gfloat" T T)
+                        (XSCALE ALIGNMENT-XSCALE "xscale" "gfloat" T T)
+                        (YALIGN ALIGNMENT-YALIGN "yalign" "gfloat" T T)
+                        (YSCALE ALIGNMENT-YSCALE "yscale" "gfloat" T T)))
+             (gobject:get-gtype-definition "GtkAlignment"))))
 
 ;;; --- Properties -------------------------------------------------------------
-
-;;;     bottom-padding
-;;;     left-padding
-;;;     right-padding
-;;;     top-padding
-;;;     xalign
-;;;     xscale
-;;;     yalign
-;;;     yscale
 
 (test gtk-alignment-properties
   (let ((alignment (make-instance 'gtk:alignment)))
@@ -110,4 +98,4 @@
     (is (equal '(10 20 30 40)
                (multiple-value-list (gtk:alignment-get-padding alignment))))))
 
-;;; 2023-12-28
+;;; 2024-9-23

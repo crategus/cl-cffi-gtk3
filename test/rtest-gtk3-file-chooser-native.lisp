@@ -8,49 +8,46 @@
 ;;;     GtkFileChooserNative
 
 (test gtk-file-chooser-native-class
-  ;; Type check
+  ;; Check type
   (is (g:type-is-object "GtkFileChooserNative"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:file-chooser-native
           (glib:symbol-for-gtype "GtkFileChooserNative")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkFileChooserNative")
-          (g:gtype (cffi:foreign-funcall "gtk_file_chooser_native_get_type"
-                                         :size))))
-  ;; Check the parent
+          (g:gtype (cffi:foreign-funcall "gtk_file_chooser_native_get_type" :size))))
+  ;; Check parent
   (is (eq (g:gtype "GtkNativeDialog")
           (g:type-parent "GtkFileChooserNative")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkFileChooserNative")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkFileChooserNative")))
+  ;; Check interfaces
   (is (equal '("GtkFileChooser")
-             (list-interfaces "GtkFileChooserNative")))
+             (glib-test:list-interfaces "GtkFileChooserNative")))
   ;; Check the class properties
   (is (equal '("accept-label" "action" "cancel-label" "create-folders"
                "do-overwrite-confirmation" "extra-widget" "filter" "local-only"
                "preview-widget" "preview-widget-active" "select-multiple"
                "show-hidden" "use-preview-label")
-             (list-properties "GtkFileChooserNative")))
-  ;; Check the signals
+             (glib-test:list-properties "GtkFileChooserNative")))
+  ;; Check signals
   (is (equal '()
-             (list-signals "GtkFileChooserNative")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkFileChooserNative"
-                                     GTK-FILE-CHOOSER-NATIVE
-                       (:SUPERCLASS GTK-NATIVE-DIALOG :EXPORT T :INTERFACES
-                        ("GtkFileChooser") :TYPE-INITIALIZER
-                        "gtk_file_chooser_native_get_type")
-                       ((ACCEPT-LABEL GTK-FILE-CHOOSER-NATIVE-ACCEPT-LABEL
+             (glib-test:list-signals "GtkFileChooserNative")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkFileChooserNative"
+                                      GTK:FILE-CHOOSER-NATIVE
+                       (:SUPERCLASS GTK:NATIVE-DIALOG
+                        :EXPORT T
+                        :INTERFACES ("GtkFileChooser")
+                        :TYPE-INITIALIZER "gtk_file_chooser_native_get_type")
+                       ((ACCEPT-LABEL FILE-CHOOSER-NATIVE-ACCEPT-LABEL
                          "accept-label" "gchararray" T T)
-                        (CANCEL-LABEL GTK-FILE-CHOOSER-NATIVE-CANCEL-LABEL
+                        (CANCEL-LABEL FILE-CHOOSER-NATIVE-CANCEL-LABEL
                          "cancel-label" "gchararray" T T)))
-             (gobject:get-g-type-definition "GtkFileChooserNative"))))
+             (gobject:get-gtype-definition "GtkFileChooserNative"))))
 
 ;;; --- Properties -------------------------------------------------------------
-
-;;;     accept-label
-;;;     cancel-label
 
 (test gtk-file-chooser-native-properties
   (let ((dialog (make-instance 'gtk:file-chooser-native)))
@@ -78,4 +75,4 @@
     (is (string= "accept" (gtk:file-chooser-native-accept-label dialog)))
     (is (string= "cancel" (gtk:file-chooser-native-cancel-label dialog)))))
 
-;;; --- 2023-6-11 --------------------------------------------------------------
+;;; 2024-9-23

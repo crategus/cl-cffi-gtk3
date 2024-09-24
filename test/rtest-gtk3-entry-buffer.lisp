@@ -7,40 +7,42 @@
 
 ;;;     GtkEntryBuffer
 
-(test entry-buffer-class
-  ;; Type check
+(test gtk-entry-buffer-class
+  ;; Check type
   (is (g:type-is-object "GtkEntryBuffer"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:entry-buffer
           (glib:symbol-for-gtype "GtkEntryBuffer")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkEntryBuffer")
           (g:gtype (cffi:foreign-funcall "gtk_entry_buffer_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GObject") (g:type-parent "GtkEntryBuffer")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkEntryBuffer")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkEntryBuffer")))
+  ;; Check interfaces
   (is (equal '()
-             (list-interfaces "GtkEntryBuffer")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkEntryBuffer")))
+  ;; Check class properties
   (is (equal '("length" "max-length" "text")
-             (list-properties "GtkEntryBuffer")))
-  ;; Check the signals
+             (glib-test:list-properties "GtkEntryBuffer")))
+  ;; Check signals
   (is (equal '("deleted-text" "inserted-text")
-             (list-signals "GtkEntryBuffer")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkEntryBuffer" GTK-ENTRY-BUFFER
-                       (:SUPERCLASS G-OBJECT :EXPORT T :INTERFACES NIL
+             (glib-test:list-signals "GtkEntryBuffer")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkEntryBuffer" GTK:ENTRY-BUFFER
+                       (:SUPERCLASS G:OBJECT
+                        :EXPORT T
+                        :INTERFACES NIL
                         :TYPE-INITIALIZER "gtk_entry_buffer_get_type")
-                       ((LENGTH GTK-ENTRY-BUFFER-LENGTH "length" "guint" T NIL)
-                        (MAX-LENGTH GTK-ENTRY-BUFFER-MAX-LENGTH "max-length"
-                         "gint" T T)
-                        (TEXT GTK-ENTRY-BUFFER-TEXT "text" "gchararray" T T)))
-             (gobject:get-g-type-definition "GtkEntryBuffer"))))
+                       ((LENGTH ENTRY-BUFFER-LENGTH "length" "guint" T NIL)
+                        (MAX-LENGTH ENTRY-BUFFER-MAX-LENGTH
+                         "max-length" "gint" T T)
+                        (TEXT ENTRY-BUFFER-TEXT "text" "gchararray" T T)))
+             (gobject:get-gtype-definition "GtkEntryBuffer"))))
 
-(test entry-buffer-properties
+(test gtk-entry-buffer-properties
   (let ((object (make-instance 'gtk:entry-buffer :text "text")))
     (is (= 4 (gtk:entry-buffer-length object)))
     (is (= 0 (gtk:entry-buffer-max-length object)))
@@ -48,19 +50,19 @@
 
 ;;;   gtk_entry_buffer_new
 
-(test entry-buffer-new.1
+(test gtk-entry-buffer-new.1
   (let ((buffer (gtk:entry-buffer-new)))
     (is (= 0 (gtk:entry-buffer-length buffer)))
     (is (= 0 (gtk:entry-buffer-max-length buffer)))
     (is (equal "" (gtk:entry-buffer-text buffer)))))
 
-(test entry-buffer-new.2
+(test gtk-entry-buffer-new.2
   (let ((buffer (gtk:entry-buffer-new nil)))
     (is (= 0 (gtk:entry-buffer-length buffer)))
     (is (= 0 (gtk:entry-buffer-max-length buffer)))
     (is (equal "" (gtk:entry-buffer-text buffer)))))
 
-(test entry-buffer-new.3
+(test gtk-entry-buffer-new.3
   (let ((buffer (gtk:entry-buffer-new "text")))
     (is (= 4 (gtk:entry-buffer-length buffer)))
     (is (= 0 (gtk:entry-buffer-max-length buffer)))
@@ -68,13 +70,13 @@
 
 ;;;   gtk_entry_buffer_get_text
 
-(test entry-buffer-text
+(test gtk-entry-buffer-text
   (let ((buffer (gtk:entry-buffer-new "text")))
     (is (equal "text" (gtk:entry-buffer-text buffer)))))
 
 ;;;   gtk_entry_buffer_set_text
 
-(test entry-buffer-text
+(test gtk-entry-buffer-text
   (let ((buffer (gtk:entry-buffer-new "text")))
     (is (equal "text" (gtk:entry-buffer-text buffer)))
     (setf (gtk:entry-buffer-text buffer) "new text")
@@ -83,7 +85,7 @@
 
 ;;;   gtk_entry_buffer_get_bytes
 
-(test entry-buffer-bytes
+(test gtk-entry-buffer-bytes
   (let ((buffer (gtk:entry-buffer-new "text")))
     (is (equal "text" (gtk:entry-buffer-text buffer)))
     (is (= 4 (gtk:entry-buffer-bytes buffer)))
@@ -93,19 +95,19 @@
 
 ;;;   gtk_entry_buffer_get_length
 
-(test entry-buffer-length
+(test gtk-entry-buffer-length
   (let ((buffer (gtk:entry-buffer-new "Äpfel")))
     (is (= 5 (gtk:entry-buffer-length buffer)))))
 
 ;;;   gtk_entry_buffer_get_max_length
 
-(test entry-buffer-max-length
+(test gtk-entry-buffer-max-length
   (let ((buffer (gtk:entry-buffer-new "This is a text.")))
     (is (= 0 (gtk:entry-buffer-max-length buffer)))))
 
 ;;;   gtk_entry_buffer_set_max_length
 
-(test entry-buffer-max-length
+(test gtk-entry-buffer-max-length
   (let ((buffer (gtk:entry-buffer-new "This is a text.")))
     (setf (gtk:entry-buffer-max-length buffer) 9)
     (is (= 9 (gtk:entry-buffer-max-length buffer)))
@@ -113,7 +115,7 @@
 
 ;;;  gtk_entry_buffer_insert_text
 
-(test entry-buffer-insert-text
+(test gtk-entry-buffer-insert-text
   (let ((buffer (gtk:entry-buffer-new)))
     (is (= 6 (gtk:entry-buffer-insert-text buffer 0 "first ")))
     (is (equal "first " (gtk:entry-buffer-text buffer)))
@@ -127,7 +129,7 @@
 
 ;;;   gtk_entry_buffer_delete_text
 
-(test entry-buffer-delete-text
+(test gtk-entry-buffer-delete-text
   (let ((buffer (gtk:entry-buffer-new "first second third")))
     (is (= 7 (gtk:entry-buffer-delete-text buffer 6 7)))
     (is (equal "first third" (gtk:entry-buffer-text buffer)))
@@ -136,7 +138,7 @@
 
 ;;;   gtk_entry_buffer_emit_deleted_text
 
-(test entry-buffer-emit-deleted-text
+(test gtk-entry-buffer-emit-deleted-text
   (let ((buffer (gtk:entry-buffer-new "first second third")))
     (g:signal-connect buffer "deleted-text"
         (lambda (object position n-chars)
@@ -150,7 +152,7 @@
 
 ;;;   gtk_entry_buffer_emit_inserted_text
 
-(test entry-buffer-emit-inserted-text
+(test gtk-entry-buffer-emit-inserted-text
   (let ((buffer (gtk:entry-buffer-new "first second third")))
     (g:signal-connect buffer "inserted-text"
         (lambda (object position text n-chars)
@@ -161,4 +163,4 @@
           nil))
     (gtk:entry-buffer-emit-inserted-text buffer 6 "text" 7)))
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-9-22

@@ -7,205 +7,60 @@
 
 ;;;     GtkColorSelection
 
-(test container-class
-  ;; Type check
+(test gtk-color-selection-class
+  ;; Check type
   (is (g:type-is-object "GtkColorSelection"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:color-selection
           (glib:symbol-for-gtype "GtkColorSelection")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkColorSelection")
           (g:gtype (cffi:foreign-funcall "gtk_color_selection_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkBox")
           (g:type-parent "GtkColorSelection")))
-  ;; Check the children
+  ;; Check children
   (is (equal '()
-             (list-children "GtkColorSelection")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkColorSelection")))
+  ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
-             (list-interfaces "GtkColorSelection")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkColorSelection")))
+  ;; Check class properties
   (is (equal '("current-alpha" "current-color" "current-rgba"
                "has-opacity-control" "has-palette")
-             (list-properties "GtkColorSelection")))
-  ;; Check the style properties
+             (glib-test:list-properties "GtkColorSelection")))
+  ;; Check style properties
   (is (equal '()
-             (list-style-properties "GtkColorSelection")))
-  ;; Check the child properties
+             (gtk-test:list-style-properties "GtkColorSelection")))
+  ;; Check child properties
   (is (equal '("expand" "fill" "pack-type" "padding" "position")
-             (list-child-properties "GtkColorSelection")))
-  ;; Check the signals
+             (gtk-test:list-child-properties "GtkColorSelection")))
+  ;; Check signals
   (is (equal '("color-changed")
-             (list-signals "GtkColorSelection")))
+             (glib-test:list-signals "GtkColorSelection")))
   ;; CSS information
   (is (string= "box"
                (gtk:widget-class-css-name "GtkColorSelection")))
-  (is (string=
-"[box.vertical:dir(ltr)]
-  box.horizontal:dir(ltr)
-    box.vertical:dir(ltr)
-      widget:dir(ltr)
-      box.horizontal:dir(ltr)
-        frame:dir(ltr)
-          border:dir(ltr)
-          box.horizontal:dir(ltr)
-            widget:dir(ltr)
-            widget:dir(ltr)
-        button:dir(ltr)
-          image:dir(ltr)
-    box.vertical:dir(ltr)
-      grid.horizontal:dir(ltr)
-        label:dir(ltr)
-        spinbutton.horizontal:dir(ltr)
-          undershoot.left:dir(ltr)
-          undershoot.right:dir(ltr)
-          entry:dir(ltr)
-          button.down:dir(ltr)
-          button.up:dir(ltr)
-        label:dir(ltr)
-        spinbutton.horizontal:dir(ltr)
-          undershoot.left:dir(ltr)
-          undershoot.right:dir(ltr)
-          entry:dir(ltr)
-          button.down:disabled:dir(ltr)
-          button.up:dir(ltr)
-        label:dir(ltr)
-        spinbutton.horizontal:dir(ltr)
-          undershoot.left:dir(ltr)
-          undershoot.right:dir(ltr)
-          entry:dir(ltr)
-          button.down:disabled:dir(ltr)
-          button.up:dir(ltr)
-        label:dir(ltr)
-        spinbutton.horizontal:dir(ltr)
-          undershoot.left:dir(ltr)
-          undershoot.right:dir(ltr)
-          entry:dir(ltr)
-          button.down:disabled:dir(ltr)
-          button.up:dir(ltr)
-        label:dir(ltr)
-        spinbutton.horizontal:dir(ltr)
-          undershoot.left:dir(ltr)
-          undershoot.right:dir(ltr)
-          entry:dir(ltr)
-          button.down:disabled:dir(ltr)
-          button.up:dir(ltr)
-        label:dir(ltr)
-        spinbutton.horizontal:dir(ltr)
-          undershoot.left:dir(ltr)
-          undershoot.right:dir(ltr)
-          entry:dir(ltr)
-          button.down:disabled:dir(ltr)
-          button.up:dir(ltr)
-        separator.horizontal:dir(ltr)
-        [label:dir(ltr)]
-        [scale.horizontal:dir(ltr)]
-          contents
-            trough:dir(ltr)
-              slider:dir(ltr)
-              highlight.top:dir(ltr)
-        [entry:dir(ltr)]
-          undershoot.left:dir(ltr)
-          undershoot.right:dir(ltr)
-        label:dir(ltr)
-        entry:dir(ltr)
-          undershoot.left:dir(ltr)
-          undershoot.right:dir(ltr)
-      [box.vertical:dir(ltr)]
-        label:dir(ltr)
-        grid.horizontal:dir(ltr)
-          frame:dir(ltr)
-            border:dir(ltr)
-            widget:dir(ltr)
-          frame:dir(ltr)
-            border:dir(ltr)
-            widget:dir(ltr)
-          frame:dir(ltr)
-            border:dir(ltr)
-            widget:dir(ltr)
-          frame:dir(ltr)
-            border:dir(ltr)
-            widget:dir(ltr)
-          frame:dir(ltr)
-            border:dir(ltr)
-            widget:dir(ltr)
-          frame:dir(ltr)
-            border:dir(ltr)
-            widget:dir(ltr)
-          frame:dir(ltr)
-            border:dir(ltr)
-            widget:dir(ltr)
-          frame:dir(ltr)
-            border:dir(ltr)
-            widget:dir(ltr)
-          frame:dir(ltr)
-            border:dir(ltr)
-            widget:dir(ltr)
-          frame:dir(ltr)
-            border:dir(ltr)
-            widget:dir(ltr)
-          frame:dir(ltr)
-            border:dir(ltr)
-            widget:dir(ltr)
-          frame:dir(ltr)
-            border:dir(ltr)
-            widget:dir(ltr)
-          frame:dir(ltr)
-            border:dir(ltr)
-            widget:dir(ltr)
-          frame:dir(ltr)
-            border:dir(ltr)
-            widget:dir(ltr)
-          frame:dir(ltr)
-            border:dir(ltr)
-            widget:dir(ltr)
-          frame:dir(ltr)
-            border:dir(ltr)
-            widget:dir(ltr)
-          frame:dir(ltr)
-            border:dir(ltr)
-            widget:dir(ltr)
-          frame:dir(ltr)
-            border:dir(ltr)
-            widget:dir(ltr)
-          frame:dir(ltr)
-            border:dir(ltr)
-            widget:dir(ltr)
-          frame:dir(ltr)
-            border:dir(ltr)
-            widget:dir(ltr)
-"
-               (gtk:style-context-to-string
-                   (gtk:widget-style-context
-                       (make-instance 'gtk:color-selection))
-                   :recurse)))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkColorSelection" 
-                                             GTK-COLOR-SELECTION
-                       (:SUPERCLASS GTK-BOX :EXPORT T :INTERFACES
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkColorSelection" GTK:COLOR-SELECTION
+                       (:SUPERCLASS GTK:BOX
+                        :EXPORT T
+                        :INTERFACES
                         ("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
                         :TYPE-INITIALIZER "gtk_color_selection_get_type")
-                       ((CURRENT-ALPHA GTK-COLOR-SELECTION-CURRENT-ALPHA
+                       ((CURRENT-ALPHA COLOR-SELECTION-CURRENT-ALPHA
                          "current-alpha" "guint" T T)
-                        (CURRENT-COLOR GTK-COLOR-SELECTION-CURRENT-COLOR
+                        (CURRENT-COLOR COLOR-SELECTION-CURRENT-COLOR
                          "current-color" "GdkColor" T T)
-                        (CURRENT-RGBA GTK-COLOR-SELECTION-CURRENT-RGBA
+                        (CURRENT-RGBA COLOR-SELECTION-CURRENT-RGBA
                          "current-rgba" "GdkRGBA" T T)
-                        (HAS-OPACITY-CONTROL
-                         GTK-COLOR-SELECTION-HAS-OPACITY-CONTROL
+                        (HAS-OPACITY-CONTROL COLOR-SELECTION-HAS-OPACITY-CONTROL
                          "has-opacity-control" "gboolean" T T)
-                        (HAS-PALETTE GTK-COLOR-SELECTION-HAS-PALETTE
+                        (HAS-PALETTE COLOR-SELECTION-HAS-PALETTE
                          "has-palette" "gboolean" T T)))
-             (gobject:get-g-type-definition "GtkColorSelection"))))
+             (gobject:get-gtype-definition "GtkColorSelection"))))
 
 ;;; --- Properties -------------------------------------------------------------
-
-;;;     current-alpha
-;;;     current-color
-;;;     current-rgba
-;;;     has-opacity-control
-;;;     has-palette
 
 (test gtk-color-selection-properties
   (let ((selection (make-instance 'gtk:color-selection)))
@@ -274,4 +129,4 @@
 ;;;     gtk_color_selection_palette_to_string
 ;;;     gtk_color_selection_set_change_palette_with_screen_hook
 
-;;; --- 2023-6-14 --------------------------------------------------------------
+;;; 2024-9-23

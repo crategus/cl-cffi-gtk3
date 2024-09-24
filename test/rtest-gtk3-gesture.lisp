@@ -7,75 +7,75 @@
 
 ;;;     GtkEventSequenceState
 
-(test event-sequence-state
-  ;; Check the type
+(test gtk-event-sequence-state
+  ;; Check type
   (is (g:type-is-enum "GtkEventSequenceState"))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkEventSequenceState")
           (g:gtype (cffi:foreign-funcall "gtk_event_sequence_state_get_type"
                                          :size))))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:event-sequence-state
           (glib:symbol-for-gtype "GtkEventSequenceState")))
-  ;; Check the names
+  ;; Check names
   (is (equal '("GTK_EVENT_SEQUENCE_NONE" "GTK_EVENT_SEQUENCE_CLAIMED"
                "GTK_EVENT_SEQUENCE_DENIED")
-             (list-enum-item-name "GtkEventSequenceState")))
-  ;; Check the values
+             (glib-test:list-enum-item-names "GtkEventSequenceState")))
+  ;; Check values
   (is (equal '(0 1 2)
-             (list-enum-item-value "GtkEventSequenceState")))
-  ;; Check the nick names
+             (glib-test:list-enum-item-values "GtkEventSequenceState")))
+  ;; Check nick names
   (is (equal '("none" "claimed" "denied")
-             (list-enum-item-nick "GtkEventSequenceState")))
-  ;; Check the enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkEventSequenceState"
-                             GTK-EVENT-SEQUENCE-STATE
-                             (:EXPORT T
-                              :TYPE-INITIALIZER
-                              "gtk_event_sequence_state_get_type")
-                             (:NONE 0)
-                             (:CLAIMED 1)
-                             (:DENIED 2))
-             (gobject:get-g-type-definition "GtkEventSequenceState"))))
+             (glib-test:list-enum-item-nicks "GtkEventSequenceState")))
+  ;; Check enum definition
+  (is (equal '(GOBJECT:DEFINE-GENUM "GtkEventSequenceState"
+                                    GTK:EVENT-SEQUENCE-STATE
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_event_sequence_state_get_type")
+                       (:NONE 0)
+                       (:CLAIMED 1)
+                       (:DENIED 2))
+             (gobject:get-gtype-definition "GtkEventSequenceState"))))
 
 ;;;     GtkGesture
 
-(test gesture-class
-  ;; Type check
+(test gtk-gesture-class
+  ;; Check type
   (is (g:type-is-object "GtkGesture"))
-  ;; Check the registered name
+  ;; Check registered name
   (is (eq 'gtk:gesture
           (glib:symbol-for-gtype "GtkGesture")))
-  ;; Check the type initializer
+  ;; Check type initializer
   (is (eq (g:gtype "GtkGesture")
           (g:gtype (cffi:foreign-funcall "gtk_gesture_get_type" :size))))
-  ;; Check the parent
+  ;; Check parent
   (is (eq (g:gtype "GtkEventController")
           (g:type-parent "GtkGesture")))
-  ;; Check the children
+  ;; Check children
   (is (equal '("GtkGestureRotate" "GtkGestureSingle" "GtkGestureZoom")
-             (list-children "GtkGesture")))
-  ;; Check the interfaces
+             (glib-test:list-children "GtkGesture")))
+  ;; Check interfaces
   (is (equal '()
-             (list-interfaces "GtkGesture")))
-  ;; Check the class properties
+             (glib-test:list-interfaces "GtkGesture")))
+  ;; Check class properties
   (is (equal '("n-points" "window")
-             (list-properties "GtkGesture")))
-  ;; Check the signals
+             (glib-test:list-properties "GtkGesture")))
+  ;; Check signals
   (is (equal '("begin" "cancel" "end" "sequence-state-changed" "update")
-             (list-signals "GtkGesture")))
-  ;; Check the class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkGesture" GTK-GESTURE
-                       (:SUPERCLASS GTK-EVENT-CONTROLLER :EXPORT T :INTERFACES
-                        NIL :TYPE-INITIALIZER "gtk_gesture_get_type")
-                       ((N-POINTS GTK-GESTURE-N-POINTS "n-points" "guint" T
-                         NIL)
-                        (WINDOW GTK-GESTURE-WINDOW "window" "GdkWindow" T T)))
-             (gobject:get-g-type-definition "GtkGesture"))))
+             (glib-test:list-signals "GtkGesture")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkGesture" GTK:GESTURE
+                       (:SUPERCLASS GTK:EVENT-CONTROLLER
+                        :EXPORT T
+                        :INTERFACES NIL
+                        :TYPE-INITIALIZER "gtk_gesture_get_type")
+                       ((N-POINTS GESTURE-N-POINTS "n-points" "guint" T NIL)
+                        (WINDOW GESTURE-WINDOW "window" "GdkWindow" T T)))
+             (gobject:get-gtype-definition "GtkGesture"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
-(test gesture-properties
+(test gtk-gesture-properties
   (let ((gesture (make-instance 'gtk:gesture-single)))
     (is (= 1 (gtk:gesture-n-points gesture)))
     (is-false (gtk:gesture-window gesture))))
@@ -108,4 +108,4 @@
 ;;;     gtk_gesture_get_group
 ;;;     gtk_gesture_is_grouped_with
 
-;;; --- 2023-5-29 --------------------------------------------------------------
+;;; 2024-9-23

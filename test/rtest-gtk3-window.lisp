@@ -18,21 +18,20 @@
           (glib:symbol-for-gtype "GtkWindowType")))
   ;; Check names
   (is (equal '("GTK_WINDOW_TOPLEVEL" "GTK_WINDOW_POPUP")
-             (list-enum-item-name "GtkWindowType")))
+             (glib-test:list-enum-item-names "GtkWindowType")))
   ;; Check values
   (is (equal '(0 1)
-             (list-enum-item-value "GtkWindowType")))
+             (glib-test:list-enum-item-values "GtkWindowType")))
   ;; Check nick names
   (is (equal '("toplevel" "popup")
-             (list-enum-item-nick "GtkWindowType")))
+             (glib-test:list-enum-item-nicks "GtkWindowType")))
   ;; Check enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkWindowType"
-                             GTK-WINDOW-TYPE
-                             (:EXPORT T
-                              :TYPE-INITIALIZER "gtk_window_type_get_type")
-                             (:TOPLEVEL 0)
-                             (:POPUP 1))
-             (gobject:get-g-type-definition "GtkWindowType"))))
+  (is (equal '(GOBJECT:DEFINE-GENUM "GtkWindowType" GTK:WINDOW-TYPE
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_window_type_get_type")
+                       (:TOPLEVEL 0)
+                       (:POPUP 1))
+             (gobject:get-gtype-definition "GtkWindowType"))))
 
 ;;;     GtkWindowPosition
 
@@ -48,24 +47,23 @@
   ;; Check names
   (is (equal '("GTK_WIN_POS_NONE" "GTK_WIN_POS_CENTER" "GTK_WIN_POS_MOUSE"
                "GTK_WIN_POS_CENTER_ALWAYS" "GTK_WIN_POS_CENTER_ON_PARENT")
-             (list-enum-item-name "GtkWindowPosition")))
+             (glib-test:list-enum-item-names "GtkWindowPosition")))
   ;; Check values
   (is (equal '(0 1 2 3 4)
-             (list-enum-item-value "GtkWindowPosition")))
+             (glib-test:list-enum-item-values "GtkWindowPosition")))
   ;; Check nick names
   (is (equal '("none" "center" "mouse" "center-always" "center-on-parent")
-             (list-enum-item-nick "GtkWindowPosition")))
+             (glib-test:list-enum-item-nicks "GtkWindowPosition")))
   ;; Check enum definition
-  (is (equal '(GOBJECT:DEFINE-G-ENUM "GtkWindowPosition"
-                             GTK-WINDOW-POSITION
-                             (:EXPORT T
-                              :TYPE-INITIALIZER "gtk_window_position_get_type")
-                             (:NONE 0)
-                             (:CENTER 1)
-                             (:MOUSE 2)
-                             (:CENTER-ALWAYS 3)
-                             (:CENTER-ON-PARENT 4))
-             (gobject:get-g-type-definition "GtkWindowPosition"))))
+  (is (equal '(GOBJECT:DEFINE-GENUM "GtkWindowPosition" GTK:WINDOW-POSITION
+                       (:EXPORT T
+                        :TYPE-INITIALIZER "gtk_window_position_get_type")
+                       (:NONE 0)
+                       (:CENTER 1)
+                       (:MOUSE 2)
+                       (:CENTER-ALWAYS 3)
+                       (:CENTER-ON-PARENT 4))
+             (gobject:get-gtype-definition "GtkWindowPosition"))))
 
 ;;;     GtkWindow
 
@@ -85,14 +83,14 @@
   #-windows
   (is (equal '("GtkApplicationWindow" "GtkAssistant" "GtkDialog"
                "GtkOffscreenWindow" "GtkPlug" "GtkShortcutsWindow")
-             (list-children "GtkWindow")))
+             (glib-test:list-children "GtkWindow")))
   #+windows
   (is (equal '("GtkApplicationWindow" "GtkAssistant" "GtkDialog"
                "GtkOffscreenWindow" "GtkShortcutsWindow")
-             (list-children "GtkWindow")))
+             (glib-test:list-children "GtkWindow")))
   ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
-             (list-interfaces "GtkWindow")))
+             (glib-test:list-interfaces "GtkWindow")))
   ;; Check class properties
   (is (equal '("accept-focus" "application" "attached-to" "decorated"
                "default-height" "default-width" "deletable"
@@ -103,86 +101,84 @@
                "resize-grip-visible" "role" "screen" "skip-pager-hint"
                "skip-taskbar-hint" "startup-id" "title" "transient-for"
                "type" "type-hint" "urgency-hint" "window-position")
-             (list-properties "GtkWindow")))
+             (glib-test:list-properties "GtkWindow")))
   ;; Check style properties
   (is (equal '("decoration-button-layout" "decoration-resize-handle")
-             (list-style-properties "GtkWindow")))
+             (gtk-test:list-style-properties "GtkWindow")))
   ;; Check child properties
   (is (equal '()
-             (list-child-properties "GtkWindow")))
+             (gtk-test:list-child-properties "GtkWindow")))
   ;; Check signals
   (is (equal '("activate-default" "activate-focus" "enable-debugging"
                "keys-changed" "set-focus")
-             (list-signals "GtkWindow")))
+             (glib-test:list-signals "GtkWindow")))
   ;; CSS information
   (is (string= "window"
                (gtk:widget-class-css-name "GtkWindow")))
   ;; Check class definition
-  (is (equal '(GOBJECT:DEFINE-G-OBJECT-CLASS "GtkWindow" GTK-WINDOW
-                       (:SUPERCLASS GTK-BIN :EXPORT T :INTERFACES
-                        ("AtkImplementorIface" "GtkBuildable")
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkWindow" GTK:WINDOW
+                       (:SUPERCLASS GTK:BIN
+                        :EXPORT T
+                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
                         :TYPE-INITIALIZER "gtk_window_get_type")
-                       ((ACCEPT-FOCUS GTK-WINDOW-ACCEPT-FOCUS "accept-focus"
-                         "gboolean" T T)
-                        (APPLICATION GTK-WINDOW-APPLICATION "application"
-                         "GtkApplication" T T)
-                        (ATTACHED-TO GTK-WINDOW-ATTACHED-TO "attached-to"
-                         "GtkWidget" T T)
-                        (DECORATED GTK-WINDOW-DECORATED "decorated" "gboolean"
-                         T T)
-                        (DEFAULT-HEIGHT GTK-WINDOW-DEFAULT-HEIGHT
+                       ((ACCEPT-FOCUS WINDOW-ACCEPT-FOCUS
+                         "accept-focus" "gboolean" T T)
+                        (APPLICATION WINDOW-APPLICATION
+                         "application" "GtkApplication" T T)
+                        (ATTACHED-TO WINDOW-ATTACHED-TO
+                         "attached-to" "GtkWidget" T T)
+                        (DECORATED WINDOW-DECORATED "decorated" "gboolean" T T)
+                        (DEFAULT-HEIGHT WINDOW-DEFAULT-HEIGHT
                          "default-height" "gint" T T)
-                        (DEFAULT-WIDTH GTK-WINDOW-DEFAULT-WIDTH "default-width"
-                         "gint" T T)
-                        (DELETABLE GTK-WINDOW-DELETABLE "deletable" "gboolean"
-                         T T)
-                        (DESTROY-WITH-PARENT GTK-WINDOW-DESTROY-WITH-PARENT
+                        (DEFAULT-WIDTH WINDOW-DEFAULT-WIDTH
+                         "default-width" "gint" T T)
+                        (DELETABLE WINDOW-DELETABLE "deletable" "gboolean" T T)
+                        (DESTROY-WITH-PARENT WINDOW-DESTROY-WITH-PARENT
                          "destroy-with-parent" "gboolean" T T)
-                        (FOCUS-ON-MAP GTK-WINDOW-FOCUS-ON-MAP "focus-on-map"
-                         "gboolean" T T)
-                        (FOCUS-VISIBLE GTK-WINDOW-FOCUS-VISIBLE "focus-visible"
-                         "gboolean" T T)
-                        (GRAVITY GTK-WINDOW-GRAVITY "gravity" "GdkGravity" T T)
-                        (HAS-RESIZE-GRIP GTK-WINDOW-HAS-RESIZE-GRIP
+                        (FOCUS-ON-MAP WINDOW-FOCUS-ON-MAP
+                         "focus-on-map" "gboolean" T T)
+                        (FOCUS-VISIBLE WINDOW-FOCUS-VISIBLE
+                         "focus-visible" "gboolean" T T)
+                        (GRAVITY WINDOW-GRAVITY "gravity" "GdkGravity" T T)
+                        (HAS-RESIZE-GRIP WINDOW-HAS-RESIZE-GRIP
                          "has-resize-grip" "gboolean" T T)
-                        (HAS-TOPLEVEL-FOCUS GTK-WINDOW-HAS-TOPLEVEL-FOCUS
+                        (HAS-TOPLEVEL-FOCUS WINDOW-HAS-TOPLEVEL-FOCUS
                          "has-toplevel-focus" "gboolean" T NIL)
                         (HIDE-TITLEBAR-WHEN-MAXIMIZED
-                         GTK-WINDOW-HIDE-TITLEBAR-WHEN-MAXIMIZED
+                         WINDOW-HIDE-TITLEBAR-WHEN-MAXIMIZED
                          "hide-titlebar-when-maximized" "gboolean" T T)
-                        (ICON GTK-WINDOW-ICON "icon" "GdkPixbuf" T T)
-                        (ICON-NAME GTK-WINDOW-ICON-NAME "icon-name"
-                         "gchararray" T T)
-                        (IS-ACTIVE GTK-WINDOW-IS-ACTIVE "is-active" "gboolean"
-                         T NIL)
-                        (IS-MAXIMIZED GTK-WINDOW-IS-MAXIMIZED "is-maximized"
-                         "gboolean" T NIL)
-                        (MNEMONICS-VISIBLE GTK-WINDOW-MNEMONICS-VISIBLE
+                        (ICON WINDOW-ICON "icon" "GdkPixbuf" T T)
+                        (ICON-NAME WINDOW-ICON-NAME
+                         "icon-name" "gchararray" T T)
+                        (IS-ACTIVE WINDOW-IS-ACTIVE
+                         "is-active" "gboolean" T NIL)
+                        (IS-MAXIMIZED WINDOW-IS-MAXIMIZED
+                         "is-maximized" "gboolean" T NIL)
+                        (MNEMONICS-VISIBLE WINDOW-MNEMONICS-VISIBLE
                          "mnemonics-visible" "gboolean" T T)
-                        (MODAL GTK-WINDOW-MODAL "modal" "gboolean" T T)
-                        (RESIZABLE GTK-WINDOW-RESIZABLE "resizable" "gboolean"
-                         T T)
-                        (RESIZE-GRIP-VISIBLE GTK-WINDOW-RESIZE-GRIP-VISIBLE
+                        (MODAL WINDOW-MODAL "modal" "gboolean" T T)
+                        (RESIZABLE WINDOW-RESIZABLE "resizable" "gboolean" T T)
+                        (RESIZE-GRIP-VISIBLE WINDOW-RESIZE-GRIP-VISIBLE
                          "resize-grip-visible" "gboolean" T NIL)
-                        (ROLE GTK-WINDOW-ROLE "role" "gchararray" T T)
-                        (SCREEN GTK-WINDOW-SCREEN "screen" "GdkScreen" T T)
-                        (SKIP-PAGER-HINT GTK-WINDOW-SKIP-PAGER-HINT
+                        (ROLE WINDOW-ROLE "role" "gchararray" T T)
+                        (SCREEN WINDOW-SCREEN "screen" "GdkScreen" T T)
+                        (SKIP-PAGER-HINT WINDOW-SKIP-PAGER-HINT
                          "skip-pager-hint" "gboolean" T T)
-                        (SKIP-TASKBAR-HINT GTK-WINDOW-SKIP-TASKBAR-HINT
+                        (SKIP-TASKBAR-HINT WINDOW-SKIP-TASKBAR-HINT
                          "skip-taskbar-hint" "gboolean" T T)
-                        (STARTUP-ID GTK-WINDOW-STARTUP-ID "startup-id"
-                         "gchararray" NIL T)
-                        (TITLE GTK-WINDOW-TITLE "title" "gchararray" T T)
-                        (TRANSIENT-FOR GTK-WINDOW-TRANSIENT-FOR "transient-for"
-                         "GtkWindow" T T)
-                        (TYPE GTK-WINDOW-TYPE "type" "GtkWindowType" T NIL)
-                        (TYPE-HINT GTK-WINDOW-TYPE-HINT "type-hint"
-                         "GdkWindowTypeHint" T T)
-                        (URGENCY-HINT GTK-WINDOW-URGENCY-HINT "urgency-hint"
-                         "gboolean" T T)
-                        (WINDOW-POSITION GTK-WINDOW-WINDOW-POSITION
+                        (STARTUP-ID WINDOW-STARTUP-ID
+                         "startup-id" "gchararray" NIL T)
+                        (TITLE WINDOW-TITLE "title" "gchararray" T T)
+                        (TRANSIENT-FOR WINDOW-TRANSIENT-FOR
+                         "transient-for" "GtkWindow" T T)
+                        (TYPE WINDOW-TYPE "type" "GtkWindowType" T NIL)
+                        (TYPE-HINT WINDOW-TYPE-HINT
+                         "type-hint" "GdkWindowTypeHint" T T)
+                        (URGENCY-HINT WINDOW-URGENCY-HINT
+                         "urgency-hint" "gboolean" T T)
+                        (WINDOW-POSITION WINDOW-WINDOW-POSITION
                          "window-position" "GtkWindowPosition" T T)))
-             (gobject:get-g-type-definition "GtkWindow"))))
+             (gobject:get-gtype-definition "GtkWindow"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -414,4 +410,4 @@
 ;;;     gtk_window_get_titlebar
 ;;;     gtk_window_set_interactive_debugging
 
-;;; 2024-4-9
+;;; 2024-9-21
