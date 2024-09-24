@@ -44,7 +44,7 @@
   (is (equal '()
              (glib-test:list-signals "GtkIconFactory")))
   ;; Check class definition
-  (is (equal '(GOBJECT:DEFINE-GOBJECT-CLASS "GtkIconFactory" GTK:ICON-FACTORY
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkIconFactory" GTK:ICON-FACTORY
                        (:SUPERCLASS G:OBJECT
                         :EXPORT T
                         :INTERFACES ("GtkBuildable")
