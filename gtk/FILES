@@ -319,12 +319,12 @@ Deprecated
     Deprecated since GTK 3.10
 
     gtk.ui-manager.lisp              - GtkUIManager                 - GTK 3.24 +
-    gtk.action-group.lisp            - GtkActionGroup               - GTK 3.24 +
-    gtk.action.lisp                  - GtkAction                    - GTK 3.24 +
-    gtk.toggle-action.lisp           - GtkToggleAction              - GTK 3.24 +
-    gtk.radio-action.lisp            - GtkRadioAction               - GTK 3.24 +
-    gtk.recent-action.lisp           - GtkRecentAction              - GTK 3.24 +
-    gtk.activatable.lisp             - GtkActivatable               - GTK 3.24 +
+    gtk.activatable.lisp             - GtkActivatable               - GTK 3.24 .
+    gtk.action-group.lisp            - GtkActionGroup               - GTK 3.24 .
+    gtk.action.lisp                  - GtkAction                    - GTK 3.24 .
+    gtk.toggle-action.lisp           - GtkToggleAction              - GTK 3.24 .
+    gtk.radio-action.lisp            - GtkRadioAction               - GTK 3.24 .
+    gtk.recent-action.lisp           - GtkRecentAction              - GTK 3.24 .
 
     gtk.image-menu-item.lisp         - GtkImageMenuItem             - GTK 3.24 .
     gtk.misc.lisp                    - GtkMisc                      - GTK 3.24 +

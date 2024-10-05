@@ -4922,6 +4922,13 @@ setup_tree (void)
       @about-function{ui-manager-remove-ui}
       @about-function{ui-manager-ensure-update}
     @end{subsection}
+    @begin[GtkActivatable]{subsection}
+      @about-class{activatable}
+      @about-generic{activatable-related-action}
+      @about-generic{activatable-use-action-appearance}
+      @about-function{activatable-do-set-related-action}
+      @about-function{activatable-sync-action-properties}
+    @end{subsection}
     @begin[GtkActionGroup]{subsection}
       @about-class{action-group}
       @about-generic{action-group-accel-group}
@@ -5003,13 +5010,6 @@ setup_tree (void)
       @about-generic{recent-action-show-numbers}
       @about-function{recent-action-new}
       @about-function{recent-action-new-for-manager}
-    @end{subsection}
-    @begin[GtkActivatable]{subsection}
-      @about-class{activatable}
-      @about-generic{activatable-related-action}
-      @about-generic{activatable-use-action-appearance}
-      @about-function{activatable-do-set-related-action}
-      @about-function{activatable-sync-action-properties}
     @end{subsection}
     @begin[GtkImageMenuItem]{subsection}
       @about-class{image-menu-item}

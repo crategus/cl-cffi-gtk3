@@ -611,9 +611,9 @@
      ;; Action-based menus and toolbars
      (:file "rtest-gtk3-action-group")
      (:file "rtest-gtk3-action")
-;    (:file "gtk.toggle-action")
-;    (:file "gtk.radio-action")
-;    (:file "gtk.recent-action")
+     (:file "rtest-gtk3-toggle-action")
+     (:file "rtest-gtk3-radio-action")
+     (:file "rtest-gtk3-recent-action")
 
      ;; Choosing from installed applications
      (:file "rtest-gtk3-app-chooser")
