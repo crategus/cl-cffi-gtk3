@@ -9,7 +9,7 @@
 (defvar *toplevel-stack* nil)
 (defvar *current-page* 2)
 
-(gobject:define-g-object-subclass "MyTextView" my-text-view
+(gobject:define-gobject-subclass "MyTextView" my-text-view
   (:superclass gtk:text-view
    :export t
    :interfaces ())
