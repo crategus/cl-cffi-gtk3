@@ -35,30 +35,34 @@
 ;;;
 ;;;     GtkActionGroup
 ;;;
-;;;     GtkActionEntry
-;;;     GtkToggleActionEntry
-;;;     GtkRadioActionEntry
+;;;     GtkActionEntry                                      not needed
+;;;     GtkToggleActionEntry                                not needed
+;;;     GtkRadioActionEntry                                 not needed
+;;;
+;;; Accessors
+;;;
+;;;     gtk_action_group_get_name
+;;;     gtk_action_group_get_sensitive
+;;;     gtk_action_group_set_sensitive
+;;;     gtk_action_group_get_visible
+;;;     gtk_action_group_set_visible
+;;;     gtk_action_group_get_accel_group
+;;;     gtk_action_group_set_accel_group
 ;;;
 ;;; Functions
 ;;;
 ;;;     gtk_action_group_new
-;;;     gtk_action_group_get_name                          Accessor
-;;;     gtk_action_group_get_sensitive                     Accessor
-;;;     gtk_action_group_set_sensitive                     Accessor
-;;;     gtk_action_group_get_visible                       Accessor
-;;;     gtk_action_group_set_visible                       Accessor
-;;;     gtk_action_group_get_accel_group                   Accessor
-;;;     gtk_action_group_set_accel_group                   Accessor
-;;;     gtk_action_group_get_action                        not exported
-;;;     gtk_action_group_list_actions                      not exported
-;;;     gtk_action_group_add_action                        not exported
+;;;
+;;;     gtk_action_group_get_action
+;;;     gtk_action_group_list_actions
+;;;     gtk_action_group_add_action
 ;;;     gtk_action_group_add_action_with_accel             not exported
-;;;     gtk_action_group_remove_action                     not exported
-;;;     gtk_action_group_add_actions                       not exported
+;;;     gtk_action_group_remove_action
+;;;     gtk_action_group_add_actions
 ;;;     gtk_action_group_add_actions_full                  not implemented
-;;;     gtk_action_group_add_toggle_actions                not exported
+;;;     gtk_action_group_add_toggle_actions
 ;;;     gtk_action_group_add_toggle_actions_full           not implemented
-;;;     gtk_action_group_add_radio_actions                 not exported
+;;;     gtk_action_group_add_radio_actions
 ;;;     gtk_action_group_add_radio_actions_full            not implemented
 ;;;
 ;;;     GtkTranslateFunc                                   not exported
@@ -88,16 +92,16 @@
 ;;;
 ;;; Implemented Interfaces
 ;;;
-;;;     GtkActionGroup implements GtkBuildable.
+;;;     GtkActionGroup implements GtkBuildable
 ;;; ----------------------------------------------------------------------------
 
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; Class GtkActionGroup
+;;; GtkActionGroup
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkActionGroup" action-group
+(gobject:define-gobject "GtkActionGroup" action-group
   (:superclass g:object
    :export t
    :interfaces ("GtkBuildable")
@@ -117,7 +121,7 @@
 
 #+liber-documentation
 (setf (documentation 'action-group 'type)
- "@version{#2023-3-15}
+ "@version{2024-9-24}
   @begin{short}
     Actions are organised into groups. An action group is essentially a map
     from names to @class{gtk:action} objects.
@@ -127,16 +131,16 @@
   in a single group. Multiple action groups may be used for a particular user
   interface. In fact, it is expected that most nontrivial applications will
   make use of multiple groups. For example, in an application that can edit
-  multiple documents, one group holding global actions, e.g. Quit, About,
-  New, and one group per document holding actions that act on that document,
-  e.g. Save, Cut, Copy, Paste. Each of the menus of the window would be
-  constructed from a combination of two action groups.
+  multiple documents, one group holding global actions, for example, Quit,
+  About, New, and one group per document holding actions that act on that
+  document, for example, Save, Cut, Copy, Paste. Each of the menus of the
+  window would be constructed from a combination of two action groups.
 
   @subheading{Accelerators}
   Accelerators are handled by the GTK accelerator map. All actions are assigned
   an accelerator path, which normally has the form
   @code{<Actions>/group-name/action-name}, and a shortcut is associated with
-  this accelerator path. All menuitems and toolitems take on this accelerator
+  this accelerator path. All menu items and tool items take on this accelerator
   path. The GTK accelerator map code makes sure that the correct shortcut is
   displayed next to the menu item.
   @begin[Warning]{dictionary}
@@ -180,7 +184,8 @@ lambda (group action proxy)
       The signal is emitted after connecting a proxy to an action in the group.
       Note that the proxy may have been connected to a different action before.
       This is intended for simple customizations for which a custom action class
-      would be too clumsy, e.g. showing tooltips for menuitems in the statusbar.
+      would be too clumsy, for example, showing tooltips for menu items in the
+      statusbar.
       @begin[code]{table}
         @entry[group]{The @class{gtk:action-group} object.}
         @entry[action]{The @class{gtk:action} object.}
@@ -218,6 +223,7 @@ lambda (group action)
           @entry[action]{The @class{gtk:action} object.}
         @end{table}
   @end{dictionary}
+  @see-constructor{gtk:action-group-new}
   @see-slot{gtk:action-group-accel-group}
   @see-slot{gtk:action-group-name}
   @see-slot{gtk:action-group-sensitive}
@@ -241,7 +247,7 @@ lambda (group action)
 (setf (liber:alias-for-function 'action-group-accel-group)
       "Accessor"
       (documentation 'action-group-accel-group 'function)
- "@version{#2023-3-15}
+ "@version{2024-9-24}
   @syntax{(gtk:action-group-accel-group object) => group}
   @syntax{(setf (gtk:action-group-accel-group object) group)}
   @argument[object]{a @class{gtk:action-group} object}
@@ -263,17 +269,17 @@ lambda (group action)
 (setf (documentation (liber:slot-documentation "name" 'action-group) t)
  "The @code{name} property of type @code{:string}
   (Read / Write / Construct only) @br{}
-  A name for the action group. @br{}
+  The name for the action group. @br{}
   Default value: @code{nil}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'action-group-name)
       "Accessor"
       (documentation 'action-group-name 'function)
- "@version{#2023-3-15}
+ "@version{2024-9-24}
   @syntax{(gtk:action-group-name object) => name}
   @argument[object]{a @class{gtk:action-group} object}
-  @return{The string with the name of the action group.}
+  @argument[name]{a string with the name of the action group}
   @begin{short}
     Accessor of the @slot[gtk:action-group]{name} slot of the
     @class{gtk:action-group} class.
@@ -296,7 +302,7 @@ lambda (group action)
 (setf (liber:alias-for-function 'action-group-sensitive)
       "Accessor"
       (documentation 'action-group-sensitive 'function)
- "@version{#2023-3-15}
+ "@version{2024-9-24}
   @syntax{(gtk:action-group-sensitive object) => sensitive}
   @syntax{(setf (gtk:action-group-sensitive object) sensitive)}
   @argument[object]{a @class{gtk:action-group} object}
@@ -323,7 +329,7 @@ lambda (group action)
 (setf (liber:alias-for-function 'action-group-visible)
       "Accessor"
       (documentation 'action-group-visible 'function)
- "@version{#2023-3-15}
+ "@version{2024-9-24}
   @syntax{(gtk:action-group-visible object) => visible}
   @syntax{(setf (gtk:action-group-visible object) visible)}
   @argument[object]{a @class{gtk:action-group} object}
@@ -339,20 +345,21 @@ lambda (group action)
   @see-class{gtk:action-group}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_action_group_new ()                                not exported
+;;; gtk_action_group_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline action-group-new))
 
 (defun action-group-new (name)
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{2024-9-24}
   @argument[name]{a string with the name of the action group}
   @return{The new @class{gtk:action-group} object.}
   @begin{short}
-    Creates a new action group. The name of the action group is used when
-    associating keybindings with the actions.
+    Creates a new action group.
   @end{short}
+  The name of the action group is used when associating keybindings with the
+  actions.
   @begin[Warning]{dictionary}
     The @fun{gtk:action-group-new} function has been deprecated since version
     3.10 and should not be used in newly written code.
@@ -361,13 +368,15 @@ lambda (group action)
   (make-instance 'action-group
                  :name name))
 
+(export 'action-group-new)
+
 ;;; ----------------------------------------------------------------------------
-;;; gtk_action_group_get_action () -> action-group-action    not exported
+;;; gtk_action_group_get_action
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_action_group_get_action" action-group-action) g:object
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{2024-9-24}
   @argument[group]{a @class{gtk:action-group} object}
   @argument[name]{a string with the name of the action}
   @return{The @class{gtk:action} object, or @code{nil} if no action by that
@@ -382,14 +391,16 @@ lambda (group action)
   (group (g:object action-group))
   (name :string))
 
+(export 'action-group-action)
+
 ;;; ----------------------------------------------------------------------------
-;;; gtk_action_group_list_actions ()                       not exported
+;;; gtk_action_group_list_actions
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_action_group_list_actions" action-group-list-actions)
     (g:list-t g:object :free-from-foreign t)
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{2024-9-24}
   @argument[group]{a @class{gtk:action-group} object}
   @return{The list of the @class{gtk:action} objects in the action group.}
   @short{Lists the actions in the action group.}
@@ -402,15 +413,24 @@ lambda (group action)
   @see-function{gtk:action-group-add-action}"
   (group (g:object action-group)))
 
+(export 'action-group-list-actions)
+
 ;;; ----------------------------------------------------------------------------
-;;; gtk_action_group_add_action ()                         not exported
+;;; gtk_action_group_add_action
+;;; gtk_action_group_add_action_with_accel                  not exported
 ;;; ----------------------------------------------------------------------------
+
+(cffi:defcfun ("gtk_action_group_add_action_with_accel"
+               %action-group-add-action-with-accel) :void
+  (group (g:object action-group))
+  (action (g:object action))
+  (accelerator :string))
 
 (defun action-group-add-action (group action &optional accelerator)
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{2024-9-24}
   @argument[group]{a @class{gtk:action-group} object}
-  @argument[action]{the @class{gtk:action} object to add}
+  @argument[action]{a @class{gtk:action} object to add}
   @argument[accelerator]{a string with the optional accelerator for the action,
     in the format understood by the @fun{gtk:accelerator-parse} function, or
     \"\" for no accelerator, or @code{nil} to use the stock accelerator}
@@ -428,51 +448,18 @@ lambda (group action)
   @see-function{gtk:accelerator-parse}"
   (%action-group-add-action-with-accel group
                                        action
-                                       (if accelerator
-                                           accelerator
-                                           (cffi:null-pointer))))
+                                       (or accelerator (cffi:null-pointer))))
+
+(export 'action-group-add-action)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_action_group_add_action_with_accel ()              not exported
-;;; ----------------------------------------------------------------------------
-
-;; This function is called from action-group-add-action and not exported.
-
-(cffi:defcfun ("gtk_action_group_add_action_with_accel"
-               %action-group-add-action-with-accel) :void
- #+liber-documentation
- "@version{#2023-3-15}
-  @argument[group]{a @class{gtk:action-group} object}
-  @argument[action]{the @class{gtk:action} object to add}
-  @argument[accelerator]{a string with the accelerator for the action, in the
-    format understood by the @fun{gtk:accelerator-parse} function, or \"\" for
-    no accelerator, or @code{nil} to use the stock accelerator}
-  @begin{short}
-    Adds an action object to the action group and sets up the accelerator.
-  @end{short}
-  If @arg{accelerator} is @code{nil}, attempts to use the accelerator associated
-  with the @code{stock-id} of the action.
-
-  Accel paths are set to <Actions>/group-name/action-name.
-  @begin[Warning]{dictionary}
-    The @fun{gtk:action-group-add-action-with-accel} function has been
-    deprecated since version 3.10 and should not be used in newly written code.
-  @end{dictionary}
-  @see-class{gtk:action-group}
-  @see-function{gtk:action-group-add-action}
-  @see-function{gtk:accelerator-parse}"
-  (group (g:object action-group))
-  (action (g:object action))
-  (accelerator :string))
-
-;;; ----------------------------------------------------------------------------
-;;; gtk_action_group_remove_action ()                      not exported
+;;; gtk_action_group_remove_action
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_action_group_remove_action" action-group-remove-action)
     :void
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{2024-9-24}
   @argument[group]{a @class{gtk:action-group} object}
   @argument[action]{a @class{gtk:action} object}
   @short{Removes an action from the action group.}
@@ -486,64 +473,16 @@ lambda (group action)
   (group (g:object action-group))
   (action (g:object action)))
 
-;;; ----------------------------------------------------------------------------
-;;; struct GtkActionEntry                                  not exported
-;;; ----------------------------------------------------------------------------
-
-;; This structure is not used in the Lisp binding and not exported.
-
-(cffi:defcstruct action-entry
-  (name :string)
-  (stock-id :string)
-  (label :string)
-  (accelerator :string)
-  (tooltip :string)
-  (callback :pointer))
-
-#+liber-documentation
-(setf (liber:alias-for-symbol 'action-entry)
-      "CStruct"
-      (liber:symbol-documentation 'action-entry)
- "@version{#2023-3-15}
-  @begin{short}
-    The @symbol{gtk:action-entry} structures are used with the
-    @fun{gtk:action-group-add-actions} function to construct actions.
-  @end{short}
-  @begin{pre}
-(cffi:defcstruct gtk:action-entry
-  (name :string)
-  (stock-id :string)
-  (label :string)
-  (accelerator :string)
-  (tooltip :string)
-  (callback :pointer))
-  @end{pre}
-  @begin[code]{table}
-    @entry[name]{The name of the action.}
-    @entry[stock-id]{The stock ID for the action, or the name of an icon from
-      the icon theme.}
-    @entry[label]{The label for the action. This field should typically be
-      marked for translation, see the
-      @fun{gtk:action-group-set-translation-domain} function. If label is
-      @code{nil}, the label of the stock item with ID @code{stock-id} is used.}
-    @entry[accelerator]{The accelerator for the action, in the format
-      understood by the @fun{gtk:accelerator-parse} function.}
-    @entry[tooltip]{The tooltip for the action. This field should typically be
-      marked for translation, see the
-      @fun{gtk:action-group-set-translation-domain} function.}
-    @entry[callback]{The callback function to call when the action is
-      activated.}
-  @end{table}
-  @see-function{gtk:action-group-set-translation-domain}
-  @see-function{gtk:accelerator-parse}")
+(export 'action-group-remove-action)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_action_group_add_actions ()                        not exported
+;;; gtk_action_group_add_actions
+;;; gtk_action_group_add_actions_full                       not implemented
 ;;; ----------------------------------------------------------------------------
 
 (defun action-group-add-actions (group entries)
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{2024-9-24}
   @argument[group]{a @class{gtk:action-group} object}
   @argument[entries]{a list of action descriptions}
   @begin{short}
@@ -566,7 +505,7 @@ lambda (group action)
   (gtk:action-group-add-actions group actions)
   ... )
     @end{pre}
-  @end{example}
+  @end{examples}
   @begin[Warning]{dictionary}
     The @fun{gtk:action-group-add-actions} function has been deprecated since
     version 3.10 and should not be used in newly written code.
@@ -577,98 +516,27 @@ lambda (group action)
   (dolist (entry entries)
     (let ((action (make-instance 'action
                                  :name (first entry)
-                                 :stock-id (if (second entry)
-                                               (second entry)
-                                               (cffi:null-pointer))
-                                 :label (if (third entry)
-                                            (third entry)
-                                            (cffi:null-pointer))
-                                 :tooltip (if (fifth entry)
-                                              (fifth entry)
-                                              (cffi:null-pointer)))))
+                                 :stock-id
+                                 (or (second entry) (cffi:null-pointer))
+                                 :label
+                                 (or (third entry) (cffi:null-pointer))
+                                 :tooltip
+                                 (or (fifth entry) (cffi:null-pointer)))))
       (action-group-add-action group action (fourth entry))
       (let ((func (sixth entry)))
         (when func
           (g:signal-connect action "activate" func))))))
 
-;;; ----------------------------------------------------------------------------
-;;; gtk_action_group_add_actions_full ()
-;;;
-;;; void gtk_action_group_add_actions_full (GtkActionGroup *action_group,
-;;;                                         const GtkActionEntry *entries,
-;;;                                         guint n_entries,
-;;;                                         gpointer user_data,
-;;;                                         GDestroyNotify destroy);
-;;;
-;;; This variant of gtk_action_group_add_actions() adds a GDestroyNotify
-;;; callback for user_data.
-;;;
-;;; action_group :
-;;;     the action group
-;;;
-;;; entries :
-;;;     an array of action descriptions
-;;;
-;;; n_entries :
-;;;     the number of entries
-;;;
-;;; user_data :
-;;;     data to pass to the action callbacks
-;;;
-;;; destroy :
-;;;     destroy notification callback for user_data
-;;;
-;;; Since 2.4
-;;; ----------------------------------------------------------------------------
+(export 'action-group-add-actions)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkToggleActionEntry
-;;;
-;;; struct GtkToggleActionEntry {
-;;;   const gchar     *name;
-;;;   const gchar     *stock_id;
-;;;   const gchar     *label;
-;;;   const gchar     *accelerator;
-;;;   const gchar     *tooltip;
-;;;   GCallback  callback;
-;;;   gboolean   is_active;
-;;; };
-;;;
-;;; GtkToggleActionEntry structs are used with
-;;; gtk_action_group_add_toggle_actions() to construct toggle actions.
-;;;
-;;; const gchar *name;
-;;;     The name of the action.
-;;;
-;;; const gchar *stock_id;
-;;;     The stock id for the action, or the name of an icon from the icon theme.
-;;;
-;;; const gchar *label;
-;;;     The label for the action. This field should typically be marked for
-;;;     translation, see gtk_action_group_set_translation_domain().
-;;;
-;;; const gchar *accelerator;
-;;;     The accelerator for the action, in the format understood by
-;;;     gtk_accelerator_parse().
-;;;
-;;; const gchar *tooltip;
-;;;     The tooltip for the action. This field should typically be marked for
-;;;     translation, see gtk_action_group_set_translation_domain().
-;;;
-;;; GCallback callback;
-;;;     The function to call when the action is activated.
-;;;
-;;; gboolean is_active;
-;;;     The initial state of the toggle action.
-;;; ----------------------------------------------------------------------------
-
-;;; ----------------------------------------------------------------------------
-;;; gtk_action_group_add_toggle_actions ()                 not exported
+;;; gtk_action_group_add_toggle_actions
+;;; gtk_action_group_add_toggle_actions_full                not implemented
 ;;; ----------------------------------------------------------------------------
 
 (defun action-group-add-toggle-actions (group entries)
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{2024-9-24}
   @argument[group]{a @class{gtk:action-group} object}
   @argument[entries]{a list of toggle action descriptions}
   @begin{short}
@@ -688,92 +556,23 @@ lambda (group action)
   (dolist (entry entries)
     (let ((action (make-instance 'toggle-action
                                  :name (first entry)
-                                 :stock-id (if (second entry)
-                                               (second entry)
-                                               (cffi:null-pointer))
-                                 :label (if (third entry)
-                                            (third entry)
-                                            (cffi:null-pointer))
-                                 :tooltip (if (fifth entry)
-                                              (fifth entry)
-                                              (cffi:null-pointer))
+                                 :stock-id
+                                 (or (second entry) (cffi:null-pointer))
+                                 :label
+                                 (or (third entry) (cffi:null-pointer))
+                                 :tooltip
+                                 (or (fifth entry) (cffi:null-pointer))
                                  :active (seventh entry))))
       (action-group-add-action group action (fourth entry))
       (let ((func (sixth entry)))
         (when func
           (g:signal-connect action "activate" func))))))
 
-;;; ----------------------------------------------------------------------------
-;;; gtk_action_group_add_toggle_actions_full ()
-;;;
-;;; void gtk_action_group_add_toggle_actions_full
-;;;                                        (GtkActionGroup *action_group,
-;;;                                         const GtkToggleActionEntry *entries,
-;;;                                         guint n_entries,
-;;;                                         gpointer user_data,
-;;;                                         GDestroyNotify destroy);
-;;;
-;;; This variant of gtk_action_group_add_toggle_actions() adds a GDestroyNotify
-;;; callback for user_data.
-;;;
-;;; action_group :
-;;;     the action group
-;;;
-;;; entries :
-;;;     an array of toggle action descriptions
-;;;
-;;; n_entries :
-;;;     the number of entries
-;;;
-;;; user_data :
-;;;     data to pass to the action callbacks
-;;;
-;;; destroy :
-;;;     destroy notification callback for user_data
-;;;
-;;; Since 2.4
-;;; ----------------------------------------------------------------------------
+(export 'action-group-add-toggle-actions)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkRadioActionEntry
-;;;
-;;; struct GtkRadioActionEntry {
-;;;   const gchar *name;
-;;;   const gchar *stock_id;
-;;;   const gchar *label;
-;;;   const gchar *accelerator;
-;;;   const gchar *tooltip;
-;;;   gint   value;
-;;; };
-;;;
-;;; GtkRadioActionEntry structs are used with
-;;; gtk_action_group_add_radio_actions() to construct groups of radio actions.
-;;;
-;;; const gchar *name;
-;;;     The name of the action.
-;;;
-;;; const gchar *stock_id;
-;;;     The stock id for the action, or the name of an icon from the icon theme.
-;;;
-;;; const gchar *label;
-;;;     The label for the action. This field should typically be marked for
-;;;     translation, see gtk_action_group_set_translation_domain().
-;;;
-;;; const gchar *accelerator;
-;;;     The accelerator for the action, in the format understood by
-;;;     gtk_accelerator_parse().
-;;;
-;;; const gchar *tooltip;
-;;;     The tooltip for the action. This field should typically be marked for
-;;;     translation, see gtk_action_group_set_translation_domain().
-;;;
-;;; gint value;
-;;;     The value to set on the radio action. See
-;;;     gtk_radio_action_get_current_value().
-;;; ----------------------------------------------------------------------------
-
-;;; ----------------------------------------------------------------------------
-;;; gtk_action_group_add_radio_actions ()                  not exported
+;;; gtk_action_group_add_radio_actions
+;;; gtk_action_group_add_radio_actions_full                 not implemented
 ;;; ----------------------------------------------------------------------------
 
 ;; TODO: This Lisp implementation is not complete.
@@ -781,7 +580,7 @@ lambda (group action)
 
 (defun action-group-add-radio-actions (group entries value on-change)
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{2024-9-24}
   @argument[group]{a @class{gtk:action-group} object}
   @argument[entries]{a list of radio action descriptions}
   @argument[value]{an integer with the value of the action to activate
@@ -797,16 +596,15 @@ lambda (group action)
   @begin{examples}
     @begin{pre}
 (let ((group (gtk:action-group-new \"AppWindowActions\"))
-      (actions (list
-                 (list \"Red\" nil                      ; name, stock id
-                       \"_Red\" \"<control>R\"            ; label, accelerator
-                       \"Blood\" 0)                     ; tooltip, value
-                 (list \"Green\" nil                    ; name, stock id
-                       \"_Green\" \"<control>G\"          ; label, accelerator
-                       \"Grass\" 1)                     ; tooltip, value
-                 (list \"Blue\" nil                     ; name, stock id
-                       \"_Blue\" \"<control>B\"           ; label, accelerator
-                       \"Sky\" 2))))
+      (actions '((\"Red\" nil                      ; name, stock id
+                  \"_Red\" \"<control>R\"            ; label, accelerator
+                  \"Blood\" 0)                     ; tooltip, value
+                 (\"Green\" nil                    ; name, stock id
+                  \"_Green\" \"<control>G\"          ; label, accelerator
+                  \"Grass\" 1)                     ; tooltip, value
+                 (\"Blue\" nil                     ; name, stock id
+                  \"_Blue\" \"<control>B\"           ; label, accelerator
+                  \"Sky\" 2))))
     (gtk:action-group-add-radio-actions group actions 0 nil)
     ... )
     @end{pre}
@@ -823,15 +621,12 @@ lambda (group action)
     (dolist (entry entries)
       (let ((action (make-instance 'radio-action
                                    :name (first entry)
-                                   :stock-id (if (second entry)
-                                                 (second entry)
-                                                 (cffi:null-pointer))
-                                   :label (if (third entry)
-                                              (third entry)
-                                              (cffi:null-pointer))
-                                   :tooltip (if (fifth entry)
-                                                (fifth entry)
-                                                (cffi:null-pointer))
+                                   :stock-id
+                                   (or(second entry) (cffi:null-pointer))
+                                   :label
+                                   (or (third entry) (cffi:null-pointer))
+                                   :tooltip
+                                   (or (fifth entry) (cffi:null-pointer))
                                    :value (sixth entry)
                                    :active nil)))
         (unless first-action
@@ -845,45 +640,7 @@ lambda (group action)
     (when on-change
       (g:signal-connect first-action "changed" on-change))))
 
-;;; ----------------------------------------------------------------------------
-;;; gtk_action_group_add_radio_actions_full ()
-;;;
-;;; void gtk_action_group_add_radio_actions_full
-;;;                                         (GtkActionGroup *action_group,
-;;;                                          const GtkRadioActionEntry *entries,
-;;;                                          guint n_entries,
-;;;                                          gint value,
-;;;                                          GCallback on_change,
-;;;                                          gpointer user_data,
-;;;                                          GDestroyNotify destroy);
-;;;
-;;; This variant of gtk_action_group_add_radio_actions() adds a GDestroyNotify
-;;; callback for user_data.
-;;;
-;;; action_group :
-;;;     the action group
-;;;
-;;; entries :
-;;;     an array of radio action descriptions
-;;;
-;;; n_entries :
-;;;     the number of entries
-;;;
-;;; value :
-;;;     the value of the action to activate initially, or -1 if no action should
-;;;     be activated
-;;;
-;;; on_change :
-;;;     the callback to connect to the changed signal
-;;;
-;;; user_data :
-;;;     data to pass to the action callbacks
-;;;
-;;; destroy :
-;;;     destroy notification callback for user_data
-;;;
-;;; Since 2.4
-;;; ----------------------------------------------------------------------------
+(export 'action-group-add-radio-actions)
 
 ;;; ----------------------------------------------------------------------------
 ;;; GtkTranslateFunc ()                                    not exported

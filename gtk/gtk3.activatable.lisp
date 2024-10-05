@@ -76,7 +76,7 @@
 ;;; GtkActivatable
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-interface "GtkActivatable" activatable
+(gobject:define-ginterface "GtkActivatable" activatable
   (:export t
    :type-initializer "gtk_activatable_get_type")
   ((related-action
@@ -90,7 +90,7 @@
 (setf (liber:alias-for-class 'activatable)
       "Interface"
       (documentation 'activatable 'type)
- "@version{2023-2-27}
+ "@version{2024-9-24}
   @begin{short}
     Activatable widgets can be connected to a @class{gtk:action} object and
     reflects the state of its action.
@@ -122,7 +122,7 @@
 (setf (liber:alias-for-function 'activatable-related-action)
       "Accessor"
       (documentation 'activatable-related-action 'function)
- "@version{2023-2-27}
+ "@version{2024-9-24}
   @syntax{(gtk:activatable-related-action object) => action}
   @syntax{(setf (gtk:activatable-related-action object) action)}
   @argument[activatable]{a @class{gtk:activatable} widget}
@@ -155,9 +155,9 @@
 (setf (liber:alias-for-function 'activatable-use-action-appearance)
       "Accessor"
       (documentation 'activatable-use-action-appearance 'function)
- "@version{2023-2-27}
-  @syntax{(gtk:activatable-use-action-appearance object) => action}
-  @syntax{(setf (gtk:activatable-use-action-appearance object) action)}
+ "@version{2024-9-24}
+  @syntax{(gtk:activatable-use-action-appearance object) => use-appearance}
+  @syntax{(setf (gtk:activatable-use-action-appearance object) use-appearance)}
   @argument[activatable]{a @class{gtk:activatable} widget}
   @argument[use-appearance]{a boolean whether to use the actions appearance}
   @begin{short}
@@ -176,7 +176,7 @@
   @see-class{gtk:activatable}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_activatable_do_set_related_action ()               not exported
+;;; gtk_activatable_do_set_related_action                   not exported
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_activatable_do_set_related_action"
@@ -213,7 +213,7 @@
   (action (g:object action)))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_activatable_sync_action_properties ()              not exported
+;;; gtk_activatable_sync_action_properties ()               not exported
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_activatable_sync_action_properties"

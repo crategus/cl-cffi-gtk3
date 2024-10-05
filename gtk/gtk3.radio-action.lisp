@@ -35,14 +35,17 @@
 ;;;
 ;;;     GtkRadioAction
 ;;;
+;;; Accessors
+;;;
+;;;     gtk_radio_action_get_current_value
+;;;     gtk_radio_action_set_current_value
+;;;     gtk_radio_action_get_group
+;;;     gtk_radio_action_set_group
+;;;
 ;;; Functions
 ;;;
 ;;;     gtk_radio_action_new
-;;;     gtk_radio_action_get_group
-;;;     gtk_radio_action_set_group
 ;;;     gtk_radio_action_join_group
-;;;     gtk_radio_action_get_current_value
-;;;     gtk_radio_action_set_current_value
 ;;;
 ;;; Properties
 ;;;
@@ -63,16 +66,16 @@
 ;;;
 ;;; Implemented Interfaces
 ;;;
-;;;     GtkRadioAction implements GtkBuildable.
+;;;     GtkRadioAction implements GtkBuildable
 ;;; ----------------------------------------------------------------------------
 
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkRadioAction
+;;; GtkRadioAction
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkRadioAction" radio-action
+(gobject:define-gobject "GtkRadioAction" radio-action
   (:superclass toggle-action
    :export t
    :interfaces ("GtkBuildable")
@@ -89,7 +92,7 @@
 
 #+liber-documentation
 (setf (documentation 'radio-action 'type)
- "@version{#2023-3-22}
+ "@version{2024-9-26}
   @begin{short}
     The @class{gtk:radio-action} object is similar to the
     @class{gtk:radio-menu-item} widget.
@@ -139,13 +142,13 @@ lambda (action current)    :no-recurse
 (setf (liber:alias-for-function 'radio-action-current-value)
       "Accessor"
       (documentation 'radio-action-current-value 'function)
- "@version{#2023-3-22}
+ "@version{2024-9-26}
   @syntax{(gtk:radio-action-current-value object) => current-value}
   @syntax{(setf (gtk:radio-action-current-value object) current-value)}
   @argument[object]{a @class{gtk:radio-action} object}
   @argument[current-value]{an integer with the value}
   @begin{short}
-    Accessor of the @slot[gtk:radio-acton]{current-value} slot of the
+    Accessor of the @slot[gtk:radio-action]{current-value} slot of the
     @class{gtk:radio-action} class.
   @end{short}
   The @fun{gtk:radio-action-current-value} function obtains the value property
@@ -163,14 +166,14 @@ lambda (action current)    :no-recurse
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "group" 'radio-action) t)
  "The @code{group} property of type @class{gtk:radio-action} (Write) @br{}
-  Sets a new group for a radio action.")
+  Sets a new group for a radio action. @em{Note:} This property is not
+  readable und cannot be set from the Lisp side.")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'radio-action-group)
       "Accessor"
       (documentation 'radio-action-group 'function)
- "@version{#2023-3-22}
-  @syntax{(gtk:radio-action-group object) => group}
+ "@version{2024-9-26}
   @syntax{(setf (gtk:radio-action-group object) group)}
   @argument[object]{a @class{gtk:radio-action} object}
   @argument[group]{a list of @class{gtk:radion-action} objects representing a
@@ -179,29 +182,13 @@ lambda (action current)    :no-recurse
     Accessor of the @slot[gtk:radio-action]{group} slot of the
     @class{gtk:radio-action} class.
   @end{short}
-  The @fun{gtk:radio-action-group} function returns the list representing the
-  radio group for this object. The @setf{gtk:radio-action-group} function sets
-  the radio group.
-
-  Note that the returned list is only valid until the next change to the group.
-  A common way to set up a group of radio group is the following:
-  @begin{pre}
-GSList *group = NULL;
-GtkRadioAction *action;
-
-while (/* more actions to add */)
-  {
-     action = gtk_radio_action_new (...);
-
-     gtk_radio_action_set_group (action, group);
-     group = gtk_radio_action_get_group (action);
-  @}
-  @end{pre}
+  The @setf{gtk:radio-action-group} function sets the radio group.
   @begin[Warning]{dictionary}
     The @fun{gtk:radio-action-group} function has been deprecated since version
     3.10 and should not be used in newly written code.
   @end{dictionary}
-  @see-class{gtk:radio-action}")
+  @see-class{gtk:radio-action}
+  @see-function{gtk:radio-action-join-group}")
 
 ;;; --- gtk:radio-action-value -------------------------------------------------
 
@@ -217,7 +204,7 @@ while (/* more actions to add */)
 (setf (liber:alias-for-function 'radio-action-value)
       "Accessor"
       (documentation 'radio-action-value 'function)
- "@version{#2023-3-22}
+ "@version{2024-9-26}
   @syntax{(gtk:radio-action-value object) => value}
   @syntax{(setf (gtk:radio-action-value object) value)}
   @argument[object]{a @class{gtk:radio-action} object}
@@ -237,12 +224,12 @@ while (/* more actions to add */)
   @see-class{gtk:radio-action}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_radio_action_new ()
+;;; gtk_radio_action_new
 ;;; ----------------------------------------------------------------------------
 
-(cffi:defcfun ("gtk_radio_action_new" radio-action-new) (g:object radio-action)
+(defun radio-action-new (name &optional label tooltip stock-id value)
  #+liber-documentation
- "@version{#2023-3-22}
+ "@version{2024-9-26}
   @argument[name]{a string with the unique name for the action}
   @argument[label]{a string with the label displayed in menu items and on
     buttons, or @code{nil}}
@@ -252,7 +239,7 @@ while (/* more actions to add */)
   @argument[value]{an integer with the value which the
     @fun{gtk:radio-action-current-value} function should return if this action
     is selected}
-  @return{A new @class{gtk:radio-action} object.}
+  @return{The new @class{gtk:radio-action} object.}
   @begin{short}
     Creates a new radio action.
   @end{short}
@@ -266,11 +253,12 @@ while (/* more actions to add */)
   @see-class{gtk-action-group}
   @see-function{gtk:radio-action-current-value}
   @see-function{gtk-action-group-add-action}"
-  (name :string)
-  (label :string)
-  (tooltip :string)
-  (stock-id :string)
-  (value :int))
+  (make-instance 'radio-action
+                 :name name
+                 :label (or label (cffi:null-pointer))
+                 :tooltip (or tooltip (cffi:null-pointer))
+                 :stock-id (or stock-id (cffi:null-pointer))
+                 :value (or value 0)))
 
 (export 'radio-action-new)
 
@@ -280,7 +268,7 @@ while (/* more actions to add */)
 
 (cffi:defcfun ("gtk_radio_action_join_group" radio-action-join-group) :void
  #+liber-documentation
- "@version{#2023-3-22}
+ "@version{2024-9-26}
   @argument[action]{a @class{gtk:radio-action} object}
   @argument[source]{a @class{gtk:radio-action} object whose group we are
     joining, or @code{nil} to remove the radio action from its group}
@@ -289,20 +277,20 @@ while (/* more actions to add */)
   @end{short}
   Use this in language bindings instead of the the @fun{gtk:radio-action-group}
   function.
-
-  A common way to set up a group of radio actions is the following:
-  @begin{pre}
-GtkRadioAction *action;
-GtkRadioAction *last_action;
-
-while (/* more actions to add */)
-  {
-     action = gtk_radio_action_new (...);
-
-     gtk_radio_action_join_group (action, last_action);
-     last_action = action;
-  @}
-  @end{pre}
+  @begin{examples}
+    A common way to set up a group of radio actions is the following:
+    @begin{pre}
+(let ((actions '((\"action0\" \"label\" \"tooltip\" \"stock-id\" 0)
+                 ...
+                )
+      (lastaction nil))
+   (dolist (action actions)
+     (setf action (apply #'gtk:radio-action-new action))
+     (gtk:radio-action-join-group action lastaction)
+     (setf lastaction action))
+     ... ))
+    @end{pre}
+  @end{examples}
   @begin[Warning]{dictionary}
     The @fun{gtk:radio-action-join-group} function has been deprecated since
     version 3.10 and should not be used in newly written code.

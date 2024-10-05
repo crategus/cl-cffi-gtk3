@@ -16,7 +16,10 @@
   ;; Check type initializer
   (is (eq (g:gtype "GtkActivatable")
           (g:gtype (cffi:foreign-funcall "gtk_activatable_get_type" :size))))
-  ;; Check interface properties.
+  ;; Check interface prerequisites
+  (is (equal '("GObject")
+             (glib-test:list-interface-prerequisites "GtkActivatable")))
+  ;; Check interface properties
   (is (equal '("related-action" "use-action-appearance")
              (glib-test:list-interface-properties "GtkActivatable")))
   ;; Check interface definition
@@ -29,23 +32,28 @@
                         "use-action-appearance" "gboolean" T T))
              (gobject:get-gtype-definition "GtkActivatable"))))
 
-;;; --- Properties -------------------------------------------------------------
+;;; --- Properties and Accessors -----------------------------------------------
 
-(test gtk-activatable-properties
+;;;     gtk:activatable-related-action
+
+(test gtk-activatable-related-action
   (let ((button (gtk:button-new))
         (action (gtk:action-new "action" "label" "tooltip")))
-    ;; related-action
     (is-false (gtk:activatable-related-action button))
     (is (eq action (setf (gtk:activatable-related-action button) action)))
-    (is (eq action (gtk:activatable-related-action button)))
-    ;; use-action-appearance
+    (is (eq action (gtk:activatable-related-action button)))))
+
+;;;     gtk:activatable-use-action-appearance
+
+(test gtk-activatable-use-action-appearance
+  (let ((button (gtk:button-new)))
     (is-true (gtk:activatable-use-action-appearance button))
     (is-false (setf (gtk:activatable-use-action-appearance button) nil))
     (is-false (gtk:activatable-use-action-appearance button))))
 
 ;;; --- Functions --------------------------------------------------------------
 
-;;;     gtk_activatable_do_set_related_action
-;;;     gtk_activatable_sync_action_properties
+;;;     gtk_activatable_do_set_related_action               not exported
+;;;     gtk_activatable_sync_action_properties              not exported
 
-;;; 2024-9-21
+;;; 2024-9-24

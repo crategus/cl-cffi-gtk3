@@ -35,16 +35,39 @@
 ;;;
 ;;;     GtkAction
 ;;;
+;;; Accessors
+;;;
+;;;     gtk_action_get_always_show_image
+;;;     gtk_action_set_always_show_image
+;;;     gtk_action_set_gicon
+;;;     gtk_action_get_gicon
+;;;     gtk_action_set_icon_name
+;;;     gtk_action_get_icon_name
+;;;     gtk_action_set_is_important
+;;;     gtk_action_get_is_important
+;;;     gtk_action_set_label
+;;;     gtk_action_get_label
+;;;     gtk_action_get_name
+;;;     gtk_action_get_sensitive
+;;;     gtk_action_set_sensitive
+;;;     gtk_action_set_short_label
+;;;     gtk_action_get_short_label
+;;;     gtk_action_set_stock_id
+;;;     gtk_action_get_stock_id
+;;;     gtk_action_set_tooltip
+;;;     gtk_action_get_tooltip
+;;;     gtk_action_get_visible
+;;;     gtk_action_set_visible
+;;;     gtk_action_set_visible_horizontal
+;;;     gtk_action_get_visible_horizontal
+;;;     gtk_action_set_visible_vertical
+;;;     gtk_action_get_visible_vertical
+;;;
 ;;; Functions
 ;;;
 ;;;     gtk_action_new
-;;;     gtk_action_get_name                                Accessor
 ;;;     gtk_action_is_sensitive
-;;;     gtk_action_get_sensitive                           Accessor
-;;;     gtk_action_set_sensitive                           Accessor
 ;;;     gtk_action_is_visible
-;;;     gtk_action_get_visible                             Accessor
-;;;     gtk_action_set_visible                             Accessor
 ;;;     gtk_action_activate
 ;;;     gtk_action_create_icon
 ;;;     gtk_action_create_menu_item
@@ -55,30 +78,10 @@
 ;;;     gtk_action_disconnect_accelerator
 ;;;     gtk_action_block_activate
 ;;;     gtk_action_unblock_activate
-;;;     gtk_action_get_always_show_image                   Accessor
-;;;     gtk_action_set_always_show_image                   Accessor
 ;;;     gtk_action_get_accel_path
 ;;;     gtk_action_set_accel_path
 ;;;     gtk_action_get_accel_closure
 ;;;     gtk_action_set_accel_group
-;;;     gtk_action_set_label                               Accessor
-;;;     gtk_action_get_label                               Accessor
-;;;     gtk_action_set_short_label                         Accessor
-;;;     gtk_action_get_short_label                         Accessor
-;;;     gtk_action_set_tooltip                             Accessor
-;;;     gtk_action_get_tooltip                             Accessor
-;;;     gtk_action_set_stock_id                            Accessor
-;;;     gtk_action_get_stock_id                            Accessor
-;;;     gtk_action_set_gicon                               Accessor
-;;;     gtk_action_get_gicon                               Accessor
-;;;     gtk_action_set_icon_name                           Accessor
-;;;     gtk_action_get_icon_name                           Accessor
-;;;     gtk_action_set_visible_horizontal                  Accessor
-;;;     gtk_action_get_visible_horizontal                  Accessor
-;;;     gtk_action_set_visible_vertical                    Accessor
-;;;     gtk_action_get_visible_vertical                    Accessor
-;;;     gtk_action_set_is_important                        Accessor
-;;;     gtk_action_get_is_important                        Accessor
 ;;;
 ;;; Properties
 ;;;
@@ -112,16 +115,16 @@
 ;;;
 ;;; Implemented Interfaces
 ;;;
-;;;     GtkAction implements GtkBuildable.
+;;;     GtkAction implements GtkBuildable
 ;;; ----------------------------------------------------------------------------
 
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; Class GtkAction
+;;; GtkAction
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkAction" action
+(gobject:define-gobject "GtkAction" action
   (:superclass g:object
     :export t
     :interfaces ("GtkBuildable")
@@ -177,7 +180,7 @@
 
 #+liber-documentation
 (setf (documentation 'action 'type)
- "@version{#2023-3-12}
+ "@version{2024-9-26}
   @begin{short}
     Actions represent operations that the user can be perform, along with some
     information how it should be presented in the interface.
@@ -208,11 +211,13 @@
   Each action can have one or more proxy widgets. To act as an action proxy,
   the widget needs to implement the @class{gtk:activatable} interface. Proxies
   mirror the state of the action and should change when the state of the action
-  changes. Properties that are always mirrored by proxies are @code{sensitive}
-  and @code{visible}. The @code{gicon}, @code{icon-name}, @code{label},
-  @code{short-label} and @code{stock-id} properties are only mirorred if the
-  proxy widget has the @slot[gtk:activatable]{use-action-appearance} property
-  set to @em{true}.
+  changes. Properties that are always mirrored by proxies are the
+  @slot[gtk:action]{sensitive} and @slot[gtk:action]{visible} properties. The
+  @slot[gtk:action]{gicon}, @slot[gtk:action]{icon-name},
+  @slot[gtk:action]{label}, @slot[gtk:action]{short-label} and
+  @slot[gtk:action]{stock-id} properties are only mirorred if the proxy widget
+  has the @slot[gtk:activatable]{use-action-appearance} property set to
+  @em{true}.
 
   When the proxy is activated, it should activate its action.
   @begin[Warning]{dictionary}
@@ -271,7 +276,7 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-action-group)
       "Accessor"
       (documentation 'action-action-group 'function)
- "@version{#2023-3-12}
+ "@version{2024-9-26}
   @syntax{gtk:action-action-group object) => group}
   @syntax{(setf (gtk:action-action-group object) group)}
   @argument[object]{a @class{gtk:action} object}
@@ -305,7 +310,7 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-always-show-image)
       "Accessor"
       (documentation 'action-always-show-image 'function)
- "@version{#2023-3-12}
+ "@version{2024-9-26}
   @syntax{(gtk:action-always-show-image object) => always-show}
   @syntax{(setf (gtk:action-always-show-image object) always-show)}
   @argument[object]{a @class{gtk:action} object}
@@ -318,10 +323,8 @@ lambda (action)    :no-recurse
   The @fun{gtk:action-always-show-image} function returns whether the action
   menu item proxies will ignore the @slot[gtk:settings]{gtk-menu-images}
   setting and always show their image, if available. The
-  @setf{gtk:action-always-show-image} function sets the property.
-
-  Use this if the menu item would be useless or hard to use without their
-  image.
+  @setf{gtk:action-always-show-image} function sets the property. Use this if
+  the menu item would be useless or hard to use without their image.
   @begin[Warning]{dictionary}
     The @fun{gtk:action-always-show-image} function has been deprecated since
     version 3.10 and should not be used in newly written code.
@@ -335,15 +338,15 @@ lambda (action)    :no-recurse
 (setf (documentation (liber:slot-documentation "gicon" 'action) t)
  "The @code{gicon} property of type @class{g:icon} (Read / Write) @br{}
   The icon displayed in the action. Note that the stock icon is preferred, if
-  the @code{stock-id} property holds the ID of an existing stock icon. This is
-  an appearance property and thus only applies if the
+  the @slot[gtk:action]{stock-id} property holds the ID of an existing stock
+  icon. This is an appearance property and thus only applies if the
   @slot[gtk:activatable]{use-action-appearance} property is @em{true}.")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'action-gicon)
       "Accessor"
       (documentation 'action-gicon 'function)
- "@version{#2023-3-12}
+ "@version{2024-9-26}
   @syntax{(gtk:action-gicon object) => icon}
   @syntax{(setf (gtk:action-gicon object) icon)}
   @argument[object]{a @class{gtk:action} object}
@@ -380,7 +383,7 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-hide-if-empty)
       "Accessor"
       (documentation 'action-hide-if-empty 'function)
- "@version{#2023-3-12}
+ "@version{2024-9-26}
   @syntax{(gtk:action-hide-if-empty object) => hide-if-empty}
   @syntax{(setf (gtk:action-hide-if-empty object) hide-if-empty)}
   @argument[object]{a @class{gtk:action} object}
@@ -402,17 +405,18 @@ lambda (action)    :no-recurse
 (setf (documentation (liber:slot-documentation "icon-name" 'action) t)
  "The @code{icon-name} property of type @code{:string} (Read / Write) @br{}
   The name of the icon from the icon theme. Note that the stock icon is
-  preferred, if the @code{stock-id} property holds the ID of an existing stock
-  icon, and the @class{g:icon} object is preferred if the @code{gicon} property
-  is set. This is an appearance property and thus only applies if the
-  @slot[gtk:activatable]{use-action-appearance} property is @em{true}. @br{}
+  preferred, if the @slot[gtk:action]{stock-id} property holds the ID of an
+  existing stock icon, and the @class{g:icon} object is preferred if the
+  @slot[gtk:action]{gicon} property is set. This is an appearance property and
+  thus only applies if the @slot[gtk:activatable]{use-action-appearance}
+  property is @em{true}. @br{}
   Default value: @code{nil}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'action-icon-name)
       "Accessor"
       (documentation 'action-icon-name 'function)
- "@version{#2023-3-12}
+ "@version{2024-9-26}
   @syntax{(gtk:action-icon-name object) => name}
   @syntax{(setf (gtk:action-icon-name object) name)}
   @argument[object]{a @class{gtk:action} object}
@@ -452,7 +456,7 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-is-important)
       "Accessor"
       (documentation 'action-is-important 'function)
- "@version{#2023-3-12}
+ "@version{2024-9-26}
   @syntax{(gtk:action-is-important object) => is-important}
   @syntax{(setf (gtk:action-is-important object) is-important)}
   @argument[object]{a @class{gtk:action} object}
@@ -480,7 +484,7 @@ lambda (action)    :no-recurse
  "The @code{label} property of type @code{:string} (Read / Write) @br{}
   The label used for menu items and buttons that activate this action. If the
   label is @code{nil}, GTK uses the stock label specified via the
-  @code{stock-id} property. This is an appearance property and thus
+  @slot[gtk:action]{stock-id} property. This is an appearance property and thus
   only applies if the @slot[gtk:activatable]{use-action-appearance} property is
   @em{true}. @br{}
   Default value: @code{nil}")
@@ -489,7 +493,7 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-label)
       "Accessor"
       (documentation 'action-label 'function)
- "@version{#2023-3-12}
+ "@version{2024-9-26}
   @syntax{(gtk:action-label object) => label}
   @syntax{(setf (gtk:action-label object) label)}
   @argument[object]{a @class{gtk:action} object}
@@ -520,14 +524,14 @@ lambda (action)    :no-recurse
 (setf (documentation (liber:slot-documentation "name" 'action) t)
  "The @code{name} property of type @code{:string} (Read / Write / Construct)
   @br{}
-  A unique name for the action. @br{}
+  The unique name for the action. @br{}
   Default value: @code{nil}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'action-name)
       "Accessor"
       (documentation 'action-name 'function)
- "@version{#2023-3-12}
+ "@version{2024-9-26}
   @syntax{(gtk:action-name object) => name}
   @argument[object]{a @class{gtk:action} object}
   @argument[name]{a string with the name of the action}
@@ -554,7 +558,7 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-sensitive)
       "Accessor"
       (documentation 'action-sensitive 'function)
- "@version{#2023-3-12}
+ "@version{2024-9-26}
   @syntax{(gtk:action-sensitive object) => sensitive}
   @syntax{(setf (gtk:action-sensitive object) sensitive)}
   @argument[object]{a @class{gtk:action} object}
@@ -580,7 +584,7 @@ lambda (action)    :no-recurse
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "short-label" 'action) t)
  "The @code{short-label} property of type @code{:string} (Read / Write) @br{}
-  A shorter label that may be used on toolbar buttons. This is an appearance
+  The shorter label that may be used on toolbar buttons. This is an appearance
   property and thus only applies if the
   @slot[gtk:activatable]{use-action-appearance} property is @em{true}. @br{}
   Default value: @code{nil}")
@@ -589,7 +593,7 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-short-label)
       "Accessor"
       (documentation 'action-short-label 'function)
- "@version{#2023-3-12}
+ "@version{2024-9-26}
   @syntax{(gtk:action-short-label object) => label}
   @syntax{(setf (gtk:action-short-label object) label)}
   @argument[object]{a @class{gtk:action} object}
@@ -625,7 +629,7 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-stock-id)
       "Accessor"
       (documentation 'action-stock-id 'function)
- "@version{#2023-3-12}
+ "@version{2024-9-26}
   @syntax{(gtk:action-stock-id object) => stock-id}
   @syntax{(setf (gtk:action-stock-id object) stock-id)}
   @argument[object]{a @class{gtk:action} object}
@@ -652,14 +656,14 @@ lambda (action)    :no-recurse
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "tooltip" 'action) t)
  "The @code{tooltip} property of type @code{:string} (Read / Write) @br{}
-  A tooltip for this action. @br{}
+  The tooltip for this action. @br{}
   Default value: @code{nil}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'action-tooltip)
       "Accessor"
       (documentation 'action-tooltip 'function)
- "@version{#2023-3-12}
+ "@version{2024-9-26}
   @syntax{(gtk:action-tooltip object) => tooltip}
   @syntax{(setf (gtk:action-tooltip object) tooltip)}
   @argument[object]{a @class{gtk:action} object}
@@ -688,7 +692,7 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-visible)
       "Accessor"
       (documentation 'action-visible 'function)
- "@version{#2023-3-12}
+ "@version{2024-9-26}
   @syntax{(gtk:action-visible object) => visible}
   @syntax{(setf (gtk:action-visible object) visible)}
   @argument[object]{a @class{gtk:action} object}
@@ -723,7 +727,7 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-visible-horizontal)
       "Accessor"
       (documentation 'action-visible-horizontal 'function)
- "@version{#2023-3-12}
+ "@version{2024-9-26}
   @syntax{(gtk:action-visible-horizontal object) => visible}
   @syntax{(setf (gtk:action-visible-horizontal object) visible)}
   @argument[object]{a @class{gtk:action} object}
@@ -755,7 +759,7 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-visible-overflown)
       "Accessor"
       (documentation 'action-visible-overflown 'function)
- "@version{#2023-3-12}
+ "@version{2024-9-26}
   @syntax{(gtk:action-visible-overflow object) => visible}
   @syntax{(setf (gtk:action-visible-overflow object) visible)}
   @argument[object]{a @class{gtk:action} object}
@@ -786,7 +790,7 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-visible-vertical)
       "Accessor"
       (documentation 'action-visible-vertical 'function)
- "@version{#2023-3-12}
+ "@version{2024-9-26}
   @syntax{(gtk:action-visible-vertical object) => visible}
   @syntax{(setf (gtk:action-visible-vertical object) visible)}
   @argument[object]{a @class{gtk:action} object}
@@ -805,20 +809,21 @@ lambda (action)    :no-recurse
   @see-class{gtk:action}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_action_new ()
+;;; gtk_action_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline action-new))
 
-(defun action-new (name &optional (label nil) (tooltip nil) (stock-id nil))
+(defun action-new (name &optional label tooltip stock-id)
  #+liber-documentation
- "@version{#2022-3-12}
+ "@version{2024-9-26}
   @argument[name]{a string with a unique name for the action}
-  @argument[label]{a string with the label displayed in menu items and on
-    buttons, or @code{nil}}
-  @argument[tooltip]{a string with a tooltip for the action, or @code{nil}}
-  @argument[stock-id]{a string with the stock icon to display in widgets
-    representing the action, or @code{nil}}
+  @argument[label]{an optional string with the label displayed in menu items
+    and on buttons, or @code{nil}}
+  @argument[tooltip]{an optional string with a tooltip for the action, or
+    @code{nil}}
+  @argument[stock-id]{an optional string with the stock icon to display in
+    widgets representing the action, or @code{nil}}
   @return{The new @class{gtk:action} object.}
   @begin{short}
     Creates a new action.
@@ -843,19 +848,19 @@ lambda (action)    :no-recurse
   @see-function{g:action-enabled}"
   (make-instance 'action
                  :name name
-                 :label (if label label (cffi:null-pointer))
-                 :tooltip (if tooltip tooltip (cffi:null-pointer))
-                 :stock-id (if stock-id stock-id (cffi:null-pointer))))
+                 :label (or label (cffi:null-pointer))
+                 :tooltip (or tooltip (cffi:null-pointer))
+                 :stock-id (or stock-id (cffi:null-pointer))))
 
 (export 'action-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_action_is_sensitive ()
+;;; gtk_action_is_sensitive
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_action_is_sensitive" action-is-sensitive) :boolean
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{2024-9-26}
   @argument[action]{a @class{gtk:action} object}
   @return{@em{True} if the action and its associated action group are both
     sensitive.}
@@ -874,12 +879,12 @@ lambda (action)    :no-recurse
 (export 'action-is-sensitive)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_action_is_visible ()
+;;; gtk_action_is_visible
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_action_is_visible" action-is-visible) :boolean
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{2024-9-26}
   @argument[action]{a @class{gtk:action} object}
   @return{@em{True} if the action and its associated action group are
     both visible.}
@@ -898,12 +903,12 @@ lambda (action)    :no-recurse
 (export 'action-is-visible)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_action_activate ()
+;;; gtk_action_activate
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_action_activate" action-activate) :void
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{2024-9-26}
   @argument[action]{a @class{gtk:action} object}
   @begin{short}
     Emits the @code{\"activate\"} signal on the specified action, if it is not
@@ -925,12 +930,12 @@ lambda (action)    :no-recurse
 (export 'action-activate)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_action_create_icon ()
+;;; gtk_action_create_icon
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_action_create_icon" action-create-icon) (g:object widget)
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{2024-9-26}
   @argument[action]{a @class{gtk:action} object}
   @argument[size]{a value of the @symbol{gtk:icon-size} enumeration for the
     size of the icon that should be created}
@@ -960,13 +965,13 @@ lambda (action)    :no-recurse
 (export 'action-create-icon)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_action_create_menu_item ()
+;;; gtk_action_create_menu_item
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_action_create_menu_item" action-create-menu-item)
     (g:object image-menu-item)
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{2024-9-26}
   @argument[action]{a @class{gtk:action} object}
   @return{The @class{gtk:image-menu-item} widget connected to the action.}
   @short{Creates a menu item widget that proxies for the given action.}
@@ -985,13 +990,13 @@ lambda (action)    :no-recurse
 (export 'action-create-menu-item)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_action_create_tool_item ()
+;;; gtk_action_create_tool_item
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_action_create_tool_item" action-create-tool-item)
     (g:object tool-button)
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{2024-9-26}
   @argument[action]{a @class{gtk:action} object}
   @return{The @class{gtk:tool-button} widget connected to the action.}
   @short{Creates a toolbar item that proxies for the given action.}
@@ -1011,12 +1016,12 @@ lambda (action)    :no-recurse
 (export 'action-create-tool-item)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_action_create_menu ()
+;;; gtk_action_create_menu
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_action_create_menu" action-create-menu) g:object
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{2024-9-26}
   @argument[action]{a @class{gtk:action} object}
   @return{The @class{gtk:menu} widget provided by the action, or @code{nil}.}
   @begin{short}
@@ -1040,13 +1045,13 @@ lambda (action)    :no-recurse
 (export 'action-create-menu)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_action_get_proxies () -> action-proxies
+;;; gtk_action_get_proxies
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_action_get_proxies" action-proxies)
     (g:slist-t g:object :free-from-foreign nil)
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{2024-9-26}
   @argument[action]{a @class{gtk:action} object}
   @return{The list of @class{gtk:widget} proxy widgets.}
   @short{Returns the proxy widgets for the action.}
@@ -1063,12 +1068,13 @@ lambda (action)    :no-recurse
 (export 'action-proxies)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_action_connect_accelerator ()
+;;; gtk_action_connect_accelerator
 ;;; ----------------------------------------------------------------------------
 
-(cffi:defcfun ("gtk_action_connect_accelerator" action-connect-accelerator) :void
+(cffi:defcfun ("gtk_action_connect_accelerator" action-connect-accelerator)
+    :void
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{2024-9-26}
   @argument[action]{a @class{gtk:action} object}
   @begin{short}
     Installs the accelerator for the action if the action has an accel path and
@@ -1099,13 +1105,13 @@ lambda (action)    :no-recurse
 (export 'action-connect-accelerator)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_action_disconnect_accelerator ()
+;;; gtk_action_disconnect_accelerator
 ;;; ----------------------------------------------------------------------------
 
-(cffi:defcfun ("gtk_action_disconnect_accelerator" action-disconnect-accelerator)
-    :void
+(cffi:defcfun ("gtk_action_disconnect_accelerator"
+               action-disconnect-accelerator) :void
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{2024-9-26}
   @argument[action]{a @class{gtk:action} object}
   @begin{short}
     Undoes the effect of one call to the @fun{gtk:action-connect-accelerator}
@@ -1126,12 +1132,12 @@ lambda (action)    :no-recurse
 (export 'action-disconnect-accelerator)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_action_block_activate ()
+;;; gtk_action_block_activate
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_action_block_activate" action-block-activate) :void
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2024-9-26}
   @argument[action]{a @class{gtk:action} object}
   @short{Disable activation signals from the action.}
   This is needed when updating the state of your @class{gtk:activatable} proxy
@@ -1154,12 +1160,12 @@ lambda (action)    :no-recurse
 (export 'action-block-activate)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_action_unblock_activate ()
+;;; gtk_action_unblock_activate
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_action_unblock_activate" action-unblock-activate) :void
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2024-9-26}
   @argument[action]{a @class{gtk:action} object}
   @short{Reenable activation signals from the action.}
   @begin[Warning]{dictionary}
@@ -1177,8 +1183,8 @@ lambda (action)    :no-recurse
 (export 'action-unblock-activate)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_action_get_accel_path ()
-;;; gtk_action_set_accel_path () -> action-accel-path
+;;; gtk_action_get_accel_path
+;;; gtk_action_set_accel_path
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf action-accel-path) (path action)
@@ -1190,20 +1196,18 @@ lambda (action)    :no-recurse
 
 (cffi:defcfun ("gtk_action_get_accel_path" action-accel-path) :string
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{2024-9-26}
   @syntax{(gtk:action-accel-path action) => path}
   @syntax{(setf (gtk:action-accel-path action) path)}
   @argument[action]{a @class{gtk:action} object}
   @argument[path]{a string with the accelerator path}
   @begin{short}
-    Accessor of the accel path for the action.
+    The @fun{gtk:action-accel-path} function returns the accel path for this
+    action, or @code{nil} if none is set.
   @end{short}
-  The @fun{gtk:action-accel-path} function returns the accel path for this
-  action, or @code{nil} if none is set. The @setf{gtk:action-accel-path}
-  function sets the accel path.
-
-  All proxy widgets associated with the action will have this accel path, so
-  that their accelerators are consistent.
+  The @setf{gtk:action-accel-path} function sets the accel path. All proxy
+  widgets associated with the action will have this accel path, so that their
+  accelerators are consistent.
   @begin[Warning]{dictionary}
     The @fun{gtk:action-accel-path} function has been deprecated since version
     3.10 and should not be used in newly written code. Use the
@@ -1218,7 +1222,7 @@ lambda (action)    :no-recurse
 (export 'action-accel-path)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_action_get_accel_closure ()                        not exported
+;;; gtk_action_get_accel_closure                            not exported
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_action_get_accel_closure" action-accel-closure)
@@ -1226,10 +1230,8 @@ lambda (action)    :no-recurse
  #+liber-documentation
  "@version{#2023-3-12}
   @argument[action]{a @class{gtk:action} object}
-  @begin{return}
-    The accel closure for this action.
-  @end{return}
-  The returned closure is owned by GTK and must not be unreffed or modified.
+  @return{The accel closure for this action. The returned closure is owned by
+    GTK and must not be unreffed or modified.}
   @short{Returns the accel closure for this action.}
   @begin[Warning]{dictionary}
     The @fun{gtk:action-get-accel-closure} function has been deprecated since
@@ -1241,12 +1243,12 @@ lambda (action)    :no-recurse
   (action (g:object action)))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_action_set_accel_group ()
+;;; gtk_action_set_accel_group
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_action_set_accel_group" action-set-accel-group) :void
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{2024-9-26}
   @argument[action]{a @class{gtk:action} object}
   @argument[group]{a @class{gtk:accel-group} object or @code{nil}}
   @begin{short}

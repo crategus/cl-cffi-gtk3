@@ -5,7 +5,7 @@
 
 (defvar *verbose-gtk-action* nil)
 
-;;;   GtkAction
+;;;     GtkAction
 
 (test gtk-action-class
   ;; Check type
@@ -62,7 +62,159 @@
                          "visible-vertical" "gboolean" T T)))
              (gobject:get-gtype-definition "GtkAction"))))
 
-;;;   gtk_action_new
+;;; --- Signals ----------------------------------------------------------------
+
+(test gtk-action-activate-signal
+  (let* ((name "activate")
+         (gtype (g:gtype "GtkAction"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
+    (is (equal '(:NO-RECURSE :RUN-FIRST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    ;; Check return type
+    (is (string= "void" (g:type-name (g:signal-query-return-type query))))
+    ;; Check parameter types
+    (is (equal '()
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
+
+;;; --- Properties -------------------------------------------------------------
+
+;;;     gtk:action-action-group
+
+(test gtk-action-action-group
+  (let ((group (gtk:action-group-new "ActionGroup"))
+        (action (gtk:action-new "action")))
+    (is-false (gtk:action-action-group action))
+    (is (eq group (setf (gtk:action-action-group action) group)))
+    (is (eq group (gtk:action-action-group action)))))
+
+;;;     gtk:action-always-show-image
+
+(test gtk-action-always-show-image
+  (let ((action (gtk:action-new "action")))
+    (is-false (gtk:action-always-show-image action))
+    (is-true (setf (gtk:action-always-show-image action) t))
+    (is-true (gtk:action-always-show-image action))))
+
+;;;     gtk:action-gicon
+
+(test gtk-action-gicon
+  (let* ((action (gtk:action-new "action"))
+        (icon "edit-find")
+        (gicon (g:themed-icon-new icon)))
+    (is-true (gtk:icon-theme-has-icon (gtk:icon-theme-default) icon))
+    (is-false (gtk:action-gicon action))
+    (is (eq gicon (setf (gtk:action-gicon action) gicon)))
+    (is (eq gicon (gtk:action-gicon action)))))
+
+;;;     gtk:action-hide-if-empty
+
+(test gtk-action-hide-if-empty
+  (let ((action (gtk:action-new "action")))
+    (is-true (gtk:action-hide-if-empty action))
+    (is-false (setf (gtk:action-hide-if-empty action) nil))
+    (is-false (gtk:action-hide-if-empty action))))
+
+;;;     gtk:action-icon-name
+
+(test gtk-action-icon-name
+  (let ((action (gtk:action-new "action")))
+    (is-false (gtk:action-icon-name action))
+    (is (string= "edit-find" (setf (gtk:action-icon-name action) "edit-find")))
+    (is (string= "edit-find" (gtk:action-icon-name action)))))
+
+;;;     gtk:action-is-important
+
+(test gtk-action-is-important
+  (let ((action (gtk:action-new "action")))
+    (is-false (gtk:action-is-important action))
+    (is-true (setf (gtk:action-is-important action) t))
+    (is-true (gtk:action-is-important action))))
+
+;;;     gtk:action-label
+
+(test gtk-action-label
+  (let ((action (gtk:action-new "action")))
+    (is-false (gtk:action-label action))
+    (is (string= "label" (setf (gtk:action-label action) "label")))
+    (is (string= "label" (gtk:action-label action)))))
+
+;;;     gtk:action-name
+
+(test gtk-action-name
+  (let ((action (gtk:action-new "action")))
+    (is (string= "action" (gtk:action-name action)))))
+
+;;;     gtk:action-sensitive
+
+(test gtk-action-sensitive
+  (let ((action (gtk:action-new "action")))
+    (is-true (gtk:action-sensitive action))
+    (setf (gtk:action-sensitive action) nil)
+    (is-false (gtk:action-sensitive action))))
+
+;;;     gtk:action-short-label
+
+(test gtk-action-short-label
+  (let ((action (gtk:action-new "action")))
+    (is-false (gtk:action-short-label action))
+    (is (string= "label" (setf (gtk:action-short-label action) "label")))
+    (is (string= "label" (gtk:action-short-label action)))))
+
+;;;     gtk:action-stock-id
+
+(test gtk-action-stock-id
+  (let ((action (gtk:action-new "action")))
+    (is-false (gtk:action-stock-id action))
+    (is (string= "gtk-ok" (setf (gtk:action-stock-id action) "gtk-ok")))
+    (is (string= "gtk-ok" (gtk:action-stock-id action)))))
+
+;;;     tooltip
+
+(test gtk-action-tooltip
+  (let ((action (gtk:action-new "action")))
+    (is-false (gtk:action-tooltip action))
+    (is (string= "tooltip" (setf (gtk:action-tooltip action) "tooltip")))
+    (is (string= "tooltip" (gtk:action-tooltip action)))))
+
+;;;     gtk:action-visible
+
+(test gtk-action-visible
+  (let ((action (gtk:action-new "action")))
+    (is-true (gtk:action-visible action))
+    (setf (gtk:action-visible action) nil)
+    (is-false (gtk:action-visible action))))
+
+;;;     visible-horizontal
+
+(test gtk-action-visible-horizontal
+  (let ((action (gtk:action-new "action")))
+    (is-true (gtk:action-visible-horizontal action))
+    (setf (gtk:action-visible-horizontal action) nil)
+    (is-false (gtk:action-visible-horizontal action))))
+
+;;;     visible-overflown
+
+(test gtk-action-visible-overflown
+  (let ((action (gtk:action-new "action")))
+    (is-true (gtk:action-visible-overflown action))
+    (setf (gtk:action-visible-overflown action) nil)
+    (is-false (gtk:action-visible-overflown action))))
+
+;;;     visible-vertical
+
+(test gtk-action-visible-vertical
+  (let ((action (gtk:action-new "action")))
+    (is-true (gtk:action-visible-vertical action))
+    (setf (gtk:action-visible-vertical action) nil)
+    (is-false (gtk:action-visible-vertical action))))
+
+;;; --- Functions --------------------------------------------------------------
+
+;;;     gtk_action_new
 
 (test gtk-action-new.1
   (let ((action (gtk:action-new "action")))
@@ -78,79 +230,67 @@
     (is (string= "tooltip" (gtk:action-tooltip action)))
     (is (string= "stock-id" (gtk:action-stock-id action)))))
 
-;;;   gtk-action-name
+;;;     gtk_action_is_sensitive
 
-(test gtk-action-name
+(test gtk-action-is-sensitive
   (let ((action (gtk:action-new "action")))
-    (is (string= "action" (gtk:action-name action)))))
-
-;;;   gtk-action-is-sensitive
-;;;   gtk-action-sensitive
-
-(test gtk-action-sensitive
-  (let ((action (gtk:action-new "action")))
-    (is-true (gtk:action-sensitive action))
     (is-true (gtk:action-is-sensitive action))
     (setf (gtk:action-sensitive action) nil)
-    (is-false (gtk:action-sensitive action))
     (is-false (gtk:action-is-sensitive action))))
 
-;;;   gtk-action-is-visible
-;;;   gtk-action-visible
+;;;     gtk_action_is_visible
 
-(test gtk-action-visible
+(test gtk-action-is-visible
   (let ((action (gtk:action-new "action")))
-    (is-true (gtk:action-visible action))
     (is-true (gtk:action-is-visible action))
     (setf (gtk:action-visible action) nil)
-    (is-false (gtk:action-visible action))
     (is-false (gtk:action-is-visible action))))
 
-;;;   gtk-action-activate
+;;;     gtk_action_activate
 
-#+nil
 (test gtk-action-activate
   (let ((message nil))
-    (within-main-loop
+    (gtk:within-main-loop
       (let ((action (gtk:action-new "action")))
-        (g-signal-connect action "activate"
+        (g:signal-connect action "activate"
            (lambda (action)
              (setf message "ACTIVATE CALLED")
              (when *verbose-gtk-action*
-               (format t "~&Signal ACTIVATE for ~A~%" (gtk:action-name action)))
-             (leave-gtk-main)))
+               (format t "~&Signal ACTIVATE for ~a~%" (gtk:action-name action)))
+             (gtk:leave-gtk-main)))
         (gtk:action-activate action)))
-    (join-gtk-main)
-    (is (equal "ACTIVATE CALLED" message))))
+    (gtk:join-gtk-main)
+    (is (string= "ACTIVATE CALLED" message))))
 
-;;;   gtk-action-create-icon
+;;;     gtk_action_create_icon
 
 (test gtk-action-create-icon
   (let ((action (gtk:action-new "action")))
-    ;; Check for a stock-id, also check for icon-name and gicon
+    ;; Check for a stock-id and for icon-name and gicon
     (setf (gtk:action-stock-id action) "gtk-ok")
     (is (typep (gtk:action-create-icon action :dialog) 'gtk:image))))
 
-;;;   gtk-action-create-menu-item
+;;;     gtk_action_create_menu_item
 
 (test gtk-action-create-menu-item
   (let ((action (gtk:action-new "action")))
     (is (typep (gtk:action-create-menu-item action) 'gtk:image-menu-item))))
 
-;;;   gtk-action-create-tool-item
+;;;     gtk_action_create_tool_item
 
 (test gtk-action-create-tool-item
   (let ((action (gtk:action-new "action")))
     (is (typep (gtk:action-create-tool-item action) 'gtk:tool-button))))
 
-;;;   gtk-action-create-menu
+;;;     gtk_action_create_menu
+
+;; TODO: Create a test for a result not nil
 
 (test gtk-action-create-menu
   (let ((action (gtk:action-new "action")))
-    ;; Create an test for an result not nil
     (is-false (gtk:action-create-menu action))))
 
-;;;   gtk_action_get_proxies
+;;;     gtk_action_get_proxies
 
 (test gtk-action-proxies
   (let ((action (gtk:action-new "action")))
@@ -162,41 +302,57 @@
     (gtk:action-create-menu-item action)
     (is (typep (first (gtk:action-proxies action)) 'gtk:image-menu-item))))
 
-;;;   gtk-action-connect-accelerator
+;;;     gtk_action_connect_accelerator
+;;;     gtk_action_disconnect_accelerator
 
 (test gtk-action-connect-accelerator
-  (let ((accel-group (gtk:accel-group-new))
+  (let ((group (gtk:accel-group-new))
         (action (gtk:action-new "action")))
-    (setf (gtk:action-accel-path action) "<test>/File/Exit")
-    (gtk:action-set-accel-group action accel-group)
-    (gtk:action-connect-accelerator action)))
+    (is (string= "<test>/File/Exit"
+                 (setf (gtk:action-accel-path action) "<test>/File/Exit")))
+    (is-false (gtk:action-set-accel-group action group))
+    (is-false (gtk:action-connect-accelerator action))
+    (is-false (gtk:action-disconnect-accelerator action))))
 
-;;;    gtk_action_disconnect_accelerator
-;;;    gtk_action_block_activate
-;;;    gtk_action_unblock_activate
-;;;    gtk_action_get_always_show_image
-;;;    gtk_action_set_always_show_image
-;;;    gtk_action_get_accel_path
-;;;    gtk_action_set_accel_path
-;;;    gtk_action_get_accel_closure
-;;;    gtk_action_set_accel_group
-;;;    gtk_action_set_label
-;;;    gtk_action_get_label
-;;;    gtk_action_set_short_label
-;;;    gtk_action_get_short_label
-;;;    gtk_action_set_tooltip
-;;;    gtk_action_get_tooltip
-;;;    gtk_action_set_stock_id
-;;;    gtk_action_get_stock_id
-;;;    gtk_action_set_gicon
-;;;    gtk_action_get_gicon
-;;;    gtk_action_set_icon_name
-;;;    gtk_action_get_icon_name
-;;;    gtk_action_set_visible_horizontal
-;;;    gtk_action_get_visible_horizontal
-;;;    gtk_action_set_visible_vertical
-;;;    gtk_action_get_visible_vertical
-;;;    gtk_action_set_is_important
-;;;    gtk_action_get_is_important
+;;;      gtk_action_block_activate
+;;;      gtk_action_unblock_activate
 
-;;; 2024-9-23
+;; TODO: This example does not work. The code hangs.
+
+#+nil
+(test gtk-action-block/unblock-activate
+  (let ((message nil))
+    (gtk:within-main-loop
+      (let ((action (gtk:action-new "action")))
+        (g:signal-connect action "activate"
+           (lambda (action)
+             (setf message "ACTIVATE CALLED")
+             (when *verbose-gtk-action*
+               (format t "~&Signal ACTIVATE for ~a~%" (gtk:action-name action)))
+             (gtk:leave-gtk-main)))
+        (gtk:action-block-activate action)
+        (gtk:action-activate action)
+        (gtk:action-unblock-activate action)))
+    (gtk:join-gtk-main)
+    (is (string= "ACTIVATE CALLED" message))))
+
+;;;      gtk_action_get_accel_path
+;;;      gtk_action_set_accel_path
+
+(test gtk-action-accel-path
+  (let ((action (gtk:action-new "action")))
+    (is-false (gtk:action-accel-path action))
+    (is (string= "<test>/File/Exit"
+                 (setf (gtk:action-accel-path action) "<test>/File/Exit")))
+    (is (string= "<test>/File/Exit" (gtk:action-accel-path action)))))
+
+;;;      gtk_action_get_accel_closure                       not exported
+
+;;;      gtk_action_set_accel_group
+
+(test gtk-action-set-accel-group
+  (let ((action (gtk:action-new "action"))
+        (group (gtk:accel-group-new)))
+    (is-false (gtk:action-set-accel-group action group))))
+
+;;; 2024-9-25

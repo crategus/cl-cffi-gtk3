@@ -35,14 +35,17 @@
 ;;;
 ;;;     GtkToggleAction
 ;;;
-;;; Functions
+;;; Accessors
 ;;;
-;;;     gtk_toggle_action_new
-;;;     gtk_toggle_action_toggled
 ;;;     gtk_toggle_action_set_active
 ;;;     gtk_toggle_action_get_active
 ;;;     gtk_toggle_action_set_draw_as_radio
 ;;;     gtk_toggle_action_get_draw_as_radio
+;;;
+;;; Functions
+;;;
+;;;     gtk_toggle_action_new
+;;;     gtk_toggle_action_toggled
 ;;;
 ;;; Properties
 ;;;
@@ -62,16 +65,16 @@
 ;;;
 ;;; Implemented Interfaces
 ;;;
-;;;     GtkToggleAction implements GtkBuildable.
+;;;     GtkToggleAction implements GtkBuildable
 ;;; ----------------------------------------------------------------------------
 
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkToggleAction
+;;; GtkToggleAction
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkToggleAction" toggle-action
+(gobject:define-gobject "GtkToggleAction" toggle-action
   (:superclass action
     :export t
     :interfaces ("GtkBuildable")
@@ -85,7 +88,7 @@
 
 #+liber-documentation
 (setf (documentation 'toggle-action 'type)
- "@version{#2023-3-28}
+ "@version{2024-9-26}
   @begin{short}
     The @class{gtk:toggle-action} object corresponds roughly to a
     @class{gtk:check-menu-item} widget.
@@ -130,7 +133,7 @@ lambda (action)    :run-first
 (setf (liber:alias-for-function 'toggle-action-active)
       "Accessor"
       (documentation 'toggle-action-active 'function)
- "@version{#2023-3-28}
+ "@version{2024-9-26}
   @syntax{(gtk:toggle-action-active object) => is-active}
   @syntax{(setf (gtk:toggle-action-active object) is-active)}
   @argument[object]{a @class{gtk:toggle-action} object}
@@ -140,8 +143,8 @@ lambda (action)    :run-first
     @class{gtk:toggle-action} class.
   @end{short}
   The @fun{gtk:toggle-action-active} function returns the checked state of the
-  toggle action. The @setf{(setf gtk:toggle-action-action)} functoin sets the
-  checked state.
+  toggle action. The @setf{gtk:toggle-action-active} function sets the checked
+  state.
   @begin[Warning]{dictionary}
     The @fun{gtk:toggle-action-active} function has been deprecated since
     version 3.10 and should not be used in newly written code.
@@ -161,7 +164,7 @@ lambda (action)    :run-first
 (setf (liber:alias-for-function 'toggle-action-draw-as-radio)
       "Accessor"
       (documentation 'toggle-action-draw-as-radio 'function)
- "@version{#2023-3-28}
+ "@version{2024-9-26}
   @syntax{(gtk:toggle-action-draw-as-radio object) => draw-as-radio}
   @syntax{(setf (gtk:toggle-action-draw-as-radio object) draw-as-radio)}
   @argument[object]{a @class{gtk:toggle-action} object}
@@ -182,19 +185,19 @@ lambda (action)    :run-first
   @see-class{gtk:toggle-action}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_toggle_action_new ()
+;;; gtk_toggle_action_new
 ;;; ----------------------------------------------------------------------------
 
-(cffi:defcfun ("gtk_toggle_action_new" toggle-action-new)
-    (g:object toggle-action)
- "@version{#2023-3-28}
+(defun toggle-action-new (name &optional label tooltip stock-id)
+ "@version{2024-9-26}
   @argument[name]{a string with a unique name for the action}
-  @argument[label]{a string with the label displayed in menu items and on
-    buttons, or @code{nil}}
-  @argument[tooltip]{a string with a tooltip for the action, or @code{nil}}
-  @argument[stock-id]{a string with the stock icon to display in widgets
-    representing the action, or @code{nil}}
-  @return{A new @class{gtk:toggle-action} object.}
+  @argument[label]{an optional string with the label displayed in menu items
+    and on buttons, or @code{nil}}
+  @argument[tooltip]{an optional string with a tooltip for the action, or
+    @code{nil}}
+  @argument[stock-id]{an optional string with the stock icon to display in
+    widgets representing the action, or @code{nil}}
+  @return{The new @class{gtk:toggle-action} object.}
   @begin{short}
     Creates a new toggle action.
   @end{short}
@@ -207,19 +210,20 @@ lambda (action)    :run-first
   @see-class{gtk:toggle-action}
   @see-class{gtk:action-group}
   @see-function{gtk:action-group-add-action}"
-  (name :string)
-  (label :string)
-  (tooltip :string)
-  (stock-id :string))
+  (make-instance 'toggle-action
+                 :name name
+                 :label (or label (cffi:null-pointer))
+                 :tooltip (or tooltip (cffi:null-pointer))
+                 :stock-id (or stock-id (cffi:null-pointer))))
 
 (export 'toggle-action-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_toggle_action_toggled ()
+;;; gtk_toggle_action_toggled
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_toggle_action_toggled" toggle-action-toggled) :void
- "@version{#2023-3-28}
+ "@version{2024-9-26}
   @argument[action]{a @class{gtk:toggle-action} object}
   @begin{short}
     Emits the @code{\"toggled\"} signal on the toggle action.

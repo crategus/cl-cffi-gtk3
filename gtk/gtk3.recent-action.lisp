@@ -35,12 +35,15 @@
 ;;;
 ;;;     GtkRecentAction
 ;;;
+;;; Accessors
+;;;
+;;;     gtk_recent_action_get_show_numbers
+;;;     gtk_recent_action_set_show_numbers
+;;;
 ;;; Functions
 ;;;
 ;;;     gtk_recent_action_new
 ;;;     gtk_recent_action_new_for_manager
-;;;     gtk_recent_action_get_show_numbers                 Accessor
-;;;     gtk_recent_action_set_show_numbers                 Accessor
 ;;;
 ;;; Properties
 ;;;
@@ -54,16 +57,16 @@
 ;;;
 ;;; Implemented Interfaces
 ;;;
-;;;     GtkRecentAction implements GtkBuildable and GtkRecentChooser.
+;;;     GtkRecentAction implements GtkBuildable and GtkRecentChooser
 ;;; ----------------------------------------------------------------------------
 
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkRecentAction
+;;; GtkRecentAction
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkRecentAction" recent-action
+(gobject:define-gobject "GtkRecentAction" recent-action
   (:superclass action
    :export t
    :interfaces ("GtkBuildable"
@@ -75,7 +78,7 @@
 
 #+liber-documentation
 (setf (documentation 'recent-action 'type)
- "@version{#2023-3-24}
+ "@version{2024-9-26}
   @begin{short}
     The @class{gtk:recent-action} object represents a list of recently used
     files, which can be shown by widgets such as a
@@ -112,7 +115,7 @@
 (setf (liber:alias-for-function 'recent-action-show-numbers)
       "Accessor"
       (documentation 'recent-action-show-numbers 'function)
- "@version{#2023-3-24}
+ "@version{2024-9-26}
   @syntax{(gtk:recent-action-show-numbers object) => show-numbers}
   @syntax{(setf (gtk:recent-action-show-numbers object) show-numbers)}
   @argument[object]{a @class{gtk:recent-action} object}
@@ -133,17 +136,18 @@
   @see-class{gtk:recent-action}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_recent_action_new ()
+;;; gtk_recent_action_new
 ;;; ----------------------------------------------------------------------------
 
-(cffi:defcfun ("gtk_recent_action_new" recent-action-new) (g:object action)
- "@version{#2023-3-24}
+(defun recent-action-new (name &optional label tooltip stock-id)
+ "@version{2024-9-26}
   @argument[name]{a string with a unique name for the action}
-  @argument[label]{a string with the label displayed in menu items and on
-    buttons, or @code{nil}}
-  @argument[tooltip]{a string with a tooltip for the action, or @code{nil}}
-  @argument[stock-id]{a string with the stock icon to display in widgets
-    representing the action, or @code{nil}}
+  @argument[label]{an optional string with the label displayed in menu items
+    and on buttons, or @code{nil}}
+  @argument[tooltip]{an optional string with a tooltip for the action, or
+    @code{nil}}
+  @argument[stock-id]{an optional string with the stock icon to display in
+    widgets representing the action, or @code{nil}}
   @return{The newly created @class{gtk:recent-action} object.}
   @begin{short}
     Creates a new recent action.
@@ -157,20 +161,21 @@
   @see-class{gtk:recent-action}
   @see-class{gtk:action-group}
   @see-function{gtk:action-group-add-action}"
-  (name :string)
-  (label :string)
-  (tooltip :string)
-  (stock-id :string))
+  (make-instance 'recent-action
+                 :name name
+                 :label (or label (cffi:null-pointer))
+                 :tooltip (or tooltip (cffi:null-pointer))
+                 :stock-id (or stock-id (cffi:null-pointer))))
 
 (export 'recent-action-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_recent_action_new_for_manager ()
+;;; gtk_recent_action_new_for_manager
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_recent_action_new_for_manager"
                recent-action-new-for-manager) (g:object action)
- "@version{#2023-3-24}
+ "@version{2024-9-26}
   @argument[name]{a string with a unique name for the action}
   @argument[label]{a string with the label displayed in menu items and on
     buttons, or @code{nil}}
@@ -186,8 +191,8 @@
   To add the action to a @class{gtk:action-group} object and set the accelerator
   for the action, call the @fun{gtk:action-group-add-action} function.
   @begin[Warning]{dictionary}
-    The @fun{gtk:recent-action-new-manager} function has been deprecated since
-    version 3.10 and should not be used in newly written code.
+    The @fun{gtk:recent-action-new-for-manager} function has been deprecated
+    since version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:recent-action}
   @see-class{gtk:action-group}
