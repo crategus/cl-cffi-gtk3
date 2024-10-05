@@ -9,7 +9,7 @@
 
 (in-package :gtk3-example)
 
-(gobject:define-g-object-subclass "Message" message
+(gobject:define-gobject-subclass "Message" message
   (:superclass g:object
    :export t
    :interfaces ())
@@ -63,7 +63,7 @@
 ;; does not work as expected. At compile time the type Message is not known
 ;; to the GType system. Improve this?!
 
-(gobject:define-g-object-subclass "MessageRow" message-row
+(gobject:define-gobject-subclass "MessageRow" message-row
   (:superclass gtk:list-box-row
    :export t
    :interfaces ())
