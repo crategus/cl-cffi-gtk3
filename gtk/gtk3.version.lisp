@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -55,7 +55,7 @@
         (slot-value (asdf:find-system :cl-cffi-gtk3) 'asdf:version))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_get_major_version () -> major-version
+;;; gtk_get_major_version
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_get_major_version" major-version) :int
@@ -72,7 +72,7 @@
 (export 'major-version)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_get_minor_version () -> minor-version
+;;; gtk_get_minor_version
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_get_minor_version" minor-version) :int
@@ -89,7 +89,7 @@
 (export 'minor-version)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_get_micro_version () -> micro-version
+;;; gtk_get_micro_version
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_get_micro_version" micro-version) :int
@@ -106,7 +106,7 @@
 (export 'micro-version)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_get_binary_age () -> gtk-binary-age                not exported
+;;; gtk_get_binary_age                                      not exported
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_get_binary_age" gtk-binary-age) :int
@@ -121,7 +121,7 @@
   @see-function{gtk-interface-age}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_get_interface_age () -> gtk-interface-age          not exported
+;;; gtk_get_interface_age                                   not exported
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_get_interface_age" gtk-interface-age) :int
@@ -136,7 +136,7 @@
   @see-function{gtk-binary-age}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_check_version ()
+;;; gtk_check_version
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_check_version" check-version)
