@@ -67,7 +67,7 @@
 ;;; GtkCellRendererAccelMode
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkCellRendererAccelMode" cell-renderer-accel-mode
+(gobject:define-genum "GtkCellRendererAccelMode" cell-renderer-accel-mode
   (:export t
    :type-initializer "gtk_cell_renderer_accel_mode_get_type")
   (:gtk 0)
@@ -79,7 +79,7 @@
       (liber:symbol-documentation 'cell-renderer-accel-mode)
  "@version{2024-3-17}
   @begin{declaration}
-(gobject:define-g-enum \"GtkCellRendererAccelMode\" cell-renderer-accel-mode
+(gobject:define-genum \"GtkCellRendererAccelMode\" cell-renderer-accel-mode
   (:export t
    :type-initializer \"gtk_cell_renderer_accel_mode_get_type\")
   (:gtk 0)
@@ -103,7 +103,7 @@
 ;;; struct GtkCellRendererAccel
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkCellRendererAccel" cell-renderer-accel
+(gobject:define-gobject "GtkCellRendererAccel" cell-renderer-accel
   (:superclass cell-renderer-text
    :export t
    :interfaces nil

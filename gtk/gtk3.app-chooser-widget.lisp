@@ -87,7 +87,7 @@
 ;;; struct GtkAppChooserWidget
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkAppChooserWidget" app-chooser-widget
+(gobject:define-gobject "GtkAppChooserWidget" app-chooser-widget
   (:superclass box
    :export t
    :interfaces ("AtkImplementorIface"

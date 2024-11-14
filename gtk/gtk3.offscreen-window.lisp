@@ -62,7 +62,7 @@
 ;;; struct GtkOffscreenWindow
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkOffscreenWindow" offscreen-window
+(gobject:define-gobject "GtkOffscreenWindow" offscreen-window
   (:superclass window
     :export t
     :interfaces ("AtkImplementorIface"

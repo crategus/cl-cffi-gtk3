@@ -81,7 +81,7 @@
 ;;; GtkImageMenuItem
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkImageMenuItem" image-menu-item
+(gobject:define-gobject "GtkImageMenuItem" image-menu-item
   (:superclass menu-item
     :export t
     :interfaces ("AtkImplementorIface"

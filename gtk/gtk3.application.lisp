@@ -94,7 +94,7 @@
 ;;; GtkApplicationInhibitFlags
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-flags "GtkApplicationInhibitFlags" application-inhibit-flags
+(gobject:define-gflags "GtkApplicationInhibitFlags" application-inhibit-flags
   (:export t
    :type-initializer "gtk_application_inhibit_flags_get_type")
   (:logout  #.(ash 1 0))
@@ -108,7 +108,7 @@
       (liber:symbol-documentation 'application-inhibit-flags)
  "@version{2024-3-15}
   @begin{declaration}
-(gobject:define-g-flags \"GtkApplicationInhibitFlags\" application-inhibit-flags
+(gobject:define-gflags \"GtkApplicationInhibitFlags\" application-inhibit-flags
   (:export t
    :type-initializer \"gtk_application_inhibit_flags_get_type\")
   (:logout  #.(ash 1 0))
@@ -137,7 +137,7 @@
 ;;; GtkApplication
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkApplication" application
+(gobject:define-gobject "GtkApplication" application
   (:superclass g:application
    :export t
    :interfaces ("GActionGroup"
@@ -231,7 +231,7 @@
   or performing a disk backup. The session manager may not honor the inhibitor,
   but it can be expected to inform the user about the negative consequences of
   ending the session while inhibitors are present.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     A simple application.
     @begin{pre}
 (defun application-simple (&rest argv)
@@ -254,7 +254,7 @@
     ;; Run the application
     (g:application-run app argv)))
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @begin[Signal Details]{dictionary}
     @subheading{The \"query-end\" signal}
       @begin{pre}
@@ -540,7 +540,7 @@ lambda (application window)    :run-first
   @fun{gtk:application-remove-window} function.
 
   GTK will keep the application running as long as it has any windows.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     This is a code fragment from the GTK Demo. The function creates a window
     and adds the window to the list of application windows. The application is
     passed in as an argument.
@@ -574,7 +574,7 @@ lambda (application window)    :run-first
                                  :application application)))
       ... )
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:application}
   @see-class{gtk:window}
   @see-function{gtk:application-remove-window}
@@ -625,7 +625,7 @@ lambda (application window)    :run-first
   The list is sorted by most recently focused windows, such that the first
   element is the currently focused window. This is useful for choosing a parent
   for a transient window.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     This code from the GTK Demo defines a @code{\"quit\"} action. The signal
     handler gets a list of all windows present in the application and destroys
     the windows. After the last window has been destroyed, the application is
@@ -642,7 +642,7 @@ lambda (application window)    :run-first
   ;; Add the action to the action map of the application
   (g:action-map-add-action application action))
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:application}
   @see-class{gtk:window}"
   (application (g:object application)))
@@ -666,11 +666,11 @@ lambda (application window)    :run-first
   @end{short}
   The ID of an application window can be retrieved with the
   @fun{gtk:application-window-id} function.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     Both a @class{gtk:window} and a @class{gtk:application-window} widget can be
     added to an application, but only a @class{gtk:application-window} widget
     has an ID.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:application}
   @see-class{gtk:application-window}
   @see-class{gtk:window}

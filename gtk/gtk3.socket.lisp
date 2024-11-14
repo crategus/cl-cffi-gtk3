@@ -64,7 +64,7 @@
 ;;; struct GtkSocket
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkSocket" socket
+(gobject:define-gobject "GtkSocket" socket
   (:superclass container
    :export t
    :interfaces ("AtkImplementorIface"

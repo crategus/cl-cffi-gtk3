@@ -71,7 +71,7 @@
 ;;; struct GtkComboBoxText
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkComboBoxText" combo-box-text
+(gobject:define-gobject "GtkComboBoxText" combo-box-text
   (:superclass combo-box
    :export t
    :interfaces ("AtkImplementorIface"

@@ -157,7 +157,7 @@
 ;;; enum GtkJunctionSides
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-flags "GtkJunctionSides" junction-sides
+(gobject:define-gflags "GtkJunctionSides" junction-sides
   (:export t
    :type-initializer "gtk_junction_sides_get_type")
   (:none 0)
@@ -176,7 +176,7 @@
       (liber:symbol-documentation 'junction-sides)
  "@version{#2024-3-21}
   @begin{declaration}
-(gobject:define-g-flags \"GtkJunctionSides\" junction-sides
+(gobject:define-gflags \"GtkJunctionSides\" junction-sides
   (:export t
    :type-initializer \"gtk_junction_sides_get_type\")
   (:none 0)
@@ -211,7 +211,7 @@
 ;;; enum GtkStyleContextPrintFlags
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-flags "GtkStyleContextPrintFlags" style-context-print-flags
+(gobject:define-gflags "GtkStyleContextPrintFlags" style-context-print-flags
   (:export t
    :type-initializer "gtk_style_context_print_flags_get_type")
   (:none 0)
@@ -224,7 +224,7 @@
       (liber:symbol-documentation 'style-context-print-flags)
  "@version{#2024-3-21}
   @begin{declaration}
-(gobject:define-g-flags \"GtkStyleContextPrintFlags\" style-context-print-flags
+(gobject:define-gflags \"GtkStyleContextPrintFlags\" style-context-print-flags
   (:export t
    :type-initializer \"gtk_style_context_print_flags_get_type\")
   (:none 0)
@@ -251,7 +251,7 @@
 ;;; GtkBorderStyle
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkBorderStyle" border-style
+(gobject:define-genum "GtkBorderStyle" border-style
   (:export t
    :type-initializer "gtk_border_style_get_type")
   :none
@@ -271,7 +271,7 @@
       (liber:symbol-documentation 'border-style)
  "@version{#2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkBorderStyle\" border-style
+(gobject:define-genum \"GtkBorderStyle\" border-style
   (:export t
    :type-initializer \"gtk_border_style_get_type\")
   :none
@@ -308,7 +308,7 @@
 ;;; struct GtkBorder
 ;;; ----------------------------------------------------------------------------
 
-(glib:define-g-boxed-cstruct border "GtkBorder"
+(glib:define-gboxed-cstruct border "GtkBorder"
   (:export t
    :type-initializer "gtk_border_get_type")
   (left   :int16 :initform 0)
@@ -326,7 +326,7 @@
     of different width on each side.
   @end{short}
   @begin{pre}
-(gobject:define-g-boxed-cstruct border \"GtkBorder\"
+(gobject:define-gboxed-cstruct border \"GtkBorder\"
   (:export t
    :type-initializer \"gtk_border_get_type\")
   (left   :int16 :initform 0)
@@ -465,7 +465,7 @@
 ;;; GtkStyleContext
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkStyleContext" style-context
+(gobject:define-gobject "GtkStyleContext" style-context
   (:superclass g:object
    :export t
    :interfaces nil
@@ -706,12 +706,12 @@ lambda (context)    :run-first
   @end{short}
   This style context will not be attached to any widget, so you may want to
   call the @fun{gtk:style-context-path} function yourself.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     This function is only useful when using the theming layer separated from
     GTK, if you are using a style context to theme widgets, use the
     @fun{gtk:widget-style-context} function in order to get a style context
     ready to theme the widget.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:style-context}
   @see-function{gtk:style-context-path}
   @see-function{gtk:widget-style-context}"
@@ -738,11 +738,11 @@ lambda (context)    :run-first
   The lower the priority of the style provider is, the earlier it will be used
   in the style construction. Typically this will be in the range between the
   @var{gtk:+priority-fallback+} and @var{gtk:+priority-user+} priorities.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     If both priorities are the same, a style provider object added through this
     function takes precedence over another added through the
     @fun{gtk:style-context-add-provider-for-screen} function.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:style-context}
   @see-class{gtk:style-provider}
   @see-function{gtk:style-context-add-provider-for-screen}"
@@ -774,11 +774,11 @@ lambda (context)    :run-first
 
   GTK uses this to make styling information from the @class{gtk:settings}
   object available.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     If both priorities are the same, a style provider object added through the
     @fun{gtk:style-context-add-provider} function takes precedence over another
     added through this function.
-  @end{notes}
+  @end{dictionary}
   @see-class{gdk:screen}
   @see-class{gtk:style-context}
   @see-class{gtk:style-provider}
@@ -911,7 +911,7 @@ lambda (context)    :run-first
   @begin{short}
     Gets a style property from the style context for the given state.
   @end{short}
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (setq context (gtk:style-context-new))
 => #<GTK-STYLE-CONTEXT {100687D223@}>
@@ -924,7 +924,7 @@ lambda (context)    :run-first
 (pango:font-description-to-string *)
 => \"Ubuntu 11\"
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:style-context}
   @see-symbol{gtk:state-flags}"
   (cffi:with-foreign-object (value '(:struct g:value))
@@ -969,10 +969,10 @@ lambda (context)    :run-first
   The frame clock is used for the timing of animations. If you are using a
   style context returned from the @fun{gtk:widget-style-context} function, you
   do not need to call this yourself.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     This function is equivalent to the @fun{gtk:style-context-paint-clock}
     function.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:style-context}
   @see-class{gdk:frame-clock}
   @see-function{gtk:widget-style-context}
@@ -1057,7 +1057,7 @@ lambda (context)    :run-first
   @begin{short}
     Gets the value for a widget style property.
   @end{short}
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (setq message (make-instance 'gtk:message-dialog))
 => #<GTK-MESSAGE-DIALOG {100577F4A3@}>
@@ -1066,7 +1066,7 @@ lambda (context)    :run-first
 (gtk:style-context-style-property context message \"message-border\")
 => 12
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:style-context}
   @see-class{gtk:widget}"
   (let ((gtype (g:param-spec-value-type
@@ -1175,14 +1175,14 @@ lambda (context)    :run-first
     Gets the foreground color for a given state.
   @end{short}
   See the @fun{gtk:style-context-property} function for details.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (setq context (gtk:style-context-new))
 => #<GTK-STYLE-CONTEXT {10058ED093@}>
 (gtk:style-context-color context :normal)
 => #S(GDK-RGBA :RED 1.0d0 :GREEN 1.0d0 :BLUE 1.0d0 :ALPHA 1.0d0)
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:style-context}
   @see-symbol{gtk:state-flags}
   @see-class{gdk:rgba}
@@ -1819,7 +1819,7 @@ lambda (context)    :run-first
     @fun{gtk:style-context-property} function or any of the @code{gtk:render-*}
     functions will make use of this new class for styling.
   @end{short}
-  @begin{examples}
+  @begin[Examples]{dictionary}
     In the CSS file format, a GtkEntry defining an \"entry\" class, would be
     matched by:
     @begin{pre}
@@ -1829,7 +1829,7 @@ GtkEntry.entry { ... @}
   @begin{pre}
 .entry { ... @}
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:style-context}
   @see-function{gtk:style-context-property}"
   (context (g:object style-context))
@@ -1910,7 +1910,7 @@ GtkEntry.entry { ... @}
     @fun{gtk:style-context-property} function or any of the @code{gtk:render-*}
     functions will make use of this new region for styling.
   @end{short}
-  @begin{examples}
+  @begin[Examples]{dictionary}
     In the CSS file format, a GtkTreeView defining a \"row\" region, would be
     matched by:
     @begin{pre}
@@ -1922,11 +1922,11 @@ GtkEntry.entry { ... @}
  GtkTreeView row:nth-child(even) { ... @}
  GtkTreeView row:nth-child(odd) { ... @}
     @end{pre}
-  @end{examples}
-  @begin{notes}
+  @end{dictionary}
+  @begin[Notes]{dictionary}
     Region names must only contain lowercase letters and '-', starting always
     with a lowercase letter.
-  @end{notes}
+  @end{dictionary}
   @begin[Warning]{dictionary}
     The @fun{gtk:style-context-add-region} function has been deprecated since
     version 3.14 and should not be used in newly written code.
@@ -2067,7 +2067,7 @@ GtkEntry.entry { ... @}
   This function is intended for testing and debugging of the CSS implementation
   in GTK. There are no guarantees about the format of the returned string, it
   may change.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (setq context
       (gtk:widget-style-context (make-instance 'gtk:message-dialog)))
@@ -2088,7 +2088,7 @@ GtkEntry.entry { ... @}
     [label.title:dir(ltr)@]
 \"
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:style-context}
   @see-symbol{gtk:style-context-print-flags}"
   (context (g:object style-context))

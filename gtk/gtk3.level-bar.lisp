@@ -124,7 +124,7 @@
 ;;; GtkLevelBarMode
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkLevelBarMode" level-bar-mode
+(gobject:define-genum "GtkLevelBarMode" level-bar-mode
   (:export t
    :type-initializer "gtk_level_bar_mode_get_type")
   (:continuous 0)
@@ -136,7 +136,7 @@
       (liber:symbol-documentation 'level-bar-mode)
  "@version{#2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkLevelBarMode\" level-bar-mode
+(gobject:define-genum \"GtkLevelBarMode\" level-bar-mode
   (:export t
    :type-initializer \"gtk_level_bar_mode_get_type\")
   (:continuous 0)
@@ -159,7 +159,7 @@
 ;;; struct GtkLevelBar
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkLevelBar" level-bar
+(gobject:define-gobject "GtkLevelBar" level-bar
   (:superclass widget
    :export t
    :interfaces ("AtkImplementorIface"
@@ -245,7 +245,7 @@ levelbar[.discrete]
     In horizontal orientation, the nodes are always arranged from left to right,
     regardless of text direction.
   @end{dictionary}
-  @begin{examples}
+  @begin[Examples]{dictionary}
     Adding a custom offset on the bar.
     @begin{pre}
 (defun create-level-bar (orientation)
@@ -266,7 +266,7 @@ levelbar[.discrete]
     ;; Return the new level bar
     levelbar))
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @begin[Style Property Details]{dictionary}
     @begin[code]{table}
       @begin[min-block-height]{entry}

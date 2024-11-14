@@ -164,7 +164,7 @@
 ;;; GtkStyleProvider
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-interface "GtkStyleProvider" style-provider
+(gobject:define-ginterface "GtkStyleProvider" style-provider
   (:export t
    :type-initializer "gtk_style_provider_get_type")
   nil)

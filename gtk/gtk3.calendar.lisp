@@ -108,7 +108,7 @@
 ;;; enum GtkCalendarDisplayOptions
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-flags "GtkCalendarDisplayOptions" calendar-display-options
+(gobject:define-gflags "GtkCalendarDisplayOptions" calendar-display-options
   (:export t
    :type-initializer "gtk_calendar_display_options_get_type")
   (:show-heading 1)
@@ -123,7 +123,7 @@
       (liber:symbol-documentation 'calendar-display-options)
  "@version{2024-3-21}
   @begin{declaration}
-(gobject:define-g-flags \"GtkCalendarDisplayOptions\" calendar-display-options
+(gobject:define-gflags \"GtkCalendarDisplayOptions\" calendar-display-options
   (:export t
    :type-initializer \"gtk_calendar_display_options_get_type\")
   (:show-heading 1)
@@ -158,7 +158,7 @@
 ;;; struct GtkCalendar
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkCalendar" calendar
+(gobject:define-gobject "GtkCalendar" calendar
   (:superclass widget
    :export t
    :interfaces ("AtkImplementorIface"

@@ -108,7 +108,7 @@
 ;;; GtkIconSize
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkIconSize" icon-size
+(gobject:define-genum "GtkIconSize" icon-size
   (:export t
    :type-initializer "gtk_icon_size_get_type")
   (:invalid 0)
@@ -125,7 +125,7 @@
       (liber:symbol-documentation 'icon-size)
  "@version{2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkIconSize\" icon-size
+(gobject:define-genum \"GtkIconSize\" icon-size
   (:export t
    :type-initializer \"gtk_icon_size_get_type\")
   (:invalid 0)
@@ -156,7 +156,7 @@
 
 (cffi:defcfun ("gtk_icon_source_new" %icon-source-new) :pointer)
 
-(glib:define-g-boxed-opaque icon-source "GtkIconSource"
+(glib:define-gboxed-opaque icon-source "GtkIconSource"
   :export t
   :type-initializer "gtk_icon_source_get_type"
   :alloc (%icon-source-new))
@@ -183,7 +183,7 @@
 
 (cffi:defcfun ("gtk_icon_set_new" %icon-set-new) :pointer)
 
-(glib:define-g-boxed-opaque icon-set "GtkIconSet"
+(glib:define-gboxed-opaque icon-set "GtkIconSet"
   :export t
   :type-initializer "gtk_icon_set_get_type"
   :alloc (%icon-set-new))
@@ -205,7 +205,7 @@
 ;;; struct GtkIconFactory
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkIconFactory" icon-factory
+(gobject:define-gobject "GtkIconFactory" icon-factory
   (:superclass g:object
    :export t
    :interfaces ("GtkBuildable")

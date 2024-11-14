@@ -96,7 +96,7 @@
 ;;; struct GtkToolButton
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkToolButton" tool-button
+(gobject:define-gobject "GtkToolButton" tool-button
   (:superclass tool-item
     :export t
     :interfaces ("AtkImplementorIface"

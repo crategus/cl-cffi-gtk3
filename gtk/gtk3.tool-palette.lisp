@@ -94,7 +94,7 @@
 ;;; enum GtkToolPaletteDragTargets
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-flags "GtkToolPaletteDragTargets" tool-palette-drag-targets
+(gobject:define-gflags "GtkToolPaletteDragTargets" tool-palette-drag-targets
   (:export t
    :type-initializer "gtk_tool_palette_drag_targets_get_type")
   (:items 1)
@@ -106,7 +106,7 @@
       (liber:symbol-documentation 'tool-palette-drag-targets)
  "@version{#2024-3-21}
   @begin{declaration}
-(gobject:define-g-flags \"GtkToolPaletteDragTargets\" tool-palette-drag-targets
+(gobject:define-gflags \"GtkToolPaletteDragTargets\" tool-palette-drag-targets
   (:export t
    :type-initializer \"gtk_tool_palette_drag_targets_get_type\")
   (:items 1)
@@ -127,7 +127,7 @@
 ;;; struct GtkToolPalette
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkToolPalette" tool-palette
+(gobject:define-gobject "GtkToolPalette" tool-palette
   (:superclass container
    :export t
    :interfaces ("AtkImplementorIface"

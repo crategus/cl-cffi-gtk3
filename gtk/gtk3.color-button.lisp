@@ -89,7 +89,7 @@
 ;;; struct GtkColorButton
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkColorButton" color-button
+(gobject:define-gobject "GtkColorButton" color-button
   (:superclass button
    :export t
    :interfaces ("AtkImplementorIface"
@@ -133,7 +133,7 @@
     @arg{button}. To differentiate it from a plain @class{gtk:button} widget,
     it gets the @code{.color} style class.
   @end{dictionary}
-  @begin{examples}
+  @begin[Examples]{dictionary}
     The example shows a color button. The button is initialized with the color
     \"Blue\". The handler for the @code{\"color-set\"} signal prints the
     selected color on the console.
@@ -158,7 +158,7 @@
       (gtk:container-add window button)
       (gtk:widget-show-all window))))
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @begin[Signal Details]{dictionary}
     @subheading{The \"color-set\" signal}
       @begin{pre}

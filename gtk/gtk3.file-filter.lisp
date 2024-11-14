@@ -68,7 +68,7 @@
 ;;; enum GtkFileFilterFlags
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-flags "GtkFileFilterFlags" file-filter-flags
+(gobject:define-gflags "GtkFileFilterFlags" file-filter-flags
   (:export t
    :type-initializer "gtk_file_filter_flags_get_type")
   (:filename 1)
@@ -82,7 +82,7 @@
       (liber:symbol-documentation 'file-filter-flags)
  "@version{2024-3-21}
   @begin{declaration}
-(gobject:define-g-flags \"GtkFileFilterFlags\" file-filter-flags
+(gobject:define-gflags \"GtkFileFilterFlags\" file-filter-flags
   (:export t
    :type-initializer \"gtk_file_filter_flags_get_type\")
   (:filename 1)
@@ -241,7 +241,7 @@
 ;;; GtkFileFilter
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkFileFilter" file-filter
+(gobject:define-gobject "GtkFileFilter" file-filter
   (:superclass g:initially-unowned
    :export t
    :interfaces nil
@@ -315,14 +315,14 @@
   you add rules with the @fun{gtk:file-filter-add-mime-type},
   @fun{gtk:file-filter-add-pattern}, or @fun{gtk:file-filter-add-custom}
   functions.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     To create a filter that accepts any file, use:
     @begin{pre}
 (let ((filter (gtk:file-filter-new)))
   (gtk:file-filter-add-pattern filter \"*\")
   ... )
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:file-filter}
   @see-function{gtk:file-filter-add-mime-type}
   @see-function{gtk:file-filter-add-pattern}
@@ -476,7 +476,7 @@
   The bitfield needed which is passed in provides information about what sorts
   of information that the filter function needs. This allows GTK to avoid
   retrieving expensive information when it is not needed by the filter.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (defun custom-file-filter (filter-info)
   ;; Select files with upcase characters in the display name
@@ -493,7 +493,7 @@
   (gtk:file-chooser-add-filter chooser filter-custom)
   ... )
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:file-filter}
   @see-symbol{gtk:file-filter-flags}"
   (%file-filter-add-custom filter

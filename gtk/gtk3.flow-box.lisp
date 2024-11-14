@@ -125,7 +125,7 @@
 ;;; GtkFlowBoxChild
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkFlowBoxChild" flow-box-child
+(gobject:define-gobject "GtkFlowBoxChild" flow-box-child
   (:superclass bin
    :export t
    :interfaces ("AtkImplementorIface"
@@ -161,7 +161,7 @@ lambda (child)    :action
 ;;; GtkFlowBox
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkFlowBox" flow-box
+(gobject:define-gobject "GtkFlowBox" flow-box
   (:superclass container
    :export t
    :interfaces ("AtkImplementorIface"

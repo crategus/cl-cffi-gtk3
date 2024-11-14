@@ -68,7 +68,7 @@
 ;;; GtkAccelMap
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkAccelMap" accel-map
+(gobject:define-gobject "GtkAccelMap" accel-map
   (:superclass g:object
    :export t
    :interfaces nil

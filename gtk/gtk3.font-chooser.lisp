@@ -97,7 +97,7 @@
 ;;; GtkFontChooserLevel
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-flags "GtkFontChooserLevel" font-chooser-level
+(gobject:define-gflags "GtkFontChooserLevel" font-chooser-level
   (:export t
    :type-initializer "gtk_font_chooser_level_get_type")
   (:family 0)
@@ -112,7 +112,7 @@
       (liber:symbol-documentation 'font-chooser-level)
  "@version{2024-3-21}
   @begin{declaration}
-(gobject:define-g-flags \"GtkFontChooserLevel\" font-chooser-level
+(gobject:define-gflags \"GtkFontChooserLevel\" font-chooser-level
   (:export t
    :type-initializer \"gtk_font_chooser_level_get_type\")
   (:family 0)
@@ -140,7 +140,7 @@
 ;;; GtkFontChooser
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-interface "GtkFontChooser" font-chooser
+(gobject:define-ginterface "GtkFontChooser" font-chooser
   (:export t
    :type-initializer "gtk_font_chooser_get_type")
   ((font
@@ -324,11 +324,11 @@ lambda (fontchooser fontname)    :run-first
   The @fun{gtk:font-chooser-language} function gets the language that is used
   for font features. The @setf{gtk:font-chooser-language} function sets the
   language. See the @fun{pango:language-to-string} function.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (gtk:font-chooser-language (make-instance 'gtk:font-button)) => \"de-de\"
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:font-chooser}
   @see-function{pango:language-to-string}")
 
@@ -434,7 +434,7 @@ lambda (fontchooser fontname)    :run-first
   @end{short}
   Font families are a collection of font faces. If the selected font is not
   installed, returns @code{nil}.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (defvar fontbutton (make-instance 'gtk:font-button :font \"Serif Bold 10\"))
 => FONTBUTTON
@@ -443,7 +443,7 @@ lambda (fontchooser fontname)    :run-first
 (pango:font-family-name *)
 => \"Sans\"
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:font-chooser}
   @see-class{pango:font-family}"
   (fontchooser (g:object font-chooser)))
@@ -550,7 +550,7 @@ lambda (fontchooser fontname)    :run-first
     Adds a filter function that decides which fonts to display in the font
     chooser.
   @end{short}
-  @begin{examples}
+  @begin[Examples]{dictionary}
     A callback filter function to select fonts from the font families \"Sans\"
     and \"Serif\":
     @begin{pre}
@@ -565,7 +565,7 @@ lambda (fontchooser fontname)    :run-first
 ;; Remove the filter function from the font button
 (gtk:font-chooser-set-filter-func button nil)
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:font-chooser}
   @see-symbol{gtk:font-filter-func}"
   (if func
@@ -612,7 +612,7 @@ lambda (fontchooser fontname)    :run-first
   @setf{gtk:font-chooser-font-map} function sets a custom font map to use for
   the font chooser widget. A custom font map can be used to present application
   specific fonts instead of or in addition to the normal system fonts.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     The example from the C documentation uses the @code{Fontconfig} library for
     configuring and customizing font access. This library is not available
     for the Lisp binding.
@@ -634,7 +634,7 @@ gtk_font_chooser_set_font_map (font_chooser, fontmap);
     @begin{pre}
 (setf (pango:context-font-map (gtk:widget-pango-context label)) fontmap)
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:font-chooser}
   @see-class{pango:font-map}"
   (fontchooser (g:object font-chooser)))

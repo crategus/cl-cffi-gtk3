@@ -80,7 +80,7 @@
 ;;; struct GtkHandleBox
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkHandleBox" handle-box
+(gobject:define-gobject "GtkHandleBox" handle-box
   (:superclass bin
    :export t
    :interfaces ("AtkImplementorIface"

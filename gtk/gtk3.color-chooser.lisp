@@ -67,7 +67,7 @@
 ;;; GtkColorChooser
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-interface "GtkColorChooser" color-chooser
+(gobject:define-ginterface "GtkColorChooser" color-chooser
   (:export t
    :type-initializer "gtk_color_chooser_get_type")
   ((rgba

@@ -128,7 +128,7 @@
 ;;; enum GtkIconLookupFlags
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-flags "GtkIconLookupFlags" icon-lookup-flags
+(gobject:define-gflags "GtkIconLookupFlags" icon-lookup-flags
   (:export t
    :type-initializer "gtk_icon_lookup_flags_get_type")
   (:no-svg           #.(ash 1 0))
@@ -147,7 +147,7 @@
       (liber:symbol-documentation 'icon-lookup-flags)
  "@version{#2024-3-21}
   @begin{declaration}
-(gobject:define-g-flags \"GtkIconLookupFlags\" icon-lookup-flags
+(gobject:define-gflags \"GtkIconLookupFlags\" icon-lookup-flags
   (:export t
    :type-initializer \"gtk_icon_lookup_flags_get_type\")
   (:no-svg           #.(ash 1 0))
@@ -208,7 +208,7 @@
 ;;; GtkIconThemeError                                       not exported
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkIconThemeError" icon-theme-error
+(gobject:define-genum "GtkIconThemeError" icon-theme-error
   (:export nil
    :type-initializer "gtk_icon_theme_error_get_type")
   (:not-found 0)
@@ -220,7 +220,7 @@
       (liber:symbol-documentation 'icon-theme-error)
  "@version{#2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkIconThemeError\" icon-theme-error
+(gobject:define-genum \"GtkIconThemeError\" icon-theme-error
   (:export t
    :type-initializer \"gtk_icon_theme_error_get_type\")
   (:not-found 0)
@@ -241,7 +241,7 @@
 ;;; struct GtkIconTheme
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkIconTheme" icon-theme
+(gobject:define-gobject "GtkIconTheme" icon-theme
   (:superclass g:object
    :export t
    :interfaces nil
@@ -298,7 +298,7 @@
   more efficient to use the standard icon theme for the @class{gdk:screen}
   object so that the icon information is shared with other people looking up
   icons.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     In the case where the default screen is being used, looking up an icon can
     be as simple as:
     @begin{pre}
@@ -309,7 +309,7 @@
                                          0)))        ; no flags
    ... )
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @begin[Signal Details]{dictionary}
     @subheading{The \"changed\" signal}
       @begin{pre}
@@ -466,7 +466,7 @@ lambda (theme)    :run-last
   for the icon name. This is legacy feature, and new icons should be put into
   the fallback icon theme, which is called Hicolor, rather than directly on the
   icon path.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (gtk:icon-theme-default) => #<GTK-ICON-THEME {1001A1A1A3@}>
 (gtk:icon-theme-search-path *)
@@ -477,7 +477,7 @@ lambda (theme)    :run-last
     \"/usr/local/share/pixmaps\" \"/usr/share/pixmaps\"
     \"/var/lib/snapd/desktop/pixmaps\" \"/var/lib/snapd/desktop/pixmaps\")
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:icon-theme}"
   (cffi:with-foreign-objects ((path 'g:strv-t) (n-elements :int))
     (%icon-theme-search-path theme path n-elements)
@@ -992,14 +992,14 @@ lambda (theme)    :run-last
     Gets the list of contexts available within the current hierarchy of icon
     themes.
   @end{short}
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (gtk:icon-theme-list-contexts (gtk:icon-theme-default))
 => (\"International\" \"Emotes\" \"Places\" \"stock\" \"FileSystems\"
     \"Devices\" \"Applications\" \"Actions\" \"Categories\" \"Animations\"
     \"MimeTypes\" \"Stock\" \"Status\" \"Emblems\")
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:icon-theme}
   @see-function{gtk:icon-theme-list-icons}"
   (theme (g:object icon-theme)))
@@ -1224,14 +1224,14 @@ lambda (theme)    :run-last
   of this is small emblem icons that can be attached to a larger icon. These
   icons will be given the same base size as the larger icons to which they are
   attached.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (gtk:icon-theme-lookup-icon (gtk:icon-theme-default) \"battery\" 0 0)
 => #.(SB-SYS:INT-SAP #X01D3F840)
 (gtk:icon-info-base-size *)
 => 24
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:icon-info}
   @see-function{gtk:icon-info-base-scale}"
   (info (:pointer (:struct icon-info))))
@@ -1253,14 +1253,14 @@ lambda (theme)    :run-last
   The base scale is a scale for the icon that was specified by the icon theme
   creator. For instance an icon drawn for a high DPI screen with window scale 2
   for a base size of 32 will be 64 pixels tall and have a base scale of 2.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (gtk:icon-theme-lookup-icon (gtk:icon-theme-default) \"battery\" 0 0)
 => #.(SB-SYS:INT-SAP #X01D3F840)
 (gtk:icon-info-base-scale *)
 => 1
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:icon-info}
   @see-function{gtk:icon-info-base-size}"
   (info (:pointer (:struct icon-info))))
@@ -1285,14 +1285,14 @@ lambda (theme)    :run-last
   @fun{gtk:icon-theme-lookup-icon} function, there may be no filename if a
   built-in icon is returned. In this case, you should use the
   @fun{gtk:icon-info-builtin-pixbuf} function.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (gtk:icon-theme-lookup-icon (gtk:icon-theme-default) \"battery\" 0 0)
 => #.(SB-SYS:INT-SAP #X01D3F840)
 (gtk:icon-info-filename *)
 => \"/usr/share/icons/Humanity/devices/24/battery.svg\"
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-symbol{gtk:icon-info}
   @see-function{gtk:icon-info-builtin-pixbuf}
   @see-function{gtk:icon-theme-lookup-icon}"

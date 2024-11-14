@@ -130,7 +130,7 @@
 ;;; struct GtkButton
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkButton" button
+(gobject:define-gobject "GtkButton" button
   (:superclass bin
    :export t
    :interfaces ("AtkImplementorIface"

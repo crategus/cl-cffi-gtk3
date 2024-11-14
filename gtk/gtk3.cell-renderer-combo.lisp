@@ -64,7 +64,7 @@
 ;;; struct GtkCellRendererCombo
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkCellRendererCombo" cell-renderer-combo
+(gobject:define-gobject "GtkCellRendererCombo" cell-renderer-combo
   (:superclass cell-renderer-text
     :export t
     :interfaces nil

@@ -131,7 +131,7 @@
 ;;; GtkArrowPlacement
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkArrowPlacement" arrow-placement
+(gobject:define-genum "GtkArrowPlacement" arrow-placement
   (:export t
    :type-initializer "gtk_arrow_placement_get_type")
   (:both 0)
@@ -144,7 +144,7 @@
       (liber:symbol-documentation 'arrow-placement)
  "@version{#2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkArrowPlacement\" arrow-placement
+(gobject:define-genum \"GtkArrowPlacement\" arrow-placement
   (:export t
    :type-initializer \"gtk_arrow_placement_get_type\")
   (:both 0)
@@ -167,7 +167,7 @@
 ;;; struct GtkMenu
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkMenu" menu
+(gobject:define-gobject "GtkMenu" menu
   (:superclass menu-shell
    :export t
    :interfaces ("AtkImplementorIface"
@@ -231,7 +231,7 @@
   Applications can display a @class{gtk:menu} widget as a popup menu by calling
   the @fun{gtk:menu-popup-at-pointer} function. The example below shows how an
   application can pop up a menu when a mouse button is pressed.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     Example with a signal handler which displays a popup menu.
     @begin{pre}
 (defun example-menu-popup (&optional application)
@@ -263,7 +263,7 @@
       (gtk:container-add window button)
       (gtk:widget-show-all window))))
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @begin[CSS nodes]{dictionary}
     @begin{pre}
 menu

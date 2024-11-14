@@ -74,7 +74,7 @@
 ;;; struct GtkToggleToolButton
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkToggleToolButton" toggle-tool-button
+(gobject:define-gobject "GtkToggleToolButton" toggle-tool-button
   (:superclass tool-button
    :export t
    :interfaces ("AtkImplementorIface"

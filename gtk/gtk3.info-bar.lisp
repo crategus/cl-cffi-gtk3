@@ -93,7 +93,7 @@
 ;;; struct GtkInfoBar
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkInfoBar" info-bar
+(gobject:define-gobject "GtkInfoBar" info-bar
   (:superclass box
    :export t
    :interfaces ("AtkImplementorIface"
@@ -135,7 +135,7 @@
   by classified as error message, warning, informational message, etc, by using
   the @fun{gtk:info-bar-message-type} function. GTK uses the message type to
   determine the background color of the message area.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     Simple info bar usage.
     @begin{pre}
 (defun create-info-bar ()
@@ -163,7 +163,7 @@
     (setf (gtk:info-bar-message-type info-bar) type)
     (gtk:widget-show info-bar)))
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @begin[GtkInfoBar as GtkBuildable]{dictionary}
     The @class{gtk:info-bar} implementation of the @class{gtk:buildable}
     interface exposes the content area and action area as internal children

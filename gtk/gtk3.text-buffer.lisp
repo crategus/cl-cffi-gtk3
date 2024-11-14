@@ -151,7 +151,7 @@
 ;;; GtkTextBufferTargetInfo
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkTextBufferTargetInfo" text-buffer-target-info
+(gobject:define-genum "GtkTextBufferTargetInfo" text-buffer-target-info
   (:export t
    :type-initializer "gtk_text_buffer_target_info_get_type")
   (:buffer-contents -1)
@@ -164,7 +164,7 @@
       (liber:symbol-documentation 'text-buffer-target-info)
  "@version{#2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkTextBufferTargetInfo\" gtk:text-buffer-target-info
+(gobject:define-genum \"GtkTextBufferTargetInfo\" gtk:text-buffer-target-info
   (:export t
    :type-initializer \"gtk_text_buffer_target_info_get_type\")
   (:buffer-contents -1)
@@ -194,7 +194,7 @@
 ;;; GtkTextBuffer
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkTextBuffer" text-buffer
+(gobject:define-gobject "GtkTextBuffer" text-buffer
   (:superclass g:object
     :export t
     :interfaces nil
@@ -588,11 +588,11 @@ lambda (buffer tag start end)    :run-last
   without child widgets and images. The @setf{gtk:text-buffer-text} function
   deletes current contents of the text buffer, and inserts @arg{text} instead.
   The text must be valid UTF-8.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     Use the @fun{gtk:text-buffer-get-text} function to retrieve a range of text
     from the text buffer and the @fun{gtk:text-buffer-get-slice} function to
     include widgets and images.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:text-buffer}
   @see-function{gtk:text-buffer-get-text}
   @see-function{gtk:text-buffer-get-slice}")
@@ -708,7 +708,7 @@ lambda (buffer tag start end)    :run-last
   default handler for the signal. The iterator is invalidated when insertion
   occurs, because the text buffer contents change, but the default signal
   handler revalidates it to point to the end of the inserted text.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     The @fun{gtk:text-buffer-insert} function combines the
     @code{gtk_text_buffer_insert()}, @code{gtk_text_buffer_insert_at_cursor()},
     @code{gtk_text_buffer_insert_interactive()}, and
@@ -716,7 +716,7 @@ lambda (buffer tag start end)    :run-last
     function using the @arg{position}, @arg{interactive}, and @arg{editable}
     keyword arguments. The corresponding Lisp functions except for
     @fun{gtk:text-buffer-insert} are not exported in the Lisp implementation.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:text-buffer}
   @see-class{gtk:text-iter}
   @see-function{gtk:text-view-editable}"
@@ -875,12 +875,12 @@ lambda (buffer tag start end)    :run-last
 
   Implemented via emissions of the @code{\"insert-text\"} and
   @code{\"apply-tag\"} signals, so expect those.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     The Lisp implementation combines the two
     @code{gtk_text_buffer_insert_range()} and
     @code{gtk_text_buffer_insert_range_interactive()} functions. The second
     function is not exported in the Lisp implementation,
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:text-buffer}
   @see-class{gtk:text-iter}
   @see-function{gtk:text-view-editable}"
@@ -920,10 +920,10 @@ lambda (buffer tag start end)    :run-last
   The @arg{editable} argument indicates whether the text is editable at the
   iterator if no tags enclosing the iterator affect editability. Typically the
   result of the @fun{gtk:text-view-editable} function is appropriate here.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     The @fun{gtk:text-buffer-insert-range-interactive} function is called from
     the @fun{gtk:text-buffer-insert-range} function.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:text-buffer}
   @see-class{gtk:text-iter}
   @see-function{gtk:text-buffer-insert-range}
@@ -954,13 +954,13 @@ lambda (buffer tag start end)    :run-last
   @fun{gtk:text-buffer-apply-tag} function on the inserted text. The
   @fun{gtk:text-buffer-insert-with-tags} function is just a convenience
   function.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     The Lisp implementation does not call the
     @code{gtk_text_buffer_insert_with_tags()} function, but uses the
     @fun{gtk:text-buffer-insert} and @fun{gtk:text-buffer-apply-tag} functions.
     The @code{gtk_text_buffer_insert_with_tags_by_name()} function is included
     in this function and not implemented in the Lisp library.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:text-buffer}
   @see-class{gtk:text-iter}
   @see-class{gtk:text-tag}
@@ -991,10 +991,10 @@ lambda (buffer tag start end)    :run-last
     Same as the @fun{gtk:text-buffer-insert-with-tags} function, but allows you
     to pass in tag names instead of tag objects.
   @end{short}
-  @begin{notes}
+  @begin[Notes]{dictionary}
     The Lisp implementation does not call the C function, but uses the
     @fun{gtk:text-buffer-insert} and @fun{gtk:text-buffer-apply-tag} functions.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:text-buffer}
   @see-class{gtk:text-iter}
   @see-function{gtk:text-buffer-insert-with-tags}
@@ -1078,10 +1078,10 @@ lambda (buffer tag start end)    :run-last
   text for each editable sub range of [@arg{start}, @arg{end}). The @arg{start}
   and @arg{end} iterators are revalidated to point to the location of the last
   deleted range, or left untouched if no text was deleted.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     The @code{gtk_text_buffer_delete_interactive()} function is included in
     this function and not implemented in the Lisp libraray.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:text-buffer}
   @see-class{gtk:text-iter}"
   (if interactive
@@ -1112,10 +1112,10 @@ lambda (buffer tag start end)    :run-last
   of [@arg{start}, @arg{end}). @arg{start} and @arg{end} are revalidated to
   point to the location of the last deleted range, or left untouched if no
   text was deleted.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     In the Lisp implementation this function is called from the
     @fun{gtk:text-buffer-delete} function.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:text-buffer}
   @see-class{gtk:text-iter}
   @see-function{gtk:text-buffer-delete}"
@@ -1485,10 +1485,10 @@ lambda (buffer tag start end)    :run-last
   function to find out if a mark has been removed from its text buffer. The
   @code{\"mark-deleted\"} signal will be emitted as notification after the mark
   is deleted.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     The @code{gtk_text_buffer_delete_mark_by_name} function is included in
     this function and not exported in the Lisp library.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:text-buffer}
   @see-class{gtk:text-mark}
   @see-function{gtk:text-buffer-add-mark}
@@ -1830,7 +1830,7 @@ lambda (buffer tag start end)    :run-last
 
   The @arg{args} argument is a list of properties and values to set on the
   tag.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     Create and add a tag with name \"font-italic\" to the text buffer.
     @begin{pre}
 (defvar buffer (gtk:text-buffer-new)) => BUFFER
@@ -1838,7 +1838,7 @@ lambda (buffer tag start end)    :run-last
                                    :font \"fixed\" :style :italic)
 => #<gtk:text-TAG {1002193283@}>
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:text-buffer}
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-new}"
@@ -2215,11 +2215,11 @@ lambda (buffer tag start end)    :run-last
     Pastes the contents of a clipboard at the insertion point, or at
     @arg{override}.
   @end{short}
-  @begin{notes}
+  @begin[Notes]{dictionary}
     Pasting is asynchronous, that is, we will ask for the paste data and return,
     and at some point later after the main loop runs, the paste data will be
     inserted.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:text-buffer}
   @see-class{gtk:clipboard}
   @see-class{gtk:text-iter}"

@@ -202,7 +202,7 @@
 ;;; GtkTextViewLayer                                        not exported
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkTextViewLayer" text-view-layer
+(gobject:define-genum "GtkTextViewLayer" text-view-layer
   (:export nil
    :type-initializer "gtk_text_view_layer_get_type")
   (:below 0)
@@ -216,7 +216,7 @@
       (liber:symbol-documentation 'text-view-layer)
  "@version{#2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkTextViewLayer\" text-view-layer
+(gobject:define-genum \"GtkTextViewLayer\" text-view-layer
   (:export t
    :type-initializer \"gtk_text_view_layer_get_type\")
   (:below 0)
@@ -243,7 +243,7 @@
 ;;; GtkTextWindowType
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkTextWindowType" text-window-type
+(gobject:define-genum "GtkTextWindowType" text-window-type
   (:export t
    :type-initializer "gtk_text_window_type_get_type")
   (:private 0)
@@ -260,7 +260,7 @@
       (liber:symbol-documentation 'text-window-type)
  "@version{#2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkTextWindowType\" gtk:text-window-type
+(gobject:define-genum \"GtkTextWindowType\" gtk:text-window-type
   (:export t
    :type-initializer \"gtk_text_window_type_get_type\")
   (:private 0)
@@ -291,7 +291,7 @@
 ;;; GtkTextExtendSelection
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkTextExtendSelection" text-extend-selection
+(gobject:define-genum "GtkTextExtendSelection" text-extend-selection
   (:export t
    :type-initializer "gtk_text_extend_selection_get_type")
   (:word 0)
@@ -303,7 +303,7 @@
       (liber:symbol-documentation 'text-extend-selection)
  "@version{#2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkTextExtendSelection\" text-extend-selection
+(gobject:define-genum \"GtkTextExtendSelection\" text-extend-selection
   (:export t
    :type-initializer \"gtk_text_extend_selection_get_type\")
   (:word 0)
@@ -327,7 +327,7 @@
 ;;; struct GtkTextChildAnchor
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkTextChildAnchor" text-child-anchor
+(gobject:define-gobject "GtkTextChildAnchor" text-child-anchor
   (:superclass g:object
     :export t
     :interfaces nil
@@ -350,7 +350,7 @@
 ;;; struct GtkTextView
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkTextView" text-view
+(gobject:define-gobject "GtkTextView" text-view
   (:superclass container
    :export t
    :interfaces ("AtkImplementorIface"
@@ -1479,10 +1479,10 @@ lambda (view)    :action
   arguments, the text scrolls the minimal distance to get the mark onscreen,
   possibly not scrolling at all. The effective screen for purposes of this
   function is reduced by a margin of size @arg{margin}.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     The double float arguments take any numbers, which are coerced to a double
     float.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:text-view}
   @see-class{gtk:text-mark}"
   (%text-view-scroll-to-mark view
@@ -1536,10 +1536,10 @@ lambda (view)    :action
   computations. To avoid oddness, consider using the
   @fun{gtk:text-view-scroll-to-mark} function which saves a point to be scrolled
   to after line validation.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     The double float arguments take any numbers, which are coerced to a double
     float.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:text-view}
   @see-class{gtk:text-iter}
   @see-function{gtk:text-view-scroll-to-mark}"
@@ -2094,13 +2094,13 @@ lambda (view)    :action
   paragraphs will be the same. Display lines are divided differently for each
   view, since they depend on the width of the text view. Paragraphs are the
   same in all text views, since they depend on the contents of the text buffer.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     This function combines the @code{gtk_text_view_forward_display_line ()},
     @code{gtk_text_view_forward_display_line_end()},
     @code{gtk_text_view_backward_display_line()}, and
     @code{gtk_text_view_backward_display_line_start()} functions into one
     Lisp function.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:text-view}
   @see-class{gtk:text-iter}"
   (assert (typep direction '(member :forward :backward)))

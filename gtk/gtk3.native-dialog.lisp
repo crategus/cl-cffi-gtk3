@@ -72,7 +72,7 @@
 ;;; struct GtkNativeDialog
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkNativeDialog" native-dialog
+(gobject:define-gobject "GtkNativeDialog" native-dialog
   (:superclass g:object
    :export t
    :interfaces ()
@@ -336,7 +336,7 @@ lambda (dialog id)    :run-last
 
   After the @fun{gtk:native-dialog-run} function returns, then dialog window
   will be hidden.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     Typical usage of this function might be:
     @begin{pre}
 gint result = gtk_native_dialog_run (GTK_NATIVE_DIALOG (dialog));
@@ -351,7 +351,7 @@ switch (result)
   @}
 g_object_unref (dialog);
     @end{pre}
-  @end{examples}
+  @end{dictionary}
 
   Note that even though the recursive main loop gives the effect of a modal
   dialog window, it prevents the user from interacting with other windows in

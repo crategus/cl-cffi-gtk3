@@ -61,7 +61,7 @@
 ;;; GtkPrintContext
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkPrintContext" print-context
+(gobject:define-gobject "GtkPrintContext" print-context
   (:superclass g:object
    :export t
    :interfaces nil
@@ -83,7 +83,7 @@
   The @class{gtk:print-context} object gets passed to the
   @code{\"begin-print\"}, @code{\"end-print\"}, @code{\"request-page-setup\"}
   and @code{\"draw-page\"} signals on the print operation.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     Using the @class{gtk:print-context} object in a \"draw-page\" callback.
     @begin{pre}
 (defun draw-page (operation context page-nr)
@@ -125,7 +125,7 @@
     (cairo-set-source-rgb cr 0 0.0 1.0)
     (cairo-fill cr)))
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:print-operation}")
 
 ;;; ----------------------------------------------------------------------------

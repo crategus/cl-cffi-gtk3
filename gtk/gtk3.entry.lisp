@@ -216,7 +216,7 @@
 ;;; GtkEntryIconPosition
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkEntryIconPosition" entry-icon-position
+(gobject:define-genum "GtkEntryIconPosition" entry-icon-position
   (:export t
    :type-initializer "gtk_entry_icon_position_get_type")
   (:primary 0)
@@ -228,7 +228,7 @@
       (liber:symbol-documentation 'entry-icon-position)
  "@version{2024-3-21}
   @begin{declaration}
-(gobject:define-g-enum \"GtkEntryIconPosition\" entry-icon-position
+(gobject:define-genum \"GtkEntryIconPosition\" entry-icon-position
   (:export t
    :type-initializer \"gtk_entry_icon_position_get_type\")
   (:primary 0)
@@ -251,7 +251,7 @@
 ;;; GtkInputPurpose
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkInputPurpose" input-purpose
+(gobject:define-genum "GtkInputPurpose" input-purpose
   (:export t
    :type-initializer "gtk_input_purpose_get_type")
   (:free-form 0)
@@ -271,7 +271,7 @@
       (liber:symbol-documentation 'input-purpose)
  "@version{2024-3-21}
   @begin{declaration}
-(gobject:define-g-enum \"GtkInputPurpose\" input-purpose
+(gobject:define-genum \"GtkInputPurpose\" input-purpose
   (:export t
    :type-initializer \"gtk_input_purpose_get_type\")
   (:free-form 0)
@@ -324,7 +324,7 @@
 ;;; enum GtkInputHints
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-flags "GtkInputHints" input-hints
+(gobject:define-gflags "GtkInputHints" input-hints
   (:export t
    :type-initializer "gtk_input_hints_get_type")
   (:none 0)
@@ -346,7 +346,7 @@
       (liber:symbol-documentation 'input-hints)
  "@version{2024-3-21}
   @begin{declaration}
-(gobject:define-g-flags \"GtkInputHints\" input-hints
+(gobject:define-gflags \"GtkInputHints\" input-hints
   (:export t
    :type-initializer \"gtk_input_hints_get_type\")
   (:none 0)
@@ -400,7 +400,7 @@
 ;;; struct GtkEntry
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkEntry" entry
+(gobject:define-gobject "GtkEntry" entry
   (:superclass widget
    :export t
    :interfaces ("AtkImplementorIface"

@@ -103,7 +103,7 @@
 ;;; GtkStackTransitionType
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkStackTransitionType" stack-transition-type
+(gobject:define-genum "GtkStackTransitionType" stack-transition-type
   (:export t
    :type-initializer "gtk_stack_transition_type_get_type")
   (:none 0)
@@ -133,7 +133,7 @@
       (liber:symbol-documentation 'stack-transition-type)
  "@version{2024-4-9}
   @begin{declaration}
-(gobject:define-g-enum \"GtkStackTransitionType\" stack-transition-type
+(gobject:define-genum \"GtkStackTransitionType\" stack-transition-type
   (:export t
    :type-initializer \"gtk_stack_transition_type_get_type\")
   (:none 0)
@@ -198,7 +198,7 @@
 ;;; struct GtkStack
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkStack" stack
+(gobject:define-gobject "GtkStack" stack
   (:superclass container
    :export t
    :interfaces ("AtkImplementorIface"

@@ -277,7 +277,7 @@ lambda (action current)    :no-recurse
   @end{short}
   Use this in language bindings instead of the the @fun{gtk:radio-action-group}
   function.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     A common way to set up a group of radio actions is the following:
     @begin{pre}
 (let ((actions '((\"action0\" \"label\" \"tooltip\" \"stock-id\" 0)
@@ -290,7 +290,7 @@ lambda (action current)    :no-recurse
      (setf lastaction action))
      ... ))
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @begin[Warning]{dictionary}
     The @fun{gtk:radio-action-join-group} function has been deprecated since
     version 3.10 and should not be used in newly written code.

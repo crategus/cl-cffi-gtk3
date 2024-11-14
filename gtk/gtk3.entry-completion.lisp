@@ -106,7 +106,7 @@
 ;;; struct GtkEntryCompletion
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkEntryCompletion" entry-completion
+(gobject:define-gobject "GtkEntryCompletion" entry-completion
   (:superclass g:object
    :export t
    :interfaces("GtkBuildable"

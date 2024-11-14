@@ -73,7 +73,7 @@
 ;;; GtkApplicationWindow
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkApplicationWindow" application-window
+(gobject:define-gobject "GtkApplicationWindow" application-window
   (:superclass window
    :export t
    :interfaces ("AtkImplementorIface"
@@ -173,7 +173,7 @@
     @item{@code{label}: a user visible string to display}
     @item{@code{icon}: icon name to display}
   @end{itemize}
-  @begin{examples}
+  @begin[Examples]{dictionary}
     An application window with a menubar.
     @begin{pre}
 ;; Intitialize the menubar
@@ -195,7 +195,7 @@
         (gtk:builder-object builder \"menubar\"))
   ... )
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-constructor{gtk:application-window-new}
   @see-slot{gtk:application-window-show-menubar}
   @see-class{gtk:window}

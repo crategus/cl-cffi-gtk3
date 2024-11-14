@@ -65,7 +65,7 @@
 ;;; struct GtkFixed
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkFixed" fixed
+(gobject:define-gobject "GtkFixed" fixed
   (:superclass container
    :export t
    :interfaces ("AtkImplementorIface"

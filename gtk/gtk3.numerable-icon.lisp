@@ -75,7 +75,7 @@
 ;;; struct GtkNumerableIcon
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkNumerableIcon" numerable-icon
+(gobject:define-gobject "GtkNumerableIcon" numerable-icon
   (:superclass g:emblemed-icon
    :export t
    :interfaces ("GIcon")
@@ -107,11 +107,11 @@
   The number can be overlayed on top of another emblem, if desired. It supports
   theming by taking font and color information from a provided
   @class{gtk:style-context} object.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     Typical numerable icons:
 
     @image[numerableicon]{} @image[numerableicon2]{}
-  @end{examples}
+  @end{dictionary}
   @begin[Warning]{dictionary}
     The @class{gtk:numerable-icon} class has been deprecated since version 3.14
     and should not be used in newly written code.

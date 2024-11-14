@@ -64,7 +64,7 @@
 ;;; struct GtkIMContextSimple
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkIMContextSimple" im-context-simple
+(gobject:define-gobject "GtkIMContextSimple" im-context-simple
   (:superclass im-context
    :export t
    :interfaces nil

@@ -70,7 +70,7 @@
 ;;; struct GtkPopoverMenu
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkPopoverMenu" popover-menu
+(gobject:define-gobject "GtkPopoverMenu" popover-menu
   (:superclass popover
     :export t
     :interfaces ("AtkImplementorIface"
@@ -105,7 +105,7 @@
   @slot[gtk:model-button]{centered} properties to achieve a title-like
   appearance and place the submenu indicator at the opposite side. To switch
   back to the main menu, use @code{main} as the menu name.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 <object class=\"GtkPopoverMenu\">
   <child>
@@ -153,7 +153,7 @@
   </child>
 </object>
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @begin[CSS nodes]{dictionary}
     Just like normal popovers created using the @fun{gtk:popover-new-from-model}
     function, the @class{gtk:popover-menu} instances have a single CSS node

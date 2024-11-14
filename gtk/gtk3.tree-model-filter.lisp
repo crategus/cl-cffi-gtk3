@@ -73,7 +73,7 @@
 ;;; struct GtkTreeModelFilter
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkTreeModelFilter" tree-model-filter
+(gobject:define-gobject "GtkTreeModelFilter" tree-model-filter
   (:superclass g:object
    :export t
    :interfaces ("GtkTreeModel"

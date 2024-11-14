@@ -62,7 +62,7 @@
 ;;; GtkCellEditable
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-interface "GtkCellEditable" cell-editable
+(gobject:define-ginterface "GtkCellEditable" cell-editable
   (:export t
    :type-initializer "gtk_cell_editable_get_type")
   ((editing-canceled

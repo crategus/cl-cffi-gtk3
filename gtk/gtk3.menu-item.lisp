@@ -109,7 +109,7 @@
 ;;; struct GtkMenuItem
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkMenuItem" menu-item
+(gobject:define-gobject "GtkMenuItem" menu-item
   (:superclass bin
    :export t
    :interfaces ("AtkImplementorIface"

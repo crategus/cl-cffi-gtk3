@@ -64,7 +64,7 @@
 ;;; GtkBaselinePosition
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkBaselinePosition" baseline-position
+(gobject:define-genum "GtkBaselinePosition" baseline-position
   (:export t
    :type-initializer "gtk_baseline_position_get_type")
   (:top 0)
@@ -77,7 +77,7 @@
       (liber:symbol-documentation 'baseline-position)
  "@version{2024-3-21}
   @begin{declaration}
-(gobject:define-g-enum \"GtkBaselinePosition\" baseline-position
+(gobject:define-genum \"GtkBaselinePosition\" baseline-position
   (:export t
    :type-initializer \"gtk_baseline_position_get_type\")
   (:top 0)
@@ -105,7 +105,7 @@
 ;;; GtkDeleteType
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkDeleteType" delete-type
+(gobject:define-genum "GtkDeleteType" delete-type
   (:export t
    :type-initializer "gtk_delete_type_get_type")
   (:chars 0)
@@ -123,7 +123,7 @@
       (liber:symbol-documentation 'delete-type)
  "@version{2023-2-15}
   @begin{declaration}
-(gobject:define-g-enum \"GtkDeleteType\" delete-type
+(gobject:define-genum \"GtkDeleteType\" delete-type
   (:export t
    :type-initializer \"gtk_delete_type_get_type\")
   (:chars 0)
@@ -164,7 +164,7 @@
 ;;; GtkDirectionType
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkDirectionType" direction-type
+(gobject:define-genum "GtkDirectionType" direction-type
   (:export t
    :type-initializer "gtk_direction_type_get_type")
   (:tab-forward 0)
@@ -180,7 +180,7 @@
       (liber:symbol-documentation 'direction-type)
  "@version{2023-2-15}
   @begin{declaration}
-(gobject:define-g-enum \"GtkDirectionType\" direction-type
+(gobject:define-genum \"GtkDirectionType\" direction-type
   (:export t
    :type-initializer \"gtk_direction_type_get_type\")
   (:tab-forward 0)
@@ -206,7 +206,7 @@
 ;;; GtkJustification
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkJustification" justification
+(gobject:define-genum "GtkJustification" justification
   (:export t
    :type-initializer "gtk_justification_get_type")
   (:left 0)
@@ -220,7 +220,7 @@
       (liber:symbol-documentation 'justification)
  "@version{2024-3-21}
   @begin{declaration}
-(gobject:define-g-enum \"GtkJustification\" justification
+(gobject:define-genum \"GtkJustification\" justification
   (:export t
    :type-initializer \"gtk_justification_get_type\")
   (:left 0)
@@ -245,7 +245,7 @@
 ;;; GtkMovementStep
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkMovementStep" movement-step
+(gobject:define-genum "GtkMovementStep" movement-step
   (:export t
    :type-initializer "gtk_movement_step_get_type")
   (:logical-positions 0)
@@ -265,7 +265,7 @@
       (liber:symbol-documentation 'movement-step)
  "@version{2024-3-21}
   @begin{declaration}
-(gobject:define-g-enum \"GtkMovementStep\" movement-step
+(gobject:define-genum \"GtkMovementStep\" movement-step
   (:export t
    :type-initializer \"gtk_movement_step_get_type\")
   (:logical-positions 0)
@@ -306,7 +306,7 @@
 ;;; GtkOrientation
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkOrientation" orientation
+(gobject:define-genum "GtkOrientation" orientation
   (:export t
    :type-initializer "gtk_orientation_get_type")
   (:horizontal 0)
@@ -318,7 +318,7 @@
       (liber:symbol-documentation 'orientation)
  "@version{2024-3-14}
   @begin{declaration}
-(gobject:define-g-enum \"GtkOrientation\" orientation
+(gobject:define-genum \"GtkOrientation\" orientation
   (:export t
    :type-initializer \"gtk_orientation_get_type\")
   (:horizontal 0)
@@ -341,7 +341,7 @@
 ;;; GtkPackType
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkPackType" pack-type
+(gobject:define-genum "GtkPackType" pack-type
   (:export t
    :type-initializer "gtk_pack_type_get_type")
   (:start 0)
@@ -353,7 +353,7 @@
       (liber:symbol-documentation 'pack-type)
  "@version{2023-3-6}
   @begin{declaration}
-(gobject:define-g-enum \"GtkPackType\" pack-type
+(gobject:define-genum \"GtkPackType\" pack-type
   (:export t
    :type-initializer \"gtk_pack_type_get_type\")
   (:start 0)
@@ -376,7 +376,7 @@
 ;;; GtkPositionType
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkPositionType" position-type
+(gobject:define-genum "GtkPositionType" position-type
   (:export t
    :type-initializer "gtk_position_type_get_type")
   (:left 0)
@@ -390,7 +390,7 @@
       (liber:symbol-documentation 'position-type)
  "@version{2024-3-21}
   @begin{declaration}
-(gobject:define-g-enum \"GtkPositionType\" position-type
+(gobject:define-genum \"GtkPositionType\" position-type
   (:export t
    :type-initializer \"gtk_position_type_get_type\")
   (:left 0)
@@ -418,7 +418,7 @@
 ;;; GtkReliefStyle
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkReliefStyle" relief-style
+(gobject:define-genum "GtkReliefStyle" relief-style
   (:export t
    :type-initializer "gtk_relief_style_get_type")
   (:normal 0)
@@ -431,7 +431,7 @@
       (liber:symbol-documentation 'relief-style)
  "@version{2024-3-21}
   @begin{declaration}
-(gobject:define-g-enum \"GtkReliefStyle\" relief-style
+(gobject:define-genum \"GtkReliefStyle\" relief-style
   (:export t
    :type-initializer \"gtk_relief_style_get_type\")
   (:normal 0)
@@ -456,7 +456,7 @@
 ;; TODO: This enumeration is not in use in the cl-cffi-gtk implementation.
 ;; Consider to remove the implementation.
 
-(gobject:define-g-enum "GtkScrollStep" scroll-step
+(gobject:define-genum "GtkScrollStep" scroll-step
   (:export nil
    :type-initializer "gtk_scroll_step_get_type")
   (:steps 0)
@@ -472,7 +472,7 @@
       (liber:symbol-documentation 'scroll-step)
  "@version{#2024-3-21}
   @begin{declaration}
-(gobject:define-g-enum \"GtkScrollStep\" scroll-step
+(gobject:define-genum \"GtkScrollStep\" scroll-step
   (:export t
    :type-initializer \"gtk_scroll_step_get_type\")
   (:steps 0)
@@ -488,7 +488,7 @@
 ;;; GtkScrollType
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkScrollType" scroll-type
+(gobject:define-genum "GtkScrollType" scroll-type
   (:export t
    :type-initializer "gtk_scroll_type_get_type")
   (:none 0)
@@ -514,7 +514,7 @@
       (liber:symbol-documentation 'scroll-type)
  "@version{2024-3-21}
   @begin{declaration}
-(gobject:define-g-enum \"GtkScrollType\" scroll-type
+(gobject:define-genum \"GtkScrollType\" scroll-type
   (:export t
    :type-initializer \"gtk_scroll_type_get_type\")
   (:none 0)
@@ -567,7 +567,7 @@
 ;;; GtkSelectionMode
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkSelectionMode" selection-mode
+(gobject:define-genum "GtkSelectionMode" selection-mode
   (:export t
    :type-initializer "gtk_selection_mode_get_type")
   (:none 0)
@@ -581,7 +581,7 @@
       (liber:symbol-documentation 'selection-mode)
  "@version{2024-3-14}
   @begin{declaration}
-(gobject:define-g-enum \"GtkSelectionMode\" selection-mode
+(gobject:define-genum \"GtkSelectionMode\" selection-mode
   (:export t
    :type-initializer \"gtk_selection_mode_get_type\")
   (:none 0)
@@ -614,7 +614,7 @@
 ;;; GtkShadowType
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkShadowType" shadow-type
+(gobject:define-genum "GtkShadowType" shadow-type
   (:export t
    :type-initializer "gtk_shadow_type_get_type")
   (:none 0)
@@ -629,7 +629,7 @@
       (liber:symbol-documentation 'shadow-type)
  "@version{2024-3-21}
   @begin{declaration}
-(gobject:define-g-enum \"GtkShadowType\" shadow-type
+(gobject:define-genum \"GtkShadowType\" shadow-type
   (:export t
    :type-initializer \"gtk_shadow_type_get_type\")
   (:none 0)
@@ -660,7 +660,7 @@
 ;;; GtkStateFlags
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-flags "GtkStateFlags" state-flags
+(gobject:define-gflags "GtkStateFlags" state-flags
   (:export t
    :type-initializer "gtk_state_flags_get_type")
   (:normal 0)
@@ -684,7 +684,7 @@
       (liber:symbol-documentation 'state-flags)
  "@version{2024-3-21}
   @begin{declaration}
-(gobject:define-g-flags \"GtkStateFlags\" state-flags
+(gobject:define-gflags \"GtkStateFlags\" state-flags
   (:export t
    :type-initializer \"gtk_state_flags_get_type\")
   (:normal 0)
@@ -731,7 +731,7 @@
 ;;; GtkToolbarStyle
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkToolbarStyle" toolbar-style
+(gobject:define-genum "GtkToolbarStyle" toolbar-style
   (:export t
    :type-initializer "gtk_toolbar_style_get_type")
   (:icons 0)
@@ -745,7 +745,7 @@
       (liber:symbol-documentation 'toolbar-style)
  "@version{2024-3-21}
   @begin{declaration}
-(gobject:define-g-enum \"GtkToolbarStyle\" toolbar-style
+(gobject:define-genum \"GtkToolbarStyle\" toolbar-style
   (:export t
    :type-initializer \"gtk_toolbar_style_get_type\")
   (:icons 0)
@@ -774,7 +774,7 @@
 ;;; GtkSortType
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkSortType" sort-type
+(gobject:define-genum "GtkSortType" sort-type
   (:export t
    :type-initializer "gtk_sort_type_get_type")
   (:ascending 0)
@@ -786,7 +786,7 @@
       (liber:symbol-documentation 'sort-type)
  "@version{2024-3-21}
   @begin{declaration}
-(gobject:define-g-enum \"GtkSortType\" sort-type
+(gobject:define-genum \"GtkSortType\" sort-type
   (:export t
    :type-initializer \"gtk_sort_type_get_type\")
   (:ascending 0)
@@ -806,7 +806,7 @@
 ;;; GtkTextDirection
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkTextDirection" text-direction
+(gobject:define-genum "GtkTextDirection" text-direction
   (:export t
    :type-initializer "gtk_text_direction_get_type")
   (:none 0)
@@ -819,7 +819,7 @@
       (liber:symbol-documentation 'text-direction)
  "@version{2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkTextDirection\" text-direction
+(gobject:define-genum \"GtkTextDirection\" text-direction
   (:export t
    :type-initializer \"gtk_text_direction_get_type\")
   (:none 0)
@@ -851,7 +851,7 @@
 ;;; GtkExpanderStyle
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkExpanderStyle" expander-style
+(gobject:define-genum "GtkExpanderStyle" expander-style
   (:export t
    :type-initializer "gtk_expander_style_get_type")
   (:collapsed 0)
@@ -865,7 +865,7 @@
       (liber:symbol-documentation 'expander-style)
  "@version{2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkExpanderStyle\" expander-style
+(gobject:define-genum \"GtkExpanderStyle\" expander-style
   (:export t
    :type-initializer \"gtk_expander_style_get_type\")
   (:collapsed 0)
@@ -891,7 +891,7 @@
 ;;; GtkStateType
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkStateType" state-type
+(gobject:define-genum "GtkStateType" state-type
   (:export t
    :type-initializer "gtk_state_type_get_type")
   (:normal 0)
@@ -908,7 +908,7 @@
       (liber:symbol-documentation 'state-type)
  "@version{2024-3-21}
   @begin{declaration}
-(gobject:define-g-enum \"GtkStateType\" state-type
+(gobject:define-genum \"GtkStateType\" state-type
   (:export t
    :type-initializer \"gtk_state_type_get_type\")
   (:normal 0)

@@ -72,7 +72,7 @@
 ;;; struct GtkRadioToolButton
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkRadioToolButton" radio-tool-button
+(gobject:define-gobject "GtkRadioToolButton" radio-tool-button
   (:superclass toggle-tool-button
     :export t
     :interfaces ("AtkImplementorIface"

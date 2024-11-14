@@ -85,7 +85,7 @@
 ;;; GtkBuilderError                                         not exported
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkBuilderError" builder-error
+(gobject:define-genum "GtkBuilderError" builder-error
   (:export nil
    :type-initializer "gtk_builder_error_get_type")
   (:invalid-type-function 0)
@@ -109,7 +109,7 @@
       (liber:symbol-documentation 'builder-error)
  "@version{#2024-3-21}
   @begin{declaration}
-(gobject:define-g-enum \"GtkBuilderError\" builder-error
+(gobject:define-genum \"GtkBuilderError\" builder-error
   (:export t
    :type-initializer \"gtk_builder_error_get_type\")
   (:invalid-type-function 0)
@@ -166,7 +166,7 @@
 ;;; GtkBuilder
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkBuilder" builder
+(gobject:define-gobject "GtkBuilder" builder
   (:superclass g:object
    :export t
    :interfaces nil
@@ -341,7 +341,7 @@
     Additionally, since 3.10 a special @code{<template>} tag has been added to
     the format allowing one to define a widget class's components.
   @end{dictionary}
-  @begin{examples}
+  @begin[Examples]{dictionary}
     A @class{gtk:builder} UI Definition
     @begin{pre}
 <interface>
@@ -366,7 +366,7 @@
   </object>
 </interface>
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-constructor{gtk:builder-new}
   @see-constructor{gtk:builder-new-from-file}
   @see-constructor{gtk:builder-new-from-resource}
@@ -690,12 +690,12 @@
     @arg{builder}.
   @end{short}
   Upon errors 0 will be returned.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     If you are adding an object that depends on an object that is not its
     child, for instance a @class{gtk:tree-view} widget that depends on its
     @class{gtk:tree-model} implementation, you have to explicitely list all of
     them in @arg{ids}.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:builder}
   @see-function{gtk:builder-add-from-file}
   @see-function{gtk:builder-add-objects-from-string}
@@ -741,12 +741,12 @@
     Parses a string containing a @class{gtk:builder} UI definition building only
     the requested objects and merges them with the current contents of builder.
   @end{short}
-  @begin{notes}
+  @begin[Notes]{dictionary}
     If you are adding an object that depends on an object that is not its child,
     for instance a @class{gtk:tree-view} widget that depends on its
     @class{gtk:tree-model} implementation, you have to explicitely list all of
     them in @arg{ids}.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:builder}
   @see-function{gtk:builder-add-from-string}
   @see-function{gtk:builder-add-objects-from-file}
@@ -792,12 +792,12 @@
     building only the requested objects and merges them with the current
     contents of builder.
   @end{short}
-  @begin{notes}
+  @begin[Notes]{dictionary}
     If you are adding an object that depends on an object that is not its
     child, for instance a @class{gtk:tree-view} widget that depends on its
     @class{gtk:tree-model} implementation, you have to explicitely list all of
     them in @arg{ids}.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:builder}
   @see-function{gtk:builder-add-from-resource}
   @see-function{gtk:builder-add-objects-from-file}
@@ -1007,7 +1007,7 @@
     This function connects signal handlers to the signal IDs in the UI
     definition.
   @end{short}
-  @begin{examples}
+  @begin[Examples]{dictionary}
     Code fragment from the GTK examples.
     @begin{pre}
 (let ((builder (make-instance 'gtk:builder)))
@@ -1017,7 +1017,7 @@
                                \"cancel-clicked\" 'cancel-button-clicked)
   ... )
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:builder}"
   (flet ((connect-func (builder
                         object

@@ -91,7 +91,7 @@
 ;;; GtkUnit
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkUnit" unit
+(gobject:define-genum "GtkUnit" unit
   (:export t
    :type-initializer "gtk_unit_get_type")
   (:none 0)
@@ -106,7 +106,7 @@
       (liber:symbol-documentation 'unit)
  "@version{2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkUnit\" unit
+(gobject:define-genum \"GtkUnit\" unit
   (:export t
    :type-initializer \"gtk_unit_get_type\")
   (:none 0)
@@ -132,7 +132,7 @@
 (cffi:defcfun ("gtk_paper_size_new" %paper-size-alloc) :pointer
   (name :pointer))
 
-(glib:define-g-boxed-opaque paper-size "GtkPaperSize"
+(glib:define-gboxed-opaque paper-size "GtkPaperSize"
   :export t
   :type-initializer "gtk_paper_size_get_type"
   :alloc (%paper-size-alloc (cffi:null-pointer)))
@@ -683,11 +683,11 @@
     Returns the name of the default paper size, which depends on the current
     locale.
   @end{short}
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (gtk:paper-size-default) => \"iso_a4\"
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:paper-size}")
 
 (export 'paper-size-default)
@@ -782,14 +782,14 @@
   @begin{short}
     Serialize a paper size to a @code{a{sv@}} variant instance.
   @end{short}
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (gtk:paper-size-to-gvariant (gtk:paper-size-new))
 => #.(SB-SYS:INT-SAP #X00F02070)
 (g:variant-print * nil)
 => \"{'PPDName': <'A4'>, 'DisplayName': <'A4'>, 'Width': <210.0>, 'Height': <297.0>@}\"
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:paper-size}
   @see-type{g:variant}"
   (size (g:boxed paper-size)))

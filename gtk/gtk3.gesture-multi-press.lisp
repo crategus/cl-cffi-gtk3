@@ -62,7 +62,7 @@
 ;;; struct GtkGestureMultiPress
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkGestureMultiPress" gesture-multi-press
+(gobject:define-gobject "GtkGestureMultiPress" gesture-multi-press
   (:superclass gesture-single
    :export t
    :interfaces nil

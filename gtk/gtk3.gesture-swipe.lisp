@@ -59,7 +59,7 @@
 ;;; struct GtkGestureSwipe
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkGestureSwipe" gesture-swipe
+(gobject:define-gobject "GtkGestureSwipe" gesture-swipe
   (:superclass gesture-single
    :export t
    :interfaces nil

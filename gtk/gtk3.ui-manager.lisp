@@ -256,7 +256,7 @@
 ;;; enum GtkUIManagerItemType
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-flags "GtkUIManagerItemType" ui-manager-item-type
+(gobject:define-gflags "GtkUIManagerItemType" ui-manager-item-type
   (:export t
    :type-initializer "gtk_ui_manager_item_type_get_type")
   (:auto 0)
@@ -277,7 +277,7 @@
       (liber:symbol-documentation 'ui-manager-item-type)
  "@version{#2024-3-21}
   @begin{declaration}
-(gobject:define-g-flags \"GtkUIManagerItemType\" ui-manager-item-type
+(gobject:define-gflags \"GtkUIManagerItemType\" ui-manager-item-type
   (:export t
    :type-initializer \"gtk_ui_manager_item_type_get_type\"))
   (:auto 0)
@@ -323,7 +323,7 @@
 ;;; struct GtkUIManager
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkUIManager" ui-manager
+(gobject:define-gobject "GtkUIManager" ui-manager
   (:superclass g:object
     :export t
     :interfaces ("GtkBuildable"))

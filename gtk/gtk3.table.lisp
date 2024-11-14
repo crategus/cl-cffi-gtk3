@@ -95,7 +95,7 @@
 ;;; GtkAttachOptions
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-flags "GtkAttachOptions" attach-options
+(gobject:define-gflags "GtkAttachOptions" attach-options
   (:export t
    :type-initializer "gtk_attach_options_get_type")
   (:expand #.(ash 1 0))
@@ -108,7 +108,7 @@
       (liber:symbol-documentation 'attach-options)
  "@version{2024-6-27}
   @begin{declaration}
-(gobject:define-g-flags \"GtkAttachOptions\" attach-options
+(gobject:define-gflags \"GtkAttachOptions\" attach-options
   (:export t
    :type-initializer \"gtk_attach_options_get_type\")
   (:expand #.(ash 1 0))
@@ -133,7 +133,7 @@
 ;;; GtkTable
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkTable" table
+(gobject:define-gobject "GtkTable" table
   (:superclass container
    :export t
    :interfaces ("AtkImplementorIface"
@@ -826,7 +826,7 @@
   The @code{xoptions} and @code{yoptions} keyword arguments have the default
   value @code{'(:expand :fill)}. The @code{xpadding} and @code{ypadding} keyword
   arguments have the default value 0.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     To make a button occupy the lower right cell of a 2 x 2 table, use
     @begin{pre}
 (gtk:table-attach table button 1 2 1 2)
@@ -835,7 +835,7 @@
     @begin{pre}
 (gtk:table-attach table button 0 2 1 2)
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @begin[Lisp implementation]{dictionary}
     The C library has the @code{gtk_table_attach_default ()} function. This
     function is included in the Lisp library via keyword arguments with default

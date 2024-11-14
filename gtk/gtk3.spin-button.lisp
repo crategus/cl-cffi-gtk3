@@ -95,7 +95,7 @@
 ;;; GtkSpinButtonUpdatePolicy
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkSpinButtonUpdatePolicy" spin-button-update-policy
+(gobject:define-genum "GtkSpinButtonUpdatePolicy" spin-button-update-policy
   (:export t
    :type-initializer "gtk_spin_button_update_policy_get_type")
   (:always 0)
@@ -107,7 +107,7 @@
       (liber:symbol-documentation 'spin-button-update-policy)
  "@version{#2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkSpinButtonUpdatePolicy\" spin-button-update-policy
+(gobject:define-genum \"GtkSpinButtonUpdatePolicy\" spin-button-update-policy
   (:export t
    :type-initializer \"gtk_spin_button_update_policy_get_type\")
   (:always 0)
@@ -134,7 +134,7 @@
 ;;; GtkSpinType
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkSpinType" spin-type
+(gobject:define-genum "GtkSpinType" spin-type
   (:export t
    :type-initializer "gtk_spin_type_get_type")
   (:step-forward 0)
@@ -151,7 +151,7 @@
       (liber:symbol-documentation 'spin-type)
  "@version{#2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkSpinType\" spin-type
+(gobject:define-genum \"GtkSpinType\" spin-type
   (:export t
    :type-initializer \"gtk_spin_type_get_type\")
   (:step-forward 0)
@@ -193,7 +193,7 @@
 ;;; struct GtkSpinButton
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkSpinButton" spin-button
+(gobject:define-gobject "GtkSpinButton" spin-button
   (:superclass entry
    :export t
    :interfaces ("AtkImplementorIface"
@@ -273,7 +273,7 @@
   classes. The @class{gtk:entry} subnodes, if present, are put below the
   entry node. The orientation of the spin button is reflected in the
   @code{.vertical} or @code{.horizontal} style class on the main node.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     Code fragment for creating a spin button. The value from the spin button is
     retrieved with the @fun{gtk:spin-button-value} function in a signal handler
     as a floating point number. Use the @fun{gtk:spin-button-value-as-int}
@@ -298,7 +298,7 @@
                       (let ((value (gtk:spin-button-value widget)))))
                         ... ))
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @begin[Style Property Details]{dictionary}
     @begin[code]{table}
       @begin[shadow-type]{entry}
@@ -744,11 +744,11 @@ lambda (spinbutton)    :run-last
   The way in which the precision is derived works best if @arg{step} is a power
   of ten. If the resulting precision is not suitable for your needs, use the
   @fun{gtk:spin-button-digits} function to correct it.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     In the Lisp implementation the arguments @arg{min}, @arg{max}, and
     @arg{step} are coerced to a double float number.
-  @end{notes}
-  @begin{examples}
+  @end{dictionary}
+  @begin[Examples]{dictionary}
     In this example the arguments of the function are given as integer numbers.
     @begin{pre}
 (defvar spinbutton (gtk:spin-button-new-with-range 5 15 5)) => SPINBUTTON
@@ -762,7 +762,7 @@ lambda (spinbutton)    :run-last
 (gtk:adjustment-upper adjustment) => 15.0d0
 (gtk:adjustment-value adjustment) =>5.0d0
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-function{gtk:spin-button}
   @see-function{gtk:spin-button-digits}"
   (%spin-button-new-with-range (coerce min 'double-float)
@@ -807,12 +807,12 @@ lambda (spinbutton)    :run-last
 
   This affects how quickly the value changes when the spin button's arrows are
   activated.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     The values for the page and step increments are stored in the
     @slot[gtk:adjustment]{page-increment} and
     @slot[gtk:adjustment]{step-increment} slots of the adjustment associated
     with the spin button.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:spin-button}
   @see-function{gtk:adjustment-page-increment}
   @see-function{gtk:adjustment-step-increment}"

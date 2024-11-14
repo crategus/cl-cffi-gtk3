@@ -54,7 +54,7 @@
 
 (in-package :gtk)
 
-(gobject:define-g-object-class "GtkGestureZoom" gesture-zoom
+(gobject:define-gobject "GtkGestureZoom" gesture-zoom
   (:superclass gesture
    :export t
    :interfaces nil

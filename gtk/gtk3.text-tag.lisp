@@ -140,7 +140,7 @@
 ;;; GtkWrapMode
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkWrapMode" wrap-mode
+(gobject:define-genum "GtkWrapMode" wrap-mode
   (:export t
    :type-initializer "gtk_wrap_mode_get_type")
   (:none 0)
@@ -154,7 +154,7 @@
       (liber:symbol-documentation 'wrap-mode)
  "@version{2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkWrapMode\" wrap-mode
+(gobject:define-genum \"GtkWrapMode\" wrap-mode
   (:export tgtk.text-attribut
    :type-initializer \"gtk_wrap_mode_get_type\")
   (:none 0)
@@ -182,7 +182,7 @@
 ;;; struct GtkTextTag
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkTextTag" text-tag
+(gobject:define-gobject "GtkTextTag" text-tag
   (:superclass g:object
    :export t
    :interfaces nil
@@ -2547,13 +2547,13 @@ lambda (tag object event iter)    :run-last
   @begin{short}
     Creates a new tag.
   @end{short}
-  @begin{examples}
+  @begin[Examples]{dictionary}
     Create a tag with name \"font-italic\":
     @begin{pre}
 (gtk:text-tag-new \"font-italic\" :font \"fixed\" :style :italic)
 => #<gtk:text-tag {1006C86E63@}>
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:text-tag}"
   (apply #'make-instance 'text-tag :name name args))
 

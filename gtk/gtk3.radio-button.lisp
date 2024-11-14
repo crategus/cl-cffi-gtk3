@@ -79,7 +79,7 @@
 ;;; GtkRadioButton
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkRadioButton" radio-button
+(gobject:define-gobject "GtkRadioButton" radio-button
   (:superclass check-button
    :export t
    :interfaces ("AtkImplementorIface"
@@ -145,7 +145,7 @@ button.radio
     of its main node to @code{button} and adds a @code{.radio} style class to
     it. The subnode is invisible in this case.
   @end{dictionary}
-  @begin{examples}
+  @begin[Examples]{dictionary}
     How to create a group of two radio buttons.
     @begin{pre}
 (defun example-radio-button ()
@@ -183,7 +183,7 @@ button.radio
     selected radio button. Inside the @code{\"toggled\"} signal handler, the
     @fun{gtk:toggle-button-active} function can be used to determine if the
     button has been selected or deselected.
-  @end{examples}
+  @end{dictionary}
   @begin[Signal Details]{dictionary}
     @subheading{The \"group-changed\" signal}
       @begin{pre}
@@ -433,7 +433,7 @@ lambda (button)    :run-first
   Use this in language bindings instead of the the
   @fun{gtk:radio-button-get-group} and @fun{gtk:radio-button-set-group}
   functions.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     A common way to set up a group of radio buttons with a label is the
     following:
     @begin{pre}
@@ -444,7 +444,7 @@ lambda (button)    :run-first
     (gtk:radio-button-join-group button lastbutton)
     (setf lastbutton button)))
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:radio-button}
   @see-function{gtk:radio-button-get-group}
   @see-function{gtk:radio-button-set-group}"

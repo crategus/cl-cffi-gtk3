@@ -58,7 +58,7 @@
 ;;; struct GtkGestureRotate
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkGestureRotate" gesture-rotate
+(gobject:define-gobject "GtkGestureRotate" gesture-rotate
   (:superclass gesture
    :export t
    :interfaces nil

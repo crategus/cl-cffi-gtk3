@@ -75,7 +75,7 @@
 ;;; GtkLinkButton
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkLinkButton" link-button
+(gobject:define-gobject "GtkLinkButton" link-button
   (:superclass button
     :export t
     :interfaces ("AtkImplementorIface"

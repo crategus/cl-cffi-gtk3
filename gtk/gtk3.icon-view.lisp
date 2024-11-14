@@ -165,7 +165,7 @@
 ;;; GtkIconViewDropPosition
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkIconViewDropPosition" icon-view-drop-position
+(gobject:define-genum "GtkIconViewDropPosition" icon-view-drop-position
   (:export t
    :type-initializer "gtk_icon_view_drop_position_get_type")
   (:no-drop 0)
@@ -181,7 +181,7 @@
       (liber:symbol-documentation 'icon-view-drop-position)
  "@version{2024-3-24}
   @begin{declaration}
-(gobject:define-g-enum \"GtkIconViewDropPosition\" icon-view-drop-position
+(gobject:define-genum \"GtkIconViewDropPosition\" icon-view-drop-position
   (:export t
    :type-initializer \"gtk_icon_view_drop_position_get_type\")
   (:no-drop 0)
@@ -208,7 +208,7 @@
 ;;; struct GtkIconView
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkIconView" icon-view
+(gobject:define-gobject "GtkIconView" icon-view
   (:superclass container
    :export t
    :interfaces ("AtkImplementorIface"

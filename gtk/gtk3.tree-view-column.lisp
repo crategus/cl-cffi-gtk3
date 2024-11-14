@@ -140,7 +140,7 @@
 ;;; GtkTreeViewColumnSizing
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkTreeViewColumnSizing" tree-view-column-sizing
+(gobject:define-genum "GtkTreeViewColumnSizing" tree-view-column-sizing
   (:export t
    :type-initializer "gtk_tree_view_column_sizing_get_type")
   (:grow-only 0)
@@ -153,7 +153,7 @@
       (liber:symbol-documentation 'tree-view-column-sizing)
  "@version{2024-3-14}
   @begin{declaration}
-(gobject:define-g-enum \"GtkTreeViewColumnSizing\" tree-view-column-sizing
+(gobject:define-genum \"GtkTreeViewColumnSizing\" tree-view-column-sizing
   (:export t
    :type-initializer \"gtk_tree_view_column_sizing_get_type\")
   (:grow-only 0)
@@ -181,7 +181,7 @@
 ;;; struct GtkTreeViewColumn
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkTreeViewColumn" tree-view-column
+(gobject:define-gobject "GtkTreeViewColumn" tree-view-column
   (:superclass g:initially-unowned
    :export t
    :interfaces ("GtkBuildable"
@@ -935,7 +935,7 @@ lambda (column)    :run-last
   @fun{gtk:tree-view-column-pack-start}, and
   @fun{gtk:tree-view-column-set-attributes} functions on the newly created
   @class{gtk:tree-view-column} object.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (let* ((renderer (gtk:cell-renderer-text-new))
        (column (gtk:tree-view-column-new-with-attributes \"Example\"
@@ -944,7 +944,7 @@ lambda (column)    :run-last
                                                          \"foreground\" 1)))
   ... )
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:tree-view-column}
   @see-class{gtk:cell-renderer}
   @see-function{gtk:tree-view-column-title}

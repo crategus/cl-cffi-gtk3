@@ -128,7 +128,7 @@
 ;;; };
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkStyle" style
+(gobject:define-gobject "GtkStyle" style
   (:superclass g:object
    :export nil
    :interfaces nil

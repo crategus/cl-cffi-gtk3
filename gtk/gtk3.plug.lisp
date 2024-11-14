@@ -75,7 +75,7 @@
 ;;; struct GtkPlug
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkPlug" plug
+(gobject:define-gobject "GtkPlug" plug
   (:superclass window
    :export t
    :interfaces ("AtkImplementorIface"

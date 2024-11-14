@@ -70,7 +70,7 @@
 ;;; GtkCheckButton
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkCheckButton" check-button
+(gobject:define-gobject "GtkCheckButton" check-button
   (:superclass toggle-button
    :export t
    :interfaces ("AtkImplementorIface"

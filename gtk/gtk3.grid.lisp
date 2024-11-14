@@ -96,7 +96,7 @@
 ;;; struct GtkGrid
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkGrid" grid
+(gobject:define-gobject "GtkGrid" grid
   (:superclass container
    :export t
    :interfaces ("AtkImplementorIface"

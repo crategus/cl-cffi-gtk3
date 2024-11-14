@@ -93,7 +93,7 @@
 ;;; GtkClipboard
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkClipboard" clipboard
+(gobject:define-gobject "GtkClipboard" clipboard
   (:superclass g:object
    :export t
    :interfaces nil

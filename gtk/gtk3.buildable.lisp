@@ -60,7 +60,7 @@
 ;;; GtkBuildable
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-interface "GtkBuildable" buildable
+(gobject:define-ginterface "GtkBuildable" buildable
   (:export t
    :type-initializer "gtk_buildable_get_type")
   nil)
@@ -85,11 +85,11 @@
   interface is the @class{gtk:builder} class. There should be very little need
   for applications to call any functions from the @class{gtk:buildable}
   interface.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     An object only needs to implement this interface if it needs to extend the
     @class{gtk:builder} format or run any extra routines at deserialization
     time.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:builder}")
 
 ;;; ----------------------------------------------------------------------------

@@ -110,7 +110,7 @@
 ;;; enum GtkCellRendererState
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-flags "GtkCellRendererState" cell-renderer-state
+(gobject:define-gflags "GtkCellRendererState" cell-renderer-state
   (:export t
    :type-initializer "gtk_cell_renderer_state_get_type")
   (:selected    #.(ash 1 0))
@@ -127,7 +127,7 @@
       (liber:symbol-documentation 'cell-renderer-state)
  "@version{2024-3-15}
   @begin{declaration}
-(gobject:define-g-flags \"GtkCellRendererState\" cell-renderer-state
+(gobject:define-gflags \"GtkCellRendererState\" cell-renderer-state
   (:export t
    :type-initializer \"gtk_cell_renderer_state_get_type\")
   (:selected    #.(ash 1 0))
@@ -157,7 +157,7 @@
 ;;; GtkCellRendererMode
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkCellRendererMode" cell-renderer-mode
+(gobject:define-genum "GtkCellRendererMode" cell-renderer-mode
   (:export t
    :type-initializer "gtk_cell_renderer_mode_get_type")
   (:inert 0)
@@ -170,7 +170,7 @@
       (liber:symbol-documentation 'cell-renderer-mode)
  "@version{2024-3-15}
   @begin{declaration}
-(gobject:define-g-enum \"GtkCellRendererMode\" cell-renderer-mode
+(gobject:define-genum \"GtkCellRendererMode\" cell-renderer-mode
   (:export t
    :type-initializer \"gtk_cell_renderer_mode_get_type\")
   (:inert 0)
@@ -194,7 +194,7 @@
 ;;; struct GtkCellRenderer
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkCellRenderer" cell-renderer
+(gobject:define-gobject "GtkCellRenderer" cell-renderer
   (:superclass g:initially-unowned
    :export t
    :interfaces nil

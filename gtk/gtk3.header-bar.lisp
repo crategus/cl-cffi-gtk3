@@ -91,7 +91,7 @@
 ;;; GtkHeaderBar
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkHeaderBar" header-bar
+(gobject:define-gobject "GtkHeaderBar" header-bar
   (:superclass container
    :export t
    :interfaces ("AtkImplementorIface"

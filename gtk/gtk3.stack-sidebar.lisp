@@ -68,7 +68,7 @@
 ;;; struct GtkStackSidebar
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkStackSidebar" stack-sidebar
+(gobject:define-gobject "GtkStackSidebar" stack-sidebar
   (:superclass bin
    :export t
    :interfaces ("AtkImplementorIface"

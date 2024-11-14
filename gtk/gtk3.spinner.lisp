@@ -59,7 +59,7 @@
 ;;; GtkSpinner
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkSpinner" spinner
+(gobject:define-gobject "GtkSpinner" spinner
   (:superclass widget
    :export t
    :interfaces ("AtkImplementorIface"

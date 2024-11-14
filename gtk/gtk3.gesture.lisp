@@ -87,7 +87,7 @@
 ;;; GtkEventSequenceState
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkEventSequenceState" event-sequence-state
+(gobject:define-genum "GtkEventSequenceState" event-sequence-state
   (:export t
    :type-initializer "gtk_event_sequence_state_get_type")
   (:none 0)
@@ -100,7 +100,7 @@
       (liber:symbol-documentation 'event-sequence-state)
  "@version{2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkEventSequenceState\" event-sequence-state
+(gobject:define-genum \"GtkEventSequenceState\" event-sequence-state
   (:export t
    :type-initializer \"gtk_event_sequence_state_get_type\")
   (:none 0)
@@ -125,7 +125,7 @@
 ;;; struct GtkGesture
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkGesture" gesture
+(gobject:define-gobject "GtkGesture" gesture
   (:superclass event-controller
    :export t
    :interfaces nil

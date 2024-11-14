@@ -62,7 +62,7 @@
 ;;; struct GtkTextMark
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkTextMark" text-mark
+(gobject:define-gobject "GtkTextMark" text-mark
   (:superclass g:object
    :export t
    :interfaces nil

@@ -117,7 +117,7 @@
 ;;; GtkAssistantPageType
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkAssistantPageType" assistant-page-type
+(gobject:define-genum "GtkAssistantPageType" assistant-page-type
   (:export t
    :type-initializer "gtk_assistant_page_type_get_type")
   (:content  0)
@@ -133,7 +133,7 @@
       (liber:symbol-documentation 'assistant-page-type)
  "@version{2024-3-16}
   @begin{declaration}
-(gobject:define-g-enum \"GtkAssistantPageType\" gtk:assistant-page-type
+(gobject:define-genum \"GtkAssistantPageType\" gtk:assistant-page-type
   (:export t
    :type-initializer \"gtk_assistant_page_type_get_type\")
   (:content  0)
@@ -179,7 +179,7 @@
 ;;; struct GtkAssistant
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkAssistant" assistant
+(gobject:define-gobject "GtkAssistant" assistant
   (:superclass window
    :export t
    :interfaces ("AtkImplementorIface"

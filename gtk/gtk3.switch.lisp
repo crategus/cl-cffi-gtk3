@@ -77,7 +77,7 @@
 ;;; struct GtkSwitch
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkSwitch" switch
+(gobject:define-gobject "GtkSwitch" switch
   (:superclass widget
    :export t
    :interfaces ("AtkImplementorIface"

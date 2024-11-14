@@ -75,7 +75,7 @@
 ;;; struct GtkStatusbar
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkStatusbar" statusbar
+(gobject:define-gobject "GtkStatusbar" statusbar
   (:superclass box
    :export t
    :interfaces ("AtkImplementorIface"

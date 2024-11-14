@@ -64,7 +64,7 @@
 ;;; struct GtkRecentChooserDialog
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkRecentChooserDialog" recent-chooser-dialog
+(gobject:define-gobject "GtkRecentChooserDialog" recent-chooser-dialog
   (:superclass dialog
    :export t
    :interfaces ("AtkImplementorIface"
@@ -89,7 +89,7 @@
   Note that the @class{gtk:recent-chooser-dialog} widget does not have any
   methods of its own. Instead, you should use the functions that work on a
   @class{gtk:recent-chooser} widget.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     In the simplest of cases, you can use the following code to use a
     @class{gtk:recent-chooser-dialog} widget to select a recently used file:
     @begin{pre}
@@ -112,7 +112,7 @@ if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_ACCEPT)
 
 gtk_widget_destroy (dialog);
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-constructor{gtk:recent-chooser-dialog-new}
   @see-constructor{gtk:recent-chooser-dialog-new-for-manager}
   @see-class{gtk:recent-chooser}

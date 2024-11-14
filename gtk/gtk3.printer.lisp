@@ -94,7 +94,7 @@
 ;;; GtkPrintBackend
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkPrintBackend" print-backend
+(gobject:define-gobject "GtkPrintBackend" print-backend
   (:superclass g:object
     :export t
     :interfaces nil
@@ -111,7 +111,7 @@
 ;;; struct GtkPrinter
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkPrinter" printer
+(gobject:define-gobject "GtkPrinter" printer
   (:superclass g:object
     :export t
     :interfaces nil
@@ -726,11 +726,11 @@ lambda (printer success)    :run-last
     Retrieve the hard margins of the printer, i.e. the margins that define
     the area at the borders of the paper that the printer cannot print to.
   @end{short}
-  @begin{notes}
+  @begin[Notes]{dictionary}
     This will not succeed unless the details of the printer are available,
     see the @fun{gtk:printer-has-details} and @fun{gtk:printer-request-details}
     functions.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:printer}
   @see-function{gtk:printer-has-details}
   @see-function{gtk:printer-request-details}"

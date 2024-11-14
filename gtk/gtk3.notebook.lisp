@@ -148,7 +148,7 @@
 ;;; GtkNotebookTab
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkNotebookTab" notebook-tab
+(gobject:define-genum "GtkNotebookTab" notebook-tab
   (:export t
    :type-initializer "gtk_notebook_tab_get_type")
   (:tab-first 0)
@@ -160,7 +160,7 @@
       (liber:symbol-documentation 'notebook-tab)
  "@version{#2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkNotebookTab\" notebook-tab
+(gobject:define-genum \"GtkNotebookTab\" notebook-tab
   (:export t
    :type-initializer \"gtk_notebook_tab_get_type\")
   (:tab-first 0)
@@ -182,7 +182,7 @@
 ;;; struct GtkNotebook
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkNotebook" notebook
+(gobject:define-gobject "GtkNotebook" notebook
   (:superclass container
    :export t
    :interfaces ("AtkImplementorIface"
@@ -1241,12 +1241,12 @@ lambda (notebook page num)    :run-last
     Removes a page from the notebook given the page widget or its index in the
     notebook.
   @end{short}
-  @begin{notes}
+  @begin[Notes]{dictionary}
     In the Lisp implementation the argument can be an integer for the index or
     the page widget. The index of the page widget is got with the
     @fun{gtk:notebook-page-num} function and passed to the C function.
-  @end{notes}
-  @begin{examples}
+  @end{dictionary}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (defvar notebook (make-instance 'gtk:notebook))
 => NOTEBOOK
@@ -1259,7 +1259,7 @@ lambda (notebook page num)    :run-last
 => 0
 (gtk:notebook-remove-page notebook 0)
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:notebook}
   @see-function{gtk:notebook-page-num}"
   (%notebook-remove-page notebook
@@ -1392,10 +1392,10 @@ lambda (notebook page num)    :run-last
   @end{short}
   If the user clicks with the right mouse button on the tab labels, a menu with
   all the pages will be popped up.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     This function calls the @fun{gtk:notebook-enable-popup} function with the
     @em{true} value.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:notebook}
   @see-function{gtk:notebook-popup-disable}
   @see-function{gtk:notebook-enable-popup}"
@@ -1417,10 +1417,10 @@ lambda (notebook page num)    :run-last
     Disables the popup menu.
   @end{short}
   See the @fun{gtk:notebook-popup-enable} function.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     This function calls the @fun{gtk:notebook-enable-popup} function with the
     @em{false} value.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:notebook}
   @see-function{gtk:notebook-popup-enable}
   @see-function{gtk:notebook-enable-popup}"
@@ -1604,10 +1604,10 @@ lambda (notebook page num)    :run-last
   menu label for the page containing child. The
   @setf{gtk:notebook-menu-label-text} function creates a new label and sets it
   as the menu label of the child page.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     This function is implemented with the @fun{gtk:notebook-child-menu-label}
     function.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:notebook}
   @see-class{gtk:widget}
   @see-function{gtk:notebook-menu-label}
@@ -1640,10 +1640,10 @@ lambda (notebook page num)    :run-last
   label for the page containing child. The
   @setf{gtk:notebook-tab-label-text} function creates a new label and sets it
   as the tab label for the page containing child.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     This function is implemented with the @fun{gtk:notebook-child-tab-label}
     function.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:notebook}
   @see-class{gtk:widget}
   @see-function{gtk:notebook-tab-label}
@@ -1675,10 +1675,10 @@ lambda (notebook page num)    :run-last
   reordered via drag and drop or not. The
   @setf{gtk:notebook-tab-reorderable} function sets whether the notebook tab
   can be reordered.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     This function duplicates the implementation of the
     @fun{gtk:notebook-child-reorderable} function.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:notebook}
   @see-class{gtk:widget}
   @see-function{gtk:notebook-child-reorderable}"
@@ -1713,7 +1713,7 @@ lambda (notebook page num)    :run-last
   Note that two notebooks must share a common group identificator, see the
   @fun{gtk:notebook-group-name} function, to allow automatic tabs interchange
   between them.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     If you want a widget to interact with a notebook through DnD, i.e. accept
     dragged tabs from it, it must be set as a drop destination and accept the
     \"GTK_NOTEBOOK_TAB\" target. The notebook will fill the selection with a
@@ -1742,7 +1742,7 @@ on_drop_zone_drag_data_received (GtkWidget        *widget,
     @end{pre}
     If you want a notebook to accept drags from other widgets, you will have to
     set your own DnD code to do it.
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:notebook}
   @see-class{gtk:widget}
   @see-function{gtk:notebook-child-detachable}

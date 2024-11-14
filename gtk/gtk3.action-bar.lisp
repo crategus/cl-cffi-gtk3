@@ -68,7 +68,7 @@
 ;;; struct GtkActionBar
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkActionBar" action-bar
+(gobject:define-gobject "GtkActionBar" action-bar
   (:superclass bin
    :export t
    :interfaces ("AtkImplementorIface"

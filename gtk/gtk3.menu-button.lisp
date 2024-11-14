@@ -84,7 +84,7 @@
 ;;; GtkArrowType
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkArrowType" arrow-type
+(gobject:define-genum "GtkArrowType" arrow-type
   (:export t
    :type-initializer "gtk_arrow_type_get_type")
   (:up 0)
@@ -99,7 +99,7 @@
       (liber:symbol-documentation 'arrow-type)
  "@version{#2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkArrowType\" arrow-type
+(gobject:define-genum \"GtkArrowType\" arrow-type
   (:export t
    :type-initializer \"gtk_arrow_type_get_type\")
   (:up 0)
@@ -127,7 +127,7 @@
 ;;; struct GtkMenuButton
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkMenuButton" menu-button
+(gobject:define-gobject "GtkMenuButton" menu-button
   (:superclass toggle-button
    :export t
    :interfaces ("AtkImplementorIface"

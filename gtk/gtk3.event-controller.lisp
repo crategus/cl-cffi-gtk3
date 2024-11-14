@@ -66,7 +66,7 @@
 ;;; GtkPropagationPhase
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkPropagationPhase" propagation-phase
+(gobject:define-genum "GtkPropagationPhase" propagation-phase
   (:export t
    :type-initializer "gtk_propagation_phase_get_type")
   (:phase-none 0)
@@ -80,7 +80,7 @@
       (liber:symbol-documentation 'propagation-phase)
  "@version{#2024-3-21}
   @begin{declaration}
-(gobject:define-g-enum \"GtkPropagationPhase\" propagation-phase
+(gobject:define-genum \"GtkPropagationPhase\" propagation-phase
   (:export t
    :type-initializer \"gtk_propagation_phase_get_type\")
   (:phase-none 0)
@@ -118,7 +118,7 @@
 ;;; struct GtkEventController
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkEventController" event-controller
+(gobject:define-gobject "GtkEventController" event-controller
   (:superclass g:object
    :export t
    :interfaces nil

@@ -70,7 +70,7 @@
 ;;; struct GtkStackSwitcher
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkStackSwitcher" stack-switcher
+(gobject:define-gobject "GtkStackSwitcher" stack-switcher
   (:superclass box
    :export t
    :interfaces ("AtkImplementorIface"

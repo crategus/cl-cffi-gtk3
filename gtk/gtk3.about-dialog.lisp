@@ -119,7 +119,7 @@
 ;;; GtkLicense
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkLicense" license
+(gobject:define-genum "GtkLicense" license
   (:export t
    :type-initializer "gtk_license_get_type")
   (:unknown 0)
@@ -150,7 +150,7 @@
       (liber:symbol-documentation 'license)
  "@version{2024-3-16}
   @begin{declaration}
-(gobject:define-g-enum \"GtkLicense\" license
+(gobject:define-genum \"GtkLicense\" license
   (:export t
    :type-initializer \"gtk_license_get_type\")
   (:unknown 0)
@@ -208,7 +208,7 @@
 ;;; struct GtkAboutDialog
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkAboutDialog" about-dialog
+(gobject:define-gobject "GtkAboutDialog" about-dialog
   (:superclass dialog
    :export t
    :interfaces ("AtkImplementorIface"
@@ -389,7 +389,7 @@ lambda (dialog uri)    :run-last
   The @fun{gtk:about-dialog-authors} function returns the strings which are
   displayed in the authors tab of the secondary credits dialog. The
   @setf{gtk:about-dialog-authors} function sets the strings.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (setq about (make-instance 'gtk:about-dialog))
 => ABOUT
@@ -399,7 +399,7 @@ lambda (dialog uri)    :run-last
 (gtk:about-dialog-artists about)
 => (\"first author\" \"second author\")
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:about-dialog}")
 
 ;;; --- gtk:about-dialog-comments ----------------------------------------------

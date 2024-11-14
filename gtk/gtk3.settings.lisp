@@ -175,7 +175,7 @@
 ;;; GtkIMPreeditStyle
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkIMPreeditStyle" im-preedit-style
+(gobject:define-genum "GtkIMPreeditStyle" im-preedit-style
   (:export t
    :type-initializer "gtk_im_preedit_style_get_type")
   (:nothing 0)
@@ -188,7 +188,7 @@
       (liber:symbol-documentation 'im-preedit-style)
  "@version{2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkIMPreeditStyle\" im-preedit-style
+(gobject:define-genum \"GtkIMPreeditStyle\" im-preedit-style
   (:export t
    :type-initializer \"gtk_im_preedit_style_get_type\")
   (:nothing 0)
@@ -208,7 +208,7 @@
 ;;; GtkIMStatusStyle
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkIMStatusStyle" im-status-style
+(gobject:define-genum "GtkIMStatusStyle" im-status-style
   (:export t
    :type-initializer "gtk_im_status_style_get_type")
   (:nothing 0)
@@ -221,7 +221,7 @@
       (liber:symbol-documentation 'im-status-style)
  "@version{2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkIMStatusStyle\" gtk-im-status-style
+(gobject:define-genum \"GtkIMStatusStyle\" gtk-im-status-style
   (:export t
    :type-initializer \"gtk_im_status_style_get_type\")
   (:nothing 0)
@@ -241,7 +241,7 @@
 ;;; GtkSettings
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkSettings" settings
+(gobject:define-gobject "GtkSettings" settings
   (:superclass g:object
    :export t
    :interfaces nil

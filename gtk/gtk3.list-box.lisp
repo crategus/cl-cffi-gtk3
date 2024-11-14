@@ -136,7 +136,7 @@
 ;;; GtkListBoxRow
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkListBoxRow" list-box-row
+(gobject:define-gobject "GtkListBoxRow" list-box-row
   (:superclass container
    :export t
    :interfaces ("AtkImplementorIface"
@@ -241,7 +241,7 @@ lambda (row)    :action
 ;;; GtkListBox
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkListBox" list-box
+(gobject:define-gobject "GtkListBox" list-box
   (:superclass container
    :export t
    :interfaces ("AtkImplementorIface"

@@ -85,7 +85,7 @@
 ;;; GtkButtonBoxStyle
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkButtonBoxStyle" button-box-style
+(gobject:define-genum "GtkButtonBoxStyle" button-box-style
   (:export t
    :type-initializer "gtk_button_box_style_get_type")
   (:spread 1)
@@ -101,7 +101,7 @@
       (liber:symbol-documentation 'button-box-style)
  "@version{2023-12-30}
   @begin{declaration}
-(gobject:define-g-enum \"GtkButtonBoxStyle\" button-box-style
+(gobject:define-genum \"GtkButtonBoxStyle\" button-box-style
   (:export t
    :type-initializer \"gtk_button_box_style_get_type\")
   (:spread 1)
@@ -138,7 +138,7 @@
 ;;; struct GtkButtonBox
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkButtonBox" button-box
+(gobject:define-gobject "GtkButtonBox" button-box
   (:superclass box
    :export t
    :interfaces ("AtkImplementorIface"
@@ -381,10 +381,10 @@
   @end{short}
   The @setf{gtk:button-box-layout} function changes the way buttons are
   arranged.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     The @fun{gtk:button-box-layout} function is an abbreviation for the
     @fun{gtk:button-box-layout-style} function.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:button-box}
   @see-symbol{gtk:button-box-style}
   @see-function{gtk:button-box-layout-style}"

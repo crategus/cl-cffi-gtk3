@@ -149,7 +149,7 @@
 ;; TODO: Implement this as an opaque boxed type. See gtk:text-iter for an
 ;; example.
 
-(glib:define-g-boxed-cstruct tree-iter "GtkTreeIter"
+(glib:define-gboxed-cstruct tree-iter "GtkTreeIter"
   (:export t
    :type-initializer "gtk_tree_iter_get_type")
   (stamp :int :initform 0)
@@ -163,7 +163,7 @@
       (documentation 'tree-iter 'type)
  "@version{2024-3-28}
   @begin{declaration}
-(gobject:define-g-boxed-cstruct tree-iter \"GtkTreeIter\"
+(gobject:define-gboxed-cstruct tree-iter \"GtkTreeIter\"
   (:export t
    :type-initializer \"gtk_tree_iter_get_type\")
   (stamp :int :initform 0)
@@ -245,7 +245,7 @@
 ;;; GtkTreePath
 ;;; ----------------------------------------------------------------------------
 
-(glib:define-g-boxed-opaque tree-path "GtkTreePath"
+(glib:define-gboxed-opaque tree-path "GtkTreePath"
   :export t
   :type-initializer "gtk_tree_path_get_type"
   :alloc (%tree-path-new))
@@ -256,7 +256,7 @@
       (documentation 'tree-path 'type)
  "@version{2024-3-28}
   @begin{declaration}
-(glib:define-g-boxed-opaque tree-path \"GtkTreePath\"
+(glib:define-gboxed-opaque tree-path \"GtkTreePath\"
   :export t
   :type-initializer \"gtk_tree_path_get_type\"
   :alloc (%tree-path-new))
@@ -652,7 +652,7 @@
 ;;; GtkTreeRowReference
 ;;; ----------------------------------------------------------------------------
 
-(glib:define-g-boxed-opaque tree-row-reference "GtkTreeRowReference"
+(glib:define-gboxed-opaque tree-row-reference "GtkTreeRowReference"
   :export t
   :type-initializer "gtk_tree_row_reference_get_type"
   :alloc (error "GtkTreeRowReference cannot be created from the Lisp side."))
@@ -663,7 +663,7 @@
       (documentation 'tree-row-reference 'type)
  "@version{2024-3-28}
   @begin{declaration}
-(glib:define-g-boxed-opaque tree-row-reference \"GtkTreeRowReference\"
+(glib:define-gboxed-opaque tree-row-reference \"GtkTreeRowReference\"
   :export t
   :type-initializer \"gtk_tree_row_reference_get_type\"
   :alloc (error \"GtkTreeRowReference cannot be created from the Lisp side.\"))
@@ -890,7 +890,7 @@
 ;;; enum GtkTreeModelFlags
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-flags "GtkTreeModelFlags" tree-model-flags
+(gobject:define-gflags "GtkTreeModelFlags" tree-model-flags
   (:export t
    :type-initializer "gtk_tree_model_flags_get_type")
   (:iters-persist 1)
@@ -902,7 +902,7 @@
       (liber:symbol-documentation 'tree-model-flags)
  "@version{#2024-3-21}
   @begin{declaration}
-(gobject:define-g-flags \"GtkTreeModelFlags\" tree-model-flags
+(gobject:define-gflags \"GtkTreeModelFlags\" tree-model-flags
   (:export t
    :type-initializer \"gtk_tree_model_flags_get_type\")
   (:iters-persist 1)
@@ -927,7 +927,7 @@
 ;;; GtkTreeModel
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-interface "GtkTreeModel" tree-model
+(gobject:define-ginterface "GtkTreeModel" tree-model
   (:export t
    :type-initializer "gtk_tree_model_get_type")
   nil)

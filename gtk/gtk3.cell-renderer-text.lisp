@@ -111,7 +111,7 @@
 ;;; struct GtkCellRendererText
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkCellRendererText" cell-renderer-text
+(gobject:define-gobject "GtkCellRendererText" cell-renderer-text
   (:superclass cell-renderer
    :export t
    :interfaces nil

@@ -235,7 +235,7 @@
 ;;; GtkTreeViewDropPosition
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkTreeViewDropPosition" tree-view-drop-position
+(gobject:define-genum "GtkTreeViewDropPosition" tree-view-drop-position
   (:export t
    :type-initializer "gtk_tree_view_drop_position_get_type")
   (:before 0)
@@ -249,7 +249,7 @@
       (liber:symbol-documentation 'tree-view-drop-position)
  "@version{2024-3-13}
  @begin{declaration}
-(gobject:define-g-enum \"GtkTreeViewDropPosition\" tree-view-drop-position
+(gobject:define-genum \"GtkTreeViewDropPosition\" tree-view-drop-position
   (:export t
    :type-initializer \"gtk_tree_view_drop_position_get_type\")
   (:before 0)
@@ -275,7 +275,7 @@
 ;;; GtkTreeViewGridLines
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkTreeViewGridLines" tree-view-grid-lines
+(gobject:define-genum "GtkTreeViewGridLines" tree-view-grid-lines
   (:export t
    :type-initializer "gtk_tree_view_grid_lines_get_type")
   (:none 0)
@@ -289,7 +289,7 @@
       (liber:symbol-documentation 'tree-view-grid-lines)
  "@version{2024-3-13}
   @begin{declaration}
-(gobject:define-g-enum \"GtkTreeViewGridLines\" tree-view-grid-lines
+(gobject:define-genum \"GtkTreeViewGridLines\" tree-view-grid-lines
   (:export t
    :type-initializer \"gtk_tree_view_grid_lines_get_type\")
   (:none 0)
@@ -314,7 +314,7 @@
 ;;; struct GtkTreeView
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkTreeView" tree-view
+(gobject:define-gobject "GtkTreeView" tree-view
   (:superclass container
    :export t
    :interfaces ("AtkImplementorIface"
@@ -1500,7 +1500,7 @@ lambda (view)    :action
   has the @slot[gtk:tree-view]{fixed-height-mode} property enabled, then the
   new column will have its @slot[gtk:tree-view-column]{sizing} property set to
   be the @code{:fixed} value.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     Insert a new column in a tree view with a cell renderer for displaying text.
     The @slot[gtk:cell-renderer-text]{text},
     @slot[gtk:cell-renderer-text]{weight} and
@@ -1519,7 +1519,7 @@ lambda (view)    :action
                                                \"foreground\" 6)
   ... )
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:tree-view}
   @see-class{gtk:cell-renderer}
   @see-class{gtk:tree-view-column}
@@ -1559,7 +1559,7 @@ lambda (view)    :action
   @slot[gtk:tree-view]{fixed-height-mode} property enabled, then the new column
   will have its @slot[gtk:tree-view-column]{sizing} property set to be the
   @code{:fixed} value.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     In this example, the cell data function takes the year of birth from the
     model, calculates the age and formats a suitable text that is displayed in
     the tree view.
@@ -1587,7 +1587,7 @@ lambda (view)    :action
                                               #'age-cell-data-sortable)
   ... )
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:tree-view}
   @see-class{gtk:cell-renderer}
   @see-symbol{gtk:tree-cell-data-func}
@@ -2736,7 +2736,7 @@ lambda (view)    :action
   Calling this method sets the @slot[gtk:tree-view]{reorderable} property to
   the @em{false} value. See the @class{gtk:target-list} structure and the
   @fun{gtk:target-list-new} function for more documentation of target entries.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (let ((targets '((\"text/html\" :none 0)
                  (\"STRING\" :none 1)
@@ -2746,7 +2746,7 @@ lambda (view)    :action
     (gtk:tree-view-enable-model-drag-dest view targets :copy)
     ... )
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:tree-view}
   @see-class{gtk:target-list}
   @see-symbol{gdk:drag-action}

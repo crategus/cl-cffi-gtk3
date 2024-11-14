@@ -63,7 +63,7 @@
 ;;; struct GtkGestureDrag
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkGestureDrag" gesture-drag
+(gobject:define-gobject "GtkGestureDrag" gesture-drag
   (:superclass gesture-single
    :export t
    :interfaces nil

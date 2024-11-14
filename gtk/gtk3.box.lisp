@@ -105,7 +105,7 @@
 ;;; struct GtkBox
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkBox" box
+(gobject:define-gobject "GtkBox" box
   (:superclass container
    :export t
    :interfaces ("AtkImplementorIface"

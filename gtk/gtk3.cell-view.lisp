@@ -85,7 +85,7 @@
 ;;; struct GtkCellView
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkCellView" cell-view
+(gobject:define-gobject "GtkCellView" cell-view
   (:superclass widget
    :export t
    :interfaces ("AtkImplementorIface"

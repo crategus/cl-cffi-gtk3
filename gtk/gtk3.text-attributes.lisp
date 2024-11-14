@@ -115,7 +115,7 @@
 ;; This implementation crashes the testsuite, when copying the structure.
 ;; We do not implement this structure and the corresponding functions.
 
-(glib:define-g-boxed-cstruct text-attributes "GtkTextAttributes"
+(glib:define-gboxed-cstruct text-attributes "GtkTextAttributes"
   (:export t
    :type-initializer "gtk_text_attributes_get_type")
   (refcount :uint :initform 0) ; private field
@@ -157,7 +157,7 @@
   with most GTK structures, the fields in this structure should only be read,
   never modified directly.
   @begin{pre}
-(glib:define-g-boxed-cstruct gtk:text-attributes \"GtkTextAttributes\"
+(glib:define-gboxed-cstruct gtk:text-attributes \"GtkTextAttributes\"
   (:export t
    :type-initializer \"gtk_text_attributes_get_type\")
   (appearance :pointer :initform (cffi:null-pointer))

@@ -197,11 +197,11 @@
   it also makes sure the @code{GtkActivatable->update()} method is called when
   the related @class{gtk:action} object properties change and registers to the
   action's proxy list.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     Be careful to call this before setting the local copy of the
     @class{gtk:action} object property, since this function uses
     @fun{gtk:activatable-get-related-action} to retrieve the previous action.
-  @end{notes}
+  @end{dictionary}
   @begin[Warning]{dictionary}
     The @fun{gtk:activatable-do-set-related-action} function has been deprecated
     since version 3.10 and should not be used in newly written code.

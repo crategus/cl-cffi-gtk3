@@ -59,7 +59,7 @@
 ;;; GtkTooltip
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkTooltip" tooltip
+(gobject:define-gobject "GtkTooltip" tooltip
   (:superclass g:object
    :export t
    :interfaces nil

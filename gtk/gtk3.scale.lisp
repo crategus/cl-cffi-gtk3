@@ -89,7 +89,7 @@
 ;;; struct GtkScale
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkScale" scale
+(gobject:define-gobject "GtkScale" scale
   (:superclass range
    :export t
    :interfaces ("AtkImplementorIface"

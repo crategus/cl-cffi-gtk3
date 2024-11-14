@@ -157,7 +157,7 @@
 ;;; GtkResizeMode
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkResizeMode" resize-mode
+(gobject:define-genum "GtkResizeMode" resize-mode
   (:export t
    :type-initializer "gtk_resize_mode_get_type")
   (:parent 0)
@@ -170,7 +170,7 @@
       (liber:symbol-documentation 'resize-mode)
  "@version{2024-3-21}
   @begin{declaration}
-(gobject:define-g-enum \"GtkResizeMode\" resize-mode
+(gobject:define-genum \"GtkResizeMode\" resize-mode
   (:export t
    :type-initializer \"gtk_resize_mode_get_type\")
   (:parent 0)
@@ -200,7 +200,7 @@
 ;;; struct GtkContainer
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkContainer" container
+(gobject:define-gobject "GtkContainer" container
   (:superclass widget
    :export t
    :interfaces ("AtkImplementorIface"
@@ -606,7 +606,7 @@ lambda (container widget)    :run-first
   @end{short}
   See the @fun{gtk:container-forall} function for details on what constitutes
   an \"internal\" child.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (setq box (make-instance 'gtk:box :orientation :vertical))
 => #<GTK:BOX {1001E2A183@}>
@@ -615,7 +615,7 @@ lambda (container widget)    :run-first
 (gtk:container-children box)
 => (#<GTK:BUTTON {1001E2B0A3@}> #<GTK:LABEL {1001E2BFD3@}>)
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:container}
   @see-function{gtk:container-forall}"
   (container (g:object container)))
@@ -1224,7 +1224,7 @@ lambda (container widget)    :run-first
   @begin{short}
     Finds a child property of a container type by name.
   @end{short}
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (gtk:container-class-find-child-property \"GtkBox\" \"expand\")
 => #.(SB-SYS:INT-SAP #X00A7DA60)
@@ -1235,7 +1235,7 @@ lambda (container widget)    :run-first
 (gtk:container-class-find-child-property \"GtkBox\" \"unknown\")
 => #.(SB-SYS:INT-SAP #X00000000)
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:container}
   @see-symbol{g:type-t}
   @see-symbol{g:param-spec}"
@@ -1307,11 +1307,11 @@ lambda (container widget)    :run-first
   @argument[gtype]{a @class{g:type-t} type ID}
   @return{The list of @symbol{g:param-spec} instances.}
   @short{Returns the child properties of a container type.}
-  @begin{notes}
+  @begin[Notes]{dictionary}
     In the Lisp binding we pass the type of a container class and not
     a pointer to the container class as argument to the function.
-  @end{notes}
-  @begin{examples}
+  @end{dictionary}
+  @begin[Examples]{dictionary}
     Get the child properties of GtkBox.
     @begin{pre}
 (gtk:container-class-list-child-properties \"GtkBox\")
@@ -1321,7 +1321,7 @@ lambda (container widget)    :run-first
 (mapcar #'g:param-spec-name *)
 => (\"expand\" \"fill\" \"padding\" \"pack-type\" \"position\")
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:container}
   @see-class{g:type-t}
   @see-class{g:param-spec}"

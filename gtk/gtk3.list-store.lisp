@@ -76,7 +76,7 @@
 ;;; struct GtkListStore
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkListStore" list-store
+(gobject:define-gobject "GtkListStore" list-store
   (:superclass g:object
    :export t
    :interfaces ("GtkTreeModel"
@@ -137,7 +137,7 @@
     object will cause the @symbol{gtk:tree-model-filter-visible-func} callback
     function to be visited with an empty row first. The function must be
     prepared for that.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     Creating a simple list store.
     @begin{pre}
 (defun create-and-fill-model ()
@@ -164,7 +164,7 @@
     ;; Return the new list store
     list-store))
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @begin[GtkListStore as GtkBuildable]{dictionary}
     The @class{gtk:list-store} implementation of the @class{gtk:buildable}
     interface allows to specify the model columns with a @code{<columns>}
@@ -247,7 +247,7 @@
   @end{short}
   Note that only types derived from standard GType fundamental types are
   supported.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     Create a new @class{gtk:list-store} object with three columnes, of type
     @code{\"gint\"}, @code{\"gchararray\"} and @code{\"GdkPixbuf\"}.
     @begin{pre}
@@ -258,7 +258,7 @@
 (make-instance 'gtk:list-store
                :column-types '(\"gint\" \"gchararray\" \"GdkPixbuf\"))
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:list-store}
   @see-class{g:type-t}"
   (make-instance 'list-store
@@ -307,7 +307,7 @@
   @end{short}
   It will not function after a row has been added, or a method on a
   @class{gtk:tree-model} object is called.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     Create a list store and set the column types:
     @begin{pre}
 (let ((store (gtk:list-store-new)))
@@ -319,7 +319,7 @@
 (let ((store (gtk:list-store-new \"gint\" \"gchararray\" \"GdkPixbuf\")))
    ... )
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:list-store}
   @see-class{g:type-t}
   @see-class{gtk:tree-model}
@@ -351,7 +351,7 @@
     Sets the values of one or more cells in the row referenced by @arg{iter}.
   @end{short}
   The variable argument list should contain the values to be set.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (let ((model (gtk:list-store-new \"gchararray\" \"gchararray\" \"guint\")))
   ;; Append a row and fill in some data
@@ -360,13 +360,13 @@
                       \"Hans\" \"Müller\" 1961)
    ... )
     @end{pre}
-  @end{examples}
-  @begin{notes}
+  @end{dictionary}
+  @begin[Notes]{dictionary}
     The Lisp implementation does not support pairs of a column index and a
     value, but a list of values. Therefore, it is not possible to set the values
     of individual columns. See the @fun{gtk:list-store-set-value} function for
     setting the value of single columns.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:list-store}
   @see-class{gtk:tree-iter}
   @see-function{gtk:list-store-set-value}"

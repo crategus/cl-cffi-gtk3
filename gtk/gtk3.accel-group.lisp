@@ -90,7 +90,7 @@
 ;;; enum GtkAccelFlags
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-flags "GtkAccelFlags" accel-flags
+(gobject:define-gflags "GtkAccelFlags" accel-flags
   (:export t
    :type-initializer "gtk_accel_flags_get_type")
   (:visible 1)
@@ -103,7 +103,7 @@
       (liber:symbol-documentation 'accel-flags)
  "@version{2024-3-21}
   @begin{declaration}
-(gobject:define-g-flags \"GtkAccelFlags\" accel-flags
+(gobject:define-gflags \"GtkAccelFlags\" accel-flags
   (:export t
    :type-initializer \"gtk_accel_flags_get_type\")
   (:visible 1)
@@ -126,7 +126,7 @@
 ;;; struct GtkAccelGroup
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkAccelGroup" accel-group
+(gobject:define-gobject "GtkAccelGroup" accel-group
   (:superclass g:object
    :export t
    :interfaces nil
@@ -645,7 +645,7 @@ lambda (group keyval modifier func)    :detailed
   instead of \"<Ctrl>-\".
 
   If the parse fails, the @arg{key} argument will be set to 0.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (gtk:accelerator-parse \"<Control>a\")
 => 97
@@ -663,7 +663,7 @@ lambda (group keyval modifier func)    :detailed
 => 0
 => NIL
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-symbol{gdk:modifier-type}
   @see-function{gdk:keyval-from-name}"
   (cffi:with-foreign-objects ((key :uint) (mask 'gdk:modifier-type))
@@ -689,12 +689,12 @@ lambda (group keyval modifier func)    :detailed
   @end{short}
   If you need to display accelerators in the user interface, see the
   @fun{gtk:accelerator-label} function.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (gtk:accelerator-name 65470 '(:shift-mask :mod1-mask))
 => \"<Shift><Alt>F1\"
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:accel-group}
   @see-symbol{gdk:modifier-type}
   @see-function{gtk:accelerator-parse}
@@ -718,12 +718,12 @@ lambda (group keyval modifier func)    :detailed
     Converts an accelerator keyval and modifier mask into a string which can be
     used to represent the accelerator to the user.
   @end{short}
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (gtk:accelerator-label 65470 '(:shift-mask :mod1-mask))
 => \"Umschalt+Alt+F1\"
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:accel-group}
   @see-symbol{gdk:modifier-type}
   @see-function{gtk:accelerator-parse}

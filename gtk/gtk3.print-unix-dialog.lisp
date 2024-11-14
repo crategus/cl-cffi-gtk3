@@ -90,7 +90,7 @@
 ;;; enum GtkPrintCapabilities
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-flags "GtkPrintCapabilities" print-capabilities
+(gobject:define-gflags "GtkPrintCapabilities" print-capabilities
   (:export t
    :type-initializer "gtk_print_capabilities_get_type")
   (:page-set         #.(ash 1 0))
@@ -110,7 +110,7 @@
       (liber:symbol-documentation 'print-capabilities)
  "@version{#2024-3-21}
   @begin{declaration}
-(gobject:define-g-flags \"GtkPrintCapabilities\" print-capabilities
+(gobject:define-gflags \"GtkPrintCapabilities\" print-capabilities
   (:export t
    :type-initializer \"gtk_print_capabilities_get_type\")
   (:page-set         #.(ash 1 0))
@@ -153,7 +153,7 @@
 ;;; struct GtkPrintUnixDialog
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkPrintUnixDialog" print-unix-dialog
+(gobject:define-gobject "GtkPrintUnixDialog" print-unix-dialog
   (:superclass dialog
    :export t
    :interfaces ("AtkImplementorIface"

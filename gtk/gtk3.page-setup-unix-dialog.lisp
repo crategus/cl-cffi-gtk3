@@ -65,7 +65,7 @@
 ;;; struct GtkPageSetupUnixDialog
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkPageSetupUnixDialog" page-setup-unix-dialog
+(gobject:define-gobject "GtkPageSetupUnixDialog" page-setup-unix-dialog
   (:superclass dialog
    :export t
    :interfaces ("AtkImplementorIface"
@@ -85,7 +85,7 @@
 
   It can be used very much like any other GTK dialog, at the cost of the
   portability offered by the high-level printing API.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (defun create-page-setup-dialog ()
   (let ((page-setup (gtk:page-setup-new))
@@ -105,7 +105,7 @@
     ;; Destroy the dialog
     (gtk:widget-destroy dialog)))
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-constructor{gtk:page-setup-unix-dialog-new}
   @see-class{gtk:page-setup}")
 

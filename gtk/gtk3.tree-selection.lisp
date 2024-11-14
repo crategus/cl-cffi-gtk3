@@ -84,7 +84,7 @@
 ;;; GtkTreeSelection
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkTreeSelection" tree-selection
+(gobject:define-gobject "GtkTreeSelection" tree-selection
   (:superclass g:object
     :export t
     :interfaces nil
@@ -321,13 +321,13 @@ lambda (selection)    :run-first
     @symbol{gtk:selection-mode} enumeration.
   @end{short}
   This function will not work if you use the @code{:multiple} selection mode.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     As a convenience the C implementation also gets the current model of the
     tree view wiget associated with the selection. Use the
     @fun{gtk:tree-selection-tree-view} and @fun{gtk:tree-view-model} functions
     instead to get the model.
-  @end{notes}
-  @begin{examples}
+  @end{dictionary}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (let* ((selection (gtk:tree-view-selection view))
        ;; This will only work in single or browse selection mode
@@ -339,7 +339,7 @@ lambda (selection)    :run-first
       ...
   ... )
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:tree-selection}
   @see-class{gtk:tree-iter}
   @see-symbol{gtk:selection-mode}
@@ -443,12 +443,12 @@ lambda (selection)    :run-first
   function, you may want to convert the returned list into a list of
   @class{gtk:tree-row-reference} objects. To do this, you can use the
   @fun{gtk:tree-row-reference-new} function.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     As a convenience the C implementation also gets the current model of the
     tree view wiget associated with the selection. Use the
     @fun{gtk:tree-selection-tree-view} and @fun{gtk:tree-view-model} functions
     instead to get the model.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:tree-selection}
   @see-class{gtk:tree-path}
   @see-class{gtk:tree-row-reference}

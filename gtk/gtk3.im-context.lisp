@@ -58,7 +58,7 @@
 ;;; struct GtkIMContext
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkIMContext" im-context
+(gobject:define-gobject "GtkIMContext" im-context
   (:superclass g:object
    :export t
    :interfaces nil

@@ -63,7 +63,7 @@
 ;;; GtkTreeDragSource
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-interface "GtkTreeDragSource" tree-drag-source
+(gobject:define-ginterface "GtkTreeDragSource" tree-drag-source
   (:export t
    :type-initializer "gtk_tree_drag_source_get_type")
   nil)
@@ -214,7 +214,7 @@
 ;;; GtkTreeDragDest
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-interface "GtkTreeDragDest" tree-drag-dest
+(gobject:define-ginterface "GtkTreeDragDest" tree-drag-dest
   (:export t
    :type-initializer "gtk_tree_drag_dest_get_type")
   nil)

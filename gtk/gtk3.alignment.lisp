@@ -73,7 +73,7 @@
 ;;; struct GtkAlignment
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkAlignment" alignment
+(gobject:define-gobject "GtkAlignment" alignment
   (:superclass bin
    :export t
    :interfaces ("AtkImplementorIface"

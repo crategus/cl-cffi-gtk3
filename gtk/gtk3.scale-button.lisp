@@ -83,7 +83,7 @@
 ;;; struct GtkScaleButton
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkScaleButton" scale-button
+(gobject:define-gobject "GtkScaleButton" scale-button
   (:superclass button
    :export t
    :interfaces ("AtkImplementorIface"

@@ -92,7 +92,7 @@
 ;;; struct GtkProgressBar
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkProgressBar" progress-bar
+(gobject:define-gobject "GtkProgressBar" progress-bar
   (:superclass widget
    :export t
    :interfaces ("AtkImplementorIface"

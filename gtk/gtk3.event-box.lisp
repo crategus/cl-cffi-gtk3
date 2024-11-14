@@ -69,7 +69,7 @@
 ;;; struct GtkEventBox
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkEventBox" event-box
+(gobject:define-gobject "GtkEventBox" event-box
   (:superclass bin
    :export t
    :interfaces ("AtkImplementorIface"
@@ -91,7 +91,7 @@
   @end{short}
   It is useful since it allows you to catch events for widgets which do not
   have their own window.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     This example demonstrates the usage of a @class{gtk:event-box} widget - a
     label is created and set up so that a mouse-click on the label causes the
     program to exit.
@@ -130,7 +130,7 @@
       ;; Show the window
       (gtk:widget-show-all window))))
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-constructor{gtk:event-box-new}
   @see-slot{gtk:event-box-above-child}
   @see-slot{gtk:event-box-visible-window}
@@ -216,7 +216,7 @@
 
   The main reason to create a non input-only event box is if you want to set
   the background to a different color or draw on it.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     There is one unexpected issue for an invisible event box that has its window
     below the child. See the @fun{gtk:event-box-above-child} function. Since
     the input-only window is not an ancestor window of any windows that
@@ -229,7 +229,7 @@
     This problem does not occur for visible event boxes, because in that case,
     the event box window is actually the ancestor of the descendant windows,
     not just at the same place on the screen.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:event-box}
   @see-function{gtk:event-box-above-child}
   @see-function{gtk:widget-add-events}")

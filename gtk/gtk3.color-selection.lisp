@@ -95,7 +95,7 @@
 ;;; struct GtkColorSelection
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkColorSelection" color-selection
+(gobject:define-gobject "GtkColorSelection" color-selection
   (:superclass box
    :export t
    :interfaces ("AtkImplementorIface" "GtkBuildable" "GtkOrientable")

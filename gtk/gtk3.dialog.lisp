@@ -105,7 +105,7 @@
 ;;; enum GtkDialogFlags
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-flags "GtkDialogFlags" dialog-flags
+(gobject:define-gflags "GtkDialogFlags" dialog-flags
   (:export t
    :type-initializer "gtk_dialog_flags_get_type")
   (:modal               #.(ash 1 0))
@@ -118,7 +118,7 @@
       (liber:symbol-documentation 'dialog-flags)
  "@version{2024-3-16}
   @begin{declaration}
-(gobject:define-g-flags \"GtkDialogFlags\" dialog-flags
+(gobject:define-gflags \"GtkDialogFlags\" dialog-flags
   (:export t
    :type-initializer \"gtk_dialog_flags_get_type\")
   (:modal               #.(ash 1 0))
@@ -146,7 +146,7 @@
 ;;; GtkResponseType
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkResponseType" response-type
+(gobject:define-genum "GtkResponseType" response-type
   (:export t
    :type-initializer "gtk_response_type_get_type")
   (:none -1)
@@ -167,7 +167,7 @@
       (liber:symbol-documentation 'response-type)
  "@version{2024-3-16}
   @begin{declaration}
-(gobject:define-g-enum \"GtkResponseType\" response-type
+(gobject:define-genum \"GtkResponseType\" response-type
   (:export t
    :type-initializer \"gtk_response_type_get_type\")
   (:none -1)
@@ -211,7 +211,7 @@
 ;;; struct GtkDialog
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkDialog" dialog
+(gobject:define-gobject "GtkDialog" dialog
   (:superclass window
    :export t
    :interfaces ("AtkImplementorIface"
@@ -272,7 +272,7 @@
   use a @class{gtk:message-dialog} widget to save yourself some effort. But you
   would need to create the dialog contents manually if you had more than a
   simple message in the dialog.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     Simple @class{gtk:dialog} widget usage:
     @begin{pre}
 ;; Function to open a dialog displaying the message provided.
@@ -334,7 +334,7 @@
     (when response
       (format t \"The response ID is ~A\" response))))
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @begin[GtkDialog as GtkBuildable]{dictionary}
     The @class{gtk:dialog} implementation of the @class{gtk:buildable} interface
     exposes the content area and action area as internal children with the names
@@ -533,7 +533,7 @@ lambda (dialog response)    :run-last
   So be careful relying on the @code{\"response\"} signal when using the
   @code{:destroy-with-parent} flag. Buttons are from left to right, so the
   first button in the list will be the leftmost button in the dialog.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (let ((dialog (gtk:dialog-new-with-buttons \"My dialog\"
                                            main-app-window
@@ -544,7 +544,7 @@ lambda (dialog response)    :run-last
                                            :reject)))
   ... )
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:dialog}
   @see-class{gtk:window}
   @see-symbol{gtk:dialog-flags}
@@ -603,7 +603,7 @@ lambda (dialog response)    :run-last
 
   After the @fun{gtk:dialog-run} function returns, you are responsible for
   hiding or destroying the dialog if you wish to do so.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     Typical usage of this function might be:
     @begin{pre}
 (let ((response (gtk:dialog-run dialog)))
@@ -618,7 +618,7 @@ lambda (dialog response)    :run-last
     the same window group while the dialog is run, callbacks such as timeouts,
     IO channel watches, DND drops, etc, will be triggered during a
     @fun{gtk:dialog-run} function call.
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:dialog}
   @see-symbol{gtk:response-type}
   @see-function{gtk:dialog-response}
@@ -695,10 +695,10 @@ lambda (dialog response)    :run-last
     repeatedly.
   @end{short}
   Each button must have both text and response ID.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     The Lisp implementation does not call the C function, but the
     @fun{gtk:dialog-add-button} function is called in a loop to add the buttons.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:dialog}
   @see-symbol{gtk:response-type}
   @see-function{gtk:dialog-add-button}
@@ -958,8 +958,8 @@ lambda (dialog response)    :run-last
   Interface Guidelines with the affirmative button at the far right, and the
   cancel button left of it. But the built-in GTK dialogs and message dialogs
   do provide an alternative button order, which is more suitable on some
-  platforms, e.g. Windows.
-  @begin{examples}
+  platforms, for example Windows.
+  @begin[Examples]{dictionary}
     Use this function after adding all the buttons to your dialog, as the
     following example shows:
     @begin{pre}
@@ -983,7 +983,7 @@ lambda (dialog response)    :run-last
   (gtk:dialog-set-alternative-button-order dialog '(:ok :cancel :apply))
   ...)
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @begin[Warning]{dictionary}
     The @fun{gtk:dialog-set-alternative-button-order} function has been
     deprecated since version 3.10 and should not be used in newly written code.

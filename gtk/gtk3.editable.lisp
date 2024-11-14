@@ -73,7 +73,7 @@
 ;;; GtkEditable
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-interface "GtkEditable" editable
+(gobject:define-ginterface "GtkEditable" editable
   (:export t
    :type-initializer "gtk_editable_get_type")
   nil)
@@ -91,7 +91,7 @@
   It contains functions for generically manipulating an editable widget, a large
   number of action signals used for key bindings, and several signals that an
   application can connect to to modify the behavior of a widget.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     As an example of the latter usage, by connecting the following handler to
     \"insert-text\", an application can convert all entry into a widget into
     uppercase.
@@ -107,7 +107,7 @@
             (g:signal-stop-emission editable \"insert-text\")
             (g:signal-handler-unblock editable handlerid))))
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @begin[Signal Details]{dictionary}
     @subheading{The \"changed\" signal}
       @begin{pre}

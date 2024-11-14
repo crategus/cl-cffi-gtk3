@@ -68,7 +68,7 @@
 ;;; struct GtkTreeModelSort
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkTreeModelSort" tree-model-sort
+(gobject:define-gobject "GtkTreeModelSort" tree-model-sort
   (:superclass g:object
    :export t
    :interfaces ("GtkTreeModel"

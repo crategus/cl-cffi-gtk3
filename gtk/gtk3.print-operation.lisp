@@ -141,7 +141,7 @@
 ;;; GtkPrintStatus
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkPrintStatus" print-status
+(gobject:define-genum "GtkPrintStatus" print-status
   (:export t
    :type-initializer "gtk_print_status_get_type")
   (:initial 0)
@@ -160,7 +160,7 @@
       (liber:symbol-documentation 'print-status)
  "@version{2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkPrintStatus\" print-status
+(gobject:define-genum \"GtkPrintStatus\" print-status
   (:export t
    :type-initializer \"gtk_print_status_get_type\")
   (:initial 0)
@@ -201,7 +201,7 @@
 ;;; GtkPrintOperationAction
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkPrintOperationAction" print-operation-action
+(gobject:define-genum "GtkPrintOperationAction" print-operation-action
   (:export t
    :type-initializer "gtk_print_operation_action_get_type")
   (:print-dialog 0)
@@ -215,7 +215,7 @@
       (liber:symbol-documentation 'print-operation-action)
  "@version{2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkPrintOperationAction\" gtk:print-operation-action
+(gobject:define-genum \"GtkPrintOperationAction\" gtk:print-operation-action
   (:export t
    :type-initializer \"gtk_print_operation_action_get_type\")
   (:print-dialog 0)
@@ -245,7 +245,7 @@
 ;;; GtkPrintOperationResult
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkPrintOperationResult" print-operation-result
+(gobject:define-genum "GtkPrintOperationResult" print-operation-result
   (:export t
    :type-initializer "gtk_print_operation_result_get_type")
   (:error 0)
@@ -259,7 +259,7 @@
       (liber:symbol-documentation 'print-operation-result)
  "@version{2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkPrintOperationResult\" print-operation-result
+(gobject:define-genum \"GtkPrintOperationResult\" print-operation-result
   (:export t
    :type-initializer \"gtk_print_operation_result_get_type\")
   (:error 0)
@@ -288,7 +288,7 @@
 ;;; GtkPrintError                                           not exported
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkPrintError" print-error
+(gobject:define-genum "GtkPrintError" print-error
   (:export nil
    :type-initializer "gtk_print_error_get_type")
   (:general 0)
@@ -302,7 +302,7 @@
       (liber:symbol-documentation 'print-error)
  "@version{2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkPrintError\" print-error
+(gobject:define-genum \"GtkPrintError\" print-error
   (:export t
    :type-initializer \"gtk_print_error_get_type\")
   (:general 0)
@@ -337,7 +337,7 @@
 ;;; GtkPrintOperationPreview
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-interface "GtkPrintOperationPreview" print-operation-preview
+(gobject:define-ginterface "GtkPrintOperationPreview" print-operation-preview
   (:export t
    :type-initializer "gtk_print_operation_preview_get_type")
   nil)
@@ -394,7 +394,7 @@ lambda (preview context)    :run-last
 ;;; struct GtkPrintOperation
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkPrintOperation" print-operation
+(gobject:define-gobject "GtkPrintOperation" print-operation
   (:superclass g:object
    :export t
    :interfaces ("GtkPrintOperationPreview")
@@ -489,7 +489,7 @@ lambda (preview context)    :run-last
   @fun{gtk:print-operation-preview-end-preview} and
   @fun{gtk:print-operation-preview-is-selected} functions are useful when
   implementing a print preview.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     The high-level printing API.
     @begin{pre}
 (defvar *print-settings* nil)
@@ -510,7 +510,7 @@ lambda (preview context)    :run-last
       (setf *print-settings*
             (gtk:print-operation-print-settings print)))))
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @begin[Signal Details]{dictionary}
     @subheading{The \"begin-print\" signal}
       @begin{pre}
@@ -1431,7 +1431,7 @@ lambda (operation widget setup settings)    :run-last
 
   Note that the @fun{gtk:print-operation-run} function can only be called once
   on a given @class{gtk:print-operation} object.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (defun do-print-operation (window)
   (let ((response nil)
@@ -1451,7 +1451,7 @@ lambda (operation widget setup settings)    :run-last
     (when (eq :apply response)
       (setf *print-settings* (gtk:print-operation-print-settings print)))))
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:print-operation}
   @see-symbol{gtk:print-operation-action}
   @see-function{gtk:print-operation-allow-async}"
@@ -1537,11 +1537,11 @@ lambda (operation widget setup settings)    :run-last
     either successfully @code{:finished} or unsuccessfully
     @code{:finished-aborted}.
   @end{short}
-  @begin{notes}
+  @begin[Notes]{dictionary}
     When you enable print status tracking the print operation can be in a
     non-finished state even after the @code{\"done\"} signal has been called,
     as the operation status then tracks the print job status on the printer.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:print-operation}"
   (operation (g:object print-operation)))
 

@@ -66,7 +66,7 @@
 ;;; GtkTextTagTable
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkTextTagTable" text-tag-table
+(gobject:define-gobject "GtkTextTagTable" text-tag-table
   (:superclass g:object
    :export t
    :interfaces nil

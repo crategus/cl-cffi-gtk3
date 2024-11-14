@@ -95,7 +95,7 @@
 ;;; GtkPopoverConstraint
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkPopoverConstraint" popover-constraint
+(gobject:define-genum "GtkPopoverConstraint" popover-constraint
   (:export t
    :type-initializer "gtk_popover_constraint_get_type")
   :none
@@ -107,7 +107,7 @@
       (liber:symbol-documentation 'popover-constraint)
  "@version{2024-6-26}
   @begin{declaration}
-(gobject:define-g-enum \"GtkPopoverConstraint\" gtk:popover-constraint
+(gobject:define-genum \"GtkPopoverConstraint\" gtk:popover-constraint
   (:export t
    :type-initializer \"gtk_popover_constraint_get_type\")
   :none
@@ -131,7 +131,7 @@
 ;;; GtkPopover
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkPopover" popover
+(gobject:define-gobject "GtkPopover" popover
   (:superclass bin
     :export t
     :interfaces ("AtkImplementorIface"
@@ -189,7 +189,7 @@
   To use this rendering, set the @code{\"display-hint\"} attribute of the
   section to @code{\"horizontal-buttons\"} and set the icons of your items with
   the @code{\"verb-icon\"} attribute.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 <section>
   <attribute name=\"display-hint\">horizontal-buttons</attribute>
@@ -210,7 +210,7 @@
   </item>
 </section>
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @begin[CSS nodes]{dictionary}
     The @class{gtk:popover} implementation has a single CSS node called
     @code{popover}. It always gets the @code{.background} style class and it
@@ -398,12 +398,12 @@ lambda (popover)    :run-last
   currently attached to. The @setf{gtk:popover-relative-to} function sets a new
   widget to be attached to the popover. If the popover is visible, the position
   will be updated.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     The ownership of popovers is always given to their @arg{relative-to}
     widget, so if the @arg{relative-to} argument is set to @code{nil} on an
     attached popover, it will be detached from its previous widget, and
     consequently destroyed unless extra references are kept.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:popover}
   @see-class{gtk:widget}")
 

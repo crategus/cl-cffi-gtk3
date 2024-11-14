@@ -100,7 +100,7 @@
 ;;; GtkRecentInfo
 ;;; ----------------------------------------------------------------------------
 
-(glib:define-g-boxed-opaque recent-info "GtkRecentInfo"
+(glib:define-gboxed-opaque recent-info "GtkRecentInfo"
   :export t
   :type-initializer "gtk_recent_info_get_type"
   :alloc (error "GtkRecentInfo cannot be created from the Lisp side."))
@@ -181,7 +181,7 @@
 ;;; ----------------------------------------------------------------------------
 
 #+nil
-(gobject:define-g-enum "GtkRecentManagerError" recent-manager-error
+(gobject:define-genum "GtkRecentManagerError" recent-manager-error
   (:export t
    :type-initializer "gtk_recent_manager_error_get_type")
   (:not-found 0)
@@ -199,7 +199,7 @@
       (liber:symbol-documentation 'recent-manager-error)
  "@version{#2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkRecentManagerError\" recent-manager-error
+(gobject:define-genum \"GtkRecentManagerError\" recent-manager-error
   (:export t
    :type-initializer \"gtk_recent_manager_error_get_type\")
   (:not-found 0)
@@ -229,7 +229,7 @@
 ;;; struct GtkRecentManager
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkRecentManager" recent-manager
+(gobject:define-gobject "GtkRecentManager" recent-manager
   (:superclass g:object
    :export t
    :interfaces nil

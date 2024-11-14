@@ -176,7 +176,7 @@
 ;;; GtkPrintSettings
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkPrintSettings" print-settings
+(gobject:define-gobject "GtkPrintSettings" print-settings
   (:superclass g:object
    :export t
    :interfaces nil
@@ -221,7 +221,7 @@
 ;;; GtkPageOrientation
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkPageOrientation" page-orientation
+(gobject:define-genum "GtkPageOrientation" page-orientation
   (:export t
    :type-initializer "gtk_page_orientation_get_type")
   :portrait
@@ -235,7 +235,7 @@
       (liber:symbol-documentation 'page-orientation)
  "@version{2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkPageOrienation\" page-orientation
+(gobject:define-genum \"GtkPageOrienation\" page-orientation
   (:export t
    :type-initializer \"gtk_page_orientation_get_type\")
   :portrait
@@ -259,7 +259,7 @@
 ;;; GtkPrintDuplex
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkPrintDuplex" print-duplex
+(gobject:define-genum "GtkPrintDuplex" print-duplex
   (:export t
    :type-initializer "gtk_print_duplex_get_type")
   :simplex
@@ -272,7 +272,7 @@
       (liber:symbol-documentation 'print-duplex)
  "@version{2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkPrintDuplex\" gtk:print-duplex
+(gobject:define-genum \"GtkPrintDuplex\" gtk:print-duplex
   (:export t
    :type-initializer \"gtk_print_duplex_get_type\")
   :simplex
@@ -294,7 +294,7 @@
 ;;; GtkPrintQuality
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkPrintQuality" print-quality
+(gobject:define-genum "GtkPrintQuality" print-quality
   (:export t
    :type-initializer "gtk_print_quality_get_type")
   :low
@@ -308,7 +308,7 @@
       (liber:symbol-documentation 'print-quality)
  "@version{2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkPrintQuality\" gtk:print-quality
+(gobject:define-genum \"GtkPrintQuality\" gtk:print-quality
   (:export t
    :type-initializer \"gtk_print_quality_get_type\")
   :low
@@ -334,7 +334,7 @@
 
 ;; TODO: Change the nick names to the short form
 
-(gobject:define-g-enum "GtkNumberUpLayout" number-up-layout
+(gobject:define-genum "GtkNumberUpLayout" number-up-layout
   (:export t
    :type-initializer "gtk_number_up_layout_get_type")
   (:left-to-right-top-to-bottom 0)
@@ -352,7 +352,7 @@
       (liber:symbol-documentation 'number-up-layout)
  "@version{2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkNubmerUpLayout\" number-up-layout
+(gobject:define-genum \"GtkNubmerUpLayout\" number-up-layout
   (:export t
    :type-initializer \"gtk_number_up_layout_get_type\")
   (:left-to-right-top-to-bottom 0)
@@ -387,7 +387,7 @@
 ;;; GtkPrintPages
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkPrintPages" print-pages
+(gobject:define-genum "GtkPrintPages" print-pages
   (:export t
    :type-initializer "gtk_print_pages_get_type")
   (:all 0)
@@ -401,7 +401,7 @@
       (liber:symbol-documentation 'print-pages)
  "@version{2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkPrintPages\" gtk:print-pages
+(gobject:define-genum \"GtkPrintPages\" gtk:print-pages
   (:export t
    :type-initializer \"gtk_print_pages_get_type\")
   (:all 0)
@@ -450,7 +450,7 @@
 ;;; GtkPageSet
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkPageSet" page-set
+(gobject:define-genum "GtkPageSet" page-set
   (:export t
    :type-initializer "gtk_page_set_get_type")
   (:all 0)
@@ -463,7 +463,7 @@
       (liber:symbol-documentation 'page-set)
  "@version{2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkPageSet\" page-set
+(gobject:define-genum \"GtkPageSet\" page-set
   (:export t
    :type-initializer \"gtk_page_set_get_type\")
   (:all 0)
@@ -777,7 +777,7 @@
   The @fun{gtk:print-settings-length} function returns the length value of
   @arg{key}, converted to @arg{unit}. The @setf{gtk:print-settings-length}
   function associates a length in units of @arg{unit} with @arg{key}.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (setq settings (make-instance 'gtk:print-settings))
 => #<gtk:print-SETTINGS {1004A34623@}>
@@ -785,7 +785,7 @@
 (gtk:print-settings-length settings \"paper-width\" :mm)
 => 100.0d0
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:print-settings}
   @see-symbol{gtk:unit}"
   (settings (g:object print-settings))
@@ -946,7 +946,7 @@
   \"paper-format\", converted to a @class{gtk:paper-size} instance. The
   @setf{gtk:print-settings-paper-size} function sets the value of
   \"paper-format\", \"paper-width\", and \"paper-height\".
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (setq settings (make-instance 'gtk:print-settings))
 => #<gtk:print-SETTINGS {1001A0F643@}>
@@ -955,7 +955,7 @@
 (gtk:print-settings-paper-size settings)
 => #<GTK:PAPER-SIZE {1001A24B63@}>
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:print-settings}
   @see-class{gtk:paper-size}
   @see-function{gtk:print-settings-set}
@@ -1505,7 +1505,7 @@
   The @fun{gtk:print-settings-page-ranges} function gets the value of
   \"page-ranges\". The @setf{gtk:print-settings-page-ranges} function sets the
   value of \"page-ranges\".
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (setq settings (gtk:print-settings-new))
 => #<gtk:print-SETTINGS {1001929323@}>
@@ -1514,7 +1514,7 @@
 (gtk:print-settings-page-ranges settings)
 => ((1) (15 20) (25))
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-get}
   @see-function{gtk:print-settings-set}"
@@ -1815,7 +1815,7 @@
     Deserialize print settings from an @code{a{sv@}} variant in the format
     produced by the @fun{gtk:print-settings-to-gvariant} function.
   @end{short}
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
  (let* ((variant (g:variant-parse \"a{sv@}\"
                                   \"{'scale': <'100'>,
@@ -1836,7 +1836,7 @@
       'reverse': <'false'>, 'collate': <'false'>,
       'output-file-format': <'pdf'>@}\"
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:print-settings}
   @see-type{g:variant}
   @see-function{gtk:print-settings-to-gvariant}"

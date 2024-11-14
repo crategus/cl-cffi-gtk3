@@ -73,7 +73,7 @@
 ;;; struct GtkViewport
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkViewport" viewport
+(gobject:define-gobject "GtkViewport" viewport
   (:superclass bin
    :export t
    :interfaces ("AtkImplementorIface"

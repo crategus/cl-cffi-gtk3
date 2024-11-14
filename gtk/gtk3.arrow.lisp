@@ -68,7 +68,7 @@
 ;;; struct GtkArrow
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkArrow" arrow
+(gobject:define-gobject "GtkArrow" arrow
   (:superclass misc
    :export t
    :interfaces ("AtkImplementorIface"

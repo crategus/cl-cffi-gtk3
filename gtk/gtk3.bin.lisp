@@ -78,7 +78,7 @@
 ;;; struct GtkBin
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkBin" bin
+(gobject:define-gobject "GtkBin" bin
   (:superclass container
    :export t
    :interfaces ("AtkImplementorIface"

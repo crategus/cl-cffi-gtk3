@@ -69,7 +69,7 @@
 ;;; GtkScrollablePolicy
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkScrollablePolicy" scrollable-policy
+(gobject:define-genum "GtkScrollablePolicy" scrollable-policy
   (:export t
    :type-initializer "gtk_scrollable_policy_get_type")
   (:minimum 0)
@@ -81,7 +81,7 @@
       (liber:symbol-documentation 'scrollable-policy)
  "@version{#2023-3-24}
   @begin{declaration}
-(gobject:define-g-enum \"GtkScrollablePolicy\" scrollable-policy
+(gobject:define-genum \"GtkScrollablePolicy\" scrollable-policy
   (:export t
    :type-initializer \"gtk_scrollable_policy_get_type\")
   (:minimum 0)
@@ -103,7 +103,7 @@
 ;;; GtkScrollable
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-interface "GtkScrollable" scrollable
+(gobject:define-ginterface "GtkScrollable" scrollable
   (:export t
    :type-initializer "gtk_scrollable_get_type")
   ((hadjustment

@@ -116,7 +116,7 @@
 ;;; GtkSensitivityType
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkSensitivityType" sensitivity-type
+(gobject:define-genum "GtkSensitivityType" sensitivity-type
   (:export t
    :type-initializer "gtk_sensitivity_type_get_type")
   (:auto 0)
@@ -129,7 +129,7 @@
       (liber:symbol-documentation 'sensitivity-type)
  "@version{#2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkSensitivityType\" sensitivity-type
+(gobject:define-genum \"GtkSensitivityType\" sensitivity-type
   (:export t
    :type-initializer \"gtk_sensitivity_type_get_type\")
   (:auto 0)
@@ -153,7 +153,7 @@
 ;;; struct GtkRange
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkRange" range
+(gobject:define-gobject "GtkRange" range
   (:superclass widget
    :export t
    :interfaces ("AtkImplementorIface"

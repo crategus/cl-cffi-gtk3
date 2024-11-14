@@ -71,7 +71,7 @@
 ;;; struct GtkAppChooserDialog
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkAppChooserDialog" app-chooser-dialog
+(gobject:define-gobject "GtkAppChooserDialog" app-chooser-dialog
   (:superclass dialog
    :export t
    :interfaces ("AtkImplementorIface"

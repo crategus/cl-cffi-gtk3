@@ -78,7 +78,7 @@
 ;;; struct GtkFileChooserButton
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkFileChooserButton" file-chooser-button
+(gobject:define-gobject "GtkFileChooserButton" file-chooser-button
   (:superclass box
    :export t
    :interfaces ("AtkImplementorIface"
@@ -118,21 +118,21 @@
   The @class{gtk:file-chooser-button} widget supports the @code{:open} and
   @code{:select-folder} values of the @symbol{gtk:file-chooser-action}
   enumeration.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     Create a button to let the user select a file.
     @begin{pre}
 (let ((button (gtk:file-chooser-button-new \"Select a file\" :open)))
   (setf (gtk:file-chooser-current-folder button) \"/etc\")
   ... )
     @end{pre}
-  @end{examples}
-  @begin{notes}
+  @end{dictionary}
+  @begin[Notes]{dictionary}
     The @class{gtk:file-chooser-button} widget will ellipsize the label, and
     thus will request little horizontal space. To give the button more space,
     you should call the @fun{gtk:widget-preferred-size},
     @fun{gtk:file-chooser-button-width-chars} functions, or pack the button in
     such a way that other interface elements give space to the widget.
-  @end{notes}
+  @end{dictionary}
   @begin[CSS nodes]{dictionary}
     The @class{gtk:file-chooser-button} implementation has a CSS node with name
     @code{filechooserbutton}, containing a subnode for the internal button with

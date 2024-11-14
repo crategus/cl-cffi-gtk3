@@ -59,7 +59,7 @@
 ;;; GtkToolShell
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-interface "GtkToolShell" tool-shell
+(gobject:define-ginterface "GtkToolShell" tool-shell
   (:export t
    :type-initializer "gtk_tool_shell_get_type")
   nil)

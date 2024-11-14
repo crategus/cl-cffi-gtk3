@@ -74,7 +74,7 @@
 ;;; GtkButtonRole
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkButtonRole" button-role
+(gobject:define-genum "GtkButtonRole" button-role
   (:export t
    :type-initializer "gtk_button_role_get_type")
   :normal
@@ -87,7 +87,7 @@
       (liber:symbol-documentation 'button-role)
  "@version{#2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkButtonRole\" button-role
+(gobject:define-genum \"GtkButtonRole\" button-role
   (:export t
    :type-initializer \"gtk_button_role_get_type\")
   :normal
@@ -111,7 +111,7 @@
 ;;; struct GtkModelButton
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkModelButton" model-button
+(gobject:define-gobject "GtkModelButton" model-button
   (:superclass button
    :export t
    :interfaces ("AtkImplementorIface"
@@ -181,7 +181,7 @@
   that opens a submenu when activated, set the @code{menu-name} property. To
   make a button that goes back to the parent menu, you should set the
   @code{inverted} property to place the submenu indicator at the opposite side.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 <object class=\"GtkPopoverMenu\">
   <child>
@@ -213,7 +213,7 @@
   </child>
 </object>
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @begin[CSS nodes]{dictionary}
     @begin{pre}
 modelbutton

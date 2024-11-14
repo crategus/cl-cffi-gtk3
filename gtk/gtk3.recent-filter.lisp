@@ -69,7 +69,7 @@
 ;;; enum GtkRecentFilterFlags
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-flags "GtkRecentFilterFlags" recent-filter-flags
+(gobject:define-gflags "GtkRecentFilterFlags" recent-filter-flags
   (:export t
    :type-initializer "gtk_recent_filter_flags_get_type")
   (:uri 1)
@@ -85,7 +85,7 @@
       (liber:symbol-documentation 'recent-filter-flags)
  "@version{#2024-3-21}
   @begin{declaration}
-(gobject:define-g-flags \"GtkRecentFilterFlags\" recent-filter-flags
+(gobject:define-gflags \"GtkRecentFilterFlags\" recent-filter-flags
   (:export t
    :type-initializer \"gtk_recent_filter_flags_get_type\")
   (:uri 1)
@@ -153,7 +153,7 @@
 ;;; GtkRecentFilter
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkRecentFilter" recent-filter
+(gobject:define-gobject "GtkRecentFilter" recent-filter
   (:superclass g:initially-unowned
    :export t
    :interfaces ("GtkBuildable")

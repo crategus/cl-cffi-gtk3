@@ -67,7 +67,7 @@
 ;;; struct GtkInvisible
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkInvisible" invisible
+(gobject:define-gobject "GtkInvisible" invisible
   (:superclass widget
    :export t
    :interfaces ("AtkImplementorIface"

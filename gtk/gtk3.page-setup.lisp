@@ -78,7 +78,7 @@
 ;;; GtkPageSetup
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkPageSetup" page-setup
+(gobject:define-gobject "GtkPageSetup" page-setup
   (:superclass g:object
    :export t
    :interfaces nil
@@ -106,7 +106,7 @@
   To obtain a @class{gtk:page-setup} object use the @fun{gtk:page-setup-new}
   function to get the defaults, or use the @fun{gtk:print-run-page-setup-dialog}
   function to show the page setup dialog and receive the resulting page setup.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     A page setup dialog.
     @begin{pre}
 (defun do-page-setup (settings page-setup)
@@ -116,7 +116,7 @@
   ;; Return the new page setup from the dialog
   (gtk:print-run-page-setup-dialog window page-setup settings))
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-constructor{gtk:page-setup-new}
   @see-constructor{gtk:page-setup-new-from-file}
   @see-constructor{gtk:page-setup-new-from-key-file}
@@ -183,14 +183,14 @@
   the page orientation.
 
   Possible values are @code{:portrait} and @code{:landscape}.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     Get the default page orientation.
     @begin{pre}
 (let ((setup (gtk:page-setup-new)))
   (gtk:page-setup-orientation setup))
 => :PORTRAIT
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:page-setup}
   @see-symbol{gtk:page-orientation}"
   (setup (g:object page-setup)))

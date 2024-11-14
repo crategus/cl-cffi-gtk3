@@ -236,7 +236,7 @@
 ;;; GtkWindowType
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkWindowType" window-type
+(gobject:define-genum "GtkWindowType" window-type
   (:export t
    :type-initializer "gtk_window_type_get_type")
   (:toplevel 0)
@@ -248,7 +248,7 @@
       (liber:symbol-documentation 'window-type)
  "@version{2024-3-14}
   @begin{declaration}
-(gobject:define-g-enum \"GtkWindowType\" window-type
+(gobject:define-genum \"GtkWindowType\" window-type
   (:export t
    :type-initializer \"gtk_window_type_get_type\")
   (:toplevel 0)
@@ -284,7 +284,7 @@
 ;;; GtkWindowPosition
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkWindowPosition" window-position
+(gobject:define-genum "GtkWindowPosition" window-position
   (:export t
    :type-initializer "gtk_window_position_get_type")
   (:none 0)
@@ -299,7 +299,7 @@
       (liber:symbol-documentation 'window-position)
  "@version{2024-3-16}
   @begin{declaration}
-(gobject:define-g-enum \"GtkWindowPosition\" window-position
+(gobject:define-genum \"GtkWindowPosition\" window-position
   (:export t
    :type-initializer \"gtk_window_position_get_type\")
   (:none 0)
@@ -331,7 +331,7 @@
 ;;; GtkWindow
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkWindow" window
+(gobject:define-gobject "GtkWindow" window
   (:superclass bin
    :export t
    :interfaces ("AtkImplementorIface"
@@ -1876,7 +1876,7 @@ lambda (window widget)    :run-last
 
   Windows cannot actually be 0 x 0 in size, they must be at least 1 x 1, but
   passing 0 for width and height is fine, resulting in a 1 x 1 default size.
-  @begin{examples}
+  @begin[Examples]{dictionary}
    @begin{pre}
 (let ((window (make-instance 'gtk:window)))
   (setf (gtk:window-default-size window) '(300 200))
@@ -1891,7 +1891,7 @@ lambda (window widget)    :run-last
                              :default-height 200)))
   ... )
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:window}
   @see-function{gtk:window-resize}
   @see-function{gtk:window-default-width}
@@ -1951,9 +1951,9 @@ lambda (window widget)    :run-last
   You can set a minimum and maximum size. Allowed resize increments, e.g. for
   xterm, you can only resize by the size of a character, aspect ratios, and
   more. See the @symbol{gdk:geometry} structure.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     In the Lisp implementation an unused widget argument is omitted.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:window}
   @see-symbol{gdk:geometry}
   @see-symbol{gdk:window-hints}"
@@ -2179,11 +2179,11 @@ lambda (window widget)    :run-last
   @fun{gtk:widget-grab-focus} function on the widget. Before making a widget the
   default widget, you must call the @fun{gtk:widget-can-default} function on the
   widget you would like to make the default.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     The C library has the @code{gtk_window_set_default ()} function, which is
     implemented as the @setf{gtk:window-default-widget} function in the Lisp
     API.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:window}
   @see-class{gtk:widget}
   @see-function{gtk:widget-can-default}
@@ -2895,7 +2895,7 @@ lambda (window widget)    :run-last
   After the window manager processes the resize request, GTK receives
   notification that the size has changed via a configure event, and the size of
   the window gets updated.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     @begin{enumerate}
       @begin{item}
         Nearly any use of this function creates a race condition, because the
@@ -2930,7 +2930,7 @@ lambda (window widget)    :run-last
     there is still a better way than doing it yourself - the
     @fun{gtk:window-window-position} function will frequently handle the
     details for you.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:window}
   @see-class{gdk:event-configure}
   @see-function{gtk:window-resize}

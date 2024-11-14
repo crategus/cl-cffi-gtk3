@@ -88,7 +88,7 @@
 ;;; GtkMessageType
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkMessageType" message-type
+(gobject:define-genum "GtkMessageType" message-type
   (:export t
    :type-initializer "gtk_message_type_get_type")
   (:info 0)
@@ -103,7 +103,7 @@
       (liber:symbol-documentation 'message-type)
  "@version{2024-3-16}
   @begin{declaration}
-(gobject:define-g-enum \"GtkMessageType\" message-type
+(gobject:define-genum \"GtkMessageType\" message-type
   (:export t
    :type-initializer \"gtk_message_type_get_type\")
   (:info 0)
@@ -130,7 +130,7 @@
 ;;; GtkButtonsType
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkButtonsType" buttons-type
+(gobject:define-genum "GtkButtonsType" buttons-type
   (:export t
    :type-initializer "gtk_buttons_type_get_type")
   (:none 0)
@@ -146,7 +146,7 @@
       (liber:symbol-documentation 'buttons-type)
  "@version{2024-3-16}
   @begin{declaration}
-(gobject:define-g-enum \"GtkButtonsType\" buttons-type
+(gobject:define-genum \"GtkButtonsType\" buttons-type
   (:export t
    :type-initializer \"gtk_buttons_type_get_type\")
   (:none 0)
@@ -182,7 +182,7 @@
 ;;; struct GtkMessageDialog
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkMessageDialog" message-dialog
+(gobject:define-gobject "GtkMessageDialog" message-dialog
   (:superclass dialog
    :export t
    :interfaces ("AtkImplementorIface"
@@ -236,7 +236,7 @@
   automatically makes the message dialog modal and waits for the user to respond
   to it. The @fun{gtk:dialog-run} function returns when any message dialog
   button is clicked.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     A modal message dialog.
     @begin{pre}
 (let ((dialog (gtk:message-dialog-new main-window
@@ -263,7 +263,7 @@
                       (gtk:widget-destroy dialog)))
   ... )
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @begin[GtkMessageDialog as GtkBuildable]{dictionary}
     The @class{gtk:message-dialog} implementation of the @class{gtk:buildable}
     interface exposes the message area as an internal child with the name
@@ -314,9 +314,9 @@
     Accessor of the @slot[gtk:message-dialog]{buttons} slot of the
     @class{gtk:message-dialog} class.
   @end{short}
-  @begin{notes}
+  @begin[Notes]{dictionary}
     This property is not accessible from the Lisp binding.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:message-dialog}")
 
 ;;; --- gtk:message-dialog-image -----------------------------------------------
@@ -600,7 +600,7 @@
   label, then you need to use the @fun{gtk:message-dialog-set-markup} function
   instead, since you cannot pass the markup string either as the format, it
   might contain '%' characters, or as a string argument.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (let ((dialog (gtk:message-dialog-new main-window
                                       '(:destroy-with-parent)
@@ -610,7 +610,7 @@
   (gtk:message-dialog-set-markup dialog markup)
   ... )
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:message-dialog}
   @see-class{gtk:window}
   @see-class{gtk:dialog}

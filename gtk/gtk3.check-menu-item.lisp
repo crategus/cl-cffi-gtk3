@@ -85,7 +85,7 @@
 ;;; struct GtkCheckMenuItem
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkCheckMenuItem" check-menu-item
+(gobject:define-gobject "GtkCheckMenuItem" check-menu-item
   (:superclass menu-item
     :export t
     :interfaces ("AtkImplementorIface"

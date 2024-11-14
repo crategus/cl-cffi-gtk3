@@ -56,7 +56,7 @@
 ;;; struct GtkWindowGroup
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkWindowGroup" window-group
+(gobject:define-gobject "GtkWindowGroup" window-group
   (:superclass g:object
     :export t
     :interfaces nil

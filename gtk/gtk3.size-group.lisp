@@ -68,7 +68,7 @@
 ;;; GtkSizeGroupMode
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkSizeGroupMode" size-group-mode
+(gobject:define-genum "GtkSizeGroupMode" size-group-mode
   (:export t
    :type-initializer "gtk_size_group_mode_get_type")
   (:none 0)
@@ -82,7 +82,7 @@
       (liber:symbol-documentation 'size-group-mode)
  "@version{#2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkSizeGroupMode\" size-group-mode
+(gobject:define-genum \"GtkSizeGroupMode\" size-group-mode
   (:export t
    :type-initializer \"gtk_size_group_mode_get_type\")
   (:none 0)
@@ -108,7 +108,7 @@
 ;;; struct GtkSizeGroup
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkSizeGroup" size-group
+(gobject:define-gobject "GtkSizeGroup" size-group
   (:superclass g:object
     :export t
     :interfaces ("GtkBuildable")

@@ -85,7 +85,7 @@
 ;;; enum GtkDestDefaults
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-flags "GtkDestDefaults" dest-defaults
+(gobject:define-gflags "GtkDestDefaults" dest-defaults
   (:export t
    :type-initializer "gtk_dest_defaults_get_type")
   (:motion 1)
@@ -99,7 +99,7 @@
       (liber:symbol-documentation 'dest-defaults)
  "@version{2024-3-24}
   @begin{declaration}
-(gobject:define-g-flags \"GtkDestDefaults\" dest-defaults
+(gobject:define-gflags \"GtkDestDefaults\" dest-defaults
   (:export t
    :type-initializer \"gtk_dest_defaults_get_type\")
   (:motion 1)
@@ -138,7 +138,7 @@
 ;;; GtkDragResult
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkDragResult" drag-result
+(gobject:define-genum "GtkDragResult" drag-result
   (:export t
    :type-initializer "gtk_drag_result_get_type")
   (:success 0)
@@ -154,7 +154,7 @@
       (liber:symbol-documentation 'drag-result)
  "@version{2024-3-24}
   @begin{declaration}
-(gobject:define-g-enum \"GtkDragResult\" drag-result
+(gobject:define-genum \"GtkDragResult\" drag-result
   (:export t
    :type-initializer \"gtk_drag_result_get_type\")
   (:success 0)

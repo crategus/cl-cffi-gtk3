@@ -67,7 +67,7 @@
 ;;; struct GtkSearchEntry
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkSearchEntry" search-entry
+(gobject:define-gobject "GtkSearchEntry" search-entry
   (:superclass entry
    :export t
    :interfaces ("AtkImplementorIface"

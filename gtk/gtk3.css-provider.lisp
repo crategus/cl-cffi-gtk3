@@ -85,7 +85,7 @@
 ;;; struct GtkCssProvider
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkCssProvider" css-provider
+(gobject:define-gobject "GtkCssProvider" css-provider
   (:superclass g:object
    :export t
    :interfaces ("GtkStyleProvider")
@@ -396,7 +396,7 @@ lambda (provider section error)    :run-last
 ;;; GtkCssSectionType
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkCssSectionType" css-section-type
+(gobject:define-genum "GtkCssSectionType" css-section-type
   (:export t
    :type-initializer "gtk_css_section_type_get_type")
   (:document 0)
@@ -415,7 +415,7 @@ lambda (provider section error)    :run-last
       (liber:symbol-documentation 'css-section-type)
  "@version{2024-3-21}
   @begin{declaration}
-(gobject:define-g-enum \"GtkCssSectionType\" css-section-type
+(gobject:define-genum \"GtkCssSectionType\" css-section-type
   (:export t
    :type-initializer \"gtk_css_section_type_get_type\")
   (:document 0)
@@ -461,7 +461,7 @@ lambda (provider section error)    :run-last
 ;;; GtkCssSection
 ;;; ----------------------------------------------------------------------------
 
-(glib:define-g-boxed-opaque css-section "GtkCssSection"
+(glib:define-gboxed-opaque css-section "GtkCssSection"
   :export t
   :type-initializer "gtk_css_section_get_type"
   :alloc (error "GtkCssSection cannot be created from the Lisp side."))

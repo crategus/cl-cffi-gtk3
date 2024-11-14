@@ -76,7 +76,7 @@
 ;;; struct GtkMenuToolButton
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkMenuToolButton" menu-tool-button
+(gobject:define-gobject "GtkMenuToolButton" menu-tool-button
   (:superclass tool-button
    :export t
    :interfaces ("AtkImplementorIface"

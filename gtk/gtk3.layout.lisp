@@ -77,7 +77,7 @@
 ;;; struct GtkLayout
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkLayout" layout
+(gobject:define-gobject "GtkLayout" layout
   (:superclass container
    :export t
    :interfaces ("AtkImplementorIface"

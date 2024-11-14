@@ -96,7 +96,7 @@
 ;;; struct GtkExpander
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkExpander" expander
+(gobject:define-gobject "GtkExpander" expander
   (:superclass bin
     :export t
     :interfaces ("AtkImplementorIface"

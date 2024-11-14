@@ -114,7 +114,7 @@
 ;;; GtkRecentChooserError
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkRecentChooserError" recent-chooser-error
+(gobject:define-genum "GtkRecentChooserError" recent-chooser-error
   (:export t
    :type-initializer "gtk_recent_chooser_error_get_type")
   (:not-found 0)
@@ -126,7 +126,7 @@
       (liber:symbol-documentation 'recent-chooser-error)
  "@version{#2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkRecentChooserError\" recent-chooser-error
+(gobject:define-genum \"GtkRecentChooserError\" recent-chooser-error
   (:export t
    :type-initializer \"gtk_recent_chooser_error_get_type\")
   (:not-found 0)
@@ -148,7 +148,7 @@
 ;;; GtkRecentSortType
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkRecentSortType" recent-sort-type
+(gobject:define-genum "GtkRecentSortType" recent-sort-type
   (:export t
    :type-initializer "gtk_recent_sort_type_get_type")
   (:none 0)
@@ -162,7 +162,7 @@
       (liber:symbol-documentation 'recent-sort-type)
  "@version{#2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkRecentSortType\" recent-sort-type
+(gobject:define-genum \"GtkRecentSortType\" recent-sort-type
   (:export t
    :type-initializer \"gtk_recent_sort_type_get_type\")
   (:none 0)
@@ -192,7 +192,7 @@
 ;;; GtkRecentChooser
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-interface "GtkRecentChooser" recent-chooser
+(gobject:define-ginterface "GtkRecentChooser" recent-chooser
   (:export t
    :type-initializer "gtk_recent_chooser_get_type")
   ((filter

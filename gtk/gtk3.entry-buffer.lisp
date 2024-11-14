@@ -72,7 +72,7 @@
 ;;; struct GtkEntryBuffer
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkEntryBuffer" entry-buffer
+(gobject:define-gobject "GtkEntryBuffer" entry-buffer
   (:superclass g:object
    :export t
    :interfaces nil

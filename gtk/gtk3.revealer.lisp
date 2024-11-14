@@ -78,7 +78,7 @@
 ;;; GtkRevealerTransitionType
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkRevealerTransitionType" revealer-transition-type
+(gobject:define-genum "GtkRevealerTransitionType" revealer-transition-type
   (:export t
    :type-initializer "gtk_revealer_transition_type_get_type")
   (:none 0)
@@ -94,7 +94,7 @@
       (liber:symbol-documentation 'revealer-transition-type)
  "@version{2024-3-17}
   @begin{declaration}
-(gobject:define-g-enum \"GtkRevealerTransitionType\" revealer-transition-type
+(gobject:define-genum \"GtkRevealerTransitionType\" revealer-transition-type
   (:export t
    :type-initializer \"gtk_revealer_transition_type_get_type\")
   (:none 0)
@@ -124,7 +124,7 @@
 ;;; struct GtkRevealer
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkRevealer" revealer
+(gobject:define-gobject "GtkRevealer" revealer
   (:superclass bin
    :export t
    :interfaces ("AtkImplementorIface"

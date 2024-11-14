@@ -137,7 +137,7 @@
 ;;; struct GtkComboBox
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkComboBox" combo-box
+(gobject:define-gobject "GtkComboBox" combo-box
   (:superclass bin
    :export t
    :interfaces ("AtkImplementorIface"

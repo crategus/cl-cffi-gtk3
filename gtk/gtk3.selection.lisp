@@ -110,7 +110,7 @@
 ;;; enum GtkTargetFlags
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-flags "GtkTargetFlags" target-flags
+(gobject:define-gflags "GtkTargetFlags" target-flags
   (:export t
    :type-initializer "gtk_target_flags_get_type")
   (:none 0)
@@ -125,7 +125,7 @@
       (liber:symbol-documentation 'target-flags)
  "@version{2024-3-24}
   @begin{declaration}
-(gobject:define-g-flags \"GtkTargetFlags\" target-flags
+(gobject:define-gflags \"GtkTargetFlags\" target-flags
   (:export t
    :type-initializer \"gtk_target_flags_get_type\")
   (:same-app 1)
@@ -180,7 +180,7 @@
 ;;; GtkTargetList
 ;;; ----------------------------------------------------------------------------
 
-(glib:define-g-boxed-opaque target-list "GtkTargetList"
+(glib:define-gboxed-opaque target-list "GtkTargetList"
   :export t
   :type-initializer "gtk_target_list_get_type"
   :alloc (%target-list-new (cffi:null-pointer) 0))
@@ -236,7 +236,7 @@
 ;;; GtkSelectionData
 ;;; ----------------------------------------------------------------------------
 
-(glib:define-g-boxed-opaque selection-data "GtkSelectionData"
+(glib:define-gboxed-opaque selection-data "GtkSelectionData"
   :export t
   :type-initializer "gtk_selection_data_get_type"
   :alloc (error "GtkSelectionData cannot be created from the Lisp side."))
@@ -349,7 +349,7 @@
     Creates a new @class{gtk:target-list} instance from a list of target
     entries.
   @end{short}
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (let ((tlist (gtk:target-list-new '((\"text/html\" :none 0)
                                     (\"STRING\" :none 1)
@@ -358,7 +358,7 @@
                                     (\"text/uri-list\" :none 4)))))
   ... )
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:target-list}"
   (let ((n-targets (length targets)))
     (cffi:with-foreign-object (targets-ptr '(:struct %target-entry) n-targets)

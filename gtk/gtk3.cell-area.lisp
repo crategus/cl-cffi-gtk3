@@ -121,7 +121,7 @@
 ;;; struct GtkCellArea
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkCellArea" cell-area
+(gobject:define-gobject "GtkCellArea" cell-area
   (:superclass g:initially-unowned
    :export t
    :interfaces ("GtkCellLayout"
@@ -1488,10 +1488,10 @@ lambda (area renderer editable)    :run-first
   @argument[gtype]{a @class{g:type-t} type ID}
   @return{A list of @symbol{g:param-spec} instances.}
   @short{Returns the cell properties of a cell area class.}
-  @begin{notes}
+  @begin[Notes]{dictionary}
     In the Lisp binding we pass the type of a cell area class and not
     a pointer to the cell area class as argument to the function.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:cell-area}
   @see-class{g:type-t}
   @see-class{g:param-spec}"

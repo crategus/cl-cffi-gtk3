@@ -89,7 +89,7 @@
 ;;; GtkMenuDirectionType
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkMenuDirectionType" menu-direction-type
+(gobject:define-genum "GtkMenuDirectionType" menu-direction-type
   (:export t
    :type-initializer "gtk_menu_direction_type_get_type")
   (:parent 0)
@@ -103,7 +103,7 @@
       (liber:symbol-documentation 'menu-direction-type)
  "@version{#2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkMenuDirectionType\" menu-direction-type
+(gobject:define-genum \"GtkMenuDirectionType\" menu-direction-type
   (:export t
    :type-initializer \"gtk_menu_direction_type_get_type\")
   (:parent 0)
@@ -128,7 +128,7 @@
 ;;; struct GtkMenuShell
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkMenuShell" menu-shell
+(gobject:define-gobject "GtkMenuShell" menu-shell
   (:superclass container
    :export t
    :interfaces ("AtkImplementorIface"
@@ -302,7 +302,7 @@ lambda (menushell)    :run-first
   about recursively setting it for your entire menu hierarchy. Only when
   programmatically picking a submenu and popping it up manually, the
   @arg{take-focus} property of the submenu needs to be set explicitely.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     The setting of @arg{take-focus} to @em{false} has side-effects. If the focus
     is in some other application, it keeps the focus and keyboard navigation in
     the menu does not work. Consequently, keyboard navigation on the menu will
@@ -310,7 +310,7 @@ lambda (menushell)    :run-first
     To avoid confusing the user, menus with @arg{take-focus} set to @em{false}
     should not display mnemonics or accelerators, since it cannot be guaranteed
     that they will work.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:menu-shell}")
 
 ;;; ----------------------------------------------------------------------------

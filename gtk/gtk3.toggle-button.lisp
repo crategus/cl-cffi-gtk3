@@ -85,7 +85,7 @@
 ;;; GtkToggleButton
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkToggleButton" toggle-button
+(gobject:define-gobject "GtkToggleButton" toggle-button
   (:superclass button
    :export t
    :interfaces ("AtkImplementorIface"
@@ -130,7 +130,7 @@
     name @code{button}. To differentiate it from a plain button, it gets the
     @code{.toggle} style class.
   @end{dictionary}
-  @begin{examples}
+  @begin[Examples]{dictionary}
     This example from the GTK tutorial has two toggle buttons. The toggle
     buttons are used to switch the column and row spacing of a grid.
     @begin{pre}
@@ -176,7 +176,7 @@
       (gtk:container-add window grid)
       (gtk:widget-show-all window))))
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @begin[Signal Details]{dictionary}
     @subheading{The \"toggled\" signal}
       @begin{pre}
@@ -392,10 +392,10 @@ lambda (togglebutton)    :run-first
   @class{gtk:check-button} and @class{gtk:radio-button} classes that derive
   from the @class{gtk:toggle-button} class, not instances of the
   @class{gtk:toggle-button} class itself.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     The @fun{gtk:toggle-button-mode} function is equivalent to the
     @fun{gtk:toggle-button-draw-indicator} function.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:toggle-button}
   @see-function{gtk:toggle-button-draw-indicator}"
   (toggle-button-draw-indicator button))

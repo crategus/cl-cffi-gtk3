@@ -96,7 +96,7 @@
 ;;; struct GtkToolItemGroup
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkToolItemGroup" tool-item-group
+(gobject:define-gobject "GtkToolItemGroup" tool-item-group
   (:superclass container
    :export t
    :interfaces ("AtkImplementorIface"

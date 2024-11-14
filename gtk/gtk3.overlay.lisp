@@ -72,7 +72,7 @@
 ;;; struct GtkOverlay
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkOverlay" overlay
+(gobject:define-gobject "GtkOverlay" overlay
   (:superclass bin
     :export t
     :interfaces ("AtkImplementorIface"

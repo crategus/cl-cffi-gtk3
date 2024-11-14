@@ -84,7 +84,7 @@
 ;;; enum GtkRegionFlags
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-flags "GtkRegionFlags" region-flags
+(gobject:define-gflags "GtkRegionFlags" region-flags
   (:export t
    :type-initializer "gtk_region_flags_get_type")
   (:even #.(ash 1 0))
@@ -100,7 +100,7 @@
       (liber:symbol-documentation 'region-flags)
  "@version{#2024-3-21}
   @begin{declaration}
-(gobject:define-g-flags \"GtkRegionFlags\" region-flags
+(gobject:define-gflags \"GtkRegionFlags\" region-flags
   (:export t
    :type-initializer \"gtk_region_flags_get_type\")
   (:even #.(ash 1 0))
@@ -131,7 +131,7 @@
 
 (cffi:defcfun ("gtk_widget_path_new" %widget-path-new) :pointer)
 
-(glib:define-g-boxed-opaque widget-path "GtkWidgetPath"
+(glib:define-gboxed-opaque widget-path "GtkWidgetPath"
   :export t
   :type-initializer "gtk_widget_path_get_type"
   :alloc (%widget-path-new))
@@ -155,7 +155,7 @@
   directly, as there is the @fun{gtk:widget-path} function, and the style
   context returned by the @fun{gtk:widget-style-context} function will be
   automatically updated on widget hierarchy changes.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     Defining a button within a window:
     @begin{pre}
 (let ((path (gtk:widget-path-new)))
@@ -183,7 +183,7 @@
     @end{pre}
     All this information will be used to match the style information that
     applies to the described widget.
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:style-context}")
 
 ;;; ----------------------------------------------------------------------------
@@ -429,10 +429,10 @@
     defined in @arg{path}.
   @end{short}
   See the @fun{gtk:style-context-add-region} function.
-  @begin{notes}
+  @begin[Notes]{dictionary}
     Region names must only contain lowercase letters and '-', starting always
     with a lowercase letter.
-  @end{notes}
+  @end{dictionary}
   @begin[Warning]{dictionary}
     The @fun{gtk:widget-path-iter-add-region} function has been deprecated since
     version 3.14 and should not be used in newly written code. The use of
@@ -588,14 +588,14 @@
   @class{g:type-t} type ID of the object that is at position @arg{pos} in the
   widget hierarchy defined in @arg{path}. The
   @setf{gtk:widget-path-iter-object-type} function sets the object type.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (setq widget (make-instance 'gtk:button))
 => #<GTK-BUTTON {10027EB373@}>
 (gtk:widget-path-iter-object-type (gtk:widget-path *) -1)
 => #<GTYPE :name \"GtkButton\" :id 23267040>
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:widget-path}
   @see-class{g:type-t}"
   (path (g:boxed widget-path))
@@ -683,7 +683,7 @@
 
   If you want to update just a single state flag, you need to do this manually,
   as this function updates all state flags.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     Setting more flags
     @begin{pre}
 (let ((flags (gtk:widget-path-iter-state path pos)))
@@ -696,7 +696,7 @@
   (setf (gtk:widget-path-iter-state path pos)
         (set-difference flags '(:active))))
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:widget-path}
   @see-symbol{gtk:state-flags}"
   (path (g:boxed widget-path))

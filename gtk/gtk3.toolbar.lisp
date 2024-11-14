@@ -103,7 +103,7 @@
 ;;; GtkToolbarSpaceStyle
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkToolbarSpaceStyle" toolbar-space-style
+(gobject:define-genum "GtkToolbarSpaceStyle" toolbar-space-style
   (:export t
    :type-initializer "gtk_toolbar_space_style_get_type")
   (:empty 0)
@@ -115,7 +115,7 @@
       (liber:symbol-documentation 'toolbar-space-style)
  "@version{#2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkToolbarSpaceStyle\" toolbar-space-style
+(gobject:define-genum \"GtkToolbarSpaceStyle\" toolbar-space-style
   (:export t
    :type-initializer \"gtk_toolbar_space_style_get_type\")
   (:empty 0)
@@ -132,7 +132,7 @@
 ;;; struct GtkToolbar
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkToolbar" toolbar
+(gobject:define-gobject "GtkToolbar" toolbar
   (:superclass container
    :export t
    :interfaces ("AtkImplementorIface"

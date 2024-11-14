@@ -72,7 +72,7 @@
 
 ;; TODO: Replace the example with Lisp code
 
-(gobject:define-g-object-class "GtkSearchBar" search-bar
+(gobject:define-gobject "GtkSearchBar" search-bar
   (:superclass bin
    :export t
    :interfaces ("AtkImplementorIface"
@@ -111,7 +111,7 @@
     The @class{gtk:search-bar} implementation has a single CSS node with name
     @code{searchbar}.
   @end{dictionary}
-  @begin{examples}
+  @begin[Examples]{dictionary}
     Creating a search bar.
     @begin{pre}
 #include <gtk/gtk.h>
@@ -173,7 +173,7 @@ main (gint argc,
   return g_application_run (G_APPLICATION (app), argc, argv);
 @}
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-constructor{gtk:search-bar-new}
   @see-slot{gtk:search-bar-search-mode-enabled}
   @see-slot{gtk:search-bar-show-close-button}")
@@ -316,7 +316,7 @@ main (gint argc,
   If no entry has been connected to the search bar, using the
   @fun{gtk:search-bar-connect-entry} function, this function will return
   immediately with a warning.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     Showing the search bar on key presses
     @begin{pre}
 static gboolean
@@ -342,7 +342,7 @@ create_toplevel (void)
                     search_bar);
 @}
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:search-bar}
   @see-function{gtk:search-bar-connect-entry}"
   (searchbar (g:object search-bar))

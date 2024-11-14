@@ -100,7 +100,7 @@
 ;;; struct GtkPaned
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkPaned" paned
+(gobject:define-gobject "GtkPaned" paned
   (:superclass container
    :export t
    :interfaces ("AtkImplementorIface"
@@ -174,7 +174,7 @@ paned
     arranged from left to right. So @code{:first-child} will always select the
     leftmost child widget, regardless of text direction.
   @end{dictionary}
-  @begin{examples}
+  @begin[Examples]{dictionary}
     Creating a paned widget with minimum sizes.
     @begin{pre}
 (let ((paned (make-instance 'paned
@@ -189,7 +189,7 @@ paned
     (gtk:paned-pack2 paned frame2 :resize nil :shrink nil)
     ... )
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @begin[Child Property Details]{dictionary}
     @begin[code]{table}
       @begin[resize]{entry}

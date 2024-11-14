@@ -61,7 +61,7 @@
 ;;; struct GtkEventControllerKey
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkEventControllerKey" event-controller-key
+(gobject:define-gobject "GtkEventControllerKey" event-controller-key
   (:superclass event-controller
    :export t
    :interfaces nil

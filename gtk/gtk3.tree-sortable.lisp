@@ -114,7 +114,7 @@
 ;;; GtkTreeSortable
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-interface "GtkTreeSortable" tree-sortable
+(gobject:define-ginterface "GtkTreeSortable" tree-sortable
   (:export t
    :type-initializer "gtk_tree_sortable_get_type")
   nil)

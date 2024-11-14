@@ -96,7 +96,7 @@
 ;;; GtkPrintJob
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkPrintJob" print-job
+(gobject:define-gobject "GtkPrintJob" print-job
   (:superclass g:object
     :export t
     :interfaces nil

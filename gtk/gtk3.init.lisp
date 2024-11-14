@@ -153,7 +153,7 @@
 
   To stop the execution of the main loop the @fun{gtk:leave-gtk-main} function
   is called.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     An example with a simple window from the
     @url[http://www.crategus.com/books/cl-gtk/gtk-tutorial.html#example-simple-window]{GTK Lisp tutorial}
     which shows the usage of the @fun{gtk:within-main-loop} macro:
@@ -170,7 +170,7 @@
       ;; Show the window.
       (gtk-widget-show-all window))))
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-function{gtk:main}
   @see-function{gtk:leave-gtk-main}"
   `(call-from-gtk-main-loop (lambda () ,@body)))

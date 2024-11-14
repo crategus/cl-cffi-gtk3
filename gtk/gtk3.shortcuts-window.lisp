@@ -66,7 +66,7 @@
 ;;; struct GtkShortcutsWindow
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkShortcutsWindow" shortcuts-window
+(gobject:define-gobject "GtkShortcutsWindow" shortcuts-window
   (:superclass window
    :export t
    :interfaces ("AtkImplementorIface"
@@ -97,7 +97,7 @@
   widget with one or more @class{gtk:shortcuts-section} widgets, which contain
   @class{gtk:shortcuts-groups} widgets that in turn contain
   @class{gtk:shortcuts-shortcut} widgets.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     A simple example:
     This example has as single section. As you can see, the shortcut groups are
     arranged in columns, and spread across several pages if there are too many
@@ -121,7 +121,7 @@
     @url[https://gitlab.gnome.org/GNOME/gtk/-/blob/master/demos/gtk-demo/shortcuts-builder.ui]{here}.
 
     @image[builder-shortcuts]{}
-  @end{examples}
+  @end{dictionary}
   @begin[Signal Details]{dictionary}
     @subheading{The \"close\" signal}
       @begin{pre}

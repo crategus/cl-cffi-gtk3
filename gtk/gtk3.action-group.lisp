@@ -492,7 +492,7 @@ lambda (group action)
   The @code{\"activate\"} signals of the actions are connected to the callback
   functions and their accel paths are set to
   @code{<Actions>/group-name/action-name}.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (let ((group (gtk:action-group-new \"AppWindowActions\"))
       (actions '((\"Open\"            ; name
@@ -505,7 +505,7 @@ lambda (group action)
   (gtk:action-group-add-actions group actions)
   ... )
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @begin[Warning]{dictionary}
     The @fun{gtk:action-group-add-actions} function has been deprecated since
     version 3.10 and should not be used in newly written code.
@@ -593,7 +593,7 @@ lambda (group action)
   The @code{\"changed\"} signal of the first radio action is connected to the
   @arg{on-change} callback function and the accel paths of the actions are set
   to @code{<Actions>/group-name/action-name}.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (let ((group (gtk:action-group-new \"AppWindowActions\"))
       (actions '((\"Red\" nil                      ; name, stock id
@@ -608,7 +608,7 @@ lambda (group action)
     (gtk:action-group-add-radio-actions group actions 0 nil)
     ... )
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @begin[Warning]{dictionary}
     The @fun{gtk:action-group-add-radio-actions} function has been deprecated
     since version 3.10 and should not be used in newly written code.

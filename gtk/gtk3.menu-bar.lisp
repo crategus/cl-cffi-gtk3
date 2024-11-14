@@ -75,7 +75,7 @@
 ;;; GtkPackDirection
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkPackDirection" pack-direction
+(gobject:define-genum "GtkPackDirection" pack-direction
   (:export t
    :type-initializer "gtk_pack_direction_get_type")
   (:ltr 0)
@@ -89,7 +89,7 @@
       (liber:symbol-documentation 'pack-direction)
  "@version{#2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkPackDirection\" pack-direction
+(gobject:define-genum \"GtkPackDirection\" pack-direction
   (:export t
    :type-initializer \"gtk_pack_direction_get_type\")
   (:ltr 0)
@@ -115,7 +115,7 @@
 ;;; struct GtkMenuBar
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkMenuBar" menu-bar
+(gobject:define-gobject "GtkMenuBar" menu-bar
   (:superclass menu-shell
    :export t
    :interfaces ("AtkImplementorIface"

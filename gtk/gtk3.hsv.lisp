@@ -69,7 +69,7 @@
 ;;; struct GtkHSV
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkHSV" hsv
+(gobject:define-gobject "GtkHSV" hsv
   (:superclass widget
    :export t
    :interfaces ("AtkImplementorIface"

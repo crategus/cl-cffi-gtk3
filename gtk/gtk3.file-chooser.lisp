@@ -136,7 +136,7 @@
 ;;; GtkFileChooserAction
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkFileChooserAction" file-chooser-action
+(gobject:define-genum "GtkFileChooserAction" file-chooser-action
   (:export t
    :type-initializer "gtk_file_chooser_action_get_type")
   (:open 0)
@@ -150,7 +150,7 @@
       (liber:symbol-documentation 'file-chooser-action)
  "@version{2024-3-21}
   @begin{declaration}
-(gobject:define-g-enum \"GtkFileChooserAction\" file-chooser-action
+(gobject:define-genum \"GtkFileChooserAction\" file-chooser-action
   (:export t
    :type-initializer \"gtk_file_chooser_action_get_type\")
   (:open 0)
@@ -180,7 +180,7 @@
 ;;; GtkFileChooserConfirmation
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GtkFileChooserConfirmation" file-chooser-confirmation
+(gobject:define-genum "GtkFileChooserConfirmation" file-chooser-confirmation
   (:export t
    :type-initializer "gtk_file_chooser_confirmation_get_type")
   (:confirm 0)
@@ -193,7 +193,7 @@
       (liber:symbol-documentation 'file-chooser-confirmation)
  "@version{2024-3-22}
   @begin{declaration}
-(gobject:define-g-enum \"GtkFileChooserConfirmation\" gtk:file-chooser-confirmation
+(gobject:define-genum \"GtkFileChooserConfirmation\" gtk:file-chooser-confirmation
   (:export t
    :type-initializer \"gtk_file_chooser_confirmation_get_type\")
   (:confirm 0)
@@ -233,7 +233,7 @@
 
 ;; GtkFileChooserError is not exported
 
-(gobject:define-g-enum "GtkFileChooserError" file-chooser-error
+(gobject:define-genum "GtkFileChooserError" file-chooser-error
   (:export nil
    :type-initializer "gtk_file_chooser_error_get_type")
   (:nonexistent 0)
@@ -247,7 +247,7 @@
       (liber:symbol-documentation 'file-chooser-error)
  "@version{#2024-3-21}
   @begin{declaration}
-(gobject:define-g-enum \"GtkFileChooserError\" file-chooser-error
+(gobject:define-genum \"GtkFileChooserError\" file-chooser-error
   (:export t
    :type-initializer \"gtk_file_chooser_error_get_type\")
   (:nonexistent 0)
@@ -275,7 +275,7 @@
 ;;; GtkFileChooser
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-interface "GtkFileChooser" file-chooser
+(gobject:define-ginterface "GtkFileChooser" file-chooser
   (:export t
    :type-initializer "gtk_file_chooser_get_type")
   ((action

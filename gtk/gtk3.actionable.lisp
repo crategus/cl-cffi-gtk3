@@ -64,7 +64,7 @@
 ;;; GtkActionable
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-interface "GtkActionable" actionable
+(gobject:define-ginterface "GtkActionable" actionable
   (:export t
    :type-initializer "gtk_actionable_get_type")
   ((action-name
@@ -135,14 +135,14 @@
   containing @class{gtk:application-window} widget or its associated
   @class{gtk:application} instance, respectively. This is the same form used
   for actions in the @class{g:menu} object associated with the window.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (let ((button (make-instance 'gtk:button)))
   (setf (gtk:actionable-action-name button) \"win.save\")
   (gtk:actionable-action-name button))
 => \"win.save\"
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:actionable}
   @see-class{gtk:application}
   @see-class{gtk:application-window}
@@ -192,21 +192,21 @@
   to change to that value. Since the state of the action is now equal to the
   target value of the button, the button will now be rendered as active and the
   other buttons, with different targets, rendered inactive.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (let ((button (make-instance 'gtk:button)))
   (setf (gtk:actionable-action-target button) (g:variant-new-int16 128))
   (g:variant-int16 (gtk:actionable-action-target button)))
 => 128
     @end{pre}
-  @end{examples}
-  @begin{notes}
+  @end{dictionary}
+  @begin[Notes]{dictionary}
     The C implementation knows in addition the
     @code{gtk_application_get_action_target_value ()} and
     @code{gtk_application_set_action_target_value ()} functions. In the Lisp
     implementation these functions are replaced by the
     @fun{gtk:application-action-target} function.
-  @end{notes}
+  @end{dictionary}
   @see-class{gtk:actionable}
   @see-type{g:variant}
   @see-class{g:action}")
@@ -261,7 +261,7 @@
   The @arg{name} argument is a string of the form \"action::target\" where
   \"action\" is the action name and \"target\" is the string to use as the
   target.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (setq button (make-instance 'gtk:button))
 => #<GTK:BUTTON {1004A8C973@}>
@@ -271,7 +271,7 @@
 => \"win.justify\"
 => \"left\"
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gtk:actionable}
   @see-function{gtk:actionable-action-name}
   @see-function{gtk:actionable-action-target}"

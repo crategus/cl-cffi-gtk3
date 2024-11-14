@@ -80,7 +80,7 @@
 ;;; struct GtkFileChooserWidget
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkFileChooserWidget" file-chooser-widget
+(gobject:define-gobject "GtkFileChooserWidget" file-chooser-widget
   (:superclass box
    :export t
    :interfaces ("AtkImplementorIface"

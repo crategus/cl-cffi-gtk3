@@ -112,7 +112,7 @@
 ;;; struct GtkStatusIcon
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkStatusIcon" status-icon
+(gobject:define-gobject "GtkStatusIcon" status-icon
   (:superclass g:object
    :export t
    :interfaces nil

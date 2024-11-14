@@ -114,7 +114,7 @@
 ;;; enum GtkPlacesOpenFlags
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-flags "GtkPlacesOpenFlags" places-open-flags
+(gobject:define-gflags "GtkPlacesOpenFlags" places-open-flags
   (:export t
    :type-initializer "gtk_places_open_flags_get_type")
   (:normal     #.(ash 1 0))
@@ -127,7 +127,7 @@
       (liber:symbol-documentation 'places-open-flags)
  "@version{#2024-3-21}
   @begin{declaration}
-(gobject:define-g-flags \"GtkPlacesOpenFlags\" gtk:places-open-flags
+(gobject:define-gflags \"GtkPlacesOpenFlags\" gtk:places-open-flags
   (:export t
    :type-initializer \"gtk_places_open_flags_get_type\")
   (:normal     #.(ash 1 0))
@@ -175,7 +175,7 @@
 ;;; struct GtkPlacesSidebar
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GtkPlacesSidebar" places-sidebar
+(gobject:define-gobject "GtkPlacesSidebar" places-sidebar
   (:superclass scrolled-window
     :export t
     :interfaces ("AtkImplementorIface"
