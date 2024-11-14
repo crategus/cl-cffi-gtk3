@@ -54,9 +54,6 @@
 (unexport 'glib:gtype-id :glib)
 (unexport 'glib:gtype-name :glib)
 (unexport 'glib:symbol-for-gtype :glib)
-(unexport 'glib:define-g-boxed-cstruct :glib)
-(unexport 'glib:define-g-boxed-opaque :glib)
-(unexport 'glib:define-g-boxed-variant-cstruct :glib)
 (unexport 'glib:with-foreign-boxed-array :glib)
 
 (unexport 'gobject:*debug-gc* :gobject)
@@ -65,10 +62,6 @@
 
 (unexport 'gobject:create-fn-ref :gobject)
 (unexport 'gobject:define-cb-methods :gobject)
-(unexport 'gobject:define-g-enum :gobject)
-(unexport 'gobject:define-g-flags :gobject)
-(unexport 'gobject:define-g-interface :gobject)
-(unexport 'gobject:define-g-object-class :gobject)
 (unexport 'gobject:define-vtable :gobject)
 (unexport 'gobject:get-gtype-definition :gobject)
 (unexport 'gobject:get-genum-definition :gobject)
@@ -169,7 +162,6 @@
   (let* ((base (asdf:component-pathname (asdf:find-system :cl-cffi-gtk3)))
          (output-directory (merge-pathnames "../books/cl-cffi-gtk3/" base)))
     (format t "Generate HTML to ~a~%" output-directory)
-    (ensure-directories-exist output-directory)
     (liber:generate-html-documentation
       '(:gtk
         :gdk
@@ -195,7 +187,6 @@
          (output-directory
              (merge-pathnames "../books/cl-cffi-gtk3/single-page/" base)))
     (format t "Generate Single PAGE HTML to ~a~%" output-directory)
-    (ensure-directories-exist output-directory)
     (liber:generate-html-documentation
       '(:gtk
         :gdk
