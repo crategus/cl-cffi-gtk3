@@ -53,7 +53,7 @@
 ;;; GdkColor
 ;;; ----------------------------------------------------------------------------
 
-(glib:define-g-boxed-cstruct color "GdkColor"
+(glib:define-gboxed-cstruct color "GdkColor"
   (:export t
    :type-initializer "gdk_color_get_type")
   (pixel :uint32 :initform 0)
@@ -71,7 +71,7 @@
     XColor structure used in the X11 drawing API.
   @end{short}
   @begin{pre}
-(define-g-boxed-cstruct color \"GdkColor\"
+(define-gboxed-cstruct color \"GdkColor\"
   (:export t
    :type-initializer \"gdk_color_get_type\")
   (pixel :uint32 :initform 0)

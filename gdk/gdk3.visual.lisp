@@ -71,7 +71,7 @@
 ;;; GdkVisualType
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GdkVisualType" visual-type
+(gobject:define-genum "GdkVisualType" visual-type
   (:export t
    :type-initializer "gdk_visual_type_get_type")
   (:static-gray 0)
@@ -87,7 +87,7 @@
       (liber:symbol-documentation 'visual-type)
  "@version{2024-6-28}
   @begin{declaration}
-(gobject:define-g-enum \"GdkVisualType\" visual-type
+(gobject:define-genum \"GdkVisualType\" visual-type
   (:export t
    :type-initializer \"gdk_visual_type_get_type\")
   (:static-gray 0)
@@ -131,7 +131,7 @@
 ;;; GdkByteOrder
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GdkByteOrder" byte-order
+(gobject:define-genum "GdkByteOrder" byte-order
   (:export t
    :type-initializer "gdk_byte_order_get_type")
   (:lsb-first 0)
@@ -143,7 +143,7 @@
       (liber:symbol-documentation 'byte-order)
  "@version{2024-6-28}
   @begin{declaration}
-(gobject:define-g-enum \"GdkByteOrder\" byte-order
+(gobject:define-genum \"GdkByteOrder\" byte-order
   (:export t
    :type-initializer \"gdk_byte_order_get_type\")
   (:lsb-first 0)
@@ -170,7 +170,7 @@
 ;;; GdkVisual
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GdkVisual" visual
+(gobject:define-gobject "GdkVisual" visual
   (:superclass g:object
    :export t
    :interfaces nil

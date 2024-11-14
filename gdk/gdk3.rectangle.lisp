@@ -48,7 +48,7 @@
 ;;; GdkRectangle
 ;;; ----------------------------------------------------------------------------
 
-(glib:define-g-boxed-cstruct rectangle "GdkRectangle"
+(glib:define-gboxed-cstruct rectangle "GdkRectangle"
   (:export t
    :type-initializer "gdk_rectangle_get_type")
   (x :int :initform 0)
@@ -74,7 +74,7 @@
   The @symbol{cairo:region-t} structure is usually used for managing clipping
   of graphical operations.
   @begin{pre}
-(define-g-boxed-cstruct rectangle \"GdkRectangle\"
+(define-gboxed-cstruct rectangle \"GdkRectangle\"
   (:export t
    :type-initializer \"gdk_rectangle_get_type\")
   (x :int :initform 0)

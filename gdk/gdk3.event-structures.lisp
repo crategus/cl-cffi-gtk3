@@ -122,7 +122,7 @@
 ;;; GdkScrollDirection
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GdkScrollDirection" scroll-direction
+(gobject:define-genum "GdkScrollDirection" scroll-direction
   (:export t
    :type-initializer "gdk_scroll_direction_get_type")
   (:up 0)
@@ -137,7 +137,7 @@
       (liber:symbol-documentation 'scroll-direction)
  "@version{2024-6-28}
   @begin{declaration}
-(gobject:define-g-enum \"GdkScrollDirection\" scroll-direction
+(gobject:define-genum \"GdkScrollDirection\" scroll-direction
   (:export t
    :type-initializer \"gdk_scroll_direction_get_type\")
   (:up 0)
@@ -165,7 +165,7 @@
 ;;; GdkVisibilityState
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GdkVisibilityState" visibility-state
+(gobject:define-genum "GdkVisibilityState" visibility-state
   (:export t
    :type-initializer "gdk_visibility_state_get_type")
   (:unobscured 0)
@@ -178,7 +178,7 @@
       (liber:symbol-documentation 'visibility-state)
  "@version{2024-6-28}
   @begin{declaration}
-(gobject:define-g-enum \"GdkVisibilityState\" visibility-state
+(gobject:define-genum \"GdkVisibilityState\" visibility-state
   (:export t
    :type-initializer \"gdk_visibility_state_get_type\")
   (:unobscured 0)
@@ -202,7 +202,7 @@
 ;;; GdkCrossingMode
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GdkCrossingMode" crossing-mode
+(gobject:define-genum "GdkCrossingMode" crossing-mode
   (:export t
    :type-initializer "gdk_crossing_mode_get_type")
   :normal
@@ -221,7 +221,7 @@
       (liber:symbol-documentation 'crossing-mode)
  "@version{2024-6-28}
   @begin{declaration}
-(gobject:define-g-enum \"GdkCrosssingMode\" crossing-mode
+(gobject:define-genum \"GdkCrosssingMode\" crossing-mode
   (:export t
    :type-initializer \"gdk_crossing_mode_get_type\")
   :normal
@@ -259,7 +259,7 @@
 ;;; GdkNotifyType
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GdkNotifyType" notify-type
+(gobject:define-genum "GdkNotifyType" notify-type
   (:export t
    :type-initializer "gdk_notify_type_get_type")
   (:ancestor 0)
@@ -275,7 +275,7 @@
       (liber:symbol-documentation 'notify-type)
  "@version{2024-6-28}
   @begin{declaration}
-(gobject:define-g-enum \"GdkNotifyType\" notify-type
+(gobject:define-genum \"GdkNotifyType\" notify-type
   (:export t
    :type-initializer \"gdk_notify_type_get_type\")
   (:ancestor 0)
@@ -310,7 +310,7 @@
 ;;; GdkPropertyState
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GdkPropertyState" property-state
+(gobject:define-genum "GdkPropertyState" property-state
   (:export t
    :type-initializer "gdk_property_state_get_type")
   :new-value
@@ -322,7 +322,7 @@
       (liber:symbol-documentation 'property-state)
  "@version{2024-6-28}
   @begin{declaration}
-(gobject:define-g-enum \"GdkPropertyState\" property-state
+(gobject:define-genum \"GdkPropertyState\" property-state
   (:export t
    :type-initializer \"gdk_property_state_get_type\")
   :new-value
@@ -344,7 +344,7 @@
 ;;; GdkWindowState
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-flags "GdkWindowState" window-state
+(gobject:define-gflags "GdkWindowState" window-state
   (:export t
    :type-initializer "gdk_window_state_get_type")
   (:withdrawn        #.(ash 1 0))
@@ -371,7 +371,7 @@
       (liber:symbol-documentation 'window-state)
  "@version{2024-6-28}
   @begin{declaration}
-(gobject:define-g-flags \"GdkWindowState\" window-state
+(gobject:define-gflags \"GdkWindowState\" window-state
   (:export t
    :type-initializer \"gdk_window_state_get_type\")
   (:withdrawn        #.(ash 1 0))
@@ -422,7 +422,7 @@
 ;;; GdkSettingAction
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GdkSettingAction" setting-action
+(gobject:define-genum "GdkSettingAction" setting-action
   (:export t
    :type-initializer "gdk_setting_action_get_type")
   (:new 0)
@@ -435,7 +435,7 @@
       (liber:symbol-documentation 'setting-action)
  "@version{2024-6-28}
   @begin{declaration}
-(gobject:define-g-enum \"GdkSettingAction\" setting-action
+(gobject:define-genum \"GdkSettingAction\" setting-action
   (:export t
    :type-initializer \"gdk_setting_action_get_type\")
   (:new 0)
@@ -459,7 +459,7 @@
 ;;; GdkOwnerChange
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GdkOwnerChange" owner-change
+(gobject:define-genum "GdkOwnerChange" owner-change
   (:export t
    :type-initializer "gdk_owner_change_get_type")
   (:new-owner 0)
@@ -472,7 +472,7 @@
       (liber:symbol-documentation 'owner-change)
  "@version{2024-6-28}
   @begin{declaration}
-(gobject:define-g-enum \"GdkOwnerChange\" owner-change
+(gobject:define-genum \"GdkOwnerChange\" owner-change
   (:export t
    :type-initializer \"gdk_owner_change_get_type\")
   (:new-owner 0)
@@ -493,7 +493,7 @@
 ;;; GdkEventType
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GdkEventType" event-type
+(gobject:define-genum "GdkEventType" event-type
   (:export t
    :type-initializer "gdk_event_type_get_type")
   (:nothing -1)
@@ -555,7 +555,7 @@
       (liber:symbol-documentation 'event-type)
  "@version{2024-6-28}
   @begin{declaration}
-(gobject:define-g-enum \"GdkEventType\" event-type
+(gobject:define-genum \"GdkEventType\" event-type
   (:export t
    :type-initializer \"gdk_event_type_get_type\")
   (:nothing -1)
@@ -702,7 +702,7 @@
 ;;; GdkModifierType
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-flags "GdkModifierType" modifier-type
+(gobject:define-gflags "GdkModifierType" modifier-type
   (:export t
    :type-initializer "gdk_modifier_type_get_type")
   (:shift-mask   #.(ash 1 0))
@@ -730,7 +730,7 @@
       (liber:symbol-documentation 'modifier-type)
  "@version{2024-6-28}
   @begin{declaration}
-(gobject:define-g-flags \"GdkModifierType\" modifier-type
+(gobject:define-gflags \"GdkModifierType\" modifier-type
   (:export t
    :type-initializer \"gdk_modifier_type_get_type\")
   (:shift-mask   #.(ash 1 0))
@@ -810,7 +810,7 @@
 ;;; GdkEventMask
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-flags "GdkEventMask" event-mask
+(gobject:define-gflags "GdkEventMask" event-mask
   (:export t
    :type-initializer "gdk_event_mask_get_type")
   (:exposure-mask            #.(ash 1 1))
@@ -846,7 +846,7 @@
       (liber:symbol-documentation 'event-mask)
  "@version{2024-6-28}
   @begin{declaration}
-(gobject:define-g-flags \"GdkEventMask\" gdk:event-mask
+(gobject:define-gflags \"GdkEventMask\" gdk:event-mask
   (:export t
    :type-initializer \"gdk_event_mask_get_type\")
   (:exposure-mask            #.(ash 1 1))
@@ -947,7 +947,7 @@
 ;;; GdkTouchpadGesturePhase
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GdkTouchpadGesturePhase" touchpad-gesture-phase
+(gobject:define-genum "GdkTouchpadGesturePhase" touchpad-gesture-phase
   (:export t
    :type-initializer "gdk_touchpad_gesture_phase_get_type")
   (:begin 0)
@@ -961,7 +961,7 @@
       (liber:symbol-documentation 'touchpad-gesture-phase)
  "@version{2024-6-28}
   @begin{declaration}
-(gobject:define-g-enum \"GdkTouchpadGesturePhase\" touchpad-gesture-phase
+(gobject:define-genum \"GdkTouchpadGesturePhase\" touchpad-gesture-phase
   (:export t
    :type-initializer \"gdk_touchpad_gesture_phase_get_type\")
   (:begin 0)
@@ -1002,7 +1002,7 @@
 ;;; GdkEventSequence
 ;;; ----------------------------------------------------------------------------
 
-(glib:define-g-boxed-opaque event-sequence "GdkEventSequence"
+(glib:define-gboxed-opaque event-sequence "GdkEventSequence"
   :export t
   :type-initializer "gdk_event_sequence_get_type"
   :alloc (error "GdkEventSequence cannot be created from the Lisp side."))
@@ -1013,7 +1013,7 @@
       (documentation 'event-sequence 'type)
  "@version{2024-6-28}
   @begin{declaration}
-(glib:define-g-boxed-opaque event-sequence \"GdkEventSequence\"
+(glib:define-gboxed-opaque event-sequence \"GdkEventSequence\"
   :export t
   :type-initializer \"gdk_event_sequence_get_type\"
   :alloc (error \"GdkEventSequence cannot be created from the Lisp side.\"))
@@ -1030,7 +1030,7 @@
 ;;; union GdkEvent
 ;;; ----------------------------------------------------------------------------
 
-(glib:define-g-boxed-variant-cstruct event "GdkEvent"
+(glib:define-gboxed-variant-cstruct event "GdkEvent"
   (type event-type)
   (window (g:object window))
   (send-event (:boolean :int8))
@@ -1233,7 +1233,7 @@
       (documentation 'event 'type)
  "@version{2024-6-28}
   @begin{declaration}
-(define-g-boxed-variant-cstruct event \"GdkEvent\"
+(define-gboxed-variant-cstruct event \"GdkEvent\"
   (type event-type)
   (window (g:object window))
   (send-event (:boolean :int8))
@@ -1481,7 +1481,7 @@
     Accessor of the @code{type} slot of the @class{gdk:event} structure.
   @end{short}
   The type of the event as a value of the @symbol{gdk:event-type} enumeration.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     Check for a button press event in a handler for the @code{\"event\"} signal
     on a drawing area.
     @begin{pre}
@@ -1491,7 +1491,7 @@
   (when (eq (gdk:event-type event) :button-press)
     ... ))
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-struct{gdk:event}
   @see-symbol{gdk:event-type}")
 
@@ -1544,7 +1544,7 @@
       (documentation 'event-key 'type)
  "@version{2024-6-28}
   @begin{declaration}
-(define-g-boxed-variant-cstruct event \"GdkEvent\"
+(define-gboxed-variant-cstruct event \"GdkEvent\"
   (type event-type)
   (window (g:object window))
   (send-event (:boolean :int8))
@@ -1781,7 +1781,7 @@
       (documentation 'event-button 'type)
  "@version{2024-6-28}
   @begin{declaration}
-(define-g-boxed-variant-cstruct event \"GdkEvent\"
+(define-gboxed-variant-cstruct event \"GdkEvent\"
   (type event-type)
   (window (g:object window))
   (send-event (:boolean :int8))
@@ -2080,7 +2080,7 @@
       (documentation 'event-touch 'type)
  "@version{2024-6-28}
   @begin{declaration}
-(define-g-boxed-variant-cstruct event \"GdkEvent\"
+(define-gboxed-variant-cstruct event \"GdkEvent\"
   (type event-type)
   (window (g:object window))
   (send-event (:boolean :int8))
@@ -2372,7 +2372,7 @@
       (documentation 'event-scroll 'type)
  "@version{2024-6-28}
   @begin{declaration}
-(define-g-boxed-variant-cstruct event \"GdkEvent\"
+(define-gboxed-variant-cstruct event \"GdkEvent\"
   (type event-type)
   (window (g:object window))
   (send-event (:boolean :int8))
@@ -2687,7 +2687,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
       (documentation 'event-motion 'type)
  "@version{2024-6-28}
   @begin{declaration}
-(define-g-boxed-variant-cstruct event \"GdkEvent\"
+(define-gboxed-variant-cstruct event \"GdkEvent\"
   (type event-type)
   (window (g:object window))
   (send-event (:boolean :int8))
@@ -2942,7 +2942,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
       (documentation 'event-expose 'type)
  "@version{2024-6-28}
   @begin{declaration}
-(define-g-boxed-variant-cstruct event \"GdkEvent\"
+(define-gboxed-variant-cstruct event \"GdkEvent\"
   (type event-type)
   (window (g:object window))
   (send-event (:boolean :int8))
@@ -3059,7 +3059,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
       (documentation 'event-visibility 'type)
  "@version{2024-6-28}
   @begin{declaration}
-(define-g-boxed-variant-cstruct event \"GdkEvent\"
+(define-gboxed-variant-cstruct event \"GdkEvent\"
   (type event-type)
   (window (g:object window))
   (send-event (:boolean :int8))
@@ -3128,7 +3128,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
       (documentation 'event-crossing 'type)
  "@version{2024-6-28}
   @begin{declaration}
-(define-g-boxed-variant-cstruct event \"GdkEvent\"
+(define-gboxed-variant-cstruct event \"GdkEvent\"
   (type event-type)
   (window (g:object window))
   (send-event (:boolean :int8))
@@ -3401,7 +3401,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
       (documentation 'event-focus 'type)
  "@version{2024-6-28}
   @begin{declaration}
-(define-g-boxed-variant-cstruct event \"GdkEvent\"
+(define-gboxed-variant-cstruct event \"GdkEvent\"
   (type event-type)
   (window (g:object window))
   (send-event (:boolean :int8))
@@ -3459,7 +3459,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
       (documentation 'event-configure 'type)
  "@version{2024-6-28}
   @begin{declaration}
-(define-g-boxed-variant-cstruct event \"GdkEvent\"
+(define-gboxed-variant-cstruct event \"GdkEvent\"
   (type event-type)
   (window (g:object window))
   (send-event (:boolean :int8))
@@ -3584,7 +3584,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
       (documentation 'event-property 'type)
  "@version{2024-6-28}
   @begin{declaration}
-(define-g-boxed-variant-cstruct event \"GdkEvent\"
+(define-gboxed-variant-cstruct event \"GdkEvent\"
   (type event-type)
   (window (g:object window))
   (send-event (:boolean :int8))
@@ -3693,7 +3693,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
       (documentation 'event-selection 'type)
  "@version{2024-6-28}
   @begin{declaration}
-(define-g-boxed-variant-cstruct event \"GdkEvent\"
+(define-gboxed-variant-cstruct event \"GdkEvent\"
   (type event-type)
   (window (g:object window))
   (send-event (:boolean :int8))
@@ -3856,7 +3856,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
       (documentation 'event-dnd 'type)
  "@version{2024-6-28}
   @begin{declaration}
-(define-g-boxed-variant-cstruct event \"GdkEvent\"
+(define-gboxed-variant-cstruct event \"GdkEvent\"
   (type event-type)
   (window (g:object window))
   (send-event (:boolean :int8))
@@ -3996,7 +3996,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
       (documentation 'event-proximity 'type)
  "@version{2024-6-28}
   @begin{declaration}
-(define-g-boxed-variant-cstruct event \"GdkEvent\"
+(define-gboxed-variant-cstruct event \"GdkEvent\"
   (type event-type)
   (window (g:object window))
   (send-event (:boolean :int8))
@@ -4092,7 +4092,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
       (documentation 'event-window-state 'type)
  "@version{2024-6-28}
   @begin{declaration}
-(define-g-boxed-variant-cstruct event \"GdkEvent\"
+(define-gboxed-variant-cstruct event \"GdkEvent\"
   (type event-type)
   (window (g:object window))
   (send-event (:boolean :int8))
@@ -4179,7 +4179,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
       (documentation 'event-setting 'type)
  "@version{2024-6-28}
   @begin{declaration}
-(define-g-boxed-variant-cstruct event \"GdkEvent\"
+(define-gboxed-variant-cstruct event \"GdkEvent\"
   (type event-type)
   (window (g:object window))
   (send-event (:boolean :int8))
@@ -4263,7 +4263,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
       (documentation 'event-owner-change 'type)
  "@version{2024-6-28}
   @begin{declaration}
-(define-g-boxed-variant-cstruct event \"GdkEvent\"
+(define-gboxed-variant-cstruct event \"GdkEvent\"
   (type event-type)
   (window (g:object window))
   (send-event (:boolean :int8))
@@ -4422,7 +4422,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
       (documentation 'event-grab-broken 'type)
  "@version{2024-6-28}
   @begin{declaration}
-(define-g-boxed-variant-cstruct event \"GdkEvent\"
+(define-gboxed-variant-cstruct event \"GdkEvent\"
   (type event-type)
   (window (g:object window))
   (send-event (:boolean :int8))
@@ -4537,7 +4537,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
       (documentation 'event-touchpad-swipe 'type)
  "@version{2024-6-28}
   @begin{declaration}
-(define-g-boxed-variant-cstruct event \"GdkEvent\"
+(define-gboxed-variant-cstruct event \"GdkEvent\"
   (type event-type)
   (window (g:object window))
   (send-event (:boolean :int8))
@@ -4812,7 +4812,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
       (documentation 'event-touchpad-pinch 'type)
  "@version{2024-6-28}
   @begin{declaration}
-(define-g-boxed-variant-cstruct event \"GdkEvent\"
+(define-gboxed-variant-cstruct event \"GdkEvent\"
   (type event-type)
   (window (g:object window))
   (send-event (:boolean :int8))
@@ -5137,7 +5137,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
       (documentation 'event-pad-button 'type)
  "@version{2024-6-28}
   @begin{declaration}
-(define-g-boxed-variant-cstruct event \"GdkEvent\"
+(define-gboxed-variant-cstruct event \"GdkEvent\"
   (type event-type)
   (window (g:object window))
   (send-event (:boolean :int8))
@@ -5272,7 +5272,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
       (documentation 'event-pad-axis 'type)
  "@version{2024-6-28}
   @begin{declaration}
-(define-g-boxed-variant-cstruct event \"GdkEvent\"
+(define-gboxed-variant-cstruct event \"GdkEvent\"
   (type event-type)
   (window (g:object window))
   (send-event (:boolean :int8))
@@ -5430,7 +5430,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
       (documentation 'event-pad-group-mode 'type)
  "@version{2024-6-28}
   @begin{declaration}
-(define-g-boxed-variant-cstruct event \"GdkEvent\"
+(define-gboxed-variant-cstruct event \"GdkEvent\"
   (type event-type)
   (window (g:object window))
   (send-event (:boolean :int8))

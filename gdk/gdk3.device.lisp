@@ -135,7 +135,7 @@
 ;;; GdkInputSource
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GdkInputSource" input-source
+(gobject:define-genum "GdkInputSource" input-source
   (:export t
    :type-initializer "gdk_input_source_get_type")
   :mouse
@@ -154,7 +154,7 @@
       (liber:symbol-documentation 'input-source)
  "@version{2024-6-27}
   @begin{declaration}
-(gobject:define-g-enum \"GdkInputSource\" input-source
+(gobject:define-genum \"GdkInputSource\" input-source
   (:export t
    :type-initializer \"gdk_input_source_get_type\")
   :mouse
@@ -198,7 +198,7 @@
 ;;; GdkInputMode
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GdkInputMode" input-mode
+(gobject:define-genum "GdkInputMode" input-mode
   (:export t
    :type-initializer "gdk_input_mode_get_type")
   :disabled
@@ -211,7 +211,7 @@
       (liber:symbol-documentation 'input-mode)
  "@version{2024-6-27}
   @begin{declaration}
-(gobject:define-g-enum \"GdkInputMode\" input-mode
+(gobject:define-genum \"GdkInputMode\" input-mode
   (:export t
    :type-initializer \"gdk_input_mode_get_type\")
   (:disabled 0)
@@ -238,7 +238,7 @@
 ;;; GdkAxisUse
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GdkAxisUse" axis-use
+(gobject:define-genum "GdkAxisUse" axis-use
   (:export t
    :type-initializer "gdk_axis_use_get_type")
   :ignore
@@ -259,7 +259,7 @@
       (liber:symbol-documentation 'axis-use)
  "@version{2024-6-27}
   @begin{declaration}
-(gobject:define-g-enum \"GdkAxisUse\" axis-use
+(gobject:define-genum \"GdkAxisUse\" axis-use
   (:export t
    :type-initializer \"gdk_axis_use_get_type\")
   :ignore
@@ -301,7 +301,7 @@
 ;;; GdkAxisFlags
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-flags "GdkAxisFlags" axis-flags
+(gobject:define-gflags "GdkAxisFlags" axis-flags
   (:export t
    :type-initializer "gdk_axis_flags_get_type")
   (:x        #.(ash 1 1))
@@ -320,7 +320,7 @@
       (liber:symbol-documentation 'axis-flags)
  "@version{2024-6-27}
   @begin{declaration}
-(gobject:define-g-flags \"GdkAxisFlags\" axis-flags
+(gobject:define-gflags \"GdkAxisFlags\" axis-flags
   (:export t
    :type-initializer \"gdk_axis_flags_get_type\")
   (:x        #.(ash 1 1))
@@ -355,7 +355,7 @@
 ;;; GdkDeviceToolType
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GdkDeviceToolType" device-tool-type
+(gobject:define-genum "GdkDeviceToolType" device-tool-type
   (:export t
    :type-initializer "gdk_device_tool_type_get_type")
   :unknown
@@ -373,7 +373,7 @@
       (liber:symbol-documentation 'device-tool-type)
  "@version{2024-6-27}
   @begin{declaration}
-(gobject:define-g-enum \"GdkDeviceToolType\" device-tool-type
+(gobject:define-genum \"GdkDeviceToolType\" device-tool-type
   (:export t
    :type-initializer \"gdk_device_tool_type_get_type\")
   :unknown
@@ -407,7 +407,7 @@
 ;;; GdkDeviceType
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GdkDeviceType" device-type
+(gobject:define-genum "GdkDeviceType" device-type
   (:export t
    :type-initializer "gdk_device_type_get_type")
   (:master 0)
@@ -420,7 +420,7 @@
       (liber:symbol-documentation 'device-type)
  "@version{2024-6-27}
   @begin{declaration}
-(gobject:define-g-enum \"GdkDeviceType\" device-type
+(gobject:define-genum \"GdkDeviceType\" device-type
   (:export t
    :type-initializer \"gdk_device_type_get_type\")
   (:master 0)
@@ -446,7 +446,7 @@
 ;;; GdkGrabOwnership
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GdkGrabOwnership" grab-ownership
+(gobject:define-genum "GdkGrabOwnership" grab-ownership
   (:export t
    :type-initializer "gdk_grab_ownership_get_type")
   (:none 0)
@@ -459,7 +459,7 @@
       (liber:symbol-documentation 'grab-ownership)
  "@version{2024-6-27}
   @begin{declaration}
-(gobject:define-g-enum \"GdkGrabOwnership\" grab-ownership
+(gobject:define-genum \"GdkGrabOwnership\" grab-ownership
   (:export t
    :type-initializer \"gdk_grab_ownership_get_type\")
   (:none 0)
@@ -517,7 +517,7 @@
 ;;; GdkGrabStatus
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GdkGrabStatus" grab-status
+(gobject:define-genum "GdkGrabStatus" grab-status
   (:export t
    :type-initializer "gdk_grab_status_get_type")
   (:success 0)
@@ -533,7 +533,7 @@
       (liber:symbol-documentation 'grab-status)
  "@version{2024-6-27}
   @begin{declaration}
-(gobject:define-g-enum \"GdkGrabStatus\" grab-status
+(gobject:define-genum \"GdkGrabStatus\" grab-status
   (:export t
    :type-initializer \"gdk_grab_status_get_type\")
   :success
@@ -567,7 +567,7 @@
 ;;; GdkDeviceTool
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GdkDeviceTool" device-tool
+(gobject:define-gobject "GdkDeviceTool" device-tool
   (:superclass g:object
    :export t
    :interfaces nil
@@ -716,7 +716,7 @@
 ;;; GdkDevice
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GdkDevice" device
+(gobject:define-gobject "GdkDevice" device
   (:superclass g:object
    :export t
    :interfaces nil
@@ -1218,7 +1218,7 @@ lambda (device tool)    :run-last
   This function, together with the @fun{gdk:device-product-id} function, can be
   used to e.g. compose @code{GSettings} paths to store settings for this
   device.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 static GSettings *
 get_device_settings (GdkDevice *device)
@@ -1238,14 +1238,14 @@ get_device_settings (GdkDevice *device)
   return settings;
 @}
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gdk:device}
   @see-function{gdk:device-product-id}")
 
 ;;; ----------------------------------------------------------------------------
 
 #-windows
-(gobject:define-g-object-class "GdkX11DeviceXI2" x11-device-xi2
+(gobject:define-gobject "GdkX11DeviceXI2" x11-device-xi2
   (:superclass device
    :export t
    :interfaces nil

@@ -91,7 +91,7 @@
 ;;; GdkKeymap
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GdkKeymap" keymap
+(gobject:define-gobject "GdkKeymap" keymap
   (:superclass g:object
    :export t
    :interfaces nil

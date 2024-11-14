@@ -244,7 +244,7 @@
 ;;; GdkWindowType
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GdkWindowType" window-type
+(gobject:define-genum "GdkWindowType" window-type
   (:export t
    :type-initializer "gdk_window_type_get_type")
   (:root 0)
@@ -261,7 +261,7 @@
       (liber:symbol-documentation 'window-type)
  "@version{2023-2-26}
   @begin{declaration}
-(gobject:define-g-enum \"GdkWindowType\" window-type
+(gobject:define-genum \"GdkWindowType\" window-type
   (:export t
    :type-initializer \"gdk_window_type_get_type\")
   (:root 0)
@@ -300,7 +300,7 @@
 ;;; GdkWindowWindowClass
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GdkWindowWindowClass" window-window-class
+(gobject:define-genum "GdkWindowWindowClass" window-window-class
   (:export t
    :type-initializer "gdk_window_window_class_get_type")
   (:input-output 0)
@@ -312,7 +312,7 @@
       (liber:symbol-documentation 'window-window-class)
  "@version{2023-2-26}
   @begin{declaration}
-(gobject:define-g-enum \"GdkWindowWindowClass\" window-window-class
+(gobject:define-genum \"GdkWindowWindowClass\" window-window-class
   (:export t
    :type-initializer \"gdk_window_window_class_get_type\")
   (:input-output 0)
@@ -338,7 +338,7 @@
 ;;; GdkWindowHints
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-flags "GdkWindowHints" window-hints
+(gobject:define-gflags "GdkWindowHints" window-hints
   (:export t
    :type-initializer "gdk_window_hints_get_type")
   (:pos 1)
@@ -357,7 +357,7 @@
       (liber:symbol-documentation 'window-hints)
  "@version{2023-2-26}
   @begin{declaration}
-(gobject:define-g-flags \"GdkWindowHints\" window-hints
+(gobject:define-gflags \"GdkWindowHints\" window-hints
   (:export t
    :type-initializer \"gdk_window_hints_get_type\")
   (:pos 1)
@@ -405,7 +405,7 @@
 ;;; GdkGravity
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GdkGravity" gravity
+(gobject:define-genum "GdkGravity" gravity
   (:export t
    :type-initializer "gdk_gravity_get_type")
   (:north-west 1)
@@ -425,7 +425,7 @@
       (liber:symbol-documentation 'gravity)
  "@version{2023-2-26}
   @begin{declaration}
-(gobject:define-g-enum \"GdkGravity\" gravity
+(gobject:define-genum \"GdkGravity\" gravity
   (:export t
    :type-initializer \"gdk_gravity_get_type\")
   (:north-west 1)
@@ -591,7 +591,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 ;;; GdkAnchorHints
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-flags "GdkAnchorHints" anchor-hints
+(gobject:define-gflags "GdkAnchorHints" anchor-hints
   (:export t
    :type-initializer "gdk_anchor_hints_get_type")
   (:flip-x   #.(ash 1 0))
@@ -610,7 +610,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
       (liber:symbol-documentation 'anchor-hints)
  "@version{2023-3-13}
   @begin{declaration}
-(gobject:define-g-flags \"GdkAnchorHints\" anchor-hints
+(gobject:define-gflags \"GdkAnchorHints\" anchor-hints
   (:export t
    :type-initializer \"gdk_anchor_hints_get_type\")
   (:flip-x   #.(ash 1 0))
@@ -657,7 +657,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 ;;; GdkWindowEdge
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GdkWindowEdge" window-edge
+(gobject:define-genum "GdkWindowEdge" window-edge
   (:export t
    :type-initializer "gdk_window_edge_get_type")
   (:north-west 0)
@@ -675,7 +675,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
       (liber:symbol-documentation 'window-edge)
  "@version{2023-2-26}
   @begin{declaration}
-(gobject:define-g-enum \"GdkWindowEdge\" window-edge
+(gobject:define-genum \"GdkWindowEdge\" window-edge
   (:export t
    :type-initializer \"gdk_window_edge_get_type\")
   (:north-west 0)
@@ -708,7 +708,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 ;;; GdkWindowTypeHint
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GdkWindowTypeHint" window-type-hint
+(gobject:define-genum "GdkWindowTypeHint" window-type-hint
   (:export t
    :type-initializer "gdk_window_type_hint_get_type")
   (:normal 0)
@@ -732,7 +732,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
       (liber:symbol-documentation 'window-type-hint)
  "@version{2023-2-26}
   @begin{declaration}
-(gobject:define-g-enum \"GdkWindowTypeHint\" window-type-hint
+(gobject:define-genum \"GdkWindowTypeHint\" window-type-hint
   (:export t
    :type-initializer \"gdk_window_type_hint_get_type\")
   (:normal 0)
@@ -863,7 +863,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 ;;; GdkWindowAttributesType
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-flags "GdkWindowAttributesType" window-attributes-type
+(gobject:define-gflags "GdkWindowAttributesType" window-attributes-type
   (:export t
    :type-initializer "gdk_window_attributes_type_get_type")
   (:title 2)
@@ -881,7 +881,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
       (liber:symbol-documentation 'window-attributes-type)
  "@version{2023-2-26}
   @begin{declaration}
-(gobject:define-g-flags \"GdkWindowAttributesType\" window-attributes-type
+(gobject:define-gflags \"GdkWindowAttributesType\" window-attributes-type
   (:export t
    :type-initializer \"gdk_window_attributes_type_get_type\")
   (:title 2)
@@ -924,7 +924,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 ;;; GdkFullscreenMode
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GdkFullscreenMode" fullscreen-mode
+(gobject:define-genum "GdkFullscreenMode" fullscreen-mode
   (:export t
    :type-initializer "gdk_fullscreen_mode_get_type")
   (:current-monitor 0)
@@ -936,7 +936,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
       (liber:symbol-documentation 'fullscreen-mode)
  "@version{2023-2-26}
   @begin{declaration}
-(gobject:define-g-enum \"GdkFullscreenMode\" fullscreen-mode
+(gobject:define-genum \"GdkFullscreenMode\" fullscreen-mode
   (:export t
    :type-initializer \"gdk_fullscreen_mode_get_type\")
   (:on-current-monitor 0)
@@ -961,7 +961,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 ;; TODO: The filter functionality is not implemented. Consider to remove
 ;; this code. The enumeration is not exported.
 
-(gobject:define-g-enum "GdkFilterReturn" filter-return
+(gobject:define-genum "GdkFilterReturn" filter-return
   (:export nil
    :type-initializer "gdk_filter_return_get_type")
   (:continue 0)
@@ -974,7 +974,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
       (liber:symbol-documentation 'filter-return)
  "@version{2023-2-26}
   @begin{declaration}
-(gobject:define-g-enum \"GdkFilterReturn\" filter-return
+(gobject:define-genum \"GdkFilterReturn\" filter-return
   (:export t
    :type-initializer \"gdk_filter_return_get_type\")
   (:continue 0)
@@ -998,7 +998,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 ;;; GdkModifierIntent
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GdkModifierIntent" modifier-intent
+(gobject:define-genum "GdkModifierIntent" modifier-intent
   (:export t
    :type-initializer "gdk_modifier_intent_get_type")
   (:primary-accelerator 0)
@@ -1015,7 +1015,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
       (liber:symbol-documentation 'modifier-intent)
  "@version{2023-2-26}
   @begin{declaration}
-(gobject:define-g-enum \"GdkModifierIntent\" modifier-intent
+(gobject:define-genum \"GdkModifierIntent\" modifier-intent
   (:export t
    :type-initializer \"gdk_modifier_intent_get_type\")
   (:primary-accelerator 0)
@@ -1067,7 +1067,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 ;;; GdkWMDecoration
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-flags "GdkWMDecoration" wm-decoration
+(gobject:define-gflags "GdkWMDecoration" wm-decoration
   (:export t
    :type-initializer "gdk_wm_decoration_get_type")
   (:all 1)
@@ -1084,7 +1084,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
       (liber:symbol-documentation 'wm-decoration)
  "@version{2023-2-26}
   @begin{declaration}
-(gobject:define-g-flags \"GdkWMDecoration\" wm-decoration
+(gobject:define-gflags \"GdkWMDecoration\" wm-decoration
   (:export t
    :type-initializer \"gdk_wm_decoration_get_type\")
   (:all 1)
@@ -1117,7 +1117,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 ;;; GdkWMFunction
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-flags "GdkWMFunction" wm-function
+(gobject:define-gflags "GdkWMFunction" wm-function
   (:export t
    :type-initializer "gdk_wm_function_get_type")
   (:all 1)
@@ -1133,7 +1133,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
       (liber:symbol-documentation 'wm-function)
  "@version{2023-2-26}
   @begin{declaration}
-(gobject:define-g-flags \"GdkWMFunction\" wm-function
+(gobject:define-gflags \"GdkWMFunction\" wm-function
   (:export t
    :type-initializer \"gdk_wm_function_get_type\")
   (:all 1)
@@ -1165,7 +1165,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 ;;; GdkWindow
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GdkWindow" window
+(gobject:define-gobject "GdkWindow" window
   (:superclass g:object
    :export t
    :interfaces nil

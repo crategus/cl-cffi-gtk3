@@ -63,7 +63,7 @@
 ;;; GdkDisplayManager
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GdkDisplayManager" display-manager
+(gobject:define-gobject "GdkDisplayManager" display-manager
   (:superclass g:object
    :export t
    :interfaces nil

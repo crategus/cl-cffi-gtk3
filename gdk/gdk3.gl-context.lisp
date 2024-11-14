@@ -96,7 +96,7 @@
 ;;; GdkGLContext
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GdkGLContext" gl-context
+(gobject:define-gobject "GdkGLContext" gl-context
   (:superclass g:object
    :export t
    :interfaces nil

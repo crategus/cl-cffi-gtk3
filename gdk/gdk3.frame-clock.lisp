@@ -70,7 +70,7 @@
 ;;; GdkFrameClockPhase
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GdkFrameClockPhase" frame-clock-phase
+(gobject:define-genum "GdkFrameClockPhase" frame-clock-phase
   (:export t
    :type-initializer "gdk_frame_clock_phase_get_type")
   (:none 0)
@@ -88,7 +88,7 @@
       (liber:symbol-documentation 'frame-clock-phase)
  "@version{#2023-3-10}
   @begin{declaration}
-(gobject:define-g-enum \"GdkFrameClockPhase\" frame-clock-phase
+(gobject:define-genum \"GdkFrameClockPhase\" frame-clock-phase
   (:export t
    :type-initializer \"gdk_frame_clock_phase_get_type\")
   (:none 0)
@@ -128,7 +128,7 @@
 ;;; GdkFrameClock
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GdkFrameClock" frame-clock
+(gobject:define-gobject "GdkFrameClock" frame-clock
   (:superclass g:object
    :export t
    :interfaces nil

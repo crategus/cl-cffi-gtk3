@@ -67,7 +67,7 @@
 ;;; GdkDeviceManager
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GdkDeviceManager" device-manager
+(gobject:define-gobject "GdkDeviceManager" device-manager
   (:superclass g:object
    :export t
    :interfaces nil
@@ -255,7 +255,7 @@
 ;;; ----------------------------------------------------------------------------
 
 #-windows
-(gobject:define-g-object-class "GdkX11DeviceManagerCore" x11-device-manager-core
+(gobject:define-gobject "GdkX11DeviceManagerCore" x11-device-manager-core
   (:superclass device-manager
    :export t
    :interfaces nil
@@ -263,7 +263,7 @@
   nil)
 
 #-windows
-(gobject:define-g-object-class "GdkX11DeviceManagerXI2" x11-device-manager-xi2
+(gobject:define-gobject "GdkX11DeviceManagerXI2" x11-device-manager-xi2
   (:superclass x11-device-manager-core
    :export t
    :interfaces nil

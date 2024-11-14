@@ -59,7 +59,7 @@
 ;;; GdkDevicePadFeature
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GdkDevicePadFeature" device-pad-feature
+(gobject:define-genum "GdkDevicePadFeature" device-pad-feature
   (:export t
    :type-initializer "gdk_device_pad_feature_get_type")
   :button
@@ -72,7 +72,7 @@
       (liber:symbol-documentation 'device-pad-feature)
  "@version{#2023-3-7}
   @begin{declaration}
-(gobject:define-g-enum \"GdkDevicePadFeature\" device-pad-feature
+(gobject:define-genum \"GdkDevicePadFeature\" device-pad-feature
   (:export t
    :type-initializer \"gdk_device_pad_feature_get_type\")
   :button
@@ -96,7 +96,7 @@
 ;;; struct GdkDevicePad
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-interface "GdkDevicePad" device-pad
+(gobject:define-ginterface "GdkDevicePad" device-pad
   (:export t
    :type-initializer "gdk_device_pad_get_type")
   nil)

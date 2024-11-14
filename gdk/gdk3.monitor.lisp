@@ -79,7 +79,7 @@
 ;;; GdkSubpixelLayout
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GdkSubpixelLayout" subpixel-layout
+(gobject:define-genum "GdkSubpixelLayout" subpixel-layout
   (:export t
    :type-initializer "gdk_subpixel_layout_get_type")
   :unknown
@@ -95,7 +95,7 @@
       (liber:symbol-documentation 'subpixel-layout)
  "@version{2023-3-6}
   @begin{declaration}
-(gobject:define-g-enum \"GdkSubPixelLayout\" sub-pixel-layout
+(gobject:define-genum \"GdkSubPixelLayout\" sub-pixel-layout
   (:export t
    :type-initializer \"gdk_sub_pixel_layout_get_type\")
   :unkown
@@ -126,7 +126,7 @@
 ;;; struct GdkMonitor
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GdkMonitor" monitor
+(gobject:define-gobject "GdkMonitor" monitor
   (:superclass g:object
    :export t
    :interfaces nil

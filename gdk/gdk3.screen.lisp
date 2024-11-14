@@ -95,7 +95,7 @@
 ;;; GdkScreen
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GdkScreen" screen
+(gobject:define-gobject "GdkScreen" screen
   (:superclass g:object
    :export t
    :interfaces nil
@@ -856,13 +856,13 @@ lambda (screen)    :run-last
     Retrieves a desktop wide setting such as double-click time for the screen.
   @end{short}
   See the @class{gtk:settings} class for the available settings.
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (let ((screen (gdk:display-default-screen (gdk:display-default))))
   (gdk:screen-setting screen \"gtk-double-click-time\" \"gint\"))
 => 400
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gdk:screen}
   @see-class{gtk:settings}
   @see-class{g:type-t}"

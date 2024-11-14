@@ -71,7 +71,7 @@
 ;;; GdkCursorType
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GdkCursorType" cursor-type
+(gobject:define-genum "GdkCursorType" cursor-type
   (:export t
    :type-initializer "gdk_cursor_type_get_type")
   (:x-cursor 0)
@@ -161,7 +161,7 @@
       (liber:symbol-documentation 'cursor-type)
  "@version{2024-6-29}
   @begin{declaration}
-(gobject:define-g-enum \"GdkCursorType\" cursor-type
+(gobject:define-genum \"GdkCursorType\" cursor-type
   (:export t
    :type-initializer \"gdk_cursor_type_get_type\")
   (:x-cursor 0)
@@ -344,7 +344,7 @@
 ;;; GdkCursor
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GdkCursor" cursor
+(gobject:define-gobject "GdkCursor" cursor
   (:superclass g:object
    :export t
    :interfaces nil
@@ -357,7 +357,7 @@
     "display" "GdkDisplay" t t)))
 
 #-windows
-(gobject:define-g-object-class "GdkX11Cursor" x11-cursor
+(gobject:define-gobject "GdkX11Cursor" x11-cursor
   (:superclass cursor
    :export t
    :interfaces nil
@@ -624,14 +624,14 @@
     @entry[\"zoom-in\"]{@image[cursor-zoom-in]{}}
     @entry[\"zoom-out\"]{@image[cursor-zoom-out]{}}
   @end{table}
-  @begin{examples}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (gdk:cursor-new-from-name (gdk:display-default) \"wait\")
 => #<GDK-X11-CURSOR {1001AFE123@}>
 (gdk:cursor-new-from-name (gdk:display-default) \"unknown\")
 => NIL
     @end{pre}
-  @end{examples}
+  @end{dictionary}
   @see-class{gdk:cursor}
   @see-class{gdk:display}"
   (display (g:object display))

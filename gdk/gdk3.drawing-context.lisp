@@ -59,7 +59,7 @@
 ;;; struct GdkDrawingContext
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GdkDrawingContext" drawing-context
+(gobject:define-gobject "GdkDrawingContext" drawing-context
   (:superclass g:object
    :export t
    :interfaces nil

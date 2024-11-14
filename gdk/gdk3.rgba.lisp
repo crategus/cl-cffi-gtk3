@@ -51,7 +51,7 @@
 ;;; GdkRGBA
 ;;; ----------------------------------------------------------------------------
 
-(glib:define-g-boxed-cstruct rgba "GdkRGBA"
+(glib:define-gboxed-cstruct rgba "GdkRGBA"
   (:export t
    :type-initializer "gdk_rgba_get_type")
   (red :double :initform 0.0d0)
@@ -69,7 +69,7 @@
     color, in a way that is compatible with Cairo's notion of color.
   @end{short}
   @begin{pre}
-(define-g-boxed-cstruct gdk:rgba \"GdkRGBA\"
+(define-gboxed-cstruct gdk:rgba \"GdkRGBA\"
   (:export t
    :type-initializer \"gdk_rgba_get_type\")
   (red :double :initform 0.0d0)

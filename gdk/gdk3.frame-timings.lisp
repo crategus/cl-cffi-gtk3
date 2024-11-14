@@ -53,7 +53,7 @@
 ;;; struct GdkFrameTimings
 ;;; ----------------------------------------------------------------------------
 
-(glib:define-g-boxed-opaque frame-timings "GdkFrameTimings"
+(glib:define-gboxed-opaque frame-timings "GdkFrameTimings"
   :export t
   :type-initializer "gdk_frame_timings_get_type"
   :alloc (error "GdkFrameTimings cannot be created from the Lisp side."))

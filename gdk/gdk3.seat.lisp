@@ -71,7 +71,7 @@
 ;;; enum GdkSeatCapabilities
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-flags "GdkSeatCapabilities" seat-capabilities
+(gobject:define-gflags "GdkSeatCapabilities" seat-capabilities
   (:export t
    :type-initializer "gdk_seat_capabilities_get_type")
   (:none 0)
@@ -88,7 +88,7 @@
       (liber:symbol-documentation 'seat-capabilities)
  "@version{#2023-3-7}
   @begin{declaration}
-(gobject:define-g-flags \"GdkSeatCapabilities\" seat-capabilities
+(gobject:define-gflags \"GdkSeatCapabilities\" seat-capabilities
   (:export t
    :type-initializer \"gdk_seat_capabilities_get_type\")
   (:none 0)
@@ -119,7 +119,7 @@
 ;;; struct GdkSeat
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GdkSeat" seat
+(gobject:define-gobject "GdkSeat" seat
   (:superclass g:object
    :export t
    :interfaces nil

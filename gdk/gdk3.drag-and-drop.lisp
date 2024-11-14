@@ -88,7 +88,7 @@
 ;;; GdkDragCancelReason
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GdkDragCancelReason" drag-cancel-reason
+(gobject:define-genum "GdkDragCancelReason" drag-cancel-reason
   (:export t
    :type-initializer "gdk_drag_cancel_reason_get_type")
   :no-target
@@ -101,7 +101,7 @@
       (liber:symbol-documentation 'drag-cancel-reason)
  "@version{2024-6-28}
   @begin{declaration}
-(gobject:define-g-enum \"GdkDragCancelReason\" drag-cancel-reason
+(gobject:define-genum \"GdkDragCancelReason\" drag-cancel-reason
   (:export t
    :type-initializer \"gdk_drag_cancel_reason_get_type\")
   :no-target
@@ -125,7 +125,7 @@
 ;;; GdkDragProtocol
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-enum "GdkDragProtocol" drag-protocol
+(gobject:define-genum "GdkDragProtocol" drag-protocol
   (:export t
    :type-initializer "gdk_drag_protocol_get_type")
   (:none 0)
@@ -142,7 +142,7 @@
       (liber:symbol-documentation 'drag-protocol)
  "@version{2024-6-28}
   @begin{declaration}
-(gobject:define-g-enum \"GdkDragProtocol\" drag-protocol
+(gobject:define-genum \"GdkDragProtocol\" drag-protocol
   (:export t
    :type-initializer \"gdk_drag_protocol_get_type\")
   (:none 0)
@@ -175,7 +175,7 @@
 ;;; GdkDragAction
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-flags "GdkDragAction" drag-action
+(gobject:define-gflags "GdkDragAction" drag-action
   (:export t
    :type-initializer "gdk_drag_action_get_type")
   (:default #.(ash 1 0))
@@ -191,7 +191,7 @@
       (liber:symbol-documentation 'drag-action)
  "@version{2024-6-28}
   @begin{declaration}
-(gobject:define-g-flags \"GdkDragAction\" drag-action
+(gobject:define-gflags \"GdkDragAction\" drag-action
   (:export t
    :type-initializer \"gdk_drag_action_get_type\")
   (:default 1)
@@ -225,7 +225,7 @@
 ;;; GdkDragContext
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GdkDragContext" drag-context
+(gobject:define-gobject "GdkDragContext" drag-context
   (:superclass g:object
    :export t
    :interfaces nil

@@ -60,7 +60,7 @@
 
 ;;; CairoSurface represents a cairo:surface-t, but we need a boxed type in GTK
 
-(glib:define-g-boxed-opaque cairo-surface "CairoSurface"
+(glib:define-gboxed-opaque cairo-surface "CairoSurface"
   :export t
   :alloc (error "CairoSurface cannot be created from the Lisp side."))
 
@@ -81,7 +81,7 @@
 
 ;;; CairoContext represents a cairo:context-t, but we need a boxed type in GTK
 
-(glib:define-g-boxed-opaque cairo-context "CairoContext"
+(glib:define-gboxed-opaque cairo-context "CairoContext"
   :export t
   :alloc (error "CairoContext cannot be created from the Lisp side."))
 

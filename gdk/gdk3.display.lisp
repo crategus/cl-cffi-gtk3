@@ -106,7 +106,7 @@
 ;;; GdkDisplay
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GdkDisplay" display
+(gobject:define-gobject "GdkDisplay" display
   (:superclass g:object
    :export t
    :interfaces nil

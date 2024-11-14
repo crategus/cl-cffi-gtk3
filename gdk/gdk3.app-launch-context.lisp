@@ -62,7 +62,7 @@
 ;;; GdkAppLaunchContext
 ;;; ----------------------------------------------------------------------------
 
-(gobject:define-g-object-class "GdkAppLaunchContext" app-launch-context
+(gobject:define-gobject "GdkAppLaunchContext" app-launch-context
   (:superclass g:app-launch-context
    :export t
    :interfaces nil
