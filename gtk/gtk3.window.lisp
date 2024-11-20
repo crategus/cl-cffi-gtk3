@@ -3209,7 +3209,7 @@ lambda (window widget)    :run-last
 
 (defun window-set-default-icon-from-file (path)
  #+liber-documentation
- "@version{#2024-4-8}
+ "@version{#2024-11-20}
   @argument[path]{a pathname or namestring with the location of the icon file}
   @return{@em{True} if setting the icon succeeded.}
   @begin{short}
@@ -3218,7 +3218,7 @@ lambda (window widget)    :run-last
   @end{short}
   @see-class{gtk:window}
   @see-function{gtk:window-icon-list}"
-  (glib:with-g-error (err)
+  (glib:with-error (err)
     (%window-set-default-icon-from-file (namestring path) err)))
 
 (export 'window-set-default-icon-from-file)
@@ -3235,7 +3235,7 @@ lambda (window widget)    :run-last
 
 (defun window-set-icon-from-file (window path)
  #+liber-documentation
- "@version{#2024-4-8}
+ "@version{#2024-11-20}
   @argument[window]{a @class{gtk:window} widget}
   @argument[path]{a pathname or namestring with the location of the icon file}
   @return{@em{True} if setting the icon succeeded.}
@@ -3246,7 +3246,7 @@ lambda (window widget)    :run-last
   with a pixbuf created by loading the image from @arg{path}.
   @see-class{gtk:window}
   @see-function{gtk:window-icon}"
-  (glib:with-g-error (err)
+  (glib:with-error (err)
     (%window-set-icon-from-file window (namestring path) err)))
 
 (export 'window-set-icon-from-file)

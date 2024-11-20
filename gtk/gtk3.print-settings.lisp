@@ -482,7 +482,7 @@
   @see-function{gtk:print-job-page-set}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_new ()
+;;; gtk_print_settings_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline print-settings-new))
@@ -498,7 +498,7 @@
 (export 'print-settings-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_copy ()
+;;; gtk_print_settings_copy
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_settings_copy" print-settings-copy)
@@ -514,7 +514,7 @@
 (export 'print-settings-copy)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_has_key ()
+;;; gtk_print_settings_has_key
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_settings_has_key" print-settings-has-key) :boolean
@@ -531,7 +531,7 @@
 (export 'print-settings-has-key)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_get ()
+;;; gtk_print_settings_get
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_settings_get" print-settings-get) :string
@@ -548,7 +548,7 @@
 (export 'print-settings-get)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_set ()
+;;; gtk_print_settings_set
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_settings_set" %print-settings-set) :void
@@ -572,7 +572,7 @@
 (export 'print-settings-set)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_unset ()
+;;; gtk_print_settings_unset
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_settings_unset" print-settings-unset) :void
@@ -592,7 +592,7 @@
 (export 'print-settings-unset)
 
 ;;; ----------------------------------------------------------------------------
-;;; GtkPrintSettingsFunc ()
+;;; GtkPrintSettingsFunc
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcallback print-settings-func :void
@@ -622,7 +622,7 @@
 (export 'print-settings-func)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_foreach ()
+;;; gtk_print_settings_foreach
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_settings_foreach" %print-settings-foreach) :void
@@ -648,8 +648,8 @@
 (export 'print-settings-foreach)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_get_bool ()
-;;; gtk_print_settings_set_bool ()
+;;; gtk_print_settings_get_bool
+;;; gtk_print_settings_set_bool
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf print-settings-bool) (value settings key)
@@ -684,8 +684,8 @@
 (export 'print-settings-bool)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_get_double ()
-;;; gtk_print_settings_set_double ()
+;;; gtk_print_settings_get_double
+;;; gtk_print_settings_set_double
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf print-settings-double) (value settings key)
@@ -718,7 +718,7 @@
 (export 'print-settings-double)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_get_double_with_default ()
+;;; gtk_print_settings_get_double_with_default
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_settings_get_double_with_default"
@@ -749,8 +749,8 @@
 (export 'print-settings-double-with-default)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_get_length ()
-;;; gtk_print_settings_set_length ()
+;;; gtk_print_settings_get_length
+;;; gtk_print_settings_set_length
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf print-settings-length) (value settings key unit)
@@ -795,8 +795,8 @@
 (export 'print-settings-length)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_get_int ()
-;;; gtk_print_settings_set_int ()
+;;; gtk_print_settings_get_int
+;;; gtk_print_settings_set_int
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf print-settings-int) (value settings key)
@@ -828,7 +828,7 @@
 (export 'print-settings-int)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_get_int_with_default ()
+;;; gtk_print_settings_get_int_with_default
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_settings_get_int_with_default"
@@ -852,8 +852,8 @@
 (export 'print-settings-int-with-default)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_get_printer ()
-;;; gtk_print_settings_set_printer ()
+;;; gtk_print_settings_get_printer
+;;; gtk_print_settings_set_printer
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf print-settings-printer) (printer settings)
@@ -884,8 +884,8 @@
 (export 'print-settings-printer)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_get_orientation ()
-;;; gtk_print_settings_set_orientation ()
+;;; gtk_print_settings_get_orientation
+;;; gtk_print_settings_set_orientation
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf print-settings-orientation) (orientation settings)
@@ -920,8 +920,8 @@
 (export 'print-settings-orientation)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_get_paper_size ()
-;;; gtk_print_settings_set_paper_size ()
+;;; gtk_print_settings_get_paper_size
+;;; gtk_print_settings_set_paper_size
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf print-settings-paper-size) (paper-size settings)
@@ -965,16 +965,16 @@
 (export 'print-settings-paper-size)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_get_paper_width ()
-;;; gtk_print_settings_set_paper_width ()
+;;; gtk_print_settings_get_paper_width
+;;; gtk_print_settings_set_paper_width
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf print-settings-paper-width) (width settings unit)
   (cffi:foreign-funcall "gtk_print_settings_set_paper_width"
-                   (g:object print-settings) settings
-                   :double (coerce width 'double-float)
-                   unit unit
-                   :void)
+                        (g:object print-settings) settings
+                        :double (coerce width 'double-float)
+                        unit unit
+                        :void)
   width)
 
 (cffi:defcfun ("gtk_print_settings_get_paper_width"
@@ -1003,8 +1003,8 @@
 (export 'print-settings-paper-width)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_get_paper_height ()
-;;; gtk_print_settings_set_paper_height ()
+;;; gtk_print_settings_get_paper_height
+;;; gtk_print_settings_set_paper_height
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf print-settings-paper-height) (height settings unit)
@@ -1041,8 +1041,8 @@
 (export 'print-settings-paper-height)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_get_use_color ()
-;;; gtk_print_settings_set_use_color ()
+;;; gtk_print_settings_get_use_color
+;;; gtk_print_settings_set_use_color
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf print-settings-use-color) (use-color settings)
@@ -1074,8 +1074,8 @@
 (export 'print-settings-use-color)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_get_collate ()
-;;; gtk_print_settings_set_collate ()
+;;; gtk_print_settings_get_collate
+;;; gtk_print_settings_set_collate
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf print-settings-collate) (collate settings)
@@ -1105,8 +1105,8 @@
 (export 'print-settings-collate)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_get_reverse ()
-;;; gtk_print_settings_set_reverse ()
+;;; gtk_print_settings_get_reverse
+;;; gtk_print_settings_set_reverse
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf print-settings-reverse) (reverse settings)
@@ -1137,8 +1137,8 @@
 (export 'print-settings-reverse)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_get_duplex ()
-;;; gtk_print_settings_set_duplex ()
+;;; gtk_print_settings_get_duplex
+;;; gtk_print_settings_set_duplex
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf print-settings-duplex) (duplex settings)
@@ -1170,8 +1170,8 @@
 (export 'print-settings-duplex)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_get_quality ()
-;;; gtk_print_settings_set_quality ()
+;;; gtk_print_settings_get_quality
+;;; gtk_print_settings_set_quality
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf print-settings-quality) (quality settings)
@@ -1202,8 +1202,8 @@
 (export 'print-settings-quality)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_get_n_copies ()
-;;; gtk_print_settings_set_n_copies ()
+;;; gtk_print_settings_get_n_copies
+;;; gtk_print_settings_set_n_copies
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf print-settings-n-copies) (n-copies settings)
@@ -1234,8 +1234,8 @@
 (export 'print-settings-n-copies)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_get_number_up ()
-;;; gtk_print_settings_set_number_up ()
+;;; gtk_print_settings_get_number_up
+;;; gtk_print_settings_set_number_up
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf print-settings-number-up) (number-up settings)
@@ -1266,8 +1266,8 @@
 (export 'print-settings-number-up)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_get_number_up_layout ()
-;;; gtk_print_settings_set_number_up_layout ()
+;;; gtk_print_settings_get_number_up_layout
+;;; gtk_print_settings_set_number_up_layout
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf print-settings-number-up-layout) (number-up-layout settings)
@@ -1300,8 +1300,8 @@
 (export 'print-settings-number-up-layout)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_get_resolution ()
-;;; gtk_print_settings_set_resolution ()
+;;; gtk_print_settings_get_resolution
+;;; gtk_print_settings_set_resolution
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf print-settings-resolution) (resolution settings)
@@ -1332,7 +1332,7 @@
 (export 'print-settings-resolution)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_set_resolution_xy ()                not exported
+;;; gtk_print_settings_set_resolution_xy                    not exported
 ;;; ------------------------------------------------ ----------------------------
 
 ;; We do not export this function. Consider to remove it.
@@ -1353,7 +1353,7 @@
   (resolution-y :int))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_get_resolution_x ()
+;;; gtk_print_settings_get_resolution_x
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_settings_get_resolution_x"
@@ -1371,7 +1371,7 @@
 (export 'print-settings-resolution-x)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_get_resolution_y ()
+;;; gtk_print_settings_get_resolution_y
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_settings_get_resolution_y"
@@ -1389,8 +1389,8 @@
 (export 'print-settings-resolution-y)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_get_printer_lpi ()
-;;; gtk_print_settings_set_printer_lpi ()
+;;; gtk_print_settings_get_printer_lpi
+;;; gtk_print_settings_set_printer_lpi
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf print-settings-printer-lpi) (printer-lpi settings)
@@ -1423,8 +1423,8 @@
 (export 'print-settings-printer-lpi)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_get_scale ()
-;;; gtk_print_settings_set_scale ()
+;;; gtk_print_settings_get_scale
+;;; gtk_print_settings_set_scale
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf print-settings-scale) (scale settings)
@@ -1455,8 +1455,8 @@
 (export 'print-settings-scale)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_get_print_pages ()
-;;; gtk_print_settings_set_print_pages ()
+;;; gtk_print_settings_get_print_pages
+;;; gtk_print_settings_set_print_pages
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf print-settings-print-pages) (print-pages settings)
@@ -1488,8 +1488,8 @@
 (export 'print-settings-print-pages)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_get_page_ranges ()
-;;; gtk_print_settings_set_page_ranges ()
+;;; gtk_print_settings_get_page_ranges
+;;; gtk_print_settings_set_page_ranges
 ;;; ----------------------------------------------------------------------------
 
 (defun print-settings-page-ranges (settings)
@@ -1545,8 +1545,8 @@
 (export 'print-settings-page-ranges)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_get_page_set ()
-;;; gtk_print_settings_set_page_set ()
+;;; gtk_print_settings_get_page_set
+;;; gtk_print_settings_set_page_set
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf print-settings-page-set) (page-set settings)
@@ -1578,8 +1578,8 @@
 (export 'print-settings-page-set)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_get_default_source ()
-;;; gtk_print_settings_set_default_source ()
+;;; gtk_print_settings_get_default_source
+;;; gtk_print_settings_set_default_source
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf print-settings-default-source) (default-source settings)
@@ -1611,8 +1611,8 @@
 (export 'print-settings-default-source)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_get_media_type ()
-;;; gtk_print_settings_set_media_type ()
+;;; gtk_print_settings_get_media_type
+;;; gtk_print_settings_set_media_type
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf print-settings-media-type) (media-type settings)
@@ -1646,8 +1646,8 @@
 (export 'print-settings-media-type)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_get_dither ()
-;;; gtk_print_settings_set_dither ()
+;;; gtk_print_settings_get_dither
+;;; gtk_print_settings_set_dither
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf print-settings-dither) (dither settings)
@@ -1677,8 +1677,8 @@
 (export 'print-settings-dither)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_get_finishings ()
-;;; gtk_print_settings_set_finishings ()
+;;; gtk_print_settings_get_finishings
+;;; gtk_print_settings_set_finishings
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf print-settings-finishings) (finishings settings)
@@ -1710,8 +1710,8 @@
 (export 'print-settings-finishings)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_get_output_bin ()
-;;; gtk_print_settings_set_output_bin ()
+;;; gtk_print_settings_get_output_bin
+;;; gtk_print_settings_set_output_bin
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf print-settings-output-bin) (output-bin settings)
@@ -1743,7 +1743,7 @@
 (export 'print-settings-output-bin)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_new_from_file ()
+;;; gtk_print_settings_new_from_file
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_settings_new_from_file" %print-settings-new-from-file)
@@ -1753,7 +1753,7 @@
 
 (defun print-settings-new-from-file (path)
  #+liber-documentation
- "@version{2023-2-11}
+ "@version{2024-11-20}
   @argument[path]{a pathname or namestring with the file to read the settings
     from}
   @return{The restored @class{gtk:print-settings} object.}
@@ -1765,44 +1765,40 @@
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-to-file}
   @see-function{gtk:print-settings-load-file}"
-  (glib:with-ignore-g-error (err)
+  (glib:with-ignore-error (err)
     (%print-settings-new-from-file (namestring path) err)))
 
 (export 'print-settings-new-from-file)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_new_from_key_file ()
+;;; gtk_print_settings_new_from_key_file
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_settings_new_from_key_file"
                 %print-settings-new-from-key-file) (g:object print-settings)
-  (key-file (:pointer (:struct g:variant)))
-  (group-name :string)
-  (error :pointer))
+  (keyfile (:pointer (:struct g:key-file)))
+  (group :string)
+  (err :pointer))
 
-(defun print-settings-new-from-key-file (key-file group-name)
+(defun print-settings-new-from-key-file (keyfile group)
  #+liber-documentation
- "@version{2023-2-11}
-  @argument[key-file]{a @type{g:key-file} instance to retrieve the settings
-    from}
-  @argument[group-name]{a string with the name of the group to use, or
-    @code{nil} to use the default \"Print Settings\"}
+ "@version{2024-11-20}
+  @argument[keyfile]{a @type{g:key-file} instance to retrieve the settings from}
+  @argument[group]{a string with the name of the group to use, or @code{nil} to
+    use the default \"Print Settings\"}
   @return{The restored @class{gtk:print-settings} object.}
   @begin{short}
-    Reads the print settings from the group @arg{group-name} in the key file.
+    Reads the print settings from the group @arg{group} in the key file.
   @end{short}
-  Returns a new @class{gtk:print-settings} object with the restored settings,
-  or @code{nil} if an error occurred.
   @see-class{gtk:print-settings}
-  @see-function{gtk:print-settings-to-file}
-  @see-function{gtk:print-settings-load-file}"
-  (glib:with-g-error (err)
-    (%print-settings-new-from-key-file key-file group-name err)))
+  @see-type{g:key-file}"
+  (glib:with-error (err)
+    (%print-settings-new-from-key-file keyfile group err)))
 
 (export 'print-settings-new-from-key-file)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_new_from_gvariant ()
+;;; gtk_print_settings_new_from_gvariant
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_settings_new_from_gvariant"
@@ -1845,7 +1841,7 @@
 (export 'print-settings-new-from-gvariant)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_load_file ()
+;;; gtk_print_settings_load_file
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_settings_load_file" %print-settings-load-file)
@@ -1856,7 +1852,7 @@
 
 (defun print-settings-load-file (settings path)
  #+liber-documentation
- "@version{2023-2-11}
+ "@version{2024-11-20}
   @argument[settings]{a @class{gtk:print-settings} object}
   @argument[path]{a pathname or namestring with the filename to read the
     settings from}
@@ -1867,44 +1863,43 @@
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-to-file}
   @see-function{gtk:print-settings-new-from-file}"
-  (glib:with-g-error (err)
+  (glib:with-error (err)
     (%print-settings-load-file settings (namestring path) err)))
 
 (export 'print-settings-load-file)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_load_key_file ()
+;;; gtk_print_settings_load_key_file
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_settings_load_key_file" %print-settings-load-key-file)
     :boolean
   (settings (g:object print-settings))
-  (key-file (:pointer (:struct g:key-file)))
-  (group-name :string)
-  (error :pointer))
+  (keyfile (:pointer (:struct g:key-file)))
+  (group :string)
+  (err :pointer))
 
-(defun print-settings-load-key-file (settings key-file group-name)
+(defun print-settings-load-key-file (settings keyfile group)
  #+liber-documentation
- "@version{2023-2-11}
+ "@version{2024-11-20}
   @argument[settings]{a @class{gtk:print-settings} object}
-  @argument[key-file]{a @type{g:key-file} instance to retrieve the settings
-    from}
-  @argument[group-name]{a string with the name of the group to use, or
-    @code{nil} to use the default \"Print Settings\"}
+  @argument[keyfile]{a @type{g:key-file} instance to retrieve the settings from}
+  @argument[group]{a string with the name of the group to use, or @code{nil} to
+    use the default \"Print Settings\"}
   @return{@em{True} on success.}
   @begin{short}
-    Reads the print settings from the group @arg{group-name} in the key file.
+    Reads the print settings from the group @arg{group} in the key file.
   @end{short}
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-to-key-file}
   @see-function{gtk:print-settings-new-from-key-file}"
-  (glib:with-g-error (err)
-    (%print-settings-load-key-file settings key-file group-name err)))
+  (glib:with-error (err)
+    (%print-settings-load-key-file settings keyfile group err)))
 
 (export 'print-settings-load-key-file)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_to_file ()
+;;; gtk_print_settings_to_file
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_settings_to_file" %print-settings-to-file) :boolean
@@ -1914,23 +1909,23 @@
 
 (defun print-settings-to-file (settings path)
  #+liber-documentation
- "@version{2023-2-11}
+ "@version{2024-11-20}
   @argument[settings]{a @class{gtk:print-settings} object}
   @argument[path]{a pathname or namestring with the filename to save to}
   @return{@em{True} on success.}
   @begin{short}
-    This function saves the print settings from settings to @arg{file-name}.
+    This function saves the print settings from settings to @arg{path}.
   @end{short}
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-load-file}
   @see-function{gtk:print-settings-new-from-file}"
-  (glib:with-g-error (err)
+  (glib:with-error (err)
     (%print-settings-to-file settings (namestring path) err)))
 
 (export 'print-settings-to-file)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_to_key_file ()
+;;; gtk_print_settings_to_key_file
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_settings_to_key_file" print-settings-to-key-file)
@@ -1938,10 +1933,9 @@
  #+liber-documentation
  "@version{2023-2-11}
   @argument[settings]{a @class{gtk:print-settings} object}
-  @argument[key-file]{a @type{g:key-file} instance to save the print settings
-    to}
-  @argument[group-name]{a string with the group to add the settings to in the
-    key file, or @code{nil} to use the default \"Print Settings\"}
+  @argument[keyfile]{a @type{g:key-file} instance to save the print settings to}
+  @argument[group]{a string with the group to add the settings to in the key
+    file, or @code{nil} to use the default \"Print Settings\"}
   @begin{short}
     This function adds the print settings from the print settings to the key
     file.
@@ -1950,13 +1944,13 @@
   @see-function{gtk:print-settings-to-key-file}
   @see-function{gtk:print-settings-new-from-key-file}"
   (settings (g:object print-settings))
-  (key-file (:pointer (:struct g:key-file)))
-  (group-name :string))
+  (keyfile (:pointer (:struct g:key-file)))
+  (group :string))
 
 (export 'print-settings-to-key-file)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_settings_to_gvariant ()
+;;; gtk_print_settings_to_gvariant
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_settings_to_gvariant" print-settings-to-gvariant)

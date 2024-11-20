@@ -37,7 +37,6 @@
 ;;;     GtkFileChooser
 ;;;     GtkFileChooserAction
 ;;;     GtkFileChooserConfirmation
-;;;     GTK_FILE_CHOOSER_ERROR
 ;;;     GtkFileChooserError
 ;;;
 ;;; Functions
@@ -218,14 +217,6 @@
   confirmation dialog, accept the user's choice of a filename, or let the user
   choose another filename.
   @class{gtk:file-chooser}")
-
-;;; ----------------------------------------------------------------------------
-;;; GTK_FILE_CHOOSER_ERROR
-;;;
-;;; #define GTK_FILE_CHOOSER_ERROR (gtk_file_chooser_error_quark ())
-;;;
-;;; Used to get the GError quark for GtkFileChooser errors.
-;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
 ;;; GtkFileChooserError
@@ -980,8 +971,8 @@ lambda (chooser)    :run-last
   @see-function{gtk:file-chooser-preview-widget}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_get_current_name ()
-;;; gtk_file_chooser_set_current_name ()
+;;; gtk_file_chooser_get_current_name
+;;; gtk_file_chooser_set_current_name
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf file-chooser-current-name) (name chooser)
@@ -1029,8 +1020,8 @@ lambda (chooser)    :run-last
 (export 'file-chooser-current-name)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_get_filename ()
-;;; gtk_file_chooser_set_filename ()
+;;; gtk_file_chooser_get_filename
+;;; gtk_file_chooser_set_filename
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf file-chooser-filename) (filename chooser)
@@ -1087,7 +1078,7 @@ lambda (chooser)    :run-last
 (export 'file-chooser-filename)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_select_filename ()
+;;; gtk_file_chooser_select_filename
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_file_chooser_select_filename" file-chooser-select-filename)
@@ -1110,7 +1101,7 @@ lambda (chooser)    :run-last
 (export 'file-chooser-select-filename)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_unselect_filename ()
+;;; gtk_file_chooser_unselect_filename
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_file_chooser_unselect_filename"
@@ -1132,7 +1123,7 @@ lambda (chooser)    :run-last
 (export 'file-chooser-unselect-filename)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_select_all ()
+;;; gtk_file_chooser_select_all
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_file_chooser_select_all" file-chooser-select-all) :void
@@ -1150,7 +1141,7 @@ lambda (chooser)    :run-last
 (export 'file-chooser-select-all)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_unselect_all ()
+;;; gtk_file_chooser_unselect_all
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_file_chooser_unselect_all" file-chooser-unselect-all) :void
@@ -1167,7 +1158,7 @@ lambda (chooser)    :run-last
 (export 'file-chooser-unselect-all)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_get_filenames ()
+;;; gtk_file_chooser_get_filenames
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_file_chooser_get_filenames" file-chooser-filenames)
@@ -1193,8 +1184,8 @@ lambda (chooser)    :run-last
 (export 'file-chooser-filenames)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_get_current_folder ()
-;;; gtk_file_chooser_set_current_folder ()
+;;; gtk_file_chooser_get_current_folder
+;;; gtk_file_chooser_set_current_folder
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf file-chooser-current-folder) (filename chooser)
@@ -1238,8 +1229,8 @@ lambda (chooser)    :run-last
 (export 'file-chooser-current-folder)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_get_uri ()
-;;; gtk_file_chooser_set_uri ()
+;;; gtk_file_chooser_get_uri
+;;; gtk_file_chooser_set_uri
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf file-chooser-uri) (uri chooser)
@@ -1297,7 +1288,7 @@ lambda (chooser)    :run-last
 (export 'file-chooser-uri)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_select_uri ()
+;;; gtk_file_chooser_select_uri
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_file_chooser_select_uri" file-chooser-select-uri) :boolean
@@ -1319,7 +1310,7 @@ lambda (chooser)    :run-last
 (export 'file-chooser-select-uri)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_unselect_uri ()
+;;; gtk_file_chooser_unselect_uri
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_file_chooser_unselect_uri" file-chooser-unselect-uri) :void
@@ -1340,7 +1331,7 @@ lambda (chooser)    :run-last
 (export 'file-chooser-unselect-uri)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_get_uris ()
+;;; gtk_file_chooser_get_uris
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_file_chooser_get_uris" file-chooser-uris)
@@ -1364,8 +1355,8 @@ lambda (chooser)    :run-last
 (export 'file-chooser-uris)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_set_current_folder_uri ()
-;;; gtk_file_chooser_get_current_folder_uri ()
+;;; gtk_file_chooser_set_current_folder_uri
+;;; gtk_file_chooser_get_current_folder_uri
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf file-chooser-current-folder-uri) (uri chooser)
@@ -1413,7 +1404,7 @@ lambda (chooser)    :run-last
 (export 'file-chooser-current-folder-uri)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_get_preview_filename ()
+;;; gtk_file_chooser_get_preview_filename
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_file_chooser_get_preview_filename"
@@ -1436,7 +1427,7 @@ lambda (chooser)    :run-last
 (export 'file-chooser-preview-filename)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_get_preview_uri ()
+;;; gtk_file_chooser_get_preview_uri
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_file_chooser_get_preview_uri" file-chooser-preview-uri)
@@ -1459,7 +1450,7 @@ lambda (chooser)    :run-last
 (export 'file-chooser-preview-uri)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_add_filter ()
+;;; gtk_file_chooser_add_filter
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_file_chooser_add_filter" file-chooser-add-filter) :void
@@ -1481,7 +1472,7 @@ lambda (chooser)    :run-last
 (export 'file-chooser-add-filter)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_remove_filter ()
+;;; gtk_file_chooser_remove_filter
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_file_chooser_remove_filter" file-chooser-remove-filter)
@@ -1502,7 +1493,7 @@ lambda (chooser)    :run-last
 (export 'file-chooser-remove-filter)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_list_filters ()
+;;; gtk_file_chooser_list_filters
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_file_chooser_list_filters" file-chooser-list-filters)
@@ -1528,18 +1519,18 @@ lambda (chooser)    :run-last
 (export 'file-chooser-list-filters)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_add_shortcut_folder ()
+;;; gtk_file_chooser_add_shortcut_folder
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_file_chooser_add_shortcut_folder"
                %file-chooser-add-shortcut-folder) :boolean
   (chooser (g:object file-chooser))
   (folder :string)
-  (error :pointer))
+  (err :pointer))
 
 (defun file-chooser-add-shortcut-folder (chooser folder)
  #+liber-documentation
- "@version{2023-6-11}
+ "@version{2024-11-20}
   @argument[chooser]{a @class{gtk:file-chooser} widget}
   @argument[folder]{a string with a filename of the folder to add}
   @begin{return}
@@ -1550,27 +1541,27 @@ lambda (chooser)    :run-last
   @end{short}
   Note that shortcut folders do not get saved, as they are provided by the
   application. For example, you can use this to add a
-  \"/usr/share/mydrawprogram/Clipart\" folder to the volume list.
+  @file{\"/usr/share/mydrawprogram/Clipart\"} folder to the volume list.
   @see-class{gtk:file-chooser}
   @see-function{gtk:file-chooser-remove-shortcut-folder}"
-  (glib:with-g-error (err)
+  (glib:with-error (err)
     (%file-chooser-add-shortcut-folder chooser folder err)))
 
 (export 'file-chooser-add-shortcut-folder)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_remove_shortcut_folder ()
+;;; gtk_file_chooser_remove_shortcut_folder
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_file_chooser_remove_shortcut_folder"
                %file-chooser-remove-shortcut-folder) :boolean
   (chooser (g:object file-chooser))
   (folder :string)
-  (error :pointer))
+  (err :pointer))
 
 (defun file-chooser-remove-shortcut-folder (chooser folder)
  #+liber-documentation
- "@version{2023-6-11}
+ "@version{2024-11-20}
   @argument[chooser]{a @class{gtk:file-chooser} widget}
   @argument[folder]{a string with the filename of the folder to remove}
   @begin{return}
@@ -1582,13 +1573,13 @@ lambda (chooser)    :run-last
   See also the @fun{gtk:file-chooser-add-shortcut-folder} function.
   @see-class{gtk:file-chooser}
   @see-function{gtk:file-chooser-add-shortcut-folder}"
-  (glib:with-g-error (err)
+  (glib:with-error (err)
     (%file-chooser-remove-shortcut-folder chooser folder err)))
 
 (export 'file-chooser-remove-shortcut-folder)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_list_shortcut_folders ()
+;;; gtk_file_chooser_list_shortcut_folders
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_file_chooser_list_shortcut_folders"
@@ -1611,18 +1602,18 @@ lambda (chooser)    :run-last
 (export 'file-chooser-list-shortcut-folders)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_add_shortcut_folder_uri ()
+;;; gtk_file_chooser_add_shortcut_folder_uri
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_file_chooser_add_shortcut_folder_uri"
                %file-chooser-add-shortcut-folder-uri) :boolean
   (chooser (g:object file-chooser))
   (uri :string)
-  (error :pointer))
+  (err :pointer))
 
 (defun file-chooser-add-shortcut-folder-uri (chooser uri)
  #+liber-documentation
- "@version{2023-6-11}
+ "@version{2024-11-20}
   @argument[chooser]{a @class{gtk:file-chooser} widget}
   @argument[uri]{a string with the URI of the folder to add}
   @begin{return}
@@ -1638,24 +1629,24 @@ lambda (chooser)    :run-last
   @see-class{gtk:file-chooser}
   @see-function{gtk:file-chooser-remove-shortcut-folder-uri}
   @see-function{gtk:file-chooser-add-shortcut-folder}"
-  (glib:with-g-error (err)
+  (glib:with-error (err)
     (%file-chooser-add-shortcut-folder-uri chooser uri err)))
 
 (export 'file-chooser-add-shortcut-folder-uri)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_remove_shortcut_folder_uri ()
+;;; gtk_file_chooser_remove_shortcut_folder_uri
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_file_chooser_remove_shortcut_folder_uri"
                %file-chooser-remove-shortcut-folder-uri) :boolean
   (chooser (g:object file-chooser))
   (uri :string)
-  (error :pointer))
+  (err :pointer))
 
 (defun file-chooser-remove-shortcut-folder-uri (chooser uri)
  #+liber-documentation
- "@version{2023-6-11}
+ "@version{2024-11-20}
   @argument[chooser]{a @class{gtk:file-chooser} widget}
   @argument[uri]{a string with the URI of the folder to remove}
   @begin{return}
@@ -1667,13 +1658,13 @@ lambda (chooser)    :run-last
   See also the @fun{gtk:file-chooser-add-shortcut-folder-uri} function.
   @see-class{gtk:file-chooser}
   @see-function{gtk:file-chooser-add-shortcut-folder-uri}"
-  (glib:with-g-error (err)
+  (glib:with-error (err)
     (%file-chooser-remove-shortcut-folder-uri chooser uri err)))
 
 (export 'file-chooser-remove-shortcut-folder-uri)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_list_shortcut_folder_uris ()
+;;; gtk_file_chooser_list_shortcut_folder_uris
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_file_chooser_list_shortcut_folder_uris"
@@ -1696,12 +1687,12 @@ lambda (chooser)    :run-last
 (export 'file-chooser-list-shortcut-folder-uris)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_get_current_folder_file ()
-;;; gtk_file_chooser_set_current_folder_file ()
+;;; gtk_file_chooser_get_current_folder_file
+;;; gtk_file_chooser_set_current_folder_file
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf file-chooser-current-folder-file) (file chooser)
-  (glib:with-g-error (err)
+  (glib:with-error (err)
     (when (cffi:foreign-funcall "gtk_file_chooser_set_current_folder_file"
                                 (g:object file-chooser) chooser
                                 (g:object g:file) file
@@ -1712,18 +1703,17 @@ lambda (chooser)    :run-last
 (cffi:defcfun ("gtk_file_chooser_get_current_folder_file"
                 file-chooser-current-folder-file) (g:object g:file)
  #+liber-documentation
- "@version{#2023-3-14}
+ "@version{#2024-11-20}
   @syntax{(gtk:file-chooser-current-folder-file chooser) => file}
   @syntax{(setf (gtk:file-chooser-current-folder-file chooser) file)}
   @argument[chooser]{a @class{gtk:file-chooser} widget}
   @argument[file]{a @class{g:file} object for the folder}
   @begin{short}
-    Accessor of the current folder file of the file chooser.
+    The @fun{gtk:file-chooser-current-folder-file} function gets the current
+    folder of the file chooser as a @class{g:file} object.
   @end{short}
-  The @fun{gtk:file-chooser-current-folder-file} function gets the current
-  folder of the file chooser as a @class{g:file} object. The
-  @setf{gtk:file-chooser-current-folder-file} function sets the current folder.
-  This function returns @code{nil}, if the folder could not be changed
+  The @setf{gtk:file-chooser-current-folder-file} function sets the current
+  folder. This function returns @code{nil}, if the folder could not be changed
   successfully.
 
   Internal function, see the @fun{gtk:file-chooser-current-folder-uri} function.
@@ -1735,12 +1725,12 @@ lambda (chooser)    :run-last
 (export 'file-chooser-current-folder-file)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_get_file ()
-;;; gtk_file_chooser_set_file ()
+;;; gtk_file_chooser_get_file
+;;; gtk_file_chooser_set_file
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf file-chooser-file) (file chooser)
-  (glib:with-g-error (err)
+  (glib:with-error (err)
     (cffi:foreign-funcall "gtk_file_chooser_set_file"
                           (g:object file-chooser) chooser
                           (g:object g:file) file
@@ -1750,18 +1740,18 @@ lambda (chooser)    :run-last
 
 (cffi:defcfun ("gtk_file_chooser_get_file" file-chooser-file) (g:object g:file)
  #+liber-documentation
- "@version{#2023-3-14}
+ "@version{#2024-11-20}
   @syntax{(gtk:file-chooser-file chooser) => file}
   @syntax{(setf (gtk:file-chooser-file chooser) file)}
   @argument[chooser]{a @class{gtk:file-chooser} widget}
   @argument[file]{a @class{g:file} object for the file}
   @begin{short}
-    Accessor of the file of the file chooser.
+    The @fun{gtk:file-choose-file} function gets the @class{g:file} object for
+   the currently selected file in the file selector.
   @end{short}
-  The @fun{gtk:file-choose-file} function gets the @class{g:file} object for
-  the currently selected file in the file selector. If multiple files are
-  selected, one of the files will be returned at random. If the file chooser
-  is in folder mode, this function returns the selected folder.
+  If multiple files are selected, one of the files will be returned at random.
+  If the file chooser is in folder mode, this function returns the selected
+  folder.
 
   The @setf{gtk:file-chooser-file} function sets @arg{file} as the current
   filename for the file chooser, by changing to the file's parent folder and
@@ -1804,7 +1794,7 @@ lambda (chooser)    :run-last
 (export 'file-chooser-file)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_get_files ()
+;;; gtk_file_chooser_get_files
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_file_chooser_get_files" file-chooser-files)
@@ -1829,7 +1819,7 @@ lambda (chooser)    :run-last
 (export 'file-chooser-files)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_get_preview_file ()
+;;; gtk_file_chooser_get_preview_file
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_file_chooser_get_preview_file" file-chooser-preview-file)
@@ -1853,7 +1843,7 @@ lambda (chooser)    :run-last
 (export 'file-chooser-preview-file)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_select_file ()
+;;; gtk_file_chooser_select_file
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_file_chooser_select_file" %file-chooser-select-file)
@@ -1864,7 +1854,7 @@ lambda (chooser)    :run-last
 
 (defun file-chooser-select-file (chooser file)
  #+liber-documentation
- "@version{#2023-3-14}
+ "@version{#2024-11-20}
   @argument[chooser]{a @class{gtk:file-chooser} widget}
   @argument[file]{a @class{g:file} object to select}
   @begin{short}
@@ -1874,13 +1864,13 @@ lambda (chooser)    :run-last
   @see-class{gtk:file-chooser}
   @see-class{g:file}
   @see-function{gtk:file-chooser-select-uri}"
-  (glib:with-g-error (err)
+  (glib:with-error (err)
     (%file-chooser-select-file chooser file err)))
 
 (export 'file-chooser-select-file)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_unselect_file ()
+;;; gtk_file_chooser_unselect_file
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_file_chooser_unselect_file" file-chooser-unselect-file)

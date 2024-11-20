@@ -484,7 +484,7 @@ gdk_gl_context_make_current (context);
 
 (defun gl-context-realize (context)
  #+liber-documentation
- "@version{#2024-6-26}
+ "@version{#2024-11-20}
   @argument[context]{a @class{gdk:gl-context} object}
   @return{@em{True} if the GL context is realized.}
   @begin{short}
@@ -492,7 +492,7 @@ gdk_gl_context_make_current (context);
   @end{short}
   It is safe to call this function on a realized GL context.
   @see-class{gdk:gl-context}"
-  (glib:with-g-error (err)
+  (glib:with-error (err)
     (%gl-context-realize context err)))
 
 (export 'gl-context-realize)

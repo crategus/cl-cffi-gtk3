@@ -598,7 +598,7 @@ lambda (buffer tag start end)    :run-last
   @see-function{gtk:text-buffer-get-slice}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_new ()
+;;; gtk_text_buffer_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline text-buffer-new))
@@ -620,7 +620,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_get_line_count () -> text-buffer-line-count
+;;; gtk_text_buffer_get_line_count
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_get_line_count" text-buffer-line-count) :int
@@ -639,7 +639,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-line-count)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_get_char_count () -> text-buffer-char-count
+;;; gtk_text_buffer_get_char_count
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_get_char_count" text-buffer-char-count) :int
@@ -660,7 +660,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-char-count)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_insert ()
+;;; gtk_text_buffer_insert
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_insert" %text-buffer-insert) :void
@@ -741,7 +741,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-insert)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_insert_at_cursor ()                    not exported
+;;; gtk_text_buffer_insert_at_cursor                        not exported
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_insert_at_cursor" %text-buffer-insert-at-cursor)
@@ -764,7 +764,7 @@ lambda (buffer tag start end)    :run-last
   (%text-buffer-insert-at-cursor buffer text -1))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_insert_interactive ()                  not exported
+;;; gtk_text_buffer_insert_interactive                      not exported
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_insert_interactive"
@@ -801,7 +801,7 @@ lambda (buffer tag start end)    :run-last
   (%text-buffer-insert-interactive buffer iter text -1 editable))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_insert_interactive_at_cursor ()        not exported
+;;; gtk_text_buffer_insert_interactive_at_cursor            not exported
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_insert_interactive_at_cursor"
@@ -832,7 +832,7 @@ lambda (buffer tag start end)    :run-last
   (%text-buffer-insert-interactive-at-cursor buffer text -1 editable))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_insert_range ()
+;;; gtk_text_buffer_insert_range
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_insert_range" %text-buffer-insert-range) :void
@@ -897,7 +897,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-insert-range)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_insert_range_interactive ()            not exported
+;;; gtk_text_buffer_insert_range_interactive                not exported
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_insert_range_interactive"
@@ -935,7 +935,7 @@ lambda (buffer tag start end)    :run-last
   (editable :boolean))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_insert_with_tags ()
+;;; gtk_text_buffer_insert_with_tags
 ;;; ----------------------------------------------------------------------------
 
 (defun text-buffer-insert-with-tags (buffer iter text &rest tags)
@@ -976,7 +976,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-insert-with-tags)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_insert_with_tags_by_name ()            not implemented
+;;; gtk_text_buffer_insert_with_tags_by_name                not implemented
 ;;; ----------------------------------------------------------------------------
 
 #+nil
@@ -1011,7 +1011,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-insert-with-tags-by-name)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_insert_markup ()
+;;; gtk_text_buffer_insert_markup
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_insert_markup" %text-buffer-insert-markup) :void
@@ -1041,7 +1041,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-insert-markup)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_delete ()
+;;; gtk_text_buffer_delete
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_delete" %text-buffer-delete) :void
@@ -1093,7 +1093,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-delete)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_delete_interactive ()                  not exported
+;;; gtk_text_buffer_delete_interactive                      not exported
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_delete_interactive"
@@ -1125,7 +1125,7 @@ lambda (buffer tag start end)    :run-last
   (editable :boolean))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_backspace ()
+;;; gtk_text_buffer_backspace
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_backspace" %text-buffer-backspace) :boolean
@@ -1162,7 +1162,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-backspace)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_get_text ()
+;;; gtk_text_buffer_get_text
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_get_text" %text-buffer-get-text) :string
@@ -1196,7 +1196,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-get-text)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_get_slice ()
+;;; gtk_text_buffer_get_slice
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_get_slice" %text-buffer-get-slice)
@@ -1234,7 +1234,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-get-slice)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_insert_pixbuf ()
+;;; gtk_text_buffer_insert_pixbuf
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_insert_pixbuf" text-buffer-insert-pixbuf) :void
@@ -1263,7 +1263,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-insert-pixbuf)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_insert_child_anchor ()
+;;; gtk_text_buffer_insert_child_anchor
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_insert_child_anchor"
@@ -1311,7 +1311,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-insert-child-anchor)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_create_child_anchor ()
+;;; gtk_text_buffer_create_child_anchor
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_create_child_anchor"
@@ -1337,7 +1337,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-create-child-anchor)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_create_mark ()
+;;; gtk_text_buffer_create_mark
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_create_mark" %text-buffer-create-mark)
@@ -1382,7 +1382,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-create-mark)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_move_mark ()
+;;; gtk_text_buffer_move_mark
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_move_mark" %text-buffer-move-mark) :void
@@ -1412,7 +1412,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-move-mark)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_move_mark_by_name ()                   not exported
+;;; gtk_text_buffer_move_mark_by_name                       not exported
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_move_mark_by_name"
@@ -1433,7 +1433,7 @@ lambda (buffer tag start end)    :run-last
   (pos (g:boxed text-iter)))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_add_mark ()
+;;; gtk_text_buffer_add_mark
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_add_mark" text-buffer-add-mark) :void
@@ -1462,7 +1462,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-add-mark)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_delete_mark ()
+;;; gtk_text_buffer_delete_mark
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_delete_mark" %text-buffer-delete-mark) :void
@@ -1500,7 +1500,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-delete-mark)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_delete_mark_by_name ()                 not exported
+;;; gtk_text_buffer_delete_mark_by_name                     not exported
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_delete_mark_by_name"
@@ -1520,7 +1520,7 @@ lambda (buffer tag start end)    :run-last
   (name (:string :free-to-foreign t)))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_get_mark () -> text-buffer-mark
+;;; gtk_text_buffer_get_mark
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_get_mark" text-buffer-mark)
@@ -1542,7 +1542,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-mark)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_get_insert ()
+;;; gtk_text_buffer_get_insert
 ;;; ----------------------------------------------------------------------------
 
 ;; It is wrong to implement this as text-buffer-insert, we have already a
@@ -1567,7 +1567,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-get-insert)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_get_selection_bound () -> text-buffer-selection-bound
+;;; gtk_text_buffer_get_selection_bound
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_get_selection_bound"
@@ -1598,7 +1598,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-selection-bound)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_place_cursor ()
+;;; gtk_text_buffer_place_cursor
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_place_cursor" text-buffer-place-cursor) :void
@@ -1624,7 +1624,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-place-cursor)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_select_range ()
+;;; gtk_text_buffer_select_range
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_select_range" text-buffer-select-range) :void
@@ -1654,7 +1654,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-select-range)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_apply_tag ()
+;;; gtk_text_buffer_apply_tag
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_apply_tag" %text-buffer-apply-tag) :void
@@ -1687,7 +1687,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-apply-tag)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_apply_tag_by_name ()                   no exported
+;;; gtk_text_buffer_apply_tag_by_name                       no exported
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_apply_tag_by_name"
@@ -1716,7 +1716,7 @@ lambda (buffer tag start end)    :run-last
   (end (g:boxed text-iter)))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_remove_tag ()
+;;; gtk_text_buffer_remove_tag
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_remove_tag" %text-buffer-remove-tag) :void
@@ -1750,7 +1750,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-remove-tag)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_remove_tag_by_name ()                  not exported
+;;; gtk_text_buffer_remove_tag_by_name                      not exported
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_remove_tag_by_name"
@@ -1779,7 +1779,7 @@ lambda (buffer tag start end)    :run-last
   (end (g:boxed text-iter)))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_remove_all_tags ()
+;;; gtk_text_buffer_remove_all_tags
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_remove_all_tags" text-buffer-remove-all-tags)
@@ -1808,7 +1808,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-remove-all-tags)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_create_tag ()
+;;; gtk_text_buffer_create_tag
 ;;; ----------------------------------------------------------------------------
 
 (defun text-buffer-create-tag (buffer name &rest args)
@@ -1849,8 +1849,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-create-tag)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_get_iter_at_line_offset ()
-;;;     -> text-buffer-iter-at-line-offset
+;;; gtk_text_buffer_get_iter_at_line_offset
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_get_iter_at_line_offset"
@@ -1884,7 +1883,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-iter-at-line-offset)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_get_iter_at_offset () -> text-buffer-iter-at-offset
+;;; gtk_text_buffer_get_iter_at_offset
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_get_iter_at_offset"
@@ -1916,7 +1915,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-iter-at-offset)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_get_iter_at_line () -> text-buffer-iter-at-line
+;;; gtk_text_buffer_get_iter_at_line
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_get_iter_at_line"
@@ -1943,8 +1942,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-iter-at-line)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_get_iter_at_line_index ()
-;;;     -> text-buffer-iter-at-line-index
+;;; gtk_text_buffer_get_iter_at_line_index
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_get_iter_at_line_index"
@@ -1979,7 +1977,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-iter-at-line-index)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_get_iter_at_mark () -> text-buffer-iter-at-mark
+;;; gtk_text_buffer_get_iter_at_mark
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_get_iter_at_mark"
@@ -2008,8 +2006,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-iter-at-mark)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_get_iter_at_child_anchor ()
-;;;     -> text-buffer-iter-at-child-anchor
+;;; gtk_text_buffer_get_iter_at_child_anchor
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_get_iter_at_child_anchor"
@@ -2038,7 +2035,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-iter-at-child-anchor)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_get_start_iter () -> text-buffer-start-iter
+;;; gtk_text_buffer_get_start_iter
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_get_start_iter" %text-buffer-start-iter) :void
@@ -2065,7 +2062,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-start-iter)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_get_end_iter () --> text-buffer-end-iter
+;;; gtk_text_buffer_get_end_iter
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_get_end_iter" %text-buffer-end-iter) :void
@@ -2096,7 +2093,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-end-iter)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_get_bounds () -> text-buffer-bounds
+;;; gtk_text_buffer_get_bounds
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_get_bounds" %text-buffer-bounds) :void
@@ -2128,8 +2125,8 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-bounds)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_get_modified ()
-;;; gtk_text_buffer_set_modified () -> text-buffer-modified
+;;; gtk_text_buffer_get_modified
+;;; gtk_text_buffer_set_modified
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf text-buffer-modified) (setting buffer)
@@ -2164,7 +2161,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-modified)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_delete_selection ()
+;;; gtk_text_buffer_delete_selection
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_delete_selection" %text-buffer-delete-selection)
@@ -2193,7 +2190,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-delete-selection)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_paste_clipboard ()
+;;; gtk_text_buffer_paste_clipboard
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_paste_clipboard" %text-buffer-paste-clipboard)
@@ -2228,7 +2225,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-paste-clipboard)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_copy_clipboard ()
+;;; gtk_text_buffer_copy_clipboard
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_copy_clipboard" text-buffer-copy-clipboard)
@@ -2248,7 +2245,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-copy-clipboard)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_cut_clipboard ()
+;;; gtk_text_buffer_cut_clipboard
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_cut_clipboard" text-buffer-cut-clipboard) :void
@@ -2270,7 +2267,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-cut-clipboard)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_get_selection_bounds () -> text-buffer-selection-bounds
+;;; gtk_text_buffer_get_selection_bounds
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_get_selection_bounds"
@@ -2306,7 +2303,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-selection-bounds)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_begin_user_action ()
+;;; gtk_text_buffer_begin_user_action
 ;;; ----------------------------------------------------------------------------
 
 ;; Example implementation of a macro, not exported at this time.
@@ -2351,7 +2348,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-begin-user-action)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_end_user_action ()
+;;; gtk_text_buffer_end_user_action
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_end_user_action" text-buffer-end-user-action)
@@ -2371,7 +2368,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-end-user-action)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_add_selection_clipboard ()
+;;; gtk_text_buffer_add_selection_clipboard
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_add_selection_clipboard"
@@ -2394,7 +2391,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-add-selection-clipboard)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_remove_selection_clipboard ()
+;;; gtk_text_buffer_remove_selection_clipboard
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_remove_selection_clipboard"
@@ -2416,7 +2413,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-remove-selection-clipboard)
 
 ;;; ----------------------------------------------------------------------------
-;;; GtkTextBufferDeserializeFunc ()
+;;; GtkTextBufferDeserializeFunc
 ;;; ----------------------------------------------------------------------------
 
 ;; TODO: Check this implementation
@@ -2430,7 +2427,7 @@ lambda (buffer tag start end)    :run-last
      (create :boolean)
      (user :pointer)
      (err :pointer))
-  (glib:with-catching-to-g-error (err)
+  (glib:with-catching-to-error (err)
     (let ((func (glib:get-stable-pointer-value user)))
       (restart-case
         (let ((bytes (iter (with bytes = (make-array len
@@ -2453,7 +2450,7 @@ lambda (buffer tag start end)    :run-last
 (setf (liber:alias-for-symbol 'text-buffer-deserialize-func)
       "Callback"
       (liber:symbol-documentation 'text-buffer-deserialize-func)
- "@version{#2024-3-23}
+ "@version{#2024-11-20}
   @syntax{lambda (buffer content iter data create) => result}
   @argument[buffer]{a @class{gtk:text-buffer} object the format is registered
     with}
@@ -2475,7 +2472,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-deserialize-func)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_deserialize ()
+;;; gtk_text_buffer_deserialize
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_deserialize" %text-buffer-deserialize) :boolean
@@ -2489,7 +2486,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-deserialize (buffer content format iter data)
  #+liber-documentation
- "@version{#2023-3-7}
+ "@version{#2024-11-20}
   @argument[buffer]{a @class{gtk:text-buffer} object format is registered with}
   @argument[content]{a @class{gtk:text-buffer} object to deserialize into}
   @argument[format]{a @symbol{gdk:atom} as a string with the rich text format
@@ -2514,7 +2511,7 @@ lambda (buffer tag start end)    :run-last
     (iter (for i from 0 below (length data))
           (setf (cffi:mem-aref bytes :uint8 i) (aref data i)))
     (unwind-protect
-      (glib:with-g-error (err)
+      (glib:with-error (err)
         (%text-buffer-deserialize buffer
                                   content
                                   format
@@ -2527,9 +2524,8 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-deserialize)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_deserialize_get_can_create_tags ()
-;;; gtk_text_buffer_deserialize_set_can_create_tags ()
-;;;     -> text-buffer-deserialize-can-create-tags
+;;; gtk_text_buffer_deserialize_get_can_create_tags
+;;; gtk_text_buffer_deserialize_set_can_create_tags
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf text-buffer-deserialize-can-create-tags) (value buffer format)
@@ -2577,8 +2573,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-deserialize-can-create-tags)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_get_deserialize_formats ()
-;;;     -> text-buffer-deserialize-formats
+;;; gtk_text_buffer_get_deserialize_formats
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_get_deserialize_formats"
@@ -2610,7 +2605,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-deserialize-formats)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_get_serialize_formats ()
+;;; gtk_text_buffer_get_serialize_formats
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_get_serialize_formats"
@@ -2642,7 +2637,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-serialize-formats)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_register_deserialize_format ()
+;;; gtk_text_buffer_register_deserialize_format
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_register_deserialize_format"
@@ -2681,7 +2676,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-register-deserialize-format)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_register_deserialize_tagset ()
+;;; gtk_text_buffer_register_deserialize_tagset
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_register_deserialize_tagset"
@@ -2708,7 +2703,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-register-deserialize-tagset)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_register_serialize_format ()
+;;; gtk_text_buffer_register_serialize_format
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_register_serialize_format"
@@ -2747,7 +2742,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-register-serialize-format)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_register_serialize_tagset ()
+;;; gtk_text_buffer_register_serialize_tagset
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_register_serialize_tagset"
@@ -2788,7 +2783,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-register-serialize-tagset)
 
 ;;; ----------------------------------------------------------------------------
-;;; GtkTextBufferSerializeFunc ()
+;;; GtkTextBufferSerializeFunc
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcallback text-buffer-serialize-func :pointer
@@ -2834,7 +2829,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-serialize-func)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_serialize ()
+;;; gtk_text_buffer_serialize
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_serialize" %text-buffer-serialize) :pointer
@@ -2884,7 +2879,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-serialize)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_unregister_deserialize_format ()
+;;; gtk_text_buffer_unregister_deserialize_format
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_unregister_deserialize_format"
@@ -2909,7 +2904,7 @@ lambda (buffer tag start end)    :run-last
 (export 'text-buffer-unregister-deserialize-format)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_buffer_unregister_serialize_format ()
+;;; gtk_text_buffer_unregister_serialize_format
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_buffer_unregister_serialize_format"

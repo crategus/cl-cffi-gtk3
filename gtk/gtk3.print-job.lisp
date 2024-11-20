@@ -377,7 +377,7 @@ lambda (job)    :run-last
 
 (defun print-job-set-source-file (job filename)
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2024-11-20}
   @argument[job]{a @class{gtk:print-job} object}
   @argument[filename]{a string with the file name to be printed}
   @return{@em{False} if an error occurred.}
@@ -390,7 +390,7 @@ lambda (job)    :run-last
   @see-class{gtk:print-job}
   @see-function{gtk:printer-accepts-pdf}
   @see-function{gtk:printer-accepts-ps}"
-  (glib:with-g-error (err)
+  (glib:with-error (err)
     (%print-job-set-source-file job filename err)))
 
 (export 'print-job-set-source-file)
@@ -406,7 +406,7 @@ lambda (job)    :run-last
 
 (defun print-job-surface (job)
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2024-11-20}
   @argument[job]{a @class{gtk:print-job} object}
   @return{The @symbol{cairo:surface-t} Cairo surface of @arg{job}.}
   @begin{short}
@@ -415,7 +415,7 @@ lambda (job)    :run-last
   @end{short}
   @see-class{gtk:print-job}
   @see-symbol{cairo:surface-t}"
-  (glib:with-g-error (err)
+  (glib:with-error (err)
     (%print-job-get-surface job err)))
 
 (export 'print-job-surface)
@@ -428,7 +428,7 @@ lambda (job)    :run-last
     ((job (g:object print-job))
      (data :pointer)
      (err :pointer))
-  (glib:with-catching-to-g-error (err)
+  (glib:with-catching-to-error (err)
     (let ((func (glib:get-stable-pointer-value data)))
       (restart-case
         (progn
@@ -440,7 +440,7 @@ lambda (job)    :run-last
 (setf (liber:alias-for-symbol 'print-job-complete-func)
       "Callback"
       (liber:symbol-documentation 'print-job-complete-func)
- "@version{#2024-6-28}
+ "@version{#2024-11-20}
   @syntax{lambda (job)}
   @argument[job]{a @class{gtk:print-job} object}
   @begin{short}

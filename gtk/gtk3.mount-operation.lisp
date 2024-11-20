@@ -214,7 +214,7 @@
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_show_uri ()
+;;; gtk_show_uri
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_show_uri" %show-uri) :boolean
@@ -225,7 +225,7 @@
 
 (defun show-uri (screen uri timestamp)
  #+liber-documentation
- "@version{#2023-2-28}
+ "@version{#2024-11-20}
   @argument[screen]{a @class{gdk:screen} object to show the URi on or
     @code{nil} for the default screen}
   @argument[uri]{a string with the URI to show}
@@ -236,8 +236,8 @@
     This is a convenience function for launching the default application to
     show the URI.
   @end{short}
-  The @arg{uri} must be of a form understood by GIO, i.e. you need to install
-  @code{gvfs} to get support for URI schemes such as @file{http://} or
+  The @arg{uri} must be of a form understood by GIO, that ist, you need to
+  install @code{gvfs} to get support for URI schemes such as @file{http://} or
   @file{ftp://}, as only local files are handled by GIO itself. Typical
   examples are @file{file:///home/gnome/pict.jpg},
   @file{http://www.gnome.org mailto:me@@gnome.org}.
@@ -249,7 +249,7 @@
   This function can be used as a replacement for the @code{gnome_vfs_url_show()}
   and @code{gnome_url_show()} functions.
   @see-class{gdk:screen}"
-  (glib:with-g-error (err)
+  (glib:with-error (err)
     (%show-uri screen uri timestamp err)))
 
 (export 'show-uri)

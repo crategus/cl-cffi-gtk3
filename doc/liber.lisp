@@ -1,7 +1,7 @@
 ;;; ----------------------------------------------------------------------------
 ;;; liber.lisp
 ;;;
-;;; Copyright (C) 2022 - 2023 Dieter Kaiser
+;;; Copyright (C) 2022 - 2024 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -45,10 +45,10 @@
 (unexport 'glib:get-stable-pointer-value :glib)
 (unexport 'glib:free-stable-pointer :glib)
 (unexport 'glib:with-stable-pointer :glib)
-(unexport 'glib:with-catching-to-g-error :glib)
-(unexport 'glib:with-g-error :glib)
-(unexport 'glib:with-ignore-g-error :glib)
 (unexport 'glib:get-boxed-info :glib)
+(unexport 'glib:with-error :glib)
+(unexport 'glib:with-ignore-error :glib)
+(unexport 'glib:with-catching-to-error :glib)
 (unexport 'glib:boxed :glib)
 (unexport 'glib:gtype :glib)
 (unexport 'glib:gtype-id :glib)
@@ -207,4 +207,3 @@
       :include-internal-symbols-p nil)))
 
 ;;; --- End of file liber.lisp -------------------------------------------------
-

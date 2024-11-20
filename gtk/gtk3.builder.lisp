@@ -590,7 +590,7 @@
 
 (defun builder-add-from-file (builder path)
  #+liber-documentation
- "@version{2024-3-20}
+ "@version{2024-11-20}
   @argument[builder]{a @class{gtk:builder} object}
   @argument[path]{a path or namestring with the name of the file to parse}
   @return{The unsigned integer with a positive value on success, 0 if an
@@ -602,7 +602,7 @@
   @see-class{gtk:builder}
   @see-function{gtk:builder-add-from-resource}
   @see-function{gtk:builder-add-from-string}"
-  (glib:with-g-error (err)
+  (glib:with-error (err)
     (%builder-add-from-file builder (namestring path) err)))
 
 (export 'builder-add-from-file)
@@ -618,7 +618,7 @@
 
 (defun builder-add-from-resource (builder path)
  #+liber-documentation
- "@version{2023-3-20}
+ "@version{2024-11-20}
   @argument[builder]{a @class{gtk:builder} object}
   @argument[path]{a string with the path of the resouce file to parse}
   @return{The unsigned integer with a positive value on success, 0 if an error
@@ -631,7 +631,7 @@
   @see-class{g:resource}
   @see-function{gtk:builder-add-from-file}
   @see-function{gtk:builder-add-from-string}"
-  (glib:with-g-error (err)
+  (glib:with-error (err)
     (%builder-add-from-resource builder path err)))
 
 (export 'builder-add-from-resource)
@@ -643,12 +643,12 @@
 (cffi:defcfun ("gtk_builder_add_from_string" %builder-add-from-string) :uint
   (builder (g:object builder))
   (string :string)
-  (length :int)
+  (len :int)
   (err :pointer))
 
 (defun builder-add-from-string (builder string)
  #+liber-documentation
- "@version{2023-3-2}
+ "@version{2024-11-20}
   @argument[builder]{a @class{gtk:builder} object}
   @argument[string]{a string to parse}
   @return{The unsigned integer with a positive value on success, 0 if an error
@@ -660,7 +660,7 @@
   @see-class{gtk:builder}
   @see-function{gtk:builder-add-from-file}
   @see-function{gtk:builder-add-from-resource}"
-  (glib:with-g-error (err)
+  (glib:with-error (err)
     (%builder-add-from-string builder string -1 err)))
 
 (export 'builder-add-from-string)
@@ -673,12 +673,12 @@
                %builder-add-objects-from-file) :uint
   (builder (g:object builder))
   (filename :string)
-  (object-ids :pointer)
+  (ids :pointer)
   (err :pointer))
 
 (defun builder-add-objects-from-file (builder path &rest ids)
  #+liber-documentation
- "@version{2024-3-20}
+ "@version{2024-11-20}
   @argument[builder]{a @class{gtk:builder} object}
   @argument[path]{a path or namestring with the name of the file to parse}
   @argument[ids]{strings with the object IDs to build}
@@ -707,7 +707,7 @@
                 (cffi:foreign-string-alloc object-id)))
     (setf (cffi:mem-aref ids-ptr :pointer (length ids)) (cffi:null-pointer))
     (unwind-protect
-      (glib:with-g-error (err)
+      (glib:with-error (err)
         (%builder-add-objects-from-file builder (namestring path) ids-ptr err))
       (progn
         (iter (for i from 0)
@@ -725,13 +725,13 @@
                %builder-add-objects-from-string) :uint
   (builder (g:object builder))
   (string :string)
-  (length :int)
+  (len :int)
   (ids :pointer)
   (err :pointer))
 
 (defun builder-add-objects-from-string (builder string &rest ids)
  #+liber-documentation
- "@version{2024-3-20}
+ "@version{2024-11-20}
   @argument[builder]{a @class{gtk:builder} object}
   @argument[string]{a string to parse}
   @argument[ids]{strings with the object IDs to build}
@@ -758,7 +758,7 @@
                 (cffi:foreign-string-alloc object-id)))
     (setf (cffi:mem-aref ids-ptr :pointer (length ids)) (cffi:null-pointer))
     (unwind-protect
-      (glib:with-g-error (err)
+      (glib:with-error (err)
         (%builder-add-objects-from-string builder string -1 ids-ptr err))
       (progn
         (iter (for i from 0)
@@ -781,7 +781,7 @@
 
 (defun builder-add-objects-from-resource (builder path &rest ids)
  #+liber-documentation
- "@version{#2024-3-20}
+ "@version{#2024-11-20}
   @argument[builder]{a @class{gtk:builder} object}
   @argument[path]{a string with the path of the resource file to parse}
   @argument[ids]{strings with the object IDs to build}
@@ -808,7 +808,7 @@
           (setf (cffi:mem-aref ids-ptr :pointer i)
                 (cffi:foreign-string-alloc object-id)))
     (unwind-protect
-      (glib:with-g-error (err)
+      (glib:with-error (err)
         (%builder-add-objects-from-resource builder path ids-ptr err))
       (progn
         (iter (for i from 0)

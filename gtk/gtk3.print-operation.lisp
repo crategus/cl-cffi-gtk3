@@ -391,7 +391,7 @@ lambda (preview context)    :run-last
   @see-function{gtk:print-operation-preview-is-selected}")
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkPrintOperation
+;;; GtkPrintOperation
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkPrintOperation" print-operation
@@ -1348,7 +1348,7 @@ lambda (operation widget setup settings)    :run-last
   @see-class{gtk:print-context}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_operation_new ()
+;;; gtk_print_operation_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline print-operation-new))
@@ -1387,7 +1387,7 @@ lambda (operation widget setup settings)    :run-last
 ;; TODO: Do more work on reporting errors
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_operation_run ()
+;;; gtk_print_operation_run
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_operation_run" %print-operation-run)
@@ -1399,7 +1399,7 @@ lambda (operation widget setup settings)    :run-last
 
 (defun print-operation-run (operation action parent)
  #+liber-documentation
- "@version{#2023-2-10}
+ "@version{#2024-11-20}
   @argument[operation]{a @class{gtk:print-operation} object}
   @argument[action]{a @symbol{gtk:print-operation-action} value with the action
     to start}
@@ -1455,13 +1455,13 @@ lambda (operation widget setup settings)    :run-last
   @see-class{gtk:print-operation}
   @see-symbol{gtk:print-operation-action}
   @see-function{gtk:print-operation-allow-async}"
-  (glib:with-g-error (err)
+  (glib:with-error (err)
     (%print-operation-run operation action parent err)))
 
 (export 'print-operation-run)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_operation_cancel ()
+;;; gtk_print_operation_cancel
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_operation_cancel" print-operation-cancel) :void
@@ -1480,7 +1480,7 @@ lambda (operation widget setup settings)    :run-last
 (export 'print-operation-cancel)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_operation_draw_page_finish ()
+;;; gtk_print_operation_draw_page_finish
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_operation_draw_page_finish"
@@ -1502,7 +1502,7 @@ lambda (operation widget setup settings)    :run-last
 (export 'print-operation-draw-page-finish)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_operation_set_defer_drawing ()
+;;; gtk_print_operation_set_defer_drawing
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_operation_set_defer_drawing"
@@ -1523,7 +1523,7 @@ lambda (operation widget setup settings)    :run-last
 (export 'print-operation-set-defer-drawing)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_operation_is_finished ()
+;;; gtk_print_operation_is_finished
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_operation_is_finished" print-operation-is-finished)
@@ -1548,7 +1548,7 @@ lambda (operation widget setup settings)    :run-last
 (export 'print-operation-is-finished)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_run_page_setup_dialog ()
+;;; gtk_print_run_page_setup_dialog
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_run_page_setup_dialog" print-run-page-setup-dialog)
@@ -1581,7 +1581,7 @@ lambda (operation widget setup settings)    :run-last
 (export 'print-run-page-setup-dialog)
 
 ;;; ----------------------------------------------------------------------------
-;;; GtkPageSetupDoneFunc ()
+;;; GtkPageSetupDoneFunc
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcallback page-setup-done-func :void
@@ -1610,7 +1610,7 @@ lambda (operation widget setup settings)    :run-last
 (export 'page-setup-done-func)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_run_page_setup_dialog_async ()
+;;; gtk_print_run_page_setup_dialog_async
 ;;; ----------------------------------------------------------------------------
 
 ;; TODO: Can we set func to be NIL and pass a NULL-POINTER for func!?
@@ -1653,7 +1653,7 @@ lambda (operation widget setup settings)    :run-last
 (export 'print-run-page-setup-dialog-async)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_operation_preview_end_preview ()
+;;; gtk_print_operation_preview_end_preview
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_operation_preview_end_preview"
@@ -1669,7 +1669,7 @@ lambda (operation widget setup settings)    :run-last
 (export 'print-operation-preview-end-preview)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_operation_preview_is_selected ()
+;;; gtk_print_operation_preview_is_selected
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_operation_preview_is_selected"
@@ -1690,7 +1690,7 @@ lambda (operation widget setup settings)    :run-last
 (export 'print-operation-preview-is-selected)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_operation_preview_render_page ()
+;;; gtk_print_operation_preview_render_page
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_operation_preview_render_page"

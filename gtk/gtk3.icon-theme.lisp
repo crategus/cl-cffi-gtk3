@@ -125,7 +125,7 @@
 (export 'icon-info)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkIconLookupFlags
+;;; GtkIconLookupFlags
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gflags "GtkIconLookupFlags" icon-lookup-flags
@@ -238,7 +238,7 @@
   @see-class{gtk:icon-theme}")
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkIconTheme
+;;; GtkIconTheme
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkIconTheme" icon-theme
@@ -325,7 +325,7 @@ lambda (theme)    :run-last
   @see-class{gtk:icon-info}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_theme_new ()
+;;; gtk_icon_theme_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline icon-theme-new))
@@ -349,7 +349,7 @@ lambda (theme)    :run-last
 (export 'icon-theme-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_theme_get_default ()
+;;; gtk_icon_theme_get_default
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_theme_get_default" icon-theme-default)
@@ -370,7 +370,7 @@ lambda (theme)    :run-last
 (export 'icon-theme-default)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_theme_get_for_screen () -> icon-theme-for-screen
+;;; gtk_icon_theme_get_for_screen
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_theme_get_for_screen" icon-theme-for-screen)
@@ -402,7 +402,7 @@ lambda (theme)    :run-last
 (export 'icon-theme-for-screen)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_theme_set_screen ()
+;;; gtk_icon_theme_set_screen
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_theme_set_screen" icon-theme-set-screen) :void
@@ -423,8 +423,8 @@ lambda (theme)    :run-last
 (export 'icon-theme-set-screen)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_theme_get_search_path ()
-;;; gtk_icon_theme_set_search_path ()
+;;; gtk_icon_theme_get_search_path
+;;; gtk_icon_theme_set_search_path
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf icon-theme-search-path) (path theme)
@@ -486,7 +486,7 @@ lambda (theme)    :run-last
 (export 'icon-theme-search-path)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_theme_append_search_path ()
+;;; gtk_icon_theme_append_search_path
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_theme_append_search_path"
@@ -507,7 +507,7 @@ lambda (theme)    :run-last
 (export 'icon-theme-append-search-path)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_theme_prepend_search_path ()
+;;; gtk_icon_theme_prepend_search_path
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_theme_prepend_search_path"
@@ -528,7 +528,7 @@ lambda (theme)    :run-last
 (export 'icon-theme-prepend-search-path)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_theme_add_resource_path ()
+;;; gtk_icon_theme_add_resource_path
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_theme_add_resource_path" icon-theme-add-resource-path)
@@ -556,7 +556,7 @@ lambda (theme)    :run-last
 (export 'icon-theme-add-resource-path)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_theme_set_custom_theme ()
+;;; gtk_icon_theme_set_custom_theme
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_theme_set_custom_theme" icon-theme-set-custom-theme)
@@ -582,7 +582,7 @@ lambda (theme)    :run-last
 (export 'icon-theme-set-custom-theme)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_theme_has_icon ()
+;;; gtk_icon_theme_has_icon
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_theme_has_icon" icon-theme-has-icon) :boolean
@@ -601,7 +601,7 @@ lambda (theme)    :run-last
 (export 'icon-theme-has-icon)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_theme_lookup_icon ()
+;;; gtk_icon_theme_lookup_icon
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_theme_lookup_icon" icon-theme-lookup-icon)
@@ -637,7 +637,7 @@ lambda (theme)    :run-last
 (export 'icon-theme-lookup-icon)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_theme_lookup_icon_for_scale ()
+;;; gtk_icon_theme_lookup_icon_for_scale
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_theme_lookup_icon_for_scale"
@@ -677,7 +677,7 @@ lambda (theme)    :run-last
 (export 'icon-theme-lookup-icon-for-scale)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_theme_choose_icon ()
+;;; gtk_icon_theme_choose_icon
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_theme_choose_icon" icon-theme-choose-icon)
@@ -716,7 +716,7 @@ lambda (theme)    :run-last
 (export 'icon-theme-choose-icon)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_theme_choose_icon_for_scale ()
+;;; gtk_icon_theme_choose_icon_for_scale
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_theme_choose_icon_for_scale"
@@ -758,7 +758,7 @@ lambda (theme)    :run-last
 (export 'icon-theme-choose-icon-for-scale)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_theme_lookup_by_gicon ()
+;;; gtk_icon_theme_lookup_by_gicon
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_theme_lookup_by_gicon" icon-theme-lookup-by-gicon)
@@ -793,7 +793,7 @@ lambda (theme)    :run-last
 (export 'icon-theme-lookup-by-gicon)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_theme_lookup_by_gicon_for_scale ()
+;;; gtk_icon_theme_lookup_by_gicon_for_scale
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_theme_lookup_by_gicon_for_scale"
@@ -831,7 +831,7 @@ lambda (theme)    :run-last
 (export 'icon-theme-lookup-by-gicon-for-scale)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_theme_load_icon ()
+;;; gtk_icon_theme_load_icon
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_theme_load_icon" %icon-theme-load-icon)
@@ -844,7 +844,7 @@ lambda (theme)    :run-last
 
 (defun icon-theme-load-icon (theme name size flags)
  #+liber-documentation
- "@version{2024-3-12}
+ "@version{2024-11-20}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @argument[name]{a string with the name of the icon to lookup}
   @argument[size]{an integer with the desired icon size, the resulting icon may
@@ -873,13 +873,13 @@ lambda (theme)    :run-last
   @see-function{gtk:icon-info-load-icon}
   @see-function{gtk:icon-theme-lookup-icon}
   @see-function{gdk-pixbuf:pixbuf-copy}"
-  (glib:with-ignore-g-error (err)
+  (glib:with-ignore-error (err)
     (%icon-theme-load-icon theme name size flags err)))
 
 (export 'icon-theme-load-icon)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_theme_load_icon_for_scale ()
+;;; gtk_icon_theme_load_icon_for_scale
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_theme_load_icon_for_scale"
@@ -893,7 +893,7 @@ lambda (theme)    :run-last
 
 (defun icon-theme-load-icon-for-scale (theme name size scale flags)
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2024-11-20}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @argument[name]{a string with the name of the icon to lookup}
   @argument[size]{an integer with the desired icon size}
@@ -924,13 +924,13 @@ lambda (theme)    :run-last
   @see-function{gtk:icon-info-load-icon}
   @see-function{gtk:icon-theme-lookup-icon}
   @see-function{gdk-pixbuf:pixbuf-copy}"
-  (glib:with-g-error (err)
+  (glib:with-error (err)
     (%icon-theme-load-icon-for-scale theme name size scale flags err)))
 
 (export 'icon-theme-load-icon-for-scale)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_theme_load_surface ()
+;;; gtk_icon_theme_load_surface
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_theme_load_surface" %icon-theme-load-surface)
@@ -945,7 +945,7 @@ lambda (theme)    :run-last
 
 (defun icon-theme-load-surface (theme name size scale window flags)
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2024-11-20}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @argument[name]{a string with the name of the icon to lookup}
   @argument[size]{an integer with the desired icon size}
@@ -971,13 +971,13 @@ lambda (theme)    :run-last
   @see-symbol{gtk:icon-lookup-flags}
   @see-function{gtk:icon-theme-lookup-icon}
   @see-function{gtk:icon-info-load-surface}"
-  (glib:with-g-error (err)
+  (glib:with-error (err)
     (%icon-theme-load-surface theme name size scale window flags err)))
 
 (export 'icon-theme-load-surface)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_theme_list_contexts ()
+;;; gtk_icon_theme_list_contexts
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_theme_list_contexts" icon-theme-list-contexts)
@@ -1007,7 +1007,7 @@ lambda (theme)    :run-last
 (export 'icon-theme-list-contexts)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_theme_list_icons ()
+;;; gtk_icon_theme_list_icons
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_theme_list_icons" %icon-theme-list-icons)
@@ -1036,7 +1036,7 @@ lambda (theme)    :run-last
 (export 'icon-theme-list-icons)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_theme_get_icon_sizes ()
+;;; gtk_icon_theme_get_icon_sizes
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_theme_get_icon_sizes" %icon-theme-icon-sizes) :pointer
@@ -1062,7 +1062,7 @@ lambda (theme)    :run-last
 (export 'icon-theme-icon-sizes)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_theme_get_example_icon_name ()
+;;; gtk_icon_theme_get_example_icon_name
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_theme_get_example_icon_name"
@@ -1081,7 +1081,7 @@ lambda (theme)    :run-last
 (export 'icon-theme-example-icon-name)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_theme_rescan_if_needed ()
+;;; gtk_icon_theme_rescan_if_needed
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_theme_rescan_if_needed" icon-theme-rescan-if-needed)
@@ -1101,7 +1101,7 @@ lambda (theme)    :run-last
 (export 'icon-theme-rescan-if-needed)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_theme_add_builtin_icon ()
+;;; gtk_icon_theme_add_builtin_icon
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_theme_add_builtin_icon" icon-theme-add-builtin-icon)
@@ -1183,7 +1183,7 @@ lambda (theme)    :run-last
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_info_new_for_pixbuf ()
+;;; gtk_icon_info_new_for_pixbuf
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_info_new_for_pixbuf" icon-info-new-for-pixbuf)
@@ -1207,7 +1207,7 @@ lambda (theme)    :run-last
 (export 'icon-info-new-for-pixbuf)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_info_get_base_size ()
+;;; gtk_icon_info_get_base_size
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_info_get_base_size" icon-info-base-size) :int
@@ -1239,7 +1239,7 @@ lambda (theme)    :run-last
 (export 'icon-info-base-size)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_info_get_base_scale ()
+;;; gtk_icon_info_get_base_scale
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_info_get_base_scale" icon-info-base-scale) :int
@@ -1268,7 +1268,7 @@ lambda (theme)    :run-last
 (export 'icon-info-base-scale)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_info_get_filename ()
+;;; gtk_icon_info_get_filename
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_info_get_filename" icon-info-filename) :string
@@ -1301,7 +1301,7 @@ lambda (theme)    :run-last
 (export 'icon-info-filename)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_info_get_builtin_pixbuf ()
+;;; gtk_icon_info_get_builtin_pixbuf
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_info_get_builtin_pixbuf" icon-info-builtin-pixbuf)
@@ -1330,7 +1330,7 @@ lambda (theme)    :run-last
 (export 'icon-info-builtin-pixbuf)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_info_load_icon ()
+;;; gtk_icon_info_load_icon
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_info_load_icon" %icon-info-load-icon)
@@ -1340,7 +1340,7 @@ lambda (theme)    :run-last
 
 (defun icon-info-load-icon (info)
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2024-11-20}
   @argument[info]{a @symbol{gtk:icon-info} instance}
   @return{The @class{gdk-pixbuf:pixbuf} object with the rendered icon.}
   @begin{short}
@@ -1362,13 +1362,13 @@ lambda (theme)    :run-last
   @see-class{gdk-pixbuf:pixbuf}
   @see-symbol{gtk:icon-lookup-flags}
   @see-function{gtk:icon-theme-lookup-icon}"
-  (glib:with-g-error (err)
+  (glib:with-error (err)
     (%icon-info-load-icon info err)))
 
 (export 'icon-info-load-icon)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_info_load_surface ()
+;;; gtk_icon_info_load_surface
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_info_load_surface" %icon-info-load-surface)
@@ -1379,10 +1379,10 @@ lambda (theme)    :run-last
 
 (defun icon-info-load-surface (info window)
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2024-11-20}
   @argument[info]{a @symbol{gtk:icon-info} instance}
   @argument[window]{a @class{gdk:window} object to optimize drawing for}
-  @return{A @symbol{cairo:surface-t} instance with the rendered icon.}
+  @return{The @symbol{cairo:surface-t} instance with the rendered icon.}
   @begin{short}
     Renders an icon previously looked up in an icon theme using the
     @fun{gtk:icon-theme-lookup-icon} function.
@@ -1402,7 +1402,7 @@ lambda (theme)    :run-last
   @see-symbol{cairo:surface-t}
   @see-symbol{gtk:icon-lookup-flags}
   @see-function{gtk:icon-theme-lookup-icon}"
-  (glib:with-g-error (err)
+  (glib:with-error (err)
     (%icon-info-load-surface info window err)))
 
 (export 'icon-info-load-surface)
@@ -1465,7 +1465,7 @@ lambda (theme)    :run-last
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_info_load_symbolic ()
+;;; gtk_icon_info_load_symbolic
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_info_load_symbolic" %icon-info-load-symbolic)
@@ -1480,13 +1480,13 @@ lambda (theme)    :run-last
 
 (defun icon-info-load-symbolic (info fg success warning error)
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2024-11-20}
   @argument[info]{a @symbol{gtk:icon-info} instance}
   @argument[fg]{a @class{gdk:rgba} foreground color}
   @argument[success]{a @class{gdk:rgba} success color}
   @argument[warning]{a @class{gdk:rgba} warning color}
   @argument[error]{a @class{gdk:rgba} error color}
-  @return{A @class{gdk-pixbuf:pixbuf} object representing the loaded icon.}
+  @return{The @class{gdk-pixbuf:pixbuf} object representing the loaded icon.}
   @begin{short}
     Loads an icon, modifying it to match the system colours for the foreground,
     success, warning and error colors provided.
@@ -1506,7 +1506,7 @@ lambda (theme)    :run-last
   @see-class{gdk-pixbuf:pixbuf}
   @see-function{gtk:icon-info-load-icon}
   @see-function{g-themed-icon-new-with-default-fallbacks}"
-  (glib:with-g-error (err)
+  (glib:with-error (err)
     (cffi:with-foreign-object (symbolic? :boolean)
       (%icon-info-load-symbolic info
                                 fg
@@ -1645,7 +1645,7 @@ lambda (theme)    :run-last
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_info_load_symbolic_for_context ()
+;;; gtk_icon_info_load_symbolic_for_context
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_info_load_symbolic_for_context"
@@ -1658,10 +1658,10 @@ lambda (theme)    :run-last
 
 (defun icon-info-load-symbolic-for-context (info context)
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2024-11-20}
   @argument[info]{a @symbol{gtk:icon-info} instance}
   @argument[context]{a @class{gtk:style-context} object}
-  @return{A @class{gdk-pixbuf:pixbuf} object representing the loaded icon.}
+  @return{The @class{gdk-pixbuf:pixbuf} object representing the loaded icon.}
   @begin{short}
     Loads an icon, modifying it to match the system colors for the foreground,
     success, warning and error colors provided.
@@ -1679,7 +1679,7 @@ lambda (theme)    :run-last
   @see-class{gdk-pixbuf:pixbuf}
   @see-function{gtk:icon-info-load-icon}
   @see-function{gtk:icon-info-load-symbolic}"
-  (glib:with-g-error (err)
+  (glib:with-error (err)
     (cffi:with-foreign-object (symbolic? :boolean)
       (%icon-info-load-symbolic-for-context info context symbolic? err))))
 
@@ -1884,7 +1884,7 @@ lambda (theme)    :run-last
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_info_is_symbolic ()
+;;; gtk_icon_info_is_symbolic
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_info_is_symbolic" icon-info-is-symbolic) :boolean

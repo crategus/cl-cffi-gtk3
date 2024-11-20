@@ -37,8 +37,6 @@
 ;;;     GtkRecentChooserError
 ;;;     GtkRecentSortType
 ;;;
-;;;     GTK_RECENT_CHOOSER_ERROR
-;;;
 ;;; Functions
 ;;;
 ;;;     gtk_recent_chooser_set_show_private
@@ -99,16 +97,6 @@
 ;;; ----------------------------------------------------------------------------
 
 (in-package :gtk)
-
-;;; ----------------------------------------------------------------------------
-;;; GTK_RECENT_CHOOSER_ERROR
-;;;
-;;; #define GTK_RECENT_CHOOSER_ERROR (gtk_recent_chooser_error_quark ())
-;;;
-;;; Used to get the GError quark for GtkRecentChooser errors.
-;;;
-;;; Since 2.10
-;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
 ;;; GtkRecentChooserError
@@ -579,7 +567,7 @@ lambda (chooser)    :run-last
   @see-symbol{gtk:recent-sort-type}")
 
 ;;; ----------------------------------------------------------------------------
-;;; GtkRecentSortFunc ()
+;;; GtkRecentSortFunc
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcallback recent-sort-func :int
@@ -614,7 +602,7 @@ lambda (chooser)    :run-last
 (export 'recent-sort-func)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_recent_chooser_set_sort_func ()
+;;; gtk_recent_chooser_set_sort_func
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_recent_chooser_set_sort_func" %recent-chooser-set-sort-func)
@@ -651,8 +639,8 @@ lambda (chooser)    :run-last
 (export 'recent-chooser-set-sort-func)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_recent_chooser_get_current_uri ()
-;;; gtk_recent_chooser_set_current_uri ()
+;;; gtk_recent_chooser_get_current_uri
+;;; gtk_recent_chooser_set_current_uri
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_recent_chooser_set_current_uri"
@@ -662,30 +650,30 @@ lambda (chooser)    :run-last
   (err :pointer))
 
 (defun (setf recent-chooser-current-uri) (uri chooser)
-  (glib:with-g-error (err)
+  (glib:with-error (err)
     (%recent-chooser-set-current-uri chooser uri err)))
 
 (cffi:defcfun ("gtk_recent_chooser_get_current_uri" recent-chooser-current-uri)
     :string
  #+liber-documentation
- "@version{#2023-3-24}
+ "@version{#2024-11-20}
   @syntax{(gtk:recent-chooser-current-uri chooser) => uri}
   @syntax{(setf (gtk:recent-chooser-current-uri chooser) uri)}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
   @argument[uri]{a string with the URI}
   @begin{short}
-    Accessor of the URI currently selected by @arg{chooser}.
+    The @fun{gtk:recent-chooser-current-uri} function gets the URI currently
+    selected by @arg{chooser}.
   @end{short}
-  The @fun{gtk:recent-chooser-current-uri} function gets the URI currently
-  selected by @arg{chooser}. The @setf{gtk:recent-chooser-current-uri} function
-  sets @arg{uri} as the current URI for @arg{chooser}.
+  The @setf{gtk:recent-chooser-current-uri} function sets @arg{uri} as the
+  current URI for @arg{chooser}.
   @see-class{gtk:recent-chooser}"
   (chooser (g:object recent-chooser)))
 
 (export 'recent-chooser-current-uri)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_recent_chooser_get_current_item ()
+;;; gtk_recent_chooser_get_current_item
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_recent_chooser_get_current_item"
@@ -707,7 +695,7 @@ lambda (chooser)    :run-last
 (export 'recent-chooser-current-item)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_recent_chooser_select_uri ()
+;;; gtk_recent_chooser_select_uri
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_recent_chooser_select_uri" %recent-chooser-select-uri)
@@ -718,20 +706,20 @@ lambda (chooser)    :run-last
 
 (defun recent-chooser-select-uri (chooser uri)
  #+liber-documentation
- "@version{#2023-3-24}
+ "@version{#2024-11-20}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
   @argument[uri]{a string with the URI}
   @return{@em{True} if @arg{uri} was found.}
   @short{Selects @arg{uri} inside @arg{chooser}.}
   @see-class{gtk:recent-chooser}
   @see-function{gtk:recent-chooser-unselect-uri}"
-  (glib:with-g-error (err)
+  (glib:with-error (err)
     (%recent-chooser-select-uri chooser uri err)))
 
 (export 'recent-chooser-select-uri)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_recent_chooser_unselect_uri ()
+;;; gtk_recent_chooser_unselect_uri
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_recent_chooser_unselect_uri" recent-chooser-unselect-uri)
@@ -749,7 +737,7 @@ lambda (chooser)    :run-last
 (export 'recent-chooser-unselect-uri)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_recent_chooser_select_all ()
+;;; gtk_recent_chooser_select_all
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_recent_chooser_select_all" recent-chooser-select-all) :void
@@ -767,7 +755,7 @@ lambda (chooser)    :run-last
 (export 'recent-chooser-select-all)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_recent_chooser_unselect_all ()
+;;; gtk_recent_chooser_unselect_all
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_recent_chooser_unselect_all" recent-chooser-unselect-all)
@@ -783,7 +771,7 @@ lambda (chooser)    :run-last
 (export 'recent-chooser-unselect-all)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_recent_chooser_get_items () -> recent-chooser-items
+;;; gtk_recent_chooser_get_items
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_recent_chooser_get_items" recent-chooser-items)
@@ -809,7 +797,7 @@ lambda (chooser)    :run-last
 (export 'recent-chooser-items)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_recent_chooser_get_uris ()
+;;; gtk_recent_chooser_get_uris
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_recent_chooser_get_uris" %recent-chooser-uris) g:strv-t
@@ -835,7 +823,7 @@ lambda (chooser)    :run-last
 (export 'recent-chooser-uris)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_recent_chooser_add_filter ()
+;;; gtk_recent_chooser_add_filter
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_recent_chooser_add_filter" recent-chooser-add-filter) :void
@@ -859,7 +847,7 @@ lambda (chooser)    :run-last
 (export 'recent-chooser-add-filter)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_recent_chooser_remove_filter ()
+;;; gtk_recent_chooser_remove_filter
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_recent_chooser_remove_filter" recent-chooser-remove-filter)
@@ -881,7 +869,7 @@ lambda (chooser)    :run-last
 (export 'recent-chooser-remove-filter)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_recent_chooser_list_filters ()
+;;; gtk_recent_chooser_list_filters
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_recent_chooser_list_filters" recent-chooser-list-filters)

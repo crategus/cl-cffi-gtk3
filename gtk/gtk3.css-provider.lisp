@@ -38,8 +38,6 @@
 ;;;     GtkCssSection
 ;;;     GtkCssSectionType
 ;;;
-;;;     GTK_CSS_PROVIDER_ERROR
-;;;
 ;;; Functions
 ;;;
 ;;;     gtk_css_provider_get_default
@@ -82,7 +80,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkCssProvider
+;;; GtkCssProvider
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkCssProvider" css-provider
@@ -153,7 +151,7 @@ lambda (provider section error)    :run-last
   @see-class{gtk:css-section}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_css_provider_get_default () -> css-provider-default
+;;; gtk_css_provider_get_default
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_css_provider_get_default" css-provider-default)
@@ -176,7 +174,7 @@ lambda (provider section error)    :run-last
 (export 'css-provider-default)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_css_provider_get_named () -> css-provider-named
+;;; gtk_css_provider_get_named
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_css_provider_get_named" %css-provider-named)
@@ -201,19 +199,19 @@ lambda (provider section error)    :run-last
 (export 'css-provider-named)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_css_provider_load_from_data ()
+;;; gtk_css_provider_load_from_data
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_css_provider_load_from_data" %css-provider-load-from-data)
     :boolean
   (provider (g:object css-provider))
   (data :string)
-  (length :long)
+  (len :long)
   (err :pointer))
 
 (defun css-provider-load-from-data (provider data)
  #+liber-documentation
- "@version{2023-12-30}
+ "@version{2024-11-20}
   @argument[provider]{a @class{gtk:css-provider} object}
   @argument[data]{a string with the CSS data}
   @begin{return}
@@ -227,13 +225,13 @@ lambda (provider section error)    :run-last
   To track errors while loading CSS, connect to the @code{\"parsing-error\"}
   signal of the @class{gtk:css-provider} object.
   @see-class{gtk:css-provider}"
-  (glib:with-ignore-g-error (err)
+  (glib:with-ignore-error (err)
     (%css-provider-load-from-data provider data -1 err)))
 
 (export 'css-provider-load-from-data)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_css_provider_load_from_file ()
+;;; gtk_css_provider_load_from_file
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_css_provider_load_from_file" %css-provider-load-from-file)
@@ -244,7 +242,7 @@ lambda (provider section error)    :run-last
 
 (defun css-provider-load-from-file (provider file)
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2024-11-20}
   @argument[provider]{a @class{gtk:css-provider} object}
   @argument[file]{a @class{g:file} object pointing to a file to load}
   @return{@em{True}. The return value is deprecated and @em{false} will only
@@ -257,13 +255,13 @@ lambda (provider section error)    :run-last
   signal of the @class{gtk:css-provider} object.
   @see-class{gtk:css-provider}
   @see-class{g:file}"
-  (glib:with-g-error (err)
+  (glib:with-error (err)
     (%css-provider-load-from-file provider file err)))
 
 (export 'css-provider-load-from-file)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_css_provider_load_from_path ()
+;;; gtk_css_provider_load_from_path
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_css_provider_load_from_path" %css-provider-load-from-path)
@@ -274,7 +272,7 @@ lambda (provider section error)    :run-last
 
 (defun css-provider-load-from-path (provider path)
  #+liber-documentation
- "@version{2023-3-17}
+ "@version{2024-11-20}
   @argument[provider]{a @class{gtk:css-provider} object}
   @argument[path]{a pathname or namestring with the path of a filename to load,
     in the GLib filename encoding}
@@ -289,13 +287,13 @@ lambda (provider section error)    :run-last
   To track errors while loading CSS, connect to the @code{\"parsing-error\"}
   signal of the @class{gtk:css-provider} object.
   @see-class{gtk:css-provider}"
-  (glib:with-g-error (err)
+  (glib:with-error (err)
     (%css-provider-load-from-path provider (namestring path) err)))
 
 (export 'css-provider-load-from-path)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_css_provider_load_from_resource ()
+;;; gtk_css_provider_load_from_resource
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_css_provider_load_from_resource"
@@ -318,7 +316,7 @@ lambda (provider section error)    :run-last
 (export 'css-provider-load-from-resource)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_css_provider_new ()
+;;; gtk_css_provider_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline css-provider-new))
@@ -334,7 +332,7 @@ lambda (provider section error)    :run-last
 (export 'css-provider-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_css_provider_to_string ()
+;;; gtk_css_provider_to_string
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_css_provider_to_string" css-provider-to-string) :string
@@ -355,12 +353,6 @@ lambda (provider section error)    :run-last
   (provider (g:object css-provider)))
 
 (export 'css-provider-to-string)
-
-;;; ----------------------------------------------------------------------------
-;;; GTK_CSS_PROVIDER_ERROR
-;;;
-;;; #define GTK_CSS_PROVIDER_ERROR (gtk_css_provider_error_quark ())
-;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
 ;;; enum GtkCssProviderError
@@ -482,7 +474,7 @@ lambda (provider section error)    :run-last
   @see-function{gtk:css-section-parent}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_css_section_get_end_line () -> css-section-end-line
+;;; gtk_css_section_get_end_line
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_css_section_get_end_line" css-section-end-line) :uint
@@ -506,7 +498,7 @@ lambda (provider section error)    :run-last
 (export 'css-section-end-line)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_css_section_get_end_position () -> css-section-end-position
+;;; gtk_css_section_get_end_position
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_css_section_get_end_position" css-section-end-position)
@@ -533,7 +525,7 @@ lambda (provider section error)    :run-last
 (export 'css-section-end-position)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_css_section_get_file () -> css-section-file
+;;; gtk_css_section_get_file
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_css_provider_get_file" css-section-file) (g:object g:file)
@@ -556,7 +548,7 @@ lambda (provider section error)    :run-last
 (export 'css-section-file)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_css_section_get_parent () -> css-section-parent
+;;; gtk_css_section_get_parent
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_css_section_get_parent" css-section-parent)
@@ -581,7 +573,7 @@ lambda (provider section error)    :run-last
 (export 'css-section-parent)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_css_section_get_section_type () -> css-section-section-type
+;;; gtk_css_section_get_section_type
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_css_section_get_section_type" css-section-section-type)
@@ -600,7 +592,7 @@ lambda (provider section error)    :run-last
 (export 'css-section-section-type)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_css_section_get_start_line () -> css-section-start-line
+;;; gtk_css_section_get_start_line
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_css_section_get_start_line" css-section-start-line) :uint
@@ -619,7 +611,7 @@ lambda (provider section error)    :run-last
 (export 'css-section-start-line)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_css_section_get_start_position () -> css-section-start-position
+;;; gtk_css_section_get_start_position
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_css_section_get_start_position" css-section-start-position)

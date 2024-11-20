@@ -212,7 +212,7 @@
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paper_size_new ()
+;;; gtk_paper_size_new
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paper_size_new" %paper-size-new) (g:boxed paper-size :return)
@@ -236,7 +236,7 @@
 (export 'paper-size-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paper_size_new_from_ppd ()
+;;; gtk_paper_size_new_from_ppd
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paper_size_new_from_ppd" %paper-size-new-from-ppd)
@@ -275,7 +275,7 @@
 (export 'paper-size-new-from-ppd)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paper_size_new_from_ipp ()
+;;; gtk_paper_size_new_from_ipp
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paper_size_new_from_ipp" %paper-size-new-from-ipp)
@@ -308,7 +308,7 @@
 (export 'paper-size-new-from-ipp)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paper_size_new_custom ()
+;;; gtk_paper_size_new_custom
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paper_size_new_custom" %paper-size-new-custom)
@@ -345,7 +345,7 @@
 (export 'paper-size-new-custom)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paper_size_copy ()
+;;; gtk_paper_size_copy
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paper_size_copy" paper-size-copy)
@@ -363,7 +363,7 @@
 (export 'paper-size-copy)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paper_size_free ()                                 not exported
+;;; gtk_paper_size_free                                     not exported
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paper_size_free" %paper-size-free) :void
@@ -377,7 +377,7 @@
   (size (g:boxed paper-size)))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paper_size_is_equal ()
+;;; gtk_paper_size_is_equal
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paper_size_is_equal" paper-size-is-equal) :boolean
@@ -398,7 +398,7 @@
 (export 'paper-size-is-equal)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paper_size_get_paper_sizes ()
+;;; gtk_paper_size_get_paper_sizes
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paper_size_get_paper_sizes" paper-size-paper-sizes)
@@ -419,7 +419,7 @@
 (export 'paper-size-paper-sizes)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paper_size_get_name ()
+;;; gtk_paper_size_get_name
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paper_size_get_name" paper-size-name) :string
@@ -436,7 +436,7 @@
 (export 'paper-size-name)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paper_size_get_display_name ()
+;;; gtk_paper_size_get_display_name
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paper_size_get_display_name" paper-size-display-name)
@@ -454,7 +454,7 @@
 (export 'paper-size-display-name)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paper_size_get_ppd_name ()
+;;; gtk_paper_size_get_ppd_name
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paper_size_get_ppd_name" paper-size-ppd-name) :string
@@ -471,7 +471,7 @@
 (export 'paper-size-ppd-name)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paper_size_get_width ()
+;;; gtk_paper_size_get_width
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paper_size_get_width" paper-size-width) :double
@@ -493,7 +493,7 @@
 (export 'paper-size-width)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paper_size_get_height ()
+;;; gtk_paper_size_get_height
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paper_size_get_height" paper-size-height) :double
@@ -515,7 +515,7 @@
 (export 'paper-size-height)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paper_size_is_ipp ()
+;;; gtk_paper_size_is_ipp
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paper_size_is_ipp" paper-size-is-ipp) :boolean
@@ -532,7 +532,7 @@
 (export 'paper-size-is-ipp)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paper_size_is_custom ()
+;;; gtk_paper_size_is_custom
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paper_size_is_custom" paper-size-is-custom) :boolean
@@ -547,7 +547,7 @@
 (export 'paper-size-is-custom)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paper_size_set_size ()
+;;; gtk_paper_size_set_size
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paper_size_set_size" %paper-size-set-size) :void
@@ -578,7 +578,7 @@
 (export 'paper-size-set-size)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paper_size_get_default_top_margin ()
+;;; gtk_paper_size_get_default_top_margin
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paper_size_get_default_top_margin"
@@ -601,7 +601,7 @@
 (export 'paper-size-default-top-margin)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paper_size_get_default_bottom_margin ()
+;;; gtk_paper_size_get_default_bottom_margin
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paper_size_get_default_bottom_margin"
@@ -624,7 +624,7 @@
 (export 'paper-size-default-bottom-margin)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paper_size_get_default_left_margin ()
+;;; gtk_paper_size_get_default_left_margin
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paper_size_get_default_left_margin"
@@ -647,7 +647,7 @@
 (export 'paper-size-default-left-margin)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paper_size_get_default_right_margin ()
+;;; gtk_paper_size_get_default_right_margin
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paper_size_get_default_right_margin"
@@ -670,7 +670,7 @@
 (export 'paper-size-default-right-margin)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paper_size_get_default ()
+;;; gtk_paper_size_get_default
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paper_size_get_default" paper-size-default) :string
@@ -693,10 +693,10 @@
 (export 'paper-size-default)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paper_size_new_from_key_file ()
+;;; gtk_paper_size_new_from_key_file
 ;;; ----------------------------------------------------------------------------
 
-;; TODO: Consider to change the error handling: use with-ignore-g-error?
+;; TODO: Consider to change the error handling: use with-ignore-error?
 
 (cffi:defcfun ("gtk_paper_size_new_from_key_file" %paper-size-new-from-key-file)
     (g:boxed paper-size :return)
@@ -704,30 +704,29 @@
   (groupname :string)
   (err :pointer))
 
-(defun paper-size-new-from-key-file (keyfile groupname)
+(defun paper-size-new-from-key-file (keyfile group)
  #+liber-documentation
- "@version{2023-1-31}
+ "@version{2024-11-20}
   @argument[keyfile]{the @type{g:key-file} instance to retrieve the paper size
     from}
-  @argument[groupname]{a string with the name of the group in the key file to
-    read, or @code{nil} to read the first group}
+  @argument[group]{a string with the name of the group in the key file to read,
+    or @code{nil} to read the first group}
   @begin{return}
-    A new @class{gtk:paper-size} instance with the restored paper size, or
+    The new @class{gtk:paper-size} instance with the restored paper size, or
     @code{nil} if an error occurred.
   @end{return}
   @begin{short}
-    Reads a paper size from the group @arg{groupname} in the key file
-    @arg{keyfile}.
+    Reads a paper size from the group @arg{group} in the key file @arg{keyfile}.
   @end{short}
   @see-class{gtk:paper-size}
   @see-type{g:key-file}"
-  (glib:with-g-error (err)
-    (%paper-size-new-from-key-file keyfile groupname err)))
+  (glib:with-error (err)
+    (%paper-size-new-from-key-file keyfile group err)))
 
 (export 'paper-size-new-from-key-file)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paper_size_new_from_gvariant ()
+;;; gtk_paper_size_new_from_gvariant
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paper_size_new_from_gvariant" paper-size-new-from-gvariant)
@@ -748,7 +747,7 @@
 (export 'paper-size-new-from-gvariant)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paper_size_to_key_file ()
+;;; gtk_paper_size_to_key_file
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paper_size_to_key_file" paper-size-to-key-file) :void
@@ -770,7 +769,7 @@
 (export 'paper-size-to-key-file)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paper_size_to_gvariant ()
+;;; gtk_paper_size_to_gvariant
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paper_size_to_gvariant" paper-size-to-gvariant)

@@ -125,7 +125,7 @@
   @see-class{gtk:print-settings}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_page_setup_new ()
+;;; gtk_page_setup_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline page-setup-new))
@@ -141,7 +141,7 @@
 (export 'page-setup-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_page_setup_copy ()
+;;; gtk_page_setup_copy
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_page_setup_copy" page-setup-copy) (g:object page-setup)
@@ -156,8 +156,8 @@
 (export 'page-setup-copy)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_page_setup_get_orientation ()
-;;; gtk_page_setup_set_orientation ()
+;;; gtk_page_setup_get_orientation
+;;; gtk_page_setup_set_orientation
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf page-setup-orientation) (orientation setup)
@@ -198,8 +198,8 @@
 (export 'page-setup-orientation)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_page_setup_get_paper_size ()
-;;; gtk_page_setup_set_paper_size ()
+;;; gtk_page_setup_get_paper_size
+;;; gtk_page_setup_set_paper_size
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf page-setup-paper-size) (size setup)
@@ -232,8 +232,8 @@
 (export 'page-setup-paper-size)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_page_setup_get_top_margin ()
-;;; gtk_page_setup_set_top_margin ()
+;;; gtk_page_setup_get_top_margin
+;;; gtk_page_setup_set_top_margin
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf page-setup-top-margin) (margin setup unit)
@@ -266,8 +266,8 @@
 (export 'page-setup-top-margin)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_page_setup_get_bottom_margin ()
-;;; gtk_page_setup_set_bottom_margin ()
+;;; gtk_page_setup_get_bottom_margin
+;;; gtk_page_setup_set_bottom_margin
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf page-setup-bottom-margin) (margin setup unit)
@@ -302,8 +302,8 @@
 (export 'page-setup-bottom-margin)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_page_setup_get_left_margin ()
-;;; gtk_page_setup_set_left_margin ()
+;;; gtk_page_setup_get_left_margin
+;;; gtk_page_setup_set_left_margin
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf page-setup-left-margin) (margin setup unit)
@@ -336,8 +336,8 @@
 (export 'page-setup-left-margin)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_page_setup_get_right_margin ()
-;;; gtk_page_setup_set_right_margin ()
+;;; gtk_page_setup_get_right_margin
+;;; gtk_page_setup_set_right_margin
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf page-setup-right-margin) (margin setup unit)
@@ -371,7 +371,7 @@
 (export 'page-setup-right-margin)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_page_setup_set_paper_size_and_default_margins ()
+;;; gtk_page_setup_set_paper_size_and_default_margins
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_page_setup_set_paper_size_and_default_margins"
@@ -392,7 +392,7 @@
 (export 'page-setup-set-paper-size-and-default-margins)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_page_setup_get_paper_width () -> page-setup-paper-width
+;;; gtk_page_setup_get_paper_width
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_page_setup_get_paper_width" page-setup-paper-width) :double
@@ -413,7 +413,7 @@
 (export 'page-setup-paper-width)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_page_setup_get_paper_height () -> page-setup-paper-height
+;;; gtk_page_setup_get_paper_height
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_page_setup_get_paper_height" page-setup-paper-height)
@@ -435,7 +435,7 @@
 (export 'page-setup-paper-height)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_page_setup_get_page_width ()
+;;; gtk_page_setup_get_page_width
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_page_setup_get_page_width" page-setup-page-width) :double
@@ -456,7 +456,7 @@
 (export 'page-setup-page-width)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_page_setup_get_page_height ()
+;;; gtk_page_setup_get_page_height
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_page_setup_get_page_height" page-setup-page-height) :double
@@ -477,7 +477,7 @@
 (export 'page-setup-page-height)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_page_setup_new_from_file ()
+;;; gtk_page_setup_new_from_file
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_page_setup_new_from_file" %page-setup-new-from-file)
@@ -487,7 +487,7 @@
 
 (defun page-setup-new-from-file (path)
  #+liber-documentation
- "@version{2023-3-21}
+ "@version{2024-11-20}
   @argument[path]{a pathname or namestring with the file to read the page setup
     from}
   @return{The restored @class{gtk:page-setup} object.}
@@ -499,13 +499,13 @@
   function.
   @see-class{gtk:page-setup}
   @see-function{gtk:page-setup-to-file}"
-  (glib:with-ignore-g-error (err)
+  (glib:with-ignore-error (err)
     (%page-setup-new-from-file (namestring path) err)))
 
 (export 'page-setup-new-from-file)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_page_setup_new_from_key_file ()
+;;; gtk_page_setup_new_from_key_file
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_page_setup_new_from_key_file" %page-setup-new-from-key-file)
@@ -514,28 +514,28 @@
   (groupname :string)
   (err :pointer))
 
-(defun page-setup-new-from-key-file (keyfile groupname)
+(defun page-setup-new-from-key-file (keyfile group)
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2024-11-20}
   @argument[keyfile]{a @type{g:key-file} instance to retrieve the page setup
     from}
-  @argument[groupname]{a string with the name of the group in the key file to
-    read, or @code{nil} to use the default name \"Page Setup\"}
+  @argument[group]{a string with the name of the group in the key file to read,
+    or @code{nil} to use the default name \"Page Setup\"}
   @return{The restored @class{gtk:page-setup} object.}
   @begin{short}
-    Reads the page setup from the group @arg{groupname} in the key file.
+    Reads the page setup from the group @arg{group} in the key file.
   @end{short}
   Returns a new @class{gtk:page-setup} object with the restored page setup, or
   @code{nil} if an error occurred.
   @see-class{gtk:page-setup}
   @see-type{g:key-file}"
-  (glib:with-ignore-g-error (err)
-    (%page-setup-new-from-key-file keyfile groupname err)))
+  (glib:with-ignore-error (err)
+    (%page-setup-new-from-key-file keyfile group err)))
 
 (export 'page-setup-new-from-key-file)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_page_setup_new_from_gvariant ()
+;;; gtk_page_setup_new_from_gvariant
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_page_setup_new_from_gvariant" page-setup-new-from-gvariant)
@@ -556,17 +556,17 @@
 (export 'page-setup-new-from-gvariant)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_page_setup_load_file ()
+;;; gtk_page_setup_load_file
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_page_setup_load_file" %page-setup-load-file) :boolean
-  (page-setup (g:object page-setup))
+  (setup (g:object page-setup))
   (filename :string)
   (err :pointer))
 
 (defun page-setup-load-file (setup path)
  #+liber-documentation
- "@version{2023-3-21}
+ "@version{2024-11-20}
   @argument[setup]{a @class{gtk:page-setup} object}
   @argument[path]{a pathname or namestring with the file to read the page setup
     from}
@@ -577,43 +577,43 @@
   See the @fun{gtk:page-setup-to-file} function.
   @see-class{gtk:page-setup}
   @see-function{gtk:page-setup-to-file}"
-  (glib:with-ignore-g-error (err)
+  (glib:with-ignore-error (err)
     (%page-setup-load-file setup (namestring path) err)))
 
 (export 'page-setup-load-file)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_page_setup_load_key_file ()
+;;; gtk_page_setup_load_key_file
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_page_setup_load_key_file" %page-setup-load-key-file)
     :boolean
   (setup (g:object page-setup))
   (keyfile (:pointer (:struct g:key-file)))
-  (groupname :string)
+  (group :string)
   (err :pointer))
 
-(defun page-setup-load-key-file (setup keyfile groupname)
+(defun page-setup-load-key-file (setup keyfile group)
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2024-11-20}
   @argument[setup]{a @class{gtk:page-setup} object}
   @argument[keyfile]{a @type{g:key-file} instance to retrieve the page
     setup from}
-  @argument[groupname]{a string with the name of the group in the key file to
-    read, or @code{nil} to use the default name \"Page Setup\"}
+  @argument[group]{a string with the name of the group in the key file to read,
+    or @code{nil} to use the default name \"Page Setup\"}
   @return{@em{True} on sucess.}
   @begin{short}
     Reads the page setup from the group @arg{groupname} in the key file.
   @end{short}
   @see-class{gtk:page-setup}
   @see-type{g:key-file}"
-  (glib:with-ignore-g-error (err)
-    (%page-setup-load-key-file setup keyfile groupname err)))
+  (glib:with-ignore-error (err)
+    (%page-setup-load-key-file setup keyfile group err)))
 
 (export 'page-setup-load-key-file)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_page_setup_to_file ()
+;;; gtk_page_setup_to_file
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_page_setup_to_file" %page-setup-to-file) :boolean
@@ -623,7 +623,7 @@
 
 (defun page-setup-to-file (setup path)
  #+liber-documentation
- "@version{2023-3-21}
+ "@version{2024-11-20}
   @argument[setup]{a @class{gtk:page-setup} object}
   @argument[path]{a pathname or namestring with the file to save to}
   @return{@em{True} on sucess.}
@@ -631,13 +631,13 @@
     The function saves the information from the page setup to a file.
   @end{short}
   @see-class{gtk:page-setup}"
-  (glib:with-ignore-g-error (err)
+  (glib:with-ignore-error (err)
     (%page-setup-to-file setup (namestring path) err)))
 
 (export 'page-setup-to-file)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_page_setup_to_key_file ()
+;;; gtk_page_setup_to_key_file
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_page_setup_to_key_file" %page-setup-to-key-file) :void
@@ -664,7 +664,7 @@
 (export 'page-setup-to-key-file)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_page_setup_to_gvariant ()
+;;; gtk_page_setup_to_gvariant
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_page_setup_to_gvariant" page-setup-to-gvariant)

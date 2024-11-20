@@ -253,7 +253,7 @@
       ,@body)))
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkUIManagerItemType
+;;; GtkUIManagerItemType
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gflags "GtkUIManagerItemType" ui-manager-item-type
@@ -320,7 +320,7 @@
   @see-function{gtk:ui-manager-add-ui}")
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkUIManager
+;;; GtkUIManager
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkUIManager" ui-manager
@@ -535,7 +535,7 @@ lambda (manager action)    :no-recurse
   @see-class{gtk:ui-manager}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_ui_manager_new ()
+;;; gtk_ui_manager_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline ui-manager-new))
@@ -555,7 +555,7 @@ lambda (manager action)    :no-recurse
 (export 'ui-manager-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_ui_manager_insert_action_group ()
+;;; gtk_ui_manager_insert_action_group
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_ui_manager_insert_action_group"
@@ -587,7 +587,7 @@ lambda (manager action)    :no-recurse
 (export 'ui-manager-insert-action-group)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_ui_manager_remove_action_group ()
+;;; gtk_ui_manager_remove_action_group
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_ui_manager_remove_action_group"
@@ -612,7 +612,7 @@ lambda (manager action)    :no-recurse
 (export 'ui-manager-remove-action-group)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_ui_manager_get_action_groups ()
+;;; gtk_ui_manager_get_action_groups
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_ui_manager_get_action_groups" ui-manager-action-groups)
@@ -633,7 +633,7 @@ lambda (manager action)    :no-recurse
 (export 'ui-manager-action-groups)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_ui_manager_get_accel_group ()
+;;; gtk_ui_manager_get_accel_group
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_ui_manager_get_accel_group" ui-manager-accel-group)
@@ -656,7 +656,7 @@ lambda (manager action)    :no-recurse
 (export 'ui-manager-accel-group)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_ui_manager_get_widget ()
+;;; gtk_ui_manager_get_widget
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_ui_manager_get_widget" ui-manager-widget) (g:object widget)
@@ -696,7 +696,7 @@ lambda (manager action)    :no-recurse
 (export 'ui-manager-widget)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_ui_manager_get_toplevels ()
+;;; gtk_ui_manager_get_toplevels
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_ui_manager_get_toplevels" ui-manager-toplevels)
@@ -725,7 +725,7 @@ lambda (manager action)    :no-recurse
 (export 'ui-manager-toplevels)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_ui_manager_get_action ()
+;;; gtk_ui_manager_get_action
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_ui_manager_get_action" ui-manager-action) g:object
@@ -755,7 +755,7 @@ lambda (manager action)    :no-recurse
 (export 'ui-manager-action)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_ui_manager_add_ui_from_resource ()
+;;; gtk_ui_manager_add_ui_from_resource
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_ui_manager_add_ui_from_resource"
@@ -766,11 +766,11 @@ lambda (manager action)    :no-recurse
 
 (defun ui-manager-add-ui-from-resource (manager path)
  #+liber-documentation
- "@version{#2023-3-29}
+ "@version{#2024-11-20}
   @argument[manager]{a @class{gtk:ui-manager} object}
   @argument[path]{a string with the resource path of the file to parse}
   @begin{return}
-    An unsigned integer with the merge ID for the merged UI. The merge ID can
+    The unsigned integer with the merge ID for the merged UI. The merge ID can
     be used to unmerge the UI with the @fun{gtk:ui-manager-remove-ui} function.
     If an error occurred, the return value is 0.
   @end{return}
@@ -786,13 +786,13 @@ lambda (manager action)    :no-recurse
   @see-function{gtk:ui-manager-remove-ui}
   @see-function{gtk:ui-manager-add-ui-from-file}
   @see-function{gtk:ui-manager-add-ui-from-string}"
-  (glib:with-g-error (err)
+  (glib:with-error (err)
     (%ui-manager-add-ui-from-resource manager path err)))
 
 (export 'ui-manager-add-ui-from-resource)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_ui_manager_add_ui_from_string ()
+;;; gtk_ui_manager_add_ui_from_string
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_ui_manager_add_ui_from_string"
@@ -804,11 +804,11 @@ lambda (manager action)    :no-recurse
 
 (defun ui-manager-add-ui-from-string (manager buffer)
  #+liber-documentation
- "@version{#2023-3-29}
+ "@version{#2024-11-20}
   @argument[manager]{a @class{gtk:ui-manager} object}
   @argument[buffer]{the string to parse}
   @begin{return}
-    An unsigned integer with the merge ID for the merged UI. The merge ID can
+    The unsigned integer with the merge ID for the merged UI. The merge ID can
     be used to unmerge the UI with the @fun{gtk:ui-manager-remove-ui} function.
     If an error occurred, the return value is 0.
   @end{return}
@@ -823,13 +823,13 @@ lambda (manager action)    :no-recurse
   @end{dictionary}
   @see-class{gtk:ui-manager}
   @see-function{gtk:ui-manager-remove-ui}"
-  (glib:with-g-error (err)
+  (glib:with-error (err)
     (%ui-manager-add-ui-from-string manager buffer -1 err)))
 
 (export 'ui-manager-add-ui-from-string)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_ui_manager_add_ui_from_file ()
+;;; gtk_ui_manager_add_ui_from_file
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_ui_manager_add_ui_from_file"
@@ -840,11 +840,11 @@ lambda (manager action)    :no-recurse
 
 (defun ui-manager-add-ui-from-file (manager filename)
  #+liber-documentation
- "@version{#2023-3-29}
+ "@version{#2024-11-20}
   @argument[manager]{a @class{gtk:ui-manager} object}
   @argument[filename]{a string with the name of the file to parse}
   @begin{return}
-    An unsigned integer with the merge ID for the merged UI. The merge ID can
+    The unsigned integer with the merge ID for the merged UI. The merge ID can
     be used to unmerge the UI with the @fun{gtk:ui-manager-remove-ui} function.
     If an error occurred, the return value is 0.
   @end{return}
@@ -858,13 +858,13 @@ lambda (manager action)    :no-recurse
   @end{dictionary}
   @see-class{gtk:ui-manager}
   @see-function{gtk:ui-manager-remove-ui}"
-  (glib:with-g-error (err)
+  (glib:with-error (err)
     (%ui-manager-add-ui-from-file manager filename err)))
 
 (export 'ui-manager-add-ui-from-file)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_ui_manager_new_merge_id ()
+;;; gtk_ui_manager_new_merge_id
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_ui_manager_new_merge_id" ui-manager-new-merge-id) :uint
@@ -887,7 +887,7 @@ lambda (manager action)    :no-recurse
 (export 'ui-manager-new-merge-id)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_ui_manager_add_ui ()
+;;; gtk_ui_manager_add_ui
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_ui_manager_add_ui" ui-manager-add-ui) :void
@@ -932,7 +932,7 @@ lambda (manager action)    :no-recurse
 (export 'ui-manager-add-ui)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_ui_manager_remove_ui ()
+;;; gtk_ui_manager_remove_ui
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_ui_manager_remove_ui" ui-manager-remove-ui) :void
@@ -956,7 +956,7 @@ lambda (manager action)    :no-recurse
 (export 'ui-manager-remove-ui)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_ui_manager_ensure_update ()
+;;; gtk_ui_manager_ensure_update
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_ui_manager_ensure_update" ui-manager-ensure-update) :void
