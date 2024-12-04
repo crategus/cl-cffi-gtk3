@@ -54,7 +54,8 @@
 (unexport 'glib:gtype-id :glib)
 (unexport 'glib:gtype-name :glib)
 (unexport 'glib:symbol-for-gtype :glib)
-(unexport 'glib:with-foreign-boxed-array :glib)
+
+(unexport 'glib:with-gboxed-array :glib)
 
 (unexport 'gobject:*debug-gc* :gobject)
 (unexport 'gobject:*debug-subclass* :gobject)
