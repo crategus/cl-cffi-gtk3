@@ -80,7 +80,6 @@
 (unexport 'gobject:parse-g-value :gobject)
 (unexport 'gobject:set-g-value :gobject)
 (unexport 'gobject::g-initially-unowned :gobject)
-(unexport 'gobject:lisp-closure :gobject)
 (unexport 'gobject:get-lisp-name-exception :gobject)
 (unexport 'gobject:register-object-type-implementation :gobject)
 (unexport 'gobject:initially-unowned :gobject)
