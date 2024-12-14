@@ -5875,7 +5875,7 @@ lambda (widget event)    :run-last
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_widget_create_pango_context" widget-create-pango-context)
-    (g:object pango:context :already-referenced)
+    (g:object pango:context :return)
  #+liber-documentation
  "@version{#2023-3-8}
   @argument[widget]{a @class{gtk:widget} object}
@@ -6001,7 +6001,7 @@ lambda (widget event)    :run-last
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_widget_create_pango_layout" %widget-create-pango-layout)
-    (g:object pango:layout :already-referenced)
+    (g:object pango:layout :return)
   (widget (g:object widget))
   (text :string))
 

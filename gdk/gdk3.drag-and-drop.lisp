@@ -468,8 +468,7 @@
 
 ;; TODO: Check the implementation with %atom-intern
 
-(cffi:defcfun ("gdk_drag_begin" %drag-begin)
-    (g:object drag-context :already-referenced)
+(cffi:defcfun ("gdk_drag_begin" %drag-begin) (g:object drag-context :return)
   (window (g:object window))
   (targets (g:list-t :pointer)))
 
@@ -499,7 +498,7 @@
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_drag_begin_for_device" %drag-begin-for-device)
-    (g:object drag-context :already-referenced)
+    (g:object drag-context :return)
   (window (g:object window))
   (device (g:object device))
   (targets (g:list-t :pointer)))

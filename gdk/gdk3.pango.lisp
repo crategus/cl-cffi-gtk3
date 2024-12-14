@@ -164,7 +164,7 @@
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_pango_context_get" pango-context-get)
-    (g:object pango:context :already-referenced)
+    (g:object pango:context :return)
  #+liber-documentation
  "@version{2024-6-28}
   @return{The new @class{pango-context} instance for the default GDK screen.}
@@ -190,12 +190,8 @@
 ;;; gdk_pango_context_get_for_screen
 ;;; ----------------------------------------------------------------------------
 
-;; TODO: Is this the correct usage of the :already-referenced keyword
-;; The documentation for the return value is: The caller of the function takes
-;; ownership of the data, and is responsible for freeing it.
-
 (cffi:defcfun ("gdk_pango_context_get_for_screen" pango-context-for-screen)
-    (g:object pango-context :already-referenced)
+    (g:object pango-context :return)
  #+liber-documentation
  "@version{2024-6-28}
   @argument[screen]{a @class{gdk:screen} object for which the Pango context
@@ -226,7 +222,7 @@
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_pango_context_get_for_display" pango-context-for-display)
-    (g:object pango-context :already-referenced)
+    (g:object pango-context :return)
  #+liber-documentation
  "@version{2024-6-28}
   @argument[display]{a @class{gdk:display} object for which the Pango context

@@ -1353,10 +1353,10 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
   @see-function{gdk:cursor-new-from-pixbuf}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_new ()
+;;; gdk_window_new
 ;;; ----------------------------------------------------------------------------
 
-(cffi:defcfun ("gdk_window_new" window-new) (g:object window :already-referenced)
+(cffi:defcfun ("gdk_window_new" window-new) (g:object window :return)
  #+liber-documentation
  "@version{2023-2-26}
   @argument[parent]{a @class{gdk:window} object, or @code{nil} to create the
