@@ -105,11 +105,15 @@
 
 ;;;   gtk_accel_group_activate
 
+;; TODO: This test uses the deprecated GTK:UI-MANAGER object. Rework it.
+
+#+nil
 (defun activate-action (action)
   (let ((name (gtk:action-name action))
-        (type (g:object-type-name action)))
+        (type (g:type-from-instance action)))
     (format t "action ~A of type ~A" name type)))
 
+#+nil
 (defvar *entries*
         (list
           (list "FileMenu" nil "_File")               ; name, stock id, label
@@ -148,6 +152,7 @@
                 "GTK+"                                ; tooltip
                 #'activate-action)))
 
+#+nil
 (test gtk-accel-group-activate
  (let ((window (make-instance 'gtk:window
                               :type :toplevel))
@@ -155,14 +160,23 @@
                                     :name "AppWindowActions"))
        (ui-info (make-instance 'gtk:ui-manager)))
     (gtk:widget-realize window)
-    ;; gtk:action-group-add-actions is not exported
-    (gtk::action-group-add-actions action-group *entries*)
+    (gtk:action-group-add-actions action-group *entries*)
     (gtk:ui-manager-insert-action-group ui-info action-group 0)
     (gtk:window-add-accel-group window (gtk:ui-manager-accel-group ui-info))
     (let ((accel-group (gtk:ui-manager-accel-group ui-info)))
       (is (eq 'gtk:accel-group (type-of accel-group)))
 ; This does not work as expected.
 ;      (is-true (gtk:accel-group-activate accel-group "<Control>q" window 113 '(:control-mask)))
+
+    ;; Check memory management
+    (is-false (gtk:window-remove-accel-group window accel-group))
+    (is-false (gtk:ui-manager-remove-action-group ui-info action-group))
+    (is-false (gtk:widget-destroy window))
+    (is (= 1 (g:object-ref-count window)))
+    (is (= 1 (g:object-ref-count accel-group)))
+    (is (= 1 (g:object-ref-count action-group)))
+    (is (= 1 (g:object-ref-count ui-info)))
+
 )))
 
 ;;;     gtk_accel_group_lock
@@ -264,4 +278,4 @@
                    '(:SHIFT-MASK :CONTROL-MASK :MOD1-MASK :SUPER-MASK
                      :HYPER-MASK :META-MASK)))))
 
-;;; 2024-9-21
+;;; 2024-12-14
