@@ -1225,8 +1225,7 @@ lambda (action)    :no-recurse
 ;;; gtk_action_get_accel_closure                            not exported
 ;;; ----------------------------------------------------------------------------
 
-(cffi:defcfun ("gtk_action_get_accel_closure" action-accel-closure)
-    (:pointer (:struct g:closure))
+(cffi:defcfun ("gtk_action_get_accel_closure" action-accel-closure) :pointer
  #+liber-documentation
  "@version{#2023-3-12}
   @argument[action]{a @class{gtk:action} object}
