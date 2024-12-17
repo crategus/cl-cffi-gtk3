@@ -76,7 +76,6 @@
 (unexport 'gobject:flags-item-nick :gobject)
 (unexport 'gobject:flags-item-value :gobject)
 (unexport 'gobject:gobject-class :gobject)
-(unexport 'gobject:gobject-class-interface-p :gobject)
 (unexport 'gobject:parse-g-value :gobject)
 (unexport 'gobject:set-g-value :gobject)
 (unexport 'gobject::g-initially-unowned :gobject)
