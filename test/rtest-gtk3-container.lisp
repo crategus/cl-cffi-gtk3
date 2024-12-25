@@ -439,9 +439,9 @@
       ;; Check the default value
       (is (eq (g:gtype "gboolean")
               (g:value-type (g:param-spec-default-value pspec))))
-      (is-false (gobject:parse-g-value (g:param-spec-default-value pspec)))
+      (is-false (g:value-get (g:param-spec-default-value pspec)))
       (is-false (g:param-value-set-default pspec value))
-      (is-false (gobject:parse-g-value value))
+      (is-false (g:value-get value))
       ;; Check the infos about the parameter
       (is (string= "expand" (g:param-spec-name pspec)))
       (is (stringp (g:param-spec-nick pspec)))
@@ -466,9 +466,9 @@
       (is (eq (g:gtype "GtkPackType")
               (g:value-type (g:param-spec-default-value pspec))))
       (is (eq :start
-              (gobject:parse-g-value (g:param-spec-default-value pspec))))
+              (g:value-get (g:param-spec-default-value pspec))))
       (is-false (g:param-value-set-default pspec value))
-      (is (eq :start (gobject:parse-g-value value)))
+      (is (eq :start (g:value-get value)))
       ;; Check the infos about the parameter
       (is (string= "pack-type" (g:param-spec-name pspec)))
       (is (stringp (g:param-spec-nick pspec)))
@@ -491,9 +491,9 @@
       ;; Check the default value
       (is (eq (g:gtype "gint")
               (g:value-type (g:param-spec-default-value pspec))))
-      (is (= 0 (gobject:parse-g-value (g:param-spec-default-value pspec))))
+      (is (= 0 (g:value-get (g:param-spec-default-value pspec))))
       (is-false (g:param-value-set-default pspec value))
-      (is (= 0 (gobject:parse-g-value value)))
+      (is (= 0 (g:value-get value)))
       ;; Check the infos about the parameter
       (is (string= "position" (g:param-spec-name pspec)))
       (is (stringp (g:param-spec-nick pspec)))

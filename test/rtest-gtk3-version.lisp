@@ -19,7 +19,7 @@
 (test gtk-major-version
   (is (=  3 (gtk:major-version)))
   (is (= 24 (gtk:minor-version)))
-  (is (= 42 (gtk:micro-version))))
+  (is (= 43 (gtk:micro-version))))
 
 ;;;     gtk_get_binary_age
 ;;;     gtk_get_interface_age
@@ -31,4 +31,4 @@
   (is (string= "GTK+ version too new (major mismatch)"
                (gtk:check-version 2 0 0))))
 
-;;; 2024-10-13
+;;; 2024-12-18
