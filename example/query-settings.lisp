@@ -20,7 +20,7 @@
       (setf settings (rest settings)) ; Remove the first entry, it is color-hash
       (setf data
             (loop for setting in settings
-                  for value = (gobject:parse-g-value
+                  for value = (g:value-get
                                   (g:param-spec-default-value setting))
                   collect (list (g:param-spec-name setting)
                                 (g:type-name (g:param-spec-value-type setting))
