@@ -1273,7 +1273,7 @@ lambda (event)
     (gobject:value-init value gtype)
     (when (%setting-get name value)
       (prog1
-        (gobject:parse-g-value value)
+        (g:value-get value)
         (g:value-unset value)))))
 
 (export 'setting-get)

@@ -232,7 +232,7 @@
         (progn
           (g:value-init value gtype)
           (%style-provider-style-property provider path state pspec value)
-          (gobject:parse-g-value value))
+          (g:value-get value))
         (g:value-unset value)))))
 
 (export 'style-provider-style-property)

@@ -260,15 +260,14 @@
   @see-function{gtk:tree-store-set-value}"
   (let ((n (length values)))
     (cffi:with-foreign-objects ((value-ar '(:struct g:value) n)
-                           (columns-ar :int n))
+                                (columns-ar :int n))
       (iter (for i from 0 below n)
             (for value in values)
             (for gtype = (tree-model-column-type store i))
             (setf (cffi:mem-aref columns-ar :int i) i)
-            (gobject:set-g-value (cffi:mem-aptr value-ar '(:struct g:value) i)
-                                 value
-                                 gtype
-                                 :zero-gvalue t))
+            (gobject:set-gvalue (cffi:mem-aptr value-ar '(:struct g:value) i)
+                                value
+                                gtype))
       (%tree-store-set-valuesv store iter columns-ar value-ar n)
       (iter (for i from 0 below n)
             (g:value-unset (cffi:mem-aptr value-ar '(:struct g:value) i)))
@@ -324,10 +323,9 @@
   @see-class{gtk:tree-iter}
   @see-function{gtk:tree-store-set}"
   (cffi:with-foreign-object (gvalue '(:struct g:value))
-    (gobject:set-g-value gvalue
-                         value
-                         (tree-model-column-type store column)
-                         :zero-gvalue t)
+    (gobject:set-gvalue gvalue
+                        value
+                        (tree-model-column-type store column))
     (%tree-store-set-value store iter column gvalue)
     (g:value-unset gvalue)
     (values)))
@@ -545,10 +543,9 @@
             (for value in values)
             (for gtype = (tree-model-column-type store i))
             (setf (cffi:mem-aref columns-ar :int i) i)
-            (gobject:set-g-value (cffi:mem-aptr v-ar '(:struct g:value) i)
-                                 value
-                                 gtype
-                                 :zero-gvalue t))
+            (gobject:set-gvalue (cffi:mem-aptr v-ar '(:struct g:value) i)
+                                value
+                                gtype))
       (%tree-store-insert-with-valuesv store
                                        iter
                                        parent

@@ -1350,7 +1350,7 @@ lambda (model path iter new-order)    :run-first
     (g:value-init value)
     (%tree-model-value model iter colnum value)
     (prog1
-      (gobject:parse-g-value value)
+      (g:value-get value)
       (g:value-unset value))))
 
 (export 'tree-model-value)

@@ -903,7 +903,7 @@ lambda (container widget)    :run-first
                      (container-class-find-child-property
                        (g:type-from-instance container) property)))))
     (cffi:with-foreign-object (gvalue '(:struct g:value))
-      (gobject:set-g-value gvalue value gtype :zero-gvalue t)
+      (gobject:set-gvalue gvalue value gtype)
       (%container-child-set-property container child property gvalue)
       (g:value-unset gvalue)
       (values value))))
@@ -946,7 +946,7 @@ lambda (container widget)    :run-first
       (g:value-init gvalue gtype)
       (%container-child-property container child property gvalue)
       (prog1
-        (gobject:parse-g-value gvalue)
+        (g:value-get gvalue)
         (g:value-unset gvalue)))))
 
 (export 'container-child-property)

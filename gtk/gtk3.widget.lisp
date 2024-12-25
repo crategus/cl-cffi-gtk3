@@ -6575,7 +6575,7 @@ lambda (widget event)    :run-last
         (g:value-init value gtype)
         (prog2
           (%widget-style-property widget property value)
-          (gobject:parse-g-value value)
+          (g:value-get value)
           (g:value-unset value))))))
 
 (export 'widget-style-property)

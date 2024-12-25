@@ -1650,7 +1650,7 @@ lambda (area renderer editable)    :run-first
                    (cell-area-class-find-cell-property
                        (g:type-from-instance area) property))))
     (cffi:with-foreign-object (new-value '(:struct g:value))
-      (gobject:set-g-value new-value value gtype :zero-gvalue t)
+      (gobject:set-gvalue new-value value gtype)
       (%cell-area-cell-set-property area renderer property new-value)
       (g:value-unset new-value)
       (values value))))
@@ -1686,7 +1686,7 @@ lambda (area renderer editable)    :run-first
       (g:value-init value gtype)
       (%cell-area-cell-get-property area renderer property value)
       (prog1
-        (gobject:parse-g-value value)
+        (g:value-get value)
         (g:value-unset value)))))
 
 (export 'cell-area-cell-property)

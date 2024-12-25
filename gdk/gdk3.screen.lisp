@@ -870,7 +870,7 @@ lambda (screen)    :run-last
     (g:value-init value gtype)
     (when (%screen-setting screen name value)
       (prog1
-        (gobject:parse-g-value value)
+        (g:value-get value)
         (g:value-unset value)))))
 
 (export 'screen-setting)

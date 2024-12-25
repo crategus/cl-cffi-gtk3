@@ -933,7 +933,7 @@ lambda (context)    :run-first
       (%style-context-property context property state value)
       ;; TODO: Handle the case for an invalid property
       (when value
-        (gobject:parse-g-value value))
+        (g:value-get value))
       (g:value-unset value))))
 
 (export 'style-context-property)
@@ -1077,7 +1077,7 @@ lambda (context)    :run-first
       (g:value-init value gtype)
       (prog2
         (%style-context-style-property context property value)
-        (gobject:parse-g-value value)
+        (g:value-get value)
         (g:value-unset value)))))
 
 (export 'style-context-style-property)
