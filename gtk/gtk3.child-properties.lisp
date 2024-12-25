@@ -24,27 +24,6 @@
 
 (in-package :gtk)
 
-;; TODO: Consider to remove the implementation of container-call-get-property
-;; and container-call-set-property. We have the container-child-property
-;; function.
-
-#+nil
-(defun container-call-get-property (container child property gtype)
-  (cffi:with-foreign-object (gvalue '(:struct g:value))
-    (g:value-init gvalue (g:gtype gtype))
-    (%container-child-property container child property gvalue)
-    (prog1
-      (gobject:parse-g-value gvalue)
-      (g:value-unset gvalue))))
-
-#+nil
-(defun container-call-set-property (container child property value gtype)
-  (cffi:with-foreign-object (gvalue '(:struct g:value))
-    (gobject:set-g-value gvalue value (g:gtype gtype) :zero-gvalue t)
-    (%container-child-set-property container child property gvalue)
-    (g:value-unset gvalue)
-    (values)))
-
 (defmacro define-child-property (container-type             ; "GtkFixed"
                                  property-name              ; fixed-child-x
                                  property-gname             ; "x"
