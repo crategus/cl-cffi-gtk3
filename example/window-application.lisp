@@ -18,9 +18,9 @@
 (defvar *app* (make-app))
 
 (defun activate-action (action)
-  (let* ((name (gtk-action-name action))
-         (gtype (g-object-type-name action))
-         (dialog (gtk-message-dialog-new (app-window *app*)
+  (let* ((name (gtk:action-name action))
+         (gtype (g:type-from-instance action))
+         (dialog (gtk:message-dialog-new (app-window *app*)
                                          '(:destroy-with-parent)
                                          :info
                                          :close
@@ -28,34 +28,34 @@
                                          name
                                          gtype)))
     (cond ((string= name "DarkTheme")
-           (let ((value (gtk-toggle-action-active action))
-                 (settings (gtk-settings-default)))
-             (setf (g-object-property settings
+           (let ((value (gtk:toggle-action-active action))
+                 (settings (gtk:settings-default)))
+             (setf (g:object-property settings
                                       "gtk-application-prefer-dark-theme")
                    value)))
           ((string= name "HideTitlebar")
-           (let ((value (gtk-toggle-action-active action)))
-             (setf (gtk-window-hide-titlebar-when-maximized (app-window *app*))
+           (let ((value (gtk:toggle-action-active action)))
+             (setf (gtk:window-hide-titlebar-when-maximized (app-window *app*))
                    value)))
           (t
-           (let ((response (gtk-dialog-run dialog)))
-             (gtk-widget-destroy dialog)
+           (let ((response (gtk:dialog-run dialog)))
+             (gtk:widget-destroy dialog)
              response)))))
 
 (defun activate-radio-action (action current)
   (declare (ignore action))
-  (let ((name (gtk-action-name current))
-        (gtype (g-object-type-name current))
-        (active (gtk-toggle-action-active current))
-        (value (gtk-radio-action-current-value current)))
+  (let ((name (gtk:action-name current))
+        (gtype (g:type-from-instance current))
+        (active (gtk:toggle-action-active current))
+        (value (gtk:radio-action-current-value current)))
     (when active
-      (setf (gtk-label-text (app-message *app*))
+      (setf (gtk:label-text (app-message *app*))
             (format nil
                     "You activated radio action ~S of type ~S.~% ~
                      Current value ~D."
                     name gtype value))
-      (setf (gtk-info-bar-message-type (app-infobar *app*)) value)
-      (gtk-widget-show (app-infobar *app*)))))
+      (setf (gtk:info-bar-message-type (app-infobar *app*)) value)
+      (gtk:widget-show (app-infobar *app*)))))
 
 (defun activate-about (action)
   (declare (ignore action))
