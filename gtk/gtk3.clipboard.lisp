@@ -896,7 +896,7 @@ lambda (clipboard event)    :run-first
 (export 'clipboard-uri-received-func)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_clipboard_request_uris ()
+;;; gtk_clipboard_request_uris
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_clipboard_request_uris" %clipboard-request-uris) :void
@@ -906,7 +906,7 @@ lambda (clipboard event)    :run-first
 
 (defun clipboard-request-uris (clipboard func)
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{#2024-12-29}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[func]{a @symbol{gtk:clipboard-uri-received-func} callback function
     to call when the URIs are received, or the retrieval fails, it will always
@@ -917,10 +917,10 @@ lambda (clipboard event)    :run-first
   When the URIs are later received the callback function will be called.
 
   The @arg{uris} parameter to the callback function will contain the resulting
-  foreign C array of URIs if the request succeeded, or @code{null-pointer} if it
-  failed. This could happen for various reasons, in particular if the clipboard
-  was empty or if the contents of the clipboard could not be converted into URI
-  form.
+  foreign C array of URIs if the request succeeded, or @code{cffi:null-pointer}
+  if it failed. This could happen for various reasons, in particular if the
+  clipboard was empty or if the contents of the clipboard could not be converted
+  into URI form.
   @see-class{gtk:clipboard}
   @see-symbol{gtk:clipboard-uri-received-func}"
   (%clipboard-request-uris clipboard

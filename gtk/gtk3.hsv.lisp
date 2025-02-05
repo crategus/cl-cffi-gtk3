@@ -136,16 +136,16 @@ lambda (hsv direction)    :action
 (export 'hsv-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_hsv_set_color ()
+;;; gtk_hsv_set_color
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_hsv_set_color" hsv-set-color) :void
  #+liber-documentation
- "@version{2023-6-15}
+ "@version{2025-1-25}
   @argument[hsv]{a @class{gtk:hsv} widget}
-  @argument[h]{a double float hue component}
-  @argument[s]{a double float saturation component}
-  @argument[v]{a double float value component}
+  @argument[h]{a double float for the hue component}
+  @argument[s]{a double float for the saturation component}
+  @argument[v]{a double float for the value component}
   @begin{short}
     Sets the current color in an HSV color selector.
   @end{short}
@@ -163,7 +163,7 @@ lambda (hsv direction)    :action
 (export 'hsv-set-color)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_hsv_get_color ()
+;;; gtk_hsv_get_color
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_hsv_get_color" %hsv-get-color) :void
@@ -174,12 +174,12 @@ lambda (hsv direction)    :action
 
 (defun hsv-get-color (hsv)
  #+liber-documentation
- "@version{2023-6-15}
+ "@version{2025-1-25}
   @argument[hsv]{a @class{gtk:hsv} widget}
   @begin{return}
-    @arg{h} -- a double float hue component @br{}
-    @arg{s} -- a double float saturation component @br{}
-    @arg{v} -- a double float value component
+    @arg{h} -- a double float for the hue component @br{}
+    @arg{s} -- a double float for the saturation component @br{}
+    @arg{v} -- a double float for the value component
   @end{return}
   @begin{short}
     Queries the current color in an HSV color selector.

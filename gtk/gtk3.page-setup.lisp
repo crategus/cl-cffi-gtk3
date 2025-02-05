@@ -542,14 +542,14 @@
     (g:object page-setup)
  #+liber-documentation
  "@version{#2023-3-21}
-  @argument[variant]{a @code{a{sv@}} @type{g:variant} instance}
-  @return{A new @class{gtk:page-setup} object.}
+  @argument[variant]{a @code{a{sv@}} @symbol{g:variant} parameter}
+  @return{The new @class{gtk:page-setup} object.}
   @begin{short}
     Desrialize a page setup from an @code{a{sv@}} variant in the format
     produced by the @fun{gtk:page-setup-to-gvariant} function.
   @end{short}
   @see-class{gtk:page-setup}
-  @see-type{g:variant}
+  @see-symbol{g:variant}
   @see-function{gtk:page-setup-to-gvariant}"
   (variant (:pointer (:struct g:variant))))
 
@@ -647,7 +647,7 @@
 
 (defun page-setup-to-key-file (setup keyfile groupname)
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2024-12-29}
   @argument[setup]{a @class{gtk:page-setup} object}
   @argument[keyfile]{a @type{g:key-file} instance to save the page setup to}
   @argument[groupname]{a string with the group to add the settings to in the
@@ -659,7 +659,7 @@
   @see-type{g:key-file}"
   (%page-setup-to-key-file setup
                            keyfile
-                           (if groupname groupname (cffi:null-pointer))))
+                           (or groupname (cffi:null-pointer))))
 
 (export 'page-setup-to-key-file)
 
@@ -672,12 +672,12 @@
  #+liber-documentation
  "@version{#2023-3-21}
   @argument[setup]{a @class{gtk:page-setup} object}
-  @return{A new @type{g:variant} instance.}
+  @return{The new @symbol{g:variant} parameter.}
   @begin{short}
     Serialize the page setup to an @code{a{sv@}} variant.
   @end{short}
   @see-class{gtk:page-setup}
-  @see-type{g:variant}"
+  @see-symbol{g:variant}"
   (setup (g:object page-setup)))
 
 (export 'page-setup-to-gvariant)

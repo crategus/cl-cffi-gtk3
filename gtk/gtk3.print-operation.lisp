@@ -1613,7 +1613,7 @@ lambda (operation widget setup settings)    :run-last
 ;;; gtk_print_run_page_setup_dialog_async
 ;;; ----------------------------------------------------------------------------
 
-;; TODO: Can we set func to be NIL and pass a NULL-POINTER for func!?
+;; TODO: Can we set func to be NIL and pass a CFFI:NULL-POINTER for func!?
 
 (cffi:defcfun ("gtk_print_run_page_setup_dialog_async"
                %print-run-page-setup-dialog-async) :void

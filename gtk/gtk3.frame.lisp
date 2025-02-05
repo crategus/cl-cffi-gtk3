@@ -310,12 +310,12 @@ frame
   @see-symbol{gtk:shadow-type}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_frame_new ()
+;;; gtk_frame_new
 ;;; ----------------------------------------------------------------------------
 
 (defun frame-new (&optional label)
  #+liber-documentation
- "@version{2023-2-18}
+ "@version{2024-12-29}
   @argument[label]{an optional string with the text to use as the label of the
     frame}
   @return{The new @class{gtk:frame} widget.}
@@ -325,7 +325,7 @@ frame
   If the @arg{label} argument is @code{nil}, the label is omitted.
   @see-class{gtk:frame}"
   (make-instance 'frame
-                 :label (if label label (cffi:null-pointer))))
+                 :label (or label (cffi:null-pointer))))
 
 (export 'frame-new)
 

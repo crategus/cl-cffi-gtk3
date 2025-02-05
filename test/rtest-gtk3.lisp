@@ -4,7 +4,9 @@
            #:list-child-properties
            #:list-style-properties
            #:approx-equal)
-  (:import-from :glib-test #:approx-equal)
+  (:import-from :glib-test  #:*first-run-testsuite*
+                            #:run-repeat
+                            #:approx-equal)
   (:import-from :glib)
   (:import-from :gobject)
   (:import-from :gio)
@@ -42,4 +44,4 @@
                 (gtk:container-class-list-child-properties gtype))
         #'string<))
 
-;;; 2024-9-23
+;;; 2024-12-31

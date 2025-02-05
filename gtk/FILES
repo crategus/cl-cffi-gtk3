@@ -78,7 +78,7 @@ GTK Widgets and Objects
 
     gtk.editable.lisp                - GtkEditable                  - GTK 3.24 +
     gtk.entry.lisp                   - GtkEntry                     - GTK 3.24 +
-    gtk.entry-buffer.lisp            - GtkEntryBuffer               - GTK 3.24 +
+    gtk.entry-buffer.lisp            - GtkEntryBuffer               - GTK 3.24 .
     gtk.entry-completion.lisp        - GtkEntryCompletion           - GTK 3.24 .
     gtk.scale.lisp                   - GtkScale, ...                - GTK 3.24 +
     gtk.spin-button.lisp             - GtkSpinButton                - GTK 3.24 +
@@ -185,7 +185,7 @@ GTK Widgets and Objects
     gtk.print-context.lisp           - GtkPrintContext              - GTK 3.24 +
     gtk.print-settings.lisp          - GtkPrintSettings             - GTK 3.24 +
     gtk.page-setup.lisp              - GtkPageSetup                 - GTK 3.24 +
-    gtk.paper-size.lisp              - GtkPaperSize                 - GTK 3.24 +
+    gtk.paper-size.lisp              - GtkPaperSize                 - GTK 3.24 .
     gtk.printer.lisp                 - GtkPrinter                   - GTK 3.24 +
     gtk.print-job.lisp               - GtkPrintJob                  - GTK 3.24 .
     gtk.print-unix-dialog.lisp       - GtkPrintUnixDialog           - GTK 3.24 +
@@ -333,7 +333,7 @@ Deprecated
 
     Deprecated since GTK 3.14
 
-    gtk.numerable-icon.lisp          - GtkNumerableIcon             - GTK 3.24 +
+    gtk.numerable-icon.lisp          - GtkNumerableIcon             - GTK 3.24 .
     gtk.arrow.lisp                   - GtkArrow                     - GTK 3.24 +
     gtk.status-icon.lisp             - GtkStatusIcon                - GTK 3.24 +
     gtk.theming-engine.lisp          - GtkThemingEngine             - GTK 3.24 +
@@ -343,4 +343,4 @@ Deprecated
 
     not implemented                  - GtkStyleProperties
 
-;;; 2024-6-26
+;;; 2025-1-5

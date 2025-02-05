@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.spin-button.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; Version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation of the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -229,7 +229,7 @@
 
 #+liber-documentation
 (setf (documentation 'spin-button 'type)
- "@version{2023-12-29}
+ "@version{2025-1-25}
   @begin{short}
     The @class{gtk:spin-button} widget is an ideal way to allow the user to set
     the value of some attribute.
@@ -318,39 +318,43 @@
       @begin{pre}
 lambda (spinbutton scroll)    :action
       @end{pre}
+      @begin[code]{table}
+        @entry[spinbutton]{The @class{gtk:spin-button} widget on which the
+          signal was emitted.}
+        @entry[scroll]{The value of the @symbol{gtk:scroll-type} enumeration to
+          specify the speed and amount of change.}
+      @end{table}
       Keybinding signal which gets emitted when the user initiates a value
       change. Applications should not connect to it, but may emit it with the
       @fun{g:signal-emit} function if they need to control the cursor
       programmatically. The default bindings for this signal are Up/Down and
       PageUp and/PageDown.
-      @begin[code]{table}
-        @entry[spinbutton]{The @class{gtk:spin-button} widget on which the
-          signal was emitted.}
-        @entry[scroll]{A value of the @symbol{gtk:scroll-type} enumeration to
-          specify the speed and amount of change.}
-      @end{table}
     @subheading{The \"input\" signal}
       @begin{pre}
 lambda (spinbutton new-value)    :run-last
       @end{pre}
-      Can be used to influence the conversion of the users input into a double
-      float value. The signal handler is expected to use the
-      @fun{gtk:entry-text} function to retrieve the text of the entry and set
-      @arg{new-value} to the new value. The default conversion uses the
-      @code{g_strtod()} function.
       @begin[code]{table}
         @entry[spinbutton]{The @class{gtk:spin-button} widget on which the
           signal was emitted.}
-        @entry[new-value]{A pointer to a double float with the return location
+        @entry[new-value]{The pointer to a double float with the return location
           for the new value.}
         @entry[Returns]{@em{True} for a successful conversion, @em{false} if
           the input was not handled, and @code{GTK_INPUT_ERROR} if the
           conversion failed.}
       @end{table}
+      Can be used to influence the conversion of the users input into a double
+      float. The signal handler is expected to use the @fun{gtk:entry-text}
+      function to retrieve the text of the entry and set @arg{new-value} to the
+      new value. The default conversion uses the @code{g_strtod()} function.
     @subheading{The \"output\" signal}
       @begin{pre}
 lambda (spinbutton)    :run-last
       @end{pre}
+      @begin[code]{table}
+        @entry[spinbutton]{The @class{gtk:spin-button} widget which received
+          the signal.}
+        @entry[Returns]{@em{True} if the value has been displayed.}
+      @end{table}
       Can be used to change the formatting of the value that is displayed in
       the spin buttons entry.
       @begin{pre}
@@ -393,31 +397,26 @@ lambda (spinbutton)    :run-last
               (format nil \"~@@?\" (format nil \"~~,~d@@f\" digits) value)))))
   ... )
       @end{pre}
-      @begin[code]{table}
-        @entry[spinbutton]{The @class{gtk:spin-button} widget which received
-          the signal.}
-        @entry[Returns]{@em{True} if the value has been displayed.}
-      @end{table}
     @subheading{The \"value-changed\" signal}
       @begin{pre}
 lambda (spinbutton)    :run-last
       @end{pre}
-      Is emitted when the value represented by @arg{spin-button} changes. Also
-      see the @code{\"output\"} signal.
       @begin[code]{table}
         @entry[spinbutton]{The @class{gtk:spin-button} widget on which the
           signal was emitted.}
       @end{table}
+      Is emitted when the value represented by @arg{spin-button} changes. Also
+      see the @code{\"output\"} signal.
     @subheading{The \"wrapped\" signal}
       @begin{pre}
 lambda (spinbutton)    :run-last
       @end{pre}
-      Is emitted right after the spin button wraps from its maximum to minimum
-      value or vice versa.
       @begin[code]{table}
         @entry[spinbutton]{The @class{gtk:spin-button} widget which received
           the signal.}
       @end{table}
+      Is emitted right after the spin button wraps from its maximum to minimum
+      value or vice versa.
   @end{dictionary}
   @see-constructor{gtk:spin-button-new}
   @see-constructor{gtk:spin-button-new-with-range}

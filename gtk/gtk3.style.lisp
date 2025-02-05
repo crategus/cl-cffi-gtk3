@@ -1060,7 +1060,7 @@ lambda (style)    :run-first
 ;;;    gtk_paint_hline has been deprecated since version 3.0 and should not be
 ;;;    used in newly written code. Use gtk_render_line() instead
 ;;;
-;;;    Draws a horizontal line from (x1, y) to (x2, y) in cr using the given
+;;;    Draws a horizontal line from (x1,y) to (x2,y) in cr using the given
 ;;;    style and state.
 ;;;
 ;;;    style :
@@ -1439,7 +1439,7 @@ lambda (style)    :run-first
 ;;;    gtk_paint_vline has been deprecated since version 3.0 and should not be
 ;;;    used in newly written code. Use gtk_render_line() instead
 ;;;
-;;;    Draws a vertical line from (x, y1_) to (x, y2_) in cr using the given
+;;;    Draws a vertical line from (x,y1_) to (x,y2_) in cr using the given
 ;;;    style and state.
 ;;;
 ;;;    style :

@@ -209,12 +209,12 @@
   @see-class{gtk:color-chooser-dialog}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_color_chooser_dialog_new ()
+;;; gtk_color_chooser_dialog_new
 ;;; ----------------------------------------------------------------------------
 
 (defun color-chooser-dialog-new (title parent)
  #+liber-documentation
- "@version{2023-6-15}
+ "@version{2024-12-29}
   @argument[title]{a string with the title of the dialog, or @code{nil}}
   @argument[parent]{a @class{gtk:window} transient parent of the dialog,
     or @code{nil}}
@@ -224,10 +224,10 @@
   @see-class{gtk:color-chooser-dialog}"
   (if parent
       (make-instance 'color-chooser-dialog
-                     :title (if title title (cffi:null-pointer))
+                     :title (or title (cffi:null-pointer))
                      :parent parent)
       (make-instance 'color-chooser-dialog
-                     :title (if title title (cffi:null-pointer)))))
+                     :title (or title (cffi:null-pointer)))))
 
 (export 'color-chooser-dialog-new)
 

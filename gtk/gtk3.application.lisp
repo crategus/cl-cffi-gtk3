@@ -873,7 +873,7 @@ lambda (application window)    :run-first
   @argument[application]{a @class{gtk:application} instance}
   @argument[accel]{a string representing an accelerator}
   @argument[name]{a string with the name of the action to activate}
-  @argument[parameter]{an optional @type{g:variant} parameter to pass when
+  @argument[parameter]{an optional @symbol{g:variant} parameter to pass when
     activating the action, or @code{nil}, the default, if the action does not
     accept an activation parameter}
   @begin{short}
@@ -902,7 +902,7 @@ lambda (application window)    :run-first
   @end{dictionary}
   @see-class{gtk:application}
   @see-class{g:menu-model}
-  @see-type{g:variant}
+  @see-symbol{g:variant}
   @see-function{gtk:accelerator-parse}
   @see-function{gtk:application-app-menu}
   @see-function{gtk:application-menubar}
@@ -929,7 +929,7 @@ lambda (application window)    :run-first
  "@version{#2023-12-24}
   @argument[application]{a @class{gtk:application} instance}
   @argument[name]{a string with the name of the action to activate}
-  @argument[parameter]{an optional @type{g:variant} parameter to pass when
+  @argument[parameter]{an optional @symbol{g:variant} parameter to pass when
     activating the action, or @code{nil}, the default, if the action does not
     accept an activation parameter}
   @begin{short}
@@ -942,7 +942,7 @@ lambda (application window)    :run-first
     @fun{gtk:application-accels-for-action} function instead.
   @end{dictionary}
   @see-class{gtk:application}
-  @see-type{g:variant}
+  @see-symbol{g:variant}
   @see-function{gtk:application-add-accelerator}
   @see-function{gtk:application-accels-for-action}"
   (%application-remove-accelerator application

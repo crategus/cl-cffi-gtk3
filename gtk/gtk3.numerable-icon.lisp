@@ -35,20 +35,24 @@
 ;;;
 ;;;     GtkNumerableIcon
 ;;;
+;;; Accessors
+;;;
+;;;     gtk_numerable_icon_get_background_gicon
+;;;     gtk_numerable_icon_set_background_gicon
+;;;     gtk_numerable_icon_get_background_icon_name
+;;;     gtk_numerable_icon_set_background_icon_name
+;;;     gtk_numerable_icon_get_count
+;;;     gtk_numerable_icon_set_count
+;;;     gtk_numerable_icon_get_label
+;;;     gtk_numerable_icon_set_label
+;;;     gtk_numerable_icon_get_style_context
+;;;     gtk_numerable_icon_set_style_context
+;;;
 ;;; Functions
 ;;;
 ;;;     gtk_numerable_icon_new
 ;;;     gtk_numerable_icon_new_with_style_context
-;;;     gtk_numerable_icon_get_background_gicon            Accessor
-;;;     gtk_numerable_icon_set_background_gicon            Accessor
-;;;     gtk_numerable_icon_get_background_icon_name        Accessor
-;;;     gtk_numerable_icon_set_background_icon_name        Accessor
-;;;     gtk_numerable_icon_get_count                       Accessor
-;;;     gtk_numerable_icon_set_count                       Accessor
-;;;     gtk_numerable_icon_get_label                       Accessor
-;;;     gtk_numerable_icon_set_label                       Accessor
-;;;     gtk_numerable_icon_get_style_context               Accessor
-;;;     gtk_numerable_icon_set_style_context               Accessor
+
 ;;;
 ;;; Properties
 ;;;
@@ -98,7 +102,7 @@
 
 #+liber-documentation
 (setf (documentation 'numerable-icon 'type)
- "@version{2022-12-21}
+ "@version{2024-12-31}
   @begin{short}
     The @class{gtk:numerable-icon} class is a subclass of the
     @class{g:emblemed-icon} class that can show a number or short string as an
@@ -130,7 +134,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- numerable-icon-background-icon -----------------------------------------
+;;; --- gtk:numerable-icon-background-icon -------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "background-icon"
@@ -143,7 +147,7 @@
 (setf (liber:alias-for-function 'numerable-icon-background-icon)
       "Accessor"
       (documentation 'numerable-icon-background-icon 'function)
- "@version{2022-12-21}
+ "@version{2024-12-31}
   @syntax{(gtk:numerable-icon-background-icon object) => icon}
   @syntax{(setf (gtk:numerable-icon-background-icon object) icon)}
   @argument[object]{a @class{gtk:numerable-icon} object}
@@ -161,7 +165,7 @@
   information or default theming for its background image.
 
   If this method is called and an icon name was already set as background for
-  the numerable icon, @arg{icon} will be used, i.e. the last method called
+  the numerable icon, @arg{icon} will be used, that is, the last method called
   between the @fun{gtk:numerable-icon-background-icon} and
   @fun{gtk:numerable-icon-background-icon-name} functions has always priority.
   @begin[Warning]{dictionary}
@@ -171,7 +175,7 @@
   @see-class{gtk:numerable-icon}
   @see-function{gtk:numerable-icon-background-icon-name}")
 
-;;; --- numerable-icon-background-icon-name ------------------------------------
+;;; --- gtk:numerable-icon-background-icon-name --------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "background-icon-name"
@@ -185,7 +189,7 @@
 (setf (liber:alias-for-function 'numerable-icon-background-icon-name)
       "Accessor"
       (documentation 'numerable-icon-background-icon-name 'function)
- "@version{2022-12-21}
+ "@version{2024-12-31}
   @syntax{(gtk:numerable-icon-background-icon-name object) => name}
   @syntax{(setf (gtk:numerable-icon-background-icon-name object) name)}
   @argument[object]{a @class{gtk:numerable-icon} object}
@@ -203,7 +207,7 @@
   information or default theming for its background image.
 
   If this method is called and a @class{g:icon} object was already set as
-  background for the numerable icon, @arg{name} will be used, i.e. the last
+  background for the numerable icon, @arg{name} will be used, that is, the last
   method called between the @fun{gtk:numerable-icon-background-icon-name} and
   @fun{gtk:numerable-icon-background-icon} functions has always priority.
   @begin[Warning]{dictionary}
@@ -213,7 +217,7 @@
   @see-class{gtk:numerable-icon}
   @see-function{gtk:numerable-icon-background-icon}")
 
-;;; --- numerable-icon-count ---------------------------------------------------
+;;; --- gtk:numerable-icon-count -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "count" 'numerable-icon) t)
@@ -226,7 +230,7 @@
 (setf (liber:alias-for-function 'numerable-icon-count)
       "Accessor"
       (documentation 'numerable-icon-count 'function)
- "@version{2022-12-21}
+ "@version{2024-12-31}
   @syntax{(gtk:numerable-icon-count object) => count}
   @syntax{(setf (gtk:numerable-icon-count object) count)}
   @argument[object]{a @class{gtk:numerable-icon} object}
@@ -239,12 +243,12 @@
   displayed by the numerable icon. The @setf{gtk:numerable-icon-count} function
   sets the currently displayed value.
 
-  The numeric value is always clamped to make it two digits, i.e. between -99
+  The numeric value is always clamped to make it two digits, that is between -99
   and 99. Setting a count of zero removes the emblem. If this method is called,
   and a label was already set on the numerable icon, it will automatically be
-  reset to @code{nil} before rendering the number, i.e. the last method called
-  between the @fun{gtk:numerable-icon-count} and @fun{gtk:numerable-icon-label}
-  functions has always priority.
+  reset to @code{nil} before rendering the number, that is, the last method
+  called between the @fun{gtk:numerable-icon-count} and
+  @fun{gtk:numerable-icon-label} functions has always priority.
   @begin[Warning]{dictionary}
     The @fun{gtk:numerable-icon-count} function has been deprecated since
     version 3.14 and should not be used in newly written code.
@@ -252,7 +256,7 @@
   @see-class{gtk:numerable-icon}
   @see-function{gtk:numerable-icon-label}")
 
-;;; --- numerable-icon-label ---------------------------------------------------
+;;; --- gtk:numerable-icon-label -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "label" 'numerable-icon) t)
@@ -264,7 +268,7 @@
 (setf (liber:alias-for-function 'numerable-icon-label)
       "Accessor"
       (documentation 'numerable-icon-label 'function)
- "@version{2022-12-21}
+ "@version{2024-12-31}
   @syntax{(gtk:numerable-icon-label object) => label}
   @syntax{(setf (gtk:numerable-icon-label object) label)}
   @argument[object]{a @class{gtk:numerable-icon} object}
@@ -294,7 +298,7 @@
   @see-class{gtk:numerable-icon}
   @see-function{gtk:numerable-icon-count}")
 
-;;; --- numerable-icon-style-context -------------------------------------------
+;;; --- gtk:numerable-icon-style-context ---------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "style-context"
@@ -307,7 +311,7 @@
 (setf (liber:alias-for-function 'numerable-icon-style-context)
       "Accessor"
       (documentation 'numerable-icon-style-context 'function)
- "@version{2022-12-21}
+ "@version{2024-12-31}
   @syntax{(gtk:numerable-icon-style-context object) => style}
   @syntax{(setf (gtk:numerable-icon-style-context object) style)}
   @argument[object]{a @class{gtk:numerable-icon} object}
@@ -328,14 +332,14 @@
   @see-class{gtk:style-context}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_numerable_icon_new ()
+;;; gtk_numerable_icon_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline numerable-icon-new))
 
 (defun numerable-icon-new (icon)
  #+liber-documentation
- "@version{2022-12-21}
+ "@version{2024-12-31}
   @argument[icon]{a @class{g:icon} object to overlay on}
   @return{The new @class{gtk:numerable-icon} object.}
   @short{Creates a new unthemed numerable icon.}
@@ -351,14 +355,14 @@
 (export 'numerable-icon-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_numerable_icon_new_with_style_context ()
+;;; gtk_numerable_icon_new_with_style_context
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline numerable-icon-new-with-style-context))
 
 (defun numerable-icon-new-with-style-context (icon context)
  #+liber-documentation
- "@version{2022-12-21}
+ "@version{2024-12-31}
   @argument[icon]{a @class{g:icon} object to overlay on}
   @argument[context]{a @class{gtk:style-context} object}
   @return{The new @class{gtk:numerable-icon} object.}

@@ -1439,7 +1439,7 @@ lambda (area renderer editable)    :run-first
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_cell_area_class_find_cell_property ()
+;;; gtk_cell_area_class_find_cell_property
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_cell_area_class_find_cell_property"
@@ -1450,13 +1450,13 @@ lambda (area renderer editable)    :run-first
 
 (defun cell-area-class-find-cell-property (gtype property)
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{#2024-12-29}
   @argument[gtype]{a @class{g:type-t} type ID}
   @argument[property]{a string with the name of the cell property to find}
   @begin{return}
     The @symbol{g:param-spec} instance of the cell property or a
-    @code{null-pointer} if the @arg{gtype} type has no child property with that
-    name.
+    @code{cffi:null-pointer} if the @arg{gtype} type ID has no child property
+    with that name.
   @end{return}
   @begin{short}
     Finds a cell property of a cell area type by name.

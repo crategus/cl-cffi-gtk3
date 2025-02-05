@@ -187,11 +187,11 @@
 
 #+liber-documentation
 (setf (documentation 'range 'type)
- "@version{#2023-3-22}
+ "@version{#2025-1-25}
   @begin{short}
     The @class{gtk:range} class is the common base class for widgets which
-    visualize an adjustment, e.g. the @class{gtk:scale} or @class{gtk:scrollbar}
-    widgets.
+    visualize an adjustment, for example the @class{gtk:scale} or
+    @class{gtk:scrollbar} widgets.
   @end{short}
 
   Apart from signals for monitoring the parameters of the adjustment, the
@@ -287,16 +287,24 @@
       @begin{pre}
 lambda (range value)    :run-last
       @end{pre}
-      Emitted before clamping a value, to give the application a chance to
-      adjust the bounds.
       @begin[code]{table}
         @entry[range]{The @class{gtk:range} widget that received the signal.}
         @entry[value]{The double float with the value before we clamp.}
       @end{table}
+      Emitted before clamping a value, to give the application a chance to
+      adjust the bounds.
     @subheading{The \"change-value\" signal}
       @begin{pre}
 lambda (range scroll value)    :run-last
       @end{pre}
+      @begin[code]{table}
+        @entry[range]{The @class{gtk:range} widget that received the signal.}
+        @entry[scroll]{The @symbol{gtk:scroll-type} value of scroll action that
+          was performed.}
+        @entry[value]{The double float resulting from the scroll action.}
+        @entry[Returns]{@em{True} to prevent other handlers from being invoked
+          for the signal, @em{false} to propagate the signal further.}
+      @end{table}
       The signal is emitted when a scroll action is performed on a range. It
       allows an application to determine the type of scroll event that occurred
       and the resultant new value. The application can handle the event itself
@@ -307,31 +315,23 @@ lambda (range scroll value)    :run-last
       the value to the desired number of decimal digits. The default GTK handler
       clamps the value based on \"round-digits\". It is not possible to use
       delayed update policies in an overridden @code{\"change-value\"} handler.
-      @begin[code]{table}
-        @entry[range]{The @class{gtk:range} widget that received the signal.}
-        @entry[scroll]{The @symbol{gtk:scroll-type} value of scroll action that
-          was performed.}
-        @entry[value]{The double float value resulting from the scroll action.}
-        @entry[Returns]{@em{True} to prevent other handlers from being invoked
-          for the signal, @em{false} to propagate the signal further.}
-      @end{table}
     @subheading{The \"move-slider\" signal}
       @begin{pre}
 lambda (range step)    :action
       @end{pre}
-      Virtual function that moves the slider. Used for keybindings.
       @begin[code]{table}
         @entry[range]{The @class{gtk:range} widget that received the signal.}
         @entry[step]{The @symbol{gtk:scroll-type} value how to move the slider.}
       @end{table}
+      Virtual function that moves the slider. Used for keybindings.
     @subheading{The \"value-changed\" signal}
       @begin{pre}
 lambda (range)    :run-last
       @end{pre}
-      Emitted when the range value changes.
       @begin[code]{table}
         @entry[range]{The @class{gtk:range} widget that received the signal.}
       @end{table}
+      Emitted when the range value changes.
   @end{dictionary}
   @see-slot{gtk:range-adjustment}
   @see-slot{gtk:range-fill-level}
@@ -665,23 +665,23 @@ lambda (range)    :run-last
 (export 'range-set-increments)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_range_set_range ()
+;;; gtk_range_set_range
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline range-set-range))
 
 (defun range-set-range (range min max)
  #+liber-documentation
- "@version{#2023-3-22}
+ "@version{#2025-1-25}
   @argument[range]{a @class{gtk:range} widget}
-  @argument[min]{a double float with the minimum range value}
-  @argument[max]{a double float with the maximum range value}
+  @argument[min]{a double float for the minimum range value}
+  @argument[max]{a double float for the maximum range value}
   @begin{short}
     Sets the allowable values in the range, and clamps the range value to be
     between @arg{min} and @arg{max}.
   @end{short}
   If the range has a non-zero page size, it is clamped between @arg{min} and
-  @code{(@arg{max} - @code{page-size})}.
+  @code{(max - page-size)}.
   @see-class{gtk:range}"
   (setf (adjustment-lower (range-adjustment range)) min
         (adjustment-upper (range-adjustment range)) max))

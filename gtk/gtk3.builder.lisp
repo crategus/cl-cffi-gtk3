@@ -283,7 +283,7 @@
     by their name, nick or integer value, flags, can be specified by their name,
     nick, integer value, optionally combined with @code{\"|\"}, for example,
     @code{\"GTK_VISIBLE | GTK_REALIZED\"}, and colors, in a format understood
-    by the @fun{gdk:rgba-parse} function. A @type{g:variant} instance can be
+    by the @fun{gdk:rgba-parse} function. A @symbol{g:variant} parameter can be
     specified in the format understood by the @fun{g:variant-parse} function,
     and pixbufs can be specified as a filename of an image file to load.
 

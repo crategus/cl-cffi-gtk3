@@ -620,8 +620,7 @@ lambda (toolbar style)    :run-first
   @argument[toolbar]{a @class{gtk:toolbar} widget}
   @argument[x]{an integer with the x coordinate of a point on the toolbar}
   @argument[y]{an integer with the y coordinate of a point on the toolbar}
-  @return{The position corresponding to the point (@arg{x}, @arg{y}) on the
-    toolbar.}
+  @return{The position corresponding to the point @code{(x,y)} on the toolbar.}
   @begin{short}
     Returns the position corresponding to the indicated point on the toolbar.
   @end{short}

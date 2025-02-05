@@ -642,20 +642,20 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 (export 'tool-palette-drag-target-item)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_palette_get_drop_group ()
+;;; gtk_tool_palette_get_drop_group
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_palette_get_drop_group" tool-palette-drop-group)
     (g:object tool-item-group)
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2025-1-25}
   @argument[palette]{a @class{gtk:tool-palette} widget}
-  @argument[x]{an integer with the x position}
-  @argument[y]{an integer with the y position}
-  @return{The @class{gtk:tool-item-group} widget at position
-    (@arg{x}, @arg{y}) or @code{nil} if there is no such group.}
+  @argument[x]{an integer for the x position}
+  @argument[y]{an integer for the y position}
+  @return{The @class{gtk:tool-item-group} widget at position @code{(x,y)} or
+    @code{nil} if there is no such group.}
   @begin{short}
-    Gets the group at position (@arg{x}, @arg{y}).
+    Gets the group at position @code{(x,y)}.
   @end{short}
   @see-class{gtk:tool-palette}
   @see-class{gtk:tool-item-group}"
@@ -666,22 +666,22 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 (export 'tool-palette-drop-group)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_palette_get_drop_item ()
+;;; gtk_tool_palette_get_drop_item
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_palette_get_drop_item" tool-palette-drop-item)
     (g:object tool-item)
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2025-1-25}
   @argument[palette]{a @class{gtk:tool-palette} widget}
-  @argument[x]{an integer with the x position}
-  @argument[y]{an integer with the y position}
+  @argument[x]{an integer for the x position}
+  @argument[y]{an integer for the y position}
   @begin{return}
-    The @class{gtk:tool-item} widget at position (@arg{x}, @arg{y}) or
-    @code{nil} if there is no such item.
+    The @class{gtk:tool-item} widget at position @code{(x,y)} or @code{nil}
+    if there is no such item.
   @end{return}
   @begin{short}
-    Gets the item at position (@arg{x}, @arg{y}).
+    Gets the item at position @code{(x,y)}.
   @end{short}
   See also the @fun{gtk:tool-palette-drop-group} function.
   @see-class{gtk:tool-palette}

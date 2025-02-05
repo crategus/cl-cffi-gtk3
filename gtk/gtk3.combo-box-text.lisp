@@ -185,7 +185,7 @@ combobox
 (export 'combo-box-text-new-with-entry)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_combo_box_text_append ()
+;;; gtk_combo_box_text_append
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_combo_box_text_append" %combo-box-text-append) :void
@@ -195,7 +195,7 @@ combobox
 
 (defun combo-box-text-append (combo id text)
  #+liber-documentation
- "@version{2023-12-30}
+ "@version{2024-12-29}
   @argument[combo]{a @class{gtk:combo-box-text} widget}
   @argument[id]{a string ID for this value, or @code{nil}}
   @argument[text]{a string with the text}
@@ -209,14 +209,12 @@ combobox
   @see-class{gtk:combo-box-text}
   @see-function{gtk:combo-box-text-insert}
   @see-function{gtk:combo-box-text-prepend}"
-  (%combo-box-text-append combo
-                          (if id id (cffi:null-pointer))
-                          text))
+  (%combo-box-text-append combo (or id (cffi:null-pointer)) text))
 
 (export 'combo-box-text-append)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_combo_box_text_prepend ()
+;;; gtk_combo_box_text_prepend
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_combo_box_text_prepend" %combo-box-text-prepend) :void
@@ -226,7 +224,7 @@ combobox
 
 (defun combo-box-text-prepend (combo id text)
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2024-12-29}
   @argument[combo]{a @class{gtk:combo-box} widget}
   @argument[id]{a string ID for this value, or @code{nil}}
   @argument[text]{a string with the text}
@@ -239,14 +237,12 @@ combobox
   a position of 0.
   @see-class{gtk:combo-box-text}
   @see-function{gtk:combo-box-text-insert}"
-  (%combo-box-text-prepend combo
-                           (if id id (cffi:null-pointer))
-                           text))
+  (%combo-box-text-prepend combo (or id (cffi:null-pointer)) text))
 
 (export 'combo-box-text-prepend)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_combo_box_text_insert ()
+;;; gtk_combo_box_text_insert
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_combo_box_text_insert" %combo-box-text-insert) :void
@@ -257,7 +253,7 @@ combobox
 
 (defun combo-box-text-insert (combo position id text)
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2024-12-29}
   @argument[combo]{a @class{gtk:combo-box-text} widget}
   @argument[position]{an integer with an index to insert text}
   @argument[id]{a string ID for this value, or @code{nil}}
@@ -274,7 +270,7 @@ combobox
   @see-function{gtk:combo-box-id-column}"
   (%combo-box-text-insert combo
                           position
-                          (if id id (cffi:null-pointer))
+                          (or id (cffi:null-pointer))
                           text))
 
 (export 'combo-box-text-insert)

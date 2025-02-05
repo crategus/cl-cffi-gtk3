@@ -1213,13 +1213,13 @@ lambda (container widget)    :run-first
 
 (defun container-class-find-child-property (gtype property)
  #+liber-documentation
- "@version{2023-3-3}
+ "@version{2024-12-29}
   @argument[gtype]{a @class{g:type-t} type ID}
   @argument[property]{a string with the name of the child property to find}
   @begin{return}
     The @symbol{g:param-spec} instance of the child property or a
-    @code{null-pointer} if the @arg{gtype} type has no child property with that
-    name.
+    @code{cffi:null-pointer} if the @arg{gtype} type ID has no child property
+    with that name.
   @end{return}
   @begin{short}
     Finds a child property of a container type by name.

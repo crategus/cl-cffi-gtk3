@@ -383,7 +383,7 @@ lambda (adjustment)    :no-recurse
                        page-increment
                        page-size)
  #+liber-documentation
- "@version{2023-3-14}
+ "@version{2025-1-25}
   @argument[value]{a number with the initial value}
   @argument[lower]{a number with the minimum value}
   @argument[upper]{a number with the maximum value}
@@ -393,7 +393,8 @@ lambda (adjustment)    :no-recurse
   @return{The new @class{gtk:adjustment} object.}
   @short{Creates a new adjustment.}
   @begin[Notes]{dictionary}
-    The numbers to the arguments are coerced to double float values.
+    The numbers for the arguments are coerced to double floats before being
+    passed to the foreign C function.
   @end{dictionary}
   @see-class{gtk:adjustment}"
   (let ((adjustment (make-instance 'adjustment
@@ -419,7 +420,7 @@ lambda (adjustment)    :no-recurse
 
 (defun adjustment-clamp-page (adjustment lower upper)
  #+liber-documentation
- "@version{#2023-3-14}
+ "@version{#2025-1-25}
   @argument[adjustment]{a @class{gtk:adjustment} object}
   @argument[lower]{a number with the lower value}
   @argument[upper]{a number with the upper value}
@@ -431,7 +432,8 @@ lambda (adjustment)    :no-recurse
   in the current page. A @code{\"changed\"} signal will be emitted if the value
   is changed.
   @begin[Notes]{dictionary}
-    The numbers to the arguments are coerced to double float values.
+    The numbers for the arguments are coerced to double floats before being
+    passed to the foreign C function.
   @end{dictionary}
   @see-class{gtk:adjustment}"
   (%adjustment-clamp-page adjustment
@@ -507,7 +509,7 @@ lambda (adjustment)    :no-recurse
                              lower upper
                              step-increment page-increment page-size)
  #+liber-documentation
- "@version{2023-3-14}
+ "@version{2025-1-25}
   @argument[adjustment]{a @class{gtk:adjustment} object}
   @argument[value]{a number with the new value}
   @argument[lower]{a number with the new minimum value}
@@ -522,7 +524,8 @@ lambda (adjustment)    :no-recurse
   signal. See the @fun{gtk:adjustment-lower} function for an alternative way of
   compressing multiple emissions of @code{\"changed\"} signals into one.
   @begin[Notes]{dictionary}
-    The numbers to the arguments are coerced to double float values.
+    The numbers for the arguments are coerced to double floats before being
+    passed to the foreign C function.
   @end{dictionary}
   @see-class{gtk:adjustment}
   @see-function{gtk:adjustment-lower}"

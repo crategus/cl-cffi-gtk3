@@ -442,8 +442,8 @@
   Symbolic size to use for a stock icon, icon set or named icon.
   @begin[Notes]{dictionary}
     In C the @code{icon-size} property is implemented as an integer type.
-    Therefore the @fun{gtk:image-icon-size} accessor returns an integer value
-    and not a keyword value of the @symbol{gtk:icon-size} enumeration.
+    Therefore the @fun{gtk:image-icon-size} accessor returns an integer and not
+    a keyword value of the @symbol{gtk:icon-size} enumeration.
   @end{dictionary}
   @see-class{gtk:image}")
 

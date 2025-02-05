@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.native-dialog.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; Version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation of the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2020 - 2024 Dieter Kaiser
+;;; Copyright (C) 2020 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -69,7 +69,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkNativeDialog
+;;; GtkNativeDialog
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkNativeDialog" native-dialog
@@ -250,7 +250,7 @@ lambda (dialog id)    :run-last
   @see-class{gtk:native-dialog}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_native_dialog_show ()
+;;; gtk_native_dialog_show
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_native_dialog_show" native-dialog-show) :void
@@ -271,7 +271,7 @@ lambda (dialog id)    :run-last
 (export 'native-dialog-show)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_native_dialog_hide ()
+;;; gtk_native_dialog_hide
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_native_dialog_hide" native-dialog-hide) :void
@@ -292,7 +292,7 @@ lambda (dialog id)    :run-last
 (export 'native-dialog-hide)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_native_dialog_destroy ()
+;;; gtk_native_dialog_destroy
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_native_dialog_destroy" native-dialog-destroy) :void
@@ -316,14 +316,14 @@ lambda (dialog id)    :run-last
 (export 'native-dialog-destroy)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_native_dialog_run ()
+;;; gtk_native_dialog_run
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_native_dialog_run" native-dialog-run) :int
  #+liber-documentation
  "@version{#2023-6-10}
   @argument[dialog]{a @class{gtk:native-dialog} widget}
-  @return{an integer with the response ID}
+  @return{The integer with the response ID.}
   @begin{short}
     Blocks in a recursive main loop until self emits the @code{\"response\"}
     signal.

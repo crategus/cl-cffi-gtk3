@@ -471,18 +471,18 @@
   @see-class{gtk:widget}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_item_group_get_drop_item ()
+;;; gtk_tool_item_group_get_drop_item
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_item_group_get_drop_item" tool-item-group-drop-item)
     (g:object tool-item)
  #+liber-documentation
- "@version{#2023-2-27}
+ "@version{#2025-1-25}
   @argument[group]{a @class{gtk:tool-item-group} widget}
-  @argument[x]{an integer with the x position}
-  @argument[y]{an integer with the y position}
-  @return{The @class{gtk:tool-item} widget at position (@arg{x}, @arg{y}).}
-  @short{Gets the tool item at position (@arg{x}, @arg{y}).}
+  @argument[x]{an integer for the x position}
+  @argument[y]{an integer for the y position}
+  @return{The @class{gtk:tool-item} widget at position @code{(x,y)}.}
+  @short{Gets the tool item at position @code{(x,y)}.}
   @see-class{gtk:tool-item-group}
   @see-class{gtk:tool-item}"
   (group (g:object tool-item-group))

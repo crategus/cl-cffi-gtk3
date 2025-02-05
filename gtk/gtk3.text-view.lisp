@@ -1884,7 +1884,7 @@ lambda (view)    :action
 (export 'text-view-iter-at-position)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_view_buffer_to_window_coords ()
+;;; gtk_text_view_buffer_to_window_coords
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_view_buffer_to_window_coords"
@@ -1898,20 +1898,20 @@ lambda (view)    :action
 
 (defun text-view-buffer-to-window-coords (view wtype xbuffer ybuffer)
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-1-25}
   @argument[view]{a @class{gtk:text-view} widget}
-  @argument[wtype]{a value of the @symbol{gtk:text-window-type} enumeration,
+  @argument[wtype]{a @symbol{gtk:text-window-type} value,
     except @code{:private}}
-  @argument[xbuffer]{an integer with the text buffer x coordinate}
-  @argument[ybuffer]{an integer with the text buffer y coordinate}
+  @argument[xbuffer]{an integer for the text buffer x coordinate}
+  @argument[ybuffer]{an integer for the text buffer y coordinate}
   @begin{return}
     @arg{xwindow} -- an integer with the window x coordinate @br{}
     @arg{ywindow} -- an integer with the window y coordinate
   @end{return}
   @begin{short}
-    Converts the text buffer coordinates (@arg{xbuffer}, @arg{ybuffer}) to
-    window coordinates (@arg{xwindow}, @arg{ywindow}) for the text view
-    window of type @arg{wtype}.
+    Converts the text buffer coordinates @code{(xbuffer,ybuffer)} to window
+    coordinates @code{(xwindow,ywindow)} for the text view window of type
+    @arg{wtype}.
   @end{short}
 
   Note that you cannot convert coordinates for a nonexisting window, see the
@@ -1930,7 +1930,7 @@ lambda (view)    :action
 (export 'text-view-buffer-to-window-coords)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_view_window_to_buffer_coords ()
+;;; gtk_text_view_window_to_buffer_coords
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_view_window_to_buffer_coords"
@@ -1944,20 +1944,20 @@ lambda (view)    :action
 
 (defun text-view-window-to-buffer-coords (view wtype xwindow ywindow)
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-1-25}
   @argument[view]{a @class{gtk:text-view} widget}
-  @argument[wtype]{a value of the @symbol{gtk:text-window-type} enumeration,
+  @argument[wtype]{a @symbol{gtk:text-window-type} value,
     except @code{:private}}
-  @argument[xwindow]{an integer with the window x coordinate}
-  @argument[ywindow]{an integer with the window y coordinate}
+  @argument[xwindow]{an integer for the window x coordinate}
+  @argument[ywindow]{an integer for the window y coordinate}
   @begin{return}
     @arg{xbuffer} -- an integer with the text buffer x coordinate or @br{}
     @arg{ybuffer} -- an integer with the text buffer y coordinate
   @end{return}
   @begin{short}
-    Converts window coordinates (@arg{xwindow}, @arg{ywindow}) on the text
-    view window identified by @arg{wtype} to text buffer coordinates
-    (@arg{xbuffer}, @arg{ybuffer}).
+    Converts window coordinates @code{(xwindow,ywindow)} on the text view
+    window identified by @arg{wtype} to text buffer coordinates
+    @code{(xbuffer,ybuffer)}.
   @end{short}
 
   Note that you cannot convert coordinates for a nonexisting window, see the

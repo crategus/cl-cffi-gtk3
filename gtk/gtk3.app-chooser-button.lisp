@@ -245,24 +245,22 @@ lambda (widget name)    :has-details
   @see-class{gtk:app-chooser-dialog}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_app_chooser_button_new ()
+;;; gtk_app_chooser_button_new
 ;;; ----------------------------------------------------------------------------
 
 (defun app-chooser-button-new (content-type)
  #+liber-documentation
- "@version{#2023-2-14}
+ "@version{#2024-12-29}
   @argument[content-type]{a string with the content type to show applications
     for}
-  @return{A newly created @class{gtk:app-chooser-button} widget.}
+  @return{The newly created @class{gtk:app-chooser-button} widget.}
   @begin{short}
     Creates a new application chooser button for applications that can handle
     content of the given type.
   @end{short}
   @see-class{gtk:app-chooser-button}"
   (make-instance 'app-chooser-button
-                 :content-type (if content-type
-                                   content-type
-                                   (cffi:null-pointer))))
+                 :content-type (or content-type (cffi:null-pointer))))
 
 (export 'app-chooser-button-new)
 

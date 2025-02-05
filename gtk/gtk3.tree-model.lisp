@@ -71,13 +71,14 @@
 ;;;     gtk_tree_row_reference_new
 ;;;     gtk_tree_row_reference_copy
 ;;;     gtk_tree_row_reference_free                         not needed
-;;;     gtk_tree_row_reference_new_proxy                    not implemented
 ;;;     gtk_tree_row_reference_get_model
 ;;;     gtk_tree_row_reference_get_path
 ;;;     gtk_tree_row_reference_valid
-;;;     gtk_tree_row_reference_inserted
-;;;     gtk_tree_row_reference_deleted
-;;;     gtk_tree_row_reference_reordered
+;;;
+;;;     gtk_tree_row_reference_new_proxy                    not implemented
+;;;     gtk_tree_row_reference_inserted                     not implemented
+;;;     gtk_tree_row_reference_deleted                      not implemented
+;;;     gtk_tree_row_reference_reordered                    not implemented
 ;;;
 ;;;     gtk_tree_model_get_flags
 ;;;     gtk_tree_model_get_n_columns
@@ -661,7 +662,7 @@
 (setf (liber:alias-for-class 'tree-row-reference)
       "GBoxed"
       (documentation 'tree-row-reference 'type)
- "@version{2024-3-28}
+ "@version{2025-1-6}
   @begin{declaration}
 (glib:define-gboxed-opaque tree-row-reference \"GtkTreeRowReference\"
   :export t
@@ -681,16 +682,16 @@
   @see-class{gtk:tree-path}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_row_reference_new ()
+;;; gtk_tree_row_reference_new
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_row_reference_new" tree-row-reference-new)
     (g:boxed tree-row-reference :return)
  #+liber-documentation
- "@version{2023-1-27}
+ "@version{2025-1-6}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[path]{a valid @class{gtk:tree-path} instance to monitor}
-  @return{A newly allocated @class{gtk:tree-row-reference} instance, or
+  @return{The newly allocated @class{gtk:tree-row-reference} instance, or
     @code{nil}.}
   @short{Creates a row reference based on @arg{path}.}
   This reference will keep pointing to the node pointed to by @arg{path}, so
@@ -706,56 +707,13 @@
 (export 'tree-row-reference-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_row_reference_new_proxy ()                     not implemented
-;;;
-;;; GtkTreeRowReference *
-;;; gtk_tree_row_reference_new_proxy (GObject *proxy,
-;;;                                   GtkTreeModel *model,
-;;;                                   GtkTreePath *path)
-;;;
-;;; You do not need to use this function.
-;;;
-;;; Creates a row reference based on path.
-;;;
-;;; This reference will keep pointing to the node pointed to by path, so long as
-;;; it exists. If path isn't a valid path in model, then NULL is returned.
-;;; However, unlike references created with gtk_tree_row_reference_new(), it
-;;; does not listen to the model for changes. The creator of the row reference
-;;; must do this explicitly using gtk_tree_row_reference_inserted(),
-;;; gtk_tree_row_reference_deleted(), gtk_tree_row_reference_reordered().
-;;;
-;;; These functions must be called exactly once per proxy when the corresponding
-;;; signal on the model is emitted. This single call updates all row references
-;;; for that proxy. Since built-in GTK objects like GtkTreeView already use
-;;; this mechanism internally, using them as the proxy object will produce
-;;; unpredictable results. Further more, passing the same object as model and
-;;; proxy does not work for reasons of internal implementation.
-;;;
-;;; This type of row reference is primarily meant by structures that need to
-;;; carefully monitor exactly when a row reference updates itself, and is not
-;;; generally needed by most applications.
-;;;
-;;; proxy :
-;;;     a proxy GObject
-;;;
-;;; model :
-;;;     a GtkTreeModel
-;;;
-;;; path :
-;;;     a valid GtkTreePath to monitor
-;;;
-;;; Returns :
-;;;     a newly allocated GtkTreeRowReference, or NULL
-;;; ----------------------------------------------------------------------------
-
-;;; ----------------------------------------------------------------------------
-;;; gtk_tree_row_reference_get_model () -> tree-row-reference-model
+;;; gtk_tree_row_reference_get_model
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_row_reference_get_model" tree-row-reference-model)
     (g:object tree-model)
  #+liber-documentation
- "@version{2023-1-27}
+ "@version{2025-1-6}
   @argument[reference]{a @class{gtk:tree-row-reference} instance}
   @return{The @class{gtk:tree-model} object.}
   @short{Returns the model that the row reference is monitoring.}
@@ -766,15 +724,15 @@
 (export 'tree-row-reference-model)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_row_reference_get_path ()
+;;; gtk_tree_row_reference_get_path
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_row_reference_get_path" tree-row-reference-path)
     (g:boxed tree-path :return)
  #+liber-documentation
- "@version{2023-1-27}
+ "@version{2025-1-6}
   @argument[reference]{a @class{gtk:tree-row-reference} instance}
-  @return{A current @class{gtk:tree-path} instance, or @code{nil}.}
+  @return{The current @class{gtk:tree-path} instance, or @code{nil}.}
   @begin{short}
     Returns a path that the row reference currently points to, or @code{nil} if
     the path pointed to is no longer valid.
@@ -786,16 +744,16 @@
 (export 'tree-row-reference-path)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_row_reference_valid ()
+;;; gtk_tree_row_reference_valid
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_row_reference_valid" tree-row-reference-valid) :boolean
  #+liber-documentation
- "@version{2023-1-27}
+ "@version{2025-1-6}
   @argument[reference]{a @class{gtk:tree-row-reference}, or @code{nil}}
   @return{@em{True} if @arg{reference} points to a valid path.}
   @begin{short}
-    Returns @em{true} if @arg{reference} is non-@code{nil} and refers to a
+    Returns @em{true} if @arg{reference} is not @code{nil} and refers to a
     current valid path.
   @end{short}
   @see-class{gtk:tree-row-reference}"
@@ -804,26 +762,19 @@
 (export 'tree-row-reference-valid)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_row_reference_free ()
-;;;
-;;; void gtk_tree_row_reference_free (GtkTreeRowReference *reference);
-;;;
-;;; Free's reference. reference may be NULL
-;;;
-;;; reference :
-;;;     a GtkTreeRowReference, or NULL
+;;; gtk_tree_row_reference_free                             not needed
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_row_reference_copy ()
+;;; gtk_tree_row_reference_copy
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_row_reference_copy" tree-row-reference-copy)
     (g:boxed tree-row-reference :return)
  #+liber-documentation
- "@version{2023-1-27}
+ "@version{2025-1-6}
   @argument[reference]{a @class{gtk:tree-row-reference} instance}
-  @return{A @class{gtk:tree-row-reference} instance.}
+  @return{The @class{gtk:tree-row-reference} instance.}
   @begin{short}
     Copies a tree row reference.
   @end{short}
@@ -833,33 +784,21 @@
 (export 'tree-row-reference-copy)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_row_reference_inserted ()
-;;;
-;;; void gtk_tree_row_reference_inserted (GObject *proxy, GtkTreePath *path);
-;;;
-;;; Lets a set of row reference created by gtk_tree_row_reference_new_proxy()
-;;; know that the model emitted the "row-inserted" signal.
-;;;
-;;; proxy :
-;;;     a GObject
-;;;
-;;; path :
-;;;     the row position that was inserted
+;;; gtk_tree_row_reference_new_proxy                        not implemented
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_row_reference_deleted ()
+;;; gtk_tree_row_reference_inserted
 ;;;
-;;; void gtk_tree_row_reference_deleted (GObject *proxy, GtkTreePath *path);
+;;; Lets a set of row reference created by gtk_tree_row_reference_new_proxy()
+;;; know that the model emitted the "row-inserted" signal.
+;;; ----------------------------------------------------------------------------
+
+;;; ----------------------------------------------------------------------------
+;;; gtk_tree_row_reference_deleted
 ;;;
 ;;; Lets a set of row reference created by gtk_tree_row_reference_new_proxy()
 ;;; know that the model emitted the "row-deleted" signal.
-;;;
-;;; proxy :
-;;;     a GObject
-;;;
-;;; path :
-;;;     the path position that was deleted
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
@@ -887,7 +826,7 @@
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkTreeModelFlags
+;;; GtkTreeModelFlags
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gflags "GtkTreeModelFlags" tree-model-flags

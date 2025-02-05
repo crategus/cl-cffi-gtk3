@@ -1046,7 +1046,7 @@ lambda (view)    :action
     if no icon exists at that position.
   @end{return}
   @begin{short}
-    Finds the path at the point @code{(x, y)}, relative to the GDK window
+    Finds the path at the point @code{(x,y)}, relative to the GDK window
     coordinates.
   @end{short}
   See the @fun{gtk:icon-view-item-at-pos} function, if you are also interested
@@ -1083,11 +1083,11 @@ lambda (view)    :action
   @begin{return}
     @arg{path} -- a @class{gtk:tree-path} instance, or @code{nil} @br{}
     @arg{renderer} -- a @class{gtk:cell-renderer} object responsible for the
-      cell at @code{(x, y)}, or @code{nil} if no item exists at the specified
+      cell at @code{(x,y)}, or @code{nil} if no item exists at the specified
       position
   @end{return}
   @begin{short}
-    Finds the path at the point @code{(x, y)}, relative to the GDK window
+    Finds the path at the point @code{(x,y)}, relative to the GDK window
     coordinates.
   @end{short}
   In contrast to the @fun{gtk:icon-view-path-at-pos} function, this function

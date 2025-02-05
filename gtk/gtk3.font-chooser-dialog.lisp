@@ -89,27 +89,27 @@
   @see-class{gtk:font-chooser}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_font_chooser_dialog_new ()
+;;; gtk_font_chooser_dialog_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline font-chooser-dialog-new))
 
 (defun font-chooser-dialog-new (title parent)
  #+liber-documentation
- "@version{2023-6-16}
+ "@version{2024-12-29}
   @argument[title]{a string with the title of the dialog, or @code{nil}}
   @argument[parent]{a @class{gtk:window} transient parent of the dialog, or
     @code{nil}}
-  @return{A new @class{gtk:font-chooser-dialog} widget.}
+  @return{The new @class{gtk:font-chooser-dialog} widget.}
   @short{Creates a new font chooser dialog.}
   @see-class{gtk:font-chooser-dialog}
   @see-class{gtk:window}"
   (if parent
       (make-instance 'font-chooser-dialog
-                     :title (if title title (cffi:null-pointer))
+                     :title (or title (cffi:null-pointer))
                      :parent parent)
       (make-instance 'font-chooser-dialog
-                     :title (if title title (cffi:null-pointer)))))
+                     :title (or title (cffi:null-pointer)))))
 
 (export 'font-chooser-dialog-new)
 

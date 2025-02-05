@@ -245,16 +245,16 @@
   @see-class{gtk:widget}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_color_selection_dialog_new ()
+;;; gtk_color_selection_dialog_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline color-selection-dialog-new))
 
 (defun color-selection-dialog-new (title)
  #+liber-documentation
- "@version{2023-6-15}
+ "@version{2024-12-29}
   @argument[title]{a string containing the title text for the dialog}
-  @return{A @class{gtk:color-selection-dialog} widget.}
+  @return{The @class{gtk:color-selection-dialog} widget.}
   @begin{short}
     Creates a new color selection dialog.
   @end{short}
@@ -264,7 +264,7 @@
   @end{dictionary}
   @see-class{gtk:color-selection-dialog}"
   (make-instance 'color-selection-dialog
-                 :title (if title title (cffi:null-pointer))))
+                 :title (or title (cffi:null-pointer))))
 
 (export 'color-selection-dialog-new)
 

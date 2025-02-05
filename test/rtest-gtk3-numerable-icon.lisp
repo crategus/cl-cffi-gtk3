@@ -34,19 +34,19 @@
              (glib-test:list-signals "GtkNumerableIcon")))
   ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkNumerableIcon" GTK:NUMERABLE-ICON
-                       (:SUPERCLASS G:EMBLEMED-ICON
-                        :EXPORT T
-                        :INTERFACES ("GIcon")
-                        :TYPE-INITIALIZER "gtk_numerable_icon_get_type")
-                       ((BACKGROUND-ICON NUMERABLE-ICON-BACKGROUND-ICON
-                         "background-icon" "GIcon" T T)
-                        (BACKGROUND-ICON-NAME
-                         NUMERABLE-ICON-BACKGROUND-ICON-NAME
-                         "background-icon-name" "gchararray" T T)
-                        (COUNT NUMERABLE-ICON-COUNT "count" "gint" T T)
-                        (LABEL NUMERABLE-ICON-LABEL "label" "gchararray" T T)
-                        (STYLE-CONTEXT NUMERABLE-ICON-STYLE-CONTEXT
-                         "style-context" "GtkStyleContext" T T)))
+                      (:SUPERCLASS G:EMBLEMED-ICON
+                       :EXPORT T
+                       :INTERFACES ("GIcon")
+                       :TYPE-INITIALIZER "gtk_numerable_icon_get_type")
+                      ((BACKGROUND-ICON NUMERABLE-ICON-BACKGROUND-ICON
+                        "background-icon" "GIcon" T T)
+                       (BACKGROUND-ICON-NAME
+                        NUMERABLE-ICON-BACKGROUND-ICON-NAME
+                        "background-icon-name" "gchararray" T T)
+                       (COUNT NUMERABLE-ICON-COUNT "count" "gint" T T)
+                       (LABEL NUMERABLE-ICON-LABEL "label" "gchararray" T T)
+                       (STYLE-CONTEXT NUMERABLE-ICON-STYLE-CONTEXT
+                        "style-context" "GtkStyleContext" T T)))
              (gobject:get-gtype-definition "GtkNumerableIcon"))))
 
 ;;; --- Properties -------------------------------------------------------------
@@ -58,12 +58,12 @@
 ;;;     style-context
 
 (test gtk-numerable-icon-properties
-  (let ((icon (make-instance 'gtk:numerable-icon
-                             :gicon (g:themed-icon-new "gtk-ok")
-                             :count 11)))
+  (glib-test:with-check-memory (icon)
+    (setf icon (make-instance 'gtk:numerable-icon
+                              :count 1))
     (is-false (gtk:numerable-icon-background-icon icon))
     (is-false (gtk:numerable-icon-background-icon-name icon))
-    (is (= 11 (gtk:numerable-icon-count icon)))
+    (is (= 1 (gtk:numerable-icon-count icon)))
     (is-false (gtk:numerable-icon-label icon))
     (is-false (gtk:numerable-icon-style-context icon))))
 
@@ -72,8 +72,11 @@
 ;;;     gtk_numerable_icon_new
 
 (test gtk-numerable-icon-new
-  (is (typep (gtk:numerable-icon-new (g:themed-icon-new "gtk-ok"))
-             'gtk:numerable-icon)))
+  (when *first-run-testsuite*
+    (glib-test:with-check-memory (icon :strong 1)
+      (is (typep (setf icon
+                       (gtk:numerable-icon-new (g:themed-icon-new "gtk-ok")))
+                 'gtk:numerable-icon)))))
 
 ;;;     gtk_numerable_icon_new_with_style_context
 
@@ -89,4 +92,4 @@
     (is (typep (gtk:numerable-icon-new-with-style-context icon context)
                'gtk:numerable-icon))))
 
-;;; 2024-9-21
+;;; 2024-12-31

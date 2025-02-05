@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2024 Dieter Kaiser
+;;; Copyright (C) 2019 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -56,7 +56,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkGestureSwipe
+;;; GtkGestureSwipe
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkGestureSwipe" gesture-swipe
@@ -68,7 +68,7 @@
 
 #+liber-documentation
 (setf (documentation 'gesture-swipe 'type)
- "@version{#2023-1-21}
+ "@version{#2025-1-25}
   @begin{short}
     The @class{gtk:gesture-swipe} object is a @class{gtk:gesture} implementation
     able to recognize swipes, after a press/move/.../move/release sequence
@@ -77,40 +77,40 @@
   @end{short}
 
   If the velocity is desired in intermediate points, the
-  @fun{gtk:gesture-swipe-velocity} function can be called on e.g. a
+  @fun{gtk:gesture-swipe-velocity} function can be called on, for example, a
   @code{\"update\"} handler.
 
   All velocities are reported in pixels/sec units.
   @begin[Signal Details]{dictionary}
     @subheading{The \"swipe\" signal}
     @begin{pre}
-lambda (gesture velocity-x velocity-y)    :run-last
+lambda (gesture xvelocity yvelocity)    :run-last
     @end{pre}
-    The signal is emitted when the recognized gesture is finished, velocity
-    and direction are a product of previously recorded events.
     @begin[code]{table}
       @entry[gesture]{The @class{gtk:gesture-multi-press} object which
         received the signal.}
-      @entry[velocity-x]{The double float with the velocity in the x axis,
+      @entry[xvelocity]{The double float with the velocity in the x axis,
         in pixels/sec.}
-      @entry[velocity-y]{The double float with the velocity in the y axis,
+      @entry[yvelocity]{The double float with the velocity in the y axis,
         in pixels/sec.}
     @end{table}
+    The signal is emitted when the recognized gesture is finished, velocity
+    and direction are a product of previously recorded events.
   @end{dictionary}
-  @see-constuctor{gtk:gesture-swipe-new}
+  @see-constructor{gtk:gesture-swipe-new}
   @see-class{gtk:gesture}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_gesture_swipe_new ()
+;;; gtk_gesture_swipe_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline gesture-swipe-new))
 
 (defun gesture-swipe-new (widget orientation)
  #+liber-documentation
- "@version{#2023-1-21}
+ "@version{#2025-1-15}
   @argument[widget]{a @class{gtk:widget} object}
-  @return{A newly created @class{gtk:gesture-swipe} object.}
+  @return{The newly created @class{gtk:gesture-swipe} object.}
   @begin{short}
     Returns a newly created gesture that recognizes swipes.
   @end{short}
@@ -122,23 +122,23 @@ lambda (gesture velocity-x velocity-y)    :run-last
 (export 'gesture-pan-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_gesture_swipe_get_velocity () ->gesture-swipe-velocity
+;;; gtk_gesture_swipe_get_velocity
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_gesture_swipe_get_velocity" %gesture-swipe-velocity)
     :boolean
   (gesture (g:object gesture-swipe))
-  (velocity-x (:pointer :double))
-  (velocity-y (:pointer :double)))
+  (xvelocity (:pointer :double))
+  (yvelocity (:pointer :double)))
 
 (defun gesture-swipe-velocity (gesture)
  #+liber-documentation
- "@version{#2023-1-21}
+ "@version{#2025-1-25}
   @argument[gesture]{a @class{gtk:gesture-swipe} object}
   @begin{return}
-    @code{velocity-x} -- a @code{:double} value for the velocity in the x axis,
+    @code{xvelocity} -- a double float with the velocity in the x axis,
     in pixels/sec. @br{}
-    @code{velocity-y} -- a @code{:double} value for the velocity in the y axis,
+    @code{yvelocity} -- a double float with the velocity in the y axis,
     in pixels/sec.
   @end{return}
   @begin{short}
@@ -146,10 +146,10 @@ lambda (gesture velocity-x velocity-y)    :run-last
     as per the last event(s) processed.
   @end{short}
   @see-class{gtk:gesture-swipe}"
-  (cffi:with-foreign-objects ((velocity-x :double) (velocity-y :double))
-    (when (%gesture-swipe-velocity gesture velocity-x velocity-y)
-      (values (cffi:mem-ref velocity-x :double)
-              (cffi:mem-ref velocity-y :double)))))
+  (cffi:with-foreign-objects ((xvelocity :double) (yvelocity :double))
+    (when (%gesture-swipe-velocity gesture xvelocity yvelocity)
+      (values (cffi:mem-ref xvelocity :double)
+              (cffi:mem-ref yvelocity :double)))))
 
 (export 'gesture-swipe-velocity)
 

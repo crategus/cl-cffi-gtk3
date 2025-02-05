@@ -860,7 +860,7 @@
 ;;; should not be used in newly written code. Use GtkIconTheme instead.
 ;;;
 ;;; Registers a new icon size, along the same lines as GTK_ICON_SIZE_MENU, etc.
-;;; Returns the integer value for the size.
+;;; Returns the integer for the size.
 ;;;
 ;;; name :
 ;;;     name of the icon size
@@ -872,7 +872,7 @@
 ;;;     the icon height
 ;;;
 ;;; Returns :
-;;;     integer value representing the size
+;;;     integer representing the size
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------

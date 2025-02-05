@@ -148,26 +148,26 @@
   @see-class{gtk:application-window}
   @see-class{g:menu}")
 
-;;; --- actionable-action-target -----------------------------------------------
+;;; --- gtk:actionable-action-target -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "action-target" 'actionable) t)
- "The @code{action-target} property of type @type{g:variant} (Read / Write)
+ "The @code{action-target} property of type @symbol{g:variant} (Read / Write)
   @br{}
   The parameter for action invocations. @br{}
-  Allowed values: a @type{g:variant} parameter @br{}
-  Default value: @code{null-pointer}")
+  Allowed values: a @symbol{g:variant} parameter @br{}
+  Default value: @code{cffi:null-pointer}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'actionable-action-target)
       "Accessor"
       (documentation 'actionable-action-target 'function)
- "@version{2023-6-17}
+ "@version{2024-12-29}
   @syntax{(gtk:actionable-action-target object) => value}
   @syntax{(setf (gtk:actionable-action-target object) value)}
   @argument[object]{a @class{gtk:actionable} widget}
-  @argument[value]{a @type{g:variant} parameter as the target value, or
-    @code{null-pointer}}
+  @argument[value]{a @symbol{g:variant} parameter as the target value, or
+    @code{cffi:null-pointer}}
   @begin{short}
     Accessor of the @slot[gtk:actionable]{action-target} slot of the
     @class{gtk:actionable} inferface.
@@ -176,13 +176,13 @@
   of an actionable widget. The @setf{gtk:actionable-action-target} function sets
   the target value.
 
-  If the @arg{value} argument is a @code{null-pointer} then the target value is
-  unset.
+  If the @arg{value} argument is a @code{cffi:null-pointer} then the target
+  value is unset.
 
   The target value has two purposes. First, it is used as the parameter to
   activation of the action associated with the @class{gtk:actionable} widget.
-  Second, it is used to determine if the widget should be rendered as \"active\"
-  - the widget is active if the state is equal to the given target.
+  Second, it is used to determine if the widget should be rendered as
+  \"active\". The widget is active if the state is equal to the given target.
 
   Consider the example of associating a set of buttons with a @class{g:action}
   object with string state in a typical radio button situation. Each button
@@ -208,7 +208,7 @@
     @fun{gtk:application-action-target} function.
   @end{dictionary}
   @see-class{gtk:actionable}
-  @see-type{g:variant}
+  @see-symbol{g:variant}
   @see-class{g:action}")
 
 ;;; ----------------------------------------------------------------------------

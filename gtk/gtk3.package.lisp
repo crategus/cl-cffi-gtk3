@@ -915,6 +915,18 @@
       @about-function{editable-position}
       @about-function{editable-editable}
     @end{subsection}
+    @begin[GtkEntryBuffer]{subsection}
+      @about-class{entry-buffer}
+      @about-generic{entry-buffer-length}
+      @about-generic{entry-buffer-max-length}
+      @about-generic{entry-buffer-text}
+      @about-function{entry-buffer-new}
+      @about-function{entry-buffer-bytes}
+      @about-function{entry-buffer-insert-text}
+      @about-function{entry-buffer-delete-text}
+      @about-function{entry-buffer-emit-deleted-text}
+      @about-function{entry-buffer-emit-inserted-text}
+    @end{subsection}
     @begin[GtkEntry]{subsection}
       @about-symbol{entry-icon-position}
       @about-symbol{input-purpose}
@@ -1002,18 +1014,6 @@
       @about-function{entry-current-icon-drag-source}
       @about-function{entry-icon-area}
       @about-function{entry-grab-focus-without-selecting}
-    @end{subsection}
-    @begin[GtkEntryBuffer]{subsection}
-      @about-class{entry-buffer}
-      @about-generic{entry-buffer-length}
-      @about-generic{entry-buffer-max-length}
-      @about-generic{entry-buffer-text}
-      @about-function{entry-buffer-new}
-      @about-function{entry-buffer-bytes}
-      @about-function{entry-buffer-insert-text}
-      @about-function{entry-buffer-delete-text}
-      @about-function{entry-buffer-emit-deleted-text}
-      @about-function{entry-buffer-emit-inserted-text}
     @end{subsection}
     @begin[GtkEntryCompletion]{subsection}
       @about-class{entry-completion}

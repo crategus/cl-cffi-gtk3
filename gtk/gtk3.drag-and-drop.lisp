@@ -962,23 +962,22 @@
 (export 'drag-set-icon-default)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_drag_check_threshold ()
+;;; gtk_drag_check_threshold
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_drag_check_threshold" drag-check-threshold) :boolean
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2025-1-25}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[xstart]{an integer with the x coordinate of start of drag}
-  @argument[ystart]{an integer with the y coordinate of start of drag}
-  @argument[xcurrent]{an integer with the current x coordinate}
-  @argument[ycurrent]{an integer with the current y coordinate}
+  @argument[xstart]{an integer for the x coordinate of start of drag}
+  @argument[ystart]{an integer for the y coordinate of start of drag}
+  @argument[xcurrent]{an integer for the current x coordinate}
+  @argument[ycurrent]{an integer for the current y coordinate}
   @return{@em{True} if the drag threshold has been passed.}
   @begin{short}
-    Checks to see if a mouse drag starting at (@arg{xstart}, @arg{ystart})
-    and ending at (@arg{xcurrent}, @arg{ycurrent}) has passed the GTK drag
-    threshold, and thus should trigger the beginning of a drag and drop
-    operation.
+    Checks to see if a mouse drag starting at @code{(xstart,ystart)} and ending
+    at @code{(xcurrent,ycurrent)} has passed the GTK drag threshold, and thus
+    should trigger the beginning of a drag and drop operation.
   @end{short}
   @see-class{gtk:widget}"
   (widget (g:object widget))

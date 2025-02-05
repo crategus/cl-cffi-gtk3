@@ -1017,11 +1017,11 @@ lambda (theme)    :run-last
 
 (defun icon-theme-list-icons (theme context)
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2024-12-29}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @argument[context]{a string identifying a particular type of icon, or
     @code{nil} to list all icons}
-  @return{A list of strings holding the names of all the icons in the theme.}
+  @return{The list of strings holding the names of all the icons in the theme.}
   @begin{short}
     Lists the icons in the current icon theme.
   @end{short}
@@ -1030,7 +1030,7 @@ lambda (theme)    :run-last
   include such values as \"Applications\" and \"MimeTypes\".
   @see-class{gtk:icon-theme}
   @see-function{gtk:icon-theme-list-contexts}"
-  (let ((context (if context context (cffi:null-pointer))))
+  (let ((context (or context (cffi:null-pointer))))
     (%icon-theme-list-icons theme context)))
 
 (export 'icon-theme-list-icons)

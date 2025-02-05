@@ -184,7 +184,7 @@ lambda (provider section error)    :run-last
 
 (defun css-provider-named (name variant)
  #+liber-documentation
- "@version{2024-1-2}
+ "@version{2024-12-29}
   @argument[name]{a string with the theme name}
   @argument[variant]{a string with a variant to load}
   @return{The @class{gtk:css-provider} object with the theme loaded.}
@@ -193,8 +193,7 @@ lambda (provider section error)    :run-last
     @code{nil} for the default theme.
   @end{short}
   @see-class{gtk:css-provider}"
-  (%css-provider-named name
-                       (if variant variant (cffi:null-pointer))))
+  (%css-provider-named name (or variant (cffi:null-pointer))))
 
 (export 'css-provider-named)
 
