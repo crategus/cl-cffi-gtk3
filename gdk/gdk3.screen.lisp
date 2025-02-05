@@ -674,16 +674,16 @@ lambda (screen)    :run-last
 
 (cffi:defcfun ("gdk_screen_get_monitor_at_point" screen-monitor-at-point) :int
  #+liber-documentation
- "@version{#2021-12-13}
+ "@version{#2025-1-25}
   @argument[screen]{a @class{gdk:screen} object}
-  @argument[x]{an integer with the x coordinate in the virtual @arg{screen}}
-  @argument[y]{an integer with the y coordinate in the virtual @arg{screen}}
+  @argument[x]{an integer for the x coordinate in the virtual @arg{screen}}
+  @argument[y]{an integer for the y coordinate in the virtual @arg{screen}}
   @begin{return}
-    The monitor number in which the point (@arg{x}, @arg{y}) lies, or a monitor
+    The monitor number in which the point @code{(x,y)} lies, or a monitor
     close to the point if not in any monitor.
   @end{return}
   @begin{short}
-    Returns the monitor number in which the point (@arg{x}, @arg{y}) is located.
+    Returns the monitor number in which the point @code{(x,y)} is located.
   @end{short}
   @begin[Warning]{dictionary}
     The @fun{gdk:screen-monitor-at-point} function has been deprecated since

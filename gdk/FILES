@@ -42,9 +42,11 @@ List of files for the GDK Library
   not implemented              - X Window System Interaction
   not implemented              - Wayland Interaction
 
-  gdk3.app-launch-context.lisp - Application launching  - GDK 3.24 +
+  gdk3.app-launch-context.lisp - Application launching  - GDK 3.24 .
 
  II. Deprecated
 
   gdk3.color.lisp              - Colors                 - GDK 3.24 +
   gdk3.device-manager.lisp     - GdkDeviceManger        - GDK 3.24 +
+
+2025-1-1

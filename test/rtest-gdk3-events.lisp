@@ -161,7 +161,7 @@
   (let* ((seat (gdk:display-default-seat (gdk:display-default)))
          (device (gdk:seat-pointer seat))
          (event (gdk:event-new :button-press :device device)))
-    ;; TODO: Returns nil or a double float value, what is the difference?
+    ;; TODO: Returns nil or a double float, what is the difference?
 ;    (is (= 0.0d0 (gdk:event-axis event :ignore)))
     (is (= 0.0d0 (gdk:event-axis event :x)))
     (is (= 0.0d0 (gdk:event-axis event :y)))

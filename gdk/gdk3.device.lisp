@@ -1776,14 +1776,14 @@ get_device_settings (GdkDevice *device)
 
 (defun device-axis (device axes axis-use)
  #+liber-documentation
- "@version{#2024-6-27}
+ "@version{#2025-1-25}
   @argument[device]{a @class{gdk:device} object}
-  @argument[axes]{a list of double float values of axes}
+  @argument[axes]{a list of double floats of axes}
   @argument[use]{a @symbol{gdk:axis-use} value use to look for}
-  @return{The found double float value, otherwise @code{nil}.}
+  @return{The found double float, otherwise @code{nil}.}
   @begin{short}
-    Interprets a list of double as axis values for a given device, and locates
-    the value in the array for a given axis use.
+    Interprets a list of double floats as axis values for a given device, and
+    locates the value in the array for a given axis use.
   @end{short}
   @see-class{gdk:device}
   @see-symbol{gdk:axis-use}"

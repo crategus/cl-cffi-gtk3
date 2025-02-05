@@ -360,29 +360,33 @@
     @about-function{pixbuf-from-surface}
   @end{section}
   @begin[RGBA Colors]{section}
-    The @struct{gdk:rgba} structure is a convenient way to pass RGBA colors
-    around. It is based on Cairo's way to deal with colors and mirrors its
-    behavior. All values are in the range from 0.0 to 1.0 inclusive. So the
-    color
-    @begin{pre}
+    @begin[Introduction to RGBA Colors]{subsection}
+      The @struct{gdk:rgba} structure is a convenient way to pass RGBA colors
+      around. It is based on Cairo's way to deal with colors and mirrors its
+      behavior. All values are in the range from 0.0 to 1.0 inclusive. So the
+      color
+      @begin{pre}
 (gdk:rgba-new :red 0.0 :green 0.0 :blue 0.0 :alpha 0.0)
-    @end{pre}
-    represents transparent black and
-    @begin{pre}
+      @end{pre}
+      represents transparent black and
+      @begin{pre}
 (gdk:rgba-new :red 1.0 :green 1.0 :blue 1.0 :alpha 1.0)
-    @end{pre}
-    is opaque white. Other values will be clamped to this range when drawing.
-    @about-struct{rgba}
-    @about-function{rgba-red}
-    @about-function{rgba-green}
-    @about-function{rgba-blue}
-    @about-function{rgba-alpha}
-    @about-function{rgba-new}
-    @about-function{rgba-copy}
-    @about-function{rgba-parse}
-    @about-function{rgba-equal}
-    @about-function{rgba-hash}
-    @about-function{rgba-to-string}
+      @end{pre}
+      is opaque white. Other values will be clamped to this range when drawing.
+    @end{subsection}
+    @begin[Types and functions for RGBA Colors]{subsection}
+      @about-struct{rgba}
+      @about-function{rgba-red}
+      @about-function{rgba-green}
+      @about-function{rgba-blue}
+      @about-function{rgba-alpha}
+      @about-function{rgba-new}
+      @about-function{rgba-copy}
+      @about-function{rgba-parse}
+      @about-function{rgba-equal}
+      @about-function{rgba-hash}
+      @about-function{rgba-to-string}
+    @end{subsection}
   @end{section}
   @begin[Visuals]{section}
     @about-symbol{visual-type}
@@ -1289,7 +1293,6 @@ got_value (gpointer user_data)
     X backend-specific functions
   @end{section}
   @begin[Application launching]{section}
-    Startup notification for applications.
     @about-class{app-launch-context}
     @about-generic{app-launch-context-display}
     @about-function{app-launch-context-new}
@@ -1300,11 +1303,13 @@ got_value (gpointer user_data)
     @about-function{app-launch-context-set-icon-name}
   @end{section}
   @begin[Deprecated]{section}
-    @begin[Colors]{subsection}
-      A @class{gdk:color} structure represents a color. When working with Cairo,
-      it is often more convenient to use a @class{gdk:rgba} color instead. The
-      @class{gdk:color} structure has been deprecated in favor of the
-      @class{gdk:rgba} structure.
+    @begin[Introduction to Colors]{subsection}
+      The @class{gdk:color} structure represents a color. When working with
+      Cairo, it is often more convenient to use a @class{gdk:rgba} structure
+      instead. The @class{gdk:color} structure has been deprecated in favor of
+      the @class{gdk:rgba} structure.
+    @end{subsection}
+    @begin[Types and functions for Colors]{subsection}
       @about-struct{color}
       @about-function{color-red}
       @about-function{color-green}

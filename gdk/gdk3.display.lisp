@@ -271,7 +271,7 @@ lambda (display seat)    :run-last
  #+liber-documentation
  "@version{#2023-3-4}
   @argument[display]{a @class{gdk:display} object}
-  @return{An integer with the number of screens.}
+  @return{The integer with the number of screens.}
   @short{Gets the number of screens managed by the display.}
   @begin[Warning]{dictionary}
     The @fun{gdk:display-n-screens} function has been deprecated since
@@ -291,7 +291,7 @@ lambda (display seat)    :run-last
  #+liber-documentation
  "@version{#2023-3-4}
   @argument[display]{a @class{gdk:display} object}
-  @argument[num]{an integer with the screen number}
+  @argument[num]{an integer for the screen number}
   @return{The @class{gdk:screen} object.}
   @short{Returns a screen object for one of the screens of the display.}
   @begin[Warning]{dictionary}
@@ -631,7 +631,7 @@ lambda (display seat)    :run-last
  #+liber-documentation
  "@version{2023-3-4}
   @argument[display]{a @class{gdk:display} object}
-  @argument[msec]{an unsigned integer with the double click time in
+  @argument[msec]{an unsigned integer for the double click time in
     milliseconds}
   @begin{short}
     Sets the double click time.
@@ -655,7 +655,7 @@ lambda (display seat)    :run-last
  #+liber-documentation
  "@version{2023-3-4}
   @argument[display]{a @class{gdk:display} object}
-  @argument[distance]{an unsigned integer with the distance in pixels}
+  @argument[distance]{an unsigned integer for the distance in pixels}
   @begin{short}
     Sets the double click distance.
   @end{short}
@@ -849,7 +849,7 @@ lambda (display seat)    :run-last
  #+liber-documentation
  "@version{2023-3-4}
   @argument[display]{a @class{gdk:display} object}
-  @return{An unsigned integer with the default cursor size.}
+  @return{The unsigned integer with the default cursor size.}
   @short{Returns the default size to use for cursors on the display.}
   @begin[Example]{dictionary}
     @begin{pre}
@@ -1003,8 +1003,8 @@ lambda (display seat)    :run-last
   @argument[display]{a @class{gdk:display} object}
   @argument[window]{a @class{gdk:window} object belonging to the clipboard
     owner}
-  @argument[time]{an unsigned integer with the timestamp}
-  @argument[targets]{a list of atoms as strings with the targets that should
+  @argument[time]{an unsigned integer for the timestamp}
+  @argument[targets]{a list of atoms as strings for the targets that should
     be saved, or @code{nil} if all available targets should be saved}
   @begin{short}
     Issues a request to the clipboard manager to store the clipboard data.
@@ -1095,16 +1095,16 @@ lambda (display seat)    :run-last
 (export 'display-supports-composite)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_get_app_launch_context () -> display-app-launch-context
+;;; gdk_display_get_app_launch_context
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_get_app_launch_context"
-               display-app-launch-context) (g:object app-launch-context)
+               display-app-launch-context) (g:object app-launch-context :return)
  #+liber-documentation
- "@version{2023-3-4}
+ "@version{2025-1-1}
   @argument[display]{a @class{gdk:display} object}
   @begin{return}
-    A new @class{gdk:app-launch-context} object for @arg{display}.
+    The new @class{gdk:app-launch-context} object for @arg{display}.
   @end{return}
   @begin{short}
     Returns a @class{gdk:app-launch-context} object suitable for launching
@@ -1189,7 +1189,7 @@ lambda (display seat)    :run-last
  #+liber-documentation
  "@version{2023-3-13}
   @argument[display]{a @class{gdk:display} object}
-  @return{An integer with the number of monitors.}
+  @return{The integer with the number of monitors.}
   @begin{short}
     Gets the number of monitors that belong to display .
   @end{short}
@@ -1208,7 +1208,7 @@ lambda (display seat)    :run-last
  #+liber-documentation
  "@version{2023-3-13}
   @argument[display]{a @class{gdk:display} object}
-  @argument[monitor-num]{an integer with the number of the monitor}
+  @argument[monitor-num]{an integer for the number of the monitor}
   @return{The @class{gdk:monitor} object, or @code{nil} if the
   @code{monitor-num} arugment is not a valid monitor number.}
   @begin{short}
@@ -1246,21 +1246,20 @@ lambda (display seat)    :run-last
 (export 'display-primary-monitor)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_get_monitor_at_point () -> display-monitor-at-point
+;;; gdk_display_get_monitor_at_point
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_get_monitor_at_point" display-monitor-at-point)
     (g:object monitor)
  #+liber-documentation
- "@version{#2023-3-13}
+ "@version{#2025-1-25}
   @argument[display]{a @class{gdk:display} object}
-  @argument[x]{an integer with the x coordinate of the point}
-  @argument[y]{an integer with the y coordinate of the point}
-  @return{The @class{gdk:monitor} object containing the point
-    (@arg{x}, @arg{y}).}
+  @argument[x]{an integer for the x coordinate of the point}
+  @argument[y]{an integer for the y coordinate of the point}
+  @return{The @class{gdk:monitor} object containing the point @code{(x,y)}.}
   @begin{short}
-    Gets the monitor in which the point (@arg{x}, @arg{y}) is located, or a
-    nearby monitor if the point is not in any monitor.
+    Gets the monitor in which the point @code{(x,y)} is located, or a nearby
+    monitor if the point is not in any monitor.
   @end{short}
   @see-class{gdk:display}
   @see-class{gdk:monitor}"

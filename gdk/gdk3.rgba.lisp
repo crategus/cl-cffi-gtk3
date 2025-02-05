@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2012 - 2023 Dieter Kaiser
+;;; Copyright (C) 2012 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -63,12 +63,8 @@
 (setf (liber:alias-for-class 'rgba)
       "GBoxed"
       (documentation 'rgba 'type)
- "@version{2023-1-22}
-  @begin{short}
-    The @class{gdk:rgba} structure is used to represent a (possibly translucent)
-    color, in a way that is compatible with Cairo's notion of color.
-  @end{short}
-  @begin{pre}
+ "@version{2025-1-15}
+  @begin{declaration}
 (define-gboxed-cstruct gdk:rgba \"GdkRGBA\"
   (:export t
    :type-initializer \"gdk_rgba_get_type\")
@@ -76,14 +72,21 @@
   (green :double :initform 0.0d0)
   (blue :double :initform 0.0d0)
   (alpha :double :initform 0.0d0))
-  @end{pre}
-  @begin[code]{table}
-    @entry[red]{The intensity of the red channel from 0.0 to 1.0 inclusive.}
-    @entry[green]{The intensity of the green channel from 0.0 to 1.0 inclusive.}
-    @entry[blue]{The intensity of the blue channel from 0.0 to 1.0 inclusive.}
-    @entry[alpha]{The opacity of the color from 0.0 for completely translucent
-      to 1.0 for opaque.}
-  @end{table}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[red]{The intensity of the red channel from 0.0 to 1.0 inclusive.}
+      @entry[green]{The intensity of the green channel from 0.0 to 1.0
+        inclusive.}
+      @entry[blue]{The intensity of the blue channel from 0.0 to 1.0 inclusive.}
+      @entry[alpha]{The opacity of the color from 0.0 for completely translucent
+        to 1.0 for opaque.}
+    @end{table}
+  @end{values}
+  @begin{short}
+    The @class{gdk:rgba} structure is used to represent a (possibly translucent)
+    color, in a way that is compatible with Cairo's notion of color.
+  @end{short}
   @see-constructor{gdk:rgba-new}
   @see-constructor{gdk:rgba-copy}
   @see-slot{gdk:rgba-red}
@@ -99,14 +102,14 @@
 (setf (liber:alias-for-function 'rgba-red)
       "Accessor"
       (documentation 'rgba-red 'function)
- "@version{2023-1-22}
+ "@version{2025-1-25}
   @syntax{(gdk:rgba-red instance) => red}
   @syntax{(setf (gdk:rgba-red instance) red)}
-  @argument[instance]{a @struct{gdk:rgba} color}
-  @argument[red]{a number coerced to a double float with the intensity of the
-    red channel from 0.0 to 1.0}
+  @argument[instance]{a @struct{gdk:rgba} instance}
+  @argument[red]{a number coerced to a double float for the intensity of
+    the red channel from 0.0 to 1.0}
   @begin{short}
-    Accessor of the @code{red} slot of the @struct{gdk:rgba} color.
+    Accessor of the @code{red} slot of the @struct{gdk:rgba} structure.
   @end{short}
   @see-struct{gdk:rgba}
   @see-function{gdk:rgba-green}
@@ -117,14 +120,14 @@
 (setf (liber:alias-for-function 'rgba-green)
       "Accessor"
       (documentation 'rgba-green 'function)
- "@version{2023-1-22}
+ "@version{2025-1-25}
   @syntax{(gdk:rgba-green instance) => green}
   @syntax{(setf (gdk:rgba-green instance) green)}
-  @argument[instance]{a @struct{gdk:rgba} color}
-  @argument[green]{a number coerced to a double float with intensity of the
-    green channel from 0.0 to 1.0}
+  @argument[instance]{a @struct{gdk:rgba} instance}
+  @argument[green]{a number coerced to a double float for the intensity
+    of the green channel from 0.0 to 1.0}
   @begin{short}
-    Accessor of the @code{green} slot of the @struct{gdk:rgba} color.
+    Accessor of the @code{green} slot of the @struct{gdk:rgba} structure.
   @end{short}
   @see-struct{gdk:rgba}
   @see-function{gdk:rgba-red}
@@ -135,14 +138,14 @@
 (setf (liber:alias-for-function 'rgba-blue)
       "Accessor"
       (documentation 'rgba-blue 'function)
- "@version{2023-1-22}
+ "@version{2025-1-25}
   @syntax{(gdk:rgba-blue instance) => blue}
   @syntax{(setf (gdk:rgba-blue instance) blue)}
   @argument[instance]{a @struct{gdk:rgba} color}
-  @argument[blue]{a number coerced to a double float with intensity of the blue
-    channel from 0.0 to 1.0}
+  @argument[blue]{a number coerced to a double float for the intensity
+    of the blue channel from 0.0 to 1.0}
   @begin{short}
-    Accessor of the @code{blue} slot of the @struct{gdk:rgba} color.
+    Accessor of the @code{blue} slot of the @struct{gdk:rgba} structure.
   @end{short}
   @see-struct{gdk:rgba}
   @see-function{gdk:rgba-red}
@@ -153,14 +156,14 @@
 (setf (liber:alias-for-function 'rgba-alpha)
       "Accessor"
       (documentation 'rgba-alpha 'function)
- "@version{2023-1-22}
+ "@version{2025-1-25}
   @syntax{(gdk:rgba-alpha instance) => alpha}
   @syntax{(setf (gdk:rgba-alpha instance) alpha)}
-  @argument[instance]{a @struct{gdk:rgba} color}
-  @argument[alpha]{a number coerced to a double float with opacity of the color
-    from 0.0 for completely translucent to 1.0 for opaque}
+  @argument[instance]{a @struct{gdk:rgba} instance}
+  @argument[alpha]{a number coerced to a double float for the opacity of
+    the color from 0.0 for completely translucent to 1.0 for opaque}
   @begin{short}
-    Accessor of the @code{alpha} slot of the @struct{gdk:rgba} color.
+    Accessor of the @code{alpha} slot of the @struct{gdk:rgba} structure.
   @end{short}
   @see-struct{gdk:rgba}
   @see-function{gdk:rgba-red}
@@ -172,20 +175,22 @@
 ;;; ----------------------------------------------------------------------------
 
 (defun rgba-new (&key (red 0.0d0) (green 0.0d0) (blue 0.0d0) (alpha 0.0d0))
- "@version{2023-1-22}
-  @argument[red]{a number with the intensity of the red channel from 0.0 to 1.0
+ "@version{2025-1-25}
+  @argument[red]{a number for the intensity of the red channel from 0.0 to 1.0
     inclusive}
-  @argument[green]{a number with the intensity of the green channel from 0.0 to
+  @argument[green]{a number for the intensity of the green channel from 0.0 to
     1.0 inclusive}
-  @argument[blue]{a number with the intensity of the blue channel from 0.0 to
+  @argument[blue]{a number for the intensity of the blue channel from 0.0 to
     1.0 inclusive}
-  @argument[alpha]{a number with the opacity of the color from 0.0 for
+  @argument[alpha]{a number for the opacity of the color from 0.0 for
     completely translucent to 1.0 for opaque}
+  @return{The newly created @class{gdk:rgba} instance.}
   @begin{short}
-    Creates a @struct{gdk:rgba} color.
+    Creates a @struct{gdk:rgba} instance.
   @end{short}
   @begin[Note]{dictionary}
-    The numbers are coerced to double float values.
+    All numbers are coerced to a double float before being passed to the
+    foreign C function.
   @end{dictionary}
   @see-struct{gdk:rgba}
   @see-function{gdk:rgba-copy}"
@@ -197,16 +202,16 @@
 (export 'rgba-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_rgba_copy ()
+;;; gdk_rgba_copy
 ;;; ----------------------------------------------------------------------------
 
 (defun rgba-copy (rgba)
  #+liber-documentation
- "@version{2023-1-22}
-  @argument[rgba]{a @struct{gdk:rgba} color}
-  @return{A newly allocated @struct{gdk:rgba} color, with the same contents
+ "@version{2025-1-15}
+  @argument[rgba]{a @struct{gdk:rgba} instance}
+  @return{The newly allocated @struct{gdk:rgba} instance with the same contents
     as @arg{rgba}.}
-  @short{Makes a copy of a @struct{gdk:rgba} color.}
+  @short{Makes a copy of a RGBA color.}
   @see-struct{gdk:rgba}
   @see-function{gdk:rgba-new}"
   (copy-rgba rgba))
@@ -214,18 +219,13 @@
 (export 'rgba-copy)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_rgba_free ()                                       not needed
-;;;
-;;; void gdk_rgba_free (GdkRGBA *rgba);
+;;; gdk_rgba_free                                           not needed
 ;;;
 ;;; Frees a GdkRGBA struct created with gdk_rgba_copy()
-;;;
-;;; rgba :
-;;;     a GdkRGBA
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_rgba_parse ()
+;;; gdk_rgba_parse
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_rgba_parse" %rgba-parse) :boolean
@@ -234,9 +234,9 @@
 
 (defun rgba-parse (str)
  #+liber-documentation
- "@version{2023-1-22}
+ "@version{2025-1-15}
   @argument[str]{a string specifying the color}
-  @return{A @struct{gdk:rgba} color with the filled in values.}
+  @return{The @struct{gdk:rgba} instance with the filled in values.}
   @begin{short}
     Parses a textual representation of a color, and returns a RGBA instance
     filling in the @code{red}, @code{green}, @code{blue} and @code{alpha}
@@ -256,7 +256,7 @@
   and @code{b} are either integers in the range 0 to 255 or precentage values
   in the range 0% to 100%, and @code{a} is a floating point value in the range
   0.0 to 1.0.
-  @begin[Example]{dictionary}
+  @begin[Examples]{dictionary}
     @begin{pre}
 (gdk:rgba-parse \"LightGreen\")
 => #S(GDK-RGBA
@@ -281,14 +281,14 @@
 (export 'rgba-parse)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_rgba_equal ()
+;;; gdk_rgba_equal
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_rgba_equal" rgba-equal) :boolean
  #+liber-documentation
- "@version{2023-1-22}
-  @argument[color1]{a @struct{gdk:rgba} color}
-  @argument[color2]{another @struct{gdk:rgba} color}
+ "@version{2025-1-15}
+  @argument[color1]{a @struct{gdk:rgba} instance}
+  @argument[color2]{another @struct{gdk:rgba} instance}
   @return{@em{True} if the two colors compare equal.}
   @short{Compares two RGBA colors.}
   @see-struct{gdk:rgba}"
@@ -298,14 +298,14 @@
 (export 'rgba-equal)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_rgba_hash ()
+;;; gdk_rgba_hash
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_rgba_hash" rgba-hash) :uint
  #+liber-documentation
- "@version{2023-1-22}
-  @argument[color]{a @struct{gdk:rgba} color}
-  @return{An unsigned integer with the hash value for @arg{color}.}
+ "@version{2025-1-15}
+  @argument[color]{a @struct{gdk:rgba} instance}
+  @return{The unsigned integer with the hash value for @arg{color}.}
   @begin{short}
     A hash function suitable for using for a hash table that stores
     RGBA colors.
@@ -316,14 +316,14 @@
 (export 'rgba-hash)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_rgba_to_string ()
+;;; gdk_rgba_to_string
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_rgba_to_string" rgba-to-string) :string
  #+liber-documentation
- "@version{2023-1-22}
-  @argument[color]{a @struct{gdk:rgba} color}
-  @return{A string with the textual specification of @arg{color}.}
+ "@version{2025-1-15}
+  @argument[color]{a @struct{gdk:rgba} instance}
+  @return{The string with the textual specification of @arg{color}.}
   @begin{short}
     Returns a textual specification of @arg{color} in the form @code{rgb(r,g,b)}
     or @code{rgba(r,g,b,a)}, where @code{r}, @code{g}, @code{b} and @code{a}

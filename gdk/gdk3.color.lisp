@@ -6,7 +6,7 @@
 ;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -38,7 +38,7 @@
 ;;; Functons
 ;;;
 ;;;     gdk_color_copy
-;;;     gdk_color_free
+;;;     gdk_color_free                                      not needed
 ;;;     gdk_color_parse
 ;;;     gdk_color_equal
 ;;;     gdk_color_hash
@@ -46,8 +46,6 @@
 ;;; ----------------------------------------------------------------------------
 
 (in-package :gdk)
-
-;; TODO: Check GdkColor: No gtype for GdkColor after loading the library.
 
 ;;; ----------------------------------------------------------------------------
 ;;; GdkColor
@@ -65,12 +63,8 @@
 (setf (liber:alias-for-class 'color)
       "GBoxed"
       (documentation 'color 'type)
- "@version{2023-1-22}
-  @begin{short}
-    The @class{gdk:color} structure is used to describe a color, similar to the
-    XColor structure used in the X11 drawing API.
-  @end{short}
-  @begin{pre}
+ "@version{2025-1-15}
+  @begin{declaration}
 (define-gboxed-cstruct color \"GdkColor\"
   (:export t
    :type-initializer \"gdk_color_get_type\")
@@ -78,20 +72,27 @@
   (red :uint16 :initform 0)
   (green :uint16 :initform 0)
   (blue :uint16 :initform 0))
-  @end{pre}
-  @begin[code]{table}
-    @entry[pixel]{For allocated colors, the pixel value used to draw this
-      color on the screen. Not used anymore.}
-    @entry[red]{The red component of the color. This is a value between
-      0 and 65535, with 65535 indicating full intensity.}
-    @entry[green]{The green component of the color. This is a value between
-      0 and 65535, with 65535 indicating full intensity.}
-    @entry[blue]{The blue component of the color. This is a value between
-      0 and 65535, with 65535 indicating full intensity.}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{table}
+      @entry[pixel]{For allocated colors, the pixel value used to draw this
+        color on the screen. Not used anymore.}
+      @entry[red]{The red component of the color. This is a value between
+        0 and 65535, with 65535 indicating full intensity.}
+      @entry[green]{The green component of the color. This is a value between
+        0 and 65535, with 65535 indicating full intensity.}
+      @entry[blue]{The blue component of the color. This is a value between
+        0 and 65535, with 65535 indicating full intensity.}
   @end{table}
+  @end{values}
+  @begin{short}
+    The @class{gdk:color} structure is used to describe a color, similar to the
+    XColor structure used in the X11 drawing API.
+  @end{short}
   @begin[Warning]{dictionary}
-    The @class{gdk:color} color has been deprecated since version 3.14 and
-    should not be used in newly written code. Use the @class{gdk:rgba} color.
+    The @class{gdk:color} structure has been deprecated since version 3.14 and
+    should not be used in newly written code. Use the @class{gdk:rgba}
+    structure.
   @end{dictionary}
   @see-constructor{gdk:color-new}
   @see-constructor{gdk:color-copy}
@@ -111,18 +112,18 @@
 (setf (liber:alias-for-function 'color-pixel)
       "Accessor"
       (documentation 'color-pixel 'function)
- "@version{2023-1-22}
+ "@version{2025-1-15}
   @syntax{(gdk:color-pixel instance) => pixel}
   @syntax{(setf (gdk:color-pixel instance) pixel)}
   @begin{short}
-    Accessor of the @code{pixel} slot of the @class{gdk:color} color.
+    Accessor of the @code{pixel} slot of the @class{gdk:color} structure.
   @end{short}
   For allocated colors, the pixel value used to draw this color on the screen.
   Not used anymore.
   @begin[Warning]{dictionary}
     The @fun{gdk:color-pixel} function has been deprecated since version 3.14
     and should not be used in newly written code. Use the @class{gdk:rgba}
-    color.
+    structure.
   @end{dictionary}
   @see-class{gdk:color}
   @see-class{gdk:rgba}")
@@ -133,18 +134,18 @@
 (setf (liber:alias-for-function 'color-red)
       "Accessor"
       (documentation 'color-red 'function)
- "@version{2023-1-22}
+ "@version{2025-1-15}
   @syntax{(gdk:color-red instance) => red}
   @syntax{(setf (gdk:color-red instance) red)}
   @begin{short}
-    Accessor of the @code{red} slot of the @class{gdk:color} color.
+    Accessor of the @code{red} slot of the @class{gdk:color} structure.
   @end{short}
   The red component of the color. This is a value between 0 and 65535, with
   65535 indicating full intensity.
   @begin[Warning]{dictionary}
     The @fun{gdk:color-red} function has been deprecated since version 3.14
     and should not be used in newly written code. Use the @class{gdk:rgba}
-    color.
+    structure.
   @end{dictionary}
   @see-class{gdk:color}
   @see-class{gdk:rgba}
@@ -157,18 +158,18 @@
 (setf (liber:alias-for-function 'color-green)
       "Accessor"
       (documentation 'color-green 'function)
- "@version{2023-1-22}
+ "@version{2025-1-15}
   @syntax{(gdk:color-green instance) => green}
   @syntax{(setf (gdk:color-green instance) green)}
   @begin{short}
-    Accessor of the @code{green} slot of the @class{gdk:color} color.
+    Accessor of the @code{green} slot of the @class{gdk:color} structure.
   @end{short}
   The green component of the color. This is a value between 0 and 65535, with
   65535 indicating full intensity.
   @begin[Warning]{dictionary}
     The @fun{gdk:color-green} function has been deprecated since version 3.14
     and should not be used in newly written code. Use the @class{gdk:rgba}
-    color.
+    structure.
   @end{dictionary}
   @see-class{gdk:color}
   @see-class{gdk:rgba}
@@ -181,18 +182,18 @@
 (setf (liber:alias-for-function 'color-blue)
       "Accessor"
       (documentation 'color-blue 'function)
- "@version{2023-1-22}
+ "@version{2025-1-15}
   @syntax{(gdk:color-blue instance) => blue}
   @syntax{(setf (gdk:color-blue instance) blue)}
   @begin{short}
-    Accessor of the @code{blue} slot of the @class{gdk:color} color.
+    Accessor of the @code{blue} slot of the @class{gdk:color} structure.
   @end{short}
   The blue component of the color. This is a value between 0 and 65535, with
   65535 indicating full intensity.
   @begin[Warning]{dictionary}
     The @fun{gdk:color-blue} function has been deprecated since version 3.14
     and should not be used in newly written code. Use the @class{gdk:rgba}
-    color.
+    structure.
   @end{dictionary}
   @see-class{gdk:color}
   @see-class{gdk:rgba}
@@ -207,20 +208,21 @@
 
 (defun color-new (&key (pixel 0) (red 0) (green 0) (blue 0))
  #+liber-documentation
- "@version{2023-1-22}
-  @argument[pixel]{an unsigned integer with the pixel value used to draw this
+ "@version{2025-1-15}
+  @argument[pixel]{an unsigned integer for the pixel value used to draw this
     color on the screen, not used anymore}
-  @argument[red]{an unsigned integer with the red component of the color, this
+  @argument[red]{an unsigned integer for the red component of the color, this
     is a value between 0 and 65535, with 65535 indicating full intensity}
-  @argument[green]{an unsigned integer with the green component of the color}
-  @argument[blue]{an unsigned integer with the blue component of the color}
+  @argument[green]{an unsigned integer for the green component of the color}
+  @argument[blue]{an unsigned integer for the blue component of the color}
+  @return{The newly created @class{gdk:color} instance.}
   @begin{short}
-    Creates a new @class{gdk:color} color.
+    Creates a new @class{gdk:color} instance.
   @end{short}
   @begin[Warning]{dictionary}
     The @fun{gdk:color-new} function has been deprecated since version 3.14
     and should not be used in newly written code. Use the @class{gdk:rgba}
-    color.
+    structure.
   @end{dictionary}
   @see-class{gdk:color}
   @see-class{gdk:rgba}"
@@ -229,23 +231,24 @@
 (export 'color-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_color_copy ()
+;;; gdk_color_copy
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline color-copy))
 
 (defun color-copy (color)
  #+liber-documentation
- "@version{2023-1-22}
+ "@version{2025-1-15}
   @argument[color]{a @class{gdk:color} color}
-  @return{A copy of @arg{color}.}
+  @return{The newly created @class{gdk:color} instance with the copy of
+    @arg{color}.}
   @begin{short}
     Makes a copy of a color.
   @end{short}
   @begin[Warning]{dictionary}
     The @fun{gdk:color-copy} function has been deprecated since version 3.14
     and should not be used in newly written code. Use the @class{gdk:rgba}
-    color.
+    structure.
   @end{dictionary}
   @see-class{gdk:color}
   @see-class{gdk:rgba}"
@@ -254,23 +257,13 @@
 (export 'color-copy)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_color_free ()
-;;;
-;;; void gdk_color_free (GdkColor *color);
+;;; gdk_color_free
 ;;;
 ;;; Frees a color structure created with gdk_color_copy().
-;;;
-;;; gdk_color_free has been deprecated since version 3.14 and should not be
-;;; used in newly written code. Use GdkRGBA
-;;;
-;;; color :
-;;;     a GdkColor
 ;;; ----------------------------------------------------------------------------
 
-;; not needed
-
 ;;; ----------------------------------------------------------------------------
-;;; gdk_color_parse ()
+;;; gdk_color_parse
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_color_parse" %color-parse) :boolean
@@ -279,9 +272,9 @@
 
 (defun color-parse (spec)
  #+liber-documentation
- "@version{2023-1-22}
+ "@version{2025-1-15}
   @argument[spec]{a string specifying the color}
-  @return{The @class{gdk:color} color or @code{nil} if the parsing did not
+  @return{The @class{gdk:color} instance or @code{nil} if the parsing did not
     succeed.}
   @begin{short}
     Parses a textual specification of a color and fill in the red, green, and
@@ -296,7 +289,7 @@
   @begin[Warning]{dictionary}
     The @fun{gdk:color-parse} function has been deprecated since version 3.14
     and should not be used in newly written code. Use the @class{gdk:rgba}
-    color.
+    structure.
   @end{dictionary}
   @see-class{gdk:color}
   @see-class{gdk:rgba}
@@ -308,14 +301,14 @@
 (export 'color-parse)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_color_equal ()
+;;; gdk_color_equal
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_color_equal" color-equal) :boolean
  #+liber-documentation
- "@version{2023-1-22}
-  @argument[color1]{a @class{gdk:color} color}
-  @argument[color2]{another @class{gdk:color} color}
+ "@version{2025-1-15}
+  @argument[color1]{a @class{gdk:color} instance}
+  @argument[color2]{another @class{gdk:color} instance}
   @return{@em{True} if the two colors compare equal.}
   @begin{short}
     Compares two colors.
@@ -323,7 +316,7 @@
   @begin[Warning]{dictionary}
     The @fun{gdk:color-equal} function has been deprecated since version 3.14
     and should not be used in newly written code. Use the @class{gdk:rgba}
-    color.
+    structure.
   @end{dictionary}
   @see-class{gdk:color}
   @see-class{gdk:rgba}"
@@ -333,14 +326,14 @@
 (export 'color-equal)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_color_hash ()
+;;; gdk_color_hash
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_color_hash" color-hash) :uint
  #+liber-documentation
- "@version{2023-1-22}
-  @argument[color]{a @class{gdk:color} color}
-  @return{An unsigned integer with the hash value applied to @arg{color}.}
+ "@version{2025-1-15}
+  @argument[color]{a @class{gdk:color} instance}
+  @return{The unsigned integer with the hash value applied to @arg{color}.}
   @begin{short}
     A hash function suitable for using for a hash table that stores
     @class{gdk:color} colors.
@@ -348,7 +341,7 @@
   @begin[Warning]{dictionary}
     The @fun{gdk:color-hash} function has been deprecated since version 3.14
     and should not be used in newly written code. Use the @class{gdk:rgba}
-    color.
+    structure.
   @end{dictionary}
   @see-class{gdk:color}
   @see-class{gdk:rgba}"
@@ -357,15 +350,15 @@
 (export 'color-hash)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_color_to_string ()
+;;; gdk_color_to_string
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_color_to_string" color-to-string)
     (:string :free-from-foreign t)
  #+liber-documentation
- "@version{2023-1-22}
-  @argument[color]{a @class{gdk:color} color}
-  @return{A text string representing @arg{color}.}
+ "@version{2025-1-15}
+  @argument[color]{a @class{gdk:color} instance}
+  @return{The text string representing @arg{color}.}
   @begin{short}
     Returns a textual specification of @arg{color} in the hexadecimal form
     @code{#rrrrggggbbbb}, where @code{r}, @code{g} and @code{b} are hex digits
@@ -375,7 +368,7 @@
   @begin[Warning]{dictionary}
     The @fun{gdk:color-to-string} function has been deprecated since version
     3.14 and should not be used in newly written code. Use the @class{gdk:rgba}
-    color.
+    structure.
   @end{dictionary}
   @see-class{gdk:color}
   @see-class{gdk:rgba}

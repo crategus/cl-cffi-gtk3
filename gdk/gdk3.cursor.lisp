@@ -502,8 +502,8 @@
   cursor sizes.
 
   If the @arg{x} or @arg{y} arguments are -1, the pixbuf must have options named
-  @code{\"x_hot\"} and @code{\"y_hot\"} containing integer values between 0 and
-  the width and height of the pixbuf.
+  @code{\"x_hot\"} and @code{\"y_hot\"} containing integers between 0 and the
+  width and height of the pixbuf.
 
   On the X backend, support for RGBA cursors requires a sufficently new version
   of the X Render extension.

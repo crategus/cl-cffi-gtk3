@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gdk3.key-values.lisp
 ;;;
-;;; The documentation of this file is taken from the GDK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GDK 3 Reference Manual
+;;; Version 3.24 and modified to document the Lisp binding to the GDK library,
+;;; see <http://www.gtk.org>. The API documentation of the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -79,7 +79,7 @@
 (in-package :gdk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GdkKeymapKey                                    not exported
+;;; GdkKeymapKey                                            not exported
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcstruct %keymap-key
@@ -208,7 +208,7 @@ lambda (keymap)    :run-last
   @see-class{gdk:event-key}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_keymap_get_default () -> keymap-default
+;;; gdk_keymap_get_default
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_keymap_get_default" keymap-default) (g:object keymap)
@@ -229,7 +229,7 @@ lambda (keymap)    :run-last
 (export 'keymap-default)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_keymap_get_for_display () -> keymap-for-display
+;;; gdk_keymap_get_for_display
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_keymap_get_for_display" keymap-for-display) (g:object keymap)
@@ -245,7 +245,7 @@ lambda (keymap)    :run-last
 (export 'keymap-for-display)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_keymap_lookup_key ()
+;;; gdk_keymap_lookup_key
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_keymap_lookup_key" %keymap-lookup-key) :uint
@@ -255,12 +255,12 @@ lambda (keymap)    :run-last
 (defun keymap-lookup-key (keymap keycode group level)
  "@version{2023-3-4}
   @argument[keymap]{a @class{gdk:keymap} object}
-  @argument[keycode]{an unsigned integer with the hardware keycode}
+  @argument[keycode]{an unsigned integer for the hardware keycode}
   @argument[group]{an integer which indicates movement in a horizontal
     direction}
   @argument[level]{an integer which indicates which symbol on the key will be
     used}
-  @return{An unsigned integer with the keyval, or 0 if none was mapped to the
+  @return{The unsigned integer with the keyval, or 0 if none was mapped to the
     given key.}
   @begin{short}
     Looks up the keyval mapped to a keycode/group/level triplet.
@@ -289,7 +289,7 @@ lambda (keymap)    :run-last
 (export 'keymap-lookup-key)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_keymap_translate_keyboard_state ()
+;;; gdk_keymap_translate_keyboard_state
 ;;; ----------------------------------------------------------------------------
 
 ;; TODO: Translate the example to Lisp code
@@ -309,9 +309,9 @@ lambda (keymap)    :run-last
  #+liber-documentation
  "@version{2023-3-4}
   @argument[keymap]{a @class{gdk:keymap} object}
-  @argument[keycode]{an unsigned integer with the keycode}
+  @argument[keycode]{an unsigned integer for the keycode}
   @argument[state]{a @symbol{gdk:modifier-type} modifier state}
-  @argument[group]{an integer with the active keyboard group}
+  @argument[group]{an integer for the active keyboard group}
   @begin{return}
     @arg{keyval} -- an unsigned integer with the keyval @br{}
     @arg{effective} -- an integer with the effective group @br{}
@@ -369,7 +369,7 @@ if (keyval == GDK_PLUS &&
 (export 'keymap-translate-keyboard-state)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_keymap_get_entries_for_keyval () -> keymap-entries-for-keyval
+;;; gdk_keymap_get_entries_for_keyval
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_keymap_get_entries_for_keyval" %keymap-entries-for-keyval)
@@ -423,7 +423,7 @@ if (keyval == GDK_PLUS &&
 (export 'keymap-entries-for-keyval)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_keymap_get_entries_for_keycode () -> keymap-entries-for-keycode
+;;; gdk_keymap_get_entries_for_keycode
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_keymap_get_entries_for_keycode" %keymap-entries-for-keycode)
@@ -438,9 +438,9 @@ if (keyval == GDK_PLUS &&
  #+liber-documentation
  "@version{2023-3-4}
   @argument[keymap]{a @class{gdk:keymap} object}
-  @argument[keycode]{an integer with a hardware keycode}
+  @argument[keycode]{an integer for a hardware keycode}
   @begin{return}
-    A list of keyval, keycode, group, and level values.
+    The list of keyval, keycode, group, and level values.
   @end{return}
   @begin{short}
     Returns the keyvals bound to @arg{keycode}.
@@ -477,7 +477,7 @@ if (keyval == GDK_PLUS &&
 (export 'keymap-entries-for-keycode)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_keymap_get_direction () -> keymap-direction
+;;; gdk_keymap_get_direction
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_keymap_get_direction" keymap-direction) pango:direction
@@ -498,7 +498,7 @@ if (keyval == GDK_PLUS &&
 (export 'keymap-direction)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_keymap_have_bidi_layouts ()
+;;; gdk_keymap_have_bidi_layouts
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_keymap_have_bidi_layouts" keymap-have-bidi-layouts) :boolean
@@ -517,7 +517,7 @@ if (keyval == GDK_PLUS &&
 (export 'keymap-have-bidi-layouts)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_keymap_get_caps_lock_state () -> keymap-caps-lock-state
+;;; gdk_keymap_get_caps_lock_state
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_keymap_get_caps_lock_state" keymap-caps-lock-state) :boolean
@@ -532,7 +532,7 @@ if (keyval == GDK_PLUS &&
 (export 'keymap-caps-lock-state)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_keymap_get_num_lock_state () -> keymap-num-lock-state
+;;; gdk_keymap_get_num_lock_state
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_keymap_get_num_lock_state" keymap-num-lock-state) :boolean
@@ -547,10 +547,11 @@ if (keyval == GDK_PLUS &&
 (export 'keymap-num-lock-state)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_keymap_get_scroll_lock_state () -> keymap-scroll-lock-state
+;;; gdk_keymap_get_scroll_lock_state
 ;;; ----------------------------------------------------------------------------
 
-(cffi:defcfun ("gdk_keymap_get_scroll_lock_state" keymap-scroll-lock-state) :boolean
+(cffi:defcfun ("gdk_keymap_get_scroll_lock_state" keymap-scroll-lock-state)
+    :boolean
  #+liber-documentation
  "@version{2023-3-13}
   @argument[keymap]{a @class{gdk:keymap} object}
@@ -562,10 +563,11 @@ if (keyval == GDK_PLUS &&
 (export 'keymap-scroll-lock-state)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_keymap_get_modifier_state () -> keymap-modifier-state
+;;; gdk_keymap_get_modifier_state
 ;;; ----------------------------------------------------------------------------
 
-(cffi:defcfun ("gdk_keymap_get_modifier_state" keymap-modifier-state) modifier-type
+(cffi:defcfun ("gdk_keymap_get_modifier_state" keymap-modifier-state)
+    modifier-type
  #+liber-documentation
  "@version{2023-3-4}
   @argument[keymap]{a @class{gdk:keymap} object}
@@ -578,7 +580,7 @@ if (keyval == GDK_PLUS &&
 (export 'keymap-modifier-state)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_keymap_add_virtual_modifiers ()
+;;; gdk_keymap_add_virtual_modifiers
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_keymap_add_virtual_modifiers" %keymap-add-virtual-modifiers)
@@ -620,7 +622,7 @@ if (keyval == GDK_PLUS &&
 (export 'keymap-add-virtual-modifiers)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_keymap_map_virtual_modifiers ()
+;;; gdk_keymap_map_virtual_modifiers
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_keymap_map_virtual_modifiers" %keymap-map-virtual-modifiers)
@@ -633,11 +635,11 @@ if (keyval == GDK_PLUS &&
  "@version{2023-3-4}
   @argument[keymap]{a @class{gdk:keymap} object}
   @argument[state]{a @symbol{gdk:modifier-type} value}
-  @return{a @symbol{gdk:modifier-type} value}
+  @return{The @symbol{gdk:modifier-type} value.}
   @begin{short}
-    Maps the virtual modifiers (i.e. Super, Hyper and Meta) which are set in
-    @arg{state} to their non-virtual counterparts (i.e. Mod2, Mod3,...) and set
-    the corresponding bits in the return value.
+    Maps the virtual modifiers, that is Super, Hyper and Meta, which are set in
+    @arg{state} to their non-virtual counterparts, that is Mod2, Mod3, ..., and
+    set the corresponding bits in the return value.
   @end{short}
   This function is useful when matching key events against accelerators.
   @begin[Example]{dictionary}
@@ -656,7 +658,7 @@ if (keyval == GDK_PLUS &&
 (export 'keymap-map-virtual-modifiers)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_keymap_get_modifier_mask () -> keymap-modifier-mask
+;;; gdk_keymap_get_modifier_mask
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_keymap_get_modifier_mask" keymap-modifier-mask) modifier-type
@@ -687,15 +689,15 @@ if (keyval == GDK_PLUS &&
 (export 'keymap-modifier-mask)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_keyval_name ()
+;;; gdk_keyval_name
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_keyval_name" keyval-name) (:string :free-from-foreign nil)
  #+liber-documentation
  "@version{2023-3-4}
-  @argument[keyval]{an unsigned integer with a key value}
+  @argument[keyval]{an unsigned integer for a key value}
   @begin{return}
-    A string containing the name of the key, or @code{nil} if @arg{keyval} is
+    The string containing the name of the key, or @code{nil} if @arg{keyval} is
     not a valid key.
   @end{return}
   @begin{short}
@@ -717,16 +719,16 @@ if (keyval == GDK_PLUS &&
 (export 'keyval-name)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_keyval_from_name ()
+;;; gdk_keyval_from_name
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_keyval_from_name" keyval-from-name) :uint
  #+liber-documentation
  "@version{2023-3-4}
-  @argument[name]{a string with the key name}
+  @argument[name]{a string for the key name}
   @begin{return}
-    An unsigned integer with the corresponding key value, or the @code{#xffffff}
-    value if the key name is not a valid key.
+    The unsigned integer with the corresponding key value, or the
+    @code{#xffffff} value if the key name is not a valid key.
   @end{return}
   @begin{short}
     Converts a key name to a key value.
@@ -747,7 +749,7 @@ if (keyval == GDK_PLUS &&
 (export 'keyval-from-name)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_keyval_convert_case ()
+;;; gdk_keyval_convert_case
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_keyval_convert_case" %keyval-convert-case) :void
@@ -758,7 +760,7 @@ if (keyval == GDK_PLUS &&
 (defun keyval-convert-case (keyval)
  #+liber-documentation
  "@version{2023-3-4}
-  @argument[keyval]{an unsigned integer with the keyval}
+  @argument[keyval]{an unsigned integer for the keyval}
   @begin{return}
     @arg{lower} -- an unsigned integer with the lowercase version @br{}
     @arg{upper} -- an unsigned integer with the uppercase version
@@ -775,13 +777,13 @@ if (keyval == GDK_PLUS &&
 (export 'keyval-convert-case)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_keyval_to_upper ()
+;;; gdk_keyval_to_upper
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_keyval_to_upper" keyval-to-upper) :uint
  #+liber-documentation
  "@version{2023-3-4}
-  @argument[keyval]{an unsigned integer with a key value}
+  @argument[keyval]{an unsigned integer for a key value}
   @return{The upper case form of @arg{keyval}, or @arg{keyval} itself if it is
     already in upper case or it is not subject to case conversion.}
   @begin{short}
@@ -794,13 +796,13 @@ if (keyval == GDK_PLUS &&
 (export 'keyval-to-upper)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_keyval_to_lower ()
+;;; gdk_keyval_to_lower
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_keyval_to_lower" keyval-to-lower) :uint
  #+liber-documentation
  "@version{2023-3-4}
-  @argument[keyval]{an unsigned integer with a key value}
+  @argument[keyval]{an unsigned integer for a key value}
   @return{The lower case form of @arg{keyval}, or @arg{keyval} itself if it is
     already in lower case or it is not subject to case conversion.}
   @begin{short}
@@ -813,13 +815,13 @@ if (keyval == GDK_PLUS &&
 (export 'keyval-to-lower)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_keyval_is_upper ()
+;;; gdk_keyval_is_upper
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_keyval_is_upper" keyval-is-upper) :boolean
  #+liber-documentation
  "@version{2023-3-4}
-  @argument[keyval]{an unsigned integer with a key value}
+  @argument[keyval]{an unsigned integer for a key value}
   @return{@em{True} if @arg{keyval} is in upper case, or if @arg{keyval} is not
     subject to case conversion.}
   @begin{short}
@@ -832,13 +834,13 @@ if (keyval == GDK_PLUS &&
 (export 'keyval-is-upper)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_keyval_is_lower ()
+;;; gdk_keyval_is_lower
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_keyval_is_lower" keyval-is-lower) :boolean
  #+liber-documentation
  "@version{2023-3-4}
-  @argument[keyval]{an unsigned integer with a key value}
+  @argument[keyval]{an unsigned integer for a key value}
   @return{@em{True} if @arg{keyval} is in lower case, or if @arg{keyval} is not
     subject to case conversion.}
   @begin{short}
@@ -851,13 +853,13 @@ if (keyval == GDK_PLUS &&
 (export 'keyval-is-lower)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_keyval_to_unicode ()
+;;; gdk_keyval_to_unicode
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_keyval_to_unicode" keyval-to-unicode) g:unichar
  #+liber-documentation
  "@version{2023-3-4}
-  @argument[keyval]{an unsigned integer with a GDK key symbol}
+  @argument[keyval]{an unsigned integer for a GDK key symbol}
   @return{The corresponding unicode character, or @code{#\\Nul} if there is no
     corresponding character.}
   @begin{short}
@@ -877,14 +879,14 @@ if (keyval == GDK_PLUS &&
 (export 'keyval-to-unicode)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_unicode_to_keyval ()
+;;; gdk_unicode_to_keyval
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_unicode_to_keyval" unicode-to-keyval) :uint
  #+liber-documentation
  "@version{2023-3-4}
   @argument[unichar]{a ISO10646 encoded character}
-  @return{An unsigned integer with the corresponding GDK key symbol, if one
+  @return{The unsigned integer with the corresponding GDK key symbol, if one
     exists, or, if there is no corresponding symbol, @code{@arg{unichar} |
     0x01000000}.}
   @short{Convert from a ISO10646 character to a key symbol.}

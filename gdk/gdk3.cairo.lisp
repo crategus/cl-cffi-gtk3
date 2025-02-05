@@ -350,7 +350,7 @@
 (export 'cairo-set-source-rgba)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_cairo_set_source_pixbuf ()
+;;; gdk_cairo_set_source_pixbuf
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_cairo_set_source_pixbuf" %cairo-set-source-pixbuf) :void
@@ -361,19 +361,19 @@
 
 (defun cairo-set-source-pixbuf (cr pixbuf x y)
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2025-1-25}
   @argument[cr]{a @symbol{cairo:context-t} context}
   @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object}
-  @argument[x]{a number coerced to a double float x coordinate of location to
-    place upper left corner of @arg{pixbuf}}
-  @argument[y]{a number coerced to a double float y coordinate of location to
-    place upper left corner of @arg{pixbuf}}
+  @argument[x]{a number coerced to a double float for the x coordinate of the
+    location to place the upper left corner of @arg{pixbuf}}
+  @argument[y]{a number coerced to a double float for the y coordinate of the
+    location to place the upper left corner of @arg{pixbuf}}
   @begin{short}
     Sets the given @arg{pixbuf} as the source pattern for @arg{cr}.
   @end{short}
   The pattern has a @code{:none} extend mode of the @symbol{cairo:extend-t}
-  enumeration and is aligned so that the origin of the pixbuf is (@arg{x},
-  @arg{y}).
+  enumeration and is aligned so that the origin of the pixbuf is
+  @code{(x,y)}.
   @see-symbol{cairo:context-t}
   @see-symbol{cairo:extend-t}
   @see-class{gdk-pixbuf:pixbuf}"
@@ -385,7 +385,7 @@
 (export 'cairo-set-source-pixbuf)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_cairo_set_source_window ()
+;;; gdk_cairo_set_source_window
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_cairo_set_source_window" %cairo-set-source-window) :void
@@ -396,19 +396,19 @@
 
 (defun cairo-set-source-window (cr window x y)
  #+liber-documentation
- "@version{#2023-2-3}
+ "@version{#2025-1-25}
   @argument[cr]{a @symbol{cairo:context-t} context}
   @argument[window]{a @class{gdk:window} object}
-  @argument[x]{a number coerced to a double float x coordinate of location to
-    place upper left corner of @arg{window}}
-  @argument[y]{a number coerced to a double float y coordinate of location to
-    place upper left corner of @arg{window}}
+  @argument[x]{a number coerced to a double float for the x coordinate of the
+    location to place the upper left corner of @arg{window}}
+  @argument[y]{a number coerced to a double float for the y coordinate of the
+    location to place the upper left corner of @arg{window}}
   @begin{short}
     Sets the given @arg{window} as the source pattern for @arg{cr}.
   @end{short}
   The pattern has a @code{:none} extend mode of the @symbol{cairo:extend-t}
-  enumeration and is aligned so that the origin of @arg{window} is (@arg{x},
-  @arg{y}). The window contains all its subwindows when rendering.
+  enumeration and is aligned so that the origin of @arg{window} is
+  @code{(x,y)}. The window contains all its subwindows when rendering.
 
   Note that the contents of @arg{window} are undefined outside of the visible
   part of the window, so use this function with care.
@@ -520,33 +520,33 @@
 (export 'cairo-surface-create-from-pixbuf)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_cairo_draw_from_gl ()
+;;; gdk_cairo_draw_from_gl
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_cairo_draw_from_gl" cairo-draw-from-gl) :void
  #+liber-documentation
- "@version{#2023-2-3}
+ "@version{#2025-1-25}
   @argument[cr]{a @symbol{cairo:context-t} context}
-  @argument[window]{a @class{gdk:window} object we are rendering for,
+  @argument[window]{a @class{gdk:window} object that is rendered for,
     not necessarily into}
-  @argument[source]{an integer with the GL ID of the source buffer}
-  @argument[type]{an integer with the type of the source}
-  @argument[scale]{an integer with the scale factor that the source buffer is
+  @argument[source]{an integer for the GL ID of the source buffer}
+  @argument[type]{an integer for the type of the source}
+  @argument[scale]{an integer for the scale factor that the source buffer is
     allocated for}
-  @argument[x]{an integer with the source x position in source to start copying
+  @argument[x]{an integer for the source x position in source to start copying
     from in GL coordinates}
-  @argument[y]{an integer with the source y position in source to start copying
+  @argument[y]{an integer for the source y position in source to start copying
     from in GL coordinates}
-  @argument[width]{an integer with the width of the region to draw}
-  @argument[height]{an integer with the height of the region to draw}
+  @argument[width]{an integer for the width of the region to draw}
+  @argument[height]{an integer for the height of the region to draw}
   @begin{short}
     This is the main way to draw GL content in GTK.
   @end{short}
-  It takes a render buffer ID (@arg{type} == @code{GL_RENDERBUFFER}) or a
-  texture ID (@arg{type} == @code{GL_TEXTURE}) and draws it onto @arg{cr} with
-  an @code{OVER} operation, respecting the current clip. The top left corner of
-  the rectangle specified by @arg{x}, @arg{y}, @arg{width} and @arg{height}
-  will be drawn at the current (0,0) position of the Cairo context.
+  It takes a render buffer ID @code{(type == GL_RENDERBUFFER)} or a texture ID
+  @code{(type == GL_TEXTURE)} and draws it onto @arg{cr} with an @code{OVER}
+  operation, respecting the current clip. The top left corner of the rectangle
+  specified by @arg{x}, @arg{y}, @arg{width} and @arg{height} will be drawn at
+  the current (0,0) position of the Cairo context.
 
   This will work for all Cairo contexts, as long as @arg{window} is realized,
   but the fallback implementation that reads back the pixels from the buffer

@@ -247,7 +247,7 @@
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_atom_intern ()                                     not exported
+;;; gdk_atom_intern                                         not exported
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_atom_intern" %atom-intern) :pointer
@@ -256,17 +256,17 @@
 
 (defun atom-intern (name &optional (only-if-exists nil))
  #+liber-documentation
- "@version{#2021-3-24}
+ "@version{#2024-12-29}
   @argument[name]{a string with the atom name}
   @argument[only-if-exists]{if @em{true}, GDK is allowed to not create a new
-    atom, but just return a @code{null-pointer} if the requested atom does not
-    already exists. Currently, the flag is ignored, since checking the
+    atom, but just return a @code{cffi:null-pointer} if the requested atom does
+    not already exists. Currently, the flag is ignored, since checking the
     existance of an atom is as expensive as creating it.}
   @return{The @symbol{gdk:atom} pointer corresponding to @arg{name}.}
   @begin{short}
     Finds or creates an atom corresponding to a given string.
   @end{short}
-  The optional argument @arg{only-if-exists} has the default value @em{false}.
+  The optional @arg{only-if-exists} argument has the @em{false} default value.
   @see-symbol{gdk:atom}
   @see-function{gdk:atom-name}"
   (%atom-intern name only-if-exists))
