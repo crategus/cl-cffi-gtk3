@@ -44,4 +44,20 @@
                 (gtk:container-class-list-child-properties gtype))
         #'string<))
 
-;;; 2024-12-31
+;; Create and fill a GTK:LIST-STORE for use as a model
+(defun create-list-store-for-package (&optional (package "GTK"))
+  (let ((store (make-instance 'gtk:list-store
+                              :column-types '("gint" "gchararray" "gboolean")))
+        (counter 0))
+    ;; Fill in external symbols of the given package
+    (do-external-symbols (symbol (find-package package))
+      ;; Add a new row to the model
+      (gtk:list-store-set store
+                          (gtk:list-store-append store)
+                          (incf counter)
+                          (symbol-name symbol)
+                          nil))
+    ;; Return the new list store
+    store))
+
+;;; 2025-2-23
