@@ -15,7 +15,7 @@
   (let* ((next (position-if (lambda (x) (member x '(#\# #\. #\:))) selector))
          (name (subseq selector 0 next)))
     (cond ((upper-case-p (elt name 0))
-           (let ((gtype (g:type-from-name name)))
+           (let ((gtype (g:gtype name)))
              (gtk:widget-path-append-type path gtype)))
           (t
            (gtk:widget-path-append-type path nil)

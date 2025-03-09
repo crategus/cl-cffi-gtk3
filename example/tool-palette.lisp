@@ -97,7 +97,7 @@
 
     ;; Get the tool palette CONTEXT belongs to, its a parent widget
     (loop while (and drag-palette
-                     (not (g:type-is-a (g:object-type drag-palette)
+                     (not (g:type-is-a (g:type-from-instance drag-palette)
                                        "GtkToolPalette")))
           do (setf drag-palette
                    (gtk:widget-parent drag-palette)))
@@ -111,11 +111,11 @@
         (format t "   drag-item    : ~A~%" drag-item)
         (format t "   drop-group   : ~A~%" drop-group)
 
-        (cond ((g:type-is-a (g:object-type drag-item) "GtkToolItemGroup")
+        (cond ((g:type-is-a (g:type-from-instance drag-item) "GtkToolItemGroup")
                (format t "PALETTE DROP GROUP~%")
                (palette-drop-group drag-palette drag-item drop-group))
               ((and drop-group
-                    (g:type-is-a (g:object-type drag-item) "GtkToolItem"))
+                    (g:type-is-a (g:type-from-instance drag-item) "GtkToolItem"))
                (format t "PALETTE DROP ITEM~%")
                (let ((allocation (gtk:widget-allocation drop-group)))
                  (format t "   allocation = ~A~%" allocation)
@@ -183,7 +183,7 @@
 
     ;; Get the tool palette CONTEXT belongs to, its a parent widget
     (loop while (and palette
-                     (not (g:type-is-a (g:object-type palette)
+                     (not (g:type-is-a (g:type-from-instance palette)
                                        "GtkToolPalette")))
           do (setf palette
                    (gtk:widget-parent palette)))
