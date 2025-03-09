@@ -4783,7 +4783,7 @@ lambda (widget event)    :run-last
   @begin{pre}
 (defun get-widget-toplevel-title (widget)
   (let ((toplevel (gtk:widget-toplevel widget)))
-    (when (eq (gtype \"GtkWindow\") (g:object-type toplevel))
+    (when (eq (gtype \"GtkWindow\") (g:type-from-instance toplevel))
       (gtk:window-title toplevel))))
   @end{pre}
   @see-class{gtk:widget}

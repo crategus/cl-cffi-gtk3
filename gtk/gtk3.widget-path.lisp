@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.widget-path.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; Version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation of the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2013 - 2024 Dieter Kaiser
+;;; Copyright (C) 2013 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -187,15 +187,15 @@
   @see-class{gtk:style-context}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_widget_path_append_type ()
+;;; gtk_widget_path_append_type
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_widget_path_append_type" widget-path-append-type) :int
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{2025-3-8}
   @argument[path]{a @class{gtk:widget-path} instance}
-  @argument[gtype]{a @class{g:type-t} type ID of the widget to append}
-  @return{An integer with the position where the element was inserted.}
+  @argument[gtype]{a @class{g:type-t} type ID for the widget to append}
+  @return{The integer with the position where the element was inserted.}
   @begin{short}
     Appends a widget type to the widget hierarchy represented by @arg{path}.
   @end{short}

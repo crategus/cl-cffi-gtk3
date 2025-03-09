@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gdk3.pixbuf.lisp
 ;;;
-;;; The documentation of this file is taken from the GDK 3 Reference Manual
-;;; Version 3.16 and modified to document the Lisp binding to the GDK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GDK 3 Reference Manual
+;;; Version 3.24 and modified to document the Lisp binding to the GDK library,
+;;; see <http://www.gtk.org>. The API documentation of the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2012 - 2023 Dieter Kaiser
+;;; Copyright (C) 2012 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -40,19 +40,19 @@
 (in-package :gdk)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_pixbuf_get_from_window () -> pixbuf-from-window
+;;; gdk_pixbuf_get_from_window
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_pixbuf_get_from_window" pixbuf-from-window)
     (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
- "@version{#2023-3-12}
-  @argument[window]{a @class{gdk:window} source window}
-  @argument[xsrc]{an integer with the source x coordinate within window}
-  @argument[ysrc]{an integer with the source y coordinate within window}
-  @argument[width]{an integer with the width in pixels of region to get}
-  @argument[height]{an integer with the height in pixels of region to get}
-  @return{A newly-created @class{gdk-pixbuf:pixbuf} object, or @code{nil} on
+ "@version{#2025-3-9}
+  @argument[window]{a @class{gdk:window} object for the source window}
+  @argument[xsrc]{an integer for the source x coordinate within window}
+  @argument[ysrc]{an integer for the source y coordinate within window}
+  @argument[width]{an integer for the width in pixels of the region to get}
+  @argument[height]{an integer for the height in pixels of the region to get}
+  @return{The newly created @class{gdk-pixbuf:pixbuf} object, or @code{nil} on
     error.}
   @begin{short}
     Transfers image data from a @class{gdk:window} object and converts it to an
@@ -63,8 +63,8 @@
   client side.
 
   This function will create an RGB pixbuf with 8 bits per channel with the
-  same size specified by the width and height arguments. The pixbuf will
-  contain an alpha channel if the window contains one.
+  same size specified by the @arg{width} and @arg{height} arguments. The pixbuf
+  will contain an alpha channel if the window contains one.
 
   If the window is off the screen, then there is no image data in the
   obscured/offscreen regions to be placed in the pixbuf. The contents of
@@ -94,25 +94,25 @@
 (export 'pixbuf-from-window)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_pixbuf_get_from_surface () -> pixbuf-from-surface
+;;; gdk_pixbuf_get_from_surface
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_pixbuf_get_from_surface" pixbuf-from-surface)
     (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2025-3-9}
   @argument[surface]{a @symbol{cairo:surface-t} instance to copy from}
-  @argument[xsrc]{an integer with the source x coordinate within surface}
-  @argument[ysrc]{an integer with the source y coordinate within surface}
-  @argument[width]{an integer with width in pixels of region to get}
-  @argument[height]{an integer with the height in pixels of region to get}
-  @return{A newly created @class{gdk-pixbuf:pixbuf} object, or @code{nil} on
+  @argument[xsrc]{an integer for the x coordinate within surface}
+  @argument[ysrc]{an integer for the y coordinate within surface}
+  @argument[width]{an integer for the width in pixels of the region to get}
+  @argument[height]{an integer for the height in pixels of the region to get}
+  @return{The newly created @class{gdk-pixbuf:pixbuf} object, or @code{nil} on
     error.}
   @begin{short}
     Transfers image data from a @symbol{cairo:surface-t} instance and converts
     it to an RGB(A) representation inside a @class{gdk-pixbuf:pixbuf} object.
   @end{short}
-  This allows you to efficiently read individual pixels from cairo surfaces.
+  This allows you to efficiently read individual pixels from Cairo surfaces.
   For @class{gdk:window} objects, use the @fun{gdk:pixbuf-from-window} function
   instead.
 

@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.hsv.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; Version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation of the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -66,7 +66,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkHSV
+;;; GtkHSV
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkHSV" hsv
@@ -79,7 +79,7 @@
 
 #+liber-documentation
 (setf (documentation 'hsv 'type)
- "@version{2023-6-15}
+ "@version{2025-3-9}
   @begin{short}
     The @class{gtk:hsv} widget is the \"color wheel\" part of a complete color
     selector widget.
@@ -105,7 +105,7 @@ lambda (hsv direction)    :action
       @end{pre}
       @begin[code]{table}
         @entry[hsv]{The @class{gtk:hsv} widget which received the signal.}
-        @entry[direction]{A value of the @symbol{gtk:direction-type}
+        @entry[direction]{The value of the @symbol{gtk:direction-type}
           enumeration.}
       @end{table}
   @end{dictionary}
@@ -114,15 +114,15 @@ lambda (hsv direction)    :action
   @see-class{gtk:color-selection-dialog}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_hsv_new ()
+;;; gtk_hsv_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline hsv-new))
 
 (defun hsv-new ()
  #+liber-documentation
- "@version{2023-6-15}
-  @return{The newly-created @class{gtk:hsv} widget.}
+ "@version{2025-3-9}
+  @return{The newly created @class{gtk:hsv} widget.}
   @begin{short}
     Creates a new HSV color selector.
   @end{short}
@@ -174,7 +174,7 @@ lambda (hsv direction)    :action
 
 (defun hsv-get-color (hsv)
  #+liber-documentation
- "@version{2025-1-25}
+ "@version{2025-3-9}
   @argument[hsv]{a @class{gtk:hsv} widget}
   @begin{return}
     @arg{h} -- a double float for the hue component @br{}
@@ -199,15 +199,15 @@ lambda (hsv direction)    :action
 (export 'hsv-get-color)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_hsv_set_metrics ()
+;;; gtk_hsv_set_metrics
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_hsv_set_metrics" hsv-set-metrics) :void
  #+liber-documentation
- "@version{2023-6-15}
+ "@version{2025-3-9}
   @argument[hsv]{a @class{gtk:hsv} widget}
-  @argument[size]{an integer with the diameter for the hue ring}
-  @argument[width]{an integer with the width of the hue ring}
+  @argument[size]{an integer for the diameter for the hue ring}
+  @argument[width]{an integer for the width of the hue ring}
   @short{Sets the size and ring width of an HSV color selector.}
   @begin[Warning]{dictionary}
     The @fun{gtk:hsv-set-metrics} function is deprecated since version 3.4 and
@@ -221,7 +221,7 @@ lambda (hsv direction)    :action
 (export 'hsv-set-metrics)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_hsv_get_metrics ()
+;;; gtk_hsv_get_metrics
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_hsv_get_metrics" %hsv-get-metrics) :void
@@ -231,11 +231,11 @@ lambda (hsv direction)    :action
 
 (defun hsv-get-metrics (hsv)
  #+liber-documentation
- "@version{2023-6-15}
+ "@version{2025-3-9}
   @argument[hsv]{a @class{gtk:hsv} widget}
   @begin{return}
-    @arg{size} -- an integer with the diameter of the hue ring @br{}
-    @arg{width} -- an integer with the width of the hue ring
+    @arg{size} -- an integer for the diameter of the hue ring @br{}
+    @arg{width} -- an integer for the width of the hue ring
   @end{return}
   @short{Queries the size and ring width of an HSV color selector.}
   @begin[Warning]{dictionary}
@@ -250,12 +250,12 @@ lambda (hsv direction)    :action
 (export 'hsv-get-metrics)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_hsv_is_adjusting ()
+;;; gtk_hsv_is_adjusting
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_hsv_is_adjusting" hsv-is-adjusting) :boolean
  #+liber-documentation
- "@version{#2023-6-15}
+ "@version{#2025-3-9}
   @argument[hsv]{a @class{gtk:hsv} widget}
   @begin{return}
     @em{True} if clients can ignore changes to the color value, since they may
@@ -278,7 +278,7 @@ lambda (hsv direction)    :action
 (export 'hsv-is-adjusting)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_hsv_to_rgb ()
+;;; gtk_hsv_to_rgb
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_hsv_to_rgb" %hsv-to-rgb) :void
@@ -291,10 +291,10 @@ lambda (hsv direction)    :action
 
 (defun hsv-to-rgb (h s v)
  #+liber-documentation
- "@version{2023-12-3}
-  @argument[h]{a number coerced to a double float with the hue component}
-  @argument[s]{a number coerced to a double float with the saturation component}
-  @argument[v]{a number coerced to a double float with the value component}
+ "@version{2025-3-9}
+  @argument[h]{a number coerced to a double float for the hue component}
+  @argument[s]{a number coerced to a double float for the saturation component}
+  @argument[v]{a number coerced to a double float for the value component}
   @begin{return}
     @arg{r} -- a double float with the red component @br{}
     @arg{g} -- a double float with the green component @br{}
@@ -318,7 +318,7 @@ lambda (hsv direction)    :action
 (export 'hsv-to-rgb)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_rgb_to_hsv ()
+;;; gtk_rgb_to_hsv
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_rgb_to_hsv" %rgb-to-hsv) :void
@@ -331,10 +331,10 @@ lambda (hsv direction)    :action
 
 (defun rgb-to-hsv (r g b)
  #+liber-documentation
- "@version{2023-12-3}
-  @argument[r]{a number coerced to a double float with the red component}
-  @argument[g]{a number coerced to a double float with the green component}
-  @argument[b]{a number coerced to a double float with the blue component}
+ "@version{2025-3-9}
+  @argument[r]{a number coerced to a double float for the red component}
+  @argument[g]{a number coerced to a double float for the green component}
+  @argument[b]{a number coerced to a double float for the blue component}
   @begin{return}
     @arg{h} -- a double float with the hue component @br{}
     @arg{s} -- a double float with the saturation component @br{}
@@ -358,4 +358,3 @@ lambda (hsv direction)    :action
 (export 'rgb-to-hsv)
 
 ;;; --- End of file gtk3.hsv.lisp ----------------------------------------------
-
