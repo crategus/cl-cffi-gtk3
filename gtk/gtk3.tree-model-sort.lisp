@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.tree-model-sort.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK+ 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK+ 3 Reference Manual
+;;; Version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation of the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -35,10 +35,13 @@
 ;;;
 ;;;     GtkTreeModelSort
 ;;;
+;;; Accessors
+;;;
+;;;     gtk_tree_model_sort_get_model
+;;;
 ;;; Functions
 ;;;
 ;;;     gtk_tree_model_sort_new_with_model
-;;;     gtk_tree_model_sort_get_model                      Accessor
 ;;;     gtk_tree_model_sort_convert_child_path_to_path
 ;;;     gtk_tree_model_sort_convert_child_iter_to_iter
 ;;;     gtk_tree_model_sort_convert_path_to_child_path
@@ -65,7 +68,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkTreeModelSort
+;;; GtkTreeModelSort
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkTreeModelSort" tree-model-sort
@@ -79,9 +82,11 @@
     tree-model-sort-model
     "model" "GtkTreeModel" t t)))
 
+;; TODO: Rework the examples
+
 #+liber-documentation
 (setf (documentation 'tree-model-sort 'type)
- "@version{#2023-1-23}
+ "@version{2025-2-23}
   @begin{short}
     The @class{gtk:tree-model-sort} object is a model which implements the
     @class{gtk:tree-sortable} interface.
@@ -116,8 +121,8 @@
   ... )
   @end{pre}
   To demonstrate how to access the underlying child model from the sort model,
-  the next example will be a callback for the @class{gtk:tree-selection}
-  @code{\"changed\"} signal. In this callback, we get a string from
+  the next example will be a callback for the @code{\"changed\"} signal of the
+  @class{gtk:tree-selection} class. In this callback, we get a string from
   @code{COLUMN_1} of the model. We then modify the string, find the same
   selected row on the child model, and change the row there.
 
