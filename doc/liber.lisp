@@ -150,7 +150,6 @@
 (unexport 'gdk:pixbuf-fill :gdk)
 ;; Symbols from gdk-pixbuf.animation.lisp
 (unexport 'gdk:pixbuf-animation :gdk)
-(unexport 'gdk:pixbuf-animation-loop :gdk)
 (unexport 'gdk:pixbuf-animation-new-from-file :gdk)
 (unexport 'gdk:pixbuf-animation-new-from-resource :gdk)
 (unexport 'gdk:pixbuf-animation-static-image :gdk)

@@ -1,7 +1,7 @@
 ;;; ----------------------------------------------------------------------------
 ;;; cl-cffi-gtk3.asd
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -93,7 +93,6 @@
      (:file "gtk3.css-provider")
      (:file "gtk3.style-context")
      (:file "gtk3.icon-theme")
-;     (:file "gtk3.style")
      (:file "gtk3.numerable-icon")
 
      ;; Inferfaces
@@ -500,7 +499,7 @@
      (:file "rtest-gtk3-cell-layout")
      (:file "rtest-gtk3-tree-sortable")
      (:file "rtest-gtk3-tree-view-drag-and-drop")
-;    (:file "gtk.tree-model-sort")
+     (:file "rtest-gtk3-tree-model-sort")
 ;    (:file "gtk.tree-model-filter")
      (:file "rtest-gtk3-tree-view")
      (:file "rtest-gtk3-tree-view-column")

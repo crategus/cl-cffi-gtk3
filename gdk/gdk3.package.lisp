@@ -87,11 +87,26 @@
                              #:pixbuf-copy-area
                              #:pixbuf-fill
                              ;; Symbols from gdk-pixbuf.animation.lisp
+                             ;; Symbols from gdk-pixbuf.animation.lisp
+                             #:pixbuf-animation-iter
+                             #:pixbuf-animation-iter-pixbuf
+                             #:pixbuf-animation-iter-advance
+                             #:pixbuf-animation-iter-delay-time
+                             #:pixbuf-animation-iter-on-currently-loading-frame
+
                              #:pixbuf-animation
-                             #:pixbuf-animation-loop
                              #:pixbuf-animation-new-from-file
                              #:pixbuf-animation-new-from-resource
-                             #:pixbuf-animation-static-image)
+                             #:pixbuf-animation-width
+                             #:pixbuf-animation-height
+                             #:pixbuf-animation-iter
+                             #:pixbuf-animation-is-static-image
+                             #:pixbuf-animation-static-image
+
+                             #:pixbuf-simple-anim
+                             #:pixbuf-simple-anim-loop
+                             #:pixbuf-simple-anim-new
+                             #:pixbuf-simple-anim-add-frame)
   ;; Export the symbols for GDK-PIXBUF
   (:export                   ;; Symbols from gdk-pixbuf.structure.lisp
                              #:colorspace
@@ -147,11 +162,23 @@
                              #:pixbuf-copy-area
                              #:pixbuf-fill
                              ;; Symbols from gdk-pixbuf.animation.lisp
+                             #:pixbuf-animation-iter
+                             #:pixbuf-animation-iter-pixbuf
+                             #:pixbuf-animation-iter-advance
+                             #:pixbuf-animation-iter-delay-time
+                             #:pixbuf-animation-iter-on-currently-loading-frame
                              #:pixbuf-animation
-                             #:pixbuf-animation-loop
                              #:pixbuf-animation-new-from-file
                              #:pixbuf-animation-new-from-resource
-                             #:pixbuf-animation-static-image))
+                             #:pixbuf-animation-width
+                             #:pixbuf-animation-height
+                             #:pixbuf-animation-iter
+                             #:pixbuf-animation-is-static-image
+                             #:pixbuf-animation-static-image
+                             #:pixbuf-simple-anim
+                             #:pixbuf-simple-anim-loop
+                             #:pixbuf-simple-anim-new
+                             #:pixbuf-simple-anim-add-frame))
 
 (in-package :gdk)
 
