@@ -98,24 +98,22 @@
   </menu>
 </interface>")
 
-(defclass bloatpad (gtk:application)
-  ((inhibit :initarg :inhibit
-            :initform 0
-            :accessor bloatpad-inhibit)
-   (time :initarg :time
-         :initform nil
-         :accessor bloatpad-time)
-   (timeout :initarg :timeout
-            :initform 0
-            :accessor bloatpad-timeout))
-  (:gname . "BloatPad")
-  (:metaclass gobject:gobject-class))
-
-(gobject:register-object-type-implementation "BloatPad"           ; name
-                                             bloatpad             ; class
-                                             "GtkApplication"     ; parent
-                                             nil                  ; interfaces
-                                             nil)                 ; properties
+(gobject:define-gobject-subclass "BloatPad" bloatpad
+  (:superclass gtk:application
+   :export t
+   :interfaces ())
+  ((:cl inhibit
+    :initarg :inhibit
+    :initform 0
+    :accessor bloatpad-inhibit)
+   (:cl time
+    :initarg :time
+    :initform nil
+    :accessor bloatpad-time)
+   (:cl timeout
+    :initarg :timeout
+    :initform 0
+    :accessor bloatpad-timeout)))
 
 (defun text-buffer-changed-cb (window buffer)
   (let ((application (gtk:window-application window))
@@ -579,7 +577,7 @@
     (setf (bloatpad-timeout application) 0)))
 
 (defmethod initialize-instance :after
-    ((app bloatpad) &key &allow-other-keys)
+           ((app bloatpad) &key &allow-other-keys)
   (g:signal-connect app "startup" #'bloatpad-startup)
   (g:signal-connect app "open" #'bloatpad-open)
   (g:signal-connect app "activate" #'bloatpad-activate)

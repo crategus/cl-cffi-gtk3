@@ -1,7 +1,7 @@
 ;;; ----------------------------------------------------------------------------
 ;;; liber.lisp
 ;;;
-;;; Copyright (C) 2022 - 2024 Dieter Kaiser
+;;; Copyright (C) 2022 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -80,7 +80,6 @@
 (unexport 'gobject:set-gvalue :gobject)
 (unexport 'gobject::g-initially-unowned :gobject)
 (unexport 'gobject:get-lisp-name-exception :gobject)
-(unexport 'gobject:register-object-type-implementation :gobject)
 (unexport 'gobject:initially-unowned :gobject)
 
 #-windows
