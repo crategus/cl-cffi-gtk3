@@ -266,8 +266,8 @@
      (:file "gtk3.font-button")
      (:file "gtk3.font-chooser-widget")
      (:file "gtk3.font-chooser-dialog")
-     (:file "gtk3.font-selection")
-     (:file "gtk3.font-selection-dialog")
+;     (:file "gtk3.font-selection")
+;     (:file "gtk3.font-selection-dialog")
      (:file "gtk3.places-sidebar")
 
      ;; Miscellaneous
@@ -476,7 +476,7 @@
      ;; Buttons and Toggles
      (:file "rtest-gtk3-button")
      (:file "rtest-gtk3-toggle-button")
-;    (:file "gtk.check-button")
+     (:file "rtest-gtk3-check-button")
      (:file "rtest-gtk3-radio-button")
 ;    (:file "gtk.link-button")
 ;    (:file "gtk.menu-button")
