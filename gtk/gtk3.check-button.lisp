@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.check-button.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.14 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; Version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation of the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -29,7 +29,7 @@
 ;;;
 ;;; GtkCheckButton
 ;;;
-;;;     Create widgets with a discrete toggle button.
+;;;     Create widgets with a discrete toggle button
 ;;;
 ;;; Types and Values
 ;;;
@@ -82,14 +82,14 @@
 
 #+liber-documentation
 (setf (documentation 'check-button 'type)
- "@version{2023-12-30}
+ "@version{2025-3-9}
   @begin{short}
-    A @class{gtk:check-button} widget places a discrete
+    The @class{gtk:check-button} widget places a discrete
     @class{gtk:toggle-button} widget next to a widget, usually a
     @class{gtk:label} widget.
   @end{short}
   See the @class{gtk:toggle-button} documentation for more information about
-  toggle/check buttons. The important @code{\"toggled\"} signal is also
+  toggle and check buttons. The important @code{\"toggled\"} signal is also
   inherited from the @class{gtk:toggle-button} class.
 
   @image[check-button]{Figure: GtkCheckButton}
@@ -145,15 +145,15 @@ button.check
   @see-class{gtk:radio-button}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_check_button_new ()
+;;; gtk_check_button_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline check-button-new))
 
 (defun check-button-new ()
  #+liber-documentation
- "@version{#2023-3-16}
-  @return{The @class{gtk:check-button} widget.}
+ "@version{2025-3-9}
+  @return{The new @class{gtk:check-button} widget.}
   @short{Creates a new check button.}
   @see-class{gtk:check-button}
   @see-function{gtk:check-button-new-with-label}
@@ -163,16 +163,16 @@ button.check
 (export 'check-button-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_check_button_new_with_label ()
+;;; gtk_check_button_new_with_label
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline check-button-new-with-label))
 
 (defun check-button-new-with-label (label)
  #+liber-documentation
- "@version{2024-1-1}
-  @argument[label]{a string with the text for the check button}
-  @return{The @class{gtk:check-button} widget.}
+ "@version{2025-3-9}
+  @argument[label]{a string for the text of the check button}
+  @return{The new @class{gtk:check-button} widget.}
   @begin{short}
     Creates a new check button with a @class{gtk:label} widget to the right
     of it.
@@ -187,18 +187,17 @@ button.check
 (export 'check-button-new-with-label)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_check_button_new_with_mnemonic ()
+;;; gtk_check_button_new_with_mnemonic
 ;;; ----------------------------------------------------------------------------
 
-;; TODO: Rewrite the implementation in terms of the function make-instance
+(declaim (inline check-button-new-with-mnemonic))
 
-(cffi:defcfun ("gtk_check_button_new_with_mnemonic"
-               check-button-new-with-mnemonic) (g:object check-button)
+(defun check-button-new-with-mnemonic (label)
 #+liber-documentation
- "@version{#2023-3-16}
-  @argument[label]{a string with the text of the button, with an underscore in
+ "@version{2025-3-9}
+  @argument[label]{a string for the text of the button, with an underscore in
     front of the mnemonic character}
-  @return{The @class{gtk:check-button} widget.}
+  @return{The new @class{gtk:check-button} widget.}
   @begin{short}
     Creates a new check button widget containing a label.
   @end{short}
@@ -208,7 +207,9 @@ button.check
   @see-function{gtk:check-button-new}
   @see-function{gtk:check-button-new-with-label}
   @see-function{gtk:label-new-with-mnemonic}"
-  (label :string))
+  (make-instance 'check-button
+                 :label label
+                 :use-underline t))
 
 (export 'check-button-new-with-mnemonic)
 
