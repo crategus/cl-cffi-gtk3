@@ -175,19 +175,27 @@
 (test gtk-target-list-add-image-targets.2
   (let ((tlist (gtk:target-list-new)))
     (gtk:target-list-add-image-targets tlist 0 nil)
-    (is (equal '("application/emf" "application/ico" "application/x-emf"
-                 "application/x-navi-animation" "image/bmp" "image/emf"
-                 "image/gif" "image/ico" "image/icon" "image/jpeg" "image/jxl"
-                 "image/png" "image/qtif" "image/svg" "image/svg+xml"
-                 "image/svg+xml-compressed" "image/svg-xml" "image/tiff"
-                 "image/vnd.adobe.svg+xml" "image/vnd.microsoft.icon"
-                 "image/wmf" "image/x-bmp" "image/x-emf" "image/x-icns"
-                 "image/x-ico" "image/x-icon" "image/x-mgx-emf"
-                 "image/x-MS-bmp" "image/x-portable-anymap"
+    (is (equal '("application/emf" "application/ico" "application/ico"
+                 "application/x-emf" "application/x-navi-animation"
+                 "application/x-navi-animation" "image/bmp" "image/bmp"
+                 "image/emf" "image/gif" "image/gif" "image/ico" "image/ico"
+                 "image/icon" "image/icon" "image/jpeg" "image/jpeg" "image/jxl"
+                 "image/png" "image/png" "image/qtif" "image/qtif" "image/svg"
+                 "image/svg+xml" "image/svg+xml-compressed" "image/svg-xml"
+                 "image/tiff" "image/tiff" "image/vnd.adobe.svg+xml"
+                 "image/vnd.microsoft.icon" "image/vnd.microsoft.icon"
+                 "image/wmf" "image/x-bmp" "image/x-bmp" "image/x-emf"
+                 "image/x-icns" "image/x-icns" "image/x-ico" "image/x-ico"
+                 "image/x-icon" "image/x-icon" "image/x-mgx-emf"
+                 "image/x-MS-bmp" "image/x-MS-bmp" "image/x-portable-anymap"
+                 "image/x-portable-anymap" "image/x-portable-bitmap"
                  "image/x-portable-bitmap" "image/x-portable-graymap"
+                 "image/x-portable-graymap" "image/x-portable-pixmap"
                  "image/x-portable-pixmap" "image/x-quicktime"
-                 "image/x-tga" "image/x-win-bitmap" "image/x-wmf"
-                 "image/x-xbitmap" "image/x-xpixmap" "text/ico" "text/xml-svg")
+                 "image/x-quicktime" "image/x-tga" "image/x-tga"
+                 "image/x-win-bitmap" "image/x-win-bitmap" "image/x-wmf"
+                 "image/x-xbitmap" "image/x-xbitmap" "image/x-xpixmap"
+                 "image/x-xpixmap" "text/ico" "text/ico" "text/xml-svg")
                (sort (mapcar #'first
                              (gtk:target-table-new-from-list tlist))
                      #'string-lessp)))))
@@ -519,4 +527,4 @@
 ;;;     gtk_selection_data_copy
 ;;;     gtk_selection_data_free
 
-;;; 2024-9-21
+;;; 2025-3-28

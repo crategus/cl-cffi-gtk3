@@ -94,14 +94,15 @@
   #-windows
   (is (equal '("GtkAboutDialog" "GtkAppChooserDialog" "GtkColorChooserDialog"
                "GtkColorSelectionDialog" "GtkFileChooserDialog"
-               "GtkFontChooserDialog" "GtkFontSelectionDialog"
-               "GtkMessageDialog" "GtkPageSetupUnixDialog" "GtkPrintUnixDialog"
+               "GtkFontChooserDialog" "GtkMessageDialog"
+               "GtkPageSetupUnixDialog" "GtkPrintUnixDialog"
                "GtkRecentChooserDialog")
              (glib-test:list-children "GtkDialog")))
   #+windows
   (is (equal '("GtkAboutDialog" "GtkAppChooserDialog" "GtkColorChooserDialog"
- "GtkColorSelectionDialog" "GtkFileChooserDialog" "GtkFontChooserDialog"
- "GtkFontSelectionDialog" "GtkMessageDialog" "GtkRecentChooserDialog")
+               "GtkColorSelectionDialog" "GtkFileChooserDialog"
+               "GtkFontChooserDialog"  "GtkMessageDialog"
+               "GtkRecentChooserDialog")
              (glib-test:list-children "GtkDialog")))
   ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable")
@@ -132,71 +133,83 @@
 ;;; --- Properties -------------------------------------------------------------
 
 (test gtk-dialog-properties.1
-  (let ((dialog (make-instance 'gtk:dialog)))
-    (is (= 0 (gtk:dialog-use-header-bar dialog)))))
+  (glib-test:with-check-memory (dialog)
+    (setf dialog (make-instance 'gtk:dialog))
+    (is (= 0 (gtk:dialog-use-header-bar dialog)))
+    (is-false (gtk:widget-destroy dialog))))
 
 (test gtk-dialog-properties.2
-  (let ((dialog (make-instance 'gtk:dialog :use-header-bar 1)))
-    (is (= 1 (gtk:dialog-use-header-bar dialog)))))
+  (glib-test:with-check-memory (dialog)
+    (setf dialog (make-instance 'gtk:dialog :use-header-bar 1))
+    (is (= 1 (gtk:dialog-use-header-bar dialog)))
+    (is-false (gtk:widget-destroy dialog))))
 
 ;;; --- Style Properties -------------------------------------------------------
 
 (test gtk-dialog-style-properties
-  (let ((dialog (make-instance 'gtk:dialog)))
+  (glib-test:with-check-memory (dialog)
+    (setf dialog (make-instance 'gtk:dialog))
     (is (= 0 (gtk:widget-style-property dialog "action-area-border")))
     (is (= 4 (gtk:widget-style-property dialog "button-spacing")))
     (is (= 2 (gtk:widget-style-property dialog "content-area-border")))
-    (is (= 0 (gtk:widget-style-property dialog "content-area-spacing")))))
+    (is (= 0 (gtk:widget-style-property dialog "content-area-spacing")))
+    (is-false (gtk:widget-destroy dialog))))
 
 ;;; --- Signals ----------------------------------------------------------------
 
-(test gtk-dialog-signal-close
-  ;; Check the list of signals
-  (is (member "close"
-              (mapcar #'g:signal-name (g:signal-list-ids "GtkDialog"))
-              :test #'string=))
-  ;; Query info for "close" signal
-  (let ((query (g:signal-query (g:signal-lookup "close" "GtkDialog"))))
-    (is (string= "close" (g:signal-query-signal-name query)))
-    (is (string= "GtkDialog" (g:type-name (g:signal-query-owner-type query))))
+(test gtk-dialog-close-signal
+  (let* ((name "close")
+         (gtype (g:gtype "GtkDialog"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
     (is (equal '(:ACTION :RUN-LAST)
                (sort (g:signal-query-signal-flags query) #'string<)))
-    (is (string= "void" (g:type-name (g:signal-query-return-type query))))
+    ;; Check return type
+    (is (eq (g:gtype "void") (g:signal-query-return-type query)))
+    ;; Check parameter types
     (is (equal '()
-               (sort (mapcar #'g:type-name (g:signal-query-param-types query))
-                     #'string<)))
-    (is-false (g:signal-query-signal-detail query))))
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
 
-(test gtk-dialog-signal-response
-  ;; Check the list of signals
-  (is (member "response"
-              (mapcar #'g:signal-name (g:signal-list-ids "GtkDialog"))
-              :test #'string=))
-  ;; Query info for "response" signal
-  (let ((query (g:signal-query (g:signal-lookup "response" "GtkDialog"))))
-    (is (string= "response" (g:signal-query-signal-name query)))
-    (is (string= "GtkDialog" (g:type-name (g:signal-query-owner-type query))))
+(test gtk-dialog-response-signal
+  (let* ((name "response")
+         (gtype (g:gtype "GtkDialog"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
     (is (equal '(:RUN-LAST)
                (sort (g:signal-query-signal-flags query) #'string<)))
-    (is (string= "void" (g:type-name (g:signal-query-return-type query))))
+    ;; Check return type
+    (is (eq (g:gtype "void") (g:signal-query-return-type query)))
+    ;; Check parameter types
     (is (equal '("gint")
-               (sort (mapcar #'g:type-name (g:signal-query-param-types query))
-                     #'string<)))
-    (is-false (g:signal-query-signal-detail query))))
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
 
 ;;; --- Functions --------------------------------------------------------------
 
 ;;;     gtk_dialog_new
-;;;     gtk_dialog_new-with-buttons
 
 (test gtk-dialog-new
-  (is (typep (gtk:dialog-new) 'gtk:dialog))
-  (is (typep (gtk:dialog-new-with-buttons "title"
-                                          nil :modal "OK" 1 "Cancel" 2)
-             'gtk:dialog))
-  (is (typep (gtk:dialog-new-with-buttons "title"
-                                          nil '(:modal) "OK" 1 "Cancel" 2)
-             'gtk:dialog)))
+  (glib-test:with-check-memory (dialog)
+    (is (typep (setf dialog (gtk:dialog-new)) 'gtk:dialog))
+    (is-false (gtk:widget-destroy dialog))))
+
+;;;     gtk_dialog_new-with-buttons
+
+(test gtk-dialog-new-with-buttons
+  (glib-test:with-check-memory (dialog)
+    (is (typep (setf dialog
+                     (gtk:dialog-new-with-buttons "title"
+                                                  nil
+                                                  :modal
+                                                  "OK" 1
+                                                  "Cancel" 2))
+               'gtk:dialog))
+    (is-false (gtk:widget-destroy dialog))))
 
 ;;;     gtk_dialog_run
 ;;;     gtk_dialog_response
@@ -204,7 +217,8 @@
 ;;;     gtk_dialog_add_button
 
 (test gtk-dialog-add-button
-  (let ((dialog (make-instance 'gtk:dialog)))
+  (glib-test:with-check-memory (dialog)
+    (setf dialog (make-instance 'gtk:dialog))
     ;; No button in the action area
     (is (= 0 (length (gtk:container-children (gtk:dialog-action-area dialog)))))
     (is (equal '() (gtk:container-children (gtk:dialog-action-area dialog))))
@@ -217,12 +231,15 @@
     (is (typep (gtk:dialog-add-button dialog "button2" 2) 'gtk:button))
     (is (= 2 (length (gtk:container-children (gtk:dialog-action-area dialog)))))
     (is (every #'(lambda (x) (typep x 'gtk:button))
-               (gtk:container-children (gtk:dialog-action-area dialog))))))
+               (gtk:container-children (gtk:dialog-action-area dialog))))
+    ;; Remove references
+    (is-false (gtk:widget-destroy dialog))))
 
 ;;;     gtk_dialog_add_buttons
 
 (test gtk-dialog-add-buttons
-  (let ((dialog (make-instance 'gtk:dialog)))
+  (glib-test:with-check-memory (dialog)
+    (setf dialog (make-instance 'gtk:dialog))
     ;; No button in the action area
     (is (= 0 (length (gtk:container-children (gtk:dialog-action-area dialog)))))
     (is (equal '() (gtk:container-children (gtk:dialog-action-area dialog))))
@@ -230,35 +247,46 @@
     (is-false (gtk:dialog-add-buttons dialog "button1" 1 "button2" 2))
     (is (= 2 (length (gtk:container-children (gtk:dialog-action-area dialog)))))
     (is (every #'(lambda (x) (typep x 'gtk:button))
-               (gtk:container-children (gtk:dialog-action-area dialog))))))
+               (gtk:container-children (gtk:dialog-action-area dialog))))
+    ;; Remove references
+    (is-false (gtk:widget-destroy dialog))))
 
 ;;;     gtk_dialog_add_action_widget
 
 (test gtk-dialog-add-action-widget
-  (let ((dialog (make-instance 'gtk:dialog))
-        (widget (make-instance 'gtk:button :label "BUTTON")))
+  (glib-test:with-check-memory (dialog widget)
+    (setf dialog (make-instance 'gtk:dialog))
+    (setf widget (make-instance 'gtk:button :label "BUTTON"))
     (is-false (gtk:dialog-add-action-widget dialog widget 1))
     (is (member widget
                (gtk:container-children (gtk:dialog-action-area dialog))
-               :test #'eq))))
+               :test #'eq))
+    ;; Remove references
+    (is-false (gtk:widget-destroy dialog))))
 
 ;;;     gtk_dialog_set_default_response
 
 (test gtk-dialog-set-default-response
-  (let ((dialog (make-instance 'gtk:dialog)))
+  (glib-test:with-check-memory (dialog)
+    (setf dialog (make-instance 'gtk:dialog))
     (is-false (gtk:dialog-add-buttons dialog "button1" 1 "button2" 2))
-    (is-false (gtk:dialog-set-default-response dialog 2))))
+    (is-false (gtk:dialog-set-default-response dialog 2))
+    ;; Remove references
+    (is-false (gtk:widget-destroy dialog))))
 
 ;;;     gtk_dialog_set_response_sensitive
 
 (test gtk-dialog-set-response-sensitive
-  (let ((dialog (make-instance 'gtk:dialog)))
+  (glib-test:with-check-memory (dialog)
+    (setf dialog (make-instance 'gtk:dialog))
     (is-false (gtk:dialog-add-buttons dialog "button1" 1 "button2" 2))
     (is-false (gtk:dialog-set-response-sensitive dialog 1 t))
     (is-false (gtk:dialog-set-response-sensitive dialog 2 nil))
     (let ((buttons (gtk:container-children (gtk:dialog-action-area dialog))))
       (is-true (gtk:widget-sensitive (first buttons)))
-      (is-false (gtk:widget-sensitive (second buttons))))))
+      (is-false (gtk:widget-sensitive (second buttons))))
+    ;; Remove references
+    (is-false (gtk:widget-destroy dialog))))
 
 ;;;     gtk_dialog_get_response_for_widget
 ;;;     gtk_dialog_get_widget_for_response
@@ -266,25 +294,32 @@
 ;;;     gtk_dialog_action_area
 
 (test gtk-dialog-action-area
-  (let ((dialog (gtk:dialog-new-with-buttons "title"
-                                             nil :modal "OK" 1 "Cancel" 2)))
+  (glib-test:with-check-memory (dialog)
+    (setf dialog
+          (gtk:dialog-new-with-buttons "title"
+                                       nil :modal "OK" 1 "Cancel" 2))
     (is (typep (gtk:dialog-action-area dialog) 'gtk:button-box))
     (is (every (lambda (x) (typep x 'gtk:button))
-               (gtk:container-children (gtk:dialog-action-area dialog))))))
+               (gtk:container-children (gtk:dialog-action-area dialog))))
+    ;; Remove references
+    (is-false (gtk:widget-destroy dialog))))
 
 ;;;     gtk_dialog_content_area
 
 (test gtk-dialog-content-area
-  (let ((dialog (gtk:dialog-new-with-buttons "title"
-                                             nil :modal "OK" 1 "Cancel" 2)))
+  (glib-test:with-check-memory (dialog)
+    (setf dialog
+          (gtk:dialog-new-with-buttons "title"
+                                       nil :modal "OK" 1 "Cancel" 2))
     (is (typep (gtk:dialog-content-area dialog) 'gtk:box))
     (is (eq :vertical
-            (gtk:orientable-orientation (gtk:dialog-content-area dialog))))))
+            (gtk:orientable-orientation (gtk:dialog-content-area dialog))))
+    ;; Remove references
+    (is-false (gtk:widget-destroy dialog))))
 
 ;;;     gtk_dialog_get_header_bar
-
 ;;;     gtk_alternative_dialog_button_order
 ;;;     gtk_dialog_set_alternative_button_order
 ;;;     gtk_dialog_set_alternative_button_order_from_array
 
-;;; 2024-9-22
+;;; 2025-3-9

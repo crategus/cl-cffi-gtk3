@@ -28,7 +28,7 @@
       (is (equal '("GtkAppChooserWidget" "GtkButtonBox" "GtkColorChooserWidget"
                    "GtkColorSelection" "GtkFileChooserButton"
                    "GtkFileChooserWidget" "GtkFontChooserWidget"
-                   "GtkFontSelection" "GtkInfoBar" "GtkPlacesView"
+                   "GtkInfoBar" "GtkPlacesView"
                    "GtkPrinterOptionWidget" "GtkRecentChooserWidget"
                    "GtkShortcutsGroup" "GtkShortcutsSection"
                    "GtkShortcutsShortcut" "GtkStackSwitcher" "GtkStatusbar"
@@ -39,7 +39,7 @@
       (is (equal '("GtkAppChooserWidget" "GtkButtonBox" "GtkColorChooserWidget"
                     "GtkColorSelection" "GtkFileChooserButton"
                     "GtkFileChooserWidget" "GtkFontChooserWidget"
-                    "GtkFontSelection" "GtkInfoBar" "GtkRecentChooserWidget"
+                    "GtkInfoBar" "GtkRecentChooserWidget"
                     "GtkShortcutsGroup" "GtkShortcutsSection"
                     "GtkShortcutsShortcut" "GtkStackSwitcher" "GtkStatusbar"
                     "GtkVBox")
@@ -64,22 +64,23 @@
                (gtk:widget-class-css-name "GtkBox")))
   ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkBox" GTK:BOX
-                       (:SUPERCLASS GTK:CONTAINER
-                        :EXPORT T
-                        :INTERFACES
-                        ("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
-                        :TYPE-INITIALIZER "gtk_box_get_type")
-                       ((BASELINE-POSITION BOX-BASELINE-POSITION
-                         "baseline-position" "GtkBaselinePosition" T T)
-                        (HOMOGENEOUS BOX-HOMOGENEOUS
-                         "homogeneous" "gboolean" T T)
-                        (SPACING BOX-SPACING "spacing" "gint" T T)))
+                      (:SUPERCLASS GTK:CONTAINER
+                       :EXPORT T
+                       :INTERFACES
+                       ("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
+                       :TYPE-INITIALIZER "gtk_box_get_type")
+                      ((BASELINE-POSITION BOX-BASELINE-POSITION
+                        "baseline-position" "GtkBaselinePosition" T T)
+                       (HOMOGENEOUS BOX-HOMOGENEOUS
+                        "homogeneous" "gboolean" T T)
+                       (SPACING BOX-SPACING "spacing" "gint" T T)))
              (gobject:get-gtype-definition "GtkBox"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
 (test gtk-box-properties
-  (let ((box (make-instance 'gtk:box :orientation :vertical :spacing 12)))
+  (glib-test:with-check-memory (box)
+    (setf box (make-instance 'gtk:box :orientation :vertical :spacing 12))
     (is (eq :vertical (gtk:orientable-orientation box)))
     (is (eq :center (gtk:box-baseline-position box)))
     (is-false (gtk:box-homogeneous box))
@@ -88,44 +89,62 @@
 ;;; --- Child Properties -------------------------------------------------------
 
 (test gtk-box-child-properties
-  (let* ((box (make-instance 'gtk:box :orientation :vertical))
-         (button (make-instance 'gtk:button)))
+  (glib-test:with-check-memory (box button)
+    (setf box (make-instance 'gtk:box :orientation :vertical))
+    (setf button (make-instance 'gtk:button))
     (is-false (gtk:container-add box button))
     (is-false (gtk:box-child-expand box button))
     (is-true (gtk:box-child-fill box button))
     (is (eq :start (gtk:box-child-pack-type box button)))
     (is (= 0 (gtk:box-child-padding box button)))
-    (is (= 0 (gtk:box-child-position box button)))))
+    (is (= 0 (gtk:box-child-position box button)))
+    ;; Remove references
+    (is-false (gtk:container-remove box button))))
 
 ;;; --- Functions --------------------------------------------------------------
 
 ;;;     gtk_box_new
 
-(test gtk-box-new
-  ;; Create a box
-  (let ((box (gtk:box-new :vertical 12)))
+(test gtk-box-new.1
+  (glib-test:with-check-memory (box)
+    (setf box (gtk:box-new :vertical 12))
     (is (eq :vertical (gtk:orientable-orientation box)))
     (is (eq :center (gtk:box-baseline-position box)))
     (is-false (gtk:box-homogeneous box))
-    (is (= 12 (gtk:box-spacing box))))
-  ;; Create a box with the default value for spacing
-  (let ((box (gtk:box-new :horizontal)))
+    (is (= 12 (gtk:box-spacing box)))))
+
+(test gtk-box-new.2
+  (glib-test:with-check-memory (box)
+    (setf box (gtk:box-new :horizontal))
     (is (eq :horizontal (gtk:orientable-orientation box)))
     (is (eq :center (gtk:box-baseline-position box)))
     (is-false (gtk:box-homogeneous box))
-    (is (= 0 (gtk:box-spacing box))))
-  ;; Use make-instance with default values
-  (let ((box (make-instance 'gtk:box)))
+    (is (= 0 (gtk:box-spacing box)))))
+
+(test gtk-box-new.3
+  (glib-test:with-check-memory (box)
+    (setf box (make-instance 'gtk:box))
     (is (eq :horizontal (gtk:orientable-orientation box)))
     (is (eq :center (gtk:box-baseline-position box)))
     (is-false (gtk:box-homogeneous box))
-    (is (= 0 (gtk:box-spacing box))))
-  ;; Use make-instance and set some properties
-  (let ((box (make-instance 'gtk:box
-                            :orientation :vertical
-                            :baseline-position :top
-                            :homogeneous t
-                            :spacing 12)))
+    (is (= 0 (gtk:box-spacing box)))))
+
+(test gtk-box-new.4
+  (glib-test:with-check-memory (box)
+    (setf box (make-instance 'gtk:box))
+    (is (eq :horizontal (gtk:orientable-orientation box)))
+    (is (eq :center (gtk:box-baseline-position box)))
+    (is-false (gtk:box-homogeneous box))
+    (is (= 0 (gtk:box-spacing box)))))
+
+
+(test gtk-box-new.5
+  (glib-test:with-check-memory (box)
+    (setf box (make-instance 'gtk:box
+                             :orientation :vertical
+                             :baseline-position :top
+                             :homogeneous t
+                             :spacing 12))
     (is (eq :vertical (gtk:orientable-orientation box)))
     (is (eq :top (gtk:box-baseline-position box)))
     (is-true (gtk:box-homogeneous box))
@@ -134,10 +153,11 @@
 ;;;     gtk_box_pack_start
 
 (test gtk-box-pack-start
-  (let ((box (make-instance 'gtk:box :orientation :vertical))
-        (button1 (make-instance 'gtk:button))
-        (button2 (make-instance 'gtk:button))
-        (button3 (make-instance 'gtk:button)))
+  (glib-test:with-check-memory (box button1 button2 button3)
+    (setf box (make-instance 'gtk:box :orientation :vertical))
+    (setf button1 (make-instance 'gtk:button))
+    (setf button2 (make-instance 'gtk:button))
+    (setf button3 (make-instance 'gtk:button))
     ;; Pack first button
     (is-false (gtk:box-pack-start box button1))
     (is (= 0 (gtk:box-child-position box button1)))
@@ -153,15 +173,20 @@
     ;; Check the pack type
     (is (eq :start (gtk:box-child-pack-type box button1)))
     (is (eq :start (gtk:box-child-pack-type box button2)))
-    (is (eq :start (gtk:box-child-pack-type box button3)))))
+    (is (eq :start (gtk:box-child-pack-type box button3)))
+    ;; Remove references
+    (is-false (gtk:container-remove box button1))
+    (is-false (gtk:container-remove box button2))
+    (is-false (gtk:container-remove box button3))))
 
 ;;;     gtk_box_pack_end
 
 (test gtk-box-pack-end
-  (let ((box (make-instance 'gtk:box :orientation :vertical))
-        (button1 (make-instance 'gtk:button))
-        (button2 (make-instance 'gtk:button))
-        (button3 (make-instance 'gtk:button)))
+  (glib-test:with-check-memory (box button1 button2 button3)
+    (setf box (make-instance 'gtk:box :orientation :vertical))
+    (setf button1 (make-instance 'gtk:button))
+    (setf button2 (make-instance 'gtk:button))
+    (setf button3 (make-instance 'gtk:button))
     ;; Pack first button
     (is-false (gtk:box-pack-end box button1))
     (is (= 0 (gtk:box-child-position box button1)))
@@ -177,15 +202,20 @@
     ;; Check the pack type
     (is (eq :end (gtk:box-child-pack-type box button1)))
     (is (eq :end (gtk:box-child-pack-type box button2)))
-    (is (eq :end (gtk:box-child-pack-type box button3)))))
+    (is (eq :end (gtk:box-child-pack-type box button3)))
+    ;; Remove references
+    (is-false (gtk:container-remove box button1))
+    (is-false (gtk:container-remove box button2))
+    (is-false (gtk:container-remove box button3))))
 
 ;;;     gtk_box_reorder_child
 
 (test gtk-box-reorder-child
-  (let ((box (make-instance 'gtk:box :orientation :vertical))
-        (label (make-instance 'gtk:label))
-        (button (make-instance 'gtk:button))
-        (image (make-instance 'gtk:image)))
+  (glib-test:with-check-memory (box label button image)
+    (setf box (make-instance 'gtk:box :orientation :vertical))
+    (setf label (make-instance 'gtk:label))
+    (setf button (make-instance 'gtk:button))
+    (setf image (make-instance 'gtk:image))
     ;; Pack three widgets in the box
     (is-false (gtk:box-pack-start box label))
     (is-false (gtk:box-pack-start box button))
@@ -205,14 +235,19 @@
     ;; Check again the position of the children
     (is (= 2 (gtk:box-child-position box label)))
     (is (= 0 (gtk:box-child-position box button)))
-    (is (= 1 (gtk:box-child-position box image)))))
+    (is (= 1 (gtk:box-child-position box image)))
+    ;; Remove references
+    (is-false (gtk:container-remove box label))
+    (is-false (gtk:container-remove box button))
+    (is-false (gtk:container-remove box image))))
 
 ;;;     gtk_box_query_child_packing
 ;;;     gtk_box_child_packing
 
 (test gtk-box-child-packing
-  (let ((box (make-instance 'gtk:box))
-        (button (make-instance 'gtk:button)))
+  (glib-test:with-check-memory (box button)
+    (setf box (make-instance 'gtk:box))
+    (setf button (make-instance 'gtk:button))
     ;; Pack a button in the box
     (is-false (gtk:container-add box button))
     ;; Query and check the child properties
@@ -230,19 +265,24 @@
       (is-true expand)
       (is-false fill)
       (is (= 10 padding))
-      (is (eq :end pack-type)))))
+      (is (eq :end pack-type)))
+    ;; Remove references
+    (is-false (gtk:container-remove box button))))
 
 ;;;     gtk_box_center_widget
 
 (test gtk-box-center-widget
-  (let ((box (make-instance 'gtk:box :orientation :vertical)))
-    ;; Not center widget set
+  (glib-test:with-check-memory (box button)
+    (setf box (make-instance 'gtk:box :orientation :vertical))
+    ;; No center widget set
     (is-false (gtk:box-center-widget box))
     ;; Set a center widget
     (is (eq 'gtk:button
             (type-of (setf (gtk:box-center-widget box)
-                           (make-instance 'gtk:button)))))
+                           (setf button (make-instance 'gtk:button))))))
     ;; Retrieve the center widget
-    (is (eq 'gtk:button (type-of (gtk:box-center-widget box))))))
+    (is (eq 'gtk:button (type-of (gtk:box-center-widget box))))
+    ;; Remove references
+    (is-false (setf (gtk:box-center-widget box) nil))))
 
-;;; 2024-9-23
+;;; 2025-3-9

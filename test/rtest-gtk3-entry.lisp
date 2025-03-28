@@ -173,10 +173,19 @@
                "progress-border")
              (gtk-test:list-style-properties "GtkEntry")))
   ;; Check signals
+  ;; TODO: TOGGLE-OVERWRITE since Gtk 3.24.49 is not documented
+  #-windows
   (is (equal '("activate" "backspace" "copy-clipboard" "cut-clipboard"
                "delete-from-cursor" "icon-press" "icon-release"
                "insert-at-cursor" "insert-emoji" "move-cursor" "paste-clipboard"
                "populate-popup" "preedit-changed" "toggle-overwrite")
+             (glib-test:list-signals "GtkEntry")))
+  #+windows ;; on Windows version 3.24.49 installed
+  (is (equal '("activate" "backspace" "copy-clipboard" "cut-clipboard"
+               "delete-from-cursor" "icon-press" "icon-release"
+               "insert-at-cursor" "insert-emoji" "move-cursor" "paste-clipboard"
+               "populate-popup" "preedit-changed" "toggle-direction"
+               "toggle-overwrite")
              (glib-test:list-signals "GtkEntry")))
   ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkEntry" GTK:ENTRY

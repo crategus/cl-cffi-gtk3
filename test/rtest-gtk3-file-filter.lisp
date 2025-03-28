@@ -130,8 +130,31 @@
 (test gtk-file-filter-add-pixbuf-formats
   (let ((filter (gtk:file-filter-new)))
     (is-false (gtk:file-filter-add-pixbuf-formats filter))
-    (is (equal
-"('[Invalid UTF-8]', [(1, 'image/wmf'), (1, 'image/x-wmf'), (1, 'application/emf'), (1, 'application/x-emf'), (1, 'image/emf'), (1, 'image/x-emf'), (1, 'image/x-mgx-emf'), (1, 'application/x-navi-animation'), (1, 'image/bmp'), (1, 'image/x-bmp'), (1, 'image/x-MS-bmp'), (1, 'image/gif'), (1, 'image/x-icns'), (1, 'image/x-icon'), (1, 'image/x-ico'), (1, 'image/x-win-bitmap'), (1, 'image/vnd.microsoft.icon'), (1, 'application/ico'), (1, 'image/ico'), (1, 'image/icon'), (1, 'text/ico'), (1, 'image/jpeg'), (1, 'image/jxl'), (1, 'image/png'), (1, 'image/x-portable-anymap'), (1, 'image/x-portable-bitmap'), (1, 'image/x-portable-graymap'), (1, 'image/x-portable-pixmap'), (1, 'image/x-quicktime'), (1, 'image/qtif'), (1, 'image/svg+xml'), (1, 'image/svg'), (1, 'image/svg-xml'), (1, 'image/vnd.adobe.svg+xml'), (1, 'text/xml-svg'), (1, 'image/svg+xml-compressed'), (1, 'image/x-tga'), (1, 'image/tiff'), (1, 'image/x-xbitmap'), (1, 'image/x-xpixmap')])"
+    (is (equal (format nil
+"('[Invalid UTF-8]', [(1, 'application/x-navi-animation'), (1, 'image/png'), ~
+(1, 'image/bmp'), (1, 'image/x-bmp'), (1, 'image/x-MS-bmp'), (1, 'image/gif'), ~
+(1, 'image/x-icon'), (1, 'image/x-ico'), (1, 'image/x-win-bitmap'), ~
+(1, 'image/vnd.microsoft.icon'), (1, 'application/ico'), (1, 'image/ico'), ~
+(1, 'image/icon'), (1, 'text/ico'), (1, 'image/jpeg'), ~
+(1, 'image/x-portable-anymap'), (1, 'image/x-portable-bitmap'), ~
+(1, 'image/x-portable-graymap'), (1, 'image/x-portable-pixmap'), ~
+(1, 'image/tiff'), (1, 'image/x-xpixmap'), (1, 'image/x-xbitmap'), ~
+(1, 'image/x-tga'), (1, 'image/x-icns'), (1, 'image/x-quicktime'), ~
+(1, 'image/qtif'), (1, 'image/wmf'), (1, 'image/x-wmf'), ~
+(1, 'application/emf'), (1, 'application/x-emf'), (1, 'image/emf'), ~
+(1, 'image/x-emf'), (1, 'image/x-mgx-emf'), ~
+(1, 'application/x-navi-animation'), (1, 'image/bmp'), (1, 'image/x-bmp'), ~
+(1, 'image/x-MS-bmp'), (1, 'image/gif'), (1, 'image/x-icns'), ~
+(1, 'image/x-icon'), (1, 'image/x-ico'), (1, 'image/x-win-bitmap'), ~
+(1, 'image/vnd.microsoft.icon'), (1, 'application/ico'), (1, 'image/ico'), ~
+(1, 'image/icon'), (1, 'text/ico'), (1, 'image/jpeg'), (1, 'image/jxl'), ~
+(1, 'image/png'), (1, 'image/x-portable-anymap'), ~
+(1, 'image/x-portable-bitmap'), (1, 'image/x-portable-graymap'), ~
+(1, 'image/x-portable-pixmap'), (1, 'image/x-quicktime'), (1, 'image/qtif'), ~
+(1, 'image/x-tga'), (1, 'image/tiff'), (1, 'image/x-xbitmap'), ~
+(1, 'image/x-xpixmap'), (1, 'image/svg+xml'), (1, 'image/svg'), ~
+(1, 'image/svg-xml'), (1, 'image/vnd.adobe.svg+xml'), (1, 'text/xml-svg'), ~
+(1, 'image/svg+xml-compressed')])")
                  (g:variant-print (gtk:file-filter-to-gvariant filter))))))
 
 ;;;     gtk_file_filter_add_custom
@@ -177,4 +200,4 @@
     (is (string= "('[Invalid UTF-8]', [(1, 'text/plain')])"
                  (g:variant-print (gtk:file-filter-to-gvariant filter))))))
 
-;;; 2024-9-21
+;;; 2025-3-28
