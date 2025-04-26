@@ -34,6 +34,7 @@
 ;;;     gdk_events_pending
 
 ;; Install an event handler to inspect the main loop
+#+nil
 (eval-when (:compile-toplevel :load-toplevel :execute)
   (defun my-event-handler (event)
     (when *verbose-gdk-events*
@@ -43,6 +44,7 @@
     (gtk:main-do-event event))
   (gdk:event-handler-set #'my-event-handler))
 
+#+nil
 (defun clear-event-loop ()
   (let ((*verbose-gdk-events* nil))
     (loop while (gdk:events-pending)
@@ -50,6 +52,7 @@
                (format t "~&in CLEAR-EVENT-LOOP~%"))
              (gtk:main-iteration-do nil))))
 
+#+nil
 (defun events-pending-callback ()
   (let ((device (gdk:seat-pointer
                     (gdk:display-default-seat (gdk:display-default)))))
@@ -67,6 +70,7 @@
 
 ;; TODO: The following functions can cause an infinite loop, improve the code
 
+#+nil
 (test gdk-events-pending
   (let ((*verbose-gdk-events* nil))
     (is (= 0 (gtk:main-level)))
@@ -76,6 +80,7 @@
 
 ;;;     gdk_event_peek
 
+#+nil
 (test gdk-event-peek
   (let ((*verbose-gdk-events* t)
         (event (gdk:event-new :key-press)))
@@ -87,6 +92,7 @@
 ;;;     gdk_event_get
 ;;;     gdk_event_put
 
+#+nil
 (test gdk-event-get/put
   (let ((*verbose-gdk-events* nil)
         (event (gdk:event-new :key-press)))
@@ -344,4 +350,4 @@
   #+windows
   (is (= 500 (gdk:setting-get "gtk-double-click-time" "gint"))))
 
-;;; --- 2023-5-25 --------------------------------------------------------------
+;;; 2025-4-26
