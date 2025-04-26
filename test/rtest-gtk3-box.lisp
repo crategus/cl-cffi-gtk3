@@ -24,26 +24,26 @@
           (g:type-parent "GtkBox")))
   ;; Check children
   #-windows
-  (if *first-run-gtk-test*
-      (is (equal '("GtkAppChooserWidget" "GtkButtonBox" "GtkColorChooserWidget"
-                   "GtkColorSelection" "GtkFileChooserButton"
-                   "GtkFileChooserWidget" "GtkFontChooserWidget"
-                   "GtkInfoBar" "GtkPlacesView"
-                   "GtkPrinterOptionWidget" "GtkRecentChooserWidget"
-                   "GtkShortcutsGroup" "GtkShortcutsSection"
-                   "GtkShortcutsShortcut" "GtkStackSwitcher" "GtkStatusbar"
-                   "GtkVBox")
-             (glib-test:list-children "GtkBox"))))
+  (when *first-run-testsuite*
+    (is (equal '("GtkAppChooserWidget" "GtkButtonBox" "GtkColorChooserWidget"
+                 "GtkColorSelection" "GtkFileChooserButton"
+                 "GtkFileChooserWidget" "GtkFontChooserWidget"
+                 "GtkInfoBar" "GtkPlacesView"
+                 "GtkPrinterOptionWidget" "GtkRecentChooserWidget"
+                 "GtkShortcutsGroup" "GtkShortcutsSection"
+                 "GtkShortcutsShortcut" "GtkStackSwitcher" "GtkStatusbar"
+                 "GtkVBox")
+               (glib-test:list-children "GtkBox"))))
   #+windows
-  (if *first-run-gtk-test*
-      (is (equal '("GtkAppChooserWidget" "GtkButtonBox" "GtkColorChooserWidget"
-                    "GtkColorSelection" "GtkFileChooserButton"
-                    "GtkFileChooserWidget" "GtkFontChooserWidget"
-                    "GtkInfoBar" "GtkRecentChooserWidget"
-                    "GtkShortcutsGroup" "GtkShortcutsSection"
-                    "GtkShortcutsShortcut" "GtkStackSwitcher" "GtkStatusbar"
-                    "GtkVBox")
-             (glib-test:list-children "GtkBox"))))
+  (when *first-run-testsuite*
+    (is (equal '("GtkAppChooserWidget" "GtkButtonBox" "GtkColorChooserWidget"
+                 "GtkColorSelection" "GtkFileChooserButton"
+                 "GtkFileChooserWidget" "GtkFontChooserWidget"
+                 "GtkInfoBar" "GtkRecentChooserWidget"
+                 "GtkShortcutsGroup" "GtkShortcutsSection"
+                 "GtkShortcutsShortcut" "GtkStackSwitcher" "GtkStatusbar"
+                 "GtkVBox")
+               (glib-test:list-children "GtkBox"))))
   ;; Check interfaces
   (is (equal '("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
              (glib-test:list-interfaces "GtkBox")))
@@ -285,4 +285,4 @@
     ;; Remove references
     (is-false (setf (gtk:box-center-widget box) nil))))
 
-;;; 2025-3-9
+;;; 2025-4-26

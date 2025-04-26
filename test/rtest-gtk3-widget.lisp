@@ -134,7 +134,7 @@
   ;; Check parent
   (is (eq (g:gtype "GInitiallyUnowned") (g:type-parent "GtkWidget")))
   ;; Check children
-  (if *first-run-gtk-test*
+  (if *first-run-testsuite*
       (is (equal '("GtkCalendar" "GtkCellView" "GtkContainer" "GtkDrawingArea"
                    "GtkEntry" "GtkHSV" "GtkInvisible" "GtkLevelBar" "GtkMisc"
                    "GtkProgressBar" "GtkRange" "GtkSeparator" "GtkSpinner"
@@ -1157,4 +1157,4 @@
 ;;;     gtk_widget_queue_compute_expand
 ;;;     gtk_widget_compute_expand
 
-;;; 2024-9-21
+;;; 2025-4-26

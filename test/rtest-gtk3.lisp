@@ -15,8 +15,6 @@
 
 (in-package :gtk-test)
 
-(defvar *first-run-gtk-test* t)
-
 (def-suite gtk-test)
 (def-suite gdk-suite :in gtk-test)
 (def-suite gtk-suite :in gtk-test)
@@ -60,4 +58,4 @@
     ;; Return the new list store
     store))
 
-;;; 2025-2-23
+;;; 2025-4-26

@@ -25,9 +25,9 @@
           (g:type-parent "GdkScreen")))
   ;; Check children
   #+crategus
-  (if *first-run-gtk-test*
-      (is (equal '("GdkWaylandScreen")
-                 (glib-test:list-children "GdkScreen"))))
+  (when *first-run-testsuite*
+    (is (equal '("GdkWaylandScreen")
+               (glib-test:list-children "GdkScreen"))))
   #+windows
   (is (equal '("GdkWin32Screen")
              (glib-test:list-children "GdkScreen")))
@@ -214,4 +214,4 @@
   (is (every (lambda (x) (typep x 'gdk:window))
              (gdk:screen-window-stack (gdk:screen-default)))))
 
-;;; 2024-9-21
+;;; 2025-4-26
