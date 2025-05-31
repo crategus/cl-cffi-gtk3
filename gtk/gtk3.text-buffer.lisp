@@ -2440,7 +2440,7 @@ lambda (buffer tag start end)    :run-last
             (funcall func buffer content iter bytes create)
             t))
         (return ()
-            (error 'g-error-condition
+            (error 'gerror-condition
                    :domain "cl-cffi-gtk"
                    :code 0
                    :message
