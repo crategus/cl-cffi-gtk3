@@ -654,6 +654,11 @@
       "example-pango-drawing"
       "gtk3-example"
       "pango-drawing.lisp")
+      ("Drawing Animiation using Pango with Cairo"
+       ":window"
+       "example-pango-drawing-animation"
+       "gtk3-example"
+       "pango-drawing-animation.lisp")
       ("Draw centered text"
        ":drawfunc"
        "pango-draw-text-centered"

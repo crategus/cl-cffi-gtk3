@@ -98,6 +98,7 @@
            #:example-overlay-transparent               ; Layout Widgets
            #:example-paned-window                      ; Layout Widgets
            #:example-pango-drawing
+           #:example-pango-drawing-animation
            #:example-pixbufs
            #:example-pixbuf-scale
            #:example-pointer-device
@@ -156,4 +157,4 @@
            #:sys-path
            ))
 
-;;; --- 2023-2-12 --------------------------------------------------------------
+;;; 2025-06-01

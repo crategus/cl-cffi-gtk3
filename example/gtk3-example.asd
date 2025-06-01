@@ -97,6 +97,7 @@
                       :if-feature (:not :windows))
                (:file "paned-window")                  ; Layout Widgets
                (:file "pango-drawing")
+               (:file "pango-drawing-animation")
                (:file "pixbufs")
                (:file "pixbuf-scale")
                (:file "pointer-device")
@@ -153,4 +154,4 @@
                (:file "window-simple-demo")
               ))
 
-;;; --- 2023-7-24 --------------------------------------------------------------
+;;; 2025-06-01
