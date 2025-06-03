@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.application.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2013 - 2024 Dieter Kaiser
+;;; Copyright (C) 2013 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -56,8 +56,8 @@
 ;;;     gtk_application_is_inhibited
 ;;;     gtk_application_prefers_app_menu
 ;;;     gtk_application_get_menu_by_id
-;;;     gtk_application_add_accelerator                    not exported
-;;;     gtk_application_remove_accelerator                 not exported
+;;;     gtk_application_add_accelerator                     not exported
+;;;     gtk_application_remove_accelerator                  not exported
 ;;;     gtk_application_list_action_descriptions
 ;;;     gtk_application_get_accels_for_action
 ;;;     gtk_application_set_accels_for_action
@@ -106,7 +106,7 @@
 (setf (liber:alias-for-symbol 'application-inhibit-flags)
       "GFlags"
       (liber:symbol-documentation 'application-inhibit-flags)
- "@version{2024-3-15}
+ "@version{2024-03-15}
   @begin{declaration}
 (gobject:define-gflags \"GtkApplicationInhibitFlags\" application-inhibit-flags
   (:export t
@@ -161,7 +161,7 @@
 
 #+liber-documentation
 (setf (documentation 'application 'type)
- "@version{2024-3-15}
+ "@version{2025-06-02}
   @begin{short}
     The @class{gtk:application} class handles many important aspects of a GTK
     application in a convenient fashion, without enforcing a one-size-fits-all
@@ -260,39 +260,39 @@
       @begin{pre}
 lambda (application)    :run-first
       @end{pre}
+      @begin[code]{table}
+        @entry[application]{The @class{gtk:application} instance which emitted
+          the signal.}
+      @end{table}
       Emitted when the session manager is about to end the session, only if the
       @slot[gtk:application]{register-session} property is @em{true}.
       Applications can connect to this signal and call the
       @fun{gtk:application-inhibit} function with the @code{:logout} value of
       the @symbol{gtk:application-inhibit-flags} flags to delay the end of the
       session until the state has been saved.
-      @begin[code]{table}
-        @entry[application]{The @class{gtk:application} instance which emitted
-          the signal.}
-      @end{table}
     @subheading{The \"window-added\" signal}
       @begin{pre}
 lambda (application window)    :run-first
       @end{pre}
-      Emitted when a @class{gtk:window} widget is added to the application
-      through the @fun{gtk:application-add-window} function.
       @begin[code]{table}
         @entry[application]{The @class{gtk:application} instance which emitted
           the signal.}
         @entry[window]{The newly added @class{gtk:window} widget.}
       @end{table}
+      Emitted when a @class{gtk:window} widget is added to the application
+      through the @fun{gtk:application-add-window} function.
     @subheading{The \"window-removed\" signal}
       @begin{pre}
 lambda (application window)    :run-first
       @end{pre}
-      Emitted when a @class{gtk:window} widget is removed from the application,
-      either as a side-effect of being destroyed or explicitly through the
-      @fun{gtk:application-remove-window} function.
       @begin[code]{table}
         @entry[application]{The @class{gtk:application} instance which emitted
           the signal.}
         @entry[window]{The @class{gtk:window} widget that is being removed.}
       @end{table}
+      Emitted when a @class{gtk:window} widget is removed from the application,
+      either as a side-effect of being destroyed or explicitly through the
+      @fun{gtk:application-remove-window} function.
   @end{dictionary}
   @see-constructor{gtk:application-new}
   @see-slot{gtk:application-active-window}
@@ -322,7 +322,7 @@ lambda (application window)    :run-first
 (setf (liber:alias-for-function 'application-active-window)
       "Accessor"
       (documentation 'application-active-window 'function)
- "@version{2024-3-15}
+ "@version{2024-03-15}
   @syntax{(gtk:application-active-window object) => window}
   @argument[object]{a @class{gtk:application} instance}
   @argument[window]{a @class{gtk:window} widget}
@@ -351,7 +351,7 @@ lambda (application window)    :run-first
 (setf (liber:alias-for-function 'application-app-menu)
       "Accessor"
       (documentation 'application-app-menu 'function)
- "@version{2024-3-15}
+ "@version{2024-03-15}
   @syntax{(gtk:application-app-menu object) => menu}
   @syntax{(setf (gtk:application-app-menu object) menu)}
   @argument[object]{a @class{gtk:application} instance}
@@ -389,7 +389,7 @@ lambda (application window)    :run-first
 (setf (liber:alias-for-function 'application-menubar)
       "Accessor"
       (documentation 'application-menubar 'function)
- "@version{2024-3-15}
+ "@version{2024-03-15}
   @syntax{(gtk:application-menubar object) => menubar}
   @syntax{(setf (gtk:application-menubar object) menubar)}
   @argument[object]{a @class{gtk:application} instance}
@@ -434,7 +434,7 @@ lambda (application window)    :run-first
 (setf (liber:alias-for-function 'application-register-session)
       "Accessor"
       (documentation 'application-register-session 'function)
- "@version{2024-3-15}
+ "@version{2024-03-15}
   @syntax{(gtk:application-register-session object) => setting}
   @syntax{(setf (gtk:application-register-session object) setting)}
   @argument[object]{a @class{gtk:application} instance}
@@ -463,7 +463,7 @@ lambda (application window)    :run-first
 (setf (liber:alias-for-function 'application-screensaver-active)
       "Accessor"
       (documentation 'application-screensaver-active 'function)
- "@version{2024-3-15}
+ "@version{2024-03-15}
   @syntax{(gtk:application-screensaver-active object) => active}
   @argument[object]{a @class{gtk:application} instance}
   @argument[active]{a boolean whether the screensaver is active}
@@ -486,10 +486,10 @@ lambda (application window)    :run-first
 (declaim (inline application-new))
 
 (defun application-new (id flags)
- "@version{2024-3-15}
-  @argument[id]{a string with the application ID, or @code{nil} for no
+ "@version{2025-06-02}
+  @argument[id]{a string for the application ID, or @code{nil} for no
     application ID}
-  @argument[flags]{a @symbol{g:application-flags} value with the application
+  @argument[flags]{a @symbol{g:application-flags} value for the application
     flags}
   @return{The new @class{gtk:application} instance.}
   @begin{short}
@@ -526,7 +526,7 @@ lambda (application window)    :run-first
 
 (cffi:defcfun ("gtk_application_add_window" application-add-window) :void
  #+liber-documentation
- "@version{2024-3-15}
+ "@version{2024-03-15}
   @argument[application]{a @class{gtk:application} instance}
   @argument[window]{a @class{gtk:window} widget}
   @begin{short}
@@ -590,7 +590,7 @@ lambda (application window)    :run-first
 
 (cffi:defcfun ("gtk_application_remove_window" application-remove-window) :void
  #+liber-documentation
- "@version{2024-3-15}
+ "@version{2024-03-15}
   @argument[application]{a @class{gtk:application} instance}
   @argument[window]{a @class{gtk:window} widget}
   @begin{short}
@@ -616,7 +616,7 @@ lambda (application window)    :run-first
 (cffi:defcfun ("gtk_application_get_windows" application-windows)
     (g:list-t (g:object window) :free-from-foreign nil)
  #+liber-documentation
- "@version{2024-3-15}
+ "@version{2024-03-15}
   @argument[application]{a @class{gtk:application} instance}
   @return{The list of @class{gtk:window} widgets.}
   @begin{short}
@@ -656,11 +656,13 @@ lambda (application window)    :run-first
 (cffi:defcfun ("gtk_application_get_window_by_id" application-window-by-id)
     (g:object window)
  #+liber-documentation
- "@version{2024-3-15}
+ "@version{2025-06-02}
   @argument[application]{a @class{gtk:application} instance}
-  @argument[id]{an unsigned integer identifier number}
-  @return{The @class{gtk:application-window} widget with ID @arg{id}, or
-    @code{nil} if there is no window with this ID.}
+  @argument[id]{an unsigned integer for the identifier number}
+  @begin{return}
+    The @class{gtk:application-window} widget with ID @arg{id}, or @code{nil}
+    if there is no window with this ID.
+  @end{return}
   @begin{short}
     Returns the application window with the given ID.
   @end{short}
@@ -686,10 +688,10 @@ lambda (application window)    :run-first
 
 (cffi:defcfun ("gtk_application_inhibit" application-inhibit) :uint
  #+liber-documentation
- "@version{#2024-3-15}
+ "@version{#2025-06-02}
   @argument[application]{a @class{gtk:application} instance}
   @argument[window]{a @class{gtk:window} widget, or @code{nil}}
-  @argument[flags]{a @symbol{gtk:application-inhibit-flags} value with the
+  @argument[flags]{a @symbol{gtk:application-inhibit-flags} value for the
     types of user actions that should be inhibited}
   @argument[reason]{a short, human readable string that explains why these
     operations are inhibited}
@@ -740,7 +742,7 @@ lambda (application window)    :run-first
 
 (cffi:defcfun ("gtk_application_uninhibit" application-uninhibit) :void
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{#2023-03-15}
   @argument[application]{a @class{gtk:application} instance}
   @argument[cookie]{an unsigned integer cookie that was returned by the
     @fun{gtk:application-inhibit} function}
@@ -763,12 +765,14 @@ lambda (application window)    :run-first
 
 (cffi:defcfun ("gtk_application_is_inhibited" application-is-inhibited) :boolean
  #+liber-documentation
- "@version{#2024-3-15}
+ "@version{#2025-06-02}
   @argument[application]{a @class{gtk:application} instance}
-  @argument[flags]{a @symbol{gtk:application-inhibit-flags} value with the
+  @argument[flags]{a @symbol{gtk:application-inhibit-flags} value for the
     types of actions that should be queried}
-  @return{@em{True} if any of the actions specified in the @arg{flags} argument
-    are inhibited.}
+  @begin{return}
+    @em{True} if any of the actions specified in the @arg{flags} argument are
+    inhibited.
+  @end{return}
   @begin{short}
     Determines if any of the actions specified in the @arg{flags} argument are
     currently inhibited, possibly by another application.
@@ -789,10 +793,12 @@ lambda (application window)    :run-first
 (cffi:defcfun ("gtk_application_prefers_app_menu" application-prefers-app-menu)
     :boolean
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{#2023-03-15}
   @argument[application]{a @class{gtk:application} instance}
-  @return{@em{True} if the desktop enviroment would prefer an application menu
-    be shown.}
+  @begin{return}
+    @em{True} if the desktop enviroment would prefer an application menu be
+    shown.
+  @end{return}
   @begin{short}
     Determines if the desktop environment in which the application is running
     would prefer an application menu be shown.
@@ -840,11 +846,13 @@ lambda (application window)    :run-first
 (cffi:defcfun ("gtk_application_get_menu_by_id" application-menu-by-id)
     (g:object menu)
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{#2025-06-02}
   @argument[application]{a @class{gtk:application} instance}
-  @argument[id]{a string with the ID of the menu to look up}
-  @return{Gets the @class{g:menu} object with the given @arg{id} argument from
-    the automatically loaded resources.}
+  @argument[id]{a string for the ID of the menu to look up}
+  @begin{return}
+    Gets the @class{g:menu} object with the given @arg{id} argument from the
+    automatically loaded resources.
+  @end{return}
   @begin{short}
     Gets a menu from automatically loaded resources.
   @end{short}
@@ -869,10 +877,10 @@ lambda (application window)    :run-first
 (defun application-add-accelerator (application accel name
                                     &optional (parameter nil))
  #+liber-documentation
- "@version{#2024-6-27}
+ "@version{#2025-06-02}
   @argument[application]{a @class{gtk:application} instance}
   @argument[accel]{a string representing an accelerator}
-  @argument[name]{a string with the name of the action to activate}
+  @argument[name]{a string for the name of the action to activate}
   @argument[parameter]{an optional @symbol{g:variant} parameter to pass when
     activating the action, or @code{nil}, the default, if the action does not
     accept an activation parameter}
@@ -926,9 +934,9 @@ lambda (application window)    :run-first
 (defun application-remove-accelerator (application name
                                        &optional (parameter nil))
  #+liber-documentation
- "@version{#2023-12-24}
+ "@version{#2025-06-02}
   @argument[application]{a @class{gtk:application} instance}
-  @argument[name]{a string with the name of the action to activate}
+  @argument[name]{a string for the name of the action to activate}
   @argument[parameter]{an optional @symbol{g:variant} parameter to pass when
     activating the action, or @code{nil}, the default, if the action does not
     accept an activation parameter}
@@ -985,11 +993,11 @@ lambda (application window)    :run-first
 (cffi:defcfun ("gtk_application_get_accels_for_action"
                 application-accels-for-action) g:strv-t
  #+liber-documentation
- "@version{2024-3-20}
+ "@version{2025-06-02}
   @syntax{(gtk:application-accels-for-action application name) => accels}
   @syntax{(setf (gtk:application-accels-for-action application name) accels)}
   @argument[application]{a @class{gtk:application} instance}
-  @argument[name]{a string with a detailed action name, specifying an action
+  @argument[name]{a string for a detailed action name, specifying an action
     and target}
   @argument[accels]{a string or a list of strings of accelerators in the format
     understood by the @fun{gtk:accelerator-parse} function}
@@ -1021,9 +1029,9 @@ lambda (application window)    :run-first
 
 (cffi:defcfun ("gtk_application_get_actions_for_accel"
                 application-actions-for-accel) g:strv-t
- "@version{2023-12-24}
+ "@version{2025-06-02}
   @argument[application]{a @class{gtk:application} instance}
-  @argument[accel]{a string with an accelerator that can be parsed by the
+  @argument[accel]{a string for an accelerator that can be parsed by the
     @fun{gtk:accelerator-parse} function}
   @return{The list of strings of actions for the @arg{accel} argument.}
   @begin{short}

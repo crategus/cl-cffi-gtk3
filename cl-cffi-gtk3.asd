@@ -584,7 +584,7 @@
      (:file "rtest-gtk3-adjustment")
      (:file "rtest-gtk3-arrow")
      (:file "rtest-gtk3-calendar")
-;    (:file "gtk.drawing-area")
+     (:file "rtest-gtk3-drawing-area")
      (:file "rtest-gtk3-event-box")
 ;    (:file "gtk.handle-box")
 ;    (:file "gtk.im-context-simple")

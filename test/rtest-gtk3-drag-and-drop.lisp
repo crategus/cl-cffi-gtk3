@@ -28,12 +28,13 @@
              (glib-test:list-flags-item-nicks "GtkDestDefaults")))
   ;; Check flags definition
   (is (equal '(GOBJECT:DEFINE-GFLAGS "GtkDestDefaults" GTK:DEST-DEFAULTS
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_dest_defaults_get_type")
-                       (:MOTION 1)
-                       (:HIGHLIGHT 2)
-                       (:DROP 4)
-                       (:ALL 7))
+                                     (:EXPORT T
+                                      :TYPE-INITIALIZER
+                                      "gtk_dest_defaults_get_type")
+                                     (:MOTION 1)
+                                     (:HIGHLIGHT 2)
+                                     (:DROP 4)
+                                     (:ALL 7))
              (gobject:get-gtype-definition "GtkDestDefaults"))))
 
 ;;;     GtkTargetFlags  --> gtk.selection.lisp
@@ -64,14 +65,15 @@
              (glib-test:list-enum-item-nicks "GtkDragResult")))
   ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-GENUM "GtkDragResult" GTK:DRAG-RESULT
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_drag_result_get_type")
-                       (:SUCCESS 0)
-                       (:NO-TARGET 1)
-                       (:USER-CANCELLED 2)
-                       (:TIMEOUT-EXPIRED 3)
-                       (:GRAB-BROKEN 4)
-                       (:ERROR 5))
+                                    (:EXPORT T
+                                     :TYPE-INITIALIZER
+                                     "gtk_drag_result_get_type")
+                                    (:SUCCESS 0)
+                                    (:NO-TARGET 1)
+                                    (:USER-CANCELLED 2)
+                                    (:TIMEOUT-EXPIRED 3)
+                                    (:GRAB-BROKEN 4)
+                                    (:ERROR 5))
              (gobject:get-gtype-definition "GtkDragResult"))))
 
 ;;; --- Functions --------------------------------------------------------------
@@ -251,6 +253,7 @@
                  ("image/ico" NIL 0)
                  ("image/icon" NIL 0)
                  ("text/ico" NIL 0)
+                 ("image/jxl" NIL 0)
                  ("image/tiff" NIL 0)
                  ("image/webp" NIL 0)
                  ("audio/x-riff" NIL 0))
@@ -307,4 +310,4 @@
                (gtk:target-table-new-from-list
                    (gtk:drag-source-target-list source))))))
 
-;;; 2024-9-21
+;;; 2025-06-02

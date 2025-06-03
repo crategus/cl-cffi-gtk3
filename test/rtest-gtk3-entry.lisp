@@ -29,10 +29,11 @@
   ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-GENUM "GtkEntryIconPosition"
                                     GTK:ENTRY-ICON-POSITION
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_entry_icon_position_get_type")
-                       (:PRIMARY 0)
-                       (:SECONDARY 1))
+                                    (:EXPORT T
+                                     :TYPE-INITIALIZER
+                                     "gtk_entry_icon_position_get_type")
+                                    (:PRIMARY 0)
+                                    (:SECONDARY 1))
              (gobject:get-gtype-definition "GtkEntryIconPosition"))))
 
 ;;;     GtkInputPurpose
@@ -63,19 +64,20 @@
              (glib-test:list-enum-item-nicks "GtkInputPurpose")))
   ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-GENUM "GtkInputPurpose" GTK:INPUT-PURPOSE
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_input_purpose_get_type")
-                       (:FREE-FORM 0)
-                       (:ALPHA 1)
-                       (:DIGITS 2)
-                       (:NUMBER 3)
-                       (:PHONE 4)
-                       (:URL 5)
-                       (:EMAIL 6)
-                       (:NAME 7)
-                       (:PASSWORD 8)
-                       (:PIN 9)
-                       (:TERMINAL 10))
+                                    (:EXPORT T
+                                     :TYPE-INITIALIZER
+                                     "gtk_input_purpose_get_type")
+                                    (:FREE-FORM 0)
+                                    (:ALPHA 1)
+                                    (:DIGITS 2)
+                                    (:NUMBER 3)
+                                    (:PHONE 4)
+                                    (:URL 5)
+                                    (:EMAIL 6)
+                                    (:NAME 7)
+                                    (:PASSWORD 8)
+                                    (:PIN 9)
+                                    (:TERMINAL 10))
              (gobject:get-gtype-definition "GtkInputPurpose"))))
 
 ;;;     GtkInputHints
@@ -108,20 +110,21 @@
              (glib-test:list-flags-item-nicks "GtkInputHints")))
   ;; Check flags definition
   (is (equal '(GOBJECT:DEFINE-GFLAGS "GtkInputHints" GTK:INPUT-HINTS
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_input_hints_get_type")
-                       (:NONE 0)
-                       (:SPELLCHECK 1)
-                       (:NO-SPELLCHECK 2)
-                       (:WORD-COMPLETION 4)
-                       (:LOWERCASE 8)
-                       (:UPPERCASE-CHARS 16)
-                       (:UPPERCASE-WORDS 32)
-                       (:UPPERCASE-SENTENCES 64)
-                       (:INHIBIT-OSK 128)
-                       (:VERTICAL-WRITING 256)
-                       (:EMOJI 512)
-                       (:NO-EMOJI 1024))
+                                     (:EXPORT T
+                                      :TYPE-INITIALIZER
+                                      "gtk_input_hints_get_type")
+                                     (:NONE 0)
+                                     (:SPELLCHECK 1)
+                                     (:NO-SPELLCHECK 2)
+                                     (:WORD-COMPLETION 4)
+                                     (:LOWERCASE 8)
+                                     (:UPPERCASE-CHARS 16)
+                                     (:UPPERCASE-WORDS 32)
+                                     (:UPPERCASE-SENTENCES 64)
+                                     (:INHIBIT-OSK 128)
+                                     (:VERTICAL-WRITING 256)
+                                     (:EMOJI 512)
+                                     (:NO-EMOJI 1024))
              (gobject:get-gtype-definition "GtkInputHints"))))
 
 ;;;     GtkEntry
@@ -173,14 +176,7 @@
                "progress-border")
              (gtk-test:list-style-properties "GtkEntry")))
   ;; Check signals
-  ;; TODO: TOGGLE-OVERWRITE since Gtk 3.24.49 is not documented
-  #-windows
-  (is (equal '("activate" "backspace" "copy-clipboard" "cut-clipboard"
-               "delete-from-cursor" "icon-press" "icon-release"
-               "insert-at-cursor" "insert-emoji" "move-cursor" "paste-clipboard"
-               "populate-popup" "preedit-changed" "toggle-overwrite")
-             (glib-test:list-signals "GtkEntry")))
-  #+windows ;; on Windows version 3.24.49 installed
+  ;; TODO: TOGGLE-DIRECTION since Gtk 3.24.49 is not documented
   (is (equal '("activate" "backspace" "copy-clipboard" "cut-clipboard"
                "delete-from-cursor" "icon-press" "icon-release"
                "insert-at-cursor" "insert-emoji" "move-cursor" "paste-clipboard"
@@ -301,7 +297,8 @@
 ;;; --- Properties -------------------------------------------------------------
 
 (test gtk-entry-properties
-  (let ((entry (make-instance 'gtk:entry)))
+  (glib-test:with-check-memory (entry)
+    (is (typep (setf entry (make-instance 'gtk:entry)) 'gtk:entry))
     (is-false (gtk:entry-activates-default entry))
     (is-false (gtk:entry-attributes entry))
     (is (typep (gtk:entry-buffer entry) 'gtk:entry-buffer))
@@ -355,7 +352,9 @@
     (is-false (gtk:entry-truncate-multiline entry))
     (is-true (gtk:entry-visibility entry))
     (is (= -1 (gtk:entry-width-chars entry)))
-    (is (= 0.0 (gtk:entry-xalign entry)))))
+    (is (= 0.0 (gtk:entry-xalign entry)))
+    ;; Remove references
+    (is-false (setf (gtk:entry-buffer entry) nil))))
 
 ;;; --- Style Properties -------------------------------------------------------
 
@@ -421,4 +420,4 @@
 ;;;     gtk_entry_get_icon_area
 ;;;     gtk_entry_grab_focus_without_selecting
 
-;;; 2024-9-22
+;;; 2025-06-02

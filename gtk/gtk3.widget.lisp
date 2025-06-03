@@ -2,8 +2,8 @@
 ;;; gtk3.widget.lisp
 ;;;
 ;;; The documentation in this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library,
-;;; see <http://www.gtk.org>. The API documentation of the Lisp binding is
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
 ;;; Copyright (C) 2011 - 2025 Dieter Kaiser
@@ -7333,14 +7333,14 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_get_allocated_width" widget-allocated-width) :int
  #+liber-documentation
- "@version{2023-12-26}
+ "@version{2025-06-02}
   @argument[widget]{a @class{gtk:widget} object to query}
   @return{The integer with the width of the widget.}
   @begin{short}
     Returns the width that has currently been allocated to @arg{widget}.
   @end{short}
   This function is intended to be used when implementing handlers for the
-  \"draw\" function.
+  @code{\"draw\"} signal.
   @begin[Notes]{dictionary}
     The @fun{gtk:widget-allocated-width} function is equivalent to the call
     @begin{pre}
@@ -7360,14 +7360,14 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_get_allocated_height" widget-allocated-height) :int
  #+liber-documentation
- "@version{2023-12-26}
+ "@version{2025-06-02}
   @argument[widget]{a @class{gtk:widget} object to query}
   @return{The integer with the height of the widget.}
   @begin{short}
     Returns the height that has currently been allocated to @arg{widget}.
   @end{short}
   This function is intended to be used when implementing handlers for the
-  \"draw\" function.
+  @code{\"draw\"} signal.
   @begin[Notes]{dictionary}
     The @fun{gtk:widget-allocated-height} function is equivalent to the call
     @begin{pre}

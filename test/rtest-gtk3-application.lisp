@@ -26,13 +26,13 @@
   ;; Check flags definition
   (is (equal '(GOBJECT:DEFINE-GFLAGS "GtkApplicationInhibitFlags"
                                      GTK:APPLICATION-INHIBIT-FLAGS
-                       (:EXPORT T
-                        :TYPE-INITIALIZER
-                        "gtk_application_inhibit_flags_get_type")
-                       (:LOGOUT 1)
-                       (:SWITCH 2)
-                       (:SUSPEND 4)
-                       (:IDLE 8))
+                                     (:EXPORT T
+                                      :TYPE-INITIALIZER
+                                      "gtk_application_inhibit_flags_get_type")
+                                     (:LOGOUT 1)
+                                     (:SWITCH 2)
+                                     (:SUSPEND 4)
+                                     (:IDLE 8))
              (gobject:get-gtype-definition "GtkApplicationInhibitFlags"))))
 
 ;;; --- GtkApplication ---------------------------------------------------------
@@ -63,20 +63,20 @@
              (glib-test:list-signals "GtkApplication")))
   ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkApplication" GTK:APPLICATION
-                       (:SUPERCLASS G:APPLICATION
-                        :EXPORT T
-                        :INTERFACES ("GActionGroup" "GActionMap")
-                        :TYPE-INITIALIZER "gtk_application_get_type")
-                       ((ACTIVE-WINDOW APPLICATION-ACTIVE-WINDOW
-                         "active-window" "GtkWindow" T NIL)
-                        (APP-MENU APPLICATION-APP-MENU
-                         "app-menu" "GMenuModel" T T)
-                        (MENUBAR APPLICATION-MENUBAR
-                         "menubar" "GMenuModel" T T)
-                        (REGISTER-SESSION APPLICATION-REGISTER-SESSION
-                         "register-session" "gboolean" T T)
-                        (SCREENSAVER-ACTIVE APPLICATION-SCREENSAVER-ACTIVE
-                         "screensaver-active" "gboolean" T NIL)))
+                      (:SUPERCLASS G:APPLICATION
+                       :EXPORT T
+                       :INTERFACES ("GActionGroup" "GActionMap")
+                       :TYPE-INITIALIZER "gtk_application_get_type")
+                      ((ACTIVE-WINDOW APPLICATION-ACTIVE-WINDOW
+                        "active-window" "GtkWindow" T NIL)
+                       (APP-MENU APPLICATION-APP-MENU
+                        "app-menu" "GMenuModel" T T)
+                       (MENUBAR APPLICATION-MENUBAR
+                        "menubar" "GMenuModel" T T)
+                       (REGISTER-SESSION APPLICATION-REGISTER-SESSION
+                        "register-session" "gboolean" T T)
+                       (SCREENSAVER-ACTIVE APPLICATION-SCREENSAVER-ACTIVE
+                        "screensaver-active" "gboolean" T NIL)))
              (gobject:get-gtype-definition "GtkApplication"))))
 
 ;;; --- Properties and Accessors -----------------------------------------------
@@ -109,11 +109,13 @@
                         (setf (gtk:application-app-menu app)
                               (make-instance 'g:menu))
                         (is (typep (gtk:application-app-menu app) 'g:menu))
+                        (is-false (setf (gtk:application-app-menu app) nil))
                         ;; gtk-application-menubar
                         (is-false (gtk:application-menubar app))
                         (setf (gtk:application-menubar app)
                               (make-instance 'g:menu))
                         (is (typep (gtk:application-menubar app) 'g:menu))
+                        (is-false (setf (gtk:application-menubar app) nil))
                         ;; gtk-application-register-session
                         (is-false (gtk:application-register-session app))
                         (setf (gtk:application-register-session app) t)
@@ -175,7 +177,8 @@
                           ;; Add window to the application
                           (gtk:application-add-window app window)
                           ;; Remove window from the application
-                          (gtk:application-remove-window app window))
+                          (gtk:application-remove-window app window)
+                          (gtk:widget-destroy window))
                         (g:application-release app)))
     ;; Connect signal "shutdown"
     (g:signal-connect application "shutdown"
@@ -252,9 +255,10 @@
                           ;; Check the list of windows
                           (is-true (member window
                                            (gtk:application-windows app)
-                                           :test #'equal))
+                                           :test #'eq))
                           ;; Remove window from the application
-                          (gtk:application-remove-window app window))
+                          (gtk:application-remove-window app window)
+                          (gtk:widget-destroy window))
                         (g:application-release app)))
     ;; Connect signal "shutdown"
     (g:signal-connect application "shutdown"
@@ -316,4 +320,4 @@
     (is (equal '("win::close" "win::save")
                (gtk:application-actions-for-accel application "<Control>q")))))
 
-;;; 2024-9-22
+;;; 2025-06-02

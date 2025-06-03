@@ -35,11 +35,11 @@
              (glib-test:list-signals "GtkIconTheme")))
   ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkIconTheme" GTK:ICON-THEME
-                       (:SUPERCLASS G:OBJECT
-                        :EXPORT T
-                        :INTERFACES NIL
-                        :TYPE-INITIALIZER "gtk_icon_theme_get_type")
-                       NIL)
+                      (:SUPERCLASS G:OBJECT
+                       :EXPORT T
+                       :INTERFACES NIL
+                       :TYPE-INITIALIZER "gtk_icon_theme_get_type")
+                      NIL)
              (gobject:get-gtype-definition "GtkIconTheme"))))
 
 ;;; --- Functions --------------------------------------------------------------
@@ -153,8 +153,8 @@
   (let ((theme (gtk:icon-theme-default)))
     (is (equal '("Actions" "Animations" "Applications" "Camera" "Categories" "Devices"
  "Emblems" "Emotes" "Generic-Symbols" "Legacy" "MimeTypes" "Multimedia"
- "Org.Gnome.Nautilus" "Org.Gnome.Settings" "Phosh" "Places" "Status" "Stock"
- "Time" "UI")
+ "Org.Gnome.Nautilus" "Org.Gnome.Settings" "Phosh" "Places" "Status" "Time"
+ "UI")
                (sort (gtk:icon-theme-list-contexts theme) #'string<)))))
 
 #+windows
@@ -296,4 +296,4 @@
          (icon-info (gtk:icon-theme-lookup-icon theme "battery" 0 :force-symbolic)))
     (is-true (gtk:icon-info-is-symbolic icon-info))))
 
-;;; 2024-9-21
+;;; 2025-06-02

@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.drawing-area.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -67,12 +67,13 @@
 
 #+liber-documentation
 (setf (documentation 'drawing-area 'type)
- "@version{2023-12-30}
+ "@version{2025-06-01}
   @begin{short}
     The @class{gtk:drawing-area} widget is used for creating custom user
-    interface elements. It is essentially a blank widget. You can draw on it.
+    interface elements.
   @end{short}
-  After creating a drawing area, the application may want to connect to:
+  It is essentially a blank widget. You can draw on it. After creating a
+  drawing area, the application may want to connect to:
   @begin{itemize}
     @begin{item}
       Mouse and button press signals to respond to input from the user. Use the
@@ -114,11 +115,12 @@
     If you want to have a theme-provided background, you need to call the
     @fun{gtk:render-background} function in your @code{\"draw\"} signal handler.
     @begin{pre}
-(defun example-drawing-area ()
+(defun example-drawing-area (&optional application)
   (gtk:within-main-loop
     (let ((window (make-instance 'gtk:window
                                  :type :toplevel
-                                 :title \"Example Drawing Area\"
+                                 :application application
+                                 :title \"Drawing Area\"
                                  :default-width 400
                                  :default-height 300))
           ;; Create the drawing area
@@ -126,7 +128,7 @@
       ;; Signal handler for the drawing area
       (g:signal-connect area \"draw\"
           (lambda (widget cr)
-            (let* ((cr (pointer cr))
+            (let* ((cr (glib:pointer cr))
                    (width (gtk:widget-allocated-width widget))
                    (height (gtk:widget-allocated-height widget))
                    (context (gtk:widget-style-context widget))
@@ -134,15 +136,15 @@
                 ;; Set the color from the style context of the widget
                 (gdk:cairo-set-source-rgba cr color)
                 ;; Draw and fill a circle on the drawing area
-                (cairo-arc cr
+                (cairo:arc cr
                            (/ width 2.0)
                            (/ height 2.0)
                            (- (/ (min width height) 2.0) 12)
                            0.0
                            (* 2.0 pi))
-                (cairo-fill cr)
+                (cairo:fill cr)
                 ;; Destroy the Cairo context
-                (cairo-destroy cr))))
+                (cairo:destroy cr))))
       ;; Signal handler for the window to handle the signal \"destroy\"
       (g:signal-connect window \"destroy\"
                         (lambda (widget)
@@ -161,18 +163,16 @@
   @see-function{gtk:render-background}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_drawing_area_new ()
+;;; gtk_drawing_area_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline drawing-area-new))
 
 (defun drawing-area-new ()
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{2025-06-01}
   @return{The new @class{gtk:drawing-area} widget.}
-  @begin{short}
-    Creates a new drawing area.
-  @end{short}
+  @short{Creates a new drawing area.}
   @see-class{gtk:drawing-area}"
   (make-instance 'drawing-area))
 

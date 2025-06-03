@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.application-window.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2013 - 2024 Dieter Kaiser
+;;; Copyright (C) 2013 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -87,7 +87,7 @@
 
 #+liber-documentation
 (setf (documentation 'application-window 'type)
- "@version{2024-3-20}
+ "@version{2024-03-20}
   @begin{short}
     The @class{gtk:application-window} class is a @class{gtk:window} subclass
     that offers some extra functionality for better integration with
@@ -229,7 +229,7 @@
 (setf (liber:alias-for-function 'application-window-show-menubar)
       "Accessor"
       (documentation 'application-window-show-menubar 'function)
- "@version{2024-3-15}
+ "@version{2024-03-15}
   @syntax{(gtk:application-window-show-menubar object) => show}
   @syntax{(setf (gtk:application-window-show-menubar object) show)}
   @argument[window]{a @class{gtk:application-window} widget}
@@ -251,7 +251,7 @@
 (cffi:defcfun ("gtk_application_window_new" application-window-new)
     (g:object widget)
  #+liber-documentation
- "@version{2023-3-11}
+ "@version{2023-03-11}
   @argument[application]{a @class{gtk:application} instance}
   @return{The newly created @class{gtk:application-window} widget.}
   @short{Creates a new application window.}
@@ -267,7 +267,7 @@
 
 (cffi:defcfun ("gtk_application_window_get_id" application-window-id) :uint
  #+liber-documentation
- "@version{2023-3-11}
+ "@version{2023-03-11}
   @argument[window]{a @class{gtk:application-window} widget}
   @begin{return}
     The unique ID for @arg{window}, or 0 if @arg{window} has not yet been
@@ -298,7 +298,7 @@
 (cffi:defcfun ("gtk_application_window_get_help_overlay"
                application-window-help-overlay) (g:object shortcuts-window)
  #+liber-documentation
- "@version{2024-3-20}
+ "@version{2025-06-02}
   @syntax{(gtk:application-window-help-overlay window) => overlay}
   @syntax{(setf (gtk:application-window-help-overlay window) overlay)}
   @argument[window]{a @class{gtk:application-window} widget}
@@ -307,7 +307,7 @@
     The @fun{gtk:application-window-help-overlay} function gets the shortcuts
     window associated with the application window.
   @end{short}
-  The @setf{gtk:applicaton-window-help-overlay} function associates a shortcuts
+  The @setf{gtk:application-window-help-overlay} function associates a shortcuts
   window with the application window, and sets up an action with the name
   @code{\"win.show-help-overlay\"} to present it.
   @see-class{gtk:application-window}

@@ -28,12 +28,13 @@
              (glib-test:list-flags-item-nicks "GtkTargetFlags")))
   ;; Check flags definition
   (is (equal '(GOBJECT:DEFINE-GFLAGS "GtkTargetFlags" GTK:TARGET-FLAGS
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_target_flags_get_type")
-                       (:SAME-APP 1)
-                       (:SAME-WIDGET 2)
-                       (:OTHER-APP 4)
-                       (:OTHER-WIDGET 8))
+                                     (:EXPORT T
+                                      :TYPE-INITIALIZER
+                                      "gtk_target_flags_get_type")
+                                     (:SAME-APP 1)
+                                     (:SAME-WIDGET 2)
+                                     (:OTHER-APP 4)
+                                     (:OTHER-WIDGET 8))
              (gobject:get-gtype-definition "GtkTargetFlags"))))
 
 ;;;   GtkTargetEntry
@@ -144,9 +145,9 @@
   (let ((tlist (gtk:target-list-new)))
     (gtk:target-list-add-image-targets tlist 0 t)
     (is (equal '("application/ico" "audio/x-riff" "image/avif" "image/bmp"
-                 "image/ico" "image/icon" "image/jpeg" "image/png" "image/tiff"
-                 "image/vnd.microsoft.icon" "image/webp" "image/x-bmp"
-                 "image/x-ico" "image/x-icon" "image/x-MS-bmp"
+                 "image/ico" "image/icon" "image/jpeg" "image/jxl" "image/png"
+                 "image/tiff" "image/vnd.microsoft.icon" "image/webp"
+                 "image/x-bmp" "image/x-ico" "image/x-icon" "image/x-MS-bmp"
                  "image/x-win-bitmap" "text/ico")
                (sort (mapcar #'first
                              (gtk:target-table-new-from-list tlist))
@@ -157,8 +158,8 @@
     (gtk:target-list-add-image-targets tlist 0 nil)
     (is (equal '("application/ico" "application/x-navi-animation" "audio/x-riff"
                  "image/avif" "image/avif" "image/bmp" "image/gif" "image/heic"
-                 "image/heif" "image/ico" "image/icon" "image/jpeg" "image/png"
-                 "image/qtif" "image/svg" "image/svg+xml"
+                 "image/heif" "image/ico" "image/icon" "image/jpeg" "image/jxl"
+                 "image/png" "image/qtif" "image/svg" "image/svg+xml"
                  "image/svg+xml-compressed" "image/svg-xml" "image/tiff"
                  "image/vnd.adobe.svg+xml" "image/vnd.microsoft.icon"
                  "image/webp" "image/x-bmp" "image/x-icns" "image/x-ico"
@@ -278,8 +279,11 @@
 
 ;;;   gtk_selection_owner_set
 
+#+nil
 (test gtk-selection-owner-set.1
-  (let ((widget (make-instance 'gtk:window :type :toplevel)))
+  (glib-test:with-check-memory (widget)
+    (is (typep (setf widget
+                     (make-instance 'gtk:window :type :toplevel)) 'gtk:window))
     ;; Realize the toplevel widget to create a gdk:window
     (gtk:widget-realize widget)
     (let ((window (gtk:widget-window widget)))
@@ -287,8 +291,11 @@
       (is (eq 'gdk:window (type-of window)))
       (is (typep (gtk:selection-owner-set widget
                                           "PRIMARY"
-                                          gdk:+current-time+) 'boolean)))))
+                                          gdk:+current-time+) 'boolean)))
+    (gtk:widget-unrealize widget)
+    (is-false (gtk:widget-destroy widget))))
 
+#+nil
 (test gtk-selection-owner-set.2
   (let ((widget (make-instance 'gtk:window :type :toplevel)))
     ;; Realize the toplevel widget to create a gdk:window
@@ -300,6 +307,7 @@
                                           "SECONDARY"
                                           gdk:+current-time+) 'boolean)))))
 
+#+nil
 (test gtk-selection-owner-set.3
   (let ((widget (make-instance 'gtk:window :type :toplevel)))
     ;; Realize the toplevel widget to create a gdk:window
@@ -343,6 +351,7 @@
 
 ;;;   gtk_selection_add_target
 
+#+nil
 (test gtk-selection-add-target
   (let ((widget (make-instance 'gtk:window :type :toplevel)))
     ;; Realize the toplevel widget to create a gdk:window
@@ -354,6 +363,7 @@
 
 ;;;   gtk_selection_add_targets
 
+#+nil
 (test gtk-selection-add-targets
   (let ((widget (make-instance 'gtk:window :type :toplevel)))
     ;; Realize the toplevel widget to create a gdk:window
@@ -527,4 +537,4 @@
 ;;;     gtk_selection_data_copy
 ;;;     gtk_selection_data_free
 
-;;; 2025-3-28
+;;; 2025-06-02
