@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gdk3.cairo.lisp
 ;;;
-;;; The documentation of this file is taken from the GDK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GDK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GDK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2012 - 2023 Dieter Kaiser
+;;; Copyright (C) 2012 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -31,11 +31,6 @@
 ;;;
 ;;;     Functions to support using Cairo
 ;;;
-;;; Types and Values
-;;;
-;;;     CairoContext
-;;;     CairoSurface
-;;;
 ;;; Functions
 ;;;
 ;;;     gdk_window_create_similar_surface
@@ -58,65 +53,51 @@
 
 ;;; ----------------------------------------------------------------------------
 
-;;; CairoSurface represents a cairo:surface-t, but we need a boxed type in GTK
+;; Redefinition to handle the CairoContext and CairoSurface boxed types
 
-(glib:define-gboxed-opaque cairo-surface "CairoSurface"
-  :export t
-  :alloc (error "CairoSurface cannot be created from the Lisp side."))
+(locally
+  (declare #+sbcl(sb-ext:muffle-conditions sb-kernel:redefinition-warning))
+  (handler-bind
+    (#+sbcl(sb-kernel:redefinition-warning #'muffle-warning))
 
-#+liber-documentation
-(setf (liber:alias-for-class 'cairo-surface)
-      "GBoxed"
-      (documentation 'cairo-surface 'type)
- "@version{2023-2-5}
-  @begin{short}
-    The @class{gdk:cairo-surface} structure represents a Cairo surface in GTK.
-  @end{short}
-  The @class{gdk:cairo-surface} structure is opaque, and has no user visible
-  fields. An instance cannot be created from the Lisp side. See the
-  documentation of the @symbol{cairo:surface-t} structure for more information.
-  @see-symbol{cairo:surface-t}")
-
-(export 'cairo-surface)
-
-;;; CairoContext represents a cairo:context-t, but we need a boxed type in GTK
-
-(glib:define-gboxed-opaque cairo-context "CairoContext"
-  :export t
-  :alloc (error "CairoContext cannot be created from the Lisp side."))
-
-#+liber-documentation
-(setf (liber:alias-for-class 'cairo-context)
-      "GBoxed"
-      (documentation 'cairo-context 'type)
- "@version{2023-2-5}
-  @begin{short}
-    The @class{gdk:cairo-context} structure represents a Cairo context in GTK.
-  @end{short}
-  The @class{gdk:cairo-context} structure is opaque, and has no user visible
-  fields. An instance cannot be created from the Lisp side. See the
-  documentation of the @symbol{cairo:context-t} structure for more information.
-  @see-symbol{cairo:context-t}")
-
-(export 'cairo-context)
+(defmethod gobject:get-gvalue-for-type
+           (gvalue (gtype (eql (glib:gtype "GBoxed"))))
+  (let ((gtype1 (gobject:value-type gvalue)))
+    (cond (;; Handle a GStrv boxed type
+           (eq gtype1 (glib:gtype "GStrv"))
+           (cffi:convert-from-foreign (gobject:value-boxed gvalue)
+                                      '(glib:strv-t :free-from-foreign nil)))
+          ;; Handle a GValue boxed type
+          ((eq gtype1 (glib:gtype "GValue"))
+           (gobject:value-boxed gvalue))
+          ;; Handle a CairoContext boxed type, we pass the pointer
+          ((gobject:type-is-a (gobject:value-type gvalue) "CairoContext")
+           (gobject:value-boxed gvalue))
+          ;; Handle a CairoSurface boxed type, we pass the pointer
+          ((gobject:type-is-a (gobject:value-type gvalue) "CairoSurface")
+           (gobject:value-boxed gvalue))
+          (t
+           (let ((info (glib:get-boxed-info gtype1)))
+             (gobject:get-gvalue-boxed gvalue info))))))
+))
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_create_similar_surface ()
+;;; gdk_window_create_similar_surface
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_create_similar_surface"
                window-create-similar-surface)
     (:pointer (:struct cairo:surface-t))
  #+liber-documentation
- "@version{2023-2-3}
+ "@version{2025-06-03}
   @argument[window]{a @class{gdk:window} object to make the new surface similar
     to}
   @argument[content]{a value of the @symbol{cairo:content-t} enumeration for
     the content of the new surface}
-  @argument[width]{an integer with the width of the new surface}
-  @argument[height]{an integer with the height of the new surface}
+  @argument[width]{an integer for the width of the new surface}
+  @argument[height]{an integer for the height of the new surface}
   @begin{return}
-    A newly allocated @symbol{cairo:surface-t} instance. The caller owns the
+    The newly allocated @symbol{cairo:surface-t} instance. The caller owns the
     surface and should call the @fun{cairo:surface-destroy} function when done
     with it. This function always returns a valid pointer, but it will return
     a \"nil\" surface if the surface is in an error state.
@@ -146,21 +127,21 @@
 (export 'window-create-similar-surface)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_create_similar_image_surface ()
+;;; gdk_window_create_similar_image_surface
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_create_similar_image_surface"
                window-create-similar-image-surface)
     (:pointer (:struct cairo:surface-t))
  #+liber-documentation
- "@version{2023-2-3}
+ "@version{2025-06-03}
   @argument[window]{a @class{gdk:window} object to make the new surface similar
     to}
   @argument[format]{a value of the @symbol{cairo:format-t} enumeration for the
     format of the new surface}
-  @argument[width]{an integer with the width of the new surface}
-  @argument[height]{an integer with the height of the new surface}
-  @argument[scale]{an integer with the scale of the new surface, or 0 to use
+  @argument[width]{an integer for the width of the new surface}
+  @argument[height]{an integer for the height of the new surface}
+  @argument[scale]{an integer for the scale of the new surface, or 0 to use
     same as @arg{window}}
   @begin{return}
     A newly allocated @symbol{cairo:surface-t} instance. The caller owns the
@@ -212,16 +193,16 @@
 (export 'window-create-similar-image-surface)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_cairo_create ()
+;;; gdk_cairo_create
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_cairo_create" cairo-create)
     (:pointer (:struct cairo:context-t))
  #+liber-documentation
- "@version{2023-2-3}
+ "@version{2025-06-03}
   @argument[window]{a @class{gdk:window} object}
   @begin{return}
-    A newly created @symbol{cairo:context-t} context. Free with the
+    The newly created @symbol{cairo:context-t} context. Free with the
     @fun{cairo-destroy} function when you are done drawing.
   @end{return}
   @begin{short}
@@ -256,7 +237,7 @@
 (export 'cairo-create)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_cairo_get_clip_rectangle () -> cairo-clip-rectangle
+;;; gdk_cairo_get_clip_rectangle
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_cairo_get_clip_rectangle" %cairo-clip-rectangle) :boolean
@@ -265,10 +246,10 @@
 
 (defun cairo-clip-rectangle (cr)
  #+liber-documentation
- "@version{2023-2-3}
+ "@version{2025-06-03}
   @argument[cr]{a @symbol{cairo:context-t} context}
   @begin{return}
-    A @class{gdk:rectangle} instance with the clip or @em{false} if all of
+    The @class{gdk:rectangle} instance with the clip or @em{false} if all of
     @arg{cr} is clipped and all drawing can be skipped.
   @end{return}
   @begin{short}
@@ -286,15 +267,15 @@
 (export 'cairo-clip-rectangle)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_cairo_get_drawing_context ()
+;;; gdk_cairo_get_drawing_context
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_cairo_get_drawing_context" cairo-drawing-context)
     (g:object drawing-context)
  #+liber-documentation
- "@version{2023-3-13}
+ "@version{2025-06-03}
   @argument[cr]{a @symbol{cairo:context-t} context}
-  @return{A @class{gdk:drawing-context} object, if any is set.}
+  @return{The @class{gdk:drawing-context} object, if any is set.}
   @begin{short}
     Retrieves the drawing context that created the Cairo context @arg{cr}.
   @end{short}
@@ -305,12 +286,12 @@
 (export 'cairo-drawing-context)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_cairo_set_source_color ()
+;;; gdk_cairo_set_source_color
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_cairo_set_source_color" cairo-set-source-color) :void
  #+liber-documentation
- "@version{#2023-2-3}
+ "@version{#2023-02-03}
   @argument[cr]{a @symbol{cairo:context-t} context}
   @argument[color]{a @class{gdk:color} color}
   @begin{short}
@@ -330,12 +311,12 @@
 (export 'cairo-set-source-color)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_cairo_set_source_rgba ()
+;;; gdk_cairo_set_source_rgba
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_cairo_set_source_rgba" cairo-set-source-rgba) :void
  #+liber-documentation
- "@version{#2023-2-3}
+ "@version{#2023-02-03}
   @argument[cr]{a @symbol{cairo:context-t} context}
   @argument[rgba]{a @class{gdk:rgba} color}
   @begin{short}
@@ -361,7 +342,7 @@
 
 (defun cairo-set-source-pixbuf (cr pixbuf x y)
  #+liber-documentation
- "@version{#2025-1-25}
+ "@version{#2025-01-25}
   @argument[cr]{a @symbol{cairo:context-t} context}
   @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object}
   @argument[x]{a number coerced to a double float for the x coordinate of the
@@ -396,7 +377,7 @@
 
 (defun cairo-set-source-window (cr window x y)
  #+liber-documentation
- "@version{#2025-1-25}
+ "@version{#2025-01-25}
   @argument[cr]{a @symbol{cairo:context-t} context}
   @argument[window]{a @class{gdk:window} object}
   @argument[x]{a number coerced to a double float for the x coordinate of the
@@ -423,12 +404,12 @@
 (export 'cairo-set-source-window)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_cairo_rectangle ()
+;;; gdk_cairo_rectangle
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_cairo_rectangle" cairo-rectangle) :void
  #+liber-documentation
- "@version{#2023-2-3}
+ "@version{#2023-02-03}
   @argument[cr]{a @symbol{cairo:context-t} context}
   @argument[rectangle]{a @class{gdk:rectangle} instance}
   @begin{short}
@@ -442,12 +423,12 @@
 (export 'cairo-rectangle)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_cairo_region ()
+;;; gdk_cairo_region
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_cairo_region" cairo-region) :void
  #+liber-documentation
- "@version{#2023-2-3}
+ "@version{#2023-02-03}
   @argument[cr]{a @symbol{cairo:context-t} context}
   @argument[region]{a @symbol{cairo:region-t} instance}
   @begin{short}
@@ -461,17 +442,17 @@
 (export 'cairo-region)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_cairo_region_create_from_surface ()
+;;; gdk_cairo_region_create_from_surface
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_cairo_region_create_from_surface"
                cairo-region-create-from-surface)
     (:pointer (:struct cairo:region-t))
  #+liber-documentation
- "@version{#2023-2-3}
+ "@version{#2025-06-03}
   @argument[surface]{a @symbol{cairo:surface-t} instance}
   @begin{return}
-    A @symbol{cairo:region-t} instance, must be freed with the
+    The @symbol{cairo:region-t} instance, must be freed with the
     @fun{cairo:region-destroy} function.
   @end{return}
   @begin{short}
@@ -489,21 +470,21 @@
 (export 'cairo-region-create-from-surface)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_cairo_surface_create_from_pixbuf ()
+;;; gdk_cairo_surface_create_from_pixbuf
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_cairo_surface_create_from_pixbuf"
                cairo-surface-create-from-pixbuf)
     (:pointer (:struct cairo:surface-t))
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2025-06-03}
   @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object}
-  @argument[scale]{an integer with the scale of the new surface, or 0 to use
+  @argument[scale]{an integer for the scale of the new surface, or 0 to use
     same as @arg{window}}
   @argument[window]{a @class{gdk:window} object this will be drawn to, or
     @code{nil}}
   @begin{return}
-    A new @symbol{cairo:surface-t} instance, must be freed with the
+    The new @symbol{cairo:surface-t} instance, must be freed with the
     @fun{cairo:surface-destroy} function.
   @end{return}
   @begin{short}
@@ -525,7 +506,7 @@
 
 (cffi:defcfun ("gdk_cairo_draw_from_gl" cairo-draw-from-gl) :void
  #+liber-documentation
- "@version{#2025-1-25}
+ "@version{#2025-01-25}
   @argument[cr]{a @symbol{cairo:context-t} context}
   @argument[window]{a @class{gdk:window} object that is rendered for,
     not necessarily into}
