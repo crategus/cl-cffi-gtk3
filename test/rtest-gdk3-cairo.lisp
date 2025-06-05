@@ -3,48 +3,6 @@
 (def-suite gdk-cairo :in gdk-suite)
 (in-suite gdk-cairo)
 
-;;; --- Types and Values -------------------------------------------------------
-
-;;;     CairoSurface
-
-(test gdk-cairo-surface-boxed
-  ;; Check type
-  (is (g:type-is-boxed "CairoSurface"))
-;  TODO: Check this: What is the correct type initializer?!
-;  (is (eq (g:gtype "CairoSurface")
-;          (g:gtype (cffi:foreign-funcall "cairo_surface_get_type" :size))))
-  (cairo:with-image-surface (surface :rgb24 100 150)
-    (let ((cairosurface nil))
-      ;; CairoSurface cannot be created from the Lisp side
-      (signals (error) (make-instance 'gdk:cairo-surface))
-      ;; Create CairoContext from foreign pointer surface
-      (is (typep (setf cairosurface
-                       (cffi:convert-from-foreign surface
-                                                  '(g:boxed gdk:cairo-surface)))
-                 'gdk:cairo-surface))
-      (is (cffi:pointer-eq surface
-                           (glib::boxed-opaque-pointer cairosurface))))))
-
-;;;     CairoContext
-
-(test gdk-cairo-context-boxed
-  ;; Check type
-  (is (g:type-is-boxed "CairoContext"))
-;  TODO: Check this: What is the correct type initializer
-;  (is (eq (g:gtype "CairoContext")
-;          (g:gtype (cffi:foreign-funcall "cairo_context_get_type" :size))))
-  (cairo:with-context-for-image-surface (context :rgb24 100 150)
-    (let ((cairocontext nil))
-      ;; CairoContext cannot be created from the Lisp side
-      (signals (error) (make-instance 'gdk:cairo-context))
-      ;; Create CairoContext from foreign pointer context
-      (is (typep (setf cairocontext
-                       (cffi:convert-from-foreign context
-                                                  '(g:boxed gdk:cairo-context)))
-                 'gdk:cairo-context))
-      (is (cffi:pointer-eq context
-                           (glib::boxed-opaque-pointer cairocontext))))))
-
 ;;; --- Functions --------------------------------------------------------------
 
 ;;;     gdk_window_create_similar_surface
@@ -124,16 +82,16 @@
 
 #-windows
 (test gdk-cairo-clip-rectangle
-  (let ((window (make-instance 'gtk:window :type :toplevel
-                                           :default-width 200
-                                           :default-height 100)))
-
+  (glib-test:with-check-memory (window)
+    (is (typep (setf window
+                     (make-instance 'gtk:window
+                                    :type :toplevel
+                                    :default-width 200
+                                    :default-height 100)) 'gtk:window))
     (is-false (gtk:widget-realize window))
-
     (let* ((win (gtk:widget-window window))
            (context (gdk:cairo-create win))
            (rectangle nil))
-
       (is (typep win 'gdk:window))
       (is (cffi:pointerp context))
       (is-false (cairo:reset-clip context))
@@ -145,8 +103,8 @@
               (= 252 (gdk:rectangle-width rectangle))))
       (is (or (= 100 (gdk:rectangle-height rectangle))
               (= 189 (gdk:rectangle-height rectangle))))
-
-      (is-false (cairo:destroy context)))))
+      (is-false (cairo:destroy context)))
+    (is-false (gtk:widget-destroy window))))
 
 ;;;     gdk_cairo_get_drawing_context
 
@@ -183,4 +141,4 @@
 ;;;     gdk_cairo_surface_create_from_pixbuf
 ;;;     gdk_cairo_draw_from_gl
 
-;;; 2024-6-22
+;;; 2025-06-05

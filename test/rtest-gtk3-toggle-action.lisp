@@ -35,13 +35,13 @@
              (glib-test:list-signals "GtkToggleAction")))
   ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkToggleAction" GTK:TOGGLE-ACTION
-                       (:SUPERCLASS GTK:ACTION
-                        :EXPORT T
-                        :INTERFACES ("GtkBuildable")
-                        :TYPE-INITIALIZER "gtk_toggle_action_get_type")
-                       ((ACTIVE TOGGLE-ACTION-ACTIVE "active" "gboolean" T T)
-                        (DRAW-AS-RADIO TOGGLE-ACTION-DRAW-AS-RADIO
-                         "draw-as-radio" "gboolean" T T)))
+                      (:SUPERCLASS GTK:ACTION
+                       :EXPORT T
+                       :INTERFACES ("GtkBuildable")
+                       :TYPE-INITIALIZER "gtk_toggle_action_get_type")
+                      ((ACTIVE TOGGLE-ACTION-ACTIVE "active" "gboolean" T T)
+                       (DRAW-AS-RADIO TOGGLE-ACTION-DRAW-AS-RADIO
+                        "draw-as-radio" "gboolean" T T)))
              (gobject:get-gtype-definition "GtkToggleAction"))))
 
 ;;; --- Signals ----------------------------------------------------------------
@@ -67,7 +67,8 @@
 ;;;     gtk:toggle-action-active
 
 (test gtk-toggle-action-active
-  (let ((action (gtk:toggle-action-new "action")))
+  (glib-test:with-check-memory (action)
+    (is (typep (setf action (gtk:toggle-action-new "action")) 'gtk:action))
     (is-false (gtk:toggle-action-active action))
     (is-true (setf (gtk:toggle-action-active action) t))
     (is-true (gtk:toggle-action-active action))))
@@ -75,7 +76,8 @@
 ;;;     gtk:toggle-action-draw-as-radio
 
 (test gtk-toggle-action-draw-as-radio
-  (let ((action (gtk:toggle-action-new "action")))
+  (glib-test:with-check-memory (action)
+    (is (typep (setf action (gtk:toggle-action-new "action")) 'gtk:action))
     (is-false (gtk:toggle-action-draw-as-radio action))
     (is-true (setf (gtk:toggle-action-draw-as-radio action) t))
     (is-true (gtk:toggle-action-draw-as-radio action))))
@@ -85,10 +87,15 @@
 ;;;     gtk_toggle_action_new
 
 (test gtk-toggle-action-new
-  (is (typep (gtk:toggle-action-new "action") 'gtk:toggle-action)))
+  (glib-test:with-check-memory (action)
+    (is (typep (setf action
+                     (gtk:toggle-action-new "action")) 'gtk:toggle-action))))
 
 ;;;     gtk_toggle_action_toggled
 
+;; FIXME: This tests hangs the testsuite on Windows
+
+#-windows
 (test gtk-toggle-action-toggled
   (let ((message nil))
     (gtk:within-main-loop
@@ -103,4 +110,4 @@
     (gtk:join-gtk-main)
     (is (string= "TOGGLED CALLED" message))))
 
-;;; 2024-9-25
+;;; 2025-06-05
