@@ -171,12 +171,10 @@
     (g:signal-connect area "draw"
         (lambda (widget cr)
           (declare (ignore widget))
-          (let ((cr (glib:pointer cr))
-                (rgba (gdk:rgba-parse color)))
+          (let ((rgba (gdk:rgba-parse color)))
             (when rgba
               (gdk:cairo-set-source-rgba cr rgba)
-              (cairo:paint cr))
-            (cairo:destroy cr))))
+              (cairo:paint cr)))))
     (gtk:box-pack-start vbox area)
     (gtk:box-pack-start vbox label)
     (gtk:container-add button vbox)

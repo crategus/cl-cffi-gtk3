@@ -17,8 +17,7 @@
       ;; Signal handler for the drawing area
       (g:signal-connect area "draw"
           (lambda (widget cr)
-            (let* ((cr (glib:boxed-opaque-pointer cr))
-                   (width (gtk:widget-allocated-width widget))
+            (let* ((width (gtk:widget-allocated-width widget))
                    (height (gtk:widget-allocated-height widget))
                    (context (gtk:widget-style-context widget))
                    (color (gtk:style-context-color context :focused)))
@@ -31,9 +30,7 @@
                            (- (/ (min width height) 2.0) 12)
                            0.0
                            (* 2.0 pi))
-                (cairo:fill cr)
-                ;; Destroy the Cairo context
-                (cairo:destroy cr))))
+                (cairo:fill cr))))
       ;; Signal handler for the window to handle the signal "destroy"
       (g:signal-connect window "destroy"
                         (lambda (widget)

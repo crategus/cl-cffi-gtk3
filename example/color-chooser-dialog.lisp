@@ -47,8 +47,7 @@
         (g:signal-connect area "draw"
             (lambda (widget cr)
               (declare (ignore widget))
-              (let ((cr (glib:boxed-opaque-pointer cr))
-                    (red (gdk:rgba-red bg-color))
+              (let ((red (gdk:rgba-red bg-color))
                     (green (gdk:rgba-green bg-color))
                     (blue (gdk:rgba-blue bg-color)))
                     ;; Paint the current color on the drawing area
@@ -60,8 +59,7 @@
                     (cairo:select-font-face cr "Sans")
                     (cairo:set-font-size cr 12)
                     (cairo:move-to cr 12 24)
-                    (cairo:show-text cr message)
-                    (cairo:destroy cr))))
+                    (cairo:show-text cr message))))
         ;; Create and run a color chooser dialog to select a background color
         (g:signal-connect area "event"
             (lambda (widget event)

@@ -1,6 +1,8 @@
-;;;; A demo for GtkFrame - 2021-11-10
+;;;; A demo for GtkFrame
 ;;;;
 ;;;; This demo allows to change interactively the appearance of the frame.
+;;;;
+;;;; 2025-06-03
 
 (in-package #:gtk3-example)
 
@@ -36,18 +38,18 @@
          (lambda (widget cr)
            (let ((width (gtk:widget-allocated-width widget))
                  (height (gtk:widget-allocated-height widget)))
-             (cairo:arc (glib:pointer cr)
+             (cairo:arc cr
                         (/ width 2.0d0)
                         (/ height 2.0d0)
                         (/ (min width height) 2.0d0)
                         0.0d0
                         (* 2.0d0 3.14))
              (gdk:cairo-set-source-rgba
-               (glib:pointer cr)
+               cr
                (gtk:style-context-color (gtk:widget-style-context widget)
                                         :normal))
-             (cairo:fill (glib:pointer cr))
-             (cairo:paint (glib:pointer cr))
+             (cairo:fill cr)
+             (cairo:paint cr)
              nil)))
 
       ;; A Quit button

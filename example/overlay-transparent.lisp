@@ -119,8 +119,7 @@
                                  (gtk:leave-gtk-main)))
       (g:signal-connect entry "draw"
           (lambda (entry cr)
-            (let ((cr (glib:pointer cr))
-                  (rect (gtk:widget-allocation entry)))
+            (let ((rect (gtk:widget-allocation entry)))
               (setf (gdk:rectangle-x rect)
                     (+ (gdk:rectangle-x rect) +shadow-offset-x+))
               (setf (gdk:rectangle-y rect)

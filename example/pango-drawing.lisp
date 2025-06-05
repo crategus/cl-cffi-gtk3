@@ -23,8 +23,7 @@
       ;; Connect to "draw" signal to handle the backing surface
       (g:signal-connect area "draw"
          (lambda (widget cr)
-           (let* ((cr (glib:pointer cr))
-                  (width (gtk:widget-allocated-width widget))
+           (let* ((width (gtk:widget-allocated-width widget))
                   (height (gtk:widget-allocated-height widget))
                   (radius (- (/ (min width height) 2) 20)))
              ;; Set up a transformation matrix so that the user space
@@ -63,7 +62,6 @@
                                    (- circle)))
                (pango:cairo-show-layout cr layout)
                (cairo:restore cr)))
-           (cairo:destroy cr)
            t)))
       (gtk:container-add window area)
       (gtk:widget-show-all window))))

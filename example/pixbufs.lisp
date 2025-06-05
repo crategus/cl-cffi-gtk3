@@ -11,7 +11,7 @@
 ;;;;
 ;;;; Look at the Image demo for additional pixbuf usage examples.
 ;;;;
-;;;; 2024-1-5
+;;;; 2025-06-03
 
 (in-package :gtk3-example)
 
@@ -40,14 +40,6 @@
          (xmid (/ width 2.0d0))
          (ymid (/ height 2.0d0))
          (radius (/ (min xmid ymid) 2.0d0)))
-
-         (format t "~%")
-         (format t " width : ~a~%" width)
-         (format t "height : ~a~%" height)
-         (format t "  xmid : ~a~%" xmid)
-         (format t "  ymid : ~a~%" ymid)
-         (format t "radius : ~a~%" radius)
-
     (gdk:pixbuf-copy-area background 0 0 width height frame 0 0)
     (dotimes (i 8)
       (let* ((ang (* 2.0d0 3.14d0 (- (/ i 8.0d0) f)))
@@ -121,11 +113,8 @@
       (g:signal-connect area "draw"
           (lambda (widget cr)
             (declare (ignore widget))
-            (setf cr (glib:boxed-opaque-pointer cr))
             (cairo:set-source-surface cr surface 0.0d0 0.0d0)
             (cairo:paint cr)
-            ;; We must destroy the Cairo Context
-            (cairo:destroy cr)
             t))
       (g:signal-connect area "configure-event"
           (lambda (widget event)

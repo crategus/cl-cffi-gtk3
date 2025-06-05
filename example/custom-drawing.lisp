@@ -308,8 +308,7 @@
                              (- height header-height))))
 
 (defun draw-callback (widget cr)
-  (let* ((cr (glib:boxed-opaque-pointer cr))
-         (x 0) (y 0)
+  (let* ((x 0) (y 0)
          (width (gtk:widget-allocated-width widget))
          (height (gtk:widget-allocated-height widget))
          (panewidth (/ width 2)))
@@ -378,8 +377,7 @@
     (setf x (+ panewidth 18))
     (setf y (+ y height 12))
     (setf height
-          (draw-notebook widget cr x y (- panewidth 32) 192))
-    (cairo:destroy cr)))
+          (draw-notebook widget cr x y (- panewidth 32) 192))))
 
 (defun example-custom-drawing (&optional application)
   (gtk:within-main-loop

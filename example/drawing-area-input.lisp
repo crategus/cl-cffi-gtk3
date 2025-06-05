@@ -22,11 +22,9 @@
       (g:signal-connect area "draw"
          (lambda (widget cr)
            (declare (ignore widget))
-           (let ((cr (glib:boxed-opaque-pointer cr)))
-             (cairo:set-source-surface cr surface 0.0 0.0)
-             (cairo:paint cr)
-             (cairo:destroy cr)
-             gdk:+event-propagate+)))
+           (cairo:set-source-surface cr surface 0.0 0.0)
+           (cairo:paint cr)
+           gdk:+event-propagate+))
       (g:signal-connect area "configure-event"
          (lambda (widget event)
            (declare (ignore event))

@@ -1003,10 +1003,9 @@
           (area (make-instance 'gtk:drawing-area)))
       ;; Signal handler for the drawing area
       (g:signal-connect area "draw"
-          (lambda (widget context)
+          (lambda (widget cr)
             (let ((width (gtk:widget-allocated-width widget))
-                  (height (gtk:widget-allocated-height widget))
-                  (cr (glib:boxed-opaque-pointer context)))
+                  (height (gtk:widget-allocated-height widget)))
               (funcall drawfunc cr width height))))
       ;; Signal handler for the window to handle the signal "destroy".
       (g:signal-connect window "destroy"

@@ -162,12 +162,10 @@
 
 (defun canvas-draw (widget cr)
   (declare (ignore widget))
-  (let ((cr (glib:boxed-opaque-pointer cr)))
-    (cairo:set-source-rgb cr 1.0 1.0 1.0)
-    (cairo:paint cr)
-    (dolist (item *canvas-items*)
-      (canvas-item-draw item cr nil))
-    (cairo:destroy cr)))
+  (cairo:set-source-rgb cr 1.0 1.0 1.0)
+  (cairo:paint cr)
+  (dolist (item *canvas-items*)
+    (canvas-item-draw item cr nil)))
 
 (defun passive-canvas-drag-data-received (widget context x y selection info time)
   (let ((palette (gtk:drag-source-widget context))
