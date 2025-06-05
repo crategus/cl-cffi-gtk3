@@ -358,6 +358,9 @@
                :cl-cffi-gdk-pixbuf
                :cl-cffi-pango
                :cl-cffi-cairo
+               :cffi
+               :iterate
+               :trivial-features
                :split-sequence))
 
 (defsystem :cl-cffi-gtk3/init
