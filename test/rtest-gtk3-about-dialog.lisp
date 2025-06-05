@@ -37,26 +37,26 @@
              (glib-test:list-enum-item-nicks "GtkLicense")))
   ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-GENUM "GtkLicense" GTK:LICENSE
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_license_get_type")
-                       (:UNKNOWN 0)
-                       (:CUSTOM 1)
-                       (:GPL-2-0 2)
-                       (:GPL-3-0 3)
-                       (:LGPL-2-1 4)
-                       (:LGPL-3-0 5)
-                       (:BSD 6)
-                       (:MIT-X11 7)
-                       (:ARTISTIC 8)
-                       (:GPL-2-0-ONLY 9)
-                       (:GPL-3-0-ONLY 10)
-                       (:LGPL-2-1-ONLY 11)
-                       (:LGPL-3-0-ONLY 12)
-                       (:AGPL-3-0 13)
-                       (:AGPL-3-0-ONLY 14)
-                       (:BSD-3 15)
-                       (:APACHE-2-0 16)
-                       (:MPL-2-0 17))
+                                    (:EXPORT T
+                                     :TYPE-INITIALIZER "gtk_license_get_type")
+                                    (:UNKNOWN 0)
+                                    (:CUSTOM 1)
+                                    (:GPL-2-0 2)
+                                    (:GPL-3-0 3)
+                                    (:LGPL-2-1 4)
+                                    (:LGPL-3-0 5)
+                                    (:BSD 6)
+                                    (:MIT-X11 7)
+                                    (:ARTISTIC 8)
+                                    (:GPL-2-0-ONLY 9)
+                                    (:GPL-3-0-ONLY 10)
+                                    (:LGPL-2-1-ONLY 11)
+                                    (:LGPL-3-0-ONLY 12)
+                                    (:AGPL-3-0 13)
+                                    (:AGPL-3-0-ONLY 14)
+                                    (:BSD-3 15)
+                                    (:APACHE-2-0 16)
+                                    (:MPL-2-0 17))
              (gobject:get-gtype-definition "GtkLicense"))))
 
 ;;;     GtkAboutDialog
@@ -99,41 +99,43 @@
                (gtk:widget-class-css-name "GtkAboutDialog")))
   ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkAboutDialog" GTK:ABOUT-DIALOG
-                       (:SUPERCLASS GTK:DIALOG
-                        :EXPORT T
-                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
-                        :TYPE-INITIALIZER "gtk_about_dialog_get_type")
-                       ((ARTISTS ABOUT-DIALOG-ARTISTS "artists" "GStrv" T T)
-                        (AUTHORS ABOUT-DIALOG-AUTHORS "authors" "GStrv" T T)
-                        (COMMENTS ABOUT-DIALOG-COMMENTS
-                         "comments" "gchararray" T T)
-                        (COPYRIGHT ABOUT-DIALOG-COPYRIGHT
-                         "copyright" "gchararray" T T)
-                        (DOCUMENTERS ABOUT-DIALOG-DOCUMENTERS
-                         "documenters" "GStrv" T T)
-                        (LICENSE ABOUT-DIALOG-LICENSE "license" "gchararray" T T)
-                        (LICENSE-TYPE ABOUT-DIALOG-LICENSE-TYPE
-                         "license-type" "GtkLicense" T T)
-                        (LOGO ABOUT-DIALOG-LOGO "logo" "GdkPixbuf" T T)
-                        (LOGO-ICON-NAME ABOUT-DIALOG-LOGO-ICON-NAME
-                         "logo-icon-name" "gchararray" T T)
-                        (PROGRAM-NAME ABOUT-DIALOG-PROGRAM-NAME
-                         "program-name" "gchararray" T T)
-                        (TRANSLATOR-CREDITS ABOUT-DIALOG-TRANSLATOR-CREDITS
-                         "translator-credits" "gchararray" T T)
-                        (VERSION ABOUT-DIALOG-VERSION
-                         "version" "gchararray" T T)
-                        (WEBSITE ABOUT-DIALOG-WEBSITE "website" "gchararray" T T)
-                        (WEBSITE-LABEL ABOUT-DIALOG-WEBSITE-LABEL
-                         "website-label" "gchararray" T T)
-                        (WRAP-LICENSE ABOUT-DIALOG-WRAP-LICENSE
-                         "wrap-license" "gboolean" T T)))
+                      (:SUPERCLASS GTK:DIALOG
+                       :EXPORT T
+                       :INTERFACES ("AtkImplementorIface" "GtkBuildable")
+                       :TYPE-INITIALIZER "gtk_about_dialog_get_type")
+                      ((ARTISTS ABOUT-DIALOG-ARTISTS "artists" "GStrv" T T)
+                       (AUTHORS ABOUT-DIALOG-AUTHORS "authors" "GStrv" T T)
+                       (COMMENTS ABOUT-DIALOG-COMMENTS
+                        "comments" "gchararray" T T)
+                       (COPYRIGHT ABOUT-DIALOG-COPYRIGHT
+                        "copyright" "gchararray" T T)
+                       (DOCUMENTERS ABOUT-DIALOG-DOCUMENTERS
+                        "documenters" "GStrv" T T)
+                       (LICENSE ABOUT-DIALOG-LICENSE "license" "gchararray" T T)
+                       (LICENSE-TYPE ABOUT-DIALOG-LICENSE-TYPE
+                        "license-type" "GtkLicense" T T)
+                       (LOGO ABOUT-DIALOG-LOGO "logo" "GdkPixbuf" T T)
+                       (LOGO-ICON-NAME ABOUT-DIALOG-LOGO-ICON-NAME
+                        "logo-icon-name" "gchararray" T T)
+                       (PROGRAM-NAME ABOUT-DIALOG-PROGRAM-NAME
+                        "program-name" "gchararray" T T)
+                       (TRANSLATOR-CREDITS ABOUT-DIALOG-TRANSLATOR-CREDITS
+                        "translator-credits" "gchararray" T T)
+                       (VERSION ABOUT-DIALOG-VERSION
+                        "version" "gchararray" T T)
+                       (WEBSITE ABOUT-DIALOG-WEBSITE "website" "gchararray" T T)
+                       (WEBSITE-LABEL ABOUT-DIALOG-WEBSITE-LABEL
+                        "website-label" "gchararray" T T)
+                       (WRAP-LICENSE ABOUT-DIALOG-WRAP-LICENSE
+                        "wrap-license" "gboolean" T T)))
              (gobject:get-gtype-definition "GtkAboutDialog"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
 (test gtk-about-dialog-properties
-  (let ((dialog (make-instance 'gtk:about-dialog)))
+  (glib-test:with-check-memory (dialog)
+    (is (typep (setf dialog
+                     (make-instance 'gtk:about-dialog)) 'gtk:about-dialog))
     (is-false (gtk:about-dialog-artists dialog))
     (is-false (gtk:about-dialog-authors dialog))
     (is-false (gtk:about-dialog-comments dialog))
@@ -148,7 +150,8 @@
     (is-false (gtk:about-dialog-version dialog))
     (is-false (gtk:about-dialog-website dialog))
     (is-false (gtk:about-dialog-website-label dialog))
-    (is-false (gtk:about-dialog-wrap-license dialog))))
+    (is-false (gtk:about-dialog-wrap-license dialog))
+    (is-false (gtk:widget-destroy dialog))))
 
 ;;; --- Signals ----------------------------------------------------------------
 
@@ -159,9 +162,11 @@
 ;;;     gtk_about_dialog_new
 
 (test gtk-about-dialog-new
-  (is (typep (gtk:about-dialog-new) 'gtk:about-dialog)))
+  (glib-test:with-check-memory (dialog)
+    (is (typep (setf dialog (gtk:about-dialog-new)) 'gtk:about-dialog))
+    (is-false (gtk:widget-destroy dialog))))
 
 ;;;     gtk_about_dialog_add_credit_section
 ;;;     gtk_show_about_dialog
 
-;;; 2024-9-21
+;;; 2025-06-05

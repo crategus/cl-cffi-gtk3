@@ -28,13 +28,14 @@
              (glib-test:list-enum-item-nicks "GtkMessageType")))
   ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-GENUM "GtkMessageType" GTK:MESSAGE-TYPE
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_message_type_get_type")
-                       (:INFO 0)
-                       (:WARNING 1)
-                       (:QUESTION 2)
-                       (:ERROR 3)
-                       (:OTHER 4))
+                                    (:EXPORT T
+                                     :TYPE-INITIALIZER
+                                     "gtk_message_type_get_type")
+                                    (:INFO 0)
+                                    (:WARNING 1)
+                                    (:QUESTION 2)
+                                    (:ERROR 3)
+                                    (:OTHER 4))
              (gobject:get-gtype-definition "GtkMessageType"))))
 
 ;;;     GtkButtonsType
@@ -61,14 +62,15 @@
              (glib-test:list-enum-item-nicks "GtkButtonsType")))
   ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-GENUM "GtkButtonsType" GTK:BUTTONS-TYPE
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_buttons_type_get_type")
-                       (:NONE 0)
-                       (:OK 1)
-                       (:CLOSE 2)
-                       (:CANCEL 3)
-                       (:YES-NO 4)
-                       (:OK-CANCEL 5))
+                                    (:EXPORT T
+                                     :TYPE-INITIALIZER
+                                     "gtk_buttons_type_get_type")
+                                    (:NONE 0)
+                                    (:OK 1)
+                                    (:CLOSE 2)
+                                    (:CANCEL 3)
+                                    (:YES-NO 4)
+                                    (:OK-CANCEL 5))
              (gobject:get-gtype-definition "GtkButtonsType"))))
 
 ;;;     GtkMessageDialog
@@ -105,31 +107,32 @@
              (glib-test:list-signals "GtkMessageDialog")))
   ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkMessageDialog" GTK:MESSAGE-DIALOG
-                       (:SUPERCLASS GTK:DIALOG
-                        :EXPORT T
-                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
-                        :TYPE-INITIALIZER "gtk_message_dialog_get_type")
-                       ((BUTTONS MESSAGE-DIALOG-BUTTONS
-                         "buttons" "GtkButtonsType" NIL NIL)
-                        (IMAGE MESSAGE-DIALOG-IMAGE "image" "GtkWidget" T T)
-                        (MESSAGE-AREA MESSAGE-DIALOG-MESSAGE-AREA
-                         "message-area" "GtkWidget" T NIL)
-                        (MESSAGE-TYPE MESSAGE-DIALOG-MESSAGE-TYPE
-                         "message-type" "GtkMessageType" T T)
-                        (SECONDARY-TEXT MESSAGE-DIALOG-SECONDARY-TEXT
-                         "secondary-text" "gchararray" T T)
-                        (SECONDARY-USE-MARKUP
-                         MESSAGE-DIALOG-SECONDARY-USE-MARKUP
-                         "secondary-use-markup" "gboolean" T T)
-                        (TEXT MESSAGE-DIALOG-TEXT "text" "gchararray" T T)
-                        (USE-MARKUP MESSAGE-DIALOG-USE-MARKUP
-                         "use-markup" "gboolean" T T)))
+                      (:SUPERCLASS GTK:DIALOG
+                       :EXPORT T
+                       :INTERFACES ("AtkImplementorIface" "GtkBuildable")
+                       :TYPE-INITIALIZER "gtk_message_dialog_get_type")
+                      ((BUTTONS MESSAGE-DIALOG-BUTTONS
+                        "buttons" "GtkButtonsType" NIL NIL)
+                       (IMAGE MESSAGE-DIALOG-IMAGE "image" "GtkWidget" T T)
+                       (MESSAGE-AREA MESSAGE-DIALOG-MESSAGE-AREA
+                        "message-area" "GtkWidget" T NIL)
+                       (MESSAGE-TYPE MESSAGE-DIALOG-MESSAGE-TYPE
+                        "message-type" "GtkMessageType" T T)
+                       (SECONDARY-TEXT MESSAGE-DIALOG-SECONDARY-TEXT
+                        "secondary-text" "gchararray" T T)
+                       (SECONDARY-USE-MARKUP
+                        MESSAGE-DIALOG-SECONDARY-USE-MARKUP
+                        "secondary-use-markup" "gboolean" T T)
+                       (TEXT MESSAGE-DIALOG-TEXT "text" "gchararray" T T)
+                       (USE-MARKUP MESSAGE-DIALOG-USE-MARKUP
+                        "use-markup" "gboolean" T T)))
              (gobject:get-gtype-definition "GtkMessageDialog"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
 (test gtk-message-dialog-properties
-  (let ((dialog (make-instance 'gtk:message-dialog)))
+  (glib-test:with-check-memory (dialog)
+    (is (typep (setf dialog (make-instance 'gtk:message-dialog)) 'gtk:dialog))
     ;; Property buttons is not readable
     (signals (error) (gtk:message-dialog-buttons dialog))
     #-windows
@@ -139,26 +142,33 @@
     (is-false (gtk:message-dialog-secondary-text dialog))
     (is-false (gtk:message-dialog-secondary-use-markup dialog))
     (is (string= "" (gtk:message-dialog-text dialog)))
-    (is-false (gtk:message-dialog-use-markup dialog))))
+    (is-false (gtk:message-dialog-use-markup dialog))
+    ;; Remove references
+    (is-false (gtk:widget-destroy dialog))))
 
 ;;; --- Style Properties -------------------------------------------------------
 
 (test gtk-message-dialog-style-properties
-  (let ((dialog (make-instance 'gtk:message-dialog)))
+  (glib-test:with-check-memory (dialog)
+    (is (typep (setf dialog (make-instance 'gtk:message-dialog)) 'gtk:dialog))
     (is (= 12
-           (gtk:widget-style-property dialog "message-border")))))
+           (gtk:widget-style-property dialog "message-border")))
+    (is-false (gtk:widget-destroy dialog))))
 
 ;;; --- Functions --------------------------------------------------------------
 
 ;;;     gtk_message_dialog_new
 
 (test gtk-message-dialog-new
-  (let ((dialog (gtk:message-dialog-new nil
-                                        '(:modal :use-header-bar)
-                                        :question
-                                        :ok-cancel
-                                        "The ~a value."
-                                        10)))
+  (glib-test:with-check-memory (dialog)
+    (is (typep (setf dialog
+                     (gtk:message-dialog-new nil
+                                             '(:modal :use-header-bar)
+                                             :question
+                                             :ok-cancel
+                                             "The ~a value."
+                                             10))
+               'gtk:dialog))
     #-windows
     (is (typep (gtk:message-dialog-image dialog) 'gtk:image))
     (is (typep (gtk:message-dialog-message-area dialog) 'gtk:box))
@@ -166,17 +176,21 @@
     (is-false (gtk:message-dialog-secondary-text dialog))
     (is-false (gtk:message-dialog-secondary-use-markup dialog))
     (is (string= "The 10 value." (gtk:message-dialog-text dialog)))
-    (is-false (gtk:message-dialog-use-markup dialog))))
+    (is-false (gtk:message-dialog-use-markup dialog))
+    (is-false (gtk:widget-destroy dialog))))
 
 ;;;     gtk_message_dialog_new_with_markup
 
 (test gtk-message-dialog-new-with-markup
-  (let ((dialog (gtk:message-dialog-new-with-markup nil
-                                                    '(:modal :use-header-bar)
-                                                    :question
-                                                    :ok-cancel
-                                                    "<b>The ~a value.</b>"
-                                                    10)))
+  (glib-test:with-check-memory (dialog)
+    (is (typep (setf dialog
+                     (gtk:message-dialog-new-with-markup nil
+                                                         '(:modal :use-header-bar)
+                                                         :question
+                                                         :ok-cancel
+                                                         "<b>The ~a value.</b>"
+                                                         10))
+               'gtk:dialog))
     #-windows
     (is (typep (gtk:message-dialog-image dialog) 'gtk:image))
     (is (typep (gtk:message-dialog-message-area dialog) 'gtk:box))
@@ -184,10 +198,11 @@
     (is-false (gtk:message-dialog-secondary-text dialog))
     (is-false (gtk:message-dialog-secondary-use-markup dialog))
     (is (string= "<b>The 10 value.</b>" (gtk:message-dialog-text dialog)))
-    (is-true (gtk:message-dialog-use-markup dialog))))
+    (is-true (gtk:message-dialog-use-markup dialog))
+    (is-false (gtk:widget-destroy dialog))))
 
 ;;;     gtk_message_dialog_set_markup
 ;;;     gtk_message_dialog_format_secondary_text
 ;;;     gtk_message_dialog_format_secondary_markup
 
-;;; 2024-9-22
+;;; 2025-06-05

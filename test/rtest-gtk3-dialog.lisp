@@ -28,11 +28,12 @@
              (glib-test:list-flags-item-nicks "GtkDialogFlags")))
   ;; Check flags definition
   (is (equal '(GOBJECT:DEFINE-GFLAGS "GtkDialogFlags" GTK:DIALOG-FLAGS
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_dialog_flags_get_type")
-                       (:MODAL 1)
-                       (:DESTROY-WITH-PARENT 2)
-                       (:USE-HEADER-BAR 4))
+                                     (:EXPORT T
+                                      :TYPE-INITIALIZER
+                                      "gtk_dialog_flags_get_type")
+                                     (:MODAL 1)
+                                     (:DESTROY-WITH-PARENT 2)
+                                     (:USE-HEADER-BAR 4))
              (gobject:get-gtype-definition "GtkDialogFlags"))))
 
 ;;;     GtkResponseType
@@ -61,19 +62,20 @@
              (glib-test:list-enum-item-nicks "GtkResponseType")))
   ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-GENUM "GtkResponseType" GTK:RESPONSE-TYPE
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_response_type_get_type")
-                       (:NONE -1)
-                       (:REJECT -2)
-                       (:ACCEPT -3)
-                       (:DELETE-EVENT -4)
-                       (:OK -5)
-                       (:CANCEL -6)
-                       (:CLOSE -7)
-                       (:YES -8)
-                       (:NO -9)
-                       (:APPLY -10)
-                       (:HELP -11))
+                                    (:EXPORT T
+                                     :TYPE-INITIALIZER
+                                     "gtk_response_type_get_type")
+                                    (:NONE -1)
+                                    (:REJECT -2)
+                                    (:ACCEPT -3)
+                                    (:DELETE-EVENT -4)
+                                    (:OK -5)
+                                    (:CANCEL -6)
+                                    (:CLOSE -7)
+                                    (:YES -8)
+                                    (:NO -9)
+                                    (:APPLY -10)
+                                    (:HELP -11))
              (gobject:get-gtype-definition "GtkResponseType"))))
 
 ;;;     GtkDialog
@@ -122,12 +124,12 @@
              (glib-test:list-signals "GtkDialog")))
   ;; Check the class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkDialog" GTK:DIALOG
-                       (:SUPERCLASS GTK:WINDOW
-                        :EXPORT T
-                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
-                        :TYPE-INITIALIZER "gtk_dialog_get_type")
-                       ((USE-HEADER-BAR DIALOG-USE-HEADER-BAR
-                         "use-header-bar" "gint" T NIL)))
+                      (:SUPERCLASS GTK:WINDOW
+                       :EXPORT T
+                       :INTERFACES ("AtkImplementorIface" "GtkBuildable")
+                       :TYPE-INITIALIZER "gtk_dialog_get_type")
+                      ((USE-HEADER-BAR DIALOG-USE-HEADER-BAR
+                        "use-header-bar" "gint" T NIL)))
              (gobject:get-gtype-definition "GtkDialog"))))
 
 ;;; --- Properties -------------------------------------------------------------
@@ -322,4 +324,4 @@
 ;;;     gtk_dialog_set_alternative_button_order
 ;;;     gtk_dialog_set_alternative_button_order_from_array
 
-;;; 2025-3-9
+;;; 2025-06-05
