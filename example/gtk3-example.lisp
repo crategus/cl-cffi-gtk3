@@ -141,6 +141,7 @@
            #:example-toggle-buttons                    ; Button Widgets
            #:example-tool-palette
            #:example-toolbar-by-hand
+           #:example-tree-store
            #:example-tree-view-path                    ; Tree and List Widgets
            #:example-tree-view-simple                  ; Tree and List Widgets
            #:example-tree-view-example                 ; Tree and List Widgets
@@ -157,4 +158,8 @@
            #:sys-path
            ))
 
-;;; 2025-06-01
+;; Set current package for GLIB-SYS:SYS-PATH
+(eval-when (:compile-toplevel :load-toplevel :execute)
+  (setf (glib-sys:get-current-package) "gtk3-example"))
+
+;;; 2025-06-09

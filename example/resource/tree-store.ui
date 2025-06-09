@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.40.0 -->
+<interface>
+  <requires lib="gtk+" version="3.24"/>
+  <object class="GtkTreeStore" id="model">
+    <columns>
+      <!-- column-name col-0 -->
+      <column type="gint"/>
+      <!-- column-name col-1 -->
+      <column type="gchararray"/>
+      <!-- column-name col-2 -->
+      <column type="gchararray"/>
+      <!-- column-name col-3 -->
+      <column type="gchararray"/>
+      <!-- column-name col-4 -->
+      <column type="gchararray"/>
+      <!-- column-name col-5 -->
+      <column type="gchararray"/>
+      <!-- column-name col-6 -->
+      <column type="gchararray"/>
+      <!-- column-name col-7 -->
+      <column type="gchararray"/>
+      <!-- column-name col-8 -->
+      <column type="gchararray"/>
+      <!-- column-name col-9 -->
+      <column type="gchararray"/>
+      <!-- column-name col-10 -->
+      <column type="gchararray"/>
+      <!-- column-name col-11 -->
+      <column type="gchararray"/>
+      <!-- column-name col-12 -->
+      <column type="gchararray"/>
+      <!-- column-name col-13 -->
+      <column type="gchararray"/>
+      <!-- column-name col-14 -->
+      <column type="gchararray"/>
+      <!-- column-name col-15 -->
+      <column type="gchararray"/>
+      <!-- column-name col-16 -->
+      <column type="gchararray"/>
+      <!-- column-name col-17 -->
+      <column type="gchararray"/>
+      <!-- column-name col-18 -->
+      <column type="gchararray"/>
+    </columns>
+  </object>
+  <object class="GtkWindow" id="window">
+    <property name="title">GtkStreeStore</property>
+    <property name="width-request">500</property>
+    <property name="height-request">500</property>
+    <property name="can-focus">False</property>
+    <child>
+      <object class="GtkBox">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkScrolledWindow">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="hscrollbar-policy">always</property>
+            <property name="vscrollbar-policy">always</property>
+            <property name="shadow-type">in</property>
+            <child>
+              <object class="GtkTreeView" id="view">
+                <property name="name">view</property>
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="can-default">True</property>
+                <property name="has-default">True</property>
+                <property name="receives-default">True</property>
+                <property name="hexpand">True</property>
+                <property name="vexpand">True</property>
+                <property name="border-width">0</property>
+                <property name="model">model</property>
+                <property name="expander-column">t-v-col0</property>
+                <property name="reorderable">True</property>
+                <property name="search-column">1</property>
+                <property name="hover-selection">True</property>
+                <property name="hover-expand">True</property>
+                <property name="rubber-banding">True</property>
+                <property name="enable-grid-lines">both</property>
+                <property name="enable-tree-lines">True</property>
+                <property name="tooltip-column">0</property>
+                <property name="activate-on-single-click">True</property>
+                <child internal-child="selection">
+                  <object class="GtkTreeSelection"/>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="t-v-col0">
+                    <property name="sizing">autosize</property>
+                    <property name="title" translatable="yes">t-v-col0</property>
+                    <property name="expand">True</property>
+                    <property name="clickable">True</property>
+                    <property name="reorderable">True</property>
+                    <property name="sort-indicator">True</property>
+                    <property name="sort-column-id">0</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="t-v-col1">
+                    <property name="sizing">autosize</property>
+                    <property name="title" translatable="yes">t-v-col1</property>
+                    <property name="expand">True</property>
+                    <property name="clickable">True</property>
+                    <property name="reorderable">True</property>
+                    <property name="sort-indicator">True</property>
+                    <property name="sort-column-id">1</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="t-v-col2">
+                    <property name="sizing">autosize</property>
+                    <property name="title" translatable="yes">t-v-col2</property>
+                    <property name="expand">True</property>
+                    <property name="clickable">True</property>
+                    <property name="reorderable">True</property>
+                    <property name="sort-indicator">True</property>
+                    <property name="sort-column-id">2</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="t-v-col3">
+                    <property name="sizing">autosize</property>
+                    <property name="title" translatable="yes">t-v-col3</property>
+                    <property name="expand">True</property>
+                    <property name="clickable">True</property>
+                    <property name="reorderable">True</property>
+                    <property name="sort-indicator">True</property>
+                    <property name="sort-column-id">3</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="t-v-col4">
+                    <property name="sizing">autosize</property>
+                    <property name="title" translatable="yes">t-v-col4</property>
+                    <property name="expand">True</property>
+                    <property name="clickable">True</property>
+                    <property name="reorderable">True</property>
+                    <property name="sort-indicator">True</property>
+                    <property name="sort-column-id">4</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="t-v-col5">
+                    <property name="sizing">autosize</property>
+                    <property name="title" translatable="yes">t-v-col5</property>
+                    <property name="expand">True</property>
+                    <property name="clickable">True</property>
+                    <property name="reorderable">True</property>
+                    <property name="sort-indicator">True</property>
+                    <property name="sort-column-id">5</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="t-v-col6">
+                    <property name="sizing">autosize</property>
+                    <property name="title" translatable="yes">t-v-col6</property>
+                    <property name="expand">True</property>
+                    <property name="clickable">True</property>
+                    <property name="reorderable">True</property>
+                    <property name="sort-indicator">True</property>
+                    <property name="sort-column-id">6</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="t-v-col7">
+                    <property name="sizing">autosize</property>
+                    <property name="title" translatable="yes">t-v-col7</property>
+                    <property name="expand">True</property>
+                    <property name="clickable">True</property>
+                    <property name="reorderable">True</property>
+                    <property name="sort-indicator">True</property>
+                    <property name="sort-column-id">7</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="t-v-col8">
+                    <property name="sizing">autosize</property>
+                    <property name="title" translatable="yes">t-v-col8</property>
+                    <property name="expand">True</property>
+                    <property name="clickable">True</property>
+                    <property name="reorderable">True</property>
+                    <property name="sort-indicator">True</property>
+                    <property name="sort-column-id">8</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="t-v-col9">
+                    <property name="sizing">autosize</property>
+                    <property name="title" translatable="yes">t-v-col9</property>
+                    <property name="expand">True</property>
+                    <property name="clickable">True</property>
+                    <property name="reorderable">True</property>
+                    <property name="sort-indicator">True</property>
+                    <property name="sort-column-id">9</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="t-v-col10">
+                    <property name="sizing">autosize</property>
+                    <property name="title" translatable="yes">t-v-col10</property>
+                    <property name="expand">True</property>
+                    <property name="clickable">True</property>
+                    <property name="reorderable">True</property>
+                    <property name="sort-indicator">True</property>
+                    <property name="sort-column-id">10</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="t-v-col11">
+                    <property name="sizing">autosize</property>
+                    <property name="title" translatable="yes">t-v-col11</property>
+                    <property name="expand">True</property>
+                    <property name="clickable">True</property>
+                    <property name="reorderable">True</property>
+                    <property name="sort-indicator">True</property>
+                    <property name="sort-column-id">11</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="t-v-col12">
+                    <property name="sizing">autosize</property>
+                    <property name="title" translatable="yes">t-v-col12</property>
+                    <property name="expand">True</property>
+                    <property name="clickable">True</property>
+                    <property name="reorderable">True</property>
+                    <property name="sort-indicator">True</property>
+                    <property name="sort-column-id">12</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="t-v-col13">
+                    <property name="sizing">autosize</property>
+                    <property name="title" translatable="yes">t-v-col13</property>
+                    <property name="expand">True</property>
+                    <property name="clickable">True</property>
+                    <property name="reorderable">True</property>
+                    <property name="sort-indicator">True</property>
+                    <property name="sort-column-id">13</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="t-v-col14">
+                    <property name="sizing">autosize</property>
+                    <property name="title" translatable="yes">t-v-col14</property>
+                    <property name="clickable">True</property>
+                    <property name="reorderable">True</property>
+                    <property name="sort-indicator">True</property>
+                    <property name="sort-column-id">14</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="t-v-col15">
+                    <property name="sizing">autosize</property>
+                    <property name="title" translatable="yes">t-v-col15</property>
+                    <property name="clickable">True</property>
+                    <property name="reorderable">True</property>
+                    <property name="sort-indicator">True</property>
+                    <property name="sort-column-id">15</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="t-v-col16">
+                    <property name="sizing">autosize</property>
+                    <property name="title" translatable="yes">t-v-col16</property>
+                    <property name="expand">True</property>
+                    <property name="clickable">True</property>
+                    <property name="reorderable">True</property>
+                    <property name="sort-indicator">True</property>
+                    <property name="sort-column-id">16</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="t-v-col17">
+                    <property name="sizing">autosize</property>
+                    <property name="title" translatable="yes">t-v-col16</property>
+                    <property name="expand">True</property>
+                    <property name="clickable">True</property>
+                    <property name="reorderable">True</property>
+                    <property name="sort-indicator">True</property>
+                    <property name="sort-column-id">17</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="t-v-col18">
+                    <property name="sizing">autosize</property>
+                    <property name="title" translatable="yes">t-v-col16</property>
+                    <property name="expand">True</property>
+                    <property name="clickable">True</property>
+                    <property name="reorderable">True</property>
+                    <property name="sort-indicator">True</property>
+                    <property name="sort-column-id">18</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="value-label">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">value</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="reset-treestore">
+            <property name="label" translatable="yes">reset treestore</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

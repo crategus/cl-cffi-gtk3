@@ -138,6 +138,7 @@
                (:file "toggle-buttons")                ; Button Widgets
                (:file "toolbar-by-hand")
                (:file "tool-palette")
+               (:file "tree-store")
                (:file "tree-view-content-type")        ; Tree and List Widgets
                (:file "tree-view-context-menu")        ; Tree and List Widgets
                (:file "tree-view-drag-and-drop")       ; Tree and List Widgets
