@@ -1566,7 +1566,7 @@ lambda (widget cr)    :run-last
       @end{pre}
       @begin[code]{table}
         @entry[widget]{The @class{gtk:widget} object which received the signal.}
-        @entry[cr]{The @class{gdk:cairo-context} Cairo context to draw to.}
+        @entry[cr]{The @symbol{cairo:contex-t} instance to draw to.}
       @end{table}
       Emitted when a widget is supposed to render itself. The top left corner
       of the widget must be painted at the origin of the passed in Cairo context

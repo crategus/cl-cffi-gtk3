@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.offscreen-window.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2012 - 2024 Dieter Kaiser
+;;; Copyright (C) 2012 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -59,7 +59,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkOffscreenWindow
+;;; GtkOffscreenWindow
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkOffscreenWindow" offscreen-window
@@ -72,7 +72,7 @@
 
 #+liber-documentation
 (setf (documentation 'offscreen-window 'type)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @begin{short}
     The @class{gtk:offscreen-window} widget is strictly intended to be used for
     obtaining snapshots of widgets that are not part of a normal widget
@@ -100,14 +100,14 @@
   @see-symbol{cairo:surface-t}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_offscreen_window_new ()
+;;; gtk_offscreen_window_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline offscreen-window-new))
 
 (defun offscreen-window-new ()
  #+liber-documentation
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @return{The @class{gtk:offscreen-window} widget.}
   @begin{short}
     Creates a toplevel container widget that is used to retrieve snapshots of
@@ -119,7 +119,7 @@
 (export 'offscreen-window-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_offscreen_window_get_surface ()
+;;; gtk_offscreen_window_get_surface
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_offscreen_window_get_surface" %offscreen-window-surface)
@@ -128,10 +128,12 @@
 
 (defun offscreen-window-surface (offscreen)
  #+liber-documentation
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @argument[offscreen]{a @class{gtk:offscreen-window} widget}
-  @return{The @symbol{cairo:surface-t} instance to the @arg{offscreen} surface,
-    or @code{nil}.}
+  @begin{return}
+    The @symbol{cairo:surface-t} instance to the @arg{offscreen} surface,
+    or @code{nil}.
+  @end{return}
   @begin{short}
     Retrieves a snapshot of the contained widget in the form of a
     @symbol{cairo:surface-t} instance.
@@ -148,13 +150,13 @@
 (export 'offscreen-window-surface)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_offscreen_window_get_pixbuf ()
+;;; gtk_offscreen_window_get_pixbuf
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_offscreen_window_get_pixbuf" offscreen-window-pixbuf)
     (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @argument[offscreen]{a @class{gtk:offscreen-window} widget}
   @return{The @class{gdk-pixbuf:pixbuf} object, or @code{nil}.}
   @begin{short}

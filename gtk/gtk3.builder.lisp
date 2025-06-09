@@ -430,12 +430,12 @@
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_builder_new_from_file" %builder-new-from-file)
-    (g:object builder)
+    (g:object builder :return)
   (filename :string))
 
 (defun builder-new-from-file (path)
  #+liber-documentation
- "@version{2025-06-03}
+ "@version{2025-06-05}
   @argument[path]{a path or namestring for the file to load}
   @return{The @class{gtk:builder} object containing the described interface.}
   @begin{short}
@@ -455,9 +455,9 @@
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_builder_new_from_resource" builder-new-from-resource)
-    (g:object builder)
+    (g:object builder :return)
  #+liber-documentation
- "@version{2025-06-03}
+ "@version{2025-06-05}
   @argument[path]{a string for the @class{g:resource} path}
   @return{The @class{gtk:builder} object containing the described interface.}
   @begin{short}
@@ -479,13 +479,13 @@
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_builder_new_from_string" %builder-new-from-string)
-    (g:object builder)
+    (g:object builder :return)
   (string :string)
   (length :int))
 
 (defun builder-new-from-string (string)
  #+liber-documentation
- "@version{2025-06-03}
+ "@version{2025-06-05}
   @argument[string]{a string for the user interface description}
   @begin{return}
     The @class{gtk:builder} object containing the interface described by

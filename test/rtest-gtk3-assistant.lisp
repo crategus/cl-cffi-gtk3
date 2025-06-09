@@ -31,14 +31,15 @@
   ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-GENUM "GtkAssistantPageType"
                                     GTK:ASSISTANT-PAGE-TYPE
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_assistant_page_type_get_type")
-                       (:CONTENT 0)
-                       (:INTRO 1)
-                       (:CONFIRM 2)
-                       (:SUMMARY 3)
-                       (:PROGRESS 4)
-                       (:CUSTOM 5))
+                                    (:EXPORT T
+                                     :TYPE-INITIALIZER
+                                     "gtk_assistant_page_type_get_type")
+                                    (:CONTENT 0)
+                                    (:INTRO 1)
+                                    (:CONFIRM 2)
+                                    (:SUMMARY 3)
+                                    (:PROGRESS 4)
+                                    (:CUSTOM 5))
              (gobject:get-gtype-definition "GtkAssistantPageType"))))
 
 ;;;     GtkAssistant
@@ -76,12 +77,12 @@
              (glib-test:list-signals "GtkAssistant")))
   ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkAssistant" GTK:ASSISTANT
-                       (:SUPERCLASS GTK:WINDOW
-                        :EXPORT T
-                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
-                        :TYPE-INITIALIZER "gtk_assistant_get_type")
-                       ((USE-HEADER-BAR ASSISTANT-USE-HEADER-BAR
-                         "use-header-bar" "gint" T NIL)))
+                      (:SUPERCLASS GTK:WINDOW
+                       :EXPORT T
+                       :INTERFACES ("AtkImplementorIface" "GtkBuildable")
+                       :TYPE-INITIALIZER "gtk_assistant_get_type")
+                      ((USE-HEADER-BAR ASSISTANT-USE-HEADER-BAR
+                        "use-header-bar" "gint" T NIL)))
              (gobject:get-gtype-definition "GtkAssistant"))))
 
 ;;; --- Properties -------------------------------------------------------------
@@ -89,14 +90,17 @@
 ;;;     use-header-bar
 
 (test gtk-assistant-properties
-  (let ((assistant (make-instance 'gtk:assistant)))
-    (is-true (gtk:assistant-use-header-bar assistant))))
+  (glib-test:with-check-memory (assistant)
+    (is (typep (setf assistant (make-instance 'gtk:assistant)) 'gtk:assistant))
+    (is-true (gtk:assistant-use-header-bar assistant))
+    (is-false (gtk:widget-destroy assistant))))
 
 ;;; --- Child Properties -------------------------------------------------------
 
 (test gtk-assistant-child-properties
-  (let ((assistant (make-instance 'gtk:assistant))
-        (page (make-instance 'gtk:box)))
+  (glib-test:with-check-memory (assistant page)
+    (is (typep (setf assistant (make-instance 'gtk:assistant)) 'gtk:assistant))
+    (is (typep (setf page (make-instance 'gtk:box)) 'gtk:box))
     (is (= 0 (gtk:assistant-append-page assistant page)))
     (is-false (gtk:assistant-child-complete assistant page))
     (is-true (gtk:assistant-child-has-padding assistant page))
@@ -105,14 +109,17 @@
     (is (eq :content (gtk:assistant-child-page-type assistant page)))
     #+nil
     (is-false (gtk:assistant-child-sidebar-image assistant page))
-    (is-false (gtk:assistant-child-title assistant page))))
+    (is-false (gtk:assistant-child-title assistant page))
+    (is-false (gtk:widget-destroy assistant))))
 
 ;;; --- Style Properties -------------------------------------------------------
 
 (test gtk-assistant-style-properties
-  (let ((assistant (make-instance 'gtk:assistant)))
+  (glib-test:with-check-memory (assistant)
+    (is (typep (setf assistant (make-instance 'gtk:assistant)) 'gtk:assistant))
     (is (= 1 (gtk:widget-style-property assistant "content-padding")))
-    (is (= 6 (gtk:widget-style-property assistant "header-padding")))))
+    (is (= 6 (gtk:widget-style-property assistant "header-padding")))
+    (is-false (gtk:widget-destroy assistant))))
 
 ;;; --- Signals ----------------------------------------------------------------
 
@@ -127,7 +134,9 @@
 ;;;     gtk_assistant_new
 
 (test gtk-assistant-new
-  (is (typep (gtk:assistant-new) 'gtk:assistant)))
+  (glib-test:with-check-memory (assistant)
+    (is (typep (setf assistant (gtk:assistant-new)) 'gtk:assistant))
+    (is-false (gtk:widget-destroy assistant))))
 
 ;;;     gtk_assistant_get_current_page
 ;;;     gtk_assistant_set_current_page
@@ -160,4 +169,4 @@
 ;;;     gtk_assistant_next_page
 ;;;     gtk_assistant_previous_page
 
-;;; 2024-9-22
+;;; 2025-06-06

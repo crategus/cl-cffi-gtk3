@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.assistant.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -55,10 +55,10 @@
 ;;;     gtk_assistant_get_page_type
 ;;;     gtk_assistant_set_page_title
 ;;;     gtk_assistant_get_page_title
-;;;     gtk_assistant_set_page_header_image                Deprecated 3.2
-;;;     gtk_assistant_get_page_header_image                Deprecated 3.2
-;;;     gtk_assistant_set_page_side_image                  Deprecated 3.2
-;;;     gtk_assistant_get_page_side_image                  Deprecated 3.2
+;;;     gtk_assistant_set_page_header_image                 Deprecated 3.2
+;;;     gtk_assistant_get_page_header_image                 Deprecated 3.2
+;;;     gtk_assistant_set_page_side_image                   Deprecated 3.2
+;;;     gtk_assistant_get_page_side_image                   Deprecated 3.2
 ;;;     gtk_assistant_set_page_complete
 ;;;     gtk_assistant_get_page_complete
 ;;;     gtk_assistant_set_page_has_padding
@@ -131,7 +131,7 @@
 (setf (liber:alias-for-symbol 'assistant-page-type)
       "GEnum"
       (liber:symbol-documentation 'assistant-page-type)
- "@version{2024-3-16}
+ "@version{2024-03-16}
   @begin{declaration}
 (gobject:define-genum \"GtkAssistantPageType\" gtk:assistant-page-type
   (:export t
@@ -176,7 +176,7 @@
   @see-function{gtk:assistant-add-action-widget}")
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkAssistant
+;;; GtkAssistant
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkAssistant" assistant
@@ -191,7 +191,7 @@
 
 #+liber-documentation
 (setf (documentation 'assistant 'type)
- "@version{2024-4-9}
+ "@version{2025-06-06}
   @begin{short}
     The @class{gtk:assistant} widget is used to represent a generally complex
     operation splitted in several steps, guiding the user through its pages and
@@ -271,7 +271,7 @@
       @begin[content-padding]{entry}
         The @code{content-padding} style property of type @code{:int} (Read)
         @br{}
-        Number of pixels around the content pages. @br{}
+        The number of pixels around the content pages. @br{}
         @em{Warning:} The @code{content-padding} style property has been
         deprecated since version 3.20 and should not be used in newly written
         code. This style property is ignored. @br{}
@@ -281,7 +281,7 @@
       @begin[header-padding]{entry}
         The @code{header-padding} style property of type @code{:int} (Read)
         @br{}
-        Number of pixels around the header. @br{}
+        The number of pixels around the header. @br{}
         @em{Warning:} The @code{content-padding} has been deprecated since
         version 3.20 and should not be used in newly written code. This style
         property is ignored. @br{}
@@ -295,6 +295,10 @@
       @begin{pre}
 lambda (assistant)    :run-last
       @end{pre}
+      @begin[code]{table}
+        @entry[assistant]{The @class{gtk:assistant} widget which received the
+          signal.}
+    @end{table}
       The signal is emitted when the Apply button is clicked. The default
       behavior of the assistant is to switch to the page after the current page,
       unless the current page is the last one. A handler for the
@@ -303,51 +307,47 @@ lambda (assistant)    :run-last
       consider putting a @code{:progress} page after the @code{:confirm} page
       and handle this operation within the @code{\"prepare\"} signal of the
       progress page.
-      @begin[code]{table}
-        @entry[assistant]{The @class{gtk:assistant} widget which received the
-          signal.}
-    @end{table}
     @subheading{The \"cancel\" signal}
       @begin{pre}
 lambda (assistant)    :run-last
       @end{pre}
-      The signal is emitted when the Cancel button is clicked.
       @begin[code]{table}
         @entry[assistant]{The @class{gtk:assistant} widget which received the
           signal.}
       @end{table}
+      The signal is emitted when the Cancel button is clicked.
     @subheading{The \"close\" signal}
       @begin{pre}
 lambda (assistant)    :run-last
       @end{pre}
-      The signal is emitted either when the Close button of a summary page is
-      clicked, or when the Apply button in the last page in the flow is clicked,
-      which is the @code{:confirm} page.
       @begin[code]{table}
         @entry[assistant]{The @class{gtk:assistant} widget which received the
           signal.}
       @end{table}
+      The signal is emitted either when the Close button of a summary page is
+      clicked, or when the Apply button in the last page in the flow is clicked,
+      which is the @code{:confirm} page.
     @subheading{The \"escape\" signal}
       @begin{pre}
 lambda (assistant)    :action
       @end{pre}
-      No documentation.
       @begin[code]{table}
         @entry[assistant]{The @class{gtk:assistant} widget which received the
           signal.}
       @end{table}
+      No documentation.
     @subheading{The \"prepare\" signal}
       @begin{pre}
 lambda (assistant page)    :run-last
       @end{pre}
-      The signal is emitted when a new page is set as the assistants current
-      page, before making the new page visible. A handler for this signal can
-      do any preparations which are necessary before showing the page.
       @begin[code]{table}
         @entry[assistant]{The @class{gtk:assistant} widget which received the
           signal.}
       @entry[page]{The @class{gtk:widget} widget for the current page.}
       @end{table}
+      The signal is emitted when a new page is set as the assistants current
+      page, before making the new page visible. A handler for this signal can
+      do any preparations which are necessary before showing the page.
   @end{dictionary}
   @see-constructor{gtk:assistant-new}
   @see-slot{gtk:assistant-use-header-bar}")
@@ -372,7 +372,7 @@ lambda (assistant page)    :run-last
 (setf (liber:alias-for-function 'assistant-use-header-bar)
       "Accessor"
       (documentation 'assistant-use-header-bar 'function)
- "@version{2024-3-16}
+ "@version{2024-03-16}
   @syntax{(gtk:assistant-use-header-bar object) => setting}
   @syntax{(setf (gtk:assistant-use-header-bar object) setting)}
   @argument[object]{a @class{gtk:assistant} widget}
@@ -400,7 +400,7 @@ lambda (assistant page)    :run-last
 (setf (liber:alias-for-function 'assistant-child-complete)
       "Accessor"
       (documentation 'assistant-child-complete 'function)
- "@version{2024-3-16}
+ "@version{2024-03-16}
   @syntax{(gtk:assistant-child-complete container child) => complete}
   @syntax{(setf (gtk:assistant-child-complete container child) complete)}
   @argument[container]{a @class{gtk:assistant} widget}
@@ -426,7 +426,7 @@ lambda (assistant page)    :run-last
 (setf (liber:alias-for-function 'assistant-child-has-padding)
       "Accessor"
       (documentation 'assistant-child-has-padding 'function)
- "@version{2024-3-16}
+ "@version{2024-03-16}
   @syntax{(gtk:assistant-child-has-padding container child) => setting}
   @syntax{(setf (gtk:assistant-child-has-padding container child) setting)}
   @argument[container]{a @class{gtk:assistant} widget}
@@ -453,7 +453,7 @@ lambda (assistant page)    :run-last
 (setf (liber:alias-for-function 'assistant-child-header-image)
       "Accessor"
       (documentation 'assistant-child-header-image 'function)
- "@version{2024-3-16}
+ "@version{2024-03-16}
   @syntax{(gtk:assistant-child-header-image container child) => image}
   @syntax{(setf (gtk:assistant-child-header-image container child) image)}
   @argument[container]{a @class{gtk:assistant} widget}
@@ -482,7 +482,7 @@ lambda (assistant page)    :run-last
 (setf (liber:alias-for-function 'assistant-child-page-type)
       "Accessor"
       (documentation 'assistant-child-page-type 'function)
- "@version{2024-3-16}
+ "@version{2024-03-16}
   @syntax{(gtk:assistant-child-page-type container child) => ptype}
   @syntax{(setf (gtk:assistant-child-page-type container child) ptype)}
   @argument[container]{a @class{gtk:assistant} widget}
@@ -509,7 +509,7 @@ lambda (assistant page)    :run-last
 (setf (liber:alias-for-function 'assistant-child-sidebar-image)
       "Accessor"
       (documentation 'assistant-child-sidebar-image 'function)
- "@version{2024-3-16}
+ "@version{2024-03-16}
   @syntax{(gtk:assistant-child-sidebar-image container child) => image}
   @syntax{(setf (gtk:assistant-child-sidebar-image container child) image)}
   @argument[container]{a @class{gtk:assistant} widget}
@@ -538,12 +538,12 @@ lambda (assistant page)    :run-last
 (setf (liber:alias-for-function 'assistant-child-title)
       "Accessor"
       (documentation 'assistant-child-title 'function)
- "@version{2024-3-16}
+ "@version{2025-06-06}
   @syntax{(gtk:assistant-child-title container child) => title}
   @syntax{(setf (gtk:assistant-child-title container child) title)}
   @argument[container]{a @class{gtk:assistant} widget}
   @argument[child]{a @class{gtk:widget} page of the assistant}
-  @argument[title]{a string with the title of the page}
+  @argument[title]{a string for the title of the page}
   @begin{short}
     Accessor of the @code{title} child property of the
     @class{gtk:assistant} class.
@@ -553,14 +553,14 @@ lambda (assistant page)    :run-last
   @see-class{gtk:widget}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_assistant_new ()
+;;; gtk_assistant_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline assistant-new))
 
 (defun assistant-new ()
  #+liber-documentation
- "@version{2024-3-16}
+ "@version{2024-03-16}
   @return{The @class{gtk:assistant} widget.}
   @short{Creates a new assistant.}
   @see-class{gtk:assistant}"
@@ -569,8 +569,8 @@ lambda (assistant page)    :run-last
 (export 'assistant-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_assistant_get_current_page ()
-;;; gtk_assistant_set_current_page ()
+;;; gtk_assistant_get_current_page
+;;; gtk_assistant_set_current_page
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf assistant-current-page) (index assistant)
@@ -582,11 +582,11 @@ lambda (assistant page)    :run-last
 
 (cffi:defcfun ("gtk_assistant_get_current_page" assistant-current-page) :int
  #+liber-documentation
- "@version{2024-4-9}
+ "@version{2025-06-06}
   @syntax{(gtk:assistant-current-page assistant) => index}
   @syntax{(setf (gtk:assistant-current-page assistant) index)}
   @argument[assistant]{a @class{gtk:assistant} widget}
-  @argument[index]{an integer with the index of the page to switch to, starting
+  @argument[index]{an integer for the index of the page to switch to, starting
     from 0, if negative, the last page will be used, if greater than the number
     of pages in the assistant, nothing will be done}
   @begin{short}
@@ -605,12 +605,12 @@ lambda (assistant page)    :run-last
 (export 'assistant-current-page)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_assistant_get_n_pages ()
+;;; gtk_assistant_get_n_pages
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_assistant_get_n_pages" assistant-n-pages) :int
  #+liber-documentation
- "@version{#2024-3-16}
+ "@version{#2024-03-16}
   @argument[assistant]{a @class{gtk:assistant} widget}
   @return{The integer with the number of pages in @arg{assistant}.}
   @short{Returns the number of pages in the assistant.}
@@ -620,18 +620,20 @@ lambda (assistant page)    :run-last
 (export 'assistant-n-pages)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_assistant_get_nth_page ()
+;;; gtk_assistant_get_nth_page
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_assistant_get_nth_page" assistant-nth-page)
     (g:object widget)
  #+liber-documentation
- "@version{2023-12-30}
+ "@version{2025-06-06}
   @argument[assistant]{a @class{gtk:assistant} widget}
-  @argument[index]{an integer with the index of a page in @arg{assistant},
+  @argument[index]{an integer for the index of a page in @arg{assistant},
     or -1 to get the last page}
-  @return{The @class{gtk:widget} child widget, or @code{nil} if the @arg{index}
-    argument is out of bounds.}
+  @begin{return}
+    The @class{gtk:widget} child widget, or @code{nil} if the @arg{index}
+    argument is out of bounds.
+  @end{return}
   @begin{short}
     Returns the child widget contained in the assistant with the given page
     index.
@@ -644,12 +646,12 @@ lambda (assistant page)    :run-last
 (export 'assistant-nth-page)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_assistant_prepend_page ()
+;;; gtk_assistant_prepend_page
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_assistant_prepend_page" assistant-prepend-page) :int
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{#2023-03-15}
   @argument[assistant]{a @class{gtk:assistant} widget}
   @argument[page]{a @class{gtk:widget} page of the assistant}
   @return{The integer with the index starting at 0 of the inserted page.}
@@ -667,7 +669,7 @@ lambda (assistant page)    :run-last
 (export 'assistant-prepend-page)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_assistant_append_page ()
+;;; gtk_assistant_append_page
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_assistant_append_page" assistant-append-page) :int
@@ -690,15 +692,15 @@ lambda (assistant page)    :run-last
 (export 'assistant-append-page)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_assistant_insert_page ()
+;;; gtk_assistant_insert_page
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_assistant_insert_page" assistant-insert-page) :int
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{#2025-06-06}
   @argument[assistant]{a @class{gtk:assistant} widget}
   @argument[page]{a @class{gtk:widget} page of the assistant}
-  @argument[position]{an integer with the index starting at 0 at which to
+  @argument[position]{an integer for the index starting at 0 at which to
     insert @arg{page}, or -1 to append @arg{page} to the assistant}
   @return{The index starting from 0 of the inserted page.}
   @begin{short}
@@ -716,14 +718,14 @@ lambda (assistant page)    :run-last
 (export 'assistant-insert-page)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_assistant_remove_page ()
+;;; gtk_assistant_remove_page
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_assistant_remove_page" assistant-remove-page) :void
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{#2025-06-06}
   @argument[assistant]{a @class{gtk:assistant} widget}
-  @argument[index]{an integer with the index of a page in the assistant, or -1
+  @argument[index]{an integer for the index of a page in the assistant, or -1
     to remove the last page}
   @begin{short}
     Removes the page with the given page index from the assistant.
@@ -738,7 +740,7 @@ lambda (assistant page)    :run-last
 (export 'assistant-remove-page)
 
 ;;; ----------------------------------------------------------------------------
-;;; GtkAssistantPageFunc ()
+;;; GtkAssistantPageFunc
 ;;; ----------------------------------------------------------------------------
 
 ;; TODO: Check the implementation of the macro and compare the result with
@@ -750,11 +752,11 @@ lambda (assistant page)    :run-last
 (setf (liber:alias-for-symbol 'assistant-page-func)
       "Callback"
       (liber:symbol-documentation 'assistant-page-func)
- "@version{#2024-3-17}
+ "@version{#2025-06-06}
   @syntax{lambda (current) => result}
-  @argument[current]{an integer with the page number used to calculate the next
+  @argument[current]{an integer for the page number used to calculate the next
     page}
-  @argument[result]{an integer with the next page number}
+  @argument[result]{an integer for the next page number}
   @begin{short}
     A callback function used by the @fun{gtk:assistant-set-forward-page-func}
     function to know which is the next page given a current one.
@@ -767,7 +769,7 @@ lambda (assistant page)    :run-last
 (export 'assistant-page-func)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_assistant_set_forward_page_func ()
+;;; gtk_assistant_set_forward_page_func
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_assistant_set_forward_page_func"
@@ -779,7 +781,7 @@ lambda (assistant page)    :run-last
 
 (defun assistant-set-forward-page-func (assistant func)
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{#2023-03-15}
   @argument[assistant]{a @class{gtk:assistant} widget}
   @argument[func]{a @symbol{gtk:assistant-page-func} page forwarding callback
     function, or @code{nil} to use the default one}
@@ -806,8 +808,8 @@ lambda (assistant page)    :run-last
 (export 'assistant-set-forward-page-func)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_assistant_set_page_type ()
-;;; gtk_assistant_get_page_type ()
+;;; gtk_assistant_set_page_type
+;;; gtk_assistant_get_page_type
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf assistant-page-type) (ptype assistant page)
@@ -815,7 +817,7 @@ lambda (assistant page)    :run-last
 
 (defun assistant-page-type (assistant page)
  #+liber-documentation
- "@version{2024-4-9}
+ "@version{2024-04-09}
   @syntax{(gtk:assistant-page-type assistant page) => ptype}
   @syntax{(setf (gtk:assistant-page-type assistant page) ptype)}
   @argument[assistant]{a @class{gtk:assistant} widget}
@@ -832,8 +834,8 @@ lambda (assistant page)    :run-last
 (export 'assistant-page-type)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_assistant_set_page_title ()
-;;; gtk_assistant_get_page_title ()
+;;; gtk_assistant_set_page_title
+;;; gtk_assistant_get_page_title
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf assistant-page-title) (title assistant page)
@@ -841,12 +843,12 @@ lambda (assistant page)    :run-last
 
 (defun assistant-page-title (assistant page)
  #+liber-documentation
- "@version{2024-4-9}
+ "@version{2025-06-06}
   @syntax{(gtk:assistant-page-title assistant page) => title}
   @syntax{(setf (gtk:assistant-page-title assistant page) title)}
   @argument[assistant]{a @class{gtk:assistant} widget}
   @argument[page]{a @class{gtk:widget} page of @arg{assistant}}
-  @argument[title]{a string with the new title for @arg{page}}
+  @argument[title]{a string for the new title for @arg{page}}
   @begin{short}
     The @fun{gtk:assistant-page-title} function gets the title for the page in
     the assistant.
@@ -888,8 +890,8 @@ lambda (assistant page)    :run-last
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_assistant_set_page_complete ()
-;;; gtk_assistant_get_page_complete ()
+;;; gtk_assistant_set_page_complete
+;;; gtk_assistant_get_page_complete
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf assistant-page-complete) (complete assistant page)
@@ -897,7 +899,7 @@ lambda (assistant page)    :run-last
 
 (defun assistant-page-complete (assistant page)
  #+liber-documentation
- "@version{2024-4-9}
+ "@version{2024-04-09}
   @syntax{(gtk:assistant-page-complete assistant page) => complete}
   @syntax{(setf (gtk:assistant-page-complete assistant page) complete)}
   @argument[assistant]{a @class{gtk:assistant} widget}
@@ -917,15 +919,15 @@ lambda (assistant page)    :run-last
 (export 'assistant-page-complete)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_assistant_set_page_has_padding ()
-;;; gtk_assistant_get_page_has_padding ()
+;;; gtk_assistant_set_page_has_padding
+;;; gtk_assistant_get_page_has_padding
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf assistant-page-has-padding) (setting assistant page)
   (setf (assistant-child-has-padding assistant page) setting))
 
 (defun assistant-page-has-padding (assistant page)
- "@version{#2024-4-9}
+ "@version{#2024-04-09}
   @syntax{(gtk:assistant-page-has-padding assistant page) => setting}
   @syntax{(setf (gtk:assistant-page-has-padding assistant page) setting)}
   @argument[assistant]{a @class{gtk:assistant} widget}
@@ -944,13 +946,13 @@ lambda (assistant page)    :run-last
 (export 'assistant-page-has-padding)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_assistant_add_action_widget ()
+;;; gtk_assistant_add_action_widget
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_assistant_add_action_widget" assistant-add-action-widget)
     :void
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{#2023-03-15}
   @argument[assistant]{a @class{gtk:assistant} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @begin{short}
@@ -965,13 +967,13 @@ lambda (assistant page)    :run-last
 (export 'assistant-add-action-widget)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_assistant_remove_action_widget ()
+;;; gtk_assistant_remove_action_widget
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_assistant_remove_action_widget"
                assistant-remove-action-widget) :void
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{#2023-03-15}
   @argument[assistant]{a @class{gtk:assistant} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @begin{short}
@@ -986,13 +988,13 @@ lambda (assistant page)    :run-last
 (export 'assistant-remove-action-widget)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_assistant_update_buttons_state ()
+;;; gtk_assistant_update_buttons_state
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_assistant_update_buttons_state"
                assistant-update-buttons-state) :void
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{#2023-03-15}
   @argument[assistant]{a @class{gtk:assistant} widget}
   @begin{short}
     Forces the assistant to recompute the buttons state.
@@ -1008,12 +1010,12 @@ lambda (assistant page)    :run-last
 (export 'assistant-update-buttons-state)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_assistant_commit ()
+;;; gtk_assistant_commit
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_assistant_commit" assistant-commit) :void
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{#2023-03-15}
   @argument[assistant]{a @class{gtk:assistant} widget}
   @begin{short}
     Erases the visited page history so the Back button is not shown on the
@@ -1029,12 +1031,12 @@ lambda (assistant page)    :run-last
 (export 'assistant-commit)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_assistant_next_page ()
+;;; gtk_assistant_next_page
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_assistant_next_page" assistant-next-page) :void
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{#2023-03-15}
   @argument[assistant]{a @class{gtk:assistant} widget}
   @begin{short}
     Navigate to the next page.
@@ -1050,12 +1052,12 @@ lambda (assistant page)    :run-last
 (export 'assistant-next-page)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_assistant_previous_page ()
+;;; gtk_assistant_previous_page
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_assistant_previous_page" assistant-previous-page) :void
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{#2023-03-15}
   @argument[assistant]{a @class{gtk:assistant} widget}
   @begin{short}
     Navigate to the previous visited page.

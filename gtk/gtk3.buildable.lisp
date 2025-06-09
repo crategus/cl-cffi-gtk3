@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.buildable.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -69,7 +69,7 @@
 (setf (liber:alias-for-class 'buildable)
       "Interface"
       (documentation 'buildable 'type)
- "@version{#2023-3-15}
+ "@version{#2023-03-15}
   @begin{short}
     Interface for objects that can be built by a @class{gtk:builder} UI
     description.
@@ -93,8 +93,8 @@
   @see-class{gtk:builder}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_buildable_set_name ()
-;;; gtk_buildable_get_name ()
+;;; gtk_buildable_set_name
+;;; gtk_buildable_get_name
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf buildable-name) (name buildable)
@@ -106,11 +106,11 @@
 
 (cffi:defcfun ("gtk_buildable_get_name" buildable-name) :string
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{#2025-06-05}
   @syntax{(gtk:buildable-name buildable) => name}
   @syntax{(setf (gtk:buildable-name buildable) name)}
   @argument[buildable]{a @class{gtk:buildable} widget}
-  @argument[name]{a string with the name}
+  @argument[name]{a string for the name}
   @begin{short}
     Accessor of the name of the buildable widget.
   @end{short}
@@ -126,7 +126,7 @@
 (export 'buildable-name)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_buildable_add_child ()
+;;; gtk_buildable_add_child
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_buildable_add_child" %buildable-add-child) :void
@@ -137,11 +137,11 @@
 
 (defun buildable-add-child (buildable builder child &optional type)
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{#2025-06-05}
   @argument[buildable]{a @class{gtk:buildable} widget}
   @argument[builder]{a @class{gtk:builder} object}
   @argument[child]{a @class{g:object} child widget to add}
-  @argument[type]{an optional string with the kind of the child widget}
+  @argument[type]{an optional string for the kind of the child widget}
   @begin{short}
     Adds a child widget to the buildable widget.
   @end{short}
@@ -177,8 +177,6 @@
 ;;;
 ;;; value :
 ;;;     value of property
-;;;
-;;; Since 2.12
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
@@ -204,8 +202,6 @@
 ;;;
 ;;; Returns :
 ;;;     the constructed child
-;;;
-;;; Since 2.12
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
@@ -241,8 +237,6 @@
 ;;;
 ;;; Returns :
 ;;;     TRUE if a object has a custom implementation, FALSE if it does not.
-;;;
-;;; Since 2.12
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
@@ -270,8 +264,6 @@
 ;;;
 ;;; data :
 ;;;     user data that will be passed in to parser functions
-;;;
-;;; Since 2.12
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
@@ -300,8 +292,6 @@
 ;;;
 ;;; data :
 ;;;     user data created in custom_tag_start
-;;;
-;;; Since 2.12
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
@@ -319,21 +309,19 @@
 ;;;
 ;;; builder :
 ;;;     a GtkBuilder
-;;;
-;;; Since 2.12
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_buildable_get_internal_child () -> buildable-internal-child
+;;; gtk_buildable_get_internal_child
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_buildable_get_internal_child" buildable-internal-child)
     g:object
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{#2025-06-05}
   @argument[buildable]{a @class{gtk:buildable} widget}
   @argument[builder]{a @class{gtk:builder} object}
-  @argument[name]{a string with the name of the child widget}
+  @argument[name]{a string for the name of the child widget}
   @return{The internal child widget of the buildable widget.}
   @begin{short}
     Gets the internal child widget called @arg{name} of the buildable widget.

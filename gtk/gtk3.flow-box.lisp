@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.flow-box.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2024 Dieter Kaiser
+;;; Copyright (C) 2019 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -135,7 +135,7 @@
 
 #+liber-documentation
 (setf (documentation 'flow-box-child 'type)
- "@version{2023-3-5}
+ "@version{2025-06-06}
   @begin{short}
     The @class{gtk:flow-box-child} widget is the kind of widget that can be
     added to a @class{gtk:flow-box} widget.
@@ -145,14 +145,14 @@
       @begin{pre}
 lambda (child)    :action
       @end{pre}
-      The signal is emitted when the user activates a child widget in a
-      @class{gtk:flow-box} widget, either by clicking or double-clicking, or by
-      using the @kbd{Space} or @kbd{Enter} key. While this signal is used as a
-      keybinding signal, it can be used by applications for their own purposes.
       @begin[code]{table}
         @entry[child]{The @class{gtk:flow-box-child} widget on which the signal
           is emitted.}
       @end{table}
+      The signal is emitted when the user activates a child widget in a
+      @class{gtk:flow-box} widget, either by clicking or double-clicking, or by
+      using the @kbd{Space} or @kbd{Enter} key. While this signal is used as a
+      keybinding signal, it can be used by applications for their own purposes.
   @end{dictionary}
   @see-constructor{gtk:flow-box-child-new}
   @see-class{gtk:flow-box}")
@@ -192,7 +192,7 @@ lambda (child)    :action
 
 #+liber-documentation
 (setf (documentation 'flow-box 'type)
- "@version{2023-3-5}
+ "@version{2025-06-06}
   @begin{short}
     The @class{gtk:flow-box} widget positions child widgets in sequence
     according to its orientation.
@@ -243,26 +243,35 @@ flowbox
       @begin{pre}
 lambda (flowbox)    :action
       @end{pre}
-      The signal is a keybinding signal which gets emitted when the user
-      activates the flow box.
       @begin[code]{table}
         @entry[flowbox]{The @class{gtk:flow-box} widget on which the signal is
           emitted.}
       @end{table}
+      The signal is a keybinding signal which gets emitted when the user
+      activates the flow box.
     @subheading{The \"child-activated\" signal}
       @begin{pre}
 lambda (flowbox child)    :run-last
       @end{pre}
-      The signal is emitted when a child has been activated by the user.
       @begin[code]{table}
         @entry[flowbox]{The @class{gtk:flow-box} widget on which the signal is
           emitted.}
         @entry[child]{The @class{gtk:flow-box-child} widget that is activated.}
       @end{table}
+      The signal is emitted when a child has been activated by the user.
     @subheading{The \"move-cursor\" signal}
       @begin{pre}
 lambda (flowbox step count)    :action
       @end{pre}
+      @begin[code]{table}
+        @entry[flowbox]{The @class{gtk:flow-box} widget on which the signal is
+          emitted.}
+        @entry[step]{The granularity to the move, as a value of the
+          @symbol{gtk:movement-step} enumeration.}
+        @entry[count]{The integer with the number of step units to move.}
+        @entry[Returns]{@em{True} to stop other handlers from being invoked for
+          the event. @em{False} to propagate the event further.}
+      @end{table}
       The signal is a keybinding signal which gets emitted when the user
       initiates a cursor movement. Applications should not connect to it, but
       may emit it with the @fun{g:signal-emit} function if they need to control
@@ -274,59 +283,50 @@ lambda (flowbox step count)    :action
       list them all here. Arrow keys move by individual children.
       @kbd{Home}/@kbd{End} keys move to the ends of the box.
       @kbd{PageUp}/@kbd{PageDown} keys move vertically by pages.
-      @begin[code]{table}
-        @entry[flowbox]{The @class{gtk:flow-box} widget on which the signal is
-          emitted.}
-        @entry[step]{The granularity to the move, as a value of the
-          @symbol{gtk:movement-step} enumeration.}
-        @entry[count]{The integer with the number of step units to move.}
-        @entry[Returns]{@em{True} to stop other handlers from being invoked for
-          the event. @em{False} to propagate the event further.}
-      @end{table}
     @subheading{The \"select-all\" signal}
       @begin{pre}
 lambda (flowbox)    :action
       @end{pre}
-      The signal is a keybinding signal which gets emitted to select all
-      children of the box, if the selection mode permits it. The default
-      bindings for this signal is the @kbd{Ctrl-a} key.
       @begin[code]{table}
         @entry[flowbox]{The @class{gtk:flow-box} widget on which the signal is
           emitted.}
       @end{table}
+      The signal is a keybinding signal which gets emitted to select all
+      children of the box, if the selection mode permits it. The default
+      bindings for this signal is the @kbd{Ctrl-a} key.
     @subheading{The \"selected-children-changed\" signal}
       @begin{pre}
 lambda (flowbox)    :run-first
       @end{pre}
+      @begin[code]{table}
+        @entry[box]{The @class{gtk:flow-box} on which the signal is emitted.}
+      @end{table}
       The signal is emitted when the set of selected children changes. Use the
       @fun{gtk:flow-box-selected-foreach} or
       @fun{gtk:flow-box-selected-children} functions to obtain the selected
       children.
-      @begin[code]{table}
-        @entry[box]{The @class{gtk:flow-box} on which the signal is emitted.}
-      @end{table}
     @subheading{The \"toggle-cursor-child\" signal}
       @begin{pre}
 lambda (flowbox)    :action
       @end{pre}
-      The signal is a keybinding signal which toggles the selection of the
-      child that has the focus. The default binding for this signal is the
-      @kbd{Ctrl-Space} key.
       @begin[code]{table}
         @entry[flowbox]{The @class{gtk:flow-box} widget on which the signal is
           emitted.}
       @end{table}
+      The signal is a keybinding signal which toggles the selection of the
+      child that has the focus. The default binding for this signal is the
+      @kbd{Ctrl-Space} key.
     @subheading{The \"unselect-all\" signal}
       @begin{pre}
 lambda (flowbox)    :action
       @end{pre}
-      The signal is a keybinding signal which gets emitted to unselect all
-      children of the box, if the selection mode permits it. The default
-      bindings for this signal is the @kbd{Ctrl-Shift-a} key.
       @begin[code]{table}
         @entry[flowbox]{The @class{gtk:flow-box} widget on which the signal is
           emitted.}
       @end{table}
+      The signal is a keybinding signal which gets emitted to unselect all
+      children of the box, if the selection mode permits it. The default
+      bindings for this signal is the @kbd{Ctrl-Shift-a} key.
   @end{dictionary}
   @see-constructor{gtk:flow-box-new}
   @see-slot{gtk:flow-box-activate-on-single-click}
@@ -358,7 +358,7 @@ lambda (flowbox)    :action
 (setf (liber:alias-for-function 'flow-box-activate-on-single-click)
       "Accessor"
       (documentation 'flow-box-activate-on-single-click 'function)
- "@version{2023-3-5}
+ "@version{2023-03-05}
   @syntax{(gtk:flow-box-activate-on-single-click object) => setting}
   @syntax{(setf (gtk:flow-box-activate-on-single-click object) setting)}
   @argument[object]{a @class{gtk:flow-box} widget}
@@ -386,11 +386,11 @@ lambda (flowbox)    :action
 (setf (liber:alias-for-function 'flow-box-column-spacing)
       "Accessor"
       (documentation 'flow-box-column-spacing 'function)
- "@version{2023-3-5}
+ "@version{2025-06-06}
   @syntax{(gtk:flow-box-column-spacing object) => spacing}
   @syntax{(setf (gtk:flow-box-column-spacing object) spacing)}
   @argument[object]{a @class{gtk:flow-box} widget}
-  @argument[spacing]{An unsigned integer with the spacing to use.}
+  @argument[spacing]{an unsigned integer for the spacing to use}
   @begin{short}
     Accessor of the @slot[gtk:flow-box]{column-spacing} slot of the
     @class{gtk:flow-box} class.
@@ -413,7 +413,7 @@ lambda (flowbox)    :action
 (setf (liber:alias-for-function 'flow-box-homogeneous)
       "Accessor"
       (documentation 'flow-box-homogeneous 'function)
- "@version{2023-3-5}
+ "@version{2023-03-05}
   @syntax{(gtk:flow-box-homogeneous object) => homogeneous}
   @syntax{(setf (gtk:flow-box-homogeneous object) homogeneous)}
   @argument[object]{a @class{gtk:flow-box} widget}
@@ -443,11 +443,11 @@ lambda (flowbox)    :action
 (setf (liber:alias-for-function 'flow-box-max-children-per-line)
       "Accessor"
       (documentation 'flow-box-max-children-per-line 'function)
- "@version{2023-3-5}
+ "@version{2025-06-06}
   @syntax{(gtk:flow-box-max-children-per-line object) => n-children}
   @syntax{(setf (gtk:flow-box-max-children-per-line object) n-children)}
   @argument[object]{a @class{gtk:flow-box} widget}
-  @argument[n-children]{an unsigned integer with the maximum number of children
+  @argument[n-children]{an unsigned integer for the maximum number of children
     per line}
   @begin{short}
     Accessor of the @slot[gtk:flow-box]{max-children-per-line} slot of the
@@ -480,11 +480,11 @@ lambda (flowbox)    :action
 (setf (liber:alias-for-function 'flow-box-min-children-per-line)
       "Accessor"
       (documentation 'flow-box-min-children-per-line 'function)
- "@version{2023-3-5}
+ "@version{2025-06-06}
   @syntax{(gtk:flow-box-min-children-per-line object) => n-children}
   @syntax{(setf (gtk:flow-box-min-children-per-line object) n-children)}
   @argument[object]{a @class{gtk:flow-box} widget}
-  @argument[n-children]{an unsigned integer with the minimum number of children
+  @argument[n-children]{an unsigned integer for the minimum number of children
     per line}
   @begin{short}
     Accessor of the @slot[gtk:flow-box]{min-children-per-line} slot of the
@@ -509,11 +509,11 @@ lambda (flowbox)    :action
 (setf (liber:alias-for-function 'flow-box-row-spacing)
       "Accessor"
       (documentation 'flow-box-row-spacing 'function)
- "@version{2024-4-9}
+ "@version{2025-06-06}
   @syntax{(gtk:flow-box-row-spacing object) => spacing}
   @syntax{(setf (gtk:flow-box-row-spacing object) spacing)}
   @argument[object]{a @class{gtk:flow-box} widget}
-  @argument[spacing]{an unsigned integer with the spacing to use}
+  @argument[spacing]{an unsigned integer for the spacing to use}
   @begin{short}
     Accessor of the @slot[gtk:flow-box]{row-spacing} slot of the
     @class{gtk:flow-box} class.
@@ -537,7 +537,7 @@ lambda (flowbox)    :action
 (setf (liber:alias-for-function 'flow-box-selection-mode)
       "Accessor"
       (documentation 'flow-box-selection-mode 'function)
- "@version{2024-4-9}
+ "@version{2024-04-09}
   @syntax{(gtk:flow-box-selection-mode object) => mode}
   @syntax{(setf (gtk:flow-box-selection-mode object) mode)}
   @argument[object]{a @class{gtk:flow-box} widget}
@@ -553,14 +553,14 @@ lambda (flowbox)    :action
   @see-symbol{gtk:selection-mode}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_flow_box_new ()
+;;; gtk_flow_box_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline flow-box-new))
 
 (defun flow-box-new ()
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2023-03-05}
   @return{The new @class{gtk:flow-box} widget.}
   @begin{short}
     Creates a new flow box.
@@ -571,15 +571,15 @@ lambda (flowbox)    :action
 (export 'flow-box-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_flow_box_insert ()
+;;; gtk_flow_box_insert
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_flow_box_insert" flow-box-insert) :void
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2025-06-06}
   @argument[flowbox]{a @class{gtk:flow-box} widget}
   @argument[child]{a @class{gtk:widget} child widget to add}
-  @argument[position]{an integer with the position to insert the child widget
+  @argument[position]{an integer for the position to insert the child widget
     in}
   @begin{short}
     Inserts the child widget into the flow box at a given position.
@@ -600,17 +600,19 @@ lambda (flowbox)    :action
 (export 'flow-box-insert)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_flow_box_get_child_at_index ()
+;;; gtk_flow_box_get_child_at_index
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_flow_box_get_child_at_index" flow-box-child-at-index)
     (g:object flow-box-child)
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2025-06-06}
   @argument[flowbox]{a @class{gtk:flow-box} widget}
-  @argument[index]{an integer with the position of the child widget}
-  @return{The child widget, which will always be a @class{gtk:flow-box-child}
-    widget or @code{nil} in case no child widget with the given index exists.}
+  @argument[index]{an integer for the position of the child widget}
+  @begin{return}
+    The child widget, which will always be a @class{gtk:flow-box-child} widget
+    or @code{nil} in case no child widget with the given index exists.
+  @end{return}
   @begin{short}
     Gets the nth child widget in the flow box.
   @end{short}
@@ -622,19 +624,20 @@ lambda (flowbox)    :action
 (export 'flow-box-child-at-index)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_flow_box_get_child_at_pos ()
+;;; gtk_flow_box_get_child_at_pos
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_flow_box_get_child_at_pos" flow-box-child-at-pos)
     (g:object flow-box-child)
  #+liber-documentation
- "@version{#2023-3-13}
+ "@version{#2025-06-06}
   @argument[flowbox]{a @class{gtk:flow-box} widget}
-  @argument[x]{an integer with the x coordinate of the child widget}
-  @argument[y]{an integer with the y coordinate of the child widget}
-  @return{The child widget, which will always be a @class{gtk:flow-box-child}
-    widget or @code{nil} in case no child widget exists for the given
-    coordinates.}
+  @argument[x]{an integer for the x coordinate of the child widget}
+  @argument[y]{an integer for the y coordinate of the child widget}
+  @begin{return}
+    The child widget, which will always be a @class{gtk:flow-box-child} widget
+    or @code{nil} in case no child widget exists for the given coordinates.
+  @end{return}
   @begin{short}
     Gets the child widget in the flow box at the given coordinates.
   @end{short}
@@ -647,7 +650,7 @@ lambda (flowbox)    :action
 (export 'flow-box-child-at-pos)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_flow_box_set_hadjustment ()
+;;; gtk_flow_box_set_hadjustment
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_flow_box_set_hadjustment" flow-box-set-hadjustment) :void
@@ -676,12 +679,12 @@ lambda (flowbox)    :action
 (export 'flow-box-set-hadjustment)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_flow_box_set_vadjustment ()
+;;; gtk_flow_box_set_vadjustment
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_flow_box_set_vadjustment" flow-box-set-vadjustment) :void
  #+liber-documentation
- "@version{#2024-4-9}
+ "@version{#2024-04-09}
   @argument[flowbox]{a @class{gtk:flow-box} widget}
   @argument[adjustment]{a @class{gtk:adjustment} object which should be adjusted
     when the focus is moved among the descendents of @arg{flowbox}}
@@ -705,7 +708,7 @@ lambda (flowbox)    :action
 (export 'flow-box-set-vadjustment)
 
 ;;; ----------------------------------------------------------------------------
-;;; GtkFlowBoxForeachFunc ()
+;;; GtkFlowBoxForeachFunc
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcallback flow-box-foreach-func :void
@@ -721,7 +724,7 @@ lambda (flowbox)    :action
 (setf (liber:alias-for-symbol 'flow-box-foreach-func)
       "Callback"
       (liber:symbol-documentation 'flow-box-foreach-func)
- "@version{#2024-3-23}
+ "@version{#2024-03-23}
   @syntax{lambda (flowbox child)}
   @argument[flowbox]{a @class{gtk:flow-box} widget}
   @argument[child]{a @class{gtk:flow-box-child} child wiget}
@@ -737,7 +740,7 @@ lambda (flowbox)    :action
 (export 'flow-box-foreach-func)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_flow_box_selected_foreach ()
+;;; gtk_flow_box_selected_foreach
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_flow_box_selected_foreach" %flow-box-selected-foreach) :void
@@ -747,7 +750,7 @@ lambda (flowbox)    :action
 
 (defun flow-box-selected-foreach (flowbox func)
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2023-03-05}
   @argument[flowbox]{a @class{gtk:flow-box} widget}
   @argument[func]{a @symbol{gtk:flow-box-foreach-func} callback function}
   @begin{short}
@@ -764,16 +767,18 @@ lambda (flowbox)    :action
 (export 'flow-box-selected-foreach)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_flow_box_get_selected_children ()
+;;; gtk_flow_box_get_selected_children
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_flow_box_get_selected_children" flow-box-selected-children)
     (g:list-t (g:object flow-box-child))
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2023-03-05}
   @argument[flowbox]{a @class{gtk:flow-box} widget}
-  @return{The list containing the @class{gtk:flow-box-child} child widget for
-    each selected child widget.}
+  @begin{return}
+    The list containing the @class{gtk:flow-box-child} child widget for each
+    selected child widget.
+  @end{return}
   @begin{short}
     Creates a list of all selected children.
   @end{short}
@@ -784,12 +789,12 @@ lambda (flowbox)    :action
 (export 'flow-box-selected-children)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_flow_box_select_child ()
+;;; gtk_flow_box_select_child
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_flow_box_select_child" flow-box-select-child) :void
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2023-03-05}
   @argument[flowbox]{a @class{gtk:flow-box} widget}
   @argument[child]{a @class{gtk:widget} child widget of the flow box}
   @begin{short}
@@ -804,12 +809,12 @@ lambda (flowbox)    :action
 (export 'flow-box-select-child)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_flow_box_unselect_child ()
+;;; gtk_flow_box_unselect_child
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_flow_box_unselect_child" flow-box-unselect-child) :void
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2023-03-05}
   @argument[flowbox]{a @class{gtk:flow-box} widget}
   @argument[child]{a @class{gtk:widget} child widget of the flow box}
   @begin{short}
@@ -824,12 +829,12 @@ lambda (flowbox)    :action
 (export 'flow-box-unselect-child)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_flow_box_select_all ()
+;;; gtk_flow_box_select_all
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_flow_box_select_all" flow-box-select-all) :void
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2023-03-05}
   @argument[flowbox]{a @class{gtk:flow-box} widget}
   @begin{short}
     Select all children of the flow box, if the selection mode allows it.
@@ -840,12 +845,12 @@ lambda (flowbox)    :action
 (export 'flow-box-select-all)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_flow_box_unselect_all ()
+;;; gtk_flow_box_unselect_all
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_flow_box_unselect_all" flow-box-unselect-all) :void
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2023-03-05}
   @argument[flowbox]{a @class{gtk:flow-box} widget}
   @begin{short}
     Unselect all children of the flow box, if the selection mode allows it.
@@ -856,7 +861,7 @@ lambda (flowbox)    :action
 (export 'flow-box-unselect-all)
 
 ;;; ----------------------------------------------------------------------------
-;;; GtkFlowBoxFilterFunc ()
+;;; GtkFlowBoxFilterFunc
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcallback flow-box-filter-func :boolean
@@ -872,7 +877,7 @@ lambda (flowbox)    :action
 (setf (liber:alias-for-symbol 'flow-box-filter-func)
       "Callback"
       (liber:symbol-documentation 'flow-box-filter-func)
- "@version{2024-3-23}
+ "@version{2024-03-23}
   @syntax{lambda (child) => result}
   @argument[child]{a @class{gtk:flow-box-child} widget that may be filtered}
   @argument[result]{@em{true} if the row should be visible,
@@ -888,7 +893,7 @@ lambda (flowbox)    :action
 (export 'flow-box-filter-func)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_flow_box_set_filter_func ()
+;;; gtk_flow_box_set_filter_func
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_flow_box_set_filter_func" %flow-box-set-filter-func) :void
@@ -899,7 +904,7 @@ lambda (flowbox)    :action
 
 (defun flow-box-set-filter-func (flowbox func)
  #+liber-documentation
- "@version{2024-1-2}
+ "@version{2024-01-02}
   @argument[flowbox]{a @class{gtk:flow-box} widget}
   @argument[func]{a @symbol{gtk:flow-box-filter-func} callback function that
     lets you filter which children to show}
@@ -931,13 +936,13 @@ lambda (flowbox)    :action
 (export 'flow-box-set-filter-func)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_flow_box_invalidate_filter ()
+;;; gtk_flow_box_invalidate_filter
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_flow_box_invalidate_filter" flow-box-invalidate-filter)
     :void
  #+liber-documentation
- "@version{2024-1-2}
+ "@version{2024-01-02}
   @argument[flowbox]{a @class{gtk:flow-box} widget}
   @begin{short}
     Updates the filtering for all children in the flow box.
@@ -952,7 +957,7 @@ lambda (flowbox)    :action
 (export 'flow-box-invalidate-filter)
 
 ;;; ----------------------------------------------------------------------------
-;;; GtkFlowBoxSortFunc ()
+;;; GtkFlowBoxSortFunc
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcallback flow-box-sort-func :int
@@ -970,7 +975,7 @@ lambda (flowbox)    :action
 (setf (liber:alias-for-symbol 'flow-box-sort-func)
       "Callback"
       (liber:symbol-documentation 'flow-box-sort-func)
- "@version{2024-3-23}
+ "@version{2024-03-23}
   @syntax{lambda (child1 child2) => result}
   @argument[child1]{a first @class{gtk:flow-box-child} widget}
   @argument[child2]{a second @class{gtk:flow-box-child} widget}
@@ -986,7 +991,7 @@ lambda (flowbox)    :action
 (export 'flow-box-sort-func)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_flow_box_set_sort_func ()
+;;; gtk_flow_box_set_sort_func
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_flow_box_set_sort_func" %flow-box-set-sort-func) :void
@@ -997,7 +1002,7 @@ lambda (flowbox)    :action
 
 (defun flow-box-set-sort-func (flowbox func)
  #+liber-documentation
- "@version{2024-1-2}
+ "@version{2024-01-02}
   @argument[flowbox]{a @class{gtk:flow-box} widget}
   @argument[func]{a @symbol{gtk:flow-box-sort-func} callback function for the
     sort function}
@@ -1026,12 +1031,12 @@ lambda (flowbox)    :action
 (export 'flow-box-set-sort-func)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_flow_box_invalidate_sort ()
+;;; gtk_flow_box_invalidate_sort
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_flow_box_invalidate_sort" flow-box-invalidate-sort) :void
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2023-03-05}
   @argument[flowbox]{a @class{gtk:flow-box} widget}
   @begin{short}
     Updates the sorting for all children in the flow box.
@@ -1044,7 +1049,7 @@ lambda (flowbox)    :action
 (export 'flow-box-invalidate-sort)
 
 ;;; ----------------------------------------------------------------------------
-;;; GtkFlowBoxCreateWidgetFunc ()
+;;; GtkFlowBoxCreateWidgetFunc
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcallback flow-box-create-widget-func (g:object widget)
@@ -1059,7 +1064,7 @@ lambda (flowbox)    :action
 (setf (liber:alias-for-symbol 'flow-box-create-widget-func)
       "Callback"
       (liber:symbol-documentation 'flow-box-create-widget-func)
- "@version{#2024-3-23}
+ "@version{#2024-03-23}
   @syntax{lambda (item) => result}
   @argument[item]{a pointer to the item from the model for which to create a
     widget for}
@@ -1077,7 +1082,7 @@ lambda (flowbox)    :action
 (export 'flow-box-create-widget-func)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_flow_box_bind_model ()
+;;; gtk_flow_box_bind_model
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_flow_box_bind_model" %flow-box-bind-model) :void
@@ -1089,7 +1094,7 @@ lambda (flowbox)    :action
 
 (defun flow-box-bind-model (flowbox model func)
  #+liber-documentation
- "@version{#2023-3-13}
+ "@version{#2023-03-13}
   @argument[flowbox]{a @class{gtk:flow-box} widget}
   @argument[model]{a @class{g:list-model} object to be bound to @arg{flowbox}}
   @argument[func]{a @symbol{gtk:flow-box-create-widget-func} callback function
@@ -1126,14 +1131,14 @@ lambda (flowbox)    :action
 (export 'flow-box-bind-model)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_flow_box_child_new ()
+;;; gtk_flow_box_child_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline flow-box-child-new))
 
 (defun flow-box-child-new ()
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2023-03-05}
   @return{The new @class{gtk:flow-box-child} widget.}
   @begin{short}
     Creates a new @class{gtk:flow-box-child} widget, to be used as a child
@@ -1146,15 +1151,17 @@ lambda (flowbox)    :action
 (export 'flow-box-child-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_flow_box_child_get_index ()
+;;; gtk_flow_box_child_get_index
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_flow_box_child_get_index" flow-box-child-index) :int
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2023-03-05}
   @argument[child]{a @class{gtk:flow-box-child} widget}
-  @return{The integer with the index of the child, or -1 if the child is not
-    in a flow box.}
+  @begin{return}
+    The integer with the index of the child, or -1 if the child is not in a
+    flow box.
+  @end{return}
   @begin{short}
     Gets the current index of the child widget in its flow box.
   @end{short}
@@ -1165,13 +1172,13 @@ lambda (flowbox)    :action
 (export 'flow-box-child-index)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_flow_box_child_is_selected ()
+;;; gtk_flow_box_child_is_selected
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_flow_box_child_is_selected" flow-box-child-is-selected)
     :boolean
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2023-03-05}
   @argument[child]{a @class{gtk:flow-box-child} widget}
   @return{@em{True} if @arg{child} is selected.}
   @begin{short}
@@ -1184,12 +1191,12 @@ lambda (flowbox)    :action
 (export 'flow-box-child-is-selected)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_flow_box_child_changed ()
+;;; gtk_flow_box_child_changed
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_flow_box_child_changed" flow-box-child-changed) :void
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2023-03-05}
   @argument[child]{a @class{gtk:flow-box-child} widget}
   @begin{short}
     Marks the child widget as changed, causing any state that depends on this

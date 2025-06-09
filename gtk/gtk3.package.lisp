@@ -2,8 +2,8 @@
 ;;; gtk3.package.lisp
 ;;;
 ;;; The documentation in this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library,
-;;; see <http://www.gtk.org>. The API documentation of the Lisp binding is
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
 ;;; Copyright (C) 2011 - 2025 Dieter Kaiser
@@ -92,6 +92,18 @@
     @end{subsection}
   @end{section}
   @begin[Interface builder]{section}
+    @begin[GtkBuildable]{subsection}
+      @about-class{buildable}
+      @about-function{buildable-name}
+      @about-function{buildable-add-child}
+      @about-function{buildable-set-buildable-property}
+      @about-function{buildable-construct-child}
+      @about-function{buildable-custom-tag-start}
+      @about-function{buildable-custom-tag-end}
+      @about-function{buildable-custom-finished}
+      @about-function{buildable-parser-finished}
+      @about-function{buildable-internal-child}
+    @end{subsection}
     @begin[GtkBuilder]{subsection}
       @about-symbol{builder-error}
       @about-class{builder}
@@ -415,6 +427,8 @@
       @about-function{list-box-drag-unhighlight-row}
       @about-symbol{list-box-create-widget-func}
       @about-function{list-box-bind-model}
+    @end{subsection}
+    @begin[GtkListBoxRow]{subsection}
       @about-class{list-box-row}
       @about-generic{list-box-row-activatable}
       @about-generic{list-box-row-selectable}
@@ -454,6 +468,8 @@
       @about-function{flow-box-invalidate-sort}
       @about-symbol{flow-box-create-widget-func}
       @about-function{flow-box-bind-model}
+    @end{subsection}
+    @begin[GtkFlowBoxChild]{subsection}
       @about-class{flow-box-child}
       @about-function{flow-box-child-new}
       @about-function{flow-box-child-index}
@@ -3424,18 +3440,6 @@ setup_tree (void)
       @about-generic{actionable-action-target}
       @about-function{actionable-set-action-target}
       @about-function{actionable-set-detailed-action-name}
-    @end{subsection}
-    @begin[GtkBuildable]{subsection}
-      @about-class{buildable}
-      @about-function{buildable-name}
-      @about-function{buildable-add-child}
-      @about-function{buildable-set-buildable-property}
-      @about-function{buildable-construct-child}
-      @about-function{buildable-custom-tag-start}
-      @about-function{buildable-custom-tag-end}
-      @about-function{buildable-custom-finished}
-      @about-function{buildable-parser-finished}
-      @about-function{buildable-internal-child}
     @end{subsection}
     @begin[GtkOrientable]{subsection}
       @about-class{orientable}

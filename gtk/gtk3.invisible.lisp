@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.invisible.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -37,8 +37,8 @@
 ;;;
 ;;; Accessors
 ;;;
-;;;     gtk_invisible_set_screen                           Accessor
-;;;     gtk_invisible_get_screen                           Accessor
+;;;     gtk_invisible_set_screen
+;;;     gtk_invisible_get_screen
 ;;;
 ;;; Functions
 ;;;
@@ -64,7 +64,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkInvisible
+;;; GtkInvisible
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkInvisible" invisible
@@ -79,7 +79,7 @@
 
 #+liber-documentation
 (setf (documentation 'invisible 'type)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @begin{short}
     The @class{gtk:invisible} widget is used internally in GTK, and is probably
     not very useful for application developers.
@@ -104,7 +104,7 @@
 (setf (liber:alias-for-function 'invisible-screen)
       "Accessor"
       (documentation 'invisible-screen 'function)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @syntax{(gtk:invisible-screen object) => screen}
   @syntax{(setf (gtk:invisible-screen object) screen)}
   @argument[object]{a @class{gtk:invisible} widget}
@@ -120,14 +120,14 @@
   @see-class{gdk:screen}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_invisible_new ()
+;;; gtk_invisible_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline invisible-new))
 
 (defun invisible-new ()
  #+liber-documentation
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @return{The new @class{gtk:invisible} widget.}
   @begin{short}
     Creates a new invisible widget.
@@ -144,14 +144,14 @@
 (export 'invisible-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_invisible_new_for_screen ()
+;;; gtk_invisible_new_for_screen
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline invisible-new-for-screen))
 
 (defun invisible-new-for-screen (screen)
  #+liber-documentation
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @argument[screen]{a @class{gdk:screen} object which identifies the screen on
     which the @class{gtk:invisible} widget will be created}
   @return{The newly created @class{gtk:invisible} widget.}

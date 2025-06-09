@@ -621,7 +621,7 @@
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "surface" 'image) t)
- "The @code{surface} property of type @class{gdk:cairo-surface} (Read / Write)
+ "The @code{surface} property of type @symol{cairo:surface-t} (Read / Write)
   @br{}
   A Cairo surface instance to display.")
 
@@ -629,17 +629,17 @@
 (setf (liber:alias-for-function 'image-surface)
       "Accessor"
       (documentation 'image-surface 'function)
- "@version{2023-2-20}
+ "@version{2025-06-05}
   @syntax{(gtk:image-surface object) => surface}
   @syntax{(setf (gtk:image-surface object) surface)}
   @argument[object]{a @class{gtk:image} widget}
-  @argument[surface]{a @class{gdk:cairo-surface} instance}
+  @argument[surface]{a @symbol{cairo:surface-t} instance}
   @begin{short}
     Accessor of the @slot[gtk:image]{surface} slot of the @class{gtk:image}
     class.
   @end{short}
   @see-class{gtk:image}
-  @see-class{gdk:cairo-surface}")
+  @see-symbol{cairo:surface-t}")
 
 ;;; --- gtk:image-use-fallback -------------------------------------------------
 

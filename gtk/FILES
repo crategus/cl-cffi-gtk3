@@ -15,6 +15,7 @@ GTK Widgets and Objects
 
   Interface builder
 
+    gtk.buildable.lisp               - GtkBuildable                 - GTK 3.24
     gtk.builder.lisp                 - GtkBuilder                   - GTK 3.24 &
 
   Windows
@@ -23,18 +24,18 @@ GTK Widgets and Objects
     gtk.dialog.lisp                  - GtkDialog                    - GTK 3.24
     gtk.message-dialog.lisp          - GtkMessageDialog             - GTK 3.24
     gtk.about-dialog.lisp            - GtkAboutDialog               - GTK 3.24
-    gtk.assistant.lisp               - GtkAssistant                 - GTK 3.24 +
-    gtk.invisible.lisp               - GtkInvisible                 - GTK 3.24 +
-    gtk.offscreen-window.lisp        - GtkOffscreenWindow           - GTK 3.24 +
-    gtk.window-group.lisp            - GtkWindowGroup               - GTK 3.24 +
+    gtk.assistant.lisp               - GtkAssistant                 - GTK 3.24
+    gtk.invisible.lisp               - GtkInvisible                 - GTK 3.24
+    gtk.offscreen-window.lisp        - GtkOffscreenWindow           - GTK 3.24
+    gtk.window-group.lisp            - GtkWindowGroup               - GTK 3.24
 
   Layout Containers
 
-    gtk.box.lisp                     - GtkBox                       - GTK 3.24 +
-    gtk.grid.lisp                    - GtkGrid                      - GTK 3.24 +
-    gtk.revealer.lisp                - GtkRevealer                  - GTK 3.24 +
-    gtk.list-box.lisp                - GtkListBox                   - GTK 3.24 +
-    gtk.flow-box.lisp                - GtkFlowBox                   - GTK 3.24 +
+    gtk.box.lisp                     - GtkBox                       - GTK 3.24
+    gtk.grid.lisp                    - GtkGrid                      - GTK 3.24
+    gtk.revealer.lisp                - GtkRevealer                  - GTK 3.24
+    gtk.list-box.lisp                - GtkListBox                   - GTK 3.24
+    gtk.flow-box.lisp                - GtkFlowBox                   - GTK 3.24
     gtk.stack.lisp                   - GtkStack                     - GTK 3.24 +
     gtk.stack-switcher.lisp          - GtkStackSwitcher             - GTK 3.24 +
     gtk.stack-sidebar.lisp           - GtkStackSidebar              - GTK 3.24 +
@@ -215,7 +216,6 @@ GTK Widgets and Objects
   Interfaces
 
     gtk.actionable.lisp              - GtkActionable                - GTK 3.24 +
-    gtk.buildable.lisp               - GtkBuildable                 - GTK 3.24 +
     gtk.orientable.lisp              - GtkOrientable                - GTK 3.24 +
 
   Abstract Base Classes

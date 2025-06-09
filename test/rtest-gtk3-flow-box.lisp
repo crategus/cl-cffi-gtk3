@@ -38,11 +38,11 @@
              (glib-test:list-signals "GtkFlowBoxChild")))
   ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkFlowBoxChild" GTK:FLOW-BOX-CHILD
-                       (:SUPERCLASS GTK:BIN
-                        :EXPORT T
-                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
-                        :TYPE-INITIALIZER "gtk_flow_box_child_get_type")
-                       NIL)
+                      (:SUPERCLASS GTK:BIN
+                       :EXPORT T
+                       :INTERFACES ("AtkImplementorIface" "GtkBuildable")
+                       :TYPE-INITIALIZER "gtk_flow_box_child_get_type")
+                      NIL)
              (gobject:get-gtype-definition "GtkFlowBoxChild"))))
 
 ;;;     GtkFlowBox
@@ -82,32 +82,33 @@
              (glib-test:list-signals "GtkFlowBox")))
   ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkFlowBox" GTK:FLOW-BOX
-                       (:SUPERCLASS GTK:CONTAINER
-                        :EXPORT T
-                        :INTERFACES
-                        ("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
-                        :TYPE-INITIALIZER "gtk_flow_box_get_type")
-                       ((ACTIVATE-ON-SINGLE-CLICK
-                         FLOW-BOX-ACTIVATE-ON-SINGLE-CLICK
-                         "activate-on-single-click" "gboolean" T T)
-                        (COLUMN-SPACING FLOW-BOX-COLUMN-SPACING
-                         "column-spacing" "guint" T T)
-                        (HOMOGENEOUS FLOW-BOX-HOMOGENEOUS
-                         "homogeneous" "gboolean" T T)
-                        (MAX-CHILDREN-PER-LINE FLOW-BOX-MAX-CHILDREN-PER-LINE
-                         "max-children-per-line" "guint" T T)
-                        (MIN-CHILDREN-PER-LINE FLOW-BOX-MIN-CHILDREN-PER-LINE
-                         "min-children-per-line" "guint" T T)
-                        (ROW-SPACING FLOW-BOX-ROW-SPACING
-                         "row-spacing" "guint" T T)
-                        (SELECTION-MODE FLOW-BOX-SELECTION-MODE
-                         "selection-mode" "GtkSelectionMode" T T)))
+                      (:SUPERCLASS GTK:CONTAINER
+                       :EXPORT T
+                       :INTERFACES
+                       ("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
+                       :TYPE-INITIALIZER "gtk_flow_box_get_type")
+                      ((ACTIVATE-ON-SINGLE-CLICK
+                        FLOW-BOX-ACTIVATE-ON-SINGLE-CLICK
+                        "activate-on-single-click" "gboolean" T T)
+                       (COLUMN-SPACING FLOW-BOX-COLUMN-SPACING
+                        "column-spacing" "guint" T T)
+                       (HOMOGENEOUS FLOW-BOX-HOMOGENEOUS
+                        "homogeneous" "gboolean" T T)
+                       (MAX-CHILDREN-PER-LINE FLOW-BOX-MAX-CHILDREN-PER-LINE
+                        "max-children-per-line" "guint" T T)
+                       (MIN-CHILDREN-PER-LINE FLOW-BOX-MIN-CHILDREN-PER-LINE
+                        "min-children-per-line" "guint" T T)
+                       (ROW-SPACING FLOW-BOX-ROW-SPACING
+                        "row-spacing" "guint" T T)
+                       (SELECTION-MODE FLOW-BOX-SELECTION-MODE
+                        "selection-mode" "GtkSelectionMode" T T)))
              (gobject:get-gtype-definition "GtkFlowBox"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
 (test gtk-flow-box-properties
-  (let ((flowbox (make-instance 'gtk:flow-box)))
+  (glib-test:with-check-memory (flowbox)
+    (is (typep (setf flowbox (make-instance 'gtk:flow-box)) 'gtk:flow-box))
     (is-true (gtk:flow-box-activate-on-single-click flowbox))
     (is (= 0 (gtk:flow-box-column-spacing flowbox)))
     (is-false (gtk:flow-box-homogeneous flowbox))
@@ -159,4 +160,4 @@
 ;;;     gtk_flow_box_child_is_selected
 ;;;     gtk_flow_box_child_changed
 
-;;; 2024-9-21
+;;; 2025-06-06

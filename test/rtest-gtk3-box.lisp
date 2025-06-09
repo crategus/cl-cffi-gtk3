@@ -285,4 +285,4 @@
     ;; Remove references
     (is-false (setf (gtk:box-center-widget box) nil))))
 
-;;; 2025-4-26
+;;; 2025-04-26

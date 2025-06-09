@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.revealer.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2024 Dieter Kaiser
+;;; Copyright (C) 2019 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -92,7 +92,7 @@
 (setf (liber:alias-for-symbol 'revealer-transition-type)
       "GEnum"
       (liber:symbol-documentation 'revealer-transition-type)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @begin{declaration}
 (gobject:define-genum \"GtkRevealerTransitionType\" revealer-transition-type
   (:export t
@@ -145,7 +145,7 @@
 
 #+liber-documentation
 (setf (documentation 'revealer 'type)
- "@version{2024-1-1}
+ "@version{2024-01-01}
   @begin{short}
     The @class{gtk:revealer} widget is a container which animates the transition
     of its child widget from invisible to visible.
@@ -180,7 +180,7 @@
 (setf (liber:alias-for-function 'revealer-child-revealed)
       "Accessor"
       (documentation 'revealer-child-revealed 'function)
- "@version{2024-1-1}
+ "@version{2024-01-01}
   @syntax{(gtk:revealer-child-revealed object) => revealed}
   @argument[object]{a @class{gtk:revealer} widget}
   @argument[revealed]{a boolean whether the child widget is revealed}
@@ -205,7 +205,7 @@
 (setf (liber:alias-for-function 'revealer-reveal-child)
       "Accessor"
       (documentation 'revealer-reveal-child 'function)
- "@version{2024-1-1}
+ "@version{2024-01-01}
   @syntax{(gtk:revealer-reveal-child object) => reveal}
   @syntax{(setf (gtk:revealer-reveal-child object) reveal)}
   @argument[object]{a @class{gtk:revealer} widget}
@@ -240,11 +240,11 @@
 (setf (liber:alias-for-function 'revealer-transition-duration)
       "Accessor"
       (documentation 'revealer-transition-duration 'function)
- "@version{2024-1-1}
+ "@version{2025-06-06}
   @syntax{(gtk:revealer-transition-duration object) => duration}
   @syntax{(setf (gtk:revealer-transition-duration object) duration)}
   @argument[object]{a @class{gtk:revealer} widget}
-  @argument[duration]{an unsigned integer with the duration, in milliseconds}
+  @argument[duration]{an unsigned integer for the duration, in milliseconds}
   @begin{short}
     Accessor of the @slot[gtk:revealer]{transition-duration} slot of the
     @class{gtk:revealer} class.
@@ -267,7 +267,7 @@
 (setf (liber:alias-for-function 'revealer-transition-type)
       "Accessor"
       (documentation 'revealer-transition-type 'function)
- "@version{2024-4-9}
+ "@version{2024-04-09}
   @syntax{(gtk:revealer-transition-type object) => setting}
   @syntax{(setf (gtk:revealer-transition-type object) setting)}
   @argument[object]{a @class{gtk:revealer} widget}
@@ -285,14 +285,14 @@
   @see-symbol{gtk:revealer-transition-type}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_revealer_new ()
+;;; gtk_revealer_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline revealer-new))
 
 (defun revealer-new ()
  #+liber-documentation
- "@version{2024-1-1}
+ "@version{2024-01-01}
   @return{The new @class{gtk:revealer} widget.}
   @short{Creates a new revealer.}
   @see-class{gtk:revealer}"

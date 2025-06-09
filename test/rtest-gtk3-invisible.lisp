@@ -36,34 +36,42 @@
              (glib-test:list-signals "GtkInvisible")))
   ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkInvisible" GTK:INVISIBLE
-                       (:SUPERCLASS GTK:WIDGET
-                        :EXPORT T
-                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
-                        :TYPE-INITIALIZER "gtk_invisible_get_type")
-                       ((SCREEN INVISIBLE-SCREEN "screen" "GdkScreen" T T)))
+                      (:SUPERCLASS GTK:WIDGET
+                       :EXPORT T
+                       :INTERFACES ("AtkImplementorIface" "GtkBuildable")
+                       :TYPE-INITIALIZER "gtk_invisible_get_type")
+                      ((SCREEN INVISIBLE-SCREEN "screen" "GdkScreen" T T)))
              (gobject:get-gtype-definition "GtkInvisible"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
 (test gtk-invisible-properties
-  (let ((invisible (make-instance 'gtk:invisible)))
+  (glib-test:with-check-memory (invisible)
+    (is (typep (setf invisible (make-instance 'gtk:invisible)) 'gtk:invisible))
     (is (typep (gtk:invisible-screen invisible) 'gdk:screen))
-    (is (eq (gdk:screen-default) (gtk:invisible-screen invisible)))))
+    (is (eq (gdk:screen-default) (gtk:invisible-screen invisible)))
+    (is-false (gtk:widget-destroy invisible))))
 
 ;;; --- Functions --------------------------------------------------------------
 
 ;;;     gtk_invisible_new
 
 (test gtk-invisible-new
-  (let ((invisible (gtk:invisible-new)))
+  (glib-test:with-check-memory (invisible)
+    (is (typep (setf invisible (gtk:invisible-new)) 'gtk:invisible))
     (is (typep invisible 'gtk:invisible))
-    (is (eq (gdk:screen-default) (gtk:invisible-screen invisible)))))
+    (is (eq (gdk:screen-default) (gtk:invisible-screen invisible)))
+    (is-false (gtk:widget-destroy invisible))))
 
 ;;;     gtk_invisible_new_for_screen
 
 (test gtk-invisible-new-for-screen
-  (let ((invisible (gtk:invisible-new-for-screen (gdk:screen-default))))
+  (glib-test:with-check-memory (invisible)
+    (is (typep (setf invisible
+                     (gtk:invisible-new-for-screen (gdk:screen-default)))
+               'gtk:invisible))
     (is (typep invisible 'gtk:invisible))
-    (is (eq (gdk:screen-default) (gtk:invisible-screen invisible)))))
+    (is (eq (gdk:screen-default) (gtk:invisible-screen invisible)))
+    (is-false (gtk:widget-destroy invisible))))
 
-;;; 2024-9-22
+;;; 2025-06-06

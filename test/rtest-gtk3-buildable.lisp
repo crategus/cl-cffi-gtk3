@@ -41,8 +41,8 @@
              (glib-test:list-interface-properties "GtkBuildable")))
   ;; Check interface definition
   (is (equal '(GOBJECT:DEFINE-GINTERFACE "GtkBuildable" GTK:BUILDABLE
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_buildable_get_type"))
+                      (:EXPORT T
+                       :TYPE-INITIALIZER "gtk_buildable_get_type"))
              (gobject:get-gtype-definition "GtkBuildable"))))
 
 ;;; --- Functions --------------------------------------------------------------
@@ -51,27 +51,40 @@
 ;;;     gtk_buildable_get_name
 
 (test gtk-buildable-name.1
-  (let ((button (make-instance 'gtk:button)))
+  (glib-test:with-check-memory (button)
+    (is (typep (setf button (make-instance 'gtk:button)) 'gtk:button))
     (is-false (gtk:buildable-name button))
     (setf (gtk:buildable-name button) "button")
     (is (string= "button" (gtk:buildable-name button)))))
 
 (test gtk-buildable-name.2
-  (let* ((builder (gtk:builder-new-from-string *dialog-gtk-buildable*))
-         (dialog (gtk:builder-object builder "dialog1"))
-         (vbox (gtk:builder-object builder "vbox1"))
-         (hbuttonbox (gtk:builder-object builder "hbuttonbox1")))
+  (glib-test:with-check-memory (builder (dialog 2) (vbox 2) (hbuttonbox 2) :strong 3)
+    (is (typep (setf builder
+                     (gtk:builder-new-from-string *dialog-gtk-buildable*))
+               'gtk:builder))
+    (is (typep (setf dialog
+                     (gtk:builder-object builder "dialog1")) 'gtk:dialog))
+    (is (typep (setf vbox (gtk:builder-object builder "vbox1")) 'gtk:box))
+    (is (typep (setf hbuttonbox
+                     (gtk:builder-object builder "hbuttonbox1"))
+               'gtk:button-box))
     (is (string= "dialog1" (gtk:buildable-name dialog)))
     (is (string= "vbox1" (gtk:buildable-name vbox)))
-    (is (string= "hbuttonbox1" (gtk:buildable-name hbuttonbox)))))
+    (is (string= "hbuttonbox1" (gtk:buildable-name hbuttonbox)))
+    (is-false (gtk:widget-destroy dialog))))
 
 ;;;     gtk_buildable_add_child
 
 (test gtk-buildable-add-child
-  (let* ((builder (gtk:builder-new-from-string *dialog-gtk-buildable*))
-         (button-box (gtk:builder-object builder "hbuttonbox1"))
-         (button1 (make-instance 'gtk:button))
-         (label (make-instance 'gtk:label)))
+  (glib-test:with-check-memory (builder (button-box 4) (button1 2) (label 2) :strong 6)
+    (is (typep (setf builder
+                     (gtk:builder-new-from-string *dialog-gtk-buildable*))
+               'gtk:builder))
+    (is (typep (setf button-box
+                     (gtk:builder-object builder "hbuttonbox1"))
+               'gtk:button-box))
+    (is (typep (setf button1 (make-instance 'gtk:button)) 'gtk:button))
+    (is (typep (setf label (make-instance 'gtk:label)) 'gtk:label))
     (is (equal '(GTK:DIALOG GTK:BOX GTK:BUTTON-BOX GTK:BUTTON)
                (mapcar 'type-of (gtk:builder-objects builder))))
     (is (typep button-box 'gtk:button-box))
@@ -90,9 +103,14 @@
 ;;;     gtk_buildable_get_internal_child
 
 (test gtk-buildable-internal-child
-  (let* ((builder (gtk:builder-new-from-string *dialog-gtk-buildable*))
-         (dialog (gtk:builder-object builder "dialog1")))
+  (glib-test:with-check-memory (builder (dialog 2) :strong 2)
+    (is (typep (setf builder
+                     (gtk:builder-new-from-string *dialog-gtk-buildable*))
+               'gtk:builder))
+    (is (typep (setf dialog
+                     (gtk:builder-object builder "dialog1")) 'gtk:dialog))
     (is (typep (gtk:buildable-internal-child dialog builder "action_area")
-                'gtk:button-box))))
+                'gtk:button-box))
+    (is-false (gtk:widget-destroy dialog))))
 
-;;; 2024-9-21
+;;; 2025-06-05

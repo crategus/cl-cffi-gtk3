@@ -1624,20 +1624,19 @@ lambda (renderer path text)    :run-last
   @see-function{gtk:cell-renderer-text-wrap-mode}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_cell_renderer_text_new ()
+;;; gtk_cell_renderer_text_new
 ;;; ----------------------------------------------------------------------------
 
-(declaim (inline cell-renderer-text-new))
-
-(defun cell-renderer-text-new ()
+(cffi:defcfun ("gtk_cell_renderer_text_new" cell-renderer-text-new)
+    (gobject:object cell-renderer-text)
  #+liber-documentation
- "@version{2024-3-17}
+ "@version{2025-06-09}
   @return{The new @class{gtk:cell-renderer-text} object.}
   @begin{short}
     Creates a new cell renderer text.
   @end{short}
   Adjust how text is drawn using object properties. Object properties can be
-  set globally, with the @fun{g:object-property} function. Also, with the
+  set globally with the @fun{g:object-property} function. Also, with the
   @class{gtk:tree-view-column} object, you can bind a property to a value in a
   @class{gtk:tree-model} object. For example, you can bind the
   @slot[gtk:cell-renderer-text]{text} property on the cell renderer to a string
@@ -1648,8 +1647,7 @@ lambda (renderer path text)    :run-last
   @see-class{gtk:tree-view-column}
   @see-class{gtk:tree-model}
   @see-function{g:object-property}
-  @see-function{gtk:cell-renderer-text-text}"
-  (make-instance 'cell-renderer-text))
+  @see-function{gtk:cell-renderer-text-text}")
 
 (export 'cell-renderer-text-new)
 

@@ -62,7 +62,8 @@
 ;;; --- Properties -------------------------------------------------------------
 
 (test gtk-grid-properties
-  (let ((grid (make-instance 'gtk:grid)))
+  (glib-test:with-check-memory (grid)
+    (is (typep (setf grid (make-instance 'gtk:grid)) 'gtk:grid))
     (is (= 0 (gtk:grid-baseline-row grid)))
     (is-false (gtk:grid-column-homogeneous grid))
     (is (= 0 (gtk:grid-column-spacing grid)))
@@ -72,35 +73,36 @@
 ;;; --- Child Properties -------------------------------------------------------
 
 (test gtk-grid-child-properties
-  (let ((grid (make-instance 'gtk:grid))
-        (child (make-instance 'gtk:button)))
+  (glib-test:with-check-memory (grid child)
+    (is (typep (setf grid (make-instance 'gtk:grid)) 'gtk:grid))
+    (is (typep (setf child (make-instance 'gtk:button)) 'gtk:button))
     (is-false (gtk:grid-attach grid child 0 0 1 1 ))
     (is (= 1 (gtk:grid-child-height grid child)))
     (is (= 0 (gtk:grid-child-left-attach grid child)))
     (is (= 0 (gtk:grid-child-top-attach grid child)))
     (is (= 1 (gtk:grid-child-width grid child)))
-    ;; Check memory management
-    (is-false (gtk:grid-remove-row grid 0))
-    (is (= 1 (g:object-ref-count child)))
-    (is (= 1 (g:object-ref-count grid)))))
+    ;; Remove references
+    (is-false (gtk:grid-remove-row grid 0))))
 
 ;;; --- Functions --------------------------------------------------------------
 
 ;;;     gtk_grid_new
 
 (test gtk-grid-new
-  (is (eq 'gtk:grid (type-of (gtk:grid-new)))))
+  (glib-test:with-check-memory (grid)
+    (is (typep (setf grid (gtk:grid-new)) 'gtk:grid))))
 
 ;;;     gtk_grid_attach
 ;;;     gtk_grid_attach_next_to
 ;;;     gtk_grid_get_child_at
 
 (test gtk-grid-attach
-  (let ((grid (make-instance 'gtk:grid))
-        (button1 (make-instance 'gtk:button))
-        (button2 (make-instance 'gtk:button))
-        (button3 (make-instance 'gtk:button))
-        (button4 (make-instance 'gtk:button)))
+  (glib-test:with-check-memory (grid button1 button2 button3 button4)
+    (is (typep (setf grid (make-instance 'gtk:grid)) 'gtk:grid))
+    (is (typep (setf button1 (make-instance 'gtk:button)) 'gtk:button))
+    (is (typep (setf button2 (make-instance 'gtk:button)) 'gtk:button))
+    (is (typep (setf button3 (make-instance 'gtk:button)) 'gtk:button))
+    (is (typep (setf button4 (make-instance 'gtk:button)) 'gtk:button))
     (is (= 1 (g:object-ref-count button1)))
     (gtk:grid-attach grid button1 0 0 2 1)
     (gtk:grid-attach grid button2 1 1 1 2)
@@ -139,15 +141,10 @@
       (is (= 1 (gtk:grid-child-top-attach grid button)))
       (is (= 1 (gtk:grid-child-width grid button)))
       (is (= 1 (gtk:grid-child-height grid button))))
-    ;; Check memory management
+    ;; Remove references
     (is-false (gtk:grid-remove-row grid 2))
     (is-false (gtk:grid-remove-row grid 1))
-    (is-false (gtk:grid-remove-row grid 0))
-    (is (= 1 (g:object-ref-count button1)))
-    (is (= 1 (g:object-ref-count button2)))
-    (is (= 1 (g:object-ref-count button3)))
-    (is (= 1 (g:object-ref-count button4)))
-    (is (= 1 (g:object-ref-count grid)))))
+    (is-false (gtk:grid-remove-row grid 0))))
 
 ;;;     gtk_grid_insert_row
 ;;;     gtk_grid_insert_column
@@ -155,11 +152,12 @@
 ;;;     gtk_grid_remove_column
 
 (test gtk-grid-insert
-  (let ((grid (make-instance 'gtk:grid))
-        (button1 (make-instance 'gtk:button))
-        (button2 (make-instance 'gtk:button))
-        (button3 (make-instance 'gtk:button))
-        (button4 (make-instance 'gtk:button)))
+  (glib-test:with-check-memory (grid button1 button2 button3 button4)
+    (is (typep (setf grid (make-instance 'gtk:grid)) 'gtk:grid))
+    (is (typep (setf button1 (make-instance 'gtk:button)) 'gtk:button))
+    (is (typep (setf button2 (make-instance 'gtk:button)) 'gtk:button))
+    (is (typep (setf button3 (make-instance 'gtk:button)) 'gtk:button))
+    (is (typep (setf button4 (make-instance 'gtk:button)) 'gtk:button))
     (is (= 1 (g:object-ref-count button1)))
     (gtk:grid-attach grid button1 0 0 2 1)
     (gtk:grid-attach grid button2 1 1 1 2)
@@ -237,24 +235,20 @@
       (is (= 1 (gtk:grid-child-top-attach grid button)))
       (is (= 1 (gtk:grid-child-width grid button)))
       (is (= 1 (gtk:grid-child-height grid button))))
-    ;; Check memory management
+    ;; Remove references
     (is-false (gtk:grid-remove-row grid 2))
     (is-false (gtk:grid-remove-row grid 1))
-    (is-false (gtk:grid-remove-row grid 0))
-    (is (= 1 (g:object-ref-count button1)))
-    (is (= 1 (g:object-ref-count button2)))
-    (is (= 1 (g:object-ref-count button3)))
-    (is (= 1 (g:object-ref-count button4)))
-    (is (= 1 (g:object-ref-count grid)))))
+    (is-false (gtk:grid-remove-row grid 0))))
 
 ;;;     gtk_grid_insert_next_to
 
 (test gtk-grid-insert-next-to
-  (let ((grid (make-instance 'gtk:grid))
-        (button1 (make-instance 'gtk:button))
-        (button2 (make-instance 'gtk:button))
-        (button3 (make-instance 'gtk:button))
-        (button4 (make-instance 'gtk:button)))
+  (glib-test:with-check-memory (grid button1 button2 button3 button4)
+    (is (typep (setf grid (make-instance 'gtk:grid)) 'gtk:grid))
+    (is (typep (setf button1 (make-instance 'gtk:button)) 'gtk:button))
+    (is (typep (setf button2 (make-instance 'gtk:button)) 'gtk:button))
+    (is (typep (setf button3 (make-instance 'gtk:button)) 'gtk:button))
+    (is (typep (setf button4 (make-instance 'gtk:button)) 'gtk:button))
     (is (= 1 (g:object-ref-count button1)))
     (gtk:grid-attach grid button1 0 0 2 1)
     (gtk:grid-attach grid button2 1 1 1 2)
@@ -295,30 +289,24 @@
       (is (= 2 (gtk:grid-child-top-attach grid button)))
       (is (= 1 (gtk:grid-child-width grid button)))
       (is (= 1 (gtk:grid-child-height grid button))))
-    ;; Check memory management
+    ;; Remove references
     (is-false (gtk:grid-remove-row grid 3))
     (is-false (gtk:grid-remove-row grid 2))
     (is-false (gtk:grid-remove-row grid 1))
-    (is-false (gtk:grid-remove-row grid 0))
-    (is (= 1 (g:object-ref-count button1)))
-    (is (= 1 (g:object-ref-count button2)))
-    (is (= 1 (g:object-ref-count button3)))
-    (is (= 1 (g:object-ref-count button4)))
-    (is (= 1 (g:object-ref-count grid)))))
+    (is-false (gtk:grid-remove-row grid 0))))
 
 ;;;     gtk_grid_get_row_baseline_position
 ;;;     gtk_grid_set_row_baseline_position
 
 (test gtk-grid-row-baseline-position
-  (let ((grid (make-instance 'gtk:grid))
-        (button (make-instance 'gtk:button)))
+  (glib-test:with-check-memory (grid button)
+    (is (typep (setf grid (make-instance 'gtk:grid)) 'gtk:grid))
+    (is (typep (setf button (make-instance 'gtk:button)) 'gtk:button))
     (is-false (gtk:grid-attach grid button 0 0 1 1))
     (is (eq :right (gtk:grid-row-baseline-position grid 0)))
     (is (eq :left (setf (gtk:grid-row-baseline-position grid 0) :left)))
     (is (eq :left (gtk:grid-row-baseline-position grid 0)))
-    ;; Check memory management
-    (is-false (gtk:grid-remove-row grid 0))
-    (is (= 1 (g:object-ref-count button)))
-    (is (= 1 (g:object-ref-count grid)))))
+    ;; Remove references
+    (is-false (gtk:grid-remove-row grid 0))))
 
-;;; 2024-12-14
+;;; 2025-06-06
