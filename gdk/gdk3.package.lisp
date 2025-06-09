@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gdk3.package.lisp
 ;;;
-;;; The documentation of this file is taken from the GDK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GDK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GDK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -1299,8 +1299,6 @@ got_value (gpointer user_data)
     functions allow use @class{gdk:rectangle} instances with Cairo and to use
     @class{gdk:color}, @class{gdk:rgba}, @class{gdk-pixbuf:pixbuf} and
     @class{gdk:window} objects as sources for drawing operations.
-    @about-class{cairo-surface}
-    @about-class{cairo-context}
     @about-function{window-create-similar-surface}
     @about-function{window-create-similar-image-surface}
     @about-function{cairo-create}
