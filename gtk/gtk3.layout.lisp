@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.layout.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -74,7 +74,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkLayout
+;;; GtkLayout
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkLayout" layout
@@ -93,7 +93,7 @@
 
 #+liber-documentation
 (setf (documentation 'layout 'type)
- "@version{2024-4-10}
+ "@version{2025-06-16}
   @begin{short}
     The @class{gtk:layout} widget is similar to the @class{gtk:drawing-area}
     widget in that it is a \"blank slate\" and does not do anything but paint
@@ -113,12 +113,12 @@
     @begin[code]{table}
       @begin[x]{entry}
         The @code{x} child property of type @code{:int} (Read / Write) @br{}
-        x position of the child widget. @br{}
+        The x position of the child widget. @br{}
         Default value: 0
       @end{entry}
       @begin[y]{entry}
         The @code{y} child property of type @code{:int} (Read / Write) @br{}
-        y position of the child widget. @br{}
+        The y position of the child widget. @br{}
         Default value: 0
       @end{entry}
     @end{table}
@@ -147,16 +147,15 @@
 (setf (liber:alias-for-function 'layout-height)
       "Accessor"
       (documentation 'layout-height 'function)
- "@version{2024-4-10}
+ "@version{2025-06-16}
   @syntax{(gtk:layout-height object) => height}
   @syntax{(setf (gtk:layout-height object) height)}
   @argument[object]{a @class{gtk:layout} widget}
-  @argument[height]{an unsigned integer with the height of the layout}
+  @argument[height]{an unsigned integer for the height of the layout}
   @begin{short}
     Accessor of the @slot[gtk:layout]{height} slot of the @class{gtk:layout}
     class.
   @end{short}
-
   The @fun{gtk:layout-height} function gets the height of the layout. The
   @setf{gtk:layout-height} function sets the height.
   @see-class{gtk:layout}")
@@ -174,11 +173,11 @@
 (setf (liber:alias-for-function 'layout-width)
       "Accessor"
       (documentation 'layout-width 'function)
- "@version{2024-4-10}
+ "@version{2025-06-16}
   @syntax{(gtk:layout-width object) => width}
   @syntax{(setf (gtk:layout-width object) width)}
   @argument[object]{a @class{gtk:layout} widget}
-  @argument[width]{an unsigned integer with the width of the layout}
+  @argument[width]{an unsigned integer for the width of the layout}
   @begin{short}
     Accessor of the @slot[gtk:layout]{width} slot of the @class{gtk:layout}
     class.
@@ -199,12 +198,12 @@
 (setf (liber:alias-for-function 'layout-child-x)
       "Accessor"
       (documentation 'layout-child-x 'function)
- "@version{2024-4-10}
+ "@version{2025-06-16}
   @syntax{(gtk:layout-child-x container child) => x}
   @syntax{(setf (gtk:layout-child-x container child) x)}
   @argument[container]{a @class{gtk:layout} widget}
   @argument[child]{a @class{gtk:widget} child widget}
-  @argument[x]{an integer with the x position of the child widget}
+  @argument[x]{an integer for the x position of the child widget}
   @begin{short}
     Accessor of the @code{x} child property of the @class{gtk:layout} class.
   @end{short}
@@ -220,12 +219,12 @@
 (setf (liber:alias-for-function 'layout-child-y)
       "Accessor"
       (documentation 'layout-child-y 'function)
- "@version{2024-4-10}
+ "@version{2025-06-16}
   @syntax{(gtk:layout-child-y container child) => y}
   @syntax{(setf (gtk:layout-child-y container child) y)}
   @argument[container]{a @class{gtk:layout} widget}
   @argument[child]{a @class{gtk:widget} child widget}
-  @argument[y]{an integer with the y position of the child widget}
+  @argument[y]{an integer for the y position of the child widget}
   @begin{short}
     Accessor of the child property @code{y} of the @class{gtk:layout} class.
   @end{short}
@@ -234,14 +233,14 @@
   @see-class{gtk:widget}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_layout_new ()
+;;; gtk_layout_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline layout-new))
 
 (defun layout-new (&optional (hadjustment nil) (vadjustment nil))
  #+liber-documentation
- "@version{2024-4-10}
+ "@version{2024-04-10}
   @argument[hadjustment]{a horizontal scroll @class{gtk:adjustment} object}
   @argument[vadjustment]{a vertical scroll @class{gtk:adjustment} object}
   @return{The new @class{gtk:layout} widget.}
@@ -264,16 +263,16 @@
 (export 'layout-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_layout_put ()
+;;; gtk_layout_put
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_layout_put" layout-put) :void
  #+liber-documentation
- "@version{2024-4-10}
+ "@version{2025-06-16}
   @argument[layout]{a @class{gtk:layout} widget}
   @argument[child]{a @class{gtk:widget} child widget}
-  @argument[x]{an integer with the x position of the child widget}
-  @argument[y]{an integer with the y position of the child widget}
+  @argument[x]{an integer for the x position of the child widget}
+  @argument[y]{an integer for the y position of the child widget}
   @begin{short}
     Adds a child widget to the layout, at the given position in pixels.
   @end{short}
@@ -289,16 +288,16 @@
 (export 'layout-put)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_layout_move ()
+;;; gtk_layout_move
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_layout_move" layout-move) :void
  #+liber-documentation
- "@version{2024-4-10}
+ "@version{2025-06-16}
   @argument[layout]{a @class{gtk:layout} widget}
   @argument[child]{a @class{gtk:widget} child widget}
-  @argument[x]{an integer with the x position to move to}
-  @argument[y]{an integer with the y position to move to}
+  @argument[x]{an integer for the x position to move to}
+  @argument[y]{an integer for the y position to move to}
   @begin{short}
     Moves a child widget of the layout to a new position in pixels.
   @end{short}
@@ -313,8 +312,8 @@
 (export 'layout-move)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_layout_get_size ()
-;;; gtk_layout_set_size ()
+;;; gtk_layout_get_size
+;;; gtk_layout_set_size
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf layout-size) (value layout)
@@ -328,13 +327,13 @@
 
 (defun layout-size (layout)
  #+liber-documentation
- "@version{2024-4-10}
+ "@version{2024-04-10}
   @syntax{(gtk:layout-size layout) => width, height}
-  @syntax{(setf (gtk:layout-size layout) '(width height))}
+  @syntax{(setf (gtk:layout-size layout)  (list width height))}
   @argument[layout]{a @class{gtk:layout} widget}
-  @argument[width]{an unsigned integer with the width of the entire scrollable
+  @argument[width]{an unsigned integer for the width of the entire scrollable
     area}
-  @argument[height]{an unsigned integer with the height of the entire scrollable
+  @argument[height]{an unsigned integer for the height of the entire scrollable
     area}
   @begin{short}
     Accessor of the width and height of the scrollable area.
@@ -355,43 +354,29 @@
 (export 'layout-size)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_layout_get_hadjustment ()                           Deprecated 3.0
-;;;
-;;; This function should only be called after the layout has been placed in a
-;;; GtkScrolledWindow or otherwise configured for scrolling. It returns the
-;;; GtkAdjustment used for communication between the horizontal scrollbar and
-;;; layout.
+;;; gtk_layout_get_hadjustment                              Deprecated 3.0
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_layout_get_vadjustment ()                           Deprecated 3.0
-;;;
-;;; This function should only be called after the layout has been placed in a
-;;; GtkScrolledWindow or otherwise configured for scrolling. It returns the
-;;; GtkAdjustment used for communication between the vertical scrollbar and
-;;; layout.
+;;; gtk_layout_get_vadjustment                              Deprecated 3.0
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_layout_set_hadjustment ()                           Deprecated 3.0
-;;;
-;;; Sets the horizontal scroll adjustment for the layout.
+;;; gtk_layout_set_hadjustment                              Deprecated 3.0
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_layout_set_vadjustment ()                           Deprecated 3.0
-;;;
-;;; Sets the vertical scroll adjustment for the layout.
+;;; gtk_layout_set_vadjustment                              Deprecated 3.0
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_layout_get_bin_window ()
+;;; gtk_layout_get_bin_window
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_layout_get_bin_window" layout-bin-window)
     (g:object gdk:window)
  #+liber-documentation
- "@version{#2024-4-10}
+ "@version{#2024-04-10}
   @argument[layout]{a @class{gtk:layout} widget}
   @return{The @class{gdk:window} object.}
   @begin{short}

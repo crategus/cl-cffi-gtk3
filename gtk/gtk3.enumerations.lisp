@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.enumerations.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -75,7 +75,7 @@
 (setf (liber:alias-for-symbol 'baseline-position)
       "GEnum"
       (liber:symbol-documentation 'baseline-position)
- "@version{2024-3-21}
+ "@version{2024-03-21}
   @begin{declaration}
 (gobject:define-genum \"GtkBaselinePosition\" baseline-position
   (:export t
@@ -121,7 +121,7 @@
 (setf (liber:alias-for-symbol 'delete-type)
       "GEnum"
       (liber:symbol-documentation 'delete-type)
- "@version{2023-2-15}
+ "@version{2023-02-15}
   @begin{declaration}
 (gobject:define-genum \"GtkDeleteType\" delete-type
   (:export t
@@ -178,7 +178,7 @@
 (setf (liber:alias-for-symbol 'direction-type)
       "GEnum"
       (liber:symbol-documentation 'direction-type)
- "@version{2023-2-15}
+ "@version{2023-02-15}
   @begin{declaration}
 (gobject:define-genum \"GtkDirectionType\" direction-type
   (:export t
@@ -218,7 +218,7 @@
 (setf (liber:alias-for-symbol 'justification)
       "GEnum"
       (liber:symbol-documentation 'justification)
- "@version{2024-3-21}
+ "@version{2024-03-21}
   @begin{declaration}
 (gobject:define-genum \"GtkJustification\" justification
   (:export t
@@ -263,7 +263,7 @@
 (setf (liber:alias-for-symbol 'movement-step)
       "GEnum"
       (liber:symbol-documentation 'movement-step)
- "@version{2024-3-21}
+ "@version{2024-03-21}
   @begin{declaration}
 (gobject:define-genum \"GtkMovementStep\" movement-step
   (:export t
@@ -316,7 +316,7 @@
 (setf (liber:alias-for-symbol 'orientation)
       "GEnum"
       (liber:symbol-documentation 'orientation)
- "@version{2024-3-14}
+ "@version{2024-03-14}
   @begin{declaration}
 (gobject:define-genum \"GtkOrientation\" orientation
   (:export t
@@ -351,7 +351,7 @@
 (setf (liber:alias-for-symbol 'pack-type)
       "GEnum"
       (liber:symbol-documentation 'pack-type)
- "@version{2023-3-6}
+ "@version{2023-03-06}
   @begin{declaration}
 (gobject:define-genum \"GtkPackType\" pack-type
   (:export t
@@ -388,7 +388,7 @@
 (setf (liber:alias-for-symbol 'position-type)
       "GEnum"
       (liber:symbol-documentation 'position-type)
- "@version{2024-3-21}
+ "@version{2024-03-21}
   @begin{declaration}
 (gobject:define-genum \"GtkPositionType\" position-type
   (:export t
@@ -429,7 +429,7 @@
 (setf (liber:alias-for-symbol 'relief-style)
       "GEnum"
       (liber:symbol-documentation 'relief-style)
- "@version{2024-3-21}
+ "@version{2024-03-21}
   @begin{declaration}
 (gobject:define-genum \"GtkReliefStyle\" relief-style
   (:export t
@@ -470,7 +470,7 @@
 (setf (liber:alias-for-symbol 'scroll-step)
       "GEnum"
       (liber:symbol-documentation 'scroll-step)
- "@version{#2024-3-21}
+ "@version{#2024-03-21}
   @begin{declaration}
 (gobject:define-genum \"GtkScrollStep\" scroll-step
   (:export t
@@ -512,7 +512,7 @@
 (setf (liber:alias-for-symbol 'scroll-type)
       "GEnum"
       (liber:symbol-documentation 'scroll-type)
- "@version{2024-3-21}
+ "@version{2024-03-21}
   @begin{declaration}
 (gobject:define-genum \"GtkScrollType\" scroll-type
   (:export t
@@ -579,7 +579,7 @@
 (setf (liber:alias-for-symbol 'selection-mode)
       "GEnum"
       (liber:symbol-documentation 'selection-mode)
- "@version{2024-3-14}
+ "@version{2024-03-14}
   @begin{declaration}
 (gobject:define-genum \"GtkSelectionMode\" selection-mode
   (:export t
@@ -627,7 +627,7 @@
 (setf (liber:alias-for-symbol 'shadow-type)
       "GEnum"
       (liber:symbol-documentation 'shadow-type)
- "@version{2024-3-21}
+ "@version{2024-03-21}
   @begin{declaration}
 (gobject:define-genum \"GtkShadowType\" shadow-type
   (:export t
@@ -682,7 +682,7 @@
 (setf (liber:alias-for-symbol 'state-flags)
       "GFlags"
       (liber:symbol-documentation 'state-flags)
- "@version{2024-3-21}
+ "@version{2024-03-21}
   @begin{declaration}
 (gobject:define-gflags \"GtkStateFlags\" state-flags
   (:export t
@@ -743,7 +743,7 @@
 (setf (liber:alias-for-symbol 'toolbar-style)
       "GEnum"
       (liber:symbol-documentation 'toolbar-style)
- "@version{2024-3-21}
+ "@version{2024-03-21}
   @begin{declaration}
 (gobject:define-genum \"GtkToolbarStyle\" toolbar-style
   (:export t
@@ -784,7 +784,7 @@
 (setf (liber:alias-for-symbol 'sort-type)
       "GEnum"
       (liber:symbol-documentation 'sort-type)
- "@version{2024-3-21}
+ "@version{2024-03-21}
   @begin{declaration}
 (gobject:define-genum \"GtkSortType\" sort-type
   (:export t
@@ -817,7 +817,7 @@
 (setf (liber:alias-for-symbol 'text-direction)
       "GEnum"
       (liber:symbol-documentation 'text-direction)
- "@version{2024-3-22}
+ "@version{2024-03-22}
   @begin{declaration}
 (gobject:define-genum \"GtkTextDirection\" text-direction
   (:export t
@@ -863,7 +863,7 @@
 (setf (liber:alias-for-symbol 'expander-style)
       "GEnum"
       (liber:symbol-documentation 'expander-style)
- "@version{2024-3-22}
+ "@version{2024-03-22}
   @begin{declaration}
 (gobject:define-genum \"GtkExpanderStyle\" expander-style
   (:export t
@@ -906,7 +906,7 @@
 (setf (liber:alias-for-symbol 'state-type)
       "GEnum"
       (liber:symbol-documentation 'state-type)
- "@version{2024-3-21}
+ "@version{2024-03-21}
   @begin{declaration}
 (gobject:define-genum \"GtkStateType\" state-type
   (:export t

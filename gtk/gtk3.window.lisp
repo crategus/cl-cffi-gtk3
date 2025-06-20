@@ -453,7 +453,7 @@
     widgets.
   @end{short}
 
-  @image[window]{Figure:GtkWindow}
+  @image[window]{Figure: GtkWindow}
 
   Windows normally have decorations that are under the control of the windowing
   system and allow the user to manipulate the window, for example, to resize it,
@@ -736,7 +736,7 @@ lambda (window widget)    :run-last
 (setf (liber:alias-for-function 'window-decorated)
       "Accessor"
       (documentation 'window-decorated 'function)
- "@version{2024-03-20}
+ "@version{2025-06-12}
   @syntax{(gtk:window-decorated object) => setting}
   @syntax{(setf (gtk:window-decorated object) setting)}
   @argument[object]{a @class{gtk:window} widget}
@@ -748,14 +748,15 @@ lambda (window widget)    :run-last
   The @fun{gtk:window-decorated} function returns whether the window has been
   set to have decorations such as a title bar.
 
-  By default, windows are decorated with a title bar, resize controls, etc. See
-  the @slot[gtk:settings]{gtk-decoration-layout} setting for more information.
-  Some window managers allow GTK to disable these decorations, creating a
-  borderless window. If you set the @slot[gtk:window]{decorated} property to
-  @em{false} using this function, GTK will do its best to convince the window
-  manager not to decorate the window. Depending on the system, this function may
-  not have any effect when called on a window that is already visible, so you
-  should call it before calling the @fun{gtk:widget-show} function.
+  By default, windows are decorated with a title bar, resize controls, and so
+  on. See the @slot[gtk:settings]{gtk-decoration-layout} setting for more
+  information. Some window managers allow GTK to disable these decorations,
+  creating a borderless window. If you set the @slot[gtk:window]{decorated}
+  property to @em{false} using this function, GTK will do its best to convince
+  the window manager not to decorate the window. Depending on the system, this
+  function may not have any effect when called on a window that is already
+  visible, so you should call it before calling the @fun{gtk:widget-show}
+  function.
 
   On Windows, this function always works, since there is no window manager
   policy involved.
@@ -1574,8 +1575,8 @@ lambda (window widget)    :run-last
   @setf{gtk:window-transient-for} function sets the parent window.
 
   Dialogs should be set transient for the main application window they were
-  spawned from. This allows window managers to e.g. keep the dialog on top of
-  the main window, or center the dialog over the main window. The
+  spawned from. This allows window managers to, for example, keep the dialog on
+  top of the main window, or center the dialog over the main window. The
   @fun{gtk:dialog-new-with-buttons} function and other convenience functions
   in GTK will sometimes call the @fun{gtk:window-transient-for} function on
   your behalf.
@@ -1948,9 +1949,9 @@ lambda (window widget)    :run-last
   @begin{short}
     This function sets up hints about how a window can be resized by the user.
   @end{short}
-  You can set a minimum and maximum size. Allowed resize increments, e.g. for
-  xterm, you can only resize by the size of a character, aspect ratios, and
-  more. See the @symbol{gdk:geometry} structure.
+  You can set a minimum and maximum size. Allowed resize increments, for
+  example for xterm, you can only resize by the size of a character, aspect
+  ratios, and more. See the @symbol{gdk:geometry} structure.
   @begin[Notes]{dictionary}
     In the Lisp implementation an unused widget argument is omitted.
   @end{dictionary}
@@ -2914,8 +2915,8 @@ lambda (window widget)    :run-last
         If you are getting a window size in order to position the window
         onscreen, there may be a better way. The preferred way is to simply set
         the semantic type of the window with the @fun{gtk:window-type-hint}
-        function, which allows the window manager to e.g. center dialogs. Also,
-        if you set the transient parent of dialogs with the
+        function, which allows the window manager to, for example, center
+        dialogs. Also, if you set the transient parent of dialogs with the
         @fun{gtk:window-transient-for} function window managers will often
         center the dialog over its parent window. It is much preferred to let
         the window manager handle these things rather than doing it yourself,

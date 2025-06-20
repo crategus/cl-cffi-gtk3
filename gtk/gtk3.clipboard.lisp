@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.clipboard.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -51,8 +51,8 @@
 ;;;     gtk_clipboard_get_display
 ;;;     gtk_clipboard_get_default
 ;;;     gtk_clipboard_set_with_data
-;;;     gtk_clipboard_set_with_owner
-;;;     gtk_clipboard_get_owner
+;;;     gtk_clipboard_set_with_owner                        not implemented
+;;;     gtk_clipboard_get_owner                             not implemented
 ;;;     gtk_clipboard_clear
 ;;;     gtk_clipboard_set_text
 ;;;     gtk_clipboard_set_image
@@ -79,7 +79,7 @@
 ;;;
 ;;; Signals
 ;;;
-;;;     void    owner-change    Run First
+;;;     owner-change
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -102,7 +102,7 @@
 
 #+liber-documentation
 (setf (documentation 'clipboard 'type)
- "@version{#2023-3-16}
+ "@version{#2025-06-19}
   @begin{short}
     The @class{gtk:clipboard} object represents a clipboard of data shared
     between different processes or between different widgets in the same
@@ -150,27 +150,26 @@
       @begin{pre}
 lambda (clipboard event)    :run-first
       @end{pre}
-      The signal is emitted when GTK receives an event that indicates that the
-      ownership of the selection associated with the clipboard has changed.
       @begin[arg]{table}
         @entry[clipboard]{The @class{gtk:clipboard} object on which the signal
           is emitted.}
         @entry[event]{The @class{gdk:event-owner-change} event.}
       @end{table}
+      The signal is emitted when GTK receives an event that indicates that the
+      ownership of the selection associated with the clipboard has changed.
   @end{dictionary}
   @see-type{gdk:atom-as-string}
   @see-class{gdk:event-owner-change}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_clipboard_get ()
+;;; gtk_clipboard_get
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_clipboard_get" clipboard-get)
     (g:object clipboard :free-from-foreign nil)
  #+liber-documentation
- "@version{#2023-3-16}
-  @argument[selection]{a @symbol{gdk:atom-as-string} string which identifies
-    the clipboard to use}
+ "@version{#2025-06-19}
+  @argument[selection]{a string which identifies the clipboard to use}
   @begin{return}
     The appropriate @class{gtk:clipboard} object. If no clipboard already
     exists, a new one will be created. Once a clipboard has been created, it is
@@ -188,17 +187,16 @@ lambda (clipboard event)    :run-first
 (export 'clipboard-get)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_clipboard_get_for_display ()
+;;; gtk_clipboard_get_for_display
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_clipboard_get_for_display" clipboard-for-display)
     (g:object clipboard :free-from-foreign nil)
  #+liber-documentation
- "@version{#2023-3-16}
-  @argument[display]{the @class{gdk:display} object for which the clipboard is
+ "@version{#2025-06-19}
+  @argument[display]{a @class{gdk:display} object for which the clipboard is
     to be retrieved or created}
-  @argument[selection]{a @symbol{gdk:atom-as-string} string which identifies
-    the clipboard to use}
+  @argument[selection]{a string which identifies the clipboard to use}
   @begin{return}
     The appropriate @class{gtk:clipboard} object. If no clipboard already
     exists, a new one will be created. Once a clipboard has been created, it is
@@ -231,13 +229,13 @@ lambda (clipboard event)    :run-first
 (export 'clipboard-for-display)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_clipboard_get_display ()
+;;; gtk_clipboard_get_display
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_clipboard_get_display" clipboard-display)
     (g:object gdk:display)
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{#2023-03-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @return{The @class{gdk:display} object associated with @arg{clipboard}.}
   @begin{short}
@@ -250,13 +248,13 @@ lambda (clipboard event)    :run-first
 (export 'clipboard-display)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_clipboard_get_default ()
+;;; gtk_clipboard_get_default
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_clipboard_get_default" clipboard-default)
     (g:object clipboard)
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{#2023-03-16}
   @argument[display]{a @class{gdk:display} object for which the clipboard is
     to be retrieved}
   @return{The default @class{gtk:clipboard} object.}
@@ -271,10 +269,10 @@ lambda (clipboard event)    :run-first
 (export 'clipboard-default)
 
 ;;; ----------------------------------------------------------------------------
-;;; GtkClipboardClearFunc ()                               not exported
+;;; GtkClipboardClearFunc                                   not exported
 ;;; ----------------------------------------------------------------------------
 
-;; Implemented for internal use in the clipboard-SET-WITH-DATA function.
+;; Implemented for internal use in the CLIPBOARD-SET-WITH-DATA function
 
 (cffi:defcallback %clipboard-clear-func :void
     ((clipboard (g:object clipboard))
@@ -286,7 +284,7 @@ lambda (clipboard event)    :run-first
 (setf (liber:alias-for-symbol 'clipboard-clear-func)
       "Callback"
       (liber:symbol-documentation 'clipboard-clear-func)
- "@version{#2024-3-23}
+ "@version{#2024-03-23}
   @syntax{lambda (clipboard)}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @begin{short}
@@ -296,7 +294,7 @@ lambda (clipboard event)    :run-first
   @see-class{gtk:clipboard}")
 
 ;;; ----------------------------------------------------------------------------
-;;; GtkClipboardGetFunc ()
+;;; GtkClipboardGetFunc
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcallback clipboard-get-func :void
@@ -313,12 +311,12 @@ lambda (clipboard event)    :run-first
 (setf (liber:alias-for-symbol 'clipboard-get-func)
       "Callback"
       (liber:symbol-documentation 'clipboard-get-func)
- "@version{#2024-3-23}
+ "@version{#2025-06-19}
   @syntax{lambda (clipboard selection info)}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[selection]{a @class{gtk:selection-data} instance in which the
     requested data should be stored}
-  @argument[info]{an unsigned integer with the info field corresponding to the
+  @argument[info]{an unsigned integer for the info field corresponding to the
     requested target from the target entries passed to the
     @fun{gtk:clipboard-set-with-data} function}
   @begin{short}
@@ -341,7 +339,7 @@ lambda (clipboard event)    :run-first
 (export 'clipboard-get-func)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_clipboard_set_with_data ()
+;;; gtk_clipboard_set_with_data
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_clipboard_set_with_data" %clipboard-set-with-data) :boolean
@@ -354,14 +352,16 @@ lambda (clipboard event)    :run-first
 
 (defun clipboard-set-with-data (clipboard targets func)
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{#2023-03-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[targets]{a list of target entries containing information about the
     available forms for the clipboard data}
   @argument[func]{a @symbol{gtk:clipboard-get-func} callback function to call
     to get the actual clipboard data}
-  @return{@em{True} if setting the clipboard data succeeded. If setting the
-    clipboard data failed the provided callback functions will be ignored.}
+  @begin{return}
+    @em{True} if setting the clipboard data succeeded. If setting the
+    clipboard data failed the provided callback functions will be ignored.
+  @end{return}
   @begin{short}
     Virtually sets the contents of the specified clipboard by providing a list
     of supported formats for the clipboard data and a function to call to get
@@ -394,67 +394,14 @@ lambda (clipboard event)    :run-first
 (export 'clipboard-set-with-data)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_clipboard_set_with_owner ()
-;;;
-;;; gboolean gtk_clipboard_set_with_owner (GtkClipboard *clipboard,
-;;;                                        const GtkTargetEntry *targets,
-;;;                                        guint n_targets,
-;;;                                        GtkClipboardGetFunc get_func,
-;;;                                        GtkClipboardClearFunc clear_func,
-;;;                                        GObject *owner);
-;;;
-;;; Virtually sets the contents of the specified clipboard by providing a list
-;;; of supported formats for the clipboard data and a function to call to get
-;;; the actual data when it is requested.
-;;;
-;;; The difference between this function and gtk_clipboard_set_with_data() is
-;;; that instead of an generic user_data pointer, a GObject is passed in.
-;;;
-;;; clipboard :
-;;;     a GtkClipboard
-;;;
-;;; targets :
-;;;     array containing information about the available forms for the clipboard
-;;;     data
-;;;
-;;; n_targets :
-;;;     number of elements in targets
-;;;
-;;; get_func :
-;;;     function to call to get the actual clipboard data
-;;;
-;;; clear_func :
-;;;     when the clipboard contents are set again, this function will be called,
-;;;     and get_func will not be subsequently called
-;;;
-;;; owner :
-;;;     an object that "owns" the data. This object will be passed to the
-;;;     callbacks when called
-;;;
-;;; Returns :
-;;;     TRUE if setting the clipboard data succeeded. If setting the clipboard
-;;;     data failed the provided callback functions will be ignored.
+;;; gtk_clipboard_set_with_owner                            not implemented
+;;; ----------------------------------------------------------------------------
+;;; ----------------------------------------------------------------------------
+;;; gtk_clipboard_get_owner                                 not implemented
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_clipboard_get_owner ()
-;;;
-;;; GObject * gtk_clipboard_get_owner (GtkClipboard *clipboard);
-;;;
-;;; If the clipboard contents callbacks were set with
-;;; gtk_clipboard_set_with_owner(), and the gtk_clipboard_set_with_data() or
-;;; gtk_clipboard_clear() has not subsequently called, returns the owner set by
-;;; gtk_clipboard_set_with_owner().
-;;;
-;;; clipboard :
-;;;     a GtkClipboard
-;;;
-;;; Returns :
-;;;     the owner of the clipboard, if any; otherwise NULL
-;;; ----------------------------------------------------------------------------
-
-;;; ----------------------------------------------------------------------------
-;;; gtk_clipboard_clear ()
+;;; gtk_clipboard_clear
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_clipboard_clear" clipboard-clear) :void
@@ -474,7 +421,7 @@ lambda (clipboard event)    :run-first
 (export 'clipboard-clear)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_clipboard_set_text ()
+;;; gtk_clipboard_set_text
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_clipboard_set_text" %clipboard-set-text) :void
@@ -484,7 +431,7 @@ lambda (clipboard event)    :run-first
 
 (defun clipboard-set-text (clipboard text)
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{#2023-03-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[text]{a UTF-8 string}
   @begin{short}
@@ -499,12 +446,12 @@ lambda (clipboard event)    :run-first
 (export 'clipboard-set-text)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_clipboard_set_image ()
+;;; gtk_clipboard_set_image
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_clipboard_set_image" clipboard-set-image) :void
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{#2023-03-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object}
   @begin{short}
@@ -520,7 +467,7 @@ lambda (clipboard event)    :run-first
 (export 'clipboard-set-image)
 
 ;;; ----------------------------------------------------------------------------
-;;; GtkClipboardReceivedFunc ()
+;;; GtkClipboardReceivedFunc
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcallback clipboard-received-func :void
@@ -536,7 +483,7 @@ lambda (clipboard event)    :run-first
 (setf (liber:alias-for-symbol 'clipboard-received-func)
       "Callback"
       (liber:symbol-documentation 'clipboard-received-func)
- "@version{#2024-3-18}
+ "@version{#2024-03-18}
   @syntax{lambda (clipboard selection)}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[selection]{a @class{gtk:selection-data} instance containing the data
@@ -555,7 +502,7 @@ lambda (clipboard event)    :run-first
 (export 'clipboard-received-func)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_clipboard_request_contents ()
+;;; gtk_clipboard_request_contents
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_clipboard_request_contents" %clipboard-request-contents)
@@ -567,10 +514,10 @@ lambda (clipboard event)    :run-first
 
 (defun clipboard-request-contents (clipboard target func)
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{#2025-06-19}
   @argument[clipboard]{a @class{gtk:clipboard} object}
-  @argument[target]{a @symbol{gdk:atom-as-string} string representing the form
-    into which the clipboard owner should convert the selection}
+  @argument[target]{a string representing the form into which the clipboard
+    owner should convert the selection}
   @argument[func]{a @symbol{gtk:clipboard-received-func} callback function to
     call when the results are received, or the retrieval fails, if the
     retrieval fails the @arg{length} field of the @class{gtk:selection-data}
@@ -591,7 +538,7 @@ lambda (clipboard event)    :run-first
 (export 'clipboard-request-contents)
 
 ;;; ----------------------------------------------------------------------------
-;;; GtkClipboardTextReceivedFunc ()
+;;; GtkClipboardTextReceivedFunc
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcallback clipboard-text-received-func :void
@@ -607,10 +554,10 @@ lambda (clipboard event)    :run-first
 (setf (liber:alias-for-symbol 'clipboard-text-received-func)
       "Callback"
       (liber:symbol-documentation 'clipboard-text-received-func)
- "@version{#2024-3-18}
+ "@version{#2024-03-18}
   @syntax{lambda (clipboard text)}
   @argument[clipboard]{a @class{gtk:clipboard} object}
-  @argument[text]{a text received, as a UTF-8 encoded string, or @code{nil} if
+  @argument[text]{a text, received as a UTF-8 encoded string, or @code{nil} if
     retrieving the data failed}
   @begin{short}
     A callback function to be called when the results of the
@@ -623,7 +570,7 @@ lambda (clipboard event)    :run-first
 (export 'clipboard-text-received-func)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_clipboard_request_text ()
+;;; gtk_clipboard_request_text
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_clipboard_request_text" %clipboard-request-text) :void
@@ -633,7 +580,7 @@ lambda (clipboard event)    :run-first
 
 (defun clipboard-request-text (clipboard func)
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{#2023-03-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[func]{a @symbol{gtk:clipboard-text-received-func} callback function
     to call when the text is received, or the retrieval fails, it will always
@@ -657,7 +604,7 @@ lambda (clipboard event)    :run-first
 (export 'clipboard-request-text)
 
 ;;; ----------------------------------------------------------------------------
-;;; GtkClipboardImageReceivedFunc ()
+;;; GtkClipboardImageReceivedFunc
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcallback clipboard-image-received-func :void
@@ -673,7 +620,7 @@ lambda (clipboard event)    :run-first
 (setf (liber:alias-for-symbol 'clipboard-image-received-func)
       "Callback"
       (liber:symbol-documentation 'clipboard-image-received-func)
- "@version{#2024-3-18}
+ "@version{#2024-03-18}
   @syntax{lambda (clipboard pixbuf)}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[pixbuf]{a received @class{gdk-pixbuf:pixbuf} object}
@@ -689,7 +636,7 @@ lambda (clipboard event)    :run-first
 (export 'clipboard-image-received-func)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_clipboard_request_image ()
+;;; gtk_clipboard_request_image
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_clipboard_request_image" %clipboard-request-image) :void
@@ -699,9 +646,9 @@ lambda (clipboard event)    :run-first
 
 (defun clipboard-request-image (clipboard func)
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{#2025-06-19}
   @argument[clipboard]{a @class{gtk:clipboard} object}
-  @argument[func]{a @symbol{gtk:clipboard-image-receibed-func} callback function
+  @argument[func]{a @symbol{gtk:clipboard-image-received-func} callback function
     to call when the image is received, or the retrieval fails. It will always
     be called one way or the other.}
   @begin{short}
@@ -724,7 +671,7 @@ lambda (clipboard event)    :run-first
 (export 'clipboard-request-image)
 
 ;;; ----------------------------------------------------------------------------
-;;; GtkClipboardTargetsReceivedFunc ()
+;;; GtkClipboardTargetsReceivedFunc
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcallback clipboard-targets-received-func :void
@@ -741,7 +688,7 @@ lambda (clipboard event)    :run-first
 (setf (liber:alias-for-symbol 'clipboard-targets-received-func)
       "Callback"
       (liber:symbol-documentation 'clipboard-targets-received-func)
- "@version{#2024-3-18}
+ "@version{#2024-03-18}
   @syntax{lambda (clipboard atoms n-atoms)}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[atoms]{a pointer to a foreign C array of @symbol{gdk:atom-as-string}
@@ -759,7 +706,7 @@ lambda (clipboard event)    :run-first
 (export 'clipboard-targets-received-func)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_clipboard_request_targets ()
+;;; gtk_clipboard_request_targets
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_clipboard_request_targets" %clipboard-request-targets) :void
@@ -769,7 +716,7 @@ lambda (clipboard event)    :run-first
 
 (defun clipboard-request-targets (clipboard func)
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{#2023-03-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[func]{a @symbol{gtk:clipboard-targets-received-func} callback
     function to call when the targets are received, or the retrieval fails}
@@ -789,7 +736,7 @@ lambda (clipboard event)    :run-first
 (export 'clipboard-request-targets)
 
 ;;; ----------------------------------------------------------------------------
-;;; GtkClipboardRichTextReceivedFunc ()
+;;; GtkClipboardRichTextReceivedFunc
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcallback clipboard-rich-text-received-func :void
@@ -807,13 +754,13 @@ lambda (clipboard event)    :run-first
 (setf (liber:alias-for-symbol 'clipboard-rich-text-received-func)
       "Callback"
       (liber:symbol-documentation 'clipboard-rich-text-received-func)
- "@version{#2024-3-23}
+ "@version{#2025-06-19}
   @syntax{lambda (clipboard format text length)}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[format]{a string for the format of the rich text}
-  @argument[text]{a string with the rich text received, as a UTF-8 encoded
+  @argument[text]{a string for the rich text received, as a UTF-8 encoded
     string, or @code{nil} if retrieving the data failed}
-  @argument[length]{an integer with the length of the text}
+  @argument[length]{an integer for the length of the text}
   @begin{short}
     A callback function to be called when the results of the
     @fun{gtk:clipboard-request-rich-text} function are received, or when the
@@ -825,7 +772,7 @@ lambda (clipboard event)    :run-first
 (export 'clipboard-rich-text-received-func)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_clipboard_request_rich_text ()
+;;; gtk_clipboard_request_rich_text
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_clipboard_request_rich_text" %clipboard-request-rich-text)
@@ -837,7 +784,7 @@ lambda (clipboard event)    :run-first
 
 (defun clipboard-request-rich-text (clipboard buffer func)
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{#2023-03-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[func]{a @symbol{gtk:clipboard-rich-text-received-func} callback
@@ -864,7 +811,7 @@ lambda (clipboard event)    :run-first
 (export 'clipboard-request-rich-text)
 
 ;;; ----------------------------------------------------------------------------
-;;; GtkClipboardURIReceivedFunc ()
+;;; GtkClipboardURIReceivedFunc
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcallback clipboard-uri-received-func :void
@@ -880,7 +827,7 @@ lambda (clipboard event)    :run-first
 (setf (liber:alias-for-symbol 'clipboard-uri-received-func)
       "Callback"
       (liber:symbol-documentation 'clipboard-uri-received-func)
- "@version{#2024-3-23}
+ "@version{#2024-03-23}
   @syntax{lambda (clipboard uris)}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[uris]{a pointer to the foreign zero-terminated C array of received
@@ -930,18 +877,20 @@ lambda (clipboard event)    :run-first
 (export 'clipboard-request-uris)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_clipboard_wait_for_contents ()
+;;; gtk_clipboard_wait_for_contents
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_clipboard_wait_for_contents" clipboard-wait-for-contents)
     (g:boxed selection-data :return)
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{#2025-06-19}
   @argument[clipboard]{a @class{gtk:clipboard} object}
-  @argument[target]{a @symbol{gdk:atom-as-string} string representing the form
-    into which the clipboard owner should convert the selection}
-  @return{A newly allocated @class{gtk:selection-data} instance or @code{nil} if
-    retrieving the given target failed.}
+  @argument[target]{a string representing the form into which the clipboard
+    owner should convert the selection}
+  @begin{return}
+    The newly allocated @class{gtk:selection-data} instance or @code{nil} if
+    retrieving the given target failed.
+  @end{return}
   @begin{short}
     Requests the contents of the clipboard using the given target.
   @end{short}
@@ -956,15 +905,17 @@ lambda (clipboard event)    :run-first
 (export 'clipboard-wait-for-contents)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_clipboard_wait_for_text ()
+;;; gtk_clipboard_wait_for_text
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_clipboard_wait_for_text" clipboard-wait-for-text) :string
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{#2025-06-19}
   @argument[clipboard]{a @class{gtk:clipboard} object}
-  @return{A newly allocated UTF-8 string, or @code{nil} if retrieving the
-    selection data failed.}
+  @begin{return}
+    The newly allocated UTF-8 string, or @code{nil} if retrieving the selection
+    data failed.
+  @end{return}
   @begin{short}
     Requests the contents of the clipboard as text and converts the result to
     UTF-8 if necessary.
@@ -977,16 +928,18 @@ lambda (clipboard event)    :run-first
 (export 'clipboard-wait-for-text)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_clipboard_wait_for_image ()
+;;; gtk_clipboard_wait_for_image
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_clipboard_wait_for_image" clipboard-wait-for-image)
     (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{#2025-06-19}
   @argument[clipboard]{a @class{gtk:clipboard} object}
-  @return{A newly allocated @class{gdk-pixbuf:pixbuf} object, or @code{nil} if
-    retrieving the selection data failed.}
+  @begin{return}
+    The newly allocated @class{gdk-pixbuf:pixbuf} object, or @code{nil} if
+    retrieving the selection data failed.
+  @end{return}
   @begin{short}
     Requests the contents of the clipboard as image and converts the result to
     a @class{gdk-pixbuf:pixbuf} object.
@@ -1000,7 +953,7 @@ lambda (clipboard event)    :run-first
 (export 'clipboard-wait-for-image)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_clipboard_wait_for_rich_text ()
+;;; gtk_clipboard_wait_for_rich_text
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_clipboard_wait_for_rich_text" %clipboard-wait-for-rich-text)
@@ -1012,17 +965,16 @@ lambda (clipboard event)    :run-first
 
 (defun clipboard-wait-for-rich-text (clipboard buffer)
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{#2025-06-19}
+  @syntax{(gtk:clipboard-wait-for-rich-text clipboard buffer) => data, format,
+    length}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[buffer]{a @class{gtk:text-buffer} object}
-  @begin{return}
-    @arg{data} -- a newly allocated binary block of data which must be freed
+  @argument[data]{a newly allocated binary block of data which must be freed
     with the @fun{g:free} function, or @code{nil} if retrieving the selection
-    data failed. @br{}
-    @arg{format} -- a @symbol{gdk:atom-as-string} string with the format of the
-      returned data @br{}
-    @arg{length} -- an integer with the length of the returned data
-  @end{return}
+    data failed}
+  @argument[format]{a string for the format of the returned data}
+  @argument[length]{an integer for the length of the returned data}
   @begin{short}
     Requests the contents of the clipboard as rich text.
   @end{short}
@@ -1045,15 +997,16 @@ lambda (clipboard event)    :run-first
 (export 'clipboard-wait-for-rich-text)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_clipboard_wait_for_uris ()
+;;; gtk_clipboard_wait_for_uris
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_clipboard_wait_for_uris" clipboard-wait-for-uris) g:strv-t
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{#2025-06-19}
   @argument[clipboard]{a @class{gtk:clipboard} object}
-  @return{A list of strings, or @code{nil} if retrieving the selection data
-    failed.}
+  @begin{return}
+    The list of strings, or @code{nil} if retrieving the selection data failed.
+  @end{return}
   @begin{short}
     Requests the contents of the clipboard as URIs.
   @end{short}
@@ -1065,13 +1018,13 @@ lambda (clipboard event)    :run-first
 (export 'clipboard-wait-for-uris)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_clipboard_wait_is_text_available ()
+;;; gtk_clipboard_wait_is_text_available
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_clipboard_wait_is_text_available"
                clipboard-wait-is-text-available) :boolean
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{#2023-03-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @return{@em{True} if there is text available, @em{false} otherwise.}
   @begin{short}
@@ -1092,13 +1045,13 @@ lambda (clipboard event)    :run-first
 (export 'clipboard-wait-is-text-available)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_clipboard_wait_is_image_available ()
+;;; gtk_clipboard_wait_is_image_available
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_clipboard_wait_is_image_available"
                clipboard-wait-is-image-available) :boolean
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{#2023-03-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @return{@em{True} if there is an image available, @em{false} otherwise.}
   @begin{short}
@@ -1119,13 +1072,13 @@ lambda (clipboard event)    :run-first
 (export 'clipboard-wait-is-image-available)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_clipboard_wait_is_rich_text_available ()
+;;; gtk_clipboard_wait_is_rich_text_available
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_clipboard_wait_is_rich_text_available"
                clipboard-wait-is-rich-text-available) :boolean
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{#2023-03-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @return{@em{True} if there is rich text available, @em{false} otherwise.}
@@ -1149,13 +1102,13 @@ lambda (clipboard event)    :run-first
 (export 'clipboard-wait-is-rich-text-available)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_clipboard_wait_is_uris_available ()
+;;; gtk_clipboard_wait_is_uris_available
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_clipboard_wait_is_uris_available"
                clipboard-wait-is-uris-available) :boolean
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{#2023-03-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @return{@em{True} if there is an URI list available, @em{false} otherwise.}
   @begin{short}
@@ -1175,7 +1128,7 @@ lambda (clipboard event)    :run-first
 (export 'clipboard-wait-is-uris-available)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_clipboard_wait_for_targets ()
+;;; gtk_clipboard_wait_for_targets
 ;;; ----------------------------------------------------------------------------
 
 ;; TODO: The implementation is not complete. Return a list of atoms as strings.
@@ -1183,7 +1136,7 @@ lambda (clipboard event)    :run-first
 (cffi:defcfun ("gtk_clipboard_wait_for_targets" clipboard-wait-for-targets)
     :boolean
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{#2023-03-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[targets]{location to store an array of targets. The result stored
     here must be freed with the @fun{g:free} function}
@@ -1204,16 +1157,15 @@ lambda (clipboard event)    :run-first
 (export 'clipboard-wait-for-targets)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_clipboard_wait_is_target_available ()
+;;; gtk_clipboard_wait_is_target_available
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_clipboard_wait_is_target_available"
                clipboard-wait-is-target-available) :boolean
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{#2023-03-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
-  @argument[target]{a @symbol{gdk:atom-as-string} string indicating which
-    target to look for}
+  @argument[target]{a string indicating which target to look for}
   @return{@em{True} if the target is available, @em{false} otherwise.}
   @begin{short}
     Checks if a clipboard supports pasting data of a given type.
@@ -1231,14 +1183,14 @@ lambda (clipboard event)    :run-first
 (export 'clipboard-wait-is-target-available)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_clipboard_set_can_store ()
+;;; gtk_clipboard_set_can_store
 ;;; ----------------------------------------------------------------------------
 
 ;; TODO: The implementation is not complete. Return a list of atoms as strings.
 
 (cffi:defcfun ("gtk_clipboard_set_can_store" clipboard-set-can-store) :void
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{#2023-03-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[targets]{array containing information about which forms should be
     stored or NULL to indicate that all forms should be stored}
@@ -1260,12 +1212,12 @@ lambda (clipboard event)    :run-first
 (export 'clipboard-set-can-store)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_clipboard_store ()
+;;; gtk_clipboard_store
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_clipboard_store" clipboard-store) :void
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{#2023-03-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @begin{short}
     Stores the current clipboard data somewhere so that it will stay around
@@ -1277,15 +1229,15 @@ lambda (clipboard event)    :run-first
 (export 'clipboard-store)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_clipboard_get_selection ()
+;;; gtk_clipboard_get_selection
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_clipboard_get_selection" clipboard-selection)
     gdk:atom-as-string
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{#2023-03-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
-  @return{The @symbol{gdk:atom-as-string} string with the selection.}
+  @return{The string representing the selection.}
   @begin{short}
     Gets the selection that this clipboard is for.
   @end{short}
