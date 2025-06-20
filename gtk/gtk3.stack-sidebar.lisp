@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.stack-sidebar.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2024 Dieter Kaiser
+;;; Copyright (C) 2019 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -65,7 +65,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkStackSidebar
+;;; GtkStackSidebar
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkStackSidebar" stack-sidebar
@@ -80,7 +80,7 @@
 
 #+liber-documentation
 (setf (documentation 'stack-sidebar 'type)
- "@version{2024-4-9}
+ "@version{2025-06-12}
   @begin{short}
     The @class{gtk:stack-sidebar} widget enables you to quickly and easily
     provide a consistent \"sidebar\" object for your user interface.
@@ -111,13 +111,13 @@
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "stack" 'stack-sidebar) t)
  "The @code{stack} property of type @class{gtk:stack} (Read / Write) @br{}
-  Associated stack for this stack sidebar.")
+  The associated stack for this stack sidebar.")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'stack-sidebar-stack)
       "Accessor"
       (documentation 'stack-sidebar-stack 'function)
- "@version{2024-4-9}
+ "@version{2024-04-09}
   @syntax{(gtk:stack-sidebar-stack object) => stack}
   @syntax{(setf (gtk:stack-sidebar-stack object) stack)}
   @argument[object]{a @class{gtk:stack-sidebar} widget}
@@ -136,14 +136,14 @@
   @see-class{gtk:stack}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_stack_sidebar_new ()
+;;; gtk_stack_sidebar_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline stack-sidebar-new))
 
 (defun stack-sidebar-new ()
  #+liber-documentation
- "@version{2024-4-9}
+ "@version{2024-04-09}
   @return{The new @class{gtk:stack-sidebar} widget.}
   @short{Creates a new stack sidebar.}
   @see-class{gtk:stack-sidebar}"

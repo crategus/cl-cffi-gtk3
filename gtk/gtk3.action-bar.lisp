@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.action-bar.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2024 Dieter Kaiser
+;;; Copyright (C) 2019 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -65,7 +65,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkActionBar
+;;; GtkActionBar
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkActionBar" action-bar
@@ -131,7 +131,7 @@
 (setf (liber:alias-for-function 'action-bar-child-pack-type)
       "Accessor"
       (documentation 'action-bar-child-pack-type 'function)
- "@version{2024-4-9}
+ "@version{2024-04-09}
   @syntax{(gtk:action-bar-child-pack-type container child) => packtype)}
   @syntax{(setf (gtk:action-bar-child-pack-type container child) packtype)}
   @argument[container]{a @class{gtk:action-bar} widget}
@@ -157,12 +157,12 @@
 (setf (liber:alias-for-function 'action-bar-child-position)
       "Accessor"
       (documentation 'action-bar-child-position 'function)
- "@version{2024-4-9}
+ "@version{2025-06-13}
   @syntax{(gtk:action-bar-child-position container child) => position)}
   @syntax{(setf (gtk:action-bar-child-position container child) position)}
   @argument[container]{a @class{gtk:action-bar} widget}
   @argument[child]{a @class{gtk:widget} child widget}
-  @argument[position]{an integer with the index of the child widget in the
+  @argument[position]{an integer for the index of the child widget in the
     parent}
   @begin{short}
     Accessor of the @code{position} child property of the
@@ -173,7 +173,7 @@
   @see-class{gtk:widget}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_action_bar_new ()
+;;; gtk_action_bar_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline action-bar-new))
@@ -189,7 +189,7 @@
 (export 'action-bar-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_action_bar_pack_start ()
+;;; gtk_action_bar_pack_start
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_action_bar_pack_start" action-bar-pack-start) :void
@@ -210,7 +210,7 @@
 (export 'action-bar-pack-start)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_action_bar_pack_end ()
+;;; gtk_action_bar_pack_end
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_action_bar_pack_end" action-bar-pack-end) :void
@@ -231,8 +231,8 @@
 (export 'action-bar-pack-end)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_action_bar_get_center_widget ()
-;;; gtk_action_bar_set_center_widget ()
+;;; gtk_action_bar_get_center_widget
+;;; gtk_action_bar_set_center_widget
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf action-bar-center-widget) (widget actionbar)
@@ -245,7 +245,7 @@
 (cffi:defcfun ("gtk_action_bar_get_center_widget" action-bar-center-widget)
     (g:object widget)
  #+liber-documentation
- "@version{2024-4-9}
+ "@version{2024-04-09}
   @syntax{(gtk:action-bar-center-widget actionbar) => widget}
   @syntax{(setf (gtk:action-bar-center-widget actionbar) widget)}
   @argument[actionbar]{a @class{gtk:action-bar} widget}

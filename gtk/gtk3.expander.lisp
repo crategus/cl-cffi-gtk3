@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.expander.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -93,7 +93,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkExpander
+;;; GtkExpander
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkExpander" expander
@@ -129,10 +129,10 @@
 
 #+liber-documentation
 (setf (documentation 'expander 'type)
- "@version{#2023-3-17}
+ "@version{#2025-06-16}
   @begin{short}
-    A @class{gtk:expander} widget allows the user to hide or show its child by
-    clicking on an expander triangle similar to the triangles used in a
+    The @class{gtk:expander} widget allows the user to hide or show its child
+    by clicking on an expander triangle similar to the triangles used in a
     @class{gtk:tree-view} widget.
   @end{short}
 
@@ -196,7 +196,7 @@ expander
     @begin[code]{table}
       @begin[expander-size]{entry}
         The @code{expander-size} style property of type @code{:int} (Read) @br{}
-        Size of the expander arrow. @br{}
+        The size of the expander arrow. @br{}
         @em{Warning:} The @code{expander-size} style property has been
         deprecated since version 3.20 and should not be used in newly written
         code. Use CSS @code{min-width} and @code{min-height} instead. @br{}
@@ -206,7 +206,7 @@ expander
       @begin[expander-spacing]{entry}
         The @code{expander-spacing} style property of type @code{:int}
         (Read) @br{}
-        Spacing around expander arrow. @br{}
+        The spacing around expander arrow. @br{}
         @em{Warning:} The @code{expander-spacing} style property has been
         deprecated since version 3.20 and should not be used in newly written
         code. Use CSS margins instead, the value of this style property is
@@ -255,7 +255,7 @@ lambda (expander)   :action
 (setf (liber:alias-for-function 'expander-expanded)
       "Accessor"
       (documentation 'expander-expanded 'function)
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @syntax{(gtk:expander-expanded object) => expanded}
   @syntax{(setf (gtk:expander-expanded object) expanded)}
   @argument[object]{a @class{gtk:expander} widget}
@@ -275,18 +275,18 @@ lambda (expander)   :action
 (setf (documentation (liber:slot-documentation "label" 'expander) t)
  "The @code{label} property of type @code{:string} (Read / Write / Construct)
   @br{}
-  Text of the label of the expander. @br{}
+  The text of the label of the expander. @br{}
   Default value: @code{nil}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'expander-label)
       "Accessor"
       (documentation 'expander-label 'function)
- "@version{#2023-3-17}
+ "@version{#2025-06-16}
   @syntax{(gtk:expander-label object) => label}
   @syntax{(setf (gtk:expander-label object) label)}
   @argument[object]{a @class{gtk:expander} widget}
-  @argument[label]{a string with the text of the label of the expander}
+  @argument[label]{a string for the text of the label of the expander}
   @begin{short}
     Accessor of the @slot[gtk:expander]{label} slot of the @class{gtk:expander}
     class.
@@ -314,7 +314,7 @@ lambda (expander)   :action
 (setf (liber:alias-for-function 'expander-label-fill)
       "Accessor"
       (documentation 'expander-label-fill 'function)
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @syntax{(gtk:expander-label-fill object) => label-fill}
   @syntax{(setf (gtk:expander-label-fill object) label-fill)}
   @argument[object]{a @class{gtk:expander} widget}
@@ -336,13 +336,13 @@ lambda (expander)   :action
 (setf (documentation (liber:slot-documentation "label-widget" 'expander) t)
  "The @code{label-widget} property of type @code{gtk:widget} (Read / Write)
   @br{}
-  A widget to display in place of the usual expander label.")
+  The widget to display in place of the usual expander label.")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'expander-label-widget)
       "Accessor"
       (documentation 'expander-label-widget 'function)
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @syntax{(gtk:expander-label-widget object) => label-widget}
   @syntax{(setf gtk:expander-label-widget object) label-widget)}
   @argument[object]{a @class{gtk:expander} widget}
@@ -373,7 +373,7 @@ lambda (expander)   :action
 (setf (liber:alias-for-function 'expander-resize-toplevel)
       "Accessor"
       (documentation 'expander-resize-toplevel 'function)
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @syntax{(gtk:expander-resize-toplevel object) => resize-toplevel}
   @syntax{(setf (gtk:expander-resize-toplevel object) resize-toplevel)}
   @argument[object]{a @class{gtk:expander} widget}
@@ -394,7 +394,7 @@ lambda (expander)   :action
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "spacing" 'expander) t)
  "The @code{spacing} property of type @code{:int} (Read / Write) @br{}
-  Space to put between the label and the child. @br{}
+  The space to put between the label and the child. @br{}
   @em{Warning:} The @code{spacing} property has been deprecated since version
   3.20 and should not be used in newly written code. This property is deprecated
   and ignored. Use margins on the child instead. @br{}
@@ -405,11 +405,11 @@ lambda (expander)   :action
 (setf (liber:alias-for-function 'expander-spacing)
       "Accessor"
       (documentation 'expander-spacing 'function)
- "@version{#2023-3-17}
+ "@version{#2025-06-16}
   @syntax{(gtk:expander-spacing object) => spacing}
   @syntax{(setf (gtk:expand-spacing object) spacing)}
   @argument[object]{a @class{gtk:expander} widget}
-  @argument[spacing]{an integer with the distance between the expander and
+  @argument[spacing]{an integer for the distance between the expander and
     child widget in pixels}
   @begin{short}
     Accessor of the @slot[gtk:expander]{spacing} slot of the
@@ -438,7 +438,7 @@ lambda (expander)   :action
 (setf (liber:alias-for-function 'expander-use-markup)
       "Accessor"
       (documentation 'expander-use-markup 'function)
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @syntax{(gtk:expander-use-markup object) => use-markup}
   @syntax{(setf (gtk:expander-use-markup object) use-markup)}
   @argument[object]{a @class{gtk:expander} widget}
@@ -469,7 +469,7 @@ lambda (expander)   :action
 (setf (liber:alias-for-function 'expander-use-underline)
       "Accessor"
       (documentation 'expander-use-underline 'function)
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @syntax{(gtk:expander-use-underline object) => use-underline}
   @syntax{(setf (gtk:expander-use-underline object) use-underline)}
   @argument[object]{a @class{gtk:expander} widget}
@@ -487,16 +487,16 @@ lambda (expander)   :action
   @see-class{gtk:expander}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_expander_new ()
+;;; gtk_expander_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline expander-new))
 
 (defun expander-new (label)
  #+liber-documentation
- "@version{#2023-3-17}
-  @argument[label]{a string with the text of the label}
-  @return{A new @class{gtk:expander} widget.}
+ "@version{#2025-06-16}
+  @argument[label]{a string for the text of the label}
+  @return{The new @class{gtk:expander} widget.}
   @begin{short}
     Creates a new expander using @arg{label} as the text of the label.
   @end{short}
@@ -508,17 +508,17 @@ lambda (expander)   :action
 (export 'expander-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_expander_new_with_mnemonic ()
+;;; gtk_expander_new_with_mnemonic
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline expander-new-with-mnemonic))
 
 (defun expander-new-with-mnemonic (label)
  #+liber-documentation
- "@version{#2023-3-17}
-  @argument[label]{a string with the text of the label with an underscore in
+ "@version{#2025-06-16}
+  @argument[label]{a string for the text of the label with an underscore in
     front of the mnemonic character}
-  @return{A new @class{gtk:expander} widget.}
+  @return{The new @class{gtk:expander} widget.}
   @begin{short}
     Creates a new expander using @arg{label} as the text of the label.
   @end{short}

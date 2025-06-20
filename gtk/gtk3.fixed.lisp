@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.fixed.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -62,7 +62,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkFixed
+;;; GtkFixed
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkFixed" fixed
@@ -75,7 +75,7 @@
 
 #+liber-documentation
 (setf (documentation 'fixed 'type)
- "@version{2023-3-17}
+ "@version{2023-03-17}
   @begin{short}
     The @class{gtk:fixed} widget is a container which can place child widgets at
     fixed positions and with fixed sizes, given in pixels.
@@ -150,12 +150,12 @@
 (setf (liber:alias-for-function 'fixed-child-x)
       "Accessor"
       (documentation 'fixed-child-x 'function)
- "@version{2023-3-17}
+ "@version{2025-06-16}
   @syntax{(gtk:fixed-child-x container child) => x}
   @syntax{(setf (gtk:fixed-child-x container child) x)}
   @argument[container]{a @class{gtk:fixed} widget}
   @argument[child]{a @class{gtk:widget} object}
-  @argument[x]{an integer with the x position of the child}
+  @argument[x]{an integer for the x position of the child}
   @begin{short}
     Accessor of the @code{x} child property  of the @class{gtk:fixed} class.
   @end{short}
@@ -172,12 +172,12 @@
 (setf (liber:alias-for-function 'fixed-child-y)
       "Accessor"
       (documentation 'fixed-child-y 'function)
- "@version{2023-3-17}
+ "@version{2025-06-16}
   @syntax{(gtk:fixed-child-y container child) => y}
   @syntax{(setf (gtk:fixed-child-y container child) y)}
   @argument[container]{a @class{gtk:fixed} widget}
   @argument[child]{a @class{gtk:widget} object}
-  @argument[y]{an integer with the y position of the child}
+  @argument[y]{an integer for the y position of the child}
   @begin{short}
     Accessor of the @code{y} child property of the @class{gtk:fixed} class.
   @end{short}
@@ -187,15 +187,15 @@
   @see-function{gtk:fixed-child-x}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_fixed_new ()
+;;; gtk_fixed_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline fixed-new))
 
 (defun fixed-new ()
  #+liber-documentation
- "@version{2023-3-17}
-  @return{A new @class{gtk:fixed} widget.}
+ "@version{2023-03-17}
+  @return{The new @class{gtk:fixed} widget.}
   @short{Creates a new fixed widget.}
   @see-class{gtk:fixed}"
   (make-instance 'fixed))
@@ -203,17 +203,17 @@
 (export 'fixed-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_fixed_put ()
+;;; gtk_fixed_put
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_fixed_put" fixed-put) :void
  #+liber-documentation
- "@version{2023-3-17}
+ "@version{2025-06-16}
   @argument[fixed]{a @class{gtk:fixed} widget}
   @argument[widget]{a @class{gtk:widget} child widget to add}
-  @argument[x]{an integer with the horizontal position to place the child
+  @argument[x]{an integer for the horizontal position to place the child
     widget at}
-  @argument[y]{an integer with the vertical position to place the child widget
+  @argument[y]{an integer for the vertical position to place the child widget
     at}
   @begin{short}
     Adds a child widget to a fixed widget at the given position.
@@ -229,18 +229,17 @@
 (export 'fixed-put)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_fixed_move ()
+;;; gtk_fixed_move
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_fixed_move" fixed-move) :void
  #+liber-documentation
- "@version{2023-3-17}
+ "@version{2025-06-16}
   @argument[fixed]{a @class{gtk:fixed} widget}
   @argument[widget]{a @class{gtk:widget} child widget}
-  @argument[x]{an integer with the horizontal position to move the child widget
+  @argument[x]{an integer for the horizontal position to move the child widget
     to}
-  @argument[y]{an integer with the vertical position to move the child widget
-    to}
+  @argument[y]{an integer for the vertical position to move the child widget to}
   @begin{short}
     Moves a child widget of a fixed widget to the given position.
   @end{short}

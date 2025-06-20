@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.button-box.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -135,7 +135,7 @@
   @see-function{gtk:box-spacing}")
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkButtonBox
+;;; GtkButtonBox
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkButtonBox" button-box
@@ -151,7 +151,7 @@
 
 #+liber-documentation
 (setf (documentation 'button-box 'type)
- "@version{2023-12-30}
+ "@version{2025-06-13}
   @begin{short}
     The @class{gtk:button-box} widget should be used to provide a consistent
     layout of buttons throughout your application.
@@ -196,7 +196,7 @@
       @begin[child-internal-pad-x]{entry}
         The @code{child-internal-pad-x} style property of type @code{:int}
         (Read) @br{}
-        Amount to increase size of the child widget on either side. @br{}
+        The amount to increase size of the child widget on either side. @br{}
         @em{Warning:} The @code{child-internal-pad-x} style property has been
         deprecated since version 3.20 and should not be used in newly written
         code. Use CSS padding instead. @br{}
@@ -206,8 +206,8 @@
       @begin[child-internal-pad-y]{entry}
         The  @code{child-internal-pad-y} style property of type @code{:int}
         (Read) @br{}
-        Amount to increase the size of the child widget on the top and bottom.
-        @br{}
+        The amount to increase the size of the child widget on the top and
+        bottom. @br{}
         @em{Warning:} The @code{child-internal-pad-y} style property has been
         deprecated since version 3.20 and should not be used in newly written
         code. Use CSS padding instead. @br{}
@@ -217,7 +217,7 @@
       @begin[child-min-height]{entry}
         The @code{child-min-height} style property of type @code{:int} (Read)
         @br{}
-        Minimum height of buttons inside the box. @br{}
+        The minimum height of buttons inside the box. @br{}
         @em{Warning:} The @code{child-min-height} style property has been
         deprecated since version 3.20 and should not be used in newly written
         code. Use CSS padding instead. @br{}
@@ -227,7 +227,7 @@
       @begin[child-min-width]{entry}
         The @code{child-min-width} style property of type @code{:int} (Read)
         @br{}
-        Minimum width of buttons inside the box. @br{}
+        The minimum width of buttons inside the box. @br{}
         @em{Warning:} The @code{child-min-width} style property has been
         deprecated since version 3.20 and should not be used in newly written
         code. Use CSS padding instead. @br{}
@@ -342,7 +342,7 @@
   @see-function{gtk:widget-direction}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_button_box_new ()
+;;; gtk_button_box_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline button-box-new))
@@ -361,8 +361,8 @@
 (export 'button-box-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_button_box_get_layout ()
-;;; gtk_button_box_set_layout ()
+;;; gtk_button_box_get_layout
+;;; gtk_button_box_set_layout
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf button-box-layout) (style buttonbox)

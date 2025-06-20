@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.stack-switcher.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2024 Dieter Kaiser
+;;; Copyright (C) 2019 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -67,7 +67,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkStackSwitcher
+;;; GtkStackSwitcher
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkStackSwitcher" stack-switcher
@@ -86,7 +86,7 @@
 
 #+liber-documentation
 (setf (documentation 'stack-switcher 'type)
- "@version{2024-4-9}
+ "@version{2024-04-09}
   @begin{short}
     The @class{gtk:stack-switcher} widget acts as a controller for a
     @class{gtk:stack} widget.
@@ -133,11 +133,11 @@
 (setf (liber:alias-for-function 'stack-switcher-icon-size)
       "Accessor"
       (documentation 'stack-switcher-icon-size 'function)
- "@version{2024-4-9}
+ "@version{2025-06-12}
   @syntax{(gtk:stack-switcher-icon-size object) => size}
   @syntax{(setf (gtk:stack-switcher-icon-size object) size)}
   @argument[object]{a @class{gtk:stack-switcher} widget}
-  @argument[size]{an integer with size of the image}
+  @argument[size]{an integer for size of the image}
   @begin{short}
     Accessor of the @slot[gtk:stack-switcher]{icon-size} slot of the
     @class{gtk:stack-switcher} class.
@@ -157,7 +157,7 @@
 (setf (liber:alias-for-function 'stack-switcher-stack)
       "Accessor"
       (documentation 'stack-switcher-stack 'function)
- "@version{2024-4-9}
+ "@version{2024-04-09}
   @syntax{(gtk:stack-switcher-stack object) => stack}
   @syntax{(setf (gtk:stack-switcher-stack object) stack)}
   @argument[object]{a @class{gtk:stack-switcher} widget}
@@ -172,14 +172,14 @@
   @see-class{gtk:stack}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_stack_switcher_new ()
+;;; gtk_stack_switcher_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline stack-switcher-new))
 
 (defun stack-switcher-new ()
  #+liber-documentation
- "@version{2024-4-9}
+ "@version{2024-04-09}
   @return{The new @class{gtk:stack-switcher} widget.}
   @short{Creates a new stack switcher.}
   @see-class{gtk:stack-switcher}"

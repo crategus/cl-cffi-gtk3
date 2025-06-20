@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.header-bar.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2016 - 2024 Dieter Kaiser
+;;; Copyright (C) 2016 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -124,7 +124,7 @@
 
 #+liber-documentation
 (setf (documentation 'header-bar 'type)
- "@version{2024-4-9}
+ "@version{2025-06-13}
   @begin{short}
     The @class{gtk:header-bar} widget is similar to a horizontal @class{gtk:box}
     widget. It allows children to be placed at the start or the end. In
@@ -180,13 +180,13 @@
 (setf (documentation (liber:slot-documentation "custom-title" 'header-bar) t)
  "The @code{custom-title} property of type @class{gtk:widget}
   (Read / Write / Construct) @br{}
-  Custom title widget to display. @br{}")
+  The custom title widget to display. @br{}")
 
 #+liber-documentation
 (setf (liber:alias-for-function'header-bar-custom-title)
       "Accessor"
       (documentation 'header-bar-custom-title 'function)
- "@version{2024-4-9}
+ "@version{2024-04-09}
   @syntax{(gtk:header-bar-custom-title object) => widget}
   @syntax{(setf (gtk:header-bar-custom-title object) widget)}
   @argument[object]{a @class{gtk:header-bar} widget}
@@ -228,11 +228,11 @@
 (setf (liber:alias-for-function 'header-bar-decoration-layout)
       "Accessor"
       (documentation 'header-bar-decoration-layout 'function)
- "@version{2024-4-9}
+ "@version{2025-06-13}
   @syntax{(gtk:header-bar-decoration-layout object) => layout}
   @syntax{(setf (gtk:header-bar-decoration-layout object) layout)}
   @argument[object]{a @class{gtk:header-bar} widget}
-  @argument[layout]{a string with the decoration layout, or @code{nil} to unset
+  @argument[layout]{a string for the decoration layout, or @code{nil} to unset
     the layout}
   @begin{short}
     Accessor of the @slot[gtk:header-bar]{decoration-layout} slot of the
@@ -274,7 +274,7 @@
 (setf (liber:alias-for-function 'header-bar-decoration-layout-set)
       "Accessor"
       (documentation 'header-bar-decoration-layout-set 'function)
- "@version{2024-4-9}
+ "@version{2024-04-09}
   @syntax{(gtk:header-bar-decoration-layout-set object) => setting}
   @syntax{(setf (gtk:header-bar-decoration-layout-set object) setting)}
   @argument[object]{a @class{gtk:header-bar} widget}
@@ -301,7 +301,7 @@
 (setf (liber:alias-for-function 'header-bar-has-subtitle)
       "Accessor"
       (documentation 'header-bar-has-subtitle 'function)
- "@version{2024-4-9}
+ "@version{2024-04-09}
   @syntax{(gtk:header-bar-has-subtitle object) => setting}
   @syntax{(setf gtk:header-bar-has-subtitle object) setting)}
   @argument[object]{a @class{gtk:header-bar} widget}
@@ -333,7 +333,7 @@
 (setf (liber:alias-for-function 'header-bar-show-close-button)
       "Accessor"
       (documentation 'header-bar-show-close-button 'function)
- "@version{2024-4-9}
+ "@version{2024-04-09}
   @syntax{(gtk:header-bar-show-close-button object) => setting}
   @syntax{(setf gtk:header-bar-show-close-button object) setting)}
   @argument[object]{a @class{gtk:header-bar} widget}
@@ -361,11 +361,11 @@
 (setf (liber:alias-for-function 'header-bar-spacing)
       "Accessor"
       (documentation 'header-bar-spacing 'function)
- "@version{2024-4-9}
+ "@version{2025-06-13}
   @syntax{(gtk:header-bar-spacing object) => spacing}
   @syntax{(setf gtk:header-bar-spacing object) spacing)}
   @argument[object]{a @class{gtk:header-bar} widget}
-  @argument[spacing]{an integer with the amount of space between children}
+  @argument[spacing]{an integer for the amount of space between children}
   @begin{short}
     Accessor of the @slot[gtk:header-bar]{spacing} slot of the
     @class{gtk:header-bar} class.
@@ -385,11 +385,11 @@
 (setf (liber:alias-for-function 'header-bar-subtitle)
       "Accessor"
       (documentation 'header-bar-subtitle 'function)
- "@version{2024-4-9}
+ "@version{2025-06-13}
   @syntax{(gtk:header-bar-subtitle object) => subtitle}
   @syntax{(setf (gtk:header-bar-subtitle object) subtitle)}
   @argument[object]{a @class{gtk:header-bar} widget}
-  @argument[subtitle]{a string with the subtitle, or @code{nil}}
+  @argument[subtitle]{a string for the subtitle, or @code{nil}}
   @begin{short}
     Accessor of the @slot[gtk:header-bar]{subtitle} slot of the
     @class{gtk:header-bar} class.
@@ -417,11 +417,11 @@
 (setf (liber:alias-for-function 'header-bar-title)
       "Accessor"
       (documentation 'header-bar-title 'function)
- "@version{2024-4-9}
+ "@version{2025-06-13}
   @syntax{(gtk:header-bar-title object) => title}
   @syntax{(setf (gtk:header-bar-title object) title)}
   @argument[object]{a @class{gtk:header-bar} widget}
-  @argument[title]{a string with the title, or @code{nil}.}
+  @argument[title]{a string for the title, or @code{nil}}
   @begin{short}
     Accessor of the @slot[gtk:header-bar]{title} slot of the
     @class{gtk:header-bar} class.
@@ -447,7 +447,7 @@
 (setf (liber:alias-for-function 'header-bar-child-pack-type)
       "Accessor"
       (documentation 'header-bar-child-pack-type 'function)
- "@version{2024-4-9}
+ "@version{2024-04-09}
   @syntax{(gtk:header-bar-child-pack-type container child) => packtype)}
   @syntax{(setf (gtk:header-bar-child-pack-type object) packtype)}
   @argument[container]{a @class{gtk:header-bar} widget}
@@ -473,12 +473,12 @@
 (setf (liber:alias-for-function 'header-bar-child-position)
       "Accessor"
       (documentation 'header-bar-child-position 'function)
- "@version{2024-4-9}
+ "@version{2025-06-13}
   @syntax{(gtk:header-bar-child-position container child) => position)}
   @syntax{(setf (gtk:header-bar-child-position container child) position)}
   @argument[container]{a @class{gtk:header-bar} widget}
   @argument[child]{a @class{gtk:widget} child widget}
-  @argument[position]{an integer with the index of the child widget in the
+  @argument[position]{an integer for the index of the child widget in the
     header bar}
   @begin{short}
     Accessor of the @code{position} child property of the
@@ -489,14 +489,14 @@
   @see-class{gtk:widget}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_header_bar_new ()
+;;; gtk_header_bar_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline header-bar-new))
 
 (defun header-bar-new ()
  #+liber-documentation
- "@version{2024-4-9}
+ "@version{2024-04-09}
   @return{The new @class{gtk:header-bar} widget.}
   @short{Creates a new header bar.}
   @see-class{gtk:header-bar}"
@@ -505,12 +505,12 @@
 (export 'header-bar-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_header_bar_pack_start ()
+;;; gtk_header_bar_pack_start
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_header_bar_pack_start" header-bar-pack-start) :void
  #+liber-documentation
- "@version{2024-4-9}
+ "@version{2024-04-09}
   @argument[header]{a @class{gtk:header-bar} widget}
   @argument[child]{a @class{gtk:widget} child widget to be added to the
     header bar}
@@ -527,12 +527,12 @@
 (export 'header-bar-pack-start)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_header_bar_pack_end ()
+;;; gtk_header_bar_pack_end
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_header_bar_pack_end" header-bar-pack-end) :void
  #+liber-documentation
- "@version{2024-4-9}
+ "@version{2024-04-09}
   @argument[header]{a @class{gtk:header-bar} widget}
   @argument[child]{a @class{gtk:widget} child widget to be added to the
     header bar}

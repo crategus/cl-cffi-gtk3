@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.paned.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -97,7 +97,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkPaned
+;;; GtkPaned
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkPaned" paned
@@ -125,7 +125,7 @@
 
 #+liber-documentation
 (setf (documentation 'paned 'type)
- "@version{2023-3-5}
+ "@version{2025-06-13}
   @begin{short}
     The @class{gtk:paned} widget has two panes, arranged either horizontally or
     vertically.
@@ -212,7 +212,7 @@ paned
     @begin[code]{table}
       @begin[handle-size]{entry}
         The @code{handle-size} style property of type @code{:int} (Read) @br{}
-        Width of the handle. @br{}
+        The width of the handle. @br{}
         Allowed values: >= 0 @br{}
         Default value: 5
       @end{entry}
@@ -223,66 +223,66 @@ paned
       @begin{pre}
 lambda (widget)    :action
       @end{pre}
-      The signal is a keybinding signal which gets emitted to accept the current
-      position of the handle when moving it using key bindings. The default
-      binding for this signal is the @kbd{Return} or @kbd{Space} key.
       @begin[code]{table}
         @entry[widget]{The @class{gtk:paned} widget that received the signal.}
       @end{table}
+      The signal is a keybinding signal which gets emitted to accept the current
+      position of the handle when moving it using key bindings. The default
+      binding for this signal is the @kbd{Return} or @kbd{Space} key.
     @subheading{The \"cancel-position\" signal}
       @begin{pre}
 lambda (widget)    :action
       @end{pre}
+      @begin[code]{table}
+        @entry[widget]{The @class{gtk:paned} widget that received the signal.}
+      @end{table}
       The signal is a keybinding signal which gets emitted to cancel moving the
       position of the handle using key bindings. The position of the handle will
       be reset to the value prior to moving it. The default binding for this
       signal is the @kbd{Escape} key.
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:paned} widget that received the signal.}
-      @end{table}
     @subheading{The \"cycle-child-focus\" signal}
       @begin{pre}
 lambda (widget reversed)    :action
       @end{pre}
+      @begin[code]{table}
+        @entry[widget]{The @class{gtk:paned} widget that received the signal.}
+        @entry[reversed]{The boolean whether cycling backward or forward.}
+      @end{table}
       The signal is a keybinding signal which gets emitted to cycle the focus
       between the children of the paned widget. The default binding is the
       @kbd{F6} key.
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:paned} widget that received the signal.}
-        @entry[reversed]{A boolean whether cycling backward or forward.}
-      @end{table}
     @subheading{The \"cycle-handle-focus\" signal}
       @begin{pre}
 lambda (widget reversed)    :action
       @end{pre}
+      @begin[code]{table}
+        @entry[widget]{The @class{gtk:paned} widget that received the signal.}
+        @entry[reversed]{The boolean whether cycling backward or forward.}
+      @end{table}
       The signal is a keybinding signal which gets emitted to cycle whether the
       paned widget should grab focus to allow the user to change position of the
       handle by using key bindings. The default binding for this signal is the
       @kbd{F8} key.
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:paned} widget that received the signal.}
-        @entry[reversed]{A boolean whether cycling backward or forward.}
-      @end{table}
     @subheading{The \"move-handle\" signal}
       @begin{pre}
 lambda (widget scrolltype)    :action
       @end{pre}
-      The signal is a keybinding signal which gets emitted to move the handle
-      when the user is using key bindings to move it.
       @begin[code]{table}
         @entry[widget]{The @class{gtk:paned} widget that received the signal.}
-        @entry[scrolltype]{A value of the @symbol{gtk:scroll-type} enumeration.}
+        @entry[scrolltype]{The value of the @symbol{gtk:scroll-type} enumeration.}
       @end{table}
+      The signal is a keybinding signal which gets emitted to move the handle
+      when the user is using key bindings to move it.
     @subheading{The \"toggle-handle-focus\" signal}
       @begin{pre}
 lambda (widget)    :action
       @end{pre}
-      The signal is a keybinding signal which gets emitted to accept the current
-      position of the handle and then move focus to the next widget in the focus
-      chain. The default binding is the @kbd{Tab} key.
       @begin[code]{table}
         @entry[widget]{The @class{gtk:paned} widget that received the signal.}
       @end{table}
+      The signal is a keybinding signal which gets emitted to accept the current
+      position of the handle and then move focus to the next widget in the focus
+      chain. The default binding is the @kbd{Tab} key.
   @end{dictionary}
   @see-constructor{gtk:paned-new}
   @see-slot{gtk:paned-max-position}
@@ -311,10 +311,10 @@ lambda (widget)    :action
 (setf (liber:alias-for-function 'paned-max-position)
       "Accessor"
       (documentation 'paned-max-position 'function)
- "@version{2023-3-5}
+ "@version{2025-06-13}
   @syntax{(gtk:paned-max-position object) => position}
   @argument[object]{a @class{gtk:paned} widget}
-  @argument[position]{an integer with the largest possible position}
+  @argument[position]{an integer for the largest possible position}
   @begin{short}
     Accessor of the @slot[gtk:paned]{max-position} slot of the
     @class{gtk:paned} class.
@@ -340,10 +340,10 @@ lambda (widget)    :action
 (setf (liber:alias-for-function 'paned-min-position)
       "Accessor"
       (documentation 'paned-min-position 'function)
- "@version{2023-3-5}
+ "@version{2025-06-13}
   @syntax{(gtk:paned-min-position object) => position}
   @argument[object]{a @class{gtk:paned} widget}
-  @argument[position]{an integer with the smallest possible position}
+  @argument[position]{an integer for the smallest possible position}
   @begin{short}
     Accessor of the @slot[gtk:paned]{min-position} slot of the
     @class{gtk:paned} class.
@@ -359,7 +359,7 @@ lambda (widget)    :action
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "position" 'paned) t)
  "The @code{position} property of type @code{:int} (Read / Write) @br{}
-  Position of the paned separator in pixels, 0 means all the way to the
+  The position of the paned separator in pixels, 0 means all the way to the
   left/top. @br{}
   Allowed values: >= 0 @br{}
   Default value: 0")
@@ -368,11 +368,11 @@ lambda (widget)    :action
 (setf (liber:alias-for-function 'paned-position)
       "Accessor"
       (documentation 'paned-position 'function)
- "@version{2023-3-5}
+ "@version{2025-06-13}
   @syntax{(gtk:paned-position object) => position}
   @syntax{(setf (gtk:paned-position position) position)}
   @argument[object]{a @class{gtk:paned} widget}
-  @argument[position]{an integer with the pixel position of divider, a negative
+  @argument[position]{an integer for the pixel position of divider, a negative
     value means that the position is unset}
   @begin{short}
     Accessor of the @slot[gtk:paned]{position} slot of the @class{gtk:paned}
@@ -398,7 +398,7 @@ lambda (widget)    :action
 (setf (liber:alias-for-function 'paned-position-set)
       "Accessor"
       (documentation 'paned-position-set 'function)
- "@version{2023-3-5}
+ "@version{2023-03-05}
   @syntax{(gtk:paned-position-set object) => setting}
   @syntax{(setf (gtk:paned-position-set position) setting)}
   @argument[object]{a @class{gtk:paned} widget}
@@ -429,20 +429,19 @@ lambda (widget)    :action
 (setf (liber:alias-for-function 'paned-wide-handle)
       "Accessor"
       (documentation 'paned-wide-handle 'function)
- "@version{2023-3-5}
+ "@version{2025-06-13}
   @syntax{(gtk:paned-wide-handle object) => wide}
   @syntax{(setf (gtk:paned-wide-handle object) wide)}
   @argument[object]{a @class{gtk:paned} widget}
-  @argument[wide]{a boolean with the value of the @slot[gtk:paned]{wide-handle}
+  @argument[wide]{a boolean for the value of the @slot[gtk:paned]{wide-handle}
     property}
   @begin{short}
     Accessor of the @slot[gtk:paned]{wide-handle} slot of the @class{gtk:paned}
     class.
   @end{short}
-  The @fun{gtk:paned-wide-handled} function gets the
+  The @fun{gtk:paned-wide-handle} function gets the
   @slot[gtk:paned]{wide-handle} property. The
-  @setf{gtk:paned-wide-handled} function sets the @slot[gtk:paned]{wide-handle}
-  property.
+  @setf{gtk:paned-wide-handle} function sets the property.
   @see-class{gtk:paned}")
 
 ;;; ----------------------------------------------------------------------------
@@ -458,7 +457,7 @@ lambda (widget)    :action
 (setf (liber:alias-for-function 'paned-child-resize)
       "Accessor"
       (documentation 'paned-child-resize 'function)
- "@version{2023-3-5}
+ "@version{2023-03-05}
   @syntax{(gtk:paned-child-resize container child) => resize)}
   @syntax{(setf (gtk:paned-child-resize container child) resize)}
   @argument[container]{a @class{gtk:paned} widget}
@@ -485,7 +484,7 @@ lambda (widget)    :action
 (setf (liber:alias-for-function 'paned-child-shrink)
       "Accessor"
       (documentation 'paned-child-shrink 'function)
- "@version{2023-3-5}
+ "@version{2023-03-05}
   @syntax{(gtk:paned-child-shrink container child) => shrink)}
   @syntax{(setf (gtk:paned-child-shrink container child) shrink)}
   @argument[container]{a @class{gtk:paned} widget}
@@ -504,14 +503,14 @@ lambda (widget)    :action
   @see-function{gtk:paned-child-resize}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paned_new ()
+;;; gtk_paned_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline paned-new))
 
 (defun paned-new (orientation)
  #+liber-documentation
- "@version{2024-4-10}
+ "@version{2024-ß4-10}
   @argument[orientation]{a @symbol{gtk:orientation} value for the orientation
     of the paned widget}
   @return{The new @class{gtk:paned} widget.}
@@ -524,12 +523,12 @@ lambda (widget)    :action
 (export 'paned-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paned_add1 ()
+;;; gtk_paned_add1
 ;;; ----------------------------------------------------------------------------
 
 (defun paned-add1 (paned child)
  #+liber-documentation
- "@version{2023-3-5}
+ "@version{2023-03-05}
   @argument[paned]{a @class{gtk:paned} widget}
   @argument[child]{a @class{gtk:widget} child widget to add}
   @begin{short}
@@ -549,12 +548,12 @@ lambda (widget)    :action
 (export 'paned-add1)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paned_add2 ()
+;;; gtk_paned_add2
 ;;; ----------------------------------------------------------------------------
 
 (defun paned-add2 (paned child)
  #+liber-documentation
- "@version{2023-3-5}
+ "@version{2023-03-05}
   @argument[paned]{a @class{gtk:paned} widget}
   @argument[child]{a @class{gtk:widget} child widget to add}
   @begin{short}
@@ -573,7 +572,7 @@ lambda (widget)    :action
 (export 'paned-add2)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paned_pack1 ()
+;;; gtk_paned_pack1
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paned_pack1" %paned-pack1) :void
@@ -584,7 +583,7 @@ lambda (widget)    :action
 
 (defun paned-pack1 (paned child &key (resize nil) (shrink t))
  #+liber-documentation
- "@version{2023-3-5}
+ "@version{2023-03-05}
   @argument[paned]{a @class{gtk:paned} widget}
   @argument[child]{a @class{gtk:widget} child widget to add}
   @argument[resize]{a boolean whether the child widget should expand when the
@@ -605,7 +604,7 @@ lambda (widget)    :action
 (export 'paned-pack1)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paned_pack2 ()
+;;; gtk_paned_pack2
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paned_pack2" %paned-pack2) :void
@@ -616,7 +615,7 @@ lambda (widget)    :action
 
 (defun paned-pack2 (paned child &key (resize t) (shrink t))
  #+liber-documentation
- "@version{2023-3-5}
+ "@version{2023-03-05}
   @argument[paned]{a @class{gtk:paned} widget}
   @argument[child]{a @class{gtk:widget} child widget to add}
   @argument[resize]{a boolean whether the child widget should expand when the
@@ -636,15 +635,16 @@ lambda (widget)    :action
 (export 'paned-pack2)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paned_get_child1 ()
+;;; gtk_paned_get_child1
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paned_get_child1" paned-child1) (g:object widget)
  #+liber-documentation
- "@version{2024-4-10}
+ "@version{2024-04-10}
   @argument[paned]{a @class{gtk:paned} widget}
-  @return{The first @class{gtk:widget} child widget, or @code{nil} if it is not
-    set.}
+  @begin{return}
+    The first @class{gtk:widget} child widget, or @code{nil} if it is not set.
+  @end{return}
   @short{Obtains the first child widget of the paned widget.}
   @see-class{gtk:paned}
   @see-class{gtk:widget}
@@ -654,15 +654,16 @@ lambda (widget)    :action
 (export 'paned-child1)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paned_get_child2 ()
+;;; gtk_paned_get_child2
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paned_get_child2" paned-child2) (g:object widget)
  #+liber-documentation
- "@version{2024-4-10}
+ "@version{2024-04-10}
   @argument[paned]{a @class{gtk:paned} widget}
-  @return{The second @class{gtk:widget} child widget, or @code{nil} if it is
-    not set.}
+  @begin{return}
+    The second @class{gtk:widget} child widget, or @code{nil} if it is not set.
+  @end{return}
   @short{Obtains the second child widget of the paned widget.}
   @see-class{gtk:paned}
   @see-class{gtk:widget}
@@ -672,13 +673,13 @@ lambda (widget)    :action
 (export 'paned-child2)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_paned_get_handle_window ()
+;;; gtk_paned_get_handle_window
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_paned_get_handle_window" paned-handle-window)
     (g:object gdk:window)
  #+liber-documentation
- "@version{2023-3-5}
+ "@version{2023-03-05}
   @argument[paned]{a @class{gtk:paned} widget}
   @return{The @class{gdk:window} handle window of the paned widget.}
   @begin{short}

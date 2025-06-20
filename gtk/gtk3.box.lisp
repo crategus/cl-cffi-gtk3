@@ -635,7 +635,7 @@
     packtype}
   @argument[box]{a @class{gtk:box} container widget}
   @argument[child]{a @class{gtk:widget} child widget to query}
-  @arg[expand]{a boolean for the @code{expand} child property}
+  @argument[expand]{a boolean for the @code{expand} child property}
   @argument[fill]{a boolean for the @code{fill} child property}
   @argument[padding]{an integer for the @code{padding} child property}
   @argument[packtype]{a value of the @symbol{gtk:pack-type} enumeration}
