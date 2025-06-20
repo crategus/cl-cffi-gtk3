@@ -25,11 +25,12 @@
              (glib-test:list-flags-item-nicks "GtkAccelFlags")))
   ;; Check flags definition
   (is (equal '(GOBJECT:DEFINE-GFLAGS "GtkAccelFlags" GTK:ACCEL-FLAGS
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_accel_flags_get_type")
-                       (:VISIBLE 1)
-                       (:LOCKED 2)
-                       (:MASK 7))
+                                     (:EXPORT T
+                                      :TYPE-INITIALIZER
+                                      "gtk_accel_flags_get_type")
+                                     (:VISIBLE 1)
+                                     (:LOCKED 2)
+                                     (:MASK 7))
              (gobject:get-gtype-definition "GtkAccelFlags"))))
 
 ;;;     GtkAccelGroup
@@ -60,20 +61,26 @@
              (glib-test:list-signals "GtkAccelGroup")))
   ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkAccelGroup" GTK:ACCEL-GROUP
-                       (:SUPERCLASS G:OBJECT
-                        :EXPORT T
-                        :INTERFACES NIL
-                        :TYPE-INITIALIZER "gtk_accel_group_get_type")
-                       ((IS-LOCKED ACCEL-GROUP-IS-LOCKED
-                         "is-locked" "gboolean" T NIL)
-                        (MODIFIER-MASK ACCEL-GROUP-MODIFIER-MASK
-                         "modifier-mask" "GdkModifierType" T NIL)))
+                      (:SUPERCLASS G:OBJECT
+                       :EXPORT T
+                       :INTERFACES NIL
+                       :TYPE-INITIALIZER "gtk_accel_group_get_type")
+                      ((IS-LOCKED ACCEL-GROUP-IS-LOCKED
+                        "is-locked" "gboolean" T NIL)
+                       (MODIFIER-MASK ACCEL-GROUP-MODIFIER-MASK
+                        "modifier-mask" "GdkModifierType" T NIL)))
              (gobject:get-gtype-definition "GtkAccelGroup"))))
+
+;;; --- Signals ----------------------------------------------------------------
+
+;;;     accel-activate
+;;;     accel-changed
 
 ;;; --- Properties -------------------------------------------------------------
 
 (test gtk-accel-group-properties
-  (let ((group (gtk:accel-group-new)))
+  (glib-test:with-check-memory (group)
+    (is (typep (setf group (gtk:accel-group-new)) 'gtk:accel-group))
     ;; is-locked
     (is-false (gtk:accel-group-is-locked group))
     ;; is-locked is not writable
@@ -86,17 +93,13 @@
     (signals (error) (setf (gtk:accel-group-modifier-mask group)
                            '(:shift-mask)))))
 
-;;; --- Signals ----------------------------------------------------------------
-
-;;;     accel-activate
-;;;     accel-changed
-
 ;;; --- Functions --------------------------------------------------------------
 
 ;;;   gtk_accel_group_new
 
 (test gtk-accel-group-new
-  (is (eq 'gtk:accel-group (type-of (gtk:accel-group-new)))))
+  (glib-test:with-check-memory (group)
+    (is (typep (setf group (gtk:accel-group-new)) 'gtk:accel-group))))
 
 ;;;     gtk_accel_group_connect
 ;;;     gtk_accel_group_connect_by_path
@@ -166,8 +169,9 @@
     (let ((accel-group (gtk:ui-manager-accel-group ui-info)))
       (is (eq 'gtk:accel-group (type-of accel-group)))
 ; This does not work as expected.
-;      (is-true (gtk:accel-group-activate accel-group "<Control>q" window 113 '(:control-mask)))
-
+;      (is-true (gtk:accel-group-activate accel-group "<Control>q"
+;                                                     window 113
+;                                                     '(:control-mask)))
     ;; Check memory management
     (is-false (gtk:window-remove-accel-group window accel-group))
     (is-false (gtk:ui-manager-remove-action-group ui-info action-group))
@@ -176,7 +180,6 @@
     (is (= 1 (g:object-ref-count accel-group)))
     (is (= 1 (g:object-ref-count action-group)))
     (is (= 1 (g:object-ref-count ui-info)))
-
 )))
 
 ;;;     gtk_accel_group_lock
@@ -278,4 +281,4 @@
                    '(:SHIFT-MASK :CONTROL-MASK :MOD1-MASK :SUPER-MASK
                      :HYPER-MASK :META-MASK)))))
 
-;;; 2024-12-14
+;;; 2025-06-18

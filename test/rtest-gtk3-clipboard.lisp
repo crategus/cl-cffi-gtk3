@@ -35,32 +35,30 @@
              (glib-test:list-signals "GtkClipboard")))
   ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkClipboard" GTK:CLIPBOARD
-                       (:SUPERCLASS G:OBJECT
-                        :EXPORT T
-                        :INTERFACES NIL
-                        :TYPE-INITIALIZER "gtk_clipboard_get_type")
-                       NIL)
+                      (:SUPERCLASS G:OBJECT
+                       :EXPORT T
+                       :INTERFACES NIL
+                       :TYPE-INITIALIZER "gtk_clipboard_get_type")
+                      NIL)
              (gobject:get-gtype-definition "GtkClipboard"))))
 
 ;;; --- Signals ----------------------------------------------------------------
 
-(test gtk-clipboard-signals
-  ;; Check the list of signals
-  (is (equal '("owner-change")
-             (mapcar #'g:signal-name
-                     (g:signal-list-ids "GtkClipboard"))))
-  ;; Query info for "owner-change" signal
-  (let ((query (g:signal-query (g:signal-lookup "owner-change"
-                                                "GtkClipboard"))))
-    (is (string= "owner-change" (g:signal-query-signal-name query)))
-    (is (string= "GtkClipboard"
-                 (g:type-name (g:signal-query-owner-type query))))
+(test gtk-clipboard-owner-change-signal
+  (let* ((name "owner-change")
+         (gtype (g:gtype "GtkClipboard"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
     (is (equal '(:RUN-FIRST)
-               (g:signal-query-signal-flags query)))
-    (is (string= "void" (g:type-name (g:signal-query-return-type query))))
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    ;; Check return type
+    (is (eq (g:gtype "void") (g:signal-query-return-type query)))
+    ;; Check parameter types
     (is (equal '("GdkEvent")
-               (mapcar #'g:type-name (g:signal-query-param-types query))))
-    (is-false (g:signal-query-signal-detail query))))
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
 
 ;;; --- Functions --------------------------------------------------------------
 
@@ -300,9 +298,6 @@
 )))
 
 ;;;     gtk_clipboard_request_rich_text
-
-
-
 ;;;     gtk_clipboard_request_uris
 ;;;     gtk_clipboard_wait_for_contents
 ;;;     gtk_clipboard_wait_for_text
@@ -324,4 +319,4 @@
   (let ((clipboard (gtk:clipboard-default (gdk:display-default))))
     (is (string= "CLIPBOARD" (gtk:clipboard-selection clipboard)))))
 
-;;; 2024-9-21
+;;; 2025-06-19

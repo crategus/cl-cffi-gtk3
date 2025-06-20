@@ -30,12 +30,12 @@
   ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-GENUM "GtkTreeViewColumnSizing"
                                     GTK:TREE-VIEW-COLUMN-SIZING
-                       (:EXPORT T
-                        :TYPE-INITIALIZER
-                        "gtk_tree_view_column_sizing_get_type")
-                       (:GROW-ONLY 0)
-                       (:AUTOSIZE 1)
-                       (:FIXED 2))
+                                    (:EXPORT T
+                                     :TYPE-INITIALIZER
+                                     "gtk_tree_view_column_sizing_get_type")
+                                    (:GROW-ONLY 0)
+                                    (:AUTOSIZE 1)
+                                    (:FIXED 2))
              (gobject:get-gtype-definition "GtkTreeViewColumnSizing"))))
 
 ;;;     GtkTreeViewColumn
@@ -69,50 +69,58 @@
              (glib-test:list-signals "GtkTreeViewColumn")))
   ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkTreeViewColumn" GTK:TREE-VIEW-COLUMN
-                       (:SUPERCLASS G:INITIALLY-UNOWNED
-                        :EXPORT T
-                        :INTERFACES ("GtkBuildable" "GtkCellLayout")
-                        :TYPE-INITIALIZER "gtk_tree_view_column_get_type")
-                       ((ALIGNMENT TREE-VIEW-COLUMN-ALIGNMENT
-                         "alignment" "gfloat" T T)
-                        (CELL-AREA TREE-VIEW-COLUMN-CELL-AREA
-                         "cell-area" "GtkCellArea" T NIL)
-                        (CLICKABLE TREE-VIEW-COLUMN-CLICKABLE
-                         "clickable" "gboolean" T T)
-                        (EXPAND TREE-VIEW-COLUMN-EXPAND "expand" "gboolean" T T)
-                        (FIXED-WIDTH TREE-VIEW-COLUMN-FIXED-WIDTH
-                         "fixed-width" "gint" T T)
-                        (MAX-WIDTH TREE-VIEW-COLUMN-MAX-WIDTH
-                         "max-width" "gint" T T)
-                        (MIN-WIDTH TREE-VIEW-COLUMN-MIN-WIDTH
-                         "min-width" "gint" T T)
-                        (REORDERABLE TREE-VIEW-COLUMN-REORDERABLE
-                         "reorderable" "gboolean" T T)
-                        (RESIZABLE TREE-VIEW-COLUMN-RESIZABLE
-                         "resizable" "gboolean" T T)
-                        (SIZING TREE-VIEW-COLUMN-SIZING
-                         "sizing" "GtkTreeViewColumnSizing" T T)
-                        (SORT-COLUMN-ID TREE-VIEW-COLUMN-SORT-COLUMN-ID
-                         "sort-column-id" "gint" T T)
-                        (SORT-INDICATOR TREE-VIEW-COLUMN-SORT-INDICATOR
-                         "sort-indicator" "gboolean" T T)
-                        (SORT-ORDER TREE-VIEW-COLUMN-SORT-ORDER
-                         "sort-order" "GtkSortType" T T)
-                        (SPACING TREE-VIEW-COLUMN-SPACING "spacing" "gint" T T)
-                        (TITLE TREE-VIEW-COLUMN-TITLE "title" "gchararray" T T)
-                        (VISIBLE TREE-VIEW-COLUMN-VISIBLE
-                         "visible" "gboolean" T T)
-                        (WIDGET TREE-VIEW-COLUMN-WIDGET "widget" "GtkWidget" T T)
-                        (WIDTH TREE-VIEW-COLUMN-WIDTH "width" "gint" T NIL)
-                        (X-OFFSET TREE-VIEW-COLUMN-X-OFFSET
-                         "x-offset" "gint" T NIL)))
+                      (:SUPERCLASS G:INITIALLY-UNOWNED
+                       :EXPORT T
+                       :INTERFACES ("GtkBuildable" "GtkCellLayout")
+                       :TYPE-INITIALIZER "gtk_tree_view_column_get_type")
+                      ((ALIGNMENT TREE-VIEW-COLUMN-ALIGNMENT
+                        "alignment" "gfloat" T T)
+                       (CELL-AREA TREE-VIEW-COLUMN-CELL-AREA
+                        "cell-area" "GtkCellArea" T NIL)
+                       (CLICKABLE TREE-VIEW-COLUMN-CLICKABLE
+                        "clickable" "gboolean" T T)
+                       (EXPAND TREE-VIEW-COLUMN-EXPAND "expand" "gboolean" T T)
+                       (FIXED-WIDTH TREE-VIEW-COLUMN-FIXED-WIDTH
+                        "fixed-width" "gint" T T)
+                       (MAX-WIDTH TREE-VIEW-COLUMN-MAX-WIDTH
+                        "max-width" "gint" T T)
+                       (MIN-WIDTH TREE-VIEW-COLUMN-MIN-WIDTH
+                        "min-width" "gint" T T)
+                       (REORDERABLE TREE-VIEW-COLUMN-REORDERABLE
+                        "reorderable" "gboolean" T T)
+                       (RESIZABLE TREE-VIEW-COLUMN-RESIZABLE
+                        "resizable" "gboolean" T T)
+                       (SIZING TREE-VIEW-COLUMN-SIZING
+                        "sizing" "GtkTreeViewColumnSizing" T T)
+                       (SORT-COLUMN-ID TREE-VIEW-COLUMN-SORT-COLUMN-ID
+                        "sort-column-id" "gint" T T)
+                       (SORT-INDICATOR TREE-VIEW-COLUMN-SORT-INDICATOR
+                        "sort-indicator" "gboolean" T T)
+                       (SORT-ORDER TREE-VIEW-COLUMN-SORT-ORDER
+                        "sort-order" "GtkSortType" T T)
+                       (SPACING TREE-VIEW-COLUMN-SPACING "spacing" "gint" T T)
+                       (TITLE TREE-VIEW-COLUMN-TITLE "title" "gchararray" T T)
+                       (VISIBLE TREE-VIEW-COLUMN-VISIBLE
+                        "visible" "gboolean" T T)
+                       (WIDGET TREE-VIEW-COLUMN-WIDGET "widget" "GtkWidget" T T)
+                       (WIDTH TREE-VIEW-COLUMN-WIDTH "width" "gint" T NIL)
+                       (X-OFFSET TREE-VIEW-COLUMN-X-OFFSET
+                        "x-offset" "gint" T NIL)))
              (gobject:get-gtype-definition "GtkTreeViewColumn"))))
+
+;;; --- Signals ----------------------------------------------------------------
+
+;;;     clicked
 
 ;;; --- Properties -------------------------------------------------------------
 
 (test gtk-tree-view-column-properties
-  (let ((column (make-instance 'gtk:tree-view-column)))
+  (glib-test:with-check-memory (column :strong 1)
+    (is (typep (setf column
+                     (make-instance 'gtk:tree-view-column))
+               'gtk:tree-view-column))
     (is (= 0.0 (gtk:tree-view-column-alignment column)))
+    ;; Creates a strong reference for GtkCellAreaBox object
     (is (typep (gtk:tree-view-column-cell-area column) 'gtk:cell-area))
     (is-false (gtk:tree-view-column-clickable column))
     (is-false (gtk:tree-view-column-expand column))
@@ -132,10 +140,6 @@
     (is (= 0 (gtk:tree-view-column-width column)))
     (is (= 0 (gtk:tree-view-column-x-offset column)))))
 
-;;; --- Signals ----------------------------------------------------------------
-
-;;;     clicked
-
 ;;; --- Functions --------------------------------------------------------------
 
 ;;;     GtkTreeCellDataFunc
@@ -143,28 +147,50 @@
 ;;;     gtk_tree_view_column_new
 
 (test gtk-tree-view-column-new
-  (is (typep (gtk:tree-view-column-new) 'gtk:tree-view-column)))
+  (glib-test:with-check-memory (column)
+    (is (typep (setf column
+                     (gtk:tree-view-column-new)) 'gtk:tree-view-column))))
 
 ;;;     gtk_tree_view_column_new_with_area
 
 (test gtk-tree-view-column-new-with-area
-  (let ((area (gtk:cell-area-box-new)))
-    (is (typep (gtk:tree-view-column-new-with-area area)
+  (glib-test:with-check-memory ((area 3) column :strong 1)
+    (is (typep (setf area (gtk:cell-area-box-new)) 'gtk:cell-area-box))
+    (is (typep (setf column
+                     (gtk:tree-view-column-new-with-area area))
                'gtk:tree-view-column))))
 
 ;;;     gtk_tree_view_column_new_with_attributes
 
 (test gtk-tree-view-column-new-with-attributes
-  (let ((renderer (gtk:cell-renderer-text-new)))
-    (is (typep (gtk:tree-view-column-new-with-attributes "Example"
-                                                         renderer
-                                                         "text" 0
-                                                         "foreground" 1)
-               'gtk:tree-view-column))))
+  (glib-test:with-check-memory (renderer column)
+    (is (typep (setf renderer
+                     (gtk:cell-renderer-text-new)) 'gtk:cell-renderer-text))
+    (is (typep (setf column
+                     (gtk:tree-view-column-new-with-attributes "Example"
+                                                               renderer
+                                                               "text" 0
+                                                               "foreground" 1))
+               'gtk:tree-view-column))
+    ;; Remove references
+    (is-false (gtk:tree-view-column-clear column))))
 
 ;;;     gtk_tree_view_column_pack_start
 ;;;     gtk_tree_view_column_pack_end
 ;;;     gtk_tree_view_column_clear
+
+(test gtk-tree-view-column-pack-start/end
+  (glib-test:with-check-memory (column renderer1 renderer2)
+    (is (typep (setf column (gtk:tree-view-column-new)) 'gtk:tree-view-column))
+    (is (typep (setf renderer1
+                     (gtk:cell-renderer-text-new)) 'gtk:cell-renderer-text))
+    (is (typep (setf renderer2
+                     (gtk:cell-renderer-text-new)) 'gtk:cell-renderer-text))
+    (is-false (gtk:tree-view-column-pack-start column renderer1))
+    (is-false (gtk:tree-view-column-pack-end column renderer2))
+    ;; Remove references
+    (is-false (gtk:tree-view-column-clear column))))
+
 ;;;     gtk_tree_view_column_add_attribute
 ;;;     gtk_tree_view_column_set_attributes
 ;;;     gtk_tree_view_column_set_cell_data_func
@@ -179,4 +205,4 @@
 ;;;     gtk_tree_view_column_queue_resize
 ;;;     gtk_tree_view_column_get_tree_view
 
-;;; 2024-9-22
+;;; 2025-06-10

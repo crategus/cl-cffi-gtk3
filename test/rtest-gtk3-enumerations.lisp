@@ -27,11 +27,12 @@
              (glib-test:list-enum-item-nicks "GtkBaselinePosition")))
   ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-GENUM "GtkBaselinePosition" GTK:BASELINE-POSITION
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_baseline_position_get_type")
-                       (:TOP 0)
-                       (:CENTER 1)
-                       (:BOTTOM 2))
+                                    (:EXPORT T
+                                     :TYPE-INITIALIZER
+                                     "gtk_baseline_position_get_type")
+                                    (:TOP 0)
+                                    (:CENTER 1)
+                                    (:BOTTOM 2))
              (gobject:get-gtype-definition "GtkBaselinePosition"))))
 
 ;;;     GtkDeleteType
@@ -60,16 +61,16 @@
              (glib-test:list-enum-item-nicks "GtkDeleteType")))
   ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-GENUM "GtkDeleteType" GTK:DELETE-TYPE
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_delete_type_get_type")
-                       (:CHARS 0)
-                       (:WORD-ENDS 1)
-                       (:WORDS 2)
-                       (:DISPLAY-LINES 3)
-                       (:DISPLAY-LINE-ENDS 4)
-                       (:PARAGRAPH-ENDS 5)
-                       (:PARAGRAPHS 6)
-                       (:WHITESPACE 7))
+                                    (:EXPORT T
+                                     :TYPE-INITIALIZER "gtk_delete_type_get_type")
+                                    (:CHARS 0)
+                                    (:WORD-ENDS 1)
+                                    (:WORDS 2)
+                                    (:DISPLAY-LINES 3)
+                                    (:DISPLAY-LINE-ENDS 4)
+                                    (:PARAGRAPH-ENDS 5)
+                                    (:PARAGRAPHS 6)
+                                    (:WHITESPACE 7))
              (gobject:get-gtype-definition "GtkDeleteType"))))
 
 ;;;     GtkDirectionType
@@ -95,14 +96,15 @@
              (glib-test:list-enum-item-nicks "GtkDirectionType")))
   ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-GENUM "GtkDirectionType" GTK:DIRECTION-TYPE
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_direction_type_get_type")
-                       (:TAB-FORWARD 0)
-                       (:TAB-BACKWARD 1)
-                       (:UP 2)
-                       (:DOWN 3)
-                       (:LEFT 4)
-                       (:RIGHT 5))
+                                    (:EXPORT T
+                                     :TYPE-INITIALIZER
+                                     "gtk_direction_type_get_type")
+                                    (:TAB-FORWARD 0)
+                                    (:TAB-BACKWARD 1)
+                                    (:UP 2)
+                                    (:DOWN 3)
+                                    (:LEFT 4)
+                                    (:RIGHT 5))
              (gobject:get-gtype-definition "GtkDirectionType"))))
 
 ;;;     GtkJustification
@@ -128,12 +130,13 @@
              (glib-test:list-enum-item-nicks "GtkJustification")))
   ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-GENUM "GtkJustification" GTK:JUSTIFICATION
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_justification_get_type")
-                       (:LEFT 0)
-                       (:RIGHT 1)
-                       (:CENTER 2)
-                       (:FILL 3))
+                                    (:EXPORT T
+                                     :TYPE-INITIALIZER
+                                     "gtk_justification_get_type")
+                                    (:LEFT 0)
+                                    (:RIGHT 1)
+                                    (:CENTER 2)
+                                    (:FILL 3))
              (gobject:get-gtype-definition "GtkJustification"))))
 
 ;;;     GtkMovementStep
@@ -162,20 +165,21 @@
                "display-line-ends" "paragraphs" "paragraph-ends" "pages"
                "buffer-ends" "horizontal-pages")
              (glib-test:list-enum-item-nicks "GtkMovementStep")))
-  ;; Check the enum definition
+  ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-GENUM "GtkMovementStep" GTK:MOVEMENT-STEP
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_movement_step_get_type")
-                       (:LOGICAL-POSITIONS 0)
-                       (:VISUAL-POSITIONS 1)
-                       (:WORDS 2)
-                       (:DISPLAY-LINES 3)
-                       (:DISPLAY-LINE-ENDS 4)
-                       (:PARAGRAPHS 5)
-                       (:PARAGRAPH-ENDS 6)
-                       (:PAGES 7)
-                       (:BUFFER-ENDS 8)
-                       (:HORIZONTAL-PAGES 9))
+                                    (:EXPORT T
+                                     :TYPE-INITIALIZER
+                                     "gtk_movement_step_get_type")
+                                    (:LOGICAL-POSITIONS 0)
+                                    (:VISUAL-POSITIONS 1)
+                                    (:WORDS 2)
+                                    (:DISPLAY-LINES 3)
+                                    (:DISPLAY-LINE-ENDS 4)
+                                    (:PARAGRAPHS 5)
+                                    (:PARAGRAPH-ENDS 6)
+                                    (:PAGES 7)
+                                    (:BUFFER-ENDS 8)
+                                    (:HORIZONTAL-PAGES 9))
              (gobject:get-gtype-definition "GtkMovementStep"))))
 
 ;;;     GtkOrientation
@@ -200,10 +204,11 @@
              (glib-test:list-enum-item-nicks "GtkOrientation")))
   ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-GENUM "GtkOrientation" GTK:ORIENTATION
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_orientation_get_type")
-                       (:HORIZONTAL 0)
-                       (:VERTICAL 1))
+                                    (:EXPORT T
+                                     :TYPE-INITIALIZER
+                                     "gtk_orientation_get_type")
+                                    (:HORIZONTAL 0)
+                                    (:VERTICAL 1))
              (gobject:get-gtype-definition "GtkOrientation"))))
 
 ;;;     GtkPackType
@@ -228,10 +233,10 @@
              (glib-test:list-enum-item-nicks "GtkPackType")))
   ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-GENUM "GtkPackType" GTK:PACK-TYPE
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_pack_type_get_type")
-                       (:START 0)
-                       (:END 1))
+                                    (:EXPORT T
+                                     :TYPE-INITIALIZER "gtk_pack_type_get_type")
+                                    (:START 0)
+                                    (:END 1))
              (gobject:get-gtype-definition "GtkPackType"))))
 
 ;;;     GtkPositionType
@@ -256,12 +261,13 @@
              (glib-test:list-enum-item-nicks "GtkPositionType")))
   ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-GENUM "GtkPositionType" GTK:POSITION-TYPE
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_position_type_get_type")
-                       (:LEFT 0)
-                       (:RIGHT 1)
-                       (:TOP 2)
-                       (:BOTTOM 3))
+                                    (:EXPORT T
+                                     :TYPE-INITIALIZER
+                                     "gtk_position_type_get_type")
+                                    (:LEFT 0)
+                                    (:RIGHT 1)
+                                    (:TOP 2)
+                                    (:BOTTOM 3))
              (gobject:get-gtype-definition "GtkPositionType"))))
 
 ;;;     GtkReliefStyle
@@ -286,11 +292,12 @@
              (glib-test:list-enum-item-nicks "GtkReliefStyle")))
   ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-GENUM "GtkReliefStyle" GTK:RELIEF-STYLE
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_relief_style_get_type")
-                       (:NORMAL 0)
-                       (:HALF 1)
-                       (:NONE 2))
+                                    (:EXPORT T
+                                     :TYPE-INITIALIZER
+                                     "gtk_relief_style_get_type")
+                                    (:NORMAL 0)
+                                    (:HALF 1)
+                                    (:NONE 2))
              (gobject:get-gtype-definition "GtkReliefStyle"))))
 
 ;;;     GtkScrollStep
@@ -325,26 +332,27 @@
                "page-forward" "step-up" "step-down" "page-up" "page-down"
                "step-left" "step-right" "page-left" "page-right" "start" "end")
              (glib-test:list-enum-item-nicks "GtkScrollType")))
-  ;; Check the enum definition
+  ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-GENUM "GtkScrollType" GTK:SCROLL-TYPE
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_scroll_type_get_type")
-                       (:NONE 0)
-                       (:JUMP 1)
-                       (:STEP-BACKWARD 2)
-                       (:STEP-FORWARD 3)
-                       (:PAGE-BACKWARD 4)
-                       (:PAGE-FORWARD 5)
-                       (:STEP-UP 6)
-                       (:STEP-DOWN 7)
-                       (:PAGE-UP 8)
-                       (:PAGE-DOWN 9)
-                       (:STEP-LEFT 10)
-                       (:STEP-RIGHT 11)
-                       (:PAGE-LEFT 12)
-                       (:PAGE-RIGHT 13)
-                       (:START 14)
-                       (:END 15))
+                                    (:EXPORT T
+                                     :TYPE-INITIALIZER
+                                     "gtk_scroll_type_get_type")
+                                    (:NONE 0)
+                                    (:JUMP 1)
+                                    (:STEP-BACKWARD 2)
+                                    (:STEP-FORWARD 3)
+                                    (:PAGE-BACKWARD 4)
+                                    (:PAGE-FORWARD 5)
+                                    (:STEP-UP 6)
+                                    (:STEP-DOWN 7)
+                                    (:PAGE-UP 8)
+                                    (:PAGE-DOWN 9)
+                                    (:STEP-LEFT 10)
+                                    (:STEP-RIGHT 11)
+                                    (:PAGE-LEFT 12)
+                                    (:PAGE-RIGHT 13)
+                                    (:START 14)
+                                    (:END 15))
              (gobject:get-gtype-definition "GtkScrollType"))))
 
 ;;;     GtkSelectionMode
@@ -370,12 +378,13 @@
              (glib-test:list-enum-item-nicks "GtkSelectionMode")))
   ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-GENUM "GtkSelectionMode" GTK:SELECTION-MODE
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_selection_mode_get_type")
-                       (:NONE 0)
-                       (:SINGLE 1)
-                       (:BROWSE 2)
-                       (:MULTIPLE 3))
+                                    (:EXPORT T
+                                     :TYPE-INITIALIZER
+                                     "gtk_selection_mode_get_type")
+                                    (:NONE 0)
+                                    (:SINGLE 1)
+                                    (:BROWSE 2)
+                                    (:MULTIPLE 3))
              (gobject:get-gtype-definition "GtkSelectionMode"))))
 
 ;;;     GtkShadowType
@@ -401,13 +410,14 @@
              (glib-test:list-enum-item-nicks "GtkShadowType")))
   ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-GENUM "GtkShadowType" GTK:SHADOW-TYPE
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_shadow_type_get_type")
-                       (:NONE 0)
-                       (:IN 1)
-                       (:OUT 2)
-                       (:ETCHED-IN 3)
-                       (:ETCHED-OUT 4))
+                                    (:EXPORT T
+                                     :TYPE-INITIALIZER
+                                     "gtk_shadow_type_get_type")
+                                    (:NONE 0)
+                                    (:IN 1)
+                                    (:OUT 2)
+                                    (:ETCHED-IN 3)
+                                    (:ETCHED-OUT 4))
              (gobject:get-gtype-definition "GtkShadowType"))))
 
 ;;;     GtkStateFlags
@@ -440,22 +450,23 @@
              (glib-test:list-flags-item-nicks "GtkStateFlags")))
   ;; Check flags definition
   (is (equal '(GOBJECT:DEFINE-GFLAGS "GtkStateFlags" GTK:STATE-FLAGS
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_state_flags_get_type")
-                       (:NORMAL 0)
-                       (:ACTIVE 1)
-                       (:PRELIGHT 2)
-                       (:SELECTED 4)
-                       (:INSENSITIVE 8)
-                       (:INCONSISTENT 16)
-                       (:FOCUSED 32)
-                       (:BACKDROP 64)
-                       (:DIR-LTR 128)
-                       (:DIR-RTL 256)
-                       (:LINK 512)
-                       (:VISITED 1024)
-                       (:CHECKED 2048)
-                       (:DROP-ACTIVE 4096))
+                                     (:EXPORT T
+                                      :TYPE-INITIALIZER
+                                      "gtk_state_flags_get_type")
+                                     (:NORMAL 0)
+                                     (:ACTIVE 1)
+                                     (:PRELIGHT 2)
+                                     (:SELECTED 4)
+                                     (:INSENSITIVE 8)
+                                     (:INCONSISTENT 16)
+                                     (:FOCUSED 32)
+                                     (:BACKDROP 64)
+                                     (:DIR-LTR 128)
+                                     (:DIR-RTL 256)
+                                     (:LINK 512)
+                                     (:VISITED 1024)
+                                     (:CHECKED 2048)
+                                     (:DROP-ACTIVE 4096))
              (gobject:get-gtype-definition "GtkStateFlags"))))
 
 ;;;     GtkToolbarStyle
@@ -481,12 +492,13 @@
              (glib-test:list-enum-item-nicks "GtkToolbarStyle")))
   ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-GENUM "GtkToolbarStyle" GTK:TOOLBAR-STYLE
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_toolbar_style_get_type")
-                       (:ICONS 0)
-                       (:TEXT 1)
-                       (:BOTH 2)
-                       (:BOTH-HORIZ 3))
+                                    (:EXPORT T
+                                     :TYPE-INITIALIZER
+                                     "gtk_toolbar_style_get_type")
+                                    (:ICONS 0)
+                                    (:TEXT 1)
+                                    (:BOTH 2)
+                                    (:BOTH-HORIZ 3))
              (gobject:get-gtype-definition "GtkToolbarStyle"))))
 
 ;;;     GtkSortType
@@ -511,10 +523,10 @@
              (glib-test:list-enum-item-nicks "GtkSortType")))
   ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-GENUM "GtkSortType" GTK:SORT-TYPE
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_sort_type_get_type")
-                       (:ASCENDING 0)
-                       (:DESCENDING 1))
+                                    (:EXPORT T
+                                     :TYPE-INITIALIZER "gtk_sort_type_get_type")
+                                    (:ASCENDING 0)
+                                    (:DESCENDING 1))
              (gobject:get-gtype-definition "GtkSortType"))))
 
 ;;;     GtkTextDirection  <--- from gtk.widget.lisp
@@ -539,11 +551,12 @@
              (glib-test:list-enum-item-nicks "GtkTextDirection")))
   ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-GENUM "GtkTextDirection" GTK:TEXT-DIRECTION
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_text_direction_get_type")
-                       (:NONE 0)
-                       (:LTR 1)
-                       (:RTL 2))
+                                    (:EXPORT T
+                                     :TYPE-INITIALIZER
+                                     "gtk_text_direction_get_type")
+                                    (:NONE 0)
+                                    (:LTR 1)
+                                    (:RTL 2))
              (gobject:get-gtype-definition "GtkTextDirection"))))
 
 ;;;     GtkExpanderStyle
@@ -569,12 +582,13 @@
              (glib-test:list-enum-item-nicks "GtkExpanderStyle")))
   ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-GENUM "GtkExpanderStyle" GTK:EXPANDER-STYLE
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_expander_style_get_type")
-                       (:COLLAPSED 0)
-                       (:SEMI-COLLAPSED 1)
-                       (:SEMI-EXPANDED 2)
-                       (:EXPANDED 3))
+                                    (:EXPORT T
+                                     :TYPE-INITIALIZER
+                                     "gtk_expander_style_get_type")
+                                    (:COLLAPSED 0)
+                                    (:SEMI-COLLAPSED 1)
+                                    (:SEMI-EXPANDED 2)
+                                    (:EXPANDED 3))
              (gobject:get-gtype-definition "GtkExpanderStyle"))))
 
 ;;;     GtkStateType
@@ -602,15 +616,16 @@
              (glib-test:list-enum-item-nicks "GtkStateType")))
   ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-GENUM "GtkStateType" GTK:STATE-TYPE
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_state_type_get_type")
-                       (:NORMAL 0)
-                       (:ACTIVE 1)
-                       (:PRELIGHT 2)
-                       (:SELECTED 3)
-                       (:INSENSITIVE 4)
-                       (:INCONSISTENT 5)
-                       (:FOCUSED 6))
+                                    (:EXPORT T
+                                     :TYPE-INITIALIZER
+                                     "gtk_state_type_get_type")
+                                    (:NORMAL 0)
+                                    (:ACTIVE 1)
+                                    (:PRELIGHT 2)
+                                    (:SELECTED 3)
+                                    (:INSENSITIVE 4)
+                                    (:INCONSISTENT 5)
+                                    (:FOCUSED 6))
              (gobject:get-gtype-definition "GtkStateType"))))
 
-;;; 2024-9-21
+;;; 2025-06-18

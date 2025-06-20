@@ -5,7 +5,7 @@
 
 (defvar *verbose-gtk-main-loop* nil)
 
-;;;   gtk_disable_setlocale                    * not exported *
+;;;   gtk_disable_setlocale                                 not exported
 
 ;;;   gtk_get_default_language
 
@@ -17,10 +17,10 @@
 (test gtk-locale-direction
   (is (eq :ltr (gtk:locale-direction))))
 
-;;;   gtk_parse_args                           * not implemented *
-;;;   gtk_init                                 * not exported *
-;;;   gtk_init_check                           * not exported *
-;;;   gtk_init_with_args                       * not implemented *
+;;;   gtk_parse_args                                        not implemented
+;;;   gtk_init                                              not exported
+;;;   gtk_init_check                                        not exported
+;;;   gtk_init_with_args                                    not implemented
 
 ;;;   gtk_get_option_group
 
@@ -86,10 +86,10 @@
   g:+source-remove+)
 
 (test gtk-main.1
-  ;; Add a idle source to the main loop.
+  ;; Add idle source to main loop
   (g:idle-add #'main-idle-cb)
-  ;; Start the main loop.
-  ;; We return if gtk:main-quit is called in the idle callback.
+  ;; Start main loop
+  ;; Return if gtk:main-quit is called in the idle callback
   (gtk:main)
   (is (= 0 (gtk:main-level))))
 
@@ -99,20 +99,20 @@
     (is (= 1 (gtk:main-level)))
     (if (>= counter 3)
         (progn
-          ;; Reset the counter
+          ;; Reset counter
           (setf counter 0)
-          ;; Stop the main loop from running
+          ;; Stop main loop from running
           (gtk:main-quit)
-          ;; Stop the source
+          ;; Stop source
           g:+source-remove+)
-        ;; Continue the source
+        ;; Continue source
         g:+source-continue+)))
 
 (test gtk-main.2
   (let ()
-    ;; Add a timeout source to the main loop.
+    ;; Add timeout source to main loop
     (g:timeout-add 100 #'main-timeout-callback)
-    ;; Start the main loop. We return if gtk:main-quit is called in the timeout.
+    ;; Start main loop. Return if gtk:main-quit is called in the timeout
     (gtk:main)
     (is (= 0 (gtk:main-level)))))
 
@@ -120,8 +120,8 @@
 ;;;     gtk_main_iteration_do
 ;;;     gtk_main_do_event
 
-;;;     gtk_true                                 * not implemented *
-;;;     gtk_false                                * not implemented *
+;;;     gtk_true                                            not implemented
+;;;     gtk_false                                           not implemented
 
 ;;;     gtk_grab_add
 ;;;     gtk_grab_get_current
@@ -129,8 +129,8 @@
 ;;;     gtk_device_grab_add
 ;;;     gtk_device_grab_remove
 
-;;;     gtk_key_snooper_install                  * deprecated *
-;;;     gtk_key_snooper_remove                   * deprecated *
+;;;     gtk_key_snooper_install                             deprecated
+;;;     gtk_key_snooper_remove                              deprecated
 
 ;;;     gtk_get_current_event
 ;;;     gtk_get_current_event_time
@@ -140,4 +140,4 @@
 ;;;     gtk_get_event_widget
 ;;;     gtk_propagate_event
 
-;;; 2024-9-21
+;;; 2025-06-18

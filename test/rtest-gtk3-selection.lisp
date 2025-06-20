@@ -85,13 +85,13 @@
 
 (test gtk-target-list-add
   (let ((tlist (gtk:target-list-new)))
-    ;; Add the target entries
+    ;; Add target entries
     (gtk:target-list-add tlist "text/html" 0 0)
     (gtk:target-list-add tlist "STRING" 0 1)
     (gtk:target-list-add tlist "number" 0 2)
     (gtk:target-list-add tlist "image/jpeg" 0 3)
     (gtk:target-list-add tlist "text/uri-list" 0 4)
-    ;; Check the added target entries
+    ;; Check added target entries
     (is (= 0 (gtk:target-list-find tlist "text/html")))
     (is (= 1 (gtk:target-list-find tlist "STRING")))
     (is (= 2 (gtk:target-list-find tlist "number")))

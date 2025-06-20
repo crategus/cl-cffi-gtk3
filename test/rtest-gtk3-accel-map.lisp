@@ -31,11 +31,11 @@
              (glib-test:list-signals "GtkAccelMap")))
   ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkAccelMap" GTK:ACCEL-MAP
-                       (:SUPERCLASS G:OBJECT
-                        :EXPORT T
-                        :INTERFACES NIL
-                        :TYPE-INITIALIZER "gtk_accel_map_get_type")
-                       NIL)
+                      (:SUPERCLASS G:OBJECT
+                       :EXPORT T
+                       :INTERFACES NIL
+                       :TYPE-INITIALIZER "gtk_accel_map_get_type")
+                      NIL)
              (gobject:get-gtype-definition "GtkAccelMap"))))
 
 ;;;   gtk_accel_map_add_entry
@@ -92,10 +92,13 @@
 
 ;;;   gtk_accel_map_get
 
+;; The returned accel map is a global object of the C library
+
 (test gtk-accel-map-get
-  (is (eql 'gtk:accel-map (type-of (gtk:accel-map-get)))))
+  (glib-test:with-check-memory ((accelmap 2) :strong 1)
+    (is (typep (setf accelmap (gtk:accel-map-get)) 'gtk:accel-map))))
 
 ;;;   gtk_accel_map_lock_path
 ;;;   gtk_accel_map_unlock_path
 
-;;; 2024-9-21
+;;; 2025-06-18
