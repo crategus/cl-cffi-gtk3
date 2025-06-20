@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.image.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -45,24 +45,24 @@
 ;;;
 ;;; Functions
 ;;;
-;;;     gtk_image_get_icon_set                             deprecated
-;;;     gtk_image_get_stock                                deprecated
+;;;     gtk_image_get_icon_set                              deprecated
+;;;     gtk_image_get_stock                                 deprecated
 ;;;     gtk_image_get_animation
 ;;;     gtk_image_get_icon_name
 ;;;     gtk_image_get_gicon
 ;;;     gtk_image_new_from_file
-;;;     gtk_image_new_from_icon_set                        deprecated
+;;;     gtk_image_new_from_icon_set                         deprecated
 ;;;     gtk_image_new_from_pixbuf
-;;;     gtk_image_new_from_stock                           deprecated
+;;;     gtk_image_new_from_stock                            deprecated
 ;;;     gtk_image_new_from_animation
 ;;;     gtk_image_new_from_icon_name
 ;;;     gtk_image_new_from_gicon
 ;;;     gtk_image_new_from_resource
 ;;;     gtk_image_new_from_surface
 ;;;     gtk_image_set_from_file
-;;;     gtk_image_set_from_icon_set                        deprecated
+;;;     gtk_image_set_from_icon_set                         deprecated
 ;;;     gtk_image_set_from_pixbuf
-;;;     gtk_image_set_from_stock                           deprecated
+;;;     gtk_image_set_from_stock                            deprecated
 ;;;     gtk_image_set_from_animation
 ;;;     gtk_image_set_from_icon_name
 ;;;     gtk_image_set_from_gicon
@@ -122,7 +122,7 @@
 (setf (liber:alias-for-symbol 'image-type)
       "GEnum"
       (liber:symbol-documentation 'image-type)
- "@version{#2024-3-22}
+ "@version{#2024-03-22}
   @begin{declaration}
 (gobject:define-genum \"GtkImageType\" image-type
   (:export t
@@ -141,7 +141,7 @@
       @entry[:empty]{There is no image displayed by the widget.}
       @entry[:pixbuf]{The widget contains a @class{gdk-pixbuf:pixbuf} object.}
       @entry[:stock]{The widget contains a stock icon name.}
-      @entry[:icon-set]{The widget contains a @class{gtk:icon-set} structure.}
+      @entry[:icon-set]{The widget contains a @class{gtk:icon-set} instance.}
       @entry[:animation]{The widget contains a
         @class{gdk-pixbuf:pixbuf-animation} object.}
       @entry[:icon-name]{The widget contains a named icon.}
@@ -167,7 +167,7 @@
   @see-function{gtk:image-storage-type}")
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkImage
+;;; GtkImage
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkImage" image
@@ -221,7 +221,7 @@
 
 #+liber-documentation
 (setf (documentation 'image 'type)
- "@version{2023-12-30}
+ "@version{2025-06-17}
   @begin{short}
     The @class{gtk:image} widget displays an image.
   @end{short}
@@ -322,11 +322,11 @@
 (setf (liber:alias-for-function 'image-file)
       "Accessor"
       (documentation 'image-file 'function)
- "@version{#2023-3-20}
+ "@version{#2025-06-17}
   @syntax{(gtk:image-file object) => filename}
   @syntax{(setf (gtk:image-file object) filename)}
   @argument[object]{a @class{gtk:image} widget}
-  @argument[filename]{a string with the name of the file to load and display}
+  @argument[filename]{a string for the name of the file to load and display}
   @begin{short}
     Accessor of the @slot[gtk:image]{file} slot of the @class{gtk:image} class.
   @end{short}
@@ -345,7 +345,7 @@
 (setf (liber:alias-for-function 'image-gicon)
       "Accessor"
       (documentation 'image-gicon 'function)
- "@version{#2023-3-20}
+ "@version{#2023-03-20}
   @syntax{(gtk:image-gicon object) => gicon}
   @syntax{(setf (gtk:image-gicon object) gicon)}
   @argument[object]{a @class{gtk:image} widget}
@@ -372,11 +372,11 @@
 (setf (liber:alias-for-function 'image-icon-name)
       "Accessor"
       (documentation 'image-icon-name 'function)
- "@version{#2023-3-20}
-  @syntax{(gtk:image-icon-name object) => icon-name}
-  @syntax{(setf (gtk:image-icon-name object) icon-name)}
+ "@version{#2025-06-17}
+  @syntax{(gtk:image-icon-name object) => name}
+  @syntax{(setf (gtk:image-icon-name object) name)}
   @argument[object]{a @class{gtk:image} widget}
-  @argument[icon-name]{a string with the name of the icon}
+  @argument[name]{a string for the name of the icon}
   @begin{short}
     Accessor of the @slot[gtk:image]{icon-name} slot of the @class{gtk:image}
     class.
@@ -400,11 +400,11 @@
 (setf (liber:alias-for-function 'image-icon-set)
       "Accessor"
       (documentation 'image-icon-set 'function)
- "@version{#2023-3-20}
+ "@version{#2025-06-17}
   @syntax{(gtk:image-icon-set object) => icon-set}
   @syntax{(setf (gtk:image-icon-set object) icon-set)}
   @argument[object]{a @class{gtk:image} widget}
-  @argument[icon-set]{an icon set of type @class{gtk:icon-set}}
+  @argument[icon-set]{a @class{gtk:icon-set} instance}
   @begin{short}
     Accessor of the @slot[gtk:image]{icon-set} slot of the @class{gtk:image}
     class.
@@ -415,6 +415,7 @@
     @fun{gtk:image-icon-name} function instead.
   @end{dictionary}
   @see-class{gtk:image}
+  @see-class{gtk:icon-set}
   @see-function{gtk:image-icon-name}")
 
 ;;; --- gtk:image-icon-size ----------------------------------------------------
@@ -422,7 +423,7 @@
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "icon-size" 'image) t)
  "The @code{icon-size} property of type @code{:int} (Read / Write) @br{}
-  Symbolic size to use for a stock icon, icon set or named icon. @br{}
+  The symbolic size to use for a stock icon, icon set or named icon. @br{}
   Allowed values: >= 0 @br{}
   Default value: 4")
 
@@ -430,11 +431,11 @@
 (setf (liber:alias-for-function 'image-icon-size)
       "Accessor"
       (documentation 'image-icon-size 'function)
- "@version{#2023-3-20}
-  @syntax{(gtk:image-icon-size object) => icon-size}
-  @syntax{(setf (gtk:image-icon-size object) icon-size)}
+ "@version{#2025-06-17}
+  @syntax{(gtk:image-icon-size object) => size}
+  @syntax{(setf (gtk:image-icon-size object) size)}
   @argument[object]{a @class{gtk:image} widget}
-  @argument[icon-set]{an integer with the icon size}
+  @argument[size]{an integer for the icon size}
   @begin{short}
     Accessor of the @slot[gtk:image]{icon-size} slot of the @class{gtk:image}
     class.
@@ -453,13 +454,13 @@
 (setf (documentation (liber:slot-documentation "pixbuf" 'image) t)
  "The @code{pixbuf} property of type @class{gdk-pixbuf:pixbuf} (Read / Write)
   @br{}
-  A pixbuf to display.")
+  The pixbuf to display.")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'image-pixbuf)
       "Accessor"
       (documentation 'image-pixbuf 'function)
- "@version{#2023-3-20}
+ "@version{#2023-03-20}
   @syntax{(gtk:image-pixbuf object) => pixbuf}
   @syntax{(setf (gtk:image-pixbuf object) pixbuf)}
   @argument[object]{a @class{gtk:image} widget}
@@ -490,7 +491,7 @@
 (setf (liber:alias-for-function 'image-pixbuf-animation)
       "Accessor"
       (documentation 'image-pixbuf-animation 'function)
- "@version{#2023-3-20}
+ "@version{#2023-03-20}
   @syntax{(gtk:image-pixbuf-animation object) => animation}
   @syntax{(setf (gtk:image-pixbuf-animation object) animation)}
   @argument[object]{a @class{gtk:image} widget}
@@ -517,11 +518,11 @@
 (setf (liber:alias-for-function 'image-pixel-size)
       "Accessor"
       (documentation 'image-pixel-size 'function)
- "@version{#2023-3-20}
+ "@version{#2025-06-17}
   @syntax{(gtk:image-pixel-size object) => size}
   @syntax{(setf (gtk:image-pixel-size object) size)}
   @argument[object]{a @class{gtk:image} widget}
-  @argument[size]{an integer with the new pixel size}
+  @argument[size]{an integer for the new pixel size}
   @begin{short}
     Accessor of the @slot[gtk:image]{pixel-size} slot of the @class{gtk:image}
     class.
@@ -538,18 +539,18 @@
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "resource" 'image) t)
  "The @code{resource} property of type @code{:string} (Read / Write) @br{}
-  A path to a resource file to display. @br{}
+  The path to a resource file to display. @br{}
   Default value: @code{nil}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'image-resource)
       "Accessor"
       (documentation 'image-resource 'function)
- "@version{#2023-3-20}
+ "@version{#2025-06-17}
   @syntax{(gtk:image-resource object) => path}
   @syntax{(setf (gtk:image-resource object) path)}
   @argument[object]{a @class{gtk:image} widget}
-  @argument[path]{a string with a resource path}
+  @argument[path]{a string for a resource path}
   @begin{short}
     Accessor of the @slot[gtk:image]{stock} slot of the @class{gtk:image} class.
   @end{short}
@@ -571,11 +572,11 @@
 (setf (liber:alias-for-function 'image-stock)
       "Accessor"
       (documentation 'image-stock 'function)
- "@version{#2023-3-20}
+ "@version{#2025-06-17}
   @syntax{(gtk:image-stock object) => stock}
   @syntax{(setf (gtk:image-stock object) stock)}
   @argument[object]{a @class{gtk:image} widget}
-  @argument[stock]{a string with a stock ID}
+  @argument[stock]{a string for a stock ID}
   @begin{short}
     Accessor of the @slot[gtk:image]{stock} slot of the @class{gtk:image} class.
   @end{short}
@@ -599,7 +600,7 @@
 (setf (liber:alias-for-function 'image-storage-type)
       "Accessor"
       (documentation 'image-storage-type 'function)
- "@version{#2023-3-20}
+ "@version{#2023-03-20}
   @syntax{(gtk:image-storage-type object) => type}
   @syntax{(setf (gtk:image-storage-type object) type)}
   @argument[object]{a @class{gtk:image} widget}
@@ -623,7 +624,7 @@
 (setf (documentation (liber:slot-documentation "surface" 'image) t)
  "The @code{surface} property of type @symol{cairo:surface-t} (Read / Write)
   @br{}
-  A Cairo surface instance to display.")
+  The Cairo surface instance to display.")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'image-surface)
@@ -655,7 +656,7 @@
 (setf (liber:alias-for-function 'image-use-fallback)
       "Accessor"
       (documentation 'image-use-fallback 'function)
- "@version{#2023-3-20}
+ "@version{#2023-03-20}
   @syntax{(gtk:image-use-fallback object) => use-fallback}
   @syntax{(setf (gtk:image-use-fallback object) use-fallback)}
   @argument[object]{a @class{gtk:image} widget}
@@ -670,16 +671,16 @@
   @see-class{gtk:image}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_image_get_icon_set ()                              not exported
+;;; gtk_image_get_icon_set                                  not exported
 ;;; ----------------------------------------------------------------------------
 
 (defun image-get-icon-set (image)
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2023-03-20}
   @argument[image]{a @class{gtk:image} widget}
   @begin{return}
-    @arg{icon-set} -- a @class{gtk:icon-set} structure @br{}
-    @arg{icon-size} -- an icon size of type @symbol{gtk:icon-size}
+    @arg{icon-set} -- a @class{gtk:icon-set} instance @br{}
+    @arg{icon-size} -- a @symbol{gtk:icon-size} value
   @end{return}
   @begin{short}
     Gets the icon set and icon size being displayed by the @class{gtk:image}
@@ -700,12 +701,12 @@
           (cffi:foreign-enum-keyword 'icon-size (image-icon-size image))))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_image_get_stock ()                                 not exported
+;;; gtk_image_get_stock                                     not exported
 ;;; ----------------------------------------------------------------------------
 
 (defun image-get-stock (image)
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2023-03-20}
   @argument[image]{a @class{gtk:image} widget}
   @begin{return}
     @arg{stock-id} -- a string with a stock icon name @br{}
@@ -731,7 +732,7 @@
           (cffi:foreign-enum-keyword 'icon-size (image-icon-size image))))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_image_get_animation ()
+;;; gtk_image_get_animation
 ;;; ----------------------------------------------------------------------------
 
 ;; TODO: Check if we can cut out this function.
@@ -739,18 +740,21 @@
 (cffi:defcfun ("gtk_image_get_animation" image-get-animation)
     (g:object gdk-pixbuf:pixbuf-animation)
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2025-06-17}
   @argument[image]{a @class{gtk:image} widget}
-  @return{The displayed animation, or @code{nil} if the image is empty.}
+  @begin{return}
+    The @class{gdk:pixbuf-animation} object for the displayed animation, or
+    @code{nil} if the image is empty.
+  @end{return}
   @begin{short}
-    Gets the @class{gdk-pixbuf:pixbuf-animation} object being displayed by the
+    Gets the @class{gdk:pixbuf-animation} object being displayed by the
     @class{gtk:image} widget.
   @end{short}
   The @symbol{gtk:image-type} storage type of the image must be the
   @code{:empty} or @code{:animation} type, see the @fun{gtk:image-storage-type}
   function.
   @see-class{gtk:image}
-  @see-class{gdk-pixbuf:pixbuf-animation}
+  @see-class{gdk:pixbuf-animation}
   @see-symbol{gtk:image-type}
   @see-function{gtk:image-storage-type}"
   (image (g:object image)))
@@ -758,19 +762,18 @@
 (export 'image-get-animation)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_image_get_icon_name ()
+;;; gtk_image_get_icon_name
 ;;; ----------------------------------------------------------------------------
 
 ;; TODO: Check if we can cut out this function.
 
 (defun image-get-icon-name (image)
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2025-06-17}
+  @syntax{(gtk:image-icon-name image) => name, size}
   @argument[image]{a @class{gtk:image} widget}
-  @begin{return}
-    @arg{icon-name} -- an icon name @br{}
-    @arg{size} -- an icon size of type @symbol{gtk:icon-size}
-  @end{return}
+  @argument[name]{a string for the icon name}
+  @argument[size]{a @symbol{gtk:icon-size} value}
   @begin{short}
     Gets the icon name and icon size being displayed by the image.
   @end{short}
@@ -784,17 +787,16 @@
 (export 'image-get-icon-name)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_image_get_gicon ()
+;;; gtk_image_get_gicon
 ;;; ----------------------------------------------------------------------------
 
 (defun image-get-gicon (image)
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2025-06-17}
+  @syntax{(gtk:image-gicon image) => gicon, size}
   @argument[image]{a @class{gtk:image} widget}
-  @begin{return}
-    @arg{gicon} -- a @class{g:icon} object @br{}
-    @arg{size} -- an icon size of type @symbol{gtk:icon-size}
-  @end{return}
+  @argument[gicon]{a @class{g:icon} object}
+  @argument[size]{a @symbol{gtk:icon-size} value}
   @begin{short}
     Gets the @class{g:icon} icon and icon size being displayed by the image.
   @end{short}
@@ -809,7 +811,7 @@
 (export 'image-get-gicon)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_image_new_from_file ()
+;;; gtk_image_new_from_file
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_image_new_from_file" %image-new-from-file) (g:object widget)
@@ -817,8 +819,8 @@
 
 (defun image-new-from-file (path)
  #+liber-documentation
- "@version{2023-3-20}
-  @argument[path]{a pathname or namestring with the name of the file}
+ "@version{2025-06-17}
+  @argument[path]{a pathname or namestring for the name of the file}
   @return{The new @class{gtk:image} widget.}
   @begin{short}
     Creates an image displaying the file.
@@ -846,15 +848,15 @@
 (export 'image-new-from-file)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_image_new_from_icon_set ()                         not exported
+;;; gtk_image_new_from_icon_set                             not exported
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_image_new_from_icon_set" image-new-from-icon-set)
     (g:object image)
  #+liber-documentation
- "@version{#2023-3-20}
-  @argument[icon-set]{a @class{gtk:icon-set} structure}
-  @argument[icon-size]{an icon size of type @symbol{gtk:icon-size}}
+ "@version{#2023-03-20}
+  @argument[icon-set]{a @class{gtk:icon-set} instance}
+  @argument[icon-size]{a @symbol{gtk:icon-size} value}
   @return{The new @class{gtk:image} widget.}
   @begin{short}
     Creates an image displaying an icon set.
@@ -879,13 +881,13 @@
   (icon-size icon-size))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_image_new_from_pixbuf ()
+;;; gtk_image_new_from_pixbuf
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_image_new_from_pixbuf" image-new-from-pixbuf)
     (g:object image)
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2023-03-20}
   @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object}
   @return{The new @class{gtk:image} widget.}
   @begin{short}
@@ -902,13 +904,13 @@
 (export 'image-new-from-pixbuf)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_image_new_from_stock ()                            not exported
+;;; gtk_image_new_from_stock                                not exported
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_image_new_from_stock" image-new-from-stock)
     (g:object widget)
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2023-03-20}
   @argument[stock-id]{a string with the stock icon name}
   @argument[icon-size]{a stock icon size from the @symbol{gtk:icon-size}
     enumeration}
@@ -934,13 +936,13 @@
   (icon-size icon-size))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_image_new_from_animation ()
+;;; gtk_image_new_from_animation
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_image_new_from_animation" image-new-from-animation)
     (g:object image)
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2023-03-20}
   @argument[animation]{a @class{gdk-pixbuf:pixbuf-animation} object}
   @return{The new @class{gtk:image} widget.}
   @begin{short}
@@ -958,13 +960,13 @@
 (export 'image-new-from-animation)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_image_new_from_icon_name ()
+;;; gtk_image_new_from_icon_name
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_image_new_from_icon_name" image-new-from-icon-name)
     (g:object image)
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2023-03-20}
   @argument[name]{a string with an icon name}
   @argument[size]{a @symbol{gtk:icon-size} value for the icon size}
   @return{The new @class{gtk:image} widget displaying the themed icon.}
@@ -982,14 +984,14 @@
 (export 'image-new-from-icon-name)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_image_new_from_gicon ()
+;;; gtk_image_new_from_gicon
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_image_new_from_gicon" image-new-from-gicon) (g:object image)
  #+liber-documentation
- "@version{2023-12-26}
+ "@version{2025-06-17}
   @argument[icon]{a @class{g:icon} object}
-  @argument[size]{a @symbol{gtk:icon-size} value with the icon size}
+  @argument[size]{a @symbol{gtk:icon-size} value for the icon size}
   @return{The new @class{gtk:image} widget displaying the themed icon.}
   @begin{short}
     Creates an image displaying an icon from the current icon theme.
@@ -1006,14 +1008,14 @@
 (export 'image-new-from-gicon)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_image_new_from_resource ()
+;;; gtk_image_new_from_resource
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_image_new_from_resource" image-new-from-resource)
     (g:object image)
  #+liber-documentation
- "@version{#2023-3-20}
-  @argument[resource]{a string with a resource path}
+ "@version{#2025-06-17}
+  @argument[resource]{a string for a resource path}
   @return{The new @class{gtk:image} widget.}
   @begin{short}
     Creates an image displaying the resource file in @arg{resource}.
@@ -1040,13 +1042,13 @@
 (export 'image-new-from-resource)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_image_new_from_surface ()
+;;; gtk_image_new_from_surface
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_image_new_from_surface" image-new-from-surface)
     (g:object image)
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2023-03-20}
   @argument[surface]{a @symbol{cairo:surface-t} instance}
   @return{The new @class{gtk:image} widget.}
   @begin{short}
@@ -1059,7 +1061,7 @@
 (export 'image-new-from-surface)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_image_set_from_file ()
+;;; gtk_image_set_from_file
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_image_set_from_file" %image-set-from-file) :void
@@ -1068,9 +1070,9 @@
 
 (defun image-set-from-file (image path)
  #+liber-documentation
- "@version{2023-3-20}
+ "@version{2025-06-17}
   @argument[image]{a @class{gtk:image} widget}
-  @argument[pathname]{a pathname or namestring with a file to load}
+  @argument[pathname]{a pathname or namestring for a file to load}
   @begin{short}
     See the @fun{gtk:image-new-from-file} function for details.
   @end{short}
@@ -1081,14 +1083,14 @@
 (export 'image-set-from-file)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_image_set_from_icon_set ()                         not exported
+;;; gtk_image_set_from_icon_set                             not exported
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_image_set_from_icon_set" image-set-from-icon-set) :void
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2023-03-20}
   @argument[image]{a @class{gtk:image} widget}
-  @argument[icon-set]{a @class{gtk:icon-set} structure}
+  @argument[icon-set]{a @class{gtk:icon-set} instance}
   @argument[icon-size]{a stock icon size of type @symbol{gtk:icon-size}}
   @begin{short}
     See the @fun{gtk:image-new-from-icon-set} function for details.
@@ -1105,12 +1107,12 @@
   (icon-size icon-size))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_image_set_from_pixbuf ()
+;;; gtk_image_set_from_pixbuf
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_image_set_from_pixbuf" image-set-from-pixbuf) :void
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2023-03-20}
   @argument[image]{a @class{gtk:image} widget}
   @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object}
   @begin{short}
@@ -1126,12 +1128,12 @@
 (export 'image-set-from-pixbuf)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_image_set_from_stock ()                            not exported
+;;; gtk_image_set_from_stock                                not exported
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_image_set_from_stock" image-set-from-stock) :void
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2023-03-20}
   @argument[image]{a @class{gtk:image} widget}
   @argument[stock-id]{a string with a stock icon name}
   @argument[icon-size]{a stock icon size of type @symbol{gtk:icon-size}}
@@ -1150,12 +1152,12 @@
   (icon-size icon-size))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_image_set_from_animation ()
+;;; gtk_image_set_from_animation
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_image_set_from_animation" image-set-from-animation) :void
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2023-03-20}
   @argument[image]{a @class{gtk:image} widget}
   @argument[animation]{a @class{gdk-pixbuf:pixbuf-animation} object}
   @begin{short}
@@ -1170,33 +1172,33 @@
 (export 'image-set-from-animation)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_image_set_from_icon_name ()
+;;; gtk_image_set_from_icon_name
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_image_set_from_icon_name" image-set-from-icon-name) :void
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2025-06-17}
   @argument[image]{a @class{gtk:image} widget}
-  @argument[icon-name]{a string with an icon name}
-  @argument[icon-size]{an icon size of type @symbol{gtk:icon-size}}
+  @argument[name]{a string for an icon name}
+  @argument[size]{a @symbol{gtk:icon-size} value for the icon size}
   @begin{short}
     See the @fun{gtk:image-new-from-icon-name} function for details.
   @end{short}
   @see-class{gtk:image}
   @see-function{gtk:image-new-from-icon-name}"
   (image (g:object image))
-  (icon-name :string)
-  (icon-size icon-size))
+  (name :string)
+  (size icon-size))
 
 (export 'image-set-from-icon-name)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_image_set_from_gicon ()
+;;; gtk_image_set_from_gicon
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_image_set_from_gicon" image-set-from-gicon) :void
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2023-03-20}
   @argument[image]{a @class{gtk:image} widget}
   @argument[icon]{a @class{g:icon} icon}
   @argument[size]{a value of the @symbol{gtk:icon-size} enumeration}
@@ -1214,14 +1216,14 @@
 (export 'image-set-from-gicon)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_image_set_from_resource ()
+;;; gtk_image_set_from_resource
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_image_set_from_resource" image-set-from-resource) :void
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2025-06-17}
   @argument[image]{a @class{gtk:image} widget}
-  @argument[resource]{a string with a resource path}
+  @argument[resource]{a string for a resource path}
   @begin{short}
     See the @fun{gtk:image-new-from-resource} function for details.
   @end{short}
@@ -1233,12 +1235,12 @@
 (export 'image-set-from-resource)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_image_set_from_surface ()
+;;; gtk_image_set_from_surface
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_image_set_from_surface" image-set-from-surface) :void
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2023-03-20}
   @argument[image]{a @class{gtk:image} widget}
   @argument[surface]{a @symbol{cairo:surface-t} instance}
   @begin{short}
@@ -1253,12 +1255,12 @@
 (export 'image-set-from-surface)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_image_clear ()
+;;; gtk_image_clear
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_image_clear" image-clear) :void
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2023-03-20}
   @argument[image]{a @class{gtk:image} widget}
   @short{Resets the image to be empty.}
   @see-class{gtk:image}"
@@ -1267,14 +1269,14 @@
 (export 'image-clear)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_image_new ()
+;;; gtk_image_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline image-new))
 
 (defun image-new ()
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2023-03-20}
   @return{The newly created @class{gtk:image} widget.}
   @short{Creates a new image.}
   @see-class{gtk:image}"

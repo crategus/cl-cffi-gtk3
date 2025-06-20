@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.progress-bar.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -89,7 +89,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkProgressBar
+;;; GtkProgressBar
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkProgressBar" progress-bar
@@ -120,7 +120,7 @@
 
 #+liber-documentation
 (setf (documentation 'progress-bar 'type)
- "@version{2023-12-30}
+ "@version{2025-06-17}
   @begin{short}
     The @class{gtk:progress-bar} widget is typically used to display the
     progress of a long running operation.
@@ -131,12 +131,13 @@
 
   @image[progressbar]{Figure: GtkProgressBar}
 
-  When an application can determine how much work needs to take place, e.g.
-  read a fixed number of bytes from a file, and can monitor its progress, it
-  can use the progress bar in percentage mode and the user sees a growing bar
-  indicating the percentage of the work that has been completed. In this mode,
-  the application is required to call the @fun{gtk:progress-bar-fraction}
-  function periodically to update the progress bar.
+  When an application can determine how much work needs to take place, for
+  example read a fixed number of bytes from a file, and can monitor its
+  progress, it can use the progress bar in percentage mode and the user sees a
+  growing bar indicating the percentage of the work that has been completed.
+  In this mode, the application is required to call the
+  @fun{gtk:progress-bar-fraction} function periodically to update the progress
+  bar.
 
   When an application has no accurate way of knowing the amount of work to do,
   it can use the progress bar in activity mode, which shows activity by a block
@@ -170,7 +171,7 @@ progressbar[.osd]
       @begin[min-horizontal-bar-height]{entry}
         The @code{min-horizontal-bar-height} style property of type @code{:int}
         (Read / Write) @br{}
-        Minimum horizontal height of the progress bar. @br{}
+        The minimum horizontal height of the progress bar. @br{}
         @em{Warning:} The @code{min-horizontal-bar-height} style property has
         been deprecated since version 3.20 and should not be used in
         newly written code. Use the standard @code{min-height} CSS property.
@@ -211,7 +212,7 @@ progressbar[.osd]
       @begin[xspacing]{entry}
         The @code{xspacing} style property of type @code{:int} (Read / Write)
         @br{}
-        Extra spacing applied to the width of a progress bar. @br{}
+        The extra spacing applied to the width of a progress bar. @br{}
         @em{Warning:} The @code{xspacing} style property has been deprecated
         since version 3.20 and should not be used in newly written code. Use
         the standard CSS padding and margins. The value of this style property
@@ -222,7 +223,7 @@ progressbar[.osd]
       @begin[yspacing]{entry}
         The @code{yspacing} style property of type @code{:int} (Read / Write)
         @br{}
-        Extra spacing applied to the height of a progress bar. @br{}
+        The extra spacing applied to the height of a progress bar. @br{}
         @em{Warning:} The @code{yspacing} style property has been deprecated
         since version 3.20 and should not be used in newly written code. Use
         the standard CSS padding and margins. The value of this style property
@@ -263,7 +264,7 @@ progressbar[.osd]
 (setf (liber:alias-for-function 'progress-bar-ellipsize)
       "Accessor"
       (documentation 'progress-bar-ellipsize 'function)
- "@version{2024-1-1}
+ "@version{2024-01-01}
   @syntax{(gtk:progress-bar-ellipsize object) => mode}
   @syntax{(setf (gtk:progress-bar-ellipsize object) mode)}
   @argument[object]{a @class{gtk:progress-bar} widget}
@@ -292,12 +293,12 @@ progressbar[.osd]
 (setf (liber:alias-for-function 'progress-bar-fraction)
       "Accessor"
       (documentation 'progress-bar-fraction 'function)
- "@version{2024-1-1}
+ "@version{2025-06-17}
   @syntax{(gtk:progress-bar-fraction object) => fraction}
   @syntax{(setf (gtk:progress-bar-fraction object) fraction)}
   @argument[object]{a @class{gtk:progress-bar} widget}
-  @argument[fraction]{a double float with the fraction of the task that is
-    been completed}
+  @argument[fraction]{a number coerced to a double float for the fraction of
+    the task that is been completed}
   @begin{short}
     Accessor of the @slot[gtk:progress-bar]{fraction} slot of the
     @class{gtk:progress-bar} class.
@@ -321,7 +322,7 @@ progressbar[.osd]
 (setf (liber:alias-for-function 'progress-bar-inverted)
       "Accessor"
       (documentation 'progress-bar-inverted 'function)
- "@version{2024-1-1}
+ "@version{2024-01-01}
   @syntax{(gtk:progress-bar-inverted object) => inverted}
   @syntax{(setf (gtk:progress-bar-inverted object) inverted)}
   @argument[object]{a @class{gtk:progress-bar} widget}
@@ -347,11 +348,12 @@ progressbar[.osd]
 (setf (liber:alias-for-function 'progress-bar-pulse-step)
       "Accessor"
       (documentation 'progress-bar-pulse-step 'function)
- "@version{2024-1-1}
+ "@version{2025-06-17}
   @syntax{(gtk:progress-bar-pulse-step object) => fraction}
   @syntax{(setf (gtk:progress-bar-pulse-step object) fraction)}
   @argument[object]{a @class{gtk:progress-bar} widget}
-  @argument[fraction]{a double float with the fraction between 0.0 and 1.0}
+  @argument[fraction]{a number coerced to a double float for the fraction
+    between 0.0 and 1.0}
   @begin{short}
     Accessor of the @slot[gtk:progress-bar]{pulse-step} slot of the
     @class{gtk:progress-bar} class.
@@ -380,7 +382,7 @@ progressbar[.osd]
 (setf (liber:alias-for-function 'progress-bar-show-text)
       "Accessor"
       (documentation 'progress-bar-show-text 'function)
- "@version{2024-1-1}
+ "@version{2024-01-01}
   @syntax{(gtk:progress-bar-show-text object) => setting}
   @syntax{(setf (gtk:progress-bar-show-text object) setting)}
   @argument[object]{a @class{gtk:progress-bar} widget}
@@ -409,14 +411,14 @@ progressbar[.osd]
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "text" 'progress-bar) t)
  "The @code{text} property of type @code{:string} (Read / Write) @br{}
-  Text to be displayed in the progress bar. @br{}
+  The text to be displayed in the progress bar. @br{}
   Default value: @code{nil}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'progress-bar-text)
       "Accessor"
       (documentation 'progress-bar-text 'function)
- "@version{2024-1-1}
+ "@version{2024-01-01}
   @syntax{(gtk:progress-bar-text object) => text}
   @syntax{(setf (gtk:progress-bar-text object) text)}
   @argument[object]{a @class{gtk:progress-bar} widget}
@@ -448,14 +450,14 @@ progressbar[.osd]
   @see-function{gtk:progress-bar-show-text}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_progress_bar_new ()
+;;; gtk_progress_bar_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline progress-bar-new))
 
 (defun progress-bar-new ()
  #+liber-documentation
- "@version{2024-1-1}
+ "@version{2024-01-01}
   @return{The @class{gtk:progress-bar} widget.}
   @short{Creates a new progress bar.}
   @see-class{gtk:progress-bar}"
@@ -464,12 +466,12 @@ progressbar[.osd]
 (export 'progress-bar-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_progress_bar_pulse ()
+;;; gtk_progress_bar_pulse
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_progress_bar_pulse" progress-bar-pulse) :void
  #+liber-documentation
- "@version{2024-1-1}
+ "@version{2024-01-01}
   @argument[bar]{a @class{gtk:progress-bar} widget}
   @begin{short}
     Indicates that some progress has been made, but you do not know how much.

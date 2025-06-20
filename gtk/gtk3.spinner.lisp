@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.spinner.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation in the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2012 - 2024 Dieter Kaiser
+;;; Copyright (C) 2012 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -71,7 +71,7 @@
 
 #+liber-documentation
 (setf (documentation 'spinner 'type)
- "@version{#2023-3-26}
+ "@version{#2023-03-26}
   @begin{short}
     The @class{gtk:spinner} widget displays an icon size spinning animation.
   @end{short}
@@ -105,7 +105,7 @@
 (setf (liber:alias-for-function 'spinner-active)
       "Accessor"
       (documentation 'spinner-active 'function)
- "@version{#2023-3-26}
+ "@version{#2023-03-26}
   @syntax{(gtk:spinner-active object) => active}
   @syntax{(setf (gtk:spinner-active object) active)}
   @argument[object]{a @class{gtk:spinner} widget}
@@ -117,15 +117,15 @@
   @see-class{gtk:spinner}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_spinner_new ()
+;;; gtk_spinner_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline spinner-new))
 
 (defun spinner-new ()
  #+liber-documentation
- "@version{#2023-3-26}
-  @return{A new @class{gtk:spinner} widget.}
+ "@version{#2025-06-17}
+  @return{The new @class{gtk:spinner} widget.}
   @short{Returns a new spinner. Not yet started.}
   @see-class{gtk:spinner}
   @see-class{gtk:spinner-start}"
@@ -134,12 +134,12 @@
 (export 'spinner-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_spinner_start ()
+;;; gtk_spinner_start
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_spinner_start" spinner-start) :void
  #+liber-documentation
- "@version{#2023-3-26}
+ "@version{#2023-03-26}
   @argument[spinner]{a @class{gtk:spinner} widget}
   @short{Starts the animation of the spinner.}
   @see-class{gtk:spinner}
@@ -149,12 +149,12 @@
 (export 'spinner-start)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_spinner_stop ()
+;;; gtk_spinner_stop
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_spinner_stop" spinner-stop) :void
  #+liber-documentation
- "@version{#2023-3-26}
+ "@version{#2023-03-26}
   @argument[spinner]{a @class{gtk:spinner} widget}
   @short{Stops the animation of the spinner.}
   @see-class{gtk:spinner}

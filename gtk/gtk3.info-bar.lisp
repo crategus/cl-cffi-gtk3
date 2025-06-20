@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.info-bar.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation of the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2012 - 2024 Dieter Kaiser
+;;; Copyright (C) 2012 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -45,14 +45,14 @@
 ;;;     gtk_info_bar_set_response_sensitive
 ;;;     gtk_info_bar_set_default_response
 ;;;     gtk_info_bar_response
-;;;     gtk_info_bar_set_message_type                      Accessor
-;;;     gtk_info_bar_get_message_type                      Accessor
+;;;     gtk_info_bar_set_message_type                       Accessor
+;;;     gtk_info_bar_get_message_type                       Accessor
 ;;;     gtk_info_bar_get_action_area
 ;;;     gtk_info_bar_get_content_area
-;;;     gtk_info_bar_get_show_close_button                 Accessor
-;;;     gtk_info_bar_set_show_close_button                 Accessor
-;;;     gtk_info_bar_get_revealed                          Accessor
-;;;     gtk_info_bar_set_revealed                          Accessor
+;;;     gtk_info_bar_get_show_close_button                  Accessor
+;;;     gtk_info_bar_set_show_close_button                  Accessor
+;;;     gtk_info_bar_get_revealed                           Accessor
+;;;     gtk_info_bar_set_revealed                           Accessor
 ;;;
 ;;; Properties
 ;;;
@@ -90,7 +90,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkInfoBar
+;;; GtkInfoBar
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkInfoBar" info-bar
@@ -112,7 +112,7 @@
 
 #+liber-documentation
 (setf (documentation 'info-bar 'type)
- "@version{#2023-3-20}
+ "@version{#2025-06-17}
   @begin{short}
     The @class{gtk:info-bar} widget can be used to show messages to the user
     without showing a dialog.
@@ -186,7 +186,7 @@
       @begin[action-area-border]{entry}
         The @code{action-area-border} style property of type @code{:int} (Read)
         @br{}
-        Width of the border around the action area of the info bar. @br{}
+        The width of the border around the action area of the info bar. @br{}
         @em{Warning:} The @code{action-area-border} style property has been
         deprecated since version 3.6 and should not be used in newly written
         code. Use the @fun{gtk:container-border-width} function. @br{}
@@ -195,7 +195,7 @@
       @end{entry}
       @begin[button-spacing]{entry}
         The @code{button-spacing} style property of type @code{:int} (Read)@br{}
-        Spacing between buttons in the action area of the info bar. @br{}
+        The spacing between buttons in the action area of the info bar. @br{}
         @em{Warning:} The @code{button-spacing} style property has been
         deprecated since version 3.6 and should not be used in newly written
         code. Use the @fun{gtk:box-spacing} function. @br{}
@@ -231,25 +231,25 @@
       @begin{pre}
 lambda (infobar)    :action
       @end{pre}
-      The signal is a keybinding signal which gets emitted when the user uses a
-      keybinding to dismiss the info bar. The default binding for this signal
-      is the @kbd{Escape} key. @br{}
       @begin[code]{table}
         @entry[infobar]{The @class{gtk:info-bar} widget on which the signal is
           emitted.}
       @end{table}
+      The signal is a keybinding signal which gets emitted when the user uses a
+      keybinding to dismiss the info bar. The default binding for this signal
+      is the @kbd{Escape} key.
     @subheading{The \"response\" signal}
       @begin{pre}
 lambda (infobar response)    :run-last
       @end{pre}
-      Emitted when an action widget is clicked or the application programmer
-      calls the @fun{gtk:dialog-response} function. The @arg{response} argument
-      depends on which action widget was clicked. @br{}
       @begin[code]{table}
         @entry[infobar]{The @class{gtk:info-bar} widget on which the signal is
           emitted.}
-        @entry[response]{An integer with the response ID.}
+        @entry[response]{The integer with the response ID.}
       @end{table}
+      Emitted when an action widget is clicked or the application programmer
+      calls the @fun{gtk:dialog-response} function. The @arg{response} argument
+      depends on which action widget was clicked.
   @end{dictionary}
   @see-constructor{gtk:info-bar-new}
   @see-constructor{gtk:info-bar-new-with-buttons}
@@ -277,7 +277,7 @@ lambda (infobar response)    :run-last
 (setf (liber:alias-for-function 'info-bar-message-type)
       "Accessor"
       (documentation 'info-bar-message-type 'function)
- "@version{#2023-3-20}
+ "@version{#2023-03-20}
   @syntax{(gtk:info-bar-message-type object) => message-type}
   @syntax{(setf (gtk:info-bar-message-type object) message-type)}
   @argument[object]{a @class{gtk:info-bar} widget}
@@ -306,7 +306,7 @@ lambda (infobar response)    :run-last
 (setf (liber:alias-for-function 'info-bar-revealed)
       "Accessor"
       (documentation 'info-bar-revealed 'function)
- "@version{#2023-3-20}
+ "@version{#2023-03-20}
   @syntax{(gtk:info-bar-revealed object) => revealed}
   @syntax{(setf (gtk:info-bar-revealed object) revealed)}
   @argument[object]{a @class{gtk:info-bar} widget}
@@ -338,7 +338,7 @@ lambda (infobar response)    :run-last
 (setf (liber:alias-for-function 'info-bar-show-close-button)
       "Accessor"
       (documentation 'info-bar-show-close-button 'function)
- "@version{#2023-3-20}
+ "@version{#2023-03-20}
   @syntax{(gtk:info-bar-show-close-button object) => setting}
   @syntax{(setf (gtk:info-bar-show-close-button object) setting)}
   @argument[object]{a @class{gtk:info-bar} widget}
@@ -353,15 +353,15 @@ lambda (infobar response)    :run-last
   @see-class{gtk:info-bar}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_info_bar_new ()
+;;; gtk_info_bar_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline info-bar-new))
 
 (defun info-bar-new ()
  #+liber-documentation
- "@version{#2023-3-20}
-  @return{A new @class{gtk:info-bar} widget.}
+ "@version{#2025-06-17}
+  @return{The new @class{gtk:info-bar} widget.}
   @short{Creates a new info bar.}
   @see-class{gtk:info-bar}"
   (make-instance 'info-bar))
@@ -369,15 +369,15 @@ lambda (infobar response)    :run-last
 (export 'info-bar-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_info_bar_new_with_buttons ()
+;;; gtk_info_bar_new_with_buttons
 ;;; ----------------------------------------------------------------------------
 
 (defun info-bar-new-with-buttons (&rest args)
  #+liber-documentation
- "@version{#2023-3-20}
-  @argument[args]{first a string with the text and second an integer with the
+ "@version{#2025-06-17}
+  @argument[args]{first a string for the text and second an integer for the
     response ID for each button, then more pairs for each button}
-  @return{A new @class{gtk:info-bar} widget.}
+  @return{The new @class{gtk:info-bar} widget.}
   @short{Creates a new info bar with buttons.}
   Button text/response ID pairs should be listed. Button text can be some
   arbitrary text. A response ID can be any positive number, or one of the values
@@ -393,16 +393,16 @@ lambda (infobar response)    :run-last
 (export 'info-bar-new-with-buttons)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_info_bar_add_action_widget ()
+;;; gtk_info_bar_add_action_widget
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_info_bar_add_action_widget" info-bar-add-action-widget)
     :void
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2025-06-17}
   @argument[infobar]{a @class{gtk:info-bar} widget}
-  @argument[child]{an activatable widget}
-  @argument[response]{an integer with the response ID for @arg{child}}
+  @argument[child]{an activatable @class{gtk:widget} widget}
+  @argument[response]{an integer for the response ID for @arg{child}}
   @begin{short}
     Add an activatable widget to the action area of an info bar, connecting a
     signal handler that will emit the @code{\"response\"} signal on the message
@@ -417,15 +417,15 @@ lambda (infobar response)    :run-last
 (export 'info-bar-add-action-widget)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_info_bar_add_button ()
+;;; gtk_info_bar_add_button
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_info_bar_add_button" info-bar-add-button) (g:object widget)
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2025-06-17}
   @argument[infobar]{a @class{gtk:info-bar} widget}
-  @argument[text]{a string with the text of the button}
-  @argument[response]{an integer with the response ID for the button}
+  @argument[text]{a string for the text of the button}
+  @argument[response]{an integer for the response ID for the button}
   @return{The @class{gtk:button} widget that was added.}
   @begin{short}
     Adds a button with the given text, and sets things up so that clicking the
@@ -443,14 +443,14 @@ lambda (infobar response)    :run-last
 (export 'info-bar-add-button)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_info_bar_add_buttons ()
+;;; gtk_info_bar_add_buttons
 ;;; ----------------------------------------------------------------------------
 
 (defun info-bar-add-buttons (infobar &rest args)
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2025-06-17}
   @argument[infobar]{a @class{gtk:info-bar} widget}
-  @argument[args]{first a string with a button text and second an integer with
+  @argument[args]{first a string for a button text and second an integer for
     a response ID, then more pairs for each button}
   @begin{short}
     Adds more buttons, same as calling the @fun{gtk:info-bar-add-button}
@@ -465,15 +465,15 @@ lambda (infobar response)    :run-last
 (export 'info-bar-add-buttons)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_info_bar_set_response_sensitive ()
+;;; gtk_info_bar_set_response_sensitive
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_info_bar_set_response_sensitive"
                info-bar-set-response-sensitive) :void
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2025-06-17}
   @argument[infobar]{a @class{gtk:info-bar} widget}
-  @argument[response]{an integer with a response ID}
+  @argument[response]{an integer for a response ID}
   @argument[setting]{@em{true} for sensitive}
   @begin{short}
     Calls the @fun{gtk:widget-sensitive} function for each widget in the action
@@ -489,15 +489,15 @@ lambda (infobar response)    :run-last
 (export 'info-bar-set-response-sensitive)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_info_bar_set_default_response ()
+;;; gtk_info_bar_set_default_response
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_info_bar_set_default_response"
                info-bar-set-default-response) :void
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2025-06-17}
   @argument[infobar]{a @class{gtk:info-bar} widget}
-  @argument[response]{an integer with a response ID}
+  @argument[response]{an integer for a response ID}
   @begin{short}
     Sets the last widget in the action area of the info bar with the given
     response ID as the default widget for the info bar.
@@ -518,9 +518,9 @@ lambda (infobar response)    :run-last
 
 (cffi:defcfun ("gtk_info_bar_response" info-bar-response) :void
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2025-06-17}
   @argument[infobar]{a @class{gtk:info-bar} widget}
-  @argument[response]{an integer with a response ID}
+  @argument[response]{an integer for a response ID}
   @short{Emits the @code{\"response\"} signal with the given response ID.}
   @see-class{gtk:info-bar}"
   (infobar (g:object info-bar))
@@ -529,15 +529,15 @@ lambda (infobar response)    :run-last
 (export 'info-bar-response)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_info_bar_get_action_area ()
+;;; gtk_info_bar_get_action_area
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_info_bar_get_action_area" info-bar-action-area)
     (g:object widget)
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2025-06-17}
   @argument[infobar]{a @class{gtk:info-bar} widget}
-  @return{A @class{gtk:widget} object with the action area.}
+  @return{The @class{gtk:widget} object with the action area.}
   @short{Returns the action area of the info bar.}
   @see-class{gtk:info-bar}
   @see-class{gtk:widget}"
@@ -546,13 +546,13 @@ lambda (infobar response)    :run-last
 (export 'info-bar-action-area)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_info_bar_get_content_area ()
+;;; gtk_info_bar_get_content_area
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_info_bar_get_content_area" info-bar-content-area)
     (g:object widget)
  #+liber-documentation
- "@version{#2023-3-20}
+ "@version{#2023-03-20}
   @argument[infobar]{a @class{gtk:info-bar} widget}
   @return{The @class{gtk:box} content area.}
   @short{Returns the content area of the info bar.}

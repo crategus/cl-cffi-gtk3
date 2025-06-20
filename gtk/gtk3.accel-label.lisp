@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.accel-label.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -67,7 +67,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkAccelLabel
+;;; GtkAccelLabel
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkAccelLabel" accel-label
@@ -85,7 +85,7 @@
 
 #+liber-documentation
 (setf (documentation 'accel-label 'type)
- "@version{#2023-3-15}
+ "@version{#2023-03-15}
   @begin{short}
     The @class{gtk:accel-label} widget is a subclass of the @class{gtk:label}
     class that also displays an accelerator key on the right of the label text,
@@ -161,7 +161,7 @@
 (setf (liber:alias-for-function 'accel-label-accel-closure)
       "Accessor"
       (documentation 'accel-label-accel-closure 'function)
- "@version{#2023-3-15}
+ "@version{#2023-03-15}
   @syntax{(gtk:accel-label-accel-closure object) => closure}
   @syntax{(setf (gtk:accel-label-accel-closure object) closure)}
   @argument[label]{a @class{gtk:accel-label} widget}
@@ -190,7 +190,7 @@
 (setf (liber:alias-for-function 'accel-label-accel-widget)
       "Accessor"
       (documentation 'accel-label-accel-widget 'function)
- "@version{#2023-3-15}
+ "@version{#2023-03-15}
   @syntax{(gtk:accel-label-accel-widget object) => widget}
   @syntax{(setf (gtk:accel-label-accel-widget object) widget)}
   @argument[label]{a @class{gtk:accel-label} widget}
@@ -206,15 +206,15 @@
   @see-class{gtk:widget}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_accel_label_new ()
+;;; gtk_accel_label_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline accel-label-new))
 
 (defun accel-label-new (text)
  #+liber-documentation
- "@version{#2023-3-15}
-  @argument[text]{a string with the text of the label}
+ "@version{#2025-06-17}
+  @argument[text]{a string for the text of the label}
   @return{The new @class{gtk:accel-label} widget.}
   @begin{short}
     Creates a new accel label.
@@ -226,12 +226,12 @@
 (export 'accel-label-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_accel_label_get_accel_width () -> accel-label-accel-width
+;;; gtk_accel_label_get_accel_width
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_accel_label_get_accel_width" accel-label-accel-width) :int
   #+liber-documentation
- "@version{#2023-3-15}
+ "@version{#2023-03-15}
   @argument[label]{a @class{gtk:accel-label} widget}
   @return{The integer with the width needed to display the accelerator key(s).}
   @begin{short}
@@ -246,14 +246,14 @@
 (export 'accel-label-accel-width)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_accel_label_set_accel ()
+;;; gtk_accel_label_set_accel
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_accel_label_set_accel" accel-label-set-accel) :void
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{#2025-06-17}
   @argument[label]{a @class{gtk:accel-label} widget}
-  @argument[key]{an unsigned integer with a keyval, or 0}
+  @argument[key]{an unsigned integer for a keyval, or 0}
   @argument[mods]{a @symbol{gdk:modifier-type} modifier mask for the accel}
   @begin{short}
     Manually sets a keyval and modifier mask as the accelerator rendered by
@@ -271,7 +271,7 @@
 (export 'accel-label-set-accel)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_accel_label_get_accel ()
+;;; gtk_accel_label_get_accel
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_accel_label_get_accel" %accel-label-get-accel) :void
@@ -281,12 +281,11 @@
 
 (defun accel-label-get-accel (label)
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{#2025-06-17}
+  @syntax{(gtk:accel-label-accel label) => key, mods}
   @argument[label]{a @class{gtk:accel-label} widget}
-  @begin{return}
-    @arg{key} --  an unsigned integer with a keyval @br{}
-    @arg{mods} -- a @symbol{gdk:modifier-type} modifier mask
-  @end{return}
+  @argument[key]{an unsigned integer for a keyval}
+  @argument[mods]{a @symbol{gdk:modifier-type} modifier mask}
   @begin{short}
     Gets the keyval and modifier mask set with the
     @fun{gtk:accel-label-set-accel} function.
@@ -303,12 +302,12 @@
 (export 'accel-label-get-accel)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_accel_label_refetch ()
+;;; gtk_accel_label_refetch
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_accel_label_refetch" accel-label-refetch) :boolean
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{#2023-03-15}
   @argument[label]{a @class{gtk:accel-label} widget}
   @return{Always returns @em{false}.}
   @begin{short}
