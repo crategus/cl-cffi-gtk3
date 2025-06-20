@@ -2,7 +2,7 @@
 ;;; gtk3.check-button.lisp
 ;;;
 ;;; The documentation in this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
 ;;; see <http://www.gtk.org>. The API documentation of the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
@@ -82,7 +82,7 @@
 
 #+liber-documentation
 (setf (documentation 'check-button 'type)
- "@version{2025-3-9}
+ "@version{2025-06-18}
   @begin{short}
     The @class{gtk:check-button} widget places a discrete
     @class{gtk:toggle-button} widget next to a widget, usually a
@@ -116,7 +116,7 @@ button.check
       @begin[indicator-size]{entry}
         The @code{indicator-size} style property of type @code{:int} (Read)
         @br{}
-        Size of check or radio indicator. @br{}
+        The size of check or radio indicator. @br{}
         @em{Warning:} The @code{indicator-size} style property has been
         deprecated since version 3.20 and should not be used in newly written
         code. Use CSS @code{min-width} and @code{min-height} on the indicator
@@ -127,7 +127,7 @@ button.check
       @begin[indicator-spacing]{entry}
         The @code{indicator-spacing} style property of type @code{:int}
         (Read) @br{}
-        Spacing around check or radio indicator. @br{}
+        The spacing around check or radio indicator. @br{}
         @em{Warning:} The @code{indicator-spacing} style property has been
         deprecated since version 3.20 and should not be used in newly written
         code. Use CSS @code{min-width} and @code{min-height} on the indicator
@@ -152,7 +152,7 @@ button.check
 
 (defun check-button-new ()
  #+liber-documentation
- "@version{2025-3-9}
+ "@version{2025-03-09}
   @return{The new @class{gtk:check-button} widget.}
   @short{Creates a new check button.}
   @see-class{gtk:check-button}
@@ -170,7 +170,7 @@ button.check
 
 (defun check-button-new-with-label (label)
  #+liber-documentation
- "@version{2025-3-9}
+ "@version{2025-03-09}
   @argument[label]{a string for the text of the check button}
   @return{The new @class{gtk:check-button} widget.}
   @begin{short}
@@ -194,7 +194,7 @@ button.check
 
 (defun check-button-new-with-mnemonic (label)
 #+liber-documentation
- "@version{2025-3-9}
+ "@version{2025-03-09}
   @argument[label]{a string for the text of the button, with an underscore in
     front of the mnemonic character}
   @return{The new @class{gtk:check-button} widget.}

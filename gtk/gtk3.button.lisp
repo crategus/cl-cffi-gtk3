@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.button.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -60,14 +60,14 @@
 ;;;     gtk_button_new_with_label
 ;;;     gtk_button_new_with_mnemonic
 ;;;     gtk_button_new_from_icon_name ()
-;;;     gtk_button_new_from_stock                          deprecated
-;;;     gtk_button_pressed                                 deprecated
-;;;     gtk_button_released                                deprecated
+;;;     gtk_button_new_from_stock                           deprecated
+;;;     gtk_button_pressed                                  deprecated
+;;;     gtk_button_released                                 deprecated
 ;;;     gtk_button_clicked
-;;;     gtk_button_enter                                   deprecated
-;;;     gtk_button_leave                                   deprecated
-;;;     gtk_button_set_alignment                           deprecated
-;;;     gtk_button_get_alignment                           deprecated
+;;;     gtk_button_enter                                    deprecated
+;;;     gtk_button_leave                                    deprecated
+;;;     gtk_button_set_alignment                            deprecated
+;;;     gtk_button_get_alignment                            deprecated
 ;;;     gtk_button_get_event_window
 ;;;
 ;;; Properties
@@ -127,7 +127,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkButton
+;;; GtkButton
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkButton" button
@@ -171,7 +171,7 @@
 
 #+liber-documentation
 (setf (documentation 'button 'type)
- "@version{2023-12-26}
+ "@version{2025-06-18}
   @short{A widget that emits a signal when clicked on.}
 
   @image[button]{Figure: GtkButton}
@@ -229,10 +229,9 @@
       @begin[default-border]{entry}
         The @code{default-border} style property of type @class{gtk:border}
         (Read) @br{}
-        The @code{default-border} style property defines the extra space to add
-        around a button that can become the default widget of its window. For
-        more information about default widgets, see the
-        @fun{gtk:widget-grab-default} function. @br{}
+        Defines the extra space to add around a button that can become the
+        default widget of its window. For more information about default
+        widgets, see the @fun{gtk:widget-grab-default} function. @br{}
         @em{Warning:} The @code{default-border} style property has been
         deprecated since version 3.14 and should not be used in newly written
         code. Use CSS margins and padding instead. The value of this style
@@ -241,11 +240,10 @@
       @begin[default-outside-border]{entry}
         The @code{default-outside-border} style property of type
         @class{gtk:border} (Read) @br{}
-        The @code{default-outside-border} style property defines the extra
-        outside space to add around a button that can become the default widget
-        of its window. Extra outside space is always drawn outside the button
-        border. For more information about default widgets, see the
-        @fun{gtk:widget-grab-default} function. @br{}
+        Defines the extra outside space to add around a button that can become
+        the default widget of its window. Extra outside space is always drawn
+        outside the button border. For more information about default widgets,
+        see the @fun{gtk:widget-grab-default} function. @br{}
         @em{Warning:} The @code{default-outside-border} style property has been
         deprecated since version 3.14 and should not be used in newly written
         code. Use CSS margins and padding instead. The value of this style
@@ -264,7 +262,7 @@
       @end{entry}
       @begin[image-spacing]{entry}
         The @code{image-spacing} style property of type @code{:int} (Read) @br{}
-        Spacing in pixels between the image and label. @br{}
+        The spacing in pixels between the image and label. @br{}
         Allowed values: >= 0 @br{}
         Default value: 2
       @end{entry}
@@ -284,65 +282,65 @@
       @begin{pre}
 lambda (button)    :action
       @end{pre}
+      @begin[code]{table}
+        @entry[button]{The @class{gtk:button} widget which received the signal.}
+      @end{table}
       The signal on the @class{gtk:button} widget is an action signal and
       emitting it causes the button to animate press then release. Applications
       should never connect to this signal, but use the @code{\"clicked\"}
       signal.
-      @begin[code]{table}
-        @entry[button]{The @class{gtk:button} widget which received the signal.}
-      @end{table}
     @subheading{The \"clicked\" signal}
       @begin{pre}
 lambda (button)    :action
       @end{pre}
-      Emitted when the button has been activated (pressed and released).
       @begin[code]{table}
         @entry[button]{The @class{gtk:button} widget which received the signal.}
       @end{table}
+      Emitted when the button has been activated (pressed and released).
     @subheading{The \"enter\" signal}
       @begin{pre}
 lambda (button)    :run-first
       @end{pre}
+      @begin[code]{table}
+        @entry[button]{The @class{gtk:button} widget which received the signal.}
+      @end{table}
       Emitted when the pointer enters the button. @br{}
       @em{Warning:} The @code{\"enter\"} signal has been deprecated since
       version 2.8 and should not be used in newly written code. Use the
       @code{\"enter-notify-event\"} signal of the @class{gtk:widget} class.
-      @begin[code]{table}
-        @entry[button]{The @class{gtk:button} widget which received the signal.}
-      @end{table}
     @subheading{The \"leave\" signal}
       @begin{pre}
 lambda (button)    :run-first
       @end{pre}
+      @begin[code]{table}
+        @entry[button]{The @class{gtk:button} widget which received the signal.}
+      @end{table}
       Emitted when the pointer leaves the button. @br{}
       @em{Warning:} The @code{\"leave\"} signal has been deprecated since
       version 2.8 and should not be used in newly written code. Use the
       @code{\"leave-notify-event\"} signal of the @class{gtk:widget} class.
-      @begin[code]{table}
-        @entry[button]{The @class{gtk:button} widget which received the signal.}
-      @end{table}
     @subheading{The \"pressed\" signal}
       @begin{pre}
 lambda (button)    :run-first
       @end{pre}
+      @begin[code]{table}
+        @entry[button]{The @class{gtk:button} widget which received the signal.}
+      @end{table}
       Emitted when the button is pressed. @br{}
       @em{Warning:} The @code{\"pressed\"} signal has been deprecated since
       version 2.8 and should not be used in newly written code. Use the
       @code{\"button-press-event\"} signal of the @class{gtk:widget} class.
-      @begin[code]{table}
-        @entry[button]{The @class{gtk:button} widget which received the signal.}
-      @end{table}
     @subheading{The \"released\" signal}
       @begin{pre}
 lambda (button)    :run-first
       @end{pre}
+      @begin[code]{table}
+        @entry[button]{The @class{gtk:button} widget which received the signal.}
+      @end{table}
       Emitted when the button is released. @br{}
       @em{Warning:} The @code{\"released\"} signal has been deprecated since
       version 2.8 and should not be used in newly written code. Use the
       @code{\"button-release-event\"} signal of the @class{gtk:widget} class.
-      @begin[code]{table}
-        @entry[button]{The @class{gtk:button} widget which received the signal.}
-      @end{table}
   @end{dictionary}
   @see-constructor{gtk:button-new}
   @see-constructor{gtk:button-new-with-label}
@@ -510,18 +508,18 @@ lambda (button)    :run-first
 (setf (documentation (liber:slot-documentation "label" 'button) t)
  "The @code{label} property of type @code{:string} (Read / Write / Construct)
   @br{}
-  Text of the label inside the button, if the button contains a label. @br{}
+  The text of the label inside the button, if the button contains a label. @br{}
   Default value: @code{nil}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'button-label)
       "Accessor"
       (documentation 'button-label 'function)
- "@version{2023-12-30}
+ "@version{2025-06-18}
   @syntax{(gtk:button-label object) => label}
   @syntax{(setf (gtk:button-label object) label)}
   @argument[object]{a @class{gtk:button} widget}
-  @argument[label]{a string with the text of the label}
+  @argument[label]{a string for the text of the label}
   @begin{short}
     Accessor of the @slot[gtk:button]{label} slot of the @class{gtk:button}
     class.
@@ -645,11 +643,12 @@ lambda (button)    :run-first
 (setf (liber:alias-for-function 'button-xalign)
       "Accessor"
       (documentation 'button-xalign 'function)
- "@version{2023-12-30}
+ "@version{2025-06-18}
   @syntax{(gtk:button-xalign object) => xalign}
   @syntax{(setf (gtk:button-xalign object) xalign)}
   @argument[object]{a @class{gtk:button} widget}
-  @argument[xalign]{a float for the horizontal alignment}
+  @argument[xalign]{a number coerced to a single float for the horizontal
+    alignment}
   @begin{short}
     Accessor of the @slot[gtk:button]{xalign} slot of the @class{gtk:button}
     class.
@@ -679,11 +678,12 @@ lambda (button)    :run-first
 (setf (liber:alias-for-function 'button-yalign)
       "Accessor"
       (documentation 'button-yalign 'function)
- "@version{2023-12-30}
+ "@version{2025-06-18}
   @syntax{(gtk:button-yalign object) => yalign}
   @syntax{(setf (gtk:button-yalign object) yalign)}
   @argument[object]{a @class{gtk:button} widget}
-  @argument[xalign]{a float for the vertical alignment}
+  @argument[xalign]{a number coerced to a single float for the vertical
+    alignment}
   @begin{short}
     Accessor of the @slot[gtk:button]{yalign} slot of the @class{gtk:button}
     class.
@@ -696,7 +696,7 @@ lambda (button)    :run-first
   @see-class{gtk:button}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_button_new ()
+;;; gtk_button_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline button-new))
@@ -719,15 +719,15 @@ lambda (button)    :run-first
 (export 'button-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_button_new_with_label ()
+;;; gtk_button_new_with_label
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline button-new-with-label))
 
 (defun button-new-with-label (label)
  #+liber-documentation
- "@version{2023-12-30}
-  @argument[label]{a string with the text you want the @class{gtk:label} child
+ "@version{2025-06-18}
+  @argument[label]{a string for the text you want the @class{gtk:label} child
     widget to hold}
   @return{The newly created @class{gtk:button} widget.}
   @begin{short}
@@ -744,15 +744,15 @@ lambda (button)    :run-first
 (export 'button-new-with-label)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_button_new_with_mnemonic ()
+;;; gtk_button_new_with_mnemonic
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline button-new-with-mnemonic))
 
 (defun button-new-with-mnemonic (label)
  #+liber-documentation
- "@version{2023-12-30}
-  @argument[label]{a string with the text of the button, with an underscore in
+ "@version{2025-06-18}
+  @argument[label]{a string for the text of the button, with an underscore in
     front of the mnemonic character}
   @return{The new @class{gtk:button} widget.}
   @begin{short}
@@ -774,17 +774,15 @@ lambda (button)    :run-first
 (export 'button-new-with-mnemonic)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_button_new_from_icon_name ()
+;;; gtk_button_new_from_icon_name
 ;;; ----------------------------------------------------------------------------
-
-;; TODO: Consider to implement this function with make-instance
 
 (cffi:defcfun ("gtk_button_new_from_icon_name" button-new-from-icon-name)
     (g:object widget)
  #+liber-documentation
- "@version{2023-12-30}
-  @argument[name]{a string with the icon name}
-  @argument[size]{a value of the @symbol{gtk:icon-size} enumeration}
+ "@version{2025-06-18}
+  @argument[name]{a string for the icon name}
+  @argument[size]{a @symbol{gtk:icon-size} value}
   @return{The new @class{gtk:button} widget displaying the themed icon.}
   @begin{short}
     Creates a new button containing an icon from the current icon theme.
@@ -805,13 +803,13 @@ lambda (button)    :run-first
 (export 'button-new-from-icon-name)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_button_new_from_stock ()                           not exported
+;;; gtk_button_new_from_stock                               not exported
 ;;; ----------------------------------------------------------------------------
 
 (defun button-new-from-stock (stock)
  #+liber-documentation
  "@version{2023-12-30}
-  @argument[stock]{a string with the name of the stock item}
+  @argument[stock]{a string for the name of the stock item}
   @return{The new @class{gtk:button} widget.}
   @begin{short}
     Creates a new button widget containing the image and text from a stock item.
@@ -833,43 +831,15 @@ lambda (button)    :run-first
                  :use-stock t))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_button_pressed ()
-;;;
-;;; void gtk_button_pressed (GtkButton *button);
-;;;
-;;; Warning
-;;;
-;;; gtk_button_pressed has been deprecated since version 2.20 and should not be
-;;; used in newly written code. Use the "button-press-event" signal.
-;;;
-;;; Emits a "pressed" signal to the given GtkButton.
-;;;
-;;; button :
-;;;     The GtkButton you want to send the signal to.
+;;; gtk_button_pressed                                      deprecated
 ;;; ----------------------------------------------------------------------------
 
-;;; * deprecated *
-
 ;;; ----------------------------------------------------------------------------
-;;; gtk_button_released ()
-;;;
-;;; void gtk_button_released (GtkButton *button);
-;;;
-;;; Warning
-;;;
-;;; gtk_button_released has been deprecated since version 2.20 and should not
-;;; be used in newly written code. Use the "button-release-event" signal.
-;;;
-;;; Emits a "released" signal to the given GtkButton.
-;;;
-;;; button :
-;;;     The GtkButton you want to send the signal to.
+;;; gtk_button_released                                     deprecated
 ;;; ----------------------------------------------------------------------------
 
-;;; * deprecated *
-
 ;;; ----------------------------------------------------------------------------
-;;; gtk_button_clicked ()
+;;; gtk_button_clicked
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_button_clicked" button-clicked) :void
@@ -885,83 +855,20 @@ lambda (button)    :run-first
 (export 'button-clicked)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_button_enter ()
-;;;
-;;; void gtk_button_enter (GtkButton *button);
-;;;
-;;; Warning
-;;;
-;;; gtk_button_enter has been deprecated since version 2.20 and should not be
-;;; used in newly written code. Use the "enter-notify-event" signal.
-;;;
-;;; Emits a "enter" signal to the given GtkButton.
-;;;
-;;; button :
-;;;     The GtkButton you want to send the signal to.
+;;; gtk_button_enter                                        deprecated
 ;;; ----------------------------------------------------------------------------
 
-;;; * deprecated *
-
 ;;; ----------------------------------------------------------------------------
-;;; gtk_button_leave ()
-;;;
-;;; void gtk_button_leave (GtkButton *button);
-;;;
-;;; Warning
-;;;
-;;; gtk_button_leave has been deprecated since version 2.20 and should not be
-;;; used in newly written code. Use the "leave-notify-event" signal.
-;;;
-;;; Emits a "leave" signal to the given GtkButton.
-;;;
-;;; button :
-;;;     The GtkButton you want to send the signal to.
+;;; gtk_button_leave                                        deprecated
 ;;; ----------------------------------------------------------------------------
 
-;;; * deprecated *
-
 ;;; ----------------------------------------------------------------------------
-;;; gtk_button_get_alignment ()
-;;; gtk_button_set_alignment () -> button-alignment    not exported
+;;; gtk_button_get_alignment
+;;; gtk_button_set_alignment                                deprecated
 ;;; ----------------------------------------------------------------------------
 
-(defun (setf button-alignment) (alignment button)
-  (setf (button-xalign button) (first alignment)
-        (button-yalign button) (second alignment))
-  alignment)
-
-(defun button-alignment (button)
- #+liber-documentation
- "@version{2023-12-30}
-  @syntax{(gtk:button-alignment button) => (list xalign yalign)}
-  @syntax{(setf (gtk:button-alignment button) (list xalign yalign))}
-  @argument[button]{a @class{gtk:button} widget}
-  @argument[xalign]{a float with the horizontal position of the child, the
-    value 0.0 is left aligned, 1.0 is right aligned}
-  @argument[yalign]{a float with the vertical position of the child, the value
-    0.0 is top aligned, 1.0 is bottom aligned}
-  @begin{short}
-    Accessor of the alignment of the button.
-  @end{short}
-  The @fun{gtk:button-alignment} function gets the alignment of the child in
-  the button. The @fun{(setf gtk:button-alignment)} function sets the alignment.
-  This property has no effect unless the child is a @class{gtk:misc} or a
-  @class{gtk:alignment} widget.
-  @begin[Warning:]{dictionary}
-    The @fun{gtk:button-alignment} function has been deprecated since version
-    3.14 and should not be used in newly written code. Access the child widget
-    directly if you need to control its alignment.
-  @end{dictionary}
-  @see-class{gtk:button}
-  @see-class{gtk:misc}
-  @see-class{gtk:alignment}
-  @see-function{gtk:button-xalign}
-  @see-function{gtk:button-yalign}"
-  (list (button-xalign button)
-        (button-yalign button)))
-
 ;;; ----------------------------------------------------------------------------
-;;; gtk_button_get_event_window () -> button-event-window
+;;; gtk_button_get_event_window
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_button_get_event_window" button-event-window)

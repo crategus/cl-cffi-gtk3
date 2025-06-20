@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.toggle-button.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -105,10 +105,10 @@
 
 #+liber-documentation
 (setf (documentation 'toggle-button 'type)
- "@version{2023-12-29}
+ "@version{2025-06-18}
   @begin{short}
-    A @class{gtk:toggle-button} widget is a @class{gtk:button} widget which will
-    remain \"pressed-in\" when clicked.
+    The @class{gtk:toggle-button} widget is a @class{gtk:button} widget which
+    will remain \"pressed-in\" when clicked.
   @end{short}
   Clicking again will cause the toggle button to return to its normal state.
 
@@ -182,12 +182,12 @@
       @begin{pre}
 lambda (togglebutton)    :run-first
       @end{pre}
-      Should be connected if you wish to perform an action whenever the
-      state of the toggle button is changed.
       @begin[code]{table}
         @entry[togglebutton]{The @class{gtk:toggle-button} widget which received
           the signal.}
       @end{table}
+      Should be connected if you wish to perform an action whenever the
+      state of the toggle button is changed.
   @end{dictionary}
   @see-constructor{gtk:toggle-button-new}
   @see-constructor{gtk:toggle-button-new-with-label}
@@ -208,7 +208,7 @@ lambda (togglebutton)    :run-first
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "active" 'toggle-button) t)
 "The @code{active} property of type @code{:boolean} (Read / Write) @br{}
-  If the toggle button should be pressed in. @br{}
+  Whether the toggle button should be pressed in. @br{}
   Default value: @em{false}")
 
 #+liber-documentation
@@ -239,7 +239,7 @@ lambda (togglebutton)    :run-first
                                                'toggle-button) t)
  "The @code{draw-indicator} property of type @code{:boolean} (Read / Write)
   @br{}
-  If the toggle part of the button is displayed. @br{}
+  Whether the toggle part of the button is displayed. @br{}
   Default value: @em{false}")
 
 #+liber-documentation
@@ -264,7 +264,7 @@ lambda (togglebutton)    :run-first
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "inconsistent" 'toggle-button) t)
  "The @code{inconsistent} property of type @code{:boolean} (Read / Write) @br{}
-  If the toggle button is in an \"in between\" state. @br{}
+  Whether the toggle button is in an \"in between\" state. @br{}
   Default value: @em{false}")
 
 #+liber-documentation
@@ -343,8 +343,8 @@ lambda (togglebutton)    :run-first
 (cffi:defcfun ("gtk_toggle_button_new_with_mnemonic"
                toggle-button-new-with-mnemonic) (g:object widget)
  #+liber-documentation
- "@version{2023-12-29}
-  @argument[label]{a string with the text of the button, with an underscore in
+ "@version{2025-06-18}
+  @argument[label]{a string for the text of the button, with an underscore in
     front of the mnemonic character}
   @return{The new @class{gtk:toggle-button} widget.}
   @begin{short}
@@ -361,8 +361,8 @@ lambda (togglebutton)    :run-first
 (export 'toggle-button-new-with-mnemonic)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_toggle_button_get_mode ()
-;;; gtk_toggle_button_set_mode () -> toggle-button-mode
+;;; gtk_toggle_button_get_mode
+;;; gtk_toggle_button_set_mode
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf toggle-button-mode) (draw-indicator button)
@@ -370,19 +370,18 @@ lambda (togglebutton)    :run-first
 
 (defun toggle-button-mode (button)
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2025-06-18}
   @syntax{(gtk:toggle-button-mode button) => draw-indicator}
   @syntax{(setf (gtk:toggle-button-mode button) draw-indicator)}
   @argument[button]{a @class{gtk:toggle-button} widget}
   @argument[draw-indicator]{if @em{true}, draw the button as a separate
     indicator and label, if @em{false}, draw the button like a normal button}
   @begin{short}
-    Accessor of the mode of the toggle button.
+    The @fun{gtk:toggle-button-mode} function retrieves whether the button is
+    displayed as a separate indicator and label.
   @end{short}
-  The @fun{gtk:toggle-button-mode} function retrieves whether the button is
-  displayed as a separate indicator and label. The
-  @setf{gtk:toggle-button-mode} function sets whether the button is displayed
-  as a separate indicator and label.
+  The @setf{gtk:toggle-button-mode} function sets whether the button is
+  displayed as a separate indicator and label.
 
   You can call this function on a check button or a radio button with the
   @em{false} value for @arg{draw-indicator} to make the button look like a
@@ -408,7 +407,7 @@ lambda (togglebutton)    :run-first
 
 (cffi:defcfun ("gtk_toggle_button_toggled" toggle-button-toggled) :void
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @argument[button]{a @class{gtk:toggle-button} widget}
   @begin{short}
     Emits the @code{\"toggled\"} signal on the toggle button.

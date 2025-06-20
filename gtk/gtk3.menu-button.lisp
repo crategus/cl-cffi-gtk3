@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.menu-button.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2024 Dieter Kaiser
+;;; Copyright (C) 2019 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -39,18 +39,18 @@
 ;;; Functions
 ;;;
 ;;;     gtk_menu_button_new
-;;;     gtk_menu_button_set_popup                          Accessor
-;;;     gtk_menu_button_get_popup                          Accessor
-;;;     gtk_menu_button_set_popover                        Accessor
-;;;     gtk_menu_button_get_popover                        Accessor
-;;;     gtk_menu_button_set_menu_model                     Accessor
-;;;     gtk_menu_button_get_menu_model                     Accessor
-;;;     gtk_menu_button_set_use_popover                    Accessor
-;;;     gtk_menu_button_get_use_popover                    Accessor
-;;;     gtk_menu_button_set_direction                      Accessor
-;;;     gtk_menu_button_get_direction                      Accessor
-;;;     gtk_menu_button_set_align_widget                   Accessor
-;;;     gtk_menu_button_get_align_widget                   Accessor
+;;;     gtk_menu_button_set_popup                           Accessor
+;;;     gtk_menu_button_get_popup                           Accessor
+;;;     gtk_menu_button_set_popover                         Accessor
+;;;     gtk_menu_button_get_popover                         Accessor
+;;;     gtk_menu_button_set_menu_model                      Accessor
+;;;     gtk_menu_button_get_menu_model                      Accessor
+;;;     gtk_menu_button_set_use_popover                     Accessor
+;;;     gtk_menu_button_get_use_popover                     Accessor
+;;;     gtk_menu_button_set_direction                       Accessor
+;;;     gtk_menu_button_get_direction                       Accessor
+;;;     gtk_menu_button_set_align_widget                    Accessor
+;;;     gtk_menu_button_get_align_widget                    Accessor
 ;;;
 ;;; Properties
 ;;;
@@ -97,7 +97,7 @@
 (setf (liber:alias-for-symbol 'arrow-type)
       "GEnum"
       (liber:symbol-documentation 'arrow-type)
- "@version{#2024-3-22}
+ "@version{#2024-03-22}
   @begin{declaration}
 (gobject:define-genum \"GtkArrowType\" arrow-type
   (:export t
@@ -124,7 +124,7 @@
   @see-class{gtk:menu-button}")
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkMenuButton
+;;; GtkMenuButton
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkMenuButton" menu-button
@@ -156,7 +156,7 @@
 
 #+liber-documentation
 (setf (documentation 'menu-button 'type)
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @begin{short}
     The @class{gtk:menu-button} widget is used to display a popup when clicked
     on.
@@ -218,7 +218,7 @@
 (setf (liber:alias-for-function 'menu-button-align-widget)
       "Accessor"
       (documentation 'menu-button-align-widget 'function)
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @syntax{(gtk:menu-button-align-widget object) => widget}
   @syntax{(setf (gtk:menu-button-align-widget object) widget)}
   @argument[object]{a @class{gtk:menu-button} widget}
@@ -255,7 +255,7 @@
 (setf (liber:alias-for-function 'menu-button-direction)
       "Accessor"
       (documentation 'menu-button-direction 'function)
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @syntax{(gtk:menu-button-direction object) => direction}
   @syntax{(setf (gtk:menu-button-direction object) direction)}
   @argument[object]{a @class{gtk:menu-button} widget}
@@ -293,7 +293,7 @@
 (setf (liber:alias-for-function 'menu-button-menu-model)
       "Accessor"
       (documentation 'menu-button-menu-model 'function)
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @syntax{(gtk:menu-button-menu-model object) => model}
   @syntax{(setf (gtk:menu-button-menu-model object) model)}
   @argument[object]{a @class{gtk:menu-button} widget}
@@ -338,7 +338,7 @@
 (setf (liber:alias-for-function 'menu-button-popover)
       "Accessor"
       (documentation 'menu-button-popover 'function)
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @syntax{(gtk:menu-button-popover object) => popover}
   @syntax{(setf (gtk:menu-button-popover object) popover)}
   @argument[object]{a @class{gtk:menu-button} widget}
@@ -372,7 +372,7 @@
 (setf (liber:alias-for-function 'menu-button-popup)
       "Accessor"
       (documentation 'menu-button-popup 'function)
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @syntax{(gtk:menu-button-popup object) => popup}
   @syntax{(setf (gtk:menu-button-popup object) popup)}
   @argument[object]{a @class{gtk:menu-button} widget}
@@ -409,7 +409,7 @@
 (setf (liber:alias-for-function 'menu-button-use-popover)
       "Accessor"
       (documentation 'menu-button-use-popover 'function)
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @syntax{(gtk:menu-button-use-popover object) => use-popover}
   @syntax{(setf (gtk:menu-button-use-popover object) use-popover)}
   @argument[object]{a @class{gtk:menu-button} widget}
@@ -428,14 +428,14 @@
   @see-function{gtk:menu-button-menu-model}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_menu_button_new ()
+;;; gtk_menu_button_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline menu-button-new))
 
 (defun menu-button-new ()
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @return{The new @class{gtk:menu-button} widget.}
   @begin{short}
     Creates a new menu button with downwards pointing arrow as the only child.
