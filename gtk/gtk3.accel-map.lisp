@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.accel-map.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -42,12 +42,12 @@
 ;;;     gtk_accel_map_change_entry
 ;;;     gtk_accel_map_load
 ;;;     gtk_accel_map_save
-;;;     gtk_accel_map_foreach
-;;;     gtk_accel_map_load_fd
-;;;     gtk_accel_map_save_fd
-;;;     gtk_accel_map_load_scanner
-;;;     gtk_accel_map_add_filter
-;;;     gtk_accel_map_foreach_unfiltered
+;;;     gtk_accel_map_foreach                               not implemented
+;;;     gtk_accel_map_load_fd                               not implemented
+;;;     gtk_accel_map_save_fd                               not implemented
+;;;     gtk_accel_map_load_scanner                          not implemented
+;;;     gtk_accel_map_add_filter                            not implemented
+;;;     gtk_accel_map_foreach_unfiltered                    not implemented
 ;;;     gtk_accel_map_get
 ;;;     gtk_accel_map_lock_path
 ;;;     gtk_accel_map_unlock_path
@@ -77,7 +77,7 @@
 
 #+liber-documentation
 (setf (documentation 'accel-map 'type)
- "@version{2023-3-6}
+ "@version{2025-06-19}
   @begin{short}
     Accelerator maps are used to define runtime configurable accelerators.
   @end{short}
@@ -135,30 +135,30 @@
       @begin{pre}
 lambda (object path key mods)    :has-details
       @end{pre}
-      Notifies of a change in the global accelerator map. The path is also used
-      as the detail for the signal, so it is possible to connect to
-      \"changed::accel-path\".
     @begin[arg]{table}
       @entry[object]{The global @class{gtk:accel-map} object.}
-      @entry[path]{A string with the path of the accelerator that changed.}
-      @entry[key]{An unsigned integer with the key value for the new
+      @entry[path]{The string with the path of the accelerator that changed.}
+      @entry[key]{The unsigned integer with the key value for the new
         accelerator.}
-      @entry[mods]{The @symbol{gdk:modifier-type} modifier mask for the new
-        accelerator.}
+      @entry[mods]{The @symbol{gdk:modifier-type} value with the modifier mask
+        for the new accelerator.}
     @end{table}
+    Notifies of a change in the global accelerator map. The path is also used
+    as the detail for the signal, so it is possible to connect to
+    \"changed::accel-path\".
   @end{dictionary}
   @see-class{gtk:ui-manager}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_accel_map_add_entry ()
+;;; gtk_accel_map_add_entry
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_accel_map_add_entry" accel-map-add-entry) :void
  #+liber-documentation
- "@version{2023-3-6}
-  @argument[path]{a string with the valid accelerator path}
-  @argument[key]{an unsigned integer with the accelerator key}
-  @argument[mods]{a @symbol{gdk:modifier-type} value with the accelerator
+ "@version{2025-06-19}
+  @argument[path]{a string for the valid accelerator path}
+  @argument[key]{an unsigned integer for the accelerator key}
+  @argument[mods]{a @symbol{gdk:modifier-type} value for the accelerator
     modifiers}
   @begin{short}
     Registers a new accelerator with the global accelerator map.
@@ -176,7 +176,7 @@ lambda (object path key mods)    :has-details
 (export 'accel-map-add-entry)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_accel_map_lookup_entry ()
+;;; gtk_accel_map_lookup_entry
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_accel_map_lookup_entry" %accel-map-lookup-entry) :boolean
@@ -185,15 +185,14 @@ lambda (object path key mods)    :has-details
 
 (defun accel-map-lookup-entry (path)
  #+liber-documentation
- "@version{2023-3-6}
-  @argument[path]{a string with the valid accelerator path}
-  @begin{return}
-    @code{key} -- an unsigned integer with the accelerator key @br{}
-    @code{mods} -- a @symbol{gdk:modifier-type} value with the accelerator
-      modifiers @br{}
-    @code{flags} -- an unsigned integer with the accelerator flags if
-      @arg{path} is known, @code{nil} otherwise
-  @end{return}
+ "@version{2025-06-19}
+  @syntax{(gtk:accel-map-lookup-entry path) => key, mods, flags}
+  @argument[path]{a string for the valid accelerator path}
+  @argument[key]{an unsigned integer for the accelerator key}
+  @argument[mods]{a @symbol{gdk:modifier-type} value for the accelerator
+    modifiers}
+  @argument[flags]{an unsigned integer for the accelerator flags if @arg{path}
+    is known, @code{nil} otherwise}
   @begin{short}
     Looks up the accelerator entry for @arg{path}.
   @end{short}
@@ -209,15 +208,15 @@ lambda (object path key mods)    :has-details
 (export 'accel-map-lookup-entry)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_accel_map_change_entry ()
+;;; gtk_accel_map_change_entry
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_accel_map_change_entry" accel-map-change-entry) :boolean
  #+liber-documentation
- "@version{2023-3-6}
-  @argument[path]{a string with the valid accelerator path}
-  @argument[key]{an unsigned integer with the new accelerator key}
-  @argument[mods]{a @symbol{gdk:modifier-type} value with the new accelerator
+ "@version{2025-06-19}
+  @argument[path]{a string for the valid accelerator path}
+  @argument[key]{an unsigned integer for the new accelerator key}
+  @argument[mods]{a @symbol{gdk:modifier-type} value for the new accelerator
     modifiers}
   @argument[replace]{@em{true} if other accelerators may be deleted upon
     conflicts}
@@ -243,7 +242,7 @@ lambda (object path key mods)    :has-details
 (export 'accel-map-change-entry)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_accel_map_load ()
+;;; gtk_accel_map_load
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_accel_map_load" %accel-map-load) :void
@@ -251,8 +250,8 @@ lambda (object path key mods)    :has-details
 
 (defun accel-map-load (path)
  #+liber-documentation
- "@version{2023-3-6}
-  @argument[path]{a pathname or namestring with a file containing accelerator
+ "@version{2025-06-19}
+  @argument[path]{a pathname or namestring for a file containing accelerator
     specifications, in the GLib file name encoding}
   @begin{short}
     Parses a file previously saved with the @fun{gtk:accel-map-save} function
@@ -265,7 +264,7 @@ lambda (object path key mods)    :has-details
 (export 'accel-map-load)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_accel_map_save ()
+;;; gtk_accel_map_save
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_accel_map_save" %accel-map-save) :void
@@ -273,8 +272,8 @@ lambda (object path key mods)    :has-details
 
 (defun accel-map-save (path)
  #+liber-documentation
- "@version{2023-3-6}
-  @argument[path]{a pathname or namestring with the name of the file to contain
+ "@version{2025-06-19}
+  @argument[path]{a pathname or namestring for the name of the file to contain
     accelerator specifications, in the GLib file name encoding}
   @begin{short}
     Saves current accelerator specifications, accelerator path, key and
@@ -289,131 +288,34 @@ lambda (object path key mods)    :has-details
 (export 'accel-map-save)
 
 ;;; ----------------------------------------------------------------------------
-;;; GtkAccelMapForeach ()
-;;;
-;;; void (*GtkAccelMapForeach) (gpointer data,
-;;;                             const gchar *accel_path,
-;;;                             guint accel_key,
-;;;                             GdkModifierType accel_mods,
-;;;                             gboolean changed);
-;;;
-;;; data :
-;;;     User data passed to gtk_accel_map_foreach() or
-;;;     gtk_accel_map_foreach_unfiltered()
-;;;
-;;; accel_path :
-;;;     Accel path of the current accelerator
-;;;
-;;; accel_key :
-;;;     Key of the current accelerator
-;;;
-;;; accel_mods :
-;;;     Modifiers of the current accelerator
-;;;
-;;; changed :
-;;;     Changed flag of the accelerator (if TRUE, accelerator has changed
-;;;     during runtime and would need to be saved during an accelerator dump)
+;;; GtkAccelMapForeach                                      not implemented
+;;; ----------------------------------------------------------------------------
+;;; ----------------------------------------------------------------------------
+;;; gtk_accel_map_foreach                                   not implemented
+;;; ----------------------------------------------------------------------------
+;;; ----------------------------------------------------------------------------
+;;; gtk_accel_map_load_fd                                   not implemented
+;;; ----------------------------------------------------------------------------
+;;; ----------------------------------------------------------------------------
+;;; gtk_accel_map_save_fd                                   not implemented
+;;; ----------------------------------------------------------------------------
+;;; ----------------------------------------------------------------------------
+;;; gtk_accel_map_load_scanner                              not implemented
+;;; ----------------------------------------------------------------------------
+;;; ----------------------------------------------------------------------------
+;;; gtk_accel_map_add_filter                                not implemented
+;;; ----------------------------------------------------------------------------
+;;; ----------------------------------------------------------------------------
+;;; gtk_accel_map_foreach_unfiltered                        not implemented
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_accel_map_foreach ()
-;;;
-;;; void gtk_accel_map_foreach (gpointer data, GtkAccelMapForeach foreach_func);
-;;;
-;;; Loops over the entries in the accelerator map whose accel path does not
-;;; match any of the filters added with gtk_accel_map_add_filter(), and execute
-;;; foreach_func on each. The signature of foreach_func is that of
-;;; GtkAccelMapForeach, the changed parameter indicates whether this accelerator
-;;; was changed during runtime (thus, would need saving during an accelerator
-;;; map dump).
-;;;
-;;; data :
-;;;     data to be passed into foreach_func
-;;;
-;;; foreach_func :
-;;;     function to be executed for each accel map entry which is not filtered
-;;;     out
-;;; ----------------------------------------------------------------------------
-
-;;; ----------------------------------------------------------------------------
-;;; gtk_accel_map_load_fd ()
-;;;
-;;; void gtk_accel_map_load_fd (gint fd);
-;;;
-;;; Filedescriptor variant of gtk_accel_map_load().
-;;;
-;;; Note that the file descriptor will not be closed by this function.
-;;;
-;;; fd :
-;;;     a valid readable file descriptor
-;;; ----------------------------------------------------------------------------
-
-;;; ----------------------------------------------------------------------------
-;;; gtk_accel_map_save_fd ()
-;;;
-;;; void gtk_accel_map_save_fd (gint fd);
-;;;
-;;; Filedescriptor variant of gtk_accel_map_save().
-;;;
-;;; Note that the file descriptor will not be closed by this function.
-;;;
-;;; fd :
-;;;     a valid writable file descriptor
-;;; ----------------------------------------------------------------------------
-
-;;; ----------------------------------------------------------------------------
-;;; gtk_accel_map_load_scanner ()
-;;;
-;;; void gtk_accel_map_load_scanner (GScanner *scanner);
-;;;
-;;; GScanner variant of gtk_accel_map_load().
-;;;
-;;; scanner :
-;;;     a GScanner which has already been provided with an input file
-;;; ----------------------------------------------------------------------------
-
-;;; ----------------------------------------------------------------------------
-;;; gtk_accel_map_add_filter ()
-;;;
-;;; void gtk_accel_map_add_filter (const gchar *filter_pattern);
-;;;
-;;; Adds a filter to the global list of accel path filters.
-;;;
-;;; Accel map entries whose accel path matches one of the filters are skipped
-;;; by gtk_accel_map_foreach().
-;;;
-;;; This function is intended for GTK+ modules that create their own menus, but
-;;; don't want them to be saved into the applications accelerator map dump.
-;;;
-;;; filter_pattern :
-;;;     a pattern (see GPatternSpec)
-;;; ----------------------------------------------------------------------------
-
-;;; ----------------------------------------------------------------------------
-;;; gtk_accel_map_foreach_unfiltered ()
-;;;
-;;; void gtk_accel_map_foreach_unfiltered (gpointer data,
-;;;                                        GtkAccelMapForeach foreach_func);
-;;;
-;;; Loops over all entries in the accelerator map, and execute foreach_func on
-;;; each. The signature of foreach_func is that of GtkAccelMapForeach, the
-;;; changed parameter indicates whether this accelerator was changed during
-;;; runtime (thus, would need saving during an accelerator map dump).
-;;;
-;;; data :
-;;;     data to be passed into foreach_func
-;;;
-;;; foreach_func :
-;;;     function to be executed for each accel map entry
-;;; ----------------------------------------------------------------------------
-
-;;; ----------------------------------------------------------------------------
-;;; gtk_accel_map_get ()
+;;; gtk_accel_map_get
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_accel_map_get" accel-map-get) (g:object accel-map)
  #+liber-documentation
- "@version{2023-3-6}
+ "@version{2023-03-06}
   @return{The global @class{gtk:accel-map} object.}
   @begin{short}
     Gets the singleton global @class{gtk:accel-map} object.
@@ -426,13 +328,13 @@ lambda (object path key mods)    :has-details
 (export 'accel-map-get)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_accel_map_lock_path ()
+;;; gtk_accel_map_lock_path
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_accel_map_lock_path" accel-map-lock-path) :void
  #+liber-documentation
- "@version{#2023-3-6}
-  @argument[path]{a string with the valid accelerator path}
+ "@version{#2025-06-19}
+  @argument[path]{a string for the valid accelerator path}
   @begin{short}
     Locks the given accelerator path.
   @end{short}
@@ -462,13 +364,13 @@ lambda (object path key mods)    :has-details
 (export 'accel-map-lock-path)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_accel_map_unlock_path ()
+;;; gtk_accel_map_unlock_path
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_accel_map_unlock_path" accel-map-unlock-path) :void
  #+liber-documentation
- "@version{#2023-3-6}
-  @argument[path]{a string with the valid accelerator path}
+ "@version{#2025-06-19}
+  @argument[path]{a string for the valid accelerator path}
   @begin{short}
     Undoes the last call to the @fun{gtk:accel-map-lock-path} function on this
     @arg{path}.

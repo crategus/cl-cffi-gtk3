@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.version.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -36,16 +36,9 @@
 ;;;     gtk_get_major_version
 ;;;     gtk_get_minor_version
 ;;;     gtk_get_micro_version
-;;;     gtk_get_binary_age                                 not exported
-;;;     gtk_get_interface_age                              not exported
+;;;     gtk_get_binary_age                                  not exported
+;;;     gtk_get_interface_age                               not exported
 ;;;     gtk_check_version
-;;;
-;;;     GTK_MAJOR_VERSION                                  not implemented
-;;;     GTK_MINOR_VERSION                                  not implemented
-;;;     GTK_MICRO_VERSION                                  not implemented
-;;;     GTK_BINARY_AGE                                     not implemented
-;;;     GTK_INTERFACE_AGE                                  not implemented
-;;;     GTK_CHECK_VERSION                                  not implemented
 ;;; ----------------------------------------------------------------------------
 
 (in-package :gtk)
@@ -60,7 +53,7 @@
 
 (cffi:defcfun ("gtk_get_major_version" major-version) :int
  #+liber-documentation
- "@version{2023-7-7}
+ "@version{2023-07-07}
   @return{The major version number of the GTK library.}
   @begin{short}
     Returns the major version number of the GTK library.
@@ -77,7 +70,7 @@
 
 (cffi:defcfun ("gtk_get_minor_version" minor-version) :int
  #+liber-documentation
- "@version{2023-7-7}
+ "@version{2023-07-07}
   @return{The minor version number of the GTK library.}
   @begin{short}
     Returns the minor version number of the GTK library.
@@ -94,7 +87,7 @@
 
 (cffi:defcfun ("gtk_get_micro_version" micro-version) :int
  #+liber-documentation
- "@version{2023-7-7}
+ "@version{2023-07-07}
   @return{The micro version number of the GTK library.}
   @begin{short}
     Returns the micro version number of the GTK library.
@@ -111,7 +104,7 @@
 
 (cffi:defcfun ("gtk_get_binary_age" gtk-binary-age) :int
  #+liber-documentation
- "@version{#2020-8-23}
+ "@version{#2020-08-23}
   @return{The binary age of the GTK library.}
   @begin{short}
     Returns the binary age as passed to @code{libtool} when building the GTK
@@ -126,7 +119,7 @@
 
 (cffi:defcfun ("gtk_get_interface_age" gtk-interface-age) :int
  #+liber-documentation
- "@version{#2020-8-23}
+ "@version{#2020-08-23}
   @return{The interface age of the GTK library.}
   @begin{short}
     Returns the interface age as passed to @code{libtool} when building the
@@ -142,7 +135,7 @@
 (cffi:defcfun ("gtk_check_version" check-version)
     (:string :free-from-foreign nil)
  #+liber-documentation
- "@version{2023-7-7}
+ "@version{2023-07-07}
   @argument[major]{an unsigned integer with the required major version}
   @argument[minor]{an unsigned integer with required minor version}
   @argument[micro]{an unsigned integer with required micro version}
@@ -167,49 +160,10 @@
 (export 'check-version)
 
 ;;; ----------------------------------------------------------------------------
-;;; GTK_MAJOR_VERSION
-;;; ----------------------------------------------------------------------------
-
-;;; ----------------------------------------------------------------------------
-;;; GTK_MINOR_VERSION
-;;; ----------------------------------------------------------------------------
-
-;;; ----------------------------------------------------------------------------
-;;; GTK_MICRO_VERSION
-;;; ----------------------------------------------------------------------------
-
-;;; ----------------------------------------------------------------------------
-;;; GTK_BINARY_AGE
-;;; ----------------------------------------------------------------------------
-
-;;; ----------------------------------------------------------------------------
-;;; GTK_INTERFACE_AGE
-;;; ----------------------------------------------------------------------------
-
-;;; ----------------------------------------------------------------------------
-;;; GTK_CHECK_VERSION()
-;;;
-;;; #define GTK_CHECK_VERSION(major,minor,micro)
-;;;
-;;; major :
-;;;     major version (e.g. 1 for version 1.2.5)
-;;;
-;;; minor :
-;;;     minor version (e.g. 2 for version 1.2.5)
-;;;
-;;; micro :
-;;;     micro version (e.g. 5 for version 1.2.5)
-;;;
-;;; Returns :
-;;;     TRUE if the version of the GTK header files is the same as or newer
-;;;     than the passed-in version.
-;;; ----------------------------------------------------------------------------
-
-;;; ----------------------------------------------------------------------------
 
 (defun cl-cffi-gtk-build-info ()
  #+liber-documentation
- "@version{2023-7-7}
+ "@version{2023-07-07}
   @begin{short}
     Provides informations about the installation and the versions of the
     loaded libraries.

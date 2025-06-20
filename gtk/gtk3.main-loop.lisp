@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.main-loop.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -31,19 +31,15 @@
 ;;;
 ;;;     Library initialization, main event loop, and events
 ;;;
-;;; Types and Values
-;;;
-;;;     GTK_PRIORITY_RESIZE
-;;;
 ;;; Functions
 ;;;
-;;;     gtk_disable_setlocale                    not exported
+;;;     gtk_disable_setlocale                               not exported
 ;;;     gtk_get_default_language
 ;;;     gtk_get_locale_direction
-;;;     gtk_parse_args                           not implemented
-;;;     gtk_init                                 not exported
-;;;     gtk_init_check                           not exported
-;;;     gtk_init_with_args                       not implemented
+;;;     gtk_parse_args                                      not implemented
+;;;     gtk_init                                            not exported
+;;;     gtk_init_check                                      not exported
+;;;     gtk_init_with_args                                  not implemented
 ;;;     gtk_get_option_group
 ;;;     gtk_events_pending
 ;;;     gtk_main
@@ -52,16 +48,16 @@
 ;;;     gtk_main_iteration
 ;;;     gtk_main_iteration_do
 ;;;     gtk_main_do_event
-;;;     gtk_true                                 not implemented
-;;;     gtk_false                                not implemented
+;;;     gtk_true                                            not implemented
+;;;     gtk_false                                           not implemented
 ;;;     gtk_grab_add
 ;;;     gtk_grab_get_current
 ;;;     gtk_grab_remove
 ;;;     gtk_device_grab_add
 ;;;     gtk_device_grab_remove
 ;;;
-;;;     gtk_key_snooper_install                  deprecated
-;;;     gtk_key_snooper_remove                   deprecated
+;;;     gtk_key_snooper_install                             deprecated
+;;;     gtk_key_snooper_remove                              deprecated
 ;;;
 ;;;     gtk_get_current_event
 ;;;     gtk_get_current_event_time
@@ -74,52 +70,22 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; GTK_PRIORITY_RESIZE
-;;;
-;;; #define GTK_PRIORITY_RESIZE (G_PRIORITY_HIGH_IDLE + 10)
-;;;
-;;; Use this priority for functionality related to size allocation.
-;;;
-;;; It is used internally by GTK to compute the sizes of widgets. This priority
-;;; is higher than GDK_PRIORITY_REDRAW to avoid resizing a widget which was just
-;;; redrawn.
-;;; ----------------------------------------------------------------------------
-
-;;; ----------------------------------------------------------------------------
-;;; gtk_disable_setlocale ()                               not exported
+;;; gtk_disable_setlocale                                   not exported
 ;;; ----------------------------------------------------------------------------
 
 ;; TODO: Because GTK is initialized, when loading the Lisp library, this
 ;; function should have no effect. We do not export the implementation.
 
-(cffi:defcfun ("gtk_disable_setlocale" %disable-setlocale) :void
- #+liber-documentation
- "@version{#2012-12-23}
-  @begin{short}
-    Prevents @code{gtk_init()}, @code{gtk_init_check()},
-    @code{gtk_init_with_args()} and @code{gtk_parse_args()} from automatically
-    calling @code{setlocale (LC_ALL, \"\")}.
-  @end{short}
-  You would want to use this function if you wanted to set the locale for your
-  program to something other than the user's locale, or if you wanted to set
-  different values for different locale categories.
-
-  Most programs should not need to call this function.
-  @begin[Lisp Implemention]{dictionary}
-    In the Lisp implementation the @code{gtk:%init} function is called
-    automatically when loading the library @code{cl-cffi-gtk3}. Therefore
-    @fun{gtk:disable-setlocale} does not have any effect.
-  @end{dictionary}
-  @see-function{gtk:%init-check}")
+(cffi:defcfun ("gtk_disable_setlocale" %disable-setlocale) :void)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_get_default_language () -> default-language
+;;; gtk_get_default_language
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_get_default_language" default-language)
     (g:boxed pango:language)
  #+liber-documentation
- "@version{2023-3-5}
+ "@version{2023-03-05}
   @return{The default language as a @class{pango:language} instance.}
   @begin{short}
     Returns the Pango language instance for the default language currently in
@@ -144,12 +110,12 @@
 (export 'default-language)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_get_locale_direction () -> locale-direction
+;;; gtk_get_locale_direction
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_get_locale_direction" locale-direction) text-direction
  #+liber-documentation
- "@version{2023-3-5}
+ "@version{2023-03-05}
   @return{The @symbol{gtk:text-direction} value with the current locale.}
   @begin{short}
     Gets the direction of the current locale.
@@ -181,32 +147,11 @@
 (export 'locale-direction)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_parse_args ()
-;;;
-;;; gboolean gtk_parse_args (int *argc, char ***argv);
-;;;
-;;; Parses command line arguments, and initializes global attributes of GTK,
-;;; but does not actually open a connection to a display. (See
-;;; gdk_display_open(), gdk_get_display_arg_name())
-;;;
-;;; Any arguments used by GTK or GDK are removed from the array and argc and
-;;; argv are updated accordingly.
-;;;
-;;; There is no need to call this function explicitely if you are using
-;;; gtk_init(), or gtk_init_check().
-;;;
-;;; argc :
-;;;     a pointer to the number of command line arguments
-;;;
-;;; argv :
-;;;     a pointer to the array of command line arguments
-;;;
-;;; Returns :
-;;;     TRUE if initialization succeeded, otherwise FALSE
+;;; gtk_parse_args                                          not implemented
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_init ()                                            not exported
+;;; gtk_init                                                not exported
 ;;; ----------------------------------------------------------------------------
 
 ;;; TODO: The function is for internal use and not exported.
@@ -214,52 +159,6 @@
 ;;; the function %gtk-init-check.
 
 (defun %gtk-init ()
- #+liber-documentation
- "@version{#2012-12-23}
-  @argument[argc]{Address of the @arg{argc} parameter of your @code{main()}
-    function (or 0 if @arg{argv} is @code{NULL}). This will be changed if any
-    arguments were handled.}
-  @argument[argv]{Address of the @arg{argv} parameter of @code{main()}, or
-    @code{NULL}. Any options understood by GTK are stripped before return.}
-  @begin{short}
-    Call this function before using any other GTK functions in your GUI
-    applications.
-  @end{short}
-  It will initialize everything needed to operate the toolkit and parses some
-  standard command line options.
-
-  Although you are expected to pass the @arg{argc}, @arg{argv} parameters from
-  @code{main()} to this function, it is possible to pass @code{NULL} if
-  @arg{argv} is not available or command line handling is not required.
-
-  @arg{argc} and @arg{argv} are adjusted accordingly so your own code will
-  never see those standard arguments.
-
-  Note that there are some alternative ways to initialize GTK: if you are
-  calling @code{gtk_parse_args()}, @fun{%gtk-init-check},
-  @code{gtk_init_with_args()} or @code{g_option_context_parse()} with the
-  option group returned by the @fun{gtk:option-group} function, you do not have
-  to call the @code{gtk_init()} function.
-  @begin[Notes]{dictionary}
-    This function will terminate your program if it was unable to initialize the
-    windowing system for some reason. If you want your program to fall back to a
-    textual interface you want to call @fun{%gtk-init-check} instead.
-
-    Since 2.18, GTK calls the @code{(SIGPIPE, SIG_IGN)} signal during
-    initialization, to ignore @code{SIGPIPE} signals, since these are almost
-    never wanted in graphical applications. If you do need to handle
-    @code{SIGPIPE} for some reason, reset the handler after @code{gtk_init()},
-    butt notice that other libraries (e.g. @code{libdbus} or @code{gvfs}) might
-    do similar things.
-  @end{dictionary}
-  @begin[Lisp Implemention]{dictionary}
-    In the Lisp implementation @code{%gtk-init} calls the
-    @code{gtk_init_check()} C function which is implemented through the
-    @fun{%gtk-init-check} function. Both functions are never called directly.
-    The @code{%gtk-init} function is called automatically when loading the
-    @code{cl-cffi-gtk3} library.
-  @end{dictionary}
-  @see-function{%gtk-init-check}"
   (%gtk-init-check (cffi:foreign-alloc :int :initial-element 0)
                    (cffi:foreign-alloc :string :initial-contents
                                        '("/usr/bin/sbcl")))
@@ -278,7 +177,7 @@
       (cffi:foreign-free (cffi:mem-ref argv '(:pointer :string))))))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_init_check ()
+;;; gtk_init_check                                          not exported
 ;;; ----------------------------------------------------------------------------
 
 ;;; TODO: The function is for internal use and not exported.
@@ -286,89 +185,25 @@
 ;;; the function %gtk-init.
 
 (cffi:defcfun ("gtk_init_check" %gtk-init-check) :boolean
- #+liber-documentation
- "@version{#2012-12-23}
-  @argument[argc]{Address of the @code{argc} parameter of your @code{main()}
-    function (or 0 if @code{argv} is @code{NULL}). This will be changed if any
-    arguments were handled.}
-  @argument[argv]{Address of the @arg{argv} parameter of @code{main()}, or
-    @code{nil}. Any options understood by GTK are stripped before return.}
-  @return{@em{true} if the windowing system has been successfully initialized,
-    @code{nil} otherwise}
-  @begin{short}
-    This function does the same work as gtk_init() with only a single change: It
-    does not terminate the program if the windowing system can't be initialized.
-    Instead it returns FALSE on failure.
-  @end{short}
-
-  This way the application can fall back to some other means of communication
-  with the user - for example a curses or command line interface.
-  @begin[Lisp Implemention]{dictionary}
-    In the Lisp implementation @code{%gtk-init-check} is called from the
-    @code{%gtk-init} function. Both functions are never called directly. The
-    @code{%gtk-init} function is called automatically when loading the
-    @code{cl-cffi-gtk3} library.
-  @end{dictionary}"
   (argc (:pointer :int))
   (argv (:pointer (:pointer :string))))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_init_with_args ()
-;;;
-;;; gboolean gtk_init_with_args (gint *argc,
-;;;                              gchar ***argv,
-;;;                              const gchar *parameter_string,
-;;;                              const GOptionEntry *entries,
-;;;                              const gchar *translation_domain,
-;;;                              GError **error);
-;;;
-;;; This function does the same work as gtk_init_check(). Additionally, it
-;;; allows you to add your own command line options, and it automatically
-;;; generates nicely formatted --help output. Note that your program will be
-;;; terminated after writing out the help output.
-;;;
-;;; argc :
-;;;     Address of the argc parameter of your main() function (or 0 if argv is
-;;;     NULL). This will be changed if any arguments were handled.
-;;;
-;;; argv :
-;;;     Address of the argv parameter of main(), or NULL. Any options understood
-;;;     by GTK are stripped before return.
-;;;
-;;; parameter_string :
-;;;     a string which is displayed in the first line of --help output, after
-;;;     programname [OPTION...]
-;;;
-;;; entries :
-;;;     a NULL-terminated array of GOptionEntrys describing the options of your
-;;;     program
-;;;
-;;; translation_domain :
-;;;     a translation domain to use for translating the --help output for the
-;;;     options in entries and the parameter_string with gettext(), or NULL
-;;;
-;;; error :
-;;;     a return location for errors
-;;;
-;;; Returns :
-;;;     TRUE if the windowing system has been successfully initialized, FALSE
-;;;     otherwise
-;;;
-;;; Since 2.6
+;;; gtk_init_with_args                                      not implemented
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_get_option_group () -> option-group
+;;; gtk_get_option_group
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_get_option_group" option-group)
     (:pointer (:struct g:option-group))
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{2025-06-19}
   @argument[default]{a boolean whether to open the default display when parsing
     the command line arguments}
   @begin{return}
-    A @type{g:option-group} instance for the command line arguments recognized
+    The @type{g:option-group} instance for the command line arguments recognized
     by GTK.
   @end{return}
   @begin{short}
@@ -387,12 +222,12 @@
 (export 'option-group)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_events_pending ()
+;;; gtk_events_pending
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_events_pending" events-pending) :boolean
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2023-03-05}
   @return{@em{True} if any events are pending, @em{false} otherwise.}
   @begin{short}
     Checks if any events are pending.
@@ -421,7 +256,7 @@
 
 (defun main ()
  #+liber-documentation
- "@version{2024-6-29}
+ "@version{2024-06-29}
   @begin{short}
     Runs the main loop until the @fun{gtk:main-quit} function is called.
   @end{short}
@@ -462,14 +297,16 @@
 (export 'main)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_main_level ()
+;;; gtk_main_level
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_main_level" main-level) :uint
  #+liber-documentation
- "@version{#2023-3-5}
-  @return{The unsigned integer with the nesting level of the current invocation
-    of the main loop.}
+ "@version{2025-06-19}
+  @begin{return}
+    The unsigned integer with the nesting level of the current invocation of
+    the main loop.
+  @end{return}
   @begin{short}
     Asks for the current nesting level of the main loop.
   @end{short}
@@ -478,12 +315,12 @@
 (export 'main-level)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_main_quit ()
+;;; gtk_main_quit
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_main_quit" main-quit) :void
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{2023-03-05}
   @begin{short}
     Makes the innermost invocation of the main loop return when it regains
     control.
@@ -502,15 +339,19 @@
 (export 'main-quit)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_main_iteration ()
+;;; gtk_main_iteration
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_main_iteration" main-iteration) :boolean
  #+liber-documentation
- "@version{#2023-3-5}
-  @return{@em{True} if the @fun{gtk:main-quit} function has been called for the
-    innermost main loop.}
-  @short{Runs a single iteration of the main loop.}
+ "@version{#2025-06-19}
+  @begin{return}
+    @em{True} if the @fun{gtk:main-quit} function has been called for the
+    innermost main loop.
+  @end{return}
+  @begin{short}
+    Runs a single iteration of the main loop.
+  @end{short}
   If no events are waiting to be processed GTK will block until the next
   event is noticed. If you do not want to block look at the
   @fun{gtk:main-iteration-do} function or check if any events are pending with
@@ -522,16 +363,18 @@
 (export 'main-iteration)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_main_iteration_do ()
+;;; gtk_main_iteration_do
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_main_iteration_do" main-iteration-do) :boolean
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2025-06-19}
   @argument[blocking]{@em{true} if you want GTK to block if no events are
     pending}
-  @return{@em{True} if the @fun{gtk:main-quit} function has been called for the
-    innermost main loop.}
+  @begin{return}
+    @em{True} if the @fun{gtk:main-quit} function has been called for the
+    innermost main loop.
+  @end{return}
   @begin{short}
     Runs a single iteration of the main loop.
   @end{short}
@@ -544,12 +387,12 @@
 (export 'main-iteration-do)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_main_do_event ()
+;;; gtk_main_do_event
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_main_do_event" main-do-event) :void
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2023-03-05}
   @argument[event]{a @class{gdk:event} instance to process normally passed by
     GDK}
   @begin{short}
@@ -618,100 +461,24 @@
 (export 'main-do-event)
 
 ;;; ----------------------------------------------------------------------------
-;;; GtkModuleInitFunc ()
-;;;
-;;; void (*GtkModuleInitFunc) (gint *argc, gchar ***argv);
-;;;
-;;; Each GTK module must have a function gtk_module_init() with this prototype.
-;;; This function is called after loading the module.
-;;;
-;;; argc :
-;;;     GTK always passes NULL for this argument. [allow-none]
-;;;
-;;; argv :
-;;;     GTK always passes NULL for this argument
+;;; gtk_true                                                not implemented
+;;; ----------------------------------------------------------------------------
+;;; ----------------------------------------------------------------------------
+;;; gtk_false                                               not implemented
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; GtkModuleDisplayInitFunc ()
-;;;
-;;; void (*GtkModuleDisplayInitFunc) (GdkDisplay *display);
-;;;
-;;; A multihead-aware GTK module may have a gtk_module_display_init() function
-;;; with this prototype. GTK calls this function for each opened display.
-;;;
-;;; display :
-;;;     an open GdkDisplay
-;;;
-;;; Since 2.2
-;;; ----------------------------------------------------------------------------
-
-;;; ----------------------------------------------------------------------------
-;;; gtk_true ()
-;;;
-;;; gboolean gtk_true (void);
-;;;
-;;; All this function does it to return TRUE.
-;;;
-;;; This can be useful for example if you want to inhibit the deletion of a
-;;; window. Of course you should not do this as the user expects a reaction from
-;;; clicking the close icon of the window...
-;;;
-;;; Example 8. A persistent window
-;;;
-;;;   #include <gtk/gtk.h><
-;;;
-;;;   int
-;;;   main (int argc, char **argv)
-;;;   {
-;;;     GtkWidget *win, *but;
-;;;
-;;;     gtk_init (&argc, &argv);
-;;;
-;;;     win = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-;;;     g_signal_connect (win, "delete-event",
-;;;                       G_CALLBACK (gtk_true), NULL);
-;;;     g_signal_connect (win, "destroy",
-;;;                       G_CALLBACK (gtk_main_quit), NULL);
-;;;
-;;;     but = gtk_button_new_with_label ("Close yourself. I mean it!");
-;;;     g_signal_connect_swapped (but, "clicked",
-;;;                               G_CALLBACK (gtk_object_destroy), win);
-;;;     gtk_container_add (GTK_CONTAINER (win), but);
-;;;
-;;;     gtk_widget_show_all (win);
-;;;
-;;;     gtk_main ();
-;;;
-;;;     return 0;
-;;;   }
-;;;
-;;; Returns :
-;;;     TRUE
-;;; ----------------------------------------------------------------------------
-
-;;; ----------------------------------------------------------------------------
-;;; gtk_false ()
-;;;
-;;; gboolean gtk_false (void);
-;;;
-;;; Analogical to gtk_true(), this function does nothing but always returns
-;;; FALSE.
-;;;
-;;; Returns :
-;;;     FALSE
-;;; ----------------------------------------------------------------------------
-
-;;; ----------------------------------------------------------------------------
-;;; gtk_grab_add ()
+;;; gtk_grab_add
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_grab_add" grab-add) :void
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2025-06-19}
   @argument[widget]{a @class{gtk:widget} widget that grabs keyboard and
     pointer events}
-  @short{Makes @arg{widget} the current grabbed widget.}
+  @begin{short}
+    Makes @arg{widget} the current grabbed widget.
+  @end{short}
   This means that interaction with other widgets in the same application is
   blocked and mouse as well as keyboard events are delivered to this
   @arg{widget}. If @arg{widget} is not sensitive, it is not set as the current
@@ -725,14 +492,16 @@
 (export 'grab-add)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_grab_get_current () -> grab-current
+;;; gtk_grab_get_current
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_grab_get_current" grab-current) (g:object widget)
  #+liber-documentation
- "@version{#2023-3-5}
-  @return{The @class{gtk:widget} widget which currently has the grab or
-    @code{nil} if no grab is active.}
+ "@version{#2025-06-19}
+  @begin{return}
+    The @class{gtk:widget} widget which currently has the grab or @code{nil}
+    if no grab is active.
+  @end{return}
   @begin{short}
     Queries the current grab of the default window group.
   @end{short}
@@ -744,14 +513,16 @@
 (export 'grab-current)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_grab_remove ()
+;;; gtk_grab_remove
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_grab_remove" grab-remove) :void
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2025-06-19}
   @argument[widget]{a @class{gtk:widget} widget which gives up the grab}
-  @short{Removes the grab from the given @arg{widget}.}
+  @begin{short}
+    Removes the grab from the given @arg{widget}.
+  @end{short}
   You have to pair calls to the @fun{gtk:grab-add} and @fun{gtk:grab-remove}
   functions. If @arg{widget} does not have the grab, this function does nothing.
   @see-class{gtk:widget}
@@ -762,12 +533,12 @@
 (export 'grab-remove)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_device_grab_add ()
+;;; gtk_device_grab_add
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_device_grab_add" device-grab-add) :void
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2023-03-05}
   @argument[widget]{a @class{gtk:widget} widget}
   @argument[device]{a @class{gdk:device} object to grab on}
   @argument[blocking]{@em{true} to prevent other devices to interact with
@@ -790,12 +561,12 @@
 (export 'device-grab-add)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_device_grab_remove ()
+;;; gtk_device_grab_remove
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_device_grab_remove" device-grab-remove) :void
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2023-03-05}
   @argument[widget]{a @class{gtk:widget} widget}
   @argument[device]{a @class{gdk:device} object}
   @begin{short}
@@ -813,80 +584,30 @@
 (export 'device-grab-remove)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_key_snooper_install ()
-;;;
-;;; guint gtk_key_snooper_install (GtkKeySnoopFunc snooper, gpointer func_data);
-;;;
-;;; Warning
-;;;
-;;; gtk_key_snooper_install has been deprecated since version 3.4 and should not
-;;; be used in newly written code. Key snooping should not be done. Events
-;;; should be handled by widgets.
-;;;
-;;; Installs a key snooper function, which will get called on all key events
-;;; before delivering them normally.
-;;;
-;;; snooper :
-;;;     a GtkKeySnoopFunc
-;;;
-;;; func_data :
-;;;     data to pass to snooper
-;;;
-;;; Returns :
-;;;     a unique id for this key snooper for use with gtk_key_snooper_remove().
+;;; GtkKeySnoopFunc                                         not implemented
+;;; ----------------------------------------------------------------------------
+;;; ----------------------------------------------------------------------------
+;;; gtk_key_snooper_install                                 not implemented
+;;; ----------------------------------------------------------------------------
+;;; ----------------------------------------------------------------------------
+;;; gtk_key_snooper_remove                                  not implemented
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; GtkKeySnoopFunc ()
-;;;
-;;; gint (*GtkKeySnoopFunc) (GtkWidget *grab_widget,
-;;;                          GdkEventKey *event,
-;;;                          gpointer func_data);
-;;;
-;;; Key snooper functions are called before normal event delivery. They can be
-;;; used to implement custom key event handling.
-;;;
-;;; grab_widget :
-;;;     the widget to which the event will be delivered
-;;;
-;;; event :
-;;;     the key event
-;;;
-;;; func_data :
-;;;     data supplied to gtk_key_snooper_install()
-;;;
-;;; Returns :
-;;;     TRUE to stop further processing of event, FALSE to continue.
-;;; ----------------------------------------------------------------------------
-
-;;; ----------------------------------------------------------------------------
-;;; gtk_key_snooper_remove ()
-;;;
-;;; void gtk_key_snooper_remove (guint snooper_handler_id);
-;;;
-;;; Warning
-;;;
-;;; gtk_key_snooper_remove has been deprecated since version 3.4 and should not
-;;; be used in newly written code. Key snooping should not be done. Events
-;;; should be handled by widgets.
-;;;
-;;; Removes the key snooper function with the given id.
-;;;
-;;; snooper_handler_id :
-;;;     Identifies the key snooper to remove
-;;; ----------------------------------------------------------------------------
-
-;;; ----------------------------------------------------------------------------
-;;; gtk_get_current_event () -> current-event
+;;; gtk_get_current_event
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_get_current_event" current-event)
     (g:boxed gdk:event :return)
  #+liber-documentation
- "@version{#2023-3-5}
-  @return{The copy of the current @class{gdk:event} instance, or @code{nil} if
-    there is no current event.}
-  @short{Obtains a copy of the event currently being processed by GTK.}
+ "@version{#2025-06-19}
+  @begin{return}
+    The copy of the current @class{gdk:event} instance, or @code{nil} if there
+    is no current event.
+  @end{return}
+  @begin{short}
+    Obtains a copy of the event currently being processed by GTK.
+  @end{short}
   For example, if you are handling a @code{\"clicked\"} signal, the current
   event will be the @class{gdk:event-button} event that triggered the
   @code{\"clicked\"} signal.
@@ -925,14 +646,16 @@
 (export 'current-event)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_get_current_event_time () -> current-event-time
+;;; gtk_get_current_event_time
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_get_current_event_time" current-event-time) :uint32
  #+liber-documentation
- "@version{#2023-3-5}
-  @return{The unsigned integer with the timestamp from the current event, or the
-    @var{gdk:+current-time+} value.}
+ "@version{#2025-06-19}
+  @begin{return}
+    The unsigned integer with the timestamp from the current event, or the
+    @var{gdk:+current-time+} value.
+  @end{return}
   @begin{short}
     If there is a current event and it has a timestamp, return that timestamp.
   @end{short}
@@ -943,7 +666,7 @@
 (export 'current-event-time)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_get_current_event_state () -> current-event-state
+;;; gtk_get_current_event_state
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_get_current_event_state" %current-event-state) :boolean
@@ -951,7 +674,7 @@
 
 (defun current-event-state ()
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2023-03-05}
   @begin{return}
     The state as a value of the @symbol{gdk:modifier-type} flags of the current
     event or @code{nil} if there is no current event.
@@ -969,13 +692,13 @@
 (export 'current-event-state)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_get_current_event_device () -> current-event-device
+;;; gtk_get_current_event_device
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_get_current_event_device" current-event-device)
     (g:object gdk:device)
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2023-03-05}
   @return{The @class{gdk:device} object, or @code{nil}.}
   @begin{short}
     If there is a current event and it has a device, return that device,
@@ -987,15 +710,17 @@
 (export 'current-event-device)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_get_event_widget () -> event-widget
+;;; gtk_get_event_widget
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_get_event_widget" event-widget) (g:object widget)
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2025-06-19}
   @argument[event]{a @class{gdk:event} instance}
-  @return{The @class{gtk:widget} widget that originally received @arg{event},
-    or @code{nil}.}
+  @begin{return}
+    The @class{gtk:widget} widget that originally received @arg{event},
+    or @code{nil}.
+  @end{return}
   @begin{short}
     If @arg{event} is @code{nil} or @arg{event} was not associated with any
     widget, returns @code{nil}, otherwise returns the widget that received
@@ -1009,12 +734,12 @@
 (export 'event-widget)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_propagate_event ()
+;;; gtk_propagate_event
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_propagate_event" propagate-event) :void
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2023-03-05}
   @argument[widget]{a @class{gtk:widget} widget}
   @argument[event]{a @class{gdk:event} instance}
   @begin{short}
