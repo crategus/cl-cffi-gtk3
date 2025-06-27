@@ -117,14 +117,14 @@
   (:idle    #.(ash 1 3)))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:logout]{Inhibit ending the user session by logging out or by
         shutting down the computer.}
       @entry[:switch]{Inhibit user switching.}
       @entry[:suspend]{Inhibit suspending the session or computer.}
       @entry[:idle]{Inhibit the session being marked as idle and possibly
         locked.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Types of user actions that may be blocked by the
@@ -161,7 +161,7 @@
 
 #+liber-documentation
 (setf (documentation 'application 'type)
- "@version{2025-06-02}
+ "@version{2025-06-23}
   @begin{short}
     The @class{gtk:application} class handles many important aspects of a GTK
     application in a convenient fashion, without enforcing a one-size-fits-all
@@ -182,8 +182,8 @@
   GDK lock be held while invoking actions locally with the
   @fun{g:action-group-activate-action} function. The same applies to actions
   associated with @class{gtk:application-window} widgets and to the
-  @code{\"activate\"} and @code{\"open\"} signals of the @class{g:application}
-  class.
+  @sig[g:application]{activate} and @sig[g:application]{open} signals of the
+  @class{g:application} class.
 
   The @class{gtk:application} instance will automatically load menus from the
   @class{gtk:builder} resource located at @file{\"gtk/menus.ui\"}, relative to
@@ -256,43 +256,46 @@
     @end{pre}
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"query-end\" signal}
+    @begin[application::query-end]{signal}
       @begin{pre}
 lambda (application)    :run-first
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[application]{The @class{gtk:application} instance which emitted
           the signal.}
-      @end{table}
+      @end{simple-table}
       Emitted when the session manager is about to end the session, only if the
       @slot[gtk:application]{register-session} property is @em{true}.
       Applications can connect to this signal and call the
-      @fun{gtk:application-inhibit} function with the @code{:logout} value of
-      the @symbol{gtk:application-inhibit-flags} flags to delay the end of the
-      session until the state has been saved.
-    @subheading{The \"window-added\" signal}
+      @fun{gtk:application-inhibit} function with the
+      @val[gtk:application-inhibit-flags]{:logout} value to delay the end of
+      the session until the state has been saved.
+    @end{signal}
+    @begin[application::window-added]{signal}
       @begin{pre}
 lambda (application window)    :run-first
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[application]{The @class{gtk:application} instance which emitted
           the signal.}
         @entry[window]{The newly added @class{gtk:window} widget.}
-      @end{table}
+      @end{simple-table}
       Emitted when a @class{gtk:window} widget is added to the application
       through the @fun{gtk:application-add-window} function.
-    @subheading{The \"window-removed\" signal}
+    @end{signal}
+    @begin[application::window-removed]{signal}
       @begin{pre}
 lambda (application window)    :run-first
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[application]{The @class{gtk:application} instance which emitted
           the signal.}
         @entry[window]{The @class{gtk:window} widget that is being removed.}
-      @end{table}
+      @end{simple-table}
       Emitted when a @class{gtk:window} widget is removed from the application,
       either as a side-effect of being destroyed or explicitly through the
       @fun{gtk:application-remove-window} function.
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:application-new}
   @see-slot{gtk:application-active-window}
@@ -364,7 +367,7 @@ lambda (application window)    :run-first
   has been set. The @setf{gtk:application-app-menu} function sets the
   application menu. This can only be done in the primary instance of the
   application, after it has been registered. The handler for the
-  @code{\"startup\"} signal is a good place to call this.
+  @sig[g:application]{startup} signal is a good place to call this.
 
   The application menu is a single menu containing items that typically impact
   the application as a whole, rather than acting on a specific window or
@@ -404,7 +407,8 @@ lambda (application window)    :run-first
 
   This is a menubar in the traditional sense. This can only be done in the
   primary instance of the application, after it has been registered. The
-  handler for the @code{\"startup\"} signal is a good place to call this.
+  handler for the @sig[g:application]{startup} signal is a good place to call
+  this.
 
   Depending on the desktop environment, this may appear at the top of each
   window, or at the top of the screen. In some environments, if both the
@@ -486,20 +490,19 @@ lambda (application window)    :run-first
 (declaim (inline application-new))
 
 (defun application-new (id flags)
- "@version{2025-06-02}
+ "@version{2025-06-23}
   @argument[id]{a string for the application ID, or @code{nil} for no
     application ID}
-  @argument[flags]{a @symbol{g:application-flags} value for the application
-    flags}
+  @argument[flags]{a @sym{g:application-flags} value for the application flags}
   @return{The new @class{gtk:application} instance.}
   @begin{short}
     Creates a new application.
   @end{short}
   The @code{gtk_init()} function is called as soon as the application gets
   registered as the primary instance. Concretely, the @code{gtk_init()} function
-  is called in the default handler for the @code{\"startup\"} signal. Therefore,
-  @class{gtk:application} subclasses should chain up in their @code{\"startup\"}
-  handler before using any GTK API.
+  is called in the default handler for the @sig[g:application]{startup} signal.
+  Therefore, @class{gtk:application} subclasses should chain up in their
+  @sig[g:application]{startup} handler before using any GTK API.
 
   Note that command line arguments are not passed to the @code{gtk_init()}
   function. All GTK functionality that is available via command line
@@ -688,11 +691,11 @@ lambda (application window)    :run-first
 
 (cffi:defcfun ("gtk_application_inhibit" application-inhibit) :uint
  #+liber-documentation
- "@version{#2025-06-02}
+ "@version{#2025-06-23}
   @argument[application]{a @class{gtk:application} instance}
   @argument[window]{a @class{gtk:window} widget, or @code{nil}}
-  @argument[flags]{a @symbol{gtk:application-inhibit-flags} value for the
-    types of user actions that should be inhibited}
+  @argument[flags]{a @sym{gtk:application-inhibit-flags} value for the types
+    of user actions that should be inhibited}
   @argument[reason]{a short, human readable string that explains why these
     operations are inhibited}
   @begin{return}
@@ -765,10 +768,10 @@ lambda (application window)    :run-first
 
 (cffi:defcfun ("gtk_application_is_inhibited" application-is-inhibited) :boolean
  #+liber-documentation
- "@version{#2025-06-02}
+ "@version{#2025-06-23}
   @argument[application]{a @class{gtk:application} instance}
-  @argument[flags]{a @symbol{gtk:application-inhibit-flags} value for the
-    types of actions that should be queried}
+  @argument[flags]{a @sym{gtk:application-inhibit-flags} value for the types
+    of actions that should be queried}
   @begin{return}
     @em{True} if any of the actions specified in the @arg{flags} argument are
     inhibited.
@@ -823,11 +826,12 @@ lambda (application window)    :run-first
   particular value, it is guaranteed to always return the same value.
 
   You may only call this function after the application has been registered
-  and after the @code{\"startup\"} handler has run. You are most likely to want
-  to use this from your own @code{\"startup\"} handler. It may also make sense
-  to consult this function in an @code{\"activate\"}, @code{\"open\"} or an
-  action activation handler, while constructing the UI in order to determine if
-  you should show a gear menu or not.
+  and after the @sig[g:application]{startup} handler has run. You are most
+  likely to want to use this from your own @sig[g:application]{startup} handler.
+  It may also make sense to consult this function in an
+  @sig[g:application]{activate}, @sig[g:application]{open} or an action
+  activation handler, while constructing the UI in order to determine if you
+  should show a gear menu or not.
 
   This function will return @em{false} on Mac OS and a default application menu
   will be created automatically with the contents of that menu typical to most
@@ -877,11 +881,11 @@ lambda (application window)    :run-first
 (defun application-add-accelerator (application accel name
                                     &optional (parameter nil))
  #+liber-documentation
- "@version{#2025-06-02}
+ "@version{#2025-06-23}
   @argument[application]{a @class{gtk:application} instance}
   @argument[accel]{a string representing an accelerator}
   @argument[name]{a string for the name of the action to activate}
-  @argument[parameter]{an optional @symbol{g:variant} parameter to pass when
+  @argument[parameter]{an optional @sym{g:variant} parameter to pass when
     activating the action, or @code{nil}, the default, if the action does not
     accept an activation parameter}
   @begin{short}
@@ -934,10 +938,10 @@ lambda (application window)    :run-first
 (defun application-remove-accelerator (application name
                                        &optional (parameter nil))
  #+liber-documentation
- "@version{#2025-06-02}
+ "@version{#2025-06-23}
   @argument[application]{a @class{gtk:application} instance}
   @argument[name]{a string for the name of the action to activate}
-  @argument[parameter]{an optional @symbol{g:variant} parameter to pass when
+  @argument[parameter]{an optional @sym{g:variant} parameter to pass when
     activating the action, or @code{nil}, the default, if the action does not
     accept an activation parameter}
   @begin{short}

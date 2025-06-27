@@ -87,7 +87,7 @@
 
 #+liber-documentation
 (setf (documentation 'application-window 'type)
- "@version{2024-03-20}
+ "@version{2025-06-23}
   @begin{short}
     The @class{gtk:application-window} class is a @class{gtk:window} subclass
     that offers some extra functionality for better integration with
@@ -164,7 +164,7 @@
     @item{@code{display-hint}: a string used to determine special formatting
       for the section. Possible values include @code{\"horizontal-buttons\"}.}
     @item{@code{text-direction}: a string used to determine the
-      @symbol{gtk:text-direction} value to use when @code{\"display-hint\"} is
+      @sym{gtk:text-direction} value to use when @code{\"display-hint\"} is
       set to @code{\"horizontal-buttons\"}. Possible values include
       @code{\"rtl\"}, @code{\"ltr\"}, and @code{\"none\"}.}
   @end{itemize}
