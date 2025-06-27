@@ -318,13 +318,13 @@
 (cffi:defcfun ("gtk_buildable_get_internal_child" buildable-internal-child)
     g:object
  #+liber-documentation
- "@version{#2025-06-05}
+ "@version{#2025-06-24}
   @argument[buildable]{a @class{gtk:buildable} widget}
   @argument[builder]{a @class{gtk:builder} object}
-  @argument[name]{a string for the name of the child widget}
-  @return{The internal child widget of the buildable widget.}
+  @argument[name]{a string for the name of the child}
+  @return{The internal @class{g:object} child for the buildable object.}
   @begin{short}
-    Gets the internal child widget called @arg{name} of the buildable widget.
+    Gets the internal child called @arg{name} of the buildable object.
   @end{short}
   @see-class{gtk:buildable}
   @see-class{gtk:builder}"

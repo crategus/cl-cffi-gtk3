@@ -128,7 +128,7 @@
   (:invalid-id 13))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:invalid-type-function]{A @code{type-func} attribute did not name
         a function that returns a @class{g:type-t} type ID.}
       @entry[:unhandled-tag]{The input contained a tag that a
@@ -154,7 +154,7 @@
       @entry[:invalid-signal]{The specified signal is unknown for the object
         class.}
       @entry[:invalid-id]{An object ID is unknown.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Error codes that identify various errors that can occur while parsing the
@@ -283,7 +283,7 @@
     by their name, nick or integer value, flags, can be specified by their name,
     nick, integer value, optionally combined with @code{\"|\"}, for example,
     @code{\"GTK_VISIBLE | GTK_REALIZED\"}, and colors, in a format understood
-    by the @fun{gdk:rgba-parse} function. A @symbol{g:variant} parameter can be
+    by the @fun{gdk:rgba-parse} function. A @sym{g:variant} parameter can be
     specified in the format understood by the @fun{g:variant-parse} function,
     and pixbufs can be specified as a filename of an image file to load.
 
@@ -435,8 +435,8 @@
 
 (defun builder-new-from-file (path)
  #+liber-documentation
- "@version{2025-06-05}
-  @argument[path]{a path or namestring for the file to load}
+ "@version{2025-06-24}
+  @argument[path]{a pathname or namestring for the file to load}
   @return{The @class{gtk:builder} object containing the described interface.}
   @begin{short}
     Builds the @class{gtk:builder} UI definition from a user interface
@@ -445,7 +445,8 @@
   If there is an error opening the file or parsing the description then the
   program will be aborted. You should only ever attempt to parse user interface
   descriptions that are shipped as part of your program.
-  @see-class{gtk:builder}"
+  @see-class{gtk:builder}
+  @see-function{gtk:builder-new}"
   (%builder-new-from-file (namestring path)))
 
 (export 'builder-new-from-file)
@@ -457,8 +458,8 @@
 (cffi:defcfun ("gtk_builder_new_from_resource" builder-new-from-resource)
     (g:object builder :return)
  #+liber-documentation
- "@version{2025-06-05}
-  @argument[path]{a string for the @class{g:resource} path}
+ "@version{2025-06-25}
+  @argument[path]{a string for the @class{g:resource} path to parse}
   @return{The @class{gtk:builder} object containing the described interface.}
   @begin{short}
     Builds the @class{gtk:builder} UI definition from a resource path.
@@ -467,9 +468,7 @@
   the program will be aborted.
   @see-class{gtk:builder}
   @see-class{g:resource}
-  @see-function{gtk:builder-new}
-  @see-function{gtk:builder-new-from-file}
-  @see-function{gtk:builder-new-from-string}"
+  @see-function{gtk:builder-new}"
   (path :string))
 
 (export 'builder-new-from-resource)
@@ -485,7 +484,7 @@
 
 (defun builder-new-from-string (string)
  #+liber-documentation
- "@version{2025-06-05}
+ "@version{2025-06-25}
   @argument[string]{a string for the user interface description}
   @begin{return}
     The @class{gtk:builder} object containing the interface described by
@@ -499,9 +498,7 @@
   should not attempt to parse user interface description from untrusted
   sources.
   @see-class{gtk:builder}
-  @see-function{gtk:builder-new}
-  @see-function{gtk:builder-new-from-file}
-  @see-function{gtk:builder-new-from-resource}"
+  @see-function{gtk:builder-new}"
   (%builder-new-from-string string -1))
 
 (export 'builder-new-from-string)
@@ -592,9 +589,9 @@
 
 (defun builder-add-from-file (builder path)
  #+liber-documentation
- "@version{2025-06-03}
+ "@version{2025-06-24}
   @argument[builder]{a @class{gtk:builder} object}
-  @argument[path]{a path or namestring for the name of the file to parse}
+  @argument[path]{a pathname or namestring for the file to parse}
   @begin{return}
     The unsigned integer with a positive value on success, 0 if an error
     occurred.
@@ -622,9 +619,9 @@
 
 (defun builder-add-from-resource (builder path)
  #+liber-documentation
- "@version{2025-06-03}
+ "@version{2025-06-24}
   @argument[builder]{a @class{gtk:builder} object}
-  @argument[path]{a string for the path of the resouce file to parse}
+  @argument[path]{a string for the @class{g:resource} path to parse}
   @begin{return}
     The unsigned integer with a positive value on success, 0 if an error
     occured.
@@ -686,9 +683,9 @@
 
 (defun builder-add-objects-from-file (builder path &rest ids)
  #+liber-documentation
- "@version{2025-06-03}
+ "@version{2025-06-24}
   @argument[builder]{a @class{gtk:builder} object}
-  @argument[path]{a path or namestring for the name of the file to parse}
+  @argument[path]{a pathname or namestring for the file to parse}
   @argument[ids]{strings for the object IDs to build}
   @begin{return}
     The unsigned integer with a positive value on success, 0 if an error
@@ -964,11 +961,11 @@
   @syntax{lambda (builder object signal handler connect flags)}
   @argument[builder]{a @class{gtk:builder} object}
   @argument[object]{a @class{g:object} instance to connect a signal to}
-  @argument[signal]{a string with the name of the signal}
-  @argument[handler]{a string with the name of the handler}
+  @argument[signal]{a string for the name of the signal}
+  @argument[handler]{a string for the name of the handler}
   @argument[connect]{a @class{g:object} instance, if non-@code{nil}, use the
     @fun{g:signal-connect-object} function}
-  @argument[flags]{a @symbol{g:connect-flags} value to use}
+  @argument[flags]{a @sym{g:connect-flags} value to use}
   @begin{short}
     This is the signature of a callback function used to connect signals.
   @end{short}
@@ -995,7 +992,7 @@
  #+liber-documentation
  "@version{#2023-03-02}
   @argument[builder]{a @class{gtk:builder} object}
-  @argument[func]{a @symbol{gtk:builder-connect-func} callback function used to
+  @argument[func]{a @sym{gtk:builder-connect-func} callback function used to
     connect the signals}
   @begin{short}
     This function can be thought of the interpreted language binding version of
