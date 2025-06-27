@@ -255,27 +255,30 @@
   (:popup 1))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:toplevel]{A regular window, such as a dialog.}
       @entry[:popup]{A special window such as a tooltip.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     An enumeration for the possible types of a @class{gtk:window} widget.
   @end{short}
-  The @class{gtk:window} widget can be one of the @code{:toplevel} or
-  @code{:popup} types. Most things you would consider a \"window\" should have
-  @code{:toplevel} type. Windows with this type are managed by the window
-  manager and have a frame by default. Call the @fun{gtk:window-decorated}
-  function to toggle the frame. Windows with @code{:popup} type are ignored by
-  the window manager. Window manager keybindings will not work on them, the
-  window manager will not decorate the window with a frame, many GTK features
-  that rely on the window manager will not work, for example, resize grips and
-  maximization/minimization. The @code{:popup} type is used to implement widgets
-  such as @class{gtk:menu} widgets or tooltips that you normally do not think of
-  as windows per se. Nearly all windows should be of @code{:toplevel} type. In
-  particular, do not use the @code{:popup} type just to turn off the window
-  borders. Use the @fun{gtk:window-decorated} function for that.
+  The @class{gtk:window} widget can be one of the
+  @val[gtk:window-type]{:toplevel} or @val[gtk:window-type]{:popup} types. Most
+  things you would consider a \"window\" should have
+  @val[gtk:window-type]{:toplevel} type. Windows with this type are managed by
+  the window manager and have a frame by default. Call the
+  @fun{gtk:window-decorated} function to toggle the frame. Windows with
+  @val[gtk:window-type]{:popup} type are ignored by the window manager. Window
+  manager keybindings will not work on them, the window manager will not
+  decorate the window with a frame, many GTK features that rely on the window
+  manager will not work, for example, resize grips and
+  maximization/minimization. The @val[gtk:window-type]{:popup} type is used to
+  implement widgets such as @class{gtk:menu} widgets or tooltips that you
+  normally do not think of as windows per se. Nearly all windows should be of
+  @val[gtk:window-type]{:toplevel} type. In particular, do not use the
+  @val[gtk:window-type]{:popup} type just to turn off the window borders. Use
+  the @fun{gtk:window-decorated} function for that.
   @see-class{gtk:window}
   @see-class{gtk:menu}
   @see-function{gtk:window-decorated}")
@@ -309,21 +312,21 @@
   (:center-on-parent 4))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:none]{No influence is made on placement.}
       @entry[:center]{Windows should be placed in the center of the screen.}
       @entry[:mouse]{Windows should be placed at the current mouse position.}
       @entry[:center-always]{Keep window centered as it changes size, etc.}
       @entry[:center-on-parent]{Center the window on its transient parent.
         See the @fun{gtk:window-transient-for} function.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Window placement can be influenced using this enumeration.
   @end{short}
-  Note that using the @code{:center-always} value is almost always a bad idea.
-  It will not necessarily work well with all window managers or on all windowing
-  systems.
+  Note that using the @val[gtk:window-position]{:center-always} value is almost
+  always a bad idea. It will not necessarily work well with all window managers
+  or on all windowing systems.
   @see-class{gtk:window}
   @see-function{gtk:window-transient-for}")
 
@@ -447,7 +450,7 @@
 
 #+liber-documentation
 (setf (documentation 'window 'type)
- "@version{2025-06-03}
+ "@version{2025-06-23}
   @begin{short}
     The @class{gtk:window} widget is a toplevel window which can contain other
     widgets.
@@ -506,77 +509,80 @@
     titlebar child.
   @end{dictionary}
   @begin[Style Property Details]{dictionary}
-    @begin[code]{table}
-      @begin[decoration-button-layout]{entry}
-        The @code{decoration-button-layout} style property of type
-        @code{:string} (Read) @br{}
-        The decorated button layout. @br{}
-        Default value: @code{\"menu:close\"}
-      @end{entry}
-      @begin[decoration-resize-handle]{entry}
-        The @code{decoration-resize-handle} style property of type @code{:int}
-        (Read / Write) @br{}
-        The decoration resize handle size. @br{}
-        Allowed values: >= 0 @br{}
-        Default value: 20
-      @end{entry}
-    @end{table}
+    @begin[window:decoration-button-layout]{property}
+      The @code{decoration-button-layout} style property of type
+      @code{:string} (Read) @br{}
+      The decorated button layout. @br{}
+      Default value: @code{\"menu:close\"}
+    @end{property}
+    @begin[window:decoration-resize-handle]{property}
+      The @code{decoration-resize-handle} style property of type @code{:int}
+      (Read / Write) @br{}
+      The decoration resize handle size. @br{}
+      Allowed values: >= 0 @br{}
+      Default value: 20
+    @end{property}
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"activate-default\" signal}
+    @begin[window::activate-default]{signal}
       @begin{pre}
 lambda (window)    :action
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[window]{The @class{gtk:window} widget which received the signal.}
-      @end{table}
+      @end{simple-table}
       The signal is a keybinding signal which gets emitted when the user
       activates the default widget of the window.
-    @subheading{The \"activate-focus\" signal}
+    @end{signal}
+    @begin[window::activate-focus]{signal}
       @begin{pre}
 lambda (window)    :action
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[window]{The @class{gtk:window} widget which received the signal.}
-      @end{table}
+      @end{simple-table}
       The signal is a keybinding signal which gets emitted when the user
       activates the currently focused widget of the window.
-    @subheading{The \"enable-debugging\" signal}
+    @end{signal}
+    @begin[window::enable-debugging]{signal}
       @begin{pre}
 lambda (window toggle)    :action
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[window]{The @class{gtk:window} widget on which the signal is
           emitted.}
         @entry[toggle]{The boolean which toggles the debugger.}
         @entry[Returns]{The boolean which is @em{true} if the key binding was
           handled.}
-      @end{table}
+      @end{simple-table}
       The signal is a keybinding signal which gets emitted when the user enables
       or disables interactive debugging. When the @arg{toggle} argument is
       @em{true}, interactive debugging is toggled on or off, when it is
       @em{false}, the debugger will be pointed at the widget under the pointer.
       The default bindings for this signal are the @kbd{Ctrl-Shift-I} and
       @kbd{Ctrl-Shift-D} keys.
-    @subheading{The \"keys-changed\" signal}
+    @end{signal}
+    @begin[window::keys-changed]{signal}
       @begin{pre}
 lambda (window)    :run-first
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[window]{The @class{gtk:window} widget which received the signal.}
-      @end{table}
+      @end{simple-table}
       The signal gets emitted when the set of accelerators or mnemonics that are
       associated with the window changes.
-    @subheading{The \"set-focus\" signal}
+    @end{signal}
+    @begin[window::set-focus]{signal}
       @begin{pre}
 lambda (window widget)    :run-last
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[window]{The @class{gtk:window} widget which received the signal.}
         @entry[widget]{The newly focused @class{gtk:widget} object.}
-      @end{table}
+      @end{simple-table}
       The signal is emitted whenever the currently focused widget in this window
       changes.
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:window-new}
   @see-slot{gtk:window-accept-focus}
@@ -949,31 +955,31 @@ lambda (window widget)    :run-last
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gravity" 'window) t)
- "The @code{gravity} property of type @symbol{gdk:gravity} (Read / Write) @br{}
+ "The @code{gravity} property of type @sym{gdk:gravity} (Read / Write) @br{}
   The window gravity of the window. See the @fun{gtk:window-move} function and
-  the @symbol{gdk:gravity} enumeration for more details about window gravity.
+  the @sym{gdk:gravity} enumeration for more details about window gravity.
   @br{}
-  Default value: @code{:north-west}")
+  Default value: @val[gdk:gravity]{:north-west}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'window-gravity)
       "Accessor"
       (documentation 'window-gravity 'function)
- "@version{2025-06-03}
+ "@version{2025-06-23}
   @syntax{(gtk:window-gravity object) => gravity}
   @syntax{(setf (gtk:window-gravity object) gravity)}
   @argument[object]{a @class{gtk:window} widget}
-  @argument[gravity]{a @symbol{gdk:gravity} value for the window gravity}
+  @argument[gravity]{a @sym{gdk:gravity} value for the window gravity}
   @begin{short}
     Accessor of the @slot[gtk:window]{gravity} slot of the @class{gtk:window}
     class.
   @end{short}
   Window gravity defines the meaning of coordinates passed to the
   @fun{gtk:window-move} function. See the @fun{gtk:window-move} function and
-  the @symbol{gdk:gravity} enumeration for more details.
+  the @sym{gdk:gravity} enumeration for more details.
 
-  The default window gravity is @code{:north-west} which will typically do what
-  you mean.
+  The default window gravity is @val[gdk:gravity]{:north-west} which will
+  typically do what you mean.
   @see-class{gtk:window}
   @see-symbol{gdk:gravity}
   @see-function{gtk:window-move}")
@@ -1593,19 +1599,19 @@ lambda (window widget)    :run-last
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "type" 'window) t)
- "The @code{type} property of type @symbol{gtk:window-type}
+ "The @code{type} property of type @sym{gtk:window-type}
  (Read / Construct only) @br{}
   The type of the window. @br{}
-  Default value: @code{:toplevel}")
+  Default value: @val[gtk:window-type]{:toplevel}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'window-type)
       "Accessor"
       (documentation 'window-type 'function)
- "@version{2024-04-08}
+ "@version{2025-06-23}
   @syntax{(gtk:window-type object) => type}
   @argument[object]{a @class{gtk:window} widget}
-  @argument[type]{a value of the @symbol{gtk:window-type} enumeration}
+  @argument[type]{a value of the @sym{gtk:window-type} enumeration}
   @begin{short}
     Accessor of the @slot[gtk:window]{type} slot of the @class{gtk:window}
     class.
@@ -1618,21 +1624,21 @@ lambda (window widget)    :run-last
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "type-hint" 'window) t)
- "The @code{type-hint} property of type @symbol{gdk:window-type-hint}
+ "The @code{type-hint} property of type @sym{gdk:window-type-hint}
   (Read / Write) @br{}
   The hint to help the desktop environment understand what kind of window this
   is and how to treat it. @br{}
-  Default value: @code{:normal}")
+  Default value: @val[gdk:window-type-hint]{:normal}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'window-type-hint)
       "Accessor"
       (documentation 'window-type-hint 'function)
- "@version{2024-03-16}
+ "@version{2025-06-23}
   @syntax{(gtk:window-type-hint object) => hint}
   @syntax{(setf (gtk:window-type-hint object) hint)}
   @argument[object]{a @class{gtk:window} widget}
-  @argument[hint]{a value of the @symbol{gdk:window-type-hint} enumeration}
+  @argument[hint]{a value of the @sym{gdk:window-type-hint} enumeration}
   @begin{short}
     Accessor of the @slot[gtk:window]{type-hint} slot of the @class{gtk:window}
     class.
@@ -1680,28 +1686,28 @@ lambda (window widget)    :run-last
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "window-position" 'window) t)
- "The @code{window-position} property of type @symbol{gtk:window-position}
+ "The @code{window-position} property of type @sym{gtk:window-position}
   (Read / Write) @br{}
   The initial position of the window. @br{}
-  Default value: @code{:none}")
+  Default value: @val[gtk:window-position]{:none}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'window-window-position)
       "Accessor"
       (documentation 'window-window-position 'function)
- "@version{2024-03-16}
+ "@version{2025-06-23}
   @syntax{(gtk:window-window-position object) => position}
   @syntax{(setf (gtk:window-window-position object) position)}
   @argument[object]{a @class{gtk:window} widget}
-  @argument[position]{a value of the @symbol{gtk:window-position} enumeration}
+  @argument[position]{a value of the @sym{gtk:window-position} enumeration}
   @begin{short}
     Accessor of the @slot[gtk:window]{window-position} slot of the
     @class{gtk:window} class.
   @end{short}
   The @setf{gtk:window-window-position} function sets a position contraint for
-  this window. If the old or new constraint is the @code{:center-always} value,
-  this will also cause the window to be repositioned to satisfy the new
-  constraint.
+  this window. If the old or new constraint is the
+  @val[gtk:window-position]{:center-always} value, this will also cause the
+  window to be repositioned to satisfy the new constraint.
   @see-class{gtk:window}
   @see-symbol{gtk:window-position}")
 
@@ -1713,23 +1719,25 @@ lambda (window widget)    :run-last
 
 (defun window-new (wtype)
  #+liber-documentation
- "@version{2024-04-08}
-  @argument[wtype]{a value of the @symbol{gtk:window-type} enumeration}
+ "@version{2025-06-23}
+  @argument[wtype]{a value of the @sym{gtk:window-type} enumeration}
   @return{The new @class{gtk:window} widget.}
   @begin{short}
     Creates a new window, which is a toplevel window that can contain other
     widgets.
   @end{short}
-  Nearly always, the type of the window should be @code{:toplevel}. If you are
-  implementing something like a popup menu from scratch, which is a bad idea,
-  just use the @class{gtk:menu} widget, you might use the @code{:popup} type.
-  The @code{:popup} type is not for dialogs, though in some other toolkits
-  dialogs are called \"popups\". In GTK, the @code{:popup} type means a popup
-  menu or popup tooltip. On X11, popup windows are not controlled by the window
-  manager.
+  Nearly always, the type of the window should be
+  @val[gtk:window-type]{:toplevel}. If you are implementing something like a
+  popup menu from scratch, which is a bad idea, just use the @class{gtk:menu}
+  widget, you might use the @val[gtk:window-type]{:popup} type. The
+  @val[gtk:window-type]{:popup} type is not for dialogs, though in some other
+  toolkits dialogs are called \"popups\". In GTK, the
+  @val[gtk:window-type]{:popup} type means a popup menu or popup tooltip. On
+  X11, popup windows are not controlled by the window manager.
 
   If you simply want an undecorated window with no window borders, use the
-  @fun{gtk:window-decorated} function, do not use the @code{:popup} type.
+  @fun{gtk:window-decorated} function, do not use the
+  @val[gtk:window-type]{:popup} type.
   @see-class{gtk:window}
   @see-symbol{gtk:window-type}
   @see-function{gtk:window-decorated}"
@@ -1940,18 +1948,18 @@ lambda (window widget)    :run-last
 
 (defun window-set-geometry-hints (window geometry mask)
  #+liber-documentation
- "@version{2024-03-16}
+ "@version{2024-06-23}
   @argument[window]{a @class{gtk:window} widget}
-  @argument[geometry]{a @symbol{gdk:geometry} instance containing geometry
+  @argument[geometry]{a @sym{gdk:geometry} instance containing geometry
     information}
-  @argument[mask]{a @symbol{gdk:window-hints} mask indicating which geometry
+  @argument[mask]{a @sym{gdk:window-hints} mask indicating which geometry
     structure fields should be paid attention to}
   @begin{short}
     This function sets up hints about how a window can be resized by the user.
   @end{short}
   You can set a minimum and maximum size. Allowed resize increments, for
   example for xterm, you can only resize by the size of a character, aspect
-  ratios, and more. See the @symbol{gdk:geometry} structure.
+  ratios, and more. See the @sym{gdk:geometry} structure.
   @begin[Notes]{dictionary}
     In the Lisp implementation an unused widget argument is omitted.
   @end{dictionary}
@@ -2036,10 +2044,10 @@ lambda (window widget)    :run-last
 
 (cffi:defcfun ("gtk_window_mnemonic_activate" window-mnemonic-activate) :boolean
  #+liber-documentation
- "@version{#2025-06-02}
+ "@version{#2025-06-23}
   @argument[window]{a @class{gtk:window} widget}
   @argument[keyval]{an unsigned integer for the mnemonic}
-  @argument[modifier]{a @symbol{gdk:modifier-type} value with the modifiers}
+  @argument[modifier]{a @sym{gdk:modifier-type} value with the modifiers}
   @return{@em{True} if the activation is done.}
   @begin{short}
     Activates the targets associated with the mnemonic.
@@ -2059,16 +2067,17 @@ lambda (window widget)    :run-last
 
 (cffi:defcfun ("gtk_window_activate_key" window-activate-key) :boolean
  #+liber-documentation
- "@version{#2024-03-16}
+ "@version{#2025-06-23}
   @argument[window]{a @class{gtk:window} widget}
   @argument[event]{a @class{gdk:event-key} event}
   @return{@em{True} if a mnemonic or accelerator was found and activated.}
   @begin{short}
     Activates mnemonics and accelerators for the window.
   @end{short}
-  This is normally called by the default @code{\"key-press-event\"} signal
-  handler for toplevel windows, however in some cases it may be useful to call
-  this directly when overriding the standard key handling for a toplevel window.
+  This is normally called by the default @sig[gtk:widget]{key-press-event}
+  signal handler for toplevel windows, however in some cases it may be useful
+  to call this directly when overriding the standard key handling for a toplevel
+  window.
   @see-class{gtk:window}
   @see-class{gdk:event-key}"
   (window (g:object window))
@@ -2083,7 +2092,7 @@ lambda (window widget)    :run-last
 (cffi:defcfun ("gtk_window_propagate_key_event" window-propagate-key-event)
     :boolean
  #+liber-documentation
- "@version{#2023-03-30}
+ "@version{#2025-06-23}
   @argument[window]{a @class{gtk:window} widget}
   @argument[event]{a @class{gdk:event-key} event}
   @return{@em{True} if a widget in the focus chain handled the event.}
@@ -2091,10 +2100,10 @@ lambda (window widget)    :run-last
     Propagate a key press or release event to the focus widget and up the focus
     container chain until a widget handles the event.
   @end{short}
-  This is normally called by the default @code{\"key-press-event\"} and
-  @code{\"key-release-event\"} signal handlers for toplevel windows, however in
-  some cases it may be useful to call this directly when overriding the standard
-  key handling for a toplevel window.
+  This is normally called by the default @sig[gtk:widget]{key-press-event} and
+  @sig[gtk:widget]{key-release-event} signal handlers for toplevel windows,
+  however in some cases it may be useful to call this directly when overriding
+  the standard key handling for a toplevel window.
   @see-class{gtk:window}
   @see-class{gdk:event-key}"
   (window (g:object window))
@@ -2287,8 +2296,8 @@ lambda (window widget)    :run-last
   It is permitted to call this function before showing a window, in which case
   the window will be iconified before it ever appears onscreen.
 
-  You can track iconification via the @code{\"window-state-event\"} signal on
-  the @class{gtk:widget} object.
+  You can track iconification via the @sig[gtk:widget]{window-state-event}
+  signal on the @class{gtk:widget} object.
   @see-class{gtk:window}
   @see-class{gtk:widget}"
   (window (g:object window)))
@@ -2311,8 +2320,8 @@ lambda (window widget)    :run-last
   could iconify it again before your code which assumes deiconification gets to
   run.
 
-  You can track iconification via the @code{\"window-state-event\"} signal on
-  the @class{gtk:widget} object.
+  You can track iconification via the @sig[gtk:widget]{window-state-event}
+  signal on the @class{gtk:widget} object.
   @see-class{gtk:window}
   @see-class{gtk:widget}"
   (window (g:object window)))
@@ -2339,8 +2348,8 @@ lambda (window widget)    :run-last
 
   It is permitted to call this function before showing a window.
 
-  You can track stickiness via the @code{\"window-state-event\"} signal on the
-  @class{gtk:widget} object.
+  You can track stickiness via the @sig[gtk:widget]{window-state-event} signal
+  on the @class{gtk:widget} object.
   @see-class{gtk:window}
   @see-class{gtk:widget}"
   (window (g:object window)))
@@ -2364,8 +2373,8 @@ lambda (window widget)    :run-last
   it again. But normally the window will end up stuck. Just do not write code
   that crashes if not.
 
-  You can track stickiness via the @code{\"window-state-event\"} signal on the
-  @class{gtk:widget} object.
+  You can track stickiness via the @sig[gtk:widget]{window-state-event} signal
+  on the @class{gtk:widget} object.
   @see-class{gtk:window}
   @see-class{gtk:widget}"
   (window (g:object window)))
@@ -2392,9 +2401,9 @@ lambda (window widget)    :run-last
   It is permitted to call this function before showing a window, in which case
   the window will be maximized when it appears onscreen initially.
 
-  You can track maximization via the @code{\"window-state-event\"} signal on
-  the @class{gtk:widget} object, or by listening to notifications on the
-  @slot[gtk:window]{is-maximized} property.
+  You can track maximization via the @sig[gtk:widget]{window-state-event}
+  signal on the @class{gtk:widget} object, or by listening to notifications on
+  the @slot[gtk:window]{is-maximized} property.
   @see-class{gtk:window}
   @see-class{gtk:widget}
   @see-function{gtk:window-is-maximized}"
@@ -2419,8 +2428,8 @@ lambda (window widget)    :run-last
   unmaximize. But normally the window will end up unmaximized. Just do not
   write code that crashes if not.
 
-  You can track maximization via the @code{\"window-state-event\"} signal on
-  the @class{gtk:widget} object.
+  You can track maximization via the @sig[gtk:widget]{window-state-event}
+  signal on the @class{gtk:widget} object.
   @see-class{gtk:window}
   @see-class{gtk:widget}"
   (window (g:object window)))
@@ -2444,8 +2453,8 @@ lambda (window widget)    :run-last
   fullscreen windows. But normally the window will end up fullscreen. Just do
   not write code that crashes if not.
 
-  You can track the fullscreen state via the @code{\"window-state-event\"}
-  signal on the @class{gtk:widget} object.
+  You can track the fullscreen state via the
+  @sig[gtk:widget]{window-state-event} signal on the @class{gtk:widget} object.
   @see-class{gtk:window}
   @see-class{gtk:widget}"
   (window (g:object window)))
@@ -2469,8 +2478,8 @@ lambda (window widget)    :run-last
   Note that you should not assume the window is definitely full screen
   afterward.
 
-  You can track the fullscreen state via the @code{\"window-state-event\"}
-  signal on the @class{gtk:widget} widget.
+  You can track the fullscreen state via the
+  @sig[gtk:widget]{window-state-event} signal on the @class{gtk:widget} widget.
   @see-class{gtk:window}
   @see-class{gtk:widget}
   @see-class{gdk:screen}"
@@ -2497,8 +2506,9 @@ lambda (window widget)    :run-last
   unfullscreen windows. But normally the window will end up restored to its
   normal state. Just do not write code that crashes if not.
 
-  You can track the fullscreen state via the @code{\"window-state-event\"}
-  signal on the @class{gtk:widget} object.
+  You can track the fullscreen state via the
+  @sig[gtk:widget]{\"window-state-event\"} signal on the @class{gtk:widget}
+  object.
   @see-class{gtk:window}
   @see-class{gtk:widget}"
   (window (g:object window)))
@@ -2526,8 +2536,8 @@ lambda (window widget)    :run-last
   It is permitted to call this function before showing a window, in which case
   the window will be kept above when it appears onscreen initially.
 
-  You can track the above state via the @code{\"window-state-event\"} signal on
-  the @class{gtk:widget} object.
+  You can track the above state via the @sig[gtk:widget]{window-state-event}
+  signal on the @class{gtk:widget} object.
 
   Note that, according to the Extended Window Manager Hints specification, the
   above state is mainly meant for user preferences and should not be used by
@@ -2560,8 +2570,8 @@ lambda (window widget)    :run-last
   It is permitted to call this function before showing a window, in which case
   the window will be kept below when it appears onscreen initially.
 
-  You can track the below state via the @code{\"window-state-event\"} signal on
-  the @class{gtk:widget} object.
+  You can track the below state via the @sig[gtk:widget]{window-state-event}
+  signal on the @class{gtk:widget} object.
 
   Note that, according to the Extended Window Manager Hints specification,
   the above state is mainly meant for user preferences and should not be used
@@ -2579,9 +2589,9 @@ lambda (window widget)    :run-last
 
 (cffi:defcfun ("gtk_window_begin_resize_drag" window-begin-resize-drag) :void
  #+liber-documentation
- "@version{#2025-06-02}
+ "@version{#2025-06-23}
   @argument[window]{a @class{gtk:window} widget}
-  @argument[edge]{a @symbol{gdk:window-edge} value for the position of the
+  @argument[edge]{a @sym{gdk:window-edge} value for the position of the
     resize control}
   @argument[button]{an integer for the mouse button that initiated the drag}
   @argument[x]{an integer for the x position where the user clicked to
@@ -2656,11 +2666,11 @@ lambda (window widget)    :run-last
 (cffi:defcfun ("gtk_window_get_mnemonic_modifier" window-mnemonic-modifier)
     gdk:modifier-type
  #+liber-documentation
- "@version{#2025-06-03}
+ "@version{#2025-06-23}
   @syntax{(gtk:window-mnemonic-modifier window) => modifier}
   @syntax{(setf (gtk:window-mnemonic-modifier window) modifier)}
   @argument[window]{a @class{gtk:window} widget}
-  @argument[modifier]{a @symbol{gdk:modifier-type} value for the modifier mask
+  @argument[modifier]{a @sym{gdk:modifier-type} value for the modifier mask
     used to activate mnemonics on @arg{window}}
   @begin{short}
     Accessor of the modifier mask used to activate mnemonics on the window.
@@ -2810,7 +2820,7 @@ lambda (window widget)    :run-last
 
 (defun window-position (window)
  #+liber-documentation
- "@version{#2025-06-03}
+ "@version{#2025-06-23}
   @syntax{(gtk:window-position window) => x, y}
   @argument[window]{a @class{gtk:window} widget}
   @argument[x]{an integer for the x coordinate of gravity determined reference
@@ -2825,10 +2835,10 @@ lambda (window widget)    :run-last
   See the @fun{gtk:window-move} function for more details.
 
   If you have not changed the window gravity, its gravity will be the
-  @code{:north-west} value of the @symbol{gdk:gravity} enumeration. This means
-  that the @fun{gtk:window-position} function gets the position of the top-left
-  corner of the window manager frame for the window. The @fun{gtk:window-move}
-  function sets the position of this same top-left corner.
+  @val[gdk:gravity]{:north-west} value of the @sym{gdk:gravity} enumeration.
+  This means that the @fun{gtk:window-position} function gets the position of
+  the top-left corner of the window manager frame for the window. The
+  @fun{gtk:window-move} function sets the position of this same top-left corner.
 
   The @fun{gtk:window-position} function is not 100 % reliable because the
   X Window System does not specify a way to obtain the geometry of the
@@ -2841,8 +2851,8 @@ lambda (window widget)    :run-last
   moving the window slightly. Window managers are slowly getting better over
   time.
 
-  If a window has @code{:static} gravity the window manager frame is not
-  relevant, and thus the @fun{gtk:window-position} function will always
+  If a window has @val[gdk:gravity]{:static} gravity the window manager frame
+  is not relevant, and thus the @fun{gtk:window-position} function will always
   produce accurate results. However you can not use static gravity to do things
   like place a window in a corner of the screen, because static gravity ignores
   the window manager decorations.
@@ -2902,8 +2912,8 @@ lambda (window widget)    :run-last
         size of the window may change between the time that you get the size and
         the time that you perform some action assuming that size is the current
         size. To avoid race conditions, connect to the
-        @code{\"configure-event\"} signal on the window and adjust your size
-        dependent state to match the size delivered in the
+        @sig[gtk:widget]{configure-event} signal on the window and adjust your
+        size dependent state to match the size delivered in the
         @class{gdk:event-configure} event.
       @end{item}
       @begin{item}
@@ -2994,7 +3004,7 @@ lambda (window widget)    :run-last
 
 (cffi:defcfun ("gtk_window_move" window-move) :void
  #+liber-documentation
- "@version{#2025-06-02}
+ "@version{#2025-06-23}
   @argument[window]{a @class{gtk:window} widget}
   @argument[x]{an integer for the x coordinate to move the window to}
   @argument[y]{an integer for the y coordinate to move the window to}
@@ -3010,20 +3020,20 @@ lambda (window widget)    :run-last
   the reference point in root window coordinates, and second, which point on
   the window is positioned at the reference point.
 
-  By default the gravity is the @code{:north-west} value of the
-  @symbol{gdk:gravity} enumeration, so the reference point is simply the x, y
+  By default the gravity is the @val[gdk:gravity]{:north-west} value of the
+  @sym{gdk:gravity} enumeration, so the reference point is simply the x, y
   supplied to the @fun{gtk:window-move} function. The top-left corner of the
   window decorations, aka window frame or border, will be placed at x, y.
   Therefore, to position a window at the top left of the screen, you want to
-  use the default gravity, which is @code{:north-west}, and move the window to
-  0,0.
+  use the default gravity, which is @val[gdk:gravity]{:north-west}, and move
+  the window to 0,0.
 
   To position a window at the bottom right corner of the screen, you would set
-  the @code{:south-east} value, which means that the reference point is at x +
-  the window width and y + the window height, and the bottom-right corner of the
-  window border will be placed at that reference point. So, to place a window
-  in the bottom right corner you would first set gravity to south east, then
-  write:
+  the @val[gdk:gravity]{:south-east} value, which means that the reference point
+  is at x + the window width and y + the window height, and the bottom-right
+  corner of the window border will be placed at that reference point. So, to
+  place a window in the bottom right corner you would first set gravity to
+  south east, then write:
   @begin{pre}
 (gtk:window-move window
                  (- (gdk:screen-width) window-width)
@@ -3066,10 +3076,10 @@ lambda (window widget)    :run-last
   resize/move the window.
 
   If the @fun{gtk:window-parse-geometry} function returns @em{true}, it will
-  also set the @code{:user-pos} and/or @code{:user-size} hints of the
-  @symbol{gdk:window-hints} flags indicating to the window manager that the
-  size/position of the window was user specified. This causes most window
-  managers to honor the geometry.
+  also set the @val[gdk:window-hints]{:user-pos} and/or
+  @val[gdk:window-hints]{:user-size} hints of the @sym{gdk:window-hints} flags
+  indicating to the window manager that the size/position of the window was user
+  specified. This causes most window managers to honor the geometry.
 
   Note that for the @fun{gtk:window-parse-geometry} function to work as
   expected, it has to be called when the window has its \"final\" size, for

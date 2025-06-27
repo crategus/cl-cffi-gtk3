@@ -148,7 +148,7 @@
 (setf (liber:alias-for-symbol 'license)
       "GEnum"
       (liber:symbol-documentation 'license)
- "@version{2024-03-16}
+ "@version{2025-06-24}
   @begin{declaration}
 (gobject:define-genum \"GtkLicense\" license
   (:export t
@@ -173,7 +173,7 @@
   (:MPL-2-0 17))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:unknown]{No license specified.}
       @entry[:custom]{A license text is going to be specified by the developer.}
       @entry[:gpl-2-0]{The GNU General Public License, version 2.0.}
@@ -196,12 +196,11 @@
       @entry[:BSD-3]{The 3-clause BSD licence. Since 3.24}
       @entry[:APACHE-2-0]{The Apache License, version 2.0. Since 3.24}
       @entry[:MPL-2-0]{The Mozilla Public License, version 2.0. Since 3.24}
-  @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     The type of license for an application.
   @end{short}
-  This enumeration can be expanded at later date.
   @see-class{gtk:about-dialog}")
 
 ;;; ----------------------------------------------------------------------------
@@ -262,7 +261,7 @@
 
 #+liber-documentation
 (setf (documentation 'about-dialog 'type)
- "@version{2025-06-05}
+ "@version{2025-06-24}
   @begin{short}
     The @class{gtk:about-dialog} widget offers a simple way to display
     information about a program like its logo, name, copyright, website and
@@ -278,7 +277,7 @@
   The about dialog often contain links and email addresses. The about dialog
   displays these as clickable links. By default, it calls the @fun{gtk:show-uri}
   function when a user clicks one. The behaviour can be overridden with the
-  @code{\"activate-link\"} signal.
+  @sig[gtk:about-dialog]{activate-link} signal.
 
   To make constructing an about dialog as convenient as possible, you can use
   the @fun{gtk:show-about-dialog} function which constructs and shows an about
@@ -298,21 +297,22 @@
   It is also possible to show a @class{gtk:about-dialog} widget like any other
   @class{gtk:dialog} widget, e.g. using the @fun{gtk:dialog-run} function. In
   this case, you might need to know that the Close button returns the
-  @code{:cancel} response ID.
+  @val[gtk:response-type]{:cancel} response ID.
   @begin[Signal Details]{dictionary}
-    @subheading{The \"activate-link\" signal}
+    @begin[about-dialog::activate-link]{signal}
       @begin{pre}
 lambda (dialog uri)    :run-last
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[dialog]{The @class{gtk:about-dialog} widget on which the signal
           was emitted.}
         @entry[uri]{The string with the URI that is activated.}
         @entry[Returns]{@em{True} if the link has been activated.}
-      @end{table}
+      @end{simple-table}
       The signal which gets emitted to activate a URI. Applications may connect
       to it to override the default behaviour, which is to call the
       @fun{gtk:show-uri} function.
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:about-dialog-new}
   @see-slot{gtk:about-dialog-artists}
@@ -492,8 +492,8 @@ lambda (dialog uri)    :run-last
   Note that the text is only wrapped in the text view if the @code{wrap-license}
   property is set to @em{true}. Otherwise the text itself must contain the
   intended linebreaks. When setting this property to a non-@code{nil} value, the
-  @code{license-type} property is set to the @code{:custom} value of the
-  @symbol{gtk:license} enumeration as a side effect. @br{}
+  @code{license-type} property is set to the @val[gtk:license]{:custom} value of
+  the @sym{gtk:license} enumeration as a side effect. @br{}
   Default value: @code{nil}")
 
 #+liber-documentation
@@ -519,35 +519,35 @@ lambda (dialog uri)    :run-last
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "license-type" 'about-dialog) t)
- "The @code{license-type} property of type @symbol{gtk:license} (Read / Write)
-  @br{}
-  The license of the program, as a value of the @symbol{gtk:license}
-  enumeration. The about dialog will automatically fill out a standard
-  disclaimer and link the user to the appropriate online resource for the
-  license text. If the @code{:unknown} value is used, the link used will be the
-  same specified in the @code{website} property. If the @code{:custom} value is
-  used, the current contents of the @code{license} property are used. For any
-  other @symbol{gtk:license} value, the contents of the @code{license} property
-  are also set by this property as a side effect. @br{}
-  Default value: @code{:unkown}")
+ "The @code{license-type} property of type @sym{gtk:license} (Read / Write)@br{}
+  The license of the program, as a value of the @sym{gtk:license} enumeration.
+  The about dialog will automatically fill out a standard disclaimer and link
+  the user to the appropriate online resource for the license text. If the
+  @val[gtk:license]{:unknown} value is used, the link used will be the same
+  specified in the @slot[gtk:about-dialog]{website} property. If the
+  @val[gtk:license]{:custom} value is used, the current contents of the
+  @slot[gtk:about-dialog]{license} property are used. For any other
+  @sym{gtk:license} value, the contents of the @slot[gtk:about-dialog]{license}
+  property are also set by this property as a side effect. @br{}
+  Default value: @val[gtk:license]{:unkown}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'about-dialog-license-type)
       "Accessor"
       (documentation 'about-dialog-license-type 'function)
- "@version{2024-03-16}
+ "@version{2025-06-24}
   @syntax{(gtk:about-dialog-license-type object) => type}
   @syntax{(setf (gtk:about-dialog-license-type object) type)}
   @argument[object]{a @class{gtk:about-dialog} widget}
-  @argument[type]{a value of the @symbol{gtk:license} enumeration}
+  @argument[type]{a value of the @sym{gtk:license} enumeration}
   @begin{short}
     Accessor of the @slot[gtk:about-dialog]{license-type} slot of the
     @class{gtk:about-dialog} class.
   @end{short}
   The @fun{gtk:about-dialog-license-type} function retrieves the license type
-  of type @symbol{gtk:license}. The @setf{gtk:about-dialog-license-type}
-  function sets the license of of the application showing the about dialog from
-  a list of known licenses. This function overrides the license set using the
+  of type @sym{gtk:license}. The @setf{gtk:about-dialog-license-type} function
+  sets the license of of the application showing the about dialog from a list
+  of known licenses. This function overrides the license set using the
   @fun{gtk:about-dialog-license} function.
   @see-class{gtk:about-dialog}
   @see-symbol{gtk:license}

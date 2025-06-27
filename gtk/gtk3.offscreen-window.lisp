@@ -83,7 +83,7 @@
   toplevel.
 
   The idea is to take a widget and manually set the state of it, add it to a
-  offscreen window and then retrieve the snapshot as a @symbol{cairo:surface-t}
+  offscreen window and then retrieve the snapshot as a @sym{cairo:surface-t}
   instance or @class{gdk-pixbuf:pixbuf} object.
 
   The @class{gtk:offscreen-window} widget derives from the @class{gtk:window}
@@ -92,7 +92,7 @@
   be treated as a @class{gtk:bin} widget that has no parent widget.
 
   When contained offscreen widgets are redrawn, the @class{gtk:offscreen-window}
-  widget will emit a @code{\"damage-event\"} signal.
+  widget will emit a @sig[gtk:widget]{damage-event} signal.
   @see-constructor{gtk:offscreen-window-new}
   @see-class{gtk:bin}
   @see-class{gtk:window}
@@ -131,12 +131,12 @@
  "@version{2024-03-17}
   @argument[offscreen]{a @class{gtk:offscreen-window} widget}
   @begin{return}
-    The @symbol{cairo:surface-t} instance to the @arg{offscreen} surface,
+    The @sym{cairo:surface-t} instance to the @arg{offscreen} surface,
     or @code{nil}.
   @end{return}
   @begin{short}
     Retrieves a snapshot of the contained widget in the form of a
-    @symbol{cairo:surface-t} instance.
+    @sym{cairo:surface-t} instance.
   @end{short}
   If you need to keep this around over window resizes then you should add a
   reference to it.
