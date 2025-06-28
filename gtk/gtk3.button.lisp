@@ -171,8 +171,10 @@
 
 #+liber-documentation
 (setf (documentation 'button 'type)
- "@version{2025-06-18}
-  @short{A widget that emits a signal when clicked on.}
+ "@version{2025-06-28}
+  @begin{short}
+    The @class{gtk:button} widget emits a signal when clicked on.
+  @end{short}
 
   @image[button]{Figure: GtkButton}
 
@@ -203,144 +205,153 @@
     widget.
   @end{dictionary}
   @begin[Style Property Details]{dictionary}
-    @begin[code]{table}
-      @begin[child-displacement-x]{entry}
-        The @code{child-displacement-x} style property of type @code{:int}
-        (Read) @br{}
-        How far in the x direction to move the child when the button is
-        depressed. @br{}
-        @em{Warning:} The @code{child-displacement-x} style property has been
-        deprecated since version 3.20 and should not be used in newly written
-        code. Use CSS margins and padding instead. The value of this style
-        property is ignored. @br{}
-        Default value: 0
-      @end{entry}
-      @begin[child-displacement-y]{entry}
-        The @code{child-displacement-y} style property of type @code{:int}
-        (Read) @br{}
-        How far in the y direction to move the child when the button is
-        depressed. @br{}
-        @em{Warning:} The @code{child-displacement-x} style property has been
-        deprecated since version 3.20 and should not be used in newly written
-        code. Use CSS margins and padding instead. The value of this style
-        property is ignored. @br{}
-        Default value: 0
-      @end{entry}
-      @begin[default-border]{entry}
-        The @code{default-border} style property of type @class{gtk:border}
-        (Read) @br{}
-        Defines the extra space to add around a button that can become the
-        default widget of its window. For more information about default
-        widgets, see the @fun{gtk:widget-grab-default} function. @br{}
-        @em{Warning:} The @code{default-border} style property has been
-        deprecated since version 3.14 and should not be used in newly written
-        code. Use CSS margins and padding instead. The value of this style
-        property is ignored.
-      @end{entry}
-      @begin[default-outside-border]{entry}
-        The @code{default-outside-border} style property of type
-        @class{gtk:border} (Read) @br{}
-        Defines the extra outside space to add around a button that can become
-        the default widget of its window. Extra outside space is always drawn
-        outside the button border. For more information about default widgets,
-        see the @fun{gtk:widget-grab-default} function. @br{}
-        @em{Warning:} The @code{default-outside-border} style property has been
-        deprecated since version 3.14 and should not be used in newly written
-        code. Use CSS margins and padding instead. The value of this style
-        property is ignored.
-      @end{entry}
-      @begin[displace-focus]{entry}
-        The @code{displace-focus} style property of type @code{:boolean}
-        (Read) @br{}
-        Whether the @code{child-displacement-x} or @code{child-displacement-y}
-        properties should also affect the focus rectangle. @br{}
-        @em{Warning:} The @code{displace-focus} style property has been
-        deprecated since version 3.20 and should not be used in newly written
-        code. Use CSS margins and padding instead. The value of this style
-        property is ignored. @br{}
-        Default value: @em{false}
-      @end{entry}
-      @begin[image-spacing]{entry}
-        The @code{image-spacing} style property of type @code{:int} (Read) @br{}
-        The spacing in pixels between the image and label. @br{}
-        Allowed values: >= 0 @br{}
-        Default value: 2
-      @end{entry}
-      @begin[inner-border]{entry}
-        The @code{inner-border} style property of type @class{gtk:border}
-        (Read) @br{}
-        Sets the border between the button edges and child. @br{}
-        @em{Warning:} The @code{inner-border} style property has been
-        deprecated since version 3.4 and should not be used in newly written
-        code. Use the standard border and padding CSS properties. The value
-        of this style property is ignored. @br{}
-      @end{entry}
-    @end{table}
+    @begin[button:child-displacement-x]{property}
+      The @code{child-displacement-x} style property of type @code{:int}
+      (Read) @br{}
+      How far in the x direction to move the child when the button is
+      depressed. @br{}
+      @em{Warning:} The @code{child-displacement-x} style property has been
+      deprecated since version 3.20 and should not be used in newly written
+      code. Use CSS margins and padding instead. The value of this style
+      property is ignored. @br{}
+      Default value: 0
+    @end{property}
+    @begin[button:child-displacement-y]{property}
+      The @code{child-displacement-y} style property of type @code{:int}
+      (Read) @br{}
+      How far in the y direction to move the child when the button is
+      depressed. @br{}
+      @em{Warning:} The @code{child-displacement-x} style property has been
+      deprecated since version 3.20 and should not be used in newly written
+      code. Use CSS margins and padding instead. The value of this style
+      property is ignored. @br{}
+      Default value: 0
+    @end{property}
+    @begin[button:default-border]{property}
+      The @code{default-border} style property of type @class{gtk:border}
+      (Read) @br{}
+      Defines the extra space to add around a button that can become the
+      default widget of its window. For more information about default
+      widgets, see the @fun{gtk:widget-grab-default} function. @br{}
+      @em{Warning:} The @code{default-border} style property has been
+      deprecated since version 3.14 and should not be used in newly written
+      code. Use CSS margins and padding instead. The value of this style
+      property is ignored.
+    @end{property}
+    @begin[button:default-outside-border]{property}
+      The @code{default-outside-border} style property of type
+      @class{gtk:border} (Read) @br{}
+      Defines the extra outside space to add around a button that can become
+      the default widget of its window. Extra outside space is always drawn
+      outside the button border. For more information about default widgets,
+      see the @fun{gtk:widget-grab-default} function. @br{}
+      @em{Warning:} The @code{default-outside-border} style property has been
+      deprecated since version 3.14 and should not be used in newly written
+      code. Use CSS margins and padding instead. The value of this style
+      property is ignored.
+    @end{property}
+    @begin[button:displace-focus]{property}
+      The @code{displace-focus} style property of type @code{:boolean}
+      (Read) @br{}
+      Whether the @prop[gtk:button]{child-displacement-x} or
+      @prop[gtk:button]{child-displacement-y} properties should also affect the
+      focus rectangle. @br{}
+      @em{Warning:} The @code{displace-focus} style property has been
+      deprecated since version 3.20 and should not be used in newly written
+      code. Use CSS margins and padding instead. The value of this style
+      property is ignored. @br{}
+      Default value: @em{false}
+    @end{property}
+    @begin[button:image-spacing]{property}
+      The @code{image-spacing} style property of type @code{:int} (Read) @br{}
+      The spacing in pixels between the image and label. @br{}
+      Allowed values: >= 0 @br{}
+      Default value: 2
+    @end{property}
+    @begin[button:inner-border]{property}
+      The @code{inner-border} style property of type @class{gtk:border}
+      (Read) @br{}
+      Sets the border between the button edges and child. @br{}
+      @em{Warning:} The @code{inner-border} style property has been
+      deprecated since version 3.4 and should not be used in newly written
+      code. Use the standard border and padding CSS properties. The value
+      of this style property is ignored. @br{}
+    @end{property}
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"activate\" signal}
+    @begin[button::activate]{signal}
       @begin{pre}
 lambda (button)    :action
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[button]{The @class{gtk:button} widget which received the signal.}
-      @end{table}
+      @end{simple-table}
       The signal on the @class{gtk:button} widget is an action signal and
       emitting it causes the button to animate press then release. Applications
-      should never connect to this signal, but use the @code{\"clicked\"}
+      should never connect to this signal, but use the @sig[gtk:button]{clicked}
       signal.
-    @subheading{The \"clicked\" signal}
+    @end{signal}
+    @begin[button::clicked]{signal}
       @begin{pre}
 lambda (button)    :action
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[button]{The @class{gtk:button} widget which received the signal.}
-      @end{table}
+      @end{simple-table}
       Emitted when the button has been activated (pressed and released).
-    @subheading{The \"enter\" signal}
+    @end{signal}
+    @begin[button::enter]{signal}
       @begin{pre}
 lambda (button)    :run-first
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[button]{The @class{gtk:button} widget which received the signal.}
-      @end{table}
+      @end{simple-table}
       Emitted when the pointer enters the button. @br{}
-      @em{Warning:} The @code{\"enter\"} signal has been deprecated since
-      version 2.8 and should not be used in newly written code. Use the
-      @code{\"enter-notify-event\"} signal of the @class{gtk:widget} class.
-    @subheading{The \"leave\" signal}
+      @em{Warning:} The @sig[gtk:button]{enter} signal has been deprecated
+      since version 2.8 and should not be used in newly written code. Use the
+      @sig[gtk:widget]{enter-notify-event} signal of the @class{gtk:widget}
+      class.
+    @end{signal}
+    @begin[button::leave]{signal}
       @begin{pre}
 lambda (button)    :run-first
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[button]{The @class{gtk:button} widget which received the signal.}
-      @end{table}
+      @end{simple-table}
       Emitted when the pointer leaves the button. @br{}
-      @em{Warning:} The @code{\"leave\"} signal has been deprecated since
-      version 2.8 and should not be used in newly written code. Use the
-      @code{\"leave-notify-event\"} signal of the @class{gtk:widget} class.
-    @subheading{The \"pressed\" signal}
+      @em{Warning:} The @sig[gtk:button]{leave} signal has been deprecated
+      since version 2.8 and should not be used in newly written code. Use the
+      @sig[gtk:widget]{leave-notify-event} signal of the @class{gtk:widget}
+      class.
+    @end{signal}
+    @begin[button::pressed]{signal}
       @begin{pre}
 lambda (button)    :run-first
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[button]{The @class{gtk:button} widget which received the signal.}
-      @end{table}
+      @end{simple-table}
       Emitted when the button is pressed. @br{}
-      @em{Warning:} The @code{\"pressed\"} signal has been deprecated since
-      version 2.8 and should not be used in newly written code. Use the
-      @code{\"button-press-event\"} signal of the @class{gtk:widget} class.
-    @subheading{The \"released\" signal}
+      @em{Warning:} The @sig[gtk:button]{pressed} signal has been deprecated
+      since version 2.8 and should not be used in newly written code. Use the
+      @sig[gtk:widget]{button-press-event} signal of the @class{gtk:widget}
+      class.
+    @end{signal}
+    @begin[button::released]{signal}
       @begin{pre}
 lambda (button)    :run-first
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[button]{The @class{gtk:button} widget which received the signal.}
-      @end{table}
+      @end{simple-table}
       Emitted when the button is released. @br{}
-      @em{Warning:} The @code{\"released\"} signal has been deprecated since
-      version 2.8 and should not be used in newly written code. Use the
-      @code{\"button-release-event\"} signal of the @class{gtk:widget} class.
+      @em{Warning:} The @sig[gtk:button]{released} signal has been deprecated
+      since version 2.8 and should not be used in newly written code. Use the
+      @sig[gtk:widget]{button-release-event} signal of the @class{gtk:widget}
+      class.
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:button-new}
   @see-constructor{gtk:button-new-with-label}
@@ -478,20 +489,20 @@ lambda (button)    :run-first
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "image-position" 'button) t)
- "The @code{image-position} property of type @symbol{gtk:position-type}
+ "The @code{image-position} property of type @sym{gtk:position-type}
   (Read / Write) @br{}
   The position of the image relative to the text inside the button. @br{}
-  Default value: @code{:left}")
+  Default value: @val[gtk:position-type]{:left}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'button-image-position)
       "Accessor"
       (documentation 'button-image-position 'function)
- "@version{2023-12-30}
+ "@version{2025-06-28}
   @syntax{(gtk:button-image-position object) => position}
   @syntax{(setf (gtk:button-image-position object) position)}
   @argument[object]{a @class{gtk:button} widget}
-  @argument[position]{a value of the @symbol{gtk:position-type} enumeration}
+  @argument[position]{a value of the @sym{gtk:position-type} enumeration}
   @begin{short}
     Accessor of the @slot[gtk:button]{image-position} slot of the
     @class{gtk:button} class.
@@ -537,21 +548,20 @@ lambda (button)    :run-first
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "relief" 'button) t)
- "The @code{relief} property of type @symbol{gtk:relief-style}
-  (Read / Write) @br{}
+ "The @code{relief} property of type @sym{gtk:relief-style} (Read / Write) @br{}
   The border relief style. @br{}
-  Default value: @code{:normal}")
+  Default value: @val[gtk:relief-style]{:normal}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'button-relief)
       "Accessor"
       (documentation 'button-relief 'function)
- "@version{2023-12-30}
+ "@version{2025-06-28}
   @syntax{(gtk:button-relief object) => style}
   @syntax{(setf (gtk:button-relief object) style)}
   @argument[object]{a @class{gtk:button} widget you want to set relief
     styles of}
-  @argument[style]{a @symbol{gtk:relief-style} value}
+  @argument[style]{a @sym{gtk:relief-style} value}
   @begin{short}
     Accessor of the @slot[gtk:button]{relief} slot of the @class{gtk:button}
     class.
@@ -560,8 +570,9 @@ lambda (button)    :run-first
   button. The @setf{gtk:button-relief} function sets the relief style of the
   edges of the given button.
 
-  Three styles exist, the @code{:normal}, @code{:half}, @code{:none} style. The
-  default style is the @code{:normal} style.
+  Three styles exist, the @val[gtk:relief-style]{:normal},
+  @val[gtk:relief-style]{:half}, @val[gtk:relief-style]{:none} style. The
+  default style is the @val[gtk:relief-style]{:normal} style.
   @see-class{gtk:button}
   @see-symbol{gtk:relief-style}")
 
@@ -780,9 +791,9 @@ lambda (button)    :run-first
 (cffi:defcfun ("gtk_button_new_from_icon_name" button-new-from-icon-name)
     (g:object widget)
  #+liber-documentation
- "@version{2025-06-18}
+ "@version{2025-06-28}
   @argument[name]{a string for the icon name}
-  @argument[size]{a @symbol{gtk:icon-size} value}
+  @argument[size]{a @sym{gtk:icon-size} value}
   @return{The new @class{gtk:button} widget displaying the themed icon.}
   @begin{short}
     Creates a new button containing an icon from the current icon theme.
@@ -844,10 +855,10 @@ lambda (button)    :run-first
 
 (cffi:defcfun ("gtk_button_clicked" button-clicked) :void
  #+liber-documentation
- "@version{2023-12-30}
+ "@version{2025-06-28}
   @argument[button]{a @class{gtk:button} widget you want to send the signal to}
   @begin{short}
-    Emits a @code{\"clicked\"} signal to the given button.
+    Emits a @sig[gtk:button]{clicked} signal to the given button.
   @end{short}
   @see-class{gtk:button}"
   (button (g:object button)))

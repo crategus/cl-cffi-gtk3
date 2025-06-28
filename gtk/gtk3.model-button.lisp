@@ -85,7 +85,7 @@
 (setf (liber:alias-for-symbol 'button-role)
       "GEnum"
       (liber:symbol-documentation 'button-role)
- "@version{#2024-03-22}
+ "@version{#2025-06-28}
   @begin{declaration}
 (gobject:define-genum \"GtkButtonRole\" button-role
   (:export t
@@ -95,11 +95,11 @@
   :radio)
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:normal]{A plain button.}
       @entry[:check]{A check button.}
       @entry[:radio]{A radio button.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     The role specifies the desired appearance of a @class{gtk:model-button}
@@ -152,10 +152,10 @@
  "@version{#2025-06-18}
   @begin{short}
     The @class{gtk:model-button} class is a button class that can use a
-    @class{g:action} object as its model.
+    @class{g:action} instance as its model.
   @end{short}
   In contrast to the @class{gtk:toggle-button} or @class{gtk:radio-button}
-  classes, which can also be backed by a @class{g:action} object via the
+  classes, which can also be backed by a @class{g:action} instance via the
   @slot[g:action]{name} property, the @class{gtk:model-button} widget will adapt
   its appearance according to the kind of action it is backed by, and appear
   either as a plain, check or radio button.
@@ -267,7 +267,7 @@ button.model
 (setf (documentation (liber:slot-documentation "active" 'model-button) t)
  "The @code{active} property of type @code{:boolean} (Read / Write) @br{}
   The state of the button. This is reflecting the state of the associated
-  @class{g:action}. @br{}
+  @class{g:action} instance. @br{}
   Default value: @em{false}")
 
 #+liber-documentation
@@ -284,7 +284,7 @@ button.model
     @class{gtk:model-button} class.
   @end{short}
   The state of the button. This is reflecting the state of the associated
-  @class{g:action}.
+  @class{g:action} instance.
   @see-class{gtk:model-button}
   @see-class{g:action}")
 
@@ -426,21 +426,21 @@ button.model
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "role" 'model-button) t)
- "The @code{role} property of type @symbol{gtk:button-role} (Read / Write) @br{}
+ "The @code{role} property of type @sym{gtk:button-role} (Read / Write) @br{}
   Specifies whether the button is a plain, check or radio button. When the
   @slot[gtk:actionable]{action-name} property is set, the role will be
   determined from the action and does not have to be set explicitly. @br{}
-  Default value: @code{:normal}")
+  Default value: @val[gtk:button-role]{:normal}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'model-button-role)
       "Accessor"
       (documentation 'model-button-role 'function)
- "@version{#2023-03-21}
+ "@version{#2025-06-28}
   @syntax{(gtk:model-button-role object) => role}
   @syntax{(setf (gtk:model-button-role object) role)}
   @argument[object]{a @class{gtk:model-button} widget}
-  @argument[role]{a value of the @symbol{gtk:button-role} enumeration}
+  @argument[role]{a value of the @sym{gtk:button-role} enumeration}
   @begin{short}
     Accessor of the @slot[gtk:model-button]{role} slot of the
     @class{gtk:model-button} class.
@@ -479,7 +479,7 @@ button.model
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "use-markup" 'model-button) t)
- "The @code{use-markjup} property of type @code{:boolean} (Read / Write) @br{}
+ "The @code{use-markup} property of type @code{:boolean} (Read / Write) @br{}
   If @em{true}, XML tags in the text of the button are interpreted to format the
   enclosed spans of text. If @em{false}, the text will be displayed verbatim.
   @br{}

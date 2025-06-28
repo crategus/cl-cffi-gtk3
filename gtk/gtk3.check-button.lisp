@@ -3,7 +3,7 @@
 ;;;
 ;;; The documentation in this file is taken from the GTK 3 Reference Manual
 ;;; version 3.24 and modified to document the Lisp binding to the GTK library,
-;;; see <http://www.gtk.org>. The API documentation of the Lisp binding is
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
 ;;; Copyright (C) 2011 - 2025 Dieter Kaiser
@@ -89,8 +89,8 @@
     @class{gtk:label} widget.
   @end{short}
   See the @class{gtk:toggle-button} documentation for more information about
-  toggle and check buttons. The important @code{\"toggled\"} signal is also
-  inherited from the @class{gtk:toggle-button} class.
+  toggle and check buttons. The important @sig[gtk:toggle-button]{toggled}
+  signal is also inherited from the @class{gtk:toggle-button} class.
 
   @image[check-button]{Figure: GtkCheckButton}
   @begin[CSS nodes]{dictionary}
@@ -112,30 +112,28 @@ button.check
     subnode is invisible in this case.
   @end{dictionary}
   @begin[Style Property Details]{dictionary}
-    @begin[code]{table}
-      @begin[indicator-size]{entry}
-        The @code{indicator-size} style property of type @code{:int} (Read)
-        @br{}
-        The size of check or radio indicator. @br{}
-        @em{Warning:} The @code{indicator-size} style property has been
-        deprecated since version 3.20 and should not be used in newly written
-        code. Use CSS @code{min-width} and @code{min-height} on the indicator
-        node. @br{}
-        Allowed values: >= 0 @br{}
-        Default value: 16
-      @end{entry}
-      @begin[indicator-spacing]{entry}
-        The @code{indicator-spacing} style property of type @code{:int}
-        (Read) @br{}
-        The spacing around check or radio indicator. @br{}
-        @em{Warning:} The @code{indicator-spacing} style property has been
-        deprecated since version 3.20 and should not be used in newly written
-        code. Use CSS @code{min-width} and @code{min-height} on the indicator
-        node. @br{}
-        Allowed values: >= 0 @br{}
-        Default value: 2
-      @end{entry}
-    @end{table}
+    @begin[check-button:indicator-size]{property}
+      The @code{indicator-size} style property of type @code{:int} (Read)
+      @br{}
+      The size of check or radio indicator. @br{}
+      @em{Warning:} The @code{indicator-size} style property has been
+      deprecated since version 3.20 and should not be used in newly written
+      code. Use CSS @code{min-width} and @code{min-height} on the indicator
+      node. @br{}
+      Allowed values: >= 0 @br{}
+      Default value: 16
+    @end{property}
+    @begin[check-button:indicator-spacing]{property}
+      The @code{indicator-spacing} style property of type @code{:int}
+      (Read) @br{}
+      The spacing around check or radio indicator. @br{}
+      @em{Warning:} The @code{indicator-spacing} style property has been
+      deprecated since version 3.20 and should not be used in newly written
+      code. Use CSS @code{min-width} and @code{min-height} on the indicator
+      node. @br{}
+      Allowed values: >= 0 @br{}
+      Default value: 2
+    @end{property}
   @end{dictionary}
   @see-constructor{gtk:check-button-new}
   @see-constructor{gtk:check-button-new-with-label}

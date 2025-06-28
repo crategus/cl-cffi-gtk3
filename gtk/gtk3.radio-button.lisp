@@ -93,7 +93,7 @@
 
 #+liber-documentation
 (setf (documentation 'radio-button 'type)
- "@version{#2025-06-18}
+ "@version{#2025-06-28}
   @begin{short}
     A single radio button performs the same basic function as a
     @class{gtk:check-button} widget, as its position in the object hierarchy
@@ -179,26 +179,28 @@ button.radio
       (gtk:widget-show-all window))))
     @end{pre}
     When an unselected radio button in the group is clicked the clicked radio
-    button receives the @code{\"toggled\"} signal, as does the previously
-    selected radio button. Inside the @code{\"toggled\"} signal handler, the
+    button receives the @sig[gtk:toggle-button]{toggled} signal, as does the
+    previously selected radio button. Inside the
+    @sig[gtk:toggle-button]{toggled} signal handler, the
     @fun{gtk:toggle-button-active} function can be used to determine if the
     button has been selected or deselected.
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"group-changed\" signal}
+    @begin[radio-button::group-changed]{signal}
       @begin{pre}
 lambda (button)    :run-first
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[button]{The @class{gtk:radio-button} widget which received the
           signal.}
-      @end{table}
+      @end{simple-table}
       Emitted when the group of radio buttons that a radio button belongs to
       changes. This is emitted when a radio button switches from being alone to
       being part of a group of two or more buttons, or vice-versa, and when a
       button is moved from one group of two or more buttons to a different one,
       but not when the composition of the group that a button belongs to
       changes.
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:radio-button-new}
   @see-constructor{gtk:radio-button-new-from-widget}

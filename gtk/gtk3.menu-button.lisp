@@ -109,13 +109,13 @@
   (:none 4))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:up]{Represents an upward pointing arrow.}
       @entry[:down]{Represents a downward pointing arrow.}
       @entry[:left]{Represents a left pointing arrow.}
       @entry[:right]{Represents a right pointing arrow.}
       @entry[:none]{No arrow.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Used to indicate the direction in which an arrow should point in a
@@ -156,7 +156,7 @@
 
 #+liber-documentation
 (setf (documentation 'menu-button 'type)
- "@version{#2023-03-21}
+ "@version{#2025-06-28}
   @begin{short}
     The @class{gtk:menu-button} widget is used to display a popup when clicked
     on.
@@ -179,12 +179,12 @@
 
   For menus, the @slot[gtk:widget]{halign} and @slot[gtk:widget]{valign}
   properties of the menu are also taken into account. For example, when the
-  direction is @code{:down} and the horizontal alignment is @code{:start}, the
-  menu will be positioned below the button, with the starting edge, depending
-  on the text direction, of the menu aligned with the starting edge of the
-  button. If there is not enough space below the button, the menu is popped up
-  above the button instead. If the alignment would move part of the menu
-  offscreen, it is \"pushed in\".
+  direction is @val[gtk:arrow-type]{:down} and the horizontal alignment is
+  @val[gtk:align]{:start}, the menu will be positioned below the button, with
+  the starting edge, depending on the text direction, of the menu aligned with
+  the starting edge of the button. If there is not enough space below the
+  button, the menu is popped up above the button instead. If the alignment
+  would move part of the menu offscreen, it is \"pushed in\".
   @begin[CSS nodes]{dictionary}
     The @class{gtk:menu-button} implementation has a single CSS node with name
     @code{button}. To differentiate it from a plain @class{gtk:button} widget,
@@ -245,21 +245,20 @@
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "direction" 'menu-button) t)
- "The @code{direction} property of type @symbol{gtk:arrow-type} (Read / Write)
-  @br{}
+ "The @code{direction} property of type @sym{gtk:arrow-type} (Read / Write)@br{}
   The arrow type representing the direction in which the menu or popover will
   be popped out. @br{}
-  Default value: @code{:down}")
+  Default value: @val[gtk:arrow-type]{:down}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'menu-button-direction)
       "Accessor"
       (documentation 'menu-button-direction 'function)
- "@version{#2023-03-21}
+ "@version{#2025-06-28}
   @syntax{(gtk:menu-button-direction object) => direction}
   @syntax{(setf (gtk:menu-button-direction object) direction)}
   @argument[object]{a @class{gtk:menu-button} widget}
-  @argument[direction]{a value of the @symbol{gtk:arrow-type} enumeration}
+  @argument[direction]{a value of the @sym{gtk:arrow-type} enumeration}
   @begin{short}
     Accessor of the @slot[gtk:menu-button]{direction} slot of the
     @class{gtk:menu-button} class.
@@ -273,8 +272,9 @@
   If the popup does not fit in the available space in the given direction, GTK
   will its best to keep it inside the screen and fully visible.
 
-  If you pass the @code{:none} value for a direction, the popup will behave as
-  if you passed the @code{:down} value, although you will not see any arrows.
+  If you pass the @val[gtk:arrow-type]{:none} value for a direction, the popup
+  will behave as if you passed the @val[gtk:arrow-type]{:down} value, although
+  you will not see any arrows.
   @see-class{gtk:menu-button}
   @see-symbol{gtk:arrow-type}")
 

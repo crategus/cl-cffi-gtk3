@@ -105,7 +105,7 @@
 
 #+liber-documentation
 (setf (documentation 'toggle-button 'type)
- "@version{2025-06-18}
+ "@version{2025-06-27}
   @begin{short}
     The @class{gtk:toggle-button} widget is a @class{gtk:button} widget which
     will remain \"pressed-in\" when clicked.
@@ -178,16 +178,17 @@
     @end{pre}
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"toggled\" signal}
+    @begin[toggle-button::toggled]{signal}
       @begin{pre}
 lambda (togglebutton)    :run-first
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[togglebutton]{The @class{gtk:toggle-button} widget which received
           the signal.}
-      @end{table}
+      @end{simple-table}
       Should be connected if you wish to perform an action whenever the
       state of the toggle button is changed.
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:toggle-button-new}
   @see-constructor{gtk:toggle-button-new-with-label}
@@ -215,7 +216,7 @@ lambda (togglebutton)    :run-first
 (setf (liber:alias-for-function 'toggle-button-active)
       "Accessor"
       (documentation 'toggle-button-active 'function)
- "@version{2023-12-29}
+ "@version{2025-06-28}
   @syntax{(gtk:toggle-button-active object) => is-active}
   @syntax{(setf (gtk:toggle-button-active object) is-active)}
   @argument[object]{a @class{gtk:toggle-button} widget}
@@ -229,7 +230,7 @@ lambda (togglebutton)    :run-first
   in and @em{false} if it is raised. The @setf{gtk:toggle-button-active}
   function sets the status of the toggle button.
 
-  This action causes the @code{\"toggled\"} signal to be emitted.
+  This action causes the @sig[gtk:toggle-button]{toggled} signal to be emitted.
   @see-class{gtk:toggle-button}")
 
 ;;; --- gtk:toggle-button-draw-indicator ---------------------------------------
@@ -402,15 +403,15 @@ lambda (togglebutton)    :run-first
 (export 'toggle-button-mode)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_toggle_button_toggled ()
+;;; gtk_toggle_button_toggled
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_toggle_button_toggled" toggle-button-toggled) :void
  #+liber-documentation
- "@version{#2023-03-28}
+ "@version{#2025-06-28}
   @argument[button]{a @class{gtk:toggle-button} widget}
   @begin{short}
-    Emits the @code{\"toggled\"} signal on the toggle button.
+    Emits the @sig[gtk:toggle-button]{toggled} signal on the toggle button.
   @end{short}
   There is no good reason for an application ever to call this function.
   @see-class{gtk:toggle-button}"

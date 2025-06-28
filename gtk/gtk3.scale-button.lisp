@@ -107,7 +107,7 @@
 
 #+liber-documentation
 (setf (documentation 'scale-button 'type)
- "@version{#2025-06-18}
+ "@version{#2025-06-28}
   @begin{short}
     The @class{gtk:scale-button} widget provides a button which pops up a scale
     widget.
@@ -122,37 +122,40 @@
     scale has a @code{.scale-popup} style class.
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"popdown\" signal}
+    @begin[scal-button::popdown]{signal}
       @begin{pre}
 lambda (button)    :action
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[button]{The @class{gtk:scale-button} widget which received the
           signal.}
-      @end{table}
+      @end{simple-table}
       The signal is a keybinding signal which gets emitted to popdown the scale
       widget. The default binding for this signal is the @kbd{Escape} key.
-    @subheading{The \"popup\" signal}
+    @end{signal}
+    @begin[scale-button::popup]{signal}
       @begin{pre}
 lambda (button)    :action
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[button]{The @class{gtk:scale-button} widget which received the
           signal.}
-      @end{table}
+      @end{simple-table}
       The signal is a keybinding signal which gets emitted to popup the scale
       widget. The default bindings for this signal are the @kbd{Space},
       @kbd{Enter} and @kbd{Return} keys.
-    @subheading{The \"value-changed\" signal}
+    @end{signal}
+    @begin[scale-button::value-changed]{signal}
       @begin{pre}
 lambda (button value)    :run-last
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[button]{The @class{gtk:scale-button} widget which received the
           signal.}
         @entry[value]{The double float with the new value.}
-      @end{table}
+      @end{simple-table}
       The signal is emitted when the value field has changed.
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:scale-button-new}
   @see-slot{gtk:scale-button-adjustment}
@@ -238,19 +241,19 @@ lambda (button value)    :run-last
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "size" 'scale-button) t)
- "The @code{size} property of type @symbol{gtk:icon-size} (Read / Write) @br{}
+ "The @code{size} property of type @sym{gtk:icon-size} (Read / Write) @br{}
   The icon size. @br{}
-  Default value: @code{:small-toolbar}")
+  Default value: @val[gtk:icon-size]{:small-toolbar}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'scale-button-size)
       "Accessor"
       (documentation 'scale-button-size 'function)
- "@version{#2023-03-24}
+ "@version{#2025-06-28}
   @syntax{(gtk:scale-button-size object object) => size}
   @syntax{(setf (gtk:scale-button-size object) size)}
   @argument[object]{a @class{gtk:scale-button} widget}
-  @argument[size]{a value of the @symbol{gtk:icon-size} enumeration}
+  @argument[size]{a value of the @sym{gtk:icon-size} enumeration}
   @begin{short}
     Accessor of the @slot[gtk:scale-button]{size} slot of the
     @class{gtk:scale-button} class.
@@ -286,7 +289,7 @@ lambda (button value)    :run-last
 
   If the value is outside the minimum or maximum range values, it will be
   clamped to fit inside them. The scale button emits the
-  @code{\"value-changed\"} signal if the value changes.
+  @sig[gtk:scale-button]{value-changed} signal if the value changes.
   @see-class{gtk:scale-button}")
 
 ;;; ----------------------------------------------------------------------------
@@ -297,8 +300,8 @@ lambda (button value)    :run-last
 
 (defun scale-button-new (size min max step icons)
  #+liber-documentation
- "@version{#2025-06-18}
-  @argument[size]{a value of the @symbol{gtk:icon-size} enumeration}
+ "@version{#2025-06-28}
+  @argument[size]{a value of the @sym{gtk:icon-size} enumeration}
   @argument[min]{a number coerced to a double float for the minimum value of
     the scale}
   @argument[max]{a number coerced to a double float for the maximum value of

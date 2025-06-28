@@ -92,7 +92,7 @@
 
 #+liber-documentation
 (setf (documentation 'link-button 'type)
- "@version{#2025-06-18}
+ "@version{#2025-06-28}
   @begin{short}
     The @class{gtk:link-button} widget is a @class{gtk:button} widget with a
     hyperlink, similar to the one used by web browsers, which triggers an
@@ -109,27 +109,29 @@
 
   By default, the @class{gtk:link-button} widget calls the @fun{gtk:show-uri}
   function when the button is clicked. This behaviour can be overridden by
-  connecting to the @code{\"activate-link\"} signal and returning @em{true} from
-  the signal handler.
+  connecting to the @sig[gtk:link-button]{activate-link} signal and returning
+  @em{true} from the signal handler.
   @begin[CSS nodes]{dictionary}
     The @class{gtk:link-button} implementation has a single CSS node with name
     @code{button}. To differentiate it from a plain @class{gtk:button} widget,
     it gets the @code{.link} style class.
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"activate-link\" signal}
+    @begin[link-button::activate-link]{signal}
       @begin{pre}
 lambda (button)    :run-last
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[button]{The @class{gtk:link-button} widget that emitted the
           signal.}
-      @end{table}
+      @end{simple-table}
       The signal is emitted each time the link button has been clicked. The
       default handler will call the @fun{gtk:show-uri} function with the URI
-      stored inside the @code{uri} property. To override the default behavior,
-      you can connect to the @code{\"activate-link\"} signal and stop the
-      propagation of the signal by returning @em{true} from your handler.
+      stored inside the @slot[gtk:link-button]{uri} property. To override the
+      default behavior, you can connect to the
+      @sig[gtk:link-button]{activate-link} signal and stop the propagation of
+      the signal by returning @em{true} from your handler.
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:link-button-new}
   @see-constructor{gtk:link-button-new-with-label}

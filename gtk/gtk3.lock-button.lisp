@@ -101,7 +101,7 @@
 
 #+liber-documentation
 (setf (documentation 'lock-button 'type)
- "@version{#2023-03-20}
+ "@version{#2025-06-28}
   @begin{short}
     The @class{gtk:lock-button} widget is a widget that can be used in control
     panels or preference dialogs to allow users to obtain and revoke
@@ -132,8 +132,10 @@
   If the user has the permission and cannot drop it, the button is hidden.
 
   The text (and tooltips) that are shown in the various cases can be adjusted
-  with the @code{text-lock}, @code{text-unlock}, @code{tooltip-lock},
-  @code{tooltip-unlock} and @code{tooltip-not-authorized} properties.
+  with the @slot[gtk:lock-button]{text-lock},
+  @slot[gtk:lock-button]{text-unlock}, @slot[gtk:lock-button]{tooltip-lock},
+  @slot[gtk:lock-button]{tooltip-unlock} and
+  @slot[gtk:lock-button]{tooltip-not-authorized} properties.
   @see-constructor{gtk:lock-button-new}
   @see-slot{gtk:lock-button-permission}
   @see-slot{gtk:lock-button-text-lock}
@@ -231,7 +233,7 @@
  "The @code{tooltip-lock} property of type @class{:string}
   (Read / Write / Construct) @br{}
   The tooltip to display when prompting the user to lock. @br{}
-  Default value: \"Dialog is unlocked.\n Click to prevent further changes\"")
+  Default value: \"Dialog is unlocked. Click to prevent further changes\"")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'lock-button-tooltip-lock)
@@ -258,20 +260,20 @@
   (Read / Write / Construct) @br{}
   The tooltip to display when prompting the user cannot obtain authorization.
   @br{}
-  Default value: \"System policy prevents changes.\nContact your system
+  Default value: \"System policy prevents changes. Contact your system
   administrator\"")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'lock-button-tooltip-not-authorized)
       "Accessor"
       (documentation 'lock-button-tooltip-not-authorized 'function)
- "@version{#2025-06-18}
+ "@version{#2025-06-28}
   @syntax{(gtk:lock-button-tooltip-not-authorized object) => tooltip}
   @syntax{(setf (gtk:lock-button-tooltip-not-authorized object) tooltip)}
   @argument[object]{a @class{gtk:lock-button} widget}
   @argument[tooltip]{a string for the tooltip to display}
   @begin{short}
-    Accessor of the @slot[gtk:lock-button]{tooltip-lock} slot of the
+    Accessor of the @slot[gtk:lock-button]{tooltip-not-authorized} slot of the
     @class{gtk:lock-button} class.
   @end{short}
   The tooltip to display when prompting the user cannot obtain authorization.
@@ -284,7 +286,7 @@
  "The @code{tooltip-unlock} property of type @class{:string}
   (Read / Write / Construct) @br{}
   The tooltip to display when prompting the user to unlock. @br{}
-  Default value: \"Dialog is locked.\nClick to make changes\"")
+  Default value: \"Dialog is locked. Click to make changes\"")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'lock-button-tooltip-unlock)
@@ -296,7 +298,7 @@
   @argument[object]{a @class{gtk:lock-button} widget}
   @argument[tooltip]{a string for the tooltip to display}
   @begin{short}
-    Accessor of the @slot[gtk:lock-button]{tooltip-lock} slot of the
+    Accessor of the @slot[gtk:lock-button]{tooltip-unlock} slot of the
     @class{gtk:lock-button} class.
   @end{short}
   The tooltip to display when prompting the user to unlock.
