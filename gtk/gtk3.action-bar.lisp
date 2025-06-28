@@ -96,23 +96,20 @@
     @code{actionbar}.
   @end{dictionary}
   @begin[Child Property Details]{dictionary}
-    @begin[code]{table}
-      @begin[pack-type]{entry}
-        The @code{pack-type} child property of type @symbol{gtk:pack-type}
-        (Read / Write) @br{}
-        Whether the child widget is packed with reference to the start or end
-        of the parent.
-        @br{}
-        Default value: @code{:start}
-      @end{entry}
-      @begin[position]{entry}
-        The @code{position} child property of type @code{:int} (Read / Write)
-        @br{}
-        The index of the child widget in the parent. @br{}
-        Allowed values: >= -1 @br{}
-        Default value: 0
-      @end{entry}
-    @end{table}
+    @begin[action-bar:pack-type]{property}
+      The @code{pack-type} child property of type @sym{gtk:pack-type}
+      (Read / Write) @br{}
+      Whether the child widget is packed with reference to the start or end
+      of the parent. @br{}
+      Default value: @val[gtk:pack-type]{:start}
+    @end{property}
+    @begin[action-bar:position]{property}
+      The @code{position} child property of type @code{:int} (Read / Write)
+      @br{}
+      The index of the child widget in the parent. @br{}
+      Allowed values: >= -1 @br{}
+      Default value: 0
+    @end{property}
   @end{dictionary}
   @see-constructor{gtk:action-bar-new}
   @see-class{gtk:stack}
@@ -131,19 +128,19 @@
 (setf (liber:alias-for-function 'action-bar-child-pack-type)
       "Accessor"
       (documentation 'action-bar-child-pack-type 'function)
- "@version{2024-04-09}
+ "@version{2025-06-27}
   @syntax{(gtk:action-bar-child-pack-type container child) => packtype)}
   @syntax{(setf (gtk:action-bar-child-pack-type container child) packtype)}
   @argument[container]{a @class{gtk:action-bar} widget}
   @argument[child]{a @class{gtk:widget} child widget}
-  @argument[packtype]{a value of the @symbol{gtk:pack-type} enumeration for
+  @argument[packtype]{a value of the @sym{gtk:pack-type} enumeration for
     the child}
   @begin{short}
-    Accessor of the @code{pack-type} child property of the
+    Accessor of the @prop[gtk:action-bar]{pack-type} child property of the
     @class{gtk:action-bar} class.
   @end{short}
-  A value of the @symbol{gtk:pack-type} enumeration indicating whether the
-  child widget is packed with reference to the start or end of the parent.
+  A value of the @sym{gtk:pack-type} enumeration indicating whether the child
+  widget is packed with reference to the start or end of the parent.
   @see-class{gtk:action-bar}
   @see-class{gtk:widget}
   @see-symbol{gtk:pack-type}")
@@ -157,15 +154,14 @@
 (setf (liber:alias-for-function 'action-bar-child-position)
       "Accessor"
       (documentation 'action-bar-child-position 'function)
- "@version{2025-06-13}
-  @syntax{(gtk:action-bar-child-position container child) => position)}
-  @syntax{(setf (gtk:action-bar-child-position container child) position)}
+ "@version{2025-06-27}
+  @syntax{(gtk:action-bar-child-position container child) => pos)}
+  @syntax{(setf (gtk:action-bar-child-position container child) pos)}
   @argument[container]{a @class{gtk:action-bar} widget}
   @argument[child]{a @class{gtk:widget} child widget}
-  @argument[position]{an integer for the index of the child widget in the
-    parent}
+  @argument[pos]{an integer for the index of the child widget in the  parent}
   @begin{short}
-    Accessor of the @code{position} child property of the
+    Accessor of the @prop[gtk:action-bar]{position} child property of the
     @class{gtk:action-bar} class.
   @end{short}
   The index of the child widget in the parent.

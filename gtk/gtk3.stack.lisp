@@ -158,7 +158,7 @@
   (:over-right-left 19))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:none]{No transition}
       @entry[:crossfade]{A cross fade.}
       @entry[:slide-right]{Slide from left to right.}
@@ -185,7 +185,7 @@
         new page sliding right, according to order.}
       @entry[:over-right-left]{Cover the old page sliding right or uncover the
         new page sliding left, according to order.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     These enumeration values describe the possible transitions between pages in
@@ -234,7 +234,7 @@
 
 #+liber-documentation
 (setf (documentation 'stack 'type)
- "@version{2025-06-12}
+ "@version{2025-06-24}
   @begin{short}
     The @class{gtk:stack} widget is a container which only shows one of its
     children at a time.
@@ -254,42 +254,40 @@
     @code{stack}.
   @end{dictionary}
   @begin[Child Property Details]{dictionary}
-    @begin[code]{table}
-      @begin[icon-name]{entry}
-        The @code{icon-name} child property of type @code{:string}
-        (Read / Write) @br{}
-        The icon name of the child page. @br{}
-        Default value: @code{nil}
-      @end{entry}
-      @begin[name]{entry}
-        The @code{name} child property of type @code{:string} (Read / Write)
-        @br{}
-        The name of the child page. @br{}
-        Default value: @code{nil}
-      @end{entry}
-      @begin[needs-attention]{entry}
-        The @code{needs-attention} child property of type @code{:boolean}
-        (Read / Write) @br{}
-        Sets a flag specifying whether the child page requires the user
-        attention. This is used by the the @class{gtk:stack-switcher} widget to
-        change the appearance of the corresponding button when a page needs
-        attention and it is not the current one. @br{}
-        Default value: @em{false}
-      @end{entry}
-      @begin[position]{entry}
-        The @code{position} child property of type @code{:int}
-        (Read / Write) @br{}
-        The index of the child page in the parent. @br{}
-        Allowed values: >= -1 @br{}
-        Default value: 0
-      @end{entry}
-      @begin[title]{entry}
-        The @code{title} child property of type @code{:string}
-        (Read / Write)@br{}
-        The title of the child page. @br{}
-        Default value: @code{nil}
-      @end{entry}
-    @end{table}
+    @begin[stack:icon-name]{property}
+      The @code{icon-name} child property of type @code{:string}
+      (Read / Write) @br{}
+      The icon name of the child page. @br{}
+      Default value: @code{nil}
+    @end{property}
+    @begin[stack:name]{property}
+      The @code{name} child property of type @code{:string} (Read / Write)
+      @br{}
+      The name of the child page. @br{}
+      Default value: @code{nil}
+    @end{property}
+    @begin[stack:needs-attention]{property}
+      The @code{needs-attention} child property of type @code{:boolean}
+      (Read / Write) @br{}
+      Sets a flag specifying whether the child page requires the user
+      attention. This is used by the the @class{gtk:stack-switcher} widget to
+      change the appearance of the corresponding button when a page needs
+      attention and it is not the current one. @br{}
+      Default value: @em{false}
+    @end{property}
+    @begin[stack:position]{property}
+      The @code{position} child property of type @code{:int}
+      (Read / Write) @br{}
+      The index of the child page in the parent. @br{}
+      Allowed values: >= -1 @br{}
+      Default value: 0
+    @end{property}
+    @begin[stack:title]{property}
+      The @code{title} child property of type @code{:string}
+      (Read / Write)@br{}
+      The title of the child page. @br{}
+      Default value: @code{nil}
+    @end{property}
   @end{dictionary}
   @see-constructor{gtk:stack-new}
   @see-slot{gtk:stack-hhomogeneous}
@@ -463,21 +461,20 @@
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "transition-type" 'stack) t)
- "The @code{transition-type} property of type @symbol{gtk:stack-transition-type}
+ "The @code{transition-type} property of type @sym{gtk:stack-transition-type}
   (Read / Write) @br{}
   The type of animation used to transition. @br{}
-  Default value: @code{:none}")
+  Default value: @val[gtk:stack-transition-type]{:none}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'stack-transition-type)
       "Accessor"
       (documentation 'stack-transition-type 'function)
- "@version{2024-04-09}
+ "@version{2025-06-24}
   @syntax{(gtk:stack-transition-type object) => setting}
   @syntax{(setf (gtk:stack-transition-type object) setting)}
   @argument[object]{a @class{gtk:stack} widget}
-  @argument[setting]{a value of the @symbol{gtk:stack-transition-type}
-    enumeration}
+  @argument[setting]{a value of the @sym{gtk:stack-transition-type} enumeration}
   @begin{short}
     Accessor of the @slot[gtk:stack]{transition-type} slot of the
     @class{gtk:stack} class.
@@ -613,15 +610,15 @@
 (setf (liber:alias-for-function 'stack-child-icon-name)
       "Accessor"
       (documentation 'stack-child-icon-name 'function)
- "@version{2025-06-12}
+ "@version{2025-06-27}
   @syntax{(gtk:stack-child-icon-name container child) => name)}
   @syntax{(setf (gtk:stack-child-icon-name container child) name)}
   @argument[container]{a @class{gtk:stack} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[name]{a string for the icon name of the child page}
   @begin{short}
-    Accessor of the @code{icon-name} child property of the @class{gtk:stack}
-    class.
+    Accessor of the @prop[gtk:stack]{icon-name} child property of the
+    @class{gtk:stack} class.
   @end{short}
   The icon name of the child page.
   @see-class{gtk:stack}
@@ -636,14 +633,15 @@
 (setf (liber:alias-for-function 'stack-child-name)
       "Accessor"
       (documentation 'stack-child-name 'function)
- "@version{2025-06-12}
+ "@version{2025-06-27}
   @syntax{(gtk:stack-child-name container child) => name)}
   @syntax{(setf (gtk:stack-child-name container child) name)}
   @argument[container]{a @class{gtk:stack} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[name]{a string for the name of the child page}
   @begin{short}
-    Accessor of the @code{name} child property of the @class{gtk:stack} class.
+    Accessor of the @prop[gtk:stack]{name} child property of the
+    @class{gtk:stack} class.
   @end{short}
   The name of the child page.
   @see-class{gtk:stack}
@@ -658,14 +656,14 @@
 (setf (liber:alias-for-function 'stack-child-needs-attention)
       "Accessor"
       (documentation 'stack-child-needs-attention 'function)
- "@version{2024-04-09}
+ "@version{2025-06-27}
   @syntax{(gtk:stack-child-needs-attention container child) => attention)}
   @syntax{(setf (gtk:stack-child-needs-attention container child) attention)}
   @argument[container]{a @class{gtk:stack} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[attention]{a boolean whether the child page requires attention}
   @begin{short}
-    Accessor of the @code{needs-attention} child property of the
+    Accessor of the @prop[gtk:stack]{needs-attention} child property of the
     @class{gtk:stack} class.
   @end{short}
   Sets a flag specifying whether the child page requires the user attention.
@@ -685,15 +683,15 @@
 (setf (liber:alias-for-function 'stack-child-position)
       "Accessor"
       (documentation 'stack-child-position 'function)
- "@version{2025-06-12}
-  @syntax{(gtk:stack-child-position container child) => position)}
-  @syntax{(setf (gtk:stack-child-position container child) position)}
+ "@version{2025-06-27}
+  @syntax{(gtk:stack-child-position container child) => pos)}
+  @syntax{(setf (gtk:stack-child-position container child) pos)}
   @argument[container]{a @class{gtk:stack} widget}
   @argument[child]{a @class{gtk:widget} child widget}
-  @argument[position]{an integer for the index of the child page in the parent}
+  @argument[pos]{an integer for the index of the child page in the parent}
   @begin{short}
-    Accessor of the @code{position} child property of the @class{gtk:stack}
-    class.
+    Accessor of the @prop[gtk:stack]{position} child property of the
+    @class{gtk:stack} class.
   @end{short}
   The index of the child page in the parent.
   @see-class{gtk:stack}
@@ -708,14 +706,15 @@
 (setf (liber:alias-for-function 'stack-child-title)
       "Accessor"
       (documentation 'stack-child-title 'function)
- "@version{2025-06-12}
+ "@version{2025-06-27}
   @syntax{(gtk:stack-child-title container child) => title)}
   @syntax{(setf (gtk:stack-child-title container child) title)}
   @argument[container]{a @class{gtk:stack} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[title]{a string for the title of the child page}
   @begin{short}
-    Accessor of the @code{title} child property of the @class{gtk:stack} class.
+    Accessor of the @prop[gtk:stack]{title} child property of the
+    @class{gtk:stack} class.
   @end{short}
   The title of the child page.
   @see-class{gtk:stack}
@@ -815,10 +814,10 @@
 (cffi:defcfun ("gtk_stack_set_visible_child_full" stack-set-visible-child-full)
     :void
  #+liber-documentation
- "@version{#2025-06-12}
+ "@version{#2025-06-24}
   @argument[stack]{a @class{gtk:stack} widget}
   @argument[name]{a string for the name of the child page to make visible}
-  @argument[transition]{a value of the @symbol{gtk:stack-transition-type}
+  @argument[transition]{a value of the @sym{gtk:stack-transition-type}
     enumeration to use}
   @begin{short}
     Makes the child page with the given name visible.

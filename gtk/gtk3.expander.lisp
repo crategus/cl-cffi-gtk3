@@ -129,7 +129,7 @@
 
 #+liber-documentation
 (setf (documentation 'expander 'type)
- "@version{#2025-06-16}
+ "@version{#2025-06-27}
   @begin{short}
     The @class{gtk:expander} widget allows the user to hide or show its child
     by clicking on an expander triangle similar to the triangles used in a
@@ -193,38 +193,37 @@ expander
     its child gets the @code{:checked} pseudoclass added to it.
   @end{dictionary}
   @begin[Style Property Details]{dictionary}
-    @begin[code]{table}
-      @begin[expander-size]{entry}
-        The @code{expander-size} style property of type @code{:int} (Read) @br{}
-        The size of the expander arrow. @br{}
-        @em{Warning:} The @code{expander-size} style property has been
-        deprecated since version 3.20 and should not be used in newly written
-        code. Use CSS @code{min-width} and @code{min-height} instead. @br{}
-        Allowed values: >= 0 @br{}
-        Default value: 10
-      @end{entry}
-      @begin[expander-spacing]{entry}
-        The @code{expander-spacing} style property of type @code{:int}
-        (Read) @br{}
-        The spacing around expander arrow. @br{}
-        @em{Warning:} The @code{expander-spacing} style property has been
-        deprecated since version 3.20 and should not be used in newly written
-        code. Use CSS margins instead, the value of this style property is
-        ignored. @br{}
-        Allowed values: >= 0 @br{}
-        Default value: 2
-      @end{entry}
-    @end{table}
+    @begin[expander:expander-size]{property}
+      The @code{expander-size} style property of type @code{:int} (Read) @br{}
+      The size of the expander arrow. @br{}
+      @em{Warning:} The @code{expander-size} style property has been
+      deprecated since version 3.20 and should not be used in newly written
+      code. Use CSS @code{min-width} and @code{min-height} instead. @br{}
+      Allowed values: >= 0 @br{}
+      Default value: 10
+    @end{property}
+    @begin[expander:expander-spacing]{property}
+      The @code{expander-spacing} style property of type @code{:int}
+      (Read) @br{}
+      The spacing around expander arrow. @br{}
+      @em{Warning:} The @code{expander-spacing} style property has been
+      deprecated since version 3.20 and should not be used in newly written
+      code. Use CSS margins instead, the value of this style property is
+      ignored. @br{}
+      Allowed values: >= 0 @br{}
+      Default value: 2
+    @end{property}
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"activate\" signal}
+    @begin[expander::activate]{signal}
       @begin{pre}
 lambda (expander)   :action
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[expander]{The @class{gtk:expander} widget which receives the
           signal.}
-      @end{table}
+      @end{simple-table}
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:expander-new}
   @see-constructor{gtk:expander-new-with-mnemonic}
@@ -314,11 +313,11 @@ lambda (expander)   :action
 (setf (liber:alias-for-function 'expander-label-fill)
       "Accessor"
       (documentation 'expander-label-fill 'function)
- "@version{#2023-03-17}
-  @syntax{(gtk:expander-label-fill object) => label-fill}
-  @syntax{(setf (gtk:expander-label-fill object) label-fill)}
+ "@version{#2025-06-28}
+  @syntax{(gtk:expander-label-fill object) => fill}
+  @syntax{(setf (gtk:expander-label-fill object) fill)}
   @argument[object]{a @class{gtk:expander} widget}
-  @argument[label-fill]{@em{true} if the label should should fill all available
+  @argument[fill]{@em{true} if the label should should fill all available
     horizontal space}
   @begin{short}
     Accessor of the @slot[gtk:expander]{label-fill} slot of the
@@ -342,11 +341,11 @@ lambda (expander)   :action
 (setf (liber:alias-for-function 'expander-label-widget)
       "Accessor"
       (documentation 'expander-label-widget 'function)
- "@version{#2023-03-17}
-  @syntax{(gtk:expander-label-widget object) => label-widget}
-  @syntax{(setf gtk:expander-label-widget object) label-widget)}
+ "@version{#2025-06-28}
+  @syntax{(gtk:expander-label-widget object) => widget}
+  @syntax{(setf gtk:expander-label-widget object) widget)}
   @argument[object]{a @class{gtk:expander} widget}
-  @argument[label-widget]{a @class{gtk:widget} label widget}
+  @argument[widget]{a @class{gtk:widget} label widget}
   @begin{short}
     Accessor of the @slot[gtk:expander]{label-widget} slot of the
     @class{gtk:expander} class.
@@ -373,11 +372,11 @@ lambda (expander)   :action
 (setf (liber:alias-for-function 'expander-resize-toplevel)
       "Accessor"
       (documentation 'expander-resize-toplevel 'function)
- "@version{#2023-03-17}
-  @syntax{(gtk:expander-resize-toplevel object) => resize-toplevel}
-  @syntax{(setf (gtk:expander-resize-toplevel object) resize-toplevel)}
+ "@version{#2025-06-28}
+  @syntax{(gtk:expander-resize-toplevel object) => resize}
+  @syntax{(setf (gtk:expander-resize-toplevel object) resize)}
   @argument[object]{a @class{gtk:expander} widget}
-  @argument[resize-toplevel]{a boolean whether to resize the toplevel}
+  @argument[resize]{a boolean whether to resize the toplevel}
   @begin{short}
     Accessor of the @slot[gtk:expander]{resize-toplevel} slot of the
     @class{gtk:expander} class.

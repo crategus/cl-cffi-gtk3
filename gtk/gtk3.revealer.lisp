@@ -92,7 +92,7 @@
 (setf (liber:alias-for-symbol 'revealer-transition-type)
       "GEnum"
       (liber:symbol-documentation 'revealer-transition-type)
- "@version{2024-03-17}
+ "@version{2025-06-27}
   @begin{declaration}
 (gobject:define-genum \"GtkRevealerTransitionType\" revealer-transition-type
   (:export t
@@ -105,14 +105,14 @@
   (:slide-down 5))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:none]{No transition}
       @entry[:crossfade]{Fade in.}
       @entry[:slide-right]{Slide in from the left.}
       @entry[:slide-left]{Slide in from the right.}
       @entry[:slide-up]{Slide in from the bottom.}
       @entry[:slide-down]{Slide in from the top.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     These enumeration values describe the possible transitions when the child
@@ -121,7 +121,7 @@
   @see-class{gtk:revealer}")
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkRevealer
+;;; GtkRevealer
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkRevealer" revealer
@@ -145,7 +145,7 @@
 
 #+liber-documentation
 (setf (documentation 'revealer 'type)
- "@version{2024-01-01}
+ "@version{2025-06-24}
   @begin{short}
     The @class{gtk:revealer} widget is a container which animates the transition
     of its child widget from invisible to visible.
@@ -219,8 +219,8 @@
   revealer to reveal or conceal its child widget.
 
   This function returns @em{true} as soon as the transition to the revealed
-  state is started. To learn whether the child widget is fully revealed, i.e.
-  the transition is completed, use the @fun{gtk:revealer-child-revealed}
+  state is started. To learn whether the child widget is fully revealed, that
+  is, the transition is completed, use the @fun{gtk:revealer-child-revealed}
   function. The transition will be animated with the current transition type of
   the revealer.
   @see-class{gtk:revealer}
@@ -258,20 +258,20 @@
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "transition-type" 'revealer) t)
- "The @code{transition-type} property of type
-  @symbol{gtk:revealer-transition-type} (Read / Write) @br{}
+ "The @code{transition-type} property of type @sym{gtk:revealer-transition-type}
+ (Read / Write) @br{}
   The type of animation used to transition. @br{}
-  Default value: @code{:slide-down}")
+  Default value: @val[gtk:revealer-transition-type]{:slide-down}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'revealer-transition-type)
       "Accessor"
       (documentation 'revealer-transition-type 'function)
- "@version{2024-04-09}
+ "@version{2025-06-24}
   @syntax{(gtk:revealer-transition-type object) => setting}
   @syntax{(setf (gtk:revealer-transition-type object) setting)}
   @argument[object]{a @class{gtk:revealer} widget}
-  @argument[setting]{a value of the @symbol{gtk:revealer-transition-type}
+  @argument[setting]{a value of the @sym{gtk:revealer-transition-type}
     enumeration}
   @begin{short}
     Accessor of the @slot[gtk:revealer]{transition-type} slot of the

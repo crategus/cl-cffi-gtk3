@@ -124,7 +124,7 @@
 
 #+liber-documentation
 (setf (documentation 'header-bar 'type)
- "@version{2025-06-13}
+ "@version{2025-06-27}
   @begin{short}
     The @class{gtk:header-bar} widget is similar to a horizontal @class{gtk:box}
     widget. It allows children to be placed at the start or the end. In
@@ -142,22 +142,20 @@
   The @class{gtk:header-bar} widget can add typical window frame controls, such
   as Minimize, Maximize and Close buttons, or the window icon.
   @begin[Child Property Details]{dictionary}
-    @begin[code]{table}
-      @begin[pack-type]{entry}
-        The @code{pack-type} child property of type @symbol{gtk:pack-type}
-        (Read / Write) @br{}
-        Whether the child is packed with reference to the start or end of the
-        parent. @br{}
-        Default value: @code{:start}
-      @end{entry}
-      @begin[position]{entry}
-        The @code{position} child property of type @code{:int} (Read / Write)
-        @br{}
-        The index of the child widget in the parent. @br{}
-        Allowed values: >= -1 @br{}
-        Default value: 0
-      @end{entry}
-    @end{table}
+    @begin[header-bar:pack-type]{property}
+      The @code{pack-type} child property of type @sym{gtk:pack-type}
+      (Read / Write) @br{}
+      Whether the child is packed with reference to the start or end of the
+      parent. @br{}
+      Default value: @val[gtk:pack-type]{:start}
+    @end{property}
+    @begin[header-bar:position]{property}
+      The @code{position} child property of type @code{:int} (Read / Write)
+      @br{}
+      The index of the child widget in the parent. @br{}
+      Allowed values: >= -1 @br{}
+      Default value: 0
+    @end{property}
   @end{dictionary}
   @see-constructor{gtk:header-bar-new}
   @see-slot{gtk:header-bar-custom-title}
@@ -325,8 +323,8 @@
   @br{}
   Whether to show window decorations. Which buttons are actually shown and
   where is determined by the @slot[gtk:header-bar]{decoration-layout} property,
-  and by the state of the window, e.g. a Close button will not be shown if the
-  window can not be closed. @br{}
+  and by the state of the window, for example a Close button will not be shown
+  if the window can not be closed. @br{}
   Default value: @em{false}")
 
 #+liber-documentation
@@ -447,18 +445,18 @@
 (setf (liber:alias-for-function 'header-bar-child-pack-type)
       "Accessor"
       (documentation 'header-bar-child-pack-type 'function)
- "@version{2024-04-09}
+ "@version{2025-06-27}
   @syntax{(gtk:header-bar-child-pack-type container child) => packtype)}
   @syntax{(setf (gtk:header-bar-child-pack-type object) packtype)}
   @argument[container]{a @class{gtk:header-bar} widget}
   @argument[child]{a @class{gtk:widget} child widget}
-  @argument[packtype]{a value of the @symbol{gtk:pack-type} enumeration for
-    the child widget}
+  @argument[packtype]{a value of the @sym{gtk:pack-type} enumeration for the
+    child widget}
   @begin{short}
-    Accessor of the @code{pack-type} child property of the
+    Accessor of the @prop[gtk:header-bar]{pack-type} child property of the
     @class{gtk:header-bar} class.
   @end{short}
-  A value of the @symbol{gtk:pack-type} enumeration indicating whether the
+  A value of the @sym{gtk:pack-type} enumeration indicating whether the
   child widget is packed with reference to the start or end of the parent.
   @see-class{gtk:header-bar}
   @see-class{gtk:widget}
@@ -473,7 +471,7 @@
 (setf (liber:alias-for-function 'header-bar-child-position)
       "Accessor"
       (documentation 'header-bar-child-position 'function)
- "@version{2025-06-13}
+ "@version{2025-06-27}
   @syntax{(gtk:header-bar-child-position container child) => position)}
   @syntax{(setf (gtk:header-bar-child-position container child) position)}
   @argument[container]{a @class{gtk:header-bar} widget}
@@ -481,7 +479,7 @@
   @argument[position]{an integer for the index of the child widget in the
     header bar}
   @begin{short}
-    Accessor of the @code{position} child property of the
+    Accessor of the @prop[gtk:header-bar]{position} child property of the
     @class{gtk:header-bar} class.
   @end{short}
   The index of the child widget in the heaer bar.

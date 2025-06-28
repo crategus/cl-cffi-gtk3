@@ -82,23 +82,23 @@
 
 #+liber-documentation
 (setf (documentation 'overlay 'type)
- "@version{2025-06-13}
+ "@version{2025-06-27}
   @begin{short}
     The @class{gtk:overlay} widget is a container which contains a single main
     widget, on top of which it can place overlay widgets.
   @end{short}
   The position of each overlay widget is determined by its
   @slot[gtk:widget]{halign} and @slot[gtk:widget]{valign} properties. For
-  example, a overlay widget with both alignments set to @code{:start} will be
-  placed at the top left corner of the main widget, whereas an overlay with the
-  @slot[gtk:widget]{halign} property set to @code{:center} and the
-  @slot[gtk:widget]{valign} property set to @code{:end} will be placed a the
-  bottom edge of the main widget, horizontally centered. The position can be
-  adjusted by setting the margin properties of the overlay widget to non-zero
-  values.
+  example, a overlay widget with both alignments set to @val[gtk:align]{:start}
+  will be placed at the top left corner of the main widget, whereas an overlay
+  with the @slot[gtk:widget]{halign} property set to @val[gtk:align]{:center}
+  and the @slot[gtk:widget]{valign} property set to @val[gtk:align]{:end} will
+  be placed a the bottom edge of the main widget, horizontally centered. The
+  position can be adjusted by setting the margin properties of the overlay
+  widget to non-zero values.
 
   More complicated placement of overlays is possible by connecting to the
-  @code{\"get-child-position\"} signal.
+  @sig[gtk:overlay]{get-child-position} signal.
   @begin[GtkOverlay as GtkBuildable]{dictionary}
     The @class{gtk:overlay} implementation of the @class{gtk:buildable}
     interface supports placing a child widget as an overlay by specifying
@@ -112,26 +112,32 @@
     and/or @code{.bottom} style classes according to their position.
   @end{dictionary}
   @begin[Child Property Details]{dictionary}
-    @begin[code]{table}
-      @begin[index]{entry}
-        The @code{index} child property of type @code{:int} (Read / Write) @br{}
-        The index of the overlay in the parent, -1 for the main child. @br{}
-        Allowed values: >= -1 @br{}
-        Default value: 0
-      @end{entry}
-      @begin[pass-through]{entry}
-        The @code{pass-through} child property of type @code{:boolean}
-        (Read / Write) @br{}
-        Whether pass through input does not affect main child. @br{}
-        Default value: @em{false}
-      @end{entry}
-    @end{table}
+    @begin[overlay:index]{property}
+      The @code{index} child property of type @code{:int} (Read / Write) @br{}
+      The index of the overlay in the parent, -1 for the main child. @br{}
+      Allowed values: >= -1 @br{}
+      Default value: 0
+    @end{property}
+    @begin[overlay:pass-through]{property}
+      The @code{pass-through} child property of type @code{:boolean}
+      (Read / Write) @br{}
+      Whether pass through input does not affect main child. @br{}
+      Default value: @em{false}
+    @end{property}
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"get-child-position\" signal}
+    @begin[overlay::get-child-position]{signal}
       @begin{pre}
 lambda (overlay widget allocation)    :run-last
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[overlay]{The @class{gtk:overlay} widget which emitted the
+          signal.}
+        @entry[widget]{The @class{gtk:widget} child widget to position.}
+        @entry[allocation]{The return location of type @class{gdk:rectangle}
+          for the allocation.}
+        @entry[Returns]{@em{True} if the allocation has been filled.}
+      @end{simple-table}
       The signal is emitted to determine the position and size of any overlay
       child widgets. A handler for this signal should fill allocation with the
       desired position and size for @arg{widget}, relative to the 'main' child
@@ -141,14 +147,7 @@ lambda (overlay widget allocation)    :run-last
       except that an alignment of @code{:fill} will cause the overlay to be
       full-width/height. If the main child is a @class{gtk:scrolled-window}
       widget, the overlays are placed relative to its contents.
-      @begin[code]{table}
-        @entry[overlay]{The @class{gtk:overlay} widget which emitted the
-          signal.}
-        @entry[widget]{The @class{gtk:widget} child widget to position.}
-        @entry[allocation]{The return location of type @class{gdk:rectangle}
-          for the allocation.}
-        @entry[Returns]{@em{True} if the allocation has been filled.}
-      @end{table}
+    @end{signal}
   @end{dictionary}
   @see-class{gtk:buildable}
   @see-class{gtk:scrolled-window}")
@@ -165,15 +164,15 @@ lambda (overlay widget allocation)    :run-last
 (setf (liber:alias-for-function 'overlay-child-index)
       "Accessor"
       (documentation 'overlay-child-index 'function)
- "@version{2025-06-13}
+ "@version{2025-06-27}
   @syntax{(gtk:overlay-child-index container child) => index)}
   @syntax{(setf (gtk:overlay-child-index container child) index)}
   @argument[container]{a @class{gtk:overlay} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[index]{an integer for the index of the child widget in the parent}
   @begin{short}
-    Accessor of the @code{index} child property of the @class{gtk:overlay}
-    class.
+    Accessor of the @prop[gtk:overlay]{index} child property of the
+    @class{gtk:overlay} class.
   @end{short}
   The index of the child widget in the parent, -1 for the main child.
   @see-class{gtk:overlay}
@@ -188,14 +187,14 @@ lambda (overlay widget allocation)    :run-last
 (setf (liber:alias-for-function 'overlay-child-pass-through)
       "Accessor"
       (documentation 'overlay-child-pass-through 'function)
- "@version{2024-01-01}
+ "@version{2025-06-27}
   @syntax{(gtk:overlay-child-pass-through container child) => setting)}
   @syntax{(setf (gtk:overlay-child-pass-through container child) setting)}
   @argument[container]{a @class{gtk:overlay} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[setting]{a boolean whether to pass through input}
   @begin{short}
-    Accessor of the @code{pass-through} child property of the
+    Accessor of the @prop[gtk:overlay]{pass-through} child property of the
     @class{gtk:overlay} class.
   @end{short}
   Pass through input, does not affect main child.

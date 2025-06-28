@@ -143,33 +143,30 @@
     @code{grid}.
   @end{dictionary}
   @begin[Child Property Details]{dictionary}
-    @begin[code]{table}
-      @begin[height]{entry}
-        The code @code{height} child property of type @code{:int} (Read / Write)
-        @br{}
-        The number of rows that a child spans. @br{}
-        Allowed values: >= 1 @br{}
-        Default value: 1
-      @end{entry}
-      @begin[left-attach]{entry}
-        The @code{left-attach} child property of type @code{:int} (Read / Write)
-        @br{}
-        The column number to attach the left side of the child to. @br{}
-        Default value: 0
-      @end{entry}
-      @begin[top-attach]{entry}
-        The @code{top-attach} child property of type @code{:int} (Read / Write)
-        @br{}
-        The row number to attach the top side of a child widget to. @br{}
-        Default value: 0
-      @end{entry}
-      @begin[width]{entry}
-        The @code{width} child property of type @code{:int} (Read / Write) @br{}
-        The number of columns that a child spans. @br{}
-        Allowed values: >= 1 @br{}
-        Default value: 1
-      @end{entry}
-    @end{table}
+    @begin[grid:height]{property}
+      The @code{height} child property of type @code{:int} (Read / Write) @br{}
+      The number of rows that a child spans. @br{}
+      Allowed values: >= 1 @br{}
+      Default value: 1
+    @end{property}
+    @begin[grid:left-attach]{property}
+      The @code{left-attach} child property of type @code{:int} (Read / Write)
+      @br{}
+      The column number to attach the left side of the child to. @br{}
+      Default value: 0
+    @end{property}
+    @begin[grid:top-attach]{property}
+      The @code{top-attach} child property of type @code{:int} (Read / Write)
+      @br{}
+      The row number to attach the top side of a child widget to. @br{}
+      Default value: 0
+    @end{property}
+    @begin[grid:width]{property}
+      The @code{width} child property of type @code{:int} (Read / Write) @br{}
+      The number of columns that a child spans. @br{}
+      Allowed values: >= 1 @br{}
+      Default value: 1
+    @end{property}
   @end{dictionary}
   @see-constructor{gtk:grid-new}
   @see-slot{gtk:grid-baseline-row}
@@ -189,7 +186,7 @@
 (setf (documentation (liber:slot-documentation "baseline-row" 'grid) t)
  "The @code{baseline-row} property of type @code{:int} (Read / Write) @br{}
   The row to align to the baseline when @slot[gtk:widget]{valign} has the
-  @code{:center} value of the @symbol{gtk:align} enumeration. @br{}
+  @val[gtk:align]{:center} value of the @sym{gtk:align} enumeration. @br{}
   Allowed values: >= 0 @br{}
   Default value: 0 @br{}")
 
@@ -338,14 +335,15 @@
 (setf (liber:alias-for-function 'grid-child-height)
       "Accessor"
       (documentation 'grid-child-height 'function)
- "@version{2025-06-06}
+ "@version{2025-06-27}
   @syntax{(gtk:grid-child-height container child) => height}
   @syntax{(setf (gtk:grid-child-height container child) height)}
   @argument[container]{a @class{gtk:grid} widget}
   @argument[child]{a @class{gtk:widget} object}
   @argument[height]{an integer for the height}
   @begin{short}
-    Accessor of the @code{height} child property of the @class{gtk:grid} class.
+    Accessor of the @prop[gtk:grid]{height} child property of the
+    @class{gtk:grid} class.
   @end{short}
   The number of rows that a child spans.
   @see-class{gtk:grid}
@@ -360,15 +358,15 @@
 (setf (liber:alias-for-function 'grid-child-left-attach)
       "Accessor"
       (documentation 'grid-child-left-attach 'function)
- "@version{2025-06-06}
-  @syntax{(gtk:grid-child-left-attach container child) => left-attach}
-  @syntax{(setf (gtk:grid-child-left-attach container child) left-attach)}
+ "@version{2025-06-27}
+  @syntax{(gtk:grid-child-left-attach container child) => attach}
+  @syntax{(setf (gtk:grid-child-left-attach container child) attach)}
   @argument[container]{a @class{gtk:grid} widget}
   @argument[child]{a @class{gtk:widget} object}
-  @argument[left-attach]{an integer for the left attach}
+  @argument[attach]{an integer for the left attach}
   @begin{short}
-    Accessor of the @code{left-attach} child property of the @class{gtk:grid}
-    class.
+    Accessor of the @prop[gtk:grid]{left-attach} child property of the
+    @class{gtk:grid} class.
   @end{short}
   The column number to attach the left side of the child to.
   @see-class{gtk:grid}
@@ -383,15 +381,15 @@
 (setf (liber:alias-for-function 'grid-child-top-attach)
       "Accessor"
       (documentation 'grid-child-top-attach 'function)
- "@version{2025-06-06}
-  @syntax{(gtk:grid-child-top-attach container child) => top-attach}
-  @syntax{(setf (gtk:grid-child-top-attach container child) top-attach)}
+ "@version{2025-06-27}
+  @syntax{(gtk:grid-child-top-attach container child) => attach}
+  @syntax{(setf (gtk:grid-child-top-attach container child) attach)}
   @argument[container]{a @class{gtk:grid} widget}
   @argument[child]{a @class{gtk:widget} object}
-  @argument[top-attach]{an integer for the top attach}
+  @argument[attach]{an integer for the top attach}
   @begin{short}
-    Accessor of the @code{top-attach} child property of the @class{gtk:grid}
-    class.
+    Accessor of the @prop[gtk:grid]{top-attach} child property of the
+    @class{gtk:grid} class.
   @end{short}
   The row number to attach the top side of a child widget to.
   @see-class{gtk:grid}
@@ -406,14 +404,15 @@
 (setf (liber:alias-for-function 'grid-child-width)
       "Accessor"
       (documentation 'grid-child-width 'function)
- "@version{2025-06-06}
+ "@version{2025-06-27}
   @syntax{(gtk:grid-child-width container child) => width}
   @syntax{(setf (gtk:grid-child-width container child) width)}
   @argument[container]{a @class{gtk:grid} widget}
   @argument[child]{a @class{gtk:widget} object}
   @argument[width]{an integer for the width}
   @begin{short}
-    Accessor of the @code{width} child property of the @class{gtk:grid} class.
+    Accessor of the @prop[gtk:grid]{width} child property of the
+    @class{gtk:grid} class.
   @end{short}
   The number of columns that a child spans.
   @see-class{gtk:grid}
@@ -479,14 +478,14 @@
 
 (cffi:defcfun ("gtk_grid_attach_next_to" grid-attach-next-to) :void
  #+liber-documentation
- "@version{2025-06-06}
+ "@version{2025-06-24}
   @argument[grid]{a @class{gtk:grid} widget}
   @argument[child]{a @class{gtk:widget} widget to add}
   @argument[sibling]{a @class{gtk:widget} child widget of grid that @arg{child}
     will be placed next to, or @code{nil} to place @arg{child} at the beginning
     or end}
-  @argument[side]{a @symbol{gtk:position-type} value for the side of
-  @arg{sibling} that @arg{child} is positioned next to}
+  @argument[side]{a @sym{gtk:position-type} value for the side of @arg{sibling}
+    that @arg{child} is positioned next to}
   @argument[width]{an integer for the number of columns that @arg{child} will
     span}
   @argument[height]{an integer for the number of rows that @arg{child} will
@@ -542,9 +541,9 @@
 
 (cffi:defcfun ("gtk_grid_insert_row" grid-insert-row) :void
  #+liber-documentation
- "@version{2025-06-06}
+ "@version{2025-06-27}
   @argument[grid]{a @class{gtk:grid} widget}
-  @argument[position]{an integer for the position to insert the row at}
+  @argument[pos]{an integer for the position to insert the row at}
   @begin{short}
     Inserts a row at the specified position.
   @end{short}
@@ -554,7 +553,7 @@
   @see-function{gtk:grid-insert-column}
   @see-function{gtk:grid-insert-next-to}"
   (grid (g:object grid))
-  (position :int))
+  (pos :int))
 
 (export 'grid-insert-row)
 
@@ -564,9 +563,9 @@
 
 (cffi:defcfun ("gtk_grid_insert_column" grid-insert-column) :void
  #+liber-documentation
- "@version{2025-06-06}
+ "@version{2025-06-27}
   @argument[grid]{a @class{gtk:grid} widget}
-  @argument[position]{an integer for the position to insert the column at}
+  @argument[pos]{an integer for the position to insert the column at}
   @begin{short}
     Inserts a column at the specified position.
   @end{short}
@@ -577,7 +576,7 @@
   @see-function{gtk:grid-insert-row}
   @see-function{gtk:grid-insert-next-to}"
   (grid (g:object grid))
-  (position :int))
+  (pos :int))
 
 (export 'grid-insert-column)
 
@@ -587,9 +586,9 @@
 
 (cffi:defcfun ("gtk_grid_remove_row" grid-remove-row) :void
  #+liber-documentation
- "@version{2025-06-06}
+ "@version{2025-06-27}
   @argument[grid]{a @class{gtk:grid} widget}
-  @argument[position]{an integer for the position of the row to remove}
+  @argument[pos]{an integer for the position of the row to remove}
   @begin{short}
     Removes a row from the grid.
   @end{short}
@@ -600,7 +599,7 @@
   @see-function{gtk:grid-remove-column}
   @see-function{gtk:grid-insert-row}"
   (grid (g:object grid))
-  (position :int))
+  (pos :int))
 
 (export 'grid-remove-row)
 
@@ -610,9 +609,9 @@
 
 (cffi:defcfun ("gtk_grid_remove_column" grid-remove-column) :void
  #+liber-documentation
- "@version{2025-06-06}
+ "@version{2025-06-27}
   @argument[grid]{a @class{gtk:grid} widget}
-  @argument[position]{an integer for the position of the column to remove}
+  @argument[pos]{an integer for the position of the column to remove}
   @begin{short}
     Removes a column from the grid.
   @end{short}
@@ -623,7 +622,7 @@
   @see-function{gtk:grid-remove-row}
   @see-function{gtk:grid-insert-column}"
   (grid (g:object grid))
-  (position :int))
+  (pos :int))
 
 (export 'grid-remove-column)
 
@@ -633,18 +632,19 @@
 
 (cffi:defcfun ("gtk_grid_insert_next_to" grid-insert-next-to) :void
  #+liber-documentation
- "@version{2025-06-06}
+ "@version{2025-06-24}
   @argument[grid]{a @class{gtk:grid} widget}
   @argument[sibling]{a @class{gtk:widget} child of @arg{grid} that the new
     row or column will be placed next to}
-  @argument[side]{a @symbol{gtk:position-type} value for the side of
-    @arg{sibling} that @arg{child} is positioned next to}
+  @argument[side]{a @sym{gtk:position-type} value for the side of @arg{sibling}
+    that @arg{child} is positioned next to}
   @begin{short}
     Inserts a row or column at the specified position.
   @end{short}
   The new row or column is placed next to @arg{sibling}, on the side determined
-  by @arg{side}. If the @arg{side} argument is @code{:top} or @code{:bottom}, a
-  row is inserted. If the @arg{side} argument is @code{:left} of @code{:right},
+  by @arg{side}. If the @arg{side} argument is @val[gtk:position-type]{:top} or
+  @val[gtk:position-type]{:bottom}, a row is inserted. If the @arg{side}
+  argument is @val[gtk:position-type]{:left} of @val[gtk:position-type]{:right},
   a column is inserted.
   @see-class{gtk:grid}
   @see-class{gtk:widget}
@@ -662,27 +662,27 @@
 ;;; gtk_grid_set_row_baseline_position
 ;;; ----------------------------------------------------------------------------
 
-(defun (setf grid-row-baseline-position) (position grid row)
+(defun (setf grid-row-baseline-position) (pos grid row)
   (cffi:foreign-funcall "gtk_grid_set_row_baseline_position"
                         (g:object grid) grid
                         :int row
-                        position-type position
+                        baseline-position pos
                         :void)
-  position)
+  pos)
 
 (cffi:defcfun ("gtk_grid_get_row_baseline_position"
-               grid-row-baseline-position) position-type
+               grid-row-baseline-position) baseline-position
  #+liber-documentation
- "@version{2025-06-06}
-  @syntax{(gtk:grid-row-baseline-position grid row) => position}
-  @syntax{(setf (gtk:grid-row-baseline-position grid row) position)}
+ "@version{2025-06-24}
+  @syntax{(gtk:grid-row-baseline-position grid row) => pos}
+  @syntax{(setf (gtk:grid-row-baseline-position grid row) pos)}
   @argument[grid]{a @class{gtk:grid} widget}
   @argument[row]{an integer for a row index}
-  @argument[position]{a @symbol{gtk:position-type} value}
+  @argument[pos]{a @sym{gtk:baseline-position} value}
   @begin{short}
     The @fun{gtk:grid-row-baseline-position} function returns the baseline
     position of @arg{row} as set by the @setf{gtk:grid-row-baseline-position}
-    function or the @code{:center} default value.
+    function or the @val[gtk:baseline-position]{:center} default value.
   @end{short}
   @see-class{gtk:grid}
   @see-symbol{gtk:position-type}"

@@ -110,18 +110,16 @@
   function, rather than to the one returned by the @fun{gtk:widget-window}
   function as you would for a drawing area.
   @begin[Child Property Details]{dictionary}
-    @begin[code]{table}
-      @begin[x]{entry}
-        The @code{x} child property of type @code{:int} (Read / Write) @br{}
-        The x position of the child widget. @br{}
-        Default value: 0
-      @end{entry}
-      @begin[y]{entry}
-        The @code{y} child property of type @code{:int} (Read / Write) @br{}
-        The y position of the child widget. @br{}
-        Default value: 0
-      @end{entry}
-    @end{table}
+    @begin[layout:x]{property}
+      The @code{x} child property of type @code{:int} (Read / Write) @br{}
+      The x position of the child widget. @br{}
+      Default value: 0
+    @end{property}
+    @begin[layout:y]{property}
+      The @code{y} child property of type @code{:int} (Read / Write) @br{}
+      The y position of the child widget. @br{}
+      Default value: 0
+    @end{property}
   @end{dictionary}
   @see-constructor{gtk:layout-new}
   @see-slot{gtk:layout-height}
@@ -198,14 +196,15 @@
 (setf (liber:alias-for-function 'layout-child-x)
       "Accessor"
       (documentation 'layout-child-x 'function)
- "@version{2025-06-16}
+ "@version{2025-06-27}
   @syntax{(gtk:layout-child-x container child) => x}
   @syntax{(setf (gtk:layout-child-x container child) x)}
   @argument[container]{a @class{gtk:layout} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[x]{an integer for the x position of the child widget}
   @begin{short}
-    Accessor of the @code{x} child property of the @class{gtk:layout} class.
+    Accessor of the @prop[gtk:layout]{x} child property of the
+    @class{gtk:layout} class.
   @end{short}
   The x position of the child widget in the layout.
   @see-class{gtk:layout}
@@ -219,14 +218,15 @@
 (setf (liber:alias-for-function 'layout-child-y)
       "Accessor"
       (documentation 'layout-child-y 'function)
- "@version{2025-06-16}
+ "@version{2025-06-27}
   @syntax{(gtk:layout-child-y container child) => y}
   @syntax{(setf (gtk:layout-child-y container child) y)}
   @argument[container]{a @class{gtk:layout} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[y]{an integer for the y position of the child widget}
   @begin{short}
-    Accessor of the child property @code{y} of the @class{gtk:layout} class.
+    Accessor of the @prop[gtk:layout]{y} child property of the
+    @class{gtk:layout} class.
   @end{short}
   The y position of the child widget in the layout.
   @see-class{gtk:layout}

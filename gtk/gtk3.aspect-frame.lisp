@@ -89,7 +89,7 @@
 
 #+liber-documentation
 (setf (documentation 'aspect-frame 'type)
- "@version{2025-06-16}
+ "@version{2025-06-28}
   @begin{short}
     The @class{gtk:aspect-frame} widget is useful when you want pack a widget
     so that it can resize but always retains the same aspect ratio.
@@ -143,7 +143,8 @@
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "ratio" 'aspect-frame) t)
  "The @code{ratio} property of type @code{:float} (Read / Write) @br{}
-  The aspect ratio if the @code{obey-child} property is @em{false}. @br{}
+  The aspect ratio if the @slot[gtk:aspect-frame]{obey-child} property is
+  @em{false}. @br{}
   Allowed values: [0.0001, 10000.0] @br{}
   Default value: 1.0")
 

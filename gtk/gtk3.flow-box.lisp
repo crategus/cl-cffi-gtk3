@@ -135,24 +135,25 @@
 
 #+liber-documentation
 (setf (documentation 'flow-box-child 'type)
- "@version{2025-06-06}
+ "@version{2025-06-24}
   @begin{short}
     The @class{gtk:flow-box-child} widget is the kind of widget that can be
     added to a @class{gtk:flow-box} widget.
   @end{short}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"activate\" signal}
+    @begin[flow-box-child::activate]{signal}
       @begin{pre}
 lambda (child)    :action
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[child]{The @class{gtk:flow-box-child} widget on which the signal
           is emitted.}
-      @end{table}
+      @end{simple-table}
       The signal is emitted when the user activates a child widget in a
       @class{gtk:flow-box} widget, either by clicking or double-clicking, or by
       using the @kbd{Space} or @kbd{Enter} key. While this signal is used as a
       keybinding signal, it can be used by applications for their own purposes.
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:flow-box-child-new}
   @see-class{gtk:flow-box}")
@@ -192,7 +193,7 @@ lambda (child)    :action
 
 #+liber-documentation
 (setf (documentation 'flow-box 'type)
- "@version{2025-06-06}
+ "@version{2025-06-24}
   @begin{short}
     The @class{gtk:flow-box} widget positions child widgets in sequence
     according to its orientation.
@@ -239,39 +240,41 @@ flowbox
     with name @code{rubberband} is used.
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"activate-cursor-child\" signal}
+    @begin[flow-box::activate-cursor-child]{signal}
       @begin{pre}
 lambda (flowbox)    :action
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[flowbox]{The @class{gtk:flow-box} widget on which the signal is
           emitted.}
-      @end{table}
+      @end{simple-table}
       The signal is a keybinding signal which gets emitted when the user
       activates the flow box.
-    @subheading{The \"child-activated\" signal}
+    @end{signal}
+    @begin[flow-box::child-activated]{signal}
       @begin{pre}
 lambda (flowbox child)    :run-last
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[flowbox]{The @class{gtk:flow-box} widget on which the signal is
           emitted.}
         @entry[child]{The @class{gtk:flow-box-child} widget that is activated.}
-      @end{table}
+      @end{simple-table}
       The signal is emitted when a child has been activated by the user.
-    @subheading{The \"move-cursor\" signal}
+    @end{signal}
+    @begin[flow-box::move-cursor]{signal}
       @begin{pre}
 lambda (flowbox step count)    :action
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[flowbox]{The @class{gtk:flow-box} widget on which the signal is
           emitted.}
         @entry[step]{The granularity to the move, as a value of the
-          @symbol{gtk:movement-step} enumeration.}
+          @sym{gtk:movement-step} enumeration.}
         @entry[count]{The integer with the number of step units to move.}
         @entry[Returns]{@em{True} to stop other handlers from being invoked for
           the event. @em{False} to propagate the event further.}
-      @end{table}
+      @end{simple-table}
       The signal is a keybinding signal which gets emitted when the user
       initiates a cursor movement. Applications should not connect to it, but
       may emit it with the @fun{g:signal-emit} function if they need to control
@@ -283,50 +286,55 @@ lambda (flowbox step count)    :action
       list them all here. Arrow keys move by individual children.
       @kbd{Home}/@kbd{End} keys move to the ends of the box.
       @kbd{PageUp}/@kbd{PageDown} keys move vertically by pages.
-    @subheading{The \"select-all\" signal}
+    @end{signal}
+    @begin[flow-box::select-all]{signal}
       @begin{pre}
 lambda (flowbox)    :action
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[flowbox]{The @class{gtk:flow-box} widget on which the signal is
           emitted.}
-      @end{table}
+      @end{simple-table}
       The signal is a keybinding signal which gets emitted to select all
       children of the box, if the selection mode permits it. The default
       bindings for this signal is the @kbd{Ctrl-a} key.
-    @subheading{The \"selected-children-changed\" signal}
+    @end{signal}
+    @begin[flow-box::selected-children-changed]{signal}
       @begin{pre}
 lambda (flowbox)    :run-first
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[box]{The @class{gtk:flow-box} on which the signal is emitted.}
-      @end{table}
+      @end{simple-table}
       The signal is emitted when the set of selected children changes. Use the
       @fun{gtk:flow-box-selected-foreach} or
       @fun{gtk:flow-box-selected-children} functions to obtain the selected
       children.
-    @subheading{The \"toggle-cursor-child\" signal}
+    @end{signal}
+    @begin[flow-box::toggle-cursor-child]{signal}
       @begin{pre}
 lambda (flowbox)    :action
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[flowbox]{The @class{gtk:flow-box} widget on which the signal is
           emitted.}
-      @end{table}
+      @end{simple-table}
       The signal is a keybinding signal which toggles the selection of the
       child that has the focus. The default binding for this signal is the
       @kbd{Ctrl-Space} key.
-    @subheading{The \"unselect-all\" signal}
+    @end{signal}
+    @begin[flow-box::unselect-all]{signal}
       @begin{pre}
 lambda (flowbox)    :action
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[flowbox]{The @class{gtk:flow-box} widget on which the signal is
           emitted.}
-      @end{table}
+      @end{simple-table}
       The signal is a keybinding signal which gets emitted to unselect all
       children of the box, if the selection mode permits it. The default
       bindings for this signal is the @kbd{Ctrl-Shift-a} key.
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:flow-box-new}
   @see-slot{gtk:flow-box-activate-on-single-click}
@@ -358,12 +366,12 @@ lambda (flowbox)    :action
 (setf (liber:alias-for-function 'flow-box-activate-on-single-click)
       "Accessor"
       (documentation 'flow-box-activate-on-single-click 'function)
- "@version{2023-03-05}
+ "@version{2025-06-24}
   @syntax{(gtk:flow-box-activate-on-single-click object) => setting}
   @syntax{(setf (gtk:flow-box-activate-on-single-click object) setting)}
   @argument[object]{a @class{gtk:flow-box} widget}
-  @argument[setting]{@em{false} to emit the @code{\"child-activated\"} signal
-    on a single click}
+  @argument[setting]{@em{false} to emit the @sig[gtk:flow-box]{child-activated}
+    signal on a single click}
   @begin{short}
     Accessor of the @slot[gtk:flow-box]{activate-on-single-click} slot of the
     @class{gtk:flow-box} class.
@@ -528,20 +536,20 @@ lambda (flowbox)    :action
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "selection-mode" 'flow-box) t)
- "The @code{selection-mode} property of type @symbol{gtk:selection-mode}
+ "The @code{selection-mode} property of type @sym{gtk:selection-mode}
   (Read / Write) @br{}
   The selection mode used by the flow box. @br{}
-  Default value: @code{:single}")
+  Default value: @val[gtk:selection-mode]{:single}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'flow-box-selection-mode)
       "Accessor"
       (documentation 'flow-box-selection-mode 'function)
- "@version{2024-04-09}
+ "@version{2025-06-24}
   @syntax{(gtk:flow-box-selection-mode object) => mode}
   @syntax{(setf (gtk:flow-box-selection-mode object) mode)}
   @argument[object]{a @class{gtk:flow-box} widget}
-  @argument[mode]{a value of the @symbol{gtk:selection-mode} enumeration}
+  @argument[mode]{a value of the @sym{gtk:selection-mode} enumeration}
   @begin{short}
     Accessor of the @slot[gtk:flow-box]{selection-mode} slot of the
     @class{gtk:flow-box} class.
@@ -576,11 +584,10 @@ lambda (flowbox)    :action
 
 (cffi:defcfun ("gtk_flow_box_insert" flow-box-insert) :void
  #+liber-documentation
- "@version{#2025-06-06}
+ "@version{#2025-06-27}
   @argument[flowbox]{a @class{gtk:flow-box} widget}
   @argument[child]{a @class{gtk:widget} child widget to add}
-  @argument[position]{an integer for the position to insert the child widget
-    in}
+  @argument[pos]{an integer for the position to insert the child widget in}
   @begin{short}
     Inserts the child widget into the flow box at a given position.
   @end{short}
@@ -588,14 +595,14 @@ lambda (flowbox)    :action
   calculated position and this function has the same effect as the
   @fun{gtk:container-add} function.
 
-  If the @arg{position} argument is -1, or larger than the total number of
-  children in the flow box, then the child widget will be appended to the end.
+  If the @arg{pos} argument is -1, or larger than the total number of children
+  in the flow box, then the child widget will be appended to the end.
   @see-class{gtk:flow-box}
   @see-class{gtk:widget}
   @see-function{gtk:container-add}"
   (flowbox (g:object flow-box))
   (child (g:object widget))
-  (position :int))
+  (pos :int))
 
 (export 'flow-box-insert)
 
@@ -750,9 +757,9 @@ lambda (flowbox)    :action
 
 (defun flow-box-selected-foreach (flowbox func)
  #+liber-documentation
- "@version{#2023-03-05}
+ "@version{#2025-06-24}
   @argument[flowbox]{a @class{gtk:flow-box} widget}
-  @argument[func]{a @symbol{gtk:flow-box-foreach-func} callback function}
+  @argument[func]{a @sym{gtk:flow-box-foreach-func} callback function}
   @begin{short}
     Calls a function for each selected child widget in the flow box.
   @end{short}
@@ -904,9 +911,9 @@ lambda (flowbox)    :action
 
 (defun flow-box-set-filter-func (flowbox func)
  #+liber-documentation
- "@version{2024-01-02}
+ "@version{2025-06-24}
   @argument[flowbox]{a @class{gtk:flow-box} widget}
-  @argument[func]{a @symbol{gtk:flow-box-filter-func} callback function that
+  @argument[func]{a @sym{gtk:flow-box-filter-func} callback function that
     lets you filter which children to show}
   @begin{short}
     By setting a filter function on the flow box one can decide dynamically
@@ -1002,9 +1009,9 @@ lambda (flowbox)    :action
 
 (defun flow-box-set-sort-func (flowbox func)
  #+liber-documentation
- "@version{2024-01-02}
+ "@version{2025-06-24}
   @argument[flowbox]{a @class{gtk:flow-box} widget}
-  @argument[func]{a @symbol{gtk:flow-box-sort-func} callback function for the
+  @argument[func]{a @sym{gtk:flow-box-sort-func} callback function for the
     sort function}
   @begin{short}
     By setting a sort function on the flow box, one can dynamically reorder the
@@ -1053,7 +1060,7 @@ lambda (flowbox)    :action
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcallback flow-box-create-widget-func (g:object widget)
-    ((item :pointer)
+    ((item gobject:object)
      (data :pointer))
   (let ((func (glib:get-stable-pointer-value data)))
     (restart-case
@@ -1064,10 +1071,10 @@ lambda (flowbox)    :action
 (setf (liber:alias-for-symbol 'flow-box-create-widget-func)
       "Callback"
       (liber:symbol-documentation 'flow-box-create-widget-func)
- "@version{#2024-03-23}
+ "@version{#2025-06-27}
   @syntax{lambda (item) => result}
-  @argument[item]{a pointer to the item from the model for which to create a
-    widget for}
+  @argument[item]{a @class{g:object} object for the item from the model for
+    which to create a widget for}
   @argument[result]{a @class{gtk:widget} object that represents @arg{item}}
   @begin{short}
     Called for flow boxes that are bound to a @class{g:list-model} object with
@@ -1094,10 +1101,10 @@ lambda (flowbox)    :action
 
 (defun flow-box-bind-model (flowbox model func)
  #+liber-documentation
- "@version{#2023-03-13}
+ "@version{#2025-06-24}
   @argument[flowbox]{a @class{gtk:flow-box} widget}
   @argument[model]{a @class{g:list-model} object to be bound to @arg{flowbox}}
-  @argument[func]{a @symbol{gtk:flow-box-create-widget-func} callback function
+  @argument[func]{a @sym{gtk:flow-box-create-widget-func} callback function
     that creates widgets for items}
   @begin{short}
     Binds a model to the flow box.

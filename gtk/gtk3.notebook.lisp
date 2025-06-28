@@ -158,7 +158,7 @@
 (setf (liber:alias-for-symbol 'notebook-tab)
       "GEnum"
       (liber:symbol-documentation 'notebook-tab)
- "@version{#2024-03-22}
+ "@version{#2025-06-27}
   @begin{declaration}
 (gobject:define-genum \"GtkNotebookTab\" notebook-tab
   (:export t
@@ -167,14 +167,14 @@
   (:tab-last 1))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:tab-first]{}
       @entry[:tab-last]{}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     The values of this enumeration are used as arguments of the
-    @code{\"focus-tab\"} signal.
+    @sig[gtk:notebook]{focus-tab} signal.
   @end{short}
   @see-class{gtk:notebook}")
 
@@ -212,7 +212,7 @@
 
 #+liber-documentation
 (setf (documentation 'notebook 'type)
- "@version{#2025-06-16}
+ "@version{#2025-06-27}
   @begin{short}
     The @class{gtk:notebook} widget is a @class{gtk:container} widget whose
     children are pages that can be switched between using tab labels along one
@@ -298,146 +298,143 @@ notebook
     direction.
   @end{dictionary}
   @begin[Child Property Details]{dictionary}
-    @begin[code]{table}
-      @begin[detachable]{entry}
-        The @code{detachable} child property of type @code{:boolean}
-        (Read / Write) @br{}
-        Whether the tab is detachable. @br{}
-        Default value: @em{false}
-      @end{entry}
-      @begin[menu-label]{entry}
-        The @code{menu-label} child property of type @code{:string}
-        (Read / Write) @br{}
-        The string displayed in the menu entry of the child page. @br{}
-        Default value: @code{nil}
-      @end{entry}
-      @begin[position]{entry}
-        The @code{position} child property of type @code{:int} (Read / Write)
-        @br{}
-        The index of the child page in the parent. @br{}
-        Allowed values: >= 0 @br{}
-        Default value: 0
-      @end{entry}
-      @begin[reorderable]{entry}
-        The @code{reorderable} child property of type @code{:boolean}
-        (Read / Write) @br{}
-        Whether the tab is reorderable by user action. @br{}
-        Default value: @em{false}
-      @end{entry}
-      @begin[tab-expand]{entry}
-        The @code{tab-expand} child property of type @code{:boolean}
-        (Read / Write) @br{}
-        Whether to expand the tab of the child page. @br{}
-        Default value: @em{false}
-      @end{entry}
-      @begin[tab-fill]{entry}
-        The @code{tab-fill} child property of type @code{:boolean}
-        (Read / Write) @br{}
-        Whether the tab of the child page should fill the allocated area. @br{}
-        Default value: @em{true}
-      @end{entry}
-      @begin[tab-label]{entry}
-        The @code{tab-label} child property of type @code{:string}
-        (Read / Write) @br{}
-        The string displayed on the tab label of the child page. @br{}
-        Default value: @code{nil}
-      @end{entry}
-    @end{table}
+    @begin[level-bar:detachable]{property}
+      The @code{detachable} child property of type @code{:boolean}
+      (Read / Write) @br{}
+      Whether the tab is detachable. @br{}
+      Default value: @em{false}
+    @end{property}
+    @begin[level-bar:menu-label]{property}
+      The @code{menu-label} child property of type @code{:string}
+      (Read / Write) @br{}
+      The string displayed in the menu entry of the child page. @br{}
+      Default value: @code{nil}
+    @end{property}
+    @begin[level-bar:position]{property}
+      The @code{position} child property of type @code{:int} (Read / Write)
+      @br{}
+      The index of the child page in the parent. @br{}
+      Allowed values: >= 0 @br{}
+      Default value: 0
+    @end{property}
+    @begin[level-bar:reorderable]{property}
+      The @code{reorderable} child property of type @code{:boolean}
+      (Read / Write) @br{}
+      Whether the tab is reorderable by user action. @br{}
+      Default value: @em{false}
+    @end{property}
+    @begin[level-bar:tab-expand]{property}
+      The @code{tab-expand} child property of type @code{:boolean}
+      (Read / Write) @br{}
+      Whether to expand the tab of the child page. @br{}
+      Default value: @em{false}
+    @end{property}
+    @begin[level-bar:tab-fill]{property}
+      The @code{tab-fill} child property of type @code{:boolean}
+      (Read / Write) @br{}
+      Whether the tab of the child page should fill the allocated area. @br{}
+      Default value: @em{true}
+    @end{property}
+    @begin[level-bar:tab-label]{property}
+      The @code{tab-label} child property of type @code{:string}
+      (Read / Write) @br{}
+      The string displayed on the tab label of the child page. @br{}
+      Default value: @code{nil}
+    @end{property}
   @end{dictionary}
   @begin[Style Property Details]{dictionary}
-    @begin[code]{table}
-      @begin[arrow-spacing]{entry}
-        The @code{arrow-spacing} style property of type @code{:int} (Read) @br{}
-        Defines the spacing between the scroll arrows and the tabs. @br{}
-        @em{Warning:} The @code{arrow-spacing} style property has been
-        deprecated since version 3.20 and should not be used in newly written
-        code. This property is ignored. Use margins on arrows or the @code{tabs}
-        node to achieve the same effect. @br{}
-        Allowed values: >= 0 @br{}
-        Default value: 0
-      @end{entry}
-      @begin[has-backward-stepper]{entry}
-        The @code{has-backward-stepper} style property of type @code{:boolean}
-        (Read) @br{}
-        Determines whether the standard backward arrow button is displayed.
-        @br{}
-        Default value: @em{true}
-      @end{entry}
-      @begin[has-forward-stepper]{entry}
-        The @code{has-forward-stepper} style property of type @code{:boolean}
-        (Read) @br{}
-        Determines whether the standard forward arrow button is displayed. @br{}
-        Default value: @em{true}
-      @end{entry}
-      @begin[has-secondary-backward-stepper]{entry}
-        The @code{has-secondary-backward-stepper} style property of type
-        @code{:boolean} (Read) @br{}
-        Determines whether a second backward arrow button is displayed on the
-        opposite end of the tab area. @br{}
-        Default value: @em{false}
-      @end{entry}
-      @begin[has-secondary-forward-stepper]{entry}
-        The @code{has-secondary-forward-stepper} style property of type
-        @code{:boolean} (Read) @br{}
-        Determines whether a second forward arrow button is displayed on the
-        opposite end of the tab area. @br{}
-        Default value: @em{false}
-      @end{entry}
-      @begin[has-tab-gap]{entry}
-        The @code{has-tab-gap} style property of type @code{:boolean} (Read)
-        @br{}
-        Defines whether the active tab is draw with a gap at the bottom. @br{}
-        @em{Warning:} The @code{has-tab-gap} style property has been deprecated
-        since version 3.20 and should not be used in newly written code. This
-        function always behaves as if it was set to @em{false}. @br{}
-        Default value: @em{true}
-      @end{entry}
-      @begin[initial-gap]{entry}
-        The @code{initial-gap} style property of type @code{:int} (Read) @br{}
-        Defines the minimum size for the initial gap between the first tab.@br{}
-        @em{Warning:} The @code{initial-gap} style property has been deprecated
-        since version 3.20 and should not be used in newly written code. The
-        intial gap is ignored. Use margins on the header node to achieve the
-        same effect. @br{}
-        Allowed values: >= 0 @br{}
-        Default value: 0
-      @end{entry}
-      @begin[tab-curvature]{entry}
-        The @code{tab-curvature} style property of type @code{:int} (Read) @br{}
-        Defines size of tab curvature. @br{}
-        @em{Warning:} The @code{tab-curvature} style property has been
-        deprecated since version 3.20 and should not be used in newly written
-        code. This property is ignored. Use margins on tab nodes to achieve the
-        same effect. @br{}
-        Allowed values: >= 0 @br{}
-        Default value: 1
-      @end{entry}
-      @begin[tab-overlap]{entry}
-        The @code{tab-overlap} style property of type @code{:int} (Read) @br{}
-        Defines size of tab overlap area. @br{}
-        @em{Warning;} The @code{tab-overlap} style property has been deprecated
-        since version 3.20 and should not be used in newly written code. This
-        property is ignored. Use margins on tab nodes to achieve the same
-        effect. @br{}
-        Default value: 2
-      @end{entry}
-    @end{table}
+    @begin[notebook:arrow-spacing]{property}
+      The @code{arrow-spacing} style property of type @code{:int} (Read) @br{}
+      Defines the spacing between the scroll arrows and the tabs. @br{}
+      @em{Warning:} The @code{arrow-spacing} style property has been
+      deprecated since version 3.20 and should not be used in newly written
+      code. This property is ignored. Use margins on arrows or the @code{tabs}
+      node to achieve the same effect. @br{}
+      Allowed values: >= 0 @br{}
+      Default value: 0
+    @end{property}
+    @begin[notebook:has-backward-stepper]{property}
+      The @code{has-backward-stepper} style property of type @code{:boolean}
+      (Read) @br{}
+      Determines whether the standard backward arrow button is displayed.
+      @br{}
+      Default value: @em{true}
+    @end{property}
+    @begin[notebook:has-forward-stepper]{property}
+      The @code{has-forward-stepper} style property of type @code{:boolean}
+      (Read) @br{}
+      Determines whether the standard forward arrow button is displayed. @br{}
+      Default value: @em{true}
+    @end{property}
+    @begin[notebook:has-secondary-backward-stepper]{property}
+      The @code{has-secondary-backward-stepper} style property of type
+      @code{:boolean} (Read) @br{}
+      Determines whether a second backward arrow button is displayed on the
+      opposite end of the tab area. @br{}
+      Default value: @em{false}
+    @end{property}
+    @begin[notebook:has-secondary-forward-stepper]{property}
+      The @code{has-secondary-forward-stepper} style property of type
+      @code{:boolean} (Read) @br{}
+      Determines whether a second forward arrow button is displayed on the
+      opposite end of the tab area. @br{}
+      Default value: @em{false}
+    @end{property}
+    @begin[notebook:has-tab-gap]{property}
+      The @code{has-tab-gap} style property of type @code{:boolean} (Read)
+      @br{}
+      Defines whether the active tab is draw with a gap at the bottom. @br{}
+      @em{Warning:} The @code{has-tab-gap} style property has been deprecated
+      since version 3.20 and should not be used in newly written code. This
+      function always behaves as if it was set to @em{false}. @br{}
+      Default value: @em{true}
+    @end{property}
+    @begin[notebook:initial-gap]{property}
+      The @code{initial-gap} style property of type @code{:int} (Read) @br{}
+      Defines the minimum size for the initial gap between the first tab.@br{}
+      @em{Warning:} The @code{initial-gap} style property has been deprecated
+      since version 3.20 and should not be used in newly written code. The
+      intial gap is ignored. Use margins on the header node to achieve the
+      same effect. @br{}
+      Allowed values: >= 0 @br{}
+      Default value: 0
+    @end{property}
+    @begin[notebook:tab-curvature]{property}
+      The @code{tab-curvature} style property of type @code{:int} (Read) @br{}
+      Defines size of tab curvature. @br{}
+      @em{Warning:} The @code{tab-curvature} style property has been
+      deprecated since version 3.20 and should not be used in newly written
+      code. This property is ignored. Use margins on tab nodes to achieve the
+      same effect. @br{}
+      Allowed values: >= 0 @br{}
+      Default value: 1
+    @end{property}
+    @begin[notebook:tab-overlap]{property}
+      The @code{tab-overlap} style property of type @code{:int} (Read) @br{}
+      Defines size of tab overlap area. @br{}
+      @em{Warning;} The @code{tab-overlap} style property has been deprecated
+      since version 3.20 and should not be used in newly written code. This
+      property is ignored. Use margins on tab nodes to achieve the same
+      effect. @br{}
+      Default value: 2
+    @end{property}
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"change-current-page\" signal}
+    @begin[notebook::change-current-page]{signal}
       @begin{pre}
 lambda (notebook offset)    :action
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[notebook]{The @class{gtk:notebook} widget emitting the signal.}
         @entry[offset]{The integer with the offset to step forward or backward
           for a negative integer.}
-      @end{table}
-    @subheading{The \"create-window\" signal}
+      @end{simple-table}
+    @end{signal}
+    @begin[notebook::create-window]{signal}
       @begin{pre}
 lambda (notebook page x y)    :run-last
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[notebook]{The @class{gtk:notebook} widget emitting the signal.}
         @entry[page]{The @class{gtk:widget} tab of @arg{notebook} that is being
           detached.}
@@ -445,90 +442,99 @@ lambda (notebook page x y)    :run-last
         @entry[y]{The integer with the y coordinate where the drop happens.}
         @entry[Returns]{The @class{gtk:notebook} widget that @arg{page} should
           be added to, or @code{nil}.}
-      @end{table}
+      @end{simple-table}
       The signal is emitted when a detachable tab is dropped on the root window.
       A handler for this signal can create a window containing a notebook where
       the tab will be attached. It is also responsible for moving/resizing the
       window and adding the necessary properties to the notebook, for example
-      the @code{group-name} property.
-    @subheading{The \"focus-tab\" signal}
+      the @slot[gtk:notebook]{group-name} property.
+    @end{signal}
+    @begin[notebook::focus-tab]{signal}
       @begin{pre}
 lambda (notebook tab)    :action
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[notebook]{The @class{gtk:notebook} widget emitting the signal.}
-        @entry[tab]{The value of the @symbol{gtk:notebook-tab} enumeration.}
-      @end{table}
-    @subheading{The \"move-focus-out\" signal}
+        @entry[tab]{The value of the @sym{gtk:notebook-tab} enumeration.}
+      @end{simple-table}
+    @end{signal}
+    @begin[notebook::move-focus-out]{signal}
       @begin{pre}
 lambda (notebook direction)    :action
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[notebook]{The @class{gtk:notebook} widget emitting the signal.}
-        @entry[direction]{The value of the @symbol{gtk:direction-type}
+        @entry[direction]{The value of the @sym{gtk:direction-type}
           enumeration.}
-      @end{table}
-    @subheading{The \"page-added\" signal}
+      @end{simple-table}
+    @end{signal}
+    @begin[notebook::page-added]{signal}
       @begin{pre}
 lambda (notebook child num)    :run-last
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[notebook]{The @class{gtk:notebook} widget emitting the signal.}
         @entry[child]{The @class{gtk:widget} child page affected.}
         @entry[num]{The unsigned integer with the child page number.}
-      @end{table}
+      @end{simple-table}
       The signal is emitted in the notebook right after a page is added to the
       notebook.
-    @subheading{The \"page-removed\" signal}
+    @end{signal}
+    @begin[notebook::page-removed]{signal}
       @begin{pre}
 lambda (notebook child num)   :run-last
       @end{pre}
-      The signal is emitted in the notebook right after a page is removed from
-      the notebook.
-      @begin[code]{table}
-        @entry[notebook]{The @class{gtk:notebook} widget emitting the signal.}
-        @entry[child]{The @class{gtk:widget} child page affected.}
-        @entry[num]{An unsigned integer with the child page number.}
-      @end{table}
-    @subheading{The \"page-reordered\" signal}
-      @begin{pre}
-lambda (notebook child num)    :run-last
-      @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[notebook]{The @class{gtk:notebook} widget emitting the signal.}
         @entry[child]{The @class{gtk:widget} child page affected.}
         @entry[num]{The unsigned integer with the child page number.}
-      @end{table}
+      @end{simple-table}
+      The signal is emitted in the notebook right after a page is removed from
+      the notebook.
+    @end{signal}
+    @begin[notebook::page-reordered]{signal}
+      @begin{pre}
+lambda (notebook child num)    :run-last
+      @end{pre}
+      @begin[code]{simple-table}
+        @entry[notebook]{The @class{gtk:notebook} widget emitting the signal.}
+        @entry[child]{The @class{gtk:widget} child page affected.}
+        @entry[num]{The unsigned integer with the child page number.}
+      @end{simple-table}
       The signal is emitted in the notebook right after a page has been
       reordered.
-    @subheading{The \"reorder-tab\" signal}
+    @end{signal}
+    @begin[notebook::reorder-tab]{signal}
       @begin{pre}
 lambda (notebook direction move-to-last)   :action
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[notebook]{The @class{gtk:notebook} widget emitting the signal.}
-        @entry[direction]{The value of the @symbol{gtk:direction-type}
+        @entry[direction]{The value of the @sym{gtk:direction-type}
           enumeration.}
         @entry[move-to-last]{The boolean.}
-      @end{table}
-    @subheading{The \"select-page\" signal}
+      @end{simple-table}
+    @end{signal}
+    @begin[notebook::select-page]{signal}
       @begin{pre}
 lambda (notebook move-focus)    :action
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[notebook]{The @class{gtk:notebook} widget emitting the signal.}
         @entry[move-focus]{The boolean.}
-      @end{table}
-    @subheading{The \"switch-page\" signal}
+      @end{simple-table}
+    @end{signal}
+    @begin[notebook::switch-page]{signal}
       @begin{pre}
 lambda (notebook page num)    :run-last
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[notebook]{The @class{gtk:notebook} widget emitting the signal.}
         @entry[page]{The @class{gtk:widget} current page.}
         @entry[num]{The unsigned integer with the index of the page.}
-      @end{table}
+      @end{simple-table}
       Emitted when the user or a function changes the current page.
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:notebook-new}
   @see-slot{gtk:notebook-enable-popup}
@@ -714,20 +720,20 @@ lambda (notebook page num)    :run-last
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "tab-pos" 'notebook) t)
- "The @code{tab-pos} property of type @symbol{gtk:position-type} (Read / Write)
+ "The @code{tab-pos} property of type @sym{gtk:position-type} (Read / Write)
   @br{}
   Which side of the notebook holds the tabs. @br{}
-  Default value: @code{:top}")
+  Default value: @val[gtk:position-type]{:top}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'notebook-tab-pos)
       "Accessor"
       (documentation 'notebook-tab-pos 'function)
- "@version{#2025-06-16}
+ "@version{#2025-06-27}
   @syntax{(gtk:notebook-tab-pos object) => pos}
   @syntax{(setf (gtk:notebook-tab-pos object) pos)}
   @argument[object]{a @class{gtk:notebook} widget}
-  @argument[pos]{a value of the @symbol{gtk:position-type} enumeration for the
+  @argument[pos]{a value of the @sym{gtk:position-type} enumeration for the
     edge to draw the tabs at}
   @begin{short}
     Accessor of the @slot[gtk:notebook]{tab-pos} slot of the
@@ -751,14 +757,14 @@ lambda (notebook page num)    :run-last
 (setf (liber:alias-for-function 'notebook-child-detachable)
       "Accessor"
       (documentation 'notebook-child-detachable 'function)
- "@version{#2023-03-21}
+ "@version{#2025-06-27}
   @syntax{(gtk:notebook-child-detachable container child) => detachable}
   @syntax{(setf (gtk:notebook-child-detachable container child) detachable)}
   @argument[container]{a @class{notebook} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[detachable]{a boolean whether the tab is detachable}
   @begin{short}
-    Accessor of the @code{detachable} child property of the
+    Accessor of the @prop[gtk:notebook]{detachable} child property of the
     @class{gtk:notebook} class.
   @end{short}
   Whether the tab is detachable.
@@ -774,15 +780,14 @@ lambda (notebook page num)    :run-last
 (setf (liber:alias-for-function 'notebook-child-menu-label)
       "Accessor"
       (documentation 'notebook-child-menu-label 'function)
- "@version{#2023-03-21}
-  @syntax{(gtk:notebook-child-menu-label container child) => menu-label}
-  @syntax{(setf (gtk:notebook-child-menu-label container child) menu-label)}
+ "@version{#2025-06-28}
+  @syntax{(gtk:notebook-child-menu-label container child) => label}
+  @syntax{(setf (gtk:notebook-child-menu-label container child) label)}
   @argument[container]{a @class{notebook} widget}
   @argument[child]{a @class{gtk:widget} child widget}
-  @argument[menu-label]{a string displayed in the menu entry of the child
-    widget}
+  @argument[label]{a string displayed in the menu entry of the child widget}
   @begin{short}
-    Accessor of the child property @code{menu-label} of the
+    Accessor of the @prop[gtk:notebook]{menu-label} child property of the
     @class{gtk:notebook} class.
   @end{short}
   The string displayed in the menu entry of the child widget.
@@ -797,7 +802,7 @@ lambda (notebook page num)    :run-last
 (setf (liber:alias-for-function 'notebook-child-position)
       "Accessor"
       (documentation 'notebook-child-position 'function)
- "@version{#2025-06-16}
+ "@version{#2025-06-27}
   @syntax{(gtk:notebook-child-position container child) => position}
   @syntax{(setf (gtk:notebook-child-position container child) position)}
   @argument[container]{a @class{notebook} widget}
@@ -805,7 +810,7 @@ lambda (notebook page num)    :run-last
   @argument[position]{an integer for the index of the child widget in the
     notebook}
   @begin{short}
-    Accessor of the @code{position} child property of the
+    Accessor of the @prop[gtk:notebook]{position} child property of the
     @class{gtk:notebook} class.
   @end{short}
   The index of the child widget in the notebook.
@@ -821,14 +826,14 @@ lambda (notebook page num)    :run-last
 (setf (liber:alias-for-function 'notebook-child-reorderable)
       "Accessor"
       (documentation 'notebook-child-reorderable 'function)
- "@version{#2023-03-21}
+ "@version{#2025-06-27}
   @syntax{(gtk:notebook-child-reorderable container child) => reorderable}
   @syntax{(setf (gtk:notebook-child-reorderable container child) reorderable)}
   @argument[container]{a @class{notebook} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[reorderable]{a boolean whether the tab is reorderable}
   @begin{short}
-    Accessor of the @code{reorderable} child property of the
+    Accessor of the @prop[gtk:notebook]{reorderable} child property of the
     @class{gtk:notebook} class.
   @end{short}
   Whether the tab is reorderable by user action.
@@ -843,14 +848,14 @@ lambda (notebook page num)    :run-last
 (setf (liber:alias-for-function 'notebook-child-tab-expand)
       "Accessor"
       (documentation 'notebook-child-tab-expand 'function)
- "@version{#2023-03-21}
-  @syntax{(gtk:notebook-child-tab-expand container child) => tab-expand}
-  @syntax{(setf (gtk:notebook-child-tab-expand container child) tab-expand)}
+ "@version{#2025-06-28}
+  @syntax{(gtk:notebook-child-tab-expand container child) => expand}
+  @syntax{(setf (gtk:notebook-child-tab-expand container child) expand)}
   @argument[container]{a @class{notebook} widget}
   @argument[child]{a @class{gtk:widget} child widget}
-  @argument[tab-expand]{a boolean whether to expand the tab of the child widget}
+  @argument[expand]{a boolean whether to expand the tab of the child widget}
   @begin{short}
-    Accessor of the @code{tab-expand} child property of the
+    Accessor of the @prop[gtk:notebook]{tab-expand} child property of the
     @class{gtk:notebook} class.
   @end{short}
   Whether to expand the tab of the child widget.
@@ -865,15 +870,15 @@ lambda (notebook page num)    :run-last
 (setf (liber:alias-for-function 'notebook-child-tab-fill)
       "Accessor"
       (documentation 'notebook-child-tab-fill 'function)
- "@version{#2023-03-21}
-  @syntax{(gtk:notebook-child-tab-fill container child) => tab-fill}
-  @syntax{(setf (gtk:notebook-child-tab-fill container child) tab-fill)}
+ "@version{#2025-06-27}
+  @syntax{(gtk:notebook-child-tab-fill container child) => fill}
+  @syntax{(setf (gtk:notebook-child-tab-fill container child) fill)}
   @argument[container]{a @class{notebook} widget}
   @argument[child]{a @class{gtk:widget} child widget}
-  @argument[tab-fill]{a boolean whether the tab of the child widget should fill
+  @argument[fill]{a boolean whether the tab of the child widget should fill
     the allocated area}
   @begin{short}
-    Accessor of the @code{tab-fill} child property of the
+    Accessor of the @prop[gtk:notebook]{tab-fill} child property of the
     @class{gtk:notebook} class.
   @end{short}
   Whether the tab of the child widget should fill the allocated area.
@@ -888,14 +893,14 @@ lambda (notebook page num)    :run-last
 (setf (liber:alias-for-function 'notebook-child-tab-label)
       "Accessor"
       (documentation 'notebook-child-tab-label 'function)
- "@version{#2023-03-21}
-  @syntax{(gtk:notebook-child-tab-label container child) => tab-label}
-  @syntax{(setf (gtk:notebook-child-tab-label container child) tab-label)}
+ "@version{#2025-06-27}
+  @syntax{(gtk:notebook-child-tab-label container child) => label}
+  @syntax{(setf (gtk:notebook-child-tab-label container child) label)}
   @argument[container]{a @class{notebook} widget}
   @argument[child]{a @class{gtk:widget} child widget}
-  @argument[tab-label]{a string displayed on the tab label of the child widget}
+  @argument[label]{a string displayed on the tab label of the child widget}
   @begin{short}
-    Accessor of the @code{tab-label} child property of the
+    Accessor of the @prop[gtk:notebook]{tab-label} child property of the
     @class{gtk:notebook} class.
   @end{short}
   The string displayed on the tab label of the child page.
@@ -1711,7 +1716,7 @@ lambda (notebook page num)    :run-last
   @fun{gtk:notebook-group-name} function, to allow automatic tabs interchange
   between them.
   @begin[Examples]{dictionary}
-    If you want a widget to interact with a notebook through DnD, i.e. accept
+    If you want a widget to interact with a notebook through DnD, that is accept
     dragged tabs from it, it must be set as a drop destination and accept the
     \"GTK_NOTEBOOK_TAB\" target. The notebook will fill the selection with a
     GtkWidget** pointing to the child widget that corresponds to the dropped
@@ -1761,10 +1766,10 @@ on_drop_zone_drag_data_received (GtkWidget        *widget,
 ;;; gtk_notebook_set_action_widget
 ;;; ----------------------------------------------------------------------------
 
-(defun (setf notebook-action-widget) (value notebook pack-type)
+(defun (setf notebook-action-widget) (value notebook packtype)
   (cffi:foreign-funcall "gtk_notebook_set_action_widget"
                         (g:object notebook) notebook
-                        pack-type pack-type
+                        pack-type packtype
                         (g:object widget) value
                         :void)
   value)
@@ -1772,11 +1777,11 @@ on_drop_zone_drag_data_received (GtkWidget        *widget,
 (cffi:defcfun ("gtk_notebook_get_action_widget" notebook-action-widget)
     (g:object widget)
  #+liber-documentation
- "@version{#2025-06-16}
+ "@version{#2025-06-27}
   @syntax{(gtk:notebook-action-widget notebook pack-type) => widget}
   @syntax{(setf (gtk:notebook-action-widget notebook pack-type) widget)}
   @argument[notebook]{a @class{gtk:notebook} widget}
-  @argument[pack-type]{a value of the @symbol{gtk:pack-type} enumeration for
+  @argument[packtype]{a value of the @sym{gtk:pack-type} enumeration for
     the action}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
@@ -1797,7 +1802,7 @@ on_drop_zone_drag_data_received (GtkWidget        *widget,
   @see-symbol{gtk:pack-type}
   @see-function{gtk:container-foreach}"
   (notebook (g:object notebook))
-  (pack-type pack-type))
+  (packtype pack-type))
 
 (export 'notebook-action-widget)
 

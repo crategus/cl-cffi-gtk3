@@ -125,7 +125,7 @@
 
 #+liber-documentation
 (setf (documentation 'paned 'type)
- "@version{2025-06-13}
+ "@version{2025-06-27}
   @begin{short}
     The @class{gtk:paned} widget has two panes, arranged either horizontally or
     vertically.
@@ -148,15 +148,16 @@
   value so that the gutter appears as a ridge. No separator is drawn if one of
   the children is missing.
 
-  Each child widget has two child properties that can be set, the @code{resize}
-  and @code{shrink} child properties. If the @code{resize} child property is
-  @em{true}, then when the @class{gtk:paned} widget is resized, that child
-  widget will expand or shrink along with the paned widget. If the @code{shrink}
-  property is @em{true}, then that child widget can be made smaller than its
-  requisition by the user. Setting the @code{shrink} child property to
-  @em{false} allows the application to set a minimum size. If the @code{resize}
+  Each child widget has two child properties that can be set, the
+  @prop[gtk:paned]{resize} and @prop[gtk:paned]{shrink} child properties. If the
+  @prop[gtk:paned]{resize} child property is @em{true}, then when the
+  @class{gtk:paned} widget is resized, that child widget will expand or shrink
+  along with the paned widget. If the @prop[gtk:paned]{shrink} property is
+  @em{true}, then that child widget can be made smaller than its requisition by
+  the user. Setting the @prop[gtk:paned]{shrink} child property to @em{false}
+  allows the application to set a minimum size. If the @prop[gtk:paned]{resize}
   child property is @em{false} for both children, then this is treated as if
-  the @code{resize} child property is @em{true} for both children.
+  the @prop[gtk:paned]{resize} child property is @em{true} for both children.
 
   The application can set the position of the slider as if it were set by the
   user, by calling the @fun{gtk:paned-position} function.
@@ -191,98 +192,100 @@ paned
     @end{pre}
   @end{dictionary}
   @begin[Child Property Details]{dictionary}
-    @begin[code]{table}
-      @begin[resize]{entry}
-        The @code{resize} child property of type @code{:boolean} (Read / Write)
-        @br{}
-        Determines whether the child widget expands and shrinks along with the
-        paned widget. @br{}
-        Default value: @em{true} @br{}
-      @end{entry}
-      @begin[shrink]{entry}
-        The @code{shrink} child property of type @code{:boolean} (Read / Write)
-        @br{}
-        Determines whether the child widget can be made smaller than its
-        requisition. @br{}
-        Default value: @em{true} @br{}
-      @end{entry}
-    @end{table}
+    @begin[progress-bar:resize]{property}
+      The @code{resize} child property of type @code{:boolean} (Read / Write)
+      @br{}
+      Determines whether the child widget expands and shrinks along with the
+      paned widget. @br{}
+      Default value: @em{true} @br{}
+    @end{property}
+    @begin[progress-bar:shrink]{property}
+      The @code{shrink} child property of type @code{:boolean} (Read / Write)
+      @br{}
+      Determines whether the child widget can be made smaller than its
+      requisition. @br{}
+      Default value: @em{true} @br{}
+    @end{property}
   @end{dictionary}
   @begin[Style Property Details]{dictionary}
-    @begin[code]{table}
-      @begin[handle-size]{entry}
-        The @code{handle-size} style property of type @code{:int} (Read) @br{}
-        The width of the handle. @br{}
-        Allowed values: >= 0 @br{}
-        Default value: 5
-      @end{entry}
-    @end{table}
+    @begin[paned:handle-size]{property}
+      The @code{handle-size} style property of type @code{:int} (Read) @br{}
+      The width of the handle. @br{}
+      Allowed values: >= 0 @br{}
+      Default value: 5
+    @end{property}
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"accept-position\" signal}
+    @begin[paned::accept-position]{signal}
       @begin{pre}
 lambda (widget)    :action
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[widget]{The @class{gtk:paned} widget that received the signal.}
-      @end{table}
+      @end{simple-table}
       The signal is a keybinding signal which gets emitted to accept the current
       position of the handle when moving it using key bindings. The default
       binding for this signal is the @kbd{Return} or @kbd{Space} key.
-    @subheading{The \"cancel-position\" signal}
+    @end{signal}
+    @begin[panded::cancel-position]{signal}
       @begin{pre}
 lambda (widget)    :action
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[widget]{The @class{gtk:paned} widget that received the signal.}
-      @end{table}
+      @end{simple-table}
       The signal is a keybinding signal which gets emitted to cancel moving the
       position of the handle using key bindings. The position of the handle will
       be reset to the value prior to moving it. The default binding for this
       signal is the @kbd{Escape} key.
-    @subheading{The \"cycle-child-focus\" signal}
+    @end{signal}
+    @begin[paned::cycle-child-focus]{signal}
       @begin{pre}
 lambda (widget reversed)    :action
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[widget]{The @class{gtk:paned} widget that received the signal.}
         @entry[reversed]{The boolean whether cycling backward or forward.}
-      @end{table}
+      @end{simple-table}
       The signal is a keybinding signal which gets emitted to cycle the focus
       between the children of the paned widget. The default binding is the
       @kbd{F6} key.
-    @subheading{The \"cycle-handle-focus\" signal}
+    @end{signal}
+    @begin[paned::cycle-handle-focus]{signal}
       @begin{pre}
 lambda (widget reversed)    :action
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[widget]{The @class{gtk:paned} widget that received the signal.}
         @entry[reversed]{The boolean whether cycling backward or forward.}
-      @end{table}
+      @end{simple-table}
       The signal is a keybinding signal which gets emitted to cycle whether the
       paned widget should grab focus to allow the user to change position of the
       handle by using key bindings. The default binding for this signal is the
       @kbd{F8} key.
-    @subheading{The \"move-handle\" signal}
+    @end{signal}
+    @begin[paned::move-handle]{signal}
       @begin{pre}
 lambda (widget scrolltype)    :action
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[widget]{The @class{gtk:paned} widget that received the signal.}
-        @entry[scrolltype]{The value of the @symbol{gtk:scroll-type} enumeration.}
-      @end{table}
+        @entry[scrolltype]{The value of the @sym{gtk:scroll-type} enumeration.}
+      @end{simple-table}
       The signal is a keybinding signal which gets emitted to move the handle
       when the user is using key bindings to move it.
-    @subheading{The \"toggle-handle-focus\" signal}
+    @end{signal}
+    @begin[paned::toggle-handle-focus]{signal}
       @begin{pre}
 lambda (widget)    :action
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[widget]{The @class{gtk:paned} widget that received the signal.}
-      @end{table}
+      @end{simple-table}
       The signal is a keybinding signal which gets emitted to accept the current
       position of the handle and then move focus to the next widget in the focus
       chain. The default binding is the @kbd{Tab} key.
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:paned-new}
   @see-slot{gtk:paned-max-position}
@@ -391,7 +394,7 @@ lambda (widget)    :action
 (setf (documentation (liber:slot-documentation "position-set" 'paned) t)
  "The @code{position-set} property of type @code{:boolean}
   (Read / Write) @br{}
-  @em{True} if the @code{position} property should be used. @br{}
+  @em{True} if the @slot[gtk:paned]{position} property should be used. @br{}
   Default value: @em{false}")
 
 #+liber-documentation
@@ -421,8 +424,8 @@ lambda (widget)    :action
 (setf (documentation (liber:slot-documentation "wide-handle" 'paned) t)
  "The @code{wide-handled} property of type @code{:boolean} (Read / Write) @br{}
   Setting this property to @em{true} indicates that the paned widget needs to
-  provide stronger visual separation, e.g. because it separates between two
-  notebooks, whose tab rows would otherwise merge visually. @br{}
+  provide stronger visual separation, for example because it separates between
+  two notebooks, whose tab rows would otherwise merge visually. @br{}
   Default value: @em{false}")
 
 #+liber-documentation
@@ -457,7 +460,7 @@ lambda (widget)    :action
 (setf (liber:alias-for-function 'paned-child-resize)
       "Accessor"
       (documentation 'paned-child-resize 'function)
- "@version{2023-03-05}
+ "@version{2027-06-27}
   @syntax{(gtk:paned-child-resize container child) => resize)}
   @syntax{(setf (gtk:paned-child-resize container child) resize)}
   @argument[container]{a @class{gtk:paned} widget}
@@ -465,8 +468,8 @@ lambda (widget)    :action
   @argument[resize]{a boolean whether the child widget expands and shrinks
     along with the paned widget}
   @begin{short}
-    Accessor of the @code{resize} child property of the @class{gtk:paned}
-    class.
+    Accessor of the @prop[gtk:paned]{resize} child property of the
+    @class{gtk:paned} class.
   @end{short}
   The @fun{gtk:paned-child-resize} function gets whether the child widget
   expands and shrinks along with the paned widget. The
@@ -484,7 +487,7 @@ lambda (widget)    :action
 (setf (liber:alias-for-function 'paned-child-shrink)
       "Accessor"
       (documentation 'paned-child-shrink 'function)
- "@version{2023-03-05}
+ "@version{2027-06-27}
   @syntax{(gtk:paned-child-shrink container child) => shrink)}
   @syntax{(setf (gtk:paned-child-shrink container child) shrink)}
   @argument[container]{a @class{gtk:paned} widget}
@@ -492,8 +495,8 @@ lambda (widget)    :action
   @argument[shrink]{a boolean whether the child widget can be made smaller than
     its requisition}
   @begin{short}
-    Accessor of the @code{shrink} child property of the @class{gtk:paned}
-    class.
+    Accessor of the @prop[gtk:paned]{shrink} child property of the
+    @class{gtk:paned} class.
   @end{short}
   The @fun{gtk:paned-child-shrink} function determines whether the child widget
   can be made smaller than its requisition. The
@@ -510,8 +513,8 @@ lambda (widget)    :action
 
 (defun paned-new (orientation)
  #+liber-documentation
- "@version{2024-ß4-10}
-  @argument[orientation]{a @symbol{gtk:orientation} value for the orientation
+ "@version{2025-06-27}
+  @argument[orientation]{a @sym{gtk:orientation} value for the orientation
     of the paned widget}
   @return{The new @class{gtk:paned} widget.}
   @short{Creates a new paned widget.}

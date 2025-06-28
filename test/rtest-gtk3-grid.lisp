@@ -303,10 +303,10 @@
     (is (typep (setf grid (make-instance 'gtk:grid)) 'gtk:grid))
     (is (typep (setf button (make-instance 'gtk:button)) 'gtk:button))
     (is-false (gtk:grid-attach grid button 0 0 1 1))
-    (is (eq :right (gtk:grid-row-baseline-position grid 0)))
-    (is (eq :left (setf (gtk:grid-row-baseline-position grid 0) :left)))
-    (is (eq :left (gtk:grid-row-baseline-position grid 0)))
+    (is (eq :center (gtk:grid-row-baseline-position grid 0)))
+    (is (eq :top (setf (gtk:grid-row-baseline-position grid 0) :top)))
+    (is (eq :top (gtk:grid-row-baseline-position grid 0)))
     ;; Remove references
     (is-false (gtk:grid-remove-row grid 0))))
 
-;;; 2025-06-06
+;;; 2025-06-28

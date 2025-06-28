@@ -103,7 +103,7 @@
     @end{item}
   @end{itemize}
   In addition, the fixed widget cannot properly be mirrored in right-to-left
-  languages such as Hebrew and Arabic. i.e. normally GTK will flip the
+  languages such as Hebrew and Arabic. That is, normally GTK will flip the
   interface to put labels to the right of the thing they label, but it cannot
   do that with the fixed widget. So your application will not be usable in
   right-to-left languages.
@@ -120,18 +120,16 @@
   fixed positioning of child widgets and additionally adds custom drawing and
   scrollability.
   @begin[Child Property Details]{dictionary}
-    @begin[code]{table}
-      @begin[x]{entry}
-        The @code{x} child property of type @code{:int} (Read / Write) @br{}
-        The x position of the child widget. @br{}
-        Default value: 0
-      @end{entry}
-      @begin[y]{entry}
-        The @code{y} child property of type @code{:int} (Read / Write) @br{}
-        The y position of the child widget. @br{}
-        Default value: 0
-      @end{entry}
-    @end{table}
+    @begin[fixed:x]{property}
+      The @code{x} child property of type @code{:int} (Read / Write) @br{}
+      The x position of the child widget. @br{}
+      Default value: 0
+    @end{property}
+    @begin[fixed:y]{property}
+      The @code{y} child property of type @code{:int} (Read / Write) @br{}
+      The y position of the child widget. @br{}
+      Default value: 0
+    @end{property}
   @end{dictionary}
   @see-constructor{gtk:fixed-new}
   @see-function{gtk:fixed-child-x}
@@ -150,14 +148,15 @@
 (setf (liber:alias-for-function 'fixed-child-x)
       "Accessor"
       (documentation 'fixed-child-x 'function)
- "@version{2025-06-16}
+ "@version{2025-06-27}
   @syntax{(gtk:fixed-child-x container child) => x}
   @syntax{(setf (gtk:fixed-child-x container child) x)}
   @argument[container]{a @class{gtk:fixed} widget}
   @argument[child]{a @class{gtk:widget} object}
   @argument[x]{an integer for the x position of the child}
   @begin{short}
-    Accessor of the @code{x} child property  of the @class{gtk:fixed} class.
+    Accessor of the @prop[gtk:fixed]{x} child property of the @class{gtk:fixed}
+    class.
   @end{short}
   The x position of the child widget in the fixed widget.
   @see-class{gtk:fixed}
@@ -172,14 +171,15 @@
 (setf (liber:alias-for-function 'fixed-child-y)
       "Accessor"
       (documentation 'fixed-child-y 'function)
- "@version{2025-06-16}
+ "@version{2025-06-27}
   @syntax{(gtk:fixed-child-y container child) => y}
   @syntax{(setf (gtk:fixed-child-y container child) y)}
   @argument[container]{a @class{gtk:fixed} widget}
   @argument[child]{a @class{gtk:widget} object}
   @argument[y]{an integer for the y position of the child}
   @begin{short}
-    Accessor of the @code{y} child property of the @class{gtk:fixed} class.
+    Accessor of the @prop[gtk:fixed]{y} child property of the @class{gtk:fixed}
+    class.
   @end{short}
   The y position of the child widget in the fixed widget.
   @see-class{gtk:fixed}
