@@ -3,7 +3,7 @@
 ;;;
 ;;; The documentation in this file is taken from the GTK 3 Reference Manual
 ;;; version 3.24 and modified to document the Lisp binding to the GTK library,
-;;; see <http://www.gtk.org>. The API documentation of the Lisp binding is
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
 ;;; Copyright (C) 2012 - 2025 Dieter Kaiser
@@ -112,7 +112,7 @@
 
 #+liber-documentation
 (setf (documentation 'info-bar 'type)
- "@version{#2025-06-17}
+ "@version{#2025-06-28}
   @begin{short}
     The @class{gtk:info-bar} widget can be used to show messages to the user
     without showing a dialog.
@@ -182,74 +182,74 @@
     type.
   @end{dictionary}
   @begin[Style Property Details]{dictionary}
-    @begin[code]{table}
-      @begin[action-area-border]{entry}
-        The @code{action-area-border} style property of type @code{:int} (Read)
-        @br{}
-        The width of the border around the action area of the info bar. @br{}
-        @em{Warning:} The @code{action-area-border} style property has been
-        deprecated since version 3.6 and should not be used in newly written
-        code. Use the @fun{gtk:container-border-width} function. @br{}
-        Allowed values: >= 0 @br{}
-        Default value: 5
-      @end{entry}
-      @begin[button-spacing]{entry}
-        The @code{button-spacing} style property of type @code{:int} (Read)@br{}
-        The spacing between buttons in the action area of the info bar. @br{}
-        @em{Warning:} The @code{button-spacing} style property has been
-        deprecated since version 3.6 and should not be used in newly written
-        code. Use the @fun{gtk:box-spacing} function. @br{}
-        Allowed values: >= 0 @br{}
-        Default value: 6
-      @end{entry}
-      @begin[content-area-border]{entry}
-        The @code{content-area-border} style property of type @code{:int} (Read)
-        @br{}
-        The width of the border around the content content area of the info bar.
-        @br{}
-        @em{Warning:} The @code{content-area-border} style property has been
-        deprecated since version 3.6 and should not be used in newly written
-        code. Use the @fun{gtk:container-border-width} function. @br{}
-        Allowed values: >= 0 @br{}
-        Default value: 8
-      @end{entry}
-      @begin[content-area-spacing]{entry}
-        The @code{content-area-spacing} style property of type @code{:int}
-        (Read) @br{}
-        The default spacing used between elements of the content area of the
-        info bar. @br{}
-        @em{Warning:} The @code{content-area-spacing} style property has been
-        deprecated since version 3.6 and should not be used in newly written
-        code. Use the @fun{gtk:box-spacing} function. @br{}
-        Allowed values: >= 0 @br{}
-        Default value: 16
-      @end{entry}
-    @end{table}
+    @begin[info-bar:action-area-border]{property}
+      The @code{action-area-border} style property of type @code{:int} (Read)
+      @br{}
+      The width of the border around the action area of the info bar. @br{}
+      @em{Warning:} The @code{action-area-border} style property has been
+      deprecated since version 3.6 and should not be used in newly written
+      code. Use the @fun{gtk:container-border-width} function. @br{}
+      Allowed values: >= 0 @br{}
+      Default value: 5
+    @end{property}
+    @begin[info-bar:button-spacing]{property}
+      The @code{button-spacing} style property of type @code{:int} (Read)@br{}
+      The spacing between buttons in the action area of the info bar. @br{}
+      @em{Warning:} The @code{button-spacing} style property has been
+      deprecated since version 3.6 and should not be used in newly written
+      code. Use the @fun{gtk:box-spacing} function. @br{}
+      Allowed values: >= 0 @br{}
+      Default value: 6
+    @end{property}
+    @begin[info-bar:content-area-border]{property}
+      The @code{content-area-border} style property of type @code{:int} (Read)
+      @br{}
+      The width of the border around the content content area of the info bar.
+      @br{}
+      @em{Warning:} The @code{content-area-border} style property has been
+      deprecated since version 3.6 and should not be used in newly written
+      code. Use the @fun{gtk:container-border-width} function. @br{}
+      Allowed values: >= 0 @br{}
+      Default value: 8
+    @end{property}
+    @begin[info-bar:content-area-spacing]{property}
+      The @code{content-area-spacing} style property of type @code{:int}
+      (Read) @br{}
+      The default spacing used between elements of the content area of the
+      info bar. @br{}
+      @em{Warning:} The @code{content-area-spacing} style property has been
+      deprecated since version 3.6 and should not be used in newly written
+      code. Use the @fun{gtk:box-spacing} function. @br{}
+      Allowed values: >= 0 @br{}
+      Default value: 16
+    @end{property}
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"close\" signal}
+    @begin[info-bar::close]{signal}
       @begin{pre}
 lambda (infobar)    :action
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[infobar]{The @class{gtk:info-bar} widget on which the signal is
           emitted.}
-      @end{table}
+      @end{simple-table}
       The signal is a keybinding signal which gets emitted when the user uses a
       keybinding to dismiss the info bar. The default binding for this signal
       is the @kbd{Escape} key.
-    @subheading{The \"response\" signal}
+    @end{signal}
+    @begin[info-bar::response]{signal}
       @begin{pre}
 lambda (infobar response)    :run-last
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[infobar]{The @class{gtk:info-bar} widget on which the signal is
           emitted.}
         @entry[response]{The integer with the response ID.}
-      @end{table}
+      @end{simple-table}
       Emitted when an action widget is clicked or the application programmer
       calls the @fun{gtk:dialog-response} function. The @arg{response} argument
       depends on which action widget was clicked.
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:info-bar-new}
   @see-constructor{gtk:info-bar-new-with-buttons}
@@ -267,21 +267,21 @@ lambda (infobar response)    :run-last
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "message-type" 'info-bar) t)
- "The @code{message-type} property of type @symbol{gtk:message-type}
+ "The @code{message-type} property of type @sym{gtk:message-type}
   (Read / Write / Construct) @br{}
   The type of the message. The type may be used to determine the appearance of
   the info bar. @br{}
-  Default value: @code{:info}")
+  Default value: @val[gtk:message-type]{:info}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'info-bar-message-type)
       "Accessor"
       (documentation 'info-bar-message-type 'function)
- "@version{#2023-03-20}
+ "@version{#2025-06-28}
   @syntax{(gtk:info-bar-message-type object) => message-type}
   @syntax{(setf (gtk:info-bar-message-type object) message-type)}
   @argument[object]{a @class{gtk:info-bar} widget}
-  @argument[message-type]{a value of the @symbol{gtk:message-type} enumeration}
+  @argument[message-type]{a value of the @sym{gtk:message-type} enumeration}
   @begin{short}
     Accessor of the @slot[gtk:info-bar]{message-type} slot of the
     @class{gtk:info-bar} class.
@@ -338,7 +338,7 @@ lambda (infobar response)    :run-last
 (setf (liber:alias-for-function 'info-bar-show-close-button)
       "Accessor"
       (documentation 'info-bar-show-close-button 'function)
- "@version{#2023-03-20}
+ "@version{#2025-06-28}
   @syntax{(gtk:info-bar-show-close-button object) => setting}
   @syntax{(setf (gtk:info-bar-show-close-button object) setting)}
   @argument[object]{a @class{gtk:info-bar} widget}
@@ -349,7 +349,7 @@ lambda (infobar response)    :run-last
   @end{short}
   The @fun{gtk:info-bar-show-close-button} function returns whether the widget
   will display a standard Close button. If @em{true}, a standard Close button
-  is shown. When clicked it emits the @code{:close} response.
+  is shown. When clicked it emits the @val[gtk:response-type]{:close} response.
   @see-class{gtk:info-bar}")
 
 ;;; ----------------------------------------------------------------------------
@@ -374,16 +374,18 @@ lambda (infobar response)    :run-last
 
 (defun info-bar-new-with-buttons (&rest args)
  #+liber-documentation
- "@version{#2025-06-17}
+ "@version{#2025-06-28}
   @argument[args]{first a string for the text and second an integer for the
     response ID for each button, then more pairs for each button}
   @return{The new @class{gtk:info-bar} widget.}
-  @short{Creates a new info bar with buttons.}
+  @begin{short}
+    Creates a new info bar with buttons.
+  @end{short}
   Button text/response ID pairs should be listed. Button text can be some
   arbitrary text. A response ID can be any positive number, or one of the values
-  in the @symbol{gtk:response-type} enumeration. If the user clicks one of these
-  dialog buttons, the info bar will emit the @code{\"response\"} signal with the
-  corresponding response ID.
+  in the @sym{gtk:response-type} enumeration. If the user clicks one of these
+  dialog buttons, the info bar will emit the @sig[gtk:info-bar]{response} signal
+  with the corresponding response ID.
   @see-class{gtk:info-bar}
   @see-symbol{gtk:response-type}"
   (let ((infobar (make-instance 'info-bar)))
@@ -399,14 +401,14 @@ lambda (infobar response)    :run-last
 (cffi:defcfun ("gtk_info_bar_add_action_widget" info-bar-add-action-widget)
     :void
  #+liber-documentation
- "@version{#2025-06-17}
+ "@version{#2025-06-28}
   @argument[infobar]{a @class{gtk:info-bar} widget}
   @argument[child]{an activatable @class{gtk:widget} widget}
   @argument[response]{an integer for the response ID for @arg{child}}
   @begin{short}
     Add an activatable widget to the action area of an info bar, connecting a
-    signal handler that will emit the @code{\"response\"} signal on the message
-    area when the widget is activated.
+    signal handler that will emit the @sig[gtk:info-bar]{response} signal on
+    the message area when the widget is activated.
   @end{short}
   The widget is appended to the end of the message areas action area.
   @see-class{gtk:info-bar}"
@@ -422,14 +424,15 @@ lambda (infobar response)    :run-last
 
 (cffi:defcfun ("gtk_info_bar_add_button" info-bar-add-button) (g:object widget)
  #+liber-documentation
- "@version{#2025-06-17}
+ "@version{#2025-06-28}
   @argument[infobar]{a @class{gtk:info-bar} widget}
   @argument[text]{a string for the text of the button}
   @argument[response]{an integer for the response ID for the button}
   @return{The @class{gtk:button} widget that was added.}
   @begin{short}
     Adds a button with the given text, and sets things up so that clicking the
-    button will emit the @code{\"response\"} signal with the given response ID.
+    button will emit the @sig[gtk:info-bar]{response} signal with the given
+    response ID.
   @end{short}
   The button is appended to the end of the action area of the info bar. The
   button widget is returned, but usually you do not need it.
@@ -518,10 +521,11 @@ lambda (infobar response)    :run-last
 
 (cffi:defcfun ("gtk_info_bar_response" info-bar-response) :void
  #+liber-documentation
- "@version{#2025-06-17}
+ "@version{#2025-06-28}
   @argument[infobar]{a @class{gtk:info-bar} widget}
   @argument[response]{an integer for a response ID}
-  @short{Emits the @code{\"response\"} signal with the given response ID.}
+  @short{Emits the @sig[gtk:info-bar]{response} signal with the given
+    response ID.}
   @see-class{gtk:info-bar}"
   (infobar (g:object info-bar))
   (response :int))

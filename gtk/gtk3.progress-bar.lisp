@@ -120,7 +120,7 @@
 
 #+liber-documentation
 (setf (documentation 'progress-bar 'type)
- "@version{2025-06-17}
+ "@version{2025-06-28}
   @begin{short}
     The @class{gtk:progress-bar} widget is typically used to display the
     progress of a long running operation.
@@ -167,71 +167,69 @@ progressbar[.osd]
     like the one Epiphany has for page loading progress.
   @end{dictionary}
   @begin[Style Property Details]{dictionary}
-    @begin[code]{table}
-      @begin[min-horizontal-bar-height]{entry}
-        The @code{min-horizontal-bar-height} style property of type @code{:int}
-        (Read / Write) @br{}
-        The minimum horizontal height of the progress bar. @br{}
-        @em{Warning:} The @code{min-horizontal-bar-height} style property has
-        been deprecated since version 3.20 and should not be used in
-        newly written code. Use the standard @code{min-height} CSS property.
-        @br{}
-        Allowed values: >= 1 @br{}
-        Default value: 6
-      @end{entry}
-      @begin[min-horizontal-bar-width]{entry}
-        The @code{min-horizontal-bar-width} style property of type @code{:int}
-        (Read / Write) @br{}
-        The minimum horizontal width of the progress bar. @br{}
-        @em{Warning:} The @code{min-horizontal-bar-width} style property has
-        been deprecated since version 3.20 and should not be used in
-        newly written code. Use the standard @code{min-width} CSS property.@br{}
-        Allowed values: >= 1 @br{}
-        Default value: 150
-      @end{entry}
-      @begin[min-vertical-bar-height]{entry}
-        The @code{min-vertical-bar-height} style property of type @code{:int}
-        (Read / Write) @br{}
-        The minimum vertical height of the progress bar. @br{}
-        @em{Warning:} The @code{min-vertical-bar-height} style property has been
-        deprecated since version 3.20 and should not be used in newly written
-        code. Use the standard @code{min-height} CSS property. @br{}
-        Allowed values: >= 1 @br{}
-        Default value: 80
-      @end{entry}
-      @begin[min-vertical-bar-width]{entry}
-        The @code{min-vertical-bar-width} style property of type @code{:int}
-        (Read / Write) @br{}
-        The minimum vertical width of the progress bar. @br{}
-        @em{Warning:} The @code{min-vertical-bar-width} style property has been
-        deprecated since version 3.20 and should not be used in newly written
-        code. Use the standard @code{min-width} CSS property. @br{}
-        Allowed values: >= 1 @br{}
-        Default value: 7
-      @end{entry}
-      @begin[xspacing]{entry}
-        The @code{xspacing} style property of type @code{:int} (Read / Write)
-        @br{}
-        The extra spacing applied to the width of a progress bar. @br{}
-        @em{Warning:} The @code{xspacing} style property has been deprecated
-        since version 3.20 and should not be used in newly written code. Use
-        the standard CSS padding and margins. The value of this style property
-        is ignored. @br{}
-        Allowed values: >= 0 @br{}
-        Default value: 2
-      @end{entry}
-      @begin[yspacing]{entry}
-        The @code{yspacing} style property of type @code{:int} (Read / Write)
-        @br{}
-        The extra spacing applied to the height of a progress bar. @br{}
-        @em{Warning:} The @code{yspacing} style property has been deprecated
-        since version 3.20 and should not be used in newly written code. Use
-        the standard CSS padding and margins. The value of this style property
-        is ignored. @br{}
-        Allowed values: >= 0 @br{}
-        Default value: 2
-      @end{entry}
-    @end{table}
+    @begin[progress-bar:min-horizontal-bar-height]{property}
+      The @code{min-horizontal-bar-height} style property of type @code{:int}
+      (Read / Write) @br{}
+      The minimum horizontal height of the progress bar. @br{}
+      @em{Warning:} The @code{min-horizontal-bar-height} style property has
+      been deprecated since version 3.20 and should not be used in
+      newly written code. Use the standard @code{min-height} CSS property.
+      @br{}
+      Allowed values: >= 1 @br{}
+      Default value: 6
+    @end{property}
+    @begin[progress-bar:min-horizontal-bar-width]{property}
+      The @code{min-horizontal-bar-width} style property of type @code{:int}
+      (Read / Write) @br{}
+      The minimum horizontal width of the progress bar. @br{}
+      @em{Warning:} The @code{min-horizontal-bar-width} style property has
+      been deprecated since version 3.20 and should not be used in
+      newly written code. Use the standard @code{min-width} CSS property.@br{}
+      Allowed values: >= 1 @br{}
+      Default value: 150
+    @end{property}
+    @begin[progress-bar:min-vertical-bar-height]{property}
+      The @code{min-vertical-bar-height} style property of type @code{:int}
+      (Read / Write) @br{}
+      The minimum vertical height of the progress bar. @br{}
+      @em{Warning:} The @code{min-vertical-bar-height} style property has been
+      deprecated since version 3.20 and should not be used in newly written
+      code. Use the standard @code{min-height} CSS property. @br{}
+      Allowed values: >= 1 @br{}
+      Default value: 80
+    @end{property}
+    @begin[progress-bar:min-vertical-bar-width]{property}
+      The @code{min-vertical-bar-width} style property of type @code{:int}
+      (Read / Write) @br{}
+      The minimum vertical width of the progress bar. @br{}
+      @em{Warning:} The @code{min-vertical-bar-width} style property has been
+      deprecated since version 3.20 and should not be used in newly written
+      code. Use the standard @code{min-width} CSS property. @br{}
+      Allowed values: >= 1 @br{}
+      Default value: 7
+    @end{property}
+    @begin[progress-bar:xspacing]{property}
+      The @code{xspacing} style property of type @code{:int} (Read / Write)
+      @br{}
+      The extra spacing applied to the width of a progress bar. @br{}
+      @em{Warning:} The @code{xspacing} style property has been deprecated
+      since version 3.20 and should not be used in newly written code. Use
+      the standard CSS padding and margins. The value of this style property
+      is ignored. @br{}
+      Allowed values: >= 0 @br{}
+      Default value: 2
+    @end{property}
+    @begin[progress-bar:yspacing]{property}
+      The @code{yspacing} style property of type @code{:int} (Read / Write)
+      @br{}
+      The extra spacing applied to the height of a progress bar. @br{}
+      @em{Warning:} The @code{yspacing} style property has been deprecated
+      since version 3.20 and should not be used in newly written code. Use
+      the standard CSS padding and margins. The value of this style property
+      is ignored. @br{}
+      Allowed values: >= 0 @br{}
+      Default value: 2
+    @end{property}
   @end{dictionary}
   @see-constructor{gtk:progress-bar-new}
   @see-slot{gtk:progress-bar-ellipsize}
@@ -249,26 +247,26 @@ progressbar[.osd]
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "ellipsize" 'progress-bar) t)
- "The @code{ellipsize} property of type @symbol{pango:ellipsize-mode}
+ "The @code{ellipsize} property of type @sym{pango:ellipsize-mode}
   (Read / Write) @br{}
   The preferred place to ellipsize the string, if the progress bar does not
   have enough room to display the entire string, specified as a value of the
-  @symbol{pango:ellipsize-mode} enumeration. Note that setting this property to
-  a value other than @code{:none} has the side-effect that the progress bar
-  requests only enough space to display the ellipsis (\"...\"). Another means
-  to set the width of the progress bar is the @fun{gtk:widget-size-request}
-  function. @br{}
-  Default value: @code{:none}")
+  @sym{pango:ellipsize-mode} enumeration. Note that setting this property to
+  a value other than @val[pango:ellipsize-mode]{:none} has the side-effect that
+  the progress bar requests only enough space to display the ellipsis (\"...\").
+  Another means to set the width of the progress bar is the
+  @fun{gtk:widget-size-request} function. @br{}
+  Default value: @val[pango:ellipsize-mode]{:none}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'progress-bar-ellipsize)
       "Accessor"
       (documentation 'progress-bar-ellipsize 'function)
- "@version{2024-01-01}
+ "@version{2025-06-28}
   @syntax{(gtk:progress-bar-ellipsize object) => mode}
   @syntax{(setf (gtk:progress-bar-ellipsize object) mode)}
   @argument[object]{a @class{gtk:progress-bar} widget}
-  @argument[mode]{a value of the @symbol{pango:ellipsize-mode} enumeration}
+  @argument[mode]{a value of the @sym{pango:ellipsize-mode} enumeration}
   @begin{short}
     Accessor of the @slot[gtk:progress-bar]{ellipsize} slot of the
     @class{gtk:progress-bar} class.
@@ -371,11 +369,13 @@ progressbar[.osd]
 (setf (documentation (liber:slot-documentation "show-text" 'progress-bar) t)
  "The @code{show-text} property of type @code{:boolean} (Read / Write) @br{}
   Sets whether the progress bar will show text superimposed over the bar. The
-  shown text is either the value of the @code{text} property or, if that is
-  @code{nil}, the @code{fraction} value, as a percentage. To make a progress
-  bar that is styled and sized suitably for containing text, even if the actual
-  text is blank, set the @code{show-text} property to @em{true} and the
-  @code{text} property to the empty string, not @code{nil}. @br{}
+  shown text is either the value of the @slot[gtk:progress-bar]{text} property
+  or, if that is @code{nil}, the @slot[gtk:progress-bar]{fraction} value, as a
+  percentage. To make a progress bar that is styled and sized suitably for
+  containing text, even if the actual text is blank, set the
+  @slot[gtk:progress-bar]{show-text} property to @em{true} and the
+  @slot[gtk:progress-bar]{text} property to the empty string, not @code{nil}.
+  @br{}
   Default value: @em{false}")
 
 #+liber-documentation

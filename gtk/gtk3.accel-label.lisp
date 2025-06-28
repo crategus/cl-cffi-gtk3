@@ -85,11 +85,11 @@
 
 #+liber-documentation
 (setf (documentation 'accel-label 'type)
- "@version{#2023-03-15}
+ "@version{#2025-06-28}
   @begin{short}
     The @class{gtk:accel-label} widget is a subclass of the @class{gtk:label}
     class that also displays an accelerator key on the right of the label text,
-    e.g. \"Ctrl+Q\".
+    for example @kbd{Ctrl+Q}.
   @end{short}
   It is commonly used in menus to show the keyboard short-cuts for commands.
 
@@ -100,11 +100,12 @@
   widget is set by calling the @fun{gtk:accel-label-accel-widget} function.
 
   For example, a @class{gtk:menu-item} widget may have an accelerator added to
-  emit the @code{\"activate\"} signal when the @kbd{Ctrl+Q} key combination is
-  pressed. A @class{gtk:accel-label} widget is created and added to the
-  @class{gtk:menu-item} widget, and the @fun{gtk:accel-label-accel-widget}
-  function is called with the @class{gtk:menu-item} widget as the second
-  argument. The accel label will now display \"Ctrl+Q\" after its label.
+  emit the @sig[gtk:menu-item]{activate} signal when the @kbd{Ctrl+Q} key
+  combination is pressed. A @class{gtk:accel-label} widget is created and added
+  to the @class{gtk:menu-item} widget, and the
+  @fun{gtk:accel-label-accel-widget} function is called with the
+  @class{gtk:menu-item} widget as the second argument. The accel label will now
+  display @code{\"Ctrl+Q\"} after its label.
 
   Note that creating a @class{gtk:menu-item} widget with the
   @fun{gtk:menu-item-new-with-label} function, or one of the similar functions
@@ -113,10 +114,10 @@
   @class{gtk:menu-item} widget and calls the @fun{gtk:accel-label-accel-widget}
   function to set it up for you.
 
-  A accel label will only display accelerators which have the @code{:visible}
-  value of the @symbol{gtk:accel-flags} flags set. A accel label can display
-  multiple accelerators and even signal names, though it is almost always used
-  to display just one accelerator key.
+  A accel label will only display accelerators which have the
+  @val[gtk:accel-flags]{:visible} value of the @sym{gtk:accel-flags} flags set.
+  A accel label can display multiple accelerators and even signal names, though
+  it is almost always used to display just one accelerator key.
   @begin[Examples]{dictionary}
     Creating a menu item with an accelerator key.
     @begin{pre}
@@ -153,8 +154,7 @@
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "accel-closure" 'accel-label) t)
- "The @code{accel-closure} property of type @symbol{g:closure} (Read / Write)
-  @br{}
+ "The @code{accel-closure} property of type @sym{g:closure} (Read / Write) @br{}
   The closure to be monitored for accelerator changes.")
 
 #+liber-documentation
@@ -165,7 +165,7 @@
   @syntax{(gtk:accel-label-accel-closure object) => closure}
   @syntax{(setf (gtk:accel-label-accel-closure object) closure)}
   @argument[label]{a @class{gtk:accel-label} widget}
-  @argument[closure]{a @symbol{g:closure} instance to monitor for accelerator
+  @argument[closure]{a @sym{g:closure} instance to monitor for accelerator
     changes}
   @begin{short}
     Accessor of the @slot[gtk:accel-label]{accel-closure} slot of the
@@ -251,10 +251,10 @@
 
 (cffi:defcfun ("gtk_accel_label_set_accel" accel-label-set-accel) :void
  #+liber-documentation
- "@version{#2025-06-17}
+ "@version{#2025-06-28}
   @argument[label]{a @class{gtk:accel-label} widget}
   @argument[key]{an unsigned integer for a keyval, or 0}
-  @argument[mods]{a @symbol{gdk:modifier-type} modifier mask for the accel}
+  @argument[mods]{a @sym{gdk:modifier-type} modifier mask for the accel}
   @begin{short}
     Manually sets a keyval and modifier mask as the accelerator rendered by
     @arg{label}.
@@ -281,11 +281,11 @@
 
 (defun accel-label-get-accel (label)
  #+liber-documentation
- "@version{#2025-06-17}
+ "@version{#2025-06-28}
   @syntax{(gtk:accel-label-accel label) => key, mods}
   @argument[label]{a @class{gtk:accel-label} widget}
   @argument[key]{an unsigned integer for a keyval}
-  @argument[mods]{a @symbol{gdk:modifier-type} modifier mask}
+  @argument[mods]{a @sym{gdk:modifier-type} modifier mask}
   @begin{short}
     Gets the keyval and modifier mask set with the
     @fun{gtk:accel-label-set-accel} function.

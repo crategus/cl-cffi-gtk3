@@ -134,7 +134,7 @@
 (setf (liber:alias-for-symbol 'level-bar-mode)
       "GEnum"
       (liber:symbol-documentation 'level-bar-mode)
- "@version{#2024-03-22}
+ "@version{#2025-06-28}
   @begin{declaration}
 (gobject:define-genum \"GtkLevelBarMode\" level-bar-mode
   (:export t
@@ -143,10 +143,10 @@
   (:discrete 1))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:continuous]{The level bar has a continuous mode.}
       @entry[:discrete]{The level bar has a discrete mode.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Describes how the @class{gtk:level-bar} widget contents should be rendered.
@@ -184,7 +184,7 @@
 
 #+liber-documentation
 (setf (documentation 'level-bar 'type)
- "@version{#2025-06-17}
+ "@version{#2025-06-28}
   @begin{short}
     The @class{gtk:level-bar} widget is a bar widget that can be used as a
     level indicator.
@@ -207,12 +207,12 @@
   The default interval of values is between zero and one, but it is possible to
   modify the interval using the @fun{gtk:level-bar-min-value} and
   @fun{gtk:level-bar-max-value} functions. The value will be always drawn in
-  proportion to the admissible interval, i.e. a value of 15 with a specified
+  proportion to the admissible interval, that is, a value of 15 with a specified
   interval between 10 and 20 is equivalent to a value of 0.5 with an interval
-  between 0 and 1. When the @code{:discrete} level bar mode is used, the bar
-  level is rendered as a finite number of separated blocks instead of a single
-  one. The number of blocks that will be rendered is equal to the number of
-  units specified by the admissible interval.
+  between 0 and 1. When the @val[gtk:level-bar]{:discrete} level bar mode is
+  used, the bar level is rendered as a finite number of separated blocks instead
+  of a single one. The number of blocks that will be rendered is equal to the
+  number of units specified by the admissible interval.
 
   For instance, to build a bar rendered with five blocks, it is sufficient to
   set the minimum value to 0 and the maximum value to 5 after changing the
@@ -268,48 +268,47 @@ levelbar[.discrete]
     @end{pre}
   @end{dictionary}
   @begin[Style Property Details]{dictionary}
-    @begin[code]{table}
-      @begin[min-block-height]{entry}
-        The @code{min-block-height} style property of type @code{:int}
-        (Read / Write) @br{}
-        Determines the minimum height for blocks filling the
-        @class{gtk:level-bar} widget. @br{}
-        @em{Warning:} The @code{min-block-height} style property has been
-        deprecated since version 3.20 and should not be used in newly written
-        code. Use the standard min-width/min-height CSS properties on the block
-        elements. The value of this style property is ignored. @br{}
-        Allowed values: >= 1 @br{}
-        Default value: 3
-      @end{entry}
-      @begin[min-block-width]{entry}
-        The @code{min-block-width} style property of type @code{:int}
-        (Read / Write) @br{}
-        Determines the minimum width for blocks filling the
-        @class{gtk:level-bar} widget. @br{}
-        @em{Warning:} The @code{min-block-height} style property has been
-        deprecated since version 3.20 and should not be used in newly written
-        code. Use the standard min-width/min-height CSS properties on the block
-        elements. The value of this style property is ignored. @br{}
-        Allowed values: >= 1 @br{}
-        Default value: 3
-      @end{entry}
-    @end{table}
+    @begin[level-bar:min-block-height]{property}
+      The @code{min-block-height} style property of type @code{:int}
+      (Read / Write) @br{}
+      Determines the minimum height for blocks filling the
+      @class{gtk:level-bar} widget. @br{}
+      @em{Warning:} The @code{min-block-height} style property has been
+      deprecated since version 3.20 and should not be used in newly written
+      code. Use the standard min-width/min-height CSS properties on the block
+      elements. The value of this style property is ignored. @br{}
+      Allowed values: >= 1 @br{}
+      Default value: 3
+    @end{property}
+    @begin[level-bar:min-block-width]{property}
+      The @code{min-block-width} style property of type @code{:int}
+      (Read / Write) @br{}
+      Determines the minimum width for blocks filling the
+      @class{gtk:level-bar} widget. @br{}
+      @em{Warning:} The @code{min-block-height} style property has been
+      deprecated since version 3.20 and should not be used in newly written
+      code. Use the standard min-width/min-height CSS properties on the block
+      elements. The value of this style property is ignored. @br{}
+      Allowed values: >= 1 @br{}
+      Default value: 3
+    @end{property}
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"offset-changed\" signal}
+    @begin[level-bar::offset-changed]{signal}
       @begin{pre}
 lambda (levelbar name)    :detailed
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[levelbar]{The @class{gtk:level-bar} widget which received the
           signal.}
         @entry[name]{The string with the name of the offset that changed value.}
-      @end{table}
+      @end{simple-table}
       Emitted when an offset specified on the bar changes value as an effect to
       the @fun{gtk:level-bar-add-offset-value} function being called. The signal
-      supports detailed connections. You can connect to the \"changed::x\"
-      detailed signal in order to only receive callbacks when the value of
-      \"x\" offset changes.
+      supports detailed connections. You can connect to the
+      @sig[gtk:level-bar]{offset-changed::x} detailed signal in order to only
+      receive callbacks when the value of the @code{\"x\"} offset changes.
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:level-bar-new}
   @see-constructor{gtk:level-bar-new-for-interval}
@@ -413,26 +412,26 @@ lambda (levelbar name)    :detailed
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "mode" 'level-bar) t)
- "The @code{mode} property of type @symbol{gtk:level-bar-mode} (Read / Write)
-  @br{}
+ "The @code{mode} property of type @sym{gtk:level-bar-mode} (Read / Write) @br{}
   Determines the way a @class{gtk:level-bar} widget interprets the value
   properties to draw the level fill area. Specifically, when the value is
-  @code{:continuous}, the @class{gtk:level-bar} widget will draw a single block
-  representing the current value in that area. When the value is
-  @code{:discrete}, the widget will draw a succession of separate blocks filling
-  the draw area, with the number of blocks being equal to the units separating
-  the integral roundings of @code{min-value} and @code{max-value}. @br{}
-  Default value: @code{:continuous}")
+  @val[gtk:level-bar-mode]{:continuous}, the @class{gtk:level-bar} widget will
+  draw a single block representing the current value in that area. When the
+  value is @val[gtk:level-bar-mode]{:discrete}, the widget will draw a
+  succession of separate blocks filling the draw area, with the number of blocks
+  being equal to the units separating the integral roundings of
+  @slot[gtk:level-bar]{min-value} and @slot[gtk:level-bar]{max-value}. @br{}
+  Default value: @val[gtk:level-bar-mode]{:continuous}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'level-bar-mode)
       "Accessor"
       (documentation 'level-bar-mode 'function)
- "@version{#2023-03-20}
+ "@version{#2025-06-28}
   @syntax{(gtk:level-bar-mode object) => mode}
   @syntax{(setf (gtk:level-bar-mode object) mode)}
   @argument[object]{a @class{gtk:level-bar} widget}
-  @argument[mode]{a value of the @symbol{gtk:level-bar-mode} enumeration}
+  @argument[mode]{a value of the @sym{gtk:level-bar-mode} enumeration}
   @begin{short}
     Accessor of the @slot[gtk:level-bar]{mode} slot of the
     @class{gtk:level-bar} class.

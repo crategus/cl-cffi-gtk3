@@ -125,46 +125,46 @@
     @code{statusbar}.
   @end{dictionary}
   @begin[Style Property Details]{dictionary}
-    @begin[code]{table}
-      @begin[shadow-type]{entry}
-        The @code{shadow-type} style property of type @symbol{gtk:shadow-type}
-        (Read) @br{}
-        The style of bevel around the text of the statusbar. @br{}
-        @em{Warning:} The @code{shadow-type} style property has been deprecated
-        since version 3.20 and should not be used in newly written code. Use CSS
-        properties to determine the appearance, the value of this style property
-        is ignored. @br{}
-        Default value: @code{:in}
-      @end{entry}
-    @end{table}
+    @begin[statusbar:shadow-type]{property}
+      The @code{shadow-type} style property of type @sym{gtk:shadow-type} (Read)
+      @br{}
+      The style of bevel around the text of the statusbar. @br{}
+      @em{Warning:} The @code{shadow-type} style property has been deprecated
+      since version 3.20 and should not be used in newly written code. Use CSS
+      properties to determine the appearance, the value of this style property
+      is ignored. @br{}
+      Default value: @val[gtk:shadow-type]{:in}
+    @end{property}
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"text-popped\" signal}
+    @begin[statusbar::text-popped]{signal}
       @begin{pre}
 lambda (statusbar context text)    :run-last
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[statusbar]{The @class{gtk:statusbar} widget which received the
           signal.}
         @entry[context]{The unsigned integer with the context ID of the
           relevant message/statusbar.}
         @entry[text]{The string with the message that was just popped.}
-      @end{table}
+      @end{simple-table}
       Is emitted whenever a new message is popped off the stack of the status
       bar.
-    @subheading{The \"text-pushed\" signal}
+    @end{signal}
+    @begin[statusbar::text-pushed]{signal}
       @begin{pre}
 lambda (statusbar context text)    :run-last
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[statusbar]{The @class{gtk:statusbar} widget which received the
           signal.}
         @entry[context]{The unsigned integer with the context ID of the
           relevant message/statusbar.}
         @entry[text]{The string with the message that was pushed.}
-      @end{table}
+      @end{simple-table}
       Is emitted whenever a new message gets pushed onto the stack of the status
       bar.
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:statusbar}")
 
